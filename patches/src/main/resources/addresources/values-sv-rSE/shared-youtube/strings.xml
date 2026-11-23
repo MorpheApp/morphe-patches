@@ -249,6 +249,9 @@ Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_video_effects_custom_error_message">"Videor visas utan effekten tills koden är åtgärdad. Ge det här felet till AI:n som skrev koden:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Koden slutar inuti en funktion eller kommentar, så den klipptes troligen av när den kopierades eller klistrades in. Inmatad text kan klippas av vid %d tecken.
+
+Be AI:n om kortare kod, eller klistra in koden i delar."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopieringsfel</string>
   <string name="morphe_video_effects_custom_save_anyway">Spara ändå</string>
   <string name="morphe_video_effects_custom_delete">Radera</string>

@@ -249,6 +249,9 @@ Za prijavu pritisnite nastavite u nastavku"</string>
   <string name="morphe_video_effects_custom_error_message">"Videozapisi se prikazuju bez efekta dok kod ne bude ispravljen. Proslijedite ovu pogrešku AI-ju koji je napisao kod:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod završava unutar funkcije ili komentara, pa je vjerojatno odrezan prilikom kopiranja ili lijepljenja. Zalijepljeni tekst može biti odrezan na %d znakova.
+
+Zatražite od AI-ja kraći kod ili zalijepite kod u dijelovima."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopirajte grešku</string>
   <string name="morphe_video_effects_custom_save_anyway">Spremi svejedno</string>
   <string name="morphe_video_effects_custom_delete">Izbriši</string>

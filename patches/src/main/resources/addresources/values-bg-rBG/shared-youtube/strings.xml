@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"Видеото се показва без ефекта, докато кодът не бъде коригиран. Предайте тази грешка на AI, който е написал кода:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Кодът завършва вътре в функция или коментар, така че вероятно е бил отрязан при копиране или поставяне. Поставеният текст може да бъде отрязан при %d знака.
+
+Поискайте от AI по-кратък код или поставете кода на части."</string>
   <string name="morphe_video_effects_custom_copy_error">Грешка при копиране</string>
   <string name="morphe_video_effects_custom_save_anyway">Запази въпреки това</string>
   <string name="morphe_video_effects_custom_delete">Изтриване</string>

@@ -423,6 +423,7 @@ Piirangud:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Peidab vestluse sisendivälja juures kuvatavaid tooltipseid, näiteks teavitust ainult tellijatele avatud vestluse kohta</string>
   <string name="morphe_hide_comments_menu_button_title">Peita menüünupp</string>
   <string name="morphe_hide_comments_menu_button_summary">Peidab iga kommentaari 3-punktilise menüünupu</string>
+  <string name="morphe_hide_comments_none_yet_title">Peida eelvaates tekst \"Kommentaare pole veel\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Peida kommentaari eelvaade</string>
   <string name="morphe_hide_comments_preview_comment_summary">Peidab kommentaaride eelvaate video alt enne täieliku kommentaaride jaotise avamist</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Kommentaar on Morphe poolt peidetud…</string>
@@ -433,7 +434,7 @@ Piirangud:
   <string name="morphe_hide_comments_topics_title">Peida \"Teemad\"</string>
   <string name="morphe_hide_comments_topics_summary">Peidab filtri riba valiku \"Teemad\" ja kommentaaride eelvaate \"Teema\" video all</string>
   <string name="morphe_hide_comments_translate_button_title">Peita tõlkimise nupp</string>
-  <string name="morphe_hide_comments_zero_state_title">Peida teadet \"Kommentaare pole veel\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Peida jaotist \"Külasta kogukonda\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhasta esile tõstetud otsingulingid</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhastab esile tõstetud otsingulingid, jättes alles ainult algse lihtsa teksti</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_channel_whitelist_channel_added">Kanal lisatud valgeloendile</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal eemaldatud valgeloendilt</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Otsing</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Otsi kanalist</string>
   <string name="morphe_channel_search_summary">Lisab kanalite lehtedele teise otsingunupu, et otsida ainult sellest kanalist</string>
@@ -578,6 +581,13 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_channel_search_sort_oldest">Vanimad</string>
   <string name="morphe_channel_search_sort_shortest">Lühimad Shortid</string>
   <string name="morphe_channel_search_sort_longest">Kõige pikemad</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Otsi esitusloendist</string>
+  <string name="morphe_playlist_search_summary">Lisab esitusloendite lehtedele teise otsingunupu, et otsida ainult sellest esitusloendist</string>
+  <string name="morphe_playlist_search_hint">Otsi esitusloendist</string>
+  <string name="morphe_playlist_search_results">Esitusloendi otsingutulemused</string>
+  <string name="morphe_playlist_search_no_results">Selles esitusloendis ei leitud midagi</string>
+  <string name="morphe_playlist_search_failed">Selle esitusloendi otsing ei õnnestunud</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link kopeeriti lõikelauale</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link ajatempliga kopeeriti lõikelauale</string>
@@ -652,6 +662,15 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Kuva vaatamiste arv miniatuurpiltedel</string>
   <string name="morphe_feed_view_count_summary">Vooguvideote vaatamiste arv kuvatakse nende miniatuurpilte vasakus alumises nurgas, mitte pealkirja all. Mõne video puhul, näiteks riiulitel, ei pruugida vaatamiste arvu kuvatada</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Naasta YouTubei kasutajanimi</string>
+  <string name="morphe_return_youtube_username_screen_summary">Kuva kanalite nimed, mitte kasutajanimed</string>
+  <string name="morphe_return_youtube_username_title">Kuva kanalite nimed</string>
+  <string name="morphe_return_youtube_username_summary">Kommentaarides, video pealkirja all ja Shortsis kuvatakse kasutajanimede asemel kanalite nimed</string>
+  <string name="morphe_return_youtube_username_display_format_title">Kanali nime vorming</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanali nimi</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanali nimi (@kasutajatunnus)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@kasutajatunnus (Kanali nimi)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Kuva voo minipildil meeldimiste arv</string>
   <string name="morphe_ryd_feed_like_ratio_title">Kuva voo minipildil meeldimiste protsent</string>
@@ -664,7 +683,6 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_search_comments_summary">Puudutage kommentaaride alas olevat otsingunuppu, et kuvada ainult need laaditud kommentaarid, mis sisaldavad kõiki otsitud sõnu. Fraasi otsimiseks pange sõnad jutumärkidesse</string>
   <string name="morphe_search_comments_dialog_title">Otsi kommentaaridest</string>
   <string name="morphe_search_comments_hint">Otsitavad sõnad</string>
-  <string name="morphe_search_comments_search">Otsi</string>
   <string name="morphe_search_comments_clear">Tühjenda</string>
   <string name="morphe_search_comments_applied">Muutke sorteerimist või avage kommentaarid uuesti, et neid otsida</string>
   <string name="morphe_search_comments_cleared">Otsing puhastatud. Muutke sorteerimiskorda või avage kommentaarid uuesti, et näidata kõiki kommentaare</string>
@@ -838,6 +856,8 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_play_all_button_type_entry_10">Videod ainult liikmetele</string>
   <string name="morphe_play_all_button_type_entry_11">Ainult liikmetele mõeldud Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Ainult liikmetele mõeldud otseüsteid</string>
+  <string name="morphe_play_all_button_reverse_title">Kääntage järjestus</string>
+  <string name="morphe_play_all_button_reverse_summary">Genereeritud loend esitab videoid automaatselt viimase kuni esimeseni</string>
   <string name="morphe_play_all_button_not_available_toast">Esitusloendit ei saa luua, kuna kanali ID-d ei kattu</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Kuva esitlusloendit nupp</string>
@@ -1036,7 +1056,7 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_swipe_change_video_summary">Pühkige täisekraani režiimis, et hüppata järgmise või eelmise videole</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Hoidmise žest</string>
-  <string name="morphe_hold_gesture_screen_summary">Muutke ja lukastage taasesituskiirus, lohistades pärast puudutamise ja hoidmise tegevust</string>
+  <string name="morphe_hold_gesture_screen_summary">Muutke ja lukastage taasesituskiirus ning käivitage tegevusi, lohistades pärast puudutamise ja hoidmise tegevust</string>
   <string name="morphe_hold_gesture_title">Luba hoidmise žest</string>
   <string name="morphe_hold_gesture_summary">Videole puudutamise ja hoidmise tegevusele võib järgneda lohistamine. Hoidmise ajal on kiirus vastav puudutamise ja hoidmise taasesituskiirus</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Ei kasutata, kui \"Vajuta ja libista\" on sisse lülitatud. Puuduta, et muuta</string>
@@ -1062,11 +1082,28 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_hold_gesture_lock_title">Lohistage alla, et lukustada kiirus</string>
   <string name="morphe_hold_gesture_lock_summary">Pärast puudutamise ja hoidmist lohistage alla, et säilitada kiirus sõrme tõstmisel. Puudutage märki või puudutage ja hoidke uuesti, et lukustamine vabastada</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Kuva alati lukustamise märki</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Lukustatud kiiruse märk jääb nähtavaks, kui mängija juhtimispaneel on peidetud</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Kuvab lukustatud kiiruse märki ka siis, kui taasesituse juhtimispaneel ei ole nähtav. Kui see on väljas, kuvatakse märk koos juhtimispaneeliga</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Vabasta lukustus video muutmisel</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Lukustatud kiirus lõppeb, kui algab teine video</string>
   <string name="morphe_hold_gesture_lock_hint">Tõmba alla, et lukustada</string>
   <string name="morphe_hold_gesture_lock_release">Lase lahti, et lukustada %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Lohistage üles, et avada käiviti</string>
+  <string name="morphe_hold_gesture_launcher_summary">Pärast vajutamist ja hoidmist lohista sõrme üles, et näidata sõrme ümber olevaid toiminguid. Toimingu käivitamiseks tõsta sõrm üles</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Toimingute arv</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Toiming 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Toiming 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Toiming 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Toiming 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Toiming 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Lukita ekraan</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Korda videot</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Lõpeta kordamine</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Salvesta kaader</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Salvesta jahtkuuks</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopeeri link praeguse ajaga</string>
+  <string name="morphe_hold_gesture_screen_unlock">Puuduta, et avada</string>
+  <string name="morphe_hold_gesture_frame_saved">Kaader salvestati asukohta %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Kaadrit ei õnnestunud salvestada</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altekstid</string>
   <string name="morphe_captions_screen_summary">Halda automaatseid suletitreid ja suletitre küpsiseid</string>
@@ -1254,6 +1291,9 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Keela loendite automaatne esitus</string>
   <string name="morphe_disable_playlist_autoplay_summary">Hoiab ära loendite automaatse edenemise järgmise videoni</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Kääntage loendi automaatset esitust</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Loendid esitatakse automaatselt viimase video kuni esimeseni. Mikseid ei pöörata</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Automaatsese esituse juhtimine</string>
   <string name="morphe_autoplay_control_summary">Lisab pleieri nuppu ja reegli järgmise video jaoks. Esitusloendid ja järjekorrad jätkuvad, Mix peatub pärast teatud hulka videoid, soovitatud videod ei esita kunagi. Puudutage nuppu järgmise režiimi jaoks, hoidke nuppu all loendi kuvamiseks</string>
@@ -1301,6 +1341,21 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <string name="morphe_fullscreen_video_scale_button_summary">Puudutage, et vaheldada vaikimisi, venituse ja zoomi vahel</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Kuva ainult täisekranis</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Peida video skaalimise nuppu portreipleieris</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Kuva aeglustatud korduse nupp</string>
+  <string name="morphe_replay_video_button_summary">Kerib video tagasi ja aeglustab seda ajutiselt. Tühistamiseks puudutage uuesti</string>
+  <string name="morphe_replay_video_swipe_title">Kevitage aeglustatult, pühkides vasakule</string>
+  <string name="morphe_replay_video_swipe_summary">Pühkige videol vasakule, et kerida tagasi 1–10 sekundit sõltuvalt pühkimise pikkusest. Pühkimise juhtimised otsivad ja ülaala pühkimised on prioriteetsed</string>
+  <string name="morphe_replay_video_swipe_preview">Kordus %s s</string>
+  <string name="morphe_replay_video_seconds_title">Tagasipoolutuse kestus</string>
+  <string name="morphe_replay_video_seconds_summary">Kui mitu sekundit nupp videot tagasi poolutab</string>
+  <string name="morphe_replay_video_slow_seconds_title">Aeglustatud esituse kestus</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Kui mitu sekundit videot esitatakse tagasipoolutuse järel aeglustatud kiirusega</string>
+  <string name="morphe_replay_video_speed_title">Korduse kiirus</string>
+  <string name="morphe_replay_video_speed_summary">Korduse esituskiirus, näiteks 0,5. Kordus ei ole kunagi praegusest kiirusest kiirem</string>
+  <string name="morphe_replay_video_start">Esita kordust aeglasemalt</string>
+  <string name="morphe_replay_video_unavailable">Aeglustatud kordus pole selle video puhul saadaval</string>
+  <string name="morphe_replay_video_speed_invalid">Taastoetuskiirus on vale, lähtestatakse vaikimisele</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Näita vaigistamise nuppu</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

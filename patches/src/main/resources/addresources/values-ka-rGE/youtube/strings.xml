@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">მალავს ჩატის შეყვანის ზოლთან გამოჩენილ მინიშნებებს, როგორიცაა მხოლოდ გამომწერებისთვის განკუთვნილი ჩატის შეტყობინება</string>
   <string name="morphe_hide_comments_menu_button_title">მენიუს ღილაკის დამალვა</string>
   <string name="morphe_hide_comments_menu_button_summary">მალავს თითოეული კომენტარის 3-წერტილიან მენიუს ღილაკს</string>
+  <string name="morphe_hide_comments_none_yet_title">დამალეთ \"კომენტარები ჯერ არ არის\" წინასწარი ნახვა</string>
   <string name="morphe_hide_comments_preview_comment_title">კომენტარის პრევიზის დამალვა</string>
   <string name="morphe_hide_comments_preview_comment_summary">მალავს კომენტარის პრევიუს ვიდეოს ქვეშ, სრული კომენტარების სექციის გახსნამდე</string>
   <string name="morphe_hide_comments_preview_comment_hidden">კომენტარი დამალულია Morphe-ის მიერ…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">დამალეთ \"თემები\"</string>
   <string name="morphe_hide_comments_topics_summary">მალავს \"თემების\" ფილტრის პანელის ოფციას და \"თემის\" კომენტარების წინასწარ გადახედვას ვიდეოს ქვემოთ</string>
   <string name="morphe_hide_comments_translate_button_title">თარგმნის ღილაკის დამალვა</string>
-  <string name="morphe_hide_comments_zero_state_title">დამალეთ შეტყობინება \"კომენტარები ჯერ არ არის\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">დამალეთ სექცია \"ესტუმრეთ საზოგადოებას\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">გამოკვეთილი საძიებო ბმულების გასუფთავება</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">სუფთავებს გამოკვეთილ საძიებო ბმულებს და ტოვებს მხოლოდ ორიგინალ ჩვეულებრივ ტექსტს</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">არხი დაემატა თეთრ სიაში</string>
   <string name="morphe_channel_whitelist_channel_removed">არხი წაიშალა თეთრი სიიდან</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">ძებნა</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">ძებნა არხის შიგნით</string>
   <string name="morphe_channel_search_summary">ამატებს მეორე ძებნის ღილაკს არხების გვერდებზე მხოლოდ ამ არხში საძიებლად</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">უძველესი</string>
   <string name="morphe_channel_search_sort_shortest">ყველაზე მოკლე</string>
   <string name="morphe_channel_search_sort_longest">ყველაზე გრძელი</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">ძებნა პლეილისტში</string>
+  <string name="morphe_playlist_search_summary">ამატებს ძებნის მეორე ღილაკს პლეილისტის გვერდებზე მხოლოდ ამ პლეილისტში საძებნელად</string>
+  <string name="morphe_playlist_search_hint">პლეილისტში ძებნა</string>
+  <string name="morphe_playlist_search_results">პლეილისტის ძებნის შედეგები</string>
+  <string name="morphe_playlist_search_no_results">ამ პლეილისტში არაფერი მოიძებნა</string>
+  <string name="morphe_playlist_search_failed">ამ პლეილისტში ძებნა ვერ მოხერხდა</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">ბმული დაკოპირდა ბუფერში</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">ბმული დროის აღნიშვნით დაკოპირდა ბუფერში</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">ნახვების რაოდენობის ჩვენება მინიატურებზე</string>
   <string name="morphe_feed_view_count_summary">ფიდის ვიდეოების ნახვების რაოდენობა ჩანს მათი მინიატურების ქვედა მარცხენა კუთხეში და არა სათაურის ქვემოთ. ზოგიერთ ვიდეოს, მაგალითად თაროებში, შესაძლოა არ ჰქონდეს ნახვების რაოდენობა</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTube-ის მომხმარებლის სახელის დაბრუნება</string>
+  <string name="morphe_return_youtube_username_screen_summary">აჩვენეთ არხის სახელები ჰენდლების ნაცვლად</string>
+  <string name="morphe_return_youtube_username_title">არხების სახელების ჩვენება</string>
+  <string name="morphe_return_youtube_username_summary">კომენტარებში, ვიდეოს სათაურის ქვემოთ და Shorts-ებში ჰენდლების ნაცვლად ჩანს არხის სახელები</string>
+  <string name="morphe_return_youtube_username_display_format_title">არხის სახელის ფორმატი</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">არხის სახელი</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">არხის სახელი (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (არხის სახელი)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ფიდის მინიატიურის მოწონებების რაოდენობის ჩვენება</string>
   <string name="morphe_ryd_feed_like_ratio_title">ფიდის მინიატურის მოწონებების პროცენტის ჩვენება</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">კომენტარებში დააჭირეთ ძიების ღილაკს, რათა გამოჩნდეს მხოლოდ ჩატვირთული კომენტარები, რომლებიც შეიცავს ყველა საძიებო სიტყვას. ფრაზის მოსაძიებლად სიტყვები ჩასვათ ბრჭყალებში</string>
   <string name="morphe_search_comments_dialog_title">კომენტარების ძებნა</string>
   <string name="morphe_search_comments_hint">სიტყვები საძიებლად</string>
-  <string name="morphe_search_comments_search">ძიება</string>
   <string name="morphe_search_comments_clear">გასუფთავება</string>
   <string name="morphe_search_comments_applied">შეცვალეთ დალაგების თანმიმდევრობა ან თავიდან გახსენით კომენტარები მათში საძიებლად</string>
   <string name="morphe_search_comments_cleared">ძიება გასუფთავდა. შეცვალეთ დალაგების თანმიმდევრობა ან ხელახლა გახსენით კომენტარები ყველა კომენტარის სანახავად</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">მხოლოდ წევრებისთვის განკუთვნილი ვიდეოები</string>
   <string name="morphe_play_all_button_type_entry_11">მხოლოდ წევრებისთვის განკუთვნილი Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">მხოლოდ წევრებისთვის განკუთვნილი პირდაპირი ჩართვები</string>
+  <string name="morphe_play_all_button_reverse_title">უკუ თანმიმდევრობა</string>
+  <string name="morphe_play_all_button_reverse_summary">გენერირებული პლეილისტი ავტომატურად იკვრება ბოლო ვიდეოდან პირველისკენ</string>
   <string name="morphe_play_all_button_not_available_toast">ფლეილისტის გენერირება შეუძლებელია არხის ID-ის შეუსაბამობის გამო</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">ფლეილისტის ღილაკის ჩვენება</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">გადაფურცლეთ სრული ეკრანის რეჟიმში შემდეგ ან წინა ვიდეოზე გადასასვლელად</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">დაჭერის ჟესტი</string>
-  <string name="morphe_hold_gesture_screen_summary">შეცვალეთ და დააფიქსირეთ უკუკავშირის სიჩქარე დაჭერისა და გადმოტანის მეშვეობით</string>
+  <string name="morphe_hold_gesture_screen_summary">შეცვალეთ და დააფიქსირეთ დაკვრის სიჩქარე, ასევე შეასრულეთ მოქმედებები დაჭერით და შემდეგ გადატანით</string>
   <string name="morphe_hold_gesture_title">ჩართეთ hold ჟესტი</string>
   <string name="morphe_hold_gesture_summary">ვიდეოზე დაჭერას და Hold-ს შეიძლება მოჰყვეს გადმოტანა. დაჭერის დროს სიჩქარე არის tap and hold უკუკავშირის სიჩქარე</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">არ გამოიყენება, როდესაც ჩართულია \"დააჭირეთ გადასაწევად\". შეეხებათ შესაცვლელად</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">გადაიტანეთ ქვემოთ სიჩქარის გასაֆიქსირებლად</string>
   <string name="morphe_hold_gesture_lock_summary">დაჭერისა და შესაყვანის შემდეგ, გადაიტანეთ ქვემოთ, რათა სიჩქარე შენარჩუნდეს თითის ასიდვის შემდეგ. დააწკაპუნეთ ნიშანს ან კვლავ დააჭირეთ და გეჭიროთ განსაფიქსირებლად</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">ყოველთვის აჩვენეთ ფიქსაციის ნიშანი</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">გაფიქსირებული სიჩქარის ნიშანი რჩება ხილული, როდესაც პლეერის მართვის პანელი மறைულია</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">აჩვენებს დაფიქსირებული სიჩქარის ნიშანს მაშინაც, როდესაც დაკვრის მართვის პანელი არ ჩანს. გამორთვრის შემთხვევაში, ნიშანი ჩნდება მართვის პანელთან ერთად</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">გააუქმეთ ფიქსაცია ვიდეოს შეცვლისას</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">გაფიქსირებული სიჩქარე წყდება სხვა ვიდეოს დაწყებისას</string>
   <string name="morphe_hold_gesture_lock_hint">ჩამოსწივეთ დასაბლოკად</string>
   <string name="morphe_hold_gesture_lock_release">გაუშვეთ %s-ის დასაბლოკად</string>
+  <string name="morphe_hold_gesture_launcher_title">გადაიტანეთ ზემოთ ლაუნჩერის გასახსნელად</string>
+  <string name="morphe_hold_gesture_launcher_summary">დაჭერისა და გრძელვად andხრის შემდეგ, გადაწიეთ ზემოთ თითის გარშემო მოქმედებების გამოსაჩენად. მოქმედების გასაშვებად მოხსენით თითი მისზე</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">მოქმედებების რაოდენობა</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">მოქმედება 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">მოქმედება 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">მოქმედება 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">მოქმედება 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">მოქმედება 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">ეკრანის დაბლოკვა</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">ვიდეოს განმეორება</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">განმეორების შეჩერება</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">კადრის შენახვა</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">შენახვა მოგვიანებით საყურებლად</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">ბმულის კოპირება მიმდინარე დროზე</string>
+  <string name="morphe_hold_gesture_screen_unlock">დააჭირეთ განსაკეტად</string>
+  <string name="morphe_hold_gesture_frame_saved">კადრი შეინახა %s-ში</string>
+  <string name="morphe_hold_gesture_frame_failed">კადრის შენახვა ვერ მოხერხდა</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">სუბტიტრები</string>
   <string name="morphe_captions_screen_summary">ავტომატური სუბტიტრების და სუბტიტრების ქუქი-ფაილების მართვა</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">გამორთეთ პლეილისტის ავტომატური დაკვრა</string>
   <string name="morphe_disable_playlist_autoplay_summary">არ აძლევს პლეილისტებს საშუალებას, ავტომატურად გადავიდნენ შემდეგ ვიდეოზე</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">პლეილისტის ავტომატური დაკვრის უკუმიმართულება</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">პლეილისტები ავტომატურად იკვრება ბოლო ვიდეოდან პირველისკენ. მიქსები არ იტრიალებს</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">ავტომატური დაკვრის მართვა</string>
   <string name="morphe_autoplay_control_summary">ამატებს დაკვრის ღილაკს და წესს შემდეგი ვიდეოსთვის. პლეილისტები და რიგები გრძელდება, მიქსი წყდება ვიდეოების გარკვეული რაოდენობის შემდეგ, რეკომენდებული ვიდეო კი აღარ ისვრება. შეეხლებით ღილაკს შემდეგი რეჟიმისთვის, დააჭირეთ და გეჭიროთ სიისთვის</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">დააჭირეთ ნაგულისხმევი, გაწელვისა და ზუმის რეჟიმების შესაცვლელად</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">აჩვენე მხოლოდ სრულეკრანზე</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">ვიდეოს მასშტაბირების ღილაკის დამალვა პორტრეტულ პლეიერში</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">ნელა განმეორების ღილაკის ჩვენება</string>
+  <string name="morphe_replay_video_button_summary">უკან გადის და დროებით ამცირებს ვიდეოს სიჩქარეს. გასაუქრებლად დააკლიკეთ კიდევ ერთხელ</string>
+  <string name="morphe_replay_video_swipe_title">გადაისრიალეთ მარცხნივ ნელა განმეორებისთვის</string>
+  <string name="morphe_replay_video_swipe_summary">გადაისრიალეთ მარცხნივ ვიდეოზე 1-10 წამით უკან დასაბრუნებლად, სრიალვის სიგრძის მიხედვით. სრიალვის კონტროლი მართავს ძებნას, ხოლო ზედა ზონაში სრიალებას პრიორიტეტი აქვს</string>
+  <string name="morphe_replay_video_swipe_preview">განმეორება %s წამი</string>
+  <string name="morphe_replay_video_seconds_title">უკან გადახვევის ხანგრძლივობა</string>
+  <string name="morphe_replay_video_seconds_summary">რამდენი წამით გადახვევს ღილაკი ვიდეოს უკან</string>
+  <string name="morphe_replay_video_slow_seconds_title">დაspელებული დაკვრის ხანგრძლივობა</string>
+  <string name="morphe_replay_video_slow_seconds_summary">ვიდეოს რამდენი წამი იკვეთება განმეორების სიჩქარით უკან გადახვევის შემდეგ</string>
+  <string name="morphe_replay_video_speed_title">განმეორების სიჩქარე</string>
+  <string name="morphe_replay_video_speed_summary">განმეორების დაკვრის სიჩქარე, მაგალითად 0.5. განმეორება არასოდეს არის უფრო სწრაფი, ვიდრე მიმდინარე სიჩქარე</string>
+  <string name="morphe_replay_video_start">განმეორება უფრო ნელა</string>
+  <string name="morphe_replay_video_unavailable">ნელი განმეორება ამ ვიდეოსთვის недоступებელია</string>
+  <string name="morphe_replay_video_speed_invalid">გავრცელების სიჩქარე არასწორია, განისახება ნაგულისხმევი მნიშვნელობით</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">ხმის გათიშვის ღილაკის ჩვენება</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

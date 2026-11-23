@@ -249,6 +249,9 @@ Kirjautuaksesi sisään paina alla olevaa Jatka-painiketta"</string>
   <string name="morphe_video_effects_custom_error_message">"Videot näytetään ilman efektiä, kunnes koodi on korjattu. Anna tämä virhe tekoälylle, joka kirjoitti koodin:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kood päättyy funktion tai kommentin sisällä, joten se on todennäköisesti katkennut kopioinnin tai liittämisen aikana. Liitetty teksti voi katketa %d merkin kohdalla.
+
+Pyydä tekoälyä lyhyemmästä koodista tai liitä koodi osissa."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopiointivirhe</string>
   <string name="morphe_video_effects_custom_save_anyway">Tallenna silti</string>
   <string name="morphe_video_effects_custom_delete">Poista</string>

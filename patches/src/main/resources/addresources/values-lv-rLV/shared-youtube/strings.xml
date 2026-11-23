@@ -249,6 +249,9 @@ Lai pierakstītos, apakšā nospiediet \"Turpināt\""</string>
   <string name="morphe_video_effects_custom_error_message">"Video tiek rādīti bez efekta, līdz kods tiek labots. Nosūtiet šo kļūdu AI, kas rakstīja kodu:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kods beidzas funkcijas vai komentāra vidū, tāpēc tas, iespējams, tika apgriezts kopēšanas vai ielīmēšanas laikā. Ielīmēts teksts var tikt apgriezts pie %d rakstzīmēm.
+
+Lūdziet AI īsāku kodu vai ielīmējiet kodu daļām."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopēšanas kļūda</string>
   <string name="morphe_video_effects_custom_save_anyway">Saglabāt jebkurā gadījumā</string>
   <string name="morphe_video_effects_custom_delete">Dzēst</string>

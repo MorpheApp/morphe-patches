@@ -220,9 +220,9 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_prioritize_video_quality_dialog">Má tá an socrú seo múchta, d’fhéadfadh sé nach mbeadh aon roghanna cáilíochta físeáin ar fáil do fhíseáin níos sine.</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_stream_title">Díchumasaigh fuaim DRC</string>
-  <string name="morphe_disable_drc_audio_stream_summary">Seinneann sé an audio bunaidh in ionad an leagan le raon dinamiciúil compressed</string>
-  <string name="morphe_disable_loudness_normalization_title">Leanúnaíocht loudness leanúnaigh</string>
-  <string name="morphe_disable_loudness_normalization_summary">Seinneann sé audio ard ag a ownlaíocht bhunaidh in ionad é a laghdú go leibhéal stdard</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Seinntear an fhuaim bhunaidh in áit an leagain a bhfuil raon dinimiciúil comhbhrúite aige</string>
+  <string name="morphe_disable_loudness_normalization_title">Díchumasaigh normalú airde fuaime</string>
+  <string name="morphe_disable_loudness_normalization_summary">Seinneann sé fuaim ard ag an mbunleibhéal toirte, in áit í a ísliú go leibhéal caighdeánach</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary">Seinneann sé rian fuaime bunaidh an fhíseáin i gcónaí in ionad leagan dubáilte</string>
@@ -232,27 +232,30 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_skip_silence_minimum_pause_title">Fad íosta an tsosa</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Ní ghiorraítear ach sosanna atá chomh fada seo ar a laghad. Tagann sé i bhfeidhm nuair a thosaíonn an chéad fhíseán eile</string>
   <!-- misc.videoeffects.videoEffectsPatch -->
-  <string name="morphe_video_effect_title">Éifeacht físeáin</string>
+  <string name="morphe_video_effect_title">Éifeacht físe</string>
   <string name="morphe_video_effect_entry_none">As</string>
-  <string name="morphe_video_effects_custom_title">Déan eagras ar éifeachtaí físeáin</string>
-  <string name="morphe_video_effects_custom_summary">Athraigh, athainmnigh, scrios nó cuir éifeachtaí físeáin leis. Is cód shader iad na héifeachtaí, mar sin is féidir le chatbot AI ones nua a scríobh</string>
+  <string name="morphe_video_effects_custom_title">Cuir éifeachtaí físe in eagar</string>
+  <string name="morphe_video_effects_custom_summary">Athraigh, athainmnigh, scrios nó cuir le héifeachtaí físe. Is cód scáthaithe iad éifeachtaí, mar sin is féidir le comhrábot AI cinn nua a scríobh</string>
   <string name="morphe_video_effects_custom_empty">Níl aon éifeacht físeáin ann. Tapáil ar Cuir éifeacht leis chun ceann a dhéanamh.</string>
   <string name="morphe_video_effects_custom_add">Cuir éifeacht leis</string>
-  <string name="morphe_video_effects_custom_restore">Athchóirigh easaíochtacha</string>
+  <string name="morphe_video_effects_custom_restore">Athchóirigh réamhshocruithe</string>
   <string name="morphe_video_effects_custom_add_title">Éifeacht nua</string>
-  <string name="morphe_video_effects_custom_edit_title">Cuir éifeacht i bhfeidhm</string>
+  <string name="morphe_video_effects_custom_edit_title">Cuir éifeacht in eagar</string>
   <string name="morphe_video_effects_custom_name_hint">Ainm</string>
   <string name="morphe_video_effects_custom_name_empty">Cuir ainm isteach don éifeacht</string>
   <string name="morphe_video_effects_custom_name_exists">Tá éifeacht leis an ainm seo ann cheana</string>
-  <string name="morphe_video_effects_custom_copy_code">Cóipeáil cód</string>
-  <string name="morphe_video_effects_custom_error_title">Tá anéagart leis an éifeacht</string>
-  <string name="morphe_video_effects_custom_error_message">"Taispeantar físeáin gan an éifeacht go dtí go mbeidh an cód ceartaithe. Tabhair an éagart seo don AI a scríobh an cód:
+  <string name="morphe_video_effects_custom_copy_code">Cóipeáil an cód</string>
+  <string name="morphe_video_effects_custom_error_title">Tá earráid san éifeacht</string>
+  <string name="morphe_video_effects_custom_error_message">"Taispeántar físeáin gan an éifeacht go dtí go gceartaítear an cód. Tabhair an earráid seo don AI a scríobh an cód:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Críochnaíonn an cód i lár feidhme nó nóta tráchta; is dócha gur gearradh siar é le linn cóipeála nó greamaithe. D’fhéadfadh téacs a ghreamítear a bheith gearrtha siar ag %d carachtar.
+
+Iarr ar an AI cód níos giorra a sholáthar, nó greamaigh an cód ina chodanna."</string>
   <string name="morphe_video_effects_custom_copy_error">Earráid chóipeála</string>
-  <string name="morphe_video_effects_custom_save_anyway">Sábháil ar aon nós</string>
+  <string name="morphe_video_effects_custom_save_anyway">Sábháil mar sin féin</string>
   <string name="morphe_video_effects_custom_delete">Scrios</string>
-  <string name="morphe_video_effects_custom_delete_title">Scrios éifeacht?</string>
+  <string name="morphe_video_effects_custom_delete_title">Scrios an éifeacht?</string>
   <string name="morphe_video_effects_custom_delete_message">Scriosfar %s.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Seachfhreastalaí líonra</string>

@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Чат енгізу жолағының жанында көрсетілетін көмекші мәтіндерді, мысалы, тек жазылушыларға арналған чат туралы хабарламаны жасырады</string>
   <string name="morphe_hide_comments_menu_button_title">Мәзір түймесін жасыру</string>
   <string name="morphe_hide_comments_menu_button_summary">Әр пікірдің 3-нүктелі мәзір түймесін жасырады</string>
+  <string name="morphe_hide_comments_none_yet_title">\"Әлі пікірлер жоқ\" алдын ала қарауын жасыру</string>
   <string name="morphe_hide_comments_preview_comment_title">Пікір алдын ала қарауын жасыру</string>
   <string name="morphe_hide_comments_preview_comment_summary">Толық пікірлер бөлімін ашпас бұрын бейнебаян астындағы пікірлер алдын ала қарауын жасырады</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Пікір Morphe арқылы жасырылды…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">\"Тақырыптар\"ды жасыру</string>
   <string name="morphe_hide_comments_topics_summary">\"Тақырыптар\" сүзгі жолағы опциясын және бейне төменгі жағындағы \"Тақырып\" пікірлерінің алдын ала қаралымдарын жасырады</string>
   <string name="morphe_hide_comments_translate_button_title">Аудару түймесін жасыру</string>
-  <string name="morphe_hide_comments_zero_state_title">\'Әлі пікірлер жоқ\' хабарламасын жасыру</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">\"Қоғамдастыққа кіріңіз\" бөлімін жасыру</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Белгіленген іздеу сілтемелерін тазарту</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Белгіленген іздеу сілтемелерін тазартады, тек түпнұсқа қарапайым мәтінді қалдырады</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Арна ақ тізімге қосылды</string>
   <string name="morphe_channel_whitelist_channel_removed">Арна ақ тізімнен алынып тасталды</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Іздеу</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Арна ішінен іздеу</string>
   <string name="morphe_channel_search_summary">Тек осы арнаны іздеу үшін арна беттеріне екінші іздеу түймесін қосады</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">Ең ескілері</string>
   <string name="morphe_channel_search_sort_shortest">Ең қысқа</string>
   <string name="morphe_channel_search_sort_longest">Ең ұзын</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Плейлист ішінен іздеу</string>
+  <string name="morphe_playlist_search_summary">Тек осы плейлист ішінен іздеу үшін плейлист беттеріне екінші іздеу түймесін қосады</string>
+  <string name="morphe_playlist_search_hint">Плейлистті іздеу</string>
+  <string name="morphe_playlist_search_results">Плейлист іздеу нәтижелері</string>
+  <string name="morphe_playlist_search_no_results">Бұл плейлисттен ештеңе табылмады</string>
+  <string name="morphe_playlist_search_failed">Бұл плейлистті іздеу мүмкін болмады</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Сілтеме алмасу буферіне көшірілді</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Уақыт белгісі бар сілтеме алмасу буферіне көшірілді</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Мұқабаларда қаралым санын көрсету</string>
   <string name="morphe_feed_view_count_summary">Лентадағы бейнелердің қаралым саны тақырыптың астында емес, мұқабаларының төменгі сол жағында көрсетіледі. Кейбір бейнелерде, мысалы, сөрелерде, қаралым саны көрсетілмеуі мүмкін</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTube пайдаланушы есімін қайтару</string>
+  <string name="morphe_return_youtube_username_screen_summary">Псевдонимдердің орнына арна атауларын көрсету</string>
+  <string name="morphe_return_youtube_username_title">Арна атауларын көрсету</string>
+  <string name="morphe_return_youtube_username_summary">Пікірлерде, бейнебаян тақырыбының астында және Shorts-та псевдонимдердің орнына арна атаулары көрсетіледі</string>
+  <string name="morphe_return_youtube_username_display_format_title">Арна атауының форматы</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Арна атауы</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Арна атауы (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Арна атауы)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Лентадағы превьюда лайк санын көрсету</string>
   <string name="morphe_ryd_feed_like_ratio_title">Лентадағы превьюда лайк пайызын көрсету</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">Пікірлердегі іздеу батырмасын басып, жүктелген пікірлердің ішінен барлық ізделген сөздері бар пікірлерді ғана көрсетіңіз. Фразаны іздеу үшін сөздерді тырнақшаға алыңыз</string>
   <string name="morphe_search_comments_dialog_title">Пікірлерді іздеу</string>
   <string name="morphe_search_comments_hint">Ізделетін сөздер</string>
-  <string name="morphe_search_comments_search">Іздеу</string>
   <string name="morphe_search_comments_clear">Тазалау</string>
   <string name="morphe_search_comments_applied">Сұрыптау ретін өзгертіңіз немесе іздеу үшін пікірлерді қайта ашыңыз</string>
   <string name="morphe_search_comments_cleared">Іздеу тазартылды. Барлық пікірлерді көрсету үшін сұрыптау ретін өзгертіңіз немесе пікірлерді қайта ашыңыз</string>
@@ -838,6 +856,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_play_all_button_type_entry_10">Тек мүшелерге арналған видеолар</string>
   <string name="morphe_play_all_button_type_entry_11">Тек мүшелерге арналған Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Тек мүшелерге арналған тікелей эфирлер</string>
+  <string name="morphe_play_all_button_reverse_title">Кері рет</string>
+  <string name="morphe_play_all_button_reverse_summary">Жасалған плейлист соңғы бейнеден біріншісіне дейін автоматты түрде ойнатылады</string>
   <string name="morphe_play_all_button_not_available_toast">Арна ID-сы сәйкес келмегендіктен плейлист жасау мүмкін емес</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Плейлистті көрсету түймесі</string>
@@ -1036,7 +1056,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_swipe_change_video_summary">Келесі немесе алдыңғы бейнеге ауысу үшін толық экранды режимде сырғытыңыз</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Басуды ұстау қимылы</string>
-  <string name="morphe_hold_gesture_screen_summary">Басып ұстағаннан кейін жылжыту арқылы ойнату жылдамдығын өзгертіңіз және бекітіңіз</string>
+  <string name="morphe_hold_gesture_screen_summary">Осы басып тұру және жылжыту арқылы ойнату жылдамдығын өзгертіп, бекіту және әрекеттерді орындауға болады</string>
   <string name="morphe_hold_gesture_title">Басуды ұстау қимылын қосу</string>
   <string name="morphe_hold_gesture_summary">Бейнені басып ұстағаннан кейін оны жылжытуға болады. Ұстап тұрғандағы жылдамдық — бұл басып ұстау ойнату жылдамдығы</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">«Сыдырып өткізу үшін басу» қосулы болғанда қолданылмайды. Өзгерту үшін түктіңіз</string>
@@ -1062,11 +1082,28 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_hold_gesture_lock_title">Жылдамдықты бекіту үшін төмен сырғытыңыз</string>
   <string name="morphe_hold_gesture_lock_summary">Басып тұрғаннан кейін, саусақты көтергенде жылдамдықты сақтау үшін төмен сырғытыңыз. Бекітуді алып тастау үшін белгішені басыңыз немесе қайтадан басып тұрыңыз</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Бекіту белгішесін әрқашан көрсету</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Плеер басқару элементтері жасырылғанда, бекітілген жылдамдық белгішесі көрініп тұрады</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Плеер басқару элементтері көрсетілмеген кезде де бекітілген жылдамдық белгісін көрсетеді. Өшірілген жағдайда, белгі плеер басқару элементтерімен бірге көрсетіледі</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Бейнебаян өзгергенде бекітуді алып тастау</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Басқа бейнебаян басталғанда бекітілген жылдамдық тоқтайды</string>
   <string name="morphe_hold_gesture_lock_hint">Бекіту үшін төмен тартыңыз</string>
   <string name="morphe_hold_gesture_lock_release">%s бұғаттау үшін жіберіңіз</string>
+  <string name="morphe_hold_gesture_launcher_title">Іске қосу器ді ашу үшін жоғары жылжытыңыз</string>
+  <string name="morphe_hold_gesture_launcher_summary">Басып ұстағаннан кейін, саусақтың айналасындағы әрекеттерді көрсету үшін жоғары қарай жылжытыңыз. Әрекетті орындау үшін саусақты алып тастаңыз</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Әрекеттер саны</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">1-әрекет</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">2-әрекет</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">3-әрекет</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">4-әрекет</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">5-әрекет</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Экранды бұғаттау</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Бейнені қайталау</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Қайталауды тоқтату</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Кадрды сақтау</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Кейінірек көруге сақтау</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Ағымдағы уақыттағы сілтемені көшіру</string>
+  <string name="morphe_hold_gesture_screen_unlock">Құлды ашу үшін түртіңіз</string>
+  <string name="morphe_hold_gesture_frame_saved">Кадр %s папкасына сақталды</string>
+  <string name="morphe_hold_gesture_frame_failed">Кадрды сақтау мүмкін болмады</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитрлер</string>
   <string name="morphe_captions_screen_summary">Автоматты субтитрлерді және субтитр куки-файлдарын басқару</string>
@@ -1254,6 +1291,9 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Плейлисттің автоматты түрде ойнатылуын өшіру</string>
   <string name="morphe_disable_playlist_autoplay_summary">Плейлистердің келесі видеоға автоматты түрде ауысуын болдырмайды</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Плейлистті автоматты түрде кері ойнату</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Плейлисттер соңғы бейнеден біріншісіне дейін автоматты түрде ойнатылады. Микстер кері ойнатылмайды</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Автоойнатуды басқару</string>
   <string name="morphe_autoplay_control_summary">Ойнату түймесін және келесі видео үшін ережені қосады. Плейлисттер мен кезектер жұмысын жалғастырады, Микс белгілі бір видео санынан кейін тоқтайды, ұсынылған видео ешқашан ойнатылмайды. Келесі режимге ауысу үшін түймені бір рет басыңыз, тізімді көру үшін басып тұрыңыз</string>
@@ -1301,6 +1341,21 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_fullscreen_video_scale_button_summary">Әдепкі, Созу және Зум режимдері арасында ауысу үшін түртіңіз</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Тек толық экранда көрсету</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Портретті ойнатқышта бейне масштабы батырмасын жасыру</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Қайта ойнатуды баяулату түймесін көрсету</string>
+  <string name="morphe_replay_video_button_summary">Бейнені артқа қайтарады және уақытша баяулатады. Бас тарту үшін қайта түртіңіз</string>
+  <string name="morphe_replay_video_swipe_title">Баяу қайта ойнату үшін солға сырғытыңыз</string>
+  <string name="morphe_replay_video_swipe_summary">Сырғыту ұзындығына байланысты бейнені 1-10 секундқа артқа қайтару үшін бейнеде солға сырғытыңыз. Сырғыту басқару элементтері іздеуді жүзеге асырады және жоғарғы аймақ сырғытулары басымдыққа ие</string>
+  <string name="morphe_replay_video_swipe_preview">%s с қайта ойнату</string>
+  <string name="morphe_replay_video_seconds_title">Кері оралу ұзақтығы</string>
+  <string name="morphe_replay_video_seconds_summary">Түйме бейнені неше секундқа кері орайтыны</string>
+  <string name="morphe_replay_video_slow_seconds_title">Баяу ойнату ұзақтығы</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Кері оралғаннан кейін бейненің неше секунды қайта ойнату жылдамдығымен ойнайтыны</string>
+  <string name="morphe_replay_video_speed_title">Қайта ойнату жылдамдығы</string>
+  <string name="morphe_replay_video_speed_summary">Қайта ойнатудың ойнату жылдамдығы, мысалы 0.5. Қайта ойнату ешқашан ағымдағы жылдамдықтан жылдам болмайды</string>
+  <string name="morphe_replay_video_start">Баяу қайта ойнату</string>
+  <string name="morphe_replay_video_unavailable">Бұл бейне үшін баяу қайта ойнату қолжетімді емес</string>
+  <string name="morphe_replay_video_speed_invalid">Қайта ойнату жылдамдығы дұрыс емес, әдепкі мәнге қайтарылды</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Дыбысты өшіру түймесін көрсету</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

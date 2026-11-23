@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"在代码修复前，视频将不显示效果。请将此错误提供给编写该代码的 AI：
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"代码在函数或注释内部结束，因此在复制或粘贴时可能被截断。粘贴的文本可能会在 %d 个字符处被截断。
+
+请要求 AI 提供更短的代码，或分部分粘贴代码。"</string>
   <string name="morphe_video_effects_custom_copy_error">复制错误</string>
   <string name="morphe_video_effects_custom_save_anyway">仍然保存</string>
   <string name="morphe_video_effects_custom_delete">删除</string>

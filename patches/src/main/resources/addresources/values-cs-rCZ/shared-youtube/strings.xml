@@ -249,6 +249,9 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_video_effects_custom_error_message">"Videa jsou zobrazována bez efektu, dokud nebude kód opraven. Tuto chybu předați AI, která kód napsala:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kód končí uvnitř funkce nebo komentáře, takže byl pravděpodobně při kopírování nebo vkládání odsということでn. Vložený text může být oříznut na %d znaků.
+
+Požádejte AI o kratší kód, nebo kód vkládejte po částech."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopírovat chybu</string>
   <string name="morphe_video_effects_custom_save_anyway">Uložit i tak</string>
   <string name="morphe_video_effects_custom_delete">Smazat</string>

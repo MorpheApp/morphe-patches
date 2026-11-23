@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"تا زمانی که کد اصلاح شود، ویدیوها بدون افکت نمایش داده می‌شوند. این خطا را به هوش مصنوعی که کد را نوشته است بدهید:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"کد در داخل یک تابع یا کامنت به پایان رسیده است، بنابراین احتمالاً هنگام کپی یا چسباندن قطع شده است. متن چسبانده شده می‌تواند در %d کاراکتر قطع شود.
+
+از هوش مصنوعی بخواهید کد کوتاه‌تری ارائه دهد یا کد را در بخش‌های مختلف بچسبانید."</string>
   <string name="morphe_video_effects_custom_copy_error">کپی خطا</string>
   <string name="morphe_video_effects_custom_save_anyway">به‌هر‌حال ذخیره کن</string>
   <string name="morphe_video_effects_custom_delete">حذف</string>

@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"Տեսանյութերը ցուցադրվում են առանց էֆեկտի, մինչև կոդը ուղղվի: Տրամադրեք այս սխալը AI-ին, որը գրել է կոդը.
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Կոդն ավարտվում է ֆունկցիայի կամ մեկնաբանության ներսում, ուստի այն հավանաբար կտրվել է պատճենելիս կամ տեղադրելիս: Տեղադրված տեքստը կարող է կտրվել %d նիշից հետո:
+
+Խնդրեք AI-ին տրամադրել ավելի կարճ կոդ կամ տեղադրեք կոդը մասៗ:"</string>
   <string name="morphe_video_effects_custom_copy_error">Պատճենման սխալ</string>
   <string name="morphe_video_effects_custom_save_anyway">Այնուամենայնիվ, պահպանել</string>
   <string name="morphe_video_effects_custom_delete">Ջնջել</string>

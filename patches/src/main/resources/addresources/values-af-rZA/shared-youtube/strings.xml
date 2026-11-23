@@ -249,6 +249,9 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_video_effects_custom_error_message">"Video's word sonder die effek gewys totdat die kode reggestel is. Gee hierdie fout aan die KI wat die kode geskryf het:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Die kode eindig binne 'n funksie of kommentaar, so dit is waarskynlik afgesny terwyl dit gekopieer of geplak is. Geplakte teks kan by %d karakters afgesny word.
+
+Vra die KI vir korter kode, of plak die kode in dele."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopieer fout</string>
   <string name="morphe_video_effects_custom_save_anyway">Stoor tog</string>
   <string name="morphe_video_effects_custom_delete">Vee uit</string>

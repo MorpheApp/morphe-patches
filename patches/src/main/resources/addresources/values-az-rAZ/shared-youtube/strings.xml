@@ -220,6 +220,9 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_prioritize_video_quality_dialog">Bu seçim qapalıdırsa, daha köhnə videolar video keyfiyyəti seçimlərini göstərməyə bilər</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_stream_title">DRC səsin qapat</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Sıxılmış dinamik diapazonlu əvəzinə orijinal səsi oynadır</string>
+  <string name="morphe_disable_loudness_normalization_title">Gurultunun normallaşdırılmasını qapat</string>
+  <string name="morphe_disable_loudness_normalization_summary">Standart səviyyəyə endirmək əvəzinə, yüksək səsi orijinal səs səviyyəsində səsləndirir</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
   <string name="morphe_force_original_audio_summary">Həmişə videonun dublyaj olunan versiyası əvəzinə əsil audio trekini oynadır</string>
@@ -229,11 +232,31 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_skip_silence_minimum_pause_title">Ən qısa fasilə uzunluğu</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Yalnız ən azı bu uzunluqda olan fasilələr qısaldılır. Növbəti video başlayanda qüvvədə olur</string>
   <!-- misc.videoeffects.videoEffectsPatch -->
-  <string name="morphe_video_effect_entry_none">Deaktiv</string>
+  <string name="morphe_video_effect_title">Video effekti</string>
+  <string name="morphe_video_effect_entry_none">Qapalı</string>
+  <string name="morphe_video_effects_custom_title">Video effektlərinə düzəliş et</string>
+  <string name="morphe_video_effects_custom_summary">Video effektlərini dəyişdir, adını dəyiş, sil və ya əlavə et. Effektlər shader kodudur, ona görə də Sİ söhbət botu yenilərini yaza bilər</string>
+  <string name="morphe_video_effects_custom_empty">Video effekti yoxdur. Effekt yaratmaq üçün Effekt əlavə etə toxunun.</string>
+  <string name="morphe_video_effects_custom_add">Effekt əlavə et</string>
+  <string name="morphe_video_effects_custom_restore">Standartları bərpa et</string>
+  <string name="morphe_video_effects_custom_add_title">Yeni effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Effektə düzəliş et</string>
   <string name="morphe_video_effects_custom_name_hint">Ad</string>
+  <string name="morphe_video_effects_custom_name_empty">Effekt üçün ad daxil et</string>
+  <string name="morphe_video_effects_custom_name_exists">Bu adla effekt artıq var</string>
   <string name="morphe_video_effects_custom_copy_code">Kodu köçür</string>
+  <string name="morphe_video_effects_custom_error_title">Effektdə xəta var</string>
+  <string name="morphe_video_effects_custom_error_message">"Videolar kod düzəldilənə qədər effektsiz göstərilir. Bu xətanı kodu yazan süni intellektə ver:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod funksiya və ya şərh daxilində bitir, ona görə də köçürülərkən və ya yapışdırılarkən böyük ehtimalla kəsilib. Yapışdırılan mətn %d simvolda kəsilə bilər.
+
+​Süni intellektdən daha qısa kod istə və ya kodu hissə-hissə yapışdır."</string>
   <string name="morphe_video_effects_custom_copy_error">Xətanı köçür</string>
+  <string name="morphe_video_effects_custom_save_anyway">Yenə də saxla</string>
   <string name="morphe_video_effects_custom_delete">Sil</string>
+  <string name="morphe_video_effects_custom_delete_title">Effekti silsin?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s silinəcək.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Şəbəkə proksisi</string>
   <string name="morphe_proxy_screen_summary">Dəstəklənən şəbəkə sorğularını proksi vasitəsilə yönləndir</string>

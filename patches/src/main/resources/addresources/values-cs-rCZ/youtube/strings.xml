@@ -423,6 +423,7 @@ Omezení:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Skryje vyskakující nápovědy zobrazované u pole pro zadávání zpráv v chatu, například oznámení o chatu pouze pro předplatitele</string>
   <string name="morphe_hide_comments_menu_button_title">Skrýt tlačítko nabídky</string>
   <string name="morphe_hide_comments_menu_button_summary">Skryje tlačítko nabídky se třemi tečkami u každého komentáře</string>
+  <string name="morphe_hide_comments_none_yet_title">Skrýt náhled „Zatím žádné komentáře“</string>
   <string name="morphe_hide_comments_preview_comment_title">Skrýt náhled komentáře</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skrývá náhled komentáře pod videem před otevřením celé sekce komentářů</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Komentář skrytý Morphe…</string>
@@ -433,7 +434,7 @@ Omezení:
   <string name="morphe_hide_comments_topics_title">Skrýt \"Témata\"</string>
   <string name="morphe_hide_comments_topics_summary">Skryje možnost lišty filtrů \"Témata\" a náhledy komentářů s tématy pod videem</string>
   <string name="morphe_hide_comments_translate_button_title">Skrýt tlačítko Přeložit</string>
-  <string name="morphe_hide_comments_zero_state_title">Skrýt zprávu „Zatím žádné komentáře“</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Skrýt sekci „Navštívit komunitu“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vyčistí zvýrazněné odkazy ve vyhledávání</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Vyčistí zvýrazněné odkazy ve vyhledávání a ponechá pouze původní čistý text</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <string name="morphe_channel_whitelist_channel_added">Kanál byl přidán do seznamu povolených</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanál byl odebrán ze seznamu povolených</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Hledat</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Hledat v kanálu</string>
   <string name="morphe_channel_search_summary">Přidává druhé vyhledávací tlačítko na stránkách kanálu pro vyhledávání pouze v tomto kanálu.</string>
@@ -578,6 +581,13 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <string name="morphe_channel_search_sort_oldest">Nejstarší</string>
   <string name="morphe_channel_search_sort_shortest">Nejkratší</string>
   <string name="morphe_channel_search_sort_longest">Nejdelší</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Hledat v seznamu skladeb</string>
+  <string name="morphe_playlist_search_summary">Přidá na stránky seznamů skladeb druhé tlačítko vyhledávání pro vyhledávání pouze v daném seznamu</string>
+  <string name="morphe_playlist_search_hint">Hledat v seznamu skladeb</string>
+  <string name="morphe_playlist_search_results">Výsledky vyhledávání v seznamu skladeb</string>
+  <string name="morphe_playlist_search_no_results">V tomto seznamu skladeb nic nenalezeno</string>
+  <string name="morphe_playlist_search_failed">Nepodařilo se vyhledat v tomto seznamu skladeb</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Odkaz zkopírován do schránky</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Odkaz s časovým razítkem zkopírován do schránky</string>
@@ -652,6 +662,15 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Zobrazit počet zhlédnutí u náhledů</string>
   <string name="morphe_feed_view_count_summary">Počet zhlédnutí videí v kanálu se zobrazuje vlevo dole na jejich náhledech místo pod názvem. U některých videí, jako jsou například v policích, se počet zhlédnutí nemusí zobrazovat</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Vrátit uživatelské jméno na YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">Zobrazovat názvy kanálů místo uživatelských jmen</string>
+  <string name="morphe_return_youtube_username_title">Zobrazit názvy kanálů</string>
+  <string name="morphe_return_youtube_username_summary">V komentářích, pod názvem videa a v Shorts se místo uživatelských jmen zobrazují názvy kanálů</string>
+  <string name="morphe_return_youtube_username_display_format_title">Formát názvu kanálu</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Název kanálu</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Název kanálu (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Název kanálu)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Zobrazit počet lajků u miniatury kanálu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Zobrazit procento lajků u miniatury kanálu</string>
@@ -664,7 +683,6 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_search_comments_summary">Klepnutím na tlačítko vyhledávání v komentářích zobrazíte pouze načtené komentáře, které obsahují všechna vyhledávaná slova. Pro vyhledávání konkrétní fráze uveďte slova do uvozovek</string>
   <string name="morphe_search_comments_dialog_title">Hledat v komentářích</string>
   <string name="morphe_search_comments_hint">Slova k vyhledání</string>
-  <string name="morphe_search_comments_search">Hledat</string>
   <string name="morphe_search_comments_clear">Vymazat</string>
   <string name="morphe_search_comments_applied">Změňte pořadí řazení nebo komentáře znovu otevřete, abyste v nich mohli vyhledávat</string>
   <string name="morphe_search_comments_cleared">Vyhledávání bylo vymazáno. Změňte pořadí řazení nebo komentáře znovu otevřete, abyste zobrazili všechny komentáře</string>
@@ -838,6 +856,8 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_play_all_button_type_entry_10">Pouze videa pro členy</string>
   <string name="morphe_play_all_button_type_entry_11">Pouze Shorts pro členy</string>
   <string name="morphe_play_all_button_type_entry_12">Pouze živé streamy pro členy</string>
+  <string name="morphe_play_all_button_reverse_title">Obrácené pořadí</string>
+  <string name="morphe_play_all_button_reverse_summary">Vygenerovaný seznam videí se automaticky přehrává od posledního videa k prvnímu</string>
   <string name="morphe_play_all_button_not_available_toast">Nelze vygenerovat seznam přehrávání kvůli nesouladu ID kanálu</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Zobrazit tlačítko Playlist</string>
@@ -1036,7 +1056,7 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_swipe_change_video_summary">Posouváním v režimu na celou obrazovku se přeskočí na další nebo předchozí video</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Gesto stisknutí a držení</string>
-  <string name="morphe_hold_gesture_screen_summary">Změňte a uzamkněte rychlost přehrávání přetažením po klepnutí a podržení</string>
+  <string name="morphe_hold_gesture_screen_summary">Změňte a zamkněte rychlost přehrávání a spouštějte akce přetažením po podržení</string>
   <string name="morphe_hold_gesture_title">Povolit gesto stisknutí a držení</string>
   <string name="morphe_hold_gesture_summary">Po klepnutí a podržení videa může následovat přetažení. Rychlost při držení odpovídá rychlosti přehrávání při klepnutí a podržení</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Nepoužívá se, když je zapnuto stisknutím pro přejetí. Klepnutím změňte</string>
@@ -1062,11 +1082,28 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_hold_gesture_lock_title">Přetažte dolů pro zamknutí rychlosti</string>
   <string name="morphe_hold_gesture_lock_summary">Po klepnutí a podržení přetažte dolů, aby byla rychlost zachována i po zvednutí prstu. Pro odemknutí klepněte na odznak nebo znovu klepněte a podržte</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Vždy zobrazovat odznak zamknutí</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Odznak zamknuté rychlosti zůstává viditelný, i když jsou ovládací prvky přehrávače skryty</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Zobrazuje značku zamknuté rychlosti i v případě, že ovládací prvky přehrávače nejsou zobrazeny. Pokud je funkce vypnutá, značka se zobrazí společně s ovládacími prvky přehrávače</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Odemknout při změně videa</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Zamknutá rychlost končí sI začátkem jiného videa</string>
   <string name="morphe_hold_gesture_lock_hint">Přetáhněte dolů pro zamknutí</string>
   <string name="morphe_hold_gesture_lock_release">Pusťte pro zamknutí %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Přetáhněte nahoru pro otevření spouštěče</string>
+  <string name="morphe_hold_gesture_launcher_summary">Po podržení prstu přetáhněte nahoru, aby se kolem prstu zobrazily akce. Pro spuštění akce prst z ní zvedněte</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Počet akcí</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Akce 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Akce 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Akce 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Akce 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Akce 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Zamknout obrazovku</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Opakovat video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Zastavit opakování</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Uložit snímek</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Uložit do Později přihlédnout</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopírovat odkaz s časovým razítkem</string>
+  <string name="morphe_hold_gesture_screen_unlock">Klepněte pro odemčení</string>
+  <string name="morphe_hold_gesture_frame_saved">Snímek byl uložen do %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Snímek se nepodařilo uložit</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Titulky</string>
   <string name="morphe_captions_screen_summary">Spravujte automatické titulky a soubory cookie k titulkům</string>
@@ -1254,6 +1291,9 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Zakázat automatické přehrávání seznamu videí</string>
   <string name="morphe_disable_playlist_autoplay_summary">Zabraňuje automatickému přechodu seznamu skladeb k dalšímu videu</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Obrátit automatické přehrávání seznamu videí</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Seznamy videí se automaticky přehrávají od posledního videa k prvnímu. Mixy se neobrací</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Ovládání automatického přehrávání</string>
   <string name="morphe_autoplay_control_summary">Přidá tlačítko přehrávače a pravidlo pro další video. Seznamy přehrávání a fronty pokračují, Mix se zastaví po určitém počtu videí, doporučené video se nikdy nepřehraje. Klepnutím na tlačítko přepnete režim, dlouhým stisknutím otevřete seznam</string>
@@ -1301,6 +1341,21 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_fullscreen_video_scale_button_summary">Klepnutím přepínáte mezi Výchozí, Roztáhnout a Přiblížit</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Zobrazit pouze na celé obrazovce</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Skrýt tlačítko pro změnu měřítka videa v přehrávači na výšku</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Zobrazit tlačítko pro pomalejší opakování</string>
+  <string name="morphe_replay_video_button_summary">Převine a dočasně zpomalí video. Klepnutím zrušíte</string>
+  <string name="morphe_replay_video_swipe_title">Svižte vlevo pro pomalejší opakování</string>
+  <string name="morphe_replay_video_swipe_summary">Svižte na videu vlevo pro převinutí o 1–10 sekund v závislosti na délce svižení. Ovládání svižením vyhledává a svižení v horní zóně mají přednost</string>
+  <string name="morphe_replay_video_swipe_preview">Opakovat %s s</string>
+  <string name="morphe_replay_video_seconds_title">Délka přetočení</string>
+  <string name="morphe_replay_video_seconds_summary">O kolik sekund tlačítko přetočí video zpět</string>
+  <string name="morphe_replay_video_slow_seconds_title">Délka pomalého přehrávání</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Kolik sekund videa se po přetočení přehraje rychlostí opakování</string>
+  <string name="morphe_replay_video_speed_title">Rychlost opakování</string>
+  <string name="morphe_replay_video_speed_summary">Rychlost přehrávání opakování, například 0,5. Opakování není nikdy rychlejší než aktuální rychlost</string>
+  <string name="morphe_replay_video_start">Opakovat pomaleji</string>
+  <string name="morphe_replay_video_unavailable">Pomalé opakování není pro toto video dostupné</string>
+  <string name="morphe_replay_video_speed_invalid">Neplatná rychlost opakování, resetováno na výchozí</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Zobrazit tlačítko ztlumení</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

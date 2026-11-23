@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">隐藏聊天输入栏附近显示的提示弹窗，例如仅限订阅者的聊天提示</string>
   <string name="morphe_hide_comments_menu_button_title">隐藏菜单按钮</string>
   <string name="morphe_hide_comments_menu_button_summary">隐藏每条评论的三点菜单按钮</string>
+  <string name="morphe_hide_comments_none_yet_title">隐藏“暂无评论”预览</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
   <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
   <string name="morphe_hide_comments_preview_comment_hidden">评论已被 Morphe 隐藏……</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">隐藏“话题”</string>
   <string name="morphe_hide_comments_topics_summary">隐藏“话题”过滤栏选项以及视频下方的“话题”评论预览</string>
   <string name="morphe_hide_comments_translate_button_title">隐藏翻译按钮</string>
-  <string name="morphe_hide_comments_zero_state_title">隐藏“暂无评论”提示</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">隐藏“访问社区”部分</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">清理高亮显示的搜索链接</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">清理高亮显示的搜索链接，仅保留原始纯文本</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">频道已添加到白名单</string>
   <string name="morphe_channel_whitelist_channel_removed">频道已从白名单移除</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">搜索</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">在频道中搜索</string>
   <string name="morphe_channel_search_summary">在频道页面上添加第二个搜索按钮，以仅搜索该频道</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">最早</string>
   <string name="morphe_channel_search_sort_shortest">最短</string>
   <string name="morphe_channel_search_sort_longest">最长</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">在播放列表中搜索</string>
+  <string name="morphe_playlist_search_summary">在播放列表页面添加第二个搜索按钮，用于仅在该播放列表中搜索</string>
+  <string name="morphe_playlist_search_hint">搜索播放列表</string>
+  <string name="morphe_playlist_search_results">播放列表搜索结果</string>
+  <string name="morphe_playlist_search_no_results">此播放列表中未找到内容</string>
+  <string name="morphe_playlist_search_failed">无法搜索此播放列表</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">链接已复制到剪贴板</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">带有时间戳的链接已复制到剪贴板</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">在缩略图上显示播放量</string>
   <string name="morphe_feed_view_count_summary">Feed 视频的播放量显示在缩略图左下角，而不是标题下方。部分视频（例如位于架中的视频）可能不显示播放量</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">恢复 YouTube 用户名</string>
+  <string name="morphe_return_youtube_username_screen_summary">显示频道名称而非句柄</string>
+  <string name="morphe_return_youtube_username_title">显示频道名称</string>
+  <string name="morphe_return_youtube_username_summary">在评论、视频标题下方和 Shorts 中显示频道名称而非句柄</string>
+  <string name="morphe_return_youtube_username_display_format_title">频道名称格式</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">频道名称</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">频道名称 (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (频道名称)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">显示帖子缩略图点赞数</string>
   <string name="morphe_ryd_feed_like_ratio_title">显示帖子缩略图点赞比例</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">点击评论区的搜索按钮，仅显示包含所有搜索词的已加载评论。将词组放入引号中以搜索短语</string>
   <string name="morphe_search_comments_dialog_title">搜索评论</string>
   <string name="morphe_search_comments_hint">要搜索的词语</string>
-  <string name="morphe_search_comments_search">搜索</string>
   <string name="morphe_search_comments_clear">清除</string>
   <string name="morphe_search_comments_applied">更改排序顺序或重新打开评论以进行搜索</string>
   <string name="morphe_search_comments_cleared">搜索已清除。更改排序顺序或重新打开评论以显示所有评论</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">会员专属视频</string>
   <string name="morphe_play_all_button_type_entry_11">会员专属 Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">会员专属直播</string>
+  <string name="morphe_play_all_button_reverse_title">反向顺序</string>
+  <string name="morphe_play_all_button_reverse_summary">生成的播放列表将从最后一个视频自动播放到第一个</string>
   <string name="morphe_play_all_button_not_available_toast">由于频道ID不匹配，无法生成播放列表</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">显示播放列表按钮</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">在全屏模式下滑动将切换到下一个/上一个视频</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">长按手势</string>
-  <string name="morphe_hold_gesture_screen_summary">点击并长按后通过拖动来更改并锁定播放速度</string>
+  <string name="morphe_hold_gesture_screen_summary">通过长按并拖动来更改并锁定播放速度，以及执行操作</string>
   <string name="morphe_hold_gesture_title">启用长按手势</string>
   <string name="morphe_hold_gesture_summary">点击并长按视频后可以进行拖动。长按时的速度即为点击并长按的播放速度</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">在“按压以滑动”开启时不可用。点击进行更改</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">向下滑动以锁定速度</string>
   <string name="morphe_hold_gesture_lock_summary">点击并按住后，向下滑动即可在手指抬起时保持速度。点击徽标或再次点击并按住以解锁</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">始终显示锁定徽标</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">当播放控件隐藏时，锁定速度的徽标仍保持可见</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">在不显示播放控件时也显示锁定速度的徽标。如果关闭，则徽标将与播放控件一起显示</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">视频更改时解锁</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">当另一个视频开始播放时，锁定速度将结束</string>
   <string name="morphe_hold_gesture_lock_hint">向下滑动以锁定</string>
   <string name="morphe_hold_gesture_lock_release">松开以锁定 %s</string>
+  <string name="morphe_hold_gesture_launcher_title">向上拖动以打开启动器</string>
+  <string name="morphe_hold_gesture_launcher_summary">长按后向上拖动以显示手指周围的操作。在某个操作上抬起手指即可运行该操作</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">操作数量</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">操作 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">操作 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">操作 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">操作 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">操作 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">锁定屏幕</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">循环播放视频</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">停止循环</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">保存帧</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">保存到稍后观看</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">复制当前时间点的链接</string>
+  <string name="morphe_hold_gesture_screen_unlock">点一下以解锁</string>
+  <string name="morphe_hold_gesture_frame_saved">帧已保存至 %s</string>
+  <string name="morphe_hold_gesture_frame_failed">无法保存该帧</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">字幕</string>
   <string name="morphe_captions_screen_summary">管理自动字幕和字幕 Cookie</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">禁用播放列表自动播放</string>
   <string name="morphe_disable_playlist_autoplay_summary">防止播放列表自动跳转到下一个视频</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">反向播放列表自动播放</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">播放列表将从最后一个视频自动播放到第一个。混编内容不会反向</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">自动播放控制</string>
   <string name="morphe_autoplay_control_summary">添加一个播放器按钮和一条关于下一个视频的规则。播放列表和队列将继续播放，Mix 在播放一定数量的视频后停止，推荐视频则永不播放。点击按钮切换至下一个模式，长按显示列表</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">点击循环切换默认、拉伸和缩放</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">仅在全屏显示</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">在竖屏播放器中隐藏视频缩放按钮</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">显示慢速回放按钮</string>
+  <string name="morphe_replay_video_button_summary">回退并暂时减慢视频速度。再次点击可取消</string>
+  <string name="morphe_replay_video_swipe_title">向左滑动以慢速回放</string>
+  <string name="morphe_replay_video_swipe_summary">在视频上向左滑动可回退 1-10 秒，具体取决于滑动长度。滑动控制 seek，且顶部区域的滑动具有优先级</string>
+  <string name="morphe_replay_video_swipe_preview">回放 %s 秒</string>
+  <string name="morphe_replay_video_seconds_title">回退时长</string>
+  <string name="morphe_replay_video_seconds_summary">按钮回退视频的秒数</string>
+  <string name="morphe_replay_video_slow_seconds_title">慢速播放时长</string>
+  <string name="morphe_replay_video_slow_seconds_summary">回退后以回放速度播放的视频秒数</string>
+  <string name="morphe_replay_video_speed_title">回放速度</string>
+  <string name="morphe_replay_video_speed_summary">回放的播放速度，例如 0.5。回放速度永远不会快于当前速度</string>
+  <string name="morphe_replay_video_start">以较慢速度回放</string>
+  <string name="morphe_replay_video_unavailable">此视频不支持慢速回放</string>
+  <string name="morphe_replay_video_speed_invalid">回放速度无效，已重置为默认值</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">显示静音按钮</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

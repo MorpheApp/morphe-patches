@@ -248,6 +248,9 @@ Oturum açmak için aşağıdan devam'a basın"</string>
   <string name="morphe_video_effects_custom_error_message">"Kod düzeltilene kadar videolar efekt olmadan gösterilir. Bu hatayı kodu yazan yapay zekaya iletin:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod bir fonksiyonun veya yorumun içinde bitiyor, bu nedenle kopyalanırken veya yapıştırılırken muhtemelen kesildi. Yapıştırılan metin %d karakterde kesilebilir.
+
+Yapay zekadan daha kısa bir kod isteyin veya kodu parçalar halinde yapıştırın."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopyalama hatası</string>
   <string name="morphe_video_effects_custom_save_anyway">Yine de kaydet</string>
   <string name="morphe_video_effects_custom_delete">Sil</string>

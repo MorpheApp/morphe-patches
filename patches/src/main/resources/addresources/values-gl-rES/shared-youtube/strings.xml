@@ -249,6 +249,9 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_video_effects_custom_error_message">"Os vídeos móstranse sen o efecto ata que se corrixa o código. Dá este erro á IA que escribiu o código:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"O código remata dentro dunha función ou comentario, polo que probablemente se cortou ao copialo ou pegalo. O texto pegado pode cortarse aos %d caracteres.
+
+Pídalle á IA un código máis curto ou pegue o código por partes."</string>
   <string name="morphe_video_effects_custom_copy_error">Erro ao copiar</string>
   <string name="morphe_video_effects_custom_save_anyway">Gardar de todos modos</string>
   <string name="morphe_video_effects_custom_delete">Eliminar</string>

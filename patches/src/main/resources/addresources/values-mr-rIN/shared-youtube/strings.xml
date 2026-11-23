@@ -249,6 +249,9 @@ Android System WebView उघडण्यासाठी OK वर टॅप क
   <string name="morphe_video_effects_custom_error_message">"कोड दुरुस्त होईपर्यंत व्हिडिओ इफेक्टशिवाय दिसतील. ही त्रुटी त्या AI ला द्या ज्याने हा कोड लिहिला आहे:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"कोड फंक्शन किंवा कमेंटच्या आत संपतो, त्यामुळे तो कॉपी किंवा पेस्ट करताना कदाचित कापला गेला असावा. पेस्ट केलेले मजकूर %d वर्णांनंतर कापले जाऊ शकतात.
+
+AI ला संक्षिप्त कोड विचारण्यासाठी सांगा किंवा कोड भागाभागांत पेस्ट करा."</string>
   <string name="morphe_video_effects_custom_copy_error">कॉपी एरर</string>
   <string name="morphe_video_effects_custom_save_anyway">तरीही सेव्ह करा</string>
   <string name="morphe_video_effects_custom_delete">डिलीट करा</string>

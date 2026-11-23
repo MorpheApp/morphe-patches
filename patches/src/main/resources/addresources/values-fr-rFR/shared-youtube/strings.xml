@@ -249,6 +249,9 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_video_effects_custom_error_message">"Les vidéos sont affichées sans l'effet tant que le code n'est pas corrigé. Transmettez cette erreur à l'IA qui a écrit le code :
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Le code se termine à l'intérieur d'une fonction ou d'un commentaire, il a donc probablement été coupé lors de la copie ou du collage. Le texte collé peut être coupé à %d caractères.
+
+Demandez un code plus court à l'IA ou collez le code en plusieurs parties."</string>
   <string name="morphe_video_effects_custom_copy_error">Copier l\'erreur</string>
   <string name="morphe_video_effects_custom_save_anyway">Enregistrer quand même</string>
   <string name="morphe_video_effects_custom_delete">Supprimer</string>

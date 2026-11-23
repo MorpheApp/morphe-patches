@@ -423,6 +423,7 @@ Mugak:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Txat sarrera barraren ondoan agertzen diren tresna-aholku gainjarriak ezkutatzen ditu, adibidez harpidedunentzako txat oharra</string>
   <string name="morphe_hide_comments_menu_button_title">Ezkutatu Menu botoia</string>
   <string name="morphe_hide_comments_menu_button_summary">Komentari bakoitzaren 3-puntu botoiko menua ezkutatzen du</string>
+  <string name="morphe_hide_comments_none_yet_title">Ezkutatu \"Oraindik iruzkinik ez\" aurikupena</string>
   <string name="morphe_hide_comments_preview_comment_title">Ezkutatu iruzkinen aurrebista</string>
   <string name="morphe_hide_comments_preview_comment_summary">Bideo azpian agertzen den iruzkin aurrebista ezkutatzen du, iruzkin atal osoa ireki aurretik</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe-k ezkutatutako iruzkina…</string>
@@ -433,7 +434,7 @@ Mugak:
   <string name="morphe_hide_comments_topics_title">Ezkutatu \'Gaiak\'</string>
   <string name="morphe_hide_comments_topics_summary">Ezkutatzen du \'Gaiak\' filter-barraren aukera eta bideoaren gaineko \'Gaia\' iruzkin-aurbistuek</string>
   <string name="morphe_hide_comments_translate_button_title">Ezkutatu Itzuli botoia</string>
-  <string name="morphe_hide_comments_zero_state_title">Ezkutatu \"Oraindik iruzkinik ez\" mezua</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Ezkutatu \"Bisitatu Komunitatea\" atala</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Garbitu bilaketa estekak nabarmenduta</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Bilaketa-estekak nabarmenduak garbitzen ditu, testu soil originala bakarrik utziz</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Mugak:
   <string name="morphe_channel_whitelist_channel_added">Kanala zerrenda zurira gehituta</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanala zerrenda zuritik kenduta</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Bilatu</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Bilatu kanalean</string>
   <string name="morphe_channel_search_summary">Bilaketa botoi bigarra gehitzen du kanalen orrialdeetan, kanal horretan bakarrik bilatzeko</string>
@@ -578,6 +581,13 @@ Mugak:
   <string name="morphe_channel_search_sort_oldest">Zaharrenak</string>
   <string name="morphe_channel_search_sort_shortest">Laburrenak</string>
   <string name="morphe_channel_search_sort_longest">Luzeenak</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Bilatu zerrendan</string>
+  <string name="morphe_playlist_search_summary">Bigarren bilaketa botoi bat gehitzen du zerrenda orrialdeetan, zerrenda horretan bakarrik bilatzeko</string>
+  <string name="morphe_playlist_search_hint">Bilatu zerrendan</string>
+  <string name="morphe_playlist_search_results">Zerrendako bilaketa emaitzak</string>
+  <string name="morphe_playlist_search_no_results">Ezer ez da aurkitu zerrenda honetan</string>
+  <string name="morphe_playlist_search_failed">Ezin izan da zerrenda hau bilatu</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Esteka arbelera kopiatu da</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Denbora-zigiluarekin esteka arbelera kopiatu da</string>
@@ -652,6 +662,15 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Erakutsi ikustaldi kopurua miniaturetan</string>
   <string name="morphe_feed_view_count_summary">Feed-eko bideoen ikustaldi kopurua miniaturen behe-ezkerrean agertzen da, izenburuaren azpian agertu beharrean. Bideo batzuek, adibidez apalategietan daudenek, agian ez dute ikustaldi kopurua erakutsiko</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Itzuli YouTube erabiltzaile-izenari</string>
+  <string name="morphe_return_youtube_username_screen_summary">Erabiltzaile-izenen ordez kanalen izenak erakutsi</string>
+  <string name="morphe_return_youtube_username_title">Kanalen izenak erakutsi</string>
+  <string name="morphe_return_youtube_username_summary">Komentarioetan, bideo-izenaren azpian eta Shorts-etan erabiltzaile-izenen ordez kanalen izenak erakutsiko dira</string>
+  <string name="morphe_return_youtube_username_display_format_title">Kanalen izenen formatua</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanalen izena</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanalaren izena (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Kanalaren izena)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Erakutsi feed-eko miniaturaren gustu kopurua</string>
   <string name="morphe_ryd_feed_like_ratio_title">Erakutsi feed-eko miniaturaren gustu ehunekoa</string>
@@ -664,7 +683,6 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_search_comments_summary">Sakatu iruzkinen bilaketa botoia kargatutako iruzkin bakarrik erakusteko, bilatutako hitz guztiak dituztenak. Esaldi bat bilatzeko, jarri hitzak komilla artean</string>
   <string name="morphe_search_comments_dialog_title">Iruzkinak bilatu</string>
   <string name="morphe_search_comments_hint">Bilatu nahi dituzun hitzak</string>
-  <string name="morphe_search_comments_search">Bilatu</string>
   <string name="morphe_search_comments_clear">Garbitu</string>
   <string name="morphe_search_comments_applied">Aldatu ordena edo ireki berriro iruzkinak bilatzeko</string>
   <string name="morphe_search_comments_cleared">Bilaketa garbituta. Aldatu ordena edo ireki berriro iruzkinak iruzkin guztiak ikusteko</string>
@@ -838,6 +856,8 @@ Info: Agian ez da funtzionatuko zuzeneko emankizunetan"</string>
   <string name="morphe_play_all_button_type_entry_10">Kideentzako bideoak soilik</string>
   <string name="morphe_play_all_button_type_entry_11">Kideentzako Shorts soilik</string>
   <string name="morphe_play_all_button_type_entry_12">Kideentzako zuzeneko emisioak soilik</string>
+  <string name="morphe_play_all_button_reverse_title">Ordena alderantz</string>
+  <string name="morphe_play_all_button_reverse_summary">Sortutako playlisten autoerreprodukzioa azken bideotik leheneraino egiten da</string>
   <string name="morphe_play_all_button_not_available_toast">Ezin izan da playlist-a sortu kanalaren ID bat ez etortzearen ondorioz</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Erakutsi Playlist botoia</string>
@@ -1036,7 +1056,7 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_swipe_change_video_summary">Irristatu pantaila osoko moduan hurrengo edo aurreko bideora saltatzeko</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Eutsi jestura</string>
-  <string name="morphe_hold_gesture_screen_summary">Aldatu eta blokeatu erreprodukzio-abiadusa, ukitu eta eutsi ondoren arrastearierek</string>
+  <string name="morphe_hold_gesture_screen_summary">Aldatu eta blokeatu erreprodukzio-abiadusa, eta egin ekintzak, sakatu eta manten ondoren arrastatuz</string>
   <string name="morphe_hold_gesture_title">Aktiba eutsi jestura</string>
   <string name="morphe_hold_gesture_summary">Bideoa ukitu eta eutsi ondoren arrasteari ekin daiteke. Eutsi bitartean abiadura da ukitu eta eutsi playback-eko abiadura</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Ez da erabiltzen \'sakatu eta irrastu\' aktibatuta dagoen bitartean. Tokatu aldatzeko</string>
@@ -1062,11 +1082,28 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_hold_gesture_lock_title">Beheko aldatzea abiadaria blokeatzeko</string>
   <string name="morphe_hold_gesture_lock_summary">Sakatu eta eutsi ondoren, behera arrastatu abiadaria mantentzeko hatza altxatu zuenean. Sakatu insignia edo sakatu eta eutsi berriro desblokeatzeko</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Erosi beti blokeatzeko insignia</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Blokeatutako abiadura insignia ikusgarri izaten da seiatzailearen kontrolak ezkuturatuta daudenean</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Erreproduzitzailearen kontrolak agertzen ez direnean ere, abiadusa blokeatuta dagoela adierazten duen ikurra erakusten du. Desaktibatuta badago, ikurra kontrolekin batera agertuko da</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Desblokeatu bideoa aldatzen denean</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Blokeatutako abiadura amaitzen da beste bideo bat hasten denean</string>
   <string name="morphe_hold_gesture_lock_hint">Behera egin blokeatzeko</string>
   <string name="morphe_hold_gesture_lock_release">Askatu %s blokeatzeko</string>
+  <string name="morphe_hold_gesture_launcher_title">Arrastatu gora abiaragilea irekitzeko</string>
+  <string name="morphe_hold_gesture_launcher_summary">Sakatu eta mantendu ondoren, gora arrastatu hatzaren inguruko ekintzak ikusteko. Hatza ekintza baten gainean alza ezagutzeko</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Ekintza kopurua</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">1. ekintza</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">2. ekintza</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">3. ekintza</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">4. ekintza</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">5. ekintza</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Pantaila blokeatu</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Bideoa errepikatu</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Utzi bektoretzea hydraz</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Gorde frame-a</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Gorde geroago ikusteko</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopiaitu estekaउने current den momentuan</string>
+  <string name="morphe_hold_gesture_screen_unlock">Sakatu desblokeatzeko</string>
+  <string name="morphe_hold_gesture_frame_saved">Frame-a %s-n gorde da</string>
+  <string name="morphe_hold_gesture_frame_failed">Ezin izan da framea gorde</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Azpitituluak</string>
   <string name="morphe_captions_screen_summary">Kudeatu azpititulu automatikoak eta azpitituluen cookie-ak</string>
@@ -1254,6 +1291,9 @@ Ezarpenak → Erreprodukzioa (edo Autoplay) → Hurrengo bideoa automatikoki err
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Desaktibatu playlisten autoerreprodukzioa</string>
   <string name="morphe_disable_playlist_autoplay_summary">Playlisteek hurrengo bideora automatikoki pasatzea saihesten du</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Alderantu playlisten autoerreprodukzioa</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Playlisten autoerreprodukzioa azken bideotik leheneraino egiten da. Mixak ez dira alderantzen</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Erreprodukzio automatikoaren kontrola</string>
   <string name="morphe_autoplay_control_summary">Kudaketa-botoi bat eta hurrengo bideorako arau bat gehitzen ditu. Playlista eta herramendia jarraitzen dira, Mix bat bideo kopuru baten ondoren gelditzen da, eta bideo suggested bat ez da inoiz erreproduzitakoa. Sakatu botoia hurrengo modura joateko, edo sakatu eta mantendu zerrenda ikusteko</string>
@@ -1301,6 +1341,21 @@ Ezarpenak → Erreprodukzioa (edo Autoplay) → Hurrengo bideoa automatikoki err
   <string name="morphe_fullscreen_video_scale_button_summary">Sakatu Lehenetsia, Luzatu eta Zoom artean txandakatzeko</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Pantaila osoan bakarrik erakutsi</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ezkutatu bideoaren eskala botoia erreproduzigailu bertikalean</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Erakutsi \'Berriz ikusi motel\' botoia</string>
+  <string name="morphe_replay_video_button_summary">Atzerantz doa eta bideoa batzuetan moteldu egiten du. Berriz sakatu bertan bertan eutsi kanggo</string>
+  <string name="morphe_replay_video_swipe_title">Irrasatu ezkerrera motel berriz ikusteko</string>
+  <string name="morphe_replay_video_swipe_summary">Bideoan ezkerrerantz irrasatu 1-10 segundotik atzerantz joateko, irrasapenaren luzeraren arabera. Irrasapen kontrolak bilaketa egiten dute eta goiko zonako irrasapenek lehentasuna dute</string>
+  <string name="morphe_replay_video_swipe_preview">Berriz ikusi %s s</string>
+  <string name="morphe_replay_video_seconds_title">Atrezera itzalduvuzko iraupena</string>
+  <string name="morphe_replay_video_seconds_summary">Sekundu zenbatz atzean itzultzen duen botoiak bideoa</string>
+  <string name="morphe_replay_video_slow_seconds_title">Erreprodukzio motelduaren iraupena</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Bideoaren sekundu zenbatzuk erreprodukzio-abiaduraz jokoen atzera itzuldu ondoren</string>
+  <string name="morphe_replay_video_speed_title">Erreprodukzio-abiadura</string>
+  <string name="morphe_replay_video_speed_summary">Erreprodukzioaren abiadura, 0.5 bezalakoa. Erreprodukzioa ez da inoiz egungo abiadurari baino azkarragoa</string>
+  <string name="morphe_replay_video_start">Erreprodukzio motela hasi</string>
+  <string name="morphe_replay_video_unavailable">Erreprodukzio motela ez dago eskuragarri bideo honentzat</string>
+  <string name="morphe_replay_video_speed_invalid">Erreprodukzio-abiadura ezaguna, lehenesteko baldintzara itzuliko da</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Erakutsi isilarazi botoia</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

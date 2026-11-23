@@ -249,6 +249,9 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_video_effects_custom_error_message">"কোডটো ঠিক নোহোৱালৈকে ভিডিঅ'সমূহ ইফেক্ট অবিহনে দেখুৱাব। এই ত্ৰুটিটো সেই AI-ক দিয়ক যাৰ দ্বাৰা কোডটো লিখা হৈছিল:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"ক'ডটো এটা ফাংচন বা কমেন্টৰ ভিতৰত শেষ হৈছে, গতিকে ই কপি বা পেষ্ট কৰাৰ সময়ত সম্ভৱতকৈ কাটি যোৱা হৈছে। পেষ্ট কৰা পাঠটো %d টা চৰিত্ৰত কাটি যাব পাৰে।
+
+AI-ক চুটি ক'ডৰ বাবে জানক, অথবা ক'ডটো খণ্ড খণ্ডকৈ পেষ্ট কৰক।"</string>
   <string name="morphe_video_effects_custom_copy_error">ত্ৰুটি কপি কৰক</string>
   <string name="morphe_video_effects_custom_save_anyway">তথাপি সংৰক্ষণ কৰক</string>
   <string name="morphe_video_effects_custom_delete">মচি পেলাওক</string>

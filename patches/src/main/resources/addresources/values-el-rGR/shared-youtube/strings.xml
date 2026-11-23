@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"Τα βίντεο εμφανίζονται χωρίς το εφέ μέχρι να διορθωθεί ο κώδικας. Δώστε αυτό το σφάλμα στο AI που έγραψε τον κώδικα:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Ο κώδικας τελειώνει μέσα σε μια συνάρτηση ή σχόλιο, επομένως πιθανότατα αποقطعόταν κατά την αντιγραφή ή την επικόλληση. Το κείμενο που επικολλήθηκε μπορεί να αποκοπεί στους %d χαρακτήρες.
+
+Ζητήστε από το AI πιο σύντομο κώδικα ή επικολλήστε τον κώδικα σε τμήματα."</string>
   <string name="morphe_video_effects_custom_copy_error">Σφάλμα αντιγραφής</string>
   <string name="morphe_video_effects_custom_save_anyway">Αποθήκευση ούτως ή άλλως</string>
   <string name="morphe_video_effects_custom_delete">Διαγραφή</string>

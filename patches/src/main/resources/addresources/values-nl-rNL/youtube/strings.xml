@@ -423,6 +423,7 @@ Beperkingen:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Verbergt tooltippop-ups die verschijnen bij de chat-invoerbalk, zoals de melding voor alleen abonnees</string>
   <string name="morphe_hide_comments_menu_button_title">Menu-knop verbergen</string>
   <string name="morphe_hide_comments_menu_button_summary">Verbergt de menuknop met drie puntjes van elke reactie</string>
+  <string name="morphe_hide_comments_none_yet_title">Voorbeeld \'Nog geen reacties\' verbergen</string>
   <string name="morphe_hide_comments_preview_comment_title">Voorbeeldreactie verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Reactie verborgen door Morphe…</string>
@@ -433,7 +434,7 @@ Beperkingen:
   <string name="morphe_hide_comments_topics_title">Verberg \'Onderwerpen\'</string>
   <string name="morphe_hide_comments_topics_summary">Verbergt de optie \'Onderwerpen\' in de filterbalk en de voorbeelden van reacties per \'Onderwerp\' onder de video</string>
   <string name="morphe_hide_comments_translate_button_title">Verberg de vertaalknop</string>
-  <string name="morphe_hide_comments_zero_state_title">Verberg bericht \'Nog geen reacties\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Sectie \'Bezoek de Community\' verbergen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Schoon gehighlighte search URL\'s op</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <string name="morphe_channel_whitelist_channel_added">Kanaal toegevoegd aan de witte lijst</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanaal verwijderd van de witte lijst</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Zoeken</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Zoeken in kanaal</string>
   <string name="morphe_channel_search_summary">Voegt een tweede zoekknop toe op kanaalpagina\'s om alleen dat kanaal te doorzoeken</string>
@@ -578,6 +581,13 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <string name="morphe_channel_search_sort_oldest">Oudste</string>
   <string name="morphe_channel_search_sort_shortest">Kortste</string>
   <string name="morphe_channel_search_sort_longest">Langste</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Zoeken in afspeellijst</string>
+  <string name="morphe_playlist_search_summary">Voegt een tweede zoekknop toe op afspeellijstpagina\'s om alleen in die afspeellijst te zoeken</string>
+  <string name="morphe_playlist_search_hint">Afspeellijst doorzoeken</string>
+  <string name="morphe_playlist_search_results">Zoekresultaten afspeellijst</string>
+  <string name="morphe_playlist_search_no_results">Niets gevonden in deze afspeellijst</string>
+  <string name="morphe_playlist_search_failed">Deze afspeellijst kon niet worden doorzocht</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link naar klembord gekopieerd</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link met tijdstempel naar klembord gekopieerd</string>
@@ -652,6 +662,15 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Weergavenaantal tonen op miniaturen</string>
   <string name="morphe_feed_view_count_summary">Het weergavenaantal van feedvideo\'s wordt links onder op de miniatuurweergave getoond in plaats van onder de titel. Sommige video\'s, zoals in vakken, worden mogelijk niet met een weergavenaantal getoond</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTube-gebruikersnaam terugzetten</string>
+  <string name="morphe_return_youtube_username_screen_summary">Toon kanaalnamen in plaats van handles</string>
+  <string name="morphe_return_youtube_username_title">Toon kanaalnamen</string>
+  <string name="morphe_return_youtube_username_summary">Kanaalnamen worden getoond in plaats van handles in reacties, onder de videotitel en in Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Kanaalnaamformaat</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanaalnaam</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanaalnaam (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Kanaalnaam)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Aantal likes van feed-miniatuur weergeven</string>
   <string name="morphe_ryd_feed_like_ratio_title">Percentage likes van feed-miniatuur weergeven</string>
@@ -664,7 +683,6 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_search_comments_summary">Tik op de zoekknop in de reacties om alleen de geladen reacties te tonen die alle gezochte woorden bevatten. Zet woorden tussen aanhalingstekens om op een zin te zoeken</string>
   <string name="morphe_search_comments_dialog_title">Reacties zoeken</string>
   <string name="morphe_search_comments_hint">Woorden om op te zoeken</string>
-  <string name="morphe_search_comments_search">Zoeken</string>
   <string name="morphe_search_comments_clear">Wissen</string>
   <string name="morphe_search_comments_applied">Wijzig de sorteervolgorde of open de reacties opnieuw om erin te zoeken</string>
   <string name="morphe_search_comments_cleared">Zoekopdracht gewist. Wijzig de sorteervolgorde of open de reacties opnieuw om alle reacties te tonen</string>
@@ -838,6 +856,8 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_play_all_button_type_entry_10">Alleen ledenvideo\'s</string>
   <string name="morphe_play_all_button_type_entry_11">Alleen leden-Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Alleen leden live streams</string>
+  <string name="morphe_play_all_button_reverse_title">Omgekeerde volgorde</string>
+  <string name="morphe_play_all_button_reverse_summary">De gegenereerde afspeellijst wordt automatisch afgespeeld van de laatste naar de eerste video</string>
   <string name="morphe_play_all_button_not_available_toast">Kan geen afspeellijst genereren vanwege verkeerd kanaal-ID</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Toon Afspeellijst-knop</string>
@@ -1036,7 +1056,7 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_swipe_change_video_summary">Veeg in de volledig schermmodus om naar de volgende of vorige video te springen</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Vasthoudgebaar</string>
-  <string name="morphe_hold_gesture_screen_summary">Wijzig en vergrendel de afspeelsnelheid door te slepen na het tikken en vasthouden</string>
+  <string name="morphe_hold_gesture_screen_summary">Wijzig en vergrendel de afspeelsnelheid, en voer acties uit, door te slepen na het aanraken en vasthouden</string>
   <string name="morphe_hold_gesture_title">Vasthoudgebaar inschakelen</string>
   <string name="morphe_hold_gesture_summary">Na het tikken en vasthouden van de video kan er gesleept worden. De snelheid tijdens het vasthouden is de afspeelsnelheid voor tikken en vasthouden</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Niet gebruikt wanneer druk-om-te-swipen is ingeschakeld. Tik om te wijzigen</string>
@@ -1062,11 +1082,28 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_hold_gesture_lock_title">Sleept naar beneden om de snelheid te vergrendelen</string>
   <string name="morphe_hold_gesture_lock_summary">Tik en houd vast, sleep vervolgens naar beneden om de snelheid te behouden wanneer de vinger wordt opgetild. Tik op het badge of tik en houd opnieuw vast om te ontgrendelen</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Altijd de vergrendelbadge tonen</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">De badge van een vergrendelde snelheid blijft zichtbaar terwijl de bedieningselementen van de speler verborgen zijn</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Toont de badge van een vergrendelde snelheid ook wanneer de bedieningselementen van de speler niet worden weergegeven. Als deze is uitgeschakeld, wordt de badge samen met de bedieningselementen van de speler getoond</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Ontgrendelen wanneer de video verandert</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Een vergrendelde snelheid eindigt wanneer een andere video start</string>
   <string name="morphe_hold_gesture_lock_hint">Trek naar beneden om te vergrendelen</string>
   <string name="morphe_hold_gesture_lock_release">Loslaten om %s te vergrendelen</string>
+  <string name="morphe_hold_gesture_launcher_title">Sleep omhoog om de launcher te openen</string>
+  <string name="morphe_hold_gesture_launcher_summary">Sleep na het tikken en vasthouden, sleep omhoog om acties rond de vinger te tonen. Til de vinger op bij een actie om deze uit te voeren</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Aantal acties</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Actie 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Actie 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Actie 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Actie 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Actie 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Vergrendelscherm</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Video herhalen</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Herhalen stoppen</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Frame opslaan</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Opslaan in Later bekijken</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Link kopiëren op huidig tijdstip</string>
+  <string name="morphe_hold_gesture_screen_unlock">Tik om te ontgrendelen</string>
+  <string name="morphe_hold_gesture_frame_saved">Frame opgeslagen in %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Frame kon niet worden opgeslagen</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ondertitels</string>
   <string name="morphe_captions_screen_summary">Beheer automatische ondertitels en ondertitelcookies</string>
@@ -1254,6 +1291,9 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Schakel automatisch afspelen van afspeellijsten uit</string>
   <string name="morphe_disable_playlist_autoplay_summary">Voorkomt dat afspeellijsten automatisch doorgaan naar de volgende video</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Automatisch afspelen van afspeellijst omkeren</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Afspeellijsten worden automatisch afgespeeld van de laatste naar de eerste video. Mixen worden niet omgekeerd</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Autoplay-bediening</string>
   <string name="morphe_autoplay_control_summary">Voegt een spelersknop en een regel toe voor de volgende video. Afspeellijsten en wachtrijen lopen door, een Mix stopt na een aantal video\'s, een gesuggereerde video wordt nooit afgespeeld. Tik op de knop voor de volgende modus, tik en houd vast voor de lijst</string>
@@ -1301,6 +1341,21 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <string name="morphe_fullscreen_video_scale_button_summary">Tik om te wisselen tussen Standaard, Uitrekken en Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Alleen in volledig scherm weergeven</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Verbergt de videoscalingknop in de staande speler</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Toon knop voor langzamere weergave</string>
+  <string name="morphe_replay_video_button_summary">Spoelt terug en vertraagt de video tijdelijk. Tik opnieuw om te annuleren</string>
+  <string name="morphe_replay_video_swipe_title">Veeg naar links voor langzamere weergave</string>
+  <string name="morphe_replay_video_swipe_summary">Veeg op de video naar links om 1-10 seconden terug te spoelen, afhankelijk van de lengte van de veegbeweging. Veegbedieningen voor zoeken en vegen in de bovenste zone hebben prioriteit</string>
+  <string name="morphe_replay_video_swipe_preview">Herhaal %s s</string>
+  <string name="morphe_replay_video_seconds_title">Terugspoelduur</string>
+  <string name="morphe_replay_video_seconds_summary">Hoeveel seconden de knop de video terugspoelt</string>
+  <string name="morphe_replay_video_slow_seconds_title">Duur langzame weergave</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Hoeveel seconden van de video op de weergavesnelheid worden afgespeeld na het terugspoelen</string>
+  <string name="morphe_replay_video_speed_title">Weergavesnelheid</string>
+  <string name="morphe_replay_video_speed_summary">Afspeelsnelheid van de weergave, bijvoorbeeld 0,5. De weergave is nooit sneller dan de huidige snelheid</string>
+  <string name="morphe_replay_video_start">Langzamer afspelen</string>
+  <string name="morphe_replay_video_unavailable">Langzame weergave is niet beschikbaar voor deze video</string>
+  <string name="morphe_replay_video_speed_invalid">Ongeldige weergavesnelheid, teruggezet naar standaard</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Mute-knop tonen</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

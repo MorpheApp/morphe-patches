@@ -423,6 +423,7 @@ Begrensninger:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Skjuler popup-tips nær chat-inntastingsfeltet, for eksempel varselet om chat kun for abonnenter</string>
   <string name="morphe_hide_comments_menu_button_title">Skjul menyknappen</string>
   <string name="morphe_hide_comments_menu_button_summary">Skjuler menyknappen med tre prikker for hver kommentar</string>
+  <string name="morphe_hide_comments_none_yet_title">Skjul forhåndsvisning av \"Ingen kommentarer enn\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisningskommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentarforslag under videoen før du åpner hele kommentarfeltet</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Kommentar skjult av Morphe…</string>
@@ -433,7 +434,7 @@ Begrensninger:
   <string name="morphe_hide_comments_topics_title">Skjul \"Emner\"</string>
   <string name="morphe_hide_comments_topics_summary">Skjuler alternativet \"Emner\" i filterlinjen og forhåndsvisninger av kommentarer med emner under videoen</string>
   <string name="morphe_hide_comments_translate_button_title">Skjul oversett-knappen</string>
-  <string name="morphe_hide_comments_zero_state_title">Skjul melding om \'Ingen kommentarer ennå\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Skjul seksjonen \"Besøk fellesskapet\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Desinfiser fremhevede søkelenker</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Desinfiserer fremhevede søkelenker, og viser kun den originale, rene teksten</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_channel_whitelist_channel_added">Kanal lagt til i hvitelisten</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal fjernet fra hvitelisten</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Søk</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Søk i kanalen</string>
   <string name="morphe_channel_search_summary">Legger til en ekstra søkeknapp på kanalsider for å søke bare i den kanalen</string>
@@ -578,6 +581,13 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_channel_search_sort_oldest">Eldste</string>
   <string name="morphe_channel_search_sort_shortest">Korteste</string>
   <string name="morphe_channel_search_sort_longest">Lengste</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Søk i spilleliste</string>
+  <string name="morphe_playlist_search_summary">Legger til en andre søkeknapp på spillelistesider for å søke kun i den spillelisten</string>
+  <string name="morphe_playlist_search_hint">Søk i spilleliste</string>
+  <string name="morphe_playlist_search_results">Søkeresultater for spilleliste</string>
+  <string name="morphe_playlist_search_no_results">Ingenting funnet i denne spillelisten</string>
+  <string name="morphe_playlist_search_failed">Kunne ikke søke i denne spillelisten</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Koblet til utklippstavlen</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Koblet til utklippstavlen med tidsstempel</string>
@@ -652,6 +662,15 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Vis visningstall på miniatyrbilder</string>
   <string name="morphe_feed_view_count_summary">Visningstall for feed-videoer vises nederst til venstre på miniatyrbildene i stedet for under tittelen. Noen videoer, for eksempel i hyller, kan ikke vise et visningstall</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Tilbakefør YouTube-brukernavn</string>
+  <string name="morphe_return_youtube_username_screen_summary">Vis kanalnavn i stedet for kallenavn</string>
+  <string name="morphe_return_youtube_username_title">Vis kanalnavn</string>
+  <string name="morphe_return_youtube_username_summary">Kanalnavn vises i stedet for kallenavn i kommentarer, under videotittelen og i Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Format for kanalnavn</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanalnavn</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanalnavn (@brukernavn)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@brukernavn (Kanalnavn)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Vis antall likerklikk på feedens miniatyrbilde</string>
   <string name="morphe_ryd_feed_like_ratio_title">Vis like-prosent på feedens miniatyrbilde</string>
@@ -664,7 +683,6 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_search_comments_summary">Trykk på søkeknappen i kommentarene for å vise kun lastede kommentarer som inneholder alle søkeordene. Sett ord i anførselstegn for å søke etter en frase</string>
   <string name="morphe_search_comments_dialog_title">Søk i kommentarer</string>
   <string name="morphe_search_comments_hint">Ord som skal søkes etter</string>
-  <string name="morphe_search_comments_search">Søk</string>
   <string name="morphe_search_comments_clear">Tøm</string>
   <string name="morphe_search_comments_applied">Endre sorteringsrekkefølgen eller åpne kommentarene på nytt for å søke i dem</string>
   <string name="morphe_search_comments_cleared">Søk tømt. Endre sorteringsrekkefølgen eller åpne kommentarene på nytt for å vise alle kommentarer</string>
@@ -838,6 +856,8 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_play_all_button_type_entry_10">Bare videoer for medlemmer</string>
   <string name="morphe_play_all_button_type_entry_11">Bare Shorts for medlemmer</string>
   <string name="morphe_play_all_button_type_entry_12">Bare livestreams for medlemmer</string>
+  <string name="morphe_play_all_button_reverse_title">Omvendt rekkefølge</string>
+  <string name="morphe_play_all_button_reverse_summary">Den genererte spillelisten spilles av automatisk fra den siste videoen til den første</string>
   <string name="morphe_play_all_button_not_available_toast">Kunne ikke generere spellist på grunn av feil kanal-ID</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Vis spilleliste-knapp</string>
@@ -1036,7 +1056,7 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swipe_change_video_summary">Sveip i fullskjermmodus for å hoppe til neste eller forrige video</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Hold-bevegelse</string>
-  <string name="morphe_hold_gesture_screen_summary">Endre og lås avspillingshastigheten ved å dra etter å ha trykket og holdt</string>
+  <string name="morphe_hold_gesture_screen_summary">Endre og lås avspillingshastigheten, og kjør handlinger, ved å dra etter å trykke og holde</string>
   <string name="morphe_hold_gesture_title">Aktiver hold-bevegelse</string>
   <string name="morphe_hold_gesture_summary">Å trykke og holde på videoen kan etterfølges av et drag. Hastigheten mens du holder er avspillingshastigheten for trykk og hold</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Brukes ikke når \"Trykk for å sveipe\" er på. Trykk for å endre</string>
@@ -1062,11 +1082,28 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_hold_gesture_lock_title">Dra ned for å låse hastigheten</string>
   <string name="morphe_hold_gesture_lock_summary">Etter å ha trykket og holdt, dra ned for å beholde hastigheten når fingeren løftes. Trykk på merket eller trykk og hold igjen for å låse opp</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Vis alltid låsemerket</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Merket for låst hastighet forblir synlig mens avspillingskontrollene er skjult</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Viser merket for låst hastighet også når spillerkontrollene ikke vises. Hvis den er av, vises merket sammen med spillerkontrollene</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Lås opp når videoen endres</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">En låst hastighet avsluttes når en annen video starter</string>
   <string name="morphe_hold_gesture_lock_hint">Dra ned for å låse</string>
   <string name="morphe_hold_gesture_lock_release">Slipp for å låse %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Dra opp for å åpne oppstarteren</string>
+  <string name="morphe_hold_gesture_launcher_summary">Etter å ha trykket og holdt, dra opp for å vise handlinger rundt fingeren. Løft fingeren på en handling for å kjøre den</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Antall handlinger</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Handling 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Handling 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Handling 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Handling 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Handling 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Lås skjerm</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Loop video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Stopp looping</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Lagre bilde</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Lagre i Se senere</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopier lenke ved gjeldende tidspunkt</string>
+  <string name="morphe_hold_gesture_screen_unlock">Trykk for å låse opp</string>
+  <string name="morphe_hold_gesture_frame_saved">Bilde lagret til %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Kunne ikke lagre bildet</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Teksting</string>
   <string name="morphe_captions_screen_summary">Administrer automatisk teksting og informasjonskapsler for teksting</string>
@@ -1254,6 +1291,9 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Deaktiver automatisk avspilling av spilleliste</string>
   <string name="morphe_disable_playlist_autoplay_summary">Forhindrer at spillelister automatisk går videre til neste video</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Omvendt avspilling av spilleliste</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Spillelister spilles av automatisk fra den siste videoen til den første. Mikser blir ikke omvendt</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Kontroll for automatisk avspilling</string>
   <string name="morphe_autoplay_control_summary">Legger til en avspillingsknapp og en regel for neste video. Spillelister og køer fortsetter, en Mix stopper etter et antall videoer, en foreslått video spilles aldri av. Trykk på knappen for neste modus, trykk og hold for listen</string>
@@ -1301,6 +1341,21 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_fullscreen_video_scale_button_summary">Trykk for å veksle mellom Standard, Strekk og Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Vis kun i fullskjerm</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Skjul videostørrelsesknappen i stående spiller</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Vis knapp for saktere avspilling</string>
+  <string name="morphe_replay_video_button_summary">Spoler tilbake og senker hastigheten på videoen midlertidig. Trykk igjen for å avbryte</string>
+  <string name="morphe_replay_video_swipe_title">Sveip til venstre for saktere avspilling</string>
+  <string name="morphe_replay_video_swipe_summary">Sveip til venstre på videoen for å spole tilbake 1–10 sekunder, avhengig av sveipelengden. Sveipkontroller styrer søking, og sveip i øverste sone prioriteres</string>
+  <string name="morphe_replay_video_swipe_preview">Spill av %s s igjen</string>
+  <string name="morphe_replay_video_seconds_title">Varighet for spoling bakover</string>
+  <string name="morphe_replay_video_seconds_summary">Hvor mange sekunder knappen spoler videoen bakover</string>
+  <string name="morphe_replay_video_slow_seconds_title">Varighet for sakte avspilling</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Hvor mange sekunder av videoen som spilles av med gjentakelseshastighet etter spoling bakover</string>
+  <string name="morphe_replay_video_speed_title">Gjentakelseshastighet</string>
+  <string name="morphe_replay_video_speed_summary">Avspillingshastighet for gjentakelsen, for eksempel 0,5. Gjentakelsen er aldri raskere enn gjeldende hastighet</string>
+  <string name="morphe_replay_video_start">Gjenta saktere</string>
+  <string name="morphe_replay_video_unavailable">Sakte gjentakelse er ikke tilgjengelig for denne videoen</string>
+  <string name="morphe_replay_video_speed_invalid">Ugyldig gjentakelseshastighet, tilbakestilt til standard</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Vis dempeknapp</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

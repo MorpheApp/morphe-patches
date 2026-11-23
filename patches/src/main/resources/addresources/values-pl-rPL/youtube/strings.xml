@@ -423,6 +423,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ukrywa dymki z podpowiedziami wyświetlane obok pola wprowadzania czatu, takie jak powiadomienie o czacie tylko dla subskrybentów</string>
   <string name="morphe_hide_comments_menu_button_title">Ukryj przycisk Menu</string>
   <string name="morphe_hide_comments_menu_button_summary">Ukrywa przycisk menu z trzema kropkami przy każdym komentarzu</string>
+  <string name="morphe_hide_comments_none_yet_title">Ukryj podgląd \"Nie ma jeszcze komentarzy\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Ukryj podgląd komentarza</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ukrywa podgląd komentarza pod filmem przed otwarciem pełnej sekcji komentarzy</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Komentarz ukryty przez Morphe…</string>
@@ -433,7 +434,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_comments_topics_title">Ukryj \"Tematy\"</string>
   <string name="morphe_hide_comments_topics_summary">Ukrywa opcję \"Tematy\" na pasku filtrów oraz podglądy komentarzy \"Temat\" pod filmem</string>
   <string name="morphe_hide_comments_translate_button_title">Ukryj przycisk Przetłumacz</string>
-  <string name="morphe_hide_comments_zero_state_title">Ukryj komunikat \"Nie ma jeszcze komentarzy\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Ukryj sekcję \"Odwiedź społeczność\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Oczyść wyróżnione frazy wyszukiwania</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Oczyszcza linkowanie z wyróżnionych fraz wyszukiwania, zostawiając tylko oryginalny, zwykły tekst</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_channel_whitelist_channel_added">Dodano kanał do białej listy</string>
   <string name="morphe_channel_whitelist_channel_removed">Usunięto kanał z białej listy</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Szukaj</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Szukaj w kanale</string>
   <string name="morphe_channel_search_summary">Dodaje drugi przycisk wyszukiwania na stronach kanałów, pozwalający przeszukać tylko dany kanał</string>
@@ -578,15 +581,22 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_channel_search_sort_oldest">Najstarsze</string>
   <string name="morphe_channel_search_sort_shortest">Najkrótsze</string>
   <string name="morphe_channel_search_sort_longest">Najdłuższe</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Szukaj w playliście</string>
+  <string name="morphe_playlist_search_summary">Dodaje drugi przycisk wyszukiwania na stronach playlist, pozwalający przeszukać tylko daną playlistę</string>
+  <string name="morphe_playlist_search_hint">Przeszukaj playlistę</string>
+  <string name="morphe_playlist_search_results">Wyniki wyszukiwania w playliście</string>
+  <string name="morphe_playlist_search_no_results">Nic nie znaleziono w tej playliście</string>
+  <string name="morphe_playlist_search_failed">Nie udało się przeszukać tej playlisty</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skopiowano link do schowka</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Skopiowano link z czasem do schowka</string>
   <string name="morphe_copy_video_link_button_title">Pokaż przycisk \"Kopiuj link do filmu\"</string>
   <string name="morphe_copy_video_link_button_summary">Dotknij, aby skopiować link do filmu. Przytrzymaj, aby skopiować z czasem</string>
-  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopiuj domyślnie z czasem</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Skopiuj domyślnie z czasem</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Odwraca działanie dotknięcia i przytrzymania dla przycisku \"Kopiuj link do filmu\"</string>
   <!-- interaction.copytext.copyTextPatch -->
-  <string name="morphe_copy_video_title_title">Kopiuj tytuł filmu</string>
+  <string name="morphe_copy_video_title_title">Skopiuj tytuł filmu</string>
   <string name="morphe_copy_video_title_summary">Przytrzymaj tytuł filmu, aby go skopiować</string>
   <string name="morphe_copy_video_title_success">Skopiowano tytuł filmu do schowka</string>
   <string name="morphe_copy_comments_title">Kopiuj komentarze</string>
@@ -652,6 +662,15 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Pokaż liczbę wyświetleń na miniaturkach</string>
   <string name="morphe_feed_view_count_summary">Liczba wyświetleń filmów na liście jest wyświetlana w lewym dolnym rogu miniaturki zamiast pod tytułem. Niektóre filmy, np. w sekcjach, mogą nie wyświetlać liczby wyświetleń</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Return YouTube Username</string>
+  <string name="morphe_return_youtube_username_screen_summary">Wyświetlaj nazwy kanałów zamiast nicków</string>
+  <string name="morphe_return_youtube_username_title">Wyświetlaj nazwy kanałów</string>
+  <string name="morphe_return_youtube_username_summary">Nazwy kanałów są wyświetlane zamiast nicków w komentarzach, pod tytułem filmu oraz w Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Format nazwy kanału</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Nazwa kanału</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Nazwa kanału (@nick)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@nick (Nazwa kanału)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Pokaż liczbę polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
@@ -664,7 +683,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w sekcji komentarzy, aby wyświetlić tylko te wczytane komentarze, które zawierają wszystkie szukane słowa. Ujmij słowa w cudzysłów, aby wyszukać dokładną frazę</string>
   <string name="morphe_search_comments_dialog_title">Szukaj w komentarzach</string>
   <string name="morphe_search_comments_hint">Szukane słowa</string>
-  <string name="morphe_search_comments_search">Szukaj</string>
   <string name="morphe_search_comments_clear">Wyczyść</string>
   <string name="morphe_search_comments_applied">Zmień kolejność sortowania lub otwórz komentarze ponownie, aby je przeszukać</string>
   <string name="morphe_search_comments_cleared">Wyczyszczono wyszukiwanie. Zmień kolejność sortowania lub otwórz komentarze ponownie, aby wyświetlić wszystkie komentarze</string>
@@ -838,6 +856,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_play_all_button_type_entry_10">Filmy tylko dla wspierających</string>
   <string name="morphe_play_all_button_type_entry_11">Filmy Short tylko dla wspierających</string>
   <string name="morphe_play_all_button_type_entry_12">Transmisje tylko dla wspierających</string>
+  <string name="morphe_play_all_button_reverse_title">Odwrotna kolejność</string>
+  <string name="morphe_play_all_button_reverse_summary">Wygenerowana playlista jest odtwarzana automatycznie od ostatniego filmu do pierwszego</string>
   <string name="morphe_play_all_button_not_available_toast">Nie można wygenerować playlisty z powodu niezgodności identyfikatora kanału</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Pokaż przycisk Playlista</string>
@@ -1036,7 +1056,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_change_video_summary">Przesuń palcem w poziomie w trybie pełnoekranowym, aby przejść do następnego lub poprzedniego filmu</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Gest przytrzymania</string>
-  <string name="morphe_hold_gesture_screen_summary">Zmieniaj i blokuj prędkość odtwarzania, przeciągając palcem po przytrzymaniu</string>
+  <string name="morphe_hold_gesture_screen_summary">Zmieniaj i blokuj prędkość odtwarzania oraz uruchamiaj akcje, przeciągając palcem po przytrzymaniu</string>
   <string name="morphe_hold_gesture_title">Włącz gest przytrzymania</string>
   <string name="morphe_hold_gesture_summary">Po przytrzymaniu filmu można wykonać przeciągnięcie. Prędkość podczas przytrzymania to prędkość odtwarzania przy przytrzymaniu</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Nieużywane, gdy włączona jest opcja \"Naciśnij, aby przesunąć\". Dotknij, aby zmienić</string>
@@ -1062,11 +1082,28 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_hold_gesture_lock_title">Przeciągnij w dół, aby zablokować prędkość</string>
   <string name="morphe_hold_gesture_lock_summary">Po przytrzymaniu przeciągnij w dół, aby utrzymać prędkość po podniesieniu palca. Dotknij znacznika lub przytrzymaj ponownie, aby odblokować</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Zawsze pokazuj plakietkę blokady</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Znacznik zablokowanej prędkości pozostaje widoczny, gdy elementy sterujące odtwarzacza są ukryte</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Wyświetla znacznik zablokowanej prędkości również wtedy, gdy elementy sterujące odtwarzacza nie są widoczne. Po wyłączeniu znacznik wyświetla się razem z elementami sterującymi odtwarzacza</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Odblokuj przy zmianie filmu</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Zablokowana prędkość zostaje wyłączona po rozpoczęciu innego filmu</string>
   <string name="morphe_hold_gesture_lock_hint">Przeciągnij w dół, aby zablokować</string>
   <string name="morphe_hold_gesture_lock_release">Puść, aby zablokować %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Przeciągnij w górę, aby otworzyć menu akcji</string>
+  <string name="morphe_hold_gesture_launcher_summary">Po przytrzymaniu przeciągnij w górę, aby wyświetlić akcje wokół palca. Podnieś palec na wybranej akcji, aby ją uruchomić</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Liczba akcji</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Akcja 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Akcja 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Akcja 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Akcja 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Akcja 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Zablokuj ekran</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Odtwarzaj w pętli</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Wyłącz zapętlanie</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Zapisz klatkę</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Zapisz do obejrzenia</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopiuj link z bieżącym czasem</string>
+  <string name="morphe_hold_gesture_screen_unlock">Dotknij, aby odblokować</string>
+  <string name="morphe_hold_gesture_frame_saved">Zapisano klatkę w %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Nie udało się zapisać klatki</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Napisy</string>
   <string name="morphe_captions_screen_summary">Zarządzaj automatycznymi napisami i plikami cookie napisów</string>
@@ -1253,6 +1290,9 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Wyłącz autoodtwarzanie playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Zapobiega automatycznemu przechodzeniu playlist do następnego filmu</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Odwrotne autoodtwarzanie playlist</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Playlisty są odtwarzane automatycznie od ostatniego filmu do pierwszego. Składanki nie są odwracane</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Sterowanie autoodtwarzaniem</string>
   <string name="morphe_autoplay_control_summary">Dodaje przycisk w odtwarzaczu oraz regułę dla następnego filmu. Playlisty i kolejki są kontynuowane, składanka zatrzymuje się po określonej liczbie filmów, a proponowany film nigdy nie jest odtwarzany. Dotknij przycisku, aby przełączyć na następny tryb lub przytrzymaj, aby wyświetlić listę</string>
@@ -1300,6 +1340,21 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_fullscreen_video_scale_button_summary">Dotknij, aby przełączać między trybami: Domyślne, Rozciągnij i Powiększ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Pokaż tylko na pełnym ekranie</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ukryj przycisk skalowania filmu w odtwarzaczu pionowym</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Pokaż przycisk wolniejszego odtwarzania</string>
+  <string name="morphe_replay_video_button_summary">Cofa i tymczasowo spowalnia wideo. Dotknij ponownie, aby anulować</string>
+  <string name="morphe_replay_video_swipe_title">Przesuń w lewo, aby odtworzyć wolniej</string>
+  <string name="morphe_replay_video_swipe_summary">Przesuń palcem w lewo na wideo, aby cofnąć o 1–10 sekund, w zależności od długości przesunięcia. Sterowanie przesunięciem kontroluje wyszukiwanie, a przesunięcia w górnej strefie mają pierwszeństwo</string>
+  <string name="morphe_replay_video_swipe_preview">Odtwórz %s s</string>
+  <string name="morphe_replay_video_seconds_title">Czas cofania</string>
+  <string name="morphe_replay_video_seconds_summary">O ile sekund przycisk cofa wideo</string>
+  <string name="morphe_replay_video_slow_seconds_title">Czas powolnego odtwarzania</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Ile sekund wideo jest odtwarzanych z prędkością powtórzenia po cofnięciu</string>
+  <string name="morphe_replay_video_speed_title">Prędkość powtórzenia</string>
+  <string name="morphe_replay_video_speed_summary">Prędkość odtwarzania powtórzenia, np. 0.5. Powtórzenie nigdy nie jest szybsze niż aktualna prędkość</string>
+  <string name="morphe_replay_video_start">Powtórz wolniej</string>
+  <string name="morphe_replay_video_unavailable">Powolne powtórzenie jest niedostępne dla tego wideo</string>
+  <string name="morphe_replay_video_speed_invalid">Nieprawidłowa prędkość odtwarzania, przywrócono domyślne</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Pokaż przycisk Wycisz</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -1647,7 +1702,7 @@ Układ samochodowy
   <string name="morphe_video_delay_button_flyout_title">Pokaż menu opóźnienia filmu</string>
   <string name="morphe_video_delay_dialog_input_hint">Opóźnienie w milisekundach</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_video_effect_button_flyout_title">Pokaż menu efektów wideo</string>
+  <string name="morphe_video_effect_button_flyout_title">Pokaż menu \"Efekt filmu\"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamiętaj jakość filmów Short</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Stosuje ręcznie wybraną jakość do wszystkich kolejnych filmów Short</string>

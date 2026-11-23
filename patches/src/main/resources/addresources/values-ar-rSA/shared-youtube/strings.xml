@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"تظهر الفيديوهات بدون التأثير حتى يتم إصلاح الكود. قدم هذا الخطأ للذكاء الاصطناعي الذي كتب الكود:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"ينتهي الرمز داخل دالة أو تعليق، لذا فمن المحتمل أنه تم اقتطاعه أثناء النسخ أو اللصق. يمكن أن يتم اقتطاع النص الملصق عند %d حرفًا.
+
+اطلب من الذكاء الاصطناعي رمزًا أقصر، أو قم بلصق الرمز على أجزاء."</string>
   <string name="morphe_video_effects_custom_copy_error">خطأ في النسخ</string>
   <string name="morphe_video_effects_custom_save_anyway">حفظ على أي حال</string>
   <string name="morphe_video_effects_custom_delete">حذف</string>

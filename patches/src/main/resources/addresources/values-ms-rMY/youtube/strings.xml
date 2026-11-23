@@ -423,6 +423,7 @@ Had:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Menyembunyikan popup tip yang dipaparkan berhampiran bar input sembang, seperti notis sembang hanya untuk pelanggan</string>
   <string name="morphe_hide_comments_menu_button_title">Sorokkan butang Menu</string>
   <string name="morphe_hide_comments_menu_button_summary">Menyembunyikan butang menu 3-titik bagi setiap komen</string>
+  <string name="morphe_hide_comments_none_yet_title">Sembunyikan pratonton \'Tiada komen lagi\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Sorokkan pratonton komen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratonton komen di bawah video sebelum membuka bahagian komen penuh</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Komen disembunyikan oleh Morphe…</string>
@@ -433,7 +434,7 @@ Had:
   <string name="morphe_hide_comments_topics_title">Sembunyikan \'Topik\'</string>
   <string name="morphe_hide_comments_topics_summary">Menyembunyikan pilihan bar penapis \'Topik\' dan pratonton komen \'Topik\' di bawah video</string>
   <string name="morphe_hide_comments_translate_button_title">Sorokkan butang Terjemah</string>
-  <string name="morphe_hide_comments_zero_state_title">Sembunyikan mesej \'Belum ada komen\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Sembunyikan bahagian \'Kunjungi Komuniti\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Bersihkan pautan carian yang diserlahkan</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Menyahjangkit pautan carian yang disorot, meninggalkan teks biasa yang asal sahaja</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_channel_whitelist_channel_added">Saluran ditambahkan ke senarai putih</string>
   <string name="morphe_channel_whitelist_channel_removed">Saluran dikeluarkan daripada senarai putih</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Carian</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cari dalam saluran</string>
   <string name="morphe_channel_search_summary">Menambah butang carian kedua pada halaman saluran untuk mencari saluran itu sahaja</string>
@@ -578,6 +581,13 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_channel_search_sort_oldest">Terlama</string>
   <string name="morphe_channel_search_sort_shortest">Short terpendek</string>
   <string name="morphe_channel_search_sort_longest">Terpanjang</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Cari dalam senarai main</string>
+  <string name="morphe_playlist_search_summary">Menambah butang carian kedua pada halaman senarai main untuk mencari dalam senarai main itu sahaja</string>
+  <string name="morphe_playlist_search_hint">Cari senarai main</string>
+  <string name="morphe_playlist_search_results">Hasil carian senarai main</string>
+  <string name="morphe_playlist_search_no_results">Tiada apa yang ditemui dalam senarai main ini</string>
+  <string name="morphe_playlist_search_failed">Tidak dapat mencari dalam senarai main ini</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Pautan disalin ke papan keratan</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Pautan dengan cap masa disalin ke papan keratan</string>
@@ -652,6 +662,15 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Tunjukkan jumlah tontonan pada imej kecil</string>
   <string name="morphe_feed_view_count_summary">Jumlah tontonan video feed dipaparkan di bahagian bawah kiri imej kecil dan bukannya di bawah tajuk. Sesetengah video, seperti dalam rak, mungkin tidak memaparkan jumlah tontonan</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Kembalikan Nama Pengguna YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">Tunjukkan nama saluran berbanding pemegang</string>
+  <string name="morphe_return_youtube_username_title">Tunjukkan nama saluran</string>
+  <string name="morphe_return_youtube_username_summary">Nama saluran ditunjukkan berbanding pemegang dalam komen, di bawah tajuk video dan dalam Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Format nama saluran</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Nama saluran</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Nama saluran (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Nama saluran)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Tunjukkan jumlah suka pada pengecil feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Tunjukkan peratusan suka pada pengecil feed</string>
@@ -664,7 +683,6 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <string name="morphe_search_comments_summary">Ketik butang carian dalam komen untuk menunjukkan hanya komen yang dimuatkan yang mengandungi semua perkataan yang dicari. Letakkan perkataan dalam tanda petikan untuk mencari frasa</string>
   <string name="morphe_search_comments_dialog_title">Cari komen</string>
   <string name="morphe_search_comments_hint">Perkataan untuk dicari</string>
-  <string name="morphe_search_comments_search">Carian</string>
   <string name="morphe_search_comments_clear">Kosongkan</string>
   <string name="morphe_search_comments_applied">Tukar urutan isihan atau buka semula komen untuk mencarinya</string>
   <string name="morphe_search_comments_cleared">Carian dikosongkan. Tukar urutan isihan atau buka semula komen untuk memaparkan semua komen</string>
@@ -838,6 +856,8 @@ Info: Mungkin tidak berfungsi pada strim langsung"</string>
   <string name="morphe_play_all_button_type_entry_10">Video Ahli sahaja</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts Ahli sahaja</string>
   <string name="morphe_play_all_button_type_entry_12">Penstriman langsung Ahli sahaja</string>
+  <string name="morphe_play_all_button_reverse_title">Urutan terbalik</string>
+  <string name="morphe_play_all_button_reverse_summary">Senarai main yang dijana dimainkan secara automatik daripada video terakhir ke video pertama</string>
   <string name="morphe_play_all_button_not_available_toast">Tidak dapat menghasilkan senarai main kerana ketidakpadanan ID saluran</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Butang Tunjukkan Senarai Main</string>
@@ -1036,7 +1056,7 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_swipe_change_video_summary">Leret dalam mod skrin penuh untuk melangkau ke video seterusnya atau sebelumnya</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Gerak isyarat tahan</string>
-  <string name="morphe_hold_gesture_screen_summary">Tukar dan kunci kelajuan main balik dengan menyeret selepas mengetik dan menahan</string>
+  <string name="morphe_hold_gesture_screen_summary">Ubah dan kunci kelajuan main balik, serta jalankan tindakan, dengan menyeret selepas mengetik dan menahan</string>
   <string name="morphe_hold_gesture_title">Dayakan gerak isyarat tahan</string>
   <string name="morphe_hold_gesture_summary">Mengetik dan menahan video boleh diikuti dengan seretan. Kelajuan semasa menahan ialah kelajuan main balik ketik dan tahan</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Tidak digunakan semasa tekan untuk leret dihidupkan. Ketik untuk tukar</string>
@@ -1062,11 +1082,28 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_hold_gesture_lock_title">Seret ke bawah untuk mengunci kelajuan</string>
   <string name="morphe_hold_gesture_lock_summary">Selepas mengetik dan menahan, seret ke bawah untuk mengekalkan kelajuan apabila jari diangkat. Ketik lencana atau ketik dan tahan sekali lagi untuk membuka kunci</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Sentiasa tunjukkan lencana kunci</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Lencana kelajuan yang dikunci kekal kelihatan semasa kawalan pemain disembunyikan</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Menunjukkan lencana kelajuan terkunci juga apabila kawalan pemain tidak dipaparkan. Jika dimatikan, lencana dipaparkan bersama kawalan pemain</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Buka kunci apabila video berubah</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Kelajuan yang dikunci berakhir apabila video lain bermula</string>
   <string name="morphe_hold_gesture_lock_hint">Tarik ke bawah untuk mengunci</string>
   <string name="morphe_hold_gesture_lock_release">Lepaskan untuk mengunci %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Seret ke atas untuk membuka pelancar</string>
+  <string name="morphe_hold_gesture_launcher_summary">Selepas mengetik dan menahan, seret ke atas untuk menunjukkan tindakan di sekeliling jari. Lepaskan jari pada tindakan untuk menjalankannya</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Bilangan tindakan</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Tindakan 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Tindakan 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Tindakan 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Tindakan 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Tindakan 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Kunci skrin</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Ulang video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Hentikan pengulangan</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Simpan bingkai</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Simpan ke Tonton kemudian</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Salin pautan pada masa semasa</string>
+  <string name="morphe_hold_gesture_screen_unlock">Sentuh untuk buka kunci</string>
+  <string name="morphe_hold_gesture_frame_saved">Bingkai disimpan ke %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Tidak dapat menyimpan bingkai</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Sarikata</string>
   <string name="morphe_captions_screen_summary">Urus sari kata automatik dan kuki sari kata</string>
@@ -1254,6 +1291,9 @@ Tetapan → Main balik (atau Main automatik) → Main automatik video seterusnya
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Nyahaktifkan putar automatik senarai main</string>
   <string name="morphe_disable_playlist_autoplay_summary">Menghalang senarai main daripada beralih ke video seterusnya secara automatik</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Terbalikkan main automatik senarai main</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Senarai main dimainkan secara automatik daripada video terakhir ke video pertama. Campuran tidak diterbalikkan</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Kawalan Main automatik</string>
   <string name="morphe_autoplay_control_summary">Menambah butang pemain dan peraturan untuk video seterusnya. Senarai main dan barisan akan diteruskan, Mix akan berhenti selepas beberapa video, video yang dicadangkan tidak akan dimainkan. Ketik butang untuk mod seterusnya, ketik dan tahan untuk senarai</string>
@@ -1301,6 +1341,21 @@ Tetapan → Main balik (atau Main automatik) → Main automatik video seterusnya
   <string name="morphe_fullscreen_video_scale_button_summary">Ketik untuk kitaran Lalai, Regang, dan Zum</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Tunjukkan dalam skrin penuh sahaja</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Sembunyikan butang skala video dalam pemain potret</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Tunjukkan butang Main Semula lebih perlahan</string>
+  <string name="morphe_replay_video_button_summary">Mengundurkan dan memperlahankan video buat sementara waktu. Ketik sekali lagi untuk membatalkan</string>
+  <string name="morphe_replay_video_swipe_title">Sapu ke kiri untuk main semula lebih perlahan</string>
+  <string name="morphe_replay_video_swipe_summary">Sapu ke kiri pada video untuk mengundurkan 1-10 saat, bergantung pada panjang sapuan. Kawalan sapuan mencari dan sapuan zon atas diberi keutamaan</string>
+  <string name="morphe_replay_video_swipe_preview">Main semula %s s</string>
+  <string name="morphe_replay_video_seconds_title">Tempoh putar balik</string>
+  <string name="morphe_replay_video_seconds_summary">Berapa saat butang tersebut memutar balik video</string>
+  <string name="morphe_replay_video_slow_seconds_title">Tempoh main balik perlahan</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Berapa saat video dimainkan pada kelajuan main semula selepas putar balik</string>
+  <string name="morphe_replay_video_speed_title">Kelajuan main semula</string>
+  <string name="morphe_replay_video_speed_summary">Kelajuan main balik bagi main semula, seperti 0.5. Main semula tidak akan pernah lebih pantas daripada kelajuan semasa</string>
+  <string name="morphe_replay_video_start">Main semula lebih perlahan</string>
+  <string name="morphe_replay_video_unavailable">Main semula perlahan tidak tersedia untuk video ini</string>
+  <string name="morphe_replay_video_speed_invalid">Kelajuan main semula tidak sah, ditetapkan semula kepada lalai</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Tunjukkan butang Senyapkan</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

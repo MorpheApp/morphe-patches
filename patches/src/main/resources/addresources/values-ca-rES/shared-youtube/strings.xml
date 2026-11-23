@@ -249,6 +249,9 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_video_effects_custom_error_message">"Els vídeos es mostren sense l'efecte fins que el codi es corregeixi. Passa aquest error a la IA que ha escrit el codi:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"El codi acaba dins d'una funció o comentari, per la qual cosa probablement s'ha tallat mentre es copiava o es peguava. El text pegat es pot tallar als %d caracters.
+
+Demana a la IA un codi més curt o pega el codi per parts."</string>
   <string name="morphe_video_effects_custom_copy_error">Error de còpia</string>
   <string name="morphe_video_effects_custom_save_anyway">Desa de totes maneres</string>
   <string name="morphe_video_effects_custom_delete">Eliminar</string>

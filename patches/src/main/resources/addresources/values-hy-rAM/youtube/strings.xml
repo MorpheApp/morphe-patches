@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Թաքցնում է չատի մուտքագրման տողի մոտ ցուցադրվող հուշումները, օրինակ՝ միայն բաժանորդների համար նախատեսված չատի ծանուցումը</string>
   <string name="morphe_hide_comments_menu_button_title">Թաքցնել մենյուի կոճակը</string>
   <string name="morphe_hide_comments_menu_button_summary">Թաքցնում է յուրաքանչյուր մեկնաբանության 3-կետանի մենյուի կոճակը</string>
+  <string name="morphe_hide_comments_none_yet_title">Թաքցնել \"Դեռ չկան մեկնաբանություններ\" նախադիտումը</string>
   <string name="morphe_hide_comments_preview_comment_title">Թաքցնել մեկնաբանության նախադիտումը</string>
   <string name="morphe_hide_comments_preview_comment_summary">Թաքցնում է մեկնաբանության նախադիտումը տեսանյութի տակ՝ նախքան մեկնաբանությունների ամբողջական բաժնի բացումը</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Մեկնաբանությունը թաքցված է Morphe-ի կողմից…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">Թաքցնել \"Թեմաները\"</string>
   <string name="morphe_hide_comments_topics_summary">Թաքցնում է \"Թեմաների\" զտիչների տողի տարբերակը և տեսանյութի ներքևում գտնվող \"Թեմայի\" մեկնաբանությունների նախադիտումները</string>
   <string name="morphe_hide_comments_translate_button_title">Թաքցնել թարգմանության կոճակը</string>
-  <string name="morphe_hide_comments_zero_state_title">Թաքցնել \"Մեկնաբանություններ դեռ չկան\" հաղորդագրությունը</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Թաքցնել \"Այցելեք համայնք\" բաժինը</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Մաքրել ընդգծված որոնման հղումները</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Մաքրում է ընդգծված որոնման հղումները՝ թողնելով միայն բնօրինակ սովորական տեքստը</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Ալիքն ավելացվել է սպիտակ ցուցակում</string>
   <string name="morphe_channel_whitelist_channel_removed">Ալիքը հեռացվել է սպիտակ ցուցակից</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Փնտրել</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Որոնում ալիքի ներսում</string>
   <string name="morphe_channel_search_summary">Ավելացնում է որոնման երկրորդ կոճակ ալիքի էջերում՝ միայն այդ ալիքի մեջ որոնելու համար</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">Ամենահինը</string>
   <string name="morphe_channel_search_sort_shortest">Ամենակարճը</string>
   <string name="morphe_channel_search_sort_longest">Ամենաերկարը</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Որոնել պլեյլիստի ներսում</string>
+  <string name="morphe_playlist_search_summary">Ավելացնում է որոնման երկրորդ կոճակ պլեյլիստի էջերում՝ միայն տվյալ պլեյլիստում որոնելու համար</string>
+  <string name="morphe_playlist_search_hint">Որոնել պլեյլիստում</string>
+  <string name="morphe_playlist_search_results">Պլեյլիստի որոնման արդյունքները</string>
+  <string name="morphe_playlist_search_no_results">Այս պլեյլիստում ոչինչ չի գտնվել</string>
+  <string name="morphe_playlist_search_failed">Չհաջողվեց որոնել այս պլեյլիստում</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Հղումը պատճենվեց սեղմատախտակին</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Ժամանակային նշումով հղումը պատճենվեց սեղմատախտակին</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Ցույց տալ դիտումների քանակը նկարների վրա</string>
   <string name="morphe_feed_view_count_summary">Հոսքի տեսանյութերի դիտումների քանակը ցուցադրվում է նկարահատվածի ներքևի ձախ մասում՝ վերնագրի տակ ցուցադրելու փոխարեն: Որոշ տեսանյութեր, օրինակ՝ շելֆերում, կարող են դիտումների քանակ չցուցադրել</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Վերադարձնել YouTube-ի օգտանունը</string>
+  <string name="morphe_return_youtube_username_screen_summary">Ցուցադրել ալիքների անվանումները handle-ների փոխարեն</string>
+  <string name="morphe_return_youtube_username_title">Ցուցադրել ալիքների անվանումները</string>
+  <string name="morphe_return_youtube_username_summary">Մեկնաբանություններում, տեսանյութի վերնագրի տակ և Shorts-ում handle-ների փոխարեն ցուցադրվում են ալիքների անվանումները</string>
+  <string name="morphe_return_youtube_username_display_format_title">Ալիքի անվան ձևաչափը</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Ալիքի անվանումը</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Ալիքի անվանումը (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Ալիքի անվանումը)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Ցուցադրել հոսքի նկարահատվածի հավանումների քանակը</string>
   <string name="morphe_ryd_feed_like_ratio_title">Ցուցադրել հոսքի նկարահատվածի հավանումների տոկոսը</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">Սեղմեք մեկնաբանությունների որոնման կոճակը, որպեսզի ցուցադրվեն միայն բեռնված այն մեկնաբանությունները, որոնք պարունակում են բոլոր փնտրվող բառերը: Արտահայտություն փնտրելու համար դրեք բառերը չակերտների մեջ</string>
   <string name="morphe_search_comments_dialog_title">Որոնել մեկնաբանություններում</string>
   <string name="morphe_search_comments_hint">Որոնվող բառեր</string>
-  <string name="morphe_search_comments_search">Որոնել</string>
   <string name="morphe_search_comments_clear">Մաքրել</string>
   <string name="morphe_search_comments_applied">Փոխեք տեսակավորման հերթականությունը կամ նորից բացեք մեկնաբանությունները՝ դրանք որոնելու համար</string>
   <string name="morphe_search_comments_cleared">Որոնումը մաքրված է: Փոխեք տեսակավորման հերթականությունը կամ նորից բացեք մեկնաբանությունները՝ բոլոր մեկնաբանությունները ցուցադրելու համար</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">Միայն անդամների համար նախատեսված տեսանյութեր</string>
   <string name="morphe_play_all_button_type_entry_11">Միայն անդամների համար նախատեսված Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Միայն անդամների համար նախատեսված ուղիղ եթերներ</string>
+  <string name="morphe_play_all_button_reverse_title">Հակառակ հերթականություն</string>
+  <string name="morphe_play_all_button_reverse_summary">Ստեղծված պլեյլիստը ավտոմատ միացվում է վերջին տեսանյութից առաջինին</string>
   <string name="morphe_play_all_button_not_available_toast">Հնարավոր չէ ստեղծել նվագացանկը՝ ալիքի ID-ի անհամապատասխանության պատճառով</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Ցուցադրելացուցակների կոճակ</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">Սահեցրեք լրիվ էկրանի ռեժիմում՝ անցնելու հաջորդ կամ նախորդ տեսանյութին</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Սեղմելու ժեստ</string>
-  <string name="morphe_hold_gesture_screen_summary">Փոխեք և արգելափակեք կայացման արագությունը՝ սեղմելու և պահելուց հետո քաշելով</string>
+  <string name="morphe_hold_gesture_screen_summary">Փոխեք և ստափակեք վերարտադրման արագությունը, ինչպես նաև կատարեք գործողություններ՝ սեղմելով, պահելով և քաշելով</string>
   <string name="morphe_hold_gesture_title">Միացնել սեղմելու ժեստը</string>
   <string name="morphe_hold_gesture_summary">Տեսանյութը սեղմելուն և պահելուն կարող է հաջորդել քաշումը: Սեղմած պահելու ընթացքում արագությունը հավասար է սեղմելու և պահելու կայացման արագությանը</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Չի օգտագործվում, երբ միացված է սեղմելով սլայդելը: Հպեք՝ փոփոխելու համար</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">Քաշեք ներքև՝ արագությունը սառեցնելու համար</string>
   <string name="morphe_hold_gesture_lock_summary">Հպատակելու և սեղմած պահելուց հետո, քաշեք ներքև, որպեսզի արագությունը պահպանվի մ আঙիտը բարձրացնելիս: Հպեք նշանին կամ նորից սեղմած պահեք՝ սառեցումը հանելու համար</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Միշտ ցույց տալ սառեցման նշանը</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Սառեցված արագության նշանը մնում է տեսանելի, նույնիսկ երբ ընտռայցի կառավարման գործիքները թաքցված են</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Ցույց է տալիս ստափակ արագության նշանը նաև այն ժամանակ, երբ վերարտադրողի կառավարման կոճակները չեն ցուցադրվում: Եթե անջատված է, նշանը ցուցադրվում է վերարտադրողի կառավարման կոճակների հետ միասին</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Սառեցումը հանել տեսանյութի փոփոխության ժամանակ</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Սառեցված արագությունը դադարում է, երբ սկսվում է մեկ այլ տեսանյութ</string>
   <string name="morphe_hold_gesture_lock_hint">Քաշեք ներքև՝ արգելափակելու համար</string>
   <string name="morphe_hold_gesture_lock_release">Բաց թողեք՝ %s-ը արգելափակելու համար</string>
+  <string name="morphe_hold_gesture_launcher_title">Քաշեք վերև՝ գործարկիչը բացելու համար</string>
+  <string name="morphe_hold_gesture_launcher_summary">Սեղմելու և պահելուց հետո քաշեք վերև՝ մատի շուրջ գործողությունները ցույց տալու համար: Բաց թողեք մատը գործողության վրա՝ այն գործարկելու համար</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Գործողությունների քանակը</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Գործողություն 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Գործողություն 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Գործողություն 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Գործողություն 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Գործողություն 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Կողպել էկրանը</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Կրկնել տեսանյութը</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Դադարեցնել կրկնությունը</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Պահպանել կադրը</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Պահպանել «Դիտել ավելի ուշ»-ում</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Պատճենել հղումը ընթացիկ ժամանակի համար</string>
+  <string name="morphe_hold_gesture_screen_unlock">Հպեք՝ կողպողելու համար</string>
+  <string name="morphe_hold_gesture_frame_saved">Կադրը պահպանվեց %s-ում</string>
+  <string name="morphe_hold_gesture_frame_failed">Չհաջողվեց պահպանել կադրը</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ենթագրեր</string>
   <string name="morphe_captions_screen_summary">Կառավարել ավտոմատ ենթագրերը և ենթագրերի cookie-ները</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Անջատել պլեյլիստի ավտոմատ միացումը</string>
   <string name="morphe_disable_playlist_autoplay_summary">Կանխում է պլեյլիստերի ավտոմատ անցումը հաջորդ տեսանյութին</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Պլեյլիստի ավտոմատ միացման հակառակ հերթականություն</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Պլեյլիստերը ավտոմատ միացվում են վերջին տեսանյութից առաջինին: Միքսերը չեն շրջվում</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Ավտոմատ հերթագրման կառավարում</string>
   <string name="morphe_autoplay_control_summary">Ավելացնում է նվագարկման կոճակ և կանոն հաջորդ տեսանյութի համար: Ցուցակները և հերթերը շարունակվում են, Mix-ը կանգնում է որոշակի քանակությամբ տեսանյութերից հետո, իսկ առաջարկվող տեսանյութը երբեք չի նվագվում: Չափելու համար սեղմեք կոճակը՝ հաջորդ ռեժիմի համար, սեղմեք և պահեք՝ ցուցակի համար:</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Հպեք՝ փոխելու Լռելյայն, Ձգել և Մեծացնել տարբերակների միջև</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Ցույց տալ միայն լրամասշտաբային ռեժիմում</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Թաքցնել տեսանյութի մասշտաբի կոճակը ուղղահայաց նվագարկիչում</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Ցուցադրել կրկնափայմանում դանդաղեցնելու կոճակը</string>
+  <string name="morphe_replay_video_button_summary">Հետ է թափັດրում և ժամանակավորապես դանդաղեցնում տեսանյութը: Հንկիծեք նորից՝ չեղարկելու համար</string>
+  <string name="morphe_replay_video_swipe_title">Սահեցրեք ձախ՝ ավելի դանդաղ կրկնափայմանելու համար</string>
+  <string name="morphe_replay_video_swipe_summary">Սահեցրեք ձախ տեսանյութի վրա՝ հետ թափադրելու 1-10 վայրկյան, կախված սահեցման երկարությունից: Սահեցման կառավարման գործիքները և վերին գոտու սահեցումներն ունեն առաջնահերթություն</string>
+  <string name="morphe_replay_video_swipe_preview">Կրկնափայմանել %s վ</string>
+  <string name="morphe_replay_video_seconds_title">Հետհայտման տևողությունը</string>
+  <string name="morphe_replay_video_seconds_summary">Թե քանի վայրկյանով է կոճակը հետ հայտում տեսանյութը</string>
+  <string name="morphe_replay_video_slow_seconds_title">Դանդաղ վերարտադրման տևողությունը</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Թե տեսանյութի քանի վայրկյանն է նվագում վերարտադրման արագությամբ հետհայտումից հետո</string>
+  <string name="morphe_replay_video_speed_title">Վերարտադրման արագությունը</string>
+  <string name="morphe_replay_video_speed_summary">Վերարտադրման արագությունը, օրինակ՝ 0.5: Վերարտադրումը երբեք չի լինում ավելի արագ, քան ընթացիկ արագությունը</string>
+  <string name="morphe_replay_video_start">Վերարտադրել ավելի դանդաղ</string>
+  <string name="morphe_replay_video_unavailable">Դանդաղ վերարտադրումը հասանելի չէ այս տեսանյութի համար</string>
+  <string name="morphe_replay_video_speed_invalid">Վերարտադրման անթույլատրելի արագություն, վերակարգավորվում է լռելյայն արժեքին</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Ցույց տալ «Մուտքի անջատում» կոճակը</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

@@ -138,8 +138,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
+  <string name="morphe_hide_comments_none_yet_title">\'இன்னும் கருத்துகள் இல்லை\' முன்னோட்டத்தை மறைக்கவும்</string>
   <string name="morphe_hide_comments_topics_title">\'தலைப்புகள்\'-ஐ மறைக்கவும்</string>
   <string name="morphe_hide_comments_topics_summary">\'தலைப்புகள்\' வடிகட்டி பட்டை விருப்பத்தையும், வீடியோவிற்கு கீழே உள்ள \'தலைப்பு\' கருத்து முன்னோட்டங்களையும் மறைக்கிறது</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">\'சமூகத்தைப் பார்வையிடவும்\' பகுதியை மறைக்கவும்</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -177,7 +179,16 @@ Second \"item\" text"</string>
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">தேடு</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">பிளேலிஸ்ட்டிற்குள் தேடுங்கள்</string>
+  <string name="morphe_playlist_search_summary">அந்த பிளேலிஸ்ட்டில் மட்டும் தேடுவதற்கு, பிளேலிஸ்ட் பக்கங்களில் இரண்டாவது தேடல் பொத்தானைச் சேர்க்கிறது</string>
+  <string name="morphe_playlist_search_hint">பிளேலிஸ்ட்டைத் தேடுங்கள்</string>
+  <string name="morphe_playlist_search_results">பிளேலிஸ்ட் தேடல் முடிவுகள்</string>
+  <string name="morphe_playlist_search_no_results">இந்த பிளேலிஸ்ட்டில் எதுவும் காணப்படவில்லை</string>
+  <string name="morphe_playlist_search_failed">இந்த பிளேலிஸ்ட்டைத் தேட முடியவில்லை</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <string name="morphe_copy_select_text_title">விளக்கங்கள் மற்றும் பதிவுகளின் உரையைத் தேர்ந்தெடுக்கவும்</string>
@@ -219,6 +230,15 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTube பயனர் பெயரை மீட்டெடு</string>
+  <string name="morphe_return_youtube_username_screen_summary">ஹேண்டில்களுக்குப் பதிலாக சேனல் பெயர்களைக் காட்டு</string>
+  <string name="morphe_return_youtube_username_title">சேனல் பெயர்களைக் காட்டு</string>
+  <string name="morphe_return_youtube_username_summary">கருத்துகள், வீடியோ தலைப்பிற்கு கீழே மற்றும் Shorts-இல் ஹேண்டில்களுக்குப் பதிலாக சேனல் பெயர்கள் காட்டப்படும்</string>
+  <string name="morphe_return_youtube_username_display_format_title">சேனல் பெயர் வடிவம்</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">சேனல் பெயர்</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">சேனல் பெயர் (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (சேனல் பெயர்)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_counts_position_title">ஃபீட் தம்ப்நைல் லைக் பொசிஷன்</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">வியூ கவுண்டிற்கு அருகில்</string>
@@ -289,6 +309,8 @@ Second \"item\" text"</string>
   <string name="morphe_pip_action_entry_play_pause">இயக்கு/நிறுத்து</string>
   <string name="morphe_pip_action_entry_background_playback">பின்னணி இயக்கம்</string>
   <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_reverse_title">தலைகீழ் வரிசை</string>
+  <string name="morphe_play_all_button_reverse_summary">உருவாக்கப்பட்ட பிளேலிஸ்ட் கடைசி வீடியோவில் இருந்து முதல் வீடியோ வரை தானாக இயங்கும்</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">பிளேலிஸ்ட்டைக் காட்டு பொத்தான்</string>
   <string name="morphe_playlist_panel_button_summary">பிளேலிஸ்ட் பேனலைத் திறக்கத் தட்டவும். பிளேலிஸ்ட்டை இயக்கும்போது மட்டுமே இது காட்டப்படும்</string>
@@ -333,7 +355,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_haptic_feedback_summary">ஸ்வைப் செய்கையைத் தொடங்கும் போது அழுத்திப் பிடித்தால் அதிர்வுகள் ஏற்படும்</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Hold gesture gesture</string>
-  <string name="morphe_hold_gesture_screen_summary">தட்டி and பிடித்து இழுப்பதன் மூலம் பிளேபேக் வேகத்தை மாற்றி லாக் செய்யலாம்</string>
+  <string name="morphe_hold_gesture_screen_summary">தட்டிப் பிடித்து இழுப்பதன் மூலம், இயக்க வேகத்தை மாற்றிப் பூட்டவும் மற்றும் செயல்களை இயக்கவும்</string>
   <string name="morphe_hold_gesture_title">Hold gesture-ஐ எனேபிள் செய்யவும்</string>
   <string name="morphe_hold_gesture_summary">வீடியோவைத் தட்டி பிடிப்பதன் பிறகு இழுக்கலாம். பிடித்து வைத்திருக்கும்போது கிடைக்கும் வேகம், தட்டி பிடிப்பதன் பிளேபேக் வேகமாகும்</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">ஸ்வைப் செய்ய அழுத்தவும் செயல்பாட்டில் இருக்கும்போது இது பயன்படுத்தப்படாது. மாற்றத் தட்டவும்</string>
@@ -359,11 +381,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">வேகத்தைப் பூட்டக் கீழே இழுக்கவும்</string>
   <string name="morphe_hold_gesture_lock_summary">தட்டிப் பிடித்துள்ள பிறகு, விரலை உயர்த்தும் போதும் வேகத்தைத் தக்கவைக்கக் கீழே இழுக்கவும். பூட்டை நீக்க பேட்ஜைத் தட்டவும் அல்லது மீண்டும் தட்டிப் பிடிக்கவும்</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">பூட்டு பேட்ஜை எப்போதும் காட்டவும்</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">பிளேயர் கட்டுப்பாடுகள் மறைந்திருக்கும் போது, பூட்டப்பட்ட வேகத்தின் பேட்ஜ் தெரியும்</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">இயக்கக் கட்டுப்பாடுகள் காட்டப்படாத போதும் பூட்டப்பட்ட வேகத்தின் அடையாளத்தைக் காட்டும். இது அணைக்கப்பட்டிருந்தால், இயக்கக் கட்டுப்பாடுகளுடன் சேர்ந்து அடையாளம் காட்டப்படும்</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">வீடியோ மாறும்போது பூட்டை நீக்கவும்</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">மற்றொரு வீடியோ தொடங்கும் போது பூட்டப்பட்ட வேகம் முடிவடையும்</string>
   <string name="morphe_hold_gesture_lock_hint">பூட்ட கீழே இழுக்கவும்</string>
   <string name="morphe_hold_gesture_lock_release">%s-ஐ பூட்ட விடுவிக்கவும்</string>
+  <string name="morphe_hold_gesture_launcher_title">லாஞ்சரைத் திறக்க மேலே இழுக்கவும்</string>
+  <string name="morphe_hold_gesture_launcher_summary">தட்டிப் பிடித்த பிறகு, விரலைச் சுற்றி செயல்களைக் காட்ட மேலே இழுக்கவும். ஒரு செயலை இயக்க அதன் மேல் விரலை உயர்த்தவும்</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">செயல்களின் எண்ணிக்கை</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">செயல் 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">செயல் 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">செயல் 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">செயல் 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">செயல் 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">திரையை பூட்டு</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">வீடியோவை லூப் செய்</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">லூப்பை நிறுத்து</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">பிரேமை சேமிக்கவும்</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">பின்னாள்களன்று பார்க்க சேமிக்கவும்</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">தற்போதைய நேரத்திலான இணைப்பை நகலெடுக்கவும்</string>
+  <string name="morphe_hold_gesture_screen_unlock">திறக்க தட்டவும்</string>
+  <string name="morphe_hold_gesture_frame_saved">பிரேம் %s-இல் சேமிக்கப்பட்டது</string>
+  <string name="morphe_hold_gesture_frame_failed">பிரேமை சேமிக்க முடியவில்லை</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_languages_title">மொழியும் மொழிபெயர்ப்பும்</string>
   <string name="morphe_captions_presentation_title">தோற்றம் மற்றும் செயல்பாடு</string>
@@ -443,6 +482,9 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_fullscreen_playlist_panel_summary_on">முழுத் திரை பிளேயருக்கு மேல் பிளேலிஸ்ட் பேனல் திறக்கும்</string>
   <string name="morphe_fullscreen_playlist_panel_summary_off">டேப்லெட்டுகளில் பிளேலிஸ்ட் பேனல் முழுத் திரையை விட்டு வெளியேறும்</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">பிளேலிஸ்ட் ஆட்டோபிளேவை தலைகீழாக மாற்றவும்</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">பிளேலிஸ்ட்கள் கடைசி வீடியோவில் இருந்து முதல் வீடியோ வரை தானாக இயங்கும். மிக்ஸ்கள் தலைகீழாக மாற்றப்படாது</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">தானியங்கி இயக்கக் கட்டுப்பாடு</string>
   <string name="morphe_autoplay_control_summary">அடுத்த வீடியோவிற்கான பிளேயர் பொத்தானையும் விதியையும் சேர்க்கிறது. பிளேலிஸ்ட்கள் மற்றும் வரிசைகள் தொடரும், ஒரு மிக்ஸ் குறிப்பிட்ட எண்ணிக்கையிலான வீடியோக்களுக்குப் பிறகு நிறுத்தப்படும், பரிந்துரைக்கப்பட்ட வீடியோக்களோ ஒருபோதும் இயங்காது. அடுத்த பயன்முறைக்கு பொத்தானைத் தட்டவும், பட்டியலைப் பார்க்க தட்டிப் பிடிக்கவும்</string>
@@ -464,6 +506,21 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">மெதுவாக மீண்டும் காண்பி பொத்தானைக் காட்டு</string>
+  <string name="morphe_replay_video_button_summary">வீடியோவை பின்னோக்கி நகர்த்தி தற்காலிகமாக மெதுவாக்குகிறது. ரத்து செய்ய மீண்டும் தட்டவும்</string>
+  <string name="morphe_replay_video_swipe_title">மெதுவாக மீண்டும் காண இடதுபுறமாக ஸ்வைப் செய்யவும்</string>
+  <string name="morphe_replay_video_swipe_summary">ஸ்வைப் நீளத்தைப் பொறுத்து, வீடியோவில் 1-10 விநாடிகள் பின்னோக்கி நகர்த்த இடதுபுறமாக ஸ்வைப் செய்யவும். ஸ்வைப் கட்டுப்பாடுகள் தேடலை நிர்வகிக்கும் மற்றும் மேல் பகுதி ஸ்வைப்களுக்கு முன்னுரிமை அளிக்கப்படும்</string>
+  <string name="morphe_replay_video_swipe_preview">%s விநாடிகள் மீண்டும் காண்பி</string>
+  <string name="morphe_replay_video_seconds_title">பின்னோக்கி நகர்த்தும் கால அளவு</string>
+  <string name="morphe_replay_video_seconds_summary">பொத்தானை அழுத்தும்போது வீடியோ எத்தனை வினாடிகள் பின்னோக்கி நகர்த்தப்பட வேண்டும்</string>
+  <string name="morphe_replay_video_slow_seconds_title">மெதுவான இயக்க கால அளவு</string>
+  <string name="morphe_replay_video_slow_seconds_summary">பின்னோக்கி நகர்த்திய பிறகு, ரீப்ளே வேகத்தில் வீடியோவின் எத்தனை வினாடிகள் இயங்க வேண்டும்</string>
+  <string name="morphe_replay_video_speed_title">ரீப்ளே வேகம்</string>
+  <string name="morphe_replay_video_speed_summary">ரீப்ளேயின் இயக்க வேகம், உதாரணமாக 0.5. ரீப்ளே வேகம் தற்போதைய வேகத்தை விட எப்போதும் அதிகமாக இருக்காது</string>
+  <string name="morphe_replay_video_start">மெதுவாக ரீப்ளே செய்</string>
+  <string name="morphe_replay_video_unavailable">இந்த வீடியோவிற்கு மெதுவான ரீப்ளே வசதி இல்லை</string>
+  <string name="morphe_replay_video_speed_invalid">தவறான ரீப்ளே வேகம், இயல்பான நிலைக்கு மாற்றப்பட்டது</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->

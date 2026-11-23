@@ -249,6 +249,9 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_video_effects_custom_error_message">"コードが修正されるまで、ビデオはエフェクトなしで表示されます。このエラーを、コードを作成したAIに伝えてください:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"コードが関数またはコメント内で終わっているため、コピーまたは貼り付け時に途切れた可能性があります。貼り付けられたテキストは%d文字で途切れる場合があります。
+
+AIに短いコードをリクエストするか、コードを分割して貼り付けてください。"</string>
   <string name="morphe_video_effects_custom_copy_error">エラーをコピー</string>
   <string name="morphe_video_effects_custom_save_anyway">とにかく保存</string>
   <string name="morphe_video_effects_custom_delete">削除</string>

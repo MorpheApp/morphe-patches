@@ -423,6 +423,7 @@ Takmörk:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Felur sprettiglugga sem birtast nálægt spjallstikunni, eins og tilkynningu um spjall eingöngu fyrir áskrifendur</string>
   <string name="morphe_hide_comments_menu_button_title">Fela valmyndarhnapp</string>
   <string name="morphe_hide_comments_menu_button_summary">Felur þriggja punkta valmyndarhnappinn á hverri athugasemd</string>
+  <string name="morphe_hide_comments_none_yet_title">Fela forsýn fyrir \"Engar athugasemdir ennþá\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Fela forsýningu athugasemda</string>
   <string name="morphe_hide_comments_preview_comment_summary">Felur forskoðun athugasemda undir myndskeiði áður en allur athugasemdahlutinn opnast</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Athugasemd falin af Morphe…</string>
@@ -433,7 +434,7 @@ Takmörk:
   <string name="morphe_hide_comments_topics_title">Fela \"Efni\"</string>
   <string name="morphe_hide_comments_topics_summary">Felur valmuni \"Efni\" í sía og fyrirlega af athugasmdum um \"Efni\" neðan við myndbandið</string>
   <string name="morphe_hide_comments_translate_button_title">Fela þýðingarhnappinn</string>
-  <string name="morphe_hide_comments_zero_state_title">Fela skilaboðin \'Engar athugasemdir ennþá\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Fela hluta \"Heimsækja samfélagið\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hreinsa auðkenndar leitartengla</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Hreinsar auðkennda leitartengla og skilur eftir aðeins upprunalega textann</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Til að sýna valmyndina 'Hljóðrás', breyttu 'Falsa myndstrauma' í hvaða bi
   <string name="morphe_channel_whitelist_channel_added">Rás bætt á hvítlista</string>
   <string name="morphe_channel_whitelist_channel_removed">Rás fjarlægð af hvítlista</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Leita</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Leita í rásinni</string>
   <string name="morphe_channel_search_summary">Bætir við öðrum leitarhnappi á rásasíðum til að leita aðeins í þeirri rás</string>
@@ -578,6 +581,13 @@ Til að sýna valmyndina 'Hljóðrás', breyttu 'Falsa myndstrauma' í hvaða bi
   <string name="morphe_channel_search_sort_oldest">Elstu</string>
   <string name="morphe_channel_search_sort_shortest">Styst</string>
   <string name="morphe_channel_search_sort_longest">Lengst</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Leita í spilunarlista</string>
+  <string name="morphe_playlist_search_summary">Bætir við öðrum leitarhnappi á spilunarlistasíðum til að leita aðeins í þeim spilunarlista</string>
+  <string name="morphe_playlist_search_hint">Leita í spilunarlista</string>
+  <string name="morphe_playlist_search_results">Leitarðurstöður spilunarlista</string>
+  <string name="morphe_playlist_search_no_results">Ekkert fannst í þessum spilunarlista</string>
+  <string name="morphe_playlist_search_failed">Gat ekki leitað í þessum spilunarlista</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Hlekkur afritaður á klippiborðið</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Hlekkur með tímamerki afritaður á klippiborðið</string>
@@ -652,6 +662,15 @@ Eftir að myndskeið með Ask-hnappnum hefur verið opnað einu sinni virkar eig
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Sýna fjölda áhorfa á smámyndum</string>
   <string name="morphe_feed_view_count_summary">Fjöldi áhorfa á myndskeiðum í straumi er sýndur neðst til vinstri á smámyndum þeirra í stað undir titlinum. Sum myndskeið, eins og í hillum, sýna ef til vill ekki fjölda áhorfa</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Sýna YouTube notandanafn</string>
+  <string name="morphe_return_youtube_username_screen_summary">Sýna rásarnöfn í stað handle</string>
+  <string name="morphe_return_youtube_username_title">Sýna rásarnöfn</string>
+  <string name="morphe_return_youtube_username_summary">Rásarnöfn eru sýnd í stað handle í athugasmdum, undir myndartitli og í Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Snið á rásarnafni</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Rásarnafn</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Heiti rásar (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Heiti rásar)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Sýna fjölda líka á smámynd í straumi</string>
   <string name="morphe_ryd_feed_like_ratio_title">Sýna hlutfall líka á smámynd í straumi</string>
@@ -664,7 +683,6 @@ Eftir að myndskeið með Ask-hnappnum hefur verið opnað einu sinni virkar eig
   <string name="morphe_search_comments_summary">Snertu leitarhnappinn í athugasemdunum til að sýna aðeins hlaðnar athugasemdir sem innihalda öll leitarorðin. Settu orð í gæsalappir til að leita að setningu</string>
   <string name="morphe_search_comments_dialog_title">Leita í athugasmdum</string>
   <string name="morphe_search_comments_hint">Orð til að leita að</string>
-  <string name="morphe_search_comments_search">Leita</string>
   <string name="morphe_search_comments_clear">Hreinsa</string>
   <string name="morphe_search_comments_applied">Breyttu röðun eða opnaðu athugasemdirnar aftur til að leita í þeim</string>
   <string name="morphe_search_comments_cleared">Leit hreinsuð. Breyttu röðun eða opnaðu athugasemdirnar aftur til að sýna allar athugasemdir</string>
@@ -838,6 +856,8 @@ Athugið: Virkar ekki alltaf í beinum streymum"</string>
   <string name="morphe_play_all_button_type_entry_10">Aðeins myndskeið fyrir meðlimi</string>
   <string name="morphe_play_all_button_type_entry_11">Aðeins Shorts fyrir meðlimi</string>
   <string name="morphe_play_all_button_type_entry_12">Aðeins bein streymi fyrir meðlimi</string>
+  <string name="morphe_play_all_button_reverse_title">Snuða röð</string>
+  <string name="morphe_play_all_button_reverse_summary">Uppbyggður spilunalisti spilar sjálfkrafa frá síðasta myndbandinu til fyrsta</string>
   <string name="morphe_play_all_button_not_available_toast">Ekki hægt að búa til spilunarlista vegna ósamræmis í auðkenni rásar</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Sýna Spilunarlista-hnappinn</string>
@@ -1036,7 +1056,7 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <string name="morphe_swipe_change_video_summary">Sveipaðu í fullskjá til að fara á næsta eða fyrra myndskeið</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Haldatákn</string>
-  <string name="morphe_hold_gesture_screen_summary">Breyttu og læstu spilunarhraða með því að draga eftir því að smella og halda</string>
+  <string name="morphe_hold_gesture_screen_summary">Breyttu og læstu spilunarhraða, og keyrðu aðgerðir, með því að draga eftir því að ýta og halda</string>
   <string name="morphe_hold_gesture_title">Virkja haldatákn</string>
   <string name="morphe_hold_gesture_summary">Eftir því að smella og halda myndbandinu má draga. Hraðinn á meðan haldið er er spilunarhraðinn við smell og hold</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Ekki notað þegar „ Ýta til að renna“ er virkt. Ýttu til að breyta</string>
@@ -1062,11 +1082,28 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <string name="morphe_hold_gesture_lock_title">Dragið niður til að læsa hraðann</string>
   <string name="morphe_hold_gesture_lock_summary">Eftir að hafa smellið og haldið áfram, dragið niður til að halda hraðanum þegar fingurinn er lyftur. Smelltu á merkið eða smelltu og haldið áfram til að útlæsa</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Sýna alltaf loka-merkið</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Merkið fyrir læstan hraða helst sýnilegt þótt stjórnborð spilarans sé falið</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Sýnir merki um læstan hraða jafnvel þegar stýringar spilarans eru ekki sýndar. Ef slökkt er á þessu sýnist merkið saman með stýringum spilarans</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Útlæsa þegar myndbandið breytist</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Læstur hraði lýkur þegar annað myndband hefst</string>
   <string name="morphe_hold_gesture_lock_hint">Dragið niður til að læsa</string>
   <string name="morphe_hold_gesture_lock_release">Sleppið til að læsa %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Dragðu upp til að opna ræsinn</string>
+  <string name="morphe_hold_gesture_launcher_summary">Eftir að hafa smellið og haldið áfram, dragið upp til að sýna aðgerðir í kringum fingurinn. Lyftið fingrinum yfir aðgerð til að keyra hana</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Fjöldi aðgerða</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Aðgerð 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Aðgerð 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Aðgerð 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Aðgerð 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Aðgerð 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Lása skjá</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Endurtekning myndskeiðs</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Stöðva hringrás</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Vista ramma</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Vista í Horfa síðar</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Afrita tengil á núverandi tíma</string>
+  <string name="morphe_hold_gesture_screen_unlock">Ýttu til að upplysa</string>
+  <string name="morphe_hold_gesture_frame_saved">Rammi vistuð í %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Gat ekki vistað rammann</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Textar</string>
   <string name="morphe_captions_screen_summary">Stjórna sjálfvirkum textum og vafrakökum fyrir texta</string>
@@ -1254,6 +1291,9 @@ Stillingar → Spilun (eða Sjálfvirk spilun) → Sjálfvirk spilun næsta mynd
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Slökkva á sjálfvirkri spilun spilunarlista</string>
   <string name="morphe_disable_playlist_autoplay_summary">Kemur í veg fyrir að spilunarlistar fari sjálfkrafa yfir á næsta myndskeið</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Snuða sjálfvirkri spilun spilunalista</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Spilunalistar spila sjálfkrafa frá síðasta myndbandinu til fyrsta. Blandanir eru ekki snúðar</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Stjórnun á sjálfspuni</string>
   <string name="morphe_autoplay_control_summary">Bætir við spilarhnappi og reglu fyrir næsta myndband. Spilunslistar og raðir halda áfram, blanda stöðvast eftir ákveðnum fjölda myndbanda, mælt myndband spilar aldrei. Ýttu á hnappinn fyrir næsta ham, ýttu og haltuu inni fyrir listann</string>
@@ -1301,6 +1341,21 @@ Stillingar → Spilun (eða Sjálfvirk spilun) → Sjálfvirk spilun næsta mynd
   <string name="morphe_fullscreen_video_scale_button_summary">Ýttu til að skipta á milli Sjálfgefið, Teygja og Aðdráttur</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Sýna aðeins í fullskjá</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Fela stærðarhnapp myndbandsins í andlitsmynd spilara</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Sýna hnappinn Spila aftur hægar</string>
+  <string name="morphe_replay_video_button_summary">Spólar aftur og hægir tímabundið á myndbandinu. Ýttu aftur til að hætta</string>
+  <string name="morphe_replay_video_swipe_title">Strikarðu til vinstra til að spila aftur hægar</string>
+  <string name="morphe_replay_video_swipe_summary">Strikarðu til vinstra á myndbandinu til að spóla 1-10 sekúndu aftur, eftir lengd strikningarinnar. Strikningastýringar leita og strikningar í efsta svæðinu hafa forgang</string>
+  <string name="morphe_replay_video_swipe_preview">Spila aftur %s s</string>
+  <string name="morphe_replay_video_seconds_title">Tímalengd afturspilunar</string>
+  <string name="morphe_replay_video_seconds_summary">Hvað fáum sekúndum hnappinn spólar myndbandið til baka</string>
+  <string name="morphe_replay_video_slow_seconds_title">Tímalengd hægar spilunar</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Hvað fáum sekúndum af myndbandinu spilast í endurspilunarhraða eftir að spólað hefur verið til baka</string>
+  <string name="morphe_replay_video_speed_title">Endurspilunarhraði</string>
+  <string name="morphe_replay_video_speed_summary">Spilunarhraði endurspilunarinnar, t.d. 0,5. Endurspilunin er aldrei hraðari en núverandi hraði</string>
+  <string name="morphe_replay_video_start">Spila hægar aftur</string>
+  <string name="morphe_replay_video_unavailable">Hæg endurspilun er ekki aðgengileg fyrir þetta myndband</string>
+  <string name="morphe_replay_video_speed_invalid">Ógilt endurspilunarhraði, stillt aftur á sjálfgefið</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Sýna þöggunarhnapp</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

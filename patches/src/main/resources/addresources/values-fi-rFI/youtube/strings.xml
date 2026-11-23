@@ -423,6 +423,7 @@ Rajoitukset:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Piilottaa chat-syöttöpalkin lähellä näytettävät työkaluvihjeet, kuten vain tilaajille suunnatun chat-huomautuksen</string>
   <string name="morphe_hide_comments_menu_button_title">Piilota Menu-painike</string>
   <string name="morphe_hide_comments_menu_button_summary">Piilottaa jokaisen kommentin kolmen pisteen valikkopainikkeen</string>
+  <string name="morphe_hide_comments_none_yet_title">Piilota \"Ei vielä kommentteja\" -esikatselu</string>
   <string name="morphe_hide_comments_preview_comment_title">Piilota kommentin esikatselu</string>
   <string name="morphe_hide_comments_preview_comment_summary">Piilottaa kommenttien esikatselun videon alapuolella ennen koko kommenttiosion avaamista</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphen piilottama kommentti…</string>
@@ -433,7 +434,7 @@ Rajoitukset:
   <string name="morphe_hide_comments_topics_title">Piilota \"Aiheet\"</string>
   <string name="morphe_hide_comments_topics_summary">Piilottaa \"Aiheet\"-suodatinpalkin vaihtoehdon ja \"Aihe\"-kommenttien esikatselut videon alta</string>
   <string name="morphe_hide_comments_translate_button_title">Piilota Käännä-painike</string>
-  <string name="morphe_hide_comments_zero_state_title">Piilota viesti \"Ei vielä kommentteja\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Piilota \"Tutustu yhteisöön\" -osio</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhdistaa korostettujen hakulinkkien koodin</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhdistaa korostettujen hakulinkkien koodin jättäen jäljelle vain alkuperäisen tekstin</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_channel_whitelist_channel_added">Kanava lisätty valkolistalle</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanava poistettu valkolistalta</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Haku</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Hae kanavasta</string>
   <string name="morphe_channel_search_summary">Lisää kanavasivuille toisen hakupainikkeen, jolla voi hakea vain kyseiseltä kanavalta</string>
@@ -578,6 +581,13 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_channel_search_sort_oldest">Vanhin</string>
   <string name="morphe_channel_search_sort_shortest">Lyhin</string>
   <string name="morphe_channel_search_sort_longest">Pisin</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Hae soittolistasta</string>
+  <string name="morphe_playlist_search_summary">Lisää soittolistasivuille toinen hakupainike, jolla voi hakea vain kyseisestä soittolistasta</string>
+  <string name="morphe_playlist_search_hint">Hae soittolistasta</string>
+  <string name="morphe_playlist_search_results">Soittolistan hakutulokset</string>
+  <string name="morphe_playlist_search_no_results">Tästä soittolistasta ei löytynyt mitään</string>
+  <string name="morphe_playlist_search_failed">Tästä soittolistasta ei voitu hakea</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Linkki kopioitu leikepöydälle</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Linkki aikaleimalla kopioitu leikepöydälle</string>
@@ -652,6 +662,15 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Näytä katselukerrat pikkukuvissa</string>
   <string name="morphe_feed_view_count_summary">Syötteen videoiden katselukerrat näytetään niiden pikkukuvan vasemmassa alareunassa eikä otsikon alapuolella. Jotkin videot, kuten hyllyissä olevat, eivät välttämättä näytä katselukertaa</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Palauta YouTuben käyttäjänimi</string>
+  <string name="morphe_return_youtube_username_screen_summary">Näytä kanavan nimet tunnistetietojen sijaan</string>
+  <string name="morphe_return_youtube_username_title">Näytä kanavan nimet</string>
+  <string name="morphe_return_youtube_username_summary">Kanavan nimet näytetään tunnistetietojen sijaan kommenteissa, videon otsikon alapuolella ja Shorts-videoissa</string>
+  <string name="morphe_return_youtube_username_display_format_title">Kanavan nimen muoto</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanavan nimi</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanavan nimi (@käyttäjätunnus)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@käyttäjätunnus (Kanavan nimi)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Näytä syötteen pikkukuvan tykkäysmäärä</string>
   <string name="morphe_ryd_feed_like_ratio_title">Näytä syötteen pikkukuvan tykkäysprosentti</string>
@@ -664,7 +683,6 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_search_comments_summary">Napauta kommenttien hakupainiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Laita sanat lainausmerkkeihin hakeaksesi tiettyä fraasia</string>
   <string name="morphe_search_comments_dialog_title">Hae kommenteista</string>
   <string name="morphe_search_comments_hint">Hakusanat</string>
-  <string name="morphe_search_comments_search">Haku</string>
   <string name="morphe_search_comments_clear">Tyhjennä</string>
   <string name="morphe_search_comments_applied">Muuta järjestys tai avaa kommentit uudelleen hakeaksesi niistä</string>
   <string name="morphe_search_comments_cleared">Haku tyhjennetty. Muuta järjestys tai avaa kommentit uudelleen näyttääksesi kaikki kommentit</string>
@@ -838,6 +856,8 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_play_all_button_type_entry_10">Vain jäsenten videot</string>
   <string name="morphe_play_all_button_type_entry_11">Jäsenille vain Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Vain jäsenten striimivideot</string>
+  <string name="morphe_play_all_button_reverse_title">Käänteinen järjestys</string>
+  <string name="morphe_play_all_button_reverse_summary">Luotu soittolista toistetaan automaattisesti viimeisestä videosta ensimmäiseen</string>
   <string name="morphe_play_all_button_not_available_toast">Kanavatunnuserojen vuoksi soittolistaa ei voitu luoda</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Näytä Soittolista-painike</string>
@@ -1036,7 +1056,7 @@ Korjaa tämä ottamalla käyttöön 'Naamioi videovirrat' ja vaihtamalla 'Oletus
   <string name="morphe_swipe_change_video_summary">Pyyhkäise koko näytön tilassa siirtyäksesi seuraavaan tai edelliseen videoon</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Pidätusele</string>
-  <string name="morphe_hold_gesture_screen_summary">Muuta ja lukitse toistonopeus vetämällä napautuksen ja pidämisen jälkeen</string>
+  <string name="morphe_hold_gesture_screen_summary">Muuta ja lukitse toistonopeus sekä suorita toimintoja vetämällä napautuksen ja pidämisen jälkeen</string>
   <string name="morphe_hold_gesture_title">Ota pidätusele käyttöön</string>
   <string name="morphe_hold_gesture_summary">Videon napauttamista ja pidämistä voi seurata vetäminen. Pitämisen aikana nopeus on napautuksen ja pidämisen toistonopeus</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Ei käytössä, kun Pyyhkäise painamalla on päällä. Napauta muuttaaksesi</string>
@@ -1062,11 +1082,28 @@ Korjaa tämä ottamalla käyttöön 'Naamioi videovirrat' ja vaihtamalla 'Oletus
   <string name="morphe_hold_gesture_lock_title">Raahaa alas lukitaksesi nopeuden</string>
   <string name="morphe_hold_gesture_lock_summary">Napauta ja pidä pohjassa, raahaa sitten alas pitääksesi nopeuden, kun sormi nostetaan. Napauta merkkiä tai napauta ja pidä pohjassa uudelleen avataksesi lukituksen</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Näytä lukitusmerkki aina</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Lukitun nopeuden merkki pysyy näkyvissä, vaikka soittimen ohjaimet on piilotettu</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Näyttää lukitun nopeuden merkin myös silloin, kun soittimen ohjaimet eivät ole näkyvissä. Jos tämä on pois päältä, merkki näkyy yhdessä soittimen ohjainten kanssa</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Avaa lukitus, kun video vaihtuu</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Lukittu nopeus päättyy, kun toinen video alkaa</string>
   <string name="morphe_hold_gesture_lock_hint">Vedä alas lukitaksesi</string>
   <string name="morphe_hold_gesture_lock_release">Vapauta lukitaksesi %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Vedä ylöspäin avataksesi käynnistimen</string>
+  <string name="morphe_hold_gesture_launcher_summary">Vedä napauttamisen ja pitämisen jälkeen ylöspäin näyttääksesi sormen ympärillä olevat toiminnot. Nosta sormi toiminnon kohdalta suorittaaksesi sen</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Toimintojen määrä</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Toiminto 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Toiminto 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Toiminto 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Toiminto 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Toiminto 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Lukitse näyttö</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Toista videota jatkuvasti</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Lopeta toisto</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Tallenna ruutu</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Tallenna Katso myöhemmin -listaan</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopioi linkki nykyisestä kohdasta</string>
+  <string name="morphe_hold_gesture_screen_unlock">Napauta avataksesi</string>
+  <string name="morphe_hold_gesture_frame_saved">Ruutu tallennettu kohteeseen %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Ruutua ei voitu tallentaa</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Tekstitykset</string>
   <string name="morphe_captions_screen_summary">Hallitse automaattisia tekstityksiä ja tekstitysevästeitä</string>
@@ -1254,6 +1291,9 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Poista soittolistan automaattinen toisto käytöstä</string>
   <string name="morphe_disable_playlist_autoplay_summary">Estää soittolistoja siirtymästä automaattisesti seuraavaan videoon</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Käännä soittolistan automaattinen toisto</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Soittolistoja toistetaan automaattisesti viimeisestä videosta ensimmäiseen. Miksauksia ei käännetä</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Automaattisen toiston ohjaus</string>
   <string name="morphe_autoplay_control_summary">Lisää soittimen painikkeen ja säännön seuraavalle videolle. Soittolistat ja jonot jatkuvat, Mix-lista pysähtyy tietyn videomäärän jälkeen, ehdotettua videota ei koskaan toisteta. Napauta painiketta vaihtaaksesi tilaa, napauta ja pidä painettuna nähdäksesi luettelon</string>
@@ -1301,6 +1341,21 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_fullscreen_video_scale_button_summary">Napauta vaihtaaksesi oletuksen, venytyksen ja zoomin välillä</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Näytä vain koko näytössä</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Piilota videoskaalauspainike pystyasennon soittimessa</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Näytä Toista hitaammin -painike</string>
+  <string name="morphe_replay_video_button_summary">Kelaa videota taaksepäin ja hidasta sitä tilapäisesti. Napauta uudelleen peruuttaaksesi</string>
+  <string name="morphe_replay_video_swipe_title">Pyyhkäise vasemmalle toistaaksesi hitaammin</string>
+  <string name="morphe_replay_video_swipe_summary">Pyyhkäise videolla vasemmalle kelataksesi 1–10 sekuntia taaksepäin pyyhkäisyn pituudesta riippuen. Pyyhkäisyn ohjaimet hakevat kohtaa ja yläalueen pyyhkäisyt ovat ensisijaisia</string>
+  <string name="morphe_replay_video_swipe_preview">Toista %s s</string>
+  <string name="morphe_replay_video_seconds_title">Kelauskesto</string>
+  <string name="morphe_replay_video_seconds_summary">Kuinka monta sekuntia painike kelaa videota taaksepäin</string>
+  <string name="morphe_replay_video_slow_seconds_title">Hitaan toiston kesto</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Kuinka monta sekuntia videota toistetaan toistonopeudella kelaamisen jälkeen</string>
+  <string name="morphe_replay_video_speed_title">Toistonopeus</string>
+  <string name="morphe_replay_video_speed_summary">Toiston nopeus, esimerkiksi 0,5. Toisto ei ole koskaan nopeampaa kuin nykyinen nopeus</string>
+  <string name="morphe_replay_video_start">Toista hitaammin</string>
+  <string name="morphe_replay_video_unavailable">Hidas toisto ei ole käytettävissä tälle videolle</string>
+  <string name="morphe_replay_video_speed_invalid">Virheellinen toistonopeus, palautettu oletusarvoon</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Näytä mykistyspainike</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

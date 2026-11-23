@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Чат бичих хэсгийн дэргэд гардаг бүртгэлтэй хэрэглэгчийн чатын мэдэгдэл зэрэг туслах зөвлөмжийн цонхнуудыг нууна</string>
   <string name="morphe_hide_comments_menu_button_title">Цэсний товчийг нуух</string>
   <string name="morphe_hide_comments_menu_button_summary">Сэтгэгдэл бүрийн 3 цэгийн цэсний товчийг нуух</string>
+  <string name="morphe_hide_comments_none_yet_title">\'Одоогоор сэтгэгдэлгүй\' урьдчилж харуулалтыг нуух</string>
   <string name="morphe_hide_comments_preview_comment_title">Сэтгэгдлийн урьдчилгаа харалтыг нуух</string>
   <string name="morphe_hide_comments_preview_comment_summary">Сэтгэгдлийн бүрэн хэсгийг нээхээс өмнө видеоны доорх сэтгэгдлийн урьдчилан харуулах хэсгийг нууна</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Сэтгэгдлийг Morphe нуусан…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">\'Сэдэв\'-ийг нуух</string>
   <string name="morphe_hide_comments_topics_summary">\'Сэдэв\' шүүлтүүрийн мөрийг болон видеоны доорх \'Сэдэв\'-ийн сэтгэгдлийн урьдчилсан харагдлыг нуух</string>
   <string name="morphe_hide_comments_translate_button_title">Орчуулгын товчийг нуух</string>
-  <string name="morphe_hide_comments_zero_state_title">\'Одоогоор сэтгэгдэлгүй байна\' гэсэн мэдэгдлийг нуух</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">\'Хамтအнлэгт зочилно уу\' хэсгийг нуух</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Хайлтын онцгой тэмдэглэгээтэй холбоосуудыг цэвэрлэх</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Хайлтын онцгой тэмдэглэгээтэй холбоосуудыг цэвэрлэж, зөвхөн эх хувийн энгийн текстийг үлдээнэ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Сувгийг цагаан жагсаалтад нэмлээ</string>
   <string name="morphe_channel_whitelist_channel_removed">Сувгийг цагаан жагсаалтаас хаслаа</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Хайх</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Сувгаас хайх</string>
   <string name="morphe_channel_search_summary">Сувгийн хуудсанд зөвхөн тухайн сувгаас хайх зориулалттай хоёр дахь хайлтын товчийг нэмнэ</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">Хамгийн эртний</string>
   <string name="morphe_channel_search_sort_shortest">Хамгийн богино</string>
   <string name="morphe_channel_search_sort_longest">Хамгийн урт</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Жагсаалтаас хайх</string>
+  <string name="morphe_playlist_search_summary">Жагсаалтын хуудсанд зөвхөн тухайн жагсаалтаас хайх зориулалттай хоёр дахь хайлтын товчийг нэмнэ</string>
+  <string name="morphe_playlist_search_hint">Жагсаалтаас хайх</string>
+  <string name="morphe_playlist_search_results">Жагсаалтын хайлтын үр дүн</string>
+  <string name="morphe_playlist_search_no_results">Энэхүү жагсаалтаас юу ч олдсонгүй</string>
+  <string name="morphe_playlist_search_failed">Энэхүү жагсаалтаас хайх боломжгүй боллоо</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Холбоосыг санах ой руу хууллаа</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Цаг хугацаатай холбоосыг санах ой руу хууллаа</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Thumbnail дээр үзэлтийн тоог харуулах</string>
   <string name="morphe_feed_view_count_summary">Фийдийн видеонуудын үзэлтийн тоог гарчиг доор биш, харин thumbnail-ийн зүүн доод хэсэгт харуулна. Зарим видеонууд, жишээ нь талбайн видеонуудад үзэлтийн тоо харагдахгүй байж болно</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTube хэрэглэгчийн нэрийг буцаах</string>
+  <string name="morphe_return_youtube_username_screen_summary">Хандлын нэрийн оронд сувгийн нэрийг харуулах</string>
+  <string name="morphe_return_youtube_username_title">Сувгийн нэрийг харуулах</string>
+  <string name="morphe_return_youtube_username_summary">Сэтгэгдэл, видеоны гарчиг доор болон Shorts-т хандлын нэрийн оронд сувгийн нэрийг харуулна</string>
+  <string name="morphe_return_youtube_username_display_format_title">Сувгийн нэрийн формат</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Сувгийн нэр</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Сувгийн нэр (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Сувгийн нэр)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Фидийн миниатюрын лайк тоог харуулах</string>
   <string name="morphe_ryd_feed_like_ratio_title">Фидийн миниатюрын лайк хувийг харуулах</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">Сэтгэгдлүүд дотроос хайх товчийг дарж, хайсан бүх үг бүхий ачаалагдсан сэтгэгдлүүдийг л харуулна. Хэллэгийг хайхын тулд үгсийг хашилтанд хийгээрэй</string>
   <string name="morphe_search_comments_dialog_title">Сэтгэгдэл хайх</string>
   <string name="morphe_search_comments_hint">Хайх үгс</string>
-  <string name="morphe_search_comments_search">Хайх</string>
   <string name="morphe_search_comments_clear">Цэвэрлэх</string>
   <string name="morphe_search_comments_applied">Эрэмбэлэлтийн дарааллыг өөрчлөх эсвэл сэтгэгдлийг дахин нээж хайх</string>
   <string name="morphe_search_comments_cleared">Хайлт цэвэрлэгдлээ. Бүх сэтгэгдлийг харуулахын тулд эрэмбэлэлтийн дарааллыг өөрчлөх эсвэл сэтгэгдлийг дахин нээх</string>
@@ -838,6 +856,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_play_all_button_type_entry_10">Зөвхөн гишүүдэд зориулсан видео</string>
   <string name="morphe_play_all_button_type_entry_11">Зөвхөн гишүүдэд зориулсан Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Зөвхөн гишүүдэд зориулсан шууд дамжуулалтууд</string>
+  <string name="morphe_play_all_button_reverse_title">Урвуу дараалал</string>
+  <string name="morphe_play_all_button_reverse_summary">Үүсгэсэн тоглолтын жагсаалт сүүлийн видеоноос эхлэн эхнийх хүртэл автоматаар тоглогдоно</string>
   <string name="morphe_play_all_button_not_available_toast">Сувгийн ID зөрүүтэй байгаа тул тоглолтын жагсаалт үүсгэх боломжгүй байна</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Жагсаалтыг харах товчлуур</string>
@@ -1036,7 +1056,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_swipe_change_video_summary">Дараагийн эсвэл өмнөх видео руу шилжихдээ бүтэн дэлгэц горимд гүйлгэх</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Дарж барих жест</string>
-  <string name="morphe_hold_gesture_screen_summary">Дарж бариад чирж тоглуулах хурдыг өөрчлөх болон түгжих</string>
+  <string name="morphe_hold_gesture_screen_summary">Дараад тэрийлгэх замаар тоглуулах хурдыг өөрчилж, түгжээгээр бэхлэх болон үйлдлүүдийг ажиллуулна</string>
   <string name="morphe_hold_gesture_title">Дарж барих жестийг идэвхжүүлэх</string>
   <string name="morphe_hold_gesture_summary">Видеог дарж барисны дараа чирж болно. Барьж байх үеийн хурд нь дарж барих тоглуулах хурд байх болно</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">\"Дарлаад гүйлгэх\" идэвхтэй байх үед ашиглахгүй. Өөрчлөхийн тулд товшино уу</string>
@@ -1062,11 +1082,28 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_hold_gesture_lock_title">Хурдыг түгжихдээ доош чирнэ үү</string>
   <string name="morphe_hold_gesture_lock_summary">Дарж удержисны дараа, хуруугаа авсан ч хурдыг хэвээр үлдээхийн тулд доош чирнэ үү. Түгжээг тайлахын тулд тэмдэг дээр дарах эсвэл дахин дарж удержинэ үү</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Түгжээний тэмдгийг үргэлж харуулах</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Тоглуулагчийн удирдлага нуугдсан үед түгжигдсэн хурдны тэмдэг харагдах хэвээр байна</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Тоглуулагчийн удирдлага харагдахгүй байх үед ч түгжигдсэн хурдны тэмдгийг харуулна. Унтраасан тохиолдолд тэмдэг нь тоглуулагчийн удирдлагатай хамт харагдана</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Видео өөрчлөгдөхөд түгжээг тайлах</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Өөр видео эхлэхэд түгжигдсэн хурд дуусна</string>
   <string name="morphe_hold_gesture_lock_hint">Түгжээрэй гэж доошоо татна уу</string>
   <string name="morphe_hold_gesture_lock_release">%s-г түгжэхийн тулд тавь</string>
+  <string name="morphe_hold_gesture_launcher_title">Launcher-ийг нээхийн тулд дээшээ чирнэ</string>
+  <string name="morphe_hold_gesture_launcher_summary">Дарж тэрийлгэсний дараа хурууны эргэн тойронд үйлдлүүдийг харуулахын тулд дээшээ чирнэ. Үйлдлийг гүйцэтгэхийн тулд хуруугаа авнаурай</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Үйлдлийн тоо</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Үйлдэл 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Үйлдэл 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Үйлдэл 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Үйлдэл 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Үйлдэл 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Дэлгэцийг түгжих</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Видеог давтах</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Давталтыг зогсоох</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Кадрыг хадгалах</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Дараа үзэх хэсэгт хадгалах</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Одоогийн цаг дээрх холбоосыг хуулах</string>
+  <string name="morphe_hold_gesture_screen_unlock">Түгжээг тайлахын тулд товшино уу</string>
+  <string name="morphe_hold_gesture_frame_saved">Кадрыг %s дотор хадгаллаа</string>
+  <string name="morphe_hold_gesture_frame_failed">Кадрыг хадгалах боломжгүй боллоо</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Хадмал орчуулга</string>
   <string name="morphe_captions_screen_summary">Автомат хадмал орчуулга болон хадмал орчуулгын кукиг удирдах</string>
@@ -1254,6 +1291,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Жагсаалтын автоматаар тоглуулалтыг идэвхгүй болгох</string>
   <string name="morphe_disable_playlist_autoplay_summary">Жагсаалтыг дараагийн видео руу автоматаар шилжүүлэхээс сэргийлнэ</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Тоглолтын жагсаалтын авто-тоглуулалтыг урвуулах</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Тоглолтын жагсаалт сүүлийн видеоноос эхлэн эхнийх хүртэл автоматаар тоглогдоно. Mixes-үүд урвуулагдахгүй</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Автоматаар тоглуулах удирдлага</string>
   <string name="morphe_autoplay_control_summary">Тоглуулагчийн товчлуур болон дараагийн бичлэгт зориулсан дүрэм нэмнэ. Тоглуулах жагсаалт болон дараалал үргэлжлэн, Mix-ийн хувьд тодорхой тооны бичлэгийн дараа зогсоно, санал болгосон бичлэг хэзээ ч тоглогдохгүй. Дараагийн горилыг сонгохын тулд товчлуурыг дарж, жагсаалтыг харахын тулд удаан дарна уу.</string>
@@ -1301,6 +1341,21 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Үндсэн, Сунгах, Томруулах горимуудын хооронд шилжүүлэхээр дарна уу</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Зөвхөн бүтэн дэлгэцээр харуулах</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Босоо тоглуулагч дээрх видеоны хэмжээг өөрчлөх товчийг нуух</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Дахин тоглуулах хурдыг удаашруулах товчлуурыг харуулах</string>
+  <string name="morphe_replay_video_button_summary">Бичлэгийг ухрааж, түр зуур удаашруулна. Цуцлахын тулд дахин дарна уу</string>
+  <string name="morphe_replay_video_swipe_title">Удаан дахин тоглуулахын тулд зүүн тийш гүйлгээрэй</string>
+  <string name="morphe_replay_video_swipe_summary">Бичлэг дээр зүүн тийш гүйлгэснээр гүйлгэсний уртаас хамааран 1-10 секундийн ухрааж үзнэ. Гүйлгэж удирдах болон дээд хэсгийн гүйлгэсэн үйлдлүүд түрүүлж ажиллана</string>
+  <string name="morphe_replay_video_swipe_preview">%s сек ухраах</string>
+  <string name="morphe_replay_video_seconds_title">Ухрах хугацаа</string>
+  <string name="morphe_replay_video_seconds_summary">Товчлуур дээр дарах бүрд видеог хэдэн секундын өмнө ухраахыг заана</string>
+  <string name="morphe_replay_video_slow_seconds_title">Удаан тоглуулах хугацаа</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Ухрааны дараа видеоны хэдэн секундыг давтан тоглуулах хурдаар тоглуулахыг заана</string>
+  <string name="morphe_replay_video_speed_title">Давтан тоглуулах хурд</string>
+  <string name="morphe_replay_video_speed_summary">Давтан тоглуулах хурд, жишээ нь 0.5. Давтан тоглуулах хурд нь одоогийн хурдаас хэтрэхгүй болно</string>
+  <string name="morphe_replay_video_start">Удаан давтан тоглуулах</string>
+  <string name="morphe_replay_video_unavailable">Энэхүү видеонд удаан давтан тоглуулах боломжгүй</string>
+  <string name="morphe_replay_video_speed_invalid">Давтан тоглуулах хурд буруу байна, үйлдвэрлэлийн тохиргоо руу буцаана</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Дууг хаах товчийг харуулах</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

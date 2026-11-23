@@ -219,8 +219,8 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_prioritize_video_quality_summary">Eelistab koodeki tõhususele kõrgeimat saadaolevat videokvaliteeti</string>
   <string name="morphe_prioritize_video_quality_dialog">Kui see seade on välja lülitatud, siis vanematel videotel ei pruugida olla videokvaliteedi valikuid</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_stream_title">Võtta DRC audio kasutusest</string>
-  <string name="morphe_disable_drc_audio_stream_summary">Esitab originaalsheli asemel versiooni koos kompressiooniga dünaamika vahemikuga</string>
+  <string name="morphe_disable_drc_audio_stream_title">Lülita DRC audio välja</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Esitab algse heli, mitte kokkusurutud dünaamilise ulatusega versiooni</string>
   <string name="morphe_disable_loudness_normalization_title">Väldi helitugevuse normaliseerimist</string>
   <string name="morphe_disable_loudness_normalization_summary">Esitab tugevat heli algse kõvususega selle asemel, et langetada seda standardtasemele</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -235,7 +235,7 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_video_effect_title">Videoefekt</string>
   <string name="morphe_video_effect_entry_none">Väljas</string>
   <string name="morphe_video_effects_custom_title">Muuda videoefekte</string>
-  <string name="morphe_video_effects_custom_summary">Muuda, nimele uuenda, kustuta või lisa videoefekte. Efektid on shaderi kood, nii et AI vestlusbot saab kirjutada uusi</string>
+  <string name="morphe_video_effects_custom_summary">Muuda, nime own, kustuta või lisa videoefekte. Efektid on shaderi kood, nii et AI vestlusbot saab kirjutada uusi</string>
   <string name="morphe_video_effects_custom_empty">Videoefekte pole. Puudutage nuppu Lisa efekt, et luua uus.</string>
   <string name="morphe_video_effects_custom_add">Lisa efekt</string>
   <string name="morphe_video_effects_custom_restore">Taasta vaikeväärtused</string>
@@ -249,6 +249,9 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_video_effects_custom_error_message">"Videoid kuvatakse ilma efektita seni, kuni kood on parandatud. Saatke see viga tehisintellektile, kes koodi kirjutas:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kood lõppeb funktsiooni või kommentaari sees, seega on see tõenäoliselt kopeerimise või liimimise käigus katkestunud. Liimitud tekst võib katkestuda %d märgi juures.
+
+Paluge tehisintellektilt lühemat koodi või liimige kood osade kaugu."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopeerimise viga</string>
   <string name="morphe_video_effects_custom_save_anyway">Salvesta ikkagi</string>
   <string name="morphe_video_effects_custom_delete">Kustuta</string>
@@ -375,12 +378,12 @@ Kui see hiljem välja lülitada, on soovitatav puhastada rakenduse andmed, et v�
   <string name="morphe_glass_menus_screen_summary">Menüüd on nagu matte klaas häguse sisu kohal</string>
   <string name="morphe_glass_menus_title">Luba klaasmenüüd</string>
   <string name="morphe_glass_menus_summary">Kuvab menüüd ja alumised paneelid kui matt klaas, kus nende taga olev sisu on hägusetatud</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menüüd on peaaegu läbivaatamatud, kui akutehaversaja on sisse lülitatud või kui seade ei toeta hägusefekti</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menüüd on peaaegu läbivaatamatud, kui akusäästaja on sisse lülitatud või kui seade ei toeta hägusefekti</string>
   <string name="morphe_glass_menus_opacity_title">Klaasi läbipaistmatus</string>
   <string name="morphe_glass_menus_opacity_summary">Kui palju menüü katab häguse sisu (0 on läbipaistev, 100 on läbivaatamatu)</string>
   <string name="morphe_glass_menus_blur_title">Hägu</string>
   <string name="morphe_glass_menus_blur_summary">Kui palju on menüü taga olev sisu hägune</string>
-  <string name="morphe_glass_menus_dim_title">Tõmbedus</string>
+  <string name="morphe_glass_menus_dim_title">Hämarus</string>
   <string name="morphe_glass_menus_dim_summary">Kui palju on alumse lehe ümber olev ekraan pimestatud</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

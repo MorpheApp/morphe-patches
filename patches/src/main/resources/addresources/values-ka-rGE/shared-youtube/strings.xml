@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"ვიდეოები გამოჩნდება ეფექტის გარეშე, სანამ კოდი არ გამოსწორდება. მიაწოდეთ ეს შეცდომა AI-ს, რომელმაც დაწერა კოდი:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"კოდი სრულდება ფუნქციაში ან კომენტარში, ამიტომ ის სავარაუდოდ გაწყდა კოპირების ან ჩასმის დროს. ჩასმული ტექსტი შეიძლება გაწყდეს %d სიმბოლოზე.
+
+სთხოვეთ AI-ს უფრო მოკლე კოდი, ან ჩასვით კოდი ნაწილებად."</string>
   <string name="morphe_video_effects_custom_copy_error">შეცდომის კოპირება</string>
   <string name="morphe_video_effects_custom_save_anyway">მიუხედავად ამისა, შეინახეთ</string>
   <string name="morphe_video_effects_custom_delete">წაშლა</string>

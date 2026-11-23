@@ -250,6 +250,9 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_video_effects_custom_error_message">"Кодыг засах хүртлээ видеонуудыг эффектгүйгээр харуулах болно. Энэхүү алдааг кодыг бичсэн AI-д илгээнэ үү:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Код нь функц эсвэл сэтгэгдэл дотор дуусаж байгаа тул хуулах эсвэл буулгах явцад тасарсан байж магадгүй. Буулгасан текст %d тэмдэгтийн дараа тасрах боломжтой.
+
+AI-аас илүү богино код хүсэх эсвэл кодыг хэсэг хэсгээр нь буулгана уу."</string>
   <string name="morphe_video_effects_custom_copy_error">Хуулах үед алдаа гарлаа</string>
   <string name="morphe_video_effects_custom_save_anyway">Ямартай ч хамаагүй хадгалах</string>
   <string name="morphe_video_effects_custom_delete">Устгах</string>

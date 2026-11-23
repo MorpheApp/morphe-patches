@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"วิดีโอจะแสดงโดยไม่มีเอฟเฟกต์จนกว่าโค้ดจะได้รับการแก้ไข โปรดส่งข้อผิดพลาดนี้ให้กับ AI ที่เขียนโค้ด:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"โค้ดสิ้นสุดภายในฟังก์ชันหรือคอมเมนต์ ดังนั้นจึงน่าจะถูกตัดออกขณะคัดลอกหรือวาง ข้อความที่วางอาจถูกตัดออกที่ %d ตัวอักษร
+
+ขอให้ AI เขียนโค้ดให้สั้นลง หรือวางโค้ดแยกเป็นส่วนๆ"</string>
   <string name="morphe_video_effects_custom_copy_error">คัดลอกข้อผิดพลาด</string>
   <string name="morphe_video_effects_custom_save_anyway">บันทึกต่อไป</string>
   <string name="morphe_video_effects_custom_delete">ลบ</string>

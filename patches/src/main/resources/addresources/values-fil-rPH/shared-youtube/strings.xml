@@ -249,6 +249,9 @@ Para mag-sign in, pindutin ang continue sa ibaba"</string>
   <string name="morphe_video_effects_custom_error_message">"Ipinapakita ang mga video nang walang effect hanggang sa maayos ang code. Ibigay ang error na ito sa AI na sumulat ng code:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Ang code ay nagtatapos sa loob ng isang function o comment, kaya malamang na naputol ito habang kinokopya o ipinapaste. Ang ipinasteng text ay maaaring maputol sa %d na mga character.
+
+Humingi sa AI ng mas maikling code, o i-paste ang code nang pira-piraso."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopyahin ang error</string>
   <string name="morphe_video_effects_custom_save_anyway">I-save pa rin</string>
   <string name="morphe_video_effects_custom_delete">Burahin</string>

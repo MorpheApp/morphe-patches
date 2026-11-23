@@ -249,6 +249,9 @@ A bejelentkezéshez nyomd meg alul a folytatás gombot"</string>
   <string name="morphe_video_effects_custom_error_message">"A videók effekt nélkül jelennek meg, amíg a kód nem javul. Add át ezt a hibát annak az AI-nak, amely írta a kódot:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"A kód egy függvényen vagy kommenten belül ér véget, így valószínűleg le lett vágva a másolás vagy a beillesztés során. A beillesztett szöveg %d karakternél le lehet vágódni.
+
+Kérj rövidebb kódot a MI-tól, vagy illeszd be a kódot részletben."</string>
   <string name="morphe_video_effects_custom_copy_error">Hiba másolása</string>
   <string name="morphe_video_effects_custom_save_anyway">Mégis mentés</string>
   <string name="morphe_video_effects_custom_delete">Törlés</string>

@@ -249,6 +249,9 @@ Android System WebView қолданбасын ашу үшін OK түймесі�
   <string name="morphe_video_effects_custom_error_message">"Код түзетілгенше бейнелер эффектісіз көрсетіледі. Осы қатені кодты жазған AI-ға жіберіңіз:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Код функцияның немесе түсініктеменің ішінде аяқталады, сондықтан ол көшірілгенде немесе қойылғанда қиылып кеткен болуы мүмкін. Қойылған мәтін %d таңбадан кейін қиылуы мүмкін.
+
+ЖИ-ден қысқарақ код сұраңыз немесе кодты бөліктерге бөліп қойыңыз."</string>
   <string name="morphe_video_effects_custom_copy_error">Қатені көшіру</string>
   <string name="morphe_video_effects_custom_save_anyway">Бәрібір сақтау</string>
   <string name="morphe_video_effects_custom_delete">Өшіру</string>

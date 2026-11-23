@@ -249,6 +249,9 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_video_effects_custom_error_message">"Video dipaparkan tanpa kesan sehingga kod diperbetulkan. Berikan ralat ini kepada AI yang menulis kod tersebut:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod berakhir di dalam fungsi atau komen, jadi ia mungkin terpotong semasa disalin atau ditampal. Teks yang ditampal boleh terpotong pada %d aksara.
+
+Minta AI untuk kod yang lebih pendek, atau tampal kod secara berperingkat."</string>
   <string name="morphe_video_effects_custom_copy_error"> Salin ralat</string>
   <string name="morphe_video_effects_custom_save_anyway">Simpan juga</string>
   <string name="morphe_video_effects_custom_delete">Padam</string>

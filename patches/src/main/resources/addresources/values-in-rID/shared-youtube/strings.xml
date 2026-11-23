@@ -249,6 +249,9 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_video_effects_custom_error_message">"Video ditampilkan tanpa efek sampai kode diperbaiki. Berikan kesalahan ini kepada AI yang menulis kodenya:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kode berakhir di dalam fungsi atau komentar, jadi kemungkinan terpotong saat disalin atau ditempel. Teks yang ditempel dapat terpotong pada %d karakter.
+
+Minta kode yang lebih pendek kepada AI, atau tempel kode dalam beberapa bagian."</string>
   <string name="morphe_video_effects_custom_copy_error">Kesalahan penyalinan</string>
   <string name="morphe_video_effects_custom_save_anyway">Tetap simpan</string>
   <string name="morphe_video_effects_custom_delete">Hapus</string>

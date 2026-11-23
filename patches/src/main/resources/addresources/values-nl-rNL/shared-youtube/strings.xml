@@ -249,6 +249,9 @@ Druk hieronder op doorgaan om aan te melden"</string>
   <string name="morphe_video_effects_custom_error_message">"Video's worden getoond zonder het effect totdat de code is hersteld. Geef deze fout door aan de AI die de code heeft geschreven:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"De code eindigt in een functie of opmerking, dus deze is waarschijnlijk afgekapt tijdens het kopiëren of plakken. Geplakte tekst kan worden afgekapt bij %d tekens.
+
+Vraag de AI om kortere code of plak de code in delen."</string>
   <string name="morphe_video_effects_custom_copy_error">Fout kopiëren</string>
   <string name="morphe_video_effects_custom_save_anyway">Toch opslaan</string>
   <string name="morphe_video_effects_custom_delete">Verwijderen</string>

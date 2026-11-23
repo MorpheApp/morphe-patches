@@ -249,6 +249,9 @@ Da biste se prijavili, pritisnite Continue u nastavku"</string>
   <string name="morphe_video_effects_custom_error_message">"Video snimci se prikazuju bez efekta dok kod ne bude ispravljen. Prosledite ovu grešku veštačkoj inteligenciji koja je napisala kod:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod se završava unutar funkcije ili komentara, tako da je verovatno odsečen prilikom kopiranja ili lepljenja. Zalepljeni tekst može biti odsečen na %d karaktera.
+
+Zatražite od AI-ja kraći kod ili zalepite kod u delovima."</string>
   <string name="morphe_video_effects_custom_copy_error">Greška pri kopiranju</string>
   <string name="morphe_video_effects_custom_save_anyway">Ipak sačuvaj</string>
   <string name="morphe_video_effects_custom_delete">Obriši</string>

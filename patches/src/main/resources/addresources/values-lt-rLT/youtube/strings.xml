@@ -423,6 +423,7 @@ Apribojimai:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Paslepia užuominų iššokančiuosius langus, rodomus šalia pokalbio įvesties juostos, pvz., pranešimą apie pokalbį tik prenumeratoriams</string>
   <string name="morphe_hide_comments_menu_button_title">Slėpti meniu mygtuką</string>
   <string name="morphe_hide_comments_menu_button_summary">Paslepia kiekvieno komentaro 3 taškų meniu mygtuką</string>
+  <string name="morphe_hide_comments_none_yet_title">Slėpti peržiūrą „Komentarų dar nėra“</string>
   <string name="morphe_hide_comments_preview_comment_title">Slėpti komentaro peržiūrą</string>
   <string name="morphe_hide_comments_preview_comment_summary">Paslepia komentaro peržiūrą po vaizdo įrašu prieš atidarant visą komentarų skiltį</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Komentaras paslėptas „Morphe“…</string>
@@ -433,7 +434,7 @@ Apribojimai:
   <string name="morphe_hide_comments_topics_title">Slėpti „Temas“</string>
   <string name="morphe_hide_comments_topics_summary">Slėpia „Temų“ filtravimo juostos parinktį ir „Temos“ komentarių peržiūras po vaizdiniu</string>
   <string name="morphe_hide_comments_translate_button_title">Slėpti vertimo mygtuką</string>
-  <string name="morphe_hide_comments_zero_state_title">Slėpti pranešimą „Šiuo metu nėra komentarų“</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Slėpti skirtį „Apsilankyk bendruomenėje“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Valyti paryškintas paieškos nuorodas</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Išvalo paryškintas paieškos nuorodas ir palieka tik pradinį paprastąjį tekstą</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <string name="morphe_channel_whitelist_channel_added">Kanalas pridėtas prie baltojo sąrašo</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanalas pašalintas iš baltojo sąrašo</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Ieškoti</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Ieškoti kanale</string>
   <string name="morphe_channel_search_summary">Prideda antrą paieškos mygtuką kanalo puslapiuose, kad būtų galima ieškoti tik tame kanale</string>
@@ -578,6 +581,13 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <string name="morphe_channel_search_sort_oldest">Seniausi</string>
   <string name="morphe_channel_search_sort_shortest">Trumpiausi</string>
   <string name="morphe_channel_search_sort_longest">Ilgiausi</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Ieškoti grojaraštyje</string>
+  <string name="morphe_playlist_search_summary">Grojaraščių puslapiuose prideda antrą paieškos mygtuką, leidžiantį ieškoti tik tame grojaraštyje</string>
+  <string name="morphe_playlist_search_hint">Ieškoti grojaraštyje</string>
+  <string name="morphe_playlist_search_results">Grojaraščio paieškos rezultatai</string>
+  <string name="morphe_playlist_search_no_results">Šiame grojaraštyje nieko nerasta</string>
+  <string name="morphe_playlist_search_failed">Nepavyko ieškoti šiame grojaraštyje</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Nuoroda nukopijuota į mainų sritį</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Nuoroda su laiko žyme nukopijuota į mainų sritį</string>
@@ -652,6 +662,15 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Rodyti peržiūrų skaičių miniatiūrose</string>
   <string name="morphe_feed_view_count_summary">Rodyti peržiūrų skaičių vaizdo įrašų srauto vaizdo įrašuose rodomas miniatiūros kairiajame apatiniame kampe, o ne po pavadinimu. Kai kuriuose vaizdo įrašuose, pavyzdžiui, lentynose, peržiūrų skaičius gali būti nerodomas</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Grąžinti „YouTube“ vartotojo vardą</string>
+  <string name="morphe_return_youtube_username_screen_summary">Rodyti kanalų pavadinimus vietoj slaptažodžių</string>
+  <string name="morphe_return_youtube_username_title">Rodyti kanalų pavadinimus</string>
+  <string name="morphe_return_youtube_username_summary">Komentaruose, po vaizdo įrašo pavadinimu ir „Shorts“ rodomi kanalų pavadinimai vietoj slaptažodžių</string>
+  <string name="morphe_return_youtube_username_display_format_title">Kanalų pavadinimų formatas</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanalų pavadinimas</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanalo pavadinimas (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Kanalo pavadinimas)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Rodyti kanalų turinio miniatiūrų like skaičių</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rodyti kanalų turinio miniatiūrų like santykį procentais</string>
@@ -664,7 +683,6 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_search_comments_summary">Bakstelėkite paieškos mygtuką komentaruose, kad parodytumėte tik įkeltus komentarus, kuriuose yra visi ieškomi žodžiai. Norėdami ieškoti frazės, įrašykite ją kabutėse</string>
   <string name="morphe_search_comments_dialog_title">Ieškoti komentaruose</string>
   <string name="morphe_search_comments_hint">Žodžiai paieškai</string>
-  <string name="morphe_search_comments_search">Ieškoti</string>
   <string name="morphe_search_comments_clear">Valyti</string>
   <string name="morphe_search_comments_applied">Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad ieškotumėte jų</string>
   <string name="morphe_search_comments_cleared">Paieška išvalyta. Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad pamatytumėte visus komentarus</string>
@@ -837,6 +855,8 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_play_all_button_type_entry_10">Narių vaizdo įrašai</string>
   <string name="morphe_play_all_button_type_entry_11">Narių „Shorts“</string>
   <string name="morphe_play_all_button_type_entry_12">Narių tiesioginės transliacijos</string>
+  <string name="morphe_play_all_button_reverse_title">Atvirkštinė tvarka</string>
+  <string name="morphe_play_all_button_reverse_summary">Sugeneruotas grojaraštis automatiškai groja nuo paskutinio vaizdo įrašymo iki pirmojo</string>
   <string name="morphe_play_all_button_not_available_toast">Nepavyko sugeneruoti grojaraščio dėl kanalo ID neatitikimo</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Rodyti grojamąją sąrašą mygtuką</string>
@@ -1035,7 +1055,7 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_swipe_change_video_summary">Braukite viso ekrano režimu, kad pereitumėte prie kito arba ankstesnio vaizdo įrašo</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Laikymo gestas</string>
-  <string name="morphe_hold_gesture_screen_summary">Pakirštę ir laikydami, vilkite, kad pakeistumėte ir užfiksuotumėte atkūrimo greitį</string>
+  <string name="morphe_hold_gesture_screen_summary">Keiskite atkūrimo greitį ir užrakinkite ją bei vykdykite veiksmus, vilkdamas po spustelėjimo ir palaikymo</string>
   <string name="morphe_hold_gesture_title">Įjungti laikymo gestą</string>
   <string name="morphe_hold_gesture_summary">Bakstelėjus ir palaikius vaizdo įrašą, galima vilkti. Laikant, taikoma „bakstelėti ir laikyti“ atkūrimo greitis</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Nenaudojama, kai įjungta funkcija „paspauskite ir perbraukite“. Bakstelėkite, kad pakeistumėte</string>
@@ -1061,11 +1081,28 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_hold_gesture_lock_title">Vilkimo žemyn, kad užfiksuotumėte greitį</string>
   <string name="morphe_hold_gesture_lock_summary">Paliegus ir palaikius, vilkite žemyn, kad greitis išliktų pakėlus pirštą. Palieskite žymę arba vėl palieskite ir palaikykite, kad atrakintumėte</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Visada rodyti užfiksavimo žymę</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Užfiksuoto greities žymė lieka matoma, kai grotuvo valdymo elementai yra paslėpti</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Rodo užrakinto greities ženklelį ir tada, kai atkūrimo valdymo elementai nėra rodomi. Jei išjungta, ženklelis rodomas kartu su valdymo elementais</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Atrakinti pakeitus vaizdo įrašą</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Užfiksuotas greitis anuliuojamas, kai prasideda kitas vaizdo įrašas</string>
   <string name="morphe_hold_gesture_lock_hint">Vilkite žemyn, kad užrakintumėte</string>
   <string name="morphe_hold_gesture_lock_release">Paleiskite, kad užrakintumėte %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Vilkite į viršų, kad atidarytumėte paleidimo programą</string>
+  <string name="morphe_hold_gesture_launcher_summary">Palieskite ir laikykite, tada braukite aukštyn, kad parodytumėte veiksmus aplink pirštą. Pakelkite pirštą nuo veiksmo, kad jį paleistumėte</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Veiksmų skaičius</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">1 veiksmą</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">2 veiksmą</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">3 veiksmą</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">4 veiksmą</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">5 veiksmą</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Užrakinti ekraną</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Kartoti vaizdo įrašą</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Stopinti ciklavimą</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Išsaugoti kadrą</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Išsaugoti į „Žiūrėti vėliau“</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopijuoti nuorodą esamu metu</string>
+  <string name="morphe_hold_gesture_screen_unlock">Palieskite, kad atrakintumėte</string>
+  <string name="morphe_hold_gesture_frame_saved">Kadras išsaugotas į %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Nepavyko išsaugoti kadro</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitrai</string>
   <string name="morphe_captions_screen_summary">Tvarkyti automatinius subtitrus ir subtitrų slapukus</string>
@@ -1253,6 +1290,9 @@ Nustatymai → Atkūrimas (arba Automatinis atkūrimas) → Automatiškai leisti
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Išjungti grojaraščio automatinį atkūrimą</string>
   <string name="morphe_disable_playlist_autoplay_summary">Neleidžia grojaraščiams automatiškai pereiti prie kito vaizdo įrašo</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Grojaraščio tvarka atvirkščiai</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Grojaraščiai automatiškai groja nuo paskutinio vaizdo įrašymo iki pirmojo. Miksų tvarka nepakeičiama</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Automatinio grozimo valdymas</string>
   <string name="morphe_autoplay_control_summary">Prideda grotuvo mygtuką ir taisyklę kitam vaizdo įrašui. Grožimo sąrašai ir eilės tęsia veikimą, „Miksas“ sustoja po tam tikro kiekio vaizdo įrašų, rekomenduojami vaizdo įrašai niekada nėra grožami. Bakstelėkite mygtuką, kad pasirinktumėte kitą režimą, arba paspauskite ir laikykite, kad pamatytumėte sąrašą</string>
@@ -1300,6 +1340,21 @@ Nustatymai → Atkūrimas (arba Automatinis atkūrimas) → Automatiškai leisti
   <string name="morphe_fullscreen_video_scale_button_summary">Bakstelėkite, kad perjungtumėte numatytąjį, ištemptą ir priartintą režimus</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Rodyti tik viso ekrano režimu</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Slėpti vaizdo mastelio mygtuką vertikaliajame grotuve</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Rodyti lėtesnio atkūrimo mygtuką</string>
+  <string name="morphe_replay_video_button_summary">Atgrąžina ir laikinai sulėtina vaizdo įrašą. Bakstelėkite dar kartą, kad atšauktumėte</string>
+  <string name="morphe_replay_video_swipe_title">Braukite į kairę, kad atkūrtumėte lėčiau</string>
+  <string name="morphe_replay_video_swipe_summary">Braukite į kairę per vaizdo įrašą, kad atgrąžintumėte nuo 1 iki 10 sekundžių, priklausomai nuo braukimo ilgio. Braukimo valdymai ieško vietos, o viršutinės zonos braukimai turi prioritetą</string>
+  <string name="morphe_replay_video_swipe_preview">Atkurti %s s</string>
+  <string name="morphe_replay_video_seconds_title">Atgrįžimo trukmė</string>
+  <string name="morphe_replay_video_seconds_summary">Kiek sekundžių mygtukas grąžina vaizdo įrašą</string>
+  <string name="morphe_replay_video_slow_seconds_title">Lėto atkūrimo trukmė</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Kiek sekundžių vaizdo įrašas yra atkūrias lėtai po atgrįžimo</string>
+  <string name="morphe_replay_video_speed_title">Atkūrimo greitis</string>
+  <string name="morphe_replay_video_speed_summary">Atkūrimo greitis, pavyzdžiui, 0,5. Atkūrimas niekada nėra greitesnis už dabartinį greitį</string>
+  <string name="morphe_replay_video_start">Atkūrti lėčiau</string>
+  <string name="morphe_replay_video_unavailable">Šiam vaizdo įrašui lėtas atkūrimas nepasiekiamas</string>
+  <string name="morphe_replay_video_speed_invalid">Neteisingas atkūrimo greitis, grąžinta į standartinį</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Rodyti mygtuką „Nutildyti“</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

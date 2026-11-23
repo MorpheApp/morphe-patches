@@ -249,6 +249,9 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_video_effects_custom_error_message">"Videoer vises uden effekten, indtil koden er rettet. Giv denne fejl til den AI, der skrev koden:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Koden slutter inde i en funktion eller kommentar, så den blev sandsynligvis afskåret, da den blev kopieret eller indsat. Indsat tekst kan blive afskåret ved %d tegn.
+
+Bed AI'en om kortere kode, eller indsæt koden i dele."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopieringsfejl</string>
   <string name="morphe_video_effects_custom_save_anyway">Gem alligevel</string>
   <string name="morphe_video_effects_custom_delete">Slet</string>

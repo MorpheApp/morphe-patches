@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">يُخفي نوافذ التلميحات المنبثقة التي تظهر بجوار شريط كتابة المحادثة، مثل إشعار المحادثة مخصصة للمشتركين فقط</string>
   <string name="morphe_hide_comments_menu_button_title">إخفاء زر القائمة</string>
   <string name="morphe_hide_comments_menu_button_summary">يخفي زر القائمة ذي النقاط الثلاث لكل تعليق</string>
+  <string name="morphe_hide_comments_none_yet_title">إخفاء معاينة \'ليس هناك أي تعليقات حتى الآن\'</string>
   <string name="morphe_hide_comments_preview_comment_title">إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_comments_preview_comment_summary">يخفي تعليق المعاينة أسفل الفيديو قبل فتح قسم التعليقات الكامل</string>
   <string name="morphe_hide_comments_preview_comment_hidden">تم إخفاء التعليق بواسطة Morphe...</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">إخفاء \'المواضيع\'</string>
   <string name="morphe_hide_comments_topics_summary">يخفي خيار \'المواضيع\' بشريط تصفية التعليقات ومعاينات تعليق \'الموضوع\' أسفل الفيديو</string>
   <string name="morphe_hide_comments_translate_button_title">إخفاء زر الترجمة</string>
-  <string name="morphe_hide_comments_zero_state_title">إخفاء رسالة \'ليس هناك أي تعليقات حتى الآن\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">إخفاء قسم \'زيارة المجتمع\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">تنظيف روابط البحث المميزة</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">ينظف روابط البحث المميزة، ويترك فقط النص الأصلي العادي</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
   <string name="morphe_channel_whitelist_channel_removed">تمت إزالة القناة من القائمة المسموح بها</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">البحث</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">البحث داخل القناة</string>
   <string name="morphe_channel_search_summary">يضيف زر بحث ثانٍ في صفحات القناة للبحث في تلك القناة فقط</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">الأقدَّم</string>
   <string name="morphe_channel_search_sort_shortest">الأقصَّر</string>
   <string name="morphe_channel_search_sort_longest">الأطوَّل</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">البحث داخل قائمة التشغيل</string>
+  <string name="morphe_playlist_search_summary">يضيف زر بحث ثانٍ في صفحات قائمة التشغيل للبحث في قائمة التشغيل هذه فقط</string>
+  <string name="morphe_playlist_search_hint">البحث في قائمة التشغيل</string>
+  <string name="morphe_playlist_search_results">نتائج البحث في قائمة التشغيل</string>
+  <string name="morphe_playlist_search_no_results">لم يتم العثور على شيء في قائمة التشغيل هذه</string>
+  <string name="morphe_playlist_search_failed">تعذر البحث في قائمة التشغيل هذه</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">تم نسخ الرابط مع الطابع الزمني إلى الحافظة</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">عرض عدد المشاهدات على الصور المصغرة</string>
   <string name="morphe_feed_view_count_summary">يتم عرض عدد مشاهدات فيديوهات الخلاصة في أسفل يسار الصورة المصغرة بدلًا من أسفل العنوان. بعض الفيديوهات، مثل تلك الموجودة في الرفوف، قد لا تعرض عدد المشاهدات</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">استعادة اسم مستخدم YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">عرض أسماء القنوات بدلًا من المعرفات</string>
+  <string name="morphe_return_youtube_username_title">عرض أسماء القنوات</string>
+  <string name="morphe_return_youtube_username_summary">تُعرض أسماء القنوات بدلًا من المعرفات في التعليقات، وأسفل عنوان الفيديو، وفي Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">تنسيق اسم القناة</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">اسم القناة</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">اسم القناة (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (اسم القناة)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">عرض عدد الإعجابات في الصورة المصغرة بالخلاصة</string>
   <string name="morphe_ryd_feed_like_ratio_title">عرض نسبة الإعجابات في الصورة المصغرة بالخلاصة</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">انقر على زر البحث في التعليقات لعرض التعليقات المحمَّلة فقط التي تحتوي على كل الكلمات التي تم البحث عنها. ضع الكلمات بين علامات الاقتباس للبحث عن عبارة محددة</string>
   <string name="morphe_search_comments_dialog_title">البحث في التعليقات</string>
   <string name="morphe_search_comments_hint">كلمات للبحث عنها</string>
-  <string name="morphe_search_comments_search">البحث</string>
   <string name="morphe_search_comments_clear">مسح</string>
   <string name="morphe_search_comments_applied">قم بتغيير ترتيب الفرز أو أعد فتح التعليقات للبحث فيها</string>
   <string name="morphe_search_comments_cleared">تم مسح البحث. قم بتغيير ترتيب الفرز أو افتح التعليقات مرة أخرى لعرض كل التعليقات</string>
@@ -842,6 +860,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_play_all_button_type_entry_10">فيديوهات الأعضاء فقط</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts الأعضاء فقط</string>
   <string name="morphe_play_all_button_type_entry_12">بث مباشر للأعضاء فقط</string>
+  <string name="morphe_play_all_button_reverse_title">ترتيب عكسي</string>
+  <string name="morphe_play_all_button_reverse_summary">يتم تشغيل قائمة التشغيل التي تم إنشاؤها تلقائيًا من الفيديو الأخير إلى الأول</string>
   <string name="morphe_play_all_button_not_available_toast">تعذر إنشاء قائمة تشغيل بسبب عدم تطابق معرّف القناة</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">عرض زر قائمة التشغيل</string>
@@ -1040,7 +1060,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_change_video_summary">التمرير في وضع ملء الشاشة للانتقال إلى الفيديو التالي أو السابق</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">إيماءة الضغط المطوّل</string>
-  <string name="morphe_hold_gesture_screen_summary">تغيير سرعة التشغيل وقفلها عن طريق السحب بعد الضغط مع الاستمرار</string>
+  <string name="morphe_hold_gesture_screen_summary">تغيير سرعة التشغيل وقفلها، وتشغيل الإجراءات، عن طريق السحب بعد الضغط مع الاستمرار</string>
   <string name="morphe_hold_gesture_title">تمكين إيماءة الضغط المطوّل</string>
   <string name="morphe_hold_gesture_summary">يمكن أن يتبع الضغط المطوّل على الفيديو عملية سحب. تكون السرعة أثناء الضغط المطوّل هي سرعة تشغيل الضغط والاستمرار</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">لا تُستخدم أثناء تمكين ميزة الضغط للتمرير. انقر للتغيير</string>
@@ -1066,11 +1086,28 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hold_gesture_lock_title">اسحب لأسفل لقفل السرعة</string>
   <string name="morphe_hold_gesture_lock_summary">بعد الضغط مع الاستمرار، اسحب لأسفل للحفاظ على السرعة عند رفع الإصبع. اضغط على الشارة أو اضغط مع الاستمرار مرة أخرى لإلغاء القفل</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">إظهار شارة القفل دائمًا</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">تظل شارة السرعة المقفلة مرئية بينما تكون عناصر التحكم في المشغل مخفية</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">يظهر شارة السرعة المقفلة حتى عندما لا تكون عناصر التحكم في المشغل معروضة. إذا تم إيقاف التشغيل، تظهر الشارة مع عناصر التحكم في المشغل</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">إلغاء القفل عند تغيير الفيديو</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">ينتهي قفل السرعة عند بدء فيديو آخر</string>
   <string name="morphe_hold_gesture_lock_hint">اسحب لأسفل للقفل</string>
   <string name="morphe_hold_gesture_lock_release">اترك للقفل %s</string>
+  <string name="morphe_hold_gesture_launcher_title">اسحب لأعلى لفتح المشغل</string>
+  <string name="morphe_hold_gesture_launcher_summary">بعد الضغط مع الاستمرار، اسحب لأعلى لإظهار الإجراءات حول الإصبع. ارفع إصبعك عن إجراء ما لتشغيله</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">عدد الإجراءات</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">الإجراء 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">الإجراء 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">الإجراء 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">الإجراء 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">الإجراء 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">قفل الشاشة</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">تكرار الفيديو</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">إيقاف التكرار</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">حفظ الإطار</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">الحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">نسخ الرابط عند الوقت الحالي</string>
+  <string name="morphe_hold_gesture_screen_unlock">انقر لإلغاء القفل</string>
+  <string name="morphe_hold_gesture_frame_saved">تم حفظ الإطار في %s</string>
+  <string name="morphe_hold_gesture_frame_failed">تعذر حفظ الإطار</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">الترجمة</string>
   <string name="morphe_captions_screen_summary">التحكم في الترجمة التلقائية وملفات تعريف ارتباط الترجمة</string>
@@ -1258,6 +1295,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">تعطيل تشغيل قوائم التشغيل تلقائيًا</string>
   <string name="morphe_disable_playlist_autoplay_summary">يمنع قوائم التشغيل من الانتقال التلقائي إلى الفيديو التالي</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">عكس التشغيل التلقائي لقائمة التشغيل</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">يتم تشغيل قوائم التشغيل تلقائيًا من الفيديو الأخير إلى الأول. ولا يتم عكس التشكيلة</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">التحكم في التشغيل التلقائي</string>
   <string name="morphe_autoplay_control_summary">يضيف زرًا للمشغل وقاعدة للفيديو التالي. تستمر قوائم التشغيل والصفوف، ويتوقف المزيج بعد عدد معين من الفيديوهات، بينما لا يتم تشغيل الفيديو المقترح أبدًا. انقر على الزر للوضع التالي، واضغط مع الاستمرار للقائمة</string>
@@ -1305,6 +1345,21 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_fullscreen_video_scale_button_summary">انقر للتنقل بين الوضع الافتراضي، التمديد، والتكبير</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">العرض في وضع ملء الشاشة فقط</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">إخفاء زر ضبط مقياس الفيديو في مشغل الوضع الرأسي</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">عرض زر إعادة التشغيل ببطء</string>
+  <string name="morphe_replay_video_button_summary">يرجع الفيديو إلى الوراء ويبطئ سرعته مؤقتًا. اضغط مرة أخرى للإلغاء</string>
+  <string name="morphe_replay_video_swipe_title">اسحب لليسار لإعادة التشغيل ببطء</string>
+  <string name="morphe_replay_video_swipe_summary">اسحب لليسار على الفيديو للرجوع من 1 إلى 10 ثوانٍ، اعتمادًا على طول السحبة. عناصر تحكم السحب وسحبات المنطقة العلوية لها الأولوية</string>
+  <string name="morphe_replay_video_swipe_preview">إعادة تشغيل %s ث</string>
+  <string name="morphe_replay_video_seconds_title">مدة الإرجاع</string>
+  <string name="morphe_replay_video_seconds_summary">عدد الثواني التي يقوم الزر بإرجاع الفيديو إليها</string>
+  <string name="morphe_replay_video_slow_seconds_title">مدة التشغيل البطيء</string>
+  <string name="morphe_replay_video_slow_seconds_summary">عدد الثواني من الفيديو التي يتم تشغيلها بسرعة الإعادة بعد الإرجاع</string>
+  <string name="morphe_replay_video_speed_title">سرعة الإعادة</string>
+  <string name="morphe_replay_video_speed_summary">سرعة تشغيل الإعادة، مثل 0.5. لا تكون الإعادة أسرع أبدًا من السرعة الحالية</string>
+  <string name="morphe_replay_video_start">إعادة تشغيل أبطأ</string>
+  <string name="morphe_replay_video_unavailable">الإعادة البطيئة غير متاحة لهذا الفيديو</string>
+  <string name="morphe_replay_video_speed_invalid">سرعة إعادة التشغيل غير صالحة، تم إعادة الضبط إلى الافتراضي</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">عرض زر كتم الصوت</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

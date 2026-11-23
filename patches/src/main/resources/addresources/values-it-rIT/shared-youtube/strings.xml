@@ -249,6 +249,9 @@ Per accedere, premi continua qui sotto"</string>
   <string name="morphe_video_effects_custom_error_message">"I video vengono mostrati senza l'effetto finché il codice non viene corretto. Fornisci questo errore all'IA che ha scritto il codice:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Il codice termina all'interno di una funzione o di un commento, quindi è probabile che sia stato tagliato durante la copia o l'inserimento. Il testo incollato può essere tagliato a %d caratteri.
+
+Chiedi all'IA un codice più breve o incolla il codice a parti."</string>
   <string name="morphe_video_effects_custom_copy_error">Copia errore</string>
   <string name="morphe_video_effects_custom_save_anyway">Salva comunque</string>
   <string name="morphe_video_effects_custom_delete">Elimina</string>

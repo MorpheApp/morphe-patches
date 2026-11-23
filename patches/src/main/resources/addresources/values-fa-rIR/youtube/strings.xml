@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">پنجره‌های راهنمای نزدیک نوار ورودی گفت‌وگو، مانند اعلان گفت‌وگوی فقط مشترکان، را پنهان می‌کند</string>
   <string name="morphe_hide_comments_menu_button_title">پنهان کردن دکمه منو</string>
   <string name="morphe_hide_comments_menu_button_summary">دکمه منوی ۳-نقطه هر نظر را پنهان می‌کند</string>
+  <string name="morphe_hide_comments_none_yet_title">مخفی کردن پیش‌نمایش \"هنوز نظری وجود ندارد\"</string>
   <string name="morphe_hide_comments_preview_comment_title">پنهان‌کردن پیش‌نمایش دیدگاه</string>
   <string name="morphe_hide_comments_preview_comment_summary">پیش‌نمایش دیدگاه زیر ویدئو را پیش از بازکردن بخش کامل دیدگاه‌ها پنهان می‌کند</string>
   <string name="morphe_hide_comments_preview_comment_hidden">نظر پنهان شده توسط Morphe…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">مخفی کردن \"موضوعات\"</string>
   <string name="morphe_hide_comments_topics_summary">گزینه نوار فیلتر \"موضوعات\" و پیش‌نمایش‌های کامنت \"موضوع\" در زیر ویدیو را مخفی می‌کند</string>
   <string name="morphe_hide_comments_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
-  <string name="morphe_hide_comments_zero_state_title">پنهان کردن پیام «هنوز نظری ثبت نشده است»</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">مخفی کردن بخش \"از انجمن دیدن کنید\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">پاک‌سازی پیوندهای جست‌وجوی برجسته</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">پیوندهای جست‌وجوی برجسته را پاک‌سازی می‌کند و فقط متن سادهٔ اصلی را نگه می‌دارد</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">کانال به فهرست مجاز اضافه شد</string>
   <string name="morphe_channel_whitelist_channel_removed">کانال از فهرست مجاز حذف شد</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">جست‌وجو</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">جستجو در داخل کانال</string>
   <string name="morphe_channel_search_summary">یک دکمه جستجوی دوم در صفحات کانال اضافه می‌کند تا فقط در همان کانال جستجو شود</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">قدیمی‌ترین</string>
   <string name="morphe_channel_search_sort_shortest">کوتاه‌ترین</string>
   <string name="morphe_channel_search_sort_longest">طولانی‌ترین</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">جست‌وجو در لیست پخش</string>
+  <string name="morphe_playlist_search_summary">یک دکمه جست‌وجوی دوم را به صفحات لیست پخش اضافه می‌کند تا فقط در همان لیست پخش جست‌وجو شود</string>
+  <string name="morphe_playlist_search_hint">جست‌وجوی لیست پخش</string>
+  <string name="morphe_playlist_search_results">نتایج جست‌وجوی لیست پخش</string>
+  <string name="morphe_playlist_search_no_results">چیزی در این لیست پخش پیدا نشد</string>
+  <string name="morphe_playlist_search_failed">نمی‌توان در این لیست پخش جست‌وجو کرد</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">پیوند در کلیپ‌بورد کپی شد</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">پیوند همراه با زمان‌نما در کلیپ‌بورد کپی شد</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">نمایش تعداد بازدید روی تصاویر کوچک</string>
   <string name="morphe_feed_view_count_summary">تعداد بازدید ویدیوهای فید در گوشه پایین سمت چپ تصاویر کوچک آن‌ها نمایش داده می‌شود، به جای زیر عنوان. برخی از ویدیوها، مانند آن‌ها در قفسه‌ها، ممکن است تعداد بازدید را نشان ندهند</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">بازگشت نام کاربری YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">نمایش نام کانال‌ها به جای هندل‌ها</string>
+  <string name="morphe_return_youtube_username_title">نمایش نام کانال‌ها</string>
+  <string name="morphe_return_youtube_username_summary">نام کانال‌ها به جای هندل‌ها در نظرات، زیر عنوان ویدیو و در Shorts نمایش داده می‌شوند</string>
+  <string name="morphe_return_youtube_username_display_format_title">قالب نام کانال</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">نام کانال</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">نام کانال (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (نام کانال)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">نمایش تعداد لایک‌های بندانگشتی فید</string>
   <string name="morphe_ryd_feed_like_ratio_title">نمایش درصد لایک‌های بندانگشتی فید</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">روی دکمهٔ جست‌وجو در نظرات ضربه بزنید تا فقط نظرات بارگذاری‌شده‌ای که شامل تمام کلمات جست‌وجوشده هستند نمایش داده شوند. برای جست‌وجوی یک عبارت، کلمات را داخل علامت نقل‌قول قرار دهید</string>
   <string name="morphe_search_comments_dialog_title">جست‌وجوی نظرات</string>
   <string name="morphe_search_comments_hint">کلمات مورد نظر برای جست‌وجو</string>
-  <string name="morphe_search_comments_search">جست‌وجو</string>
   <string name="morphe_search_comments_clear">پاک‌کردن</string>
   <string name="morphe_search_comments_applied">ترتیب مرتب‌سازی را تغییر دهید یا برای جست‌وجوی مجدد، نظرات را دوباره باز کنید</string>
   <string name="morphe_search_comments_cleared">جست‌وجو پاک شد. برای نمایش تمام نظرات، ترتیب مرتب‌سازی را تغییر دهید یا نظرات را دوباره باز کنید</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">ویدئوهای فقط اعضا</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts فقط اعضا</string>
   <string name="morphe_play_all_button_type_entry_12">پخش‌های زنده فقط اعضا</string>
+  <string name="morphe_play_all_button_reverse_title">ترتیب معکوس</string>
+  <string name="morphe_play_all_button_reverse_summary">فهرست پخش ایجاد شده به‌طور خودکار از آخرین ویدیو به اولین پخش می‌شود</string>
   <string name="morphe_play_all_button_not_available_toast">به‌دلیل ناهماهنگی شناسهٔ کانال، ساخت فهرست پخش ممکن نیست</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">نمایش دکمهٔ فهرست پخش</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">در حالت تمام‌صفحه بکشید تا به ویدئوی بعدی یا قبلی بروید</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">ژست نگه داشتن</string>
-  <string name="morphe_hold_gesture_screen_summary">با ضربه زدن و نگه داشتن و سپس کشیدن، سرعت پخش را تغییر داده و قفل کنید</string>
+  <string name="morphe_hold_gesture_screen_summary">با لمس طولانی و کشیدن، سرعت پخش را تغییر داده و قفل کنید و اقدامات را اجرا کنید</string>
   <string name="morphe_hold_gesture_title">فعال کردن ژست نگه داشتن</string>
   <string name="morphe_hold_gesture_summary">پس از ضربه زدن و نگه داشتن روی ویدیو، می‌توان آن را کشید. سرعت هنگام نگه داشتن، همان سرعت پخش ضربه و نگه داشتن است</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">زمانی که «فشار برای کشیدن» فعال است، استفاده نمی‌شود. برای تغییر ضربه کنید</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">برای قفل کردن سرعت، به پایین بکشید</string>
   <string name="morphe_hold_gesture_lock_summary">بعد از ضربه زدن و نگه داشتن، به پایین بکشید تا سرعت هنگام بلند کردن انگشت حفظ شود. برای باز کردن قفل، روی نشان ضربه بزنید یا دوباره ضربه بزنید و نگه دارید</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">همیشه نشان قفل را نمایش بده</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">نشان سرعت قفل شده در حالی که کنترل‌های پخش‌کننده پنهان هستند، قابل مشاهده می‌ماند</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">نشان سرعت قفل شده را حتی زمانی که کنترل‌های پخش نمایش داده نمی‌شوند نیز نشان می‌دهد. اگر خاموش باشد، نشان همراه با کنترل‌های پخش نمایش داده می‌شود</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">هنگام تغییر ویدیو، قفل را باز کن</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">با شروع یک ویدیوی دیگر، سرعت قفل شده پایان می‌یابد</string>
   <string name="morphe_hold_gesture_lock_hint">برای قفل کردن به پایین بکشید</string>
   <string name="morphe_hold_gesture_lock_release">رها کنید تا %s قفل شود</string>
+  <string name="morphe_hold_gesture_launcher_title">برای باز کردن لانچر به بالا بکشید</string>
+  <string name="morphe_hold_gesture_launcher_summary">پس از لمس و نگه داشتن، به سمت بالا بکشید تا عملیات پیرامون انگشت نمایش داده شود. برای اجرای یک عملیات، انگشت خود را از روی آن بردارید</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">تعداد عملیات‌ها</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">عملیات ۱</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">عملیات ۲</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">عملیات ۳</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">عملیات ۴</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">عملیات ۵</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">قفل صفحه</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">تکرار ویدئو</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">توقف تکرار</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">ذخیره فریم</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">ذخیره برای بعداً تماشا کردن</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">کپی لینک در زمان فعلی</string>
+  <string name="morphe_hold_gesture_screen_unlock">برای باز کردن ضربه بزنید</string>
+  <string name="morphe_hold_gesture_frame_saved">فریم در %s ذخیره شد</string>
+  <string name="morphe_hold_gesture_frame_failed">ذخیره فریم ممکن نشد</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">زیرنویس‌ها</string>
   <string name="morphe_captions_screen_summary">زیرنویس‌های خودکار و کوکی‌های زیرنویس را مدیریت کنید</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">غیرفعال‌کردن پخش خودکار فهرست پخش</string>
   <string name="morphe_disable_playlist_autoplay_summary">از رفتن خودکار فهرست‌های پخش به ویدئوی بعدی جلوگیری می‌کند</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">پخش خودکار معکوس فهرست پخش</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">فهرست‌های پخش از آخرین ویدیو به اولین پخش می‌شوند. میکس‌ها معکوس نمی‌شوند</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">کنترل پخش خودکار</string>
   <string name="morphe_autoplay_control_summary">یک دکمه پخش‌کننده و یک قانون برای ویدیوی بعدی اضافه می‌کند. لیست‌های پخش و صف‌ها ادامه می‌یابند، یک میکس پس از تعدادی ویدیو متوقف می‌شود و یک ویدیوی پیشنهادی هرگز پخش نمی‌شود. برای حالت بعدی روی دکمه ضربه بزنید و برای مشاهده لیست، ضربه زده و نگه دارید</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">برای جابه‌جایی بین حالت‌های پیش‌فرض، کشیده و بزرگ‌نمایی ضربه بزنید</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">فقط در حالت تمام‌صفحه نمایش داده شود</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">دکمه مقیاس ویدئو را در پخش‌کننده حالت عمودی مخفی کنید</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">نمایش دکمهٔ پخش مجدد آرام‌تر</string>
+  <string name="morphe_replay_video_button_summary">ویدئو را به عقب برمی‌گرداند و به‌طور موقت سرعت آن را کاهش می‌دهد. برای لغو، دوباره ضربه بزنید</string>
+  <string name="morphe_replay_video_swipe_title">برای پخش مجدد آرام‌تر به چپ بکشید</string>
+  <string name="morphe_replay_video_swipe_summary">بسته به طول کشیدن، روی ویدئو به چپ بکشید تا بین ۱ تا ۱۰ ثانیه به عقب برگردد. کنترل‌های کشیدن برای جست‌وجو و کشیدن در ناحیه بالایی اولویت دارند</string>
+  <string name="morphe_replay_video_swipe_preview">پخش مجدد %s ثانیه</string>
+  <string name="morphe_replay_video_seconds_title">مدت زمان بازگشت</string>
+  <string name="morphe_replay_video_seconds_summary">دکمه چند ثانیه ویدیو را به عقب برمی‌گرداند</string>
+  <string name="morphe_replay_video_slow_seconds_title">مدت زمان پخش آهسته</string>
+  <string name="morphe_replay_video_slow_seconds_summary">پس از بازگشت، چند ثانیه از ویدیو با سرعت پخش مجدد نمایش داده شود</string>
+  <string name="morphe_replay_video_speed_title">سرعت پخش مجدد</string>
+  <string name="morphe_replay_video_speed_summary">سرعت پخش مجدد، مانند ۰.۵. پخش مجدد هرگز سریع‌تر از سرعت فعلی نیست</string>
+  <string name="morphe_replay_video_start">پخش مجدد آهسته‌تر</string>
+  <string name="morphe_replay_video_unavailable">پخش مجدد آهسته برای این ویدیو در دسترس نیست</string>
+  <string name="morphe_replay_video_speed_invalid">سرعت پخش مجدد نامعتبر است، به حالت پیش‌فرض بازگشت</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">نمایش دکمهٔ بی‌صدا</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

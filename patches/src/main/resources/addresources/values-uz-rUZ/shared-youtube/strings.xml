@@ -249,6 +249,9 @@ Tizimga kirish uchun quyidagidan davom eting"</string>
   <string name="morphe_video_effects_custom_error_message">"Kod tuzatilguncha videolar effektsiz ko'rsatiladi. Ushbu xatolikni kodni yozgan AIga taqdim eting:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod funksiya yoki izoh ichida tugagan, shuning uchun u nusxalangan yoki joylashtirilgan vaqtda qirqilib ketgan bo'lishi mumkin. Joylashtirilgan matn %d belgidan keyin qirqilishi mumkin.
+
+AI dan qisqaroq kod so'rang yoki kodni qismlarga bo'lib joylashtiring."</string>
   <string name="morphe_video_effects_custom_copy_error">Nusxalashda xatolik</string>
   <string name="morphe_video_effects_custom_save_anyway">Baribir saqlash</string>
   <string name="morphe_video_effects_custom_delete">O\'chirish</string>

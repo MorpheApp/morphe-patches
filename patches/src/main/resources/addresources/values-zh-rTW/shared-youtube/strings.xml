@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"在代碼修正之前，影片將在不套用效果的情況下顯示。請將此錯誤提供給撰寫該代碼的 AI：
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"代碼在函數或註釋中結束，因此在複製或貼上時可能被截斷。貼上的文本可能會在 %d 個字元處被截斷。
+
+請要求 AI 提供較短的代碼，或分段貼上代碼。"</string>
   <string name="morphe_video_effects_custom_copy_error">複製錯誤</string>
   <string name="morphe_video_effects_custom_save_anyway">仍要儲存</string>
   <string name="morphe_video_effects_custom_delete">刪除</string>

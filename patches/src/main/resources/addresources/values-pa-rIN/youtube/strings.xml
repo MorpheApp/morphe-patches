@@ -91,7 +91,9 @@ Second \"item\" text"</string>
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
@@ -108,6 +110,7 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -171,6 +174,7 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
   <!-- interaction.autoplay.autoplayControlPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
@@ -178,6 +182,7 @@ Second \"item\" text"</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <!-- video.speed.replay.replayVideoPatch -->
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->

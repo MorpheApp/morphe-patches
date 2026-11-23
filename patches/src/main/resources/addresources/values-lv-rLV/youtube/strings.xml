@@ -423,6 +423,7 @@ ierobežojumi:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Slēpj paskaidrojumu uznirstošos logus, kas parādās tērzēšanas ievades joslas tuvumā, piemēram, paziņojumu par tērzēšanu tikai abonentiem</string>
   <string name="morphe_hide_comments_menu_button_title">Slēpt izvēlnes pogu</string>
   <string name="morphe_hide_comments_menu_button_summary">Slēpj 3 punktu izvēlnes pogu katram komentāram</string>
+  <string name="morphe_hide_comments_none_yet_title">Slēpt priekšskatījumu \"Komentāru vēl nav\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Slēpt priekšskatījuma komentāru</string>
   <string name="morphe_hide_comments_preview_comment_summary">Slēpj komentāru priekšskatu zem video pirms pilnas komentāru sadaļas atvēršanas</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Komentāru slēpis Morphe…</string>
@@ -433,7 +434,7 @@ ierobežojumi:
   <string name="morphe_hide_comments_topics_title">Slēpt \"Tēmas\"</string>
   <string name="morphe_hide_comments_topics_summary">Slēpj \"Tēmas\" filtra joslas opciju un \"Tēmas\" komentāru prizkadrus zem video</string>
   <string name="morphe_hide_comments_translate_button_title">Slēpt tulkošanas pogu</string>
-  <string name="morphe_hide_comments_zero_state_title">Slēpt ziņojumu \"Komentāru vēl nav\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Slēpt sadaļu \"Apmeklējiet kopienu\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitizēt izceltās meklēšanas saites</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Tīrīmeklē izceltās meklēšanas saites, atstājot tikai oriģinālo vienkāršo tekstu</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkuru kl
   <string name="morphe_channel_whitelist_channel_added">Kanāls pievienots baltajam sarakstam</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanāls noņemts no baltā saraksta</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Meklēt</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Meklēt kanālā</string>
   <string name="morphe_channel_search_summary">Pievieno otro meklēšanas pogu kanālu lapās, lai meklētu tikai tajā kanālā</string>
@@ -578,6 +581,13 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkuru kl
   <string name="morphe_channel_search_sort_oldest">Vecākie</string>
   <string name="morphe_channel_search_sort_shortest">Īsākie</string>
   <string name="morphe_channel_search_sort_longest">Garākie</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Meklēt atskaņošanas sarakstā</string>
+  <string name="morphe_playlist_search_summary">Pievieno otro meklēšanas pogu atskaņošanas saraksta lapās, lai meklētu tikai tajā sarakstā</string>
+  <string name="morphe_playlist_search_hint">Meklēt atskaņošanas sarakstā</string>
+  <string name="morphe_playlist_search_results">Atskaņošanas saraksta meklēšanas rezultāti</string>
+  <string name="morphe_playlist_search_no_results">Šajā atskaņošanas sarakstā nekas netika atrasts</string>
+  <string name="morphe_playlist_search_failed">Neizdevās meklēt šajā atskaņošanas sarakstā</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Saite nokopēta starpliktuvē</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Saite ar laika zīmogu nokopēta starpliktuvē</string>
@@ -652,6 +662,15 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Rādīt skatījumu skaitu miniaturēs</string>
   <string name="morphe_feed_view_count_summary">Plūsmas video skatījumu skaits tiek rādīts miniatūru apakšējā kreisajā stūrī, nevis zem virsraksta. Daži video, piemēram, plauktos, var nerādīt skatījumu skaitu</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Atgriezties pie YouTube lietotājvārda</string>
+  <string name="morphe_return_youtube_username_screen_summary">Rādīt kanālu nosērumus lietotājvārdu vietā</string>
+  <string name="morphe_return_youtube_username_title">Rādīt kanālu nosērumus</string>
+  <string name="morphe_return_youtube_username_summary">Komentāros, zem video nosēruma un Shorts tiek rādīti kanālu nosērumi lietotājvārdu vietā</string>
+  <string name="morphe_return_youtube_username_display_format_title">Kanāla nosēruma formāts</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Kanāla nosērums</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Kanāla nosaukums (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Kanāla nosaukums)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Rādīt plūsmas miniatūru patikšanas skaitu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rādīt plūsmas miniatūru patikšanas procentu</string>
@@ -664,7 +683,6 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <string name="morphe_search_comments_summary">Nospiediet meklēšanas pogu komentāros, lai rādītu tikai tos ielādētos komentārus, kuros ir visi meklētie vārdi. Ievietojiet vārdus pēdiņās, lai meklētu frāzi</string>
   <string name="morphe_search_comments_dialog_title">Meklēt komentāros</string>
   <string name="morphe_search_comments_hint">Vārdi meklēšanai</string>
-  <string name="morphe_search_comments_search">Meklēt</string>
   <string name="morphe_search_comments_clear">Notīrīt</string>
   <string name="morphe_search_comments_applied">Mainiet šķirošanas secību vai atveriet komentārus vēlreiz, lai meklētu tos</string>
   <string name="morphe_search_comments_cleared">Meklēšana notīrīta. Mainiet šķirošanas secību vai atveriet komentārus vēlreiz, lai rādītu visus komentārus</string>
@@ -838,6 +856,8 @@ Info: Var nedarboties tiešraidēs"</string>
   <string name="morphe_play_all_button_type_entry_10">Tikai dalībniekiem pieejami video</string>
   <string name="morphe_play_all_button_type_entry_11">Tikai dalībniekiem paredzēti Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Tikai dalībniekiem paredzētas tiešraides</string>
+  <string name="morphe_play_all_button_reverse_title">Apgriezt secību</string>
+  <string name="morphe_play_all_button_reverse_summary">Ģenerētais atskaņošanas saraksts automātiski atskaņojas no pēdējā video līdz pirmajam</string>
   <string name="morphe_play_all_button_not_available_toast">Nevar izveidot atskaņojuma sarakstu kanāla ID neatbilstības dēļ</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Rādīt pogu Atskaņošanas saraksts</string>
@@ -1036,7 +1056,7 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <string name="morphe_swipe_change_video_summary">Pārvelciet pilnekrāna režīmā, lai pārietu uz nākamo vai iepriekšējo video</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Turēšanas žests</string>
-  <string name="morphe_hold_gesture_screen_summary">Mainiet un fiksējiet atgrozīšanas ātrumu, velkot pēc pieskaršanās un aizturēšanas</string>
+  <string name="morphe_hold_gesture_screen_summary">Mainiet un bloķējiet atskaņošanas ātrumu, kā arī veiciet darbības, velkot pēc tam, kad esat piespiēdzis un aizturējis</string>
   <string name="morphe_hold_gesture_title">Iespējot turēšanas žestu</string>
   <string name="morphe_hold_gesture_summary">Video pieskaršanās un aizturēšana var būt papildināta ar velcienu. Ātrums turēšanas laikā ir pieskaršanās un aizturēšanas atgrozīšanas ātrums</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Netiek izmantots, kamēr ir ieslēgta funkcija \"Nospied, lai slidētu\". Pieskarieties, lai mainītu</string>
@@ -1062,11 +1082,28 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <string name="morphe_hold_gesture_lock_title">Velciet uz leju, lai fiksētu ātrumu</string>
   <string name="morphe_hold_gesture_lock_summary">Pēc nospiešanas un aizturēšanas velciet uz leju, lai saglabātu ātrumu, kad pirksts tiek pacelts. Pieskarieties apzīmei vai vēlreiz nospiediet un aizturiet, lai atbloķētu</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Vienmēr rādīt fiksēšanas apzīmi</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Fiksētā ātruma apzīme paliek redzama, kamēr atskaidītāja vadības elementi ir slēgti</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Rāda bloķēta ātruma apzīmi arī tad, ja atskaņātāja vadības elementi netiek rādīti. Ja šī funkcija ir izslēgta, apzīme rādās kopā ar atskaņātāja vadības elementiem</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Atbloķēt, kad video mainās</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Fiksētais ātrums beidzas, kad sākas cits video</string>
   <string name="morphe_hold_gesture_lock_hint">Vilciet uz leju, lai bloķētu</string>
   <string name="morphe_hold_gesture_lock_release">Atlaidiet, lai bloķētu %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Velciet uz augšu, lai atvērtu paletes vadību</string>
+  <string name="morphe_hold_gesture_launcher_summary">Pēc nospiešanas un aizturēšanas velciet uz augšu, lai rādītu darbības ap pirkstu. Celiet pirkstu no darbības, lai to izveidotu</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Darbību skaits</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">1. darbība</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">2. darbība</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">3. darbība</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">4. darbība</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">5. darbība</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Bloķēt ekrānu</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Atkārtot video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Pārtraukt atkārtot</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Saglabāt kadru</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Saglabāt sadaļā \"Skatīsim vēlāk\"</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopēt saiti pašā laikā</string>
+  <string name="morphe_hold_gesture_screen_unlock">Pieskaries, lai atbloķētu</string>
+  <string name="morphe_hold_gesture_frame_saved">Kadrs saglabāts %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Neizdevās saglabāt kadru</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitri</string>
   <string name="morphe_captions_screen_summary">Pārvaldiet automātiskos titrus un titru sīkfailus</string>
@@ -1254,6 +1291,9 @@ Iestatījumi → Atskaņošana (vai Automātiska atskaņošana) → Automātiski
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Aizliegt saraksta automātisku atskaņāšanu</string>
   <string name="morphe_disable_playlist_autoplay_summary">Novērs sarakstu automātisku pāreju uz nākamo video</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Apgriezt atskaņošanas saraksta automātisko atskaņošanu</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Atskaņošanas saraksti automātiski atskaņojas no pēdējā video līdz pirmajam. Miksi netiek apgriezti</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Autopilskaņošanas kontrole</string>
   <string name="morphe_autoplay_control_summary">Pievieno atskaņotāja pogu un noteikumu nākamajam video. Atskaņošanas saraksti un rindas turpinās, Miksa apstājas pēc noteikta video skaita, ieteiktie video netiek atskaņoti. Pieskarie pogai, lai izvēlētos nākamo režīmu, vai nospiediet un aisturiet, lai redzētu sarakstu</string>
@@ -1301,6 +1341,21 @@ Iestatījumi → Atskaņošana (vai Automātiska atskaņošana) → Automātiski
   <string name="morphe_fullscreen_video_scale_button_summary">Pieskarieties, lai pārslēgtos starp Noklusējums, Stretch un Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Rādīt tikai pilnā ekrāna režīmā</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Slēpt video mēroga pogu portreta režīma spēlētājā</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Rādīt pogu \"Atskaņot lēnāk\"</string>
+  <string name="morphe_replay_video_button_summary">Atvērs videoklipu atpakaļ un īslaicīgi samazinās tā ātrumu. Pieskarieties vēlreiz, lai atceltu</string>
+  <string name="morphe_replay_video_swipe_title">Sviriet pa kreisi, lai atskaņotu lēnāk</string>
+  <string name="morphe_replay_video_swipe_summary">Sviriet pa kreizi uz video, lai atkārtotu 1–10 sekundes atpakaļ, atkarībā no svīruma garuma. Svīruma vadības elementi kontrolē meklēšanu, un augšējās zonas svīrumi ir prioritāri</string>
+  <string name="morphe_replay_video_swipe_preview">Atskaņot %s s atpakaļ</string>
+  <string name="morphe_replay_video_seconds_title">Atskārtēšanas ilgums</string>
+  <string name="morphe_replay_video_seconds_summary">Cik sekundēm poga atskaŗtē video atpakaļ</string>
+  <string name="morphe_replay_video_slow_seconds_title">Lēnas atskaņāšanas ilgums</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Cik sekundes video tiek atskaņāts ar atkārtošanas ātrumu pēc atskaŗtēšanas atpakaļ</string>
+  <string name="morphe_replay_video_speed_title">Atkārtošanas ātrums</string>
+  <string name="morphe_replay_video_speed_summary">Atkārtošanas atskaņāšanas ātrums, piemēram, 0,5. Atkārtošana nekad nav ātrāka par pašreizējo ātrumu</string>
+  <string name="morphe_replay_video_start">Lēnāk atkārtot</string>
+  <string name="morphe_replay_video_unavailable">Lēna atkārtošana šim video nav pieejama</string>
+  <string name="morphe_replay_video_speed_invalid">Kļūda atkārtošanas ātrumā, atiestatīts uz noklusējuma</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Rādīt izslēgšanas pogu</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

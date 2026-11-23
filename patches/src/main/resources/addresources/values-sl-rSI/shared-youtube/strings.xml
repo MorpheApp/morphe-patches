@@ -249,6 +249,9 @@ Za prijavo pritisnite spodaj Nadaljujte"</string>
   <string name="morphe_video_effects_custom_error_message">"Videi se prikazujejo brez učinka, dokler koda ni popravljena. To napako sporočite umetni inteligenci, ki je napisala kodo:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Koda se konča znotraj funkcije ali komentarja, zato je bila verjetno odrezana med kopiranjem ali prilepljanjem. Prilepljeno besedilo lahko odreže pri %d znakih.
+
+Prosite AI za krajšo kodo ali kodo prilepite v delih."</string>
   <string name="morphe_video_effects_custom_copy_error">Napaka pri kopiranju</string>
   <string name="morphe_video_effects_custom_save_anyway">Shrani kljub temu</string>
   <string name="morphe_video_effects_custom_delete">Izbriši</string>

@@ -423,6 +423,7 @@ Sînor:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Pêşniyarên ku nêzîka barê nivîsînê ya çatê têne nîşandan, wekî agahdariya çata tenê abone, vedişêre.</string>
   <string name="morphe_hide_comments_menu_button_title">Butona Menu veşêre</string>
   <string name="morphe_hide_comments_menu_button_summary">Bişkoja menuya 3-xalan a her şîroveyê veşêre</string>
+  <string name="morphe_hide_comments_none_yet_title">Pêşbervanya \'Hîşta tu koment nîn in\' veşêre</string>
   <string name="morphe_hide_comments_preview_comment_title">Pêşbîna şîroveyê veşêrin</string>
   <string name="morphe_hide_comments_preview_comment_summary">Pêşdîtina şîroveyê di binê vîdyoyê de berî vekirina beşa şîroveyan a tam veşêre</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Şîrove ji aliyê Morphe ve hate veşartin…</string>
@@ -433,7 +434,7 @@ Sînor:
   <string name="morphe_hide_comments_topics_title">\'Mijar\' veşire</string>
   <string name="morphe_hide_comments_topics_summary">Optiona şirîteya şirîna \'Mijar\' û pêşniviyên şîroveyên \'Mijar\' ên bin vîdyoyê veşire</string>
   <string name="morphe_hide_comments_translate_button_title">Butona Wergerînê vedişêre</string>
-  <string name="morphe_hide_comments_zero_state_title">Payama \'Hêj tu koment nînin\' veşêre</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Beşa \'Serdana Civakê bike\' veşêre</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Girêdên lêgerînê yên ronahîkirî paqij bike</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Girêdên lêgerînê yên ronahîkirî paqij dike, tenê nivîsa asayî tê hiştin</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_channel_whitelist_channel_added">Kanalê li listeya spî de hat zêdekirin</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal ji lîsteya spî hate rakirin</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Lêgerîn</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Di kanalê de lêgerîn bike</string>
   <string name="morphe_channel_search_summary">Bişkojeke lêgerînê ya duyemîn li ser rûpelên kanalê zêde dike da ku tenê di wê kanalê de lêgerîn bike</string>
@@ -578,6 +581,13 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_channel_search_sort_oldest">Herî kevin</string>
   <string name="morphe_channel_search_sort_shortest">Herî kurt</string>
   <string name="morphe_channel_search_sort_longest">Herî dirêj</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Di lîsteya playlistsê de lêgerîn bike</string>
+  <string name="morphe_playlist_search_summary">Bişkojeke lêgerînê ya duyemîn li ser rûpelên playlistan zêde dike da ku tenê di wê playlistê de lêgerîn bike</string>
+  <string name="morphe_playlist_search_hint">Di playlistê de bigere</string>
+  <string name="morphe_playlist_search_results">Encamên lêgerîna playlistê</string>
+  <string name="morphe_playlist_search_no_results">Di vê playlistê de tiştek nehat dîtin</string>
+  <string name="morphe_playlist_search_failed">Nekaribû di vê playlistê de lêgerîn bike</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lînkê hat kopîkirin ser klîpbordê</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Lînkê bi demê hat kopîkirin ser klîpbordê</string>
@@ -652,6 +662,15 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Hejmara dîtinan li ser thumbnailan nîşan bide</string>
   <string name="morphe_feed_view_count_summary">Hejmara temaşeyan a vîdyoyên feedê li binê çepê ya thumbnailan tê nîşandan, ne li binê sernavê. Hin vîdyo, wek yên di refan de, dibe ku hejmara temaşeyan nîşan nedin</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Navê Bikaranê YouTube Vegere</string>
+  <string name="morphe_return_youtube_username_screen_summary">Li şûmê handle-an, navên kanalê nîşan bide</string>
+  <string name="morphe_return_youtube_username_title">Navên kanalê nîşan bide</string>
+  <string name="morphe_return_youtube_username_summary">Di şiroveyan de, li bin navê vîdyoyê û di Shorts de, li şûmê handle-an navên kanalê tên nîşandan</string>
+  <string name="morphe_return_youtube_username_display_format_title">Formatê navê kanalê</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Navê kanalê</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Navê kanalê (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Navê kanalê)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Hejmara like-an a thumbnailên feedê nîşan bide</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rêjeya like-ên thumbnailên feedê nîşan bide</string>
@@ -664,7 +683,6 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_search_comments_summary">Li bişkokeya lêgeran a di şîroveyan de bitikîne da ku tenê şîroveyên barkirî yên ku hemû peyvên lêgeran tê de hene nîşan bidin. Peyvan di nav qotikan de bixe da ku ji bo hevokekê bigere</string>
   <string name="morphe_search_comments_dialog_title">Li şîroveyan bigere</string>
   <string name="morphe_search_comments_hint">Peyvên lêgerînê</string>
-  <string name="morphe_search_comments_search">Lêgerîn</string>
   <string name="morphe_search_comments_clear">Paqij bike</string>
   <string name="morphe_search_comments_applied">Rêza rêzkirinê biguherîne an jî şîroveyan dîsa veke da ku wan bigerî</string>
   <string name="morphe_search_comments_cleared">Lêgerîn hate paqijkirin. Rêza rêzkirinê biguherîne an jî şîroveyan dîsa veke da ku hemû şîrove nîşan bidî</string>
@@ -838,6 +856,8 @@ Agahî: Dibe ku li ser weşanên zindî nexebite"</string>
   <string name="morphe_play_all_button_type_entry_10">Tenan vîdyoyên endam</string>
   <string name="morphe_play_all_button_type_entry_11">Tenan Shorts-ên endam</string>
   <string name="morphe_play_all_button_type_entry_12">Tenê weşanên zindî yên endam</string>
+  <string name="morphe_play_all_button_reverse_title">Rêzê vegerîne</string>
+  <string name="morphe_play_all_button_reverse_summary">Lîsteya vîdyoyan a hat çêkirin ji vîdyoya dawî ber bi ya yekem ve bi xwe ve dileyze</string>
   <string name="morphe_play_all_button_not_available_toast">Ji ber nakokiya ID-ya kanalê lîsteya rêzê nayê çêkirin</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Bişkoja Playlist nîşan bide</string>
@@ -1036,7 +1056,7 @@ Ji bo rastkirina vê, 'Spoof video streams' çalak bike û 'Default client' bike
   <string name="morphe_swipe_change_video_summary">Di tam-ekranê de swipe bike da ku biçe vîdyoya pêş an berê</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Îşaretê girtinê</string>
-  <string name="morphe_hold_gesture_screen_summary">Piştî ku tu li ser bitikînî û bigirî, bi kişandinê xêza lêdanê biguherîne û qifil bike</string>
+  <string name="morphe_hold_gesture_screen_summary">Leza xêra lêdanê biguherîne û qifilkîne, û bi kişandina piştî ku tu lê bitikînî û bigirî, çalakiyên bike</string>
   <string name="morphe_hold_gesture_title">Îşaretê girtinê çalak bike</string>
   <string name="morphe_hold_gesture_summary">Tikinîn û girtina vîdyoyê dikare bi kişandinekê were şopandin. Leza girtinê, leza lêdana tikinîn û girtinê ye</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Gava \'bi pressingê bikeşe\' çalak e nayê bikaranîn. Ji bo guhertinê bitapîne</string>
@@ -1062,11 +1082,28 @@ Ji bo rastkirina vê, 'Spoof video streams' çalak bike û 'Default client' bike
   <string name="morphe_hold_gesture_lock_title">Ji bo qiflkirina lezê, xwarê bikişîne</string>
   <string name="morphe_hold_gesture_lock_summary">Piştî ku tu lê lêda û girtî, xwarê bikişîne da ku gava tiliyê hildikîşînî lez bimîne. Ji bo veqiflkirinê, li nîşanê bitikîne an careke din lê bide û bigire</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Her tim nîşana qiflkirinê nîşan bide</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Nîşana leza qiflkirî xuya dimîne gava kontrolên playerê veşartî ne</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Nîşana xêra qifilkirî nîşan dide, her çend kontrolên lêdanê neyên nîşandan. Ger xistin be, nîşan bi kontrolên lêdanê re nayê nîşandan</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Gava vîdyo diguhere veqifilîne</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Leza qiflkirî bi dawî dibe gava vîdyoyeke din dest pê dike</string>
   <string name="morphe_hold_gesture_lock_hint">Ji bo qiflkirinê xwarê bikişîne</string>
   <string name="morphe_hold_gesture_lock_release">Berde da ku %s were qiflkirin</string>
+  <string name="morphe_hold_gesture_launcher_title">Ji bo vekirina launcherê ber bi jor ve bikişîne</string>
+  <string name="morphe_hold_gesture_launcher_summary">Piştî ku tu lê bitikînî û bigirî, ber bi jor ve bikişîne da ku kiryaran li dora tiliyê nîşan bide. Tiliya xwe li ser kiryarekê rake da ku wê bişewitîne</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Hejmara kiryaran</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Kiriya 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Kiriya 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Kiriya 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Kiriya 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Kiriya 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Qifilkirina ekranê</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Vîdyoyê dubarekirin</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Dubarekirinê rawestîne</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Fremê tomarkirin</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Ji bo paşê tomarkirin</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Lînkê li demê niha kopye bike</string>
+  <string name="morphe_hold_gesture_screen_unlock">Ji bo vekirinê bitikîne</string>
+  <string name="morphe_hold_gesture_frame_saved">Frem li %s hate tomarkirin</string>
+  <string name="morphe_hold_gesture_frame_failed">Frame nehat tomar kirin</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Binnivîs</string>
   <string name="morphe_captions_screen_summary">Binnivîsên otomatîk û cookieyên binnivîsan birêve bibe</string>
@@ -1254,6 +1291,9 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Autoplay ya lîsteyên vîdyoyan asteng bike</string>
   <string name="morphe_disable_playlist_autoplay_summary">Nahêle lîsteyên vîdyoyan bi xweber here vîdyoya paşê</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Autoplay a lîsteya vîdyoyan vegerîne</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Lîsteyên vîdyoyan ji vîdyoya dawî ber bi ya yekem ve bi xwe ve dileyzin. Mix an jî tevlihev nayên vegerandin</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Kontrola autoplay</string>
   <string name="morphe_autoplay_control_summary">Butonekî player û rêgezek ji bo vîdyoya din zêde dike. Playlist û qeydan berdewam dikin, Mix piştî hejmarek vîdyoyan dinqewire, vîdyoyeke pêşniyarkir qet nayê lîstin. Ji bo moda din li butonê bitikîne, ji bo lîsteyê bitikîne û bistibe</string>
@@ -1301,6 +1341,21 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Bikirtînin ji bo guhertina Default, Dirêjkirin û Zûmkirin</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Tenê di ekrana tam de nîşan bide</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Bişkoja pîvana vîdyoyê di lîstikvana portreyê de veşêre</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Bişkoşka \"Replay hêdîtir nîşan bide\"</string>
+  <string name="morphe_replay_video_button_summary">Vîdyoyê paşve dibire û demeke kurt hêdîtir dike. Ji bo betalkirinê dîsa lê bitikîne</string>
+  <string name="morphe_replay_video_swipe_title">Ji bo replaya hêdîtir ber bi çepê ve bikişîne</string>
+  <string name="morphe_replay_video_swipe_summary">Li ser vîdyoyê ber bi çepê ve bikişîne da ku li gorî dirêjiya kişandinê 1-10 saniyan paşve bibe. Kontrolên kişandinê lêgerînê dikin û kişandinên herêma jorî pêşîn dibin</string>
+  <string name="morphe_replay_video_swipe_preview">Dobmodana %s s</string>
+  <string name="morphe_replay_video_seconds_title">Demdirêjiya paşvegerê</string>
+  <string name="morphe_replay_video_seconds_summary">Biçiqandina bi çend saniyan bişkoja vîdyoyê paşve dixe</string>
+  <string name="morphe_replay_video_slow_seconds_title">Demdirêjiya lêxistina hêdî</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Piştî paşvegerê, çend saniyên vîdyoyê bi leza dubare-lêxistinê tên lêxistin</string>
+  <string name="morphe_replay_video_speed_title">Leza dubare-lêxistinê</string>
+  <string name="morphe_replay_video_speed_summary">Leza lêxistina dubare-lêxistinê, mîna 0.5. Dubare-lêxistin tu carî ji leza niha ya lêxistinê zûtir nîn e</string>
+  <string name="morphe_replay_video_start">Hêdîtir dubare lêxîne</string>
+  <string name="morphe_replay_video_unavailable">Dubare-lêxistina hêdî ji bo vê vîdyoyê bernîv e</string>
+  <string name="morphe_replay_video_speed_invalid">Leza lîstana ne rast e, hat vegerandin serleha</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Bişkojka bêdengiyê nîşan bide</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

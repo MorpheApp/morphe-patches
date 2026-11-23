@@ -220,9 +220,9 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_prioritize_video_quality_dialog">Jeśli to ustawienie będzie wyłączone, starsze filmy mogą nie wyświetlać opcji wyboru jakości filmu</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_stream_title">Wyłącz kompresję dźwięku</string>
-  <string name="morphe_disable_drc_audio_stream_summary">Odtwarza oryginalny dźwięk zamiast wersji ze skompresowaną dynamiką</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Odtwarza oryginalny dźwięk zamiast wersji ze skompresowanym zakresem dynamiki</string>
   <string name="morphe_disable_loudness_normalization_title">Wyłącz normalizację głośności</string>
-  <string name="morphe_disable_loudness_normalization_summary">Odtwarza głośne dźwięki z oryginalną głośnością zamiast obniżać ją do standardowego poziomu</string>
+  <string name="morphe_disable_loudness_normalization_summary">Odtwarza głośny dźwięk z jego oryginalną głośnością, zamiast obniżać go do standardowego poziomu</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Wymuś oryginalny język dźwięku</string>
   <string name="morphe_force_original_audio_summary">Zawsze odtwarza oryginalną ścieżkę dźwiękową filmu zamiast wersji z dubbingiem</string>
@@ -232,13 +232,13 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimalna długość pauzy</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Skracane są tylko pauzy trwające co najmniej tak długo. Zmiana wejdzie w życie po uruchomieniu kolejnego filmu</string>
   <!-- misc.videoeffects.videoEffectsPatch -->
-  <string name="morphe_video_effect_title">Efekt wideo</string>
+  <string name="morphe_video_effect_title">Efekt filmu</string>
   <string name="morphe_video_effect_entry_none">Wyłączony</string>
-  <string name="morphe_video_effects_custom_title">Edytuj efekty wideo</string>
-  <string name="morphe_video_effects_custom_summary">Zmieniaj, zmieniaj nazwę, usuwaj lub dodawaj efekty wideo. Efekty są kodem shaderów, więc chatbot AI może napisać nowe</string>
-  <string name="morphe_video_effects_custom_empty">Brak efektów wideo. Dotknij Dodaj efekt, aby utworzyć nowy.</string>
+  <string name="morphe_video_effects_custom_title">Edytuj efekty filmu</string>
+  <string name="morphe_video_effects_custom_summary">Zmieniaj, usuwaj, dodawaj efekty filmu lub zmieniaj ich nazwy. Efekty to kod shaderów, więc chatbot AI może napisać nowe</string>
+  <string name="morphe_video_effects_custom_empty">Brak efektów filmu. Dotknij \"Dodaj efekt\", aby utworzyć nowy.</string>
   <string name="morphe_video_effects_custom_add">Dodaj efekt</string>
-  <string name="morphe_video_effects_custom_restore">Przywróć ustawienia domyślne</string>
+  <string name="morphe_video_effects_custom_restore">Przywróć domyślne</string>
   <string name="morphe_video_effects_custom_add_title">Nowy efekt</string>
   <string name="morphe_video_effects_custom_edit_title">Edytuj efekt</string>
   <string name="morphe_video_effects_custom_name_hint">Nazwa</string>
@@ -246,14 +246,17 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_video_effects_custom_name_exists">Efekt o tej nazwie już istnieje</string>
   <string name="morphe_video_effects_custom_copy_code">Skopiuj kod</string>
   <string name="morphe_video_effects_custom_error_title">Efekt zawiera błąd</string>
-  <string name="morphe_video_effects_custom_error_message">"Filmy są wyświetlane bez efektu do czasu naprawienia kodu. Przekaż ten błąd sztucznej inteligencji, która napisała kod:
+  <string name="morphe_video_effects_custom_error_message">"Filmy będą wyświetlane bez tego efektu do czasu naprawienia kodu. Przekaż ten błąd AI, które napisało kod:
 
-%s"</string>
-  <string name="morphe_video_effects_custom_copy_error">Kopiowanie nie powiodło się</string>
+​%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod kończy się wewnątrz funkcji lub komentarza, więc prawdopodobnie został ucięty podczas kopiowania lub wklejania. Wklejany tekst może zostać ucięty po %d znakach.
+
+Poproś AI o krótszy kod lub wklej go w częściach."</string>
+  <string name="morphe_video_effects_custom_copy_error">Skopiuj błąd</string>
   <string name="morphe_video_effects_custom_save_anyway">Zapisz mimo to</string>
   <string name="morphe_video_effects_custom_delete">Usuń</string>
   <string name="morphe_video_effects_custom_delete_title">Usunąć efekt?</string>
-  <string name="morphe_video_effects_custom_delete_message">%s zostanie usunięte.</string>
+  <string name="morphe_video_effects_custom_delete_message">%s zostanie usunięty.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Serwer proxy</string>
   <string name="morphe_proxy_screen_summary">Kieruj obsługiwane żądania sieciowe przez serwer proxy</string>
@@ -381,7 +384,7 @@ Zmieni to wygląd i dostępne funkcje aplikacji, ale mogą wystąpić nieprzewid
   <string name="morphe_glass_menus_blur_title">Rozmycie</string>
   <string name="morphe_glass_menus_blur_summary">Stopień rozmycia zawartości za menu</string>
   <string name="morphe_glass_menus_dim_title">Przyciemnienie</string>
-  <string name="morphe_glass_menus_dim_summary">Stopień przyciemnienia ekranu wokół dolnego arkusza</string>
+  <string name="morphe_glass_menus_dim_summary">Stopień przyciemnienia ekranu wokół dolnego menu</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Łapki w dół są niedostępne (API nie reaguje)</string>

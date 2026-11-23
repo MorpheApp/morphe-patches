@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"Видеата се прикажани без ефект додека кодот не се поправи. Испратете ја оваа грешка до ВИИ што го напиша кодот:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Кодот завршува во функција или коментар, па веројатно е прекинат при копирањето или лепењето. Залепениот текст може да биде прекинат на %d знаци.
+
+Побарајте од ВИ од пократок код или залепете го кодот во делови."</string>
   <string name="morphe_video_effects_custom_copy_error">Копирај грешка</string>
   <string name="morphe_video_effects_custom_save_anyway">Зачувај секако</string>
   <string name="morphe_video_effects_custom_delete">Избриши</string>

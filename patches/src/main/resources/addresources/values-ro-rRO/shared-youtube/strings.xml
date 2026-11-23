@@ -249,6 +249,9 @@ Pentru a te autentifica, apasă pe continuă mai jos"</string>
   <string name="morphe_video_effects_custom_error_message">"Videoclipurile sunt afișate fără efect până când codul este corectat. Trimiteți această eroare AI-ului care a scris codul:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Codul se termină în interiorul unei funcții sau al unui comentariu, deci probabil a fost tăiat în timpul copierii sau lipirii. Textul lipit poate fi tăiat la %d caractere.
+
+Cere AI-ului un cod mai scurt sau lipește codul în fragmente."</string>
   <string name="morphe_video_effects_custom_copy_error">Copiere eroare</string>
   <string name="morphe_video_effects_custom_save_anyway">Salvează oricum</string>
   <string name="morphe_video_effects_custom_delete">Șterge</string>

@@ -119,7 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Kohandatud</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Esita albumi helilood</string>
-  <string name="morphe_music_play_album_songs_summary">Esita albumi laule asemel nende muusikavideoid</string>
+  <string name="morphe_music_play_album_songs_summary">Esita albumi laulud, mitte nende muusikavideoid</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Luba heli/video lüliti</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Proovi vahetada heliriba versiooni ja ametlikku muusikavideot</string>
@@ -284,7 +284,7 @@ Kui peatad sujuva ülemineku muusikavideo vaatamiseks, võib video jääda musta
   <string name="morphe_music_playback_speed_change_pitch_title">Muuda helikõrgust koos kiirusega</string>
   <!-- video.effects.videoEffectsPatch -->
   <string name="morphe_music_video_effect_menu_title">Kuva videofiltrite menüüt</string>
-  <string name="morphe_music_video_effect_menu_summary">Lisab videofiltrite menüü mängijasse video esituse ajal</string>
+  <string name="morphe_music_video_effect_menu_summary">Lisab videofiltrite menüü pleierisse video esituse ajal</string>
   <string name="morphe_music_video_effect_next_video">Efekt kuvatakse alates järgmisest videost</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Keela automaatsed altekirjad</string>
@@ -754,13 +754,13 @@ Nõutavad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Jaapani keel</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — kiire morfoloogiline analüüsija ruby</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — täielik jaapani sõnastik</string>
-  <string name="morphe_music_lyrics_japanese_dict_engine_title">Prioriteedi ja varusuutluse järjestus</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Prioriteedi &amp; asenduse järjestus</string>
   <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji prioriteet (varu SudachiDict)</string>
   <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict prioriteet (varu Kuromoji)</string>
-  <string name="morphe_music_lyrics_custom_font_title">Laululeksuse kohandatud font</string>
-  <string name="morphe_music_lyrics_custom_font_summary_default">Vaikimisi süsteemifont (puudutage, et uploadida .ttf või .otf fondifail)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Laulusõnade kohandatud font</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Vaikimisi süsteemifont (puudutage, et laadida üles .ttf või .otf fondifail)</string>
   <string name="morphe_music_lyrics_custom_font_summary_active">Aktiivne font: %s</string>
-  <string name="morphe_music_lyrics_custom_font_dialog_message">Laadige oma seadme mälust üles .ttf või .otf fondifail (näiteks SF Pro Bold, Inter Bold või Inter ExtraBold), et seda laululeksuse vaates kasutada.</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Laadige oma seadme mälust üles .ttf või .otf fondifail (näiteks SF Pro Bold, Inter Bold või Inter ExtraBold), et seda laulusõnade vaates kasutada.</string>
   <string name="morphe_music_lyrics_custom_font_choose">Laadi font üles</string>
   <string name="morphe_music_lyrics_custom_font_reset">Lähtesta vaikeväärtusele</string>
   <string name="morphe_music_lyrics_custom_font_applied">Kohandatud laulusõnade font rakendatud: %s</string>
@@ -771,7 +771,7 @@ Nõutavad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_copy">Kopeeri</string>
   <string name="morphe_music_lyrics_share_options_title">Laulusõnade tegevused</string>
   <string name="morphe_music_lyrics_copy_plain_option">Kopeeri laulusõnad lihtsa tekstina</string>
-  <string name="morphe_music_lyrics_save_file_option">Salvesta laulusõnad ja TTML Failidesse Downloads</string>
+  <string name="morphe_music_lyrics_save_file_option">Salvesta laulusõnad &amp; TTML Allalaadimistesse</string>
   <string name="morphe_music_lyrics_share_cancel">Tühista</string>
   <string name="morphe_music_lyrics_share_select_hint">Jagamiseks puuduta 1–5 rida</string>
   <string name="morphe_music_lyrics_share_max_lines">Võib valida maksimaalselt 5 rida</string>

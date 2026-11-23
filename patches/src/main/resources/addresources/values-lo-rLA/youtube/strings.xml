@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">ເຊື່ອງປັອບອັບຄຳແນະນຳທີ່ສະແດງໃກ້ກັບແຖບປ້ອນຂໍ້ມູນແຊັດ, ເຊັ່ນ ແຈ້ງເຕືອນການແຊັດສະເພາະຜູ້ສະໝັກຮັບຂໍ້ມູນ</string>
   <string name="morphe_hide_comments_menu_button_title">ເຊື່ອງປຸ່ມເມນູ</string>
   <string name="morphe_hide_comments_menu_button_summary">ເຊື່ອງປຸ່ມເມນູ 3 ຈຸດ ຂອງແຕ່ລະຄຳເຫັນ</string>
+  <string name="morphe_hide_comments_none_yet_title">ເຊື່ອງຕົວຢ່າງ \'ຍັງບໍ່ມີຄຳເຫັນ\'</string>
   <string name="morphe_hide_comments_preview_comment_title">ເຊື່ອງການເບິ່ງຄຳຄິດເຫັນລ່ວງໜ້າ</string>
   <string name="morphe_hide_comments_preview_comment_summary">ເຊື່ອງຕົວຢ່າງຄໍາຄິດເຫັນພາຍໃຕ້ວິດີໂອກ່ອນທີ່ຈະເປີດສ່ວນຄໍາຄິດເຫັນທັງໝົດ</string>
   <string name="morphe_hide_comments_preview_comment_hidden">ຄວາມຄິດເຫັນຖືກເຊື່ອງໂດຍ Morphe…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">ເຊື່ອງ \'ຫົວຂໍ້\'</string>
   <string name="morphe_hide_comments_topics_summary">ເຊື່ອງຕົວເລືອກແຖບຕົວຕອງ \'ຫົວຂໍ້\' ແລະ ການທ່ອງເບິ່ງຄຳເຫັນ \'ຫົວຂໍ້\' ທີ່ຢູ່ລຸ່ມວິດີໂອ</string>
   <string name="morphe_hide_comments_translate_button_title">ເຊື່ອງປຸ່ມແປພາສາ</string>
-  <string name="morphe_hide_comments_zero_state_title">ເຊື່ອງຂໍ້ຄວາມ \'ຍັງບໍ່ມີຄຳຄິດເຫັນ\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">ເຊື່ອງພາກ \'ເຂົ້າເບິ່ງຊຸມຊົນ\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ເຮັດຄວາມສະອາດລິ້ງການຄົ້ນຫາທີ່ເນັ້ນ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">ເຮັດຄວາມສະອາດລິ້ງການຄົ້ນຫາທີ່ເນັ້ນ, ໃຫ້ເຫຼືອພຽງແຕ່ຂໍ້ຄວາມທຳມະດາຕົ້ນສະບັບ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">ເພີ່ມຊ່ອງເຂົ້າໃນລາຍການອະນຸຍາດແລ້ວ</string>
   <string name="morphe_channel_whitelist_channel_removed">ລຶບຊ່ອງອອກຈາກລາຍການອະນຸຍາດແລ້ວ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">ຄົ້ນຫາ</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">ຄົ້ນຫາພາຍໃນຊ່ອງ</string>
   <string name="morphe_channel_search_summary">ເພີ່ມປຸ່ມຄົ້ນຫາທີສອງໃນໜ້າຊ່ອງ ເພື່ອຄົ້ນຫາສະເພາະຊ່ອງນັ້ນ</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">ເກົ່າສຸດ</string>
   <string name="morphe_channel_search_sort_shortest">ສັ້ນທີ່ສຸດ</string>
   <string name="morphe_channel_search_sort_longest">ຍາວທີ່ສຸດ</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">ຄົ້ນຫາພາຍໃນລາຍການເພງ</string>
+  <string name="morphe_playlist_search_summary">ເພີ່ມປຸ່ມຄົ້ນຫາທີສອງໃນໜ້າລາຍການເພງ ເພື່ອຄົ້ນຫາສະເພາະລາຍການເພງນັ້ນ</string>
+  <string name="morphe_playlist_search_hint">ຄົ້ນຫາລາຍການເພງ</string>
+  <string name="morphe_playlist_search_results">ຜົນການຄົ້ນຫາລາຍການເພງ</string>
+  <string name="morphe_playlist_search_no_results">ບໍ່ພົບຫຍັງເລີຍໃນລາຍການເພງນີ້</string>
+  <string name="morphe_playlist_search_failed">ບໍ່ສາມາດຄົ້ນຫາລາຍການເພງນີ້ໄດ້</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">ຄັດລອກລິ້ງໄປຍັງຄລິບບອດແລ້ວ</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">ຄັດລອກລິ້ງພ້ອມເວລາທີ່ກຳນົດໄວ້ໄປຍັງຄລິບບອດແລ້ວ</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">ສະແດງຈໍານວນການເບິ່ງໃນຮູບຕົວຢ່າງ</string>
   <string name="morphe_feed_view_count_summary">ຈໍານວນການເບິ່ງຂອງວິດີໂອໃນ feed ຈະຖືກສະແດງຢູ່ມຸມລຸ່ມຊ້າຍຂອງຮູບຕົວຢ່າງ ແທນທີ່ຈະຢູ່ກ້ອງຊື່ເລື່ອງ. ບາງວິດີໂອ, ເຊັ່ນໃນ shelves, ອາດຈະບໍ່ສະແດງຈໍານວນການເບິ່ງ</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">ຄືນຄ່າຊື່ຜູ້ໃຊ້ YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">ສະແດງຊື່ຊ່ອງແທນທີ່ handles</string>
+  <string name="morphe_return_youtube_username_title">ສະແດງຊື່ຊ່ອງ</string>
+  <string name="morphe_return_youtube_username_summary">ຊື່ຊ່ອງຈະຖືກສະແດງແທນທີ່ handles ໃນຄຳຄິດເຫັນ, ພາຍໃຕ້ຫົວຂໍ້ວິດີໂອ ແລະ ໃນ Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">ຮູບແບບຊື່ຊ່ອງ</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">ຊື່ຊ່ອງ</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">ຊື່ຊ່ອງ (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (ຊື່ຊ່ອງ)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ສະແດງຈຳນວນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
   <string name="morphe_ryd_feed_like_ratio_title">ສະແດງເປີເຊັນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳທີ່ຄົ້ນຫາທັງໝົດ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາເປັນວະລີ</string>
   <string name="morphe_search_comments_dialog_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
   <string name="morphe_search_comments_hint">ຄຳສັບທີ່ຕ້ອງການຄົ້ນຫາ</string>
-  <string name="morphe_search_comments_search">ຄົ້ນຫາ</string>
   <string name="morphe_search_comments_clear">ລ້າງຂໍ້ມູນ</string>
   <string name="morphe_search_comments_applied">ປ່ຽນລຳດັບການຈັດຮຽງ ຫຼື ເປີດຄຳຄິດເຫັນອີກຄັ້ງເພື່ອຄົ້ນຫາ</string>
   <string name="morphe_search_comments_cleared">ລ້າງການຄົ້ນຫາແລ້ວ. ປ່ຽນລຳດັບການຈັດຮຽງ ຫຼື ເປີດຄຳຄິດເຫັນອີກຄັ້ງເພື່ອສະແດງທຸກຄຳຄິດເຫັນ</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">ວິດີໂອສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts ສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
   <string name="morphe_play_all_button_type_entry_12">ການສະຕຣີມສົດສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
+  <string name="morphe_play_all_button_reverse_title">ລຳດັບຍ້ອນກັບ</string>
+  <string name="morphe_play_all_button_reverse_summary">ລາຍການວິດີໂອທີ່ສ້າງຂຶ້ນຈະຫຼິ້ນອັດຕະໂນມັດຈາກວິດີໂອສຸດທ້າຍໄປຫາວິດີໂອທຳອິດ</string>
   <string name="morphe_play_all_button_not_available_toast">ບໍ່ສາມາດສ້າງລາຍການຫຼິ້ນໄດ້ ເນື່ອງຈາກ ID ຊ່ອງບໍ່ກົງກັນ</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">ປຸ່ມສະແດງລາຍການຫຼິ້ນ</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">ປັດໃນໂໝດເຕັມໜ້າຈໍ ເພື່ອຂ້າມໄປວິດີໂອຖັດໄປ ຫຼື ວິດີໂອກ່ອນໜ້ານີ້</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">ທ່າທາງການກົດຄ້າງ</string>
-  <string name="morphe_hold_gesture_screen_summary">ປ່ຽນ ແລະ ລັອກຄວາມໄວໃນການຫຼິ້ນໂດຍການລາກ ຫຼັງຈາກແຕະ ແລະ ກົດຄ້າງ</string>
+  <string name="morphe_hold_gesture_screen_summary">ປ່ຽນ ແລະ ລັອກຄວາມໄວໃນການຫຼິ້ນ, ແລະ ດຳເນີນການຕ່າງໆ, ໂດຍການລາກຫຼັງຈາກແຕະ ແລະ ຄ້າງໄວ້</string>
   <string name="morphe_hold_gesture_title">ເປີດໃຊ້ທ່າທາງການກົດຄ້າງ</string>
   <string name="morphe_hold_gesture_summary">ການແຕະ ແລະ ກົດຄ້າງທີ່ວິດີໂອສາມາດຕາມດ້ວຍການລາກ. ຄວາມໄວໃນຂະນະທີ່ກົດຄ້າງແມ່ນຄວາມໄວໃນການຫຼິ້ນແບບແຕະ ແລະ ກົດຄ້າງ</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">ບໍ່ໄດ້ຖືກນຳໃຊ້ໃນຂະນະທີ່ເປີດ \'ກົດເພື່ອປັດ\'. ແຕະເພື່ອປ່ຽນແປງ</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">ລາກລົງເພື່ອລັອກຄວາມໄວ</string>
   <string name="morphe_hold_gesture_lock_summary">ຫຼັງຈາກແຕະຄ້າງໄວ້, ໃຫ້ລາກລົງເພື່ອຮັກສາຄວາມໄວເມື່ອຍົກນິ້ວມືອອກ. ແຕະທີ່ປ້າຍ ຫຼື ແຕະຄ້າງໄວ້ອີກຄັ້ງເພື່ອປົດລັອກ</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">ສະແດງປ້າຍລັອກສະເໝີ</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">ປ້າຍຂອງຄວາມໄວທີ່ຖືກລັອກຈະຍັງຄົງສະແດງຢູ່ ໃນຂະນະທີ່ຕົວຄວບຄຸມເຄື່ອງຫຼິ້ນຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">ສະແດງປ້າຍຂອງຄວາມໄວທີ່ຖືກລັອກໄວ້ ເຖິງແມ່ນວ່າປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນຈະບໍ່ສະແດງກໍຕາມ. ຖ້າປິດ, ປ້າຍຈະສະແດງຮ່ວມກັບປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">ປົດລັອກເມື່ອວິດີໂອປ່ຽນ</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">ຄວາມໄວທີ່ຖືກລັອກຈະສິ້ນສຸດລົງເມື່ອວິດີໂອອື່ນເລີ່ມຫຼິ້ນ</string>
   <string name="morphe_hold_gesture_lock_hint">ດຶງລົງເພື່ອລັອກ</string>
   <string name="morphe_hold_gesture_lock_release">ປ່ອຍເພື່ອລັອກ %s</string>
+  <string name="morphe_hold_gesture_launcher_title">ລາກຂຶ້ນເພື່ອເປີດຕົວເປີດໂປຣແກຣມ</string>
+  <string name="morphe_hold_gesture_launcher_summary">ຫຼັງຈາກແຕະ and ຄ້າງໄວ້, ໃຫ້ລາກຂຶ້ນເພື່ອສະແດງການດຳເນີນການອ້ອມຮອບນິ້ວມື. ຍົກນິ້ວມືອອກຈາກການດຳເນີນການເພື່ອໃຊ້ງານມັນ</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">ຈຳນວນການດຳເນີນການ</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">ການດຳເນີນການ 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">ການດຳເນີນການ 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">ການດຳເນີນການ 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">ການດຳເນີນການ 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">ການດຳເນີນການ 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">ລັອກໜ້າຈໍ</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">ວົນຊ້ຳວິດີໂອ</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">ຢຸດການວົນຊ້ຳ</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">ບັນທຶກເຟຣມ</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">ບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງ</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">ຄັດລອກລິງ𝕜໌ໃນເວລາປັດຈຸບັນ</string>
+  <string name="morphe_hold_gesture_screen_unlock">ແຕະເພື່ອປົດລັອກ</string>
+  <string name="morphe_hold_gesture_frame_saved">ບັນທຶກເຟຣມລົງໃນ %s ແລ້ວ</string>
+  <string name="morphe_hold_gesture_frame_failed">ບໍ່ສາມາດບັນທຶກເຟຣມໄດ້</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">ຄຳບັນຍາກຳກັບ</string>
   <string name="morphe_captions_screen_summary">ຈັດການຄຳບັນຍາກົດອັດຕະໂນມັດ ແລະ ຄຸກກີຂອງຄຳບັນຍາກົດ</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">ປິດການຫຼິ້ນອັດຕະໂນມັດຂອງລາຍການຫຼິ້ນ</string>
   <string name="morphe_disable_playlist_autoplay_summary">ປ້ອງກັນບໍ່ໃຫ້ລາຍການຫຼິ້ນເພງເລື່ອນໄປວິດີໂອຖັດໄປໂດຍອັດຕະໂນມັດ</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">ຫຼິ້ນລາຍການວິດີໂອອັດຕະໂນມັດແບບຍ້ອນກັບ</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">ລາຍການວິດີໂອຈະຫຼິ້ນອັດຕະໂນມັດຈາກວິດີໂອສຸດທ້າຍໄປຫາວິດີໂອທຳອິດ. ສ່ວນ Mixes ຈະບໍ່ຖືກປ່ຽນເປັນແບບຍ້ອນກັບ</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">ການຄວບຄຸມການຫຼິ້ນອັດຕະໂນມັດ</string>
   <string name="morphe_autoplay_control_summary">ເພີ່ມປຸ່ມເຄື່ອງຫຼິ້ນ ແລະ ກົດເກນສຳລັບວິດີໂອຖັດໄປ. ຫຼິ້ນລາຍການຫຼິ້ນ ແລະ ຄິວຕໍ່ໄປ, Mix ຈະຢຸດຫຼັງຈາກຈຳນວນວິດີໂອທີ່ກຳນົດ, ວິດີໂອທີ່ແນະນຳຈະບໍ່ຖືກຫຼິ້ນ. ແຕະປຸ່ມເພື່ອປ່ຽນໂໝດຖັດໄປ, ແຕະຄ້າງໄວ້ເພື່ອເບິ່ງລາຍການ</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">ແຕະເພື່ອປ່ຽນລະຫວ່າງ ຄ່າເລີ່ມຕົ້ນ, ຢືດ, ແລະ ຊູມ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">ສະແດງສະເພາະໃນໂໝດເຕັມຈໍ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">ເຊື່ອງປຸ່ມປັບຂະໜາດວິດີໂອໃນເຄື່ອງຫຼິ້ນແນວຕັ້ງ</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">ສະແດງປຸ່ມຫຼິ້ນຄືນໃຫ້ຊ້າລົງ</string>
+  <string name="morphe_replay_video_button_summary">ຍ້ອນກັບ ແລະ ຫຼຸດຄວາມໄວຂອງວິດີໂອຊົ່ວຄາວ. ແຕະອີກຄັ້ງເພື່ອຍົກເລີກ</string>
+  <string name="morphe_replay_video_swipe_title">ປັດໄປທາງຊ້າຍເພື່ອຫຼິ້ນຄືນໃຫ້ຊ້າລົງ</string>
+  <string name="morphe_replay_video_swipe_summary">ປັດໄປທາງຊ້າຍໃນວິດີໂອເພື່ອຍ້ອນກັບ 1-10 ວິນາທີ, ຂຶ້ນກັບຄວາມຍາວຂອງການປັດ. ການຄວບຄຸມການປັດຈະຊອກຫາຈຸດທີ່ຕ້ອງການ ແລະ ການປັດໃນເຂດເທິງຈະມີບຸລິມະສິດກ່ອນ</string>
+  <string name="morphe_replay_video_swipe_preview">ຫຼິ້ນຄືນ %s ວິນາທີ</string>
+  <string name="morphe_replay_video_seconds_title">ໄລຍະເວລາການຍ້ອນກັບ</string>
+  <string name="morphe_replay_video_seconds_summary">ຈຳນວນວິນາທີທີ່ປຸ່ມຍ້ອນວິດີໂອກັບ</string>
+  <string name="morphe_replay_video_slow_seconds_title">ໄລຍະເວລາການຫຼິ້ນຊ້າ</string>
+  <string name="morphe_replay_video_slow_seconds_summary">ຈຳນວນວິນາທີຂອງວິດີໂອທີ່ຈະຫຼິ້ນດ້ວຍຄວາມໄວໃນການຫຼິ້ນຄືນ ຫຼັງຈາກການຍ້ອນກັບ</string>
+  <string name="morphe_replay_video_speed_title">ຄວາມໄວໃນການຫຼິ້ນຄືນ</string>
+  <string name="morphe_replay_video_speed_summary">ຄວາມໄວໃນການຫຼິ້ນຂອງການຫຼິ້ນຄືນ, ເຊັ່ນ 0.5. ການຫຼິ້ນຄືນຈະບໍ່ໄວໄປກວ່ານິດາຄວາມໄວປັດຈຸບັນ</string>
+  <string name="morphe_replay_video_start">ຫຼິ້ນຄືນຊ້າລົງ</string>
+  <string name="morphe_replay_video_unavailable">ການຫຼິ້ນຄືນແບບຊ້າບໍ່ສາມາດໃຊ້ໄດ້ສຳລັບວິດີໂອນີ້</string>
+  <string name="morphe_replay_video_speed_invalid">ຄວາມໄວໃນການຫຼິ້ນຄືນບໍ່ຖືກຕ້ອງ, ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">ສະແດງປຸ່ມປິດສຽງ</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

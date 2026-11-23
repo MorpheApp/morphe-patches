@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">מסתירה בועיות הסבר המופיעות ליד שורת קלט הצ\'אט, כגון הודעת צ\'אט למנויים בלבד</string>
   <string name="morphe_hide_comments_menu_button_title">הסתר כפתור תפריט</string>
   <string name="morphe_hide_comments_menu_button_summary">מסתיר את כפתור התפריט בעל שלוש הנקודות של כל תגובה</string>
+  <string name="morphe_hide_comments_none_yet_title">הסתר תצוגה מקדימה של \'אין תגובות עדיין\'</string>
   <string name="morphe_hide_comments_preview_comment_title">הסתר תצוגה מקדימה של תגובה</string>
   <string name="morphe_hide_comments_preview_comment_summary">מסתיר את התצוגה המקדימה של התגובה מתחת לסרטון לפני פתיחת סעיף התגובות המלא</string>
   <string name="morphe_hide_comments_preview_comment_hidden">התגובה הוסתרה על ידי Morphe…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">הסתר \'נושאים\'</string>
   <string name="morphe_hide_comments_topics_summary">מסתיר את אפשרות סרגל הסינון \'נושאים\' ואת תצוגות המקדימה של תגובות \'נושא\' מתחת לסרטון</string>
   <string name="morphe_hide_comments_translate_button_title">הסתר את כפתור התרגום</string>
-  <string name="morphe_hide_comments_zero_state_title">הסתר את ההודעה \'אין תגובות עדיין\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">הסתר את סעיף \'ביקור בקהילה\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ניקוי קישורים בחיפוש מודגשים</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">מנקה קישורים בחיפוש מודגשים, ומשאיר רק את הטקסט המקורי</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">הערוץ נוסף לרשימה הלבנה</string>
   <string name="morphe_channel_whitelist_channel_removed">הערוץ הוסר מהרשימה הלבנה</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">חיפוש</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">חיפוש בערוץ</string>
   <string name="morphe_channel_search_summary">מוסיף כפתור חיפוש שני בדפי הערוץ כדי לחפש רק בערוץ זה</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">הוותיקים ביותר</string>
   <string name="morphe_channel_search_sort_shortest">הקצרים ביותר</string>
   <string name="morphe_channel_search_sort_longest">הארוכים ביותר</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">חיפוש בתוך רשימת השמעה</string>
+  <string name="morphe_playlist_search_summary">מוסיף כפתור חיפוש שני בדפי רשימות השמעה כדי לחפש רק באותה רשימת השמעה</string>
+  <string name="morphe_playlist_search_hint">חפש ברשימת השמעה</string>
+  <string name="morphe_playlist_search_results">תוצאות חיפוש ברשימת השמעה</string>
+  <string name="morphe_playlist_search_no_results">לא נמצאו תוצאות ברשימת השמעה זו</string>
+  <string name="morphe_playlist_search_failed">לא ניתן היה לחפש ברשימת השמעה זו</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">קישור הועתק ללוח הגזירים</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">קישור עם חותמת זמן הועתק ללוח הגזירים</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">הצג את ספירת הצפיות בתמונות ממוזערות</string>
   <string name="morphe_feed_view_count_summary">ספירת הצפיות של סרטוני הפיד מוצגת בפינה השמאלית התחתונה של התמונות הממוזערות, במקום מתחת לכותרת. בסרטונים מסוימים, כמו אלו במדפים, ייתכן שלא תוצג ספירת צפיות</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">החזר שם משתמש ב-YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">הצג שמות ערוצים במקום ידיות</string>
+  <string name="morphe_return_youtube_username_title">הצג שמות ערוצים</string>
+  <string name="morphe_return_youtube_username_summary">שמות ערוצים מוצגים במקום ידיות בתגובות, מתחת לכותרת הסרטון וב-Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">פורמט שם ערוץ</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">שם ערוץ</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">שם ערוץ (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (שם ערוץ)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">הצג מספר לייקים בתמונה ממוזערת בפיד</string>
   <string name="morphe_ryd_feed_like_ratio_title">הצג אחוז לייקים בתמונה ממוזערת בפיד</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">הקש על כפתור החיפוש בתגובות כדי להציג רק את התגובות שנטענו ומכילות את כל מילות החיפוש. הקף מילים במירכאות כדי לחפש ביטוי</string>
   <string name="morphe_search_comments_dialog_title">חיפוש תגובות</string>
   <string name="morphe_search_comments_hint">מילים לחיפוש</string>
-  <string name="morphe_search_comments_search">חיפוש</string>
   <string name="morphe_search_comments_clear">נקה</string>
   <string name="morphe_search_comments_applied">שנו את סדר המיון או פתחו שוב את התגובות כדי לחפש בהן</string>
   <string name="morphe_search_comments_cleared">החיפוש נוקה. שנו את סדר המיון או פתחו שוב את התגובות כדי להציג את כל התגובות</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">סרטוני חברים בלבד</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts של חברים בלבד</string>
   <string name="morphe_play_all_button_type_entry_12">שידורי חיים של חברים בלבד</string>
+  <string name="morphe_play_all_button_reverse_title">סדר הפוך</string>
+  <string name="morphe_play_all_button_reverse_summary">רשימת ההשמעה שנוצרה תופעל באופן אוטומטי מהסרטון האחרון לראשון</string>
   <string name="morphe_play_all_button_not_available_toast">לא ניתן ליצור רשימת השמעה עקב אי התאמת מזהה ערוץ</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">הצג לחצן \'רשימת השמעה\'</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">החלק במצב מסך מלא כדי לדלג לסרטון הבא או הקודם</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">מחוות החזקה</string>
-  <string name="morphe_hold_gesture_screen_summary">שנה ונעול את מהירות ההשמעה על ידי גרירה לאחר לחיצה והחזקה</string>
+  <string name="morphe_hold_gesture_screen_summary">שנה ונעל את מהירות הניגון, והפעל פעולות, על ידי גרירה לאחר לחיצה ארוכה</string>
   <string name="morphe_hold_gesture_title">הפעל מחוות החזקה</string>
   <string name="morphe_hold_gesture_summary">לחיצה והחזקה על הסרטון יכולים להוביל לגרירה. המהירות בזמן ההחזקה היא מהירות ההשמעה של לחיצה והחזקה</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">אינו בשימוש כאשר \"לחץ כדי להחליק\" מופעל. הקשה לשינוי</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">גרור למטה כדי לנעול את המהירות</string>
   <string name="morphe_hold_gesture_lock_summary">לאחר לחיצה והחזקה, גרור למטה כדי לשמור על המהירות כאשר האצבע מורמת. הקש על התג או לחץ והחזק שוב כדי לבטל את הנעילה</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">הצג תמיד את תג הנעילה</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">התג של מהירות נעולה נשאר גלוי בזמן שבקרים של הנגן מוסתרים</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">מציג את התג של מהירות נעולה גם כאשר בקרות הנגן אינן מוצגות. אם האפשרות כבויה, התג יוצג יחד עם בקרות הנגן</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">בטל נעילה כאשר הסרטון משתנה</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">מהירות נעולה מסתיימת כאשר סרטון אחר מתחיל</string>
   <string name="morphe_hold_gesture_lock_hint">משוך למטה כדי לנעול</string>
   <string name="morphe_hold_gesture_lock_release">שחרר כדי לנעול את %s</string>
+  <string name="morphe_hold_gesture_launcher_title">גרור למעלה כדי לפתוח את המשגר</string>
+  <string name="morphe_hold_gesture_launcher_summary">לאחר לחיצה ארוכה, גרור למעלה כדי להציג פעולות סביב האצבע. הרם את האצבע מעל פעולה כדי להפעילה</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">מספר פעולות</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">פעולה 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">פעולה 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">פעולה 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">פעולה 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">פעולה 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">נעילת מסך</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">סרטון בלופ</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">הפסק לופ</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">שמור פריים</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">שמור לצפייה מאוחר יותר</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">העתק קישור לזמן הנוכחי</string>
+  <string name="morphe_hold_gesture_screen_unlock">הקש כדי לשחרר</string>
+  <string name="morphe_hold_gesture_frame_saved">הפריים נשמר ב-%s</string>
+  <string name="morphe_hold_gesture_frame_failed">לא ניתן לשמור את הפריים</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">כתוביות</string>
   <string name="morphe_captions_screen_summary">ניהול כתוביות אוטומטיות ועוגיות כתוביות</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">השבת הפעלה אוטומטית של רשימת השמעה</string>
   <string name="morphe_disable_playlist_autoplay_summary">מונע מרשימות השמעה להתקדם אוטומטית לווידאו הבא</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">הפוך את השמעת רשימת ההשמעה באופן אוטומטי</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">רשימות השמעה יופעלו באופן אוטומטי מהסרטון האחרון לראשון. מיקסים לא יהפכו</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">בקרת הפעלה אוטומטית</string>
   <string name="morphe_autoplay_control_summary">מוסיף כפתור נגן וכלל לסרטון הבא. רשימות השמעה ותורים ממשיכים, Mix נעצר לאחר מספר סרטונים, וסרטון מוצע לא יופעל לעולם. הקשה על הכפתור למצב הבא, לחיצה ארוכה לרשימה</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">הקש כדי לעבור בין ברירת מחדל, מתיחה וזום</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">הצג רק במסך מלא</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">הסתר את כפתור קנה המידה של הסרטון בנגן במצב לאורך</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">הצג לחצן \'נגן שוב לאט יותר\'</string>
+  <string name="morphe_replay_video_button_summary">ממיס לאחור ומאט את הסרטון באופן זמני. הקישו שוב כדי לבטל</string>
+  <string name="morphe_replay_video_swipe_title">החליקו שמאלה כדי להפעיל שוב לאט יותר</string>
+  <string name="morphe_replay_video_swipe_summary">החליקו שמאלה על הסרטון כדי לחזור 1–10 שניות אחורה, בהתאם לאורך ההחלקה. בקרות ההחלקה מחפשות, והחלקה באזור העליון מקבלת עדיפות</string>
+  <string name="morphe_replay_video_swipe_preview">נגן שוב %s שניות</string>
+  <string name="morphe_replay_video_seconds_title">משך זמן חזרה אחורה</string>
+  <string name="morphe_replay_video_seconds_summary">כמה שניות הכפתור מחזיר את הסרטון אחורה</string>
+  <string name="morphe_replay_video_slow_seconds_title">משך זמן השמעה איטית</string>
+  <string name="morphe_replay_video_slow_seconds_summary">כמה שניות מהסרטון יושמעו במהירות השמעה חוזרת לאחר החזרה אחורה</string>
+  <string name="morphe_replay_video_speed_title">מהירות השמעה חוזרת</string>
+  <string name="morphe_replay_video_speed_summary">מהירות ההשמעה של החזרה, כגון 0.5. ההשמעה החוזרת לעולם לא תהיה מהירה יותר מהמהירות הנוכחית</string>
+  <string name="morphe_replay_video_start">השמעה חוזרת איטית יותר</string>
+  <string name="morphe_replay_video_unavailable">השמעה חוזרת איטית אינה זמינה לסרטון זה</string>
+  <string name="morphe_replay_video_speed_invalid">מהירות השמעה חוזרת לא תקינה, איפוס לברירת מחדל</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">הצג כפתור השתקה</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

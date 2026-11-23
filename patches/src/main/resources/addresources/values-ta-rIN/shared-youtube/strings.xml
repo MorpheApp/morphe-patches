@@ -129,6 +129,9 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <string name="morphe_video_effects_custom_error_message">"குறியீடு சரிசெய்யப்படும் வரை வீடியோக்கள் விளைவு இல்லாமல் காட்டப்படும். குறியீட்டை எழுதிய AI-க்கு இந்தப் பிழையை வழங்கவும்:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"குறியீடு ஒரு செயல்பாட்டிற்குள்ளோ அல்லது கருத்திற்குள்ளோ முடிகிறது, எனவே இது நகலெடுக்கப்பட்ட அல்லது ஒட்டப்பட்ட போது துண்டிக்கப்பட்டிருக்கலாம். ஒட்டப்பட்ட உரை %d எழுத்துக்களில் துண்டிக்கப்படலாம்.
+
+AI-யிடம் குறுகிய குறியீட்டைக் கேட்கவும் அல்லது குறியீட்டைப் பகுதிகளாக ஒட்டவும்."</string>
   <string name="morphe_video_effects_custom_copy_error">நகல் எடுத்ததில் பிழை</string>
   <string name="morphe_video_effects_custom_save_anyway">எப்படியும் சேமி</string>
   <string name="morphe_video_effects_custom_delete">நீக்கு</string>

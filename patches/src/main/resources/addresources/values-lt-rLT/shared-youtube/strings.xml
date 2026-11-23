@@ -249,6 +249,9 @@ Norėdami prisijungti, žemiau spauskite „Tęsti“"</string>
   <string name="morphe_video_effects_custom_error_message">"Vaizgo įrašai rodomi be efekto, kol kodas nebus pataisytas. Perduokite šią klaidą DI, kuri parašė kodą:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kodas baigiasi funkcijos viduje arba komentare, todėl kopijavimo metu jis tikriausiai buvo nukirptas. Įklijuotas tekstas gali būti nukirptas ties %d simboliais.
+
+Papraskaite dirbtinio intelekto pagalbą sutrumpinti kodą arba įklijuokite jį dalimis."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopijavimo klaida</string>
   <string name="morphe_video_effects_custom_save_anyway">Vis tiek išsaugoti</string>
   <string name="morphe_video_effects_custom_delete">Ištrinti</string>

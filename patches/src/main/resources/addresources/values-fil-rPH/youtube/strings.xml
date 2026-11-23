@@ -423,6 +423,7 @@ Mga Limitasyon:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Itinatago ang mga tooltip popup na ipinapakita malapit sa bar ng input ng chat, tulad ng abiso ng chat na para sa mga subscriber lamang</string>
   <string name="morphe_hide_comments_menu_button_title">Itago ang pindutan ng Menu</string>
   <string name="morphe_hide_comments_menu_button_summary">Itinatago ang pindutan ng menu na may tatlong tuldok para sa bawat komento</string>
+  <string name="morphe_hide_comments_none_yet_title">Itago ang preview ng \'Wala pang mga komento\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Nakatago ang komento ni Morphe…</string>
@@ -433,7 +434,7 @@ Mga Limitasyon:
   <string name="morphe_hide_comments_topics_title">Itago ang \'Mga Paksa\'</string>
   <string name="morphe_hide_comments_topics_summary">Itinatago ang opsyon ng filter bar na \'Mga Paksa\' at ang mga preview ng komento ng \'Paksa\' sa ibaba ng video</string>
   <string name="morphe_hide_comments_translate_button_title">Itago ang button na Isalin</string>
-  <string name="morphe_hide_comments_zero_state_title">Itago ang mensahe na \'Walang komento pa\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Itago ang seksyong \'Bisitahin ang Community\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Linisin ang mga naka-highlight na link sa paghahanap</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nililinis ang mga naka-highlight na link sa paghahanap, at iniiwan lamang ang orihinal na simpleng teksto</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Upang ipakita ang menu na 'Audio Track', baguhin ang 'I-spoof ang mga video stre
   <string name="morphe_channel_whitelist_channel_added">Idinagdag ang channel sa whitelist</string>
   <string name="morphe_channel_whitelist_channel_removed">Tinanggal ang channel sa whitelist</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Hanapin</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Maghanap sa loob ng channel</string>
   <string name="morphe_channel_search_summary">Nagdaragdag ng pangalawang pindutan ng paghahanap sa mga pahina ng channel upang maghanap lamang sa channel na iyon</string>
@@ -578,6 +581,13 @@ Upang ipakita ang menu na 'Audio Track', baguhin ang 'I-spoof ang mga video stre
   <string name="morphe_channel_search_sort_oldest">Pinakaluma</string>
   <string name="morphe_channel_search_sort_shortest">Pinakamaikli</string>
   <string name="morphe_channel_search_sort_longest">Pinakamahaba</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Maghanap sa loob ng playlist</string>
+  <string name="morphe_playlist_search_summary">Nagdaragdag ng pangalawang button ng paghahanap sa mga pahina ng playlist para maghanap lamang sa playlist na iyon</string>
+  <string name="morphe_playlist_search_hint">Maghanap sa playlist</string>
+  <string name="morphe_playlist_search_results">Mga resulta ng paghahanap sa playlist</string>
+  <string name="morphe_playlist_search_no_results">Walang nahanap sa playlist na ito</string>
+  <string name="morphe_playlist_search_failed">Hindi mahanap ang playlist na ito</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Nakopya ang link sa clipboard</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Nakopya ang link na may timestamp sa clipboard</string>
@@ -652,6 +662,15 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Ipakita ang bilang ng panonood sa mga thumbnail</string>
   <string name="morphe_feed_view_count_summary">Ipinapakita ang bilang ng panonood ng mga video sa feed sa kaliwang ibaba ng kanilang mga thumbnail sa halip na sa ilalim ng pamagat. Maaaring hindi ipakita ang bilang ng panonood sa ilang video, tulad ng nasa mga shelf</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Ibalik ang YouTube Username</string>
+  <string name="morphe_return_youtube_username_screen_summary">Ipakita ang mga pangalan ng channel sa halip na mga handle</string>
+  <string name="morphe_return_youtube_username_title">Ipakita ang mga pangalan ng channel</string>
+  <string name="morphe_return_youtube_username_summary">Ang mga pangalan ng channel ay ipinapakita sa halip na mga handle sa mga komento, sa ibaba ng pamagat ng video at sa Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Format ng pangalan ng channel</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Pangalan ng channel</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Pangalan ng channel (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Pangalan ng channel)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Ipakita ang bilang ng like sa thumbnail ng feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Ipakita ang porsyento ng like sa thumbnail ng feed</string>
@@ -664,7 +683,6 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_search_comments_summary">I-tap ang search button sa mga comment upang ipakita lamang ang mga na-load na comment na naglalaman ng lahat ng mga hinahanap na salita. Maglagay ng mga salita sa loob ng panipi upang maghanap ng isang parirala</string>
   <string name="morphe_search_comments_dialog_title">Maghanap ng mga komento</string>
   <string name="morphe_search_comments_hint">Mga salitang hahanapin</string>
-  <string name="morphe_search_comments_search">Hanapin</string>
   <string name="morphe_search_comments_clear">Alisin</string>
   <string name="morphe_search_comments_applied">Baguhin ang pagkakasunod-sunod ng sort o buksan muli ang mga komento para hanapin ang mga ito</string>
   <string name="morphe_search_comments_cleared">Nalinis na ang search. Baguhin ang pagkakasunod-sunod ng sort o buksan muli ang mga komento para ipakita ang lahat ng mga komento</string>
@@ -838,6 +856,8 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_play_all_button_type_entry_10">Mga bidyo ng miyembro lamang</string>
   <string name="morphe_play_all_button_type_entry_11">Mga Shorts ng miyembro lamang</string>
   <string name="morphe_play_all_button_type_entry_12">Mga live stream ng miyembro lamang</string>
+  <string name="morphe_play_all_button_reverse_title">Baligtarang pagkakasunod-sunod</string>
+  <string name="morphe_play_all_button_reverse_summary">Ang nabuong playlist ay awtomatikong magpe-play mula sa huling video hanggang sa una</string>
   <string name="morphe_play_all_button_not_available_toast">Hindi maaaring buuin ang playlist dahil sa hindi tugmang ID ng channel</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Ipakita ang button ng Playlist</string>
@@ -1036,7 +1056,7 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_swipe_change_video_summary">Mag-swipe sa fullscreen mode upang lumaktaw sa susunod o nakaraang video</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Hold gesture</string>
-  <string name="morphe_hold_gesture_screen_summary">Baguhin at i-lock ang playback speed sa pamamagitan ng pag-drag pagkatapos i-tap at i-hold</string>
+  <string name="morphe_hold_gesture_screen_summary">Baguhin at i-lock ang playback speed, at magpatakbo ng mga action, sa pamamagitan ng pag-drag pagkatapos i-tap at i-hold</string>
   <string name="morphe_hold_gesture_title">I-enable ang hold gesture</string>
   <string name="morphe_hold_gesture_summary">Ang pag-tap at pag-hold sa video ay maaaring sundan ng pag-drag. Ang speed habang naka-hold ay ang tap and hold playback speed</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Hindi ginagamit habang naka-on ang press to swipe. I-tap para baguhin</string>
@@ -1062,11 +1082,28 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_hold_gesture_lock_title">I-drag pababa para i-lock ang bilis</string>
   <string name="morphe_hold_gesture_lock_summary">Pagkatapos i-tap at i-hold, i-drag pababa para panatilihin ang bilis kapag iniangat ang daliri. I-tap ang badge o i-tap at i-hold muli para i-unlock</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Laging ipakita ang lock badge</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Ang badge ng naka-lock na bilis ay mananatiling nakikita habang nakatago ang mga player control</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Ipinapakita ang badge ng naka-lock na speed kahit hindi nakikita ang mga player control. Kung naka-off, ang badge ay ipinapakita kasama ng mga player control</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">I-unlock kapag nagbago ang video</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Ang naka-lock na bilis ay magtatapos kapag nagsimula ang ibang video</string>
   <string name="morphe_hold_gesture_lock_hint">Hilahin pababa para i-lock</string>
   <string name="morphe_hold_gesture_lock_release">Bitawan para i-lock ang %s</string>
+  <string name="morphe_hold_gesture_launcher_title">I-drag pataas para buksan ang launcher</string>
+  <string name="morphe_hold_gesture_launcher_summary">Pagkatapos i-tap at i-hold, i-drag pataas para ipakita ang mga action sa paligid ng daliri. I-angat ang daliri sa isang action para patakbuhin ito</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Bilang ng mga action</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Aksyon 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Aksyon 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Aksyon 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Aksyon 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Aksyon 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">I-lock ang screen</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">I-loop ang video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Itigil ang pag-loop</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">I-save ang frame</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">I-save sa Panoorin mamaya</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Kopyahin ang link sa kasalukuyang oras</string>
+  <string name="morphe_hold_gesture_screen_unlock">Pindutin para i-unlock</string>
+  <string name="morphe_hold_gesture_frame_saved">Na-save ang frame sa %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Hindi ma-save ang frame</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Mga caption</string>
   <string name="morphe_captions_screen_summary">Pamahalaan ang mga automatic caption at caption cookies</string>
@@ -1254,6 +1291,9 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">I-disable ang autoplay ng playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Pinipigilan ang mga playlist na awtomatikong sumulong sa susunod na video</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Baligtarin ang autoplay ng playlist</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Ang mga playlist ay awtomatikong magpe-play mula sa huling video hanggang sa una. Hindi babaligtarin ang mga Mix</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Kontrol ng Autoplay</string>
   <string name="morphe_autoplay_control_summary">Nagdaragdag ng button ng player at isang panuntunan para sa susunod na video. Magpapatuloy ang mga playlist at queue, hihinto ang Mix pagkatapos ng ilang video, at hindi kailanman magpe-play ang isang suggested video. I-tap ang button para sa susunod na mode, i-tap at i-hold para sa listahan</string>
@@ -1301,6 +1341,21 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_fullscreen_video_scale_button_summary">I-tap upang magpalit sa Default, Stretch, at Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Ipakita lamang sa fullscreen</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Itago ang video scale button sa portrait player</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Ipakita ang button para sa mas mabagal na Replay</string>
+  <string name="morphe_replay_video_button_summary">I-rewind at pansamantalang pabagalin ang video. I-tap muli para kanselahin</string>
+  <string name="morphe_replay_video_swipe_title">Mag-swipe pakaliwa para i-replay nang mas mabagal</string>
+  <string name="morphe_replay_video_swipe_summary">Mag-swipe pakaliwa sa video para i-rewind nang 1-10 segundo, depende sa haba ng swipe. Ang swipe controls ay naghahanap at prayoridad ang mga swipe sa top zone</string>
+  <string name="morphe_replay_video_swipe_preview">I-replay ang %s s</string>
+  <string name="morphe_replay_video_seconds_title">Tagal ng pag-rewind</string>
+  <string name="morphe_replay_video_seconds_summary">Ilang segundo ibabalik ng button ang video</string>
+  <string name="morphe_replay_video_slow_seconds_title">Tagal ng mabagal na playback</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Ilang segundo ng video ang papatakbo sa replay speed pagkatapos mag-rewind</string>
+  <string name="morphe_replay_video_speed_title">Bilis ng replay</string>
+  <string name="morphe_replay_video_speed_summary">Bilis ng playback ng replay, gaya ng 0.5. Ang replay ay hindi kailanman mas mabilis kaysa sa kasalukuyang bilis</string>
+  <string name="morphe_replay_video_start">I-replay nang mas mabagal</string>
+  <string name="morphe_replay_video_unavailable">Hindi available ang mabagal na replay para sa video na ito</string>
+  <string name="morphe_replay_video_speed_invalid">Invalid na bilis ng replay, ibinalik sa default</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Ipakita ang Mute button</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

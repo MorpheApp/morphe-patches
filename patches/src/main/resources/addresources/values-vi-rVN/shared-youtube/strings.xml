@@ -249,6 +249,9 @@ Nhấn OK để mở Android System WebView."</string>
   <string name="morphe_video_effects_custom_error_message">"Video sẽ được hiển thị mà không có hiệu ứng cho đến khi mã được sửa. Hãy gửi lỗi này cho AI đã viết mã:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Mã kết thúc bên trong một hàm hoặc chú thích, vì vậy có thể nó đã bị cắt bớt khi sao chép hoặc dán. Văn bản được dán có thể bị cắt bớt ở mức %d ký tự.
+
+Hãy yêu cầu AI cung cấp mã ngắn hơn hoặc dán mã theo từng phần."</string>
   <string name="morphe_video_effects_custom_copy_error">Chép lỗi</string>
   <string name="morphe_video_effects_custom_save_anyway">Vẫn lưu</string>
   <string name="morphe_video_effects_custom_delete">Xoá</string>

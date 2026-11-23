@@ -423,6 +423,7 @@ Limitations :
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Masque les info-bulles affichées près de la barre de saisie du chat, comme l\'avis indiquant que le chat est réservé aux abonnés</string>
   <string name="morphe_hide_comments_menu_button_title">Masquer le bouton \'Menu\'</string>
   <string name="morphe_hide_comments_menu_button_summary">Masque le bouton de menu à trois points de chaque commentaire</string>
+  <string name="morphe_hide_comments_none_yet_title">Masquer l\'aperçu \'Aucun commentaire pour le moment\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Masquer l\'aperçu des commentaires</string>
   <string name="morphe_hide_comments_preview_comment_summary">Masque l\'aperçu des commentaires sous la vidéo avant d\'ouvrir la section complète des commentaires</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Commentaire masqué par Morphe…</string>
@@ -433,7 +434,7 @@ Limitations :
   <string name="morphe_hide_comments_topics_title">Masquer \'Sujets\'</string>
   <string name="morphe_hide_comments_topics_summary">Masque le \'Sujets\' de la barre de filtres ainsi que les aperçus des commentaires \'Sujet\' sous la vidéo</string>
   <string name="morphe_hide_comments_translate_button_title">Masquer le bouton \'Traduire\'</string>
-  <string name="morphe_hide_comments_zero_state_title">Masquer le message \'Aucun commentaire\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Masquer la section \'Accéder à la communauté\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Nettoyer les liens de recherche en surbrillance</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nettoie les liens de recherche en surbrillance, en laissant uniquement le texte brut d\'origine</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_channel_whitelist_channel_added">Chaîne ajoutée à la liste blanche</string>
   <string name="morphe_channel_whitelist_channel_removed">Chaîne retirée de la liste blanche</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Rechercher</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Rechercher dans la chaîne</string>
   <string name="morphe_channel_search_summary">Ajoute un deuxième bouton de recherche sur les pages de chaînes afin d\'effectuer une recherche uniquement dans cette chaîne</string>
@@ -578,6 +581,13 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_channel_search_sort_oldest">Les plus anciennes</string>
   <string name="morphe_channel_search_sort_shortest">Les plus courtes</string>
   <string name="morphe_channel_search_sort_longest">Les plus longues</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Rechercher dans la playlist</string>
+  <string name="morphe_playlist_search_summary">Ajoute un deuxième bouton de recherche sur les pages de playlists afin d\'effectuer une recherche uniquement dans cette playlist</string>
+  <string name="morphe_playlist_search_hint">Rechercher dans la playlist</string>
+  <string name="morphe_playlist_search_results">Résultats de recherche dans la playlist</string>
+  <string name="morphe_playlist_search_no_results">Aucun résultat trouvé dans cette playlist</string>
+  <string name="morphe_playlist_search_failed">Impossible de rechercher dans cette playlist</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Lien avec horodatage copié dans le presse-papiers</string>
@@ -652,6 +662,15 @@ Après avoir ouvert une fois une vidéo avec le bouton 'Posez une question', la 
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Afficher le nombre de vues sur les miniatures</string>
   <string name="morphe_feed_view_count_summary">Le nombre de vues des vidéos du flux s\'affiche en bas à gauche de leurs miniatures au lieu d\'apparaître sous le titre. Certaines vidéos, notamment celles des étagères, peuvent ne pas afficher le nombre de vues</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Return YouTube Username</string>
+  <string name="morphe_return_youtube_username_screen_summary">Afficher les noms de chaîne plutôt que les identifiants</string>
+  <string name="morphe_return_youtube_username_title">Afficher les noms de chaîne</string>
+  <string name="morphe_return_youtube_username_summary">Les noms de chaîne sont affichés à la place des identifiants dans les commentaires, sous le titre des vidéos et dans les Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Format du nom de chaîne</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Nom de chaîne</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Nom de chaîne (@identifiant)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@identifiant (nom de chaîne)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Afficher le nombre j\'aime sur les miniatures du flux</string>
   <string name="morphe_ryd_feed_like_ratio_title">Afficher le pourcentage de j\'aime sur les miniatures du flux</string>
@@ -664,7 +683,6 @@ Après avoir ouvert une fois une vidéo avec le bouton 'Posez une question', la 
   <string name="morphe_search_comments_summary">Appuyez sur le bouton de recherche dans les commentaires pour afficher uniquement les commentaires déjà chargés qui contiennent tous les mots recherchés. Placez les mots entre guillemets pour rechercher une expression exacte</string>
   <string name="morphe_search_comments_dialog_title">Rechercher des commentaires</string>
   <string name="morphe_search_comments_hint">Mots à rechercher</string>
-  <string name="morphe_search_comments_search">Rechercher</string>
   <string name="morphe_search_comments_clear">Effacer</string>
   <string name="morphe_search_comments_applied">Changez l\'ordre de tri ou rouvrez les commentaires pour effectuer une recherche</string>
   <string name="morphe_search_comments_cleared">Recherche effacée. Changez l\"ordre de tri ou rouvrez les commentaires pour afficher tous les commentaires</string>
@@ -838,6 +856,8 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_play_all_button_type_entry_10">Vidéos réservés aux membres uniquement</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts réservés aux membres uniquement</string>
   <string name="morphe_play_all_button_type_entry_12">Diffusion en direct réservé aux membres uniquement</string>
+  <string name="morphe_play_all_button_reverse_title">Ordre inverse</string>
+  <string name="morphe_play_all_button_reverse_summary">La playlist générée se lit automatiquement de la dernière vidéo à la première</string>
   <string name="morphe_play_all_button_not_available_toast">Impossible de générer la playlist en raison d\'une incompatibilité d\'identifiant de chaîne</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Afficher un bouton \'Playlist\'</string>
@@ -1035,17 +1055,17 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_swipe_change_video_title">Activer le balayage pour changer de vidéo</string>
   <string name="morphe_swipe_change_video_summary">Balayez en mode plein écran pour passer à la vidéo suivante ou précédente</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
-  <string name="morphe_hold_gesture_screen_title">Geste de maintien</string>
-  <string name="morphe_hold_gesture_screen_summary">Changez et verrouillez la vitesse de lecture en faisant glisser votre doigt après avoir appuyé longuement</string>
-  <string name="morphe_hold_gesture_title">Activer le geste de maintien</string>
+  <string name="morphe_hold_gesture_screen_title">Geste d\'appui long</string>
+  <string name="morphe_hold_gesture_screen_summary">Changez et verrouiller la vitesse de lecture, et exécuter des actions, en faisant glisser après avoir appuyé longuement</string>
+  <string name="morphe_hold_gesture_title">Activer le geste d\'appui long</string>
   <string name="morphe_hold_gesture_summary">Appuyer longuement sur la vidéo peut être suivi d\'un glissement. La vitesse pendant l\'appui long correspond à celle définie pour l\'appui long</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Non utilisé lorsque les gestes de balayage sont activés. Appuyez pour changer</string>
   <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Les gestes de balayage sont activés</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Les gestes de maintien et les gestes de balayage des contrôles de balayage commencent tous deux par un appui long, donc un seul d\'entre eux peut être activé.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Les gestes d\'appui long et les gestes de balayage des contrôles de balayage commencent tous deux par un appui long, donc un seul d\'entre eux peut être activé.</string>
   <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Désactiver les gestes de balayage</string>
-  <string name="morphe_hold_gesture_press_to_swipe_toast">Le geste de maintien n\'est pas utilisé lorsque les gestes de balayage sont activée</string>
-  <string name="morphe_hold_gesture_dialog_title">Le geste de maintien est activé</string>
-  <string name="morphe_hold_gesture_dialog_turn_off">Désactiver le geste de maintien</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Le geste d\'appui long n\'est pas utilisé lorsque les gestes de balayage sont activée</string>
+  <string name="morphe_hold_gesture_dialog_title">Le geste d\'appui long est activé</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Désactiver le geste d\'appui long</string>
   <string name="morphe_hold_gesture_haptic_feedback_title">Activer le retour haptique</string>
   <string name="morphe_hold_gesture_haptic_feedback_summary">Vibre lorsque la vitesse change et lorsqu\'elle est verrouillée</string>
   <string name="morphe_hold_gesture_speed_swipe_title">Faites glisser latéralement pour changer la vitesse</string>
@@ -1062,11 +1082,28 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_hold_gesture_lock_title">Faites glisser vers le bas pour verrouiller la vitesse</string>
   <string name="morphe_hold_gesture_lock_summary">Après avoir appuyé longuement, faites glisser vers le bas pour conserver la vitesse lorsque vous relâchez votre doigt. Appuyez sur le badge ou appuyez longuement à nouveau pour déverrouiller</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Toujours afficher le badge de verrouillage</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Le badge de vitesse verrouillée reste visible lorsque les contrôles du lecteur sont masqués</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Affiche le badge d\'une vitesse verrouillée même lorsque les contrôles du lecteur ne sont pas affichés. Si désactivée, le badge s\'affiche en même temps que les contrôles du lecteur</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Déverrouiller lors du changement de vidéo</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Une vitesse verrouillée prend fin lorsqu\'une autre vidéo démarre</string>
   <string name="morphe_hold_gesture_lock_hint">Tirez vers le bas pour verrouiller</string>
   <string name="morphe_hold_gesture_lock_release">Relâchez pour verrouiller %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Faire glisser vers le haut pour ouvrir le lanceur</string>
+  <string name="morphe_hold_gesture_launcher_summary">Après avoir appuyé longuement, faites glisser vers le haut pour afficher les actions autour du doigt. Relâchez le doigt sur une action pour l\'exécuter</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Nombre d\'actions</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Action 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Action 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Action 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Action 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Action 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Verrouiller l\'écran</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Lecture en boucle</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Arrêter la lecture en boucle</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Enregistrer l\'image</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Enregistrer dans \'À regarder plus tard\'</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Copier le lien à l\'instant actuel</string>
+  <string name="morphe_hold_gesture_screen_unlock">Appuyez pour déverrouiller</string>
+  <string name="morphe_hold_gesture_frame_saved">Image enregistrée dans %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Impossible d\'enregistrer l\'image</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Sous-titres</string>
   <string name="morphe_captions_screen_summary">Gérez les sous-titres automatiques et les cookies de sous-titres</string>
@@ -1255,6 +1292,9 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Désactiver la lecture automatique de la playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Empêche les playlists de passer automatiquement à la vidéo suivante</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Lecture automatique de la playlist en ordre inverse</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Les playlists se lisent automatiquement de la dernière vidéo à la première. Les mix ne sont pas inversés</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Contrôle de la lecture auto</string>
   <string name="morphe_autoplay_control_summary">Ajoute un bouton au lecteur et une règle pour la vidéo suivante. Les playlists et les files d\'attente continuent, un Mix s\'arrête après un certain nombre de vidéos, une vidéo suggérée ne se lance jamais. Appuyez sur le bouton pour passer au mode suivant, ou appuyez longuement pour la liste</string>
@@ -1302,6 +1342,21 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <string name="morphe_fullscreen_video_scale_button_summary">Appuyez pour passer entre Par défaut, Étirer et Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Afficher uniquement en plein écran</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Masquer le bouton de mise à l\'échelle de la vidéo dans le lecteur en mode portrait</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Afficher un bouton \'Relecture au ralenti\'</string>
+  <string name="morphe_replay_video_button_summary">Revient en arrière et ralentit temporairement la vidéo. Appuyez à nouveau pour annuler</string>
+  <string name="morphe_replay_video_swipe_title">Balayez vers la gauche pour revoir au ralenti</string>
+  <string name="morphe_replay_video_swipe_summary">Balayez vers la gauche sur la vidéo pour revenir en arrière de 1 à 10 secondes, selon la longueur du balayage. Les balayages contrôlent la navigation et ceux effectués dans la zone supérieure sont prioritaires</string>
+  <string name="morphe_replay_video_swipe_preview">Relire %s s</string>
+  <string name="morphe_replay_video_seconds_title">Durée du retour en arrière</string>
+  <string name="morphe_replay_video_seconds_summary">Nombre de secondes de retour en arrière de la vidéo par le bouton</string>
+  <string name="morphe_replay_video_slow_seconds_title">Durée de la lecture au ralenti</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Nombre de secondes de lecture de la vidéo à la vitesse de relecture après le retour en arrière</string>
+  <string name="morphe_replay_video_speed_title">Vitesse de relecture</string>
+  <string name="morphe_replay_video_speed_summary">Vitesse de lecture de la relecture, par exemple 0,5. La relecture n\'est jamais plus rapide que la vitesse actuelle</string>
+  <string name="morphe_replay_video_start">Revoir au ralenti</string>
+  <string name="morphe_replay_video_unavailable">La relecture au ralenti n\'est pas disponible pour cette vidéo</string>
+  <string name="morphe_replay_video_speed_invalid">Vitesse de relecture invalide, réinitialisation par défaut</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Afficher un bouton \'Muet\'</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

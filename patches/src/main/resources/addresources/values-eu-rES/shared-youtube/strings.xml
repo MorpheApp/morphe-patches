@@ -249,6 +249,9 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_video_effects_custom_error_message">"Bideoak efekturik gabe erakutsiko dira kodea konpondu arte. Eman errore hau kodea idatzi duen AI-ari:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kodea funtzio baten edo komentario baten barruan amaitzen da, beraz, kopiatu edoitsatu zeinean mozketu egin zen ziurren. Itsatsi itzulia %d karakteretan mozketu daiteke.
+
+AIari kode laburragoa eskatu edo kodea zatietan itsatsi."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopiatze errorea</string>
   <string name="morphe_video_effects_custom_save_anyway">Gorde hala ere</string>
   <string name="morphe_video_effects_custom_delete">Ezabatu</string>

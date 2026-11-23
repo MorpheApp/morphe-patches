@@ -423,6 +423,7 @@ Limitacions:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta les finestres emergents d\'ajuda que apareixen prop de la barra d\'entrada del xat, com l\'avís de xat només per a subscriptors</string>
   <string name="morphe_hide_comments_menu_button_title">Ocultar botó de menú</string>
   <string name="morphe_hide_comments_menu_button_summary">Amaga el botó del menú de 3 punts de cada comentari</string>
+  <string name="morphe_hide_comments_none_yet_title">Oculta la vista prèvia de \"Aïnés sense comentaris\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Amagar la vista prèvia del comentari</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta la vista prèvia del comentari sota el vídeo abans d\'obrir la secció completa de comentaris</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Comentari ocult per Morphe…</string>
@@ -433,7 +434,7 @@ Limitacions:
   <string name="morphe_hide_comments_topics_title">Ocultar \"Temes\"</string>
   <string name="morphe_hide_comments_topics_summary">Oculta l\'opció de la barra de filtres \"Temes\" i les previsualitzacions de comentaris per \"Tema\" sota el vídeo</string>
   <string name="morphe_hide_comments_translate_button_title">Amaga el botó de Tradueix</string>
-  <string name="morphe_hide_comments_zero_state_title">Ocultar el missatge \"Encara no hi ha comentaris\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Oculta la secció \"Visita la Comunitat\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Netejar els enllaços de cerca ressaltats</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Neteja els enllaços de cerca ressaltats, deixant només el text pla original</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <string name="morphe_channel_whitelist_channel_added">Canal afegit a la llista blanca</string>
   <string name="morphe_channel_whitelist_channel_removed">Canal eliminat de la llista blanca</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Cercar</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cerca dins del canal</string>
   <string name="morphe_channel_search_summary">Afegeix un segon botó de cerca a les pàgines dels canals per cercar només en aquest canal</string>
@@ -578,6 +581,13 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <string name="morphe_channel_search_sort_oldest">Més antic</string>
   <string name="morphe_channel_search_sort_shortest">Més curt</string>
   <string name="morphe_channel_search_sort_longest">Més llarg</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Cerca dins de la llista de reproducció</string>
+  <string name="morphe_playlist_search_summary">Afegeix un segon botó de cerca a les pàgines de llistes de reproducció per cercar només a aquella llista</string>
+  <string name="morphe_playlist_search_hint">Cerca a la llista de reproducció</string>
+  <string name="morphe_playlist_search_results">Resultats de la cerca a la llista de reproducció</string>
+  <string name="morphe_playlist_search_no_results">No s\'ha trobat res en aquesta llista de reproducció</string>
+  <string name="morphe_playlist_search_failed">No s\'ha pogut cercar a aquesta llista de reproducció</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Enllaç copiat al porta-retals</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Enllaç amb marca de temps copiat al porta-retals</string>
@@ -652,6 +662,15 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Mostra el nombre de visualitzacions a les miniatures</string>
   <string name="morphe_feed_view_count_summary">El nombre de visualitzacions dels vídeos del feed es mostra a la part inferior esquerra de les seves miniatures en lloc de sota el títol. Alguns vídeos, com els de les prestatgeries, potser no mostren el nombre de visualitzacions</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Tornar el nom d\'usuari de YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">Mostra els noms dels canals en lloc dels noms d\'usuari</string>
+  <string name="morphe_return_youtube_username_title">Mostra els noms dels canals</string>
+  <string name="morphe_return_youtube_username_summary">Els noms dels canals es mostren en lloc dels noms d\'usuari als comentaris, sota el títol del vídeo i als Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Format del nom del canal</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Nom del canal</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Nom del canal (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Nom del canal)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostrar el recompte de m\'agrada de la miniatura del feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostrar el percentatge de m\'agrada de la miniatura del feed</string>
@@ -664,7 +683,6 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_search_comments_summary">Toqueu el botó de cerca dels comentaris per mostrar només els comentaris carregats que contenguin totes les paraules cercades. Poseu les paraules entre cometes per cercar una frase</string>
   <string name="morphe_search_comments_dialog_title">Cerca comentaris</string>
   <string name="morphe_search_comments_hint">Paraules per a la cerca</string>
-  <string name="morphe_search_comments_search">Cercar</string>
   <string name="morphe_search_comments_clear">Esborra</string>
   <string name="morphe_search_comments_applied">Canvieu l\'ordre de classificació o obriu els comentaris de nou per cercar-los</string>
   <string name="morphe_search_comments_cleared">Cerca esborrada. Canvieu l\'ordre de classificació o obriu els comentaris de nou per mostrar tots els comentaris</string>
@@ -838,6 +856,8 @@ Info: Potser no funcioni en les retransmissions en directe"</string>
   <string name="morphe_play_all_button_type_entry_10">Vídeos només per a membres</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts només per a membres</string>
   <string name="morphe_play_all_button_type_entry_12">Transmissions en directe només per a membres</string>
+  <string name="morphe_play_all_button_reverse_title">Ordre invers</string>
+  <string name="morphe_play_all_button_reverse_summary">La llista de reproducció generada es reprodueix automàticament des de l\'últim vídeo fins al primer</string>
   <string name="morphe_play_all_button_not_available_toast">No s\'ha pogut generar la llista de reproducció per a una incoherència de l\'ID del canal</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Botó de Mostrar llista de reproducció</string>
@@ -1036,7 +1056,7 @@ Per solucionar-ho, activa 'Simular fluxos de vídeo' i canvia el 'Client per def
   <string name="morphe_swipe_change_video_summary">Desllisa en mode de pantalla completa per saltar al vídeo següent o a l\'anterior</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Gest de mantenir</string>
-  <string name="morphe_hold_gesture_screen_summary">Canvia i bloqueja la velocitat de reproducció arrossegant després de tocar i mantenir</string>
+  <string name="morphe_hold_gesture_screen_summary">Canvia i bloqueja la velocitat de reproducció, i executa accions, arrosgant després de mantenir premut</string>
   <string name="morphe_hold_gesture_title">Habilita el gest de mantenir</string>
   <string name="morphe_hold_gesture_summary">Tocar i mantenir el vídeo pot anar seguit d\'un arrossegament. La velocitat mentre es manté és la velocitat de reproducció de tocar i mantenir</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">No s\'utilitza mentre l\'opció de premer per descriptors està activada. Toqueu per canviar</string>
@@ -1062,11 +1082,28 @@ Per solucionar-ho, activa 'Simular fluxos de vídeo' i canvia el 'Client per def
   <string name="morphe_hold_gesture_lock_title">Desllisa cap avall per bloquejar la velocitat</string>
   <string name="morphe_hold_gesture_lock_summary">Després de tocar i mantenir premut, desllisa cap avall per mantenir la velocitat quan aixequis el dit. Toca l\'insignia o toca i mantén premutC noument per desbloquejar</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Mostra sempre l\'insignia de bloqueig</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">L\'insignia d\'una velocitat bloquejada roman visible mentre els controls del reproductor estan ocults</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Mostra l\'insigne d\'una velocitat bloquejada també quan els controls del reproductor no es mostren. Si està desactivat, l\'insigne es mostra juntament amb els controls del reproductor</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Desbloqueja quan el vídeo canviï</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Una velocitat bloquejada finalitza quan comença un altre vídeo</string>
   <string name="morphe_hold_gesture_lock_hint">Tira cap avall per bloquejar</string>
   <string name="morphe_hold_gesture_lock_release">Deixa anar per bloquejar %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Arrossega cap amunt per obrir el llançador</string>
+  <string name="morphe_hold_gesture_launcher_summary">Després de tocar i mantenir premut, arrossega cap amunt per mostrar les accions al voltant del dit. Llifta el dit sobre una acció per executar-la</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Nombre d\'accions</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Acció 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Acció 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Acció 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Acció 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Acció 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Bloqueja la pantalla</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Repeteix el vídeo</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Aturar el bucle</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Desar frame</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Desar a Veure més tard</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Copiar l\'enllaç al moment actual</string>
+  <string name="morphe_hold_gesture_screen_unlock">Toca per desbloquejar</string>
+  <string name="morphe_hold_gesture_frame_saved">Frame desat a %s</string>
+  <string name="morphe_hold_gesture_frame_failed">No s\'ha pogut desar el frame</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtítols</string>
   <string name="morphe_captions_screen_summary">Gestiona els subtítols automàtics i les cookies de subtítols</string>
@@ -1254,6 +1291,9 @@ Configuració → Reproducció (o Reproducció automàtica) → Reproducció aut
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Desactiva la reproducció automàtica de la llista de reproducció</string>
   <string name="morphe_disable_playlist_autoplay_summary">Evita que les llistes de reproducció avancin automàticament al vídeo següent</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Invertir la reproducció automàtica de la llista</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Les llistes de reproducció es reproduen automàticament des de l\'últim vídeo fins al primer. Les compresions no s\'inverteixen</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Control de la reproducció automàtica</string>
   <string name="morphe_autoplay_control_summary">Afegeix un botó de reproductor i una regla per al vídeo següent. Les llistes de reproducció i les cues continuen, un Mix s\'atura després d\'un nombre de vídeos i un vídeo suggerit mai s\'executa. Toqueu el botó per canviar al mode següent, manteniu premut per veure la llista</string>
@@ -1301,6 +1341,21 @@ Configuració → Reproducció (o Reproducció automàtica) → Reproducció aut
   <string name="morphe_fullscreen_video_scale_button_summary">Toca per alternar entre Per defecte, Estirar i Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Mostrar només en pantalla completa</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Oculta el botó d\'escala del vídeo al reproductor en mode vertical</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Mostrar botó de repetició més lenta</string>
+  <string name="morphe_replay_video_button_summary">Retrocedeix i slowing temporalment el vídeo. Torna a tocar per cancel·lar</string>
+  <string name="morphe_replay_video_swipe_title">Desllisa a l\'esquerra per repetir més lent</string>
+  <string name="morphe_replay_video_swipe_summary">Desllisa a l\'esquerra sobre el vídeo per retrocedir entre 1 i 10 segons, segons la longitud del desllisement. Els controls de desllisement busquen i els desllisements de la zona superior tenen prioritat</string>
+  <string name="morphe_replay_video_swipe_preview">Repetir %s s</string>
+  <string name="morphe_replay_video_seconds_title">Durada del retrocedit</string>
+  <string name="morphe_replay_video_seconds_summary">Quants segons retrocedeix el vídeo el botó</string>
+  <string name="morphe_replay_video_slow_seconds_title">Durada de la reproducció lenta</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Quants segons del vídeo es reproduïen a la velocitat de repetició després de retrocedir</string>
+  <string name="morphe_replay_video_speed_title">Velocitat de repetició</string>
+  <string name="morphe_replay_video_speed_summary">Velocitat de reproducció de la repetició, per exemple 0,5. La repetició mai és més ràpida que la velocitat actual</string>
+  <string name="morphe_replay_video_start">Repetir més lentament</string>
+  <string name="morphe_replay_video_unavailable">La repetició lenta no està disponible per a aquest vídeo</string>
+  <string name="morphe_replay_video_speed_invalid">Velocitat de repetició no vàlida, es restableix per defecte</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Mostrar botó de silenciar</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

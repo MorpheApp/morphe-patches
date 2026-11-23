@@ -249,6 +249,9 @@ Android System WebView खोलने के लिए OK पर टैप क�
   <string name="morphe_video_effects_custom_error_message">"जब तक कोड ठीक नहीं हो जाता, तब तक वीडियो बिना प्रभाव के दिखाए जाएंगे। यह त्रुटि उस AI को दें जिसने कोड लिखा था:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"कोड किसी फ़ंक्शन या कमेंट के अंदर समाप्त होता है, इसलिए संभवतः इसे कॉपी या पेस्ट करते समय काट दिया गया था। पेस्ट किया गया टेक्स्ट %d वर्णों पर कट सकता है।
+
+AI से छोटे कोड के लिए कहें, या कोड को हिस्सों में पेस्ट करें।"</string>
   <string name="morphe_video_effects_custom_copy_error">त्रुटि कॉपी करें</string>
   <string name="morphe_video_effects_custom_save_anyway">फिर भी सहेजें</string>
   <string name="morphe_video_effects_custom_delete">हटाएँ</string>

@@ -423,6 +423,7 @@ Hạn chế:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ẩn cửa sổ hiện lên gần thanh chat, chẳng hạn như thông báo chat chỉ dành cho người đăng ký</string>
   <string name="morphe_hide_comments_menu_button_title">Ẩn nút Menu</string>
   <string name="morphe_hide_comments_menu_button_summary">Ẩn nút menu 3 chấm của mỗi bình luận</string>
+  <string name="morphe_hide_comments_none_yet_title">Ẩn bản xem trước \'Chưa có bình luận nào\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Ẩn xem trước bình luận</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ẩn phần xem trước nhận xét dưới video trước khi mở toàn bộ phần bình luận</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Bình luận bị ẩn bởi Morphe…</string>
@@ -433,7 +434,7 @@ Hạn chế:
   <string name="morphe_hide_comments_topics_title">Ẩn \"Chủ đề\"</string>
   <string name="morphe_hide_comments_topics_summary">Ẩn tùy chọn thanh bộ lọc \"Chủ đề\" và các xem trước bình luận theo \"Chủ đề\" bên dưới video</string>
   <string name="morphe_hide_comments_translate_button_title">Ẩn nút Dịch</string>
-  <string name="morphe_hide_comments_zero_state_title">Ẩn thông báo \'Chưa có bình luận\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Ẩn phần \'Chuyển đến trang Cộng đồng\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Loại bỏ chữ xanh</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Loại bỏ chữ xanh, chỉ giữ lại văn bản gốc</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Hạn chế:
   <string name="morphe_channel_whitelist_channel_added">Đã thêm kênh vào danh sách ngoại lệ</string>
   <string name="morphe_channel_whitelist_channel_removed">Đã xóa kênh khỏi danh sách ngoại lệ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Tìm kiếm</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Tìm kiếm trong kênh</string>
   <string name="morphe_channel_search_summary">Thêm một nút tìm kiếm thứ hai trên các trang kênh để chỉ tìm kiếm trong kênh đó</string>
@@ -578,6 +581,13 @@ Hạn chế:
   <string name="morphe_channel_search_sort_oldest">Cũ nhất</string>
   <string name="morphe_channel_search_sort_shortest">Ngắn nhất</string>
   <string name="morphe_channel_search_sort_longest">Dài nhất</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Tìm kiếm trong danh sách phát</string>
+  <string name="morphe_playlist_search_summary">Thêm nút tìm kiếm thứ hai trên các trang danh sách phát để chỉ tìm kiếm trong danh sách phát đó</string>
+  <string name="morphe_playlist_search_hint">Tìm kiếm danh sách phát</string>
+  <string name="morphe_playlist_search_results">Kết quả tìm kiếm danh sách phát</string>
+  <string name="morphe_playlist_search_no_results">Không tìm thấy gì trong danh sách phát này</string>
+  <string name="morphe_playlist_search_failed">Không thể tìm kiếm danh sách phát này</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Đã sao chép liên kết vào bảng nhớ tạm</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Đã sao chép liên kết với dấu thời gian vào bảng nhớ tạm</string>
@@ -652,6 +662,15 @@ Sau khi mở một video có nút Ask một lần, tính năng này hoạt độ
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Hiển thị số lượt xem trên ảnh thu nhỏ</string>
   <string name="morphe_feed_view_count_summary">Số lượt xem của video nguồn được hiển thị ở góc dưới bên trái ảnh thu nhỏ thay vì bên dưới tiêu đề. Một số video, chẳng hạn như trong ngăn xếp, có thể không hiển thị số lượt xem</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Khôi phục tên người dùng YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">Hiển thị tên kênh thay vì tên định danh</string>
+  <string name="morphe_return_youtube_username_title">Hiển thị tên kênh</string>
+  <string name="morphe_return_youtube_username_summary">Tên kênh sẽ được hiển thị thay vì tên định danh trong bình luận, bên dưới tiêu đề video và trong Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Định dạng tên kênh</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Tên kênh</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Tên kênh (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Tên kênh)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Hiển thị số lượng thích của ảnh bìa nguồn cấp</string>
   <string name="morphe_ryd_feed_like_ratio_title">Hiển thị tỷ lệ phần trăm thích của ảnh bìa nguồn cấp</string>
@@ -664,7 +683,6 @@ Sau khi mở một video có nút Ask một lần, tính năng này hoạt độ
   <string name="morphe_search_comments_summary">Nhấn nút tìm kiếm trong phần bình luận để chỉ hiển thị các bình luận đã tải có chứa tất cả các từ tìm kiếm. Đặt các từ trong dấu ngoặc kép để tìm kiếm một cụm từ</string>
   <string name="morphe_search_comments_dialog_title">Tìm kiếm bình luận</string>
   <string name="morphe_search_comments_hint">Từ cần tìm kiếm</string>
-  <string name="morphe_search_comments_search">Tìm kiếm</string>
   <string name="morphe_search_comments_clear">Xóa</string>
   <string name="morphe_search_comments_applied">Thay đổi thứ tự sắp xếp hoặc mở lại phần bình luận để tìm kiếm chúng</string>
   <string name="morphe_search_comments_cleared">Đã xóa tìm kiếm. Thay đổi thứ tự sắp xếp hoặc mở lại phần bình luận để hiển thị tất cả bình luận</string>
@@ -838,6 +856,8 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_play_all_button_type_entry_10">Video chỉ dành cho hội viên</string>
   <string name="morphe_play_all_button_type_entry_11">Video ngắn chỉ dành cho hội viên</string>
   <string name="morphe_play_all_button_type_entry_12">Video phát trực tiếp chỉ dành cho hội viên</string>
+  <string name="morphe_play_all_button_reverse_title">Thứ tự ngược</string>
+  <string name="morphe_play_all_button_reverse_summary">Danh sách phát được tạo sẽ tự động phát từ video cuối cùng đến video đầu tiên</string>
   <string name="morphe_play_all_button_not_available_toast">Không thể tạo danh sách phát do không khớp ID kênh</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Hiện nút Danh sách phát</string>
@@ -1036,7 +1056,7 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_change_video_summary">Vuốt trong chế độ toàn màn hình để chuyển đến video tiếp theo hoặc trước</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Cử chỉ nhấn giữ</string>
-  <string name="morphe_hold_gesture_screen_summary">Thay đổi và khóa tốc độ phát bằng cách kéo sau khi nhấn và giữ</string>
+  <string name="morphe_hold_gesture_screen_summary">Thay đổi và khóa tốc độ phát, đồng thời thực hiện các tác vụ, bằng cách kéo sau khi nhấn và giữ</string>
   <string name="morphe_hold_gesture_title">Bật cử chỉ nhấn giữ</string>
   <string name="morphe_hold_gesture_summary">Nhấn và giữ video sau đó có thể kéo. Tốc độ khi giữ là tốc độ phát khi nhấn và giữ</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Không được sử dụng khi tính năng bấm giữ để vuốt đang bật. Nhấn để thay đổi</string>
@@ -1062,11 +1082,28 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_hold_gesture_lock_title">Kéo xuống để khóa tốc độ</string>
   <string name="morphe_hold_gesture_lock_summary">Sau khi chạm và giữ, hãy kéo xuống để duy trì tốc độ khi nhấc ngón tay lên. Chạm vào biểu tượng hoặc chạm và giữ lần nữa để mở khóa</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Luôn hiển thị biểu tượng khóa</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Biểu tượng của tốc độ đã khóa vẫn hiển thị khi các điều khiển trình phát bị ẩn</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Hiển thị biểu tượng tốc độ đã khóa ngay cả khi các trình điều khiển trình phát không hiển thị. Nếu tắt, biểu tượng sẽ hiển thị cùng với các trình điều khiển trình phát</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Mở khóa khi video thay đổi</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Tốc độ đã khóa sẽ kết thúc khi một video khác bắt đầu</string>
   <string name="morphe_hold_gesture_lock_hint">Kéo xuống để khóa</string>
   <string name="morphe_hold_gesture_lock_release">Thả để khóa %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Kéo lên để mở trình khởi chạy</string>
+  <string name="morphe_hold_gesture_launcher_summary">Sau khi nhấn và giữ, hãy kéo lên để hiển thị các tác vụ xung quanh ngón tay. Nhấc ngón tay tại một tác vụ để thực hiện tác vụ đó</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Số lượng tác vụ</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Tác vụ 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Tác vụ 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Tác vụ 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Tác vụ 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Tác vụ 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Khóa màn hình</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Lặp lại video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Dừng lặp lại</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Lưu khung hình</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Lưu vào xem sau</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Sao chép liên kết tại thời điểm hiện tại</string>
+  <string name="morphe_hold_gesture_screen_unlock">Chạm để mở khóa</string>
+  <string name="morphe_hold_gesture_frame_saved">Khung hình đã được lưu vào %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Không thể lưu khung hình</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Phụ đề</string>
   <string name="morphe_captions_screen_summary">Quản lý phụ đề tự động và cookie phụ đề</string>
@@ -1254,6 +1291,9 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Tắt tự động phát danh sách phát</string>
   <string name="morphe_disable_playlist_autoplay_summary">Ngăn danh sách phát tự động chuyển sang video tiếp theo</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Đảo ngược tự động phát danh sách phát</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Danh sách phát tự động phát từ video cuối cùng đến video đầu tiên. Bản Mix không bị đảo ngược</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Điều khiển tự động phát</string>
   <string name="morphe_autoplay_control_summary">Thêm một nút trình phát và quy tắc cho video tiếp theo. Danh sách phát và hàng chờ vẫn tiếp tục, một bản Mix sẽ dừng sau một số lượng video, video gợi ý sẽ không bao giờ phát. Nhấn nút để chọn chế độ tiếp theo, nhấn và giữ để xem danh sách</string>
@@ -1301,6 +1341,21 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <string name="morphe_fullscreen_video_scale_button_summary">Chạm để chuyển đổi giữa Mặc định, Kéo giãn và Thu phóng</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Chỉ hiển thị ở chế độ toàn màn hình</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ẩn nút chỉnh tỷ lệ video trong trình phát dọc</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Hiện nút Phát lại chậm hơn</string>
+  <string name="morphe_replay_video_button_summary">Tua lại và tạm thời làm chậm video. Nhấn lần nữa để hủy</string>
+  <string name="morphe_replay_video_swipe_title">Vuốt sang trái để phát lại chậm hơn</string>
+  <string name="morphe_replay_video_swipe_summary">Vuốt sang trái trên video để tua lại từ 1-10 giây, tùy thuộc vào độ dài vuốt. Các điều khiển vuốt tìm kiếm và vuốt vùng trên cùng sẽ được ưu tiên</string>
+  <string name="morphe_replay_video_swipe_preview">Phát lại %s giây</string>
+  <string name="morphe_replay_video_seconds_title">Thời lượng tua lại</string>
+  <string name="morphe_replay_video_seconds_summary">Số giây mà nút này sẽ tua lại video</string>
+  <string name="morphe_replay_video_slow_seconds_title">Thời lượng phát chậm</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Số giây video sẽ phát ở tốc độ xem lại sau khi tua lại</string>
+  <string name="morphe_replay_video_speed_title">Tốc độ xem lại</string>
+  <string name="morphe_replay_video_speed_summary">Tốc độ phát của bản xem lại, ví dụ 0.5. Bản xem lại không bao giờ nhanh hơn tốc độ hiện tại</string>
+  <string name="morphe_replay_video_start">Xem lại chậm hơn</string>
+  <string name="morphe_replay_video_unavailable">Không có tính năng xem lại chậm cho video này</string>
+  <string name="morphe_replay_video_speed_invalid">Tốc độ xem lại không hợp lệ, đặt lại về mặc định</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Hiển thị nút Tắt tiếng</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

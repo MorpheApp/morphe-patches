@@ -249,6 +249,9 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
   <string name="morphe_video_effects_custom_error_message">"코드가 수정될 때까지 비디오가 효과 없이 표시됩니다. 이 오류를 코드를 작성한 AI에게 전달하세요:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"코드가 함수나 주석 내부에서 끝나므로, 복사하거나 붙여넣는 과정에서 잘렸을 가능성이 높습니다. 붙여넣은 텍스트는 %d자에서 잘릴 수 있습니다.
+
+AI에게 더 짧은 코드를 요청하거나, 코드를 여러 부분으로 나누어 붙여넣으세요."</string>
   <string name="morphe_video_effects_custom_copy_error">오류 복사</string>
   <string name="morphe_video_effects_custom_save_anyway">그래도 저장하기</string>
   <string name="morphe_video_effects_custom_delete">삭제</string>

@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">চ্যাট ইনপুট বারের কাছে দেখানো টুলটিপ পপআপ লুকায়, যেমন শুধু সাবস্ক্রাইবারদের জন্য চ্যাটের বিজ্ঞপ্তি</string>
   <string name="morphe_hide_comments_menu_button_title">মেনু বোতাম লুকান</string>
   <string name="morphe_hide_comments_menu_button_summary">প্রতিটি মন্তব্যের 3-ডট মেনু বোতাম লুকিয়ে রাখে</string>
+  <string name="morphe_hide_comments_none_yet_title">\'এখনও কোনো মন্তব্য নেই\' প্রিভিউ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_summary">পুরো মন্তব্য বিভাগ খোলার আগে ভিডিওর নিচে মন্তব্য প্রিভিউ লুকায়</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe দ্বারা মন্তব্য লুকানো…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">\'টপিকস\' লুকান</string>
   <string name="morphe_hide_comments_topics_summary">\'টপিকস\' ফিল্টার বার অপশন এবং ভিডিওর নিচে থাকা \'টপিক\' কমেন্ট প্রিভিউগুলো লুকায়</string>
   <string name="morphe_hide_comments_translate_button_title">অনুবাদ বোতাম লুকান</string>
-  <string name="morphe_hide_comments_zero_state_title">\'এখনও কোনো মন্তব্য নেই\' বার্তা লুকান</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">\'কমিউনিটি ভিজিট করুন\' সেকশনটি লুকান</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">হাইলাইট করা অনুসন্ধান লিঙ্কগুলি স্যানিটাইজ করুন</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">হাইলাইট করা অনুসন্ধান লিঙ্কগুলি স্যানিটাইজ করে, শুধুমাত্র আসল প্লেইন টেক্সট রেখে দেয়</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">চ্যানেলটি সাদা তালিকায় যোগ করা হয়েছে</string>
   <string name="morphe_channel_whitelist_channel_removed">চ্যানেলটি সাদা তালিকা থেকে সরানো হয়েছে</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">অনুসন্ধান</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">চ্যানেলের মধ্যে অনুসন্ধান করুন</string>
   <string name="morphe_channel_search_summary">চ্যানেল পৃষ্ঠাগুলিতে একটি দ্বিতীয় অনুসন্ধান বোতাম যোগ করে শুধুমাত্র সেই চ্যানেলটি অনুসন্ধান করতে</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">সবচেয়ে পুরনো</string>
   <string name="morphe_channel_search_sort_shortest">সবচেয়ে ছোট</string>
   <string name="morphe_channel_search_sort_longest">সবচেয়ে দীর্ঘ</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">প্লেলিস্টের মধ্যে খুঁজুন</string>
+  <string name="morphe_playlist_search_summary">প্লেলিস্ট পেজগুলোতে একটি দ্বিতীয় অনুসন্ধান বোতাম যোগ করে যা শুধুমাত্র সেই প্লেলিস্টটি অনুসন্ধান করে</string>
+  <string name="morphe_playlist_search_hint">প্লেলিস্ট অনুসন্ধান করুন</string>
+  <string name="morphe_playlist_search_results">প্লেলিস্ট অনুসন্ধানের ফলাফল</string>
+  <string name="morphe_playlist_search_no_results">এই প্লেলিস্টে কিছু পাওয়া যায়নি</string>
+  <string name="morphe_playlist_search_failed">এই প্লেলিস্টটি অনুসন্ধান করা সম্ভব হয়নি</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">টাইমস্ট্যাম্পসহ লিঙ্কটি ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">থাম্বনেইলে দেখার সংখ্যা দেখান</string>
   <string name="morphe_feed_view_count_summary">ফিড ভিডিওর দর্শন সংখ্যা শিরোনামের নিচে নয়, বরং তাদের থাম্বনেলের বাম কোণের নিচে দেখানো হয়। কিছু ভিডিও, যেমন শেল্‌ফগুলোর মধ্যে থাকে, সেগুলোতে দর্শন সংখ্যা নাও দেখাতে পারে</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTube ইউজারনেম ফিরিয়ে আনুন</string>
+  <string name="morphe_return_youtube_username_screen_summary">হ্যান্ডেলের পরিবর্তে চ্যানেলের নাম দেখান</string>
+  <string name="morphe_return_youtube_username_title">চ্যানেলের নাম দেখান</string>
+  <string name="morphe_return_youtube_username_summary">কমেন্টে, ভিডিও শিরোনামের নিচে এবং Shorts-এ হ্যান্ডেলের পরিবর্তে চ্যানেলের নাম দেখানো হয়</string>
+  <string name="morphe_return_youtube_username_display_format_title">চ্যানেলের নামের ফরম্যাট</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">চ্যানেলের নাম</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">চ্যানেলের নাম (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (চ্যানেলের নাম)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ফিড থাম্বনেইলের লাইক কাউন্ট দেখান</string>
   <string name="morphe_ryd_feed_like_ratio_title">ফিড থাম্বনেইলের লাইক শতাংশ দেখান</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">শুধুমাত্র লোড হওয়া সেই কমেন্টগুলো দেখাতে কমেন্টের সার্চ বাটনে ট্যাপ করুন যেগুলোতে অনুসন্ধান করা সমস্ত শব্দ রয়েছে। কোনো নির্দিষ্ট শব্দগুচ্ছ বা ফ্রেজ খুঁজতে শব্দগুলোকে উদ্ধৃতি চিহ্নের মধ্যে রাখুন</string>
   <string name="morphe_search_comments_dialog_title">মন্তব্য অনুসন্ধান করুন</string>
   <string name="morphe_search_comments_hint">অনুসন্ধান করার শব্দ</string>
-  <string name="morphe_search_comments_search">অনুসন্ধান</string>
   <string name="morphe_search_comments_clear">মুছে ফেলুন</string>
   <string name="morphe_search_comments_applied">সর্টিং অর্ডার পরিবর্তন করুন অথবা অনুসন্ধান করার জন্য পুনরায় মন্তব্যগুলো খুলুন</string>
   <string name="morphe_search_comments_cleared">অনুসন্ধান মুছে ফেলা হয়েছে। সব মন্তব্য দেখাতে সর্টিং অর্ডার পরিবর্তন করুন অথবা মন্তব্যগুলি আবার খুলুন</string>
@@ -838,6 +856,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_play_all_button_type_entry_10">সদস্যদের জন্য ভিডিও</string>
   <string name="morphe_play_all_button_type_entry_11">সদস্যদের জন্য শুধুমাত্র Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">সদস্যদের জন্য লাইভ স্ট্রীম</string>
+  <string name="morphe_play_all_button_reverse_title">বিপরীত ক্রম</string>
+  <string name="morphe_play_all_button_reverse_summary">তৈরি করা প্লেলিস্টটি শেষ ভিডিও থেকে প্রথম ভিডিও পর্যন্ত স্বয়ংক্রিয়ভাবে চলে হবে</string>
   <string name="morphe_play_all_button_not_available_toast">চ্যানেল আইডি না মেলায় প্লেলিস্ট তৈরি করা যায়নি</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">প্লেলিস্ট বোতাম দেখান</string>
@@ -1036,7 +1056,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_swipe_change_video_summary">ফুলস্ক্রিন মোডে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ভিডিওতে যান</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">হোল্ড জেসচার</string>
-  <string name="morphe_hold_gesture_screen_summary">ট্যাপ করে ধরে রাখার পর ড্র্যাগ করে প্লেব্যাক স্পিড পরিবর্তন এবং লক করুন</string>
+  <string name="morphe_hold_gesture_screen_summary">ট্যাপ করে ধরে রেখে ড্র্যাগ করার মাধ্যমে প্লেব্যাক স্পিড পরিবর্তন এবং লক করুন, এবং অ্যাকশনগুলি চালান</string>
   <string name="morphe_hold_gesture_title">হোল্ড অঙ্গভঙ্গি সক্রিয় করুন</string>
   <string name="morphe_hold_gesture_summary">ভিডিওতে ট্যাপ করে ধরে রাখার পর ড্র্যাগ করা যেতে পারে। ধরে রাখার সময়কার গতি হবে ট্যাপ এবং হোল্ড প্লেব্যাক স্পিড</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">সোয়াইপ করার জন্য প্রেস করা সক্রিয় থাকা অবস্থায় এটি ব্যবহৃত হয় না। পরিবর্তন করতে ট্যাপ করুন</string>
@@ -1062,11 +1082,28 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hold_gesture_lock_title">গতি লক করতে নিচে ড্র্যাগ করুন</string>
   <string name="morphe_hold_gesture_lock_summary">ট্যাপ করে ধরে রাখার পর, আঙুল সরিয়ে নিলেও গতি বজায় রাখতে নিচে ড্র্যাগ করুন। আনলক করতে ব্যাজে ট্যাপ করুন অথবা পুনরায় ট্যাপ করে ধরে রাখুন</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">সবসময় লক ব্যাজটি দেখান</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">প্লেয়ার কন্ট্রোলগুলি লুকানো থাকলেও লক করা গতির ব্যাজটি দৃশ্যমান থাকে</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">প্লেয়ার কন্ট্রোলগুলো প্রদর্শিত না হলেও লক করা স্পিডের ব্যাজ দেখায়। বন্ধ থাকলে, প্লেয়ার কন্ট্রোলের সাথে ব্যাজটি প্রদর্শিত হয়</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">ভিডিও পরিবর্তন হলে আনলক করুন</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">অন্য একটি ভিডিও শুরু হলে লক করা গতি শেষ হয়ে যায়</string>
   <string name="morphe_hold_gesture_lock_hint">লক করতে নিচে টানুন</string>
   <string name="morphe_hold_gesture_lock_release">%s লক করতে ছেড়ে দিন</string>
+  <string name="morphe_hold_gesture_launcher_title">লঞ্চার খুলতে উপরের দিকে ড্র্যাগ করুন</string>
+  <string name="morphe_hold_gesture_launcher_summary">ট্যাপ করে ধরে রাখার পর, আঙুলের চারপাশে অ্যাকশনগুলো দেখাতে উপরের দিকে ড্র্যাগ করুন। কোনো অ্যাকশন চালানোর জন্য আঙুলটি উঠিয়ে নিন</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">অ্যাকশনের সংখ্যা</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">অ্যাকশন ১</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">অ্যাকশন ২</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">অ্যাকশন ৩</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">অ্যাকশন ৪</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">অ্যাকশন ৫</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">লক স্ক্রীন</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">ভিডিও লুপ করুন</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">লুপ বন্ধ করুন</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">ফ্রেম সংরক্ষণ করুন</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">পরে দেখার জন্য সংরক্ষণ করুন</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">বর্তমান সময়ের লিঙ্ক কপি করুন</string>
+  <string name="morphe_hold_gesture_screen_unlock">আনলক করতে ট্যাপ করুন</string>
+  <string name="morphe_hold_gesture_frame_saved">ফ্রেমটি %s-এ সংরক্ষণ করা হয়েছে</string>
+  <string name="morphe_hold_gesture_frame_failed">ফ্রেমটি সংরক্ষণ করা যায়নি</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">ক্যাপশন</string>
   <string name="morphe_captions_screen_summary">স্বয়ংক্রিয় ক্যাপশন এবং ক্যাপশন কুকি পরিচালনা করুন</string>
@@ -1254,6 +1291,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">প্লেলিস্ট অটোপ্লে নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_playlist_autoplay_summary">প্লেলিস্টগুলিকে স্বয়ংক্রিয়ভাবে পরবর্তী ভিডিওতে অগ্রসর হতে বাধা দেয়</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">প্লেলিস্ট অটোप्ले বিপরীত করুন</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">প্লেলিস্টগুলো শেষ ভিডিও থেকে প্রথম ভিডিও পর্যন্ত স্বয়ংক্রিয়ভাবে চলে হবে। মিক্সগুলোর ক্ষেত্রে এটি প্রযোজ্য হবে না</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">অটোপ্লে কন্ট্রোল</string>
   <string name="morphe_autoplay_control_summary">একটি প্লেয়ার বোতাম এবং পরবর্তী ভিডিওর জন্য একটি নিয়ম যোগ করে। প্লেলিস্ট এবং কিউ চলতে থাকে, একটি মিক্স নির্দিষ্ট সংখ্যক ভিডিওর পর থেমে যায়, একটি সাজেস্টেড ভিডিও কখনোই চলে না। পরবর্তী মোডের জন্য বোতামটি ট্যাপ করুন, তালিকার জন্য ট্যাপ করে ধরে রাখুন</string>
@@ -1301,6 +1341,21 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_fullscreen_video_scale_button_summary">ডিফল্ট, স্ট্রেচ এবং জুম পরিবর্তন করতে ট্যাপ করুন</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">শুধুমাত্র ফুলস্ক্রিনে দেখান</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">পোর্ট্রেট প্লেয়ারে ভিডিও স্কেল বোতামটি লুকান</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">ধীরগতিতে রিপ্লে দেখানোর বোতাম</string>
+  <string name="morphe_replay_video_button_summary">ভিডিওটি রিওয়াইন্ড করে এবং সাময়িকভাবে ধীর করে দেয়। বাতিল করতে আবার ট্যাপ করুন</string>
+  <string name="morphe_replay_video_swipe_title">ধীরগতিতে রিপ্লে করতে বাম দিকে সোয়াইপ করুন</string>
+  <string name="morphe_replay_video_swipe_summary">সোয়াইপের দৈর্ঘ্যের ওপর ভিত্তি করে ১-১০ সেকেন্ড রিওয়াইন্ড করতে ভিডিওর ওপর বাম দিকে সোয়াইপ করুন। সোয়াইপ কন্ট্রোল সিক করে এবং টপ জোন সোয়াইপ অগ্রাধিকার পায়</string>
+  <string name="morphe_replay_video_swipe_preview">%s সেকেন্ড রিপ্লে</string>
+  <string name="morphe_replay_video_seconds_title">রিউইন্ড করার সময়সীমা</string>
+  <string name="morphe_replay_video_seconds_summary">বোতামটি ভিডিওটিকে কত সেকেন্ড রিউইন্ড করবে</string>
+  <string name="morphe_replay_video_slow_seconds_title">ধীর গতিতে প্লেব্যাক করার সময়সীমা</string>
+  <string name="morphe_replay_video_slow_seconds_summary">রিউইন্ড করার পর ভিডিওর কত সেকেন্ড রিপ্লে স্পিডে চলবে</string>
+  <string name="morphe_replay_video_speed_title">রিপ্লে স্পিড</string>
+  <string name="morphe_replay_video_speed_summary">রিপ্লে-র প্লেব্যাক স্পিড, যেমন ০.৫। রিপ্লে কখনোই বর্তমান গতির চেয়ে দ্রুত হবে না</string>
+  <string name="morphe_replay_video_start">আরও ধীরে রিপ্লে করুন</string>
+  <string name="morphe_replay_video_unavailable">এই ভিডিওর জন্য স্লো রিপ্লে উপলব্ধ নেই</string>
+  <string name="morphe_replay_video_speed_invalid">অকার্যকর রিপ্লে স্পিড, ডিফল্টে রিসেট করা হয়েছে</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">মিউট বোতাম দেখান</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

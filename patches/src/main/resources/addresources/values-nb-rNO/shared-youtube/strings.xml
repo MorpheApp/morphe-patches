@@ -249,6 +249,9 @@ For å logge inn, trykk fortsett nedenfor"</string>
   <string name="morphe_video_effects_custom_error_message">"Videoer vises uten effekten til koden er rettet. Gi denne feilmeldingen til AI-en som skrev koden:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Koden slutter inne i en funksjon eller kommentar, så den ble sannsynligvis kuttet av under kopiering eller liming. Limt tekst kan kuttes ved %d tegn.
+
+Be AI-en om kortere kode, eller lim inn koden i deler."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopier feilmelding</string>
   <string name="morphe_video_effects_custom_save_anyway">Lagre uansett</string>
   <string name="morphe_video_effects_custom_delete">Slett</string>

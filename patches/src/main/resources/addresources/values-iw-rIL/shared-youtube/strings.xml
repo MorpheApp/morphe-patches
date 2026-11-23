@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"סרטונים מוצגים ללא האפקט עד שהקוד יתוקן. העבר את השגיאה הזו ל-AI שכתב את הקוד:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"הקוד מסתיים בתוך פונקציה או הערה, לכן הוא כנראה נקטע בזמן ההעתקה או ההדבקה. טקסט שהודבק עלול להיקטע ב-%d תווים.
+
+בקש מה-AI קוד קצר יותר, או הדבק את הקוד בחלקים."</string>
   <string name="morphe_video_effects_custom_copy_error">שגיאת העתקה</string>
   <string name="morphe_video_effects_custom_save_anyway">שמור בכל מקרה</string>
   <string name="morphe_video_effects_custom_delete">מחק</string>

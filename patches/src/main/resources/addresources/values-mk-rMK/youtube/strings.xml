@@ -423,6 +423,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ги крие искачувачките совети прикажани до лентата за внесување во четот, како што е известувањето за чет само за претплатници</string>
   <string name="morphe_hide_comments_menu_button_title">Скриј копче за мени</string>
   <string name="morphe_hide_comments_menu_button_summary">Ги крие копчињата за мени со 3 точки од секој коментар</string>
+  <string name="morphe_hide_comments_none_yet_title">Скриј го прегледот \"Сè уште нема коментари\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Скриј коментар за преглед</string>
   <string name="morphe_hide_comments_preview_comment_summary">Прикри го прегледот на коментари пред отворање на целиот дел со коментари</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Коментарот е скриен од Morphe…</string>
@@ -433,7 +434,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_topics_title">Скриј „Теми“</string>
   <string name="morphe_hide_comments_topics_summary">Ја крие опцијата за филтрирање „Теми“ во лентата и прегледите на коментари по теми под видеото</string>
   <string name="morphe_hide_comments_translate_button_title">Скриј копче за превод</string>
-  <string name="morphe_hide_comments_zero_state_title">Скриј ја пораката \"Сè уште нема коментари\"</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Скриј ја секцијата \"Посетете ја заедницата\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Исчисти ги истакнатите линкови за пребарување</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Ги чисти истакнатите линкови за пребарување, оставајќи го само оригиналниот обичен текст</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Каналот е додаден на белата листа</string>
   <string name="morphe_channel_whitelist_channel_removed">Каналот е отстранет од белата листа</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Пребарај</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Пребарај во каналот</string>
   <string name="morphe_channel_search_summary">Додава второ копче за пребарување на страниците на каналите за пребарување само во тој канал</string>
@@ -578,6 +581,13 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_sort_oldest">Најстаро</string>
   <string name="morphe_channel_search_sort_shortest">Најкратко</string>
   <string name="morphe_channel_search_sort_longest">Најдолги</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Пребарај во плејлистата</string>
+  <string name="morphe_playlist_search_summary">Додава второ копче за пребарување на страниците со плејлисти за да се пребарува само таа плејлиста</string>
+  <string name="morphe_playlist_search_hint">Пребарај плејлиста</string>
+  <string name="morphe_playlist_search_results">Резултати од пребарувањето во плејлистата</string>
+  <string name="morphe_playlist_search_no_results">Ништо не е пронајдено во оваа плејлиста</string>
+  <string name="morphe_playlist_search_failed">Не успеа пребарувањето во оваа плејлиста</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Линкот е копиран во клипбордот</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Линкот со временски печат е копиран во клипбордот</string>
@@ -652,6 +662,15 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Прикажи број на прегледи на сликите-минијатури</string>
   <string name="morphe_feed_view_count_summary">Бројот на прегледи на видеата во фидот се прикажува во долниот лев агол на нивните слики-минијатури наместо под насловот. Некои видеа, како што е во полиците, можеби нема да прикажат број на прегледи</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Враќање на корисничкото име на YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">Прикажи ги имињата на каналите наместо прекарите</string>
+  <string name="morphe_return_youtube_username_title">Прикажи ги имињата на каналите</string>
+  <string name="morphe_return_youtube_username_summary">Имињата на каналите се прикажани наместо прекарите во коментарите, под насловот на видеото и во Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Формат на името на каналот</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Име на канал</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Име на канал (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Име на канал)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Прикажи број на лајкови на сликата во фидот</string>
   <string name="morphe_ryd_feed_like_ratio_title">Прикажи ја сликата на фидот како процент на лајкови</string>
@@ -664,7 +683,6 @@ Second \"item\" text"</string>
   <string name="morphe_search_comments_summary">Допрете го копчето за пребарување во коментарите за да ги прикажете само вчитаните коментари што ги содржат сите пребарувани зборови. Ставете ги зборовите во наводници за да пребарувате фраза</string>
   <string name="morphe_search_comments_dialog_title">Пребарај коментари</string>
   <string name="morphe_search_comments_hint">Зборови за пребарување</string>
-  <string name="morphe_search_comments_search">Пребарај</string>
   <string name="morphe_search_comments_clear">Исчисти</string>
   <string name="morphe_search_comments_applied">Променете го редоследот на сортирање или отворете ги коментарите повторно за да ги пребарувате</string>
   <string name="morphe_search_comments_cleared">Пребарувањето е избришано. Променете го редоследот на сортирање или отворете ги коментарите повторно за да ги прикажете сите коментари</string>
@@ -838,6 +856,8 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_10">Само видеа за членови</string>
   <string name="morphe_play_all_button_type_entry_11">Само Shorts за членови</string>
   <string name="morphe_play_all_button_type_entry_12">Само преноси во живо за членови</string>
+  <string name="morphe_play_all_button_reverse_title">Обратен редослед</string>
+  <string name="morphe_play_all_button_reverse_summary">Генерираната листа за репродукција се репродуцира автоматски од последното кон првото видео</string>
   <string name="morphe_play_all_button_not_available_toast">Не може да се генерира плејлиста поради несовпадност на ID на каналот</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Прикажи копче за плејлиста</string>
@@ -1036,7 +1056,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">Повлечете во режим на полн екран за да прескокнете на следно или претходно видео</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Гезтура за држење</string>
-  <string name="morphe_hold_gesture_screen_summary">Променете ја и заклучете ја брзината на репродукција со влечење по допир и држење</string>
+  <string name="morphe_hold_gesture_screen_summary">Променете ја и заклучете ја брзината на репродукцијата и извршувајте акции со влечење по допир и држење</string>
   <string name="morphe_hold_gesture_title">Овозможи гезтура за држење</string>
   <string name="morphe_hold_gesture_summary">Допирот и држењето на видеото може да биде следено со влечење. Брзината при држењето е брзината на репродукција при допир и држење</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Не се користи додека е вклучено притисни за прелистување. Допрете за да промените</string>
@@ -1062,11 +1082,28 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_lock_title">Повлечете надолу за да ја заклучите брзината</string>
   <string name="morphe_hold_gesture_lock_summary">По допир и држење, повлечете надолу за да ја задржите брзината кога прстот ќе се подигне. Допрете ја ознаката или повторно допрете и држете за да одклучите</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Секогаш прикажи ја ознаката за заклучување</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Ознаката за заклучена брзина останува видлива додека контролите на плеерот се skjлени</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Го прикажува знакот за заклучена брзина дури и кога контролите на плеерот не се прикажани. Ако е исклучено, знакот се прикажува заедно со контролите на плеерот</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Одклучи кога видеото ќе се промени</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Заклучената брзина завршува кога започнува друго видео</string>
   <string name="morphe_hold_gesture_lock_hint">Повлечете надолу за да заклучите</string>
   <string name="morphe_hold_gesture_lock_release">Пуштете за да го заклучите %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Влечете нагоре за да го отворите ланчерот</string>
+  <string name="morphe_hold_gesture_launcher_summary">По допирање и држење, повлечете нагоре за да ги прикажете акциите околу прстот. Кренете го прстот на некоја акција за да ја извршите</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Број на акции</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Акција 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Акција 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Акција 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Акција 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Акција 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Заклучување на екранот</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Повторување на видео</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Прекин на повторувањето</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Зачувај кадар</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Зачувај за подоцна</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Копирај линк на моменталното време</string>
+  <string name="morphe_hold_gesture_screen_unlock">Допрете за отклучување</string>
+  <string name="morphe_hold_gesture_frame_saved">Кадарот е зачуван во %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Не успеа зачувувањето на кадарот</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Титри</string>
   <string name="morphe_captions_screen_summary">Управувајте со автоматските титри и колачињата за титри</string>
@@ -1254,6 +1291,9 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Оневозможи автоматско пуштање на плејлиста</string>
   <string name="morphe_disable_playlist_autoplay_summary">Спречува плејлистите автоматски да преминуваат на следното видео</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Обратно автоматско репродуцирање на листа за репродукција</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Листите за репродукција се репродуцираат автоматски од последното кон првото видео. Миксовите не се реверзирани</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Контрола на автоматско репродуцирање</string>
   <string name="morphe_autoplay_control_summary">Додава копче за репродуцирање и правило за следното видео. Плејлистите и редите продолжуваат, Микс запира по одреден број видеа, а предложеното видео никогаш не се репродуцира. Допрете го копчето за следниот режим, допрете и држете за листата</string>
@@ -1301,6 +1341,21 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Допрете за да менувате помеѓу Стандардно, Растегнување и Зум</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Прикажи само во цел екран</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Скриј го копчето за скалирање на видеото во портретниот плеер</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Прикажи копче за побавно повторување</string>
+  <string name="morphe_replay_video_button_summary">Навраќа и привремено го забавува видеото. Допрете повторно за да откажете</string>
+  <string name="morphe_replay_video_swipe_title">Повлечете лево за побавно повторување</string>
+  <string name="morphe_replay_video_swipe_summary">Повлечете лево на видеото за да навратите од 1-10 секунди, во зависност од должината на влечењето. Контролите за влечење ја бараат позицијата, а влечењето во горната зона има приоритет</string>
+  <string name="morphe_replay_video_swipe_preview">Повтори %s с</string>
+  <string name="morphe_replay_video_seconds_title">Времетраење на навраќање</string>
+  <string name="morphe_replay_video_seconds_summary">Колку секунди копчето го враќа видеото</string>
+  <string name="morphe_replay_video_slow_seconds_title">Времетраење на бавно репродуцирање</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Колку секунди од видеото се репродуцираат со брзина на навраќање по враќањето</string>
+  <string name="morphe_replay_video_speed_title">Брзина на навраќање</string>
+  <string name="morphe_replay_video_speed_summary">Брзина на репродуцирање на навраќањето, на пример 0,5. Навраќањето никогаш не е побрзо од моменталната брзина</string>
+  <string name="morphe_replay_video_start">Наврати побавно</string>
+  <string name="morphe_replay_video_unavailable">Бавното навраќање не е достапно за ова видео</string>
+  <string name="morphe_replay_video_speed_invalid">Невалидна брзина на навраќање, ресетирај на стандардна</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Прикажи копче за исклучување звук</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

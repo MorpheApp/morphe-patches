@@ -249,6 +249,9 @@ Til að skrá þig inn, Ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_video_effects_custom_error_message">"Myndband sýnst án áhrifa þar til kóðinn er lagaður. Gefðu þessa villu á AI sem skrifaði kóðann:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kóðinn lýkur inni í falli eða athugasemd, svo var hann líklega skorið af við afritun eða límun. Límður texti getur verið skorenn af við %d stafi.
+
+Biððu gervigreindina um styttra kóða eða límdu kóðann í hluta."</string>
   <string name="morphe_video_effects_custom_copy_error">Afrita villu</string>
   <string name="morphe_video_effects_custom_save_anyway">Vista samt</string>
   <string name="morphe_video_effects_custom_delete">Eyða</string>

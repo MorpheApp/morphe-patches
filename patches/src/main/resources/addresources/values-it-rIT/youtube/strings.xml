@@ -423,6 +423,7 @@ Limitazioni:
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Nasconde i popup dei suggerimenti che appaiono vicino alla barra di input della chat, come l\'avviso della chat riservata agli abbonati</string>
   <string name="morphe_hide_comments_menu_button_title">Nascondi il pulsante del menu</string>
   <string name="morphe_hide_comments_menu_button_summary">Nasconde il pulsante del menu a tre puntini di ogni commento</string>
+  <string name="morphe_hide_comments_none_yet_title">Nascondi l\'anteprima \"Nessun commento ancora\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Nascondi il commento di anteprima</string>
   <string name="morphe_hide_comments_preview_comment_summary">Nasconde l\'anteprima del commento sotto il video prima di aprire la sezione commenti completa</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Commento nascosto da Morphe…</string>
@@ -433,7 +434,7 @@ Limitazioni:
   <string name="morphe_hide_comments_topics_title">Nascondi \"Argomenti\"</string>
   <string name="morphe_hide_comments_topics_summary">Nasconde l\'opzione della barra dei filtri \"Argomenti\" e le anteprime dei commenti per \"Argomento\" sotto il video</string>
   <string name="morphe_hide_comments_translate_button_title">Nascondi il pulsante Traduci</string>
-  <string name="morphe_hide_comments_zero_state_title">Nascondi il messaggio \'Nessun commento ancora\'</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">Nascondi la sezione \"Visita la community\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Disattiva l\'evidenziazione dei link di ricerca, lasciando solo il testo originale</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Disattiva l\'evidenziazione dei link di ricerca, lasciando solo il testo originale</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -561,6 +562,8 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_channel_whitelist_channel_added">Canale aggiunto alla whitelist</string>
   <string name="morphe_channel_whitelist_channel_removed">Canale rimosso dalla whitelist</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">Cerca</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cerca nel canale</string>
   <string name="morphe_channel_search_summary">Aggiunge un secondo pulsante di ricerca nelle pagine dei canali per cercare solo in quel canale</string>
@@ -578,6 +581,13 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_channel_search_sort_oldest">Più vecchi</string>
   <string name="morphe_channel_search_sort_shortest">Più breve</string>
   <string name="morphe_channel_search_sort_longest">Più lunghi</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">Cerca nella playlist</string>
+  <string name="morphe_playlist_search_summary">Aggiunge un secondo pulsante di ricerca nelle pagine della playlist per cercare solo in quella playlist</string>
+  <string name="morphe_playlist_search_hint">Cerca nella playlist</string>
+  <string name="morphe_playlist_search_results">Risultati della ricerca nella playlist</string>
+  <string name="morphe_playlist_search_no_results">Nulla trovato in questa playlist</string>
+  <string name="morphe_playlist_search_failed">Impossibile cercare in questa playlist</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiato negli appunti</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link con indicatore di tempo copiato negli appunti</string>
@@ -652,6 +662,15 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Mostra il conteggio delle visualizzazioni nelle miniature</string>
   <string name="morphe_feed_view_count_summary">Il conteggio delle visualizzazioni dei video del feed viene mostrato nell\'angolo in basso a sinistra delle miniature invece che sotto il titolo. Alcuni video, come quelli negli scaffali, potrebbero non mostrare un conteggio delle visualizzazioni</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">Ripristina nome utente YouTube</string>
+  <string name="morphe_return_youtube_username_screen_summary">Mostra i nomi dei canali invece dei handle</string>
+  <string name="morphe_return_youtube_username_title">Mostra nomi dei canali</string>
+  <string name="morphe_return_youtube_username_summary">I nomi dei canali vengono mostrati invece degli handle nei commenti, sotto il titolo del video e negli Shorts</string>
+  <string name="morphe_return_youtube_username_display_format_title">Formato nome del canale</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">Nome del canale</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">Nome del canale (@handle)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Nome del canale)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostra il conteggio dei mi piace nella miniature del feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostra la percentuale di mi piace nella miniature del feed</string>
@@ -664,7 +683,6 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_search_comments_summary">Tocca il pulsante di ricerca nei commenti per mostrare solo i commenti caricati che contengono tutte le parole cercate. Metti le parole tra virgolette per cercare una frase</string>
   <string name="morphe_search_comments_dialog_title">Cerca nei commenti</string>
   <string name="morphe_search_comments_hint">Parole da cercare</string>
-  <string name="morphe_search_comments_search">Cerca</string>
   <string name="morphe_search_comments_clear">Cancella</string>
   <string name="morphe_search_comments_applied">Cambia l\'ordine di ordinamento o apri nuovamente i commenti per cercarli</string>
   <string name="morphe_search_comments_cleared">Ricerca cancellata. Cambia l\'ordine di ordinamento o apri nuovamente i commenti per mostrare tutti i commenti</string>
@@ -837,6 +855,8 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_play_all_button_type_entry_10">Solo video dei membri</string>
   <string name="morphe_play_all_button_type_entry_11">Solo Shorts dei membri</string>
   <string name="morphe_play_all_button_type_entry_12">Solo dirette dei membri</string>
+  <string name="morphe_play_all_button_reverse_title">Ordine inverso</string>
+  <string name="morphe_play_all_button_reverse_summary">La playlist generata viene riprodotta automaticamente dall\'ultimo video al primo</string>
   <string name="morphe_play_all_button_not_available_toast">Impossibile generare la playlist a causa di una mancata corrispondenza dell\'ID del canale</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">Mostra pulsante Playlist</string>
@@ -1035,7 +1055,7 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_swipe_change_video_summary">Scorri in modalità a schermo intero per passare al video successivo o precedente</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Gesto di pressione prolungata</string>
-  <string name="morphe_hold_gesture_screen_summary">Cambia e blocca la velocità di riproduzione trascinando dopo aver tenuto premuto</string>
+  <string name="morphe_hold_gesture_screen_summary">Cambia e blocca la velocità di riproduzione, ed esegui azioni, trascinando dopo aver tenuto premuto</string>
   <string name="morphe_hold_gesture_title">Attiva il gesto per la velocità</string>
   <string name="morphe_hold_gesture_summary">Al tocco prolungato sul video può seguire un trascinamento. La velocità durante la pressione è la velocità di riproduzione del tocco prolungato</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">Non utilizzato quando Pressione per scorrere è attiva. Tocca per modificare</string>
@@ -1061,11 +1081,28 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_hold_gesture_lock_title">Trascina verso il basso per bloccare la velocità</string>
   <string name="morphe_hold_gesture_lock_summary">Dopo aver tenuto premuto, trascina verso il basso per mantenere la velocità quando sollevi il dito. Tocca il badge o tieni premuto di nuovo per sbloccare</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Mostra sempre il badge di blocco</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Il badge di una velocità bloccata rimane visibile mentre i controlli del player sono nascosti</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Mostra il badge di una velocità bloccata anche quando i controlli del player non sono visibili. Se disattivato, il badge viene mostrato insieme ai controlli del player</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Sblocca quando il video cambia</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">Una velocità bloccata termina quando inizia un altro video</string>
   <string name="morphe_hold_gesture_lock_hint">Trascina verso il basso per bloccare</string>
   <string name="morphe_hold_gesture_lock_release">Rilascia per bloccare a %s</string>
+  <string name="morphe_hold_gesture_launcher_title">Trascina verso l\'alto per aprire il launcher</string>
+  <string name="morphe_hold_gesture_launcher_summary">Dopo aver toccato e tenuto premuto, trascina verso l\'alto per mostrare le azioni intorno al dito. Solleva il dito su un\'azione per eseguirla</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">Numero di azioni</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">Azione 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">Azione 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">Azione 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">Azione 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">Azione 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">Blocca schermo</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">Loop video</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">Interrompi loop</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">Salva fotogramma</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">Salva per guardare più tardi</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">Copia link al momento attuale</string>
+  <string name="morphe_hold_gesture_screen_unlock">Tocca per sbloccare</string>
+  <string name="morphe_hold_gesture_frame_saved">Fotogramma salvato in %s</string>
+  <string name="morphe_hold_gesture_frame_failed">Impossibile salvare il fotogramma</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Sottotitoli</string>
   <string name="morphe_captions_screen_summary">Gestisci i sottotitoli automatici ed i cookie dei sottotitoli</string>
@@ -1253,6 +1290,9 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Disattiva la riproduzione automatica delle playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Impedisce alle playlist di avanzare automaticamente al video successivo</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">Inverti riproduzione automatica playlist</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">Le playlist vengono riprodotte automaticamente dall\'ultimo video al primo. I mix non vengono invertiti</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Controllo riproduzione automatica</string>
   <string name="morphe_autoplay_control_summary">Aggiunge un pulsante al player e una regola per il video successivo. Le playlist e le code continuano, un Mix si ferma dopo un certo numero di video, un video suggerito non viene mai riprodotto. Tocca il pulsante per la modalità successiva, tieni premuto per l\'elenco</string>
@@ -1300,6 +1340,21 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_fullscreen_video_scale_button_summary">Tocca per passare da Predefinito, Adatta e Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Mostra solo a schermo intero</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Nascondi il pulsante di ridimensionamento video nel player verticale</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">Mostra pulsante Riproduci più lentamente</string>
+  <string name="morphe_replay_video_button_summary">Riavvolge e rallenta temporaneamente il video. Tocca di nuovo per annullare</string>
+  <string name="morphe_replay_video_swipe_title">Scorri a sinistra per riprodurre più lentamente</string>
+  <string name="morphe_replay_video_swipe_summary">Scorri a sinistra sul video per riavvolgere di 1-10 secondi, a seconda della lunghezza dello scorrimento. I controlli di scorrimento e gli scorrimenti nella zona superiore hanno la priorità</string>
+  <string name="morphe_replay_video_swipe_preview">Riproduci %s s</string>
+  <string name="morphe_replay_video_seconds_title">Durata riavvolgimento</string>
+  <string name="morphe_replay_video_seconds_summary">Quanti secondi il pulsante riavvolge il video</string>
+  <string name="morphe_replay_video_slow_seconds_title">Durata riproduzione lenta</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Quanti secondi del video vengono riprodotti alla velocità di riproduzione dopo il riavvolgimento</string>
+  <string name="morphe_replay_video_speed_title">Velocità riproduzione</string>
+  <string name="morphe_replay_video_speed_summary">Velocità di riproduzione del replay, ad esempio 0,5. Il replay non è mai più veloce della velocità attuale</string>
+  <string name="morphe_replay_video_start">Riproduci più lentamente</string>
+  <string name="morphe_replay_video_unavailable">La riproduzione lenta non è disponibile per questo video</string>
+  <string name="morphe_replay_video_speed_invalid">Velocità di riproduzione non valida, ripristinata al valore predefinito</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Mostra pulsante muto</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

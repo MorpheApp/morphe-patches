@@ -424,6 +424,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_comments_live_chat_tooltips_summary">チャット入力欄付近に吹き出し形式のポップアップで表示される、チャンネル登録者のみモードのライブ配信にチャットを送信する際の注意事項などの、チャットに関するヒントを非表示にします</string>
   <string name="morphe_hide_comments_menu_button_title">メニューボタンを非表示</string>
   <string name="morphe_hide_comments_menu_button_summary">各コメントの右端に表示される 3 点メニューボタンを非表示にします</string>
+  <string name="morphe_hide_comments_none_yet_title">「まだコメントはありません」のプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示される、コメントのプレビューを非表示にします</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe によってコメントが非表示になりました…</string>
@@ -434,7 +435,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_comments_topics_title">\"トピック\"を非表示にする</string>
   <string name="morphe_hide_comments_topics_summary">\"トピック\"フィルターバーのオプションと、動画下の\"トピック\"コメントプレビューを非表示にします</string>
   <string name="morphe_hide_comments_translate_button_title">翻訳 / 原文ボタンを非表示</string>
-  <string name="morphe_hide_comments_zero_state_title">「まだコメントがありません」メッセージを非表示にする</string>
+  <string name="morphe_hide_comments_visit_the_community_section_title">「コミュニティを訪問」セクションを非表示</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">テキスト内の検索リンクを除去</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">テキスト内の単語やフレーズに埋め込まれた虫眼鏡アイコン付きの検索リンクを取り除き、通常のテキストに戻します</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
@@ -562,6 +563,8 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_channel_whitelist_channel_added">チャンネルをホワイトリストに追加しました</string>
   <string name="morphe_channel_whitelist_channel_removed">チャンネルをホワイトリストから削除しました</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- Search dialog of comments search, channel search and playlist search. -->
+  <string name="morphe_search_dialog_search">検索</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">チャンネル内を検索</string>
   <string name="morphe_channel_search_summary">チャンネルページに、そのチャンネルだけを検索する別の検索ボタンを追加します</string>
@@ -579,6 +582,13 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_channel_search_sort_oldest">古い順</string>
   <string name="morphe_channel_search_sort_shortest">再生時間が短い順</string>
   <string name="morphe_channel_search_sort_longest">再生時間が長い順</string>
+  <!-- interaction.playlistsearch.playlistSearchPatch -->
+  <string name="morphe_playlist_search_title">プレイリスト内を検索</string>
+  <string name="morphe_playlist_search_summary">プレイリストページに2つ目の検索ボタンを追加し、そのプレイリストのみを検索できるようにします</string>
+  <string name="morphe_playlist_search_hint">プレイリストを検索</string>
+  <string name="morphe_playlist_search_results">プレイリストの検索結果</string>
+  <string name="morphe_playlist_search_no_results">このプレイリスト内には何も見つかりませんでした</string>
+  <string name="morphe_playlist_search_failed">このプレイリスト内を検索できませんでした</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
@@ -653,6 +663,15 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">サムネイルに再生回数を表示</string>
   <string name="morphe_feed_view_count_summary">フィード動画の再生回数は、タイトルの下ではなく、サムネイルの左下に表示されます。シェルフ内の動画など、一部の動画は再生回数が表示されない場合があります</string>
+  <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+  <string name="morphe_return_youtube_username_screen_title">YouTubeユーザー名を戻す</string>
+  <string name="morphe_return_youtube_username_screen_summary">ハンドルではなくチャンネル名を表示する</string>
+  <string name="morphe_return_youtube_username_title">チャンネル名を表示</string>
+  <string name="morphe_return_youtube_username_summary">コメント、動画タイトルの下、およびショートで、ハンドルの代わりにチャンネル名が表示されます</string>
+  <string name="morphe_return_youtube_username_display_format_title">チャンネル名の形式</string>
+  <string name="morphe_return_youtube_username_display_format_entry_1">チャンネル名</string>
+  <string name="morphe_return_youtube_username_display_format_entry_2">チャンネル名 (@ハンドル)</string>
+  <string name="morphe_return_youtube_username_display_format_entry_3">\@ハンドル (チャンネル名)</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">フィードのサムネイルのいいね数を表示</string>
   <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
@@ -665,7 +684,6 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_search_comments_summary">コメント欄の検索ボタンをタップして、検索ワードをすべて含む読み込み済みコメントのみを表示します。フレーズで検索する場合は、単語を引用符で囲んでください</string>
   <string name="morphe_search_comments_dialog_title">コメントを検索</string>
   <string name="morphe_search_comments_hint">検索ワード</string>
-  <string name="morphe_search_comments_search">検索</string>
   <string name="morphe_search_comments_clear">解除</string>
   <string name="morphe_search_comments_applied">検索によるフィルタを適用するには、コメントの並び順 (フィルタ) を変更するかコメント欄を開き直してください</string>
   <string name="morphe_search_comments_cleared">検索によるフィルタを解除しました。コメントの並び順 (フィルタ) を変更するかコメント欄を開き直すと、すべてのコメントを表示します</string>
@@ -839,6 +857,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_play_all_button_type_entry_10">メンバー限定動画</string>
   <string name="morphe_play_all_button_type_entry_11">メンバー限定ショート動画</string>
   <string name="morphe_play_all_button_type_entry_12">メンバー限定ライブ配信</string>
+  <string name="morphe_play_all_button_reverse_title">逆順に再生</string>
+  <string name="morphe_play_all_button_reverse_summary">生成されたプレイリストが、最後のビデオから最初のビデオまで自動再生されます</string>
   <string name="morphe_play_all_button_not_available_toast">チャンネル ID が一致しないためプレイリストを生成できません</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <string name="morphe_playlist_panel_button_title">「プレイリストを表示」ボタンを表示</string>
@@ -1037,7 +1057,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_change_video_summary">全画面表示モードで左 / 右にスワイプすると前 / 次の動画に移動します</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">ホールドジェスチャー</string>
-  <string name="morphe_hold_gesture_screen_summary">タップして長押しした後、ドラッグして再生速度を変更し、固定します</string>
+  <string name="morphe_hold_gesture_screen_summary">長押ししてからドラッグすることで、再生速度の変更と固定、およびアクションの実行ができます</string>
   <string name="morphe_hold_gesture_title">ホールドジェスチャーを有効化</string>
   <string name="morphe_hold_gesture_summary">ビデオをタップして長押しした後、ドラッグすることができます。長押し中の速度は、タップ＆ホールド再生速度になります</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">長押しスワイプがオンの間は使用できません。タップして変更してください</string>
@@ -1063,11 +1083,28 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hold_gesture_lock_title">下にドラッグして速度を固定</string>
   <string name="morphe_hold_gesture_lock_summary">タップして長押しした後、下にドラッグすると、指を離した後も速度が維持されます。バッジをタップするか、もう一度長押しすると固定が解除されます</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">常に固定バッジを表示</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">プレイヤーコントロールが非表示の間も、速度固定のバッジが表示され続けます</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">プレーヤーコントロールが表示されていないときでも、固定された速度のバッジを表示します。オフにすると、バッジはプレーヤーコントロールと一緒に表示されます</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">動画が変わったときに固定を解除</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">別の動画が開始されると、速度の固定が終了します</string>
   <string name="morphe_hold_gesture_lock_hint">下に引いて固定</string>
   <string name="morphe_hold_gesture_lock_release">%sを離してロック</string>
+  <string name="morphe_hold_gesture_launcher_title">上にドラッグしてランチャーを開く</string>
+  <string name="morphe_hold_gesture_launcher_summary">タップして長押しした後、上にドラッグして指の周りにアクションを表示します。アクションの上で指を離すと、そのアクションが実行されます</string>
+  <string name="morphe_hold_gesture_launcher_slot_count_title">アクション数</string>
+  <string name="morphe_hold_gesture_launcher_slot_1_title">アクション 1</string>
+  <string name="morphe_hold_gesture_launcher_slot_2_title">アクション 2</string>
+  <string name="morphe_hold_gesture_launcher_slot_3_title">アクション 3</string>
+  <string name="morphe_hold_gesture_launcher_slot_4_title">アクション 4</string>
+  <string name="morphe_hold_gesture_launcher_slot_5_title">アクション 5</string>
+  <string name="morphe_hold_gesture_launcher_action_screen_lock">画面ロック</string>
+  <string name="morphe_hold_gesture_launcher_action_loop">動画をループ再生</string>
+  <string name="morphe_hold_gesture_launcher_action_loop_off">ループ再生を停止</string>
+  <string name="morphe_hold_gesture_launcher_action_screenshot">フレームを保存</string>
+  <string name="morphe_hold_gesture_launcher_action_watch_later">[後で見る] に保存</string>
+  <string name="morphe_hold_gesture_launcher_action_timestamp_url">現在の時間のリンクをコピー</string>
+  <string name="morphe_hold_gesture_screen_unlock">タップしてロックを解除</string>
+  <string name="morphe_hold_gesture_frame_saved">フレームを %s に保存しました</string>
+  <string name="morphe_hold_gesture_frame_failed">フレームを保存できませんでした</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">字幕</string>
   <string name="morphe_captions_screen_summary">自動字幕表示の設定と字幕 Cookie を管理します</string>
@@ -1255,6 +1292,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">プレイリストの自動再生を無効化</string>
   <string name="morphe_disable_playlist_autoplay_summary">プレイリストの次の動画を自動的に再生する機能を無効にします</string>
+  <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+  <string name="morphe_reverse_playlist_autoplay_title">プレイリストの自動再生を逆順にする</string>
+  <string name="morphe_reverse_playlist_autoplay_summary">プレイリストが最後のビデオから最初のビデオまで自動再生されます。ミックスは逆順になりません</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">自動再生コントロール</string>
   <string name="morphe_autoplay_control_summary">次ビデオの再生ボタンとルールを追加します。プレイリストやキューはそのまま継続され、ミックスは指定した本数のビデオ後に停止し、おすすめのビデオは再生されません。ボタンをタップして次のモードに切り替え、長押しでリストを表示します</string>
@@ -1302,6 +1342,21 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_fullscreen_video_scale_button_summary">タップすると、デフォルト → 引き伸ばす → ズーム → デフォルトの順に切り替わります</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">全画面表示でのみ表示</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">縦画面表示のプレーヤーの「画面の埋め方」ボタンを非表示にします</string>
+  <!-- video.speed.replay.replayVideoPatch -->
+  <string name="morphe_replay_video_button_title">「低速リプレイ」ボタンを表示</string>
+  <string name="morphe_replay_video_button_summary">ビデオを巻き戻し、一時的に低速再生します。もう一度タップするとキャンセルされます</string>
+  <string name="morphe_replay_video_swipe_title">左にスワイプして低速でリプレイ</string>
+  <string name="morphe_replay_video_swipe_summary">ビデオを左にスワイプすると、スワイプの長さに応じて1〜10秒巻き戻します。スワイプ操作でシークし、上部ゾーンのスワイプが優先されます</string>
+  <string name="morphe_replay_video_swipe_preview">%s 秒リプレイ</string>
+  <string name="morphe_replay_video_seconds_title">巻き戻し時間</string>
+  <string name="morphe_replay_video_seconds_summary">ボタンでビデオを巻き戻す秒数</string>
+  <string name="morphe_replay_video_slow_seconds_title">低速再生時間</string>
+  <string name="morphe_replay_video_slow_seconds_summary">巻き戻し後、リプレイ速度で再生されるビデオの秒数</string>
+  <string name="morphe_replay_video_speed_title">リプレイ速度</string>
+  <string name="morphe_replay_video_speed_summary">0.5などのリプレイ再生速度。リプレイが現在の速度より速くなることはありません</string>
+  <string name="morphe_replay_video_start">低速でリプレイ</string>
+  <string name="morphe_replay_video_unavailable">このビデオでは低速リプレイを利用できません</string>
+  <string name="morphe_replay_video_speed_invalid">リプレイ速度が無効なため、デフォルトにリセットされました</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">消音ボタンを表示</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

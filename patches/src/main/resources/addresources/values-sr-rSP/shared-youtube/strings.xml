@@ -249,6 +249,9 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_error_message">"Видео снимци се приказују без ефекта док код не буде исправљен. Дајте ову грешку вештачкој интелигенцији која је написала код:
 
 %s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Код се завршава унутар функције или коментара, тако да је вероватно одсечен током копирања или налепљивања. Налепљени текст може бити одсечен на %d карактера.
+
+Затражите од АИ-а краћи код или налепите код у деловима."</string>
   <string name="morphe_video_effects_custom_copy_error">Грешка при копирању</string>
   <string name="morphe_video_effects_custom_save_anyway">Ипак сачувај</string>
   <string name="morphe_video_effects_custom_delete">Обриши</string>
