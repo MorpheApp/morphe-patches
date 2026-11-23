@@ -7,7 +7,9 @@
 
 package app.morphe.patches.youtube.layout.widesearchbar
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -26,7 +28,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideS
 @Suppress("unused")
 val wideSearchBarPatch = patch(
     name = "Wide search bar",
-    description = "Adds a wide search bar to the top of the home and subscription feed."
+    description = "Adds a wide search bar to the top of the home, subscription, notifications and You tabs."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -79,6 +81,20 @@ val wideSearchBarPatch = patch(
                     index,
                     "invoke-static { v$register }, $EXTENSION_CLASS->" +
                             "initializeWideSearchbar(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        // You tab, where the "Accounts" button replaces the header logo.
+        ToolbarLeadingAccessoriesFingerprint.let {
+            it.method.apply {
+                val addViewIndex = it.instructionMatches.last().index
+                val containerRegister = it.instructionMatches.last().instruction.registersUsed[0]
+
+                addInstruction(
+                    addViewIndex + 1,
+                    "invoke-static { v$containerRegister }, $EXTENSION_CLASS->" +
+                            "addLeadingAccessoriesSearchbar(Landroid/view/ViewGroup;)V"
                 )
             }
         }

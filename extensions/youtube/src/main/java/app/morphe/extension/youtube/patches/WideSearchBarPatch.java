@@ -57,6 +57,8 @@ public class WideSearchBarPatch {
             ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final int DP115 = Dim.dp(115);
+    private static final String LEADING_ACCESSORIES_SEARCHBAR_TAG = "morphe_wide_searchbar";
+    private static final float LEADING_ACCESSORIES_SEARCHBAR_WEIGHT = 1.0f;
 
     private static WeakReference<View> searchButtonViewParentRef = new WeakReference<>(null);
     private static WeakReference<View> searchButtonViewRef = new WeakReference<>(null);
@@ -87,7 +89,8 @@ public class WideSearchBarPatch {
             }
             if (activeButton != NavigationButton.HOME
                     && activeButton != NavigationButton.SUBSCRIPTIONS
-                    && activeButton != NavigationButton.NOTIFICATIONS) {
+                    && activeButton != NavigationButton.NOTIFICATIONS
+                    && activeButton != NavigationButton.LIBRARY) {
                 return;
             }
             if (NavigationBar.isBackButtonVisible()) {
@@ -113,36 +116,7 @@ public class WideSearchBarPatch {
                 return;
             }
 
-            final int backgroundColor = ThemeUtils.getEditTextBackground();
-            final int textColor = Utils.adjustColorBrightness(
-                    ThemeUtils.getAppForegroundColor(), 1.60f, 0.67f);
-
-            TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
-            wideSearchBox.setPadding(Dim.dp12, 0, Dim.dp12, 0);
-            wideSearchBox.setText(SEARCH_HINT);
-            wideSearchBox.setTextSize(16);
-            wideSearchBox.setTextColor(textColor);
-            wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-            wideSearchBox.setSingleLine(true);
-            wideSearchBox.setEllipsize(TextUtils.TruncateAt.END);
-            wideSearchBox.setFocusable(false);
-            wideSearchBox.setClickable(true);
-
-            GradientDrawable searchBackground = new GradientDrawable();
-            searchBackground.setShape(GradientDrawable.RECTANGLE);
-            searchBackground.setCornerRadius(Dim.dp24);
-            searchBackground.setColor(backgroundColor);
-            wideSearchBox.setBackground(searchBackground);
-
-            Drawable searchIcon = wideSearchBox.getContext().getDrawable(ID_SEARCH_ICON);
-            if (searchIcon != null) {
-                searchIcon = searchIcon.mutate();
-                searchIcon.setTint(textColor);
-
-                wideSearchBox.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                        null, null, searchIcon, null);
-                wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
-            }
+            TextView wideSearchBox = createSearchBox(toolbarViewGroup.getContext());
 
             View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
             final boolean extraWide = SEARCHBAR_TYPE == SearchbarType.EXTRA_WIDE;
@@ -184,20 +158,6 @@ public class WideSearchBarPatch {
             }
             wideSearchBox.setLayoutParams(currentViewGroupParams);
 
-            wideSearchBox.setOnClickListener(view -> {
-                View searchButtonView = searchButtonViewRef.get();
-                if (searchButtonView != null) {
-                    searchButtonView.callOnClick();
-                } else {
-                    Logger.printDebug(() -> "Using search intent");
-                    Intent intent = new Intent();
-                    intent.setAction("com.google.android.youtube.action.open.search");
-                    Context context = Utils.getActivity();
-                    intent.setPackage(context.getPackageName());
-                    context.startActivity(intent);
-                }
-            });
-
             int targetIndex = toolbarViewGroup.getChildCount();
             if (logoView != null) {
                 final int logoIndex = toolbarViewGroup.indexOfChild(logoView);
@@ -213,6 +173,96 @@ public class WideSearchBarPatch {
             toolbarViewGroup.addView(wideSearchBox, targetIndex);
         } catch (Exception ex) {
             Logger.printException(() -> "initializeContainer failure", ex);
+        }
+    }
+
+    private static TextView createSearchBox(Context context) {
+        final int backgroundColor = ThemeUtils.getEditTextBackground();
+        final int textColor = Utils.adjustColorBrightness(
+                ThemeUtils.getAppForegroundColor(), 1.60f, 0.67f);
+
+        TextView wideSearchBox = new TextView(context);
+        wideSearchBox.setPadding(Dim.dp12, 0, Dim.dp12, 0);
+        wideSearchBox.setText(SEARCH_HINT);
+        wideSearchBox.setTextSize(16);
+        wideSearchBox.setTextColor(textColor);
+        wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
+        wideSearchBox.setSingleLine(true);
+        wideSearchBox.setEllipsize(TextUtils.TruncateAt.END);
+        wideSearchBox.setFocusable(false);
+        wideSearchBox.setClickable(true);
+
+        GradientDrawable searchBackground = new GradientDrawable();
+        searchBackground.setShape(GradientDrawable.RECTANGLE);
+        searchBackground.setCornerRadius(Dim.dp24);
+        searchBackground.setColor(backgroundColor);
+        wideSearchBox.setBackground(searchBackground);
+
+        Drawable searchIcon = context.getDrawable(ID_SEARCH_ICON);
+        if (searchIcon != null) {
+            searchIcon = searchIcon.mutate();
+            searchIcon.setTint(textColor);
+
+            wideSearchBox.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null, null, searchIcon, null);
+            wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
+        }
+
+        wideSearchBox.setOnClickListener(view -> {
+            View searchButtonView = searchButtonViewRef.get();
+            if (searchButtonView != null) {
+                searchButtonView.callOnClick();
+            } else {
+                Logger.printDebug(() -> "Using search intent");
+                Intent intent = new Intent();
+                intent.setAction("com.google.android.youtube.action.open.search");
+                Context activity = Utils.getActivity();
+                intent.setPackage(activity.getPackageName());
+                activity.startActivity(intent);
+            }
+        });
+
+        return wideSearchBox;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called after each view is added to the toolbar leading accessories container,
+     * such as the "Accounts" button that replaces the header logo in the 'You' tab.
+     */
+    public static void addLeadingAccessoriesSearchbar(ViewGroup container) {
+        try {
+            if (!WIDE_SEARCHBAR_ENABLED) {
+                return;
+            }
+
+            View searchBox = container.findViewWithTag(LEADING_ACCESSORIES_SEARCHBAR_TAG);
+            if (searchBox != null) {
+                // Keep the search bar after all accessories.
+                container.removeView(searchBox);
+            } else {
+                searchBox = createSearchBox(container.getContext());
+                searchBox.setTag(LEADING_ACCESSORIES_SEARCHBAR_TAG);
+
+                LinearLayout.LayoutParams searchParams = new LinearLayout.LayoutParams(
+                        0, Dim.dp32, LEADING_ACCESSORIES_SEARCHBAR_WEIGHT);
+                searchParams.gravity = Gravity.CENTER_VERTICAL;
+                searchParams.setMarginStart(Dim.dp10);
+                searchParams.setMarginEnd(Dim.dp10);
+                searchBox.setLayoutParams(searchParams);
+            }
+
+            // The container wraps its content, so stretch it to the toolbar menu buttons.
+            ViewGroup.LayoutParams containerParams = container.getLayoutParams();
+            if (containerParams != null && containerParams.width != ViewGroup.LayoutParams.MATCH_PARENT) {
+                containerParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                container.setLayoutParams(containerParams);
+            }
+
+            container.addView(searchBox);
+        } catch (Exception ex) {
+            Logger.printException(() -> "addLeadingAccessoriesSearchbar failure", ex);
         }
     }
 }
