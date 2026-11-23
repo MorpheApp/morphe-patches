@@ -304,6 +304,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final LongSetting KEYWORD_HIDE_COUNT_COMMENTS = new LongSetting("morphe_keyword_hide_count_comments", 0L);
     public static final StringSetting KEYWORD_HIDES_24H = new StringSetting("morphe_keyword_hides_24h", "", false, false);
 
+    // View count filter
+    public static final BooleanSetting HIDE_VIDEOS_BY_VIEWS_HOME = new BooleanSetting("morphe_hide_videos_by_views_home", FALSE);
+    public static final BooleanSetting HIDE_VIDEOS_BY_VIEWS_SEARCH = new BooleanSetting("morphe_hide_videos_by_views_search", FALSE);
+    public static final BooleanSetting HIDE_VIDEOS_BY_VIEWS_SUBSCRIPTIONS = new BooleanSetting("morphe_hide_videos_by_views_subscriptions", FALSE);
+    public static final LongSetting HIDE_VIDEOS_BY_VIEWS_MINIMUM = new LongSetting("morphe_hide_videos_by_views_minimum", 1000L,
+            parentsAny(HIDE_VIDEOS_BY_VIEWS_HOME, HIDE_VIDEOS_BY_VIEWS_SEARCH, HIDE_VIDEOS_BY_VIEWS_SUBSCRIPTIONS));
+    public static final LongSetting HIDE_VIDEOS_BY_VIEWS_MAXIMUM = new LongSetting("morphe_hide_videos_by_views_maximum", 0L,
+            parentsAny(HIDE_VIDEOS_BY_VIEWS_HOME, HIDE_VIDEOS_BY_VIEWS_SEARCH, HIDE_VIDEOS_BY_VIEWS_SUBSCRIPTIONS));
+
     // Player
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_CHAPTERS = new BooleanSetting("morphe_disable_haptic_feedback_chapters", FALSE);

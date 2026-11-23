@@ -785,7 +785,7 @@ public class FeedCardLayoutPatch {
 
         try {
             final String elementText = FeedVideoCardsPatch.getElementText(bytes);
-            if (LAYOUT != FeedCardLayout.DEFAULT && !FeedVideoCardsPatch.containsAny(elementText, elementTemplates)) {
+            if (LAYOUT != FeedCardLayout.DEFAULT && FeedVideoCardsPatch.lacksAll(elementText, elementTemplates)) {
                 // The elements of the layout of the setting give the current version of its template:
                 // the uri and the fields are taken from the element, if it's an element of the template.
                 // After the first element, the elements are checked once in a while, to follow a new version.
@@ -2192,7 +2192,6 @@ public class FeedCardLayoutPatch {
             }
 
             for (View row : scaledShelfRows.keySet().toArray(new View[0])) {
-                //noinspection EqualsBetweenInconvertibleTypes
                 if (row != null && row.getParent() == list && !scaledRows.contains(row)) {
                     scaledShelfRows.remove(row);
                     row.setScaleX(1);

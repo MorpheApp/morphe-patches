@@ -310,6 +310,14 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * @return If the text of an element is the icon of the live badge of a thumbnail.
+     */
+    public static boolean isLiveIconText(String text) {
+        // Every text of a video is checked, so the pattern is used only for the texts that can match.
+        return text.startsWith("yt_") && text.contains("_live_") && LIVE_ICON_PATTERN.matcher(text).matches();
+    }
+
+    /**
      * @return If the video is live, such as of a card that enters the list, which is not known by its texts yet.
      */
     public static boolean isLiveVideo(String videoId) {
@@ -438,7 +446,7 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * The same as {@link Utils#containsAny(CharSequence, CharSequence...)}, for the string of the bytes
+     * The opposite of {@link Utils#containsAny(CharSequence, CharSequence...)}, for the string of the bytes
      * of an element, see {@link #getElementText(byte[])}. The element hooks search every element on the
      * main thread while a list loads, and the string search is much faster than a loop over the characters
      * of a char sequence, as most elements include none of the texts and are searched to the end.
@@ -446,9 +454,9 @@ public final class FeedVideoCardsPatch {
      * Texts with the same end, such as the templates that end with ".eml", are found by searching the element
      * once for the end, and each text is then compared where the end is found.
      *
-     * @return If the text includes any text that is not empty.
+     * @return If the text includes none of the texts that are not empty.
      */
-    public static boolean containsAny(String elementText, String[] texts) {
+    public static boolean lacksAll(String elementText, String[] texts) {
         // The end of the texts that are not empty, which every text found in the element ends with.
         String end = null;
         for (String text : texts) {
@@ -468,26 +476,26 @@ public final class FeedVideoCardsPatch {
             end = end.substring(end.length() - length);
         }
         if (end == null) {
-            return false;
+            return true;
         }
         if (end.isEmpty()) {
             for (String text : texts) {
                 if (!text.isEmpty() && elementText.contains(text)) {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
         for (int index = elementText.indexOf(end); index >= 0; index = elementText.indexOf(end, index + 1)) {
             final int textEnd = index + end.length();
             for (String text : texts) {
                 final int start = textEnd - text.length();
                 if (!text.isEmpty() && start >= 0 && elementText.startsWith(text, start)) {
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     /**
@@ -517,7 +525,7 @@ public final class FeedVideoCardsPatch {
     /**
      * Analyses of the elements of videos, and the texts added for videos, that did not run yet,
      * in the order they were added. The elements are parsed on the main thread while a list loads,
-     * so they are analyzed on another thread, see {@link #awaitElementAnalyses()}.
+     * so they run on another thread, see {@link #awaitElementAnalyses()}.
      */
     @GuardedBy("itself")
     private static final ArrayDeque<Runnable> pendingAnalyses = new ArrayDeque<>();
@@ -561,7 +569,7 @@ public final class FeedVideoCardsPatch {
 
     /**
      * Runs the analyses that were added before and did not run yet, on the current thread if they are not running.
-     * Called before what the analyses find is read, so it's read as if each element was analyzed when it was parsed.
+     * Called before what the analyses find is read, so it's read as if the analysis of each element ran when it was parsed.
      */
     public static void awaitElementAnalyses() {
         if (Thread.holdsLock(analysisLock)) {
@@ -691,10 +699,7 @@ public final class FeedVideoCardsPatch {
                 final List<ProtoNode> videoNodes = entry.getValue();
                 boolean live = false;
                 for (ProtoNode node : videoNodes) {
-                    String text = node.getText();
-                    // Every text of the video is checked, so the pattern is used only for the texts that can match.
-                    if (text.startsWith("yt_") && text.contains("_live_")
-                            && LIVE_ICON_PATTERN.matcher(text).matches()) {
+                    if (isLiveIconText(node.getText())) {
                         live = true;
                         break;
                     }
@@ -1805,7 +1810,7 @@ public final class FeedVideoCardsPatch {
         }
         final Rect frame = new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight());
         if (duration == null) {
-            // The duration is not found, so where it is is estimated, and the badge does not overlap it.
+            // The duration is not found, so its position is estimated, and the badge does not overlap it.
             duration = FeedViewCountPatch.estimateDurationBadge(thumbnail, frame, null);
         }
         FeedEngagementCountsPatch.onCardLaidOut(thumbnail, compactVideoIds.get(thumbnail),
