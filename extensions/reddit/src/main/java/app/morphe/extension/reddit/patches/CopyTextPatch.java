@@ -51,7 +51,7 @@ public final class CopyTextPatch {
         return false;  // Modified during patching.
     }
 
-    // region Wrap the rich text renderer in a SelectionContainer.
+    // region Wrap the rich text renderer and the post title in a SelectionContainer.
 
     /**
      * Set while the original rich text renderer is invoked from inside the SelectionContainer.
@@ -73,6 +73,15 @@ public final class CopyTextPatch {
     }
 
     /**
+     * Injection point. Called when the post detail screen title is rendered.
+     *
+     * @return If the title should be rendered inside a SelectionContainer.
+     */
+    public static boolean shouldWrapPostTitle() {
+        return Settings.COPY_TEXT.get();
+    }
+
+    /**
      * Injection point. Creates the content of the SelectionContainer, which invokes the original
      * rich text renderer with the original arguments.
      */
@@ -81,19 +90,36 @@ public final class CopyTextPatch {
     }
 
     /**
+     * Injection point. Creates the content of the SelectionContainer, which invokes the original
+     * post title renderer with the original arguments.
+     */
+    public static Object createPostTitleContent(Object[] args) {
+        return new PostTitleContent(args);
+    }
+
+    /**
      * Content lambda of the SelectionContainer. Implements the Compose Function2 interface,
      * the interface and its invoke(composer, changed) bridge method are added during patching.
      */
-    public static final class RichTextContent {
-        private final Object[] args;
+    public abstract static class SelectionContent {
+        protected final Object[] args;
 
-        RichTextContent(Object[] args) {
+        SelectionContent(Object[] args) {
             this.args = args;
         }
 
         /**
          * Called by the invoke(composer, changed) bridge method.
          */
+        public abstract void render(Object composer);
+    }
+
+    private static final class RichTextContent extends SelectionContent {
+        RichTextContent(Object[] args) {
+            super(args);
+        }
+
+        @Override
         public void render(Object composer) {
             IN_SELECTION_CONTAINER.set(Boolean.TRUE);
             try {
@@ -101,6 +127,17 @@ public final class CopyTextPatch {
             } finally {
                 IN_SELECTION_CONTAINER.remove();
             }
+        }
+    }
+
+    private static final class PostTitleContent extends SelectionContent {
+        PostTitleContent(Object[] args) {
+            super(args);
+        }
+
+        @Override
+        public void render(Object composer) {
+            invokePostTitle(args, composer);
         }
     }
 
@@ -113,18 +150,40 @@ public final class CopyTextPatch {
         // Modified during patching.
     }
 
+    /**
+     * Invokes the original post title renderer with the given arguments, but with the composer
+     * of the SelectionContainer content.
+     */
+    @SuppressWarnings("EmptyMethod")
+    private static void invokePostTitle(Object[] args, Object composer) {
+        // Modified during patching.
+    }
+
     // endregion
 
-    // region Disable collapsing comments.
+    // region Block collapsing a comment with the touch that starts or clears a text selection.
+
+    /**
+     * If the current or last touch started while there was a selection.
+     */
+    private static boolean touchStartedWithSelection;
 
     /**
      * Injection point. Called when a comment is clicked, before it is collapsed or expanded.
-     * Collapsing is triggered by the same touch that starts a text selection.
+     * Both a tap and a long press collapse a comment. A long press that starts a text selection
+     * and a tap that clears a selection must not collapse it.
      *
      * @return If the click should be ignored.
      */
     public static boolean shouldBlockCommentCollapse(boolean collapsed) {
-        return Settings.COPY_TEXT.get() && !collapsed;
+        try {
+            if (collapsed || !Settings.COPY_TEXT.get()) return false;
+
+            return touchStartedWithSelection || !SELECTION_MANAGERS_WITH_SELECTION.isEmpty();
+        } catch (Exception ex) {
+            Logger.printException(() -> "shouldBlockCommentCollapse failure", ex);
+            return false;
+        }
     }
 
     // endregion
@@ -228,7 +287,8 @@ public final class CopyTextPatch {
 
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN:
-                    tapCandidate = !SELECTION_MANAGERS_WITH_SELECTION.isEmpty();
+                    touchStartedWithSelection = !SELECTION_MANAGERS_WITH_SELECTION.isEmpty();
+                    tapCandidate = touchStartedWithSelection;
                     touchDownX = event.getRawX();
                     touchDownY = event.getRawY();
                     touchDownTime = event.getEventTime();
