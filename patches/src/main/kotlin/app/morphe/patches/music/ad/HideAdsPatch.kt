@@ -19,11 +19,13 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.music.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -40,6 +42,7 @@ val hideAdsPatch = patch(
         sharedExtensionPatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS),
         lithoFilterPatch,
+        elementProtoParserHookPatch,
         settingsPatch
     )
 
@@ -113,6 +116,8 @@ val hideAdsPatch = patch(
         }
 
         // Hide Music Premium promotions
+        hookElement("$EXTENSION_CLASS->hideMenuItemPremiumPromo")
+
         FloatingLayoutFingerprint.method.apply {
             val insertIndex = FloatingLayoutFingerprint.instructionMatches.last().index
             val viewRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
