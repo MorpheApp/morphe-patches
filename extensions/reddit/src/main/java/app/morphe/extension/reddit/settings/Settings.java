@@ -71,6 +71,7 @@ public class Settings extends BaseSettings {
     public static final StringSetting KEYWORD_FILTERS = new StringSetting("morphe_keyword_filters", "");
 
     // Layout
+    public static final BooleanSetting ALWAYS_SHOW_HIDE = new BooleanSetting("morphe_always_show_hide", FALSE);
     public static final EnumSetting<AutoModeratorComments> AUTOMODERATOR_COMMENTS = new EnumSetting<>("morphe_automoderator_comments", AutoModeratorComments.SHOW);
     public static final BooleanSetting COLLAPSE_ALL_COMMENTS = new BooleanSetting("morphe_collapse_all_comments", TRUE);
     public static final EnumSetting<CollapseAllScope> COLLAPSE_ALL_COMMENTS_SCOPE = new EnumSetting<>("morphe_collapse_all_comments_scope", CollapseAllScope.TOP_COMMENTS, parent(COLLAPSE_ALL_COMMENTS));
