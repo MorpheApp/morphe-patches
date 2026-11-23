@@ -376,7 +376,7 @@ final class LyricsViewSupport {
     static CharSequence sourceText(String providerName, boolean translated,
                                    boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
                                    boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI, boolean romanizedFromEmbedded,
-                                   @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
+                                   @Nullable String romanizedAiModel, OnlyModeState.Mode onlyMode,
                                    @Nullable String romanizedLocalDictionary,
                                    @Nullable Runnable onTranslationLanguage,
                                    @Nullable Runnable onRomanizationLanguage,
@@ -384,7 +384,7 @@ final class LyricsViewSupport {
         SpannableStringBuilder text = new SpannableStringBuilder();
         appendSourceLine(text, String.format(str(LYRICS_SOURCE_KEY), providerName), onSourceClicked);
 
-        if (onlyMode != LyricsPanelView.OnlyMode.ROMA) {
+        if (onlyMode != OnlyModeState.Mode.ROMA) {
             if (translated && translatedFromGoogle) {
                 appendLink(text, str("morphe_music_lyrics_translated_by_google"),
                         true, onTranslationLanguage);
@@ -393,7 +393,7 @@ final class LyricsViewSupport {
                         translatedAiModel), true, onTranslationLanguage);
             }
         }
-        if (onlyMode != LyricsPanelView.OnlyMode.TRANS) {
+        if (onlyMode != OnlyModeState.Mode.TRANS) {
             final String rubyProvider = LyricsTargetLanguagePreference.rubyProviderLabel();
             String source = null;
             if (LyricsRequests.isRomanizationOff()) {

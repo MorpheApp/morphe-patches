@@ -297,14 +297,14 @@ final class LyricsShareDialog {
         actionRow.setOrientation(LinearLayout.HORIZONTAL);
         actionRow.setGravity(Gravity.CENTER_VERTICAL);
 
-        TextView copyBtn = createActionButton(context, str("morphe_music_lyrics_copy_text_cta"),
+        View copyBtn = createActionButton(context, str("morphe_music_lyrics_copy_text_cta"),
                 ICON_COPY, false);
         LinearLayout.LayoutParams copyParams = new LinearLayout.LayoutParams(
                 0, Dim.dp(44), 1f);
         copyParams.rightMargin = Dim.dp10;
         actionRow.addView(copyBtn, copyParams);
 
-        TextView shareBtn = createActionButton(context, str("morphe_music_lyrics_share_card_cta"),
+        View shareBtn = createActionButton(context, str("morphe_music_lyrics_share_card_cta"),
                 ICON_SHARE, true);
         LinearLayout.LayoutParams shareParams = new LinearLayout.LayoutParams(
                 0, Dim.dp(44), 1.45f);
@@ -1019,34 +1019,40 @@ final class LyricsShareDialog {
         attachInteractiveBackground(button, bg, Dim.dp(20), active ? 0x22000000 : 0x2AFFFFFF);
     }
 
-    private static TextView createActionButton(
+    private static View createActionButton(
             Context context, String text, String iconName, boolean primary) {
-        TextView btn = new TextView(context);
-        btn.setText(text);
+        LinearLayout btn = new LinearLayout(context);
+        btn.setOrientation(LinearLayout.HORIZONTAL);
         btn.setGravity(Gravity.CENTER);
-        btn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f);
-        btn.setTypeface(null, Typeface.BOLD);
         btn.setMinimumHeight(Dim.dp(44));
         btn.setFocusable(true);
+
+        ImageView iconView = new ImageView(context);
         Drawable icon = ResourceUtils.getDrawable(iconName);
         if (icon != null) {
             icon = icon.mutate();
             icon.setTint(primary ? 0xFF0F0F14 : 0xFFD2D2DC);
-            icon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-            btn.setCompoundDrawables(icon, null, null, null);
-            btn.setCompoundDrawablePadding(Dim.dp8);
+            iconView.setImageDrawable(icon);
         }
+        btn.addView(iconView, new LinearLayout.LayoutParams(Dim.dp20, Dim.dp20));
+
+        TextView label = new TextView(context);
+        label.setText(text);
+        label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f);
+        label.setTypeface(null, Typeface.BOLD);
+        label.setGravity(Gravity.CENTER);
+        label.setTextColor(primary ? 0xFF141418 : 0xFFD2D2DC);
+        LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        labelParams.setMarginStart(Dim.dp8);
+        btn.addView(label, labelParams);
+
         GradientDrawable bg = new GradientDrawable();
         bg.setShape(GradientDrawable.RECTANGLE);
         float radius = Dim.dp(22);
         bg.setCornerRadius(radius);
-        if (primary) {
-            bg.setColor(0xFFFFFFFF);
-            btn.setTextColor(0xFF141418);
-        } else {
-            bg.setColor(Color.TRANSPARENT);
-            btn.setTextColor(0xFFD2D2DC);
-        }
+        bg.setColor(primary ? 0xFFFFFFFF : Color.TRANSPARENT);
         attachInteractiveBackground(btn, bg, radius, primary ? 0x22000000 : 0x2AFFFFFF);
         return btn;
     }

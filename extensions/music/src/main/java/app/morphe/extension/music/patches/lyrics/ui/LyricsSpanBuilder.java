@@ -181,7 +181,7 @@ public final class LyricsSpanBuilder {
     static BuildResult buildLineText(LyricsLine line, List<WordTiming> timings, int index,
                                      boolean perWordRomaji, List<LyricsLine> romanizedLines,
                                      List<String> translatedLines,
-                                     LyricsPanelView.OnlyMode onlyMode, Paint basePaint,
+                                     OnlyModeState.Mode onlyMode, Paint basePaint,
                                      boolean isRightAligned, boolean embeddedReading) {
         Paint.FontMetricsInt baseFm = new Paint.FontMetricsInt();
         basePaint.getFontMetricsInt(baseFm);
@@ -198,7 +198,7 @@ public final class LyricsSpanBuilder {
 
         // An only mode never drops a line: what the provider left untranslated keeps the
         // original rather than leaving a hole in the song.
-        if (onlyMode == LyricsPanelView.OnlyMode.TRANS) {
+        if (onlyMode == OnlyModeState.Mode.TRANS) {
             String content = translation != null ? translation : original;
             SpannableString text = new SpannableString(content);
             final int transStart = content.isEmpty() ? -1 : 0;
@@ -212,7 +212,7 @@ public final class LyricsSpanBuilder {
             return new BuildResult(text, null, transStart, transEnd, -1, -1);
         }
 
-        if (onlyMode == LyricsPanelView.OnlyMode.ROMA) {
+        if (onlyMode == OnlyModeState.Mode.ROMA) {
             LyricsReadingCalc.Romanized roma = LyricsReadingCalc.romanizedWithTimings(
                     line, index, romanizedLines, timings);
             final boolean readsNothing = roma.text() == null;
@@ -233,7 +233,7 @@ public final class LyricsSpanBuilder {
         // Both at once: the original goes and whichever side carries more of the line takes
         // the main slot. Decided per line, so a line left untranslated keeps its translation
         // rather than going thin.
-        if (onlyMode == LyricsPanelView.OnlyMode.BOTH) {
+        if (onlyMode == OnlyModeState.Mode.BOTH) {
             DualLine mainAndSmall =
                     dualLineFor(line, timings, index, translation, original, romanizedLines);
             SpannableString dual = new SpannableString(mainAndSmall.text());

@@ -196,7 +196,6 @@ public final class LyricsPanelView extends FrameLayout
     /** The pill standing in for both buttons while the dual mode is up. */
     @Nullable
     private TextView dualPillView;
-    private boolean dualPillActive;
     // Loaded once per pill and kept, because only their order ever changes. Loading them again
     // would drop whatever tint the button colors put on them, and a lookup that came back empty
     // would set that side of the pill to nothing.
@@ -257,10 +256,6 @@ public final class LyricsPanelView extends FrameLayout
     @Nullable
     private TrackInfo lastKnownTrack;
     private final Runnable refreshLabelResetRunnable = this::updateRefreshLabel;
-    private boolean translateInProgress;
-    private boolean romanizeInProgress;
-    private int translateRequestId;
-    private int romanizeRequestId;
     private int transcribeRequestId;
     private int rubyRequestId;
     /** The ruby language last applied to the lyrics, so a change re-runs and a no-op does not. */
@@ -288,9 +283,8 @@ public final class LyricsPanelView extends FrameLayout
     @Nullable
     private TextView dialogSectionButton;
 
-    enum OnlyMode {NONE, TRANS, ROMA, BOTH}
-
-    private OnlyMode onlyMode = OnlyMode.NONE;
+    /** Single source of truth for the four-state translation/romanization only-mode machine. */
+    private final OnlyModeState onlyModeState = new OnlyModeState();
 
     private final List<TextView> lineViews = new ArrayList<>();
     @Nullable
@@ -327,8 +321,6 @@ public final class LyricsPanelView extends FrameLayout
 
     private boolean wholeFadeNextBuild;
     private boolean contentOutPending;
-    private OnlyMode displayedOnlyMode = OnlyMode.NONE;
-    private OnlyMode builtOnlyMode = OnlyMode.NONE;
 
     private boolean growthAnchorValid;
     private int growthAnchorIndex = -1;
@@ -1296,8 +1288,8 @@ public final class LyricsPanelView extends FrameLayout
             pendingAlignment = null;
             pendingAlignmentTrack = null;
             updateTranscribeAffordances();
-            // Dual mode keeps the original underneath, so onlyMode resets while the flags stand.
-            onlyMode = OnlyMode.NONE;
+            // Dual mode keeps the original underneath, so the mode resets while the flags stand.
+            applyModeEvent(OnlyModeState.Event.TRACK_CHANGED);
             updateFooter();
             updateSessionMainLine();
 
@@ -1787,7 +1779,7 @@ public final class LyricsPanelView extends FrameLayout
         scrollEngine.snapshotContainerFlips();
         final boolean[] nearViewport = computeNearViewportMask(count);
         lastBuiltLyrics = newLyrics;
-        builtOnlyMode = onlyMode;
+        onlyModeState.setBuilt(onlyModeState.mode());
         initialBuildComplete = true;
         progressBar.setVisibility(GONE);
         hideTranscribePrompt();
@@ -1800,7 +1792,7 @@ public final class LyricsPanelView extends FrameLayout
         final Paint baseLinePaint = createBaseLinePaint(getResources(), Settings.LYRICS_TEXT_SIZE.get());
         final boolean[] rightAligned = lastBuiltRightAligned != null
                 ? lastBuiltRightAligned : new boolean[count];
-        startLineBuilderPass(newLyrics, generation, onlyMode, baseLinePaint,
+        startLineBuilderPass(newLyrics, generation, onlyModeState.mode(), baseLinePaint,
                 rightAligned, lineViews, nearViewport, false, preserveHidePosition,
                 true, preserveHideIndex, preserveScreenY, true);
 
@@ -1812,12 +1804,12 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void buildLyrics(Lyrics newLyrics) {
-        if (onlyMode != displayedOnlyMode && !contentOutPending && !lineViews.isEmpty()) {
-            displayedOnlyMode = onlyMode;
+        if (onlyModeState.mode() != onlyModeState.displayed() && !contentOutPending && !lineViews.isEmpty()) {
+            onlyModeState.setDisplayed(onlyModeState.mode());
             fadeOutAndRebuild(newLyrics);
             return;
         }
-        displayedOnlyMode = onlyMode;
+        onlyModeState.setDisplayed(onlyModeState.mode());
         boolean preserveHidePosition = pendingHideAnchorIndex >= 0;
         int preserveHideIndex = pendingHideAnchorIndex;
         float preserveScreenY = pendingHideAnchorScreenY;
@@ -1840,7 +1832,7 @@ public final class LyricsPanelView extends FrameLayout
         final int prevCount = sameContent
                 ? Math.min(lineViews.size(), newLyrics.lines().size()) : 0;
         final boolean contentInBuild =
-                onlyMode != OnlyMode.NONE || wholeFadeNextBuild;
+                onlyModeState.mode() != OnlyModeState.Mode.NONE || wholeFadeNextBuild;
         wholeFadeNextBuild = false;
         LyricsColors.invalidate();
         if (canUpdateSameContentInPlace(newLyrics, sameContent, contentInBuild)) {
@@ -1896,8 +1888,8 @@ public final class LyricsPanelView extends FrameLayout
         final int generation = buildGeneration.get();
         LineRowBuilder rows = new LineRowBuilder(newLyrics, contentInBuild, preserveHidePosition,
                 prevCount, prevViews, prevSpans, prevActiveSet, prevHighlighted);
-        builtOnlyMode = rows.onlySnap;
-        lastBuiltInPlaceSignature = (rows.onlySnap == OnlyMode.NONE && !contentInBuild)
+        onlyModeState.setBuilt(rows.onlySnap);
+        lastBuiltInPlaceSignature = (rows.onlySnap == OnlyModeState.Mode.NONE && !contentInBuild)
                 ? currentInPlaceSignature(newLyrics) : null;
         lastBuiltRightAligned = rows.lineRightAligned;
 
@@ -1957,7 +1949,7 @@ public final class LyricsPanelView extends FrameLayout
         final boolean tapToSeek;
         final boolean isSynced;
         final Paint baseLinePaint;
-        final OnlyMode onlySnap;
+        final OnlyModeState.Mode onlySnap;
         final boolean[] isSecFlags;
         final boolean[] lineRightAligned;
         final boolean isDuetSong;
@@ -2000,7 +1992,7 @@ public final class LyricsPanelView extends FrameLayout
             isSynced = newLyrics.synced();
             baseLinePaint = createBaseLinePaint(getResources(), textSize);
 
-            onlySnap = onlyMode;
+            onlySnap = onlyModeState.mode();
             isSecFlags = LyricsSectionTags.secondaryLineFlags(newLyrics.lines());
             lineRightAligned = LyricsLayoutCalc.rightAlignedLines(newLyrics.lines(), isSecFlags);
             boolean duet = false;
@@ -2074,7 +2066,7 @@ public final class LyricsPanelView extends FrameLayout
                     lineWordSpans.set(i, gapTimings);
                 } else {
                     result = LyricsSpanBuilder.buildLineText(line, gapTimings, i,
-                            perWordRomaji, romanizedLines, translatedLines, onlyMode,
+                            perWordRomaji, romanizedLines, translatedLines, onlyModeState.mode(),
                             baseLinePaint, isRightAligned, romanizedFromEmbedded);
                     gapOrigStart = result.originalStart();
                 }
@@ -2192,16 +2184,16 @@ public final class LyricsPanelView extends FrameLayout
      * again from the raw word timings and filters it once more.
      */
     private LyricsSpanBuilder.PresentedLine presentRawLine(Lyrics newLyrics, LyricsLine line,
-                                                           int i, OnlyMode onlySnap,
+                                                           int i, OnlyModeState.Mode onlySnap,
                                                            Paint baseLinePaint,
                                                            boolean isRightAligned) {
         List<WordTiming> rawTimings = LyricsSpanBuilder
-                .computeWordTimings(newLyrics.lines(), i, onlySnap != OnlyMode.NONE || Settings.LYRICS_WORD_SYNC.get());
+                .computeWordTimings(newLyrics.lines(), i, onlySnap != OnlyModeState.Mode.NONE || Settings.LYRICS_WORD_SYNC.get());
         LyricsSpanBuilder.BuildResult raw = LyricsSpanBuilder.buildLineText(line,
-                rawTimings, i, perWordRomaji, romanizedLines, translatedLines, onlyMode,
+                rawTimings, i, perWordRomaji, romanizedLines, translatedLines, onlyModeState.mode(),
                 baseLinePaint, isRightAligned, romanizedFromEmbedded);
         return LyricsSpanBuilder.present(raw,
-                LyricsViewSupport.wordSpansFor(raw, onlySnap != OnlyMode.NONE, rawTimings));
+                LyricsViewSupport.wordSpansFor(raw, onlySnap != OnlyModeState.Mode.NONE, rawTimings));
     }
 
     /** The plain text a line shows until its karaoke spans are built. */
@@ -2383,7 +2375,7 @@ public final class LyricsPanelView extends FrameLayout
             LyricsLineView lv = (LyricsLineView) v;
             String textToCopy = lv.getCopyTextForTouch(lv.lastTouchX, lv.lastTouchY);
             if (textToCopy == null || textToCopy.isEmpty()) {
-                textToCopy = onlyMode != OnlyMode.NONE
+                textToCopy = onlyModeState.mode() != OnlyModeState.Mode.NONE
                         ? String.valueOf(lv.getText())
                         : (isSec ? LyricsBracketSplitter.stripOuterBrackets(line.text()) : line.text());
             }
@@ -2405,14 +2397,14 @@ public final class LyricsPanelView extends FrameLayout
      * Builds the karaoke spans, translations and readings of the plain lines on a
      * background thread, and applies them on the main thread.
      */
-    private void startLineBuilderPass(Lyrics newLyrics, int generation, OnlyMode onlySnap,
+    private void startLineBuilderPass(Lyrics newLyrics, int generation, OnlyModeState.Mode onlySnap,
                                       Paint baseLinePaint, boolean[] lineRightAligned,
                                       List<TextView> prevViews,
                                       @Nullable boolean[] nearViewport,
                                       boolean contentInBuild, boolean preserveHidePosition,
                                       boolean sameContent, int preserveHideIndex,
                                       float preserveScreenY, boolean inPlace) {
-        final boolean splitWordless = onlySnap != OnlyMode.NONE || Settings.LYRICS_WORD_SYNC.get();
+        final boolean splitWordless = onlySnap != OnlyModeState.Mode.NONE || Settings.LYRICS_WORD_SYNC.get();
         if (sameContent || preserveHidePosition) {
             try {
                 final int lineCount = newLyrics.lines().size();
@@ -2493,7 +2485,7 @@ public final class LyricsPanelView extends FrameLayout
         if (generation != buildGeneration.get() || lyrics == null) {
             return;
         }
-        final boolean only = onlyMode != OnlyMode.NONE;
+        final boolean only = onlyModeState.mode() != OnlyModeState.Mode.NONE;
         final int count = Math.min(allTimings.size(), lineViews.size());
         boolean[] freshTrans = new boolean[count];
         boolean[] freshRoma = new boolean[count];
@@ -2544,7 +2536,7 @@ public final class LyricsPanelView extends FrameLayout
                     LyricsSpanBuilder.BuildResult result =
                             LyricsSpanBuilder.buildLineText(newLyrics.lines().get(i),
                                     allTimings.get(i), i,
-                                    perWordRomaji, romanizedLines, translatedLines, onlyMode,
+                                    perWordRomaji, romanizedLines, translatedLines, onlyModeState.mode(),
                                     baseLinePaint, lineRightAligned[i], romanizedFromEmbedded);
                     LyricsSpanBuilder.PresentedLine presentation = LyricsSpanBuilder.present(result,
                             LyricsViewSupport.wordSpansFor(result, only, allTimings.get(i)));
@@ -3041,7 +3033,7 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void onTranslateClicked() {
-        if (dualPillActive) {
+        if (onlyModeState.dualPillActive()) {
             // The pill stands in for both buttons right now, so a tap leaves the dual mode with
             // the two still on underneath.
             exitDualMode(true);
@@ -3053,7 +3045,7 @@ public final class LyricsPanelView extends FrameLayout
             if (translateView == null) {
                 return;
             }
-            if (onlyMode != OnlyMode.NONE
+            if (onlyModeState.mode() != OnlyModeState.Mode.NONE
                     || Settings.LYRICS_TRANSLATE_ONLY.get()
                     || Settings.LYRICS_ROMANIZE_ONLY.get()) {
                 return;
@@ -3065,7 +3057,7 @@ public final class LyricsPanelView extends FrameLayout
                 return;
             }
 
-            if (translateInProgress) {
+            if (onlyModeState.isTranslateInProgress()) {
                 cancelNormalTranslate();
                 setButtonLabel(translateView, null, false);
                 return;
@@ -3094,16 +3086,16 @@ public final class LyricsPanelView extends FrameLayout
 
             Settings.LYRICS_TRANSLATE.save(true);
             Settings.LYRICS_TRANSLATE_ONLY.save(false);
-            translateInProgress = true;
-            final int requestId = ++translateRequestId;
+            onlyModeState.beginTranslate();
+            final int requestId = onlyModeState.nextTranslateRequestId();
             setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
 
             LyricsTranslator.translate(track, current, current.providerName(),
                     (lines, fromGoogle, fromAI, model, skipped) -> {
-                        if (requestId != translateRequestId || !translateInProgress) {
+                        if (!onlyModeState.isCurrentTranslate(requestId) || !onlyModeState.isTranslateInProgress()) {
                             return;
                         }
-                        translateInProgress = false;
+                        onlyModeState.finishTranslate();
 
                         // The track moved on while the translation was in flight.
                         if (!isSameCurrentLyrics(current)) {
@@ -3133,7 +3125,7 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void onTranslateLongPressed() {
-        if (dualPillActive) {
+        if (onlyModeState.dualPillActive()) {
             // A hold on the pill clears both sides, down to nothing on.
             exitDualMode(false);
             return;
@@ -3142,17 +3134,17 @@ public final class LyricsPanelView extends FrameLayout
             if (translateView == null) {
                 return;
             }
-            if (onlyMode == OnlyMode.BOTH) {
+            if (onlyModeState.mode() == OnlyModeState.Mode.BOTH) {
                 return;
             }
-            if (onlyMode == OnlyMode.TRANS || Settings.LYRICS_TRANSLATE_ONLY.get()) {
+            if (onlyModeState.mode() == OnlyModeState.Mode.TRANS || Settings.LYRICS_TRANSLATE_ONLY.get()) {
                 cancelTranslateOnly();
                 return;
             }
             final boolean sameKeyActive = normalTranslateActive();
             final boolean otherActive = normalRomanizeActive();
             final boolean otherOnly =
-                    onlyMode == OnlyMode.ROMA || Settings.LYRICS_ROMANIZE_ONLY.get();
+                    onlyModeState.mode() == OnlyModeState.Mode.ROMA || Settings.LYRICS_ROMANIZE_ONLY.get();
             // A second hold on the side that is already alone is how that side is left; only the
             // hold that has the other side waiting builds the dual mode.
             if (sameKeyActive && !otherActive && !otherOnly) {
@@ -3187,8 +3179,8 @@ public final class LyricsPanelView extends FrameLayout
             Settings.LYRICS_TRANSLATE.save(false);
 
             restoreStashedTranslation(current);
+            onlyModeState.commitMode(onlyModeState.resolveNarrow(true, translatedLines != null));
             if (translatedLines != null) {
-                onlyMode = OnlyMode.TRANS;
                 applyOnlyModeState();
                 showLyrics(current);
                 flashButtonLabel(translateView,
@@ -3196,7 +3188,6 @@ public final class LyricsPanelView extends FrameLayout
                         updateTranslateLabelRunnable, 3000);
                 return;
             }
-            onlyMode = OnlyMode.NONE;
             if (hadNormalRomanize) {
                 showLyrics(current);
             }
@@ -3208,7 +3199,7 @@ public final class LyricsPanelView extends FrameLayout
 
     private void requestTranslateOnly(Lyrics current) {
         TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
-        if (track == null || current == null || translateInProgress) {
+        if (track == null || current == null || onlyModeState.isTranslateInProgress()) {
             return;
         }
         Settings.LYRICS_TRANSLATE_ONLY.save(true);
@@ -3220,29 +3211,29 @@ public final class LyricsPanelView extends FrameLayout
         }
         restoreStashedTranslation(current);
         if (translatedLines != null) {
-            onlyMode = Settings.LYRICS_ROMANIZE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.TRANS;
+            onlyModeState.commitMode(onlyModeState.resolveOnly(true, Settings.LYRICS_ROMANIZE_ONLY.get()));
             applyOnlyModeState();
             updateDualPill();
             showLyrics(current);
             updateTranslateLabel();
-            if (onlyMode == OnlyMode.BOTH && romanizedLines == null && !perWordRomaji) {
+            if (onlyModeState.mode() == OnlyModeState.Mode.BOTH && romanizedLines == null && !perWordRomaji) {
                 requestRomanizeOnly(current);
             }
             return;
         }
         cancelNormalTranslate();
-        translateInProgress = true;
-        final int requestId = ++translateRequestId;
+        onlyModeState.beginTranslate();
+        final int requestId = onlyModeState.nextTranslateRequestId();
         setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
 
         LyricsTranslator.translate(track, current, current.providerName(),
                 (lines, fromGoogle, fromAI, model, skipped) -> {
                     // A side the dual mode handed back lands as the small run, not as the line.
                     final boolean asOnly = Settings.LYRICS_TRANSLATE_ONLY.get();
-                    if (requestId != translateRequestId || !asOnly && !translateInProgress) {
+                    if (!onlyModeState.isCurrentTranslate(requestId) || !asOnly && !onlyModeState.isTranslateInProgress()) {
                         return;
                     }
-                    translateInProgress = false;
+                    onlyModeState.finishTranslate();
                     if (!isSameCurrentLyrics(current)) {
                         return;
                     }
@@ -3268,11 +3259,11 @@ public final class LyricsPanelView extends FrameLayout
                                 updateTranslateLabelRunnable, 3000);
                         return;
                     }
-                    onlyMode = Settings.LYRICS_ROMANIZE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.TRANS;
+                    onlyModeState.commitMode(onlyModeState.resolveOnly(true, Settings.LYRICS_ROMANIZE_ONLY.get()));
                     applyOnlyModeState();
                     updateDualPill();
                     showLyrics(activeLyrics);
-                    if (onlyMode == OnlyMode.BOTH) {
+                    if (onlyModeState.mode() == OnlyModeState.Mode.BOTH) {
                         // The other side already flagged itself, so only this one was missing.
                         if (romanizedLines == null && !perWordRomaji) {
                             requestRomanizeOnly(activeLyrics);
@@ -3298,16 +3289,16 @@ public final class LyricsPanelView extends FrameLayout
         }
         Settings.LYRICS_TRANSLATE.save(true);
         Settings.LYRICS_TRANSLATE_ONLY.save(false);
-        translateInProgress = true;
-        final int requestId = ++translateRequestId;
+        onlyModeState.beginTranslate();
+        final int requestId = onlyModeState.nextTranslateRequestId();
         setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
 
         LyricsTranslator.translate(track, current, current.providerName(),
                 (lines, fromGoogle, fromAI, model, skipped) -> {
-                    if (requestId != translateRequestId || !translateInProgress) {
+                    if (!onlyModeState.isCurrentTranslate(requestId) || !onlyModeState.isTranslateInProgress()) {
                         return;
                     }
-                    translateInProgress = false;
+                    onlyModeState.finishTranslate();
 
                     // The track moved on while the translation was in flight.
                     if (!isSameCurrentLyrics(current)) {
@@ -3355,50 +3346,24 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void clearTranslateOnlyState() {
-        Settings.LYRICS_TRANSLATE_ONLY.save(false);
-        cancelNormalTranslate();
-        if (onlyMode == OnlyMode.TRANS || onlyMode == OnlyMode.BOTH) {
-            onlyMode = Settings.LYRICS_ROMANIZE_ONLY.get() ? OnlyMode.ROMA : OnlyMode.NONE;
-            applyOnlyModeState();
-        }
-        updateDualPill();
-        updateFooter();
+        applyModeEvent(OnlyModeState.Event.CLEAR_TRANSLATE);
     }
 
     private void clearRomanizeOnlyState() {
-        Settings.LYRICS_ROMANIZE_ONLY.save(false);
-        cancelNormalRomanize();
-        if (onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH) {
-            onlyMode = Settings.LYRICS_TRANSLATE_ONLY.get() ? OnlyMode.TRANS : OnlyMode.NONE;
-            applyOnlyModeState();
-        }
-        updateDualPill();
-        updateFooter();
+        applyModeEvent(OnlyModeState.Event.CLEAR_ROMANIZE);
     }
 
     /** Leaves the modes held by a button that is being hidden, so a mode goes with its button. */
     public void releaseOnlyModesForHiddenButtons(boolean translateOff, boolean romanizeOff) {
-        final boolean releaseTranslate = translateOff && (onlyMode == OnlyMode.TRANS
-                || onlyMode == OnlyMode.BOTH || dualPillActive);
-        final boolean releaseRomanize = romanizeOff && (onlyMode == OnlyMode.ROMA
-                || onlyMode == OnlyMode.BOTH || dualPillActive);
+        final boolean releaseTranslate = translateOff && (onlyModeState.mode() == OnlyModeState.Mode.TRANS
+                || onlyModeState.mode() == OnlyModeState.Mode.BOTH || onlyModeState.dualPillActive());
+        final boolean releaseRomanize = romanizeOff && (onlyModeState.mode() == OnlyModeState.Mode.ROMA
+                || onlyModeState.mode() == OnlyModeState.Mode.BOTH || onlyModeState.dualPillActive());
         if (releaseTranslate) {
-            if (onlyMode == OnlyMode.NONE) {
-                Settings.LYRICS_TRANSLATE_ONLY.save(false);
-                cancelNormalTranslate();
-                updateTranslateLabel();
-            } else {
-                cancelTranslateOnly();
-            }
+            applyModeEvent(OnlyModeState.Event.HIDE_TRANSLATE);
         }
         if (releaseRomanize) {
-            if (onlyMode == OnlyMode.NONE) {
-                Settings.LYRICS_ROMANIZE_ONLY.save(false);
-                cancelNormalRomanize();
-                updateRomanizeLabel();
-            } else {
-                cancelRomanizeOnly();
-            }
+            applyModeEvent(OnlyModeState.Event.HIDE_ROMANIZE);
         }
     }
 
@@ -3409,8 +3374,8 @@ public final class LyricsPanelView extends FrameLayout
      * already been cleared, costing the row the surviving side was holding.
      */
     private void fallBackFromDualMode(boolean romanizeFailed) {
-        // A track change resets onlyMode but not the flags, so only they say what was claimed.
-        final boolean dualClaimed = onlyMode == OnlyMode.BOTH
+        // A track change resets the mode but not the flags, so only they say what was claimed.
+        final boolean dualClaimed = onlyModeState.mode() == OnlyModeState.Mode.BOTH
                 || Settings.LYRICS_TRANSLATE_ONLY.get() && Settings.LYRICS_ROMANIZE_ONLY.get();
         if (!dualClaimed) {
             // Only this one was ever claimed, so it clears the way it always did.
@@ -3421,41 +3386,12 @@ public final class LyricsPanelView extends FrameLayout
             }
             return;
         }
-        final boolean haveTranslate = translatedLines != null;
-        final boolean haveRomanize = romanizedLines != null || perWordRomaji;
-        Settings.LYRICS_TRANSLATE_ONLY.save(false);
-        Settings.LYRICS_ROMANIZE_ONLY.save(false);
-        // Only the side that failed: cancelling the other one wipes the very lines that are the
-        // reason for keeping it.
-        if (romanizeFailed) {
-            cancelNormalRomanize();
-        } else {
-            cancelNormalTranslate();
-        }
-        if (haveTranslate && haveRomanize) {
-            // Both made it in the end; only the flag of the one that reported failure was stale.
-            onlyMode = OnlyMode.BOTH;
-            Settings.LYRICS_TRANSLATE_ONLY.save(true);
-            Settings.LYRICS_ROMANIZE_ONLY.save(true);
-        } else {
-            // A side that never arrived leaves anything to promote: an only mode would drop the
-            // original and give the survivor the whole line, a claim the user never made.
-            onlyMode = OnlyMode.NONE;
-        }
-        applyOnlyModeState();
-        updateDualPill();
-        updateFooter();
-        Lyrics current = lyrics;
-        if (current != null) {
-            showLyrics(rubyDrawn() ? current : hideRuby(current));
-        }
-        updateTranslateLabel();
-        updateRomanizeLabel();
+        applyModeEvent(OnlyModeState.Event.DUAL_FAILED, romanizeFailed);
         // A survivor still fetching puts its loading text back.
-        if (translateInProgress) {
+        if (onlyModeState.isTranslateInProgress()) {
             setButtonLabel(translateView, str("morphe_music_lyrics_translating"), true);
         }
-        if (romanizeInProgress) {
+        if (onlyModeState.isRomanizeInProgress()) {
             setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
         }
     }
@@ -3464,13 +3400,7 @@ public final class LyricsPanelView extends FrameLayout
      * Enters the dual mode, where both only-flags stand at once and neither side clears the other.
      */
     private void enterDualMode() {
-        Settings.LYRICS_TRANSLATE_ONLY.save(true);
-        Settings.LYRICS_TRANSLATE.save(false);
-        Settings.LYRICS_ROMANIZE_ONLY.save(true);
-        Settings.LYRICS_ROMANIZE.save(false);
-        onlyMode = OnlyMode.BOTH;
-        applyOnlyModeState();
-        updateDualPill();
+        applyModeEvent(OnlyModeState.Event.ENTER_DUAL);
     }
 
     /**
@@ -3478,30 +3408,8 @@ public final class LyricsPanelView extends FrameLayout
      * underneath them; without it everything is dropped.
      */
     private void exitDualMode(boolean keepData) {
-        if (onlyMode != OnlyMode.BOTH) {
-            return;
-        }
-        Settings.LYRICS_TRANSLATE_ONLY.save(false);
-        Settings.LYRICS_ROMANIZE_ONLY.save(false);
-        if (keepData) {
-            Settings.LYRICS_TRANSLATE.save(true);
-            Settings.LYRICS_ROMANIZE.save(true);
-        } else {
-            Settings.LYRICS_TRANSLATE.save(false);
-            Settings.LYRICS_ROMANIZE.save(false);
-            cancelNormalTranslate();
-            cancelNormalRomanize();
-        }
-        onlyMode = OnlyMode.NONE;
-        applyOnlyModeState();
-        updateDualPill();
-        Lyrics current = lyrics;
-        if (current != null) {
-            showLyrics(keepData ? current : hideRuby(current));
-        }
-        updateTranslateLabel();
-        updateRomanizeLabel();
-        updateFooter();
+        applyModeEvent(keepData ? OnlyModeState.Event.EXIT_DUAL_KEEP
+                : OnlyModeState.Event.EXIT_DUAL_DROP);
     }
 
     private void disableNormalTranslate() {
@@ -3516,13 +3424,11 @@ public final class LyricsPanelView extends FrameLayout
 
     /** The id bump is what drops an in-flight answer: its callback only lands on the current id. */
     private void invalidateTranslate() {
-        translateRequestId++;
-        translateInProgress = false;
+        onlyModeState.invalidateTranslate();
     }
 
     private void invalidateRomanize() {
-        romanizeRequestId++;
-        romanizeInProgress = false;
+        onlyModeState.invalidateRomanize();
     }
 
     /** Drops the kept translation, so its old text can never be drawn again. */
@@ -3702,7 +3608,7 @@ public final class LyricsPanelView extends FrameLayout
         footerView.setText(LyricsViewSupport.sourceText(current.providerName(),
                 translatedLines != null, translatedFromGoogle, translatedFromAI, translatedAiModel,
                 romanizedLines != null || perWordRomaji,
-                romanizedFromGoogle, romanizedFromAI, romanizedFromEmbedded, romanizedAiModel, onlyMode,
+                romanizedFromGoogle, romanizedFromAI, romanizedFromEmbedded, romanizedAiModel, onlyModeState.mode(),
                 romanizedLocalDictionary,
                 () -> onTargetLanguageChanged(true),
                 () -> onTargetLanguageChanged(false),
@@ -3711,13 +3617,13 @@ public final class LyricsPanelView extends FrameLayout
 
     private boolean normalTranslateActive() {
         return Settings.LYRICS_TRANSLATE.get()
-                || translateInProgress
+                || onlyModeState.isTranslateInProgress()
                 || translatedLines != null;
     }
 
     private boolean normalRomanizeActive() {
         return Settings.LYRICS_ROMANIZE.get()
-                || romanizeInProgress
+                || onlyModeState.isRomanizeInProgress()
                 || romanizedLines != null
                 || perWordRomaji;
     }
@@ -3757,14 +3663,14 @@ public final class LyricsPanelView extends FrameLayout
         try {
             if (translation) {
                 stashedTranslation = null;
-                if (translatedLines == null && !translateInProgress) {
+                if (translatedLines == null && !onlyModeState.isTranslateInProgress()) {
                     updateFooter();
                     return;
                 }
                 // A fresh request, not a toggle: the shown translation is the old language.
                 invalidateTranslate();
                 clearTranslatedData();
-                if (onlyMode != OnlyMode.NONE) {
+                if (onlyModeState.mode() != OnlyModeState.Mode.NONE) {
                     requestTranslateOnly(current);
                 } else {
                     requestNormalTranslate(current, track);
@@ -3774,7 +3680,7 @@ public final class LyricsPanelView extends FrameLayout
                 // to the settings.
                 stashedRomanization = null;
                 setRimeProviderEnabled(RimeDictionaryStore.isActive());
-                if (romanizedLines == null && !perWordRomaji && !romanizeInProgress) {
+                if (romanizedLines == null && !perWordRomaji && !onlyModeState.isRomanizeInProgress()) {
                     // Romaji off → ruby off; re-applied when romaji turns on
                     if (appliedRubyLanguage != null) {
                         appliedRubyLanguage = null;
@@ -3792,7 +3698,7 @@ public final class LyricsPanelView extends FrameLayout
                 // the reading flow reads it.
                 applyRuby(false);
                 final Lyrics updated = lyrics;
-                if (onlyMode != OnlyMode.NONE) {
+                if (onlyModeState.mode() != OnlyModeState.Mode.NONE) {
                     requestRomanizeOnly(updated);
                 } else {
                     requestNormalRomanize(updated, track);
@@ -3821,9 +3727,78 @@ public final class LyricsPanelView extends FrameLayout
         updateSessionMainLine();
     }
 
+    /** Collects the environment values the pure state machine needs to decide a transition. */
+    private OnlyModeState.Context modeContext(boolean romanizeFailed) {
+        return new OnlyModeState.Context(
+                onlyModeState.mode(),
+                Settings.LYRICS_TRANSLATE_ONLY.get(),
+                Settings.LYRICS_ROMANIZE_ONLY.get(),
+                translatedLines != null,
+                romanizedLines != null || perWordRomaji,
+                onlyModeState.dualPillActive(),
+                romanizeFailed);
+    }
+
+    private void applyModeEvent(OnlyModeState.Event event) {
+        applyModeEvent(event, false);
+    }
+
+    /** Dispatches, commits the decided mode, then runs its effects in order. */
+    private void applyModeEvent(OnlyModeState.Event event, boolean romanizeFailed) {
+        final OnlyModeState.Transition transition =
+                onlyModeState.dispatch(event, modeContext(romanizeFailed));
+        onlyModeState.commit(transition);
+        applyEffects(transition.effects());
+    }
+
+    /** The single executor for all only-mode settings writes and UI refreshes. */
+    private void applyEffects(List<OnlyModeEffect> effects) {
+        for (OnlyModeEffect effect : effects) {
+            if (effect instanceof OnlyModeEffect.Save save) {
+                switch (save.key()) {
+                    case TRANSLATE -> Settings.LYRICS_TRANSLATE.save(save.value());
+                    case TRANSLATE_ONLY -> Settings.LYRICS_TRANSLATE_ONLY.save(save.value());
+                    case ROMANIZE -> Settings.LYRICS_ROMANIZE.save(save.value());
+                    case ROMANIZE_ONLY -> Settings.LYRICS_ROMANIZE_ONLY.save(save.value());
+                }
+            } else if (effect instanceof OnlyModeEffect.ApplyMode) {
+                applyOnlyModeState();
+            } else if (effect instanceof OnlyModeEffect.UpdateDualPill) {
+                updateDualPill();
+            } else if (effect instanceof OnlyModeEffect.ShowLyrics show) {
+                final Lyrics current = lyrics;
+                if (current != null) {
+                    showLyrics(show.keepRuby() ? current : hideRuby(current));
+                }
+            } else if (effect instanceof OnlyModeEffect.ShowLyricsKeepRubyIfDrawn) {
+                final Lyrics current = lyrics;
+                if (current != null) {
+                    showLyrics(rubyDrawn() ? current : hideRuby(current));
+                }
+            } else if (effect instanceof OnlyModeEffect.UpdateLabels) {
+                updateTranslateLabel();
+                updateRomanizeLabel();
+            } else if (effect instanceof OnlyModeEffect.UpdateTranslateLabel) {
+                updateTranslateLabel();
+            } else if (effect instanceof OnlyModeEffect.UpdateRomanizeLabel) {
+                updateRomanizeLabel();
+            } else if (effect instanceof OnlyModeEffect.UpdateFooter) {
+                updateFooter();
+            } else if (effect instanceof OnlyModeEffect.CancelNormal cancel) {
+                if (cancel.side() == OnlyModeState.Side.TRANSLATE) {
+                    cancelNormalTranslate();
+                } else {
+                    cancelNormalRomanize();
+                }
+            } else if (effect instanceof OnlyModeEffect.RebuildAfterOnlyEnded) {
+                rebuildAfterOnlyEnded();
+            }
+        }
+    }
+
     private void updateSessionMainLine() {
-        LyricsPresentation.setMainLineOnlyState(onlyMode == OnlyMode.TRANS || onlyMode == OnlyMode.BOTH,
-                onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH,
+        LyricsPresentation.setMainLineOnlyState(onlyModeState.mode() == OnlyModeState.Mode.TRANS || onlyModeState.mode() == OnlyModeState.Mode.BOTH,
+                onlyModeState.mode() == OnlyModeState.Mode.ROMA || onlyModeState.mode() == OnlyModeState.Mode.BOTH,
                 translatedLines, romanizedLines);
         MiniplayerLyrics.onSettingsChanged();
         LockScreenLyrics.onSettingsChanged();
@@ -3853,7 +3828,7 @@ public final class LyricsPanelView extends FrameLayout
         if (child.getHeight() <= 0 || linesContainer.getHeight() <= 0) {
             return;
         }
-        final int mainOffset = builtOnlyMode == OnlyMode.NONE
+        final int mainOffset = onlyModeState.built() == OnlyModeState.Mode.NONE
                 ? mainLineOffsetFor(child)
                 : 0;
         pendingHideAnchorIndex = highlightedIndex;
@@ -3883,16 +3858,16 @@ public final class LyricsPanelView extends FrameLayout
      * provider left untranslated keeps the original, the same text the panel renders for it.
      */
     private String textToCopyAt(LyricsLine line, int index) {
-        if (onlyMode == OnlyMode.TRANS) {
+        if (onlyModeState.mode() == OnlyModeState.Mode.TRANS) {
             String translation = LyricsSpanBuilder.translationAt(line, index, translatedLines);
             return translation != null ? translation : line.text();
         }
-        if (onlyMode == OnlyMode.ROMA) {
+        if (onlyModeState.mode() == OnlyModeState.Mode.ROMA) {
             String romanization =
                     LyricsSpanBuilder.romanizationForOnlyMode(line, index, romanizedLines);
             return romanization != null ? romanization : line.text();
         }
-        if (onlyMode == OnlyMode.BOTH) {
+        if (onlyModeState.mode() == OnlyModeState.Mode.BOTH) {
             // The same call the render makes, so the copy cannot disagree with the main line.
             return LyricsSpanBuilder.dualLineFor(line, null, index,
                     LyricsSpanBuilder.translationAt(line, index, translatedLines),
@@ -3990,9 +3965,9 @@ public final class LyricsPanelView extends FrameLayout
 
     private void updateTranslateLabel() {
         if (translateView != null) {
-            final boolean on = onlyMode == OnlyMode.TRANS || onlyMode == OnlyMode.BOTH
-                    || (onlyMode == OnlyMode.NONE && translatedLines != null)
-                    || (onlyMode == OnlyMode.ROMA && Settings.LYRICS_TRANSLATE.get());
+            final boolean on = onlyModeState.mode() == OnlyModeState.Mode.TRANS || onlyModeState.mode() == OnlyModeState.Mode.BOTH
+                    || (onlyModeState.mode() == OnlyModeState.Mode.NONE && translatedLines != null)
+                    || (onlyModeState.mode() == OnlyModeState.Mode.ROMA && Settings.LYRICS_TRANSLATE.get());
             setButtonLabel(translateView, null, on);
         }
     }
@@ -4018,7 +3993,7 @@ public final class LyricsPanelView extends FrameLayout
             if (romanizeView == null) {
                 return;
             }
-            if (onlyMode != OnlyMode.NONE
+            if (onlyModeState.mode() != OnlyModeState.Mode.NONE
                     || Settings.LYRICS_TRANSLATE_ONLY.get()
                     || Settings.LYRICS_ROMANIZE_ONLY.get()) {
                 return;
@@ -4030,7 +4005,7 @@ public final class LyricsPanelView extends FrameLayout
                 return;
             }
 
-            if (romanizeInProgress) {
+            if (onlyModeState.isRomanizeInProgress()) {
                 cancelNormalRomanize();
                 showLyrics(current);
                 setButtonLabel(romanizeView, null, false);
@@ -4071,16 +4046,16 @@ public final class LyricsPanelView extends FrameLayout
             final Lyrics target = current;
             Settings.LYRICS_ROMANIZE.save(true);
             Settings.LYRICS_ROMANIZE_ONLY.save(false);
-            romanizeInProgress = true;
-            final int requestId = ++romanizeRequestId;
+            onlyModeState.beginRomanize();
+            final int requestId = onlyModeState.nextRomanizeRequestId();
             setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
 
             LyricsRomanizer.romanize(track, target, target.providerName(),
                     (lines, fromGoogle, fromAI, model, perWord, localDictionary, fromEmbedded, skipped) -> {
-                        if (requestId != romanizeRequestId || !romanizeInProgress) {
+                        if (!onlyModeState.isCurrentRomanize(requestId) || !onlyModeState.isRomanizeInProgress()) {
                             return;
                         }
-                        romanizeInProgress = false;
+                        onlyModeState.finishRomanize();
 
                         // The track moved on while the romanization was in flight.
                         if (!isSameCurrentLyrics(target)) {
@@ -4124,17 +4099,17 @@ public final class LyricsPanelView extends FrameLayout
             if (romanizeView == null) {
                 return;
             }
-            if (onlyMode == OnlyMode.BOTH) {
+            if (onlyModeState.mode() == OnlyModeState.Mode.BOTH) {
                 return;
             }
-            if (onlyMode == OnlyMode.ROMA || Settings.LYRICS_ROMANIZE_ONLY.get()) {
+            if (onlyModeState.mode() == OnlyModeState.Mode.ROMA || Settings.LYRICS_ROMANIZE_ONLY.get()) {
                 cancelRomanizeOnly();
                 return;
             }
             final boolean sameKeyActive = normalRomanizeActive();
             final boolean otherActive = normalTranslateActive();
             final boolean otherOnly =
-                    onlyMode == OnlyMode.TRANS || Settings.LYRICS_TRANSLATE_ONLY.get();
+                    onlyModeState.mode() == OnlyModeState.Mode.TRANS || Settings.LYRICS_TRANSLATE_ONLY.get();
             if (sameKeyActive && !otherActive && !otherOnly) {
                 return;
             }
@@ -4167,8 +4142,8 @@ public final class LyricsPanelView extends FrameLayout
             Settings.LYRICS_ROMANIZE.save(false);
 
             restoreStashedRomanization(current);
+            onlyModeState.commitMode(onlyModeState.resolveNarrow(false, romanizedLines != null || perWordRomaji));
             if (romanizedLines != null || perWordRomaji) {
-                onlyMode = OnlyMode.ROMA;
                 applyOnlyModeState();
                 showLyrics(lyrics != null ? lyrics : current);
                 flashButtonLabel(romanizeView,
@@ -4176,7 +4151,6 @@ public final class LyricsPanelView extends FrameLayout
                         updateRomanizeLabelRunnable, 3000);
                 return;
             }
-            onlyMode = OnlyMode.NONE;
             if (hadNormalTranslate) {
                 showLyrics(lyrics != null ? lyrics : current);
             }
@@ -4188,7 +4162,7 @@ public final class LyricsPanelView extends FrameLayout
 
     private void requestRomanizeOnly(Lyrics current) {
         TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
-        if (track == null || current == null || romanizeInProgress) {
+        if (track == null || current == null || onlyModeState.isRomanizeInProgress()) {
             return;
         }
         Settings.LYRICS_ROMANIZE_ONLY.save(true);
@@ -4200,28 +4174,28 @@ public final class LyricsPanelView extends FrameLayout
         }
         restoreStashedRomanization(current);
         if (romanizedLines != null || perWordRomaji) {
-            onlyMode = Settings.LYRICS_TRANSLATE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.ROMA;
+            onlyModeState.commitMode(onlyModeState.resolveOnly(false, Settings.LYRICS_TRANSLATE_ONLY.get()));
             applyOnlyModeState();
             updateDualPill();
             showLyrics(lyrics != null ? lyrics : current);
             updateRomanizeLabel();
-            if (onlyMode == OnlyMode.BOTH && translatedLines == null) {
+            if (onlyModeState.mode() == OnlyModeState.Mode.BOTH && translatedLines == null) {
                 requestTranslateOnly(current);
             }
             return;
         }
         cancelNormalRomanize();
-        romanizeInProgress = true;
-        final int requestId = ++romanizeRequestId;
+        onlyModeState.beginRomanize();
+        final int requestId = onlyModeState.nextRomanizeRequestId();
         setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
 
         LyricsRomanizer.romanize(track, current, current.providerName(),
                 (lines, fromGoogle, fromAI, model, perWord, localDictionary, fromEmbedded, skipped) -> {
                     final boolean asOnly = Settings.LYRICS_ROMANIZE_ONLY.get();
-                    if (requestId != romanizeRequestId || !asOnly && !romanizeInProgress) {
+                    if (!onlyModeState.isCurrentRomanize(requestId) || !asOnly && !onlyModeState.isRomanizeInProgress()) {
                         return;
                     }
-                    romanizeInProgress = false;
+                    onlyModeState.finishRomanize();
                     if (!isSameCurrentLyrics(current)) {
                         return;
                     }
@@ -4258,7 +4232,7 @@ public final class LyricsPanelView extends FrameLayout
                         }
                         return;
                     }
-                    onlyMode = Settings.LYRICS_TRANSLATE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.ROMA;
+                    onlyModeState.commitMode(onlyModeState.resolveOnly(false, Settings.LYRICS_TRANSLATE_ONLY.get()));
                     applyOnlyModeState();
                     updateDualPill();
                     if (appliedRubyLanguage == null) {
@@ -4267,7 +4241,7 @@ public final class LyricsPanelView extends FrameLayout
                     } else {
                         showLyrics(activeLyrics);
                     }
-                    if (onlyMode == OnlyMode.BOTH) {
+                    if (onlyModeState.mode() == OnlyModeState.Mode.BOTH) {
                         // The other side already flagged itself, so only this one was missing.
                         if (translatedLines == null) {
                             requestTranslateOnly(activeLyrics);
@@ -4301,16 +4275,16 @@ public final class LyricsPanelView extends FrameLayout
         }
         Settings.LYRICS_ROMANIZE.save(true);
         Settings.LYRICS_ROMANIZE_ONLY.save(false);
-        romanizeInProgress = true;
-        final int requestId = ++romanizeRequestId;
+        onlyModeState.beginRomanize();
+        final int requestId = onlyModeState.nextRomanizeRequestId();
         setButtonLabel(romanizeView, str("morphe_music_lyrics_romanizing"), true);
 
         LyricsRomanizer.romanize(track, current, current.providerName(),
                 (lines, fromGoogle, fromAI, model, perWord, localDictionary, fromEmbedded, skipped) -> {
-                    if (requestId != romanizeRequestId || !romanizeInProgress) {
+                    if (!onlyModeState.isCurrentRomanize(requestId) || !onlyModeState.isRomanizeInProgress()) {
                         return;
                     }
-                    romanizeInProgress = false;
+                    onlyModeState.finishRomanize();
 
                     // The track moved on while the romanization was in flight.
                     if (!isSameCurrentLyrics(current)) {
@@ -4349,9 +4323,9 @@ public final class LyricsPanelView extends FrameLayout
 
     private void updateRomanizeLabel() {
         if (romanizeView != null) {
-            final boolean on = onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH
-                    || (onlyMode == OnlyMode.NONE && (romanizedLines != null || perWordRomaji))
-                    || (onlyMode == OnlyMode.TRANS && Settings.LYRICS_ROMANIZE.get());
+            final boolean on = onlyModeState.mode() == OnlyModeState.Mode.ROMA || onlyModeState.mode() == OnlyModeState.Mode.BOTH
+                    || (onlyModeState.mode() == OnlyModeState.Mode.NONE && (romanizedLines != null || perWordRomaji))
+                    || (onlyModeState.mode() == OnlyModeState.Mode.TRANS && Settings.LYRICS_ROMANIZE.get());
             setButtonLabel(romanizeView, null, on);
         }
     }
@@ -4703,7 +4677,7 @@ public final class LyricsPanelView extends FrameLayout
 
     /** Height of the region rendered above the original line, i.e. how far the main lyric sits below the row top. */
     private int mainLineOffset(TextView lineView) {
-        if (onlyMode != OnlyMode.NONE) {
+        if (onlyModeState.mode() != OnlyModeState.Mode.NONE) {
             return 0;
         }
         return mainLineOffsetFor(lineView);
@@ -4754,7 +4728,7 @@ public final class LyricsPanelView extends FrameLayout
 
     private void captureHideScrollAnchor() {
         clearPendingHideAnchor();
-        if (onlyMode != OnlyMode.NONE) {
+        if (onlyModeState.mode() != OnlyModeState.Mode.NONE) {
             return;
         }
         int index = highlightedIndex;
@@ -4882,6 +4856,11 @@ public final class LyricsPanelView extends FrameLayout
             return -1;
         }
 
+        // Anchor the main text, not the row top. Ruby/reading regions sit above the main
+        // line, so aligning the row top would shift the text when their height changes.
+        final int mainOffset = targetIndex < lineViews.size()
+                ? mainLineOffset(lineViews.get(targetIndex)) : 0;
+
         final int runStart = activeGroupEdge(targetIndex, false);
         final int runEnd = activeGroupEdge(targetIndex, true);
         int top = Integer.MAX_VALUE;
@@ -4900,7 +4879,7 @@ public final class LyricsPanelView extends FrameLayout
             bottom = Math.max(bottom, rowTop + (row.getHeight() > 0 ? row.getHeight() : getPrimaryChildHeight(row)));
         }
         if (top == Integer.MAX_VALUE) {
-            return Math.max(0, targetRowTop - anchorPx);
+            return Math.max(0, targetRowTop + mainOffset - anchorPx);
         }
 
         // Keep simultaneous duet pairs anchored together, while ensuring sequential 3+ line
@@ -4914,7 +4893,7 @@ public final class LyricsPanelView extends FrameLayout
         if (bottom - targetTop > availableH && availableH > 0) {
             targetTop = Math.max(targetTop, bottom - availableH);
         }
-        return Math.max(0, targetTop - anchorPx);
+        return Math.max(0, targetTop + mainOffset - anchorPx);
     }
 
     /** {@return the row a scroll comes from: the line that was sung before, or the fallback} */
@@ -6254,6 +6233,25 @@ public final class LyricsPanelView extends FrameLayout
                     return true;
                 },
                 true);
+        normalizeButtonRowSpacing();
+    }
+
+    /** One source of truth for button gaps: first child flush, every later child 12dp in. */
+    void normalizeButtonRowSpacing() {
+        int gap = Dim.dp12;
+        for (int i = 0; i < buttonRow.getChildCount(); i++) {
+            View child = buttonRow.getChildAt(i);
+            ViewGroup.LayoutParams raw = child.getLayoutParams();
+            if (!(raw instanceof LinearLayout.LayoutParams params)) {
+                continue;
+            }
+            int margin = i == 0 ? 0 : gap;
+            params.leftMargin = margin;
+            params.rightMargin = 0;
+            params.setMarginStart(margin);
+            params.setMarginEnd(0);
+            child.setLayoutParams(params);
+        }
     }
 
     public void applyToolbarButtonSettings() {
@@ -6262,11 +6260,11 @@ public final class LyricsPanelView extends FrameLayout
         }
         // Every button is about to be thrown away, so the pill goes with them: leaving it up
         // would strand it in a row that no longer holds the two it stands in for.
-        final boolean dualWasUp = onlyMode == OnlyMode.BOTH;
+        final boolean dualWasUp = onlyModeState.mode() == OnlyModeState.Mode.BOTH;
         if (dualWasUp) {
             exitDualMode(true);
         }
-        dualPillActive = false;
+        onlyModeState.setDualPillActive(false);
         buttonRow.removeAllViews();
         hiddenToolbarButtons.clear();
         createToolbarButtons();
@@ -6600,9 +6598,9 @@ public final class LyricsPanelView extends FrameLayout
         final boolean forceCenter = Settings.isAlignmentCenter();
         final boolean swapTransRoma = Settings.LYRICS_SWAP_TRANS_ROMA.get();
         final boolean initialRomaOn = romanizedLines != null || perWordRomaji
-                || onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH;
+                || onlyModeState.mode() == OnlyModeState.Mode.ROMA || onlyModeState.mode() == OnlyModeState.Mode.BOTH;
         final boolean initialTransOn = (translatedLines != null && !translatedLines.isEmpty())
-                || onlyMode == OnlyMode.TRANS || onlyMode == OnlyMode.BOTH;
+                || onlyModeState.mode() == OnlyModeState.Mode.TRANS || onlyModeState.mode() == OnlyModeState.Mode.BOTH;
 
         Utils.runOnBackgroundThread(() -> {
             try {
@@ -6669,7 +6667,7 @@ public final class LyricsPanelView extends FrameLayout
     private void fadeOutAndRebuild(Lyrics current) {
         contentOutPending = true;
         wholeFadeNextBuild = true;
-        displayedOnlyMode = onlyMode;
+        onlyModeState.setDisplayed(onlyModeState.mode());
         final int outGeneration = buildGeneration.get();
         for (TextView lineView : lineViews) {
             if (lineView instanceof LyricsLineView view) {
@@ -6696,7 +6694,7 @@ public final class LyricsPanelView extends FrameLayout
         }
         showLyrics(current);
         refreshDualPillIcons();
-        if (onlyMode != OnlyMode.NONE) {
+        if (onlyModeState.mode() != OnlyModeState.Mode.NONE) {
             updateSessionMainLine();
         }
     }
@@ -6709,7 +6707,7 @@ public final class LyricsPanelView extends FrameLayout
      */
     private void refreshDualPillIcons() {
         TextView pill = dualPillView;
-        if (!dualPillActive || pill == null || Utils.isNotEmpty(pill.getText())) {
+        if (!onlyModeState.dualPillActive() || pill == null || Utils.isNotEmpty(pill.getText())) {
             return;
         }
         renderDualPill(pill, false);
@@ -6892,7 +6890,7 @@ public final class LyricsPanelView extends FrameLayout
     private void mergeButtonsIntoPill() {
         TextView translate = translateView;
         TextView romanize = romanizeView;
-        if (translate == null || romanize == null || dualPillActive) {
+        if (translate == null || romanize == null || onlyModeState.dualPillActive()) {
             return;
         }
         // A gesture cut short can leave either button mid-fade; start from whole.
@@ -6908,7 +6906,7 @@ public final class LyricsPanelView extends FrameLayout
         // Claimed before it is on screen so a tap during the cross-fade is read as the pill's.
         TextView pill = createDualPill();
         dualPillView = pill;
-        dualPillActive = true;
+        onlyModeState.setDualPillActive(true);
         // The slot the translation button holds, which is where the pill ends up: the gap of the
         // button it stands in for, or it would sit flush against the copy button.
         final int at = buttonRow.indexOfChild(translate);
@@ -6917,7 +6915,7 @@ public final class LyricsPanelView extends FrameLayout
         LyricsViewSupport.fadeDualButtonOut(translate);
         LyricsViewSupport.fadeDualButtonOut(romanize);
         handler.postDelayed(() -> {
-            if (!dualPillActive) {
+            if (!onlyModeState.dualPillActive()) {
                 return;
             }
             translate.setVisibility(GONE);
@@ -7032,7 +7030,7 @@ public final class LyricsPanelView extends FrameLayout
 
     private void settleDualPill() {
         TextView pill = dualPillView;
-        if (!dualPillActive || pill == null) {
+        if (!onlyModeState.dualPillActive() || pill == null) {
             return;
         }
         // The mode is still on, so the pill keeps the active look once the label steps aside.
@@ -7043,7 +7041,7 @@ public final class LyricsPanelView extends FrameLayout
         TextView translate = translateView;
         TextView romanize = romanizeView;
         TextView pill = dualPillView;
-        dualPillActive = false;
+        onlyModeState.setDualPillActive(false);
         dualPillView = null;
         dualPillTranslateIcon = null;
         dualPillRomanizeIcon = null;
@@ -7071,11 +7069,11 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void updateDualPill() {
-        if (onlyMode == OnlyMode.BOTH) {
-            if (!dualPillActive) {
+        if (onlyModeState.mode() == OnlyModeState.Mode.BOTH) {
+            if (!onlyModeState.dualPillActive()) {
                 mergeButtonsIntoPill();
             }
-        } else if (dualPillActive) {
+        } else if (onlyModeState.dualPillActive()) {
             restoreButtonsFromPill();
         }
     }

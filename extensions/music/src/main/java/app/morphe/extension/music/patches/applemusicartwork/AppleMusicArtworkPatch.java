@@ -119,13 +119,15 @@ public final class AppleMusicArtworkPatch {
 
     private static void notifyArtworkFileChanged() {
         Utils.runOnMainThread(() -> {
+            List<ArtworkFileListener> targets = new ArrayList<>();
             for (WeakReference<ArtworkFileListener> ref : artworkFileListeners) {
                 ArtworkFileListener listener = ref.get();
-                if (listener != null) {
-                    listener.onArtworkFileChanged(artworkFile);
-                }
+                if (listener != null) targets.add(listener);
             }
             artworkFileListeners.removeIf(ref -> ref.get() == null);
+            for (ArtworkFileListener listener : targets) {
+                listener.onArtworkFileChanged(artworkFile);
+            }
         });
     }
 

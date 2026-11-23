@@ -67,6 +67,8 @@ final class LyricsFullscreenController {
     private final TextView titleView;
     private final TextView artistView;
     @Nullable private LinearLayout trackInfo;
+    @Nullable private FrameLayout coverFrame;
+    private boolean trackInfoVisible = true;
     private final AppleMusicArtworkPatch.ArtworkFileListener artworkFileListener =
             this::onArtworkFileChanged;
     private final View.OnTouchListener coverTouchListener = this::onCoverTouch;
@@ -121,6 +123,15 @@ final class LyricsFullscreenController {
         params.leftMargin = Dim.dp16;
         panel.addView(button, params);
         button.bringToFront();
+        // Both controls live in the panel outside the split. Lock their home here so a toolbar
+        // rebuild can never strand them without a parent to return to on exit.
+        buttonHome = panel;
+        buttonHomeIndex = panel.indexOfChild(button);
+        buttonHomeParams = button.getLayoutParams();
+        View jump = panel.getJumpButton();
+        jumpHome = panel;
+        jumpHomeIndex = panel.indexOfChild(jump);
+        jumpHomeParams = jump.getLayoutParams();
     }
 
     boolean isFullscreen() {
@@ -274,33 +285,22 @@ final class LyricsFullscreenController {
         ViewGroup row = panel.getButtonRow();
         View jump = panel.getJumpButton();
         if (split) {
-            buttonHome = (ViewGroup) button.getParent();
-            buttonHomeIndex = buttonHome.indexOfChild(button);
-            buttonHomeParams = button.getLayoutParams();
-            buttonHome.removeView(button);
-            jumpHome = (ViewGroup) jump.getParent();
-            jumpHomeIndex = jumpHome.indexOfChild(jump);
-            jumpHomeParams = jump.getLayoutParams();
-            jumpHome.removeView(jump);
-            LinearLayout.LayoutParams first = rowButtonParams(false);
-            first.setMarginEnd(Dim.dp12);
-            row.addView(button, 0, first);
+            if (button.getParent() instanceof ViewGroup parent) parent.removeView(button);
+            if (jump.getParent() instanceof ViewGroup parent) parent.removeView(jump);
+            row.addView(button, 0, rowButtonParams(false));
             row.addView(jump, rowButtonParams(true));
+            panel.normalizeButtonRowSpacing();
         } else {
-            row.removeView(button);
-            row.removeView(jump);
-            if (buttonHome != null && buttonHomeParams != null) {
+            if (button.getParent() instanceof ViewGroup parent) parent.removeView(button);
+            if (jump.getParent() instanceof ViewGroup parent) parent.removeView(jump);
+            if (buttonHome != null) {
                 buttonHome.addView(button,
                         Math.min(buttonHomeIndex, buttonHome.getChildCount()), buttonHomeParams);
             }
-            if (jumpHome != null && jumpHomeParams != null) {
+            if (jumpHome != null) {
                 jumpHome.addView(jump,
                         Math.min(jumpHomeIndex, jumpHome.getChildCount()), jumpHomeParams);
             }
-            buttonHome = null;
-            buttonHomeParams = null;
-            jumpHome = null;
-            jumpHomeParams = null;
         }
         controlsInRow = split;
     }
@@ -311,8 +311,9 @@ final class LyricsFullscreenController {
             return;
         }
         ViewGroup row = panel.getButtonRow();
-        row.addView(button, 0, rowButtonParams(false));
-        row.addView(panel.getJumpButton(), rowButtonParams(true));
+        if (button.getParent() != row) row.addView(button, 0, rowButtonParams(false));
+        if (panel.getJumpButton().getParent() != row) row.addView(panel.getJumpButton(), rowButtonParams(true));
+        panel.normalizeButtonRowSpacing();
     }
 
     private static TextView createMarqueeText(
@@ -338,12 +339,12 @@ final class LyricsFullscreenController {
         LinearLayout info = new LinearLayout(panel.getContext());
         info.setOrientation(LinearLayout.VERTICAL);
         info.setGravity(Gravity.CENTER);
-        info.setPadding(0, Dim.dp10, 0, 0);
+        info.setPadding(0, Dim.dp4, 0, 0);
         info.addView(titleView, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         info.addView(artistView, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         return info;
     }
@@ -355,7 +356,7 @@ final class LyricsFullscreenController {
         String artist = manager.getCurrentRawArtist();
         titleView.setText(title != null ? title : "");
         artistView.setText(artist != null ? artist : "");
-        if (titleView.getVisibility() != View.VISIBLE) {
+        if (titleView.getVisibility() != View.VISIBLE && trackInfoVisible) {
             titleView.setVisibility(View.VISIBLE);
             artistView.setVisibility(View.VISIBLE);
         }
@@ -373,8 +374,30 @@ final class LyricsFullscreenController {
                 .setDuration(LyricsPanelView.JUMP_BUTTON_FADE_MS).start();
     }
 
+    /** Vertical swipe shows or hides the caption; the centred stack re-centres the cover. */
+    private void toggleTrackInfo() {
+        if (trackInfo == null) {
+            return;
+        }
+        trackInfoVisible = !trackInfoVisible;
+        int visibility = trackInfoVisible ? View.VISIBLE : View.GONE;
+        titleView.setVisibility(visibility);
+        artistView.setVisibility(visibility);
+        trackInfo.setVisibility(visibility);
+        if (trackInfoVisible) {
+            titleView.setSelected(false);
+            artistView.setSelected(false);
+            titleView.setSelected(true);
+            artistView.setSelected(true);
+            trackInfo.animate().cancel();
+            trackInfo.setAlpha(0f);
+            trackInfo.animate().alpha(1f).setDuration(LyricsPanelView.JUMP_BUTTON_FADE_MS).start();
+        }
+    }
+
     private void onArtworkFileChanged(@Nullable File file) {
-        if (!splitActive) {
+        if (!isFullscreen || !splitActive || splitRoot == null
+                || splitRoot.getParent() == null || artworkView.getParent() == null) {
             return;
         }
         unbindArtworkOverlay();
@@ -411,6 +434,8 @@ final class LyricsFullscreenController {
                 if (Math.abs(dx) > Dim.dp(40) && Math.abs(dx) > Math.abs(dy) * 1.4f) {
                     dispatchMediaKey(v.getContext(),
                             dx < 0 ? KeyEvent.KEYCODE_MEDIA_NEXT : KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+                } else if (Math.abs(dy) > Dim.dp(40) && Math.abs(dy) > Math.abs(dx) * 1.4f) {
+                    toggleTrackInfo();
                 } else if (Math.abs(dx) < Dim.dp(12) && Math.abs(dy) < Dim.dp(12)
                         && elapsed < 600L) {
                     dispatchMediaKey(v.getContext(), KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
@@ -451,6 +476,8 @@ final class LyricsFullscreenController {
             coverStack.setOrientation(LinearLayout.VERTICAL);
             coverStack.setGravity(Gravity.CENTER_HORIZONTAL);
             FrameLayout coverFrame = new FrameLayout(panel.getContext());
+            coverFrame.setOutlineProvider(artOutline);
+            coverFrame.setClipToOutline(true);
             coverFrame.addView(artworkView, new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT,
@@ -458,6 +485,7 @@ final class LyricsFullscreenController {
             coverStack.addView(coverFrame, new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
+            this.coverFrame = coverFrame;
             trackInfo = buildTrackInfo();
             coverStack.addView(trackInfo, new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -478,11 +506,14 @@ final class LyricsFullscreenController {
             panel.addView(root, 1, new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
             AppleMusicArtworkPatch.addArtworkFileListener(artworkFileListener);
+            trackInfoVisible = true;
             refreshTrackInfo();
             bindArtworkOverlay();
         } else {
-            unbindArtworkOverlay();
+            // Tear down callbacks first, so a queued artwork notification cannot re-enter a half-dismantled split.
+            splitActive = false;
             AppleMusicArtworkPatch.removeArtworkFileListener(artworkFileListener);
+            unbindArtworkOverlay();
             if (splitRoot != null) {
                 panel.removeView(splitRoot);
                 splitRoot.removeAllViews();
@@ -490,10 +521,11 @@ final class LyricsFullscreenController {
             titleView.setVisibility(View.GONE);
             artistView.setVisibility(View.GONE);
             trackInfo = null;
+            coverFrame = null;
             artworkView.setVisibility(View.GONE);
             if (artPane != null) artPane.removeAllViews();
             artPane = null;
-            panel.addView(scroll, scrollOriginalIndex,
+            panel.addView(scroll, Math.min(scrollOriginalIndex, panel.getChildCount()),
                     scrollOriginalParams != null ? scrollOriginalParams : scroll.getLayoutParams());
             splitRoot = null;
         }
@@ -505,9 +537,15 @@ final class LyricsFullscreenController {
         int paneWidth = artPane.getWidth();
         int paneHeight = artPane.getHeight();
         if (paneWidth <= 0 || paneHeight <= 0) return;
-        int reserved = trackInfo != null ? trackInfo.getHeight() : 0;
-        int usableHeight = Math.max(0, paneHeight - reserved);
-        int size = (int) (Math.min(paneWidth, usableHeight) * 0.65f);
+        int size = (int) (Math.min(paneWidth, paneHeight) * 0.65f);
+        if (coverFrame != null) {
+            ViewGroup.LayoutParams coverParams = coverFrame.getLayoutParams();
+            if (coverParams != null && (coverParams.width != size || coverParams.height != size)) {
+                coverParams.width = size;
+                coverParams.height = size;
+                coverFrame.setLayoutParams(coverParams);
+            }
+        }
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) artworkView.getLayoutParams();
         if (params.width != size || params.height != size) {
             params.width = size;
@@ -518,6 +556,14 @@ final class LyricsFullscreenController {
             ViewGroup.LayoutParams animParams = animatedArtworkView.getLayoutParams();
             if (animParams == null || animParams.width != size || animParams.height != size) {
                 animatedArtworkView.setLayoutParams(new FrameLayout.LayoutParams(size, size));
+            }
+        }
+        if (trackInfo != null) {
+            int infoWidth = (int) (paneWidth * 0.8f);
+            ViewGroup.LayoutParams infoParams = trackInfo.getLayoutParams();
+            if (infoParams != null && infoParams.width != infoWidth) {
+                infoParams.width = infoWidth;
+                trackInfo.setLayoutParams(infoParams);
             }
         }
     }
@@ -533,6 +579,9 @@ final class LyricsFullscreenController {
 
     private void bindArtworkOverlay() {
         unbindArtworkOverlay();
+        if (artworkView.getParent() == null) {
+            return;
+        }
         animatedArtworkView = AppleMusicArtworkPatch.attachAnimatedArtwork(artworkView);
         if (animatedArtworkView != null) {
             animatedArtworkView.setOutlineProvider(artOutline);
@@ -598,6 +647,10 @@ final class LyricsFullscreenController {
                     | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 : 0;
-        activity.getWindow().getDecorView().setSystemUiVisibility(flags);
+        try {
+            activity.getWindow().getDecorView().setSystemUiVisibility(flags);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not set system bars", ex);
+        }
     }
 }
