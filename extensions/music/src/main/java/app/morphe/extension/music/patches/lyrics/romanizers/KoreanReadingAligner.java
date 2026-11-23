@@ -366,7 +366,7 @@ public final class KoreanReadingAligner {
                 int remSlots = slotCount - i - 1;
                 int take = (i == slotCount - 1) ? (sylLen - cur)
                         : Math.max(0, Math.min(sylLen - cur - remSlots,
-                                Math.round((float) (sylLen - cur) * slotSyllableCounts[i] / Math.max(1, remWeight))));
+                        Math.round((float) (sylLen - cur) * slotSyllableCounts[i] / Math.max(1, remWeight))));
                 remWeight -= Math.max(1, slotSyllableCounts[i]);
                 StringBuilder sb = new StringBuilder();
                 for (int k = 0; k < take && cur < sylLen; k++) {

@@ -460,7 +460,7 @@ public final class KuromojiRomanizer {
 
         return changed
                 ? new LyricsLine(line.startTimeMs(), line.endTimeMs(), lineText, enrichedWords,
-                        line.agentId(), line.isDuet(), line.isBG(), line.songPart())
+                line.agentId(), line.isDuet(), line.isBG(), line.songPart())
                 : line;
     }
 
@@ -592,7 +592,7 @@ public final class KuromojiRomanizer {
                     anyRuby = true;
                 }
             }
-        out.add(new Word(cursorMs, rEnd, subText, runRoms[r], trailSpace, ruby));
+            out.add(new Word(cursorMs, rEnd, subText, runRoms[r], trailSpace, ruby));
             cursorMs = rEnd;
         }
         return anyRuby ? out : Collections.emptyList();
@@ -895,12 +895,8 @@ public final class KuromojiRomanizer {
         if ("か".equals(surf) && "何".equals(prevSurf)) {
             return true;
         }
-        if ("も".equals(surf) && ("誰".equals(prevSurf) || "何".equals(prevSurf)
-                || "いつ".equals(prevSurf) || "どこ".equals(prevSurf))) {
-            return true;
-        }
-
-        return false;
+        return "も".equals(surf) && ("誰".equals(prevSurf) || "何".equals(prevSurf)
+                || "いつ".equals(prevSurf) || "どこ".equals(prevSurf));
     }
 
     /**
@@ -1209,9 +1205,7 @@ public final class KuromojiRomanizer {
         final int mCount = moras.length;
 
         if (mCount == kCount) {
-            for (int i = 0; i < kCount; i++) {
-                out[offset + i] = moras[i];
-            }
+            System.arraycopy(moras, 0, out, offset + 0, kCount);
             return;
         }
 

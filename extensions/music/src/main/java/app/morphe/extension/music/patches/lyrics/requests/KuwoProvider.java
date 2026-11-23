@@ -6,8 +6,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import java.util.Base64;
-
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -21,6 +19,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -34,7 +33,6 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class KuwoProvider implements LyricsProvider {
@@ -147,7 +145,10 @@ public final class KuwoProvider implements LyricsProvider {
 
             boolean dup = false;
             for (ScoredCandidate c : result) {
-                if (c.musicId.equals(musicId)) { dup = true; break; }
+                if (c.musicId.equals(musicId)) {
+                    dup = true;
+                    break;
+                }
             }
             if (dup) continue;
 
@@ -316,6 +317,7 @@ public final class KuwoProvider implements LyricsProvider {
         final long start;
         String text;
         final List<Word> words;
+
         RawLine(long start, String text, List<Word> words) {
             this.start = start;
             this.text = text;
@@ -467,14 +469,18 @@ public final class KuwoProvider implements LyricsProvider {
 
         List<String> songwriters = new ArrayList<>();
         if (tags.get("by") != null && !tags.get("by").isEmpty()) songwriters.add(tags.get("by"));
-        if (tags.get("lyricist") != null && !tags.get("lyricist").isEmpty()) songwriters.add(tags.get("lyricist"));
+        if (tags.get("lyricist") != null && !tags.get("lyricist").isEmpty())
+            songwriters.add(tags.get("lyricist"));
 
         List<String> creditLines = LRCParser.extractCreditMetadata(text);
 
         boolean synced = !lines.isEmpty() && lines.get(0).startTimeMs() != LyricsLine.NO_TIME;
         boolean hasWordSync = false;
         for (LyricsLine l : lines) {
-            if (!l.words().isEmpty()) { hasWordSync = true; break; }
+            if (!l.words().isEmpty()) {
+                hasWordSync = true;
+                break;
+            }
         }
 
         Map<String, List<LyricsLine>> transMap = null;
@@ -508,7 +514,11 @@ public final class KuwoProvider implements LyricsProvider {
             String text = stripTags(item.optString("lineLyric", item.optString("lyric", ""))).trim();
             if (text.isEmpty()) continue;
             double seconds;
-            try { seconds = Double.parseDouble(timeStr); } catch (NumberFormatException ex) { continue; }
+            try {
+                seconds = Double.parseDouble(timeStr);
+            } catch (NumberFormatException ex) {
+                continue;
+            }
             if (!Double.isFinite(seconds)) continue;
             times.add(Math.round(seconds * 1000));
             texts.add(text);
@@ -546,6 +556,6 @@ public final class KuwoProvider implements LyricsProvider {
     }
 
     private record ScoredCandidate(String musicId, String title, String artist, String album,
-                                    int duration, int score) {
+                                   int duration, int score) {
     }
 }

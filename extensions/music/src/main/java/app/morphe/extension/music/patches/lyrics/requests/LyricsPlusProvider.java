@@ -380,7 +380,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
         if (upstreamSource != null && upstreamSource.isEmpty()) {
             upstreamSource = null;
         }
-        if (upstreamSource != null && isLyricsPlusSelfSource(upstreamSource)) {
+        if (isLyricsPlusSelfSource(upstreamSource)) {
             upstreamSource = null;
         }
         List<String> songwriters = null;

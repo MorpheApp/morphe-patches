@@ -9,9 +9,9 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.Utils;
-
 import java.util.List;
+
+import app.morphe.extension.shared.Utils;
 
 /**
  * Decides which script a line is written in, since a romanizer is only correct for one of them

@@ -403,7 +403,7 @@ public final class JapaneseMoraSplitter {
      * across Kanji + Okurigana runs.
      *
      * @return {@code AlignedChunk[]} of length {@code ownWords.length}, or {@code null} when the
-     *         line is not Japanese or cannot be meaningfully aligned here.
+     * line is not Japanese or cannot be meaningfully aligned here.
      */
     @Nullable
     public static AlignedChunk[] alignJapaneseLineToSlots(

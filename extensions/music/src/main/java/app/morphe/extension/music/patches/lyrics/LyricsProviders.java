@@ -15,7 +15,6 @@ import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.requests.AMLLProvider;
 import app.morphe.extension.music.patches.lyrics.requests.AppleMusicProvider;
-import app.morphe.extension.music.patches.lyrics.requests.LyricsPlusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.BlyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.CaptionsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
@@ -27,6 +26,7 @@ import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsPlusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.MusixmatchProvider;
 import app.morphe.extension.music.patches.lyrics.requests.NetEaseProvider;

@@ -520,7 +520,7 @@ public class LyricsReadingCalcTest {
                 app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector.contains(
                         shareRom, Character.UnicodeScript.HIRAGANA)
                         || app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector.contains(
-                                shareRom, Character.UnicodeScript.HAN));
+                        shareRom, Character.UnicodeScript.HAN));
         assertTrue(shareRom.toLowerCase(java.util.Locale.ROOT).contains("itsumo"));
         assertTrue(shareRom.toLowerCase(java.util.Locale.ROOT).contains("doo"));
     }

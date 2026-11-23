@@ -1452,7 +1452,7 @@ public final class LyricsCache {
             if (track == null) {
                 return "";
             }
-            return videoId != null ? track + '\0' + videoId : track;
+            return videoId != null ? track + videoId : track;
         } catch (IOException ex) {
             return null;
         }

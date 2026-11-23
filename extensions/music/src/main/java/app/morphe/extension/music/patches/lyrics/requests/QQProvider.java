@@ -21,11 +21,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -88,7 +88,7 @@ public final class QQProvider implements LyricsProvider {
     }
 
     private static List<JSONObject> searchAll(String keyword, TrackInfo track) {
-        String[] musicuUrls = { MUSICU_URL, SHU6_URL };
+        String[] musicuUrls = {MUSICU_URL, SHU6_URL};
         for (String url : musicuUrls) {
             try {
                 JSONArray songs = musicuSearch(url, keyword);

@@ -186,7 +186,7 @@ public final class LyricsSpanBuilder {
         Paint.FontMetricsInt baseFm = new Paint.FontMetricsInt();
         basePaint.getFontMetricsInt(baseFm);
         String original = LyricsTextUtils.displayLineText(line);
-        final boolean centered = line.isCentered();
+        final boolean centered = !Settings.isAlignmentSameSide() && line.isCentered();
 
         final int lineHeight = baseFm.descent - baseFm.ascent;
         final int mainClear = Math.max(0, (int) (lineHeight * MAIN_LINE_SPACING + 0.5f) - lineHeight);
@@ -325,7 +325,7 @@ public final class LyricsSpanBuilder {
         final List<WordTiming> activeTimings = showSyllableRomanization ? syllableRomanTimings : timings;
         final boolean hasActiveWordTimings = line.hasWordTimings()
                 || (activeTimings != null && !activeTimings.isEmpty()
-                        && !LyricsReadingCalc.isEntirelyAveraged(activeTimings));
+                && !LyricsReadingCalc.isEntirelyAveraged(activeTimings));
         SpannableString text = new SpannableString(builder.toString());
         ForegroundColorSpan unsungSpan = applySpans(text,
                 activeTimings,
@@ -532,13 +532,10 @@ public final class LyricsSpanBuilder {
         return ScriptDetector.isLineRtl(text);
     }
 
-    /**
-     * @param forceCenter The line's own agent says it is centred ({@code v1000}/{@code v2000}), so
-     *                    the "Always center lyrics" setting does not decide it.
-     */
+    // forceCenter comes from centered agents or mode; same-side mode clears it.
     public static Layout.Alignment resolveAlignment(boolean isRtl, boolean isRightAligned,
                                                     boolean forceCenter) {
-        if (forceCenter || Settings.LYRICS_FORCE_CENTER.get()) {
+        if (forceCenter || Settings.isAlignmentCenter()) {
             return Layout.Alignment.ALIGN_CENTER;
         }
         if (isRightAligned) {

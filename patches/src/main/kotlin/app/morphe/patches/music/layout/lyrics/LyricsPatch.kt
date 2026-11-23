@@ -98,8 +98,16 @@ val lyricsPatch = patch(
                     ResourceGroup("drawable", "morphe_yt_crosshair.xml")
                 )
                 copyResources(
-                    "lyricssharebutton",
-                    ResourceGroup("drawable", "morphe_yt_share_bold.xml")
+                    "lyricsbrand",
+                    ResourceGroup("drawable",
+                        "morphe_lyrics_brand.xml",
+                        "morphe_share_bg_tag.xml")
+                )
+                copyResources(
+                    "lyricsfullscreenbutton",
+                    ResourceGroup("drawable",
+                        "morphe_fullscreen_enter.xml",
+                        "morphe_fullscreen_exit.xml")
                 )
             }
         }
@@ -169,7 +177,7 @@ val lyricsPatch = patch(
                 )
             ),
             PreferenceCategory(
-                key = "morphe_music_lyrics_section_display",
+                key = "morphe_music_lyrics_section_font_animation",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
@@ -195,7 +203,24 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_focus_spotlight", summary = true),
                     SwitchPreference("morphe_music_lyrics_blur_inactive", summary = true),
                     SwitchPreference("morphe_music_lyrics_line_scale", summary = true),
-                    SwitchPreference("morphe_music_lyrics_split_background", summary = true),
+                    SwitchPreference("morphe_music_lyrics_split_background", summary = true)
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_text_formatting",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_music_lyrics_force_capitalize", summary = true),
+                    SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true),
+                    SwitchPreference("morphe_music_lyrics_han_form", summary = true),
+                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
+                    ListPreference("morphe_music_lyrics_alignment_mode")
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_visibility",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
                     SwitchPreference("morphe_music_lyrics_show_section", summary = true),
                     SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_section",
@@ -204,13 +229,7 @@ val lyricsPatch = patch(
                     ),
                     SwitchPreference("morphe_music_lyrics_hide_played", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true),
-                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
-                    SwitchPreference("morphe_music_lyrics_force_capitalize", summary = true),
-                    SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true),
-                    SwitchPreference("morphe_music_lyrics_han_form", summary = true),
-                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
-                    SwitchPreference("morphe_music_lyrics_force_center", summary = true),
-                    SwitchPreference("morphe_music_lyrics_duet_opposite_side", summary = true)
+                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -218,15 +237,16 @@ val lyricsPatch = patch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
+                    SwitchPreference("morphe_music_lyrics_long_press_share_mode", summary = true),
                     SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background_animated", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
-                    ListPreference("morphe_music_lyrics_copy_button_mode"),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_current_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_current_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_fullscreen_button", summary = true)
                 )
             ),
             PreferenceCategory(

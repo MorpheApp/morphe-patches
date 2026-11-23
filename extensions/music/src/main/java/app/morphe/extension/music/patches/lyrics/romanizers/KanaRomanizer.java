@@ -9,11 +9,11 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.Utils;
-
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import app.morphe.extension.shared.Utils;
 
 /**
  * Hepburn romaji for a run of kana. Work is done a mora at a time: a character alone says

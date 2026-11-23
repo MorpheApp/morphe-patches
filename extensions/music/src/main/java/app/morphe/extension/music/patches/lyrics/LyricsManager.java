@@ -50,8 +50,8 @@ import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
-import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -486,7 +486,7 @@ public final class LyricsManager {
                     && (now - pausedAtUptimeMs) <= PAUSE_STATE_GRACE_MS;
             final boolean isPausedSeek = !playing && (inPauseGrace
                     ? (drift > PAUSED_RESYNC_THRESHOLD_MS
-                            || drift < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
+                       || drift < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
                     : Math.abs(drift) > PAUSED_RESYNC_THRESHOLD_MS);
 
             if (isInitial || isBackwardSeek || isForwardSeek || isStaleDrift || isPausedSeek) {
@@ -872,7 +872,7 @@ public final class LyricsManager {
             final long delta = newPosition - smoothMs;
             final boolean isGenuineTransitionSeek = !nowPlaying
                     ? (delta > PLAYBACK_STATE_SEEK_THRESHOLD_MS
-                            || delta < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
+                       || delta < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
                     : Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS;
             if (lastSampledPlaybackPosMs < 0
                     || (!transitioned && Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS)

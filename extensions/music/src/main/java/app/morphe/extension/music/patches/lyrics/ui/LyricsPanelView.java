@@ -14,12 +14,14 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -28,6 +30,9 @@ import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -51,6 +56,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -106,7 +113,6 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
 
@@ -125,7 +131,7 @@ public final class LyricsPanelView extends FrameLayout
     private static final float SCROLL_ANCHOR_RATIO = 0.16f;
     /** The scroll engine's lead time, in the place of the time to the next line. */
     private static final long DEFAULT_SCROLL_LOOK_AHEAD_MS = 350L;
-    private static final long JUMP_BUTTON_FADE_MS = 200L;
+    static final long JUMP_BUTTON_FADE_MS = 200L;
 
     static final long SECONDARY_REVEAL_MILLISECONDS = 260;
 
@@ -168,13 +174,13 @@ public final class LyricsPanelView extends FrameLayout
     /** Own icon, because the app ships no crosshair icon of its own. */
     private static final String APP_TARGET_ICON = "morphe_yt_crosshair";
 
+    private static final String SHARE_CANCEL_ICON = "yt_outline_experimental_x_vd_theme_18";
+    private static final String SHARE_CONFIRM_ICON = "yt_outline_experimental_share_vd_theme_24";
+
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
-    /** Copy button icon used in classic copy mode. */
+    /** Toolbar copy icon; share mode never changes this button. */
     private static final String COPY_ICON = "morphe_yt_copy_bold";
-
-    /** Share button icon used for card sharing and long-press copy/save actions. */
-    private static final String SHARE_ICON = "morphe_yt_share_bold";
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable updateTranslateLabelRunnable = this::updateTranslateLabel;
@@ -207,8 +213,8 @@ public final class LyricsPanelView extends FrameLayout
     private final LinearLayout buttonRow;
     private final LinearLayout shareSelectionBar;
     private final TextView shareSelectionCountView;
-    private final TextView shareSelectionCancelButton;
-    private final TextView shareSelectionConfirmButton;
+    private final ImageButton shareSelectionCancelButton;
+    private final ImageButton shareSelectionConfirmButton;
     private final LyricsShareSelection shareSelection = new LyricsShareSelection();
     private final Paint sharePillFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint sharePillStrokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -221,6 +227,7 @@ public final class LyricsPanelView extends FrameLayout
     private final ProgressBar progressBar;
     private final TextView transcribePromptView;
     private final TextView jumpToCurrentView;
+    private final LyricsFullscreenController fullscreenController;
 
     /** One translated line per lyrics line, or {@code null} when showing the original only. */
     @Nullable
@@ -341,11 +348,13 @@ public final class LyricsPanelView extends FrameLayout
 
     /** Floating ruler for temporary offset adjustment via horizontal swipe. */
     private final OffsetRulerView offsetRulerView;
+    private final TextView offsetSliderBarView;
     private final GestureDetector offsetGestureDetector;
     private boolean isOffsetAdjusting;
+    private boolean buttonRowHiddenForOffset;
     private float offsetSwipeStartX;
     private int offsetSwipeStartMs;
-    private final Runnable hideOffsetRunnable = this::hideOffsetRuler;
+    private final Runnable hideOffsetRulerRunnable = this::hideOffsetRuler;
 
     private boolean sbRecording;
     private long sbRecordStartMs;
@@ -368,8 +377,7 @@ public final class LyricsPanelView extends FrameLayout
             boolean tapToSeek,
             boolean synced,
             boolean showSection,
-            boolean duetOpposite,
-            boolean forceCenter,
+            String alignmentMode,
             boolean formattingEnabled,
             boolean relaxScroll,
             boolean splitBackground) {
@@ -525,10 +533,9 @@ public final class LyricsPanelView extends FrameLayout
         final int horizontalPadding = Dim.dp24;
         final int verticalPadding = Dim.dp16;
 
-        sharePillStrokePaint.setStyle(Paint.Style.STROKE);
-        sharePillStrokePaint.setStrokeWidth(Math.max(1.5f, Dim.dp(1.25f)));
-        sharePillStrokePaint.setColor(0x90FFFFFF);
-        sharePillFillPaint.setShader(sharePillGradient);
+        sharePillStrokePaint.setStrokeWidth(0f);
+        sharePillFillPaint.setShader(null);
+        sharePillFillPaint.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x1AFFFFFF));
 
         linesContainer = new LinearLayout(context) {
             @Override
@@ -747,12 +754,7 @@ public final class LyricsPanelView extends FrameLayout
         shareSelectionBar.setFocusable(true);
         shareSelectionBar.setFocusableInTouchMode(true);
         shareSelectionBar.setPadding(Dim.dp16, Dim.dp10, Dim.dp12, Dim.dp10);
-        GradientDrawable selBarBg = new GradientDrawable();
-        selBarBg.setShape(GradientDrawable.RECTANGLE);
-        selBarBg.setCornerRadius(Dim.dp16);
-        selBarBg.setColor(0xF017171B);
-        selBarBg.setStroke(Math.max(1, Dim.dp(1)), 0x24FFFFFF);
-        shareSelectionBar.setBackground(selBarBg);
+        shareSelectionBar.setBackground(createBarBackground());
         shareSelectionBar.setElevation(Dim.dp(8));
         shareSelectionBar.setVisibility(GONE);
 
@@ -765,33 +767,41 @@ public final class LyricsPanelView extends FrameLayout
                 0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
         shareSelectionBar.addView(shareSelectionCountView, countParams);
 
-        shareSelectionCancelButton = new TextView(context);
-        applyButtonStyle(shareSelectionCancelButton, null);
-        shareSelectionCancelButton.setText(str("morphe_music_lyrics_share_cancel"));
-        shareSelectionCancelButton.setMinimumHeight(Dim.dp(44));
-        shareSelectionCancelButton.setGravity(Gravity.CENTER);
+        GradientDrawable cancelBg = new GradientDrawable();
+        cancelBg.setShape(GradientDrawable.RECTANGLE);
+        cancelBg.setCornerRadius(Dim.dp(22));
+        cancelBg.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x1AFFFFFF));
+        shareSelectionCancelButton = new ImageButton(context);
+        shareSelectionCancelButton.setScaleType(ImageView.ScaleType.CENTER);
+        shareSelectionCancelButton.setPadding(0, 0, 0, 0);
+        shareSelectionCancelButton.setMinimumWidth(0);
+        shareSelectionCancelButton.setMinimumHeight(0);
+        shareSelectionCancelButton.setImageDrawable(tintedIcon(SHARE_CANCEL_ICON));
+        shareSelectionCancelButton.setContentDescription(str("morphe_music_lyrics_share_cancel"));
         shareSelectionCancelButton.setFocusable(true);
+        attachInteractiveBackground(shareSelectionCancelButton, cancelBg,
+                Dim.dp(22), 0x2AFFFFFF);
         shareSelectionCancelButton.setOnClickListener(v -> exitShareSelectionMode());
         shareSelectionBar.addView(shareSelectionCancelButton, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
+                Dim.dp(44), Dim.dp(44)));
 
-        shareSelectionConfirmButton = new TextView(context);
-        applyButtonStyle(shareSelectionConfirmButton, null);
-        shareSelectionConfirmButton.setText(str("morphe_music_lyrics_share_button"));
-        shareSelectionConfirmButton.setMinimumHeight(Dim.dp(44));
-        shareSelectionConfirmButton.setGravity(Gravity.CENTER);
-        shareSelectionConfirmButton.setFocusable(true);
         GradientDrawable confirmBg = new GradientDrawable();
         confirmBg.setShape(GradientDrawable.RECTANGLE);
         confirmBg.setCornerRadius(Dim.dp(22));
         confirmBg.setColor(ACTIVE_BUTTON_BG_COLOR);
-        shareSelectionConfirmButton.setBackground(confirmBg);
-        shareSelectionConfirmButton.setTextColor(0xFF0F0F14);
+        shareSelectionConfirmButton = new ImageButton(context);
+        shareSelectionConfirmButton.setScaleType(ImageView.ScaleType.CENTER);
+        shareSelectionConfirmButton.setPadding(0, 0, 0, 0);
+        shareSelectionConfirmButton.setMinimumWidth(0);
+        shareSelectionConfirmButton.setMinimumHeight(0);
+        shareSelectionConfirmButton.setImageDrawable(tintedIcon(SHARE_CONFIRM_ICON, 0xFF0F0F14));
+        shareSelectionConfirmButton.setContentDescription(str("morphe_music_lyrics_share_button"));
+        shareSelectionConfirmButton.setFocusable(true);
+        attachInteractiveBackground(shareSelectionConfirmButton, confirmBg,
+                Dim.dp(22), 0x22000000);
         shareSelectionConfirmButton.setOnClickListener(v -> onConfirmShareSelection());
         LinearLayout.LayoutParams confirmParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+                Dim.dp(44), Dim.dp(44));
         confirmParams.setMarginStart(Dim.dp8);
         shareSelectionBar.addView(shareSelectionConfirmButton, confirmParams);
 
@@ -822,6 +832,8 @@ public final class LyricsPanelView extends FrameLayout
         addView(jumpToCurrentView, jumpParams);
         jumpToCurrentView.bringToFront();
 
+        fullscreenController = new LyricsFullscreenController(this);
+
         offsetRulerView = new OffsetRulerView(context);
         LayoutParams rulerParams = new LayoutParams(
                 LayoutParams.MATCH_PARENT,
@@ -830,6 +842,30 @@ public final class LyricsPanelView extends FrameLayout
         rulerParams.bottomMargin = Dim.dp8;
         addView(offsetRulerView, rulerParams);
         offsetRulerView.setOnClickListener(view -> onOffsetLabelClicked());
+
+        offsetSliderBarView = new TextView(context);
+        offsetSliderBarView.setText(str("morphe_music_lyrics_offset_slider_hint"));
+        offsetSliderBarView.setTextColor(0xFFF2F2F5);
+        offsetSliderBarView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f);
+        offsetSliderBarView.setGravity(Gravity.CENTER);
+        offsetSliderBarView.setMaxLines(2);
+        offsetSliderBarView.setPadding(Dim.dp12, Dim.dp4, Dim.dp12, Dim.dp4);
+        offsetSliderBarView.setBackground(createBarBackground());
+        offsetSliderBarView.setElevation(Dim.dp(8));
+        offsetSliderBarView.setClickable(false);
+        offsetSliderBarView.setFocusable(false);
+        offsetSliderBarView.setOnTouchListener((v, event) -> {
+            handleOffsetGesture(event);
+            return true;
+        });
+        LayoutParams barParams = new LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                Dim.dp(48),
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+        barParams.leftMargin = Dim.dp16;
+        barParams.rightMargin = Dim.dp16;
+        barParams.bottomMargin = Dim.dp32;
+        addView(offsetSliderBarView, barParams);
 
         offsetGestureDetector = new GestureDetector(context,
                 new GestureDetector.SimpleOnGestureListener() {
@@ -889,6 +925,7 @@ public final class LyricsPanelView extends FrameLayout
         if (h > 0) {
             updateLinesContainerPadding();
         }
+        fullscreenController.onSizeChanged();
     }
 
     /** Touches this close around the view also count as on it. */
@@ -903,9 +940,32 @@ public final class LyricsPanelView extends FrameLayout
                 && y >= (v.getTop() - slop) && y <= (v.getBottom() + slop);
     }
 
+    /** Hit test in panel coordinates, so a view reparented into the button row still matches. */
+    boolean isTouchInside(View v, MotionEvent event, int slop) {
+        if (v.getVisibility() != VISIBLE) {
+            return false;
+        }
+        int[] panelPos = new int[2];
+        getLocationInWindow(panelPos);
+        int[] viewPos = new int[2];
+        v.getLocationInWindow(viewPos);
+        float left = viewPos[0] - panelPos[0];
+        float top = viewPos[1] - panelPos[1];
+        float x = event.getX();
+        float y = event.getY();
+        return x >= left - slop && x <= left + v.getWidth() + slop
+                && y >= top - slop && y <= top + v.getHeight() + slop;
+    }
+
     /** Touches on the jump button are its alone, and never start a scroll or an offset drag. */
     private boolean isTouchOnJumpButton(MotionEvent event) {
-        return isTouchInsideView(jumpToCurrentView, event);
+        return isTouchInside(jumpToCurrentView, event, Dim.dp16)
+                || fullscreenController.isTouchInsideButton(event);
+    }
+
+    private boolean isTouchOnOffsetBar(MotionEvent event) {
+        return offsetSliderBarView.getVisibility() == VISIBLE
+                && isTouchInsideView(offsetSliderBarView, event);
     }
 
     @Override
@@ -979,6 +1039,12 @@ public final class LyricsPanelView extends FrameLayout
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && fullscreenController.isFullscreen()) {
+            if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled()) {
+                fullscreenController.onBackPressed();
+            }
+            return true;
+        }
         if (isShareSelectionMode && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
             if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled() && !shareExportInProgress) {
                 exitShareSelectionMode();
@@ -990,7 +1056,8 @@ public final class LyricsPanelView extends FrameLayout
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (isTouchOnJumpButton(event) || isTouchOnShareSelectionBar(event)) {
+        if (isTouchOnJumpButton(event) || isTouchOnShareSelectionBar(event)
+                || isTouchOnOffsetBar(event)) {
             return false;
         }
         if (!isShareSelectionMode) {
@@ -1015,11 +1082,23 @@ public final class LyricsPanelView extends FrameLayout
         }
         isOffsetAdjusting = false;
         LyricsManager.getInstance().persistTemporaryOffsetMs();
+        hideOffsetHintOnly();
+        scheduleHideOffsetRuler();
     }
 
     private void showOffsetRuler() {
-        handler.removeCallbacks(hideOffsetRunnable);
+        handler.removeCallbacks(hideOffsetRulerRunnable);
         offsetRulerView.setOffsetMs(LyricsManager.getInstance().getTemporaryOffsetMs());
+        if (buttonRow.getVisibility() == VISIBLE) {
+            buttonRow.setVisibility(GONE);
+            buttonRowHiddenForOffset = true;
+        }
+        offsetSliderBarView.bringToFront();
+        if (offsetSliderBarView.getVisibility() != VISIBLE) {
+            offsetSliderBarView.setAlpha(0f);
+            offsetSliderBarView.setVisibility(VISIBLE);
+            offsetSliderBarView.animate().alpha(1f).setDuration(200).start();
+        }
         if (offsetRulerView.getVisibility() != VISIBLE) {
             offsetRulerView.setAlpha(0f);
             offsetRulerView.setVisibility(VISIBLE);
@@ -1028,17 +1107,42 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void hideOffsetRuler() {
-        if (offsetRulerView.getVisibility() != VISIBLE) return;
-        offsetRulerView.animate().alpha(0f).setDuration(200).withEndAction(() ->
-                offsetRulerView.setVisibility(GONE)).start();
+        handler.removeCallbacks(hideOffsetRulerRunnable);
+        if (offsetRulerView.getVisibility() == VISIBLE) {
+            offsetRulerView.animate().alpha(0f).setDuration(200).withEndAction(() ->
+                    offsetRulerView.setVisibility(GONE)).start();
+        }
+        hideOffsetHintOnly();
+    }
+
+    private void hideOffsetHintOnly() {
+        if (buttonRowHiddenForOffset) {
+            buttonRowHiddenForOffset = false;
+            if (!fullscreenController.isFullscreen()) buttonRow.setVisibility(VISIBLE);
+        }
+        if (offsetSliderBarView.getVisibility() != VISIBLE) return;
+        offsetSliderBarView.animate().alpha(0f).setDuration(200).withEndAction(() ->
+                offsetSliderBarView.setVisibility(GONE)).start();
     }
 
     private void scheduleHideOffsetRuler() {
-        handler.removeCallbacks(hideOffsetRunnable);
-        if (sbRecording || LyricsManager.getInstance().getTemporaryOffsetMs() != 0) {
-            return;
+        handler.removeCallbacks(hideOffsetRulerRunnable);
+        if (sbRecording || LyricsManager.getInstance().getTemporaryOffsetMs() != 0) return;
+        handler.postDelayed(hideOffsetRulerRunnable, 2000);
+    }
+
+    private void hideTemporaryOffsetUi() {
+        handler.removeCallbacks(hideOffsetRulerRunnable);
+        if (buttonRowHiddenForOffset) {
+            buttonRowHiddenForOffset = false;
+            buttonRow.setAlpha(1f);
         }
-        handler.postDelayed(hideOffsetRunnable, 2000);
+        offsetSliderBarView.animate().cancel();
+        offsetSliderBarView.setAlpha(0f);
+        offsetSliderBarView.setVisibility(GONE);
+        offsetRulerView.animate().cancel();
+        offsetRulerView.setAlpha(0f);
+        offsetRulerView.setVisibility(GONE);
     }
 
     private void onOffsetLabelClicked() {
@@ -1077,7 +1181,7 @@ public final class LyricsPanelView extends FrameLayout
         sbRecording = true;
         sbRecordStartMs = manager.getVideoPositionMs();
         sbRecordVideoId = videoId;
-        handler.removeCallbacks(hideOffsetRunnable);
+        handler.removeCallbacks(hideOffsetRulerRunnable);
         handler.removeCallbacks(recordTickRunnable);
         offsetRulerView.setRecordTimeMs(sbRecordStartMs);
         handler.post(recordTickRunnable);
@@ -1107,6 +1211,12 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        fullscreenController.onConfigurationChanged();
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         try {
@@ -1115,6 +1225,7 @@ public final class LyricsPanelView extends FrameLayout
                 pendingAnchorScroll = null;
             }
             setKeepScreenOn(false);
+            fullscreenController.onDetached();
             footerBlur.cancel();
             scrollEngine.cleanup();
             LyricsManager.getInstance().removeListener(this);
@@ -1370,7 +1481,7 @@ public final class LyricsPanelView extends FrameLayout
                 boolean isRight = (lineViews.get(i) instanceof LyricsLineView llv)
                         ? llv.isRightAligned()
                         : ((lineViews.get(i).getGravity()
-                                & Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK) == Gravity.END);
+                            & Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK) == Gravity.END);
                 if (agentTag != null && agentTag.getParent() instanceof FrameLayout existingTagRow) {
                     existingTagRow.addView(tag, tagLayoutParams(isRight));
                     sectionTags.set(i, tag);
@@ -1573,15 +1684,22 @@ public final class LyricsPanelView extends FrameLayout
 
     public void applyCurrentButtonSetting() {
         if (!Settings.LYRICS_SHOW_CURRENT_BUTTON.get()) {
-            hideJumpToCurrentButton();
+            jumpToCurrentView.animate().cancel();
+            jumpToCurrentView.setAlpha(0f);
+            jumpToCurrentView.setVisibility(GONE);
         } else if (isBrowsing) {
             showJumpToCurrentButton();
         }
     }
 
+    public void applyFullscreenButtonSetting() {
+        fullscreenController.applySetting();
+    }
+
     private void showLyrics(Lyrics newLyrics) {
         try {
             buildLyrics(newLyrics);
+            fullscreenController.onLyricsChanged();
         } catch (Throwable ex) {
             Logger.printExceptionIfDebug(() -> "Debug: buildLyrics failure", ex);
         }
@@ -1634,8 +1752,7 @@ public final class LyricsPanelView extends FrameLayout
                 Settings.LYRICS_TAP_TO_SEEK.get(),
                 targetLyrics.synced(),
                 Settings.LYRICS_SHOW_SECTION.get(),
-                Settings.LYRICS_DUET_OPPOSITE_SIDE.get(),
-                Settings.LYRICS_FORCE_CENTER.get(),
+                Settings.LYRICS_ALIGNMENT_MODE.get(),
                 LyricsPresentation.isFormattingEnabled(),
                 LyricsViewSupport.isRelaxScrollEnabled(),
                 Settings.LYRICS_SPLIT_BACKGROUND.get());
@@ -1709,6 +1826,10 @@ public final class LyricsPanelView extends FrameLayout
         progressBar.setVisibility(GONE);
         hideTranscribePrompt();
         scrollView.setVisibility(VISIBLE);
+        isBrowsing = false;
+        userScrollUntilUptimeMs = 0L;
+        handler.removeCallbacks(resumeFollowRunnable);
+        hideJumpToCurrentButton();
 
         final Paint baseLinePaint = createBaseLinePaint(getResources(), Settings.LYRICS_TEXT_SIZE.get());
         final boolean[] rightAligned = lastBuiltRightAligned != null
@@ -1917,7 +2038,7 @@ public final class LyricsPanelView extends FrameLayout
             isSecFlags = LyricsSectionTags.secondaryLineFlags(newLyrics.lines());
             lineRightAligned = LyricsLayoutCalc.rightAlignedLines(newLyrics.lines(), isSecFlags);
             boolean duet = false;
-            if (Settings.LYRICS_DUET_OPPOSITE_SIDE.get() && !Settings.LYRICS_FORCE_CENTER.get()) {
+            if (!Settings.isAlignmentSameSide() && !Settings.isAlignmentCenter()) {
                 for (LyricsLine l : newLyrics.lines()) {
                     if (l.isDuet()) {
                         duet = true;
@@ -1955,11 +2076,12 @@ public final class LyricsPanelView extends FrameLayout
             lineView.setScrollEngine(scrollEngine);
             lineView.setSecondary(isSec);
             lineView.setIsRightAligned(isRightAligned);
-            // A vocal shares its lead line's row and centres with it.
-            lineView.setIsCentered(Settings.LYRICS_FORCE_CENTER.get()
-                    || (isSec && curParentForAlign >= 0
+            // A vocal centers with its lead line unless same-side mode is active.
+            lineView.setIsCentered(Settings.isAlignmentCenter()
+                    || (!Settings.isAlignmentSameSide()
+                    && (isSec && curParentForAlign >= 0
                     ? newLyrics.lines().get(curParentForAlign).isCentered()
-                    : line.isCentered()));
+                    : line.isCentered())));
             // Plain text first so the panel paints immediately; the karaoke spans are added on a
             // background thread (see the LINE_BUILDER_EXECUTOR pass below). A hide rebuild keeps
             // the surviving regions so its first frame matches the shrunken layout exactly, and a
@@ -2073,8 +2195,10 @@ public final class LyricsPanelView extends FrameLayout
             TextView agentTag = createSectionTag(context, agentName);
 
             if (sectionTag != null || agentTag != null) {
-                final int effectiveDuetInset = (isDuetSong && !line.isCentered()
-                        && !Settings.LYRICS_FORCE_CENTER.get()) ? duetSideInset : 0;
+                final boolean centeredForLayout = Settings.isAlignmentCenter()
+                        || (!Settings.isAlignmentSameSide() && line.isCentered());
+                final int effectiveDuetInset = (isDuetSong && !centeredForLayout)
+                        ? duetSideInset : 0;
                 addTagRow(context, lineRow, sectionTag, agentTag, i, isRightAligned, effectiveDuetInset);
             }
 
@@ -2181,8 +2305,9 @@ public final class LyricsPanelView extends FrameLayout
         lineRow.setClipChildren(false);
         lineRow.setClipToPadding(false);
 
-        // A centred line takes neither duet side.
-        if (isDuetSong && !line.isCentered() && !Settings.LYRICS_FORCE_CENTER.get()) {
+        final boolean centeredForLayout = Settings.isAlignmentCenter()
+                || (!Settings.isAlignmentSameSide() && line.isCentered());
+        if (isDuetSong && !centeredForLayout) {
             if (isRightAligned) {
                 lineRow.setPadding(duetSideInset, Dim.dp(2), 0, Dim.dp(2));
             } else {
@@ -2274,7 +2399,6 @@ public final class LyricsPanelView extends FrameLayout
         });
     }
 
-    /** Copies the line, or the word pressed, on a long press (or toggles Share Selection). */
     private void setCopyOnLongClick(LyricsLineView lineView, LyricsLine line, int lineIndex,
                                     int mainIndex, boolean isSec, boolean allowCopy) {
         lineView.setOnLongClickListener(v -> {
@@ -2284,6 +2408,11 @@ public final class LyricsPanelView extends FrameLayout
             }
             if (!allowCopy) {
                 return false;
+            }
+            // Share mode turns this long-press into line selection.
+            if (Settings.LYRICS_LONG_PRESS_SHARE_MODE.get()) {
+                enterShareSelectionMode(mainIndex >= 0 ? mainIndex : lineIndex);
+                return true;
             }
             LyricsLineView lv = (LyricsLineView) v;
             String textToCopy = lv.getCopyTextForTouch(lv.lastTouchX, lv.lastTouchY);
@@ -3806,36 +3935,6 @@ public final class LyricsPanelView extends FrameLayout
         return line.text();
     }
 
-    private void showShareLongPressDialog() {
-        Lyrics current = lyrics;
-        if (current == null || current.isEmpty()) {
-            return;
-        }
-        CharSequence[] entries = {
-                str("morphe_music_lyrics_copy_plain_option"),
-                str("morphe_music_lyrics_save_file_option")
-        };
-        CharSequence[] values = {"copy_plain", "save_file"};
-        try {
-            Dialog picker = CustomDialogListPreference.createListDialog(
-                    getContext(),
-                    str("morphe_music_lyrics_share_options_title"),
-                    entries,
-                    values,
-                    null,
-                    index -> {
-                        if (index == 0) {
-                            onCopyClicked();
-                        } else if (index == 1) {
-                            onCopyLongPressed();
-                        }
-                    });
-            picker.show();
-        } catch (Exception ex) {
-            Logger.printException(() -> "showShareLongPressDialog failure", ex);
-        }
-    }
-
     private void onCopyClicked() {
         try {
             Lyrics current = lyrics;
@@ -4896,21 +4995,54 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void showJumpToCurrentButton() {
-        if (!Settings.LYRICS_SHOW_CURRENT_BUTTON.get() || lyrics == null || !lyrics.synced())
-            return;
-        jumpToCurrentView.bringToFront();
-        jumpToCurrentView.animate().cancel();
-        if (jumpToCurrentView.getVisibility() == VISIBLE && jumpToCurrentView.getAlpha() == 1f)
-            return;
-        jumpToCurrentView.setAlpha(0f);
-        jumpToCurrentView.setVisibility(VISIBLE);
-        jumpToCurrentView.animate().alpha(1f).setDuration(JUMP_BUTTON_FADE_MS).start();
+        if (lyrics == null || !lyrics.synced()) return;
+        if (Settings.LYRICS_SHOW_CURRENT_BUTTON.get()) {
+            jumpToCurrentView.bringToFront();
+            jumpToCurrentView.animate().cancel();
+            if (jumpToCurrentView.getVisibility() != VISIBLE || jumpToCurrentView.getAlpha() != 1f) {
+                jumpToCurrentView.setAlpha(0f);
+                jumpToCurrentView.setVisibility(VISIBLE);
+                jumpToCurrentView.animate().alpha(1f).setDuration(JUMP_BUTTON_FADE_MS).start();
+            }
+        }
+        fullscreenController.showButton();
     }
 
     private void hideJumpToCurrentButton() {
         jumpToCurrentView.animate().cancel();
         jumpToCurrentView.setAlpha(0f);
         jumpToCurrentView.setVisibility(GONE);
+        fullscreenController.hideButton();
+    }
+
+    public boolean isFullscreen() {
+        return fullscreenController.isFullscreen();
+    }
+
+    ScrollView getScrollView() {
+        return scrollView;
+    }
+
+    ViewGroup getButtonRow() {
+        return buttonRow;
+    }
+
+    View getJumpButton() {
+        return jumpToCurrentView;
+    }
+
+    boolean isBrowsing() {
+        return isBrowsing;
+    }
+
+    boolean isButtonRowHiddenForOffset() {
+        return buttonRowHiddenForOffset;
+    }
+
+    void restoreButtonRowAfterFullscreen() {
+        buttonRow.animate().cancel();
+        buttonRow.setAlpha(1f);
+        updateButtonRowVisibility();
     }
 
     /**
@@ -6144,23 +6276,16 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void createToolbarButtons() {
-        final boolean shareMode = "share".equalsIgnoreCase(Settings.LYRICS_COPY_BUTTON_MODE.get());
         copyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_COPY_BUTTON.get(),
-                shareMode ? SHARE_ICON : COPY_ICON,
-                shareMode ? view -> onShareButtonClicked() : view -> onCopyClicked(),
+                COPY_ICON,
+                view -> onCopyClicked(),
                 view -> {
-                    if (shareMode) {
-                        showShareLongPressDialog();
-                    } else {
-                        onCopyLongPressed();
-                    }
+                    onCopyLongPressed();
                     return true;
                 },
                 false);
         if (copyView != null) {
-            copyView.setContentDescription(str(shareMode
-                    ? "morphe_music_lyrics_share_button"
-                    : "morphe_music_lyrics_copy"));
+            copyView.setContentDescription(str("morphe_music_lyrics_copy"));
         }
 
         translateView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get(),
@@ -6205,6 +6330,7 @@ public final class LyricsPanelView extends FrameLayout
         buttonRow.removeAllViews();
         hiddenToolbarButtons.clear();
         createToolbarButtons();
+        fullscreenController.onToolbarRebuilt();
         // The row is shown with the lyrics, so a rebuild while they are loading leaves it hidden.
         if (footerContainer.getVisibility() == VISIBLE) {
             updateButtonRowVisibility();
@@ -6234,7 +6360,7 @@ public final class LyricsPanelView extends FrameLayout
         }
     }
 
-    private void onShareButtonClicked() {
+    private void enterShareSelectionMode(int preselectIndex) {
         Lyrics current = lyrics;
         if (current == null || current.isEmpty()) {
             return;
@@ -6250,6 +6376,11 @@ public final class LyricsPanelView extends FrameLayout
                 activeIndicesSet,
                 primaryActiveIndex,
                 highlightedIndex);
+        if (preselectIndex >= 0 && preselectIndex < current.lines().size()
+                && LyricsShareSelection.isSelectableLine(current.lines().get(preselectIndex))) {
+            shareSelection.clear();
+            shareSelection.toggle(preselectIndex);
+        }
 
         List<Integer> preselected = shareSelection.selectedIndicesInOrder();
         int anchorCandidate = preselected.isEmpty()
@@ -6262,6 +6393,7 @@ public final class LyricsPanelView extends FrameLayout
         scrollEngine.reset();
         handler.removeCallbacks(resumeFollowRunnable);
         hideJumpToCurrentButton();
+        hideTemporaryOffsetUi();
 
         buttonRow.setVisibility(GONE);
         updateShareSelectionBarState();
@@ -6310,9 +6442,8 @@ public final class LyricsPanelView extends FrameLayout
 
         shareSelectionBar.animate().cancel();
         shareSelectionBar.setVisibility(GONE);
-        if (footerContainer.getVisibility() == VISIBLE) {
-            updateButtonRowVisibility();
-        }
+        buttonRow.setAlpha(1f);
+        updateButtonRowVisibility();
         if (lyrics != null && lyrics.synced()) {
             long pos = LyricsManager.getInstance().getPositionMs();
             handleSeekOrRewind(pos);
@@ -6379,20 +6510,6 @@ public final class LyricsPanelView extends FrameLayout
             if (tagRow != null) {
                 tagRow.setAlpha(isShareSelectionMode ? (selected ? 0.90f : 0.36f) : 1.0f);
             }
-            if (selected) {
-                if (lv != null && lv.getScaleX() < 1.01f) {
-                    lv.animate().scaleX(1.014f).scaleY(1.014f)
-                            .setDuration(160L)
-                            .setInterpolator(LyricsViewSupport.FAST_OUT_SLOW_IN)
-                            .start();
-                }
-            } else if (lv != null) {
-                lv.animate().cancel();
-                if (lv.getScaleX() != 1.0f || lv.getScaleY() != 1.0f) {
-                    lv.setScaleX(1.0f);
-                    lv.setScaleY(1.0f);
-                }
-            }
         }
         linesContainer.invalidate();
     }
@@ -6453,7 +6570,6 @@ public final class LyricsPanelView extends FrameLayout
             sharePillGradientMatrix.postTranslate(0f, sharePillRect.top);
             sharePillGradient.setLocalMatrix(sharePillGradientMatrix);
             canvas.drawRoundRect(sharePillRect, radiusPx, radiusPx, sharePillFillPaint);
-            canvas.drawRoundRect(sharePillRect, radiusPx, radiusPx, sharePillStrokePaint);
         }
     }
 
@@ -6541,7 +6657,7 @@ public final class LyricsPanelView extends FrameLayout
         final TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
         final String rawTitle = LyricsManager.getInstance().getCurrentRawTitle();
         final String rawArtist = LyricsManager.getInstance().getCurrentRawArtist();
-        final boolean forceCenter = Settings.LYRICS_FORCE_CENTER.get();
+        final boolean forceCenter = Settings.isAlignmentCenter();
         final boolean swapTransRoma = Settings.LYRICS_SWAP_TRANS_ROMA.get();
         final boolean initialRomaOn = romanizedLines != null || perWordRomaji
                 || onlyMode == OnlyMode.ROMA || onlyMode == OnlyMode.BOTH;
@@ -6885,9 +7001,39 @@ public final class LyricsPanelView extends FrameLayout
         }, BUTTON_STATE_FADE_MILLISECONDS);
     }
 
+    private static void attachInteractiveBackground(
+            View view, @Nullable Drawable baseDrawable, float focusCornerRadiusPx, int rippleColor) {
+        GradientDrawable focusOverlay = new GradientDrawable();
+        focusOverlay.setShape(GradientDrawable.RECTANGLE);
+        focusOverlay.setCornerRadius(focusCornerRadiusPx);
+        focusOverlay.setColor(Color.TRANSPARENT);
+        focusOverlay.setStroke(Dim.dp(2), 0xFFFFFFFF);
+
+        StateListDrawable states = new StateListDrawable();
+        if (baseDrawable != null) {
+            states.addState(new int[]{android.R.attr.state_focused},
+                    new LayerDrawable(new Drawable[]{baseDrawable, focusOverlay}));
+            states.addState(new int[0], baseDrawable);
+        } else {
+            states.addState(new int[]{android.R.attr.state_focused}, focusOverlay);
+            states.addState(new int[0], new GradientDrawable());
+        }
+
+        GradientDrawable mask = new GradientDrawable();
+        mask.setShape(GradientDrawable.RECTANGLE);
+        mask.setCornerRadius(focusCornerRadiusPx);
+        mask.setColor(0xFFFFFFFF);
+
+        view.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor), states, mask));
+    }
+
     /** A button icon ready to be set on a view: tinted and sized to match the other buttons. */
     @Nullable
     private Drawable tintedIcon(@Nullable String iconName) {
+        return tintedIcon(iconName, LyricsColors.lineTextColor());
+    }
+
+    private Drawable tintedIcon(@Nullable String iconName, int tint) {
         if (iconName == null || iconName.isEmpty()) {
             return null;
         }
@@ -6897,7 +7043,7 @@ public final class LyricsPanelView extends FrameLayout
             return null;
         }
         icon = icon.mutate();
-        icon.setTint(LyricsColors.lineTextColor());
+        icon.setTint(tint);
         icon.setBounds(0, 0, Dim.dp24, Dim.dp24);
         return icon;
     }
@@ -6994,7 +7140,15 @@ public final class LyricsPanelView extends FrameLayout
         }
     }
 
-    private void applyButtonStyle(TextView button, @Nullable String iconName) {
+    private static GradientDrawable createBarBackground() {
+        GradientDrawable background = new GradientDrawable();
+        background.setShape(GradientDrawable.RECTANGLE);
+        background.setCornerRadius(Dim.dp16);
+        background.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x1AFFFFFF));
+        return background;
+    }
+
+    void applyButtonStyle(TextView button, @Nullable String iconName) {
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, BUTTON_TEXT_SIZE_SP);
         button.setTextColor(LyricsColors.lineTextColor());
         button.setTypeface(null, Typeface.BOLD);

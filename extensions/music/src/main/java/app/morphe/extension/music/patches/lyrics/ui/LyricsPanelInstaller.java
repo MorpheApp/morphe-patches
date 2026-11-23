@@ -176,7 +176,6 @@ public final class LyricsPanelInstaller {
                 panelView.releaseOnlyModesForHiddenButtons(translateButtonOff, romanizeButtonOff);
             }
             if (Settings.LYRICS_SHOW_COPY_BUTTON.key.equals(key)
-                    || Settings.LYRICS_COPY_BUTTON_MODE.key.equals(key)
                     || Settings.LYRICS_SHOW_TRANSLATE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_REFRESH_BUTTON.key.equals(key)) {
@@ -189,12 +188,13 @@ public final class LyricsPanelInstaller {
                 });
             } else if (Settings.LYRICS_SHOW_CURRENT_BUTTON.key.equals(key)) {
                 panelView.applyCurrentButtonSetting();
+            } else if (Settings.LYRICS_SHOW_FULLSCREEN_BUTTON.key.equals(key)) {
+                panelView.applyFullscreenButtonSetting();
             } else if (Settings.LYRICS_TEXT_SIZE.key.equals(key)
                     || Settings.LYRICS_LINE_SCALE.key.equals(key)) {
                 panelView.applyTextSize();
                 panelView.applyLineScale();
-            } else if (formatting || Settings.LYRICS_FORCE_CENTER.key.equals(key)
-                    || Settings.LYRICS_DUET_OPPOSITE_SIDE.key.equals(key)
+            } else if (formatting || Settings.LYRICS_ALIGNMENT_MODE.key.equals(key)
                     || Settings.LYRICS_SWAP_TRANS_ROMA.key.equals(key)
                     || Settings.LYRICS_TAP_TO_SEEK.key.equals(key)) {
                 // These are read while the line is laid out, so the lines need rebuilding.
@@ -463,6 +463,9 @@ public final class LyricsPanelInstaller {
         }
 
         LyricsPanelView existing = panelReference.get();
+        if (existing != null && existing.isFullscreen()) {
+            return true;
+        }
 
         if (existing != null && existing.getParent() instanceof ViewGroup previousParent
                 && previousParent != panel) {
@@ -634,7 +637,8 @@ public final class LyricsPanelInstaller {
      * @return Whether the lyrics panel or the lyrics tab is the one on screen.
      */
     public static boolean isLyricsPanelOpen() {
-        return isInTab(panelReference.get()) || isCurrentPanelLyrics();
+        LyricsPanelView panel = panelReference.get();
+        return (panel != null && panel.isFullscreen()) || isInTab(panel) || isCurrentPanelLyrics();
     }
 
     /**
@@ -643,7 +647,9 @@ public final class LyricsPanelInstaller {
      * @return Whether another engagement panel, such as the comments, holds the container.
      */
     public static boolean isOtherPanelForeground() {
-        return !isInTab(panelReference.get())
+        LyricsPanelView panel = panelReference.get();
+        return !(panel != null && panel.isFullscreen())
+                && !isInTab(panel)
                 && currentPanelReference.get() != null
                 && !isCurrentPanelLyrics();
     }

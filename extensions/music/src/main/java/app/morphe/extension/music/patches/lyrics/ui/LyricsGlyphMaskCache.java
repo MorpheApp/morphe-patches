@@ -9,14 +9,13 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
-import android.graphics.MaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LinearGradient;
+import android.graphics.MaskFilter;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
