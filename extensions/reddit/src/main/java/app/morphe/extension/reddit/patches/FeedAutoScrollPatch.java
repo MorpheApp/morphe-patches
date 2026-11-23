@@ -308,7 +308,9 @@ public final class FeedAutoScrollPatch {
     public static void onNavBarStateChange(float fraction) {
         try {
             if (isEnabled()) {
-                FeedAutoScrollButton.onNavBarStateChange(fraction);
+                // Disable bottom bar auto-hide hooks the same method and its hook can run after this one.
+                FeedAutoScrollButton.onNavBarStateChange(
+                        DisableBottomBarAutoHidePatch.getNavBarShownFraction(fraction));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onNavBarStateChange failure", ex);
