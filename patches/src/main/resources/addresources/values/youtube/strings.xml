@@ -278,6 +278,24 @@ Limitations:
 • Comments: %4$s
 • Total: %5$s"</string>
 
+    <string name="morphe_hide_videos_by_views_screen_title">View count filter</string>
+    <string name="morphe_hide_videos_by_views_screen_summary">Hide videos in feeds and search that have too few or too many views</string>
+    <string name="morphe_hide_videos_by_views_home_title">Hide Home videos by views</string>
+    <string name="morphe_hide_videos_by_views_search_title">Hide search results by views</string>
+    <string name="morphe_hide_videos_by_views_subscriptions_title">Hide Subscriptions videos by views</string>
+    <string name="morphe_hide_videos_by_views_minimum_title">Minimum views</string>
+    <string name="morphe_hide_videos_by_views_minimum_summary">Videos with fewer views are hidden. 0 = no minimum</string>
+    <string name="morphe_hide_videos_by_views_maximum_title">Maximum views</string>
+    <string name="morphe_hide_videos_by_views_maximum_summary">Videos with more views are hidden. 0 = no maximum</string>
+    <string name="morphe_hide_videos_by_views_about_summary">"Home / Subscriptions / Search are filtered to hide videos and Shorts by their view count
+
+Limitations:
+• YouTube rounds view counts, so 1.2K views is counted as 1200 views
+• Live streams are not hidden
+• A hidden Short can leave an empty space in a Shorts shelf"</string>
+    <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+    <string name="morphe_hide_videos_by_views_toast_broad">View count filter will hide all videos</string>
+
     <string name="morphe_hide_stats_category_title">Stats</string>
     <string name="morphe_hide_stats_hidden_24h_title">Videos hidden, last 24 hours</string>
     <string name="morphe_hide_stats_hidden_all_title">Videos hidden, all time</string>

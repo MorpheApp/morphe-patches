@@ -18,7 +18,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.icu.text.CompactDecimalFormat;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -52,6 +51,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
+import app.morphe.extension.youtube.patches.utils.CompactNumbers;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -91,11 +91,7 @@ public final class FeedViewCountPatch {
     private static final int MAX_SUBTITLE_LENGTH = 150;
     private static final int MAX_SEGMENT_LENGTH = 40;
 
-    /**
-     * A number, such as 457, 4,7 or 1 234. Some languages show words before it.
-     */
-    private static final Pattern NUMBER_PATTERN =
-            Pattern.compile("\\p{Nd}+(?:[.,'’٫٬\u00A0\u202F ]\\p{Nd}+)*");
+    private static final Pattern NUMBER_PATTERN = CompactNumbers.NUMBER_PATTERN;
 
     /** Different words of view counts that were seen, such as "views" and "watching". */
     private static final int MAX_VIEW_WORDS = 8;
@@ -141,12 +137,6 @@ public final class FeedViewCountPatch {
     private static final int BACKGROUND_COLOR = 0xA6000000;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
 
-    /** Shortened number units of the language of the app, such as K and M, longest first. */
-    @Nullable
-    private static List<String> units;
-    @Nullable
-    private static Locale unitsLocale;
-
     /** Used on more than one thread. */
     private static final Set<String> viewWords = new LinkedHashSet<>();
 
@@ -187,7 +177,7 @@ public final class FeedViewCountPatch {
      * inside the command that opens it. Its field 2 has the shortened view count, such as 4,8 Mln,
      * and the full view count, such as "4,8 milioni di visualizzazioni".
      */
-    private static final int METADATA_FIELD = 218178449;
+    public static final int METADATA_FIELD = 218178449;
     /** Field of the full view count inside field 2.3 of {@link #METADATA_FIELD}. */
     private static final int METADATA_FULL_VIEW_COUNT_FIELD = 75730170;
 
@@ -318,43 +308,6 @@ public final class FeedViewCountPatch {
 
     // region view count text
 
-    private static synchronized List<String> getUnits(Locale locale) {
-        if (units == null || !locale.equals(unitsLocale)) {
-            Set<String> found = new LinkedHashSet<>();
-            // Short units, such as M, and long units, such as million.
-            for (CompactDecimalFormat.CompactStyle style : CompactDecimalFormat.CompactStyle.values()) {
-                try {
-                    CompactDecimalFormat format = CompactDecimalFormat.getInstance(locale, style);
-                    // From a thousand up to a quadrillion.
-                    long value = 1_000;
-                    for (int i = 0; i < 13; i++) {
-                        // Units of more words keep the space between them, such as thousand crore.
-                        String unit = format.format(value).replaceAll("[\\p{Nd}.,'’]", "")
-                                .replaceAll("[\\s\u00A0\u202F]+", " ").trim();
-                        if (!unit.isEmpty()) {
-                            found.add(unit);
-                        }
-                        value *= 10;
-                    }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Units failure", ex);
-                }
-            }
-            // The app can be in another language than its locale.
-            found.add("K");
-            found.add("M");
-            found.add("B");
-            // English (India) shows lakh and crore, but abbreviates them as L and Cr.
-            found.add("lakh");
-            found.add("crore");
-            List<String> list = new ArrayList<>(found);
-            list.sort((a, b) -> b.length() - a.length());
-            units = list;
-            unitsLocale = locale;
-        }
-        return units;
-    }
-
     private static boolean isSeparator(char c) {
         return Character.isWhitespace(c) || c == '\u00A0' || c == '\u202F';
     }
@@ -395,7 +348,7 @@ public final class FeedViewCountPatch {
         }
 
         String unit = "";
-        for (String candidate : getUnits(locale)) {
+        for (String candidate : CompactNumbers.getUnits(locale)) {
             if (!text.regionMatches(true, index, candidate, 0, candidate.length())) {
                 continue;
             }
@@ -469,7 +422,7 @@ public final class FeedViewCountPatch {
         boolean delimiter = false;
         for (int i = 0, length = text.length(); i < length && !delimiter; i++) {
             final char c = text.charAt(i);
-            delimiter = c == '\u00B7' || c == '\u2022' || ((c == ' ' || c == '\t') && i + 1 < length
+            delimiter = c == '·' || c == '•' || ((c == ' ' || c == '\t') && i + 1 < length
                     && (text.charAt(i + 1) == ' ' || text.charAt(i + 1) == '\t'));
         }
         if (!delimiter) {
@@ -721,6 +674,33 @@ public final class FeedViewCountPatch {
     }
 
     /**
+     * Newer cards show the shortened view count as a text of its own, between the channel
+     * and the upload time, which is not a text below the title that the badge replaces.
+     *
+     * @param shortenedViewCount The shortened view count of the metadata of the video, without spaces.
+     * @return If a text of the element that is shown is the shortened view count.
+     */
+    private static boolean hasOwnViewCountText(List<ProtoNode> textNodes, String shortenedViewCount) {
+        nodes:
+        for (ProtoNode node : textNodes) {
+            String text = node.getText();
+            if (text.length() > MAX_SEGMENT_LENGTH
+                    || !SPACES_PATTERN.matcher(text).replaceAll("").equals(shortenedViewCount)) {
+                continue;
+            }
+            // The texts of the metadata and the commands are not shown.
+            for (ProtoNode parent = node.getParent(); parent != null; parent = parent.getParent()) {
+                final int field = parent.getFieldNumber();
+                if (field == METADATA_FIELD || field == COMMAND_FIELD) {
+                    continue nodes;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Called by {@link FeedVideoCardsPatch} when the element of a video that is not live is loaded,
      * before its cards are drawn. Litho draws only the part of a card that is shown, so a card that
      * enters from the bottom of the list shows its thumbnail before the texts below its title.
@@ -846,28 +826,8 @@ public final class FeedViewCountPatch {
                     break;
                 }
             }
-            // Newer cards show the shortened view count as a text of its own, between the channel
-            // and the upload time, which is not a text below the title that the badge replaces.
-            boolean ownViewCountText = false;
-            if (metadataViewCount == null && shortenedViewCount != null) {
-                nodes:
-                for (ProtoNode node : textNodes) {
-                    String text = node.getText();
-                    if (text.length() > MAX_SEGMENT_LENGTH
-                            || !SPACES_PATTERN.matcher(text).replaceAll("").equals(shortenedViewCount)) {
-                        continue;
-                    }
-                    for (ProtoNode parent = node.getParent(); parent != null; parent = parent.getParent()) {
-                        final int field = parent.getFieldNumber();
-                        if (field == METADATA_FIELD || field == COMMAND_FIELD) {
-                            continue nodes;
-                        }
-                    }
-                    ownViewCountText = true;
-                    break;
-                }
-            }
-            if (ownViewCountText) {
+            if (metadataViewCount == null && shortenedViewCount != null
+                    && hasOwnViewCountText(textNodes, shortenedViewCount)) {
                 Pattern pattern = getViewCountTextPattern(shortenedViewCount);
                 synchronized (ownViewCountTexts) {
                     ownViewCountTexts.put(videoId, pattern);
