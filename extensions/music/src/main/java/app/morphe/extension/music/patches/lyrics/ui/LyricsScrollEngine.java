@@ -56,7 +56,6 @@ final class LyricsScrollEngine {
     private static final long SUPPRESS_TAIL_MS = 250L;
     private static final long DEFAULT_FLIP_DURATION_MS = 400L;
     private static final float MIN_FLIP_DISTANCE_PX = 0.5f;
-    private static final int SHIFT_RING = 32;
 
     private record FlipLayer(float offset, float startMs, float waitMs, float remainingMs,
                              float skipMs, LyricsSpring spring) {
@@ -150,10 +149,7 @@ final class LyricsScrollEngine {
     private long lastDurationMs = DEFAULT_FLIP_DURATION_MS;
     private long lastTimeGapMs = 0L;
 
-    private final int[] shiftIndex = new int[SHIFT_RING];
-    private final float[] shiftDelta = new float[SHIFT_RING];
-    private final long[] shiftSeqs = new long[SHIFT_RING];
-    private long shiftSeq = 0L;
+    private final LayoutShiftRing shiftRing = new LayoutShiftRing();
     private int pendingGapCloseRowIdx = -1;
 
     private int lastTotalRowsHeight = -1;
@@ -284,21 +280,12 @@ final class LyricsScrollEngine {
         if (sourceView instanceof GapLineView && delta < 0f) {
             pendingGapCloseRowIdx = rowIdx;
         }
-        long seq = ++shiftSeq;
-        int slot = (int) (seq % SHIFT_RING);
-        shiftIndex[slot] = rowIdx;
-        shiftDelta[slot] = delta;
-        shiftSeqs[slot] = seq;
+        shiftRing.record(rowIdx, delta);
     }
 
     private float consumeLayoutShift(LyricsItemFlip flip, int index) {
-        float sum = 0f;
-        for (int i = 0; i < SHIFT_RING; i++) {
-            if (shiftSeqs[i] > flip.seenShiftSeq && shiftIndex[i] < index) {
-                sum += shiftDelta[i];
-            }
-        }
-        flip.seenShiftSeq = shiftSeq;
+        final float sum = shiftRing.consume(index, flip.seenShiftSeq);
+        flip.seenShiftSeq = shiftRing.currentSeq();
         return sum;
     }
 
@@ -312,13 +299,13 @@ final class LyricsScrollEngine {
         float now = nowMs();
         if (!enabled || now < suppressedUntilMs) {
             flip.reset(topInParent);
-            flip.seenShiftSeq = shiftSeq;
+            flip.seenShiftSeq = shiftRing.currentSeq();
             return;
         }
         float last = flip.lastTop;
         flip.lastTop = topInParent;
         if (Float.isNaN(last)) {
-            flip.seenShiftSeq = shiftSeq;
+            flip.seenShiftSeq = shiftRing.currentSeq();
             return;
         }
         float delta = last - topInParent;
@@ -354,7 +341,7 @@ final class LyricsScrollEngine {
             if (child.getHeight() > 0) {
                 LyricsItemFlip copy = new LyricsItemFlip();
                 copy.lastTop = (float) (child.getTop() - scrollY) + child.getTranslationY();
-                copy.seenShiftSeq = shiftSeq;
+                copy.seenShiftSeq = shiftRing.currentSeq();
                 rebuildSnapshotFlips.add(copy);
                 visitLineViews(child, LyricsLineView::snapshotInnerFlips);
             } else {
@@ -411,7 +398,7 @@ final class LyricsScrollEngine {
             LyricsItemFlip flip = itemFlips.get(child);
             if (flip != null) {
                 flip.reset(child.getTop() - scrollY);
-                flip.seenShiftSeq = shiftSeq;
+                flip.seenShiftSeq = shiftRing.currentSeq();
             }
             resetInnerFlips(child);
         }
@@ -504,7 +491,7 @@ final class LyricsScrollEngine {
 
         int viewportH = scrollView.getHeight();
         int linesH = linesContainer.getHeight();
-        if (!pendingRebuildReflow && shiftSeq == lastReflowShiftSeq && !pendingScrollSync
+        if (!pendingRebuildReflow && shiftRing.currentSeq() == lastReflowShiftSeq && !pendingScrollSync
                 && pendingGapCloseRowIdx < 0
                 && linesH == lastContainerHeight && viewportH == lastViewportHeight) {
             return;
@@ -517,7 +504,7 @@ final class LyricsScrollEngine {
         }
         boolean rebuildReflow = pendingRebuildReflow;
         pendingRebuildReflow = false;
-        boolean layoutDriven = shiftSeq != lastReflowShiftSeq;
+        boolean layoutDriven = shiftRing.currentSeq() != lastReflowShiftSeq;
         boolean sizeChanged = rebuildReflow || layoutDriven
                 || (lastTotalRowsHeight >= 0 && totalH != lastTotalRowsHeight)
                 || (lastViewportHeight >= 0 && viewportH != lastViewportHeight);
@@ -526,7 +513,7 @@ final class LyricsScrollEngine {
         lastTotalRowsHeight = totalH;
         lastContainerHeight = linesH;
         lastViewportHeight = viewportH;
-        lastReflowShiftSeq = shiftSeq;
+        lastReflowShiftSeq = shiftRing.currentSeq();
         pendingScrollSync = false;
         pendingGapCloseRowIdx = -1;
 
@@ -603,7 +590,7 @@ final class LyricsScrollEngine {
                     || flip.lastTop + row.getHeight() < minVis;
             if (nowOutside && prevOutside) {
                 flip.reset(visualTop);
-                flip.seenShiftSeq = shiftSeq;
+                flip.seenShiftSeq = shiftRing.currentSeq();
                 if (row.getTranslationY() != 0f) {
                     row.setTranslationY(0f);
                 }
@@ -615,7 +602,7 @@ final class LyricsScrollEngine {
                 boolean wasUnplaced = Float.isNaN(flip.lastTop);
                 flip.lastTop = visualTop;
                 if (wasUnplaced) {
-                    flip.seenShiftSeq = shiftSeq;
+                    flip.seenShiftSeq = shiftRing.currentSeq();
                 } else {
                     float shift = consumeLayoutShift(flip, i);
                     if (Math.abs(shift) >= MIN_FLIP_DISTANCE_PX) {
@@ -624,12 +611,12 @@ final class LyricsScrollEngine {
                 }
             } else if (now < suppressedUntilMs) {
                 flip.reset(visualTop);
-                flip.seenShiftSeq = shiftSeq;
+                flip.seenShiftSeq = shiftRing.currentSeq();
             } else {
                 float last = flip.lastTop;
                 flip.lastTop = visualTop;
                 if (Float.isNaN(last)) {
-                    flip.seenShiftSeq = shiftSeq;
+                    flip.seenShiftSeq = shiftRing.currentSeq();
                 } else {
                     float delta = last - visualTop;
                     if (Math.abs(delta) >= MIN_FLIP_DISTANCE_PX) {
@@ -832,7 +819,7 @@ final class LyricsScrollEngine {
             LyricsItemFlip flip = flipFor(row);
             if (Float.isNaN(flip.lastTop)) {
                 flip.lastTop = row.getTop() - currentScrollY;
-                flip.seenShiftSeq = shiftSeq;
+                flip.seenShiftSeq = shiftRing.currentSeq();
             }
         }
 
