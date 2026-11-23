@@ -20,7 +20,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Post-page action bar composable containing the comment onClick handler (2026.40.0+).
+ * Action bar of the post page. Its third parameter is the click handler of the comment button.
  */
 internal object PostActionBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
@@ -39,19 +39,17 @@ internal object PostActionBarFingerprint : Fingerprint(
 )
 
 /**
- * Action bar pill class static initializer defining the comment slot field (2026.40.0+).
+ * Static initializer of the class that draws the action bar buttons.
+ * The matched field holds the test tags of the comment button.
  */
 internal object ActionBarCommentButtonFingerprint : Fingerprint(
     name = "<clinit>",
     filters = listOf(
         string("actionBar_comment_button"),
-        opcode(Opcode.SPUT_OBJECT, location = MatchAfterWithin(2))
+        opcode(Opcode.SPUT_OBJECT, location = MatchAfterWithin(5))
     )
 )
 
-/**
- * Action bar action model toString method (2026.40.0+).
- */
 internal object ActionBarActionToStringFingerprint : Fingerprint(
     name = "toString",
     filters = listOf(
@@ -60,7 +58,7 @@ internal object ActionBarActionToStringFingerprint : Fingerprint(
 )
 
 /**
- * Action bar action model constructor assigning the onClick handler (2026.40.0+).
+ * Constructor of an action bar button. The matched field is the click handler.
  */
 internal object ActionBarActionConstructorFingerprint : Fingerprint(
     classFingerprint = ActionBarActionToStringFingerprint,
@@ -79,9 +77,6 @@ internal object ActionBarActionConstructorFingerprint : Fingerprint(
     )
 )
 
-/**
- * Action bar icon model toString method (2026.40.0+).
- */
 internal object IconToStringFingerprint : Fingerprint(
     name = "toString",
     filters = listOf(
@@ -90,7 +85,7 @@ internal object IconToStringFingerprint : Fingerprint(
 )
 
 /**
- * Action bar icon model constructor assigning size and flag fields (2026.40.0+).
+ * Icon constructor (size, resource id, flag).
  */
 internal object IconConstructorFingerprint : Fingerprint(
     classFingerprint = IconToStringFingerprint,
@@ -103,7 +98,16 @@ internal object IconConstructorFingerprint : Fingerprint(
 )
 
 /**
- * Comment tree store method returning visible comment index or count (2026.40.0+).
+ * Comment tree store (RedditCommentTreeStore) method that returns the position of a comment:
+ *
+ * ```
+ * public final int indexOf(String id) {
+ *     State state = getLoadedState(this.state);
+ *     if (state == null) return -1;
+ *     List<String> visibleIds = state.visibleIds;
+ *     ...
+ * }
+ * ```
  */
 internal object CommentTreeIndexOfFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/comments/tree/",
@@ -115,20 +119,20 @@ internal object CommentTreeIndexOfFingerprint : Fingerprint(
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             definingClass = "this",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(3)
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterWithin(5)),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             type = "Ljava/util/List;",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         )
     )
 )
 
 /**
- * Comment tree store method returning comment by id (2026.40.0+).
+ * Comment tree store method that returns a loaded comment by id.
  */
 internal object CommentTreeGetCommentFingerprint : Fingerprint(
     classFingerprint = CommentTreeIndexOfFingerprint,
@@ -138,7 +142,8 @@ internal object CommentTreeGetCommentFingerprint : Fingerprint(
 )
 
 /**
- * Comment tree store method applying a comment operation (2026.40.0+).
+ * Comment tree store method that applies an operation, such as collapsing a comment:
+ * `static void apply(RedditCommentTreeStore store, Operation operation)`
  */
 internal object CommentTreeApplyOperationFingerprint : Fingerprint(
     classFingerprint = CommentTreeIndexOfFingerprint,
@@ -150,20 +155,14 @@ internal object CommentTreeApplyOperationFingerprint : Fingerprint(
     )
 )
 
-/**
- * Collapse comment operation toString method (2026.40.0+).
- */
-internal object CollapseCommentOperationFingerprint : Fingerprint(
+internal object CollapseCommentOperationToStringFingerprint : Fingerprint(
     name = "toString",
     filters = listOf(
         string("CollapseComment(kindWithId=")
     )
 )
 
-/**
- * Expand comment operation toString method (2026.40.0+).
- */
-internal object ExpandCommentOperationFingerprint : Fingerprint(
+internal object ExpandCommentOperationToStringFingerprint : Fingerprint(
     name = "toString",
     filters = listOf(
         string("ExpandComment(kindWithId=")

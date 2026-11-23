@@ -29,195 +29,196 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import kotlin.jvm.functions.Function0;
 
+/**
+ * Adds a button next to the comment count of a post that collapses or expands all comments.
+ */
 @SuppressWarnings("unused")
 public final class CollapseAllCommentsPatch {
 
+    /**
+     * Added to the comment tree store during patching.
+     */
     public interface CommentTree {
-        List<?> patch_getVisibleCommentIds();
+        /**
+         * @return Ids of the comments in the order they are shown, or null if the comments did not load yet.
+         */
+        @Nullable
+        List<String> patch_getVisibleCommentIds();
+
+        @Nullable
         IComment patch_getComment(String id);
+
         void patch_collapse(String id);
+
         void patch_expand(String id);
     }
 
     public enum CollapseAllScope {
-        ALL,
-        REPLIES,
-        DEEP
+        TOP_COMMENTS(0),
+        REPLIES(1),
+        NESTED_REPLIES(2);
+
+        /**
+         * Depth of the collapsed comments, relative to the top comments.
+         */
+        final int depth;
+
+        CollapseAllScope(int depth) {
+            this.depth = depth;
+        }
     }
 
     private static final int ICON_CARET_UP_DOWN =
             ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "icon_caret_up_down");
 
-    private static final Set<Function0<?>> POST_COMMENTS_CLICKS =
+    /**
+     * Comment click handlers of the post page action bar.
+     */
+    private static final Set<Function0<?>> postCommentClicks =
             Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap<>()));
 
-    private static WeakReference<CommentTree> commentTreeRef = new WeakReference<>(null);
-
-    private static boolean isRunning;
-
-    private static final Function0<Object> COLLAPSE_ALL_CLICK = new Function0<>() {
-        @Override
-        public Object invoke() {
-            onCollapseAllClick();
-            return null;
-        }
+    private static final Function0<Object> COLLAPSE_ALL_CLICK = () -> {
+        onCollapseAllClick();
+        return null;
     };
 
+    private static volatile WeakReference<CommentTree> commentTreeRef = new WeakReference<>(null);
+
+    /**
+     * If comments are being collapsed or expanded. Only used on the main thread.
+     */
+    private static boolean updatingComments;
+
+    /**
+     * @return If this patch was included during patching.
+     */
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
-        return false;
+        return false; // Modified during patching.
     }
 
+    /**
+     * Injection point.
+     */
     public static void registerPostCommentsClick(@Nullable Function0<?> onClick) {
-        try {
-            if (onClick != null) {
-                POST_COMMENTS_CLICKS.add(onClick);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "registerPostCommentsClick failure", ex);
+        if (onClick != null && Settings.COLLAPSE_ALL_COMMENTS.get()) {
+            postCommentClicks.add(onClick);
         }
     }
 
+    /**
+     * Injection point.
+     *
+     * @param onClick Click handler of an action bar comment button.
+     */
     public static boolean showCollapseAllButton(@Nullable Function0<?> onClick) {
-        try {
-            return Settings.COLLAPSE_ALL_COMMENTS.get() && onClick != null && POST_COMMENTS_CLICKS.contains(onClick);
-        } catch (Exception ignored) {
-            return false;
-        }
+        return Settings.COLLAPSE_ALL_COMMENTS.get() && postCommentClicks.contains(onClick);
     }
 
+    /**
+     * Injection point.
+     */
     public static int getCollapseAllIcon() {
         return ICON_CARET_UP_DOWN;
     }
 
+    /**
+     * Injection point.
+     */
     public static String getCollapseAllDescription() {
         return str("morphe_collapse_all_comments_button");
     }
 
+    /**
+     * Injection point.
+     */
     public static Function0<Object> getCollapseAllClick() {
         return COLLAPSE_ALL_CLICK;
     }
 
-    public static void setCommentTree(Object tree) {
-        try {
-            if (tree instanceof CommentTree commentTree) {
-                commentTreeRef = new WeakReference<>(commentTree);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "setCommentTree failure", ex);
+    /**
+     * Injection point.
+     * <p>
+     * Called before the comment tree applies an operation.
+     */
+    public static void setCommentTree(CommentTree tree) {
+        if (Settings.COLLAPSE_ALL_COMMENTS.get() && commentTreeRef.get() != tree) {
+            commentTreeRef = new WeakReference<>(tree);
         }
     }
 
-    public static void onCollapseAllClick() {
-        if (isRunning) {
-            return;
-        }
-
+    /**
+     * Collapses the comments at the depth of the scope setting.
+     * If they are all collapsed already, expands all collapsed comments instead.
+     */
+    private static void onCollapseAllClick() {
         try {
-            CommentTree tree = commentTreeRef.get();
-            if (tree == null) {
-                return;
-            }
+            if (updatingComments) return;
 
-            List<?> ids = tree.patch_getVisibleCommentIds();
-            if (ids == null || ids.isEmpty()) {
-                return;
-            }
+            CommentTree tree = commentTreeRef.get();
+            if (tree == null) return;
+
+            List<String> ids = tree.patch_getVisibleCommentIds();
+            if (ids == null) return;
 
             List<Comment> comments = new ArrayList<>(ids.size());
-            for (Object idObj : ids) {
-                if (idObj instanceof String id) {
-                    IComment comment = tree.patch_getComment(id);
-                    if (comment instanceof Comment c) {
-                        comments.add(c);
-                    }
+            int topDepth = Integer.MAX_VALUE;
+            for (String id : ids) {
+                // Can also be a "more replies" item.
+                if (tree.patch_getComment(id) instanceof Comment comment) {
+                    comments.add(comment);
+                    topDepth = Math.min(topDepth, comment.getDepth());
                 }
             }
+            if (comments.isEmpty()) return;
 
-            if (comments.isEmpty()) {
-                return;
-            }
-
-            int top = Integer.MAX_VALUE;
+            final int collapseDepth = topDepth + Settings.COLLAPSE_ALL_COMMENTS_SCOPE.get().depth;
+            List<String> toCollapse = new ArrayList<>();
+            List<String> toExpand = new ArrayList<>();
             for (Comment comment : comments) {
-                final int depth = comment.getDepth();
-                if (depth < top) {
-                    top = depth;
+                String id = comment.getKindWithId();
+                if (id == null) continue;
+
+                if (comment.getCollapsed()) {
+                    toExpand.add(id);
+                } else if (comment.getDepth() == collapseDepth) {
+                    toCollapse.add(id);
                 }
             }
 
-            final CollapseAllScope scope = Settings.COLLAPSE_ALL_COMMENTS_SCOPE.get();
-            final int offset = switch (scope) {
-                case REPLIES -> 1;
-                case DEEP -> 2;
-                case ALL -> 0;
-            };
-            final int targetDepth = top + offset;
+            final boolean collapse = !toCollapse.isEmpty();
+            List<String> updateIds = collapse ? toCollapse : toExpand;
+            if (updateIds.isEmpty()) return;
 
-            boolean hasUncollapsedAtTarget = false;
-            for (Comment comment : comments) {
-                if (comment.getDepth() == targetDepth && !comment.getCollapsed()) {
-                    hasUncollapsedAtTarget = true;
-                    break;
-                }
-            }
+            Logger.printDebug(() -> (collapse ? "Collapsing " : "Expanding ") + updateIds.size() + " comments");
 
-            List<String> targetIds = new ArrayList<>();
-            final boolean collapse = hasUncollapsedAtTarget;
-            if (collapse) {
-                for (Comment comment : comments) {
-                    if (comment.getDepth() == targetDepth && !comment.getCollapsed()) {
-                        String kindWithId = comment.getKindWithId();
-                        if (kindWithId != null) {
-                            targetIds.add(kindWithId);
-                        }
-                    }
-                }
-            } else {
-                for (Comment comment : comments) {
-                    if (comment.getCollapsed()) {
-                        String kindWithId = comment.getKindWithId();
-                        if (kindWithId != null) {
-                            targetIds.add(kindWithId);
-                        }
-                    }
-                }
-            }
-
-            if (targetIds.isEmpty()) {
-                return;
-            }
-
-            isRunning = true;
+            // The tree rebuilds the list of shown comments after every change,
+            // so change one comment per frame to keep the UI responsive.
+            updatingComments = true;
             Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
                 private int index;
 
                 @Override
                 public void doFrame(long frameTimeNanos) {
                     try {
-                        if (index < targetIds.size()) {
-                            String kindWithId = targetIds.get(index);
-                            if (collapse) {
-                                tree.patch_collapse(kindWithId);
-                            } else {
-                                tree.patch_expand(kindWithId);
-                            }
-                            index++;
+                        String id = updateIds.get(index++);
+                        if (collapse) {
+                            tree.patch_collapse(id);
+                        } else {
+                            tree.patch_expand(id);
                         }
 
-                        if (index < targetIds.size()) {
+                        if (index < updateIds.size()) {
                             Choreographer.getInstance().postFrameCallback(this);
-                        } else {
-                            isRunning = false;
+                            return;
                         }
                     } catch (Exception ex) {
-                        isRunning = false;
-                        Logger.printException(() -> "Collapse all comments op failure", ex);
+                        Logger.printException(() -> "doFrame failure", ex);
                     }
+                    updatingComments = false;
                 }
             });
         } catch (Exception ex) {
-            isRunning = false;
             Logger.printException(() -> "onCollapseAllClick failure", ex);
         }
     }
