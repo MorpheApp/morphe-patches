@@ -1006,6 +1006,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting SHORTS_FLYOUT_SETTINGS_MIGRATED = new BooleanSetting("morphe_shorts_flyout_settings_migrated", FALSE, false, false);
     private static final BooleanSetting DOWNLOAD_BUTTON_OVERRIDE_MIGRATED = new BooleanSetting("morphe_download_button_override_migrated", FALSE, false, false);
     private static final BooleanSetting TOOLBAR_CAST_BUTTON_MIGRATED = new BooleanSetting("morphe_toolbar_cast_button_migrated", FALSE, false, false);
+    private static final BooleanSetting COMMENTS_VISIT_THE_COMMUNITY_MIGRATED = new BooleanSetting("morphe_comments_visit_the_community_migrated", FALSE, false, false);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_LIBRARY = new EnumSetting<>("morphe_alt_thumbnail_library", ThumbnailOption.ORIGINAL);
@@ -1183,6 +1184,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateShortsFlyoutSettings();
         migrateDownloadButtonOverride();
         migrateToolbarCastButton();
+        migrateCommentsVisitTheCommunity();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
         migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
@@ -1428,6 +1430,21 @@ public class Settings extends SharedYouTubeSettings {
             HIDE_TOOLBAR_CAST_BUTTON.save(true);
         }
         TOOLBAR_CAST_BUTTON_MIGRATED.save(true);
+    }
+
+    /**
+     * The 'Visit the Community' section of the comments was hidden with the community posts before it got
+     * its own setting, so the section stays hidden if the posts are. The community posts setting stays in use,
+     * so a marker is the only way to tell this already ran.
+     */
+    private static void migrateCommentsVisitTheCommunity() {
+        if (COMMENTS_VISIT_THE_COMMUNITY_MIGRATED.get()) {
+            return;
+        }
+        if (HIDE_COMMUNITY_POSTS.get()) {
+            HIDE_COMMENTS_VISIT_THE_COMMUNITY_SECTION.save(true);
+        }
+        COMMENTS_VISIT_THE_COMMUNITY_MIGRATED.save(true);
     }
 
     /**
