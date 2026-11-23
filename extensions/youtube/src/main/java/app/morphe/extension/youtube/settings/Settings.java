@@ -381,6 +381,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LOOP_COUNT_PLAYLIST_COUNTS = new StringSetting("morphe_loop_count_playlist_counts", "", false, true);
     public static final BooleanSetting DO_NOT_REMEMBER_LOOP_VIDEO = new BooleanSetting("morphe_do_not_remember_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));
     public static final BooleanSetting MUTE_VIDEO_BUTTON = new BooleanSetting("morphe_mute_video_button", FALSE, true);
+    public static final BooleanSetting REPLAY_VIDEO_BUTTON = new BooleanSetting("morphe_replay_video_button", FALSE, true);
+    public static final BooleanSetting REPLAY_VIDEO_SWIPE = new BooleanSetting("morphe_replay_video_swipe", TRUE, parent(REPLAY_VIDEO_BUTTON));
+    public static final IntegerSetting REPLAY_VIDEO_SECONDS = new IntegerSetting("morphe_replay_video_seconds", 4, parent(REPLAY_VIDEO_BUTTON));
+    public static final IntegerSetting REPLAY_VIDEO_SLOW_SECONDS = new IntegerSetting("morphe_replay_video_slow_seconds", 3, parent(REPLAY_VIDEO_BUTTON));
+    public static final FloatSetting REPLAY_VIDEO_SPEED = new FloatSetting("morphe_replay_video_speed", 0.5f, parent(REPLAY_VIDEO_BUTTON));
     public static final BooleanSetting PIP_OVERLAY_BUTTON = new BooleanSetting("morphe_pip_button_overlay", FALSE, true, new PipButtonPatchAvailability());
     public static final BooleanSetting PIP_FLYOUT_BUTTON = new BooleanSetting("morphe_pip_button_flyout", FALSE, new PipButtonPatchAvailability());
     public static final BooleanSetting PLAY_ALL_BUTTON = new BooleanSetting("morphe_play_all_button", FALSE, true);
@@ -1540,6 +1545,10 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_REFRESH_RATE,
                 30, NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT, 30, "Hz", 1,
                 StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
+        SeekBarPreference.register(new SeekBarConfig(REPLAY_VIDEO_SECONDS,
+                1, 60, 1, "s"));
+        SeekBarPreference.register(new SeekBarConfig(REPLAY_VIDEO_SLOW_SECONDS,
+                1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_TRANSLATE_MAX_LENGTH,
                 20, LIVE_CHAT_TRANSLATE_MAX_LENGTH_NO_LIMIT, 20, "", 1,
                 StringRef.sf("morphe_live_chat_translate_max_length_no_limit")));
