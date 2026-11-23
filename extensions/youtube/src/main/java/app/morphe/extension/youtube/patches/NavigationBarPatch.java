@@ -2296,7 +2296,7 @@ public final class NavigationBarPatch {
 
                         // Replace the accessibility label of the copied button.
                         ButtonRendererAccessibilityData accessibilityData = ButtonRendererAccessibilityData
-                                .newBuilder().setLabel(str("morphe_settings_submenu_title")).build();
+                                .newBuilder().setLabel(str("settings")).build();
                         renderer.setButtonRendererAccessibilityData(accessibilityData);
                         renderer.setRendererAccessibilityData(RendererAccessibilityData.newBuilder()
                                 .setButtonRendererAccessibilityData(accessibilityData).build());
