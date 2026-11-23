@@ -12,17 +12,21 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addFreeRegisters
+import app.morphe.patcher.util.addInstructionsAtControlFlowLabel
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
@@ -56,6 +60,8 @@ private const val GRID_RENDERER =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$GridRenderer;"
 private const val BROWSE_REQUEST =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$BrowseRequest;"
+private const val BROWSE_CACHE =
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$BrowseCache;"
 private const val FOLDER_RELOAD =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$FolderReload;"
 private const val PHONE_BROWSE_ITEM =
@@ -615,11 +621,12 @@ private fun addArtworkUriGetter(
 // region Android Auto requests
 
 private fun patchBrowseRequests() {
-    val sendEmptyItemsMethod = SendEmptyMediaItemsFingerprint.originalMethod
-    addBrowseRequestInterface(sendEmptyItemsMethod)
+    addBrowseRequestInterface()
 
+    val handler = BrowseRequestHandlerFingerprint.method
+    patchPendingRootFetch(handler)
     // When the patch handles a page request, skip YTM's handler to avoid returning two results.
-    BrowseRequestHandlerFingerprint.method.addInstructionsWithLabels(
+    handler.addInstructionsWithLabels(
         0,
         """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z
@@ -632,38 +639,46 @@ private fun patchBrowseRequests() {
     )
 }
 
-private fun addBrowseRequestInterface(
-    sendEmptyItemsMethod: Method,
-) {
-    val requestType = sendEmptyItemsMethod.parameterTypes.first().toString()
-    val requestClass = mutableClassDefBy(requestType)
-    val requestFields = sendEmptyItemsMethod.instructions.asSequence()
-        .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
-        .distinct()
-        .toList()
-    // YTM's "Invalid media id" log reads the requested Android Auto folder ID through these two fields.
-    val requestedMediaIdHolderField = requestFields.single { field ->
-        field.definingClass == requestType
+/**
+ * A root request asks YTM which tabs to show in Android Auto, such as Home and Library.
+ * At startup, Android Auto can open two browse connections, each requesting the same tabs.
+ * Queue the later request so it doesn't get an empty list while YTM is still loading the tabs.
+ */
+private fun patchPendingRootFetch(handler: MutableMethod) {
+    val (containsKey, moveResult, cacheBranch) = BrowseRequestHandlerFingerprint.instructionMatches
+    val (map, client) = containsKey.instruction.registersUsed
+    val result = moveResult.getInstruction<OneRegisterInstruction>().registerA
+    handler.addInstructionsWithLabels(cacheBranch.index, """
+        if-gez v$result, :resume
+        return-void
+        :resume
+        nop
+    """)
+    val checkRootFetch = "$EXTENSION_CLASS->checkRootFetch(Ljava/util/Map;Ljava/lang/Object;$BROWSE_REQUEST$BROWSE_CACHE)I"
+    handler.replaceInstruction(containsKey.index, "invoke-static { v$map, v$client, p1, p0 }, $checkRootFetch")
+
+    CachedBrowseFingerprint.apply {
+        classDef.addPatchInterface(BROWSE_CACHE, "patch_sendCachedRoot", method)
     }
-    val requestedMediaIdField = requestFields.single { field ->
-        field.definingClass == requestedMediaIdHolderField.type && field.type == "Ljava/lang/String;"
-    }
+
+    // YTM overwrites p0 during delivery, so preserve the fetch object for finishRootFetch.
+    val delivery = RootLoadedFingerprint.instructionMatches.last().getMethodCalled().cloneParameters()
+    delivery.addInstructionsAtControlFlowLabel(delivery.instructions.lastIndex,
+        "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->finishRootFetch(Ljava/lang/Object;)V")
+}
+
+private fun addBrowseRequestInterface() {
+    val (holder, mediaId) = SendEmptyMediaItemsFingerprint.instructionMatches
+    val requestedMediaIdField = mediaId.fieldReference
     skipCustomMediaIdDecoding(requestedMediaIdField)
 
-    // YTM 9.15's one-argument overload forwards the list and null to this two-argument method.
-    // Newer supported versions call it directly, so the patch can use the same method for all versions.
-    val deliverItemsMethod = requestClass.methods.single { method ->
-        method.returnType == "V" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes.first().toString() == "Ljava/util/List;" &&
-                method.parameterTypes.last().toString().startsWith("L")
-    }
-
+    val requestClass = DeliverBrowseItemsFingerprint.classDef
+    val deliverItemsMethod = DeliverBrowseItemsFingerprint.method
     requestClass.addPatchInterface(
         BROWSE_REQUEST,
         "patch_getRequestedMediaId",
         """
-            iget-object p0, p0, $requestedMediaIdHolderField
+            iget-object p0, p0, ${holder.fieldReference}
             iget-object p0, p0, $requestedMediaIdField
             return-object p0
         """
@@ -736,9 +751,7 @@ private fun addRequestConnectionGetter(reloadMethod: Method) {
         field.type == connectionType
     }
 
-    val requestType =
-        SendEmptyMediaItemsFingerprint.originalMethod.parameterTypes.first().toString()
-    val requestClass = mutableClassDefBy(requestType)
+    val requestClass = DeliverBrowseItemsFingerprint.classDef
     // The request can hold other result types; check for the result object that stores the Android Auto connection.
     val resultBaseType = folderResultClass.superclass
         ?: throw PatchException("Could not resolve the Android Auto folder result base class")

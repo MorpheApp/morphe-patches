@@ -50,6 +50,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -127,6 +128,12 @@ public final class AndroidAutoPatch {
     /** Calls YTM's browser service to reload an Auto page, such as Albums. */
     public interface FolderReload {
         void patch_reloadFolder(String parentMediaId, Object connection, @Nullable Bundle options);
+    }
+
+    /** YTM's browse request handler, which can answer a root request without fetching it again. */
+    public interface BrowseCache {
+        /** Returns true if YTM sent the cached root tabs or scheduled delivery from the local library. */
+        boolean patch_sendCachedRoot(BrowseRequest request);
     }
 
     public interface PhoneBrowseItem {
@@ -757,6 +764,64 @@ public final class AndroidAutoPatch {
 
     // Browse delivery, root tabs, and the Podcasts tab
 
+    private static final int ROOT_FETCH_NOT_STARTED = 0;
+    private static final int ROOT_FETCH_IN_PROGRESS = 1;
+    private static final int ROOT_REQUEST_QUEUED = -1;
+
+    // Root requests that wait for a root fetch YTM started for an earlier request, keyed by that fetch.
+    @GuardedBy("AndroidAutoPatch.class")
+    private static final Map<Object, List<Runnable>> waitingForRoot = new WeakHashMap<>();
+    @GuardedBy("AndroidAutoPatch.class")
+    private static final Set<BrowseRequest> deferredRoots = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Injection point. Replaces YTM's check for a root fetch that is already loading for the same client.
+     * At startup, Android Auto can open two connections that both request the root tabs.
+     * YTM answers the later request with an empty list, so queue it until the fetch finishes.
+     *
+     * @return {@link #ROOT_REQUEST_QUEUED} if YTM's handler must return,
+     *         otherwise whether a root fetch is in progress, like YTM's original check.
+     */
+    public static synchronized int checkRootFetch(Map<?, ?> fetches, Object client,
+            BrowseRequest request, BrowseCache cache) {
+        Object fetch = fetches.get(client);
+        if (fetch == null) return ROOT_FETCH_NOT_STARTED;
+        try {
+            if (ANDROID_AUTO_ROOT_ID.equals(request.patch_getRequestedMediaId())) {
+                waitingForRoot.computeIfAbsent(fetch, ignored -> new ArrayList<>()).add(() -> {
+                    if (!cache.patch_sendCachedRoot(request)) {
+                        request.patch_deliverBrowseItems(Collections.emptyList());
+                    }
+                });
+                deferredRoots.add(request);
+                return ROOT_REQUEST_QUEUED;
+            }
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "checkRootFetch failure", ex);
+        }
+        return ROOT_FETCH_IN_PROGRESS;
+    }
+
+    /**
+     * Injection point at the end of YTM's root fetch delivery, which runs after the fetch succeeds or fails.
+     * Answers the root requests queued by {@link #checkRootFetch} from YTM's cache.
+     */
+    public static void finishRootFetch(Object fetch) {
+        List<Runnable> waiting;
+        synchronized (AndroidAutoPatch.class) {
+            waiting = waitingForRoot.remove(fetch);
+        }
+        if (waiting == null) return;
+        // Run outside the lock, because YTM can deliver cached results synchronously.
+        for (Runnable sendRoot : waiting) {
+            try {
+                sendRoot.run();
+            } catch (RuntimeException ex) {
+                Logger.printException(() -> "finishRootFetch failure", ex);
+            }
+        }
+    }
+
     /** Injection point. Recognizes media IDs handled by the patch instead of YTM's decoder. */
     public static boolean isCustomMediaId(@Nullable String mediaId) {
         if (mediaId == null) return false;
@@ -806,6 +871,13 @@ public final class AndroidAutoPatch {
         try {
             String parentMediaId = request.patch_getRequestedMediaId();
             if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
+                // A queued request gets the tabs that were just initialized for the earlier request.
+                // Initializing them again would clear the folder subscriptions and Home's podcast folders.
+                if (deferredRoots.remove(request) && ytmItems != null && ytmItems.size() == 2
+                        && Objects.equals(ytmItems.get(0).a(), homeMediaId)
+                        && Objects.equals(ytmItems.get(1).a(), libraryMediaId)) {
+                    return addTabs(ytmItems);
+                }
                 return initializeTabs(ytmItems);
             }
             if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
@@ -867,13 +939,20 @@ public final class AndroidAutoPatch {
         cachedPodcastFolders = Collections.emptyList();
 
         if (rootTabs == null || !hasNativeFolder) return rootTabs;
-        List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs);
         // The patch reads the Home and Library IDs by position when YTM returns just those two tabs.
         // Offline, YTM can put Last played between them in 9.30.53 or Podcasts in 9.46.51.
         // Without the size check, the middle tab would open Library and 9.46.51 would show Podcasts twice.
         if (rootTabs.size() == 2) {
             homeMediaId = rootTabs.get(0).a();
             libraryMediaId = rootTabs.get(1).a();
+        }
+        return addTabs(rootTabs);
+    }
+
+    /** Adds Podcasts when YTM returns just Home and Library, and adds Settings at the end. */
+    private static List<MediaBrowserCompat.MediaItem> addTabs(List<MediaBrowserCompat.MediaItem> rootTabs) {
+        List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs);
+        if (rootTabs.size() == 2) {
             tabs.add(1, podcastsTab());
         }
         tabs.add(AndroidAutoSettingsTab.settingsTab());
