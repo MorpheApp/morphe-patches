@@ -57,6 +57,8 @@ message ElementModel {
     ShortsPivotItemModel shortsPivotItemModel = 343516017;
     // Shelf of Shorts in a carousel, with its header (shorts_shelf.eml), such as in the search results.
     ShortsShelfModel shortsShelfModel = 315733268;
+    // Channel card in search results (compact_channel.eml).
+    CompactChannelModel compactChannelModel = 463210517;
     // Video of the vertical shelves below a shelf header, such as in the channel home (grid_video_wrapper.eml),
     // and playlist or podcast of these shelves (grid_video.eml).
     GridVideoModel gridVideoModel = 234662488;
@@ -101,6 +103,15 @@ message ShortsShelfModel {
     ShelfHeaderData header = 1;
 }
 
+message CompactChannelModel {
+    message Data {
+        string name = 2;
+        InnertubeCommandHolder endpoint = 5;
+        string handle = 10;
+    }
+    Data data = 1;
+}
+
 message ShortsVideoCellModel {
     ShortsVideoCellGrid grid = 4;
     ShortsVideoCellData data = 17;
@@ -138,6 +149,7 @@ message ShelfHeaderModel {
 
 message ShelfHeaderData {
     bytes icon = 1;
+    InnertubeCommandHolder endpoint = 4;
     string title = 20;
     string accessibilityText = 26;
     ShelfHeaderStyle style = 57;

@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -51,8 +52,10 @@ import app.morphe.extension.youtube.innertube.ElementTexts.MetadataRow;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupMetadata;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.VideoData;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.TitleCleanup;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -101,18 +104,28 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             "comment_thread.eml"
     );
 
+    private record SearchChannel(String name, String handle) {}
+
+    private static final String[] SEARCH_CHANNEL_TEMPLATES = { "compact_channel.eml", "shorts_shelf.eml" };
+    private static final Map<String, SearchChannel> searchChannels = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
+
+    // The element hook can run before Litho creates the filter that owns the broad keyword pause.
+    @Nullable
+    private static volatile KeywordContentFilter instance;
+
     /**
      * The last value of {@link Settings#HIDE_KEYWORD_CONTENT_PHRASES}
      * parsed and loaded into {@link #keywordSearch}.
      * Allows changing the keywords without restarting the app.
      */
-    private volatile String lastKeywordPhrasesParsed;
+    private static volatile String lastKeywordPhrasesParsed;
 
     /**
      * Keywords in lower case, searched in the texts in lower case.
      */
     @Nullable
-    private volatile StringTrieSearch keywordSearch;
+    private static volatile StringTrieSearch keywordSearch;
 
     /**
      * Parameter of a search of the keywords.
@@ -161,7 +174,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         return endIndex >= text.length() || !Character.isLetter(Character.codePointAt(text, endIndex));
     }
 
-    private synchronized void parseKeywords() { // Must be synchronized since Litho is multithreaded.
+    private static synchronized void parseKeywords() { // Must be synchronized since Litho is multithreaded.
         String rawKeywords = Settings.HIDE_KEYWORD_CONTENT_PHRASES.get();
 
         //noinspection StringEquality
@@ -236,6 +249,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     public KeywordContentFilter() {
         super(); // commentsFilter is registered below because instance fields initialize after super().
         addPathCallbacks(commentsFilter);
+        instance = this;
         // Keywords are parsed on first call to isFiltered().
     }
 
@@ -398,6 +412,53 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     private static boolean matches(StringTrieSearch search, String text, KeywordMatch match) {
         return !text.isEmpty() && search.matches(foldCase(text), match);
+    }
+
+    /**
+     * A creator's Shorts shelf links to the channel ID but omits the handle. For example, a shelf titled
+     * "Latest from Jane's Kitchen" could belong to {@code @cookwithjane}. The preceding channel card
+     * supplies the name and handle for that ID.
+     */
+    public static byte[] hideSearchShortsShelf(byte[] element) {
+        try {
+            if (!Settings.HIDE_KEYWORD_CONTENT_SEARCH.get() || Settings.HIDE_KEYWORD_CONTENT_PHRASES.get().isEmpty()
+                    || PlayerType.getCurrent().isMaximizedOrFullscreen() || !NavigationBar.isSearchBarActive()) {
+                return element;
+            }
+
+            String elementText = FeedVideoCardsPatch.getElementText(element);
+            if (FeedVideoCardsPatch.lacksAll(elementText, SEARCH_CHANNEL_TEMPLATES)) return element;
+
+            var model = FeedCardLayoutOuterClass.Element.parseFrom(element).getType().getComponentType().getModel();
+            if (model.hasCompactChannelModel()) {
+                var channel = model.getCompactChannelModel().getData();
+                String channelId = channel.getEndpoint().getInnertubeCommand().getBrowseEndpoint().getBrowseId();
+                if (!channelId.isEmpty()) {
+                    searchChannels.put(channelId, new SearchChannel(channel.getName(), channel.getHandle()));
+                }
+                return element;
+            }
+            if (instance != null && System.currentTimeMillis() < instance.timeToResumeFiltering) return element;
+
+            var header = model.getShortsShelfModel().getHeader();
+            String channelId = header.getEndpoint().getInnertubeCommand().getBrowseEndpoint().getBrowseId();
+            SearchChannel channel = searchChannels.get(channelId);
+            if (channel == null) return element;
+
+            parseKeywords();
+            StringTrieSearch search = keywordSearch;
+            KeywordMatch match = new KeywordMatch();
+            if (matches(search, channel.name(), match)) {
+                return new byte[0];
+            }
+            match.searchingHandle = true;
+            if (matches(search, channel.handle(), match)) {
+                return new byte[0];
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideSearchShortsShelf failure", ex);
+        }
+        return element;
     }
 
     @Override

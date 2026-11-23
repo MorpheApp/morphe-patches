@@ -113,7 +113,7 @@ public abstract class BufferPhraseFilter extends Filter {
      * If filtering is temporarily turned off, the time to resume filtering.
      * Field is zero if no backoff is in effect.
      */
-    private volatile long timeToResumeFiltering;
+    protected volatile long timeToResumeFiltering;
 
     protected BufferPhraseFilter(StringFilterGroup... extraPathCallbacks) {
         StringFilterGroup[] all = new StringFilterGroup[2 + extraPathCallbacks.length];
