@@ -86,17 +86,15 @@ val wideSearchBarPatch = patch(
         }
 
         // You tab, where the "Accounts" button replaces the header logo.
-        ToolbarLeadingAccessoriesFingerprint.let {
-            it.method.apply {
-                val addViewIndex = it.instructionMatches.last().index
-                val containerRegister = it.instructionMatches.last().instruction.registersUsed[0]
+        ToolbarLeadingAccessoriesFingerprint.apply {
+            val addViewMatch = instructionMatches.last()
+            val containerRegister = addViewMatch.instruction.registersUsed[0]
 
-                addInstruction(
-                    addViewIndex + 1,
-                    "invoke-static { v$containerRegister }, $EXTENSION_CLASS->" +
-                            "addLeadingAccessoriesSearchbar(Landroid/view/ViewGroup;)V"
-                )
-            }
+            method.addInstruction(
+                addViewMatch.index + 1,
+                "invoke-static { v$containerRegister }, $EXTENSION_CLASS->" +
+                        "addLeadingAccessoriesSearchbar(Landroid/view/ViewGroup;)V"
+            )
         }
     }
 }

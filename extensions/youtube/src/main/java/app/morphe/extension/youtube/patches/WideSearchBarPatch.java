@@ -57,8 +57,10 @@ public class WideSearchBarPatch {
             ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final int DP115 = Dim.dp(115);
+    private static final int SEARCH_BAR_HEIGHT = Dim.dp32;
+    private static final int SEARCH_BAR_SIDE_MARGIN = Dim.dp10;
+    private static final float SEARCH_BAR_WEIGHT = 1.0f;
     private static final String LEADING_ACCESSORIES_SEARCHBAR_TAG = "morphe_wide_searchbar";
-    private static final float LEADING_ACCESSORIES_SEARCHBAR_WEIGHT = 1.0f;
 
     private static WeakReference<View> searchButtonViewParentRef = new WeakReference<>(null);
     private static WeakReference<View> searchButtonViewRef = new WeakReference<>(null);
@@ -120,24 +122,22 @@ public class WideSearchBarPatch {
 
             View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
             final boolean extraWide = SEARCHBAR_TYPE == SearchbarType.EXTRA_WIDE;
-            final int sideMargin = Dim.dp10;
-            final int searchBarHeight = Dim.dp32;
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
                 LinearLayout.LayoutParams linearParams =
-                        new LinearLayout.LayoutParams(0, searchBarHeight);
-                linearParams.weight = 1.0f;
+                        new LinearLayout.LayoutParams(0, SEARCH_BAR_HEIGHT);
+                linearParams.weight = SEARCH_BAR_WEIGHT;
                 linearParams.gravity = Gravity.CENTER_VERTICAL;
                 currentViewGroupParams = linearParams;
-                currentViewGroupParams.setMargins(sideMargin, 0, sideMargin, 0);
+                currentViewGroupParams.setMargins(SEARCH_BAR_SIDE_MARGIN, 0, SEARCH_BAR_SIDE_MARGIN, 0);
             } else {
                 currentViewGroupParams = new ViewGroup.MarginLayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, searchBarHeight
+                        ViewGroup.LayoutParams.MATCH_PARENT, SEARCH_BAR_HEIGHT
                 );
 
-                int startMargin = extraWide ? Dim.dp12 : sideMargin;
-                final int endMargin = extraWide ? Dim.dp12 : sideMargin;
+                int startMargin = extraWide ? Dim.dp12 : SEARCH_BAR_SIDE_MARGIN;
+                final int endMargin = extraWide ? Dim.dp12 : SEARCH_BAR_SIDE_MARGIN;
 
                 // Search bar fills the toolbar, so it must not overlap the logo that stays visible.
                 if (!extraWide && logoView != null) {
@@ -246,16 +246,16 @@ public class WideSearchBarPatch {
                 searchBox.setTag(LEADING_ACCESSORIES_SEARCHBAR_TAG);
 
                 LinearLayout.LayoutParams searchParams = new LinearLayout.LayoutParams(
-                        0, Dim.dp32, LEADING_ACCESSORIES_SEARCHBAR_WEIGHT);
+                        0, SEARCH_BAR_HEIGHT, SEARCH_BAR_WEIGHT);
                 searchParams.gravity = Gravity.CENTER_VERTICAL;
-                searchParams.setMarginStart(Dim.dp10);
-                searchParams.setMarginEnd(Dim.dp10);
+                searchParams.setMarginStart(SEARCH_BAR_SIDE_MARGIN);
+                searchParams.setMarginEnd(SEARCH_BAR_SIDE_MARGIN);
                 searchBox.setLayoutParams(searchParams);
             }
 
             // The container wraps its content, so stretch it to the toolbar menu buttons.
             ViewGroup.LayoutParams containerParams = container.getLayoutParams();
-            if (containerParams != null && containerParams.width != ViewGroup.LayoutParams.MATCH_PARENT) {
+            if (containerParams.width != ViewGroup.LayoutParams.MATCH_PARENT) {
                 containerParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 container.setLayoutParams(containerParams);
             }
