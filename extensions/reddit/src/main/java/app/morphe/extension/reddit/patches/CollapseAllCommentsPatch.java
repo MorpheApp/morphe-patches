@@ -77,9 +77,15 @@ public final class CollapseAllCommentsPatch {
     private static final Set<Function0<?>> postCommentClicks =
             Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap<>()));
 
-    private static final Function0<Object> COLLAPSE_ALL_CLICK = () -> {
-        onCollapseAllClick();
-        return null;
+    // Must use anonymous declaration.
+    // Using a lambda creates a different bytecode that throws AbstractMethodError when clicked.
+    // noinspection Convert2Lambda
+    private static final Function0<Object> COLLAPSE_ALL_CLICK = new Function0<>() {
+        @Override
+        public Object invoke() {
+            onCollapseAllClick();
+            return null;
+        }
     };
 
     private static volatile WeakReference<CommentTree> commentTreeRef = new WeakReference<>(null);
