@@ -44,6 +44,13 @@ public class MusicActivityHook extends BaseActivityHook {
 
     private static final String GOOGLE_API_ACTIVITY_CLASS = "com.google.android.gms.common.api.GoogleApiActivity";
 
+    private static final String YOUTUBE_MUSIC_SETTINGS_ACTIVITY_CLASS =
+            "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
+    private static final String YOUTUBE_MUSIC_SETTINGS_FRAGMENT_CLASS =
+            "com.google.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
+    private static final String EXTRA_SHOW_FRAGMENT = ":android:show_fragment";
+    private static final String EXTRA_NO_HEADERS = ":android:no_headers";
+
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
 
@@ -98,6 +105,21 @@ public class MusicActivityHook extends BaseActivityHook {
             context.startActivity(intent);
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to open Morphe settings", ex);
+        }
+    }
+
+    /**
+     * Opens the YouTube Music settings, with the extras the app uses to open them.
+     */
+    public static void openYouTubeMusicSettings(Context context) {
+        try {
+            Intent intent = new Intent();
+            intent.setClassName(context, YOUTUBE_MUSIC_SETTINGS_ACTIVITY_CLASS);
+            intent.putExtra(EXTRA_SHOW_FRAGMENT, YOUTUBE_MUSIC_SETTINGS_FRAGMENT_CLASS);
+            intent.putExtra(EXTRA_NO_HEADERS, true);
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to open YouTube Music settings", ex);
         }
     }
 

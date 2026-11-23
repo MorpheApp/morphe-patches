@@ -15,7 +15,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -35,7 +34,6 @@ import androidx.annotation.Nullable;
 
 import com.google.protobuf.MessageLite;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -91,11 +89,6 @@ public class NavigationBarPatch {
     private static final boolean NAVIGATION_BAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE =
             Settings.SHOW_NAVIGATION_BAR_SETTINGS_BUTTON_TYPE.get();
 
-    private static final boolean SHOW_TOOLBAR_SETTINGS_BUTTON = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON.get();
-
-    private static final boolean TOOLBAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE =
-            Settings.SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE.get();
-
     /**
      * Browse id of the Settings button of the navigation bar, which has no page.
      */
@@ -105,40 +98,6 @@ public class NavigationBarPatch {
      * Name of the app string used as the label of the Settings buttons.
      */
     private static final String SETTINGS_LABEL_STRING_NAME = "settings";
-
-    /**
-     * ID of the menu item of the Settings button of the toolbar, added during patching.
-     */
-    private static final String SETTINGS_MENU_ITEM_ID_NAME = "morphe_settings_menu_item";
-
-    /**
-     * Order of the menu items of the toolbar, the same as the order of the buttons of the app.
-     */
-    private static final int TOOLBAR_MENU_ITEM_ORDER = 2;
-
-    private static final String YOUTUBE_MUSIC_SETTINGS_ACTIVITY_CLASS =
-            "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
-    private static final String YOUTUBE_MUSIC_SETTINGS_FRAGMENT_CLASS =
-            "com.google.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
-    private static final String EXTRA_SHOW_FRAGMENT = ":android:show_fragment";
-    private static final String EXTRA_NO_HEADERS = ":android:no_headers";
-
-    /**
-     * Activity of the toolbar, for the Settings button that is added again
-     * after a page removes all the buttons of the menu.
-     */
-    private static WeakReference<Activity> toolbarActivityRef = new WeakReference<>(null);
-
-    /**
-     * ID of the hidden offline settings item of the toolbar, which has the gear icon of the app.
-     */
-    private static final String OFFLINE_SETTINGS_MENU_ITEM_ID_NAME = "offline_settings_menu_item";
-
-    /**
-     * Gear icon of the app, in the style of the other toolbar icons, such as bold icons.
-     */
-    @Nullable
-    private static volatile Drawable.ConstantState toolbarSettingsIcon;
 
     /**
      * Injection point.
@@ -224,90 +183,13 @@ public class NavigationBarPatch {
     }
 
     /**
-     * Injection point.
-     * Called after the menu of the toolbar is inflated and the app set the icons of its items.
+     * @param morpheSettings If the Morphe settings are opened, otherwise the YouTube Music settings.
      */
-    public static void setToolbarSettingsButton(Activity activity, Menu menu) {
-        if (!SHOW_TOOLBAR_SETTINGS_BUTTON) return;
-
-        toolbarActivityRef = new WeakReference<>(activity);
-        try {
-            MenuItem offlineSettingsItem = menu.findItem(ResourceUtils.getIdIdentifier(OFFLINE_SETTINGS_MENU_ITEM_ID_NAME));
-            Drawable icon = offlineSettingsItem == null ? null : offlineSettingsItem.getIcon();
-            if (icon != null) {
-                toolbarSettingsIcon = icon.getConstantState();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to get the toolbar settings icon", ex);
-        }
-        setToolbarSettingsButton(menu);
-    }
-
-    /**
-     * Injection point.
-     * Called after a page added its buttons from the server, which can remove all the buttons of the menu first.
-     */
-    public static void setToolbarSettingsButton(Menu menu) {
-        if (!SHOW_TOOLBAR_SETTINGS_BUTTON) return;
-
-        try {
-            Activity activity = toolbarActivityRef.get();
-            if (activity == null) return;
-
-            final int itemId = ResourceUtils.getIdIdentifier(SETTINGS_MENU_ITEM_ID_NAME);
-            MenuItem item = menu.findItem(itemId);
-            if (item == null) {
-                item = menu.add(Menu.NONE, itemId, TOOLBAR_MENU_ITEM_ORDER, str(SETTINGS_LABEL_STRING_NAME));
-                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            }
-
-            // A view of its own, as menu items have no long press.
-            if (item.getActionView() == null) {
-                item.setActionView(createToolbarSettingsButton(activity, itemId));
-            }
-            item.setVisible(true);
-        } catch (Exception ex) {
-            Logger.printException(() -> "setToolbarSettingsButton failure", ex);
-        }
-    }
-
-    /**
-     * @return The Settings button of the toolbar, made from the layout of the search button so it looks the same.
-     */
-    private static View createToolbarSettingsButton(Activity activity, int id) {
-        ImageView button = (ImageView) LayoutInflater.from(activity)
-                .inflate(ResourceUtils.getLayoutIdentifier("search_button"), null);
-        button.setId(id);
-        Drawable.ConstantState icon = toolbarSettingsIcon;
-        if (icon != null) {
-            button.setImageDrawable(icon.newDrawable(activity.getResources()));
-        } else {
-            button.setImageResource(ResourceUtils.getDrawableIdentifier("yt_outline_gear_white_24"));
-        }
-        button.setContentDescription(str(SETTINGS_LABEL_STRING_NAME));
-        button.setOnClickListener(v -> openSettings(v.getContext(), TOOLBAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE));
-        button.setOnLongClickListener(v -> {
-            openSettings(v.getContext(), !TOOLBAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE);
-            return true;
-        });
-        return button;
-    }
-
     private static void openSettings(Context context, boolean morpheSettings) {
         if (morpheSettings) {
             MusicActivityHook.openSettings(context);
-            return;
-        }
-
-        try {
-            Intent intent = new Intent();
-            intent.setClassName(context, YOUTUBE_MUSIC_SETTINGS_ACTIVITY_CLASS);
-            // The extras the app uses to open its settings.
-            intent.putExtra(EXTRA_SHOW_FRAGMENT, YOUTUBE_MUSIC_SETTINGS_FRAGMENT_CLASS);
-            intent.putExtra(EXTRA_NO_HEADERS, true);
-            context.startActivity(intent);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to open YouTube Music settings", ex);
+        } else {
+            MusicActivityHook.openYouTubeMusicSettings(context);
         }
     }
 
@@ -357,6 +239,87 @@ public class NavigationBarPatch {
     //
     // Toolbar
     //
+
+    private static final boolean SHOW_TOOLBAR_SETTINGS_BUTTON = Settings.SHOW_TOOLBAR_SETTINGS_BUTTON.get();
+
+    private static final boolean TOOLBAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE =
+            Settings.SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE.get();
+
+    /**
+     * Menu item of the Settings button of the toolbar, added to the menu resource during patching.
+     */
+    private static final int SETTINGS_MENU_ITEM_ID = ResourceUtils.getIdIdentifier("morphe_settings_menu_item");
+
+    /**
+     * Hidden offline settings item of the toolbar, which has the gear icon of the app.
+     */
+    private static final int OFFLINE_SETTINGS_MENU_ITEM_ID = ResourceUtils.getIdIdentifier("offline_settings_menu_item");
+
+    /**
+     * Order of the menu items of the toolbar, the same as the order of the buttons of the app.
+     */
+    private static final int TOOLBAR_MENU_ITEM_ORDER = 2;
+
+    /**
+     * Gear icon of the app, in the style of the other toolbar icons, such as bold icons.
+     */
+    @Nullable
+    private static Drawable.ConstantState toolbarSettingsIcon;
+
+    /**
+     * Injection point.
+     * Called after the menu of the toolbar is inflated and the app set the icons of its items,
+     * and after a page added its buttons from the server, which can remove all the buttons of the menu first.
+     */
+    public static void showToolbarSettingsButton(Menu menu) {
+        if (!SHOW_TOOLBAR_SETTINGS_BUTTON) return;
+
+        try {
+            MenuItem offlineSettingsItem = menu.findItem(OFFLINE_SETTINGS_MENU_ITEM_ID);
+            Drawable icon = offlineSettingsItem == null ? null : offlineSettingsItem.getIcon();
+            if (icon != null) {
+                toolbarSettingsIcon = icon.getConstantState();
+            }
+
+            MenuItem item = menu.findItem(SETTINGS_MENU_ITEM_ID);
+            if (item == null) {
+                item = menu.add(Menu.NONE, SETTINGS_MENU_ITEM_ID, TOOLBAR_MENU_ITEM_ORDER, str(SETTINGS_LABEL_STRING_NAME));
+                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            }
+
+            // A view of its own, as menu items have no long press.
+            if (item.getActionView() == null) {
+                Activity activity = Utils.getActivity();
+                if (activity == null) return;
+                item.setActionView(createToolbarSettingsButton(activity));
+            }
+            item.setVisible(true);
+        } catch (Exception ex) {
+            Logger.printException(() -> "showToolbarSettingsButton failure", ex);
+        }
+    }
+
+    /**
+     * @return The Settings button of the toolbar, made from the layout of the search button so it looks the same.
+     */
+    private static View createToolbarSettingsButton(Activity activity) {
+        ImageView button = (ImageView) LayoutInflater.from(activity)
+                .inflate(ResourceUtils.getLayoutIdentifier("search_button"), null);
+        button.setId(SETTINGS_MENU_ITEM_ID);
+        Drawable.ConstantState icon = toolbarSettingsIcon;
+        if (icon != null) {
+            button.setImageDrawable(icon.newDrawable(activity.getResources()));
+        } else {
+            button.setImageResource(ResourceUtils.getDrawableIdentifier("yt_outline_gear_white_24"));
+        }
+        button.setContentDescription(str(SETTINGS_LABEL_STRING_NAME));
+        button.setOnClickListener(v -> openSettings(v.getContext(), TOOLBAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE));
+        button.setOnLongClickListener(v -> {
+            openSettings(v.getContext(), !TOOLBAR_SETTINGS_BUTTON_TAP_OPENS_MORPHE);
+            return true;
+        });
+        return button;
+    }
 
     /**
      * Injection point.

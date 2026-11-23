@@ -306,22 +306,14 @@ val navigationBarPatch = patch(
 
         MusicActivityOnCreateOptionsMenuFingerprint.let {
             it.method.apply {
-                val activityMatch = it.instructionMatches.first()
-                val peerRegister = activityMatch.getInstruction<TwoRegisterInstruction>().registerB
-                val menuRegister = it.instructionMatches[2].getInstruction<FiveRegisterInstruction>().registerE
+                val menuRegister = it.instructionMatches[1].getInstruction<FiveRegisterInstruction>().registerE
 
                 // After the app sets the icons of the menu items, so the extension can use the icon
                 // of the offline settings item. Some app versions set the icons only with a flag,
                 // and the branch around them jumps to this index.
-                val insertIndex = it.instructionMatches.last().index
-                val activityRegister = findFreeRegister(insertIndex, peerRegister, menuRegister)
-
                 addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
-                        iget-object v$activityRegister, v$peerRegister, ${activityMatch.fieldReference}
-                        invoke-static { v$activityRegister, v$menuRegister }, $EXTENSION_CLASS->setToolbarSettingsButton(Landroid/app/Activity;Landroid/view/Menu;)V
-                    """
+                    it.instructionMatches.last().index,
+                    "invoke-static { v$menuRegister }, $EXTENSION_CLASS->showToolbarSettingsButton(Landroid/view/Menu;)V"
                 )
             }
         }
@@ -330,7 +322,7 @@ val navigationBarPatch = patch(
         ToolbarServerButtonsFingerprint.let {
             it.method.addInstruction(
                 it.instructionMatches.last().index + 1,
-                "invoke-static { p1 }, $EXTENSION_CLASS->setToolbarSettingsButton(Landroid/view/Menu;)V"
+                "invoke-static { p1 }, $EXTENSION_CLASS->showToolbarSettingsButton(Landroid/view/Menu;)V"
             )
         }
 

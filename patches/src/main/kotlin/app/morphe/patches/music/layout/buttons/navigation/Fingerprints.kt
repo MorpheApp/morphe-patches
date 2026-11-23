@@ -116,8 +116,7 @@ internal object DefaultNavigationButtonsFingerprint : Fingerprint(
 
 /**
  * Matches the method that creates the menu of the toolbar.
- * The first filter is the activity, read from the peer of the activity. The last filter is the id
- * of the search button, used right after the app sets the icons of the menu items.
+ * The last filter is the id of the search button, used right after the app sets the icons of the menu items.
  */
 internal object MusicActivityOnCreateOptionsMenuFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/apps/youtube/music/activities/MusicActivity;",
@@ -125,10 +124,6 @@ internal object MusicActivityOnCreateOptionsMenuFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("Landroid/view/Menu;"),
     filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "Lcom/google/android/apps/youtube/music/activities/MusicActivity;"
-        ),
         resourceLiteral(ResourceType.MENU, "main_menu"),
         methodCall(
             smali = "Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V",
@@ -143,7 +138,6 @@ internal object MusicActivityOnCreateOptionsMenuFingerprint : Fingerprint(
  * gets from the server. Depending on a server flag, it removes all the buttons of the menu first.
  */
 internal object ToolbarServerButtonsFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/Menu;"),
     filters = listOf(
