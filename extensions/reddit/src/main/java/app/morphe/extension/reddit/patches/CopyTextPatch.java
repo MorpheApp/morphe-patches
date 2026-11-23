@@ -53,9 +53,6 @@ public final class CopyTextPatch {
 
     // region Wrap the rich text renderer and the post title in a SelectionContainer.
 
-    private static final int RICH_TEXT = 0;
-    private static final int POST_TITLE = 1;
-
     /**
      * Set while the original rich text renderer is invoked from inside the SelectionContainer.
      */
@@ -76,9 +73,7 @@ public final class CopyTextPatch {
     }
 
     /**
-     * Injection point. Called before the post detail screen title is rendered.
-     * A wrapped title is not clickable, since a clickable consumes the long press
-     * that starts a selection.
+     * Injection point. Called when the post detail screen title is rendered.
      *
      * @return If the title should be rendered inside a SelectionContainer.
      */
@@ -91,7 +86,7 @@ public final class CopyTextPatch {
      * rich text renderer with the original arguments.
      */
     public static Object createRichTextContent(Object[] args) {
-        return new SelectionContent(RICH_TEXT, args);
+        return new RichTextContent(args);
     }
 
     /**
@@ -99,37 +94,50 @@ public final class CopyTextPatch {
      * post title renderer with the original arguments.
      */
     public static Object createPostTitleContent(Object[] args) {
-        return new SelectionContent(POST_TITLE, args);
+        return new PostTitleContent(args);
     }
 
     /**
      * Content lambda of the SelectionContainer. Implements the Compose Function2 interface,
      * the interface and its invoke(composer, changed) bridge method are added during patching.
      */
-    public static final class SelectionContent {
-        private final int composable;
-        private final Object[] args;
+    public abstract static class SelectionContent {
+        protected final Object[] args;
 
-        SelectionContent(int composable, Object[] args) {
-            this.composable = composable;
+        SelectionContent(Object[] args) {
             this.args = args;
         }
 
         /**
          * Called by the invoke(composer, changed) bridge method.
          */
-        public void render(Object composer) {
-            if (composable == POST_TITLE) {
-                invokePostTitle(args, composer);
-                return;
-            }
+        public abstract void render(Object composer);
+    }
 
+    private static final class RichTextContent extends SelectionContent {
+        RichTextContent(Object[] args) {
+            super(args);
+        }
+
+        @Override
+        public void render(Object composer) {
             IN_SELECTION_CONTAINER.set(Boolean.TRUE);
             try {
                 invokeRichText(args, composer);
             } finally {
                 IN_SELECTION_CONTAINER.remove();
             }
+        }
+    }
+
+    private static final class PostTitleContent extends SelectionContent {
+        PostTitleContent(Object[] args) {
+            super(args);
+        }
+
+        @Override
+        public void render(Object composer) {
+            invokePostTitle(args, composer);
         }
     }
 

@@ -12,14 +12,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
@@ -45,9 +44,6 @@ private const val EXTENSION_SELECTION_MANAGER_INTERFACE =
 
 // Arbitrary Compose group key of the lambda passed to SelectionContainer.
 private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
-
-// Parameter of the post title composable that makes the title clickable.
-private const val POST_TITLE_CLICKABLE_PARAMETER_INDEX = 4
 
 // Registers v0 to v4 are used by the SelectionContainer smali.
 private const val SELECTION_CONTAINER_SMALI_REGISTERS = 5
@@ -132,15 +128,17 @@ val copyTextPatch = patch(
         }
 
         /**
-         * Adds a method that invokes [composable] with the arguments packed by `selectionContainerSmali`.
-         * The composer argument is replaced with the composer of the SelectionContainer content.
-         * The extension method of [invokerFingerprint] is changed to call the added method.
+         * Adds a method that invokes the composable of [composableFingerprint] with the arguments
+         * packed by `selectionContainerSmali`. The composer argument is replaced with the composer
+         * of the SelectionContainer content. The extension method of [invokerFingerprint] is
+         * changed to call the added method.
          */
         fun addInvokeComposableMethod(
-            composable: MutableMethod,
+            composableFingerprint: Fingerprint,
             methodName: String,
             invokerFingerprint: Fingerprint
         ) {
+            val composable = composableFingerprint.method
             val paramTypes = composable.parameterTypes.map { it.toString() }
             val composerIndex = paramTypes.indexOf(composerType)
 
@@ -197,7 +195,7 @@ val copyTextPatch = patch(
                     """
                 )
             }
-            mutableClassDefBy(composable.definingClass).methods.add(invokeMethod)
+            composableFingerprint.classDef.methods.add(invokeMethod)
 
             invokerFingerprint.method.addInstructions(
                 0,
@@ -222,28 +220,25 @@ val copyTextPatch = patch(
         }
 
         // Rich text renderer, used for post and comment bodies.
-        ComposeRichTextFingerprint.method.apply {
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->shouldWrapRichText()Z
-                    move-result v0
-                    if-eqz v0, :morphe_original
-                    ${selectionContainerSmali(parameterTypes.map { it.toString() }, "createRichTextContent")}
-                    :morphe_original
-                    nop
-                """
-            )
+        ComposeRichTextFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->shouldWrapRichText()Z
+                move-result v0
+                if-eqz v0, :morphe_original
+                ${selectionContainerSmali(ComposeRichTextFingerprint.method.parameterTypes.map { it.toString() }, "createRichTextContent")}
+                :morphe_original
+                nop
+            """
+        )
+        addInvokeComposableMethod(ComposeRichTextFingerprint, "patch_invokeRichText", InvokeRichTextFingerprint)
 
-            addInvokeComposableMethod(this, "patch_invokeRichText", InvokeRichTextFingerprint)
-        }
-
-        // Post detail screen title. The title composable is also used for link previews,
-        // so the post detail screen title section invokes it inside a SelectionContainer.
+        // Post title. The title composable is also used for link previews, so only the
+        // post detail screen title section is changed to call a method that wraps it.
         val postTitleMethod = PostTitleFingerprint.method
         val postTitleParamTypes = postTitleMethod.parameterTypes.map { it.toString() }
 
-        addInvokeComposableMethod(postTitleMethod, "patch_invokePostTitle", InvokePostTitleFingerprint)
+        addInvokeComposableMethod(PostTitleFingerprint, "patch_invokePostTitle", InvokePostTitleFingerprint)
 
         val selectablePostTitleMethod = ImmutableMethod(
             postTitleMethod.definingClass,
@@ -255,38 +250,31 @@ val copyTextPatch = patch(
             null,
             MutableMethodImplementation(SELECTION_CONTAINER_SMALI_REGISTERS + postTitleParamTypes.size)
         ).toMutable().apply {
-            // A clickable consumes the touch-down event, even if it is disabled. A clickable title
-            // inside the SelectionContainer would prevent starting a selection with a long press.
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
-                    const/4 v0, 0x0
-                    move/16 p$POST_TITLE_CLICKABLE_PARAMETER_INDEX, v0
+                    invoke-static { }, $EXTENSION_CLASS->shouldWrapPostTitle()Z
+                    move-result v0
+                    if-nez v0, :morphe_selectable
+                    invoke-static/range { p0 .. p${postTitleParamTypes.lastIndex} }, $postTitleMethod
+                    return-void
+
+                    :morphe_selectable
                     ${selectionContainerSmali(postTitleParamTypes, "createPostTitleContent")}
                 """
             )
         }
-        mutableClassDefBy(postTitleMethod.definingClass).methods.add(selectablePostTitleMethod)
+        PostTitleFingerprint.classDef.methods.add(selectablePostTitleMethod)
 
         PostTitleSectionFingerprint.let {
             it.method.apply {
                 val callIndex = it.instructionMatches.last().index
                 val call = getInstruction<RegisterRangeInstruction>(callIndex)
-                val callRegisters = call.startRegister until call.startRegister + call.registerCount
-                val freeRegister = findFreeRegister(callIndex, callRegisters.toList())
+                val lastRegister = call.startRegister + call.registerCount - 1
 
-                addInstructionsWithLabels(
+                replaceInstruction(
                     callIndex,
-                    """
-                        invoke-static { }, $EXTENSION_CLASS->shouldWrapPostTitle()Z
-                        move-result v$freeRegister
-                        if-eqz v$freeRegister, :morphe_original
-                        invoke-static/range { v${callRegisters.first} .. v${callRegisters.last} }, $selectablePostTitleMethod
-                        goto :morphe_skip_original
-                        :morphe_original
-                        nop
-                    """,
-                    ExternalLabel("morphe_skip_original", getInstruction(callIndex + 1))
+                    "invoke-static/range { v${call.startRegister} .. v$lastRegister }, $selectablePostTitleMethod"
                 )
             }
         }
