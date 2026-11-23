@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/5254
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.music.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
@@ -10,9 +20,9 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -65,6 +75,83 @@ internal object TabLayoutTextFingerprint : Fingerprint(
         // Hide navigation buttons.
         methodCall(
             name = "getVisibility"
+        )
+    )
+)
+
+/**
+ * Matches the method that creates the navigation buttons, at the field put of the list of
+ * the navigation button protos, which the buttons are then created from.
+ */
+internal object NavigationButtonsListFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        newInstance("Ljava/util/ArrayList;"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Ljava/util/List;",
+            location = MatchAfterWithin(5)
+        ),
+        resourceLiteral(ResourceType.LAYOUT, "image_with_text_tab")
+    )
+)
+
+/**
+ * Matches the method that makes the navigation buttons shown before the guide response is loaded.
+ * The last filter is the call of the factory of the navigation button protos,
+ * which takes the browse id, the label and the icon type.
+ */
+internal object DefaultNavigationButtonsFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "pivot_home"),
+        string("FEmusic_home"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;", "L"),
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Matches the method that creates the menu of the toolbar.
+ * The first filter is the activity, read from the peer of the activity. The last filter is the id
+ * of the search button, used right after the app sets the icons of the menu items.
+ */
+internal object MusicActivityOnCreateOptionsMenuFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/music/activities/MusicActivity;",
+    name = "onCreateOptionsMenu",
+    returnType = "Z",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Lcom/google/android/apps/youtube/music/activities/MusicActivity;"
+        ),
+        resourceLiteral(ResourceType.MENU, "main_menu"),
+        methodCall(
+            smali = "Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V",
+            location = MatchAfterWithin(5)
+        ),
+        resourceLiteral(ResourceType.ID, "action_search")
+    )
+)
+
+/**
+ * Matches the method that replaces the buttons of the toolbar menu with the buttons a page
+ * gets from the server. Depending on a server flag, it removes all the buttons of the menu first.
+ */
+internal object ToolbarServerButtonsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = listOf(
+        methodCall(smali = "Ljava/util/List;->isEmpty()Z"),
+        methodCall(smali = "Landroid/view/Menu;->clear()V"),
+        methodCall(
+            name = "forEach",
+            location = MatchAfterWithin(10)
         )
     )
 )

@@ -12,10 +12,13 @@ package app.morphe.extension.music.settings;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceFragment;
 import android.view.View;
@@ -38,6 +41,8 @@ import app.morphe.extension.shared.theme.ThemeUtils;
  */
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class MusicActivityHook extends BaseActivityHook {
+
+    private static final String GOOGLE_API_ACTIVITY_CLASS = "com.google.android.gms.common.api.GoogleApiActivity";
 
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
@@ -80,6 +85,20 @@ public class MusicActivityHook extends BaseActivityHook {
         Utils.setIsDarkModeEnabled(true);
 
         BaseActivityHook.initialize(new MusicActivityHook(), parentActivity);
+    }
+
+    /**
+     * Opens the Morphe settings.
+     */
+    public static void openSettings(Context context) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setData(Uri.parse(MORPHE_SETTINGS_INTENT));
+            intent.setClassName(context, GOOGLE_API_ACTIVITY_CLASS);
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to open Morphe settings", ex);
+        }
     }
 
     /**
