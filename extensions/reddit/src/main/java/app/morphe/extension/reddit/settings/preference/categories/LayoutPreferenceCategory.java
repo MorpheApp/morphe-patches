@@ -75,6 +75,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideCommunitiesShelfPatch.isPatchIncluded() ||
                 HideHomeTabsPatch.isPatchIncluded() ||
                 HideInteractivePostsPatch.isPatchIncluded() ||
+                HidePeopleAlsoSearchForSectionPatch.isPatchIncluded() ||
                 HideRelatedPostsSectionPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 HideVideosForYouShelfPatch.isPatchIncluded() ||
