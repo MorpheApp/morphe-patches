@@ -16,6 +16,7 @@ import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch;
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch;
 import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
+import app.morphe.extension.reddit.patches.DisableHomeFeedAutoRefreshPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
@@ -83,6 +84,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
                 KeepFeedPositionPatch.isPatchIncluded() ||
+                DisableHomeFeedAutoRefreshPatch.isPatchIncluded() ||
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
@@ -258,6 +260,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.KEEP_FEED_POSITION
+            ));
+        }
+
+        if (DisableHomeFeedAutoRefreshPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_HOME_FEED_AUTO_REFRESH
             ));
         }
 
