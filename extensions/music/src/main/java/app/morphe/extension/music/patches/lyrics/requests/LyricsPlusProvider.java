@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,10 +29,14 @@ import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
-public final class BinimumProvider implements LyricsProvider {
+public final class LyricsPlusProvider implements LyricsProvider {
 
-    private static final String API_URL = "https://lyricsplus.binimum.org/v2/lyrics/get";
-    private static final String LEGACY_BASE_URL = "https://lyrics-api.binimum.org/";
+    /** The official server first, then the mirrors the official client lists. */
+    static final String[] API_HOSTS = {
+            "https://lyricsplus.prjktla.my.id",
+            "https://lyricsplus.binimum.org",
+            "https://lyricsplus.prjktla.workers.dev",
+    };
 
     private static final String BROWSER_USER_AGENT =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -80,7 +85,6 @@ public final class BinimumProvider implements LyricsProvider {
 
         String fullText = textBuf.toString().trim();
 
-        // Words with no spaces between them in a spaced script are joined with spaces.
         if (fullText.indexOf(' ') < 0 && words.size() > 1 && !TTMLParser.isContinuousCjk(words.get(0).text())) {
             StringBuilder reconstructed = new StringBuilder();
             for (int i = 0; i < words.size(); i++) {
@@ -95,7 +99,6 @@ public final class BinimumProvider implements LyricsProvider {
             fullText = reconstructed.toString();
         }
 
-        // The last word ends the line, so it has no space after it.
         if (!words.isEmpty()) {
             Word lastWord = words.get(words.size() - 1);
             if (lastWord.endsWithSpace()) {
@@ -130,7 +133,12 @@ public final class BinimumProvider implements LyricsProvider {
 
     @Override
     public String name() {
-        return "BiniLyrics";
+        return "LyricsPlus";
+    }
+
+    @Override
+    public boolean hasCandidates() {
+        return true;
     }
 
     @Nullable
@@ -140,17 +148,11 @@ public final class BinimumProvider implements LyricsProvider {
             return null;
         }
 
-        // The v2 API is asked first, for the sources it merges.
-        try {
-            Lyrics lyrics = fetchFromApi(track);
-            if (lyrics != null && !lyrics.lines().isEmpty()) {
-                return FetchResult.of(lyrics, track);
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "BiniLyrics v2 fetch failed", ex);
+        Lyrics lyrics = fetchFromApi(track);
+        if (lyrics != null && !lyrics.lines().isEmpty()) {
+            return FetchResult.of(lyrics, track);
         }
 
-        // A title with a video tag is asked again without it.
         final String cleanTitle = track.title()
                 .replace("(Official Video)", "")
                 .replace("(Official Music Video)", "")
@@ -158,64 +160,146 @@ public final class BinimumProvider implements LyricsProvider {
                 .trim();
         if (!cleanTitle.equals(track.title())) {
             TrackInfo cleanTrack = new TrackInfo(cleanTitle, track.artist(), track.album(), track.durationSeconds());
-            try {
-                Lyrics lyrics = fetchFromApi(cleanTrack);
-                if (lyrics != null && !lyrics.lines().isEmpty()) {
-                    return FetchResult.of(lyrics, cleanTrack);
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "BiniLyrics v2 fetch failed for the cleaned title", ex);
+            lyrics = fetchFromApi(cleanTrack);
+            if (lyrics != null && !lyrics.lines().isEmpty()) {
+                return FetchResult.of(lyrics, cleanTrack);
             }
-        }
-
-        // The legacy API is the last resort.
-        try {
-            String lyricsUrl = resolveLyricsUrl(track);
-            if (lyricsUrl != null) {
-                HttpURLConnection connection = null;
-                try {
-                    connection = LyricsRequests.openConnection(lyricsUrl);
-                    if (connection.getResponseCode() == Requester.HTTP_STATUS_CODE_SUCCESS) {
-                        String ttml = Requester.parseString(connection);
-                        return FetchResult.blind(TTMLParser.ttmlToLyrics(ttml, name(), lyricsUrl));
-                    }
-                } finally {
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Legacy Binimum LRCRED fetch failed", ex);
         }
 
         return null;
     }
 
     @Nullable
-    private Lyrics fetchFromApi(TrackInfo track) throws IOException, JSONException {
-        StringBuilder url = new StringBuilder(API_URL);
-        url.append("?title=").append(LyricsRequests.encode(track.title()));
-        url.append("&artist=").append(LyricsRequests.encode(track.artist()));
-        if (!track.album().isEmpty()) {
-            url.append("&album=").append(LyricsRequests.encode(track.album()));
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        JSONArray results = searchCandidates(track);
+        if (results == null || results.length() == 0) {
+            return new ArrayList<>();
         }
-        if (track.durationSeconds() > 0) {
-            url.append("&duration=").append(track.durationSeconds());
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (int i = 0; i < results.length(); i++) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
+                break;
+            }
+            JSONObject item = results.optJSONObject(i);
+            if (item == null) continue;
+            String candTitle = item.optString("title", "");
+            String candArtist = item.optString("artist", "");
+            long durMs = item.optLong("durationMs", 0);
+            int durSec = durMs > 0 ? (int) (durMs / 1000) : 0;
+            Lyrics lyrics;
+            try {
+                lyrics = fetchCandidateLyrics(item);
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "LyricsPlus candidate lyrics failed", ex);
+                continue;
+            }
+            if (lyrics == null || lyrics.lines().isEmpty()) continue;
+            int score = LyricsRequests.scoreLyricsCandidate(candTitle, candArtist, durSec, lyrics, track);
+            if (score < LyricsRequests.SOFT_MIN) continue;
+            scored.add(new Lyrics.ScoredLyrics(score, lyrics));
         }
-        url.append("&source=apple,lyricsplus,qq");
+        return Lyrics.sortScoredByScore(scored);
+    }
 
+    @Nullable
+    private Lyrics fetchFromApi(TrackInfo track) {
+        for (String host : API_HOSTS) {
+            final String currentHost = host;
+            try {
+                Lyrics lyrics = fetchFromHost(currentHost, track);
+                if (lyrics != null) {
+                    return lyrics;
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "LyricsPlus fetch failed: " + currentHost, ex);
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private Lyrics fetchFromHost(String host, TrackInfo track)
+            throws IOException, JSONException {
+        return fetchFromUrl(buildUrl(host, track));
+    }
+
+    /** Look up a candidate by ISRC, then platform id, then title/artist. */
+    @Nullable
+    private Lyrics fetchCandidateLyrics(JSONObject item)
+            throws IOException, JSONException {
+        String isrc = item.optString("isrc", "");
+        if (!isrc.isEmpty()) {
+            Lyrics l = fetchLyricsWithParam("isrc", isrc);
+            if (l != null) return l;
+        }
+        JSONObject ids = item.optJSONObject("id");
+        if (ids != null) {
+            for (String key : new String[]{"spotify", "qq", "appleMusic", "apple", "deezer"}) {
+                String pid = ids.optString(key, "");
+                if (!pid.isEmpty()) {
+                    Lyrics l = fetchLyricsWithParam("platformId", pid);
+                    if (l != null) return l;
+                }
+            }
+        }
+        String title = item.optString("title", "");
+        String artist = item.optString("artist", "");
+        if (title.isEmpty() || artist.isEmpty()) {
+            return null;
+        }
+        long durMs = item.optLong("durationMs", 0);
+        TrackInfo candTrack = new TrackInfo(title, artist, "",
+                durMs > 0 ? (int) (durMs / 1000) : 0);
+        return fetchFromApi(candTrack);
+    }
+
+    @Nullable
+    private Lyrics fetchLyricsWithParam(String param, String value)
+            throws IOException, JSONException {
+        for (String host : API_HOSTS) {
+            String url = host + "/v1/ttml/get?" + param + "=" + encode(value);
+            try {
+                Lyrics l = fetchFromUrl(url);
+                if (l != null) return l;
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "LyricsPlus candidate fetch failed: " + host, ex);
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private JSONArray searchCandidates(TrackInfo track) throws IOException, JSONException {
+        String q = (track.title() + " " + track.artist()).trim();
+        if (q.isEmpty()) {
+            return null;
+        }
+        for (String host : API_HOSTS) {
+            JSONArray results = searchCandidatesFromHost(host, q);
+            if (results != null && results.length() > 0) {
+                return results;
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private JSONArray searchCandidatesFromHost(String host, String q)
+            throws IOException, JSONException {
+        String url = host + "/v1/songlist/search?q=" + encode(q);
         HttpURLConnection connection = null;
         try {
-            connection = LyricsRequests.openConnection(url.toString());
-            connection.setRequestProperty("User-Agent", BROWSER_USER_AGENT);
-            connection.setRequestProperty("Accept", "application/json");
-            final int code = connection.getResponseCode();
-            if (code != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            connection = LyricsRequests.openConnection(url, Map.of(
+                    "User-Agent", BROWSER_USER_AGENT,
+                    "Accept", "application/json"));
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(8000);
+            if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
             JSONObject root = Requester.parseJSONObject(connection);
-            return parseLyricsJson(root, url.toString());
+            return root != null ? root.optJSONArray("results") : null;
         } finally {
             if (connection != null) {
                 connection.disconnect();
@@ -224,7 +308,65 @@ public final class BinimumProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics parseLyricsJson(JSONObject root, String sourceUrl) {
+    private Lyrics fetchFromUrl(String url) throws IOException, JSONException {
+        HttpURLConnection connection = null;
+        try {
+            connection = LyricsRequests.openConnection(url, Map.of(
+                    "User-Agent", BROWSER_USER_AGENT,
+                    "Accept", "application/json"));
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(8000);
+            final int code = connection.getResponseCode();
+            if (code != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                return null;
+            }
+            JSONObject root = Requester.parseJSONObject(connection);
+            if (root == null) {
+                return null;
+            }
+            String ttml = root.optString("ttml", "");
+            if (ttml.isEmpty()) {
+                // Older mirrors may only answer the v2 JSON shape.
+                return parseLyricsJson(root);
+            }
+
+            JSONObject timing = root.optJSONObject("processingTime");
+            JSONObject selected = timing != null ? timing.optJSONObject("selectedSongMetadata") : null;
+            String sourceName = selected != null ? selected.optString("source", "") : "";
+
+            String providerName = name();
+            if (!sourceName.isEmpty() && !isLyricsPlusSelfSource(sourceName)) {
+                providerName = name() + " (via " + sourceName + ")";
+            }
+            return TTMLParser.ttmlToLyrics(ttml, providerName, null);
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    static String buildUrl(String host, TrackInfo track) throws UnsupportedEncodingException {
+        String base = host.endsWith("/") ? host.substring(0, host.length() - 1) : host;
+        StringBuilder url = new StringBuilder(base).append("/v1/ttml/get");
+        url.append("?title=").append(encode(track.title()));
+        url.append("&artist=").append(encode(track.artist()));
+        if (!track.album().isEmpty()) {
+            url.append("&album=").append(encode(track.album()));
+        }
+        if (track.durationSeconds() > 0) {
+            url.append("&duration=").append(track.durationSeconds());
+        }
+        return url.toString();
+    }
+
+    /** A space is encoded as {@code %20}, never the query-string {@code +}. */
+    private static String encode(String value) throws UnsupportedEncodingException {
+        return LyricsRequests.encode(value).replace("+", "%20");
+    }
+
+    @Nullable
+    private Lyrics parseLyricsJson(JSONObject root) {
         if (root == null) {
             return null;
         }
@@ -234,6 +376,13 @@ public final class BinimumProvider implements LyricsProvider {
         }
 
         JSONObject metadata = root.optJSONObject("metadata");
+        String upstreamSource = metadata != null ? metadata.optString("source", "") : "";
+        if (upstreamSource != null && upstreamSource.isEmpty()) {
+            upstreamSource = null;
+        }
+        if (upstreamSource != null && isLyricsPlusSelfSource(upstreamSource)) {
+            upstreamSource = null;
+        }
         List<String> songwriters = null;
         JSONArray songPartsJson = null;
         if (metadata != null) {
@@ -326,7 +475,6 @@ public final class BinimumProvider implements LyricsProvider {
                     if (!bgLine.words().isEmpty()) hasAnyWordSync = true;
                 }
             } else {
-                // Line synced only, with no word timing.
                 String text = rawLineText.trim();
                 boolean isBg = false;
                 if ((text.startsWith("(") && text.endsWith(")")) || (text.startsWith("（") && text.endsWith("）"))) {
@@ -338,7 +486,6 @@ public final class BinimumProvider implements LyricsProvider {
                 }
             }
 
-            // The transliteration and translation of the line, if any.
             if (transliterationText != null && !transliterationText.trim().isEmpty()) {
                 romanization.add(new LyricsLine(LyricsLine.NO_TIME, transliterationText.trim()));
             }
@@ -353,59 +500,25 @@ public final class BinimumProvider implements LyricsProvider {
         }
 
         boolean isSynced = lines.get(0).startTimeMs() != LyricsLine.NO_TIME;
-        return new Lyrics(lines, name(), isSynced,
+        final String providerName = upstreamSource != null
+                ? name() + " (via " + upstreamSource + ")" : name();
+        return new Lyrics(lines, providerName, isSynced,
                 romanization.isEmpty() ? null : romanization,
                 translations.isEmpty() ? null : translations,
                 null,
                 songwriters,
                 null,
                 hasAnyWordSync ? "syllable" : "line",
-                sourceUrl);
+                null);
     }
 
-    @Nullable
-    private String resolveLyricsUrl(TrackInfo track) throws IOException, JSONException {
-        if (track.title().isEmpty() || track.artist().isEmpty()) {
-            return null;
+    private static boolean isLyricsPlusSelfSource(@Nullable String source) {
+        if (source == null) return false;
+        String normalized = source.toLowerCase(java.util.Locale.ROOT);
+        if (normalized.startsWith("q")) {
+            normalized = normalized.substring(1);
         }
-
-        StringBuilder url = new StringBuilder(LEGACY_BASE_URL);
-        url.append("?track=").append(LyricsRequests.encode(track.title()));
-        url.append("&artist=").append(LyricsRequests.encode(track.artist()));
-        if (!track.album().isEmpty()) {
-            url.append("&album=").append(LyricsRequests.encode(track.album()));
-        }
-        if (track.durationSeconds() > 0) {
-            url.append("&duration=").append(track.durationSeconds());
-        }
-
-        HttpURLConnection connection = null;
-        try {
-            connection = LyricsRequests.openConnection(url.toString());
-            final int responseCode = connection.getResponseCode();
-            if (responseCode == 404) {
-                connection.disconnect();
-                return null;
-            }
-            if (responseCode != 200) {
-                LyricsRequests.logFailure(name(), connection);
-                return null;
-            }
-            JSONObject response = Requester.parseJSONObject(connection);
-            JSONArray results = response.optJSONArray("results");
-            if (results == null || results.length() == 0) {
-                return null;
-            }
-            JSONObject best = results.optJSONObject(0);
-            if (best == null) {
-                return null;
-            }
-            return LyricsRequests.optString(best, "lyricsUrl");
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
+        return "lyricsplus".equals(normalized);
     }
 
     private record WordCandidate(JSONObject syl, @Nullable String romaji) {

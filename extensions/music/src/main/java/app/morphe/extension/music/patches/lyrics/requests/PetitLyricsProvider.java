@@ -56,6 +56,51 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private static final int LSY_MAX_LINES = 10_000;
     private static final int LSY_WRAP_CS = 65_536;
 
+    @Nullable
+    private static String cleanTitle(@Nullable String raw) {
+        if (raw == null) return null;
+        String text = raw.trim();
+        if (text.isEmpty()) return raw;
+
+        text = text.replaceAll("\\s*[-\u2014\u2013]\\s*", " - ");
+        text = text.replaceAll("\\s*[／/]\\s*", " - ");
+        text = text.replaceAll("\\s*〜\\s*", " - ");
+        text = text.replaceAll("\\s*~\\s*", " - ");
+
+        int firstIdx = text.indexOf(" - ");
+        if (firstIdx < 0) return text;
+
+        StringBuilder cleaned = new StringBuilder(text.substring(0, firstIdx));
+        int cursor = firstIdx + 3;
+        while (cursor < text.length()) {
+            int nextIdx = text.indexOf(" - ", cursor);
+            String tail = (nextIdx < 0 ? text.substring(cursor) : text.substring(cursor, nextIdx)).trim();
+            if (tail.isEmpty() || isBracketed(tail) || isPureAscii(tail)) {
+            } else {
+                cleaned.append(" - ").append(tail);
+            }
+            cursor = nextIdx < 0 ? text.length() : nextIdx + 3;
+        }
+        String result = cleaned.toString().trim();
+        return result.isEmpty() ? raw : result;
+    }
+
+    private static boolean isBracketed(String s) {
+        int len = s.length();
+        if (len < 2) return false;
+        char first = s.charAt(0);
+        char last = s.charAt(len - 1);
+        return (first == '(' && last == ')') || (first == '[' && last == ']');
+    }
+
+    private static boolean isPureAscii(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c < 0x20 || c > 0x7E) return false;
+        }
+        return true;
+    }
+
     static int scoreOf(Song song, TrackInfo track) {
         return LyricsRequests.scoreTrackCandidate(
                 song.title, song.artist, song.durationMs / 1000, track);
@@ -963,10 +1008,11 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private Response request(TrackInfo track, int lyricsType) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 
+        String title = cleanTitle(track.title());
         String form = "clientAppId=" + LyricsRequests.encode(CLIENT_APP_ID) +
                 "&terminalType=" + LyricsRequests.encode(TERMINAL_TYPE) +
                 "&lyricsType=" + lyricsType +
-                "&key_title=" + LyricsRequests.encode(track.title()) +
+                "&key_title=" + LyricsRequests.encode(title) +
                 "&key_artist=" + LyricsRequests.encode(track.artist()) +
                 "&key_album=" + LyricsRequests.encode(track.album());
 

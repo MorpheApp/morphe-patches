@@ -248,6 +248,11 @@ public class LyricsMatchTest {
     }
 
     @Test
+    public void isBlindProvider_lyricsPlusReturnsTrue() {
+        assertTrue(LyricsMatch.isBlindProvider(provider("LyricsPlus")));
+    }
+
+    @Test
     public void isBlindProvider_lyricifyReturnsTrue() {
         assertTrue(LyricsMatch.isBlindProvider(provider("Lyricify")));
     }

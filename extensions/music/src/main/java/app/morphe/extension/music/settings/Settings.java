@@ -120,7 +120,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_ENABLED = new BooleanSetting("morphe_music_lyrics_enabled", TRUE, false);
     public static final BooleanSetting LYRICS_KEEP_SCREEN_ON = new BooleanSetting("morphe_music_lyrics_keep_screen_on", FALSE, false, parent(LYRICS_ENABLED));
     public static final String DEFAULT_LYRICS_ORDER =
-            "YTMusic,-Captions,Apple,LRCLIB,QQ,NetEase,KuGou,Luna,-PetitLyrics,-bLyrics,-BiniLyrics,-LrcRed,-Unison,-SimpMusic,-AMLL,-LunaBeat,-Lyricify,-Musixmatch,-Spotify,-Deezer,-RMM,-Genius,";
+            "YTMusic,-Captions,Apple,LRCLIB,QQ,NetEase,KuGou,-Luna,-Kuwo,-RMM,-PetitLyrics,-bLyrics,-LyricsPlus,-LrcRed,-Unison,-SimpMusic,-AMLL,-LunaBeat,-Lyricify,-Musixmatch,-Spotify,-Deezer,-Genius,";
     public static final StringSetting LYRICS_SOURCE = new StringSetting("morphe_music_lyrics_source", DEFAULT_LYRICS_ORDER, false, parent(LYRICS_ENABLED));
     public static final StringSetting APPLE_MUSIC_TOKEN = new StringSetting("morphe_music_apple_music_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", false, parent(LYRICS_ENABLED));
@@ -458,6 +458,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateLyricsArtistFirstToTrackFormat();
         migrateQuickLrcEnabled();
         migrateLyricsProviderSwitches();
+        migrateLyricsProviderRename();
     }
 
     static {
@@ -583,6 +584,26 @@ public class Settings extends SharedYouTubeSettings {
         DEPRECATED_LYRICS_USE_AI_TRANSLATION.resetToDefault();
         DEPRECATED_LYRICS_USE_AI_ROMANIZATION.resetToDefault();
         DEPRECATED_LYRICS_LOCAL_ROMANIZATION.resetToDefault();
+    }
+
+    /**
+     * The provider was renamed from {@code BiniLyrics} to {@code LyricsPlus}; keep the old stored
+     * position and enabled state, but under the new id.
+     */
+    private static void migrateLyricsProviderRename() {
+        if (LYRICS_SOURCE.isSetToDefault()) {
+            return;
+        }
+        final String order = LYRICS_SOURCE.get();
+        if (order == null || !order.contains("BiniLyrics")) {
+            return;
+        }
+        final String migrated = order.replace("BiniLyrics", "LyricsPlus");
+        if (migrated.equals(DEFAULT_LYRICS_ORDER)) {
+            LYRICS_SOURCE.resetToDefault();
+        } else {
+            LYRICS_SOURCE.save(migrated);
+        }
     }
 
     /**

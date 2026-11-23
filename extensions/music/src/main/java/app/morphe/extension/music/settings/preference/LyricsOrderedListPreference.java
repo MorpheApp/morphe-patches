@@ -74,9 +74,9 @@ public final class LyricsOrderedListPreference extends Preference {
     private static final int GRIP_COLUMN = Dim.dp24;
 
     private static final List<String> SOURCE_PROVIDER_ORDER = Arrays.asList(
-            "Apple", "BiniLyrics", "LrcRed", "bLyrics", "Lyricify", "Unison",
+            "Apple", "LyricsPlus", "LrcRed", "bLyrics", "Lyricify", "Unison",
             "PetitLyrics", "AMLL", "QQ", "SimpMusic", "KuGou", "Musixmatch",
-            "YTMusic", "LRCLIB", "NetEase", "Luna", "LunaBeat",
+            "YTMusic", "LRCLIB", "NetEase", "Luna", "Kuwo", "LunaBeat",
             "Captions", "Spotify", "Deezer", "RMM", "Genius");
 
     /** Friendlier labels for display; ids not present here are shown verbatim. */
@@ -88,7 +88,7 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_LABELS.put("RMM", "RMM Revival");
         PROVIDER_LABELS.put("Luna", "Soda (Luna)");
         PROVIDER_LABELS.put("bLyrics", "BetterLyrics (bLyrics)");
-        PROVIDER_LABELS.put("BiniLyrics", "BiniLyrics (Binimum)");
+        PROVIDER_LABELS.put("LyricsPlus", "LyricsPlus");
         PROVIDER_LABELS.put("Musixmatch", "Musixmatch");
         PROVIDER_LABELS.put("Spotify", "Spotify *");
         PROVIDER_LABELS.put("Deezer", "Deezer *");
@@ -103,10 +103,11 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_URLS.put("QQ", "https://y.qq.com/");
         PROVIDER_URLS.put("NetEase", "https://music.163.com/");
         PROVIDER_URLS.put("KuGou", "https://www.kugou.com/");
+        PROVIDER_URLS.put("Kuwo", "https://www.kuwo.cn/");
         PROVIDER_URLS.put("Luna", "https://www.qishui.com/");
         PROVIDER_URLS.put("PetitLyrics", "https://petitlyrics.com/");
         PROVIDER_URLS.put("bLyrics", "https://betterlyrics.org/");
-        PROVIDER_URLS.put("BiniLyrics", "https://lyrics.binimum.org/");
+        PROVIDER_URLS.put("LyricsPlus", "https://lyricsplus.prjktla.my.id/");
         PROVIDER_URLS.put("Unison", "https://unison.boidu.dev/");
         PROVIDER_URLS.put("SimpMusic", "https://lyrics.simpmusic.org/");
         PROVIDER_URLS.put("AMLL", "https://amlldb.bikonoo.com/");
@@ -568,7 +569,7 @@ public final class LyricsOrderedListPreference extends Preference {
         scrollView.addView(content, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f);
         scrollParams.bottomMargin = Dim.dp12;
         mainLayout.addView(scrollView, mainLayout.getChildCount() - 1, scrollParams);
 
