@@ -8,7 +8,6 @@
 package app.morphe.patches.reddit.layout.profile
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
@@ -28,7 +27,7 @@ internal object ProfileModelToStringFingerprint : Fingerprint(
             opcode = Opcode.IGET_OBJECT,
             definingClass = "this",
             type = "Ljava/lang/String;",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         ),
         string(", isProfileFiltered="),
         // Is filtered (posts or comments hidden by the profile settings).
