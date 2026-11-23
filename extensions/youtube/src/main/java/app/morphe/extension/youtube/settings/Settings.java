@@ -721,6 +721,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SHOW_WATCH_LATER_BUTTON = new BooleanSetting("morphe_show_watch_later_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting SHOW_SETTINGS_BUTTON = new BooleanSetting("morphe_show_settings_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting SHOW_SETTINGS_BUTTON_TYPE = new BooleanSetting("morphe_show_settings_button_type", FALSE, true, parent(SHOW_SETTINGS_BUTTON));
+    public static final BooleanSetting YOU_BUTTON_ACCOUNT_SWITCHER = new BooleanSetting("morphe_you_button_account_switcher", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final StringSetting NAVIGATION_BUTTONS_ORDER = new StringSetting("morphe_navigation_buttons_order", "", true, parentNot(HIDE_NAVIGATION_BAR));
     public static final StringSetting NAVIGATION_BUTTONS_DISCOVERED = new StringSetting("morphe_navigation_buttons_discovered", "", false, false);
     public static final BooleanSetting HIDE_NAVIGATION_BUTTON_LABELS = new BooleanSetting("morphe_hide_navigation_button_labels", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
