@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.AlwaysShowHidePatch;
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch;
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch;
 import app.morphe.extension.reddit.patches.CopyTextPatch;
@@ -80,6 +81,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideRelatedPostsSectionPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 HideVideosForYouShelfPatch.isPatchIncluded() ||
+                AlwaysShowHidePatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
                 KeepFeedPositionPatch.isPatchIncluded() ||
@@ -205,6 +207,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_VIDEOS_FOR_YOU_SHELF
+            ));
+        }
+
+        if (AlwaysShowHidePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.ALWAYS_SHOW_HIDE
             ));
         }
 
