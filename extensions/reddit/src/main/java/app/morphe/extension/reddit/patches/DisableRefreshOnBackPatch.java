@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5245
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -17,30 +17,31 @@ public final class DisableRefreshOnBackPatch {
      */
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
-        return false; // Modified during patching.
+        return false;  // Modified during patching.
     }
 
     /**
      * Injection point.
      * <p>
-     * Called on back press to determine if the home feed is scrolled down.
+     * Called on back press on the home feed.
      *
-     * @param scrolled Whether the feed is scrolled down.
-     * @return False to skip scrolling to the top and reloading.
+     * @param original If back should scroll the feed to the top and reload it,
+     *                 instead of exiting the app. True when the feed is scrolled down.
      */
-    public static boolean isFeedScrolled(boolean scrolled) {
-        return scrolled && !Settings.DISABLE_REFRESH_ON_BACK.get();
+    public static boolean refreshOnBack(boolean original) {
+        return original && !Settings.DISABLE_REFRESH_ON_BACK.get();
     }
 
     /**
      * Injection point.
      * <p>
-     * Called on back press to determine if the "Tap again to exit" hint should be shown.
+     * Called on back press on the home feed, when back exits the app.
      *
-     * @param show Whether to show the exit hint.
-     * @return True to always show the exit hint.
+     * @param original If the "swipe again to exit" hint is shown.
+     *                 Reddit shows it only the first few times.
      */
-    public static boolean showExitHint(boolean show) {
-        return show || Settings.DISABLE_REFRESH_ON_BACK.get();
+    public static boolean showExitHint(boolean original) {
+        // Back now exits from any feed position, so always show the hint.
+        return original || Settings.DISABLE_REFRESH_ON_BACK.get();
     }
 }
