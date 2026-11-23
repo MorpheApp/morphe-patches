@@ -101,12 +101,8 @@ public final class WebViewCheck {
     public static void showDialogIfNeeded(Activity activity) {
         try {
             if (dialogAnswered || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_WEBVIEW_DIALOG.get()
-                    || !SpoofVideoStreamsPatch.isSpoofingEnabled()) {
-                return;
-            }
-
-            ClientType client = SpoofVideoStreamsPatch.getPreferredClient();
-            if (!client.requireJS || (!client.requirePoToken && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get() && client != ClientType.MWEB)) {
+                    || !SpoofVideoStreamsPatch.isSpoofingEnabled()
+                    || !SpoofVideoStreamsPatch.clientRequiresWebView(SpoofVideoStreamsPatch.getPreferredClient())) {
                 return;
             }
 

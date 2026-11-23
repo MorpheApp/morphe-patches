@@ -151,6 +151,8 @@ Tap OK to open Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
+    <string name="morphe_spoof_video_streams_player_js_quack_title">Use QuackJS</string>
+    <string name="morphe_spoof_video_streams_player_js_quack_summary">Use QuackJS instead of yt-dlp-ejs (WebView) for deobfuscation</string>
     <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' requires a separate sign-in. Tap here to continue</string>
@@ -209,8 +211,6 @@ To sign in, press continue below"</string>
     <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
     <string name="morphe_oauth2_toast_reset">Logged out of \'Android VR\'</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
-    <string name="morphe_spoof_video_streams_player_js_quack_title">Use QuackJS</string>
-    <string name="morphe_spoof_video_streams_player_js_quack_summary">Use QuackJS instead of yt-dlp-ejs (WebView) for deobfuscation</string>
 
     <!-- misc.medianotification.mediaNotificationControlsPatch -->
     <string name="morphe_notification_media_screen_title">Notification media controls</string>

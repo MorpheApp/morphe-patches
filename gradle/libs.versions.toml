@@ -9,7 +9,6 @@ animalsniffer = "2.0.1"
 annotation = "1.11.0"
 collections4 = "4.6.0"
 gson = "2.15.0"
-quackjs-java = "0.1.4"
 guava = "33.6.0-jre"
 hiddenapi = "6.1"
 json = "20240303"
@@ -21,6 +20,7 @@ morphe-patcher = "2.5.0"
 morphe-patches-library = "2.3.0"
 protobuf = "0.10.1"
 protoc = "4.36.2"
+quackjs-java = "0.1.4"
 smali = "4220ae75f7"
 
 [libraries]
@@ -30,7 +30,6 @@ androidx-javascriptengine = { module = "androidx.javascriptengine:javascriptengi
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 collections4 = { module = "org.apache.commons:commons-collections4", version.ref = "collections4" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-quackjs-java = { module = "app.morphe:quackjs-java", version.ref = "quackjs-java" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 json = { module = "org.json:json", version.ref = "json" }
@@ -42,6 +41,7 @@ morphe-patches-library = { module = "app.morphe:morphe-patches-library", version
 morphe-extensions-library = { module = "app.morphe:morphe-extensions-library", version.ref = "morphe-patches-library" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
+quackjs-java = { module = "app.morphe:quackjs-java", version.ref = "quackjs-java" }
 
 [plugins]
 android-library = { id = "com.android.library" }

@@ -59,6 +59,7 @@ import app.morphe.extension.shared.spoof.MwebSignIn;
 import app.morphe.extension.shared.spoof.MwebSiteSession;
 import app.morphe.extension.shared.spoof.MwebStream;
 import app.morphe.extension.shared.spoof.PreferredClientCheck;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
@@ -94,7 +95,7 @@ public class StreamingDataRequest {
         Objects.requireNonNull(preferredClient);
 
         List<ClientType> orderToUse = new ArrayList<>(availableClients.size());
-        if (!skipClient(preferredClient, true)) {
+        if (!skipClient(preferredClient)) {
             orderToUse.add(preferredClient);
             // YouTube serves each TV device separately, so another one can still play when the first is cut off.
             if (preferredClient == ClientType.TV_SABR) {
@@ -103,7 +104,7 @@ public class StreamingDataRequest {
         }
 
         for (ClientType client : availableClients) {
-            if (skipClient(client, true)) {
+            if (skipClient(client)) {
                 continue;
             }
 
@@ -125,7 +126,7 @@ public class StreamingDataRequest {
         ClientType[] clientOrder = clientOrderToUse;
         // The engine starts on its own thread, and the requests below do not delay it.
         for (ClientType client : clientOrder) {
-            if (client.requireJS && !skipClient(client, true)) {
+            if (client.requireJS && !skipClient(client)) {
                 JavaScriptManager.warmUpInBackground();
                 break;
             }
@@ -142,7 +143,7 @@ public class StreamingDataRequest {
         }
 
         for (ClientType client : clientOrder) {
-            if (skipClient(client, true)) {
+            if (skipClient(client)) {
                 continue;
             }
             // Without an access token, the client is skipped.
@@ -188,12 +189,6 @@ public class StreamingDataRequest {
      * that is seen. The app can build the streams of the same response more than once.
      */
     private static final long MAX_MILLISECONDS_TO_REUSE_FAILED_FETCH = 30 * 1000;
-
-    /**
-     * Whether to use quackjs instead of ejs.
-     */
-    private static final boolean USE_QUACK_JS =
-            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get();
 
     /**
      * Cache limit must be greater than the maximum number of videos open at once,
@@ -544,7 +539,7 @@ public class StreamingDataRequest {
             if (orderClient == client) {
                 return false;
             }
-            if (orderClient.isWebClient() && !skipClient(orderClient, false)) {
+            if (orderClient.isWebClient() && !skipClient(orderClient)) {
                 return true;
             }
         }
@@ -1011,25 +1006,12 @@ public class StreamingDataRequest {
         }
     }
 
-    private static boolean skipClient(ClientType client, boolean coldStart) {
-        if (client.requireJS
-                && !JavaScriptEngineSupport.supportsJavaScriptEngine()
-                // When [USE_QUACK_JS] is set to true, a WebView is not required for deobfuscation.
-                // A WebView is still required to issue a PoToken or to launch a mobile web session.
-                //
-                // If a device does not support WebView, clients that require a PoToken or a mobile web session are skipped.
-                //
-                // If the device does not support WebView and [USE_QUACK_JS] is set to true, the [TV] client is available.
-                // [TV Simply] and [MWEB] are still not available.
-                && (client == ClientType.MWEB || client.requirePoToken || !USE_QUACK_JS)
-        ) {
-            Logger.printDebug(() -> coldStart
-                    ? "Could not find JavaScript engine."
-                    : "Sandbox is currently not available." +
-                    " Skipping JavaScript client: " + client.name());
+    private static boolean skipClient(ClientType client) {
+        if (SpoofVideoStreamsPatch.clientRequiresWebView(client)
+                && !JavaScriptEngineSupport.supportsJavaScriptEngine()) {
+            Logger.printDebug(() -> "JavaScript engine not available. Skipping client: " + client.name());
             return true;
         }
-
         return false;
     }
 
@@ -1047,7 +1029,7 @@ public class StreamingDataRequest {
         // Retry with different client if empty response body is received.
         int i = 0;
         for (ClientType clientType : clientOrder) {
-            if (skipClient(clientType, false)) {
+            if (skipClient(clientType)) {
                 continue;
             }
 
@@ -1123,7 +1105,8 @@ public class StreamingDataRequest {
 
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
-        ClientType preferredClient = clientOrder[0];
+        // The preferred client is not in the client order if it is skipped.
+        ClientType preferredClient = SpoofVideoStreamsPatch.getPreferredClient();
         if (!preferredClient.supportsOAuth2 && !SharedYouTubeSettings.OAUTH2_REFRESH_TOKEN.get().isBlank()) {
             handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         }

@@ -1,6 +1,11 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ *
+ * https://github.com/MorpheApp/morphe-patches/pull/11
+ * https://github.com/MorpheApp/morphe-patches/pull/340
+ * https://github.com/MorpheApp/morphe-patches/pull/448
+ * https://github.com/MorpheApp/morphe-patches/pull/4764
+ * https://github.com/MorpheApp/morphe-patches/pull/5170
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -187,6 +192,15 @@ public class SpoofVideoStreamsPatch {
 
     public static ClientType getPreferredClient() {
         return preferredClient;
+    }
+
+    /**
+     * QuackJS deobfuscates the streams without the WebView,
+     * but the WebView still makes the PoToken and the session of the website.
+     */
+    public static boolean clientRequiresWebView(ClientType client) {
+        return client.requireJS && (client.requirePoToken || client.isWebClient()
+                || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get());
     }
 
     /**
