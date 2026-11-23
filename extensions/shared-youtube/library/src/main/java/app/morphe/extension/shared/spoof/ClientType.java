@@ -411,7 +411,7 @@ public enum ClientType {
             MWEB.canLogin,
             MWEB.requireLogin,
             MWEB.supportsMultiAudioTracks,
-            MWEB.supportsVRImmersiveMode,
+            true,
             MWEB.requireJS,
             MWEB.requirePoToken,
             MWEB.requireSABR,
