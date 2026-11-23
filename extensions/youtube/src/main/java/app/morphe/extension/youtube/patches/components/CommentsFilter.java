@@ -140,11 +140,6 @@ public class CommentsFilter extends Filter {
                 CHIP_BAR_PATH_PREFIX
         );
 
-        var commentsZeroState = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_ZERO_STATE,
-                "comment_zero_state"
-        );
-
         var communityGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
                 "community_guidelines",
@@ -156,15 +151,14 @@ public class CommentsFilter extends Filter {
                 "composer_short_creation_button.e"
         );
 
+        dislikeButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_DISLIKE_BUTTON,
+                "engagement_dislike_button.e"
+        );
+
         emojiButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_EMOJI_BUTTON,
                 "id.comment.quick_emoji.button"
-        );
-
-        // Overflow buttons are also used outside of comments.
-        menuButton = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_MENU_BUTTON,
-                "overflow_button.e"
         );
 
         var gifButton = new StringFilterGroup(
@@ -183,6 +177,17 @@ public class CommentsFilter extends Filter {
                 "gift_attribution_card_classic_live.e"
         );
 
+        // Overflow buttons are also used outside of comments.
+        menuButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_MENU_BUTTON,
+                "overflow_button.e"
+        );
+
+        var noCommentsYet = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_NONE_YET,
+                "comment_zero_state"
+        );
+
         var previewComment = new StringFilterGroup(
                 Settings.MINIMAL_COMMENTS_BUTTON,
                 "|carousel_item.e"
@@ -192,7 +197,6 @@ public class CommentsFilter extends Filter {
                 Settings.MINIMAL_COMMENTS_BUTTON,
                 VIDEO_METADATA_CAROUSEL_PATH
         );
-
 
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
@@ -209,14 +213,14 @@ public class CommentsFilter extends Filter {
                 "live_viewer_leaderboard_chat_entry_point.e"
         );
 
-        dislikeButton = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_DISLIKE_BUTTON,
-                "engagement_dislike_button.e"
-        );
-
         translateButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_TRANSLATE_BUTTON,
                 "tri_state_button.e"
+        );
+
+        var visitTheCommunity = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_VISIT_THE_COMMUNITY_SECTION,
+                "communities_entrypoint.e"
         );
 
         addPathCallbacks(
@@ -228,7 +232,6 @@ public class CommentsFilter extends Filter {
                 commentsByMembers,
                 commentsContexts,
                 commentsFilterBar,
-                commentsZeroState,
                 communityGuidelines,
                 createAShortButton,
                 dislikeButton,
@@ -239,10 +242,12 @@ public class CommentsFilter extends Filter {
                 previewComment,
                 commentCardsIndicator,
                 menuButton,
+                noCommentsYet,
                 thanksButton,
                 timestampButton,
                 topFansButton,
-                translateButton
+                translateButton,
+                visitTheCommunity
         );
     }
 

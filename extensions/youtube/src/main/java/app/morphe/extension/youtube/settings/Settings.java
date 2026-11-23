@@ -554,6 +554,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMMENTS_LIVE_CHAT_SCROLL_TO_BOTTOM_BUTTON = new BooleanSetting("morphe_hide_comments_live_chat_scroll_to_bottom_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMENTS_LIVE_CHAT_TOOLTIPS = new BooleanSetting("morphe_hide_comments_live_chat_tooltips", FALSE, true);
     public static final BooleanSetting HIDE_COMMENTS_MENU_BUTTON = new BooleanSetting("morphe_hide_comments_menu_button", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_NONE_YET = new BooleanSetting("morphe_hide_comments_none_yet", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_comments_preview_comment", FALSE);
     public static final BooleanSetting MINIMAL_COMMENTS_BUTTON = new BooleanSetting("morphe_minimal_comments_button", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION = new BooleanSetting("morphe_hide_comments_section", FALSE);
@@ -563,7 +564,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMMENTS_TOP_FANS_BUTTON = new BooleanSetting("morphe_hide_comments_top_fans_button", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_TOPICS = new BooleanSetting("morphe_hide_comments_topics", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_TRANSLATE_BUTTON = new BooleanSetting("morphe_hide_comments_translate_button", FALSE);
-    public static final BooleanSetting HIDE_COMMENTS_ZERO_STATE = new BooleanSetting("morphe_hide_comments_zero_state", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_VISIT_THE_COMMUNITY_SECTION = new BooleanSetting("morphe_hide_comments_visit_the_community_section", FALSE);
     public static final BooleanSetting SANITIZE_COMMENTS_HIGHLIGHTED_SEARCH_LINKS = new BooleanSetting("morphe_sanitize_comments_highlighted_search_links", FALSE, true);
 
     // Description
@@ -1022,6 +1023,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_HIDE_CHAPTERS_TIMELINE_BUTTON = new BooleanSetting("morphe_hide_chapters_timeline_button", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS = new BooleanSetting("morphe_hide_comments_emoji_and_timestamp_buttons", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_COMMENTS_PROMPTS = new BooleanSetting("morphe_hide_comments_prompts", FALSE);
+    private static final BooleanSetting DEPRECATED_HIDE_COMMENTS_ZERO_STATE = new BooleanSetting("morphe_hide_comments_zero_state", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);
@@ -1132,6 +1134,7 @@ public class Settings extends SharedYouTubeSettings {
         }
         migrateOldSettingToNew(DEPRECATED_HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS, HIDE_COMMENTS_EMOJI_BUTTON);
         migrateOldSettingToNew(DEPRECATED_HIDE_COMMENTS_PROMPTS, HIDE_COMMENTS_CONTEXTS);
+        migrateOldSettingToNew(DEPRECATED_HIDE_COMMENTS_ZERO_STATE, HIDE_COMMENTS_NONE_YET);
         migrateOldSettingToNew(DEPRECATED_HIDE_DOODLES, HIDE_YOUTUBE_DOODLES);
         migrateOldSettingToNew(DEPRECATED_HIDE_ENDSCREEN_CARDS, HIDE_END_SCREEN_CARDS);
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_FEED, HIDE_FILTER_BAR_IN_FEED);

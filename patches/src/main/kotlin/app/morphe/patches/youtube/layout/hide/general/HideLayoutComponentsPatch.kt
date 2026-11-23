@@ -200,14 +200,15 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_comments_live_chat_scroll_to_bottom_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_tooltips", summary = true),
                     SwitchPreference("morphe_hide_comments_menu_button", summary = true),
+                    SwitchPreference("morphe_hide_comments_none_yet"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
-                    SwitchPreference("morphe_hide_comments_zero_state"),
                     SwitchPreference("morphe_minimal_comments_button", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button", titleKey = "morphe_hide_thanks_button_title"),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_hide_comments_top_fans_button"),
                     SwitchPreference("morphe_hide_comments_topics", summary = true),
                     SwitchPreference("morphe_hide_comments_translate_button"),
+                    SwitchPreference("morphe_hide_comments_visit_the_community_section"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
                 sorting = Sorting.UNSORTED
