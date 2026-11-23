@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5243
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -23,9 +23,9 @@ public final class AlwaysShowHidePatch {
     /**
      * Injection point.
      *
-     * @return False to keep Hide in the menu.
+     * @param original If Reddit replaces Hide in the feed post menu with recommendation options.
      */
-    public static boolean hideReplaced(final boolean replaced) {
-        return replaced && !Settings.ALWAYS_SHOW_HIDE.get();
+    public static boolean isHideReplaced(boolean original) {
+        return original && !Settings.ALWAYS_SHOW_HIDE.get();
     }
 }
