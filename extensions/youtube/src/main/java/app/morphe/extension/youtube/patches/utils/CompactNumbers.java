@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 
 /**
- * Shortened numbers that YouTube shows, such as the view counts "4.7M", "4,7 Mln" and "1,2万".
+ * Shortened numbers that YouTube shows, such as the view counts "4.7M" and "4,7 Mln".
  */
 public final class CompactNumbers {
 
@@ -41,13 +41,18 @@ public final class CompactNumbers {
     /** Digits after a separator of thousands, such as the 234 of 1,234. */
     private static final int GROUP_DIGITS = 3;
 
-    /** Unit -> its value, such as M -> 1000000. Longest units first. */
+    /**
+     * A shortened number unit, such as M.
+     *
+     * @param value The value of the unit, such as 1000000.
+     */
+    public record Unit(String text, long value) {
+    }
+
+    /** Units of {@link #unitsLocale}, longest first. */
     @GuardedBy("CompactNumbers.class")
     @Nullable
-    private static Map<String, Long> unitValues;
-    @GuardedBy("CompactNumbers.class")
-    @Nullable
-    private static List<String> units;
+    private static List<Unit> units;
     @GuardedBy("CompactNumbers.class")
     @Nullable
     private static Locale unitsLocale;
@@ -55,8 +60,11 @@ public final class CompactNumbers {
     private CompactNumbers() {
     }
 
-    private static synchronized Map<String, Long> getUnitValues(Locale locale) {
-        if (unitValues == null || !locale.equals(unitsLocale)) {
+    /**
+     * @return Shortened number units of the language, such as K and M, longest first.
+     */
+    public static synchronized List<Unit> getUnits(Locale locale) {
+        if (units == null || !locale.equals(unitsLocale)) {
             Map<String, Long> found = new LinkedHashMap<>();
             // Short units, such as M, and long units, such as million.
             for (CompactDecimalFormat.CompactStyle style : CompactDecimalFormat.CompactStyle.values()) {
@@ -70,7 +78,7 @@ public final class CompactNumbers {
                                 .replaceAll("[\\s\u00A0\u202F]+", " ").trim();
                         if (!unit.isEmpty() && !found.containsKey(unit)) {
                             // The first value of a unit is shown as 1, such as 1M, or as 10 or 100
-                            // in languages with units of ten thousand, such as 10万 of a hundred thousand.
+                            // in languages with units of ten thousand, such as 10 of the unit of ten thousand.
                             Long shown = parseDigits(formatted);
                             if (shown != null && shown > 0) {
                                 found.put(unit, value / shown);
@@ -79,7 +87,7 @@ public final class CompactNumbers {
                         value *= 10;
                     }
                 } catch (Exception ex) {
-                    Logger.printException(() -> "Units failure", ex);
+                    Logger.printException(() -> "getUnits failure", ex);
                 }
             }
             // The app can be in another language than its locale.
@@ -90,24 +98,12 @@ public final class CompactNumbers {
             found.putIfAbsent("lakh", 100_000L);
             found.putIfAbsent("crore", 10_000_000L);
 
-            List<String> list = new ArrayList<>(found.keySet());
-            list.sort((a, b) -> b.length() - a.length());
-            Map<String, Long> sorted = new LinkedHashMap<>();
-            for (String unit : list) {
-                sorted.put(unit, found.get(unit));
-            }
-            unitValues = sorted;
+            List<Unit> list = new ArrayList<>(found.size());
+            found.forEach((text, value) -> list.add(new Unit(text, value)));
+            list.sort((a, b) -> b.text.length() - a.text.length());
             units = Collections.unmodifiableList(list);
             unitsLocale = locale;
         }
-        return unitValues;
-    }
-
-    /**
-     * @return Shortened number units of the language, such as K and M, longest first.
-     */
-    public static synchronized List<String> getUnits(Locale locale) {
-        getUnitValues(locale);
         return units;
     }
 
@@ -197,30 +193,30 @@ public final class CompactNumbers {
             index++;
         }
 
-        long unitValue = 1;
+        Unit found = null;
         if (index < length) {
-            Long found = null;
-            for (Map.Entry<String, Long> entry : getUnitValues(locale).entrySet()) {
-                String unit = entry.getKey();
-                if (text.regionMatches(true, index, unit, 0, unit.length())) {
-                    found = entry.getValue();
-                    index += unit.length();
+            for (Unit unit : getUnits(locale)) {
+                if (text.regionMatches(true, index, unit.text, 0, unit.text.length())) {
+                    found = unit;
+                    index += unit.text.length();
                     break;
                 }
             }
             if (found == null) {
                 return null;
             }
-            // The units are without the period of abbreviations, such as of Mio. and тыс.
+            // The units are without the period of abbreviations, such as of Mio.
             if (index < length && text.charAt(index) == '.') {
                 index++;
             }
-            unitValue = found;
         }
         if (hasText(text, index, length)) {
             return null;
         }
 
-        return Math.round(parseNumber(matcher.group(), unitValue != 1) * unitValue);
+        if (found == null) {
+            return Math.round(parseNumber(matcher.group(), false));
+        }
+        return Math.round(parseNumber(matcher.group(), true) * found.value);
     }
 }

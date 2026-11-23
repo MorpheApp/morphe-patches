@@ -11,7 +11,6 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import androidx.annotation.Nullable;
 
-import com.google.protobuf.CodedOutputStream;
 import com.google.protobuf.WireFormat;
 
 import java.io.IOException;
@@ -53,14 +52,12 @@ public final class ViewCountFilter extends BufferPhraseFilter {
     private static final byte[] METADATA_TAG = encodeMetadataTag();
 
     private static byte[] encodeMetadataTag() {
-        final int fieldNumber = FeedViewCountPatch.METADATA_FIELD;
-        byte[] tag = new byte[CodedOutputStream.computeTagSize(fieldNumber)];
         try {
-            CodedOutputStream.newInstance(tag).writeTag(fieldNumber, WireFormat.WIRETYPE_LENGTH_DELIMITED);
+            return ProtoNode.encode(output -> output.writeTag(
+                    FeedViewCountPatch.METADATA_FIELD, WireFormat.WIRETYPE_LENGTH_DELIMITED));
         } catch (IOException ex) {
             throw new IllegalStateException(ex);
         }
-        return tag;
     }
 
     @Override

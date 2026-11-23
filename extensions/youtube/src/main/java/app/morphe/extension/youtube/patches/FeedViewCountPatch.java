@@ -348,7 +348,8 @@ public final class FeedViewCountPatch {
         }
 
         String unit = "";
-        for (String candidate : CompactNumbers.getUnits(locale)) {
+        for (CompactNumbers.Unit compactUnit : CompactNumbers.getUnits(locale)) {
+            String candidate = compactUnit.text();
             if (!text.regionMatches(true, index, candidate, 0, candidate.length())) {
                 continue;
             }
