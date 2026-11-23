@@ -296,8 +296,10 @@ final class SeeThroughPage {
         for (int i = 0; wrapper != null && wrapper.isShown() && i < wrapper.getChildCount(); i++) {
             if (!(wrapper.getChildAt(i) instanceof ViewGroup panel) || panel.getVisibility() != View.VISIBLE) continue;
             Drawable background = panel.getBackground();
-            if (background == null) {
-                panelBackgrounds.put(panel, null);
+            // The view that holds the panel below another one while they slide has a see-through color.
+            // What it holds, and the shade over it, would be black.
+            if (background == null || (background instanceof ColorDrawable color && Color.alpha(color.getColor()) == 0)) {
+                panelBackgrounds.put(panel, background);
                 panel.setBackground(new PanelLight(panel, pageColor));
                 // What the panel shows was drawn before the panel had the light.
                 invalidateBackgrounds(panel, 0);
@@ -344,6 +346,21 @@ final class SeeThroughPage {
                 invalidateBackgrounds(group.getChildAt(i), depth + 1);
             }
         }
+    }
+
+    /**
+     * Main thread.
+     *
+     * @return The width of the panel the view is in, or 0 if it is in none.
+     */
+    static int panelWidth(@Nullable View view) {
+        ViewGroup wrapper = panelWrapperRef.get();
+        for (int depth = 0; wrapper != null && view != null && depth <= MAX_DEPTH; depth++) {
+            ViewParent parent = view.getParent();
+            if (parent == wrapper) return view.getWidth();
+            view = parent instanceof View parentView ? parentView : null;
+        }
+        return 0;
     }
 
     /**

@@ -146,7 +146,7 @@ public final class AmbientLightController {
     /** Captures in a row that can be converted ones. A change that stays longer is a change of the video. */
     private static final int MAX_CONVERTED_CAPTURES = 15;
 
-    /** A background this small is a button, and keeps its color. */
+    /** A background this small is a button, and keeps its color. Of the width of a panel, too. */
     private static final float BUTTON_MAX_WIDTH_SCREEN_RATIO = 0.45f;
     private static final float BUTTON_MAX_HEIGHT_DP = 64f;
     private static final int DARK_PAGE_COLOR = 0xFF0F0F0F;
@@ -405,15 +405,15 @@ public final class AmbientLightController {
 
         try {
             final int replacement = AmbientLightMath.seeThroughColor(color, pageColor);
+            if (replacement == color) return color;
             Rect bounds = drawable.getBounds();
-            if (replacement == color
-                    || (replacement == 0 && bounds.width() < buttonMaxWidth && bounds.height() < buttonMaxHeight)) {
+            View host = hostOf(drawable);
+            if (replacement == 0 && bounds.width() < maxButtonWidth(host) && bounds.height() < buttonMaxHeight) {
                 return color;
             }
             // A color is often chosen before its drawable is on screen, and only the window of the
             // watch page has the light behind it. Another window, such as the comment box that
             // opens with the keyboard, would show its own background through the drawable.
-            View host = hostOf(drawable);
             if (host != null && host.getRootView() == rootRef.get()) {
                 pendingDrawables.remove(drawable);
                 seeThroughDrawables.put(drawable, Boolean.TRUE);
@@ -430,6 +430,16 @@ public final class AmbientLightController {
             Logger.printException(() -> "getLithoColor failure", ex);
             return color;
         }
+    }
+
+    /**
+     * @return How wide a button can be. A panel of a wide screen is a narrow column, and a bar across it,
+     *         as the comment box at the bottom of the comments, is no button.
+     */
+    private static int maxButtonWidth(@Nullable View host) {
+        final int panelWidth = SeeThroughPage.panelWidth(host);
+        return panelWidth > 0 ? Math.min(buttonMaxWidth, (int) (BUTTON_MAX_WIDTH_SCREEN_RATIO * panelWidth))
+                : buttonMaxWidth;
     }
 
     /**
