@@ -298,4 +298,36 @@ public class WordAnimationUtilsTest {
         Assert.assertEquals("द", "चाँद\nसा".substring(chaand.get(1)[0], chaand.get(1)[1]));
         Assert.assertEquals("सा", "चाँद\nसा".substring(chaand.get(2)[0], chaand.get(2)[1]));
     }
+
+    @Test
+    public void testRubyElevationTracksHeavyMainClusterTopDelta() {
+        float[] baseY = new float[]{100f, 100f, 100f};
+        float[] drawY = new float[]{95f, 92f, 80f};
+        float[] scaleX = new float[]{1.0f, 1.1f, 1.2f};
+        float[] pivotY = new float[]{60f, 60f, 60f};
+
+        // Regular syllable: no scaling, top moves purely with drawY - baseY (-5px).
+        Assert.assertEquals(-5f, WordSweepAnimator.clusterTopDelta(drawY[0], baseY[0], scaleX[0], pivotY[0]), 0.001f);
+
+        // Heavy glowing cluster at idx 1: -8px translation - (0.1 * 60) = -14px upward top expansion.
+        Assert.assertEquals(-14f, WordSweepAnimator.clusterTopDelta(drawY[1], baseY[1], scaleX[1], pivotY[1]), 0.001f);
+
+        // Ruby overlapping [0, 1] lifts cleanly above the heavy kanji even if rubyElev itself is only -2.5f.
+        // Cluster 2 does not overlap [0, 1] and must be ignored.
+        float resolved = WordSweepAnimator.resolveRubyClusterElevY(
+                -2.5f, new int[]{0, 1}, drawY, baseY, scaleX, pivotY);
+        Assert.assertEquals(-14f, resolved, 0.001f);
+
+        // Unrelated ruby falling back to its own ElevTracks value when no main cluster moved higher.
+        float solo = WordSweepAnimator.resolveRubyClusterElevY(
+                -2.5f, new int[0], drawY, baseY, scaleX, pivotY);
+        Assert.assertEquals(-2.5f, solo, 0.001f);
+
+        // Reveal/collapse shift: drawY matches restY when shiftProgress < 1f even though restY < static baseY.
+        float[] restYDuringShift = new float[]{70f, 70f, 70f};
+        float[] drawYDuringShift = new float[]{65f, 70f, 70f};
+        float duringShift = WordSweepAnimator.resolveRubyClusterElevY(
+                -5f, new int[]{0}, drawYDuringShift, restYDuringShift, new float[]{1f, 1f, 1f}, pivotY);
+        Assert.assertEquals(-5f, duringShift, 0.001f);
+    }
 }

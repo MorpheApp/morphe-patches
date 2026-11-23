@@ -2377,7 +2377,7 @@ public final class WordAnimationUtils {
             return base;
         }
         RomanLineStatics[] ruby = new RomanLineStatics[base.lines().length];
-        float rubyGap = Math.max(2f, fontSizePx * 0.08f);
+        float rubyGap = Math.max(2f, fontSizePx * 0.12f);
         for (int li = 0; li < base.lines().length; li++) {
             RomanLineStatics l = base.lines()[li];
             if (l != null) {
