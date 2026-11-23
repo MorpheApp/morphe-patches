@@ -11,25 +11,25 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.shared.settings.preference.MwebSignInPreference;
+import app.morphe.extension.shared.settings.preference.WebsiteSignInPreference;
 import app.morphe.extension.shared.spoof.ClientType;
 
 @SuppressWarnings("unused")
-public final class SpoofVideoStreamsMwebSignInPreference extends MwebSignInPreference {
+public final class SpoofVideoStreamsWebsiteSignInPreference extends WebsiteSignInPreference {
 
-    public SpoofVideoStreamsMwebSignInPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SpoofVideoStreamsWebsiteSignInPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public SpoofVideoStreamsMwebSignInPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SpoofVideoStreamsWebsiteSignInPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public SpoofVideoStreamsMwebSignInPreference(Context context, AttributeSet attrs) {
+    public SpoofVideoStreamsWebsiteSignInPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SpoofVideoStreamsMwebSignInPreference(Context context) {
+    public SpoofVideoStreamsWebsiteSignInPreference(Context context) {
         super(context);
     }
 
@@ -37,5 +37,10 @@ public final class SpoofVideoStreamsMwebSignInPreference extends MwebSignInPrefe
     protected boolean isSettingEnabled() {
         return Settings.SPOOF_VIDEO_STREAMS.get() &&
                 Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.MWEB;
+    }
+
+    @Override
+    protected ClientType getWebClient() {
+        return ClientType.MWEB;
     }
 }

@@ -369,9 +369,9 @@ public enum ClientType {
     /**
      * Mobile web (m.youtube.com), as the Chrome browser of the device.
      * The user agent is of the Chrome version of the WebView, which opens the website (see {@link #getUserAgent()}).
-     * Uses the web sign in if there is one (see {@link MwebSignIn}), and is used signed out otherwise.
+     * Uses the web sign in if there is one (see {@link WebsiteSignIn}), and is used signed out otherwise.
      * Its SABR media requests use the PoToken and the streaming session that the website makes for the video
-     * (see {@link MwebStream}), so the player request has no PoToken.
+     * (see {@link WebsiteStream}), so the player request has no PoToken.
      */
     MWEB(
             2,
@@ -392,6 +392,30 @@ public enum ClientType {
             false,
             true,
             "Mobile Web"
+    ),
+    /**
+     * Desktop web (www.youtube.com), as the Chrome browser of a computer.
+     * Same as {@code MWEB} but with the desktop website, which also plays videos the mobile website does not,
+     * such as movies. The desktop website rotates the cookies of the web sign in, see {@link WebsiteSession}.
+     */
+    WEB(
+            1,
+            "WEB",
+            "",
+            "",
+            "Windows",
+            "10.0",
+            "2.20261119.07.00",
+            "DESKTOP",
+            String.format(Locale.ENGLISH, ClientType.DESKTOP_USER_AGENT_FORMAT, ClientType.DEFAULT_CHROME_MAJOR_VERSION),
+            MWEB.canLogin,
+            MWEB.requireLogin,
+            MWEB.supportsMultiAudioTracks,
+            MWEB.supportsVRImmersiveMode,
+            MWEB.requireJS,
+            MWEB.requirePoToken,
+            MWEB.requireSABR,
+            "Web"
     ),
     /**
      * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
@@ -611,28 +635,40 @@ public enum ClientType {
             + " (KHTML, like Gecko) Chrome/%s.0.0.0 Mobile Safari/537.36";
 
     /**
+     * User agent of Chrome on Windows, with the version and the system hidden as Chrome sends it.
+     */
+    private static final String DESKTOP_USER_AGENT_FORMAT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+            + " AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s.0.0.0 Safari/537.36";
+
+    /**
      * A recent major version of Chrome, used if the version of the WebView is not known.
      */
     private static final String DEFAULT_CHROME_MAJOR_VERSION = "142";
 
     private static final Pattern CHROME_MAJOR_VERSION_PATTERN = Pattern.compile("Chrome/(\\d+)");
 
+    private static final String DESKTOP_WEBSITE_ORIGIN = "https://www.youtube.com";
+
+    /**
+     * The major version of Chrome of the WebView, or null if it was not read yet.
+     */
     @Nullable
-    private static volatile String webUserAgent;
+    private static volatile String webViewChromeMajorVersion;
 
     /**
      * The user agent of the client.
      * <p>
-     * A web client is the Chrome browser of the device, with the Chrome version of the WebView.
+     * A web client is the Chrome browser of the device, or of a computer for {@code WEB},
+     * with the Chrome version of the WebView.
      * The website opens in the WebView, so the requests name the same browser as the website session.
      */
     public String getUserAgent() {
         if (!isWebClient()) {
             return userAgent;
         }
-        String agent = webUserAgent;
-        if (agent == null) {
-            String version = DEFAULT_CHROME_MAJOR_VERSION;
+        String version = webViewChromeMajorVersion;
+        if (version == null) {
+            version = DEFAULT_CHROME_MAJOR_VERSION;
             try {
                 Matcher matcher = CHROME_MAJOR_VERSION_PATTERN
                         .matcher(WebSettings.getDefaultUserAgent(Utils.getContext()));
@@ -643,18 +679,25 @@ public enum ClientType {
                 // WebView is missing or broken.
                 Logger.printInfo(() -> "Could not read the WebView user agent", ex);
             }
-            agent = String.format(Locale.ENGLISH, WEB_USER_AGENT_FORMAT, version);
-            webUserAgent = agent;
+            webViewChromeMajorVersion = version;
         }
-        return agent;
+        return String.format(Locale.ENGLISH,
+                this == WEB ? DESKTOP_USER_AGENT_FORMAT : WEB_USER_AGENT_FORMAT, version);
     }
 
     /**
      * If the client is a client of the YouTube website. A web client signs in with the cookies of the website
-     * (see {@link MwebSignIn}), and its PoTokens are made by the website (see {@link MwebSiteSession}).
+     * (see {@link WebsiteSignIn}), and its PoTokens are made by the website (see {@link WebsiteSession}).
      */
     public boolean isWebClient() {
-        return this == MWEB;
+        return this == MWEB || this == WEB;
+    }
+
+    /**
+     * The origin of the website of a web client: the mobile website, or the desktop website for {@code WEB}.
+     */
+    public String getWebsiteOrigin() {
+        return this == WEB ? DESKTOP_WEBSITE_ORIGIN : WebsiteSignIn.MOBILE_ORIGIN;
     }
 
     /**

@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4764
+ * https://github.com/MorpheApp/morphe-patches/pull/5208
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -35,14 +36,17 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.shared.spoof.MwebSignIn;
+import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.WebViewProfiles;
+import app.morphe.extension.shared.spoof.WebsiteSignIn;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
- * Sign in of the Mobile Web client, in a WebView.
+ * Sign in of a web client (Mobile Web or Web), in a WebView. Each web client has its own sign in,
+ * and the preference shows the sign in of the web client of the settings.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public abstract class MwebSignInPreference extends Preference implements Preference.OnPreferenceClickListener {
+public abstract class WebsiteSignInPreference extends Preference implements Preference.OnPreferenceClickListener {
 
     /**
      * Hosts the sign in can navigate to. Any other link is opened in the browser.
@@ -74,30 +78,35 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
     @Nullable
     private Dialog signInDialog;
 
-    public MwebSignInPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public WebsiteSignInPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         updateUI();
     }
 
-    public MwebSignInPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WebsiteSignInPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         updateUI();
     }
 
-    public MwebSignInPreference(Context context, AttributeSet attrs) {
+    public WebsiteSignInPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         updateUI();
     }
 
-    public MwebSignInPreference(Context context) {
+    public WebsiteSignInPreference(Context context) {
         super(context);
         updateUI();
     }
 
     /**
-     * @return If the spoof settings use the Mobile Web client.
+     * @return If the spoof settings use a web client.
      */
     protected abstract boolean isSettingEnabled();
+
+    /**
+     * @return The web client whose sign in the preference shows.
+     */
+    protected abstract ClientType getWebClient();
 
     @Override
     protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
@@ -120,7 +129,7 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
         String summaryKey;
         if (!isSettingEnabled) {
             summaryKey = "morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled";
-        } else if (MwebSignIn.isSignedIn()) {
+        } else if (WebsiteSignIn.of(getWebClient()).isSignedIn()) {
             summaryKey = "morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in";
         } else {
             summaryKey = "morphe_spoof_video_streams_sign_in_mweb_about_summary";
@@ -130,7 +139,8 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        final boolean signedIn = MwebSignIn.isSignedIn();
+        WebsiteSignIn signIn = WebsiteSignIn.of(getWebClient());
+        final boolean signedIn = signIn.isSignedIn();
 
         CustomDialog.create(
                 getContext(),
@@ -151,11 +161,11 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
                 // OK button action.
                 signedIn
                         ? () -> {
-                            MwebSignIn.signOut();
+                            signIn.signOut();
                             // After the cookie store has handled the removed cookies.
                             Utils.runOnMainThread(this::updateUI);
                         }
-                        : this::showSignInDialog,
+                        : () -> showSignInDialog(getWebClient()),
                 // Cancel button action.
                 () -> {
                 },
@@ -192,11 +202,17 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
 
     // JavaScript is required by the Google sign in page.
     @SuppressLint("SetJavaScriptEnabled")
-    private void showSignInDialog() {
+    private void showSignInDialog(ClientType client) {
         Context context = getContext();
         WebView webView;
+        CookieManager cookieManager;
         try {
             webView = new WebView(context);
+            WebViewProfiles.setProfile(webView, client);
+            cookieManager = WebViewProfiles.getCookieManager(client);
+            if (cookieManager == null) {
+                throw new IllegalStateException("No cookies of " + client);
+            }
         } catch (Exception ex) {
             // WebView is missing or disabled.
             Logger.printException(() -> "Could not create the sign in WebView", ex);
@@ -214,7 +230,6 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
         // Google refuses to sign in to a page in an app, which it knows by "wv" in the user agent.
         settings.setUserAgentString(settings.getUserAgentString().replace("; wv", ""));
 
-        CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
         cookieManager.setAcceptThirdPartyCookies(webView, true);
 
@@ -256,7 +271,7 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
                     try {
                         Uri data = Intent.parseUri(uri.toString(), Intent.URI_INTENT_SCHEME).getData();
                         if (data != null && "https".equals(data.getScheme()) && isAllowedHost(data.getHost())) {
-                            if (!checkSignInFinished(dialog, data.toString())) {
+                            if (!checkSignInFinished(dialog, client, data.toString())) {
                                 view.loadUrl(data.toString());
                             }
                             return true;
@@ -276,14 +291,14 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                checkSignInFinished(dialog, url);
+                checkSignInFinished(dialog, client, url);
             }
 
             @Override
             public boolean onRenderProcessGone(WebView view, RenderProcessGoneDetail detail) {
                 // All WebViews of the app share the renderer, which Android can stop to free memory.
                 // Without this, the app is closed. The sign in can be started again.
-                Logger.printInfo(() -> "Mobile Web sign in renderer is gone, crashed: " + detail.didCrash());
+                Logger.printInfo(() -> "Web sign in renderer is gone, crashed: " + detail.didCrash());
                 if (signInDialog == dialog) {
                     dismissSignInDialog();
                 }
@@ -292,13 +307,13 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                checkSignInFinished(dialog, url);
+                checkSignInFinished(dialog, client, url);
             }
         });
 
         signInDialog = dialog;
         dialog.show();
-        webView.loadUrl(MwebSignIn.SIGN_IN_URL);
+        webView.loadUrl(WebsiteSignIn.of(client).signInUrl);
     }
 
     /**
@@ -306,19 +321,24 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
      *
      * @return If the sign in has finished.
      */
-    private boolean checkSignInFinished(Dialog dialog, @Nullable String url) {
+    private boolean checkSignInFinished(Dialog dialog, ClientType client, @Nullable String url) {
         if (signInDialog != dialog || url == null) {
             return false;
         }
         String host = Uri.parse(url).getHost();
         if (host == null || !(host.equals("youtube.com") || host.endsWith(".youtube.com"))
-                || host.equals("accounts.youtube.com") || !MwebSignIn.isSignedIn()) {
+                || host.equals("accounts.youtube.com")) {
+            return false;
+        }
+        WebsiteSignIn signIn = WebsiteSignIn.of(client);
+        CookieManager cookieManager = WebViewProfiles.getCookieManager(client);
+        if (!signIn.isSignedIn() || cookieManager == null) {
             return false;
         }
 
-        Logger.printDebug(() -> "Mobile Web sign in finished");
-        CookieManager.getInstance().flush();
-        MwebSignIn.onSignedIn();
+        Logger.printDebug(() -> "Web sign in finished: " + client);
+        cookieManager.flush();
+        signIn.onSignedIn();
         dismissSignInDialog();
         updateUI();
 

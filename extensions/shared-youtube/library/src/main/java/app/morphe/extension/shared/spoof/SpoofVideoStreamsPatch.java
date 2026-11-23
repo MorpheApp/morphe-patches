@@ -611,7 +611,7 @@ public class SpoofVideoStreamsPatch {
      * Called off the main thread when native code starts a media request.
      * The app makes the requests of SABR streams itself, and names itself and the device it runs on,
      * even when the streams are from a TV client. These requests name the TV client instead,
-     * and the requests of the Mobile Web client use the streaming session of the website (see {@link MwebStream}).
+     * and the requests of the web clients use the streaming session of their website (see {@link WebsiteStream}).
      *
      * @param callbacks Native callbacks of the request, which are also given the response.
      * @return The request to start.
@@ -640,8 +640,9 @@ public class SpoofVideoStreamsPatch {
                     byte[] clientInfo = SabrRequestBody.buildClientInfo(ClientType.TV_SABR, getLocaleOverride());
                     requestToStart = request.patch_withBodyAndHeaders(
                             SabrRequestBody.replaceClientInfo(body, clientInfo), request.patch_getHeaders());
-                } else if (ClientType.MWEB.clientName.equals(urlClient)) {
-                    requestToStart = MwebStream.onMediaRequest(request, uri, body, callbacks, getLocaleOverride());
+                } else if (ClientType.MWEB.clientName.equals(urlClient)
+                        || ClientType.WEB.clientName.equals(urlClient)) {
+                    requestToStart = WebsiteStream.onMediaRequest(request, uri, body, callbacks, getLocaleOverride());
                 }
             }
 
@@ -665,7 +666,7 @@ public class SpoofVideoStreamsPatch {
         }
         try {
             SabrReadaheadLimit.onResponseChunk(callbacks, chunk);
-            MwebStream.onMediaResponseChunk(callbacks, chunk);
+            WebsiteStream.onMediaResponseChunk(callbacks, chunk);
             SabrMediaLogger.onResponseChunk(callbacks, chunk);
         } catch (Exception ex) {
             Logger.printException(() -> "onMediaResponseChunk failure", ex);

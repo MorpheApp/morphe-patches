@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4764
+ * https://github.com/MorpheApp/morphe-patches/pull/5208
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -31,22 +32,31 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
- * Sign in of the Mobile Web client.
+ * Sign in of a web client: Mobile Web, or Web.
  * <p>
  * Web clients accept only the cookies of a web sign in, and not the access token of the app.
- * The user signs in to m.youtube.com in a WebView, and the cookies stay only in the cookie store
- * of the WebView. They are never saved in the settings, so they are never exported,
+ * The user signs in to the website of the client in a WebView, and the cookies stay only in the cookie store
+ * of the WebView. Each web client has its own sign in, in its own profile of the WebView
+ * (see {@link WebViewProfiles}), since the cookies are of all of youtube.com.
+ * They are never saved in the settings, so they are never exported,
  * and the cookies, the authorization made from them and the DataSyncId are never logged.
  */
-public final class MwebSignIn {
-    public static final String ORIGIN = "https://m.youtube.com";
+public final class WebsiteSignIn {
+    public static final String MOBILE_ORIGIN = "https://m.youtube.com";
 
     /**
      * Signs in to YouTube, and then goes to m.youtube.com.
      */
-    public static final String SIGN_IN_URL = "https://accounts.google.com/ServiceLogin"
+    private static final String MOBILE_SIGN_IN_URL = "https://accounts.google.com/ServiceLogin"
             + "?service=youtube&uilel=3&passive=true"
             + "&continue=https%3A%2F%2Fm.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Dm%26next%3D%252F";
+
+    /**
+     * Signs in to YouTube, and then goes to www.youtube.com.
+     */
+    private static final String DESKTOP_SIGN_IN_URL = "https://accounts.google.com/ServiceLogin"
+            + "?service=youtube&uilel=3&passive=true"
+            + "&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26next%3D%252F";
 
     private static final String SIGN_OUT_URL = "https://www.youtube.com/logout";
 
@@ -88,44 +98,67 @@ public final class MwebSignIn {
 
     private static final int HTTP_TIMEOUT_MILLISECONDS = 10 * 1000;
 
+    private static final WebsiteSignIn MOBILE = new WebsiteSignIn(ClientType.MWEB, MOBILE_SIGN_IN_URL);
+
+    private static final WebsiteSignIn DESKTOP = new WebsiteSignIn(ClientType.WEB, DESKTOP_SIGN_IN_URL);
+
+    /**
+     * The web client of the sign in.
+     */
+    private final ClientType client;
+
+    /**
+     * Signs in to YouTube, and then goes to the website of the client.
+     */
+    public final String signInUrl;
+
     /**
      * Held while the DataSyncId is fetched, so it is fetched once at a time.
      * The state below has its own lock, so the main thread never waits for the fetch.
      */
-    private static final Object fetchLock = new Object();
+    private final Object fetchLock = new Object();
 
     /**
      * ID of the signed in account, with the session of the user that the authorization names.
      */
     @Nullable
-    @GuardedBy("MwebSignIn.class")
-    private static String dataSyncId;
+    @GuardedBy("this")
+    private String dataSyncId;
 
     /**
      * Visitor of the website session, which is fetched with {@link #dataSyncId}.
      */
     @Nullable
-    @GuardedBy("MwebSignIn.class")
-    private static String visitorData;
+    @GuardedBy("this")
+    private String visitorData;
 
     /**
      * The SAPISID cookie that {@link #dataSyncId} was fetched with.
      */
     @Nullable
-    @GuardedBy("MwebSignIn.class")
-    private static String dataSyncIdSapisid;
+    @GuardedBy("this")
+    private String dataSyncIdSapisid;
 
-    private MwebSignIn() {
+    private WebsiteSignIn(ClientType client, String signInUrl) {
+        this.client = client;
+        this.signInUrl = signInUrl;
+    }
+
+    /**
+     * @return The sign in of a web client.
+     */
+    public static WebsiteSignIn of(ClientType client) {
+        return client == ClientType.WEB ? DESKTOP : MOBILE;
     }
 
     /**
      * A request of the website, with the cookies of the session and the browser of the web client.
      */
-    private static HttpURLConnection openWebConnection(String url, String cookies) throws IOException {
+    private HttpURLConnection openWebConnection(String url, String cookies) throws IOException {
         HttpURLConnection connection = Requester.openConnection(url);
         connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
         connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
-        connection.setRequestProperty("User-Agent", ClientType.MWEB.getUserAgent());
+        connection.setRequestProperty("User-Agent", client.getUserAgent());
         connection.setRequestProperty("Cookie", cookies);
         connection.setUseCaches(false);
         return connection;
@@ -135,9 +168,10 @@ public final class MwebSignIn {
      * @return The cookies of the website, or null if there are none.
      */
     @Nullable
-    private static String getCookies() {
+    String getCookies() {
         try {
-            return CookieManager.getInstance().getCookie(ORIGIN);
+            CookieManager cookieManager = WebViewProfiles.getCookieManager(client);
+            return cookieManager == null ? null : cookieManager.getCookie(client.getWebsiteOrigin());
         } catch (Exception ex) {
             // WebView is missing or broken.
             Logger.printInfo(() -> "Could not read the cookies", ex);
@@ -146,7 +180,7 @@ public final class MwebSignIn {
     }
 
     @Nullable
-    private static String getCookieValue(@Nullable String cookies, String name) {
+    static String getCookieValue(@Nullable String cookies, String name) {
         if (cookies == null) {
             return null;
         }
@@ -160,20 +194,24 @@ public final class MwebSignIn {
         return null;
     }
 
-    public static boolean isSignedIn() {
+    public boolean isSignedIn() {
         return getCookieValue(getCookies(), SAPISID_COOKIE) != null;
     }
 
     /**
-     * The headers of an InnerTube request of the website host with the web sign in, as the website makes it.
+     * The headers of an InnerTube request of the website host of the web client with the web sign in,
+     * as the website makes it.
      * Blocking call, and must be made off the main thread.
      *
      * @return The headers, or null if signed out or the account could not be fetched.
      */
     @Nullable
-    public static Map<String, String> getRequestHeaders() {
+    public Map<String, String> getRequestHeaders() {
         Utils.verifyOffMainThread();
 
+        if (client == ClientType.WEB) {
+            WebsiteSession.rotateCookiesIfDue();
+        }
         String cookies = getCookies();
         String id = getDataSyncId(cookies);
         if (id == null) {
@@ -195,7 +233,8 @@ public final class MwebSignIn {
             }
         }
 
-        String authorization = getAuthorization(cookies, userSessionId);
+        String origin = client.getWebsiteOrigin();
+        String authorization = getAuthorization(cookies, userSessionId, origin);
         if (authorization == null) {
             return null;
         }
@@ -204,8 +243,8 @@ public final class MwebSignIn {
         headers.put("Cookie", cookies);
         headers.put("Authorization", authorization);
         // The authorization is made for this origin.
-        headers.put("Origin", ORIGIN);
-        headers.put("X-Origin", ORIGIN);
+        headers.put("Origin", origin);
+        headers.put("X-Origin", origin);
         headers.put("X-Goog-AuthUser", "0");
         headers.put("X-Youtube-Bootstrap-Logged-In", "true");
         if (delegatedSessionId != null) {
@@ -219,10 +258,11 @@ public final class MwebSignIn {
      * The authorization of a web request, as the website makes it:
      * a hash of each SAPISID cookie with the origin and the session of the account.
      *
+     * @param origin The origin of the website the request is made for.
      * @return The authorization, or null if signed out.
      */
     @Nullable
-    private static String getAuthorization(String cookies, String userSessionId) {
+    private static String getAuthorization(String cookies, String userSessionId, String origin) {
         final long seconds = System.currentTimeMillis() / 1000;
         StringBuilder authorization = new StringBuilder();
         try {
@@ -232,7 +272,7 @@ public final class MwebSignIn {
                 if (sid == null) {
                     continue;
                 }
-                String hashInput = userSessionId + " " + seconds + " " + sid + " " + ORIGIN;
+                String hashInput = userSessionId + " " + seconds + " " + sid + " " + origin;
                 byte[] digest = sha1.digest(hashInput.getBytes(StandardCharsets.UTF_8));
                 if (Utils.isNotEmpty(authorization)) {
                     authorization.append(' ');
@@ -257,14 +297,14 @@ public final class MwebSignIn {
      * @return The id, or null if signed out, or it could not be fetched.
      */
     @Nullable
-    private static String getDataSyncId(@Nullable String cookies) {
+    private String getDataSyncId(@Nullable String cookies) {
         String sapisid = getCookieValue(cookies, SAPISID_COOKIE);
         if (sapisid == null) {
             return null;
         }
 
         synchronized (fetchLock) {
-            synchronized (MwebSignIn.class) {
+            synchronized (this) {
                 if (dataSyncId != null && sapisid.equals(dataSyncIdSapisid)) {
                     return dataSyncId;
                 }
@@ -272,7 +312,7 @@ public final class MwebSignIn {
 
             HttpURLConnection connection = null;
             try {
-                connection = openWebConnection(ORIGIN + "/", cookies);
+                connection = openWebConnection(client.getWebsiteOrigin() + "/", cookies);
 
                 final int responseCode = connection.getResponseCode();
                 if (responseCode != HttpURLConnection.HTTP_OK) {
@@ -288,7 +328,7 @@ public final class MwebSignIn {
                     final boolean signedOutPage = LOGGED_OUT_PATTERN.matcher(page).find();
                     Logger.printDebug(() -> "No DataSyncId in the page, signed out page: " + signedOutPage);
                     if (signedOutPage) {
-                        Logger.printDebug(() -> "Mobile Web sign in is no longer valid");
+                        Logger.printDebug(() -> "Web sign in of " + client + " is no longer valid");
                         clearAll();
                         Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_mweb_toast_expired"));
                     }
@@ -298,7 +338,7 @@ public final class MwebSignIn {
                 saveResponseCookies(connection);
                 Matcher visitorDataMatcher = VISITOR_DATA_PATTERN.matcher(page);
                 String id = matcher.group(1);
-                synchronized (MwebSignIn.class) {
+                synchronized (this) {
                     dataSyncId = id;
                     dataSyncIdSapisid = sapisid;
                     visitorData = visitorDataMatcher.find() ? visitorDataMatcher.group(1) : null;
@@ -322,7 +362,7 @@ public final class MwebSignIn {
      * @return The visitor of the website session, or null if it was not fetched with the sign in.
      */
     @Nullable
-    public static synchronized String getVisitorData() {
+    public synchronized String getVisitorData() {
         return visitorData;
     }
 
@@ -330,14 +370,17 @@ public final class MwebSignIn {
      * Saves the cookies a response of the website sets, as a browser does.
      * The website renews some cookies of the session with its responses.
      */
-    public static void saveResponseCookies(HttpURLConnection connection) {
+    public void saveResponseCookies(HttpURLConnection connection) {
         try {
             List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
             if (cookies == null || cookies.isEmpty()) {
                 return;
             }
             String url = connection.getURL().toString();
-            CookieManager cookieManager = CookieManager.getInstance();
+            CookieManager cookieManager = WebViewProfiles.getCookieManager(client);
+            if (cookieManager == null) {
+                return;
+            }
             for (String cookie : cookies) {
                 cookieManager.setCookie(url, cookie);
             }
@@ -347,7 +390,7 @@ public final class MwebSignIn {
         }
     }
 
-    private static synchronized void clearAccount() {
+    private synchronized void clearAccount() {
         dataSyncId = null;
         dataSyncIdSapisid = null;
         visitorData = null;
@@ -356,18 +399,18 @@ public final class MwebSignIn {
     /**
      * Called when the user has signed in. The streams fetched signed out, and the open pages, are not used again.
      */
-    public static void onSignedIn() {
+    public void onSignedIn() {
         clearAccount();
-        MwebSiteSession.reset();
+        WebsiteSession.reset();
     }
 
     /**
      * Called when a request with the web sign in is refused.
      * The sign in is checked again with the next fetch, and it ends only if the website has signed out the account.
      */
-    public static void onSignInRefused() {
-        Logger.printDebug(() -> "Mobile Web sign in refused, it is checked again with the next fetch");
-        synchronized (MwebSignIn.class) {
+    public void onSignInRefused() {
+        Logger.printDebug(() -> "Web sign in of " + client + " refused, it is checked again with the next fetch");
+        synchronized (this) {
             dataSyncId = null;
             dataSyncIdSapisid = null;
         }
@@ -377,7 +420,7 @@ public final class MwebSignIn {
      * Signs out on the server, then removes the cookies and everything made from them.
      * Main thread only.
      */
-    public static void signOut() {
+    public void signOut() {
         String cookies = getCookies();
         if (cookies != null) {
             Utils.runOnBackgroundThread(() -> {
@@ -385,7 +428,7 @@ public final class MwebSignIn {
                 try {
                     connection = openWebConnection(SIGN_OUT_URL, cookies);
                     final int responseCode = connection.getResponseCode();
-                    Logger.printDebug(() -> "Mobile Web sign out response: " + responseCode);
+                    Logger.printDebug(() -> "Web sign out response: " + responseCode);
                 } catch (Exception ex) {
                     Logger.printInfo(() -> "Could not sign out on the server", ex);
                 } finally {
@@ -399,13 +442,16 @@ public final class MwebSignIn {
         Utils.showToastShort(str("morphe_spoof_video_streams_sign_in_mweb_toast_signed_out"));
     }
 
-    private static void clearAll() {
+    private void clearAll() {
         clearAccount();
-        MwebSiteSession.reset();
+        WebsiteSession.reset();
         Utils.runOnMainThreadNowOrLater(() -> {
             try {
-                CookieManager cookieManager = CookieManager.getInstance();
-                WebStorage webStorage = WebStorage.getInstance();
+                CookieManager cookieManager = WebViewProfiles.getCookieManager(client);
+                if (cookieManager == null) {
+                    return;
+                }
+                WebStorage webStorage = WebViewProfiles.getWebStorage(client);
                 for (String url : SIGN_IN_URLS) {
                     removeCookies(cookieManager, url);
                     webStorage.deleteOrigin(url);

@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4764
+ * https://github.com/MorpheApp/morphe-patches/pull/5208
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -34,6 +35,7 @@ import androidx.annotation.Nullable;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Map;
@@ -51,7 +53,8 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * The streaming session of a video made by the official mobile website.
+ * The streaming session of a video made by the official website of a web client:
+ * the mobile website for Mobile Web, and the desktop website for Web.
  * <p>
  * A hidden WebView opens the watch page of the video, with the web sign in of the user if there is one,
  * and the player of the website makes its PoToken and its streaming session itself.
@@ -65,12 +68,14 @@ import app.morphe.extension.shared.Utils;
  * <p>
  * The page also never reports the playback (watch history, statistics), never loads ads,
  * and never loads images or fonts.
+ * <p>
+ * The desktop website also rotates the cookies of the web sign in, see {@link #rotateCookiesIfDue()}.
  */
-public final class MwebSiteSession {
+public final class WebsiteSession {
 
-    private static final String JS_INTERFACE = "MorpheMwebSite";
+    private static final String JS_INTERFACE = "MorpheWebsite";
 
-    private static final String WATCH_URL = MwebSignIn.ORIGIN + "/watch?v=";
+    private static final String WATCH_PATH = "/watch?v=";
 
     /**
      * The page of an age-restricted video shows a warning ("I understand and wish to proceed"),
@@ -79,6 +84,12 @@ public final class MwebSiteSession {
      * Other videos are not changed.
      */
     private static final String WATCH_URL_VERIFIED_PARAMETERS = "&has_verified=1&bpctr=9999999999";
+
+    /**
+     * The desktop website opens its page again with this parameter when the dark theme of the browser
+     * is not the theme of the page, which loses the video loading in the page. With it the page is never opened again.
+     */
+    private static final String DESKTOP_THEME_REFRESH_PARAMETER = "&themeRefresh=1";
 
     /**
      * The cookie of the cookie consent of YouTube, with all cookies rejected, as the "Reject all" button sets it.
@@ -118,13 +129,15 @@ public final class MwebSiteSession {
      * Loads a video in the player of a page that has already made a session. The player makes the PoToken
      * of the new video at once, while a new page makes it in several seconds, since BotGuard starts again.
      * The held media requests are given up first, so the player does not wait for them.
-     * The page address gets the new video, as the requests of the player are checked with it.
+     * The page address gets the new video, as the requests of the player are checked with it,
+     * and keeps {@link #DESKTOP_THEME_REFRESH_PARAMETER} in a page of the desktop website.
      * If the ads are removed from the player response and the video id (twice) are added with String.format.
      */
     private static final String LOAD_IN_PAGE_SCRIPT = "(function(){" + PLAYER_FUNCTIONS + "var p=player();"
             + "if(!window.__morpheRelease||!p||!p.loadVideoById)return 'no player';"
-            + "window.__morphePruneAds=%s;window.__morpheRelease();"
-            + "try{history.replaceState(history.state,'','/watch?v=%s');}catch(e){}"
+            + "window.__morphePruneAds=%s;window.__morphePlay=false;window.__morpheRelease();"
+            + "try{history.replaceState(history.state,'','/watch?v=%s'+(window.__morpheDesktop?'"
+            + DESKTOP_THEME_REFRESH_PARAMETER + "':''));}catch(e){}"
             + "p.loadVideoById('%s');return 'ok';})();";
 
     /**
@@ -136,11 +149,15 @@ public final class MwebSiteSession {
 
     /**
      * Starts the player of the page, or reports a video that the player of the page cannot play.
+     * The player of a page of the desktop website can fetch the media before the hook of the page is installed,
+     * and a short video then plays with no more requests, so it is loaded again in the player.
      */
     private static final String START_PLAYER_SCRIPT = "(function(){" + PLAYER_FUNCTIONS + "var p=player();"
             + "var r=null;try{r=p&&p.getPlayerResponse&&p.getPlayerResponse();}catch(e){}"
             + "var s=r&&r.playabilityStatus&&r.playabilityStatus.status;"
             + "if(s&&s!=='OK'){" + JS_INTERFACE + ".onUnplayable(String(s),pageVideoId());}"
+            + "else if(window.__morpheDesktop&&p&&p.getPlayerState&&p.getPlayerState()===1&&p.loadVideoById){"
+            + "p.loadVideoById(pageVideoId());" + JS_INTERFACE + ".onLog('player plays without requests, loading the video again');}"
             + "else if(p&&p.playVideo){p.playVideo();" + JS_INTERFACE + ".onLog('player started');}"
             + "else{" + JS_INTERFACE + ".onLog('no player in the page');}})();";
 
@@ -224,10 +241,47 @@ public final class MwebSiteSession {
     };
 
     /**
+     * Frame of the accounts site that rotates the cookies of the web sign in. The desktop website adds it,
+     * hidden, to each of its pages while it is signed in, unless the browser is of a phone or a tablet,
+     * so the mobile website never rotates them. 'yt_pid' is the id of the client of the website.
+     */
+    private static final String ROTATE_COOKIES_PAGE = "<html><body><iframe style=\"display:none\""
+            + " src=\"https://accounts.youtube.com/RotateCookiesPage?origin=" + ClientType.WEB.getWebsiteOrigin()
+            + "&yt_pid=" + ClientType.WEB.id + "\"></iframe></body></html>";
+
+    /**
+     * Cookies of the web sign in that the frame of {@link #ROTATE_COOKIES_PAGE} renews.
+     */
+    private static final String[] ROTATED_COOKIES = {"__Secure-1PSIDTS", "__Secure-3PSIDTS"};
+
+    /**
+     * The desktop website rotates the cookies with each page it opens, so they are rotated at most this often.
+     */
+    private static final long ROTATE_COOKIES_INTERVAL_MILLISECONDS = 10 * 60 * 1000;
+
+    /**
+     * How long the frame is given to rotate the cookies.
+     */
+    private static final long ROTATE_COOKIES_TIMEOUT_MILLISECONDS = 15 * 1000;
+
+    /**
+     * How often the cookies are checked while they are rotated.
+     */
+    private static final long ROTATE_COOKIES_CHECK_INTERVAL_MILLISECONDS = 500;
+
+    /**
      * Video of the player response of the page while the player has no response,
      * such as right after a video is loaded in the player of the page.
      */
     private static final String NO_PLAYER_RESPONSE = "none";
+
+    /**
+     * Parameters of a player request of the desktop website whose response has no ads,
+     * with the same formats as the response of a request without parameters.
+     * Signed in, the server otherwise keeps the ads of the video in the streaming session, and its first
+     * media response tells the player to wait for most of their length (2 to 20 seconds) before asking again.
+     */
+    private static final String DESKTOP_NO_ADS_PLAYER_PARAMETERS = "eAFgAQ";
 
     /**
      * Wraps fetch and XMLHttpRequest of the page, and sends its SABR requests to Java.
@@ -241,6 +295,10 @@ public final class MwebSiteSession {
      * The page sends its requests as JSON compressed with gzip, so the request is changed when it is turned
      * into JSON. Premium accounts of the web sign in have no ads, and these requests would not get their Premium
      * formats, so the requests are not changed when the page names a Premium membership, as the website reads it.
+     * The desktop website answers such a request with an unplayable video, so the player requests of its pages
+     * have {@link #DESKTOP_NO_ADS_PLAYER_PARAMETERS} instead, unless they have their own parameters.
+     * They also confirm the age and content checks, as {@link #WATCH_URL_VERIFIED_PARAMETERS} do for the watch
+     * page, so an age-restricted video loaded in the player of the page plays without opening its watch page.
      * <p>
      * When the page shows an ad anyway, which the watch page has in its player response, the ads are removed
      * from the next player responses of the page: the media requests of the page fail, so the ad never ends
@@ -261,8 +319,11 @@ public final class MwebSiteSession {
             + "function isPremium(){var m=premiumMembership();return m!==''&&!/^non/i.test(m);}"
             + "var oj=JSON.stringify;JSON.stringify=function(v){var a=Array.prototype.slice.call(arguments);"
             + "try{var pc=v&&v.context&&v.videoId&&v.playbackContext;"
-            + "if(pc&&pc.contentPlaybackContext&&!pc.adPlaybackContext&&!isPremium()){var c=Object.assign({},v);"
-            + "c.playbackContext=Object.assign({},pc,{adPlaybackContext:{pyv:true}});a[0]=c;}}catch(e){}"
+            + "if(pc&&pc.contentPlaybackContext&&!pc.adPlaybackContext&&!window.__morpheDesktop&&!isPremium()){var c=Object.assign({},v);"
+            + "c.playbackContext=Object.assign({},pc,{adPlaybackContext:{pyv:true}});a[0]=c;}"
+            + "if(pc&&pc.contentPlaybackContext&&window.__morpheDesktop){"
+            + "var d=Object.assign({},v,{contentCheckOk:true,racyCheckOk:true});"
+            + "if(!v.params&&!isPremium())d.params='" + DESKTOP_NO_ADS_PLAYER_PARAMETERS + "';a[0]=d;}}catch(e){}"
             + "return oj.apply(this,a);};"
             + "function isMedia(url){return typeof url==='string'&&url.indexOf('googlevideo.com/videoplayback')>=0;}"
             + "function isPlayerRequest(url){return typeof url==='string'&&/\\/youtubei\\/v1\\/player(\\?|$)/.test(url);}"
@@ -281,18 +342,33 @@ public final class MwebSiteSession {
             + NO_PLAYER_RESPONSE + "');}"
             + "function responseStreamId(r){try{var u=r&&r.streamingData&&r.streamingData.serverAbrStreamingUrl;"
             + "return u?(new URL(u).searchParams.get('id')||''):'';}catch(e){return '';}}"
+            + "function visitorData(){try{return ytcfg.get('INNERTUBE_CONTEXT').client.visitorData||'';}catch(e){return '';}}"
             + "function send(url,body){try{var u8=body instanceof Uint8Array?body:new Uint8Array(body instanceof ArrayBuffer?body:body.buffer);"
             + "var r=playerResponse();"
-            + JS_INTERFACE + ".onSabrRequest(url,b64(u8),pageVideoId(),playerVideoId(),responseVideoId(r),responseStreamId(r),adShowing());}catch(e){"
+            + JS_INTERFACE + ".onSabrRequest(url,b64(u8),pageVideoId(),playerVideoId(),responseVideoId(r),responseStreamId(r),adShowing(),visitorData());}catch(e){"
             + JS_INTERFACE + ".onLog('send failed: '+e);}}"
+            // The media response of the page is given to Java while it streams in, until it has the stream status.
+            + "function watch(f){return f.then(function(r){try{if(r.body&&" + JS_INTERFACE + ".watchesResponse()){"
+            + "var rd=r.clone().body.getReader(),parts=[],n=0;var step=function(){rd.read().then(function(x){"
+            + "if(x.done||!" + JS_INTERFACE + ".watchesResponse()){rd.cancel().catch(function(){});return;}"
+            + "parts.push(x.value);n+=x.value.length;var all=new Uint8Array(n),o=0;"
+            + "for(var i=0;i<parts.length;i++){all.set(parts[i],o);o+=parts[i].length;}"
+            + JS_INTERFACE + ".onPageResponse(b64(all));step();}).catch(function(){});};step();}}"
+            + "catch(e){}return r;});}"
+            + "function plays(){if(!" + JS_INTERFACE + ".playsUntilAttested())return false;"
+            + "window.__morphePlay=true;try{var p=player();if(p&&p.mute)p.mute();}catch(e){}return true;}"
             + "function refuse(){return window.__morpheHold"
             + "?new Promise(function(res,rej){window.__morpheHeld.push(function(){rej(new TypeError('blocked'));});})"
             + ":Promise.reject(new TypeError('blocked'));}"
             + "var of=window.fetch;window.fetch=function(input,init){"
             + "var url=input instanceof Request?input.url:String(input);"
             + "if(isMedia(url)){"
+            + "if(window.__morphePlay&&!window.__morpheHold){return watch(of.apply(this,arguments));}"
             + "if(!window.__morpheHold){"
-            + "if(init&&init.body){send(url,init.body);}"
+            + "if(init&&init.body){send(url,init.body);if(plays()){return watch(of.apply(this,arguments));}}"
+            // The player of the desktop website sends a request object, whose body can only be read later.
+            + "else if(input instanceof Request&&window.__morpheDesktop){var self=this;return input.clone().arrayBuffer()"
+            + ".then(function(a){if(a.byteLength){send(url,a);}return plays()?watch(of.call(self,input)):refuse();});}"
             + "else if(input instanceof Request){input.clone().arrayBuffer().then(function(a){if(a.byteLength)send(url,a);});}}"
             + "return refuse();}"
             + "if(window.__morphePruneAds&&isPlayerRequest(url)){return of.apply(this,arguments).then(withoutAds);}"
@@ -300,11 +376,49 @@ public final class MwebSiteSession {
             + "var oo=XMLHttpRequest.prototype.open,os=XMLHttpRequest.prototype.send;"
             + "XMLHttpRequest.prototype.open=function(m,url){this.__u=String(url);return oo.apply(this,arguments);};"
             + "XMLHttpRequest.prototype.send=function(body){if(isMedia(this.__u)){"
+            + "if(window.__morphePlay&&!window.__morpheHold){return os.apply(this,arguments);}"
             + "if(window.__morpheHold){var x=this;window.__morpheHeld.push(function(){x.abort();});}"
-            + "else{if(body)send(this.__u,body);this.abort();}return;}"
+            + "else{if(body){send(this.__u,body);if(plays()){return os.apply(this,arguments);}}this.abort();}return;}"
             + "return os.apply(this,arguments);};"
             + JS_INTERFACE + ".onLog('hook installed');"
             + "})();";
+
+    /**
+     * Runs before {@link #HOOK_SCRIPT} in the pages of the desktop website. Their player requests ask for no ads
+     * in another way, and the request that gives the session is made, see {@link #ATTESTATION_REPORT_PATH}.
+     */
+    private static final String DESKTOP_PAGE_SCRIPT = "window.__morpheDesktop=true;";
+
+    /**
+     * Report of the desktop website with the attestation of a playback. The server keeps the streams of a video
+     * only if the playback is attested: without it, the stream protection status is pending, then required,
+     * and the server stops the stream. The player of the website makes the attestation one second after
+     * the playback has started, so a page of the desktop website plays the video, muted,
+     * from the request that gives the session until it sends this report.
+     */
+    private static final String ATTESTATION_REPORT_PATH = "/api/stats/atr";
+
+    /**
+     * The server does not attest the playback of some pages of the desktop website, whatever they send,
+     * and the website itself then gets a pending stream protection status, and the stream stops.
+     * Another page, with another visitor, is usually attested. So the session of a page of the desktop website
+     * is given only when the media responses of the page have an OK stream protection status,
+     * and otherwise the page fails, and another page is opened. The page also fails if it gives no status
+     * in this time.
+     */
+    private static final long PAGE_STREAM_STATUS_TIMEOUT_MILLISECONDS = 5000;
+
+    /**
+     * How long a page of the desktop website plays the video at most, if it does not send the attestation.
+     */
+    private static final long ATTESTATION_TIMEOUT_MILLISECONDS = 10 * 1000;
+
+    /**
+     * Stops the playback of a page after its attestation. The player of the page waits, and makes no more requests.
+     */
+    private static final String HOLD_AFTER_ATTESTATION_SCRIPT = "(function(){" + PLAYER_FUNCTIONS
+            + "window.__morphePlay=false;window.__morpheHold=true;"
+            + "var p=player();if(p&&p.pauseVideo)p.pauseVideo();})();";
 
     /**
      * The streaming session of the website for a video.
@@ -322,12 +436,19 @@ public final class MwebSiteSession {
         final byte[] poToken;
         @Nullable
         final byte[] ustreamerConfig;
+        /**
+         * The visitor of the page, or null if the page has none.
+         */
+        @Nullable
+        final String visitorData;
 
         /**
          * @param requestUrl  Url of a SABR request of the website.
          * @param requestBody Body of a SABR request of the website.
+         * @param visitorData The visitor of the page, or empty.
          */
-        Session(String requestUrl, byte[] requestBody) throws IOException {
+        Session(String requestUrl, byte[] requestBody, String visitorData) throws IOException {
+            this.visitorData = visitorData.isEmpty() ? null : visitorData;
             // The number of the request is added by each player to its own requests.
             Uri uri = Uri.parse(requestUrl);
             Uri.Builder builder = uri.buildUpon().clearQuery();
@@ -365,7 +486,7 @@ public final class MwebSiteSession {
     }
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(MAX_PAGES, runnable -> {
-        Thread thread = new Thread(runnable, "MwebSiteSession");
+        Thread thread = new Thread(runnable, "WebsiteSession");
         thread.setDaemon(true);
         return thread;
     });
@@ -378,7 +499,7 @@ public final class MwebSiteSession {
 
     private static final Handler mainHandler = new Handler(Looper.getMainLooper());
 
-    private static final Runnable closeIdlePages = MwebSiteSession::closeFreePages;
+    private static final Runnable closeIdlePages = WebsiteSession::closeFreePages;
 
     /**
      * Pages that are open and not used.
@@ -396,7 +517,18 @@ public final class MwebSiteSession {
      */
     private static final AtomicReference<Page> warmUpPage = new AtomicReference<>();
 
-    private MwebSiteSession() {
+    /**
+     * Page that rotates the cookies of the web sign in, while it rotates them. Main thread only.
+     */
+    @Nullable
+    private static WebView cookieRotationView;
+
+    /**
+     * {@link SystemClock#elapsedRealtime()} when the cookies were last rotated. Main thread only.
+     */
+    private static long lastCookieRotationTime = -ROTATE_COOKIES_INTERVAL_MILLISECONDS;
+
+    private WebsiteSession() {
     }
 
     /**
@@ -404,7 +536,7 @@ public final class MwebSiteSession {
      */
     static void reset() {
         generation.incrementAndGet();
-        MwebStream.clear();
+        WebsiteStream.clear();
         startedFetches.clear();
         Utils.runOnMainThread(() -> {
             closeFreePages();
@@ -418,8 +550,24 @@ public final class MwebSiteSession {
     /**
      * Opens a page while the app starts, so BotGuard of the website has started when the first video
      * is played, and the player of the page makes the PoToken of the video at once.
+     *
+     * @param client The web client of the page.
      */
-    public static void warmUp() {
+    public static void warmUp(ClientType client) {
+        if (client == ClientType.WEB) {
+            rotateCookiesIfDue();
+        }
+        warmUp(client, 1);
+    }
+
+    /**
+     * The server does not attest the playback of some pages of the desktop website
+     * ({@link #PAGE_STREAM_STATUS_TIMEOUT_MILLISECONDS}), so another page is made while the app starts,
+     * up to {@link #MAX_PAGE_ATTEMPTS} pages.
+     *
+     * @param attempt The number of the page made while the app starts.
+     */
+    private static void warmUp(ClientType client, int attempt) {
         Utils.runOnMainThread(() -> {
             if (warmUpPage.get() != null) {
                 return;
@@ -431,8 +579,8 @@ public final class MwebSiteSession {
             }
             try {
                 Logger.printDebug(() -> "Website session: making a page while the app starts");
-                Page page = new Page(generation.get());
-                page.attachToCurrentActivity();
+                Page page = new Page(generation.get(), client);
+                attachToCurrentActivity(page.webView);
                 CompletableFuture<Session> future = page.load(WARM_UP_VIDEO_ID);
                 page.warmUp = true;
                 warmUpPage.set(page);
@@ -448,6 +596,10 @@ public final class MwebSiteSession {
                                 + " gave no session: " + ex);
                     }
                     addToFreePagesOrClose(page, ex == null);
+                    if (client == ClientType.WEB && ex instanceof PageFailedException
+                            && attempt < MAX_PAGE_ATTEMPTS && page.generation == generation.get()) {
+                        warmUp(client, attempt + 1);
+                    }
                 }));
                 mainHandler.postDelayed(() -> future.completeExceptionally(
                         new TimeoutException("No session of the page made while the app starts")),
@@ -460,14 +612,16 @@ public final class MwebSiteSession {
 
     /**
      * Starts the fetch of the session of a video, so it runs while the player request is made.
+     *
+     * @param client The web client of the session.
      */
-    public static void start(String videoId) {
+    public static void start(String videoId, ClientType client) {
         synchronized (startedFetches) {
             StartedFetch started = startedFetches.get(videoId);
             if (started != null && !isTooOld(started)) {
                 return;
             }
-            startedFetches.put(videoId, new StartedFetch(executor.submit(() -> load(videoId)),
+            startedFetches.put(videoId, new StartedFetch(executor.submit(() -> load(videoId, client)),
                     SystemClock.elapsedRealtime()));
         }
     }
@@ -481,16 +635,18 @@ public final class MwebSiteSession {
      * Each fetch of the streams uses a new session, as the website does when the video is opened again.
      * Blocking call, and must be made off the main thread.
      *
+     * @param client The web client of the session.
      * @return The session, or null if the website did not give one.
      */
     @Nullable
-    public static Session fetch(String videoId) {
+    public static Session fetch(String videoId, ClientType client) {
         Utils.verifyOffMainThread();
         StartedFetch started;
         synchronized (startedFetches) {
             started = startedFetches.remove(videoId);
             if (started == null || isTooOld(started)) {
-                started = new StartedFetch(executor.submit(() -> load(videoId)), SystemClock.elapsedRealtime());
+                started = new StartedFetch(executor.submit(() -> load(videoId, client)),
+                        SystemClock.elapsedRealtime());
             }
         }
         try {
@@ -502,17 +658,41 @@ public final class MwebSiteSession {
     }
 
     /**
+     * The desktop website chooses the formats of a stream for the visitor of the page that made its session,
+     * and each new page has its own visitor, so the player request of the video is made with that visitor.
+     * Waits for the session of a video that was started, and keeps it for {@link #fetch(String, ClientType)}.
+     * Blocking call, and must be made off the main thread.
+     *
+     * @return The visitor of the page that made the session of the video, or null if there is none.
+     */
+    @Nullable
+    public static String getVisitorData(String videoId) {
+        Utils.verifyOffMainThread();
+        StartedFetch started = startedFetches.get(videoId);
+        if (started == null) {
+            return null;
+        }
+        try {
+            Session session = started.future.get(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
+            return session == null ? null : session.visitorData;
+        } catch (Exception ex) {
+            // The fetch of the streams reports it.
+            return null;
+        }
+    }
+
+    /**
      * Opens the video in a page and waits for a SABR request of its player. Runs on the executor.
      */
     @Nullable
-    private static Session load(String videoId) {
+    private static Session load(String videoId, ClientType client) {
         final long start = System.currentTimeMillis();
         for (int attempt = 1; ; attempt++) {
             CompletableFuture<PageLoad> pageLoadFuture = new CompletableFuture<>();
             Utils.runOnMainThread(() -> {
                 Page page = null;
                 try {
-                    page = takePage();
+                    page = takePage(client);
                     pageLoadFuture.complete(new PageLoad(page, page.load(videoId)));
                 } catch (Exception ex) {
                     if (page != null) {
@@ -568,7 +748,7 @@ public final class MwebSiteSession {
     /**
      * Main thread only.
      */
-    private static Page takePage() {
+    private static Page takePage(ClientType client) {
         mainHandler.removeCallbacks(closeIdlePages);
         Page page;
         synchronized (freePages) {
@@ -587,9 +767,9 @@ public final class MwebSiteSession {
         }
         if (page == null) {
             Logger.printDebug(() -> "Website session: making a new page");
-            page = new Page(generation.get());
+            page = new Page(generation.get(), client);
         }
-        page.attachToCurrentActivity();
+        attachToCurrentActivity(page.webView);
         return page;
     }
 
@@ -629,6 +809,128 @@ public final class MwebSiteSession {
         }
     }
 
+    /**
+     * A WebView not in a window does not count towards the priority of its renderer,
+     * which then can be frozen. Main thread only.
+     */
+    private static void attachToCurrentActivity(WebView webView) {
+        Activity activity = Utils.getActivity();
+        if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+            Logger.printDebug(() -> "Website session: no activity, the page is not in a window");
+            return;
+        }
+        ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
+        if (webView.getParent() == decorView) {
+            return;
+        }
+        if (webView.getParent() instanceof ViewGroup parent) {
+            parent.removeView(webView);
+        }
+        decorView.addView(webView, new ViewGroup.LayoutParams(1, 1));
+    }
+
+    /**
+     * Rotates the cookies of the web sign in as the desktop website does, if they were not rotated recently.
+     * Google ends a desktop session whose cookies are not rotated, while the mobile website never rotates them.
+     * <p>
+     * The frame that the desktop website adds to its pages is added to a page of the desktop website made here,
+     * and the frame rotates the cookies in the cookie store of the WebView. It does not wait for the rotation,
+     * and the next requests use the rotated cookies.
+     */
+    static void rotateCookiesIfDue() {
+        if (!WebsiteSignIn.of(ClientType.WEB).isSignedIn()) {
+            return;
+        }
+        Utils.runOnMainThread(() -> {
+            final long start = SystemClock.elapsedRealtime();
+            if (cookieRotationView != null
+                    || start - lastCookieRotationTime < ROTATE_COOKIES_INTERVAL_MILLISECONDS) {
+                return;
+            }
+            lastCookieRotationTime = start;
+            try {
+                WebView webView = new WebView(Utils.getContext());
+                WebViewProfiles.setProfile(webView, ClientType.WEB);
+                WebSettings settings = webView.getSettings();
+                settings.setJavaScriptEnabled(true);
+                settings.setLoadsImagesAutomatically(false);
+                settings.setUserAgentString(ClientType.WEB.getUserAgent());
+                webView.setVisibility(View.INVISIBLE);
+                webView.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean onRenderProcessGone(WebView v, RenderProcessGoneDetail detail) {
+                        // All WebViews of the app share the renderer, which Android can stop to free memory.
+                        finishCookieRotation(v, false);
+                        return true;
+                    }
+
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request) {
+                        // Never leave the website, for example to open the app.
+                        return !"https".equals(request.getUrl().getScheme());
+                    }
+                });
+                attachToCurrentActivity(webView);
+                cookieRotationView = webView;
+
+                String cookiesBefore = getRotatedCookies();
+                Logger.printDebug(() -> "Rotating the cookies of the web sign in");
+                webView.loadDataWithBaseURL(ClientType.WEB.getWebsiteOrigin() + "/", ROTATE_COOKIES_PAGE,
+                        "text/html", "utf-8", null);
+                mainHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (cookieRotationView != webView) {
+                            return;
+                        }
+                        final boolean rotated = !cookiesBefore.equals(getRotatedCookies());
+                        if (rotated || SystemClock.elapsedRealtime() - start >= ROTATE_COOKIES_TIMEOUT_MILLISECONDS) {
+                            finishCookieRotation(webView, rotated);
+                        } else {
+                            mainHandler.postDelayed(this, ROTATE_COOKIES_CHECK_INTERVAL_MILLISECONDS);
+                        }
+                    }
+                }, ROTATE_COOKIES_CHECK_INTERVAL_MILLISECONDS);
+            } catch (Exception ex) {
+                // WebView is missing or broken.
+                Logger.printInfo(() -> "Could not rotate the cookies of the web sign in", ex);
+            }
+        });
+    }
+
+    /**
+     * @return The values of the cookies that are rotated, which are never logged.
+     */
+    private static String getRotatedCookies() {
+        String cookies = WebsiteSignIn.of(ClientType.WEB).getCookies();
+        StringBuilder values = new StringBuilder();
+        for (String name : ROTATED_COOKIES) {
+            values.append(WebsiteSignIn.getCookieValue(cookies, name)).append(';');
+        }
+        return values.toString();
+    }
+
+    /**
+     * Main thread only.
+     */
+    private static void finishCookieRotation(WebView webView, boolean rotated) {
+        if (cookieRotationView != webView) {
+            return;
+        }
+        cookieRotationView = null;
+        Logger.printDebug(() -> rotated
+                ? "Cookies of the web sign in rotated"
+                : "Cookies of the web sign in were not rotated");
+        if (webView.getParent() instanceof ViewGroup parent) {
+            parent.removeView(webView);
+        }
+        webView.destroy();
+        CookieManager cookieManager = WebViewProfiles.getCookieManager(ClientType.WEB);
+        if (cookieManager != null) {
+            cookieManager.flush();
+        }
+    }
+
     private static boolean isBlocked(String url) {
         for (String part : BLOCKED_URL_PARTS) {
             if (url.contains(part)) {
@@ -643,7 +945,37 @@ public final class MwebSiteSession {
      */
     private static final class Page {
         final int generation;
+        final ClientType client;
         final WebView webView;
+
+        /**
+         * {@link #HOOK_SCRIPT} as the website of the client of the page needs it.
+         */
+        final String hookScript;
+
+        /**
+         * If the page plays the video of the last session until it sends the attestation of the playback,
+         * see {@link #ATTESTATION_REPORT_PATH}.
+         */
+        volatile boolean playsUntilAttested;
+
+        /**
+         * Session of a page of the desktop website, until its first media response gives the stream protection status,
+         * see {@link #PAGE_STREAM_STATUS_TIMEOUT_MILLISECONDS}.
+         */
+        @Nullable
+        volatile Session unconfirmedSession;
+
+        /**
+         * Fails the page if it gave no stream protection status in time. Main thread only.
+         */
+        final Runnable giveUnconfirmedSession = this::onPageStreamStatusTimeout;
+
+        /**
+         * Stops the playback of the page after its attestation, or after {@link #ATTESTATION_TIMEOUT_MILLISECONDS}.
+         * Main thread only.
+         */
+        final Runnable holdAfterAttestation = this::stopPlaybackAfterAttestation;
         /**
          * Requests of the page answered with an empty response, since the last session.
          */
@@ -705,15 +1037,18 @@ public final class MwebSiteSession {
          * Main thread only.
          */
         @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
-        Page(int generation) {
+        Page(int generation, ClientType client) {
             this.generation = generation;
+            this.client = client;
+            hookScript = client == ClientType.WEB ? DESKTOP_PAGE_SCRIPT + HOOK_SCRIPT : HOOK_SCRIPT;
             webView = new WebView(Utils.getContext());
+            WebViewProfiles.setProfile(webView, client);
             WebSettings settings = webView.getSettings();
             settings.setJavaScriptEnabled(true);
             settings.setDomStorageEnabled(true);
             settings.setMediaPlaybackRequiresUserGesture(false);
             settings.setLoadsImagesAutomatically(false);
-            settings.setUserAgentString(ClientType.MWEB.getUserAgent());
+            settings.setUserAgentString(client.getUserAgent());
             webView.addJavascriptInterface(new Bridge(this), JS_INTERFACE);
             //noinspection WrongConstant
             webView.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
@@ -734,12 +1069,12 @@ public final class MwebSiteSession {
                     // Only the host and the path, since the query can name the account.
                     Uri uri = Uri.parse(url);
                     Logger.printDebug(() -> "Website session: page " + uri.getHost() + uri.getPath());
-                    v.evaluateJavascript(HOOK_SCRIPT, null);
+                    v.evaluateJavascript(hookScript, null);
                 }
 
                 @Override
                 public void onPageCommitVisible(WebView v, String url) {
-                    v.evaluateJavascript(HOOK_SCRIPT, null);
+                    v.evaluateJavascript(hookScript, null);
                 }
 
                 @Override
@@ -792,7 +1127,15 @@ public final class MwebSiteSession {
                 @Nullable
                 @Override
                 public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest request) {
-                    if (isBlocked(request.getUrl().toString())) {
+                    String url = request.getUrl().toString();
+                    if (client == ClientType.WEB && url.contains(ATTESTATION_REPORT_PATH)) {
+                        if (playsUntilAttested) {
+                            Logger.printDebug(() -> "Website session: the playback of the page is attested");
+                            mainHandler.post(holdAfterAttestation);
+                        }
+                        return null;
+                    }
+                    if (isBlocked(url)) {
                         blockedRequests.incrementAndGet();
                         // The page can fetch them from its own origin, so the empty response allows it.
                         return new WebResourceResponse("text/plain", "utf-8", 204, "No Content",
@@ -802,26 +1145,6 @@ public final class MwebSiteSession {
                     return null;
                 }
             });
-        }
-
-        /**
-         * A WebView not in a window does not count towards the priority of its renderer,
-         * which then can be frozen. Main thread only.
-         */
-        void attachToCurrentActivity() {
-            Activity activity = Utils.getActivity();
-            if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
-                Logger.printDebug(() -> "Website session: no activity, the page is not in a window");
-                return;
-            }
-            ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
-            if (webView.getParent() == decorView) {
-                return;
-            }
-            if (webView.getParent() instanceof ViewGroup parent) {
-                parent.removeView(webView);
-            }
-            decorView.addView(webView, new ViewGroup.LayoutParams(1, 1));
         }
 
         /**
@@ -852,6 +1175,10 @@ public final class MwebSiteSession {
          */
         CompletableFuture<Session> load(String videoId) {
             adShown = false;
+            playsUntilAttested = false;
+            unconfirmedSession = null;
+            mainHandler.removeCallbacks(holdAfterAttestation);
+            mainHandler.removeCallbacks(giveUnconfirmedSession);
             CompletableFuture<Session> future = new CompletableFuture<>();
             pendingVideoId = videoId;
             pending = future;
@@ -910,8 +1237,13 @@ public final class MwebSiteSession {
             sabrRequestSeen = false;
             openTime = SystemClock.elapsedRealtime();
             // All cookies of YouTube are always rejected in the cookie consent.
-            CookieManager.getInstance().setCookie(MwebSignIn.ORIGIN, CONSENT_REJECTED_COOKIE);
-            webView.loadUrl(WATCH_URL + Uri.encode(videoId) + WATCH_URL_VERIFIED_PARAMETERS);
+            String origin = client.getWebsiteOrigin();
+            CookieManager cookieManager = WebViewProfiles.getCookieManager(client);
+            if (cookieManager != null) {
+                cookieManager.setCookie(origin, CONSENT_REJECTED_COOKIE);
+            }
+            webView.loadUrl(origin + WATCH_PATH + Uri.encode(videoId) + WATCH_URL_VERIFIED_PARAMETERS
+                    + (client == ClientType.WEB ? DESKTOP_THEME_REFRESH_PARAMETER : ""));
         }
 
         /**
@@ -919,9 +1251,15 @@ public final class MwebSiteSession {
          */
         void finishLoad() {
             mainHandler.removeCallbacks(watchdog);
+            mainHandler.removeCallbacks(giveUnconfirmedSession);
+            unconfirmedSession = null;
             pending = null;
             pendingVideoId = null;
             if (rendererGone) {
+                return;
+            }
+            if (playsUntilAttested) {
+                mainHandler.postDelayed(holdAfterAttestation, ATTESTATION_TIMEOUT_MILLISECONDS);
                 return;
             }
             // The player of the page waits, and makes no more requests.
@@ -931,9 +1269,39 @@ public final class MwebSiteSession {
         /**
          * Main thread only.
          */
+        private void onPageStreamStatusTimeout() {
+            Session session = unconfirmedSession;
+            CompletableFuture<Session> future = pending;
+            unconfirmedSession = null;
+            if (session != null && future != null) {
+                Logger.printDebug(() -> "Website session: the page gave no stream protection status");
+                playsUntilAttested = false;
+                future.completeExceptionally(new PageFailedException("The page gave no stream protection status"));
+            }
+        }
+
+        /**
+         * Main thread only.
+         */
+        private void stopPlaybackAfterAttestation() {
+            mainHandler.removeCallbacks(holdAfterAttestation);
+            if (!playsUntilAttested) {
+                return;
+            }
+            playsUntilAttested = false;
+            if (!rendererGone && pending == null) {
+                webView.evaluateJavascript(HOLD_AFTER_ATTESTATION_SCRIPT, null);
+            }
+        }
+
+        /**
+         * Main thread only.
+         */
         void close() {
             Logger.printDebug(() -> "Website session: closing a page");
             mainHandler.removeCallbacks(watchdog);
+            mainHandler.removeCallbacks(holdAfterAttestation);
+            mainHandler.removeCallbacks(giveUnconfirmedSession);
             if (webView.getParent() instanceof ViewGroup parent) {
                 parent.removeView(webView);
             }
@@ -952,10 +1320,12 @@ public final class MwebSiteSession {
              * @param responseStreamId The 'id' parameter of the stream url of the player response of the page,
              *                         or empty.
              * @param adShowing        If the player of the page shows an ad.
+             * @param visitorData      The visitor of the page, or empty.
              */
             @JavascriptInterface
             public void onSabrRequest(String url, String bodyBase64, String pageVideoId, String playerVideoId,
-                                      String responseVideoId, String responseStreamId, boolean adShowing) {
+                                      String responseVideoId, String responseStreamId, boolean adShowing,
+                                      String visitorData) {
                 CompletableFuture<Session> future = page.pending;
                 String videoId = page.pendingVideoId;
                 if (future == null || future.isDone() || videoId == null) {
@@ -992,7 +1362,7 @@ public final class MwebSiteSession {
                                 + requestStreamId + " response: " + responseStreamId + " video: " + videoId);
                         return;
                     }
-                    Session session = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT));
+                    Session session = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT), visitorData);
                     final int poTokenLength = session.poToken == null ? 0 : session.poToken.length;
                     if (poTokenLength < MIN_PO_TOKEN_LENGTH) {
                         // No PoToken, or the placeholder that a new page sends until BotGuard makes the PoToken.
@@ -1000,6 +1370,13 @@ public final class MwebSiteSession {
                         // which it makes again since the media requests fail.
                         Logger.printDebug(() -> "Website session: waiting for the PoToken, request PoToken bytes: "
                                 + poTokenLength);
+                        return;
+                    }
+                    if (page.client == ClientType.WEB) {
+                        // The request is made, and the session is given with the first media response of the page.
+                        page.unconfirmedSession = session;
+                        page.playsUntilAttested = true;
+                        mainHandler.postDelayed(page.giveUnconfirmedSession, PAGE_STREAM_STATUS_TIMEOUT_MILLISECONDS);
                         return;
                     }
                     future.complete(session);
@@ -1033,6 +1410,53 @@ public final class MwebSiteSession {
                 }
                 Logger.printDebug(() -> "Website session: the page cannot play the video, status: " + status);
                 future.completeExceptionally(new IllegalStateException("The page cannot play the video: " + status));
+            }
+
+            /**
+             * @return If the page plays the video of its session until the playback is attested,
+             *         so its media requests are made.
+             */
+            @JavascriptInterface
+            public boolean playsUntilAttested() {
+                return page.playsUntilAttested;
+            }
+
+            /**
+             * @return If the media responses of the page are given to {@link #onPageResponse(String)}.
+             */
+            @JavascriptInterface
+            public boolean watchesResponse() {
+                return page.unconfirmedSession != null;
+            }
+
+            /**
+             * A media response of the page of the desktop website, which gives the session of the page
+             * if the server attests its playback, see {@link #PAGE_STREAM_STATUS_TIMEOUT_MILLISECONDS}.
+             */
+            @JavascriptInterface
+            public void onPageResponse(String bodyBase64) {
+                Session session = page.unconfirmedSession;
+                CompletableFuture<Session> future = page.pending;
+                if (session == null || future == null || future.isDone()) {
+                    return;
+                }
+                final int status = new SabrResponseReader().read(
+                        ByteBuffer.wrap(Base64.decode(bodyBase64, Base64.DEFAULT)));
+                if (status < 0) {
+                    // The status is in a later response.
+                    return;
+                }
+                page.unconfirmedSession = null;
+                mainHandler.removeCallbacks(page.giveUnconfirmedSession);
+                if (status == WebsiteStream.STATUS_OK) {
+                    future.complete(session);
+                    return;
+                }
+                Logger.printDebug(() -> "Website session: the server does not attest the playback of the page,"
+                        + " stream protection status: " + status + ", PoToken bytes: "
+                        + (session.poToken == null ? 0 : session.poToken.length));
+                page.playsUntilAttested = false;
+                future.completeExceptionally(new PageFailedException("The playback of the page is not attested"));
             }
 
             @JavascriptInterface
