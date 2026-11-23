@@ -89,6 +89,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1", summary = true),
+                    SwitchPreference("morphe_spoof_video_streams_player_js_quack", summary = true),
                     ListPreference("morphe_spoof_video_streams_player_js_variant"),
                     SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),
                 )

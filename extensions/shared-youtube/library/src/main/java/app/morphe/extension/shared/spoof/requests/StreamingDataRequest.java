@@ -59,6 +59,7 @@ import app.morphe.extension.shared.spoof.WebsiteSignIn;
 import app.morphe.extension.shared.spoof.WebsiteSession;
 import app.morphe.extension.shared.spoof.WebsiteStream;
 import app.morphe.extension.shared.spoof.PreferredClientCheck;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
@@ -94,15 +95,16 @@ public class StreamingDataRequest {
         Objects.requireNonNull(preferredClient);
 
         List<ClientType> orderToUse = new ArrayList<>(availableClients.size());
-        orderToUse.add(preferredClient);
-        // YouTube serves each TV device separately, so another one can still play when the first is cut off.
-        if (preferredClient == ClientType.TV_SABR) {
-            orderToUse.add(ClientType.TV_SABR_WII_U);
+        if (!skipClient(preferredClient)) {
+            orderToUse.add(preferredClient);
+            // YouTube serves each TV device separately, so another one can still play when the first is cut off.
+            if (preferredClient == ClientType.TV_SABR) {
+                orderToUse.add(ClientType.TV_SABR_WII_U);
+            }
         }
 
         for (ClientType client : availableClients) {
-            if (client.requireJS && !JavaScriptEngineSupport.supportsJavaScriptEngine()) {
-                Logger.printDebug(() -> "Could not find JavaScript engine. Skipping JavaScript client: " + client.name());
+            if (skipClient(client)) {
                 continue;
             }
 
@@ -1029,8 +1031,9 @@ public class StreamingDataRequest {
     }
 
     private static boolean skipClient(ClientType client) {
-        if (client.requireJS && !JavaScriptEngineSupport.supportsJavaScriptEngine()) {
-            Logger.printDebug(() -> "Skipping JavaScript client: " + client.name());
+        if (SpoofVideoStreamsPatch.clientRequiresWebView(client)
+                && !JavaScriptEngineSupport.supportsJavaScriptEngine()) {
+            Logger.printDebug(() -> "JavaScript engine not available. Skipping client: " + client.name());
             return true;
         }
         return false;
@@ -1107,6 +1110,7 @@ public class StreamingDataRequest {
                             ", video: " + videoId +
                             ", hash: " + JavaScriptManager.getJavaScriptHash() +
                             ", variant: " + JavaScriptManager.getJavaScriptVariant() +
+                            ", useQuackJs: " + JavaScriptManager.isUseQuackJs() +
                             ", took: " + (System.currentTimeMillis() - fetchStartTime) + "ms");
                 }
 
@@ -1125,7 +1129,8 @@ public class StreamingDataRequest {
 
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
-        ClientType preferredClient = clientOrder[0];
+        // The preferred client is not in the client order if it is skipped.
+        ClientType preferredClient = SpoofVideoStreamsPatch.getPreferredClient();
         if (!preferredClient.supportsOAuth2 && !SharedYouTubeSettings.OAUTH2_REFRESH_TOKEN.get().isBlank()) {
             handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         }

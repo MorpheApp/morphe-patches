@@ -30,9 +30,10 @@ class LicensesDialog extends AboutWebViewDialog {
             new License("Google Material Design icons", LicenseContent.APACHE_2),
             new License("Gson", LicenseContent.APACHE_2),
             new License("Guava", LicenseContent.APACHE_2),
-            new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.MORPHE_LICENSE)),
+            new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.GPL_3)),
             new License("pinyin-pro-data", LicenseContent.PINYIN_PRO_DATA),
             new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS),
+            new License("QuackJS", LicenseContent.GPL_3),
             new License("rime-cantonese", LicenseContent.RIME_CANTONESE),
             new License("SudachiDict", List.of(LicenseContent.SUDACHI_NOTICE, LicenseContent.APACHE_2)),
             new License("Unicode Han Database", List.of(LicenseContent.UNIHAN_NOTICE, LicenseContent.UNICODE_3))
@@ -174,7 +175,7 @@ class LicensesDialog extends AboutWebViewDialog {
                 service marks, or logos.
                 """);
 
-        static final LicenseContent MORPHE_LICENSE = new LicenseContent("LICENSE", """
+        static final LicenseContent GPL_3 = new LicenseContent("LICENSE", """
                                     GNU GENERAL PUBLIC LICENSE
                                        Version 3, 29 June 2007
                 
@@ -260,7 +261,7 @@ class LicensesDialog extends AboutWebViewDialog {
                 
                   To "modify" a work means to copy from or adapt all or part of the work
                 in a fashion requiring copyright permission, other than the making of an
-                exact copy.  The resulting work called a "modified version" of the
+                exact copy.  The resulting work is called a "modified version" of the
                 earlier work or a work "based on" the earlier work.
                 
                   A "covered work" means either the unmodified Program or a work based
