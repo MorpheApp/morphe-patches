@@ -184,13 +184,21 @@ function findVersionProblems(fields, patchesVersions, appVersions) {
 }
 
 /**
+ * Returns true if the issue body is a bug report with version fields.
+ */
+function hasVersionFields(body) {
+  const fields = parseForm(body);
+  return 'Patches version' in fields || 'App version' in fields;
+}
+
+/**
  * Returns the problems found with the versions of the issue, as comment lines.
  * The list is empty if the versions are supported, or if the issue is not a bug report.
  */
 async function checkVersions({ github, core, owner, repo, issue }) {
-  const fields = parseForm(issue.body);
   // Only bug reports have version fields.
-  if (!('Patches version' in fields) && !('App version' in fields)) return [];
+  if (!hasVersionFields(issue.body)) return [];
+  const fields = parseForm(issue.body);
 
   const releases = (await github.rest.repos.listReleases({ owner, repo, per_page: 50 })).data;
   const patchesVersions = acceptedPatchesVersions(releases, Date.now());
@@ -207,6 +215,7 @@ async function checkVersions({ github, core, owner, repo, issue }) {
 
 module.exports = {
   checkVersions,
+  hasVersionFields,
   findVersionProblems,
   acceptedPatchesVersions,
   parsePatchesVersion,
