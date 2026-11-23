@@ -305,14 +305,6 @@ public final class CaptionTracks {
     }
 
     /**
-     * Language of the caption track currently selected by the native player, or null if none.
-     */
-    @Nullable
-    public static synchronized String getSelectedInputLanguage() {
-        return selectedInputLanguage;
-    }
-
-    /**
      * Injection point.
      * Only an actual selection of the player can change the source, never a late response.
      */

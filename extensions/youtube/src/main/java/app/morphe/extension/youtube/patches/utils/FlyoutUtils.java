@@ -725,9 +725,8 @@ public final class FlyoutUtils {
         final String flyoutVideoId = getFlyoutVideoId();
         final String shortVideoId = flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId;
 
-        if (CopyTranscriptPatch.isPatchIncluded() && CopyTranscriptPatch.showShortsFlyoutButton()) {
-            nextButtonIndex = CopyTranscriptPatch.addShortsFlyoutButton(
-                    flyoutPanel, nextButtonIndex, shortVideoId);
+        if (CopyTranscriptPatch.isPatchIncluded()) {
+            nextButtonIndex = CopyTranscriptPatch.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId);
         }
 
         if (ShortsDownloadButton.isPatchIncluded()) {
@@ -811,15 +810,8 @@ public final class FlyoutUtils {
             );
         }
 
-        if (isShortFlyout
-                && CopyTranscriptPatch.isPatchIncluded()
-                && CopyTranscriptPatch.showShortsFlyoutButton()
-                && !flyoutVideoId.isEmpty()) {
-            nextButtonIndex = CopyTranscriptPatch.addShortsFlyoutButton(
-                    flyoutPanel,
-                    nextButtonIndex,
-                    flyoutVideoId
-            );
+        if (isShortFlyout && CopyTranscriptPatch.isPatchIncluded()) {
+            nextButtonIndex = CopyTranscriptPatch.addFlyoutButton(flyoutPanel, nextButtonIndex, flyoutVideoId);
         }
 
         // The menus of Shorts in the feed have no download option,

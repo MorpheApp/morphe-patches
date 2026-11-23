@@ -8,54 +8,53 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.AutoTranslateCaptionsPatch.getLanguageKey;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.patches.copytranscript.TranscriptCopyFetcher;
-import app.morphe.extension.youtube.patches.copytranscript.TranscriptCopyFetcher.TranscriptLine;
+import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.patches.utils.requests.CaptionTrackRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 
 /**
- * Adds a copy button to the transcript engagement panel header.
- * One tap copies the transcript in the user's current caption language;
- * timestamps are controlled by a setting. Shorts can get the same action
- * via an optional flyout item (off by default).
+ * Copies the transcript of a video, from a button in the transcript panel
+ * and from an item in the Shorts menus.
  */
 @SuppressWarnings("unused")
 public final class CopyTranscriptPatch {
 
-    private static final String COPY_BUTTON_TAG = "morphe_copy_transcript_button";
-    private static final String TRANSCRIPT_PANEL_ID =
-            "engagement-panel-timeline-view-consolidated";
-
     /**
-     * Time for the Shorts flyout to close before copying starts.
+     * Panel with chapters and transcript.
      */
-    private static final long SHORTS_MENU_DELAY_MILLISECONDS = 100;
+    private static final String TIMELINE_PANEL_ID = "engagement-panel-timeline-view-consolidated";
 
-    private static final int ID_CLOSE_BUTTON =
-            ResourceUtils.getIdentifier(ResourceType.ID, "close_button");
+    private static final String COPY_BUTTON_TAG = "morphe_copy_transcript_button";
+
+    private static final int ID_CLOSE_BUTTON = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.ID, "close_button");
+
+    private static final boolean USE_EXPERIMENTAL_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
+            && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
+
+    private static final String COPY_ICON = USE_EXPERIMENTAL_ICONS
+            ? "yt_outline_experimental_copy_vd_theme_24"
+            : "yt_outline_copy_black_24";
 
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
@@ -63,172 +62,186 @@ public final class CopyTranscriptPatch {
     }
 
     /**
-     * Called by {@link FlyoutUtils} for Shorts menus.
-     */
-    public static boolean showShortsFlyoutButton() {
-        return Settings.COPY_TRANSCRIPT.get()
-                && Settings.COPY_TRANSCRIPT_SHORTS_FLYOUT.get();
-    }
-
-    /**
-     * Called by {@link FlyoutUtils} when {@link #showShortsFlyoutButton()} is true.
-     */
-    public static int addShortsFlyoutButton(
-            Object flyoutPanel,
-            int nextButtonIndex,
-            String videoId
-    ) {
-        try {
-            final String id = videoId == null ? "" : videoId;
-            return FlyoutUtils.addFlyoutButton(
-                    flyoutPanel,
-                    ResourceUtils.getDrawable("morphe_copy_transcript_button"),
-                    str("morphe_copy_transcript_title"),
-                    v -> {
-                        FlyoutUtils.dismissFlyout();
-                        Utils.runOnMainThreadDelayed(
-                                () -> copyTranscript(id),
-                                SHORTS_MENU_DELAY_MILLISECONDS
-                        );
-                    },
-                    nextButtonIndex
-            );
-        } catch (Exception ex) {
-            Logger.printException(() -> "addShortsFlyoutButton failure", ex);
-            return nextButtonIndex;
-        }
-    }
-
-    /**
      * Injection point.
      *
-     * @param panel The layout of the panel, which holds its header.
+     * @param panel Layout of an engagement panel, whose header is set up.
+     *              Panels reuse their header, so this is called for every panel.
      */
-    public static void onPanelHeaderSetUp(View panel) {
-        try {
-            if (panel == null || !Settings.COPY_TRANSCRIPT.get() || ID_CLOSE_BUTTON == 0) {
-                return;
-            }
+    public static void onPanelHeaderSetUp(@Nullable View panel) {
+        if (panel == null || !Settings.COPY_TRANSCRIPT.get()) return;
 
-            // The panel is opened after its header is set up.
-            panel.post(() -> {
-                try {
-                    updateCopyButton(panel);
-                } catch (Exception ex) {
-                    Logger.printException(() -> "updateCopyButton failure", ex);
-                }
-            });
-        } catch (Exception ex) {
-            Logger.printException(() -> "onPanelHeaderSetUp failure", ex);
-        }
-    }
-
-    private static void updateCopyButton(View panel) {
-        View closeButton = panel.findViewById(ID_CLOSE_BUTTON);
-        if (closeButton == null || !(closeButton.getParent() instanceof ViewGroup header)) {
-            Logger.printDebug(() -> "Panel close button not found");
-            return;
-        }
-
-        View copyButton = header.findViewWithTag(COPY_BUTTON_TAG);
-        if (copyButton == null) {
-            copyButton = createCopyButton(header, closeButton);
-            if (copyButton == null) {
-                return;
-            }
-        }
-
-        copyButton.setVisibility(isTranscriptPanel() ? View.VISIBLE : View.GONE);
-    }
-
-    private static boolean isTranscriptPanel() {
-        String panelId = EngagementPanel.getLastOpenedPanelId();
-        if (panelId == null || panelId.isEmpty()) {
-            return false;
-        }
-        return TRANSCRIPT_PANEL_ID.equals(panelId) || panelId.contains("transcript");
-    }
-
-    @Nullable
-    private static View createCopyButton(ViewGroup header, View closeButton) {
-        Context context = header.getContext();
-        Drawable icon = ResourceUtils.getDrawable("morphe_copy_transcript_button");
-        if (icon == null) {
-            Logger.printException(() -> "Copy transcript drawable not found");
-            return null;
-        }
-
-        ViewGroup.LayoutParams params;
-        if (header instanceof LinearLayout) {
-            LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(Dim.dp48, Dim.dp48);
-            linearParams.gravity = Gravity.CENTER_VERTICAL;
-            params = linearParams;
-        } else if (header instanceof RelativeLayout && closeButton.getId() != View.NO_ID) {
-            RelativeLayout.LayoutParams relativeParams =
-                    new RelativeLayout.LayoutParams(Dim.dp48, Dim.dp48);
-            relativeParams.addRule(RelativeLayout.START_OF, closeButton.getId());
-            relativeParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            params = relativeParams;
-        } else {
-            Logger.printDebug(() -> "Unsupported panel header layout: " + header.getClass().getName());
-            return null;
-        }
-
-        FrameLayout button = new FrameLayout(context);
-        button.setId(View.generateViewId());
-        button.setTag(COPY_BUTTON_TAG);
-        button.setContentDescription(str("morphe_copy_transcript_title"));
-        button.setClickable(true);
-        button.setFocusable(true);
-
-        ImageView iconView = new ImageView(context);
-        iconView.setImageDrawable(icon.mutate());
-        iconView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        icon.setTint(ThemeUtils.getAppForegroundColor());
-        button.addView(iconView, new FrameLayout.LayoutParams(Dim.dp24, Dim.dp24, Gravity.CENTER));
-        button.setOnClickListener(view -> copyTranscript(VideoInformation.getVideoId()));
-
-        header.addView(button, Math.max(header.indexOfChild(closeButton), 0), params);
-        return button;
-    }
-
-    private static void copyTranscript(@Nullable String videoId) {
-        final String id = videoId == null || videoId.isEmpty()
-                ? VideoInformation.getVideoId()
-                : videoId;
-        if (id == null || id.isEmpty()) {
-            Utils.showSnackbarShort(str("morphe_copy_transcript_empty"));
-            return;
-        }
-
-        final boolean withTimestamps = Settings.COPY_TRANSCRIPT_TIMESTAMPS.get();
-        Utils.runOnBackgroundThread(() -> {
+        // The panel is opened after its header is set up.
+        panel.post(() -> {
             try {
-                List<TranscriptLine> lines = TranscriptCopyFetcher.fetch(id);
-                if (lines.isEmpty()) {
-                    Utils.runOnMainThread(() ->
-                            Utils.showSnackbarShort(str("morphe_copy_transcript_empty")));
-                    return;
-                }
-
-                final String text = TranscriptCopyFetcher.format(lines, withTimestamps);
-                Utils.runOnMainThread(() -> copyToClipboard(text, withTimestamps));
+                updateCopyButton(panel);
             } catch (Exception ex) {
-                Logger.printException(() -> "copyTranscript failure", ex);
-                Utils.runOnMainThread(() ->
-                        Utils.showSnackbarShort(str("morphe_copy_transcript_error")));
+                Logger.printException(() -> "updateCopyButton failure", ex);
             }
         });
     }
 
-    private static void copyToClipboard(String text, boolean withTimestamps) {
-        Utils.setClipboard(text);
-        // Do not show a message if using Android 13+ as it shows its own toast,
-        // matching Copy video link. Always toast when timestamps are included.
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2 || withTimestamps) {
-            Utils.showSnackbarShort(withTimestamps
-                    ? str("morphe_copy_transcript_copied_timestamps")
-                    : str("morphe_copy_transcript_copied"));
+    private static void updateCopyButton(View panel) {
+        ImageView closeButton = panel.findViewById(ID_CLOSE_BUTTON);
+        if (closeButton == null) {
+            Logger.printDebug(() -> "Panel has no close button");
+            return;
         }
+
+        LinearLayout header = (LinearLayout) closeButton.getParent();
+        View copyButton = header.findViewWithTag(COPY_BUTTON_TAG);
+        if (copyButton == null) {
+            copyButton = createCopyButton(header, closeButton);
+        }
+        copyButton.setVisibility(isTranscriptPanel(EngagementPanel.getLastOpenedPanelId())
+                ? View.VISIBLE
+                : View.GONE);
+    }
+
+    private static boolean isTranscriptPanel(@Nullable String panelId) {
+        // Such as PAmodern_transcript_view.
+        return panelId != null && (panelId.contains("transcript") || panelId.equals(TIMELINE_PANEL_ID));
+    }
+
+    /**
+     * @return A button that looks like the close button, added before it.
+     */
+    private static View createCopyButton(LinearLayout header, ImageView closeButton) {
+        ImageView button = new ImageView(header.getContext());
+        button.setTag(COPY_BUTTON_TAG);
+        button.setContentDescription(str("morphe_copy_transcript_title"));
+        button.setImageDrawable(ResourceUtils.getDrawable(COPY_ICON));
+        button.setImageTintList(closeButton.getImageTintList());
+        button.setScaleType(closeButton.getScaleType());
+        button.setPadding(closeButton.getPaddingLeft(), closeButton.getPaddingTop(),
+                closeButton.getPaddingRight(), closeButton.getPaddingBottom());
+        Drawable background = closeButton.getBackground();
+        if (background != null && background.getConstantState() != null) {
+            button.setBackground(background.getConstantState().newDrawable().mutate());
+        }
+        button.setOnClickListener(view -> copyTranscript(VideoInformation.getVideoId()));
+
+        header.addView(button, header.indexOfChild(closeButton),
+                new LinearLayout.LayoutParams((LinearLayout.LayoutParams) closeButton.getLayoutParams()));
+        return button;
+    }
+
+    /**
+     * Called by {@link FlyoutUtils} for the menus of Shorts.
+     */
+    public static int addFlyoutButton(Object flyoutPanel, int nextButtonIndex, String videoId) {
+        if (!Settings.COPY_TRANSCRIPT.get() || !Settings.COPY_TRANSCRIPT_SHORTS_FLYOUT.get()
+                || videoId.isEmpty()) {
+            return nextButtonIndex;
+        }
+
+        return FlyoutUtils.addFlyoutButton(
+                flyoutPanel,
+                ResourceUtils.getDrawable(COPY_ICON),
+                str("morphe_copy_transcript_title"),
+                v -> {
+                    FlyoutUtils.dismissFlyout();
+                    copyTranscript(videoId);
+                },
+                nextButtonIndex
+        );
+    }
+
+    private static void copyTranscript(String videoId) {
+        final boolean withTimestamps = Settings.COPY_TRANSCRIPT_TIMESTAMPS.get();
+        final String language = transcriptLanguage();
+
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                String trackUrl = selectTrackUrl(CaptionTrackRequest.fetchCaptions(videoId), language);
+                List<CaptionTrackRequest.Line> lines = trackUrl == null
+                        ? List.of()
+                        : CaptionTrackRequest.fetchLines(trackUrl);
+                String text = format(lines, withTimestamps);
+
+                Utils.runOnMainThread(() -> {
+                    if (text.isEmpty()) {
+                        Utils.showSnackbarShort(str("morphe_copy_transcript_empty"));
+                        return;
+                    }
+
+                    Utils.setClipboard(text);
+                    // Android 13+ shows its own message.
+                    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+                        Utils.showSnackbarShort(str("morphe_copy_transcript_copied"));
+                    }
+                });
+            } catch (Exception ex) {
+                Logger.printException(() -> "copyTranscript failure", ex);
+                Utils.runOnMainThread(() -> Utils.showSnackbarShort(str("morphe_copy_transcript_error")));
+            }
+        });
+    }
+
+    /**
+     * @return Language of the captions shown in the player, otherwise the preferred caption language,
+     *         or null to use the default caption track.
+     */
+    @Nullable
+    private static String transcriptLanguage() {
+        String selected = PreferredCaptionLanguagePatch.getSelectedLanguage();
+        if (selected != null) return selected;
+
+        String preferred = Settings.PREFERRED_CAPTION_LANGUAGE.get();
+        if ("off".equalsIgnoreCase(preferred)) return null;
+        return "default".equalsIgnoreCase(preferred)
+                ? Requester.getAppLocale().toLanguageTag()
+                : preferred;
+    }
+
+    /**
+     * @return Url of the uploaded or auto-generated track of the language, or a translation of
+     *         the default track to the language, or the default track.
+     */
+    @Nullable
+    private static String selectTrackUrl(CaptionTrackRequest.Captions captions, @Nullable String language) {
+        List<CaptionTrackRequest.Track> tracks = captions.tracks();
+        if (tracks.isEmpty()) return null;
+
+        CaptionTrackRequest.Track defaultTrack = tracks.get(Math.max(captions.defaultIndex(), 0));
+        if (language == null) return defaultTrack.url();
+
+        String key = getLanguageKey(language);
+        CaptionTrackRequest.Track automatic = null;
+        for (CaptionTrackRequest.Track track : tracks) {
+            if (!key.equals(getLanguageKey(track.languageCode()))) continue;
+            if (!track.automatic()) return track.url();
+            if (automatic == null || (automatic.gemini() && !track.gemini())) automatic = track;
+        }
+        if (automatic != null) return automatic.url();
+
+        String translation = AutoTranslateCaptionsPatch.translationLanguage(language);
+        return translation != null && defaultTrack.translatable()
+                ? defaultTrack.url() + "&tlang=" + translation
+                : defaultTrack.url();
+    }
+
+    private static String format(List<CaptionTrackRequest.Line> lines, boolean withTimestamps) {
+        StringBuilder builder = new StringBuilder();
+        for (CaptionTrackRequest.Line line : lines) {
+            String text = line.text();
+            // Sound descriptions, such as [Music].
+            if ((text.startsWith("[") && text.endsWith("]"))
+                    || (text.startsWith("(") && text.endsWith(")"))) continue;
+
+            if (builder.length() > 0) builder.append('\n');
+            if (withTimestamps) builder.append(formatTimestamp(line.startMs())).append(' ');
+            builder.append(text);
+        }
+        return builder.toString();
+    }
+
+    private static String formatTimestamp(long timeMs) {
+        final long totalSeconds = timeMs / 1000;
+        final long hours = totalSeconds / 3600;
+        final long minutes = (totalSeconds % 3600) / 60;
+        final long seconds = totalSeconds % 60;
+        return hours > 0
+                ? String.format(Locale.US, "[%d:%02d:%02d]", hours, minutes, seconds)
+                : String.format(Locale.US, "[%02d:%02d]", minutes, seconds);
     }
 }

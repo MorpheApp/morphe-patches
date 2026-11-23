@@ -7,14 +7,12 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
-import app.morphe.patches.youtube.interaction.copytranscript.copyTranscriptPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
-import java.util.LinkedHashSet
 
 /**
  * Caption settings. Used to organize all caption related settings together.
@@ -55,7 +53,7 @@ val captionsPatch = patch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +
             "select a preferred and a secondary caption language, add more auto-translate languages, " +
-            "and show captions in stable blocks and in picture-in-picture. " +
+            "show captions in stable blocks and in picture-in-picture, and copy the transcript. " +
             "Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer.",
 ) {
     dependsOn(
@@ -78,9 +76,7 @@ val captionsPatch = patch(
 
     execute {
         val remaining = settingsMenuCaptionGroup.associateByTo(mutableMapOf()) { it.key }
-        // LinkedHashSet keeps the declared key order (parent switch above children).
-        fun take(vararg keys: String) =
-            keys.mapNotNull { remaining.remove(it) }.toCollection(LinkedHashSet())
+        fun take(vararg keys: String) = keys.mapNotNull { remaining.remove(it) }.toSet()
 
         val languages = take(
             "morphe_preferred_caption_language",
@@ -93,7 +89,6 @@ val captionsPatch = patch(
             "morphe_auto_captions_style",
             "morphe_captions_in_pip",
         )
-        // Keep parent switch above its children so availability greying is obvious.
         val copyTranscript = take(
             "morphe_copy_transcript",
             "morphe_copy_transcript_timestamps",
