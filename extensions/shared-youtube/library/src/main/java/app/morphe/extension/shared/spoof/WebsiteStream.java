@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4764
+ * https://github.com/MorpheApp/morphe-patches/pull/5208
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -31,7 +32,7 @@ import app.morphe.extension.shared.patches.MediaHttpRequest;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 /**
- * A SABR stream of the Mobile Web client.
+ * A SABR stream of a web client (Mobile Web or Web).
  * <p>
  * Its media requests use the streaming session that the website made for the video: its client, its PoToken
  * and its config. The server sends the media only with them, and with the contexts the previous responses gave.
@@ -48,7 +49,7 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
  * the playback after seeking back. These parts are hidden from the player, which plays the segment
  * from the position it asked for. Seeks of other sources are kept.
  */
-public final class MwebStream {
+public final class WebsiteStream {
     // UMP parts of media responses.
     private static final int PART_MEDIA_HEADER = 20;
     private static final int PART_SABR_ERROR = 44;
@@ -63,6 +64,7 @@ public final class MwebStream {
     private static final int SEEK_SOURCE_SEGMENT_START = 11;
 
     // StreamProtectionStatus.status.
+    static final int STATUS_OK = 1;
     private static final int STATUS_ATTESTATION_PENDING = 2;
     private static final int STATUS_ATTESTATION_REQUIRED = 3;
 
@@ -88,10 +90,10 @@ public final class MwebStream {
     /**
      * Streams by the 'id' parameter of their url.
      */
-    private static final Map<String, MwebStream> streams =
+    private static final Map<String, WebsiteStream> streams =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(MAX_STREAMS, true));
 
-    private record ResponseReader(MwebStream stream, SabrResponseReader reader) {
+    private record ResponseReader(WebsiteStream stream, SabrResponseReader reader) {
     }
 
     /**
@@ -103,9 +105,14 @@ public final class MwebStream {
     private final String videoId;
 
     /**
+     * The web client of the stream.
+     */
+    private final ClientType client;
+
+    /**
      * The last session of the video. A new fetch of the streams of the video can have the same stream.
      */
-    private volatile MwebSiteSession.Session session;
+    private volatile WebsiteSession.Session session;
 
     /**
      * {@link System#currentTimeMillis()} when the url of the stream expires.
@@ -125,12 +132,13 @@ public final class MwebStream {
     @GuardedBy("this")
     private int lastStatus = -1;
 
-    private MwebStream(String videoId, MwebSiteSession.Session session) {
+    private WebsiteStream(String videoId, ClientType client, WebsiteSession.Session session) {
         this.videoId = videoId;
+        this.client = client;
         setSession(session);
     }
 
-    private void setSession(MwebSiteSession.Session session) {
+    private void setSession(WebsiteSession.Session session) {
         this.session = session;
         long expireTime = System.currentTimeMillis() + DEFAULT_STREAM_LIFETIME_MILLISECONDS;
         try {
@@ -140,30 +148,30 @@ public final class MwebStream {
                 expireTime = Long.parseLong(expire) * 1000;
             }
         } catch (NumberFormatException ex) {
-            Logger.printInfo(() -> "Mobile Web stream url has an invalid expiration time", ex);
+            Logger.printInfo(() -> "Web client stream url has an invalid expiration time", ex);
         }
         this.expireTime = expireTime;
     }
 
     /**
-     * Called when the streams of a video are fetched with the Mobile Web client.
+     * Called when the streams of a video are fetched with a web client.
      */
-    public static void onStreams(String videoId, MwebSiteSession.Session session) {
+    public static void onStreams(String videoId, ClientType client, WebsiteSession.Session session) {
         String streamId = session.streamId;
         if (streamId == null) {
-            Logger.printDebug(() -> "Mobile Web stream has no id: " + videoId);
+            Logger.printDebug(() -> "Web client stream has no id: " + videoId);
             return;
         }
         synchronized (streams) {
             final long now = System.currentTimeMillis();
             streams.values().removeIf(mwebStream -> mwebStream.expireTime < now);
 
-            MwebStream stream = streams.get(streamId);
+            WebsiteStream stream = streams.get(streamId);
             if (stream != null && stream.videoId.equals(videoId)) {
                 stream.setSession(session);
                 stream.failed = false;
             } else {
-                streams.put(streamId, new MwebStream(videoId, session));
+                streams.put(streamId, new WebsiteStream(videoId, client, session));
             }
         }
     }
@@ -185,32 +193,32 @@ public final class MwebStream {
     static MediaHttpRequest onMediaRequest(MediaHttpRequest request, Uri uri, byte[] body,
                                            Object callbacks, Locale locale) throws IOException {
         String streamId = uri.getQueryParameter("id");
-        MwebStream stream = streamId == null ? null : streams.get(streamId);
+        WebsiteStream stream = streamId == null ? null : streams.get(streamId);
         if (stream == null) {
             // The session was forgotten, for example after a sign in, so the server refuses the request.
-            Logger.printDebug(() -> "Mobile Web stream without a website session");
+            Logger.printDebug(() -> "Web client stream without a website session");
             return request;
         }
 
-        MwebSiteSession.Session session = stream.session;
+        WebsiteSession.Session session = stream.session;
         byte[] clientInfo = session.clientInfo != null
                 ? session.clientInfo
-                : SabrRequestBody.buildClientInfo(ClientType.MWEB, locale);
+                : SabrRequestBody.buildClientInfo(stream.client, locale);
         byte[] newBody = SabrRequestBody.replaceClientInfo(body, clientInfo, session.poToken,
                 stream.contexts.toSend(), session.ustreamerConfig);
 
         responseReaders.put(callbacks, new ResponseReader(stream, new SabrResponseReader(stream::onPart,
                 SabrContexts.PART_SABR_CONTEXT_UPDATE, SabrContexts.PART_SABR_CONTEXT_SENDING_POLICY,
-                PART_MEDIA_HEADER, PART_SABR_ERROR).hideParts(PART_SABR_SEEK, MwebStream::isSegmentStartSeek)));
+                PART_MEDIA_HEADER, PART_SABR_ERROR).hideParts(PART_SABR_SEEK, WebsiteStream::isSegmentStartSeek)));
 
-        return request.patch_withBodyAndHeaders(newBody, getHeaders(request));
+        return request.patch_withBodyAndHeaders(newBody, getHeaders(request, stream.client));
     }
 
     /**
      * The headers of the app, with the headers that name the browser of the web client and its website
      * instead of the app.
      */
-    private static ArrayList<HttpHeader> getHeaders(MediaHttpRequest request) {
+    private static ArrayList<HttpHeader> getHeaders(MediaHttpRequest request, ClientType client) {
         ArrayList<HttpHeader> headers = new ArrayList<>();
         ArrayList<HttpHeader> appHeaders = request.patch_getHeaders();
         if (appHeaders != null) {
@@ -220,9 +228,10 @@ public final class MwebStream {
                 }
             }
         }
-        headers.add(new HttpHeader("User-Agent", ClientType.MWEB.getUserAgent()));
-        headers.add(new HttpHeader("Origin", MwebSignIn.ORIGIN));
-        headers.add(new HttpHeader("Referer", MwebSignIn.ORIGIN + "/"));
+        String origin = client.getWebsiteOrigin();
+        headers.add(new HttpHeader("User-Agent", client.getUserAgent()));
+        headers.add(new HttpHeader("Origin", origin));
+        headers.add(new HttpHeader("Referer", origin + "/"));
         return headers;
     }
 
@@ -261,7 +270,7 @@ public final class MwebStream {
         final int previous = lastStatus;
         lastStatus = status;
         if (previous != status) {
-            Logger.printDebug(() -> "Mobile Web stream protection status: " + status
+            Logger.printDebug(() -> client + " stream protection status: " + status
                     + " previous: " + previous + " video: " + videoId);
         }
         if (status == STATUS_ATTESTATION_REQUIRED) {
@@ -292,7 +301,7 @@ public final class MwebStream {
                 String mediaVideoId = readMediaVideoId(part);
                 if (mediaVideoId != null && !mediaVideoId.isEmpty() && !mediaVideoId.equals(videoId)) {
                     // An ad the server puts in the streams of the video.
-                    Logger.printDebug(() -> "Mobile Web media of another video: " + mediaVideoId
+                    Logger.printDebug(() -> client + " media of another video: " + mediaVideoId
                             + " stream video: " + videoId);
                     onFailure("media of another video");
                 }
