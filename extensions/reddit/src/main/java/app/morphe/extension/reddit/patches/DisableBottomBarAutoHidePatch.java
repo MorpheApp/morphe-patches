@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5242
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -12,7 +12,7 @@ import app.morphe.extension.reddit.settings.Settings;
 @SuppressWarnings("unused")
 public final class DisableBottomBarAutoHidePatch {
 
-    private static final float FULLY_VISIBLE = 1f;
+    private static final float NAV_BAR_FULLY_SHOWN = 1f;
 
     /**
      * @return If this patch was included during patching.
@@ -23,12 +23,14 @@ public final class DisableBottomBarAutoHidePatch {
     }
 
     /**
-     * Injection point.
+     * Injection point. Also called by Feed auto-scroll, which can be included without this patch.
      *
-     * @param fraction 0 hidden, 1 fully shown.
-     * @return How far the bottom bar is shown.
+     * @param fraction How much of the navigation bar is shown, from 0 to 1.
+     * @return The fraction of the navigation bar to show.
      */
-    public static float getBarVisibleFraction(float fraction) {
-        return Settings.DISABLE_BOTTOM_BAR_AUTO_HIDE.get() ? FULLY_VISIBLE : fraction;
+    public static float getNavBarShownFraction(float fraction) {
+        return isPatchIncluded() && Settings.DISABLE_BOTTOM_BAR_AUTO_HIDE.get()
+                ? NAV_BAR_FULLY_SHOWN
+                : fraction;
     }
 }
