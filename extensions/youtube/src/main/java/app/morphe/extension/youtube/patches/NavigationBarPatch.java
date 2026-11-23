@@ -245,23 +245,13 @@ public final class NavigationBarPatch {
         if (SHOW_SETTINGS_BUTTON && button == NavigationBar.NavigationButton.SETTINGS) {
             settingsTabRef = new WeakReference<>(tabView);
             Utils.runOnMainThread(() -> {
-                tabView.setOnClickListener(v -> {
-                    if (SHOW_SETTINGS_BUTTON_TYPE) {
-                        openMorpheSettings(v);
-                    } else {
-                        openYouTubeSettings(v);
-                    }
-                });
-                tabView.setOnLongClickListener(v -> {
-                    if (isNewTabLongPress()) {
-                        if (SHOW_SETTINGS_BUTTON_TYPE) {
-                            openYouTubeSettings(v);
-                        } else {
-                            openMorpheSettings(v);
-                        }
-                    }
-                    return true;
-                });
+                if (SHOW_SETTINGS_BUTTON_TYPE) {
+                    tabView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
+                    setTabLongPressAction(tabView, NavigationBarPatch::openYouTubeSettings);
+                } else {
+                    tabView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
+                    setTabLongPressAction(tabView, NavigationBarPatch::openMorpheSettings);
+                }
             });
             return;
         }
@@ -269,12 +259,7 @@ public final class NavigationBarPatch {
         if (YOU_BUTTON_ACCOUNT_SWITCHER && button == NavigationBar.NavigationButton.LIBRARY) {
             youTabRef = new WeakReference<>(tabView);
             // The app sets its own long press listener on the button after the button is created.
-            Utils.runOnMainThread(() -> tabView.setOnLongClickListener(v -> {
-                if (isNewTabLongPress()) {
-                    openAccountSwitcher(v);
-                }
-                return true;
-            }));
+            Utils.runOnMainThread(() -> setTabLongPressAction(tabView, NavigationBarPatch::openAccountSwitcher));
         }
 
         // The dot is a stub that is inflated when the tab has new content, and the app shows and
@@ -519,7 +504,7 @@ public final class NavigationBarPatch {
     /**
      * The navigation bar slides out of the screen, and is then removed from the layout, as the app does
      * when it hides the bar. It is added back before it slides in.
-     * The page fills the room with the bar while the bar slides over it, so the room is removed before the bar
+     * The page fills the room of the bar while the bar slides over it, so the room is removed before the bar
      * slides out, and added back after the bar has slid in. Otherwise, the empty room shows behind the sliding bar.
      */
     private static void animateNavigationBarOnScroll(View container, View list, boolean hide) {
@@ -1323,19 +1308,7 @@ public final class NavigationBarPatch {
     private static final boolean YOU_BUTTON_ACCOUNT_SWITCHER = VersionCheckPatch.IS_21_30_OR_GREATER
             && Settings.YOU_BUTTON_ACCOUNT_SWITCHER.get();
 
-    /**
-     * The command of the account button of the 'You' tab. When signed in it opens the account
-     * switcher, and when incognito it opens the incognito sheet.
-     */
-    private static final byte[] ACCOUNT_SWITCHER_COMMAND = NavigationEndpoint.newBuilder()
-            .setSignInEndpoint(SignInEndpoint.newBuilder().setUseAccountSwitcher(true))
-            .build()
-            .toByteArray();
-
-    /**
-     * Context key of the view a command is run from.
-     */
-    private static final String COMMAND_SENDER_VIEW = "com.google.android.libraries.youtube.rendering.elements.sender_view";
+    private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
 
     private static volatile WeakReference<View> youTabRef = new WeakReference<>(null);
 
@@ -1381,13 +1354,33 @@ public final class NavigationBarPatch {
         return true;
     }
 
+    /**
+     * Must be called from the main thread.
+     */
+    private static void setTabLongPressAction(View tab, View.OnClickListener action) {
+        tab.setOnLongClickListener(v -> {
+            if (isNewTabLongPress()) {
+                action.onClick(v);
+            }
+            return true;
+        });
+    }
+
+    /**
+     * Runs the command of the account button of the 'You' tab. When signed in it opens the
+     * account switcher, and when incognito it opens the incognito sheet.
+     */
     private static void openAccountSwitcher(View view) {
         try {
+            byte[] command = NavigationEndpoint.newBuilder()
+                    .setSignInEndpoint(SignInEndpoint.newBuilder().setUseAccountSwitcher(true))
+                    .build()
+                    .toByteArray();
             Map<String, Object> context = new HashMap<>();
             // The app runs the command of the account button with the button as its sender.
-            context.put(COMMAND_SENDER_VIEW, view);
-            if (!CommandRouterPatch.executeCommand(ACCOUNT_SWITCHER_COMMAND, context)) {
-                Logger.printDebug(() -> "No command router of a shown activity");
+            context.put(SENDER_VIEW_KEY, view);
+            if (!CommandRouterPatch.executeCommand(command, context)) {
+                Logger.printDebug(() -> "Could not open the account switcher, no activity is shown");
             }
         } catch (Exception ex) {
             Logger.printException(() -> "openAccountSwitcher failure", ex);

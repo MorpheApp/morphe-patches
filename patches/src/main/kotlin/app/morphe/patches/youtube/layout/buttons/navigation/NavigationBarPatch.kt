@@ -776,6 +776,7 @@ val navigationBarPatch = patch(
         // The navigation bar handles the touches of its buttons itself, so the long press
         // of the Settings and 'You' buttons is found from the touches of the navigation bar.
         // The touch that ends a long press is replaced, so the button is not tapped.
+        // This runs before the touch hook of the navigation bar hook patch, so it is not seen as a tap either.
         PivotBarDispatchTouchEventFingerprint.method.addInstructions(
             0,
             """
