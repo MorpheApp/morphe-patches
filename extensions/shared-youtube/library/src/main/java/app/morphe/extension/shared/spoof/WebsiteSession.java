@@ -35,6 +35,7 @@ import androidx.annotation.Nullable;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.ArrayDeque;
 import java.util.Collections;
@@ -290,7 +291,7 @@ public final class WebsiteSession {
      * in the page, which gives them up.
      * <p>
      * The player requests of the page ask for no ads (playbackContext.adPlaybackContext.pyv, as for the playback
-     * of a video ad). Otherwise the server puts the ads of the video in the streaming session, and as they are
+     * of a video ad). Otherwise, the server puts the ads of the video in the streaming session, and as they are
      * never played, the streams wait for most of their length (4 to 24 seconds) before the server sends any media.
      * The page sends its requests as JSON compressed with gzip, so the request is changed when it is turned
      * into JSON. Premium accounts of the web sign in have no ads, and these requests would not get their Premium
@@ -519,9 +520,10 @@ public final class WebsiteSession {
 
     /**
      * Page that rotates the cookies of the web sign in, while it rotates them. Main thread only.
+     * Held weakly to prevent leaking the activity context while rotation is in progress.
      */
     @Nullable
-    private static WebView cookieRotationView;
+    private static WeakReference<WebView> cookieRotationViewRef;
 
     /**
      * {@link SystemClock#elapsedRealtime()} when the cookies were last rotated. Main thread only.
@@ -543,6 +545,13 @@ public final class WebsiteSession {
             Page page = warmUpPage.getAndSet(null);
             if (page != null) {
                 page.close();
+            }
+            if (cookieRotationViewRef != null) {
+                WebView v = cookieRotationViewRef.get();
+                if (v != null) {
+                    finishCookieRotation(v, false);
+                }
+                cookieRotationViewRef = null;
             }
         });
     }
@@ -837,14 +846,15 @@ public final class WebsiteSession {
      * and the frame rotates the cookies in the cookie store of the WebView. It does not wait for the rotation,
      * and the next requests use the rotated cookies.
      */
+    @SuppressLint("SetJavaScriptEnabled")
     static void rotateCookiesIfDue() {
         if (!WebsiteSignIn.of(ClientType.WEB).isSignedIn()) {
             return;
         }
         Utils.runOnMainThread(() -> {
             final long start = SystemClock.elapsedRealtime();
-            if (cookieRotationView != null
-                    || start - lastCookieRotationTime < ROTATE_COOKIES_INTERVAL_MILLISECONDS) {
+            final WebView activeView = cookieRotationViewRef != null ? cookieRotationViewRef.get() : null;
+            if (activeView != null || start - lastCookieRotationTime < ROTATE_COOKIES_INTERVAL_MILLISECONDS) {
                 return;
             }
             lastCookieRotationTime = start;
@@ -871,7 +881,7 @@ public final class WebsiteSession {
                     }
                 });
                 attachToCurrentActivity(webView);
-                cookieRotationView = webView;
+                cookieRotationViewRef = new WeakReference<>(webView);
 
                 String cookiesBefore = getRotatedCookies();
                 Logger.printDebug(() -> "Rotating the cookies of the web sign in");
@@ -880,7 +890,7 @@ public final class WebsiteSession {
                 mainHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (cookieRotationView != webView) {
+                        if (cookieRotationViewRef == null || cookieRotationViewRef.get() != webView) {
                             return;
                         }
                         final boolean rotated = !cookiesBefore.equals(getRotatedCookies());
@@ -914,10 +924,10 @@ public final class WebsiteSession {
      * Main thread only.
      */
     private static void finishCookieRotation(WebView webView, boolean rotated) {
-        if (cookieRotationView != webView) {
+        if (cookieRotationViewRef == null || cookieRotationViewRef.get() != webView) {
             return;
         }
-        cookieRotationView = null;
+        cookieRotationViewRef = null;
         Logger.printDebug(() -> rotated
                 ? "Cookies of the web sign in rotated"
                 : "Cookies of the web sign in were not rotated");

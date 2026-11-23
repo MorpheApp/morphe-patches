@@ -284,7 +284,7 @@ public class NavigationBarPatch {
             MenuItem item = menu.findItem(SETTINGS_MENU_ITEM_ID);
             if (item == null) {
                 item = menu.add(Menu.NONE, SETTINGS_MENU_ITEM_ID, TOOLBAR_MENU_ITEM_ORDER, str(SETTINGS_LABEL_STRING_NAME));
-                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
             }
 
             // A view of its own, as menu items have no long press.

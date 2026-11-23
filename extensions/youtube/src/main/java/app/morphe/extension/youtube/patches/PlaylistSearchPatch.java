@@ -107,7 +107,7 @@ public final class PlaylistSearchPatch {
             MenuItem menuItem = menu.add(Menu.NONE, MENU_ITEM_ID, searchItem.getOrder() - 1,
                     str("morphe_playlist_search_hint"));
             menuItem.setIcon(icon);
-            menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
             menuItem.setOnMenuItemClickListener(item -> {
                 showSearchDialog();
                 return true;
