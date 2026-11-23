@@ -184,7 +184,16 @@ internal object ActionBarButtonFingerprint : Fingerprint(
             "I",
             "I"
         )
-    }
+    },
+    filters = listOf(
+        // Default button size. Methods with the same parameters that other patches add,
+        // such as the button of 'Collapse all comments', pass the size on and do not read it.
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Lcom/reddit/ui/compose/ds/ContentActionButtonSize;",
+            name = "Small"
+        )
+    )
 )
 
 /**
