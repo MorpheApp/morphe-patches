@@ -6,10 +6,7 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
-/**
- * Ring of recent layout shifts, keyed by a monotonic sequence number so a row can consume exactly
- * the shifts that happened above it since it was last placed. Pure holder, no view dependencies.
- */
+/** Ring of layout shifts keyed by sequence, so a row consumes only shifts above it. */
 final class LayoutShiftRing {
 
     private static final int SHIFT_RING = 32;
@@ -31,7 +28,6 @@ final class LayoutShiftRing {
         shiftSeqs[slot] = seq;
     }
 
-    /** Sums the shifts above {@code index} recorded after the row's last observed sequence. */
     float consume(int index, long seenShiftSeq) {
         float sum = 0f;
         for (int i = 0; i < SHIFT_RING; i++) {

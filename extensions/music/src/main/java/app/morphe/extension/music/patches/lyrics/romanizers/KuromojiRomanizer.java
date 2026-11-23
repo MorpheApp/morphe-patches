@@ -1205,7 +1205,7 @@ public final class KuromojiRomanizer {
         final int mCount = moras.length;
 
         if (mCount == kCount) {
-            System.arraycopy(moras, 0, out, offset + 0, kCount);
+            System.arraycopy(moras, 0, out, offset, kCount);
             return;
         }
 

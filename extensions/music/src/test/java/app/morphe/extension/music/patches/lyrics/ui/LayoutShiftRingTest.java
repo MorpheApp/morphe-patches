@@ -20,11 +20,8 @@ public class LayoutShiftRingTest {
         ring.record(1, 5f);
         assertEquals(3L, ring.currentSeq());
 
-        // Row 2 sees the shifts at rows 0 and 1, but not the one at its own index.
         assertEquals(15f, ring.consume(2, 0L), 0f);
-        // Row 1 sees only the shift above it (row 0), not its own.
         assertEquals(10f, ring.consume(1, 0L), 0f);
-        // A row that has already seen everything consumes nothing.
         assertEquals(0f, ring.consume(2, 3L), 0f);
     }
 
@@ -35,7 +32,6 @@ public class LayoutShiftRingTest {
             ring.record(0, 1f);
         }
         assertEquals(33L, ring.currentSeq());
-        // Oldest entry was overwritten, so at most 32 of the 33 shifts remain.
         assertEquals(32f, ring.consume(1, 0L), 0f);
     }
 }

@@ -11,15 +11,14 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -177,7 +176,6 @@ public final class LyricsPanelView extends FrameLayout
 
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
-    /** Toolbar copy icon; share mode never changes this button. */
     private static final String COPY_ICON = "morphe_yt_copy_bold";
 
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -283,7 +281,6 @@ public final class LyricsPanelView extends FrameLayout
     @Nullable
     private TextView dialogSectionButton;
 
-    /** Single source of truth for the four-state translation/romanization only-mode machine. */
     private final OnlyModeState onlyModeState = new OnlyModeState();
 
     private final List<TextView> lineViews = new ArrayList<>();
@@ -478,6 +475,7 @@ public final class LyricsPanelView extends FrameLayout
                 // so the wanted state is reapplied on every tick rather than on changes.
                 // The cached answer is kept here, since ticks carry no news of their own.
                 applyOverlayVisibility();
+                fullscreenController.onTick();
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not update lyrics panel view", ex);
             }
@@ -525,12 +523,8 @@ public final class LyricsPanelView extends FrameLayout
         buttonRow = new LinearLayout(context);
         buttonRow.setOrientation(LinearLayout.HORIZONTAL);
         buttonRow.setGravity(Gravity.CENTER);
-        LayoutTransition buttonTransition = new LayoutTransition();
-        buttonTransition.enableTransitionType(LayoutTransition.CHANGING);
-        buttonTransition.setDuration(LayoutTransition.CHANGING, BUTTON_STATE_FADE_MILLISECONDS);
-        // Without this the panel around the row animates along with the buttons.
-        buttonTransition.setAnimateParentHierarchy(false);
-        buttonRow.setLayoutTransition(buttonTransition);
+        // A child animating under LayoutTransition keeps its parent when removed; reparenting
+        // the fullscreen and jump buttons would then throw.
         buttonRow.setVisibility(GONE);
 
         createToolbarButtons();
@@ -905,7 +899,7 @@ public final class LyricsPanelView extends FrameLayout
                 && y >= (v.getTop() - slop) && y <= (v.getBottom() + slop);
     }
 
-    /** Hit test in panel coordinates, so a view reparented into the button row still matches. */
+    /** Panel coordinates, so a view moved into the button row still matches. */
     boolean isTouchInside(View v, MotionEvent event, int slop) {
         if (v.getVisibility() != VISIBLE) {
             return false;
@@ -957,7 +951,8 @@ public final class LyricsPanelView extends FrameLayout
                     startBrowsing();
                 }
             }
-            case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> followState.setDraggingScroll(false);
+            case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL ->
+                    followState.setDraggingScroll(false);
         }
     }
 
@@ -1288,7 +1283,6 @@ public final class LyricsPanelView extends FrameLayout
             pendingAlignment = null;
             pendingAlignmentTrack = null;
             updateTranscribeAffordances();
-            // Dual mode keeps the original underneath, so the mode resets while the flags stand.
             applyModeEvent(OnlyModeState.Event.TRACK_CHANGED);
             updateFooter();
             updateSessionMainLine();
@@ -2034,7 +2028,6 @@ public final class LyricsPanelView extends FrameLayout
             lineView.setScrollEngine(scrollEngine);
             lineView.setSecondary(isSec);
             lineView.setIsRightAligned(isRightAligned);
-            // A vocal centers with its lead line unless same-side mode is active.
             lineView.setIsCentered(Settings.isAlignmentCenter()
                     || (!Settings.isAlignmentSameSide()
                     && (isSec && curParentForAlign >= 0
@@ -2367,7 +2360,6 @@ public final class LyricsPanelView extends FrameLayout
             if (!allowCopy) {
                 return false;
             }
-            // Share mode turns this long-press into line selection.
             if (Settings.LYRICS_LONG_PRESS_SHARE_MODE.get()) {
                 enterShareSelectionMode(mainIndex >= 0 ? mainIndex : lineIndex);
                 return true;
@@ -2637,6 +2629,11 @@ public final class LyricsPanelView extends FrameLayout
             if (sameContent || preserveHidePosition) {
                 restorePreservedScroll(preserveHidePosition ? preserveHideIndex : -1,
                         preserveScreenY);
+                if (!followState.isBrowsing() && primaryActiveIndex >= 0) {
+                    // The growth anchor keeps the old position; let the follow path re-anchor.
+                    followState.setLastScrollTarget(-1);
+                    scrollAnchorIntoView(primaryActiveIndex, true);
+                }
             } else {
                 followState.setProgrammaticScrolling(true);
                 scrollView.scrollTo(0, 0);
@@ -2932,7 +2929,9 @@ public final class LyricsPanelView extends FrameLayout
      */
     private void restorePreservedScroll(int preserveIndex, float preserveScreenY) {
         final int index = restoreAnchorIndex(preserveIndex);
-        final boolean preserved = index == preserveIndex && preserveIndex >= 0;
+        // Preserve a user-chosen position only while browsing; otherwise snap to the anchor.
+        final boolean preserved = index == preserveIndex && preserveIndex >= 0
+                && followState.isBrowsing();
         if (index >= 0 && index < lineRows.size()) {
             growthAnchorValid = true;
             growthAnchorIndex = index;
@@ -3374,7 +3373,7 @@ public final class LyricsPanelView extends FrameLayout
      * already been cleared, costing the row the surviving side was holding.
      */
     private void fallBackFromDualMode(boolean romanizeFailed) {
-        // A track change resets the mode but not the flags, so only they say what was claimed.
+        // A track switch resets the mode but not the four setting flags.
         final boolean dualClaimed = onlyModeState.mode() == OnlyModeState.Mode.BOTH
                 || Settings.LYRICS_TRANSLATE_ONLY.get() && Settings.LYRICS_ROMANIZE_ONLY.get();
         if (!dualClaimed) {
@@ -3727,7 +3726,6 @@ public final class LyricsPanelView extends FrameLayout
         updateSessionMainLine();
     }
 
-    /** Collects the environment values the pure state machine needs to decide a transition. */
     private OnlyModeState.Context modeContext(boolean romanizeFailed) {
         return new OnlyModeState.Context(
                 onlyModeState.mode(),
@@ -3743,7 +3741,6 @@ public final class LyricsPanelView extends FrameLayout
         applyModeEvent(event, false);
     }
 
-    /** Dispatches, commits the decided mode, then runs its effects in order. */
     private void applyModeEvent(OnlyModeState.Event event, boolean romanizeFailed) {
         final OnlyModeState.Transition transition =
                 onlyModeState.dispatch(event, modeContext(romanizeFailed));
@@ -3751,7 +3748,6 @@ public final class LyricsPanelView extends FrameLayout
         applyEffects(transition.effects());
     }
 
-    /** The single executor for all only-mode settings writes and UI refreshes. */
     private void applyEffects(List<OnlyModeEffect> effects) {
         for (OnlyModeEffect effect : effects) {
             if (effect instanceof OnlyModeEffect.Save save) {
@@ -4856,8 +4852,7 @@ public final class LyricsPanelView extends FrameLayout
             return -1;
         }
 
-        // Anchor the main text, not the row top. Ruby/reading regions sit above the main
-        // line, so aligning the row top would shift the text when their height changes.
+        // Ruby/reading sits above the main text; anchor that, not the row top.
         final int mainOffset = targetIndex < lineViews.size()
                 ? mainLineOffset(lineViews.get(targetIndex)) : 0;
 
@@ -4943,7 +4938,9 @@ public final class LyricsPanelView extends FrameLayout
     private void showJumpToCurrentButton() {
         if (lyrics == null || !lyrics.synced()) return;
         if (Settings.LYRICS_SHOW_CURRENT_BUTTON.get()) {
-            jumpToCurrentView.bringToFront();
+            if (jumpToCurrentView.getParent() == this) {
+                jumpToCurrentView.bringToFront();
+            }
             jumpToCurrentView.animate().cancel();
             if (jumpToCurrentView.getVisibility() != VISIBLE || jumpToCurrentView.getAlpha() != 1f) {
                 jumpToCurrentView.setAlpha(0f);
@@ -5353,7 +5350,6 @@ public final class LyricsPanelView extends FrameLayout
             LyricsManager manager = LyricsManager.getInstance();
             final long rawPos = manager.getPositionMs();
             final boolean hasPendingSeek = seekState.hasPendingSeek();
-            // A tapped line stays the position until the player has really moved there.
             final long pos = seekState.resolvePosition(rawPos, SystemClock.uptimeMillis());
             final long prevPos = seekState.livePosition();
             seekState.noteLivePosition(pos);
@@ -6236,16 +6232,20 @@ public final class LyricsPanelView extends FrameLayout
         normalizeButtonRowSpacing();
     }
 
-    /** One source of truth for button gaps: first child flush, every later child 12dp in. */
     void normalizeButtonRowSpacing() {
         int gap = Dim.dp12;
+        boolean firstShown = true;
         for (int i = 0; i < buttonRow.getChildCount(); i++) {
             View child = buttonRow.getChildAt(i);
             ViewGroup.LayoutParams raw = child.getLayoutParams();
             if (!(raw instanceof LinearLayout.LayoutParams params)) {
                 continue;
             }
-            int margin = i == 0 ? 0 : gap;
+            final boolean shown = child.getVisibility() != GONE;
+            final int margin = shown && !firstShown ? gap : 0;
+            if (shown) {
+                firstShown = false;
+            }
             params.leftMargin = margin;
             params.rightMargin = 0;
             params.setMarginStart(margin);

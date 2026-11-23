@@ -153,7 +153,6 @@ public final class LyricsManager {
     private volatile String dialogPreviewVideoId;
 
     private volatile State state = State.IDLE;
-    /** Pure position estimator; main-thread-confined, keeping the pause/resume grace states. */
     private final PlaybackClock clock = new PlaybackClock();
     private int temporaryOffsetMs = 0;
     private volatile boolean phase2Done;
@@ -268,17 +267,16 @@ public final class LyricsManager {
         }
     }
 
-    /** Seam retained for the existing unit tests. */
+    /** Test seam. */
     private static long correctSmoothEstimate(long currentSmoothMs, long reportedPositionMs) {
         return PlaybackClock.correctSmoothEstimate(currentSmoothMs, reportedPositionMs);
     }
 
-    /** Seam retained for the existing unit tests. */
+    /** Test seam. */
     static float calculateDriftSpeedFactor(long drift) {
         return PlaybackClock.calculateDriftSpeedFactor(drift);
     }
 
-    /** The track length clamps forward extrapolation; unbounded until a track is committed. */
     private long trackDurationMs() {
         final TrackInfo track = currentTrack;
         return track != null && track.durationSeconds() > 0
@@ -395,6 +393,11 @@ public final class LyricsManager {
 
     public void setTemporaryOffsetMs(int ms) {
         temporaryOffsetMs = ms;
+    }
+
+    /** Called after saved offsets are cleared so the in-session value is not written back. */
+    public void clearTemporaryOffsetMs() {
+        temporaryOffsetMs = 0;
     }
 
     /** Called from the panel when the track is about to change or to go away, not per drag frame. */

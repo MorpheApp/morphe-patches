@@ -14,7 +14,6 @@ import android.media.session.PlaybackState;
 import org.junit.Before;
 import org.junit.Test;
 
-/** Direct tests of the extracted position estimator, mirroring the manager-level pause-sync tests. */
 public class PlaybackClockTest {
 
     private static final long NO_DURATION = Long.MAX_VALUE;

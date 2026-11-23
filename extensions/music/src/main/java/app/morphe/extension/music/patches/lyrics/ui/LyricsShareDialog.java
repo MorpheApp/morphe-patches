@@ -446,16 +446,15 @@ final class LyricsShareDialog {
         modeSegmentTrack.addView(colorTab, segmentTabParams());
         modeSegmentTrack.addView(photoTab, segmentTabParams());
 
-        // Checkable layer options + distinct watermark toggle, all rendered as circular icons
         final ImageButton bgSwitch = hasBgOption
                 ? createOptionIcon(context,
-                        str("morphe_music_lyrics_share_layer_bg")) : null;
+                str("morphe_music_lyrics_share_layer_bg")) : null;
         final ImageButton romaSwitch = hasRomaOption
                 ? createOptionIcon(context,
-                        str("morphe_music_lyrics_share_layer_romaji")) : null;
+                str("morphe_music_lyrics_share_layer_romaji")) : null;
         final ImageButton transSwitch = hasTransOption
                 ? createOptionIcon(context,
-                        str("morphe_music_lyrics_share_layer_translate")) : null;
+                str("morphe_music_lyrics_share_layer_translate")) : null;
         final ImageButton brandSwitch = createOptionIcon(context,
                 str("morphe_music_lyrics_share_branding_logo"));
 

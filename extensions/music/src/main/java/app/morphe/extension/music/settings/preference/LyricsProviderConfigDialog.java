@@ -460,7 +460,6 @@ final class LyricsProviderConfigDialog {
             if (supported.length == 0) {
                 return;
             }
-            // Lead with the default tier so it can always be picked again after a change.
             final String[] efforts = new String[supported.length + 1];
             efforts[0] = "";
             System.arraycopy(supported, 0, efforts, 1, supported.length);

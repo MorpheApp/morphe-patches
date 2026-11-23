@@ -27,8 +27,6 @@ import app.morphe.extension.music.patches.lyrics.ui.OnlyModeEffect.UpdateRomaniz
 import app.morphe.extension.music.patches.lyrics.ui.OnlyModeEffect.UpdateTranslateLabel;
 import app.morphe.extension.music.patches.lyrics.ui.OnlyModeState.Event;
 import app.morphe.extension.music.patches.lyrics.ui.OnlyModeState.Mode;
-import app.morphe.extension.music.patches.lyrics.ui.OnlyModeState.SettingKey;
-import app.morphe.extension.music.patches.lyrics.ui.OnlyModeState.Side;
 
 public class OnlyModeStateTest {
 

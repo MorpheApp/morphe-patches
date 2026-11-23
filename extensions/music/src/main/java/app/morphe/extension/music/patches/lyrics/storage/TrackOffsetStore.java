@@ -41,6 +41,32 @@ public final class TrackOffsetStore {
     private TrackOffsetStore() {
     }
 
+    /** Bytes are not measured; clearing entries leaves the file. */
+    public record Stats(int items) {
+        public static final Stats EMPTY = new Stats(0);
+    }
+
+    public static Stats stats() {
+        SharedPreferences preferences = preferences();
+        if (preferences == null) {
+            return Stats.EMPTY;
+        }
+        int items = 0;
+        for (String key : preferences.getAll().keySet()) {
+            if (!KEY_ORDER.equals(key)) {
+                items++;
+            }
+        }
+        return new Stats(items);
+    }
+
+    public static void clear() {
+        SharedPreferences preferences = preferences();
+        if (preferences != null) {
+            preferences.edit().clear().apply();
+        }
+    }
+
     /** Safe on the main thread: only the first read of the file touches disk. */
     public static int get(@NonNull TrackInfo track) {
         SharedPreferences preferences = preferences();

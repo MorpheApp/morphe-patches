@@ -24,7 +24,6 @@ public class FollowStateTest {
         assertFalse(state.hasUserScrollGrace(5_000L));
         assertFalse(state.hasUserScrollGrace(5_001L));
 
-        // Browsing remains until explicitly left, even after the grace window expires.
         assertTrue(state.isUserScrolling(9_000L));
     }
 

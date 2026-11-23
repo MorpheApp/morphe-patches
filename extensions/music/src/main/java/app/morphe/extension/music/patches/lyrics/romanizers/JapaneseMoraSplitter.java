@@ -397,14 +397,7 @@ public final class JapaneseMoraSplitter {
         return out;
     }
 
-    /**
-     * Aligns a whole-line Japanese romanization across per-character or per-word slots
-     * ({@code ownWords}) by anchoring kana & Latin boundaries and splitting multi-mora tokens
-     * across Kanji + Okurigana runs.
-     *
-     * @return {@code AlignedChunk[]} of length {@code ownWords.length}, or {@code null} when the
-     * line is not Japanese or cannot be meaningfully aligned here.
-     */
+    /** @return one chunk per slot, or null when the line cannot be aligned. */
     @Nullable
     public static AlignedChunk[] alignJapaneseLineToSlots(
             String wholeRoman,

@@ -14,19 +14,14 @@ import java.util.List;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 
-/**
- * The translation/romanization only-mode state machine. Pure: every input (including the four
- * persisted settings values and whether fetched data has arrived) is passed in through
- * {@link Context}, and every output is an explicit ordered list of {@link OnlyModeEffect}s for
- * {@code LyricsPanelView} to execute. This class never touches Settings, views, or the network.
- */
+/** Translation/romanization only-mode state machine. */
 final class OnlyModeState {
 
-    public enum Mode { NONE, TRANS, ROMA, BOTH }
+    public enum Mode {NONE, TRANS, ROMA, BOTH}
 
-    enum SettingKey { TRANSLATE, TRANSLATE_ONLY, ROMANIZE, ROMANIZE_ONLY }
+    enum SettingKey {TRANSLATE, TRANSLATE_ONLY, ROMANIZE, ROMANIZE_ONLY}
 
-    enum Side { TRANSLATE, ROMANIZE }
+    enum Side {TRANSLATE, ROMANIZE}
 
     enum Event {
         ENTER_DUAL, EXIT_DUAL_KEEP, EXIT_DUAL_DROP,
@@ -34,7 +29,6 @@ final class OnlyModeState {
         HIDE_TRANSLATE, HIDE_ROMANIZE
     }
 
-    /** All decisions are made from these values; none of them is read from the environment here. */
     record Context(Mode current, boolean translateOnlyHeld, boolean romanizeOnlyHeld,
                    boolean hasTranslate, boolean hasRomanize, boolean dualPill,
                    boolean romanizeFailed) {
@@ -156,7 +150,6 @@ final class OnlyModeState {
         return requestId == romanizeRequestId;
     }
 
-    /** Bumps the generation so an in-flight answer is dropped; returns nothing to keep it pure. */
     void invalidateTranslate() {
         translateRequestId++;
         translateInProgress = false;
@@ -167,27 +160,22 @@ final class OnlyModeState {
         romanizeInProgress = false;
     }
 
-    /** Applies a decision: the returned mode becomes the single source of truth for the panel. */
     void commit(Transition transition) {
         requested = transition.mode();
     }
 
-    /** Commits a mode directly, for the interleaved paths whose side effects stay in the panel. */
     void commitMode(Mode mode) {
         requested = mode;
     }
 
-    /** Pure mode decision for a long-press that narrows to one side (interleaved callers). */
     Mode resolveNarrow(boolean translate, boolean hasData) {
         if (hasData) {
             return translate ? Mode.TRANS : Mode.ROMA;
         }
-        // With no data and no other normal side, the mode stays off while the request runs;
-        // the panel still rebuilds when the other side was disabled.
+        // No data: stay off while the request runs, but still let the panel rebuild.
         return Mode.NONE;
     }
 
-    /** Pure mode decision once an only-side's data has arrived or been restored. */
     Mode resolveOnly(boolean translate, boolean otherOnlyHeld) {
         if (otherOnlyHeld) {
             return Mode.BOTH;
@@ -279,13 +267,11 @@ final class OnlyModeState {
                 return new Transition(bothArrived ? Mode.BOTH : Mode.NONE, fx);
             }
             case TRACK_CHANGED -> {
-                // Track changes deliberately leave the four settings alone: a dual claim can
-                // survive a track switch and be recovered by DUAL_FAILED.
+                // Settings survive a track switch; DUAL_FAILED recovers a dual claim.
                 return new Transition(Mode.NONE, fx);
             }
             case HIDE_TRANSLATE, HIDE_ROMANIZE -> {
-                // The panel decides whether a button is being hidden at all; both release flags are
-                // captured before either mode changes, so the second side still releases as asked.
+                // Capture both release flags before either mode changes.
                 final boolean translate = event == Event.HIDE_TRANSLATE;
                 if (ctx.current() != Mode.NONE) {
                     final Transition cleared = dispatch(translate

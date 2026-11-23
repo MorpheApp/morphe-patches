@@ -101,7 +101,6 @@ public final class AppleMusicArtworkPatch {
 
     private static final List<WeakReference<AnimatedArtworkView>> extraArtworkViews = new ArrayList<>();
 
-    /** Notified on the main thread whenever the animated artwork of the current song changes. */
     public interface ArtworkFileListener {
         void onArtworkFileChanged(@Nullable File file);
     }

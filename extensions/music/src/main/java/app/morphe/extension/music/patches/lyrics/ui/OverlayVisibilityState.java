@@ -6,11 +6,7 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
-/**
- * Desired/observed visibility of the lyrics overlay. Pure holder: the panel reads the environment
- * and applies the resulting visibility to its views; this class only holds the short-lived cache
- * and the effective-visibility decision.
- */
+/** Desired/observed visibility of the lyrics overlay. */
 final class OverlayVisibilityState {
 
     private static final long OVERLAY_CACHE_TTL_MS = 300L;

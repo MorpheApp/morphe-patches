@@ -6,11 +6,7 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
-/**
- * Position/highlight seeking state of the lyrics panel. Pure holder: the panel decides when the
- * player is seeked and feeds the observed position back in; all decisions about how long a tapped
- * line stays authoritative live here.
- */
+/** Position/highlight seeking state of the lyrics panel. */
 final class SeekState {
 
     static final long BACKWARD_JUMP_MS = 600L;
@@ -44,7 +40,6 @@ final class SeekState {
         return seekPending;
     }
 
-    /** Clears the coarse "position changed" flag after it has been folded into a decision. */
     boolean consumeSeekPending() {
         final boolean wasPending = seekPending;
         seekPending = false;
@@ -59,7 +54,6 @@ final class SeekState {
         lastLivePosMs = posMs;
     }
 
-    /** A tapped line owns the position until the player reaches it (or the deadline passes). */
     void requestTappedSeek(long lyricSeekPosMs, long nowUptimeMs, int mainIndex) {
         seekPending = true;
         pendingSeekPosMs = Math.max(0L, lyricSeekPosMs);
@@ -76,7 +70,6 @@ final class SeekState {
         return pendingSeekMainIndex;
     }
 
-    /** Resolves a tapped-line wait against the observed position and returns the position to use. */
     long resolvePosition(long rawPosMs, long nowUptimeMs) {
         if (!hasPendingSeek()) {
             return rawPosMs;

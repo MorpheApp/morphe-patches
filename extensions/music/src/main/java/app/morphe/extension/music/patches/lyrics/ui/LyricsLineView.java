@@ -484,14 +484,6 @@ final class LyricsLineView extends TextView {
         return SECONDARY_CLOSED_SCALE + (1f - SECONDARY_CLOSED_SCALE) * fraction;
     }
 
-    /**
-     * Opens or closes a background vocal with spring scale/slide and opacity fade:
-     * - Enter: LyricsSpring(dampingRatio = 0.72f, stiffness = 460f) scale (0.80 -> 1.0) & slide,
-     * paired with a 10% delayed LinearOutSlowIn opacity fade (0 -> ACTIVE_BG_ALPHA) so the
-     * background vocal never overlaps the lead vocal while emerging.
-     * - Exit: negative-margin layout collapse so following lines glide immediately via FLIP,
-     * while opacity fades out over the first 50% of outMs and scale/slide collapse over outMs.
-     */
     private boolean ownsSecondaryExpansionAlpha() {
         return isSecondary && Settings.LYRICS_SPLIT_BACKGROUND.get();
     }

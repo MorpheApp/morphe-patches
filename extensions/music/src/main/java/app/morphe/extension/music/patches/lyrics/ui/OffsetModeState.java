@@ -8,10 +8,7 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import androidx.annotation.Nullable;
 
-/**
- * Offset-ruler and SponsorBlock-recording modes of the lyrics panel. Pure holder: ruler/handler
- * side effects stay in {@link LyricsPanelView}; only mode flags and their accumulated values move here.
- */
+/** Offset-ruler and SponsorBlock-recording modes of the lyrics panel. */
 final class OffsetModeState {
 
     private boolean offsetAdjusting;
@@ -54,7 +51,6 @@ final class OffsetModeState {
         offsetAdjusting = false;
     }
 
-    /** Returns true when this call actually hid the button row. */
     boolean hideButtonRowForOffset() {
         if (buttonRowHiddenForOffset) {
             return false;
@@ -63,7 +59,6 @@ final class OffsetModeState {
         return true;
     }
 
-    /** Returns true when this call actually restored the button row. */
     boolean restoreButtonRowAfterOffset() {
         if (!buttonRowHiddenForOffset) {
             return false;
@@ -94,7 +89,6 @@ final class OffsetModeState {
         return sbRecordStartMs;
     }
 
-    /** Ends a recording and returns its video id and start time before clearing them. */
     @Nullable
     Recording stopRecording() {
         if (!sbRecording) {

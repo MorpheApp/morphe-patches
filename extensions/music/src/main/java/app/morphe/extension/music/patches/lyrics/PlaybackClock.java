@@ -8,17 +8,10 @@ package app.morphe.extension.music.patches.lyrics;
 
 import android.media.session.PlaybackState;
 
-/**
- * Estimates the playback position between the few samples a second delivered by
- * {@code PlaybackState} and {@code VideoInformation}. Pure state holder: every input is passed in,
- * there are no listeners, threads of its own, or Android framework reads. The owning
- * {@link LyricsManager} remains responsible for calling it on the main thread and for applying
- * the SkipSegments/offset adjustments to the result.
- */
+/** Estimates playback position between coarse PlaybackState/VideoInformation samples. */
 final class PlaybackClock {
 
-    /** A video time sample this far ahead of the estimate is a seek, which the estimate jumps to
-     * instead of catching up with. So is a sample this far off after none came for a while. */
+    /** A far-ahead or late video sample is a seek, not drift. */
     private static final long SEEK_THRESHOLD_MS = 1000;
     /** A video time sample this far behind the estimate is a seek backwards. */
     private static final long BACKWARD_SEEK_THRESHOLD_MS = 500;
@@ -28,33 +21,26 @@ final class PlaybackClock {
     private static final long PLAYBACK_STATE_SEEK_THRESHOLD_MS = 1200;
     /** Playback state samples older than this no longer vouch for the estimate. */
     private static final long PLAYBACK_STALE_MS = 500;
-    /** A longer gap between two reads, such as after the app was in the background, is not
-     * extrapolated over. */
+    /** A long sampling gap is not extrapolated over. */
     private static final long MAX_EXTRAPOLATION_MS = 500;
-    /** Maximum duration to extrapolate forward without a confirming VideoInformation or
-     * PlaybackState progression. Prevents multi-second word-sync overshoot when PlaybackState
-     * lags behind audio pause. */
+    /** Caps extrapolation when PlaybackState lags audio pause, avoiding word-sync overshoot. */
     private static final long MAX_STALE_EXTRAPOLATION_MS = 1600;
     /** Grace window for delayed coarse MediaSession STATE_PAUSED after MedialibPlayer.pauseVideo(). */
     private static final long PAUSE_STATE_GRACE_MS = 3500;
     /** Grace window for delayed coarse MediaSession STATE_PLAYING after MedialibPlayer.playVideo(). */
     private static final long PLAY_STATE_GRACE_MS = 2500;
-    /** Extra tolerance for coarse MediaSession lag behind the frozen pause position during a
-     * pause transition. */
+    /** Tolerates coarse MediaSession lag behind the frozen pause position. */
     private static final long PAUSE_COARSE_LAG_TOLERANCE_MS = 1000;
     /** While playing, a video time sample this far ahead is jumped towards instead of caught up with. */
     private static final long VIDEO_TIME_CORRECTION_MS = 220;
-    /** While playing, a playback state sample this far ahead is jumped towards instead of caught
-     * up with. */
+    /** A playback-state sample this far ahead is jumped towards rather than caught up with. */
     private static final long PLAYBACK_STATE_CORRECTION_MS = 180;
     /** Drift within this is left alone. */
     private static final long DRIFT_DEADBAND_MS = 15;
     private static final float MIN_DRIFT_SPEED_FACTOR = 0.88f;
     private static final float MAX_DRIFT_SPEED_FACTOR = 1.18f;
 
-    // The position is sampled a few times a second and estimated in between on every read,
-    // so the highlight moves smoothly. Kept unrounded so extrapolating in small steps at a
-    // playback speed other than 1 does not add up rounding errors.
+    // Unrounded, so small extrapolation steps at non-1x speed do not accumulate rounding error.
     private double smoothPositionMs;
     private long lastSmoothUpdateUptimeMs;
     private long lastSampledPlaybackPosMs = -1;
@@ -62,17 +48,12 @@ final class PlaybackClock {
     private long lastPlaybackSampleUptimeMs;
     private float playbackSpeed = 1f;
     private float driftSpeedFactor = 1f;
-    /** Implicit state: PAUSED with a pending coarse STATE_PAUSED (PAUSE_GRACE) when true and
-     * still inside {@link #PAUSE_STATE_GRACE_MS}. */
     private boolean awaitingPausedPlaybackState;
     private long pausedAtUptimeMs;
-    /** Implicit state: PLAYING with a pending coarse STATE_PLAYING (RESUME_GRACE) when true and
-     * still inside {@link #PLAY_STATE_GRACE_MS}. */
     private boolean awaitingResumedPlaybackState;
     private long resumedAtUptimeMs;
     private boolean playing;
 
-    /** Carries the estimate forward by the time since it was last moved, while playing. */
     private void advanceSmoothPosition(long now, long durationMs) {
         if (playing && lastSmoothUpdateUptimeMs > 0 && now > lastSmoothUpdateUptimeMs) {
             final long maxUntil = lastPlaybackSampleUptimeMs > 0
@@ -91,7 +72,6 @@ final class PlaybackClock {
         lastSmoothUpdateUptimeMs = now;
     }
 
-    /** Pulls the estimate towards a sample, all the way when it is far off. */
     static long correctSmoothEstimate(long currentSmoothMs, long reportedPositionMs) {
         final double error = reportedPositionMs - currentSmoothMs;
         final double absError = Math.abs(error);
@@ -99,7 +79,6 @@ final class PlaybackClock {
         return Math.max(0L, Math.round(currentSmoothMs + error * factor));
     }
 
-    /** Proportional rate adjustment so smooth position catches up or slows down without step jumps. */
     static float calculateDriftSpeedFactor(long drift) {
         if (Math.abs(drift) <= DRIFT_DEADBAND_MS) {
             return 1.0f;
@@ -127,7 +106,6 @@ final class PlaybackClock {
         resumedAtUptimeMs = 0;
     }
 
-    /** Immediate pause: freezes extrapolation and arms the delayed coarse STATE_PAUSED grace. */
     void onPause(long now, long durationMs) {
         advanceSmoothPosition(now, durationMs);
         playing = false;
@@ -138,7 +116,6 @@ final class PlaybackClock {
         resumedAtUptimeMs = 0;
     }
 
-    /** Immediate resume: unfreezes extrapolation and arms the delayed coarse STATE_PLAYING grace. */
     void onPlay(long now, long durationMs) {
         advanceSmoothPosition(now, durationMs);
         playing = true;
@@ -150,12 +127,10 @@ final class PlaybackClock {
         pausedAtUptimeMs = 0;
     }
 
-    /** Applies a coarse MediaSession state update, consuming the two grace windows. */
     void applyPlaybackState(int state, long newPosition, float speed, long videoTime,
                             long now, long durationMs) {
         final boolean wasPlaying = playing;
         final boolean nowPlaying = state == PlaybackState.STATE_PLAYING;
-        // Up to now at the old state, so a pause keeps the time played since the last read.
         advanceSmoothPosition(now, durationMs);
 
         final boolean pauseGraceActive = awaitingPausedPlaybackState
@@ -189,19 +164,16 @@ final class PlaybackClock {
                     || (transitioned && isGenuineTransitionSeek)) {
                 smoothPositionMs = newPosition;
             } else if (transitioned) {
-                // The sample sent with a pause or a resume is coarse, and taking it would
-                // make the highlight step back on pause or lag behind on resume.
+                // A pause/resume sample is coarse; taking it would make the highlight jump.
                 if (!nowPlaying && videoTime >= 0 && Math.abs(videoTime - smoothMs)
                         <= PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS) {
-                    // Consume the matching lagging VideoInformation timestamp so the next
-                    // expectedPositionAt() tick does not re-trigger isPausedSeek.
+                    // Consume it so the next tick does not re-trigger isPausedSeek.
                     lastVideoTimeSample = videoTime;
                 }
             } else if (!nowPlaying && Math.abs(delta) > PAUSED_RESYNC_THRESHOLD_MS) {
                 smoothPositionMs = newPosition;
             } else if (nowPlaying && newPosition != lastSampledPlaybackPosMs) {
-                // While playing, a coarse sample may only pull the estimate forward, unless it
-                // is the only source of the position.
+                // While playing, a coarse sample may only pull the estimate forward.
                 if (videoTime < 0 || delta > PLAYBACK_STATE_CORRECTION_MS) {
                     smoothPositionMs = correctSmoothEstimate(smoothMs, newPosition);
                 } else {
@@ -212,14 +184,12 @@ final class PlaybackClock {
             lastPlaybackSampleUptimeMs = now;
         }
 
-        // A paused state reports speed zero, which would freeze the extrapolation even
-        // after playback resumes, so only positive speeds are kept.
+        // A paused state reports zero speed; keeping it would freeze later extrapolation.
         if (speed > 0) {
             playbackSpeed = speed;
         }
     }
 
-    /** Advances and re-anchors the estimate from a VideoInformation sample. */
     long expectedPositionAt(long videoTime, long now, long durationMs) {
         advanceSmoothPosition(now, durationMs);
 

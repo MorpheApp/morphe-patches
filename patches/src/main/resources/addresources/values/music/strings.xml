@@ -732,6 +732,12 @@ The first column is the word, the second its reading; extra columns and lines wi
     <string name="morphe_music_lyrics_cache_transliteration_category_title">Transliteration Cache</string>
     <string name="morphe_music_lyrics_cache_clear_transliteration_title">Clear Transliteration Cache</string>
     <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterations)</string>
+    <string name="morphe_music_lyrics_cache_ai_section_category_title">AI Section Cache</string>
+    <string name="morphe_music_lyrics_cache_clear_ai_section_title">Clear AI Section Cache</string>
+    <string name="morphe_music_lyrics_cache_ai_section_summary">%1$s MB (%2$s section sets)</string>
+    <string name="morphe_music_lyrics_cache_offset_category_title">Temporary Offset Cache</string>
+    <string name="morphe_music_lyrics_cache_clear_offset_title">Clear Temporary Offset Cache</string>
+    <string name="morphe_music_lyrics_cache_offset_summary">%2$s saved track offsets</string>
     <string name="morphe_music_lyrics_cache_total_category_title">Total Cache Usage</string>
     <string name="morphe_music_lyrics_cache_clear_all_title">Clear All Cache</string>
     <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d items)</string>
@@ -740,6 +746,9 @@ The first column is the word, the second its reading; extra columns and lines wi
     <string name="morphe_music_lyrics_cache_confirm_lyrics">Delete %1$s MB (%2$d songs) of cached lyrics kept on this device?</string>
     <string name="morphe_music_lyrics_cache_confirm_translation">Delete %1$s MB (%2$d translations) of cached translations kept on this device?</string>
     <string name="morphe_music_lyrics_cache_confirm_transliteration">Delete %1$s MB (%2$d transliterations) of cached transliterations kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_ai_section">Delete %1$s MB (%2$s section sets) of cached AI section labels kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_offset">Delete %2$s saved track offsets kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_offsets_cleared">Temporary offsets cleared</string>
     <string name="morphe_music_lyrics_cache_confirm_all">Delete %1$s MB (%2$d items) of all cached lyrics data kept on this device?</string>
     <string name="morphe_music_token_dialog_get_token">Get token</string>
     <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>

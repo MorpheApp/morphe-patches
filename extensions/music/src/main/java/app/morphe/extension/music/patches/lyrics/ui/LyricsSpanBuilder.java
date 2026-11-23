@@ -532,7 +532,6 @@ public final class LyricsSpanBuilder {
         return ScriptDetector.isLineRtl(text);
     }
 
-    // forceCenter comes from centered agents or mode; same-side mode clears it.
     public static Layout.Alignment resolveAlignment(boolean isRtl, boolean isRightAligned,
                                                     boolean forceCenter) {
         if (forceCenter || Settings.isAlignmentCenter()) {

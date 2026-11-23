@@ -6,10 +6,7 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
-/**
- * Follow/browsing state of the lyrics panel. Pure holder: follow-resume timers and view scrolling
- * stay in {@link LyricsPanelView}, only the mutually exclusive flags and their timestamps live here.
- */
+/** Follow/browsing flags of the lyrics panel. */
 final class FollowState {
 
     private boolean browsing;
@@ -54,7 +51,6 @@ final class FollowState {
         this.programmaticScrolling = programmaticScrolling;
     }
 
-    /** Called when the user drags or flings the scroll view; keeps following suppressed briefly. */
     void noteUserScroll(long untilUptimeMs) {
         userScrollUntilUptimeMs = untilUptimeMs;
         lastScrollTarget = -1;

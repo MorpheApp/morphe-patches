@@ -1252,6 +1252,8 @@ public final class LyricsCache {
         LYRICS,
         TRANSLATION,
         TRANSLITERATION,
+        AI_SECTION,
+        OFFSET,
         ALL
     }
 
@@ -1259,11 +1261,14 @@ public final class LyricsCache {
     }
 
     public record CacheStats(BucketStats lyrics, BucketStats translation,
-                             BucketStats transliteration) {
+                             BucketStats transliteration, BucketStats aiSection,
+                             BucketStats offset) {
         public BucketStats total() {
             return new BucketStats(
-                    lyrics.bytes() + translation.bytes() + transliteration.bytes(),
-                    lyrics.items() + translation.items() + transliteration.items());
+                    lyrics.bytes() + translation.bytes() + transliteration.bytes()
+                            + aiSection.bytes() + offset.bytes(),
+                    lyrics.items() + translation.items() + transliteration.items()
+                            + aiSection.items() + offset.items());
         }
 
         public BucketStats forBucket(CacheBucket bucket) {
@@ -1271,6 +1276,8 @@ public final class LyricsCache {
                 case LYRICS -> lyrics;
                 case TRANSLATION -> translation;
                 case TRANSLITERATION -> transliteration;
+                case AI_SECTION -> aiSection;
+                case OFFSET -> offset;
                 case ALL -> total();
             };
         }
@@ -1287,6 +1294,12 @@ public final class LyricsCache {
 
     /** Empties one cache bucket (or {@link CacheBucket#ALL}) and returns how many bytes were freed. */
     public static long clear(CacheBucket bucket) {
+        if (bucket == CacheBucket.OFFSET || bucket == CacheBucket.ALL) {
+            TrackOffsetStore.clear();
+        }
+        if (bucket == CacheBucket.OFFSET) {
+            return 0;
+        }
         long freed = 0;
         final File directory = offlineDirectory();
         final File[] files = directory == null ? null : directory.listFiles();
@@ -1369,6 +1382,8 @@ public final class LyricsCache {
         int translationItems = 0;
         long transliterationBytes = 0;
         int transliterationItems = 0;
+        long aiSectionBytes = 0;
+        int aiSectionItems = 0;
         final Set<String> seenPrefKeys = new HashSet<>();
 
         final File directory = offlineDirectory();
@@ -1403,15 +1418,22 @@ public final class LyricsCache {
                         transliterationBytes += len;
                         transliterationItems++;
                     }
+                    case AI_SECTION -> {
+                        aiSectionBytes += len;
+                        aiSectionItems++;
+                    }
                     default -> {
                     }
                 }
             }
         }
+        final TrackOffsetStore.Stats offsets = TrackOffsetStore.stats();
         return new CacheStats(
                 new BucketStats(lyricsBytes, lyricsItems),
                 new BucketStats(translationBytes, translationItems),
-                new BucketStats(transliterationBytes, transliterationItems));
+                new BucketStats(transliterationBytes, transliterationItems),
+                new BucketStats(aiSectionBytes, aiSectionItems),
+                new BucketStats(0, offsets.items()));
     }
 
     private static boolean isNotFoundFile(File file) {
@@ -1468,7 +1490,7 @@ public final class LyricsCache {
             return CacheBucket.TRANSLITERATION;
         }
         if (name.endsWith(".sec.txt")) {
-            return CacheBucket.LYRICS;
+            return CacheBucket.AI_SECTION;
         }
         if (name.contains(".trans.") || name.endsWith(".txt")) {
             return CacheBucket.TRANSLATION;

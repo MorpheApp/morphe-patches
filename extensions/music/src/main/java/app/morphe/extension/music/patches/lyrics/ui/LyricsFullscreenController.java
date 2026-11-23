@@ -33,6 +33,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.io.File;
+import java.util.Objects;
 
 import app.morphe.extension.music.patches.applemusicartwork.AppleMusicArtworkPatch;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
@@ -66,9 +67,17 @@ final class LyricsFullscreenController {
     private final ImageView artworkView;
     private final TextView titleView;
     private final TextView artistView;
-    @Nullable private LinearLayout trackInfo;
-    @Nullable private FrameLayout coverFrame;
+    @Nullable
+    private LinearLayout trackInfo;
+    @Nullable
+    private FrameLayout coverFrame;
     private boolean trackInfoVisible = true;
+    @Nullable
+    private String shownTitle;
+    @Nullable
+    private String shownArtist;
+    @Nullable
+    private Bitmap shownArtwork;
     private final AppleMusicArtworkPatch.ArtworkFileListener artworkFileListener =
             this::onArtworkFileChanged;
     private final View.OnTouchListener coverTouchListener = this::onCoverTouch;
@@ -77,23 +86,34 @@ final class LyricsFullscreenController {
     private long coverDownTime;
 
     private boolean isFullscreen;
-    @Nullable private ViewGroup originalParent;
+    @Nullable
+    private ViewGroup originalParent;
     private int originalIndex;
-    @Nullable private ViewGroup.LayoutParams originalParams;
-    @Nullable private LinearLayout splitRoot;
-    @Nullable private FrameLayout artPane;
+    @Nullable
+    private ViewGroup.LayoutParams originalParams;
+    @Nullable
+    private LinearLayout splitRoot;
+    @Nullable
+    private FrameLayout artPane;
     private int scrollOriginalIndex;
-    @Nullable private ViewGroup.LayoutParams scrollOriginalParams;
-    @Nullable private View animatedArtworkView;
-    @Nullable private ValueAnimator coverAnimator;
+    @Nullable
+    private ViewGroup.LayoutParams scrollOriginalParams;
+    @Nullable
+    private View animatedArtworkView;
+    @Nullable
+    private ValueAnimator coverAnimator;
     private boolean splitActive;
     private boolean controlsInRow;
-    @Nullable private ViewGroup buttonHome;
-    private int buttonHomeIndex;
-    @Nullable private ViewGroup.LayoutParams buttonHomeParams;
-    @Nullable private ViewGroup jumpHome;
-    private int jumpHomeIndex;
-    @Nullable private ViewGroup.LayoutParams jumpHomeParams;
+    @Nullable
+    private final ViewGroup buttonHome;
+    private final int buttonHomeIndex;
+    @Nullable
+    private final ViewGroup.LayoutParams buttonHomeParams;
+    @Nullable
+    private final ViewGroup jumpHome;
+    private final int jumpHomeIndex;
+    @Nullable
+    private final ViewGroup.LayoutParams jumpHomeParams;
 
     LyricsFullscreenController(LyricsPanelView panel) {
         this.panel = panel;
@@ -123,8 +143,7 @@ final class LyricsFullscreenController {
         params.leftMargin = Dim.dp16;
         panel.addView(button, params);
         button.bringToFront();
-        // Both controls live in the panel outside the split. Lock their home here so a toolbar
-        // rebuild can never strand them without a parent to return to on exit.
+        // Lock the floating buttons' home so a toolbar rebuild cannot strand them on exit.
         buttonHome = panel;
         buttonHomeIndex = panel.indexOfChild(button);
         buttonHomeParams = button.getLayoutParams();
@@ -152,11 +171,14 @@ final class LyricsFullscreenController {
 
     void showButton() {
         if (!Settings.LYRICS_SHOW_FULLSCREEN_BUTTON.get()) return;
-        button.bringToFront();
+        if (button.getParent() == panel) {
+            button.bringToFront();
+        }
         button.animate().cancel();
         if (button.getVisibility() == View.VISIBLE && button.getAlpha() == 1f) return;
         button.setAlpha(0f);
         button.setVisibility(View.VISIBLE);
+        if (controlsInRow) panel.normalizeButtonRowSpacing();
         button.animate().alpha(1f).setDuration(LyricsPanelView.JUMP_BUTTON_FADE_MS).start();
         if (isFullscreen) showToolbar();
     }
@@ -165,6 +187,7 @@ final class LyricsFullscreenController {
         button.animate().cancel();
         button.setAlpha(0f);
         button.setVisibility(View.GONE);
+        if (controlsInRow) panel.normalizeButtonRowSpacing();
         if (isFullscreen) hideToolbar();
     }
 
@@ -204,6 +227,20 @@ final class LyricsFullscreenController {
             } else if (animatedArtworkView == null) {
                 bindArtworkOverlay();
             }
+        }
+    }
+
+    /** Picks up metadata that lands after the lyrics did. */
+    void onTick() {
+        if (!isFullscreen || !splitActive) return;
+        LyricsManager manager = LyricsManager.getInstance();
+        String title = manager.getCurrentRawTitle();
+        String artist = manager.getCurrentRawArtist();
+        if (!Objects.equals(title, shownTitle) || !Objects.equals(artist, shownArtist)) {
+            refreshTrackInfo();
+        }
+        if (manager.getCurrentArtworkBitmap() != shownArtwork) {
+            updateArtwork();
         }
     }
 
@@ -277,22 +314,19 @@ final class LyricsFullscreenController {
         }
     }
 
-    /** Joins the fullscreen and jump buttons to the four-button toolbar so all six sit centred. */
     private void applyControlButtonsForSplit(boolean split) {
         if (split == controlsInRow) {
             return;
         }
         ViewGroup row = panel.getButtonRow();
         View jump = panel.getJumpButton();
+        detach(button);
+        detach(jump);
         if (split) {
-            if (button.getParent() instanceof ViewGroup parent) parent.removeView(button);
-            if (jump.getParent() instanceof ViewGroup parent) parent.removeView(jump);
             row.addView(button, 0, rowButtonParams(false));
             row.addView(jump, rowButtonParams(true));
             panel.normalizeButtonRowSpacing();
         } else {
-            if (button.getParent() instanceof ViewGroup parent) parent.removeView(button);
-            if (jump.getParent() instanceof ViewGroup parent) parent.removeView(jump);
             if (buttonHome != null) {
                 buttonHome.addView(button,
                         Math.min(buttonHomeIndex, buttonHome.getChildCount()), buttonHomeParams);
@@ -305,15 +339,23 @@ final class LyricsFullscreenController {
         controlsInRow = split;
     }
 
-    /** Re-inserts the two controls after the toolbar rebuilt its child buttons. */
     void onToolbarRebuilt() {
         if (!controlsInRow) {
             return;
         }
         ViewGroup row = panel.getButtonRow();
-        if (button.getParent() != row) row.addView(button, 0, rowButtonParams(false));
-        if (panel.getJumpButton().getParent() != row) row.addView(panel.getJumpButton(), rowButtonParams(true));
+        View jump = panel.getJumpButton();
+        detach(button);
+        detach(jump);
+        row.addView(button, 0, rowButtonParams(false));
+        row.addView(jump, rowButtonParams(true));
         panel.normalizeButtonRowSpacing();
+    }
+
+    private static void detach(@Nullable View view) {
+        if (view != null && view.getParent() instanceof ViewGroup parent) {
+            parent.removeView(view);
+        }
     }
 
     private static TextView createMarqueeText(
@@ -334,7 +376,6 @@ final class LyricsFullscreenController {
         return text;
     }
 
-    /** Builds the cover caption below the artwork, with a fading marquee for long names. */
     private LinearLayout buildTrackInfo() {
         LinearLayout info = new LinearLayout(panel.getContext());
         info.setOrientation(LinearLayout.VERTICAL);
@@ -349,11 +390,12 @@ final class LyricsFullscreenController {
         return info;
     }
 
-    /** Refreshes the caption from the current track and restarts the marquee with a fade/slide. */
     private void refreshTrackInfo() {
         LyricsManager manager = LyricsManager.getInstance();
         String title = manager.getCurrentRawTitle();
         String artist = manager.getCurrentRawArtist();
+        shownTitle = title;
+        shownArtist = artist;
         titleView.setText(title != null ? title : "");
         artistView.setText(artist != null ? artist : "");
         if (titleView.getVisibility() != View.VISIBLE && trackInfoVisible) {
@@ -374,7 +416,6 @@ final class LyricsFullscreenController {
                 .setDuration(LyricsPanelView.JUMP_BUTTON_FADE_MS).start();
     }
 
-    /** Vertical swipe shows or hides the caption; the centred stack re-centres the cover. */
     private void toggleTrackInfo() {
         if (trackInfo == null) {
             return;
@@ -418,7 +459,6 @@ final class LyricsFullscreenController {
         return params;
     }
 
-    /** Tap toggles playback; a horizontal swipe skips to the previous or next track. */
     private boolean onCoverTouch(View v, MotionEvent event) {
         panel.requestDisallowInterceptTouchEvent(true);
         switch (event.getActionMasked()) {
@@ -469,7 +509,7 @@ final class LyricsFullscreenController {
             root.setOrientation(LinearLayout.HORIZONTAL);
             scrollOriginalIndex = panel.indexOfChild(scroll);
             scrollOriginalParams = scroll.getLayoutParams();
-            panel.removeView(scroll);
+            detach(scroll);
             FrameLayout pane = new FrameLayout(panel.getContext());
             pane.setOnTouchListener(coverTouchListener);
             LinearLayout coverStack = new LinearLayout(panel.getContext());
@@ -478,6 +518,10 @@ final class LyricsFullscreenController {
             FrameLayout coverFrame = new FrameLayout(panel.getContext());
             coverFrame.setOutlineProvider(artOutline);
             coverFrame.setClipToOutline(true);
+            // Cover views are reused across rotations; clear any leftover parent first.
+            detach(artworkView);
+            detach(titleView);
+            detach(artistView);
             coverFrame.addView(artworkView, new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     FrameLayout.LayoutParams.WRAP_CONTENT,
@@ -510,7 +554,7 @@ final class LyricsFullscreenController {
             refreshTrackInfo();
             bindArtworkOverlay();
         } else {
-            // Tear down callbacks first, so a queued artwork notification cannot re-enter a half-dismantled split.
+            // Unregister first: a queued notification must not re-enter a half-dismantled split.
             splitActive = false;
             AppleMusicArtworkPatch.removeArtworkFileListener(artworkFileListener);
             unbindArtworkOverlay();
@@ -518,13 +562,18 @@ final class LyricsFullscreenController {
                 panel.removeView(splitRoot);
                 splitRoot.removeAllViews();
             }
+            if (artPane != null) artPane.removeAllViews();
+            // removeAllViews leaves the reused views parented to the discarded coverFrame.
+            detach(artworkView);
+            detach(titleView);
+            detach(artistView);
             titleView.setVisibility(View.GONE);
             artistView.setVisibility(View.GONE);
             trackInfo = null;
             coverFrame = null;
             artworkView.setVisibility(View.GONE);
-            if (artPane != null) artPane.removeAllViews();
             artPane = null;
+            detach(scroll);
             panel.addView(scroll, Math.min(scrollOriginalIndex, panel.getChildCount()),
                     scrollOriginalParams != null ? scrollOriginalParams : scroll.getLayoutParams());
             splitRoot = null;
@@ -570,6 +619,7 @@ final class LyricsFullscreenController {
 
     private void updateArtwork() {
         Bitmap artwork = LyricsManager.getInstance().getCurrentArtworkBitmap();
+        shownArtwork = artwork;
         if (artwork != null && !artwork.isRecycled()) {
             artworkView.setImageBitmap(artwork);
         } else {
@@ -641,11 +691,11 @@ final class LyricsFullscreenController {
         if (activity == null) return;
         int flags = hidden
                 ? View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                  | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                  | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                  | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                  | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 : 0;
         try {
             activity.getWindow().getDecorView().setSystemUiVisibility(flags);

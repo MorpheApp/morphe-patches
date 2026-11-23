@@ -22,11 +22,9 @@ public class SeekStateTest {
         assertEquals(7, state.pendingSeekMainIndex());
         assertEquals(30_000L, state.livePosition());
 
-        // Too early: still on the tapped line.
         assertEquals(30_000L, state.resolvePosition(29_000L, 1_100L));
         assertEquals(7, state.pendingSeekMainIndex());
 
-        // Player reached it: the wait ends and the observed position takes over.
         assertEquals(30_100L, state.resolvePosition(30_100L, 1_200L));
         assertFalse(state.hasPendingSeek());
         assertEquals(-1, state.pendingSeekMainIndex());
