@@ -307,6 +307,8 @@ public final class AmbientLightController {
     private static float[] lightSoft = new float[0];
     private static float[] lightScratch = new float[0];
     private static short[] halfFloats = new short[0];
+    /** Counts the lights in {@link #halfFloats}. Worker thread. */
+    private static int lightVersion;
     private static final Paint lightPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
     private static final Paint clearPaint = new Paint();
 
@@ -929,7 +931,7 @@ public final class AmbientLightController {
             if (surface != null) {
                 surface.setTranslationX(0f);
             } else {
-                surface = new LightSurface(root.getContext(), AmbientLightController::requestFrame);
+                surface = new LightSurface(root.getContext(), AmbientLightController::requestFrame, worker());
                 ((ViewGroup) root).addView(surface, 0, new FrameLayout.LayoutParams(root.getWidth(), root.getHeight()));
                 lightSurface = surface;
             }
@@ -1244,6 +1246,7 @@ public final class AmbientLightController {
             AmbientLightMath.fillAlpha(halfFloats);
         }
         AmbientLightMath.toHalfFloats(presentedLight, halfFloats);
+        lightVersion++;
         bitmap.copyPixelsFromBuffer(ShortBuffer.wrap(halfFloats));
         // A shader keeps the pixels the bitmap had when the shader was created.
         lightPaint.setShader(new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
@@ -1440,8 +1443,8 @@ public final class AmbientLightController {
         final int coverColor = coverAlpha << 24 | (pageColor & 0xFFFFFF);
         // A dimmed light shows what is under it. The bars of the player are not white on a light page.
         final int barColor = AmbientLightMath.luma(pageColor) < 128 ? pageColor : Color.BLACK;
-        final boolean drawn = surface.draw(lightPaint, current.regions(), scaleX, scaleY, LIGHT_COLUMNS,
-                current.gridHeight(), pageColor, barColor, coverColor);
+        final boolean drawn = surface.draw(lightPaint, halfFloats, lightVersion, current.regions(), scaleX, scaleY,
+                LIGHT_COLUMNS, current.gridHeight(), pageColor, barColor, coverColor);
         if (drawn && veiled) {
             shownBuffers = buffers;
             shownLayout = current;
