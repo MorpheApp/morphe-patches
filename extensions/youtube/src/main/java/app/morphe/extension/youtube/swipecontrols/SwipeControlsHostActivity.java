@@ -35,9 +35,11 @@ import app.morphe.extension.youtube.swipecontrols.controller.SwipeZonesControlle
 import app.morphe.extension.youtube.swipecontrols.controller.VolumeKeysController;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.ClassicSwipeController;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.PressToSwipeController;
+import app.morphe.extension.youtube.swipecontrols.controller.gesture.ReplaySwipeController;
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.GestureController;
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle;
 import app.morphe.extension.youtube.swipecontrols.views.SwipeControlsOverlayLayout;
+import app.morphe.extension.youtube.videoplayer.ReplayVideoButton;
 
 /**
  * The main controller for volume and brightness swipe controls.
@@ -96,6 +98,9 @@ public class SwipeControlsHostActivity extends Activity {
      */
     private GestureController gesture;
 
+    @Nullable
+    private ReplaySwipeController replayGesture;
+
     /**
      * Main volume keys controller.
      */
@@ -133,8 +138,26 @@ public class SwipeControlsHostActivity extends Activity {
     }
 
     @Override
+    protected void onStop() {
+        if (replayGesture != null) replayGesture.cancel();
+        super.onStop();
+    }
+
+    @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         ensureInitialized();
+        try {
+            if (Settings.REPLAY_VIDEO_BUTTON.get() && Settings.REPLAY_VIDEO_SWIPE.get()
+                    && ReplayVideoButton.isPatchIncluded()) {
+                if (replayGesture == null) replayGesture = new ReplaySwipeController(this);
+                if (replayGesture.submitTouchEvent(ev)) return true;
+            } else if (replayGesture != null) {
+                replayGesture.cancel();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Replay swipe failure", ex);
+            if (replayGesture != null) replayGesture.cancel();
+        }
         if (gesture.submitTouchEvent(ev)) {
             // The consumed event does not reach Activity.dispatchTouchEvent, which reports the
             // user interaction. Without it YouTube thinks the user is idle and stops the autoplay
@@ -167,6 +190,12 @@ public class SwipeControlsHostActivity extends Activity {
     @SuppressWarnings("UnusedReturnValue")
     public boolean dispatchDownstreamTouchEvent(MotionEvent event) {
         return super.dispatchTouchEvent(event);
+    }
+
+    /** Cancels the existing detectors once a replay swipe owns the touch sequence. */
+    public void cancelTouchGestures(MotionEvent canceled) {
+        gesture.submitTouchEvent(canceled);
+        super.dispatchTouchEvent(canceled);
     }
 
     @Nullable

@@ -14,6 +14,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.interaction.swipecontrols.swipeControlsPatch
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
@@ -29,6 +30,7 @@ import app.morphe.patches.youtube.video.information.SeekFingerprint
 import app.morphe.patches.youtube.video.information.SeekRelativeFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/videoplayer/ReplayVideoButton;"
 
@@ -44,14 +46,17 @@ val replaySlowerPatch = patch(
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
+        swipeControlsPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
         addPlayerOverlayPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_replay_video_button", summary = true),
+                SwitchPreference("morphe_replay_video_swipe", summary = true),
                 NonInteractivePreference(
                     "morphe_replay_video_seconds",
                     tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",

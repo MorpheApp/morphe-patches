@@ -1382,6 +1382,9 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <!-- video.speed.replay.replayVideoPatch -->
     <string name="morphe_replay_video_button_title">Show Replay slower button</string>
     <string name="morphe_replay_video_button_summary">Rewinds and temporarily slows down the video. Tap again to cancel</string>
+    <string name="morphe_replay_video_swipe_title">Swipe left to replay slower</string>
+    <string name="morphe_replay_video_swipe_summary">Swipe left over the video to choose a rewind of 1-10 seconds. Existing seek and top-zone gestures take priority</string>
+    <string name="morphe_replay_video_swipe_preview">Replay %s s</string>
     <string name="morphe_replay_video_seconds_title">Rewind duration</string>
     <string name="morphe_replay_video_seconds_summary">How many seconds the video rewinds</string>
     <string name="morphe_replay_video_slow_seconds_title">Slow playback duration</string>

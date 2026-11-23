@@ -18,8 +18,10 @@ public class ReplayVideoControllerTest {
         boolean speedChangeAvailable = true;
         boolean failSeek;
         boolean failAfterChangingSpeed;
+        boolean queueSpeedEvents;
         long seekTarget = -1;
         List<Float> changes = new ArrayList<>();
+        List<Float> speedEvents = new ArrayList<>();
         ReplayVideoController replay = new ReplayVideoController(this);
 
         @Override public String videoId() { return id; }
@@ -39,12 +41,19 @@ public class ReplayVideoControllerTest {
         @Override public void changeSpeed(float speed) {
             if (!speedChangeAvailable) return;
             changes.add(speed);
-            replay.onSpeedChanged(speed);
             this.speed = speed;
+            if (queueSpeedEvents) speedEvents.add(speed);
+            else replay.onSpeedChanged(speed);
             if (failAfterChangingSpeed) {
                 failAfterChangingSpeed = false;
                 throw new IllegalStateException("Speed change failed after applying");
             }
+        }
+
+        void deliverSpeedEvents() {
+            List<Float> pending = new ArrayList<>(speedEvents);
+            speedEvents.clear();
+            pending.forEach(replay::onSpeedChanged);
         }
     }
 
@@ -63,6 +72,87 @@ public class ReplayVideoControllerTest {
         assertEquals(List.of(1.0f, 2.5f), p.changes);
         p.replay.tick();
         assertEquals(2, p.changes.size());
+    }
+
+    @Test public void swipeSelectedRewindKeepsTheIndependentSlowDuration() {
+        Player p = new Player();
+        assertTrue(p.replay.start(10000, 2000, 1));
+        assertEquals(50000, p.position);
+        p.position = 51999;
+        p.replay.tick();
+        assertEquals(1, p.speed, 0);
+        p.position = 52000;
+        p.replay.tick();
+        assertEquals(2, p.speed, 0);
+        assertFalse(p.replay.isActive());
+    }
+
+    @Test public void anotherSwipeCanRestoreThenRestartWithoutLosingTheOriginalSpeed() {
+        Player p = new Player();
+        p.speed = 2.5f;
+        assertTrue(p.replay.start(4000, 2000, 1));
+        p.position = 57000;
+        p.replay.cancel(true);
+        assertTrue(p.replay.start(1000, 2000, 1));
+        assertEquals(56000, p.position);
+        p.position = 58000;
+        p.replay.tick();
+        assertEquals(2.5f, p.speed, 0);
+        assertEquals(List.of(1.0f, 2.5f, 1.0f, 2.5f), p.changes);
+    }
+
+    @Test public void repeatedSwipesKeepOneOriginalSpeedWithoutIntermediateRestores() {
+        Player p = new Player();
+        p.speed = 2.5f;
+        assertTrue(p.replay.start(4000, 2000, 1));
+        p.position = 57000;
+        assertTrue(p.replay.start(1000, 2000, 1));
+        p.position = 56500;
+        assertTrue(p.replay.start(3000, 2000, 1));
+        assertEquals(53500, p.seekTarget);
+        p.position = 55499;
+        p.replay.tick();
+        assertEquals(1, p.speed, 0);
+        p.position = 55500;
+        p.replay.tick();
+        assertFalse(p.replay.isActive());
+        assertEquals(2.5f, p.speed, 0);
+        assertEquals(List.of(1.0f, 2.5f), p.changes);
+    }
+
+    @Test public void delayedOldSpeedEventsDoNotCancelTheNextReplay() {
+        Player p = new Player();
+        p.queueSpeedEvents = true;
+        assertTrue(p.replay.start(4000, 2000, 1));
+        p.deliverSpeedEvents();
+        p.replay.cancel(true);
+        assertTrue(p.replay.start(1000, 2000, 1));
+        // The old restore notification arrives after the next replay is already slow.
+        p.deliverSpeedEvents();
+        assertTrue(p.replay.isActive());
+        p.position += 2000;
+        p.replay.tick();
+        assertEquals(2, p.speed, 0);
+    }
+
+    @Test public void aFailedRepeatedSeekRestoresTheOriginalSpeed() {
+        Player p = new Player();
+        assertTrue(p.replay.start(4000, 2000, 1));
+        p.seekSucceeds = false;
+        assertFalse(p.replay.start(1000, 2000, 1));
+        assertFalse(p.replay.isActive());
+        assertEquals(2, p.speed, 0);
+    }
+
+    @Test public void aManualSpeedChoiceBetweenSwipesBecomesTheNewOriginalSpeed() {
+        Player p = new Player();
+        assertTrue(p.replay.start(4000, 2000, 1));
+        p.replay.onUserSelectedSpeed();
+        p.changeSpeed(1.5f);
+        assertTrue(p.replay.start(1000, 2000, 1));
+        p.position += 2000;
+        p.replay.tick();
+        assertEquals(1.5f, p.speed, 0);
     }
 
     @Test public void clampsRewindAtTheStartOfTheVideo() {

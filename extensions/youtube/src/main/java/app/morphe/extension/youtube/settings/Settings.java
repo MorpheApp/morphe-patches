@@ -377,6 +377,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DO_NOT_REMEMBER_LOOP_VIDEO = new BooleanSetting("morphe_do_not_remember_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));
     public static final BooleanSetting MUTE_VIDEO_BUTTON = new BooleanSetting("morphe_mute_video_button", FALSE, true);
     public static final BooleanSetting REPLAY_VIDEO_BUTTON = new BooleanSetting("morphe_replay_video_button", FALSE, true);
+    public static final BooleanSetting REPLAY_VIDEO_SWIPE = new BooleanSetting("morphe_replay_video_swipe", TRUE, parent(REPLAY_VIDEO_BUTTON));
     public static final IntegerSetting REPLAY_VIDEO_SECONDS = new IntegerSetting("morphe_replay_video_seconds", 4, parent(REPLAY_VIDEO_BUTTON));
     public static final IntegerSetting REPLAY_VIDEO_SLOW_SECONDS = new IntegerSetting("morphe_replay_video_slow_seconds", 3, parent(REPLAY_VIDEO_BUTTON));
     public static final FloatSetting REPLAY_VIDEO_SPEED = new FloatSetting("morphe_replay_video_speed", 0.5f, parent(REPLAY_VIDEO_BUTTON));

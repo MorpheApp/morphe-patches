@@ -23,6 +23,7 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.speed.ReplayVideoController;
+import app.morphe.extension.youtube.patches.playback.speed.ReplaySwipeGesture;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
@@ -77,6 +78,11 @@ public final class ReplayVideoButton {
     private static boolean observersAdded;
 
     private static boolean positionCheckScheduled;
+
+    /** Injection point, set when the replay patch is included. */
+    public static boolean isPatchIncluded() {
+        return false;
+    }
 
     /**
      * Injection point.
@@ -198,23 +204,31 @@ public final class ReplayVideoButton {
                 controller.cancel(true);
                 return;
             }
-            if (!isAvailable()) return;
-
-            float speed = Settings.REPLAY_VIDEO_SPEED.get();
-            if (speed <= 0 || speed > VideoInformation.PLAYBACK_SPEED_MAXIMUM) {
-                Utils.showToastLong(str("morphe_replay_video_speed_invalid"));
-                speed = Settings.REPLAY_VIDEO_SPEED.resetToDefault();
-            }
-
-            addObservers();
-            final long rewindMs = SeekBarPreference.clampToRange(Settings.REPLAY_VIDEO_SECONDS) * 1000L;
-            final long slowPlaybackMs = SeekBarPreference.clampToRange(Settings.REPLAY_VIDEO_SLOW_SECONDS) * 1000L;
-            if (controller.start(rewindMs, slowPlaybackMs, speed)) {
-                schedulePositionCheck();
-            } else {
-                Utils.showToastShort(str("morphe_replay_video_unavailable"));
-            }
+            startReplay(SeekBarPreference.clampToRange(Settings.REPLAY_VIDEO_SECONDS));
         });
+    }
+
+    /** Starts a new replay with the duration selected by the completed leftward swipe. */
+    public static void replayFromSwipe(int rewindSeconds) {
+        if (!Settings.REPLAY_VIDEO_BUTTON.get() || !Settings.REPLAY_VIDEO_SWIPE.get()) return;
+        if (rewindSeconds < 1 || rewindSeconds > ReplaySwipeGesture.MAX_REWIND_SECONDS) return;
+        runAction(() -> startReplay(rewindSeconds));
+    }
+
+    private static void startReplay(int rewindSeconds) {
+        if (!isAvailable()) return;
+        float speed = Settings.REPLAY_VIDEO_SPEED.get();
+        if (!(speed > 0 && speed <= VideoInformation.PLAYBACK_SPEED_MAXIMUM)) {
+            Utils.showToastLong(str("morphe_replay_video_speed_invalid"));
+            speed = Settings.REPLAY_VIDEO_SPEED.resetToDefault();
+        }
+        addObservers();
+        final long slowPlaybackMs = SeekBarPreference.clampToRange(Settings.REPLAY_VIDEO_SLOW_SECONDS) * 1000L;
+        if (controller.start(rewindSeconds * 1000L, slowPlaybackMs, speed)) {
+            schedulePositionCheck();
+        } else {
+            Utils.showToastShort(str("morphe_replay_video_unavailable"));
+        }
     }
 
     private static void schedulePositionCheck() {

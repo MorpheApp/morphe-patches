@@ -52,40 +52,39 @@ public final class ReplayVideoController {
     }
 
     public boolean start(long rewindMs, long slowPlaybackMs, float requestedSpeed) {
-        if (active || rewindMs <= 0 || slowPlaybackMs <= 0 || !validSpeed(requestedSpeed)) return false;
+        if (rewindMs <= 0 || slowPlaybackMs <= 0 || !validSpeed(requestedSpeed)) return false;
 
         final long position = player.position();
         final float speed = player.speed();
         String id = player.videoId();
         if (position <= 0 || id.isEmpty() || !validSpeed(speed)) return false;
 
+        final boolean restarting = active && videoId.equals(id) && speed == replaySpeed;
         videoId = id;
         rewindFromPosition = position;
         slowDurationMs = slowPlaybackMs;
-        originalSpeed = speed;
-        // A replay must not speed up a video that is already slower than the setting.
-        replaySpeed = Math.min(requestedSpeed, speed);
+        // Repeated swipes keep the speed saved before the first rewind.
+        if (!restarting) originalSpeed = speed;
+        replaySpeed = Math.min(requestedSpeed, originalSpeed);
         seekStarted = player.elapsedRealtime();
         rewindObserved = false;
         active = true;
         applyingChange = true;
+        boolean started = false;
         try {
-            if (!player.seekTo(Math.max(0, position - rewindMs))) {
-                active = false;
-                return false;
-            }
-            player.changeSpeed(replaySpeed);
-            if (player.speed() != replaySpeed) {
-                cancel(true);
-                return false;
-            }
+            if (!player.seekTo(Math.max(0, position - rewindMs))) return false;
+            if (player.speed() != replaySpeed) player.changeSpeed(replaySpeed);
+            if (player.speed() != replaySpeed) return false;
             observeRewind(player.position());
+            started = true;
             return true;
-        } catch (RuntimeException ex) {
-            cancel(true);
-            throw ex;
         } finally {
             applyingChange = false;
+            if (!started) {
+                // A failed restart may still be playing at the previous replay speed.
+                if (restarting && player.speed() == speed) replaySpeed = speed;
+                cancel(true);
+            }
         }
     }
 
@@ -137,7 +136,8 @@ public final class ReplayVideoController {
     }
 
     public void onSpeedChanged(float speed) {
-        if (!applyingChange && active && speed != replaySpeed) cancel(false);
+        // An older queued notification must not cancel the current replay.
+        if (!applyingChange && active && speed != replaySpeed && player.speed() == speed) cancel(false);
     }
 
     public void cancel(boolean restoreSpeed) {
