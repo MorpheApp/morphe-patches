@@ -61,6 +61,18 @@
         <item>HIDE</item>
     </string-array>
 
+    <!-- layout.collapseall.collapseAllCommentsPatch -->
+    <string-array name="morphe_collapse_all_comments_scope_entries">
+        <item>@string/morphe_collapse_all_comments_scope_entry_all</item>
+        <item>@string/morphe_collapse_all_comments_scope_entry_replies</item>
+        <item>@string/morphe_collapse_all_comments_scope_entry_deep</item>
+    </string-array>
+    <string-array name="morphe_collapse_all_comments_scope_entry_values" translatable="false">
+        <item>ALL</item>
+        <item>REPLIES</item>
+        <item>DEEP</item>
+    </string-array>
+
     <!-- misc.privatebrowsing.privateBrowsingModePatch -->
     <string-array name="morphe_private_browsing_mode_entries">
         <item>@string/morphe_private_browsing_mode_entry_default</item>

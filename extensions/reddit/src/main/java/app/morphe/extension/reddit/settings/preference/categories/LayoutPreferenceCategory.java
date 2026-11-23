@@ -13,6 +13,7 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch;
+import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch;
 import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
@@ -92,6 +93,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 FullScreenReplyPatch.isPatchIncluded() ||
                 AutoModeratorCommentsPatch.isPatchIncluded() ||
+                CollapseAllCommentsPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
                 FeedAutoScrollPatch.isPatchIncluded() ||
@@ -314,6 +316,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.AUTOMODERATOR_COMMENTS
+            ));
+        }
+
+        if (CollapseAllCommentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COLLAPSE_ALL_COMMENTS
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.COLLAPSE_ALL_COMMENTS_SCOPE
             ));
         }
 

@@ -257,6 +257,14 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_automoderator_comments_entry_show">Show</string>
     <string name="morphe_automoderator_comments_entry_collapse">Collapse</string>
     <string name="morphe_automoderator_comments_entry_hide">Hide</string>
+    <string name="morphe_collapse_all_comments_title">Collapse all comments button</string>
+    <string name="morphe_collapse_all_comments_summary">A button next to the comment count of a post collapses or expands all comments</string>
+    <string name="morphe_collapse_all_comments_scope_title">What the button collapses</string>
+    <string name="morphe_collapse_all_comments_scope_summary">All comments folds every thread to its top comment. Replies only keeps top-level comments open. Deep replies also keeps direct replies open</string>
+    <string name="morphe_collapse_all_comments_scope_entry_all">All comments</string>
+    <string name="morphe_collapse_all_comments_scope_entry_replies">Replies only</string>
+    <string name="morphe_collapse_all_comments_scope_entry_deep">Deep replies</string>
+    <string name="morphe_collapse_all_comments_button">Collapse or expand all comments</string>
     <string name="morphe_remember_collapsed_comments_title">Remember collapsed comments</string>
     <string name="morphe_remember_collapsed_comments_summary">Comments you collapse stay collapsed when you reopen the post</string>
     <string name="morphe_app_icon_title">App icon</string>
