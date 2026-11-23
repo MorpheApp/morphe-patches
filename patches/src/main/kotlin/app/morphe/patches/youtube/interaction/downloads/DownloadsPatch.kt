@@ -319,7 +319,9 @@ val downloadsPatch = patch(
                         if-eqz p0, :keep_player_response
                         invoke-interface { p0 }, $playerResponseModelType->${playerResponseGetter.name}()$playerResponseType
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;)[B
+                        # The storyboards are the seekbar thumbnails of the saved video.
+                        const/4 v1, 0x1
+                        invoke-static { v0, v1 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;Z)[B
                         move-result-object v0
                         if-eqz v0, :keep_player_response
 
