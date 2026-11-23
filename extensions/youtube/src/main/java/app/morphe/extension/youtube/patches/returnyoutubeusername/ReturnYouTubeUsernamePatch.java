@@ -11,6 +11,8 @@ import android.text.BidiFormatter;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -89,9 +91,11 @@ public final class ReturnYouTubeUsernamePatch {
      * Injection point.
      * <p>
      * Called when a Litho text is created or reused, on the main thread or the layout thread.
+     * The text can be null.
      */
-    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence original) {
-        if (!ENABLED) {
+    @Nullable
+    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, @Nullable CharSequence original) {
+        if (!ENABLED || original == null) {
             return original;
         }
         try {
