@@ -172,6 +172,18 @@ val showFlairsInHomeFeedPatch = patch(
         val (sectionLinkIdField, sectionSectionsField, sectionUniqueIdField, sectionIdentifierField) =
             FeedPostSectionConstructorFingerprint.instructionMatches.map { it.fieldReference }
 
+        // A classic post shows its flairs inside the classic post section, not in a flairs section.
+        val classicSectionType = ClassicPostSectionToStringFingerprint.classDef.type
+        val classicSectionElementField =
+            ClassicPostSectionConstructorFingerprint.instructionMatches.first().fieldReference
+        val classicElementFlairsField =
+            ClassicPostElementConstructorFingerprint.instructionMatches.first().fieldReference
+        val flairsElementFlairsField = PostFlairsElementConstructorFingerprint.let {
+            // The Flair filters patch also hooks this method.
+            it.clearMatch()
+            it.instructionMatches.last().fieldReference
+        }
+
         FeedPostSectionToStringFingerprint.classDef.addCachedPostMethods(
             linkIdField = sectionLinkIdField,
             addHomeFlairSmali = """
@@ -199,6 +211,21 @@ val showFlairsInHomeFeedPatch = patch(
                 move-result-object v5
                 instance-of v4, v5, $flairsSectionType
                 if-nez v4, :return
+
+                # Feeds with flair data, such as subreddit feeds, show the flairs of classic posts.
+                instance-of v4, v5, $classicSectionType
+                if-eqz v4, :copy_section
+                move-object v7, v5
+                check-cast v7, $classicSectionType
+                iget-object v7, v7, $classicSectionElementField
+                iget-object v7, v7, $classicElementFlairsField
+                if-eqz v7, :copy_section
+                iget-object v7, v7, $flairsElementFlairsField
+                invoke-interface { v7 }, Ljava/util/Collection;->isEmpty()Z
+                move-result v4
+                if-eqz v4, :return
+
+                :copy_section
                 invoke-virtual { v2, v5 }, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
                 instance-of v4, v5, $titleSectionType
                 if-eqz v4, :copy_sections
