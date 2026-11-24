@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group
+                android:name="ghost_off_group"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="@android:color/transparent"
+                    android:strokeAlpha="0.75"
+                    android:strokeColor="@android:color/white"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round"
+                    android:strokeWidth="2.0"
+                    android:pathData="M12,3.2C7.8,3.2 4.4,6.6 4.4,10.8v8.0c0,0.56 0.64,0.88 1.08,0.54L7.5,17.8c0.33,-0.26 0.8,-0.26 1.13,0l1.8,1.42c0.33,0.26 0.8,0.26 1.14,0l1.8,-1.42c0.33,-0.26 0.8,-0.26 1.13,0l2.02,1.54c0.44,0.34 1.08,0.02 1.08,-0.54v-8.0C19.6,6.6 16.2,3.2 12,3.2z" />
+                <path
+                    android:fillColor="@android:color/transparent"
+                    android:strokeAlpha="0.75"
+                    android:strokeColor="@android:color/white"
+                    android:strokeLineCap="round"
+                    android:strokeWidth="1.75"
+                    android:pathData="M8.5,11.2c0.45,0.6 1.35,0.6 1.8,0M13.7,11.2c0.45,0.6 1.35,0.6 1.8,0" />
+                <path
+                    android:fillColor="@android:color/transparent"
+                    android:strokeAlpha="0.92"
+                    android:strokeColor="@android:color/white"
+                    android:strokeLineCap="round"
+                    android:strokeWidth="2.1"
+                    android:pathData="M3.5,20.5L20.5,3.5" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="ghost_off_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="260"
+                    android:valueFrom="0"
+                    android:valueTo="0">
+                    <propertyValuesHolder android:propertyName="rotation">
+                        <keyframe android:fraction="0.0" android:value="0" />
+                        <keyframe android:fraction="0.3" android:value="-8" />
+                        <keyframe android:fraction="0.65" android:value="6" />
+                        <keyframe android:fraction="1.0" android:value="0" />
+                    </propertyValuesHolder>
+                </objectAnimator>
+                <objectAnimator
+                    android:propertyName="translateY"
+                    android:duration="260"
+                    android:valueFrom="0"
+                    android:valueTo="0">
+                    <propertyValuesHolder android:propertyName="translateY">
+                        <keyframe android:fraction="0.0" android:value="0" />
+                        <keyframe android:fraction="0.4" android:value="1.4" />
+                        <keyframe android:fraction="1.0" android:value="0" />
+                    </propertyValuesHolder>
+                </objectAnimator>
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
