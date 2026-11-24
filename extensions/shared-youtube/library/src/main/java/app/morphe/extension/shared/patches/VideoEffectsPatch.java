@@ -55,7 +55,7 @@ public final class VideoEffectsPatch {
     private static final long TIME_WRAP_MILLISECONDS = 600_000;
 
     /**
-     * Name of the view type that the OpenGL renderer draws on.
+     * Name of the only video view type that the OpenGL renderer draws on.
      */
     private static final String SURFACE_VIEW_TYPE = "SURFACE";
 
@@ -731,8 +731,8 @@ public final class VideoEffectsPatch {
 
     /**
      * Injection point.
-     * The server can draw videos without DRM on a secure surface view, which the renderer does not draw on.
-     * Videos with DRM still use a secure surface view, as the app picks it for them before.
+     * Server configs can draw videos without DRM on a secure surface view.
+     * Videos with DRM still get a secure surface view, as the app picks it before this check.
      */
     public static boolean useSecureSurfaceView(boolean original) {
         return original && !isEnabled();
@@ -740,17 +740,17 @@ public final class VideoEffectsPatch {
 
     /**
      * Injection point.
-     * A/B tests can draw videos on other surface views than the one the renderer draws on.
+     * A/B tests can draw videos on a GL or dual surface view.
      *
-     * @param viewType Type of the view that an A/B test picked to draw the video on.
+     * @param viewType GL or dual surface view type.
      */
-    public static <T extends Enum<T>> T getMediaViewType(T viewType) {
+    public static <T extends Enum<T>> T getVideoViewType(T viewType) {
         try {
             if (isEnabled()) {
                 return Enum.valueOf(viewType.getDeclaringClass(), SURFACE_VIEW_TYPE);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "getMediaViewType failure", ex);
+            Logger.printException(() -> "getVideoViewType failure", ex);
         }
         return viewType;
     }
