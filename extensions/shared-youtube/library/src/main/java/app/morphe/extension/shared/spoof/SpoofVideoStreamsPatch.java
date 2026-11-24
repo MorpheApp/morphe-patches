@@ -489,7 +489,7 @@ public class SpoofVideoStreamsPatch {
 
             if (isOfflinePlayerResponse(videoId, playerProto)) {
                 Logger.printDebug(() -> "Not overriding streaming data (saved offline video): " + videoId);
-                StreamingDataRequest.setPlayerClient(videoId, null);
+                StreamingDataRequest.setPlayerStream(videoId, null);
                 return null;
             }
 
@@ -497,14 +497,14 @@ public class SpoofVideoStreamsPatch {
             // and a video that is saved plays with the streams of its own player response.
             if (!Utils.isNetworkConnected()) {
                 Logger.printDebug(() -> "Not overriding streaming data (network is not connected): " + videoId);
-                StreamingDataRequest.setPlayerClient(videoId, null);
+                StreamingDataRequest.setPlayerStream(videoId, null);
                 return null;
             }
 
             try {
                 var buffers = StreamingDataRequest.getOrFetchRequest(videoId).getStream();
                 // The player chooses SABR from the client of the streams it is given for this video.
-                StreamingDataRequest.setPlayerClient(videoId, buffers == null ? null : buffers.client());
+                StreamingDataRequest.setPlayerStream(videoId, buffers);
                 if (buffers != null) {
                     byte[] stream = buffers.streamingData();
                     Logger.printDebug(() -> "Overriding video stream: " + videoId
