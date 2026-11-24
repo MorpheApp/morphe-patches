@@ -1,3 +1,15 @@
+## [2.4.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.10...v2.4.0-dev.11) (2026-11-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Ghost mode:** Toolbar button overlaps the wide search bar and voice search button ([934fc0d](https://github.com/MorpheApp/morphe-patches/commit/934fc0d29f2f5bf33217d8c3012db0237b2dde0e))
+* **YouTube - Hide layout components:** Keyword filter does not hide collaboration videos ([05b6dfe](https://github.com/MorpheApp/morphe-patches/commit/05b6dfe7b6fd367c476c12e795743d09bbe72c99))
+* **YouTube - Theme:** Do not override video card background color ([9a2dc50](https://github.com/MorpheApp/morphe-patches/commit/9a2dc503193c8ae752fc481063b8bcd79da40688))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.47.51` ([b8e393f](https://github.com/MorpheApp/morphe-patches/commit/b8e393f0912456dfffd60cc176ede053839872e1))
+
 ## [2.4.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.9...v2.4.0-dev.10) (2026-11-24)
 
 ### ✨ New Features

@@ -35,15 +35,15 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.10](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.10)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;256 patches total
+> **[v2.4.0-dev.11](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.11)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;256 patches total
 <details>
 <summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;62 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.46.51 | 🧪&nbsp;9.45.51 | 🧪&nbsp;9.44.52 | 9.30.53 | 9.20.53 | 9.15.51 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;9.47.51 | 🧪&nbsp;9.46.51 | 🧪&nbsp;9.45.51 | 🧪&nbsp;9.44.52 | 9.30.53 | 9.20.53 | 9.15.51 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
