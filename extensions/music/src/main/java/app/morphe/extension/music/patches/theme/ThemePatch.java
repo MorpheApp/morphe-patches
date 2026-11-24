@@ -10,10 +10,7 @@
 
 package app.morphe.extension.music.patches.theme;
 
-import android.graphics.drawable.Drawable;
-
 import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.theme.BaseThemePatch;
 
@@ -33,12 +30,11 @@ public class ThemePatch extends BaseThemePatch {
      * Change the color of Litho components.
      * If the color of the component matches one of the values, return the background color.
      *
-     * @param drawable The drawable being changed, or null.
      * @param originalValue The original color value.
      * @return The new or original color value.
      */
     @ColorInt
-    public static int getValue(@Nullable Drawable drawable, @ColorInt int originalValue) {
+    public static int getValue(@ColorInt int originalValue) {
         return processColorValue(originalValue, DARK_VALUES, null);
     }
 }

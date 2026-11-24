@@ -21,20 +21,11 @@ import java.lang.ref.WeakReference
 private var lithoColorOverrideHookRef : WeakReference<MutableMethod>? = null
 private var lithoColorOverrideHookInsertIndex = -1
 
-fun lithoColorOverrideHook(
-    targetMethodClass: String,
-    targetMethodName: String,
-    hasDrawable: Boolean = false
-) {
-    val instruction = if (hasDrawable) {
-        "invoke-static { p0, p1 }, $targetMethodClass->$targetMethodName(Landroid/graphics/drawable/Drawable;I)I"
-    } else {
-        "invoke-static { p1 }, $targetMethodClass->$targetMethodName(I)I"
-    }
+fun lithoColorOverrideHook(targetMethodClass: String, targetMethodName: String) {
     lithoColorOverrideHookRef!!.get()!!.addInstructions(
         lithoColorOverrideHookInsertIndex,
         """
-            $instruction
+            invoke-static { p1 }, $targetMethodClass->$targetMethodName(I)I
             move-result p1
         """
     )

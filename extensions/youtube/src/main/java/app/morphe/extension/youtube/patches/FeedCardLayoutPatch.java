@@ -10,6 +10,7 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.shared.LithoDrawables.getDrawableView;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -1543,7 +1544,7 @@ public class FeedCardLayoutPatch {
                     ViewParent parent = view.getParent();
                     if (parent instanceof RecyclerView recyclerView) {
                         // The other items of the feed are cards only with the card layout.
-                        if (listsDrawCards() && recyclerView.getId() == getFeedId()) {
+                        if (CARD_LAYOUT && recyclerView.getId() == getFeedId()) {
                             // The background is mounted before the content of the item,
                             // so a bar of chips is found only after the item is mounted.
                             if (view instanceof ViewGroup group && group.getChildCount() == 0) {
@@ -1687,15 +1688,6 @@ public class FeedCardLayoutPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setDividerItem failure", ex);
         }
-    }
-
-    @Nullable
-    private static View getDrawableView(Drawable drawable) {
-        Drawable.Callback callback = drawable.getCallback();
-        while (callback instanceof Drawable parent) {
-            callback = parent.getCallback();
-        }
-        return callback instanceof View view ? view : null;
     }
 
     private static void updateCardOutline(View child) {

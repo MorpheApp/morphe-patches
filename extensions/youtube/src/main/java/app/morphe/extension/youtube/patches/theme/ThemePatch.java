@@ -12,6 +12,7 @@
 package app.morphe.extension.youtube.patches.theme;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.shared.LithoDrawables.getDrawableView;
 
 import android.app.Activity;
 import android.content.Context;
@@ -70,11 +71,14 @@ public class ThemePatch extends BaseThemePatch {
             0xFAFFFFFF, // Video chapters list background.
     };
 
-    private static final int LITHO_BACKGROUND_COLOR = 0xFF212121;
+    /**
+     * Background of the comments chips of the old layout, and also of the feed video cards.
+     */
+    private static final int DARK_CHIP_AND_CARD_COLOR = 0xFF212121;
 
     private static final int[] DARK_VALUES = {
-            LITHO_BACKGROUND_COLOR, // Comments chip background (old layout).
             0xFF282828, // Explore drawer background.
+            DARK_CHIP_AND_CARD_COLOR,
             0xFF181818, // Music related results panel background.
             0xFF0F0F0F, // Comments chip background (new layout).
             0xFA212121, // Video chapters list background.
@@ -83,43 +87,42 @@ public class ThemePatch extends BaseThemePatch {
             0xFF09090A, // Watch history chip background.
     };
 
-    private static int feedId;
+    private static final int FEED_ID = ResourceUtils.getIdentifier(ResourceType.ID, "results");
 
-    private static int getFeedId() {
-        if (feedId == 0) {
-            feedId = ResourceUtils.getIdentifier(ResourceType.ID, "results");
-        }
-        return feedId;
-    }
-
-    @Nullable
-    private static View getDrawableView(@Nullable Drawable drawable) {
-        if (drawable == null) {
-            return null;
-        }
-        Drawable.Callback callback = drawable.getCallback();
-        while (callback instanceof Drawable parent) {
-            callback = parent.getCallback();
-        }
-        return callback instanceof View view ? view : null;
-    }
-
-    private static boolean isFeedVideoCard(@Nullable Drawable drawable) {
+    /**
+     * Injection point.
+     * <p>
+     * Called with the original color of a Litho background drawable, before {@link #getValue(int)}.
+     * The feed video cards keep their color, otherwise they are not visible on the feed background.
+     */
+    @ColorInt
+    public static int getFeedCardColor(Drawable drawable, @ColorInt int color) {
         try {
-            View view = getDrawableView(drawable);
-            if (view == null) {
-                return false;
-            }
-            final int targetFeedId = getFeedId();
-            for (View current = view; current != null; ) {
-                ViewParent parent = current.getParent();
-                if (parent instanceof RecyclerView recyclerView) {
-                    return recyclerView.getId() == targetFeedId;
-                }
-                current = parent instanceof View parentView ? parentView : null;
+            if (color == DARK_CHIP_AND_CARD_COLOR
+                    && !ThemeColorPatch.isAppDefaultColor()
+                    && isFeedItem(drawable)) {
+                // Only exact colors are themed. The lowest bit of green is not visible, and blue is not used
+                // because the feed card layout hook flips its lowest bit, which would undo the change.
+                return color ^ 0x100;
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "isFeedVideoCard failure", ex);
+            Logger.printException(() -> "getFeedCardColor failure", ex);
+        }
+        return color;
+    }
+
+    /**
+     * @return If the closest list of the drawable is the feed. Items of lists nested in the feed,
+     *         such as chips, are not feed items.
+     */
+    private static boolean isFeedItem(Drawable drawable) {
+        View view = getDrawableView(drawable);
+        while (view != null) {
+            ViewParent parent = view.getParent();
+            if (parent instanceof RecyclerView recyclerView) {
+                return recyclerView.getId() == FEED_ID;
+            }
+            view = parent instanceof View parentView ? parentView : null;
         }
         return false;
     }
@@ -130,23 +133,12 @@ public class ThemePatch extends BaseThemePatch {
      * Change the color of Litho components.
      * If the color of the component matches one of the values, return the background color.
      *
-     * @param drawable The drawable being changed, or null.
      * @param originalValue The original color value.
      * @return The new or original color value.
      */
     @ColorInt
-    public static int getValue(@Nullable Drawable drawable, @ColorInt int originalValue) {
-        try {
-            if (originalValue == LITHO_BACKGROUND_COLOR
-                    && !ThemeColorPatch.isAppDefaultColor()
-                    && isFeedVideoCard(drawable)) {
-                return originalValue;
-            }
-            return processColorValue(originalValue, DARK_VALUES, WHITE_VALUES);
-        } catch (Exception ex) {
-            Logger.printException(() -> "getValue failure", ex);
-            return originalValue;
-        }
+    public static int getValue(@ColorInt int originalValue) {
+        return processColorValue(originalValue, DARK_VALUES, WHITE_VALUES);
     }
 
     /**
