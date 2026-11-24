@@ -574,7 +574,7 @@ public class SpoofVideoStreamsPatch {
                             // This config replaces the whole config of the app, which tells how the
                             // video is played inline, such as a muted preview in the feed, and how it is buffered.
                             return appPlayerConfig != null
-                                    ? StreamingDataRequest.addAppPlayerConfig(config, appPlayerConfig, buffers.hasAndroidMedia())
+                                    ? StreamingDataRequest.addAppPlayerConfig(config, appPlayerConfig)
                                     : config;
                         }
                     }

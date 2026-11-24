@@ -934,13 +934,14 @@ public class StreamingDataRequest {
      * The quality menu belongs to the app, so the app player config also tells if the quality selected
      * in the quality menu is used only for the video it was selected for. Without it, the quality selected
      * is also used for the next videos.
+     * <p>
+     * The app player plays the streams of every client, so this is done for the clients that are not
+     * Android clients too, such as the TV and web clients, for the parts of the config they have.
      *
-     * @param hasAndroidMedia If the streams are the streams of an Android client,
-     *                        so the app player config tells how to play them inline and how to buffer them.
      * @return The player config with how the app player config plays the video inline, buffers it,
      *         and uses the quality selected in the quality menu.
      */
-    public static byte[] addAppPlayerConfig(byte[] playerConfig, byte[] appPlayerConfig, boolean hasAndroidMedia) {
+    public static byte[] addAppPlayerConfig(byte[] playerConfig, byte[] appPlayerConfig) {
         try {
             PlayerConfig appConfig = PlayerConfig.parseFrom(appPlayerConfig);
             PlayerConfig.Builder builder = PlayerConfig.parseFrom(playerConfig).toBuilder();
@@ -949,9 +950,6 @@ public class StreamingDataRequest {
                 builder.setStickyQualitySelectionConfig(appConfig.getStickyQualitySelectionConfig());
             } else {
                 builder.clearStickyQualitySelectionConfig();
-            }
-            if (!hasAndroidMedia) {
-                return builder.build().toByteArray();
             }
 
             if (appConfig.getAudioConfig().getMuteOnStart()) {
@@ -987,6 +985,11 @@ public class StreamingDataRequest {
                     exoConfig.setUseMediaTimeCappedLoadControl(appExoConfig.getUseMediaTimeCappedLoadControl());
                 }
                 builder.setExoPlayerConfig(exoConfig);
+            } else if (appConfig.hasExoPlayerConfig()) {
+                // The configs of the TV and web clients have no ExoPlayer config, so the app player buffers
+                // without one, and the playback of some videos restarts again and again, such as a Short
+                // in the regular player with a forced video quality. The config of the app is used whole.
+                builder.setExoPlayerConfig(appConfig.getExoPlayerConfig());
             }
 
             if (builder.hasAndroidMedialibConfig()) {
