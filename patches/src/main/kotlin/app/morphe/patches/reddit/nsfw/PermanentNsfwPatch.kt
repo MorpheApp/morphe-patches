@@ -390,8 +390,8 @@ val permanentNsfwPatch = patch(
         // Hide NSFW communities that were saved before NSFW content was disabled,
         // in the community drawer and the recently visited screen.
         listOf(
-            $$"Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$refreshRecentlyVisited$1$1$invokeSuspend$$inlined$map$1$2$1;",
-            $$"Lcom/reddit/screens/drawer/community/CommunityDrawerRecentlyVisitedDelegate$loadRecentlyVisited$$inlined$map$1$2$1;"
+            $$$"Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$refreshRecentlyVisited$1$1$invokeSuspend$$inlined$map$1$2$1;",
+            $$$"Lcom/reddit/screens/drawer/community/CommunityDrawerRecentlyVisitedDelegate$loadRecentlyVisited$$inlined$map$1$2$1;"
         ).forEach { continuationClass ->
             recentlyVisitedFingerprint(continuationClass).let {
                 it.method.apply {
