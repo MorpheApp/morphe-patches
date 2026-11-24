@@ -50,6 +50,12 @@ public final class GhostPlayToolbarButton {
 
     private static final String BUTTON_TAG = "morphe_ghost_toolbar_toggle";
 
+    /**
+     * Text field of the toolbar shown while entering a search.
+     */
+    private static final int ID_SEARCH_EDIT_TEXT =
+            ResourceUtils.getIdentifier(ResourceType.ID, "search_edit_text");
+
     // Map attached pills to their parent toolbar container and last rendered state string.
     private static final Map<LinearLayout, WeakReference<FrameLayout>> attachedButtons =
             Collections.synchronizedMap(new WeakHashMap<>());
@@ -216,14 +222,13 @@ public final class GhostPlayToolbarButton {
             for (Map.Entry<LinearLayout, WeakReference<FrameLayout>> entry : attachedButtons.entrySet()) {
                 LinearLayout pill = entry.getKey();
                 if (pill == null) continue;
-                if (!show) {
-                    pill.setVisibility(View.GONE);
-                } else {
+                if (show) {
                     updateButtonVisual(pill, true);
-                    FrameLayout container = entry.getValue() != null ? entry.getValue().get() : null;
-                    if (container != null) {
-                        pill.post(() -> positionNextToActionMenu(container, pill, null, null));
-                    }
+                }
+                FrameLayout container = entry.getValue() != null ? entry.getValue().get() : null;
+                if (container != null) {
+                    // Also hides the button if it should not be shown.
+                    pill.post(() -> positionNextToActionMenu(container, pill, null, null));
                 }
             }
         });
@@ -280,20 +285,6 @@ public final class GhostPlayToolbarButton {
             @Nullable MenuViewRef observedMenuRef,
             @Nullable View.OnLayoutChangeListener menuLayoutListener
     ) {
-        if (!GhostPlayPatch.isEnabled()
-                || !Settings.GHOST_PLAY_TOOLBAR_BUTTON.get()
-                || shouldHideForCurrentScreen()) {
-            if (pill.getVisibility() != View.GONE) {
-                pill.setVisibility(View.GONE);
-            }
-            return;
-        }
-
-        String desiredState = GhostPlayPatch.isSessionGhostActive() + ":" + GhostPlayPatch.getTimedGhostRemainingMinutes();
-        if (!desiredState.equals(lastRenderedStates.get(pill))) {
-            updateButtonVisual(pill, false);
-        }
-
         View actionMenu = (observedMenuRef != null) ? observedMenuRef.view.get() : null;
         if (actionMenu == null || !actionMenu.isAttachedToWindow()) {
             actionMenu = findActionMenuView(container);
@@ -307,42 +298,73 @@ public final class GhostPlayToolbarButton {
             }
         }
 
-        int containerWidth = container.getWidth();
-        int containerHeight = container.getHeight();
-        int pillWidth = pill.getWidth();
-        int pillHeight = pill.getHeight();
-        if (containerWidth <= 0 || pillWidth <= 0 || pillHeight <= 0) {
+        if (actionMenu == null
+                || actionMenu.getVisibility() != View.VISIBLE
+                || !GhostPlayPatch.isEnabled()
+                || !Settings.GHOST_PLAY_TOOLBAR_BUTTON.get()
+                || shouldHideForCurrentScreen()
+                || container.findViewById(ID_SEARCH_EDIT_TEXT) != null) {
+            if (pill.getVisibility() != View.GONE) {
+                pill.setVisibility(View.GONE);
+            }
+            if (actionMenu != null) {
+                reserveMenuSpace(actionMenu, 0);
+            }
             return;
         }
 
-        float targetX;
-        float targetY;
-        if (actionMenu != null && actionMenu.getVisibility() == View.VISIBLE
-                && actionMenu.getWidth() > 0 && actionMenu.getHeight() > 0) {
-            int[] containerLoc = new int[2];
-            int[] menuLoc = new int[2];
-            container.getLocationInWindow(containerLoc);
-            actionMenu.getLocationInWindow(menuLoc);
-
-            int menuLeftInContainer = menuLoc[0] - containerLoc[0];
-            int menuTopInContainer = menuLoc[1] - containerLoc[1];
-
-            targetX = Math.max(Dim.dp(96), menuLeftInContainer - pillWidth - Dim.dp(2));
-            targetY = menuTopInContainer + (actionMenu.getHeight() - pillHeight) / 2f;
-        } else {
-            targetX = containerWidth - pillWidth - Dim.dp12;
-            targetY = Math.max(0f, (containerHeight - pillHeight) / 2f);
+        String desiredState = GhostPlayPatch.isSessionGhostActive() + ":" + GhostPlayPatch.getTimedGhostRemainingMinutes();
+        if (!desiredState.equals(lastRenderedStates.get(pill))) {
+            updateButtonVisual(pill, false);
         }
 
         if (pill.getVisibility() != View.VISIBLE) {
             pill.setVisibility(View.VISIBLE);
         }
+
+        final int pillWidth = pill.getWidth();
+        final int pillHeight = pill.getHeight();
+        if (container.getWidth() <= 0 || pillWidth <= 0 || pillHeight <= 0) {
+            return; // Not laid out yet. Called again after the layout.
+        }
+
+        reserveMenuSpace(actionMenu, pillWidth + Dim.dp2);
+
+        int[] containerLoc = new int[2];
+        int[] menuLoc = new int[2];
+        container.getLocationInWindow(containerLoc);
+        actionMenu.getLocationInWindow(menuLoc);
+
+        final int menuLeft = menuLoc[0] - containerLoc[0];
+        final int menuTop = menuLoc[1] - containerLoc[1];
+        final float targetX = actionMenu.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL
+                ? menuLeft + actionMenu.getWidth() - pillWidth
+                : menuLeft;
+        final float targetY = menuTop + (actionMenu.getHeight() - pillHeight) / 2f;
+
         if (Math.abs(pill.getX() - targetX) > 0.5f) {
             pill.setX(targetX);
         }
         if (Math.abs(pill.getY() - targetY) > 0.5f) {
             pill.setY(targetY);
         }
+    }
+
+    /**
+     * Adds start padding to the menu, so the toolbar lays out its other content
+     * (such as the wide search bar) beside the button and not under it.
+     */
+    private static void reserveMenuSpace(View actionMenu, int width) {
+        if (actionMenu.getPaddingStart() == width) {
+            return;
+        }
+        // Can be called during layout, where a new layout request may be dropped.
+        actionMenu.post(() -> {
+            if (actionMenu.getPaddingStart() != width) {
+                actionMenu.setPaddingRelative(width, actionMenu.getPaddingTop(),
+                        actionMenu.getPaddingEnd(), actionMenu.getPaddingBottom());
+            }
+        });
     }
 
     @Nullable
