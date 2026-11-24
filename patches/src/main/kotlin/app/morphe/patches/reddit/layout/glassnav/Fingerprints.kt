@@ -12,6 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
@@ -107,6 +108,25 @@ internal object DrawContentFingerprint : Fingerprint(
 )
 
 /**
+ * Draws a Lottie animation using the native Canvas.
+ */
+internal object LottieAnimationDrawFingerprint : Fingerprint(
+    definingClass = $$"Lcom/airbnb/lottie/compose/LottieAnimationKt$LottieAnimation$2;",
+    name = "invoke",
+    returnType = "V",
+    filters = listOf(
+        // DrawScope.drawContext
+        methodCall(parameters = listOf(), returnType = "L"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // DrawContext.canvas
+        methodCall(parameters = listOf(), returnType = "L", location = MatchAfterWithin(5)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // AndroidCanvas.internalCanvas
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Canvas;")
+    )
+)
+
+/**
  * Modifier.padding
  */
 internal object PaddingFingerprint : Fingerprint(
@@ -190,6 +210,27 @@ internal object RailBackgroundFingerprint : Fingerprint(
     filters = listOf(
         newInstance($$"Lcom/reddit/launch/bottomnav/BottomNavScreen$NavStackHostContent$2$1;")
     ) + themeBackgroundFilters
+)
+
+/**
+ * Host of all screens that are behind the bottom navigation bar.
+ * Matches 2 methods with 2026.46.0 and lower, because the layouts with and without
+ * the side rail each have their own copy.
+ */
+internal object BottomNavStackHostFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = BOTTOM_NAV_SCREEN_CLASS,
+            type = "Lcom/reddit/navstack/"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            definingClass = "Lcom/reddit/navstack/",
+            parameters = listOf("L", "L", "Z", "L", "L", "I", "I"),
+            returnType = "V"
+        )
+    )
 )
 
 private object NavScreenContentStateToStringFingerprint : Fingerprint(

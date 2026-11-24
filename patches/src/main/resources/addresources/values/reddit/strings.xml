@@ -38,6 +38,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_glass_navigation_bar_color_entry_auto">Auto</string>
     <string name="morphe_glass_navigation_bar_color_entry_light">Light</string>
     <string name="morphe_glass_navigation_bar_color_entry_dark">Dark</string>
+    <string name="morphe_glass_navigation_bar_style_title">Glass style</string>
+    <string name="morphe_glass_navigation_bar_style_entry_tinted">Tinted</string>
+    <string name="morphe_glass_navigation_bar_style_entry_frosted">Frosted glass</string>
+    <string name="morphe_glass_navigation_bar_blur_title">Glass blur</string>
+    <string name="morphe_glass_navigation_bar_blur_summary">How much the page behind the frosted glass is blurred (Android 14 and later). At 0, and before Android 14, the glass is tinted</string>
     <string name="morphe_glass_navigation_bar_opacity_title">Glass opacity</string>
     <string name="morphe_glass_navigation_bar_opacity_summary">Lower values show more of the page behind the navigation bar</string>
     <string name="morphe_glass_navigation_bar_round_ends_title">Round ends</string>
