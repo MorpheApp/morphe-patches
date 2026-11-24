@@ -53,6 +53,14 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.GLASS_NAVIGATION_BAR_COLOR
             ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.GLASS_NAVIGATION_BAR_STYLE
+            ));
+            addPreference(new SeekBarSettingPreference(
+                    context,
+                    Settings.GLASS_NAVIGATION_BAR_BLUR
+            ));
             addPreference(new SeekBarSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_OPACITY

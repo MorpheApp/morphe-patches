@@ -27,6 +27,11 @@ public final class GlassNavigationBarPatch {
         DARK
     }
 
+    public enum GlassStyle {
+        TINTED,
+        FROSTED
+    }
+
     /**
      * Compose ContentDrawScope. Sizes, offsets and corner radii are two packed floats.
      */
@@ -131,7 +136,7 @@ public final class GlassNavigationBarPatch {
     private static final float RAIL_CENTERED_MIN_HEIGHT_DP = 500;
     private static final float RAIL_GAP_DP = 12;
 
-    private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
+    static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
     private static final int OPACITY_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_OPACITY);
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
     private static final int WIDTH_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_WIDTH);
@@ -139,7 +144,12 @@ public final class GlassNavigationBarPatch {
     /**
      * If the Reddit theme is dark, which can be different from the system theme.
      */
-    private static boolean isDarkTheme;
+    static boolean isDarkTheme;
+
+    /**
+     * Packed Compose color of the page.
+     */
+    static long lastPageColor;
 
     private static boolean isRailCentered;
 
@@ -248,6 +258,7 @@ public final class GlassNavigationBarPatch {
      * @param color Packed Compose sRGB color, with the ARGB color in the upper 32 bits.
      */
     private static void updateTheme(long color) {
+        lastPageColor = color;
         isDarkTheme = Color.luminance((int) (color >>> 32)) < 0.5f;
     }
 
@@ -274,7 +285,7 @@ public final class GlassNavigationBarPatch {
             height = Math.min(height, rowHeight - top);
         }
 
-        drawCapsule(scope, left, top, width - 2 * left, height, density);
+        drawCapsule(scope, false, left, top, width - 2 * left, height, density);
     }
 
     private static void drawRailCapsule(ContentDrawScope scope) {
@@ -286,6 +297,7 @@ public final class GlassNavigationBarPatch {
 
         drawCapsule(
                 scope,
+                true,
                 gap,
                 -verticalGap,
                 unpackFirst(size) - 2 * gap,
@@ -294,7 +306,7 @@ public final class GlassNavigationBarPatch {
         );
     }
 
-    private static void drawCapsule(ContentDrawScope scope, float left, float top,
+    private static void drawCapsule(ContentDrawScope scope, boolean isRail, float left, float top,
                                     float width, float height, float density) {
         if (width <= 0 || height <= 0) {
             return;
@@ -304,27 +316,35 @@ public final class GlassNavigationBarPatch {
                 ? Math.min(width, height) / 2
                 : CORNER_RADIUS_DP * density;
 
+        if (!isRail) {
+            GlassNavigationBarBlur.drawBar(scope, left, top, width, height, radius);
+        }
         scope.patch_drawRoundRect(
                 getGlassColor(),
                 pack(left, top),
                 pack(width, height),
                 pack(radius, radius)
         );
+        GlassNavigationBarBlur.drawEdge(scope, left, top, width, height, radius);
     }
 
-    private static long getGlassColor() {
-        final boolean dark = switch (Settings.GLASS_NAVIGATION_BAR_COLOR.get()) {
+    static boolean glassIsDark() {
+        return switch (Settings.GLASS_NAVIGATION_BAR_COLOR.get()) {
             case AUTO -> isDarkTheme;
             case LIGHT -> false;
             case DARK -> true;
         };
-        final long alpha = Math.round(255 * OPACITY_PERCENT / 100f);
-        final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
+    }
+
+    private static long getGlassColor() {
+        final float factor = GlassNavigationBarBlur.blurActive() ? 0.6f : 1;
+        final long alpha = Math.round(255 * OPACITY_PERCENT / 100f * factor);
+        final long argb = (alpha << 24) | (glassIsDark() ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
 
         return argb << 32;
     }
 
-    private static float getDensity() {
+    static float getDensity() {
         return Utils.getContext().getResources().getDisplayMetrics().density;
     }
 

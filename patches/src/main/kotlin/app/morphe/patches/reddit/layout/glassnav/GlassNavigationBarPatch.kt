@@ -17,6 +17,7 @@ import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -230,6 +231,10 @@ val glassNavigationBarPatch = patch(
         }
 
         // endregion
+
+        if (is_2026_45_0_or_greater) {
+            hookGlassBlur(drawWithContentMethod)
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
