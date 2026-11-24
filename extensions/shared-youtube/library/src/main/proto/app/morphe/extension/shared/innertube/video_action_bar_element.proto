@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+package app.morphe.extension.shared.innertube.actionbar;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+option java_outer_classname = "VideoActionBarElementOuterClass";
+
+// Bytes of the YouTube Music video_action_bar element (the newElement of an elementRenderer),
+// the row of buttons under the player, such as the Lyrics button.
+// Only the fields that are read or changed are declared, all other fields are kept as unknown fields.
+message VideoActionBarElement {
+    ActionBarElementType type = 1;
+}
+
+message ActionBarElementType {
+    ActionBarComponentType componentType = 168777401;
+}
+
+message ActionBarComponentType {
+    ActionBarElementModel model = 5;
+}
+
+message ActionBarElementModel {
+    VideoActionBarModel videoActionBarModel = 389155117;
+}
+
+message VideoActionBarModel {
+    repeated VideoActionBarButton buttons = 4;
+}
+
+message VideoActionBarButton {
+    ActionBarButtonViewModelHolder buttonViewModel = 10;
+}
+
+message ActionBarButtonViewModelHolder {
+    ActionBarButtonViewModel buttonViewModel = 461054335;
+    // The Like and Dislike buttons.
+    optional bytes segmentedLikeDislikeButtonViewModel = 484586709;
+}
+
+message ActionBarButtonViewModel {
+    optional string iconName = 2;
+    optional string title = 3;
+    optional ActionBarButtonCommand onTap = 4;
+    optional ActionBarButtonState state = 14;
+    // Shows a toast that the action is not available.
+    optional ActionBarButtonCommand onDisabledTap = 38;
+}
+
+enum ActionBarButtonState {
+    BUTTON_STATE_UNKNOWN = 0;
+    BUTTON_STATE_ACTIVE = 1;
+    BUTTON_STATE_DISABLED = 3;
+}
+
+message ActionBarButtonCommand {
+    optional ActionBarInnertubeCommand innertubeCommand = 169495254;
+}
+
+message ActionBarInnertubeCommand {
+    optional ShowEngagementPanelEndpoint showEngagementPanelEndpoint = 138681778;
+}
+
+message ShowEngagementPanelEndpoint {
+    optional EngagementPanelIdentifier identifier = 10;
+    optional EngagementPanelGlobalConfiguration globalConfiguration = 11;
+}
+
+message EngagementPanelIdentifier {
+    optional EngagementPanelSurface surface = 1;
+    optional string tag = 3;
+}
+
+enum EngagementPanelSurface {
+    ENGAGEMENT_PANEL_SURFACE_UNKNOWN = 0;
+    ENGAGEMENT_PANEL_SURFACE_WATCH = 1;
+}
+
+message EngagementPanelGlobalConfiguration {
+    optional EngagementPanelInitialState initialState = 1;
+    // Reuses the panel and its content if the app already has it.
+    optional bool reuseModelAndState = 4;
+}
+
+message EngagementPanelInitialState {
+    optional EngagementPanelSectionListRenderer engagementPanelSectionListRenderer = 138681066;
+}
+
+message EngagementPanelSectionListRenderer {
+    optional EngagementPanelHeader header = 2;
+    optional bool disablePullRefresh = 6;
+    optional bool isPersistent = 15;
+    optional EngagementPanelIdentifier identifier = 18;
+    optional bool allowReplace = 20;
+    optional EngagementPanelResizeRestriction resizeRestriction = 35;
+    optional EngagementPanelBackgroundStyle backgroundStyle = 37;
+    optional string backgroundColorEntityKey = 41;
+}
+
+enum EngagementPanelResizeRestriction {
+    ENGAGEMENT_PANEL_RESIZE_RESTRICTION_UNKNOWN = 0;
+    ENGAGEMENT_PANEL_RESIZE_RESTRICTION_DOWN_ONLY = 2;
+}
+
+enum EngagementPanelBackgroundStyle {
+    ENGAGEMENT_PANEL_BACKGROUND_STYLE_UNKNOWN = 0;
+    ENGAGEMENT_PANEL_BACKGROUND_STYLE_USING_ENTITY_COLOR = 4;
+}
+
+message EngagementPanelHeader {
+    optional EngagementPanelTitleHeaderRenderer engagementPanelTitleHeaderRenderer = 138681548;
+}
+
+message EngagementPanelTitleHeaderRenderer {
+    optional EngagementPanelText title = 1;
+}
+
+message EngagementPanelText {
+    optional string simpleText = 4;
+}

@@ -31,11 +31,13 @@ import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
 import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
 import app.morphe.patches.music.misc.mediasession.addSetPlaybackStateHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
+import app.morphe.patches.music.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -79,6 +81,7 @@ val lyricsPatch = patch(
         settingsPatch,
         addResourcesPatch,
         lithoFilterPatch,
+        elementProtoParserHookPatch,
         mediaSessionHookPatch,
         musicVideoInformationPatch,
         // The copy, romanize, and jump-to-current buttons need their icons whether
@@ -308,6 +311,10 @@ val lyricsPatch = patch(
         // The panel content is built by Elements, so there is no view to hook. The timed
         // lyrics component is the earliest signal that the opened panel is the lyrics one.
         addLithoFilter(LYRICS_PANEL_FILTER)
+
+        // The Lyrics button under the player is disabled by the server for tracks it has no
+        // lyrics for, so it is enabled again to open the panel with the third-party lyrics.
+        hookElement("$EXTENSION_CLASS->enableLyricsButton")
 
         // The app builds the watch next response of device files itself, with only a Songs tab,
         // so there is no lyrics tab to show the panel in. A lyrics tab is added to that response,
