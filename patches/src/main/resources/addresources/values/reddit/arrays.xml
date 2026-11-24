@@ -96,4 +96,15 @@
         <item>ANONYMOUS_BROWSING</item>
         <item>INCOGNITO</item>
     </string-array>
+    <!-- layout.glassnav.glassNavigationBarPatch -->
+    <string-array name="morphe_glass_navigation_bar_color_entries">
+        <item>@string/morphe_glass_navigation_bar_color_entry_auto</item>
+        <item>@string/morphe_glass_navigation_bar_color_entry_light</item>
+        <item>@string/morphe_glass_navigation_bar_color_entry_dark</item>
+    </string-array>
+    <string-array name="morphe_glass_navigation_bar_color_entry_values" translatable="false">
+        <item>AUTO</item>
+        <item>LIGHT</item>
+        <item>DARK</item>
+    </string-array>
 </resources>
