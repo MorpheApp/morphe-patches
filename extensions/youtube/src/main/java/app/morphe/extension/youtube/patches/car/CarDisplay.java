@@ -36,7 +36,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Finds whether YouTube is shown on a car display: a parked app on Android Auto, DriveDeck or another car host.
- * Used by Change form factor to use the automotive layout on a car display.
+ * Used by Change form factor to use the automotive layout and to auto-hide the navigation bar on a car display.
  * <p>
  * A parked app is an ordinary activity that the car host launches onto a display of its own, so the
  * activity itself shows where it is. Nothing here relies on a list of allowed packages or hosts:
@@ -91,12 +91,17 @@ public final class CarDisplay {
         return onCarDisplay;
     }
 
+    private static boolean isEnabled() {
+        return Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()
+                || Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get();
+    }
+
     /**
      * Injection point, at the start of the onCreate of the main activity, before the activity
      * requests anything, so the first requests already use the layout of the display.
      */
     public static void onMainActivityCreate(Activity activity) {
-        if (!Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()) return;
+        if (!isEnabled()) return;
 
         try {
             activityRef = new WeakReference<>(activity);
@@ -118,7 +123,7 @@ public final class CarDisplay {
      * @param bottomBarContainer The container of the navigation bar.
      */
     public static void onBottomBarContainerCreated(View bottomBarContainer) {
-        if (!Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()) return;
+        if (!isEnabled()) return;
 
         try {
             // Moving the activity to another display changes its size, so the container is laid out again.
@@ -128,6 +133,10 @@ public final class CarDisplay {
                     checkDisplayChanged();
                 }
             });
+
+            if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get()) {
+                CarNavigationBar.install(bottomBarContainer);
+            }
         } catch (RuntimeException ex) {
             Logger.printException(() -> "onBottomBarContainerCreated failure", ex);
         }
@@ -149,16 +158,23 @@ public final class CarDisplay {
         update(activity);
     }
 
-    /** The layout comes from the requests the activity made, so the activity is recreated. */
+    /**
+     * The layout comes from the requests the activity made, so with the automotive layout the activity
+     * is recreated. Otherwise only the navigation bar follows the display.
+     */
     private static void update(Activity activity) {
         final boolean wasOnCarDisplay = onCarDisplay;
         onCarDisplay = onCarScreen || mirroredToCar;
-        if (wasOnCarDisplay != onCarDisplay) {
+        if (wasOnCarDisplay == onCarDisplay) return;
+
+        if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()) {
             Utils.runOnMainThread(() -> {
                 if (!activity.isFinishing() && !activity.isDestroyed()) {
                     activity.recreate();
                 }
             });
+        } else if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get()) {
+            CarNavigationBar.onCarDisplayChanged();
         }
     }
 

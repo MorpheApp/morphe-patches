@@ -17,6 +17,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.cardisplay.carDisplayPatch
@@ -38,7 +39,7 @@ private const val EXTENSION_CLASS =
 val changeFormFactorPatch = patch(
     name = "Change form factor",
     description = "Adds options to change the UI appearance to a phone, tablet, or automotive device, " +
-        "and to use the automotive layout on a car display.",
+        "and to use the automotive layout and auto-hide the navigation bar on a car display.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -56,6 +57,12 @@ val changeFormFactorPatch = patch(
             noTitleUnsortedPreferenceCategory(
                 ListPreference("morphe_change_form_factor"),
                 SwitchPreference("morphe_change_form_factor_car_display"),
+                SwitchPreference("morphe_change_form_factor_car_display_hide_navigation_bar"),
+                NonInteractivePreference(
+                    key = "morphe_change_form_factor_car_display_hide_navigation_bar_delay",
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
                 SwitchPreference("morphe_change_form_factor_car_display_any"),
             )
         )

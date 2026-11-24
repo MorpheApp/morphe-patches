@@ -694,7 +694,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting NATIVE_SNACKBAR = new BooleanSetting("morphe_native_snackbar", FALSE);
     public static final EnumSetting<FormFactor> CHANGE_FORM_FACTOR = new EnumSetting<>("morphe_change_form_factor", FormFactor.DEFAULT, true, "morphe_change_form_factor_user_dialog_message");
     public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY = new BooleanSetting("morphe_change_form_factor_car_display", FALSE, true);
-    public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_ANY = new BooleanSetting("morphe_change_form_factor_car_display_any", FALSE, true, parent(CHANGE_FORM_FACTOR_CAR_DISPLAY));
+    public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR = new BooleanSetting("morphe_change_form_factor_car_display_hide_navigation_bar", FALSE, true);
+    public static final IntegerSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR_DELAY = new IntegerSetting("morphe_change_form_factor_car_display_hide_navigation_bar_delay", 5, true, parent(CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR));
+    public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_ANY = new BooleanSetting("morphe_change_form_factor_car_display_any", FALSE, true, parentsAny(CHANGE_FORM_FACTOR_CAR_DISPLAY, CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR));
     public static final BooleanSetting BYPASS_IMAGE_REGION_RESTRICTIONS = new BooleanSetting("morphe_bypass_image_region_restrictions", FALSE, true);
     public static final BooleanSetting GRADIENT_LOADING_SCREEN = new BooleanSetting("morphe_gradient_loading_screen", FALSE, true);
     public static final IntegerSetting RIVE_SPLASH_SCREEN_STATE = new IntegerSetting("morphe_rive_splash_screen_state", 0, false, false);
@@ -1575,6 +1577,8 @@ public class Settings extends SharedYouTubeSettings {
                 0, 100, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(ENHANCED_AMBIENT_MODE_DIM_DURATION,
                 0, 10, 1, "s"));
+        SeekBarPreference.register(new SeekBarConfig(CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR_DELAY,
+                1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(VOT_ORIGINAL_AUDIO_VOLUME,
                 0, 100, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(VOT_TRANSLATION_VOLUME,
