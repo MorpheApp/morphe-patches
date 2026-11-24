@@ -17,7 +17,7 @@ import app.morphe.extension.reddit.patches.GlassNavigationBarPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
-import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
+import app.morphe.extension.reddit.settings.preference.SeekBarSettingPreference;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
@@ -53,7 +53,7 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.GLASS_NAVIGATION_BAR_COLOR
             ));
-            addPreference(new NumberSettingPreference(
+            addPreference(new SeekBarSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_OPACITY
             ));
@@ -61,11 +61,11 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.GLASS_NAVIGATION_BAR_ROUND_ENDS
             ));
-            addPreference(new NumberSettingPreference(
+            addPreference(new SeekBarSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_HEIGHT
             ));
-            addPreference(new NumberSettingPreference(
+            addPreference(new SeekBarSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_WIDTH
             ));
