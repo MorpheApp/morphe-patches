@@ -10,6 +10,7 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.shared.LithoDrawables.getDrawableView;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -1687,15 +1688,6 @@ public class FeedCardLayoutPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setDividerItem failure", ex);
         }
-    }
-
-    @Nullable
-    private static View getDrawableView(Drawable drawable) {
-        Drawable.Callback callback = drawable.getCallback();
-        while (callback instanceof Drawable parent) {
-            callback = parent.getCallback();
-        }
-        return callback instanceof View view ? view : null;
     }
 
     private static void updateCardOutline(View child) {
