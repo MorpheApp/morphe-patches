@@ -21,6 +21,7 @@ import app.morphe.patcher.util.returnEarly
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_37_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_39_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -49,10 +50,10 @@ val hidePostButtonsPatch = patch(
     dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
-        if (is_2026_39_0_or_greater) {
-            listOf(PostJoinButtonFingerprint, PostDetailJoinButtonFingerprint).forEach { fingerprint ->
-                fingerprint.method.returnEarlyIf("invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z")
-            }
+        val hideJoinButtonCondition = "invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z"
+
+        if (is_2026_37_0_or_greater) {
+            PostJoinButtonFingerprint.method.returnEarlyIf(hideJoinButtonCondition)
         } else {
             PostJoinButtonLegacyFingerprint.let {
                 it.method.apply {
@@ -63,7 +64,7 @@ val hidePostButtonsPatch = patch(
                     addInstructionsAtControlFlowLabel(
                         index,
                         """
-                            invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z
+                            $hideJoinButtonCondition
                             move-result v$register
                             if-nez v$register, :hide
                         """,
@@ -71,23 +72,25 @@ val hidePostButtonsPatch = patch(
                     )
                 }
             }
+        }
 
-            if (is_2026_24_0_or_greater) {
-                PostDetailJoinButtonLegacyFingerprint.let {
-                    it.method.apply {
-                        val index = it.instructionMatches.last().index
-                        val register = findFreeRegister(index)
+        if (is_2026_39_0_or_greater) {
+            PostDetailJoinButtonFingerprint.method.returnEarlyIf(hideJoinButtonCondition)
+        } else if (is_2026_24_0_or_greater) {
+            PostDetailJoinButtonLegacyFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = findFreeRegister(index)
 
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z
-                                move-result v$register
-                                if-nez v$register, :hide
-                            """,
-                            ExternalLabel("hide", getInstruction(index + 1))
-                        )
-                    }
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            $hideJoinButtonCondition
+                            move-result v$register
+                            if-nez v$register, :hide
+                        """,
+                        ExternalLabel("hide", getInstruction(index + 1))
+                    )
                 }
             }
         }
@@ -151,7 +154,7 @@ private fun hideActionBarButtons() {
 
     val buttonFingerprint: Fingerprint
     val voteButtonsFingerprint: Fingerprint
-    if (is_2026_39_0_or_greater) {
+    if (is_2026_37_0_or_greater) {
         buttonFingerprint = ActionBarButtonFingerprint
         voteButtonsFingerprint = ActionBarVoteButtonsFingerprint
     } else {
@@ -212,6 +215,15 @@ private fun hideActionBarButtons() {
                 hideButton(firstButtonIndex, "getAwardButton", "Lkotlin/jvm/functions/Function2;")
             }
 
+            // Award button of the refreshed action bar, after the mod button.
+            val legacyRefreshAwardButton = if (is_2026_37_0_or_greater && !is_2026_39_0_or_greater) {
+                val awardIndex = modIndex + 1
+                val awardType = it.instructionMatches.last().methodReference.parameterTypes[awardIndex]
+                hideButton(awardIndex, "getAwardButton", awardType.toString())
+            } else {
+                ""
+            }
+
             // Takes the buttons that can be null, from the first to the last.
             val hideActionBarParameters = "Ljava/lang/Object;".repeat(modIndex - firstButtonIndex + 1)
 
@@ -225,6 +237,7 @@ private fun hideActionBarButtons() {
                     invoke-static/range { v$voteRegister .. v$voteRegister }, $EXTENSION_CLASS->setVoteButtonsHidden(Ljava/lang/Object;)V
                     invoke-static/range { v$commentRegister .. v$commentRegister }, $EXTENSION_CLASS->setCommentButtonHidden(Ljava/lang/Object;)V
                     $legacyAwardButton
+                    $legacyRefreshAwardButton
                     ${hideButton(repostIndex, "getRepostButton", actionType)}
                     ${hideButton(repostIndex + 1, "getShareButton", actionType)}
                     ${hideButton(modIndex, "getModButton", actionType)}
