@@ -31,6 +31,7 @@ import app.morphe.extension.reddit.patches.FullScreenReplyPatch;
 import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
 import app.morphe.extension.reddit.patches.HideAnswersPreviewPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
+import app.morphe.extension.reddit.patches.HideCommentFlairsAndBadgesPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
 import app.morphe.extension.reddit.patches.HideCommunityHighlightsPatch;
 import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
@@ -108,6 +109,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 FullScreenReplyPatch.isPatchIncluded() ||
                 AutoModeratorCommentsPatch.isPatchIncluded() ||
+                HideCommentFlairsAndBadgesPatch.isPatchIncluded() ||
                 CollapseAllCommentsPatch.isPatchIncluded() ||
                 ColorizeCommentIndentLinesPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
@@ -385,6 +387,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.AUTOMODERATOR_COMMENTS
+            ));
+        }
+
+        if (HideCommentFlairsAndBadgesPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMENT_USER_FLAIRS
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMENT_COMMUNITY_BADGES
             ));
         }
 
