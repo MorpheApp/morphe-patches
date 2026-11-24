@@ -139,6 +139,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.HOME_FEED_TABS
             ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_HOME_FEED_SWIPE
+            ));
         }
 
         if (DisableRefreshOnBackPatch.isPatchIncluded()) {
