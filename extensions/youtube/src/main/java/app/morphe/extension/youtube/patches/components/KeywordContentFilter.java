@@ -46,10 +46,13 @@ import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.youtube.innertube.ElementTexts.CommentData;
 import app.morphe.extension.youtube.innertube.ElementTexts.Element;
 import app.morphe.extension.youtube.innertube.ElementTexts.ElementModel;
+import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommand;
 import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommandHolder;
+import app.morphe.extension.youtube.innertube.ElementTexts.ListItemViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.LockupMetadataViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataPart;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataRow;
+import app.morphe.extension.youtube.innertube.ElementTexts.PanelContent;
 import app.morphe.extension.youtube.innertube.ElementTexts.PollOptionHolder;
 import app.morphe.extension.youtube.innertube.ElementTexts.PollPostData;
 import app.morphe.extension.youtube.innertube.ElementTexts.Post;
@@ -83,6 +86,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
  *
  * Keywords match any casing, and fancy text such as math bold letters matches the plain letters.
  * Keywords that start with @ also match the channel handle of the videos.
+ * Collaboration videos match the names and the handles of all their channels.
  *
  * Limitations:
  * - Shorts in the Home and Subscriptions feeds do not show the channel name,
@@ -440,7 +444,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     /**
      * @return If a keyword matches a text of the model that is shown,
-     *         or the channel handle of a video or a post if the keyword is a handle.
+     *         or a channel of a video or a post.
      */
     private static boolean matchesShownTexts(StringTrieSearch search, ElementModel model, KeywordMatch match) {
         if (model.hasVideoWithContextModel()) {
@@ -491,12 +495,12 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             return true;
         }
 
-        return matchesHandle(search, metadata.getAvatar().getAvatarViewModel().getOnTap(), match);
+        return matchesChannel(search, metadata.getAvatar().getAvatarViewModel().getOnTap(), match);
     }
 
     /**
      * @return If a keyword matches the title or the line below the title of a video,
-     *         or the channel handle if the keyword is a handle.
+     *         or a channel of the video.
      */
     private static boolean matchesVideo(StringTrieSearch search, VideoData video, KeywordMatch match) {
         LockupMetadataViewModel metadata = video.getLockupMetadata().getLockupMetadataViewModel();
@@ -511,7 +515,9 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             }
         }
 
-        return matchesHandle(search, video.getAvatar().getEndpoint(), match);
+        return matchesChannel(search, video.getAvatar().getEndpoint(), match)
+                || matchesChannel(search, video.getAvatarStack().getAvatarStackViewModel()
+                .getRendererContext().getCommandContext().getOnTap(), match);
     }
 
     private static boolean matchesPost(StringTrieSearch search, Post post, KeywordMatch match) {
@@ -543,7 +549,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     private static boolean matchesSharedPost(StringTrieSearch search, SharedPostViewModel sharedPost,
                                              KeywordMatch match) {
         if (matches(search, sharedPost.getHeader().getText().getContent(), match)
-                || matchesHandle(search, sharedPost.getAvatar().getAvatarViewModel().getOnTap(), match)) {
+                || matchesChannel(search, sharedPost.getAvatar().getAvatarViewModel().getOnTap(), match)) {
             return true;
         }
 
@@ -553,18 +559,36 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     private static boolean matchesAuthor(StringTrieSearch search, PostAuthor author, KeywordMatch match) {
         return matches(search, author.getName(), match)
-                || matchesHandle(search, author.getEndpoint(), match);
+                || matchesChannel(search, author.getEndpoint(), match);
     }
 
     /**
-     * @param endpoint Command that opens a channel.
-     * @return If a keyword that is a handle matches the handle of the channel.
+     * @param endpoint Command that opens a channel, or the sheet with the channels of a collaboration video.
+     * @return If a keyword that is a handle matches the handle of a channel,
+     *         or a keyword matches the name of a channel of the sheet.
      */
-    private static boolean matchesHandle(StringTrieSearch search, InnertubeCommandHolder endpoint,
-                                         KeywordMatch match) {
+    private static boolean matchesChannel(StringTrieSearch search, InnertubeCommandHolder endpoint,
+                                          KeywordMatch match) {
+        InnertubeCommand command = endpoint.getInnertubeCommand();
+        if (matchesHandle(search, command.getBrowseEndpoint().getCanonicalBaseUrl(), match)) {
+            return true;
+        }
+
+        for (PanelContent content : command.getShowSheetCommand().getPanelLoadingStrategy()
+                .getInlineContent().getPanelContentRenderer().getContentsList()) {
+            ListItemViewModel channel = content.getElementRenderer().getNewElement().getType()
+                    .getComponentType().getModel().getYoutubeModel().getViewModel().getListItemViewModel();
+            if (matches(search, channel.getTitle().getContent(), match)
+                    || matchesHandle(search, channel.getSubtitle().getContent(), match)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean matchesHandle(StringTrieSearch search, String text, KeywordMatch match) {
         match.searchingHandle = true;
-        final boolean matched = matches(search, endpoint.getInnertubeCommand()
-                .getBrowseEndpoint().getCanonicalBaseUrl(), match);
+        final boolean matched = matches(search, text, match);
         match.searchingHandle = false;
         return matched;
     }

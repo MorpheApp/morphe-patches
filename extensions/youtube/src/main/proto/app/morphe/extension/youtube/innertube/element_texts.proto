@@ -57,6 +57,24 @@ message VideoWithContextData {
 message VideoData {
     ChannelAvatar avatar = 3;
     LockupMetadata lockupMetadata = 21;
+    // Avatars of the channels of a collaboration video, which has no channel avatar.
+    AvatarStack avatarStack = 24;
+}
+
+message AvatarStack {
+    AvatarStackViewModel avatarStackViewModel = 513888437;
+}
+
+message AvatarStackViewModel {
+    RendererContext rendererContext = 997;
+}
+
+message RendererContext {
+    CommandContext commandContext = 3;
+}
+
+message CommandContext {
+    InnertubeCommandHolder onTap = 3; // Opens a sheet with the channels.
 }
 
 message ChannelAvatar {
@@ -69,6 +87,32 @@ message InnertubeCommandHolder {
 
 message InnertubeCommand {
     BrowseEndpoint browseEndpoint = 48687626;
+    ShowSheetCommand showSheetCommand = 443434441;
+}
+
+// Opens a sheet, such as the list of the channels of a collaboration video.
+message ShowSheetCommand {
+    PanelLoadingStrategy panelLoadingStrategy = 1;
+}
+
+message PanelLoadingStrategy {
+    PanelInlineContent inlineContent = 1;
+}
+
+message PanelInlineContent {
+    PanelContentRenderer panelContentRenderer = 441573002;
+}
+
+message PanelContentRenderer {
+    repeated PanelContent contents = 4;
+}
+
+message PanelContent {
+    ElementRenderer elementRenderer = 153515154;
+}
+
+message ElementRenderer {
+    Element newElement = 172660663;
 }
 
 message BrowseEndpoint {
@@ -114,6 +158,13 @@ message ViewModelHolder {
     ShortsLockupViewModel shortsLockupViewModel = 518308277;
     // Post that shares a post of another channel (shared_post.eml).
     SharedPostViewModel sharedPostViewModel = 1965;
+    // Item of a sheet, such as a channel of a collaboration video.
+    ListItemViewModel listItemViewModel = 489973921;
+}
+
+message ListItemViewModel {
+    AttributedText title = 1; // Such as the name of the channel.
+    AttributedText subtitle = 2; // Such as the handle and the subscribers of the channel: "@handle - 1.2M subscribers".
 }
 
 message ShortsLockupViewModel {
