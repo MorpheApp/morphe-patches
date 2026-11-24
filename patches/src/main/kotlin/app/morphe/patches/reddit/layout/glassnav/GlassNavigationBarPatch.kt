@@ -17,7 +17,6 @@ import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
-import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -29,6 +28,8 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch;"
 private const val CONTENT_DRAW_SCOPE_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$ContentDrawScope;"
+private const val COMPOSE_CANVAS_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$ComposeCanvas;"
 private const val MODIFIER_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$Modifier;"
 private const val NEUTRAL_COLORS_INTERFACE =
@@ -83,7 +84,26 @@ val glassNavigationBarPatch = patch(
             )
         }
 
+        val nativeCanvasField = LottieAnimationDrawFingerprint.instructionMatches[4].fieldReference
+
+        mutableClassDefBy(nativeCanvasField.definingClass).apply {
+            addPatchInterface(COMPOSE_CANVAS_INTERFACE, "patch_getNativeCanvas", nativeCanvasField)
+            addPatchInterface(COMPOSE_CANVAS_INTERFACE, "patch_setNativeCanvas", nativeCanvasField)
+        }
+
         DrawContentFingerprint.classDef.apply {
+            addPatchInterface(
+                CONTENT_DRAW_SCOPE_INTERFACE,
+                "patch_getCanvas",
+                """
+                    invoke-interface { p0 }, ${LottieAnimationDrawFingerprint.instructionMatches[0].methodReference}
+                    move-result-object v0
+                    invoke-virtual { v0 }, ${LottieAnimationDrawFingerprint.instructionMatches[2].methodReference}
+                    move-result-object v0
+                    check-cast v0, $COMPOSE_CANVAS_INTERFACE
+                    return-object v0
+                """
+            )
             addPatchInterface(
                 CONTENT_DRAW_SCOPE_INTERFACE,
                 "patch_getSize",
@@ -220,6 +240,22 @@ val glassNavigationBarPatch = patch(
             }
         }
 
+        BottomNavStackHostFingerprint.matchAll().forEach {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val modifierRegister = it.instructionMatches[1].instruction.registersUsed[1]
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$modifierRegister .. v$modifierRegister }, $EXTENSION_CLASS->getContentModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object v$modifierRegister
+                        check-cast v$modifierRegister, $modifierType
+                    """
+                )
+            }
+        }
+
         if (is_2026_47_0_or_greater) {
             NavScreenContentStateConstructorFingerprint.method.addInstructions(
                 0,
@@ -231,10 +267,6 @@ val glassNavigationBarPatch = patch(
         }
 
         // endregion
-
-        if (is_2026_45_0_or_greater) {
-            hookGlassBlur(drawWithContentMethod)
-        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

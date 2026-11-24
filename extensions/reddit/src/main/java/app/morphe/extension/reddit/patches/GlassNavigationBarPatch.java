@@ -10,11 +10,19 @@ package app.morphe.extension.reddit.patches;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.os.Build;
+
+import androidx.annotation.ChecksSdkIntAtLeast;
+import androidx.annotation.ColorInt;
+
+import java.util.List;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import kotlin.jvm.functions.Function1;
 
@@ -32,11 +40,36 @@ public final class GlassNavigationBarPatch {
         FROSTED
     }
 
+    public static final class FrostedGlassAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.GLASS_NAVIGATION_BAR.get()
+                    && Settings.GLASS_NAVIGATION_BAR_STYLE.get() == GlassStyle.FROSTED;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.GLASS_NAVIGATION_BAR, Settings.GLASS_NAVIGATION_BAR_STYLE);
+        }
+    }
+
+    /**
+     * Compose Canvas.
+     */
+    public interface ComposeCanvas {
+        // Methods are added during patching.
+        Canvas patch_getNativeCanvas();
+
+        void patch_setNativeCanvas(Canvas canvas);
+    }
+
     /**
      * Compose ContentDrawScope. Sizes, offsets and corner radii are two packed floats.
      */
     public interface ContentDrawScope {
         // Methods are added during patching.
+        ComposeCanvas patch_getCanvas();
+
         long patch_getSize();
 
         void patch_drawContent();
@@ -114,6 +147,11 @@ public final class GlassNavigationBarPatch {
     private static final int GLASS_RGB_LIGHT = 0xF2F2F7;
 
     /**
+     * The tint of frosted glass is lighter, so more of the blurred page shows.
+     */
+    private static final float FROSTED_OPACITY = 0.6f;
+
+    /**
      * Corner radius if the ends are not round.
      */
     private static final float CORNER_RADIUS_DP = 18;
@@ -136,20 +174,28 @@ public final class GlassNavigationBarPatch {
     private static final float RAIL_CENTERED_MIN_HEIGHT_DP = 500;
     private static final float RAIL_GAP_DP = 12;
 
-    static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
+    private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
     private static final int OPACITY_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_OPACITY);
+    static final int BLUR_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_BLUR);
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
     private static final int WIDTH_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_WIDTH);
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    private static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+            && GLASS_ENABLED
+            && Settings.GLASS_NAVIGATION_BAR_STYLE.get() == GlassStyle.FROSTED
+            && BLUR_PERCENT > 0;
 
     /**
      * If the Reddit theme is dark, which can be different from the system theme.
      */
-    static boolean isDarkTheme;
+    private static boolean isDarkTheme;
 
     /**
-     * Packed Compose color of the page.
+     * Opaque background color of the page.
      */
-    static long lastPageColor;
+    @ColorInt
+    private static int pageColor = Color.BLACK;
 
     private static boolean isRailCentered;
 
@@ -215,6 +261,17 @@ public final class GlassNavigationBarPatch {
     /**
      * Injection point.
      *
+     * @param modifier Modifier of everything that is behind the navigation bar.
+     */
+    public static Object getContentModifier(Modifier modifier) {
+        return FROSTED_ENABLED
+                ? modifier.patch_drawWithContent(GlassNavigationBarBlur.ContentDraw.INSTANCE)
+                : modifier;
+    }
+
+    /**
+     * Injection point.
+     *
      * @return If the screen content ends above the navigation bar.
      */
     public static boolean padContentForBottomNav(boolean original) {
@@ -258,8 +315,8 @@ public final class GlassNavigationBarPatch {
      * @param color Packed Compose sRGB color, with the ARGB color in the upper 32 bits.
      */
     private static void updateTheme(long color) {
-        lastPageColor = color;
-        isDarkTheme = Color.luminance((int) (color >>> 32)) < 0.5f;
+        pageColor = (int) (color >>> 32) | 0xFF000000;
+        isDarkTheme = Color.luminance(pageColor) < 0.5f;
     }
 
     /**
@@ -285,7 +342,7 @@ public final class GlassNavigationBarPatch {
             height = Math.min(height, rowHeight - top);
         }
 
-        drawCapsule(scope, false, left, top, width - 2 * left, height, density);
+        drawCapsule(scope, left, top, width - 2 * left, height, density, true);
     }
 
     private static void drawRailCapsule(ContentDrawScope scope) {
@@ -297,17 +354,20 @@ public final class GlassNavigationBarPatch {
 
         drawCapsule(
                 scope,
-                true,
                 gap,
                 -verticalGap,
                 unpackFirst(size) - 2 * gap,
                 unpackSecond(size) + 2 * verticalGap,
-                density
+                density,
+                false
         );
     }
 
-    private static void drawCapsule(ContentDrawScope scope, boolean isRail, float left, float top,
-                                    float width, float height, float density) {
+    /**
+     * @param hasPageBehind If the page is behind the capsule, and not only a plain color.
+     */
+    private static void drawCapsule(ContentDrawScope scope, float left, float top, float width,
+                                    float height, float density, boolean hasPageBehind) {
         if (width <= 0 || height <= 0) {
             return;
         }
@@ -315,20 +375,25 @@ public final class GlassNavigationBarPatch {
         final float radius = Settings.GLASS_NAVIGATION_BAR_ROUND_ENDS.get()
                 ? Math.min(width, height) / 2
                 : CORNER_RADIUS_DP * density;
+        final boolean dark = isGlassDark();
 
-        if (!isRail) {
-            GlassNavigationBarBlur.drawBar(scope, left, top, width, height, radius);
+        if (FROSTED_ENABLED && hasPageBehind) {
+            GlassNavigationBarBlur.drawBackdrop(scope, left, top, width, height, radius, pageColor);
         }
+
         scope.patch_drawRoundRect(
-                getGlassColor(),
+                getGlassColor(dark),
                 pack(left, top),
                 pack(width, height),
                 pack(radius, radius)
         );
-        GlassNavigationBarBlur.drawEdge(scope, left, top, width, height, radius);
+
+        if (FROSTED_ENABLED) {
+            GlassNavigationBarBlur.drawEdge(scope, left, top, width, height, radius, dark);
+        }
     }
 
-    static boolean glassIsDark() {
+    private static boolean isGlassDark() {
         return switch (Settings.GLASS_NAVIGATION_BAR_COLOR.get()) {
             case AUTO -> isDarkTheme;
             case LIGHT -> false;
@@ -336,10 +401,10 @@ public final class GlassNavigationBarPatch {
         };
     }
 
-    private static long getGlassColor() {
-        final float factor = GlassNavigationBarBlur.blurActive() ? 0.6f : 1;
-        final long alpha = Math.round(255 * OPACITY_PERCENT / 100f * factor);
-        final long argb = (alpha << 24) | (glassIsDark() ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
+    private static long getGlassColor(boolean dark) {
+        final float opacity = FROSTED_ENABLED ? FROSTED_OPACITY : 1;
+        final long alpha = Math.round(255 * OPACITY_PERCENT * opacity / 100);
+        final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
 
         return argb << 32;
     }
@@ -353,11 +418,11 @@ public final class GlassNavigationBarPatch {
                 | (Float.floatToRawIntBits(second) & 0xFFFFFFFFL);
     }
 
-    private static float unpackFirst(long packed) {
+    static float unpackFirst(long packed) {
         return Float.intBitsToFloat((int) (packed >>> 32));
     }
 
-    private static float unpackSecond(long packed) {
+    static float unpackSecond(long packed) {
         return Float.intBitsToFloat((int) packed);
     }
 }

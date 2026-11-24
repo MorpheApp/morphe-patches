@@ -21,9 +21,6 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal const val BLUR_EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/GlassNavigationBarBlur;"
-
 private const val BOTTOM_NAV_SCREEN_CLASS = "Lcom/reddit/launch/bottomnav/BottomNavScreen;"
 
 internal object BottomNavBarFingerprint : Fingerprint(
@@ -107,6 +104,25 @@ internal object DrawContentFingerprint : Fingerprint(
             "Attempting to drawContent for a `null` node",
             comparison = StringComparisonType.STARTS_WITH
         )
+    )
+)
+
+/**
+ * Draws a Lottie animation using the native Canvas.
+ */
+internal object LottieAnimationDrawFingerprint : Fingerprint(
+    definingClass = $$"Lcom/airbnb/lottie/compose/LottieAnimationKt$LottieAnimation$2;",
+    name = "invoke",
+    returnType = "V",
+    filters = listOf(
+        // DrawScope.drawContext
+        methodCall(parameters = listOf(), returnType = "L"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // DrawContext.canvas
+        methodCall(parameters = listOf(), returnType = "L", location = MatchAfterWithin(5)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // AndroidCanvas.internalCanvas
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Canvas;")
     )
 )
 
@@ -196,6 +212,27 @@ internal object RailBackgroundFingerprint : Fingerprint(
     ) + themeBackgroundFilters
 )
 
+/**
+ * Host of all screens that are behind the bottom navigation bar.
+ * Matches 2 methods with 2026.46.0 and lower, because the layouts with and without
+ * the side rail each have their own copy.
+ */
+internal object BottomNavStackHostFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = BOTTOM_NAV_SCREEN_CLASS,
+            type = "Lcom/reddit/navstack/"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            definingClass = "Lcom/reddit/navstack/",
+            parameters = listOf("L", "L", "Z", "L", "L", "I", "I"),
+            returnType = "V"
+        )
+    )
+)
+
 private object NavScreenContentStateToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
@@ -214,86 +251,4 @@ internal object NavScreenContentStateConstructorFingerprint : Fingerprint(
     classFingerprint = NavScreenContentStateToStringFingerprint,
     name = "<init>",
     parameters = listOf("Z", "Z", "Z", "F", "Z")
-)
-
-internal object LottieDrawFingerprint : Fingerprint(
-    definingClass = "Lcom/airbnb/lottie/compose/LottieAnimationKt\$LottieAnimation\$2;",
-    name = "invoke",
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        methodCall(parameters = listOf(), returnType = "L"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        methodCall(parameters = listOf(), returnType = "L", location = MatchAfterImmediately()),
-        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Canvas;")
-    )
-)
-
-internal object NavContentBoxFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(
-        "Z",
-        "Z",
-        "Z",
-        "Z",
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Landroidx/compose/runtime/internal/a;",
-        "L",
-        "I"
-    ),
-    filters = listOf(
-        literal(0x42c00000),
-        methodCall(definingClass = "Landroidx/compose/ui/b;", name = "c"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
-    )
-)
-
-internal object NavContentBoxLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(
-        "Z",
-        "Z",
-        "Z",
-        "Z",
-        "L",
-        "Landroidx/compose/runtime/internal/a;",
-        "L",
-        "I"
-    ),
-    filters = listOf(
-        literal(0x42c00000),
-        methodCall(definingClass = "Landroidx/compose/ui/b;", name = "c"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
-    )
-)
-
-internal object ComposeCanvasStubFingerprint : Fingerprint(
-    definingClass = BLUR_EXTENSION_CLASS,
-    name = "composeCanvas",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;")
-)
-
-internal object NativeCanvasStubFingerprint : Fingerprint(
-    definingClass = BLUR_EXTENSION_CLASS,
-    name = "nativeCanvas",
-    returnType = "Landroid/graphics/Canvas;",
-    parameters = listOf("Ljava/lang/Object;")
-)
-
-internal object SetNativeCanvasStubFingerprint : Fingerprint(
-    definingClass = BLUR_EXTENSION_CLASS,
-    name = "setNativeCanvas",
-    returnType = "V",
-    parameters = listOf("Ljava/lang/Object;", "Landroid/graphics/Canvas;")
-)
-
-internal object DrawWithContentStubFingerprint : Fingerprint(
-    definingClass = BLUR_EXTENSION_CLASS,
-    name = "drawWithContent",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;", "Lkotlin/jvm/functions/Function1;")
 )
