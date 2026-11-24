@@ -64,7 +64,9 @@ public final class ShortsFilter extends Filter {
             // 'video_lockup_with_attachment.e' is shown instead of 'compact_video.e' for some users
             "video_lockup_with_attachment.e",
             // Search results that appear in a horizontal shelf.
-            "video_card.e"
+            "video_card.e",
+            // Shorts that appear as feed cards in modern layout.
+            "lockup.e"
     };
     private static final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
@@ -190,7 +192,9 @@ public final class ShortsFilter extends Filter {
                 "/oardefault.jpg", // Vertical orientation video.
                 "/oar1.jpg",
                 "/oar2.jpg",
-                "/oar3.jpg")
+                "/oar3.jpg",
+                "heart_black_",
+                "shorts_black_")
         );
 
         shelfHeaderPath = new StringFilterGroup(
