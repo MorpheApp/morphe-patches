@@ -204,8 +204,9 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_comments_menu_button", summary = true),
                     SwitchPreference("morphe_hide_comments_none_yet"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
-                    SwitchPreference("morphe_minimal_comments_button", summary = true),
+                    SwitchPreference("morphe_hide_comments_preview_comment_cards", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button", titleKey = "morphe_hide_thanks_button_title"),
+                    SwitchPreference("morphe_hide_comments_timed_reactions", summary = true),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_hide_comments_top_fans_button"),
                     SwitchPreference("morphe_hide_comments_topics", summary = true),
@@ -230,7 +231,6 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_sync_button"),
             SwitchPreference("morphe_hide_tap_and_hold_gradient", summary = true),
-            SwitchPreference("morphe_hide_timed_reactions", summary = true),
             SwitchPreference("morphe_hide_video_title", summary = true),
             SwitchPreference("morphe_sanitize_video_subtitle", summary = true)
         )

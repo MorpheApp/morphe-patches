@@ -361,7 +361,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_SYNC_BUTTON = new BooleanSetting("morphe_hide_sync_button", FALSE, true);
     public static final BooleanSetting HIDE_TAP_AND_HOLD_GRADIENT = new BooleanSetting("morphe_hide_tap_and_hold_gradient", TRUE);
-    public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
     public static final BooleanSetting HIDE_HELP_FEEDBACK_MENU = new BooleanSetting("morphe_hide_help_feedback_menu", FALSE, true);
     public static final BooleanSetting HIDE_HANDLE = new BooleanSetting("morphe_hide_handle", FALSE);
@@ -568,10 +567,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMMENTS_MENU_BUTTON = new BooleanSetting("morphe_hide_comments_menu_button", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_NONE_YET = new BooleanSetting("morphe_hide_comments_none_yet", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_comments_preview_comment", FALSE);
-    public static final BooleanSetting MINIMAL_COMMENTS_BUTTON = new BooleanSetting("morphe_minimal_comments_button", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT_CARDS = new BooleanSetting("morphe_hide_comments_preview_comment_cards", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION = new BooleanSetting("morphe_hide_comments_section", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_HOME_FEED = new BooleanSetting("morphe_hide_comments_section_in_home_feed", FALSE, parentNot(HIDE_COMMENTS_SECTION));
     public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("morphe_hide_comments_thanks_button", TRUE, true);
+    public static final BooleanSetting HIDE_COMMENTS_TIMED_REACTIONS = new BooleanSetting("morphe_hide_comments_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_TIMESTAMP_BUTTON = new BooleanSetting("morphe_hide_comments_timestamp_button", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_TOP_FANS_BUTTON = new BooleanSetting("morphe_hide_comments_top_fans_button", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_TOPICS = new BooleanSetting("morphe_hide_comments_topics", FALSE);
@@ -1058,7 +1058,9 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_feed_in_related_videos", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_SEARCH = new BooleanSetting("morphe_hide_filter_bar_feed_in_search", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_PAID_PROMOTION_LABEL = new BooleanSetting("morphe_hide_paid_promotion_label", TRUE, true);
+    private static final BooleanSetting DEPRECATED_HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     private static final BooleanSetting DEPRECATED_LIVESTREAM_DVR = new BooleanSetting("morphe_livestream_dvr", FALSE);
+    private static final BooleanSetting DEPRECATED_MINIMAL_COMMENTS_BUTTON = new BooleanSetting("morphe_minimal_comments_button", FALSE);
     private static final BooleanSetting DEPRECATED_OVERRIDE_YOUTUBE_MUSIC_BUTTON = new BooleanSetting("morphe_override_youtube_music_button", FALSE, true);
     private static final StringSetting DEPRECATED_MORPHE_MUSIC_PACKAGE_NAME = new StringSetting("morphe_music_package_name", "app.morphe.android.apps.youtube.music", true, parent(OVERRIDE_YOUTUBE_MUSIC_BUTTONS));
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("morphe_reload_video", FALSE);
@@ -1170,7 +1172,9 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS, HIDE_FILTER_BAR_IN_RELATED_VIDEOS);
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_SEARCH, HIDE_FILTER_BAR_IN_SEARCH);
         migrateOldSettingToNew(DEPRECATED_HIDE_PAID_PROMOTION_LABEL, HIDE_PAID_PROMOTION_LABELS);
+        migrateOldSettingToNew(DEPRECATED_HIDE_TIMED_REACTIONS, HIDE_COMMENTS_TIMED_REACTIONS);
         migrateOldSettingToNew(DEPRECATED_LIVESTREAM_DVR, LIVE_STREAM_DVR);
+        migrateOldSettingToNew(DEPRECATED_MINIMAL_COMMENTS_BUTTON, HIDE_COMMENTS_PREVIEW_COMMENT_CARDS);
         migrateOldSettingToNew(DEPRECATED_OVERRIDE_YOUTUBE_MUSIC_BUTTON, OVERRIDE_YOUTUBE_MUSIC_BUTTONS);
         migrateOldSettingToNew(DEPRECATED_MORPHE_MUSIC_PACKAGE_NAME, CUSTOM_MUSIC_PACKAGE_NAME);
         migrateOldSettingToNew(DEPRECATED_RELOAD_VIDEO, RELOAD_VIDEO_BUTTON);

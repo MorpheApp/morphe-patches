@@ -543,12 +543,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_bag_black"
         );
 
-        final var timedReactions = new StringFilterGroup(
-                Settings.HIDE_TIMED_REACTIONS,
-                "emoji_control_panel",
-                "timed_reaction"
-        );
-
         final var videoThumbnail = new StringFilterGroup(
                 Settings.HIDE_VIDEO_THUMBNAIL,
                 "video_lockup_thumbnail.e"
@@ -635,7 +629,6 @@ public final class LayoutComponentsFilter extends Filter {
                 subscriptionsChipBar,
                 surveys,
                 thumbnailOverlayBadge,
-                timedReactions,
                 videoThumbnail,
                 videoLabels,
                 videoMetadataLabels,

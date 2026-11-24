@@ -344,8 +344,6 @@ Limitations:
     <string name="morphe_hide_sync_button_title">Hide \'Sync to video\' button</string>
     <string name="morphe_hide_tap_and_hold_gradient_title">Hide tap and hold gradient</string>
     <string name="morphe_hide_tap_and_hold_gradient_summary">Hides the player controls gradient when sliding your finger while holding to speed up</string>
-    <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
-    <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_help_feedback_menu_summary">Hides the \'Help &amp; feedback\' menu when using the three-dot button, such as on the search results</string>
     <string name="morphe_hide_handle_title">Hide handle</string>
     <string name="morphe_hide_handle_summary">Hides your channel handle in the \'You\' tab</string>
@@ -464,10 +462,12 @@ Limitations:
     <string name="morphe_hide_comments_menu_button_summary">Hides the 3-dot menu button of each comment</string>
     <string name="morphe_hide_comments_none_yet_title">Hide \'No comments yet\' preview</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
-    <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
+    <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under the video before opening the comments section</string>
     <string name="morphe_hide_comments_preview_comment_hidden">Comment hidden by Morphe…</string>
-    <string name="morphe_minimal_comments_button_title">Enable minimal comments button</string>
-    <string name="morphe_minimal_comments_button_summary">Hides the sliding cards and its page selector, displayed on the comments button</string>
+    <string name="morphe_hide_comments_preview_comment_cards_title">Hide preview comment cards</string>
+    <string name="morphe_hide_comments_preview_comment_cards_summary">Hides the sliding cards and page indicator displayed on the comments button</string>
+    <string name="morphe_hide_comments_timed_reactions_title">Hide timed reactions</string>
+    <string name="morphe_hide_comments_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_hide_comments_top_fans_button_title">Hide \'Top fans\' button</string>
     <string name="morphe_hide_comments_topics_title">Hide \'Topics\'</string>
