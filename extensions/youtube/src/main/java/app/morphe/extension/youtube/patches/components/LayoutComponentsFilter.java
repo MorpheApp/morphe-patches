@@ -163,6 +163,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup subscribedChannelsBarName;
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup surveys;
+    private final StringFilterGroup thumbnailOverlayBadge;
+    private final ByteArrayFilterGroup thumbnailCommissionBadgeBuffer;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroup videoLabelsBuffer;
     private final StringFilterGroup videoMetadataLabels;
@@ -530,6 +532,17 @@ public final class LayoutComponentsFilter extends Filter {
                 "in_short_survey"
         );
 
+        thumbnailOverlayBadge = new StringFilterGroup(
+                Settings.HIDE_VIDEO_LABELS,
+                "thumbnail_badge.e"
+        );
+
+        thumbnailCommissionBadgeBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_experimental_bag_black",
+                "yt_outline_bag_black"
+        );
+
         final var timedReactions = new StringFilterGroup(
                 Settings.HIDE_TIMED_REACTIONS,
                 "emoji_control_panel",
@@ -621,6 +634,7 @@ public final class LayoutComponentsFilter extends Filter {
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
+                thumbnailOverlayBadge,
                 timedReactions,
                 videoThumbnail,
                 videoLabels,
@@ -677,12 +691,12 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * YouTube now also shows community posts on a dedicated community page for channels,
      * and hiding its posts prevents any posts from loading (the page shows a loading
-     * spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
+     * spinner forever) (<a href="https://github.com/MorpheApp/morphe-patches/issues/4101">...</a>).
      * The page is found by its browse id, as the back button it is navigated with is also
      * visible on other pages, such as the search results, and on the page below the watch page.
      * The watch page, with its related videos, comments and other panels, covers the page
      * below it, also when the video is opened from the community page
-     * (https://github.com/MorpheApp/morphe-patches/issues/4170).
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4170">...</a>).
      *
      * @return If the community page of a channel or the page of a post is shown,
      *         where posts must not be hidden.
@@ -860,6 +874,11 @@ public final class LayoutComponentsFilter extends Filter {
                 singleItemInformationPanelIndex.set(-1);
             }
             return false;
+        }
+
+        if (matchedGroup == thumbnailOverlayBadge) {
+            return Utils.contains(path, "thumbnail_overlay_badge.e")
+                    && thumbnailCommissionBadgeBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == videoLabels) {
