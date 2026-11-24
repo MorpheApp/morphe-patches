@@ -447,7 +447,7 @@ internal fun spoofVideoStreamsPatch(
         // The server can also answer a range with only a SABR error and no media. The app finds no media
         // and requests the same range again right away, over and over, until the server sends it, which
         // freezes playback for seconds or minutes. Instead, the response fails like a response with a
-        // server error status, and the app requests the range from a fallback host.
+        // server error status, and the range is requested again without UMP.
         CronetDataSourceReadFingerprint.let {
             val remainingBytesField = it.instructionMatches.last().fieldReference
             val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass

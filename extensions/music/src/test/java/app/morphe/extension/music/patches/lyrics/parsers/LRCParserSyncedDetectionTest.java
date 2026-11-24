@@ -28,9 +28,11 @@ public class LRCParserSyncedDetectionTest {
      */
     @Test
     public void lineTimestampsWithoutWordTimestampsAreSynced() {
-        String lrc = "[00:12.34]Hello world\n"
-                + "[00:15.67]This is a line\n"
-                + "[00:19.01]With line timestamps only\n";
+        String lrc = """
+                [00:12.34]Hello world
+                [00:15.67]This is a line
+                [00:19.01]With line timestamps only
+                """;
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -56,8 +58,10 @@ public class LRCParserSyncedDetectionTest {
      */
     @Test
     public void wordLevelTimestampsAreSynced() {
-        String lrc = "[00:12.34]<00:12.34>Hello<00:12.80> world<00:13.50>\n"
-                + "[00:15.67]Second line with words\n";
+        String lrc = """
+                [00:12.34]<00:12.34>Hello<00:12.80> world<00:13.50>
+                [00:15.67]Second line with words
+                """;
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -136,9 +140,13 @@ public class LRCParserSyncedDetectionTest {
      */
     @Test
     public void metadataPlusTimestampedLinesIsSynced() {
-        String lrc = "[ti:Song Title]\n[ar:Artist]\n[by:Uploader]\n"
-                + "[00:05.00]First lyric line\n"
-                + "[00:08.50]Second lyric line\n";
+        String lrc = """
+                [ti:Song Title]
+                [ar:Artist]
+                [by:Uploader]
+                [00:05.00]First lyric line
+                [00:08.50]Second lyric line
+                """;
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -157,8 +165,10 @@ public class LRCParserSyncedDetectionTest {
      */
     @Test
     public void oldHasWordsCheckFailsForOrdinaryLrc() {
-        String lrc = "[00:12.34]Hello world\n"
-                + "[00:15.67]This is a line\n";
+        String lrc = """
+                [00:12.34]Hello world
+                [00:15.67]This is a line
+                """;
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 

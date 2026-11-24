@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">सेटिंग्ज</string>
   <string name="morphe_settings_confirm_user_dialog_title">तुम्ही नक्की पुढे जाऊ इच्छिता?</string>
   <string name="morphe_settings_save">जतन करा</string>
   <string name="morphe_settings_reset">रीसेट करा</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">भाषांतर</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">अद्ययावत</string>
   <string name="morphe_settings_about_contributors">योगदानकर्ते</string>
-  <string name="morphe_settings_about_contributors_period">मागील १२ महिने</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">सर्वकाळ</string>
+  <string name="morphe_settings_about_contributors_6_months">६ महिने</string>
+  <string name="morphe_settings_about_contributors_3_months">३ महिने</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">कालावधी</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s वापरकर्ते</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">समर्थक</string>
   <string name="morphe_settings_about_supporters_summary">ओपन कलेक्टिववरील बॅकर्स</string>
@@ -222,6 +228,9 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन बं�
 • ॲप अनपेक्षितपणे बंद होऊ शकते
 • सूचना कार्य करू शकत नाहीत
 • पार्श्वभूमीवर प्लेबॅक कार्य करू शकत नाही"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">सिस्टम शेअर शीट उघडा</string>
+  <string name="morphe_open_system_share_sheet_summary">कंटेंट शेअर करताना इन-अ‍ॅप शेअर शीटऐवजी सिस्टम शेअर शीट उघडते</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">ॲप लिंक हाताळणी</string>
   <string name="morphe_link_handling_summary">या ॲपमध्ये उघडण्यासाठी लिंक्स कॉन्फिगर करा</string>

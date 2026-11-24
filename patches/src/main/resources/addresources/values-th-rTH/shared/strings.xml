@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">การตั้งค่า</string>
   <string name="morphe_settings_confirm_user_dialog_title">คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?</string>
   <string name="morphe_settings_save">บันทึก</string>
   <string name="morphe_settings_reset">รีเซ็ต</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">การแปลภาษา</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">เป็นปัจจุบัน</string>
   <string name="morphe_settings_about_contributors">ผู้สนับสนุน</string>
-  <string name="morphe_settings_about_contributors_period">12 เดือนที่ผ่านมา</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">ตลอดเวลา</string>
+  <string name="morphe_settings_about_contributors_6_months">6 เดือน</string>
+  <string name="morphe_settings_about_contributors_3_months">3 เดือน</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">ช่วงเวลา</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">ผู้ใช้ %s คน</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">ผู้สนับสนุน</string>
   <string name="morphe_settings_about_supporters_summary">ผู้สนับสนุนบน Open Collective</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • แอปพลิเคชันอาจปิดโดยสุ่ม
 • การแจ้งเตือนอาจใช้งานไม่ได้
 • การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">เปิดแผ่นแชร์ระบบ</string>
+  <string name="morphe_open_system_share_sheet_summary">เปิดแผ่นแชร์ของระบบแทนแผ่นในแอปเมื่อแชร์เนื้อหา</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">การจัดการลิงก์แอป</string>
   <string name="morphe_link_handling_summary">กำหนดค่าลิงก์ให้เปิดในแอปนี้</string>

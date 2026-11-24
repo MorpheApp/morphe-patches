@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -25,24 +26,46 @@ internal fun disableDRCAudioPatch(
     useNormalizationFlag: PatchDefinition.() -> Boolean
 ) = patch(
     name = "Disable DRC audio",
-    description = "Adds an option to disable DRC (Dynamic Range Compression) audio."
+    description = "Adds options to disable DRC (Dynamic Range Compression) audio and loudness normalization."
 ) {
 
     block()
 
     execute {
         preferenceScreen.addPreferences(
-            SwitchPreference("morphe_disable_drc_audio")
+            SwitchPreference("morphe_disable_drc_audio_stream", summary = true),
+            SwitchPreference("morphe_disable_loudness_normalization", summary = true)
         )
+
+        // Audio formats can have a DRC version, which the player plays if DRC audio is enabled.
+        // Media requests also include the preference. Both get it from the same method,
+        // which all the places that create the request preferences call.
+        PlaybackAgnosticUserPreferencesFingerprint.matchAll().first()
+            .instructionMatches.first().getMethodCalled().apply {
+                val free = findFreeRegister(0)
+
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->disableDrcAudio()Z
+                        move-result v$free
+                        if-eqz v$free, :drc_audio_enabled
+                        const/4 v$free, 0x0
+                        return v$free
+                        :drc_audio_enabled
+                        nop
+                    """
+                )
+            }
 
         // Nullifying the first parameter/check will disable the normalization.
         fun normalizationSmali(free: String, register: String) =
             """
-                invoke-static { }, $EXTENSION_CLASS->disableDrcAudio()Z
+                invoke-static { }, $EXTENSION_CLASS->disableLoudnessNormalization()Z
                 move-result $free
-                if-eqz $free, :disable_drc_audio
+                if-eqz $free, :loudness_normalization_enabled
                 const/16 $register, 0x0
-                :disable_drc_audio
+                :loudness_normalization_enabled
                 nop
             """
 

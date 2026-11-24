@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Ρυθμίσεις</string>
   <string name="morphe_settings_confirm_user_dialog_title">Είστε βέβαιοι ότι θέλετε να συνεχίσετε;</string>
   <string name="morphe_settings_save">Αποθήκευση</string>
   <string name="morphe_settings_reset">Επαναφορά</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Μεταφράσεις</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ενημερωμένο</string>
   <string name="morphe_settings_about_contributors">Συνεισφέροντες</string>
-  <string name="morphe_settings_about_contributors_period">Τελευταίοι 12 μήνες</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Όλος ο χρόνος</string>
+  <string name="morphe_settings_about_contributors_6_months">6 μήνες</string>
+  <string name="morphe_settings_about_contributors_3_months">3 μήνες</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Χρονική περίοδος</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s χρήστες</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Υποστηρικτές</string>
   <string name="morphe_settings_about_supporters_summary">Χορηγοί στο Open Collective</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • Η εφαρμογή ενδέχεται να κλείνει τυχαία
 • Οι ειδοποιήσεις ενδέχεται να μην λειτουργούν
 • Η αναπαραγωγή στο παρασκήνιο ενδέχεται να μην λειτουργεί"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Άνοιγμα φύλλου κοινής χρήσης συστήματος</string>
+  <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινοποίησης του συστήματος αντί για αυτό της εφαρμογής κατά την κοινοποίηση περιεχομένου</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Διαχείριση συνδέσμων εφαρμογών</string>
   <string name="morphe_link_handling_summary">Διαμόρφωση συνδέσμων για άνοιγμα σε αυτήν την εφαρμογή</string>

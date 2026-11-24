@@ -89,7 +89,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_guest_edits">Tamu dapat mengedit antrean</string>
   <string name="morphe_music_jam_end_jam">Akhiri Jam</string>
   <string name="morphe_music_jam_participant_help">Host memutar musik. Tambahkan, pindahkan, atau hapus lagu secara langsung di antrean YouTube Music</string>
-  <string name="morphe_music_jam_joining_help">Jauhkan kedua perangkat tetap berdekatan. Anda dapat membatalkan sambil kami mencari host</string>
+  <string name="morphe_music_jam_joining_help">Jaga kedua perangkat tetap berdekatan. Anda dapat membatalkan sambil kami mencari host</string>
   <string name="morphe_music_jam_cancel_joining">Batalkan bergabung</string>
   <string name="morphe_music_jam_leave_jam">Tinggalkan Jam</string>
   <string name="morphe_music_jam_start_jam">Mulai Jam</string>
@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Kustom</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Putar trek audio album</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Putar versi audio saja dari lagu-lagu album alih-alih video musik. Memerlukan \'Palsukan aliran video\'</string>
+  <string name="morphe_music_play_album_songs_summary">Putar lagu-lagu dari album sebagai ganti video musiknya</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Aktifkan pengalih audio/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Coba alihkan Versi Trek Audio dan Video Musik Resmi</string>
@@ -144,6 +143,8 @@ Folder ekspor: %s"</string>
   <string name="morphe_export_download_failed">Tidak dapat mengekspor unduhan</string>
   <string name="morphe_export_download_all_flyout_title">Ekspor semua ke perangkat</string>
   <string name="morphe_export_download_all_started">Mengekspor semua unduhan</string>
+  <string name="morphe_export_download_all_title">Semua unduhan</string>
+  <string name="morphe_export_download_playlist_started">Mengekspor unduhan</string>
   <string name="morphe_export_download_all_running">Unduhan sedang diekspor</string>
   <string name="morphe_export_download_all_saved">Mengekspor %1$s dari %2$s unduhan ke %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Sembunyikan iklan video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Sembunyikan tombol pengalih Audio / Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Sembunyikan tombol Unduh</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Menyembunyikan tombol Unduh di acara podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Sembunyikan rak Jelajah</string>
   <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah penyaring</string>
   <string name="morphe_music_hide_grid_shelves_title">Sembunyikan rak kisi</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Sembunyikan rak horizontal</string>
+  <string name="morphe_music_hide_new_button_title">Sembunyikan tombol Baru</string>
+  <string name="morphe_music_hide_new_button_summary">Menyembunyikan tombol Baru di tab Koleksi</string>
   <string name="morphe_music_hide_list_shelves_title">Sembunyikan rak daftar</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel Lirik</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Sembunyikan tombol Bagikan</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sembunyikan rak \'Baru dari\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sembunyikan deretan daftar putar</string>
@@ -199,6 +200,8 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Pudar silang</string>
   <string name="morphe_music_crossfade_screen_summary">Padukan trek satu sama lain dengan mulus</string>
   <string name="morphe_music_crossfade_enabled_title">Aktifkan pudar silang</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Untuk menggunakan crossfade, ubah \'Klien default\' \'Spoof video streams\' menjadi \'TV Simply\' atau \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Kurva pemudaran</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Daya yang sama</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Genggaman yang halus</string>
@@ -232,7 +235,9 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Pudar silang dijeda untuk sesi ini</string>
   <string name="morphe_music_crossfade_resumed_toast">Pudar silang dilanjutkan</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Mode video tidak tersedia saat pudar silang diaktifkan</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade nonaktif saat pemutaran SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade tidak berfungsi dengan \'visionOS\'. Ubah \'Klien default\' \'Spoof video streams\' menjadi \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade tidak berfungsi dengan klien spoof stream ini</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade nonaktif saat casting</string>
   <string name="morphe_music_crossfade_about_how_title">Cara kerjanya</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade menumpangkan akhir satu lagu dengan awal lagu berikutnya, menggunakan durasi dan kurva Anda
@@ -249,9 +254,7 @@ Layar kunci atau notifikasi dapat menampilkan status usang sesaat di tengah tran
 
 Menjeda crossfade untuk menonton video musik dapat membuat beberapa video menjadi hitam. Menjeda crossfade sebelum Anda memilih lagu akan menghindari hal tersebut"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Tidak didukung</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting atau mirroring audio (Chromecast, mirroring layar atau audio)
-
-Pemutaran SABR (Spoof aliran video dimatikan)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Mencasting atau mirroring audio (Chromecast, mirroring layar atau audio)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Fitur pudar silang oleh VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Jeda saat dibisukan</string>
   <string name="morphe_music_pause_when_muted_summary">Menjeda pemutaran saat volume sistem dibisukan dan melanjutkannya saat volume dinaikkan</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Tombol Cast juga dapat melakukan streaming ke Sonos dan speaker UPnP lainnya di jaringan Wi-Fi Anda</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Hubungkan ke perangkat</string>
+  <string name="morphe_music_sonos_cast_searching">Mencari speaker di jaringan Wi-Fi Anda…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Pilih speaker di jaringan Wi-Fi Anda</string>
+  <string name="morphe_music_sonos_cast_casting_to">Menyambungkan ke %s</string>
+  <string name="morphe_music_sonos_cast_connected">Tersambung</string>
+  <string name="morphe_music_sonos_cast_disconnect">Putuskan Sambungan</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Speaker di Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktif</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Perangkat Chromecast, Nest, dan Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Tidak dapat menyambung ke %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Kecepatan pemutaran</string>
   <string name="morphe_music_playback_speed_summary">Kecepatan yang digunakan untuk semua trek. Pada 100%, kecepatan aplikasi digunakan, seperti kecepatan pemutaran podcast.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ubah nada sesuai kecepatan</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Tampilkan menu efek Video</string>
+  <string name="morphe_music_video_effect_menu_summary">Menambahkan efek Video ke menu pemutar saat video diputar</string>
+  <string name="morphe_music_video_effect_next_video">Efek akan muncul mulai dari video berikutnya</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Matikan teks otomatis</string>
   <string name="morphe_music_disable_auto_captions_summary">Keterangan tidak diaktifkan secara otomatis saat video dimulai, termasuk keterangan yang diaktifkan video secara default</string>
@@ -279,6 +300,10 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nonaktifkan pengalihan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Mencegah peralihan ke trek berikutnya saat tombol tidak suka ditekan</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Nonaktifkan usapan untuk beralih trek</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Mencegah lompatan ke trek berikutnya atau sebelumnya dengan mengusap ke kiri atau kanan pada pemutar</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Mencegah lompatan ke trek berikutnya atau sebelumnya dengan mengusap ke kiri atau kanan pada miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Loop A-B</string>
   <string name="morphe_music_ab_loop_summary">Tekan lama seekbar untuk mengatur awal loop, tekan lagi untuk mengatur akhir loop, dan tekan sekali lagi untuk menghapus loop</string>
@@ -329,15 +354,6 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_playlist_tags_rename">Ubah nama</string>
   <string name="morphe_music_playlist_tags_delete">Hapus</string>
   <string name="morphe_music_playlist_tags_hidden">Disembunyikan</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
-  <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
-  <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol Telusuri</string>
-  <string name="morphe_music_hide_voice_search_button_title">Sembunyikan tombol pencarian Suara</string>
-  <string name="morphe_music_hide_sound_search_button_title">Sembunyikan tombol pencarian suara</string>
-  <string name="morphe_music_hide_library_new_button_title">Sembunyikan tombol Baru</string>
-  <string name="morphe_music_hide_library_new_button_summary">Menyembunyikan tombol Baru di tab Koleksi</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_music_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan di bawah pemutar</string>
@@ -409,22 +425,20 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Paksa orientasi potret</string>
   <string name="morphe_music_force_portrait_orientation_summary">Menjaga aplikasi tetap pada orientasi potret saat perangkat diputar</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Ubah warna pemutar mini</string>
+  <string name="morphe_music_change_miniplayer_color_title">Ganti warna</string>
   <string name="morphe_music_change_miniplayer_color_summary">Menyesuaikan warna pemutar mini dengan pemutar layar penuh</string>
   <string name="morphe_music_change_navigation_bar_color_title">Ubah warna bilah navigasi</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Menyesuaikan warna bilah navigasi dengan pemutar layar penuh</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Tampilkan tombol berikutnya di pemutar mini</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Tampilkan tombol sebelumnya di pemutar mini</string>
+  <string name="morphe_music_miniplayer_next_button_title">Tampilkan tombol Berikutnya</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Tampilkan tombol Sebelumnya</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Aktifkan paksa pemutar mini</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Mencegah pemutar otomatis membesar ke layar penuh saat trek baru dimulai</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktifkan usap untuk menutup pemutar mini</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktifkan usap untuk menutup</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Mengizinkan untuk menutup pemutar mini dengan mengusapnya ke bawah</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Bilah navigasi</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Sembunyikan tombol Beranda</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Sembunyikan tombol Koleksi</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Sembunyikan tombol Upgrade</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Tampilkan tombol Setelan</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Tindakan tombol Setelan</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Saat diaktifkan, ketuk membuka setelan Morphe dan tahan membuka setelan YouTube Music, nonaktifkan untuk menukarnya</string>
   <string name="morphe_music_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sembunyikan label tombol navigasi</string>
   <string name="morphe_music_navigation_bar_glass_title">Aktifkan bilah navigasi glass</string>
@@ -457,7 +474,7 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Menyembunyikan sorotan bulat di belakang tombol terpilih pada bilah navigasi kaca</string>
   <string name="morphe_music_miniplayer_screen_title">Pemutar mini</string>
   <string name="morphe_music_miniplayer_screen_summary">Ubah gaya, tombol, dan gestur pemutar mini</string>
-  <string name="morphe_music_miniplayer_glass_title">Aktifkan pemutar mini kaca</string>
+  <string name="morphe_music_miniplayer_glass_title">Aktifkan efek kaca</string>
   <string name="morphe_music_miniplayer_glass_summary">Menampilkan pemutar mini mengambang sebagai kartu kaca transparan yang bulat</string>
   <string name="morphe_music_miniplayer_glass_style_title">Gaya pemutar mini kaca</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Sesuaikan radius sudut, padding karya seni, kecerahan tepi, dan opasitas pemutar mini kaca, dengan pratinjau</string>
@@ -465,11 +482,8 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding karya seni</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kecerahan tepi</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opasitas</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Blur kaca</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Seberapa banyak halaman di belakang pemutar mini kaca dikaburkan (Android 14 dan versi terbaru). Pada angka 0 halaman terlihat tajam, dan sebelum Android 14 halaman akan tertutup</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Kaca terang</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Memberi warna putih pada pemutar mini kaca alih-alih gelap, untuk kaca yang lebih terang dan jernih</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Warna sampul album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Memberi warna pada pemutar mini kaca dengan warna sampul album dari lagu yang sedang diputar</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Karya seni berputar</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Membuat karya seni pada pemutar mini kaca menjadi bulat, dan memutarnya seperti piringan hitam saat lagu diputar</string>
@@ -480,6 +494,15 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Sampel</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Jelajahi</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Koleksi</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Sembunyikan tombol Aktivitas</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Sembunyikan tombol \'Tanya Musik\'</string>
+  <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
+  <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
+  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol Telusuri</string>
+  <string name="morphe_music_hide_voice_search_button_title">Sembunyikan tombol \'Pencarian suara\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Sembunyikan tombol \'Pencarian suara\'</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Belum masuk. Ketuk untuk mengonfigurasi</string>
   <string name="morphe_music_scrobbling_log_out">Keluar</string>
@@ -583,6 +606,9 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <string name="morphe_music_soundproof_about_summary">"Data artis berasal dari SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), yang diunduh sekali sehari. Melewati tidak mengirimkan apa pun tentang apa yang Anda mainkan. Membuka lembar SoundProof mengirimkan nama artis saat ini ke server SoundProof untuk menampilkan pemungutan suara terbaru dan untuk memberikan suara. Server membedakan pemilih berdasarkan alamat IP, sehingga suara Anda mungkin muncul secara berbeda di jaringan lain.
 
 Basis data ini dilisensikan di bawah ODC Open Database License (ODbL). Entri dari Soul Over AI oleh xoundbyte dilisensikan di bawah CC BY 4.0. Tidak terafiliasi dengan atau didukung oleh SoundProof atau Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Karya seni animasi Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Menampilkan karya seni album animasi dari Apple Music di pemutar, jika album tersebut memilikinya. Judul, artis, dan album dari setiap lagu dikirim ke Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Lirik tidak tersedia untuk file perangkat ini.</string>
   <string name="morphe_music_lyrics_enabled_title">Gunakan lirik pihak ketiga</string>
@@ -635,6 +661,25 @@ Kolom pertama adalah kata, kolom kedua adalah bacanya; kolom ekstra dan baris ta
   <string name="morphe_music_lyrics_clear_cache_title">Hapus lirik tersimpan</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Hapus %s MB lirik yang tersimpan di perangkat ini</string>
   <string name="morphe_music_lyrics_clear_cache_done">Dibersihkan %s MB</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Menghitung ukuran cache…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Cache Lirik</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Hapus Cache Lirik</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d lagu)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Cache Terjemahan</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Hapus Cache Terjemahan</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d terjemahan)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Cache Transliterasi</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Hapus Cache Transliterasi</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterasi)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Total Penggunaan Cache</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Hapus Semua Cache</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d item)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Hapus</string>
+  <string name="morphe_music_lyrics_cache_close_action">Tutup</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Hapus %1$s MB (%2$d lagu) lirik tersimpan yang ada di perangkat ini?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Hapus %1$s MB (%2$d terjemahan) terjemahan tersimpan yang ada di perangkat ini?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Hapus %1$s MB (%2$d transliterasi) transliterasi tersimpan yang ada di perangkat ini?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Hapus %1$s MB (%2$d item) semua data lirik tersimpan yang ada di perangkat ini?</string>
   <string name="morphe_music_token_dialog_get_token">Dapatkan token</string>
   <string name="morphe_music_apple_music_token_title">Token Pengguna Media Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Tempel cookie media-user-token dari music.apple.com
@@ -690,8 +735,11 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_tap_to_seek_summary">Ketuk baris untuk melompat ke momen tersebut dalam lagu, tekan lama untuk menyalin kata di bawah jari Anda, atau seluruh baris ketika tekanan tidak mengenai kata. Matikan untuk menonaktifkan kedua tindakan ini</string>
   <string name="morphe_music_lyrics_show_section_title">Tampilkan tag bagian</string>
   <string name="morphe_music_lyrics_show_section_summary">Beri label setiap bagian baru lirik dengan tag kecil, seperti Bait atau Reff</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Ketuk untuk menyalin lirik asli sebagai teks biasa; tekan lama untuk menyimpan file sumber lirik mentah dan file TTML yang telah dikonversi ke Unduhan</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin / Bagikan</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Tampilkan tombol Salin atau Bagikan pada toolbar panel lirik</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Mode tombol Salin</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Mode salin (ketuk untuk menyalin, tekan lama untuk menyimpan)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Mode bagikan (ketuk untuk memilih 1-5 baris, tekan lama untuk menyalin atau menyimpan)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tampilkan tombol Terjemahan</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengaktifkan/menonaktifkan terjemahan; tekan lama hanya untuk terjemahan. Menggunakan penyedia terjemahan yang diaktifkan sesuai urutan yang tercantum</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi atau Transliterasi</string>
@@ -705,7 +753,48 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Pembacaan siap (%s entri)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Pengunduhan gagal - matikan dan nyalakan kembali untuk mencoba lagi</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Kamus Luring</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Jepang (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Jepang</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — penganalisis morfologi &amp; ruby cepat</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — kamus kata bahasa Jepang lengkap</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Prioritas &amp; urutan cadangan</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Prioritas Kuromoji (cadangan SudachiDict)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">Prioritas SudachiDict (cadangan Kuromoji)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Font lirik kustom</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Font sistem default (ketuk untuk mengunggah file font .ttf atau .otf)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Font aktif: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Unggah file font .ttf atau .otf (seperti SF Pro Bold, Inter Bold, atau Inter ExtraBold) dari penyimpanan perangkat Anda untuk digunakan di seluruh tampilan lirik.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Unggah font</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Atur ulang ke bawaan</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Font lirik kustom diterapkan: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Dikembalikan ke font lirik default</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Berkas font tidak valid atau tidak didukung (diperlukan .ttf atau .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Bagikan lirik</string>
+  <string name="morphe_music_lyrics_share_button">Bagikan</string>
+  <string name="morphe_music_lyrics_copy">Salin</string>
+  <string name="morphe_music_lyrics_share_options_title">Tindakan lirik</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Salin lirik sebagai teks biasa</string>
+  <string name="morphe_music_lyrics_save_file_option">Simpan lirik &amp; TTML ke Unduhan</string>
+  <string name="morphe_music_lyrics_share_cancel">Batalkan</string>
+  <string name="morphe_music_lyrics_share_select_hint">Ketuk 1–5 baris untuk dibagikan</string>
+  <string name="morphe_music_lyrics_share_max_lines">Maksimal 5 baris yang dapat dipilih</string>
+  <string name="morphe_music_lyrics_share_failed">Tidak dapat membuat kartu berbagi lirik</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Buram</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Sampul</string>
+  <string name="morphe_music_lyrics_share_bg_color">Berwarna</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Foto</string>
+  <string name="morphe_music_lyrics_share_branding_logo">Logo YT Music</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Terjemahkan</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Vokal BG</string>
+  <string name="morphe_music_lyrics_share_custom_color">Warna kustom</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Tidak dapat memuat gambar yang dipilih</string>
+  <string name="morphe_music_lyrics_share_card_cta">Bagikan kartu</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Salin teks</string>
+  <string name="morphe_music_lyrics_share_back">Kembali ke pemilihan lirik</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Memuat foto...</string>
+  <string name="morphe_music_lyrics_share_preparing">Membuat kartu...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Sampel warna %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Trek tidak dikenal</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Karakter Tionghoa dan Kantonis (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kata Tionghoa (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasi Yunani, Slavia Cyrillic (termasuk Rusia, Ukraina, Bulgaria, Serbia, Belarusia, Makedonia), Georgia, Armenia, Ibrani, Arab, Amharik, dan Syria (CLDR, ~0,5 MB)</string>

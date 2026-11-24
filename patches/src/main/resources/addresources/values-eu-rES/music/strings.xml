@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Kustomizatua</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Erreproduzitu albumeko audio-pistak</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Erreproduzitu abestien albumeko audio-bertsioa musika-bideoaren ordez. \'Spoof video streams\' behar du</string>
+  <string name="morphe_music_play_album_songs_summary">Albume baten abestuak jo abesti-bideoen ordez</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Gaitu audio/bideo aldauntza</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Saiatu Audio Track bertsioa eta Musikako Bideo Ofiziala aldatzen</string>
@@ -144,6 +143,8 @@ Esportazio karpeta: %s"</string>
   <string name="morphe_export_download_failed">Ezin izan da deskarga esportatu</string>
   <string name="morphe_export_download_all_flyout_title">Guztiak gailura esportatu</string>
   <string name="morphe_export_download_all_started">Deskarga guztiak esportatzen ari zara</string>
+  <string name="morphe_export_download_all_title">Deskarga guztiak</string>
+  <string name="morphe_export_download_playlist_started">Deskarguen esportatzen</string>
   <string name="morphe_export_download_all_running">Deskargak esportatzen ari dira behera</string>
   <string name="morphe_export_download_all_saved">%2$s deskargatik %1$s esportatu dira %3$s-ra</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Esportazio karpeta: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Ezkutatu bideo-iragarkiak</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ezkutatu Audio / Bideo aldatzailea</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ezkutatu Deskargatu botoia</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Ezkutatzen du Deskargatu botoia podcast saioan</string>
   <string name="morphe_music_hide_explore_shelf_title">Ezkutatu Explore estantea</string>
   <string name="morphe_music_hide_filter_bar_title">Ezkutatu iragazki-barra</string>
   <string name="morphe_music_hide_grid_shelves_title">Ezkutatu sare estanteak</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ezkutatu estante horizontalak</string>
+  <string name="morphe_music_hide_new_button_title">Ezkutatu Berria botoia</string>
+  <string name="morphe_music_hide_new_button_summary">Liburutegi fitxan dagoen Berria botoia ezkutatzen du</string>
   <string name="morphe_music_hide_list_shelves_title">Ezkutatu zerrenda estanteak</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Letren panela</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ezkutatu Partekatu botoia</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ezkutatu Itzulpen botoia</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ezkutatu \'Berriak\' estantea</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ezkutatu zerrenden estanteak</string>
@@ -199,6 +200,8 @@ Esportazio karpeta: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade-a</string>
   <string name="morphe_music_crossfade_screen_summary">Pistak elkarren artean leunki nahastu</string>
   <string name="morphe_music_crossfade_enabled_title">Gaitu crossfade-a</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade erabiltzeko, \'Spoof video streams\' \'Default client\' \'TV Simply\' edo \'visionOS\' alda behar zara</string>
   <string name="morphe_music_crossfade_curve_title">Itzal-kurba</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Potentzia berdin</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Eutsi sutila</string>
@@ -232,7 +235,9 @@ Esportazio karpeta: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade pausatuta saio honetarako</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade berraktivatu da</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Bideo modua ez dago eskuragarri crossfade aktibatuta dagoen bitartean</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade desaktibatuta dago SABR erreprodukzioarekin</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade-ak ez du \'visionOS\'-ekin funtzionatzen. Aldatu \'Spoof video streams\' \'Default client\' \'TV Simply\'-ra</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade-ak ez dabil spoof fluxu-bezero honekin</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade desaktibatuta dago casting egitean</string>
   <string name="morphe_music_crossfade_about_how_title">Nola funtzionatzen duen</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade-ak kanta baten amaiera eta hurrengoaren hasiera gainjartzen ditu, zure iraupena eta kurba erabiliz
@@ -249,9 +254,7 @@ Pantaila blokeoak edo jakinarazpenek egoera zaharkitua erakuts dezakete trantsiz
 
 Crossfade pausatzeak musika bideo bat ikusteko zenbait bideo beltz utz ditzake. Abestia aukeratu aurretik crossfade pausatzeak hau saihesten du"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Ez dago supportatua</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Audioa transmititzea edo mirroring egitea (Chromecast, pantaila edo audio mirroring)
-
-SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Audioa transmititzea edo mirror-atzea (Chromecast, pantaila edo audio mirror-atzea)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredituak</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade funtzionalitatea VazerOG-k egina</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Gelditu isilduta dagoenean</string>
   <string name="morphe_music_pause_when_muted_summary">Erregengatzea gelditua izango da sistemaren bolumena isilduta dagoenean eta berriz hartuko du bolumena igotzean</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast botoia Sonos-era eta zure Wi-Fi sareko beste UPnP altavozaietara ere transmitit edo sakatu ahal izateko da</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Gailu batean konektatu</string>
+  <string name="morphe_music_sonos_cast_searching">Zure Wi-Fi sareko altavozaiak bilatzen...</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Aukeratu zure Wi-Fi sareko altabozai bat</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s-ra bidaltzen</string>
+  <string name="morphe_music_sonos_cast_connected">Konektatuta</string>
+  <string name="morphe_music_sonos_cast_disconnect">Deskonektatu</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Bokaltzailak Wi-Fi-n</string>
+  <string name="morphe_music_sonos_cast_active">Aktibo</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest eta Google TV gailuak</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s-rekin konektatu ezin da</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Erreprodukzio abiadura</string>
   <string name="morphe_music_playback_speed_summary">Pista guztietan erabiltzen den abiadura. %100ean, aplikazioaren abiadura erabiltzen da, podcasten erreprodukzio abiadura bezalakoa</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Aldatu tonua abiadurarekin</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Erakutsi bideo-efektuen menua</string>
+  <string name="morphe_music_video_effect_menu_summary">Bideo bat erreproduzitzen den bitartean, bideo-efektua gehitzen du sehailairen menuera</string>
+  <string name="morphe_music_video_effect_next_video">Efektua hurrengo bideotik agertuko da</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Desaktibatu bertakarizko azpianarriak</string>
   <string name="morphe_music_disable_auto_captions_summary">Bideo bat hasten denean azpianarriak automatikoki aktibatuko ez dira, bideoak lehenetsi izaten dituen azpianarriak barne</string>
@@ -279,6 +300,10 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desaktibu ez-gustu bideratzea</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Ez-gustu botoia sakatzean hurrengo pistara salto egitea ekiditen du</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Desgaitu irristatzea pista aldatzeko</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Hizpatzatuan ezquierda edo eskuinean irristatuz hurrengo pistara edo aurreko pistara salto egitea ekiditen du</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Miniplayer-ean ezquierda edo eskuinean irristatuz hurrengo pistara edo aurreko pistara salto egitea ekiditen du</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B loopa</string>
   <string name="morphe_music_ab_loop_summary">Lutsu sakatu seekbar-a loop-aren hasiera ezartzeko, berriz loop-aren amaiera ezartzeko, eta berriz loop-a garbitzeko</string>
@@ -329,15 +354,6 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_playlist_tags_rename">Berrizendatu</string>
   <string name="morphe_music_playlist_tags_delete">Ezabatu</string>
   <string name="morphe_music_playlist_tags_hidden">Ezkutuan</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Ezkutatu Cast botoia</string>
-  <string name="morphe_music_hide_history_button_title">Ezkutatu Historia botoia</string>
-  <string name="morphe_music_hide_notification_button_title">Ezkutatu Jakinarazpen botoia</string>
-  <string name="morphe_music_hide_search_button_title">Ezkutatu Bilaketa botoia</string>
-  <string name="morphe_music_hide_voice_search_button_title">Ezkutatu ahozko bilaketa botoia</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ezkutatu soinu bidezko bilaketa botoia</string>
-  <string name="morphe_music_hide_library_new_button_title">Berria botoia ezkutatu</string>
-  <string name="morphe_music_hide_library_new_button_summary">Liburutegi fitxako Berria botoia ezkutatzen du</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Ekintza botoiak</string>
   <string name="morphe_music_action_buttons_screen_summary">Aukeratu zein ekintza-botoi agertu behar diren erreproduzigailuaren azpian</string>
@@ -409,22 +425,20 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Behartu orientazio bertikala</string>
   <string name="morphe_music_force_portrait_orientation_summary">Gailua biratzen denean aplikazioa bertikal mantentzen du</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Aldatu mini-playeraren kolorea</string>
+  <string name="morphe_music_change_miniplayer_color_title">Aldatu kolorea</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniplayerraren kolorea pantaila osoko erreproduzitzailearekin bat dator</string>
   <string name="morphe_music_change_navigation_bar_color_title">Aldatu nabigazio-barraren kolorea</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Nabigazio-barraren kolorea pantaila osoko erreproduzitzailearekin bat egiten du</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Erakutsi botoi hurrengoa miniplayer-en</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Erakutsi botoi aurrekoa miniplayer-en</string>
+  <string name="morphe_music_miniplayer_next_button_title">Erakutsi Hurrengo botoia</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Erakutsi Aurrekoa botoia</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Gaitu behartutako miniplayer-a</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Kantu berri bat hasten denean erreproduzitzailea pantaila osoan automatikoki zabaltzea ekiditen du</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Gaitu miniplayer-a irristatuz ixteko aukera</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Gaitu irristatuz ixteko aukera</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Miniplayer-a beherantz irristatuz ixteko aukera ematen du</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Nabigazio-barra</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Aukeratu zein botoi agertzen diren beheko nabigazio-barran</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ezkutatu Hasiera botoia</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Liburutegia botoia ezkutatu</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ezkutatu Eguneratu botoia</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Erakutsi Konfigurazio botoia</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Konfigurazio botoiaren ekintza</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Gaituta dagoenean, ukitzean Morphe konfigurazioa irekitzen da eta luze sakatzean YouTube Music konfigurazioa; desgaitu trukatzeko</string>
   <string name="morphe_music_hide_navigation_bar_title">Ezkutatu nabigazio-barra</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ezkutatu nabigazio-botoien etiketak</string>
   <string name="morphe_music_navigation_bar_glass_title">Gactivate nabigazio-barraren beirrotza</string>
@@ -457,7 +474,7 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Nabigazio-barrareko beirtearen hautatutako botoiaren atzealdeko nabarmendu birbildua ezkutatzen du</string>
   <string name="morphe_music_miniplayer_screen_title">Miniplayerra</string>
   <string name="morphe_music_miniplayer_screen_summary">Aldatu miniplayerraren estiloa, botoiak eta kezturak</string>
-  <string name="morphe_music_miniplayer_glass_title">Gaitu beiramen miniplayer-a</string>
+  <string name="morphe_music_miniplayer_glass_title">Gaitu beiramen efektua</string>
   <string name="morphe_music_miniplayer_glass_summary">Flotante miniplayer-a beiramen txerto birribil eta garduna gisa erakusten du</string>
   <string name="morphe_music_miniplayer_glass_style_title">Beiramen miniplayer-aren estiloa</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Doitu beiramen miniplayer-aren gaineko ertzen raioa, artelanaren padding-a, ertzaren argitasuna eta opazitatea, aurbikusi batekin</string>
@@ -465,11 +482,8 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Artelanaren padding-a</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kanpoko ertzaren distira</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opakutasuna</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Itsasaren blurra</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Itsas miniplayeraren atzean dagoen orria zenbat blurratzen den (Android 14 eta berriago). 0-an, orria zoztzez agertzen da, eta Android 14 aurretik, orria estaltzen da</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Itsas argia</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Itsas miniplayerari kolore zuria ematen dio iluna izan behinetsen, itsas argiago eta garbiago lortzeko</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Album-artearen tinta</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Miniplayerreko beirrotatinga soinutxoaren album-artearen kolorearekin tintatzen du</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Irudi rotatinga</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Miniplayerreko beirrotatingaren irudia birbildu eta, disko bat bezala birdura egiten dio abestia txalondoan dagoen bitartean</string>
@@ -480,6 +494,15 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Lagoonak</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Arakatu</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Liburutegia</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Ezkutatu Jarduera botoia</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Ezkutatu \'Galdetu Music\'-i botoia</string>
+  <string name="morphe_music_hide_cast_button_title">Ezkutatu Cast botoia</string>
+  <string name="morphe_music_hide_history_button_title">Ezkutatu Historia botoia</string>
+  <string name="morphe_music_hide_search_button_title">Ezkutatu Bilaketa botoia</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ezkutatu \'Ahozko bilaketa\' botoia</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ezkutatu \'Soinu bidezko bilaketa\' botoia</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ez dago saioa hasita. Konfiguratzeko sakatu</string>
   <string name="morphe_music_scrobbling_log_out">Saioa amaitu</string>
@@ -583,6 +606,9 @@ Atzealdean erreproduktu duten bitartean scrobbling-a sinkronizatua dagoela ziurt
   <string name="morphe_music_soundproof_about_summary">"Artistaren datuak SoundProof-Dumps-etik datoz (github.com/NuclearBlox/SoundProof-Dumps), eguneko behin deskargatuta. Saltzeak ez du zer erreproduzitzen duzun buruz ezer bidaltzen. SoundProof orria irekitzean uneko artistaren izena bidaltzen da SoundProof zerbitzarira boto berriak erakusteko eta botatzeko. Zerbitzariak botoemaileak IP helbidearen bidez bereizten ditu, beraz zure botoa beste sare batean ezberdin agertu daiteke.
 
 Datu-basea ODC Open Database License (ODbL) lizentziapean dago. xoundbyte-ren Soul Over AI-ko sarrerak CC BY 4.0 lizentziapean daude. Ez dago SoundProof edo Soul Over AI-rekin lotura edo babesik."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music-en animazio artelana</string>
+  <string name="morphe_music_apple_music_artwork_summary">Apple Music-en albumeko animazio artelana erakutsi playback-ean, albumak bago bada. Kantu bakoitzaren izenburua, artista eta albuma Apple Music-era bidaltzen dira</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Letrak ez daude eskuragarriak gailuko fitxamen honek.</string>
   <string name="morphe_music_lyrics_enabled_title">Erabili hirugarren aldeko letrak</string>
@@ -635,6 +661,25 @@ Lehen zutabea hitza da, bigarrena irakurketa; zutabe gehigarriak eta tabulaziori
   <string name="morphe_music_lyrics_clear_cache_title">Garbitu gorde diren letrak</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Ezabatu gailu honetan gordetako %s MB letra</string>
   <string name="morphe_music_lyrics_clear_cache_done">%s MB garbituta</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Cache-aren tamaina kalkulatzen ari zahia…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Letren Cache-a</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Garbitu Letren Cache-a</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d abesti)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Itzulpenen cache-a</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Garbitu itzulpenen cache-a</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d itzulpen)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Transliterazioen cache-a</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Garbitu transliterazioen cache-a</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterazio)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Cache-aren guztizko erabilera</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Garbitu cache guztia</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d elementu)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Garbitu</string>
+  <string name="morphe_music_lyrics_cache_close_action">Itxi</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Ezabatu gailu honetan gordetako %1$s MB (%2$d abestu) letra cachekoak?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Ezabatu gailu honetan gordetako %1$s MB (%2$d itzulpen) itzulpen cachekoak?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Ezabatu gailu honetan gordetako %1$s MB (%2$d transliterazio) transliterazio cachekoak?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Ezabatu gailu honetan gordetako %1$s MB (%2$d elementu) letra cacheko datu guztiak?</string>
   <string name="morphe_music_token_dialog_get_token">Tokena lortu</string>
   <string name="morphe_music_apple_music_token_title">Apple Music-en Media-user-tokena</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Itsatsi music.apple.com-eko media-user-token cookie-a
@@ -690,8 +735,11 @@ Beharrezko cookie-ak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_tap_to_seek_summary">Sakatu lerro bat abestiaren une horretara joateko, luze sakatu hatza dagoen hitza kopiatzeko, edo lerro osoa kopiatzeko sakatzean hitzik ez dagoenean. Itzaltzeak bi keinu hauek kentzen ditu</string>
   <string name="morphe_music_lyrics_show_section_title">Atal-etiketak erakutsi</string>
   <string name="morphe_music_lyrics_show_section_summary">Etiketatu letraren atal berri bakoitza etiketa txiki batekin, adibidez Verse edo Chorus</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Erakutsi Kopiaren botoia</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Sakatu letra originalak testu soil gisa kopiatzeko; sakatu luze letra iturrigorren fitxategia eta TTML fitxategi bihurtua Deskargatzeletan gordezeko</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Erakutsi Kopiatu / Partekatu botoia</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Erakutsi Kopiatu edo Partekatu botoia letra panelko barrako</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Kopiatzeko botoiaren modua</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Kopiatzeko modua (tokatu kopiatzeko, sakatu luzean gordetzeko)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Partekatzeko modua (tokatu 1-5 lerroak hautatzeko, sakatu luzean kopiatzeko edo gordetzeko)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Erakutsi Itzulpenaren botoia</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Sakatu itzulpena aktibatzeko edo desaktibatzeko; sakatu luze itzulpen bakarrik egiteko. Aktibatutako itzulpen-hornitzaileak erabiltzen ditu zerrendatutako orden own</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Erakutsi Romanizatu edo Transliteratu botoia</string>
@@ -705,7 +753,48 @@ Beharrezko cookie-ak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Irakurketak prest (%s sarrera)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Deskarga huts egin du - desaktibatu eta berriz aktibatu saiatzeko</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Hiztegi offline</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japoniera (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japoniera</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — morfologia-analizatzaile azkarra &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — japonierako hitzategi osoa</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Lehentasun &amp; erfallback ordena</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromojiren lehentasuna (SudachiDict fallback)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict-en lehentasuna (Kuromoji fallback)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Letra-tipo pertsonalizatua</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Sistemaren letra-tipo lehenagoa (sakatu .ttf edo .otf letra-tipo fitxategi bat igotzeko)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Letra-tipo aktiboa: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Igotu zure gailuko biltegian dagoen .ttf edo .otf letra-tipo fitxategi bat (SF Pro Bold, Inter Bold edo Inter ExtraBold bezalakoak) letra-tipo ikusgadia guztenean erabiltzeko.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Igoko fonta tacklesen</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Lehenetsira berrezarri</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Letren fontza pertsonalizatua aplikatu da: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Letren fontza lehenetsira itzuli da</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Fontza-fitxegia ez da baliagarria edo ez da onartua (.ttf edo .otf beharrezkoa da)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Partekatu letrak</string>
+  <string name="morphe_music_lyrics_share_button">Partekatu</string>
+  <string name="morphe_music_lyrics_copy">Kopiatu</string>
+  <string name="morphe_music_lyrics_share_options_title">Letren ekintzak</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Kopiatu letrak testu soil gisa</string>
+  <string name="morphe_music_lyrics_save_file_option">Gorde letra &amp; TTML Descargaetan</string>
+  <string name="morphe_music_lyrics_share_cancel">Utzi</string>
+  <string name="morphe_music_lyrics_share_select_hint">Sakatu 1-5 lerroetan partekatzeko</string>
+  <string name="morphe_music_lyrics_share_max_lines">Gehienez 5 lerro egin daitezke</string>
+  <string name="morphe_music_lyrics_share_failed">Ezin izan da letra partekatzeko txartela sortu</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Lausotu</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Azalcover</string>
+  <string name="morphe_music_lyrics_share_bg_color">Kolorea</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Argazkia</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music logotipoa</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romajia</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Itzuli</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Atze bozoiak</string>
+  <string name="morphe_music_lyrics_share_custom_color">Kolore pertsonalizatua</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Ezin izan da hautatutako irudia kargatu</string>
+  <string name="morphe_music_lyrics_share_card_cta">Karta partekatu</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Kopiatu testua</string>
+  <string name="morphe_music_lyrics_share_back">Letak hautatzenera itzuli</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Argazkia kargatzen...</string>
+  <string name="morphe_music_lyrics_share_preparing">Karta sortzen...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Kolore laguna %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Kantu ezaguna</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Txinera eta kantonera karaktereak (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Txinerazko hitzak (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Greziera, eslaviar zirilikoa (errusiera, ukrainiera, bulgariera, serbiera, bielorrusiera eta mazedoniera barne), georgiera, armeniera, hebreera, arabiera, amharera eta siriakoa transliterazioa (CLDR, ~0,5 MB)</string>

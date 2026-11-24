@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personalizat</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Redă piesele audio ale albumului</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Redă numai versiunea audio a melodiilor din album în loc de un videoclip muzical. Necesită \'Spoof video streams\'</string>
+  <string name="morphe_music_play_album_songs_summary">Redați melodiile unui album în loc de videoclipurile acestora</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Activează comutarea audio/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Încearcă să comute între versiunea audio și videoclipul muzical oficial</string>
@@ -144,6 +143,8 @@ Folder de export: %s"</string>
   <string name="morphe_export_download_failed">Nu s-a putut exporta descărcarea</string>
   <string name="morphe_export_download_all_flyout_title">Exportați totul pe dispozitiv</string>
   <string name="morphe_export_download_all_started">Se exportă toate descărcările</string>
+  <string name="morphe_export_download_all_title">Toate descărcările</string>
+  <string name="morphe_export_download_playlist_started">Exportare descărcări</string>
   <string name="morphe_export_download_all_running">Descărcările sunt deja în curs de export</string>
   <string name="morphe_export_download_all_saved">S-au exportat %1$s din %2$s descărcări în %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Folder de export: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ascunde comutatorul Audio / Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ascunde butonul de descărcare</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Ascunde butonul de descărcare din emisiunea de podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Ascunde raftul Explore</string>
   <string name="morphe_music_hide_filter_bar_title">Ascunde bara de filtre</string>
   <string name="morphe_music_hide_grid_shelves_title">Ascunde rafturile tip grilă</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
+  <string name="morphe_music_hide_new_button_title">Ascunde butonul Nou</string>
+  <string name="morphe_music_hide_new_button_summary">Ascunde butonul Nou din fila Bibliotecă</string>
   <string name="morphe_music_hide_list_shelves_title">Ascunde rafturile tip listă</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panou versuri</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ascunde butonul Distribuie</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ascunde butonul Traducere</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ascunde raftul „New from”</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ascunde rafturile listelor de redare</string>
@@ -199,6 +200,8 @@ Folder de export: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Estompare încrucișată</string>
   <string name="morphe_music_crossfade_screen_summary">Amestecă lin piesele una în alta</string>
   <string name="morphe_music_crossfade_enabled_title">Activează estomparea încrucișată</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Pentru a utiliza crossfade, modificați \"Clientul implicit\" din \"Simulează fluxurile video\" în \"TV Simply\" sau \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Curba de estompare</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Putere egală</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Pauză subtilă</string>
@@ -232,7 +235,9 @@ Folder de export: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Estomparea încrucișată întreruptă pentru această sesiune</string>
   <string name="morphe_music_crossfade_resumed_toast">Estomparea încrucișată reluată</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Modul video nu este disponibil când estomparea încrucișată este activată</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade-ul este dezactivat în timpul redării SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade nu funcționează cu \"visionOS\". Modificați \"Clientul implicit\" din \"Simulează fluxurile video\" în \"TV Simply\"</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade nu funcționează cu acest client de flux spoof</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade-ul este dezactivat în timpul difuzării</string>
   <string name="morphe_music_crossfade_about_how_title">Cum funcționează</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade-ul suprapune sfârșitul unei melodii cu începutul următoarei, folosind durata și curba dvs.
@@ -249,9 +254,7 @@ Ecranul de blocare sau notificarea pot afișa temporar o stare învechită în t
 
 Întreruperea crossfade-ului pentru a viziona un videoclip muzical poate lăsa unele videoclipuri pe ecran negru. Întreruperea crossfade-ului înainte de a alege melodia previne acest lucru"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Neacceptat</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Difuzarea sau oglindirea audio (Chromecast, oglindirea ecranului sau audio)
-
-Redarea SABR (fluxurile video simulate dezactivate)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Transmitere sau oglindire audio (Chromecast, oglindire ecran sau audio)</string>
   <string name="morphe_music_crossfade_about_credit_title">Credit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Funcția de estompare încrucișată de VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pauză când este pe mut</string>
   <string name="morphe_music_pause_when_muted_summary">Pune redarea pe pauză când volumul sistemului este pe mut și o reia când volumul este crescut</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Butonul Cast poate transmite fluxul audio și către Sonos și către alte difuzoare UPnP din rețeaua Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Conectare la un dispozitiv</string>
+  <string name="morphe_music_sonos_cast_searching">Se caută difuzoare în rețeaua Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Alegeți un difuzor din rețeaua Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Transmitare către %s</string>
+  <string name="morphe_music_sonos_cast_connected">Conectat</string>
+  <string name="morphe_music_sonos_cast_disconnect">Deconectare</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Difuzoare pe Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Activ</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Dispozitive Chromecast, Nest și Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nu s-a putut stabili conexiunea cu %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Viteza de redare</string>
   <string name="morphe_music_playback_speed_summary">Viteza folosită pentru toate melodiile. La 100% se folosește viteza aplicației, cum ar fi viteza de redare a podcastului.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Schimbă tonalitatea odată cu viteza</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Afișează meniul de efecte video</string>
+  <string name="morphe_music_video_effect_menu_summary">Adaugă efectul video în meniul playerului în timp ce se redă un videoclip</string>
+  <string name="morphe_music_video_effect_next_video">Efectul va fi afișat începând cu următorul videoclip</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Dezactivează subtitrările automate</string>
   <string name="morphe_music_disable_auto_captions_summary">Subtitrările nu sunt activate automat la începutul unui videoclip, inclusiv subtitrările activate implicit de acesta</string>
@@ -279,6 +300,10 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Dezactivează redirecționarea dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Împiedică trecerea la următoarea melodie când este apăsat butonul dislike</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Dezactivați glisarea pentru a schimba piesa</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Previne trecerea la piesa următoare sau anterioară prin glisarea stânga sau dreapta pe player</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Previne trecerea la piesa următoare sau anterioară prin glisarea stânga sau dreapta pe miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Buclă A-B</string>
   <string name="morphe_music_ab_loop_summary">Apasă lung pe bara de derulare pentru a seta începutul buclei, din nou pentru a seta sfârșitul buclei și încă o dată pentru a șterge bucla</string>
@@ -329,15 +354,6 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_playlist_tags_rename">Redenumește</string>
   <string name="morphe_music_playlist_tags_delete">Șterge</string>
   <string name="morphe_music_playlist_tags_hidden">Ascuns</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Ascunde butonul de transmisie</string>
-  <string name="morphe_music_hide_history_button_title">Ascunde butonul de istoric</string>
-  <string name="morphe_music_hide_notification_button_title">Ascunde butonul de notificare</string>
-  <string name="morphe_music_hide_search_button_title">Ascunde butonul de căutare</string>
-  <string name="morphe_music_hide_voice_search_button_title">Ascunde butonul de căutare vocală</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ascunde butonul de căutare sonoră</string>
-  <string name="morphe_music_hide_library_new_button_title">Ascunde butonul Nou</string>
-  <string name="morphe_music_hide_library_new_button_summary">Ascunde butonul Nou din fila Biblioteca</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Butoane de acțiune</string>
   <string name="morphe_music_action_buttons_screen_summary">Alege ce butoane de acțiune să apară sub player</string>
@@ -409,22 +425,20 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Forțează orientarea portret</string>
   <string name="morphe_music_force_portrait_orientation_summary">Menține aplicația în orientarea portret atunci când dispozitivul este rotit</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Schimbă culoarea miniplayer-ului</string>
+  <string name="morphe_music_change_miniplayer_color_title">Schimbă culoarea</string>
   <string name="morphe_music_change_miniplayer_color_summary">Culoarea miniplayer-ului se potrivește cu player-ul pe ecran complet</string>
   <string name="morphe_music_change_navigation_bar_color_title">Schimbă culoarea barei de navigare</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Potrivește culoarea barei de navigare cu playerul pe ecran complet</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Afișează butonul următor în miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Afișează butonul anterior în miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_title">Afișează butonul Următorul</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Afișează butonul Anterior</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Activează miniplayer-ul forțat</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Împiedică playerul să se extindă automat pe ecran complet când începe o piesă nouă</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Activează glisarea pentru a închide miniplayer-ul</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Activează glisarea pentru închidere</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Permite închiderea miniplayer-ului prin glisarea în jos pe acesta</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Bară de navigare</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Alege care butoane apar în bara de navigare de jos</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ascunde butonul Home</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Ascunde butonul Library</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ascunde butonul Upgrade</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Afișează butonul Setări</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Acțiunea butonului Setări</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Când este activată, atingerea deschide setările Morphe și apăsarea lungă deschide setările YouTube Music; dezactivați pentru a inversa</string>
   <string name="morphe_music_hide_navigation_bar_title">Ascundeți bara de navigare</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ascundeți etichetele butoanelor de navigare</string>
   <string name="morphe_music_navigation_bar_glass_title">Activează bara de navigare din sticlă</string>
@@ -457,7 +474,7 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Ascunde evidențierea rotunjită din spatele butonului selectat al barei de navigare din sticlă</string>
   <string name="morphe_music_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_music_miniplayer_screen_summary">Schimbă stilul, butoanele și gesturile miniplayerului</string>
-  <string name="morphe_music_miniplayer_glass_title">Activează miniplayerul din sticlă</string>
+  <string name="morphe_music_miniplayer_glass_title">Activează efectul de sticlă</string>
   <string name="morphe_music_miniplayer_glass_summary">Afișează miniplayerul plutitor ca pe un card de sticlă rotunjit și translucid</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stil miniplayer din sticlă</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Ajustează raza colțurilor, padding-ul copertii, luminozitatea marginii și opacitatea miniplayerului din sticlă, cu o previzualizare</string>
@@ -465,11 +482,8 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding copertă</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Luminozitatea marginii</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacitate</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Efect de blur sticlat</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Cât de mult este blurată pagina din spatele miniplayerului din sticlă (Android 14 și ulterior). La 0 pagina apare clară, iar înainte de Android 14 pagina este acoperită</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Sticlă deschisă</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Colorează miniplayerul din sticlă în alb în loc de închis, pentru o sticlă mai deschisă și mai clară</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Nuanță copertă album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Colorează miniplayerul din sticlă cu culoarea copertei albumului melodiei care se redă</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Copertă care se rotește</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Face coperta miniplayerului din sticlă rotundă și o rotește ca pe o placă în timp ce se redă o melodie</string>
@@ -480,6 +494,15 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Mostre</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Explorați</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotecă</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Ascunde butonul Activitate</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Ascunde butonul \"Întreabă Music\"</string>
+  <string name="morphe_music_hide_cast_button_title">Ascunde butonul de transmisie</string>
+  <string name="morphe_music_hide_history_button_title">Ascunde butonul de istoric</string>
+  <string name="morphe_music_hide_search_button_title">Ascunde butonul de căutare</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ascunde butonul \"Căutare vocală\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ascunde butonul \"Căutare sonoră\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nu sunteți conectat. Atingeți pentru a configura</string>
   <string name="morphe_music_scrobbling_log_out">Deconectare</string>
@@ -583,6 +606,9 @@ Pentru a vă asigura că scrobbling-ul este sincronizat în timpul redării în 
   <string name="morphe_music_soundproof_about_summary">"Datele artistului provin de la SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), descărcate o dată pe zi. Opțiunea de ignorare nu trimite nimic despre ce redați. Deschiderea foii SoundProof trimite numele artistului actual către serverul SoundProof pentru a afișa voturile recente și pentru a vota. Serverul îi diferențiază pe votanți după adresa IP, deci votul dvs. poate apărea diferit pe o altă rețea.
 
 Baza de date este licențiată sub Licența de Bază de Date Deschisă ODC (ODbL). Intrările de la Soul Over AI de xoundbyte sunt licențiate sub CC BY 4.0. Neafiliat și neaprobat de SoundProof sau Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Coperta animată Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Afișează coperta animată a albumului din Apple Music în player, dacă albumul are una. Titlul, artistul și albumul fiecărei melodii sunt trimise către Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Versurile nu sunt disponibile pentru acest fișier de pe dispozitiv.</string>
   <string name="morphe_music_lyrics_enabled_title">Utilizați versuri de la terți</string>
@@ -635,6 +661,25 @@ Prima coloană este cuvântul, a doua citirea sa; coloanele suplimentare și lin
   <string name="morphe_music_lyrics_clear_cache_title">Golește versurile stocate</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Șterge cele %s MB de versuri păstrate pe acest dispozitiv</string>
   <string name="morphe_music_lyrics_clear_cache_done">S-au eliberat %s MB</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Se calculează dimensiunea cache-ului…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Cache versuri</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Șterge cache versuri</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d cântece)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Cache traduceri</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Șterge cache traduceri</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d traduceri)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Cache transliterare</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Șterge cache transliterare</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterări)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Utilizare totală cache</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Șterge tot cache-ul</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d elemente)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Golește</string>
+  <string name="morphe_music_lyrics_cache_close_action">Închide</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Șterge %1$s MB (%2$d cântece) de versuri în cache păstrate pe acest dispozitiv?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Șterge %1$s MB (%2$d traduceri) de traduceri în cache păstrate pe acest dispozitiv?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Șterge %1$s MB (%2$d transliterări) de transliterări în cache păstrate pe acest dispozitiv?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Șterge %1$s MB (%2$d elemente) din toate datele de versuri în cache păstrate pe acest dispozitiv?</string>
   <string name="morphe_music_token_dialog_get_token">Obțineți tokenul</string>
   <string name="morphe_music_apple_music_token_title">Token de utilizator media Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Lipiți cookie-ul media-user-token de pe music.apple.com.
@@ -685,8 +730,11 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_tap_to_seek_summary">Atingeți o linie pentru a sări la momentul respectiv din melodie, apăsați lung pentru a copia cuvântul aflat sub deget sau întreaga linie dacă atingerea nu este pe un cuvânt. Dezactivarea elimină ambele gesturi</string>
   <string name="morphe_music_lyrics_show_section_title">Afișează etichetele secțiunilor</string>
   <string name="morphe_music_lyrics_show_section_summary">Etichetează fiecare secțiune nouă a versurilor cu o etichetă mică, cum ar fi Strofă sau Refren</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Arată butonul de copiere</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Atingeți pentru a copia versurile originale ca text simplu; apăsați lung pentru a salva fișierul sursă cu versurile brute și un fișier TTML convertit în Descărcări</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Afișează butonul Copiază / Partajează</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Afișează butonul Copiază sau Partajează în bara de instrumente a panoului de versuri</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Mod buton Copiază</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Mod Copiază (apasă pentru a copia, apasă lung pentru a salva)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Mod partajare (atingeți pentru a selecta 1-5 linii, apăsați lung pentru copiere sau salvare)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Arată butonul de traducere</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Atingeți pentru a comuta traducerea; apăsare lungă doar pentru traducere. Folosește furnizorii de traducere activati în ordinea listată</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanizare sau Transliterare</string>
@@ -700,7 +748,48 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Citirile sunt gata (%s intrări)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Descărcare eșuată - dezactivați și activați din nou pentru a reîncerca</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Dicționar Offline</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japoneză (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japoneză</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — analizor morfologic rapid &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — dicționar complet de cuvinte japoneze</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Prioritate &amp; ordine de rezervă</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Prioritate Kuromoji (rezervă SudachiDict)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">Prioritate SudachiDict (rezervă Kuromoji)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Font personalizat pentru versuri</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Font de sistem implicit (apasă pentru a încărca un fișier de font .ttf sau .otf)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Font activ: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Încarcă un fișier de font .ttf sau .otf (cum ar fi SF Pro Bold, Inter Bold sau Inter ExtraBold) din stocarea dispozitivului tău pentru a-l folosi în vizualizarea versurilor.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Încarcă fontul</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Resetare la implicit</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Font personalizat pentru versuri aplicat: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">S-a revenit la fontul implicit pentru versuri</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Fișier de font invalid sau neacceptat (este necesar .ttf sau .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Distribuie versurile</string>
+  <string name="morphe_music_lyrics_share_button">Distribuie</string>
+  <string name="morphe_music_lyrics_copy">Copiere</string>
+  <string name="morphe_music_lyrics_share_options_title">Acțiuni versuri</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Copiază versurile ca text simplu</string>
+  <string name="morphe_music_lyrics_save_file_option">Salvează versurile &amp; TTML în Descărcări</string>
+  <string name="morphe_music_lyrics_share_cancel">Anulează</string>
+  <string name="morphe_music_lyrics_share_select_hint">Atinge 1–5 rânduri pentru a distribui</string>
+  <string name="morphe_music_lyrics_share_max_lines">Se pot selecta maximum 5 rânduri</string>
+  <string name="morphe_music_lyrics_share_failed">Nu s-a putut crea cardul de distribuire a versurilor</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Estombare</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Copertă</string>
+  <string name="morphe_music_lyrics_share_bg_color">Culoare</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Foto</string>
+  <string name="morphe_music_lyrics_share_branding_logo">Logo YT Music</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Traducere</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Vocale de fundal</string>
+  <string name="morphe_music_lyrics_share_custom_color">Culoare personalizată</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Imaginea selectată nu a putut fi încărcată</string>
+  <string name="morphe_music_lyrics_share_card_cta">Distribuie cardul</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Copiază textul</string>
+  <string name="morphe_music_lyrics_share_back">Înapoi la selecția versurilor</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Se încarcă fotografia...</string>
+  <string name="morphe_music_lyrics_share_preparing">Se creează cardul...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Eșantion de culoare %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track"> Piesă necunoscută</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caractere chinezești și cantoneze (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Cuvinte chinezești (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterare greacă, slavă chirilică (inclusiv rusă, ucraineană, bulgară, sârbă, belarusă, macedoneană), georgiană, armeană, ebraică, arabă, amharică și siriacă (CLDR, ~0,5 MB)</string>

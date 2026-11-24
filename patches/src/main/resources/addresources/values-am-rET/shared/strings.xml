@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">ቅንብሮች</string>
   <string name="morphe_settings_confirm_user_dialog_title">ለመቀጠል እርግጠኛ ነዎት?</string>
   <string name="morphe_settings_save">አስቀምጥ</string>
   <string name="morphe_settings_reset">ዳግም አስጀምር</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">ትርጉሞች</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">ወቅታዊ ነው</string>
   <string name="morphe_settings_about_contributors">አስተዋጽኦ አድራጊዎች</string>
-  <string name="morphe_settings_about_contributors_period">ላለፉት 12 ወራት</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">ሁልጊዜ</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ወራት</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ወራት</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">የጊዜ ገደብ</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s ተጠቃሚዎች</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">ደጋፊዎች</string>
   <string name="morphe_settings_about_supporters_summary">በ Open Collective ላይ ደጋፊዎች</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • መተግበሪያው በዘፈቀደ ሊዘጋ ይችላል
 • ማሳወቂያዎች ላይሰሩ ይችላሉ
 • የጀርባ መልሶ ማጫወት ላይሰራ ይችላል"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">የስርዓቱን የမျှራ ሉህ ክፈት</string>
+  <string name="morphe_open_system_share_sheet_summary">ይዘቶችን ሲያጋሩ ከመተግበሪያው ውስጠኛ ማጋሪያ ይልቅ በምትኩ የሲስተም ማጋሪያ ገጹን ይከፍታል</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">የመተግበሪያ ሊንክ አያያዝ</string>
   <string name="morphe_link_handling_summary">ሊንኮች በዚህ መተግበሪያ ውስጥ እንዲከፈቱ ያዋቅሩ</string>

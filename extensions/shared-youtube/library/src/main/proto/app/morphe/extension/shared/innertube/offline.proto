@@ -134,6 +134,8 @@ message OfflinePlayerResponse {
     optional OfflineVideoDetails videoDetails = 11;
     optional app.morphe.extension.shared.innertube.OfflineState offlineState = 14;
     optional OfflinePlayerConfig playerConfig = 15;
+    // Specs of the storyboard images, which are the seekbar thumbnails. Not all clients answer with them.
+    optional bytes storyboards = 16;
 }
 
 message OfflinePlayerConfig {

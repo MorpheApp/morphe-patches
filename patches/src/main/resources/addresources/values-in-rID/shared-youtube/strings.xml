@@ -140,14 +140,16 @@ Ketuk OK untuk membuka Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Gunakan QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Gunakan QuackJS sebagai pengganti yt-dlp-ejs (WebView) untuk deobfuscation</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR memerlukan login terpisah. Ketuk di sini untuk melanjutkan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Saat ini sedang masuk ke Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' memerlukan masuk secara terpisah. Ketuk di sini untuk melanjutkan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Saat ini sedang masuk ke \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Masuk ke Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Masuk ke Android VR dapat memperbaiki masalah pemutaran untuk beberapa pengguna
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' menjadi \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Masuk ke \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Masuk ke 'Android VR' dapat memperbaiki masalah pemutaran untuk beberapa pengguna
 
 Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Keluar</string>
@@ -168,35 +170,36 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Setelan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan menghapus autentikasi ini
 • Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari setelan Google Anda"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login Web Seluler</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsional: masuk ke situs web YouTube untuk memutar video dengan akun Anda. Ketuk di sini untuk melanjutkan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang masuk ke Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang login ke situs web YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Web Seluler</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke Web Seluler</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Seluler memutar video saat keluar, atau login ke situs web YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke klien Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke situs web YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Klien web memutar video tanpa masuk, atau masuk ke situs web YouTube
 
-• Saat login, video yang membutuhkan akun dapat diputar, seperti video dengan batasan usia
-• Halaman login Google terbuka di aplikasi ini
-• Login hanya digunakan untuk mendapatkan video yang Anda putar
-• Login hanya disimpan di perangkat ini
+• Jika masuk, video yang memerlukan akun dapat diputar, seperti video yang dibatasi usia
+• Halaman masuk Google terbuka di aplikasi ini
+• Masuk hanya digunakan untuk mendapatkan video yang Anda putar
+• Informasi masuk hanya disimpan di perangkat ini
+• Setiap klien web memiliki login sendiri, untuk klien default yang dipilih
 
-Untuk login, tekan lanjutkan di bawah"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Masuk tersimpan
+Untuk masuk, tekan lanjutkan di bawah"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Login tersimpan
 
-• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor masuk Web Seluler
-• Jika Google mengakhiri sesi masuk, video akan diputar tanpa masuk sampai Anda masuk kembali
+• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor login situs web YouTube
+• Jika Google mengakhiri login, video akan diputar tanpa login sampai Anda login kembali
 • Keluar juga akan mengeluarkan perangkat ini dari situs web YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Masuk ke Web Seluler telah kadaluwarsa, coba masuk ke Web Seluler lagi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari Web Seluler</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView tidak tersedia. Instal atau aktifkan untuk masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Login web telah kedaluwarsa, coba login kembali</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari situs web YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' tidak tersedia. Instal atau aktifkan untuk masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Masuk ke Android VR telah kadaluwarsa, coba masuk ke VR lagi</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Masuk ke \'Android VR\' telah kadaluwarsa, coba masuk ke VR lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 untuk sementara tidak tersedia (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 sementara tidak tersedia</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Tidak dapat masuk ke VR, autentikasi situs web tidak disetujui</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Keluar dari \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kontrol media notifikasi</string>
@@ -214,8 +217,15 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_seek_notification_media_length_invalid">Durasi pencarian harus antara 1 dan %s detik. Menggunakan default</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritaskan kualitas video</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioritaskan kualitas video tertinggi yang tersedia daripada efisiensi codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jika setelan ini dimatikan, maka video lama tidak dapat menampilkan pilihan kualitas video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Nonaktifkan audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Nonaktifkan audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Memutar audio asli alih-alih versi dengan rentang dinamis yang terkompresi</string>
+  <string name="morphe_disable_loudness_normalization_title">Nonaktifkan normalisasi loudness</string>
+  <string name="morphe_disable_loudness_normalization_summary">Memutar audio keras pada volume aslinya alih-alih menurunkannya ke level standar</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary">Selalu memutar trek audio asli video tersebut daripada versi sulih suara</string>
@@ -224,6 +234,32 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_skip_silence_summary">Secara otomatis melewati jeda hening di audio video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Durasi jeda minimum</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Hanya jeda yang setidaknya selama ini yang dipersingkat. Berlaku saat video berikutnya dimulai</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Efek video</string>
+  <string name="morphe_video_effect_entry_none">Nonaktif</string>
+  <string name="morphe_video_effects_custom_title">Edit efek video</string>
+  <string name="morphe_video_effects_custom_summary">Ubah, ganti nama, hapus, atau tambahkan efek video. Efek adalah kode shader, jadi chatbot AI dapat menulis yang baru</string>
+  <string name="morphe_video_effects_custom_empty">Tidak ada efek video. Ketuk Tambahkan efek untuk membuatnya.</string>
+  <string name="morphe_video_effects_custom_add">Tambahkan efek</string>
+  <string name="morphe_video_effects_custom_restore">Pulihkan pengaturan bawaan</string>
+  <string name="morphe_video_effects_custom_add_title">Efek baru</string>
+  <string name="morphe_video_effects_custom_edit_title">Edit efek</string>
+  <string name="morphe_video_effects_custom_name_hint">Nama</string>
+  <string name="morphe_video_effects_custom_name_empty">Masukkan nama untuk efek tersebut</string>
+  <string name="morphe_video_effects_custom_name_exists">Efek dengan nama ini sudah ada</string>
+  <string name="morphe_video_effects_custom_copy_code">Salin kode</string>
+  <string name="morphe_video_effects_custom_error_title">Efek mengalami kesalahan</string>
+  <string name="morphe_video_effects_custom_error_message">"Video ditampilkan tanpa efek sampai kode diperbaiki. Berikan kesalahan ini kepada AI yang menulis kodenya:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kode berakhir di dalam fungsi atau komentar, jadi kemungkinan terpotong saat disalin atau ditempel. Teks yang ditempel dapat terpotong pada %d karakter.
+
+Minta kode yang lebih pendek kepada AI, atau tempel kode dalam beberapa bagian."</string>
+  <string name="morphe_video_effects_custom_copy_error">Kesalahan penyalinan</string>
+  <string name="morphe_video_effects_custom_save_anyway">Tetap simpan</string>
+  <string name="morphe_video_effects_custom_delete">Hapus</string>
+  <string name="morphe_video_effects_custom_delete_title">Hapus efek?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s akan dihapus.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proksi jaringan</string>
   <string name="morphe_proxy_screen_summary">Arahkan permintaan jaringan yang didukung melalui proksi</string>
@@ -254,7 +290,7 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_replace_music_with_youtube_title">Ubah tautan berbagi ke youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Mengganti music.youtube.com dengan youtube.com di tautan yang dibagikan</string>
   <string name="morphe_replace_links_with_shortener_title">Ubah tautan berbagi ke youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatis</string>
@@ -266,19 +302,16 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_video_quality_default_mobile_title">Kualitas video bawaan di jaringan seluler</string>
   <string name="morphe_remember_video_quality_toast_mobile">Kualitas seluler bawaan diubah ke: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Kualitas Wi-Fi bawaan diubah ke: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka lembar berbagi sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka lembar berbagi sistem alih-alih lembar berbagi dalam aplikasi saat berbagi konten</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Pencatatan Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Tidak aktif</string>
   <string name="morphe_debug_litho_entry_path">Jalur</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Jalur dan buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Pencatatan Litho mencatat komponen tata letak aplikasi, termasuk teks pada layar untuk beberapa komponen UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Mencatat komponen tata letak aplikasi, termasuk teks pada layar untuk beberapa komponen UI.
 
 Ini dapat membantu mengidentifikasi komponen saat membuat penyaring khusus.
 
-Namun, ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
+Namun, hal ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Penyaring khusus</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurasikan penyaring khusus untuk menyembunyikan komponen apa pun</string>
@@ -343,6 +376,18 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_custom_font_file_summary">Pilih file font TTF atau OTF</string>
   <string name="morphe_custom_font_file_invalid">File yang dipilih bukan font TTF atau OTF</string>
   <string name="morphe_custom_font_failed_to_load">Font kustom tidak dapat dimuat dan dinonaktifkan</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menu kaca</string>
+  <string name="morphe_glass_menus_screen_summary">Menu seperti kaca buram di atas konten yang dikaburkan di belakangnya</string>
+  <string name="morphe_glass_menus_title">Aktifkan menu kaca</string>
+  <string name="morphe_glass_menus_summary">Menampilkan menu dan lembar bawah sebagai kaca buram, dengan konten di belakangnya dibuat blur</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu ditampilkan hampir tidak tembus pandang saat penghemat baterai aktif, atau jika perangkat tidak mendukung blur</string>
+  <string name="morphe_glass_menus_opacity_title">Opasitas kaca</string>
+  <string name="morphe_glass_menus_opacity_summary">Seberapa banyak menu menutupi konten yang blur (0 adalah bening, 100 adalah tidak tembus pandang)</string>
+  <string name="morphe_glass_menus_blur_title">Buram</string>
+  <string name="morphe_glass_menus_blur_summary">Seberapa banyak konten di belakang menu dibuat blur</string>
+  <string name="morphe_glass_menus_dim_title">Redupkan</string>
+  <string name="morphe_glass_menus_dim_summary">Seberapa banyak layar di sekitar lembar bawah digelapkan</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike sementara tidak tersedia (waktu API habis)</string>
@@ -380,4 +425,8 @@ ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan ti
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tidak ada batas kuota klien yang terdeteksi</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Batas kuota klien terdeteksi %s kali</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milidetik</string>
+  <string name="morphe_navigation_bar_screen_title">Bilah navigasi</string>
+  <string name="morphe_navigation_bar_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
+  <string name="morphe_toolbar_screen_title">Bilah alat</string>
+  <string name="morphe_toolbar_screen_summary">Pilih komponen mana yang akan ditampilkan di toolbar</string>
 </resources>

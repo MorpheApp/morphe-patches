@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Ustawienia</string>
   <string name="morphe_settings_confirm_user_dialog_title">Czy na pewno chcesz kontynuować?</string>
   <string name="morphe_settings_save">Zapisz</string>
   <string name="morphe_settings_reset">Zresetuj</string>
@@ -28,7 +27,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart">Uruchom ponownie</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importuj</string>
-  <string name="morphe_settings_import_copy">Kopiuj</string>
+  <string name="morphe_settings_import_copy">Skopiuj</string>
   <string name="morphe_settings_import_reset">Przywrócono domyślne ustawienia Morphe</string>
   <string name="morphe_settings_import_success">Zaimportowano ustawienia: %s</string>
   <string name="morphe_settings_import_failure_parse">Importowanie nie powiodło się: %s</string>
@@ -87,7 +86,14 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_settings_about_links_translations">Tłumaczenia</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktualna</string>
   <string name="morphe_settings_about_contributors">Współtwórcy</string>
-  <string name="morphe_settings_about_contributors_period">Ostatnie 12 miesięcy</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Cały okres</string>
+  <string name="morphe_settings_about_contributors_6_months">6 miesięcy</string>
+  <string name="morphe_settings_about_contributors_3_months">3 miesiące</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Okres</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">Użytkownicy: %s</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Wspierający</string>
   <string name="morphe_settings_about_supporters_summary">Darczyńcy na Open Collective</string>
@@ -222,6 +228,9 @@ Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić
 • Aplikacja może się nieoczekiwanie zamykać
 • Powiadomienia mogą nie działać
 • Odtwarzanie w tle może nie działać"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otwórz systemowe menu udostępniania</string>
+  <string name="morphe_open_system_share_sheet_summary">Otwiera systemowe menu udostępniania zamiast tego wbudowanego w aplikacji</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Obsługa linków aplikacji</string>
   <string name="morphe_link_handling_summary">Skonfiguruj linki, aby otwierały się w tej aplikacji</string>

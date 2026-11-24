@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Tùy chỉnh</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Phát các bản nhạc của album</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Phát phiên bản chỉ có âm thanh của các bài hát trong album thay vì một video âm nhạc. Yêu cầu \'Giả mạo các luồng video\'</string>
+  <string name="morphe_music_play_album_songs_summary">Phát các bài hát của một album thay vì video ca nhạc của chúng</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Bật chuyển đổi âm thanh/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Thử chuyển đổi giữa Phiên bản âm thanh và Video âm nhạc chính thức</string>
@@ -144,6 +143,8 @@ Xuất: %s"</string>
   <string name="morphe_export_download_failed">Không thể xuất nội dung tải xuống</string>
   <string name="morphe_export_download_all_flyout_title">Xuất tất cả ra thiết bị</string>
   <string name="morphe_export_download_all_started">Đang xuất tất cả các bản tải xuống</string>
+  <string name="morphe_export_download_all_title">Tất cả tải xuống</string>
+  <string name="morphe_export_download_playlist_started">Đang xuất các tệp tải xuống</string>
   <string name="morphe_export_download_all_running">Các bản tải xuống đang được xuất</string>
   <string name="morphe_export_download_all_saved">Đã xuất %1$s trên %2$s bản tải xuống vào %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Xuất: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Ẩn video quảng cáo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ẩn nút chuyển đổi Bài hát/Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ẩn nút tải xuống</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Ẩn nút tải xuống trong chương trình podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Ẩn kệ Khám phá</string>
   <string name="morphe_music_hide_filter_bar_title">Ẩn thanh bộ lọc</string>
   <string name="morphe_music_hide_grid_shelves_title">Ẩn kệ dạng lưới</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ẩn kệ cá nhân hoá</string>
+  <string name="morphe_music_hide_new_button_title">Ẩn nút Mới</string>
+  <string name="morphe_music_hide_new_button_summary">Ẩn nút Mới trong tab Thư viện</string>
   <string name="morphe_music_hide_list_shelves_title">Ẩn kệ dạng danh sách</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Bảng lời nhạc</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ẩn nút Chia sẻ</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ẩn nút Dịch lời nhạc</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ẩn kệ \'Mới từ\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ẩn các kệ danh sách phát</string>
@@ -199,6 +200,8 @@ Xuất: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Chuyển bài</string>
   <string name="morphe_music_crossfade_screen_summary">Trộn các bài hát với nhau khi chuyển bài</string>
   <string name="morphe_music_crossfade_enabled_title">Bật hiệu ứng chuyển bài</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Để sử dụng crossfade, hãy thay đổi \'Default client\' của \'Spoof video streams\' thành \'TV Simply\' hoặc \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Hiệu ứng làm mờ âm thanh</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Âm lượng cân bằng</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Duy trì nhẹ</string>
@@ -232,7 +235,9 @@ Xuất: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Hiệu ứng chuyển bài đã tạm dừng cho phiên phát này</string>
   <string name="morphe_music_crossfade_resumed_toast">Hiệu ứng chuyển bài đã được bật lại</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Không thể dùng chế độ video khi đang bật hiệu ứng chuyển bài</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade bị tắt khi phát SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade không hoạt động với \'visionOS\'. Hãy thay đổi \'Default client\' của \'Spoof video streams\' thành \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade không hoạt động với client luồng giả lập này</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade bị tắt khi đang phát lên thiết bị khác</string>
   <string name="morphe_music_crossfade_about_how_title">Cơ chế hoạt động</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade làm cho phần cuối của bài hát này chồng lên phần đầu của bài hát tiếp theo, sử dụng thời lượng và đường cong của bạn
@@ -249,9 +254,7 @@ Màn hình khóa hoặc thông báo có thể hiển thị trạng thái cũ tro
 
 Tạm dừng crossfade để xem video ca nhạc có thể khiến một số video bị màn hình đen. Tạm dừng crossfade trước khi chọn bài hát sẽ tránh được điều này"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Không hỗ trợ</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Truyền hoặc phản chiếu âm thanh (Chromecast, phản chiếu màn hình hoặc âm thanh)
-
-Phát SABR (đã tắt giả lập luồng video)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Truyền hoặc phản chiếu âm thanh (Chromecast, phản chiếu màn hình hoặc âm thanh)</string>
   <string name="morphe_music_crossfade_about_credit_title">Đóng góp</string>
   <string name="morphe_music_crossfade_about_credit_summary">Hiệu ứng chuyển bài do VazerOG phát triển</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Tạm dừng khi tắt tiếng</string>
   <string name="morphe_music_pause_when_muted_summary">Tạm dừng phát nhạc khi âm lượng hệ thống bị tắt tiếng và tiếp tục phát khi tăng âm lượng</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Truyền Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Nút Cast cũng có thể truyền phát đến Sonos và các loa UPnP khác trên mạng Wi-Fi của bạn</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Kết nối với một thiết bị</string>
+  <string name="morphe_music_sonos_cast_searching">Đang tìm kiếm loa trên mạng Wi-Fi của bạn…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Chọn một loa trên mạng Wi-Fi của bạn</string>
+  <string name="morphe_music_sonos_cast_casting_to">Đang truyền đến %s</string>
+  <string name="morphe_music_sonos_cast_connected">Đã kết nối</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ngắt kết nối</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Loa trên Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Đang hoạt động</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Các thiết bị Chromecast, Nest và Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Không thể kết nối với %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Tốc độ phát</string>
   <string name="morphe_music_playback_speed_summary">Tốc độ dùng cho tất cả các bản nhạc. Ở mức 100%, tốc độ của ứng dụng sẽ được dùng, chẳng hạn như tốc độ phát podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Thay đổi cao độ theo tốc độ</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Hiển thị menu hiệu ứng Video</string>
+  <string name="morphe_music_video_effect_menu_summary">Thêm hiệu ứng Video vào menu trình phát khi đang phát video</string>
+  <string name="morphe_music_video_effect_next_video">Hiệu ứng sẽ hiển thị từ video tiếp theo</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Tắt phụ đề tự động</string>
   <string name="morphe_music_disable_auto_captions_summary">Phụ đề sẽ không tự động bật khi video bắt đầu, bao gồm cả những phụ đề mà video tự động bật theo mặc định</string>
@@ -279,6 +300,10 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Tắt chuyển bài khi bấm không thích</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Không chuyển sang bài tiếp theo khi bạn bấm nút Không thích</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Tắt vuốt để chuyển bài hát</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Ngăn việc chuyển sang bài hát tiếp theo hoặc bài trước đó bằng cách vuốt sang trái hoặc phải trên trình phát</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Ngăn việc chuyển sang bài hát tiếp theo hoặc bài trước đó bằng cách vuốt sang trái hoặc phải trên miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Vòng lặp A-B</string>
   <string name="morphe_music_ab_loop_summary">Nhấn giữ thanh tìm kiếm để đặt điểm bắt đầu vòng lặp, nhấn lần nữa để đặt điểm kết thúc vòng lặp, và nhấn lần nữa để xóa vòng lặp</string>
@@ -329,15 +354,6 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_playlist_tags_rename">Đổi tên</string>
   <string name="morphe_music_playlist_tags_delete">Xoá</string>
   <string name="morphe_music_playlist_tags_hidden">Đã ẩn</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Ẩn nút Truyền</string>
-  <string name="morphe_music_hide_history_button_title">Ẩn nút Lịch sử</string>
-  <string name="morphe_music_hide_notification_button_title">Ẩn nút Thông báo</string>
-  <string name="morphe_music_hide_search_button_title">Ẩn nút Tìm kiếm</string>
-  <string name="morphe_music_hide_voice_search_button_title">Ẩn nút Tìm kiếm bằng giọng nói</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ẩn nút tìm kiếm âm thanh</string>
-  <string name="morphe_music_hide_library_new_button_title">Ẩn nút New</string>
-  <string name="morphe_music_hide_library_new_button_summary">Ẩn nút New trong tab Thư viện</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Nút thao tác</string>
   <string name="morphe_music_action_buttons_screen_summary">Chọn các nút sẽ hiển thị bên dưới trình phát</string>
@@ -409,22 +425,20 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Luôn giữ hướng dọc</string>
   <string name="morphe_music_force_portrait_orientation_summary">Giữ ứng dụng ở hướng dọc khi thiết bị được xoay</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Đổi màu trình phát thu nhỏ</string>
+  <string name="morphe_music_change_miniplayer_color_title">Thay đổi màu sắc</string>
   <string name="morphe_music_change_miniplayer_color_summary">Màu trình phát thu nhỏ khớp với trình phát toàn màn hình</string>
   <string name="morphe_music_change_navigation_bar_color_title">Đổi màu thanh điều hướng</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Đồng bộ màu thanh điều hướng với trình phát toàn màn hình</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Hiện nút tiếp theo trong trình phát thu nhỏ</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Hiện nút quay lại trong trình phát thu nhỏ</string>
+  <string name="morphe_music_miniplayer_next_button_title">Hiện nút Tiếp theo</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Hiện nút Quay lại</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Bật trình phát thu nhỏ bắt buộc</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Không tự động chuyển sang chế độ toàn màn hình khi phát bài hát mới</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Bật vuốt để đóng trình phát thu nhỏ</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Bật vuốt để đóng</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Cho phép vuốt xuống để đóng trình phát thu nhỏ</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Thanh điều hướng</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ẩn nút Trang chủ</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Ẩn nút Thư viện</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ẩn nút Nâng cấp</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Hiện nút Cài đặt</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Thao tác nút cài đặt</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Khi bật, bấm sẽ mở Cài đặt Morphe và nhấn giữ sẽ mở Cài đặt YouTube Music, tắt để đổi ngược lại</string>
   <string name="morphe_music_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_music_navigation_bar_glass_title">Bật thanh điều hướng dạng kính</string>
@@ -457,7 +474,7 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Ẩn phần highlight bo tròn phía sau nút được chọn của thanh điều hướng kính</string>
   <string name="morphe_music_miniplayer_screen_title">Trình phát thu nhỏ</string>
   <string name="morphe_music_miniplayer_screen_summary">Thay đổi kiểu dáng, các nút và cử chỉ của trình phát thu nhỏ</string>
-  <string name="morphe_music_miniplayer_glass_title">Bật trình phát thu nhỏ kính</string>
+  <string name="morphe_music_miniplayer_glass_title">Bật hiệu ứng kính</string>
   <string name="morphe_music_miniplayer_glass_summary">Hiển thị trình phát thu nhỏ dạng nổi như một thẻ kính bo tròn, bán trong suốt</string>
   <string name="morphe_music_miniplayer_glass_style_title">Kiểu dáng trình phát thu nhỏ kính</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Điều chỉnh bán kính góc, lề ảnh bìa, độ sáng viền và độ mờ của trình phát thu nhỏ kính, kèm theo bản xem trước</string>
@@ -465,11 +482,8 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Lề ảnh bìa</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Độ sáng viền</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Độ mờ</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Độ mờ kính</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Mức độ mờ của trang phía sau trình phát thu nhỏ kính (Android 14 trở lên). Ở mức 0 trang sẽ hiển thị sắc nét, và trước Android 14 trang sẽ bị che khuất</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Kính sáng</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Đổ màu trắng cho trình phát thu nhỏ kính thay vì màu tối, để có hiệu ứng kính sáng và trong hơn</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Đổ màu ảnh album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Đổ màu trình phát thu nhỏ kính theo màu ảnh album của bài hát đang phát</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Xoay ảnh bìa</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Khiến ảnh bìa của trình phát thu nhỏ kính trở thành hình tròn và xoay như một chiếc đĩa than khi bài hát đang phát</string>
@@ -480,6 +494,15 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Mẫu</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Khám phá</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Thư viện</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Ẩn nút Hoạt động</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Ẩn nút \"Hỏi Music\"</string>
+  <string name="morphe_music_hide_cast_button_title">Ẩn nút Truyền</string>
+  <string name="morphe_music_hide_history_button_title">Ẩn nút Lịch sử</string>
+  <string name="morphe_music_hide_search_button_title">Ẩn nút Tìm kiếm</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ẩn nút \"Tìm kiếm bằng giọng nói\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ẩn nút \"Tìm kiếm bằng âm thanh\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Chưa đăng nhập. Chạm để cấu hình</string>
   <string name="morphe_music_scrobbling_log_out">Đăng xuất</string>
@@ -583,6 +606,9 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_soundproof_about_summary">"Dữ liệu nghệ sĩ đến từ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), được tải xuống một lần mỗi ngày. Việc bỏ qua sẽ không gửi bất kỳ thông tin nào về nội dung bạn đang phát. Khi mở trang SoundProof, tên nghệ sĩ hiện tại sẽ được gửi đến máy chủ SoundProof để hiển thị các lượt bình chọn mới nhất và để bình chọn. Máy chủ phân biệt người bình chọn bằng địa chỉ IP, vì vậy lượt bình chọn của bạn có thể hiển thị khác nhau trên một mạng khác.
 
 Cơ sở dữ liệu được cấp phép theo Giấy phép Cơ sở Dữ liệu Mở ODC (ODbL). Các mục từ Soul Over AI của xoundbyte được cấp phép theo CC BY 4.0. Không liên kết với hoặc được xác nhận bởi SoundProof hoặc Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Ảnh bìa động Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Hiển thị ảnh bìa album động của Apple Music trong trình phát, nếu album đó có. Tiêu đề, nghệ sĩ và album của mỗi bài hát sẽ được gửi đến Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Lời bài hát không khả dụng cho tệp thiết bị này.</string>
   <string name="morphe_music_lyrics_enabled_title">Dùng lời nhạc từ bên thứ ba</string>
@@ -635,6 +661,25 @@ Cột đầu tiên là từ, cột thứ hai là cách đọc; các cột và d�
   <string name="morphe_music_lyrics_clear_cache_title">Xóa lời đã lưu</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Xóa %s MB lời bài hát được lưu trên thiết bị này</string>
   <string name="morphe_music_lyrics_clear_cache_done">Đã xóa %s MB</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Đang tính toán kích thước bộ nhớ đệm…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Bộ nhớ đệm lời nhạc</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Xóa bộ nhớ đệm lời nhạc</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d bài hát)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Bộ nhớ đệm bản dịch</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Xóa bộ nhớ đệm bản dịch</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d bản dịch)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Bộ nhớ đệm phiên âm</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Xóa bộ nhớ đệm phiên âm</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d bản phiên âm)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Tổng dung lượng bộ nhớ đệm</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Xóa tất cả bộ nhớ đệm</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d mục)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Xóa</string>
+  <string name="morphe_music_lyrics_cache_close_action">Đóng</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Xóa %1$s MB (%2$d bài hát) lời nhạc được lưu trong bộ nhớ đệm trên thiết bị này?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Xóa %1$s MB (%2$d bản dịch) được lưu trong bộ nhớ đệm trên thiết bị này?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Xóa %1$s MB (%2$d bản phiên âm) được lưu trong bộ nhớ đệm trên thiết bị này?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Xóa %1$s MB (%2$d mục) tất cả dữ liệu lời nhạc được lưu trong bộ nhớ đệm trên thiết bị này?</string>
   <string name="morphe_music_token_dialog_get_token">Lấy mã truy cập</string>
   <string name="morphe_music_apple_music_token_title">Mã thông tin người dùng Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Dán cookie media-user-token từ music.apple.com.
@@ -690,8 +735,11 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_tap_to_seek_summary">Chạm vào một dòng để chuyển đến thời điểm đó trong bài hát, nhấn giữ để sao chép từ dưới ngón tay của bạn, hoặc toàn bộ dòng khi thao tác không nằm trên một từ. Tắt cả hai thao tác này</string>
   <string name="morphe_music_lyrics_show_section_title">Hiển thị thẻ phân đoạn</string>
   <string name="morphe_music_lyrics_show_section_summary">Gắn thẻ nhỏ cho mỗi phân đoạn mới của lời bài hát, chẳng hạn như Phiên khúc hoặc Điệp khúc</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Hiện nút Sao chép lời nhạc</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Nhấn để sao chép lời bài hát gốc dưới dạng văn bản thuần túy; nhấn giữ để lưu tệp nguồn lời bài hát thô và tệp TTML đã chuyển đổi vào Thư mục Tải xuống</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Hiện nút Sao chép / Chia sẻ</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Hiển thị nút Sao chép hoặc Chia sẻ trên thanh công cụ của bảng lời nhạc</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Chế độ nút Sao chép</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Chế độ sao chép (chạm để sao chép, nhấn giữ để lưu)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Chế độ chia sẻ (chạm để chọn 1-5 dòng, nhấn giữ để sao chép hoặc lưu)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Hiện nút Dịch lời nhạc</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Nhấn để chuyển đổi dịch thuật; nhấn giữ lâu chỉ để dịch. Sử dụng các nhà cung cấp dịch thuật đã bật theo thứ tự liệt kê</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Hiển thị nút Latinh hóa hoặc phiên âm</string>
@@ -705,7 +753,48 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Cách đọc đã sẵn sàng (%s mục)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Tải xuống thất bại - hãy tắt và bật lại để thử lại</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Từ điển ngoại tuyến</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Tiếng Nhật (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Tiếng Nhật</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — bộ phân tích hình thái &amp; ruby nhanh</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — từ điển từ tiếng Nhật đầy đủ</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Thứ tự ưu tiên &amp; dự phòng</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Ưu tiên Kuromoji (dự phòng SudachiDict)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">Ưu tiên SudachiDict (dự phòng Kuromoji)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Phông chữ lời bài hát tùy chỉnh</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Phông chữ hệ thống mặc định (nhấn để tải lên tệp phông chữ .ttf hoặc .otf)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Phông chữ đang hoạt động: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Tải lên tệp phông chữ .ttf hoặc .otf (như SF Pro Bold, Inter Bold hoặc Inter ExtraBold) từ bộ nhớ thiết bị của bạn để sử dụng trong chế độ xem lời bài hát.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Tải lên phông chữ</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Đặt lại về mặc định</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Đã áp dụng phông chữ lời bài hát tùy chỉnh: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Đã quay lại phông chữ lời bài hát mặc định</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Tệp phông chữ không hợp lệ hoặc không được hỗ trợ (yêu cầu .ttf hoặc .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Chia sẻ lời bài hát</string>
+  <string name="morphe_music_lyrics_share_button">Chia sẻ</string>
+  <string name="morphe_music_lyrics_copy">Sao chép</string>
+  <string name="morphe_music_lyrics_share_options_title">Thao tác với lời bài hát</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Sao chép lời bài hát dưới dạng văn bản thuần túy</string>
+  <string name="morphe_music_lyrics_save_file_option">Lưu lời bài hát &amp; TTML vào Thư mục Tải về</string>
+  <string name="morphe_music_lyrics_share_cancel">Hủy</string>
+  <string name="morphe_music_lyrics_share_select_hint">Chạm từ 1–5 dòng để chia sẻ</string>
+  <string name="morphe_music_lyrics_share_max_lines">Có thể chọn tối đa 5 dòng</string>
+  <string name="morphe_music_lyrics_share_failed">Không thể tạo thẻ chia sẻ lời bài hát</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Làm mờ</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Ảnh bìa</string>
+  <string name="morphe_music_lyrics_share_bg_color">Màu</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Ảnh</string>
+  <string name="morphe_music_lyrics_share_branding_logo">Logo YT Music</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Dịch</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Hát bè</string>
+  <string name="morphe_music_lyrics_share_custom_color">Tùy chỉnh màu</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Không thể tải hình ảnh đã chọn</string>
+  <string name="morphe_music_lyrics_share_card_cta">Chia sẻ thẻ</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Sao chép văn bản</string>
+  <string name="morphe_music_lyrics_share_back">Quay lại lựa chọn lời bài hát</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Đang tải ảnh...</string>
+  <string name="morphe_music_lyrics_share_preparing">Đang tạo thẻ...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Mẫu màu %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Track không xác định</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Ký tự Trung Quốc và Quảng Đông (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Từ tiếng Trung (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Phiên âm ngôn ngữ Hy Lạp, Cyrillic Slavơ (bao gồm Nga, Ukraina, Bungari, Serbia, Belarus, Macedonia), Georgia, Armenia, Hebrew, Ả Rập, Amharic và Syriac (CLDR, ~0.5 MB)</string>

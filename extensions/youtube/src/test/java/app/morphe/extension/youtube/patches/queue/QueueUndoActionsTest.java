@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 
 public class QueueUndoActionsTest {
     private static final String A = "abcdefghijk";

@@ -78,6 +78,23 @@ public final class PlaylistRoutes {
                     + ",continuationContents.playlistVideoListContinuation(" + PLAYLIST_VIDEO_FIELDS + ")&prettyPrint=false"
     ).compile();
 
+    private static final String PLAYLIST_SEARCH_VIDEO_FIELDS =
+            "contents.playlistVideoRenderer(videoId,title,thumbnail,lengthText,shortBylineText.runs.text,videoInfo)"
+                    + ",continuations";
+    private static final String PLAYLIST_SEARCH_VIDEO_LIST_FIELDS =
+            "playlistVideoListRenderer(" + PLAYLIST_SEARCH_VIDEO_FIELDS + ")";
+
+    /**
+     * The title of a playlist, and the videos of a playlist with what is shown of them in the playlist.
+     */
+    public static final Route.CompiledRoute BROWSE_PLAYLIST_SEARCH_VIDEOS = new Route(
+            Route.Method.POST,
+            "browse?fields=header.pageHeaderRenderer.pageTitle"
+                    + ",contents.singleColumnBrowseResultsRenderer.tabs.tabRenderer.content.sectionListRenderer"
+                    + ".contents(" + PLAYLIST_SEARCH_VIDEO_LIST_FIELDS + ",itemSectionRenderer.contents." + PLAYLIST_SEARCH_VIDEO_LIST_FIELDS + ")"
+                    + ",continuationContents.playlistVideoListContinuation(" + PLAYLIST_SEARCH_VIDEO_FIELDS + ")&prettyPrint=false"
+    ).compile();
+
     public static final Route.CompiledRoute GET_MIX_PLAYLIST = new Route(
             Route.Method.POST,
             "next" +

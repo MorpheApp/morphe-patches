@@ -22,6 +22,7 @@ import app.morphe.patches.youtube.video.information.playerStatusOverrideHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -55,6 +56,8 @@ val loopVideoPatch = patch(
         // Since 'videoInformationPatch' is used as a dependency of this patch,
         // the loop is implemented through 'VideoInformation.seekTo(0)'.
         playerStatusOverrideHook(EXTENSION_CLASS, "shouldLoopVideo")
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         SleepTimerCancelMethodFingerprint.method.apply {
             val stateFieldGetIndex = indexOfFirstInstructionOrThrow(Opcode.IGET_OBJECT)

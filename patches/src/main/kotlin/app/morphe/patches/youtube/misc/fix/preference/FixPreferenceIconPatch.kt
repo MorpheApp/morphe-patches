@@ -40,10 +40,9 @@ private lateinit var getPreferenceScreenMethod: MethodReference
 internal val preferenceScreenHookPatch = patch {
     execute {
         PreferenceScreenSyntheticFingerprint.let {
-            getPreferenceScreenMethod = it.instructionMatches[1].methodReference
-            fragmentField = it.classDef.fields.single { field ->
-                field.type == getPreferenceScreenMethod.definingClass
-            }
+            // 21.47+ calls the method on a superclass of the field type.
+            fragmentField = it.instructionMatches[0].fieldReference
+            getPreferenceScreenMethod = it.instructionMatches[2].methodReference
 
             // 21.45+ reuses the fragment register and p0 before returning,
             // so p0 is kept unchanged and the fragment is read again from it.

@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Nustatymai</string>
   <string name="morphe_settings_confirm_user_dialog_title">Ar tikrai norite tęsti?</string>
   <string name="morphe_settings_save">Išsaugoti</string>
   <string name="morphe_settings_reset">Atstatyti</string>
@@ -87,7 +86,13 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <string name="morphe_settings_about_links_translations">Vertimai</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Atnaujinta</string>
   <string name="morphe_settings_about_contributors">Prisidedantys</string>
-  <string name="morphe_settings_about_contributors_period">Pastarieji 12 mėnesių</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Visą laiką</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mėnesiai</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mėnesiai</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Laiko tarpis</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Rėmėjai</string>
   <string name="morphe_settings_about_supporters_summary">Rėmėjai „Open Collective“</string>
@@ -220,6 +225,9 @@ Jei akumuliatoriaus optimizavimo nustatymai nebus pakeisti, galite susidurti su:
 • Programėlė gali atsitiktinai užsidaryti
 • Pranešimai gali neveikti
 • Atkūrimas fone gali neveikti"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Atidaryti sistemos bendrinimo langą</string>
+  <string name="morphe_open_system_share_sheet_summary">Dalinantis turiniu, atidaro sistemos bendrinimo langą vietoj programėlės lango</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Programos nuorodų tvarkymas</string>
   <string name="morphe_link_handling_summary">Konfigūruoti nuorodas, kad jos atsidarytų šioje programėlėje</string>

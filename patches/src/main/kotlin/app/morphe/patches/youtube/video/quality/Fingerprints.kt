@@ -22,14 +22,12 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
+import app.morphe.patches.shared.initialResolutionField
 import app.morphe.patches.youtube.video.information.SetVideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualitySetterFingerprint
-import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-
-internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
 
 internal object NewFlyoutMenuFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
@@ -446,33 +444,6 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     custom = { _, classDef ->
         AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
     }
-)
-
-/**
- * The field of the initial video quality of the playback start parameters.
- */
-private fun initialResolutionField() =
-    PlaybackStartParametersToStringFingerprint.method.findFieldFromToString(FIXED_RESOLUTION_STRING)
-
-internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        string(FIXED_RESOLUTION_STRING)
-    )
-)
-
-internal object PlaybackStartParametersConstructorFingerprint : Fingerprint(
-    classFingerprint = PlaybackStartParametersToStringFingerprint,
-    name = "<init>",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            reference = { initialResolutionField() }
-        )
-    )
 )
 
 /**

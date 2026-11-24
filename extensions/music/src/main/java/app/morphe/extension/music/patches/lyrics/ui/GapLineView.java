@@ -51,35 +51,44 @@ final class GapLineView extends View {
 
     /** The dots show up this long after the line before the break ends. */
     static final long LYRICS_GAP_START_LAG_MS = 310L;
-    private static final long GAP_SHOW_DELAY_MS = 300L;
-    private static final int GAP_FADE_MS = 200;
-    private static final long GAP_HIDE_FADE_DELAY_MS = 500L;
-    private static final int GAP_ENDED_MS = 800;
-    private static final long GAP_CLOSE_MS = 850L;
+    private static final long GAP_SHOW_DELAY_MS = 260L;
+    private static final int GAP_ENTER_DURATION_MS = 320;
+    private static final int GAP_FADE_MS = 220;
+    private static final long GAP_HIDE_FADE_DELAY_MS = 480L;
+    private static final int GAP_ENDED_MS = 780;
+    private static final long GAP_CLOSE_MS = 820L;
     /** How long before the next line the dots start to close. */
     static final long GAP_EXIT_DURATION_MS = GAP_ENDED_MS;
 
     private static final TimeInterpolator GAP_EASE = LyricsViewSupport.EASE;
+    private static final TimeInterpolator GAP_ENTER_EASE = new android.view.animation.PathInterpolator(0.22f, 1.0f, 0.36f, 1.0f);
     private static final float INTERVAL_DOT_RADIUS_DP = 5.0f;
-    private static final float INTERVAL_DOT_GAP_DP = 8.0f;
-    private static final int INTERVAL_SECONDARY_ALPHA = 0x55;
+    private static final float INTERVAL_DOT_GAP_DP = 8.5f;
+    private static final int INTERVAL_SECONDARY_ALPHA = 0x52;
     private static final int INTERVAL_PRIMARY_ALPHA = 0xFF;
-    static final float TARGET_HEIGHT_DP = 38f;
+    static final float TARGET_HEIGHT_DP = 44f;
+    static final float EXTRA_SECTION_CLEARANCE_DP = 10f;
 
     private final GapInterval interval;
     @Nullable
     private LyricsScrollEngine scrollEngine;
+    private boolean hasTagBelow = false;
     private int lastReportedLayoutH = 0;
     private int committedLayoutH = 0;
+    private int animatedCollapseH = -1;
     private boolean isActive = false;
     private boolean isOpen = false;
     private boolean isExiting = false;
     private float groupScale = 0f;
     private float groupAlpha = 0f;
+    private float lastRenderedScale = 1.0f;
+    private float enterProgress = 1.0f;
     @Nullable
     private ValueAnimator expandAnimator;
     @Nullable
     private ValueAnimator exitAnimator;
+    @Nullable
+    private ValueAnimator collapseAnimator;
     private final Paint dotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final LyricsViewSupport.BlurTarget blurTarget = new LyricsViewSupport.BlurTarget(this);
 
@@ -90,6 +99,20 @@ final class GapLineView extends View {
 
     void setScrollEngine(@Nullable LyricsScrollEngine engine) {
         this.scrollEngine = engine;
+    }
+
+    void setHasTagBelow(boolean hasTagBelow) {
+        if (this.hasTagBelow != hasTagBelow) {
+            this.hasTagBelow = hasTagBelow;
+            if (isOpen || isExiting) {
+                updateLayoutState();
+            }
+        }
+    }
+
+    int targetOpenHeightPx() {
+        float dp = TARGET_HEIGHT_DP + (hasTagBelow ? EXTRA_SECTION_CLEARANCE_DP : 0f);
+        return Dim.dp(dp);
     }
 
     @Override
@@ -126,6 +149,11 @@ final class GapLineView extends View {
                 exitAnimator.cancel();
                 exitAnimator = null;
             }
+            if (collapseAnimator != null && collapseAnimator.isRunning()) {
+                collapseAnimator.cancel();
+                collapseAnimator = null;
+                animatedCollapseH = -1;
+            }
             if (!isActive) {
                 isActive = true;
                 startExpandAnimation();
@@ -138,18 +166,21 @@ final class GapLineView extends View {
                     expandAnimator.cancel();
                     expandAnimator = null;
                 }
-                if (currentPos >= interval.endMs() && currentPos < interval.nextStartMs()) {
+                if (currentPos >= interval.endMs() && currentPos < interval.nextStartMs() + GAP_CLOSE_MS) {
                     startExitAnimation();
                 } else {
                     resetImmediate();
                 }
             } else if (exitAnimator != null && exitAnimator.isRunning()) {
-                if (isOutsideBreak(currentPos)) {
+                // Only abort an in-flight exit animation on a seek/jump outside the transition window;
+                // never cut off the final frames right as playback crosses nextStartMs.
+                if (isSeekOutsideExitWindow(currentPos)) {
                     resetImmediate();
                 }
             } else if (isOpen && !isExiting && currentPos >= interval.endMs() && currentPos < interval.nextStartMs()) {
                 startExitAnimation();
-            } else if (isOpen && isOutsideBreak(currentPos)) {
+            } else if (isOpen && !isExiting && (collapseAnimator == null || !collapseAnimator.isRunning())
+                    && isOutsideBreak(currentPos)) {
                 resetImmediate();
             }
         }
@@ -162,72 +193,118 @@ final class GapLineView extends View {
         return currentPos < interval.startMs() || currentPos >= interval.nextStartMs();
     }
 
+    private boolean isSeekOutsideExitWindow(long currentPos) {
+        return currentPos < interval.startMs() || currentPos > interval.nextStartMs() + GAP_CLOSE_MS + 250L;
+    }
+
     /**
-     * Animates entrance for active gap line indicator:
-     * - Layout opens immediately
-     * - Scale snaps to 1.0f
-     * - Alpha waits GAP_SHOW_DELAY_MS then fades in over GAP_FADE_MS with GAP_EASE
+     * Animates seamless entrance for active gap line indicator:
+     * - Layout opens immediately without overlapping neighboring section tags
+     * - Smoothly scales from 0.58 -> 1.0 (or live scale if re-entering) with staggered dot bloom
      */
     private void startExpandAnimation() {
         if (expandAnimator != null) expandAnimator.cancel();
         if (exitAnimator != null) exitAnimator.cancel();
+        if (collapseAnimator != null) {
+            collapseAnimator.cancel();
+            collapseAnimator = null;
+        }
+        animatedCollapseH = -1;
 
+        final boolean reenteringVisible = (isOpen || isExiting) && groupAlpha > 0.02f;
         isOpen = true;
         isExiting = false;
-        groupScale = 1.0f;
-        final float startAlpha = groupAlpha;
+        final float startAlpha = reenteringVisible ? groupAlpha : 0f;
+        final float startScale = reenteringVisible ? Math.max(0.58f, lastRenderedScale) : 0.58f;
+        if (!reenteringVisible) {
+            groupAlpha = 0f;
+            groupScale = startScale;
+            enterProgress = 0f;
+        }
         updateLayoutState();
 
-        final long totalMs = GAP_SHOW_DELAY_MS + GAP_FADE_MS;
+        final long delayMs = reenteringVisible ? 0L : GAP_SHOW_DELAY_MS;
+        final long totalMs = delayMs + GAP_ENTER_DURATION_MS;
 
         expandAnimator = ValueAnimator.ofFloat(0.0f, (float) totalMs);
         expandAnimator.setDuration(totalMs);
         expandAnimator.setInterpolator(new LinearInterpolator());
         expandAnimator.addUpdateListener(anim -> {
             float elapsed = (float) anim.getAnimatedValue();
-            if (elapsed < GAP_SHOW_DELAY_MS) {
+            if (elapsed < delayMs) {
                 groupAlpha = startAlpha;
-                groupScale = 0.5f;
+                groupScale = startScale;
+                enterProgress = 0f;
             } else {
-                float f = Math.max(0f, Math.min(1f, (elapsed - GAP_SHOW_DELAY_MS) / (float) GAP_FADE_MS));
-                float eased = GAP_EASE.getInterpolation(f);
-                groupAlpha = startAlpha + (1.0f - startAlpha) * eased;
-                groupScale = 0.5f + 0.5f * eased;
+                float f = Math.max(0f, Math.min(1f, (elapsed - delayMs) / (float) GAP_ENTER_DURATION_MS));
+                float eased = GAP_ENTER_EASE.getInterpolation(f);
+                enterProgress = eased;
+                groupAlpha = startAlpha + (1.0f - startAlpha) * GAP_EASE.getInterpolation(f);
+                groupScale = startScale + (1.0f - startScale) * eased;
             }
             invalidate();
         });
         expandAnimator.addListener(new AnimatorListenerAdapter() {
+            private boolean cancelled;
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                cancelled = true;
+            }
+
             @Override
             public void onAnimationEnd(Animator animation) {
                 expandAnimator = null;
-                groupScale = 1.0f;
-                groupAlpha = 1.0f;
-                invalidate();
+                if (!cancelled) {
+                    groupScale = 1.0f;
+                    groupAlpha = 1.0f;
+                    enterProgress = 1.0f;
+                    invalidate();
+                }
             }
         });
         expandAnimator.start();
     }
 
     /**
-     * Animates exit transition when instrumental gap ends:
-     * - Scale keyframes over 800ms (GAP_ENDED_MS): 0% -> 1.0, 35% -> 1.2, 100% -> 0.0
-     * - Alpha waits 500ms (GAP_HIDE_FADE_DELAY_MS) then fades 1.0 -> 0.0 over 200ms (GAP_FADE_MS)
-     * so the 800ms exit bounce is never clipped and the upcoming active lyric line never jumps later.
+     * Animates exit when the instrumental break ends: starts C0-continuously from
+     * {@code lastRenderedScale} -> 1.18x anticipation pop -> 0.0x collapse, calibrated to finish
+     * cleanly as the next line begins word sync.
      */
     private void startExitAnimation() {
-        if (expandAnimator != null) expandAnimator.cancel();
-        if (exitAnimator != null) exitAnimator.cancel();
+        if (expandAnimator != null) {
+            expandAnimator.cancel();
+            expandAnimator = null;
+        }
+        if (exitAnimator != null) {
+            exitAnimator.cancel();
+            exitAnimator = null;
+        }
+        if (collapseAnimator != null) {
+            collapseAnimator.cancel();
+            collapseAnimator = null;
+        }
+        animatedCollapseH = -1;
+
+        if (groupAlpha <= 0.02f) {
+            resetImmediate();
+            return;
+        }
 
         isOpen = true;
         isExiting = true;
-        if (groupAlpha <= 0.05f) {
-            groupAlpha = 1.0f;
-        }
+        enterProgress = 1.0f;
+        final float startAlpha = groupAlpha;
+        final float startScale = Math.max(0.25f, lastRenderedScale);
+        final float peakScale = Math.max(startScale + 0.08f, 1.18f);
         updateLayoutState();
 
-        final long remaining = Math.max(150L, interval.nextStartMs() - LyricsManager.getInstance().getPositionMs());
-        final long duration = Math.min(GAP_CLOSE_MS, Math.max(GAP_ENDED_MS, remaining));
-        final float timeScale = (float) GAP_CLOSE_MS / (float) duration;
+        final long posNow = LyricsManager.getInstance().getPositionMs();
+        final long remainingToNext = interval.nextStartMs() - posNow;
+        final long duration = remainingToNext > 80L
+                ? Math.min(GAP_ENDED_MS, remainingToNext)
+                : GAP_ENDED_MS;
+        final float timeScale = (float) GAP_ENDED_MS / (float) Math.max(1L, duration);
 
         exitAnimator = ValueAnimator.ofFloat(0.0f, (float) duration);
         exitAnimator.setDuration(duration);
@@ -239,19 +316,19 @@ final class GapLineView extends View {
             float peakTime = GAP_ENDED_MS * 0.35f;
             if (virtualMs <= peakTime) {
                 float k = Math.max(0f, Math.min(1f, virtualMs / peakTime));
-                groupScale = 1.0f + 0.2f * GAP_EASE.getInterpolation(k);
+                groupScale = startScale + (peakScale - startScale) * GAP_EASE.getInterpolation(k);
             } else if (virtualMs <= GAP_ENDED_MS) {
                 float k = Math.max(0f, Math.min(1f, (virtualMs - peakTime) / (GAP_ENDED_MS - peakTime)));
-                groupScale = 1.2f * (1.0f - GAP_EASE.getInterpolation(k));
+                groupScale = peakScale * (1.0f - GAP_EASE.getInterpolation(k));
             } else {
                 groupScale = 0f;
             }
 
             if (virtualMs < GAP_HIDE_FADE_DELAY_MS) {
-                groupAlpha = 1.0f;
+                groupAlpha = startAlpha;
             } else if (virtualMs <= GAP_HIDE_FADE_DELAY_MS + GAP_FADE_MS) {
                 float k = Math.max(0f, Math.min(1f, (virtualMs - GAP_HIDE_FADE_DELAY_MS) / (float) GAP_FADE_MS));
-                groupAlpha = 1.0f - GAP_EASE.getInterpolation(k);
+                groupAlpha = startAlpha * (1.0f - GAP_EASE.getInterpolation(k));
             } else {
                 groupAlpha = 0f;
             }
@@ -259,13 +336,56 @@ final class GapLineView extends View {
             invalidate();
         });
         exitAnimator.addListener(new AnimatorListenerAdapter() {
+            private boolean cancelled;
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                cancelled = true;
+            }
+
             @Override
             public void onAnimationEnd(Animator animation) {
                 exitAnimator = null;
-                resetImmediate();
+                if (!cancelled) {
+                    finishSeamlessCollapse();
+                }
             }
         });
         exitAnimator.start();
+    }
+
+    private void finishSeamlessCollapse() {
+        isActive = false;
+        isOpen = false;
+        isExiting = false;
+        groupScale = 0f;
+        groupAlpha = 0f;
+        lastRenderedScale = 0f;
+        final boolean springOn = Settings.LYRICS_SPRING_SCROLL.get();
+        if (springOn || getHeight() <= 0 || !isAttachedToWindow()) {
+            animatedCollapseH = -1;
+            updateLayoutState();
+            invalidate();
+            return;
+        }
+        final int startH = getHeight();
+        animatedCollapseH = startH;
+        collapseAnimator = ValueAnimator.ofInt(startH, 0);
+        collapseAnimator.setDuration(240L);
+        collapseAnimator.setInterpolator(GAP_EASE);
+        collapseAnimator.addUpdateListener(anim -> {
+            animatedCollapseH = (int) anim.getAnimatedValue();
+            updateLayoutState();
+        });
+        collapseAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                collapseAnimator = null;
+                animatedCollapseH = -1;
+                updateLayoutState();
+            }
+        });
+        collapseAnimator.start();
     }
 
     private void resetImmediate() {
@@ -277,25 +397,36 @@ final class GapLineView extends View {
             exitAnimator.cancel();
             exitAnimator = null;
         }
+        if (collapseAnimator != null) {
+            collapseAnimator.cancel();
+            collapseAnimator = null;
+        }
+        animatedCollapseH = -1;
         isActive = false;
         isOpen = false;
         isExiting = false;
         groupScale = 0f;
         groupAlpha = 0f;
+        lastRenderedScale = 0f;
+        enterProgress = 0f;
         updateLayoutState();
         invalidate();
     }
 
     private void updateLayoutState() {
-        int fullH = Dim.dp(TARGET_HEIGHT_DP);
-        final boolean springOn = Settings.LYRICS_SPRING_SCROLL.get();
-        int netLayoutH = (isOpen && !isExiting) ? fullH : 0;
-        int canvasH = (isOpen || isExiting) ? fullH : 0;
-        int bottomMargin = (isOpen && isExiting && springOn) ? -fullH : 0;
+        int fullH = targetOpenHeightPx();
+        int desiredH;
+        if (isOpen || isExiting) {
+            desiredH = fullH;
+        } else if (animatedCollapseH >= 0) {
+            desiredH = animatedCollapseH;
+        } else {
+            desiredH = 0;
+        }
 
-        if (lastReportedLayoutH != netLayoutH) {
-            int delta = netLayoutH - lastReportedLayoutH;
-            lastReportedLayoutH = netLayoutH;
+        if (lastReportedLayoutH != desiredH) {
+            int delta = desiredH - lastReportedLayoutH;
+            lastReportedLayoutH = desiredH;
             if (scrollEngine != null) {
                 scrollEngine.recordLayoutShift(this, delta);
             }
@@ -304,12 +435,12 @@ final class GapLineView extends View {
         ViewGroup.LayoutParams rawLp = getLayoutParams();
         boolean changed = false;
         if (rawLp != null) {
-            if (rawLp.height != canvasH) {
-                rawLp.height = canvasH;
+            if (rawLp.height != desiredH) {
+                rawLp.height = desiredH;
                 changed = true;
             }
-            if (rawLp instanceof ViewGroup.MarginLayoutParams mlp && mlp.bottomMargin != bottomMargin) {
-                mlp.bottomMargin = bottomMargin;
+            if (rawLp instanceof ViewGroup.MarginLayoutParams mlp && mlp.bottomMargin != 0) {
+                mlp.bottomMargin = 0;
                 changed = true;
             }
         }
@@ -330,12 +461,20 @@ final class GapLineView extends View {
         blurTarget.cancel();
         if (expandAnimator != null) expandAnimator.cancel();
         if (exitAnimator != null) exitAnimator.cancel();
+        if (collapseAnimator != null) collapseAnimator.cancel();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = (isOpen || isExiting) ? Dim.dp(TARGET_HEIGHT_DP) : 0;
+        int height;
+        if (isOpen || isExiting) {
+            height = targetOpenHeightPx();
+        } else if (animatedCollapseH >= 0) {
+            height = animatedCollapseH;
+        } else {
+            height = 0;
+        }
         setMeasuredDimension(width, height);
     }
 
@@ -365,17 +504,14 @@ final class GapLineView extends View {
 
         float currentScale = groupScale;
         if (isActive && !isExiting) {
-            // Continuous idle pulsing: scale between 1.1 and 0.9 with alternate cycle
+            // Smooth 4s alternate group breathing (0.9x <-> 1.1x) blended in after entrance.
             long elapsedSinceStart = Math.max(0L, currentTime - interval.startMs());
-            long mod = elapsedSinceStart % 8000L;
-            float loopScale;
-            if (mod < 4000L) {
-                loopScale = 1.1f - 0.2f * GAP_EASE.getInterpolation(mod / 4000f);
-            } else {
-                loopScale = 0.9f + 0.2f * GAP_EASE.getInterpolation((mod - 4000L) / 4000f);
-            }
+            float breatheBlend = Math.min(1f, elapsedSinceStart / 600f) * enterProgress;
+            float cosWave = (float) Math.cos((elapsedSinceStart / 4000.0) * Math.PI);
+            float loopScale = 1.0f + 0.10f * breatheBlend * cosWave;
             currentScale = groupScale * loopScale;
         }
+        lastRenderedScale = currentScale;
 
         final float r = Dim.dp(INTERVAL_DOT_RADIUS_DP);
         final float gapPx = Dim.dp(INTERVAL_DOT_GAP_DP);
@@ -392,7 +528,9 @@ final class GapLineView extends View {
             startX = textMargin;
         }
         final float groupCenterX = startX + totalWidth / 2f;
-        final float cy = getHeight() * 0.38f;
+        final int extraClearancePx = hasTagBelow ? Dim.dp(EXTRA_SECTION_CLEARANCE_DP) : 0;
+        final float usableHeight = Math.max(1f, getHeight() - extraClearancePx);
+        final float cy = usableHeight * 0.48f;
 
         int baseColor = LyricsColors.lineTextColor();
         int red = Color.red(baseColor);
@@ -407,7 +545,6 @@ final class GapLineView extends View {
             float sylEnd = sylStart + syllableDuration;
 
             float dotFillAlpha;
-            float dotScale = 1.0f;
             if (isExiting || currentTime >= sylEnd) {
                 dotFillAlpha = (float) INTERVAL_PRIMARY_ALPHA;
             } else if (currentTime < sylStart) {
@@ -416,22 +553,23 @@ final class GapLineView extends View {
                 float t = (currentTime - sylStart) / Math.max(1f, syllableDuration);
                 t = Math.max(0f, Math.min(1f, t));
                 float interpolated = GAP_EASE.getInterpolation(t);
-                dotFillAlpha = INTERVAL_SECONDARY_ALPHA + (INTERVAL_PRIMARY_ALPHA - INTERVAL_SECONDARY_ALPHA) * interpolated;
-                dotScale = 1.0f + 0.22f * (float) Math.sin(t * Math.PI);
+                dotFillAlpha = INTERVAL_SECONDARY_ALPHA
+                        + (INTERVAL_PRIMARY_ALPHA - INTERVAL_SECONDARY_ALPHA) * interpolated;
             }
-
-            int finalAlpha = Math.max(0, Math.min(255, Math.round(dotFillAlpha * groupAlpha)));
-            dotPaint.setColor(Color.argb(finalAlpha, red, green, blue));
 
             float cx = interval.isRtl()
                     ? (startX + totalWidth - r - i * step)
                     : (startX + r + i * step);
-            canvas.drawCircle(cx, cy, r * dotScale, dotPaint);
+
+            int finalAlpha = Math.max(0, Math.min(255, Math.round(dotFillAlpha * groupAlpha)));
+            dotPaint.setColor(Color.argb(finalAlpha, red, green, blue));
+            canvas.drawCircle(cx, cy, r, dotPaint);
         }
 
         canvas.restore();
 
-        if ((isActive || isExiting || (exitAnimator != null && exitAnimator.isRunning()))
+        if ((isActive || isExiting || (expandAnimator != null && expandAnimator.isRunning())
+                || (exitAnimator != null && exitAnimator.isRunning()))
                 && LyricsManager.getInstance().isPlaying()) {
             postInvalidateOnAnimation();
         }

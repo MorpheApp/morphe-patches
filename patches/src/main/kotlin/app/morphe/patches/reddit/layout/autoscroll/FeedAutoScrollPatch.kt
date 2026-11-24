@@ -15,9 +15,13 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getFreeRegisterProvider
-import app.morphe.patches.reddit.layout.tabletgrid.ListFeedFingerprint
+import app.morphe.patches.reddit.layout.tabletgrid.FEED_TYPE_CLASS
+import app.morphe.patches.reddit.layout.tabletgrid.LatestFeedScreenFingerprint
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.shared.NavBarStateChangeFingerprint
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -38,7 +42,7 @@ val feedAutoScrollPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
         // region Feed visibility.
@@ -87,15 +91,24 @@ val feedAutoScrollPatch = patch(
         }
 
         // List feed.
-        ListFeedFingerprint.method.apply {
-            addScrollableState(parameterTypes[3].toString())
+        LatestFeedScreenFingerprint.instructionMatches[1].getMethodCalled().apply {
+            // Some app versions sort the list feed parameters by type,
+            // so the arguments are found by type and not by position.
+            val listParameters = parameterTypes.map { it.toString() }
+            val feedContextIndex = listParameters.indexOf(FeedContextToStringFingerprint.classDef.type)
+            val lazyStateIndex = listParameters.indexOfFirst {
+                it.startsWith("Landroidx/compose/foundation/lazy/")
+            }
+            val feedTypeIndex = listParameters.indexOf(FEED_TYPE_CLASS)
+
+            addScrollableState(listParameters[lazyStateIndex])
 
             addInstructions(
                 0,
                 """
-                    move-object/from16 v0, p1
-                    move-object/from16 v1, p3
-                    move-object/from16 v2, p5
+                    move-object/from16 v0, p$feedContextIndex
+                    move-object/from16 v1, p$lazyStateIndex
+                    move-object/from16 v2, p$feedTypeIndex
                     invoke-static { v0, v1, v2 }, $EXTENSION_CLASS->onListFeed($FEED_CONTEXT_INTERFACE${SCROLLABLE_STATE_INTERFACE}Ljava/lang/Enum;)V
                 """
             )
@@ -154,6 +167,22 @@ val feedAutoScrollPatch = patch(
                 )
             }
         }
+
+        val (screenAttachFingerprint, screenDetachFingerprint) = if (is_2026_40_0_or_greater) {
+            ScreenAttachFingerprint to ScreenDetachFingerprint
+        } else {
+            ScreenAttachLegacyFingerprint to ScreenDetachLegacyFingerprint
+        }
+
+        screenAttachFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0 }, $EXTENSION_CLASS->onScreenAttached(Ljava/lang/Object;)V"
+        )
+
+        screenDetachFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;)V"
+        )
 
         // endregion
 

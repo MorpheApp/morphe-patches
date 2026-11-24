@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Անհատական</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Նվագարկել ալբոմի աուդիո թրեքները</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Նվագարկել երգերի ալբոմի միայն աուդիո տարբերակը՝ երաժշտական տեսահոլովակի փոխարեն: Պահանջվում է \'Spoof video streams\' ֆունկցիան</string>
+  <string name="morphe_music_play_album_songs_summary">Նվագարկել ալբոմի երգերը՝ երգերի տեսահոլովակների փոխարեն</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Միացնել աուդիո/վիդեո փոխարկիչը</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Փորձեք փոխել աուդիո տրեկի տարբերակը և պաշտոնական երաժշտական տեսահոլովակը</string>
@@ -144,6 +143,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Չհաջողվեց արտահանել ներբեռնումը</string>
   <string name="morphe_export_download_all_flyout_title">Արտահանել ամենը սարքի մեջ</string>
   <string name="morphe_export_download_all_started">Բոլոր ներբեռնումների արտահանում</string>
+  <string name="morphe_export_download_all_title">Բոլոր ներբեռնումները</string>
+  <string name="morphe_export_download_playlist_started">Ներբեռնումների արտահանում</string>
   <string name="morphe_export_download_all_running">Ներբեռնումներն արդեն արտահանվում են</string>
   <string name="morphe_export_download_all_saved">Արտահանվեց %2$s ներբեռնումներից %1$s-ը դեպի %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Թաքցնել տեսանյութերի գովազդները</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Թաքցնել Աուդիո / Վիդեո փոխանցիչը</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Թաքցնել «Ներբեռնել» կոճակը</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Թաքցնում է «Ներբեռնել» կոճակը պոդկաստ ծրագրում</string>
   <string name="morphe_music_hide_explore_shelf_title">Թաքցնել «Բացահայտել» դարակը</string>
   <string name="morphe_music_hide_filter_bar_title">Թաքցնել զտիչների տողը</string>
   <string name="morphe_music_hide_grid_shelves_title">Թաքցնել ցանցային դարակները</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Թաքցնել հորիզոնական դարակները</string>
+  <string name="morphe_music_hide_new_button_title">Թաքցնել «Նոր» կոճակը</string>
+  <string name="morphe_music_hide_new_button_summary">Թաքցնում է «Նոր» կոճակը «Գրադարան» ներդիրում</string>
   <string name="morphe_music_hide_list_shelves_title">Թաքցնել ցուցակային դարակները</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Տեքստերի վահանակ</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Թաքցնել Կիսվելու կոճակը</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Թաքցնել Թարգմանելու կոճակը</string>
   <string name="morphe_music_hide_new_from_shelf_title">Թաքցնել «Նորություններ» դարակը</string>
   <string name="morphe_music_hide_playlist_shelves_title">Թաքցնել плейլիստերի դարակները</string>
@@ -199,6 +200,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Հարթ կերպով միացրեք տրեկները միմյանց</string>
   <string name="morphe_music_crossfade_enabled_title">Միացնել crossfade-ը</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ն օգտագործելու համար փոխեք \"Spoof video streams\" բաժնի \"Default client\"-ը \"TV Simply\"-ի կամ \"visionOS\"-ի</string>
   <string name="morphe_music_crossfade_curve_title">Մարման կորը</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Հավասար հզորություն</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Նուրբ պահում</string>
@@ -232,7 +235,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade-ը դադարեցված է այս սեսիայի համար</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-ը վերսկսված է</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Տեսանյութի ռեժիմը հասանելի չէ, երբ crossfade-ը միացված է</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade-ը անջատված է SABR-ի վերարտադրման ժամանակ</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade-ը չի աշխատում \"visionOS\"-ի հետ: Փոխեք \"Spoof video streams\" բաժնի \"Default client\"-ը \"TV Simply\"-ի</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade-ը չի աշխատում այս spoof հոսքի կլիենտի հետ</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade-ը անջատված է casting-ի ժամանակ</string>
   <string name="morphe_music_crossfade_about_how_title">Ինչպես է այն աշխատում</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade-ը համադրում է մի երգի ավարտը հաջորդի սկզբի հետ՝ օգտագործելով ձեր նշած տևողությունը և կորը
@@ -249,9 +254,7 @@ Fade-ի տևողությունից կարճ երգերը չեն crossfade-վու
 
 Crossfade-ի դադարեցումը տեսահոլովակը դիտելու համար կարող է որոշ տեսանյութեր դարձնել սև: Crossfade-ի դադարեցումը նախքան երգն ընտրելը կխուսափեցնի դրանից"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Չի աջակցվի</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Աուդիոյի casting կամ mirroring (Chromecast, էկրանի կամ աուդիոյի mirroring)
-
-SABR վերարտադրում (Spoof տեսանյութերի հոսքերը անջատված են)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Աուդիոյի տրանսլյացիա կամ հայելային արտացոլում (Chromecast, էկրանի կամ աուդիոյի արտացոլում)</string>
   <string name="morphe_music_crossfade_about_credit_title">Հեղինակ</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade ֆունկցիան՝ VazerOG-ի կողմից</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Դադարեցնել ձայնազրկման ժամանակ</string>
   <string name="morphe_music_pause_when_muted_summary">Դադարեցնում է հետազոտումը, երբ համակարգի ձայնը ձայնազրկված է, և վերսկսում է այն, երբ ձայնը բարձրացվում է</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast կոճակը կարող է հոսք ուղարկել նաև Sonos-ին և ձեր Wi-Fi ցանցի այլ UPnP բարձրախոսներին</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Միացեք սարքին</string>
+  <string name="morphe_music_sonos_cast_searching">Փնտրվում են բարձրախոսներ ձեր Wi-Fi ցանցում…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Ընտրեք բարձրախոս ձեր Wi-Fi ցանցում</string>
+  <string name="morphe_music_sonos_cast_casting_to">Հեռարձակվում է դեպի %s</string>
+  <string name="morphe_music_sonos_cast_connected">Միացված է</string>
+  <string name="morphe_music_sonos_cast_disconnect">Անջատել</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Բարձրախոսներ Wi-Fi-ի միջոցով</string>
+  <string name="morphe_music_sonos_cast_active">Ակտիվ</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest և Google TV սարքեր</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Չհաջողվեց միանալ %s-ին</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Վերարտադրման արագություն</string>
   <string name="morphe_music_playback_speed_summary">Արագությունը, որն օգտագործվում է բոլոր թրեկների համար: 100%-ի դեպքում օգտագործվում է հավելվածի արագությունը, օրինակ՝ փոդքասթի վերարտադրման արագությունը</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Փոխել տոնայնությունը արագության հետ</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Ցուցադրել տեսանյութի էֆեկտների մենյուն</string>
+  <string name="morphe_music_video_effect_menu_summary">Ավելացնում է տեսանյութի էֆեկտը նվագարկիչի մենյուին տեսանյութի ընթացքում</string>
+  <string name="morphe_music_video_effect_next_video">Էֆեկտը կցուցադրվի հաջորդ տեսանյութից սկսած</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Անջատել ավտոմատ սուբտիտրերը</string>
   <string name="morphe_music_disable_auto_captions_summary">Տեսանյութի սկզբնության պահին սուբտիտրերը չեն միացվում ավտոմատ կերպով, ներառյալ այն սուբտիտրերը, որոնք տեսանյութը միացնում է լռելյայն</string>
@@ -279,6 +300,10 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Անջատել չհավանելու վերահասցեավորումը</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Կանխում է հաջորդ տրեկին անցումը, երբ սեղմվում է «Չհավանել» կոճակը</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Անջատել սլայդումը տրեկը փոխելու համար</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Կանխում է հաջորդ կամ նախորդ տրեկին անցումը՝ նվագիչի վրա ձախ կամ աջ սլայդելու միջոցով</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Կանխում է հաջորդ կամ նախորդ տրեկին անցումը՝ մինի-նվագիչի վրա ձախ կամ աջ սլայդելու միջոցով</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ցիկլ</string>
   <string name="morphe_music_ab_loop_summary">Սեղմեք և պահեք փնտրման սլայդերը՝ ցիկլի սկիզբը սահմանելու համար, կրկին՝ ցիկլի ավարտը սահմանելու, և ևս մեկ անգամ՝ ցիկլը ջնջելու համար</string>
@@ -329,15 +354,6 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_playlist_tags_rename">Վերանվանել</string>
   <string name="morphe_music_playlist_tags_delete">Ջնջել</string>
   <string name="morphe_music_playlist_tags_hidden">Թաքցված</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Թաքցնել Cast կոճակը</string>
-  <string name="morphe_music_hide_history_button_title">Թաքցնել Պատմության կոճակը</string>
-  <string name="morphe_music_hide_notification_button_title">Թաքցնել Ծանուցումների կոճակը</string>
-  <string name="morphe_music_hide_search_button_title">Թաքցնել Որոնման կոճակը</string>
-  <string name="morphe_music_hide_voice_search_button_title">Թաքցնել ձայնային որոնման կոճակը</string>
-  <string name="morphe_music_hide_sound_search_button_title">Թաքցնել ձայնի որոնման կոճակը</string>
-  <string name="morphe_music_hide_library_new_button_title">Թաքցնել \"Նոր\" կոճակը</string>
-  <string name="morphe_music_hide_library_new_button_summary">Թաքցնում է \"Նոր\" կոճակը «Գրադարան» ներդիրում</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Գործողությունների կոճակներ</string>
   <string name="morphe_music_action_buttons_screen_summary">Ընտրեք, թե որ գործողությունների կոճակները հայտնվեն նվագարկիչի տակ</string>
@@ -409,22 +425,20 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_force_portrait_orientation_title">Հարկադիր դիմանկար կողմնորոշում</string>
   <string name="morphe_music_force_portrait_orientation_summary">Պահպանում է հավելվածը դիմանկար կողմնորոշմամբ, երբ սարքը պտտվում է</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Փոխել մինիպլայերի գույնը</string>
+  <string name="morphe_music_change_miniplayer_color_title">Փոխել գույնը</string>
   <string name="morphe_music_change_miniplayer_color_summary">Համապատասխանեցնում է մինի-նվագիչի գույնը լիարժեք էկրանի նվագիչին</string>
   <string name="morphe_music_change_navigation_bar_color_title">Փոխել նավիգացիոն վահանակի գույնը</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Համապատասխանեցնում է նավիգացիոն վահանակի գույնը լրամասն էկրանի նվագարկիչին</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Ցույց տալ \"Հաջորդ» կոճակը մինիպլեյերում</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Ցույց տալ «Նախորդ» կոճակը մինիպլեյերում</string>
+  <string name="morphe_music_miniplayer_next_button_title">Ցուցադրել «Հաջորդ» կոճակը</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Ցուցադրել «Նախորդ» կոճակը</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Միացնել հարկադիր մինիպլեյերը</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Խոչընդոտում է նվագիչի ավտոմատ լիարժեք էկրանի անցումը նոր թրեկի սկզբում</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Ակտիվացնել մինի-նվագիչի փոխանցմամբ փակումը</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Միացնել սահեցնելով փակելու հնարավորությունը</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Թույլ է տալիս փակել մինիպլեյերը՝ այն ներքև սահեցնելով</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Նավիգացիայի վահանակ</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Ընտրեք, թե որ կոճակները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Թաքցնել Գլխավոր էջ կոճակը</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_hide_navigation_bar_library_button_title">Թաքցնել Հավաքածու կոճակը</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Թաքցնել Թարմացնել կոճակը</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Ցուցադրել կարգավորումների կոճակը</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Կարգավորումների կոճակի գործողությունը</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Երբ միացված է, հպումը բացում է Morphe-ի կարգավորումները, իսկ երկար սեղմումը՝ YouTube Music-ի կարգավորումները. անջատեք՝ դրանք փոխելու համար</string>
   <string name="morphe_music_hide_navigation_bar_title">Թաքցնել նավիգացիայի վահանակը</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Թաքցնել նավիգացիայի կոճակների պիտակները</string>
   <string name="morphe_music_navigation_bar_glass_title">Միացնել ապակյա նավիգացիոն վահանակը</string>
@@ -457,7 +474,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Թաքցնում է կլորացված ընդգծումը ապակե նավիգացիոն վահանակի ընտրված կոճակի հետևում</string>
   <string name="morphe_music_miniplayer_screen_title">Մինի-նվագիչ</string>
   <string name="morphe_music_miniplayer_screen_summary">Փոխել մինի-նվագարկիչի ոճը, կոճակները և ժեստերը</string>
-  <string name="morphe_music_miniplayer_glass_title">Միացնել ապակե մինի-նվագարկիչը</string>
+  <string name="morphe_music_miniplayer_glass_title">Միացնել ապակու էֆեկտը</string>
   <string name="morphe_music_miniplayer_glass_summary">Ցուցադրում է լողացող մինի-նվագարկիչը որպես կլորացված, կիսաթափանցիկ ապակե քարտ</string>
   <string name="morphe_music_miniplayer_glass_style_title">Ապակե մինի-նվագարկիչի ոճը</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Կարգավորեք ապակե մինի-նվագարկիչի անկյունների շառកությունը, շապիկի ներդիրը, եզրերի պայծառությունը և թափանցիկությունը՝ նախնական դիտման հնարավորությամբ</string>
@@ -465,11 +482,8 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Շապիկի ներդիր</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Եզրերի պայծառություն</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Թափանցիկություն</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Ապակե լղոզում</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Որքան է լղոզվում էջը ապակե մինի-նվագարկիչի հետևում (Android 14 և ավելի ուշ): 0-ի դեպքում էջը երևում է հստակ, իսկ մինչև Android 14-ը էջը ծածկված է</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Բաց ապակի</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Ապակե մինի-նվագարկիչին հաղորդում է սպիտակ երանգ՝ մուգի փոխարեն, ավելի թեթև և թափանցիկ ապակու համար</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Ալբոմի շապիկի երանգ</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Ապակե մինի-նվագարկիչին հաղորդում է նվագարկվող երգի ալբոմի շապիկի գույնը</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Պտտվող շապիկ</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Դարձնում է ապակե մինի-նվագարկիչի շապիկը կլոր և պտտում այն ինչպես and vinyl սկավառակը, երբ երգն է հնչում</string>
@@ -480,6 +494,15 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_navigation_bar_glass_preview_samples">Նմուշներ</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Բացահայտել</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Գրադարան</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Թաքցնել «Ակտիվություն» կոճակը</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Թաքցնել \"Հարցրու Music\" կոճակը</string>
+  <string name="morphe_music_hide_cast_button_title">Թաքցնել Cast կոճակը</string>
+  <string name="morphe_music_hide_history_button_title">Թաքցնել Պատմության կոճակը</string>
+  <string name="morphe_music_hide_search_button_title">Թաքցնել Որոնման կոճակը</string>
+  <string name="morphe_music_hide_voice_search_button_title">Թաքցնել \"Ձայնային որոնում\" կոճակը</string>
+  <string name="morphe_music_hide_sound_search_button_title">Թաքցնել \"Ձայնային որոնման\" կոճակը</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Չեք մուտք գործել: Կարգավորելու համար հպեք</string>
   <string name="morphe_music_scrobbling_log_out">Ելք</string>
@@ -583,6 +606,9 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_soundproof_about_summary">"Կատարողների տվյալները ստացվում են SoundProof-Dumps-ից (github.com/NuclearBlox/SoundProof-Dumps), որը ներբեռնվում է օրական մեկ անգամ: Բաց թողնելը նշանակում է, որ ոչինչ չի ուղարկվի ձեր լսած երգերի մասին: SoundProof աղյուսակի բացումը ուղարկում է արտիստի ընթացիկ անունը SoundProof սերվերին՝ թարմ ձայներ ցուցադրելու և քվեարկելու համար: Սերվերը տարբերակում է քվեարկողներին IP հասցեով, ուստի ձեր ձայնը կարող է տարբեր կերպ արտացոլվել մեկ այլ ցանցում:
 
 Տվյալների բազան լիցենզավորված է ODC Open Database License (ODbL)-ով: xoundbyte-ի Soul Over AI-ից վերցված գրառումները լիցենզավորված են CC BY 4.0-ով: Կապված չէ և չի հաստատվել SoundProof-ի կամ Soul Over AI-ի կողմից:"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music-ի անիմացիոն շապատը</string>
+  <string name="morphe_music_apple_music_artwork_summary">Ցուցադրում է Apple Music-ի անիմացիոն ալբոմի շապատը նվագարկիչում, եթե ալբոմն ունի նմանը: Յուրաքանչյուր երգի վերնագիրը, կատարողը և ալբոմը ուղարկվում են Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Տեքստերը հասանելի չեն այս սարքի ֆայլի համար:</string>
   <string name="morphe_music_lyrics_enabled_title">Օգտագործել երրորդ կողմի բառերը</string>
@@ -635,6 +661,25 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_clear_cache_title">Մաքրել պահպանված տեքստերը</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Ջնջել այս սարքում պահված %s ՄԲ տեքստերը</string>
   <string name="morphe_music_lyrics_clear_cache_done">Մաքրվեց %s ՄԲ</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Հաշվարկվում է քեշի չափը…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Տեքստերի քեշ</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Մաքրել տեքստերի քեշը</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s ՄԲ (%2$d երգ)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Թարգմանության քեշ</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Մաքրել թարգմանության քեշը</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s ՄԲ (%2$d թարգմանություն)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Տառադարձման քեշ</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Մաքրել տառադարձման քեշը</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s ՄԲ (%2$d տառադարձում)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Քեշի ընդհանուր օգտագործումը</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Մաքրել ամբողջ քեշը</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s ՄԲ (%2$d տարր)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Մաքրել</string>
+  <string name="morphe_music_lyrics_cache_close_action">Փակել</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Ջնջե՞լ այս սարքի վրա պահվող %1$s ՄԲ (%2$d երգ) քեշավորված տեքստերը։</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Ջնջե՞լ այս սարքի վրա պահվող %1$s ՄԲ (%2$d թարգմանություն) քեշավորված թարգմանությունները։</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Ջնջե՞լ այս սարքի վրա պահվող %1$s ՄԲ (%2$d տառադարձում) քեշավորված տառադարձումները։</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Ջնջե՞լ այս սարքի վրա պահվող %1$s ՄԲ (%2$d տարր) քեշավորված բոլոր տեքստերի տվյալները։</string>
   <string name="morphe_music_token_dialog_get_token">Ստանալ թոքեն</string>
   <string name="morphe_music_apple_music_token_title">Apple Music-ի մեդիա օգտատիրոջ տոկեն</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Տեղադրեք media-user-token քուքին music.apple.com կայքից
@@ -690,8 +735,11 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_tap_to_seek_summary">Սեղմեք տողի վրա՝ երգի այդ հատվածին անցնելու համար, երկար սեղմեք՝ ձեր մատի տակ գտնվող բառը պատճենելու համար, կամ ամբողջ տողը, եթե սեղմումը բառի վրա չէ: Անջատումը հեռացնում է երկու ժեստերն էլ</string>
   <string name="morphe_music_lyrics_show_section_title">Ցուցադրել բաժնի պիտակները</string>
   <string name="morphe_music_lyrics_show_section_summary">Նշել լիրիկայի յուրաքանչյուր նոր բաժին փոքր պիտակով, օրինակ՝ Տուն կամ Կրկներ</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Ցույց տալ պատճենման կոճակը</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Հպեք’՝ բնօրինակ տեքստը պատճենելու համար որպես սովորական տեքստ. երկար սեղմեք’՝ տեքստի աղբյուր ֆայլը և փոխակերպված TTML ֆայլը «Ներբեռնումներ» թղթապանակում պահպանելու համար</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Ցուցադրել «Պատճենել / Կիսվել» կոճակը</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Ցույց տալ Պատճենել կամ Կիսվել կոճակը տեքստերի վահանակի գործիքների տողում</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Պատճենման կոճակի ռեժիմ</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Պատճենման ռեժիմ (հպատակեք պատճենելու, երկար սեղմեք՝ պահպանելու համար)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Կիսման ռեժիմ (հպատակեք 1-5 տող ընտրելու, երկար սեղմեք՝ պատճենելու կամ պահպանելու համար)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Ցույց տալ թարգմանության կոճակը</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Սեղմեք թարգմանությունը միացնելու/անջատելու համար. երկար սեղմեք՝ միայն թարգմանության համար: Օգտագործվում են միացված թարգմանչի ծառայությունները՝ ըստ նշված հերթականության</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Ցույց տալ ռոմանիզացիայի կամ տառադարձման կոճակը</string>
@@ -705,7 +753,48 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Ընթերցումները պատրաստ են (%s գրառում)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Ներբեռնումը ձախողվեց. անջատեք և նորից միացրեք սա՝ կրկնելու համար</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Օֆլայն բառարան</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Ճապոներեն (SudachiDict, ~75 ՄԲ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Ճապոներեն</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 ՄԲ) — արագ մորֆոլոգիական վերլուծիչ և ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 ՄԲ) — ճապոներեն բառերի ամբողջական բառարան</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Առաջնահերթություն և պահուստային հերթականություն</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji-ի առաջնահերթություն (SudachiDict-ի պահուստային տարբերակ)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict-ի առաջնահերթություն (Kuromoji-ի պահուստային տարբերակ)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Երգերի տեքստերի հատուկ տառատեսակ</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Համակարգի լռելյայն տառատեսակը (հպրեք .ttf կամ .otf տառատեսակի ֆայլ վերբեռնելու համար)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Ակտիվ տառատեսակ՝ %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Վերբեռնեք .ttf կամ .otf տառատեսակի ֆայլ (օրինակ՝ SF Pro Bold, Inter Bold կամ Inter ExtraBold) ձեր սարքի հիշողությունից՝ երգերի տեքստերի տեսարանում օգտագործելու համար:</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Վերբեռնել տառատեսակը</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Վերադարձնել լռելյայն արժեքին</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Կիրառվել է տեքստի հատուկ տառատեսակ՝ %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Վերադարձվել է տեքստի լռելյայն տառատեսակին</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Անվավեր կամ չաջակցվող տառատեսակի ֆայլ (պահանջվում է .ttf կամ .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Կիսվել տեքստով</string>
+  <string name="morphe_music_lyrics_share_button">Կիսվել</string>
+  <string name="morphe_music_lyrics_copy">Պատճենել</string>
+  <string name="morphe_music_lyrics_share_options_title">Տեքստի գործողություններ</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Պատճենել տեքստը որպես սովորական տեքստ</string>
+  <string name="morphe_music_lyrics_save_file_option">Պահպանել տեքստը և TTML-ը Ներբեռնումներում</string>
+  <string name="morphe_music_lyrics_share_cancel">Չեղարկել</string>
+  <string name="morphe_music_lyrics_share_select_hint">Հպրեք 1–5 տողերի կիսելու համար</string>
+  <string name="morphe_music_lyrics_share_max_lines">Կարելի է ընտրել առավելագույնը 5 տող</string>
+  <string name="morphe_music_lyrics_share_failed">Չհաջողվեց ստեղծել տեքստի կիսման քարտը</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Մշուշում</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Շապիկ</string>
+  <string name="morphe_music_lyrics_share_bg_color">Գույն</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Լուսանկար</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music-ի լոգոն</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Ռոմաջի</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Թարգմանել</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Ֆոնային ձայներ</string>
+  <string name="morphe_music_lyrics_share_custom_color">Անհատական գույն</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Չհաջողվեց բեռնել ընտրված պատկերը</string>
+  <string name="morphe_music_lyrics_share_card_cta">Կիսվել քարտով</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Պատճենել տեքստը</string>
+  <string name="morphe_music_lyrics_share_back">Վերադառնալ տեքստի ընտրության էջ</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Լուսանկարի բեռնում...</string>
+  <string name="morphe_music_lyrics_share_preparing">Քարտի ստեղծում...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Գույնի նմուշ %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Անհայտ տրեկ</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Չինարեն և կանտոներեն նիշեր (UniDict, ~8 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Չինարեն բառեր (pinyin-pro, ~17 ՄԲ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Հունարեն, սլավոնական կիրիլիցա (ներառյալ՝ ռուսերեն, ուկրաիներեն, բուլղարերեն, սերբերեն, բելառուսերեն, մակեդոներեն), վրացերեն, հայերեն, եբրայերեն, արաբերեն, ամհարերեն և սյրիական տառադարձություն (CLDR, ~0.5 ՄԲ)</string>

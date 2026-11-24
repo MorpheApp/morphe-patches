@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Баптаулар</string>
   <string name="morphe_settings_confirm_user_dialog_title">Жалғастырғыңыз келетініңізге сенімдісіз бе?</string>
   <string name="morphe_settings_save">Сақтау</string>
   <string name="morphe_settings_reset">Қайта орнату</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Аудармалар</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Жаңартылған</string>
   <string name="morphe_settings_about_contributors">Үлес қосушылар</string>
-  <string name="morphe_settings_about_contributors_period">Соңғы 12 ай</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Барлық уақыт</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ай</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ай</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Уақыт кезеңі</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s пайдаланушы</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Қолдаушылар</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective платформасындағы қолдаушылар</string>
@@ -222,6 +228,9 @@ MicroG үшін батареяны оңтайландыруды өшіру ба�
 • Қосымша кездейсоқ жабылуы мүмкін
 • Хабарламалар жұмыс істемеуі мүмкін
 • Фонда ойнату жұмыс істемеуі мүмкін"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Жүйелік бөлісу парағын ашу</string>
+  <string name="morphe_open_system_share_sheet_summary">Мазмұнмен бөліскен кезде қолданбадағының орнына жүйелік бөлісу парағын ашады</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Қолданба сілтемелерін өңдеу</string>
   <string name="morphe_link_handling_summary">Сілтемелерді осы қолданбада ашуды баптау</string>

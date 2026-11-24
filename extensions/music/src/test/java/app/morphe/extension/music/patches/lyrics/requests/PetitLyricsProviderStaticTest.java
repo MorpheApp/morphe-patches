@@ -376,7 +376,7 @@ public class PetitLyricsProviderStaticTest {
         byte[] raw = new byte[totalLen];
 
         // lineCount at offset 0x38 (little-endian int)
-        putIntLE(raw, 0x38, lineCount);
+        putIntLE(raw, lineCount);
 
         // lineLength at offset 0x42 (short) = 0
         putShortLE(raw, 0x42, 0);
@@ -387,7 +387,7 @@ public class PetitLyricsProviderStaticTest {
         // protectionId at 0x1a (short) = 0
         putShortLE(raw, 0x1a, 0);
 
-        // payload: timing value (little-endian short) XOR key
+        // payload: timing value (little-endian short) XOR key.
         // key = 0 (since switchFlag=0, key=protectionId=0)
         putShortLE(raw, payloadStart, 100);
 
@@ -404,7 +404,7 @@ public class PetitLyricsProviderStaticTest {
         int totalLen = payloadStart + 2 * lineCount;
         byte[] raw = new byte[totalLen];
 
-        putIntLE(raw, 0x38, lineCount);
+        putIntLE(raw, lineCount);
         putShortLE(raw, 0x42, 0);
         raw[0x19] = 0;
         putShortLE(raw, 0x1a, 0);
@@ -420,8 +420,8 @@ public class PetitLyricsProviderStaticTest {
         assertEquals(50L + 65536L, result.get(1).longValue());
     }
 
-    private static void putIntLE(byte[] arr, int offset, int value) {
-        ByteBuffer.wrap(arr).order(ByteOrder.LITTLE_ENDIAN).putInt(offset, value);
+    private static void putIntLE(byte[] arr, int value) {
+        ByteBuffer.wrap(arr).order(ByteOrder.LITTLE_ENDIAN).putInt(56, value);
     }
 
     private static void putShortLE(byte[] arr, int offset, int value) {
@@ -547,21 +547,21 @@ public class PetitLyricsProviderStaticTest {
     @Test
     public void addCreditAddsLabel() {
         List<String> credits = new java.util.ArrayList<>();
-        PetitLyricsProvider.addCredit(credits, "Composer", "John");
+        PetitLyricsProvider.addCredit(credits, "John");
         assertEquals(List.of("Composer: John"), credits);
     }
 
     @Test
     public void addCreditNullValueSkipped() {
         List<String> credits = new java.util.ArrayList<>();
-        PetitLyricsProvider.addCredit(credits, "Composer", null);
+        PetitLyricsProvider.addCredit(credits, null);
         assertTrue(credits.isEmpty());
     }
 
     @Test
     public void addCreditEmptyValueSkipped() {
         List<String> credits = new java.util.ArrayList<>();
-        PetitLyricsProvider.addCredit(credits, "Composer", "  ");
+        PetitLyricsProvider.addCredit(credits, "  ");
         assertTrue(credits.isEmpty());
     }
 

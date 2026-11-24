@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">कस्टम</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">एल्बम ऑडियो ट्रैक चलाएँ</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">म्यूज़िक वीडियो के बजाय गानों का केवल ऑडियो वर्ज़न चलाएँ। इसके लिए \'स्पूफ़ वीडियो स्ट्रीम्स\' चालू होना ज़रूरी है</string>
+  <string name="morphe_music_play_album_songs_summary">म्यूजिक वीडियो के बजाय एल्बम के गाने चलाएं</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">ऑडियो/वीडियो स्विच चालू करें</string>
   <string name="morphe_music_enable_audio_video_switch_summary">ऑडियो ट्रैक और ऑफ़िशियल म्यूज़िक वीडियो के बीच स्विच करने की कोशिश करें</string>
@@ -144,6 +143,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">डाउनलोड एक्सपोर्ट नहीं किया जा सका</string>
   <string name="morphe_export_download_all_flyout_title">सभी को डिवाइस में एक्सपोर्ट करें</string>
   <string name="morphe_export_download_all_started">सभी डाउनलोड एक्सपोर्ट किए जा रहे हैं</string>
+  <string name="morphe_export_download_all_title">सभी डाउनलोड</string>
+  <string name="morphe_export_download_playlist_started">डाउनलोड एक्सपोर्ट किए जा रहे हैं</string>
   <string name="morphe_export_download_all_running">डाउनलोड पहले से ही एक्सपोर्ट किए जा रहे हैं</string>
   <string name="morphe_export_download_all_saved">%3$s में %2$s में से %1$s डाउनलोड एक्सपोर्ट किए गए</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">ऑडियो / वीडियो टॉगल छुपाएं</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">डाउनलोड बटन छिपाएँ</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">पॉडकास्ट शो में डाउनलोड बटन को छिपाता है</string>
   <string name="morphe_music_hide_explore_shelf_title">एक्सप्लोर शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_filter_bar_title">फ़िल्टर बार छुपाएं</string>
   <string name="morphe_music_hide_grid_shelves_title">ग्रिड शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_horizontal_shelves_title">क्षैतिज शेल्फ छुपाएं</string>
+  <string name="morphe_music_hide_new_button_title">नया बटन छिपाएं</string>
+  <string name="morphe_music_hide_new_button_summary">लाइब्रेरी टैब में मौजूद नया बटन छिपाता है</string>
   <string name="morphe_music_hide_list_shelves_title">सूची शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">गीत के बोल पैनल</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">शेयर बटन छुपाएं</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">अनुवाद बटन छुपाएं</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'नया से\' शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_playlist_shelves_title">प्लेलिस्ट शेल्फ छुपाएं</string>
@@ -199,6 +200,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">क्रॉसफ़ेड</string>
   <string name="morphe_music_crossfade_screen_summary">ट्रैक को आपस में सहजता से मिलाएं</string>
   <string name="morphe_music_crossfade_enabled_title">क्रॉसफ़ेड सक्षम करें</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade का उपयोग करने के लिए, \'Spoof video streams\' के \'Default client\' को \'TV Simply\' या \'visionOS\' में बदलें</string>
   <string name="morphe_music_crossfade_curve_title">फे़ड वक्र</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">समान शक्ति</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">सूक्ष्म होल्ड</string>
@@ -232,7 +235,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">इस सत्र के लिए क्रॉसफ़ेड रोका गया</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफ़ेड फिर से शुरू हुआ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफ़ेड सक्षम होने पर वीडियो मोड उपलब्ध नहीं है</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR प्लेबैक के साथ क्रॉसफ़ेड बंद है</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade \'visionOS\' के साथ काम नहीं करता है। \'Spoof video streams\' के \'Default client\' को \'TV Simply\' में बदलें</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">क्रॉसफ़ेड इस spoof स्ट्रीम क्लाइंट के साथ काम नहीं करता है</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">कास्टिंग करते समय क्रॉसफ़ेड बंद है</string>
   <string name="morphe_music_crossfade_about_how_title">यह कैसे काम करता है</string>
   <string name="morphe_music_crossfade_about_how_summary">"क्रॉसफ़ेड आपकी अवधि और वक्र का उपयोग करते हुए, एक गाने के अंत को अगले गाने की शुरुआत के साथ ओवरलैप करता है
@@ -249,9 +254,7 @@ Second \"item\" text"</string>
 
 म्यूज़िक वीडियो देखने के लिए क्रॉसफ़ेड रोकने पर कुछ वीडियो काले हो सकते हैं। गाना चुनने से पहले क्रॉसफ़ेड रोकने से यह टाला जा सकता है"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">समर्थित नहीं</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"ऑडियो कास्टिंग या मिररिंग (Chromecast, स्क्रीन या ऑडियो मिररिंग)
-
-SABR प्लेबैक (स्पूफ वीडियो स्ट्रीम बंद)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">ऑडियो कास्टिंग या मिररिंग (Chromecast, स्क्रीन या ऑडियो मिररिंग)</string>
   <string name="morphe_music_crossfade_about_credit_title">श्रेय</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG द्वारा क्रॉसफ़ेड सुविधा</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">म्यूट होने पर रोकें</string>
   <string name="morphe_music_pause_when_muted_summary">जब सिस्टम वॉल्यूम म्यूट होता है तो प्लेबैक रुक जाता है और वॉल्यूम बढ़ाने पर फिर से शुरू हो जाता है</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast बटन आपके वाई-फाई नेटवर्क पर Sonos और अन्य UPnP स्पीकरों पर भी स्ट्रीम कर सकता है</string>
+  <string name="morphe_music_sonos_cast_sheet_title">डिवाइस से कनेक्ट करें</string>
+  <string name="morphe_music_sonos_cast_searching">आपके वाई-फाई नेटवर्क पर स्पीकरों की खोज की जा रही है…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">अपने वाई-फाई नेटवर्क पर एक स्पीकर चुनें</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s पर कास्ट किया जा रहा है</string>
+  <string name="morphe_music_sonos_cast_connected">जुड़ा हुआ</string>
+  <string name="morphe_music_sonos_cast_disconnect">डिस्कनेक्ट करें</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi पर स्पीकर</string>
+  <string name="morphe_music_sonos_cast_active">सक्रिय</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest और Google TV डिवाइस</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s से कनेक्ट नहीं हो सका</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">प्लेबैक गति</string>
   <string name="morphe_music_playback_speed_summary">सभी ट्रैक के लिए उपयोग की जाने वाली गति। 100% पर ऐप की गति उपयोग की जाती है, जैसे पॉडकास्ट प्लेबैक गति।</string>
   <string name="morphe_music_playback_speed_change_pitch_title">गति के साथ पिच बदलें</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">वीडियो प्रभाव मेनू दिखाएं</string>
+  <string name="morphe_music_video_effect_menu_summary">वीडियो चलते समय प्लेयर मेनू में वीडियो प्रभाव जोड़ता है</string>
+  <string name="morphe_music_video_effect_next_video">प्रभाव अगले वीडियो से दिखाई देगा</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">ऑटो कैप्शन अक्षम करें</string>
   <string name="morphe_music_disable_auto_captions_summary">वीडियो शुरू होने पर कैप्शन स्वचालित रूप से सक्षम नहीं होते हैं, जिसमें वे कैप्शन भी शामिल हैं जिन्हें वीडियो डिफ़ॉल्ट रूप से सक्षम करता है</string>
@@ -279,6 +300,10 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">डिसलाइक पुनर्निर्देशन अक्षम करें</string>
   <string name="morphe_music_disable_dislike_redirection_summary">जब डिसलाइक बटन दबाया जाता है तो अगले ट्रैक पर जाने से रोकता है</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">ट्रैक बदलने के लिए स्वाइप अक्षम करें</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">प्लेयर पर बाएँ या दाएँ स्वाइप करके अगले या पिछले ट्रैक पर जाने से रोकता है</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">मिनीप्लेयर पर बाएँ या दाएँ स्वाइप करके अगले या पिछले ट्रैक पर जाने से रोकता है</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B लूप</string>
   <string name="morphe_music_ab_loop_summary">लूप की शुरुआत सेट करने के लिए सीकबार को देर तक दबाएं, लूप का अंत सेट करने के लिए दोबारा दबाएं, और लूप को हटाने के लिए फिर से दबाएं</string>
@@ -329,15 +354,6 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_playlist_tags_rename">नाम बदलें</string>
   <string name="morphe_music_playlist_tags_delete">हटाएँ</string>
   <string name="morphe_music_playlist_tags_hidden">छिपा हुआ</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">कास्ट बटन छुपाएं</string>
-  <string name="morphe_music_hide_history_button_title">इतिहास बटन छुपाएं</string>
-  <string name="morphe_music_hide_notification_button_title">अधिसूचना बटन छुपाएं</string>
-  <string name="morphe_music_hide_search_button_title">खोज बटन छुपाएं</string>
-  <string name="morphe_music_hide_voice_search_button_title">वॉइस सर्च बटन छिपाएँ</string>
-  <string name="morphe_music_hide_sound_search_button_title">साउंड सर्च बटन छिपाएँ</string>
-  <string name="morphe_music_hide_library_new_button_title">नया बटन छिपाएं</string>
-  <string name="morphe_music_hide_library_new_button_summary">लाइब्रेरी टैब में मौजूद नया बटन छिपाता है</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">क्रिया बटन</string>
   <string name="morphe_music_action_buttons_screen_summary">प्लेयर के नीचे दिखने वाले एक्शन बटन चुनें</string>
@@ -409,22 +425,20 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_force_portrait_orientation_title">पोर्ट्रेट ओरिएंटेशन बलपूर्वक लागू करें</string>
   <string name="morphe_music_force_portrait_orientation_summary">जब डिवाइस घुमाया जाए, ऐप को पोर्ट्रेट ओरिएंटेशन में रखता है</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेयर रंग बदलें</string>
+  <string name="morphe_music_change_miniplayer_color_title">रंग बदलें</string>
   <string name="morphe_music_change_miniplayer_color_summary">मिनीप्लेयर के रंग को फुलस्क्रीन प्लेयर से मिलाता है</string>
   <string name="morphe_music_change_navigation_bar_color_title">नेविगेशन बार का रंग बदलें</string>
   <string name="morphe_music_change_navigation_bar_color_summary">फुलस्क्रीन प्लेयर से नेविगेशन बार का रंग मिलाएं</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">मिनीप्लेयर में अगला बटन दिखाएँ</string>
-  <string name="morphe_music_miniplayer_previous_button_title">मिनीप्लेयर में पिछला बटन दिखाएँ</string>
+  <string name="morphe_music_miniplayer_next_button_title">अगला बटन दिखाएं</string>
+  <string name="morphe_music_miniplayer_previous_button_title">पिछला बटन दिखाएं</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">ज़बरदस्ती मिनीप्लेयर सक्षम करें</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">प्लेयर को नए ट्रैक शुरू होने पर स्वचालित रूप से फुलस्क्रीन में विस्तार करने से रोकता है</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">मिनीप्लेयर को स्वाइप करके खारिज करने को सक्षम करें</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">हटाने के लिए स्वाइप सक्षम करें</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">मिनीप्लेयर पर नीचे स्वाइप करके उसे खारिज करने की अनुमति देता है</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">नेविगेशन बार</string>
-  <string name="morphe_music_navigation_bar_screen_summary">नीचे नेविगेशन बार में कौन से बटन दिखाई दें, यह चुनें</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">होम बटन छिपाएं</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_hide_navigation_bar_library_button_title">लाइब्रेरी बटन छिपाएं</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">अपग्रेड बटन छिपाएं</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">सेटिंग्स बटन दिखाएं</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">सक्षम होने पर, टैप करने से Morphe सेटिंग्स खुलती हैं और लॉन्ग प्रेस करने से YouTube Music सेटिंग्स खुलती हैं, बदलने के लिए अक्षम करें</string>
   <string name="morphe_music_hide_navigation_bar_title">नेविगेशन बार छिपाएं</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">नेविगेशन बटन लेबल छिपाएं</string>
   <string name="morphe_music_navigation_bar_glass_title">ग्लास नेविगेशन बार सक्षम करें</string>
@@ -457,7 +474,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">ग्लास नेविगेशन बार के चुने हुए बटन के पीछे के राउंडेड हाईलाइट को छिपा देता है</string>
   <string name="morphe_music_miniplayer_screen_title">मिनीप्लेयर</string>
   <string name="morphe_music_miniplayer_screen_summary">मिनीप्लेयर के स्टाइल, बटन और जेस्चर बदलें</string>
-  <string name="morphe_music_miniplayer_glass_title">ग्लास मिनीप्लेयर सक्षम करें</string>
+  <string name="morphe_music_miniplayer_glass_title">ग्लास इफेक्ट सक्षम करें</string>
   <string name="morphe_music_miniplayer_glass_summary">फ्लोटिंग मिनीप्लेयर को एक राउंडेड, ट्रांसलूसेंट ग्लास कार्ड के रूप में दिखाता है</string>
   <string name="morphe_music_miniplayer_glass_style_title">ग्लास मिनीप्लेयर स्टाइल</string>
   <string name="morphe_music_miniplayer_glass_style_summary">ग्लास मिनीप्लेयर के कॉर्नर रेडियस, आर्टवर्क पैडिंग, रिम ब्राइटनेस और अपारदर्शिता को प्रिव्यू के साथ एडजस्ट करें</string>
@@ -465,11 +482,8 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">आर्टवर्क पैडिंग</string>
   <string name="morphe_music_miniplayer_glass_rim_title">रिम ब्राइटनेस</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">अपारदर्शिता</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">ग्लास ब्लर</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">ग्लास मिनीप्लेयर के पीछे का पेज कितना धुंधला है (Android 14 और उसके बाद)। 0 पर पेज स्पष्ट दिखता है, और Android 14 से पहले पेज ढका रहता है</string>
-  <string name="morphe_music_miniplayer_glass_light_title">लाइट ग्लास</string>
   <string name="morphe_music_miniplayer_glass_light_summary">हल्के और स्पष्ट ग्लास के लिए, ग्लास मिनीप्लेयर को डार्क के बजाय सफेद टिंट करता है</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">एल्बम आर्ट टिंट</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">चल रहे गाने के एल्बम आर्ट के रंग से ग्लास मिनीप्लेयर को टिंट करता है</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">घूमता हुआ आर्टवर्क</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">ग्लास मिनीप्लेयर के आर्टवर्क को गोल बनाता है, और गाना बजने के दौरान इसे रिकॉर्ड की तरह घुमाता है</string>
@@ -480,6 +494,15 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_navigation_bar_glass_preview_samples">सैंपल्स</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">एक्सप्लोर करें</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">लाइब्रेरी</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">एक्टिविटी बटन छुपाएं</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">\'म्यूज़िक से पूछें\' बटन छुपाएं</string>
+  <string name="morphe_music_hide_cast_button_title">कास्ट बटन छुपाएं</string>
+  <string name="morphe_music_hide_history_button_title">इतिहास बटन छुपाएं</string>
+  <string name="morphe_music_hide_search_button_title">खोज बटन छुपाएं</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'वॉयस सर्च\' बटन छुपाएं</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'साउंड सर्च\' बटन छुपाएं</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">लॉग इन नहीं किया गया। कॉन्फ़िगर करने के लिए टैप करें</string>
   <string name="morphe_music_scrobbling_log_out">लॉग आउट करें</string>
@@ -583,6 +606,9 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_soundproof_about_summary">"कलाकार का डेटा SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) से आता है, जिसे दिन में एक बार डाउनलोड किया जाता है। स्किप करने पर आप जो बजाते हैं उसके बारे में कुछ भी नहीं भेजा जाता है। SoundProof शीट खोलने पर ताज़ा वोट दिखाने और वोट करने के लिए वर्तमान कलाकार का नाम SoundProof सर्वर पर भेजा जाता है। सर्वर IP एड्रेस के ज़रिए वोटरों के बीच अंतर करता है, इसलिए आपका वोट दूसरे नेटवर्क पर अलग दिख सकता है।
 
 डेटाबेस ODC ओपन डेटाबेस लाइसेंस (ODbL) के तहत लाइसेंस प्राप्त है। xoundbyte द्वारा Soul Over AI की प्रविष्टियाँ CC BY 4.0 के तहत लाइसेंस प्राप्त हैं। SoundProof या Soul Over AI से संबद्ध या समर्थित नहीं है।"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music एनिमेटेड आर्टवर्क</string>
+  <string name="morphe_music_apple_music_artwork_summary">यदि एल्बम में एनिमेटेड आर्टवर्क है, तो यह प्लेयर में Apple Music का एनिमेटेड एल्बम आर्टवर्क दिखाता है। प्रत्येक गीत का शीर्षक, कलाकार और एल्बम Apple Music को भेजे जाते हैं</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">इस डिवाइस फ़ाइल के लिए लिरिक्स उपलब्ध नहीं हैं।</string>
   <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीत का उपयोग करें</string>
@@ -635,6 +661,25 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_clear_cache_title">स्टोर की गई लिरिक्स हटाएं</string>
   <string name="morphe_music_lyrics_clear_cache_summary">इस डिवाइस पर रखे गए %s MB लिरिक्स को हटाएं</string>
   <string name="morphe_music_lyrics_clear_cache_done">%s MB साफ़ किया गया</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">कैश आकार की गणना की जा रही है…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">लिरिक्स कैश</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">लिरिक्स कैश साफ़ करें</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d गाने)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">अनुवाद कैश</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">अनुवाद कैश साफ़ करें</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d अनुवाद)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">लिप्यंतरण कैश</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">लिप्यंतरण कैश साफ़ करें</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d लिप्यंतरण)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">कुल कैश उपयोग</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">सभी कैश साफ़ करें</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d आइटम)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">साफ़ करें</string>
+  <string name="morphe_music_lyrics_cache_close_action">बंद करें</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">क्या इस डिवाइस पर रखे गए %1$s MB (%2$d गाने) के कैश्ड लिरिक्स डिलीट कर दिए जाएं?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">क्या इस डिवाइस पर रखे गए %1$s MB (%2$d अनुवाद) के कैश्ड अनुवाद डिलीट कर दिए जाएं?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">क्या इस डिवाइस पर रखे गए %1$s MB (%2$d लिप्यंतरण) के कैश्ड लिप्यंतरण डिलीट कर दिए जाएं?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">क्या इस डिवाइस पर रखे गए %1$s MB (%2$d आइटम) के सभी कैश्ड लिरिक्स डेटा डिलीट कर दिए जाएं?</string>
   <string name="morphe_music_token_dialog_get_token">टोकन प्राप्त करें</string>
   <string name="morphe_music_apple_music_token_title">एप्पल म्यूज़िक मीडिया-उपयोगकर्ता-टोकन</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com से media-user-token कुकी पेस्ट करें
@@ -685,8 +730,11 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_tap_to_seek_summary">गाने में उस क्षण पर जाने के लिए किसी पंक्ति को टैप करें, उंगली के नीचे के शब्द को कॉपी करने के लिए उसे देर तक दबाएं, या यदि दबाव किसी शब्द पर नहीं है तो पूरी पंक्ति को। \"बंद\" होने पर ये दोनों इशारे हटा दिए जाते हैं</string>
   <string name="morphe_music_lyrics_show_section_title">अनुभाग टैग दिखाएँ</string>
   <string name="morphe_music_lyrics_show_section_summary">गीत के प्रत्येक नए अनुभाग को एक छोटे टैग से चिह्नित करें, जैसे अंतरा या कोरस</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटन दिखाएं</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">मूल लिरिक्स को प्लेन टेक्स्ट के रूप में कॉपी करने के लिए टैप करें; रॉ लिरिक्स सोर्स फ़ाइल और कनवर्टेड TTML फ़ाइल को डाउनलोड्स में सेव करने के लिए लॉन्ग-प्रेस करें</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">कॉपी / शेयर बटन दर्शाएं</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">लिरिक्स पैनल टूलबार पर कॉपी या शेयर बटन दिखाएं</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">कॉपी बटन मोड</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">कॉपी मोड (कॉपी करने के लिए टैप करें, सेव करने के लिए लॉन्ग-प्रेस करें)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">शेयर मोड (1-5 लाइनें चुनने के लिए टैप करें, कॉपी या सेव करने के लिए लॉन्ग-प्रेस करें)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">अनुवाद बटन दिखाएं</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">टॉगल करने के लिए टैप करें; केवल अनुवाद के लिए लंबे समय तक दबाएं। सक्षम अनुवाद प्रदाताओं का उपयोग उनके सूचीबद्ध क्रम में करता है</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">रोमाइज़ या ट्रान्सलिटरेशन बटन दिखाएं</string>
@@ -700,7 +748,48 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_local_romanization_dict_ready">रीडिंग तैयार है (%s प्रविष्टियाँ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">डाउनलोड विफल - पुनः प्रयास करने के लिए इसे बंद करें और फिर से चालू करें</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ऑफ़लाइन शब्दकोष</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">जापानी (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">जापानी</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — तेज़ मॉर्फोलॉजिकल एनालाइज़र और ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — पूर्ण जापानी शब्दकोश</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">प्राथमिकता और फॉलबैक क्रम</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji प्राथमिकता (SudachiDict फॉलबैक)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict प्राथमिकता (Kuromoji फॉलबैक)</string>
+  <string name="morphe_music_lyrics_custom_font_title">कस्टम लिरिक्स फ़ॉन्ट</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">डिफ़ॉल्ट सिस्टम फ़ॉन्ट (.ttf या .otf फ़ॉन्ट फ़ाइल अपलोड करने के लिए टैप करें)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">सक्रिय फ़ॉन्ट: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">लिरिक्स व्यू में उपयोग करने के लिए अपने डिवाइस स्टोरेज से एक .ttf या .otf फ़ॉन्ट फ़ाइल (जैसे SF Pro Bold, Inter Bold, या Inter ExtraBold) अपलोड करें।</string>
+  <string name="morphe_music_lyrics_custom_font_choose">फ़ॉन्ट अपलोड करें</string>
+  <string name="morphe_music_lyrics_custom_font_reset">डिफ़ॉल्ट पर रीसेट करें</string>
+  <string name="morphe_music_lyrics_custom_font_applied">कस्टम लिरिक्स फ़ॉन्ट लागू किया गया: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">डिफ़ॉल्ट लिरिक्स फ़ॉन्ट पर वापस आ गया</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">अमान्य या असमर्थित फ़ॉन्ट फ़ाइल (.ttf या .otf आवश्यक)</string>
+  <string name="morphe_music_lyrics_share_preview_title">लिरिक्स शेयर करें</string>
+  <string name="morphe_music_lyrics_share_button">शेयर करें</string>
+  <string name="morphe_music_lyrics_copy">कॉपी</string>
+  <string name="morphe_music_lyrics_share_options_title">लिरिक्स एक्शन</string>
+  <string name="morphe_music_lyrics_copy_plain_option">लिरिक्स को प्लेन टेक्स्ट के रूप में कॉपी करें</string>
+  <string name="morphe_music_lyrics_save_file_option">लिरिक्स और TTML को डाउनलोड्स में सेव करें</string>
+  <string name="morphe_music_lyrics_share_cancel">रद्द करें</string>
+  <string name="morphe_music_lyrics_share_select_hint">शेयर करने के लिए 1-5 लाइनें टैप करें</string>
+  <string name="morphe_music_lyrics_share_max_lines">अधिकतम 5 लाइनें चुनी जा सकती हैं</string>
+  <string name="morphe_music_lyrics_share_failed">लिरिक्स शेयर कार्ड नहीं बनाया जा सका</string>
+  <string name="morphe_music_lyrics_share_bg_blur">ब्लर</string>
+  <string name="morphe_music_lyrics_share_bg_cover">कवर</string>
+  <string name="morphe_music_lyrics_share_bg_color">रंगीन</string>
+  <string name="morphe_music_lyrics_share_bg_photo">फ़ोटो</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music लोगो</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">रोमाजी</string>
+  <string name="morphe_music_lyrics_share_layer_translate">अनुवाद करें</string>
+  <string name="morphe_music_lyrics_share_layer_bg">BG वोकल्स</string>
+  <string name="morphe_music_lyrics_share_custom_color">कस्टम रंग</string>
+  <string name="morphe_music_lyrics_share_photo_failed">चुनी गई छवि लोड नहीं की जा सकी</string>
+  <string name="morphe_music_lyrics_share_card_cta">कार्ड शेयर करें</string>
+  <string name="morphe_music_lyrics_copy_text_cta">टेक्स्ट कॉपी करें</string>
+  <string name="morphe_music_lyrics_share_back">लिरिक सिलेक्शन पर वापस जाएं</string>
+  <string name="morphe_music_lyrics_share_loading_photo">फोटो लोड हो रही है...</string>
+  <string name="morphe_music_lyrics_share_preparing">कार्ड बनाया जा रहा है...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">कलर स्वाच %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">अज्ञात ट्रैक</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">चीनी और कैंटोनी अक्षर (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">चीनी शब्द (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">यूनानी, स्लाविक सिरिलिक (इनमें रूसी, यूक्रेनी, बल्गेरियाई, सर्बियाई, बेलारूसी, मैसेडोनियाई शामिल हैं), जॉर्जियाई, आर्मेनियाई, हिब्रू, अरबी, अम्हारिक और सिरियाक ट्रान्सलिटरेशन (CLDR, ~0.5 MB)</string>

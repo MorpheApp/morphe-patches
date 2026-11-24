@@ -187,7 +187,7 @@ public final class LyricsRetiming {
         RetimedEntry currentPrimaryRetimed = (lastActiveIndex >= 0 && lastActiveIndex < retimedLyrics.size())
                 ? retimedLyrics.get(lastActiveIndex) : null;
 
-        if (primaryIndex != -1 && activeIndices != null && !activeIndices.isEmpty()) {
+        if (primaryIndex != -1) {
             int groupEnd = activeIndices.size() - 1;
             int groupStart = groupEnd;
             while (groupStart > 0 && areConsecutiveMainLines(

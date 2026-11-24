@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -139,11 +140,6 @@ public class CommentsFilter extends Filter {
                 CHIP_BAR_PATH_PREFIX
         );
 
-        var commentsZeroState = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_ZERO_STATE,
-                "comment_zero_state"
-        );
-
         var communityGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
                 "community_guidelines",
@@ -155,15 +151,14 @@ public class CommentsFilter extends Filter {
                 "composer_short_creation_button.e"
         );
 
+        dislikeButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_DISLIKE_BUTTON,
+                "engagement_dislike_button.e"
+        );
+
         emojiButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_EMOJI_BUTTON,
                 "id.comment.quick_emoji.button"
-        );
-
-        // Overflow buttons are also used outside of comments.
-        menuButton = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_MENU_BUTTON,
-                "overflow_button.e"
         );
 
         var gifButton = new StringFilterGroup(
@@ -182,20 +177,36 @@ public class CommentsFilter extends Filter {
                 "gift_attribution_card_classic_live.e"
         );
 
+        // Overflow buttons are also used outside of comments.
+        menuButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_MENU_BUTTON,
+                "overflow_button.e"
+        );
+
+        var noCommentsYet = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_NONE_YET,
+                "comment_zero_state"
+        );
+
         var previewComment = new StringFilterGroup(
-                Settings.MINIMAL_COMMENTS_BUTTON,
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT_CARDS,
                 "|carousel_item.e"
         );
 
         commentCardsIndicator = new StringFilterGroup(
-                Settings.MINIMAL_COMMENTS_BUTTON,
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT_CARDS,
                 VIDEO_METADATA_CAROUSEL_PATH
         );
-
 
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
                 "super_thanks_button.e"
+        );
+
+        var timedReactions = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_TIMED_REACTIONS,
+                "emoji_control_panel",
+                "timed_reaction"
         );
 
         var timestampButton = new StringFilterGroup(
@@ -208,14 +219,14 @@ public class CommentsFilter extends Filter {
                 "live_viewer_leaderboard_chat_entry_point.e"
         );
 
-        dislikeButton = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_DISLIKE_BUTTON,
-                "engagement_dislike_button.e"
-        );
-
         translateButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_TRANSLATE_BUTTON,
                 "tri_state_button.e"
+        );
+
+        var visitTheCommunity = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_VISIT_THE_COMMUNITY_SECTION,
+                "communities_entrypoint.e"
         );
 
         addPathCallbacks(
@@ -227,7 +238,6 @@ public class CommentsFilter extends Filter {
                 commentsByMembers,
                 commentsContexts,
                 commentsFilterBar,
-                commentsZeroState,
                 communityGuidelines,
                 createAShortButton,
                 dislikeButton,
@@ -238,10 +248,13 @@ public class CommentsFilter extends Filter {
                 previewComment,
                 commentCardsIndicator,
                 menuButton,
+                noCommentsYet,
                 thanksButton,
+                timedReactions,
                 timestampButton,
                 topFansButton,
-                translateButton
+                translateButton,
+                visitTheCommunity
         );
     }
 
@@ -503,66 +516,26 @@ public class CommentsFilter extends Filter {
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
         try {
-            // Every element is parsed here otherwise, on the main thread. The identifier of the carousel
-            // is also in the bytes of its element, see FeedVideoCardsPatch.getElementText().
-            if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()
-                    && FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_METADATA_CAROUSEL_PATH)) {
-                var newElement = NewElement.parseFrom(bytes).toBuilder();
-                var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
-                if (identifier != null && identifier.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
-                    var type = newElement.getType().toBuilder();
-                    var componentType = type.getComponentType().toBuilder();
-                    var model = componentType.getModel().toBuilder();
-                    var videoMetadataCarouselModel = model.getVideoMetadataCarouselModel().toBuilder();
-                    var data = videoMetadataCarouselModel.getData().toBuilder();
-                    var carouselTitleDatasList = data.getCarouselTitleDatasList();
+            final boolean hideTopics = Settings.HIDE_COMMENTS_TOPICS.get();
+            final boolean filterCarousel = Settings.HIDE_COMMENTS_CAROUSEL.get()
+                    && !commentsCarouselFilterStrings.isEmpty();
+            if (!hideTopics && !filterCarousel) {
+                return bytes;
+            }
 
-                    if (!carouselTitleDatasList.isEmpty()) {
-                        boolean modified = false;
+            // Every element is parsed here otherwise, on the main thread. The identifiers of the filter bar
+            // and the carousel are also in the bytes of their element, see FeedVideoCardsPatch.getElementText().
+            String elementText = FeedVideoCardsPatch.getElementText(bytes);
+            NewElement newElement = null;
+            if (hideTopics && elementText.contains(CHIP_BAR_PATH_PREFIX)) {
+                newElement = CommentsElements.removeTopicsFilter(NewElement.parseFrom(bytes));
+            } else if (elementText.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
+                newElement = CommentsElements.filterCarousel(NewElement.parseFrom(bytes), hideTopics,
+                        filterCarousel ? commentsCarouselFilterStrings : Collections.emptyList());
+            }
 
-                        for (int i = carouselTitleDatasList.size() - 1; i > -1; i--) {
-                            var carouselTitleData = carouselTitleDatasList.get(i);
-
-                            String title = carouselTitleData.getTitle();
-                            Logger.printDebug(() -> "comments title: " + title);
-
-                            if (title != null) {
-                                for (String filter : commentsCarouselFilterStrings) {
-                                    if (title.contains(filter)) {
-                                        data.removeCarouselItemDatas(i);
-                                        data.removeCarouselTitleDatas(i);
-                                        modified = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (modified) {
-                            var newBuild = data.build();
-                            videoMetadataCarouselModel.clearData();
-                            videoMetadataCarouselModel.setData(newBuild);
-
-                            var newVideoMetadataCarouselModel = videoMetadataCarouselModel.build();
-                            model.clearVideoMetadataCarouselModel();
-                            model.setVideoMetadataCarouselModel(newVideoMetadataCarouselModel);
-
-                            var newModel = model.build();
-                            componentType.clearModel();
-                            componentType.setModel(newModel);
-
-                            var newComponentType = componentType.build();
-                            type.clearComponentType();
-                            type.setComponentType(newComponentType);
-
-                            var newType = type.build();
-                            newElement.clearType();
-                            newElement.setType(newType);
-
-                            return newElement.build().toByteArray();
-                        }
-                    }
-                }
+            if (newElement != null) {
+                return newElement.toByteArray();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onCommentsLoaded failure", ex);

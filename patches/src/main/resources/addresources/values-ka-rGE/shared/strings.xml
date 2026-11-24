@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">პარამეტრები</string>
   <string name="morphe_settings_confirm_user_dialog_title">დარწმუნებული ხართ, რომ გსურთ გაგრძელება?</string>
   <string name="morphe_settings_save">შენახვა</string>
   <string name="morphe_settings_reset">გადაყენება</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">თარგმანები</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">განახლებულია</string>
   <string name="morphe_settings_about_contributors">კონტრიბუტორები</string>
-  <string name="morphe_settings_about_contributors_period">ბოლო 12 თვე</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">მთელი პერიოდი</string>
+  <string name="morphe_settings_about_contributors_6_months">6 თვე</string>
+  <string name="morphe_settings_about_contributors_3_months">3 თვე</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">დროის პერიოდი</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s მომხმარებელი</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">მხარდამჭერები</string>
   <string name="morphe_settings_about_supporters_summary">მხარდამჭერები Open Collective-ზე</string>
@@ -222,6 +228,9 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
 • აპლიკაცია შეიძლება შემთხვევით დაიხუროს
 • შეტყობინებებმა შესაძლოა არ იმუშაოს
 • ფონურ რეჟიმში დაკვრამ შესაძლოა არ იმუშაოს"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">გახსენით სისტემური გაზიარების ფანჯარა</string>
+  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას ხსნის სისტემურ გაზიარების პანელს აპლიკაციის შიდა პანელის ნაცვლად</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">აპლიკაციის ბმულების მართვა</string>
   <string name="morphe_link_handling_summary">ბმულების კონფიგურაცია ამ აპლიკაციაში გასახსნელად</string>

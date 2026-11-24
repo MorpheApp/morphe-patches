@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Mipangilio</string>
   <string name="morphe_settings_confirm_user_dialog_title">Je, una uhakika unataka kuendelea?</string>
   <string name="morphe_settings_save">Hifadhi</string>
   <string name="morphe_settings_reset">Weka upya</string>
@@ -87,7 +86,14 @@ Ili kutafsiri lugha mpya au kuboresha tafsiri zilizopo, tembelea morphe.software
   <string name="morphe_settings_about_links_translations">Tafsiri</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Imesasishwa</string>
   <string name="morphe_settings_about_contributors">Wachangia</string>
-  <string name="morphe_settings_about_contributors_period">Miezi 12 ya mwisho</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Muda wote</string>
+  <string name="morphe_settings_about_contributors_6_months">miezi 6</string>
+  <string name="morphe_settings_about_contributors_3_months">miezi 3</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Kipindi cha muda</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">watumiaji %s</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Wafuasi</string>
   <string name="morphe_settings_about_supporters_summary">Wafadhili kwenye Open Collective</string>
@@ -222,6 +228,9 @@ Ikiwa uboreshaji wa betri hautabadilishwa basi unaweza kupata:
 • Programu inaweza kufungwa bila kutarajia
 • Arifa zinaweza zisifanye kazi
 • Uchezaji wa nyuma unaweza usifanye kazi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Fungua karatasi ya kushiriki ya mfumo</string>
+  <string name="morphe_open_system_share_sheet_summary">Hufungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Usimamizi wa viunganishi vya programu</string>
   <string name="morphe_link_handling_summary">Sanidi viungo vifunguliwe katika programu hii</string>

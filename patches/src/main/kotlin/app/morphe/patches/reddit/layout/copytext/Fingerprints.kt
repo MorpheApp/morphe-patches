@@ -8,6 +8,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -31,6 +32,59 @@ internal object InvokeRichTextFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("[Ljava/lang/Object;", "Ljava/lang/Object;")
+)
+
+/**
+ * Extension method that invokes the post title renderer.
+ */
+internal object InvokePostTitleFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "invokePostTitle",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf("[Ljava/lang/Object;", "Ljava/lang/Object;")
+)
+
+/**
+ * Post title composable, used by the post detail screen title section and by link previews.
+ * Parameters: title, action handler, modifier, max lines, clickable, composer, changed flags,
+ * default flags.
+ */
+internal object PostTitleFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "Ljava/lang/String;",
+        "Lkotlin/jvm/functions/Function1;",
+        "L",
+        "I",
+        "Z",
+        "L",
+        "I",
+        "I"
+    ),
+    filters = listOf(
+        string("post_title")
+    )
+)
+
+internal object PostTitleSectionToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("PostUnitTitleSection(data=")
+    )
+)
+
+/**
+ * Post detail screen title section. Invokes the post title composable.
+ */
+internal object PostTitleSectionFingerprint : Fingerprint(
+    classFingerprint = PostTitleSectionToStringFingerprint,
+    returnType = "V",
+    filters = listOf(
+        methodCall(reference = { PostTitleFingerprint.method })
+    )
 )
 
 /**

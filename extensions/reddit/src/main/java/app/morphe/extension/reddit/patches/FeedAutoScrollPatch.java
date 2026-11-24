@@ -308,7 +308,9 @@ public final class FeedAutoScrollPatch {
     public static void onNavBarStateChange(float fraction) {
         try {
             if (isEnabled()) {
-                FeedAutoScrollButton.onNavBarStateChange(fraction);
+                // Disable bottom bar auto-hide hooks the same method and its hook can run after this one.
+                FeedAutoScrollButton.onNavBarStateChange(
+                        DisableBottomBarAutoHidePatch.getNavBarShownFraction(fraction));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onNavBarStateChange failure", ex);
@@ -325,6 +327,32 @@ public final class FeedAutoScrollPatch {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onPostDetailPagerViewCreated failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onScreenAttached(Object screen) {
+        try {
+            if (isEnabled()) {
+                FeedAutoScrollButton.onScreenAttachChanged(screen, true);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onScreenAttached failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onScreenDetached(Object screen) {
+        try {
+            if (isEnabled()) {
+                FeedAutoScrollButton.onScreenAttachChanged(screen, false);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onScreenDetached failure", ex);
         }
     }
 }

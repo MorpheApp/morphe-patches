@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Подесувања</string>
   <string name="morphe_settings_confirm_user_dialog_title">Дали сте сигурни дека сакате да продолжите?</string>
   <string name="morphe_settings_save">Зачувај</string>
   <string name="morphe_settings_reset">Врати</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Преводи</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Актуален</string>
   <string name="morphe_settings_about_contributors">Придонесувачи</string>
-  <string name="morphe_settings_about_contributors_period">Последните 12 месеци</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Цело време</string>
+  <string name="morphe_settings_about_contributors_6_months">6 месеци</string>
+  <string name="morphe_settings_about_contributors_3_months">3 месеци</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Временски период</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s корисници</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Поддржувачи</string>
   <string name="morphe_settings_about_supporters_summary">Поддржувачи на Open Collective</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • Апликацијата може случајно да се затвори
 • Известувањата можеби нема да работат
 • Репродукцијата во позадина можеби нема да работи"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Отвори го системскиот прозорец за споделување</string>
+  <string name="morphe_open_system_share_sheet_summary">Отвора системскиот мени за споделување наместо оној во апликацијата</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Обработка на линкови на апликацијата</string>
   <string name="morphe_link_handling_summary">Конфигурирај ги линковите да се отвораат во оваа апликација</string>

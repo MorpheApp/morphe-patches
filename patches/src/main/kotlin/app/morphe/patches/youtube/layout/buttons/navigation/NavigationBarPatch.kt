@@ -36,24 +36,32 @@ import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.hide.general.MoreCommentsIconFingerprint
 import app.morphe.patches.youtube.layout.hide.shorts.ShortsBottomBarContainerFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.padding.BrowseListBottomPaddingFingerprint
+import app.morphe.patches.youtube.misc.navigation.PivotBarDispatchTouchEventFingerprint
 import app.morphe.patches.youtube.misc.navigation.SetEnumMapFingerprint
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -88,8 +96,14 @@ internal const val EXTENSION_CLASS =
 private const val EXTENSION_SETTING_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$SettingsController;"
 
+private const val TOOLBAR_BUTTON_PROVIDER_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$ToolbarButtonProvider;"
+
 private const val PIVOT_BAR_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$PivotBarAccess;"
+
+private const val BOTTOM_UI_HEIGHTS_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$BottomUiHeightsAccess;"
 
 private const val EXTENSION_SUBSCRIPTIONS_CLASS =
     "Lapp/morphe/extension/youtube/patches/ClassicSubscriptionsLayoutPatch;"
@@ -216,6 +230,7 @@ val navigationBarPatch = patch(
         fixProtoLibraryPatch,
         navigationBarResourcePatch,
         translucentNavigationBarFeatureFlagsPatch,
+        commandRouterHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -224,7 +239,7 @@ val navigationBarPatch = patch(
     hideSubscriptionsAppShortcutOption()
 
     execute {
-        val navPreferences = mutableSetOf(
+        val navPreferences = mutableSetOf<BasePreference>(
             SwitchPreference("morphe_hide_home_button"),
             SwitchPreference("morphe_hide_shorts_button"),
             SwitchPreference("morphe_hide_create_button"),
@@ -234,6 +249,14 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_show_watch_later_button"),
             SwitchPreference("morphe_show_settings_button"),
             SwitchPreference("morphe_show_settings_button_type", summary = true),
+        )
+
+        // Older versions have no account switcher, and the command opens the Google account sign in.
+        if (is_21_30_or_greater) {
+            navPreferences += SwitchPreference("morphe_you_button_account_switcher", summary = true)
+        }
+
+        navPreferences += listOf(
             NonInteractivePreference(
                 "morphe_navigation_buttons_order",
                 tag = "app.morphe.extension.youtube.settings.preference.NavigationButtonsOrderPreference",
@@ -487,6 +510,24 @@ val navigationBarPatch = patch(
             )
         }
 
+        // The live chat hides its scroll to bottom button by moving it below its container. With the bar covering
+        // the system navigation buttons, the room for them is left below the container, so the hidden button
+        // is still shown there. The container is set to cut the button off at its bounds.
+        MoreCommentsIconFingerprint.apply {
+            clearMatch()
+            matchAll().forEach { match ->
+                match.method.apply {
+                    val index = match.instructionMatches.last().index
+                    val buttonRegister = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstruction(
+                        index + 1,
+                        "invoke-static { v$buttonRegister }, $EXTENSION_CLASS->clipLiveChatScrollButton(Landroid/view/View;)V"
+                    )
+                }
+            }
+        }
+
         // The slim status bar ("No connection", "Back online") is laid out below the bar covering
         // the system navigation buttons, so the buttons cover it. The room for the buttons is moved
         // below it while it is shown.
@@ -608,19 +649,80 @@ val navigationBarPatch = patch(
         }
 
         if (is_20_31_or_greater) {
-            buildList {
-                add(AutoHideNavigationBarOnFeedScrollingFingerprint)
-                if (is_21_23_or_greater) add(AutoHideNavigationBarOnDismissMiniplayerFingerprint)
-            }.forEach {
-                it.method.addInstructionsWithLabels(
+            AutoHideNavigationBarOnFeedScrollingFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->getFeedScrollNavigationBarBehavior()I
+                            move-result v$register
+                        """
+                    )
+
+                    if (!is_21_20_or_greater) {
+                        insertLiteralOverride(
+                            45677535L,
+                            "$EXTENSION_CLASS->useAutoHideNavigationBarFlag(Z)Z"
+                        )
+                    }
+                }
+            }
+
+            // The app hides the navigation bar while scrolling only on the pages the server sets, and how
+            // it hides the bar depends on the account, so the app never hides it and the extension hides it
+            // for every page and account instead. The parameters are the list and the distance scrolled.
+            ListScrolledFingerprint.method.addInstruction(
+                0,
+                "invoke-static { p0, p2 }, $EXTENSION_CLASS->onListScrolled(Landroid/view/View;I)V"
+            )
+
+            // The app places the miniplayer and other views above the height it keeps for the navigation bar,
+            // which it sets to none only when it hides the bar itself. The extension sets the height again
+            // when it hides or shows the bar, and the height is none while the bar is hidden on scroll.
+            setBottomUiHeightFingerprint(BottomUiEnumFingerprint.originalClassDef.type).let {
+                it.method.addInstructions(
+                    0,
+                    """
+                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->getBottomUiHeight(${BOTTOM_UI_HEIGHTS_INTERFACE}Ljava/lang/Enum;I)I
+                        move-result p2
+                    """
+                )
+                it.classDef.addPatchInterface(BOTTOM_UI_HEIGHTS_INTERFACE, "patch_setBottomUiHeight", it.method)
+            }
+
+            // The AI search results hide the navigation bar through the controllers whatever the page sets.
+            // The controllers are not called, and the header of the page still follows the scroll.
+            if (is_21_42_or_greater) {
+                SearchResultsAutoHideNavigationBarFingerprint.let {
+                    it.method.apply {
+                        val flagResult = it.instructionMatches[6]
+                        addInstruction(
+                            flagResult.index + 1,
+                            "const/4 v${flagResult.getInstruction<OneRegisterInstruction>().registerA}, 0x0"
+                        )
+
+                        val nullCheck = it.instructionMatches[2]
+                        addInstruction(
+                            nullCheck.index,
+                            "const/4 v${nullCheck.getInstruction<OneRegisterInstruction>().registerA}, 0x0"
+                        )
+                    }
+                }
+            }
+
+            if (is_21_23_or_greater) {
+                AutoHideNavigationBarOnDismissMiniplayerFingerprint.method.addInstructionsWithLabels(
                     0,
                     """
                         invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
-                        move-result v0      
+                        move-result v0
                         if-eqz v0, :show
-                        return-void      
+                        return-void
                         :show
-                        nop      
+                        nop
                     """
                 )
             }
@@ -670,6 +772,18 @@ val navigationBarPatch = patch(
         }
 
         implementPivotBarItemBuilder(PivotBarItemBuilderFingerprint)
+
+        // The navigation bar handles the touches of its buttons itself, so the long press
+        // of the Settings and 'You' buttons is found from the touches of the navigation bar.
+        // The touch that ends a long press is replaced, so the button is not tapped.
+        // This runs before the touch hook of the navigation bar hook patch, so it is not seen as a tap either.
+        PivotBarDispatchTouchEventFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->navigationBarTouched(Landroid/view/MotionEvent;)Landroid/view/MotionEvent;
+                move-result-object p1
+            """
+        )
 
         // Allow the extension to read the proto of navigation bar items,
         // used for the navigation buttons order and the classic Subscriptions button.
@@ -783,13 +897,19 @@ val navigationBarPatch = patch(
         //
 
         val toolbarPreferences = mutableSetOf(
+            SwitchPreference("morphe_hide_toolbar_cast_button", titleKey = "morphe_hide_cast_button_title"),
             SwitchPreference("morphe_hide_toolbar_chat_button"),
+            SwitchPreference("morphe_hide_toolbar_companion_button"),
             SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button", titleKey = "morphe_hide_notifications_button_title"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
             SwitchPreference("morphe_show_toolbar_settings_button", titleKey = "morphe_show_settings_button_title"),
-            SwitchPreference("morphe_show_toolbar_settings_button_type", titleKey = "morphe_show_settings_button_type_title", summary = true),
+            SwitchPreference(
+                "morphe_show_toolbar_settings_button_type",
+                titleKey = "morphe_show_settings_button_type_title",
+                summaryKey = "morphe_show_settings_button_type_summary"
+            ),
             NonInteractivePreference(
                 "morphe_toolbar_buttons_order",
                 tag = "app.morphe.extension.youtube.settings.preference.NavigationButtonsOrderPreference",
@@ -854,10 +974,160 @@ val navigationBarPatch = patch(
             }
         }
 
+        hookToolBar("$EXTENSION_CLASS->hideChatButton")
         hookToolBar("$EXTENSION_CLASS->hideCreateButton")
         hookToolBar("$EXTENSION_CLASS->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS->hideSearchButton")
-        hookToolBar("$EXTENSION_CLASS->hideChatButton")
+
+        //
+        // Toolbar Cast button
+        //
+        ToolbarCastMenuItemInitializeFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val menuItemRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                addInstruction(
+                    index,
+                    "invoke-static { v$menuItemRegister }, $EXTENSION_CLASS->hideToolbarCastButton(Landroid/view/MenuItem;)V"
+                )
+            }
+        }
+
+        ToolbarCastMenuItemVisibilityFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val setVisibleInstruction = getInstruction<FiveRegisterInstruction>(index)
+                val menuItemRegister = setVisibleInstruction.registerC
+                val visibilityRegister = setVisibleInstruction.registerD
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$menuItemRegister, v$visibilityRegister }, $EXTENSION_CLASS->hideToolbarCastButton(Landroid/view/MenuItem;Z)Z
+                        move-result v$visibilityRegister
+                    """
+                )
+            }
+        }
+
+        // The cast companion features hide the toolbar Cast button or replace it with a button
+        // that opens the companion of the watch page. They are turned off to show the Cast button.
+        val castCompanionOverride = "$EXTENSION_CLASS->useCastCompanion(Z)Z"
+
+        if (is_21_30_or_greater) {
+            // The app hides the toolbar Cast button unless the cast icon awareness allows it.
+            // Only the Cast button is changed, so the Companion button is shown as the app shows it.
+            // Both flags are read in the same method, so the reads are found by their flag
+            // and not by the index of the match, which the other override moves.
+            mapOf(
+                ToolbarCastButtonAwarenessFeatureFlagFingerprint to 45759129L,
+                ToolbarCastButtonAwarenessAlternateFeatureFlagFingerprint to 45758238L
+            ).forEach { (fingerprint, flag) ->
+                fingerprint.method.insertLiteralOverride(flag, castCompanionOverride)
+            }
+
+            // The Cast button uses the media route button, and not the entry point button that shows the companion icon.
+            // The flag is read elsewhere for the Cast button of the player, which is left as it is.
+            ToolbarCastButtonViewFingerprint.method.insertLiteralOverride(45690090L, castCompanionOverride)
+
+            // The code that connects the toolbar Cast button to the cast devices reads the flag again,
+            // to know the type of its view, so the media route button is not used as the entry point button.
+            ToolbarCastButtonConnectionFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(45690090L, castCompanionOverride)
+            }
+
+            // The media route button opens the cast devices, and not the companion.
+            MediaRouteButtonClickFingerprint.method.insertLiteralOverride(45673420L, castCompanionOverride)
+            if (is_21_45_or_greater) {
+                MediaRouteButtonClickFingerprint.method.insertLiteralOverride(45823676L, castCompanionOverride)
+            }
+        }
+
+        if (is_21_45_or_greater) {
+            // The app adds either the Cast button or the Companion button to the toolbar.
+            // The Cast button is always added, and the Companion button is added next to it
+            // if the app chose it, see addToolbarCompanionButton().
+            val companionButtonClass = ToolbarCompanionButtonFingerprint.classDef
+            val castButtonSelection = ToolbarCastButtonSelectionFingerprint.match()
+
+            // The extension gets the Cast button from its provider.
+            val getButtonMethod = castButtonSelection.instructionMatches.last().getMethodCalled()
+            mutableClassDefBy(getButtonMethod.definingClass).addPatchInterface(
+                TOOLBAR_BUTTON_PROVIDER_INTERFACE,
+                "patch_getButton",
+                getButtonMethod
+            )
+
+            castButtonSelection.method.apply {
+                instructions.withIndex()
+                    .filter { (_, instruction) -> instruction.opcode == Opcode.RETURN_OBJECT }
+                    .map { (index, _) -> index }
+                    .sortedDescending()
+                    .forEach { returnIndex ->
+                        val buttonRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+                        val freeRegister = findFreeRegister(returnIndex, buttonRegister)
+
+                        addInstructionsAtControlFlowLabel(
+                            returnIndex,
+                            """
+                                instance-of v$freeRegister, v$buttonRegister, ${companionButtonClass.type}
+                                if-eqz v$freeRegister, :cast_button
+                                # The provider of the Cast button is the first parameter.
+                                invoke-static { p0, v$buttonRegister }, $EXTENSION_CLASS->getToolbarCastButton(${TOOLBAR_BUTTON_PROVIDER_INTERFACE}Ljava/lang/Object;)Ljava/lang/Object;
+                                move-result-object v$buttonRegister
+                                check-cast v$buttonRegister, $returnType
+                                :cast_button
+                                nop
+                            """
+                        )
+                    }
+            }
+
+            // Both buttons have the id of the Cast button, and the toolbar keeps its buttons by their id.
+            ToolbarCompanionButtonIdFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->getToolbarCompanionButtonId()I
+                    move-result v0
+                    return v0
+                """
+            )
+
+            ToolbarMenuCreateFingerprint.method.addInstruction(
+                0,
+                "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->addToolbarCompanionButton(Landroid/util/SparseArray;)V"
+            )
+        }
+
+        // The toolbar Cast button is always shown. The controller of the cast devices hides and disables
+        // its view while casting is not available, which after a cold start can be until the app is opened again.
+        MediaRouteButtonSetVisibilityFingerprint.let {
+            it.method.addInstructions(
+                0,
+                """
+                    invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->getToolbarCastButtonVisibility(Landroid/view/View;I)I
+                    move-result p1
+                """
+            )
+
+            it.classDef.apply {
+                // The button does not override setEnabled, so it is added.
+                if (methods.any { method -> method.name == "setEnabled" }) {
+                    throw PatchException("MediaRouteButton already overrides setEnabled")
+                }
+                addBridge(
+                    "setEnabled", listOf("Z"), "V", 2,
+                    """
+                        invoke-static { p0, p1 }, $EXTENSION_CLASS->getToolbarCastButtonEnabled(Landroid/view/View;Z)Z
+                        move-result p1
+                        invoke-super { p0, p1 }, $superclass->setEnabled(Z)V
+                        return-void
+                    """,
+                    AccessFlags.PUBLIC.value
+                )
+            }
+        }
 
         //
         // Hide old search button

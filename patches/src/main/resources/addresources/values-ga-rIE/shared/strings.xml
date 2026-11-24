@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Socruithe</string>
   <string name="morphe_settings_confirm_user_dialog_title">An bhfuil tú cinnte gur mhaith leat dul ar aghaidh?</string>
   <string name="morphe_settings_save">Sábháil</string>
   <string name="morphe_settings_reset">Athshocraigh</string>
@@ -87,7 +86,14 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_links_translations">Aistriúcháin</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Suas chun dáta</string>
   <string name="morphe_settings_about_contributors">Rannpháirtithe</string>
-  <string name="morphe_settings_about_contributors_period">Le 12 mhí anuas</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Gach am</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mhí</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mhí</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tréimhse ama</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s úsáideoir</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Tacadóirí</string>
   <string name="morphe_settings_about_supporters_summary">Tacaitheoirí ar Open Collective</string>
@@ -222,6 +228,9 @@ Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leana
 • D’fhéadfadh an aip a dhúnadh go randamach
 • B’fhéidir nach n-oibreoidh fógraí
 • B’fhéidir nach n-oibreoidh athsheinm sa chúlra"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Oscail bileog chomhroinnte an chórais</string>
+  <string name="morphe_open_system_share_sheet_summary">Osclaíonn sé bileog chomhroinnte an chórais, seachas an ceann atá laistigh den aip, nuair a bhíonn ábhar á roinnt</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Láimhseáil nasc aip</string>
   <string name="morphe_link_handling_summary">Cumraigh naisc le hoscailt san aip seo</string>

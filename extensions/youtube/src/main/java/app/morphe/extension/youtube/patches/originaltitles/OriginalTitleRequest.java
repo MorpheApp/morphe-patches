@@ -25,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest.DeArrowTitle;
@@ -187,6 +188,7 @@ final class OriginalTitleRequest {
                             // The DeArrow title is fetched again later,
                             // and the titles fetched before are used meanwhile.
                             retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
+                            NetworkReconnect.runWhenOnline(RestoreOriginalTitlesPatch.RETRY_FAILED_TITLES);
                         }
                     });
                     return future;
@@ -206,6 +208,7 @@ final class OriginalTitleRequest {
                         } catch (DeArrowBrandingRequest.DeArrowException ex) {
                             // The DeArrow title is fetched again later, and the original title is used meanwhile.
                             retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
+                            NetworkReconnect.runWhenOnline(RestoreOriginalTitlesPatch.RETRY_FAILED_TITLES);
                         }
                     }
                     // The original title is not needed if the DeArrow title is used for all navigations.
@@ -329,6 +332,14 @@ final class OriginalTitleRequest {
     }
 
     /**
+     * Makes the titles that failed to fetch fetchable again now, such as when the device is online again.
+     */
+    static void retryFailedTitlesNow() {
+        final long now = System.currentTimeMillis();
+        retryTimes.replaceAll((videoId, retryTime) -> Math.min(retryTime, now));
+    }
+
+    /**
      * @return Time until the title that failed to fetch can be fetched again, or 0 if it can be fetched.
      */
     static long retryRemainingMilliseconds(String videoId) {
@@ -344,6 +355,7 @@ final class OriginalTitleRequest {
     private static void originalTitleFailed(String videoId) {
         final long delay = Math.max(FAILED_FETCH_RETRY_MILLISECONDS, RequestBackoff.pauseRemainingMilliseconds());
         retryTimes.put(videoId, System.currentTimeMillis() + delay);
+        NetworkReconnect.runWhenOnline(RestoreOriginalTitlesPatch.RETRY_FAILED_TITLES);
         if (failedFetchCounts.merge(videoId, 1, Integer::sum) <= MAX_FAILED_FETCH_RETRIES) {
             Utils.runOnMainThreadDelayed(LithoRelayoutPatch::relayoutOutdatedTexts, delay);
         }

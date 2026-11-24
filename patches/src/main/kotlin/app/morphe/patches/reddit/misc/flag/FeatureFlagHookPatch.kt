@@ -11,6 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
+import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.util.cloneMutable
 import java.lang.ref.WeakReference
 
@@ -19,10 +21,15 @@ private lateinit var featureFlagMethod : WeakReference<MutableMethod>
 val featureFlagHookPatch = patch(
     description = "featureFlagHookPatch"
 ) {
-    dependsOn(sharedExtensionPatch)
+    dependsOn(sharedExtensionPatch, versionCheckPatch)
 
     execute {
-        FeatureFlagFingerprint.let {
+        // 2026.47.0+ reads the experiment in the feature flag reader,
+        // and the experiments class no longer has a boolean method.
+        val fingerprint = if (is_2026_47_0_or_greater) FeatureFlagFingerprint
+        else FeatureFlagLegacyFingerprint
+
+        fingerprint.let {
             it.method.apply {
                 // Not enough registers in the method. Clone the method and use the
                 // original method as an intermediate to call extension code.
@@ -33,11 +40,14 @@ val featureFlagHookPatch = patch(
                 // Add the method.
                 it.classDef.methods.add(helperMethod)
 
+                // The second parameter is a boolean in all versions, and it is reused for the result.
+                val lastRegister = "p${parameters.size}"
+
                 addInstructions(
                     0,
                     """
                         # Invoke the copied method (helper method).
-                        invoke-virtual { p0, p1, p2 }, $helperMethod
+                        invoke-virtual/range { p0 .. $lastRegister }, $helperMethod
                         move-result p2
                         
                         # Since the copied method (helper method) has already been invoked, it just returns.

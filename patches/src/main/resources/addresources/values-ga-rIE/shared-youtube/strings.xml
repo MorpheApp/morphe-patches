@@ -140,14 +140,16 @@ Beartaigh OK chun Android System WebView a oscailt."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bain triail as na nithe seo a leanas a chumasú: Sruthanna físe bréige &gt; Sínigh isteach Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliant réamhshocraithe</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Úsáid QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Úsáid QuackJS in ionad yt-dlp-ejs (WebView) chun dí-ofuscú a dhéanamh</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logáil isteach Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Teastaíonn logáil isteach ar leith le haghaidh Android VR. Tapáil anseo chun leanúint ar aghaidh</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Sínithe isteach i Android VR faoi láthair</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logáil isteach ar \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Teastaíonn logáil isteach ar leith le haghaidh \'Android VR\'. Tapáil anseo chun leanúint ar aghaidh</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Sínithe isteach i \'Android VR\' faoi láthair</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Chun an ghné seo a úsáid, athraigh \'Cliant réamhshocraithe\' go Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sínigh isteach chuig Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Is féidir le síniú isteach in Android VR fadhbanna athsheinm a réiteach do roinnt úsáideoirí
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Chun an ghné seo a úsáid, athraigh \'Cliant réamhshocraithe\' go \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sínigh isteach chuig \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Is féidir le síniú isteach in 'Android VR' fadhbanna athsheinm a réiteach do roinnt úsáideoirí
 
 Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sínigh amach</string>
@@ -168,35 +170,36 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
 • Ní dhéanfaidh do shocruithe Morphe fíordheimhniú Android VR a allmhairiú/a onnmhairiú
 • Mura n-úsáidtear an aip seo ar feadh 6 mhí, bainfidh Google an fíordheimhniú seo
 • Beidh ort síniú isteach arís má athraíonn tú do phasfhocal Google nó má dhíchláraíonn tú an gléas seo ó do shocruithe Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logáil isteach ar an nGréasán soghluaiste</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logáil isteach ar an nGréasán</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Roghnach: logáil isteach ar shuíomh gréasáin YouTube chun físeáin a sheinm trí úsáid a bhaint as do chuntas. Beartaigh anseo chun leanúint ar aghaidh</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Logáilte isteach sa Ghréasán Soghluaiste faoi láthair</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Logáilte isteach suíomh Gréasáin YouTube faoi láthair</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chun an ghné seo a úsáid, athraigh \'Cliant réamhshocraithe\' go Gréasán Soghluaiste</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logáil isteach sa Ghréasán Soghluaiste</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Is féidir físeáin a imirt ar an nGréasán soghluaiste, cibé acu atá tú sínithe isteach i suíomh gréasáin YouTube nó nach bhfuil
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chun an ghné seo a úsáid, athraigh \'Cliant réamhshocraithe\' go cliant Gréasáin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logáil isteach suíomh Gréasáin YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Seinneann cliaint gréasáin físeáin gan a bheith sínithe isteach, nó nuair a bhíonn siad sínithe isteach i suíomh gréasáin YouTube
 
 • Má tá tú sínithe isteach, is féidir físeáin a dteastaíonn cuntas uathu a imirt, mar shampla físeáin a bhfuil srianta aoise ag baint leo
 • Osclaítear leathanach logáil isteach Google san aip seo
 • Ní úsáidtear an logáil isteach ach chun na físeáin a sheinneann tú a fháil
 • Ní shábháiltear an logáil isteach ach ar an ngléas seo amháin
+• Tá logáil isteach féin ag gach cliant gréasáin, don chlianat réamhrac a roghnaíodh
 
-Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
+Chun logáil isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sábháladh an logáil isteach
 
-• Ní dhéanfaidh socruithe Morphe logáil isteach an Ghréasáin mhóibíl a allmhairiú ná a onnmhairiú
+• Ní dhéanfaidh socruithe Morphe logáil isteach an Ghréasáin YouTube a allmhairiú ná a onnmhairiú
 • Má chuireann Google deireadh leis an logáil isteach, seinnfear físeáin agus tú logáilte amach, go dtí go logálfaidh tú isteach arís
 • Má logálann tú amach, logálfar an gléas seo amach ó shuíomh gréasáin YouTube freisin"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Tá an logáil isteach don Ghréasán Soghluaiste imithe in éag; déan iarracht logáil isteach sa Ghréasán Soghluaiste arís</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Logáilte amach ón nGréasán Soghluaiste</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Níl Android System WebView ar fáil. Suiteáil nó cumasaigh é chun logáil isteach</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Tá logáil isteach an ghréasáin imithe in éag, déan iarracht logáil isteach arís</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Sínteáilte as suíomh gréasáin YouTube一项</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Níl \'Android System WebView\' ar fáil. Suiteáil nó cumasaigh é chun logáil isteach</string>
   <string name="morphe_oauth2_connection_failure_timeout">Níl OAuth2 ar fáil go sealadach (tá an t-am caite ag an API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Tá an síniú isteach i Android VR imithe in éag, déan iarracht síniú isteach i VR arís</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Tá an síniú isteach i Android VR imithe in éag, déan iarracht síniú isteach i VR arís</string>
   <string name="morphe_oauth2_connection_failure_status">Níl OAuth2 ar fáil go sealadach (stádas %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Níl OAuth2 ar fáil go sealadach</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Ní féidir síniú isteach i VR, níor ceadaíodh fíordheimhniú an tsuímh ghréasáin</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Logáilte amach as \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Rialuithe fógraí meáin</string>
@@ -214,8 +217,15 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_seek_notification_media_length_invalid">Ní mór fad cuardaigh a bheith idir 1 agus %s soicind. Ag baint úsáide as an réamhshocrú.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Díchumasaigh prótacal QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Tabhair tosaíocht do cháilíocht físe</string>
+  <string name="morphe_prioritize_video_quality_summary">Tugann sé tosaíocht don chaighdeán físe is airde atá ar fáil thar éifeachtúlacht códaca</string>
+  <string name="morphe_prioritize_video_quality_dialog">Má tá an socrú seo múchta, d’fhéadfadh sé nach mbeadh aon roghanna cáilíochta físeáin ar fáil do fhíseáin níos sine.</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Díchumasaigh fuaim DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Díchumasaigh fuaim DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Seinntear an fhuaim bhunaidh in áit an leagain a bhfuil raon dinimiciúil comhbhrúite aige</string>
+  <string name="morphe_disable_loudness_normalization_title">Díchumasaigh normalú airde fuaime</string>
+  <string name="morphe_disable_loudness_normalization_summary">Seinneann sé fuaim ard ag an mbunleibhéal toirte, in áit í a ísliú go leibhéal caighdeánach</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary">Seinneann sé rian fuaime bunaidh an fhíseáin i gcónaí in ionad leagan dubáilte</string>
@@ -224,6 +234,32 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_skip_silence_summary">Scipeálann sé go huathoibríoch sosanna ciúine i bhfuaim físeáin</string>
   <string name="morphe_skip_silence_minimum_pause_title">Fad íosta an tsosa</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Ní ghiorraítear ach sosanna atá chomh fada seo ar a laghad. Tagann sé i bhfeidhm nuair a thosaíonn an chéad fhíseán eile</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Éifeacht físe</string>
+  <string name="morphe_video_effect_entry_none">As</string>
+  <string name="morphe_video_effects_custom_title">Cuir éifeachtaí físe in eagar</string>
+  <string name="morphe_video_effects_custom_summary">Athraigh, athainmnigh, scrios nó cuir le héifeachtaí físe. Is cód scáthaithe iad éifeachtaí, mar sin is féidir le comhrábot AI cinn nua a scríobh</string>
+  <string name="morphe_video_effects_custom_empty">Níl aon éifeacht físeáin ann. Tapáil ar Cuir éifeacht leis chun ceann a dhéanamh.</string>
+  <string name="morphe_video_effects_custom_add">Cuir éifeacht leis</string>
+  <string name="morphe_video_effects_custom_restore">Athchóirigh réamhshocruithe</string>
+  <string name="morphe_video_effects_custom_add_title">Éifeacht nua</string>
+  <string name="morphe_video_effects_custom_edit_title">Cuir éifeacht in eagar</string>
+  <string name="morphe_video_effects_custom_name_hint">Ainm</string>
+  <string name="morphe_video_effects_custom_name_empty">Cuir ainm isteach don éifeacht</string>
+  <string name="morphe_video_effects_custom_name_exists">Tá éifeacht leis an ainm seo ann cheana</string>
+  <string name="morphe_video_effects_custom_copy_code">Cóipeáil an cód</string>
+  <string name="morphe_video_effects_custom_error_title">Tá earráid san éifeacht</string>
+  <string name="morphe_video_effects_custom_error_message">"Taispeántar físeáin gan an éifeacht go dtí go gceartaítear an cód. Tabhair an earráid seo don AI a scríobh an cód:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Críochnaíonn an cód i lár feidhme nó nóta tráchta; is dócha gur gearradh siar é le linn cóipeála nó greamaithe. D’fhéadfadh téacs a ghreamítear a bheith gearrtha siar ag %d carachtar.
+
+Iarr ar an AI cód níos giorra a sholáthar, nó greamaigh an cód ina chodanna."</string>
+  <string name="morphe_video_effects_custom_copy_error">Earráid chóipeála</string>
+  <string name="morphe_video_effects_custom_save_anyway">Sábháil mar sin féin</string>
+  <string name="morphe_video_effects_custom_delete">Scrios</string>
+  <string name="morphe_video_effects_custom_delete_title">Scrios an éifeacht?</string>
+  <string name="morphe_video_effects_custom_delete_message">Scriosfar %s.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Seachfhreastalaí líonra</string>
   <string name="morphe_proxy_screen_summary">Iarratais líonra tacaithe a threorú trí sheachfhreastalaí</string>
@@ -254,7 +290,7 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_replace_music_with_youtube_title">Athraigh naisc chomhroinnte chuig youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Cuireann sé youtube.com in ionad music.youtube.com i naisc chomhroinnte</string>
   <string name="morphe_replace_links_with_shortener_title">Athraigh naisc chomhroinnte chuig youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Éilíonn sé físeáin chun an fhormáid URL giorraithe youtu.be a úsáid</string>
+  <string name="morphe_replace_links_with_shortener_summary">Éilíonn sé físeáin chun an fhormáid URL giorraithe \'youtu.be\' a úsáid</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Uath</string>
@@ -266,19 +302,16 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_video_quality_default_mobile_title">Caighdeán físe réamhshocraithe ar líonra soghluaiste</string>
   <string name="morphe_remember_video_quality_toast_mobile">Athraíodh an caighdeán réamhshocraithe soghluaiste go: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Athraíodh cáilíocht réamhshocraithe Wi-Fi go: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Oscail bileog roinnte an chórais</string>
-  <string name="morphe_open_system_share_sheet_summary">Osclaíonn sé bileog chomhroinnte an chórais, seachas an ceann atá laistigh den aip, nuair a bhíonn ábhar á roinnt</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Logáil Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Díchumasaithe</string>
   <string name="morphe_debug_litho_entry_path">Conair</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Conair agus maolán</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Déanann logáil Litho taifead ar chomhpháirteanna leagan amach an aip, lena n-áirítear téacs ar an scáileán do chomhpháirteanna comhéadain úsáideora áirithe.
+  <string name="morphe_debug_litho_user_dialog_message">"Déanann logáil Litho taifead ar chomhpháirteanna leagan amach an aip, lena n-áirítear téacs ar an scáileán do chomhpháirteanna comhéadain úsáideora áirithe
 
-Is féidir leis seo cabhrú le comhpháirteanna a aithint agus scagairí saincheaptha á gcruthú.
+Is féidir leis seo cabhrú le comhpháirteanna a aithint agus scagairí saincheaptha á gcruthú
 
-Áfach, déanfar sonraí úsáideora áirithe a logáil freisin, mar shampla do sheoladh IP."</string>
+Áfach, déanfar sonraí úsáideora áirithe a logáil freisin, mar shampla do sheoladh IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Scagaire saincheaptha</string>
   <string name="morphe_custom_filter_screen_summary">Cumraigh scagairí saincheaptha chun aon chomhpháirt a cheilt</string>
@@ -343,6 +376,18 @@ Má dhéantar é a mhúchadh níos déanaí, moltar sonraí an aip a ghlanadh ch
   <string name="morphe_custom_font_file_summary">Roghnaigh comhad cló TTF nó OTF</string>
   <string name="morphe_custom_font_file_invalid">Ní cló TTF ná OTF é an comhad roghnaithe</string>
   <string name="morphe_custom_font_failed_to_load">Níorbh fhéidir an cló saincheaptha a lódáil agus tá sé múchta</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Roghchláir ghloine</string>
+  <string name="morphe_glass_menus_screen_summary">Roghchláir ar nós gloine reoite os cionn an ábhair dhoiléir atá taobh thiar díobh</string>
+  <string name="morphe_glass_menus_title">Cumasaigh roghchláir ghloine</string>
+  <string name="morphe_glass_menus_summary">Taispeánann sé roghchláir agus bileoga bun mar ghloine reoite, agus an t-ábhar taobh thiar díobh doiléir</string>
+  <string name="morphe_glass_menus_user_dialog_message">Taispeántar roghchláir beagnach teimhneach nuair a bhíonn an coigilteoir ceallraí ar siúl, nó mura dtacaíonn an gléas le doiléiriú.</string>
+  <string name="morphe_glass_menus_opacity_title">Teimhneacht ghloine</string>
+  <string name="morphe_glass_menus_opacity_summary">An méid a chlúdaíonn an roghchlár an t-ábhar doiléir (is é 0 an luach do shoiléir, agus is é 100 an luach do dho-thrédhearcach)</string>
+  <string name="morphe_glass_menus_blur_title">Doiléire</string>
+  <string name="morphe_glass_menus_blur_summary">An méid a bhfuil an t-ábhar taobh thiar den roghchlár doiléirithe</string>
+  <string name="morphe_glass_menus_dim_title">Lag</string>
+  <string name="morphe_glass_menus_dim_summary">An méid a dhéantar an scáileán timpeall ar bhileog bhunach a dhorchú</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl na \"dí-mhaith\" ar fáil go sealadach (tá an t-am caite ag an API)</string>
@@ -380,4 +425,8 @@ Seoltar ID an fhíseáin a fhéachann tú chuig API Return YouTube Dislike, agus
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Níor aimsíodh aon teorainneacha ráta cliant</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Sroicheadh ​​an teorainn ráta don chliant %s uair</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milleasoicind</string>
+  <string name="morphe_navigation_bar_screen_title">Barra nascleanúna</string>
+  <string name="morphe_navigation_bar_screen_summary">Roghnaigh na cnaipí a thaispeánfar sa bharra nascleanúna ag bun an scáileáin</string>
+  <string name="morphe_toolbar_screen_title">Barra uirlisí</string>
+  <string name="morphe_toolbar_screen_summary">Roghnaigh na comhpháirteanna a thaispeánfar sa bharra uirlisí</string>
 </resources>

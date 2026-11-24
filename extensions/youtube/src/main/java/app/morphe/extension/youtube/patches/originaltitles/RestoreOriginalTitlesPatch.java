@@ -8,10 +8,13 @@
 
 package app.morphe.extension.youtube.patches.originaltitles;
 
+import android.app.Activity;
+import android.app.Application;
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -60,6 +63,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
@@ -357,8 +361,6 @@ public final class RestoreOriginalTitlesPatch {
 
 
     private static final Pattern LETTER_PATTERN = Pattern.compile("\\p{L}");
-    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
-    private static final Pattern TOKEN_PATTERN = Pattern.compile("[_./:=|-]");
 
     /**
      * Title view -> video id of the title to set.
@@ -509,7 +511,8 @@ public final class RestoreOriginalTitlesPatch {
      * Texts whose other titles were not fetched again as they were not shown, such as the elements
      * scrolled off-screen. They are fetched again when shown again, which is checked only when Litho views
      * are measured, as Litho does not load again the texts of the elements scrolled on screen again
-     * from the cache of the list. Nothing is done meanwhile. Accessed only on the main thread.
+     * from the cache of the list, and when the app is opened again. Nothing is done meanwhile.
+     * Accessed only on the main thread.
      */
     private static final List<CandidateRetry> hiddenRetries = new ArrayList<>();
 
@@ -522,6 +525,45 @@ public final class RestoreOriginalTitlesPatch {
      * If the hidden retries are checked. Accessed only on the main thread.
      */
     private static boolean hiddenRetryCheckScheduled;
+
+    /**
+     * Callback when an activity is resumed. No text is shown while the app is in the background,
+     * as the window of a stopped activity is hidden, so the pending retries checked meanwhile are hidden.
+     * The Litho views are not always measured again when the app is opened again, so the hidden retries
+     * are checked once the window is shown again.
+     */
+    private static final Application.ActivityLifecycleCallbacks HIDDEN_RETRIES_LIFECYCLE_CALLBACKS
+            = new Application.ActivityLifecycleCallbacks() {
+
+        public void onActivityResumed(@NonNull Activity activity) {
+            if (!hiddenRetries.isEmpty()) {
+                onLithoViewMeasured();
+            }
+        }
+
+        public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
+        public void onActivityStarted(@NonNull Activity a) {}
+        public void onActivityPaused(@NonNull Activity a) {}
+        public void onActivityStopped(@NonNull Activity a) {}
+        public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
+        public void onActivityDestroyed(@NonNull Activity a) {}
+    };
+
+    private static boolean hiddenRetriesLifecycleCallbacksRegistered;
+
+    /**
+     * Fetches again at once the titles that failed to fetch while the device was offline,
+     * instead of after the retry time, and lays out again their loading texts. Runs on the main thread.
+     */
+    static final Runnable RETRY_FAILED_TITLES = () -> {
+        OriginalTitleRequest.retryFailedTitlesNow();
+        final long now = System.currentTimeMillis();
+        for (CandidateRetry retry : pendingRetries) {
+            retry.retryTime = Math.min(retry.retryTime, now);
+        }
+        checkPendingRetries();
+        LithoRelayoutPatch.relayoutOutdatedTexts();
+    };
 
     /**
      * Length of the longest translated title, so longer texts are ignored without copying them.
@@ -816,9 +858,12 @@ public final class RestoreOriginalTitlesPatch {
                             return spannedText(translatedText, LOADING_TITLE.toString(), new RetryTitleSpan(retry));
                         }
                     }
-                    // The title found by the layout of the element is replaced even if no request verified it.
+                    // The title found by the layout of the element is replaced even if no request verified it,
+                    // unless it's the title of other videos, such as of an element of the opened video
+                    // parsed before the new video is loaded.
                     for (String layoutVideoId : videoIds) {
                         String replacement = trimmedText.equals(layoutTitles.get(layoutVideoId))
+                                && !isTitleOfOtherVideos(trimmedText, layoutVideoId)
                                 ? OriginalTitleRequest.getIfAvailable(layoutVideoId, trimmedText)
                                 : null;
                         if (replacement != null && !replacement.trim().equals(trimmedText)) {
@@ -1142,7 +1187,9 @@ public final class RestoreOriginalTitlesPatch {
                 return;
             }
             String originalTitle = titles.replacement(shownTitle, useDeArrow);
-            if (originalTitle == null && titleView.isShown() && OriginalTitleRequest.isPending(videoId)) {
+            // The view is shown again when the app is opened again, so the title is still fetched again meanwhile.
+            if (originalTitle == null && LithoRelayoutPatch.isShownOrInBackground(titleView)
+                    && OriginalTitleRequest.isPending(videoId)) {
                 Utils.runOnMainThreadDelayed(
                         () -> setViewTitleWhenFetched(viewRef, videoId, useDeArrow, translatedTitle, shownTitle),
                         OriginalTitleRequest.retryRemainingMilliseconds(videoId) + VIEW_TITLE_RETRY_MARGIN_MILLISECONDS);
@@ -1341,6 +1388,11 @@ public final class RestoreOriginalTitlesPatch {
         String titleVideoId = findVideoIdOfTitle(title.trim(), openedVideoId);
         String videoId = titleVideoId == null ? openedVideoId : titleVideoId;
         if (videoId == null) {
+            return null;
+        }
+        if (titleVideoId == null && isTitleOfOtherVideos(title.trim(), videoId)) {
+            // The title is of other videos, such as the next video of a playlist
+            // that plays before the new video is loaded.
             return null;
         }
 
@@ -1749,6 +1801,23 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
+     * The opened video can change before its video id is known, so elements and views
+     * of the opened video can show the title of the new video while the video id is of the previous video.
+     *
+     * @return If the text is a title seen before only for other videos, and is not a verified title of the video.
+     */
+    private static boolean isTitleOfOtherVideos(String text, String videoId) {
+        synchronized (translatedTitles) {
+            Set<String> videoIds = translatedTitles.get(text);
+            if (videoIds == null || videoIds.contains(videoId)) {
+                return false;
+            }
+        }
+        List<String> titles = verifiedTitles(videoId);
+        return titles == null || findTitle(videoId, Collections.singleton(text), titles) == null;
+    }
+
+    /**
      * @param preferredVideoId Video used if different videos have the title, such as the opened video.
      * @return The video id of the translated title, or null if the title is unknown,
      *         or different videos have the title and none is the preferred video.
@@ -1970,7 +2039,7 @@ public final class RestoreOriginalTitlesPatch {
                 () -> findCandidateTitle(textNodes, nodeTexts, texts, videoId, elementVideoId, component),
                 title -> {
                     if (elementVideoId) {
-                        TitleLayouts.confirmTitle(component, videoId, TitleLayouts.fieldPaths(textNodes), nodeTexts, title);
+                        TitleLayouts.confirmTitle(component, videoId, () -> TitleLayouts.fieldPaths(textNodes), nodeTexts, title);
                     }
                 });
     }
@@ -2026,7 +2095,11 @@ public final class RestoreOriginalTitlesPatch {
             }
             // The video can show a title that no request returns, such as a title tested by the uploader.
             // The title is not saved as a translated title, as no request verified it.
-            String replacement = layoutTitle ? OriginalTitleRequest.getIfAvailable(videoId, candidate) : null;
+            // A title of other videos is not replaced, such as the title of the next video of a playlist
+            // shown by an element of the opened video parsed before the new video is loaded.
+            String replacement = layoutTitle && !isTitleOfOtherVideos(candidate, videoId)
+                    ? OriginalTitleRequest.getIfAvailable(videoId, candidate)
+                    : null;
             return replacement != null && !candidate.equals(replacement.trim())
                     && replaceTitle(textNodes, videoId, candidate, Collections.emptySet(), replacement,
                     findLabelOfTitle(candidate, texts));
@@ -2328,6 +2401,7 @@ public final class RestoreOriginalTitlesPatch {
         }
 
         CandidateRetry retry = new CandidateRetry(videoId, texts, candidate, retries, requests, failedRequest);
+        NetworkReconnect.runWhenOnline(RETRY_FAILED_TITLES);
         // Saved before the failed request is done, so the texts laid out again find the retry.
         candidateRetries.put(candidateKey(videoId), retry);
         final long retryTime = System.currentTimeMillis() + delay;
@@ -2426,6 +2500,11 @@ public final class RestoreOriginalTitlesPatch {
                     cancelRetry(hiddenRetries.remove(0));
                 }
                 LithoRelayoutPatch.setLithoViewMeasuredListener(RestoreOriginalTitlesPatch::onLithoViewMeasured);
+                if (!hiddenRetriesLifecycleCallbacksRegistered) {
+                    hiddenRetriesLifecycleCallbacksRegistered = true;
+                    ((Application) Utils.getContext().getApplicationContext())
+                            .registerActivityLifecycleCallbacks(HIDDEN_RETRIES_LIFECYCLE_CALLBACKS);
+                }
             }
         }
         if (startedVideoIds.isEmpty()) {
@@ -2454,6 +2533,8 @@ public final class RestoreOriginalTitlesPatch {
     private static void cancelRetry(CandidateRetry retry) {
         retry.requests.remove(retry.candidate, retry.failedRequest);
         retry.done.complete(null);
+        // No request is done when the retry is cancelled, so its loading texts are laid out again here.
+        LithoRelayoutPatch.relayoutOutdatedTexts();
     }
 
     /**
@@ -3010,8 +3091,35 @@ public final class RestoreOriginalTitlesPatch {
      * @return If the text can be a part of an accessibility label, and is not a key, url or identifier.
      */
     static boolean isLabelCandidate(String text) {
-        return LETTER_PATTERN.matcher(text).find()
-                && (WHITESPACE_PATTERN.matcher(text).find() || !TOKEN_PATTERN.matcher(text).find());
+        // Called for most texts of the elements, which are parsed on the main thread while a list loads,
+        // so the characters are checked without patterns. The letters outside the BMP are left to the pattern.
+        // The whitespace is the White_Space characters of Unicode, which the "\s" of the Android patterns
+        // matches, and which are all in the BMP.
+        boolean letter = false;
+        boolean token = false;
+        boolean whitespace = false;
+        boolean supplementary = false;
+        for (int i = 0, length = text.length(); i < length; i++) {
+            final char c = text.charAt(i);
+            switch (Character.getType(c)) {
+                case Character.UPPERCASE_LETTER, Character.LOWERCASE_LETTER, Character.TITLECASE_LETTER,
+                     Character.MODIFIER_LETTER, Character.OTHER_LETTER -> letter = true;
+                case Character.SURROGATE -> supplementary = true;
+                default -> {
+                    if (c == '_' || c == '.' || c == '/' || c == ':' || c == '=' || c == '|' || c == '-') {
+                        token = true;
+                    } else if ((c >= '\t' && c <= '\r') || c == ' ' || c == '\u0085' || c == '\u00A0'
+                            || c == '\u1680' || (c >= '\u2000' && c <= '\u200A') || c == '\u2028'
+                            || c == '\u2029' || c == '\u202F' || c == '\u205F' || c == '\u3000') {
+                        whitespace = true;
+                    }
+                }
+            }
+        }
+        if (!letter && (!supplementary || !LETTER_PATTERN.matcher(text).find())) {
+            return false;
+        }
+        return !token || whitespace;
     }
 
     /**

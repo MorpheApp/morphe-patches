@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.DisableBottomBarAutoHidePatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -26,31 +27,41 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return HideNavigationButtonsPatch.isPatchIncluded();
+        return DisableBottomBarAutoHidePatch.isPatchIncluded() ||
+                HideNavigationButtonsPatch.isPatchIncluded();
     }
 
     @Override
     public void addPreferences(Context context) {
-        addPreference(new BooleanSettingPreference(
-                context,
-                Settings.HIDE_ANSWERS_BUTTON
-        ));
-        addPreference(new BooleanSettingPreference(
-                context,
-                Settings.HIDE_CHAT_BUTTON
-        ));
-        addPreference(new BooleanSettingPreference(
-                context,
-                Settings.HIDE_CREATE_BUTTON
-        ));
-        addPreference(new BooleanSettingPreference(
-                context,
-                Settings.HIDE_DISCOVER_BUTTON
-        ));
-        addPreference(new BooleanSettingPreference(
-                context,
-                Settings.HIDE_GAMES_BUTTON
-        ));
+        if (DisableBottomBarAutoHidePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_BOTTOM_BAR_AUTO_HIDE
+            ));
+        }
+
+        if (HideNavigationButtonsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ANSWERS_BUTTON
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_CHAT_BUTTON
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_CREATE_BUTTON
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_DISCOVER_BUTTON
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_GAMES_BUTTON
+            ));
+        }
 
         Utils.setPreferenceTitlesToMultiLine(this);
     }

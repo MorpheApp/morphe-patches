@@ -66,6 +66,15 @@ public final class PlaybackInFeedsPatch {
 
     /**
      * Injection point.
+     * <p>
+     * The seek buttons of a video that plays in a feed are shown only if the server enables them for the video.
+     */
+    public static boolean showSeekButtons(boolean original) {
+        return original || Settings.PLAYBACK_IN_FEEDS_SEEK_BUTTONS.get();
+    }
+
+    /**
+     * Injection point.
      */
     public static void setController(PlaybackInFeedsController instance) {
         controller = instance;

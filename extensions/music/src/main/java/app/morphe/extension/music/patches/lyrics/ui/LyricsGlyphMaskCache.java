@@ -55,7 +55,7 @@ final class LyricsGlyphMaskCache {
         public final TintFilterCache pastTint = new TintFilterCache();
         public final TintFilterCache unlitTint = new TintFilterCache();
         public final TintFilterCache inactiveTint = new TintFilterCache();
-        public final ColorFilter glowFilter = new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+        public final TintFilterCache glowTint = new TintFilterCache();
 
         public final Paint layerPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
         private final Paint maskPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
@@ -87,7 +87,9 @@ final class LyricsGlyphMaskCache {
         }
 
         public boolean hasGlow(int idx) {
-            return idx >= 0 && idx < glowBitmaps.length && glowBitmaps[idx] != null;
+            return idx >= 0 && idx < glowBitmaps.length
+                    && glowBitmaps[idx] != null
+                    && !glowBitmaps[idx].isRecycled();
         }
 
         public float glowScaleOf(int idx) {
@@ -95,7 +97,15 @@ final class LyricsGlyphMaskCache {
         }
 
         @Nullable
-        public Bitmap obtain(int idx, Layout layout) {
+        public Bitmap peek(int idx) {
+            if (idx < 0 || idx >= bitmaps.length) return null;
+            Bitmap existing = bitmaps[idx];
+            return (existing != null && !existing.isRecycled()) ? existing : null;
+        }
+
+        @Nullable
+        public Bitmap obtain(int idx, @Nullable Layout layout) {
+            if (layout == null || idx < 0 || idx >= bitmaps.length) return null;
             Bitmap existing = bitmaps[idx];
             if (existing != null && !existing.isRecycled()) return existing;
             RasterResult res = rasterize(layout, padPx, MASK_RASTER_SCALE);
@@ -107,7 +117,8 @@ final class LyricsGlyphMaskCache {
         }
 
         @Nullable
-        public Bitmap obtainGlow(int idx, Layout layout, float blurRadius) {
+        public Bitmap obtainGlow(int idx, @Nullable Layout layout, float blurRadius) {
+            if (layout == null || idx < 0 || idx >= glowBitmaps.length) return null;
             Bitmap existing = glowBitmaps[idx];
             if (existing != null && !existing.isRecycled()) return existing;
             RasterResult res = rasterizeGlow(layout, padPx, blurRadius, GLOW_RASTER_SCALE);
@@ -135,16 +146,14 @@ final class LyricsGlyphMaskCache {
             if (prewarmCursor >= limit) return;
             long startNs = SystemClock.elapsedRealtimeNanos();
             while (prewarmCursor < limit) {
-                int i = prewarmCursor;
+                int i = prewarmCursor++;
                 Layout layout = layoutOf.get(i);
-                if (obtain(i, layout) == null) {
-                    break;
+                if (obtain(i, layout) != null) {
+                    float blur = glowBlurOf.get(i);
+                    if (blur > 0f && !hasGlow(i)) {
+                        obtainGlow(i, layout, blur);
+                    }
                 }
-                float blur = glowBlurOf.get(i);
-                if (blur > 0f && !hasGlow(i)) {
-                    obtainGlow(i, layout, blur);
-                }
-                prewarmCursor++;
                 if (SystemClock.elapsedRealtimeNanos() - startNs >= budgetNs) {
                     break;
                 }
@@ -256,14 +265,7 @@ final class LyricsGlyphMaskCache {
         }
     }
 
-    public static final class RasterResult {
-        public final Bitmap bitmap;
-        public final float scale;
-
-        public RasterResult(Bitmap bitmap, float scale) {
-            this.bitmap = bitmap;
-            this.scale = scale;
-        }
+    public record RasterResult(Bitmap bitmap, float scale) {
     }
 
     @Nullable
@@ -332,12 +334,9 @@ final class LyricsGlyphMaskCache {
         paint.setShader(null);
         paint.clearShadowLayer();
 
-        // Outer soft halo + inner solid bloom (blurRadius = 0.20f * fontSizePx).
+        // Single soft Gaussian halo without a solid fill pass on top.
         float effectiveBlur = Math.max(0.5f, blurRadius);
         paint.setMaskFilter(new BlurMaskFilter(effectiveBlur, BlurMaskFilter.Blur.NORMAL));
-        subLayout.draw(c);
-        paint.setMaskFilter(new BlurMaskFilter(Math.max(0.5f, effectiveBlur * 0.55f), BlurMaskFilter.Blur.SOLID));
-        paint.setColor(Color.argb(190, 255, 255, 255));
         subLayout.draw(c);
 
         paint.setMaskFilter(prevMask);

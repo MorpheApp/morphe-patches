@@ -31,8 +31,8 @@ val videoQualityPatch = patch(
 ) {
     dependsOn(
         rememberVideoQualityPatch,
-        advancedVideoQualityMenuPatch,
         hidePremiumVideoQualityPatch,
+        advancedVideoQualityMenuPatch,
         prioritizeVideoQualityPatch,
         videoQualityDialogButtonPatch
     )

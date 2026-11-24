@@ -271,7 +271,8 @@ val downloadsPatch = patch(
                         if-eqz p0, :keep_player_response
                         invoke-interface { p0 }, $playerResponseModelType->${playerResponseGetter.name}()$playerResponseType
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;)[B
+                        const/4 v1, 0x0
+                        invoke-static { v0, v1 }, $EXTENSION_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;Z)[B
                         move-result-object v0
                         if-eqz v0, :keep_player_response
 

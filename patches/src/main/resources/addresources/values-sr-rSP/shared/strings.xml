@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Подешавања</string>
   <string name="morphe_settings_confirm_user_dialog_title">Желите ли заиста да наставите?</string>
   <string name="morphe_settings_save">Сачувај</string>
   <string name="morphe_settings_reset">Ресетуј</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Преводи</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Актуализовано</string>
   <string name="morphe_settings_about_contributors">Доприносећи</string>
-  <string name="morphe_settings_about_contributors_period">Последњих 12 месеци</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Све време</string>
+  <string name="morphe_settings_about_contributors_6_months">6 месеци</string>
+  <string name="morphe_settings_about_contributors_3_months">3 месеца</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Временски период</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s корисника</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Подржњачи</string>
   <string name="morphe_settings_about_supporters_summary">Подржњачи на Open Collective</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • Сталног затварања апликације
 • Неисправног рада нотификација
 • Неисправног рада музичког плејера у позадини"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Отвори системски панел за дељење</string>
+  <string name="morphe_open_system_share_sheet_summary">Отвора системни прозор за делење уместо оног унутар апликације при делењу садржаја</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Руковање линковима апликације</string>
   <string name="morphe_link_handling_summary">Конфигуриши линкове да се отворе у овој апликацији</string>

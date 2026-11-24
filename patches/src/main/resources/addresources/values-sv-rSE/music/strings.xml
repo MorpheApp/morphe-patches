@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Anpassad</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Spela albumets ljudspår</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Spela albumets ljudversion av låtarna istället för en musikvideo. Kräver \'Förfalska videoströmmar\'</string>
+  <string name="morphe_music_play_album_songs_summary">Spela låtarna i ett album istället för deras musikvideor</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Aktivera ljud/videoväxling</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Försök att byta ljudspårsversion och officiell musikvideo</string>
@@ -144,6 +143,8 @@ Exportmapp: %s"</string>
   <string name="morphe_export_download_failed">Kunde inte exportera nedladdningen</string>
   <string name="morphe_export_download_all_flyout_title">Exportera alla till enhet</string>
   <string name="morphe_export_download_all_started">Exporterar alla nedladdningar</string>
+  <string name="morphe_export_download_all_title">Alla nedladdningar</string>
+  <string name="morphe_export_download_playlist_started">Exporterar nedladdningar</string>
   <string name="morphe_export_download_all_running">Nedladdningar exporteras redan</string>
   <string name="morphe_export_download_all_saved">Exporterade %1$s av %2$s nedladdningar till %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Exportmapp: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Dölj videoannonser</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Dölj ljud-/video-omkopplaren</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Dölj knappen Ladda ned</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Döljer nedladdningsknappen i poddprogrammet</string>
   <string name="morphe_music_hide_explore_shelf_title">Dölj avsnittet Utforska</string>
   <string name="morphe_music_hide_filter_bar_title">Dölj filterfält</string>
   <string name="morphe_music_hide_grid_shelves_title">Dölj rutnätshyllor</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Dölj horisontella hyllor</string>
+  <string name="morphe_music_hide_new_button_title">Dölj knappen Ny</string>
+  <string name="morphe_music_hide_new_button_summary">Döljer knappen Ny i fliken Bibliotek</string>
   <string name="morphe_music_hide_list_shelves_title">Dölj listhyllor</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Sångtextpanel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Dölj knappen Dela</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Dölj knappen Översätt</string>
   <string name="morphe_music_hide_new_from_shelf_title">Dölj hyllan \'Nytt från\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Dölj spellisthyllor</string>
@@ -199,6 +200,8 @@ Exportmapp: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Övertoningar</string>
   <string name="morphe_music_crossfade_screen_summary">Smidiga övertoningar mellan låtar</string>
   <string name="morphe_music_crossfade_enabled_title">Aktivera övertoningar</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">För att använda crossfade, ändra \'Standardklient\' för \'Spoofa videoströmmar\' till \'TV Simply\' eller \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Övertoningskurva</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lika effekt</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtil dröjning</string>
@@ -232,7 +235,9 @@ Exportmapp: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Övertoningar pausades för den här sessionen</string>
   <string name="morphe_music_crossfade_resumed_toast">Övertoningar återupptogs</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoläge är inte tillgängligt när övertoningar är aktiverade</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade är avstängt vid SABR-uppspelning</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade fungerar inte med \'visionOS\'. Ändra \'Standardklient\' för \'Spoofa videoströmmar\' till \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade fungerar inte med den här spoof-strömklienten</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade är avstängt under casting</string>
   <string name="morphe_music_crossfade_about_how_title">Hur det fungerar</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade överlappar slutet av en låt med början av nästa, med hjälp av din varaktighet och kurva
@@ -249,9 +254,7 @@ Låsskärmen eller aviseringen kan tillfälligt visa ett inaktuellt tillstånd m
 
 Att pausa crossfade för att titta på en musikvideo kan lämna vissa videor svarta. Att pausa crossfade innan du väljer låten undviker det"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Stöds inte</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting eller spegling av ljud (Chromecast, skärmspegling eller ljudspegling)
-
-SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Sändning eller spegling av ljud (Chromecast, skärm- eller ljudspegling)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-funktion av VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pausa när ljudet är avstängt</string>
   <string name="morphe_music_pause_when_muted_summary">Pausar uppspelningen när systemvolymen är avstängd och återupptar den när volymen höjs</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-knappen kan även strömma till Sonos och andra UPnP-högtalare på ditt Wi-Fi-nätverk</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Anslut till en enhet</string>
+  <string name="morphe_music_sonos_cast_searching">Söker efter högtalare på ditt Wi-Fi-nätverk…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Välj en högtalare på ditt Wi-Fi-nätverk</string>
+  <string name="morphe_music_sonos_cast_casting_to">Streamar till %s</string>
+  <string name="morphe_music_sonos_cast_connected">Ansluten</string>
+  <string name="morphe_music_sonos_cast_disconnect">Koppla från</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Högtalare på Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktiv</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- och Google TV-enheter</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Kunde inte ansluta till %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Uppspelningshastighet</string>
   <string name="morphe_music_playback_speed_summary">Hastighet som används för alla spår. Vid 100 % används appens hastighet, till exempel uppspelningshastigheten för poddar.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ändra tonhöjd med hastigheten</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Visa meny för videoeffekter</string>
+  <string name="morphe_music_video_effect_menu_summary">Lägger till videoeffekt i spelarmenyn medan en video spelas</string>
+  <string name="morphe_music_video_effect_next_video">Effekten visas från nästa video</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Inaktivera automatisk textning</string>
   <string name="morphe_music_disable_auto_captions_summary">Undertexter aktiveras inte automatiskt när en video startar, inklusive undertexter som videon aktiverar som standard</string>
@@ -279,6 +300,10 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Inaktivera omdirigering av ogilla</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Förhindrar att hoppa till nästa låt när ogilla-knappen trycks</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Inaktivera svep för att byta spår</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Förhindrar att man hoppar till nästa eller föregående spår genom att svepa åt vänster eller höger i spelaren</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Förhindrar att man hoppar till nästa eller föregående spår genom att svepa åt vänster eller höger i minispelaren</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-loop</string>
   <string name="morphe_music_ab_loop_summary">Håll seekbaren nedtryckt för att ställa in loopens start, tryck igen för att ställa in loopens slut, och igen för att rensa loopen</string>
@@ -329,15 +354,6 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_playlist_tags_rename">Byt namn</string>
   <string name="morphe_music_playlist_tags_delete">Radera</string>
   <string name="morphe_music_playlist_tags_hidden">Dolt</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Dölj knappen Casta</string>
-  <string name="morphe_music_hide_history_button_title">Dölj historikknappen</string>
-  <string name="morphe_music_hide_notification_button_title">Dölj aviseringsknappen</string>
-  <string name="morphe_music_hide_search_button_title">Dölj sökknappen</string>
-  <string name="morphe_music_hide_voice_search_button_title">Dölj knappen för röstsökning</string>
-  <string name="morphe_music_hide_sound_search_button_title">Dölj ljudsökningsknappen</string>
-  <string name="morphe_music_hide_library_new_button_title">Dölj Ny-knappen</string>
-  <string name="morphe_music_hide_library_new_button_summary">Döljer Ny-knappen på fliken Bibliotek</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Åtgärdsknappar</string>
   <string name="morphe_music_action_buttons_screen_summary">Välj vilka åtgärdsknappar som visas under spelaren</string>
@@ -409,22 +425,20 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Tvinga stående orientering</string>
   <string name="morphe_music_force_portrait_orientation_summary">Håller appen i stående orientering när enheten roteras</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Ändra minispelarens färg</string>
+  <string name="morphe_music_change_miniplayer_color_title">Ändra färg</string>
   <string name="morphe_music_change_miniplayer_color_summary">Minispelarens färg matchar helskärmsspelaren</string>
   <string name="morphe_music_change_navigation_bar_color_title">Ändra navigeringsfältets färg</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Matchar navigeringsfältets färg med helskärmsspelaren</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Visa knappen Nästa i minispelaren</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Visa knappen Föregående i minispelaren</string>
+  <string name="morphe_music_miniplayer_next_button_title">Visa knappen Nästa</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Visa knappen Föregående</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Aktivera tvingad minispelare</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Förhindrar att spelaren automatiskt växlar till helskärmsläge när en ny låt startar</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktivera svep för att stänga minispelaren</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktivera svep för att stänga</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Tillåter att stänga minispelaren genom att svepa ner på den</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigeringsfält</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ned</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Dölj knappen Hem</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Dölj knappen Bibliotek</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Dölj knappen Uppgradera</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Visa knappen Inställningar</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Åtgärd för knappen Inställningar</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">När det här alternativet är aktiverat öppnar ett tryck Morphe-inställningarna och ett långt tryck YouTube Music-inställningarna. Inaktivera för att byta</string>
   <string name="morphe_music_hide_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
   <string name="morphe_music_navigation_bar_glass_title">Aktivera glänsande navigeringsfält</string>
@@ -457,7 +474,7 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Döljer den rundade markeringen bakom den valda knappen i glasnavigeringsfältet</string>
   <string name="morphe_music_miniplayer_screen_title">Minispelare</string>
   <string name="morphe_music_miniplayer_screen_summary">Ändra stil, knappar och gester för minispelaren</string>
-  <string name="morphe_music_miniplayer_glass_title">Aktivera glasminispelare</string>
+  <string name="morphe_music_miniplayer_glass_title">Aktivera glaseffekt</string>
   <string name="morphe_music_miniplayer_glass_summary">Visar den flytande minispelaren som ett rundat, genomskinligt glaskort</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stil för glasminispelare</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Justera hörnradien, utfyllnaden för albumomslaget, kantens ljusstyrka och opaciteten för glasminispelaren, med en förhandsvisning</string>
@@ -465,11 +482,8 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Utfyllnad för albumomslag</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kantens ljusstyrka</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacitet</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glasoskärpa</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hur mycket sidan bakom glasminispelaren är suddig (Android 14 och senare). Vid 0 visas sidan skarp, och före Android 14 är sidan täckt</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Ljust glas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Tonar glasminispelaren vit istället för mörk, för ett ljusare och klarare glas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumbildstoning</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Tonar glasminispelaren med färgen från albumbilden för låten som spelas</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Sjunkande albumomslag</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gör albumomslaget i glasminispelaren runt och roterar det som en skiva medan en låt spelas</string>
@@ -480,6 +494,15 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Exempel</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Utforska</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotek</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Dölj knappen Aktivitet</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Dölj knappen \"Fråga Musik\"</string>
+  <string name="morphe_music_hide_cast_button_title">Dölj knappen Casta</string>
+  <string name="morphe_music_hide_history_button_title">Dölj historikknappen</string>
+  <string name="morphe_music_hide_search_button_title">Dölj sökknappen</string>
+  <string name="morphe_music_hide_voice_search_button_title">Dölj knappen för röstsökning</string>
+  <string name="morphe_music_hide_sound_search_button_title">Dölj knappen \"Ljudsökning\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Inte inloggad. Tryck för att konfigurera</string>
   <string name="morphe_music_scrobbling_log_out">Logga ut</string>
@@ -583,6 +606,9 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
   <string name="morphe_music_soundproof_about_summary">"Artistdata kommer från SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), nedladdad en gång om dagen. Hoppning skickar ingenting om vad du spelar. Att öppna SoundProof-bladet skickar det aktuella artistnamnet till SoundProof-servern för att visa aktuella röster och för att rösta. Servern skiljer på väljare via IP-adress, så din röst kan visas annorlunda på ett annat nätverk.
 
 Databasen är licensierad under ODC Open Database License (ODbL). Poster från Soul Over AI av xoundbyte är licensierade under CC BY 4.0. Inte ansluten till eller godkänd av SoundProof eller Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animerat omslag</string>
+  <string name="morphe_music_apple_music_artwork_summary">Visar det animerade albumomslaget från Apple Music i spelaren, om albumet har ett. Titel, artist och album för varje låt skickas till Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Texten är inte tillgänglig för den här enhetsfilen.</string>
   <string name="morphe_music_lyrics_enabled_title">Använd tredjeparts sångtexter</string>
@@ -635,6 +661,25 @@ Den första kolumnen är ordet, den andra dess läsning; extra kolumner och rade
   <string name="morphe_music_lyrics_clear_cache_title">Rensa lagrad text</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Ta bort de %s MB av texter som sparas på den här enheten</string>
   <string name="morphe_music_lyrics_clear_cache_done">Rensade %s MB</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Beräknar cachistorlek…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Textcache</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Rensa textcache</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d låtar)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Översättningscache</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Rensa översättningscache</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d översättningar)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Translitereringscache</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Rensa translitereringscache</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d translitereringar)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Total cacheanvändning</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Rensa alla cacheminnen</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d objekt)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Rensa</string>
+  <string name="morphe_music_lyrics_cache_close_action">Stäng</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Radera %1$s MB (%2$d låtar) av cachade texter som sparas på den här enheten?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Radera %1$s MB (%2$d översättningar) av cachade översättningar som sparas på den här enheten?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Radera %1$s MB (%2$d translittereringar) av cachade translittereringar som sparas på den här enheten?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Radera %1$s MB (%2$d objekt) av all cachad textdata som sparas på den här enheten?</string>
   <string name="morphe_music_token_dialog_get_token">Hämta token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-användartoken</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Klistra in media-user-token-cookien från music.apple.com
@@ -685,8 +730,11 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_tap_to_seek_summary">Tryck på en rad för att hoppa till den tiden i låten, tryck länge för att kopiera ordet under fingret eller hela raden om trycket inte är riktat mot ett ord. Avaktiverar båda gester.</string>
   <string name="morphe_music_lyrics_show_section_title">Visa sektionstaggar</string>
   <string name="morphe_music_lyrics_show_section_summary">Märk varje ny sektion av texten med en liten tagg, till exempel Vers eller Refräng</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Visa knappen Kopiera</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Tryck för att kopiera originaltexten som vanlig text; håll ned för att spara källfilen för texten och en konverterad TTML-fil i Hämtade filer</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Visa knappen Kopiera / Dela</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Visa knappen Kopiera eller Dela i verktygsfältet för textpanelen</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Läge för kopieringsknapp</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Kopieringsläge (tryck för att kopiera, håll ned för att spara)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Delningsläge (tryck för att välja 1–5 rader, håll ned för att kopiera eller spara)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Visa knappen Översätt</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Tryck för att växla översättning; långtryck för endast översättning. Använder de aktiverade översättningstjänsterna i deras angivna ordning</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Visa knappen för romanisering eller translitterering</string>
@@ -700,7 +748,48 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Läsningar klara (%s poster)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Nedladdning misslyckades - stäng av och på igen för att försöka igen</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanska (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japanska</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — snabb morfologisk analysator &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — fullständig japansk ordlista</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Prioritets- &amp; fallback-ordning</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji-prioritet (SudachiDict fallback)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict-prioritet (Kuromoji fallback)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Eget typsnitt för sångtexter</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Systemets standardtypsnitt (tryck för att ladda upp en .ttf- eller .otf-typsnittsfil)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Aktivt typsnitt: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Ladda upp en .ttf- eller .otf-typsnittsfil (som SF Pro Bold, Inter Bold eller Inter ExtraBold) från enhetens lagring för att använda den i vyn för sångtexter.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Ladda upp typsnitt</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Återställ till standard</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Eget typsnitt för sångtexter har tillämpats: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Återställd till standardtypsnitt för sångtexter</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Ogiltig eller ej stödd typsnittsfil (.ttf eller .otf krävs)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Dela låttext</string>
+  <string name="morphe_music_lyrics_share_button">Dela</string>
+  <string name="morphe_music_lyrics_copy">Kopiera</string>
+  <string name="morphe_music_lyrics_share_options_title">Åtgärder för låttext</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Kopiera låttext som vanlig text</string>
+  <string name="morphe_music_lyrics_save_file_option">Spara låttext &amp; TTML till Hämtade filer</string>
+  <string name="morphe_music_lyrics_share_cancel">Avbryt</string>
+  <string name="morphe_music_lyrics_share_select_hint">Tryck på 1–5 rader för att dela</string>
+  <string name="morphe_music_lyrics_share_max_lines">Maximalt 5 rader kan väljas</string>
+  <string name="morphe_music_lyrics_share_failed">Kunde inte skapa kort för delning av låttext</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Suddig</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Omslag</string>
+  <string name="morphe_music_lyrics_share_bg_color">Färg</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Foto</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music-logotyp</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Översätt</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Bakgrundssång</string>
+  <string name="morphe_music_lyrics_share_custom_color">Anpassad färg</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Kunde inte ladda vald bild</string>
+  <string name="morphe_music_lyrics_share_card_cta">Dela kort</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Kopiera text</string>
+  <string name="morphe_music_lyrics_share_back">Tillbaka till val av text</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Läser in foto...</string>
+  <string name="morphe_music_lyrics_share_preparing">Skapar kort...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Färgprov %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Okänd låt</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Kinesiska och kantonesiska tecken (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kinesiska ord (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grekiska, slaviska kyrilliska (inklusive ryska, ukrainska, bulgariska, serbiska, belarusiska, makedonska), georgiska, armeniska, hebreiska, arabiska, amhariska och syrisk translitterering (CLDR, ~0,5 MB)</string>

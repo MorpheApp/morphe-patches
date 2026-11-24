@@ -28,7 +28,6 @@ import java.util.WeakHashMap;
 import app.morphe.extension.music.patches.lyrics.model.LyricsRetiming;
 import app.morphe.extension.music.patches.lyrics.ui.SpringEasing.LyricsScrollStagger;
 import app.morphe.extension.music.patches.lyrics.ui.SpringEasing.LyricsSpring;
-import app.morphe.extension.music.settings.Settings;
 
 /**
  * Scrolls the lyrics with a spring, and moves every row from where it was drawn to where the

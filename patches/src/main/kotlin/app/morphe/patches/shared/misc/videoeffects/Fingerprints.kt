@@ -1,0 +1,110 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/5137
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.patches.shared.misc.videoeffects
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.Opcode
+
+/**
+ * Draws videos with the OpenGL renderer and its passthrough shader, even if the server
+ * sends no video effects for the video.
+ */
+internal object GlVideoRendererFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45727453L)
+    )
+)
+
+/**
+ * Draw method of the passthrough shader, which the passthrough and recomposition video effects use.
+ */
+internal object PassthroughShaderDrawFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/opengl/GLES20;",
+            name = "glUseProgram"
+        ),
+        methodCall(
+            definingClass = "Landroid/opengl/GLES20;",
+            name = "glUniformMatrix4fv"
+        ),
+        methodCall(
+            definingClass = "Landroid/opengl/GLES20;",
+            name = "glDrawArrays"
+        ),
+        string("null shader input for recomposition")
+    )
+)
+
+internal object PassthroughShaderConstructorFingerprint : Fingerprint(
+    classFingerprint = PassthroughShaderDrawFingerprint,
+    name = "<init>",
+    filters = listOf(
+        string("texCoordVar = (texTransMat * vTexCoord).xy;", StringComparisonType.CONTAINS),
+        string("gl_FragColor = texture2D(texture, texCoordVar);", StringComparisonType.CONTAINS)
+    )
+)
+
+/**
+ * Picks the type of view a video is drawn on.
+ */
+internal object VideoViewTypeFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("L", "L", "Z", "Z"),
+    filters = listOf(
+        string(";vdgsv."),
+        // A surface view becomes a secure surface view if the cold config or the player config says so.
+        opcode(Opcode.IF_NE),
+        methodCall(
+            parameters = listOf(),
+            returnType = "Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately()),
+        methodCall(
+            parameters = listOf(),
+            returnType = "Z",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Types of views a video can be drawn on.
+ */
+internal object VideoViewTypeEnumFingerprint : Fingerprint(
+    name = "<clinit>",
+    filters = listOf(
+        string("GL_SURFACE"),
+        fieldAccess(
+            opcode = Opcode.SPUT_OBJECT,
+            location = MatchAfterWithin(10)
+        ),
+        string("DUAL_SURFACE"),
+        fieldAccess(
+            opcode = Opcode.SPUT_OBJECT,
+            location = MatchAfterWithin(10)
+        )
+    )
+)

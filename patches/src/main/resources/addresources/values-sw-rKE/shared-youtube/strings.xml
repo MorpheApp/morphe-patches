@@ -140,14 +140,16 @@ Gusa Sawa ili kufungua Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Jaribu kuwezesha: Ghushi mkondo wa video &gt; Ingia kwenye Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Kliyenti ya kawaida</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Tumia QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Tumia QuackJS badala ya yt-dlp-ejs (WebView) kwa ajili ya deobfuscation</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Ingia kwenye Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR inahitaji kuingia kando. Gusa hapa ili kuendelea</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hivi sasa umeingia kwenye Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Kuingia kwa \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' inahitaji kuingia kando. Gusa hapa ili kuendelea</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hivi sasa umeingia kwenye \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ingia kwenye Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kuingia kwenye Android VR kunaweza kurekebisha matatizo ya uchezaji kwa baadhi ya watumiaji
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ingia kwenye \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kuingia kwenye 'Android VR' kunaweza kurekebisha matatizo ya uchezaji kwa baadhi ya watumiaji
 
 Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Toka</string>
@@ -168,35 +170,36 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
 • Mipangilio yako ya Morphe haitaagiza/kuhamisha uthibitisho wa Android VR
 • Ikiwa programu hii haitatumika kwa miezi 6 basi Google itaondoa uthibitisho huu
 • Utahitajika kuingia tena ikiwa utabadilisha nywila yako ya Google au kuondoa kifaa hiki kwenye mipangilio yako ya Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kuingia kwenye Wavuti ya Simu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Ingia kwenye wavuti</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hiari: ingia kwenye tovuti ya YouTube ili ucheze video kwa kutumia akaunti yako. Gusa hapa ili kuendelea</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hivi sasa umeingia kwenye Wavuti ya Simu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hivi sasa umeingia kwenye tovuti ya YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ingia kwenye Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web hucheza video bila kuingia, au ukiwa umeingia kwenye tovuti ya YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa mteja wa wavuti</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ingia kwenye tovuti ya YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Wateja wa wavuti hucheza video wakiwa hawajaingia, au wakiwa wameingia kwenye tovuti ya YouTube
 
 • Ukiwa umeingia, video zinazohitaji akaunti zinaweza kuchezwa, kama vile video zenye vizuizi vya umri
-• Ukurasa wa kuingia kwenye Google unafunguliwa katika programu hii
+• Ukurasa wa kuingia wa Google unafunguka katika programu hii
 • Kuingia hutumiwa tu kupata video unazocheza
-• Kuingia huhifadhiwa kwenye kifaa hiki pekee
+• Kuingia huhifadhiwa tu kwenye kifaa hiki
+• Kila mteja wa wavuti ana kuingia kwake, kwa mteja wa chaguo-msingi aliyechaguliwa
 
 Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kuingia kuhifadhiwa
 
-•Mipangilio yako ya Morphe haitaingiza/kutoatoka kuingia kwa Web ya Simu
-•Ikiwa Google itakatisha kuingia, video zitachezwa bila kuingia hadi utakapoingia tena
-•Kujitoka pia kunatoa kifaa hiki kwenye tovuti ya YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Kuingia kwa Web ya Simu kumeisha muda wake, jaribu kuingia kwenye Web ya Simu tena</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Umetoka kwenye Web ya Simu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView haipatikani. Isakinishe au iwashe ili kuingia</string>
+• mipangilio yako ya Morphe haitaingiza/kutoa kuingia kwa tovuti ya YouTube
+• Ikiwa Google itakatisha kuingia, video zinachezwa bila kuingia hadi utakapoingia tena
+• Kujisajili kutoka pia kunatoa kifaa hiki kwenye tovuti ya YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Kuingia kwenye wavuti kumeisha muda wake, jaribu kuingia tena</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Umetoka kwenye tovuti ya YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' haipatikani. Isakinishe au iwezeshe ili uweze kuingia</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 haipatikani kwa muda (API imeisha muda)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Muda wa kuingia kwenye Android VR umeisha, jaribu kuingia kwenye VR tena</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Muda wa kuingia kwenye \'Android VR\' umeisha, jaribu kuingia kwenye VR tena</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 haipatikani kwa muda (hali %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 haipatikani kwa muda</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Huwezi kuingia kwenye VR, uthibitishaji wa tovuti haukukubaliwa</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Huwezi kuingia kwenye VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Umetoka kwenye Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Umetoka kwenye \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Tokeni ya kuingia kwenye VR si sahihi, jaribu kuingia tena kwenye VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Vidhibiti vya vyombo vya habari vya taarifa</string>
@@ -214,8 +217,15 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_seek_notification_media_length_invalid">Urefu wa utafutaji lazima uwe kati ya sekunde 1 na %s. Inatumia chaguo-msingi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zima itifaki ya QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Paweke kipaumbele ubora wa video</string>
+  <string name="morphe_prioritize_video_quality_summary">Inapawekea kipaumbele ubora wa juu zaidi wa video unaopatikana kuliko ufanisi wa codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ikiwa mipangilio hii imezimwa, basi video za zamani zinaweza zisioonyeshe chaguzi za ubora wa video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Zima sauti ya DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Zima sauti ya DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Inacheza sauti asilia badala ya toleo lenye kiwango cha sauti kilichopunguzwa</string>
+  <string name="morphe_disable_loudness_normalization_title">Zima usawazishaji wa sauti</string>
+  <string name="morphe_disable_loudness_normalization_summary">Inacheza sauti kubwa katika kiwango chake asilia badala ya kuipunguza hadi kiwango cha kawaida</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Lazimisha lugha asilia ya sauti</string>
   <string name="morphe_force_original_audio_summary">Daima hucheza mkondo wa sauti asilia wa video badala ya toleo lililotafsiriwa</string>
@@ -224,6 +234,32 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_skip_silence_summary">Huruka kiotomatiki vipindi vya ukimya katika sauti ya video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Urefu wa chini wa pause</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Ni mapumziko ya urefu huu au zaidi pekee ndiyo yanayofupishwa. Itaanza kutumika video inayofuata inapoanza</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Athari ya video</string>
+  <string name="morphe_video_effect_entry_none">Zima</string>
+  <string name="morphe_video_effects_custom_title">Hariri athari za video</string>
+  <string name="morphe_video_effects_custom_summary">Badilisha, pea jina, futa au ongeza athari za video. Athari hizi ni msimbo wa shader, hivyo chatbot ya AI inaweza kuandika mpya</string>
+  <string name="morphe_video_effects_custom_empty">Hakuna athari za video. Gusa Ongeza athari ili kutengeneza moja.</string>
+  <string name="morphe_video_effects_custom_add">Ongeza efekti</string>
+  <string name="morphe_video_effects_custom_restore">Rudisha mipangilio ya awali</string>
+  <string name="morphe_video_effects_custom_add_title">Efekti mpya</string>
+  <string name="morphe_video_effects_custom_edit_title">Hariri efekti</string>
+  <string name="morphe_video_effects_custom_name_hint">Jina</string>
+  <string name="morphe_video_effects_custom_name_empty">Ingiza jina la efekti</string>
+  <string name="morphe_video_effects_custom_name_exists">Efekti yenye jina hili tayari ipo</string>
+  <string name="morphe_video_effects_custom_copy_code">Nakili msimbo</string>
+  <string name="morphe_video_effects_custom_error_title">Efekti ina hitilafu</string>
+  <string name="morphe_video_effects_custom_error_message">"Video zinaonyeshwa bila athari hadi kodi itakaporekebishwa. Toa kosa hili kwa AI iliyoandika kodi:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kodi inaishia ndani ya kazi au maoni, hivyo inawezekana ilikatika wakati ikinakiliwa au kubandikwa. Maandishi yaliyobandikwa yanaweza kukatika baada ya wahusika %d.
+
+Omba AI kutoa kodi fupi zaidi, au bandika kodi katika sehemu."</string>
+  <string name="morphe_video_effects_custom_copy_error">Nakili kosa</string>
+  <string name="morphe_video_effects_custom_save_anyway">Hifadhi vyovyote</string>
+  <string name="morphe_video_effects_custom_delete">Futa</string>
+  <string name="morphe_video_effects_custom_delete_title">Futa athari?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s itafutwa.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proksi ya mtandao</string>
   <string name="morphe_proxy_screen_summary">Elekeza maombi ya mtandao yanayoungwa mkono kupitia proksi</string>
@@ -254,7 +290,7 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_replace_music_with_youtube_title">Badilisha viungo vya kushiriki kuwa youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Inabadilisha music.youtube.com kuwa youtube.com katika viungo vilivyoshirikishwa</string>
   <string name="morphe_replace_links_with_shortener_title">Badilisha viunganishi vya kushiriki kuwa youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Inalazimisha video kutumia muundo mfupi wa URL wa youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Inalazimisha video kutumia muundo wa URL mfupi wa \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Kiotomatiki</string>
@@ -266,17 +302,14 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_video_quality_default_mobile_title">Ubora wa video wa chaguo-asili kwenye mtandao wa simu</string>
   <string name="morphe_remember_video_quality_toast_mobile">Ubora wa chaguo-asili wa simu umebadilishwa kuwa: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Ubora wa chaguo-asili wa Wi-Fi umebadilishwa kuwa: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Fungua ukurasa wa kushiriki wa mfumo</string>
-  <string name="morphe_open_system_share_sheet_summary">Inafungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Kurekodi kwa Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Zimwa</string>
   <string name="morphe_debug_litho_entry_path">Njia</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Njia na bahari</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Kurekodi kwa Litho hurekodi vipengele vya mpangilio vya programu, ikiwa ni pamoja na maandishi yanayoonekana kwenye skrini kwa baadhi ya vipengele vya UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Inarekodi vipengele vya mpangilio wa programu, ikiwa ni pamoja na maandishi ya kwenye skrini kwa baadhi ya vipengele vya UI.
 
-Hii inaweza kusaidia kutambua vipengele wakati wa kuunda vichujio vya kitalaamu.
+Hii inaweza kusaidia kutambua vipengele wakati wa kuunda vichujio vya kawaida.
 
 Hata hivyo, hii pia itarekodi baadhi ya data za mtumiaji kama vile anwani yako ya IP"</string>
   <!-- Custom filter -->
@@ -343,6 +376,18 @@ Ikiwa itazimwa baadaye, inapendekezwa kufuta data ya programu ili kuzuia hitilaf
   <string name="morphe_custom_font_file_summary">Chagua faili la fonti la TTF au OTF</string>
   <string name="morphe_custom_font_file_invalid">Faili lililochaguliwa si fonti ya TTF au OTF</string>
   <string name="morphe_custom_font_failed_to_load">Fonti maalum haikuweza kupakiwa na imezimwa</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menyu za kioo</string>
+  <string name="morphe_glass_menus_screen_summary">Menyu kama kioo cha kigumu juu ya maudhui yaliyofifia nyuma yake</string>
+  <string name="morphe_glass_menus_title">Washa menyu ya kioo</string>
+  <string name="morphe_glass_menus_summary">Inaonyesha menyu na sehemu za chini kama kioo cha ukungu, huku maudhui yaliyo nyuma yake yakififishwa</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menyu huonyeshwa zikiwa hazipitiwi na mwanga wakati kiokozi cha betri kiko wazi, au ikiwa kifaa hakikubali ufifishaji</string>
+  <string name="morphe_glass_menus_opacity_title">Uwazi wa kioo</string>
+  <string name="morphe_glass_menus_opacity_summary">Kiasi ambacho menyu inafunika maudhui yaliyofifishwa (0 ni wazi, 100 ni isiyopitisha mwanga)</string>
+  <string name="morphe_glass_menus_blur_title">Fifisha</string>
+  <string name="morphe_glass_menus_blur_summary">Kiasi ambacho maudhui yaliyo nyuma ya menyu yamefifishwa</string>
+  <string name="morphe_glass_menus_dim_title">Fifisha mwanga</string>
+  <string name="morphe_glass_menus_dim_summary">Kiasi ambacho skrini inayozunguka sehemu ya chini imefifishwa</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Kutopenda hazipatikani kwa muda (API imeisha muda)</string>
@@ -380,4 +425,8 @@ ID ya video unayotazama hutumwa kwenye Return YouTube Dislike API, na likes na d
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hakuna vikomo vya kiwango cha mteja vilivyopatikana</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kikomo cha kiwango cha mteja kimefikiwa mara %s</string>
   <string name="morphe_ryd_statistics_millisecond_text">milisekunde %s</string>
+  <string name="morphe_navigation_bar_screen_title">Upau wa ugesha</string>
+  <string name="morphe_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
+  <string name="morphe_toolbar_screen_title">Zana za Juu</string>
+  <string name="morphe_toolbar_screen_summary">Chagua vipengele gani vionekane kwenye toolbar</string>
 </resources>

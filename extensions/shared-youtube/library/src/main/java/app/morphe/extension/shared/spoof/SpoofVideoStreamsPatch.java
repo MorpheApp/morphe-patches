@@ -1,6 +1,11 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ *
+ * https://github.com/MorpheApp/morphe-patches/pull/11
+ * https://github.com/MorpheApp/morphe-patches/pull/340
+ * https://github.com/MorpheApp/morphe-patches/pull/448
+ * https://github.com/MorpheApp/morphe-patches/pull/4764
+ * https://github.com/MorpheApp/morphe-patches/pull/5170
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -50,6 +55,21 @@ public class SpoofVideoStreamsPatch {
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS);
+        }
+    }
+
+    public static final class JavaScriptVariantAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS && !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK
+            );
         }
     }
 
@@ -124,6 +144,10 @@ public class SpoofVideoStreamsPatch {
          * If the response starts with a SABR error.
          */
         boolean sabrError;
+        /**
+         * If the response failed as a SABR error, and the next request built on the thread is sent without UMP.
+         */
+        boolean retryWithoutUmp;
     }
 
     private static final ThreadLocal<StreamResponse> streamResponseOnThread = ThreadLocal.withInitial(StreamResponse::new);
@@ -168,6 +192,15 @@ public class SpoofVideoStreamsPatch {
 
     public static ClientType getPreferredClient() {
         return preferredClient;
+    }
+
+    /**
+     * QuackJS deobfuscates the streams without the WebView,
+     * but the WebView still makes the PoToken and the session of the website.
+     */
+    public static boolean clientRequiresWebView(ClientType client) {
+        return client.requireJS && (client.requirePoToken || client.isWebClient()
+                || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get());
     }
 
     /**
@@ -310,6 +343,7 @@ public class SpoofVideoStreamsPatch {
         if (!SPOOF_VIDEO_STREAMS) {
             return false;
         }
+        StreamingDataRequest.setPlayerVideoId(videoId);
         final boolean useSABR = StreamingDataRequest.playerClientUsesSABR(videoId);
         Logger.printDebug(() -> "Player uses SABR: " + useSABR + " for: " + videoId);
         return !useSABR;
@@ -606,7 +640,7 @@ public class SpoofVideoStreamsPatch {
      * Called off the main thread when native code starts a media request.
      * The app makes the requests of SABR streams itself, and names itself and the device it runs on,
      * even when the streams are from a TV client. These requests name the TV client instead,
-     * and the requests of the Mobile Web client use the streaming session of the website (see {@link MwebStream}).
+     * and the requests of the web clients use the streaming session of their website (see {@link WebsiteStream}).
      *
      * @param callbacks Native callbacks of the request, which are also given the response.
      * @return The request to start.
@@ -635,8 +669,9 @@ public class SpoofVideoStreamsPatch {
                     byte[] clientInfo = SabrRequestBody.buildClientInfo(ClientType.TV_SABR, getLocaleOverride());
                     requestToStart = request.patch_withBodyAndHeaders(
                             SabrRequestBody.replaceClientInfo(body, clientInfo), request.patch_getHeaders());
-                } else if (ClientType.MWEB.clientName.equals(urlClient)) {
-                    requestToStart = MwebStream.onMediaRequest(request, uri, body, callbacks, getLocaleOverride());
+                } else if (ClientType.MWEB.clientName.equals(urlClient)
+                        || ClientType.WEB.clientName.equals(urlClient)) {
+                    requestToStart = WebsiteStream.onMediaRequest(request, uri, body, callbacks, getLocaleOverride());
                 }
             }
 
@@ -660,7 +695,7 @@ public class SpoofVideoStreamsPatch {
         }
         try {
             SabrReadaheadLimit.onResponseChunk(callbacks, chunk);
-            MwebStream.onMediaResponseChunk(callbacks, chunk);
+            WebsiteStream.onMediaResponseChunk(callbacks, chunk);
             SabrMediaLogger.onResponseChunk(callbacks, chunk);
         } catch (Exception ex) {
             Logger.printException(() -> "onMediaResponseChunk failure", ex);
@@ -742,12 +777,19 @@ public class SpoofVideoStreamsPatch {
             priorityDataSourceOpenOnThread.set(false);
             streamRangeLimitedOnThread.set(false);
             StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
+            final boolean retryWithoutUmp = response.retryWithoutUmp;
+            response.retryWithoutUmp = false;
             response.checkFirstPart = false;
             response.sabrError = false;
             if (url == null || !isPlainStreamRequest(url)) {
                 return url;
             }
 
+            if (retryWithoutUmp) {
+                // The SABR error stands for a redirect (status 302), but the response does not have the url.
+                // Without UMP the server sends a regular redirect, which the app follows.
+                url = url.replace("&ump=1", "");
+            }
             Uri uri = Uri.parse(url);
             response.checkFirstPart = "1".equals(uri.getQueryParameter("ump"));
             if (!priorityDataSource) {
@@ -845,7 +887,8 @@ public class SpoofVideoStreamsPatch {
      * Called when the response of a network request is read.
      *
      * @return If the response is a SABR error, and must fail like a response with a server error status.
-     *         The app then requests the range again from a fallback host.
+     *         The app then requests the range again, and {@link #limitPlainStreamRange(String)}
+     *         sends that request without UMP.
      */
     public static boolean isStreamSabrErrorResponse() {
         StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
@@ -854,7 +897,8 @@ public class SpoofVideoStreamsPatch {
         }
 
         response.sabrError = false;
-        Logger.printDebug(() -> "Stream response is a SABR error, failing it so the range is requested from a fallback host");
+        response.retryWithoutUmp = true;
+        Logger.printDebug(() -> "Stream response is a SABR error, failing it so the range is requested again without UMP");
         return true;
     }
 
@@ -867,7 +911,7 @@ public class SpoofVideoStreamsPatch {
                     && Utils.isNotEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
-                        + StreamingDataRequest.getLastSpoofedClientName() + ")";
+                        + StreamingDataRequest.getPlayerClientName() + ")";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "appendSpoofedClient failure", ex);

@@ -14,12 +14,12 @@ import com.google.protobuf.InvalidProtocolBufferException;
 
 import java.util.List;
 
-import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.Commands;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.LikeEndpoint.Status;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.LikeEndpoint.Status;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Native watch-page commands and entity identity, reused by native playlist buttons. */

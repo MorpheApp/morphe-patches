@@ -203,7 +203,8 @@ internal object VideoLengthFingerprint : Fingerprint(
         methodCall(returnType = "J", location = MatchAfterWithin(10)),
 
         methodCall(returnType = "Z", parameters = listOf()),
-        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(8))
+        // 21.47+ has a branch before the compare that can skip it.
+        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(30))
     )
 )
 

@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Pielāgots</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Atskaņot albuma audio trekus</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Atskaņot dziesmu albuma audio versiju vietā mūzikas video. Nepieciešams iespējot \'Spoof video streams\'</string>
+  <string name="morphe_music_play_album_songs_summary">Atskaņot albuma dziesmas mūzikas video vietā</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Iespējot audio/video pārslēgumu</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Mēģiniet pārslēgties starp audio celiņa versiju un oficiālo mūzikas video</string>
@@ -144,6 +143,8 @@ Eksporta mapi: %s"</string>
   <string name="morphe_export_download_failed">Neizdevās eksportēt lejupielādi</string>
   <string name="morphe_export_download_all_flyout_title">Eksportēt visu uz ierīci</string>
   <string name="morphe_export_download_all_started">Eksportē visas lejupielādes</string>
+  <string name="morphe_export_download_all_title">Visas lejupielādes</string>
+  <string name="morphe_export_download_playlist_started">Eksportē lejupielādētos failus</string>
   <string name="morphe_export_download_all_running">Lejupielādes jau tiek eksportētas</string>
   <string name="morphe_export_download_all_saved">Eksportēts %1$s no %2$s lejupielādēm uz %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +169,15 @@ Eksporta mapi: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Slēpt video reklāmas</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Slēpt Audio / Video pārslēgumu</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Slēpt lejupielādes pogu</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Slēpj lejupielādes pogu podkāstu šovā</string>
   <string name="morphe_music_hide_explore_shelf_title">Slēpt Explore plauktu</string>
   <string name="morphe_music_hide_filter_bar_title">Slēpt filtra joslu</string>
   <string name="morphe_music_hide_grid_shelves_title">Slēpt tīklveida plauktus</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Slēpt horizontālos plauktus</string>
+  <string name="morphe_music_hide_new_button_title">Slēpt pogu \"Jauns\"</string>
+  <string name="morphe_music_hide_new_button_summary">Slēpj pogu \"Jauns\" bibliotēkas cilnē</string>
   <string name="morphe_music_hide_list_shelves_title">Slēpt saraksta plauktus</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Dziesmu tekstu panelis</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Slēpt Kopīgošanas pogu</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Slēpt Tulkošanas pogu</string>
   <string name="morphe_music_hide_new_from_shelf_title">Slēpt plauktu \"Jaunumi no\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Slēpt atskaņošanas saraksta plauktus</string>
@@ -199,6 +200,8 @@ Eksporta mapi: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Krosfeids</string>
   <string name="morphe_music_crossfade_screen_summary">Plūstoši savienot trekus viens ar otru</string>
   <string name="morphe_music_crossfade_enabled_title">Iespējot pāreju</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Lai izmantotu crossfade, mainiet \'Spoof video streams\' \'Default client\' uz \'TV Simply\' vai \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Pārejas līkne</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Vienāda jauda</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Klusā pieturēšana</string>
@@ -232,7 +235,9 @@ Eksporta mapi: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Šai sesijai krosfeids ir apturēts</string>
   <string name="morphe_music_crossfade_resumed_toast">Krosfeids atsākts</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Video režīms nav pieejams, kamēr krosfeids ir iespējots</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR atskaņošanas laikā krosfēidings ir izslēgts</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade nedarbojas ar \'visionOS\'. Mainiet \'Spoof video streams\' \'Default client\' uz \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Pāreja nedarbojas ar šo imitācijas plūsmas klientu</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Pārraidīšanas laikā krosfēidings ir izslēgts</string>
   <string name="morphe_music_crossfade_about_how_title">Kā tas darbojas</string>
   <string name="morphe_music_crossfade_about_how_summary">"Krosfēidings pārklāj vienas dziesmas beigas ar nākamās sākumu, izmantojot jūsu norādīto ilgumu un līkni
@@ -249,9 +254,7 @@ Bloķēšanas ekrānā vai paziņojumos pārejas laikā īslaicīgi var būt red
 
 Pāreju apturēšana mūzikas video skatīšanai var izraisīt melnu ekrānu dažos video. No tā var izvairīties, apturējot pārejas pirms dziesmas izvēles"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Neatbalstīts</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Audio straumēšana vai spoguļošana (Chromecast, ekrāna vai audio spoguļošana)
-
-SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Audio translācijas vai spoguļošanas (Chromecast, ekrāna vai audio spoguļošana)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredīts</string>
   <string name="morphe_music_crossfade_about_credit_summary">Krosfeida funkciju izveidojis VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,10 +264,28 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pauzēt, ja skaņa ir izslēgta</string>
   <string name="morphe_music_pause_when_muted_summary">Pauzē atskaņošanu, ja sistēmas skaļums ir izslēgts, un atsāk to, kad skaļums tiek palielināts</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Pārraidīšanas pogu var izmantot arī straumēšanai uz Sonos un citiem UPnP skaļruņiem jūsu Wi-Fi tīklā</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Pieslēgties ierīcei</string>
+  <string name="morphe_music_sonos_cast_searching">Meklē skaļruņus jūsu Wi-Fi tīklā…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Izvēlieties skaļruni jūsu Wi-Fi tīklā</string>
+  <string name="morphe_music_sonos_cast_casting_to">Pārraide uz %s</string>
+  <string name="morphe_music_sonos_cast_connected">Savienots</string>
+  <string name="morphe_music_sonos_cast_disconnect">Atvienot</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Skaļruņi Wi-Fi tīklā</string>
+  <string name="morphe_music_sonos_cast_active">Aktīvs</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest un Google TV ierīces</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Neizdevās savienoties ar %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_summary">Ātrums, ko izmanto visiem trekiem. Pie 100% tiek izmantots lietotnes ātrums, piemēram, podkāstu atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Mainīt toni līdz ar ātrumu</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Rādīt video efekta izvēlni</string>
+  <string name="morphe_music_video_effect_menu_summary">Pievieno video efektu sūtītāja izvēlnei video atskaņošanas laikā</string>
+  <string name="morphe_music_video_effect_next_video">Efekts tiks rādīts sākotnēji nākamajā video</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Atslēgt automātiskos subtitrus</string>
   <string name="morphe_music_disable_auto_captions_summary">Sākot skatīt video, subtitrus neieslēgt automātiski, tostarp tādus subtitrus, kurus video ieslēg pēc noklusējuma</string>
@@ -279,6 +300,10 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Atspējot novirzīšanu pēc \"Nepatīk\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Novērš pāreju uz nākamo treku, kad tiek nospiesta poga \"Nepatīk\"</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Aizliegt slīdināšanu, lai mainītu izpildījumu</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Novērš pāreju uz nākamo vai iepriekšējo izpildījumu, slīdinot pa atškirsti vai pa labi atskaņotājā</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Novērš pāreju uz nākamo vai iepriekšējo izpildījumu, slīdinot pa kreisi vai pa labi minimizētā atskaņotājā</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B cilpa</string>
   <string name="morphe_music_ab_loop_summary">Ilgi nospiediet meklēšanas joslu, lai iestatītu cilpas sākumu, vēlreiz, lai iestatītu cilpas beigas, un vēlreiz, lai dzēstu cilpu</string>
@@ -329,15 +354,6 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_playlist_tags_rename">Pārdēvēt</string>
   <string name="morphe_music_playlist_tags_delete">Dzēst</string>
   <string name="morphe_music_playlist_tags_hidden">Slēpts</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Slēpt Cast pogu</string>
-  <string name="morphe_music_hide_history_button_title">Slēpt Vēstures pogu</string>
-  <string name="morphe_music_hide_notification_button_title">Slēpt Paziņojumu pogu</string>
-  <string name="morphe_music_hide_search_button_title">Slēpt Meklēšanas pogu</string>
-  <string name="morphe_music_hide_voice_search_button_title">Slēpt balss meklēšanas pogu</string>
-  <string name="morphe_music_hide_sound_search_button_title">Slēpt skaņas meklēšanas pogu</string>
-  <string name="morphe_music_hide_library_new_button_title">Slēpt pogu \"Jauns\"</string>
-  <string name="morphe_music_hide_library_new_button_summary">Slēpj pogu \"Jauns\" bibliotēkas cilnē</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Darbības pogas</string>
   <string name="morphe_music_action_buttons_screen_summary">Izvēlieties, kuras darbības pogas rādīt zem spēlētāja</string>
@@ -409,22 +425,20 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Piespiedu portreta orientācija</string>
   <string name="morphe_music_force_portrait_orientation_summary">Saglabā lietotni portreta orientācijā, kad ierīce tiek pagriezta</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Mainīt miniatskaņotāja krāsu</string>
+  <string name="morphe_music_change_miniplayer_color_title">Mainīt krāsu</string>
   <string name="morphe_music_change_miniplayer_color_summary">Saskaņo miniatskaņotāja krāsu ar pilnas ekrāna atskaņotāju</string>
   <string name="morphe_music_change_navigation_bar_color_title">Mainīt navigācijas joslas krāsu</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Saskaņo navigācijas joslas krāsu ar pilnekrāna atskaņotāju</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Rādīt pogu \"Nākamais\" miniatskaņotājā</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Rādīt pogu \"Iepriekšējais\" miniatskaņotājā</string>
+  <string name="morphe_music_miniplayer_next_button_title">Rādīt nākamo pogu</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Rādīt iepriekšējo pogu</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Iespējot piespiedu miniatskaņotāju</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Novērš atskaņotāja automātisku paplašināšanos uz pilnu ekrānu, kad sākas jauns izpildījums</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Iespējot miniplayera aizvēršanu ar slīdumu</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Iespējot pārvilkšanu, lai aizvērtu</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Ļauj aizvērt miniatskaņotāju, velkot to uz leju</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigācijas josla</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Slēpt pogu Sākums</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -435,6 +449,9 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Slēpt pogu Bibliotēka</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Slēpt pogu Uzlabot</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Rādīt iestatījumu pogu</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Iestatīmju pogas darbība</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Ja šī opcija ir iespējota, pieskaršanās atvērs Morphe iestatījumus, bet ilgspiešana atvērs YouTube Music iestatījumus; izslēdziet, lai apmaiņātu tos</string>
   <string name="morphe_music_hide_navigation_bar_title">Slēpt navigācijas joslu</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Slēpt navigācijas pogu etiķetes</string>
   <string name="morphe_music_navigation_bar_glass_title">Ienablekt stklaina navigācijas joslu</string>
@@ -457,7 +474,7 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Slēpj apaļo izcelumu aiz atlasētās stikla navigācijas joslas pogas</string>
   <string name="morphe_music_miniplayer_screen_title">Miniatūrais atskaņotājs</string>
   <string name="morphe_music_miniplayer_screen_summary">Mainīt miniatskaņotāja stilu, pogas un žestus</string>
-  <string name="morphe_music_miniplayer_glass_title">Iespējot stikla miniatskaņotāju</string>
+  <string name="morphe_music_miniplayer_glass_title">Iespējot stikla efektu</string>
   <string name="morphe_music_miniplayer_glass_summary">Rāda peldošo miniatskaņotāju kā apaļu, puscaurspīdīgu stikla karti</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stikla miniatskaņotāja stils</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Saregulējiet stikla miniatskaņotāja stūru radiusu, vārsta atstarumu, malas spilgtumu un caurspīdīgumu ar priekšskatu</string>
@@ -465,11 +482,8 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Vārsta atstarums</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Malas spilgtums</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Caurspīdīgums</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Stikla izpludinājums</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Cik stipri ir izpludināta lapa aiz stikla miniatskaņotāja (Android 14 un jaunākajās versijās). Ja vērtība ir 0, lapa ir redzama skaidri, bet versijās pirms Android 14 lapa ir pārsegta</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Gaismazs stikls</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Sapoša stikla miniatskaņotāju baltā krāsā tā vietā par tumšā, lai stikls būtu gaišāks un skaidrāks</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albuma vārsta krāsainiņš</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Sapoša stikla miniatskaņotāju ar atskaņātās dziesmas albuma vārsta krāsu</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Griezejošais vārsts</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Padara stikla miniatskaņotāja vārstu apaļMRP vai apaļu un groza to kā platplāti, kamēr atskaņā dziesma</string>
@@ -480,6 +494,15 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Paraugi</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Izpētīt</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotēka</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Slēpt aktivitātes pogu</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Slēpt pogu \"Prasīt müzikai\"</string>
+  <string name="morphe_music_hide_cast_button_title">Slēpt Cast pogu</string>
+  <string name="morphe_music_hide_history_button_title">Slēpt Vēstures pogu</string>
+  <string name="morphe_music_hide_search_button_title">Slēpt Meklēšanas pogu</string>
+  <string name="morphe_music_hide_voice_search_button_title">Slēpt pogu \"Balss meklēšana\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Slēpt pogu \"Skaņas meklēšana\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nav pieslēdzies. Pieskarieties, lai konfigurētu</string>
   <string name="morphe_music_scrobbling_log_out">Iziet</string>
@@ -583,6 +606,9 @@ Lai nodrošinātu, ka scrobbling tiek sinhronizēts fona atskaņošanas laikā, 
   <string name="morphe_music_soundproof_about_summary">"Mākslinieku dati tiek ņemti no SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) un lejupielādēti vienreiz dienā. Izvēloties izlaist, nekas par jūsu atskaņotajiem gabaliem netiek nosūtīts. Atverot SoundProof lapu, pašreizējā mākslinieka vārds tiek nosūtīts uz SoundProof serveri, lai rādītu jaunākās balsis un ļautu balsot. Serveris atšķir balsotājus pēc IP adreses, tāpēc jūsu balss citā tīklā var izskatīties citādi.
 
 Datubāze ir licencēta saskaņā ar ODC Open Database License (ODbL). Soul Over AI (autors xoundbyte) ieraksti ir licencēti saskaņā ar CC BY 4.0. Nav saistīts ar SoundProof vai Soul Over AI un nav to apstiprināts."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animētais mākslas darbs</string>
+  <string name="morphe_music_apple_music_artwork_summary">Atskaņāšanas ierīcē rāda Apple Music animēto albuma mākslas darbu, ja albumam tāds ir. Katras dziesmas nosaukums, izpildītājs un albums tiek nosūtīti Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Dziesmu teksti šai ierīces failam nav pieejami.</string>
   <string name="morphe_music_lyrics_enabled_title">Izmantot trešo pušu dziesmu tekstus</string>
@@ -635,6 +661,25 @@ Pirmā kolonna ir vārds, otrā - tā izruna; papildu kolonnas un rindas bez tab
   <string name="morphe_music_lyrics_clear_cache_title">Notīrīt saglabātos dziesmu tekstus</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Dzēst %s MB tekstu, kas saglabāti šajā ierīcē</string>
   <string name="morphe_music_lyrics_clear_cache_done">Notīrīts %s MB</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Aprēķina kešatmiņas izmēru…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Dziesmu tekstu kešatmiņa</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Notīrīt dziesmu tekstu kešatmiņu</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d dziesmas)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Tulkojuma kešatmiņa</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Notīrīt tulkojuma kešatmiņu</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d tulkojumi)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Transliterācijas kešatmiņa</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Notīrīt transliterācijas kešatmiņu</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterācijas)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Kopējā kešatmiņas izmantošana</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Notīrīt visas kešatmiņas</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d elementi)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Notīrīt</string>
+  <string name="morphe_music_lyrics_cache_close_action">Aizvērt</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Dzēst %1$s MB (%2$d dziesmām) tekstu no šīs ierīces kešatrakstiem?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Dzēst %1$s MB (%2$d tulkojumiem) no šīs ierīces kešatrakstiem?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Dzēst %1$s MB (%2$d transliterācijām) no šīs ierīces kešatrakstiem?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Dzēst %1$s MB (%2$d elementiem) visu tekstu no šīs ierīces kešatrakstiem?</string>
   <string name="morphe_music_token_dialog_get_token">Iegūt marķieri</string>
   <string name="morphe_music_apple_music_token_title">Apple Music mediju lietotāja marķeris</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Ielīmēt \"media-user-token\" sīkfailu no music.apple.com
@@ -690,8 +735,11 @@ Obligātie sīkfaili: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_tap_to_seek_summary">Pieskarieties rindai, lai pārvirzītos uz šo brīdi dziesmā, vai ilgāk nospiediet to, lai nokopētu vārdu zem pirksta vai visu rindu, ja nospiešana nav vārda vietā. Izslēdzot šo funkciju, abi žesti tiks atslēgti</string>
   <string name="morphe_music_lyrics_show_section_title">Rādīt sadaļas tagiem</string>
   <string name="morphe_music_lyrics_show_section_summary">Atzīmēt katru jaunu dziesmas teksta sadaļu ar mazu tagu, piemēram, Pants vai Piedziedājums</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Rādīt kopēšanas pogu</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Klahiniet, lai kopētu oriģinālo tekstu kā vienkāršu tekstu; ilgi nospiediet, lai saglabātu neapstrādāto teksta avota failu un konvertētu TTML failu Lejupielādēs</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Rādīt pogu \"Kopēt / Kopīgot\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Rādīt pogu \"Kopēt\" vai \"Kopīgot\" tekstu paneļa rīkjoslā</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Kopēšanas pogas režīms</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Kopēšanas režīms (pieskarieties, lai kopētu, gaiši pieskarieties, lai saglabātu)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Kopīšanas režīms (pieskarieties, lai izvēlētos 1-5 rindas, gaiši pieskarieties, lai kopētu vai saglabātu)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Rādīt tulkošanas pogu</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Nospiediet, lai pārslēgtu tulkošanu; ilgi nospiediet, lai rādītu tikai tulkošanu. Tiek izmantoti iespējotie tulkošanas pakalpojumu sniedzēji norādītajā secībā</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Rādīt romanizācijas vai transliterācijas pogu</string>
@@ -705,7 +753,48 @@ Obligātie sīkfaili: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Lasīšana gatava (%s ieraksti)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Lejupielāde neizdevās - izslēdziet un ieslēdziet šo iespēju, lai mēģinātu vēlreiz</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Bezsaistes vārdnīca</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japāņu valoda (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japāņu</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — ātrs morfoloģiskais analizators &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — pilns japāņu vārdu vārdnīca</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Prioritāte &amp; rezervēšanas secība</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji prioritāte (SudachiDict rezervē)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict prioritāte (Kuromoji fallback)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Pielāgots dziesmu teksta fonts</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Noklusējuma sistēmas fonts (pieskarieties, lai augšupielādētu .ttf vai .otf fonta failu)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Aktīvais fonts: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Augšupielādējiet .ttf vai .otf fonta failu (piemēram, SF Pro Bold, Inter Bold vai Inter ExtraBold) no jūsu ierīces pastas, lai izmantotu to dziesmu teksta skatījumā.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Augšupielādēt fontu</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Atiestatīt uz noklusējumu</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Pielāgotais dziesmu teksta fonts piemērs: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Atgriezies uz noklusējuma dziesmu teksta fontu</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Nederīgs vai neatbalstīts fonta fails (nepieciešams .ttf vai .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Kopīgot dziesmas vārdus</string>
+  <string name="morphe_music_lyrics_share_button">Kopīgot</string>
+  <string name="morphe_music_lyrics_copy">Kopēt</string>
+  <string name="morphe_music_lyrics_share_options_title">Dziesmas vārdu darbības</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Kopēt dziesmas vārdus kā parstu tekstu</string>
+  <string name="morphe_music_lyrics_save_file_option">Saglabāt dziesmas vārdus &amp; TTML Lelejupē</string>
+  <string name="morphe_music_lyrics_share_cancel">Atcelt</string>
+  <string name="morphe_music_lyrics_share_select_hint">Kopīgošanai nospiediet 1–5 rindām</string>
+  <string name="morphe_music_lyrics_share_max_lines">Var izvēlētiesRite maksimum 5 rindas</string>
+  <string name="morphe_music_lyrics_share_failed">Neizdevās izveidot dziesmas vārdu kopīgošanas karti</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Izplūme</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Vāks</string>
+  <string name="morphe_music_lyrics_share_bg_color">Krāsa</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Foto</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music logotips</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romadži</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Tulkot</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Fona vokāli</string>
+  <string name="morphe_music_lyrics_share_custom_color">Pielāgota krāsa</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Neizdevās ielādēt atlasīto attēlu</string>
+  <string name="morphe_music_lyrics_share_card_cta">Kopīgot karti</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Kopēt tekstu</string>
+  <string name="morphe_music_lyrics_share_back">Atpakaļ uz dziesmu izvēli</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Ielādē foto...</string>
+  <string name="morphe_music_lyrics_share_preparing">Veido karti...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Krāsas paraugs %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Nezināms trekks</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Ķīnas un kantonešu rakstzīmes (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Ķīnas vārdi (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieķu, slāvu kirillu (ieskaitot krievu, ukraiņu, bulgāru, serbu, baltkrievu, maķedoniešu), gruzīnu, armēņu, ebreju, arābu, amharu un sīriešu transliterācija (CLDR, ~0,5 MB)</string>

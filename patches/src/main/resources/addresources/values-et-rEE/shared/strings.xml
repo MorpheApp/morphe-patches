@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Seaded</string>
   <string name="morphe_settings_confirm_user_dialog_title">Kas olete kindel, et soovite jätkata?</string>
   <string name="morphe_settings_save">Salvesta</string>
   <string name="morphe_settings_reset">Lähtesta</string>
@@ -87,7 +86,14 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage mo
   <string name="morphe_settings_about_links_translations">Tõlked</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ajakohane</string>
   <string name="morphe_settings_about_contributors">Kaastöötajad</string>
-  <string name="morphe_settings_about_contributors_period">Viimased 12 kuud</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Kogu aeg</string>
+  <string name="morphe_settings_about_contributors_6_months">6 kuud</string>
+  <string name="morphe_settings_about_contributors_3_months">3 kuud</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Ajaperiood</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s kasutajat</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Toetajad</string>
   <string name="morphe_settings_about_supporters_summary">Toetajad Open Collective\'is</string>
@@ -222,6 +228,9 @@ Kui aku optimeerimist ei muudeta, võib esineda järgmist:
 • Rakendus võib juhuslikult sulguda
 • Teavitused ei pruugi töötada
 • Taustal esitamine ei pruugi töötada"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ava süsteemi jagamisakend</string>
+  <string name="morphe_open_system_share_sheet_summary">Sisu jagamisel avatakse rakenduse sise jagamise ekraani asemel süsteemi jagamise ekraan</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Rakenduse linkide haldamine</string>
   <string name="morphe_link_handling_summary">Konfigureeri linkide avamine selles rakenduses</string>

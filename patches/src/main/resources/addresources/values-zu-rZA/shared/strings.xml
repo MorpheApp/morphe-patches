@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Izilungiselelo</string>
   <string name="morphe_settings_confirm_user_dialog_title">Uyaqiniseka yini ukuthi ufuna ukuqhubeka?</string>
   <string name="morphe_settings_save">Gcina</string>
   <string name="morphe_settings_reset">Buyisela emuva</string>
@@ -87,7 +86,14 @@ Ukuze uhumushe izilimi ezintsha noma uthuthukise izihumushi ezikhona, vusela i-m
   <string name="morphe_settings_about_links_translations">Izihumushi</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Sekuvuselelwe</string>
   <string name="morphe_settings_about_contributors">Abanikela</string>
-  <string name="morphe_settings_about_contributors_period">Izinyanga ezingu-12 zokugcina</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Isikhathi sonke</string>
+  <string name="morphe_settings_about_contributors_6_months">izinyanga ezingu-6</string>
+  <string name="morphe_settings_about_contributors_3_months">izinyanga ezingu-3</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Isikhathi</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">abasebenzisi abangu-%s</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Abasekeli</string>
   <string name="morphe_settings_about_supporters_summary">Abaxhasi ku-Open Collective</string>
@@ -222,6 +228,9 @@ Uma ukuthuthukiswa kwebhathri kungashintshwa ungase uhlangabezane nalokhu:
 • I-App ingavala ngokuzenzela
 • Izaziso zingase zingasebenzi
 • Ukudlala ngemuva kungase kungasebenzi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Vula i-share sheet yesistimu</string>
+  <string name="morphe_open_system_share_sheet_summary">Ivula ikhasi lokwabelana leh যাবu kunaleli lase-app lapho wabelana okuqukethwe</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Ukuphathwa kwezingxenye ze-App</string>
   <string name="morphe_link_handling_summary">Lungisa ama-link ukuba avulwe kule app</string>

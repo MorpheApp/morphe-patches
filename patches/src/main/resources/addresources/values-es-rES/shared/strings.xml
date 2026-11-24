@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Ajustes</string>
   <string name="morphe_settings_confirm_user_dialog_title">¿Realmente quieres continuar?</string>
   <string name="morphe_settings_save">Guardar</string>
   <string name="morphe_settings_reset">Restablecer</string>
@@ -87,7 +86,14 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_links_translations">Traducciones</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Actualizado</string>
   <string name="morphe_settings_about_contributors">Colaboradores</string>
-  <string name="morphe_settings_about_contributors_period">Últimos 12 meses</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Todo el tiempo</string>
+  <string name="morphe_settings_about_contributors_6_months">6 meses</string>
+  <string name="morphe_settings_about_contributors_3_months">3 meses</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Periodo de tiempo</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s usuarios</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Colaboradores</string>
   <string name="morphe_settings_about_supporters_summary">Patrocinadores en Open Collective</string>
@@ -222,6 +228,9 @@ Si no se modifican las optimizaciones de la batería, es posible que se produzca
 • La aplicación puede cerrarse de forma aleatoria
 • Es posible que las notificaciones no funcionen
 • Es posible que la reproducción en segundo plano no funcione"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Abrir la hoja de compartir del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Abre la hoja de compartir del sistema en lugar de la de la aplicación al compartir contenido</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Manejo de enlaces de la aplicación</string>
   <string name="morphe_link_handling_summary">Configura enlaces para que se abran en esta aplicación</string>

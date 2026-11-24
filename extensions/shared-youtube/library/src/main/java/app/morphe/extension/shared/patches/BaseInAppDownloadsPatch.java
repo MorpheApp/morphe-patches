@@ -9,8 +9,11 @@
 
 package app.morphe.extension.shared.patches;
 
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
+
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
 import java.util.ArrayList;
@@ -90,7 +93,11 @@ public class BaseInAppDownloadsPatch {
     protected static final int OFFLINE_POLICY_LIFETIME_SECONDS = (int) TimeUnit.DAYS.toSeconds(365);
 
     /**
-     * Opus audio is not saved, the other audio and all video formats are.
+     * MIME prefix of the WebM audio formats, which contain Opus.
+     * <p>
+     * YouTube does not save them and keeps the AAC audio. The app selects the audio with an itag
+     * whitelist from the player response, and the download client responses only whitelist the AAC
+     * itags. See {@link #savableStreamingData} for how YouTube Music saves Opus audio instead.
      */
     protected static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
 
@@ -555,10 +562,12 @@ public class BaseInAppDownloadsPatch {
      * If the server declines to save the video, the streams are fetched with another client.
      *
      * @param playerResponse Player response proto of the video.
+     * @param saveStoryboards If the saved video needs the storyboards, which the seekbar thumbnails are made of.
      * @return A player response that can be saved, or null to keep the original.
      */
     @Nullable
-    public static byte[] replaceDeclinedOfflinePlayerResponse(@Nullable Object playerResponse) {
+    public static byte[] replaceDeclinedOfflinePlayerResponse(@Nullable Object playerResponse,
+                                                               boolean saveStoryboards) {
         try {
             if (!isInAppDownloadMode()
                     || !(playerResponse instanceof MessageLite message)) {
@@ -603,6 +612,14 @@ public class BaseInAppDownloadsPatch {
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
             if (builder.hasCaptions()) {
                 builder.setCaptions(srv3Captions(builder.getCaptions()));
+            }
+
+            // Without storyboards the saved video has no seekbar thumbnails, so they are taken from another client.
+            if (saveStoryboards && !builder.hasStoryboards()) {
+                ByteString storyboards = fetchStoryboards(videoId, streams.client());
+                if (storyboards != null) {
+                    builder.setStoryboards(storyboards);
+                }
             }
 
             // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable,
@@ -679,6 +696,38 @@ public class BaseInAppDownloadsPatch {
         if (playerResponseModel == null) {
             Logger.printException(() -> "Could not create the player response model of the replaced player response");
         }
+    }
+
+    /**
+     * @return Storyboards of the first download client that answers with them, other than the client
+     *         whose streams are saved, or null if none does.
+     */
+    @Nullable
+    private static ByteString fetchStoryboards(String videoId, ClientType savedClient) {
+        for (ClientType client : DOWNLOAD_CLIENTS) {
+            if (client == savedClient) {
+                continue;
+            }
+
+            try {
+                StreamingDataRequest.StreamData streams = StreamingDataRequest.fetchRequestForDownload(
+                        videoId, List.of(client), client).getStream();
+                if (streams == null) {
+                    continue;
+                }
+
+                OfflinePlayerResponse response = OfflinePlayerResponse.parseFrom(streams.streamingData());
+                if (response.hasStoryboards()) {
+                    Logger.printDebug(() -> "Using the storyboards of: " + client + " for: " + videoId);
+                    return response.getStoryboards();
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "fetchStoryboards failure: " + client, ex);
+            }
+        }
+
+        Logger.printDebug(() -> "No storyboards for: " + videoId);
+        return null;
     }
 
     /**
@@ -832,14 +881,46 @@ public class BaseInAppDownloadsPatch {
         return count;
     }
 
+    /**
+     * Marks the formats the app can save.
+     * <p>
+     * YouTube Music saves songs with Opus audio like the stock app. When the response has WebM
+     * audio, the AAC formats are removed so the app falls back to the Opus format of the chosen
+     * download quality. Responses without WebM audio keep their AAC formats.
+     */
     protected static OfflineStreamingData savableStreamingData(OfflineStreamingData streamingData) {
         OfflineStreamingData.Builder builder = streamingData.toBuilder();
-        for (int i = 0, count = builder.getAdaptiveFormatsCount(); i < count; i++) {
+
+        boolean saveOpusAudio = false;
+        if (IS_YOUTUBE_MUSIC) {
+            for (OfflineStreamFormat format : builder.getAdaptiveFormatsList()) {
+                if (format.getMimeType().startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
+                    saveOpusAudio = true;
+                    break;
+                }
+            }
+        }
+
+        int removedCount = 0;
+        for (int i = builder.getAdaptiveFormatsCount() - 1; i >= 0; i--) {
             OfflineStreamFormat format = builder.getAdaptiveFormats(i);
             String mimeType = format.getMimeType();
-            if (!mimeType.isEmpty() && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
+            if (saveOpusAudio && mimeType.startsWith("audio/")
+                    && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
+                builder.removeAdaptiveFormats(i);
+                removedCount++;
+                continue;
+            }
+            if (!mimeType.isEmpty()
+                    && (saveOpusAudio || !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX))) {
                 builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(true));
             }
+        }
+
+        if (removedCount > 0) {
+            final int removedCountFinal = removedCount;
+            Logger.printDebug(() -> "Saving Opus audio, removed: " + removedCountFinal
+                    + " non-WebM audio formats");
         }
         return builder.build();
     }

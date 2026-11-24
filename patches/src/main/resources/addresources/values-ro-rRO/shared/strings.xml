@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Setări</string>
   <string name="morphe_settings_confirm_user_dialog_title">Sigur doriți să continuați?</string>
   <string name="morphe_settings_save">Salvați</string>
   <string name="morphe_settings_reset">Resetare</string>
@@ -87,7 +86,13 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_links_translations">Traduceri</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Actualizat</string>
   <string name="morphe_settings_about_contributors">Contribuitori</string>
-  <string name="morphe_settings_about_contributors_period">Ultimele 12 luni</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Tot timpul</string>
+  <string name="morphe_settings_about_contributors_6_months">6 luni</string>
+  <string name="morphe_settings_about_contributors_3_months">3 luni</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Interval de timp</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Susținători</string>
   <string name="morphe_settings_about_supporters_summary">Susținători pe Open Collective</string>
@@ -222,6 +227,9 @@ Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următo
 • Aplicația se poate închide aleatoriu
 • Notificările pot să nu funcționeze
 • Redarea în fundal poate să nu funcționeze"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Deschide panoul de partajare al sistemului</string>
+  <string name="morphe_open_system_share_sheet_summary">Deschide foaia de partajare a sistemului în loc de cea din aplicație când partajați conținut</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestionarea link-urilor aplicației</string>
   <string name="morphe_link_handling_summary">Configurează legăturile pentru a se deschide în această aplicaţie</string>

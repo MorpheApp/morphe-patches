@@ -149,7 +149,7 @@ public class CldrTransformsStoreTest {
     @Test
     public void stripMarksRemovesModifierLetters() throws Exception {
         // U+02B0 is MODIFIER LETTER SMALL H, not a regular letter
-        assertEquals("a", callStripMarks("a\u02B0"));
+        assertEquals("a", callStripMarks("aʰ"));
     }
 
     @Test
@@ -273,7 +273,8 @@ public class CldrTransformsStoreTest {
     private static int callArrow(String line) throws Exception {
         Method method = CldrTransformsStore.class.getDeclaredMethod("arrow", String.class);
         method.setAccessible(true);
-        return (int) method.invoke(null, line);
+        Object result = method.invoke(null, line);
+        return result instanceof Integer ? (Integer) result : -1;
     }
 
     private static String callLeft(String line, int arrow) throws Exception {
@@ -285,7 +286,8 @@ public class CldrTransformsStoreTest {
     private static int callVariableName(String line) throws Exception {
         Method method = CldrTransformsStore.class.getDeclaredMethod("variableName", String.class);
         method.setAccessible(true);
-        return (int) method.invoke(null, line);
+        Object result = method.invoke(null, line);
+        return result instanceof Integer ? (Integer) result : -1;
     }
 
     private static String callStripMarks(String value) throws Exception {
@@ -306,6 +308,7 @@ public class CldrTransformsStoreTest {
         return (String) method.invoke(null, side, variables);
     }
 
+    @SuppressWarnings("unchecked")
     private static Map<String, String> callParseRules(String content, String script) throws Exception {
         byte[] bytes = content.getBytes(StandardCharsets.UTF_8);
         Method method = CldrTransformsStore.class.getDeclaredMethod("parseRules", byte[].class, String.class);

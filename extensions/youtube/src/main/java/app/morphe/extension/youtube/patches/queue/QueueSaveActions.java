@@ -18,12 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.AddToPlaylistEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.CreatePlaylistDialogEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.PlaylistEditAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveResponse;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.AddToPlaylistEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.CreatePlaylistDialogEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistEditAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveResponse;
 
 /** An owned command transfers its immutable selection to the native picker's saved arguments. */
 public final class QueueSaveActions {

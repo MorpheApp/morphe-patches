@@ -64,6 +64,32 @@ public final class LocalRomanizer {
     }
 
     /**
+     * Reads every {@code [starts[i], ends[i])} slot in {@code line} using a single Kuromoji
+     * morphological pass when Japanese Kuromoji is active, returning {@code null} to let the caller
+     * fall back per-syllable otherwise.
+     */
+    @Nullable
+    public static String[] syllableReadingsInContext(String line, int[] starts, int[] ends) {
+        if (line == null || line.isEmpty() || starts == null || ends == null
+                || starts.length != ends.length || starts.length == 0) {
+            return null;
+        }
+        if (ScriptDetector.detect(line) != Script.JAPANESE && !RubyGenerator.isJapaneseDictionaryReady()) {
+            return null;
+        }
+        if (RimeDictionaryStore.isActive()) {
+            return null;
+        }
+        if (RubyGenerator.useKuromojiEngine()) {
+            KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+            if (tokenizer != null) {
+                return KuromojiRomanizer.syllableReadingsForSlots(line, starts, ends, tokenizer);
+            }
+        }
+        return null;
+    }
+
+    /**
      * The reading of one syllable, or null when it is not read here.
      *
      * @param line The line the syllable opens, so a Korean coda reads the way the line reads it.
@@ -72,25 +98,61 @@ public final class LocalRomanizer {
     public static String syllableReading(String syllable, @Nullable String line) {
         if (syllable == null || syllable.isEmpty()) return null;
         Script script = ScriptDetector.detect(syllable);
-        if (script == Script.HAN && line != null && ScriptDetector.detect(line) == Script.JAPANESE) {
+        if (script == Script.HAN && line != null
+                && (ScriptDetector.detect(line) == Script.JAPANESE
+                || (!RimeDictionaryStore.isActive() && !PinyinDictionaryStore.isReady()
+                && RubyGenerator.isJapaneseDictionaryReady()))) {
             script = Script.JAPANESE;
         }
+        boolean kuromojiFirst = RubyGenerator.useKuromojiEngine();
+        if (script == Script.JAPANESE && kuromojiFirst) {
+            KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+            if (tokenizer != null) {
+                String kuromojiReading = KuromojiRomanizer.syllableReadingInContext(syllable, line, tokenizer);
+                if (kuromojiReading != null && !ScriptDetector.contains(kuromojiReading, Character.UnicodeScript.HAN)) {
+                    return kuromojiReading;
+                }
+            }
+        }
+        if (script == Script.JAPANESE && line != null && JapaneseDictionaryStore.isReady()) {
+            String contextual = contextualSudachiSyllableReading(syllable, line);
+            if (contextual != null && !ScriptDetector.contains(contextual, Character.UnicodeScript.HAN)) {
+                return contextual;
+            }
+        }
         if (script == null || script == Script.OTHER) return null;
-        final String reading = readAs(syllable, script, RimeDictStore.isActive(), line).text().trim();
-        return reading.isEmpty() || reading.equals(syllable) ? null : reading;
+        final String reading = readAs(syllable, script, RimeDictionaryStore.isActive(), line).text().trim();
+        if (!reading.isEmpty() && !reading.equals(syllable) && !ScriptDetector.contains(reading, Character.UnicodeScript.HAN)) {
+            return reading;
+        }
+        if (script == Script.JAPANESE && !kuromojiFirst) {
+            KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+            if (tokenizer != null) {
+                String kuromojiReading = KuromojiRomanizer.syllableReadingInContext(syllable, line, tokenizer);
+                if (kuromojiReading != null && !ScriptDetector.contains(kuromojiReading, Character.UnicodeScript.HAN)) {
+                    return kuromojiReading;
+                }
+            }
+        }
+        return null;
     }
 
     @Nullable
     private static Result romanize(List<String> lines, boolean rime) {
         if (lines == null || lines.isEmpty()) return null;
-        if (ScriptDetector.detect(lines) == Script.OTHER) return null;
+        final Script songScript = ScriptDetector.detect(lines);
+        if (songScript == Script.OTHER) return null;
 
         boolean changed = false;
         String dictionary = null;
         List<String> result = new ArrayList<>(lines.size());
 
         for (String line : lines) {
-            final Read read = readAs(line, ScriptDetector.detect(line), rime);
+            Script lineScript = ScriptDetector.detect(line);
+            if (!rime && songScript == Script.JAPANESE && lineScript == Script.HAN) {
+                lineScript = Script.JAPANESE;
+            }
+            final Read read = readAs(line, lineScript, rime);
             if (read.dictionary() != null) dictionary = read.dictionary();
             if (!read.text().equals(line)) changed = true;
             result.add(read.text());
@@ -110,16 +172,42 @@ public final class LocalRomanizer {
                                               List<LyricsLine> wholeLine) {
         if (lines == null || wholeLine == null || lines.size() != wholeLine.size()) return null;
 
+        List<String> rawTexts = new ArrayList<>(lines.size());
+        for (LyricsLine l : lines) {
+            rawTexts.add(l.text() != null ? l.text() : "");
+        }
+        final Script songScript = ScriptDetector.detect(rawTexts);
+        final boolean rime = RimeDictionaryStore.isActive();
+
         List<LyricsLine> result = new ArrayList<>(lines.size());
         boolean aligned = false;
 
         for (int i = 0; i < lines.size(); i++) {
             final LyricsLine line = lines.get(i);
-            // Kana is what marks a line Japanese; a word of kanji alone says only Han, and would
-            // then be looked up in the wrong dictionary.
-            final Script script = ScriptDetector.detect(line.text());
-            List<Word> read = exactReadings(line.words(), script, RimeDictStore.isActive(),
-                    line.text());
+            // Kana marks a line Japanese; a pure-kanji line inside a Japanese song is Japanese too.
+            Script script = ScriptDetector.detect(line.text());
+            if (!rime && songScript == Script.JAPANESE && script == Script.HAN) {
+                script = Script.JAPANESE;
+            }
+            List<Word> read = null;
+            if (script == Script.JAPANESE && RubyGenerator.useKuromojiEngine()) {
+                KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+                if (tokenizer != null) {
+                    read = KuromojiRomanizer.alignLineWords(line.text(), line.words(), tokenizer);
+                }
+                if (read != null && JapaneseDictionaryStore.isReady()) {
+                    read = fillMissingJapaneseWordReadings(read, line.text(), true);
+                }
+            }
+            if (read == null && script == Script.JAPANESE && !RubyGenerator.useKuromojiEngine()) {
+                read = exactReadings(line.words(), script, rime, line.text());
+                if (read != null && KuromojiDictStore.tokenizer() != null) {
+                    read = fillMissingJapaneseWordReadings(read, line.text(), false);
+                }
+            }
+            if (read == null) {
+                read = exactReadings(line.words(), script, rime, line.text());
+            }
             if (read == null) {
                 read = splitReading(line, wholeLine.get(i).text());
             }
@@ -137,6 +225,44 @@ public final class LocalRomanizer {
         return aligned ? result : null;
     }
 
+    private static List<Word> fillMissingJapaneseWordReadings(
+            List<Word> words, @Nullable String line, boolean sudachiFallback) {
+        if (line == null || line.isEmpty()) {
+            return words;
+        }
+        List<Word> updated = null;
+        KuromojiTokenizer fallbackTok = sudachiFallback ? null : KuromojiDictStore.tokenizer();
+        for (int i = 0; i < words.size(); i++) {
+            Word w = words.get(i);
+            String text = w.text() != null ? w.text().trim() : "";
+            if (!ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
+                continue;
+            }
+            String existing = w.romaji() != null ? w.romaji().trim() : "";
+            if (!existing.isEmpty() && !ScriptDetector.contains(existing, Character.UnicodeScript.HAN)) {
+                continue;
+            }
+            String fallback = null;
+            if (sudachiFallback) {
+                fallback = contextualSudachiSyllableReading(text, line);
+                if (fallback == null) {
+                    String direct = japanese(text);
+                    if (!direct.isEmpty() && !ScriptDetector.contains(direct, Character.UnicodeScript.HAN)) {
+                        fallback = direct;
+                    }
+                }
+            } else if (fallbackTok != null) {
+                fallback = KuromojiRomanizer.syllableReadingInContext(text, line, fallbackTok);
+            }
+            if (fallback != null && !fallback.trim().isEmpty()) {
+                if (updated == null) updated = new ArrayList<>(words);
+                String outRom = w.endsWithSpace() ? (fallback.trim() + " ") : fallback.trim();
+                updated.set(i, new Word(w.startMs(), w.endMs(), w.text(), outRom, w.endsWithSpace(), w.ruby()));
+            }
+        }
+        return updated != null ? updated : words;
+    }
+
     /**
      * Null when not one word could be read, leaving the line to {@link #splitReading}.
      *
@@ -148,9 +274,42 @@ public final class LocalRomanizer {
         if (words.isEmpty() || script == null) return null;
         final List<Word> read = new ArrayList<>(words.size());
         boolean any = false;
+        int lineCursor = 0;
 
         for (Word word : words) {
-            final String reading = readAs(word.text(), script, rime, line).text();
+            String rawWord = word.text() != null ? word.text() : "";
+            String trimmed = rawWord.trim();
+            int found = (line != null && !trimmed.isEmpty()) ? line.indexOf(trimmed, lineCursor) : -1;
+            if (found >= 0) {
+                lineCursor = found + trimmed.length();
+            }
+
+            if (script == Script.KOREAN) {
+                if (!ScriptDetector.contains(trimmed, Character.UnicodeScript.HANGUL)) {
+                    read.add(word);
+                    continue;
+                }
+                String reading = (found >= 0 && line != null)
+                        ? HangulRomanizer.romanizeAt(line, found, found + trimmed.length())
+                        : HangulRomanizer.romanize(trimmed, line);
+                if (reading.equals(trimmed) || reading.isEmpty()) {
+                    read.add(word);
+                    continue;
+                }
+                read.add(new Word(word.startMs(), word.endMs(), word.text(),
+                        word.endsWithSpace() ? reading + " " : reading,
+                        word.endsWithSpace(), word.ruby()));
+                any = true;
+                continue;
+            }
+
+            String reading = null;
+            if (script == Script.JAPANESE && line != null && JapaneseDictionaryStore.isReady()) {
+                reading = contextualSudachiSyllableReading(word.text(), line);
+            }
+            if (reading == null) {
+                reading = readAs(word.text(), script, rime, line).text();
+            }
             if (reading.equals(word.text())) {
                 read.add(word);
                 continue;
@@ -674,18 +833,48 @@ public final class LocalRomanizer {
         return switch (script) {
             case HAN -> {
                 if (rime) {
-                    yield RimeDictStore.isReady()
+                    yield RimeDictionaryStore.isReady()
                             ? new Read(RimeRomanizer.romanize(text),
-                            "UniDict, " + RimeDictStore.dictionaryName())
+                            "UniDict, " + RimeDictionaryStore.dictionaryName())
                             : new Read(text, null);
                 }
-                yield PinyinDictStore.isReady()
+                yield PinyinDictionaryStore.isReady()
                         ? new Read(PinyinRomanizer.romanize(text), PINYIN)
                         : new Read(text, null);
             }
-            case JAPANESE ->
+            case JAPANESE -> {
+                if (RubyGenerator.useKuromojiEngine()) {
+                    KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+                    if (tokenizer != null) {
+                        String kuromojiOut = KuromojiRomanizer.romanizeLine(text, tokenizer);
+                        if (!ScriptDetector.contains(kuromojiOut, Character.UnicodeScript.HAN)) {
+                            yield new Read(kuromojiOut, KuromojiRomanizer.DICTIONARY_NAME);
+                        }
+                        if (JapaneseDictionaryStore.isReady()) {
+                            String sudachiOut = japanese(text);
+                            if (!sudachiOut.isEmpty() && !ScriptDetector.contains(sudachiOut, Character.UnicodeScript.HAN)) {
+                                yield new Read(sudachiOut, JAPANESE);
+                            }
+                        }
+                        yield new Read(kuromojiOut, KuromojiRomanizer.DICTIONARY_NAME);
+                    }
+                }
+                if (JapaneseDictionaryStore.isReady()) {
+                    String sudachiOut = japanese(text);
+                    if (ScriptDetector.contains(sudachiOut, Character.UnicodeScript.HAN)) {
+                        KuromojiTokenizer fallbackTok = KuromojiDictStore.tokenizer();
+                        if (fallbackTok != null) {
+                            String kuromojiOut = KuromojiRomanizer.romanizeLine(text, fallbackTok);
+                            if (!ScriptDetector.contains(kuromojiOut, Character.UnicodeScript.HAN)) {
+                                yield new Read(kuromojiOut, KuromojiRomanizer.DICTIONARY_NAME);
+                            }
+                        }
+                    }
+                    yield new Read(sudachiOut, JAPANESE);
+                }
                 // Kana read by rule are not the dictionary's work, so nothing is credited.
-                    new Read(japanese(text), JapaneseDictStore.isReady() ? JAPANESE : null);
+                yield new Read(japanese(text), null);
+            }
             case KOREAN -> new Read(HangulRomanizer.romanize(text,
                     line != null ? line : text), RULE);
             case GREEK -> new Read(transliterate(text, "greek"), RULE);
@@ -729,7 +918,7 @@ public final class LocalRomanizer {
 
     /** Kana by rule, everything else out of the dictionary. */
     private static String japanese(String line) {
-        WordReadingTable table = JapaneseDictStore.table();
+        WordReadingTable table = JapaneseDictionaryStore.table();
         StringBuilder out = new StringBuilder(line.length() * 2);
         int i = 0;
 
@@ -797,6 +986,57 @@ public final class LocalRomanizer {
             Romanizations.appendWord(out, KanaRomanizer.romanize(line.substring(at, at + length)));
             at += length;
         }
+    }
+
+    /**
+     * When SudachiDict is active and {@code syllable} sits inside a multi-character compound in
+     * {@code line} (such as {@code 遠} or {@code 回} inside {@code 遠回り}), slices the compound's
+     * dictionary reading instead of looking up the isolated kanji's wrong Onyomi/Kunyomi.
+     */
+    @Nullable
+    private static String contextualSudachiSyllableReading(String syllable, String line) {
+        String cleanSyl = syllable.trim();
+        if (cleanSyl.isEmpty() || !ScriptDetector.contains(cleanSyl, Character.UnicodeScript.HAN)) {
+            return null;
+        }
+        int pos = line.indexOf(cleanSyl);
+        if (pos < 0) {
+            return null;
+        }
+        try (WordReadingTable table = JapaneseDictionaryStore.table()) {
+            if (table == null) {
+                return null;
+            }
+            int sylEnd = pos + cleanSyl.length();
+            int minStart = Math.max(0, pos - WordReadingTable.MAX_WORD_LENGTH + 1);
+            for (int start = minStart; start <= pos; start++) {
+                if (!ScriptDetector.isHan(line.charAt(start)) && !ScriptDetector.isKana(line.charAt(start))) {
+                    continue;
+                }
+                int maxEnd = Math.min(line.length(), start + WordReadingTable.MAX_WORD_LENGTH);
+                for (int end = maxEnd; end >= sylEnd; end--) {
+                    if (end - start <= cleanSyl.length()) {
+                        continue;
+                    }
+                    String compound = line.substring(start, end);
+                    String reading = table.reading(compound);
+                    if (reading != null && !reading.isEmpty()) {
+                        String[] hira = KuromojiRomanizer.splitTokenReadingToHiragana(
+                                compound, KanaRomanizer.toHiragana(reading));
+                        String[] rom = KuromojiRomanizer.convertCharHiraganaToRomaji(hira);
+                        StringBuilder sb = new StringBuilder();
+                        for (int k = pos - start; k < sylEnd - start && k < rom.length; k++) {
+                            if (rom[k] != null) sb.append(rom[k]);
+                        }
+                        String sliced = sb.toString().trim();
+                        if (!sliced.isEmpty()) {
+                            return sliced;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public static final class Result {

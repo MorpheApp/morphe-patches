@@ -140,14 +140,16 @@ Tryck OK för att öppna Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Testa att aktivera: Förfalska videostreamar &gt; Logga in i Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Använd QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Använd QuackJS istället för yt-dlp-ejs (WebView) för deobfuskering</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logga in i Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR kräver en separat inloggning. Tryck här för att fortsätta</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">För närvarande inloggad i Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inloggning i \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" kräver en separat inloggning. Tryck här för att fortsätta</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">För närvarande inloggad i \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logga in i Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Att logga in i Android VR kan åtgärda uppspelningsproblem för vissa användare
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">För att använda den här funktionen, ändra \"Standardklient\" till \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logga in i \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Att logga in i \"Android VR\" kan åtgärda uppspelningsproblem för vissa användare
 
 Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logga ut</string>
@@ -168,35 +170,36 @@ Tryck på Fortsätt nedan för att logga in"</string>
 • Dina Morphe-inställningar importerar och exporterar inte Android VR-autentiseringen
 • Om den här appen inte används på 6 månader tar Google bort den här autentiseringen
 • Du måste logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten i dina Google-inställningar"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logga in via mobilwebb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Webbinloggning</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfritt: logga in på YouTubes webbplats för att spela upp videor med ditt konto. Tryck här för att fortsätta</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">För närvarande inloggad i mobilwebb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">För tillfället inloggad på YouTube-webbplatsen</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logga in på Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobilwebben spelar upp videor när du är utloggad eller inloggad på YouTubes webbplats
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till en webbklient</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logga in på YouTube-webbplatsen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webbklienter spelar videor utan inloggning, eller inloggad på YouTube-webbplatsen
 
 • Om du är inloggad kan videor som kräver ett konto spelas upp, till exempel åldersbegränsade videor
 • Googles inloggningssida öppnas i den här appen
 • Inloggningen används endast för att hämta videorna du spelar upp
 • Inloggningen sparas endast på den här enheten
+• Varje webbklient har sin egen inloggning för den valda standardklienten
 
-För att logga in trycker du på fortsätt nedan"</string>
+Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Inloggning sparad
 
-• Dina Morphe-inställningar kommer inte att importera/exportera inloggningen för mobilwebben
+• Dina Morphe-inställningar kommer inte att importera/exportera inloggningen till YouTube-webbplatsen
 • Om Google avslutar inloggningen spelas videor upp utan inloggning tills du loggar in igen
-• Utloggning loggar även ut den här enheten från YouTubes webbplats"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Inloggningen för mobilwebben har gått ut. Försök logga in på mobilwebben igen</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Utloggad från mobilwebben</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView är inte tillgänglig. Installera eller aktivera den för att logga in</string>
+• Att logga ut loggar även ut den här enheten från YouTube-webbplatsen"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Webbinloggningen har gått ut, försök logga in igen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Utloggad från YouTube-webbplatsen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" är inte tillgängligt. Installera eller aktivera det för att logga in</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är för tillfället inte tillgängligt (API-tidsgräns nådd)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-inloggningen har gått ut. Försök logga in i VR igen</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\"Android VR\"-inloggningen har gått ut. Försök logga in i VR igen</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 är för tillfället inte tillgängligt (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 är för tillfället inte tillgängligt</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Det går inte att logga in i VR. Webbautentiseringen godkändes inte</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in i VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Utloggad från \"Android VR\"</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken. Försök logga in i VR igen</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mediekontroller för avisering</string>
@@ -214,8 +217,15 @@ För att logga in trycker du på fortsätt nedan"</string>
   <string name="morphe_seek_notification_media_length_invalid">Söklängden måste vara mellan 1 och %s sekunder. Använder standardvärde</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokoll</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriterar högsta möjliga videokvalitet framför kodekseffektivitet</string>
+  <string name="morphe_prioritize_video_quality_dialog">Om den här inställningen är avstängd kan äldre videor sakna alternativ för videokvalitet</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
+  <string name="morphe_disable_drc_audio_stream_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Spelar upp originaljudiet istället för versionen med komprimerat dynamiskt omfång</string>
+  <string name="morphe_disable_loudness_normalization_title">Inaktivera volymnormalisering</string>
+  <string name="morphe_disable_loudness_normalization_summary">Spelar upp högt ljud i dess originalvolym istället för att sänka det till en standardnivå</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tvinga ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary">Spelar alltid videons ursprungliga ljudspår istället för en dubbad version</string>
@@ -224,6 +234,32 @@ För att logga in trycker du på fortsätt nedan"</string>
   <string name="morphe_skip_silence_summary">Hoppar automatiskt över tysta pauser i videoljudet</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minsta pauslängd</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Endast pauser som är minst så här långa förkortas. Börjar gälla när nästa video startar</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videoeffekt</string>
+  <string name="morphe_video_effect_entry_none">Av</string>
+  <string name="morphe_video_effects_custom_title">Redigera videoeffekter</string>
+  <string name="morphe_video_effects_custom_summary">Ändra, byt namn på, ta bort eller lägg till videoeffekter. Effekter är shader-kod, så en AI-chatbot kan skriva nya</string>
+  <string name="morphe_video_effects_custom_empty">Inga videoeffekter. Tryck på Lägg till effekt för att skapa en.</string>
+  <string name="morphe_video_effects_custom_add">Lägg till effekt</string>
+  <string name="morphe_video_effects_custom_restore">Återställ till standard</string>
+  <string name="morphe_video_effects_custom_add_title">Ny effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Redigera effekt</string>
+  <string name="morphe_video_effects_custom_name_hint">Namn</string>
+  <string name="morphe_video_effects_custom_name_empty">Ange ett namn för effekten</string>
+  <string name="morphe_video_effects_custom_name_exists">En effekt med det här namnet finns redan</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopiera kod</string>
+  <string name="morphe_video_effects_custom_error_title">Effekten har ett fel</string>
+  <string name="morphe_video_effects_custom_error_message">"Videor visas utan effekten tills koden är åtgärdad. Ge det här felet till AI:n som skrev koden:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Koden slutar inuti en funktion eller kommentar, så den klipptes troligen av när den kopierades eller klistrades in. Inmatad text kan klippas av vid %d tecken.
+
+Be AI:n om kortare kod, eller klistra in koden i delar."</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopieringsfel</string>
+  <string name="morphe_video_effects_custom_save_anyway">Spara ändå</string>
+  <string name="morphe_video_effects_custom_delete">Radera</string>
+  <string name="morphe_video_effects_custom_delete_title">Ta bort effekt?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s kommer att tas bort.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Nätverksproxy</string>
   <string name="morphe_proxy_screen_summary">Dirigera stödda nätverksförfrågningar genom en proxy</string>
@@ -254,7 +290,7 @@ För att logga in trycker du på fortsätt nedan"</string>
   <string name="morphe_replace_music_with_youtube_title">Ändra delningslänkar till youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersätter music.youtube.com med youtube.com i delade länkar</string>
   <string name="morphe_replace_links_with_shortener_title">Ändra delningslänkar till youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Tvingar videor att använda det förkortade webbadressformatet youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Tvingar videor att använda det förkortade webbadressformatet \"youtu.be\"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatiskt</string>
@@ -266,19 +302,16 @@ För att logga in trycker du på fortsätt nedan"</string>
   <string name="morphe_video_quality_default_mobile_title">Standardvideokvalitet på mobilnätverk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Ändrade standardkvalitet för mobilnät till: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Ändrade standardkvalitet för Wi-Fi till: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Öppna systemets delningsblad</string>
-  <string name="morphe_open_system_share_sheet_summary">Öppnar systemets delningsblad istället för appens när du delar innehåll</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-loggning</string>
   <string name="morphe_debug_litho_entry_disabled">Inaktiverad</string>
   <string name="morphe_debug_litho_entry_path">Sökväg</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Sökväg och buffert</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-loggning loggar appens layoutkomponenter, inklusive text på skärmen för vissa UI-komponenter.
+  <string name="morphe_debug_litho_user_dialog_message">"Loggar appens layoutkomponenter, inklusive text på skärmen för vissa komponenter i användargränssnittet.
 
 Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filter.
 
-Detta kommer dock även att logga vissa användardata, till exempel din IP-adress"</string>
+Detta kommer dock även att logga vissa användardata, såsom din IP-adress"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurera anpassade filter för att dölja valfri komponent</string>
@@ -343,6 +376,18 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_custom_font_file_summary">Välj en TTF- eller OTF-teckensnittsfil</string>
   <string name="morphe_custom_font_file_invalid">Den valda filen är inte ett TTF- eller OTF-teckensnitt</string>
   <string name="morphe_custom_font_failed_to_load">Anpassat teckensnitt kunde inte laddas och är avstängt</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Glasmenyer</string>
+  <string name="morphe_glass_menus_screen_summary">Menyer som frostat glas över det suddiga innehållet bakom dem</string>
+  <string name="morphe_glass_menus_title">Aktivera glasmenyer</string>
+  <string name="morphe_glass_menus_summary">Visar menyer och bottenark som frostat glas, där innehållet bakom dem suddas ut</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menyer visas nästan opaka när batterispararen är på, eller om enheten inte stöder oskärpa</string>
+  <string name="morphe_glass_menus_opacity_title">Glasets opacitet</string>
+  <string name="morphe_glass_menus_opacity_summary">Hur mycket menyn täcker det suddiga innehållet (0 är genomskinligt, 100 är opakt)</string>
+  <string name="morphe_glass_menus_blur_title">Oskärpa</string>
+  <string name="morphe_glass_menus_blur_summary">Hur mycket innehållet bakom menyn ska suddas ut</string>
+  <string name="morphe_glass_menus_dim_title">Dämpning</string>
+  <string name="morphe_glass_menus_dim_summary">Hur mycket skärmen runt ett bottenark ska mörknas</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ogilla-markeringar är inte tillgängliga just nu (API-tidsgräns nådd)</string>
@@ -380,4 +425,8 @@ ID för videon du tittar på skickas till Return YouTube Dislike API, och dina g
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Inga klientbegränsningar påträffades</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientens hastighetsbegränsning inträffade %s gånger</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
+  <string name="morphe_navigation_bar_screen_title">Navigeringsfält</string>
+  <string name="morphe_navigation_bar_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ner</string>
+  <string name="morphe_toolbar_screen_title">Verktygsfält</string>
+  <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
 </resources>

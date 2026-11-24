@@ -140,16 +140,18 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 &gt; 登录 Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">使用 QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">使用 QuackJS 代替 yt-dlp-ejs (WebView) 进行去混淆</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR 登录</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR 需要单独登录。点击此处继续</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' 登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' 需要单独登录。点击此处继续</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将“默认客户端”更改为Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登录 Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录Android VR可以解决一些用户的播放问题
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将“默认客户端”更改为 \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登录“Android VR”</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录“Android VR”可以解决部分用户的播放问题
 
-要登录，请按下面的“继续”按钮"</string>
+要登录，请点击下方继续"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">说明</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -168,35 +170,36 @@ Second \"item\" text"</string>
 • 您的 Morphe 设置将无法导出/导入 Android VR 认证
 • 长期未使用时，该认证可能被 Google 移除
 • 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">移动版网页登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">网页登录</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">可选：登录 YouTube 网站以使用您的账号播放视频。点击此处继续</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录移动版网页</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录 YouTube 网站</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">要使用此功能，请将“默认客户端”更改为 Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登录 Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web 在退出登录或登录 YouTube 网站时播放视频
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">要使用此功能，请将“默认客户端”更改为网页客户端</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登录 YouTube 网站</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web 客户端可在未登录或登录 YouTube 网站的状态下播放视频
 
-• 登录后，可以播放需要账户的视频，例如年龄限制的视频
+• 登录后，可播放需要账户的视频，例如有年龄限制的视频
 • Google 登录页面将在本应用中打开
-• 登录仅用于获取您播放的视频
+• 登录仅用于获取您要播放的视频
 • 登录信息仅保存在此设备上
+• 每个 Web 客户端对其选定的默认客户端拥有独立的登录状态
 
-要登录，请点击下方的继续"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"登录信息已保存
+如需登录，请点击下方继续"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"登录已保存
 
-• 您的 Morphe 设置将不会导入/导出移动版网页登录
-• 如果 Google 终止登录，在您再次登录之前，视频将以登出状态播放
-• 登出同时也会使此设备退出 YouTube 网站的登录"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">移动版网页登录已过期，请尝试再次登录移动版网页</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已退出移动版网页登录</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView 不可用。请安装或启用它以进行登录</string>
+• 您的 Morphe 设置不会导入/导出 YouTube 网站的登录状态
+• 如果 Google 终止登录，在您再次登录之前，视频将以退出登录状态播放
+• 退出登录同时也会将此设备从 YouTube 网站退出登录"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">网页登录已过期，请尝试重新登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已退出 YouTube 网站登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">无法使用“Android System WebView”。请安装或启用它以进行登录</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暂时不可用（API 超时）</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR登录已过期，请重新登录VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">“Android VR”登录已过期，请尝试重新登录 VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 暂时不可用 (状态 %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暂时不可用</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">无法登录VR，网站认证未批准</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
-  <string name="morphe_oauth2_toast_reset">已从 Android VR 登出</string>
+  <string name="morphe_oauth2_toast_reset">已从“Android VR”登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">通知媒体控件</string>
@@ -214,8 +217,15 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">搜索长度必须在 %s 到 1 秒之间。使用默认值</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">优先视频画质</string>
+  <string name="morphe_prioritize_video_quality_summary">优先考虑最高可用视频画质而非编解码器效率</string>
+  <string name="morphe_prioritize_video_quality_dialog">如果关闭此设置，较旧的视频可能不显示任何视频画质选项</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">禁用 DRC 音频</string>
+  <string name="morphe_disable_drc_audio_stream_title">禁用 DRC 音频</string>
+  <string name="morphe_disable_drc_audio_stream_summary">播放原始音频，而非动态范围压缩后的版本</string>
+  <string name="morphe_disable_loudness_normalization_title">禁用响度标准化</string>
+  <string name="morphe_disable_loudness_normalization_summary">以原始音量播放大声音音频，而非将其降低到标准水平</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary">始终播放视频的原始音频轨道，而不是配音版本</string>
@@ -224,6 +234,32 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">自动跳过视频音频中的静音停顿</string>
   <string name="morphe_skip_silence_minimum_pause_title">最短暂停时长</string>
   <string name="morphe_skip_silence_minimum_pause_summary">只有至少达到此长度的暂停才会被缩短。在下一个视频开始时生效</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">视频效果</string>
+  <string name="morphe_video_effect_entry_none">关闭</string>
+  <string name="morphe_video_effects_custom_title">编辑视频效果</string>
+  <string name="morphe_video_effects_custom_summary">更改、重命名、删除或添加视频效果。效果是着色器代码，因此 AI 聊天机器人可以编写新的效果</string>
+  <string name="morphe_video_effects_custom_empty">没有视频效果。点击“添加效果”来创建一个。</string>
+  <string name="morphe_video_effects_custom_add">添加效果</string>
+  <string name="morphe_video_effects_custom_restore">恢复默认值</string>
+  <string name="morphe_video_effects_custom_add_title">新效果</string>
+  <string name="morphe_video_effects_custom_edit_title">编辑效果</string>
+  <string name="morphe_video_effects_custom_name_hint">名称</string>
+  <string name="morphe_video_effects_custom_name_empty">请输入效果名称</string>
+  <string name="morphe_video_effects_custom_name_exists">已存在同名效果</string>
+  <string name="morphe_video_effects_custom_copy_code">复制代码</string>
+  <string name="morphe_video_effects_custom_error_title">效果出错</string>
+  <string name="morphe_video_effects_custom_error_message">"在代码修复前，视频将不显示效果。请将此错误提供给编写该代码的 AI：
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"代码在函数或注释内部结束，因此在复制或粘贴时可能被截断。粘贴的文本可能会在 %d 个字符处被截断。
+
+请要求 AI 提供更短的代码，或分部分粘贴代码。"</string>
+  <string name="morphe_video_effects_custom_copy_error">复制错误</string>
+  <string name="morphe_video_effects_custom_save_anyway">仍然保存</string>
+  <string name="morphe_video_effects_custom_delete">删除</string>
+  <string name="morphe_video_effects_custom_delete_title">删除效果？</string>
+  <string name="morphe_video_effects_custom_delete_message">%s 将被删除。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">网络代理</string>
   <string name="morphe_proxy_screen_summary">通过代理路由支持的网络请求</string>
@@ -254,7 +290,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">将分享链接更改为 youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">将共享链接中的music.youtube.com替换为youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">将分享链接更改为 youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">强制视频使用缩短的 youtu.be URL 格式</string>
+  <string name="morphe_replace_links_with_shortener_summary">强制视频使用简短的“youtu.be”URL 格式</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自动</string>
@@ -266,17 +302,14 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">移动网络上的默认视频画质</string>
   <string name="morphe_remember_video_quality_toast_mobile">已将默认移动网络画质更改为：%s</string>
   <string name="morphe_remember_video_quality_toast_wifi">已将默认 Wi-Fi 画质更改为：%s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
-  <string name="morphe_open_system_share_sheet_summary">在分享内容时，打开系统分享面板而非应用内分享面板</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho 日志</string>
   <string name="morphe_debug_litho_entry_disabled">已禁用</string>
   <string name="morphe_debug_litho_entry_path">路径</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">路径和缓冲区</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho 日志记录应用的布局组件，包括某些 UI 组件的屏幕文本。
+  <string name="morphe_debug_litho_user_dialog_message">"记录应用的布局组件，包括某些 UI 组件的屏幕文本
 
-这有助于在创建自定义过滤器时识别组件。
+这有助于在创建自定义过滤器时识别组件
 
 但是，这也会记录一些用户数据，例如您的 IP 地址"</string>
   <!-- Custom filter -->
@@ -343,6 +376,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">选择 TTF 或 OTF 字体文件</string>
   <string name="morphe_custom_font_file_invalid">所选文件不是 TTF 或 OTF 字体</string>
   <string name="morphe_custom_font_failed_to_load">自定义字体无法加载，已关闭</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">玻璃菜单</string>
+  <string name="morphe_glass_menus_screen_summary">菜单呈现为覆盖在背后模糊内容之上的磨砂玻璃效果</string>
+  <string name="morphe_glass_menus_title">启用玻璃菜单</string>
+  <string name="morphe_glass_menus_summary">将菜单和底部工作表显示为磨砂玻璃效果，并模糊其背后的内容</string>
+  <string name="morphe_glass_menus_user_dialog_message">在省电模式开启或设备不支持模糊效果时，菜单将显示为近乎不透明的状态</string>
+  <string name="morphe_glass_menus_opacity_title">玻璃不透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">菜单覆盖模糊内容的程度（0 为透明，100 为不透明）</string>
+  <string name="morphe_glass_menus_blur_title">模糊</string>
+  <string name="morphe_glass_menus_blur_summary">菜单背后内容的模糊程度</string>
+  <string name="morphe_glass_menus_dim_title">调暗</string>
+  <string name="morphe_glass_menus_dim_summary">底部工作表周围屏幕的变暗程度</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">点踩数暂时不可用 (API 连接超时)</string>
@@ -380,4 +425,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遇到客户端速率限制</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">遇到客户端速率限制 %s 次</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s 毫秒</string>
+  <string name="morphe_navigation_bar_screen_title">导航栏</string>
+  <string name="morphe_navigation_bar_screen_summary">选择在底部导航栏中显示哪些按钮</string>
+  <string name="morphe_toolbar_screen_title">工具栏</string>
+  <string name="morphe_toolbar_screen_summary">选择在工具栏中显示哪些组件</string>
 </resources>

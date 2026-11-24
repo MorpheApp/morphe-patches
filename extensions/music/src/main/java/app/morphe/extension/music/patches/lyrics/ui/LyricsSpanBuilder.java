@@ -35,8 +35,6 @@ import app.morphe.extension.shared.ui.Dim;
 
 public final class LyricsSpanBuilder {
     static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
-    /** Furigana is drawn at half the size of the kanji it reads. */
-    static final float RUBY_RELATIVE_SIZE = 0.5f;
     static final float MAIN_LINE_SPACING = 1.22f;
 
     /**
@@ -324,11 +322,15 @@ public final class LyricsSpanBuilder {
             transEnd = builder.length();
         }
 
+        final List<WordTiming> activeTimings = showSyllableRomanization ? syllableRomanTimings : timings;
+        final boolean hasActiveWordTimings = line.hasWordTimings()
+                || (activeTimings != null && !activeTimings.isEmpty()
+                        && !LyricsReadingCalc.isEntirelyAveraged(activeTimings));
         SpannableString text = new SpannableString(builder.toString());
         ForegroundColorSpan unsungSpan = applySpans(text,
-                showSyllableRomanization ? syllableRomanTimings : timings,
+                activeTimings,
                 originalStart, originalEnd, romaStart, romaEnd, transStart, transEnd,
-                isRightAligned, centered, line.hasWordTimings());
+                isRightAligned, centered, hasActiveWordTimings);
         final int splitOffset = (!swap && romaStart >= 0 && transStart > romaStart) ? transStart : -1;
         attachUniformSpacing(text, spacing, splitOffset);
         if (rubyStart >= 0 && rubyEnd > rubyStart) {

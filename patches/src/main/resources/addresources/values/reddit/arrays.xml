@@ -48,4 +48,52 @@
         <item>MEDIUM</item>
         <item>STRONG</item>
     </string-array>
+
+    <!-- layout.automod.autoModeratorCommentsPatch -->
+    <string-array name="morphe_automoderator_comments_entries">
+        <item>@string/morphe_automoderator_comments_entry_show</item>
+        <item>@string/morphe_automoderator_comments_entry_collapse</item>
+        <item>@string/morphe_automoderator_comments_entry_hide</item>
+    </string-array>
+    <string-array name="morphe_automoderator_comments_entry_values" translatable="false">
+        <item>SHOW</item>
+        <item>COLLAPSE</item>
+        <item>HIDE</item>
+    </string-array>
+
+    <!-- layout.collapseall.collapseAllCommentsPatch -->
+    <string-array name="morphe_collapse_all_comments_scope_entries">
+        <item>@string/morphe_collapse_all_comments_scope_entry_top_comments</item>
+        <item>@string/morphe_collapse_all_comments_scope_entry_replies</item>
+        <item>@string/morphe_collapse_all_comments_scope_entry_nested_replies</item>
+    </string-array>
+    <string-array name="morphe_collapse_all_comments_scope_entry_values" translatable="false">
+        <item>TOP_COMMENTS</item>
+        <item>REPLIES</item>
+        <item>NESTED_REPLIES</item>
+    </string-array>
+
+    <!-- layout.commentlines.colorizeCommentIndentLinesPatch -->
+    <string-array name="morphe_colorize_comment_indent_lines_palette_entries">
+        <item>@string/morphe_colorize_comment_indent_lines_palette_entry_rainbow</item>
+        <item>@string/morphe_colorize_comment_indent_lines_palette_entry_pastel</item>
+        <item>@string/morphe_colorize_comment_indent_lines_palette_entry_muted</item>
+    </string-array>
+    <string-array name="morphe_colorize_comment_indent_lines_palette_entry_values" translatable="false">
+        <item>RAINBOW</item>
+        <item>PASTEL</item>
+        <item>MUTED</item>
+    </string-array>
+
+    <!-- misc.privatebrowsing.privateBrowsingModePatch -->
+    <string-array name="morphe_private_browsing_mode_entries">
+        <item>@string/morphe_private_browsing_mode_entry_default</item>
+        <item>@string/morphe_private_browsing_mode_entry_anonymous_browsing</item>
+        <item>@string/morphe_private_browsing_mode_entry_incognito</item>
+    </string-array>
+    <string-array name="morphe_private_browsing_mode_entry_values" translatable="false">
+        <item>DEFAULT</item>
+        <item>ANONYMOUS_BROWSING</item>
+        <item>INCOGNITO</item>
+    </string-array>
 </resources>

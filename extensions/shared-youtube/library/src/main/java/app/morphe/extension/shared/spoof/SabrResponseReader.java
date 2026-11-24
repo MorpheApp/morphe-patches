@@ -61,10 +61,6 @@ public final class SabrResponseReader {
     private long hiddenPartType = -1;
     @Nullable
     private PartFilter hiddenPartFilter;
-    /**
-     * Index in the current chunk of the type of the current part, if the type is one byte in the chunk, or -1.
-     */
-    private int partTypeStart = -1;
     private final byte[] header = new byte[5];
     private int headerLength;
     private long partType = -1;
@@ -131,7 +127,7 @@ public final class SabrResponseReader {
         // A duplicate, so the position native code reads from is not changed.
         ByteBuffer buffer = chunk.duplicate();
         int status = -1;
-        partTypeStart = -1;
+        int partTypeStart = -1;
         while (buffer.hasRemaining()) {
             if (partType < 0) {
                 final int typeStart = headerLength == 0 ? buffer.position() : -1;

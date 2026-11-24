@@ -9,6 +9,7 @@ package app.morphe.patches.reddit.layout.autoscroll
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
@@ -69,23 +70,6 @@ internal object MainActivityOnPauseFingerprint : Fingerprint(
 )
 
 /**
- * BottomNavScreen.onNavBarStateChange(float), called with the fraction of the navigation bar
- * that is shown.
- */
-internal object NavBarStateChangeFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
-    returnType = "V",
-    parameters = listOf("F"),
-    filters = listOf(
-        // The coroutine class is BottomNavScreen$onNavBarStateChange$1$1 in older app versions.
-        methodCall(
-            definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen\$onNavBarStateChange\$1",
-            name = "<init>"
-        )
-    )
-)
-
-/**
  * Inflates the view of the post detail pager.
  */
 internal object PostDetailPagerInflateFingerprint : Fingerprint(
@@ -99,5 +83,62 @@ internal object PostDetailPagerInflateFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT_OBJECT,
             location = MatchAfterImmediately()
         )
+    )
+)
+
+/**
+ * Attached callback of a screen in the navigation stack.
+ */
+internal object ScreenAttachFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "DESTROYED"),
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED")
+    )
+)
+
+/**
+ * Attached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ */
+internal object ScreenAttachLegacyFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$Event;", name = "ON_RESUME")
+    )
+)
+
+/**
+ * Detached callback of a screen in the navigation stack.
+ */
+internal object ScreenDetachFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED"),
+        methodCall(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "isAtLeast"),
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "STARTED")
+    )
+)
+
+/**
+ * Detached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ */
+internal object ScreenDetachLegacyFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED"),
+        methodCall(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "isAtLeast"),
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$Event;", name = "ON_PAUSE")
     )
 )

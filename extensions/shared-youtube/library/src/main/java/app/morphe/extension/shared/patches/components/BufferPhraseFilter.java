@@ -74,6 +74,8 @@ public abstract class BufferPhraseFilter extends Filter {
             // A/B test for subscribed video, and sometimes when tablet layout is enabled.
             "video_lockup_with_attachment.e",
             "compact_video.e",
+            // Card layout.
+            "lockup.e",
             "inline_shorts",
             "shorts_video_cell",
             "shorts_pivot_item.e"
@@ -139,12 +141,13 @@ public abstract class BufferPhraseFilter extends Filter {
     protected abstract boolean isActiveForFeedContext(ContextInterface contextInterface);
 
     /**
+     * @param path             Path of the Litho element that is filtered.
      * @param contextInterface Context of the Litho element that is filtered.
      * @return the matched phrase if the buffer contains a match, or {@code null} otherwise.
      * Called after the path-exception check has passed.
      */
     @Nullable
-    protected abstract String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+    protected abstract String matchBuffer(byte[] buffer, CharSequence path, StringFilterGroup matchedGroup,
                                           ContextInterface contextInterface);
 
     /**
@@ -179,7 +182,7 @@ public abstract class BufferPhraseFilter extends Filter {
             return false; // Do not update statistics.
         }
 
-        String matched = matchBuffer(buffer, matchedGroup, contextInterface);
+        String matched = matchBuffer(buffer, path, matchedGroup, contextInterface);
         if (matched != null) {
             updateStats(true, matched);
             onHideConfirmed(matched);

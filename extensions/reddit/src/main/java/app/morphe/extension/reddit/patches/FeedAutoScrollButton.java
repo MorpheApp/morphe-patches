@@ -29,6 +29,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+
+import com.reddit.typeahead.TypeaheadResultsScreen;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -69,6 +72,7 @@ final class FeedAutoScrollButton {
     private static boolean isNavBarShown = true;
     private static WeakReference<ImageView> buttonRef = new WeakReference<>(null);
     private static final List<WeakReference<View>> postDetailPagerViews = new ArrayList<>();
+    private static boolean isSearchScreenShown;
 
     /**
      * Covers the screen and gets touches first. Touches outside the button stop scrolling
@@ -97,7 +101,7 @@ final class FeedAutoScrollButton {
                     Logger.printException(() -> "onClick failure", ex);
                 }
             });
-            addView(button, new LayoutParams(Dim.dp48, Dim.dp48, Gravity.BOTTOM | Gravity.LEFT));
+            addView(button, new LayoutParams(Dim.dp48, Dim.dp48, Gravity.BOTTOM | Gravity.START));
             setButtonMargins(0, 0);
 
             setOnApplyWindowInsetsListener((v, insets) -> {
@@ -152,6 +156,7 @@ final class FeedAutoScrollButton {
          * Places the button above the system bars. The insets of the window are used, because the
          * app can consume the insets before they reach the overlay.
          */
+        @SuppressWarnings("deprecation")
         private void updateButtonMargins() {
             WindowInsets insets = getRootWindowInsets();
             if (insets == null) {
@@ -169,7 +174,9 @@ final class FeedAutoScrollButton {
         private void setButtonMargins(int leftInset, int bottomInset) {
             final boolean isTablet = Utils.isTablet();
             LayoutParams params = (LayoutParams) button.getLayoutParams();
-            params.leftMargin = leftInset + (isTablet ? Dim.dp24 : Dim.dp16);
+            final int margin = leftInset + (isTablet ? Dim.dp24 : Dim.dp16);
+            params.setMarginStart(margin);
+            params.leftMargin = margin;
             params.bottomMargin = bottomInset + (isTablet ? Dim.dp24 : Dim.dp(PHONE_BOTTOM_MARGIN_DP));
             button.setLayoutParams(params);
         }
@@ -274,7 +281,7 @@ final class FeedAutoScrollButton {
 
         view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
-            public void onViewAttachedToWindow(View v) {
+            public void onViewAttachedToWindow(@NonNull View v) {
                 try {
                     updateVisibility();
                 } catch (Exception ex) {
@@ -283,7 +290,7 @@ final class FeedAutoScrollButton {
             }
 
             @Override
-            public void onViewDetachedFromWindow(View v) {
+            public void onViewDetachedFromWindow(@NonNull View v) {
                 try {
                     updateVisibility();
                 } catch (Exception ex) {
@@ -292,6 +299,15 @@ final class FeedAutoScrollButton {
             }
         });
 
+        updateVisibility();
+    }
+
+    static void onScreenAttachChanged(Object screen, boolean attached) {
+        if (!(screen instanceof TypeaheadResultsScreen)) {
+            return;
+        }
+
+        isSearchScreenShown = attached;
         updateVisibility();
     }
 
@@ -315,6 +331,7 @@ final class FeedAutoScrollButton {
         final boolean show = isResumed
                 && (isNavBarShown || Utils.isTablet())
                 && !isPostDetailPagerShown()
+                && !isSearchScreenShown
                 && FeedAutoScrollPatch.hasOnScreenFeed();
         if (!show) {
             FeedAutoScrollPatch.stop();

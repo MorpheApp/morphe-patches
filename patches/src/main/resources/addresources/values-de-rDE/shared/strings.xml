@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Einstellungen</string>
   <string name="morphe_settings_confirm_user_dialog_title">Sind Sie sicher, dass Sie fortfahren möchten?</string>
   <string name="morphe_settings_save">Speichern</string>
   <string name="morphe_settings_reset">Zurücksetzen</string>
@@ -87,7 +86,13 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_about_links_translations">Übersetzungen</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Auf dem neuesten Stand</string>
   <string name="morphe_settings_about_contributors">Mitwirkende</string>
-  <string name="morphe_settings_about_contributors_period">Letzte 12 Monate</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Gesamte Zeit</string>
+  <string name="morphe_settings_about_contributors_6_months">6 Monate</string>
+  <string name="morphe_settings_about_contributors_3_months">3 Monate</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Zeitraum</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Unterstützer</string>
   <string name="morphe_settings_about_supporters_summary">Unterstützer auf Open Collective</string>
@@ -222,6 +227,9 @@ Wird die Akkuoptimierung nicht geändert, kann es zu folgenden Problemen kommen:
 • Die App kann sich unerwartet schließen
 • Benachrichtigungen funktionieren möglicherweise nicht
 • Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Systemfreigabe öffnen</string>
+  <string name="morphe_open_system_share_sheet_summary">Öffnet die systemeigene Freigabeansicht anstelle der In-App-Ansicht, wenn du Inhalte teilst</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-Link-Behandlung</string>
   <string name="morphe_link_handling_summary">Links konfigurieren, um sie in dieser App zu öffnen</string>

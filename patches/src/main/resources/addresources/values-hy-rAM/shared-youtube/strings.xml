@@ -140,16 +140,18 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Փորձեք միացնել. Տեսանյութերի հոսքերի կեղծում &gt; Մուտք Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Լռելյայն հաճախորդ</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Օգտագործել QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Դեոբֆուսկացիայի համար օգտագործեք QuackJS-ը yt-dlp-ejs-ի (WebView) փոխարեն</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Մուտք Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-ը պահանջում է առանձին մուտք: Շարունակելու համար հպեք այստեղ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Այս պահին մուտք եք գործել Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Մուտք \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-ը պահանջում է առանձին մուտք: Շարունակելու համար հպեք այստեղ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Այս պահին մուտք եք կատարել \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Այս ֆունկցիան օգտագործելու համար փոխեք «Լռելյայն հաճախորդը» Android VR-ի</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Մուտք գործեք Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR մուտք գործելը կարող է լուծել վերարտադրման խնդիրները որոշ օգտատերերի համար
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Այս հնարավորությունն օգտագործելու համար փոխեք \'Լռելյայն հաճախորդը\' \'Android VR\'-ի</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Մուտք կատարեք \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR' մուտքը կարող է լուծել վերարտադրման խնդիրները որոշ օգտատերերի համար
 
-Մուտք գործելու համար սեղմեք ներքևում գտնվող «Շարունակել» կոճակը"</string>
+Մուտք կատարելու համար սեղմեք ներքևում գտնվող «Շարունակել» կոճակը"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Ելք</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Հրահանգներ</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -168,28 +170,36 @@ Second \"item\" text"</string>
 • Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի Android VR հավաստիացումը
 • Եթե այս հավելվածը չօգտագործվի 6 ամիս, Google-ը կհեռացնի այս հավաստիացումը
 • Ձեզ պետք կլինի նորից մուտք գործել, եթե փոխեք Google-ի ձեր գաղտնաբառը կամ հեռացնեք այս սարքը Google-ի ձեր կարգավորումներից"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Մուտք 모բիլ վեբ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Վեբ մուտք</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Կամընտիր․ մուտք գործեք YouTube կայք, որպեսզի տեսանյութերը դիտեք ձեր հաշվով: Շարունակելու համար հպեք այստեղ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Այս պահին մուտք եք գործել մոբիլ վեբ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Այս պահին մուտք եք գործել YouTube կայք</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Այս ֆունկցիան օգտագործելու համար փոխեք «Լռելյայն հաճախորդը» Mobile Web-ի</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Մուտք գործեք Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-ը նվագում է տեսանյութերը առանց մուտք գործելու կամ մուտք գործելով YouTube կայք"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Մուտքը պահպանվեց
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Այս հնարավորությունից օգտվելու համար փոխեք \"Լռելյայն հաճախորդը\" վեբ հաճախորդի</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Մուտք գործեք YouTube կայք</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Վեբ հաճախորդները տեսանյութերը նվագում են առանց մուտքի կամ YouTube կայքի մուտքով
 
-• Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի Mobile Web-ի մուտքի տվյալները
-• Եթե Google-ը ավարտի սեանսը, տեսանյութերը կնվագվեն առանց մուտքի, մինչև նորից մուտք գործեք
-• Ելքելով՝ դուք նաև կելքեք YouTube կայքից այս սարքի միջոցով"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web-ի մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Ելք եք գործել Mobile Web-ից</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView-ը հասանելի չէ: Տեղադրեք կամ միացրեք այն մուտք գործելու համար</string>
+• Մուտք գործած լինելու դեպքում կարելի է նվագարկել նաև այն տեսանյութերը, որոնք պահանջում են հաշիվ, օրինակ՝ ըստ տարիքի սահմանափակում ունեցող տեսանյութերը
+• Google-ի մուտքի էջը բացվում է այս հավելվածում
+• Մուտքն օգտագործվում է միայն ձեր նվագարկած տեսանյութերը ստանալու համար
+• Մուտքը պահպանվում է միայն այս սարքի վրա
+• Յուրաքանչյուր վեբ հաճախորդ ունի իր սեփական մուտքը՝ ընտրված լռելյայն հաճախորդի համար
+
+Մուտք գործելու համար սեղմեք ներքևում գտնվող «Շարունակել» կոճակը"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Մուտքի տվյալները պահվեցին
+
+• Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի YouTube կայքի մուտքի տվյալները
+• Եթե Google-ը դադարեցնի մուտքը, տեսանյութերը կնվագեն առանց մուտքի, մինչև նորից մուտք գործելը
+• Մուտքից դուրս գալը նաև կդուրս գցի այս սարքը YouTube կայքից"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Վեբ մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Դուրս եք գալել YouTube կայքից</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\'-ը հասանելի չէ: Տեղադրեք կամ միացրեք այն մուտք գործելու համար</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2-ը ժամանակավորապես հասանելի չէ (API-ի ժամանակը սպառվել է)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-ի մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\'-ի մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2-ը ժամանակավորապես հասանելի չէ (կարգավիճակ %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2-ը ժամանակավորապես հասանելի չէ</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Չի հաջողվում մուտք գործել VR, կայքի նույնականացումը չի հաստատվել</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Հնարավոր չէ մուտք գործել VR. %s</string>
-  <string name="morphe_oauth2_toast_reset">Դուրս եք եկել Android VR-ից</string>
+  <string name="morphe_oauth2_toast_reset">Դուրս եք եկել \'Android VR\'-ից</string>
   <string name="morphe_oauth2_toast_invalid">VR մուտքի տոկենը անվավեր է, փորձեք կրկին մուտք գործել VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ծանուցումների մեդիայի կառավարման միջոցները</string>
@@ -207,8 +217,15 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Փնտրման տևողությունը պետք է լինի 1-ից %s վայրկյանի միջակայքում: Օգտագործվում է լռելյայն արժեքը</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Անջատել QUIC արձանագրությունը</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Առաջնահերթություն տալ տեսանյութի որակին</string>
+  <string name="morphe_prioritize_video_quality_summary">Առաջնահերթություն է տալիս տեսանյութի առկա ամենաբարձր որակին՝ կոդեկի արդյունավետությունից վեր</string>
+  <string name="morphe_prioritize_video_quality_dialog">Եթե այս կարգավորումը անջատված է, ապա հին տեսանյութերի համար տեսանյութի որակի տարբերակները կարող են չցուցադրվել</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Անջատել DRC աուդիոն</string>
+  <string name="morphe_disable_drc_audio_stream_title">Անջատել DRC աուդիոն</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Հնչեցնում է բնօրինակ աուդիոն՝ սեղմված դինամիկ տիրույքով տարբերակի փոխարեն</string>
+  <string name="morphe_disable_loudness_normalization_title">Անջատել բարձրության նորմալացումը</string>
+  <string name="morphe_disable_loudness_normalization_summary">Հնչեցնում է բարձր աուդիոն իր բնօրինակ ծավալով՝ այն ստանդարտ մակարդակիまで իջեցնելու փոխարեն</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Հարկադիր բնօրինակ աուդիո լեզու</string>
   <string name="morphe_force_original_audio_summary">Միշտ միացնում է տեսանյութի բնօրինակ ձայնային գիծը՝ դուբլյաժված տարբերակի փոխարեն</string>
@@ -217,6 +234,32 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">Ավտոմատ կերպով բաց է թողնում լռելյության դադարները տեսանյութի ձայնագրության մեջ</string>
   <string name="morphe_skip_silence_minimum_pause_title">Դադարի նվազագույն տևողությունը</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Կկարճացվեն միայն առնվազն այսքան տևողությամբ դադարները: Կկիրառվի հաջորդ տեսանյութի մեկնարկից հետո</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Տեսանյութի էֆեկտ</string>
+  <string name="morphe_video_effect_entry_none">Անջատված</string>
+  <string name="morphe_video_effects_custom_title">Խմբագրել տեսանյութի էֆեկտները</string>
+  <string name="morphe_video_effects_custom_summary">Փոխել, վերանվանել, ջնջել կամ ավելացնել տեսանյութի էֆեկտներ: Էֆեկտները շեյդերային կոդ են, ուստի AI չատբոտը կարող է գրել նորերը</string>
+  <string name="morphe_video_effects_custom_empty">Տեսանյութի էֆեկտներ չկան։ Պատկերեք «Ավելացնել էֆեկտ»՝ ստեղծելու համար։</string>
+  <string name="morphe_video_effects_custom_add">Ավելացնել էֆեկտ</string>
+  <string name="morphe_video_effects_custom_restore">Վերականգնել լռելյայն արժեքները</string>
+  <string name="morphe_video_effects_custom_add_title">Նոր էֆեկտ</string>
+  <string name="morphe_video_effects_custom_edit_title">Խմբագրել էֆեկտը</string>
+  <string name="morphe_video_effects_custom_name_hint">Անուն</string>
+  <string name="morphe_video_effects_custom_name_empty">Մուտքագրեք անվանում էֆեկտի համար</string>
+  <string name="morphe_video_effects_custom_name_exists">Այս անվամբ էֆեկտը արդեն գոյություն ունի</string>
+  <string name="morphe_video_effects_custom_copy_code">Պատճենել կոդը</string>
+  <string name="morphe_video_effects_custom_error_title">Էֆեկտի սխալ</string>
+  <string name="morphe_video_effects_custom_error_message">"Տեսանյութերը ցուցադրվում են առանց էֆեկտի, մինչև կոդը ուղղվի: Տրամադրեք այս սխալը AI-ին, որը գրել է կոդը.
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Կոդն ավարտվում է ֆունկցիայի կամ մեկնաբանության ներսում, ուստի այն հավանաբար կտրվել է պատճենելիս կամ տեղադրելիս: Տեղադրված տեքստը կարող է կտրվել %d նիշից հետո:
+
+Խնդրեք AI-ին տրամադրել ավելի կարճ կոդ կամ տեղադրեք կոդը մասៗ:"</string>
+  <string name="morphe_video_effects_custom_copy_error">Պատճենման սխալ</string>
+  <string name="morphe_video_effects_custom_save_anyway">Այնուամենայնիվ, պահպանել</string>
+  <string name="morphe_video_effects_custom_delete">Ջնջել</string>
+  <string name="morphe_video_effects_custom_delete_title">Ջնջե՞լ էֆեկտը։</string>
+  <string name="morphe_video_effects_custom_delete_message">%s-ը կջնջվի:</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Ցանցային պրոքսի</string>
   <string name="morphe_proxy_screen_summary">Երթուղել աջակցվող ցանցային հարցումները պրոքսիի միջոցով</string>
@@ -247,7 +290,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Փոխել կիսման հղումները youtube.com-ի</string>
   <string name="morphe_replace_music_with_youtube_summary">Կիսվող հղումներում music.youtube.com-ը փոխարինում է youtube.com-ով</string>
   <string name="morphe_replace_links_with_shortener_title">Փոխել կիսման հղումները youtu.be-ի</string>
-  <string name="morphe_replace_links_with_shortener_summary">Ստիպում է տեսանյութերին օգտագործել youtu.be կարճ URL ձևաչափը</string>
+  <string name="morphe_replace_links_with_shortener_summary">Ստիպում է տեսանյութերին օգտագործել \'youtu.be\' URL-ի կրճատված ձևաչափը</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Ավտոմատ</string>
@@ -259,19 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Տեսանյութի լռlots-որակը բջջային ցանցերում</string>
   <string name="morphe_remember_video_quality_toast_mobile">Բջջային կապի լռlots-որակը փոխվեց՝ %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-ի լռlots-որակը փոխվեց՝ %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Բացել համակարգային կիսման պատուհանը</string>
-  <string name="morphe_open_system_share_sheet_summary">Բովանդակությունը կիսելիս բացում է համակարգային կիսման պատուհանը՝ հավելվածի ներքին պատուհանի փոխարեն</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho լոգավորում</string>
   <string name="morphe_debug_litho_entry_disabled">Անջատված</string>
   <string name="morphe_debug_litho_entry_path">Ուղին</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Ուղին և բուֆերը</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-ի լոգավորումը գրանցում է հավելվածի դասավորության բաղադրիչները, ներառյալ որոշ UI բաղադրիչների էկրանի տեքստերը:
+  <string name="morphe_debug_litho_user_dialog_message">"Գրանցում է հավելվածի դասավորության բաղադրիչները, ներառյալ որոշ UI բաղադրիչների էկրանի տեքստերը
 
-Սա կարող է օգնել բաղադրիչները նույնականացնել՝ ստեղծելով հատուկ զտիչներ:
+Սա կարող է օգնել բաղադրիչները նույնականացնել՝ ստեղծելով հատուկ զտիչներ
 
-Սակայն, սա կգրանցի նաև օգտատիրոջ որոշ տվյալներ, օրինակ՝ ձեր IP հասցեն"</string>
+Սակայն, սա կգրանցի նաև որոշ օգտատիրոջ տվյալներ, օրինակ՝ ձեր IP հասցեն"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Անհատական զտիչ</string>
   <string name="morphe_custom_filter_screen_summary">Կարգավորեք հատուկ զտիչներ ցանկացած բաղադրիչ թաքցնելու համար</string>
@@ -336,6 +376,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">Ընտրեք TTF կամ OTF տառատեսակի ֆայլ</string>
   <string name="morphe_custom_font_file_invalid">Ընտրված ֆայլը TTF կամ OTF տառատեսակ չէ</string>
   <string name="morphe_custom_font_failed_to_load">Անհատական տառատեսակը չհաջողվեց բեռնել և այն անջատվել է</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Ապակյա մենյուներ</string>
+  <string name="morphe_glass_menus_screen_summary">Մենյուներ՝ որպես մատային ապակի՝ իրենց հետևում գտնվող լղոզված բովանդակության վրա</string>
+  <string name="morphe_glass_menus_title">Միացնել ապակյա մենյուները</string>
+  <string name="morphe_glass_menus_summary">Ցուցադրում է մենյուները և ներքևի թերթերը որպես մատտset ապակի, որոնց հետևի բովանդակությունը լղոզված է</string>
+  <string name="morphe_glass_menus_user_dialog_message">Մենյուները ցուցադրվում են գրեթե անթափանց, երբ միացված է մարտկոցի խնայողը, կամ եթե սարքը չի աջակցում լղոզմանը</string>
+  <string name="morphe_glass_menus_opacity_title">Ապակու թափանցիկությունը</string>
+  <string name="morphe_glass_menus_opacity_summary">Որքանով է մենյուն ծածկում լղոզված բովանդակությունը (0-ն թափանցիկ է, 100-ը՝ անթափանց)</string>
+  <string name="morphe_glass_menus_blur_title">Մշուշում</string>
+  <string name="morphe_glass_menus_blur_summary">Որքանով է լղոզված մենյուի հետևի բովանդակությունը</string>
+  <string name="morphe_glass_menus_dim_title">Մգնում</string>
+  <string name="morphe_glass_menus_dim_summary">Որքանով է մգնվում էկրանը ներքևի թերթի շուրջ</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Բացասական գնահատականները ժամանակավորապես հասանելի չեն (API-ի ժամանակը սպառվել է)</string>
@@ -373,4 +425,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Client-ի հարցումների սահմանափակումներ չեն հանդիպել</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Հանդիպել է կլիենտի հարցումների սահմանափակում %s անգամ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s միլիվայրկյան</string>
+  <string name="morphe_navigation_bar_screen_title">Նավիգացիայի շերտ</string>
+  <string name="morphe_navigation_bar_screen_summary">Ընտրեք, թե որ կոճակները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
+  <string name="morphe_toolbar_screen_title">Գործիքների վահանակ</string>
+  <string name="morphe_toolbar_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն գործիքների վահանակում</string>
 </resources>

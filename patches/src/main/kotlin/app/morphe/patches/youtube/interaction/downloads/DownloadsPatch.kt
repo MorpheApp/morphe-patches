@@ -58,9 +58,11 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
@@ -317,7 +319,9 @@ val downloadsPatch = patch(
                         if-eqz p0, :keep_player_response
                         invoke-interface { p0 }, $playerResponseModelType->${playerResponseGetter.name}()$playerResponseType
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;)[B
+                        # The storyboards are the seekbar thumbnails of the saved video.
+                        const/4 v1, 0x1
+                        invoke-static { v0, v1 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;Z)[B
                         move-result-object v0
                         if-eqz v0, :keep_player_response
 
@@ -342,17 +346,24 @@ val downloadsPatch = patch(
             }
             it.classDef.methods.add(helperMethod)
 
-            // Replace the player response before it is cached and returned.
-            val cachePut = it.instructionMatches.last()
-            val playerResponseModelRegister = cachePut.instruction.registersUsed[2]
+            // Replace the player response after it is fetched, before it is cached and returned.
+            it.method.apply {
+                findInstructionIndicesReversedOrThrow(
+                    offlinePlayerResponseFetchCall(playerResponseModelType)
+                ).forEach { index ->
+                    val moveResultIndex = index + 1
+                    val playerResponseModelRegister =
+                        getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-            it.method.addInstructions(
-                cachePut.index,
-                """
-                    invoke-static/range { v$playerResponseModelRegister .. v$playerResponseModelRegister }, $helperMethod
-                    move-result-object v$playerResponseModelRegister
-                """
-            )
+                    addInstructions(
+                        moveResultIndex + 1,
+                        """
+                            invoke-static/range { v$playerResponseModelRegister .. v$playerResponseModelRegister }, $helperMethod
+                            move-result-object v$playerResponseModelRegister
+                        """
+                    )
+                }
+            }
         }
 
         // Start saved videos played from Downloads at the position saved in Downloads.

@@ -43,10 +43,10 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SingleColumnWatchNextResults;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.LoadVideoPatch;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
@@ -1207,6 +1207,17 @@ public final class NativePlaylistQueuePatch {
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
+    }
+
+    /**
+     * @return If the playback queue plays this queue, which keeps the playlist ID of a converted playlist.
+     */
+    public static boolean isQueuePlaying() {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || queue == null) {
+            return false;
+        }
+        NativePlayback playback = nativePlaybackRef.get();
+        return playback != null && playback.patch_isLocalQueue();
     }
 
     /**

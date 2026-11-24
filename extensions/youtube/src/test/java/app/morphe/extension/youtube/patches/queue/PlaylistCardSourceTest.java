@@ -19,7 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 
 public class PlaylistCardSourceTest {
     private static final String VIDEO = "abcdefghijk";

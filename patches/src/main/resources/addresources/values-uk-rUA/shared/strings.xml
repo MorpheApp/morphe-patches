@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Налаштування</string>
   <string name="morphe_settings_confirm_user_dialog_title">Ви впевнені, що хочете продовжити?</string>
   <string name="morphe_settings_save">Зберегти</string>
   <string name="morphe_settings_reset">Скинути</string>
@@ -87,7 +86,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Переклади</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальному стані</string>
   <string name="morphe_settings_about_contributors">Учасники</string>
-  <string name="morphe_settings_about_contributors_period">Останні 12 місяців</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">За весь час</string>
+  <string name="morphe_settings_about_contributors_6_months">6 місяців</string>
+  <string name="morphe_settings_about_contributors_3_months">3 місяці</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Період часу</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s користувачів</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Підтримувачі</string>
   <string name="morphe_settings_about_supporters_summary">Спонсори в Open Collective</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • Застосунок може випадково закриватися
 • Сповіщення можуть не працювати
 • Фонове відтворення може не працювати"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Відкрити системне меню \"Поділитися\"</string>
+  <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню \"Поділитися\" замість вбудованого, коли ви ділитеся вмістом</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Керування відкриттям посилань</string>
   <string name="morphe_link_handling_summary">Налаштувати відкриття посилань у цьому застосунку</string>

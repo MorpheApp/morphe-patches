@@ -21,7 +21,7 @@ public class JavaScriptEngineSupport {
             // Checks if the system WebView supports the JavaScript sandbox.
             sandBoxSupport = JavaScriptSandbox.isSupported();
         } catch (Exception ex) {
-            Logger.printException(() -> "JavaScriptSandbox support check failed", ex);
+            Logger.printDebug(() -> "JavaScriptSandbox support check failed", ex);
         }
         DEVICE_SUPPORTS_JS_ENGINE = sandBoxSupport;
 
