@@ -17,6 +17,7 @@
  * https://github.com/MorpheApp/morphe-patches/commit/017eac71a3f9542b8ad6221e3600797d6b97fae4
  * https://github.com/MorpheApp/morphe-patches/pull/1972
  * https://github.com/MorpheApp/morphe-patches/pull/4530
+ * https://github.com/MorpheApp/morphe-patches/pull/5264
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -45,12 +46,21 @@ import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.youtube.innertube.ElementTexts.CommentData;
 import app.morphe.extension.youtube.innertube.ElementTexts.Element;
 import app.morphe.extension.youtube.innertube.ElementTexts.ElementModel;
+import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommandHolder;
 import app.morphe.extension.youtube.innertube.ElementTexts.LockupMetadataViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataPart;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataRow;
+import app.morphe.extension.youtube.innertube.ElementTexts.PollOptionHolder;
+import app.morphe.extension.youtube.innertube.ElementTexts.PollPostData;
+import app.morphe.extension.youtube.innertube.ElementTexts.Post;
+import app.morphe.extension.youtube.innertube.ElementTexts.PostAuthor;
+import app.morphe.extension.youtube.innertube.ElementTexts.SharedPostViewModel;
+import app.morphe.extension.youtube.innertube.ElementTexts.ShelfPost;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupMetadata;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.VideoData;
+import app.morphe.extension.youtube.innertube.ElementTexts.VideoPostData;
+import app.morphe.extension.youtube.innertube.ElementTexts.ViewModelHolder;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.TitleCleanup;
 import app.morphe.extension.youtube.settings.Settings;
@@ -60,11 +70,14 @@ import app.morphe.extension.youtube.shared.PlayerType;
 /**
  * <pre>
  * Allows hiding home feed and search results based on video title keywords and/or channel names,
- * and hiding comments based on the comment text and/or the name of the author.
+ * hiding comments based on the comment text and/or the name of the author,
+ * and hiding community posts based on the post text and/or the name of the channel.
  *
  * The buffer of a video or a comment is its element, which includes the model of the element.
  * Only the texts of the model that are shown are searched: the title of the video, the line below
- * the title (channel name, views and date), the text of the comment and the name of the author.
+ * the title (channel name, views and date), the text of the comment and the name of the author,
+ * the text of the post, the name of the channel of the post, the options of a poll
+ * and the video of a post.
  * Other texts of the buffer are not searched, such as the menu items, the accessibility labels,
  * the search text of the search results and the texts of the comment buttons.
  *
@@ -80,6 +93,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
  *   These components do not include the video title or channel name, and they
  *   appear outside the filtered components so they are not caught.
  * - When using whole word syntax, some keywords may need additional pluralized variations.
+ * - Posts are not hidden on channel pages, on the community page of a channel and on the page of a post.
  * </pre>
  */
 @SuppressWarnings("unused")
@@ -96,9 +110,37 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      */
     private static final String HANDLE_PREFIX = "@";
 
+    /**
+     * Path that ends the path of the root element of a feed item, such as {@code identifier|hash|CellType|}.
+     */
+    private static final String ROOT_ELEMENT_PATH_END = "|CellType|";
+
+    /**
+     * Start and length of a channel id, which is the browse id of a channel page.
+     */
+    private static final String CHANNEL_ID_PREFIX = "UC";
+    private static final int CHANNEL_ID_LENGTH = 24;
+
     private final StringFilterGroup commentsFilter = new StringFilterGroup(
             Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
             "comment_thread.eml"
+    );
+
+    /**
+     * Root elements of the community posts. Only the root element holds the whole post.
+     */
+    private final StringFilterGroup postsFilter = new StringFilterGroup(
+            Settings.HIDE_KEYWORD_CONTENT_POSTS,
+            "images_post_responsive_root.e",
+            "images_post_root_slim.e",
+            "options_post_responsive_root.e",
+            "options_post_root.e",
+            // Post of a shelf of posts.
+            "post_base_wrapper_slim.e",
+            "shared_post_root.e",
+            "text_post_root_slim.e",
+            "videos_post_responsive_root.e",
+            "videos_post_root.e"
     );
 
     /**
@@ -234,8 +276,8 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     public KeywordContentFilter() {
-        super(); // commentsFilter is registered below because instance fields initialize after super().
-        addPathCallbacks(commentsFilter);
+        super(); // The groups are registered below because instance fields initialize after super().
+        addPathCallbacks(commentsFilter, postsFilter);
         // Keywords are parsed on first call to isFiltered().
     }
 
@@ -295,10 +337,14 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     @Override
     @Nullable
-    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+    protected String matchBuffer(byte[] buffer, CharSequence path, StringFilterGroup matchedGroup,
                                  ContextInterface contextInterface) {
         StringTrieSearch search = keywordSearch;
         if (search == null || search.numberOfPatterns() == 0) {
+            return null;
+        }
+
+        if (matchedGroup == postsFilter && (!Utils.endsWith(path, ROOT_ELEMENT_PATH_END) || isPostsPage())) {
             return null;
         }
 
@@ -326,17 +372,25 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      * match the same keywords. Elements of the texts and the containers have no model.
      *
      * @return The model of the element or of the first element inside it, in the order of the
-     *         elements, that has the model of a video or a comment. Null if none.
+     *         elements, that has the model of a video, a comment or a post. Null if none.
      *         Models inside other models are not used, such as the Short of the
      *         Remix menu item of a video.
      */
     @Nullable
     private static ElementModel findModel(Element element) {
         ElementModel model = element.getType().getComponentType().getModel();
+        ViewModelHolder viewModel = model.getYoutubeModel().getViewModel();
         if (model.hasVideoWithContextModel()
-                || model.getYoutubeModel().getViewModel().hasShortsLockupViewModel()
+                || viewModel.hasShortsLockupViewModel()
                 || model.hasCommentModel()
-                || model.hasCompactVideoMetadataModel()) {
+                || model.hasCompactVideoMetadataModel()
+                || getPost(model) != null
+                || model.hasVideoPostModel()
+                || model.hasVideoPostResponsiveModel()
+                || model.hasPollPostModel()
+                || model.hasPollPostResponsiveModel()
+                || model.hasShelfPostModel()
+                || viewModel.hasSharedPostViewModel()) {
             return model;
         }
 
@@ -351,27 +405,46 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     /**
+     * Keywords that match the channel name would hide all posts of the posts page of a channel,
+     * which then stays empty while YouTube loads all the posts of the channel.
+     *
+     * @return If a page that shows the posts of a channel or a post is shown, where posts are not hidden:
+     *         a channel page, the community page of a channel or the page of a post.
+     */
+    private static boolean isPostsPage() {
+        if (LayoutComponentsFilter.isCommunityPostPage()) {
+            return true;
+        }
+
+        String browseId = LayoutComponentsFilter.browseId;
+        return browseId.length() == CHANNEL_ID_LENGTH && browseId.startsWith(CHANNEL_ID_PREFIX)
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen();
+    }
+
+    /**
+     * @return The post of a model of a post that has no attachment with texts. Null if none.
+     */
+    @Nullable
+    private static Post getPost(ElementModel model) {
+        if (model.hasTextPostModel()) {
+            return model.getTextPostModel().getData().getPost();
+        }
+        if (model.hasImagesPostModel()) {
+            return model.getImagesPostModel().getData().getPost();
+        }
+        if (model.hasImagesPostResponsiveModel()) {
+            return model.getImagesPostResponsiveModel().getData().getPost();
+        }
+        return null;
+    }
+
+    /**
      * @return If a keyword matches a text of the model that is shown,
-     *         or the channel handle of a video if the keyword is a handle.
+     *         or the channel handle of a video or a post if the keyword is a handle.
      */
     private static boolean matchesShownTexts(StringTrieSearch search, ElementModel model, KeywordMatch match) {
         if (model.hasVideoWithContextModel()) {
-            VideoData video = model.getVideoWithContextModel().getData().getVideoData();
-            LockupMetadataViewModel metadata = video.getLockupMetadata().getLockupMetadataViewModel();
-            if (matches(search, metadata.getTitle().getContent(), match)) {
-                return true;
-            }
-            for (MetadataRow row : metadata.getMetadata().getContentMetadataViewModel().getMetadataRowsList()) {
-                for (MetadataPart part : row.getMetadataPartsList()) {
-                    if (matches(search, part.getText().getContent(), match)) {
-                        return true;
-                    }
-                }
-            }
-
-            match.searchingHandle = true;
-            return matches(search, video.getAvatar().getEndpoint().getInnertubeCommand()
-                    .getBrowseEndpoint().getCanonicalBaseUrl(), match);
+            return matchesVideo(search, model.getVideoWithContextModel().getData().getVideoData(), match);
         }
 
         if (model.hasCommentModel()) {
@@ -384,16 +457,116 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             return matches(search, model.getCompactVideoMetadataModel().getMetadata().getTitle(), match);
         }
 
-        ShortsLockupViewModel shorts = model.getYoutubeModel().getViewModel().getShortsLockupViewModel();
+        Post post = getPost(model);
+        if (post != null) {
+            return matchesPost(search, post, match);
+        }
+        if (model.hasVideoPostModel()) {
+            return matchesVideoPost(search, model.getVideoPostModel().getData(), match);
+        }
+        if (model.hasVideoPostResponsiveModel()) {
+            return matchesVideoPost(search, model.getVideoPostResponsiveModel().getData(), match);
+        }
+        if (model.hasPollPostModel()) {
+            return matchesPollPost(search, model.getPollPostModel().getData(), match);
+        }
+        if (model.hasPollPostResponsiveModel()) {
+            return matchesPollPost(search, model.getPollPostResponsiveModel().getData(), match);
+        }
+        if (model.hasShelfPostModel()) {
+            ShelfPost shelfPost = model.getShelfPostModel().getData().getPost();
+            return matches(search, shelfPost.getBody().getText().getText().getContent(), match)
+                    || matchesAuthor(search, shelfPost.getHeader().getAuthorRow().getAuthor(), match);
+        }
+
+        ViewModelHolder viewModel = model.getYoutubeModel().getViewModel();
+        if (viewModel.hasSharedPostViewModel()) {
+            return matchesSharedPost(search, viewModel.getSharedPostViewModel(), match);
+        }
+
+        ShortsLockupViewModel shorts = viewModel.getShortsLockupViewModel();
         ShortsLockupMetadata metadata = shorts.getMetadata();
         if (matches(search, shorts.getTitle().getText().getContent(), match)
                 || matches(search, metadata.getChannelName().getContent(), match)) {
             return true;
         }
 
+        return matchesHandle(search, metadata.getAvatar().getAvatarViewModel().getOnTap(), match);
+    }
+
+    /**
+     * @return If a keyword matches the title or the line below the title of a video,
+     *         or the channel handle if the keyword is a handle.
+     */
+    private static boolean matchesVideo(StringTrieSearch search, VideoData video, KeywordMatch match) {
+        LockupMetadataViewModel metadata = video.getLockupMetadata().getLockupMetadataViewModel();
+        if (matches(search, metadata.getTitle().getContent(), match)) {
+            return true;
+        }
+        for (MetadataRow row : metadata.getMetadata().getContentMetadataViewModel().getMetadataRowsList()) {
+            for (MetadataPart part : row.getMetadataPartsList()) {
+                if (matches(search, part.getText().getContent(), match)) {
+                    return true;
+                }
+            }
+        }
+
+        return matchesHandle(search, video.getAvatar().getEndpoint(), match);
+    }
+
+    private static boolean matchesPost(StringTrieSearch search, Post post, KeywordMatch match) {
+        return matches(search, post.getText().getText().getContent(), match)
+                || matchesAuthor(search, post.getHeader().getAuthor(), match);
+    }
+
+    private static boolean matchesVideoPost(StringTrieSearch search, VideoPostData data, KeywordMatch match) {
+        return matchesPost(search, data.getPost(), match)
+                || matchesVideo(search, data.getAttachment().getVideo(), match);
+    }
+
+    private static boolean matchesPollPost(StringTrieSearch search, PollPostData data, KeywordMatch match) {
+        if (matchesPost(search, data.getPost(), match)) {
+            return true;
+        }
+        for (PollOptionHolder option : data.getAttachment().getPoll().getOptionsList()) {
+            if (matches(search, option.getOption().getText(), match)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return If a keyword matches the text or the channel of the post that shares a post,
+     *         or the shared post.
+     */
+    private static boolean matchesSharedPost(StringTrieSearch search, SharedPostViewModel sharedPost,
+                                             KeywordMatch match) {
+        if (matches(search, sharedPost.getHeader().getText().getContent(), match)
+                || matchesHandle(search, sharedPost.getAvatar().getAvatarViewModel().getOnTap(), match)) {
+            return true;
+        }
+
+        ElementModel model = findModel(sharedPost.getOriginal().getElementHolder().getElement());
+        return model != null && matchesShownTexts(search, model, match);
+    }
+
+    private static boolean matchesAuthor(StringTrieSearch search, PostAuthor author, KeywordMatch match) {
+        return matches(search, author.getName(), match)
+                || matchesHandle(search, author.getEndpoint(), match);
+    }
+
+    /**
+     * @param endpoint Command that opens a channel.
+     * @return If a keyword that is a handle matches the handle of the channel.
+     */
+    private static boolean matchesHandle(StringTrieSearch search, InnertubeCommandHolder endpoint,
+                                         KeywordMatch match) {
         match.searchingHandle = true;
-        return matches(search, metadata.getAvatar().getAvatarViewModel().getOnTap().getInnertubeCommand()
+        final boolean matched = matches(search, endpoint.getInnertubeCommand()
                 .getBrowseEndpoint().getCanonicalBaseUrl(), match);
+        match.searchingHandle = false;
+        return matched;
     }
 
     private static boolean matches(StringTrieSearch search, String text, KeywordMatch match) {
@@ -406,6 +579,9 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     private void recordHide(StringFilterGroup matchedGroup, byte[] buffer, ContextInterface contextInterface) {
+        // Posts have no video id, and the hide statistics have no source for posts.
+        if (matchedGroup == postsFilter) return;
+
         Source source = detectSource(matchedGroup, contextInterface);
         String videoId = getVideoIdForSource(source, buffer);
         // If ID extraction fails the hide still happens; only stats are skipped

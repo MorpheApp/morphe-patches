@@ -674,17 +674,26 @@ public final class LayoutComponentsFilter extends Filter {
         return Utils.endsWith(path, "|CellType|");
     }
 
+    /**
+     * YouTube now also shows community posts on a dedicated community page for channels,
+     * and hiding its posts prevents any posts from loading (the page shows a loading
+     * spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
+     * The page is found by its browse id, as the back button it is navigated with is also
+     * visible on other pages, such as the search results, and on the page below the watch page.
+     * The watch page, with its related videos, comments and other panels, covers the page
+     * below it, also when the video is opened from the community page
+     * (https://github.com/MorpheApp/morphe-patches/issues/4170).
+     *
+     * @return If the community page of a channel or the page of a post is shown,
+     *         where posts must not be hidden.
+     */
+    static boolean isCommunityPostPage() {
+        return (COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen();
+    }
+
     private static boolean isCommunityPostHidden(ContextInterface contextInterface) {
-        // YouTube now also shows community posts on a dedicated community page for channels,
-        // and hiding its posts prevents any posts from loading (the page shows a loading
-        // spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
-        // The page is found by its browse id, as the back button it is navigated with is also
-        // visible on other pages, such as the search results, and on the page below the watch page.
-        // The watch page, with its related videos, comments and other panels, covers the page
-        // below it, also when the video is opened from the community page
-        // (https://github.com/MorpheApp/morphe-patches/issues/4170).
-        if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
-                && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+        if (isCommunityPostPage()) {
             return false;
         }
 
