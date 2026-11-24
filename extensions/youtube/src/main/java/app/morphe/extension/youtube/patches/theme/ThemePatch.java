@@ -69,7 +69,6 @@ public class ThemePatch extends BaseThemePatch {
 
     private static final int[] DARK_VALUES = {
             0xFF282828, // Explore drawer background.
-            0xFF212121, // Comments chip background.
             0xFF181818, // Music related results panel background.
             0xFF0F0F0F, // Comments chip background (new layout).
             0xFA212121, // Video chapters list background.
