@@ -309,9 +309,9 @@ Limitations:
     <string name="morphe_hide_videos_by_duration_about_summary">"Home / Subscriptions / Search are filtered to hide videos by their duration
 
 Limitations:
-• The duration is compared in whole minutes
-• Live streams and Shorts are not hidden
-• Videos whose duration is unknown are not hidden"</string>
+• Live streams, Shorts, playlists and mixes are not hidden
+• Videos with an unknown duration are not hidden"</string>
+    <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_hide_videos_by_duration_toast_broad">Duration filter will hide all videos</string>
 
     <string name="morphe_hide_stats_category_title">Stats</string>
