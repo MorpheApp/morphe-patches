@@ -73,7 +73,7 @@ public final class ViewCountFilter extends BufferPhraseFilter {
 
     @Override
     @Nullable
-    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+    protected String matchBuffer(byte[] buffer, CharSequence path, StringFilterGroup matchedGroup,
                                  ContextInterface contextInterface) {
         final long minimum = Settings.HIDE_VIDEOS_BY_VIEWS_MINIMUM.get();
         final long maximum = Settings.HIDE_VIDEOS_BY_VIEWS_MAXIMUM.get();

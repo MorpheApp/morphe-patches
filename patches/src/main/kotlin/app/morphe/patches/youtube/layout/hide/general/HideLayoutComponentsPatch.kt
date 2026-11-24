@@ -274,6 +274,7 @@ val hideLayoutComponentsPatch = patch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_hide_keyword_content_comments"),
+                    SwitchPreference("morphe_hide_keyword_content_posts"),
                     SwitchPreference("morphe_hide_keyword_content_home"),
                     SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_subscriptions"),

@@ -261,7 +261,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     @Override
     @Nullable
-    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+    protected String matchBuffer(byte[] buffer, CharSequence path, StringFilterGroup matchedGroup,
                                  ContextInterface contextInterface) {
         ByteTrieSearch bl = blocklistSearch;
         final boolean blActive = bl != null && blocklistActiveForFeedContext(contextInterface);
