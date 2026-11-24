@@ -139,7 +139,7 @@ internal object MusicActivityOnCreateOptionsMenuFingerprint : Fingerprint(
  */
 internal object ToolbarServerButtonsFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("Landroid/view/Menu;"),
+    // 9.47+ has a second parameter with the list of the buttons.
     filters = listOf(
         methodCall(smali = "Ljava/util/List;->isEmpty()Z"),
         methodCall(smali = "Landroid/view/Menu;->clear()V"),
