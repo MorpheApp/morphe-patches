@@ -440,7 +440,7 @@ internal fun baseThemePatch(
 
         executeBlock()
 
-        lithoColorOverrideHook(extensionClassDescriptor, "getValue")
+        lithoColorOverrideHook(extensionClassDescriptor, "getValue", hasDrawable = true)
     }
 }
 

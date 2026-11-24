@@ -1543,7 +1543,7 @@ public class FeedCardLayoutPatch {
                     ViewParent parent = view.getParent();
                     if (parent instanceof RecyclerView recyclerView) {
                         // The other items of the feed are cards only with the card layout.
-                        if (CARD_LAYOUT && recyclerView.getId() == getFeedId()) {
+                        if (listsDrawCards() && recyclerView.getId() == getFeedId()) {
                             // The background is mounted before the content of the item,
                             // so a bar of chips is found only after the item is mounted.
                             if (view instanceof ViewGroup group && group.getChildCount() == 0) {
