@@ -1249,6 +1249,19 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- layout.captions.transcriptPatch -->
     <string name="morphe_fix_transcript_title">Fix transcript</string>
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
+
+    <!-- layout.captions.copyTranscriptPatch -->
+    <string name="morphe_copy_transcript_category_title">Copy transcript</string>
+    <string name="morphe_copy_transcript_title">Copy transcript</string>
+    <string name="morphe_copy_transcript_summary">Adds a button to the transcript panel that copies the transcript in the language of the captions</string>
+    <string name="morphe_copy_transcript_timestamps_title">Include timestamps</string>
+    <string name="morphe_copy_transcript_timestamps_summary">Each line of a copied transcript starts with its time</string>
+    <string name="morphe_copy_transcript_shorts_flyout_title">Show in Shorts menus</string>
+    <string name="morphe_copy_transcript_shorts_flyout_summary">Adds a Copy transcript item to the menus of Shorts</string>
+    <string name="morphe_copy_transcript_copied">Transcript copied to clipboard</string>
+    <string name="morphe_copy_transcript_empty">No transcript available</string>
+    <string name="morphe_copy_transcript_error">Could not copy transcript</string>
+
     <string name="morphe_captions_in_pip_title">Show captions in picture-in-picture</string>
 
     <!-- layout.captions.captionViewportPatch -->
