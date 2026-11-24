@@ -13,6 +13,8 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -98,5 +100,21 @@ internal fun enableSeekingUiGetterFingerprint(fieldName: String) = Fingerprint(
             type = "Z"
         ),
         opcode(Opcode.RETURN, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Inflates the seek backwards button of a video that plays in a feed, the button and the round
+ * background of its container. The last instruction match is the container. 21.24+
+ */
+internal object SeekBackwardsToggleInflateFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "seek_backwards_toggle_container_stub"),
+        methodCall(
+            smali = "Landroid/view/ViewStub;->inflate()Landroid/view/View;",
+            location = MatchAfterWithin(8)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
