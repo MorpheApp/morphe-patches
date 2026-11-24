@@ -111,14 +111,25 @@ public class LoopVideoButton {
         if (legacy == null) return;
         Utils.verifyOnMainThread();
 
+        toggleLoopState();
+        animateButtonTransition(buttonView, getTargetIcon());
+    }
+
+    /**
+     * Toggles the loop from outside the button, such as from the launcher of the hold gesture.
+     */
+    public static void toggleLoop() {
+        toggleLoopState();
+        updateButtonIcon();
+    }
+
+    private static void toggleLoopState() {
         final boolean newState = !Settings.LOOP_VIDEO.get();
         setLoopButton(newState);
 
         Utils.showSnackbarShort(str(newState
                 ? "morphe_loop_video_button_toast_on"
                 : "morphe_loop_video_button_toast_off"));
-
-        animateButtonTransition(buttonView, getTargetIcon());
     }
 
     /**

@@ -58,6 +58,24 @@ public class KanaRomanizerTest {
     }
 
     @Test
+    public void romanizeWoAndModernDigraphs() {
+        assertEquals("o", KanaRomanizer.romanize("を"));
+        assertEquals("o", KanaRomanizer.romanize("ヲ"));
+        assertEquals("fa", KanaRomanizer.romanize("ファ"));
+        assertEquals("fi", KanaRomanizer.romanize("フィ"));
+        assertEquals("fe", KanaRomanizer.romanize("フェ"));
+        assertEquals("fo", KanaRomanizer.romanize("フォ"));
+        assertEquals("ti", KanaRomanizer.romanize("ティ"));
+        assertEquals("di", KanaRomanizer.romanize("ディ"));
+        assertEquals("she", KanaRomanizer.romanize("シェ"));
+        assertEquals("je", KanaRomanizer.romanize("ジェ"));
+        assertEquals("che", KanaRomanizer.romanize("チェ"));
+        assertEquals("va", KanaRomanizer.romanize("ヴァ"));
+        assertEquals("wi", KanaRomanizer.romanize("ウィ"));
+        assertEquals("tsa", KanaRomanizer.romanize("ツァ"));
+    }
+
+    @Test
     public void romanizeEmpty() {
         assertEquals("", KanaRomanizer.romanize(""));
     }

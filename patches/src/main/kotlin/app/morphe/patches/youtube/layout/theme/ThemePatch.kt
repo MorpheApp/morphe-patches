@@ -34,6 +34,7 @@ import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
+import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.layout.theme.patchedThemeColorDark
 import app.morphe.patches.shared.layout.theme.patchedThemeColorLight
 import app.morphe.patches.shared.layout.theme.usePatchedThemeColor
@@ -239,11 +240,6 @@ private const val LIGHT_STATUS_BAR_ITEM_NAME = "android:windowLightStatusBar"
 private val VALUES_DIRECTORY_REGEX = Regex("""values(-v\d+)?""")
 
 /**
- * Parent of the launcher theme declared in a styles file, or null if the file does not declare it.
- */
-private fun ResourceXml.findLauncherThemeParent(): String? = resourceOrNull(LAUNCHER_THEME_NAME)?.attribute("parent")
-
-/**
  * Sets a light status bar in the launcher theme, and declares the theme if missing.
  */
 private fun ResourceXml.setLauncherThemeLightStatusBar() {
@@ -356,7 +352,10 @@ val themePatch = baseThemePatch(
                     val directory = stylesPath.removePrefix("res/").substringBefore('/')
                     if (!directory.matches(VALUES_DIRECTORY_REGEX)) return@forEach
 
-                    val parent = resourceXml(stylesPath).use { it.findLauncherThemeParent() } ?: return@forEach
+                    // Parent of the launcher theme declared in the styles file, if the file declares it.
+                    val parent = resourceXml(stylesPath).use {
+                        it.resourceOrNull(LAUNCHER_THEME_NAME)?.attribute("parent")
+                    } ?: return@forEach
 
                     val nightStylesPath = "res/${directory.replace("values", "values-night")}/styles.xml"
                     resourceXml(nightStylesPath, copy = false).use { nightStyles ->
@@ -403,6 +402,9 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
+        // The feed video cards have the same color as backgrounds that are themed.
+        lithoDrawableColorHook("$EXTENSION_CLASS->getFeedCardColor(Landroid/graphics/drawable/Drawable;I)I")
+
         // A patched theme color cannot be changed, so there is nothing to select.
         val colorPreferences = if (usePatchedThemeColor) {
             emptyArray<BasePreference>()

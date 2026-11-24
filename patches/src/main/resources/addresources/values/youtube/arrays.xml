@@ -157,6 +157,7 @@
         <item>TV Simply</item>
         <item>visionOS</item>
         <item>visionOS Experimental</item>
+        <item>Web</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_CREATOR</item>
@@ -168,6 +169,7 @@
         <item>TV_SIMPLY</item>
         <item>VISIONOS_1_02</item>
         <item>VISIONOS_1_06</item>
+        <item>WEB</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_player_js_variant_entries">
         <item>House Brand</item>
@@ -244,6 +246,54 @@
         <item>STEP_005</item>
         <item>STEP_010</item>
         <item>STEP_025</item>
+    </string-array>
+
+    <!-- interaction.holdgesture.holdGesturePatch -->
+    <string-array name="morphe_hold_gesture_speed_step_entries">
+        <item>0.05x</item>
+        <item>0.10x</item>
+        <item>0.25x</item>
+        <item>0.50x</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_speed_step_entry_values">
+        <item>STEP_005</item>
+        <item>STEP_010</item>
+        <item>STEP_025</item>
+        <item>STEP_050</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_speed_sensitivity_entries">
+        <item>@string/morphe_hold_gesture_speed_sensitivity_entry_1</item>
+        <item>@string/morphe_hold_gesture_speed_sensitivity_entry_2</item>
+        <item>@string/morphe_hold_gesture_speed_sensitivity_entry_3</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_speed_sensitivity_entry_values">
+        <item>LOW</item>
+        <item>NORMAL</item>
+        <item>HIGH</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_slot_count_entries">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_slot_count_entry_values">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_action_entries">
+        <item>@string/morphe_hold_gesture_launcher_action_screen_lock</item>
+        <item>@string/morphe_hold_gesture_launcher_action_loop</item>
+        <item>@string/morphe_hold_gesture_launcher_action_screenshot</item>
+        <item>@string/morphe_hold_gesture_launcher_action_watch_later</item>
+        <item>@string/morphe_hold_gesture_launcher_action_timestamp_url</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_action_entry_values">
+        <item>SCREEN_LOCK</item>
+        <item>LOOP</item>
+        <item>SCREENSHOT</item>
+        <item>WATCH_LATER</item>
+        <item>TIMESTAMP_URL</item>
     </string-array>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
@@ -403,6 +453,18 @@
     <string-array name="morphe_post_buttons_layout_entry_values">
         <item>SERVER</item>
         <item>ENFORCED</item>
+    </string-array>
+
+    <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+    <string-array name="morphe_return_youtube_username_display_format_entries">
+        <item>@string/morphe_return_youtube_username_display_format_entry_1</item>
+        <item>@string/morphe_return_youtube_username_display_format_entry_2</item>
+        <item>@string/morphe_return_youtube_username_display_format_entry_3</item>
+    </string-array>
+    <string-array name="morphe_return_youtube_username_display_format_entry_values">
+        <item>CHANNEL_NAME</item>
+        <item>CHANNEL_NAME_AND_HANDLE</item>
+        <item>HANDLE_AND_CHANNEL_NAME</item>
     </string-array>
 
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
@@ -1264,5 +1326,19 @@
     <string-array name="morphe_custom_seekbar_thumb_scale_type_entry_values" translatable="false">
         <item>FIT_SEEKBAR</item>
         <item>ORIGINAL</item>
+    </string-array>
+
+    <!-- misc.privacy.ghostplay.ghostPlayPatch -->
+    <string-array name="morphe_ghost_play_history_limit_entries">
+        <item>@string/morphe_ghost_play_history_limit_100</item>
+        <item>@string/morphe_ghost_play_history_limit_500</item>
+        <item>@string/morphe_ghost_play_history_limit_2000</item>
+        <item>@string/morphe_ghost_play_history_limit_unlimited</item>
+    </string-array>
+    <string-array name="morphe_ghost_play_history_limit_entry_values" translatable="false">
+        <item>100</item>
+        <item>500</item>
+        <item>2000</item>
+        <item>0</item>
     </string-array>
 </resources>

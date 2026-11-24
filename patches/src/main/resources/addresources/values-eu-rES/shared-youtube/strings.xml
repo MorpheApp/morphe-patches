@@ -78,6 +78,7 @@ Egiaztatu pakete-izena zuzena dela eta aplikazioa instalatuta dagoela"</string>
   <string name="morphe_export_download_folder_missing">Ezin izan da %s esportazio karpeta aurkitu</string>
   <string name="morphe_export_download_flyout_title">Gailura esportatu</string>
   <string name="morphe_export_download_canceled">Esportazioa bertan behera utzi da</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pertsonalizatua</string>
   <string name="morphe_custom_branding_icon_title">Aplikazioaren ikonoa</string>
@@ -139,14 +140,16 @@ Sakatu AD to Android System WebView irekitzeko."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Saiatu aktibatzen: Bideo-fluxuak imitatu &gt; Android VR saioa hasi</string>
   <string name="morphe_spoof_video_streams_client_type_title">Bezero lehenetsia</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Erabili QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Erabili QuackJS yt-dlp-ejs-en (WebView) ordez deobfuskazioa egiteko</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR saioa hasi</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-k saio bakankaia bat eskatzen du. Sakatu hemen jarraitzeko</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Android VR-en saioa hasita dago gaur egun</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' sarrera</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-k saio bakarra eta berezia eskatzen du. Sakatu hemen jarraitzeko</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Une honetan \'Android VR\'-en saioa hasita dago</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' Android VR-era</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-en saioa hasi</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR saioa hasteak erreprodukzio arazoak konpondu ditzake erabiltzaile batzuentzat
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' \'Android VR\'-era</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'-n saioa hasi bizi izan da</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'-n saioa hastea konpondu ditzake erreprodukzio arazoak erabiltzaile batzuentzat
 
 Saioa hasteko, sakatu behean jarraitu"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Saioa amaitu</string>
@@ -167,35 +170,36 @@ Saioa hasteko, sakatu behean jarraitu"</string>
 • Morphe konfigurazioek ez dute Android VR autentifikazioa inportatu/esportatuko
 • Aplikazio hau 6 hilabetez erabili gabe badago, Googlek autentifikazio hau kenduko du
 • Google pasahitza aldatzen baduzu edo gailu hau Google ezarpenetatik kentzen baduzu, berriro saioa hasi beharko duzu"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web Mobile bidez saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web bidean saioa hasi insurgents</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Aukeratua: saioa hasi YouTube webgunetan zure kontuarekin bideoaka izateko. Egun hemen jarraitzeko</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Gaur egun Web Mobile bidez saioa hasita dago</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Unean YouTube webgunean saioa hasita dagozu</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' Mobile Web-era</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sartu Mobile Web-en</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-ek bideoak errepasatzen ditu saioa itxituta, edo YouTube webgunean saioa hasituta
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' Web bezero batera</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube webgunean saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web bezeroek bideoak erreparatuta gabe edo YouTube webgunean saioa hasituta joku ditzakete
 
-• Saioa hasituta, kontu bat behar duten bideoak errepasatu daitezke, adina mugatutako bideoak adibidez
-• Google-en sarrera orria aplikazio honetan irekitzen da
-• Sarrera erabilitzen da errepasatzen dituzun bideoak lortzeko soilik
-• Sarrera gailu honetan soilik gordetzen da
+• Saioa hasituta, kontu bat behar duten bideoak joku daitezke, adina mugatutako bideoak adibidez
+• Google-ren saioa hasten duten orria aplikazio honetan irekiko da
+• Saioa hasten dena joku ditzukezunen bideoak lortzeko soilik erabiltzen da
+• Saioa hasten dena gailu honetan soilik gordetzen da
+• Web bezero bakoitzak bere saioa du, hautatutako bezero lehenetsugarriarentzat
 
-Sartzeko, sakatu beheko jarraitu botoia"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sarrera gordeta da
+Saioa hasteko, sakatu beheko jarraipena"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sarrera gorde da
 
-• Zure Morphe konfigurazioek ez dute Mobile Web sarrera inportatuko/esportatuko
-• Googlek sarrera amaituen gero, bideoak saioa hasi gabea izango dira berriz saioa hasi arte
-• Saioa amaitzeak gailu hau YouTube webgunean ere amaituko du"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sarrera iraungi da, saiatu berriro Mobile Web-en saioa hasten</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web saioa amaituta</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView ez dago eskuragarri. Instalatu edo aktibatu saioa hasteko</string>
+• Zure Morphe konfigurazioek ez dute YouTube webguneko sarrera inportatuko/esportatuko
+• Googlek sarrera amaituta, bideoak saioa hasi gabe joko dira berriro saioa hasi arte
+• Saioa itxilota, gailu honek ere YouTube webguneko saioa itxildu egingo du"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web sarrera iraungi da, saiatu berriro saioa hasten</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube webguneko saioa itxita</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' eskuragarri ez da. Instalatu edo aktibatu saioa hasteko</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 une batez ez dago erabilgarri (APIak denbora gehiegi behar izan du)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR saioa iraungi da, saiatu berriro VR-n saioa hasten</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' saioa iraungi da, saiatu berriro VR-n saioa hasten</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 une batez ez dago erabilgarri (egoera %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 une batez ez dago erabilgarri</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Ezin da VR-n saioa hasi, webguneko autentifikazioa ez da onartu</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ezin da VR-n saioa hasi: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR saioa amaitu da</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\'-en saioa amaitu da</string>
   <string name="morphe_oauth2_toast_invalid">VR saio-tokena ez da baliozkoa, saiatu berriro VR-n saioa hasten</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Jakinarazpenen multimedia kontrolak</string>
@@ -213,8 +217,15 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_seek_notification_media_length_invalid">Bilaketa luzerak 1 eta %s segundo artekoa izan behar du. Lehenetsia erabiliko da</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desaktibu QUIC protokoloa</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Lehenetsi bideo kalitatea</string>
+  <string name="morphe_prioritize_video_quality_summary">Eskuragarri dagoen bideo kalitate altuena kodekaren eraginkortasunaren gainetik lehenesten du</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ezarpen hau desaktibatuta badago, bideo zaharrek ez dute kalitate aukerarik erakutsi ahal izango</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Desaktibatu DRC audioa</string>
+  <string name="morphe_disable_drc_audio_stream_title">Desaktibatu DRC audioa</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Jualdu audio originala, narasi dinaminiko konpresatuko bertsioaren ordez</string>
+  <string name="morphe_disable_loudness_normalization_title">Desaktibu bolumen normalizazioa</string>
+  <string name="morphe_disable_loudness_normalization_summary">Jualdu audio gogorra bere bolumen originalean, maila estandar batean jaitsi beharrean</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Audioren jatorrizko hizkuntza behartu</string>
   <string name="morphe_force_original_audio_summary">Bideoaren jatorrizko audio-pista beti erreproduzitzen du, bertsio doblatua erabili beharrean</string>
@@ -223,6 +234,32 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_skip_silence_summary">Bideo-audioko isiltasun-tarteak automatikoki saltatzen ditu</string>
   <string name="morphe_skip_silence_minimum_pause_title">Pausaren gutxieneko luzera</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Luzera honetako edo luzeagoak diren pausak soilik laburtzen dira. Hurrengo bideoa hasten denean aplikatzen da</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Bideo efektua</string>
+  <string name="morphe_video_effect_entry_none">Itzalita</string>
+  <string name="morphe_video_effects_custom_title">Editatu bideo efektuak</string>
+  <string name="morphe_video_effects_custom_summary">Aldatu, bizizatu, ezbatu edo gehitu bideo efektuak. Efektuak shader kodeak dira, beraz, AI chatbot batek berriak idatzi ditzake</string>
+  <string name="morphe_video_effects_custom_empty">Ez da bideo efekturik. Sakatu Efektua gehitu bat egiteko.</string>
+  <string name="morphe_video_effects_custom_add">Efektua gehitu</string>
+  <string name="morphe_video_effects_custom_restore">Lehenetsiak berreskuratu</string>
+  <string name="morphe_video_effects_custom_add_title">Efektu berria</string>
+  <string name="morphe_video_effects_custom_edit_title">Efektua editatu</string>
+  <string name="morphe_video_effects_custom_name_hint">Izena</string>
+  <string name="morphe_video_effects_custom_name_empty">Sartu efektuaren izen bat</string>
+  <string name="morphe_video_effects_custom_name_exists">Izen honekin efektu bat dagoeneko existitzen da</string>
+  <string name="morphe_video_effects_custom_copy_code">Kodea kopiatu</string>
+  <string name="morphe_video_effects_custom_error_title">Efektuak errore bat du</string>
+  <string name="morphe_video_effects_custom_error_message">"Bideoak efekturik gabe erakutsiko dira kodea konpondu arte. Eman errore hau kodea idatzi duen AI-ari:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kodea funtzio baten edo komentario baten barruan amaitzen da, beraz, kopiatu edoitsatu zeinean mozketu egin zen ziurren. Itsatsi itzulia %d karakteretan mozketu daiteke.
+
+AIari kode laburragoa eskatu edo kodea zatietan itsatsi."</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopiatze errorea</string>
+  <string name="morphe_video_effects_custom_save_anyway">Gorde hala ere</string>
+  <string name="morphe_video_effects_custom_delete">Ezabatu</string>
+  <string name="morphe_video_effects_custom_delete_title">Efektua ezabatu?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s ezabatuko da.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Sare proxya</string>
   <string name="morphe_proxy_screen_summary">Bideratu onartutako sare-eskariak proxy baten bidez</string>
@@ -253,7 +290,7 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_replace_music_with_youtube_title">Aldatu partekatze-estekak youtube.com-etara</string>
   <string name="morphe_replace_music_with_youtube_summary">Partekatutako esteketan music.youtube.com youtube.com-z ordezkatzen du</string>
   <string name="morphe_replace_links_with_shortener_title">Aldatu partekatze estekak youtu.be-ra</string>
-  <string name="morphe_replace_links_with_shortener_summary">Bideoek youtu.be URL formatu laburtua erabiltzera behartzen ditu</string>
+  <string name="morphe_replace_links_with_shortener_summary">Bideoek \'youtu.be\' URL formatu laburtua erabiltzera behartzen ditu</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatiko</string>
@@ -265,19 +302,16 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_video_quality_default_mobile_title">Bideo kalitate lehenetsia sare mugikorrean</string>
   <string name="morphe_remember_video_quality_toast_mobile">Lehenetsitako mugikorreko kalitatea aldatu da: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Lehenetsitako Wi-Fi kalitatea aldatu da: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
-  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho logeatzea</string>
   <string name="morphe_debug_litho_entry_disabled">Desaktibatuta</string>
   <string name="morphe_debug_litho_entry_path">Bidebidea</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Bidebidea eta bufferra</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho logging-ek aplikazioaren layout komponentak jasoko ditu, UI komponentu batzuen pantailako testuak barne
+  <string name="morphe_debug_litho_user_dialog_message">"Aplikazioaren layout komponentak erregistratzen ditu, UI komponentu batzuen pantailako testuak barne.
 
-Honek komponentuak identifikatzen lagundu dezake filter personalizeatuak sortzean
+Honek komponentak identifikatzen lagun dezake filter personnaliserak sortzean.
 
-Hala ere, honek erabiltzailearen datu batzuk ere jasoko ditu, zure IP helbidea adibidez"</string>
+Hala ere, honek erabiltzailearen datu batzuk ere erregistratuko ditu, zure IP helbidea adibidez"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Iragazki pertsonalizatua</string>
   <string name="morphe_custom_filter_screen_summary">Konfiguratu kustomizazio-iragazkiak edozein komponenteari ezkutatzeko</string>
@@ -342,6 +376,18 @@ Gero desaktibatuz gero, UI akatsak saihesteko aplikazioaren datuak garbitzea gom
   <string name="morphe_custom_font_file_summary">Hautatu TTF edo OTF letra-tipo fitxategi bat</string>
   <string name="morphe_custom_font_file_invalid">Hautatutako fitxategia ez da TTF edo OTF letra-tipo bat</string>
   <string name="morphe_custom_font_failed_to_load">Letra pertsonalizatua ezin izan da kargatu eta desaktibatu da</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Beiruen menuak</string>
+  <string name="morphe_glass_menus_screen_summary">Menuak beiru opako gisa, atzealdeko edukia difuminatuta</string>
+  <string name="morphe_glass_menus_title">Gactivate beilak menuak</string>
+  <string name="morphe_glass_menus_summary">Menuak eta beheko honekin beilak bezala erakusten ditu, haien atzean dagoen edukia bluratuta</string>
+  <string name="morphe_glass_menus_user_dialog_message">Bateria-aurrekitza aktibo dagoenean, edo gailuak ez badu blurra onartzen, menuak opaez eta hurbilago erakutsiko dira</string>
+  <string name="morphe_glass_menus_opacity_title">Beira opakutasuna</string>
+  <string name="morphe_glass_menus_opacity_summary">Menuak zenbat coverdu duen edukia bluratua (0 garbia da, 100 opaez)</string>
+  <string name="morphe_glass_menus_blur_title">Lausotu</string>
+  <string name="morphe_glass_menus_blur_summary">Menua atzean dagoen edukia zenbat bluratzen den</string>
+  <string name="morphe_glass_menus_dim_title">Iluntzea</string>
+  <string name="morphe_glass_menus_dim_summary">Beheko honekin inguruko pantaila zenbat iluntzen den</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ez-gustuak une batez ez daude eskuragarri (APIak denbora gehiegi behar izan du)</string>
@@ -379,4 +425,8 @@ Ikusten ari zaren bideoaren IDa Return YouTube Dislike APIra bidaltzen da, eta z
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ez da bezeroaren tasa mugarik aurkitu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Bezeroaren tasa-muga %s aldiz aurkitu da</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisegundo</string>
+  <string name="morphe_navigation_bar_screen_title">Nabigazio-barra</string>
+  <string name="morphe_navigation_bar_screen_summary">Aukeratu zein botoi agertu behar diren beheko nabigazio barran</string>
+  <string name="morphe_toolbar_screen_title">Tresna-barra</string>
+  <string name="morphe_toolbar_screen_summary">Aukeratu zein osagai agertzen diren tresna-barran</string>
 </resources>

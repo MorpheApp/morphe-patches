@@ -78,6 +78,7 @@ final class LyricsSearchDialog {
     private LyricsSearchDialog() {
     }
 
+    @SuppressWarnings("deprecation")
     static void show(Context context, LyricsManager manager, Callbacks callbacks) {
         TrackInfo track = manager.getCurrentTrack();
         if (track == null) {

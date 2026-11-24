@@ -36,6 +36,11 @@ internal object PreferenceScreenSyntheticFingerprint : Fingerprint(
     parameters = listOf(),
     returnType = "V",
     filters = listOf(
+        // The settings fragment field of this synthetic class.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this"
+        ),
         string(":android:show_fragment_args"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

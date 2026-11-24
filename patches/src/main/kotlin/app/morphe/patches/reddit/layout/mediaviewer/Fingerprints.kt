@@ -212,7 +212,7 @@ internal object LocalContextFingerprint : Fingerprint(
 )
 
 /**
- * Media viewer chrome before 2026.38.0. Right after building the fade gradient from an array of
+ * Media viewer chrome before 2026.37.0. Right after building the fade gradient from an array of
  * (position, color) pairs, Reddit can swap in a darker static gradient.
  */
 internal object MediaViewerChromeLegacyFingerprint : Fingerprint(
@@ -243,4 +243,66 @@ internal val mediaViewerFadeAlphaLegacyFilter = methodCall(
     parameters = listOf("J", "F"),
     returnType = "J",
     opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
+)
+
+/**
+ * Lazy value of whether the media viewer chains posts vertically (swipe up for the next post),
+ * instead of horizontally.
+ */
+internal object VerticalChainingFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            definingClass = "Lcom/reddit/fullbleedplayer/FbpRedesignM3Variant;",
+            name = "VERTICAL_CHAINING"
+        ),
+        methodCall(
+            smali = "Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Media viewer pager state constructor, which calls the vertical chaining flag getter.
+ * Used before Reddit 2026.37.0, where the flag is a plain getter.
+ */
+internal object VerticalChainingLegacyFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        methodCall(returnType = "Z", parameters = listOf()),
+        methodCall(
+            smali = "Lcom/reddit/domain/model/media/MediaContext;->isImage()Z",
+            location = MatchAfterWithin(10)
+        ),
+        newInstance("Lcom/reddit/fullbleedplayer/data/viewstateproducers/PagerStateProducer\$1;")
+    )
+)
+
+private const val MEDIA_CONTEXT_CLASS = "Lcom/reddit/domain/model/media/MediaContext;"
+
+private fun recommendedPostsRequestFilters(endpointClass: String) = listOf(
+    methodCall(definingClass = MEDIA_CONTEXT_CLASS, name = "getSeedSubredditIds"),
+    methodCall(definingClass = MEDIA_CONTEXT_CLASS, name = "getListingType"),
+    fieldAccess(definingClass = endpointClass, name = "COMMUNITY"),
+    methodCall(definingClass = "Lcom/reddit/domain/model/listing/Listing;", name = "<init>")
+)
+
+/**
+ * RemoteGqlLinkDataSource.getRecommendedMedia, which loads the posts of the media viewer.
+ */
+internal object RecommendedMediaRequestFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    filters = recommendedPostsRequestFilters("Lcom/reddit/type/MediaFeedEndpoint;")
+)
+
+/**
+ * RemoteGqlLinkDataSource.getRecommendedVideos, which loads the posts of the video viewer.
+ */
+internal object RecommendedVideosRequestFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    filters = recommendedPostsRequestFilters("Lcom/reddit/type/VideoFeedEndpoint;")
 )

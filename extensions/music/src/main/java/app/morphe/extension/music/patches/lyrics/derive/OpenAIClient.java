@@ -28,6 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.Logger;
 
 public final class OpenAIClient {
@@ -79,7 +80,7 @@ public final class OpenAIClient {
             CRITICAL RULES:
             - Output exactly {count} numbered lines (same as input count)
             - Number format: "N. text" (number, period, space, text)
-            - First line of a section: its name. All other lines: "SKIP"
+            - First line of a section: its name. All other lines: literally just "SKIP" (do NOT repeat or append the lyric text)
             - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
             - Pick the most specific name from the list above
             - Output ONLY the labels. No reasoning, no explanations.
@@ -117,6 +118,10 @@ public final class OpenAIClient {
             Pattern.compile("(?:/[^/]+)*/v\\d+(?:[a-z]+)?(?:/[^/]+)*");
     private static final Pattern NUMBERED_LINE_PATTERN =
             Pattern.compile("^(?:Line\\s+)?(\\d{1,4})[.)\\]:\\-]\\s*(.*)$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern SKIP_TOKEN_PATTERN = Pattern.compile(
+            "^(?:\\[SKIP]|<SKIP>|\\(SKIP\\))(?:\\s.*|\\s*[:.\\-–—|].*)?$|"
+                    + "^SKIP(?:\\s*[:.\\-–—|].*)?$",
+            Pattern.CASE_INSENSITIVE);
     private static final Pattern PROMPT_VARIABLE = Pattern.compile("\\{(\\w+)\\}");
 
     private OpenAIClient() {
@@ -571,7 +576,6 @@ public final class OpenAIClient {
         return joinNumberedBlock(blockEnd, lines).toString();
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static StringBuilder joinNumberedBlock(int blockEnd, String[] lines) {
         int blockStart = blockEnd;
         while (blockStart > 0 && lines[blockStart - 1].trim().matches("\\d+\\..+")) {
@@ -584,7 +588,7 @@ public final class OpenAIClient {
             if (dot >= 0 && dot + 1 < line.length()) {
                 line = line.substring(dot + 1).trim();
             }
-            if (sb.length() > 0) {
+            if (Utils.isNotEmpty(sb)) {
                 sb.append('\n');
             }
             sb.append(line);
@@ -595,9 +599,7 @@ public final class OpenAIClient {
     public static boolean isSkipToken(@Nullable String s) {
         if (s == null) return true;
         String t = s.trim();
-        return t.isEmpty() || t.equalsIgnoreCase("SKIP") || t.equalsIgnoreCase("[SKIP]")
-                || t.equalsIgnoreCase("<SKIP>") || t.equalsIgnoreCase("(SKIP)")
-                || t.equalsIgnoreCase("SKIP.");
+        return t.isEmpty() || SKIP_TOKEN_PATTERN.matcher(t).matches();
     }
 
     @Nullable

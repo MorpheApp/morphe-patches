@@ -72,7 +72,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
     /** Composer is a credit line, not a songwriter name. */
     static List<String> creditsOf(Song song) {
         List<String> credits = new ArrayList<>(1);
-        addCredit(credits, "Composer", song.composer);
+        addCredit(credits, song.composer);
         return credits;
     }
 
@@ -92,7 +92,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return names.isEmpty() ? null : names;
     }
 
-    static void addCredit(List<String> credits, String label, @Nullable String value) {
+    static void addCredit(List<String> credits, @Nullable String value) {
         if (value == null) {
             return;
         }
@@ -100,7 +100,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         if (trimmed.isEmpty()) {
             return;
         }
-        credits.add(label + ": " + trimmed);
+        credits.add("Composer" + ": " + trimmed);
     }
 
     @Nullable

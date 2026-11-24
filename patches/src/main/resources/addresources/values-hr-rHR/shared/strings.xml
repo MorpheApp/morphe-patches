@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Postavke</string>
   <string name="morphe_settings_confirm_user_dialog_title">Jeste li sigurni da želite nastaviti proces patchanja?</string>
   <string name="morphe_settings_save">Spremi</string>
   <string name="morphe_settings_reset">Poništi</string>
@@ -74,18 +73,34 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_settings_export_file">Izvezi u datoteku</string>
   <string name="morphe_settings_export_file_success">Postavke su uspješno izvezene</string>
   <string name="morphe_settings_export_file_failed">Izvoz postavki nije uspio</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Koristite najnoviju verziju Morphe Patcheva &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Koristite verziju Morphe Patcheva &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupno ažuriranje: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Za ažuriranje patcheva, koristite Morphe za ponovno patchanje ove aplikacije</string>
-  <string name="morphe_settings_about_links_dev_header">Napomena</string>
-  <string name="morphe_settings_about_links_dev_body">Ova je verzija predizdanje i možete naići na neočekivane probleme</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patchevi</string>
+  <string name="morphe_settings_about_version">Verzija</string>
+  <string name="morphe_settings_about_close">Zatvori</string>
+  <string name="morphe_settings_about_prerelease">Pred-izdanje</string>
+  <string name="morphe_settings_about_update_available">Dostupno ažuriranje: %s</string>
+  <string name="morphe_settings_about_update_hint">Da biste ažurirali svoje zakrpe, koristite Morphe za ponovno zakrpljivanje ove aplikacije</string>
   <string name="morphe_settings_about_links_header">Službene poveznice</string>
   <string name="morphe_settings_about_links_website">Web stranica</string>
   <string name="morphe_settings_about_links_donate">Donirajte</string>
   <string name="morphe_settings_about_links_translations">Prijevodi</string>
-  <string name="morphe_settings_about_links_credits">Zasluge</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ažurno</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Dostupno ažuriranje</string>
+  <string name="morphe_settings_about_contributors">Pridonavatelji</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Svo vrijeme</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mjeseci</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mjeseca</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Vremenski razmak</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s korisnika</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Prilagleyici</string>
+  <string name="morphe_settings_about_supporters_summary">Podržavatelji na Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Postanite podržavatelj</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">I još %s</string>
+  <string name="morphe_settings_about_people_unavailable">Popis nije mogao biti učitan</string>
   <string name="morphe_settings_about_contributors_current">Trenutni razvoj</string>
   <string name="morphe_settings_about_contributors_prior">Prijašnji razvoj</string>
   <string name="morphe_settings_about_links_morphe">Aktivni razvoj</string>
@@ -213,6 +228,9 @@ Ako se optimizacija baterije ne promijeni, mogli biste doživjeti:
 • Aplikacija se može nasumično zatvoriti
 • Obavijesti možda neće raditi
 • Reprodukcija u pozadini možda neće raditi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otvori tablicu dijeljenja sustava</string>
+  <string name="morphe_open_system_share_sheet_summary">Otvara sustavni izbornik za dijeljenje umjesto onog unutar aplikacije prilikom dijeljenja sadržaja</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Rukovanje poveznicama aplikacije</string>
   <string name="morphe_link_handling_summary">Konfigurirajte poveznice za otvaranje u ovoj aplikaciji</string>

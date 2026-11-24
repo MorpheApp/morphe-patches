@@ -7,6 +7,7 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.layout.playlistautoplay.reversePlaylistAutoplayHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
@@ -44,6 +45,7 @@ val playAllButtonPatch = patch(
         settingsPatch,
         playAllButtonResourcePatch,
         playerOverlayButtonsSettingsPatch,
+        reversePlaylistAutoplayHookPatch,
         videoInformationPatch,
     )
 
@@ -53,7 +55,8 @@ val playAllButtonPatch = patch(
         addPlayerOverlayPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_play_all_button", summary = true),
-                ListPreference("morphe_play_all_button_type")
+                ListPreference("morphe_play_all_button_type"),
+                SwitchPreference("morphe_play_all_button_reverse", summary = true)
             )
         )
 

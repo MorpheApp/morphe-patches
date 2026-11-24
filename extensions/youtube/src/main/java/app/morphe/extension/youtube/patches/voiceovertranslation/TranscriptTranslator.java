@@ -638,8 +638,7 @@ public final class TranscriptTranslator {
 
         StringBuilder joined = new StringBuilder(100 * segments.size());
         for (TranscriptSegment seg : segments) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (joined.length() > 0) joined.append('\n');
+            if (Utils.isNotEmpty(joined)) joined.append('\n');
             joined.append(seg.text);
         }
 
@@ -866,8 +865,7 @@ public final class TranscriptTranslator {
                     }
                 }
                 // Flush any remaining content that arrived without a trailing newline.
-                //noinspection SizeReplaceableByIsEmpty
-                if (lineBuffer.length() > 0) {
+                if (Utils.isNotEmpty(lineBuffer)) {
                     String line = lineBuffer.toString().trim();
                     if (applyStreamedLine(line, result, segments.size(), matched)
                             && onLineStreamed != null) {

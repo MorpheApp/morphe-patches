@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Seaded</string>
   <string name="morphe_settings_confirm_user_dialog_title">Kas olete kindel, et soovite jätkata?</string>
   <string name="morphe_settings_save">Salvesta</string>
   <string name="morphe_settings_reset">Lähtesta</string>
@@ -74,18 +73,34 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage mo
   <string name="morphe_settings_export_file">Ekspordi faili</string>
   <string name="morphe_settings_export_file_success">Seaded eksporditi edukalt</string>
   <string name="morphe_settings_export_file_failed">Seadete eksport ebaõnnestus</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Kasutate uusimat Morphe Patches versiooni &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Kasutate Morphe Patches versiooni &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uuendus saadaval: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Täiendud uuendamiseks kasutage Morphe\'i selle rakenduse uuesti täienduseks</string>
-  <string name="morphe_settings_about_links_dev_header">Märkus</string>
-  <string name="morphe_settings_about_links_dev_body">See versioon on eelväljalaskmine ja võite kohata ootamatuid tõrkeid</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Parandused</string>
+  <string name="morphe_settings_about_version">Versioon</string>
+  <string name="morphe_settings_about_close">Sulge</string>
+  <string name="morphe_settings_about_prerelease">Eelversioon</string>
+  <string name="morphe_settings_about_update_available">Uuendus on saadaval: %s</string>
+  <string name="morphe_settings_about_update_hint">Paikade uuendamiseks kasuta rakenduse uuesti paikamiseks programmi Morphe</string>
   <string name="morphe_settings_about_links_header">Ametlikud lingid</string>
   <string name="morphe_settings_about_links_website">Veebisait</string>
   <string name="morphe_settings_about_links_donate">Annetage</string>
   <string name="morphe_settings_about_links_translations">Tõlked</string>
-  <string name="morphe_settings_about_links_credits">Tunnustused</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ajakohane</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Uuendus saadaval</string>
+  <string name="morphe_settings_about_contributors">Kaastöötajad</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Kogu aeg</string>
+  <string name="morphe_settings_about_contributors_6_months">6 kuud</string>
+  <string name="morphe_settings_about_contributors_3_months">3 kuud</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Ajaperiood</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s kasutajat</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Toetajad</string>
+  <string name="morphe_settings_about_supporters_summary">Toetajad Open Collective\'is</string>
+  <string name="morphe_settings_about_supporters_become">Saage toetajaks</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Ja veel %s</string>
+  <string name="morphe_settings_about_people_unavailable">Loendit ei õnnestunud laadida</string>
   <string name="morphe_settings_about_contributors_current">Praegune arendus</string>
   <string name="morphe_settings_about_contributors_prior">Eelmine arendus</string>
   <string name="morphe_settings_about_links_morphe">Aktiivne arendus</string>
@@ -213,6 +228,9 @@ Kui aku optimeerimist ei muudeta, võib esineda järgmist:
 • Rakendus võib juhuslikult sulguda
 • Teavitused ei pruugi töötada
 • Taustal esitamine ei pruugi töötada"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ava süsteemi jagamisakend</string>
+  <string name="morphe_open_system_share_sheet_summary">Sisu jagamisel avatakse rakenduse sise jagamise ekraani asemel süsteemi jagamise ekraan</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Rakenduse linkide haldamine</string>
   <string name="morphe_link_handling_summary">Konfigureeri linkide avamine selles rakenduses</string>

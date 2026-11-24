@@ -1,7 +1,6 @@
 package app.morphe.extension.music.patches;
 
 import android.graphics.Color;
-import android.os.SystemClock;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -9,23 +8,42 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class ChangeMiniplayerColorPatch {
 
     /**
-     * Suppression window so YTM's trailing post-dismiss state-updates don't re-apply the last album color.
+     * Implemented by the miniplayer during patching.
      */
-    private static final long DISMISS_WINDOW_MS = 1500L;
+    public interface MiniplayerAccess {
+        /**
+         * Sets the color field, which the miniplayer animates to when it resets its colors.
+         */
+        void patch_setColor(int color);
+
+        /**
+         * Animates the miniplayer to the color in its color field.
+         */
+        void patch_resetColors();
+    }
 
     @Nullable
     private static volatile Integer lastMiniplayerColor;
     @Nullable
     private static volatile Integer defaultMiniplayerColor;
+    private static volatile WeakReference<MiniplayerAccess> miniplayerRef = new WeakReference<>(null);
     private static volatile WeakReference<View> navigationBarRef = new WeakReference<>(null);
     @Nullable
     private static volatile Integer defaultNavigationBarColor;
-    private static volatile long dismissWindowUntilMs;
+
+    /**
+     * Album color of the song that was dismissed, until another song is loaded.
+     * The app still sends this color after a dismiss, which must not color the miniplayer again.
+     */
+    @Nullable
+    private static volatile Integer dismissedSongColor;
 
     /**
      * Injection point.
@@ -46,9 +64,10 @@ public class ChangeMiniplayerColorPatch {
     }
 
     /**
-     * Injection point. Remembers the color the miniplayer is made with, from the theme.
+     * Injection point. Remembers the miniplayer and the color it is made with, from the theme.
      */
-    public static void setDefaultMiniplayerColor(int color) {
+    public static void setDefaultMiniplayerColor(MiniplayerAccess miniplayer, int color) {
+        miniplayerRef = new WeakReference<>(miniplayer);
         defaultMiniplayerColor = color;
     }
 
@@ -59,12 +78,17 @@ public class ChangeMiniplayerColorPatch {
      *         otherwise the color it has from the theme.
      */
     public static int setLastMiniplayerColor(int color) {
-        if (SystemClock.uptimeMillis() >= dismissWindowUntilMs) {
+        final Integer dismissedColor = dismissedSongColor;
+        if (dismissedColor == null || dismissedColor != color) {
+            // Another color is another song.
+            dismissedSongColor = null;
+
             lastMiniplayerColor = color;
             if (matchNavigationBarEnabled()) postNavigationBarColor(color);
             notifyGlass();
+
+            if (changeColor()) return color;
         }
-        if (changeColor()) return color;
 
         final Integer defaultColor = defaultMiniplayerColor;
         return defaultColor != null ? defaultColor : color;
@@ -107,15 +131,40 @@ public class ChangeMiniplayerColorPatch {
     }
 
     /**
-     * Injection point. Fires on watch-while dismiss; drops the cached tint,
-     * arms the suppression window and repaints the nav bar with the theme color.
+     * Injection point. Fires on watch-while dismiss (swipe or "Dismiss queue").
      */
     public static void onMiniplayerDismissed() {
+        final Integer color = lastMiniplayerColor;
+        if (color != null) dismissedSongColor = color;
+        onMiniplayerEmpty();
+    }
+
+    /**
+     * Injection point. A new song is loaded.
+     */
+    public static void newVideoLoaded(String videoId) {
+        dismissedSongColor = null;
+    }
+
+    /**
+     * Injection point. The miniplayer shows "Nothing is playing", or the queue was dismissed.
+     * Drops the album color, and gives the miniplayer, the navigation bar and the glass their theme color.
+     */
+    public static void onMiniplayerEmpty() {
         lastMiniplayerColor = null;
-        dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
         final Integer defaultColor = defaultNavigationBarColor;
         if (defaultColor != null) postNavigationBarColor(defaultColor);
         notifyGlass();
+
+        Utils.runOnMainThreadNowOrLater(() -> {
+            final MiniplayerAccess miniplayer = miniplayerRef.get();
+            final Integer miniplayerColor = defaultMiniplayerColor;
+            if (miniplayer == null || miniplayerColor == null) return;
+
+            Logger.printDebug(() -> "Resetting miniplayer to the theme color");
+            miniplayer.patch_setColor(miniplayerColor);
+            miniplayer.patch_resetColors();
+        });
     }
 
     private static void postNavigationBarColor(int color) {

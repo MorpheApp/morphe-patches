@@ -110,6 +110,12 @@ public class PreferredCaptionLanguagePatch {
     private static volatile String managerVideo;
     private static final ThreadLocal<Boolean> replayingSelection = new ThreadLocal<>();
 
+    /**
+     * Language of the caption track the player shows, or null if captions are off.
+     */
+    @Nullable
+    private static volatile String selectedLanguage;
+
     @Nullable
     private static volatile String lastProgrammaticTrackLang;
     @Nullable
@@ -245,6 +251,16 @@ public class PreferredCaptionLanguagePatch {
     public static CaptionTrackInterface onSetSubtitleTrack(SubtitleManagerInterface subtitleManager,
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
+        CaptionTrackInterface selected = chooseSubtitleTrack(subtitleManager, track, selectType);
+        selectedLanguage = selected == null || isExplicitlyDisabled(selected)
+                ? null
+                : selected.patch_getLanguageCode();
+        return selected;
+    }
+
+    private static CaptionTrackInterface chooseSubtitleTrack(SubtitleManagerInterface subtitleManager,
+                                                             @Nullable CaptionTrackInterface track,
+                                                             @Nullable Enum<?> selectType) {
         try {
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             final boolean userSelection = interactionAllowed && selectType != null
@@ -388,6 +404,14 @@ public class PreferredCaptionLanguagePatch {
         }
     }
 
+    /**
+     * @return Language of the caption track the player shows, or null if captions are off.
+     */
+    @Nullable
+    static String getSelectedLanguage() {
+        return selectedLanguage;
+    }
+
     static boolean hasUserSelectedTrack() {
         return userSelectedTrack.get();
     }
@@ -404,7 +428,11 @@ public class PreferredCaptionLanguagePatch {
         return getLanguageKey(target == null ? actualLanguage : target);
     }
 
-    /** Preserve a selected original; otherwise use the active audio's default caption. */
+    /**
+     * Resolves the untranslated source track for dual-caption translation: returns the direct
+     * original track matching {@code selected} if given, or falls back to the active audio track's
+     * default caption source.
+     */
     @Nullable
     static CaptionTrackInterface blockTranslationSource(SubtitleManagerInterface manager,
             @Nullable CaptionTrackInterface selected) {

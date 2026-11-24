@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
@@ -240,19 +239,11 @@ private fun hookLibraryGridPresenter() {
     }
 
     // Some items wrap their proto, so the extension needs a getter to read it.
-    val wrapItemMethod = LibraryGridItemsFingerprint.instructionMatches.first().methodReference
-    val wrapperType = wrapItemMethod.returnType
-    val messageType = wrapItemMethod.parameterTypes.first().toString()
-    val messageField = libraryGridItemWrapperConstructorFingerprint(wrapperType, messageType)
-        .instructionMatches.first().fieldReference
-    mutableClassDefBy(wrapperType).apply {
-        addPatchInterface(
+    LibraryGridItemWrapperConstructorFingerprint.let {
+        it.classDef.addPatchInterface(
             EXTENSION_MESSAGE_WRAPPER_INTERFACE,
             "patch_getMessage",
-            """
-                iget-object p0, p0, $messageField
-                return-object p0
-            """
+            it.instructionMatches.first().fieldReference
         )
     }
 

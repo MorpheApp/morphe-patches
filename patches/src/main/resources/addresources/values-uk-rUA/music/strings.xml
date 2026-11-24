@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Власний</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Відтворювати аудіоверсію альбому</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Відтворювати лише аудіоверсію треків замість музичного відео. Потребує \"Підміна відеопотоків\"</string>
+  <string name="morphe_music_play_album_songs_summary">Відтворювати пісні альбому замість їхніх музичних відео</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Увімкнути перемикач аудіо/відео</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Спробувати перемикати аудіоверсію треку та офіційне музичне відео</string>
@@ -131,6 +130,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Використовувати зовнішній завантажувач для меню \"Завантажити\"</string>
   <string name="morphe_external_downloader_menu_summary">Пункт \"Завантажити\" в меню натомість відкриває ваш зовнішній завантажувач</string>
+  <string name="morphe_download_force_4k_title">Примусова доступність завантаження 4K</string>
+  <string name="morphe_download_force_4k_summary">Зберігає завантаження у 1440p та 4K, навіть якщо YouTube Music вирішить, що цей пристрій не може їх відтворити</string>
   <string name="morphe_export_download_folder_title">Експорт завантажень</string>
   <string name="morphe_export_download_folder_summary">"Експортуйте збережені в застосунку пісні та відео до сховища пристрою через спливне меню завантажень у застосунку. Натисніть, щоб змінити теку експорту
 
@@ -142,6 +143,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Не вдалося експортувати завантаження</string>
   <string name="morphe_export_download_all_flyout_title">Експортувати все на пристрій</string>
   <string name="morphe_export_download_all_started">Експорт усіх завантажень</string>
+  <string name="morphe_export_download_all_title">Усі завантаження</string>
+  <string name="morphe_export_download_playlist_started">Експорт завантажень</string>
   <string name="morphe_export_download_all_running">Завантаження вже експортуються</string>
   <string name="morphe_export_download_all_saved">Експортовано %1$s із %2$s завантажень до %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -166,15 +169,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Приховати перемикач \"Пісня | Відео\"</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Приховати кнопку \"Завантажити\"</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Приховує кнопку \"Завантажити\" на сторінці подкасту</string>
   <string name="morphe_music_hide_explore_shelf_title">Приховати панель \"Навігація\"</string>
   <string name="morphe_music_hide_filter_bar_title">Приховати панель фільтрів</string>
   <string name="morphe_music_hide_grid_shelves_title">Приховати панелі сіток</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Приховати горизонтальні панелі</string>
+  <string name="morphe_music_hide_new_button_title">Приховати кнопку \"Новий\"</string>
+  <string name="morphe_music_hide_new_button_summary">Приховує кнопку \"Новий\" на вкладці \"Бібліотека\"</string>
   <string name="morphe_music_hide_list_shelves_title">Приховати панелі-списки</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панель текстів пісень</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Приховати кнопку \"Поділитися\"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Приховати кнопку \"Переклад\"</string>
   <string name="morphe_music_hide_new_from_shelf_title">Приховати панель \"Нове від\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Приховати панелі списків відтворення</string>
@@ -194,18 +197,20 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_info_button_title">Приховати кнопку \"Інфо\"</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
   <!-- interaction.crossfade.crossfadePatch -->
-  <string name="morphe_music_crossfade_screen_title">Кросфейд</string>
+  <string name="morphe_music_crossfade_screen_title">Плавний перехід</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно змішує треки між собою</string>
-  <string name="morphe_music_crossfade_enabled_title">Увімкнути кросфейд</string>
+  <string name="morphe_music_crossfade_enabled_title">Увімкнути плавний перехід</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Щоб використовувати плавний перехід, змініть \"Типовий клієнт\" у \"Підміні відеопотоків\" на \"TV Simply\" або \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Крива згасання</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Рівномірна потужність</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Незначна затримка</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">М’яке згладжування</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">М\'яке згладжування</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Плавна S-крива</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_curve_preview_outgoing">Вихідний</string>
   <string name="morphe_music_crossfade_curve_preview_incoming">Вхідний</string>
-  <string name="morphe_music_crossfade_duration_title">Тривалість кросфейду</string>
+  <string name="morphe_music_crossfade_duration_title">Тривалість плавного переходу</string>
   <string name="morphe_crossfade_duration_250ms">250 мілісекунд</string>
   <string name="morphe_crossfade_duration_500ms">500 мілісекунд</string>
   <string name="morphe_crossfade_duration_750ms">750 мілісекунд</string>
@@ -221,37 +226,37 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_10000ms">10 секунд</string>
   <string name="morphe_crossfade_duration_11000ms">11 секунд</string>
   <string name="morphe_crossfade_duration_12000ms">12 секунд</string>
-  <string name="morphe_music_crossfade_on_skip_title">Кросфейд під час ручного пропуску</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Застосовує ефект кросфейду, коли ви вручну пропускаєте до наступного треку</string>
-  <string name="morphe_music_crossfade_on_auto_advance_title">Кросфейд під час автоматичного переходу</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary">Застосовує ефект кросфейду, коли трек завершується природним чином</string>
+  <string name="morphe_music_crossfade_on_skip_title">Плавний перехід під час ручного пропуску</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Застосовує ефект плавного переходу, коли ви вручну переходите до наступного треку</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Плавний перехід під час автоматичного перемикання</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Застосовує ефект плавного переходу, коли трек завершується природним чином</string>
   <string name="morphe_music_crossfade_session_control_title">Керування сесією</string>
-  <string name="morphe_music_crossfade_session_control_summary">Натисніть і утримуйте кнопку перемішування, щоб призупинити або відновити кросфейд</string>
-  <string name="morphe_music_crossfade_paused_toast">Кросфейд призупинено для цього сеансу</string>
-  <string name="morphe_music_crossfade_resumed_toast">Кросфейд відновлено</string>
-  <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, поки кросфейд увімкнено</string>
-  <string name="morphe_music_crossfade_sabr_toast">Кросфейд вимкнено під час відтворення SABR</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Кросфейд вимкнено під час трансляції</string>
+  <string name="morphe_music_crossfade_session_control_summary">Натисніть і утримуйте кнопку перемішування, щоб призупинити або відновити плавний перехід</string>
+  <string name="morphe_music_crossfade_paused_toast">Плавний перехід призупинено для цього сеансу</string>
+  <string name="morphe_music_crossfade_resumed_toast">Плавний перехід відновлено</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, поки плавний перехід увімкнено</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Плавний перехід не працює з \"visionOS\". Змініть \"Типовий клієнт\" у \"Підміні відеопотоків\" на \"TV Simply\"</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Плавний перехід не працює з цим клієнтом підміни потоку</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Плавний перехід вимкнено під час трансляції</string>
   <string name="morphe_music_crossfade_about_how_title">Як це працює</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Кросфейд накладає кінець однієї пісні на початок наступної, використовуючи вашу тривалість і криву
+  <string name="morphe_music_crossfade_about_how_summary">"Плавний перехід накладає кінець однієї пісні на початок наступної, використовуючи вашу тривалість і криву
 
-Він працює під час автоматичного переходу й ручного пропуску, і для кожного є окремий перемикач. Під час автоматичного переходу змішування починається за кілька секунд до завершення пісні"</string>
+Він працює під час автоматичного перемикання й ручного пропуску, і для кожного є окремий перемикач. Під час автоматичного перемикання змішування починається за кілька секунд до завершення пісні"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Обмеження</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Музичні відео відтворюються лише як аудіо, поки кросфейд увімкнено. Натисніть і утримуйте перемішування, щоб призупинити кросфейд і дивитися відео
+  <string name="morphe_music_crossfade_about_quirks_summary">"Музичні відео відтворюються лише як аудіо, поки плавний перехід увімкнено. Натисніть і утримуйте перемішування, щоб призупинити плавний перехід і дивитися відео
 
 Музичне відео, яким починається відтворення, залишається в режимі відео до наступної пісні
 
-Пісні, коротші за тривалість затухання, не кросфейдяться
+До пісень, коротших за тривалість згасання, плавний перехід не застосовується
 
 Екран блокування або сповіщення можуть ненадовго показувати застарілий стан під час переходу
 
-Призупинення кросфейду для перегляду музичного відео може залишити частину відео чорними. Щоб цього уникнути, призупиніть кросфейд до вибору пісні"</string>
+Призупинення плавного переходу для перегляду музичного відео може залишити частину відео чорними. Щоб цього уникнути, призупиніть плавний перехід до вибору пісні"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Не підтримується</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляція або дзеркалення аудіо (Chromecast, дзеркалення екрана чи аудіо)
-
-Відтворення SABR (функцію \"Підміна відеопотоків\" вимкнено)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Трансляція або дзеркалення аудіо (Chromecast, дзеркалення екрана або аудіо)</string>
   <string name="morphe_music_crossfade_about_credit_title">Автор</string>
-  <string name="morphe_music_crossfade_about_credit_summary">Функцію кросфейду створив VazerOG</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Функцію плавного переходу створив VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <string name="morphe_music_remember_repeat_state_title">Запам\'ятовувати стан повтору</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
@@ -259,19 +264,46 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Пауза при вимкненому звуці</string>
   <string name="morphe_music_pause_when_muted_summary">Призупиняє відтворення, коли системний звук вимкнено, і відновлює його, коли гучність збільшується</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Трансляція на Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Кнопка Cast також може транслювати звук на Sonos та інші колонки UPnP у вашій мережі Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Підключитися до пристрою</string>
+  <string name="morphe_music_sonos_cast_searching">Пошук колонок у вашій мережі Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Виберіть колонку у вашій мережі Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Трансляція на %s</string>
+  <string name="morphe_music_sonos_cast_connected">Підключено</string>
+  <string name="morphe_music_sonos_cast_disconnect">Відключити</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Колонки в Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Активно</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Пристрої Chromecast, Nest і Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Не вдалося підключитися до %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Швидкість відтворення</string>
   <string name="morphe_music_playback_speed_summary">Швидкість, що використовується для всіх треків. При 100% використовується швидкість застосунку, наприклад швидкість відтворення подкасту</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Змінювати висоту тону разом зі швидкістю</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Показувати меню \"Відеоефект\"</string>
+  <string name="morphe_music_video_effect_menu_summary">Додає \"Відеоефект\" до меню плеєра під час відтворення відео</string>
+  <string name="morphe_music_video_effect_next_video">Ефект показується, починаючи з наступного відео</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Вимкнути автоматичні субтитри</string>
   <string name="morphe_music_disable_auto_captions_summary">Субтитри не вмикаються автоматично на початку відео, зокрема й ті, які відео вмикає типово</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Вимкнути приглушення звуку</string>
   <string name="morphe_music_disable_audio_ducking_summary">Гучність не знижується, коли інший застосунок відтворює короткий звук, наприклад сповіщення</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Фільтр лайків у черзі</string>
+  <string name="morphe_music_queue_like_filter_summary">Видаляє з міксів і радіо пісні з малою кількістю лайків. Списки відтворення, альбоми та пісні, які ви додаєте до черги, не змінюються. Кількість лайків береться з Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Мінімум лайків</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Пісні з меншою кількістю лайків видаляються з черги</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Вимкнути перенаправлення при дизлайку</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Запобігає переходу до наступного треку при натисканні кнопки дизлайку</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Вимкнути зміну треку жестом</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Запобігає переходу до наступного чи попереднього треку жестом ліворуч або праворуч у плеєрі</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Запобігає переходу до наступного чи попереднього треку жестом ліворуч або праворуч у міні-плеєрі</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Повтор A-B</string>
   <string name="morphe_music_ab_loop_summary">Натисніть і утримуйте смугу відтворення, щоб задати початок повтору, ще раз, щоб задати кінець повтору, і ще раз, щоб скасувати повтор</string>
@@ -322,15 +354,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_rename">Перейменувати</string>
   <string name="morphe_music_playlist_tags_delete">Видалити</string>
   <string name="morphe_music_playlist_tags_hidden">Приховано</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Приховати кнопку \"Трансляція\"</string>
-  <string name="morphe_music_hide_history_button_title">Приховати кнопку \"Історія\"</string>
-  <string name="morphe_music_hide_notification_button_title">Приховати кнопку \"Сповіщення\"</string>
-  <string name="morphe_music_hide_search_button_title">Приховати кнопку \"Пошук\"</string>
-  <string name="morphe_music_hide_voice_search_button_title">Приховати кнопку \"Голосовий пошук\"</string>
-  <string name="morphe_music_hide_sound_search_button_title">Приховати кнопку \"Пошук звуку\"</string>
-  <string name="morphe_music_hide_library_new_button_title">Приховати кнопку \"Новий\"</string>
-  <string name="morphe_music_hide_library_new_button_summary">Приховує кнопку \"Новий\" на вкладці \"Бібліотека\"</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Кнопки дій</string>
   <string name="morphe_music_action_buttons_screen_summary">Виберіть, які кнопки з\'являються під програвачем</string>
@@ -402,22 +425,20 @@ Second \"item\" text"</string>
   <string name="morphe_music_force_portrait_orientation_title">Примусова портретна орієнтація</string>
   <string name="morphe_music_force_portrait_orientation_summary">Утримує застосунок у портретній орієнтації під час обертання пристрою</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Змінити колір мініплеєра</string>
+  <string name="morphe_music_change_miniplayer_color_title">Змінити колір</string>
   <string name="morphe_music_change_miniplayer_color_summary">Підлаштовує колір мініплеєра під повноекранний плеєр</string>
   <string name="morphe_music_change_navigation_bar_color_title">Змінити колір панелі навігації</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Підлаштовує колір панелі навігації під повноекранний плеєр</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Показувати кнопку наступного треку в мініплеєрі</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Показувати кнопку попереднього треку в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_next_button_title">Показувати кнопку \"Наступний\"</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Показувати кнопку \"Попередній\"</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Увімкнути примусово мініплеєр</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Запобігає автоматичному розгортанню плеєра на весь екран при запуску нового треку</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Увімкнути закриття мініплеєра свайпом</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Увімкнути закриття жестом</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Дозволяє закрити мініплеєр, провівши по ньому вниз</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Панель навігації</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Виберіть кнопки, що будуть показуватися на нижній навігаційній панелі</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Приховати кнопку \"Додому\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -428,6 +449,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Приховати кнопку \"Бібліотека\"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Приховати кнопку \"Підписка\"</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Показувати кнопку \"Налаштування\"</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Дія кнопки \"Налаштування\"</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Якщо ввімкнено, натискання відкриває налаштування Morphe, а натискання й утримування відкриває налаштування YouTube Music. Вимкніть, щоб поміняти місцями</string>
   <string name="morphe_music_hide_navigation_bar_title">Приховати панель навігації</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_music_navigation_bar_glass_title">Увімкнути скляну панель навігації</string>
@@ -450,7 +474,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Приховує закруглене підсвічування за вибраною кнопкою скляної панелі навігації</string>
   <string name="morphe_music_miniplayer_screen_title">Мініплеєр</string>
   <string name="morphe_music_miniplayer_screen_summary">Змініть стиль, кнопки та жести мініплеєра</string>
-  <string name="morphe_music_miniplayer_glass_title">Увімкнути скляний мініплеєр</string>
+  <string name="morphe_music_miniplayer_glass_title">Увімкнути ефект скла</string>
   <string name="morphe_music_miniplayer_glass_summary">Показує плаваючий мініплеєр як закруглену напівпрозору скляну картку</string>
   <string name="morphe_music_miniplayer_glass_style_title">Стиль скляного мініплеєра</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Налаштуйте радіус кутів, відступи обкладинки, яскравість краю та непрозорість скляного мініплеєра з попереднім переглядом</string>
@@ -458,11 +482,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Відступи обкладинки</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Яскравість краю</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Непрозорість</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Розмиття скла</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Наскільки розмивається сторінка за скляним мініплеєром (Android 14 і новіше). За значення 0 сторінка проглядає чітко, а до Android 14 сторінку закрито</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Світле скло</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Робить скляний мініплеєр білим замість темного, щоб скло було світлішим і прозорішим</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Відтінок обкладинки альбому</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Підфарбовує скляний мініплеєр кольором обкладинки альбому пісні, що відтворюється</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Обертова обкладинка</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Робить обкладинку скляного мініплеєра круглою та обертає її, як платівку, під час відтворення пісні</string>
@@ -473,6 +494,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Семпли</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Навігація</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Бібліотека</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Приховати кнопку \"Активність\"</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Приховати кнопку \"Ask Music\"</string>
+  <string name="morphe_music_hide_cast_button_title">Приховати кнопку \"Трансляція\"</string>
+  <string name="morphe_music_hide_history_button_title">Приховати кнопку \"Історія\"</string>
+  <string name="morphe_music_hide_search_button_title">Приховати кнопку \"Пошук\"</string>
+  <string name="morphe_music_hide_voice_search_button_title">Приховати кнопку \"Голосовий пошук\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Приховати кнопку \"Пошук звуку\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Не авторизовано. Натисніть, щоб налаштувати</string>
   <string name="morphe_music_scrobbling_log_out">Вийти</string>
@@ -576,6 +606,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"Дані про виконавців надходять із SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) і завантажуються раз на день. Пропуск треків нічого не надсилає про те, що ви слухаєте. Відкриття панелі SoundProof надсилає ім'я поточного виконавця на сервер SoundProof, щоб показати актуальні голоси та дати змогу проголосувати. Сервер розрізняє тих, хто голосує, за IP-адресою, тому ваш голос може відображатися інакше в іншій мережі.
 
 Базу даних ліцензовано за ODC Open Database License (ODbL). Записи з Soul Over AI від xoundbyte ліцензовано за CC BY 4.0. Не пов'язано з SoundProof чи Soul Over AI і не схвалено ними."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Анімована обкладинка Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Відображає анімовану обкладинку альбому Apple Music у плеєрі, якщо вона є. Назва, виконавець та альбом кожної пісні надсилаються в Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Тексти пісень недоступні для цього файлу на пристрої.</string>
   <string name="morphe_music_lyrics_enabled_title">Використовувати сторонні тексти пісень</string>
@@ -628,6 +661,25 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_clear_cache_title">Очистити збережені тексти пісень</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Видалити тексти пісень (%s МБ), збережені на цьому пристрої</string>
   <string name="morphe_music_lyrics_clear_cache_done">Очищено %s МБ</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Обчислення розміру кешу…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Кеш текстів пісень</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Очистити кеш текстів пісень</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s МБ (пісень: %2$d)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Кеш перекладів</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Очистити кеш перекладів</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s МБ (перекладів: %2$d)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Кеш транслітерації</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Очистити кеш транслітерації</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s МБ (транслітерацій: %2$d)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Загальний обсяг кешу</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Очистити весь кеш</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s МБ (елементів: %2$d)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Очистити</string>
+  <string name="morphe_music_lyrics_cache_close_action">Закрити</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Видалити %1$s МБ (пісень: %2$d) кешованих текстів, що зберігаються на цьому пристрої?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Видалити %1$s МБ (перекладів: %2$d) кешованих перекладів, що зберігаються на цьому пристрої?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Видалити %1$s МБ (транслітерацій: %2$d) кешованих транслітерацій, що зберігаються на цьому пристрої?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Видалити %1$s МБ (елементів: %2$d) усіх кешованих даних текстів пісень, що зберігаються на цьому пристрої?</string>
   <string name="morphe_music_token_dialog_get_token">Отримати токен</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Вставте cookie media-user-token із music.apple.com
@@ -683,8 +735,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Натисніть рядок, щоб перейти до цього моменту в пісні, натисніть і утримайте його, щоб скопіювати слово під пальцем або весь рядок, якщо натискання припало не на слово. Якщо вимкнено, обидва жести не працюватимуть</string>
   <string name="morphe_music_lyrics_show_section_title">Показувати теги розділів</string>
   <string name="morphe_music_lyrics_show_section_summary">Позначати кожен новий розділ тексту пісні невеликим тегом, наприклад \"Куплет\" або \"Приспів\"</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Показувати кнопку \"Копіювати\"</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Натисніть, щоб скопіювати оригінальний текст пісні як звичайний текст; натисніть і утримуйте, щоб зберегти вихідний файл тексту пісні та конвертований файл TTML у теку \"Завантаження\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Показувати кнопку \"Копіювати / Поділитися\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Показувати кнопку \"Копіювати\" або \"Поділитися\" на панелі інструментів тексту пісні</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Режим кнопки копіювання</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Режим копіювання (натисніть, щоб скопіювати, натисніть і утримуйте, щоб зберегти)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Режим поширення (натисніть, щоб вибрати 1-5 рядків, натисніть і утримуйте, щоб скопіювати або зберегти)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Показувати кнопку \"Перекласти\"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Натисніть, щоб перемкнути переклад; натисніть і утримуйте, щоб показувати лише переклад. Використовує увімкнених постачальників перекладу в порядку, вказаному у списку</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показувати кнопку романізації або транслітерації</string>
@@ -698,7 +753,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Зчитування готове (записів: %s)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Не вдалося завантажити, вимкніть і ввімкніть це знову, щоб повторити спробу</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Офлайн-словник</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Японська (SudachiDict, ~75 МБ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Японська</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 МБ) - швидкий морфологічний аналізатор &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 МБ) - повний словник японських слів</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Пріоритет &amp; порядок резервних варіантів</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Пріоритет Kuromoji (резерв SudachiDict)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">Пріоритет SudachiDict (резерв Kuromoji)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Власний шрифт текстів пісень</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Типовий системний шрифт (натисніть, щоб завантажити файл шрифту .ttf або .otf)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Активний шрифт: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Завантажте файл шрифту .ttf або .otf (наприклад, SF Pro Bold, Inter Bold або Inter ExtraBold) зі сховища пристрою, щоб використовувати його в перегляді тексту пісні.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Завантажити шрифт</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Скинути до типового</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Застосовано власний шрифт тексту пісні: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Повернено типовий шрифт тексту пісні</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Недійсний або непідтримуваний файл шрифту (потрібен .ttf або .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Поділитися текстом пісні</string>
+  <string name="morphe_music_lyrics_share_button">Поділитися</string>
+  <string name="morphe_music_lyrics_copy">Копіювати</string>
+  <string name="morphe_music_lyrics_share_options_title">Дії з текстом пісні</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Копіювати текст пісні як звичайний текст</string>
+  <string name="morphe_music_lyrics_save_file_option">Зберегти текст пісні &amp; TTML у теку \"Завантаження\"</string>
+  <string name="morphe_music_lyrics_share_cancel">Скасувати</string>
+  <string name="morphe_music_lyrics_share_select_hint">Натисніть від 1 до 5 рядків, щоб поділитися</string>
+  <string name="morphe_music_lyrics_share_max_lines">Можна вибрати максимум 5 рядків</string>
+  <string name="morphe_music_lyrics_share_failed">Не вдалося створити картку для поширення тексту пісні</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Розмиття</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Обкладинка</string>
+  <string name="morphe_music_lyrics_share_bg_color">Кольоровий</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Фото</string>
+  <string name="morphe_music_lyrics_share_branding_logo">Логотип YT Music</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Ромадзі</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Перекласти</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Бек-вокал</string>
+  <string name="morphe_music_lyrics_share_custom_color">Власний колір</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Не вдалося завантажити вибране зображення</string>
+  <string name="morphe_music_lyrics_share_card_cta">Поділитися карткою</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Копіювати текст</string>
+  <string name="morphe_music_lyrics_share_back">Повернутися до вибору тексту пісні</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Завантаження фото...</string>
+  <string name="morphe_music_lyrics_share_preparing">Створення картки...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Зразок кольору %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Невідомий трек</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Китайські та кантонські ієрогліфи (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Китайські слова (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грецька, слов\'янська кирилиця (зокрема російська, українська, болгарська, сербська, білоруська, македонська), грузинська, вірменська, іврит, арабська, амхарська та сирійська транслітерація (CLDR, ~0,5 МБ)</string>
@@ -715,8 +811,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">Автор: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Підсвічувати синхронізовані слова або склади</string>
   <string name="morphe_music_lyrics_word_sync_summary">Надавати пріоритет тексту пісні по словах, коли доступно. Якщо текст пісні містить синхронізацію по словах, підсвічує кожне слово або склад у такт музиці</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Плавно анімувати синхронізовані слова</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Виділяє кожне слово м\'яким переливом, сяйвом і легким підйомом, поки воно співається. Вимкніть, щоб заощадити заряд або для чіткого заповнення на повільних пристроях</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Використовувати пружинну прокрутку</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Прокручує текст пісні з фізикою пружини та зміщує кожен рядок трохи пізніше за попередній. Вимкніть, щоб заощадити заряд батареї на повільних пристроях</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Спокійна прокрутка</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Уповільнює анімацію прокрутки тексту й залишає неактивні рядки повного розміру</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Розмиття неактивних рядків</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">М\'яко розмиває кожен рядок, який зараз не співається, і чим далі рядок, тим сильніше розмиття (Android 12 і новіше). До Android 12 неактивні рядки залишаються чіткими</string>
   <string name="morphe_music_lyrics_gap_dots_title">Показувати крапки інструментальної перерви</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Показує три крапки між рядками під час тривалої інструментальної перерви, які заповнюються в міру завершення перерви</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Сильніше затемнювати віддалені рядки</string>
@@ -839,6 +941,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Переносить переклад над текст пісні; читання та романізація залишаються під ним</string>
   <string name="morphe_music_lyrics_force_center_title">Завжди центрувати текст пісні</string>
   <string name="morphe_music_lyrics_force_center_summary">Увімкнено: кожен рядок розташовується посередині, а вирівнювання з джерела ігнорується, зокрема сторони дуету; вимкнено: зберігається вирівнювання, яке задає текст пісні</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Вирівнювання дуету з протилежних боків</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Розміщує другого виконавця на протилежному краї в піснях-дуетах. Вимкніть, щоб обидва виконавці були з одного боку</string>
   <string name="morphe_music_lyrics_providers_keep_one">Принаймні один постачальник має залишатися увімкненим</string>
   <string name="morphe_music_lyrics_translation_provider_title">Переклад</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романізація або транслітерація</string>

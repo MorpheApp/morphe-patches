@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Экспорттоо папкасын табуу мүмкүн болбоду: %s</string>
   <string name="morphe_export_download_flyout_title">Түзмөктке экспорттоо</string>
   <string name="morphe_export_download_canceled">Экспорттоо токтотулду</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Ыйыкталган</string>
   <string name="morphe_custom_branding_icon_title">Тиркеменин иконкасы</string>
@@ -139,16 +140,18 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Төмөнкүнү иштетип көрүңүз: Видео агымдарын имитациялоо &gt; Android VR кириш</string>
   <string name="morphe_spoof_video_streams_client_type_title">Стандарттуу клиент</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS колдонуу</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Деобфускация үчүн yt-dlp-ejs (WebView) ордуна QuackJS колдонуу</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR кириш</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR үчүн өзүнчө кирүү талап кылынат. Улантуу үчүн бул жерди басыңыз</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Учурда Android VR-ге киргенсиз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" кирип кирүү</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' үчүн өзүнчө каттоосунан кирүү талап кылынат. Улантуу үчүн бул жерди басыңыз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Учурда \'Android VR\' каттоосунан киргенсиз</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Бул функцияны колдонуу үчүн \'Стандарттуу клиент\' параметрин Android VR-ге өзгөртүңүз</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-ге кириңиз</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'ге кирүү айрым колдонуучулар үчүн ойнотуу көйгөйлөрүн чече алат
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Бул функцияны колдонуу үчүн \'Стандарттуу клиент\' параметрин \'Android VR\'ге өзгөртүңүз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\' каттоосунан кириңиз</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'-ге кирүү айрым колдонуучулар үчүн ойнотуу көйгөйлөрүн чече алат
 
-Кирүү үчүн төмөндөгү \"улантуу\" баскычын басыңыз"</string>
+Кирүү үчүн төмөндөгү 'улантуу' баскычын басыңыз"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Чыгуу</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Нускамалар</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -167,35 +170,36 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
 • Сиздин Morphe жөндөөлөрүңүз Android VR авторизациясын импорттобойт/экспорттобойт
 • Эгер бул колдонмо 6 ай бою колдонулбаса, Google бул авторизацияны өчүрөт
 • Эгер сиз Google сырсөзүн өзгөртсөңүз же бул түзмөктү Google жөндөөлөрүнөн алып салсаңыз, кайрадан кирүү керек болот"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобилдик веб-сайт аркылуу кирүү</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Веб-сайт аркылуу кирүү</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ыктыярдуу: видеолорду өз аккаунтуңуз менен ойнотуу үчүн YouTube веб-сайтына кириңиз. Улантуу үчүн бул жерди басыңыз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Учурда Мобилдик веб-версияга киргенсиз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Учурда YouTube веб-сайтына киргенсиз</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Бул функцияны колдонуу үчүн \'Стандарттуу клиент\' параметрин Mobile Web-ге өзгөртүңүз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ке кирүү</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web видеолорду кирбестен же YouTube веб-сайтына киргенде ойнотууга мүмкүндүк берет
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Бул функцияны колдонуу үчүн \'Стандарттуу клиент\' параметрин Веб-клиентке өзгөртүңүз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube веб-сайтына кириңиз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Веб-клиенттер видеолорду кирибестен же YouTube веб-сайтына кирип ойнотушат
 
-• Кирген учурда, жаш курагына чектөөлөрү бар видеолор сыяктуу аккаунтту талап кылган видеолорду ойнотууга болот
-• Бул колдонмодо Google-ге кирүү баракчасы ачылат
-• Кирүү функциясы сиз ойнотуучу видеолорду алуу үчүн гана колдонулат
+• Киргенде, аккаунт керек болгон видеолорду, мисалы, жаш курагына чектөөлөрү бар видеолорду ойнотсо болот
+• Бул колдонмодо Google'ге кирүү баракчасы ачылат
+• Кирүү сиз ойното турган видеолорду алуу үчүн гана колдонулат
 • Кирүү маалыматтары ушул түзүлүштө гана сакталат
+• Тандалган стандарттуу клиент үчүн ар бир веб-клиенттин өзүнүн кирүүсү болот
 
-Кирүү үчүн төмөндөгү 'улантуу' баскычын басыңыз"</string>
+Кирүү үчүн төмөндөгү \"улантуу\" баскычын басыңыз"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Кирүү сакталды
 
-• Сиздин Morphe жөндөөлөрүңүз Мобилдик веб-сайттын кирүүсүн импорттобойт/экспорттобойт
-• Эгер Google кирүү сессиясын аяктатса, кайра киргенге чейин видеолор кирбей эле ойнотулат
-• Кирүүдөн чыгуу бул түзүлүштү YouTube веб-сайтынан да чыгарат"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Мобилдик веб-сайттын кирүү мөөнөтү бүттү, Мобилдик веб-сайттын кирүүсүн кайра аракет кылып көрүңүз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Мобилдик веб-сайттан чыгылды</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView жеткиликтүү эмес. Кирүү үчүн аны орнотуңуз же иштетиңиз</string>
+• Сиздин Morphe жөндөөлөрүңүз YouTube веб-сайтындагы кирүүнү импорттобойт/экспорттобойт
+• Эгерде Google кирүүнү токтотсо, кайра киргенге чейин видеолор кирбей эле ойнотулат
+• Кирүүдөн чыгуу бул түзмөктү YouTube веб-сайтынан да чыгарат"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Веб-кирүү мөөнөтү бүттү, кайра кирүүгө аракет кылыңыз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube веб-сайтынан чыгылды</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' жеткиликтүү эмес. Кирүү үчүн аны орнотуңуз же иштетиңиз</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 убактылуу жеткиликсиз (API убактысы бүттү)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR кирүү мөөнөтү бүттү, VR\'ге кайра кирүүнү аракет кылып көрүңүз</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' кирүү мөөнөтү бүттү, VR\'ге кайра кирүүгө аракет кылыңыз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 убактылуу жеткиликсиз (статусу %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 убактылуу жеткиликсиз</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR\'ге кирүү мүмкүн эмес, веб-сайттын аутентификациясы бекитилген жок</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR\'ге кирүү мүмкүн эмес: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR\'ден чыгылды</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\' эсебинен чыктыңыз</string>
   <string name="morphe_oauth2_toast_invalid">VR кирүү токени жарамсыз, VR\'ге кайра кирүүнү аракет кылып көрүңүз</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Билдирүүнүн медиа башкаруулары</string>
@@ -213,8 +217,15 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_seek_notification_media_length_invalid">Издөө узундугу 1 жана %s секундтун ортосунда болушу керек. Стандарттуу маани колдонулат</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC протоколун өчүрүү</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Видео сапасына артыкчылык берүү</string>
+  <string name="morphe_prioritize_video_quality_summary">Кодектин натыйжалуулугуна караганда, жеткиликтүү эң жогорку видео сапатына артыкчылык берет</string>
+  <string name="morphe_prioritize_video_quality_dialog">Эгерде бул жөндөө өчүpүлгөн болсо, анда эски видеолордо видео сапатынын варианттары көрсөтүлбөй калышы мүмкүн</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC аудиосун өчүрүү</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC аудиосун өчүрүү</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Динамикалык диапазона压缩 кылынган версиянын ордуна түп нусқадагы аудиону ойнотот</string>
+  <string name="morphe_disable_loudness_normalization_title">Катуулукту нормализациялоону өчүрүү</string>
+  <string name="morphe_disable_loudness_normalization_summary">Катуу аудиону стандарттык деңгээлге чейин төмөндөтүүнүн ордуна, аны түп нусқадагы көлөмдө ойнотот</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Түпкү аудио тилин мажбурлоо</string>
   <string name="morphe_force_original_audio_summary">Дубляждалган версиянын ордуна ар дайым видеонун түпкү аудио жологун ойнотуу</string>
@@ -223,6 +234,32 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_skip_silence_summary">Видео аудиосундагы унсуз тыныгууларды автоматтуу түрдө өткөрүп жиберет</string>
   <string name="morphe_skip_silence_minimum_pause_title">Тыныгуунун минималдуу узундугу</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Кеминде ушунча узалыктагы тыныгуулар гана кыскартылат. Кийинки видео башталганда күчүнө кирет</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Видео эффект</string>
+  <string name="morphe_video_effect_entry_none">Өчүк</string>
+  <string name="morphe_video_effects_custom_title">Видео эффекттерди түзөтүү</string>
+  <string name="morphe_video_effects_custom_summary">Видео эффекттерди өзгөртүү, кайра அதтоо, өчүрүү же кошуу. Эффекттер бул шейдер коду, ошондуктан AI чат-бот жаңыларын жаза алат</string>
+  <string name="morphe_video_effects_custom_empty">Видео эффекттер жок. Жасаңыз үчүн Эффектти кошуу баскычын басыңыз.</string>
+  <string name="morphe_video_effects_custom_add">Эффектти кошуу</string>
+  <string name="morphe_video_effects_custom_restore">Демейкиге кайтаруу</string>
+  <string name="morphe_video_effects_custom_add_title">Жаңы эффект</string>
+  <string name="morphe_video_effects_custom_edit_title">Эффектти түзөтүү</string>
+  <string name="morphe_video_effects_custom_name_hint">Аты</string>
+  <string name="morphe_video_effects_custom_name_empty">Эффект үчүн атты киргизиңиз</string>
+  <string name="morphe_video_effects_custom_name_exists">Бул аттагы эффект буга чейин эле бар</string>
+  <string name="morphe_video_effects_custom_copy_code">Кодду көчүрүү</string>
+  <string name="morphe_video_effects_custom_error_title">Эффектте ката бар</string>
+  <string name="morphe_video_effects_custom_error_message">"Код оңдолгонго чейин видеолор эффектсиз көрсөтүлөт. Бул катаны кодду жазган AIга бериңиз:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Код функциянын же комментарийдин ичинде бүтөт, демек, ал көчүрүлгөндө же чапталганда кесилген болушу мүмкүн. Чапталган текст %d белгиден кийин кесилиши мүмкүн.
+
+Жасалма интеллекттен кыскараак код сураңыз же кодду бөлүк-бөлүк кылып чаптаңыз."</string>
+  <string name="morphe_video_effects_custom_copy_error">Катаны көчүрүү</string>
+  <string name="morphe_video_effects_custom_save_anyway">Баары бир сактоо</string>
+  <string name="morphe_video_effects_custom_delete">Өчүрүү</string>
+  <string name="morphe_video_effects_custom_delete_title">Эффектти өчүрөсүзбү?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s өчүрүлөт.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Тармак проксиси</string>
   <string name="morphe_proxy_screen_summary">Колдоого алынган тармактык суроо-талаптарды прокси аркылуу багыттаңыз</string>
@@ -253,7 +290,7 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_replace_music_with_youtube_title">Бөлүшүү шилтемелерин youtube.com сайтына өзгөртүү</string>
   <string name="morphe_replace_music_with_youtube_summary">Бөлүшүлгөн шилтемелерде music.youtube.com дарегин youtube.com менен алмаштырат</string>
   <string name="morphe_replace_links_with_shortener_title">Бөлүшүү шилтемелерин youtu.be шилтемелерине алмаштыруу</string>
-  <string name="morphe_replace_links_with_shortener_summary">Видеолорду кыскартылган youtu.be URL форматын колдонууга мажбурлайт</string>
+  <string name="morphe_replace_links_with_shortener_summary">Видеолорго кыскартылган \'youtu.be\' URL форматын колдонууга мажбурлайт</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Автоматтык</string>
@@ -265,19 +302,16 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_video_quality_default_mobile_title">Мобилдик тармактагы видеонун стандарттык сапаты</string>
   <string name="morphe_remember_video_quality_toast_mobile">Мобилдик тармак үчүн стандарттык сапат %s болуп өзгөртүлдү</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi үчүн стандарттык сапат %s болуп өзгөртүлдү</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Системалык бөлүшүү баракчасын ачуу</string>
-  <string name="morphe_open_system_share_sheet_summary">Мазмунду бөлүшүүдө колдонмонун ичиндеги баракчанын ордуна системалык бөлүшүү баракчасын ачат</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгоо</string>
   <string name="morphe_debug_litho_entry_disabled">Иштен чыгарылган</string>
   <string name="morphe_debug_litho_entry_path">Жол</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Жол жана буфер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho логгоо тиркеменин макеттик компоненттерин, анын ичинде кээ бир UI компоненттеринин экрандагы текстин каттайт.
+  <string name="morphe_debug_litho_user_dialog_message">"Тиркеменин лейаут компоненттерин, анын ичинде кээ бир UI компоненттеринин экрандагы текстин каттайт.
 
-Бул жеке фильтрлерди түзүүдө компоненттерди аныктоого жардам берет.
+Бул自定义 фильтрлерди түзүүдө компоненттерди аныктоого жардам берет.
 
-Бирок, бул сиздин IP дарегиңиз сыяктуу кээ бир колдонуучулардын маалыматтарын да каттайт"</string>
+Бирок, бул сиздин IP дарегиңиз сыяктуу кээ бир колдонуучунун маалыматтарын да каттайт"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Custom фильтр</string>
   <string name="morphe_custom_filter_screen_summary">Кандайдыр бир компонентти жашыруу үчүн ыйыкталган фильтрлерди жөндөңүз</string>
@@ -342,6 +376,18 @@ PotHelper тиркемесин жүктөө үчүн бул жерди басы�
   <string name="morphe_custom_font_file_summary">TTF же OTF шрифт файлын тандаңыз</string>
   <string name="morphe_custom_font_file_invalid">Тандалган файл TTF же OTF шрифти эмес</string>
   <string name="morphe_custom_font_failed_to_load">Ыйыкталган шрифт жүктөлгөн жок жана өчүрүлдү</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Айнек менюлар</string>
+  <string name="morphe_glass_menus_screen_summary">Арткы жагындагы бүдөмүк мазмундун үстүндөгү матирленген айнек сыяктуу менюлар</string>
+  <string name="morphe_glass_menus_title">Айнек менюлөрүн иштетүү</string>
+  <string name="morphe_glass_menus_summary">Менюларды жана төмөнкү барактарды бүдөмүк айнек катары көрсөтөт, алардын артындагы мазмун бүдөмүк болот</string>
+  <string name="morphe_glass_menus_user_dialog_message">Батареяны үнөмдөө режими күйгөндө же түзүлүш бүдөмүк эффектин колдобосо, менюлар дэриңде тунук эмес болуп көрсөтүлөт</string>
+  <string name="morphe_glass_menus_opacity_title">Айнектин тунуктугу</string>
+  <string name="morphe_glass_menus_opacity_summary">Меню бүдөмүк мазмунду канчалык деңгээлде жабат (0 - тунук, 100 - тунук эмес)</string>
+  <string name="morphe_glass_menus_blur_title">Бүдөмүктөө</string>
+  <string name="morphe_glass_menus_blur_summary">Менюнун артындагы мазмун канчалык деңгээлде бүдөмүк болору</string>
+  <string name="morphe_glass_menus_dim_title">Караңгылоо</string>
+  <string name="morphe_glass_menus_dim_summary">Төмөнкү барактын айланасындагы экран канчалык деңгээлде караңгыланары</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Жакпагандар убактылуу жеткиликсиз (API убактысы бүттү)</string>
@@ -379,4 +425,8 @@ PotHelper тиркемесин жүктөө үчүн бул жерди басы�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиенттин чектөөлөрү боюнча маселелер жок</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиенттин чектөөсү %s жолу кездешти</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунда</string>
+  <string name="morphe_navigation_bar_screen_title">Навигациялык панель</string>
+  <string name="morphe_navigation_bar_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөрүн тандаңыз</string>
+  <string name="morphe_toolbar_screen_title">Куралдар панели</string>
+  <string name="morphe_toolbar_screen_summary">Куралдар панелинде кайсы компоненттер көрүнөрүн тандаңыз</string>
 </resources>

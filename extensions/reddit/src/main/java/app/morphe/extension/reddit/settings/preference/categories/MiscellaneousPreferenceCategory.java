@@ -14,20 +14,27 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AppIconPatch;
+import app.morphe.extension.reddit.patches.DownloadAllFromGalleryPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
+import app.morphe.extension.reddit.patches.EnableDebuggingPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
+import app.morphe.extension.reddit.patches.OpenSystemShareSheetPatch;
+import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
+import app.morphe.extension.reddit.patches.SharePostContentPatch;
 import app.morphe.extension.reddit.settings.RedditActivityHook;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.DownloadLocationPreference;
+import app.morphe.extension.reddit.settings.preference.FeatureFlagsManagerPreference;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
 import app.morphe.extension.shared.settings.preference.SortedListPreference;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
@@ -43,11 +50,16 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return AppIconPatch.isPatchIncluded() ||
+                DownloadAllFromGalleryPatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
+                EnableDebuggingPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
+                OpenSystemShareSheetPatch.isPatchIncluded() ||
+                PrivateBrowsingModePatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
-                SanitizeSharingLinksPatch.isPatchIncluded();
+                SanitizeSharingLinksPatch.isPatchIncluded() ||
+                SharePostContentPatch.isPatchIncluded();
     }
 
     @Override
@@ -69,6 +81,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         if (AppIconPatch.isPatchIncluded()) {
             addPreference(AppIconPatch.getIconPreference(context));
         }
+        if (DownloadAllFromGalleryPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DOWNLOAD_ALL_FROM_GALLERY
+            ));
+        }
         if (DownloadLocationPatch.isPatchIncluded()) {
             addPreference(new DownloadLocationPreference(context));
         }
@@ -82,6 +100,18 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_EXTERNALLY
+            ));
+        }
+        if (OpenSystemShareSheetPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    SharedSettings.OPEN_SYSTEM_SHARE_SHEET
+            ));
+        }
+        if (PrivateBrowsingModePatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.PRIVATE_BROWSING_MODE
             ));
         }
         if (RedgifsAudioPatch.isPatchIncluded()) {
@@ -100,8 +130,22 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     Settings.SANITIZE_SHARING_LINKS
             ));
         }
+        if (SharePostContentPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHARE_POST_CONTENT
+            ));
+        }
 
         addPreference(new CustomDialogListPreference(context, BaseSettings.DEBUG_LEVEL));
+        if (EnableDebuggingPatch.isPatchIncluded()) {
+            Preference exportLogs = new ExportLogToClipboardPreference(context);
+            exportLogs.setTitle(str("morphe_debug_export_logs_title"));
+            exportLogs.setSummary(str("morphe_debug_export_logs_summary"));
+            addPreference(exportLogs);
+
+            addPreference(new FeatureFlagsManagerPreference(context));
+        }
 
         // Include original privacy policy link that was changed to open Morphe settings.
         if (RedditActivityHook.isPrivacyPolicyReplaced()) {

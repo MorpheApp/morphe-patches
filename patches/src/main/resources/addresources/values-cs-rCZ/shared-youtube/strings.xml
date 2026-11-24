@@ -78,6 +78,7 @@ Ověřte, zda je název balíčku správný a zda je aplikace nainstalována"</s
   <string name="morphe_export_download_folder_missing">Složka pro export %s nebyla nalezena</string>
   <string name="morphe_export_download_flyout_title">Exportovat do zařízení</string>
   <string name="morphe_export_download_canceled">Export zrušen</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Vlastní</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
@@ -139,16 +140,18 @@ Klepněte na OK pro otevření Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Zkuste zapnout: Falšovat video streamy &gt; Přihlášení do Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Výchozí klient</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Použít QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Pro deobfuskaci použít QuackJS místo yt-dlp-ejs (WebView)</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Přihlášení do Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vyžaduje samostatné přihlášení. Chcete-li pokračovat, klepněte sem</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Právě jsme přihlášeni do Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Přihlášení do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" vyžaduje samostatné přihlášení. Klepněte sem pro pokračování</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Aktuálně přihlášeno do \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pro použití této funkce změňte výchozího klienta na Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Přihlášení do Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Přihlášení do Android VR může vyřešit problémy s přehráváním pro některé uživatele
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Chcete-li tuto funkci použít, změňte \"Výchozí klient\" na \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Přihlášení do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Přihlášení k \"Android VR\" může u některých uživatelů vyřešit problémy s přehráváním
 
-Pro přihlášení stiskněte pokračovat níže"</string>
+Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásit se</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Pokyny</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -167,35 +170,36 @@ Pro přihlášení stiskněte pokračovat níže"</string>
 • Vaše nastavení Morphe neimportuje ani neexportuje ověření Android VR
 • Pokud tuto aplikaci nepoužijete 6 měsíců, Google toto ověření odstraní
 • Pokud změníte heslo ke Googlu nebo toto zařízení odeberete z nastavení Googlu, budete se muset znovu přihlásit"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Přihlášení přes mobilní web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Webové přihlášení</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Volitelně: přihlaste se na webovou stránku YouTube, abyste mohli přehrávat videa se svým účtem. Poklepejte sem pro pokračování</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálně přihlášeno přes mobilní web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálně přihlášeno k webové stránce YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chcete-li tuto funkci použít, změňte „Výchozí klient“ na Mobilní web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Přihlaste se do Mobilního webu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobilní web přehrává videa bez přihlášení nebo po přihlášení k webové stránce YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chcete-li tuto funkci použít, změňte „Výchozí klient“ na webový klient</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Přihlaste se k webové stránce YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webové klienty přehrávají videa bez přihlášení nebo po přihlášení k webové stránce YouTube
 
 • Po přihlášení lze přehrávat videa, která vyžadují účet, například videa s omezením věku
-• Stránka pro přihlášení do Google se otevře v této aplikaci
+• Stránka přihlášení Google se otevře v této aplikaci
 • Přihlášení slouží pouze k získání videí, která přehráváte
 • Přihlášení je uloženo pouze na tomto zařízení
+• Každý webový klient má vlastní přihlášení pro vybraného výchozího klienta
 
 Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Přihlášení uloženo
 
-• Nastavení aplikace Morphe nebude přihlášení do Mobilního webu importovat ani exportovat
-• Pokud Google přihlášení ukončí, budou se videa přehrávat bez přihlášení, dokud se znovu nepřihlásíte
-• Odhlášením se toto zařízení odhlásí také z webové stránky YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Přihlášení k mobilní webové verzi vypršelo, zkuste se přihlásit znovu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlášeno z mobilní webové verze</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView není k dispozici. Chcete-li se přihlásit, nainstalujte jej nebo zapněte</string>
+• Nastavení aplikace Morphe nebude importovat/exportovat přihlášení k webové stránce YouTube
+• Pokud Google přihlášení ukončí, videa se budou přehrávat bez přihlášení, dokud se znovu nepřihlásíte
+• Odhlášení také odhlásí toto zařízení z webové stránky YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Platnost webového přihlášení vypršela, zkuste se přihlásit znovu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlášeno z webové stránky YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" není k dispozici. Chcete-li se přihlásit, nainstalujte jej nebo povolte</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 dočasně není k dispozici (Časový limit API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Přihlášení do Android VR vypršelo, zkuste se přihlásit do VR znovu</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Přihlášení do \"Android VR\" vypršelo, zkuste se do VR přihlásit znovu</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 je dočasně nedostupný (stav %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 dočasně není k dispozici</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nelze se přihlásit do VR, autentizace webové stránky nebyla schválena</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nelze se přihlásit do VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Odhlášeno z Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Odhlášeno z \"Android VR\"</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ovládací prvky médií v oznámení</string>
@@ -213,8 +217,15 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_seek_notification_media_length_invalid">Délka hledání musí být mezi 1 a %s sekundami. Používá se výchozí hodnota</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Upřednostnit kvalitu videa</string>
+  <string name="morphe_prioritize_video_quality_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
+  <string name="morphe_prioritize_video_quality_dialog">Pokud je toto nastavení vypnuté, u starších videí nemusí být k dispozici žádné možnosti kvality videa</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Vypnout zvuk DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Zakázat audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Přehrává původní audio namísto verze s komprimovaným dynamickým rozsahem</string>
+  <string name="morphe_disable_loudness_normalization_title">Zakázat normalizaci hlasitosti</string>
+  <string name="morphe_disable_loudness_normalization_summary">Přehrává hlasité audio v původní hlasitosti namísto jeho snížení na standardní úroveň</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary">Vždy přehrává původní zvukovou stopu videa namísto dabované verze</string>
@@ -223,6 +234,32 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_skip_silence_summary">Automaticky přeskakuje tiché pauzy ve zvuku videa</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimální délka pauzy</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Zkracují se pouze pauzy trvající alespoň tak dlouho. Projeví se při spuštění dalšího videa</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videoefekt</string>
+  <string name="morphe_video_effect_entry_none">Vypnuto</string>
+  <string name="morphe_video_effects_custom_title">Upravit videoefekty</string>
+  <string name="morphe_video_effects_custom_summary">Změňte, přejmenujte, smažte nebo přidejte videoefekty. Efekty jsou shaderové kódy, takže nové může napsat AI chatbot</string>
+  <string name="morphe_video_effects_custom_empty">Žádné videoefekty. Klepněte na Přidat efekt a vytvořte nový.</string>
+  <string name="morphe_video_effects_custom_add">Přidat efekt</string>
+  <string name="morphe_video_effects_custom_restore">Obnovit výchozí nastavení</string>
+  <string name="morphe_video_effects_custom_add_title">Nový efekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Upravit efekt</string>
+  <string name="morphe_video_effects_custom_name_hint">Název</string>
+  <string name="morphe_video_effects_custom_name_empty">Zadejte název efektu</string>
+  <string name="morphe_video_effects_custom_name_exists">Efekt s tímto názvem již existuje</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopírovat kód</string>
+  <string name="morphe_video_effects_custom_error_title">Efekt obsahuje chybu</string>
+  <string name="morphe_video_effects_custom_error_message">"Videa jsou zobrazována bez efektu, dokud nebude kód opraven. Tuto chybu předați AI, která kód napsala:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kód končí uvnitř funkce nebo komentáře, takže byl pravděpodobně při kopírování nebo vkládání odsということでn. Vložený text může být oříznut na %d znaků.
+
+Požádejte AI o kratší kód, nebo kód vkládejte po částech."</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopírovat chybu</string>
+  <string name="morphe_video_effects_custom_save_anyway">Uložit i tak</string>
+  <string name="morphe_video_effects_custom_delete">Smazat</string>
+  <string name="morphe_video_effects_custom_delete_title">Smazat efekt?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s bude smazáno.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Síťový proxy</string>
   <string name="morphe_proxy_screen_summary">Směrování síťových požadavků přes proxy</string>
@@ -253,7 +290,7 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_replace_music_with_youtube_title">Změnit odkazy pro sdílení na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Nahrazuje music.youtube.com za youtube.com v sdílených odkazech.</string>
   <string name="morphe_replace_links_with_shortener_title">Změnit odkazy pro sdílení na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Nutí videa používat zkrácený formát URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Vynutí použití zkráceného formátu URL \"youtu.be\" pro videa</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaticky</string>
@@ -265,19 +302,16 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_video_quality_default_mobile_title">Výchozí kvalita videa v mobilní síti</string>
   <string name="morphe_remember_video_quality_toast_mobile">Výchozí mobilní kvalita byla změněna na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Výchozí kvalita Wi-Fi byla změněna na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otevírat systémový panel sdílení</string>
-  <string name="morphe_open_system_share_sheet_summary">Při sdílení obsahu otevře systémové menu pro sdílení místo toho menu v aplikaci</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho záznamy</string>
   <string name="morphe_debug_litho_entry_disabled">Vypnuto</string>
   <string name="morphe_debug_litho_entry_path">Cesta</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Cesta a vyrovnávací paměť</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho logování zaznamenává komponenty rozvržení aplikace, včetně textu na obrazovce pro některé komponenty uživatelského rozhraní.
+  <string name="morphe_debug_litho_user_dialog_message">"Zaznamená komponenty rozvržení aplikace, včetně textu na obrazovce pro některé komponenty uživatelského rozhraní.
 
 To může pomoci identifikovat komponenty při vytváření vlastních filtrů.
 
-Budou se však zaznamenávat i některá uživatelská data, jako je vaše IP adresa"</string>
+Bude však zaznamenávat i některá uživatelská data, jako je vaše IP adresa"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastní filtry pro skrytí libovolné komponenty</string>
@@ -342,6 +376,18 @@ Pokud bude později vypnuto, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_custom_font_file_summary">Vyberte soubor písma TTF nebo OTF</string>
   <string name="morphe_custom_font_file_invalid">Vybraný soubor není písmo TTF nebo OTF</string>
   <string name="morphe_custom_font_failed_to_load">Vlastní písmo se nepodařilo načíst a je vypnuto</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Skleněná menu</string>
+  <string name="morphe_glass_menus_screen_summary">Menu jako mléčné sklo nad rozostřeným obsahem za nimi</string>
+  <string name="morphe_glass_menus_title">Zapnout skleněná menu</string>
+  <string name="morphe_glass_menus_summary">Zobrazuje menu a spodní panely jako mléčné sklo, přičemž obsah za nimi je rozmazaný</string>
+  <string name="morphe_glass_menus_user_dialog_message">Při zapnutém úsporném režimu baterie nebo pokud zařízení nepodporuje rozmazání, jsou menu zobrazena téměř neprůhledně</string>
+  <string name="morphe_glass_menus_opacity_title">Neprůhlednost skla</string>
+  <string name="morphe_glass_menus_opacity_summary">Jak moc menu překrývá rozmazaný obsah (0 je čiré, 100 je neprůhledné)</string>
+  <string name="morphe_glass_menus_blur_title">Rozmazání</string>
+  <string name="morphe_glass_menus_blur_summary">Jak moc je obsah za menu rozmazaný</string>
+  <string name="morphe_glass_menus_dim_title">Ztmavení</string>
+  <string name="morphe_glass_menus_dim_summary">Jak moc je obrazovka kolem spodního panelu ztmavena</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Počty „Nelíbí se mi“ jsou dočasně nedostupné (časový limit API)</string>
@@ -381,4 +427,8 @@ ID videa, které sledujete, je odesláno do API Return YouTube Dislike a vaše l
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nebyla detekována žádná omezení rychlosti klienta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Setkali jste se s omezením rychlosti klienta %s krát</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekund</string>
+  <string name="morphe_navigation_bar_screen_title">Navigační panel</string>
+  <string name="morphe_navigation_bar_screen_summary">Vyberte, která tlačítka se zobrazí v dolní navigační liště.</string>
+  <string name="morphe_toolbar_screen_title">Nástrojová lišta</string>
+  <string name="morphe_toolbar_screen_summary">Vyberte, které prvky se zobrazí v nástrojové liště</string>
 </resources>

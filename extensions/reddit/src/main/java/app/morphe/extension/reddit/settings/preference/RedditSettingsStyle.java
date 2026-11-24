@@ -38,6 +38,7 @@ import android.widget.WrapperListAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -86,6 +87,8 @@ public final class RedditSettingsStyle {
 
     /**
      * Color palettes built into Reddit's Compose settings screen for each theme.
+     * The toggle outline is the unchecked track color mixed 50% with black (light themes)
+     * or white (dark themes).
      */
     private enum Palette {
         LIGHT(
@@ -100,8 +103,8 @@ public final class RedditSettingsStyle {
                 0xFF5C6C74, // header
                 0xFF5C6C74, // secondary (subtitles, caret)
                 0xFFE5EBEE, // trackUnchecked
-                0xFF717578, // trackOutline
-                0xFF737577, // knobUnchecked (gray)
+                0xFF737677, // trackOutline
+                0xFF5C6C74, // knobUnchecked (slate)
                 0xFF000000, // trackChecked
                 0xFFFFFFFF, // knobChecked
                 0xFF181C1F  // checkMark
@@ -117,12 +120,12 @@ public final class RedditSettingsStyle {
                 0xFF4D5753, // text & back arrow (mint_tone3/text)
                 0xFF4F5A56, // header (mint section headers)
                 0xFF4F5A56, // secondary (subtitles, caret)
-                0xFFE3ECE9, // trackUnchecked
-                0xFF717876, // trackOutline
+                0xFFE5EBEE, // trackUnchecked
+                0xFF737677, // trackOutline
                 0xFF737577, // knobUnchecked (gray)
-                0xFF00C8AA, // trackChecked (teal)
+                0xFF00CCC0, // trackChecked (mint_primary)
                 0xFFFFFFFF, // knobChecked
-                0xFF181C1F  // checkMark
+                0xFF1E1E1E  // checkMark
         ),
         NIGHT(
                 true,
@@ -136,7 +139,7 @@ public final class RedditSettingsStyle {
                 0xFF8BA2AD, // header
                 0xFF8BA2AD, // secondary
                 0xFF2A3236, // trackUnchecked
-                0xFF979B9E, // trackOutline
+                0xFF95999B, // trackOutline
                 0xFF8BA2AD, // knobUnchecked
                 0xFFEEF1F3, // trackChecked
                 0xFF181C1F, // knobChecked
@@ -153,12 +156,12 @@ public final class RedditSettingsStyle {
                 0xFFD5346A, // text & back arrow (pony_tone2)
                 0xFFD5346A, // header
                 0xFFD5346A, // secondary
-                0xFFFDF8F4, // trackUnchecked
-                0xFF7B7774, // trackOutline (warm gray)
+                0xFFFDF5ED, // trackUnchecked (pony_tone6)
+                0xFF7F7B77, // trackOutline
                 0xFFD5346A, // knobUnchecked (pink)
-                0xFFFF479D, // trackChecked (hot pink)
+                0xFFFD4497, // trackChecked (pony_primary)
                 0xFFFFFFFF, // knobChecked
-                0xFF181C1F  // checkMark
+                0xFF131427  // checkMark (dark navy)
         ),
         TREES(
                 false,
@@ -171,12 +174,12 @@ public final class RedditSettingsStyle {
                 0xFF3E8447, // text & back arrow (trees_tone2)
                 0xFF3E8447, // header
                 0xFF3E8447, // secondary
-                0xFFF4FAF0, // trackUnchecked
-                0xFF74796F, // trackOutline (olive-gray)
-                0xFF255D35, // knobUnchecked (forest green)
-                0xFF52C92E, // trackChecked (bright green)
+                0xFFF6FCE8, // trackUnchecked (trees_tone6)
+                0xFF7B7E74, // trackOutline
+                0xFF3E8447, // knobUnchecked (trees_tone2)
+                0xFF5ACE33, // trackChecked (trees_primary)
                 0xFFFFFFFF, // knobChecked
-                0xFF181C1F  // checkMark
+                0xFF05301B  // checkMark (dark green)
         ),
         AMOLED(
                 true,
@@ -252,10 +255,11 @@ public final class RedditSettingsStyle {
         currentPalette = detectPalette(activity);
         Utils.setIsDarkModeEnabled(currentPalette.isDark);
 
-        // Sync ThemeUtils so Morphe's CustomDialog (App Icon picker, Restart, Import/Export, etc.)
+        // Sync ThemeUtils so full screen pages (About) use the app background color,
+        // and Morphe's CustomDialog (App Icon picker, Restart, Import/Export, etc.)
         // uses Reddit's elevated dialog surface color and custom text/button styling.
-        ThemeUtils.setThemeLightColor(currentPalette.isDark ? Palette.LIGHT.dialogSurface : currentPalette.dialogSurface);
-        ThemeUtils.setThemeDarkColor(currentPalette.dialogSurface);
+        ThemeUtils.setThemeLightColor(currentPalette.isDark ? Palette.LIGHT.background : currentPalette.background);
+        ThemeUtils.setThemeDarkColor(currentPalette.background);
         ThemeUtils.setDialogThemeColors(
                 currentPalette.dialogSurface,
                 currentPalette.dialogTitle,
@@ -360,6 +364,124 @@ public final class RedditSettingsStyle {
     private static boolean isDark() {
         return palette().isDark;
     }
+
+    // region App toggle colors
+
+    /**
+     * Colors of the last toggle the app drew, or null if the app did not draw a toggle yet.
+     */
+    @Nullable
+    private static volatile AppToggleColors appToggleColors;
+
+    private static final class AppToggleColors {
+        /**
+         * Palette that was active when the app drew the toggle.
+         * The colors are only used while this palette is active.
+         */
+        final Palette palette;
+        final long[] values;
+        final int knobChecked, trackChecked, borderChecked;
+        final int knobUnchecked, trackUnchecked, borderUnchecked;
+
+        AppToggleColors(Palette palette, long[] values) {
+            this.palette = palette;
+            this.values = values;
+            knobChecked = toArgb(values[0]);
+            trackChecked = toArgb(values[1]);
+            borderChecked = toArgb(values[2]);
+            // values[3] is the content color of the check mark icon, but the icon uses its own tint.
+            knobUnchecked = toArgb(values[4]);
+            trackUnchecked = toArgb(values[5]);
+            borderUnchecked = toArgb(values[6]);
+        }
+    }
+
+    /**
+     * Compose stores an sRGB color as the ARGB color in the upper 32 bits,
+     * and the color space id (0 for sRGB) in the lowest 6 bits.
+     * Other color spaces store the color differently, so they cannot be converted with {@link #toArgb(long)}.
+     */
+    private static boolean isNotSrgb(long composeColor) {
+        return (composeColor & 0x3F) != 0;
+    }
+
+    private static int toArgb(long composeColor) {
+        return (int) (composeColor >>> 32);
+    }
+
+    /**
+     * Injection point.
+     * Called each time the app creates the colors of a settings toggle, with the colors of an
+     * enabled toggle: checked thumb, track, border and icon, then unchecked thumb, track, border and icon.
+     */
+    public static void setAppToggleColors(long checkedThumb, long checkedTrack, long checkedBorder, long checkedIcon,
+                                          long uncheckedThumb, long uncheckedTrack, long uncheckedBorder, long uncheckedIcon) {
+        try {
+            final long[] values = {checkedThumb, checkedTrack, checkedBorder, checkedIcon,
+                    uncheckedThumb, uncheckedTrack, uncheckedBorder, uncheckedIcon};
+            AppToggleColors current = appToggleColors;
+            if (current != null && Arrays.equals(current.values, values)) {
+                return; // Same colors as the last toggle.
+            }
+            for (long value : values) {
+                if (isNotSrgb(value)) return;
+            }
+
+            // Without an activity the palette cannot be detected,
+            // and the colors could be used with the wrong palette.
+            Activity activity = Utils.getActivity();
+            if (activity == null) return;
+
+            Palette palette = detectPalette(activity);
+            appToggleColors = new AppToggleColors(palette, values);
+            Logger.printDebug(() -> "App toggle colors of palette: " + palette.name());
+        } catch (Exception ex) {
+            Logger.printException(() -> "setAppToggleColors failure", ex);
+        }
+    }
+
+    /**
+     * @return The toggle colors of the app for the active palette, or null to use the built-in palette.
+     */
+    @Nullable
+    private static AppToggleColors appToggleColors() {
+        AppToggleColors colors = appToggleColors;
+        return colors != null && colors.palette == palette() ? colors : null;
+    }
+
+    /**
+     * Palette that was active when the app drew the check mark of a toggle, or null if it did not draw one yet.
+     */
+    @Nullable
+    private static volatile Palette appCheckMarkPalette;
+    private static volatile int appCheckMarkColor;
+
+    /**
+     * Injection point.
+     * Called with the tint of the check mark icon of an enabled toggle.
+     */
+    public static void setAppCheckMarkColor(long color) {
+        try {
+            if (isNotSrgb(color)) return;
+            final int argb = toArgb(color);
+            if (appCheckMarkPalette != null && appCheckMarkColor == argb) {
+                return; // Same color as the last check mark.
+            }
+
+            Activity activity = Utils.getActivity();
+            if (activity == null) return;
+
+            Palette palette = detectPalette(activity);
+            // Clear the palette first, so the color is never used with the previous palette.
+            appCheckMarkPalette = null;
+            appCheckMarkColor = argb;
+            appCheckMarkPalette = palette;
+        } catch (Exception ex) {
+            Logger.printException(() -> "setAppCheckMarkColor failure", ex);
+        }
+    }
+
+    // endregion
 
     /**
      * Background of the settings.
@@ -657,38 +779,61 @@ public final class RedditSettingsStyle {
         toggle.setBackground(null);
     }
 
-    private static final int TOGGLE_WIDTH = Dim.dp(52);
-    private static final int TOGGLE_HEIGHT = Dim.dp(32);
+    private static float dpToPx(float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Dim.getMetrics());
+    }
+
+    // Sizes are rounded to whole pixels and the border width is rounded up, like the app toggle (Compose).
+    private static final int TOGGLE_WIDTH = Math.round(dpToPx(52));
+    private static final int TOGGLE_HEIGHT = Math.round(dpToPx(32));
     /**
      * The knob center is half the track height from the track end, and moves 20dp.
      * The thumb bounds are narrower than the checked knob, which is drawn past them.
      */
-    private static final int THUMB_WIDTH = Dim.dp(20);
+    private static final int THUMB_WIDTH = Math.round(dpToPx(20));
     private static final int TRACK_PADDING = (TOGGLE_HEIGHT - THUMB_WIDTH) / 2;
-    private static final float KNOB_CHECKED_RADIUS = Dim.dp(12);
-    private static final float KNOB_UNCHECKED_RADIUS = Dim.dp(8);
-    private static final float TRACK_OUTLINE_WIDTH = Dim.dp(2);
-    private static final float CHECK_STROKE_WIDTH = Dim.dp(1.4f);
+    private static final float KNOB_CHECKED_RADIUS = Math.round(dpToPx(24)) / 2f;
+    private static final float KNOB_UNCHECKED_RADIUS = Math.round(dpToPx(16)) / 2f;
+    private static final float TRACK_OUTLINE_WIDTH = (float) Math.ceil(dpToPx(2));
+    /**
+     * The app check mark is the 20dp icon drawn at 12dp, with a stroke width of 1.8 / 20 of the icon.
+     */
+    private static final int CHECK_ICON_SIZE = Math.round(dpToPx(12));
+    private static final float CHECK_STROKE_WIDTH = dpToPx(1.08f);
 
-    // Toggle colors of the active palette.
+    // Toggle colors of the app if available, otherwise of the active palette.
     private static int trackCheckedColor() {
-        return palette().trackChecked;
+        AppToggleColors app = appToggleColors();
+        return app != null ? app.trackChecked : palette().trackChecked;
+    }
+
+    private static int borderCheckedColor() {
+        AppToggleColors app = appToggleColors();
+        return app != null ? app.borderChecked : Color.TRANSPARENT;
     }
 
     private static int knobCheckedColor() {
-        return palette().knobChecked;
+        AppToggleColors app = appToggleColors();
+        return app != null ? app.knobChecked : palette().knobChecked;
+    }
+
+    private static int checkMarkColor() {
+        return appCheckMarkPalette == palette() ? appCheckMarkColor : palette().checkMark;
     }
 
     private static int trackUncheckedColor() {
-        return palette().trackUnchecked;
+        AppToggleColors app = appToggleColors();
+        return app != null ? app.trackUnchecked : palette().trackUnchecked;
     }
 
     private static int trackOutlineColor() {
-        return palette().trackOutline;
+        AppToggleColors app = appToggleColors();
+        return app != null ? app.borderUnchecked : palette().trackOutline;
     }
 
     private static int knobUncheckedColor() {
-        return palette().knobUnchecked;
+        AppToggleColors app = appToggleColors();
+        return app != null ? app.knobUnchecked : palette().knobUnchecked;
     }
 
     private abstract static class StatefulDrawable extends Drawable {
@@ -751,16 +896,20 @@ public final class RedditSettingsStyle {
             float radius = rect.height() / 2;
             paint.setStyle(Paint.Style.FILL);
 
-            if (checked) {
-                paint.setColor(color(trackCheckedColor()));
-                canvas.drawRoundRect(rect, radius, radius, paint);
-            } else {
-                // Outline inside the bounds.
-                paint.setColor(color(trackOutlineColor()));
-                canvas.drawRoundRect(rect, radius, radius, paint);
-                rect.inset(TRACK_OUTLINE_WIDTH, TRACK_OUTLINE_WIDTH);
+            // Like the app, the border is drawn over the track,
+            // so a translucent border is blended with the track color.
+            paint.setColor(color(checked ? trackCheckedColor() : trackUncheckedColor()));
+            canvas.drawRoundRect(rect, radius, radius, paint);
+
+            final int border = checked ? borderCheckedColor() : trackOutlineColor();
+            if (Color.alpha(border) != 0) {
+                // Border inside the bounds.
+                final float halfWidth = TRACK_OUTLINE_WIDTH / 2;
+                rect.inset(halfWidth, halfWidth);
                 radius = rect.height() / 2;
-                paint.setColor(color(trackUncheckedColor()));
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(TRACK_OUTLINE_WIDTH);
+                paint.setColor(color(border));
                 canvas.drawRoundRect(rect, radius, radius, paint);
             }
         }
@@ -787,6 +936,9 @@ public final class RedditSettingsStyle {
      */
     private static final class ToggleThumbDrawable extends StatefulDrawable {
         private final Path check = new Path();
+        @Nullable
+        private Drawable checkIcon;
+        private boolean checkIconLoaded;
 
         @Override
         public void draw(Canvas canvas) {
@@ -799,21 +951,38 @@ public final class RedditSettingsStyle {
             paint.setColor(color(checked ? knobCheckedColor() : knobUncheckedColor()));
             canvas.drawCircle(cx, cy, radius, paint);
 
-            if (checked) {
-                // Points in dp of a 24dp knob.
-                final float unit = Dim.dp(1);
-                check.reset();
-                check.moveTo(cx - 4.5f * unit, cy + 0.2f * unit);
-                check.lineTo(cx - 1.4f * unit, cy + 3.2f * unit);
-                check.lineTo(cx + 4.6f * unit, cy - 3.4f * unit);
+            if (!checked) return;
 
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeWidth(CHECK_STROKE_WIDTH);
-                paint.setStrokeCap(Paint.Cap.ROUND);
-                paint.setStrokeJoin(Paint.Join.ROUND);
-                paint.setColor(color(palette().checkMark));
-                canvas.drawPath(check, paint);
+            final int checkColor = color(checkMarkColor());
+            if (!checkIconLoaded) {
+                checkIconLoaded = true;
+                Drawable icon = ResourceUtils.getDrawable("icon_checkmark");
+                checkIcon = icon != null ? icon.mutate() : null;
             }
+
+            if (checkIcon != null) {
+                // The app check mark icon, centered on the knob.
+                final int left = Math.round(cx - CHECK_ICON_SIZE / 2f);
+                final int top = Math.round(cy - CHECK_ICON_SIZE / 2f);
+                checkIcon.setBounds(left, top, left + CHECK_ICON_SIZE, top + CHECK_ICON_SIZE);
+                checkIcon.setTint(checkColor);
+                checkIcon.draw(canvas);
+                return;
+            }
+
+            // Fallback with the shape of the app icon, in dp from the knob center.
+            final float unit = Dim.dp(1);
+            check.reset();
+            check.moveTo(cx - 4.84f * unit, cy - 0.13f * unit);
+            check.lineTo(cx - 1.75f * unit, cy + 2.85f * unit);
+            check.lineTo(cx + 4.88f * unit, cy - 3.66f * unit);
+
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(CHECK_STROKE_WIDTH);
+            paint.setStrokeCap(Paint.Cap.ROUND);
+            paint.setStrokeJoin(Paint.Join.ROUND);
+            paint.setColor(checkColor);
+            canvas.drawPath(check, paint);
         }
 
         @Override

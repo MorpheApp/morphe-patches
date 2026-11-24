@@ -33,9 +33,24 @@ public final class SabrResponseReader {
         void editPart(ByteBuffer chunk, int offset, int length);
     }
 
+    public interface PartFilter {
+        /**
+         * @param chunk  Buffer with the content of the chunk, which must not be changed.
+         * @param offset Index of the first byte of the part in the chunk.
+         * @param length Size of the part, which is all in the chunk.
+         * @return If the part is hidden from native code.
+         */
+        boolean isHidden(ByteBuffer chunk, int offset, int length);
+    }
+
     private static final int PART_MEDIA = 21;
     private static final int PART_STREAM_PROTECTION_STATUS = 58;
     private static final int MAX_COPIED_PART_SIZE = 1024;
+
+    /**
+     * A part type that the player does not know, so it skips the part.
+     */
+    private static final int UNKNOWN_PART_TYPE = 127;
 
     @Nullable
     private final PartListener listener;
@@ -43,6 +58,9 @@ public final class SabrResponseReader {
     @Nullable
     private final PartEditor editor;
     private final long editedPartType;
+    private long hiddenPartType = -1;
+    @Nullable
+    private PartFilter hiddenPartFilter;
     private final byte[] header = new byte[5];
     private int headerLength;
     private long partType = -1;
@@ -77,6 +95,18 @@ public final class SabrResponseReader {
         this.listenedPartTypes = listenedPartTypes;
     }
 
+    /**
+     * Hides parts of a type from native code, which reads them as parts of an unknown type and skips them.
+     * A part is hidden only if its header and its content are in one chunk, as native code reads each chunk once.
+     *
+     * @param filter Chooses the parts of the type that are hidden.
+     */
+    public SabrResponseReader hideParts(long partType, PartFilter filter) {
+        this.hiddenPartType = partType;
+        this.hiddenPartFilter = filter;
+        return this;
+    }
+
     public boolean sawMedia() {
         return sawMedia;
     }
@@ -97,13 +127,24 @@ public final class SabrResponseReader {
         // A duplicate, so the position native code reads from is not changed.
         ByteBuffer buffer = chunk.duplicate();
         int status = -1;
+        int partTypeStart = -1;
         while (buffer.hasRemaining()) {
-            if (partType < 0 && (partType = readInteger(buffer)) < 0) {
-                break;
+            if (partType < 0) {
+                final int typeStart = headerLength == 0 ? buffer.position() : -1;
+                if ((partType = readInteger(buffer)) < 0) {
+                    break;
+                }
+                // The type is changed in place only if it is one byte, so the part keeps its size.
+                partTypeStart = typeStart >= 0 && buffer.position() - typeStart == 1 ? typeStart : -1;
             }
             if (partRemaining < 0) {
                 if ((partRemaining = readInteger(buffer)) < 0) {
                     break;
+                }
+                if (partType == hiddenPartType && hiddenPartFilter != null && partTypeStart >= 0
+                        && partRemaining <= buffer.remaining() && !buffer.isReadOnly()
+                        && hiddenPartFilter.isHidden(buffer.asReadOnlyBuffer(), buffer.position(), (int) partRemaining)) {
+                    buffer.put(partTypeStart, (byte) UNKNOWN_PART_TYPE);
                 }
                 if (partType == PART_MEDIA) {
                     sawMedia = true;

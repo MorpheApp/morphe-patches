@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4698
+ * https://github.com/MorpheApp/morphe-patches/pull/5043
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.MessageLite;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.innertube.Menu.MenuCommand;
 import app.morphe.extension.shared.innertube.Menu.MenuIcon;
 import app.morphe.extension.shared.innertube.Menu.MenuItem;
 import app.morphe.extension.shared.innertube.Menu.MenuNavigationItemRenderer;
@@ -23,8 +25,8 @@ import app.morphe.extension.shared.innertube.Menu.MenuTextRun;
 import app.morphe.extension.shared.patches.OfflineVideoExporter;
 
 /**
- * Adds items to the menus of the songs and videos saved by the app, such as the menus
- * of the downloads list, that export the song or video, or all of them, to files on the device.
+ * Adds items to the menus of the songs, videos, playlists and albums saved by the app, such as
+ * the menus of the downloads list, that export them, or all saved songs and videos, to files on the device.
  */
 @SuppressWarnings("unused")
 public final class ExportMenuItem {
@@ -43,7 +45,8 @@ public final class ExportMenuItem {
      * Injection point.
      * Called on the main thread when the items of a menu are created.
      *
-     * @param menu The menu renderer, which has a remove download item if the song or video is saved.
+     * @param menu The menu renderer, which has a remove download item if the song, video,
+     *             playlist or album is saved.
      * @return The menu item renderers of the export items, which are none if the menu gets no export items.
      */
     public static byte[][] getExportMenuItems(@Nullable Object menu) {
@@ -52,21 +55,34 @@ public final class ExportMenuItem {
                 return NO_ITEMS;
             }
 
-            String videoId = getSavedVideoId(MenuRenderer.parseFrom(message.toByteArray()));
-            if (videoId == null || !OfflineVideoExporter.isExportable(videoId)) {
-                return NO_ITEMS;
+            MenuRenderer renderer = MenuRenderer.parseFrom(message.toByteArray());
+            MenuNavigationItemRenderer.Builder exportItem = createItem(str("morphe_export_download_flyout_title"));
+            final int exportCount;
+
+            String playlistId = getOfflinePlaylistId(renderer);
+            if (playlistId != null) {
+                exportCount = OfflineVideoExporter.getExportablePlaylistVideoIds(playlistId).size();
+                if (exportCount == 0) {
+                    return NO_ITEMS;
+                }
+                exportItem.setMorpheExportPlaylistId(playlistId);
+            } else {
+                String videoId = getVideoId(renderer);
+                if (videoId == null || !OfflineVideoExporter.isExportable(videoId)) {
+                    return NO_ITEMS;
+                }
+                exportCount = 1;
+                exportItem.setMorpheExportVideoId(videoId);
             }
 
-            byte[] exportItem = toMenuItem(createItem(str("morphe_export_download_flyout_title"))
-                    .setMorpheExportVideoId(videoId));
-            // Exporting all is only shown if there is more than this song or video to export.
-            if (OfflineVideoExporter.getExportableVideoIds(2).size() < 2) {
-                return new byte[][]{exportItem};
+            // Exporting all is only shown if there is more to export than the item of the menu.
+            if (OfflineVideoExporter.getExportableVideoIds(exportCount + 1).size() <= exportCount) {
+                return new byte[][]{toMenuItem(exportItem)};
             }
 
             byte[] exportAllItem = toMenuItem(createItem(str("morphe_export_download_all_flyout_title"))
                     .setMorpheExportAll(true));
-            return new byte[][]{exportItem, exportAllItem};
+            return new byte[][]{toMenuItem(exportItem), exportAllItem};
         } catch (Exception ex) {
             Logger.printException(() -> "getExportMenuItems failure", ex);
             return NO_ITEMS;
@@ -91,21 +107,47 @@ public final class ExportMenuItem {
     }
 
     /**
-     * The menu of a song or video has an item with the offline video endpoint,
-     * which saves the song or video, or removes it if it is saved.
+     * The menu of a playlist or album has an item with the offline playlist endpoint,
+     * which saves the playlist, or removes it if it is saved.
+     *
+     * @return The playlist or album of the menu, or null if the menu has none.
+     */
+    @Nullable
+    private static String getOfflinePlaylistId(MenuRenderer menu) {
+        for (MenuItem item : menu.getItemsList()) {
+            MenuCommand command = item.getMenuNavigationItemRenderer().getNavigationEndpoint();
+            if (command.hasOfflinePlaylistEndpoint()) {
+                String playlistId = command.getOfflinePlaylistEndpoint().getPlaylistId();
+                return playlistId.isEmpty() ? null : playlistId;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * The menu of a song or video usually has an item with the offline video endpoint,
+     * which saves the song or video, or removes it if it is saved. The menus of the songs
+     * of a saved album have no such item, so the song of the queue items is used instead.
      *
      * @return The song or video of the menu, or null if the menu has none.
      */
     @Nullable
-    private static String getSavedVideoId(MenuRenderer menu) {
+    private static String getVideoId(MenuRenderer menu) {
+        String queueVideoId = null;
         for (MenuItem item : menu.getItemsList()) {
-            MenuNavigationItemRenderer renderer = item.getMenuNavigationItemRenderer();
-            if (renderer.getNavigationEndpoint().hasOfflineVideoEndpoint()) {
-                String videoId = renderer.getNavigationEndpoint().getOfflineVideoEndpoint().getVideoId();
+            MenuCommand command = item.getMenuNavigationItemRenderer().getNavigationEndpoint();
+            if (command.hasOfflineVideoEndpoint()) {
+                String videoId = command.getOfflineVideoEndpoint().getVideoId();
                 return videoId.isEmpty() ? null : videoId;
             }
+            if (queueVideoId == null && command.hasQueueAddEndpoint()) {
+                String videoId = command.getQueueAddEndpoint().getQueueTarget().getVideoId();
+                if (!videoId.isEmpty()) {
+                    queueVideoId = videoId;
+                }
+            }
         }
-        return null;
+        return queueVideoId;
     }
 
     /**
@@ -122,6 +164,8 @@ public final class ExportMenuItem {
                     .getMenuNavigationItemRenderer();
             if (renderer.hasMorpheExportVideoId()) {
                 OfflineVideoExporter.exportVideo(renderer.getMorpheExportVideoId());
+            } else if (renderer.hasMorpheExportPlaylistId()) {
+                OfflineVideoExporter.exportPlaylistVideos(renderer.getMorpheExportPlaylistId());
             } else if (renderer.getMorpheExportAll()) {
                 OfflineVideoExporter.exportAllVideos();
             }

@@ -8,7 +8,6 @@
 package app.morphe.extension.music.patches;
 
 import android.net.Uri;
-import android.text.TextUtils;
 import android.util.Base64;
 
 import androidx.annotation.Nullable;
@@ -19,8 +18,9 @@ import com.google.protobuf.WireFormat;
 
 import java.io.IOException;
 
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedSettings;
 
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
@@ -57,7 +57,7 @@ public final class OpenSystemShareSheetPatch {
      * @return If the network is reported as connected, which opens the in-app share sheet.
      */
     public static boolean useInAppShareSheet(boolean networkConnected, Object endpoint) {
-        if (!networkConnected || !Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
+        if (!networkConnected || !SharedSettings.OPEN_SYSTEM_SHARE_SHEET.get()) {
             return networkConnected;
         }
 
@@ -83,7 +83,7 @@ public final class OpenSystemShareSheetPatch {
      * @return The serialized share entity the app builds the link from.
      */
     public static String getSerializedShareEntity(String serializedShareEntity, Object endpoint) {
-        if (!TextUtils.isEmpty(serializedShareEntity) || !Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
+        if (Utils.isNotEmpty(serializedShareEntity) || !SharedSettings.OPEN_SYSTEM_SHARE_SHEET.get()) {
             return serializedShareEntity;
         }
 
@@ -159,7 +159,7 @@ public final class OpenSystemShareSheetPatch {
      * @return If the share entity has a video, playlist or channel id, which the app builds a link from.
      */
     private static boolean hasShareLink(@Nullable String serializedShareEntity) {
-        if (TextUtils.isEmpty(serializedShareEntity)) {
+        if (Utils.isEmpty(serializedShareEntity)) {
             return false;
         }
 

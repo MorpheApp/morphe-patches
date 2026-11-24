@@ -7,16 +7,21 @@
 
 package app.morphe.extension.youtube.patches.dearrow;
 
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 
 import androidx.annotation.Nullable;
 
 import java.util.Collections;
 import java.util.Set;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
@@ -65,6 +70,12 @@ public final class DeArrowTitleIcon {
      * Size of the icon relative to the text size.
      */
     private static final float ICON_SIZE = 0.85f;
+
+    /**
+     * Width and height of the area that taps the icon, relative to the size of the icon,
+     * so the icon is easier to tap without drawing it larger.
+     */
+    private static final float ICON_TOUCH_SIZE = 1.5f;
 
     /**
      * Opacity of the icon relative to the title, so the icon is visible but less prominent
@@ -154,10 +165,52 @@ public final class DeArrowTitleIcon {
         }
 
         if (DeArrowPatch.replacesThumbnailForCurrentNavigation(videoId)) {
-            // Also lays out the titles again.
-            LithoRelayoutPatch.remountListViews();
-        } else {
-            LithoRelayoutPatch.relayoutOutdatedTexts();
+            DeArrowPatch.loadThumbnailAgain(videoId, true);
+        }
+        LithoRelayoutPatch.relayoutOutdatedTexts();
+    }
+
+    /**
+     * Injection point. Called for each touch event of a Litho text, before the text checks
+     * if the event is inside its bounds and finds the tapped span. The text handles only events
+     * inside its bounds, so a touch just above or before the icon would otherwise tap the video.
+     *
+     * @param textDrawable Litho text drawable that the event is given to.
+     * @param layout       Layout of the text, or null if the text is not laid out.
+     * @return The event moved to the center of the icon if the event is in the touch area
+     *         around the icon, or the same event.
+     */
+    public static MotionEvent iconTouchEvent(Drawable textDrawable, MotionEvent event, @Nullable Layout layout) {
+        if (!SHOW_ICON && !SHOW_THUMBNAIL_ICON) {
+            return event;
+        }
+
+        try {
+            if (layout == null || !hasIcon(layout.getText())) {
+                return event;
+            }
+
+            // The text finds the tapped span relative to the bounds of the drawable.
+            Rect bounds = textDrawable.getBounds();
+            final float iconStart = layout.getPrimaryHorizontal(0);
+            final float iconEnd = layout.getPrimaryHorizontal(ICON_PLACEHOLDER.length());
+            Paint.FontMetrics metrics = layout.getPaint().getFontMetrics();
+            // Same center as the icon is drawn with.
+            final float centerX = bounds.left + (iconStart + iconEnd) / 2;
+            final float centerY = bounds.top + layout.getLineBaseline(0) + (metrics.ascent + metrics.descent) / 2;
+            final float touchRadius = Math.abs(iconEnd - iconStart) * ICON_TOUCH_SIZE / 2;
+
+            if (Math.abs(event.getX() - centerX) > touchRadius || Math.abs(event.getY() - centerY) > touchRadius) {
+                return event;
+            }
+
+            // The same event is also given to the other contents of the Litho view, so a copy is moved.
+            MotionEvent iconEvent = MotionEvent.obtain(event);
+            iconEvent.setLocation(centerX, centerY);
+            return iconEvent;
+        } catch (Exception ex) {
+            Logger.printException(() -> "iconTouchEvent failure", ex);
+            return event;
         }
     }
 
@@ -165,8 +218,7 @@ public final class DeArrowTitleIcon {
      * @return If the text starts with the icon added by this class.
      */
     public static boolean hasIcon(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        return text instanceof Spanned spanned && spanned.length() > 0
+        return text instanceof Spanned spanned && Utils.isNotEmpty(spanned)
                 && spanned.getSpans(0, 1, IconSpan.class).length > 0;
     }
 

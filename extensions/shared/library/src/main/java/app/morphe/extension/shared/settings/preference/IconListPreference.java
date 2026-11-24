@@ -282,25 +282,6 @@ public class IconListPreference extends CustomDialogListPreference {
     }
 
     /**
-     * The row of {@link CustomDialogListPreference#createCheckedListItem(Context)}
-     * with an icon before the text, found with {@link #ID_MORPHE_ITEM_ICON}.
-     */
-    static LinearLayout createIconListItem(Context context) {
-        LinearLayout row = createCheckedListItem(context, Dim.dp10, Dim.dp12);
-
-        ImageView itemIcon = new ImageView(context);
-        itemIcon.setId(ID_MORPHE_ITEM_ICON);
-        itemIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        itemIcon.setVisibility(View.INVISIBLE);
-        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(Dim.dp48, Dim.dp48);
-        iconParams.setMarginEnd(Dim.dp(14));
-        // Before the text, after the checkmark and its placeholder.
-        row.addView(itemIcon, row.getChildCount() - 1, iconParams);
-
-        return row;
-    }
-
-    /**
      * Adapter that renders each list row with a checkmark, an adaptive icon preview,
      * and a text label.
      */
@@ -336,7 +317,20 @@ public class IconListPreference extends CustomDialogListPreference {
             ViewHolder holder;
 
             if (view == null) {
-                view = createIconListItem(getContext());
+                // The row of CustomDialogListPreference#createCheckedListItem(Context)
+                // with an icon before the text, found with ID_MORPHE_ITEM_ICON.
+                Context itemContext = getContext();
+                LinearLayout row = createCheckedListItem(itemContext, Dim.dp10, Dim.dp12);
+
+                ImageView itemIcon = new ImageView(itemContext);
+                itemIcon.setId(ID_MORPHE_ITEM_ICON);
+                itemIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                itemIcon.setVisibility(View.INVISIBLE);
+                LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(Dim.dp48, Dim.dp48);
+                iconParams.setMarginEnd(Dim.dp(14));
+                // Before the text, after the checkmark and its placeholder.
+                row.addView(itemIcon, row.getChildCount() - 1, iconParams);
+                view = row;
                 holder = new ViewHolder();
                 holder.placeholder = view.findViewById(CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER);
                 holder.itemText = view.findViewById(CustomDialogListPreference.ID_MORPHE_ITEM_TEXT);

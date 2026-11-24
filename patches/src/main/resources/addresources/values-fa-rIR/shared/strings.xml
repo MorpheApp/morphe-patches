@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">تنظیمات</string>
   <string name="morphe_settings_confirm_user_dialog_title">آیا مطمئنید می‌خواهید ادامه دهید؟</string>
   <string name="morphe_settings_save">ذخیره</string>
   <string name="morphe_settings_reset">بازنشانی</string>
@@ -74,18 +73,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">صادرکردن به فایل</string>
   <string name="morphe_settings_export_file_success">تنظیمات با موفقیت صادر شد</string>
   <string name="morphe_settings_export_file_failed">صادرکردن تنظیمات ناموفق بود</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">شما از جدیدترین نسخهٔ Patches برای Morphe استفاده می‌کنید &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">شما از نسخهٔ Patches برای Morphe &lt;i&gt;%1$s&lt;/i&gt; استفاده می‌کنید&lt;br&gt;&lt;br&gt;&lt;b&gt;به‌روزرسانی موجود است: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;برای به‌روزرسانی پچ‌های خود، از Morphe برای پچ‌کردن دوبارهٔ این برنامه استفاده کنید</string>
-  <string name="morphe_settings_about_links_dev_header">یادداشت</string>
-  <string name="morphe_settings_about_links_dev_body">این نسخه پیش‌انتشار است و ممکن است با مشکلات غیرمنتظره‌ای روبه‌رو شوید</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">پچ‌ها</string>
+  <string name="morphe_settings_about_version">نسخه</string>
+  <string name="morphe_settings_about_close">بستن</string>
+  <string name="morphe_settings_about_prerelease">پیش‌انتشار</string>
+  <string name="morphe_settings_about_update_available">به‌روزرسانی موجود است: %s</string>
+  <string name="morphe_settings_about_update_hint">برای به‌روزرسانی پچ‌های خود، از Morphe برای پچ کردن مجدد این برنامه استفاده کنید</string>
   <string name="morphe_settings_about_links_header">پیوندهای رسمی</string>
   <string name="morphe_settings_about_links_website">وب‌سایت</string>
   <string name="morphe_settings_about_links_donate">کمک مالی</string>
   <string name="morphe_settings_about_links_translations">ترجمه‌ها</string>
-  <string name="morphe_settings_about_links_credits">دست‌اندرکاران</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">به‌روز است</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">به‌روزرسانی موجود است</string>
+  <string name="morphe_settings_about_contributors">مشارکت‌کنندگان</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">در تمام زمان‌ها</string>
+  <string name="morphe_settings_about_contributors_6_months">۶ ماه</string>
+  <string name="morphe_settings_about_contributors_3_months">۳ ماه</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">بازه زمانی</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s کاربر</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">حامیان</string>
+  <string name="morphe_settings_about_supporters_summary">حامیان در Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">حامی شوید</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">و %s نفر دیگر</string>
+  <string name="morphe_settings_about_people_unavailable">لیست بارگذاری نشد</string>
   <string name="morphe_settings_about_contributors_current">توسعهٔ کنونی</string>
   <string name="morphe_settings_about_contributors_prior">توسعهٔ پیشین</string>
   <string name="morphe_settings_about_links_morphe">توسعهٔ فعال</string>
@@ -213,6 +228,9 @@ Second \"item\" text"</string>
 • برنامه ممکن است به‌طور تصادفی بسته شود
 • اعلان‌ها ممکن است کار نکنند
 • پخش در پس‌زمینه ممکن است کار نکند"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">بازکردن برگهٔ اشتراک‌گذاری سیستم</string>
+  <string name="morphe_open_system_share_sheet_summary">هنگام اشتراک‌گذاری محتوا، به‌جای برگهٔ درون‌برنامه‌ای، برگهٔ اشتراک‌گذاری سیستم را باز می‌کند</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">مدیریت پیوندهای برنامه</string>
   <string name="morphe_link_handling_summary">پیوندها را برای بازشدن در این برنامه پیکربندی کنید</string>

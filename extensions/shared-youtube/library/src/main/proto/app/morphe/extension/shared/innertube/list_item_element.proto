@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package app.morphe.extension.shared.innertube.listitem;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+option java_outer_classname = "ListItemElementOuterClass";
+
+// Bytes of a Litho list_item element (the newElement of an elementRenderer),
+// such as the Download item of a menu.
+// Only the fields that are read or changed are declared, all other fields are kept as unknown fields.
+message ListItemElement {
+    ElementType type = 1;
+}
+
+message ElementType {
+    ComponentType componentType = 168777401;
+}
+
+message ComponentType {
+    ElementModel model = 5;
+}
+
+message ElementModel {
+    YoutubeModel youtubeModel = 413471385;
+}
+
+message YoutubeModel {
+    ViewModelHolder viewModel = 1;
+}
+
+message ViewModelHolder {
+    ListItemViewModel listItemViewModel = 489973921;
+}
+
+message ListItemViewModel {
+    optional bytes subtitle = 2;
+    SubtitleBadge subtitleBadge = 15;
+}
+
+message SubtitleBadge {
+    BadgeViewModel badgeViewModel = 1147;
+}
+
+message BadgeViewModel {
+    int32 badgeStyle = 3;
+}

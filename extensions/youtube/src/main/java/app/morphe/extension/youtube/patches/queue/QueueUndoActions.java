@@ -12,13 +12,13 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastItem;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.SwipeAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.SwipeButton;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.Text;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastItem;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.SwipeAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.SwipeButton;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Text;
 
 /** Native snackbar feedback and restoration of a cleared local queue. */
 public final class QueueUndoActions {

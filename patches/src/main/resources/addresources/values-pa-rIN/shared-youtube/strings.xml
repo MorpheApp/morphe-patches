@@ -39,9 +39,12 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_dialog">ਜੇਕਰ ਇਹ ਸੈਟਿੰਗ ਬੰਦ ਹੈ, ਤਾਂ ਪੁਰਾਣੀਆਂ ਵੀਡੀਓਜ਼ ਵਿੱਚ ਕੋਈ ਵੀਡੀਓ ਕੁਆਲਿਟੀ ਵਿਕਲਪ ਨਹੀਂ ਦਿਖ ਸਕਦੇ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <!-- misc.audio.silence.skipSilencePatch -->
+  <!-- misc.videoeffects.videoEffectsPatch -->
   <!-- misc.proxy.networkProxyPatch -->
   <!-- ad.hideFullscreenAdsPatch -->
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
@@ -49,7 +52,6 @@ Second \"item\" text"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
@@ -62,6 +64,7 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <!-- layout.font.baseCustomFontPatch -->
+  <!-- layout.glassmenus.glassMenusPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->

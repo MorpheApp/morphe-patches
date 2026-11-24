@@ -56,6 +56,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.VideoFormat;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -243,6 +244,12 @@ public final class MinimalMiniplayerPatch {
     private static Drawable barFill;
 
     /**
+     * The part of the player the video is drawn in while the player slides, with the glass bar.
+     */
+    private static final Rect slideClipBounds = new Rect();
+    private static boolean slideClipped;
+
+    /**
      * Set while pushing bounds of our own, which come back through the hook that reads them.
      */
     private static boolean applyingBounds;
@@ -283,6 +290,19 @@ public final class MinimalMiniplayerPatch {
     private static WeakReference<View> glassContainerRef = new WeakReference<>(null);
     @Nullable
     private static Drawable glassOriginalBackground;
+
+    /**
+     * The page behind the bar is blurred, so the glass is drawn again when the page scrolls.
+     * A single listener serves the current container, and it's added once to the window of the container.
+     */
+    private static final ViewTreeObserver.OnScrollChangedListener glassScrollListener = () -> {
+        View container = glassContainerRef.get();
+        if (container != null && inBarMode() && container.getBackground() instanceof GlassCapsuleDrawable) {
+            container.invalidate();
+        }
+    };
+    private static WeakReference<ViewTreeObserver> glassScrollObserverRef = new WeakReference<>(null);
+
     @Nullable
     private static GlassBackdrop glassBackdrop;
     private static boolean recordingBackdrop;
@@ -381,16 +401,14 @@ public final class MinimalMiniplayerPatch {
                 startAfterVideo(subtitleBar);
 
                 // Taken again for each new layout, as the theme may have changed.
+                // The glass bar has no fill, see updateBarFill().
                 if (barFill != null) {
                     barFill.setBounds(0, 0, 0, 0);
                     barFill = null;
                 }
                 View barContainer = barContainerRef.get();
                 Drawable barBackground = barContainer != null ? barContainer.getBackground() : null;
-                if (barBackground instanceof GlassCapsuleDrawable) {
-                    barBackground = glassOriginalBackground;
-                }
-                if (barBackground != null && barBackground.getConstantState() != null) {
+                if (!GLASS && barBackground != null && barBackground.getConstantState() != null) {
                     barFill = barBackground.getConstantState().newDrawable();
                 }
             } else {
@@ -1357,7 +1375,7 @@ public final class MinimalMiniplayerPatch {
             }
 
             if (uncover) {
-                watchPlayer.setClipBounds(null);
+                watchPlayer.setClipBounds(slideClipped ? slideClipBounds : null);
                 roundVideo(watchPlayer, null, 0);
                 return;
             }
@@ -1525,12 +1543,20 @@ public final class MinimalMiniplayerPatch {
         glassContainerRef = new WeakReference<>(container);
         glassOriginalBackground = null;
 
-        // The page behind the bar is blurred, so the glass is drawn again when the page scrolls.
-        container.getViewTreeObserver().addOnScrollChangedListener(() -> {
-            if (inBarMode() && container.getBackground() instanceof GlassCapsuleDrawable) {
-                container.invalidate();
+        // A new glass is made for every new container, and again for the same container once the old
+        // glass is garbage collected, so the listener is moved instead of added again. A view that is not
+        // attached has a temporary observer, whose listeners are merged into the observer of the window
+        // when it's attached, so the listener is also removed from the new observer before it's added.
+        ViewTreeObserver observer = container.getViewTreeObserver();
+        ViewTreeObserver previousObserver = glassScrollObserverRef.get();
+        if (observer != previousObserver) {
+            if (previousObserver != null && previousObserver.isAlive()) {
+                previousObserver.removeOnScrollChangedListener(glassScrollListener);
             }
-        });
+            observer.removeOnScrollChangedListener(glassScrollListener);
+            observer.addOnScrollChangedListener(glassScrollListener);
+            glassScrollObserverRef = new WeakReference<>(observer);
+        }
 
         Logger.printDebug(() -> "Glass miniplayer applied");
         return glass;
@@ -1571,7 +1597,7 @@ public final class MinimalMiniplayerPatch {
      * The views drawn before the bar container, which are behind it, in the order they are drawn.
      * The player is left out, its video is drawn over the glass.
      */
-    private static void collectViewsBehind(View target, List<View> out) {
+    private static void collectViewsBehind(View target) {
         View player = watchPlayer();
         View child = target;
         for (ViewParent parent = target.getParent(); parent instanceof ViewGroup group; parent = group.getParent()) {
@@ -1580,7 +1606,7 @@ public final class MinimalMiniplayerPatch {
                 View view = group.getChildAt(i);
                 if (view.getVisibility() == View.VISIBLE && view.getWidth() > 0 && view.getHeight() > 0
                         && view.getAlpha() > 0 && !holds(view, player)) {
-                    out.add(0, view);
+                    MinimalMiniplayerPatch.viewsBehind.add(0, view);
                 }
             }
             child = group;
@@ -1636,7 +1662,7 @@ public final class MinimalMiniplayerPatch {
 
         /**
          * The page behind type 1 is blurred, on Android 14 and later like the glass navigation bar.
-         * Otherwise the page is covered by the background of the app, or the sharp page would show through.
+         * Otherwise, the page is covered by the background of the app, or the sharp page would show through.
          */
         @Override
         public void drawBackdrop(Canvas canvas) {
@@ -1652,7 +1678,7 @@ public final class MinimalMiniplayerPatch {
 
             recordingBackdrop = true;
             try {
-                collectViewsBehind(container, viewsBehind);
+                collectViewsBehind(container);
                 if (glassBackdrop == null) {
                     glassBackdrop = new GlassBackdrop("GlassMinimalMiniplayer", GLASS_BLUR_RADIUS);
                 }
@@ -1673,18 +1699,36 @@ public final class MinimalMiniplayerPatch {
      * whatever the theme is. The bar background goes over that, so the bar has the same color
      * from the start of the slide to the end of the morph.
      * <p>
+     * The glass bar is see-through, so the page shows beside the video instead, and the black
+     * part of the player is clipped away. Once the player stops sliding, {@link #updateVideoClip()}
+     * sets the clip of the bar, or removes the clip.
+     * <p>
      * Taken from the view and not the bounds, which only say where the slide ends. YouTube
      * moves the player and the video towards there together, so the video stays 16:9.
      */
     private static void updateBarFill(View watchPlayer) {
-        if (barFill == null) return;
+        if (barFill == null && !GLASS) return;
 
         final int width = watchPlayer.getWidth();
         final int height = watchPlayer.getHeight();
         final int videoWidth = videoWidthFor(height);
+        final boolean besideVideo = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED
+                && height > 0 && width > videoWidth;
 
-        if (PlayerType.getCurrent() != PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED
-                || height <= 0 || width <= videoWidth) {
+        if (GLASS) {
+            slideClipped = besideVideo;
+            if (besideVideo) {
+                if (Utils.isRightToLeftLocale()) {
+                    slideClipBounds.set(width - videoWidth, 0, width, height);
+                } else {
+                    slideClipBounds.set(0, 0, videoWidth, height);
+                }
+                watchPlayer.setClipBounds(slideClipBounds);
+            }
+            return;
+        }
+
+        if (!besideVideo) {
             barFill.setBounds(0, 0, 0, 0);
         } else if (Utils.isRightToLeftLocale()) {
             barFill.setBounds(0, 0, width - videoWidth, height);
@@ -1710,6 +1754,8 @@ public final class MinimalMiniplayerPatch {
 
         if (barFill != null) {
             watchPlayer.getOverlay().add(barFill);
+        }
+        if (barFill != null || (GLASS && getCurrentMiniplayerType() == MINIMAL_BAR)) {
             watchPlayer.removeOnLayoutChangeListener(watchPlayerLayoutListener);
             watchPlayer.addOnLayoutChangeListener(watchPlayerLayoutListener);
         }

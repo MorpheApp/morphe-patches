@@ -164,6 +164,11 @@ public final class VideoInformation extends BaseVideoInformation {
      * Fires whenever the playback speed changes.
      */
     public static final Event<Float> onPlaybackSpeedChange = new Event<>();
+    /**
+     * Fires when the user selects a playback speed in a native or Morphe speed menu,
+     * including a selection of the speed that is already playing.
+     */
+    public static final Event<Float> onUserSelectedPlaybackSpeed = new Event<>();
 
     /**
      * The current playback audio pitch
@@ -612,6 +617,7 @@ public final class VideoInformation extends BaseVideoInformation {
      */
     public static void userSelectedPlaybackSpeed(float userSelectedPlaybackSpeed) {
         Logger.printDebug(() -> "User selected playback speed: " + userSelectedPlaybackSpeed);
+        onUserSelectedPlaybackSpeed.invoke(userSelectedPlaybackSpeed);
         updatePlaybackSpeedValue(userSelectedPlaybackSpeed);
         if (isPlaybackAudioPitchLinked()) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(userSelectedPlaybackSpeed);
@@ -1098,6 +1104,7 @@ public final class VideoInformation extends BaseVideoInformation {
      * @param newlyLoadedPlaybackSpeed The current playback speed.
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
+        onUserSelectedPlaybackSpeed.invoke(newlyLoadedPlaybackSpeed);
         if (!updatePlaybackSpeedValue(newlyLoadedPlaybackSpeed)) {
             // The Shorts player can play at another speed than the one last recorded,
             // such as when it reopens, so the selected speed is always applied.

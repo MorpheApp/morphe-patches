@@ -11,7 +11,6 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -359,7 +358,7 @@ public class PlaylistPatch {
 
     private static void saveToPlaylist(@Nullable String libraryId, @Nullable String libraryTitle) {
         try {
-            if (TextUtils.isEmpty(libraryId)) {
+            if (Utils.isEmpty(libraryId)) {
                 handleCheckError(checkFailedPlaylistId);
                 return;
             }
@@ -392,7 +391,7 @@ public class PlaylistPatch {
             try {
                 String url;
                 if (openVideo) {
-                    if (TextUtils.isEmpty(currentVideoId)) {
+                    if (Utils.isEmpty(currentVideoId)) {
                         handleCheckError(checkFailedVideoId);
                         return;
                     }

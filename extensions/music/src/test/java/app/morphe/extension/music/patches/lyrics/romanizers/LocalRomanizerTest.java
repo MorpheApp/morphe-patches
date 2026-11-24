@@ -331,4 +331,30 @@ public class LocalRomanizerTest {
         assertNotNull(result);
         assertEquals("ni hao", result.get(0).words().get(0).romaji());
     }
+
+    @Test
+    public void normalizeMatchTokenStripsWhitespaceHyphensApostrophesAndLowercases() {
+        assertEquals("", LocalRomanizer.normalizeMatchToken(null, 0, 0));
+        assertEquals("", LocalRomanizer.normalizeMatchToken(" - ' ", 0, 5));
+        assertEquals("konnichiwa", LocalRomanizer.normalizeMatchToken("  Kon'ni-chi wa ", 0, 16));
+        assertEquals("nichi", LocalRomanizer.normalizeMatchToken("Kon'ni-chi-wa", 4, 10));
+    }
+
+    @Test
+    public void allocateReadingMatchesHyphenatedAndApostropheTokensWithGuides() {
+        // Multi-syllable Japanese/Korean/Pinyin readings with spaces, hyphens, apostrophes, and empty guide slots.
+        String[] jpOut = LocalRomanizer.allocateReading(
+                "Kon'ni-chi ha se-kai",
+                4,
+                List.of("konnichi", "ha", "", "sekai"),
+                false);
+        assertArrayEquals(new String[]{"Kon'ni-chi ", "ha ", "", "se-kai"}, jpOut);
+
+        String[] koOut = LocalRomanizer.allocateReading(
+                "sa rang hae yo",
+                3,
+                List.of("sarang", "hae", "yo"),
+                false);
+        assertArrayEquals(new String[]{"sa rang ", "hae ", "yo"}, koOut);
+    }
 }

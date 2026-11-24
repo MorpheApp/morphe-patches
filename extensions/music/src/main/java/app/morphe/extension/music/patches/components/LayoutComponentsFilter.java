@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.components;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -161,6 +160,13 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideNewButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_NEW_BUTTON, view);
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideRepeatButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_REPEAT_BUTTON, view);
     }
@@ -195,7 +201,7 @@ public final class LayoutComponentsFilter extends Filter {
                 View searchEditText = suggestionsList.getRootView().findViewById(searchEditTextId);
                 if (searchEditText instanceof TextView textView) {
                     CharSequence query = textView.getText();
-                    return TextUtils.isEmpty(textView.getText());
+                    return Utils.isEmpty(textView.getText());
                 }
             }
         } catch (Exception ex) {

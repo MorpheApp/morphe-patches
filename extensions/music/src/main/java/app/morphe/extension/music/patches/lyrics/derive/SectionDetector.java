@@ -68,7 +68,7 @@ public final class SectionDetector {
                     return;
                 }
                 List<String> cached = LyricsCache.getSectionAI(track, source, texts);
-                if (cached != null) {
+                if (hasAnySection(cached)) {
                     final List<String> result = cached;
                     Utils.runOnMainThread(() -> callback.onSections(result));
                     return;
@@ -79,8 +79,10 @@ public final class SectionDetector {
                 String model = Settings.LYRICS_AI_MODEL.get();
                 List<String> detected = aiDetect(texts, track.title(), track.artist(),
                         baseUrl, apiToken, model);
-                if (detected != null) {
+                if (hasAnySection(detected)) {
                     LyricsCache.putSectionAI(track, source, texts, detected);
+                } else {
+                    detected = null;
                 }
                 final List<String> result = detected;
                 Utils.runOnMainThread(() -> callback.onSections(result));
@@ -128,15 +130,36 @@ public final class SectionDetector {
                 lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
+    /** {@return true when {@code label} is empty or an AI skip placeholder (e.g. {@code "SKIP: ..."})} */
+    public static boolean isSkipLabel(@Nullable String label) {
+        if (OpenAIClient.isSkipToken(label)) {
+            return true;
+        }
+        String t = label.trim();
+        return t.regionMatches(true, 0, SKIP, 0, SKIP.length())
+                && (t.length() == SKIP.length() || Character.isWhitespace(t.charAt(SKIP.length())));
+    }
+
+    private static boolean hasAnySection(@Nullable List<String> sections) {
+        if (sections == null) {
+            return false;
+        }
+        for (int i = 0; i < sections.size(); i++) {
+            if (getLabel(sections, i) != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Nullable
     private static String getLabel(@NonNull List<String> sections, int i) {
         String label = i < sections.size() ? sections.get(i) : null;
         if (label != null) {
             label = label.trim();
-            // mapLines already turns a skipped line into an empty entry; SKIP is accepted here
-            // as well so an answer that reached this method another way cannot be read as a
-            // section literally named "SKIP".
-            if (label.isEmpty() || SKIP.equalsIgnoreCase(label)) {
+            // mapLines already turns a skipped line into an empty entry; SKIP placeholders are
+            // rejected here too so cached or unparsed answers cannot become section labels.
+            if (isSkipLabel(label)) {
                 label = null;
             }
         }

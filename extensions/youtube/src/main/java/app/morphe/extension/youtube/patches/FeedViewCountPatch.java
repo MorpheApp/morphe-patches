@@ -18,11 +18,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.icu.text.CompactDecimalFormat;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -53,6 +51,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
+import app.morphe.extension.youtube.patches.utils.CompactNumbers;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -92,11 +91,7 @@ public final class FeedViewCountPatch {
     private static final int MAX_SUBTITLE_LENGTH = 150;
     private static final int MAX_SEGMENT_LENGTH = 40;
 
-    /**
-     * A number, such as 457, 4,7 or 1 234. Some languages show words before it.
-     */
-    private static final Pattern NUMBER_PATTERN =
-            Pattern.compile("\\p{Nd}+(?:[.,'’٫٬\u00A0\u202F ]\\p{Nd}+)*");
+    private static final Pattern NUMBER_PATTERN = CompactNumbers.NUMBER_PATTERN;
 
     /** Different words of view counts that were seen, such as "views" and "watching". */
     private static final int MAX_VIEW_WORDS = 8;
@@ -124,7 +119,6 @@ public final class FeedViewCountPatch {
     private static final int SMALL_THUMBNAIL_MARGIN_DP = 6;
     /** Cards of a grid of up to three columns, such as the feed in landscape. */
     private static final float MIN_GRID_CARD_WIDTH_OF_SCREEN = 0.3f;
-    private static final int MIN_DURATION_HEIGHT_DP = 12;
     /** Space between the edges of the badge and its content. */
     public static final int PADDING_DP = 5;
     private static final int GAP_DP = 3;
@@ -143,17 +137,18 @@ public final class FeedViewCountPatch {
     private static final int BACKGROUND_COLOR = 0xA6000000;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
 
-    /** Shortened number units of the language of the app, such as K and M, longest first. */
-    @Nullable
-    private static List<String> units;
-    @Nullable
-    private static Locale unitsLocale;
-
     /** Used on more than one thread. */
     private static final Set<String> viewWords = new LinkedHashSet<>();
 
     /** Root hosts that show a view count. Used only on the main thread. */
     private static final Map<ComponentHost, ViewCountBadge> badges = new WeakHashMap<>();
+
+    /**
+     * Hosts of a video whose view count is not known yet, as the texts below the title are not shown,
+     * such as while the card enters from the bottom of the list behind the glass navigation bar.
+     * The like count badge shown next to the view count waits for it. Used only on the main thread.
+     */
+    private static final Map<ComponentHost, Boolean> pendingViewCounts = new WeakHashMap<>();
 
     /** Spaces, which texts of the same view count can show differently, such as "4.7 M" and "4.7M". */
     private static final Pattern SPACES_PATTERN = Pattern.compile("[\\s  ]+");
@@ -182,7 +177,7 @@ public final class FeedViewCountPatch {
      * inside the command that opens it. Its field 2 has the shortened view count, such as 4,8 Mln,
      * and the full view count, such as "4,8 milioni di visualizzazioni".
      */
-    private static final int METADATA_FIELD = 218178449;
+    public static final int METADATA_FIELD = 218178449;
     /** Field of the full view count inside field 2.3 of {@link #METADATA_FIELD}. */
     private static final int METADATA_FULL_VIEW_COUNT_FIELD = 75730170;
 
@@ -205,6 +200,17 @@ public final class FeedViewCountPatch {
     @GuardedBy("itself")
     private static final Map<String, String> subtitleViewCounts = Utils
             .createSizeRestrictedMap(2 * MAX_VIDEO_VIEW_COUNTS, true);
+
+    /**
+     * Video id -> pattern of the shortened view count of the metadata, which a card of the video shows
+     * as a text of its own, such as "4.7M" between the channel and the upload time, and which the badge
+     * does not replace. Kept when an element of the video in another list does not show it, such as of
+     * the Watch later playlist, as the cards of the first element can still be shown.
+     * Oldest videos are removed first.
+     */
+    @GuardedBy("itself")
+    private static final Map<String, Pattern> ownViewCountTexts = Utils
+            .createSizeRestrictedMap(MAX_VIDEO_VIEW_COUNTS, true);
 
     /**
      * Video id -> shortened view count of the element of a Short. The cards of Shorts do not show their view count.
@@ -284,7 +290,7 @@ public final class FeedViewCountPatch {
             return null;
         }
         StringBuilder path = contextInterface.patch_getPathBuilder();
-        if (TextUtils.isEmpty(path)) {
+        if (Utils.isEmpty(path)) {
             return null;
         }
         StringJoiner elements = new StringJoiner("|");
@@ -301,43 +307,6 @@ public final class FeedViewCountPatch {
     }
 
     // region view count text
-
-    private static synchronized List<String> getUnits(Locale locale) {
-        if (units == null || !locale.equals(unitsLocale)) {
-            Set<String> found = new LinkedHashSet<>();
-            // Short units, such as M, and long units, such as million.
-            for (CompactDecimalFormat.CompactStyle style : CompactDecimalFormat.CompactStyle.values()) {
-                try {
-                    CompactDecimalFormat format = CompactDecimalFormat.getInstance(locale, style);
-                    // From a thousand up to a quadrillion.
-                    long value = 1_000;
-                    for (int i = 0; i < 13; i++) {
-                        // Units of more words keep the space between them, such as thousand crore.
-                        String unit = format.format(value).replaceAll("[\\p{Nd}.,'’]", "")
-                                .replaceAll("[\\s\u00A0\u202F]+", " ").trim();
-                        if (!unit.isEmpty()) {
-                            found.add(unit);
-                        }
-                        value *= 10;
-                    }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Units failure", ex);
-                }
-            }
-            // The app can be in another language than its locale.
-            found.add("K");
-            found.add("M");
-            found.add("B");
-            // English (India) shows lakh and crore, but abbreviates them as L and Cr.
-            found.add("lakh");
-            found.add("crore");
-            List<String> list = new ArrayList<>(found);
-            list.sort((a, b) -> b.length() - a.length());
-            units = list;
-            unitsLocale = locale;
-        }
-        return units;
-    }
 
     private static boolean isSeparator(char c) {
         return Character.isWhitespace(c) || c == '\u00A0' || c == '\u202F';
@@ -379,7 +348,8 @@ public final class FeedViewCountPatch {
         }
 
         String unit = "";
-        for (String candidate : getUnits(locale)) {
+        for (CompactNumbers.Unit compactUnit : CompactNumbers.getUnits(locale)) {
+            String candidate = compactUnit.text();
             if (!text.regionMatches(true, index, candidate, 0, candidate.length())) {
                 continue;
             }
@@ -448,6 +418,18 @@ public final class FeedViewCountPatch {
 
     private static List<Segment> splitSegments(String text) {
         List<Segment> segments = new ArrayList<>();
+        // Every text of the elements is split, so the pattern is used only for the texts with a delimiter:
+        // a dot, or two spaces or tabs in a row.
+        boolean delimiter = false;
+        for (int i = 0, length = text.length(); i < length && !delimiter; i++) {
+            final char c = text.charAt(i);
+            delimiter = c == '·' || c == '•' || ((c == ' ' || c == '\t') && i + 1 < length
+                    && (text.charAt(i + 1) == ' ' || text.charAt(i + 1) == '\t'));
+        }
+        if (!delimiter) {
+            addSegment(text, 0, text.length(), segments);
+            return segments;
+        }
         Matcher matcher = SEGMENT_DELIMITER_PATTERN.matcher(text);
         int start = 0;
         while (matcher.find()) {
@@ -481,6 +463,8 @@ public final class FeedViewCountPatch {
         if (text.length() > MAX_SUBTITLE_LENGTH) {
             return null;
         }
+        // The words of the view counts and the view counts of the elements are found by the analyses.
+        FeedVideoCardsPatch.awaitElementAnalyses();
         List<Segment> segments = splitSegments(text);
         final int size = segments.size();
         if (size == 1 && isSeparator(text.charAt(0))) {
@@ -669,6 +653,55 @@ public final class FeedViewCountPatch {
     }
 
     /**
+     * @return The pattern of a view count shown in a text, in any language: the spaces and the marks
+     *         of the text direction between its characters can differ, and it must not be part of
+     *         a longer number or word of Latin letters, such as of a URL.
+     */
+    private static Pattern getViewCountTextPattern(String viewCount) {
+        StringBuilder regex = new StringBuilder("(?<![A-Za-z\\p{Nd}])");
+        final int start = regex.length();
+        viewCount.codePoints().forEach(codePoint -> {
+            if (Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint)
+                    || Character.getType(codePoint) == Character.FORMAT) {
+                return;
+            }
+            if (regex.length() > start) {
+                regex.append(VIEW_COUNT_GAP);
+            }
+            regex.append(Pattern.quote(new String(Character.toChars(codePoint))));
+        });
+        regex.append("(?![A-Za-z\\p{Nd}])");
+        return Pattern.compile(regex.toString());
+    }
+
+    /**
+     * Newer cards show the shortened view count as a text of its own, between the channel
+     * and the upload time, which is not a text below the title that the badge replaces.
+     *
+     * @param shortenedViewCount The shortened view count of the metadata of the video, without spaces.
+     * @return If a text of the element that is shown is the shortened view count.
+     */
+    private static boolean hasOwnViewCountText(List<ProtoNode> textNodes, String shortenedViewCount) {
+        nodes:
+        for (ProtoNode node : textNodes) {
+            String text = node.getText();
+            if (text.length() > MAX_SEGMENT_LENGTH
+                    || !SPACES_PATTERN.matcher(text).replaceAll("").equals(shortenedViewCount)) {
+                continue;
+            }
+            // The texts of the metadata and the commands are not shown.
+            for (ProtoNode parent = node.getParent(); parent != null; parent = parent.getParent()) {
+                final int field = parent.getFieldNumber();
+                if (field == METADATA_FIELD || field == COMMAND_FIELD) {
+                    continue nodes;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Called by {@link FeedVideoCardsPatch} when the element of a video that is not live is loaded,
      * before its cards are drawn. Litho draws only the part of a card that is shown, so a card that
      * enters from the bottom of the list shows its thumbnail before the texts below its title.
@@ -701,23 +734,7 @@ public final class FeedViewCountPatch {
                 // Some cards show it below the title, such as the Shorts of the search results.
                 // They have no badge, decided now, as the texts of a card that enters the list
                 // are drawn after its thumbnail, so the badge would be shown and then removed.
-                // The view count is found in any language: the spaces and the marks of the text
-                // direction between its characters can differ, and it must not be part of
-                // a longer number or word of Latin letters, such as of a URL.
-                StringBuilder regex = new StringBuilder("(?<![A-Za-z\\p{Nd}])");
-                final int start = regex.length();
-                viewCount.codePoints().forEach(codePoint -> {
-                    if (Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint)
-                            || Character.getType(codePoint) == Character.FORMAT) {
-                        return;
-                    }
-                    if (regex.length() > start) {
-                        regex.append(VIEW_COUNT_GAP);
-                    }
-                    regex.append(Pattern.quote(new String(Character.toChars(codePoint))));
-                });
-                regex.append("(?![A-Za-z\\p{Nd}])");
-                Pattern countPattern = Pattern.compile(regex.toString());
+                Pattern countPattern = getViewCountTextPattern(viewCount);
                 ProtoNode shortItem = null;
                 for (ProtoNode node : textNodes) {
                     if (node.getText().startsWith(FeedVideoCardsPatch.SHORTS_ITEM_PREFIX)) {
@@ -761,10 +778,15 @@ public final class FeedViewCountPatch {
             Locale locale = Locale.getDefault();
             // The shortened and the full view count of the metadata of the video, such as "4.7M" and "4.7M views".
             Set<String> metadataViewCounts = new HashSet<>();
+            String shortenedViewCount = null;
             for (ProtoNode node : textNodes) {
-                if (node.pathEndsWith(METADATA_FIELD, 2, 1, 1)
-                        || node.pathEndsWith(METADATA_FIELD, 2, 3, METADATA_FULL_VIEW_COUNT_FIELD, 2)) {
-                    metadataViewCounts.add(SPACES_PATTERN.matcher(node.getText()).replaceAll(""));
+                final boolean shortened = node.pathEndsWith(METADATA_FIELD, 2, 1, 1);
+                if (shortened || node.pathEndsWith(METADATA_FIELD, 2, 3, METADATA_FULL_VIEW_COUNT_FIELD, 2)) {
+                    String viewCount = SPACES_PATTERN.matcher(node.getText()).replaceAll("");
+                    metadataViewCounts.add(viewCount);
+                    if (shortened) {
+                        shortenedViewCount = viewCount;
+                    }
                 }
             }
             // The texts below the title that have one of them as a part, whatever their other parts are,
@@ -803,6 +825,13 @@ public final class FeedViewCountPatch {
                     }
                     metadataViewCount = parsed.count;
                     break;
+                }
+            }
+            if (metadataViewCount == null && shortenedViewCount != null
+                    && hasOwnViewCountText(textNodes, shortenedViewCount)) {
+                Pattern pattern = getViewCountTextPattern(shortenedViewCount);
+                synchronized (ownViewCountTexts) {
+                    ownViewCountTexts.put(videoId, pattern);
                 }
             }
             if (metadataViewCount != null) {
@@ -1149,19 +1178,14 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * @param atThumbnailEnd If the badge must be at the end of a thumbnail as wide as the card.
+     * @param atThumbnailEnd If the badge must be at the end of its image, on the side of the duration.
      */
     private static boolean isDurationBadgeShaped(ComponentHost root, Rect rect, boolean atThumbnailEnd) {
-        final float density = root.getResources().getDisplayMetrics().density;
-        // Thumbnails are 16:9 or square, such as of music videos.
-        return rect.width() > 0
-                && rect.width() <= FeedVideoCardsPatch.MAX_DURATION_WIDTH_DP * density
-                && rect.height() >= MIN_DURATION_HEIGHT_DP * density
-                && rect.height() <= FeedVideoCardsPatch.MAX_DURATION_HEIGHT_DP * density
-                && (!atThumbnailEnd || (isRtl(root)
-                ? rect.centerX() < root.getWidth() / 2
-                : rect.centerX() > root.getWidth() / 2))
-                && rect.bottom <= root.getWidth() + TOLERANCE_DP * density;
+        // The badge is drawn on an image much larger than it, such as the thumbnail.
+        Rect image = rect.width() > 0 ? FeedVideoCardsPatch.findBadgeImage(root, rect) : null;
+        return image != null && (!atThumbnailEnd || (isRtl(root)
+                ? rect.centerX() < image.centerX()
+                : rect.centerX() > image.centerX()));
     }
 
     /**
@@ -1235,7 +1259,7 @@ public final class FeedViewCountPatch {
         }
         if (duration == null && info.hasDuration && thumbnail != null) {
             // The host of the whole thumbnail draws the duration, such as on the small thumbnails of the
-            // rows of a playlist, so where it is is estimated, and the badges do not overlap it.
+            // rows of a playlist, so where it is estimated, and the badges do not overlap it.
             duration = estimateDurationBadge(host, thumbnail, info.badgeText);
         }
         return new ThumbnailFrame(duration, thumbnail, false);
@@ -1292,6 +1316,7 @@ public final class FeedViewCountPatch {
                 && !FeedVideoCardsPatch.isPlaylistCard(host)
                 && !FeedVideoCardsPatch.hasHorizontalList(host)));
         if (shortsFrame != null && videoId != null) {
+            FeedVideoCardsPatch.awaitElementAnalyses();
             synchronized (shortsViewCounts) {
                 viewCount = shortsViewCounts.get(videoId);
             }
@@ -1338,7 +1363,26 @@ public final class FeedViewCountPatch {
                     viewCount = findViewCountInTexts(info.texts);
                     textShowsViewCount = viewCount != null;
                 }
-                if (viewCount == null) {
+                Pattern ownViewCount = null;
+                if (viewCount == null && videoId != null) {
+                    FeedVideoCardsPatch.awaitElementAnalyses();
+                    synchronized (ownViewCountTexts) {
+                        ownViewCount = ownViewCountTexts.get(videoId);
+                    }
+                    if (ownViewCount != null) {
+                        // The card can show the view count as a text of its own, while the cards of the same video
+                        // in other lists do not, such as of the Watch later playlist, whose element can be loaded
+                        // later or earlier, so the view count of the element is not of this card.
+                        for (PlacedText placed : info.texts) {
+                            if (ownViewCount.matcher(placed.text).find()) {
+                                textShowsViewCount = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                // Which of them the card is, is known only when its texts below the title are drawn.
+                if (viewCount == null && !textShowsViewCount && (ownViewCount == null || !isBottomHidden(host))) {
                     // The texts below the title are not drawn yet, such as while only the thumbnail of
                     // a card that enters the list is shown, so the view count of the element is shown.
                     // The element of the video is loaded before its card, so the view count is known
@@ -1349,6 +1393,7 @@ public final class FeedViewCountPatch {
                             : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
                     if (cardVideoId != null && (info.badgeText != null || videoId != null)) {
                         ElementViewCount element;
+                        FeedVideoCardsPatch.awaitElementAnalyses();
                         synchronized (videoViewCounts) {
                             element = videoViewCounts.get(cardVideoId);
                         }
@@ -1361,7 +1406,7 @@ public final class FeedViewCountPatch {
                     }
                 }
                 final String id = videoId == null ? "unknown" : videoId;
-                if (viewCount == null) {
+                if (viewCount == null && !textShowsViewCount) {
                     // Checked again when its texts are drawn, as they can show the view count.
                     FeedVideoCardsPatch.scheduleRetry(host);
                     logTexts(id, info.texts);
@@ -1384,20 +1429,53 @@ public final class FeedViewCountPatch {
 
         ViewCountBadge badge = badges.get(host);
         if (viewCount == null) {
+            // Litho draws only the part of a card that is shown, so the view count of a card whose texts below
+            // the title are below the bottom of the list is not found until they are shown.
+            final boolean bottomHidden = !textShowsViewCount && shortsFrame == null && videoId != null
+                    && isBottomHidden(host);
+            boolean textsHidden = bottomHidden;
+            if (textsHidden) {
+                // The view count can be shown by a text of its own, which the badge does not replace,
+                // so the like count badge does not wait for the view count badge.
+                FeedVideoCardsPatch.awaitElementAnalyses();
+                synchronized (ownViewCountTexts) {
+                    textsHidden = !ownViewCountTexts.containsKey(videoId);
+                }
+            }
+            if (bottomHidden && badge != null && badge.confirmed && badge.added && videoId.equals(badge.videoId)) {
+                // The card still shows the same video, such as when it moves back below the bottom of the list,
+                // so its view count is kept.
+                return;
+            }
+            final boolean pendingChanged = textsHidden
+                    ? pendingViewCounts.put(host, Boolean.TRUE) == null
+                    : pendingViewCounts.remove(host) != null;
             if (badge != null) {
                 badge.detach(host);
                 badges.remove(host);
+            }
+            if (badge != null || pendingChanged) {
                 FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
             }
             return;
         }
+        pendingViewCounts.remove(host);
         if (badge == null) {
             badge = new ViewCountBadge(host);
             badges.put(host, badge);
         }
-        badge.bind(host, viewCount, duration, thumbnail);
+        badge.bind(host, videoId, viewCount, duration, thumbnail);
         // The like count badge can be shown next to the view count.
         FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
+    }
+
+    /**
+     * @return If the bottom of the card is below the bottom of the list, so Litho has not drawn
+     *         the texts below the title yet, such as while the card enters the list.
+     */
+    private static boolean isBottomHidden(View host) {
+        final Rect visible = new Rect();
+        return host.getLocalVisibleRect(visible) && visible.top == 0 && visible.bottom < host.getHeight();
     }
 
     /**
@@ -1415,8 +1493,19 @@ public final class FeedViewCountPatch {
      */
     @Nullable
     public static Rect getBadgeBounds(View host) {
-        ViewCountBadge badge = badges.get(host);
+        if (!(host instanceof ComponentHost componentHost)) {
+            return null;
+        }
+        ViewCountBadge badge = badges.get(componentHost);
         return badge == null || !badge.added ? null : new Rect(badge.getBounds());
+    }
+
+    /**
+     * @return If the view count of the video of a card is not known yet, as the texts below the title are not shown,
+     *         so the like count badge waits for it. Must be called on the main thread.
+     */
+    public static boolean isViewCountPending(View host) {
+        return host instanceof ComponentHost componentHost && pendingViewCounts.containsKey(componentHost);
     }
 
     /**
@@ -1425,7 +1514,10 @@ public final class FeedViewCountPatch {
      * Must be called on the main thread.
      */
     public static void setBadgeJoined(View host, boolean joined) {
-        ViewCountBadge badge = badges.get(host);
+        if (!(host instanceof ComponentHost componentHost)) {
+            return;
+        }
+        ViewCountBadge badge = badges.get(componentHost);
         if (badge != null && badge.joined != joined) {
             badge.joined = joined;
             badge.invalidateSelf();
@@ -1461,6 +1553,9 @@ public final class FeedViewCountPatch {
          */
         private boolean confirmed = true;
         private String viewCount = "";
+        /** The video of the view count, or null if not known. */
+        @Nullable
+        private String videoId;
         private boolean added;
         private int alpha = 255;
         @Nullable
@@ -1493,8 +1588,10 @@ public final class FeedViewCountPatch {
          * @param thumbnail The thumbnail, or null if not found.
          *                  Then a 16:9 thumbnail as wide as the card is used.
          */
-        void bind(ComponentHost host, String newViewCount, @Nullable Rect duration, @Nullable Rect thumbnail) {
+        void bind(ComponentHost host, @Nullable String newVideoId, String newViewCount,
+                  @Nullable Rect duration, @Nullable Rect thumbnail) {
             confirmed = true;
+            videoId = newVideoId;
             // Fades in when shown, or when the card shows another video.
             // Not when the card is only laid out again.
             final boolean changed = !newViewCount.equals(viewCount);
@@ -1595,10 +1692,6 @@ public final class FeedViewCountPatch {
                 return;
             }
             ComponentHost host = hostRef.get();
-            if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
-                // The inline player shows its own controls over the thumbnail.
-                return;
-            }
             backgroundPaint.setAlpha(Color.alpha(BACKGROUND_COLOR) * alpha / 255);
             textPaint.setAlpha(alpha);
             iconPaint.setAlpha(alpha);

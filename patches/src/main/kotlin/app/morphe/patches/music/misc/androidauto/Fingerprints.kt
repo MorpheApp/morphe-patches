@@ -13,6 +13,7 @@ package app.morphe.patches.music.misc.androidauto
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchBeforeWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -52,6 +53,66 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
     classFingerprint = GoogleCertificatesRemoteFingerprint,
     returnType = "Z",
     parameters = listOf("Ljava/lang/String;")
+)
+
+/** Chooses the Google media browser client when Assistant omits its driving mode hint. */
+internal object AssistantBrowseUiModeFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf("L", "Landroid/os/Bundle;"),
+    filters = listOf(
+        string("android.media.browse.ASSISTANT_DRIVING_MODE"),
+        methodCall(definingClass = "Landroid/app/UiModeManager;", name = "getCurrentModeType"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+// Replacement Settings tab
+
+/**
+ * Omitting this intent from the media browser root hides the stock Settings button.
+ * YouTube Music can crash when Android Auto rejects the screen that button opens.
+ */
+internal object AndroidAutoSettingsIntentFingerprint : Fingerprint(
+    filters = listOf(
+        string("androidx.media.BrowserRoot.Extras.APPLICATION_PREFERENCES_USING_CAR_APP_LIBRARY_INTENT"),
+        methodCall(
+            definingClass = "Landroid/os/Bundle;",
+            name = "putParcelable",
+            parameters = listOf("Ljava/lang/String;", "Landroid/os/Parcelable;"),
+            returnType = "V",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Builds the stock Settings screen: its rows and their toggle listeners.
+ * The browse tab copies this method to build the same rows.
+ */
+internal object StockSettingsTemplateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = emptyList(),
+    filters = listOf(
+        // The screen's CarContext.
+        fieldAccess(opcode = Opcode.IGET_OBJECT),
+        methodCall(
+            name = "getString",
+            parameters = listOf("I"),
+            returnType = "Ljava/lang/String;",
+            location = MatchAfterWithin(3)
+        ),
+        // The settings controller, which reads the settings and creates the toggle listeners.
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterWithin(5)
+        ),
+        // Separates the storage used and available.
+        string(",  "),
+        methodCall(definingClass = "Landroidx/car/app/model/Toggle;", name = "<init>"),
+        methodCall(definingClass = "Landroidx/car/app/model/ListTemplate;", name = "<init>"),
+    ),
 )
 
 // Android Auto browse requests, media items, and folder refresh
@@ -116,21 +177,61 @@ internal object BuildMediaItemFingerprint : Fingerprint(
     )
 )
 
-/** Returns an empty list when YTM does not recognize the page Android Auto requested. */
+/**
+ * Delivers the items of a browse request to Android Auto.
+ * YTM 9.15 and 9.20 also have an overload that takes only the item list and forwards to this method.
+ */
+internal object DeliverBrowseItemsFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/List;", "L"),
+    filters = listOf(string("MBS: LoadChildrenResult.logCompletion() called before sentTime was set."))
+)
+
+/** YTM reads the requested folder ID through these two fields when it logs an invalid media ID. */
 internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L", "Z"),
+    returnType = { "V" },
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef.type, "Z") },
+    strings = listOf(string("Invalid media id: ")),
     filters = listOf(
-        string("Invalid media id: ")
+        fieldAccess(definingClass = { DeliverBrowseItemsFingerprint.originalClassDef }, opcode = Opcode.IGET_OBJECT),
+        fieldAccess(type = "Ljava/lang/String;", opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(8))
     )
 )
 
-// Locate YTM's phone request clients and browse methods
+/** YTM's handler of Android Auto browse requests. */
+internal object BrowseRequestHandlerFingerprint : Fingerprint(
+    classFingerprint = SendEmptyMediaItemsFingerprint,
+    returnType = { "V" },
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef.type) },
+    filters = listOf(
+        methodCall("Lj$/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately()),
+        string("MBS: Fetching MBFE root for mediaId: `%s`", MatchAfterWithin(8))
+    )
+)
+
+/** YTM can answer from its browse cache or local library here without starting another root fetch. */
+internal object CachedBrowseFingerprint : Fingerprint(
+    classFingerprint = SendEmptyMediaItemsFingerprint,
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef.type) },
+    returnType = { "Z" }
+)
+
+/** The success callback calls the same delivery method that YTM uses when the root fetch fails. */
+internal object RootLoadedFingerprint : Fingerprint(
+    filters = listOf(
+        string("MBS: MBFE Root loaded for client '%s'"),
+        methodCall(definingClass = "this", parameters = emptyList(), returnType = "V", opcode = Opcode.INVOKE_DIRECT)
+    )
+)
+
+// MusicBrowserService startup
 
 /**
  * Initializes MusicBrowserService, which serves YTM's pages and search results to Android Auto.
- * The patch obtains the phone request clients here so they are available when Auto connects.
+ * Its startup code gives the patch access to the generated component that holds the provider fields.
  */
 internal fun browserServiceOnCreateFingerprint(
     musicBrowserServiceType: String,
@@ -156,8 +257,15 @@ internal fun browserServiceOnCreateFingerprint(
     )
 )
 
-/** Obtains YTM's object for sending phone browse or search requests, depending on the supplied type. */
-internal fun phoneClientProviderFingerprint(phoneClientType: String) = Fingerprint(
+/**
+ * Finds the provider field and getter for YouTube Music's phone browse client, search client, or car settings controller.
+ * The patch repeats that lookup in `MusicBrowserService.onCreate` to pass the object to the Android Auto extension.
+ */
+internal fun dependencyProviderFingerprint(
+    dependencyType: String,
+    providerReaderClass: String? = null,
+) = Fingerprint(
+    definingClass = providerReaderClass,
     filters = listOf(
         fieldAccess(opcode = Opcode.IGET_OBJECT),
         methodCall(
@@ -167,9 +275,11 @@ internal fun phoneClientProviderFingerprint(phoneClientType: String) = Fingerpri
             location = MatchAfterImmediately()
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        checkCast(phoneClientType, location = MatchAfterImmediately())
+        checkCast(dependencyType, location = MatchAfterImmediately())
     )
 )
+
+// Locate YTM's phone request clients and browse methods
 
 /** Creates a request for the phone's Library, Home, or a playlist. */
 internal object CreatePhoneBrowseRequestFingerprint : Fingerprint(
@@ -221,9 +331,12 @@ internal object PhoneBrowseRequestCallsFingerprint : Fingerprint(
     )
 )
 
-/** Identifies the continuation token field in the phone browse request's diagnostic string. */
-internal fun phoneBrowseContinuationFingerprint(requestType: String) = Fingerprint(
-    definingClass = requestType,
+/**
+ * Identifies the continuation token field in the phone browse request's diagnostic string.
+ * The request is the one [PhoneBrowseRequestCallsFingerprint] creates.
+ */
+internal object PhoneBrowseContinuationFingerprint : Fingerprint(
+    definingClass = { PhoneBrowseRequestCallsFingerprint.instructionMatches.first().methodReference.returnType },
     returnType = "Ljava/lang/String;",
     parameters = emptyList(),
     strings = listOf("browseId"),
@@ -326,6 +439,17 @@ internal object LibraryPaginationDecoderFingerprint : Fingerprint(
     parameters = listOf("L")
 )
 
+/**
+ * Gets the proto of the Library pagination response from the phone browse response
+ * ([PhoneBrowseResponseTabsFingerprint]). It returns the type [LibraryPaginationDecoderFingerprint] decodes.
+ */
+internal object PhoneBrowseResponsePaginationProtoFingerprint : Fingerprint(
+    definingClass = { PhoneBrowseResponseTabsFingerprint.originalMethod.definingClass },
+    isStatic = false,
+    returnType = { LibraryPaginationDecoderFingerprint.originalMethod.parameterTypes.single() },
+    parameters = { emptyList() }
+)
+
 // Read the playlist browse ID from an item's command
 
 /** Reads the BrowseEndpoint, which identifies the YTM page a command opens. */
@@ -340,14 +464,27 @@ internal fun browseEndpointFromCommandFingerprint(
 
 // Playlist titles and artwork
 
-/** Reads an item's artwork container, decodes it, then reads the thumbnail details. */
-internal fun phoneBrowseItemArtworkFingerprint(phoneBrowseItemType: String) = Fingerprint(
+/**
+ * The class of Library items. It is the field read after YTM's presence check in [GridRendererItemsFingerprint].
+ */
+internal val phoneBrowseItemType
+    get() = GridRendererItemsFingerprint.instructionMatches
+        .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
+        .fieldReference
+        .type
+
+/**
+ * Reads an item's artwork container, decodes it, then reads the thumbnail details.
+ * The second parameter is the Library item.
+ * YTM has more than one phone thumbnail renderer with this code, so use it only with matchAll().
+ */
+internal object PhoneBrowseItemArtworkFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", phoneBrowseItemType, "I"),
+    parameters = { listOf("L", phoneBrowseItemType, "I") },
     filters = listOf(
         fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = phoneBrowseItemType
+            opcodes = listOf(Opcode.IGET_OBJECT),
+            definingClass = { phoneBrowseItemType }
         ),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
@@ -425,15 +562,18 @@ internal fun playlistPlaybackCommandFingerprint(commandType: String) = Fingerpri
 
 // Refresh after Library changes
 
-/** YTM's requests that change the Library. */
-internal fun libraryChangeRequestFingerprint(endpoint: String) = Fingerprint(
+/** The request that creates a playlist, one of YTM's requests that change the Library. */
+internal object LibraryChangeRequestFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V",
-    strings = listOf(endpoint)
+    strings = listOf("playlist/create")
 )
 
-/** Calls the request's success callback with its response. */
-internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Fingerprint(
+/**
+ * Calls the request's success callback with its response.
+ * The class keeps a request of the base class of [LibraryChangeRequestFingerprint].
+ */
+internal object RequestSuccessCallbackFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lcom/google/protobuf/MessageLite;"),
@@ -450,6 +590,7 @@ internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Finger
         )
     ),
     custom = { _, classDef ->
+        val requestBaseType = LibraryChangeRequestFingerprint.originalClassDef.superclass
         classDef.instanceFields.any { field ->
             field.type == requestBaseType
         }
@@ -493,6 +634,50 @@ internal fun mediaBrowserReloadFingerprint(baseServiceType: String) = Fingerprin
     parameters = listOf("Ljava/lang/String;", "L", "Landroid/os/Bundle;"),
     filters = listOf(
         string("onLoadChildren must call detach() or sendResult() before returning for package=")
+    )
+)
+
+// Third-party Android Auto apps
+
+/**
+ * MusicBrowserService's onGetRoot calls the allowlist check right before logging a rejected app.
+ * YTM 9.30 and newer also pass the calling app's UID to onGetRoot and the allowlist check.
+ */
+internal object MediaBrowserGetRootFingerprint : Fingerprint(
+    returnType = "L",
+    filters = listOf(
+        string("MBS: getRoot() failed. Client not allowlisted: %s"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "Z",
+            location = MatchBeforeWithin(10)
+        )
+    )
+)
+
+/** Checks whether the allowlist lets a media browser client browse. */
+internal fun mediaBrowserClientAllowlistFingerprint(allowlistType: String, clientType: String) = Fingerprint(
+    definingClass = allowlistType,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(clientType),
+    filters = listOf(
+        methodCall(definingClass = "Ljava/util/Set;", name = "contains")
+    )
+)
+
+/** YTM's media browser caller and client types store the app's package name. */
+internal fun mediaBrowserPackageNameFingerprint(type: String) = Fingerprint(
+    definingClass = type,
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        )
     )
 )
 

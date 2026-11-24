@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
@@ -39,6 +40,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -307,9 +310,18 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * @return If the text of an element is the icon of the live badge of a thumbnail.
+     */
+    public static boolean isLiveIconText(String text) {
+        // Every text of a video is checked, so the pattern is used only for the texts that can match.
+        return text.startsWith("yt_") && text.contains("_live_") && LIVE_ICON_PATTERN.matcher(text).matches();
+    }
+
+    /**
      * @return If the video is live, such as of a card that enters the list, which is not known by its texts yet.
      */
     public static boolean isLiveVideo(String videoId) {
+        awaitElementAnalyses();
         synchronized (liveVideoIds) {
             return liveVideoIds.containsKey(videoId);
         }
@@ -382,6 +394,9 @@ public final class FeedVideoCardsPatch {
     public static boolean emlTextLacks(byte[] bytes, String search) {
         String element = getElementText(bytes);
         int index = element.indexOf(".eml");
+        // The first search text from the start of the current text. The texts come one after another,
+        // so it's searched again only once a text starts after it.
+        int found = Integer.MIN_VALUE;
         while (index >= 0) {
             int start = index;
             while (start > 0 && element.charAt(start - 1) >= 0x20 && element.charAt(start - 1) <= 0x7E) {
@@ -391,8 +406,14 @@ public final class FeedVideoCardsPatch {
             while (end < element.length() && element.charAt(end) >= 0x20 && element.charAt(end) <= 0x7E) {
                 end++;
             }
-            final int found = element.indexOf(search, start);
-            if (found >= 0 && found + search.length() <= end) {
+            if (found < start) {
+                found = element.indexOf(search, start);
+                if (found < 0) {
+                    // Not in the rest of the element.
+                    return true;
+                }
+            }
+            if (found + search.length() <= end) {
                 return false;
             }
             index = element.indexOf(".eml", end);
@@ -425,10 +446,72 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * The opposite of {@link Utils#containsAny(CharSequence, CharSequence...)}, for the string of the bytes
+     * of an element, see {@link #getElementText(byte[])}. The element hooks search every element on the
+     * main thread while a list loads, and the string search is much faster than a loop over the characters
+     * of a char sequence, as most elements include none of the texts and are searched to the end.
+     * <p>
+     * Texts with the same end, such as the templates that end with ".eml", are found by searching the element
+     * once for the end, and each text is then compared where the end is found.
+     *
+     * @return If the text includes none of the texts that are not empty.
+     */
+    public static boolean lacksAll(String elementText, String[] texts) {
+        // The end of the texts that are not empty, which every text found in the element ends with.
+        String end = null;
+        for (String text : texts) {
+            if (text.isEmpty()) {
+                continue;
+            }
+            if (end == null) {
+                end = text;
+                continue;
+            }
+            int length = 0;
+            final int maxLength = Math.min(end.length(), text.length());
+            while (length < maxLength
+                    && end.charAt(end.length() - 1 - length) == text.charAt(text.length() - 1 - length)) {
+                length++;
+            }
+            end = end.substring(end.length() - length);
+        }
+        if (end == null) {
+            return true;
+        }
+        if (end.isEmpty()) {
+            for (String text : texts) {
+                if (!text.isEmpty() && elementText.contains(text)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        for (int index = elementText.indexOf(end); index >= 0; index = elementText.indexOf(end, index + 1)) {
+            final int textEnd = index + end.length();
+            for (String text : texts) {
+                final int start = textEnd - text.length();
+                if (!text.isEmpty() && start >= 0 && elementText.startsWith(text, start)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
      * @return The text as it's matched between an element and a card.
      */
     private static String normalizeText(CharSequence text) {
-        return FORMAT_CHARACTERS_PATTERN.matcher(text).replaceAll("").trim();
+        // Most texts have no format characters, and the texts of the elements are normalized
+        // on the main thread while a list loads, so the pattern is used only for the texts that can have them.
+        // Characters outside the BMP are left to the pattern.
+        for (int i = 0, length = text.length(); i < length; i++) {
+            final int type = Character.getType(text.charAt(i));
+            if (type == Character.FORMAT || type == Character.SURROGATE) {
+                return FORMAT_CHARACTERS_PATTERN.matcher(text).replaceAll("").trim();
+            }
+        }
+        return text.toString().trim();
     }
 
     private static boolean isVideoText(String text) {
@@ -440,6 +523,66 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * Analyses of the elements of videos, and the texts added for videos, that did not run yet,
+     * in the order they were added. The elements are parsed on the main thread while a list loads,
+     * so they run on another thread, see {@link #awaitElementAnalyses()}.
+     */
+    @GuardedBy("itself")
+    private static final ArrayDeque<Runnable> pendingAnalyses = new ArrayDeque<>();
+    /** Number of analyses added, changed with the lock of {@link #pendingAnalyses}. */
+    private static volatile long addedAnalyses;
+    /** Number of analyses that ran, changed with {@link #analysisLock}. */
+    private static volatile long finishedAnalyses;
+    /** Held while an analysis runs, so the analyses run one at a time in the order they were added. */
+    private static final Object analysisLock = new Object();
+    private static final ExecutorService analysisExecutor = Executors.newSingleThreadExecutor(runnable -> {
+        Thread thread = new Thread(runnable, "morphe-feed-elements");
+        thread.setDaemon(true);
+        return thread;
+    });
+
+    private static void addAnalysis(Runnable analysis) {
+        synchronized (pendingAnalyses) {
+            pendingAnalyses.add(analysis);
+            addedAnalyses++;
+        }
+        analysisExecutor.execute(FeedVideoCardsPatch::runNextAnalysis);
+    }
+
+    private static void runNextAnalysis() {
+        synchronized (analysisLock) {
+            Runnable analysis;
+            synchronized (pendingAnalyses) {
+                analysis = pendingAnalyses.poll();
+            }
+            if (analysis == null) {
+                // Run already by a thread that reads what the analyses find.
+                return;
+            }
+            try {
+                analysis.run();
+            } finally {
+                finishedAnalyses++;
+            }
+        }
+    }
+
+    /**
+     * Runs the analyses that were added before and did not run yet, on the current thread if they are not running.
+     * Called before what the analyses find is read, so it's read as if the analysis of each element ran when it was parsed.
+     */
+    public static void awaitElementAnalyses() {
+        if (Thread.holdsLock(analysisLock)) {
+            // Read by an analysis, which finds what the analyses before it found.
+            return;
+        }
+        final long added = addedAnalyses;
+        while (finishedAnalyses < added) {
+            runNextAnalysis();
+        }
+    }
+
+    /**
      * Injection point.
      * <p>
      * Called when an element is parsed. The element is not changed.
@@ -448,10 +591,16 @@ public final class FeedVideoCardsPatch {
         if (!VIDEO_CARDS || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
             return bytes;
         }
+        // The bytes are the buffer of the element, which is never changed.
+        addAnalysis(() -> analyzeElement(bytes));
+        return bytes;
+    }
+
+    private static void analyzeElement(byte[] bytes) {
         try {
             List<ProtoNode> root = ProtoNode.parse(bytes);
             if (root == null) {
-                return bytes;
+                return;
             }
             List<ProtoNode> textNodes = ProtoNode.textNodes(root);
 
@@ -472,7 +621,7 @@ public final class FeedVideoCardsPatch {
                 }
             }
             if (thumbnailCounts.isEmpty()) {
-                return bytes;
+                return;
             }
             // Video id -> its texts.
             Map<String, List<ProtoNode>> videoTextNodes = new LinkedHashMap<>();
@@ -550,7 +699,7 @@ public final class FeedVideoCardsPatch {
                 final List<ProtoNode> videoNodes = entry.getValue();
                 boolean live = false;
                 for (ProtoNode node : videoNodes) {
-                    if (LIVE_ICON_PATTERN.matcher(node.getText()).matches()) {
+                    if (isLiveIconText(node.getText())) {
                         live = true;
                         break;
                     }
@@ -606,7 +755,6 @@ public final class FeedVideoCardsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
-        return bytes;
     }
 
     /**
@@ -622,9 +770,12 @@ public final class FeedVideoCardsPatch {
         if (!isVideoText(normalized)) {
             return;
         }
-        synchronized (textVideoIds) {
-            putVideoText(textVideoIds, normalized, videoId);
-        }
+        // Added after the texts of the elements that were parsed before, as they replace each other.
+        addAnalysis(() -> {
+            synchronized (textVideoIds) {
+                putVideoText(textVideoIds, normalized, videoId);
+            }
+        });
     }
 
     /**
@@ -721,12 +872,32 @@ public final class FeedVideoCardsPatch {
      * @return If the text is a duration, such as 4:05, or a badge such as the live badge.
      */
     public static boolean isVideoBadgeText(String text) {
-        return isDurationText(text)
-                || BADGE_PATTERN.matcher(text).matches();
+        if (isDurationText(text)) {
+            return true;
+        }
+        // Every text of the elements is checked, so the pattern is used only for the texts that can match:
+        // 2 to 12 uppercase letters, which are 2 characters each outside the BMP.
+        final int length = text.length();
+        if (length < 2 || length > 24) {
+            return false;
+        }
+        final int firstType = Character.getType(text.charAt(0));
+        return (firstType == Character.UPPERCASE_LETTER || firstType == Character.SURROGATE)
+                && BADGE_PATTERN.matcher(text).matches();
     }
 
     private static boolean isDurationText(String text) {
-        return text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find();
+        final int length = text.length();
+        if (length == 0 || length > MAX_DURATION_TEXT_LENGTH) {
+            return false;
+        }
+        // A duration ends with a digit, or with a line break after it.
+        final char last = text.charAt(length - 1);
+        if (!Character.isDigit(last) && !Character.isSurrogate(last) && last != '\n' && last != '\r'
+                && last != '\u0085' && last != '\u2028' && last != '\u2029') {
+            return false;
+        }
+        return DURATION_PATTERN.matcher(text).find();
     }
 
     /**
@@ -795,16 +966,14 @@ public final class FeedVideoCardsPatch {
      * Cards of some layouts show the thumbnail inset from their edges, such as by 12 dp.
      */
     public static final int MAX_THUMBNAIL_INSET_DP = 16;
-    /** A duration badge larger than this is not the badge itself, but a host around it. */
-    public static final int MAX_DURATION_WIDTH_DP = 120;
-    public static final int MAX_DURATION_HEIGHT_DP = 32;
 
     /**
      * @param rect The host that shows a badge text, such as a duration or 'LIVE', relative to the root host.
      * @return If the text is a badge of the thumbnail: the host is as wide as the thumbnail and starts in it,
-     *         such as the host of the whole thumbnail, or it's as large as a badge, on the side of the duration
-     *         (the right, or the left in right to left languages). Not a badge text elsewhere on the card,
-     *         such as the live badge on the avatar of a channel that is live, at the top of its page.
+     *         such as the host of the whole thumbnail, or it's drawn on an image much larger than it, such as
+     *         the thumbnail, on the side of the duration (the right, or the left in right to left languages).
+     *         Not a badge text elsewhere on the card, such as a channel name in capital letters below the
+     *         thumbnail, or the live badge on the avatar of a channel that is live, at the top of its page.
      */
     public static boolean isThumbnailBadge(ComponentHost root, Rect rect) {
         final float density = root.getResources().getDisplayMetrics().density;
@@ -813,9 +982,48 @@ public final class FeedVideoCardsPatch {
                 && rect.top < width * THUMBNAIL_RATIO) {
             return true;
         }
-        return rect.width() <= MAX_DURATION_WIDTH_DP * density
-                && rect.height() <= MAX_DURATION_HEIGHT_DP * density
-                && (FeedViewCountPatch.isRtl(root) ? rect.centerX() < width / 2 : rect.centerX() > width / 2);
+        // A host only as large as the badge is on the thumbnail, on the side of the duration.
+        Rect image = findBadgeImage(root, rect);
+        return image != null && (FeedViewCountPatch.isRtl(root)
+                ? rect.centerX() < image.centerX()
+                : rect.centerX() > image.centerX());
+    }
+
+    /** An image that a badge of its video is drawn on, such as the thumbnail, is at least this many times as large. */
+    private static final int MIN_IMAGE_SIZE_OF_BADGE = 2;
+
+    /**
+     * @param badge The host of a badge text, relative to the root host.
+     * @return The image of the card that the badge is drawn on, such as the thumbnail, relative to the root host.
+     *         Null if the badge is not on an image much larger than it, such as a text below the thumbnail
+     *         or the live badge on the avatar of a channel.
+     */
+    @Nullable
+    public static Rect findBadgeImage(ComponentHost root, Rect badge) {
+        Rect rect = new Rect();
+        ArrayDeque<View> views = new ArrayDeque<>();
+        views.add(root);
+        View view;
+        // The queue holds no nulls, so poll() is null only once it is empty.
+        while ((view = views.poll()) != null) {
+            if (view instanceof ImageView) {
+                rect.set(0, 0, view.getWidth(), view.getHeight());
+                root.offsetDescendantRectToMyCoords(view, rect);
+                if (rect.contains(badge) && rect.width() >= badge.width() * MIN_IMAGE_SIZE_OF_BADGE
+                        && rect.height() >= badge.height() * MIN_IMAGE_SIZE_OF_BADGE) {
+                    return rect;
+                }
+            }
+            if (view instanceof ViewGroup group) {
+                for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                    View child = group.getChildAt(i);
+                    if (child.getVisibility() == View.VISIBLE) {
+                        views.add(child);
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -913,7 +1121,8 @@ public final class FeedVideoCardsPatch {
      * so what is drawn on the thumbnail of a full width card is drawn on it.
      *
      * @return The host of the thumbnail at the start side of a card shaped like that: as tall as the card,
-     *         16:9 and at least {@link #MIN_SIDE_THUMBNAIL_WIDTH_DP} wide. Null if the card is not shaped like that.
+     *         16:9 and at least {@link FeedEngagementCountsPatch#MIN_THUMBNAIL_HEIGHT_DP} tall. Null if the card is not
+     *         shaped like that.
      */
     @Nullable
     public static ComponentHost findSideThumbnail(ComponentHost root) {
@@ -937,7 +1146,8 @@ public final class FeedVideoCardsPatch {
                 continue;
             }
             if (child.getHeight() >= root.getHeight() - 2 * inset
-                    && child.getWidth() >= MIN_SIDE_THUMBNAIL_WIDTH_DP * density && child.getWidth() <= width / 2
+                    && child.getHeight() >= FeedEngagementCountsPatch.MIN_THUMBNAIL_HEIGHT_DP * density
+                    && child.getWidth() <= width / 2
                     && Math.abs(child.getWidth() * THUMBNAIL_RATIO - child.getHeight())
                     <= child.getHeight() * SIDE_THUMBNAIL_RATIO_TOLERANCE) {
                 return child;
@@ -951,12 +1161,6 @@ public final class FeedVideoCardsPatch {
         }
         return null;
     }
-
-    /**
-     * Smallest thumbnail beside the texts, such as of the rows of a list on phones,
-     * which fits the compact like count at the top of the thumbnail.
-     */
-    public static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
 
     /** How far the height of a thumbnail beside the texts may differ from 16:9, relative to its height. */
     private static final float SIDE_THUMBNAIL_RATIO_TOLERANCE = 0.1f;
@@ -981,8 +1185,17 @@ public final class FeedVideoCardsPatch {
      */
     @Nullable
     public static String findVideoId(ComponentHost root) {
-        // The badge of a card with the thumbnail beside the texts is on the host of the thumbnail.
-        return findVideoId(root, isVideoShaped(root) ? root : findSideThumbnail(root));
+        if (!isVideoShaped(root)) {
+            // The badge of a card with the thumbnail beside the texts is on the host of the thumbnail.
+            return findVideoId(root, findSideThumbnail(root));
+        }
+        String videoId = findVideoId(root, root);
+        // A row of a grid of Shorts is shaped like a full width card, and a text of a Short at the right
+        // of the row, such as a channel name in capital letters, can look like the duration of a video.
+        // The row is not the card of one of its Shorts, which have no duration, so it looks like a mix.
+        synchronized (shortsVideoIds) {
+            return videoId != null && shortsVideoIds.containsKey(videoId) ? PLAYLIST : videoId;
+        }
     }
 
     /**
@@ -1005,6 +1218,7 @@ public final class FeedVideoCardsPatch {
         }
 
         Map<String, Integer> scores = new HashMap<>();
+        awaitElementAnalyses();
         synchronized (textVideoIds) {
             for (String text : texts) {
                 String videoId = textVideoIds.get(text);
@@ -1071,6 +1285,7 @@ public final class FeedVideoCardsPatch {
             return null;
         }
         String text = described.getContentDescription().toString();
+        awaitElementAnalyses();
         synchronized (textVideoIds) {
             // A title can contain the delimiter too, so the longest start of the description
             // that is a text of a video is used. The element of a Short has the whole description.
@@ -1595,7 +1810,7 @@ public final class FeedVideoCardsPatch {
         }
         final Rect frame = new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight());
         if (duration == null) {
-            // The duration is not found, so where it is is estimated, and the badge does not overlap it.
+            // The duration is not found, so its position is estimated, and the badge does not overlap it.
             duration = FeedViewCountPatch.estimateDurationBadge(thumbnail, frame, null);
         }
         FeedEngagementCountsPatch.onCardLaidOut(thumbnail, compactVideoIds.get(thumbnail),

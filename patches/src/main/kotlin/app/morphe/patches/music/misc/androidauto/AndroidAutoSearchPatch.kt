@@ -14,7 +14,6 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
-import app.morphe.patches.music.interaction.jam.addReferenceGetter
 import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.Opcode
@@ -127,7 +126,7 @@ internal fun patchSearch() {
             return-object p0
         """
     )
-    hookPhoneClientOnServiceCreate(
+    hookMusicBrowserServiceDependency(
         clientClass.type, PHONE_SEARCH_CLIENT,
         "$SEARCH_PATCH_CLASS->setPhoneSearchClient($PHONE_SEARCH_CLIENT)V",
     )
@@ -143,7 +142,7 @@ private fun hookSearchRequests() {
     val deliverSearchResultsMethod = SearchResultDeliveryFingerprint.method
     val searchRequestClass = mutableClassDefBy(deliverSearchResultsMethod.definingClass)
     val queryField = searchRequestClass.instanceFields.single { it.type == "Ljava/lang/String;" }
-    searchRequestClass.addReferenceGetter("patch_query", queryField)
+    searchRequestClass.addPatchInterface(SEARCH_REQUEST, "patch_query", queryField)
     searchRequestClass.addPatchInterface(
         SEARCH_REQUEST,
         "patch_deliverSearchResults",

@@ -1,6 +1,9 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ *
+ * https://github.com/MorpheApp/morphe-patches/pull/3905
+ * https://github.com/MorpheApp/morphe-patches/pull/4890
+ * https://github.com/MorpheApp/morphe-patches/pull/4909
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -15,6 +18,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -24,7 +28,10 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.misc.downloads.EXTENSION_FORMAT_STREAM_INTERFACE
+import app.morphe.patches.shared.misc.downloads.EXTENSION_STREAMING_DATA_INTERFACE
 import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
+import app.morphe.patches.shared.misc.downloads.hookDownloadQualities
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
@@ -49,6 +56,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -82,6 +90,7 @@ private val downloadsResourcePatch = patch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    SwitchPreference("morphe_download_force_4k", summary = true),
                     exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_menu", summary = true),
                     TextPreference(
@@ -262,7 +271,8 @@ val downloadsPatch = patch(
                         if-eqz p0, :keep_player_response
                         invoke-interface { p0 }, $playerResponseModelType->${playerResponseGetter.name}()$playerResponseType
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;)[B
+                        const/4 v1, 0x0
+                        invoke-static { v0, v1 }, $EXTENSION_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;Z)[B
                         move-result-object v0
                         if-eqz v0, :keep_player_response
 
@@ -322,6 +332,66 @@ val downloadsPatch = patch(
                 )
             }
         }
+
+        // region Download qualities.
+
+        // Offer up to 2160p on every screen, and label the qualities above 1080p.
+        hookDownloadQualities()
+
+        // The media quality setting offers only 360p and 720p.
+        MusicDownloadQualitySettingFingerprint.let {
+            val sizeMatch = it.instructionMatches.last()
+            val listRegister = sizeMatch.instruction.registersUsed.first()
+
+            // The setting offers 720p only if a flag is on, and both lists continue at the label.
+            it.method.addInstructionsAtControlFlowLabel(
+                sizeMatch.index,
+                """
+                    invoke-static/range { v$listRegister .. v$listRegister }, $EXTENSION_CLASS->getDownloadQualityFormatTypes(Ljava/util/List;)Ljava/util/List;
+                    move-result-object v$listRegister
+                """
+            )
+        }
+
+        // Log the download qualities that are not available, and optionally save 1440p and 2160p
+        // even if the device or server checks of the app rule out their streams.
+        // The audio stream of a download is matched to the container of the video stream,
+        // so the download can be exported as one file.
+        MusicDownloadStreamPairFingerprint.let {
+            // The method has no free registers that its exception handler does not read.
+            // Its parameters stay in the p registers.
+            it.method.cloneParameters().apply {
+                val pairIndex = it.instructionMatches.last().index + numberOfParameterRegistersLogical
+                val pairInstruction = getInstruction(pairIndex)
+                val videoStreamRegister = pairInstruction.registersUsed[1]
+                val audioStreamRegister = pairInstruction.registersUsed[2]
+                val streamType = pairInstruction.getReference<MethodReference>()!!.parameterTypes.first()
+
+                // p1 is the streaming data, p3 the height of the quality and p6 if the download
+                // is audio only. p4, p5 and p7 are the max height, the audio quality and
+                // the audio track, which are not needed.
+                addInstructions(
+                    pairIndex,
+                    """
+                        move/from16 p7, p6
+                        move-object/from16 p6, p1
+                        move/from16 p5, p3
+                        move-object/from16 p4, v$videoStreamRegister
+                        invoke-static/range { p4 .. p7 }, $EXTENSION_CLASS->selectDownloadVideoStream(${EXTENSION_FORMAT_STREAM_INTERFACE}I${EXTENSION_STREAMING_DATA_INTERFACE}Z)${EXTENSION_FORMAT_STREAM_INTERFACE}
+                        move-result-object v$videoStreamRegister
+                        check-cast v$videoStreamRegister, $streamType
+
+                        move-object/from16 p4, v$audioStreamRegister
+                        move-object/from16 p5, v$videoStreamRegister
+                        invoke-static/range { p4 .. p6 }, $EXTENSION_CLASS->selectDownloadAudioStream(${EXTENSION_FORMAT_STREAM_INTERFACE}${EXTENSION_FORMAT_STREAM_INTERFACE}${EXTENSION_STREAMING_DATA_INTERFACE})${EXTENSION_FORMAT_STREAM_INTERFACE}
+                        move-result-object v$audioStreamRegister
+                        check-cast v$audioStreamRegister, $streamType
+                    """
+                )
+            }
+        }
+
+        // endregion
 
         // region Export to device.
 

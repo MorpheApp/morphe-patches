@@ -10,8 +10,6 @@
 
 package app.morphe.extension.shared.spoof.requests;
 
-import android.text.TextUtils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,10 +18,10 @@ import java.net.HttpURLConnection;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.MwebSignIn;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
@@ -62,10 +60,10 @@ public final class PlayerRoutes {
     private static final String YT_API_URL = "https://youtubei.googleapis.com/youtubei/v1/";
 
     /**
-     * InnerTube of the website. The API host ignores the cookies of a web sign in,
-     * so a signed in web client uses the website host, as the website does.
+     * Path of InnerTube on the website. The API host ignores the cookies of a web sign in,
+     * so a signed in web client uses the host of its website, as the website does.
      */
-    private static final String WEB_API_URL = MwebSignIn.ORIGIN + "/youtubei/v1/";
+    private static final String WEB_API_PATH = "/youtubei/v1/";
 
     private PlayerRoutes() {
     }
@@ -87,7 +85,7 @@ public final class PlayerRoutes {
             }
             client.put("clientName", clientType.clientName);
             client.put("clientVersion", clientType.clientVersion);
-            if (!TextUtils.isEmpty(visitorId)) {
+            if (Utils.isNotEmpty(visitorId)) {
                 client.put("visitorData", visitorId);
             }
             if (web) {
@@ -98,12 +96,12 @@ public final class PlayerRoutes {
             }
 
             String androidSdkVersion = clientType.androidSdkVersion;
-            if (!TextUtils.isEmpty(androidSdkVersion)) {
+            if (Utils.isNotEmpty(androidSdkVersion)) {
                 client.put("androidSdkVersion", androidSdkVersion);
             }
 
             String platform = web ? null : clientType.clientPlatform;
-            if (!TextUtils.isEmpty(platform)) {
+            if (Utils.isNotEmpty(platform)) {
                 client.put("platform", platform);
             }
 
@@ -139,7 +137,7 @@ public final class PlayerRoutes {
                 contentPlaybackContext.put(
                         "referer",
                         web
-                                ? MwebSignIn.ORIGIN + "/watch?v=" + videoId
+                                ? clientType.getWebsiteOrigin() + "/watch?v=" + videoId
                                 : String.format("https://www.youtube.com/tv#/watch?v=%s", videoId)
                 );
                 contentPlaybackContext.put("html5Preference", "HTML5_PREF_WANTS");
@@ -161,7 +159,7 @@ public final class PlayerRoutes {
 
             if (clientType.requirePoToken) {
                 String poToken = PoTokenManager.getPlayerPoToken(clientType, videoId);
-                if (!TextUtils.isEmpty(poToken)) {
+                if (Utils.isNotEmpty(poToken)) {
                     JSONObject serviceIntegrityDimensions = new JSONObject();
                     serviceIntegrityDimensions.put("poToken", poToken);
                     innerTubeBody.put("serviceIntegrityDimensions", serviceIntegrityDimensions);
@@ -197,7 +195,7 @@ public final class PlayerRoutes {
                     : GET_PLAYER_STREAMING_DATA;
         }
         HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(
-                webSignIn ? WEB_API_URL : YT_API_URL, route);
+                webSignIn ? clientType.getWebsiteOrigin() + WEB_API_PATH : YT_API_URL, route);
 
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("User-Agent", clientType.getUserAgent());

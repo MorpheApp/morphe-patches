@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Tetapan</string>
   <string name="morphe_settings_confirm_user_dialog_title">Adakah anda pasti ingin meneruskan?</string>
   <string name="morphe_settings_save">Simpan</string>
   <string name="morphe_settings_reset">Set semula</string>
@@ -74,18 +73,34 @@ Untuk menterjemah bahasa baharu atau menambah baik terjemahan sedia ada, layari 
   <string name="morphe_settings_export_file">Export ke fail</string>
   <string name="morphe_settings_export_file_success">Tetapan telah dieksport dengan jayanya</string>
   <string name="morphe_settings_export_file_failed">Gagal untuk membawa keluar tetapan</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Anda menggunakan versi Morphe Patches terkini &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Anda menggunakan Morphe Patches versi &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Kemas kini tersedia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Untuk mengemas kini tampalan anda, gunakan Morphe untuk menampal semula aplikasi ini</string>
-  <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Versi ini adalah pra-rilis dan anda mungkin mengalami masalah yang tidak dijangka</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Tampalan</string>
+  <string name="morphe_settings_about_version">Versi</string>
+  <string name="morphe_settings_about_close">Tutup</string>
+  <string name="morphe_settings_about_prerelease">Pra-siaran</string>
+  <string name="morphe_settings_about_update_available">Kemas kini tersedia: %s</string>
+  <string name="morphe_settings_about_update_hint">Untuk mengemas kini tampalan anda, gunakan Morphe untuk menampal semula aplikasi ini</string>
   <string name="morphe_settings_about_links_header">Pautan rasmi</string>
   <string name="morphe_settings_about_links_website">Laman web</string>
   <string name="morphe_settings_about_links_donate">Derma</string>
   <string name="morphe_settings_about_links_translations">Terjemahan</string>
-  <string name="morphe_settings_about_links_credits">Kredit</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Kemas kini</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Kemas kini tersedia</string>
+  <string name="morphe_settings_about_contributors">Penyumbang</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Sepanjang masa</string>
+  <string name="morphe_settings_about_contributors_6_months">6 bulan</string>
+  <string name="morphe_settings_about_contributors_3_months">3 bulan</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tempoh masa</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s pengguna</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Penyokong</string>
+  <string name="morphe_settings_about_supporters_summary">Penyokong di Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Jadi penyokong</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Dan %s lagi</string>
+  <string name="morphe_settings_about_people_unavailable">Tidak dapat memuatkan senarai</string>
   <string name="morphe_settings_about_contributors_current">Pembangunan semasa</string>
   <string name="morphe_settings_about_contributors_prior">Pembangunan terdahulu</string>
   <string name="morphe_settings_about_links_morphe">Pembangunan aktif</string>
@@ -213,6 +228,9 @@ Jika pengoptimuman bateri tidak diubah, anda mungkin mengalami:
 • Aplikasi mungkin tertutup secara rawak
 • Notifikasi mungkin tidak berfungsi
 • Main balik latar belakang mungkin tidak berfungsi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buka helaian kongsi sistem</string>
+  <string name="morphe_open_system_share_sheet_summary">Membuka helaian kongsi sistem dan bukannya helaian dalam aplikasi apabila berkongsi kandungan</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Pengendalian pautan aplikasi</string>
   <string name="morphe_link_handling_summary">Konfigurasikan pautan untuk dibuka dalam aplikasi ini</string>

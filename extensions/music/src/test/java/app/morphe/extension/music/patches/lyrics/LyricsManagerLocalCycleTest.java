@@ -60,4 +60,32 @@ public class LyricsManagerLocalCycleTest {
         assertFalse(LyricsManager.shouldWrapToLocal(
                 lyrics("LRCLIB", "provider line"), Lyrics.NOT_FOUND));
     }
+
+    @Test
+    public void refreshesWhenTheLocalLyricChangedOnDisk() {
+        assertTrue(LyricsManager.shouldRefreshLocal(
+                lyrics(LocalLyricsFetcher.PROVIDER_NAME, "old local line"),
+                lyrics(LocalLyricsFetcher.PROVIDER_NAME, "new local line")));
+    }
+
+    @Test
+    public void doesNotRefreshWhenTheLocalLyricIsUnchanged() {
+        Lyrics local = lyrics(LocalLyricsFetcher.PROVIDER_NAME, "local line");
+        assertFalse(LyricsManager.shouldRefreshLocal(local, local));
+    }
+
+    @Test
+    public void doesNotReplaceAProviderLyricOnRefresh() {
+        assertFalse(LyricsManager.shouldRefreshLocal(
+                lyrics("LRCLIB", "provider line"),
+                lyrics(LocalLyricsFetcher.PROVIDER_NAME, "new local line")));
+    }
+
+    @Test
+    public void doesNotRefreshWithoutAFreshLocalLyric() {
+        Lyrics local = lyrics(LocalLyricsFetcher.PROVIDER_NAME, "local line");
+        assertFalse(LyricsManager.shouldRefreshLocal(local, null));
+        assertFalse(LyricsManager.shouldRefreshLocal(local, Lyrics.NOT_FOUND));
+        assertFalse(LyricsManager.shouldRefreshLocal(null, local));
+    }
 }

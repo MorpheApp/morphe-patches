@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Vlastní</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Přehrávat zvukové stopy alba</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Přehrávat pouze zvukovou verzi skladeb alba místo hudebního videa. Vyžaduje \'Spoofování video streamů\'</string>
+  <string name="morphe_music_play_album_songs_summary">Přehrávat skladby z alba namísto jejich hudebních videí</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Povolit přepínání audia/videa</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Pokusit se přepínat mezi verzí zvukové stopy a oficiálním hudebním videem</string>
@@ -131,6 +130,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Použít externí stahovač pro nabídku Stahování</string>
   <string name="morphe_external_downloader_menu_summary">Možnost Stahování v nabídkách místo toho otevře váš externí stahovač.</string>
+  <string name="morphe_download_force_4k_title">Vynutit dostupnost stahování ve 4K</string>
+  <string name="morphe_download_force_4k_summary">Ukládá stahované soubory v rozlišení 1440p a 4K, i když YouTube Music rozhodne, že je toto zařízení není schopno přehrát</string>
   <string name="morphe_export_download_folder_title">Export stahování</string>
   <string name="morphe_export_download_folder_summary">"Exportujte v aplikaci uložené skladby a videa do úložiště vašeho zařízení pomocí vysuívacího menu stažení v aplikaci. Klepnutím změníte export
 
@@ -142,6 +143,8 @@ Složka pro export: %s"</string>
   <string name="morphe_export_download_failed">Nepodařilo se exportovat stahování</string>
   <string name="morphe_export_download_all_flyout_title">Exportovat vše do zařízení</string>
   <string name="morphe_export_download_all_started">Exportování všech stažených souborů</string>
+  <string name="morphe_export_download_all_title">Všechny stažené soubory</string>
+  <string name="morphe_export_download_playlist_started">Exportování stažených souborů</string>
   <string name="morphe_export_download_all_running">Stažené soubory se již exportují</string>
   <string name="morphe_export_download_all_saved">Exportováno %1$s z %2$s stažených souborů do %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -166,15 +169,15 @@ Složka pro export: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Skrýt reklamy ve videu</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skrýt přepínač zvuku/videa</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Skrýt tlačítko Stáhnout</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Skryje tlačítko Stáhnout v podcastu</string>
   <string name="morphe_music_hide_explore_shelf_title">Skrýt sekci prozkoumat</string>
   <string name="morphe_music_hide_filter_bar_title">Skrýt panel filtrů</string>
   <string name="morphe_music_hide_grid_shelves_title">Skrýt mřížkové sekce</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Skrýt horizontální sekce</string>
+  <string name="morphe_music_hide_new_button_title">Skrýt tlačítko Nový</string>
+  <string name="morphe_music_hide_new_button_summary">Skryje tlačítko Nový na kartě Knihovna</string>
   <string name="morphe_music_hide_list_shelves_title">Skrýt sekce seznamu</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textem</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skrýt tlačítko Sdílet</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skrýt tlačítko Přeložit</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skrýt sekci „Novinky“</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skrýt sekce playlistů</string>
@@ -197,6 +200,8 @@ Složka pro export: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Prolínání</string>
   <string name="morphe_music_crossfade_screen_summary">Hladce prolínejte skladby do sebe</string>
   <string name="morphe_music_crossfade_enabled_title">Povolit prolínání</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Chcete-li použít plavné přechody, změňte v položce \"Spoof video streams\" \"Default client\" na \"TV Simply\" nebo \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Křivka prolínání</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Rovnoměrný výkon</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Jemné přidržení</string>
@@ -230,7 +235,9 @@ Složka pro export: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Přechod mezi skladbami pozastaven pro tuto relaci</string>
   <string name="morphe_music_crossfade_resumed_toast">Přechod mezi skladbami obnoven</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa není dostupný při zapnutém přechodu mezi skladbami</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade je vypnutý při přehrávání SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Plavné přechody nefungují s \"visionOS\". Změňte v položce \"Spoof video streams\" \"Default client\" na \"TV Simply\"</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Plavné přechody s tímto spoof klientem streamu nefungují</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade je vypnutý při castingu</string>
   <string name="morphe_music_crossfade_about_how_title">Jak to funguje</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade překrývá konec jedné skladby se začátkem další, a to podle vámi nastavené délky a křivky
@@ -247,9 +254,7 @@ Zamykací obrazovka nebo notifikace mohou během přechodu krátce zobrazit zast
 
 Pozastavení crossfade kvůli sledování hudebního videa může zanechat některá videa černá. Pozastavení crossfade před výběrem skladby tomu zabrání"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Nepodporováno</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting nebo zrcadlení zvuku (Chromecast, zrcadlení obrazovky nebo zvuku)
-
-Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Vysílání nebo zrcadlení zvuku (Chromecast, zrcadlení obrazovky nebo zvuku)</string>
   <string name="morphe_music_crossfade_about_credit_title">Autorství</string>
   <string name="morphe_music_crossfade_about_credit_summary">Funkce plynulého přecházení od VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -259,19 +264,46 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pozastavit při vypnutém zvuku</string>
   <string name="morphe_music_pause_when_muted_summary">Pozastaví přehrávání, když je systémový zvuk vypnutý, a obnoví jej po zvýšení hlasitosti</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Tlačítko Cast může streamovat i do zařízení Sonos a ostatních reproduktorů UPnP ve vaší Wi-Fi síti</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Připojte se k zařízení</string>
+  <string name="morphe_music_sonos_cast_searching">Hledání reproduktorů ve vaší Wi-Fi síti…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Vyberte reproduktor ve vaší Wi-Fi síti</string>
+  <string name="morphe_music_sonos_cast_casting_to">Přisílání do %s</string>
+  <string name="morphe_music_sonos_cast_connected">Připojeno</string>
+  <string name="morphe_music_sonos_cast_disconnect">Odpojit</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Reproduktory v Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktivní</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Zařízení Chromecast, Nest a Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nepodařilo se připojit k %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Rychlost přehrávání</string>
   <string name="morphe_music_playback_speed_summary">Rychlost použitá pro všechny skladby. Při 100 % se používá rychlost aplikace, jako je rychlost přehrávání podcastů.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Změnit výšku tónu s rychlostí</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Zobrazit nabídku videofektů</string>
+  <string name="morphe_music_video_effect_menu_summary">Přidá videofekt do nabídky přehrávače během přehrávání videa</string>
+  <string name="morphe_music_video_effect_next_video">Efekt se zobrazí od příštího videa</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Zakázat automatické titulky</string>
   <string name="morphe_music_disable_auto_captions_summary">Titulky se při spuštění videa neaktivují automaticky, včetně titulků, které jsou ve videu aktivovány ve výchozím nastavení</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Zakázat potlačení zvuku</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hlasitost se nesníží, když jiná aplikace přehráje krátký zvuk, například oznámení</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filtr oblíbenosti v frontě</string>
+  <string name="morphe_music_queue_like_filter_summary">Odebírá skladby s nízkým počtem like z mixů a rádia. Seznamy přání, alba a skladby, které přidáte do fronty, zůstanou nezměněny. Počty like jsou z Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum like</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Skladby s menším počtem like jsou z fronty odstraněny</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Vypnout přesměrování dislajků</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje přeskoku na další skladbu po stisknutí tlačítka „Nelíbí se“.</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Zakázat přejetí prstem pro změnu skladby</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Zabrání přeskočení na další nebo předchozí skladbu přejetím prstem doleva nebo doprava v přehrávači</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Zabrání přeskočení na další nebo předchozí skladbu přejetím prstem doleva nebo doprava v mini přehrávači</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Smyčka A-B</string>
   <string name="morphe_music_ab_loop_summary">Dlouhým stisknutím posuvníku nastavte začátek smyčky, dalším stisknutím konec smyčky a dalším smyčku zrušte</string>
@@ -322,15 +354,6 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_playlist_tags_rename">Přejmenovat</string>
   <string name="morphe_music_playlist_tags_delete">Smazat</string>
   <string name="morphe_music_playlist_tags_hidden">Skryto</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Skrýt tlačítko Odesílat</string>
-  <string name="morphe_music_hide_history_button_title">Skrýt tlačítko historie</string>
-  <string name="morphe_music_hide_notification_button_title">Skrýt tlačítko oznámení</string>
-  <string name="morphe_music_hide_search_button_title">Skrýt tlačítko vyhledávání</string>
-  <string name="morphe_music_hide_voice_search_button_title">Skrýt tlačítko hlasového vyhledávání</string>
-  <string name="morphe_music_hide_sound_search_button_title">Skrýt tlačítko zvukového vyhledávání</string>
-  <string name="morphe_music_hide_library_new_button_title">Skrýt tlačítko Nové</string>
-  <string name="morphe_music_hide_library_new_button_summary">Skryje tlačítko Nové na kartě Knihovna</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Akční tlačítka</string>
   <string name="morphe_music_action_buttons_screen_summary">Vyberte, která akční tlačítka se mají zobrazovat pod přehrávačem</string>
@@ -402,22 +425,20 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Vynutit orientaci na výšku</string>
   <string name="morphe_music_force_portrait_orientation_summary">Ponechává aplikaci v orientaci na výšku, když je zařízení otočeno</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Změnit barvu minipřehrávače</string>
+  <string name="morphe_music_change_miniplayer_color_title">Změnit barvu</string>
   <string name="morphe_music_change_miniplayer_color_summary">Barva minipřehrávače odpovídá přehrávači na celou obrazovku</string>
   <string name="morphe_music_change_navigation_bar_color_title">Změnit barvu navigačního panelu</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Přizpůsobí barvu navigačního panelu fullscreen přehrávači</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Zobrazit tlačítko Další v mini přehrávači</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Zobrazit předchozí tlačítko v mini přehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_title">Zobrazit tlačítko Další</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Zobrazit tlačítko Předchozí</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Povolit vynucený mini přehrávač</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Zabraňuje automatickému rozšíření přehrávače na celou obrazovku při spuštění nové skladby</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Povolit zavření minipřehrávače přejetím dolů</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Povolit zavření přejetím</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Umožňuje zavřít minipřehrávač přejetím prstu dolů</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigační panel</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Vyberte, která tlačítka se zobrazí v navigační liště ve spodní části.</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skrýt tlačítko Domů</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -428,6 +449,9 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Skrýt tlačítko Knihovna</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skrýt tlačítko Upgrade</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Zobrazit tlačítko Nastavení</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Nastavení tlačítka akcí</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Při zapnutí klepnutí otevře nastavení Morphe a dlouhé stisknutí nastavení YouTube Music, vypnutím chování prohodíte</string>
   <string name="morphe_music_hide_navigation_bar_title">Skrýt navigační panel</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skrýt štítky navigačních tlačítek</string>
   <string name="morphe_music_navigation_bar_glass_title">Povolit skleněný navigační panel</string>
@@ -450,7 +474,7 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Skryje zaoblené zvýraznění za vybraným tlačítkem skleněné navigační lišty</string>
   <string name="morphe_music_miniplayer_screen_title">Mini přehrávač</string>
   <string name="morphe_music_miniplayer_screen_summary">Změňte styl, tlačítka a gesta miniplayeru</string>
-  <string name="morphe_music_miniplayer_glass_title">Zapnout skleněný miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_title">Povolit skleněný efekt</string>
   <string name="morphe_music_miniplayer_glass_summary">Zobrazuje plovoucí miniplayer jako zaoblenou, poloprůhlednou skleněnou kartu</string>
   <string name="morphe_music_miniplayer_glass_style_title">Styl skleněného miniplayeru</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Upravte poloměr rohů, odsazení obrázku, jas okrajů a průhlednost skleněného miniplayeru s náhledem</string>
@@ -458,11 +482,8 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Odsazení obrázku</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Jas okrajů</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Krytí</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Rozostření skla</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Míra rozostření stránky za skleněným miniplayerem (Android 14 a novější). Při hodnotě 0 je stránka vidět ostře a ve verzích starších než Android 14 je stránka zakryta</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Světlé sklo</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Barví skleněný miniplayer bílou místo tmavé barvy pro lehčí a čistší vzhled skla</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Odstín obalového obrázku</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Barví skleněný miniplayer barvou obalového obrázku přehrávané skladby</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Točivý obrázek</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Změní obrázek ve skleněném miniplayeru na kulatý a otáčí jím jako deskou během přehrávání skladby</string>
@@ -473,6 +494,15 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Vzorky</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Prozkoumat</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Knihovna</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Skrýt tlačítko Aktivita</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Skrýt tlačítko „Vyptat se hudby“</string>
+  <string name="morphe_music_hide_cast_button_title">Skrýt tlačítko Odesílat</string>
+  <string name="morphe_music_hide_history_button_title">Skrýt tlačítko historie</string>
+  <string name="morphe_music_hide_search_button_title">Skrýt tlačítko vyhledávání</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skrýt tlačítko „Hledat hlasem“</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skrýt tlačítko \"Hledání zvukem\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Není přihlášen. Klepnutím nakonfigurujete</string>
   <string name="morphe_music_scrobbling_log_out">Odhlásit se</string>
@@ -576,6 +606,9 @@ Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se u
   <string name="morphe_music_soundproof_about_summary">"Data o umělcích pocházejí ze SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) a stahují se jednou denně. Přeskakování neodesílá nic o tom, co hrajete. Otevření panelu SoundProof odešle jméno aktuálního umělce na server SoundProof, aby bylo možné zobrazit aktuální hlasy a hlasovat. Server rozlišuje hlasující podle IP adresy, takže váš hlas se na jiné síti může zobrazit odlišně.
 
 Databáze je licencována podle licence ODC Open Database License (ODbL). Záznamy z Soul Over AI od xoundbyte jsou licencovány podle CC BY 4.0. Není spojeno se SoundProof ani se Soul Over AI a není jimi podporováno."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Animovaný obal Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">V přehrávači zobrazí animovaný obal alba z Apple Music, pokud jej album má. Název, interpret a album každé skladby jsou odeslány do Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Pro tento soubor zařízení nejsou k dispozici texty písní.</string>
   <string name="morphe_music_lyrics_enabled_title">Používat texty od třetí strany</string>
@@ -628,6 +661,25 @@ První sloupec je slovo, druhý jeho čtení; další sloupce a řádky bez tabu
   <string name="morphe_music_lyrics_clear_cache_title">Smazat uložené texty</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Smazat %s MB textů písní uložených v tomto zařízení</string>
   <string name="morphe_music_lyrics_clear_cache_done">Vyčištěno %s MB</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Výpočet velikosti mezipaměti…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Mezipaměť textů písní</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Vymazat mezipaměť textů písní</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d písní)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Cache překladů</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Vymazat cache překladů</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d překladů)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Cache transliterace</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Vymazat cache transliterace</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d přepisů)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Celkové využití cache</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Vymazat celou cache</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d položek)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Vymazat</string>
+  <string name="morphe_music_lyrics_cache_close_action">Zavřít</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Chcete smazat %1$s MB (%2$d skladeb) textů písní uložených v mezipaměti na tomto zařízení?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Chcete smazat %1$s MB (%2$d překladů) překladů uložených v mezipaměti na tomto zařízení?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Chcete smazat %1$s MB (%2$d transliterací) transliterací uložených v mezipaměti na tomto zařízení?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Chcete smazat %1$s MB (%2$d položek) všech dat textů písní uložených v mezipaměti na tomto zařízení?</string>
   <string name="morphe_music_token_dialog_get_token">Získat token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music token uživatele médií</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Vložte cookie media-user-token z music.apple.com
@@ -683,8 +735,11 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_tap_to_seek_summary">Klepnutím na řádek skočte na danou chvíli ve skladbě, dlouhým stiskem zkopírujte slovo pod prstem nebo celý řádek, pokud nejste na slově. Vypnutím odeberete obě gesta</string>
   <string name="morphe_music_lyrics_show_section_title">Zobrazit štítky sekcí</string>
   <string name="morphe_music_lyrics_show_section_summary">Označte každou novou sekci textu písně malým štítkem, jako je sloka nebo refrén</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Zobrazit tlačítko Kopírovat</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Klepnutím zkopírujete původní text písně jako prostý text; dlouhým stisknutím uložíte zdrojový soubor s textem a konvertovaný soubor TTML do složky Stahování</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Zobrazit tlačítko Kopírovat / Sdílet</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Zobrazit tlačítko Kopírovat nebo Sdílet na nástrojovém panelu panelu textů</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Režim tlačítka Kopírovat</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Režim kopírování (klepnutím zkopírujte, dlouhým stisknutím uložte)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Režim sdílení (klepnutím vyberte 1–5 řádků, dlouhým stisknutím zkopírujte nebo uložte)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Zobrazit tlačítko Přeložit</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Klepnutím přepnete překlad; dlouhým stiskem pouze překlad. Používá povolené poskytovatele překladu v uvedeném pořadí</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Zobrazit tlačítko romanizace nebo transkripce</string>
@@ -698,7 +753,48 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Čtení připraveno (%s položek)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Stahování se nezdařilo – vypněte a znovu zapněte tuto funkci pro opakovaný pokus</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline slovník</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japonský (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japonsky sprach</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — rychlý morfologický analyzátor &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — úplný slovník japonských slov</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Priorita &amp; pořadí záloh</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Priorita Kuromoji (záloha SudachiDict)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">Priorita SudachiDict (záloha Kuromoji)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Vlastní písmo textů písní</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Výchozí systémové písmo (klepnutím nahrajte soubor písma .ttf nebo .otf)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Aktivní písmo: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Nahrajte soubor písma .ttf nebo .otf (např. SF Pro Bold, Inter Bold nebo Inter ExtraBold) z úložiště zařízení, aby se používal v zobrazení textů písní.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Nahrát písmo</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Obnovit výchozí nastavení</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Vlastní písmo textů písní aplikováno: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Vráceno k výchozímu písmu textů písní</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Neplatný nebo nepodporovaný soubor písma (vyžadován .ttf nebo .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Sdílet text písně</string>
+  <string name="morphe_music_lyrics_share_button">Sdílet</string>
+  <string name="morphe_music_lyrics_copy">Kopírovat</string>
+  <string name="morphe_music_lyrics_share_options_title">Akce s textem písně</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Kopírovat text písně jako prostý text</string>
+  <string name="morphe_music_lyrics_save_file_option">Uložit text písně &amp; TTML do složky Stažené soubory</string>
+  <string name="morphe_music_lyrics_share_cancel">Zrušit</string>
+  <string name="morphe_music_lyrics_share_select_hint">Klepněte na 1–5 řádků pro sdílení</string>
+  <string name="morphe_music_lyrics_share_max_lines">Lze vybrat maximálně 5 řádků</string>
+  <string name="morphe_music_lyrics_share_failed">Nepodařilo se vytvořit kartu pro sdílení textu písně</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Rozostření</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Obal</string>
+  <string name="morphe_music_lyrics_share_bg_color">Barva</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Fotografie</string>
+  <string name="morphe_music_lyrics_share_branding_logo">Logo YT Music</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Přeložit</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Doprovodný vokál</string>
+  <string name="morphe_music_lyrics_share_custom_color">Vlastní barva</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Nepodařilo se načíst vybraný obrázek</string>
+  <string name="morphe_music_lyrics_share_card_cta">Sdílet kartu</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Kopírovat text</string>
+  <string name="morphe_music_lyrics_share_back">Zpět k výběru textu</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Načítání fotografie...</string>
+  <string name="morphe_music_lyrics_share_preparing">Vytváření karty...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Barevný vzorek %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Neznámý skladba</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Čínské a kantonské znaky (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Čínská slova (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Řecká, slovanská cyrilice (včetně ruštiny, ukrajinštiny, bulharštiny, srbštiny, běloruštiny, makedonštiny), gruzínština, arménština, hebrejština, arabština, amharština a syrská transkripce (CLDR, ~0,5 MB)</string>
@@ -715,8 +811,14 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Napsal: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Zvýrazňovat synchronizovaná slova nebo slabiky</string>
   <string name="morphe_music_lyrics_word_sync_summary">Upřednostnit texty slovo po slově, pokud jsou k dispozici. Když texty obsahují načasování slov, zvýrazní každé slovo nebo slabiku v rytmu hudby.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Plynulá animace synchronizovaných slov</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Zvýrazňuje každé slovo jemným přejem, zářením a mírným zdvižením v okamžiku, kdy je zpíváno. Vypněte pro úsporu baterie nebo pro ostré vyplnění na pomalejších zařízeních</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Použít pružné posouvání</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Posouvá text písně pomocí pružné fyziky a posouvá každý řádek mírně po tom předchozím. Vypněte pro úsporu baterie na pomalejších zařízeních</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Klidné posouvání</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Zpomaluje animaci posouvání textu písně a ponechává neaktivní řádky v plné velikosti</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Rozostření neaktivních řádků</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Zjemně rozostří každý řádek, který se právě nezpívá, přičemž čím je řádek dále, tím je rozostření silnější (Android 12 a novější). Ve verzích starších než Android 12 zůstávají neaktivní řádky ostré</string>
   <string name="morphe_music_lyrics_gap_dots_title">Zobrazit tečky instrumentálního vstupu도</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Zobrazuje tři tečky mezi řádky během dlouhého instrumentálního vstupu, které se postupně zaplní, jak vstup končí</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Více ztmavit vzdálené řádky</string>
@@ -839,6 +941,8 @@ Texty pocházejí ze služeb třetích stran, které nejsou spojeny, nesponzorov
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Přesune překlad nad text písně; výslovnost a romanizace zůstanou pod ním</string>
   <string name="morphe_music_lyrics_force_center_title">Vždy centrovat texty</string>
   <string name="morphe_music_lyrics_force_center_summary">ON umisťuje každý řádek doprostřed a ignoruje zdrojové zarovnání, včetně stran dueta; OFF ponechává zarovnání, které texty vyžadují</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Zarovnání duetu na opačné strany</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">U duetů umístí druhého zpěváka na opačnou stranu. Vypněte pro ponechání obou zpěváků na stejné straně</string>
   <string name="morphe_music_lyrics_providers_keep_one">Alespoň jeden poskytovatel musí být zapnutý</string>
   <string name="morphe_music_lyrics_translation_provider_title">Překlad</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizace nebo transkripce</string>

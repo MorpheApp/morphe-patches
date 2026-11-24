@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Innstillinger</string>
   <string name="morphe_settings_confirm_user_dialog_title">Er du sikker på at du vil fortsette?</string>
   <string name="morphe_settings_save">Lagre</string>
   <string name="morphe_settings_reset">Tilbakestill</string>
@@ -74,18 +73,34 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <string name="morphe_settings_export_file">Eksporter til fil</string>
   <string name="morphe_settings_export_file_success">Innstillinger eksportert vellykket</string>
   <string name="morphe_settings_export_file_failed">Eksportering av innstillinger mislyktes</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Du bruker den nyeste Morphe Patches-versjonen &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Du bruker Morphe Patches-versjon &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Oppdatering tilgjengelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For å oppdatere patchene, bruk Morphe til å patche denne appen på nytt</string>
-  <string name="morphe_settings_about_links_dev_header">Merk</string>
-  <string name="morphe_settings_about_links_dev_body">Denne versjonen er en forhåndsutgivelse, og du kan oppleve uventede problemer</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patcher</string>
+  <string name="morphe_settings_about_version">Versjon</string>
+  <string name="morphe_settings_about_close">Lukk</string>
+  <string name="morphe_settings_about_prerelease">Forhåndsversjon</string>
+  <string name="morphe_settings_about_update_available">Oppdatering tilgjengelig: %s</string>
+  <string name="morphe_settings_about_update_hint">For å oppdatere patchene dine, bruk Morphe til å patche denne appen på nytt</string>
   <string name="morphe_settings_about_links_header">Offisielle lenker</string>
   <string name="morphe_settings_about_links_website">Nettsted</string>
   <string name="morphe_settings_about_links_donate">Støtt</string>
   <string name="morphe_settings_about_links_translations">Oversettelser</string>
-  <string name="morphe_settings_about_links_credits">Kreditter</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Oppdatert</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Oppdatering tilgjengelig</string>
+  <string name="morphe_settings_about_contributors">Bidragsytere</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Hele tiden</string>
+  <string name="morphe_settings_about_contributors_6_months">6 måneder</string>
+  <string name="morphe_settings_about_contributors_3_months">3 måneder</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tidsperiode</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s brukere</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Støttespillere</string>
+  <string name="morphe_settings_about_supporters_summary">Bidragsytere på Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Bli en støttespiller</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Og %s flere</string>
+  <string name="morphe_settings_about_people_unavailable">Kunne ikke laste listen</string>
   <string name="morphe_settings_about_contributors_current">Nåværende utvikling</string>
   <string name="morphe_settings_about_contributors_prior">Tidligere utvikling</string>
   <string name="morphe_settings_about_links_morphe">Aktiv utvikling</string>
@@ -213,6 +228,9 @@ Hvis batterioptimaliseringer ikke endres, kan du oppleve:
 • Appen kan lukkes tilfeldig
 • Varsler fungerer kanskje ikke
 • Bakgrunnsavspilling fungerer kanskje ikke"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Åpne systemets delingsmeny</string>
+  <string name="morphe_open_system_share_sheet_summary">Åpner systemets delingsmeny i stedet for den i appen når innhold deles</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Appkoblingshåndtering</string>
   <string name="morphe_link_handling_summary">Konfigurer lenker for å åpnes i denne appen</string>

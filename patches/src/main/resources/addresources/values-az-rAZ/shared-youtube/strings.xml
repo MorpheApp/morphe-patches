@@ -78,6 +78,7 @@ Paket adının düzgün olduğunu və tətbiqin quraşdırıldığını yoxla"</
   <string name="morphe_export_download_folder_missing">%s ixrac qovluğu tapılmadı</string>
   <string name="morphe_export_download_flyout_title">Cihaza köçür</string>
   <string name="morphe_export_download_canceled">İxrac ləğv edildi</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Fərdi</string>
   <string name="morphe_custom_branding_icon_title">Tətbiq simvolu</string>
@@ -139,14 +140,16 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS İstifadə Et</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Deobfuscation üçün yt-dlp-ejs (WebView) əvəzinə QuackJS istifadə et</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR girişi</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR ayrıca giriş tələb edir. Davam etmək üçün buraya toxun</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hazırda Android VR-a daxil olunub</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' girişi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ayrıca giriş tələb edir. Davam etmək üçün buraya toxun</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hazırda \'Android VR\'-a daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Android VR-a dəyişdir</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-a Giriş Et</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-a daxil olmaq bəzi istifadəçilər üçün oynatma problemlərini düzəldə bilər
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni \'Android VR\'-a dəyişdir</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'-a Giriş Et</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'-a daxil olmaq bəzi istifadəçilər üçün oynatma problemlərini düzəldə bilər
 
 Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıxış et</string>
@@ -167,35 +170,36 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 • Morphe tənzimləmələriniz Android VR təsdiqlənməsini idxal/ixrac etməyəcək
 • Bu tətbiq 6 ay ərzində istifadə olunmazsa, Google bu təsdiqlənməni siləcək
 • Google parolunuzu dəyişdirsəniz və ya bu cihazı Google tənzimləmələrinizdən çıxarsanız, təkrar daxil olmalı olacaqsınız"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil Web Girişi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web girişi</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Könüllü: Hesabınızla videoları oynatmaq üçün YouTube veb saytına daxil olun. Davam etmək üçün bura toxun</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hazırda Mobil Web\'ə daxil olunub</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hazırda YouTube veb saytına daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Mobil Web-ə dəyişdir</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobil Web\'ə Daxil Ol</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"​Mobile Web videoları hesabdan çıxmış və ya YouTube veb saytına daxil olmuş vəziyyətdə oynadır
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Web qəbulediciyə dəyiş</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube veb saytına daxil ol</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"​Web qəbuledicilər videoları hesabdan çıxmış və ya YouTube veb saytına daxil olmuş vəziyyətdə oynadır
 
 ​• Daxil olduqda hesab tələb edən videolar, məsələn, yaş məhdudiyyətli videolar oynadıla bilər
 • Google giriş səhifəsi bu tətbiqdə açılır
 • Giriş yalnız oynatdığınız videoları əldə etmək üçün istifadə olunur
 • Giriş yalnız bu cihazda saxlanılır
+• Hər bir web qəbuledicinin seçilmiş ilkin qəbuledici üçün öz girişi var
 
 ​Daxil olmaq üçün aşağıdakı davam edinə toxun"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Giriş saxlanıldı
 
-​• Morphe tənzimləmələriniz Mobile Web girişini idxal/ixrac etməyəcək
+​• Morphe tənzimləmələriniz YouTube veb-sayt girişini idxal/ixrac etməyəcək
 • Google girişi sonlandırarsa, siz təkrar daxil olana qədər videolar hesabdan çıxmış kimi oynadılır
 • Çıxmaq bu cihazı həm də YouTube veb saytından çıxarır"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web girişinin vaxtı bitdi, Mobile Web-ə təkrar daxil olmağa cəhd et</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web-dən Çıxıldı</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView mövcud deyil. Daxil olmaq üçün quraşdır və ya aktivləşdir</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web girişi sonlandı, təkrar daxil olmağa cəhd et</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube veb saytından çıxıldı</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' mövcud deyil. Daxil olmaq üçün quraşdır və ya aktivləşdir</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 keçici olaraq əlçatan deyil (API vaxtı bitdi)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 keçici olaraq əlçatan deyil (vəziyyət %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 keçici olaraq əlçatan deyil</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-a daxil olmaq olmur, veb sayt təsdiqlənməsi qəbul edilməyib</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq olmur: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR-dan Çıxıldı</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\'-dan Çıxıldı</string>
   <string name="morphe_oauth2_toast_invalid">Token-dəki etibarsız VR girişi, VR-a təkrar daxil olmağa cəhd et</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Bildiriş media nəzarətçiləri</string>
@@ -213,8 +217,15 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_seek_notification_media_length_invalid">Çevirmə müddəti 1 və %s saniyə arasında olmalıdır. Standartı istifadə edir</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video keyfiyyətinə üstünlük ver</string>
+  <string name="morphe_prioritize_video_quality_summary">Kodek səmərəliliyindən artıq mövcud ən yüksək video keyfiyyətinə üstünlük verir</string>
+  <string name="morphe_prioritize_video_quality_dialog">Bu seçim qapalıdırsa, daha köhnə videolar video keyfiyyəti seçimlərini göstərməyə bilər</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC səsin qapat</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC səsin qapat</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Sıxılmış dinamik diapazonlu əvəzinə orijinal səsi oynadır</string>
+  <string name="morphe_disable_loudness_normalization_title">Gurultunun normallaşdırılmasını qapat</string>
+  <string name="morphe_disable_loudness_normalization_summary">Standart səviyyəyə endirmək əvəzinə, yüksək səsi orijinal səs səviyyəsində səsləndirir</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
   <string name="morphe_force_original_audio_summary">Həmişə videonun dublyaj olunan versiyası əvəzinə əsil audio trekini oynadır</string>
@@ -223,6 +234,32 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_skip_silence_summary">Video səsindəki səssiz fasilələri avtomatik ötürür</string>
   <string name="morphe_skip_silence_minimum_pause_title">Ən qısa fasilə uzunluğu</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Yalnız ən azı bu uzunluqda olan fasilələr qısaldılır. Növbəti video başlayanda qüvvədə olur</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Video effekti</string>
+  <string name="morphe_video_effect_entry_none">Qapalı</string>
+  <string name="morphe_video_effects_custom_title">Video effektlərinə düzəliş et</string>
+  <string name="morphe_video_effects_custom_summary">Video effektlərini dəyişdir, adını dəyiş, sil və ya əlavə et. Effektlər shader kodudur, ona görə də Sİ söhbət botu yenilərini yaza bilər</string>
+  <string name="morphe_video_effects_custom_empty">Video effekti yoxdur. Effekt yaratmaq üçün Effekt əlavə etə toxunun.</string>
+  <string name="morphe_video_effects_custom_add">Effekt əlavə et</string>
+  <string name="morphe_video_effects_custom_restore">Standartları bərpa et</string>
+  <string name="morphe_video_effects_custom_add_title">Yeni effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Effektə düzəliş et</string>
+  <string name="morphe_video_effects_custom_name_hint">Ad</string>
+  <string name="morphe_video_effects_custom_name_empty">Effekt üçün ad daxil et</string>
+  <string name="morphe_video_effects_custom_name_exists">Bu adla effekt artıq var</string>
+  <string name="morphe_video_effects_custom_copy_code">Kodu köçür</string>
+  <string name="morphe_video_effects_custom_error_title">Effektdə xəta var</string>
+  <string name="morphe_video_effects_custom_error_message">"Videolar kod düzəldilənə qədər effektsiz göstərilir. Bu xətanı kodu yazan süni intellektə ver:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod funksiya və ya şərh daxilində bitir, ona görə də köçürülərkən və ya yapışdırılarkən böyük ehtimalla kəsilib. Yapışdırılan mətn %d simvolda kəsilə bilər.
+
+​Süni intellektdən daha qısa kod istə və ya kodu hissə-hissə yapışdır."</string>
+  <string name="morphe_video_effects_custom_copy_error">Xətanı köçür</string>
+  <string name="morphe_video_effects_custom_save_anyway">Yenə də saxla</string>
+  <string name="morphe_video_effects_custom_delete">Sil</string>
+  <string name="morphe_video_effects_custom_delete_title">Effekti silsin?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s silinəcək.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Şəbəkə proksisi</string>
   <string name="morphe_proxy_screen_summary">Dəstəklənən şəbəkə sorğularını proksi vasitəsilə yönləndir</string>
@@ -253,7 +290,7 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşma keçidlərini youtube.com-a dəyişdir</string>
   <string name="morphe_replace_music_with_youtube_summary">Paylaşılan linklərdə music.youtube.com- u youtube.com- a dəyişir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşma keçidlərini youtu.be-yə dəyişdir</string>
-  <string name="morphe_replace_links_with_shortener_summary">Videoları qısaldılan youtu.be URL formatın istifadə etməyə zorlayır</string>
+  <string name="morphe_replace_links_with_shortener_summary">Videoları qısaldılan \'youtu.be\' URL formatın istifadə etməyə zorlayır</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
@@ -265,15 +302,12 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_video_quality_default_mobile_title">Mobil şəbəkədə ilkin video keyfiyyəti</string>
   <string name="morphe_remember_video_quality_toast_mobile">İlkin mobil keyfiyyət %s olaraq dəyişdirildi</string>
   <string name="morphe_remember_video_quality_toast_wifi">İlkin Wi-Fi keyfiyyəti %s olaraq dəyişdirildi</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
-  <string name="morphe_open_system_share_sheet_summary">Məzmun paylaşanda tətbiqdaxili menyu əvəzinə sistem paylaşım cildini açır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho qeydəalma</string>
   <string name="morphe_debug_litho_entry_disabled">Qapalıdı</string>
   <string name="morphe_debug_litho_entry_path">Yol</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Yol və bufer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho qeydəalma tətbiqin tərtibat elementlərini, o cümlədən bəzi UI elementlərində ekrandakı mətni qeydə alır.
+  <string name="morphe_debug_litho_user_dialog_message">"Tətbiqin tərtibat elementlərini, o cümlədən bəzi UI elementlərində ekrandakı mətni qeydə alır.
 
 ​Bu, xüsusi filtrlər yaradarkən elementləri müəyyən etməyə kömək edə bilər.
 
@@ -342,6 +376,18 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_custom_font_file_summary">TTF və ya OTF şrift faylı seç</string>
   <string name="morphe_custom_font_file_invalid">Seçilmiş fayl TTF və ya OTF şrifti deyil</string>
   <string name="morphe_custom_font_failed_to_load">Fərdi şrift yüklənilə bilmədi və qapalıdır</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Şüşə menyular</string>
+  <string name="morphe_glass_menus_screen_summary">Arxasındakı bulanıq məzmun üzərində buzlu şüşə kimi menyular</string>
+  <string name="morphe_glass_menus_title">Şüşə menyuları aktivləşdir</string>
+  <string name="morphe_glass_menus_summary">Menyuları və alt vərəqləri arxasındakı məzmun bulanıqlaşdırılmış, buzlu şüşə kimi göstərir</string>
+  <string name="morphe_glass_menus_user_dialog_message">Batareya qənaəti aktiv olduqda və ya cihaz bulanıqlıq dəstəkləmədikdə menyular təxminən, qeyri-şəffaf göstərilir</string>
+  <string name="morphe_glass_menus_opacity_title">Şüşə tutqunluğu</string>
+  <string name="morphe_glass_menus_opacity_summary">Menyunun bulanıq məzmunu nə qədər örtməsi (0 şəffaf, 100 qeyri-şəffafdır)</string>
+  <string name="morphe_glass_menus_blur_title">Bulanıqlıq</string>
+  <string name="morphe_glass_menus_blur_summary">Menyunun arxasındakı məzmun nə qədər bulanıqlaşdırılır</string>
+  <string name="morphe_glass_menus_dim_title">Tutqunlaşdır</string>
+  <string name="morphe_glass_menus_dim_summary">Alt vərəqin ətrafındakı ekranın nə qədər qaraldılması</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Bəyənməmə müvəqqəti əlçatmazdır (API zaman aşımı)</string>
@@ -379,4 +425,8 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Heç bir qəbuledici sürət limiti olmadı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Qəbuledici sürət limiti %s dəfə baş verdi</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisaniyə</string>
+  <string name="morphe_navigation_bar_screen_title">Fəaliyyət zolağı</string>
+  <string name="morphe_navigation_bar_screen_summary">Aşağı fəaliyyət zolağında hansı düymələr görünür seç</string>
+  <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
+  <string name="morphe_toolbar_screen_summary">Alət cərgəsində hansı elementlər görünür seç</string>
 </resources>

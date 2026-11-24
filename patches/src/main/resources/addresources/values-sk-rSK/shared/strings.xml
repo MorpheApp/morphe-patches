@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">Nastavenia</string>
   <string name="morphe_settings_confirm_user_dialog_title">Naozaj chcete pokračovať?</string>
   <string name="morphe_settings_save">Uložiť</string>
   <string name="morphe_settings_reset">Reset</string>
@@ -74,18 +73,34 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
   <string name="morphe_settings_export_file">Exportovať do súboru</string>
   <string name="morphe_settings_export_file_success">Nastavenia boli úspešne exportované</string>
   <string name="morphe_settings_export_file_failed">Nepodarilo sa exportovať nastavenia</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Používate najnovšiu verziu Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Používate záplaty Morphe verzia &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupná aktualizácia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Na aktualizáciu záplat znovu zaplátajte aplikáciu cez Morphe</string>
-  <string name="morphe_settings_about_links_dev_header">Poznámka</string>
-  <string name="morphe_settings_about_links_dev_body">Táto verzia je predbežná a môžu sa vyskytnúť neočakávané problémy</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Záplaty</string>
+  <string name="morphe_settings_about_version">Verzia</string>
+  <string name="morphe_settings_about_close">Zatvoriť</string>
+  <string name="morphe_settings_about_prerelease">Predbežná verzia</string>
+  <string name="morphe_settings_about_update_available">Aktualizácia je k dispozícii: %s</string>
+  <string name="morphe_settings_about_update_hint">Ak chcete aktualizovať svoje záplaty, použite Morphe na opätovné zaplátovanie tejto aplikácie</string>
   <string name="morphe_settings_about_links_header">Oficiálne odkazy</string>
   <string name="morphe_settings_about_links_website">Webová stránka</string>
   <string name="morphe_settings_about_links_donate">Prispieť</string>
   <string name="morphe_settings_about_links_translations">Preklady</string>
-  <string name="morphe_settings_about_links_credits">Poďakovanie</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuálne</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Aktualizácia je k dispozícii</string>
+  <string name="morphe_settings_about_contributors">Prispievatelia</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Za celý čas</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mesiacov</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mesiace</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Obdobie</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s užívateľov</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Krajníci</string>
+  <string name="morphe_settings_about_supporters_summary">Podporovatelia na Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Staňte sa podporovateľom</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">A ešte %s ďalších</string>
+  <string name="morphe_settings_about_people_unavailable">Nepodarilo sa načítať zoznam</string>
   <string name="morphe_settings_about_contributors_current">Aktuálny vývoj</string>
   <string name="morphe_settings_about_contributors_prior">Predchádzajúci vývoj</string>
   <string name="morphe_settings_about_links_morphe">Aktívny vývoj</string>
@@ -213,6 +228,9 @@ Ak nezmeníte optimalizácie batérie môže sa stať, že:
 • aplikácia sa môže náhodne zatvoriť,
 • upozornenia nebudú fungovať,
 • prehrávanie na pozadí nemusí fungovať"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otvoriť systémové menu zdieľania</string>
+  <string name="morphe_open_system_share_sheet_summary">Pri zdieľaní obsahu otvára systémový zdieľací panel namiesto vstavaného</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Obsluha odkazov aplikáciou</string>
   <string name="morphe_link_handling_summary">Konfigurovať odkazy na otváranie v tejto aplikácii</string>

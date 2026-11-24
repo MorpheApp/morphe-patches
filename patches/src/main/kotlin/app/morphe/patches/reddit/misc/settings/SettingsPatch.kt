@@ -41,6 +41,7 @@ import app.morphe.patches.reddit.misc.version.is_2024_03_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_14_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.announcements.patchesUpdateNoticePatch
@@ -60,7 +61,7 @@ internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
 private const val EXTENSION_SETTING_ROW_INTERFACE =
-    "Lapp/morphe/extension/reddit/settings/RedditActivityHook\$ComposeSettingRow;"
+    $$"Lapp/morphe/extension/reddit/settings/RedditActivityHook$ComposeSettingRow;"
 
 internal const val SETTINGS_STYLE_EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/preference/RedditSettingsStyle;"
@@ -143,7 +144,10 @@ val settingsPatch = patch(
         GooglePlayUpdateCheckFingerprint.method.returnEarly(null)
 
         // Force Play Store Verification checks to pass.
-        PlayStoreVerificationFingerprint.method.returnEarly(false)
+        // Each Google Play library bundles its own copy of the check.
+        PlayStoreVerificationFingerprint.matchAll(1..2).forEach {
+            it.method.returnEarly(false)
+        }
 
         // Show toast informing that Google sign-in does not work.
         if (is_2026_14_0_or_greater) {
@@ -166,6 +170,31 @@ val settingsPatch = patch(
         if (is_2026_25_0_or_greater) {
             // The app settings use Compose since 2026.25.0. Use the same style for the Morphe settings.
             IsModernStyleFingerprint.method.returnEarly(true)
+
+            // Use the toggle colors of the app, so the Morphe toggles match the active theme.
+            // Before 2026.40.0, the Morphe settings use the colors of the built-in palette.
+            if (is_2026_40_0_or_greater) {
+                // Constructor of the toggle colors.
+                SettingsToggleFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
+                    0,
+                    """
+                        invoke-static/range { p1 .. p16 }, $SETTINGS_STYLE_EXTENSION_CLASS->setAppToggleColors(JJJJJJJJ)V
+                    """
+                )
+            }
+
+            SettingsToggleCheckMarkFingerprint.let {
+                val index = it.instructionMatches[1].index
+                it.method.apply {
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static/range { v$register .. v${register + 1} }, $SETTINGS_STYLE_EXTENSION_CLASS->setAppCheckMarkColor(J)V
+                        """
+                    )
+                }
+            }
         }
 
         if (is_2026_30_0_or_greater) {
@@ -207,7 +236,9 @@ val settingsPatch = patch(
             return@execute
         }
 
-        CheckIntegrityPlayStoreFingerprint.method.returnEarly(0)
+        CheckIntegrityPlayStoreFingerprint.matchAll(1..2).forEach {
+            it.method.returnEarly(0)
+        }
 
         /**
          * Replace settings label and icon
@@ -239,10 +270,14 @@ val settingsPatch = patch(
         }
 
         PreferenceDestinationLegacyFingerprint.let {
+            // Fragment.requireActivity()
             val getActivityMethod = Fingerprint(
                 accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                 returnType = RedditActivityFingerprint.originalClassDef.type,
-                parameters = listOf()
+                parameters = listOf(),
+                filters = listOf(
+                    string(" not attached to an activity.")
+                )
             ).method
 
             val startActivityMethod = Fingerprint(

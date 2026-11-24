@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Не вдалося знайти теку експорту %s</string>
   <string name="morphe_export_download_flyout_title">Експортувати на пристрій</string>
   <string name="morphe_export_download_canceled">Експорт скасовано</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Власна</string>
   <string name="morphe_custom_branding_icon_title">Іконка застосунку</string>
@@ -139,14 +140,16 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з входом</string>
   <string name="morphe_spoof_video_streams_client_type_title">Типовий клієнт</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Використовувати QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Використовувати QuackJS замість yt-dlp-ejs (WebView) для деобфускації</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR з входом</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR потребує окремого входу. Натисніть тут, щоб продовжити</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі ви ввійшли в Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Вхід у \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" потребує окремого входу. Натисніть тут, щоб продовжити</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі ви ввійшли в \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Увійти в Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вхід в Android VR може виправити проблеми з відтворенням для деяких користувачів
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Вхід у \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вхід у \"Android VR\" може виправити проблеми з відтворенням для деяких користувачів
 
 Щоб увійти, натисніть \"Продовжити\" нижче"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Вийти</string>
@@ -167,35 +170,36 @@ Second \"item\" text"</string>
 • Налаштування Morphe не імпортують/експортують автентифікацію Android VR
 • Якщо застосунок не використовується 6 місяців, Google видалить цю автентифікацію
 • Вам потрібно буде увійти знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід у Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід через вебверсію</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необов\'язково: увійдіть на вебсайт YouTube, щоб відтворювати відео зі своїм обліковим записом. Натисніть тут, щоб продовжити</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Наразі ви ввійшли в Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Наразі ви ввійшли на вебсайт YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Вхід у Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web відтворює відео без входу в обліковий запис або після входу на вебсайт YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на вебклієнт</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увійдіть на вебсайт YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Вебклієнти відтворюють відео без входу в систему або після входу на вебсайт YouTube
 
-• Після входу можна відтворювати відео, що потребують облікового запису, наприклад відео з віковими обмеженнями
-• Сторінка входу Google відкривається в цьому застосунку
+• Після входу можна відтворювати відео, що потребують облікового запису, наприклад, відео з віковими обмеженнями
+• Сторінка входу в Google відкривається в цьому додатку
 • Вхід використовується лише для отримання відео, які ви відтворюєте
-• Вхід зберігається лише на цьому пристрої
+• Дані входу зберігаються лише на цьому пристрої
+• Кожен вебклієнт має власний вхід для вибраного клієнта за замовчуванням
 
-Щоб увійти, натисніть \"Продовжити\" нижче"</string>
+Щоб увійти, натисніть «Продовжити» нижче"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Вхід збережено
 
-• Налаштування Morphe не імпортують і не експортують вхід у Mobile Web
+• Налаштування Morphe не імпортують і не експортують вхід на вебсайт YouTube
 • Якщо Google завершить вхід, відео відтворюватимуться без входу, доки ви не увійдете знову
 • Вихід з облікового запису також виконає вихід із вебсайту YouTube на цьому пристрої"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Термін дії входу в Mobile Web минув, спробуйте ввійти в Mobile Web знову</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Вихід із Mobile Web виконано</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступний. Встановіть або увімкніть його, щоб увійти</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Термін дії авторизації на вебсайті минув. Спробуйте авторизуватися ще раз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Ви вийшли з облікового запису на вебсайті YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" недоступний. Встановіть або увімкніть його, щоб увійти</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 тимчасово недоступний (тайм-аут API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Термін дії входу в Android VR закінчився. Спробуйте ввійти у VR ще раз</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Термін дії входу в \"Android VR\" минув, спробуйте ввійти у VR знову</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 тимчасово недоступний (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 тимчасово недоступний</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не вдається ввійти у VR, автентифікацію вебсайту не схвалено</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не вдається ввійти до VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Ви вийшли з Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Вихід із \"Android VR\" виконано</string>
   <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте ввійти у VR ще раз</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Керування медіа в сповіщеннях</string>
@@ -213,8 +217,15 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Тривалість перемотування має бути від 1 до %s секунд. Використовується типове значення</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Вимкнути протокол QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Пріоритет якості відео</string>
+  <string name="morphe_prioritize_video_quality_summary">Надає найвищій доступній якості відео пріоритет над ефективністю кодека</string>
+  <string name="morphe_prioritize_video_quality_dialog">Якщо це налаштування вимкнено, старіші відео можуть не показувати параметри якості відео</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Вимкнути аудіо DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Вимкнути аудіо DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Відтворює оригінальне аудіо замість версії зі стиснутим динамічним діапазоном</string>
+  <string name="morphe_disable_loudness_normalization_title">Вимкнути нормалізацію гучності</string>
+  <string name="morphe_disable_loudness_normalization_summary">Відтворює гучне аудіо з оригінальною гучністю замість зниження її до стандартного рівня</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Примусово оригінальна мова звукової доріжки</string>
   <string name="morphe_force_original_audio_summary">Завжди відтворює оригінальну аудіодоріжку відео замість дубльованої</string>
@@ -223,6 +234,32 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">Автоматично пропускає тихі паузи у звуку відео</string>
   <string name="morphe_skip_silence_minimum_pause_title">Мінімальна тривалість паузи</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Скорочуються лише паузи, не коротші за це значення. Набуває чинності при запуску наступного відео</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Відеоефект</string>
+  <string name="morphe_video_effect_entry_none">Вимк.</string>
+  <string name="morphe_video_effects_custom_title">Редагувати відеоефекти</string>
+  <string name="morphe_video_effects_custom_summary">Змінюйте, перейменовуйте, видаляйте або додавайте відеоефекти. Ефекти - це код шейдера, тому нові може написати чат-бот зі ШІ</string>
+  <string name="morphe_video_effects_custom_empty">Відеоефектів немає. Натисніть \"Додати ефект\", щоб створити його.</string>
+  <string name="morphe_video_effects_custom_add">Додати ефект</string>
+  <string name="morphe_video_effects_custom_restore">Відновити типові значення</string>
+  <string name="morphe_video_effects_custom_add_title">Новий ефект</string>
+  <string name="morphe_video_effects_custom_edit_title">Редагувати ефект</string>
+  <string name="morphe_video_effects_custom_name_hint">Назва</string>
+  <string name="morphe_video_effects_custom_name_empty">Введіть назву ефекту</string>
+  <string name="morphe_video_effects_custom_name_exists">Ефект із такою назвою вже існує</string>
+  <string name="morphe_video_effects_custom_copy_code">Скопіювати код</string>
+  <string name="morphe_video_effects_custom_error_title">Помилка в ефекті</string>
+  <string name="morphe_video_effects_custom_error_message">"Відео показуються без ефекту, доки код не буде виправлено. Передайте цю помилку ШІ, який написав код:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Код закінчується всередині функції або коментаря, тож він, ймовірно, був обірваний під час копіювання або вставки. Вставлений текст може бути обірваний на %d символах.
+
+Попросіть ШІ надати коротший код або вставте код частинами."</string>
+  <string name="morphe_video_effects_custom_copy_error">Скопіювати помилку</string>
+  <string name="morphe_video_effects_custom_save_anyway">Усе одно зберегти</string>
+  <string name="morphe_video_effects_custom_delete">Видалити</string>
+  <string name="morphe_video_effects_custom_delete_title">Видалити ефект?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s буде видалено.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Мережевий проксі</string>
   <string name="morphe_proxy_screen_summary">Спрямовувати підтримувані мережеві запити через проксі</string>
@@ -253,7 +290,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Змінити посилання для поширення на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Замінює music.youtube.com на youtube.com у поширених посиланнях</string>
   <string name="morphe_replace_links_with_shortener_title">Змінити посилання для поширення на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Примусово використовує скорочений формат URL youtu.be для відео</string>
+  <string name="morphe_replace_links_with_shortener_summary">Примусово використовує скорочений формат URL \"youtu.be\" для відео</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
@@ -265,15 +302,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Типова якість відео у мобільній мережі</string>
   <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість для Wi-Fi на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
-  <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню поширення замість вбудованого при поширенні контенту</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журнал Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Вимкнено</string>
   <string name="morphe_debug_litho_entry_path">Шлях</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Шлях і буфер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Журналювання Litho записує компоненти макета застосунку, зокрема текст на екрані для деяких компонентів інтерфейсу.
+  <string name="morphe_debug_litho_user_dialog_message">"Записує в журнал компоненти макета застосунку, зокрема текст на екрані для деяких компонентів інтерфейсу.
 
 Це може допомогти визначити компоненти під час створення власних фільтрів.
 
@@ -342,6 +376,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">Виберіть файл шрифту TTF або OTF</string>
   <string name="morphe_custom_font_file_invalid">Вибраний файл не є шрифтом TTF або OTF</string>
   <string name="morphe_custom_font_failed_to_load">Не вдалося завантажити власний шрифт, його вимкнено</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Скляні меню</string>
+  <string name="morphe_glass_menus_screen_summary">Меню у вигляді матового скла над розмитим вмістом за ними</string>
+  <string name="morphe_glass_menus_title">Увімкнути скляні меню</string>
+  <string name="morphe_glass_menus_summary">Показує меню та нижні панелі як матове скло, а вміст за ними розмивається</string>
+  <string name="morphe_glass_menus_user_dialog_message">Меню показуються майже непрозорими, якщо увімкнено режим заощадження заряду або якщо пристрій не підтримує розмиття</string>
+  <string name="morphe_glass_menus_opacity_title">Непрозорість скла</string>
+  <string name="morphe_glass_menus_opacity_summary">Наскільки меню перекриває розмитий вміст (0 - прозоре, 100 - непрозоре)</string>
+  <string name="morphe_glass_menus_blur_title">Розмиття</string>
+  <string name="morphe_glass_menus_blur_summary">Наскільки розмитий вміст за меню</string>
+  <string name="morphe_glass_menus_dim_title">Затемнення</string>
+  <string name="morphe_glass_menus_dim_summary">Наскільки затемнюється екран навколо нижньої панелі</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Дизлайки тимчасово недоступні (тайм-аут API)</string>
@@ -379,4 +425,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Обмежень швидкості клієнта не виявлено</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Обмеження швидкості клієнта виникло %s разів</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s мілісекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Панель навігації</string>
+  <string name="morphe_navigation_bar_screen_summary">Виберіть кнопки, які з\'являються на нижній панелі навігації</string>
+  <string name="morphe_toolbar_screen_title">Панель інструментів</string>
+  <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти з\'являються на панелі інструментів</string>
 </resources>

@@ -372,8 +372,10 @@ public final class RememberPlaybackSpeedPatch {
                 } else if (DISABLE_PLAYBACK_SPEED_MUSIC) {
                     String videoId = VideoInformation.getVideoId();
                     GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
-                    final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
-                    if (isMusic) {
+                    if (request == null && !VideoInformation.lastPlayerResponseIsShort()) {
+                        // A downloaded video plays without a player request, so it was not prefetched.
+                        setMusicVideoSpeedOnceFetched(videoId, defaultSpeed);
+                    } else if (request != null && Boolean.TRUE.equals(request.getResult())) {
                         Logger.printDebug(() -> "Overriding music video speed to 1.0x: " + videoId);
                         defaultSpeed = 1.0f;
                     }
@@ -384,6 +386,28 @@ public final class RememberPlaybackSpeedPatch {
                 VideoInformation.changePlaybackSpeed(defaultSpeed);
             }
         }
+    }
+
+    /**
+     * Fetches if the video is music, and sets 1.0x once it is known,
+     * if the video still plays at the default speed.
+     */
+    private static void setMusicVideoSpeedOnceFetched(String videoId, float defaultSpeed) {
+        Logger.printDebug(() -> "Fetching music video status of a video without a prefetch: " + videoId);
+        GetMixPlaylistRequest request = GetMixPlaylistRequest.fetchRequestIfNeeded(
+                videoId, Collections.emptyMap());
+        Utils.runOnBackgroundThread(() -> {
+            if (!Boolean.TRUE.equals(request.getResult())) {
+                return;
+            }
+            Utils.runOnMainThread(() -> {
+                if (videoId.equals(VideoInformation.getVideoId())
+                        && VideoInformation.getPlaybackSpeed() == defaultSpeed) {
+                    Logger.printDebug(() -> "Overriding music video speed to 1.0x: " + videoId);
+                    VideoInformation.changePlaybackSpeed(1.0f);
+                }
+            });
+        });
     }
 
     /**

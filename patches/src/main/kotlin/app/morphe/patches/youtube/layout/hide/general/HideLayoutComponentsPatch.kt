@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.Match
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -47,6 +48,7 @@ import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCa
 import app.morphe.patches.shared.misc.spans.addSpanFilter
 import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
+import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.ad.injectHideViewCall
@@ -62,9 +64,8 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -102,6 +103,8 @@ private const val EXPLORE_MENU_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ExploreMenuFilter;"
 private const val COMMENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CommentsFilter;"
+private const val VIEW_COUNT_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/ViewCountFilter;"
 private const val CUSTOM_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CustomFilter;"
 private const val KEYWORD_FILTER =
@@ -199,13 +202,16 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_comments_live_chat_scroll_to_bottom_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_tooltips", summary = true),
                     SwitchPreference("morphe_hide_comments_menu_button", summary = true),
+                    SwitchPreference("morphe_hide_comments_none_yet"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
-                    SwitchPreference("morphe_hide_comments_zero_state"),
-                    SwitchPreference("morphe_minimal_comments_button", summary = true),
-                    SwitchPreference("morphe_hide_comments_thanks_button"),
+                    SwitchPreference("morphe_hide_comments_preview_comment_cards", summary = true),
+                    SwitchPreference("morphe_hide_comments_thanks_button", titleKey = "morphe_hide_thanks_button_title"),
+                    SwitchPreference("morphe_hide_comments_timed_reactions", summary = true),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_hide_comments_top_fans_button"),
+                    SwitchPreference("morphe_hide_comments_topics", summary = true),
                     SwitchPreference("morphe_hide_comments_translate_button"),
+                    SwitchPreference("morphe_hide_comments_visit_the_community_section"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
                 sorting = Sorting.UNSORTED
@@ -213,18 +219,18 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_hide_ask_gemini_button", summary = true),
             SwitchPreference("morphe_hide_channel_bar"),
             SwitchPreference("morphe_hide_channel_watermark"),
-            SwitchPreference("morphe_hide_chapters_timeline_button"),
+            SwitchPreference("morphe_hide_chapters_button"),
             SwitchPreference("morphe_hide_crowdfunding_box"),
             SwitchPreference("morphe_hide_emergency_box"),
+            SwitchPreference("morphe_hide_in_this_video_button"),
             SwitchPreference("morphe_hide_info_panels", summary = true),
-            SwitchPreference("morphe_hide_join_membership_button"),
+            SwitchPreference("morphe_hide_join_membership_button", titleKey = "morphe_hide_join_button_title"),
             SwitchPreference("morphe_hide_live_chat_replay_button", summary = true),
             SwitchPreference("morphe_hide_medical_panels"),
             SwitchPreference("morphe_hide_player_gesture_hints", summary = true),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_sync_button"),
             SwitchPreference("morphe_hide_tap_and_hold_gradient", summary = true),
-            SwitchPreference("morphe_hide_timed_reactions", summary = true),
             SwitchPreference("morphe_hide_video_title", summary = true),
             SwitchPreference("morphe_sanitize_video_subtitle", summary = true)
         )
@@ -268,6 +274,7 @@ val hideLayoutComponentsPatch = patch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_hide_keyword_content_comments"),
+                    SwitchPreference("morphe_hide_keyword_content_posts"),
                     SwitchPreference("morphe_hide_keyword_content_home"),
                     SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_subscriptions"),
@@ -290,6 +297,27 @@ val hideLayoutComponentsPatch = patch(
                             NonInteractivePreference(
                                 key = "morphe_hide_keyword_content_about_whole_words",
                                 tag = "app.morphe.extension.youtube.settings.preference.HTMLPreference"
+                            )
+                        )
+                    )
+                )
+            ),
+            PreferenceScreenPreference(
+                key = "morphe_hide_videos_by_views_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_videos_by_views_home"),
+                    SwitchPreference("morphe_hide_videos_by_views_search"),
+                    SwitchPreference("morphe_hide_videos_by_views_subscriptions"),
+                    TextPreference("morphe_hide_videos_by_views_minimum", inputType = InputType.NUMBER),
+                    TextPreference("morphe_hide_videos_by_views_maximum", inputType = InputType.NUMBER),
+                    screenInfoPreferenceCategory(
+                        key = "morphe_hide_videos_by_views_about_category",
+                        preferences = setOf(
+                            NonInteractivePreference(
+                                key = "morphe_hide_videos_by_views_about",
+                                titleKey = null,
+                                tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
                             )
                         )
                     )
@@ -323,7 +351,10 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_members_shelf", summary = true),
                     SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
-                    SwitchPreference("morphe_hide_subscribe_button_in_channel_page")
+                    SwitchPreference(
+                        "morphe_hide_subscribe_button_in_channel_page",
+                        titleKey = "morphe_hide_subscribe_button_title"
+                    )
                 )
             ),
             SwitchPreference("morphe_hide_album_cards", summary = true),
@@ -339,7 +370,7 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_post_dislike_button", summary = true),
                     SwitchPreference("morphe_hide_post_comment_button"),
                     SwitchPreference("morphe_hide_post_comments_preview", summary = true),
-                    SwitchPreference("morphe_hide_post_share_button", summary = true)
+                    SwitchPreference("morphe_hide_post_share_button", titleKey = "morphe_hide_share_button_title", summary = true)
                 )
             ),
             SwitchPreference("morphe_hide_compact_banner", summary = true),
@@ -357,7 +388,10 @@ val hideLayoutComponentsPatch = patch(
                     "morphe_hide_account_menu_filter_strings",
                     inputType = InputType.TEXT_MULTI_LINE
                 ),
-                SwitchPreference("morphe_hide_account_menu_downloads")
+                SwitchPreference("morphe_hide_account_menu_badges"),
+                SwitchPreference("morphe_hide_account_menu_downloads"),
+                SwitchPreference("morphe_hide_account_menu_liked_videos"),
+                SwitchPreference("morphe_hide_account_menu_watch_later")
             ),
             SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
             SwitchPreference("morphe_hide_get_premium_button"),
@@ -365,7 +399,11 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
             SwitchPreference("morphe_hide_image_shelf", summary = true),
             SwitchPreference("morphe_hide_handle", summary = true),
-            SwitchPreference("morphe_hide_help_feedback_menu", summary = true),
+            SwitchPreference(
+                "morphe_hide_help_feedback_menu",
+                titleKey = "morphe_hide_player_flyout_help_title",
+                summary = true
+            ),
             SwitchPreference("morphe_hide_invite_to_message_card", summary = true),
             SwitchPreference("morphe_hide_latest_videos_button", summary = true),
             SwitchPreference("morphe_hide_live_streams", summary = true),
@@ -428,6 +466,7 @@ val hideLayoutComponentsPatch = patch(
         }
         addLithoFilter(COMMENTS_FILTER)
         addLithoFilter(KEYWORD_FILTER)
+        addLithoFilter(VIEW_COUNT_FILTER)
         addLithoFilter(CUSTOM_FILTER)
         addSpanFilter(SANITIZE_VIDEO_SUBTITLE_FILTER)
         addSpanFilter(SEARCH_LINKS_FILTER)
@@ -602,7 +641,7 @@ val hideLayoutComponentsPatch = patch(
 
         // endregion
 
-        // region hide comments carousel
+        // region hide comments carousel and Topics
 
         hookElement("$COMMENTS_FILTER->onCommentsLoaded")
 
@@ -657,6 +696,22 @@ val hideLayoutComponentsPatch = patch(
                 "hideCrowdfundingBox"
             )
         }
+
+        // endregion
+
+        // region hide HaTS surveys
+
+        HatsSurveyDisplayFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $LAYOUT_COMPONENTS_FILTER->hideHatsSurvey()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
 
         // endregion
 
@@ -786,6 +841,28 @@ val hideLayoutComponentsPatch = patch(
                         move-result-object v$returnStringRegister
                     """
                 )
+            }
+        }
+
+        // The metadata of the videos of channel pages is created as a text of its own.
+        hookSpannableStringResult(LAYOUT_COMPONENTS_FILTER, "modifyVideoMetadataText")
+
+        // 20.51 and lower show the metadata of the videos of a playlist in a text view of their own,
+        // which is changed once the app sets its text. 21.23+ shows them as Litho elements.
+        PlaylistVideoViewCountConstructorFingerprint.matchAll().forEach { constructorMatch ->
+            getPlaylistVideoViewCountSetTextFingerprint(
+                constructorMatch.instructionMatches.last().fieldReference
+            ).let {
+                it.method.apply {
+                    // The text view is passed to the method that sets its text.
+                    val textViewRegister = it.instructionMatches.first()
+                        .getInstruction<TwoRegisterInstruction>().registerA
+
+                    addInstruction(
+                        it.instructionMatches.last().index + 1,
+                        "invoke-static { v$textViewRegister }, $LAYOUT_COMPONENTS_FILTER->modifyPlaylistVideoMetadata(Landroid/widget/TextView;)V"
+                    )
+                }
             }
         }
 
@@ -1109,9 +1186,9 @@ val hideLayoutComponentsPatch = patch(
                     protoObjectIndex
                 ).reference as FieldReference
 
-                // 21.36 - 21.41 reads the tab proto from a typed field.
-                // Other versions read an Object field and cast it.
-                val isTypedProtoField = is_21_36_or_greater && !is_21_42_or_greater
+                // Some versions (21.36 - 21.41, 21.47+) read the tab proto from a typed field.
+                // Others read an Object field and cast it.
+                val isTypedProtoField = auluFieldRef.type != "Ljava/lang/Object;"
 
                 val insertIndex = if (isTypedProtoField) {
                     protoObjectIndex + 1
@@ -1384,12 +1461,19 @@ val hideLayoutComponentsPatch = patch(
 
         // region hide live chat gift button
 
+        // Newer app targets can also inflate the button container from a view stub, or use
+        // a placeholder view, so the container returned is hidden instead of the view found by its id.
         JewelsButtonContainerFingerprint.matchAll().forEach { match ->
-            match.method.injectHideViewCall(
-                match.instructionMatches.last().index,
-                COMMENTS_FILTER,
-                "hideLiveChatGiftButton"
-            )
+            match.method.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        "invoke-static { v$register }, $COMMENTS_FILTER->hideLiveChatGiftButton(Landroid/view/View;)V"
+                    )
+                }
+            }
         }
 
         // endregion
@@ -1419,6 +1503,48 @@ val hideLayoutComponentsPatch = patch(
                     "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideChaptersTimelineButton(Landroid/view/View;)V"
                 )
             }
+        }
+
+        // The button shows either the chapter title or 'In this video', so it is hidden
+        // each time YouTube sets its visibility, depending on what it shows.
+        if (is_21_23_or_greater) {
+            TimeBarEntryPointVisibilityFingerprint.let {
+                it.method.apply {
+                    val isChapterRegister = it.instructionMatches[2].getInstruction<OneRegisterInstruction>().registerA
+                    val setVisibilityMatch = it.instructionMatches[4]
+                    val showRegister = setVisibilityMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+                    addInstructionsAtControlFlowLabel(
+                        setVisibilityMatch.index,
+                        """
+                            invoke-static { v$showRegister, v$isChapterRegister }, $LAYOUT_COMPONENTS_FILTER->showTimeBarEntryPoint(ZZ)Z
+                            move-result v$showRegister
+                        """
+                    )
+                }
+            }
+        } else {
+            // The button is always shown, and the chapter title and 'In this video' are hidden instead.
+            fun Match.hideTimeBarEntryPoint(extensionMethodName: String) {
+                val setVisibilityMatch = instructionMatches.last { match ->
+                    match.instruction.opcode == Opcode.INVOKE_VIRTUAL
+                }
+                val showRegister = setVisibilityMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+                method.addInstructionsAtControlFlowLabel(
+                    setVisibilityMatch.index,
+                    """
+                        invoke-static { v$showRegister }, $LAYOUT_COMPONENTS_FILTER->$extensionMethodName(Z)Z
+                        move-result v$showRegister
+                    """
+                )
+            }
+
+            TimeBarChapterTitleVisibilityLegacyFingerprint.match()
+                .hideTimeBarEntryPoint("showTimeBarChapterTitle")
+            getTimeBarTimelineTitleVisibilityLegacyFingerprint(
+                TimeBarChapterTitleVisibilityLegacyFingerprint.classDef.type
+            ).match().hideTimeBarEntryPoint("showTimeBarInThisVideo")
         }
 
         // endregion

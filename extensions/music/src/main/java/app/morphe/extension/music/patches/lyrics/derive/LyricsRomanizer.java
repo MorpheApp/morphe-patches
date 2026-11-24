@@ -27,7 +27,7 @@ import app.morphe.extension.music.patches.lyrics.romanizers.HangulRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.IcuRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
@@ -445,11 +445,11 @@ public final class LyricsRomanizer {
     @Nullable
     private static ProviderResult romanizeRime(Lyrics lyrics, List<String> lines,
                                                boolean isWordSynced) {
-        if (!RimeDictStore.isActive()) {
+        if (!RimeDictionaryStore.isActive()) {
             return null;
         }
         // Fetching happens only when the row is turned on or a choice is saved, never here.
-        if (!RimeDictStore.isReady()) {
+        if (!RimeDictionaryStore.isReady()) {
             return null;
         }
 
@@ -459,8 +459,33 @@ public final class LyricsRomanizer {
         if (!LyricsMerge.hasText(result)) {
             return null;
         }
-        List<LyricsLine> aligned = alignIfWordSynced(lyrics, result, isWordSynced);
+        List<LyricsLine> aligned = alignLocalWordSynced(lyrics, result, isWordSynced);
         return new ProviderResult(aligned, false, false, null, dictionary);
+    }
+
+    @Nullable
+    private static List<LyricsLine> alignLocalWordSynced(
+            Lyrics lyrics, @Nullable List<LyricsLine> result, boolean isWordSynced) {
+        if (!isWordSynced || result == null) {
+            return result;
+        }
+        List<LyricsLine> aligned = LocalRomanizer.alignWords(lyrics.lines(), result);
+        if (aligned == null) {
+            return alignLinesToWordSync(lyrics, result);
+        }
+        // Ensure aligned per-word lines still carry the full whole-line text from `result`
+        // alongside per-word timings so both whole-line displays and syllable aligners agree.
+        List<LyricsLine> merged = new ArrayList<>(aligned.size());
+        for (int i = 0; i < aligned.size(); i++) {
+            LyricsLine al = aligned.get(i);
+            LyricsLine orig = i < lyrics.lines().size() ? lyrics.lines().get(i) : al;
+            String wholeText = i < result.size() && result.get(i).text() != null
+                    && !result.get(i).text().trim().isEmpty()
+                    ? result.get(i).text() : al.text();
+            merged.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), wholeText,
+                    al.words(), orig.agentId(), orig.isDuet(), orig.isBG(), orig.songPart()));
+        }
+        return merged;
     }
 
     @Nullable
@@ -470,7 +495,7 @@ public final class LyricsRomanizer {
         // read. Reading them here as well would give the line the Mandarin reading, and since
         // this provider usually comes first the word table would never be used at all. The whole
         // lyric is left to that provider, which reads the scripts around the Han the same way.
-        if (rimeMapEnabled() && RimeDictStore.isActive()) {
+        if (rimeMapEnabled() && RimeDictionaryStore.isActive()) {
             return null;
         }
 
@@ -487,7 +512,7 @@ public final class LyricsRomanizer {
         if (!LyricsMerge.hasText(result)) {
             return null;
         }
-        List<LyricsLine> aligned = alignIfWordSynced(lyrics, result, isWordSynced);
+        List<LyricsLine> aligned = alignLocalWordSynced(lyrics, result, isWordSynced);
         return new ProviderResult(aligned, false, false, null, dictionary);
     }
 
@@ -537,9 +562,15 @@ public final class LyricsRomanizer {
                                                  boolean allowTransliteration) {
         List<LyricsLine> result;
         if (isWordSynced) {
-            result = romanizeWordSynced(lyrics);
-            if (result == null) {
-                return null;
+            result = LyricsCache.getWordRomanization(track, source, lines, lyrics.lines());
+            if (result == null || !hasUsableRomanization(result, lyrics, allowTransliteration)) {
+                result = romanizeWordSynced(lyrics);
+                if (result == null) {
+                    return null;
+                }
+                if (hasUsableRomanization(result, lyrics, allowTransliteration)) {
+                    LyricsCache.putWordRomanization(track, source, lines, result);
+                }
             }
         } else {
             result = LyricsCache.getRomanization(track, source, lines);
@@ -741,7 +772,7 @@ public final class LyricsRomanizer {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
                 romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
-                if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
+                if (Utils.isNotEmpty(lineRomBuilder) && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
                     lineRomBuilder.append(' ');
                 }
                 lineRomBuilder.append(rom);
@@ -877,8 +908,7 @@ public final class LyricsRomanizer {
                 if (text == null) continue;
                 text = stripParentheses(text).trim();
                 if (!text.isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (merged.length() > 0) merged.append('\n');
+                    if (Utils.isNotEmpty(merged)) merged.append('\n');
                     merged.append(text);
                 }
             }
@@ -1256,8 +1286,7 @@ public final class LyricsRomanizer {
     }
 
     public static boolean isPurelyLatinScript(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text == null || text.length() == 0) return true;
+        if (Utils.isEmpty(text)) return true;
         for (int i = 0; i < text.length(); ) {
             int cp = Character.codePointAt(text, i);
             i += Character.charCount(cp);

@@ -85,7 +85,8 @@ public final class QuickActionButtonsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_ASK_BUTTON,
                         "yt_fill_experimental_spark",
-                        "yt_fill_spark"
+                        "yt_fill_spark",
+                        "PAyouchat"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_COMMENTS_BUTTON,

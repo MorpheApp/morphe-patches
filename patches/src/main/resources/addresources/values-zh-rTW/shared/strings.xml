@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">設定</string>
   <string name="morphe_settings_confirm_user_dialog_title">你確定要繼續嗎？</string>
   <string name="morphe_settings_save">儲存</string>
   <string name="morphe_settings_reset">重設</string>
@@ -74,18 +73,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">匯出至檔案</string>
   <string name="morphe_settings_export_file_success">設定匯出成功</string>
   <string name="morphe_settings_export_file_failed">匯出設定失敗</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式，請使用 Morphe 重新修補此應用程式</string>
-  <string name="morphe_settings_about_links_dev_header">注意</string>
-  <string name="morphe_settings_about_links_dev_body">這個版本為預先發佈版，你可能會遇到非預期的問題</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">修補程式</string>
+  <string name="morphe_settings_about_version">版本</string>
+  <string name="morphe_settings_about_close">關閉</string>
+  <string name="morphe_settings_about_prerelease">預先發佈</string>
+  <string name="morphe_settings_about_update_available">可用更新：%s</string>
+  <string name="morphe_settings_about_update_hint">若要更新您的修補，請使用 Morphe 重新為此應用程式套用修補</string>
   <string name="morphe_settings_about_links_header">官方連結</string>
   <string name="morphe_settings_about_links_website">網站</string>
   <string name="morphe_settings_about_links_donate">捐贈</string>
   <string name="morphe_settings_about_links_translations">翻譯</string>
-  <string name="morphe_settings_about_links_credits">鳴謝</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新版本</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">有更新可用</string>
+  <string name="morphe_settings_about_contributors">貢獻者</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">所有時間</string>
+  <string name="morphe_settings_about_contributors_6_months">6 個月</string>
+  <string name="morphe_settings_about_contributors_3_months">3 個月</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">時間週期</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s 位使用者</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">支持者</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective 上的贊助者</string>
+  <string name="morphe_settings_about_supporters_become">成為支持者</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">以及更多 %s 位</string>
+  <string name="morphe_settings_about_people_unavailable">無法載入清單</string>
   <string name="morphe_settings_about_contributors_current">目前開發中</string>
   <string name="morphe_settings_about_contributors_prior">先前開發</string>
   <string name="morphe_settings_about_links_morphe">目前開發中</string>
@@ -213,6 +228,9 @@ Second \"item\" text"</string>
 • 應用程式可能隨機關閉
 • 通知可能無法正常運作
 • 背景播放可能無法正常運作"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">開啟系統分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary">分享內容時，開啟系統分享面板而非應用程式內建的面板</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">應用程式連結處理</string>
   <string name="morphe_link_handling_summary">設定連結在此應用程式中開啟</string>

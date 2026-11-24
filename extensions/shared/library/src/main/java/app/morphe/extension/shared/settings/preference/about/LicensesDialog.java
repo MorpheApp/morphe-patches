@@ -15,8 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Lists the software bundled with the patches or downloaded by them. Picking one opens its notices in
- * {@link LicenseTextDialog}, which is full screen because the texts run to hundreds of lines.
+ * Lists the software bundled with the patches or downloaded by them. Picking one opens its notices
+ * full screen, because the texts run to hundreds of lines.
  */
 class LicensesDialog extends AboutWebViewDialog {
 
@@ -30,9 +30,10 @@ class LicensesDialog extends AboutWebViewDialog {
             new License("Google Material Design icons", LicenseContent.APACHE_2),
             new License("Gson", LicenseContent.APACHE_2),
             new License("Guava", LicenseContent.APACHE_2),
-            new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.MORPHE_LICENSE)),
+            new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.GPL_3)),
             new License("pinyin-pro-data", LicenseContent.PINYIN_PRO_DATA),
             new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS),
+            new License("QuackJS", LicenseContent.GPL_3),
             new License("rime-cantonese", LicenseContent.RIME_CANTONESE),
             new License("SudachiDict", List.of(LicenseContent.SUDACHI_NOTICE, LicenseContent.APACHE_2)),
             new License("Unicode Han Database", List.of(LicenseContent.UNIHAN_NOTICE, LicenseContent.UNICODE_3))
@@ -51,7 +52,7 @@ class LicensesDialog extends AboutWebViewDialog {
     private static final String LICENSE_ROUTE_PREFIX = "https://license/";
 
     LicensesDialog(@NonNull Context context) {
-        super(context, buildListHtml());
+        super(context, buildListHtml(context), false);
     }
 
     @Override
@@ -59,8 +60,9 @@ class LicensesDialog extends AboutWebViewDialog {
         return new LicensesWebClient(getContext(), this);
     }
 
-    private static String buildListHtml() {
-        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
+    private static String buildListHtml(Context context) {
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart(context))
+                .append(AboutDialogStyle.pageStart(false));
 
         html.append("<div class=\"dialog-header\"><div class=\"dialog-title\">")
                 .append(str("morphe_settings_about_links_licenses"))
@@ -78,7 +80,9 @@ class LicensesDialog extends AboutWebViewDialog {
                     .append(AboutDialogStyle.chevron())
                     .append("</a>");
         }
-        html.append("</div></div>").append(AboutDialogStyle.DOCUMENT_END);
+        html.append("</div></div>")
+                .append(AboutDialogStyle.pageEnd(str("morphe_settings_about_close"), null))
+                .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();
     }
@@ -94,6 +98,23 @@ class LicensesDialog extends AboutWebViewDialog {
             // Not one of the rows, so it is handled as an ordinary link.
         }
         return null;
+    }
+
+    private static String buildLicenseHtml(Context context, List<LicenseContent> content) {
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart(context));
+
+        // The notices are pre-formatted English whose alignment only holds left to right, so they
+        // stay unmirrored even when the surrounding app language reads the other way.
+        html.append("<div class=\"license-body\" dir=\"ltr\">");
+        for (LicenseContent item : content) {
+            html.append("<h2>").append(AboutDialogStyle.escapeHtml(item.title())).append("</h2>");
+            // Urls are turned into links, so the addresses named inside a license can be opened.
+            html.append("<pre>").append(AboutDialogStyle.escapeHtml(item.content())
+                    .replaceAll("(https?://[^\\s<>\"]+)", "<a href='$1'>$1</a>")).append("</pre>");
+        }
+        html.append("</div>").append(AboutDialogStyle.DOCUMENT_END);
+
+        return html.toString();
     }
 
     /**
@@ -112,7 +133,8 @@ class LicensesDialog extends AboutWebViewDialog {
             if (url.startsWith(LICENSE_ROUTE_PREFIX)) {
                 License license = licenseForRoute(url);
                 if (license != null) {
-                    new LicenseTextDialog(context, license.staticContent()).show();
+                    // The notices of the dependency, full screen because the texts run to hundreds of lines.
+                    new AboutWebViewDialog(context, buildLicenseHtml(context, license.staticContent()), true).show();
                     return true;
                 }
             }
@@ -153,7 +175,7 @@ class LicensesDialog extends AboutWebViewDialog {
                 service marks, or logos.
                 """);
 
-        static final LicenseContent MORPHE_LICENSE = new LicenseContent("LICENSE", """
+        static final LicenseContent GPL_3 = new LicenseContent("LICENSE", """
                                     GNU GENERAL PUBLIC LICENSE
                                        Version 3, 29 June 2007
                 
@@ -239,7 +261,7 @@ class LicensesDialog extends AboutWebViewDialog {
                 
                   To "modify" a work means to copy from or adapt all or part of the work
                 in a fashion requiring copyright permission, other than the making of an
-                exact copy.  The resulting work called a "modified version" of the
+                exact copy.  The resulting work is called a "modified version" of the
                 earlier work or a work "based on" the earlier work.
                 
                   A "covered work" means either the unmodified Program or a work based

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/4933
+ * https://github.com/MorpheApp/morphe-patches/pull/4932
  *
  * Adapted from
  * https://codeberg.org/JohnInNL/nl-morphe-patches

@@ -12,6 +12,7 @@
 package app.morphe.extension.youtube.patches.theme;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.shared.LithoDrawables.getDrawableView;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,11 +23,14 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Spinner;
 
 import androidx.annotation.ColorInt;
@@ -67,9 +71,14 @@ public class ThemePatch extends BaseThemePatch {
             0xFAFFFFFF, // Video chapters list background.
     };
 
+    /**
+     * Background of the comments chips of the old layout, and also of the feed video cards.
+     */
+    private static final int DARK_CHIP_AND_CARD_COLOR = 0xFF212121;
+
     private static final int[] DARK_VALUES = {
             0xFF282828, // Explore drawer background.
-            0xFF212121, // Comments chip background.
+            DARK_CHIP_AND_CARD_COLOR,
             0xFF181818, // Music related results panel background.
             0xFF0F0F0F, // Comments chip background (new layout).
             0xFA212121, // Video chapters list background.
@@ -77,6 +86,46 @@ public class ThemePatch extends BaseThemePatch {
             0xFF0E0E10, // Playlist content background.
             0xFF09090A, // Watch history chip background.
     };
+
+    private static final int FEED_ID = ResourceUtils.getIdentifier(ResourceType.ID, "results");
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with the original color of a Litho background drawable, before {@link #getValue(int)}.
+     * The feed video cards keep their color, otherwise they are not visible on the feed background.
+     */
+    @ColorInt
+    public static int getFeedCardColor(Drawable drawable, @ColorInt int color) {
+        try {
+            if (color == DARK_CHIP_AND_CARD_COLOR
+                    && !ThemeColorPatch.isAppDefaultColor()
+                    && isFeedItem(drawable)) {
+                // Only exact colors are themed. The lowest bit of green is not visible, and blue is not used
+                // because the feed card layout hook flips its lowest bit, which would undo the change.
+                return color ^ 0x100;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getFeedCardColor failure", ex);
+        }
+        return color;
+    }
+
+    /**
+     * @return If the closest list of the drawable is the feed. Items of lists nested in the feed,
+     *         such as chips, are not feed items.
+     */
+    private static boolean isFeedItem(Drawable drawable) {
+        View view = getDrawableView(drawable);
+        while (view != null) {
+            ViewParent parent = view.getParent();
+            if (parent instanceof RecyclerView recyclerView) {
+                return recyclerView.getId() == FEED_ID;
+            }
+            view = parent instanceof View parentView ? parentView : null;
+        }
+        return false;
+    }
 
     /**
      * Injection point.

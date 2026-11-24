@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">エクスポートフォルダ %s が見つかりませんでした</string>
   <string name="morphe_export_download_flyout_title">デバイスへエクスポート</string>
   <string name="morphe_export_download_canceled">エクスポートをキャンセルしました</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD（1440p）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
@@ -139,14 +140,16 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS を使用する</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">難読化解除に yt-dlp-ejs (WebView) の代わりに QuackJS を使用する</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR (ログイン)</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VRでは別途サインインが必要です。こちらをタップして続行してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">現在、Android VR にログインしています</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" ログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" では別途ログインが必要です。こちらをタップして続行してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">現在 \"Android VR\" にログインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Android VR に変更してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR にログイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、動画の再生が止まる問題が一部のユーザーで解決する場合があります。
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、\"デフォルトのクライアント\" を \"Android VR\" に変更してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\"Android VR\" にログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"\"Android VR\" にログインすると、動画の再生が止まる問題が一部のユーザーで解決する場合があります。
 
 ログインするには、[続行] をタップしてください"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ログアウト</string>
@@ -167,35 +170,36 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
 • Morphe の設定のインポート / エクスポートには Android VR 認証は含まれません
 • このアプリが 6 ヶ月間使用されなかった場合、Google はこの認証を削除します
 • Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">モバイルウェブでのログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ウェブでサインイン</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">オプション：YouTube ウェブサイトにログインすると、アカウントを使用して動画を再生できます。続行するにはここをタップしてください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在、モバイルウェブにログインしています</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在 YouTube ウェブサイトにサインインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Mobile Web に変更してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web にサインイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web では、サインアウトした状態、または YouTube ウェブサイトにサインインした状態で動画を再生します
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] をウェブクライアントに変更してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube ウェブサイトにサインイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webクライアントは、YouTubeウェブサイトにサインインしていない状態、またはサインインした状態で動画を再生します
 
-• サインインすると、年齢制限付き動画など、アカウントが必要な動画を再生できます
-• このアプリで Google サインインページが開きます
-• サインインは、再生する動画を取得するためだけに使用されます
+• サインインすると、年齢制限のある動画など、アカウントが必要な動画を再生できます
+• このアプリでGoogleサインインページが開きます
+• サインインは、再生する動画を取得するためだけに利用されます
 • サインイン情報は、このデバイスにのみ保存されます
+• 選択したデフォルトクライアントについて、各Webクライアントが独自のサインイン情報を持ちます
 
-サインインするには、下の [続行] を押してください"</string>
+サインインするには、以下で[続行]を押してください"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"サインインが保存されました
 
-• Morphe の設定ではモバイル Web のサインインはインポート/エクスポートされません
+• Morphe の設定で YouTube ウェブサイトのサインインをインポート/エクスポートすることはできません
 • Google がサインインを終了した場合、再度サインインするまでビデオはサインアウト状態で再生されます
 • サインアウトすると、このデバイスの YouTube ウェブサイトからもサインアウトされます"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">モバイル Web へのログインが期限切れです。再度モバイル Web にログインしてください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">モバイル Web からサインアウトしました</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView が利用できません。サインインするには、インストールまたは有効にしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ウェブのサインインが期限切れです。再度サインインしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube ウェブサイトからサインアウトしました</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">「Android System WebView」が利用できません。サインインするには、インストールまたは有効にしてください</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 は一時的に利用できません (API タイムアウト)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR へのログインが期限切れです。再度ログインしてください</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' へのログインが期限切れです。再度ログインしてください</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 は現在利用できません (ステータス %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 は一時的に利用できません</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR にログインできません。ウェブサイトの認証が承認されませんでした</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\' からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">メディア通知コントロール</string>
@@ -213,8 +217,15 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_seek_notification_media_length_invalid">シーク時間は1〜%s秒の間で指定してください。デフォルト値を使用します</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC プロトコルを無効化</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">画質を優先</string>
+  <string name="morphe_prioritize_video_quality_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
+  <string name="morphe_prioritize_video_quality_dialog">この設定をオフにすると、古い動画で画質を手動で選択できなくなる場合があります</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
+  <string name="morphe_disable_drc_audio_stream_title">オーディオ DRC を無効化</string>
+  <string name="morphe_disable_drc_audio_stream_summary">ダイナミックレンジ圧縮版ではなく、オリジナルのオーディオを再生します</string>
+  <string name="morphe_disable_loudness_normalization_title">ラウドネスノーマライゼーションを無効にする</string>
+  <string name="morphe_disable_loudness_normalization_summary">大きな音のオーディオを標準レベルに下げるのではなく、オリジナルの音量で再生します</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">オリジナルの音声を常に使用</string>
   <string name="morphe_force_original_audio_summary">オリジナルの音声トラック (言語) を常に再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
@@ -223,6 +234,32 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_skip_silence_summary">動画内の無音の部分や会話などの間を自動的にスキップします</string>
   <string name="morphe_skip_silence_minimum_pause_title">スキップする区間の長さのしきい値</string>
   <string name="morphe_skip_silence_minimum_pause_summary">この値よりも短い無音の部分や会話などの間はスキップ (短縮) しません。設定後に再生を開始する動画から適用されます</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">ビデオエフェクト</string>
+  <string name="morphe_video_effect_entry_none">オフ</string>
+  <string name="morphe_video_effects_custom_title">ビデオエフェクトを編集</string>
+  <string name="morphe_video_effects_custom_summary">ビデオエフェクトの変更、名前変更、削除、または追加を行います。エフェクトはシェーダーコードであるため、AIチャットボットで新しいエフェクトを作成できます</string>
+  <string name="morphe_video_effects_custom_empty">ビデオエフェクトはありません。「エフェクトを追加」をタップして作成してください。</string>
+  <string name="morphe_video_effects_custom_add">エフェクトを追加</string>
+  <string name="morphe_video_effects_custom_restore">デフォルトに復元</string>
+  <string name="morphe_video_effects_custom_add_title">新しいエフェクト</string>
+  <string name="morphe_video_effects_custom_edit_title">エフェクトを編集</string>
+  <string name="morphe_video_effects_custom_name_hint">言語名</string>
+  <string name="morphe_video_effects_custom_name_empty">エフェクトの名前を入力してください</string>
+  <string name="morphe_video_effects_custom_name_exists">この名前のエフェクトは既に存在します</string>
+  <string name="morphe_video_effects_custom_copy_code">コードをコピー</string>
+  <string name="morphe_video_effects_custom_error_title">エフェクトにエラーがあります</string>
+  <string name="morphe_video_effects_custom_error_message">"コードが修正されるまで、ビデオはエフェクトなしで表示されます。このエラーを、コードを作成したAIに伝えてください:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"コードが関数またはコメント内で終わっているため、コピーまたは貼り付け時に途切れた可能性があります。貼り付けられたテキストは%d文字で途切れる場合があります。
+
+AIに短いコードをリクエストするか、コードを分割して貼り付けてください。"</string>
+  <string name="morphe_video_effects_custom_copy_error">エラーをコピー</string>
+  <string name="morphe_video_effects_custom_save_anyway">とにかく保存</string>
+  <string name="morphe_video_effects_custom_delete">削除</string>
+  <string name="morphe_video_effects_custom_delete_title">エフェクトを削除しますか？</string>
+  <string name="morphe_video_effects_custom_delete_message">%sは削除されます。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">ネットワーク プロキシ</string>
   <string name="morphe_proxy_screen_summary">対応しているネットワーク リクエストをプロキシ経由で送信します</string>
@@ -253,7 +290,7 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_replace_music_with_youtube_title">共有リンクを youtube.com に変更</string>
   <string name="morphe_replace_music_with_youtube_summary">共有リンクの music.youtube.com を youtube.com に置き換えます</string>
   <string name="morphe_replace_links_with_shortener_title">共有リンクを youtu.be に変更</string>
-  <string name="morphe_replace_links_with_shortener_summary">動画の共有 URL を短縮ドメインである youtu.be に固定します</string>
+  <string name="morphe_replace_links_with_shortener_summary">動画の共有 URL を短縮ドメインである \'youtu.be\' に固定します</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
@@ -265,15 +302,12 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_video_quality_default_mobile_title">モバイルネットワークでのデフォルトの動画画質</string>
   <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル): %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi): %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
-  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho ログ記録</string>
   <string name="morphe_debug_litho_entry_disabled">無効</string>
   <string name="morphe_debug_litho_entry_path">パス</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">パスとバッファ</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho ロギングでは、一部の UI コンポーネントの画面上のテキストを含む、アプリのレイアウト コンポーネントがログに記録されます
+  <string name="morphe_debug_litho_user_dialog_message">"一部の UI コンポーネントの画面上に表示されるテキストを含む、アプリのレイアウト コンポーネントをログに記録します
 
 これにより、カスタム フィルタを作成する際にコンポーネントを識別しやすくなります
 
@@ -342,6 +376,18 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_custom_font_file_summary">TTF または OTF フォント ファイルを選択してください</string>
   <string name="morphe_custom_font_file_invalid">選択されたファイルは TTF または OTF フォントではありません</string>
   <string name="morphe_custom_font_failed_to_load">カスタム フォントを読み込めなかったため、無効になっています</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">ガラスメニュー</string>
+  <string name="morphe_glass_menus_screen_summary">背後のぼかしたコンテンツの上に、フロストガラスのようなメニューを表示します</string>
+  <string name="morphe_glass_menus_title">グラスメニューを有効にする</string>
+  <string name="morphe_glass_menus_summary">メニューとボトムシートを、背後のコンテンツがぼかされたすりガラスのように表示します</string>
+  <string name="morphe_glass_menus_user_dialog_message">バッテリーセーバーがオンの場合、またはデバイスがぼかしをサポートしていない場合は、メニューがほぼ不透明に表示されます</string>
+  <string name="morphe_glass_menus_opacity_title">グラスの透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">メニューがぼかされたコンテンツをどの程度覆うか（0は透明、100は不透明）</string>
+  <string name="morphe_glass_menus_blur_title">ぼかし</string>
+  <string name="morphe_glass_menus_blur_summary">メニュー背後のコンテンツをどの程度ぼかすか</string>
+  <string name="morphe_glass_menus_dim_title">調光</string>
+  <string name="morphe_glass_menus_dim_summary">ボトムシート周囲の画面をどの程度暗くするか</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>
@@ -379,4 +425,8 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限は発生していません</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %s 回発生しました</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ミリ秒</string>
+  <string name="morphe_navigation_bar_screen_title">ナビゲーション バー</string>
+  <string name="morphe_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
+  <string name="morphe_toolbar_screen_title">ツールバー</string>
+  <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
 </resources>
