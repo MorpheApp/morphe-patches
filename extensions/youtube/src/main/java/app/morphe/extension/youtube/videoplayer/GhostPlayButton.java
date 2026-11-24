@@ -92,7 +92,12 @@ public final class GhostPlayButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS || !GhostPlayPatch.isEnabled()) {
+            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) {
+                return;
+            }
+            if (!GhostPlayPatch.isEnabled()) {
+                // The button is part of the layout of the legacy controls, so it shows unless it's hidden.
+                Utils.getChildViewByResourceName(controlsView, "morphe_ghost_play_button").setVisibility(View.GONE);
                 return;
             }
 
