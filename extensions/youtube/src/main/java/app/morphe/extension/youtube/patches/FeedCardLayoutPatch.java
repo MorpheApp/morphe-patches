@@ -248,13 +248,13 @@ public class FeedCardLayoutPatch {
      * Templates of the feed videos, with the field of their model and the known fields of the model
      * where the theme and the capabilities are written when the element is bound.
      */
-    private static final VideoTemplate CLASSIC = new VideoTemplate(CLASSIC_TEMPLATE, 232954548, 6, 29);
-    private static final VideoTemplate CARD = new VideoTemplate(CARD_TEMPLATE, 413471385, 4, 6);
+    private static final VideoTemplate CLASSIC = new VideoTemplate(CLASSIC_TEMPLATE, null, 232954548, 6, 29);
+    private static final VideoTemplate CARD = new VideoTemplate(CARD_TEMPLATE, null, 413471385, 4, 6);
     /**
      * Bottom overlay of the thumbnails, with the same model of the cards.
      */
     private static final VideoTemplate THUMBNAIL_BOTTOM_OVERLAY = new VideoTemplate(
-            THUMBNAIL_BOTTOM_OVERLAY_TEMPLATE, 413471385, 4, 6);
+            THUMBNAIL_BOTTOM_OVERLAY_TEMPLATE, null, 413471385, 4, 6);
     /**
      * Suffix of the template names of newer app versions, before "|hash", such as "-fe".
      */
@@ -625,6 +625,11 @@ public class FeedCardLayoutPatch {
      */
     static final class VideoTemplate {
         final String name;
+        /**
+         * Name of another variant of the template, used only while no version of {@link #name} is cached.
+         */
+        @Nullable
+        private final String fallbackName;
         final int modelField;
         final ByteTrieSearch search;
         volatile int themeField;
@@ -644,8 +649,10 @@ public class FeedCardLayoutPatch {
         private volatile long synchronousLookupTime;
         private long checkTime;
 
-        VideoTemplate(String name, int modelField, int themeField, int capabilitiesField) {
+        VideoTemplate(String name, @Nullable String fallbackName, int modelField, int themeField,
+                      int capabilitiesField) {
             this.name = name;
+            this.fallbackName = fallbackName;
             this.modelField = modelField;
             this.themeField = themeField;
             this.capabilitiesField = capabilitiesField;
@@ -678,6 +685,7 @@ public class FeedCardLayoutPatch {
                 Runnable lookup = () -> {
                     // The cached versions of the template, from the oldest to the newest.
                     List<String> cached = new ArrayList<>();
+                    List<String> fallbackCached = new ArrayList<>();
                     try {
                         File metadata = new File(Utils.getContext().getFilesDir(), "ElementsResourceCacheMetadata");
                         if (metadata.isFile()) {
@@ -699,6 +707,8 @@ public class FeedCardLayoutPatch {
                                         String key = entry.readString();
                                         if (isTemplate(key, name)) {
                                             cached.add(key);
+                                        } else if (fallbackName != null && isTemplate(key, fallbackName)) {
+                                            fallbackCached.add(key);
                                         }
                                     } else {
                                         entry.skipField(entryTag);
@@ -716,6 +726,9 @@ public class FeedCardLayoutPatch {
                     } catch (Exception ex) {
                         Logger.printException(() -> "getUri failure", ex);
                         return;
+                    }
+                    if (cached.isEmpty()) {
+                        cached = fallbackCached;
                     }
                     // An element of the template can be seen while the cache is read.
                     synchronized (this) {
