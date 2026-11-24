@@ -16,6 +16,7 @@ import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModera
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch.CollapseAllScope;
 import app.morphe.extension.reddit.patches.ColorizeCommentIndentLinesPatch.CommentLinePalette;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
+import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassColor;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
 import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrowsingMode;
@@ -24,6 +25,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
+import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.StringSetting;
 
 public class Settings extends BaseSettings {
@@ -33,6 +35,12 @@ public class Settings extends BaseSettings {
 
     // Navigation bar
     public static final BooleanSetting DISABLE_BOTTOM_BAR_AUTO_HIDE = new BooleanSetting("morphe_disable_bottom_bar_auto_hide", FALSE);
+    public static final BooleanSetting GLASS_NAVIGATION_BAR = new BooleanSetting("morphe_glass_navigation_bar", FALSE, true);
+    public static final EnumSetting<GlassColor> GLASS_NAVIGATION_BAR_COLOR = new EnumSetting<>("morphe_glass_navigation_bar_color", GlassColor.AUTO, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_OPACITY = new IntegerSetting("morphe_glass_navigation_bar_opacity", 70, parent(GLASS_NAVIGATION_BAR));
+    public static final BooleanSetting GLASS_NAVIGATION_BAR_ROUND_ENDS = new BooleanSetting("morphe_glass_navigation_bar_round_ends", TRUE, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_HEIGHT = new IntegerSetting("morphe_glass_navigation_bar_height", 100, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_WIDTH = new IntegerSetting("morphe_glass_navigation_bar_width", 100, parent(GLASS_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true);
