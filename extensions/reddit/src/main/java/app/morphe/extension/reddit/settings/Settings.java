@@ -41,6 +41,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting GLASS_NAVIGATION_BAR_ROUND_ENDS = new BooleanSetting("morphe_glass_navigation_bar_round_ends", TRUE, parent(GLASS_NAVIGATION_BAR));
     public static final IntegerSetting GLASS_NAVIGATION_BAR_HEIGHT = new IntegerSetting("morphe_glass_navigation_bar_height", 100, parent(GLASS_NAVIGATION_BAR));
     public static final IntegerSetting GLASS_NAVIGATION_BAR_WIDTH = new IntegerSetting("morphe_glass_navigation_bar_width", 100, parent(GLASS_NAVIGATION_BAR));
+    public static final BooleanSetting SEE_THROUGH_STATUS_BAR = new BooleanSetting("morphe_see_through_status_bar", FALSE, true);
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true);

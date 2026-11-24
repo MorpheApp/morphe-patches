@@ -221,7 +221,6 @@ internal object NavScreenContentStateConstructorFingerprint : Fingerprint(
 internal object DrawRoundRectStubFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     name = "drawRoundRect",
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;", "J", "J", "J", "J", "Ljava/lang/Object;", "F", "I")
 )
@@ -229,7 +228,6 @@ internal object DrawRoundRectStubFingerprint : Fingerprint(
 internal object DrawScopeSizeStubFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     name = "drawScopeSize",
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "J",
     parameters = listOf("Ljava/lang/Object;")
 )
@@ -237,7 +235,6 @@ internal object DrawScopeSizeStubFingerprint : Fingerprint(
 internal object DrawContentStubFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     name = "drawContent",
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;")
 )

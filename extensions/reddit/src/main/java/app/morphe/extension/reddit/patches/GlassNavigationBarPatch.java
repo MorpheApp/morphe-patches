@@ -291,7 +291,7 @@ public final class GlassNavigationBarPatch {
         }
     }
 
-    private static float getDensity() {
+    static float getDensity() {
         if (cachedDensity <= 0f) {
             try {
                 final Context context = Utils.getContext();
@@ -383,7 +383,7 @@ public final class GlassNavigationBarPatch {
         return modifier;
     }
 
-    private static void drawRoundRect(
+    static void drawRoundRect(
             Object scope,
             long color,
             long topLeft,
@@ -393,12 +393,12 @@ public final class GlassNavigationBarPatch {
             float alpha,
             int flags) {}
 
-    private static long drawScopeSize(Object scope) {
+    static long drawScopeSize(Object scope) {
         long v = 0L;
         return v;
     }
 
-    private static void drawContent(Object scope) {}
+    static void drawContent(Object scope) {}
 
     private static long feedColor(Object colors) {
         long v = 0L;

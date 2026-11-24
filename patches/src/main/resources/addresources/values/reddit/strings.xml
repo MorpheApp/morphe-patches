@@ -47,6 +47,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_glass_navigation_bar_height_summary">Phone only. Height of the glass around the buttons, from 70 to 150 percent. Default is 100.</string>
     <string name="morphe_glass_navigation_bar_width_title">Bar width</string>
     <string name="morphe_glass_navigation_bar_width_summary">Phone only. Narrows the bar and its buttons towards the middle of the screen, from 50 to 100 percent. Default is 100.</string>
+    <string name="morphe_see_through_status_bar_title">See-through status bar</string>
+    <string name="morphe_see_through_status_bar_summary">The home feed scrolls up under the status bar and fades into it. Phone layout only, other screens keep the solid bar.</string>
     <string name="morphe_hide_answers_button_title">Hide Answers button</string>
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_create_button_title">Hide Create button</string>
