@@ -112,7 +112,7 @@ val preventNsfwFlashingPatch = patch(
                 } ?: throw PatchException("Could not find the post link used by the view state")
                 val linkRegister = getInstruction<OneRegisterInstruction>(linkRead).registerA
                 val index = linkRead + 1
-                if ((index..index + 3).none { branch ->
+                if ((index until factoryAnchor).none { branch ->
                     val instruction = instructions[branch]
                     instruction.opcode == Opcode.IF_NEZ &&
                             (instruction as OneRegisterInstruction).registerA == linkRegister
