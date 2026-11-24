@@ -266,6 +266,10 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_music_hide_ask_music_button"),
             SwitchPreference("morphe_music_hide_cast_button"),
             SwitchPreference("morphe_music_hide_history_button"),
+            SwitchPreference(
+                "morphe_music_hide_samples_button",
+                titleKey = "morphe_music_hide_navigation_bar_samples_button_title"
+            ),
             SwitchPreference("morphe_music_hide_search_button"),
             SwitchPreference("morphe_music_hide_sound_search_button"),
             SwitchPreference("morphe_music_hide_voice_search_button"),
@@ -408,7 +412,8 @@ val navigationBarPatch = patch(
                     """
                 )
 
-                // The button renderer is the constructor parameter right before the notification count key.
+                // Ask Music and Samples buttons are told apart by the icon of the button renderer,
+                // the constructor parameter right before the notification count key.
                 val classDef = it.classDef
                 val parameterTypes = classDef.methods.first { method ->
                     MethodUtil.isConstructor(method)
@@ -422,7 +427,7 @@ val navigationBarPatch = patch(
                     insertIndex,
                     """
                         iget-object v$freeRegister, p0, ${classDef.type}->${rendererField.name}:$rendererType
-                        invoke-static { v$targetRegister, v$freeRegister }, $EXTENSION_CLASS->hideAskMusicButton(Landroid/view/View;Ljava/lang/Object;)V
+                        invoke-static { v$targetRegister, v$freeRegister }, $EXTENSION_CLASS->hideTopBarButton(Landroid/view/View;Ljava/lang/Object;)V
                     """
                 )
             }
