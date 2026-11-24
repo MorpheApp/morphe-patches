@@ -49,6 +49,7 @@ import app.morphe.extension.youtube.innertube.ElementTexts.ElementModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommand;
 import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommandHolder;
 import app.morphe.extension.youtube.innertube.ElementTexts.ListItemViewModel;
+import app.morphe.extension.youtube.innertube.ElementTexts.LockupImage;
 import app.morphe.extension.youtube.innertube.ElementTexts.LockupMetadataViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataPart;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataRow;
@@ -385,6 +386,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         ElementModel model = element.getType().getComponentType().getModel();
         ViewModelHolder viewModel = model.getYoutubeModel().getViewModel();
         if (model.hasVideoWithContextModel()
+                || viewModel.hasLockupViewModel()
                 || viewModel.hasShortsLockupViewModel()
                 || model.hasCommentModel()
                 || model.hasCompactVideoMetadataModel()
@@ -484,6 +486,10 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         }
 
         ViewModelHolder viewModel = model.getYoutubeModel().getViewModel();
+        if (viewModel.hasLockupViewModel()) {
+            return matchesLockup(search, viewModel.getLockupViewModel().getMetadata()
+                    .getLockupMetadataViewModel(), match);
+        }
         if (viewModel.hasSharedPostViewModel()) {
             return matchesSharedPost(search, viewModel.getSharedPostViewModel(), match);
         }
@@ -503,7 +509,18 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      *         or a channel of the video.
      */
     private static boolean matchesVideo(StringTrieSearch search, VideoData video, KeywordMatch match) {
-        LockupMetadataViewModel metadata = video.getLockupMetadata().getLockupMetadataViewModel();
+        return matchesLockup(search, video.getLockupMetadata().getLockupMetadataViewModel(), match)
+                || matchesChannel(search, video.getAvatar().getEndpoint(), match)
+                || matchesImage(search, video.getDecoratedAvatar(), match)
+                || matchesImage(search, video.getAvatarStack(), match);
+    }
+
+    /**
+     * @return If a keyword matches the title or the lines below the title of a video,
+     *         or a channel of the avatar of the card layout.
+     */
+    private static boolean matchesLockup(StringTrieSearch search, LockupMetadataViewModel metadata,
+                                         KeywordMatch match) {
         if (matches(search, metadata.getTitle().getContent(), match)) {
             return true;
         }
@@ -515,8 +532,13 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             }
         }
 
-        return matchesChannel(search, video.getAvatar().getEndpoint(), match)
-                || matchesChannel(search, video.getAvatarStack().getAvatarStackViewModel()
+        return matchesImage(search, metadata.getImage(), match);
+    }
+
+    private static boolean matchesImage(StringTrieSearch search, LockupImage image, KeywordMatch match) {
+        return matchesChannel(search, image.getDecoratedAvatarViewModel()
+                .getRendererContext().getCommandContext().getOnTap(), match)
+                || matchesChannel(search, image.getAvatarStackViewModel()
                 .getRendererContext().getCommandContext().getOnTap(), match);
     }
 

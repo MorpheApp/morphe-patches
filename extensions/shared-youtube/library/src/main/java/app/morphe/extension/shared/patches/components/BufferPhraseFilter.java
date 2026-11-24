@@ -74,6 +74,8 @@ public abstract class BufferPhraseFilter extends Filter {
             // A/B test for subscribed video, and sometimes when tablet layout is enabled.
             "video_lockup_with_attachment.e",
             "compact_video.e",
+            // Card layout.
+            "lockup.e",
             "inline_shorts",
             "shorts_video_cell",
             "shorts_pivot_item.e"
