@@ -12,6 +12,10 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 
+import android.content.Context;
+
+import org.json.JSONObject;
+
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModeratorComments;
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch.CollapseAllScope;
 import app.morphe.extension.reddit.patches.ColorizeCommentIndentLinesPatch.CommentLinePalette;
@@ -27,6 +31,7 @@ import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.Utils;
 
 public class Settings extends BaseSettings {
     private static final Setting.Availability NSFW_NOT_PERMANENTLY_DISABLED = () -> !PermanentNsfwPatch.isEnabled();
@@ -124,7 +129,24 @@ public class Settings extends BaseSettings {
      * Cannot be turned off again, so it is not included with import/export.
      */
     public static final BooleanSetting PERMANENTLY_DISABLE_NSFW = new BooleanSetting("morphe_permanently_disable_nsfw", FALSE, true, false,
-            "morphe_permanently_disable_nsfw_user_dialog_message", NSFW_NOT_PERMANENTLY_DISABLED);
+            "morphe_permanently_disable_nsfw_user_dialog_message", NSFW_NOT_PERMANENTLY_DISABLED) {
+        @Override
+        protected void load() {
+            super.load();
+            // Preserve activation from earlier test bundles when updating in place.
+            if (PermanentNsfwPatch.isPatchIncluded() && !get()
+                    && Utils.getContext().getSharedPreferences("reddit_permanent_nsfw_lock", Context.MODE_PRIVATE)
+                    .getBoolean("enabled", false)) {
+                save(TRUE);
+            }
+        }
+
+        @Override
+        protected Boolean readFromJSON(JSONObject json, String importExportKey) {
+            // The shared importer still reads explicitly supplied keys excluded from export.
+            return get();
+        }
+    };
     public static final BooleanSetting REMEMBER_COLLAPSED_COMMENTS = new BooleanSetting("morphe_remember_collapsed_comments", TRUE);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
     public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true, NSFW_NOT_PERMANENTLY_DISABLED);
