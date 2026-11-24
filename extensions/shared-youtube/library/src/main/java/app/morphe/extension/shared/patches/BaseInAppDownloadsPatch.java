@@ -227,7 +227,7 @@ public class BaseInAppDownloadsPatch {
      * @return The constants of the format type enum of the app, in the order of the types.
      */
     protected static List<Object> appFormatTypes(Enum<?> formatType, OfflineFormatType[] types) {
-        Object[] constants = formatType.getDeclaringClass().getEnumConstants();
+        Object[] constants = Objects.requireNonNull(formatType.getDeclaringClass().getEnumConstants());
         List<Object> formatTypes = new ArrayList<>(types.length);
         for (OfflineFormatType type : types) {
             formatTypes.add(appFormatType(constants, type));
@@ -606,10 +606,15 @@ public class BaseInAppDownloadsPatch {
 
             // The declined response lacks the parts the app needs to select the streams to save,
             // such as the player config. The response of the other client is used instead,
-            // and only the offline state token and player config are kept from the declined response.
+            // and only the offline state token, video details and player config are kept from the declined response.
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
             builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
+
+            // The video details of other clients lack the music video type, and YouTube Music
+            // then shows a black player background instead of the colors of the album artwork.
+            // The video details of the app's own response are kept, including the fields the proto does not declare.
+            builder.setVideoDetails(original.getVideoDetails());
             if (builder.hasCaptions()) {
                 builder.setCaptions(srv3Captions(builder.getCaptions()));
             }
