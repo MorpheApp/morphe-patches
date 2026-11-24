@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Απόκρυψη διαφημίσεων ροής</string>
   <string name="morphe_hide_comment_ads_title">Απόκρυψη διαφημίσεων στα σχόλια</string>
   <string name="morphe_screen_navigation_bar_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Απενεργοποίηση αυτόματης απόκρυψης κάτω μπάρας</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Διατηρεί τη κάτω γραμμή πλοήγησης ορατή κατά την κύλιση</string>
   <string name="morphe_hide_answers_button_title">Απόκρυψη κουμπιού \"Απαντήσεις\"</string>
   <string name="morphe_hide_chat_button_title">Απόκρυψη κουμπιού \"Συνομιλία\"</string>
   <string name="morphe_hide_create_button_title">Απόκρυψη κουμπιού \"Δημιουργία\"</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Ανανεώστε το feed για να εφαρμοστούν οι αλλαγές</string>
   <string name="morphe_screen_layout_title">Διάταξη</string>
   <string name="morphe_copy_text_title">Αντιγραφή κειμένου</string>
-  <string name="morphe_copy_text_summary">Επιτρέπει την επιλογή και αντιγραφή κειμένου σε αναρτήσεις και σχόλια. Απενεργοποιεί τη σύμπτυξη σχολίων</string>
-  <string name="morphe_copy_text_user_dialog_message">Η σύμπτυξη σχολίων θα σταματήσει να λειτουργεί ενώ η επιλογή «Αντιγραφή κειμένου» είναι ενεργή</string>
+  <string name="morphe_copy_text_summary">Επιτρέπει την επιλογή και την αντιγραφή κειμένου σε αναρτήσεις και σχόλια</string>
   <string name="morphe_custom_font_title">Προσαρμοσμένη γραμματοσειρά</string>
   <string name="morphe_custom_font_summary">Φόρτωση ενός προσαρμοσμένου αρχείου γραμματοσειράς TTF ή OTF από την παρακάτω διαδρομή. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Επιβολή γραμματοσειράς συστήματος.</string>
   <string name="morphe_custom_font_file_path_title">Αρχείο προσαρμοσμένης γραμματοσειράς</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Απενεργοποίηση σύγχρονης διεπαφής αρχικής οθόνης</string>
   <string name="morphe_home_feed_tabs_title">Tabs ροής αρχικής σελίδας</string>
   <string name="morphe_home_feed_tabs_summary">Εμφανίζει τις καρτέλες \"Για εσάς\", \"Ακολουθώ\" και \"Δημοφιλή\" στη ροή της αρχικής σελίδας και επιτρέπει την εναλλαγή μεταξύ τους με σάρωση. Για την καρτέλα \"Ακολουθώ\" απαιτείται σύνδεση σε λογαριασμό</string>
+  <string name="morphe_disable_refresh_on_back_title">Απενεργοποίηση ανανέωσης κατά την επιστροφή για έξοδο</string>
+  <string name="morphe_disable_refresh_on_back_summary">Η επιστροφή στο feed της αρχικής σελίδας δεν μετακινεί πλέον την οθόνη στην κορυφή και δεν ανανεώνει το περιεχόμενο. Πατήστε την επιστροφή δύο φορές για να εξέρθετε από την εφαρμογή</string>
   <string name="morphe_disable_screenshot_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου στη λήψη στιγμιότυπου οθόνης</string>
   <string name="morphe_disable_screenshot_popup_summary">Απενεργοποιεί το αναδυόμενο παράθυρο που εμφανίζεται κατά τη λήψη στιγμιότυπου της οθόνης</string>
   <string name="morphe_feed_auto_scroll_title">Αυτόματη κύλιση ροής</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Απόκρυψη δημοφιλών ραφιών</string>
   <string name="morphe_hide_trending_shelves_summary">Απόκρυψη των δημοφιλών ραφιών από τη ροή και τις προτάσεις αναζήτησης</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Απόκρυψη ραφιού «Βίντεο για εσάς»</string>
+  <string name="morphe_always_show_hide_title">Πάντα εμφάνιση της επιλογής Απόκρυψη</string>
+  <string name="morphe_always_show_hide_summary">Εμφανίζει την επιλογή Απόκρυψη στο μενού των αναρτήσεων της ροής, καθώς και όταν το Reddit εμφανίζει επιλογές συστάσεων όπως \"Εμφάνιση λιγότερων αναρτήσεων σαν αυτή\"</string>
   <string name="morphe_remove_notification_dialog_title">Αφαίρεση του διαλόγου \"Προτεινόμενη Ειδοποίηση\"</string>
   <string name="morphe_remove_notification_dialog_summary">Απορρίπτει αυτόματα το παράθυρο διαλόγου υποδείξεων ειδοποιήσεων κατά την επίσκεψη σε ένα subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatar υψηλής ποιότητας</string>
   <string name="morphe_high_quality_avatars_summary">Εμφανίζει τα avatar των χρηστών σε πλήρη ανάλυση</string>
   <string name="morphe_search_hidden_profiles_title">Αναζήτηση κρυφών προφίλ</string>
-  <string name="morphe_search_hidden_profiles_summary">Εμφανίζει ένα κουμπί σε προφίλ που κρύβουν τις αναρτήσεις ή τα σχόλιά τους, για να βρείτε τις αναρτήσεις τους με την αναζήτηση του Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Αναζήτηση</string>
+  <string name="morphe_search_hidden_profiles_summary">Επιτρέπει στην αναζήτηση προφίλ να βρίσκει αναρτήσεις από προφίλ που κρύβουν τις αναρτήσεις ή τα σχόλιά τους</string>
   <string name="morphe_show_flairs_in_home_feed_title">Εμφάνιση ετικετών στην κύρια ροή</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Εμφανίζει τις ετικέτες αναρτήσεων στην κύρια ροή</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Μερικά στοιχεία της ροής ενδέχεται να μην εμφανίζουν ετικέτα</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Η ένταση της σκοτεινής σκίασης πίσω από τη λεζάντα κατά την προβολή εικόνων και βίντεο, από 0 (χωρίς σκίαση) έως 1 (προεπιλογή του Reddit)</string>
   <string name="morphe_keep_feed_position_title">Διατήρηση θέσης στη ροή</string>
   <string name="morphe_keep_feed_position_summary">Διατηρεί τη ροή στην ίδια θέση μετά το κλείσιμο μιας ανάρτησης, εικόνας ή βίντεο, αντί να μετακινεί την ανοιχτή ανάρτηση στην κορυφή</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης της αρχικής ροής</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Η επιστροφή στην εφαρμογή μετά από κάποιο διάστημα δεν προκαλεί πλέον την επαναφόρτωση της αρχικής ροής και τη μεταφορά της στο πάνω μέρος. Η ανανέωση με σύρσιμο συνεχίζει να λειτουργεί</string>
   <string name="morphe_post_side_panel_title">Πλευρικό πάνελ ανάρτησης</string>
   <string name="morphe_post_side_panel_summary">Σε οθόνες μεγάλων tablet, οι αναρτήσεις ανοίγουν σε ένα πάνελ δίπλα στο feed</string>
   <string name="morphe_post_side_panel_width_title">Πλάτος πάνελ</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Απαντήσεις (τα κορυφαία σχόλια παραμένουν ανοιχτά)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Απαντήσεις σε απαντήσεις (οι άμεσες απαντήσεις παραμένουν ανοιχτές)</string>
   <string name="morphe_collapse_all_comments_button">Συμπτύχτε ή αναπτύξτε όλα τα σχόλια</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Χρωματισμός γραμμών εσοχής σχολίων</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Δίνει σε κάθε επίπεδο απάντησης το δικό του χρώμα γραμμής, ώστε οι μεγάλες συζητήσεις να είναι πιο εύκολο να παρακολουθηθούν</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Χρώματα γραμμών</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Ουράνιο τόξο (φωτεινό)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel ( απαλό)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Προτονισμένο (εναρμονίζεται με τη σελίδα)</string>
   <string name="morphe_remember_collapsed_comments_title">Απομνημόνευση συμπτυγμένων σχολίων</string>
   <string name="morphe_remember_collapsed_comments_summary">Τα σχόλια που συμπτύσσετε παραμένουν συμπτυγμένα όταν ξανανοίγετε την ανάρτηση</string>
   <string name="morphe_app_icon_title">Εικονίδιο εφαρμογής</string>

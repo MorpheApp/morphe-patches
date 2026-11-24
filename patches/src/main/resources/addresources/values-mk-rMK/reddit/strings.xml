@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Скриј реклами во feed</string>
   <string name="morphe_hide_comment_ads_title">Скриј реклами во коментари</string>
   <string name="morphe_screen_navigation_bar_title">Лента за навигација</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Оневозможи автоматско криење на долната лента</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Ја одржува долната导航 лента видлива додека скролате</string>
   <string name="morphe_hide_answers_button_title">Скриј копче „Одговори“</string>
   <string name="morphe_hide_chat_button_title">Скриј копче „Разговор“</string>
   <string name="morphe_hide_create_button_title">Скриј копче „Креирај“</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Освежете го фидото за да се применат промените</string>
   <string name="morphe_screen_layout_title">Изглед</string>
   <string name="morphe_copy_text_title">Копирај текст</string>
-  <string name="morphe_copy_text_summary">Овозможува избирање и копирање текст во објавите и коментарите. Го оневозможува склопувањето на коментарите</string>
-  <string name="morphe_copy_text_user_dialog_message">Склопувањето на коментарите ќе престане да работи додека е овозможено Копирај текст</string>
+  <string name="morphe_copy_text_summary">Овозможува избирање и копирање текст во објавите и коментарите</string>
   <string name="morphe_custom_font_title">Прилагоден фонт</string>
   <string name="morphe_custom_font_summary">Вчитувајте прилагодена TTF или OTF датотека со фонт од патеката подолу. Активирањето на оваа опција исто така го исклучува Присили системен фонт</string>
   <string name="morphe_custom_font_file_path_title">Датотека со прилагоден фонт</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Оневозможи модерен почетен кориснички интерфејс</string>
   <string name="morphe_home_feed_tabs_title">Табови за почетниот feed</string>
   <string name="morphe_home_feed_tabs_summary">Ги прикажува разледистата за \"За вас\", \"Следам\" и \"Популарни\" на почетниот feed и овозможува прелистање помеѓу нив. За разледистата \"Следам\" е потребна најавена сметка</string>
+  <string name="morphe_disable_refresh_on_back_title">Оневозможи го освежувањето при враќање за да излезеш</string>
+  <string name="morphe_disable_refresh_on_back_summary">Враќањето на почетниот фид повеќе не скрола до врвот и не презаредува. Притиснете врати двапати за да ја напуштите апликацијата</string>
   <string name="morphe_disable_screenshot_popup_title">Исклучи искачувачки прозорец за screenshots</string>
   <string name="morphe_disable_screenshot_popup_summary">Го исклучува искачувачкиот прозорец што се појавува кога се прави screenshot</string>
   <string name="morphe_feed_auto_scroll_title">Автоматско скролање на фидот</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Скриј ги полиците со трендови</string>
   <string name="morphe_hide_trending_shelves_summary">Ги крие полиците со трендови од фидот и предлозите за пребарување</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Скриј ја полицата \"Видео за вас\"</string>
+  <string name="morphe_always_show_hide_title">Секогаш прикажи Криј</string>
+  <string name="morphe_always_show_hide_summary">Прикажува \"Скриј\" во менито на објавите во фидот, исто така и кога Reddit прикажува опции за препорака како \"Прикажи помалку објави како оваа\"</string>
   <string name="morphe_remove_notification_dialog_title">Уклони дијалог за предлози за известувања</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматски го отфрла дијалогот за предлози за известувања кога се посетува под-reddit</string>
   <string name="morphe_high_quality_avatars_title">Аватари со висок квалитет</string>
   <string name="morphe_high_quality_avatars_summary">Прикажува кориснички аватари во полна резолуција</string>
   <string name="morphe_search_hidden_profiles_title">Пребарај скриени профили</string>
-  <string name="morphe_search_hidden_profiles_summary">Прикажува копче на профили кои ги кријат своите објави или коментари, за да ги најдат нивните објави со Reddit пребарување</string>
-  <string name="morphe_search_hidden_profiles_button">Пребарај</string>
+  <string name="morphe_search_hidden_profiles_summary">Овозможува пребарувањето на профили да ги најде објавите на профили кои ги кријат своите објави или коментари</string>
   <string name="morphe_show_flairs_in_home_feed_title">Прикажи ознаки во почетниот фид</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Прикажува ознаки за објавите во почетниот фид</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Некои ставки во фидот можеби нема да прикажат ознака</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Јачина на темното заматување зад описот при прегледување слики и видеа, од 0 (без заматување) до 1 (стандардно за Reddit)</string>
   <string name="morphe_keep_feed_position_title">Задржи ја позицијата на фидот</string>
   <string name="morphe_keep_feed_position_summary">Го држи фидот на истата позиција по затворање на објава, слика или видео, наместо да ја помести отворената објава на врвот</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Оневозможи автоматско освежување на почетниот фид</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Враќањето во апликацијата по одредено време повеќе не го презаредува почетниот фид и не го поместува на врвот. Повлечи за освежување сè уште функционира</string>
   <string name="morphe_post_side_panel_title">Страничен панел за објава</string>
   <string name="morphe_post_side_panel_summary">На широки екрани на таблети, објавите се отвораат во панел до фидот</string>
   <string name="morphe_post_side_panel_width_title">Ширина на панелот</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Одговори (главните коментари остануваат отворени)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Одговори на одговори (директните одговори остануваат отворени)</string>
   <string name="morphe_collapse_all_comments_button">Склопи или прошири ги сите коментари</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Обои линии за влегување на коментари</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Секое ниво на одговор добива своја боја на линијата за полеснo следење на долгите нишки</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Бои на линиите</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Ренбоу (сјајни)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастелни (нежни)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Придушени (се сливаат со страницата)</string>
   <string name="morphe_remember_collapsed_comments_title">Запомни склопени коментари</string>
   <string name="morphe_remember_collapsed_comments_summary">Коментарите што ги склопите остануваат склопени кога повторно ќе ја отворите објавата</string>
   <string name="morphe_app_icon_title">Икона на апликацијата</string>

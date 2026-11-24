@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">隐藏广告</string>
   <string name="morphe_hide_comment_ads_title">隐藏评论广告</string>
   <string name="morphe_screen_navigation_bar_title">导航栏</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">禁用底部栏自动隐藏</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">在滚动时保持底部导航栏可见</string>
   <string name="morphe_hide_answers_button_title">隐藏“答案”按钮</string>
   <string name="morphe_hide_chat_button_title">隐藏“聊天”按钮</string>
   <string name="morphe_hide_create_button_title">隐藏“创建”按钮</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">刷新 feed 以应用更改</string>
   <string name="morphe_screen_layout_title">布局</string>
   <string name="morphe_copy_text_title">复制文本</string>
-  <string name="morphe_copy_text_summary">允许在帖子和评论中选择和复制文本。禁用评论折叠功能</string>
-  <string name="morphe_copy_text_user_dialog_message">启用“复制文本”时，折叠评论功能将停止工作</string>
+  <string name="morphe_copy_text_summary">允许在帖子和评论中选择并复制文本</string>
   <string name="morphe_custom_font_title">自定义字体</string>
   <string name="morphe_custom_font_summary">从以下路径加载自定义 TTF 或 OTF 字体文件。启用此选项也会关闭强制系统字体。</string>
   <string name="morphe_custom_font_file_path_title">自定义字体文件</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">禁用现代主界面</string>
   <string name="morphe_home_feed_tabs_title">首页 Feed 标签页</string>
   <string name="morphe_home_feed_tabs_summary">在首页 feed 中显示“为你推荐”、“关注”和“热门”标签页，并允许在它们之间滑动。“关注”需要登录账号</string>
+  <string name="morphe_disable_refresh_on_back_title">禁用返回以退出时的刷新</string>
+  <string name="morphe_disable_refresh_on_back_summary">在首页 feed 中点击返回将不再滚动到顶部并重新加载。连续点击两次返回键即可退出应用</string>
   <string name="morphe_disable_screenshot_popup_title">禁用截图弹窗</string>
   <string name="morphe_disable_screenshot_popup_summary">禁用在截屏时出现的弹窗</string>
   <string name="morphe_feed_auto_scroll_title">Feed 自动滚动</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">隐藏热门书架</string>
   <string name="morphe_hide_trending_shelves_summary">从信息流和搜索建议中隐藏热门标签</string>
   <string name="morphe_hide_videos_for_you_shelf_title">隐藏“为你推荐的视频”内容</string>
+  <string name="morphe_always_show_hide_title">始终显示“隐藏”</string>
+  <string name="morphe_always_show_hide_summary">在动态帖子菜单中显示“隐藏”，以及在 Reddit 显示诸如“显示 fewer 类似帖子”等推荐选项时显示</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建议对话框</string>
   <string name="morphe_remove_notification_dialog_summary">在访问subreddit时自动关闭通知建议对话框</string>
   <string name="morphe_high_quality_avatars_title">高质量头像</string>
   <string name="morphe_high_quality_avatars_summary">以全分辨率显示用户头像</string>
   <string name="morphe_search_hidden_profiles_title">搜索隐藏个人资料</string>
-  <string name="morphe_search_hidden_profiles_summary">在隐藏了帖子或评论的个人资料上显示一个按钮，以便通过 Reddit 搜索查找其帖子</string>
-  <string name="morphe_search_hidden_profiles_button">搜索</string>
+  <string name="morphe_search_hidden_profiles_summary">使个人资料搜索能够找到隐藏了其帖子或评论的个人资料的帖子</string>
   <string name="morphe_show_flairs_in_home_feed_title">在主页信息流中显示 flair</string>
   <string name="morphe_show_flairs_in_home_feed_summary">在主页信息流中显示帖子的 flair 徽章</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">部分信息流条目可能不显示 flair</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">查看图片和视频时，说明文字后暗色淡化效果的强度，从 0（无淡化）到 1（Reddit 默认值）</string>
   <string name="morphe_keep_feed_position_title">保持信息流位置</string>
   <string name="morphe_keep_feed_position_summary">关闭帖子、图片或视频后，保持信息流位置不变，而不是将已打开的帖子移到顶部</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">禁用主页动态自动刷新</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">一段时间后返回应用时，不再重新加载主页动态并将其移至顶部。下拉刷新仍然有效</string>
   <string name="morphe_post_side_panel_title">帖子侧边栏</string>
   <string name="morphe_post_side_panel_summary">在宽屏平板电脑上，帖子将在 feed 旁边的面板中打开</string>
   <string name="morphe_post_side_panel_width_title">面板宽度</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">回复（顶级评论保持展开）</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">回复的回复（直接回复保持展开）</string>
   <string name="morphe_collapse_all_comments_button">折叠或展开所有评论</string>
+  <string name="morphe_colorize_comment_indent_lines_title">评论缩进线着色</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">为每个回复层级赋予单独的线条颜色，使长线程更易于阅读</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">线条颜色</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">彩虹色（亮）</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">柔和色（淡）</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">静谧色（与页面融合）</string>
   <string name="morphe_remember_collapsed_comments_title">记住已折叠的评论</string>
   <string name="morphe_remember_collapsed_comments_summary">你折叠的评论在重新打开帖子时保持折叠状态</string>
   <string name="morphe_app_icon_title">应用图标</string>

@@ -243,6 +243,7 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_hide_keyword_content_screen_title">Anahtar kelime filtresi</string>
   <string name="morphe_hide_keyword_content_screen_summary">Akışta ve aramada videoları gizlemek için belirli kelimeler veya ifadeler seçin</string>
   <string name="morphe_hide_keyword_content_comments_title">Yorumları anahtar kelimelerle gizle</string>
+  <string name="morphe_hide_keyword_content_posts_title">Gönderileri anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_home_title">Ana sayfadaki videoları anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_search_title">Arama sonuçlarını anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Aboneliklerdeki videoları anahtar kelimelerle gizle</string>
@@ -250,10 +251,10 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_hide_keyword_content_phrases_summary">"Gizlenecek anahtar kelimeleri ve ifadeleri satırlara ayrılmış olarak girin
 
 Anahtar kelimeler, video başlıklarında gösterilen herhangi bir metin olabilir. @KullanıcıAdı anahtar kelimesi, belirli oluşturucuların tüm içeriğini gizler"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Ana sayfa / Abonelikler / Arama / Yorumlar anahtar kelime ifadeleriyle eşleşen içeriği gizlemek için filtrelenir
+  <string name="morphe_hide_keyword_content_about_summary">"Ana sayfa / Abonelikler / Arama / Yorumlar / Gönderiler anahtar kelime ifadeleriyle eşleşen içeriği gizlemek için filtrelenir
 
 Kısıtlamalar:
-• Bazı Shorts'lar kanal adı ile filtrelenemez
+• Bazı Shorts'lar kanal adı ile gizlenemez
 • Bazı arayüz bileşenleri gizlenmeyebilir"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Tam kelimeleri eşleştir</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
@@ -266,6 +267,23 @@ Kısıtlamalar:
 • Arama: %3$s
 • Yorumlar: %4$s
 • Toplam: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">İzlenme sayısı filtresi</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Akışlarda ve aramada izlenme sayısı çok az veya çok fazla olan videoları gizle</string>
+  <string name="morphe_hide_videos_by_views_home_title">Ana sayfadaki videoları izlenme sayılarına göre gizle</string>
+  <string name="morphe_hide_videos_by_views_search_title">Arama sonuçlarını izlenme sayılarına göre gizle</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Aboneliklerdeki videoları izlenme sayılarına göre gizle</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Minimum izlenme sayısı</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Daha az izlenen videolar gizlenir. 0 = minimum yok</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Maksimum izlenme sayısı</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Daha fazla izlenen videolar gizlenir. 0 = maksimum yok</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Ana Sayfa / Abonelikler / Ara bölümleri, videoları ve Shorts videolarını izlenme sayılarına göre gizlemek için filtrelenir
+
+Sınırlamalar:
+• YouTube izlenme sayılarını yuvarlar, bu nedenle 1,2K izlenme 1200 izlenme olarak sayılır
+• Canlı yayınlar gizlenmez
+• Gizlenen bir Short, Shorts rafında boş bir alan bırakabilir"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">İzlenme sayısı filtresi tüm videoları gizler</string>
   <string name="morphe_hide_stats_category_title">İstatistikler</string>
   <string name="morphe_hide_stats_hidden_24h_title">Son 24 saatte gizlenen videolar</string>
   <string name="morphe_hide_stats_hidden_all_title">Tüm zamanlarda gizlenen videolar</string>
@@ -678,14 +696,14 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_ryd_feed_counts_position_entry_1">İzlenme sayısının yanında</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Orta sağ</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Sol üst</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Yorumları ara</string>
-  <string name="morphe_search_comments_summary">Aranan tüm kelimeleri içeren yalnızca yüklü yorumları görüntülemek için yorumlardaki arama düğmesine dokunun. Bir ifadeyi aramak için kelimeleri tırnak içine alın</string>
-  <string name="morphe_search_comments_dialog_title">Yorumları ara</string>
-  <string name="morphe_search_comments_hint">Aranacak kelimeler</string>
-  <string name="morphe_search_comments_clear">Temizle</string>
-  <string name="morphe_search_comments_applied">Yorumları aramak için sıralamayı değiştirin veya yorumları tekrar açın</string>
-  <string name="morphe_search_comments_cleared">Arama temizlendi. Tüm yorumları görüntülemek için sıralamayı değiştirin veya yorumları tekrar açın</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Yorumları ara</string>
+  <string name="morphe_comment_search_summary">Aranan tüm kelimeleri içeren yalnızca yüklü yorumları görüntülemek için yorumlardaki arama düğmesine dokunun. Bir ifadeyi aramak için kelimeleri tırnak içine alın</string>
+  <string name="morphe_comment_search_dialog_title">Yorumları ara</string>
+  <string name="morphe_comment_search_hint">Aranacak kelimeler</string>
+  <string name="morphe_comment_search_clear">Temizle</string>
+  <string name="morphe_comment_search_applied">Yorumları aramak için sıralamayı değiştirin veya yorumları tekrar açın</string>
+  <string name="morphe_comment_search_cleared">Arama temizlendi. Tüm yorumları görüntülemek için sıralamayı değiştirin veya yorumları tekrar açın</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV\'ye oturum aç\" penceresini devre dışı bırak</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Cihazlarınızı bağlayın\' açılır penceresini devre dışı bırak</string>
@@ -1170,6 +1188,9 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_show_settings_button_title">Ayarlar düğmesini göster</string>
   <string name="morphe_show_settings_button_type_title">Ayarlar düğmesi işlevi</string>
   <string name="morphe_show_settings_button_type_summary">Etkinleştirildiğinde dokunma Morphe ayarlarını uzun basma YouTube ayarlarını açar, devre dışı bırakmak davranışı değiştirir</string>
+  <string name="morphe_you_button_account_switcher_title">Hesap değiştirici kısayolu</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Hesap değiştiriciyi açmak için \"Siz\" düğmesine uzun basın</string>
   <string name="morphe_navigation_buttons_order_title">Gezinme düğmeleri sırası</string>
   <string name="morphe_navigation_buttons_order_summary">Gezinme çubuğundaki sırasını değiştirmek için düğmeleri sürükleyin</string>
   <string name="morphe_swap_create_with_notifications_button_title">Oluştur düğmesini Bildirimler düğmesiyle değiştir</string>
@@ -1446,6 +1467,8 @@ Otomotiv düzeni
   <string name="morphe_playback_in_feeds_entry_always_on">Her zaman açık</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Yalnızca Wi-Fi üzerinde</string>
   <string name="morphe_playback_in_feeds_entry_off">Kapalı</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Akışlarda arama butonlarını göster</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">YouTube göstermediğinde bile akışlarda oynatılan videolarda arama butonlarını gösterir</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Orijinal başlıkları geri yükle</string>
   <string name="morphe_restore_original_titles_summary">Orijinal video başlıklarını, video açıklamalarını ve kanal açıklamalarını otomatik çevrilenlerin yerine gösterir</string>
@@ -2052,4 +2075,106 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_live_chat_translate_max_length_title">Maksimum mesaj uzunluğu</string>
   <string name="morphe_live_chat_translate_max_length_summary">Daha uzun mesajlar çevrilmeden gösterilir</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Limitsiz</string>
+  <string name="morphe_ghost_play_screen_title">Hayalet modu</string>
+  <string name="morphe_ghost_play_screen_summary">İzleme geçmişini veya önerileri etkilemeden videoları izleyin</string>
+  <string name="morphe_ghost_play_cat_general_title">Genel</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Butonlar</string>
+  <string name="morphe_ghost_play_cat_rules_title">Otomatik hayalet kuralları</string>
+  <string name="morphe_ghost_play_cat_history_title">Yerel geçmiş</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Gelişmiş gizlilik</string>
+  <string name="morphe_ghost_play_enabled_title">Hayalet modunu etkinleştir</string>
+  <string name="morphe_ghost_play_enabled_summary">İzleme geçmişini veya önerileri etkilemeden seçilen videoların, Shorts\'ların, aramaların, kanalların veya tüm oturumların izlenmesine olanak tanır</string>
+  <string name="morphe_ghost_play_mode_active_title">Hayalet modu aktif</string>
+  <string name="morphe_ghost_play_mode_active_summary">AÇIK olduğunda, akışlardan, ilgili videolardan veya aramadan normal şekilde açtığınız her video, üç nokta menüsünü kullanmadan Hayalet modunda oynatılır</string>
+  <string name="morphe_ghost_play_persist_mode_title">Yeniden başlatmalarda Hayalet modunu hatırla</string>
+  <string name="morphe_ghost_play_persist_mode_summary">YouTube kapatılıp yeniden açıldıktan sonra bile Hayalet modunu AÇIK tutar</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Üst çubukta Hayalet modu anahtarını göster</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Üst çubuk simgelerinin yanına kompakt bir Hayalet modu anahtarı yerleştirir (geçiş yapmak için dokunun, hızlı kontroller için uzun basın)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Video menüsünde göster</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Videoların üç nokta menüsüne \"Hayalet modunda oynat\" seçeneğini ekler</string>
+  <string name="morphe_ghost_play_player_button_title">Ghost modu düğmesini göster</string>
+  <string name="morphe_ghost_play_player_button_summary">Video oynatıcıda bir Ghost modu açma/kapama düğmesi gösterir (hızlı kontroller için uzun basın)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Oynatma isteklerini anonimleştir</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Daha güçlü bir izolasyon için ghost oynatma ve etkinlik isteklerinden hesap üstbilgilerini kaldırır. Etkin olduğunda yaş kısıtlamalı, yalnızca üyelere özel ve Premium özellikler kullanılamaz</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Shorts\'u otomatik ghost\'la</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Ana sayfa akışınızı etkilememeleri için Shorts videolarını otomatik olarak Hayalet modunda izler</string>
+  <string name="morphe_ghost_play_auto_search_title">Aramadaki videoları otomatik olarak hayaletle</string>
+  <string name="morphe_ghost_play_auto_search_summary">Arama sonuçlarından açılan videoları otomatik olarak Hayalet modunda izler</string>
+  <string name="morphe_ghost_play_manage_channels_title">Kanalları otomatik olarak hayaletle</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Her zaman Hayalet modunda oynatılan kanalları arayın, ekleyin, inceleyin ve yönetin</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d kanal yapılandırıldı — arama yapmak, incelemek veya kaldırmak için dokunun</string>
+  <string name="morphe_ghost_play_local_history_title">Yerel Hayalet geçmişini tut</string>
+  <string name="morphe_ghost_play_local_history_summary">Hayalet modu videolarını ve oynatma konumlarını yalnızca bu cihazda hatırlar (YouTube\'a asla gönderilmez)</string>
+  <string name="morphe_ghost_play_history_limit_title">Yerel Hayalet geçmişi sınırı</string>
+  <string name="morphe_ghost_play_history_limit_summary">Cihazda tutulan maksimum video sayısı (en eski girişler otomatik olarak kaldırılır)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d video kaydedildi (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Kaydedilmiş video yok</string>
+  <string name="morphe_ghost_play_history_limit_100">100 video</string>
+  <string name="morphe_ghost_play_history_limit_500">500 video</string>
+  <string name="morphe_ghost_play_history_limit_2000">2.000 video</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Sınırsız</string>
+  <string name="morphe_ghost_play_view_history_title">Yerel Ghost geçmişini aç</string>
+  <string name="morphe_ghost_play_view_history_summary">Cihaz geçmişinizi görüntüleyin, arayın, Ghost modunda devam edin veya temizleyin</string>
+  <string name="morphe_ghost_play_view_history_summary_count">Cihazda %1$d video kayıtlı (%2$s) — görüntülemek veya devam etmek için dokunun</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Henüz video kaydedilmedi (yalnızca bu cihazda saklanır)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%ddk</string>
+  <string name="morphe_ghost_play_flyout_action">Ghost modunda oynat</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost modu aktif — izleme geçmişi ve öneriler korumalıdır</string>
+  <string name="morphe_ghost_play_video_off_toast">Bu video için Ghost modu KAPALI</string>
+  <string name="morphe_ghost_play_session_on_toast">Hayalet mod AÇIK — videolar geçmişi veya önerileri etkilemeyecek</string>
+  <string name="morphe_ghost_play_session_off_toast">Hayalet mod KAPALI — normal oynatmaya dönüldü</string>
+  <string name="morphe_ghost_play_timer_set_toast">Hayalet mod %d dakika boyunca aktif</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Zamanlayıcı temizlendi — Hayalet mod AÇIK kalıyor</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">1 ile 720 dakika arasında bir süre girin</string>
+  <string name="morphe_ghost_play_dialog_title">Hayalet mod</string>
+  <string name="morphe_ghost_play_state_on">Açık</string>
+  <string name="morphe_ghost_play_state_off">Kapalı</string>
+  <string name="morphe_ghost_play_close">Kapat</string>
+  <string name="morphe_ghost_play_open_settings">Tüm ayarlar</string>
+  <string name="morphe_ghost_play_quick_power_hint">Hayalet modu açıp kapatmak için dokunun</string>
+  <string name="morphe_ghost_play_quick_timer_title">Süreli Hayalet mod</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Süreyi seçmek için dokunun</string>
+  <string name="morphe_ghost_play_quick_timer_running">Zamanlayıcı aktif · %d dk kaldı</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Bittiğinde otomatik olarak normal moda döner</string>
+  <string name="morphe_ghost_play_quick_timer_change">Süreyi değiştir</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Zamanlayıcıyı temizle (AÇIK tut)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%ddk</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Özel dakika (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Ayarla</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Bu kanal için Otomatik Hayalet AÇIK</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Bu kanal için Otomatik hayalet KAPALI</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d kanal yapılandırıldı</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Liste (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" otomatik hayalet kanallara eklendi</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" otomatik hayalet kanallardan kaldırıldı</string>
+  <string name="morphe_ghost_play_history_title">Yerel Hayalet geçmişi</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d video (%s) · Hayalet modunda devam etmek için dokunun, kaldırmak için basılı tutun</string>
+  <string name="morphe_ghost_play_history_search_hint">Video başlığına veya kanala göre filtrele…</string>
+  <string name="morphe_ghost_play_history_no_match">Yerel Hayalet geçmişinde eşleşen video yok</string>
+  <string name="morphe_ghost_play_history_empty">Henüz yerel Hayalet geçmişi yok</string>
+  <string name="morphe_ghost_play_history_clear_all">Tümünü temizle</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Yerel Hayalet geçmişi temizlensin mi?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Bu işlem, cihazda kayıtlı tüm Hayalet modu girişlerini kaldırır ve geri alınamaz.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Yerel Hayalet geçmişi temizlendi</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Yerel Hayalet geçmişinden kaldırıldı</string>
+  <string name="morphe_ghost_play_channels_manager_title">Otomatik Hayalet kanalları</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Eklendi (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Ara &amp; Ekle</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Eklenen kanalları isme, @kullanıcı adına veya konuya göre filtreleyin…</string>
+  <string name="morphe_ghost_play_channels_empty">Henüz kanal eklenmedi. Kanalları isme, @kullanıcı adına veya URL\'ye göre bulmak için \"Ara &amp; Ekle\" sekmesine geçin.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Eklenen kanallar arasında filtrenize uyan yok</string>
+  <string name="morphe_ghost_play_channels_add_current">Çalınıyor: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Ekle</string>
+  <string name="morphe_ghost_play_channels_added_badge">Eklendi</string>
+  <string name="morphe_ghost_play_channels_delete_button">Kaldır</string>
+  <string name="morphe_ghost_play_channels_search_hint">Kanal adı, @kullanıcı adı veya URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Ara</string>
+  <string name="morphe_ghost_play_channels_search_guide">Bir kanal adı, @kullanıcıadı veya YouTube kanal URL\'si girin ve Ara\'ya dokunun</string>
+  <string name="morphe_ghost_play_channels_searching">YouTube kanalları aranıyor…</string>
+  <string name="morphe_ghost_play_channels_search_error">Arama başarısız oldu. Bağlantınızı kontrol edin ve tekrar deneyin.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Bu sorgu için kanal bulunamadı</string>
+  <string name="morphe_ghost_play_channels_search_count">%d kanal bulundu — otomatik ghost\'u etkinleştirmek için Ekle\'ye dokunun</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Son videolar</string>
+  <string name="morphe_ghost_play_channels_loading_details">Son videolar yükleniyor…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Son videolara ulaşılamadı (tekrar denemek için dokunun)</string>
 </resources>

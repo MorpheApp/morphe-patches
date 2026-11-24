@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ลองเปิดใช้งาน: ปลอมแปลงสตรีมวิดีโอ &gt; เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">ไคลเอ็นต์เริ่มต้น</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">ใช้ QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">ใช้ QuackJS แทน yt-dlp-ejs (WebView) สำหรับการถอดรหัส</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">การลงชื่อเข้าใช้ \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ต้องมีการลงชื่อเข้าใช้แยกต่างหาก แตะที่นี่เพื่อดำเนินการต่อ</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการตรวจสอบสิทธิ์ Android VR
 • หากไม่มีการใช้แอปนี้เป็นเวลา 6 เดือน Google จะลบการตรวจสอบสิทธิ์นี้
 • คุณจะต้องลงชื่อเข้าใช้อีกครั้งหากคุณเปลี่ยนรหัสผ่าน Google หรือยกเลิกการลงทะเบียนอุปกรณ์นี้จากการตั้งค่า Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">การลงชื่อเข้าใช้ \'เว็บบนมือถือ\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ลงชื่อเข้าใช้ผ่านเว็บ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ไม่บังคับ: ลงชื่อเข้าใช้เว็บไซต์ YouTube เพื่อเล่นวิดีโอด้วยบัญชีของคุณ แตะที่นี่เพื่อดำเนินการต่อ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ขณะนี้ลงชื่อเข้าใช้ \'Mobile Web\' อยู่</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ขณะนี้ลงชื่อเข้าใช้เว็บไซต์ YouTube อยู่</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">เปลี่ยน \'ไคลเอ็นต์เริ่มต้น\' เป็น \'Mobile Web\' เพื่อใช้งานคุณสมบัตินี้</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ลงชื่อเข้าใช้ \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' จะเล่นวิดีโอโดยไม่ได้ลงชื่อเข้าใช้ หรือลงชื่อเข้าใช้เว็บไซต์ YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'ไคลเอ็นต์เริ่มต้น\' เป็นไคลเอ็นต์เว็บ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ลงชื่อเข้าใช้เว็บไซต์ YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ไคลเอนต์เว็บจะเล่นวิดีโอโดยไม่ได้ลงชื่อเข้าใช้ หรือลงชื่อเข้าใช้ในเว็บไซต์ YouTube
 
-• เมื่อลงชื่อเข้าใช้ จะสามารถเล่นวิดีโอที่ต้องมีบัญชีได้ เช่น วิดีโอที่มีการจำกัดอายุ
+• เมื่อลงชื่อเข้าใช้ จะสามารถเล่นวิดีโอที่ต้องใช้บัญชีได้ เช่น วิดีโอที่จำกัดอายุ
 • หน้าลงชื่อเข้าใช้ Google จะเปิดขึ้นในแอปนี้
-• การลงชื่อเข้าใช้จะถูกนำมาใช้เพื่อรับวิดีโอที่คุณเล่นเท่านั้น
+• การลงชื่อเข้าใช้มีไว้เพื่อรับวิดีโอที่คุณเล่นเท่านั้น
 • การลงชื่อเข้าใช้จะถูกบันทึกไว้ในอุปกรณ์นี้เท่านั้น
+• ไคลเอนต์เว็บแต่ละรายมีการลงชื่อเข้าใช้ของตนเอง สำหรับไคลเอนต์เริ่มต้นที่เลือก
 
 หากต้องการลงชื่อเข้าใช้ ให้กดดำเนินการต่อด้านล่าง"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"บันทึกการลงชื่อเข้าใช้แล้ว
 
-• การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการลงชื่อเข้าใช้ 'Mobile Web'
-• หาก Google ยุติการลงชื่อเข้าใช้ วิดีโอจะถูกเล่นในสถานะไม่ได้ลงชื่อเข้าใช้จนกว่าคุณจะลงชื่อเข้าใช้อีกครั้ง
-• การลงชื่อออกจะทำให้อุปกรณ์นี้ลงชื่อออกจากเว็บไซต์ YouTube ด้วยเช่นกัน"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">การลงชื่อเข้าใช้ Mobile Web หมดอายุ โปรดลองลงชื่อเข้าใช้ \'Mobile Web\' อีกครั้ง</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ลงชื่อออกจาก \'Mobile Web\' แล้ว</string>
+• การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการลงชื่อเข้าใช้เว็บไซต์ YouTube
+• หาก Google สิ้นสุดการลงชื่อเข้าใช้ วิดีโอจะถูกเล่นในสถานะไม่ได้ลงชื่อเข้าใช้จนกว่าคุณจะลงชื่อเข้าใช้อีกครั้ง
+• การลงชื่อออกจะทำให้เครื่องนี้ลงชื่อออกจากเว็บไซต์ YouTube ด้วย"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">การลงชื่อเข้าใช้เว็บหมดอายุ โปรดลองลงชื่อเข้าใช้อีกครั้ง</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ลงชื่อออกจากเว็บไซต์ YouTube แล้ว</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">ไม่พบ \'Android System WebView\' โปรดติดตั้งหรือเปิดใช้งานเพื่อลงชื่อเข้าใช้</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ไม่สามารถใช้งานได้ชั่วคราว (API หมดเวลา)</string>
   <string name="morphe_oauth2_connection_failure_status_400">การลงชื่อเข้าใช้ \'Android VR\' หมดอายุ โปรดลองลงชื่อเข้าใช้ VR อีกครั้ง</string>

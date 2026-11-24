@@ -140,6 +140,8 @@ Sakatu AD to Android System WebView irekitzeko."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Saiatu aktibatzen: Bideo-fluxuak imitatu &gt; Android VR saioa hasi</string>
   <string name="morphe_spoof_video_streams_client_type_title">Bezero lehenetsia</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Erabili QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Erabili QuackJS yt-dlp-ejs-en (WebView) ordez deobfuskazioa egiteko</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' sarrera</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-k saio bakarra eta berezia eskatzen du. Sakatu hemen jarraitzeko</string>
@@ -168,27 +170,28 @@ Saioa hasteko, sakatu behean jarraitu"</string>
 • Morphe konfigurazioek ez dute Android VR autentifikazioa inportatu/esportatuko
 • Aplikazio hau 6 hilabetez erabili gabe badago, Googlek autentifikazio hau kenduko du
 • Google pasahitza aldatzen baduzu edo gailu hau Google ezarpenetatik kentzen baduzu, berriro saioa hasi beharko duzu"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Web mugikorra\' sarrera</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web bidean saioa hasi insurgents</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Aukeratua: saioa hasi YouTube webgunetan zure kontuarekin bideoaka izateko. Egun hemen jarraitzeko</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Une honetan \'Web Mobile\'-n saioa hasita dago</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Unean YouTube webgunean saioa hasita dagozu</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' \'Web Mobile\'-era</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sartu \'Web Mugikorrean\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Web Mugikorrak' bideoak errekinik edo YouTube webgunean sartuta jurgatzen ditu
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' Web bezero batera</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube webgunean saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web bezeroek bideoak erreparatuta gabe edo YouTube webgunean saioa hasituta joku ditzakete
 
-• Sartuta, kontu bat behar duten bideoak jurgatu daitezke, adina mugatutako bideoak adibidez
-• Google-ren sarrera-orria aplikazio honetan irekitzen da
-• Sarrera jurgatzen dituzun bideoak lortzeko soilik erabiltzen da
-• Sarrera gailu honetan bakarrik gordetzen da
+• Saioa hasituta, kontu bat behar duten bideoak joku daitezke, adina mugatutako bideoak adibidez
+• Google-ren saioa hasten duten orria aplikazio honetan irekiko da
+• Saioa hasten dena joku ditzukezunen bideoak lortzeko soilik erabiltzen da
+• Saioa hasten dena gailu honetan soilik gordetzen da
+• Web bezero bakoitzak bere saioa du, hautatutako bezero lehenetsugarriarentzat
 
-Sartzeko, sakatu beheko jarraitu botoia"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sarrera gordatuta
+Saioa hasteko, sakatu beheko jarraipena"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sarrera gorde da
 
-• Zure Morphe konfigurazioek ez dute 'Web Mugikorraren' sarrera inportatuko/esportatuko
-• Google-k sarrera amaituen bitartean, bideoak errekinik jurgatuko dira berriz sartu arte
-• Sesioa itxilotzeak gailu hau YouTube webgunetik ere ateratuko du"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web saioa iraungi da, saiatu berriro \'Mobile Web\'-en saioa hasten</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobile Web\'-en saioa amaitu da</string>
+• Zure Morphe konfigurazioek ez dute YouTube webguneko sarrera inportatuko/esportatuko
+• Googlek sarrera amaituta, bideoak saioa hasi gabe joko dira berriro saioa hasi arte
+• Saioa itxilota, gailu honek ere YouTube webguneko saioa itxildu egingo du"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web sarrera iraungi da, saiatu berriro saioa hasten</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube webguneko saioa itxita</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' eskuragarri ez da. Instalatu edo aktibatu saioa hasteko</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 une batez ez dago erabilgarri (APIak denbora gehiegi behar izan du)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' saioa iraungi da, saiatu berriro VR-n saioa hasten</string>

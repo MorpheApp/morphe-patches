@@ -29,6 +29,8 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_hide_post_ads_title">Sakrij oglase u feedu</string>
   <string name="morphe_hide_comment_ads_title">Sakrij reklame u komentarima</string>
   <string name="morphe_screen_navigation_bar_title">Navigacijska traka</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Onemogući automatsko skrivanje donje trake</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Zadržava donju navigacijsku traku vidljivom tokom skrolanja</string>
   <string name="morphe_hide_answers_button_title">Sakrij dugme Odgovori</string>
   <string name="morphe_hide_chat_button_title">Sakrij dugme Chat</string>
   <string name="morphe_hide_create_button_title">Sakrij dugme Kreiraj</string>
@@ -78,8 +80,7 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_keyword_filters_saved">Osvježite feed kako biste primijenili promjene</string>
   <string name="morphe_screen_layout_title">Izgled</string>
   <string name="morphe_copy_text_title">Kopiraj tekst</string>
-  <string name="morphe_copy_text_summary">Omogućava odabir i kopiranje teksta u objavama i komentarima. Onemogućava skupljanje komentara</string>
-  <string name="morphe_copy_text_user_dialog_message">Skupljanje komentara će prestati raditi dok je opcija Kopiraj tekst omogućena</string>
+  <string name="morphe_copy_text_summary">Omogućava odabir i kopiranje teksta u objavama i komentarima</string>
   <string name="morphe_custom_font_title">Prilagođeni font</string>
   <string name="morphe_custom_font_summary">Učitajte prilagođenu TTF ili OTF datoteku fonta sa putanje ispod. Omogućavanje ove opcije također isključuje Forsiraj sistemski font</string>
   <string name="morphe_custom_font_file_path_title">Datoteka prilagođenog fonta</string>
@@ -91,6 +92,8 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_disable_modern_home_title">Onemogući moderno korisničko sučelje početne stranice</string>
   <string name="morphe_home_feed_tabs_title">Kartice početnog feeda</string>
   <string name="morphe_home_feed_tabs_summary">Prikazuje kartice Za vas, Praćeno i Popularno na početnom feedu i omogućava prebacivanje između njih prevlačenjem. Za karticu Praćeno potreban je prijavljen račun</string>
+  <string name="morphe_disable_refresh_on_back_title">Onemogući osvježavanje pri povratku za izlazak</string>
+  <string name="morphe_disable_refresh_on_back_summary">Povratak na početni feed više ne skroluje do vrha i ponovo učitava. Pritisnite natrag dvaput da napustite aplikaciju</string>
   <string name="morphe_disable_screenshot_popup_title">Onemogući iskačući prozor za snimku ekrana</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogućava iskačući prozor koji se pojavljuje prilikom pravljenja snimke ekrana</string>
   <string name="morphe_feed_auto_scroll_title">Automatsko pomjeranje feeda</string>
@@ -124,13 +127,14 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_hide_trending_shelves_title">Sakrij Trending police</string>
   <string name="morphe_hide_trending_shelves_summary">Sakriva Trending police iz feeda i prijedloga za pretragu</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Sakrij policu \"Videozaprvo vama\"</string>
+  <string name="morphe_always_show_hide_title">Uvijek prikaži Sakrij</string>
+  <string name="morphe_always_show_hide_summary">Prikazuje opciju Sakrij u meniju objava u feedu, kao i kada Reddit prikazuje opcije za preporuku kao što je \"Prikaži manje objava poput ove\"</string>
   <string name="morphe_remove_notification_dialog_title">Ukloni dijalog za prijedloge obavijesti</string>
   <string name="morphe_remove_notification_dialog_summary">Automatski zatvara dijalog sa prijedlogom obavještenja prilikom posjete subredditu</string>
   <string name="morphe_high_quality_avatars_title">Avatari visokog kvaliteta</string>
   <string name="morphe_high_quality_avatars_summary">Prikazuje korisničke avatare u punoj rezoluciji</string>
   <string name="morphe_search_hidden_profiles_title">Pretraži skrivene profile</string>
-  <string name="morphe_search_hidden_profiles_summary">Prikazuje dugme na profilima koji skrivaju svoje objave ili komentare, kako bi se njihove objave pronašle putem Reddit pretrage</string>
-  <string name="morphe_search_hidden_profiles_button">Pretraži</string>
+  <string name="morphe_search_hidden_profiles_summary">Omogućava da pretraga profila pronaĝlazy objave profila koji skrivaju svoje objave ili komentare</string>
   <string name="morphe_show_flairs_in_home_feed_title">Prikaži flairove u početnom feedu</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Prikazuje bedževe za flair objava u početnom feedu</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Neke stavke u feedu možda neće prikazivati flair</string>
@@ -171,6 +175,8 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_media_viewer_fade_summary">Jačina tamnog zatamnjivanja iza natpisa prilikom pregledavanja slika i videozapisa, od 0 (bez zatamnjivanja) do 1 (Redditova zadana vrijednost)</string>
   <string name="morphe_keep_feed_position_title">Zadrži poziciju feed-a</string>
   <string name="morphe_keep_feed_position_summary">Zadržava feed na istoj poziciji nakon zatvaranja objave, slike ili videa, umjesto pomjeranja otvorene objave na vrh</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Onemogući automatsko osvježavanje početnog feeda</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Povratak u aplikaciju nakon nekog vremena više ne ponovno učitava početni feed i ne pomjera ga na vrh. Povlačenje za osvježavanje i dalje radi</string>
   <string name="morphe_post_side_panel_title">Bočni panel objave</string>
   <string name="morphe_post_side_panel_summary">Na širokim ekranima tableta, objave se otvaraju u panelu pored feeda</string>
   <string name="morphe_post_side_panel_width_title">Širina panela</string>
@@ -260,6 +266,12 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_collapse_all_comments_scope_entry_replies">Odgovori (glavni komentari ostaju otvoreni)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Odgovori na odgovore (direktni odgovori ostaju otvoreni)</string>
   <string name="morphe_collapse_all_comments_button">Skupi ili proširi sve komentare</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Oboji linije uvlačenja komentara</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Dodjeljuje svakom nivou odgovora vlastitu boju linije kako bi duge niti bile lakše za praćenje</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Boje linija</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Dugine (jarke)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastelno (mekano)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Prigušeno (stapa se sa stranicom)</string>
   <string name="morphe_remember_collapsed_comments_title">Zapamti sklopljene komentare</string>
   <string name="morphe_remember_collapsed_comments_summary">Komentari koje sklopite ostaju sklopljeni kada ponovo otvorite objavu</string>
   <string name="morphe_app_icon_title">Ikona aplikacije</string>

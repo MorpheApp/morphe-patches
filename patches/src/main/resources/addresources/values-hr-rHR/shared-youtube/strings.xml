@@ -140,6 +140,8 @@ Dodirnite OK kako biste otvorili Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušajte omogućiti: Lažiraj video streamove > Prijava u Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardni klijent</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Koristi QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Koristi QuackJS umjesto yt-dlp-ejs-a (WebView) za deobfuskaciju</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava za \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Za \'Android VR\' je potrebna zasebna prijava. Dodirnite ovdje za nastavak</string>
@@ -168,27 +170,28 @@ Za prijavu pritisnite Nastavi ispod"</string>
 • Vaši Morphe postavki neće uvoziti/izvoziti Android VR autentikaciju
 • Ako se ova aplikacija ne koristi 6 mjeseci, Google će ukloniti ovu autentikaciju
 • Morat ćete se ponovno prijaviti ako promijenite svoju Google lozinku ili deregistrirate ovaj uređaj iz postavki Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prijava za \"mobilni web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prijava putem weba</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcionalno: prijavite se na web-mjesto YouTube kako biste reproducirali videozapise putem svog računa. Dodirnite ovdje za nastavak</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Trenutno ste prijavljeni na \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Trenutno ste prijavljeni na web stranicu YouTubea</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Da biste koristili ovu značajku, promijenite \'Zadani klijent\' u \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prijavite se na \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobilni web' reproducira videozapise bez prijave ili uz prijavu na web stranicu YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Da biste koristili ovu značajku, promijenite \"Zadani klijent\" u Web klijent</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prijavite se na web stranicu YouTubea</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web klijenti reproduciraju videozapise bez prijave ili prijavljeni na web stranicu YouTubea
 
-• Uz prijavu mogu se reproducirati videozapisi koji zahtijevaju račun, kao što su videozapisi s ograničenjem starosti
-• Stranica za prijavu u Google otvara se u ovoj aplikaciji
+• Ako ste prijavljeni, mogu se reproducirati videozapisi koji zahtijevaju račun, kao što su videozapisi s ograničenjem starosti
+• Stranica za prijavu na Google otvara se u ovoj aplikaciji
 • Prijava se koristi samo za dohvaćanje videozapisa koje reproducirate
 • Prijava se sprema samo na ovom uređaju
+• Svaki web klijent ima vlastitu prijavu za odabrani zadani klijent
 
 Za prijavu pritisnite nastavite u nastavku"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prijava spremljena
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prijava je spremljena
 
-• Vaše Morphe postavke neće uvesti/izvesti prijavu za 'Mobilni web'
-• Ako Google prekine prijavu, videozapisi se reproduciraju bez prijave dok se ponovno ne prijavite
-• Odjava također odjavljuje ovaj uređaj s web stranice YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Prijava za Mobilni web je istekla, pokušajte se ponovno prijaviti u \'Mobilni web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odjavljeni s \'Mobilnog weba\'</string>
+• Vaše Morphe postavke neće uvoziti/izvoziti prijavu na web stranicu YouTubea
+• Ako Google prekine prijavu, videozapisi će se reproducirati bez prijave dok se ponovno ne prijavite
+• Odjava također odjavljuje ovaj uređaj s web stranice YouTubea"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web prijava je istekla, pokušajte se ponovno prijaviti</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odjavljeno s web stranice YouTubea</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' nije dostupan. Instalirajte ga ili omogućite kako biste se prijavili</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je privremeno nedostupan (API vremenski istekao)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Prijava za \'Android VR\' je istekla, pokušajte se ponovno prijaviti u VR</string>

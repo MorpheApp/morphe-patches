@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">נסה להפעיל: זיוף זרמי וידאו > כניסה ל-Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">השתמש ב-QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">השתמש ב-QuackJS במקום ב-yt-dlp-ejs (WebView) עבור ביטול ערפול</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">כניסה ל-Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" דורש כניסה נפרדת. הקש כאן כדי להמשיך</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • הגדרות Morphe לא ייובאו או ייוצאו עם אימות Android VR
 • אם לא תשתמש באפליקציה זו במשך 6 חודשים, Google תסיר את האימות
 • יהיה עליך להתחבר שוב אם תשנה את סיסמת Google שלך או תבטל את רישום המכשיר בהגדרות Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">כניסה ל-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">התחברות דרך הדפדפן</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">אופציונלי: התחבר לאתר YouTube כדי להפעיל סרטונים עם החשבון שלך. הקש כאן כדי להמשיך</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">כרגע מחובר ל- \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">מחובר כעת לאתר YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-\'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר ל-\'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' מפעיל סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ללקוח דפדפן</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר לאתר YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"לקליינטים של רשת ניתן להפעיל סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
 
-• לאחר התחברות, ניתן להפעיל סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
+• כאשר אתם מחוברים, ניתן להפעיל סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
 • דף ההתחברות של Google נפתח באפליקציה זו
-• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתה מפעיל
+• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתם מפעילים
 • ההתחברות נשמרת רק במכשיר זה
+• לכל לקליאנט רשת יש התחברות משלו, עבור לקליאנט ברירת המחדל שנבחר
 
-כדי להתחבר, לחץ על המשך למטה"</string>
+כדי להתחבר, לחצו על 'המשך' למטה"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ההתחברות נשמרה
 
-• הגדרות ה-Morphe שלך לא יבצעו ייבוא/ייצוא של ההתחברות ל-‘Mobile Web’
-• אם Google יסיים את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
-• התנתקות תנתק גם את המכשיר הזה מאתר YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות ל-Mobile Web פגה, נסה להתחבר ל-‘Mobile Web’ שוב</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מ-‘Mobile Web’</string>
+• הגדרות ה-Morphe שלך לא ייבאו/ייייצאו את ההתחברות לאתר YouTube
+• אם Google תסיים את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
+• התנתקות תנתק גם את המכשיר הזה מהאתר של YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות לאתר פגה, נסה להתחבר שוב</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מהאתר של YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">‘Android System WebView’ אינו זמין. התקן או הפעל אותו כדי להתחבר</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 אינו זמין כרגע (תם הזמן של ה-API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ההתחברות ל- \'Android VR\' פגה, נסה להתחבר ל-VR שוב</string>

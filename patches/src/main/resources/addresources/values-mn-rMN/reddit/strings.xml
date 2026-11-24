@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Фийд дэх сурталчилгаануудыг нуух</string>
   <string name="morphe_hide_comment_ads_title">Сэтгэгдэл дэх сурталчилгаануудыг нуух</string>
   <string name="morphe_screen_navigation_bar_title">Навигацийн мөр</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Доод хэсгийн мөрийг автоматаар нуухыг идэвхгүй болгох</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Гүйлгэх үед доод навигацийн мөрийг харагдахуйц байлгана</string>
   <string name="morphe_hide_answers_button_title">\"Хариулт\" товчийг нуух</string>
   <string name="morphe_hide_chat_button_title">\"Чат\" товчийг нуух</string>
   <string name="morphe_hide_create_button_title">\"Үүсгэх\" товчийг нуух</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Өөрчлөлтийг хэрэглэхийн тулд фидийг шинэчлээрэй</string>
   <string name="morphe_screen_layout_title">Бүтэц</string>
   <string name="morphe_copy_text_title">Текстийг хуулах</string>
-  <string name="morphe_copy_text_summary">Пост болон сэтгэгдэл дэх текстийг сонгох, хуулах боломжийг олгоно. Сэтгэгдлийг нуух функцийг идэвхгүй болгоно</string>
-  <string name="morphe_copy_text_user_dialog_message">Текстийг хуулах функц идэвхтэй байх үед сэтгэгдэл нуух функц ажиллахгүй болно</string>
+  <string name="morphe_copy_text_summary">Пост болон сэтгэгдэл дээрх текстийг сонгож, хуулах боломжийг олгоно</string>
   <string name="morphe_custom_font_title">Өөрийн загварчласан фонт</string>
   <string name="morphe_custom_font_summary">Доорх замаас өөрийн загварчласан TTF эсвэл OTF фонт файлыг ачаална. Үүнийг идэвхжүүлснээр \"Системийн фонтыг албадлах\" тохиргоог унтраана</string>
   <string name="morphe_custom_font_file_path_title">Өөрийн загварчласан фонт файл</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Орчин үеийн нүүр хуудасны UI-г идэвхгүй болгох</string>
   <string name="morphe_home_feed_tabs_title">Нүүр хуудасны фийдийн табуд</string>
   <string name="morphe_home_feed_tabs_summary">Нүүр хуудасны фийд дээрх \"Танд зориулагдсан\", \"Дагаж буй\" болон \"Түгээмэл\" табуудыг харуулж, тэдгээрийн хооронд гүйлгэж шилжих боломжийг олгоно. \"Дагаж буй\" табыг ашиглахын тулд бүртгэлтэй байх шаардлагатай</string>
+  <string name="morphe_disable_refresh_on_back_title">Гарахын тулд буцах товчлуур дээрх шинэчлэлтийг идэвхгүй болгох</string>
+  <string name="morphe_disable_refresh_on_back_summary">Нүүр хуудасны feed дээр буцах товчийг дарахад дээшээ гүйлгэж, дахин ачаалахгүй болно. Аппликейшнаас гарахын тулд буцах товчийг хоёр удаа дарна уу</string>
   <string name="morphe_disable_screenshot_popup_title">Скриншотны цонхыг идэвхгүй болгох</string>
   <string name="morphe_disable_screenshot_popup_summary">Скриншот авөх үед гарч ирэх цонхыг идэвхгүй болгоно</string>
   <string name="morphe_feed_auto_scroll_title">Фидийн авто-скролл</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Трэнд хэсгийг нуух</string>
   <string name="morphe_hide_trending_shelves_summary">Фийд болон хайлтын саналуудаас Трэнд хэсгийг нууна</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\'Танд зориулсан видео\' хэсгийг нуух</string>
+  <string name="morphe_always_show_hide_title">\"Нуух\" товчийг үргэлж харуулах</string>
+  <string name="morphe_always_show_hide_summary">Постуудын цэсэнд, мөн Reddit \"Ийм постуудыг багасгах\" гэх мэт санал болгох сонголтуудыг харуулж буй үед \"Нуух\" товчийг харуулна</string>
   <string name="morphe_remove_notification_dialog_title">Мэдэгдлийн зөвлөмжийн цонхыг устгах</string>
   <string name="morphe_remove_notification_dialog_summary">Subreddit-д зочилөх үед мэдэгдлийн санал болгох цонхыг автоматаар хаах</string>
   <string name="morphe_high_quality_avatars_title">Өндөр чанартай аватарууд</string>
   <string name="morphe_high_quality_avatars_summary">Хэрэглэгчийн аватаруудыг бүтэн нягтралтайгаар харуулна</string>
   <string name="morphe_search_hidden_profiles_title">Нууцлагдсан профайлуудыг хайх</string>
-  <string name="morphe_search_hidden_profiles_summary">Пост эсвэл сэтгэгдлээ нуусан профайлууд дээр Reddit-ийн хайлтаар тэдгээрийг олох товчлуур харуулах болно</string>
-  <string name="morphe_search_hidden_profiles_button">Хайх</string>
+  <string name="morphe_search_hidden_profiles_summary">Профайл хайлт хийхэд пост болон сэтгэгдлээ нуусан профайлуудын постуудыг олох боломжийг олгоно</string>
   <string name="morphe_show_flairs_in_home_feed_title">Нүүр хуудасны feed дээр flair-уудыг харуулах</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Нүүр хуудасны feed дээр постуудын flair-ын тэмдгийг харуулна</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Feed-ийн зарим элементүүд дээр flair харагдаж магадгүйгүй</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Зураг, видео үзэж байх үед тайлбарын ард гардаг бараан бүдгэрэлтийн хүч; 0 (бүдгэрэлтгүй)-аас 1 (Reddit-ийн үндсэн тохиргоо) хүртэл</string>
   <string name="morphe_keep_feed_position_title">Фийдийн байрлалыг хадгалах</string>
   <string name="morphe_keep_feed_position_summary">Пост, зураг эсвэл видеог хаах үед нээгдсэн постыг дээш нь зөөхийн оронд фийдийг өмнөх байрлалдаа хэвээр хадгална</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Нүүр хуудасны фидийг автоматаар шинэчлэхийг идэвхгүй болгох</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Хэсэг хугацааны дараа аппликейшнд эргэж орох үед нүүр хуудасны фид дахин ачаалагдаж, дээгүүр рүү шилжихгүй болно. Доошоо татаж шинэчлэх функц хэвээр ажиллана</string>
   <string name="morphe_post_side_panel_title">Постын хажуугийн самбар</string>
   <string name="morphe_post_side_panel_summary">Өргөн таблет дэлгэц дээр постыг feed-ийн хажууд самбар хэлбэрээр нээнэ</string>
   <string name="morphe_post_side_panel_width_title">Самбарын өргөн</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Хариултууд (гол сэтгэгдлүүд нээлттэй хэвээр байна)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Хариултын хариултууд (шууд хариултууд нээлттэй хэвээр байна)</string>
   <string name="morphe_collapse_all_comments_button">Бүх сэтгэгдлийг хураах эсвэл дэлгэх</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Сэтгэгдлийн зайлсан мөрүүдийг өнгөөр ялгах</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Хариултын түвшин бүрт өөрийн гэсэн мөрийн өнгө өгснөөр урт хэлэлцүүлгийг дагаж уншихад хялбар болгоно</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Мөрийн өнгөнүүд</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Солонго (тод)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастель (зөөлөн)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Бүдгэрсэн (хуудастай нийлнэ)</string>
   <string name="morphe_remember_collapsed_comments_title">Нугалаа сэтгэгдлийг санаж байх</string>
   <string name="morphe_remember_collapsed_comments_summary">Таны нугалсан сэтгэгдлүүд постыг дахин нээх үед нугалсан хэвээр байна</string>
   <string name="morphe_app_icon_title">Аппликейшны дүрс</string>

@@ -29,6 +29,8 @@ Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil
   <string name="morphe_hide_post_ads_title">Folaigh fógraí beatha</string>
   <string name="morphe_hide_comment_ads_title">Folaigh fógraí tráchta</string>
   <string name="morphe_screen_navigation_bar_title">Barra nascleanúna</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Dícheal an uatho-fholú den bhár íos</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Coinníonn sé an bhár seolacháin íos soilsiúil agus tú ag scroláil</string>
   <string name="morphe_hide_answers_button_title">Cnaipe Folaigh Freagraí</string>
   <string name="morphe_hide_chat_button_title">Folaigh cnaipe Comhrá</string>
   <string name="morphe_hide_create_button_title">Folaigh an cnaipe Cruthaigh</string>
@@ -78,8 +80,7 @@ Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil
   <string name="morphe_keyword_filters_saved">Athnuaigh an fotha chun na hathruithe a chur i bhfeidhm</string>
   <string name="morphe_screen_layout_title">Leagan Amach</string>
   <string name="morphe_copy_text_title">Cóipeáil téacs</string>
-  <string name="morphe_copy_text_summary">Ceadaíonn sé téacs a roghnú agus a chóipeáil i bpoist agus i dtráchtanna. Díchumasaíonn sé filleadh na dtráchtanna</string>
-  <string name="morphe_copy_text_user_dialog_message">Ní bheidh feidhm le titim tuairimí a dhéanamh fad is atá an rogha chun téacs a chóipeáil cumasaithe.</string>
+  <string name="morphe_copy_text_summary">Ceadaíonn sé téacs a roghnú agus a chóipeáil i bpoist agus i dtráchtanna</string>
   <string name="morphe_custom_font_title">Cló saincheaptha</string>
   <string name="morphe_custom_font_summary">Luchtaigh comhad cló saincheaptha TTF nó OTF ón gcosán thíos. Má chumasaítear é seo, múchtar Fórsáil cló córais freisin.</string>
   <string name="morphe_custom_font_file_path_title">Comhad cló saincheaptha</string>
@@ -91,6 +92,8 @@ Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil
   <string name="morphe_disable_modern_home_title">Díchumasaigh an comhéadan úsáideora baile nua-aimseartha</string>
   <string name="morphe_home_feed_tabs_title">Cluaisíní an fhotha bhaile</string>
   <string name="morphe_home_feed_tabs_summary">Taispeánann sé na cluaisíní \'Duit\', \'Á Leanúint\' agus \'Coitianta\' ar an bhfotha baile, agus ceadaíonn sé swipeáil eatarthu. Teastaíonn cuntas logáilte isteach don chluaisín \'Á Leanúint\'.</string>
+  <string name="morphe_disable_refresh_on_back_title">Díspleigh athnuachan nuair a théannar ar ais chun dul amach一项</string>
+  <string name="morphe_disable_refresh_on_back_summary">Ní scrolleálann \'Back\' ar an prurfeed chugainn go dtí an barr agus ní athuasmhaíonn sé níos mó. Brúigh back dhúthaicinn chun an app a fhágáil</string>
   <string name="morphe_disable_screenshot_popup_title">Díchumasaigh seat scáileán preab aníos</string>
   <string name="morphe_disable_screenshot_popup_summary">Díchumasaíonn sé an preab aníos a thaispeántar agus seat scáileán á thógáil</string>
   <string name="morphe_feed_auto_scroll_title">Scrollú uathoibríoch an fhotha</string>
@@ -124,13 +127,14 @@ Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil
   <string name="morphe_hide_trending_shelves_title">Folaigh seilfeanna treochta</string>
   <string name="morphe_hide_trending_shelves_summary">Folaíonn sé na seilfeanna Treochta ó mholtaí beatha agus cuardaigh</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Folaigh an tseilf \'Físeáin duit\'</string>
+  <string name="morphe_always_show_hide_title">Taispeáin \"Cuir i bhfolú\" i gcónaí</string>
+  <string name="morphe_always_show_hide_summary">Taispeánann \"Cuir go foluadh\" i menú postálacha an fhothaí, agus freisin nuair a thaispeánann Reddit roghanna mholta mar \"Taispeáin níos mó postálacha cosúil leis seo\"</string>
   <string name="morphe_remove_notification_dialog_title">Bain an dialóg moladh fógra</string>
   <string name="morphe_remove_notification_dialog_summary">Diúltaíonn sé go huathoibríoch don chomhrá moladh fógra nuair a thugtar cuairt ar fho-reddit</string>
   <string name="morphe_high_quality_avatars_title">Abhatáir ardchaighdeáin</string>
   <string name="morphe_high_quality_avatars_summary">Taispeánann sé abhatár úsáideoirí i réiteach iomlán</string>
   <string name="morphe_search_hidden_profiles_title">Cuardaigh próifílí i bhfolach</string>
-  <string name="morphe_search_hidden_profiles_summary">Taispeánann sé cnaipe ar phróifílí a cheileann a bpostálacha nó a dtráchtanna, chun a bpostálacha a aimsiú trí úsáid a bhaint as cuardach Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Cuardaigh</string>
+  <string name="morphe_search_hidden_profiles_summary">Cuireann sé seo go bhfuil an cuardach próifíle ag aimsiú postálacha ó phróifíleacha a chuireann go foilseach na postálacha nó na tráchtanna a bhféir</string>
   <string name="morphe_show_flairs_in_home_feed_title">Taispeáin lipéid sa bhfotha baile</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Taispeánann sé suaitheantais lipéad postála sa bhfotha baile</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">D’fhéadfadh sé nach mbeadh lipéad le feiceáil ar mhíreanna áirithe sa bhfotha</string>
@@ -171,6 +175,8 @@ Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil
   <string name="morphe_media_viewer_fade_summary">Neart an chéimnithe dhorcha taobh thiar den fhotheideal agus tú ag féachaint ar íomhánna agus físeáin, ó 0 (gan chéimniú) go 1 (réamhshocrú Reddit)</string>
   <string name="morphe_keep_feed_position_title">Coinnigh suíomh an fhotha</string>
   <string name="morphe_keep_feed_position_summary">Coinníonn sé an fotha san áit chéanna tar éis post, íomhá nó físeán a dhúnadh, seachas an post a osclaíodh a bhogadh go barr</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Díchumasaigh athnuachan uathoibríoch fothaí baile</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Nuair a fhilleann tú ar an app tar éis tamaill, ní athlódálann sé an fothai baile agus ní bhogann sé go dtí an barr níos mó. Tá \"Tarraing chun athnuachan\" fós in oibriú</string>
   <string name="morphe_post_side_panel_title">Painéal taobh an phoist</string>
   <string name="morphe_post_side_panel_summary">Ar scáileáin leathana táibléid, osclaíonn postálacha i bpainéal in aice leis an bhfotha</string>
   <string name="morphe_post_side_panel_width_title">Leithead an phainéil</string>
@@ -260,6 +266,12 @@ Chun leagan níos sine a úsáid, ní mór duit Reddit a &lt;b&gt;dhíshuiteáil
   <string name="morphe_collapse_all_comments_scope_entry_replies">Freagraí (fanann na príomhthráchtanna oscailte)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Freagraí ar fhreagraí (fanann freagraí díreacha ar oscailt)</string>
   <string name="morphe_collapse_all_comments_button">Dún nó leathnaigh gach trácht</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Dathaigh líneacha indéanta tráchtála</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Tugann sé dath líne ar leith do gach leibhéal freagra ionas go bhfuil snáitheanna fada níos éasaí a leanúint</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Dathanna líne</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Bogha-dearc (geal)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastal (bog)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Ciúite (cumhaireann le leathanach)</string>
   <string name="morphe_remember_collapsed_comments_title">Cuimhnigh ar thráchtanna fillte</string>
   <string name="morphe_remember_collapsed_comments_summary">Fanann tráchtanna a fhilleann tú fillte nuair a athosclaíonn tú an post</string>
   <string name="morphe_app_icon_title">Deilbhín aip</string>

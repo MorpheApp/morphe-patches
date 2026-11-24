@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Паспрабуйце ўключыць: Імітацыя відэапатокаў &gt; Уваход у Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Кліент па змаўчанні</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Выкарыстаць QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Выкарыстоўваць QuackJS замест yt-dlp-ejs (WebView) для дэабфускацыі</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Уваход праз \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Для \'Android VR\' патрабуецца асобны ўваход. Націсніце тут, каб працягнуць</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • Налады Morphe не будуць імпартаваць/экспартаваць аўтэнтыфікацыю Android VR
 • Калі гэтая праграма не будзе выкарыстоўвацца на працягу 6 месяцаў, Google выдаліць гэтую аўтэнтыфікацыю
 • Вам спатрэбіцца ўвайсці ў сістэму зноў, калі вы змяніце пароль Google або адключаце гэтую прыладу ў наладках Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Уваход праз \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Уваход праз вэб</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Неабавязкова: ўвойдзіце на 웹-сайт YouTube, каб праглядаць відэа са свайго ўліковага запісу. Націсніце тут, каб працягнуць</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">У дадзены момант вы ўвайшли ў \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">У дадзены момант вы ўвайшли ў сістэму на вебсаіце YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увайсці ў \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" працуе з відэа без ўваходу ў сістэму або з ўваходом на сайт YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на вэбкліент</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увайсці ў сістэму на вебсаіце YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Вэбкліенты прайграваюць відэа без ўваходу ў сістэму або з уваходам у сістэму на вебсаіце YouTube
 
-• Пры ўваходзе ў сістэму можна праглядаць відэа, якія патрабуюць узмоўны ўліковыя запісы, напрыклад, відэа з абмежаваннем па ўзросце
-• Старонка ўваходу ў Google адкрываецца ў гэтым дадатку
-• Уваход выкарыстоўваецца толькі для атрымання відэа, якія вы праглядаеце
-• Даныя ўваходу захаваны толькі на гэтай прыладзе
+• Пры ўваходзе ў сістэму можна прайграваць відэа, якія патрабуюць наяўнасці ўліковага запісу, напрыклад, відэа з абмежаваннем па ўзросці
+• Старонка ўваходу ў Google адкрываецца ў гэтым праграме
+• Уваход у сістэму выкарыстоўваецца толькі для атрымання відэа, якія вы прайграваеце
+• Даныя ўваходу захаваны толькі на гэтай прыладнасці
+• Кожны вэбкліент мае свой уласны ўваход для выбранага кліента па змаўчанні
 
-Каб увойсці ў сістэму, націсніце «Працягнуць» ніжэй"</string>
+Каб увайсці, націсніце «працягнуць» ніжэй"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Уваход захаваны
 
-• Вашы налады Morphe не будуць імпартаваць/экспартаваць даныя ўваходу ў \"Mobile Web\"
-• Калі Google завершыць сеанс, відэа будуць прагравацца без ўваходу ў сістэму, пакуль вы не ўвойдзеце зноў
-• Выхад з сістэмы таксама адключае гэтую прыладу ад сайта YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Тэрмін дзеяння ўваходу ў Mobile Web скончыўся, паспрабуйце ўвойсці ў \"Mobile Web\" зноў</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Выхід з сістэмы \"Mobile Web\"</string>
+• Налады Morphe не будуць імпартаваць/эקסпартаваць уваход у вэбсайт YouTube
+• Калі Google завершыць сеанс, відэа будуць прайгравацца без аўтарызацыі, пакуль вы не ўвайдзеце зноў
+• Выхад з сістэмы таксама выведзе гэтую прыладу з вэбсайта YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Тэрмін дзеяння вэб-ўваходу скончыўся, паспрабуйце ўвойсці зноў</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Выйшли з сістэмы вэбсайта YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' недаступны. Усталюйце або ўключайце яго, каб выканаць уваход</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 часова недаступны (таймаўт API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Тэрмін сесіі ўваходу ў \'Android VR\' скончыўся, паспрабуйце ўвайсці ў VR зноў</string>

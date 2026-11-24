@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">إخفاء إعلانات الموجز</string>
   <string name="morphe_hide_comment_ads_title">إخفاء إعلانات التعليقات</string>
   <string name="morphe_screen_navigation_bar_title">شريط التنقل</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">تعطيل إخفاء الشريط السفلي تلقائيًا</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">يُبقي شريط التنقل السفلي مرئيًا أثناء التمرير</string>
   <string name="morphe_hide_answers_button_title">إخفاء زر الإجابات</string>
   <string name="morphe_hide_chat_button_title">إخفاء زر الدردشة</string>
   <string name="morphe_hide_create_button_title">إخفاء زر الإنشاء</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">قم بتحديث الموجز لتطبيق التغييرات</string>
   <string name="morphe_screen_layout_title">التخطيط</string>
   <string name="morphe_copy_text_title">نسخ النص</string>
-  <string name="morphe_copy_text_summary">يتيح تحديد ونسخ النص في المنشورات والتعليقات. يعطّل طي التعليقات</string>
-  <string name="morphe_copy_text_user_dialog_message">التعليقات المطوية ستتوقف عن العمل أثناء تمكين نسخ النص</string>
+  <string name="morphe_copy_text_summary">يسمح بتحديد ونسخ النصوص في المنشورات والتعليقات</string>
   <string name="morphe_custom_font_title">خط مخصص</string>
   <string name="morphe_custom_font_summary">حمّل ملف خط TTF أو OTF مخصص من المسار أدناه. وتمكين هذا يؤدي أيضًا إلى إيقاف تشغيل خط النظام</string>
   <string name="morphe_custom_font_file_path_title">ملف الخط المخصص</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">تعطيل الصفحة الرئيسية الحديثة</string>
   <string name="morphe_home_feed_tabs_title">علامات تبويب موجز الصفحة الرئيسية</string>
   <string name="morphe_home_feed_tabs_summary">يظهر علامات تبويب \"لك\" و\"المتابَعون\" و\"الشائع\" في موجز الصفحة الرئيسية، ويسمح بالتنقل بينها عبر السحب. تتطلب علامة تبويب \"المتابَعون\" حساباً مسجلاً</string>
+  <string name="morphe_disable_refresh_on_back_title">تعطيل التحديث عند الرجوع للخروج</string>
+  <string name="morphe_disable_refresh_on_back_summary">لن يؤدي الرجوع في موجز الصفحة الرئيسية إلى التمرير للأعلى وإعادة التحميل بعد الآن. اضغط على زر الرجوع مرتين لمغادرة التطبيق</string>
   <string name="morphe_disable_screenshot_popup_title">تعطيل نافذة التقاط الشاشة المنبثقة</string>
   <string name="morphe_disable_screenshot_popup_summary">يُعطل النافذة المنبثقة التي تظهر عند التقاط لقطة شاشة</string>
   <string name="morphe_feed_auto_scroll_title">التمرير التلقائي للخلاصة</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">إخفاء الرفوف الرائجة</string>
   <string name="morphe_hide_trending_shelves_summary">يخفي رفوف \"الترند\" من موجز الأخبار واقتراحات البحث</string>
   <string name="morphe_hide_videos_for_you_shelf_title">إخفاء رف \"فيديوهات مقترحة لك\"</string>
+  <string name="morphe_always_show_hide_title">إظهار \"إخفاء\" دائمًا</string>
+  <string name="morphe_always_show_hide_summary">يظهر خيار \"إخفاء\" في قائمة منشورات الخلاصة، وأيضًا عندما يعرض Reddit خيارات التوصية مثل \"عرض منشورات أقل من هذا النوع\"</string>
   <string name="morphe_remove_notification_dialog_title">إزالة مربع حوار اقتراح الإشعارات</string>
   <string name="morphe_remove_notification_dialog_summary">يقوم بإخفاء حوار اقتراح الإشعار تلقائيًا عند زيارة subreddit</string>
   <string name="morphe_high_quality_avatars_title">صور رمزية عالية الجودة</string>
   <string name="morphe_high_quality_avatars_summary">عرض الصور الرمزية للمستخدمين بدقة كاملة</string>
   <string name="morphe_search_hidden_profiles_title">البحث عن الملفات الشخصية المخفية</string>
-  <string name="morphe_search_hidden_profiles_summary">يعرض زرًا في الملفات الشخصية التي تخفي منشوراتها أو تعليقاتها، للعثور على منشوراتها باستخدام بحث Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">البحث</string>
+  <string name="morphe_search_hidden_profiles_summary">يجعل البحث في الملف الشخصي يجد منشورات الملفات الشخصية التي تخفي منشوراتها أو تعليقاتها</string>
   <string name="morphe_show_flairs_in_home_feed_title">إظهار الشارات في خلاصة الصفحة الرئيسية</string>
   <string name="morphe_show_flairs_in_home_feed_summary">يعرض شارات التصنيفات للمشاركات في خلاصة الصفحة الرئيسية</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">قد لا تظهر بعض عناصر الخلاصة تصنيفاً</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">قوة التلاشي الداكن خلف التسمية التوضيحية عند عرض الصور والفيديوهات، من 0 (بدون تلاشي) إلى 1 (الإعداد الافتراضي في Reddit)</string>
   <string name="morphe_keep_feed_position_title">الحفاظ على موضع الخلاصة</string>
   <string name="morphe_keep_feed_position_summary">تُبقي الخلاصة في الموضع نفسه بعد إغلاق منشور أو صورة أو فيديو، بدلاً من نقل المنشور المفتوح إلى الأعلى</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">تعطيل تحديث خلاصة الصفحة الرئيسية تلقائيًا</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">عند العودة إلى التطبيق بعد فترة، لن يتم إعادة تحميل خلاصة الصفحة الرئيسية ونقلها إلى الأعلى. لا يزال خيار السحب للتحديث يعمل</string>
   <string name="morphe_post_side_panel_title">اللوحة الجانبية للمنشور</string>
   <string name="morphe_post_side_panel_summary">في شاشات الأجهزة اللوحية العريضة، تُفتح المنشورات في لوحة بجانب الخلاصة</string>
   <string name="morphe_post_side_panel_width_title">عرض اللوحة</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">الردود (تبقى التعليقات الرئيسية مفتوحة)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">الردود على الردود (تبقى الردود المباشرة مفتوحة)</string>
   <string name="morphe_collapse_all_comments_button">طي أو توسيع كافة التعليقات</string>
+  <string name="morphe_colorize_comment_indent_lines_title">تلوين خطوط إزاحة التعليقات</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">يعطي كل مستوى من الردود لون خط خاص به بحيث يسهل تتبع السلاسل الطويلة</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">ألوان الخطوط</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">قوس قزح (زاهٍ)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">باستيل (ناعم)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">خافت (يندمج مع الصفحة)</string>
   <string name="morphe_remember_collapsed_comments_title">تذكّر التعليقات المطوية</string>
   <string name="morphe_remember_collapsed_comments_summary">التعليقات التي تطويها تبقى مطوية عند إعادة فتح المنشور</string>
   <string name="morphe_app_icon_title">أيقونة التطبيق</string>

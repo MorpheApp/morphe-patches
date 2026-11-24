@@ -243,6 +243,7 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_hide_keyword_content_screen_title">Kalit soʻz filtri</string>
   <string name="morphe_hide_keyword_content_screen_summary">Oziqlantirish va qidiruvdagi videolarni yashirish uchun kalit soʻzlar va iboralarni tanlang</string>
   <string name="morphe_hide_keyword_content_comments_title">Kalit so\'zlar bo\'yicha izohlarni yashirish</string>
+  <string name="morphe_hide_keyword_content_posts_title">Kalit so\'zlar bo\'yicha postlarni yashirish</string>
   <string name="morphe_hide_keyword_content_home_title">Uy sahifasidagi videolarni kalit so\'zlar bo\'yicha yashirish</string>
   <string name="morphe_hide_keyword_content_search_title">Qidiruv natijalarini kalit so\'zlar bo\'yicha yashirish</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Obunachilar sahifasidagi videolarni kalit so\'zlar bo\'yicha yashirish</string>
@@ -250,7 +251,7 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_hide_keyword_content_phrases_summary">"Yashirish uchun kalit so'zlar va iboralarni yangi qatorlar bilan ajratgan holda kiriting
 
 Kalit so'zlar video sarlavhalarida ko'rsatilgan har qanday matn bo'lishi mumkin. @UserName kalit so'zi ma'lum bir ijodkorlarning barcha kontentini yashiradi"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Bosh sahifa / Obunalar / Qidiruv / Izohlar bo'limlarida kalit so'zli iboralarga mos keladigan kontentni yashirish uchun filtrlar qo'llaniladi
+  <string name="morphe_hide_keyword_content_about_summary">"Bosh sahifa / Obunalar / Qidiruv / Izohlar / Postlar kalit so'zlar iboralariga mos keladigan kontentni yashirish uchun filtrlanadi
 
 Cheklovlar:
 • Ba'zi Shorts videolarni kanal nomi bo'yicha yashirib bo'lmaydi
@@ -266,6 +267,23 @@ Cheklovlar:
 • Qidiruv: %3$s
 • Izohlar: %4$s
 • Jami: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Ko\'rishlar soni filtri</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Lenta va qidiruvda ko\'rishlar soni juda kam yoki juda ko\'p bo\'lgan videolarni yashirish</string>
+  <string name="morphe_hide_videos_by_views_home_title">Bosh sahifadagi videolarni ko\'rishlar soni bo\'yicha yashirish</string>
+  <string name="morphe_hide_videos_by_views_search_title">Qidiruv natijalarini ko\'rishlar soni bo\'yicha yashirish</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Obunalar bo\'limidagi videolarni ko\'rishlar soni bo\'yicha yashirish</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Minimal ko\'rishlar soni</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Kamroq ko\'rilgan videolar yashiriladi. 0 = minimal chegara yo\'q</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Maksimal ko\'rishlar soni</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Ko\'proq ko\'rilgan videolar yashiriladi. 0 = maksimal chegara yo\'q</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Bosh sahifa / Obunalar / Qidiruv bo'limlaridagi videolar va Shorts'lar ko'rishlar soniga qarab filtrlanadi va yashiriladi
+
+Cheklovlar:
+• YouTube ko'rishlar sonini yaxlitlaydi, shuning uchun 1.2K ko'rish 1200 ko'rish deb hisoblanadi
+• Jonli efirlar yashirilmaydi
+• Yashirilgan Short Shorts'lar polosasida bo'sh joy qoldirishi mumkin"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Ko\'rishlar soni filtri barcha videolarni yashiradi</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Yashirilgan videolar, so\'nggi 24 soat</string>
   <string name="morphe_hide_stats_hidden_all_title">Hamma vaqtda yashirilgan videolar</string>
@@ -678,14 +696,14 @@ Cheklovlar:
   <string name="morphe_ryd_feed_counts_position_entry_1">Ko\'rishlar soni yonida</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">O\'rtadagi o\'ng tomonda</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Yuqori chap tomonda</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Izohlarni qidirish</string>
-  <string name="morphe_search_comments_summary">Faqat qidirilgan barcha so\'zlarni o\'z ichiga olgan yuklangan izohlarni ko\'rsatish uchun izohlardagi qidiruv tugmasini bosing. Frazani qidirish uchun so\'zlarni qo\'shtirnoqqa oling</string>
-  <string name="morphe_search_comments_dialog_title">Izohlarni qidirish</string>
-  <string name="morphe_search_comments_hint">Qidiriladigan so\'zlar</string>
-  <string name="morphe_search_comments_clear">Tozalash</string>
-  <string name="morphe_search_comments_applied">Saralash tartibini o\'zgartiring yoki izohlarni qidirish uchun ularni qayta oching</string>
-  <string name="morphe_search_comments_cleared">Qidiruv tozalandi. Barcha izohlarni ko\'rish uchun saralash tartibini o\'zgartiring yoki izohlarni qayta oching</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Izohlarni qidirish</string>
+  <string name="morphe_comment_search_summary">Faqat qidirilgan barcha so\'zlarni o\'z ichiga olgan yuklangan izohlarni ko\'rsatish uchun izohlardagi qidiruv tugmasini bosing. Frazani qidirish uchun so\'zlarni qo\'shtirnoqqa oling</string>
+  <string name="morphe_comment_search_dialog_title">Izohlarni qidirish</string>
+  <string name="morphe_comment_search_hint">Qidiriladigan so\'zlar</string>
+  <string name="morphe_comment_search_clear">Tozalash</string>
+  <string name="morphe_comment_search_applied">Saralash tartibini o\'zgartiring yoki izohlarni qidirish uchun ularni qayta oching</string>
+  <string name="morphe_comment_search_cleared">Qidiruv tozalandi. Barcha izohlarni ko\'rish uchun saralash tartibini o\'zgartiring yoki izohlarni qayta oching</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">“Televizorga kirish”ni o\'chirish</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Connect your devices\' oynatish xabarini o\'chirish</string>
@@ -1168,6 +1186,9 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_show_settings_button_title">Sozlamalar tugmasini koʻrsatish</string>
   <string name="morphe_show_settings_button_type_title">Sozlamalar tugmasining harakati</string>
   <string name="morphe_show_settings_button_type_summary">Yoqilganda bosish Morphe sozlamalarini ochadi, uzoq bosish YouTube sozlamalarini ochadi; almashtirish uchun o\'chiring</string>
+  <string name="morphe_you_button_account_switcher_title">Hisobni almashtirish qisqurtmasi</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Hisobni almashtirish oynasini ochish uchun \"Siz\" tugmasini uzoq bosing</string>
   <string name="morphe_navigation_buttons_order_title">Navigatsiya tugmalari tartibi</string>
   <string name="morphe_navigation_buttons_order_summary">Navigatsiya panelidagi tugmalar tartibini o\'zgartirish uchun ularni suring</string>
   <string name="morphe_swap_create_with_notifications_button_title">Yaratish tugmasini bildirishnoma tugmasi bilan almashtirish</string>
@@ -1444,6 +1465,8 @@ Avtomobil maketi
   <string name="morphe_playback_in_feeds_entry_always_on">Doimo yoqilgan</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Faqat Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Oʻchirilgan</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Lentalarda qidiruv tugmalarini ko\'rsatish</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Lentalarda ijro etilayotgan videolarda, hatto YouTube ularni ko\'rsatmaganda ham qidiruv tugmalarini ko\'rsatadi</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Asl sarlavhalarni tiklash</string>
   <string name="morphe_restore_original_titles_summary">Avtomatik tarjima qilinganlar o\'rniga videoning asl sarlavhalarini, video tavsiflarini va kanal tavsiflarini ko\'rsatadi</string>
@@ -2049,4 +2072,106 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_live_chat_translate_max_length_title">Xabarning maksimal uzunligi</string>
   <string name="morphe_live_chat_translate_max_length_summary">Uzunroq xabarlar tarjima qilinmagan holda ko\'rsatiladi</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Cheklov yo\'q</string>
+  <string name="morphe_ghost_play_screen_title">Ghost rejimi</string>
+  <string name="morphe_ghost_play_screen_summary">Ko\'rishlar tarixi yoki tavsiyalarga ta\'sir qilmagan holda videolarni tomosha qiling</string>
+  <string name="morphe_ghost_play_cat_general_title">Umumiy</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Tugmalar</string>
+  <string name="morphe_ghost_play_cat_rules_title">Avto-ghost qoidalari</string>
+  <string name="morphe_ghost_play_cat_history_title">Mahalliy tarix</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Kengaytirilgan maxfiylik</string>
+  <string name="morphe_ghost_play_enabled_title">Ghost rejimini yoqish</string>
+  <string name="morphe_ghost_play_enabled_summary">Tanlangan videolarni, Shorts, qidiruvlarni, kanallarni yoki butun seanslarni tomosha tarixiga yoki tavsiyalarga ta\'sir qilmagan holda ko\'rish imkonini beradi</string>
+  <string name="morphe_ghost_play_mode_active_title">Ghost rejimi faol</string>
+  <string name="morphe_ghost_play_mode_active_summary">YONilganda, lentalar, tegishli videolar yoki qidiruvdan odatdagidek ochgan har bir videongiz uch nuqtali menyudan foydalanmasdan Ghost rejimida ijro etiladi</string>
+  <string name="morphe_ghost_play_persist_mode_title">Qayta ishga tushirishlar orasida Ghost rejimini eslab qolish</string>
+  <string name="morphe_ghost_play_persist_mode_summary">YouTube ilovasini yopib, qayta ochgandan keyin ham Ghost rejimini YON holda saqlaydi</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Yuqori panelda Ghost rejimi tugmasini ko\'rsatish</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Yuqori paneldagi belgilar yoniga ixcham Ghost rejimi tugmasini joylashtiradi (almashtirish uchun bosing, tezkor boshqaruv uchun uzoq bosib turing)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Video menyusida ko\'rsatish</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Videolarning uch nuqtali menyusiga \"Ghost rejimida ijro etish\" bandini qo\'shadi</string>
+  <string name="morphe_ghost_play_player_button_title">Ghost rejim tugmasini ko\'rsatish</string>
+  <string name="morphe_ghost_play_player_button_summary">Video pleyerda Ghost rejimi almashtirish tugmasini ko\'rsatadi (tezkor boshqaruv uchun uzoq bosing)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Ijro so\'rovlarini anonimlashtirish</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Kuchliroq izolyatsiya uchun ghost ijro va hodisa so\'rovlaridan hisob sarlavhalarini olib tashlaydi. Yoqilgan holda yosh cheklovi mavjud bo\'lgan, faqat a\'zolar uchun va Premium funksiyalari mavjud emas</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Shorts videolarini avtomatik ghost rejimiga o\'tkazish</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Shorts videolarini avtomatik ravishda Ghost rejimida ko\'radi, shuning uchun ular asosiy feed\'ga ta\'sir qilmaydi</string>
+  <string name="morphe_ghost_play_auto_search_title">Qidiruvdan videolarni avtomatik Ghost rejimiga o\'tkazish</string>
+  <string name="morphe_ghost_play_auto_search_summary">Qidiruv natijalaridan ochilgan videolarni avtomatik ravishda Ghost rejimida ko\'radi</string>
+  <string name="morphe_ghost_play_manage_channels_title">Kanallarni avtomatik Ghost rejimiga o\'tkazish</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Hamma vaqt Ghost rejimida ijro etiladigan kanallarni qidirish, qo\'shish, tekshirish va boshqarish</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d ta kanal sozlangan — qidirish, tekshirish yoki o\'chirish uchun bosing</string>
+  <string name="morphe_ghost_play_local_history_title">Mahalliy Ghost tarixini saqlash</string>
+  <string name="morphe_ghost_play_local_history_summary">Ghost rejimi videolari va ijro pozitsiyalarini faqat ushbu qurilmada eslab qoladi (hech qachon YouTube’ga yuborilmaydi)</string>
+  <string name="morphe_ghost_play_history_limit_title">Mahalliy Ghost tarix limiti</string>
+  <string name="morphe_ghost_play_history_limit_summary">Qurilmada saqlanadigan maksimal videolar soni (eng eski yozuvlar avtomatik ravishda oưchiriladi)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d ta video saqlandi (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Hech qanday video saqlanmadi</string>
+  <string name="morphe_ghost_play_history_limit_100">100 ta video</string>
+  <string name="morphe_ghost_play_history_limit_500">500 ta video</string>
+  <string name="morphe_ghost_play_history_limit_2000">2,000 ta video</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Cheklanmagan</string>
+  <string name="morphe_ghost_play_view_history_title">Mahalliy Ghost tarixini ochish</string>
+  <string name="morphe_ghost_play_view_history_summary">Qurilmangizdagi tarixni ko\'ring, qidiring, Ghost rejimida davom ettiring yoki uni tozalang</string>
+  <string name="morphe_ghost_play_view_history_summary_count">Qurilmada (%2$s) %1$d ta video saqlangan — ko\'rish yoki davom ettirish uchun bosing</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Hali videolar yozilmagan (faqat ushbu qurilmada saqlanadi)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Ghost rejimida ko\'rish</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost rejimi faol — ko\'rish tarixi va tavsiyalar himoyalangan</string>
+  <string name="morphe_ghost_play_video_off_toast">Ushbu video uchun Ghost rejimi OCHIQ</string>
+  <string name="morphe_ghost_play_session_on_toast">Ghost rejimi YOKILGAN — videolar tarixga yoki tavsiyalarga ta\'sir qilmaydi</string>
+  <string name="morphe_ghost_play_session_off_toast">Ghost rejimi OCHIQ — oddiy ijroga qaytildi</string>
+  <string name="morphe_ghost_play_timer_set_toast">Ghost rejimi %d daqiqa davomida faol</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Taymer tozalandi — Ghost rejimi YOQIQ holatda qoladi</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">1 dan 720 daqiqagacha bo\'lgan vaqtni kiriting</string>
+  <string name="morphe_ghost_play_dialog_title">Ghost rejimi</string>
+  <string name="morphe_ghost_play_state_on">Yoqilgan</string>
+  <string name="morphe_ghost_play_state_off">O\'chirilgan</string>
+  <string name="morphe_ghost_play_close">Yopish</string>
+  <string name="morphe_ghost_play_open_settings">Barcha sozlamalar</string>
+  <string name="morphe_ghost_play_quick_power_hint">Ghost rejimini yoqish/o\'chirish uchun bosing</string>
+  <string name="morphe_ghost_play_quick_timer_title">Vaqtli Ghost rejimi</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Davomiylikni tanlash uchun bosing</string>
+  <string name="morphe_ghost_play_quick_timer_running">Taymer faol · %d daqiqa qoldi</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Tugagach, avtomatik ravishda oddiy rejimga qaytadi</string>
+  <string name="morphe_ghost_play_quick_timer_change">Vaqtni o\'zgartirish</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Taymerni tozalash (YOQ holda qoldirish)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Maxsus daqiqalar (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">O\'rnatish</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Ushbu kanal uchun Auto-ghost YOQ</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Ushbu kanal uchun Avto-ghost OFF</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d ta kanal sozlangan</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Roëyxat (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" avto-ghost kanallariga qo´shildi</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" avto-ghost kanallaridan olib tashlandi</string>
+  <string name="morphe_ghost_play_history_title">Mahalliy Ghost tarixi</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d ta video (%s) · Ghost rejimida davom ettirish uchun bosing, o´chirish uchun bosib turing</string>
+  <string name="morphe_ghost_play_history_search_hint">Video sarlavhasi yoki kanal bo´yicha filtrlash…</string>
+  <string name="morphe_ghost_play_history_no_match">Mahalliy Ghost tarixida mos keladigan videolar topilmadi</string>
+  <string name="morphe_ghost_play_history_empty">Hali mahalliy Ghost tarixi mavjud emas</string>
+  <string name="morphe_ghost_play_history_clear_all">Hammasini o‘chirish</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Mahalliy Ghost tarixini tozalash?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Bu qurilmada saqlangan barcha Ghost rejimi yozuvlarini o‘chiradi va buni ortga qaytarib bo‘lmaydi.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Mahalliy Ghost tarixi tozalandi</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Mahalliy Ghost tarixidan o‘chirildi</string>
+  <string name="morphe_ghost_play_channels_manager_title">Avto-ghost kanallari</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Qo‘shildi (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Qidirish &amp; qo‘shish</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Qo‘shilgan kanallarni nomi, @handle yoki mavzu bo‘yicha filtrlang...</string>
+  <string name="morphe_ghost_play_channels_empty">Hali hech qanday kanal qo‘shilmagan. Kanallarni nomi, @handle yoki URL orqali topish uchun \"Qidirish &amp; qo‘shish\" bo‘limiga o‘ting.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Qo\'shilgan kanallar orasida filtriingizga mos keladigani topilmadi</string>
+  <string name="morphe_ghost_play_channels_add_current">Ijro etilmoqda: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Qo\'shish</string>
+  <string name="morphe_ghost_play_channels_added_badge">Qo\'shildi</string>
+  <string name="morphe_ghost_play_channels_delete_button">Olib tashlash</string>
+  <string name="morphe_ghost_play_channels_search_hint">Kanal nomi, @handle yoki URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Qidiruv</string>
+  <string name="morphe_ghost_play_channels_search_guide">Kanal nomi, @handle yoki YouTube kanal URL manzilini kiriting va Qidiruv tugmasini bosing</string>
+  <string name="morphe_ghost_play_channels_searching">YouTube kanallari qidirilmoqda…</string>
+  <string name="morphe_ghost_play_channels_search_error">Qidiruv amalga oshirilmadi. Aloqani tekshiring va qaytadan urinib ko\'ring.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Ushbu so\'rov bo\'yicha kanallar topilmadi</string>
+  <string name="morphe_ghost_play_channels_search_count">%d ta kanal topildi — avto-ghostni yoqish uchun \"Qo\'shish\" tugmasini bosing</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Yaqinda ko\'rilgan videolar</string>
+  <string name="morphe_ghost_play_channels_loading_details">Yaqinda ko\'rilgan videolar yuklanmoqda…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Yaqinda ko\'rilgan videolar topilmadi (qayta urinish uchun bosing)</string>
 </resources>

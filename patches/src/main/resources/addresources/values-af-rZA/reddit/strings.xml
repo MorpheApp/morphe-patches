@@ -29,6 +29,8 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_hide_post_ads_title">Verberg voer-advertensies</string>
   <string name="morphe_hide_comment_ads_title">Verberg kommentaar-advertensies</string>
   <string name="morphe_screen_navigation_bar_title">Navigasiebalk</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Deaktiveer outomatiese versteek van onderste balk</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Hou die onderste navigasiebalk sigbaar terwyl jy rollees</string>
   <string name="morphe_hide_answers_button_title">Verberg Antwoorde-knoppie</string>
   <string name="morphe_hide_chat_button_title">Verberg Chat-knoppie</string>
   <string name="morphe_hide_create_button_title">Verberg Skep-knoppie</string>
@@ -78,8 +80,7 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_keyword_filters_saved">Verfris die voerplas om die veranderinge toe te pas</string>
   <string name="morphe_screen_layout_title">Uitleg</string>
   <string name="morphe_copy_text_title">Kopieer teks</string>
-  <string name="morphe_copy_text_summary">Laat jou toe om teks in plasings en kommentaar te kies en te kopieer. Deaktiveer die invou van kommentaar</string>
-  <string name="morphe_copy_text_user_dialog_message">Die invou van kommentaar sal ophou werk terwyl Kopieer teks geaktiveer is</string>
+  <string name="morphe_copy_text_summary">Laat toe om teks in plasinge en kommentare te kies en te kopieer</string>
   <string name="morphe_custom_font_title">Pasgemaakte lettertipe</string>
   <string name="morphe_custom_font_summary">Laai \'n pasgemaakte TTF- of OTF-lettertipelêer vanaf die pad hieronder. Deur dit te aktiveer, word stelsellettertipe afdwing ook afgeskakel</string>
   <string name="morphe_custom_font_file_path_title">Pasgemaakte lettertipe-lêer</string>
@@ -91,6 +92,8 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_disable_modern_home_title">Deaktiveer moderne tuisblad</string>
   <string name="morphe_home_feed_tabs_title">Tuisvoer-oortjies</string>
   <string name="morphe_home_feed_tabs_summary">Wys die \"Vir jou\", \"Volg\" en \"Gewild\"-oortjies op die tuisblad-feed, en laat jou toe om tussen hulle te vee. \"Volg\" vereis \'n ingetekende rekening</string>
+  <string name="morphe_disable_refresh_on_back_title">Deaktiveer verfris by terug om uit te gaan</string>
+  <string name="morphe_disable_refresh_on_back_summary">Terug op die tuisvoerblad skuif nie meer na bo en herlaai nie. Druk terug twee keer om die toepassing te verlaat</string>
   <string name="morphe_disable_screenshot_popup_title">Skakel kiekie-opspringkassie af</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiveer die opspringkassie wat verskyn wanneer \'n skermkiekie geneem word</string>
   <string name="morphe_feed_auto_scroll_title">Voer outo-blaai</string>
@@ -124,13 +127,14 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_hide_trending_shelves_title">Verberg Trending-rakke</string>
   <string name="morphe_hide_trending_shelves_summary">Verberg die Trending-rakke uit die voer en soekvoorstelle</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Steek \'Video s vir jou\'-rak weg</string>
+  <string name="morphe_always_show_hide_title">Wys altyd Versteek</string>
+  <string name="morphe_always_show_hide_summary">Wys Versteek in die spyskaart van voer-plasings, ook wanneer Reddit aanbevelingsopsies wys soos \'Wys minder plasings soos hierdie\'</string>
   <string name="morphe_remove_notification_dialog_title">Verwyder kennisgewing-voorstel-dialoog</string>
   <string name="morphe_remove_notification_dialog_summary">Sluit die kennisgewingvoorstel-dialoog outomaties wanneer \'n subreddit besoek word</string>
   <string name="morphe_high_quality_avatars_title">Hoëgehalte-avatars</string>
   <string name="morphe_high_quality_avatars_summary">Wys gebruiker-avatars in volle resolusie</string>
   <string name="morphe_search_hidden_profiles_title">Soek versteekte profiele</string>
-  <string name="morphe_search_hidden_profiles_summary">Wys \'n knoppie op profiele wat hul plasings of kommentare versteek, om hul plasings met Reddit-soek te vind</string>
-  <string name="morphe_search_hidden_profiles_button">Soek</string>
+  <string name="morphe_search_hidden_profiles_summary">Maak dit moontlik dat die profielsoektog die plasinge van profiele vind wat hul plasinge of kommentare verberg</string>
   <string name="morphe_show_flairs_in_home_feed_title">Wys flairs in die tuisvoer</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Wys plasing-flairs in die tuisvoer</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Sommige items in die voer wys dalk nie \'n opflakking nie</string>
@@ -171,6 +175,8 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_media_viewer_fade_summary">Die sterkte van die donker vervaging agter die onderskrif wanneer beelde en video\'s bekyk word, van 0 (geen vervaging) tot 1 (Reddit se verstek)</string>
   <string name="morphe_keep_feed_position_title">Behou voerposisie</string>
   <string name="morphe_keep_feed_position_summary">Behou die voer op dieselfde posisie nadat \'n pos, beeld of video gesluit is, in plaas daarvan om die geopende pos na bo te skuif</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Deaktiveer outomatiese verversing van tuisvoer</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Om na \'n rukkie na die toepassing terug te keer, herlaai nie meer die tuisvoer en skuif dit na bo nie. Trek om te ververs werk steeds</string>
   <string name="morphe_post_side_panel_title">Plasing sypaneel</string>
   <string name="morphe_post_side_panel_summary">Op wye tablet-skerms open plasings in \'n paneel langs die feed</string>
   <string name="morphe_post_side_panel_width_title">Paneelwydte</string>
@@ -260,6 +266,12 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_collapse_all_comments_scope_entry_replies">Antwoorde (boonste kommentaar bly oop)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Antwoorde op antwoorde (direkte antwoorde bly oop)</string>
   <string name="morphe_collapse_all_comments_button">Vou alle kommentaar in of uit</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Kleur kommentaar-inkepinglyne</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Gee elke antwoordvlak sy eie lynkleur sodat lang drade makliker is om te volg</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Lynkleure</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Reënboog (helder)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (sag)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Gedemp (meng in met die bladsy)</string>
   <string name="morphe_remember_collapsed_comments_title">Onthou ingevoude kommentare</string>
   <string name="morphe_remember_collapsed_comments_summary">Kommentare wat jy invou, bly ingevou wanneer jy die plasing weer oopmaak</string>
   <string name="morphe_app_icon_title">App-ikoon</string>

@@ -29,6 +29,8 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_hide_post_ads_title">Fela auglýsingar í straumi</string>
   <string name="morphe_hide_comment_ads_title">Fela auglýsingar í athugasemdum</string>
   <string name="morphe_screen_navigation_bar_title">Leiðsögustika</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Óvirkja sjálfvirka fellingu neðri valmyndar</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Heldur leiðsöguslánni neðst sýnilegri meðan skrunað er</string>
   <string name="morphe_hide_answers_button_title">Fela Svara hnappinn</string>
   <string name="morphe_hide_chat_button_title">Fela Spjall hnappinn</string>
   <string name="morphe_hide_create_button_title">Fela Búa til hnappinn</string>
@@ -78,8 +80,7 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_keyword_filters_saved">Uppfæra feed-ið til að beita breytingunum</string>
   <string name="morphe_screen_layout_title">Útlit</string>
   <string name="morphe_copy_text_title">Afrita texta</string>
-  <string name="morphe_copy_text_summary">Leyfir að velja og afrita texta í færslum og athugasemdum. Gerir samanbrot athugasemda óvirkt</string>
-  <string name="morphe_copy_text_user_dialog_message">Samanbrot athugasemda hættir að virka meðan Afrita texta er virkt</string>
+  <string name="morphe_copy_text_summary">Leyfir val og afritun á texta í færslum og athugasmdum</string>
   <string name="morphe_custom_font_title">Sérsniðið letur</string>
   <string name="morphe_custom_font_summary">Hleður sérsniðinni TTF- eða OTF-leturskrá af slóðinni hér að neðan. Með þessu er kerfisletur einnig slökkt</string>
   <string name="morphe_custom_font_file_path_title">Sérsniðin leturskrá</string>
@@ -91,6 +92,8 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_disable_modern_home_title">Slökkva á nýja heimaskjánum</string>
   <string name="morphe_home_feed_tabs_title">Flokkar heimastraums</string>
   <string name="morphe_home_feed_tabs_summary">Sýnir flipana \"Fyrir þig\", \"Fylgja\" og \"Vinsælast\" á heimafóðrinu og leyfir að renna á milli þeirra. Til að nota \"Fylgja\" þarf að vera skráð inn</string>
+  <string name="morphe_disable_refresh_on_back_title">Öðugla endursköpun við afturhlaup til að hætta</string>
+  <string name="morphe_disable_refresh_on_back_summary">Afturhlaup á heimafæðunni skrollar ekki lengur uppstað og endurladar. Ýttu til baka tvisvar til að yfirgefa appið</string>
   <string name="morphe_disable_screenshot_popup_title">Slökkva á sprettiglugga við skjámynd</string>
   <string name="morphe_disable_screenshot_popup_summary">Slekkur á sprettiglugganum sem birtist þegar skjámynd er tekin</string>
   <string name="morphe_feed_auto_scroll_title">Sjálfvirk skrunning á spjaldlistum</string>
@@ -124,13 +127,14 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_hide_trending_shelves_title">Fela vinsældahillur</string>
   <string name="morphe_hide_trending_shelves_summary">Felur vinsældahillur úr straumi og leitartillögum</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Fela \'Myndbönd fyrir þig\' röðina</string>
+  <string name="morphe_always_show_hide_title">Sýna alltaf \"Fela\"</string>
+  <string name="morphe_always_show_hide_summary">Sýnir \"Fela\" í valmynd færslna í straumnum, einnig þegar Reddit sýnir ráðleggingavalkosti eins og \"Sýna færri færslur eins og þessar\"</string>
   <string name="morphe_remove_notification_dialog_title">Fjarlægja glugga með tilkynningartillögu</string>
   <string name="morphe_remove_notification_dialog_summary">Fjarlægir sjálfkrafa tilkynningartillögu gluggann þegar heimsótt er undirredditt</string>
   <string name="morphe_high_quality_avatars_title">Hágæða myndavatör</string>
   <string name="morphe_high_quality_avatars_summary">Sýnir myndavatör notenda í fullri upplausn</string>
   <string name="morphe_search_hidden_profiles_title">Leita falnastra prófíla</string>
-  <string name="morphe_search_hidden_profiles_summary">Sýnir hnapp á prófílum sem fela færslur eða athugasemdir sínar, til að finna færslurnar með Reddit leit</string>
-  <string name="morphe_search_hidden_profiles_button">Leita</string>
+  <string name="morphe_search_hidden_profiles_summary">Gerir leit að prófílum ableika að finna færslur hjá prófílum sem fela færslur eða athugasemdir sínar</string>
   <string name="morphe_show_flairs_in_home_feed_title">Sýna merki í heimastraumi</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Sýnir merki færslna í heimastraumi</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Sumir straumliðir sýna kannski ekki merki</string>
@@ -171,6 +175,8 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_media_viewer_fade_summary">Styrkur dökku deyfingarinnar á bak við myndatextann þegar verið er að skoða myndir og myndbönd, frá 0 (engin deyfing) til 1 (sjálfgefið hjá Reddit)</string>
   <string name="morphe_keep_feed_position_title">Halda stöðu straumsins</string>
   <string name="morphe_keep_feed_position_summary">Heldur straumnum í sömu stöðu eftir að færslu, mynd eða myndbandi er lokað, í stað þess að færa opnu færsluna efst</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Slökkva á sjálfvirkri endurnýjun heimastraums</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Þegar verið er að snúa aftur í appið eftirn lítið bil endurnýist heimastraumurinn ekki sjálfvirkt né færist hann upp í toppinn. Að draga til endurnýjunar virkar samt</string>
   <string name="morphe_post_side_panel_title">Hliðarpláss fyrir færslur</string>
   <string name="morphe_post_side_panel_summary">Á breiðum spjaldtölvuskjáum opnast færslur í plássi við hliðina á feed-inu</string>
   <string name="morphe_post_side_panel_width_title">Breidd plásss</string>
@@ -260,6 +266,12 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_collapse_all_comments_scope_entry_replies">Svör (efstu athugasemdir halda sér opnar)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Svör við svörum (bein svör halda sér opnum)</string>
   <string name="morphe_collapse_all_comments_button">Collapse eða víkka alla athugasemdir</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Lita innri línur athugasemda</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Gefur hverju svarsigri eigin línulitur svo auðveldara sé að fylgja löngum þræðum</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Línulitir</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Regnbogi (bjartur)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastell (mjúkur)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Daufur (blendir inn í síðuna)</string>
   <string name="morphe_remember_collapsed_comments_title">Muna samandregnar athugasemdir</string>
   <string name="morphe_remember_collapsed_comments_summary">Athugasemdir sem þú dregur saman haldast samandregnar þegar þú opnar færsluna aftur</string>
   <string name="morphe_app_icon_title">Forritstákn</string>

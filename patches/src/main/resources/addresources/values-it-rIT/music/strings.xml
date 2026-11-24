@@ -449,6 +449,9 @@ Mettere in pausa il crossfade per guardare un video musicale può lasciare neri 
   <string name="morphe_music_hide_navigation_bar_library_button_title">Nascondi il pulsante Libreria</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Nascondi il pulsante Aggiorna</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Mostra il pulsante Impostazioni</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Azione del pulsante Impostazioni</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Quando abilitato, un tocco apre le impostazioni di Morphe e una pressione prolungata apre le impostazioni di YouTube Music. Disattiva per scambiare</string>
   <string name="morphe_music_hide_navigation_bar_title">Nascondi la barra di navigazione</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Nascondi le etichette dei pulsanti di navigazione</string>
   <string name="morphe_music_navigation_bar_glass_title">Abilita barra di navigazione glass</string>

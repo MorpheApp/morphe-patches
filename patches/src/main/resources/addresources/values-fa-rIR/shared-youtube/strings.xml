@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">سعی کنید فعال کنید: جعل جریان‌های ویدئویی &gt; ورود به Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">کلاینت پیش‌فرض</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">استفاده از QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">برای رفع کدگذاری، به‌جای yt-dlp-ejs (WebView) از QuackJS استفاده کنید</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ورود به \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" به یک ورود جداگانه نیاز دارد. برای ادامه اینجا را لمس کنید</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • تنظیمات Morphe شما احراز هویت Android VR را وارد یا صادر نمی‌کنند
 • اگر این برنامه به مدت ۶ ماه استفاده نشود، Google این احراز هویت را حذف می‌کند
 • اگر گذرواژهٔ Google خود را تغییر دهید یا این دستگاه را از تنظیمات Google لغو ثبت کنید، باید دوباره وارد شوید"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ورود به \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ورود به حساب وب</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">اختیاری: برای پخش ویدیوها با حساب کاربری خود، به وب‌سایت YouTube وارد شوید. برای ادامه اینجا را لمس کنید</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">در حال حاضر به \'Mobile Web\' وارد شده‌اید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">در حال حاضر در وب‌سایت YouTube وارد شده‌اید</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به «وب موبایل» تغییر دهید</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ورود به «وب موبایل»</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"«وب موبایل» ویدیوها را در حالت خروج از حساب یا ورود به وب‌سایت YouTube پخش می‌کند
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به یک کلاینت وب تغییر دهید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ورود به وب‌سایت YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"کلاینت‌های وب، ویدیوها را در حالت خارج از حساب یا وارد شده به وب‌سایت YouTube پخش می‌کنند
 
-• در حالت ورود، ویدیوهایی که نیاز به حساب کاربری دارند، مانند ویدیوهای دارای محدودیت سنی، قابل پخش هستند
-• صفحه ورود گوگل در همین برنامه باز می‌شود
-• ورود تنها برای دریافت ویدیوهایی که پخش می‌کنید استفاده می‌شود
-• اطلاعات ورود فقط روی این دستگاه ذخیره می‌شود
+• در حالت وارد شده، ویدیوهایی که به حساب کاربری نیاز دارند مانند ویدیوهای دارای محدودیت سنی قابل پخش هستند
+• صفحه ورود گوگل در این برنامه باز می‌شود
+• از ورود به حساب تنها برای دریافت ویدیوهایی که پخش می‌کنید استفاده می‌شود
+• ورود به حساب تنها روی این دستگاه ذخیره می‌شود
+• هر کلاینت وب، برای کلاینت پیش‌فرض انتخاب شده، ورود به حساب مخصوص به خود را دارد
 
-برای ورود، دکمه ادامه در پایین را فشار دهید"</string>
+برای ورود به حساب، دکمه ادامه در پایین را فشار دهید"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ورود ذخیره شد
 
-• تنظیمات Morphe شما، ورود به \"وب موبایل\" را وارد/خارج نخواهد کرد
-• اگر گوگل اتصال را قطع کند، ویدیوها تا زمانی که دوباره وارد شوید، در حالت خارج از حساب پخش می‌شوند
+• تنظیمات Morphe شما، ورود به وب‌سایت YouTube را وارد/خارج نخواهد کرد
+• اگر Google ورود را پایان دهد، ویدیوها تا زمانی که دوباره وارد شوید، در حالت خارج از حساب پخش می‌شوند
 • خارج شدن از حساب، این دستگاه را از وب‌سایت YouTube نیز خارج می‌کند"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ورود به وب موبایل منقضی شده است، دوباره سعی کنید به \"وب موبایل\" وارد شوید</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">خروج از \"وب موبایل\" انجام شد</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ورود به وب منقضی شده است، دوباره برای ورود تلاش کنید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">از وب‌سایت YouTube خارج شدید</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" در دسترس نیست. برای ورود، آن را نصب یا فعال کنید</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 موقتاً در دسترس نیست (مهلت API تمام شد)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ورود به \'Android VR\' منقضی شده است، دوباره سعی کنید به VR وارد شوید</string>

@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Скриване на рекламите в потока</string>
   <string name="morphe_hide_comment_ads_title">Скриване на реклами в коментари</string>
   <string name="morphe_screen_navigation_bar_title">Навигационна лента</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Деактивиране на автоматичното скриване на долната лента</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Поддържа долната навигационна лента видима при скролване</string>
   <string name="morphe_hide_answers_button_title">Скриване на бутона \"Отговори\"</string>
   <string name="morphe_hide_chat_button_title">Скриване на бутона \"Чат\"</string>
   <string name="morphe_hide_create_button_title">Скриване на бутона \"Създай\"</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Освежете фийда, за да приложите промените</string>
   <string name="morphe_screen_layout_title">Оформление</string>
   <string name="morphe_copy_text_title">Копиране на текст</string>
-  <string name="morphe_copy_text_summary">Позволява избиране и копиране на текст в публикации и коментари. Деактивира свиването на коментарите</string>
-  <string name="morphe_copy_text_user_dialog_message">Коментарите ще спрат да се свиват, докато опцията \"Копиране на текст\" е активирана</string>
+  <string name="morphe_copy_text_summary">Позволява selecting и копиране на текст в публикации и коментари</string>
   <string name="morphe_custom_font_title">Потребителски шрифт</string>
   <string name="morphe_custom_font_summary">Заредете потребителски TTF или OTF шрифтов файл от посочения път. Активирането на тази опция също изключва използването на системния шрифт.</string>
   <string name="morphe_custom_font_file_path_title">Файл с потребителски шрифт</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Деактивиране на модерен потребителски интерфейс на началния екран</string>
   <string name="morphe_home_feed_tabs_title">Раздели за началния поток</string>
   <string name="morphe_home_feed_tabs_summary">Показва разделите „За вас“, „Последвани“ и „Популярни“ в началния поток и позволява превключване между тях чрез плъзгане. За разделите „Последвани“ е необходим вход в профил</string>
+  <string name="morphe_disable_refresh_on_back_title">Деактивиране на опресняването при връщане за изход</string>
+  <string name="morphe_disable_refresh_on_back_summary">Бутонът „Назад“ в началния фийд вече не превърта до горе и не презарежда. Натиснете „Назад“ два пъти, за да излезете от приложението</string>
   <string name="morphe_disable_screenshot_popup_title">Изключване на изскачащия прозорец за екранна снимка</string>
   <string name="morphe_disable_screenshot_popup_summary">Изключва изскачащия прозорец, който се появява при правене на екранна снимка</string>
   <string name="morphe_feed_auto_scroll_title">Автоматично скролване на фийда</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Скрий популярните секции</string>
   <string name="morphe_hide_trending_shelves_summary">Скрива секциите \"Тенденции\" от началната страница и предложенията за търсене.</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Скрий секцията \"Видео за вас\"</string>
+  <string name="morphe_always_show_hide_title">Винаги показвай \"Скрий\"</string>
+  <string name="morphe_always_show_hide_summary">Показва \"Скрий\" в менюто на публикациите във фийда, както и когато Reddit показва опции за препоръка като \"Показвай по-малко публикации от този вид\"</string>
   <string name="morphe_remove_notification_dialog_title">Премахване на диалоговия прозорец за предложения за известия</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично затваря диалоговия прозорец за предложение за известие при посещение на подреддит</string>
   <string name="morphe_high_quality_avatars_title">Аватари с високо качество</string>
   <string name="morphe_high_quality_avatars_summary">Показва потребителските аватари в пълна резолюция</string>
   <string name="morphe_search_hidden_profiles_title">Търсене на скрити профили</string>
-  <string name="morphe_search_hidden_profiles_summary">Показва бутон в профили, които крият своите публикации или коментари, за да намерите публикациите им чрез търсенето на Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Търсене</string>
+  <string name="morphe_search_hidden_profiles_summary">Позволява търсенето на профили да намира публикации на профили, които крият своите публикации или коментари</string>
   <string name="morphe_show_flairs_in_home_feed_title">Показване на етикети в началния източник</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Показва значки за постове с етикети в началния източник</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Някои елементи от източника може да не показват етикет</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Сила на тъмното затъмнение зад надписа при преглед на изображения и видеоклипове, от 0 (без затъмнение) до 1 (по подразбиране в Reddit)</string>
   <string name="morphe_keep_feed_position_title">Запазване на позицията в потока</string>
   <string name="morphe_keep_feed_position_summary">Запазва позицията на потока след затваряне на публикация, изображение или видео, вместо да премества отворената публикация в началото</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Деактивиране на автоматичното опресняване на началния фийд</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Връщането в приложението след известно време вече не презарежда началния фийд и не го премества най-горе. Плъзгането за опресняване все още работи</string>
   <string name="morphe_post_side_panel_title">Страничен панел за постове</string>
   <string name="morphe_post_side_panel_summary">При широки екрани на таблети постовете се отварят в панел до фийда</string>
   <string name="morphe_post_side_panel_width_title">Ширина на панела</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Отговори (топ коментарите остават разгърнати)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Отговори на отговори (директните отговори остават разгърнати)</string>
   <string name="morphe_collapse_all_comments_button">Свиване или разгръщане на всички коментари</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Оцветяване на линиите за отместване на коментарите</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Придава на всяко ниво на отговор собствен цвят на линията, за да бъдат дългите нишки по-лесни за проследяване</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Цветове на линиите</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Дъга (ярки)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастелни (меки)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Приглушени (сливат се със страницата)</string>
   <string name="morphe_remember_collapsed_comments_title">Запомняне на свитите коментари</string>
   <string name="morphe_remember_collapsed_comments_summary">Коментарите, които свиеш, остават свити, когато отвориш отново публикацията</string>
   <string name="morphe_app_icon_title">Икона на приложението</string>

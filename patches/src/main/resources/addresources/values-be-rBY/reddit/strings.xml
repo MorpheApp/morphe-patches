@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Схаваць рэкламу ў стужцы</string>
   <string name="morphe_hide_comment_ads_title">Схаваць рэкламу ў каментарыях</string>
   <string name="morphe_screen_navigation_bar_title">Панэль навігацыі</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Адмена аўтахавання ніжняй панэлі</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Захоўвае ніжнюю панэль навігацыі бачнай пры пракрутцы</string>
   <string name="morphe_hide_answers_button_title">Схаваць кнопку \"Адказы\"</string>
   <string name="morphe_hide_chat_button_title">Схаваць кнопку \"Чат\"</string>
   <string name="morphe_hide_create_button_title">Схаваць кнопку \"Стварыць\"</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Абнавіце стужку, каб прымяніць змены</string>
   <string name="morphe_screen_layout_title">Макет</string>
   <string name="morphe_copy_text_title">Капіяваць тэкст</string>
-  <string name="morphe_copy_text_summary">Дазваляе выбіраць і капіяваць тэкст у публікацыях і каментарыях. Адключае згортванне каментарыяў</string>
-  <string name="morphe_copy_text_user_dialog_message">Згортванне каментарыяў перастане працаваць, пакуль уключана функцыя \"Капіяваць тэкст\"</string>
+  <string name="morphe_copy_text_summary">Дазваляе выбіраць і капіяваць тэкст у пастах і каментарыях</string>
   <string name="morphe_custom_font_title">Уласны шрыфт</string>
   <string name="morphe_custom_font_summary">Загрузіць уласны файл шрыфта TTF або OTF па шляху ніжэй. Уключанне гэтай функцыі таксама адключае «Сістэмны шрыфт»</string>
   <string name="morphe_custom_font_file_path_title">Файл уласнага шрыфта</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Адключаць сучасны інтэрфейс галоўнай старонкі</string>
   <string name="morphe_home_feed_tabs_title">Укладкі галоўнай стужкі</string>
   <string name="morphe_home_feed_tabs_summary">Паказвае ўкладкі \"Для вас\", \"Падпіскі\" і \"Папулярнае\" ў галоўнай стужцы і дазваляе пераключацца паміж імі свайпам. Для ўкладкі \"Падпіскі\" патрабуецца ўваход у ўліковы запіс</string>
+  <string name="morphe_disable_refresh_on_back_title">Адменіць абнаўленне пры вяртанні для выхаду</string>
+  <string name="morphe_disable_refresh_on_back_summary">Вяртанне на галоўную стужку больш не пракручвае ўверх і не перазагружае. Націсніце кнопку \"Назад\" двічы, каб выйсці з праграмы</string>
   <string name="morphe_disable_screenshot_popup_title">Адключыць ўсплывальнае акно скрыншота</string>
   <string name="morphe_disable_screenshot_popup_summary">Адключае ўсплывальнае акно, якое з\'яўляецца пры стварэнні скрыншота</string>
   <string name="morphe_feed_auto_scroll_title">Аўтапракрутка стужкі</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Схаваць паліцы \"Папулярнае\"</string>
   <string name="morphe_hide_trending_shelves_summary">Хавае паліцы \"Папулярнае\" са стужкі і прапаноў пошуку</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Схаваць паліцу \"Відэа для вас\"</string>
+  <string name="morphe_always_show_hide_title">Заўсёды паказваць «Схаваць»</string>
+  <string name="morphe_always_show_hide_summary">Паказвае пункт «Схаваць» у меню пастоў стужкі, а таксама калі Reddit паказвае варыянты рэкамендацый, такія як «Паказваць менш падобных пастоў»</string>
   <string name="morphe_remove_notification_dialog_title">Выдаліць дыялогавае акно з прапановай паведамленняў</string>
   <string name="morphe_remove_notification_dialog_summary">Аўтаматычна закрывае дыялогавае акно з прапановай паведамленняў пры наведванні ў сабрэдыт</string>
   <string name="morphe_high_quality_avatars_title">Выявы аватарў высокай якасці</string>
   <string name="morphe_high_quality_avatars_summary">Паказвае аватары карыстальнікаў у поўным раздыле</string>
   <string name="morphe_search_hidden_profiles_title">Пошук схаваных профіляў</string>
-  <string name="morphe_search_hidden_profiles_summary">Паказвае кнопку ў профілях, якія хаваюць свае пасты або каментары, каб знайсці іх пасты праз пошук Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Пошук</string>
+  <string name="morphe_search_hidden_profiles_summary">Дае магчымасць пошуку па профілях знаходзіць пасты профіляў, якія схавалі свае пасты або каментары</string>
   <string name="morphe_show_flairs_in_home_feed_title">Паказваць флейры ў галоўнай стужцы</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Паказвае значкі флейраў пастоў у галоўнай стужцы</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Некаторыя элементы стужкі могуць не паказваць флейр</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Інтэнсіўнасць цёмнага зацірэння за тэкстам пры праглядзе выяваў і відэа, ад 0 (без зацірэння) да 1 (па змаўчанні ў Reddit)</string>
   <string name="morphe_keep_feed_position_title">Захаваць пазіцыю стужкі</string>
   <string name="morphe_keep_feed_position_summary">Захоўвае стужку ў той жа пазіцыі пасля закрыцця паста, выявы або відэа, замест таго, каб перамясціць адкрыты паст уверх</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Адключыць аўтаматычнае абнаўленне галоўнай стужкі</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Пасля вяртання ў праграму праз пэўны час галоўная стужка больш не перазагружаецца і не перамяшчаецца ўверх. Працяг занізу для абнаўлення ўсё яшчэ працуе</string>
   <string name="morphe_post_side_panel_title">Бакавая панэль паста</string>
   <string name="morphe_post_side_panel_summary">На шырокіх экранах планшета пасты адкрываюцца ў панэлі побач з стужкай</string>
   <string name="morphe_post_side_panel_width_title">Шырыня панэлі</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Адказы (галоўныя каментарыі застаюцца разгарнутымі)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Адказы на адказы (прамыя адказы застаюцца разгарнутымі)</string>
   <string name="morphe_collapse_all_comments_button">Згарнуць або разгарнуць усе каментары</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Коларызацыя ліній адступаў каментарыяў</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Кожны ўзровень адказу атрымлівае свой колер лініі, каб было прасцей сачыць за доўгімі веткамі</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Колеры ліній</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Вясёлкавы (яркі)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастэльны (мяккі)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Прыглушаны (зліваецца з старонкай)</string>
   <string name="morphe_remember_collapsed_comments_title">Запамятоўваць згорнутыя каментары</string>
   <string name="morphe_remember_collapsed_comments_summary">Каментары, якія вы згортнулі, застануць згорнутымі пры паўторным адкрыцці публікацыі</string>
   <string name="morphe_app_icon_title">Іконка праграмы</string>

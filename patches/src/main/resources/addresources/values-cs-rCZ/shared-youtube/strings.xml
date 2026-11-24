@@ -140,6 +140,8 @@ Klepněte na OK pro otevření Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Zkuste zapnout: Falšovat video streamy &gt; Přihlášení do Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Výchozí klient</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Použít QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Pro deobfuskaci použít QuackJS místo yt-dlp-ejs (WebView)</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Přihlášení do \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" vyžaduje samostatné přihlášení. Klepněte sem pro pokračování</string>
@@ -168,27 +170,28 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
 • Vaše nastavení Morphe neimportuje ani neexportuje ověření Android VR
 • Pokud tuto aplikaci nepoužijete 6 měsíců, Google toto ověření odstraní
 • Pokud změníte heslo ke Googlu nebo toto zařízení odeberete z nastavení Googlu, budete se muset znovu přihlásit"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Přihlášení do \"Mobilního webu\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Webové přihlášení</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Volitelně: přihlaste se na webovou stránku YouTube, abyste mohli přehrávat videa se svým účtem. Poklepejte sem pro pokračování</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálně přihlášeno k \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálně přihlášeno k webové stránce YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chcete-li tuto funkci použít, změňte „Výchozí klient“ na \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Přihlásit se k \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" přehrává videa bez přihlášení nebo při přihlášení k webové stránce YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chcete-li tuto funkci použít, změňte „Výchozí klient“ na webový klient</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Přihlaste se k webové stránce YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webové klienty přehrávají videa bez přihlášení nebo po přihlášení k webové stránce YouTube
 
-• Po přihlášení lze přehrávat videa, která vyžadují účet, například videa s věkovým omezením
-• Stránka pro přihlášení k Google se otevře v této aplikaci
+• Po přihlášení lze přehrávat videa, která vyžadují účet, například videa s omezením věku
+• Stránka přihlášení Google se otevře v této aplikaci
 • Přihlášení slouží pouze k získání videí, která přehráváte
-• Přihlášení je uloženo pouze v tomto zařízení
+• Přihlášení je uloženo pouze na tomto zařízení
+• Každý webový klient má vlastní přihlášení pro vybraného výchozího klienta
 
 Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Přihlášení uloženo
 
-• Nastavení aplikace Morphe nebude importovat/exportovat přihlášení pro \"Mobilní web\"
-• Pokud Google ukončí přihlášení, videa budou přehrávána bez přihlášení, dokud se znovu nepřihlásíte
+• Nastavení aplikace Morphe nebude importovat/exportovat přihlášení k webové stránce YouTube
+• Pokud Google přihlášení ukončí, videa se budou přehrávat bez přihlášení, dokud se znovu nepřihlásíte
 • Odhlášení také odhlásí toto zařízení z webové stránky YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Přihlášení do Mobilního webu vypršelo, zkuste se do \"Mobilního webu\" přihlásit znovu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlášeno z \"Mobilního webu\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Platnost webového přihlášení vypršela, zkuste se přihlásit znovu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlášeno z webové stránky YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" není k dispozici. Chcete-li se přihlásit, nainstalujte jej nebo povolte</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 dočasně není k dispozici (Časový limit API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Přihlášení do \"Android VR\" vypršelo, zkuste se do VR přihlásit znovu</string>

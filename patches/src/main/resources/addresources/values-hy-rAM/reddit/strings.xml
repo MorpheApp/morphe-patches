@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Թաքցնել հոսքի գովազդները</string>
   <string name="morphe_hide_comment_ads_title">Թաքցնել մեկնաբանությունների գովազդները</string>
   <string name="morphe_screen_navigation_bar_title">Նավիգացիայի վահանակ</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Անջատել ստորին վահանակի ավտոմատ թաքցումը</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Պահպանում է ստորին նավիգացիոն վահանակի տեսանելիությունը ոլորման ժամանակ</string>
   <string name="morphe_hide_answers_button_title">Թաքցնել \"Պատասխաններ\" կոճակը</string>
   <string name="morphe_hide_chat_button_title">Թաքցնել \"Չատ\" կոճակը</string>
   <string name="morphe_hide_create_button_title">Թաքցնել \"Ստեղծել\" կոճակը</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Թարմացրեք ленտան՝ փոփոխությունները կիրառելու համար</string>
   <string name="morphe_screen_layout_title">Դասավորություն</string>
   <string name="morphe_copy_text_title">Պատճենել տեքստը</string>
-  <string name="morphe_copy_text_summary">Թույլ է տալիս ընտրել և պատճենել տեքստը հրապարակումներում և մեկնաբանություններում: Անջատում է մեկնաբանությունների փակումը</string>
-  <string name="morphe_copy_text_user_dialog_message">Մեկնաբանությունների փակումը կդադարի աշխատել, քանի դեռ «Պատճենել տեքստը» ֆունկցիան միացված է</string>
+  <string name="morphe_copy_text_summary">Թույլ է տալիս ընտրել և պատճենել տեքստը գրառումներում և մեկնաբանություններում</string>
   <string name="morphe_custom_font_title">Անհատականացված տառատիպ</string>
   <string name="morphe_custom_font_summary">Բեռնեք անհատականացված TTF կամ OTF տառատիպի ֆայլ ստորև նշված հասցեից: Սա միացնելով՝ կանջատվի նաև «Համարել համակարգային տառատիպը» տարբերակը</string>
   <string name="morphe_custom_font_file_path_title">Անհատականացված տառատիպի ֆայլ</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Անջատել գլխավոր էջի ժամանակակից UI-ը</string>
   <string name="morphe_home_feed_tabs_title">Գլխավոր հոսքի ներդիրները</string>
   <string name="morphe_home_feed_tabs_summary">Ցուցադրում է «Ձեզ համար», «Հետևում եմ» և «Հայտնի» պատկերակները գլխավոր ленտայում և թույլ է տալիս անցում կատարել դրանց միջև սլայդի միջոցով: «Հետևում եմ» պատկերակն ունենալու համար անհրաժեշտ է մուտք գործել հաշիվ</string>
+  <string name="morphe_disable_refresh_on_back_title">Անջատել թարմացումը հետ գնալիս դուրս գալու համար</string>
+  <string name="morphe_disable_refresh_on_back_summary">Գլխավոր ленտայում հետ գնալըこれ այլևս չի թարմացնում էջը և չի վերադառնում վերև: Հավելվածից դուրս գալու համար սեղմեք հետ գնալ կոճակը երկու անգամ</string>
   <string name="morphe_disable_screenshot_popup_title">Անջատել սքրինշոթի պատուհանը</string>
   <string name="morphe_disable_screenshot_popup_summary">Անջատում է պատուհանը, որը հայտնվում է սքրինշոթ անելիս</string>
   <string name="morphe_feed_auto_scroll_title">Լրահոսի ավտոմատ թողարկում</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Թաքցնել թրենդային բաժինները</string>
   <string name="morphe_hide_trending_shelves_summary">Թաքցնում է թրենդային բաժինները հոսքից և որոնման առաջարկներից</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Թաքցնել \"Ձեզ համար տեսանյութեր\" դարակը</string>
+  <string name="morphe_always_show_hide_title">Միշտ ցույց տալ «Թաքցնել»-ը</string>
+  <string name="morphe_always_show_hide_summary">Ցույց է տալիս «Թաքցնել»-ը հոսքի գրառումների մենյուում, ինչպես նաև երբ Reddit-ը ցույց է տալիս առաջարկի տարբերակներ, օրինակ՝ «Ցույց տալ նմանատիպ ավելի քիչ գրառումներ»</string>
   <string name="morphe_remove_notification_dialog_title">Հեռացնել ծանուցումների առաջարկի երկխոսությունը</string>
   <string name="morphe_remove_notification_dialog_summary">Ավտոմատ կերպով փակում է ծանուցման առաջարկի պատուհանը subreddit այցելելիս</string>
   <string name="morphe_high_quality_avatars_title">Բարձրորակ ավատարներ</string>
   <string name="morphe_high_quality_avatars_summary">Ցուցադրում է օգտատերերի ավատարները լիարժեք роздіլ resolution-ով</string>
   <string name="morphe_search_hidden_profiles_title">Փնտրել թաքցված պրոֆիլները</string>
-  <string name="morphe_search_hidden_profiles_summary">Ցուցադրում է կոճակ այն պրոֆիլների վրա, որոնք թաքցնում են իրենց գրառումները կամ մեկնաբանությունները, որպեսզի գտնեք դրանք Reddit-ի որոնման միջոցով</string>
-  <string name="morphe_search_hidden_profiles_button">Փնտրել</string>
+  <string name="morphe_search_hidden_profiles_summary">Թույլ է տալիս պրոֆիլների որոնման ժամանակ գտնել այն պրոֆիլների գրառումները, որոնք թաքցնում են իրենց գրառումները կամ մեկնաբանությունները</string>
   <string name="morphe_show_flairs_in_home_feed_title">Ցուցադրել թեգերը հոսքում</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Ցուցադրում է գրառումների թեգերը հոսքում</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Հոսքի որոշ տարրեր կարող են չունենալ թեգ</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Պատկերներ և տեսանյութեր դիտելիս վերնագրի հետևում գտնվող մգլման ուժը՝ 0-ից (առանց մգլման) մինչև 1 (Reddit-ի լռելյայն արժեքը)</string>
   <string name="morphe_keep_feed_position_title">Պահպանել հոսքի դիրքը</string>
   <string name="morphe_keep_feed_position_summary">Հոսքը նույն դիրքում է պահում հրապարակումը, պատկերը կամ տեսանյութը փակելուց հետո՝ բացված հրապարակումը վերև տեղափոխելու փոխարեն</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Անջատել գլխավոր հոսքի ավտոմատ թարմացումը</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Որոշ ժամանակ անց հավելված վերադառնալիս այլևս չի թարմացնի գլխավոր լիգան և չի տեղափոխի այն վերև։ Թարմացնելու համար քաշելու ֆունկցիան դեռևս աշխատում է</string>
   <string name="morphe_post_side_panel_title">Հրապարակման կողային վահանակ</string>
   <string name="morphe_post_side_panel_summary">Պլանշետի լայն էկրաններին հրապարակումները բացվում են լիգի կողքի վահանակում</string>
   <string name="morphe_post_side_panel_width_title">Վահանակի լայնությունը</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Պատասխաններ (գլխավոր մեկնաբանությունները մնում են բաց)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Պատասխանների պատասխաններ (ուղղակի պատասխանները մնում են բաց)</string>
   <string name="morphe_collapse_all_comments_button">Փոքրացնել կամ ընդլայնել բոլոր մեկնաբանությունները</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Գունավորել մեկնաբանությունների հետնդունման գծերը</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Յուրաքանչյուր պատասխանի մակարդակին տալիս է իր գծի գույնը, որպեսզի երկար թելերը ավելի հեշտ լինի հետևել</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Գծերի գույներ</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Цבעավոր (վառ)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Պաստելային (փափուկ)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Մեղմ (միահամալիր է էջի հետ)</string>
   <string name="morphe_remember_collapsed_comments_title">Հիշել փակված մեկնաբանությունները</string>
   <string name="morphe_remember_collapsed_comments_summary">Ձեր փակած մեկնաբանությունները կմնան փակ, երբ նորից բացեք հրապարակումը</string>
   <string name="morphe_app_icon_title">Հավելվածի պատկերակ</string>

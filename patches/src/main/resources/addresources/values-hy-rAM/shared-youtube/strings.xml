@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Փորձեք միացնել. Տեսանյութերի հոսքերի կեղծում &gt; Մուտք Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Լռելյայն հաճախորդ</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Օգտագործել QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Դեոբֆուսկացիայի համար օգտագործեք QuackJS-ը yt-dlp-ejs-ի (WebView) փոխարեն</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Մուտք \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-ը պահանջում է առանձին մուտք: Շարունակելու համար հպեք այստեղ</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի Android VR հավաստիացումը
 • Եթե այս հավելվածը չօգտագործվի 6 ամիս, Google-ը կհեռացնի այս հավաստիացումը
 • Ձեզ պետք կլինի նորից մուտք գործել, եթե փոխեք Google-ի ձեր գաղտնաբառը կամ հեռացնեք այս սարքը Google-ի ձեր կարգավորումներից"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Մուտք \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Վեբ մուտք</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Կամընտիր․ մուտք գործեք YouTube կայք, որպեսզի տեսանյութերը դիտեք ձեր հաշվով: Շարունակելու համար հպեք այստեղ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Այս պահին մուտք եք գործել \"Mobile Web\"-ի</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Այս պահին մուտք եք գործել YouTube կայք</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Այս հնարավորությունն օգտագործելու համար փոխեք \"Լռելյայն հաճախորդը\"-ն \"Mobile Web\"-ի</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Մուտք գործեք \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\"-ը նվագում է տեսանյութերը առանց մուտքի կամ YouTube կայքի մուտքի միջոցով
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Այս հնարավորությունից օգտվելու համար փոխեք \"Լռելյայն հաճախորդը\" վեբ հաճախորդի</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Մուտք գործեք YouTube կայք</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Վեբ հաճախորդները տեսանյութերը նվագում են առանց մուտքի կամ YouTube կայքի մուտքով
 
-• Մուտք գործած լինելու դեպքում կարելի է նվագարկել այն տեսանյութերը, որոնք պահանջում են հաշիվ, օրինակ՝ ըստ տարիքի սահմանափակում ունեցող տեսանյութերը
+• Մուտք գործած լինելու դեպքում կարելի է նվագարկել նաև այն տեսանյութերը, որոնք պահանջում են հաշիվ, օրինակ՝ ըստ տարիքի սահմանափակում ունեցող տեսանյութերը
 • Google-ի մուտքի էջը բացվում է այս հավելվածում
-• Մուտքը օգտագործվում է միայն ձեր նվագարկած տեսանյութերը ստանալու համար
-• Մուտքի տվյալները պահվում են միայն այս սարքի վրա
+• Մուտքն օգտագործվում է միայն ձեր նվագարկած տեսանյութերը ստանալու համար
+• Մուտքը պահպանվում է միայն այս սարքի վրա
+• Յուրաքանչյուր վեբ հաճախորդ ունի իր սեփական մուտքը՝ ընտրված լռելյայն հաճախորդի համար
 
-Մուտք գործելու համար սեղմեք ստորև նշված «Շարունակել» կոճակը"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Մուտքը պահպանված է
+Մուտք գործելու համար սեղմեք ներքևում գտնվող «Շարունակել» կոճակը"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Մուտքի տվյալները պահվեցին
 
-• Morphe-ի ձեր կարգավորումները չեն ներմուծի/արտահանի 'Mobile Web' մուտքը
-• Եթե Google-ը դադարեցնի մուտքը, տեսանյութերը կմնան անձնական հաշվից դուրս, մինչև նորից մուտք գործելը
-• Հաշվից դուրս գալը նաև այս սարքից դուրս կգցի YouTube կայքից"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Դուրս եք եկել \'Mobile Web\'-ից</string>
+• Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի YouTube կայքի մուտքի տվյալները
+• Եթե Google-ը դադարեցնի մուտքը, տեսանյութերը կնվագեն առանց մուտքի, մինչև նորից մուտք գործելը
+• Մուտքից դուրս գալը նաև կդուրս գցի այս սարքը YouTube կայքից"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Վեբ մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Դուրս եք գալել YouTube կայքից</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\'-ը հասանելի չէ: Տեղադրեք կամ միացրեք այն մուտք գործելու համար</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2-ը ժամանակավորապես հասանելի չէ (API-ի ժամանակը սպառվել է)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\'-ի մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել VR</string>

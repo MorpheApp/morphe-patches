@@ -29,6 +29,8 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_hide_post_ads_title">Piilota syötteen mainokset</string>
   <string name="morphe_hide_comment_ads_title">Piilota kommenttimainokset</string>
   <string name="morphe_screen_navigation_bar_title">Navigointipalkki</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Poista alapalkin automaattinen piilottaminen</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Pitää alareunan navigointipalkin näkyvillä vieritettäessä</string>
   <string name="morphe_hide_answers_button_title">Piilota Vastaukset-painike</string>
   <string name="morphe_hide_chat_button_title">Piilota Chat-painike</string>
   <string name="morphe_hide_create_button_title">Piilota Luo-painike</string>
@@ -78,8 +80,7 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_keyword_filters_saved">Päivitä syöte käyttääksesi muutokset</string>
   <string name="morphe_screen_layout_title">Ulkoasu</string>
   <string name="morphe_copy_text_title">Kopioi teksti</string>
-  <string name="morphe_copy_text_summary">Mahdollistaa tekstin valitsemisen ja kopioimisen julkaisuissa ja kommenteissa. Poistaa kommenttien tiivistämisen käytöstä</string>
-  <string name="morphe_copy_text_user_dialog_message">Kun kopiointitoiminto on käytössä, kommenttien piilottaminen ei toimii</string>
+  <string name="morphe_copy_text_summary">Sallii tekstin valitsemisen ja kopioimisen postauksista ja kommenteista</string>
   <string name="morphe_custom_font_title">Mukautettu fontti</string>
   <string name="morphe_custom_font_summary">Lataa mukautettu TTF- tai OTF-fonttitiedosto alla olevasta polusta. Tämän ottaminen käyttöön poistaa myös järjestelmäfontin pakottamisen</string>
   <string name="morphe_custom_font_file_path_title">Mukautetun fontin tiedosto</string>
@@ -91,6 +92,8 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_disable_modern_home_title">Poista käytöstä moderni käyttöliittymä</string>
   <string name="morphe_home_feed_tabs_title">Kotisyötteen välilehdet</string>
   <string name="morphe_home_feed_tabs_summary">Näyttää Sinulle, Seuraat ja Suositut -välilehdet kotisyötteessä ja mahdollistaa niiden välillä pyyhkäisyn. Seuraat-välilehti edellyttää kirjautumista</string>
+  <string name="morphe_disable_refresh_on_back_title">Poista päivitys takaisin-painikkeella poistumiseksi</string>
+  <string name="morphe_disable_refresh_on_back_summary">Takaisin-painike kotisyötteessä ei enää vieritä ylös ja lataa uudelleen. Paina takaisin kahdesti poistuaksesi sovelluksesta</string>
   <string name="morphe_disable_screenshot_popup_title">Poista näyttökuvapop-up käytöstä</string>
   <string name="morphe_disable_screenshot_popup_summary">Poistaa näyttökuvan ottamisen yhteydessä näkyvän pop-upin käytöstä</string>
   <string name="morphe_feed_auto_scroll_title">Syötteen automaattinen vieritys</string>
@@ -124,13 +127,14 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_hide_trending_shelves_title">Piilota suositut hyllyt</string>
   <string name="morphe_hide_trending_shelves_summary">Piilottaa suositut hyllyt syötteestä ja ehdotuksista</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Piilota \"Videot sinulle\" -hylly</string>
+  <string name="morphe_always_show_hide_title">Näytä aina Piilota</string>
+  <string name="morphe_always_show_hide_summary">Näyttää Piilota-vaihtoehdon syötteen postausten valikossa, myös silloin kun Reddit näyttää suositusvaihtoehtoja, kuten \"Näytä vähemmän tämän kaltaisia postauksia\"</string>
   <string name="morphe_remove_notification_dialog_title">Poista ilmoituspyyntödialogi</string>
   <string name="morphe_remove_notification_dialog_summary">Poistaa ilmoitusehdotusikkunan automaattisesti vieraillessa aliryhmässä</string>
   <string name="morphe_high_quality_avatars_title">Korkealaatuiset avatarit</string>
   <string name="morphe_high_quality_avatars_summary">Näyttää käyttäjien avatarit täydellä resoluutiolla</string>
   <string name="morphe_search_hidden_profiles_title">Hae piilotettuja profiileja</string>
-  <string name="morphe_search_hidden_profiles_summary">Näyttää painikkeen profiileissa, jotka piilottavat postauksensa tai kommenttinsa, jotta niiden postaukset voidaan löytää Reddit-haulla</string>
-  <string name="morphe_search_hidden_profiles_button">Haku</string>
+  <string name="morphe_search_hidden_profiles_summary">Tekee profiilihauista sellaisia, että ne löytävät sellaisten profiilien julkaisut, jotka piilottavat julkaisunsa tai kommenttinsa</string>
   <string name="morphe_show_flairs_in_home_feed_title">Näytä tunnisteet kotisyötteessä</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Näyttää julkaisujen tunniste-merkit kotisyötteessä</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Jotkin kotisyötteen kohteet eivät välttämättä näytä tunnisteita</string>
@@ -171,6 +175,8 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_media_viewer_fade_summary">Tumman häivytyksen voimakkuus kuvatekstin takana kuvia ja videoita katseltaessa, arvosta 0 (ei häivytystä) arvoon 1 (Redditin oletusarvo)</string>
   <string name="morphe_keep_feed_position_title">Säilytä syötteen sijainti</string>
   <string name="morphe_keep_feed_position_summary">Säilyttää syötteen samassa kohdassa, kun suljet julkaisun, kuvan tai videon, sen sijaan, että siirtäisi avatun julkaisun ylös</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Poista kotisyötteen automaattinen päivitys</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Sovellukseen palaaminen hetken kuluttua ei enää lataa kotisyötettä uudelleen eikä siirrä sitä alkuun. Vedä päivittääkseen toimii edelleen</string>
   <string name="morphe_post_side_panel_title">Julkaisun sivupaneeli</string>
   <string name="morphe_post_side_panel_summary">Leveillä tablettinäytöillä julkaisut avautuvat syötteen viereiseen paneeliin</string>
   <string name="morphe_post_side_panel_width_title">Paneelin leveys</string>
@@ -260,6 +266,12 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_collapse_all_comments_scope_entry_replies">Vastaukset (yläkommentit pysyvät auki)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Vastaukset vastauksiin (suorat vastaukset pysyvät auki)</string>
   <string name="morphe_collapse_all_comments_button">Tiivistä tai laajenna kaikki kommentit</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Värjää kommenttien sisennysviivat</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Antaa jokaiselle vastaustasolle oman viivan värin, jotta pitkiä ketjuja on helpompi seurata</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Viivojen värit</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Sateenkaari (kirkas)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastelli (pehmeä)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Vaimea (sulautuu sivuun)</string>
   <string name="morphe_remember_collapsed_comments_title">Muista tiivistetyt kommentit</string>
   <string name="morphe_remember_collapsed_comments_summary">Tiivistämäsi kommentit pysyvät tiivistettyinä, kun avaat postauksen uudelleen</string>
   <string name="morphe_app_icon_title">Sovelluskuvake</string>

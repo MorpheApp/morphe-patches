@@ -29,6 +29,8 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_hide_post_ads_title">Skjul annoncefeed</string>
   <string name="morphe_hide_comment_ads_title">Skjul kommentarannoncer</string>
   <string name="morphe_screen_navigation_bar_title">Navigationslinje</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Deaktiver automatisk skjuling af nederste bjælke</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Holder den nederste navigationsbjælke synlig under scrolling</string>
   <string name="morphe_hide_answers_button_title">Skjul Svar-knappen</string>
   <string name="morphe_hide_chat_button_title">Skjul Chat-knappen</string>
   <string name="morphe_hide_create_button_title">Skjul Opret-knappen</string>
@@ -78,8 +80,7 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_keyword_filters_saved">Opdater feedet for at anvende ændringerne</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopier tekst</string>
-  <string name="morphe_copy_text_summary">Giver mulighed for at markere og kopiere tekst i opslag og kommentarer. Deaktiverer sammenklapning af kommentarer</string>
-  <string name="morphe_copy_text_user_dialog_message">Sammenslåede kommentarer stopper med at fungere, mens Kopier tekst er aktiveret</string>
+  <string name="morphe_copy_text_summary">Gør det muligt at vælge og kopiere tekst i indlæg og kommentarer</string>
   <string name="morphe_custom_font_title">Brugerdefineret skrifttype</string>
   <string name="morphe_custom_font_summary">Indlæs en brugerdefineret TTF- eller OTF-skrifttypefil fra stien nedenfor. Aktivering af dette slår også tvungen systemskrifttype fra.</string>
   <string name="morphe_custom_font_file_path_title">Brugerdefineret skrifttypefil</string>
@@ -91,6 +92,8 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_disable_modern_home_title">Deaktiver moderne brugerflade</string>
   <string name="morphe_home_feed_tabs_title">Faner i hjemmefeed</string>
   <string name="morphe_home_feed_tabs_summary">Viser fanerne For dig, Følger og Populært på hjemme-feedet, og giver mulighed for at swipe mellem dem. Følger kræver en tilmeldt konto</string>
+  <string name="morphe_disable_refresh_on_back_title">Deaktiver opdatering ved tilbageløb for at afslutte</string>
+  <string name="morphe_disable_refresh_on_back_summary">Tilbage på hjemme-feedet ruller ikke længere til toppen og genindlæser. Tryk tilbage to gange for at forlade appen</string>
   <string name="morphe_disable_screenshot_popup_title">Deaktiver skærmbilledpop-up</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiverer pop-up\'en, der vises, når der tages et skærmbillede</string>
   <string name="morphe_feed_auto_scroll_title">Auto-scroll af feed</string>
@@ -124,13 +127,14 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_hide_trending_shelves_title">Skjul Trending hylder</string>
   <string name="morphe_hide_trending_shelves_summary">Skjuler de Trending hylder fra feed og søgeforslag</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Skjul hylden \"Videoer til dig\"</string>
+  <string name="morphe_always_show_hide_title">Vis altid Skjul</string>
+  <string name="morphe_always_show_hide_summary">Viser Skjul i menuen for feed-opslag, også når Reddit viser anbefalingsmuligheder som \"Vis færre opslag som dette\"</string>
   <string name="morphe_remove_notification_dialog_title">Fjern notifikationsforslagsdialog</string>
   <string name="morphe_remove_notification_dialog_summary">Lukker automatisk forslag til notifikationsdialogen, når du besøger et subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatarer i høj kvalitet</string>
   <string name="morphe_high_quality_avatars_summary">Viser brugeravatarer i fuld opløsning</string>
   <string name="morphe_search_hidden_profiles_title">Søg efter skjulte profiler</string>
-  <string name="morphe_search_hidden_profiles_summary">Viser en knap på profiler, der skjuler deres opslag eller kommentarer, for at finde deres opslag med Reddit-søgning</string>
-  <string name="morphe_search_hidden_profiles_button">Søg</string>
+  <string name="morphe_search_hidden_profiles_summary">Gør det muligt for profilsøgningen at finde indlæg fra profiler, der skjuler deres indlæg eller kommentarer</string>
   <string name="morphe_show_flairs_in_home_feed_title">Vis flairs i hjem-feed</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Vis post-flair badges i hjem-feed</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Nogle feed-elementer viser måske ikke en flair</string>
@@ -171,6 +175,8 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_media_viewer_fade_summary">Styrken af den mørke toning bag billedteksten, når du ser billeder og videoer, fra 0 (ingen toning) til 1 (Reddits standard)</string>
   <string name="morphe_keep_feed_position_title">Behold feedets position</string>
   <string name="morphe_keep_feed_position_summary">Beholder feedet på samme position, efter du lukker et opslag, et billede eller en video, i stedet for at flytte det åbnede opslag til toppen</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Deaktiver automatisk opdatering af hjemme-feed</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Når du vender tilbage til appen efter et stykke tid, genindlæses hjemme-feedet ikke længere og flyttes til toppen. Træk for at opdatere fungerer stadig</string>
   <string name="morphe_post_side_panel_title">Sidepanel til opslag</string>
   <string name="morphe_post_side_panel_summary">På brede tabletskærme åbnes opslag i et panel ved siden af feedet</string>
   <string name="morphe_post_side_panel_width_title">Panelbredde</string>
@@ -260,6 +266,12 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_collapse_all_comments_scope_entry_replies">Svar (topkommentarer forbliver åbne)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Svar på svar (direkte svar forbliver åbne)</string>
   <string name="morphe_collapse_all_comments_button">Minimer eller udvid alle kommentarer</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Farvelæg indrykningslinjer i kommentarer</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Giver hvert svarniveau sin egen linjefarve, så lange tråde er lettere at følge</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Linjefarver</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Regnbue (lys)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (blød)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Dæmpet (smelter sammen med siden)</string>
   <string name="morphe_remember_collapsed_comments_title">Husk sammenklappede kommentarer</string>
   <string name="morphe_remember_collapsed_comments_summary">Kommentarer, du klapper sammen, forbliver sammenklappede, når du åbner opslaget igen</string>
   <string name="morphe_app_icon_title">Appikon</string>

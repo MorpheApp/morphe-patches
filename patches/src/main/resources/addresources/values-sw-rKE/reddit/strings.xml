@@ -29,6 +29,8 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_hide_post_ads_title">Ficha matangazo ya feed</string>
   <string name="morphe_hide_comment_ads_title">Ficha matangazo ya maoni</string>
   <string name="morphe_screen_navigation_bar_title">Upau wa urambazaji</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Zima kuficha kidhibiti cha chini kiotomatiki</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Huweka kidhibiti cha usafirishaji cha chini kionekane wakati wa kusogeza</string>
   <string name="morphe_hide_answers_button_title">Ficha kitufe cha Majibu</string>
   <string name="morphe_hide_chat_button_title">Ficha kitufe cha Soga</string>
   <string name="morphe_hide_create_button_title">Ficha kitufe cha Unda</string>
@@ -78,8 +80,7 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_keyword_filters_saved">Refresh feed ili kutumia mabadiliko</string>
   <string name="morphe_screen_layout_title">Mpangilio</string>
   <string name="morphe_copy_text_title">Nakili maandishi</string>
-  <string name="morphe_copy_text_summary">Inaruhusu kuchagua na kunakili maandishi katika machapisho na maoni. Inazima uwezo wa kufupisha maoni</string>
-  <string name="morphe_copy_text_user_dialog_message">Kufupisha maoni kutasimama kufanya kazi wakati Nakili maandishi imewashwa</string>
+  <string name="morphe_copy_text_summary">Inaruhusu kuchagua na kunakili maandishi katika machapisho na maoni</string>
   <string name="morphe_custom_font_title">Font maalum</string>
   <string name="morphe_custom_font_summary">Pakia faili la font la TTF au OTF maalum kutoka kwenye njia iliyo hapa chini. Kuziwezesha hizi pia kuzima Lazimisha font ya mfumo</string>
   <string name="morphe_custom_font_file_path_title">Faili la font maalum</string>
@@ -91,6 +92,8 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_disable_modern_home_title">Zima UI ya kisasa ya nyumbani</string>
   <string name="morphe_home_feed_tabs_title">Tabo za feed ya nyumbani</string>
   <string name="morphe_home_feed_tabs_summary">Inaonyesha tabu za Kwa Ajili Yako, Unafuatilia na Maarufu kwenye feed ya nyumbani, na inaruhusu kupapasa kati ya tabu hizo. Unafuatilia inahitaji akaunti iliyoingia</string>
+  <string name="morphe_disable_refresh_on_back_title">Zima kurefresha unaporudi nyuma ili kutoka</string>
+  <string name="morphe_disable_refresh_on_back_summary">Kurudi nyuma kwenye feed ya nyumbani hakutaisogeza tena juu na kuipakia upya. Bonyeza rudi nyuma mara mbili ili kuondoka kwenye programu</string>
   <string name="morphe_disable_screenshot_popup_title">Zima popup ya picha ya skrini</string>
   <string name="morphe_disable_screenshot_popup_summary">Huzima popup inayotokea wakati wa kupiga picha ya skrini</string>
   <string name="morphe_feed_auto_scroll_title">Kujisogeza kiotomatiki kwa feed</string>
@@ -124,13 +127,14 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_hide_trending_shelves_title">Ficha rafu za Trending</string>
   <string name="morphe_hide_trending_shelves_summary">Ficha rafu za Trending kutoka kwenye feed na mapendekezo ya utafutaji</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ficha rafu ya \"Video kwa ajili yako\"</string>
+  <string name="morphe_always_show_hide_title">Onyesha \'Ficha\' kila wakati</string>
+  <string name="morphe_always_show_hide_summary">Inaonyesha Ficha kwenye menyu ya chapisho za feed, pia wakati Reddit inaponyesha chaguzi za mapendekezo kama \'Onyesha machapisho machache kama haya\'</string>
   <string name="morphe_remove_notification_dialog_title">Ondoa dialog ya pendekezo la taarifa</string>
   <string name="morphe_remove_notification_dialog_summary">Hufunga kiotomatiki kidirisha cha pendekezo la taarifa unapotembelea subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatari za ubora wa juu</string>
   <string name="morphe_high_quality_avatars_summary">Inaonyesha avatari za watumiaji katika azimio kamili</string>
   <string name="morphe_search_hidden_profiles_title">Tafuta wasifu uliofichwa</string>
-  <string name="morphe_search_hidden_profiles_summary">Inaonyesha kitufe kwenye wasifu wanaoficha machapisho au maoni yao, ili kupata machapisho yao kwa kutumia utafutaji wa Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Tafuta</string>
+  <string name="morphe_search_hidden_profiles_summary">Hufanya utafutaji wa wasifu upate machapisho ya wasifu wanaoficha machapisho au maoni yao</string>
   <string name="morphe_show_flairs_in_home_feed_title">Onyesha flairs kwenye feed ya nyumbani</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Inaonyesha beji za flair za chapisho kwenye feed ya nyumbani</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Baadhi ya vipengele vya feed vinaweza visionyeshe flair</string>
@@ -171,6 +175,8 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_media_viewer_fade_summary">Nguvu ya kufifia kwa rangi nyeusi nyuma ya maelezo wakati wa kutazama picha na video, kuanzia 0 (hakuna kufifia) hadi 1 (ya Reddit ya kawaida)</string>
   <string name="morphe_keep_feed_position_title">Hifadhi nafasi ya feed</string>
   <string name="morphe_keep_feed_position_summary">Inatunza feed katika nafasi ileile baada ya kufunga chapisho, picha au video, badala ya kusogeza chapisho kilichofunguliwa juu</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Zima upya-refresh wa kiotoma wa feed ya nyumbani</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Kurudi kwenye programu baada ya muda mrefu haitapakia tena feed ya nyumbani na kuihamisha juu. Kuvuta ili kupata upya bado inafanya kazi</string>
   <string name="morphe_post_side_panel_title">Paneli ya pembeni ya chapisho</string>
   <string name="morphe_post_side_panel_summary">Kwenye skrini pana za tablet, chapisho hufunguka katika paneli kando ya feed</string>
   <string name="morphe_post_side_panel_width_title">Upana wa paneli</string>
@@ -260,6 +266,12 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_collapse_all_comments_scope_entry_replies">Majibu (maoni ya juu yanabaki wazi)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Majibu ya majibu (majibu ya moja kwa moja yanabaki wazi)</string>
   <string name="morphe_collapse_all_comments_button">Funga au panua maoni yote</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Weka rangi ya mistari ya miongozo ya maoni</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Hutoa kila kiwango cha jibu rangi yake ya mstari ili mfululizo mrefu wa maoni yawe rahisi kufuatiliwa</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Rangi za mistari</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Upinde wa mvua (kali)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (laini)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Zilizofifia (zinazoendana na ukurasa)</string>
   <string name="morphe_remember_collapsed_comments_title">Kumbuka maoni yaliyofupishwa</string>
   <string name="morphe_remember_collapsed_comments_summary">Maoni unayofupisha yanabaki yakiwa yamefupishwa unapofungua tena chapisho</string>
   <string name="morphe_app_icon_title">Aikoni ya programu</string>

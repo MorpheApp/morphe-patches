@@ -29,6 +29,8 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_hide_post_ads_title">Ezkutatu feedeko iragarkiak</string>
   <string name="morphe_hide_comment_ads_title">Ezkutatu komentarioen iragarkiak</string>
   <string name="morphe_screen_navigation_bar_title">Nabigazio-barra</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Desaktibu bottom bar auto-hide</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Beheko nabigazio barra ikusgai mantentzen du scroll egitean</string>
   <string name="morphe_hide_answers_button_title">Ezkutatu Erantzunak botoia</string>
   <string name="morphe_hide_chat_button_title">Ezkutatu Txata botoia</string>
   <string name="morphe_hide_create_button_title">Ezkutatu Sortu botoia</string>
@@ -78,8 +80,7 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_keyword_filters_saved">Freska tu feed-a aldaketak aplikatzeko</string>
   <string name="morphe_screen_layout_title">Diseinua</string>
   <string name="morphe_copy_text_title">Kopiatu testua</string>
-  <string name="morphe_copy_text_summary">Testua hautatzea eta kopiatzea ahalbidetzen du postuetan eta iruzkinetan. Iruzkinak itxitzea desaktibatzen du</string>
-  <string name="morphe_copy_text_user_dialog_message">Iruzkinak itxi ezin dira \"Kopiatu testua\" aktibatuta dagoen bitartean</string>
+  <string name="morphe_copy_text_summary">Postuetan eta iruzkinetan testua hautatzea eta kopiatzea ahalbidetzen du</string>
   <string name="morphe_custom_font_title">Letra-tipo pertsonalizatua</string>
   <string name="morphe_custom_font_summary">Kargatu TTF edo OTF letra-tipo fitxategi pertsonalizatu bat beheko bidetik. Hau aktibatzeak Behartu sistemako letra-tipoa ere desaktibatuko du</string>
   <string name="morphe_custom_font_file_path_title">Letra-tipo fitxategi pertsonalizatua</string>
@@ -91,6 +92,8 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_disable_modern_home_title">Desaktibatu etxeko UI moderno</string>
   <string name="morphe_home_feed_tabs_title">Hasi feed-eko fitxak</string>
   <string name="morphe_home_feed_tabs_summary">Hasi feed-ean Zuretzat, Jarraitzen eta Popular fitxak erakusten ditu, eta haien artean irrastea egiteko aukera ematen du. Jarraitzen fitxak account batean saioa hasia izatea eskatzen du</string>
+  <string name="morphe_disable_refresh_on_back_title">Desaktibu atzera itzulitzean eguneratzea</string>
+  <string name="morphe_disable_refresh_on_back_summary">Kutxa nagusiko feed-ean atzera itzulitzeak ez du gehiago goizera scroll eta karga berria egiteko eraginea. App-a utziteko, sakatu bi aldiz atzera</string>
   <string name="morphe_disable_screenshot_popup_title">Desaktibu pantaila-argazkiaren popup-a</string>
   <string name="morphe_disable_screenshot_popup_summary">Pantaila-argazkia egitean agertzen den popup-a desaktibatzen du</string>
   <string name="morphe_feed_auto_scroll_title">Feed-aren auto-scroll-a</string>
@@ -124,13 +127,14 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_hide_trending_shelves_title">Ezkutatu Joera estanteak</string>
   <string name="morphe_hide_trending_shelves_summary">Joera-estanteak ezkutatzen ditu feed-etik eta bilaketa-iradokizunetatik</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ezagutu \'Zure bideoak\' estantea ezkutatu</string>
+  <string name="morphe_always_show_hide_title">Ezkutatu beti erakutsi thanked</string>
+  <string name="morphe_always_show_hide_summary">Ezkutatu aukera erakutsi feed-eko postuen menuan, Reddit-ek \'Haren bezalako postu gutxiago erakutsi\' bezalako gomendapen aukerak erakusten dituenean ere</string>
   <string name="morphe_remove_notification_dialog_title">Kendu jakinarazpen-iradokizunaren elkarrizketa-koadroa</string>
   <string name="morphe_remove_notification_dialog_summary">Jakinarazpen-iradokizunaren elkarrizketa automatikoki ixten du subreddit bat bisitatzean</string>
   <string name="morphe_high_quality_avatars_title">Kalitate handiko avatarrak</string>
   <string name="morphe_high_quality_avatars_summary">Erabiltzaileen avatarrak ebazpen osoan erakusten ditu</string>
   <string name="morphe_search_hidden_profiles_title">Bilatu profil ezkutukoak</string>
-  <string name="morphe_search_hidden_profiles_summary">Botoi bat erakusten du beren postak edo komentarioak ezkutatzen dituzten profiletan, Reddit-eko bilaketa bidez beren postak aurkitzeko</string>
-  <string name="morphe_search_hidden_profiles_button">Bilatu</string>
+  <string name="morphe_search_hidden_profiles_summary">Profilen bilaketak profilu ezarpenak edo komentarioak ezkutatzen dituztenen postak aurkitzea ahalbidetzen du</string>
   <string name="morphe_show_flairs_in_home_feed_title">Erakutsi flair-ak hasierako feed-ean</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Argitalpenen flair badge-ak erakusten ditu hasierako feed-ean</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Feed-eko elementu batzuk agian ez dute flair-ik erakutsiko</string>
@@ -171,6 +175,8 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_media_viewer_fade_summary">Irudiak eta bideoak ikusten direnean, bildurraren atzean dagoen iluntzearen indarra, 0 (iluntzerik gabe) eta 1 (Reddit-en lehenetsia) artean</string>
   <string name="morphe_keep_feed_position_title">Feed-eko posizioa mantendu</string>
   <string name="morphe_keep_feed_position_summary">Postu, irudi edo bideo bat itxi ondoren, feed-a leku berean mantentzen du, irekitako postua goialdera mugitu beharrean</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Desaktibatu home feed-en eguneraketa automatikoa</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Handik gutxira aplikazioan itzultzean, home feed-a ez da berriz kargatuko eta goizera ez da mugituko. Behera tira eguneratzeko aukera oraindik funtzionatzen du</string>
   <string name="morphe_post_side_panel_title">Postu panel alboa</string>
   <string name="morphe_post_side_panel_summary">Tablet pantaila zabalean, postuak feed-aren ondoan dagoen panelean irekitzen dira</string>
   <string name="morphe_post_side_panel_width_title">Panelaren zabalera</string>
@@ -260,6 +266,12 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_collapse_all_comments_scope_entry_replies">Erantzunak (komentario nagusiak zabal geratzen dira)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Erantzunen erantzunak (erantzun zuzenak zabal geratzen dira)</string>
   <string name="morphe_collapse_all_comments_button">Itxi edo zabal所有的 iruzkinak</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Komentarioen indentazio-lerroak koloretu</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Erantzun maila bakoitzari bere kolorea ematen zaio, harrau luzeak errazago jarraitu ditzaten</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Lerroen koloreak</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Ortzela (bizitz)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (leun)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Muted (orrialdearekin integratzen da)</string>
   <string name="morphe_remember_collapsed_comments_title">Gogoratu itxitako iruzkinak</string>
   <string name="morphe_remember_collapsed_comments_summary">Itxi dituzun iruzkinak itxita geratzen dira postua berriro irekitzean</string>
   <string name="morphe_app_icon_title">Aplikazioaren ikonoa</string>

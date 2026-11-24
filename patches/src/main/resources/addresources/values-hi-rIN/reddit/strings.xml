@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">फ़ीड विज्ञापन छिपाएँ</string>
   <string name="morphe_hide_comment_ads_title">कमेंट विज्ञापन छिपाएँ</string>
   <string name="morphe_screen_navigation_bar_title">नेविगेशन बार</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">बॉटम बार ऑटो-हाइड को अक्षम करें</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">स्क्रॉल करते समय बॉटम नेविगेशन बार को दिखाई देता रखता है</string>
   <string name="morphe_hide_answers_button_title">उत्तर बटन छिपाएँ</string>
   <string name="morphe_hide_chat_button_title">चैट बटन छिपाएँ</string>
   <string name="morphe_hide_create_button_title">क्रिएट बटन छिपाएँ</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">परिवर्तनों को लागू करने के लिए फ़ीड को रिफ्रेश करें</string>
   <string name="morphe_screen_layout_title">लेआउट</string>
   <string name="morphe_copy_text_title">टेक्स्ट कॉपी करें</string>
-  <string name="morphe_copy_text_summary">पोस्ट और टिप्पणियों में टेक्स्ट चुनने और कॉपी करने की अनुमति देता है। टिप्पणियों को संक्षिप्त करना अक्षम करता है</string>
-  <string name="morphe_copy_text_user_dialog_message">टेक्स्ट कॉपी करें सक्षम होने पर टिप्पणियाँ संक्षिप्त करना काम करना बंद कर देगा</string>
+  <string name="morphe_copy_text_summary">पोस्ट और कमेंट्स में टेक्स्ट चुनने और कॉपी करने की अनुमति देता है</string>
   <string name="morphe_custom_font_title">कस्टम फ़ॉन्ट</string>
   <string name="morphe_custom_font_summary">नीचे दिए गए पाथ से कस्टम TTF या OTF फ़ॉन्ट फ़ाइल लोड करें। इसे चालू करने पर फ़ोर्स सिस्टम फ़ॉन्ट भी बंद हो जाता है</string>
   <string name="morphe_custom_font_file_path_title">कस्टम फ़ॉन्ट फ़ाइल</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">मॉडर्न होम UI बंद करें</string>
   <string name="morphe_home_feed_tabs_title">होम फ़ीड टैब</string>
   <string name="morphe_home_feed_tabs_summary">होम फीड पर \"आपके लिए\", \"फॉलोइंग\" और \"पॉपुलर\" टैब दिखाता है, और उनके बीच स्वाइप करने की अनुमति देता है। फॉलोइंग के लिए साइन-इन किए हुए अकाउंट की आवश्यकता होती है</string>
+  <string name="morphe_disable_refresh_on_back_title">बाहर निकलने के लिए बैक पर रिफ्रेश अक्षम करें</string>
+  <string name="morphe_disable_refresh_on_back_summary">होम फीड पर बैक करने से अब यह ऊपर स्क्रॉल नहीं होगा और न ही रीलोड होगा। ऐप छोड़ने के लिए दो बार बैक दबाएं</string>
   <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप बंद करें</string>
   <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट लेने पर दिखाई देने वाले पॉपअप को बंद करता है</string>
   <string name="morphe_feed_auto_scroll_title">फ़ीड ऑटो-स्क्रॉल</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">ट्रेंडिंग शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_trending_shelves_summary">फ़ीड और सर्च सुझावों से ट्रेंडिंग शेल्फ़ छिपाता है</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\'आपके लिए वीडियो\' शेल्फ छुपाएं</string>
+  <string name="morphe_always_show_hide_title">हमेशा \'Hide\' दिखाएं</string>
+  <string name="morphe_always_show_hide_summary">फ़ीड पोस्ट के मेनू में \'Hide\' दिखाता है, साथ ही तब भी जब Reddit \'Show fewer posts like this\' जैसे अनुशंसा विकल्प दिखाता है</string>
   <string name="morphe_remove_notification_dialog_title">नोटिफ़िकेशन सुझाव डायलॉग हटाएँ</string>
   <string name="morphe_remove_notification_dialog_summary">किसी सबरेडिट पर जाने पर नोटिफ़िकेशन सुझाव डायलॉग अपने आप हटा देता है</string>
   <string name="morphe_high_quality_avatars_title">उच्च गुणवत्ता वाले अवतार</string>
   <string name="morphe_high_quality_avatars_summary">उपयोगकर्ता अवतारों को पूर्ण रिज़ॉल्यूशन में दिखाता है</string>
   <string name="morphe_search_hidden_profiles_title">छिपी हुई प्रोफाइल खोजें</string>
-  <string name="morphe_search_hidden_profiles_summary">उन प्रोफाइल पर एक बटन दिखाता है जो अपनी पोस्ट या कमेंट छिपाते हैं, ताकि Reddit खोज के माध्यम से उनकी पोस्ट ढूंढी जा सकें</string>
-  <string name="morphe_search_hidden_profiles_button">खोजें</string>
+  <string name="morphe_search_hidden_profiles_summary">प्रोफ़ाइल खोज को उन प्रोफ़ाइलों के पोस्ट खोजने देता है जो अपने पोस्ट या कमेंट छिपाते हैं</string>
   <string name="morphe_show_flairs_in_home_feed_title">होम फ़ीड में फ्लेयर दिखाएं</string>
   <string name="morphe_show_flairs_in_home_feed_summary">होम फ़ीड में पोस्ट फ्लेयर बैज दिखाता है</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">कुछ फ़ीड आइटम फ्लेयर नहीं दिखा सकते</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">छवियों और वीडियो देखते समय कैप्शन के पीछे गहरे फ़ेड की तीव्रता, 0 (कोई फ़ेड नहीं) से 1 (Reddit का डिफ़ॉल्ट) तक</string>
   <string name="morphe_keep_feed_position_title">फ़ीड की स्थिति बनाए रखें</string>
   <string name="morphe_keep_feed_position_summary">पोस्ट, छवि या वीडियो बंद करने के बाद फ़ीड को उसी स्थिति में रखता है, खोले गए पोस्ट को ऊपर ले जाने के बजाय</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">होम फ़ीड का अपने आप रीफ़्रेश होना बंद करें</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">कुछ समय बाद ऐप पर वापस आने से अब होम फ़ीड दोबारा लोड नहीं होता और न ही वह ऊपर चला जाता है। \'Pull to refresh\' अभी भी काम करता है</string>
   <string name="morphe_post_side_panel_title">पोस्ट साइड पैनल</string>
   <string name="morphe_post_side_panel_summary">चौड़ी टैबलेट स्क्रीन पर, पोस्ट फ़ीड के बगल में एक पैनल में खुलते हैं</string>
   <string name="morphe_post_side_panel_width_title">पैनल की चौड़ाई</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">रिप्लाई (टॉप कमेंट्स खुले रहते हैं)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">रिप्लाई के रिप्लाई (डायरेक्ट रिप्लाई खुले रहते हैं)</string>
   <string name="morphe_collapse_all_comments_button">सभी कमेंट्स को छोटा करें या विस्तार करें</string>
+  <string name="morphe_colorize_comment_indent_lines_title">कमेंट इंडेंट लाइनों को रंगीन करें</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">प्रत्येक रिप्लाई लेवल को अपना अलग लाइन रंग देता है ताकि लंबे थ्रेड्स को फॉलो करना आसान हो जाए</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">लाइन रंग</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">रेनबो (चमकदार)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">पेस्टल (हल्का)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">म्यूटेड (पेज के साथ मिल जाता है)</string>
   <string name="morphe_remember_collapsed_comments_title">संक्षिप्त की गई टिप्पणियाँ याद रखें</string>
   <string name="morphe_remember_collapsed_comments_summary">जिन टिप्पणियों को आप संक्षिप्त करते हैं, वे पोस्ट को दोबारा खोलने पर संक्षिप्त रहती हैं</string>
   <string name="morphe_app_icon_title">ऐप आइकन</string>

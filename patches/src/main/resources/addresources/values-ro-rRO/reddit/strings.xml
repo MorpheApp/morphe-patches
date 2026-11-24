@@ -29,6 +29,8 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_hide_post_ads_title">Ascunde reclamele din flux</string>
   <string name="morphe_hide_comment_ads_title">Ascunde reclamele din comentarii</string>
   <string name="morphe_screen_navigation_bar_title">Bară de navigare</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Dezactivează ascunderea automată a barei inferioare</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Menține bara de navigare inferioară vizibilă în timpul derulării</string>
   <string name="morphe_hide_answers_button_title">Ascunde butonul Răspunsuri</string>
   <string name="morphe_hide_chat_button_title">Ascunde butonul Chat</string>
   <string name="morphe_hide_create_button_title">Ascunde butonul Creare</string>
@@ -78,8 +80,7 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_keyword_filters_saved">Actualizați feed-ul pentru a aplica modificările</string>
   <string name="morphe_screen_layout_title">Aspect</string>
   <string name="morphe_copy_text_title">Copiază textul</string>
-  <string name="morphe_copy_text_summary">Permite selectarea și copierea textului în postări și comentarii. Dezactivează restrângerea comentariilor</string>
-  <string name="morphe_copy_text_user_dialog_message">Comentariile colapsate vor înceta să funcționeze cât timp Copy text este activat</string>
+  <string name="morphe_copy_text_summary">Permite selectarea și copierea textului din postări și comentarii</string>
   <string name="morphe_custom_font_title">Font personalizat</string>
   <string name="morphe_custom_font_summary">Încarcă un fișier font TTF sau OTF personalizat din calea de mai jos. Activarea acestei opțiuni dezactivează și utilizarea fontului sistem.</string>
   <string name="morphe_custom_font_file_path_title">Fișier font personalizat</string>
@@ -91,6 +92,8 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_disable_modern_home_title">Dezactivează interfața utilizator modernă a paginii principale</string>
   <string name="morphe_home_feed_tabs_title">Kilele fluxului Home</string>
   <string name="morphe_home_feed_tabs_summary">Afișează cele trei tab-uri Pentru tine, Urmărești și Popular din feed-ul principal și permite glisarea între acestea. Pentru tab-ul Urmărești este necesar un cont autentificat</string>
+  <string name="morphe_disable_refresh_on_back_title">Dezactivează actualizarea la revenire pentru a ieși</string>
+  <string name="morphe_disable_refresh_on_back_summary">Butonul înapoi în feed-ul principal nu mai derulează sus și nu mai reîncarcă. Apasă înapoi de două ori pentru a părăsi aplicația</string>
   <string name="morphe_disable_screenshot_popup_title">Dezactivează fereastra de notificare pentru capturi de ecran</string>
   <string name="morphe_disable_screenshot_popup_summary">Dezactivează fereastra care apare când faci o captură de ecran</string>
   <string name="morphe_feed_auto_scroll_title">Defilare automată a feed-ului</string>
@@ -124,13 +127,14 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_hide_trending_shelves_title">Ascunde rafturile în tendințe</string>
   <string name="morphe_hide_trending_shelves_summary">Ascunde rafturile \"În tendințe\" din flux și din sugestiile de căutare</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ascunde raftul „Videoclipuri pentru tine”</string>
+  <string name="morphe_always_show_hide_title">Afișează întotdeauna Ascunde</string>
+  <string name="morphe_always_show_hide_summary">Afișează „Ascunde” în meniul postărilor din feed, inclusiv atunci când Reddit afișează opțiuni de recomandare, cum ar fi „Afișează mai puține postări ca aceasta”</string>
   <string name="morphe_remove_notification_dialog_title">Elimină dialogul de sugestie a notificărilor</string>
   <string name="morphe_remove_notification_dialog_summary">Închide automat sugestia de notificare când vizitezi un subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatare de înaltă calitate</string>
   <string name="morphe_high_quality_avatars_summary">Afișează avatarele utilizatorilor la rezoluție completă</string>
   <string name="morphe_search_hidden_profiles_title">Căutare profiluri ascunse</string>
-  <string name="morphe_search_hidden_profiles_summary">Afișează un buton pe profilurile care își ascund postările sau comentariile, pentru a le găsi postările folosind căutarea Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Căutare</string>
+  <string name="morphe_search_hidden_profiles_summary">Face ca căutarea de profil să găsească postările profilurilor care își ascund postările sau comentariile</string>
   <string name="morphe_show_flairs_in_home_feed_title">Afișează insignele în sursa de acasă</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Afișează badge-urile de flair în sursa de acasă</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Unele elemente din sursă pot să nu afișeze un flair</string>
@@ -171,6 +175,8 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_media_viewer_fade_summary">Intensitatea estompării întunecate din spatele descrierii la vizualizarea imaginilor și videoclipurilor, de la 0 (fără estompare) la 1 (valoarea implicită Reddit)</string>
   <string name="morphe_keep_feed_position_title">Păstrează poziția fluxului</string>
   <string name="morphe_keep_feed_position_summary">Păstrează fluxul în aceeași poziție după ce închizi o postare, o imagine sau un videoclip, în loc să mute postarea deschisă în partea de sus</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Dezactivează actualizarea automată a feed-ului de start</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Reîntoarcerea în aplicație după un timp nu mai reîncarcă feed-ul de start și nu îl mai mută în partea de sus. Opțiunea „Trage pentru a actualiza” funcționează în continuare</string>
   <string name="morphe_post_side_panel_title">Panou lateral pentru postări</string>
   <string name="morphe_post_side_panel_summary">Pe ecranele de tabletă late, postările se deschid într-un panou lângă feed</string>
   <string name="morphe_post_side_panel_width_title">Lățimea panoului</string>
@@ -260,6 +266,12 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_collapse_all_comments_scope_entry_replies">Răspunsuri (comentariile de top rămân deschise)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Răspunsuri la răspunsuri (răspunsurile directe rămân deschise)</string>
   <string name="morphe_collapse_all_comments_button">Colapează sau extinde toate comentariile</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Colorează liniile de indentare a comentariilor</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Oferă fiecărui nivel de răspuns propria culoare a liniei, astfel încât firele lungi de discuție să fie mai ușor de urmărit</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Culori linii</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Curcubeu (luminoase)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (discrete)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Stinguse (se blenduiează cu pagina)</string>
   <string name="morphe_remember_collapsed_comments_title">Ține minte comentariile restrânse</string>
   <string name="morphe_remember_collapsed_comments_summary">Comentariile pe care le restrângi rămân restrânse când redeschizi postarea</string>
   <string name="morphe_app_icon_title">Pictogramă aplicație</string>

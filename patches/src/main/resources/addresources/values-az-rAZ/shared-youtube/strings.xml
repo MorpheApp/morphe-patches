@@ -140,6 +140,8 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS İstifadə Et</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Deobfuscation üçün yt-dlp-ejs (WebView) əvəzinə QuackJS istifadə et</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' girişi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ayrıca giriş tələb edir. Davam etmək üçün buraya toxun</string>
@@ -168,27 +170,28 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 • Morphe tənzimləmələriniz Android VR təsdiqlənməsini idxal/ixrac etməyəcək
 • Bu tətbiq 6 ay ərzində istifadə olunmazsa, Google bu təsdiqlənməni siləcək
 • Google parolunuzu dəyişdirsəniz və ya bu cihazı Google tənzimləmələrinizdən çıxarsanız, təkrar daxil olmalı olacaqsınız"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobil Web\' girişi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web girişi</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Könüllü: Hesabınızla videoları oynatmaq üçün YouTube veb saytına daxil olun. Davam etmək üçün bura toxun</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hazırda \'Mobil Web\'-ə daxil olunub</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hazırda YouTube veb saytına daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni \'Mobil Web\'-ə dəyişdir</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobil Web\'-ə Daxil Ol</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"​'Mobile Web' videoları hesabdan çıxmış və ya YouTube veb saytına daxil olmuş vəziyyətdə oynadır
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Web qəbulediciyə dəyiş</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube veb saytına daxil ol</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"​Web qəbuledicilər videoları hesabdan çıxmış və ya YouTube veb saytına daxil olmuş vəziyyətdə oynadır
 
 ​• Daxil olduqda hesab tələb edən videolar, məsələn, yaş məhdudiyyətli videolar oynadıla bilər
 • Google giriş səhifəsi bu tətbiqdə açılır
 • Giriş yalnız oynatdığınız videoları əldə etmək üçün istifadə olunur
 • Giriş yalnız bu cihazda saxlanılır
+• Hər bir web qəbuledicinin seçilmiş ilkin qəbuledici üçün öz girişi var
 
 ​Daxil olmaq üçün aşağıdakı davam edinə toxun"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Giriş saxlanıldı
 
-​• Morphe tənzimləmələriniz 'Mobile Web' girişini idxal/ixrac etməyəcək
+​• Morphe tənzimləmələriniz YouTube veb-sayt girişini idxal/ixrac etməyəcək
 • Google girişi sonlandırarsa, siz təkrar daxil olana qədər videolar hesabdan çıxmış kimi oynadılır
 • Çıxmaq bu cihazı həm də YouTube veb saytından çıxarır"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web girişinin vaxtı bitdi, \'Mobile Web\'-ə təkrar daxil olmağa cəhd et</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobile Web\'-dən Çıxıldı</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web girişi sonlandı, təkrar daxil olmağa cəhd et</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube veb saytından çıxıldı</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' mövcud deyil. Daxil olmaq üçün quraşdır və ya aktivləşdir</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 keçici olaraq əlçatan deyil (API vaxtı bitdi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>

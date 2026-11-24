@@ -29,6 +29,8 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_hide_post_ads_title">Slēpt plūsmas reklāmas</string>
   <string name="morphe_hide_comment_ads_title">Slēpt komentāru reklāmas</string>
   <string name="morphe_screen_navigation_bar_title">Navigācijas josla</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Atslēgt apakšjoslas automātisko slēgšanu</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Skrullēšanas laikā apakšējā navigācijas josla paliek redzama</string>
   <string name="morphe_hide_answers_button_title">Slēpt Atbildes pogu</string>
   <string name="morphe_hide_chat_button_title">Slēpt Tērzēšanas pogu</string>
   <string name="morphe_hide_create_button_title">Slēpt Izveidot pogu</string>
@@ -78,8 +80,7 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_keyword_filters_saved">Atjaunojiet plūdi, lai piemērotu izmaiņas</string>
   <string name="morphe_screen_layout_title">Izkārtojums</string>
   <string name="morphe_copy_text_title">Kopēt tekstu</string>
-  <string name="morphe_copy_text_summary">Ļauj atlasīt un kopēt tekstu ierakstos un komentāros. Atslēdz komentāru saliekšanu</string>
-  <string name="morphe_copy_text_user_dialog_message">Komentāru saliekšana pārtrauc darboties, kamēr ir iespējota funkcija Kopēt tekstu</string>
+  <string name="morphe_copy_text_summary">Ļauj atlasīt un kopēt tekstu ierakstos un komentāros</string>
   <string name="morphe_custom_font_title">Pielāgots šrifts</string>
   <string name="morphe_custom_font_summary">Ielādēt pielāgotu TTF vai OTF šrifta failu no zemāk norādītā ceļa. Iespējojot šo opciju, tiek izslēgts Piespiestais sistēmas šrifts</string>
   <string name="morphe_custom_font_file_path_title">Pielāgota šrifta fails</string>
@@ -91,6 +92,8 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_disable_modern_home_title">Atslēgt mūsdienīgo sākuma ekrāna lietotāja saskarni</string>
   <string name="morphe_home_feed_tabs_title">Sākuma plūsmas cilnes</string>
   <string name="morphe_home_feed_tabs_summary">Sākuma plūdes sadaļā rāda cilnēm \"Tev\", \"Sekoju\" un \"Populārs\", un ļauj slaucīt starp tām. Lai piekļūtu cilnei \"Sekoju\", kontā jābūtu pieslēdzies</string>
+  <string name="morphe_disable_refresh_on_back_title">Atslēgt atjaunināšanu, atkāpjoties, lai izietu</string>
+  <string name="morphe_disable_refresh_on_back_summary">Atpakaļpoga sākuma plūdumā vairs nenūks līdz augšai un neatjaunīs saturu. Nospiediet atpakaļ divreiz, lai izietu no lietotnes</string>
   <string name="morphe_disable_screenshot_popup_title">Atslēgt ekrānuzņēmuma uznirstošo logu</string>
   <string name="morphe_disable_screenshot_popup_summary">Atslēgt uznirstošo logu, kas parādās, veicot ekrānuzņēmumu</string>
   <string name="morphe_feed_auto_scroll_title">Plūsmas automātiskā ritēšana</string>
@@ -124,13 +127,14 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_hide_trending_shelves_title">Slēpt Trending plauktus</string>
   <string name="morphe_hide_trending_shelves_summary">Slēpj Trending plauktus no plūsmes un meklēšanas ieteikumiem</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Slēpt plauktu \"Video jums\"</string>
+  <string name="morphe_always_show_hide_title">Vienmēr rādīt \"Slēpt\"</string>
+  <string name="morphe_always_show_hide_summary">Rāda \"Slēpt\" plūmes ierakstu izvēlnē, kā arī gadījumos, kad Reddit rāda rekomendācijas, piemēram, \"Rādīt mazāk šādu ierakstu\"</string>
   <string name="morphe_remove_notification_dialog_title">Noņemt paziņojumu par ieteikumiem</string>
   <string name="morphe_remove_notification_dialog_summary">Automātiski aizver paziņojumu ieteikumu dialogu, apmeklējot subredditu</string>
   <string name="morphe_high_quality_avatars_title">Augstas kvalitātes avatari</string>
   <string name="morphe_high_quality_avatars_summary">Rāda lietotāju avatarus pilnā izšķirtspējā</string>
   <string name="morphe_search_hidden_profiles_title">Meklēt slēptos profilus</string>
-  <string name="morphe_search_hidden_profiles_summary">Rāda pogu profilos, kas slēpj savus ierakstus vai komentārus, lai atrastu viņu ierakstus, izmantojot Reddit meklēšanu</string>
-  <string name="morphe_search_hidden_profiles_button">Meklēt</string>
+  <string name="morphe_search_hidden_profiles_summary">Ļauj profila meklēšanai atrast ierakstus tiem profiliem, kas slēpj savus ierakstus vai komentārus</string>
   <string name="morphe_show_flairs_in_home_feed_title">Rādīt marķierus sākuma plūsmā</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Rāda ierakstu marķierus sākuma plūsmā</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Daži plūsmes elementi var neizrādīt atzīmi</string>
@@ -171,6 +175,8 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_media_viewer_fade_summary">Tumšās izbalēšanas stiprums aiz apraksta, skatot attēlus un video, no 0 (bez izbalēšanas) līdz 1 (Reddit noklusējums)</string>
   <string name="morphe_keep_feed_position_title">Saglabāt plūsmas pozīciju</string>
   <string name="morphe_keep_feed_position_summary">Saglabā plūsmu tajā pašā pozīcijā pēc ieraksta, attēla vai video aizvēršanas, tā vietā lai atvērtais ieraksts tiktu pārvietots uz augšu</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Atslēgt sākuma plūmes automātisko atsvaidzināšanu</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Atgriežoties lietotnē pēc kāda laika, sākuma plūme vairs netiek atsvaidzināta un pārvietota uz augšu. Velkot uz leju, lai atsvaidzinātu, funkcija joprojām darbojas</string>
   <string name="morphe_post_side_panel_title"> publicaciones blakus panele</string>
   <string name="morphe_post_side_panel_summary">Platu planšu ekrānos ieraksti atveras panelē blakus plūdei</string>
   <string name="morphe_post_side_panel_width_title">Paneļa platums</string>
@@ -260,6 +266,12 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_collapse_all_comments_scope_entry_replies">Atbildes (galvenie komentāri paliek atvērti)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Atbildes uz atbildēm (tiešās atbildes paliek atvērtas)</string>
   <string name="morphe_collapse_all_comments_button">Sasaustīt vai izvērst visus komentārus</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Krasot komentāru atstūmes līnijas</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Katram atbildes līmenim tiek piešķirta sava līnijas krāsa, lai garus pavedējumus būtu vieglāk sekot</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Līnijas krāsas</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Vilkste (spilgta)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pasteles (maiga)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Mierina (sajaucas ar lapu)</string>
   <string name="morphe_remember_collapsed_comments_title">Atcerēties saliektos komentārus</string>
   <string name="morphe_remember_collapsed_comments_summary">Komentāri, kurus saliekat, paliek saliekti, kad atverat ierakstu vēlreiz</string>
   <string name="morphe_app_icon_title">Lietotnes ikona</string>

@@ -29,6 +29,8 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_hide_post_ads_title">Ocultar anuncis del feed</string>
   <string name="morphe_hide_comment_ads_title">Ocultar anuncis dels comentaris</string>
   <string name="morphe_screen_navigation_bar_title">Barra de navegació</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Desactiva l\'ocultació automàtica de la barra inferior</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Manté visible la barra de navegació inferior mentre es desplaça</string>
   <string name="morphe_hide_answers_button_title">Ocultar el botó de Respostes</string>
   <string name="morphe_hide_chat_button_title">Ocultar el botó de Xat</string>
   <string name="morphe_hide_create_button_title">Ocultar el botó de Crear</string>
@@ -78,8 +80,7 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_keyword_filters_saved">Actualitzeu el feed per aplicar els canvis</string>
   <string name="morphe_screen_layout_title">Disseny</string>
   <string name="morphe_copy_text_title">Copiar text</string>
-  <string name="morphe_copy_text_summary">Permet seleccionar i copiar text a les publicacions i els comentaris. Desactiva la col·lapsació de comentaris</string>
-  <string name="morphe_copy_text_user_dialog_message">La col·lapsació de comentaris deixarà de funcionar mentre l\'opció Copiar text estigui activada</string>
+  <string name="morphe_copy_text_summary">Permet seleccionar i copiar text a les publicacions i els comentaris</string>
   <string name="morphe_custom_font_title">Tipografia personalitzada</string>
   <string name="morphe_custom_font_summary">Carrega un arxiu de tipografia TTF o OTF personalitzat des de la ruta següent. En activar-ho també es desactiva Forçar la tipografia del sistema</string>
   <string name="morphe_custom_font_file_path_title">Arxiu de tipografia personalitzada</string>
@@ -91,6 +92,8 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_disable_modern_home_title">Desactiva la UI moderna de l\'inici</string>
   <string name="morphe_home_feed_tabs_title">Pestanyes del feed d\'inici</string>
   <string name="morphe_home_feed_tabs_summary">Mostra les pestanyes Per a tu, Seguint i Popular al feed d\'inici, i permet desllisar entre elles. Seguint requereix un compte iniciat de sessió</string>
+  <string name="morphe_disable_refresh_on_back_title">Desactiva l\'actualització en tornar enrere per sortir</string>
+  <string name="morphe_disable_refresh_on_back_summary">Tornar enrere al feed d\'inici ja no desplaça cap amunt ni recarrega. Premeu tornar enrere dues vegades per sortir de l\'aplicació</string>
   <string name="morphe_disable_screenshot_popup_title">Desactivar la finestra emergent de captures de pantalla</string>
   <string name="morphe_disable_screenshot_popup_summary">Desactiva la finestra emergent que apareix quan es fa una captura de pantalla</string>
   <string name="morphe_feed_auto_scroll_title">Desplaçament automàtic del feed</string>
@@ -124,13 +127,14 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_hide_trending_shelves_title">Oculta els prestatges de Tendències</string>
   <string name="morphe_hide_trending_shelves_summary">Oculta els prestatges de Tendències del feed i les suggerències de cerca</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ocultar la prestatgia \"Vídeos per a tu\"</string>
+  <string name="morphe_always_show_hide_title">Mostra sempre \"Ocultar\"</string>
+  <string name="morphe_always_show_hide_summary">Mostra \"Ocultar\" al menú de les publicacions del feed, també quan Reddit mostra opcions de recomanació com \"Mostra menys publicacions com aquesta\"</string>
   <string name="morphe_remove_notification_dialog_title">Elimina el diàleg de suggeriment de notificació</string>
   <string name="morphe_remove_notification_dialog_summary">Descarta automàticament el diàleg de suggeriment de notificació quan visites un subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatars de alta qualitat</string>
   <string name="morphe_high_quality_avatars_summary">Mostra els avatars dels usuaris en resolució completa</string>
   <string name="morphe_search_hidden_profiles_title">Cerca perfils ocults</string>
-  <string name="morphe_search_hidden_profiles_summary">Mostra un botó als perfils que oculten els seus posts o comentaris, per trobar els seus posts amb la cerca de Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Cercar</string>
+  <string name="morphe_search_hidden_profiles_summary">Fa que la cerca de perfil trobi les publicacions de perfils que oculten les seves publicacions o comentaris</string>
   <string name="morphe_show_flairs_in_home_feed_title">Mostrar etiquetes al feed d\'inici</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Mostra les insignies d\'etiquetes de publicació al feed d\'inici</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Alguns elements del feed potser no mostrin una etiqueta</string>
@@ -171,6 +175,8 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_media_viewer_fade_summary">Intensitat de l\'efecte d\'ombrejat fosc darrere del subtítol en visualitzar imatges i vídeos, de 0 (sense ombrejat) a 1 (per defecte de Reddit)</string>
   <string name="morphe_keep_feed_position_title">Mantenir la posició del feed</string>
   <string name="morphe_keep_feed_position_summary">Manté el feed a la mateixa posició després de tancar una publicació, imatge o vídeo, en lloc de moure la publicació oberta a la part superior</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Desactiva l\'actualització automàtica del feed d\'inici</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Si tornes a l\'aplicació després d\'un temps, el feed d\'inici ja no es recarregarà ni es desplaçarà cap a dalt. L\'opció de descriptors d\'arrastrar per actualitzar continua funcionant</string>
   <string name="morphe_post_side_panel_title">Panel lateral de publicació</string>
   <string name="morphe_post_side_panel_summary">En pantalles de tableta amples, les publicacions s\'obren en un panel al costat del feed</string>
   <string name="morphe_post_side_panel_width_title">Amplada del panel</string>
@@ -260,6 +266,12 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_collapse_all_comments_scope_entry_replies">Respostes (els comentaris principals es mantenen oberts)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Respostes a respostes (les respostes directes es mantenen obertes)</string>
   <string name="morphe_collapse_all_comments_button">Replega o desplega tots els comentaris</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Coloreja les línies de sangradura dels comentaris</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Dona a cada nivell de resposta el seu propi color de línia perquè els fils llargs siguin més fàcils de seguir</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Colors de línia</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Regbons (brillants)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastell (suaus)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Attenuats (s\'integren a la pàgina)</string>
   <string name="morphe_remember_collapsed_comments_title">Recordar els comentaris col·lapsats</string>
   <string name="morphe_remember_collapsed_comments_summary">Els comentaris que col·lapses es mantenen col·lapsats quan tornes a obrir la publicació</string>
   <string name="morphe_app_icon_title">Icona de l\'aplicació</string>

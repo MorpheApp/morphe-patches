@@ -140,6 +140,8 @@ Napauta OK avataksesi Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile ottaa käyttöön: Naamioi videovirrat &gt; Android VR -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Käytä QuackJS:ää</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Käytä deobfuskointiin QuackJS:ää yt-dlp-ejs:n (WebView) sijaan</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vaatii erillisen kirjautumisen. Napauta tästä jatkaaksesi</string>
@@ -168,27 +170,28 @@ Kirjaudu sisään painamalla alta Jatka-painiketta"</string>
 • Morphe-asetuksesi tuonti/vienti ei sisällä Android VR -tunnistautumista
 • Jos tätä sovellusta ei käytetä 6 kuukauteen, Google poistaa tämän tunnistautumisen
 • Sinun on kirjauduttava uudelleen sisään, jos vaihdat Google-salasanasi tai poistat tämän laitteen rekisteröinnin Google-asetuksistasi"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobiiliverkko\' -kirjautuminen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kirjaudu sisään verkossa</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valinnainen: kirjaudu YouTube-verkkosivustolle toistaaksesi videoita tililläsi. Napauta tästä jatkaaksesi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kirjautuneena Mobile Web -tilaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kirjautuneena YouTube-verkkosivustolle</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Käyttääksesi tätä ominaisuutta, aseta \'Oletusasiakasohjelma\'-asetukseksi \'Mobiiliverkko\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Kirjaudu sisään \'Mobiiliverkkoon\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobiiliverkko' toistaa videot kirjautumatta tai YouTube-verkkosivustolle kirjautuneena
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Käyttääksesi tätä ominaisuutta, muuta \"Oletusasiakasohjelma\" verkkoasiakasohjelmaksi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Kirjaudu sisään YouTube-verkkosivustolle</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web-asiakkaat toistavat videoita kirjautumatta tai kirjautuneena YouTube-sivustolle
 
 • Kirjautuneena voit toistaa videoita, jotka vaativat tilin, kuten ikärajoitettuja videoita
 • Googlen kirjautumissivu avautuu tässä sovelluksessa
 • Kirjautumista käytetään vain toistamiesi videoiden hakemiseen
 • Kirjautuminen tallennetaan vain tälle laitteelle
+• Jokaisella web-asiakkaalla on oma kirjautumisensa valitulle oletusasiakkaalle
 
-Kirjautuaksesi sisään paina alla olevaa Jatka-painiketta"</string>
+Kirjautuaksesi paina alla olevaa Jatka-painiketta"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kirjautuminen tallennettu
 
-• Morphe-asetuksesi eivät tuo/vie 'Mobile Web' -kirjautumista
+• Morphe-asetuksesi eivät tuo/vie YouTube-verkkosivuston kirjautumisia
 • Jos Google lopettaa istunnon, videot toistetaan kirjautumatta, kunnes kirjaudut uudelleen
-• Uloskirjautuminen kirjaa tämän laitteen myös ulos YouTube-verkkosivustolta"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web -kirjautuminen vanhentui, yritä kirjautua uudelleen \'Mobile Web\' -tilaan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kirjattu ulos \'Mobile Web\' -tilasta</string>
+• Uloskirjautuminen kirjauttaa tämän laitteen myös ulos YouTube-verkkosivustolta"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web-kirjautuminen vanhentui, yritä kirjautua uudelleen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kirjautuminen YouTube-verkkosivustolta on päättynyt</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ei ole käytettävissä. Asenna tai ota se käyttöön kirjautuaksesi</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ei ole tilapäisesti käytettävissä (API-aikakatkaisu)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' -kirjautuminen vanhentui, yritä kirjautua uudelleen VR-tilaan</string>

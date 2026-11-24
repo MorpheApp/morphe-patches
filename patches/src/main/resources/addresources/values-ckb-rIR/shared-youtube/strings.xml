@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">هەوڵ بدە چالاکی بکە: چەواککردنی ڕەوتی ڤیدیۆ &gt; چوونەژوورەوە بۆ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">کلاینتی بنەڕەت</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">بەکارهێنانی QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">بۆ لادانی تەڵخکردن، QuackJS بەکاربهێنە لەجیاتی yt-dlp-ejs (WebView)</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">چوونەژوورەوە بۆ \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' پێویستی بە چوونەژوورەوەیەکی سەربەخۆ هەیە. لێرە کلیک بکە بۆ بەردەوامبوون</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • ڕێکخستنەکانی Morphe پشتڕاستکردنی Android VR ناهێنێت یان هەناردە ناکات
 • ئەگەر ئەم ئەپە بۆ ٦ مانگ بەکار نەهێنرێت، گوگڵ ئەم پشتڕاستکردنە لا دەبات
 • ئەگەر وشەی نهێنی گوگڵەکەت بگۆڕیت یان ئەم ئامێرە لە ڕێکخستنەکانی گوگڵدا لاببەیت، پێویست دەبێت دووبارە بچیتە ژوورەوە"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">چوونەژوورەوە بۆ \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">چوونەژوورەوەی وێب</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ئارەزوومەندانە: بچۆ ژوورەوە بۆ ماڵپەڕی YouTube بۆ ئەوەی ڤیدیۆکان بە هەژمارەکەت لایبەن. لێرە کلیک بکە بۆ بەردەوامبوون</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ئێستا چووەتە ژوورەوە بۆ \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">لە ئێستادا چوونەژوورەوە لە ماڵپەڕی YouTube کراوە</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">بۆ بەکارهێنانی ئەم تایبەتمەندیە، \'کڕیاری بنەڕەت\' بگۆڕە بۆ \'وێبی مۆبایل\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">چوونە ناو \'وێبی مۆبایل\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'وێبی مۆبایل' ڤیدیۆکان بەبێ چوونە ناو هەژمار، یان بە چوونە ناو ماڵپەڕی YouTube لێدەدات
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">بۆ بەکارهێنانی ئەم تایبەتمەندیە، \'کڕیاری بنەڕەت\' بگۆڕە بۆ کڕیاری وێب</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">چوونەژوورەوە لە ماڵپەڕی YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"کلایەنتەکانی وێب ڤیدیۆکان لای خۆیان دەلەکەن بەبێ چوونەژوور، یان بە چوونەژوور بۆ ماڵپەڕی YouTube
 
-• لە کاتی چوونە ناو هەژماردا، ئەو ڤیدیۆیانەی کە پێویستیان بە هەژمارە دەکرێت لێ بدرێن، وەک ڤیدیۆکانی سنووردارکراوی تەمەن
-• لاپەڕەی چوونە ژوورەوەی Google لەم ئەپڵیکەیشنەدا دەکرێتەوە
-• چوونە ژوورەوە تەنها بۆ دەستکەوتنی ئەو ڤیدیۆیانەیە کە لێی دەدەیت
-• چوونە ژوورەوە تەنها لەسەر ئەم ئامێرە پاشکەوت دەکرێت
+• لە کاتی چوونەژووردا، ئەو ڤیدیۆیانەی پێویستیان بە ئەکاونتە دەکرێت لایبدرێن، وەک ئەو ڤیدیۆیانەی سنووردارکراون بە تەمەن
+• لاپەڕەی چوونەژووری گووگڵ لەم ئەپەدا دەکرێتەوە
+• چوونەژوور تەنها بۆ بەدەستهێنانی ئەو ڤیدیۆیانەیە کە لای دەدەن
+• زانیارییەکانی چوونەژوور تەنها لەم ئامێرەدا پاشکەوت دەکرێن
+• هەر کلایەنتێکی وێب چوونەژووری تایبەت بە خۆی هەیە، بۆ ئەو کلایەنتەی کە وەک کەسایەتی سەرەکی هەڵبژێردراوە
 
-بۆ چوونە ژوورەوە، لە خوارەوە فشار بدە لە بەردەوامبە"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"چوونەژوورەوە پاشکەوت کرا
+بۆ چوونەژوور، لە خوارەوە پەستان بدە لە بەردەوامبە"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"چوونەژوورەوە هەژمارکرا
 
-• ڕێکخستنەکانی Morphe چوونەژوورەوەی 'وەبی مۆبایل' ئimport/export ناکات
-• ئەگەر Google چوونەژوورەوەکەی کۆتایی پێبێنێت، ڤیدیۆکان بەبێ چوونەژوورەوە لێدەدرێن تاوەکو دووبارە بچیتە ژوورەوە
-• دەرچوون لە ژوورەوە هەروەها ئەم ئامێرە لە ماڵپەڕی YouTube دەردەهێنێت"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ماوەی چوونەژوورەوەی وەبی مۆبایل بەسەرچووە، دووبارە هەوڵ بدەرەوە بۆ چوونەژوورەوە بۆ \'وەبی مۆبایل\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">دەرچوون لە ژوورەوەی \'وەبی مۆبایل\'</string>
+• ڕێکخستنەکانی Morphe ڕێگەی بە ئیمپۆرت/ئێکسپۆرت ناکات بۆ چوونەژوورەوەی ماڵپەڕی YouTube
+• ئەگەر Google چوونەژوورەوەکەی کۆتایی پێبکات، ڤیدیۆکان بەبێ چوونەژوورەوە دەلەکەن تاوەکو دووبارە بچیتە ژوورەوە
+• دەرچوون لە هەژمار، ئەم ئامێرەش لە ماڵپەڕی YouTube دەردەهێنێت"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ماوەی چوونەژوورەوەی وێب بەسەرچووە، هەوڵ بدە دووبارە بچیتە ژوورەوە</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">دەرچوون لە ماڵپەڕی YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' بەردەست نییە. بۆ چوونەژوورەوە دایببەزێنە یان چالاکی بکە</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 بەردەست نییە (کاتی API تەواو بوو)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ماوەی چوونەژوورەوەی \'Android VR\' بەسەرچووە، دووبارە هەوڵ بدەرەوە بۆ چوونەژوورەوە بۆ VR</string>

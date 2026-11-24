@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">ເຊື່ອງໂຄສະນາໃນ feed</string>
   <string name="morphe_hide_comment_ads_title">ເຊື່ອງໂຄສະນາໃນຄອມເມັ້ນ</string>
   <string name="morphe_screen_navigation_bar_title">ແຖບນຳທາງ</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">ປິດການຊ່ອນແຖບລຸ່ມອັດຕະໂນມັດ</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">ເຮັດໃຫ້ແຖບນຳທາງດ້ານລຸ່ມສະແດງຢູ່ຕະຫຼອດໃນຂະນະທີ່ເລື່ອນໜ້າຈໍ</string>
   <string name="morphe_hide_answers_button_title">ເຊື່ອງປຸ່ມຄຳຕອບ</string>
   <string name="morphe_hide_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
   <string name="morphe_hide_create_button_title">ເຊື່ອງປຸ່ມສ້າງ</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">ຣີເຟຣຊຟີດເພື່ອໃຊ້ການປ່ຽນແປງ</string>
   <string name="morphe_screen_layout_title">ຜັງ</string>
   <string name="morphe_copy_text_title">ຄັດລອກຂໍ້ຄວາມ</string>
-  <string name="morphe_copy_text_summary">ອະນຸຍາດໃຫ້ເລືອກ ແລະ ຄັດລອກຂໍ້ຄວາມໃນໂພສ ແລະ ຄຳຄິດເຫັນ. ປິດການເຮັດວຽກຂອງການຍຸບຄຳຄິດເຫັນ</string>
-  <string name="morphe_copy_text_user_dialog_message">ການຍຸບຄຳຄິດເຫັນຈະຢຸດເຮັດວຽກໃນຂະນະທີ່ເປີດໃຊ້ງານ ຄັດລອກຂໍ້ຄວາມ</string>
+  <string name="morphe_copy_text_summary">ອະນຸຍາດໃຫ້ເລືອກ ແລະ ຄັດລອກຂໍ້ຄວາມໃນໂພສ ແລະ ຄຳຄິດເຫັນ</string>
   <string name="morphe_custom_font_title">ຟອນທີ່ກຳນົດເອງ</string>
   <string name="morphe_custom_font_summary">ໂຫຼດໄຟລ໌ຟອນ TTF ຫຼື OTF ທີ່ກຳນົດເອງຈາກທີ່ຢູ່ດ້ານລຸ່ມ. ການເປີດໃຊ້ງານສິ່ງນີ້ ຈະປິດການໃຊ້ງານບັງຄັບໃຊ້ຟອນຂອງລະບົບນຳດ້ວຍ</string>
   <string name="morphe_custom_font_file_path_title">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">ປິດການນຳໃຊ້ UI ໜ້າຫຼັກແບບທັນສະໄໝ</string>
   <string name="morphe_home_feed_tabs_title">ແທັບ feed ໜ້າຫຼັກ</string>
   <string name="morphe_home_feed_tabs_summary">ສະແດງແຖບ ສຳລັບທ່ານ, ກຳລັງຕິດຕາມ ແລະ ຍອດນິຍົມ ໃນ feed ໜ້າຫຼັກ, ແລະ ອະນຸຍາດໃຫ້ປັດລະຫວ່າງແຖບເຫຼົ່ານັ້ນ. ການຕິດຕາມຕ້ອງມີບັນຊີທີ່ເຂົ້າສູ່ລະບົບແລ້ວ</string>
+  <string name="morphe_disable_refresh_on_back_title">ປິດການຣີເຟຣຊເມື່ອຍ້ອນກັບເພື່ອອອກ</string>
+  <string name="morphe_disable_refresh_on_back_summary">ການກົດປຸ່ມຍ້ອນກັບໃນ feed ໜ້າຫຼັກ ຈະບໍ່ເລື່ອນໄປເທິງສຸດ ແລະ ໂຫຼດຂໍ້ມູນໃໝ່ອີກຕໍ່ໄປ. ກົດປຸ່ມຍ້ອນກັບສອງຄັ້ງເພື່ອອອກຈາກແອັບ</string>
   <string name="morphe_disable_screenshot_popup_title">ປິດປັອບອັບການແຄັບໜ້າຈໍ</string>
   <string name="morphe_disable_screenshot_popup_summary">ປິດປັອບອັບທີ່ຈະປາກົດຂຶ້ນເມື່ອມີການແຄັບໜ້າຈໍ</string>
   <string name="morphe_feed_auto_scroll_title">ການເລື່ອນຟີດອັດຕະໂນມັດ</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">ເຊື່ອງຊັ້ນ Trending</string>
   <string name="morphe_hide_trending_shelves_summary">ເຊື່ອງຊັ້ນ Trending ຈາກ feed ແລະ ການແນະນຳການຄົ້ນຫາ</string>
   <string name="morphe_hide_videos_for_you_shelf_title">ເຊື່ອງຊັ້ນ \'ວິດີໂອສຳລັບທ່ານ\'</string>
+  <string name="morphe_always_show_hide_title">ສະແດງ \"ຊ່ອນ\" ຕະຫຼອດ</string>
+  <string name="morphe_always_show_hide_summary">ສະແດງ ປິດ ໃນເມນູຂອງ ຟີດ ໂພສ, ລວມທັງເມື່ອ Reddit ສະແດງຕົວເລືອກການແນະນຳ ເຊັ່ນ \'ສະແດງໂພສທີ່ຄ້າຍຄືກັນນີ້ໃຫ້ໜ້ອຍລົງ\'</string>
   <string name="morphe_remove_notification_dialog_title">ລຶບກ່ອງໂຕ້ຕອບແນະນຳການແຈ້ງເຕືອນ</string>
   <string name="morphe_remove_notification_dialog_summary">ປິດກ່ອງໂຕ້ຕອບແນະນຳການແຈ້ງເຕືອນໂດຍອັດຕະໂນມັດ ເມື່ອເຂົ້າເຖິງ subreddit</string>
   <string name="morphe_high_quality_avatars_title">ຮູບໂປຣຟາຍຄຸນນະພາບສູງ</string>
   <string name="morphe_high_quality_avatars_summary">ສະແດງຮູບໂປຣຟາຍຂອງຜູ້ໃຊ້ໃນຄວາມລະອຽດເຕັມ</string>
   <string name="morphe_search_hidden_profiles_title">ຄົ້ນຫາໂປຣໄຟລ໌ທີ່ຖືກຊ່ອນ</string>
-  <string name="morphe_search_hidden_profiles_summary">ສະແດງປຸ່ມໃນໂປຣໄຟລ໌ທີ່ຊ່ອນໂພສ ຫຼື ຄຳຄິດເຫັນຂອງພວກເຂົາ, ເພື່ອຄົ້ນຫາໂພສຂອງພວກເຂົາດ້ວຍການຄົ້ນຫາຂອງ Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">ຄົ້ນຫາ</string>
+  <string name="morphe_search_hidden_profiles_summary">ເຮັດໃຫ້ການຄົ້ນຫາໂປຣໄຟລ໌ສາມາດຊອກຫາໂພສຂອງໂປຣໄຟລ໌ທີ່ເຊື່ອງໂພສ ຫຼື ຄອມເມັ້ນຂອງພວກເຂົາໄດ້</string>
   <string name="morphe_show_flairs_in_home_feed_title">ສະແດງ flair ໃນຟີດໜ້າຫຼັກ</string>
   <string name="morphe_show_flairs_in_home_feed_summary">ສະແດງປ້າຍ flair ຂອງໂພສໃນຟີດໜ້າຫຼັກ</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">ບາງລາຍການໃນຟີດອາດຈະບໍ່ສະແດງ flair</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">ຄວາມເຂັ້ມຂອງການຈາງສີເຂັ້ມທາງຫຼັງຄຳອະທິບາຍ ເມື່ອເບິ່ງຮູບພາບ ແລະ ວິດີໂອ, ຕັ້ງແຕ່ 0 (ບໍ່ມີການຈາງ) ຫາ 1 (ຄ່າເລີ່ມຕົ້ນຂອງ Reddit)</string>
   <string name="morphe_keep_feed_position_title">ຮັກສາຕຳແໜ່ງຟີດ</string>
   <string name="morphe_keep_feed_position_summary">ຮັກສາຕຳແໜ່ງຂອງ feed ໃຫ້ຢູ່ບ່ອນເກົ່າຫຼັງຈາກປິດໂພສ, ຮູບພາບ ຫຼື ວິດີໂອ, ແທນທີ່ຈະຍ້າຍໂພສທີ່ເປີດຢູ່ໄປໄວ້ທາງເທິງ</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">ປິດການຣີເຟຣຊ ຟີດ ໜ້າຫຼັກ ໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">ການກັບຄືນມາທີ່ແອັບຫຼັງຈາກຜ່ານໄປໄລຍະໜຶ່ງ ຈະບໍ່ໂຫຼດ ຟີດ ໜ້າຫຼັກ ໃໝ່ ແລະ ເຄື່ອນຍ້າຍໄປທາງເທິງອີກຕໍ່ໄປ. ການດຶງລົງເພື່ອຣີເຟຣຊຍັງຄົງໃຊ້ງານໄດ້</string>
   <string name="morphe_post_side_panel_title">ແຜງດ້ານຂ້າງຂອງໂພສ</string>
   <string name="morphe_post_side_panel_summary">ໃນໜ້າຈໍແທັບເລັດທີ່ກວ້າງ, ໂພສຈະເປີດໃນແຜງຂ້າງໆຟີດ</string>
   <string name="morphe_post_side_panel_width_title">ຄວາມກວ້າງຂອງແຜງ</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">ການຕອບກັບ (ຄຳເຫັນຫຼັກຍັງຄົງເປີດໄວ້)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">ການຕອບກັບຂອງການຕອບກັບ (ການຕອບກັບໂດຍກົງຍັງຄົງເປີດໄວ້)</string>
   <string name="morphe_collapse_all_comments_button">ປິດ ຫຼື ຂະຫຍາຍທຸກຄຳຄິດເຫັນ</string>
+  <string name="morphe_colorize_comment_indent_lines_title">ໃສ່ສີໃຫ້ເສັ້ນຍໍ້ໜ້າຂອງຄຳເຫັນ</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">ກຳນົດສີເສັ້ນໃຫ້ກັບແຕ່ລະລະດັບຂອງການຕອບກັບ ເພື່ອໃຫ້ຕິດຕາມກະທູ້ທີ່ຍາວໄດ້ງ່າຍຂຶ້ນ</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">ສີຂອງເສັ້ນ</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">ສີຮຸ້ງ (ສີແຈ້ງ)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">ສີພັດເທລ (ສີອ່ອນ)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">ສີທຸ່ມ (ກົມກືນກັບໜ້າເວັບ)</string>
   <string name="morphe_remember_collapsed_comments_title">ຈື່ຈຳຄຳຄິດເຫັນທີ່ຖືກຍຸບ</string>
   <string name="morphe_remember_collapsed_comments_summary">ຄຳຄິດເຫັນທີ່ທ່ານຍຸບຈະຍັງຄົງຖືກຍຸບຢູ່ ເມື່ອທ່ານເປີດໂພສຄືນໃໝ່</string>
   <string name="morphe_app_icon_title">ໄອຄອນແອັບ</string>

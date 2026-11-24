@@ -29,6 +29,8 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_hide_post_ads_title">Dölj flödesannonser</string>
   <string name="morphe_hide_comment_ads_title">Dölj kommentarsannonser</string>
   <string name="morphe_screen_navigation_bar_title">Navigeringsfält</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Inaktivera att det nedre fältet döljs automatiskt</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Håller det nedre navigeringsfältet synligt under skrollning</string>
   <string name="morphe_hide_answers_button_title">Dölj knappen Svar</string>
   <string name="morphe_hide_chat_button_title">Dölj knappen Chatta</string>
   <string name="morphe_hide_create_button_title">Dölj knappen Skapa</string>
@@ -78,8 +80,7 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_keyword_filters_saved">Uppdatera flödet för att tillämpa ändringarna</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopiera text</string>
-  <string name="morphe_copy_text_summary">Möjliggör att markera och kopiera text i inlägg och kommentarer. Inaktiverar ihopfällning av kommentarer</string>
-  <string name="morphe_copy_text_user_dialog_message">Ihopfällning av kommentarer slutar fungera medan textkopiering är aktiverad</string>
+  <string name="morphe_copy_text_summary">Möjliggör att markera och kopiera text i inlägg och kommentarer</string>
   <string name="morphe_custom_font_title">Eget typsnitt</string>
   <string name="morphe_custom_font_summary">Läs in en egen TTF- eller OTF-typsnittsfil från sökvägen nedan. Om du aktiverar den här inställningen inaktiveras även Framtvinga systemtypsnitt</string>
   <string name="morphe_custom_font_file_path_title">Egen typsnittsfil</string>
@@ -91,6 +92,8 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_disable_modern_home_title">Inaktivera modernt användargränssnitt för startsidan</string>
   <string name="morphe_home_feed_tabs_title">Flikar för hemflödet</string>
   <string name="morphe_home_feed_tabs_summary">Visar flikarna För dig, Följer och Populärt i hem-feeden, och gör det möjligt att svepa mellan dem. Följer kräver ett inloggat konto</string>
+  <string name="morphe_disable_refresh_on_back_title">Inaktivera uppdatering vid bakåt för att avsluta</string>
+  <string name="morphe_disable_refresh_on_back_summary">Bakåt i hem-feeden scrollar inte längre till toppen och laddar om. Tryck bakåt två gånger för att lämna appen</string>
   <string name="morphe_disable_screenshot_popup_title">Inaktivera skärmbildspopup-fönster</string>
   <string name="morphe_disable_screenshot_popup_summary">Inaktiverar popup-fönstret som visas när du tar en skärmbild</string>
   <string name="morphe_feed_auto_scroll_title">Automatisk rullning av flöde</string>
@@ -124,13 +127,14 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_hide_trending_shelves_title">Dölj Trendande-hyllor</string>
   <string name="morphe_hide_trending_shelves_summary">Döljer Trendande-hyllorna från flödet och sökförslagen</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Dölj hyllan \"Videor för dig\"</string>
+  <string name="morphe_always_show_hide_title">Visa alltid Dölj</string>
+  <string name="morphe_always_show_hide_summary">Visar Dölj i menyn för inlägg i flödet, även när Reddit visar rekommendationsalternativ som \"Visa färre inlägg som detta\"</string>
   <string name="morphe_remove_notification_dialog_title">Ta bort dialogruta för aviseringsförslag</string>
   <string name="morphe_remove_notification_dialog_summary">Avfärdar dialogrutan för aviseringsförslag automatiskt när du besöker en subreddit</string>
   <string name="morphe_high_quality_avatars_title">Högkvalitativa avatarer</string>
   <string name="morphe_high_quality_avatars_summary">Visar användaravatarer i full upplösning</string>
   <string name="morphe_search_hidden_profiles_title">Sök dolda profiler</string>
-  <string name="morphe_search_hidden_profiles_summary">Visar en knapp på profiler som döljer sina inlägg eller kommentarer, för att hitta deras inlägg med Reddits sökfunktion</string>
-  <string name="morphe_search_hidden_profiles_button">Sök</string>
+  <string name="morphe_search_hidden_profiles_summary">Gör att profilsökningen hittar inlägg från profiler som döljer sina inlägg eller kommentarer</string>
   <string name="morphe_show_flairs_in_home_feed_title">Visa flairer i hemkanalen</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Visar flairer på inlägg i hemkanalen</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Vissa inlägg kan visa en flair</string>
@@ -171,6 +175,8 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_media_viewer_fade_summary">Styrkan på den mörka nedtoningen bakom bildtexten när du visar bilder och videor, från 0 (ingen nedtoning) till 1 (Reddits standard)</string>
   <string name="morphe_keep_feed_position_title">Behåll positionen i flödet</string>
   <string name="morphe_keep_feed_position_summary">Behåller flödet på samma position efter att du har stängt ett inlägg, en bild eller en video, i stället för att flytta det öppnade inlägget till toppen</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Inaktivera automatisk uppdatering av hemflödet</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">När du återvänder till appen efter ett tag laddas hemflödet inte längre om och flyttas till toppen. Dra för att uppdatera fungerar fortfarande</string>
   <string name="morphe_post_side_panel_title">Sidopanel för inlägg</string>
   <string name="morphe_post_side_panel_summary">På breda surfplatteskärmar öppnas inlägg i en panel bredvid flödet</string>
   <string name="morphe_post_side_panel_width_title">Panelbredd</string>
@@ -260,6 +266,12 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_collapse_all_comments_scope_entry_replies">Svar (toppkommentarer förblir öppna)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Svar på svar (direkta svar förblir öppna)</string>
   <string name="morphe_collapse_all_comments_button">Dölj eller visa alla kommentarer</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Färglägg indenteringslinjer för kommentarer</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Ger varje svarsnivå sin egen linjefärg så att långa trådar är lättare att följa</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Linjefärger</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Regnbåge (stark)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastell (mjuk)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Dämpad (smälter in med sidan)</string>
   <string name="morphe_remember_collapsed_comments_title">Kom ihåg hopfällda kommentarer</string>
   <string name="morphe_remember_collapsed_comments_summary">Kommentarer du fäller ihop förblir hopfällda när du öppnar inlägget igen</string>
   <string name="morphe_app_icon_title">Appikon</string>

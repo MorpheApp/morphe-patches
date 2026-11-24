@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ລອງເປີດໃຊ້: Spoof video streams &gt; ການເຂົ້າສູ່ລະບົບ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">ໄຄລຽນເລີ່ມຕົ້ນ</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">ໃຊ້ QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">ໃຊ້ QuackJS ແທນ yt-dlp-ejs (WebView) ສຳລັບການຖອດລະຫັດ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ການລົງຊື່ເຂົ້າໃຊ້ \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ຮຽກຮ້ອງໃຫ້ມີການລົງຊື່ເຂົ້າໃຊ້ແຍກຕ່າງຫາກ. ແຕະບ່ອນນີ້ເພື່ອດຳເນີນການຕໍ່</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການຢືນຢັນຕົວຕົນ Android VR
 • ຖ້າແອັບນີ້ບໍ່ໄດ້ຖືກນຳໃຊ້ເປັນເວລາ 6 ເດືອນ Google ຈະລຶບການຢືນຢັນຕົວຕົນນີ້ອອກ
 • ທ່ານຈະຕ້ອງເຂົ້າສູ່ລະບົບຄືນໃໝ່ ຖ້າທ່ານປ່ຽນລະຫັດຜ່ານ Google ຫຼື ຍົກເລີກການລົງທະບຽນອຸປະກອນນີ້ຈາກການຕັ້ງຄ່າ Google ຂອງທ່ານ"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ການລົງຊື່ເຂົ້າໃຊ້ \'ເວັບມືຖື\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ລົງຊື່ເຂົ້າໃຊ້ເວັບ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ທາງເລືອກ: ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ YouTube ເພື່ອຫຼິ້ນວິດີໂອດ້ວຍບັນຊີຂອງທ່ານ. ແຕະບ່ອນນີ້ເພື່ອສືບຕໍ່</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ປັດຈຸບັນໄດ້ລົງຊື່ເຂົ້າໃຊ້ໃນ \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ປັດຈຸບັນໄດ້ລົງຊື່ເຂົ້າໃຊ້ໃນເວັບໄຊທ໌ YouTube ແລ້ວ</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ລົງຊື່ເຂົ້າໃຊ້ໃນ \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' ຫຼິ້ນວິດີໂອແບບບໍ່ໄດ້ລົງຊື່ເຂົ້າໃຊ້, ຫຼື ລົງຊື່ເຂົ້າໃຊ້ໃນເວັບໄຊ YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນລູກຄ້າເວັບ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ລົງຊື່ເຂົ້າໃຊ້ໃນເວັບໄຊທ໌ YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ລູກຄ້າເວັບຈະຫຼິ້ນວິດີໂອໃນຂະນະທີ່ບໍ່ໄດ້ລົງຊື່ເຂົ້າໃຊ້, ຫຼື ລົງຊື່ເຂົ້າໃຊ້ໃນເວັບໄຊທ໌ YouTube
 
 • ເມື່ອລົງຊື່ເຂົ້າໃຊ້, ວິດີໂອທີ່ຕ້ອງມີບັນຊີຈຶ່ງຈະຫຼິ້ນໄດ້, ເຊັ່ນ ວິດີໂອທີ່ຈຳກັດອາຍຸ
-• ໜ້າລົງຊື່ເຂົ້າໃຊ້ Google ຈະເປີດໃນແອັບນີ້
-• ການລົງຊື່ເຂົ້າໃຊ້ແມ່ນໃຊ້ເພື່ອດຶງວິດີໂອທີ່ທ່ານຫຼິ້ນເທົ່ານັ້ນ
+• ໜ້າລົງຊື່ເຂົ້າໃຊ້ Google ຈະເປີດຂຶ້ນໃນແອັບນີ້
+• ການລົງຊື່ເຂົ້າໃຊ້ແມ່ນໃຊ້ພຽງເພື່ອໃຫ້ໄດ້ວິດີໂອທີ່ທ່ານຫຼິ້ນເທົ່ານັ້ນ
 • ການລົງຊື່ເຂົ້າໃຊ້ຈະຖືກບັນທຶກໄວ້ໃນອຸປະກອນນີ້ເທົ່ານັ້ນ
+• ລູກຄ້າເວັບແຕ່ລະລາຍມີການລົງຊື່ເຂົ້າໃຊ້ຂອງຕົນເອງ, ສຳລັບລູກຄ້າເລີ່ມຕົ້ນທີ່ເລືອກໄວ້
 
-ເພື່ອລົງຊື່ເຂົ້າໃຊ້, ໃຫ້ກົດ ດຳເນີນການຕໍ່ ດ້ານລຸ່ມ"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ບັນທຶກການເຂົ້າສູ່ລະບົບແລ້ວ
+ເພື່ອລົງຊື່ເຂົ້າໃຊ້, ໃຫ້ກົດດຳເນີນການຕໍ່ລຸ່ມນີ້"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ບັນທຶກການລົງຊື່ເຂົ້າໃຊ້ແລ້ວ
 
-• ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການເຂົ້າສູ່ລະບົບ 'Mobile Web'
-• ຖ້າ Google ຍົກເລີກການເຂົ້າສູ່ລະບົບ, ວິດີໂອຈະຖືກຫຼິ້ນໃນສະຖານະທີ່ບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ ຈົນກວ່າທ່ານຈະເຂົ້າສູ່ລະບົບອີກຄັ້ງ
-• ການອອກຈາກລະບົບ ຈະເຮັດໃຫ້ອຸປະກອນນີ້ອອກຈາກລະບົບຂອງເວັບໄຊທ໌ YouTube ນຳດ້ວຍ"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ການເຂົ້າສູ່ລະບົບ Mobile Web ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ \'Mobile Web\' ອີກຄັ້ງ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ອອກຈາກລະບົບ \'Mobile Web\' ແລ້ວ</string>
+• ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊ YouTube
+• ຖ້າ Google ຍົກເລີກການລົງຊື່ເຂົ້າໃຊ້, ວິດີໂອຈະຖືກຫຼິ້ນໃນສະພາວະທີ່ບໍ່ໄດ້ລົງຊື່ເຂົ້າໃຊ້ ຈົນກວ່າທ່ານຈະລົງຊື່ເຂົ້າໃຊ້ໃໝ່
+• ການອອກຈາກລະບົບ ຈະເຮັດໃຫ້ອຸປະກອນນີ້ອອກຈາກລະບົບຂອງເວັບໄຊ YouTube ດ້ວຍ"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ການລົງຊື່ເຂົ້າໃຊ້ເວັບໝົດອາຍຸ, ກະລຸນາລອງລົງຊື່ເຂົ້າໃຊ້ໃໝ່</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ອອກຈາກລະບົບຂອງເວັບໄຊ YouTube ແລ້ວ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ບໍ່ພ້ອມໃຊ້ງານ. ກະລຸນາຕິດຕັ້ງ ຫຼື ເປີດໃຊ້ງານເພື່ອເຂົ້າສູ່ລະບົບ</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API ໝົດເວລາ)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ການເຂົ້າສູ່ລະບົບ \'Android VR\' ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>

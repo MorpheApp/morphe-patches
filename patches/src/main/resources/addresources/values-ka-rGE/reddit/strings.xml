@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">ფიდის რეკლამების დამალვა</string>
   <string name="morphe_hide_comment_ads_title">კომენტარების რეკლამების დამალვა</string>
   <string name="morphe_screen_navigation_bar_title">ნავიგაციის პანელი</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">გამორთეთ ქვედა პანელის ავტომატური დამალვა</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">ინარჩუნებს ქვედა ნავიგაციის პანელის ხილვადობას სქროლვისას</string>
   <string name="morphe_hide_answers_button_title">პასუხების ღილაკის დამალვა</string>
   <string name="morphe_hide_chat_button_title">ჩატის ღილაკის დამალვა</string>
   <string name="morphe_hide_create_button_title">შექმნის ღილაკის დამალვა</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">განაახლეთ ფიდი ცვლილებების გამოსაActionResult-ისთვის</string>
   <string name="morphe_screen_layout_title">განლაგება</string>
   <string name="morphe_copy_text_title">ტექსტის კოპირება</string>
-  <string name="morphe_copy_text_summary">იძლევა პოსტებსა და კომენტარებში ტექსტის არჩევისა და კოპირების საშუალებას. გამორთავს კომენტარების ჩაკეცვას</string>
-  <string name="morphe_copy_text_user_dialog_message">კომენტარების ჩაკეცვა შეწყდება „ტექსტის კოპირების“ ჩართვისას</string>
+  <string name="morphe_copy_text_summary">იძლევა პოსტებსა და კომენტარებში ტექსტის არჩევისა და კოპირების საშუალებას</string>
   <string name="morphe_custom_font_title">მორგებული ფონტი</string>
   <string name="morphe_custom_font_summary">ჩატვირთეთ მორგებული TTF ან OTF ფონტის ფაილი ქვემოთ მოცემული გზიდან. ამ ფუნქციის ჩართვა ასევე გამორთავს სისტემური ფონტის იძულებით გამოყენებას</string>
   <string name="morphe_custom_font_file_path_title">მორგებული ფონტის ფაილი</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">გამორთეთ მთავარი გვერდის თანამედროვე ინტერფეისი</string>
   <string name="morphe_home_feed_tabs_title">მთავარი ფიდის ტაბები</string>
   <string name="morphe_home_feed_tabs_summary">აჩვენებს \"შენთვის\", \"გამოწერები\" და \"პოპულარული\" ჩანართებს მთავარ ფიდზე და საშუალებას გაძლევთ გადავათრიალოთ ისინი. \"გამოწერებებისთვის\" საჭიროა ავტორიზაცია</string>
+  <string name="morphe_disable_refresh_on_back_title">გამორთეთ განახლება უკან დაბრუნებისას გასასვლელად</string>
+  <string name="morphe_disable_refresh_on_back_summary">მთავარ ფიდზე უკან დაბრუნება აღარ გადაისვლის ზემოთ და აღარ განაახლებს გვერდს. აპლიკაციიდან გასასვლელად დააჭირეთ უკან დაბრუნებას ორჯერ</string>
   <string name="morphe_disable_screenshot_popup_title">სქრინშოთის ფანჯრის გამორთვა</string>
   <string name="morphe_disable_screenshot_popup_summary">გამორთავს ფანჯარას, რომელიც ჩნდება სქრინშოთის გადაღებისას</string>
   <string name="morphe_feed_auto_scroll_title">ფიდის ავტომატური სქროლირება一项</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">პოპულარული თაროების დამალვა</string>
   <string name="morphe_hide_trending_shelves_summary">მალავს პოპულარული თაროებს ფიდიდან და ძიების რეკომენდაციებიდან</string>
   <string name="morphe_hide_videos_for_you_shelf_title">დამალეთ პოლკა \"ვიდეოები თქვენთვის\"</string>
+  <string name="morphe_always_show_hide_title">ყოველთვის აჩვენე დამალვა</string>
+  <string name="morphe_always_show_hide_summary">აჩვენებს \"დამალვას\" ფიდის პოსტების მენიუში, ასევე მაშინ, როდესაც Reddit აჩვენებს რეკომენდაციის ოფციებს, როგორიცაა \"აჩვენეთ ნაკლები მსგავსი პოსტი\"</string>
   <string name="morphe_remove_notification_dialog_title">შეტყობინების შეთავაზების დიალოგის წაშლა</string>
   <string name="morphe_remove_notification_dialog_summary">ავტომატურად ხურავს შეტყობინების შეთავაზების დიალოგის ფანჯარას subreddit-ის მონახულებისას</string>
   <string name="morphe_high_quality_avatars_title">მაღალი ხარისხის ავატარები</string>
   <string name="morphe_high_quality_avatars_summary">აჩვენებს მომხმარებლის ავატარებს სრული რეზოლუციით</string>
   <string name="morphe_search_hidden_profiles_title">დამალული პროფილების ძებნა</string>
-  <string name="morphe_search_hidden_profiles_summary">აჩვენებს ღილაკს იმ პროფილებზე, რომლებიც მალავენ პოსტებს ან კომენტარებს, რათა მათი პოსტები მოიძებნოს Reddit-ის ძებნის მეშვეობით</string>
-  <string name="morphe_search_hidden_profiles_button">ძებნა</string>
+  <string name="morphe_search_hidden_profiles_summary">პროფილის ძიებისას პოულობს იმ პროფილების პოსტებს, რომლებიც მალავენ თავიანთ პოსტებს ან კომენტარებს</string>
   <string name="morphe_show_flairs_in_home_feed_title">აჩვენეთ თეგები მთავარ ფიდზე</string>
   <string name="morphe_show_flairs_in_home_feed_summary">აჩვენებს პოსტის თეგებს მთავარ ფიდზე</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">ფიდის ზოგიერთ ელემენტს შესაძლოა არ ჰქონდეს თეგი</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">ბნელი ფონის სიმძიმე სუბტიტრების უკან სურათებისა და ვიდეოების ნახვისას, 0-დან (ფონის გარეშე) 1-მდე (Reddit-ის სტანდარტი)</string>
   <string name="morphe_keep_feed_position_title">შეინარჩუნეთ ფიდის პოზიცია</string>
   <string name="morphe_keep_feed_position_summary">ინარჩუნებს ფიდს იმავე პოზიციაზე პოსტის, სურათის ან ვიდეოს დახურვის შემდეგ, ნაცვლად იმისა, რომ გახსნილი პოსტი გადაიტანოს ზედა ნაწილში</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">გამოთიშე მთავარი ფიდის ავტო-განახლება</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">აპლიკაციაში გარკვეული დროის შემდეგ დაბრუნება აღარ განაახლებს მთავარ ფიდს და აღარ გადაიყვანს მას ზედა ნაწილში. განახლება გასმევით კვლავ მუშაობს</string>
   <string name="morphe_post_side_panel_title">პოსტის გვერდითა პანელი</string>
   <string name="morphe_post_side_panel_summary">ტაბლეტის ფართო ეკრანებზე პოსტები იხსნება პანელში, რომელიც განთავსებულია ფიდის გვერდით</string>
   <string name="morphe_post_side_panel_width_title">პანელის სიგანე</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">პასუხები (მთავარი კომენტარები რჩება გახსნილი)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">პასუხები პასუხებზე (პირდაპირი პასუხები რჩება გახსნილი)</string>
   <string name="morphe_collapse_all_comments_button">ყველა კომენტარის ჩაკვრა ან გაშლა</string>
+  <string name="morphe_colorize_comment_indent_lines_title">კომენტარების შეცდომის ხაზების გაფერადება</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">თითოეულ პასუხის დონეს ანიჭებს ხაზის საკუთარ ფერს, რათა გრძელი ვ चर्चाები უფრო მარტივად იყოს გასაგები</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">ხაზების ფერები</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">ცისარტყელა (კაშკაშა)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">პასტელი (რბილი)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">დამუხტული (ერწყმის გვერდს)</string>
   <string name="morphe_remember_collapsed_comments_title">ჩაკეცილი კომენტარების დამახსოვრება</string>
   <string name="morphe_remember_collapsed_comments_summary">კომენტარები, რომლებსაც ჩაკეცავთ, ჩაკეცილი დარჩება პოსტის ხელახლა გახსნისას</string>
   <string name="morphe_app_icon_title">აპლიკაციის ხატულა</string>

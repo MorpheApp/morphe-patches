@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Обидете се да го овозможите: Лажирај видео стримови &gt; Пријава во Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Подрачјуван клиент</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Користете QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Користете QuackJS наместо yt-dlp-ejs (WebView) за деобфускација</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Најава за \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">За \'Android VR\' е потребна посебна најава. Допрете овде за да продолжите</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • Вашите поставки на Morphe нема да ги зачуваат одобрувањата за Android VR.
 • Ако оваа апликација не се користи 6 месеци, Google ќе го отстрани ова одобрување.
 • Ќе треба повторно да се најавите ако ја промените вашата Google лозинка или го откажете овој уред од вашите поставки на Google."</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Најава за \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријавување преку веб</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Опционално: најавете се на веб-страницата на YouTube за да ги пуштите видеата со вашата сметка. Допрете тука за да продолжите</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Моментално сте најавени во \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Моментално сте пријавени на веб-страницата на YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">За да ја користите оваа функција, променете го \"Default client\" во \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Најавете се во \"Mobile Web\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" ги пушта видеата без најава или најавени на веб-страницата на YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">За да ја користите оваа функција, променете го „Стандарден клиент“ во веб-клиент</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Пријавете се на веб-страницата на YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Веб-клиентите ги репродуцираат видеата без најава или пријавени на веб-страницата на YouTube
 
-• Кога сте најавени, може да се пуштаат видеа кои бараат сметка, како што се видеата со ограничување на возраста
-• Страницата за најава на Google се отвора во оваа апликација
-• Најавата се користи само за да се добијат видеата што ги пуштате
-• Најавата се зачувува само на овој уред
+• Кога сте пријавени, можат да се репродуцираат видеа што бараат сметка, како што се видеата со ограничување на возраста
+• Страницата за пријавување на Google се отвора во оваа апликација
+• Пријавувањето се користи само за добивање на видеата што ги репродуцирате
+• Пријавувањето се зачувува само на овој уред
+• Секој веб-клиент има сопствено пријавување за избраниот стандарден клиент
 
-За да се најавите, притиснете продолжи подолу"</string>
+За да се пријавите, притиснете „Продолжи“ подолу"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Пријавата е зачувана
 
-• Вашите Morphe поставки нема да ги увезат/извезат пријавата за „Mobile Web“
+• Вашите поставки во Morphe нема да ги увезат/извезат пријавата на веб-страницата на YouTube
 • Ако Google ја прекине пријавата, видеата ќе се репродуцираат без најава додека повторно не се најавите
 • Одјавувањето исто така го одјавува овој уред од веб-страницата на YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријавата за Mobile Web е истечена, обидете се повторно да се најавите во „Mobile Web“</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјавено од „Mobile Web“</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријавата на веб-страницата е истечена, обидете се повторно да се најавите</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјавени сте од веб-страницата на YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">„Android System WebView“ не е достапен. Инсталирајте го или овозможете го за да се најавите</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 е привремено недостапен (истекот на рокот на API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Пријавата за \'Android VR\' е истечена, обидете се повторно да се најавите во VR</string>

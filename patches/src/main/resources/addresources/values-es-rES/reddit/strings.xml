@@ -29,6 +29,8 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_hide_post_ads_title">Ocultar anuncios en el feed</string>
   <string name="morphe_hide_comment_ads_title">Ocultar anuncios en los comentarios</string>
   <string name="morphe_screen_navigation_bar_title">Barra de navegación</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Desactivar ocultación automática de la barra inferior</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantiene la barra de navegación inferior visible al hacer scroll</string>
   <string name="morphe_hide_answers_button_title">Ocultar botón Respuestas</string>
   <string name="morphe_hide_chat_button_title">Ocultar botón Chat</string>
   <string name="morphe_hide_create_button_title">Ocultar botón Crear</string>
@@ -78,8 +80,7 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_keyword_filters_saved">Actualiza el feed para aplicar los cambios</string>
   <string name="morphe_screen_layout_title">Diseño</string>
   <string name="morphe_copy_text_title">Copiar texto</string>
-  <string name="morphe_copy_text_summary">Permite seleccionar y copiar texto en publicaciones y comentarios. Desactiva el contraer comentarios</string>
-  <string name="morphe_copy_text_user_dialog_message">Contraer comentarios dejará de funcionar mientras \'Copiar texto\' esté activado</string>
+  <string name="morphe_copy_text_summary">Permite seleccionar y copiar texto en publicaciones y comentarios</string>
   <string name="morphe_custom_font_title">Fuente personalizada</string>
   <string name="morphe_custom_font_summary">Carga un archivo de fuente TTF u OTF personalizado desde la ruta de abajo. Activar esta opción también desactiva Forzar fuente del sistema</string>
   <string name="morphe_custom_font_file_path_title">Archivo de fuente personalizada</string>
@@ -91,6 +92,8 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_disable_modern_home_title">Desactivar inicio moderno</string>
   <string name="morphe_home_feed_tabs_title">Pestañas del feed de inicio</string>
   <string name="morphe_home_feed_tabs_summary">Muestra las pestañas Para ti, Siguiendo y Popular en el feed de inicio, y permite deslizar entre ellas. Siguiendo requiere una cuenta iniciada</string>
+  <string name="morphe_disable_refresh_on_back_title">Desactivar actualizar al volver para salir</string>
+  <string name="morphe_disable_refresh_on_back_summary">Al volver atrás en el feed de inicio, ya no se desplaza hacia arriba ni se recarga. Pulsa atrás dos veces para salir de la aplicación</string>
   <string name="morphe_disable_screenshot_popup_title">Desactivar ventana emergente de captura de pantalla</string>
   <string name="morphe_disable_screenshot_popup_summary">Desactiva la ventana emergente que aparece al tomar una captura de pantalla</string>
   <string name="morphe_feed_auto_scroll_title">Desplazamiento automático del feed</string>
@@ -124,13 +127,14 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_hide_trending_shelves_title">Ocultar estantería Tendencias</string>
   <string name="morphe_hide_trending_shelves_summary">Oculta las estanterías de tendencias del feed y de las sugerencias de búsqueda</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ocultar sección \"Videos para ti\"</string>
+  <string name="morphe_always_show_hide_title">Mostrar siempre Ocultar</string>
+  <string name="morphe_always_show_hide_summary">Muestra Ocultar en el menú de las publicaciones del feed, también cuando Reddit muestra opciones de recomendación como \"Mostrar menos publicaciones como esta\"</string>
   <string name="morphe_remove_notification_dialog_title">Eliminar diálogo de sugerencia de notificaciones</string>
   <string name="morphe_remove_notification_dialog_summary">Descarta automáticamente el diálogo de sugerencia de notificaciones al visitar un subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatares de alta calidad</string>
   <string name="morphe_high_quality_avatars_summary">Muestra los avatares de los usuarios en resolución completa</string>
   <string name="morphe_search_hidden_profiles_title">Buscar perfiles ocultos</string>
-  <string name="morphe_search_hidden_profiles_summary">Muestra un botón en los perfiles que ocultan sus publicaciones o comentarios, para encontrar sus publicaciones con la búsqueda de Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Buscar</string>
+  <string name="morphe_search_hidden_profiles_summary">Permite que la búsqueda de perfiles encuentre las publicaciones de perfiles que ocultan sus publicaciones o comentarios</string>
   <string name="morphe_show_flairs_in_home_feed_title">Mostrar etiquetas en el feed principal</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Muestra insignias de etiquetas en el feed principal</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Algunos elementos del feed pueden no mostrar una etiqueta</string>
@@ -171,6 +175,8 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_media_viewer_fade_summary">Intensidad del degradado oscuro detrás del pie de foto al ver imágenes y vídeos, de 0 (sin degradado) a 1 (valor predeterminado de Reddit)</string>
   <string name="morphe_keep_feed_position_title">Mantener posición del feed</string>
   <string name="morphe_keep_feed_position_summary">Mantiene el feed en la misma posición después de cerrar una publicación, una imagen o un vídeo, en lugar de mover la publicación abierta a la parte superior</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Desactivar actualización automática del feed de inicio</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Al volver a la aplicación después de un tiempo, el feed de inicio ya no se recarga ni se desplaza hacia arriba. Deslizar para actualizar sigue funcionando</string>
   <string name="morphe_post_side_panel_title">Panel lateral de publicación</string>
   <string name="morphe_post_side_panel_summary">En pantallas de tabletas anchas, las publicaciones se abren en un panel junto al feed</string>
   <string name="morphe_post_side_panel_width_title">Ancho del panel</string>
@@ -260,6 +266,12 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_collapse_all_comments_scope_entry_replies">Respuestas (los comentarios principales permanecen abiertos)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Respuestas a respuestas (las respuestas directas permanecen abiertas)</string>
   <string name="morphe_collapse_all_comments_button">Contraer o expandir todos los comentarios</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Colorear líneas de sangría de comentarios</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Asigna a cada nivel de respuesta su propio color de línea para que los hilos largos sean más fáciles de seguir</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Colores de línea</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Arcoíris (brillante)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (suave)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Tenue (se integra con la página)</string>
   <string name="morphe_remember_collapsed_comments_title">Recordar comentarios contraídos</string>
   <string name="morphe_remember_collapsed_comments_summary">Los comentarios que contraigas seguirán contraídos cuando vuelvas a abrir la publicación</string>
   <string name="morphe_app_icon_title">Icono de la aplicación</string>

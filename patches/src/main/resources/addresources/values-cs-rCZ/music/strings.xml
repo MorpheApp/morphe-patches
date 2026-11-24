@@ -449,6 +449,9 @@ Pozastavení crossfade kvůli sledování hudebního videa může zanechat někt
   <string name="morphe_music_hide_navigation_bar_library_button_title">Skrýt tlačítko Knihovna</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skrýt tlačítko Upgrade</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Zobrazit tlačítko Nastavení</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Nastavení tlačítka akcí</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Při zapnutí klepnutí otevře nastavení Morphe a dlouhé stisknutí nastavení YouTube Music, vypnutím chování prohodíte</string>
   <string name="morphe_music_hide_navigation_bar_title">Skrýt navigační panel</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skrýt štítky navigačních tlačítek</string>
   <string name="morphe_music_navigation_bar_glass_title">Povolit skleněný navigační panel</string>
@@ -664,12 +667,19 @@ První sloupec je slovo, druhý jeho čtení; další sloupce a řádky bez tabu
   <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d písní)</string>
   <string name="morphe_music_lyrics_cache_translation_category_title">Cache překladů</string>
   <string name="morphe_music_lyrics_cache_clear_translation_title">Vymazat cache překladů</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d překladů)</string>
   <string name="morphe_music_lyrics_cache_transliteration_category_title">Cache transliterace</string>
   <string name="morphe_music_lyrics_cache_clear_transliteration_title">Vymazat cache transliterace</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d přepisů)</string>
   <string name="morphe_music_lyrics_cache_total_category_title">Celkové využití cache</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">Vymazat celou cache</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d položek)</string>
   <string name="morphe_music_lyrics_cache_clear_action">Vymazat</string>
   <string name="morphe_music_lyrics_cache_close_action">Zavřít</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Chcete smazat %1$s MB (%2$d skladeb) textů písní uložených v mezipaměti na tomto zařízení?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Chcete smazat %1$s MB (%2$d překladů) překladů uložených v mezipaměti na tomto zařízení?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Chcete smazat %1$s MB (%2$d transliterací) transliterací uložených v mezipaměti na tomto zařízení?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Chcete smazat %1$s MB (%2$d položek) všech dat textů písní uložených v mezipaměti na tomto zařízení?</string>
   <string name="morphe_music_token_dialog_get_token">Získat token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music token uživatele médií</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Vložte cookie media-user-token z music.apple.com
