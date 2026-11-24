@@ -943,6 +943,19 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting VOT_SHOW_HTTP_ERROR_DIALOG = new BooleanSetting("morphe_vot_show_http_error_dialog", TRUE);
     public static final BooleanSetting VOT_HIDE_EXPORT_WARNING = new BooleanSetting("morphe_vot_hide_export_warning", FALSE, false, false);
 
+    // Ghost mode
+    public static final BooleanSetting GHOST_PLAY_ENABLED = new BooleanSetting("morphe_ghost_play_enabled", FALSE, true);
+    public static final BooleanSetting GHOST_PLAY_MODE_ACTIVE = new BooleanSetting("morphe_ghost_play_mode_active", FALSE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_PERSIST_MODE = new BooleanSetting("morphe_ghost_play_persist_mode", FALSE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_TOOLBAR_BUTTON = new BooleanSetting("morphe_ghost_play_toolbar_button", TRUE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_FLYOUT_BUTTON = new BooleanSetting("morphe_ghost_play_flyout_button", TRUE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_PLAYER_BUTTON = new BooleanSetting("morphe_ghost_play_player_button", TRUE, true, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_ANONYMIZE_REQUESTS = new BooleanSetting("morphe_ghost_play_anonymize_requests", TRUE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_AUTO_SHORTS = new BooleanSetting("morphe_ghost_play_auto_shorts", FALSE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_AUTO_SEARCH = new BooleanSetting("morphe_ghost_play_auto_search", FALSE, parent(GHOST_PLAY_ENABLED));
+    public static final BooleanSetting GHOST_PLAY_LOCAL_HISTORY = new BooleanSetting("morphe_ghost_play_local_history", TRUE, parent(GHOST_PLAY_ENABLED));
+    public static final IntegerSetting GHOST_PLAY_HISTORY_LIMIT = new IntegerSetting("morphe_ghost_play_history_limit", 500, parent(GHOST_PLAY_LOCAL_HISTORY));
+
     // Series tracking. Consent is account-bound and excluded from settings import/export.
     public static final BooleanSetting SERIES_TRACKER = new BooleanSetting("morphe_series_tracker", FALSE, true);
     public static final BooleanSetting SERIES_TRACKER_NAVIGATION_BUTTON = new BooleanSetting("morphe_series_tracker_show_navigation_button", FALSE, true, parentsAll(parent(SERIES_TRACKER), parentNot(HIDE_NAVIGATION_BAR)));
@@ -1116,19 +1129,6 @@ public class Settings extends SharedYouTubeSettings {
     private static final IntegerSetting DEPRECATED_SHOW_WATCH_LATER_BUTTON_INDEX = new IntegerSetting("morphe_show_watch_later_button_index", 4);
     private static final IntegerSetting DEPRECATED_SHOW_SETTINGS_BUTTON_INDEX = new IntegerSetting("morphe_show_settings_button_index", 5);
     private static final IntegerSetting DEPRECATED_SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX = new IntegerSetting("morphe_show_toolbar_settings_button_index", 3);
-
-    // Ghost mode
-    public static final BooleanSetting GHOST_PLAY_ENABLED = new BooleanSetting("morphe_ghost_play_enabled", TRUE);
-    public static final BooleanSetting GHOST_PLAY_MODE_ACTIVE = new BooleanSetting("morphe_ghost_play_mode_active", FALSE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_PERSIST_MODE = new BooleanSetting("morphe_ghost_play_persist_mode", FALSE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_TOOLBAR_BUTTON = new BooleanSetting("morphe_ghost_play_toolbar_button", TRUE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_FLYOUT_BUTTON = new BooleanSetting("morphe_ghost_play_flyout_button", TRUE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_PLAYER_BUTTON = new BooleanSetting("morphe_ghost_play_player_button", TRUE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_ANONYMIZE_REQUESTS = new BooleanSetting("morphe_ghost_play_anonymize_requests", TRUE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_AUTO_SHORTS = new BooleanSetting("morphe_ghost_play_auto_shorts", FALSE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_AUTO_SEARCH = new BooleanSetting("morphe_ghost_play_auto_search", FALSE, parent(GHOST_PLAY_ENABLED));
-    public static final BooleanSetting GHOST_PLAY_LOCAL_HISTORY = new BooleanSetting("morphe_ghost_play_local_history", TRUE, parent(GHOST_PLAY_ENABLED));
-    public static final IntegerSetting GHOST_PLAY_HISTORY_LIMIT = new IntegerSetting("morphe_ghost_play_history_limit", 500, parent(GHOST_PLAY_LOCAL_HISTORY));
 
     static {
         if (!DEPRECATED_RESTORE_OLD_VIDEO_ACTION_BAR.isSetToDefault()) {
