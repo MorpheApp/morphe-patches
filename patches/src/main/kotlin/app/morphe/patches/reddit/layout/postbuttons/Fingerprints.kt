@@ -32,6 +32,20 @@ internal object ActionBarActionToStringFingerprint : Fingerprint(
 )
 
 /**
+ * toString of the state of an action bar button, which logs its label.
+ */
+internal object ActionBarActionLabelFingerprint : Fingerprint(
+    classFingerprint = ActionBarActionToStringFingerprint,
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string(", label="),
+        methodCall(name = "append", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+/**
  * toString of the state of the vote buttons of an action bar.
  */
 internal object ActionBarVoteStateToStringFingerprint : Fingerprint(
@@ -40,6 +54,44 @@ internal object ActionBarVoteStateToStringFingerprint : Fingerprint(
     filters = listOf(
         string("ActionBarVoteState(selectedDirection=")
     )
+)
+
+/**
+ * toString of the state of the vote buttons of an action bar, which logs whether the score is hidden.
+ */
+internal object ActionBarVoteStateHideScoreFingerprint : Fingerprint(
+    classFingerprint = ActionBarVoteStateToStringFingerprint,
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string(", hideScore="),
+        methodCall(name = "append", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Constructor of the vote button state, which sets whether the score is hidden.
+ */
+internal object ActionBarVoteStateConstructorFingerprint : Fingerprint(
+    classFingerprint = ActionBarVoteStateToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        fieldAccess(
+            reference = { ActionBarVoteStateHideScoreFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IPUT_BOOLEAN
+        )
+    )
+)
+
+/**
+ * Whether the score of a comment is hidden, like in new posts of some communities.
+ */
+internal object CommentScoreHiddenFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/domain/model/Comment;",
+    name = "getScoreHidden",
+    returnType = "Z",
+    parameters = listOf()
 )
 
 /**

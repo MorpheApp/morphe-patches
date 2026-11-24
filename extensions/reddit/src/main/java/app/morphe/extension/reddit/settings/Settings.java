@@ -46,7 +46,9 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_POST_MOD_BUTTON = new BooleanSetting("morphe_hide_post_mod_button", FALSE, true);
     public static final BooleanSetting HIDE_POST_REPOST_BUTTON = new BooleanSetting("morphe_hide_post_repost_button", FALSE, true);
     public static final BooleanSetting HIDE_POST_SHARE_BUTTON = new BooleanSetting("morphe_hide_post_share_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_SHARE_COUNT = new BooleanSetting("morphe_hide_post_share_count", FALSE, true);
     public static final BooleanSetting HIDE_POST_VOTE_BUTTONS = new BooleanSetting("morphe_hide_post_vote_buttons", FALSE, true);
+    public static final BooleanSetting HIDE_POST_VOTE_COUNT = new BooleanSetting("morphe_hide_post_vote_count", FALSE, true);
 
     // Sidebar
     public static final BooleanSetting HIDE_ABOUT_SHELF = new BooleanSetting("morphe_hide_about_shelf", FALSE, true);
