@@ -91,9 +91,9 @@ public final class CarDisplay {
         return onCarDisplay;
     }
 
-    private static boolean isEnabled() {
-        return Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()
-                || Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get();
+    private static boolean isDisabled() {
+        return !Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()
+                && !Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get();
     }
 
     /**
@@ -101,7 +101,7 @@ public final class CarDisplay {
      * requests anything, so the first requests already use the layout of the display.
      */
     public static void onMainActivityCreate(Activity activity) {
-        if (!isEnabled()) return;
+        if (isDisabled()) return;
 
         try {
             activityRef = new WeakReference<>(activity);
@@ -123,7 +123,7 @@ public final class CarDisplay {
      * @param bottomBarContainer The container of the navigation bar.
      */
     public static void onBottomBarContainerCreated(View bottomBarContainer) {
-        if (!isEnabled()) return;
+        if (isDisabled()) return;
 
         try {
             // Moving the activity to another display changes its size, so the container is laid out again.
@@ -160,7 +160,7 @@ public final class CarDisplay {
 
     /**
      * The layout comes from the requests the activity made, so with the automotive layout the activity
-     * is recreated. Otherwise only the navigation bar follows the display.
+     * is recreated. Otherwise, only the navigation bar follows the display.
      */
     private static void update(Activity activity) {
         final boolean wasOnCarDisplay = onCarDisplay;

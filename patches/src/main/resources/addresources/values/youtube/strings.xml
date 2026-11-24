@@ -2383,6 +2383,7 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_ghost_play_channels_search_no_results">No channels found for that query</string>
     <string name="morphe_ghost_play_channels_search_count">%d channels found — tap Add to enable auto-ghost</string>
     <string name="morphe_ghost_play_channels_recent_videos">Recent videos</string>
+    <string name="morphe_ghost_play_channels_recent_video_item" translatable="false">• %s</string>
     <string name="morphe_ghost_play_channels_loading_details">Loading recent videos…</string>
     <string name="morphe_ghost_play_channels_no_recent_videos">No recent videos found (tap to retry)</string>
 </resources>

@@ -30,7 +30,7 @@ import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
 import app.morphe.patcher.apk.ApkUtils.applyTo
 import app.morphe.patcher.dex.SdkDexVerifier
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.music.misc.gms.gmsCoreSupportPatch
@@ -41,7 +41,7 @@ import java.nio.file.Files
 private const val PROBE_PACKAGE = "app.morphe.android.auto.third.party.music"
 
 /** Lets the probe install as the base APK alone, without the splits of the original bundle. */
-private val installableWithoutSplits = resourcePatch {
+private val installableWithoutSplits = patch(null, null, true) {
     execute {
         resourceXml("AndroidManifest.xml").use { manifest ->
             manifest.root.removeAttribute("android:isSplitRequired")

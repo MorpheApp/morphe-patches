@@ -456,7 +456,7 @@ public final class GhostChannelManagerDialog {
 
                     for (String videoTitle : entry.recentVideos()) {
                         TextView vt = new TextView(context);
-                        vt.setText("• " + videoTitle);
+                        vt.setText(str("morphe_ghost_play_channels_recent_video_item", videoTitle));
                         vt.setTextColor(GhostTheme.adjustAlpha(ThemeUtils.getAppForegroundColor(), 0.88f));
                         vt.setTextSize(11.5f);
                         vt.setMaxLines(1);
@@ -652,13 +652,11 @@ public final class GhostChannelManagerDialog {
     }
 
     private static String buildSubLine(GhostChannelStore.ChannelEntry entry) {
-        StringBuilder sb = new StringBuilder();
-        if (!entry.handle().isEmpty()) sb.append(entry.handle());
-        if (!entry.subscriberText().isEmpty()) {
-            if (sb.length() > 0) sb.append(" · ");
-            sb.append(entry.subscriberText());
-        }
-        return sb.toString();
+        String handle = entry.handle();
+        String subscribers = entry.subscriberText();
+        if (handle.isEmpty()) return subscribers;
+        if (subscribers.isEmpty()) return handle;
+        return handle + " · " + subscribers;
     }
 
     private static TextView buildTabButton(Context context) {
