@@ -923,6 +923,9 @@ public final class FlyoutUtils {
             flyoutChannelIdRequest = null;
         }
         isShortsPlayerFlyout = false;
+        // Moving the list of the player menu binds its items again, after the field was reset.
+        // Otherwise the next menu is treated as the player menu.
+        PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
