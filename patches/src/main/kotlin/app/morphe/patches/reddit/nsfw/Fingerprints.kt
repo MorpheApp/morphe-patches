@@ -127,18 +127,6 @@ internal object PostDetailPostStateToStringFingerprint : Fingerprint(
             definingClass = "this",
             type = "Lcom/reddit/domain/model/Link;",
             location = MatchAfterWithin(5)
-        ),
-        string(", joinButton=null, isContentHidden="),
-        fieldAccess(
-            opcode = Opcode.IGET_BOOLEAN,
-            definingClass = "this",
-            location = MatchAfterWithin(5)
-        ),
-        string(", isContentBlocked="),
-        fieldAccess(
-            opcode = Opcode.IGET_BOOLEAN,
-            definingClass = "this",
-            location = MatchAfterWithin(6)
         )
     )
 )
@@ -157,7 +145,7 @@ internal object PostDetailStateProducerFingerprint : Fingerprint(
 )
 
 /**
- * Creates the post view state with the content hidden and blocked flags of the post state.
+ * Finds the post view state builder and its view model register.
  */
 internal object PostUnitViewStateFingerprint : Fingerprint(
     definingClass = POST_DETAIL_VIEW_MODEL_CLASS,
@@ -165,15 +153,6 @@ internal object PostUnitViewStateFingerprint : Fingerprint(
         methodCall(
             definingClass = $$"Lcom/reddit/postdetail/refactor/RedditPostDetailViewModel$viewState$postUnitViewState$1$1;",
             name = "<init>"
-        ),
-        fieldAccess(
-            reference = { PostDetailPostStateToStringFingerprint.instructionMatches[3].getFieldAccessed() },
-            opcode = Opcode.IGET_BOOLEAN
-        ),
-        fieldAccess(
-            reference = { PostDetailPostStateToStringFingerprint.instructionMatches[5].getFieldAccessed() },
-            opcode = Opcode.IGET_BOOLEAN,
-            location = MatchAfterImmediately()
         )
     )
 )
@@ -499,12 +478,19 @@ internal object SetUpSubredditFingerprint : Fingerprint(
     )
 )
 
-internal fun recentlyVisitedFingerprint(definingClass: String) = Fingerprint(
-    definingClass = definingClass,
-    name = "invokeSuspend",
+/** Finds a recent communities collector before it converts Subreddit objects to UI rows. */
+internal fun recentlyVisitedFingerprint(continuationClass: String) = Fingerprint(
+    definingClass = "Lcom/reddit/screens/drawer/community/",
+    name = "emit",
     returnType = "Ljava/lang/Object;",
     filters = listOf(
-        checkCast("Ljava/util/List;")
+        newInstance(continuationClass),
+        checkCast("Ljava/util/List;"),
+        methodCall(
+            returnType = "Ljava/util/ArrayList;",
+            parameters = listOf("Ljava/util/List;", "Z"),
+            location = MatchAfterWithin(6)
+        )
     )
 )
 

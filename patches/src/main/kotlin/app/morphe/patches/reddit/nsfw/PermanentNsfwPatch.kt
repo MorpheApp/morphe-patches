@@ -29,6 +29,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -389,16 +390,16 @@ val permanentNsfwPatch = patch(
         // Hide NSFW communities that were saved before NSFW content was disabled,
         // in the community drawer and the recently visited screen.
         listOf(
-            $$"Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$refreshRecentlyVisited$1;",
-            $$"Lcom/reddit/screens/drawer/community/recentlyvisited/RecentlyVisitedPresenter$loadRecentlyVisited$1;"
-        ).forEach { definingClass ->
-            recentlyVisitedFingerprint(definingClass).let {
+            $$"Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$refreshRecentlyVisited$1$1$invokeSuspend$$inlined$map$1$2$1;",
+            $$"Lcom/reddit/screens/drawer/community/CommunityDrawerRecentlyVisitedDelegate$loadRecentlyVisited$$inlined$map$1$2$1;"
+        ).forEach { continuationClass ->
+            recentlyVisitedFingerprint(continuationClass).let {
                 it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<FiveRegisterInstruction>(index).registerD
 
                     addInstructions(
-                        index + 1,
+                        index,
                         """
                             invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->filterRecentSubreddits(Ljava/util/List;)Ljava/util/List;
                             move-result-object v$register

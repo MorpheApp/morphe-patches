@@ -10,6 +10,7 @@ package app.morphe.patches.reddit.nsfw
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -18,8 +19,11 @@ import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -51,11 +55,9 @@ val preventNsfwFlashingPatch = patch(
         val preferenceRepositoryType = PostLoadedNsfwIncognitoVerifyEventHandlerConstructorFingerprint
             .instructionMatches.first().getFieldAccessed().type
 
-        // region Hide NSFW posts before the post is first shown,
-        // instead of when PostLoadedNsfwIncognitoVerifyEvent is handled later.
+        // region Use Reddit's empty post view while the NSFW warning is being resolved.
 
         val postStateMatches = PostDetailPostStateToStringFingerprint.instructionMatches
-        val postStateType = PostDetailPostStateToStringFingerprint.originalClassDef.type
         val postLinkField = postStateMatches[1].getFieldAccessed()
 
         val mapperField = PostDetailStateProducerFingerprint.instructionMatches.last().getFieldAccessed()
@@ -67,7 +69,7 @@ val preventNsfwFlashingPatch = patch(
         val shouldHidePostMethod = ImmutableMethod(
             POST_DETAIL_VIEW_MODEL_CLASS,
             "patch_shouldHideNsfw",
-            listOf(ImmutableMethodParameter(postStateType, null, null)),
+            listOf(ImmutableMethodParameter(postLinkField.type, null, null)),
             "Z",
             AccessFlags.PRIVATE.value,
             null,
@@ -77,9 +79,8 @@ val preventNsfwFlashingPatch = patch(
             addInstructionsWithLabels(
                 0,
                 """
-                    iget-object v0, p1, $postLinkField
-                    if-eqz v0, :show
-                    invoke-virtual { v0 }, Lcom/reddit/domain/model/Link;->getOver18()Z
+                    if-eqz p1, :show
+                    invoke-virtual { p1 }, Lcom/reddit/domain/model/Link;->getOver18()Z
                     move-result v0
                     if-eqz v0, :show
                     iget-object v0, p0, $producerField
@@ -101,26 +102,35 @@ val preventNsfwFlashingPatch = patch(
             it.classDef.methods.add(shouldHidePostMethod)
 
             it.method.apply {
-                val viewModelRegister = getInstruction<FiveRegisterInstruction>(
-                    it.instructionMatches[0].index
-                ).registerD
-                val hiddenRegister = getInstruction<TwoRegisterInstruction>(
-                    it.instructionMatches[1].index
-                ).registerA
-                val blockedInstruction = getInstruction<TwoRegisterInstruction>(
-                    it.instructionMatches[2].index
-                )
-                val index = it.instructionMatches[2].index + 1
+                val factoryAnchor = it.instructionMatches.first().index
+                val viewModelRegister = getInstruction<FiveRegisterInstruction>(factoryAnchor).registerD
+                val instructions = implementation!!.instructions
+                val linkRead = (factoryAnchor - 1 downTo 0).firstOrNull { index ->
+                    val instruction = instructions[index]
+                    instruction.opcode == Opcode.IGET_OBJECT &&
+                            (instruction as ReferenceInstruction).reference == postLinkField
+                } ?: throw PatchException("Could not find the post link used by the view state")
+                val linkRegister = getInstruction<OneRegisterInstruction>(linkRead).registerA
+                val index = linkRead + 1
+                if ((index..index + 3).none { branch ->
+                    val instruction = instructions[branch]
+                    instruction.opcode == Opcode.IF_NEZ &&
+                            (instruction as OneRegisterInstruction).registerA == linkRegister
+                }) {
+                    throw PatchException("Could not find the post view state's empty-content branch")
+                }
                 val freeRegister = findFreeRegister(index)
 
+                // Suppress the local render input. Keep the post in the state producer so Reddit's
+                // own warning logic can still inspect it. This also prevents the separate media preview
+                // from rendering before that warning arrives.
                 addInstructionsWithLabels(
                     index,
                     """
-                        invoke-direct { v$viewModelRegister, v${blockedInstruction.registerB} }, $shouldHidePostMethod
+                        invoke-direct { v$viewModelRegister, v$linkRegister }, $shouldHidePostMethod
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :show
-                        const/4 v$hiddenRegister, 0x1
-                        const/4 v${blockedInstruction.registerA}, 0x1
+                        const/4 v$linkRegister, 0x0
                         :show
                         nop
                     """
