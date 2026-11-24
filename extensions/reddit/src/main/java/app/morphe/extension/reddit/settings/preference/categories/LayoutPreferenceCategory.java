@@ -20,6 +20,7 @@ import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableHomeFeedAutoRefreshPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
+import app.morphe.extension.reddit.patches.DisablePostDetailSwipePatch;
 import app.morphe.extension.reddit.patches.DisableRefreshOnBackPatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
@@ -72,6 +73,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
                 HomeFeedTabsPatch.isPatchIncluded() ||
+                DisablePostDetailSwipePatch.isPatchIncluded() ||
                 DisableRefreshOnBackPatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
                 CopyTextPatch.isPatchIncluded() ||
@@ -138,6 +140,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HOME_FEED_TABS
+            ));
+        }
+
+        if (DisablePostDetailSwipePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_POST_DETAIL_SWIPE
             ));
         }
 

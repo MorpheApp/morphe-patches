@@ -117,6 +117,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_disable_modern_home_title">Disable modern home UI</string>
     <string name="morphe_home_feed_tabs_title">Home feed tabs</string>
     <string name="morphe_home_feed_tabs_summary">Shows the For You, Following and Popular tabs on the home feed, and allows swiping between them. Following needs a signed in account</string>
+    <string name="morphe_disable_post_detail_swipe_title">Disable post detail swipe</string>
+    <string name="morphe_disable_post_detail_swipe_summary">Swiping sideways in a post no longer opens the next or previous post</string>
     <string name="morphe_disable_refresh_on_back_title">Disable refresh on back to exit</string>
     <string name="morphe_disable_refresh_on_back_summary">Back on the home feed no longer scrolls to the top and reloads. Press back twice to leave the app</string>
     <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
