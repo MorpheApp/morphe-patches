@@ -324,6 +324,24 @@ public class StreamingDataRequest {
         return stream != null && stream.client.requireSABR;
     }
 
+    /**
+     * The SABR server of the clients of the YouTube HTML5 player (TV, Web and Mobile Web) sends only the video
+     * formats whose width and height fit the largest width and height of a video decoder of the device,
+     * without turning the formats. So a vertical format, such as the 1080x1920 format of a Short,
+     * does not fit a video decoder of up to 1920x1088, while it plays with the streams of the other clients.
+     *
+     * @param videoId The video, or null.
+     * @return If the streams given to the player for the video are SABR streams of such a client.
+     */
+    public static boolean playerClientFitsFormatsToDecoders(@Nullable String videoId) {
+        StreamData stream = videoId == null ? null : playerStreams.get(videoId);
+        if (stream == null || !stream.client.requireSABR) {
+            return false;
+        }
+        ClientType client = stream.client;
+        return client.isWebClient() || client == ClientType.TV_SABR || client == ClientType.TV_SABR_WII_U;
+    }
+
     private final String videoId;
     @Nullable
     private final String authorization;
