@@ -54,6 +54,7 @@ import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.patches.SwipeUpForCommentsPatch;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
+import app.morphe.extension.reddit.patches.VideoPlaybackSpeedPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
@@ -113,7 +114,8 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
                 FeedAutoScrollPatch.isPatchIncluded() ||
-                PostSidePanelPatch.isPatchIncluded();
+                PostSidePanelPatch.isPatchIncluded() ||
+                VideoPlaybackSpeedPatch.isPatchIncluded();
     }
 
     @Override
@@ -360,6 +362,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT
+            ));
+        }
+
+        if (VideoPlaybackSpeedPatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.VIDEO_PLAYBACK_SPEED_CONTROLS
             ));
         }
 

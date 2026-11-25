@@ -127,4 +127,16 @@
         <item>TINTED</item>
         <item>FROSTED</item>
     </string-array>
+
+    <!-- layout.playbackspeed.videoPlaybackSpeedPatch -->
+    <string-array name="morphe_video_playback_speed_controls_entries">
+        <item>@string/morphe_video_playback_speed_controls_entry_default</item>
+        <item>@string/morphe_video_playback_speed_controls_entry_menu</item>
+        <item>@string/morphe_video_playback_speed_controls_entry_menu_and_hold</item>
+    </string-array>
+    <string-array name="morphe_video_playback_speed_controls_entry_values" translatable="false">
+        <item>DEFAULT</item>
+        <item>MENU</item>
+        <item>MENU_AND_HOLD</item>
+    </string-array>
 </resources>
