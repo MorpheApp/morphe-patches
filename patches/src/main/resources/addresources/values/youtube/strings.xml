@@ -1504,10 +1504,16 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_fullscreen_video_scale_entry_default">Default</string>
     <string name="morphe_fullscreen_video_scale_entry_stretch">Stretch (fill screen)</string>
     <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (crop to fill)</string>
+    <string name="morphe_fullscreen_video_alignment_title">Fullscreen video alignment</string>
+    <string name="morphe_fullscreen_video_alignment_entry_top">Top</string>
+    <string name="morphe_fullscreen_video_alignment_entry_center">Center</string>
+    <string name="morphe_fullscreen_video_alignment_entry_bottom">Bottom</string>
     <string name="morphe_fullscreen_video_scale_button_title">Show video scale button</string>
     <string name="morphe_fullscreen_video_scale_button_summary">Tap to cycle Default, Stretch, and Zoom</string>
     <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Show only in fullscreen</string>
     <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Hide the video scale button in the portrait player</string>
+    <string name="morphe_fullscreen_video_alignment_button_title">Show video alignment button</string>
+    <string name="morphe_fullscreen_video_alignment_button_summary">Tap to cycle Top, Center, and Bottom in fullscreen</string>
 
     <!-- video.speed.replay.replayVideoPatch -->
     <string name="morphe_replay_video_button_title">Show Replay slower button</string>
