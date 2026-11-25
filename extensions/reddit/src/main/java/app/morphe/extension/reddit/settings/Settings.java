@@ -100,6 +100,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting DISABLE_HOME_FEED_AUTO_REFRESH = new BooleanSetting("morphe_disable_home_feed_auto_refresh", FALSE);
     public static final BooleanSetting DISABLE_HOME_FEED_SWIPE = new BooleanSetting("morphe_disable_home_feed_swipe", FALSE, true);
     public static final BooleanSetting DISABLE_MODERN_HOME = new BooleanSetting("morphe_disable_modern_home", FALSE, true);
+    public static final BooleanSetting DISABLE_POST_DETAIL_SWIPE = new BooleanSetting("morphe_disable_post_detail_swipe", FALSE, true);
     public static final BooleanSetting DISABLE_REFRESH_ON_BACK = new BooleanSetting("morphe_disable_refresh_on_back", FALSE);
     public static final BooleanSetting DISABLE_SCREENSHOT_POPUP = new BooleanSetting("morphe_disable_screenshot_popup", TRUE, true);
     public static final BooleanSetting FEED_AUTO_SCROLL = new BooleanSetting("morphe_feed_auto_scroll", FALSE, true);
