@@ -565,7 +565,8 @@ public class BaseInAppDownloadsPatch {
      * Injection point.
      * <p>
      * Called off the main thread with the player response the app saves a video with.
-     * If the server declines to save the video, the streams are fetched with another client.
+     * If the server declines to save the video, or allows it but has no formats the app can save,
+     * the streams are fetched with another client.
      *
      * @param playerResponse Player response proto of the video.
      * @param saveStoryboards If the saved video needs the storyboards, which the seekbar thumbnails are made of.
@@ -591,11 +592,16 @@ public class BaseInAppDownloadsPatch {
 
             final boolean allowed = original.getOfflineState().getActionValue()
                     == OfflineStateAction.OFFLINE_STATE_ACTION_OK_VALUE;
-            if (allowed && original.getStreamingData().getAdaptiveFormatsCount() > 0) {
+            final int adaptiveFormatsCount = original.getStreamingData().getAdaptiveFormatsCount();
+            final int savableFormatsCount = countSavableFormats(original.getStreamingData());
+            if (allowed && adaptiveFormatsCount > 0 && savableFormatsCount > 0) {
                 if (!videoId.isEmpty()) {
                     SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
                 }
                 return null;
+            }
+            if (allowed && adaptiveFormatsCount > 0) {
+                Logger.printDebug(() -> "Allowed offline player response has no savable formats, replacing: " + videoId);
             }
 
             if (videoId.isEmpty()) {
