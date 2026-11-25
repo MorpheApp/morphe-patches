@@ -126,6 +126,14 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting DEEZER_ARL = new StringSetting("morphe_music_deezer_arl", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting MUSIXMATCH_TOKEN = new StringSetting("morphe_music_musixmatch_token", "", false, parent(LYRICS_ENABLED));
+    // Hidden; blank keeps the official endpoint.
+    public static final StringSetting LRCLIB_ENDPOINT = new StringSetting("morphe_music_lyrics_lrclib_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting BLYRICS_ENDPOINT = new StringSetting("morphe_music_lyrics_blyrics_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_PLUS_ENDPOINT = new StringSetting("morphe_music_lyrics_plus_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting UNISON_ENDPOINT = new StringSetting("morphe_music_lyrics_unison_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting AMLL_ENDPOINT = new StringSetting("morphe_music_lyrics_amll_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LUNABEAT_ENDPOINT = new StringSetting("morphe_music_lyrics_lunabeat_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting SIMPMUSIC_ENDPOINT = new StringSetting("morphe_music_lyrics_simpmusic_endpoint", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE = new BooleanSetting("morphe_music_lyrics_translate", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, false, parent(LYRICS_ENABLED));

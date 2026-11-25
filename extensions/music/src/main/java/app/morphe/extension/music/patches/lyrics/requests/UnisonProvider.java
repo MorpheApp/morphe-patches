@@ -37,12 +37,17 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class UnisonProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://unison.boidu.dev/lyrics";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.base(BASE_URL, Settings.UNISON_ENDPOINT.get());
+    }
 
     /** How many song+artist matches to ask for; the search response carries their lyrics. */
     private static final int SEARCH_LIMIT = 10;
@@ -144,7 +149,7 @@ public final class UnisonProvider implements LyricsProvider {
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws IOException {
         final String videoId = VideoInformation.getVideoId();
         final JSONObject root = videoId.isEmpty() ? null
-                : request(BASE_URL + "/variants/" + LyricsRequests.encode(videoId));
+                : request(baseUrl() + "/variants/" + LyricsRequests.encode(videoId));
         final JSONArray data = root == null ? null : root.optJSONArray("data");
         if (data == null) {
             return Collections.emptyList();
@@ -205,7 +210,7 @@ public final class UnisonProvider implements LyricsProvider {
         if (title == null || title.isEmpty() || artist == null || artist.isEmpty()) {
             return Collections.emptyList();
         }
-        final StringBuilder url = new StringBuilder(BASE_URL);
+        final StringBuilder url = new StringBuilder(baseUrl());
         try {
             url.append("/search?song=").append(LyricsRequests.encode(title))
                     .append("&artist=").append(LyricsRequests.encode(artist))
@@ -282,7 +287,7 @@ public final class UnisonProvider implements LyricsProvider {
                                   int duration, String album) {
         final StringBuilder url = new StringBuilder();
         try {
-            url.append(BASE_URL)
+            url.append(baseUrl())
                     .append("?v=").append(LyricsRequests.encode(videoId));
             if (!title.isEmpty()) {
                 url.append("&song=").append(LyricsRequests.encode(title));

@@ -27,6 +27,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -38,6 +39,10 @@ public final class LyricsPlusProvider implements LyricsProvider {
             "https://lyricsplus.binimum.org",
             "https://lyricsplus.prjktla.workers.dev",
     };
+
+    private static String[] hosts() {
+        return LyricsEndpoints.hosts(API_HOSTS, Settings.LYRICS_PLUS_ENDPOINT.get());
+    }
 
     private static final String BROWSER_USER_AGENT =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -208,7 +213,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics fetchFromApi(TrackInfo track) {
-        for (String host : API_HOSTS) {
+        for (String host : hosts()) {
             try {
                 Lyrics lyrics = fetchFromUrl(buildUrl(host, track));
                 if (lyrics != null) {
@@ -254,7 +259,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
     @Nullable
     private Lyrics fetchLyricsWithParam(String param, String value)
             throws UnsupportedEncodingException {
-        for (String host : API_HOSTS) {
+        for (String host : hosts()) {
             String url = host + "/v1/ttml/get?" + param + "=" + encode(value);
             try {
                 Lyrics l = fetchFromUrl(url);
@@ -272,7 +277,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
         if (q.isEmpty()) {
             return null;
         }
-        for (String host : API_HOSTS) {
+        for (String host : hosts()) {
             JSONArray results = searchCandidatesFromHost(host, q);
             if (results != null && results.length() > 0) {
                 return results;

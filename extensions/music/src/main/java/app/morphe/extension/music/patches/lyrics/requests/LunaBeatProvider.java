@@ -37,8 +37,10 @@ import app.morphe.extension.shared.requests.Requester;
 public final class LunaBeatProvider extends ScoredSongProvider {
 
     private static final String BASE_URL = "https://2755337087.github.io/ttml-hub/";
-    private static final String MANIFEST_URL = BASE_URL + "api/v1/manifest.json";
-    private static final String SONGS_URL = BASE_URL + "api/v1/songs.json";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.directory(BASE_URL, Settings.LUNABEAT_ENDPOINT.get());
+    }
 
     private static final long REQUEST_THROTTLE_MS = 500;
 
@@ -91,7 +93,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
         HttpURLConnection conn = null;
         try {
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
-            conn = LyricsRequests.openConnection(MANIFEST_URL);
+            conn = LyricsRequests.openConnection(baseUrl() + "api/v1/manifest.json");
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
@@ -111,7 +113,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
         HttpURLConnection conn = null;
         try {
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
-            conn = LyricsRequests.openConnection(SONGS_URL);
+            conn = LyricsRequests.openConnection(baseUrl() + "api/v1/songs.json");
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
@@ -230,7 +232,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
 
     @Nullable
     private Lyrics fetchLunabeatLyrics(Song song) {
-        String url = BASE_URL + song.path;
+        String url = baseUrl() + song.path;
         HttpURLConnection conn = null;
         try {
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);

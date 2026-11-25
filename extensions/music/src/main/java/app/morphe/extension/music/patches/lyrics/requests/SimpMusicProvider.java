@@ -29,12 +29,17 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class SimpMusicProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://api-lyrics.simpmusic.org/v1/";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.directory(BASE_URL, Settings.SIMPMUSIC_ENDPOINT.get());
+    }
 
     private static final String CLIENT_USER_AGENT = "SimpMusicLyrics/1.0";
 
@@ -293,7 +298,7 @@ public final class SimpMusicProvider implements LyricsProvider {
     private JSONArray fetchSearchResults(String query) {
         HttpURLConnection connection = null;
         try {
-            final String url = BASE_URL + "search?q=" + LyricsRequests.encode(query)
+            final String url = baseUrl() + "search?q=" + LyricsRequests.encode(query)
                     + "&limit=" + SEARCH_LIMIT;
             connection = LyricsRequests.openConnection(url);
             connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
@@ -338,7 +343,7 @@ public final class SimpMusicProvider implements LyricsProvider {
     private JSONArray fetchEntries(String videoId) {
         HttpURLConnection connection = null;
         try {
-            final String url = BASE_URL + LyricsRequests.encode(videoId);
+            final String url = baseUrl() + LyricsRequests.encode(videoId);
             connection = LyricsRequests.openConnection(url);
             connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
             connection.setRequestProperty("Accept", "application/json");
