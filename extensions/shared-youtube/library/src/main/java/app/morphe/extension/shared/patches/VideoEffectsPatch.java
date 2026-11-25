@@ -9,19 +9,28 @@ package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.graphics.SurfaceTexture;
+import android.hardware.DataSpace;
+import android.media.Image;
+import android.media.MediaFormat;
 import android.opengl.EGL14;
 import android.opengl.EGLConfig;
 import android.opengl.EGLContext;
 import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
+import android.os.Build;
 import android.os.SystemClock;
 import android.util.Base64;
+import android.view.Surface;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -97,18 +106,72 @@ public final class VideoEffectsPatch {
             uniform int uEffect;
             uniform float uTime;
             uniform vec2 uResolution;
+            // 0 for SDR, 1 for PQ and 2 for HLG.
+            uniform int uVideoTransfer;
+            uniform int uHdrOutput;
             varying vec2 texCoordVar;
             varying vec2 vUv;
             varying vec2 vTexOrigin;
             varying vec2 vTexAxisX;
             varying vec2 vTexAxisY;
 
+            // Effects are made for SDR colors. HDR colors up to the brightness of SDR white use the
+            // values up to HDR_WHITE, and brighter colors are compressed into the values above it.
+            const float HDR_WHITE = 0.85;
+            const float HDR_WHITE_NITS = 203.0;
+            // log(10000.0 / HDR_WHITE_NITS)
+            const float HDR_LOG_RANGE = 3.8971;
+
+            // Brightest HDR color that the effect used for the pixel.
+            float hdrBrightest = 0.0;
+
+            vec3 hdrVideoToNits(vec3 c) {
+                c = clamp(c, 0.0, 1.0);
+                if (uVideoTransfer == 2) {
+                    vec3 light = mix(c * c / 3.0, (exp((c - 0.55991073) / 0.17883277) + 0.28466892) / 12.0, step(0.5, c));
+                    float y = dot(light, vec3(0.2627, 0.6780, 0.0593));
+                    return 1000.0 * pow(max(y, 0.000001), 0.2) * light;
+                }
+                vec3 p = pow(c, vec3(1.0 / 78.84375));
+                return 10000.0 * pow(max(p - 0.8359375, 0.0) / (18.8515625 - 18.6875 * p), vec3(6.2773946));
+            }
+
+            vec3 hdrNitsToEffect(vec3 nits) {
+                vec3 x = nits / HDR_WHITE_NITS;
+                return mix(HDR_WHITE * pow(x, vec3(1.0 / 2.2)),
+                        HDR_WHITE + (1.0 - HDR_WHITE) * log(max(x, 1.0)) / HDR_LOG_RANGE, step(1.0, x));
+            }
+
+            vec3 hdrEffectToNits(vec3 c) {
+                return HDR_WHITE_NITS * mix(pow(c / HDR_WHITE, vec3(2.2)),
+                        exp(max(c - HDR_WHITE, 0.0) * HDR_LOG_RANGE / (1.0 - HDR_WHITE)), step(HDR_WHITE, c));
+            }
+
+            vec3 hdrEffectToOutput(vec3 c) {
+                // Effects can make any part of the picture white, which must not become a bright HDR highlight.
+                c = clamp(c, 0.0, max(hdrBrightest, HDR_WHITE));
+                if (uHdrOutput == 1) {
+                    vec3 p = pow(hdrEffectToNits(c) / 10000.0, vec3(0.1593017578125));
+                    return pow((0.8359375 + 18.8515625 * p) / (1.0 + 18.6875 * p), vec3(78.84375));
+                }
+                // BT.2020 to BT.709 colors.
+                vec3 light = mat3(
+                        1.6605, -0.1246, -0.0182,
+                        -0.5876, 1.1329, -0.1006,
+                        -0.0728, -0.0083, 1.1187) * pow(c, vec3(2.2));
+                return pow(clamp(light, 0.0, 1.0), vec3(1.0 / 2.2));
+            }
+
             const float PI = 3.14159265;
 
             // Color at a point of the picture, where (0, 0) is the bottom left and (1, 1) the top right.
             vec3 pick(vec2 uv) {
                 uv = clamp(uv, 0.0, 1.0);
-                return texture2D(texture, vTexOrigin + uv.x * vTexAxisX + uv.y * vTexAxisY).rgb;
+                vec3 c = texture2D(texture, vTexOrigin + uv.x * vTexAxisX + uv.y * vTexAxisY).rgb;
+                if (uVideoTransfer == 0) return c;
+                c = hdrNitsToEffect(hdrVideoToNits(c));
+                hdrBrightest = max(hdrBrightest, max(c.r, max(c.g, c.b)));
+                return c;
             }
 
             float luma(vec3 c) {
@@ -290,8 +353,90 @@ public final class VideoEffectsPatch {
     private static int effectLocation = -1;
     private static int timeLocation = -1;
     private static int resolutionLocation = -1;
+    private static int videoTransferLocation = -1;
+    private static int hdrOutputLocation = -1;
     private static int textureTransformLocation = -1;
     private static final int[] viewport = new int[4];
+
+    /**
+     * Values of the uVideoTransfer uniform.
+     */
+    private static final int VIDEO_TRANSFER_SDR = 0;
+    private static final int VIDEO_TRANSFER_PQ = 1;
+    private static final int VIDEO_TRANSFER_HLG = 2;
+
+    private static final int EGL_GL_COLORSPACE = 0x309D;
+    private static final int EGL_GL_COLORSPACE_BT2020_PQ = 0x3340;
+    private static final int HDR_COLOR_BITS = 10;
+    private static final int EGL_CTA861_3_MAX_CONTENT_LIGHT_LEVEL = 0x3360;
+    private static final int EGL_CTA861_3_MAX_FRAME_AVERAGE_LEVEL = 0x3361;
+    private static final int EGL_METADATA_SCALING = 50_000;
+    private static final int EGL_DONT_CARE = -1;
+
+    /**
+     * Offsets in {@link MediaFormat#KEY_HDR_STATIC_INFO}.
+     */
+    private static final int HDR_STATIC_INFO_SIZE = 25;
+    private static final int HDR_STATIC_INFO_MASTERING_LIGHT_OFFSET = 17;
+    private static final int HDR_STATIC_INFO_MAX_LIGHT_OFFSET = 21;
+    private static final int HDR_STATIC_INFO_MAX_AVERAGE_LIGHT_OFFSET = 23;
+
+    /**
+     * Peak brightness of HLG videos that are converted to PQ.
+     */
+    private static final int HLG_MAX_LIGHT_NITS = 1000;
+
+    /**
+     * Brightest light that PQ can have. Larger values in the metadata of a video are not valid.
+     */
+    private static final int PQ_MAX_LIGHT_NITS = 10_000;
+
+    /**
+     * Last output format of the video decoder.
+     */
+    @Nullable
+    private static volatile MediaFormat videoFormat;
+
+    /**
+     * Brightness of the video in nits, or 0 if not known.
+     */
+    private static volatile int videoMaxLight;
+    private static volatile int videoMaxAverageLight;
+
+    /**
+     * Transfer function of the video frame that is drawn.
+     */
+    private static int videoTransfer = VIDEO_TRANSFER_SDR;
+
+    /**
+     * If frames are drawn on an HDR surface. HLG videos are also drawn as PQ,
+     * because fewer devices can draw HLG.
+     */
+    private static boolean hdrOutput;
+
+    /**
+     * If an HDR surface can be made. Null if not checked yet.
+     */
+    @Nullable
+    private static Boolean hdrOutputSupported;
+
+    /**
+     * App class that holds the EGL objects of a video renderer.
+     */
+    public interface EglHelper {
+        // Methods added during patching.
+        EGLConfig patch_getEglConfig();
+        void patch_setEglSurface(EGLSurface eglSurface);
+        Surface patch_getSurface();
+    }
+
+    /**
+     * App class that draws the video frames.
+     */
+    public interface VideoRenderer {
+        // Methods added during patching.
+        EglHelper patch_getEglHelper();
+    }
 
     /**
      * The video that is playing.
@@ -304,6 +449,11 @@ public final class VideoEffectsPatch {
      */
     @Nullable
     private static volatile String lastEffectVideoId;
+
+    /**
+     * If the app was last told to draw with the OpenGL renderer.
+     */
+    private static volatile boolean glVideoRendererUsed;
 
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
@@ -500,6 +650,7 @@ public final class VideoEffectsPatch {
         return FRAGMENT_SHADER_FUNCTIONS + customEffectCode + "\n" + """
                 void main() {
                     vec3 c = uEffect == 1 ? customEffect(vUv) : pick(vUv);
+                    if (uVideoTransfer != 0) c = hdrEffectToOutput(c);
                     gl_FragColor = vec4(c, 1.0);
                 }
                 """;
@@ -726,7 +877,13 @@ public final class VideoEffectsPatch {
      * Turns on the OpenGL renderer that YouTube can draw videos with.
      */
     public static boolean useGlVideoRenderer(boolean original) {
-        return original || isEnabled();
+        final boolean useRenderer = original || isEnabled();
+        glVideoRendererUsed = useRenderer;
+        if (!useRenderer) {
+            // The same video can open again without the renderer.
+            lastEffectVideoId = null;
+        }
+        return useRenderer;
     }
 
     /**
@@ -833,18 +990,25 @@ public final class VideoEffectsPatch {
             effectLocation = GLES20.glGetUniformLocation(program, "uEffect");
             timeLocation = GLES20.glGetUniformLocation(program, "uTime");
             resolutionLocation = GLES20.glGetUniformLocation(program, "uResolution");
+            videoTransferLocation = GLES20.glGetUniformLocation(program, "uVideoTransfer");
+            hdrOutputLocation = GLES20.glGetUniformLocation(program, "uHdrOutput");
             textureTransformLocation = GLES20.glGetUniformLocation(program, "texTransMat");
         }
 
         // Program with the original shader.
         if (effectLocation < 0) return;
 
-        lastEffectVideoId = currentVideoId;
+        // The last frames of a renderer can be drawn after the app stops using it.
+        if (glVideoRendererUsed) {
+            lastEffectVideoId = currentVideoId;
+        }
 
         GLES20.glUniform1i(effectLocation, isEnabled() ? 1 : 0);
         GLES20.glUniform1f(timeLocation, (SystemClock.elapsedRealtime() % TIME_WRAP_MILLISECONDS) / 1000f);
         GLES20.glGetIntegerv(GLES20.GL_VIEWPORT, viewport, 0);
         GLES20.glUniform2f(resolutionLocation, viewport[2], viewport[3]);
+        GLES20.glUniform1i(videoTransferLocation, videoTransfer);
+        GLES20.glUniform1i(hdrOutputLocation, hdrOutput ? 1 : 0);
     }
 
     /**
@@ -857,6 +1021,236 @@ public final class VideoEffectsPatch {
         GLES20.glUniformMatrix4fv(customProgram != 0 && lastProgram == customProgram
                 ? textureTransformLocation
                 : location, count, transpose, value, offset);
+    }
+
+    private static boolean isHdrOutputSupported(EGLDisplay display) {
+        Boolean supported = hdrOutputSupported;
+        if (supported == null) {
+            String extensions = EGL14.eglQueryString(display, EGL14.EGL_EXTENSIONS);
+            supported = extensions != null && extensions.contains("EGL_EXT_gl_colorspace_bt2020_pq");
+            hdrOutputSupported = supported;
+            boolean log = supported;
+            Logger.printDebug(() -> "HDR video output supported: " + log);
+        }
+        return supported;
+    }
+
+    /**
+     * Injection point.
+     * Replaces the call that chooses the 8 bit config of the video renderer.
+     */
+    public static boolean chooseEglConfig(EGLDisplay display, int[] attributes, int attributesOffset,
+                                          EGLConfig[] configs, int configsOffset, int configSize,
+                                          int[] configCount, int configCountOffset) {
+        try {
+            if (isEnabled() && isHdrOutputSupported(display)) {
+                EGLConfig config = findHdrConfig(display, attributes, attributesOffset);
+                if (config != null) {
+                    configs[configsOffset] = config;
+                    configCount[configCountOffset] = 1;
+                    return true;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "chooseEglConfig failure", ex);
+        }
+        return EGL14.eglChooseConfig(display, attributes, attributesOffset,
+                configs, configsOffset, configSize, configCount, configCountOffset);
+    }
+
+    @Nullable
+    private static EGLConfig findHdrConfig(EGLDisplay display, int[] attributes, int attributesOffset) {
+        int[] hdrAttributes = Arrays.copyOfRange(attributes, attributesOffset, attributes.length);
+        for (int i = 0; hdrAttributes[i] != EGL14.EGL_NONE; i += 2) {
+            if (isColorSize(hdrAttributes[i])) hdrAttributes[i + 1] = HDR_COLOR_BITS;
+        }
+
+        EGLConfig[] configs = new EGLConfig[64];
+        int[] count = new int[1];
+        if (!EGL14.eglChooseConfig(display, hdrAttributes, 0, configs, 0, configs.length, count, 0)) {
+            return null;
+        }
+
+        // The sizes are minimums, so this also finds floating point configs.
+        int[] size = new int[1];
+        for (int i = 0; i < count[0]; i++) {
+            EGL14.eglGetConfigAttrib(display, configs[i], EGL14.EGL_RED_SIZE, size, 0);
+            if (size[0] == HDR_COLOR_BITS) return configs[i];
+        }
+        return null;
+    }
+
+    private static boolean isColorSize(int attribute) {
+        return attribute == EGL14.EGL_RED_SIZE
+                || attribute == EGL14.EGL_GREEN_SIZE
+                || attribute == EGL14.EGL_BLUE_SIZE;
+    }
+
+    private static boolean isEffectShaderUsed() {
+        return isEnabled() || appProgramHasEffects;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVideoDataSpace(Image image) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && isEffectShaderUsed()) {
+                setVideoTransfer(image.getDataSpace());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setVideoDataSpace failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVideoDataSpace(SurfaceTexture texture) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && isEffectShaderUsed()) {
+                setVideoTransfer(texture.getDataSpace());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setVideoDataSpace failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called for each frame, shortly before the decoder releases it to the video renderer.
+     */
+    public static void setVideoFormat(@Nullable MediaFormat format) {
+        try {
+            if (format == null || format == videoFormat || !isEffectShaderUsed()) return;
+            videoFormat = format;
+
+            int maxLight = 0;
+            int maxAverageLight = 0;
+            ByteBuffer info = format.getByteBuffer(MediaFormat.KEY_HDR_STATIC_INFO);
+            if (info != null && info.remaining() >= HDR_STATIC_INFO_SIZE) {
+                info = info.slice().order(ByteOrder.LITTLE_ENDIAN);
+                maxLight = info.getShort(HDR_STATIC_INFO_MAX_LIGHT_OFFSET) & 0xFFFF;
+                if (maxLight == 0) {
+                    maxLight = info.getShort(HDR_STATIC_INFO_MASTERING_LIGHT_OFFSET) & 0xFFFF;
+                }
+                maxAverageLight = info.getShort(HDR_STATIC_INFO_MAX_AVERAGE_LIGHT_OFFSET) & 0xFFFF;
+            }
+            videoMaxLight = Math.min(maxLight, PQ_MAX_LIGHT_NITS);
+            videoMaxAverageLight = Math.min(maxAverageLight, PQ_MAX_LIGHT_NITS);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setVideoFormat failure", ex);
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private static void setVideoTransfer(int dataSpace) {
+        int dataSpaceTransfer = DataSpace.getTransfer(dataSpace);
+        int transfer = dataSpaceTransfer == DataSpace.TRANSFER_ST2084
+                ? VIDEO_TRANSFER_PQ
+                : dataSpaceTransfer == DataSpace.TRANSFER_HLG
+                ? VIDEO_TRANSFER_HLG
+                : VIDEO_TRANSFER_SDR;
+        if (transfer != videoTransfer) {
+            videoTransfer = transfer;
+            Logger.printDebug(() -> "Video data space changed to: 0x" + Integer.toHexString(dataSpace));
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called on the render thread before each frame is drawn, after {@link #setVideoDataSpace}.
+     */
+    public static void updateOutputColorSpace(VideoRenderer renderer) {
+        try {
+            if (!isEffectShaderUsed()) return;
+
+            EGLDisplay display = EGL14.eglGetCurrentDisplay();
+            EGLSurface surface = EGL14.eglGetCurrentSurface(EGL14.EGL_DRAW);
+            if (display.equals(EGL14.EGL_NO_DISPLAY) || surface.equals(EGL14.EGL_NO_SURFACE)) return;
+
+            if (!isHdrOutputSupported(display)) {
+                hdrOutput = false;
+                return;
+            }
+
+            boolean useHdr = videoTransfer != VIDEO_TRANSFER_SDR;
+            // The app makes a new surface, without a color space, if the size or the place of the player changes.
+            hdrOutput = isHdrSurface(display, surface);
+            if (useHdr != hdrOutput) {
+                hdrOutput = replaceSurface(renderer.patch_getEglHelper(), display, surface, useHdr);
+            }
+            if (hdrOutput) {
+                setSurfaceBrightness(display);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "updateOutputColorSpace failure", ex);
+        }
+    }
+
+    private static boolean isHdrSurface(EGLDisplay display, EGLSurface surface) {
+        int[] colorSpace = new int[1];
+        return EGL14.eglQuerySurface(display, surface, EGL_GL_COLORSPACE, colorSpace, 0)
+                && colorSpace[0] == EGL_GL_COLORSPACE_BT2020_PQ;
+    }
+
+    /**
+     * Sets the brightness of the video, which displays use to choose how bright HDR colors are shown.
+     */
+    private static void setSurfaceBrightness(EGLDisplay display) {
+        int maxLight = videoMaxLight;
+        int maxAverageLight = videoMaxAverageLight;
+        if (maxLight == 0 && videoTransfer == VIDEO_TRANSFER_HLG) {
+            maxLight = HLG_MAX_LIGHT_NITS;
+        }
+
+        EGLSurface surface = EGL14.eglGetCurrentSurface(EGL14.EGL_DRAW);
+        // The levels are only used if both are set.
+        EGL14.eglSurfaceAttrib(display, surface, EGL_CTA861_3_MAX_CONTENT_LIGHT_LEVEL,
+                maxLight == 0 ? EGL_DONT_CARE : maxLight * EGL_METADATA_SCALING);
+        EGL14.eglSurfaceAttrib(display, surface, EGL_CTA861_3_MAX_FRAME_AVERAGE_LEVEL,
+                maxLight == 0 ? EGL_DONT_CARE : maxAverageLight * EGL_METADATA_SCALING);
+    }
+
+    /**
+     * The color space of a surface can only be set when it is made.
+     *
+     * @return If the new surface is an HDR surface.
+     */
+    private static boolean replaceSurface(EglHelper helper, EGLDisplay display,
+                                          EGLSurface oldSurface, boolean useHdr) {
+        EGLContext context = EGL14.eglGetCurrentContext();
+        EGLConfig config = helper.patch_getEglConfig();
+        Surface window = helper.patch_getSurface();
+
+        // A window can have only one EGL surface.
+        EGL14.eglMakeCurrent(display, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+        EGL14.eglDestroySurface(display, oldSurface);
+
+        EGLSurface surface = createSurface(display, config, window, useHdr);
+        if (useHdr && (surface.equals(EGL14.EGL_NO_SURFACE) || !isHdrSurface(display, surface))) {
+            int error = EGL14.eglGetError();
+            Logger.printInfo(() -> "Could not make an HDR surface: " + error);
+            hdrOutputSupported = false;
+            useHdr = false;
+            if (!surface.equals(EGL14.EGL_NO_SURFACE)) EGL14.eglDestroySurface(display, surface);
+            surface = createSurface(display, config, window, false);
+        }
+
+        helper.patch_setEglSurface(surface);
+        if (!EGL14.eglMakeCurrent(display, surface, surface, context)) {
+            throw new IllegalStateException("eglMakeCurrent failed: " + EGL14.eglGetError());
+        }
+        boolean log = useHdr;
+        Logger.printDebug(() -> "Video surface replaced, HDR: " + log);
+        return useHdr;
+    }
+
+    private static EGLSurface createSurface(EGLDisplay display, EGLConfig config, Surface window, boolean useHdr) {
+        int[] attributes = useHdr
+                ? new int[]{EGL_GL_COLORSPACE, EGL_GL_COLORSPACE_BT2020_PQ, EGL14.EGL_NONE}
+                : new int[]{EGL14.EGL_NONE};
+        return EGL14.eglCreateWindowSurface(display, config, window, attributes, 0);
     }
 
     /**

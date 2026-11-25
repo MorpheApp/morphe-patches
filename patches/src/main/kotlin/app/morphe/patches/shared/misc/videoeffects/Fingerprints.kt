@@ -16,6 +16,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
@@ -107,4 +108,103 @@ internal object VideoViewTypeEnumFingerprint : Fingerprint(
             location = MatchAfterWithin(10)
         )
     )
+)
+
+/**
+ * Chooses the config of the EGL context and surfaces of the OpenGL renderer.
+ */
+internal object EglChooseConfigFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/opengl/EGL14;",
+            name = "eglChooseConfig"
+        ),
+        string("createEglConfig: eglChooseConfig#2")
+    )
+)
+
+/**
+ * Creates the EGL surface that the OpenGL renderer draws on.
+ */
+internal object EglCreateSurfaceFingerprint : Fingerprint(
+    classFingerprint = EglChooseConfigFingerprint,
+    returnType = "V",
+    parameters = listOf("Landroid/view/Surface;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Landroid/opengl/EGLConfig;"
+        ),
+        methodCall(
+            definingClass = "Landroid/opengl/EGL14;",
+            name = "eglCreateWindowSurface"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/opengl/EGLSurface;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/view/Surface;"
+        )
+    )
+)
+
+/**
+ * Draws the latest frame that the decoder put into an image reader.
+ */
+internal fun imageReaderDrawFrameFingerprint(eglHelperType: String) = Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/media/player/exo2/ImageReaderMediaGlRenderer;",
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = eglHelperType
+        ),
+        methodCall(
+            definingClass = "Landroid/media/Image;",
+            name = "getTimestamp"
+        )
+    )
+)
+
+/**
+ * Draws the latest frame that the decoder put into a surface texture.
+ */
+internal fun surfaceTextureDrawFrameFingerprint(eglHelperType: String) = Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = eglHelperType
+        ),
+        methodCall(
+            definingClass = "Landroid/graphics/SurfaceTexture;",
+            name = "updateTexImage"
+        ),
+        methodCall(
+            definingClass = "Landroid/graphics/SurfaceTexture;",
+            name = "getTimestamp",
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
+/**
+ * Listeners that are called with the output format of the decoder for each video frame.
+ */
+internal object VideoFrameListenerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    // Presentation time, release time, format and decoder output format.
+    parameters = listOf("J", "J", "L", "Landroid/media/MediaFormat;")
 )
