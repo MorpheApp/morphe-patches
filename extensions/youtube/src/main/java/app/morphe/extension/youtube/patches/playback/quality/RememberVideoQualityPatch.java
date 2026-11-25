@@ -30,6 +30,7 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch.FormatStreamInterface;
 import app.morphe.extension.shared.patches.VideoFormat.FormatInterface;
+import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.ClientAbrState;
 import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.MediaCapabilities;
@@ -292,8 +293,9 @@ public class RememberVideoQualityPatch {
     }
 
     /**
-     * The SABR server sends only the video formats that fit the largest size of a video decoder of the device
-     * (see {@link #getDecodableSabrResolution(int, List, List, MessageLite)}), and the player asks only for
+     * The SABR server of some clients sends only the video formats that fit the largest size of a video decoder
+     * of the device (see {@link StreamingDataRequest#playerClientFitsFormatsToDecoders(String)}
+     * and {@link #getDecodableSabrResolution(int, List, List, MessageLite)}), and the player asks only for
      * the formats of the quality it uses. So with a quality whose formats are all larger, such as the 1080x1920
      * formats of a Short with a decoder that supports up to 1920x1088, the server sends no video and the video
      * does not play, while a lower quality has formats that fit, such as the 608x1080 formats of 720p.
@@ -408,6 +410,9 @@ public class RememberVideoQualityPatch {
                 }
             }
 
+            if (!StreamingDataRequest.playerClientFitsFormatsToDecoders(videoId)) {
+                return -1;
+            }
             final int decodableResolution = getDecodableResolution(sizes, resolution);
             if (decodableResolution == resolution) {
                 return -1;
@@ -751,8 +756,10 @@ public class RememberVideoQualityPatch {
 
             // The qualities and the formats of another video are not known.
             final boolean isOtherVideo = cpn != null && !cpn.equals(playingVideoCpn);
+            final String videoId = VideoInformation.getStartingOrPlayingVideoId();
             final int preferredQuality = getDecodableResolution(isOtherVideo
-                    ? null : videoFormatSizes.get(VideoInformation.getStartingOrPlayingVideoId()), defaultQuality);
+                    || !StreamingDataRequest.playerClientFitsFormatsToDecoders(videoId)
+                    ? null : videoFormatSizes.get(videoId), defaultQuality);
             if (preferredQuality != defaultQuality) {
                 logQualityDecision(() -> "Default quality " + defaultQuality + " has no video format that fits"
                         + " the video decoders, using: " + preferredQuality);
