@@ -7,99 +7,88 @@
 
 package app.morphe.extension.reddit.patches;
 
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.reddit.settings.RedditActivityHook;
+import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class SettingsInSidebarPatch {
-    private static final long SETTINGS_ROW_ID = Long.MIN_VALUE + 0x4d6f72L;
-    private static final String SETTINGS_ROW_TITLE = "morphe_settings_title";
-    private static final String SETTINGS_ROW_ICON = "morphe_settings_icon_reddit";
-
-    private static int titleResId = -1;
-    private static int iconResId = -1;
-    @Nullable
-    private static volatile Object settingsRow;
+    /**
+     * Interface to use obfuscated methods of the sidebar presenter (CommunityDrawerPresenter).
+     */
+    public interface SidebarPresenterInterface {
+        // Methods are added during patching.
+        void patch_closeSidebar();
+    }
 
     /**
-     * Injection point.
+     * Unique id of the row. The ids of the app rows come from a counter.
      */
-    public static int getSettingsRowTitleResId() {
-        try {
-            if (titleResId == -1) {
-                titleResId = ResourceUtils.getIdentifier(ResourceType.STRING, SETTINGS_ROW_TITLE);
-            }
-            return titleResId;
-        } catch (Exception ex) {
-            Logger.printException(() -> "getSettingsRowTitleResId failure", ex);
-            return 0;
-        }
+    private static final long SETTINGS_ROW_ID = Long.MIN_VALUE;
+
+    /**
+     * The rows of the app are immutable, so one row can be used for all sidebar lists.
+     */
+    private static final Object SETTINGS_ROW = createSettingsRow(
+            ResourceUtils.getStringIdentifier("morphe_settings_title"),
+            ResourceUtils.getDrawableIdentifier("morphe_settings_icon_reddit"),
+            SETTINGS_ROW_ID
+    );
+
+    /**
+     * @return If this patch was included during patching.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
+    }
+
+    /**
+     * Placeholder that is replaced during patching.
+     *
+     * @return A sidebar row of the app (CTAItemUiModel).
+     */
+    @SuppressWarnings("SameParameterValue")
+    private static Object createSettingsRow(int titleResId, int iconResId, long uniqueId) {
+        return null; // Replaced during patching.
     }
 
     /**
      * Injection point.
      */
-    public static int getSettingsRowIconResId() {
+    public static List<?> addSettingsRow(List<?> list) {
         try {
-            if (iconResId == -1) {
-                iconResId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, SETTINGS_ROW_ICON);
+            if (Settings.SETTINGS_IN_SIDEBAR.get()) {
+                List<Object> updated = new ArrayList<>(list.size() + 1);
+                updated.add(SETTINGS_ROW);
+                updated.addAll(list);
+                return updated;
             }
-            return iconResId;
-        } catch (Exception ex) {
-            Logger.printException(() -> "getSettingsRowIconResId failure", ex);
-            return 0;
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    @Nullable
-    public static List<?> addSettingsRow(@Nullable List<?> list, @Nullable Object row) {
-        try {
-            if (list == null || row == null
-                    || getSettingsRowTitleResId() == 0
-                    || getSettingsRowIconResId() == 0) {
-                return list;
-            }
-
-            List<Object> updated = new ArrayList<>(list.size() + 1);
-            updated.add(row);
-            updated.addAll(list);
-            settingsRow = row;
-            return updated;
         } catch (Exception ex) {
             Logger.printException(() -> "addSettingsRow failure", ex);
-            return list;
         }
+
+        return list;
     }
 
     /**
      * Injection point.
      */
-    public static boolean isSettingsRow(@Nullable Object item) {
-        try {
-            return item != null && item.equals(settingsRow);
-        } catch (Exception ex) {
-            Logger.printException(() -> "isSettingsRow failure", ex);
-            return false;
-        }
+    public static boolean isSettingsRow(Object row) {
+        return row == SETTINGS_ROW;
     }
 
     /**
      * Injection point.
      */
-    public static void openSettings() {
+    public static void openSettings(SidebarPresenterInterface presenter) {
         try {
-            RedditActivityHook.showSettingsDialog(Utils.getActivity());
+            presenter.patch_closeSidebar();
+            RedditActivityHook.openSettings();
         } catch (Exception ex) {
             Logger.printException(() -> "openSettings failure", ex);
         }
