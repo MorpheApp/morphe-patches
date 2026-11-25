@@ -66,6 +66,21 @@ internal object AssistantBrowseUiModeFingerprint : Fingerprint(
     )
 )
 
+internal object DeviceFileArtworkUriFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    parameters = { listOf("Ljava/lang/String;") },
+    returnType = { "Landroid/net/Uri;" },
+    filters = listOf(
+        fieldAccess(
+            definingClass = "Landroid/provider/MediaStore\$Audio\$Media;",
+            type = "Landroid/net/Uri;",
+            name = "EXTERNAL_CONTENT_URI"
+        ),
+        string("albumart"),
+        methodCall(definingClass = "Landroid/net/Uri\$Builder;", name = "appendPath")
+    )
+)
+
 // Replacement Settings tab
 
 /**

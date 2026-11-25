@@ -33,6 +33,7 @@ import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.patches.music.interaction.jam.resolveProto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_41_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
@@ -114,6 +115,21 @@ val androidAutoPatch = patch(
                 """
                     invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getAssistantBrowseUiMode(I)I
                     move-result v$register
+                """
+            )
+        }
+
+        if (is_9_41_or_greater) {
+            // A missing MediaStore ID produces an invalid album art URI that stops Downloads from loading.
+            // Return null so YTM uses its default artwork.
+            DeviceFileArtworkUriFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    if-nez p0, :resume
+                    const/4 v0, 0x0
+                    return-object v0
+                    :resume
+                    nop
                 """
             )
         }
