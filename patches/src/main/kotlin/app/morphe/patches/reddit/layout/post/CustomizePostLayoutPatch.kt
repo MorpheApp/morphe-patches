@@ -40,7 +40,7 @@ private const val EXTENSION_ROW_ARRANGEMENT_CLASS =
 @Suppress("unused")
 val customizePostLayoutPatch = patch(
     name = "Customize post layout",
-    description = "Adds options to show the view count of posts, to move the vote and comment buttons " +
+    description = "Adds options to show or hide the view count of posts, to move the vote and comment buttons " +
             "of posts to the right side, and to swap the vote and comment buttons. " +
             "Moving and swapping the buttons works with Reddit 2026.39.0 and newer."
 ) {

@@ -179,3 +179,28 @@ internal object NavScreenContentStateConstructorFingerprint : Fingerprint(
     name = "<init>",
     parameters = listOf("Z", "Z", "Z", "F", "Z")
 )
+
+/**
+ * Vertical offset of the bottom navigation bar, which slides it down when it hides.
+ */
+internal object BottomNavBarOffsetFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(definingClass = "Ljava/lang/Number;", name = "floatValue"),
+        opcode(Opcode.INT_TO_FLOAT),
+        methodCall(
+            definingClass = "Ljava/lang/Math;",
+            name = "max",
+            parameters = listOf("I", "I"),
+            returnType = "I"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.NEG_INT, location = MatchAfterImmediately()),
+        literal(0xffffffffL)
+    ),
+    custom = { _, classDef ->
+        classDef.fields.any { it.type == BOTTOM_NAV_SCREEN_CLASS }
+    }
+)

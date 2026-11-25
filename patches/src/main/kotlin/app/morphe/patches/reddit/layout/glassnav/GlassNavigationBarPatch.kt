@@ -20,11 +20,13 @@ import app.morphe.patches.reddit.misc.compose.composePatch
 import app.morphe.patches.reddit.misc.compose.modifierType
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
@@ -184,6 +186,23 @@ val glassNavigationBarPatch = patch(
                     move-result p2
                 """
             )
+        }
+
+        if (is_2026_45_0_or_greater) {
+            BottomNavBarOffsetFingerprint.let {
+                it.method.apply {
+                    val heightRegister =
+                        getInstruction<TwoRegisterInstruction>(it.instructionMatches[1].index).registerA
+                    val moveResultIndex = it.instructionMatches[3].index
+                    val liftRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                    addInstruction(
+                        moveResultIndex + 1,
+                        "invoke-static { v$liftRegister, v$heightRegister }, " +
+                            "$EXTENSION_CLASS->setBarOffset(IF)V"
+                    )
+                }
+            }
         }
 
         // endregion

@@ -20,6 +20,7 @@ import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableHomeFeedAutoRefreshPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
+import app.morphe.extension.reddit.patches.DisablePostDetailSwipePatch;
 import app.morphe.extension.reddit.patches.DisableRefreshOnBackPatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
@@ -28,8 +29,12 @@ import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
 import app.morphe.extension.reddit.patches.FullScreenReplyPatch;
 import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
+import app.morphe.extension.reddit.patches.HideAnswersPreviewPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
+import app.morphe.extension.reddit.patches.HideCommentFlairsAndBadgesPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
+import app.morphe.extension.reddit.patches.HideCommunityHighlightsPatch;
+import app.morphe.extension.reddit.patches.HideCommunityMenuBadgePatch;
 import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
 import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
@@ -52,6 +57,7 @@ import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.patches.SwipeUpForCommentsPatch;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
+import app.morphe.extension.reddit.patches.VideoPlaybackSpeedPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
@@ -73,13 +79,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
                 HomeFeedTabsPatch.isPatchIncluded() ||
+                DisablePostDetailSwipePatch.isPatchIncluded() ||
                 DisableRefreshOnBackPatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
                 CopyTextPatch.isPatchIncluded() ||
                 CustomFontPatch.isPatchIncluded() ||
                 ForceSystemFontPatch.isPatchIncluded() ||
+                HideAnswersPreviewPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideCommunitiesShelfPatch.isPatchIncluded() ||
+                HideCommunityHighlightsPatch.isPatchIncluded() ||
+                HideCommunityMenuBadgePatch.isPatchIncluded() ||
                 HideHomeTabsPatch.isPatchIncluded() ||
                 HideInteractivePostsPatch.isPatchIncluded() ||
                 HidePeopleAlsoSearchForSectionPatch.isPatchIncluded() ||
@@ -104,12 +114,14 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 FullScreenReplyPatch.isPatchIncluded() ||
                 AutoModeratorCommentsPatch.isPatchIncluded() ||
+                HideCommentFlairsAndBadgesPatch.isPatchIncluded() ||
                 CollapseAllCommentsPatch.isPatchIncluded() ||
                 ColorizeCommentIndentLinesPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
                 FeedAutoScrollPatch.isPatchIncluded() ||
-                PostSidePanelPatch.isPatchIncluded();
+                PostSidePanelPatch.isPatchIncluded() ||
+                VideoPlaybackSpeedPatch.isPatchIncluded();
     }
 
     @Override
@@ -141,6 +153,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.HOME_FEED_TABS
             ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_HOME_FEED_SWIPE
+            ));
+        }
+
+        if (DisablePostDetailSwipePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_POST_DETAIL_SWIPE
+            ));
         }
 
         if (DisableRefreshOnBackPatch.isPatchIncluded()) {
@@ -161,6 +184,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new ForceSystemFontPreference(context));
         }
 
+        if (HideAnswersPreviewPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ANSWERS_PREVIEW
+            ));
+        }
+
         if (HideAskButtonPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -172,6 +202,20 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_COMMUNITIES_SHELF
+            ));
+        }
+
+        if (HideCommunityHighlightsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMUNITY_HIGHLIGHTS
+            ));
+        }
+
+        if (HideCommunityMenuBadgePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMUNITY_MENU_BADGE
             ));
         }
 
@@ -265,9 +309,9 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         }
 
         if (ShowViewCountPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            addPreference(new CustomDialogListPreference(
                     context,
-                    Settings.SHOW_VIEW_COUNT
+                    Settings.VIEW_COUNT
             ));
         }
 
@@ -341,6 +385,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        if (VideoPlaybackSpeedPatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.VIDEO_PLAYBACK_SPEED_CONTROLS
+            ));
+        }
+
         if (FlipPostActionBarPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -363,6 +414,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.AUTOMODERATOR_COMMENTS
+            ));
+        }
+
+        if (HideCommentFlairsAndBadgesPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMENT_USER_FLAIRS
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMENT_COMMUNITY_BADGES
             ));
         }
 

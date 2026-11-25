@@ -8,6 +8,7 @@
 package app.morphe.patches.reddit.layout.postbuttons
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
@@ -26,9 +27,12 @@ import app.morphe.patches.reddit.misc.version.is_2026_39_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21t
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import java.util.logging.Logger
 
@@ -37,6 +41,9 @@ private const val EXTENSION_CLASS =
 
 private const val EXTENSION_HIDEABLE_STATE_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/HidePostButtonsPatch$HideableState;"
+
+private const val EXTENSION_LABELED_ACTION_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/HidePostButtonsPatch$LabeledAction;"
 
 @Suppress("unused")
 val hidePostButtonsPatch = patch(
@@ -152,6 +159,8 @@ private fun hideActionBarButtons() {
     ActionBarActionToStringFingerprint.classDef.addHiddenState()
     ActionBarVoteStateToStringFingerprint.classDef.addHiddenState()
 
+    hideCounts()
+
     val buttonFingerprint: Fingerprint
     val voteButtonsFingerprint: Fingerprint
     if (is_2026_37_0_or_greater) {
@@ -254,4 +263,45 @@ private fun hideActionBarButtons() {
         definingClass = EXTENSION_CLASS,
         name = "isActionBarIncluded"
     ).method.returnEarly(true)
+}
+
+private fun hideCounts() {
+    val labelField = ActionBarActionLabelFingerprint.instructionMatches.last().fieldReference
+    ActionBarActionToStringFingerprint.classDef.addPatchInterface(
+        EXTENSION_LABELED_ACTION_INTERFACE,
+        "patch_clearLabel",
+        """
+            const/4 v0, 0x0
+            iput-object v0, p0, $labelField
+            return-void
+        """
+    )
+
+    ActionBarVoteStateConstructorFingerprint.let {
+        it.method.apply {
+            val index = it.instructionMatches.first().index
+            val register = getInstruction(index).registersUsed[0]
+            addInstructions(
+                index,
+                """
+                    invoke-static { v$register }, $EXTENSION_CLASS->hideScore(Z)Z
+                    move-result v$register
+                """
+            )
+        }
+    }
+
+    CommentScoreHiddenFingerprint.method.apply {
+        findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+            val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+            addInstructionsAtControlFlowLabel(
+                index,
+                """
+                    invoke-static { v$register }, $EXTENSION_CLASS->hideScore(Z)Z
+                    move-result v$register
+                """
+            )
+        }
+    }
 }
