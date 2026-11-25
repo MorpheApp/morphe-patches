@@ -1719,6 +1719,8 @@ Automotive layout
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
+    <string name="morphe_hide_status_bar_avoid_cutout_title">Keep player below display cutout</string>
+    <string name="morphe_hide_status_bar_avoid_cutout_summary">Moves the portrait video player below the display cutout when the status bar is hidden, leaving an empty bar at the top. Turn this off to let the video fill the screen behind the cutout</string>
     <string name="morphe_fix_status_bar_layout_title">Fix status bar covering the top bars</string>
     <string name="morphe_fix_status_bar_layout_summary">Keeps the layout of the status bar consistent, so it does not cover the top bars and leaves no empty space above the player. Turn this off if the app crashes or the top bars look wrong</string>
 
