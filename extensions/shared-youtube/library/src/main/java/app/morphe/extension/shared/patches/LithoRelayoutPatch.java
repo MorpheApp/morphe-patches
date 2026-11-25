@@ -27,6 +27,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -142,6 +143,27 @@ public final class LithoRelayoutPatch {
      * A fling is faster, and a slow scroll or a live chat that scrolls to new messages is slower.
      */
     private static final float FAST_SCROLL_DP_PER_MILLISECOND = 0.5f;
+
+    /**
+     * Most relayouts in a row of the same component tree, without a relayout requested by a patch
+     * in between, such as when titles are fetched. A text that is outdated again each time it's laid out
+     * would otherwise be laid out again forever, also while the app is in the background.
+     * A text outdated before it's mounted needs one relayout.
+     */
+    private static final int MAX_COMPONENT_TREE_RELAYOUTS = 5;
+
+    /**
+     * Component tree -> relayouts of its outdated texts since the last relayout requested by a patch.
+     * Counted for each tree, so a text that is always outdated does not stop the relayouts of other texts.
+     * Accessed only on the main thread.
+     */
+    private static final Map<ComponentTreeInterface, Integer> componentTreeRelayouts = new WeakHashMap<>();
+
+    /**
+     * If a patch requested a relayout, so the relayouts of the component trees are counted again
+     * by the next relayout. Requested on any thread, so it's read and cleared atomically.
+     */
+    private static final AtomicBoolean resetComponentTreeRelayouts = new AtomicBoolean();
 
     /**
      * Mounted text drawables that showed a text with a {@link RelayoutSpan}.
@@ -273,6 +295,7 @@ public final class LithoRelayoutPatch {
      * Can be called on any thread.
      */
     public static void relayoutOutdatedTexts() {
+        resetComponentTreeRelayouts.set(true);
         scheduleRelayout();
     }
 
@@ -284,6 +307,7 @@ public final class LithoRelayoutPatch {
      */
     public static void remountListViews() {
         remountListViewsRequested.set(true);
+        resetComponentTreeRelayouts.set(true);
         scheduleRelayout();
     }
 
@@ -294,6 +318,7 @@ public final class LithoRelayoutPatch {
     public static void remountListViews(Collection<View> views) {
         if (!views.isEmpty()) {
             remountViewsRequested.addAll(views);
+            resetComponentTreeRelayouts.set(true);
             scheduleRelayout();
         }
     }
@@ -370,7 +395,7 @@ public final class LithoRelayoutPatch {
                 relayoutTextDrawables.add(textDrawable);
                 // The text can be outdated before it's mounted, such as a title fetched meanwhile.
                 if (outdated) {
-                    relayoutOutdatedTexts();
+                    scheduleRelayout();
                 }
             }
         } catch (Exception ex) {
@@ -392,6 +417,9 @@ public final class LithoRelayoutPatch {
             return;
         }
         relayoutScheduled.set(false);
+        if (resetComponentTreeRelayouts.getAndSet(false)) {
+            componentTreeRelayouts.clear();
+        }
         final boolean remountListViews = remountListViewsRequested.getAndSet(false);
         final List<View> requestedViews;
         synchronized (remountViewsRequested) {
@@ -501,7 +529,7 @@ public final class LithoRelayoutPatch {
                     // thumbnail of a video whose DeArrow icon was tapped. A view mounted again is laid out
                     // again before it's mounted, in the same frame, so it loads the images of the new layout.
                     lithoView.patch_forceRelayout();
-                } else if (componentTree != null) {
+                } else if (componentTree != null && countRelayout(componentTree)) {
                     componentTree.patch_forceLayoutAsync();
                 }
             }
@@ -550,6 +578,21 @@ public final class LithoRelayoutPatch {
         }
         // The root view is the decor view of the window.
         return current.getVisibility() != View.VISIBLE;
+    }
+
+    /**
+     * Counts a relayout of the component tree. Must be called on the main thread.
+     *
+     * @return If the component tree can be laid out again, or false if it was laid out again too many times
+     *         since the last relayout requested by a patch.
+     */
+    private static boolean countRelayout(ComponentTreeInterface componentTree) {
+        final int relayouts = componentTreeRelayouts.merge(componentTree, 1, Integer::sum);
+        if (relayouts > MAX_COMPONENT_TREE_RELAYOUTS) {
+            Logger.printDebug(() -> "Not laying out again, the text is always outdated: " + componentTree);
+            return false;
+        }
+        return true;
     }
 
     /**
