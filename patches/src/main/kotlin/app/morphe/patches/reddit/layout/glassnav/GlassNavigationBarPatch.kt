@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.layout.glassnav
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -187,43 +186,52 @@ val glassNavigationBarPatch = patch(
                     move-result p2
                 """
             )
+        }
 
-            BottomNavBarPlacementFingerprint.let {
-                it.method.apply {
-                    val placeableRegister =
-                        getInstruction<TwoRegisterInstruction>(it.instructionMatches[4].index).registerB
-                    val heightField = it.instructionMatches[4].fieldReference
-                    val heightRegister =
-                        getInstruction<TwoRegisterInstruction>(it.instructionMatches[6].index).registerA
-                    val moveResultIndex = it.instructionMatches[8].index
-                    val yRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+        BottomNavBarPlacementFingerprint.let {
+            it.method.apply {
+                val heightIndex = it.instructionMatches[3].index
+                val heightRegister = getInstruction<TwoRegisterInstruction>(heightIndex).registerA
+                val roundIndex = it.instructionMatches[5].index
+                val slideRegister = it.instructionMatches[5].instruction.registersUsed[0]
 
-                    addInstructions(
-                        moveResultIndex + 1,
-                        """
-                            iget v$heightRegister, v$placeableRegister, $heightField
-                            invoke-static { v$yRegister, v$heightRegister }, $EXTENSION_CLASS->getBarPlacement(II)I
-                            move-result v$yRegister
-                        """
-                    )
-                }
+                addInstructions(
+                    roundIndex,
+                    """
+                        invoke-static { v$slideRegister, v$heightRegister }, $EXTENSION_CLASS->getBarSlide(FF)F
+                        move-result v$slideRegister
+                    """
+                )
+            }
+        }
+
+        StaticBottomNavBarFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[0].index
+                val modifierRegister = it.instructionMatches[0].instruction.registersUsed[1]
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$modifierRegister .. v$modifierRegister }, $EXTENSION_CLASS->getStaticBarModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object v$modifierRegister
+                        check-cast v$modifierRegister, $modifierType
+                    """
+                )
             }
         }
 
         if (is_2026_45_0_or_greater) {
-            BottomNavBarOffsetFingerprint.let {
+            CreateButtonOffsetFingerprint.let {
                 it.method.apply {
-                    val barHeightRegister =
-                        getInstruction<TwoRegisterInstruction>(it.instructionMatches[1].index).registerA
-                    val fractionRegister = it.instructionMatches[2].instruction.registersUsed[0]
-                    val moveResultIndex = it.instructionMatches[4].index
-                    val liftRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+                    val index = it.instructionMatches[2].index
+                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
                     addInstructions(
-                        moveResultIndex + 1,
+                        index + 1,
                         """
-                            invoke-static { v$liftRegister, v$barHeightRegister, v$fractionRegister }, $EXTENSION_CLASS->getBarOffset(IFF)I
-                            move-result v$liftRegister
+                            invoke-static { v$register }, $EXTENSION_CLASS->getCreateButtonOffset(F)F
+                            move-result v$register
                         """
                     )
                 }
@@ -234,13 +242,7 @@ val glassNavigationBarPatch = patch(
 
         // region Labels.
 
-        val itemType = BottomNavButtonFingerprint.matchAll().first()
-            .originalMethod.parameterTypes.first().toString()
-        Fingerprint(
-            definingClass = itemType,
-            name = "<init>",
-            parameters = listOf("Ljava/lang/String;", "Z")
-        ).method.addInstructions(
+        SideNavRailContentFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
             0,
             """
                 invoke-static { p2 }, $EXTENSION_CLASS->showLabel(Z)Z

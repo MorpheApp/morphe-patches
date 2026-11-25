@@ -70,7 +70,13 @@ internal object SideNavRailContentFingerprint : Fingerprint(
             returnType = "L"
         ),
         literal(64f),
-        literal(48f, location = MatchAfterWithin(10))
+        literal(48f, location = MatchAfterWithin(10)),
+        // Label of a button and if it is shown. Also used by the bottom navigation bar.
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            parameters = listOf("Ljava/lang/String;", "Z")
+        )
     )
 )
 
@@ -181,21 +187,84 @@ internal object NavScreenContentStateConstructorFingerprint : Fingerprint(
 )
 
 /**
- * Vertical offset of the bottom navigation bar, which slides it down when it hides.
+ * Places the bottom navigation bar of screens where it hides while scrolling.
  */
-internal object BottomNavBarOffsetFingerprint : Fingerprint(
+internal object BottomNavBarPlacementFingerprint : Fingerprint(
     name = "invoke",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
+        // (1 - shownFraction) * height
         methodCall(definingClass = "Ljava/lang/Number;", name = "floatValue"),
-        opcode(Opcode.INT_TO_FLOAT),
-        // Clamp of the expanded fraction.
+        opcode(Opcode.SUB_FLOAT_2ADDR, location = MatchAfterWithin(5)),
+        // Must be immediately, because a similar lambda negates this to slide the top bar up.
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterWithin(5)),
+        opcode(Opcode.MUL_FLOAT_2ADDR, location = MatchAfterWithin(5)),
+        // Float.roundToInt
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("F", "F", "F"),
-            returnType = "F"
+            parameters = listOf("F"),
+            returnType = "I",
+            location = MatchAfterWithin(5)
         ),
+        // PlacementScope.placeRelative
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "L", "I", "I"),
+            returnType = "V",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Bottom navigation bar of screens where it does not hide while scrolling.
+ */
+internal object StaticBottomNavBarFingerprint : Fingerprint(
+    definingClass = BOTTOM_NAV_SCREEN_CLASS,
+    returnType = "V",
+    parameters = listOf("L", "L", "I"),
+    filters = listOf(
+        // Modifier of the bar.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            definingClass = "Landroidx/compose/ui/b;",
+            parameters = listOf("L", "L"),
+            returnType = "L"
+        ),
+        methodCall(
+            definingClass = "Ljava/lang/Integer;",
+            name = "valueOf",
+            location = MatchAfterWithin(35)
+        ),
+        // Content of the bar.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = BOTTOM_NAV_SCREEN_CLASS,
+            type = "Landroidx/compose/runtime/internal/a;",
+            location = MatchAfterWithin(25)
+        )
+    )
+)
+
+/**
+ * Offset of the create post button that floats above the bottom navigation bar, 2026.45.0+
+ */
+internal object CreateButtonOffsetFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = BOTTOM_NAV_SCREEN_CLASS
+        ),
+        methodCall(definingClass = "Ljava/lang/Number;", name = "floatValue"),
+        // Height of the bar.
+        opcode(Opcode.INT_TO_FLOAT),
+        // Not lower than the system navigation bar.
         methodCall(
             definingClass = "Ljava/lang/Math;",
             name = "max",
@@ -203,66 +272,6 @@ internal object BottomNavBarOffsetFingerprint : Fingerprint(
             returnType = "I"
         ),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        opcode(Opcode.NEG_INT, location = MatchAfterImmediately()),
-        literal(0xffffffffL)
-    ),
-    custom = { _, classDef ->
-        classDef.fields.any { it.type == BOTTOM_NAV_SCREEN_CLASS }
-    }
-)
-
-/**
- * Vertical placement of the bottom navigation bar while it slides, 2026.47.0+.
- */
-internal object BottomNavBarPlacementFingerprint : Fingerprint(
-    name = "invoke",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;"),
-    filters = listOf(
-        methodCall(definingClass = "Lkotlin/jvm/functions/Function0;", name = "invoke"),
-        methodCall(
-            definingClass = "Ljava/lang/Number;",
-            name = "floatValue",
-            location = MatchAfterWithin(3)
-        ),
-        literal(1.0f, location = MatchAfterWithin(2)),
-        opcode(Opcode.SUB_FLOAT_2ADDR, location = MatchAfterImmediately()),
-        opcode(Opcode.IGET, location = MatchAfterImmediately()),
-        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterImmediately()),
-        opcode(Opcode.MUL_FLOAT_2ADDR, location = MatchAfterImmediately()),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("F"),
-            returnType = "I",
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
-    )
-)
-
-/**
- * Button of the bottom navigation bar and of the side rail.
- */
-internal object BottomNavButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    definingClass = "Lcom/reddit/widget/bottomnav/a;",
-    returnType = "V",
-    parameters = listOf(
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Ljava/lang/String;",
-        "Z",
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Ljava/lang/String;",
-        "Ljava/lang/String;",
-        "Lkotlin/jvm/functions/Function2;",
-        "Lkotlin/jvm/functions/Function2;",
-        "Landroidx/compose/runtime/internal/a;",
-        "L",
-        "I"
-    ),
-    filters = listOf(
-        string("bottom_nav_button")
+        opcode(Opcode.NEG_INT, location = MatchAfterWithin(5))
     )
 )

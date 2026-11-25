@@ -52,6 +52,8 @@ public final class ComposeUtils {
         // Methods are added during patching.
         Object patch_drawWithContent(Function1<?, ?> draw);
 
+        Object patch_offset(float x, float y);
+
         Object patch_padding(float start, float top, float end, float bottom);
 
         /**
