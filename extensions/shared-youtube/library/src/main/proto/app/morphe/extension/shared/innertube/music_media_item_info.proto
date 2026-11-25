@@ -5,14 +5,14 @@ package app.morphe.extension.shared.innertube;
 option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
 
-// YouTube Music includes the tab type in the media IDs it receives from the server.
+// YouTube Music stores the container type in encoded Android Auto media IDs.
 message MediaItemInfo {
-    enum TabType {
+    enum ContainerType {
         UNKNOWN = 0;
         LAST_PLAYED = 1;
         HOME = 2;
         LIBRARY = 3;
         PODCASTS = 4;
     }
-    TabType tabType = 4;
+    ContainerType containerType = 4;
 }

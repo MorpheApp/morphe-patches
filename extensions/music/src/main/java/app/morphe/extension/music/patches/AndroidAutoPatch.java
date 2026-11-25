@@ -66,8 +66,8 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseResponse;
-import app.morphe.extension.shared.innertube.MediaBrowser.MediaItemInfo;
-import app.morphe.extension.shared.innertube.MediaBrowser.MediaItemInfo.TabType;
+import app.morphe.extension.shared.innertube.MusicMediaItemInfo.MediaItemInfo;
+import app.morphe.extension.shared.innertube.MusicMediaItemInfo.MediaItemInfo.ContainerType;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MusicPlaylistConfig;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistCollectionOptions;
@@ -941,7 +941,7 @@ public final class AndroidAutoPatch {
             tabs.add(tab);
             if (!isContentFolder(tab)) continue;
             hasContent = true;
-            switch (tabType(id)) {
+            switch (containerType(id)) {
                 case HOME -> {
                     homeId = id;
                     podcastsIndex = tabs.size();
@@ -964,16 +964,16 @@ public final class AndroidAutoPatch {
         return tabs.equals(rootTabs) ? rootTabs : tabs;
     }
 
-    private static TabType tabType(String mediaId) {
+    private static ContainerType containerType(String mediaId) {
         // Local folders such as Downloads use plain text IDs.
         if (mediaId.startsWith("__")) {
-            return OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId) ? TabType.PODCASTS : TabType.UNKNOWN;
+            return OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId) ? ContainerType.PODCASTS : ContainerType.UNKNOWN;
         }
         try {
-            return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getTabType();
+            return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getContainerType();
         } catch (IllegalArgumentException | InvalidProtocolBufferException ex) {
             Logger.printDebug(() -> "Could not read Android Auto tab ID: " + mediaId, ex);
-            return TabType.UNKNOWN;
+            return ContainerType.UNKNOWN;
         }
     }
 
