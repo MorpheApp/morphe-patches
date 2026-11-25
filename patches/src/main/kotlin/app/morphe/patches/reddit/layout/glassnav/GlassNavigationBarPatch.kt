@@ -15,6 +15,9 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.reddit.misc.compose.MODIFIER_INTERFACE
+import app.morphe.patches.reddit.misc.compose.composePatch
+import app.morphe.patches.reddit.misc.compose.modifierType
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
@@ -28,12 +31,6 @@ import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch;"
-private const val CONTENT_DRAW_SCOPE_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$ContentDrawScope;"
-private const val COMPOSE_CANVAS_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$ComposeCanvas;"
-private const val MODIFIER_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$Modifier;"
 private const val NEUTRAL_COLORS_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$NeutralColors;"
 
@@ -45,7 +42,7 @@ val glassNavigationBarPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch, versionCheckPatch)
+    dependsOn(settingsPatch, versionCheckPatch, composePatch)
 
     execute {
         if (!is_2026_24_0_or_greater) {
@@ -60,84 +57,7 @@ val glassNavigationBarPatch = patch(
             BottomNavBackdropLegacyFingerprint
         }
 
-        // region Access to Compose and theme classes.
-
-        val drawWithContentMethod = BottomNavBarFingerprint.instructionMatches[0].methodReference
-        val modifierType = drawWithContentMethod.parameterTypes[0].toString()
-
-        mutableClassDefBy(modifierType).apply {
-            addPatchInterface(
-                MODIFIER_INTERFACE,
-                "patch_drawWithContent",
-                """
-                    invoke-static { p0, p1 }, $drawWithContentMethod
-                    move-result-object v0
-                    return-object v0
-                """
-            )
-            addPatchInterface(
-                MODIFIER_INTERFACE,
-                "patch_padding",
-                """
-                    invoke-static/range { p0 .. p4 }, ${PaddingFingerprint.method}
-                    move-result-object v0
-                    return-object v0
-                """
-            )
-        }
-
-        val nativeCanvasField = LottieAnimationDrawFingerprint.instructionMatches[4].fieldReference
-
-        mutableClassDefBy(nativeCanvasField.definingClass).apply {
-            addPatchInterface(COMPOSE_CANVAS_INTERFACE, "patch_getNativeCanvas", nativeCanvasField)
-            addPatchInterface(COMPOSE_CANVAS_INTERFACE, "patch_setNativeCanvas", nativeCanvasField)
-        }
-
-        DrawContentFingerprint.classDef.apply {
-            addPatchInterface(
-                CONTENT_DRAW_SCOPE_INTERFACE,
-                "patch_getCanvas",
-                """
-                    invoke-interface { p0 }, ${LottieAnimationDrawFingerprint.instructionMatches[0].methodReference}
-                    move-result-object v0
-                    invoke-virtual { v0 }, ${LottieAnimationDrawFingerprint.instructionMatches[2].methodReference}
-                    move-result-object v0
-                    check-cast v0, $COMPOSE_CANVAS_INTERFACE
-                    return-object v0
-                """
-            )
-            addPatchInterface(
-                CONTENT_DRAW_SCOPE_INTERFACE,
-                "patch_getSize",
-                """
-                    invoke-interface { p0 }, ${DrawRoundRectFingerprint.instructionMatches[0].methodReference}
-                    move-result-wide v0
-                    return-wide v0
-                """
-            )
-            addPatchInterface(
-                CONTENT_DRAW_SCOPE_INTERFACE,
-                "patch_drawContent",
-                DrawContentFingerprint.method
-            )
-            // 0xf0 mask uses the default style, alpha, color filter and blend mode.
-            addPatchInterface(
-                CONTENT_DRAW_SCOPE_INTERFACE,
-                "patch_drawRoundRect",
-                """
-                    move-object/from16 v0, p0
-                    move-wide/from16 v1, p1
-                    move-wide/from16 v3, p3
-                    move-wide/from16 v5, p5
-                    move-wide/from16 v7, p7
-                    const/4 v9, 0x0
-                    const/4 v10, 0x0
-                    const/16 v11, 0xf0
-                    invoke-static/range { v0 .. v11 }, ${DrawRoundRectFingerprint.method}
-                    return-void
-                """
-            )
-        }
+        // region Access to theme classes.
 
         val backgroundMethod = backdropFingerprint.instructionMatches[2].methodReference
         val railBackgroundMethod = RailBackgroundFingerprint.instructionMatches[3].methodReference
