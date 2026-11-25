@@ -7,23 +7,15 @@
 
 package app.morphe.extension.music.patches;
 
-import static app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer.SELECTED_FIELD_NUMBER;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseResponse;
+
 @SuppressWarnings("unused")
 final class AndroidAutoBrowseResponseParser {
     // Protobuf field numbers for YTM's phone Home, Library, and search responses.
-    private static final int BROWSE_CONTENTS = 9;
-    private static final int BROWSE_CONTINUATION = 10;
-    private static final int SINGLE_COLUMN_BROWSE = 58_173_949;
-    private static final int BROWSE_TABS = 1;
-    static final int TAB = 58_174_010;
-    static final int TAB_CONTENTS = 4;
-
-    static final int SECTION_LIST = 49_399_797;
     static final int SECTION_LIST_CONTENTS = 1;
     private static final int SECTION_LIST_CONTINUATIONS = 2;
     private static final int NEXT_CONTINUATION = 52_047_593;
@@ -163,7 +155,7 @@ final class AndroidAutoBrowseResponseParser {
     record HomePage(List<BrowseItem> items, String continuation) {}
 
     /** Reads phone Home or Speed dial responses and returns playable items with the next continuation token. */
-    static HomePage homePage(byte[] response) {
+    static HomePage homePage(BrowseResponse response) {
         ProtoMessage sectionList = sectionList(response);
         List<BrowseItem> items = new ArrayList<>();
         for (BrowseItem item : readSections(sectionList)) {
@@ -191,30 +183,30 @@ final class AndroidAutoBrowseResponseParser {
      * Reads responses for phone Library categories or podcast shows and returns their browse items.
      * The Playlists folder uses YTM's native grid loader instead.
      */
-    static List<BrowseItem> libraryItems(byte[] response) {
+    static List<BrowseItem> libraryItems(BrowseResponse response) {
         return readSections(sectionList(response));
     }
 
     // Response layouts shared by Home and Library.
 
-    private static ProtoMessage sectionList(byte[] response) {
-        ProtoMessage root = new ProtoMessage(response);
+    private static ProtoMessage sectionList(BrowseResponse response) {
         // Home's later shelves arrive as a section-list continuation, without the initial tab wrapper.
-        ProtoMessage continuedSections = root.messagePath(BROWSE_CONTINUATION, SECTION_LIST);
-        if (continuedSections.isPresent()) return continuedSections;
-        ProtoMessage pageContents = root.messageField(BROWSE_CONTENTS);
-        ProtoMessage sectionList = pageContents.messageField(SECTION_LIST);
-        if (!sectionList.isPresent()) {
-            for (ProtoMessage tabWrapper : pageContents.messageField(SINGLE_COLUMN_BROWSE).repeatedMessageField(BROWSE_TABS)) {
-                ProtoMessage tab = tabWrapper.messageField(TAB);
-                ProtoMessage sections = tab.messagePath(TAB_CONTENTS, SECTION_LIST);
-                if (!sections.isPresent()) continue;
-                if (tab.varintField(SELECTED_FIELD_NUMBER) != 0) return sections;
-                if (sectionList.isEmpty()) sectionList = sections;
+        var contents = response.getContinuationContents();
+        if (!contents.hasSectionListRenderer()) contents = response.getContents();
+        if (!contents.hasSectionListRenderer()) {
+            for (var wrapper : contents.getSingleColumnBrowseResultsRenderer().getTabsList()) {
+                var tab = wrapper.getTabRenderer();
+                var candidate = tab.getContent();
+                if (!candidate.hasSectionListRenderer()) continue;
+                if (tab.getSelected()) {
+                    contents = candidate;
+                    break;
+                }
+                if (contents.getSectionListRenderer().isEmpty()) contents = candidate;
             }
         }
-        if (!sectionList.isPresent()) throw new IllegalArgumentException("Unrecognized browse contents");
-        return sectionList;
+        if (!contents.hasSectionListRenderer()) throw new IllegalArgumentException("Unrecognized browse contents");
+        return new ProtoMessage(contents.getSectionListRenderer().toByteArray());
     }
 
     private static List<BrowseItem> readSections(ProtoMessage sectionList) {

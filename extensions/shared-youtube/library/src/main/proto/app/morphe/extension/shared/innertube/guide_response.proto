@@ -216,6 +216,7 @@ enum CreationMode {
 }
 
 message SearchEndpoint {
+    string params = 2;
 }
 
 message BrowseEndpoint {

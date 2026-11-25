@@ -19,7 +19,6 @@ import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.libraryItems;
 import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.SETTINGS_MEDIA_ID;
 import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.isSettingsMediaId;
-import static app.morphe.extension.music.patches.ProtoMessage.WIRE_LENGTH_DELIMITED;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -40,10 +39,9 @@ import androidx.annotation.Nullable;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.MessageLite;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -67,7 +65,15 @@ import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.Search
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseResponse;
 import app.morphe.extension.shared.innertube.MediaBrowser.MediaItemInfo;
+import app.morphe.extension.shared.innertube.MediaBrowser.MediaItemInfo.TabType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MusicPlaylistConfig;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistCollectionOptions;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistPlaybackOptions;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistSupportedConfig;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchPlaylistEndpoint;
 
 /**
  * Uses YTM's phone browse responses for music recommendations and Library content.
@@ -91,7 +97,7 @@ public final class AndroidAutoPatch {
      * later pages use {@link #patch_getPaginatedLibraryGrid}.
      */
     public interface PhoneBrowseResponse {
-        byte[] patch_responseBytes();
+        MessageLite patch_getResponse();
         Iterable<PhoneBrowseTab> patch_getTabs();
         @Nullable GridRenderer patch_getPaginatedLibraryGrid();
     }
@@ -660,47 +666,21 @@ public final class AndroidAutoPatch {
         return null;
     }
 
-    private static final int PLAYLIST_SUPPORTED_CONFIG = 96_593_618;
-    private static final int PLAYLIST_MUSIC_CONFIG = 96_593_634;
-    private static final int PLAYLIST_OPTIONS = 7;
-    private static final int PLAYLIST_COLLECTION_OPTIONS = 2;
-    // Both option messages encode their value as a field-2 varint.
-    private static final byte OPTION_VALUE_TAG = 0x10;
-    private static final byte ORDERED_PLAYBACK = 0x02;
+    private static final int ORDERED_PLAYBACK = 2;
     private static final int UPLOADED_COLLECTION = 1;
     private static final int CATALOG_COLLECTION = 2;
 
     /** Ordered playlist commands for podcasts and uploaded music. */
     static byte[] orderedPlaylistCommand(String playlistId, boolean uploaded) {
         if (playlistId.isEmpty()) return new byte[0];
-        // Auto's ordered WatchPlaylist action distinguishes catalog playlists from uploads.
-        byte[] playbackOptions = {OPTION_VALUE_TAG, ORDERED_PLAYBACK};
-        byte[] collectionOptions = {OPTION_VALUE_TAG, (byte) (uploaded ? UPLOADED_COLLECTION : CATALOG_COLLECTION)};
-        byte[] collectionConfig = message(PLAYLIST_COLLECTION_OPTIONS, collectionOptions);
-        byte[] musicConfig = message(PLAYLIST_MUSIC_CONFIG, collectionConfig);
-        byte[] supportedConfig = message(PLAYLIST_SUPPORTED_CONFIG, musicConfig);
-        return message(WATCH_PLAYLIST,
-                message(PLAYLIST_ID, playlistId.getBytes(StandardCharsets.UTF_8)),
-                message(PLAYLIST_OPTIONS, playbackOptions),
-                supportedConfig);
-    }
-
-    private static byte[] message(int field, byte[]... values) {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        int size = 0;
-        for (byte[] value : values) size += value.length;
-        writeVarint(output, (field << 3) | WIRE_LENGTH_DELIMITED);
-        writeVarint(output, size);
-        for (byte[] value : values) output.write(value, 0, value.length);
-        return output.toByteArray();
-    }
-
-    private static void writeVarint(ByteArrayOutputStream output, int value) {
-        while ((value & ~0x7F) != 0) {
-            output.write((value & 0x7F) | 0x80);
-            value >>>= 7;
-        }
-        output.write(value);
+        var collection = PlaylistCollectionOptions.newBuilder()
+                .setCollectionType(uploaded ? UPLOADED_COLLECTION : CATALOG_COLLECTION);
+        var playlist = WatchPlaylistEndpoint.newBuilder()
+                .setPlaylistId(playlistId)
+                .setPlaybackOptions(PlaylistPlaybackOptions.newBuilder().setPlaybackOrder(ORDERED_PLAYBACK))
+                .setSupportedConfig(PlaylistSupportedConfig.newBuilder()
+                        .setMusicConfig(MusicPlaylistConfig.newBuilder().setCollectionOptions(collection)));
+        return NavigationEndpoint.newBuilder().setWatchPlaylistEndpoint(playlist).build().toByteArray();
     }
 
     /** Android Auto can project while the phone remains in its normal UI mode. */
@@ -984,13 +964,16 @@ public final class AndroidAutoPatch {
         return tabs.equals(rootTabs) ? rootTabs : tabs;
     }
 
-    private static MediaItemInfo.TabType tabType(String mediaId) {
-        if (OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId)) return MediaItemInfo.TabType.PODCASTS;
+    private static TabType tabType(String mediaId) {
+        // Local folders such as Downloads use plain text IDs.
+        if (mediaId.startsWith("__")) {
+            return OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId) ? TabType.PODCASTS : TabType.UNKNOWN;
+        }
         try {
             return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getTabType();
-        } catch (IllegalArgumentException | InvalidProtocolBufferException ignored) {
-            // Local folders such as Downloads use plain text IDs.
-            return MediaItemInfo.TabType.UNKNOWN;
+        } catch (IllegalArgumentException | InvalidProtocolBufferException ex) {
+            Logger.printDebug(() -> "Could not read Android Auto tab ID: " + mediaId, ex);
+            return TabType.UNKNOWN;
         }
     }
 
@@ -1098,7 +1081,7 @@ public final class AndroidAutoPatch {
 
         private void requestPage(String continuation) {
             requestPage(browseId, continuation, response -> {
-                HomePage page = homePage(response.patch_responseBytes());
+                HomePage page = homePage(response);
                 synchronized (this) { collected.addAll(page.items()); }
                 if (page.continuation().isEmpty() || !continuations.add(page.continuation())) {
                     finishCollected();
@@ -1198,7 +1181,7 @@ public final class AndroidAutoPatch {
             LibraryFolder folder = podcastPage ? null : LibraryFolder.valueOf(mediaId.substring(LIBRARY_PREFIX.length()));
             String browseId = podcastPage ? Uri.decode(mediaId.substring(PODCAST_COLLECTION_PREFIX.length())) : folder.browseId;
             requestPage(browseId, "", response -> {
-                var phoneItems = libraryItems(response.patch_responseBytes());
+                var phoneItems = libraryItems(response);
                 finish(podcastPage ? playableItems(phoneItems, CONTENT_STYLE_LIST) : libraryMediaItems(folder, phoneItems));
             });
         }
@@ -1343,7 +1326,7 @@ public final class AndroidAutoPatch {
 
         abstract void load();
 
-        final void requestPage(String browseId, String continuation, Consumer<PhoneBrowseResponse> receive) {
+        final void requestPage(String browseId, String continuation, Consumer<BrowseResponse> receive) {
             if (finished.get()) return;
             try {
                 if (!current(client)) {
@@ -1362,8 +1345,7 @@ public final class AndroidAutoPatch {
                 future.addListener(() -> {
                     if (finished.get()) return;
                     try {
-                        PhoneBrowseResponse response = future.get();
-                        receive.accept(response);
+                        receive.accept(BrowseResponse.parseFrom(future.get().patch_getResponse().toByteArray()));
                     } catch (Exception ex) {
                         Logger.printException(() -> "Could not read Android Auto page", ex);
                         timedOut();

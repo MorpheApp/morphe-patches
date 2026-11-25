@@ -25,7 +25,7 @@ import java.util.List;
 public final class ProtoMessage {
     private static final int WIRE_VARINT = WireFormat.WIRETYPE_VARINT;
     private static final int WIRE_FIXED64 = WireFormat.WIRETYPE_FIXED64;
-    static final int WIRE_LENGTH_DELIMITED = WireFormat.WIRETYPE_LENGTH_DELIMITED;
+    private static final int WIRE_LENGTH_DELIMITED = WireFormat.WIRETYPE_LENGTH_DELIMITED;
     private static final int WIRE_FIXED32 = WireFormat.WIRETYPE_FIXED32;
     static final ProtoMessage EMPTY = new ProtoMessage(new byte[0]);
     private final byte[] data;
@@ -41,8 +41,6 @@ public final class ProtoMessage {
     }
 
     boolean isEmpty() { return start == end; }
-    /** An explicitly encoded message can contain zero bytes. */
-    boolean isPresent() { return this != EMPTY; }
     String utf8Text() { return new String(data, start, end - start, StandardCharsets.UTF_8); }
     public String stringField(int fieldNumber) { return messageField(fieldNumber).utf8Text(); }
     byte[] serializedBytes() { return Arrays.copyOfRange(data, start, end); }

@@ -385,16 +385,7 @@ private fun addPhoneBrowseResponseInterface() {
         .filter { it.definingClass == phoneBrowseResponseClass.type }
         .distinct()
     val responseProto = responseFields.single { implementsType(it.type, "Lcom/google/protobuf/MessageLite;") }
-    phoneBrowseResponseClass.addPatchInterface(
-        PHONE_BROWSE_RESPONSE,
-        "patch_responseBytes",
-        """
-            iget-object p0, p0, $responseProto
-            invoke-virtual { p0 }, ${responseProto.type}->toByteArray()[B
-            move-result-object p0
-            return-object p0
-        """
-    )
+    phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getResponse", responseProto)
     phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getTabs", getTabsMethod)
 
     phoneBrowseResponseClass.addPatchInterface(

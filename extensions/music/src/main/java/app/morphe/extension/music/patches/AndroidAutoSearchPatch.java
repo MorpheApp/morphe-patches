@@ -17,6 +17,7 @@ import android.support.v4.media.MediaBrowserCompat;
 import androidx.annotation.Nullable;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.SearchResult;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.SearchResponse;
 
 /**
  * Supplies playable phone search results while retaining YTM's local Library search and caller checks.
@@ -44,9 +46,9 @@ public final class AndroidAutoSearchPatch {
                                                           @Nullable String params, Executor executor);
     }
 
-    /** Added to YTM's phone search response to read its results as protobuf bytes. */
+    /** Exposes the search response returned by the phone client. */
     public interface PhoneSearchResponse {
-        byte[] patch_responseBytes();
+        MessageLite patch_getResponse();
     }
 
     /** Added to YTM's Auto search request to read the query and return results. */
@@ -228,14 +230,14 @@ public final class AndroidAutoSearchPatch {
                 response.addListener(() -> {
                     if (finished.get()) return;
                     try {
-                        byte[] bytes = response.get().patch_responseBytes();
+                        var contents = SearchResponse.parseFrom(response.get().patch_getResponse().toByteArray()).getContents();
                         String uploadParams = uploaded && params == null
-                                ? AndroidAutoSearchResponseParser.uploadedSearchParams(bytes) : "";
+                                ? AndroidAutoSearchResponseParser.uploadedSearchParams(contents) : "";
                         // The first response supplies the Uploads tab; follow its parameters to load the results.
                         if (!uploadParams.isEmpty()) {
                             request(true, uploadParams, results);
                         } else {
-                            results.complete(AndroidAutoSearchResponseParser.parseSearchResults(bytes, uploaded));
+                            results.complete(AndroidAutoSearchResponseParser.parseSearchResults(contents, uploaded));
                         }
                     } catch (Exception ex) {
                         results.completeExceptionally(ex);

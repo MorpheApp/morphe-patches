@@ -231,6 +231,24 @@ message WatchPlaylistEndpoint {
     optional string playlist_id = 1;
     optional int32 index = 2;
     optional string params = 4;
+    optional PlaylistPlaybackOptions playback_options = 7;
+    optional PlaylistSupportedConfig supported_config = 96593618;
+}
+
+message PlaylistPlaybackOptions {
+    optional int32 playback_order = 2;
+}
+
+message PlaylistSupportedConfig {
+    optional MusicPlaylistConfig music_config = 96593634;
+}
+
+message MusicPlaylistConfig {
+    optional PlaylistCollectionOptions collection_options = 2;
+}
+
+message PlaylistCollectionOptions {
+    optional int32 collection_type = 2;
 }
 
 // Native confirmation renderer consumed by YouTube's shared dialog presenter.
