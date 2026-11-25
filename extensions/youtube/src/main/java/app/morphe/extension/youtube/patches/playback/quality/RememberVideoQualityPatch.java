@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.google.protobuf.MessageLite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,9 +28,12 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch.FormatStreamInterface;
 import app.morphe.extension.shared.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.ClientAbrState;
+import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.MediaCapabilities;
+import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.VideoFormatCapability;
 import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -107,15 +111,46 @@ public class RememberVideoQualityPatch {
             Utils.createSizeRestrictedMap(MAX_VIDEO_FORMAT_CODECS, true));
 
     /**
+     * Width, height and video codec (see {@link #getVideoCodec(String)}) of each video format, by video ID.
+     */
+    private static final Map<String, List<int[]>> videoFormatSizes = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_VIDEO_FORMAT_CODECS, true));
+
+    /**
+     * Video codec, largest width and largest height of the video formats of each video decoder of the device,
+     * as YouTube sends them to the SABR server, or empty if not known yet.
+     */
+    private static volatile List<int[]> videoDecoderMaxSizes = Collections.emptyList();
+
+    /**
+     * Video codecs of the media capabilities.
+     */
+    private static final int VIDEO_CODEC_H264 = 2;
+    private static final int VIDEO_CODEC_VP9 = 4;
+    private static final int VIDEO_CODEC_AV1 = 8;
+
+    /**
+     * Resolutions of the video qualities, from largest to smallest.
+     */
+    private static final int[] VIDEO_QUALITY_RESOLUTIONS = {4320, 2160, 1440, 1080, 720, 480, 360, 240, 144};
+
+    /**
      * Height divided by width of the largest video format of each vertical video, such as a Short, by video ID.
      */
     private static final Map<String, Float> verticalVideoAspectRatios = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(MAX_VIDEO_FORMAT_CODECS, true));
 
     /**
-     * Format ID (itag) of the video format playing.
+     * Format ID (itag) of the video format playing, and the ID of its video.
      */
     private static volatile int currentVideoFormatId;
+    private static volatile String currentVideoFormatVideoId = "";
+
+    /**
+     * Client playback nonce (CPN) of the video of the player in front.
+     * Each playback of a video has its own CPN, such as each Short loaded by the Shorts player.
+     */
+    private static volatile String playingVideoCpn = "";
 
     /**
      * Last message of {@link #logQualityDecision(Logger.LogMessage)}.
@@ -193,11 +228,18 @@ public class RememberVideoQualityPatch {
      *         or if it is not known.
      */
     private static boolean isQualityPlayable(VideoQualityInterface quality) {
-        final Map<Integer, String> codecs = videoFormatCodecs.get(VideoInformation.getVideoId());
+        final String videoId = VideoInformation.getVideoId();
+        final Map<Integer, String> codecs = videoFormatCodecs.get(videoId);
         if (codecs == null) {
             return true;
         }
-        final String currentCodec = codecs.get(currentVideoFormatId);
+        // The video format playing can still be the one of the previous video, until the player
+        // sets a video format of the current video, so its codec is not known meanwhile.
+        // A video format without a video ID is used for the current video.
+        final String formatVideoId = currentVideoFormatVideoId;
+        final String currentCodec = formatVideoId.isEmpty() || videoId.equals(formatVideoId)
+                ? codecs.get(currentVideoFormatId)
+                : null;
         final Collection<?> formatIds = quality.patch_getFormatIds();
         if (currentCodec == null || formatIds == null || formatIds.isEmpty()) {
             return true;
@@ -250,6 +292,147 @@ public class RememberVideoQualityPatch {
     }
 
     /**
+     * The SABR server sends only the video formats that fit the largest size of a video decoder of the device
+     * (see {@link #getDecodableSabrResolution(int, List, List, MessageLite)}), and the player asks only for
+     * the formats of the quality it uses. So with a quality whose formats are all larger, such as the 1080x1920
+     * formats of a Short with a decoder that supports up to 1920x1088, the server sends no video and the video
+     * does not play, while a lower quality has formats that fit, such as the 608x1080 formats of 720p.
+     * The formats of a quality are the formats whose short side is above the next lower quality.
+     * A format fits only a video decoder of its codec, so a codec without a video decoder, such as AV1
+     * on a device without an AV1 decoder, has no format that fits.
+     *
+     * @param sizes Width, height and video codec of the video formats of the video, or null if not known.
+     * @return The resolution, or if no video format of its quality fits a video decoder,
+     *         the highest lower resolution with a video format that fits.
+     */
+    private static int getDecodableResolution(@Nullable List<int[]> sizes, int resolution) {
+        final List<int[]> decoderSizes = videoDecoderMaxSizes;
+        if (sizes == null || decoderSizes.isEmpty()) {
+            return resolution;
+        }
+
+        int qualityResolution = resolution;
+        for (int lowerResolution : VIDEO_QUALITY_RESOLUTIONS) {
+            if (lowerResolution >= qualityResolution) {
+                continue;
+            }
+            boolean hasFormat = false;
+            for (int[] size : sizes) {
+                final int shortSide = Math.min(size[0], size[1]);
+                if (shortSide > lowerResolution && shortSide <= qualityResolution) {
+                    // A format of an unknown codec is not checked.
+                    if (size[2] == 0) {
+                        return qualityResolution;
+                    }
+                    for (int[] decoderSize : decoderSizes) {
+                        if (size[2] == decoderSize[0] && size[0] <= decoderSize[1] && size[1] <= decoderSize[2]) {
+                            return qualityResolution;
+                        }
+                    }
+                    hasFormat = true;
+                }
+            }
+            if (!hasFormat && qualityResolution == resolution) {
+                // The video has no format of the quality, so the player uses a lower quality.
+                return resolution;
+            }
+            qualityResolution = lowerResolution;
+        }
+        return resolution;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The SABR player asks the server for the video formats of the default quality, which is used as the
+     * initial quality and as the quality last selected (see {@link #getLastSelectedVideoQuality(String)}).
+     * Both are chosen before the formats of the video are known, such as the qualities of the next Shorts
+     * the Shorts player loads, so a quality without a video format that fits the video decoders is lowered here,
+     * where the formats of the video and the video decoders the server gets are known.
+     *
+     * @param resolution        Highest quality the formats are chosen for.
+     * @param formats           Formats of the video.
+     * @param otherFormats      Other formats of the video.
+     * @param mediaCapabilities Largest size of the video formats of each video decoder of the device,
+     *                          which YouTube sends to the SABR server, or null.
+     * @return The resolution to choose the formats for, or -1 to keep the quality last selected.
+     */
+    public static int getDecodableSabrResolution(int resolution, @Nullable List<?> formats,
+                                                 @Nullable List<?> otherFormats,
+                                                 @Nullable MessageLite mediaCapabilities) {
+        try {
+            if (resolution <= 0 || getUserSelectedQuality() != null
+                    || getDefaultQualityResolution() == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
+                return -1;
+            }
+
+            if (mediaCapabilities != null) {
+                final List<int[]> decoderSizes = new ArrayList<>();
+                for (VideoFormatCapability capability : MediaCapabilities.parseFrom(
+                        mediaCapabilities.toByteArray()).getVideoFormatCapabilitiesList()) {
+                    // A video codec without a size has no video decoder, such as VP9 profile 2 (HDR)
+                    // on some devices.
+                    if (capability.getMaxWidth() > 0 && capability.getMaxHeight() > 0) {
+                        decoderSizes.add(new int[]{
+                                capability.getCodec(), capability.getMaxWidth(), capability.getMaxHeight()});
+                    }
+                }
+                if (!decoderSizes.isEmpty() && videoDecoderMaxSizes.isEmpty()) {
+                    Logger.printDebug(() -> {
+                        StringBuilder builder = new StringBuilder("Largest video sizes of the video decoders:");
+                        for (int[] size : decoderSizes) {
+                            builder.append(" codec ").append(size[0]).append(": ").append(size[1])
+                                    .append('x').append(size[2]);
+                        }
+                        return builder.toString();
+                    });
+                }
+                videoDecoderMaxSizes = decoderSizes;
+            }
+
+            final List<int[]> sizes = new ArrayList<>();
+            String videoId = null;
+            for (List<?> list : new List<?>[]{formats, otherFormats}) {
+                if (list == null) {
+                    continue;
+                }
+                for (Object object : list) {
+                    if (object instanceof FormatStreamInterface format) {
+                        final String mimeType = format.patch_getMimeType();
+                        if (mimeType != null && mimeType.startsWith("video")) {
+                            sizes.add(new int[]{format.patch_getWidth(), format.patch_getHeight(),
+                                    getVideoCodec(mimeType)});
+                            videoId = format.patch_getVideoId();
+                        }
+                    }
+                }
+            }
+
+            final int decodableResolution = getDecodableResolution(sizes, resolution);
+            if (decodableResolution == resolution) {
+                return -1;
+            }
+            final String finalVideoId = videoId;
+            logQualityDecision(() -> "SABR formats of " + finalVideoId + ": quality " + resolution
+                    + " has no video format that fits the video decoders, using: " + decodableResolution);
+            return decodableResolution;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDecodableSabrResolution failure", ex);
+            return -1;
+        }
+    }
+
+    /**
+     * @return The video codec of the media capabilities of a video format, or 0 if not known.
+     */
+    private static int getVideoCodec(String mimeType) {
+        if (mimeType.contains("avc1")) return VIDEO_CODEC_H264;
+        if (mimeType.contains("vp9") || mimeType.contains("vp09")) return VIDEO_CODEC_VP9;
+        if (mimeType.contains("av01")) return VIDEO_CODEC_AV1;
+        return 0;
+    }
+
+    /**
      * Logs how the quality of the player and of the SABR requests is chosen, to find why a video does not play
      * with a default quality from the debug logs. The SABR requests repeat every few seconds,
      * so a message is logged only if it differs from the last one.
@@ -269,6 +452,7 @@ public class RememberVideoQualityPatch {
     public static List<FormatInterface> setVideoFormats(@NonNull String videoId, @NonNull List<FormatInterface> adaptiveFormats) {
         try {
             final Map<Integer, String> codecs = new HashMap<>();
+            final List<int[]> sizes = new ArrayList<>();
             long largestArea = 0;
             float aspectRatio = 0;
             for (FormatInterface format : adaptiveFormats) {
@@ -280,6 +464,7 @@ public class RememberVideoQualityPatch {
 
                     final int width = format.patch_getWidth();
                     final int height = format.patch_getHeight();
+                    sizes.add(new int[]{width, height, getVideoCodec(mimeType)});
                     final long area = (long) width * height;
                     if (width > 0 && area > largestArea) {
                         largestArea = area;
@@ -288,6 +473,7 @@ public class RememberVideoQualityPatch {
                 }
             }
             videoFormatCodecs.put(videoId, codecs);
+            videoFormatSizes.put(videoId, sizes);
             final float finalAspectRatio = aspectRatio;
             Logger.printDebug(() -> {
                 StringBuilder builder = new StringBuilder("Video formats of ").append(videoId)
@@ -315,16 +501,37 @@ public class RememberVideoQualityPatch {
     /**
      * Injection point.
      *
-     * @param formatId Format ID (itag) of the video format playing.
+     * @param videoFormat Video format playing, or null.
      */
-    public static void setCurrentVideoFormat(int formatId) {
-        if (currentVideoFormatId != formatId) {
-            Logger.printDebug(() -> {
-                final Map<Integer, String> codecs = videoFormatCodecs.get(VideoInformation.getVideoId());
-                return "Video format playing: " + formatId + " " + (codecs == null ? null : codecs.get(formatId));
-            });
+    public static void setCurrentVideoFormat(@Nullable FormatStreamInterface videoFormat) {
+        try {
+            if (videoFormat == null) {
+                return;
+            }
+            final String videoId = videoFormat.patch_getVideoId();
+            final String formatVideoId = videoId == null ? "" : videoId;
+            final int formatId = videoFormat.patch_getItag();
+            if (currentVideoFormatId != formatId || !currentVideoFormatVideoId.equals(formatVideoId)) {
+                Logger.printDebug(() -> {
+                    final Map<Integer, String> codecs = videoFormatCodecs.get(formatVideoId);
+                    return "Video format playing: " + formatId + " " + (codecs == null ? null : codecs.get(formatId))
+                            + " video: " + formatVideoId;
+                });
+            }
+            currentVideoFormatVideoId = formatVideoId;
+            currentVideoFormatId = formatId;
+        } catch (Exception ex) {
+            Logger.printException(() -> "setCurrentVideoFormat failure", ex);
         }
-        currentVideoFormatId = formatId;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param cpn Client playback nonce (CPN) of the video of the player in front.
+     */
+    public static void setPlayingVideoCpn(@Nullable String cpn) {
+        playingVideoCpn = cpn == null ? "" : cpn;
     }
 
     /**
@@ -523,19 +730,32 @@ public class RememberVideoQualityPatch {
      * The default quality is used as the quality last selected, until the user selects a quality.
      * With some accounts the quality last selected is used only for the video it was selected for,
      * so the default quality is then used as if it was selected for the current video.
+     * The Shorts player also chooses the qualities of the next Shorts while it loads them,
+     * before they play, so the qualities of the current video are not used for them.
      *
+     * @param cpn Client playback nonce (CPN) of the video the qualities are chosen for,
+     *            or null for the video of the player in front.
      * @return The resolution to use as the quality last selected,
      *         or -1 to use the quality last selected in the quality menu.
      */
-    public static int getLastSelectedVideoQuality() {
+    public static int getLastSelectedVideoQuality(@Nullable String cpn) {
         try {
             if (getUserSelectedQuality() != null) {
                 return -1;
             }
 
-            final int preferredQuality = getDefaultQualityResolution();
-            if (preferredQuality == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
+            final int defaultQuality = getDefaultQualityResolution();
+            if (defaultQuality == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
                 return -1;
+            }
+
+            // The qualities and the formats of another video are not known.
+            final boolean isOtherVideo = cpn != null && !cpn.equals(playingVideoCpn);
+            final int preferredQuality = getDecodableResolution(isOtherVideo
+                    ? null : videoFormatSizes.get(VideoInformation.getStartingOrPlayingVideoId()), defaultQuality);
+            if (preferredQuality != defaultQuality) {
+                logQualityDecision(() -> "Default quality " + defaultQuality + " has no video format that fits"
+                        + " the video decoders, using: " + preferredQuality);
             }
 
             // The quality last selected is used as the only quality allowed by the player.
@@ -547,7 +767,7 @@ public class RememberVideoQualityPatch {
             // A quality the player cannot play is skipped, as when it is selected in the quality menu
             // (see isQualityPlayable()), otherwise the player and the SABR requests keep asking for it,
             // and the video reloads without playing.
-            VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
+            VideoQualityInterface[] qualities = isOtherVideo ? null : VideoInformation.getCurrentQualities();
             if (qualities != null) {
                 // Ordered from largest to smallest, with index 0 being 'Auto'.
                 for (VideoQualityInterface quality : qualities) {
@@ -563,7 +783,8 @@ public class RememberVideoQualityPatch {
             }
 
             logQualityDecision(() -> "Default quality " + preferredQuality + " is used as is, the qualities "
-                    + (qualities == null ? "are not known yet" : "of the video are all above it or not playable"));
+                    + (isOtherVideo ? "of the video loaded (" + cpn + ") are not known"
+                    : qualities == null ? "are not known yet" : "of the video are all above it or not playable"));
             return preferredQuality;
         } catch (Exception ex) {
             Logger.printException(() -> "getLastSelectedVideoQuality failure", ex);
@@ -597,7 +818,7 @@ public class RememberVideoQualityPatch {
             if (selectedResolution != null) {
                 resolution = selectedResolution > 0 ? selectedResolution : -1;
             } else {
-                resolution = getLastSelectedVideoQuality();
+                resolution = getLastSelectedVideoQuality(null);
             }
             if (resolution < 0) {
                 return null;

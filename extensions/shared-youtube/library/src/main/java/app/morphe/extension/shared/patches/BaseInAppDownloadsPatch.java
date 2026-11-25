@@ -172,6 +172,12 @@ public class BaseInAppDownloadsPatch {
     public interface FormatStreamInterface {
         int patch_getItag();
 
+        /**
+         * @return The ID of the video of the stream.
+         */
+        @Nullable
+        String patch_getVideoId();
+
         int patch_getWidth();
 
         int patch_getHeight();

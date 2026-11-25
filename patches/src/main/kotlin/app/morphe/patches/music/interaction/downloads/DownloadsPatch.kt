@@ -31,6 +31,7 @@ import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.downloads.EXTENSION_FORMAT_STREAM_INTERFACE
 import app.morphe.patches.shared.misc.downloads.EXTENSION_STREAMING_DATA_INTERFACE
 import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
+import app.morphe.patches.shared.misc.downloads.formatStreamInterfacePatch
 import app.morphe.patches.shared.misc.downloads.hookDownloadQualities
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
@@ -111,6 +112,7 @@ val downloadsPatch = patch(
 ) {
     dependsOn(
         downloadsResourcePatch,
+        formatStreamInterfacePatch,
         sharedExtensionPatch,
         settingsPatch,
         textComponentPatch,

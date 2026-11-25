@@ -208,6 +208,109 @@ internal fun getVideoQualityConstraintFingerprint(
     )
 ) {}
 
+internal const val SELECTABLE_FORMATS_TYPE =
+    "Lcom/google/android/apps/youtube/proto/streaming/SelectableFormatsOuterClass\$SelectableFormats;"
+
+/**
+ * Chooses the formats the SABR player asks the server for, from the quality constraint,
+ * the formats of the video and the media capabilities of the device.
+ * 20.26 also has a method with one parameter less that calls it.
+ */
+internal fun getSabrFormatSelectionFingerprint(constraintType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    filters = listOf(
+        methodCall(definingClass = constraintType, returnType = "Z", parameters = listOf("I"))
+    ),
+    custom = { method, _ ->
+        val types = method.parameterTypes.map { it.toString() }
+        val index = types.indexOf(SELECTABLE_FORMATS_TYPE)
+        types.getOrNull(0) == constraintType
+                && types.getOrNull(index - 2) == "Ljava/util/List;"
+                && types.getOrNull(index - 1) == "Ljava/util/List;"
+                && types.getOrNull(index + 1) ==
+                "Lcom/google/android/apps/youtube/proto/streaming/MediaCapabilitiesOuterClass\$MediaCapabilities;"
+    }
+) {}
+
+/**
+ * Equality of the quality constraints, which compares the quality range first.
+ */
+internal fun getVideoQualityConstraintEqualsFingerprint(constraintType: String) = object : Fingerprint(
+    definingClass = constraintType,
+    name = "equals",
+    filters = listOf(
+        fieldAccess( // Quality range.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this"
+        )
+    )
+) {}
+
+/**
+ * Constructor of the quality range of a quality constraint, from the highest to the lowest quality.
+ */
+internal fun getVideoQualityRangeConstructorFingerprint(rangeType: String) = object : Fingerprint(
+    definingClass = rangeType,
+    name = "<init>",
+    parameters = listOf("I", "I", "I", "L"),
+    filters = listOf(
+        fieldAccess( // Highest quality.
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I"
+        ),
+        fieldAccess( // Lowest quality.
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess( // Mode.
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess( // Formats.
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}
+
+/**
+ * Constructor of the quality constraint with all its fields.
+ */
+internal fun getVideoQualityConstraintConstructorFingerprint(
+    constraintType: String,
+    rangeType: String
+) = object : Fingerprint(
+    definingClass = constraintType,
+    name = "<init>",
+    parameters = listOf(rangeType, rangeType, "Z", "Ljava/lang/String;", "I", "I", "J", "I", "I", "L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_WIDE,
+            definingClass = "this",
+            type = "J"
+        ),
+        fieldAccess( // Last field.
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this"
+        )
+    )
+) {}
+
+/**
+ * Copy of the quality constraint that allows only one quality.
+ */
+internal fun getFixedVideoQualityConstraintFingerprint(constraintType: String) = object : Fingerprint(
+    definingClass = constraintType,
+    returnType = constraintType,
+    parameters = listOf("I")
+) {}
+
 internal object ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45387052)
@@ -402,6 +505,31 @@ internal fun mediaPushMediaSourceDiscardBufferFingerprint(bufferManagerClass: St
         methodCall(smali = "Ljava/lang/Math;->max(JJ)J")
     )
 )
+
+/**
+ * The player in front saves the client playback nonce (CPN) of the video of each video stage event,
+ * in the method that also gives the video ID of the player (VideoIdFingerprint).
+ * An ad saves its own CPN in another branch.
+ */
+internal fun getPlayingVideoCpnFingerprint(videoIdMethod: MethodReference) = object : Fingerprint(
+    definingClass = videoIdMethod.definingClass,
+    name = videoIdMethod.name,
+    returnType = "V",
+    parameters = videoIdMethod.parameterTypes.map { it.toString() },
+    filters = listOf(
+        fieldAccess( // CPN of the video of the event.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = videoIdMethod.parameterTypes.first().toString(),
+            type = "Ljava/lang/String;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}
 
 internal fun getCurrentVideoFormatConstructorFingerprint(
     videoQualityArray: String
