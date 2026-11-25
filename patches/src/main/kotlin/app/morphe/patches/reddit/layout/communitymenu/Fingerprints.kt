@@ -28,7 +28,7 @@ internal object CommunityMenuBadgeFingerprint : Fingerprint(
             definingClass = "Lcom/reddit/ui/compose/ds/BadgeSentiment;",
             name = "Brand"
         ),
-        string("community_menu_badge", location = MatchAfterImmediately()),
+        string("community_menu_badge", location = MatchAfterWithin(5)),
         methodCall(
             opcode = Opcode.INVOKE_STATIC_RANGE,
             parameters = listOf(

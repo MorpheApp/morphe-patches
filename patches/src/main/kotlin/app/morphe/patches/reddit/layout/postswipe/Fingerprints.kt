@@ -10,7 +10,6 @@ package app.morphe.patches.reddit.layout.postswipe
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
@@ -25,7 +24,6 @@ internal object PostDetailPagerSetupFingerprint : Fingerprint(
             definingClass = "Lcom/reddit/frontpage/presentation/listing/linkpager/refactor/PostDetailPagerScreen;",
             type = "Lcom/reddit/screen/widget/ScreenPager;"
         ),
-        string("pagerAdapter"),
         methodCall(
             definingClass = "Lcom/reddit/screen/widget/ScreenPager;",
             name = "setAdapter"

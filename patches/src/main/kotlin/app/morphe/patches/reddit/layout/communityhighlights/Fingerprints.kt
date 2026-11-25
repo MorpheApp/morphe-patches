@@ -23,7 +23,7 @@ internal object CommunityHighlightsFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     filters = listOf(
-        methodCall(definingClass = "Ljava/util/List;", name = "isEmpty"),
+        methodCall(name = "isEmpty", parameters = listOf(), returnType = "Z"),
         methodCall(
             definingClass = "Ljava/lang/Boolean;",
             name = "valueOf",
