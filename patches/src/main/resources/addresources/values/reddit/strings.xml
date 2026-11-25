@@ -300,6 +300,10 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_automoderator_comments_entry_show">Show</string>
     <string name="morphe_automoderator_comments_entry_collapse">Collapse</string>
     <string name="morphe_automoderator_comments_entry_hide">Hide</string>
+    <string name="morphe_hide_comment_user_flairs_title">Hide user flairs in comments</string>
+    <string name="morphe_hide_comment_user_flairs_summary">Hides the flair next to the names of comment authors</string>
+    <string name="morphe_hide_comment_community_badges_title">Hide community badges in comments</string>
+    <string name="morphe_hide_comment_community_badges_summary">Hides the community achievement badge next to the names of comment authors</string>
     <string name="morphe_collapse_all_comments_title">Collapse all comments button</string>
     <string name="morphe_collapse_all_comments_summary">Shows a button next to the comment count of a post that collapses or expands all comments</string>
     <string name="morphe_collapse_all_comments_scope_title">What the button collapses</string>
