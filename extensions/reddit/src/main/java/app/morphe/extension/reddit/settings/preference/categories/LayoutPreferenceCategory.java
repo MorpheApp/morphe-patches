@@ -141,6 +141,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.HOME_FEED_TABS
             ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_HOME_FEED_SWIPE
+            ));
         }
 
         if (DisablePostDetailSwipePatch.isPatchIncluded()) {
@@ -265,9 +269,9 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         }
 
         if (ShowViewCountPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            addPreference(new CustomDialogListPreference(
                     context,
-                    Settings.SHOW_VIEW_COUNT
+                    Settings.VIEW_COUNT
             ));
         }
 

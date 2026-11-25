@@ -28,8 +28,8 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val homeFeedTabsPatch = patch(
     name = "Home feed tabs",
-    description = "Adds an option to show the For You, Following and Popular tabs on the home feed, " +
-            "and to switch them by swiping. This patch works with Reddit 2026.43.0 and newer."
+    description = "Adds options to show the For You, Following and Popular tabs on the home feed, " +
+        "and to switch them by swiping or only by tapping. This patch works with Reddit 2026.43.0 and newer."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 

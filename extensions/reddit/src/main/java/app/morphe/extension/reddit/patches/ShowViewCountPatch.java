@@ -13,6 +13,16 @@ import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class ShowViewCountPatch {
+
+    /**
+     * Options for displaying the view count on posts.
+     */
+    public enum ViewCount {
+        DEFAULT,
+        SHOW,
+        HIDE
+    }
+
     private static final String ANDROID_POST_UNIT_VIEWS_COUNT = "android_post_unit_views_count_v2";
 
     /**
@@ -33,9 +43,12 @@ public final class ShowViewCountPatch {
             return original;
         }
 
-        if (Settings.SHOW_VIEW_COUNT.get() && experimentName != null
-                && experimentName.startsWith(ANDROID_POST_UNIT_VIEWS_COUNT)) {
-            return true;
+        if (experimentName != null && experimentName.startsWith(ANDROID_POST_UNIT_VIEWS_COUNT)) {
+            return switch (Settings.VIEW_COUNT.get()) {
+                case SHOW -> true;
+                case HIDE -> false;
+                case DEFAULT -> original;
+            };
         }
 
         return original;

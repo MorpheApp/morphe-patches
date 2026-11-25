@@ -10,6 +10,7 @@ package app.morphe.extension.reddit.patches;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.Logger;
 
 /**
  * Hides the buttons of posts in the feeds, the post detail screen and the media viewer.
@@ -34,6 +35,13 @@ public final class HidePostButtonsPatch {
         boolean patch_isHidden();
 
         void patch_setHidden(boolean hidden);
+    }
+
+    /**
+     * Added during patching to the state of an action bar button with a label.
+     */
+    public interface LabeledAction {
+        void patch_clearLabel();
     }
 
     /**
@@ -119,7 +127,26 @@ public final class HidePostButtonsPatch {
      */
     @Nullable
     public static Object getShareButton(@Nullable Object state) {
-        return Settings.HIDE_POST_SHARE_BUTTON.get() ? null : state;
+        if (Settings.HIDE_POST_SHARE_BUTTON.get()) {
+            return null;
+        }
+
+        if (Settings.HIDE_POST_SHARE_COUNT.get() && state != null) {
+            try {
+                ((LabeledAction) state).patch_clearLabel();
+            } catch (Exception ex) {
+                Logger.printException(() -> "getShareButton failure", ex);
+            }
+        }
+
+        return state;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideScore(boolean original) {
+        return original || Settings.HIDE_POST_VOTE_COUNT.get();
     }
 
     /**

@@ -22,6 +22,7 @@ import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassStyle;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
 import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrowsingMode;
+import app.morphe.extension.reddit.patches.ShowViewCountPatch.ViewCount;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch.GridColumns;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -60,7 +61,9 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_POST_MOD_BUTTON = new BooleanSetting("morphe_hide_post_mod_button", FALSE, true);
     public static final BooleanSetting HIDE_POST_REPOST_BUTTON = new BooleanSetting("morphe_hide_post_repost_button", FALSE, true);
     public static final BooleanSetting HIDE_POST_SHARE_BUTTON = new BooleanSetting("morphe_hide_post_share_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_SHARE_COUNT = new BooleanSetting("morphe_hide_post_share_count", FALSE, true);
     public static final BooleanSetting HIDE_POST_VOTE_BUTTONS = new BooleanSetting("morphe_hide_post_vote_buttons", FALSE, true);
+    public static final BooleanSetting HIDE_POST_VOTE_COUNT = new BooleanSetting("morphe_hide_post_vote_count", FALSE, true);
 
     // Sidebar
     public static final BooleanSetting HIDE_ABOUT_SHELF = new BooleanSetting("morphe_hide_about_shelf", FALSE, true);
@@ -95,6 +98,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting CUSTOM_FONT = new BooleanSetting("morphe_custom_font", FALSE, true);
     public static final StringSetting CUSTOM_FONT_FILE_PATH = new StringSetting("morphe_custom_font_file_path", "", true);
     public static final BooleanSetting DISABLE_HOME_FEED_AUTO_REFRESH = new BooleanSetting("morphe_disable_home_feed_auto_refresh", FALSE);
+    public static final BooleanSetting DISABLE_HOME_FEED_SWIPE = new BooleanSetting("morphe_disable_home_feed_swipe", FALSE, true);
     public static final BooleanSetting DISABLE_MODERN_HOME = new BooleanSetting("morphe_disable_modern_home", FALSE, true);
     public static final BooleanSetting DISABLE_POST_DETAIL_SWIPE = new BooleanSetting("morphe_disable_post_detail_swipe", FALSE, true);
     public static final BooleanSetting DISABLE_REFRESH_ON_BACK = new BooleanSetting("morphe_disable_refresh_on_back", FALSE);
@@ -136,11 +140,11 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
     public static final BooleanSetting SEARCH_HIDDEN_PROFILES = new BooleanSetting("morphe_search_hidden_profiles", FALSE);
     public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true, "morphe_show_flairs_in_home_feed_user_dialog_message");
-    public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
     public static final BooleanSetting SWAP_POST_VOTE_COMMENT_BUTTONS = new BooleanSetting("morphe_swap_post_vote_comment_buttons", FALSE, true);
     public static final BooleanSetting SWIPE_UP_FOR_COMMENTS = new BooleanSetting("morphe_swipe_up_for_comments", FALSE, true);
     public static final BooleanSetting TABLET_GRID_FEED = new BooleanSetting("morphe_tablet_grid_feed", TRUE);
     public static final EnumSetting<GridColumns> TABLET_GRID_COLUMNS = new EnumSetting<>("morphe_tablet_grid_columns", GridColumns.AUTO, parent(TABLET_GRID_FEED));
+    public static final EnumSetting<ViewCount> VIEW_COUNT = new EnumSetting<>("morphe_view_count", ViewCount.DEFAULT, true);
 
     // Miscellaneous
     public static final BooleanSetting DOWNLOAD_ALL_FROM_GALLERY = new BooleanSetting("morphe_download_all_from_gallery", TRUE);
@@ -172,6 +176,7 @@ public class Settings extends BaseSettings {
     private static final BooleanSetting DEPRECATED_HIDE_RECOMMENDED_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_recommended_communities_shelf", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_TRENDING_TODAY_SHELF = new BooleanSetting("morphe_hide_trending_today_shelf", FALSE, true);
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
+    private static final BooleanSetting DEPRECATED_SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
 
     static {
         SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_BLUR,
@@ -188,6 +193,10 @@ public class Settings extends BaseSettings {
         migrateOldSettingToNew(DEPRECATED_HIDE_RECOMMENDED_COMMUNITIES_SHELF, HIDE_COMMUNITIES_SHELF);
         migrateOldSettingToNew(DEPRECATED_HIDE_TRENDING_TODAY_SHELF, HIDE_TRENDING_SHELVES);
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
+        if (DEPRECATED_SHOW_VIEW_COUNT.get()) {
+            VIEW_COUNT.save(ViewCount.SHOW);
+            DEPRECATED_SHOW_VIEW_COUNT.resetToDefault();
+        }
 
         // endregion
     }
