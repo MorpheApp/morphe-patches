@@ -238,7 +238,7 @@ internal object ClassicPostElementConstructorFingerprint : Fingerprint(
     classFingerprint = ClassicPostElementToStringFingerprint,
     name = "<init>",
     filters = listOf(
-        // Flairs element, shown inside the classic post.
+        // Flairs element.
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
