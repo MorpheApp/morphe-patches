@@ -1,3 +1,14 @@
+## [2.4.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.13...v2.4.0-dev.14) (2026-11-25)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Feed card layout:** Save button of the cards with action buttons is not filled for the videos saved before the app is opened, and does not follow the Watch later button of the thumbnails ([#5347](https://github.com/MorpheApp/morphe-patches/issues/5347)) ([a76caaa](https://github.com/MorpheApp/morphe-patches/commit/a76caaadc7f90c6a6dd5add2bf6c67fb365d053c))
+* **YouTube - Glass menus:** Menus shown as a dropdown, such as the dropdown of the Shorts header, are not drawn as glass ([d8fe334](https://github.com/MorpheApp/morphe-patches/commit/d8fe334903e28d103318fa25ad75978fb01c3a61))
+* **YouTube - Hide layout components:** "Hide mix playlists" does not hide mixes of the new feed card layout, and "Hide video labels" hides "Members only" badges and no longer hides labels in search results ([369fde4](https://github.com/MorpheApp/morphe-patches/commit/369fde4fa561528d1bef8fb3d5f2b32e5495377d))
+* **YouTube - Navigation bar:** Subscriptions button is missing when YouTube moves it to a tab of Home and sends the navigation buttons without labels ([#5346](https://github.com/MorpheApp/morphe-patches/issues/5346)) ([e3c8b4c](https://github.com/MorpheApp/morphe-patches/commit/e3c8b4c7a980ed71f8b40c188a4ec2a3719410ac))
+* **YouTube - Restore original titles:** Link cards of a description that is not translated, such as of a playlist, are replaced by the plain link ([#5348](https://github.com/MorpheApp/morphe-patches/issues/5348)) ([98aa630](https://github.com/MorpheApp/morphe-patches/commit/98aa63045eccfe904171b22f72f92fffe73e0e6b))
+* **YouTube - Video quality:** Shorts play at a lower quality with the clients other than TV, Web and Mobile Web on devices whose video decoder lists a landscape size ([#5349](https://github.com/MorpheApp/morphe-patches/issues/5349)) ([09fae22](https://github.com/MorpheApp/morphe-patches/commit/09fae224849647c50aeb62357d0fc169de5a7649))
+
 ## [2.4.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.12...v2.4.0-dev.13) (2026-11-25)
 
 ### ✨ New Features
