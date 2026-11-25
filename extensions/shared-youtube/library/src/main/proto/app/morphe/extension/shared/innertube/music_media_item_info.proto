@@ -4,8 +4,9 @@ package app.morphe.extension.shared.innertube;
 
 option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
+option java_outer_classname = "MusicMediaItemInfo";
 
-// YouTube Music stores the container type in encoded Android Auto media IDs.
+// Android Auto media IDs of YouTube Music are this message, encoded as URL safe Base64.
 message MediaItemInfo {
     enum ContainerType {
         UNKNOWN = 0;

@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseResponse;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer;
 
 @SuppressWarnings("unused")
 final class AndroidAutoBrowseResponseParser {
@@ -194,18 +195,17 @@ final class AndroidAutoBrowseResponseParser {
         var contents = response.getContinuationContents();
         if (!contents.hasSectionListRenderer()) contents = response.getContents();
         if (!contents.hasSectionListRenderer()) {
+            TabRenderer sectionsTab = null;
             for (var wrapper : contents.getSingleColumnBrowseResultsRenderer().getTabsList()) {
                 var tab = wrapper.getTabRenderer();
-                var candidate = tab.getContent();
-                if (!candidate.hasSectionListRenderer()) continue;
-                if (tab.getSelected()) {
-                    contents = candidate;
-                    break;
+                if (!tab.getContent().hasSectionListRenderer()) continue;
+                if (sectionsTab == null || (tab.getSelected() && !sectionsTab.getSelected())) {
+                    sectionsTab = tab;
                 }
-                if (contents.getSectionListRenderer().isEmpty()) contents = candidate;
             }
+            if (sectionsTab == null) throw new IllegalArgumentException("Unrecognized browse contents");
+            contents = sectionsTab.getContent();
         }
-        if (!contents.hasSectionListRenderer()) throw new IllegalArgumentException("Unrecognized browse contents");
         return new ProtoMessage(contents.getSectionListRenderer().toByteArray());
     }
 

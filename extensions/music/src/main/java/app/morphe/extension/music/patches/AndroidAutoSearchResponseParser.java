@@ -61,6 +61,7 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.PageContents;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer;
 
 /** Reads titles, artwork, and playback actions from phone search responses. */
 @SuppressWarnings("unused")
@@ -111,39 +112,35 @@ final class AndroidAutoSearchResponseParser {
                         boolean preservePlaybackCommand, ResultCategory category) {}
 
     static List<SearchResult> parseSearchResults(PageContents contents, boolean uploaded) {
-        if (!contents.hasMessageRenderer() && !contents.hasSectionListRenderer()) {
+        if (!hasContents(contents)) {
             String requestedTabId = uploaded ? UPLOADS_TAB_ID : CATALOG_TAB_ID;
             boolean hasCatalogTab = false;
             boolean hasUploadsTab = false;
-            PageContents selected = null;
-            var fallback = PageContents.getDefaultInstance();
+            TabRenderer resultsTab = null;
             for (var wrapper : contents.getTabbedSearchResultsRenderer().getTabsList()) {
                 var tab = wrapper.getTabRenderer();
                 String id = tab.getTabIdentifier();
                 hasCatalogTab |= CATALOG_TAB_ID.equals(id);
                 hasUploadsTab |= UPLOADS_TAB_ID.equals(id);
                 if (!id.isEmpty() && !requestedTabId.equals(id)) continue;
-
-                var candidate = tab.getContent();
-                if (!candidate.hasSectionListRenderer() && !candidate.hasMessageRenderer()) continue;
-                if (requestedTabId.equals(id)) {
-                    selected = candidate;
-                    break;
-                }
-                // When the response omits tab IDs, prefer the selected tab, then the first with content.
-                if (tab.getSelected()) {
-                    if (selected == null) selected = candidate;
-                } else if (fallback.getSectionListRenderer().isEmpty() && fallback.getMessageRenderer().isEmpty()) {
-                    fallback = candidate;
+                if (!hasContents(tab.getContent())) continue;
+                // Without tab IDs, prefer the selected tab.
+                if (resultsTab == null || (tab.getSelected() && !resultsTab.getSelected())) {
+                    resultsTab = tab;
                 }
             }
             // Accounts without uploads omit that tab from an otherwise valid search response.
             if (uploaded && hasCatalogTab && !hasUploadsTab) return Collections.emptyList();
-            contents = selected != null ? selected : fallback;
+            if (resultsTab == null) throw new IllegalArgumentException("Unrecognized search contents");
+            contents = resultsTab.getContent();
         }
+        // YTM shows a message instead of sections if nothing was found.
         if (contents.hasMessageRenderer()) return Collections.emptyList();
-        if (!contents.hasSectionListRenderer()) throw new IllegalArgumentException("Unrecognized search contents");
         return readSections(new ProtoMessage(contents.getSectionListRenderer().toByteArray()));
+    }
+
+    private static boolean hasContents(PageContents contents) {
+        return contents.hasSectionListRenderer() || contents.hasMessageRenderer();
     }
 
     static String uploadedSearchParams(PageContents contents) {

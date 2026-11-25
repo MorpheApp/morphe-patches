@@ -118,6 +118,7 @@ public final class AndroidAutoPatch {
         Iterable<?> patch_getPaginationCommands();
     }
 
+    /** Added to MediaBrowserCompat.MediaItem to read the extras of its description. */
     public interface MediaItemExtras {
         @Nullable Bundle patch_getExtras();
     }
@@ -272,7 +273,7 @@ public final class AndroidAutoPatch {
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final String DEFAULT_PROMOTION_MEDIA_ID = "__DEFAULT_PROMOTION_ITEM_ID__";
     private static final String IS_PROMOTION = "com.google.android.apps.youtube.music.mediabrowser.IS_PROMOTION";
-    private static final String OFFLINE_PODCASTS_MEDIA_ID = "__OFFLINE_MODE_PODCASTS_TAB_MEDIA_ID__";
+    private static final String LOCAL_MEDIA_ID_PREFIX = "__";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
     private static final String THIRD_PARTY_HOME_MEDIA_ID = "morphe:aa:home";
@@ -774,8 +775,6 @@ public final class AndroidAutoPatch {
     // Root requests that wait for a root fetch YTM started for an earlier request, keyed by that fetch.
     @GuardedBy("AndroidAutoPatch.class")
     private static final Map<Object, List<Runnable>> waitingForRoot = new WeakHashMap<>();
-    @GuardedBy("AndroidAutoPatch.class")
-    private static final Set<BrowseRequest> deferredRoots = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
      * Injection point. Replaces YTM's check for a root fetch that is already loading for the same client.
@@ -796,7 +795,6 @@ public final class AndroidAutoPatch {
                         request.patch_deliverBrowseItems(Collections.emptyList());
                     }
                 });
-                deferredRoots.add(request);
                 return ROOT_REQUEST_QUEUED;
             }
         } catch (RuntimeException ex) {
@@ -876,7 +874,7 @@ public final class AndroidAutoPatch {
         try {
             String parentMediaId = request.patch_getRequestedMediaId();
             if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
-                return updateTabs(ytmItems, deferredRoots.remove(request));
+                return updateTabs(ytmItems);
             }
             if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
                 return new ArrayList<>(cachedPodcastFolders);
@@ -917,35 +915,22 @@ public final class AndroidAutoPatch {
     @Nullable
     @GuardedBy("AndroidAutoPatch.class")
     private static List<MediaBrowserCompat.MediaItem> updateTabs(
-            @Nullable List<MediaBrowserCompat.MediaItem> rootTabs, boolean queued) {
-        if (rootTabs == null || rootTabs.isEmpty()) {
-            // A queued request can miss YTM's cache after the first connection has opened Home.
-            // Keep that connection's folder subscriptions and cached podcast folders.
-            if (!queued) resetBrowseTabs(null, null);
-            return rootTabs;
-        }
+            @Nullable List<MediaBrowserCompat.MediaItem> rootTabs) {
+        // YTM returns no tabs if the root fetch failed or is still loading.
+        // Another connection can still be using the tabs that loaded earlier.
+        if (rootTabs == null || rootTabs.isEmpty()) return rootTabs;
 
         List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs.size() + 2);
-        MediaBrowserCompat.MediaItem settings = null;
-        MediaBrowserCompat.MediaItem podcasts = null;
         String homeId = null;
         String libraryId = null;
         int podcastsIndex = -1;
         boolean hasNativePodcasts = false;
         boolean hasContent = false;
         for (MediaBrowserCompat.MediaItem tab : rootTabs) {
-            String id = tab.a();
-            if (SETTINGS_MEDIA_ID.equals(id)) {
-                settings = tab;
-                continue;
-            }
-            if (PODCASTS_MEDIA_ID.equals(id)) {
-                podcasts = tab;
-                continue;
-            }
             tabs.add(tab);
             if (!isContentFolder(tab)) continue;
             hasContent = true;
+            String id = tab.a();
             switch (containerType(id)) {
                 case HOME -> {
                     homeId = id;
@@ -956,25 +941,21 @@ public final class AndroidAutoPatch {
             }
         }
 
-        // Auto can request the same folders again after the startup fetch has finished.
+        // Android Auto can request the same tabs again, such as from a second connection at startup.
+        // Keep the folder subscriptions and the cached podcast folders.
         if (!Objects.equals(homeId, homeMediaId) || !Objects.equals(libraryId, libraryMediaId)) {
             resetBrowseTabs(homeId, libraryId);
         }
-        if (hasContent) {
-            if (podcastsIndex >= 0 && !hasNativePodcasts) {
-                tabs.add(podcastsIndex, podcasts != null ? podcasts : podcastsTab());
-            }
-            tabs.add(settings != null ? settings : AndroidAutoSettingsTab.settingsTab());
-        }
-        return tabs.equals(rootTabs) ? rootTabs : tabs;
+        if (podcastsIndex >= 0 && !hasNativePodcasts) tabs.add(podcastsIndex, podcastsTab());
+        if (hasContent) tabs.add(AndroidAutoSettingsTab.settingsTab());
+        return tabs;
     }
 
+    /** Reads a tab's type from its media ID, like YTM does. */
     private static ContainerType containerType(String mediaId) {
-        // Let YTM serve offline Home and Library from local content.
-        // Recognize offline Podcasts so the patch can avoid adding a second Podcasts tab.
-        if (mediaId.startsWith("__")) {
-            return OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId) ? ContainerType.PODCASTS : ContainerType.UNKNOWN;
-        }
+        // YTM serves these from local content, such as Downloads and the offline Home and Library.
+        // The IDs are plain text, not an encoded message.
+        if (mediaId.startsWith(LOCAL_MEDIA_ID_PREFIX)) return ContainerType.UNKNOWN;
         try {
             return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getContainerType();
         } catch (IllegalArgumentException | InvalidProtocolBufferException ex) {
@@ -985,6 +966,7 @@ public final class AndroidAutoPatch {
 
     @GuardedBy("AndroidAutoPatch.class")
     private static void resetBrowseTabs(@Nullable String homeId, @Nullable String libraryId) {
+        Logger.printDebug(() -> "Android Auto Home: " + homeId + " Library: " + libraryId);
         homeMediaId = homeId;
         libraryMediaId = libraryId;
         librarySubscription = null;
@@ -995,8 +977,8 @@ public final class AndroidAutoPatch {
     }
 
     private static boolean isContentFolder(MediaBrowserCompat.MediaItem item) {
-        // YTM also marks its upgrade prompt as browsable.
         if (!item.b()) return false;
+        // YTM also marks its upgrade prompt and other promotions as browsable.
         String id = item.a();
         Bundle extras = ((MediaItemExtras) item).patch_getExtras();
         return !UPGRADE_PROMPT_MEDIA_ID.equals(id) && !DEFAULT_PROMOTION_MEDIA_ID.equals(id)

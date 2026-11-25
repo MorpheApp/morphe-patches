@@ -66,6 +66,8 @@ private const val FOLDER_RELOAD =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$FolderReload;"
 private const val PHONE_BROWSE_ITEM =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$PhoneBrowseItem;"
+private const val MEDIA_ITEM_EXTRAS =
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$MediaItemExtras;"
 private const val MUSIC_BROWSER_SERVICE_CLASS =
     "Lcom/google/android/apps/youtube/music/mediabrowser/MusicBrowserService;"
 
@@ -626,15 +628,14 @@ private fun patchBrowseRequests() {
     )
 }
 
-/** Extras are named values attached to a media item, such as YTM's promotion flag. */
+/** Lets the extension read YTM's promotion flag, which is in the extras of a media item's description. */
 private fun addMediaItemExtrasInterface() {
     val itemClass = mutableClassDefBy($$"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;")
-    val descriptionClass = mutableClassDefBy("Landroid/support/v4/media/MediaDescriptionCompat;")
-    val descriptionField = itemClass.instanceFields.single { it.type == descriptionClass.type }
-    val extrasField = descriptionClass.instanceFields.single { it.type == "Landroid/os/Bundle;" }
-    extrasField.accessFlags = extrasField.accessFlags.toPublicAccessFlags()
+    val descriptionType = "Landroid/support/v4/media/MediaDescriptionCompat;"
+    val descriptionField = itemClass.instanceFields.single { it.type == descriptionType }
+    val extrasField = classDefBy(descriptionType).instanceFields.single { it.type == "Landroid/os/Bundle;" }
     itemClass.addPatchInterface(
-        $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$MediaItemExtras;",
+        MEDIA_ITEM_EXTRAS,
         "patch_getExtras",
         """
             iget-object p0, p0, $descriptionField
