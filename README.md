@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.11](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.11)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;256 patches total
+> **[v2.4.0-dev.12](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.12)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;265 patches total
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;62 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;63 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -49,6 +49,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 |----------|----------------|-----------|
 | [A-B loop](#a-b-loop) | Adds an option to loop part of a song by long-pressing the seekbar to set the loop start and end. |  |
 | [Android Auto](#android-auto) | Bypasses certificate checks and restores YouTube Music Home recommendations, Library collections, and podcasts in Android Auto. |  |
+| [Android Auto third-party apps](#android-auto-third-party-apps) | Allows third-party Android Auto apps, such as DriveDeck, Gearslip, AARE and Flywheel, to browse Home and Library. Any installed app can then browse YouTube Music. |  |
 | [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
 | [Apple Music animated artwork](#apple-music-animated-artwork) | Adds an option to show the animated album artwork of Apple Music in the player. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
@@ -132,8 +133,8 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Autoplay control](#autoplay-control) | Adds a player button and a rule for the next video: playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays. |  |
 | [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
 | [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
-| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, and show captions in stable blocks and in picture-in-picture. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer. |  |
-| [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
+| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, show captions in stable blocks and in picture-in-picture, and copy the transcript. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer. |  |
+| [Change form factor](#change-form-factor) | Adds options to change the UI appearance to a phone, tablet, or automotive device, and to use the automotive layout and auto-hide the navigation bar on a car display. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change picture-in-picture actions](#change-picture-in-picture-actions) | Adds options to change the buttons shown in picture-in-picture mode. |  |
 | [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
@@ -256,13 +257,13 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;60 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;68 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.47.0 | 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;2026.47.0 | 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 2026.40.0 | 2026.37.0 | 2026.24.0 | 2026.10.0 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
@@ -274,10 +275,11 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Copy text](#copy-text) | Adds an option to make post and comment text selectable and copyable. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Custom branding name for Reddit](#custom-branding-name-for-reddit) | Changes the Reddit app name to the name specified in patch options. | • App name |
 | [Custom font](#custom-font) | Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime. |  |
-| [Customize post layout](#customize-post-layout) | Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
+| [Customize post layout](#customize-post-layout) | Adds options to show or hide the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
 | [Disable bottom bar auto-hide](#disable-bottom-bar-auto-hide) | Adds an option to keep the bottom navigation bar visible while scrolling. |  |
 | [Disable home feed auto-refresh](#disable-home-feed-auto-refresh) | Adds an option to stop the home feed from reloading and jumping to the top when you return to the app. |  |
 | [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier, and 2026.40.0 and later. |  |
+| [Disable post detail swipe](#disable-post-detail-swipe) | Adds an option to stop swiping sideways in a post from opening the next or previous post. |  |
 | [Disable refresh on back to exit](#disable-refresh-on-back-to-exit) | Adds an option to exit the app with back on the home feed without first scrolling to the top and reloading. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
 | [Download all from gallery](#download-all-from-gallery) | Adds an option to download every item of a gallery post with the Download button of the share sheet. This patch works with Reddit 2026.44.0 and newer. |  |
@@ -289,6 +291,8 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force system font](#force-system-font) | Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto. |  |
 | [Full width feed media](#full-width-feed-media) | Adds an option to show images and videos edge to edge in the feed and post details, without side padding and rounded corners. |  |
 | [Full-screen reply](#full-screen-reply) | Adds an option to write replies in the older full-screen editor, which shows the comment you are replying to. This patch works with Reddit 2026.24.0 and newer. |  |
+| [Glass navigation bar](#glass-navigation-bar) | Adds an option to show the bottom navigation bar, or the side rail on tablets, as a floating translucent capsule. This patch works with Reddit 2026.24.0 and newer. |  |
+| [Hide Answers preview](#hide-answers-preview) | Adds an option to hide the Reddit Answers preview at the top of search results. |  |
 | [Hide Ask button](#hide-ask-button) | Adds an option to hide Ask button in the search bar. |  |
 | [Hide People also search for section](#hide-people-also-search-for-section) | Adds an option to hide the 'People also search for' section from search results. |  |
 | [Hide Reddit search](#hide-reddit-search) | Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting |  |
@@ -296,7 +300,10 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide the Trending shelves from feed and search suggestions. |  |
 | [Hide Videos for you shelf](#hide-videos-for-you-shelf) | Adds an option to hide the 'Videos for you' shelf in the home feed. This patch works with Reddit 2026.40.0 and newer. |  |
 | [Hide ads](#hide-ads) | Adds options to hide ads. |  |
+| [Hide comment flairs and badges](#hide-comment-flairs-and-badges) | Adds options to hide user flairs and community badges next to the authors of comments. |  |
 | [Hide communities shelf](#hide-communities-shelf) | Adds an option to hide the related or suggested communities shelf in subreddits. |  |
+| [Hide community highlights](#hide-community-highlights) | Adds an option to hide the Community highlights section at the top of subreddits. |  |
+| [Hide community menu badge](#hide-community-menu-badge) | Adds an option to hide the red dot on the community menu button. |  |
 | [Hide home tabs](#hide-home-tabs) | Adds options to hide the For You, Following and Popular tabs of the home feed. This patch works with Reddit 2026.40.0 and later. |  |
 | [Hide interactive posts](#hide-interactive-posts) | Adds an option to hide game and other interactive app posts from the home feed and other recommended feeds. |  |
 | [Hide media viewer components](#hide-media-viewer-components) | Adds options to hide the "See the conversation" button and the title, buttons and video controls of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer. |  |
@@ -304,7 +311,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide post buttons](#hide-post-buttons) | Adds options to hide the buttons of posts in the feeds, the post detail screen and the media viewer, such as the Join, vote, comment, award, repost and share buttons. Hiding the buttons below posts works with Reddit 2026.24.0 and newer. |  |
 | [Hide sidebar components](#hide-sidebar-components) | Adds options to hide the sidebar components. |  |
 | [High quality avatars](#high-quality-avatars) | Adds an option to show user avatars in full resolution instead of the low resolution version. |  |
-| [Home feed tabs](#home-feed-tabs) | Adds an option to show the For You, Following and Popular tabs on the home feed, and to switch them by swiping. This patch works with Reddit 2026.43.0 and newer. |  |
+| [Home feed tabs](#home-feed-tabs) | Adds options to show the For You, Following and Popular tabs on the home feed, and to switch them by swiping or only by tapping. This patch works with Reddit 2026.43.0 and newer. |  |
 | [Keep feed position](#keep-feed-position) | Adds an option to keep the feed at the same position after closing a post, image or video, instead of moving the opened post to the top of the screen. |  |
 | [Keep media viewer in subreddit](#keep-media-viewer-in-subreddit) | Adds an option to show only posts from the same subreddit when swiping through the full screen media viewer. |  |
 | [Keyword filters](#keyword-filters) | Adds an option to hide feed posts with a title or text that matches a regular expression. |  |
@@ -320,12 +327,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
 | [Search hidden profiles](#search-hidden-profiles) | Adds an option to make the profile search find the posts of profiles that hide their posts or comments. |  |
+| [See-through status bar](#see-through-status-bar) | Adds an option to let the home feed scroll up under the status bar and fade into it. This patch works with Reddit 2026.43.0 and newer. |  |
 | [Share post content](#share-post-content) | Adds an option to share the image, video or text of a post instead of its link when using app shortcuts or "Share via…" in the share sheet. |  |
 | [Show flairs in home feed](#show-flairs-in-home-feed) | Adds an option to show post flair badges in the home feed. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |
 | [Start as guest](#start-as-guest) | Skips the forced startup login screen using Reddit's native guest browsing mode. |  |
 | [Swipe up for comments](#swipe-up-for-comments) | Adds an option to open the comments by swiping up in the media viewer, and to swipe sideways for the next post. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Tablet grid feed](#tablet-grid-feed) | Adds an option to show feeds as a grid with 2 or 3 columns on tablets. |  |
+| [Video playback speed](#video-playback-speed) | Adds an option to show Reddit's playback speed controls in the full-screen video player. This patch works with Reddit 2026.40.0 and newer. |  |
 
 </details>
 
