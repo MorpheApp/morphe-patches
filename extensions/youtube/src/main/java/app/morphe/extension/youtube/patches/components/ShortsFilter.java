@@ -753,6 +753,13 @@ public final class ShortsFilter extends Filter {
             return logDecision(component, hideHome, "player: home");
         }
 
+        // The feed behind the Shorts player is laid out again while the Shorts player is open,
+        // such as the search results a Short was opened from, whose search bar is not shown meanwhile.
+        if (NavigationBar.isSearchBarBehindShortsPlayer()) {
+            return hideShortsInFeed(component, "search behind the Shorts player",
+                    Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
+        }
+
         // Must check second, as search can be from any tab.
         if (NavigationBar.isSearchBarActive()) {
             return hideShortsInFeed(component, "search", Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);

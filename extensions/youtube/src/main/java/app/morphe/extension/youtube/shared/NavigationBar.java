@@ -157,6 +157,22 @@ public final class NavigationBar {
     }
 
     /**
+     * @return If the search results are behind the Shorts player, such as the search results a Short
+     *         was opened from. The Shorts player hides the search bar while it's open,
+     *         and the feed behind it can be laid out again meanwhile.
+     */
+    public static boolean isSearchBarBehindShortsPlayer() {
+        return isSearchBarBehindShortsPlayer;
+    }
+
+    private static volatile boolean isSearchBarBehindShortsPlayer;
+
+    static {
+        ShortsPlayerState.getOnChange().addObserver(isOpen ->
+                isSearchBarBehindShortsPlayer = isOpen && isSearchBarActive());
+    }
+
+    /**
      * If the last loaded search bar is attached to the window.
      */
     private static volatile boolean isSearchBarAttached;
