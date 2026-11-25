@@ -52,6 +52,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_glass_navigation_bar_height_summary">Height of the capsule on phones</string>
     <string name="morphe_glass_navigation_bar_width_title">Glass width</string>
     <string name="morphe_glass_navigation_bar_width_summary">Width of the navigation bar and its buttons on phones</string>
+    <string name="morphe_glass_navigation_bar_position_title">Bar position</string>
+    <string name="morphe_glass_navigation_bar_position_summary">Lifts the navigation bar up from the bottom of the screen on phones</string>
+    <string name="morphe_glass_navigation_bar_show_labels_title">Show labels</string>
+    <string name="morphe_glass_navigation_bar_show_labels_summary_on">Buttons show their labels</string>
+    <string name="morphe_glass_navigation_bar_show_labels_summary_off">Buttons show icons only</string>
     <string name="morphe_hide_answers_button_title">Hide Answers button</string>
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_create_button_title">Hide Create button</string>

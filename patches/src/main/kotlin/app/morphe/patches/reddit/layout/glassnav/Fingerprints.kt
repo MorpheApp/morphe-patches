@@ -190,6 +190,12 @@ internal object BottomNavBarOffsetFingerprint : Fingerprint(
     filters = listOf(
         methodCall(definingClass = "Ljava/lang/Number;", name = "floatValue"),
         opcode(Opcode.INT_TO_FLOAT),
+        // Clamp of the expanded fraction.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("F", "F", "F"),
+            returnType = "F"
+        ),
         methodCall(
             definingClass = "Ljava/lang/Math;",
             name = "max",
@@ -203,4 +209,60 @@ internal object BottomNavBarOffsetFingerprint : Fingerprint(
     custom = { _, classDef ->
         classDef.fields.any { it.type == BOTTOM_NAV_SCREEN_CLASS }
     }
+)
+
+/**
+ * Vertical placement of the bottom navigation bar while it slides, 2026.47.0+.
+ */
+internal object BottomNavBarPlacementFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(definingClass = "Lkotlin/jvm/functions/Function0;", name = "invoke"),
+        methodCall(
+            definingClass = "Ljava/lang/Number;",
+            name = "floatValue",
+            location = MatchAfterWithin(3)
+        ),
+        literal(1.0f, location = MatchAfterWithin(2)),
+        opcode(Opcode.SUB_FLOAT_2ADDR, location = MatchAfterImmediately()),
+        opcode(Opcode.IGET, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterImmediately()),
+        opcode(Opcode.MUL_FLOAT_2ADDR, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("F"),
+            returnType = "I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Button of the bottom navigation bar and of the side rail.
+ */
+internal object BottomNavButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    definingClass = "Lcom/reddit/widget/bottomnav/a;",
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Lkotlin/jvm/functions/Function0;",
+        "Ljava/lang/String;",
+        "Z",
+        "L",
+        "Lkotlin/jvm/functions/Function0;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lkotlin/jvm/functions/Function2;",
+        "Lkotlin/jvm/functions/Function2;",
+        "Landroidx/compose/runtime/internal/a;",
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        string("bottom_nav_button")
+    )
 )

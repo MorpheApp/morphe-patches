@@ -77,6 +77,14 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.GLASS_NAVIGATION_BAR_WIDTH
             ));
+            addPreference(new SeekBarSettingPreference(
+                    context,
+                    Settings.GLASS_NAVIGATION_BAR_POSITION
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.GLASS_NAVIGATION_BAR_SHOW_LABELS
+            ));
         }
 
         if (HideNavigationButtonsPatch.isPatchIncluded()) {

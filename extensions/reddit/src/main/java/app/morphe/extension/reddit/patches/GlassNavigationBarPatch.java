@@ -147,6 +147,10 @@ public final class GlassNavigationBarPatch {
     static final int BLUR_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_BLUR);
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
     private static final int WIDTH_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_WIDTH);
+    private static final int POSITION_DP = GLASS_ENABLED
+            ? SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_POSITION)
+            : 0;
+    private static final boolean HIDE_LABELS = GLASS_ENABLED && !Settings.GLASS_NAVIGATION_BAR_SHOW_LABELS.get();
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -171,6 +175,8 @@ public final class GlassNavigationBarPatch {
      * How far the bottom bar is slid down while it hides, in pixels.
      */
     private static int barSlide;
+
+    private static int positionPx = -1;
 
     /**
      * @return If this patch was included during patching.
@@ -263,11 +269,66 @@ public final class GlassNavigationBarPatch {
      *
      * @param lift      How far the bar is lifted from below the screen, in pixels.
      * @param barHeight Height of the bar, in pixels.
+     * @param fraction  Expanded fraction of the bar (1 = shown, 0 = hidden).
+     * @return Adjusted lift, in pixels.
      */
-    public static void setBarOffset(int lift, float barHeight) {
-        if (FROSTED_ENABLED) {
-            barSlide = Math.max(0, Math.max(lift, Math.round(barHeight)) - lift);
+    public static int getBarOffset(int lift, float barHeight, float fraction) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED) {
+            return lift;
         }
+
+        try {
+            final int extra = Math.round(getPositionPx() * Utils.clamp(fraction, 0f, 1f));
+            final int adjusted = lift + extra;
+            if (FROSTED_ENABLED) {
+                barSlide = Math.max(lift, Math.round(barHeight)) - adjusted;
+            }
+            return adjusted;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getBarOffset failure", ex);
+            return lift;
+        }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param y      Vertical placement of the bar, in pixels.
+     * @param height Height of the bar, in pixels.
+     * @return Adjusted vertical placement, in pixels.
+     */
+    public static int getBarPlacement(int y, int height) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED) {
+            return y;
+        }
+
+        try {
+            final float fraction = Utils.clamp(height > 0 ? 1 - (float) y / height : 1, 0f, 1f);
+            final int out = y - Math.round(getPositionPx() * fraction);
+            if (FROSTED_ENABLED) {
+                barSlide = out;
+            }
+            return out;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getBarPlacement failure", ex);
+            return y;
+        }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return If the button shows its label.
+     */
+    public static boolean showLabel(boolean original) {
+        return original && !HIDE_LABELS;
+    }
+
+    private static int getPositionPx() {
+        if (positionPx < 0) {
+            positionPx = Math.round(POSITION_DP * getDensity());
+        }
+        return positionPx;
     }
 
     /**
