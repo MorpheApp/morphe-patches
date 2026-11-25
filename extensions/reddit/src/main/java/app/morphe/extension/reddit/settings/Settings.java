@@ -76,6 +76,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_REDDIT_PRO_SHELF = new BooleanSetting("morphe_hide_reddit_pro_shelf", FALSE, true);
     public static final BooleanSetting HIDE_RESOURCES_SHELF = new BooleanSetting("morphe_hide_resources_shelf", FALSE, true);
     public static final BooleanSetting HIDE_START_A_COMMUNITY_SHELF = new BooleanSetting("morphe_hide_start_a_community_shelf", FALSE, true);
+    public static final BooleanSetting SETTINGS_IN_SIDEBAR = new BooleanSetting("morphe_settings_in_sidebar", TRUE, true);
 
     // Filters
     /**
