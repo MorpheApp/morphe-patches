@@ -42,11 +42,11 @@ import app.morphe.extension.shared.theme.ThemeUtils;
  * <p>
  * Android 14 and later only: on Android 12 and 13 a blur render effect that is redrawn can crash the app.
  */
-@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+@RequiresApi(Build.VERSION_CODES.S)
 final class AppBackdropDrawable extends Drawable {
 
     /**
-     * How long the dim of the window takes to fade in.
+     * How long the window dimming takes to fade in.
      */
     private static final long DIM_FADE_MS = 200;
 
@@ -64,6 +64,7 @@ final class AppBackdropDrawable extends Drawable {
     private View app;
     private long shownTime;
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     AppBackdropDrawable(View menu, float blurRadius) {
         this.menu = menu;
         node.setRenderEffect(RenderEffect.createBlurEffect(blurRadius, blurRadius, Shader.TileMode.CLAMP));
