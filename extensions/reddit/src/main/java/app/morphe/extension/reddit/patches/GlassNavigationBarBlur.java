@@ -7,6 +7,10 @@
 
 package app.morphe.extension.reddit.patches;
 
+import static app.morphe.extension.reddit.utils.ComposeUtils.getDensity;
+import static app.morphe.extension.reddit.utils.ComposeUtils.unpackFirst;
+import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
+
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
@@ -22,8 +26,8 @@ import android.os.Build;
 import androidx.annotation.ColorInt;
 import androidx.annotation.RequiresApi;
 
-import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.ComposeCanvas;
-import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.ContentDrawScope;
+import app.morphe.extension.reddit.utils.ComposeUtils.ComposeCanvas;
+import app.morphe.extension.reddit.utils.ComposeUtils.ContentDrawScope;
 import kotlin.jvm.functions.Function1;
 
 /**
@@ -51,8 +55,8 @@ final class GlassNavigationBarBlur {
             ComposeCanvas composeCanvas = scope.patch_getCanvas();
             Canvas canvas = composeCanvas.patch_getNativeCanvas();
             final long size = scope.patch_getSize();
-            final int width = (int) Math.ceil(GlassNavigationBarPatch.unpackFirst(size));
-            final int height = (int) Math.ceil(GlassNavigationBarPatch.unpackSecond(size));
+            final int width = (int) Math.ceil(unpackFirst(size));
+            final int height = (int) Math.ceil(unpackSecond(size));
 
             if (!canvas.isHardwareAccelerated() || width <= 0 || height <= 0) {
                 scope.patch_drawContent();
@@ -110,7 +114,7 @@ final class GlassNavigationBarBlur {
         // Same as without the render node.
         PAGE_NODE.setClipToBounds(false);
 
-        final float density = GlassNavigationBarPatch.getDensity();
+        final float density = getDensity();
         final float radius = GlassNavigationBarPatch.BLUR_PERCENT * MAX_BLUR_RADIUS_DP * density / 100;
         BLUR_MARGIN = (int) Math.ceil(radius);
 
@@ -144,7 +148,7 @@ final class GlassNavigationBarBlur {
 
         final int capsuleLeft = (int) Math.floor(left);
         final int capsuleTop = (int) Math.floor(top);
-        final float barHeight = GlassNavigationBarPatch.unpackSecond(scope.patch_getSize());
+        final float barHeight = unpackSecond(scope.patch_getSize());
 
         blurLeft = capsuleLeft - BLUR_MARGIN;
         blurTopFromBottom = Math.round(barHeight) - capsuleTop + BLUR_MARGIN;

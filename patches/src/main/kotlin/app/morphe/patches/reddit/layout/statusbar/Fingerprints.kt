@@ -13,103 +13,73 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+/**
+ * Home feed and the app bar above it.
+ */
 internal object HomeScaffoldFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "L",
-        "L",
-        "Lkotlin/jvm/functions/Function1;",
-        "L",
-        "Z",
-        "Z",
-        "Lcom/reddit/listing/model/sort/SortType;",
-        "Lkotlin/jvm/functions/Function2;",
-        "Z",
-        "Z",
-        "Lkotlin/jvm/functions/Function0;",
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Landroidx/compose/runtime/internal/a;",
-        "Landroidx/compose/runtime/internal/a;",
-        "L",
-        "Landroidx/compose/runtime/internal/a;",
-        "L",
-        "I"
-    ),
     filters = listOf(
+        // If the side rail is shown.
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("L"),
             returnType = "Z"
         ),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        // App bar text height.
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("Z", "L"),
             returnType = "F",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         ),
+
+        // Modifier of the feed.
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("L", "F"),
-            returnType = "L"
+            definingClass = "Landroidx/compose/ui/input/nestedscroll/c;"
         ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // WindowInsets.statusBars
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("L"),
             returnType = "L",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(20)
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Modifier.windowInsetsPadding
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("L", "L"),
             returnType = "L",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+
+        // Modifier.background of the app bar.
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("L", "J", "L"),
             returnType = "L"
         ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Modifier.graphicsLayer, with the alpha of the app bar.
         methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("L"),
+            definingClass = "Landroidx/compose/ui/graphics/d;",
             returnType = "L",
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("L", "L"),
-            returnType = "L",
-            location = MatchAfterImmediately()
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC_RANGE,
-            parameters = listOf("L", "F", "F", "F", "F", "F", "L", "Z", "I", "I"),
-            returnType = "L",
-            location = MatchAfterWithin(40)
+            location = MatchAfterWithin(50)
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
 
 internal object HomeTopBarHeightFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     definingClass = "Lcom/reddit/feedslegacy/switcher/impl/homepager/compose/HomePagerScreen;",
     returnType = "F",
     parameters = listOf(),
     filters = listOf(
-        literal(0x42500000),
+        literal(52f),
         opcode(Opcode.RETURN, location = MatchAfterWithin(10))
     )
 )

@@ -47,6 +47,7 @@ import app.morphe.extension.reddit.patches.PostSidePanelPatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.SearchHiddenProfilesPatch;
+import app.morphe.extension.reddit.patches.SeeThroughStatusBarPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.patches.SwipeUpForCommentsPatch;
@@ -98,6 +99,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
                 SearchHiddenProfilesPatch.isPatchIncluded() ||
                 HighQualityAvatarsPatch.isPatchIncluded() ||
+                SeeThroughStatusBarPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 FullScreenReplyPatch.isPatchIncluded() ||
@@ -252,6 +254,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SEARCH_HIDDEN_PROFILES
+            ));
+        }
+
+        if (SeeThroughStatusBarPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SEE_THROUGH_STATUS_BAR
             ));
         }
 

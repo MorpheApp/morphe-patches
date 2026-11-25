@@ -15,7 +15,6 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.DisableBottomBarAutoHidePatch;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
-import app.morphe.extension.reddit.patches.SeeThroughStatusBarPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.SeekBarSettingPreference;
@@ -33,7 +32,6 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
     public boolean getSettingsStatus() {
         return DisableBottomBarAutoHidePatch.isPatchIncluded() ||
                 GlassNavigationBarPatch.isPatchIncluded() ||
-                SeeThroughStatusBarPatch.isPatchIncluded() ||
                 HideNavigationButtonsPatch.isPatchIncluded();
     }
 
@@ -78,13 +76,6 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new SeekBarSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_WIDTH
-            ));
-        }
-
-        if (SeeThroughStatusBarPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.SEE_THROUGH_STATUS_BAR
             ));
         }
 

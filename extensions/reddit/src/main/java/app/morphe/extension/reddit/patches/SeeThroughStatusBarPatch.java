@@ -7,350 +7,202 @@
 
 package app.morphe.extension.reddit.patches;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.content.res.Resources;
-import android.hardware.display.DisplayManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Display;
-import android.view.View;
-import android.view.WindowInsets;
-import android.view.WindowManager;
-import java.lang.ref.WeakReference;
-import kotlin.jvm.functions.Function1;
+import static app.morphe.extension.reddit.utils.ComposeUtils.getDensity;
+import static app.morphe.extension.reddit.utils.ComposeUtils.pack;
+import static app.morphe.extension.reddit.utils.ComposeUtils.unpackFirst;
+import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 
-import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.ContentDrawScope;
-import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.Modifier;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Shader;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.reddit.utils.ComposeUtils.ContentDrawScope;
+import app.morphe.extension.reddit.utils.ComposeUtils.Modifier;
+import app.morphe.extension.reddit.utils.ComposeUtils.WindowInsets;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
+import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings("unused")
 public final class SeeThroughStatusBarPatch {
 
-    private static volatile long appBarColor = 0L;
-    private static volatile boolean sideLayout;
-    private static volatile int cachedStatusBarPx = 0;
-    private static volatile WeakReference<Activity> currentActivity = null;
-    private static volatile Context windowContext = null;
-    private static volatile boolean lifecycleRegistered = false;
-
     /**
-     * Not a lambda and not in the outer class, for the same reasons as the glass capsule draw.
+     * Draws a fade over the part of the feed that is behind the status bar.
      */
-    private static final class ScrimDraw implements Function1<ContentDrawScope, Object> {
-        private static final ScrimDraw INSTANCE = new ScrimDraw();
+    private static final class FadeDraw implements Function1<ContentDrawScope, Object> {
+        private static final FadeDraw INSTANCE = new FadeDraw();
+
+        private static final int FADE_ALPHA = 235;
+
+        /**
+         * Higher values fade out closer to the top of the screen.
+         */
+        private static final double FADE_EXPONENT = 1.6;
+        private static final int FADE_STEPS = 8;
+
+        private final Paint paint = new Paint();
+
+        private int shaderHeight;
+        @ColorInt
+        private int shaderColor;
 
         @Override
         public Object invoke(ContentDrawScope scope) {
             scope.patch_drawContent();
 
             try {
-                if (on()) {
-                    drawScrim(scope);
+                final int height = getStatusBarHeight();
+                if (height > 0) {
+                    updateShader(height, (int) (appBarColor >>> 32));
+                    scope.patch_getCanvas().patch_getNativeCanvas().drawRect(
+                            0, 0, unpackFirst(scope.patch_getSize()), height, paint);
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "ScrimDraw failure", ex);
+                Logger.printException(() -> "FadeDraw failure", ex);
             }
+
             return null;
         }
-    }
 
-    private static final class BodyDraw implements Function1<ContentDrawScope, Object> {
-        private static final BodyDraw INSTANCE = new BodyDraw();
-
-        @Override
-        public Object invoke(ContentDrawScope scope) {
-            try {
-                drawBody(scope);
-            } catch (Exception ex) {
-                Logger.printException(() -> "BodyDraw failure", ex);
-            }
-
-            scope.patch_drawContent();
-            return null;
-        }
-    }
-
-    private SeeThroughStatusBarPatch() {}
-
-    @SuppressWarnings("SameReturnValue")
-    public static boolean isPatchIncluded() {
-        return false;
-    }
-
-    private static boolean on() {
-        return isPatchIncluded() && Settings.SEE_THROUGH_STATUS_BAR.get() && !sideLayout;
-    }
-
-    public static void sideLayout(boolean value) {
-        try {
-            sideLayout = value;
-        } catch (Throwable ex) {
-            Logger.printException(() -> "sideLayout failure", ex);
-        }
-    }
-
-    public static long appBarColor(long c) {
-        try {
-            appBarColor = c;
-            return on() ? (c & 0x00FFFFFFFFFFFFFFL) : c;
-        } catch (Throwable ex) {
-            Logger.printException(() -> "appBarColor failure", ex);
-            return c;
-        }
-    }
-
-    public static Object appBarBody(Modifier modifier) {
-        try {
-            return (on() && appBarColor != 0L) ? modifier.patch_drawWithContent(BodyDraw.INSTANCE) : modifier;
-        } catch (Throwable ex) {
-            Logger.printException(() -> "appBarBody failure", ex);
-            return modifier;
-        }
-    }
-
-    public static Object feedBoxModifier(Modifier padded, Modifier unpadded) {
-        try {
-            return on() ? unpadded.patch_drawWithContent(ScrimDraw.INSTANCE) : padded;
-        } catch (Throwable ex) {
-            Logger.printException(() -> "feedBoxModifier failure", ex);
-            return padded;
-        }
-    }
-
-    public static float topBarHeight(float dp) {
-        try {
-            if (!on()) {
-                return dp;
-            }
-            final float density = GlassNavigationBarPatch.getDensity();
-            return dp + (density > 0f ? (statusBarPx() / density) : 0f);
-        } catch (Throwable ex) {
-            Logger.printException(() -> "topBarHeight failure", ex);
-            return dp;
-        }
-    }
-
-    private static void ensureLifecycleCallbacks() {
-        if (lifecycleRegistered) {
-            return;
-        }
-        synchronized (SeeThroughStatusBarPatch.class) {
-            if (lifecycleRegistered) {
+        private void updateShader(int height, @ColorInt int color) {
+            if (shaderHeight == height && shaderColor == color) {
                 return;
             }
+
+            int[] colors = new int[FADE_STEPS + 1];
+            for (int i = 0; i <= FADE_STEPS; i++) {
+                final double remaining = 1 - (double) i / FADE_STEPS;
+                final int alpha = (int) Math.round(FADE_ALPHA * Math.pow(remaining, FADE_EXPONENT));
+                colors[i] = (alpha << 24) | (color & 0x00FFFFFF);
+            }
+
+            paint.setShader(new LinearGradient(0, 0, 0, height, colors, null, Shader.TileMode.CLAMP));
+            shaderHeight = height;
+            shaderColor = color;
+        }
+    }
+
+    /**
+     * Draws the background of the app bar and of the status bar above it.
+     * Unlike the original background, it fades out together with the app bar.
+     */
+    private static final class AppBarDraw implements Function1<ContentDrawScope, Object> {
+        private static final AppBarDraw INSTANCE = new AppBarDraw();
+
+        @Override
+        public Object invoke(ContentDrawScope scope) {
             try {
-                Context context = Utils.getContext();
-                Context ctx = context == null ? null : context.getApplicationContext();
-                if (ctx instanceof Application) {
-                    ((Application) ctx)
-                            .registerActivityLifecycleCallbacks(
-                                    new Application.ActivityLifecycleCallbacks() {
-                                        @Override
-                                        public void onActivityCreated(
-                                                Activity activity, Bundle savedInstanceState) {
-                                            currentActivity = new WeakReference<>(activity);
-                                        }
+                final int statusBarHeight = getStatusBarHeight();
+                final long size = scope.patch_getSize();
 
-                                        @Override
-                                        public void onActivityStarted(Activity activity) {}
-
-                                        @Override
-                                        public void onActivityResumed(Activity activity) {
-                                            currentActivity = new WeakReference<>(activity);
-                                        }
-
-                                        @Override
-                                        public void onActivityPaused(Activity activity) {}
-
-                                        @Override
-                                        public void onActivityStopped(Activity activity) {}
-
-                                        @Override
-                                        public void onActivitySaveInstanceState(
-                                                Activity activity, Bundle outState) {}
-
-                                        @Override
-                                        public void onActivityDestroyed(Activity activity) {
-                                            final WeakReference<Activity> ref = currentActivity;
-                                            if (ref != null && ref.get() == activity) {
-                                                currentActivity = null;
-                                            }
-                                        }
-                                    });
-                    lifecycleRegistered = true;
-                }
-            } catch (Throwable ex) {
-                Logger.printException(() -> "ensureLifecycleCallbacks failure", ex);
+                scope.patch_drawRoundRect(
+                        appBarColor,
+                        pack(0, -statusBarHeight),
+                        pack(unpackFirst(size), unpackSecond(size) + statusBarHeight),
+                        pack(0, 0)
+                );
+            } catch (Exception ex) {
+                Logger.printException(() -> "AppBarDraw failure", ex);
             }
+
+            scope.patch_drawContent();
+            return null;
         }
     }
 
-    private static int getDecorViewInset() {
-        try {
-            final WeakReference<Activity> ref = currentActivity;
-            final Activity activity = ref != null ? ref.get() : null;
-            if (activity != null && activity.getWindow() != null) {
-                final View decorView = activity.getWindow().getDecorView();
-                if (decorView != null) {
-                    final WindowInsets insets = decorView.getRootWindowInsets();
-                    if (insets != null) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            return insets.getInsets(WindowInsets.Type.systemBars()).top;
-                        } else {
-                            return insets.getSystemWindowInsetTop();
-                        }
-                    }
-                }
-            }
-        } catch (Throwable ex) {
-            Logger.printException(() -> "getDecorViewInset failure", ex);
-        }
-        return 0;
+    /**
+     * Mask of everything except the alpha of a packed Compose sRGB color.
+     */
+    private static final long COLOR_WITHOUT_ALPHA_MASK = 0x00FFFFFFFFFFFFFFL;
+
+    private static final boolean SEE_THROUGH_ENABLED = Settings.SEE_THROUGH_STATUS_BAR.get();
+
+    private static boolean isSideLayout;
+
+    /**
+     * Packed Compose sRGB color, with the ARGB color in the upper 32 bits.
+     */
+    private static long appBarColor;
+
+    @Nullable
+    private static WindowInsets statusBarInsets;
+
+    /**
+     * @return If this patch was included during patching.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
     }
 
-    private static int getWindowContextInset() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            return 0;
-        }
-        try {
-            if (windowContext == null) {
-                synchronized (SeeThroughStatusBarPatch.class) {
-                    if (windowContext == null) {
-                        Context context = Utils.getContext();
-                        Context ctx = context == null ? null : context.getApplicationContext();
-                        final Context appContext = ctx;
-                        if (appContext != null) {
-                            final DisplayManager dm = appContext.getSystemService(DisplayManager.class);
-                            if (dm != null) {
-                                final Display display = dm.getDisplay(Display.DEFAULT_DISPLAY);
-                                if (display != null) {
-                                    windowContext =
-                                            appContext
-                                                    .createDisplayContext(display)
-                                                    .createWindowContext(
-                                                            WindowManager.LayoutParams
-                                                                    .TYPE_APPLICATION,
-                                                            null);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (windowContext != null) {
-                final WindowManager wm = windowContext.getSystemService(WindowManager.class);
-                if (wm != null) {
-                    final WindowInsets insets = wm.getCurrentWindowMetrics().getWindowInsets();
-                    if (insets != null) {
-                        return insets.getInsets(WindowInsets.Type.systemBars()).top;
-                    }
-                }
-            }
-        } catch (Throwable ex) {
-            Logger.printException(() -> "getWindowContextInset failure", ex);
-        }
-        return 0;
+    private static boolean isEnabled() {
+        return SEE_THROUGH_ENABLED && !isSideLayout;
     }
 
-    private static int statusBarPx() {
-        try {
-            ensureLifecycleCallbacks();
-
-            int inset = getDecorViewInset();
-            if (inset > 0) {
-                cachedStatusBarPx = inset;
-                return inset;
-            }
-
-            inset = getWindowContextInset();
-            if (inset > 0) {
-                cachedStatusBarPx = inset;
-                return inset;
-            }
-
-            if (cachedStatusBarPx > 0) {
-                return cachedStatusBarPx;
-            }
-
-            final int resourceId =
-                    Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android");
-            if (resourceId > 0) {
-                inset = Resources.getSystem().getDimensionPixelSize(resourceId);
-                if (inset > 0) {
-                    cachedStatusBarPx = inset;
-                    return inset;
-                }
-            }
-        } catch (Throwable ex) {
-            Logger.printException(() -> "statusBarPx failure", ex);
-        }
-        return cachedStatusBarPx;
+    private static int getStatusBarHeight() {
+        return statusBarInsets == null ? 0 : statusBarInsets.patch_getTop();
     }
 
-    private static long packFloats(float x, float y) {
-        return ((long) Float.floatToRawIntBits(x) << 32)
-                | (Float.floatToRawIntBits(y) & 0xFFFFFFFFL);
+    /**
+     * Injection point.
+     * <p>
+     * Called before all other hooks of the home screen.
+     *
+     * @param sideLayout If the side rail is shown instead of the bottom navigation bar.
+     */
+    public static void setSideLayout(boolean sideLayout) {
+        isSideLayout = sideLayout;
     }
 
-    private static void drawScrim(ContentDrawScope scope) {
-        final long color = appBarColor;
-        if (color == 0L) {
-            return;
-        }
-        final int h = statusBarPx();
-        if (h <= 0) {
-            return;
-        }
-        final long scopeSize = scope.patch_getSize();
-        final float width = Float.intBitsToFloat((int) (scopeSize >>> 32));
-        if (width <= 0f) {
-            return;
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of the feed.
+     * @param insets   Status bar insets.
+     */
+    public static Object getFeedModifier(Modifier modifier, WindowInsets insets) {
+        if (!isEnabled()) {
+            return modifier.patch_windowInsetsPadding(insets);
         }
 
-        final int rgb = ((int) (color >>> 32)) & 0x00FFFFFF;
-        final int n = h;
-        int runStart = 0;
-        int runAlpha = 0;
-        for (int i = 0; i <= n; i++) {
-            int alpha = 0;
-            if (i < n) {
-                final double t = (i + 0.5) / (double) n;
-                final double factor = 0.92 * Math.pow(1.0 - t, 1.6);
-                alpha = Math.min(255, Math.max(0, (int) Math.round(255.0 * factor)));
-            }
-            if (alpha != runAlpha) {
-                if (runAlpha > 0) {
-                    final int bandArgb = (runAlpha << 24) | rgb;
-                    final long bandColor = ((long) bandArgb & 0xFFFFFFFFL) << 32;
-
-                    final long topLeft = packFloats(0f, (float) runStart);
-                    final long size = packFloats(width, (float) (i - runStart));
-                    final long cornerRadius = packFloats(0f, 0f);
-
-                    scope.patch_drawRoundRect(bandColor, topLeft, size, cornerRadius);
-                }
-                runStart = i;
-                runAlpha = alpha;
-            }
-        }
+        statusBarInsets = insets;
+        return modifier.patch_drawWithContent(FadeDraw.INSTANCE);
     }
 
-    private static void drawBody(ContentDrawScope scope) {
-        final long color = appBarColor;
-        if (color == 0L) {
-            return;
+    /**
+     * Injection point.
+     */
+    public static long getAppBarColor(long color) {
+        if (!isEnabled()) {
+            return color;
         }
-        final int h = statusBarPx();
-        final long scopeSize = scope.patch_getSize();
-        final float width = Float.intBitsToFloat((int) (scopeSize >>> 32));
-        final float height = Float.intBitsToFloat((int) scopeSize);
-        final long topLeft = packFloats(0f, -h);
-        final long size = packFloats(width, height + h);
-        final long cornerRadius = packFloats(0f, 0f);
-        scope.patch_drawRoundRect(color, topLeft, size, cornerRadius);
+
+        appBarColor = color;
+        return color & COLOR_WITHOUT_ALPHA_MASK;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of the app bar content, which is below the status bar.
+     */
+    public static Object getAppBarModifier(Modifier modifier) {
+        return isEnabled()
+                ? modifier.patch_drawWithContent(AppBarDraw.INSTANCE)
+                : modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param heightDp Space above the first post of the feed.
+     */
+    public static float getTopBarHeight(float heightDp) {
+        return isEnabled()
+                ? heightDp + getStatusBarHeight() / getDensity()
+                : heightDp;
     }
 }

@@ -52,8 +52,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_glass_navigation_bar_height_summary">Height of the capsule on phones</string>
     <string name="morphe_glass_navigation_bar_width_title">Glass width</string>
     <string name="morphe_glass_navigation_bar_width_summary">Width of the navigation bar and its buttons on phones</string>
-    <string name="morphe_see_through_status_bar_title">See-through status bar</string>
-    <string name="morphe_see_through_status_bar_summary">The home feed scrolls up under the status bar and fades into it. Phone layout only, other screens keep the solid bar.</string>
     <string name="morphe_hide_answers_button_title">Hide Answers button</string>
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_create_button_title">Hide Create button</string>
@@ -165,6 +163,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_show_flairs_in_home_feed_title">Show flairs in home feed</string>
     <string name="morphe_show_flairs_in_home_feed_summary">Shows post flair badges in the home feed</string>
     <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Some feed items may not show a flair</string>
+    <string name="morphe_see_through_status_bar_title">See-through status bar</string>
+    <string name="morphe_see_through_status_bar_summary">Home feed scrolls up under the status bar and fades into it. Phone layout only</string>
     <string name="morphe_show_view_count_title">Show view count on posts</string>
     <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
     <string name="morphe_flip_post_action_bar_title">Flip post action bar</string>

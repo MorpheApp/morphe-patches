@@ -7,10 +7,14 @@
 
 package app.morphe.extension.reddit.patches;
 
+import static app.morphe.extension.reddit.utils.ComposeUtils.getDensity;
+import static app.morphe.extension.reddit.utils.ComposeUtils.pack;
+import static app.morphe.extension.reddit.utils.ComposeUtils.unpackFirst;
+import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 
@@ -20,6 +24,8 @@ import androidx.annotation.ColorInt;
 import java.util.List;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.reddit.utils.ComposeUtils.ContentDrawScope;
+import app.morphe.extension.reddit.utils.ComposeUtils.Modifier;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
@@ -54,40 +60,6 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
-     * Compose Canvas.
-     */
-    public interface ComposeCanvas {
-        // Methods are added during patching.
-        Canvas patch_getNativeCanvas();
-
-        void patch_setNativeCanvas(Canvas canvas);
-    }
-
-    /**
-     * Compose ContentDrawScope. Sizes, offsets and corner radii are two packed floats.
-     */
-    public interface ContentDrawScope {
-        // Methods are added during patching.
-        ComposeCanvas patch_getCanvas();
-
-        long patch_getSize();
-
-        void patch_drawContent();
-
-        void patch_drawRoundRect(long color, long topLeft, long size, long cornerRadius);
-    }
-
-    /**
-     * Compose Modifier.
-     */
-    public interface Modifier {
-        // Methods are added during patching.
-        Object patch_drawWithContent(Function1<?, ?> draw);
-
-        Object patch_padding(float start, float top, float end, float bottom);
-    }
-
-    /**
      * Reddit theme colors.
      */
     public interface NeutralColors {
@@ -105,11 +77,7 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
-     * Draws a capsule behind the content. Not a lambda, because the extension shrinker
-     * removes the invoke method of lambda classes as it is only called by app code.
-     * <p>
-     * The instances are not in the outer class, because Function1 is obfuscated in
-     * Reddit 2026.10.0 and the outer class is always loaded by the settings.
+     * Draws a capsule behind the content.
      */
     private static final class CapsuleDraw implements Function1<ContentDrawScope, Object> {
         private static final CapsuleDraw BAR = new CapsuleDraw(false);
@@ -407,22 +375,5 @@ public final class GlassNavigationBarPatch {
         final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
 
         return argb << 32;
-    }
-
-    static float getDensity() {
-        return Utils.getContext().getResources().getDisplayMetrics().density;
-    }
-
-    private static long pack(float first, float second) {
-        return ((long) Float.floatToRawIntBits(first) << 32)
-                | (Float.floatToRawIntBits(second) & 0xFFFFFFFFL);
-    }
-
-    static float unpackFirst(long packed) {
-        return Float.intBitsToFloat((int) (packed >>> 32));
-    }
-
-    static float unpackSecond(long packed) {
-        return Float.intBitsToFloat((int) packed);
     }
 }
