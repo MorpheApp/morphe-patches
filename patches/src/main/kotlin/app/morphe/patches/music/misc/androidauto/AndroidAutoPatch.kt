@@ -626,6 +626,7 @@ private fun patchBrowseRequests() {
     )
 }
 
+/** Extras are named values attached to a media item, such as YTM's promotion flag. */
 private fun addMediaItemExtrasInterface() {
     val itemClass = mutableClassDefBy($$"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;")
     val descriptionClass = mutableClassDefBy("Landroid/support/v4/media/MediaDescriptionCompat;")
