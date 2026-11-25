@@ -224,6 +224,52 @@ internal object FeedPostSectionConstructorFingerprint : Fingerprint(
     )
 )
 
+internal object ClassicPostElementToStringFingerprint : Fingerprint(
+    name = "toString",
+    parameters = listOf(),
+    returnType = "Ljava/lang/String;",
+    strings = listOf(
+        "ClassicPostElement(linkId=",
+        ", uniqueId="
+    )
+)
+
+internal object ClassicPostElementConstructorFingerprint : Fingerprint(
+    classFingerprint = ClassicPostElementToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Flairs element.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = { PostFlairsElementToStringFingerprint.originalClassDef.type }
+        )
+    )
+)
+
+internal object ClassicPostSectionToStringFingerprint : Fingerprint(
+    name = "toString",
+    parameters = listOf(),
+    returnType = "Ljava/lang/String;",
+    strings = listOf(
+        "ClassicPostSection(linkId=",
+        ", data="
+    )
+)
+
+internal object ClassicPostSectionConstructorFingerprint : Fingerprint(
+    classFingerprint = ClassicPostSectionToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Classic post element.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = { ClassicPostElementToStringFingerprint.originalClassDef.type }
+        )
+    )
+)
+
 internal object FeedPostSectionMapperFingerprint : Fingerprint(
     filters = listOf(
         newInstance(type = { FeedPostSectionToStringFingerprint.classDef }),
