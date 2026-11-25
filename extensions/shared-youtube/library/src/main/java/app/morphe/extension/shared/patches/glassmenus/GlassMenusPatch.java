@@ -35,6 +35,7 @@ import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ListPopupWindow;
 import android.widget.PopupWindow;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
@@ -242,16 +243,39 @@ public final class GlassMenusPatch {
                 View content = popup.getContentView();
                 if (content == null) return;
 
-                // The background view the popup adds around the content if it has a background,
-                // otherwise the content itself.
-                View surface = content.getParent() instanceof View parent && parent.getBackground() != null
-                        ? parent
-                        : content;
-                GlassSurface.apply(surface, CORNERS_AUTO);
+                applyToPopupContent(content);
             } catch (Throwable ex) {
                 Logger.printException(() -> "onPopupWindow failure", ex);
             }
         }, 0);
+    }
+
+    /**
+     * Injection point (YouTube only): a menu shown as a list popup, after it is shown.
+     * Its list is created when it is shown.
+     */
+    public static void onListPopupWindow(@Nullable ListPopupWindow popup) {
+        if (popup == null || !isEnabled()) return;
+
+        try {
+            View list = popup.getListView();
+            if (list != null) {
+                applyToPopupContent(list);
+            }
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onListPopupWindow failure", ex);
+        }
+    }
+
+    /**
+     * Draws the glass on the background view the popup adds around its content if it has a background,
+     * otherwise on the content itself.
+     */
+    private static void applyToPopupContent(View content) {
+        View surface = content.getParent() instanceof View parent && parent.getBackground() != null
+                ? parent
+                : content;
+        GlassSurface.apply(surface, CORNERS_AUTO);
     }
 
     /**

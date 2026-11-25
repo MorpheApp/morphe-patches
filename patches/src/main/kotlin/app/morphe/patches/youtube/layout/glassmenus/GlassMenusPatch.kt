@@ -60,6 +60,17 @@ val glassMenusPatch = glassMenusPatch(
             )
         }
 
+        // The menus shown as a list popup, which is not a popup window of the flyout menus.
+        MenuListPopupWindowShowFingerprint.matchAll().forEach { match ->
+            val showCall = match.instructionMatches.last()
+            val popupRegister = showCall.instruction.registersUsed[0]
+            match.method.addInstruction(
+                showCall.index + 1,
+                "invoke-static { v$popupRegister }, $GLASS_MENUS_EXTENSION_CLASS->" +
+                        "onListPopupWindow(Landroid/widget/ListPopupWindow;)V",
+            )
+        }
+
         // The "Please wait" progress dialog before the download quality menu, which is not a dialog fragment.
         DownloadProgressDialogFingerprint.matchAll().forEach { match ->
             val showCall = match.instructionMatches.last()
