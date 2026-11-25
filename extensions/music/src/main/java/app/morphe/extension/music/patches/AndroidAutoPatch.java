@@ -915,7 +915,8 @@ public final class AndroidAutoPatch {
     private static List<MediaBrowserCompat.MediaItem> updateTabs(
             @Nullable List<MediaBrowserCompat.MediaItem> rootTabs, boolean queued) {
         if (rootTabs == null || rootTabs.isEmpty()) {
-            // A second startup request can miss the cache after the first one has opened Home.
+            // A queued request can miss YTM's cache after the first connection has opened Home.
+            // Keep that connection's folder subscriptions and cached podcast folders.
             if (!queued) resetBrowseTabs(null, null);
             return rootTabs;
         }
@@ -965,7 +966,8 @@ public final class AndroidAutoPatch {
     }
 
     private static ContainerType containerType(String mediaId) {
-        // Local folders such as Downloads use plain text IDs.
+        // Let YTM serve offline Home and Library from local content.
+        // Recognize offline Podcasts so the patch can avoid adding a second Podcasts tab.
         if (mediaId.startsWith("__")) {
             return OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId) ? ContainerType.PODCASTS : ContainerType.UNKNOWN;
         }
@@ -1037,7 +1039,7 @@ public final class AndroidAutoPatch {
         // Always queue the reload so handleBrowseResult releases its lock first.
         mainHandler.post(() -> {
             synchronized (AndroidAutoPatch.class) {
-                // Reloading the main tabs or reconnecting replaces the saved Podcasts request.
+                // Only reload the subscription that was active when Home supplied these podcast folders.
                 if (podcastsSubscription != subscription) return;
             }
             subscription.reload(false);

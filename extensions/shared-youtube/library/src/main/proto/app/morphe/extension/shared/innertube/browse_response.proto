@@ -18,6 +18,8 @@ message SearchResponse {
 }
 
 message PageContents {
+    // An empty section list or a search message can be a valid result. Android Auto checks which renderer is present
+    // before it reads the section list bytes.
     optional bytes sectionListRenderer = 49399797;
     optional bytes messageRenderer = 58508690;
     TabbedResults singleColumnBrowseResultsRenderer = 58173949;
