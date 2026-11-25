@@ -21,6 +21,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 @Suppress("unused")
@@ -56,6 +57,17 @@ val glassMenusPatch = glassMenusPatch(
                 it.instructionMatches.first().index + 1,
                 "invoke-static { p0, p1 }, $GLASS_MENUS_EXTENSION_CLASS->" +
                         "onWrappedDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V"
+            )
+        }
+
+        // The "Please wait" progress dialog before the download quality menu, which is not a dialog fragment.
+        DownloadProgressDialogFingerprint.matchAll().forEach { match ->
+            val showIndex = match.instructionMatches.last().index
+            val dialogRegister = match.method.getInstruction<FiveRegisterInstruction>(showIndex).registerC
+            match.method.addInstruction(
+                showIndex + 1,
+                "invoke-static { v$dialogRegister }, $GLASS_MENUS_EXTENSION_CLASS->" +
+                        "onProgressDialogShown(Landroid/app/Dialog;)V",
             )
         }
     },

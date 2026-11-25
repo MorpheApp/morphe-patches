@@ -156,7 +156,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final EnumSetting<AppRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_app_refresh_rate_type", AppRefreshType.ALWAYS, true, new RefreshRateType());
 
     // Glass menus
-    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, "morphe_glass_menus_user_dialog_message", new GlassMenusAvailability());
+    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, new GlassMenusAvailability());
     public static final IntegerSetting GLASS_MENUS_OPACITY = new IntegerSetting("morphe_glass_menus_opacity", 30, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
     public static final IntegerSetting GLASS_MENUS_BLUR = new IntegerSetting("morphe_glass_menus_blur", 24, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
     public static final IntegerSetting GLASS_MENUS_DIM = new IntegerSetting("morphe_glass_menus_dim", 20, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
