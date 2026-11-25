@@ -41,6 +41,8 @@ public final class ProtoMessage {
     }
 
     boolean isEmpty() { return start == end; }
+    /** An explicitly encoded message can contain zero bytes. */
+    boolean isPresent() { return this != EMPTY; }
     String utf8Text() { return new String(data, start, end - start, StandardCharsets.UTF_8); }
     public String stringField(int fieldNumber) { return messageField(fieldNumber).utf8Text(); }
     byte[] serializedBytes() { return Arrays.copyOfRange(data, start, end); }

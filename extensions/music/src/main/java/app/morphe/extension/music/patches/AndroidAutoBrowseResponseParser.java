@@ -201,19 +201,19 @@ final class AndroidAutoBrowseResponseParser {
         ProtoMessage root = new ProtoMessage(response);
         // Home's later shelves arrive as a section-list continuation, without the initial tab wrapper.
         ProtoMessage continuedSections = root.messagePath(BROWSE_CONTINUATION, SECTION_LIST);
-        if (!continuedSections.isEmpty()) return continuedSections;
+        if (continuedSections.isPresent()) return continuedSections;
         ProtoMessage pageContents = root.messageField(BROWSE_CONTENTS);
         ProtoMessage sectionList = pageContents.messageField(SECTION_LIST);
-        if (sectionList.isEmpty()) {
+        if (!sectionList.isPresent()) {
             for (ProtoMessage tabWrapper : pageContents.messageField(SINGLE_COLUMN_BROWSE).repeatedMessageField(BROWSE_TABS)) {
                 ProtoMessage tab = tabWrapper.messageField(TAB);
                 ProtoMessage sections = tab.messagePath(TAB_CONTENTS, SECTION_LIST);
-                if (sections.isEmpty()) continue;
+                if (!sections.isPresent()) continue;
                 if (tab.varintField(SELECTED_FIELD_NUMBER) != 0) return sections;
                 if (sectionList.isEmpty()) sectionList = sections;
             }
         }
-        if (sectionList.isEmpty()) throw new IllegalArgumentException("Unrecognized browse contents");
+        if (!sectionList.isPresent()) throw new IllegalArgumentException("Unrecognized browse contents");
         return sectionList;
     }
 

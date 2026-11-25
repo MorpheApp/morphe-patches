@@ -121,13 +121,14 @@ final class AndroidAutoSearchResponseParser {
     static List<SearchResult> parseSearchResults(byte[] response, boolean uploaded) {
         ProtoMessage root = new ProtoMessage(response);
         ProtoMessage pageContents = root.messageField(SEARCH_CONTENTS);
-        if (!pageContents.messageField(MESSAGE).isEmpty()) return Collections.emptyList();
+        if (pageContents.messageField(MESSAGE).isPresent()) return Collections.emptyList();
         ProtoMessage sectionList = pageContents.messageField(SECTION_LIST);
-        if (sectionList.isEmpty()) {
+        if (!sectionList.isPresent()) {
             String requestedTabId = uploaded ? "music_search_upload" : "music_search_catalog";
             boolean hasCatalogTab = false;
             boolean hasUploadTab = false;
             ProtoMessage resultContents = ProtoMessage.EMPTY;
+            int fallbackPriority = -1;
             for (ProtoMessage tabWrapper : pageContents.messageField(TABBED_SEARCH).repeatedMessageField(SEARCH_TABS)) {
                 ProtoMessage tab = tabWrapper.messageField(TAB);
                 String tabId = tab.stringField(TAB_ID);
@@ -136,20 +137,28 @@ final class AndroidAutoSearchResponseParser {
                 if (!tabId.isEmpty() && !tabId.equals(requestedTabId)) continue;
 
                 ProtoMessage contents = tab.messageField(TAB_CONTENTS);
-                if (contents.messageField(SECTION_LIST).isEmpty() && contents.messageField(MESSAGE).isEmpty()) continue;
+                ProtoMessage sections = contents.messageField(SECTION_LIST);
+                ProtoMessage message = contents.messageField(MESSAGE);
+                if (!sections.isPresent() && !message.isPresent()) continue;
                 if (tabId.equals(requestedTabId)) {
                     resultContents = contents;
                     break;
                 }
-                // Some responses omit tab IDs. Keep a fallback while looking for the requested tab.
-                if (resultContents.isEmpty() || tab.varintField(SELECTED_FIELD_NUMBER) != 0) resultContents = contents;
+                // Without tab IDs, prefer the selected tab, then the first tab with content.
+                int priority = 0;
+                if (tab.varintField(SELECTED_FIELD_NUMBER) != 0) priority = 2;
+                else if (!sections.isEmpty() || !message.isEmpty()) priority = 1;
+                if (priority > fallbackPriority) {
+                    fallbackPriority = priority;
+                    resultContents = contents;
+                }
             }
             // Accounts without uploads omit that tab from an otherwise valid search response.
             if (uploaded && hasCatalogTab && !hasUploadTab) return Collections.emptyList();
-            if (!resultContents.messageField(MESSAGE).isEmpty()) return Collections.emptyList();
+            if (resultContents.messageField(MESSAGE).isPresent()) return Collections.emptyList();
             sectionList = resultContents.messageField(SECTION_LIST);
         }
-        if (sectionList.isEmpty()) throw new IllegalArgumentException("Unrecognized search contents");
+        if (!sectionList.isPresent()) throw new IllegalArgumentException("Unrecognized search contents");
         return readSections(sectionList);
     }
 

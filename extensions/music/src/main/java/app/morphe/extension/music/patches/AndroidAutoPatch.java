@@ -260,6 +260,9 @@ public final class AndroidAutoPatch {
     private static final String[] CAR_CONNECTION_COLUMNS = { "CarConnectionState" };
     private static final int CONNECTION_TYPE_PROJECTION = 2;
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
+    private static final String DEFAULT_PROMOTION_MEDIA_ID = "__DEFAULT_PROMOTION_ITEM_ID__";
+    private static final String IS_PROMOTION = "com.google.android.apps.youtube.music.mediabrowser.IS_PROMOTION";
+    private static final String OFFLINE_PODCASTS_MEDIA_ID = "__OFFLINE_MODE_PODCASTS_TAB_MEDIA_ID__";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
     private static final String THIRD_PARTY_HOME_MEDIA_ID = "morphe:aa:home";
@@ -931,9 +934,10 @@ public final class AndroidAutoPatch {
     @GuardedBy("AndroidAutoPatch.class")
     private static List<MediaBrowserCompat.MediaItem> updateTabs(
             @Nullable List<MediaBrowserCompat.MediaItem> rootTabs, boolean queued) {
-        if (rootTabs == null) {
-            resetBrowseTabs(null, null);
-            return null;
+        if (rootTabs == null || rootTabs.isEmpty()) {
+            // A second startup request can miss the cache after the first one has opened Home.
+            if (!queued) resetBrowseTabs(null, null);
+            return rootTabs;
         }
 
         List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs.size() + 2);
@@ -967,9 +971,8 @@ public final class AndroidAutoPatch {
             }
         }
 
-        // A cached or queued root can return the folders Auto has already subscribed to.
-        if ((!queued && settings == null && podcasts == null)
-                || !Objects.equals(homeId, homeMediaId) || !Objects.equals(libraryId, libraryMediaId)) {
+        // Auto can request the same folders again after the startup fetch has finished.
+        if (!Objects.equals(homeId, homeMediaId) || !Objects.equals(libraryId, libraryMediaId)) {
             resetBrowseTabs(homeId, libraryId);
         }
         if (hasContent) {
@@ -982,6 +985,7 @@ public final class AndroidAutoPatch {
     }
 
     private static MediaItemInfo.TabType tabType(String mediaId) {
+        if (OFFLINE_PODCASTS_MEDIA_ID.equals(mediaId)) return MediaItemInfo.TabType.PODCASTS;
         try {
             return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getTabType();
         } catch (IllegalArgumentException | InvalidProtocolBufferException ignored) {
@@ -1003,7 +1007,11 @@ public final class AndroidAutoPatch {
 
     private static boolean isContentFolder(MediaBrowserCompat.MediaItem item) {
         // YTM also marks its upgrade prompt as browsable.
-        return item.b() && !UPGRADE_PROMPT_MEDIA_ID.equals(item.a());
+        if (!item.b()) return false;
+        String id = item.a();
+        Bundle extras = item.a.f;
+        return !UPGRADE_PROMPT_MEDIA_ID.equals(id) && !DEFAULT_PROMOTION_MEDIA_ID.equals(id)
+                && (extras == null || !extras.getBoolean(IS_PROMOTION));
     }
 
     private static MediaBrowserCompat.MediaItem podcastsTab() {
