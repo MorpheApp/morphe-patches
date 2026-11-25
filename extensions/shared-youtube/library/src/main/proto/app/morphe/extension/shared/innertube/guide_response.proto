@@ -155,9 +155,17 @@ message NavigationEndpoint {
     optional CreationEntrySheetEndpoint creationEntrySheetEndpoint = 144891985;
     optional ShortsCreationEndpoint shortsCreationEndpoint = 307460408;
     optional CreationModesCommand creationModesCommand = 469274066;
+    optional SignInEndpoint signInEndpoint = 49706687;
 }
 
 message CreationEntryEndpoint {
+}
+
+// Opens the account switcher when signed in, and the incognito sheet when incognito.
+message SignInEndpoint {
+    // Opens the lite account switcher, or the Google account sign in flow on versions before 21.30.
+    // Without it, the account dialog opens instead.
+    bool useAccountSwitcher = 15;
 }
 
 // Bottom sheet of the create button of the Android Automotive layout, with the creation buttons.

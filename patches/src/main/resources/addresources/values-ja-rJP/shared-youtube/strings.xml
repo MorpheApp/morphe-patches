@@ -106,7 +106,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これは、DNS 広告ブロッカーまたはネットワーク プロキシが原因である可能性があります。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">動画ストリームを偽装</string>
@@ -140,6 +140,8 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS を使用する</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">難読化解除に yt-dlp-ejs (WebView) の代わりに QuackJS を使用する</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" ログイン</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" では別途ログインが必要です。こちらをタップして続行してください</string>
@@ -168,27 +170,28 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
 • Morphe の設定のインポート / エクスポートには Android VR 認証は含まれません
 • このアプリが 6 ヶ月間使用されなかった場合、Google はこの認証を削除します
 • Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"モバイル ウェブ\" ログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ウェブでサインイン</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">オプション：YouTube ウェブサイトにログインすると、アカウントを使用して動画を再生できます。続行するにはここをタップしてください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在 \"Mobile Web\" にログインしています</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在 YouTube ウェブサイトにサインインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を \"Mobile Web\" に変更してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\"Mobile Web\" にサインイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" では、サインアウトした状態、または YouTube ウェブサイトにサインインした状態で動画を再生します
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] をウェブクライアントに変更してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube ウェブサイトにサインイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webクライアントは、YouTubeウェブサイトにサインインしていない状態、またはサインインした状態で動画を再生します
 
 • サインインすると、年齢制限のある動画など、アカウントが必要な動画を再生できます
-• このアプリ内で Google サインイン ページが開きます
-• サインインは、再生する動画を取得するためだけに使用されます
+• このアプリでGoogleサインインページが開きます
+• サインインは、再生する動画を取得するためだけに利用されます
 • サインイン情報は、このデバイスにのみ保存されます
+• 選択したデフォルトクライアントについて、各Webクライアントが独自のサインイン情報を持ちます
 
-サインインするには、下の [続行] を押してください"</string>
+サインインするには、以下で[続行]を押してください"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"サインインが保存されました
 
-• Morphe の設定では「モバイルウェブ」のサインインはインポート/エクスポートされません
+• Morphe の設定で YouTube ウェブサイトのサインインをインポート/エクスポートすることはできません
 • Google がサインインを終了した場合、再度サインインするまでビデオはサインアウト状態で再生されます
 • サインアウトすると、このデバイスの YouTube ウェブサイトからもサインアウトされます"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">モバイルウェブのサインインが期限切れです。再度「モバイルウェブ」にサインインしてください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">「モバイルウェブ」からサインアウトしました</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ウェブのサインインが期限切れです。再度サインインしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube ウェブサイトからサインアウトしました</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">「Android System WebView」が利用できません。サインインするには、インストールまたは有効にしてください</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 は一時的に利用できません (API タイムアウト)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' へのログインが期限切れです。再度ログインしてください</string>

@@ -31,11 +31,13 @@ import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
 import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
 import app.morphe.patches.music.misc.mediasession.addSetPlaybackStateHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
+import app.morphe.patches.music.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -56,6 +58,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
+private const val LYRICS_BUTTON_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsButtonPatch;"
 internal const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
 private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
 private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
@@ -72,13 +75,14 @@ private const val LYRICS_PANEL_FILTER =
 
 val lyricsPatch = patch(
     name = "Third-party lyrics",
-    description = "Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel."
+    description = "Adds an option to show synced lyrics with experience enhancement from 20+ providers in the lyrics panel."
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
         addResourcesPatch,
         lithoFilterPatch,
+        elementProtoParserHookPatch,
         mediaSessionHookPatch,
         musicVideoInformationPatch,
         // The copy, romanize, and jump-to-current buttons need their icons whether
@@ -98,8 +102,16 @@ val lyricsPatch = patch(
                     ResourceGroup("drawable", "morphe_yt_crosshair.xml")
                 )
                 copyResources(
-                    "lyricssharebutton",
-                    ResourceGroup("drawable", "morphe_yt_share_bold.xml")
+                    "lyricsbrand",
+                    ResourceGroup("drawable",
+                        "morphe_lyrics_brand.xml",
+                        "morphe_share_bg_tag.xml")
+                )
+                copyResources(
+                    "lyricsfullscreenbutton",
+                    ResourceGroup("drawable",
+                        "morphe_fullscreen_enter.xml",
+                        "morphe_fullscreen_exit.xml")
                 )
             }
         }
@@ -169,7 +181,7 @@ val lyricsPatch = patch(
                 )
             ),
             PreferenceCategory(
-                key = "morphe_music_lyrics_section_display",
+                key = "morphe_music_lyrics_section_font_animation",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
@@ -195,7 +207,24 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_focus_spotlight", summary = true),
                     SwitchPreference("morphe_music_lyrics_blur_inactive", summary = true),
                     SwitchPreference("morphe_music_lyrics_line_scale", summary = true),
-                    SwitchPreference("morphe_music_lyrics_split_background", summary = true),
+                    SwitchPreference("morphe_music_lyrics_split_background", summary = true)
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_text_formatting",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_music_lyrics_force_capitalize", summary = true),
+                    SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true),
+                    SwitchPreference("morphe_music_lyrics_han_form", summary = true),
+                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
+                    ListPreference("morphe_music_lyrics_alignment_mode")
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_visibility",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
                     SwitchPreference("morphe_music_lyrics_show_section", summary = true),
                     SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_section",
@@ -204,13 +233,7 @@ val lyricsPatch = patch(
                     ),
                     SwitchPreference("morphe_music_lyrics_hide_played", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true),
-                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
-                    SwitchPreference("morphe_music_lyrics_force_capitalize", summary = true),
-                    SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true),
-                    SwitchPreference("morphe_music_lyrics_han_form", summary = true),
-                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
-                    SwitchPreference("morphe_music_lyrics_force_center", summary = true),
-                    SwitchPreference("morphe_music_lyrics_duet_opposite_side", summary = true)
+                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -218,15 +241,16 @@ val lyricsPatch = patch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
+                    SwitchPreference("morphe_music_lyrics_long_press_share_mode", summary = true),
                     SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background_animated", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
-                    ListPreference("morphe_music_lyrics_copy_button_mode"),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_current_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_current_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_fullscreen_button", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -308,6 +332,10 @@ val lyricsPatch = patch(
         // The panel content is built by Elements, so there is no view to hook. The timed
         // lyrics component is the earliest signal that the opened panel is the lyrics one.
         addLithoFilter(LYRICS_PANEL_FILTER)
+
+        // The Lyrics button under the player is disabled by the server for tracks it has no
+        // lyrics for, so it is enabled again to open the panel with the third-party lyrics.
+        hookElement("$LYRICS_BUTTON_CLASS->enableLyricsButton")
 
         // The app builds the watch next response of device files itself, with only a Songs tab,
         // so there is no lyrics tab to show the panel in. A lyrics tab is added to that response,

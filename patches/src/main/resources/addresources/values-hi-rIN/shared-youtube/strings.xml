@@ -140,6 +140,8 @@ Android System WebView खोलने के लिए OK पर टैप क�
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">सुझाव: वीडियो स्ट्रीम्स को फर्ज़ करें > एंड्रॉइड वीआर साइन इन करें</string>
   <string name="morphe_spoof_video_streams_client_type_title">डिफ़ॉल्ट क्लायंट</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS का उपयोग करें</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">डीऑबफस्केशन के लिए yt-dlp-ejs (WebView) के बजाय QuackJS का उपयोग करें</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' साइन इन</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' के लिए एक अलग साइन-इन की आवश्यकता है। जारी रखने के लिए यहाँ टैप करें</string>
@@ -168,27 +170,28 @@ Android System WebView खोलने के लिए OK पर टैप क�
 • आपकी Morphe सेटिंग्स Android VR प्रमाणीकरण को आयात/निर्यात नहीं करती हैं
 • यदि यह ऐप 6 महीने तक उपयोग में न आए तो Google यह प्रमाणीकरण हटा देगा
 • यदि आप अपना Google पासवर्ड बदलते हैं या अपनी Google सेटिंग्स में इस डिवाइस को हटाते हैं, तो आपको फिर से साइन इन करना होगा"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'मोबाइल वेब\' साइन इन</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">वेब साइन इन</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">वैकल्पिक: अपने अकाउंट से वीडियो चलाने के लिए YouTube वेबसाइट पर साइन इन करें। जारी रखने के लिए यहां टैप करें</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">वर्तमान में \'Mobile Web\' में साइन इन है</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">फिलहाल YouTube वेबसाइट पर साइन इन है</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">इस सुविधा का उपयोग करने के लिए, \'Default client\' को \'Mobile Web\' में बदलें</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\' में साइन इन करें</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' वीडियो को साइन आउट करके, या YouTube वेबसाइट पर साइन इन करके चलाता है
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">इस सुविधा का उपयोग करने के लिए, \'Default client\' को Web client में बदलें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube वेबसाइट पर साइन इन करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"वेब क्लाइंट वीडियो को साइन आउट होकर, या YouTube वेबसाइट पर साइन इन करके चलाते हैं
 
-• साइन इन करने पर, उन वीडियो को चलाया जा सकता है जिनके लिए अकाउंट की ज़रूरत होती है, जैसे कि आयु-प्रतिबंधित वीडियो
-• इस ऐप में Google साइन-इन पेज खुलता है
-• साइन-इन का उपयोग केवल उन वीडियो को पाने के लिए किया जाता है जिन्हें आप चलाते हैं
+• साइन इन होने पर, उन वीडियो को चलाया जा सकता है जिनके लिए अकाउंट की ज़रूरत होती है, जैसे कि आयु-प्रतिबंधित वीडियो
+• Google साइन-इन पेज इस ऐप में खुलता है
+• साइन-इन का उपयोग केवल आपके द्वारा चलाए जाने वाले वीडियो प्राप्त करने के लिए किया जाता है
 • साइन-इन केवल इसी डिवाइस पर सेव किया जाता है
+• चयनित डिफ़ॉल्ट क्लाइंट के लिए, प्रत्येक वेब क्लाइंट का अपना साइन-इन होता है
 
 साइन इन करने के लिए, नीचे जारी रखें दबाएं"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"साइन-इन सेव हो गया
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"साइन-इन सहेजा गया
 
-• आपकी Morphe सेटिंग्स 'Mobile Web' साइन-इन को इम्पोर्ट/एक्सपोर्ट नहीं करेंगी
-• यदि Google साइन-इन समाप्त कर देता है, तो जब तक आप फिर से साइन इन नहीं करते, वीडियो साइन आउट स्थिति में चलते हैं
+• आपकी Morphe सेटिंग्स YouTube वेबसाइट साइन-इन को इम्पोर्ट/एक्सपोर्ट नहीं करेंगी
+• यदि Google साइन-इन समाप्त कर देता है, तो जब तक आप फिर से साइन इन नहीं करते, वीडियो साइन आउट होकर चलते हैं
 • साइन आउट करने से यह डिवाइस YouTube वेबसाइट से भी साइन आउट हो जाता है"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web साइन इन की अवधि समाप्त हो गई है, \'Mobile Web\' में फिर से साइन इन करने का प्रयास करें</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobile Web\' से साइन आउट कर दिया गया</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">वेब साइन इन की अवधि समाप्त हो गई है, फिर से साइन इन करने का प्रयास करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube वेबसाइट से साइन आउट कर दिया गया</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' उपलब्ध नहीं है। साइन इन करने के लिए इसे इंस्टॉल या सक्षम करें</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 अस्थायी रूप से उपलब्ध नहीं है (API टाइमआउट)</string>
   <string name="morphe_oauth2_connection_failure_status_400">एंड्रॉइड VR साइन इन की अवधि समाप्त हो गई है, VR में फिर से साइन इन करें</string>

@@ -105,6 +105,8 @@ private const val COMMENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CommentsFilter;"
 private const val VIEW_COUNT_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ViewCountFilter;"
+private const val VIDEO_DURATION_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/VideoDurationFilter;"
 private const val CUSTOM_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CustomFilter;"
 private const val KEYWORD_FILTER =
@@ -204,8 +206,9 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_comments_menu_button", summary = true),
                     SwitchPreference("morphe_hide_comments_none_yet"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
-                    SwitchPreference("morphe_minimal_comments_button", summary = true),
+                    SwitchPreference("morphe_hide_comments_preview_comment_cards", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button", titleKey = "morphe_hide_thanks_button_title"),
+                    SwitchPreference("morphe_hide_comments_timed_reactions", summary = true),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_hide_comments_top_fans_button"),
                     SwitchPreference("morphe_hide_comments_topics", summary = true),
@@ -230,7 +233,6 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_sync_button"),
             SwitchPreference("morphe_hide_tap_and_hold_gradient", summary = true),
-            SwitchPreference("morphe_hide_timed_reactions", summary = true),
             SwitchPreference("morphe_hide_video_title", summary = true),
             SwitchPreference("morphe_sanitize_video_subtitle", summary = true)
         )
@@ -274,6 +276,7 @@ val hideLayoutComponentsPatch = patch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_hide_keyword_content_comments"),
+                    SwitchPreference("morphe_hide_keyword_content_posts"),
                     SwitchPreference("morphe_hide_keyword_content_home"),
                     SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_subscriptions"),
@@ -315,6 +318,27 @@ val hideLayoutComponentsPatch = patch(
                         preferences = setOf(
                             NonInteractivePreference(
                                 key = "morphe_hide_videos_by_views_about",
+                                titleKey = null,
+                                tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
+                            )
+                        )
+                    )
+                )
+            ),
+            PreferenceScreenPreference(
+                key = "morphe_hide_videos_by_duration_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_videos_by_duration_home"),
+                    SwitchPreference("morphe_hide_videos_by_duration_search"),
+                    SwitchPreference("morphe_hide_videos_by_duration_subscriptions"),
+                    TextPreference("morphe_hide_videos_by_duration_minimum", inputType = InputType.NUMBER),
+                    TextPreference("morphe_hide_videos_by_duration_maximum", inputType = InputType.NUMBER),
+                    screenInfoPreferenceCategory(
+                        key = "morphe_hide_videos_by_duration_about_category",
+                        preferences = setOf(
+                            NonInteractivePreference(
+                                key = "morphe_hide_videos_by_duration_about",
                                 titleKey = null,
                                 tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
                             )
@@ -466,6 +490,7 @@ val hideLayoutComponentsPatch = patch(
         addLithoFilter(COMMENTS_FILTER)
         addLithoFilter(KEYWORD_FILTER)
         addLithoFilter(VIEW_COUNT_FILTER)
+        addLithoFilter(VIDEO_DURATION_FILTER)
         addLithoFilter(CUSTOM_FILTER)
         addSpanFilter(SANITIZE_VIDEO_SUBTITLE_FILTER)
         addSpanFilter(SEARCH_LINKS_FILTER)

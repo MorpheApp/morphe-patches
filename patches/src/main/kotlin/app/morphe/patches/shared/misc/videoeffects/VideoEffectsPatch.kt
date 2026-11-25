@@ -7,22 +7,36 @@
 
 package app.morphe.patches.shared.misc.videoeffects
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import java.util.logging.Logger
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/VideoEffectsPatch;"
+
+private const val EXTENSION_EGL_HELPER_INTERFACE =
+    $$"Lapp/morphe/extension/shared/patches/VideoEffectsPatch$EglHelper;"
+
+private const val EXTENSION_VIDEO_RENDERER_INTERFACE =
+    $$"Lapp/morphe/extension/shared/patches/VideoEffectsPatch$VideoRenderer;"
 
 /**
  * @param targetCompatible If the app version has the video renderer with the passthrough shader.
@@ -103,6 +117,123 @@ internal fun videoEffectsPatch(
                 ).forEach { (index, method) ->
                     val registers = fiveRegisters(index)
                     replaceInstruction(index, "invoke-static { $registers }, $EXTENSION_CLASS->$method")
+                }
+            }
+        }
+
+        // The renderer draws on an 8 bit surface without a color space, which dims HDR videos.
+        // Match the surface method before the config method is changed, as it is found through the config method class.
+        EglCreateSurfaceFingerprint.let {
+            it.classDef.apply {
+                addPatchInterface(
+                    EXTENSION_EGL_HELPER_INTERFACE,
+                    "patch_getEglConfig",
+                    it.instructionMatches[0].fieldReference
+                )
+                addPatchInterface(
+                    EXTENSION_EGL_HELPER_INTERFACE,
+                    "patch_setEglSurface",
+                    it.instructionMatches[2].fieldReference
+                )
+                addPatchInterface(
+                    EXTENSION_EGL_HELPER_INTERFACE,
+                    "patch_getSurface",
+                    it.instructionMatches[3].fieldReference
+                )
+            }
+
+            listOf(
+                imageReaderDrawFrameFingerprint(it.classDef.type) to
+                        "setVideoDataSpace(Landroid/media/Image;)V",
+                surfaceTextureDrawFrameFingerprint(it.classDef.type) to
+                        "setVideoDataSpace(Landroid/graphics/SurfaceTexture;)V"
+            ).forEach { (fingerprint, setDataSpaceMethod) ->
+                fingerprint.let { match ->
+                    match.classDef.addPatchInterface(
+                        EXTENSION_VIDEO_RENDERER_INTERFACE,
+                        "patch_getEglHelper",
+                        match.instructionMatches.first().fieldReference
+                    )
+
+                    match.method.apply {
+                        val index = match.instructionMatches.last().index
+                        val register = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                        addInstructions(
+                            index,
+                            """
+                                invoke-static { v$register }, $EXTENSION_CLASS->$setDataSpaceMethod
+                                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->updateOutputColorSpace($EXTENSION_VIDEO_RENDERER_INTERFACE)V
+                            """
+                        )
+                    }
+                }
+            }
+        }
+
+        VideoFrameListenerFingerprint.matchAll().forEach { match ->
+            match.method.addInstruction(
+                0,
+                "invoke-static/range { p6 .. p6 }, $EXTENSION_CLASS->setVideoFormat(Landroid/media/MediaFormat;)V"
+            )
+        }
+
+        EglChooseConfigFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val instruction = getInstruction<RegisterRangeInstruction>(index)
+                val startRegister = instruction.startRegister
+                val endRegister = startRegister + instruction.registerCount - 1
+
+                replaceInstruction(
+                    index,
+                    "invoke-static/range { v$startRegister .. v$endRegister }, $EXTENSION_CLASS->" +
+                            "chooseEglConfig(Landroid/opengl/EGLDisplay;[II[Landroid/opengl/EGLConfig;II[II)Z"
+                )
+            }
+        }
+
+        // The renderer draws only on a surface view.
+        VideoViewTypeFingerprint.let {
+            // Videos with DRM get a secure surface view before these checks. The checks are hooked
+            // where they are declared, so the other code that uses them also sees the surface view.
+            listOf(it.instructionMatches[2], it.instructionMatches[5]).forEach { match ->
+                match.getMethodCalled().apply {
+                    findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                                invoke-static { v$register }, $EXTENSION_CLASS->useSecureSurfaceView(Z)Z
+                                move-result v$register
+                            """
+                        )
+                    }
+                }
+            }
+
+            // A/B tests can draw the videos of hardware decoders on a GL or dual surface view.
+            // Software decoders pick their view in another method.
+            val enumMatches = VideoViewTypeEnumFingerprint.instructionMatches
+            listOf(enumMatches[1], enumMatches[3]).forEach { enumMatch ->
+                val viewType = enumMatch.fieldReference
+
+                it.method.apply {
+                    findInstructionIndicesReversedOrThrow(
+                        fieldAccess(viewType, Opcode.SGET_OBJECT)
+                    ).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstructions(
+                            index + 1,
+                            """
+                                invoke-static { v$register }, $EXTENSION_CLASS->getVideoViewType(Ljava/lang/Enum;)Ljava/lang/Enum;
+                                move-result-object v$register
+                                check-cast v$register, ${viewType.type}
+                            """
+                        )
+                    }
                 }
             }
         }

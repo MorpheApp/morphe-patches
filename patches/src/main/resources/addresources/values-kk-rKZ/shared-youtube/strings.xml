@@ -140,6 +140,8 @@ Android System WebView қолданбасын ашу үшін OK түймесі�
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Мынаны қосып көріңіз: Бейне ағындарын имитациялау &gt; Android VR кіру</string>
   <string name="morphe_spoof_video_streams_client_type_title">Әдепкі клиент</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS қолдану</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Деобфускация үшін yt-dlp-ejs (WebView) орнына QuackJS қолданыңыз</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" жүйесіне кіру</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' үшін бөлек кіру қажет. Жалғастыру үшін осында түртіңіз</string>
@@ -168,27 +170,28 @@ Android System WebView қолданбасын ашу үшін OK түймесі�
 • Morphe баптаулары Android VR аутентификациясын импорттамайды/экспорттамайды
 • Егер бұл қолданба 6 ай бойы пайдаланылмаса, Google бұл аутентификацияны жояды
 • Егер Google құпия сөзіңізді өзгертсеңіз немесе бұл құрылғыны Google баптауларынан тіркеуден шығарсаңыз, қайта кіруіңіз қажет болады"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"Мобильді веб\" жүйесіне кіру</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Веб-кіру кіру</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Міндетсіз: бейнелерді өз аккаунтыңызбен қосып ойнату үшін YouTube веб-сайтына кіріңіз. Жалғастыру үшін осында түртіңіз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Қазір \'Mobile Web\'-ке кірген</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Қазіргі уақытта YouTube веб-сайтына кіру орындалды</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Бұл мүмкіндікті пайдалану үшін \'Әдепкі клиентті\' \'Mobile Web\'-ке өзгертіңіз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\'-ке кіріңіз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' бейнелерді жүйеге кірмей-ақ немесе YouTube веб-сайтына кіріп ойнатады
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Бұл функцияны пайдалану үшін \"Әдепкі клиентті\" Веб-клиентке өзгертіңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube веб-сайтына кіру</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Веб-клиенттер бейнелерді жүйеге кірмей-ақ немесе YouTube веб-сайтына кіру арқылы ойнатады
 
-• Жүйеге кіргенде жас бойынша шектеу қойылған бейнелер сияқты аккаунтты қажет ететін бейнелерді ойнатуға болады
-• Осы қолданбада Google кіру беті ашылады
+• Жүйеге кіргенде, жас шектеуі бар бейнелер сияқты аккаунтты қажет ететін бейнелерді ойнатуға болады
+• Google кіру беті осы қолданбада ашылады
 • Кіру тек сіз ойнататын бейнелерді алу үшін қолданылады
-• Кіру деректері тек осы құрылғыда сақталады
+• Кіру мәліметтері тек осы құрылғыда сақталады
+• Әрбір веб-клиенттің таңдалған әдепкі клиент үшін өз кіруі болады
 
-Кіру үшін төмендегі жалғастыру түймесін басыңыз"</string>
+Кіру үшін төмендегі \"Жалғастыру\" батырмасын басыңыз"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Кіру сақталды
 
-• Morphe параметрлері 'Мобильді веб' кіруін импорттамайды/экспорттамайды
-• Егер Google кіруді аяқтаса, қайта кіргеніңізше бейнелер жүйеден шыққан күйде ойнатылады
+• Morphe параметрлері YouTube веб-сайтына кіруді импорттамайды/экспорттамайды
+• Егер Google сеансты аяқтаса, қайта кіргеніңіз əзірге бейнелер жүйеге кірмей ойнатылады
 • Жүйеден шығу бұл құрылғыны YouTube веб-сайтынан да шығарады"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Мобильді вебке кіру мерзімі аяқталды, \'Мобильді вебке\' қайта кіруге тырысыңыз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Мобильді вебтен\' шығылды</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Веб-кіру мерзімі аяқталды, қайта кіріп көріңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube веб-сайтынан шығылды</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' қолжетімді емес. Кіру үшін оны орнатыңыз немесе қосыңыз</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 уақытша қолжетімді емес (API уақыты бітті)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' кіру мерзімі аяқталды, VR-ға қайта кіруге тырысыңыз</string>

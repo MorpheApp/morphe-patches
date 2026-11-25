@@ -660,4 +660,24 @@ public class PetitLyricsProviderStaticTest {
         assertEquals("Line1", lines.get(0).text());
         assertEquals("Line2", lines.get(1).text());
     }
+
+    // cleanTitle
+
+    @Test
+    public void cleanTitleKeepsHyphenatedWords() {
+        assertEquals("Re-Birth", PetitLyricsProvider.cleanTitle("Re-Birth"));
+        assertEquals("24/7", PetitLyricsProvider.cleanTitle("24/7"));
+    }
+
+    @Test
+    public void cleanTitleDropsAsciiAndBracketedSubtitles() {
+        assertEquals("夜に駆ける", PetitLyricsProvider.cleanTitle("夜に駆ける / Racing into the Night"));
+        assertEquals("夜に駆ける", PetitLyricsProvider.cleanTitle("夜に駆ける／Racing into the Night"));
+        assertEquals("夜に駆ける", PetitLyricsProvider.cleanTitle("夜に駆ける - (TV Size)"));
+    }
+
+    @Test
+    public void cleanTitleKeepsJapaneseSubtitles() {
+        assertEquals("曲名 - 副題", PetitLyricsProvider.cleanTitle("曲名 〜副題〜"));
+    }
 }

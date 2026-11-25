@@ -212,7 +212,7 @@ internal object LocalContextFingerprint : Fingerprint(
 )
 
 /**
- * Media viewer chrome before 2026.38.0. Right after building the fade gradient from an array of
+ * Media viewer chrome before 2026.37.0. Right after building the fade gradient from an array of
  * (position, color) pairs, Reddit can swap in a darker static gradient.
  */
 internal object MediaViewerChromeLegacyFingerprint : Fingerprint(
@@ -267,7 +267,7 @@ internal object VerticalChainingFingerprint : Fingerprint(
 
 /**
  * Media viewer pager state constructor, which calls the vertical chaining flag getter.
- * Used before Reddit 2026.40.0, where the flag is a plain getter.
+ * Used before Reddit 2026.37.0, where the flag is a plain getter.
  */
 internal object VerticalChainingLegacyFingerprint : Fingerprint(
     name = "<init>",

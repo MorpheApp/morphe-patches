@@ -243,6 +243,7 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_hide_keyword_content_screen_title">Penyaring kata kunci</string>
   <string name="morphe_hide_keyword_content_screen_summary">Pilih kata atau frasa tertentu untuk menyembunyikan video di feed dan pencarian</string>
   <string name="morphe_hide_keyword_content_comments_title">Sembunyikan komentar berdasarkan kata kunci</string>
+  <string name="morphe_hide_keyword_content_posts_title">Sembunyikan postingan dengan kata kunci</string>
   <string name="morphe_hide_keyword_content_home_title">Sembunyikan video beranda dengan kata kunci</string>
   <string name="morphe_hide_keyword_content_search_title">Sembunyikan hasil pencarian berdasarkan kata kunci</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Sembunyikan video subscription dengan kata kunci</string>
@@ -250,7 +251,7 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa yang akan disembunyikan, dipisahkan dengan baris baru
 
 Kata kunci dapat berupa teks apa pun yang muncul dalam judul video. Kata kunci @NamaPengguna menyembunyikan semua konten dari kreator tertentu"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Beranda / Subscription / Pencarian / Komentar disaring untuk menyembunyikan konten yang cocok dengan frasa kata kunci
+  <string name="morphe_hide_keyword_content_about_summary">"Beranda / Subscription / Pencarian / Komentar / Postingan disaring untuk menyembunyikan konten yang cocok dengan frasa kata kunci
 
 Batasan:
 • Beberapa Shorts tidak dapat disembunyikan berdasarkan nama channel
@@ -266,6 +267,39 @@ Batasan:
 • Pencarian: %3$s
 • Komentar: %4$s
 • Total: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Filter jumlah tayangan</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Sembunyikan video di feed dan pencarian yang memiliki terlalu sedikit atau terlalu banyak tayangan</string>
+  <string name="morphe_hide_videos_by_views_home_title">Sembunyikan video Beranda berdasarkan tayangan</string>
+  <string name="morphe_hide_videos_by_views_search_title">Sembunyikan hasil pencarian berdasarkan tayangan</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Sembunyikan video Subscription berdasarkan tayangan</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Jumlah penayangan minimum</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Video dengan jumlah penayangan yang lebih sedikit akan disembunyikan. 0 = tidak ada minimum</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Jumlah penayangan maksimum</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Video dengan jumlah penayangan yang lebih banyak akan disembunyikan. 0 = tidak ada maksimum</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Beranda / Subscription / Penelusuran difilter untuk menyembunyikan video dan Shorts berdasarkan jumlah penayangannya
+
+Batasan:
+• YouTube membulatkan jumlah penayangan, jadi 1,2rb penayangan dihitung sebagai 1200 penayangan
+• Live stream tidak disembunyikan
+• Short yang disembunyikan dapat meninggalkan ruang kosong di rak Shorts"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Filter jumlah penayangan akan menyembunyikan semua video</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Penyaring durasi</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Sembunyikan video di feed dan pencarian yang terlalu pendek atau terlalu panjang</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Sembunyikan video Beranda berdasarkan durasi</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Sembunyikan hasil pencarian berdasarkan durasi</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Sembunyikan video subscription berdasarkan durasi</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Durasi minimum (menit)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Video yang lebih pendek dari ini akan disembunyikan. 0 = tidak ada minimum</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Durasi maksimum (menit)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Video yang lebih panjang dari ini akan disembunyikan. 0 = tidak ada maksimum</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Beranda / Subscription / Pencarian difilter untuk menyembunyikan video berdasarkan durasinya
+
+Batasan:
+• Live stream, Shorts, daftar putar, dan mix tidak disembunyikan
+• Video dengan durasi yang tidak diketahui tidak disembunyikan"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Filter durasi akan menyembunyikan semua video</string>
   <string name="morphe_hide_stats_category_title">Statistik</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video disembunyikan, 24 jam terakhir</string>
   <string name="morphe_hide_stats_hidden_all_title">Video disembunyikan, sepanjang waktu</string>
@@ -282,7 +316,7 @@ Batasan:
   <string name="morphe_hide_post_comment_button_title">Sembunyikan tombol Komentar</string>
   <string name="morphe_hide_post_comments_preview_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_post_comments_preview_summary">Menyembunyikan pratinjau komentar di bawah postingan</string>
-  <string name="morphe_hide_post_share_button_summary">Tombol unduh gambar postingan digambar di sebelah tombol Bagikan, jadi tombol tersebut juga tersembunyi</string>
+  <string name="morphe_hide_post_share_button_summary">Tombol unduh pada postingan gambar diletakkan di sebelah tombol Bagikan, jadi tombol tersebut tersembunyi juga</string>
   <string name="morphe_hide_ask_gemini_button_title">Sembunyikan tombol \'Tanyakan Gemini\'</string>
   <string name="morphe_hide_ask_gemini_button_summary">Menyembunyikan tombol \'Tanyakan Gemini\' di bagian bawah panel \'Tanyakan tentang video ini\'</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
@@ -290,10 +324,10 @@ Batasan:
   <string name="morphe_hide_autoplay_preview_summary">Menyembunyikan pratinjau video yang akan datang dalam mode layar penuh sebelum pemutaran otomatis dimulai</string>
   <string name="morphe_hide_channel_bar_title">Sembunyikan bilah saluran</string>
   <string name="morphe_hide_channel_watermark_title">Sembunyikan tanda air saluran</string>
-  <string name="morphe_hide_chapters_button_title">Tombol Sembunyikan Bab</string>
+  <string name="morphe_hide_chapters_button_title">Sembunyikan tombol Bab</string>
   <string name="morphe_hide_crowdfunding_box_title">Sembunyikan kotak penggalangan dana</string>
   <string name="morphe_hide_emergency_box_title">Sembunyikan kotak darurat</string>
-  <string name="morphe_hide_in_this_video_button_title">Tombol Sembunyikan \'Di video ini\'</string>
+  <string name="morphe_hide_in_this_video_button_title">Sembunyikan tombol \'Pada video ini\'</string>
   <string name="morphe_hide_info_panels_title">Sembunyikan panel info</string>
   <string name="morphe_hide_info_panels_summary">Menyembunyikan panel konteks informasi, seperti informasi medis</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
@@ -309,8 +343,6 @@ Batasan:
   <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Sembunyikan gradien ketuk dan tahan</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Menyembunyikan gradien kontrol pemutar saat menggeser jari sambil menahan untuk mempercepat</string>
-  <string name="morphe_hide_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
-  <string name="morphe_hide_timed_reactions_summary">Menyembunyikan fitur yang memungkinkan pengguna memberikan reaksi dengan emoji di bagian komentar dan live chat</string>
   <string name="morphe_hide_help_feedback_menu_summary">Menyembunyikan menu \'Bantuan &amp; masukan\' saat menggunakan tombol tiga titik, misalnya pada hasil penelusuran</string>
   <string name="morphe_hide_handle_title">Sembunyikan handle</string>
   <string name="morphe_hide_handle_summary">Menyembunyikan handle saluran di tab \'Anda\'</string>
@@ -425,10 +457,12 @@ Batasan:
   <string name="morphe_hide_comments_menu_button_summary">Menyembunyikan tombol menu tiga titik pada setiap komentar</string>
   <string name="morphe_hide_comments_none_yet_title">Sembunyikan pratinjau \'Belum ada komentar\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Sembunyikan pratinjau komentar</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar penuh</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Komentar disembunyikan oleh Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Aktifkan tombol komentar minimal</string>
-  <string name="morphe_minimal_comments_button_summary">Menyembunyikan kartu geser dan pemilih halamannya, yang ditampilkan pada tombol komentar</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Sembunyikan kartu pratinjau komentar</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Menyembunyikan kartu geser dan indikator halaman yang ditampilkan pada tombol komentar</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Menyembunyikan fitur yang memungkinkan pengguna memberikan reaksi dengan emoji di bagian komentar dan live chat</string>
   <string name="morphe_hide_comments_timestamp_button_title">Sembunyikan tombol Stempel Waktu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sembunyikan tombol \'Penggemar teratas\'</string>
   <string name="morphe_hide_comments_topics_title">Sembunyikan \'Topik\'</string>
@@ -618,8 +652,8 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Unduh gambar postingan</string>
   <string name="morphe_post_image_download_summary">Tombol unduh ditampilkan di samping tombol Bagikan pada postingan dengan gambar atau GIF, dan item unduh ditambahkan ke menu mereka</string>
-  <string name="morphe_post_image_download_flyout">Unduh gambar</string>
-  <string name="morphe_post_image_download_flyout_single">Unduh gambar</string>
+  <string name="morphe_post_image_download_flyout">Download gambar</string>
+  <string name="morphe_post_image_download_flyout_single">Download gambar</string>
   <string name="morphe_post_image_download_started">Mengunduh %s gambar…</string>
   <string name="morphe_post_image_download_started_single">Mengunduh gambar…</string>
   <string name="morphe_post_image_download_saved">%1$s gambar disimpan ke %2$s</string>
@@ -678,14 +712,14 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_ryd_feed_counts_position_entry_1">Di samping jumlah penayangan</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Tengah kanan</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Kiri atas</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Cari komentar</string>
-  <string name="morphe_search_comments_summary">Ketuk tombol cari di komentar untuk menampilkan hanya komentar yang dimuat yang mengandung semua kata yang dicari. Gunakan tanda kutip pada kata untuk mencari frasa</string>
-  <string name="morphe_search_comments_dialog_title">Cari komentar</string>
-  <string name="morphe_search_comments_hint">Kata yang ingin dicari</string>
-  <string name="morphe_search_comments_clear">Hapus</string>
-  <string name="morphe_search_comments_applied">Ubah urutan pengurutan atau buka kembali komentar untuk mencarinya</string>
-  <string name="morphe_search_comments_cleared">Pencarian dihapus. Ubah urutan pengurutan atau buka kembali komentar untuk menampilkan semua komentar</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Cari komentar</string>
+  <string name="morphe_comment_search_summary">Ketuk tombol cari di komentar untuk menampilkan hanya komentar yang dimuat yang berisi semua kata yang dicari. Gunakan tanda kutip pada kata untuk mencari frasa</string>
+  <string name="morphe_comment_search_dialog_title">Cari komentar</string>
+  <string name="morphe_comment_search_hint">Kata yang dicari</string>
+  <string name="morphe_comment_search_clear">Hapus</string>
+  <string name="morphe_comment_search_applied">Ubah urutan pengurutan atau buka kembali komentar untuk mencarinya</string>
+  <string name="morphe_comment_search_cleared">Pencarian dihapus. Ubah urutan pengurutan atau buka kembali komentar untuk menampilkan semua komentar</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Nonaktifkan popup \'Hubungkan perangkat Anda\'</string>
@@ -1139,7 +1173,18 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Perbaiki transkrip</string>
   <string name="morphe_fix_transcript_summary">Memperbaiki prasyarat kegagalan pemeriksaan yang dapat menghalangi pemuatan transkrip</string>
-  <string name="morphe_captions_in_pip_title">Tampilkan teks bantuan dalam picture-in-picture</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Salin transkrip</string>
+  <string name="morphe_copy_transcript_title">Salin transkrip</string>
+  <string name="morphe_copy_transcript_summary">Menambahkan tombol ke panel transkrip yang menyalin transkrip dalam bahasa teks terjemahan</string>
+  <string name="morphe_copy_transcript_timestamps_title">Sertakan stempel waktu</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Setiap baris transkrip yang disalin dimulai dengan waktunya</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Tampilkan di menu Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Menambahkan item Salin transkrip ke menu Shorts</string>
+  <string name="morphe_copy_transcript_copied">Transkrip disalin ke papan klip</string>
+  <string name="morphe_copy_transcript_empty">Tidak ada transkrip yang tersedia</string>
+  <string name="morphe_copy_transcript_error">Tidak dapat menyalin transkrip</string>
+  <string name="morphe_captions_in_pip_title">Tampilkan teks dalam picture-in-picture</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Ukuran teks</string>
   <string name="morphe_caption_scale_summary">Berlaku untuk teks bahasa tunggal dan dwibahasa</string>
@@ -1170,6 +1215,9 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan tombol setelan</string>
   <string name="morphe_show_settings_button_type_summary">Saat diaktifkan, ketuk membuka setelan Morphe dan tahan membuka setelan YouTube, nonaktifkan untuk menukarnya</string>
+  <string name="morphe_you_button_account_switcher_title">Pintasan pengalih akun</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Tekan lama tombol \'Anda\' untuk membuka pengalih akun</string>
   <string name="morphe_navigation_buttons_order_title">Urutan tombol navigasi</string>
   <string name="morphe_navigation_buttons_order_summary">Seret tombol untuk mengubah urutannya di bilah navigasi</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tukar tombol Buat dengan tombol Notifikasi</string>
@@ -1389,6 +1437,17 @@ Tata letak Otomotif
 • Hamparan 'Video lainnya' mungkin tidak tersedia
 • Shorts terbuka di pemutar reguler
 • Bilah tindakan video lama yang tidak diciutkan ditampilkan"</string>
+  <string name="morphe_change_form_factor_car_display_title">Tata letak otomotif pada layar mobil</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Tata letak otomotif digunakan saat YouTube ditampilkan pada layar mobil, seperti melalui Android Auto atau DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Tata letak otomotif tidak digunakan pada layar mobil</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Sembunyikan bilah navigasi secara otomatis pada tampilan mobil</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Bilah navigasi disembunyikan pada tampilan mobil setelah tidak digunakan selama beberapa saat. Geser ke atas dari tepi bawah untuk menampilkannya</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Bilah navigasi selalu ditampilkan pada tampilan mobil</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Penundaan sembunyi otomatis</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Berapa lama bilah navigasi tetap muncul setelah ditampilkan atau disentuh</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Gunakan pada layar eksternal apa pun</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Setiap layar selain layar ponsel adalah layar mobil, termasuk TV atau monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Layar mobil ditemukan melalui Android Auto, nama layar, dan mode UI mobil. Pada Android 15 dan versi terbaru, pencerminan layar oleh DriveDeck, Gearslip, graphene-auto, atau MyCar juga merupakan layar mobil"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Kembalikan perilaku teks lama</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Kembalikan penyimpanan lama ke daftar putar</string>
@@ -1445,6 +1504,8 @@ Tata letak Otomotif
   <string name="morphe_playback_in_feeds_entry_always_on">Selalu aktif</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi saja</string>
   <string name="morphe_playback_in_feeds_entry_off">Nonaktif</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Tampilkan tombol pencarian di feed</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Menampilkan tombol pencarian pada video yang diputar di feed, bahkan saat YouTube tidak menampilkannya</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Pulihkan judul asli</string>
   <string name="morphe_restore_original_titles_summary">Menampilkan judul video asli, deskripsi video, dan deskripsi saluran, bukan yang diterjemahkan secara otomatis</string>
@@ -2050,4 +2111,106 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_live_chat_translate_max_length_title">Panjang pesan maksimum</string>
   <string name="morphe_live_chat_translate_max_length_summary">Pesan yang lebih panjang ditampilkan tanpa diterjemahkan</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Tanpa batas</string>
+  <string name="morphe_ghost_play_screen_title">Mode hantu</string>
+  <string name="morphe_ghost_play_screen_summary">Tonton video tanpa memengaruhi riwayat tontonan atau rekomendasi</string>
+  <string name="morphe_ghost_play_cat_general_title">Umum</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Tombol</string>
+  <string name="morphe_ghost_play_cat_rules_title">Aturan auto-ghost</string>
+  <string name="morphe_ghost_play_cat_history_title">Riwayat lokal</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Privasi lanjutan</string>
+  <string name="morphe_ghost_play_enabled_title">Aktifkan mode Ghost</string>
+  <string name="morphe_ghost_play_enabled_summary">Memungkinkan menonton video, Shorts, pencarian, channel, atau seluruh sesi yang dipilih tanpa memengaruhi riwayat tontonan atau rekomendasi</string>
+  <string name="morphe_ghost_play_mode_active_title">Mode Ghost aktif</string>
+  <string name="morphe_ghost_play_mode_active_summary">Saat AKTIF, setiap video yang Anda buka secara normal dari feed, video terkait, atau pencarian akan diputar dalam mode Ghost tanpa menggunakan menu titik tiga</string>
+  <string name="morphe_ghost_play_persist_mode_title">Ingat mode Ghost setelah restart</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Menjaga mode Ghost tetap AKTIF bahkan setelah menutup dan membuka kembali YouTube</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Tampilkan tombol mode Ghost di bilah atas</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Menempatkan tombol mode Ghost yang ringkas di samping ikon bilah atas (ketuk untuk beralih, tekan lama untuk kontrol cepat)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Tampilkan di menu video</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Menambahkan \"Putar dalam mode Ghost\" ke menu titik tiga pada video</string>
+  <string name="morphe_ghost_play_player_button_title">Tampilkan tombol mode Ghost</string>
+  <string name="morphe_ghost_play_player_button_summary">Menampilkan tombol alih mode Ghost di pemutar video (tekan lama untuk kontrol cepat)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Anonimkan permintaan pemutaran</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Menghapus header akun dari pemutaran ghost dan permintaan event untuk isolasi yang lebih kuat. Fitur pembatasan usia, khusus anggota, dan Premium tidak tersedia saat diaktifkan</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Auto-ghost Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Menonton Shorts secara otomatis dalam mode Ghost agar tidak memengaruhi feed beranda Anda</string>
+  <string name="morphe_ghost_play_auto_search_title">Ghost otomatis untuk video dari Penelusuran</string>
+  <string name="morphe_ghost_play_auto_search_summary">Menonton video yang dibuka dari hasil penelusuran secara otomatis dalam mode Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_title">Ghost otomatis untuk saluran</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Cari, tambahkan, periksa, dan kelola saluran yang selalu diputar dalam mode Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d saluran dikonfigurasi — ketuk untuk mencari, memeriksa, atau menghapus</string>
+  <string name="morphe_ghost_play_local_history_title">Simpan riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_local_history_summary">Mengingat video mode Ghost dan posisi pemutaran hanya di perangkat ini (tidak pernah dikirim ke YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">Batas riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_history_limit_summary">Jumlah video maksimal yang disimpan di perangkat (entri tertua dihapus secara otomatis)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d video disimpan (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Tidak ada video yang disimpan</string>
+  <string name="morphe_ghost_play_history_limit_100">100 video</string>
+  <string name="morphe_ghost_play_history_limit_500">500 video</string>
+  <string name="morphe_ghost_play_history_limit_2000">2.000 video</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Tanpa batas</string>
+  <string name="morphe_ghost_play_view_history_title">Buka riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_view_history_summary">Lihat, cari, lanjutkan dalam mode Ghost, atau hapus riwayat di perangkat Anda</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d video tersimpan di perangkat (%2$s) — ketuk untuk melihat atau melanjutkan</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Belum ada video yang direkam (hanya tersimpan di perangkat ini)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Putar dalam mode Ghost</string>
+  <string name="morphe_ghost_play_video_active_toast">Mode Ghost aktif — riwayat tontonan dan rekomendasi dilindungi</string>
+  <string name="morphe_ghost_play_video_off_toast">Mode hantu MATI untuk video ini</string>
+  <string name="morphe_ghost_play_session_on_toast">Mode hantu AKTIF — video tidak akan memengaruhi riwayat atau rekomendasi</string>
+  <string name="morphe_ghost_play_session_off_toast">Mode hantu MATI — kembali ke pemutaran normal</string>
+  <string name="morphe_ghost_play_timer_set_toast">Mode hantu aktif selama %d menit</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Timer dihapus — Mode hantu tetap AKTIF</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Masukkan durasi antara 1 dan 720 menit</string>
+  <string name="morphe_ghost_play_dialog_title">Mode hantu</string>
+  <string name="morphe_ghost_play_state_on">Aktif</string>
+  <string name="morphe_ghost_play_state_off">Nonaktif</string>
+  <string name="morphe_ghost_play_close">Tutup</string>
+  <string name="morphe_ghost_play_open_settings">Semua setelan</string>
+  <string name="morphe_ghost_play_quick_power_hint">Ketuk untuk mengaktifkan/menonaktifkan Mode hantu</string>
+  <string name="morphe_ghost_play_quick_timer_title">Mode Ghost Berwaktu</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Ketuk untuk memilih durasi</string>
+  <string name="morphe_ghost_play_quick_timer_running">Timer aktif · %d menit tersisa</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Secara otomatis kembali ke mode normal saat selesai</string>
+  <string name="morphe_ghost_play_quick_timer_change">Ubah waktu</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Hapus timer (tetap AKTIF)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Menit kustom (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Atur</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost AKTIF untuk saluran ini</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost MATI untuk saluran ini</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d saluran dikonfigurasi</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Daftar (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" ditambahkan ke saluran auto-ghost</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" dihapus dari saluran auto-ghost</string>
+  <string name="morphe_ghost_play_history_title">Riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d video (%s) · ketuk untuk melanjutkan dalam mode Ghost, tahan untuk menghapus</string>
+  <string name="morphe_ghost_play_history_search_hint">Filter berdasarkan judul video atau saluran…</string>
+  <string name="morphe_ghost_play_history_no_match">Tidak ada video yang cocok dalam riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_history_empty">Belum ada riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_history_clear_all">Hapus semua</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Hapus riwayat Ghost lokal?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Ini akan menghapus semua entri mode Ghost yang tersimpan di perangkat dan tidak dapat dibatalkan.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Riwayat Ghost lokal telah dihapus</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Dihapus dari riwayat Ghost lokal</string>
+  <string name="morphe_ghost_play_channels_manager_title">Saluran auto-ghost</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Ditambahkan (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Cari &amp; Tambah</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filter saluran yang ditambahkan berdasarkan nama, @handle, atau topik…</string>
+  <string name="morphe_ghost_play_channels_empty">Belum ada saluran yang ditambahkan. Beralih ke \"Cari &amp; Tambah\" untuk mencari saluran berdasarkan nama, @handle, atau URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Tidak ada saluran yang ditambahkan yang cocok dengan filter Anda</string>
+  <string name="morphe_ghost_play_channels_add_current">Memutar: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Tambah</string>
+  <string name="morphe_ghost_play_channels_added_badge">Ditambahkan</string>
+  <string name="morphe_ghost_play_channels_delete_button">Hapus</string>
+  <string name="morphe_ghost_play_channels_search_hint">Nama saluran, @handle, atau URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Telusuri</string>
+  <string name="morphe_ghost_play_channels_search_guide">Masukkan nama channel, @handle, atau URL channel YouTube lalu ketuk Cari</string>
+  <string name="morphe_ghost_play_channels_searching">Mencari channel YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">Pencarian gagal. Periksa koneksi Anda dan coba lagi.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Tidak ada channel yang ditemukan untuk kueri tersebut</string>
+  <string name="morphe_ghost_play_channels_search_count">%d channel ditemukan — ketuk Tambah untuk mengaktifkan auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Video terbaru</string>
+  <string name="morphe_ghost_play_channels_loading_details">Memuat video terbaru…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Tidak ada video terbaru yang ditemukan (ketuk untuk mencoba lagi)</string>
 </resources>

@@ -140,6 +140,8 @@ Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Agar mijozlar topilmasa: Android VR ga kirish imkoniyatini sinab ko‘ring</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standart mijoz</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS dan foydalanish</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Deobfuskatsiya uchun yt-dlp-ejs (WebView) o\'rniga QuackJS dan foydalanish</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\"ga kirish</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' alohida tizimga kirishni talab qiladi. Davom etish uchun bu yerni bosing</string>
@@ -168,27 +170,28 @@ Kirish uchun quyidagidan davom eting"</string>
 • Morphe sozlamalaringiz Android VR kimlik tasdiqlanishini import yoki eksport qilmaydi
 • Agar ushbu ilovadan 6 oy davomida foydalanilmasa, Google ushbu kimlik tasdiqlanishini olib tashlaydi
 • Google parolingizni o'zgartirsangiz yoki ushbu qurilmani Google sozlamalaridan olib tashlasangiz, qayta kirishingiz kerak"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"Mobil Web\"ga kirish</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Veb-tizimga kirish</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ixtiyoriy: videolarni o\"z hisobingiz orqali ko\"rish uchun YouTube veb-saytiga kiring. Davom etish uchun bu yerni bosing</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda \'Mobile Web\'ga kirilgan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda YouTube veb-saytiga kirilgan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ushbu funksiyadan foydalanish uchun \'Standart mijoz\'ni \'Mobile Web\'ga o\'zgartiring</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\'ga kiring</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobil Web\" videolarni tizimga kirmasdan yoki YouTube veb-saytiga kirgan holda ijro etadi
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ushbu funksiyadan foydalanish uchun \'Standart mijoz\'ni Veb-mijozga o\'zgartiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube veb-saytiga tizimga kiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Veb-mijozlar videolarni YouTube veb-saytida tizimga kirmagan holda yoki tizimga kirgan holda ijro etadi
 
-• Tizimga kirgan holda, yosh chegarasi bilan cheklangan videolar kabi akkaunt talab qiladigan videolarni ko'rish mumkin
-• Google-ga kirish sahifasi ushbu ilovada ochiladi
+• Tizimga kirgan holda, hisob talab qiladigan videolarni, masalan, yosh cheklovi mavjud videolarni ijro etish mumkin
+• Google tizimga kirish sahifasi ushbu ilovada ochiladi
 • Tizimga kirish faqat siz ijro etadigan videolarni olish uchun ishlatiladi
 • Tizimga kirish ma'lumotlari faqat ushbu qurilmada saqlanadi
+• Tanlangan standart mijoz uchun har bir veb-mijozning o'z tizimga kirish ma'lumotlari mavjud
 
-Tizimga kirish uchun quyidagidan davom eting"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Tizimga kirish ma'lumotlari saqlandi
+Tizimga kirish uchun quyida davom etish tugmasini bosing"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kirish saqlandi
 
-• Sizning Morphe sozlamalaringiz \"Mobil Web\" tizimiga kirish ma'lumotlarini import qilmaydi/eksport qilmaydi
-• Agar Google tizimdan chiqarsa, siz qayta tizimga kirguningizcha videolar tizimga kirmagan holda ijro etiladi
+• Morphe sozlamalari YouTube veb-saytiga kirish ma'lumotlarini import qilmaydi/eksport qilmaydi
+• Agar Google kirish seansini yakunlasa, qaytadan kirguningizcha videolar tizimga kirmagan holda ijro etiladi
 • Tizimdan chiqish ushbu qurilmani YouTube veb-saytidan ham chiqaradi"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobil Web tizimiga kirish muddati tugadi, \"Mobil Web\"ga qayta kirishga harakat qilib ko\'ring</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\"Mobil Web\" tizimidan chiqildi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Veb-kirish muddati tugadi, qaytadan kirishga harakat qilib ko\'ring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube veb-saytidan chiqildi</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" mavjud emas. Tizimga kirish uchun uni o\"rnating yoki yoqing</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 vaqtinchalik mavjud emas (API vaqti tugadi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\"Android VR\" tizimiga kirish muddati tugadi, VR’ga qaytadan kirishga harakat qiling</string>

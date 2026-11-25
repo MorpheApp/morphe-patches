@@ -18,9 +18,10 @@ import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.reddit.layout.tabletgrid.FEED_TYPE_CLASS
 import app.morphe.patches.reddit.layout.tabletgrid.LatestFeedScreenFingerprint
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_37_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.shared.NavBarStateChangeFingerprint
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -167,7 +168,7 @@ val feedAutoScrollPatch = patch(
             }
         }
 
-        val (screenAttachFingerprint, screenDetachFingerprint) = if (is_2026_40_0_or_greater) {
+        val (screenAttachFingerprint, screenDetachFingerprint) = if (is_2026_37_0_or_greater) {
             ScreenAttachFingerprint to ScreenDetachFingerprint
         } else {
             ScreenAttachLegacyFingerprint to ScreenDetachLegacyFingerprint

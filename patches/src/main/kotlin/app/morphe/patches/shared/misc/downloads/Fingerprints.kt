@@ -12,6 +12,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import app.morphe.patches.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -71,6 +72,22 @@ internal object StreamingDataFormatStreamsFingerprint : Fingerprint(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
             type = "Ljava/util/List;"
+        )
+    )
+)
+
+/**
+ * Constructor of a stream, which saves the ID of the video of the stream.
+ */
+internal object FormatStreamModelConstructorFingerprint : Fingerprint(
+    classFingerprint = FormatStreamModelToStringFingerprint,
+    name = "<init>",
+    parameters = listOf("L", "Ljava/lang/String;", "Z", "L"),
+    filters = listOf(
+        fieldAccess( // Video ID.
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
         )
     )
 )

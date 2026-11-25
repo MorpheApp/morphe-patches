@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">የቁልፍ ቃል ማጣሪያ</string>
   <string name="morphe_hide_keyword_content_screen_summary">በፊዶች እና በፍለጋ ውስጥ ቪዲዮዎችን ለመደበቅ የተወሰኑ ቃላትን ወይም ሐረጎችን ይምረጡ</string>
   <string name="morphe_hide_keyword_content_comments_title">አስተያየቶችን በቁልፍ ቃላት ደብቅ</string>
+  <string name="morphe_hide_keyword_content_posts_title">ጽሁፎችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_home_title">የመነሻ ገጽ ቪዲዮዎችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_search_title">የፍለጋ ውጤቶችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">የደንበኝነት ምዝገባ ቪዲዮዎችን በቁልፍ ቃላት ደብቅ</string>
@@ -250,11 +251,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"ሊደበቁ የሚፈልጓቸውን ቁልፍ ቃላት እና ሐረጎች በአዲስ መስመሮች በመለየት ያስገቡ
 
 ቁልፍ ቃላት በቪዲዮ ርዕሶች ላይ የሚታዩ ማናቸውም ጽሑፎች ሊሆኑ ይችላሉ። የ@የተጠቃሚስም ቁልፍ ቃል ከተወሰኑ ፈጣሪዎች የሚመጡትን ሁሉንም ይዘቶች ይደብቃል"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"የመጀመሪያ ገጽ / የደንበኝነት ምዝገባዎች / ፍለጋ / አስተያየቶች ከቁልፍ ቃላት ሐረጎች ጋር የሚመሳሰሉ ይዘቶችን ለመደበቅ ተጣርተዋል
+  <string name="morphe_hide_keyword_content_about_summary">"መነሻ / የደንበኝነት ምዝገባዎች / ፍለጋ / አስተያየቶች / ጽሁፎች ከቁልፍ ቃላት ጋር የሚመሳሰሉ ይዘቶችን ለመደበቅ ተጣርተው የቀረቡ ናቸው
 
 ገደቦች፦
 • አንዳንድ Shorts በቻናል ስም ሊደበቁ አይችሉም
-• አንዳንድ የUI አካላት ላይደበቁ ይችላሉ"</string>
+• አንዳንድ የተጠቃሚ በይነገጽ UI ክፍሎች ላይደበቁ ይችላሉ"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">ሙሉ ቃላትን አዛምድ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ቁልፍ ቃላትን/ሐረጎችን በድርብ ጥቅስ ውስጥ ማጠር የቪዲዮ ርዕሶችን እና የቻናል ስሞችን በከፊል ማዛመድን ይከላከላል&lt;br&gt;&lt;br&gt;ለምሳሌ፣&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; የሚለውን ቪዲዮ ይደብቃል፡ &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ነገር ግን ይህንን አይደብቅም፡ &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -266,6 +267,39 @@ Second \"item\" text"</string>
 • ፍለጋ፡ %3$s
 • አስተያየቶች፡ %4$s
 • ጠቅላላ፡ %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">የእይታ ብዛት ማጣሪያ</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">በጣም አነስተኛ ወይም በጣም ብዙ እይታዎች ያላቸውን ቪዲዮዎች በፊዶች እና በፍለጋ ውስጥ ደብቅ</string>
+  <string name="morphe_hide_videos_by_views_home_title">የመነሻ ገጽ ቪዲዮዎችን በእይታ ብዛት ደብቅ</string>
+  <string name="morphe_hide_videos_by_views_search_title">የፍለጋ ውጤቶችን በእይታ ብዛት ደብቅ</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">የደንበኝነት ምዝገባ ቪዲዮዎችን በእይታ ብዛት ደብቅ</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">ዝቅተኛው የዕይታ ብዛት</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">ጥቂት ዕይታዎች ያሏቸው ቪዲዮዎች ይደበቃሉ። 0 = ዝቅተኛ ብዛት የለም</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">ከፍተኛው የዕይታ ብዛት</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">ብዙ ዕይታዎች ያሏቸው ቪዲዮዎች ይደበቃሉ። 0 = ከፍተኛ ብዛት የለም</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Home / Subscriptions / Search በዕይታ ብዛታቸው ቪዲዮዎችን እና Shortsን ለመደበቅ ተጣርተዋል
+
+ገደቦች:
+• YouTube የዕይታ ብዛትን ያጠጋጋል፣ ስለዚህ 1.2K ዕይታዎች እንደ 1200 ዕይታዎች ይታሰባሉ
+• የቀጥታ ስርጭቶች አይደበቁም
+• የተደበቀ Short በ Shorts መደርደሪያ ላይ ባዶ ቦታ ሊተው ይችላል"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">የዕይታ ብዛት ማጣሪያ ሁሉምን ቪዲዮዎች ይደብቃል</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">የቆይታ ጊዜ ማጣሪያ</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">በጣም አጫጭር ወይም በጣም ረጅም የሆኑ ቪዲዮዎችን በፊዶች እና በፍለጋ ውስጥ ደብቅ</string>
+  <string name="morphe_hide_videos_by_duration_home_title">የመነሻ ገጽ ቪዲዮዎችን በቆይታ ጊዜ ደብቅ</string>
+  <string name="morphe_hide_videos_by_duration_search_title">የፍለጋ ውጤቶችን በቆይታ ጊዜ ደብቅ</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">የምዝገባዎችን ቪዲዮዎች በቆይታቸው ደብቅ</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">ዝቅተኛ ቆይታ (በደቂቃዎች)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">ከዚህ የሚያንሱ ቪዲዮዎች ይደበቃሉ። 0 = ዝቅተኛ የቆይታ ገደብ የለም</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">ከፍተኛ ቆይታ (በደቂቃዎች)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">ከዚህ የሚረዝሙ ቪዲዮዎች ይደበቃሉ። 0 = ከፍተኛ የቆይታ ገደብ የለም</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"መነሻ / ምዝገባዎች / ፍለጋ ቪዲዮዎችን በቆይታቸው ለመደበቅ ተጣርተዋል
+
+ገደቦች:
+• የቀጥታ ስርጭቶች፣ Shorts፣ የቪዲዮ ዝርዝሮች እና ቅልቅሎች አይደበቁም
+• ቆይታቸው የማይታወቅ ቪዲዮዎች አይደበቁም"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">የቆይታ ማጣሪያ ሁሉንም ቪዲዮዎች ይደብቃል</string>
   <string name="morphe_hide_stats_category_title">ስታቲስቲክስ</string>
   <string name="morphe_hide_stats_hidden_24h_title">የተደበቁ ቪዲዮዎች፣ ባለፉት 24 ሰዓታት</string>
   <string name="morphe_hide_stats_hidden_all_title">የተደበቁ ቪዲዮዎች፣ በሁሉም ጊዜ</string>
@@ -309,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'ከቪዲዮ ጋር አመሳስል\' የሚለውን ቁልፍ ደብቅ</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">የንክኪ እና የመያዣ ግራዲየንቱን ደብቅ</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">ፍጥነትን ለመጨመር ተጭነው ሲያሸብሩ የቪዲዮ ማጫወቻ መቆጣጠሪያዎቹን ግራዲየንት ይደብቃል</string>
-  <string name="morphe_hide_timed_reactions_title">በጊዜ የተገደቡ ምላሾችን ደብቅ</string>
-  <string name="morphe_hide_timed_reactions_summary">ተጠቃሚዎች በኮሜንት ክፍል እና በቀጥታ ቻት ውስጥ በኢሞጂዎች ምላሽ እንዲሰጡ የሚያስችለውን ባህሪ ይደብቃል</string>
   <string name="morphe_hide_help_feedback_menu_summary">እንደ ፍለጋ ውጤቶች ባሉ ቦታዎች ላይ የሶስት ነጥብ ቁልፉን ሲጠቀሙ የ\'እርዳታ እና አስተያየት\' ሜኑን ይደብቃል</string>
   <string name="morphe_hide_handle_title">ሀንድልን ደብቅ</string>
   <string name="morphe_hide_handle_summary">በ \'You\' ታብ ውስጥ የቻናልዎን ሀንድል ይደብቃል</string>
@@ -425,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">የእያንዳንዱን አስተያየት የ3-ነጥብ ሜኑ አዝራር ይደብቃል</string>
   <string name="morphe_hide_comments_none_yet_title">\'እስካሁን ምንም አስተያየት የለም\' የሚለውን ቅድመእይታ ደብቅ</string>
   <string name="morphe_hide_comments_preview_comment_title">የቅድመ እይታ አስተያየትን ደብቅ</string>
-  <string name="morphe_hide_comments_preview_comment_summary">ሙሉውን የአስተያየቶች ክፍል ከመክፈትዎ በፊት በቪዲዮው ስር ያለውን የአስተያየት ቅድመ-እይታ ይደብቃል</string>
+  <string name="morphe_hide_comments_preview_comment_summary">የአስተያየቶች ክፍል ከመከፈቱ በፊት በቪዲዮው ስር ያለውን የአስተያየት ቅድመ እይታ ይደብቃል</string>
   <string name="morphe_hide_comments_preview_comment_hidden">አስተያየቱ በ Morphe ተደብቋል…</string>
-  <string name="morphe_minimal_comments_button_title">አነስተኛ የአስተያየቶች ቁልፍን አግብር</string>
-  <string name="morphe_minimal_comments_button_summary">በአስተያየቶች ቁልፍ ላይ የሚታዩትን ተንሸራታች ካርዶች እና የገጽ መራጫውን ይደብቃል</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">የቅድመ እይታ አስተያየት ካርዶችን ደብቅ</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">በአስተያየቶች ቁልፍ ላይ የሚታዩትን ተንሸራታች ካርዶች እና የገጽ አመላካቹን ይደብቃል</string>
+  <string name="morphe_hide_comments_timed_reactions_title">ጊዜ የተመደበላቸውን ምላሾች ደብቅ</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">ተጠቃሚዎች በአስተያየት መስጫው እና በቀጥታ የውይይት ክፍሉ ውስጥ በኢሞጂዎች ምላሽ እንዲሰጡ የሚያስችለውን ባህሪ ይደብቃል</string>
   <string name="morphe_hide_comments_timestamp_button_title">የጊዜ ማህተም ቁልፉን ደብቅ</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top fans\' ቁልፍን ደብቅ</string>
   <string name="morphe_hide_comments_topics_title">\'ርዕሶችን\' ደብቅ</string>
@@ -678,14 +712,14 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_ryd_feed_counts_position_entry_1">ከዕይታ ብዛት ጎን</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">መሃል በቀኝ በኩል</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">ላይ በግራ በኩል</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">አስተያየቶችን ፈልግ</string>
-  <string name="morphe_search_comments_summary">የተፈለጉትን ቃላት ሁሉ የያዙትን የተጫኑ አስተያየቶች ብቻ ለማሳየት በአስተያየቶች ውስጥ የፍለጋ ቁልፉን ይጫኑ። ሀረግን ለመፈለግ ቃላቱን በጥቅስ ምልክት ውስጥ ያስቀምጡ</string>
-  <string name="morphe_search_comments_dialog_title">አስተያየቶችን ፈልግ</string>
-  <string name="morphe_search_comments_hint">የሚፈለጉ ቃላት</string>
-  <string name="morphe_search_comments_clear">አጥፋ</string>
-  <string name="morphe_search_comments_applied">የመደርደር ቅደም ተከተሉን ይቀይሩ ወይም ፍለጋውን ለመጀመር አስተያየቶቹን እንደገና ይክፈቱ</string>
-  <string name="morphe_search_comments_cleared">ፍለጋው ተሰርዟል። ሁሉንም አስተያየቶች ለማሳየት የመደርደር ቅደም ተከተሉን ይቀይሩ ወይም አስተያየቶቹን እንደገና ይክፈቱ</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">አስተያየቶችን ፈልግ</string>
+  <string name="morphe_comment_search_summary">የተፈለጉትን ቃላት ሁሉ የያዙትን የተጫኑ አስተያየቶች ብቻ ለማሳየት በአስተያየቶች ውስጥ የፍለጋ ቁልፉን ይጫኑ። ሀረግን ለመፈለግ ቃላቱን በጥቅስ ምልክት ውስጥ ያስቀምጡ</string>
+  <string name="morphe_comment_search_dialog_title">አስተያየቶችን ፈልግ</string>
+  <string name="morphe_comment_search_hint">የሚፈለጉ ቃላት</string>
+  <string name="morphe_comment_search_clear">አጥፋ</string>
+  <string name="morphe_comment_search_applied">የመደርደር ቅደም ተከተሉን ይቀይሩ ወይም ፍለጋውን ለመጀመር አስተያየቶቹን እንደገና ይክፈቱ</string>
+  <string name="morphe_comment_search_cleared">ፍለጋው ተሰርዟል። ሁሉንም አስተያየቶች ለማሳየት የመደርደር ቅደም ተከተሉን ይቀይሩ ወይም አስተያየቶቹን እንደገና ይክፈቱ</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'ወደ ቲቪ ግባ\' የሚለውን የፖፕ-አፕ መልዕክት አጥፋ</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'የሚጠቀሙባቸውን መሳሪያዎች ያገናኙ\' የሚለውን የpopup መልእክት አግድ</string>
@@ -1139,6 +1173,17 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">የንግግር ጽሁፉን አስተካክል</string>
   <string name="morphe_fix_transcript_summary">የንግግር ጽሁፉ እንዳይጫን ሊያደርግ የሚችልን ቅድመ ሁኔታ የፍተሻ ስህተት ይፈታዋል</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">ትራንስክሪፕቱን ኮፒ አድርግ</string>
+  <string name="morphe_copy_transcript_title">ትራንስክሪፕቱን ኮፒ አድርግ</string>
+  <string name="morphe_copy_transcript_summary">ትራንስክሪፕቱን በንዑስ ርዕሶቹ ቋንቋ ኮፒ የሚያደርግ ቁልፍን ወደ ትራንስክሪፕት ፓነሉ ይጨምራል</string>
+  <string name="morphe_copy_transcript_timestamps_title">የጊዜ ምልክቶችን አካትት</string>
+  <string name="morphe_copy_transcript_timestamps_summary">የተቀዳው ትራንስክሪፕት እያንዳንዱ መስመር በጊዜው ይጀምራል</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">በ Shorts ሜኑዎች ውስጥ አሳይ</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">በ Shorts ሜኑዎች ውስጥ ትራንስክሪፕትን ቅዳ የሚል ምርጫን ይጨምራል</string>
+  <string name="morphe_copy_transcript_copied">ትራንስክሪፕቱ ወደ ክሊፕቦርድ ተቀድቷል</string>
+  <string name="morphe_copy_transcript_empty">ምንም ትራንስክሪፕት የለም</string>
+  <string name="morphe_copy_transcript_error">ትራንስክሪፕቱን መቅዳት አልተቻለም</string>
   <string name="morphe_captions_in_pip_title">በስዕል በስዕል ውስጥ የግርጌ ጽሁፎችን አሳይ</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">የግርጌ ጽሁፍ መጠን</string>
@@ -1170,6 +1215,9 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_show_settings_button_title">የቅንብሮች ቁልፍን አሳይ</string>
   <string name="morphe_show_settings_button_type_title">የቅንብሮች ቁልፍ ተግባር</string>
   <string name="morphe_show_settings_button_type_summary">ሲበራ፣ አንድ ጊዜ በመንካት የMorphe ቅንብሮችን እና ረዘም አድርጎ በመጫን የYouTube ቅንብሮችን ይከፍታል፤ ለመቀያየር ያጥፉት</string>
+  <string name="morphe_you_button_account_switcher_title">የአካውንት መቀያየሪያ አቋራጭ</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">የአካውንት መቀያየሪያውን ለመክፈት \"እርስዎ\" የሚለውን ቁልፍ ረዘም አድርገው ይጫኑ</string>
   <string name="morphe_navigation_buttons_order_title">የናቪጌሽን ቁልፎች ቅደም ተከተል</string>
   <string name="morphe_navigation_buttons_order_summary">በናቪጌሽን ባሩ ውስጥ ያለውን ቅደም ተከተል ለመቀየር ቁልፎቹን ይጎትቱ</string>
   <string name="morphe_swap_create_with_notifications_button_title">የመፍጠሪያውን ቁልፍ ከማሳወቂያዎች ቁልፍ ጋር ይቀያይሩ</string>
@@ -1390,6 +1438,17 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
 • 'ተጨማሪ ቪዲዮዎች' የሚለው ኦቨርሌ ላይገኝ ይችላል
 • Shorts በመደበኛው ፕሌየር ውስጥ ይከፈታሉ
 • ያልተጨመቀው የድሮ ቪዲዮ አክሽን ባር ይታያል"</string>
+  <string name="morphe_change_form_factor_car_display_title">በመኪና ስክሪኖች ላይ ያለ የኦቶሞቲቭ ሌአውት</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">YouTube በAndroid Auto ወይም በDriveDeck አማካኝነት በመኪና ስክሪን ላይ በሚታይበት ጊዜ የኦቶሞቲቭ ሌአውት ጥቅም ላይ ይውላል</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">በመኪና ስክሪኖች ላይ የኦቶሞቲቭ ሌአውት ጥቅም ላይ አይውልም</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">የመፈለጊያ አሞሌን በመኪና ስክሪኖች ላይ በራሱ እንዲደበቅ አድርግ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">የመፈለጊያ አሞሌው በመኪና ስክሪን ላይ ለተወሰነ ጊዜ ካልተጠቀሙበት ይደበቃል። ለማሳየት ከታችኛው ጠርዝ ወደ ላይ ይሳቡ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">የመፈለጊያ አሞሌው ሁልጊዜ በመኪና ስክሪኖች ላይ ይታያል</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">በራሱ የመደበቅ መዘግየት</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">የአሰሳ አሞሌው ከተታየ ወይም ከተነካ በኋላ ለምን ያህል ጊዜ እንደሚቆይ</string>
+  <string name="morphe_change_form_factor_car_display_any_title">በማንኛውም ውጫዊ ስክሪን ላይ ይጠቀሙ</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">ከስልኩ ስክሪን ውጪ ያሉ ሁሉም ስክሪኖች፣ ቲቪ ወይም ሞኒተርን ጨምሮ፣ እንደ መኪና ስክሪን ይቆጠራሉ</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"የመኪና ስክሪኖች በAndroid Auto፣ በስክሪን ስሞች እና በመኪና UI ሁኔታ ይገኛሉ። በAndroid 15 እና ከዚያ በላይ፣ በDriveDeck፣ Gearslip፣ graphene-auto ወይም MyCar የሚደረግ የስክሪን ሚረሪንግ እንዲሁ እንደ መኪና ስክሪን ይቆጠራል"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - የድሮውን የግርጌ ጽሁፍ ባህሪ መልስ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - የድሮውን ወደ playlist ማስቀመጫ መልስ</string>
@@ -1446,6 +1505,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">ሁልጊዜ በርቷል</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">በWi-Fi ብቻ</string>
   <string name="morphe_playback_in_feeds_entry_off">ጠፍቷል</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">በፊድ ውስጥ የፍለጋ ቁልፎችን አሳይ</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">YouTube ባያሳያቸውም እንኳ በፊድ ውስጥ በሚጫወቱ ቪዲዮዎች ላይ የፍለጋ ቁልፎችን ያሳያል</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">የመጀመሪያዎቹን ርዕሶች መልስ</string>
   <string name="morphe_restore_original_titles_summary">በራስ-ትርጉም ፋንታ ዋናዎቹን የቪዲዮ ርዕሶች፣ የቪዲዮ መግለጫዎች እና የቻናል መግለጫዎችን ያሳያል</string>
@@ -2051,4 +2112,106 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_max_length_title">የመልእክቱ ከፍተኛ ርዝመት</string>
   <string name="morphe_live_chat_translate_max_length_summary">ረጅም መልእክቶች ሳይተረጎሙ ይታያሉ</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">ገደብ የለም</string>
+  <string name="morphe_ghost_play_screen_title">የጎስት ሁነታ</string>
+  <string name="morphe_ghost_play_screen_summary">የተመለከቱትን ታሪክ ወይም ምክሮችን ሳይነኩ ቪዲዮዎችን ይመልከቱ</string>
+  <string name="morphe_ghost_play_cat_general_title">ጠቅላላ</string>
+  <string name="morphe_ghost_play_cat_buttons_title">ቁልፎች</string>
+  <string name="morphe_ghost_play_cat_rules_title">የራስ-ሰር Ghost ደንቦች</string>
+  <string name="morphe_ghost_play_cat_history_title">የአካባቢ ታሪክ</string>
+  <string name="morphe_ghost_play_cat_advanced_title">የላቀ ግላዊነት</string>
+  <string name="morphe_ghost_play_enabled_title">የGhost ሁነታን አግብር</string>
+  <string name="morphe_ghost_play_enabled_summary">የተመረጡ ቪዲዮዎችን፣ Shorts፣ ፍለጋዎችን፣ ቻናሎችን ወይም ሙሉ ስብሰባዎችን በታሪኩ ወይም በምክሮች ላይ ተጽዕኖ ሳያሳድሩ ለማየት ያስችላል</string>
+  <string name="morphe_ghost_play_mode_active_title">Ghost ሁነታ ንቁ ነው</string>
+  <string name="morphe_ghost_play_mode_active_summary">ሲበራ፣ ከፊዶች፣ ተዛማጅ ቪዲዮዎች ወይም ፍለጋዎች በወትሮው የምትከፍታቸው ቪዲዮዎች ሁሉ የሶስት-ነጥብ ሜኑውን ሳይጠቀሙ በGhost ሁነታ ይጫወታሉ</string>
+  <string name="morphe_ghost_play_persist_mode_title">Ghost modeን በድጋሚ ሲጀመር ያስታውስ</string>
+  <string name="morphe_ghost_play_persist_mode_summary">YouTubeን ዘግተው እንደገና ሲከፍቱ እንኳ Ghost mode ክፍት ሆኖ እንዲቆይ ያደርጋል</string>
+  <string name="morphe_ghost_play_toolbar_button_title">በላይኛው ባር ላይ የGhost mode መቀያየሪያን አሳይ</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">በላይኛው ባር አዶዎች አጠገብ አነስተኛ የGhost mode መቀያየሪያ ያስቀምጣል (ለመቀየር ይጫኑ፣ ለፈጣን ቁጥጥሮች ረጅም ተጭነው ይያዙ)</string>
+  <string name="morphe_ghost_play_flyout_button_title">በቪዲዮ ማውጫ ውስጥ አሳይ</string>
+  <string name="morphe_ghost_play_flyout_button_summary">በቪዲዮዎች የሶስት-ነጥብ ማውጫ ውስጥ \"በGhost mode ይጫወቱ\" የሚለውን ይጨምራል</string>
+  <string name="morphe_ghost_play_player_button_title">የGhost mode ቁልፍን አሳይ</string>
+  <string name="morphe_ghost_play_player_button_summary">በቪዲዮ ማጫወቻው ውስጥ የGhost mode መቀያየሪያ ቁልፍን ያሳያል (ለፈጣን ቁጥጥሮች ረጅም ተጭነው ይያዙ)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">የማጫወት ጥያቄዎችን ስም አልባ ያድርጉ</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">ለበለጠ መለየት ከghost ማጫወት እና ከክስተት ጥያቄዎች የគቢራቸውን ርዕሶች ያስወግዳል፤ ይህ ሲበራ በዕድሜ የተገደቡ፣ ለአባላት ብቻ የተከፈቱ እና የPremium ባህሪያት አይ доступны አይሆኑም</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Shorts በራስ-ሰር ወደ ghost ይቀይር</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">የቤት ገጽ feedዎን እንዳያዩ Shortsን በራስ-ሰር በGhost mode ይመለከታል</string>
+  <string name="morphe_ghost_play_auto_search_title">ከፍለጋ የሚገኙ ቪዲዮዎችን በራስ-ሰር በGhost ሞድ አጫውት</string>
+  <string name="morphe_ghost_play_auto_search_summary">ከፍለጋ ውጤቶች የተከፈቱ ቪዲዮዎችን በራስ-ሰር በGhost ሞድ ይመለከታል</string>
+  <string name="morphe_ghost_play_manage_channels_title">በራስ-ሰር ወደ Ghost የሚቀየሩ ቻናሎች</string>
+  <string name="morphe_ghost_play_manage_channels_summary">ሁልጊዜ በGhost ሞድ የሚጫወቱ ቻናሎችን ይፈልጉ፣ ይጨምሩ፣ ይመርምሩ እና ያስተዳድሩ</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d ቻናሎች ተ yapıထားያል — ለመፈለግ፣ ለመመርመር ወይም ለማስወገድ ይጫኑ</string>
+  <string name="morphe_ghost_play_local_history_title">የ localization Ghost ታሪክን ያቆዩ</string>
+  <string name="morphe_ghost_play_local_history_summary">የGhost ሞድ ቪዲዮዎችን እና የplayback ቦታዎችን በዚህ መሳሪያ ላይ ብቻ ያስታውሳል (በጭራሽ ወደ YouTube አይላኩም)</string>
+  <string name="morphe_ghost_play_history_limit_title">የ localization Ghost ታሪክ ገደብ</string>
+  <string name="morphe_ghost_play_history_limit_summary">በመሳሪያው ላይ የሚቀመጡ ከፍተኛ የቪዲዮዎች ብዛት (አሮጌዎቹ በራስ-ሰር ይወገዳሉ)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d ቪዲዮዎች ተቀምጠዋል (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · ምንም የተቀምጠው ቪዲዮ የለም</string>
+  <string name="morphe_ghost_play_history_limit_100">100 ቪዲዮዎች</string>
+  <string name="morphe_ghost_play_history_limit_500">500 ቪዲዮዎች</string>
+  <string name="morphe_ghost_play_history_limit_2000">2,000 ቪዲዮዎች</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">ያልተገደበ</string>
+  <string name="morphe_ghost_play_view_history_title">የአካባቢ Ghost ታሪክን ክፈት</string>
+  <string name="morphe_ghost_play_view_history_summary">በGhost ሁነታ ይመልከቱ፣ ይፈልጉ፣ ይቀጥሉ ወይም በመሳሪያዎ ላይ ያለውን ታሪክ ያጽዱ</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d ቪዲዮዎች በመሣሪያው ላይ ተቀምጠዋል (%2$s) — ለመመልከት ወይም ለመቀጠል ይጫኑ</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">እስካሁን የተቀረጹ ቪዲዮዎች የሉም (በዚህ መሳሪያ ላይ ብቻ የተቀመጡ)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dደ</string>
+  <string name="morphe_ghost_play_flyout_action">በGhost ሁነታ ይጫወቱ</string>
+  <string name="morphe_ghost_play_video_active_toast">የGhost ሁነታ ንቁ ነው — የይታዩ ታሪኮች እና የውሳኔ ሃሳቦች የተጠበቁ ናቸው</string>
+  <string name="morphe_ghost_play_video_off_toast">ለዚህ ቪዲዮ የGhost ሁነታ ጠፍቷል</string>
+  <string name="morphe_ghost_play_session_on_toast">የGhost ሁነታ በርቷል — ቪዲዮዎች በታሪክ ወይም በውሳኔ ሃሳቦች ላይ ተጽዕኖ አያሳድሩም</string>
+  <string name="morphe_ghost_play_session_off_toast">የGhost ሁነታ ጠፍቷል — ወደ መደበኛ አጫዋት ተመልሷል</string>
+  <string name="morphe_ghost_play_timer_set_toast">የGhost ሁነታ ለ%d ደቂቃዎች ንቁ ነው</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">ቆጣሪው ተሰርዟል — የGhost ሁነታ በርቶ ይቆያል</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">ከ1 እስከ 720 ደቂቃዎች መካከል ያለ የቆይታ ጊዜ ያስገቡ</string>
+  <string name="morphe_ghost_play_dialog_title">የGhost ሁነታ</string>
+  <string name="morphe_ghost_play_state_on">በርቷል</string>
+  <string name="morphe_ghost_play_state_off">ጠፍቷል</string>
+  <string name="morphe_ghost_play_close">ዝጋ</string>
+  <string name="morphe_ghost_play_open_settings">ሁሉም ቅንብሮች</string>
+  <string name="morphe_ghost_play_quick_power_hint">የGhost ሁነታን ለማብራት ወይም ለማጥፋት ይጫኑ</string>
+  <string name="morphe_ghost_play_quick_timer_title">የተወሰነ ጊዜ ያለው የGhost ሁነታ</string>
+  <string name="morphe_ghost_play_quick_timer_sub">የቆይታ ጊዜውን ለመምረጥ ይጫኑ</string>
+  <string name="morphe_ghost_play_quick_timer_running">ታይመር ንቁ ነው · %d ደቂቃ ይቀራል</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">ሲያልቅ በራሱ ወደ መደበኛ ሁነታ ይመለሳል</string>
+  <string name="morphe_ghost_play_quick_timer_change">ጊዜውን ይቀይሩ</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">ታይመሩን አጽዳ (በሥራ ላይ ይቆይ)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dደቂቃ</string>
+  <string name="morphe_ghost_play_timer_custom_hint">ልዩ ደቂቃዎችን ያስገቡ (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">አስቀምጥ</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">ለዚህ ቻናል Auto-ghost በርቷል</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">ለዚህ ቻናል Auto-ghost ጠፍቷል</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d ቻናሎች ተቀናብረዋል</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">ዝርዝር (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" ወደ auto-ghost ቻናሎች ተጨምሯል</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" ከauto-ghost ቻናሎች ተሰርዟል</string>
+  <string name="morphe_ghost_play_history_title">የአካባቢ Ghost ታሪክ</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d ቪዲዮዎች (%s) · በ Ghost ሁኔታ ለመቀጠል ተጫኑ፣ ለማስወገድ ተጭነው ይያዙ</string>
+  <string name="morphe_ghost_play_history_search_hint">በቪዲዮ ርዕስ ወይም በቻናል ይፈልጉ…</string>
+  <string name="morphe_ghost_play_history_no_match">በአካባቢ Ghost ታሪክ ውስጥ የሚዛመዱ ቪዲዮዎች የሉም</string>
+  <string name="morphe_ghost_play_history_empty">እስካሁን ምንም የአካባቢ Ghost ታሪክ የለም</string>
+  <string name="morphe_ghost_play_history_clear_all">ሁሉንም አጥፋ</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">የአካባቢ Ghost ታሪክን ማጥፋት ይፈልጋሉ?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">ይህ በ probabilities ላይ የተቀመጡ ሁሉንም የ Ghost ሁኔታ መዝገቦች ያስወግዳል እና ሊ 되ገላበጥ አይችልም።</string>
+  <string name="morphe_ghost_play_history_cleared_toast">የአካባቢ Ghost ታሪክ ተጠፍቷል</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">ከአካባቢያዊ የGhost ታሪክ ተወግዷል</string>
+  <string name="morphe_ghost_play_channels_manager_title">ራስ-ሰር የGhost ቻናሎች</string>
+  <string name="morphe_ghost_play_channels_tab_saved">ተጨምረዋል (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">ፈልግ እና ጨምር</string>
+  <string name="morphe_ghost_play_channels_filter_hint">የተጨመሩ ቻናሎችን በስም፣ በ@handle ወይም በርዕስ ያጣሩ…</string>
+  <string name="morphe_ghost_play_channels_empty">እስካሁን ምንም ቻናሎች አልተጨመሩም። ቻናሎችን በስም፣ በ@handle ወይም በURL ለማግኘት ወደ \"ፈልግ እና ጨምር\" ይቀይሩ።</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">የተጨመሩ ቻናሎች ከፍለጋዎ ጋር አይዛመዱም</string>
+  <string name="morphe_ghost_play_channels_add_current">እየተጫወተ ያለውን፡ %s</string>
+  <string name="morphe_ghost_play_channels_add_button">ጨምር</string>
+  <string name="morphe_ghost_play_channels_added_badge">ተጨምሯል</string>
+  <string name="morphe_ghost_play_channels_delete_button">አስወግድ</string>
+  <string name="morphe_ghost_play_channels_search_hint">የቻናሉ ስም፣ @handle፣ ወይም URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">ፈልግ</string>
+  <string name="morphe_ghost_play_channels_search_guide">የቻናሉን ስም፣ @handle፣ ወይም የYouTube ቻናሉን URL ያስገቡ እና ፈልግ የሚለውን ይጫኑ</string>
+  <string name="morphe_ghost_play_channels_searching">የYouTube ቻናሎች በመፈለግ ላይ…</string>
+  <string name="morphe_ghost_play_channels_search_error">ፍለጋው አልተሳካም። እባክዎ ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።</string>
+  <string name="morphe_ghost_play_channels_search_no_results">ለዚያ ፍለጋ ምንም ቻናሎች አልተገኙም</string>
+  <string name="morphe_ghost_play_channels_search_count">%d ቻናሎች ተገኝተዋል — auto-ghostን ለማብራት Addን ይጫኑ</string>
+  <string name="morphe_ghost_play_channels_recent_videos">የቅርብ ጊዜ ቪዲዮዎች</string>
+  <string name="morphe_ghost_play_channels_loading_details">የቅርብ ጊዜ ቪዲዮዎች እየተጫኑ ነው…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">ምንም የቅርብ ጊዜ ቪዲዮዎች አልተገኙም (እንደገና ለመሞከር ይጫኑ)</string>
 </resources>

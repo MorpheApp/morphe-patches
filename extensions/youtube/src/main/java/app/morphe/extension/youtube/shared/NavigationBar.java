@@ -38,6 +38,8 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.ClassicSubscriptionsLayoutPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.ghostplay.GhostPlayPatch;
+import app.morphe.extension.youtube.patches.ghostplay.GhostPlayToolbarButton;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -135,6 +137,10 @@ public final class NavigationBar {
         }
 
         toolbarResultsRef = new WeakReference<>(toolbar);
+
+        if (GhostPlayPatch.isPatchIncluded()) {
+            GhostPlayToolbarButton.attachToToolbar(layout);
+        }
     }
 
     /**
@@ -148,6 +154,22 @@ public final class NavigationBar {
                 && searchbarResults != closingSearchBarResultsRef.get()
                 && isSearchBarAttached
                 && searchbarResults.isShown();
+    }
+
+    /**
+     * @return If the search results are behind the Shorts player, such as the search results a Short
+     *         was opened from. The Shorts player hides the search bar while it's open,
+     *         and the feed behind it can be laid out again meanwhile.
+     */
+    public static boolean isSearchBarBehindShortsPlayer() {
+        return isSearchBarBehindShortsPlayer;
+    }
+
+    private static volatile boolean isSearchBarBehindShortsPlayer;
+
+    static {
+        ShortsPlayerState.getOnChange().addObserver(isOpen ->
+                isSearchBarBehindShortsPlayer = isOpen && isSearchBarActive());
     }
 
     /**

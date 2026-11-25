@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">কীওয়ার্ড ফিল্টার</string>
   <string name="morphe_hide_keyword_content_screen_summary">ফিড এবং অনুসন্ধানে ভিডিও লুকানোর জন্য নির্দিষ্ট শব্দ বা বাক্যাংশ নির্বাচন করুন</string>
   <string name="morphe_hide_keyword_content_comments_title">নির্দিষ্ট শব্দ দিয়ে মন্তব্যগুলো হাইড করুন</string>
+  <string name="morphe_hide_keyword_content_posts_title">নির্দিষ্ট শব্দ দিয়ে পোস্টগুলো হাইড করুন</string>
   <string name="morphe_hide_keyword_content_home_title">কীওয়ার্ড ব্যবহার করে প্রধান পাতার ভিডিও লুকান</string>
   <string name="morphe_hide_keyword_content_search_title">কীওয়ার্ড ব্যবহার করে অনুসন্ধান ফলাফল লুকান</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">কীওয়ার্ড ব্যবহার করে সাবস্ক্রিপশন ভিডিও লুকান</string>
@@ -250,7 +251,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"লুকানোর জন্য কীওয়ার্ড এবং শব্দগুচ্ছ লিখুন, নিউ লাইন দিয়ে আলাদা করুন
 
 কীওয়ার্ড ভিডিও টাইটেলে প্রদর্শিত যেকোনো টেক্সট হতে পারে। @UserName কীওয়ার্ড নির্দিষ্ট ক্রিয়েটরদের সমস্ত কন্টেন্ট লুকিয়ে রাখে"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / সার্চ / কমেন্টগুলো ফিল্টার করা হয়েছে যাতে কীওয়ার্ড ফ্রেজের সাথে মেলে এমন কন্টেন্ট হাইড করা থাকে
+  <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / অনুসন্ধান / মন্তব্য / পোস্টগুলো এমনভাবে ফিল্টার করা হয় যাতে কীওয়ার্ড ফ্রেজের সাথে মিল থাকা কন্টেন্টগুলো হাইড করা থাকে
 
 সীমাবদ্ধতা:
 • কিছু শর্টস চ্যানেলের নাম দিয়ে হাইড করা যায় না
@@ -266,6 +267,39 @@ Second \"item\" text"</string>
 • সার্চ: %3$s
 • কমেন্ট: %4$s
 • মোট: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">ভিউ কাউন্ট ফিল্টার</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">ফিড এবং অনুসন্ধানে সেই ভিডিওগুলো লুকান যেগুলোতে খুব কম বা খুব বেশি ভিউ আছে</string>
+  <string name="morphe_hide_videos_by_views_home_title">ভিউ অনুযায়ী হোম ভিডিও লুকান</string>
+  <string name="morphe_hide_videos_by_views_search_title">ভিউ অনুযায়ী অনুসন্ধান ফলাফল লুকান</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">ভিউ অনুযায়ী সাবস্ক্রিপশন ভিডিও লুকান</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">নূন্যতম ভিউ</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">কম ভিউ থাকা ভিডিওগুলো লুকানো থাকে। ০ = কোনো নূন্যতম নেই</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">সর্বোচ্চ ভিউ</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">বেশি ভিউ থাকা ভিডিওগুলো লুকানো থাকে। ০ = কোনো সর্বোচ্চ সীমা নেই</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Home / Subscriptions / Search-এ ভিডিও এবং Shorts-এর ভিউ সংখ্যার ভিত্তিতে ফিল্টার করে লুকানো হয়েছে
+
+সীমাবদ্ধতা:
+• YouTube ভিউ সংখ্যা রাউন্ড করে, তাই ১.২K ভিউকে ১২০০ ভিউ হিসেবে গণ্য করা হয়
+• লাইভ স্ট্রিম লুকানো হয় না
+• একটি লুকানো Short-এর ফলে Shorts শেলফে খালি জায়গা থাকতে পারে"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">ভিউ কাউন্ট ফিল্টার সব ভিডিও লুকিয়ে ফেলবে</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">সময়সীমার ফিল্টার</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">ফিড এবং অনুসন্ধানে খুব ছোট বা খুব দীর্ঘ ভিডিওগুলো লুকান</string>
+  <string name="morphe_hide_videos_by_duration_home_title">সময়সীমা ব্যবহার করে হোম ভিডিও লুকান</string>
+  <string name="morphe_hide_videos_by_duration_search_title">সময়সীমা ব্যবহার করে অনুসন্ধান ফলাফল লুকান</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">সময়সীমা অনুযায়ী সাবস্ক্রিপশন ভিডিও লুকান</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">সর্বনিম্ন সময়সীমা (মিনিট)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">এর থেকে ছোট ভিডিওগুলো লুকানো থাকবে। ০ = কোনো সর্বনিম্ন সীমা নেই</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">সর্বোচ্চ সময়সীমা (মিনিট)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">এর থেকে বড় ভিডিওগুলো লুকানো থাকবে। ০ = কোনো সর্বোচ্চ সীমা নেই</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"সময়সীমা অনুযায়ী ভিডিও লুকানোর জন্য হোম / সাবস্ক্রিপশন / সার্চ ফিল্টার করা হয়েছে
+
+সীমাবদ্ধতা:
+• লাইভ স্ট্রিম, Shorts, প্লেলিস্ট এবং মিক্স লুকানো হয় না
+• অজানা সময়সীমার ভিডিওগুলো লুকানো হয় না"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">সময়সীমার ফিল্টার সব ভিডিও লুকিয়ে দেবে</string>
   <string name="morphe_hide_stats_category_title">পরিসংখ্যান</string>
   <string name="morphe_hide_stats_hidden_24h_title">লুকানো ভিডিও, শেষ ২৪ ঘণ্টা</string>
   <string name="morphe_hide_stats_hidden_all_title">লুকানো ভিডিও, সর্বকালের</string>
@@ -309,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'ভিডিওর সাথে সিঙ্ক করুন\' বোতামটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ট্যাপ ও হোল্ড গ্রেডিয়েন্ট লুকান</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">দ্রুততর করতে হোল্ড করার সময় আঙুল স্লাইড করলে প্লেয়ার কন্ট্রোলের গ্রেডিয়েন্ট লুকিয়ে রাখে</string>
-  <string name="morphe_hide_timed_reactions_title">সময় অনুযায়ী প্রতিক্রিয়া লুকান</string>
-  <string name="morphe_hide_timed_reactions_summary">মন্তব্য এবং লাইভ চ্যাট বিভাগে ইমোজি দিয়ে প্রতিক্রিয়া জানানোর বৈশিষ্ট্যটি লুকায়</string>
   <string name="morphe_hide_help_feedback_menu_summary">\'সাহায্য &amp; মতামত\' মেনুটি তিন-বিন্দু বোতাম ব্যবহার করার সময় লুকায়, যেমন অনুসন্ধান ফলাফলে</string>
   <string name="morphe_hide_handle_title">হ্যান্ডেল লুকান</string>
   <string name="morphe_hide_handle_summary">আপনার চ্যানেল হ্যান্ডেল \'You\' ট্যাবে লুকিয়ে রাখে</string>
@@ -425,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">প্রতিটি মন্তব্যের 3-ডট মেনু বোতাম লুকিয়ে রাখে</string>
   <string name="morphe_hide_comments_none_yet_title">\'এখনও কোনো মন্তব্য নেই\' প্রিভিউ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
-  <string name="morphe_hide_comments_preview_comment_summary">পুরো মন্তব্য বিভাগ খোলার আগে ভিডিওর নিচে মন্তব্য প্রিভিউ লুকায়</string>
+  <string name="morphe_hide_comments_preview_comment_summary">মন্তব্য সেকশন খোলার আগে ভিডিওর নিচে মন্তব্যের পূর্বরূপটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe দ্বারা মন্তব্য লুকানো…</string>
-  <string name="morphe_minimal_comments_button_title">ন্যূনতম মন্তব্য বোতাম সক্রিয় করুন</string>
-  <string name="morphe_minimal_comments_button_summary">মন্তব্য বোতামে প্রদর্শিত স্লাইডিং কার্ডগুলো এবং এর পৃষ্ঠা নির্বাচকটি লুকিয়ে রাখে</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">পূর্বরূপ মন্তব্য কার্ডগুলো লুকান</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">মন্তব্য বাটনে প্রদর্শিত স্লাইডিং কার্ড এবং পেজ ইন্ডিকেটর লুকিয়ে রাখে</string>
+  <string name="morphe_hide_comments_timed_reactions_title">সময় অনুযায়ী প্রতিক্রিয়া লুকান</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">কমেন্ট সেকশন এবং লাইভ চ্যাটে ইমোজি দিয়ে প্রতিক্রিয়া জানানোর ফিচারটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_comments_timestamp_button_title">টাইমস্ট্যাম্প বোতাম লুকান</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'টপ ফ্যান\' বোতামটি লুকান</string>
   <string name="morphe_hide_comments_topics_title">\'টপিকস\' লুকান</string>
@@ -678,14 +712,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">ভিউ কাউন্টের পাশে</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">মাঝখানের ডানদিকে</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">উপরের বামদিকে</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">মন্তব্য অনুসন্ধান করুন</string>
-  <string name="morphe_search_comments_summary">শুধুমাত্র লোড হওয়া সেই কমেন্টগুলো দেখাতে কমেন্টের সার্চ বাটনে ট্যাপ করুন যেগুলোতে অনুসন্ধান করা সমস্ত শব্দ রয়েছে। কোনো নির্দিষ্ট শব্দগুচ্ছ বা ফ্রেজ খুঁজতে শব্দগুলোকে উদ্ধৃতি চিহ্নের মধ্যে রাখুন</string>
-  <string name="morphe_search_comments_dialog_title">মন্তব্য অনুসন্ধান করুন</string>
-  <string name="morphe_search_comments_hint">অনুসন্ধান করার শব্দ</string>
-  <string name="morphe_search_comments_clear">মুছে ফেলুন</string>
-  <string name="morphe_search_comments_applied">সর্টিং অর্ডার পরিবর্তন করুন অথবা অনুসন্ধান করার জন্য পুনরায় মন্তব্যগুলো খুলুন</string>
-  <string name="morphe_search_comments_cleared">অনুসন্ধান মুছে ফেলা হয়েছে। সব মন্তব্য দেখাতে সর্টিং অর্ডার পরিবর্তন করুন অথবা মন্তব্যগুলি আবার খুলুন</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">কমেন্ট অনুসন্ধান করুন</string>
+  <string name="morphe_comment_search_summary">শুধুমাত্র লোড করা কমেন্টগুলোর মধ্যে অনুসন্ধান করা শব্দগুলো দেখানোর জন্য কমেন্ট সেকশনে থাকা সার্চ বাটনে ট্যাপ করুন। কোনো নির্দিষ্ট শব্দগুচ্ছ অনুসন্ধান করতে শব্দগুলোকে উদ্ধৃতি চিহ্নের মধ্যে লিখুন</string>
+  <string name="morphe_comment_search_dialog_title">কমেন্ট অনুসন্ধান করুন</string>
+  <string name="morphe_comment_search_hint">অনুসন্ধান করার শব্দগুলো</string>
+  <string name="morphe_comment_search_clear">মুছুন</string>
+  <string name="morphe_comment_search_applied">সর্টিং অর্ডার পরিবর্তন করুন অথবা অনুসন্ধান করার জন্য কমেন্টগুলো পুনরায় খুলুন</string>
+  <string name="morphe_comment_search_cleared">অনুসন্ধান মুছে ফেলা হয়েছে। সব কমেন্ট দেখতে সর্টিং অর্ডার পরিবর্তন করুন অথবা কমেন্টগুলো পুনরায় খুলুন</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">টিভিতে সাইন ইন পপআপ অক্ষম করুন</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ডিভাইস সংযোগের পপআপ নিষ্ক্রিয় করুন</string>
@@ -1139,6 +1173,17 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">ট্রান্সক্রিপ্ট ঠিক করুন</string>
   <string name="morphe_fix_transcript_summary">একটি প্রিকন্ডিশন চেক ব্যর্থতা সমাধান করে যা ট্রান্সক্রিপ্ট লোড হওয়া থেকে আটকাতে পারে</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">ট্রান্সক্রিপ্ট কপি করুন</string>
+  <string name="morphe_copy_transcript_title">ট্রান্সক্রিপ্ট কপি করুন</string>
+  <string name="morphe_copy_transcript_summary">ট্রান্সক্রিপ্ট প্যানেলে একটি বোতাম যোগ করে যা ক্যাপশনের ভাষায় ট্রান্সক্রিপ্টটি কপি করে</string>
+  <string name="morphe_copy_transcript_timestamps_title">টাইমস্ট্যাম্প অন্তর্ভুক্ত করুন</string>
+  <string name="morphe_copy_transcript_timestamps_summary">কপি করা ট্রান্সক্রিপ্টের প্রতিটি লাইন তার সময় দিয়ে শুরু হয়</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Shorts মেনুতে দেখান</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Shorts-এর মেনুগুলিতে একটি \'ট্রান্সক্রিপ্ট কপি করুন\' আইটেম যোগ করে</string>
+  <string name="morphe_copy_transcript_copied">ট্রান্সক্রিপ্ট ক্লিপবোর্ডে কপি করা হয়েছে</string>
+  <string name="morphe_copy_transcript_empty">কোনো ট্রান্সক্রিপ্ট উপলব্ধ নেই</string>
+  <string name="morphe_copy_transcript_error">ট্রান্সক্রিপ্ট কপি করা সম্ভব হয়নি</string>
   <string name="morphe_captions_in_pip_title">পিকচার-ইন-পিকচারে ক্যাপশন দেখান</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">ক্যাপশনের আকার</string>
@@ -1170,6 +1215,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_show_settings_button_title">সেটিংস বোতাম দেখান</string>
   <string name="morphe_show_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
   <string name="morphe_show_settings_button_type_summary">সক্রিয় থাকলে, ট্যাপ করলে Morphe সেটিংস এবং লং প্রেস করলে YouTube সেটিংস খুলবে; অদলবদল করতে নিষ্ক্রিয় করুন</string>
+  <string name="morphe_you_button_account_switcher_title">অ্যাকাউন্ট পরিবর্তনকারী শর্টকাট</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">অ্যাকাউন্ট পরিবর্তনকারী খুলতে \'আপনি\' বোতামটি দীর্ঘক্ষণ চেপে ধরুন</string>
   <string name="morphe_navigation_buttons_order_title">নেভিগেশন বোতামের ক্রম</string>
   <string name="morphe_navigation_buttons_order_summary">নেভিগেশন বারে বোতামগুলোর ক্রম পরিবর্তন করতে সেগুলো ড্র্যাগ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_title">তৈরি বোতাম ও বিজ্ঞপ্তি বোতাম অদলবদল করুন</string>
@@ -1390,6 +1438,17 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
 • 'আরও ভিডিও' ওভারলে উপলব্ধ নাও হতে পারে
 • শর্টসগুলো সাধারণ প্লেয়ারে খোলে
 • নন-ক্ল্যাপসড পুরনো ভিডিও অ্যাকশন বার দেখানো হয়"</string>
+  <string name="morphe_change_form_factor_car_display_title">কার ডিসপ্লেতে অটোমোটিভ লেআউট</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">যখন Android Auto বা DriveDeck-এর মাধ্যমে কার ডিসপ্লেতে YouTube দেখানো হয়, তখন অটোমোটিভ লেআউট ব্যবহৃত হয়</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">কার ডিসপ্লেতে অটোমোটিভ লেআউট ব্যবহৃত হয় না</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">কার ডিসপ্লের নেভিগেশন বার অটো-হাইড করুন</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">কার ডিসপ্লেতে নেভিগেশন বারটি কিছু সময় ব্যবহার না করলে সেটি লুকিয়ে যায়। এটি দেখাতে নিচের প্রান্ত থেকে উপরের দিকে সোয়াইপ করুন</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">কার ডিসপ্লেতে নেভিগেশন বার সবসময় দেখানো হয়</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">অটো-হাইড বিলম্ব</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">নেভিগেশন বারটি প্রদর্শিত হওয়ার বা স্পর্শ করার পর কতক্ষণ থাকবে</string>
+  <string name="morphe_change_form_factor_car_display_any_title">যেকোনো এক্সটারনাল ডিসপ্লেতে ব্যবহার করুন</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">ফোনের স্ক্রিন ছাড়া বাকি প্রতিটি ডিসপ্লে, যেমন টিভি বা মনিটরকেও কার ডিসপ্লে হিসেবে গণ্য করা হবে</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Android Auto, ডিসপ্লের নাম এবং কার UI মোডের মাধ্যমে কার ডিসপ্লে শনাক্ত করা হয়। Android 15 এবং পরবর্তী সংস্করণে DriveDeck, Gearslip, graphene-auto বা MyCar-এর মাধ্যমে স্ক্রিন মিররিং-কেও কার ডিসপ্লে হিসেবে গণ্য করা হয়"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - পুরনো ক্যাপশন আচরণ পুনরুদ্ধার করুন</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিস্টে পুরোনো সেভ করার অপশন ফিরিয়ে আনুন</string>
@@ -1446,6 +1505,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_playback_in_feeds_entry_always_on">সবসময় চালু</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">শুধুমাত্র ওয়াই-ফাই</string>
   <string name="morphe_playback_in_feeds_entry_off">বন্ধ</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">ফিডগুলোতে সীক বোতামগুলো দেখান</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">ফিডগুলোতে যে ভিডিওগুলো চলে সেগুলোতে সীক বোতামগুলো দেখায়, এমনকি যখন YouTube সেগুলো দেখায় না তখনও</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">মূল শিরোনাম পুনরুদ্ধার করুন</string>
   <string name="morphe_restore_original_titles_summary">স্বয়ংক্রিয় অনুবাদগুলির পরিবর্তে মূল ভিডিও শিরোনাম, ভিডিও বিবরণ এবং চ্যানেলের বিবরণ দেখায়</string>
@@ -2051,4 +2112,106 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_live_chat_translate_max_length_title">মেসেজের সর্বোচ্চ দৈর্ঘ্য</string>
   <string name="morphe_live_chat_translate_max_length_summary">বেশি লম্বা মেসেজগুলো অনুবাদহীন অবস্থায় দেখানো হয়</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">কোন সীমা নেই</string>
+  <string name="morphe_ghost_play_screen_title">ঘোস্ট মোড</string>
+  <string name="morphe_ghost_play_screen_summary">ওয়াচ হিস্ট্রি বা রেকমেন্ডেশনে প্রভাব না ফেলে ভিডিও দেখুন</string>
+  <string name="morphe_ghost_play_cat_general_title">সাধারণ</string>
+  <string name="morphe_ghost_play_cat_buttons_title">বাটনসমূহ</string>
+  <string name="morphe_ghost_play_cat_rules_title">অটো-ঘোস্ট রুলস</string>
+  <string name="morphe_ghost_play_cat_history_title">লোকাল হিস্ট্রি</string>
+  <string name="morphe_ghost_play_cat_advanced_title">অ্যাডভান্সড প্রাইভেসী</string>
+  <string name="morphe_ghost_play_enabled_title">ঘোস্ট মোড চালু করুন</string>
+  <string name="morphe_ghost_play_enabled_summary">ওয়াচ হিস্ট্রি বা রিকমেন্ডেশনের ওপর প্রভাব না ফেলে নির্বাচিত ভিডিও, Shorts, সার্চ, চ্যানেল বা পুরো সেশন দেখার অনুমতি দেয়</string>
+  <string name="morphe_ghost_play_mode_active_title">ঘোস্ট মোড সক্রিয়</string>
+  <string name="morphe_ghost_play_mode_active_summary">এটি চালু থাকলে, ফিড, সম্পর্কিত ভিডিও বা সার্চ থেকে আপনি স্বাভাবিকভাবে যে ভিডিওটি খুলবেন তা থ্রি-ডট মেনু ব্যবহার না করেই ঘোস্ট মোডে চলবে</string>
+  <string name="morphe_ghost_play_persist_mode_title">রিস্টার্টের পরেও ঘোস্ট মোড মনে রাখুন</string>
+  <string name="morphe_ghost_play_persist_mode_summary">YouTube বন্ধ করে পুনরায় খোলার পরেও ঘোস্ট মোড চালু রাখে</string>
+  <string name="morphe_ghost_play_toolbar_button_title">টপ বারে ঘোস্ট মোড টগল দেখান</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">টপ-বার আইকনগুলির পাশে একটি কমপ্যাক্ট ঘোস্ট মোড টগল স্থাপন করে (সুইচ করতে ট্যাপ করুন, দ্রুত নিয়ন্ত্রণের জন্য লং প্রেস করুন)</string>
+  <string name="morphe_ghost_play_flyout_button_title">ভিডিও মেনুতে দেখান</string>
+  <string name="morphe_ghost_play_flyout_button_summary">ভিডিওর থ্রি-ডট মেনুতে \"Play in Ghost mode\" যোগ করে</string>
+  <string name="morphe_ghost_play_player_button_title">ঘোস্ট মোড বোতাম দেখান</string>
+  <string name="morphe_ghost_play_player_button_summary">ভিডিও প্লেয়ারে একটি ঘোস্ট মোড টগল বোতাম দেখায় (দ্রুত নিয়ন্ত্রণের জন্য লং প্রেস করুন)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">প্লেব্যাক রিকোয়েস্টগুলো অ্যানোনিমাইজ করুন</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">আরও শক্তিশালী আইসোলেশনের জন্য ঘোস্ট প্লেব্যাক এবং ইভেন্ট রিকোয়েস্ট থেকে অ্যাকাউন্ট হেডার মুছে ফেলে। এটি সক্রিয় থাকা অবস্থায় বয়স-সীমাবদ্ধ, শুধুমাত্র সদস্যদের জন্য এবং Premium ফিচারগুলো অনুপলব্ধ থাকে</string>
+  <string name="morphe_ghost_play_auto_shorts_title">অটো-ঘোস্ট Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">স্বয়ংক্রিয়ভাবে ঘোস্ট মোডে Shorts দেখে যাতে সেগুলো আপনার হোম ফিডের ওপর প্রভাব না ফেলে</string>
+  <string name="morphe_ghost_play_auto_search_title">সার্চ থেকে আসা ভিডিওগুলো Auto-ghost করুন</string>
+  <string name="morphe_ghost_play_auto_search_summary">সার্চ রেজাল্ট থেকে খোলা ভিডিওগুলো স্বয়ংক্রিয়ভাবে Ghost মোডে দেখবে</string>
+  <string name="morphe_ghost_play_manage_channels_title">Auto-ghost চ্যানেলসমূহ</string>
+  <string name="morphe_ghost_play_manage_channels_summary">যেসব চ্যানেল সবসময় Ghost মোডে চলে তা সার্চ করুন, যোগ করুন, পরীক্ষা করুন এবং পরিচালনা করুন</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d টি চ্যানেল কনফিগার করা হয়েছে — সার্চ করতে, পরীক্ষা করতে বা মুছতে ট্যাপ করুন</string>
+  <string name="morphe_ghost_play_local_history_title">লোকাল Ghost হিস্ট্রি রাখুন</string>
+  <string name="morphe_ghost_play_local_history_summary">শুধুমাত্র এই ডিভাইসে Ghost মোডের ভিডিও এবং প্লেব্যাক পজিশন মনে রাখে (কখনোই YouTube-এ পাঠানো হয় না)</string>
+  <string name="morphe_ghost_play_history_limit_title">লোকাল Ghost হিস্ট্রি লিমিট</string>
+  <string name="morphe_ghost_play_history_limit_summary">ডিভাইসে রাখা ভিডিওর সর্বোচ্চ সংখ্যা (পুরানো এন্ট্রিগুলো স্বয়ংক্রিয়ভাবে মুছে ফেলা হয়)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$dটি ভিডিও সংরক্ষিত (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · কোনো ভিডিও সংরক্ষিত নেই</string>
+  <string name="morphe_ghost_play_history_limit_100">১০০টি ভিডিও</string>
+  <string name="morphe_ghost_play_history_limit_500">৫০০টি ভিডিও</string>
+  <string name="morphe_ghost_play_history_limit_2000">২,০০০টি ভিডিও</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">আনলিমিটেড</string>
+  <string name="morphe_ghost_play_view_history_title">লোকাল Ghost হিস্ট্রি খুলুন</string>
+  <string name="morphe_ghost_play_view_history_summary">আপনার ডিভাইসের হিস্ট্রি দেখুন, খুঁজুন, Ghost মোডে পুনরায় শুরু করুন অথবা মুছে ফেলুন</string>
+  <string name="morphe_ghost_play_view_history_summary_count">ডিভাইসে %1$dটি ভিডিও সংরক্ষিত (%2$s) — দেখতে বা পুনরায় শুরু করতে ট্যাপ করুন</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">এখনও কোনো ভিডিও রেকর্ড করা হয়নি (শুধুমাত্র এই ডিভাইসে সংরক্ষিত)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Ghost মোডে প্লে করুন</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost মোড সক্রিয় — দেখার ইতিহাস এবং সুপারিশগুলো সুরক্ষিত</string>
+  <string name="morphe_ghost_play_video_off_toast">এই ভিডিওর জন্য Ghost মোড বন্ধ</string>
+  <string name="morphe_ghost_play_session_on_toast">Ghost মোড চালু — ভিডিওগুলো ইতিহাস বা সুপারিশের ওপর প্রভাব ফেলবে না</string>
+  <string name="morphe_ghost_play_session_off_toast">Ghost মোড বন্ধ — স্বাভাবিক প্লেব্যাকের কাছে ফিরে যান</string>
+  <string name="morphe_ghost_play_timer_set_toast">%d মিনিটের জন্য Ghost মোড সক্রিয়</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">টাইমার মুছে ফেলা হয়েছে — Ghost মোড চালু থাকবে</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">১ থেকে ৭২০ মিনিটের মধ্যে একটি সময়সীমা লিখুন</string>
+  <string name="morphe_ghost_play_dialog_title">ঘোস্ট মোড</string>
+  <string name="morphe_ghost_play_state_on">চালু</string>
+  <string name="morphe_ghost_play_state_off">বন্ধ</string>
+  <string name="morphe_ghost_play_close">বন্ধ করুন</string>
+  <string name="morphe_ghost_play_open_settings">সব সেটিংস</string>
+  <string name="morphe_ghost_play_quick_power_hint">ঘোস্ট মোড টগল করতে ট্যাপ করুন</string>
+  <string name="morphe_ghost_play_quick_timer_title">সময় নির্ধারিত ঘোস্ট মোড</string>
+  <string name="morphe_ghost_play_quick_timer_sub">সময়সীমা বেছে নিতে ট্যাপ করুন</string>
+  <string name="morphe_ghost_play_quick_timer_running">টাইমার সক্রিয় · %d মিনিট বাকি</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">শেষ হলে স্বয়ংক্রিয়ভাবে সাধারণ মোডে ফিরে যাবে</string>
+  <string name="morphe_ghost_play_quick_timer_change">সময় পরিবর্তন করুন</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">টাইমার মুছুন (চালু রাখুন)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">কাস্টম মিনিট (১-৭২০)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">সেট করুন</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">এই চ্যানেলের জন্য অটো-ঘোস্ট চালু</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">এই চ্যানেলের জন্য অটো-ঘোস্ট বন্ধ</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d টি চ্যানেল কনফিগার করা হয়েছে</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">তালিকা (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" অটো-ঘোস্ট চ্যানেলে যুক্ত করা হয়েছে</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" অটো-ঘোস্ট চ্যানেল থেকে সরানো হয়েছে</string>
+  <string name="morphe_ghost_play_history_title">লোকাল ঘোস্ট হিস্ট্রি</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d টি ভিডিও (%s) · ঘোস্ট মোডে পুনরায় শুরু করতে ট্যাপ করুন, সরাতে চেপে ধরুন</string>
+  <string name="morphe_ghost_play_history_search_hint">ভিডিওর শিরোনাম বা চ্যানেল দিয়ে ফিল্টার করুন…</string>
+  <string name="morphe_ghost_play_history_no_match">লোকাল ঘোস্ট হিস্ট্রিতে কোনো মিল পাওয়া যায়নি</string>
+  <string name="morphe_ghost_play_history_empty">এখনও কোনো লোকাল ঘোস্ট হিস্ট্রি নেই</string>
+  <string name="morphe_ghost_play_history_clear_all">সব মুছুন</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">লোকাল Ghost ইতিহাস মুছুন?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">এটি ডিভাইসে সংরক্ষিত সমস্ত Ghost মোড এন্ট্রি মুছে ফেলে এবং এটি আর ফিরিয়ে আনা সম্ভব নয়।</string>
+  <string name="morphe_ghost_play_history_cleared_toast">লোকাল Ghost ইতিহাস মুছে ফেলা হয়েছে</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">লোকাল Ghost ইতিহাস থেকে সরানো হয়েছে</string>
+  <string name="morphe_ghost_play_channels_manager_title">অটো-ঘোস্ট চ্যানেল</string>
+  <string name="morphe_ghost_play_channels_tab_saved">যুক্ত (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">অনুসন্ধান করুন &amp; যুক্ত করুন</string>
+  <string name="morphe_ghost_play_channels_filter_hint">নাম, @হ্যান্ডেল, বা বিষয় অনুযায়ী যোগ করা চ্যানেলগুলো ফিল্টার করুন…</string>
+  <string name="morphe_ghost_play_channels_empty">এখনো কোনো চ্যানেল যোগ করা হয়নি। নাম, @হ্যান্ডেল, বা URL এর মাধ্যমে চ্যানেল খুঁজতে \"Search &amp; Add\"-এ যান।</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">আপনার ফিল্টারের সাথে মেলে এমন কোনো যোগ করা চ্যানেল নেই</string>
+  <string name="morphe_ghost_play_channels_add_current">চালিত হচ্ছে: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">যোগ করুন</string>
+  <string name="morphe_ghost_play_channels_added_badge">যোগ করা হয়েছে</string>
+  <string name="morphe_ghost_play_channels_delete_button">সরান</string>
+  <string name="morphe_ghost_play_channels_search_hint">চ্যানেলের নাম, @হ্যান্ডেল, বা URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">অনুসন্ধান</string>
+  <string name="morphe_ghost_play_channels_search_guide">একটি চ্যানেলের নাম, @হ্যান্ডেল, বা YouTube চ্যানেলের URL লিখুন এবং Search ট্যাপ করুন</string>
+  <string name="morphe_ghost_play_channels_searching">YouTube চ্যানেল খোঁজা হচ্ছে…</string>
+  <string name="morphe_ghost_play_channels_search_error">অনুসন্ধান ব্যর্থ হয়েছে। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।</string>
+  <string name="morphe_ghost_play_channels_search_no_results">ওই কুয়েরির জন্য কোনো চ্যানেল পাওয়া যায়নি</string>
+  <string name="morphe_ghost_play_channels_search_count">%d টি চ্যানেল পাওয়া গেছে — অটো-ঘোস্ট সক্ষম করতে Add ট্যাপ করুন</string>
+  <string name="morphe_ghost_play_channels_recent_videos">সাম্প্রতিক ভিডিওগুলি</string>
+  <string name="morphe_ghost_play_channels_loading_details">সাম্প্রতিক ভিডিওগুলি লোড হচ্ছে…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">কোনো সাম্প্রতিক ভিডিও পাওয়া যায়নি (পুনরায় চেষ্টা করতে ট্যাপ করুন)</string>
 </resources>

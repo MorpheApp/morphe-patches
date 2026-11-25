@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -343,5 +344,12 @@ public class KuromojiRomanizerTest {
         assertEquals("ko", readings[4].trim());
         assertEquals("ete", readings[5].trim());
         assertEquals("ima", readings[6].trim());
+    }
+
+    @Test
+    public void wordGroupsFollowTokens() {
+        int[] groups = KuromojiRomanizer.wordGroups("君の運命のヒト", tokenizer);
+        assertNotNull(groups);
+        assertArrayEquals(new int[]{0, 1, 2, 2, 3, 4, 4}, groups);
     }
 }

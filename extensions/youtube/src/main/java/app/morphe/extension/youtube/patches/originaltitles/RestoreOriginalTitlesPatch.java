@@ -852,9 +852,12 @@ public final class RestoreOriginalTitlesPatch {
                 videoId = findVerifiedVideoId(videoIds, trimmedText);
                 if (videoId == null) {
                     // The other titles of the text are fetched again, and the fetching is not yet started.
+                    // A retry whose candidate is already verified, such as by another element of the video,
+                    // is not fetched again. Its span would be outdated at once, and the text laid out again
+                    // in a loop until the retry is done, so the text is found as after the retry instead.
                     for (String candidateVideoId : videoIds) {
                         CandidateRetry retry = candidateRetries.get(candidateKey(candidateVideoId));
-                        if (retry != null && !retry.started && !retry.done.isDone()) {
+                        if (retry != null && !retry.started && !retry.done.isDone() && !retry.isVerified()) {
                             return spannedText(translatedText, LOADING_TITLE.toString(), new RetryTitleSpan(retry));
                         }
                     }
@@ -1302,27 +1305,42 @@ public final class RestoreOriginalTitlesPatch {
 
             @Override
             public void afterTextChanged(Editable text) {
-                if (!REPLACE_TITLES || DeArrowTitleIcon.hasIcon(text)
+                // An empty text is not a title, such as the text of the miniplayer while a Short is opened.
+                if (!REPLACE_TITLES || text.length() == 0 || DeArrowTitleIcon.hasIcon(text)
                         || text.toString().equals(LOADING_TITLE.toString())) {
                     return;
                 }
 
                 // The text is replaced before the view is drawn,
                 // so a title fetched before is not shown translated first.
-                setPlayerTitle(view, text);
+                setPlayerTitle(view, text, null);
             }
         });
     }
 
-    private static void setPlayerTitle(TextView view, CharSequence text) {
+    /**
+     * @param videoId Video of the title, or null to find it from the text.
+     */
+    private static void setPlayerTitle(TextView view, CharSequence text, @Nullable String videoId) {
         try {
-            String replacement = playerTitle(text.toString(), () -> {
+            // The title is of the video found when the text was set, also when it's fetched after another video
+            // was opened, such as a Short opened while the video is in the miniplayer.
+            String titleVideoId = videoId == null ? playerTitleVideoId(text.toString()) : videoId;
+            if (titleVideoId == null) {
+                return;
+            }
+            String replacement = playerTitle(text.toString(), titleVideoId, () -> {
                 // The view is set again only if it still shows the loading title of this text.
                 if (view.getText().toString().equals(LOADING_TITLE.toString())) {
-                    setPlayerTitle(view, text);
+                    setPlayerTitle(view, text, titleVideoId);
                 }
             });
             if (replacement == null) {
+                // The view still shows the loading title if the title fetched is not replaced,
+                // such as a title that is already the original title.
+                if (view.getText().toString().equals(LOADING_TITLE.toString())) {
+                    view.setText(text);
+                }
                 return;
             }
 
@@ -1345,7 +1363,11 @@ public final class RestoreOriginalTitlesPatch {
             return metadata;
         }
 
-        String replacement = playerTitle(title, () -> {
+        String videoId = playerTitleVideoId(title);
+        if (videoId == null) {
+            return metadata;
+        }
+        String replacement = playerTitle(title, videoId, () -> {
             try {
                 MediaSession session = mediaSessionRef.get();
                 if (session == null || mediaMetadata != metadata) {
@@ -1375,15 +1397,11 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
-     * The title shown by the player, from any navigation, for a title of the opened video
-     * shown outside the player, such as the media notification.
-     *
-     * @param onFetched Called on the main thread when the title is fetched, if the loading title is returned.
-     * @return The title that replaces the title, the loading title until it's fetched
-     *         or until the fetch is no longer retried, or null if the title is not replaced.
+     * @return The video of a title of the opened video shown outside the player, such as the media notification,
+     *         or null if the title is of other videos.
      */
     @Nullable
-    private static String playerTitle(String title, Runnable onFetched) {
+    private static String playerTitleVideoId(String title) {
         // The title is of the opened video, unless the title is of another video.
         String titleVideoId = findVideoIdOfTitle(title.trim(), openedVideoId);
         String videoId = titleVideoId == null ? openedVideoId : titleVideoId;
@@ -1395,7 +1413,20 @@ public final class RestoreOriginalTitlesPatch {
             // that plays before the new video is loaded.
             return null;
         }
+        return videoId;
+    }
 
+    /**
+     * The title shown by the player, from any navigation, for a title of the opened video
+     * shown outside the player, such as the media notification.
+     *
+     * @param videoId   Video of the title (see {@link #playerTitleVideoId(String)}).
+     * @param onFetched Called on the main thread when the title is fetched, if the loading title is returned.
+     * @return The title that replaces the title, the loading title until it's fetched
+     *         or until the fetch is no longer retried, or null if the title is not replaced.
+     */
+    @Nullable
+    private static String playerTitle(String title, String videoId, Runnable onFetched) {
         CompletableFuture<OriginalTitleRequest.Titles> future = OriginalTitleRequest.fetch(videoId);
         OriginalTitleRequest.Titles titles = future.getNow(null);
         if (!future.isDone()) {

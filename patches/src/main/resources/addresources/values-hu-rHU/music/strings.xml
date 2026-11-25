@@ -449,6 +449,9 @@ A crossfade szüneteltetése a zenei videó megtekintéséhez néhány videót f
   <string name="morphe_music_hide_navigation_bar_library_button_title">Könyvtár gomb elrejtése</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Frissítés gomb elrejtése</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Beállítások gomb megjelenítése</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Beállítások gomb művelete</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Ha engedélyezve van, egy koppintás megnyitja a Morphe beállításait, egy hosszú nyomás pedig a YouTube Music beállításait; a felcseregeléshez kapcsolja ki</string>
   <string name="morphe_music_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
   <string name="morphe_music_navigation_bar_glass_title">Üveg navigációs sáv engedélyezése</string>

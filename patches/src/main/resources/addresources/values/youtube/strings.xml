@@ -254,6 +254,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
     <string name="morphe_hide_keyword_content_comments_title">Hide comments by keywords</string>
+    <string name="morphe_hide_keyword_content_posts_title">Hide posts by keywords</string>
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
     <string name="morphe_hide_keyword_content_search_title">Hide search results by keywords</string>
     <string name="morphe_hide_keyword_content_subscriptions_title">Hide Subscriptions videos by keywords</string>
@@ -261,7 +262,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_hide_keyword_content_phrases_summary">"Enter keywords and phrases to hide, separated by new lines
 
 Keywords can be any text shown in video titles. @UserName keyword hides all content from specific creators"</string>
-    <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments are filtered to hide content that matches keyword phrases
+    <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments / Posts are filtered to hide content that matches keyword phrases
 
 Limitations:
 • Some Shorts cannot be hidden by channel name
@@ -295,6 +296,23 @@ Limitations:
 • A hidden Short can leave an empty space in a Shorts shelf"</string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_hide_videos_by_views_toast_broad">View count filter will hide all videos</string>
+
+    <string name="morphe_hide_videos_by_duration_screen_title">Duration filter</string>
+    <string name="morphe_hide_videos_by_duration_screen_summary">Hide videos in feeds and search that are too short or too long</string>
+    <string name="morphe_hide_videos_by_duration_home_title">Hide Home videos by duration</string>
+    <string name="morphe_hide_videos_by_duration_search_title">Hide search results by duration</string>
+    <string name="morphe_hide_videos_by_duration_subscriptions_title">Hide Subscriptions videos by duration</string>
+    <string name="morphe_hide_videos_by_duration_minimum_title">Minimum duration (minutes)</string>
+    <string name="morphe_hide_videos_by_duration_minimum_summary">Videos shorter than this are hidden. 0 = no minimum</string>
+    <string name="morphe_hide_videos_by_duration_maximum_title">Maximum duration (minutes)</string>
+    <string name="morphe_hide_videos_by_duration_maximum_summary">Videos longer than this are hidden. 0 = no maximum</string>
+    <string name="morphe_hide_videos_by_duration_about_summary">"Home / Subscriptions / Search are filtered to hide videos by their duration
+
+Limitations:
+• Live streams, Shorts, playlists and mixes are not hidden
+• Videos with an unknown duration are not hidden"</string>
+    <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+    <string name="morphe_hide_videos_by_duration_toast_broad">Duration filter will hide all videos</string>
 
     <string name="morphe_hide_stats_category_title">Stats</string>
     <string name="morphe_hide_stats_hidden_24h_title">Videos hidden, last 24 hours</string>
@@ -343,8 +361,6 @@ Limitations:
     <string name="morphe_hide_sync_button_title">Hide \'Sync to video\' button</string>
     <string name="morphe_hide_tap_and_hold_gradient_title">Hide tap and hold gradient</string>
     <string name="morphe_hide_tap_and_hold_gradient_summary">Hides the player controls gradient when sliding your finger while holding to speed up</string>
-    <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
-    <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_help_feedback_menu_summary">Hides the \'Help &amp; feedback\' menu when using the three-dot button, such as on the search results</string>
     <string name="morphe_hide_handle_title">Hide handle</string>
     <string name="morphe_hide_handle_summary">Hides your channel handle in the \'You\' tab</string>
@@ -463,10 +479,12 @@ Limitations:
     <string name="morphe_hide_comments_menu_button_summary">Hides the 3-dot menu button of each comment</string>
     <string name="morphe_hide_comments_none_yet_title">Hide \'No comments yet\' preview</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
-    <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
+    <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under the video before opening the comments section</string>
     <string name="morphe_hide_comments_preview_comment_hidden">Comment hidden by Morphe…</string>
-    <string name="morphe_minimal_comments_button_title">Enable minimal comments button</string>
-    <string name="morphe_minimal_comments_button_summary">Hides the sliding cards and its page selector, displayed on the comments button</string>
+    <string name="morphe_hide_comments_preview_comment_cards_title">Hide preview comment cards</string>
+    <string name="morphe_hide_comments_preview_comment_cards_summary">Hides the sliding cards and page indicator displayed on the comments button</string>
+    <string name="morphe_hide_comments_timed_reactions_title">Hide timed reactions</string>
+    <string name="morphe_hide_comments_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_hide_comments_top_fans_button_title">Hide \'Top fans\' button</string>
     <string name="morphe_hide_comments_topics_title">Hide \'Topics\'</string>
@@ -1248,6 +1266,19 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- layout.captions.transcriptPatch -->
     <string name="morphe_fix_transcript_title">Fix transcript</string>
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
+
+    <!-- layout.captions.copyTranscriptPatch -->
+    <string name="morphe_copy_transcript_category_title">Copy transcript</string>
+    <string name="morphe_copy_transcript_title">Copy transcript</string>
+    <string name="morphe_copy_transcript_summary">Adds a button to the transcript panel that copies the transcript in the language of the captions</string>
+    <string name="morphe_copy_transcript_timestamps_title">Include timestamps</string>
+    <string name="morphe_copy_transcript_timestamps_summary">Each line of a copied transcript starts with its time</string>
+    <string name="morphe_copy_transcript_shorts_flyout_title">Show in Shorts menus</string>
+    <string name="morphe_copy_transcript_shorts_flyout_summary">Adds a Copy transcript item to the menus of Shorts</string>
+    <string name="morphe_copy_transcript_copied">Transcript copied to clipboard</string>
+    <string name="morphe_copy_transcript_empty">No transcript available</string>
+    <string name="morphe_copy_transcript_error">Could not copy transcript</string>
+
     <string name="morphe_captions_in_pip_title">Show captions in picture-in-picture</string>
 
     <!-- layout.captions.captionViewportPatch -->
@@ -1282,6 +1313,9 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_show_settings_button_title">Show Settings button</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
     <string name="morphe_show_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
+    <string name="morphe_you_button_account_switcher_title">Account switcher shortcut</string>
+    <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+    <string name="morphe_you_button_account_switcher_summary">Long press the \'You\' button to open the account switcher</string>
     <string name="morphe_navigation_buttons_order_title">Navigation buttons order</string>
     <string name="morphe_navigation_buttons_order_summary">Drag the buttons to change their order in the navigation bar</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
@@ -1470,10 +1504,16 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_fullscreen_video_scale_entry_default">Default</string>
     <string name="morphe_fullscreen_video_scale_entry_stretch">Stretch (fill screen)</string>
     <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (crop to fill)</string>
+    <string name="morphe_fullscreen_video_alignment_title">Fullscreen video alignment</string>
+    <string name="morphe_fullscreen_video_alignment_entry_top">Top</string>
+    <string name="morphe_fullscreen_video_alignment_entry_center">Center</string>
+    <string name="morphe_fullscreen_video_alignment_entry_bottom">Bottom</string>
     <string name="morphe_fullscreen_video_scale_button_title">Show video scale button</string>
     <string name="morphe_fullscreen_video_scale_button_summary">Tap to cycle Default, Stretch, and Zoom</string>
     <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Show only in fullscreen</string>
     <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Hide the video scale button in the portrait player</string>
+    <string name="morphe_fullscreen_video_alignment_button_title">Show video alignment button</string>
+    <string name="morphe_fullscreen_video_alignment_button_summary">Tap to cycle Top, Center, and Bottom in fullscreen</string>
 
     <!-- video.speed.replay.replayVideoPatch -->
     <string name="morphe_replay_video_button_title">Show Replay slower button</string>
@@ -1529,6 +1569,17 @@ Automotive layout
 • \'More videos\' overlay may not be available
 • Shorts open in the regular player
 • Non collapsed old video action bar is shown"</string>
+    <string name="morphe_change_form_factor_car_display_title">Automotive layout on car displays</string>
+    <string name="morphe_change_form_factor_car_display_summary_on">Automotive layout is used when YouTube is shown on a car display, such as by Android Auto or DriveDeck</string>
+    <string name="morphe_change_form_factor_car_display_summary_off">Automotive layout is not used on car displays</string>
+    <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Auto-hide navigation bar on car displays</string>
+    <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Navigation bar is hidden on a car display after it is not used for a while. Swipe up from the bottom edge to show it</string>
+    <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Navigation bar is always shown on car displays</string>
+    <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Auto-hide delay</string>
+    <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">How long the navigation bar stays after it is shown or touched</string>
+    <string name="morphe_change_form_factor_car_display_any_title">Use on any external display</string>
+    <string name="morphe_change_form_factor_car_display_any_summary_on">Every display other than the phone screen is a car display, including a TV or a monitor</string>
+    <string name="morphe_change_form_factor_car_display_any_summary_off">"Car displays are found by Android Auto, display names and the car UI mode. On Android 15 and later, screen mirroring by DriveDeck, Gearslip, graphene-auto or MyCar is also a car display"</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restore old captions behavior</string>
@@ -1592,6 +1643,8 @@ Automotive layout
     <string name="morphe_playback_in_feeds_entry_always_on">Always on</string>
     <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi only</string>
     <string name="morphe_playback_in_feeds_entry_off">Off</string>
+    <string name="morphe_playback_in_feeds_seek_buttons_title">Show seek buttons in feeds</string>
+    <string name="morphe_playback_in_feeds_seek_buttons_summary">Shows the seek buttons on the videos that play in feeds, also when YouTube does not show them</string>
 
     <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
     <string name="morphe_restore_original_titles_title">Restore original titles</string>
@@ -1666,6 +1719,8 @@ Automotive layout
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
+    <string name="morphe_hide_status_bar_avoid_cutout_title">Keep player below display cutout</string>
+    <string name="morphe_hide_status_bar_avoid_cutout_summary">Moves the portrait video player below the display cutout when the status bar is hidden, leaving an empty bar at the top. Turn this off to let the video fill the screen behind the cutout</string>
     <string name="morphe_fix_status_bar_layout_title">Fix status bar covering the top bars</string>
     <string name="morphe_fix_status_bar_layout_summary">Keeps the layout of the status bar consistent, so it does not cover the top bars and leaves no empty space above the player. Turn this off if the app crashes or the top bars look wrong</string>
 
@@ -2250,4 +2305,110 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_live_chat_translate_max_length_title">Maximum message length</string>
     <string name="morphe_live_chat_translate_max_length_summary">Longer messages are shown untranslated</string>
     <string name="morphe_live_chat_translate_max_length_no_limit">No limit</string>
+
+    <string name="morphe_ghost_play_screen_title">Ghost mode</string>
+    <string name="morphe_ghost_play_screen_summary">Watch videos without affecting watch history or recommendations</string>
+    <string name="morphe_ghost_play_cat_general_title">General</string>
+    <string name="morphe_ghost_play_cat_buttons_title">Buttons</string>
+    <string name="morphe_ghost_play_cat_rules_title">Auto-ghost rules</string>
+    <string name="morphe_ghost_play_cat_history_title">Local history</string>
+    <string name="morphe_ghost_play_cat_advanced_title">Advanced privacy</string>
+    <string name="morphe_ghost_play_enabled_title">Enable Ghost mode</string>
+    <string name="morphe_ghost_play_enabled_summary">Allows watching selected videos, Shorts, searches, channels, or whole sessions without affecting watch history or recommendations</string>
+    <string name="morphe_ghost_play_mode_active_title">Ghost mode active</string>
+    <string name="morphe_ghost_play_mode_active_summary">When ON, every video you open normally from feeds, related videos, or search plays in Ghost mode without using the three-dot menu</string>
+    <string name="morphe_ghost_play_persist_mode_title">Remember Ghost mode across restarts</string>
+    <string name="morphe_ghost_play_persist_mode_summary">Keeps Ghost mode ON even after closing and reopening YouTube</string>
+    <string name="morphe_ghost_play_toolbar_button_title">Show Ghost mode toggle in top bar</string>
+    <string name="morphe_ghost_play_toolbar_button_summary">Places a compact Ghost mode toggle beside the top-bar icons (tap to switch, long press for quick controls)</string>
+    <string name="morphe_ghost_play_flyout_button_title">Show in video menu</string>
+    <string name="morphe_ghost_play_flyout_button_summary">Adds \"Play in Ghost mode\" to the three-dot menu of videos</string>
+    <string name="morphe_ghost_play_player_button_title">Show Ghost mode button</string>
+    <string name="morphe_ghost_play_player_button_summary">Shows a Ghost mode toggle button in the video player (long press for quick controls)</string>
+    <string name="morphe_ghost_play_anonymize_requests_title">Anonymize playback requests</string>
+    <string name="morphe_ghost_play_anonymize_requests_summary">Strips account headers from ghost playback and event requests for stronger isolation. Age-restricted, members-only, and Premium features are unavailable while enabled</string>
+    <string name="morphe_ghost_play_auto_shorts_title">Auto-ghost Shorts</string>
+    <string name="morphe_ghost_play_auto_shorts_summary">Automatically watches Shorts in Ghost mode so they do not affect your home feed</string>
+    <string name="morphe_ghost_play_auto_search_title">Auto-ghost videos from Search</string>
+    <string name="morphe_ghost_play_auto_search_summary">Automatically watches videos opened from search results in Ghost mode</string>
+    <string name="morphe_ghost_play_manage_channels_title">Auto-ghost channels</string>
+    <string name="morphe_ghost_play_manage_channels_summary">Search, add, inspect, and manage channels that always play in Ghost mode</string>
+    <string name="morphe_ghost_play_manage_channels_summary_count">%d channels configured — tap to search, inspect, or remove</string>
+    <string name="morphe_ghost_play_local_history_title">Keep local Ghost history</string>
+    <string name="morphe_ghost_play_local_history_summary">Remembers Ghost mode videos and playback positions on this device only (never sent to YouTube)</string>
+    <string name="morphe_ghost_play_history_limit_title">Local Ghost history limit</string>
+    <string name="morphe_ghost_play_history_limit_summary">Maximum videos kept on device (oldest entries removed automatically)</string>
+    <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d videos saved (%3$s)</string>
+    <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · No videos saved</string>
+    <string name="morphe_ghost_play_history_limit_100">100 videos</string>
+    <string name="morphe_ghost_play_history_limit_500">500 videos</string>
+    <string name="morphe_ghost_play_history_limit_2000">2,000 videos</string>
+    <string name="morphe_ghost_play_history_limit_unlimited">Unlimited</string>
+    <string name="morphe_ghost_play_view_history_title">Open local Ghost history</string>
+    <string name="morphe_ghost_play_view_history_summary">View, search, resume in Ghost mode, or clear your on-device history</string>
+    <string name="morphe_ghost_play_view_history_summary_count">%1$d videos stored on device (%2$s) — tap to view or resume</string>
+    <string name="morphe_ghost_play_view_history_summary_empty">No videos recorded yet (stored on this device only)</string>
+
+    <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+    <string name="morphe_ghost_play_flyout_action">Play in Ghost mode</string>
+    <string name="morphe_ghost_play_video_active_toast">Ghost mode active — watch history and recommendations are protected</string>
+    <string name="morphe_ghost_play_video_off_toast">Ghost mode OFF for this video</string>
+    <string name="morphe_ghost_play_session_on_toast">Ghost mode ON — videos will not affect history or recommendations</string>
+    <string name="morphe_ghost_play_session_off_toast">Ghost mode OFF — back to normal playback</string>
+    <string name="morphe_ghost_play_timer_set_toast">Ghost mode active for %d minutes</string>
+    <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Timer cleared — Ghost mode stays ON</string>
+    <string name="morphe_ghost_play_timer_invalid_toast">Enter a duration between 1 and 720 minutes</string>
+    <string name="morphe_ghost_play_dialog_title">Ghost mode</string>
+    <string name="morphe_ghost_play_state_on">On</string>
+    <string name="morphe_ghost_play_state_off">Off</string>
+    <string name="morphe_ghost_play_close">Close</string>
+    <string name="morphe_ghost_play_open_settings">All settings</string>
+    <string name="morphe_ghost_play_quick_power_hint">Tap to toggle Ghost mode</string>
+    <string name="morphe_ghost_play_quick_timer_title">Timed Ghost mode</string>
+    <string name="morphe_ghost_play_quick_timer_sub">Tap to choose duration</string>
+    <string name="morphe_ghost_play_quick_timer_running">Timer active · %d min left</string>
+    <string name="morphe_ghost_play_quick_timer_running_sub">Automatically returns to normal mode when finished</string>
+    <string name="morphe_ghost_play_quick_timer_change">Change time</string>
+    <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Clear timer (keep ON)</string>
+    <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+    <string name="morphe_ghost_play_timer_custom_hint">Custom minutes (1–720)…</string>
+    <string name="morphe_ghost_play_timer_custom_set">Set</string>
+    <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost ON for this channel</string>
+    <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost OFF for this channel</string>
+    <string name="morphe_ghost_play_quick_channel_count">%d channels configured</string>
+    <string name="morphe_ghost_play_quick_channel_manage_btn">List (%d)</string>
+    <string name="morphe_ghost_play_channel_added_toast">Added \"%s\" to auto-ghost channels</string>
+    <string name="morphe_ghost_play_channel_removed_toast">Removed \"%s\" from auto-ghost channels</string>
+    <string name="morphe_ghost_play_history_title">Local Ghost history</string>
+    <string name="morphe_ghost_play_history_subtitle_size">%d videos (%s) · tap to resume in Ghost mode, hold to remove</string>
+    <string name="morphe_ghost_play_history_search_hint">Filter by video title or channel…</string>
+    <string name="morphe_ghost_play_history_no_match">No matching videos in local Ghost history</string>
+    <string name="morphe_ghost_play_history_empty">No local Ghost history yet</string>
+    <string name="morphe_ghost_play_history_clear_all">Clear all</string>
+    <string name="morphe_ghost_play_history_clear_confirm_title">Clear local Ghost history?</string>
+    <string name="morphe_ghost_play_history_clear_confirm_message">This removes all saved on-device Ghost mode entries and cannot be undone.</string>
+    <string name="morphe_ghost_play_history_cleared_toast">Local Ghost history cleared</string>
+    <string name="morphe_ghost_play_history_item_removed_toast">Removed from local Ghost history</string>
+
+    <string name="morphe_ghost_play_channels_manager_title">Auto-ghost channels</string>
+    <string name="morphe_ghost_play_channels_tab_saved">Added (%d)</string>
+    <string name="morphe_ghost_play_channels_tab_search">Search &amp; Add</string>
+    <string name="morphe_ghost_play_channels_filter_hint">Filter added channels by name, @handle, or topic…</string>
+    <string name="morphe_ghost_play_channels_empty">No channels added yet. Switch to \"Search &amp; Add\" to find channels by name, @handle, or URL.</string>
+    <string name="morphe_ghost_play_channels_filter_no_match">No added channels match your filter</string>
+    <string name="morphe_ghost_play_channels_add_current">Playing: %s</string>
+    <string name="morphe_ghost_play_channels_add_button">Add</string>
+    <string name="morphe_ghost_play_channels_added_badge">Added</string>
+    <string name="morphe_ghost_play_channels_delete_button">Remove</string>
+    <string name="morphe_ghost_play_channels_search_hint">Channel name, @handle, or URL…</string>
+    <string name="morphe_ghost_play_channels_search_button">Search</string>
+    <string name="morphe_ghost_play_channels_search_guide">Enter a channel name, @handle, or YouTube channel URL and tap Search</string>
+    <string name="morphe_ghost_play_channels_searching">Searching YouTube channels…</string>
+    <string name="morphe_ghost_play_channels_search_error">Search failed. Check your connection and try again.</string>
+    <string name="morphe_ghost_play_channels_search_no_results">No channels found for that query</string>
+    <string name="morphe_ghost_play_channels_search_count">%d channels found — tap Add to enable auto-ghost</string>
+    <string name="morphe_ghost_play_channels_recent_videos">Recent videos</string>
+    <string name="morphe_ghost_play_channels_recent_video_item" translatable="false">• %s</string>
+    <string name="morphe_ghost_play_channels_loading_details">Loading recent videos…</string>
+    <string name="morphe_ghost_play_channels_no_recent_videos">No recent videos found (tap to retry)</string>
 </resources>

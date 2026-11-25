@@ -11,6 +11,8 @@ import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.shared.misc.litho.filter.sharedLithoFilterPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
+import app.morphe.patches.youtube.misc.fix.descriptioncounts.fixDescriptionCountsPatch
+import app.morphe.patches.youtube.misc.fix.litholayout.fixLithoLayoutLoopPatch
 import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
 import app.morphe.patches.youtube.misc.litho.rendernext.disableRenderNextPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
@@ -29,6 +31,8 @@ val lithoFilterPatch = sharedLithoFilterPatch(
         conversionContextPatch,
         versionCheckPatch,
         fixBackToExitGesturePatch,
+        fixDescriptionCountsPatch,
+        fixLithoLayoutLoopPatch,
         fixVerticalScrollPatch,
         disableRenderNextPatch
     )

@@ -108,7 +108,8 @@ private val settingsResourcePatch = patch {
                     preferences = setOf(
                         IntentPreference(
                             key = SETTINGS_NAME_PREFERENCE_KEY,
-                            titleKey = "morphe_settings_submenu_title",
+                            // The app inflates this entry itself, so only its own strings are translated here.
+                            titleKey = "settings",
                             summaryKey = null,
                             icon = "@drawable/morphe_settings_icon_dynamic",
                             layout = "@layout/preference_with_icon",

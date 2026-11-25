@@ -13,6 +13,7 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.HideSidebarComponentsPatch;
+import app.morphe.extension.reddit.patches.SettingsInSidebarPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.Utils;
@@ -26,11 +27,19 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public boolean getSettingsStatus() {
-        return HideSidebarComponentsPatch.isPatchIncluded();
+        return SettingsInSidebarPatch.isPatchIncluded() ||
+                HideSidebarComponentsPatch.isPatchIncluded();
     }
 
     @Override
     public void addPreferences(Context context) {
+        if (SettingsInSidebarPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SETTINGS_IN_SIDEBAR
+            ));
+        }
+
         if (HideSidebarComponentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,

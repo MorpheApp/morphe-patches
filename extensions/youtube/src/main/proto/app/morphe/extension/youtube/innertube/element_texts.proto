@@ -7,7 +7,7 @@ option java_package = "app.morphe.extension.youtube.innertube";
 option java_outer_classname = "ElementTexts";
 
 // Bytes of a Litho element (the newElement of an elementRenderer), with only the texts
-// that the video cards and the comments show. The field numbers are the same as in feed_card_layout.proto.
+// that the video cards (including the duration), the comments and the community posts show. The field numbers are the same as in feed_card_layout.proto.
 message Element {
     ElementType type = 1;
     // Elements inside a container element, such as the Short inside the cell of a Short.
@@ -25,12 +25,25 @@ message ComponentType {
 message ElementModel {
     // Feed video (video_lockup_with_attachment.eml).
     VideoWithContextModel videoWithContextModel = 232954548;
-    // View models, such as the Short of shorts_video_cell.eml.
+    // View models, such as the Short of shorts_video_cell.eml and the video of the card layout (lockup.eml).
     YoutubeModel youtubeModel = 413471385;
     // Comment of comment_thread.eml.
     CommentModel commentModel = 203234692;
     // Title of the video of compact_video.eml (metadata.eml), such as the search results of YouTube 20.26.
     CompactVideoMetadataModel compactVideoMetadataModel = 196274543;
+
+    // Community posts. Each post template has its own model, and they all have the same post fields.
+    // The attachments use the same field number with different types, so posts with an attachment
+    // that has texts have their own message.
+    PostModel textPostModel = 33555388; // text_post_slim.eml
+    PostModel imagesPostResponsiveModel = 33556213; // images_post_responsive.eml
+    PostModel imagesPostModel = 33556214; // images_post_slim.eml
+    VideoPostModel videoPostModel = 33556567; // videos_post.eml
+    VideoPostModel videoPostResponsiveModel = 33562168; // videos_post_responsive.eml
+    PollPostModel pollPostResponsiveModel = 33557530; // options_post_responsive.eml
+    PollPostModel pollPostModel = 33557531; // options_post.eml
+    // Post of a shelf of posts (post_base_slim.eml), such as "Latest posts from" a channel in the search results.
+    ShelfPostModel shelfPostModel = 263835042;
 }
 
 message VideoWithContextModel {
@@ -42,8 +55,37 @@ message VideoWithContextData {
 }
 
 message VideoData {
+    VideoThumbnail thumbnail = 1;
     ChannelAvatar avatar = 3;
     LockupMetadata lockupMetadata = 21;
+    // Videos with one of these images have no channel avatar.
+    LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
+    LockupImage avatarStack = 24; // Avatars of the channels of a collaboration video.
+}
+
+message VideoThumbnail {
+    string timestampText = 2; // Duration, such as "45:41".
+}
+
+message LockupImage {
+    DecoratedAvatarViewModel decoratedAvatarViewModel = 1105;
+    AvatarStackViewModel avatarStackViewModel = 513888437;
+}
+
+message DecoratedAvatarViewModel {
+    RendererContext rendererContext = 997;
+}
+
+message AvatarStackViewModel {
+    RendererContext rendererContext = 997;
+}
+
+message RendererContext {
+    CommandContext commandContext = 3;
+}
+
+message CommandContext {
+    InnertubeCommandHolder onTap = 3; // Opens the channel, or a sheet with the channels of a collaboration video.
 }
 
 message ChannelAvatar {
@@ -56,6 +98,32 @@ message InnertubeCommandHolder {
 
 message InnertubeCommand {
     BrowseEndpoint browseEndpoint = 48687626;
+    ShowSheetCommand showSheetCommand = 443434441;
+}
+
+// Opens a sheet, such as the list of the channels of a collaboration video.
+message ShowSheetCommand {
+    PanelLoadingStrategy panelLoadingStrategy = 1;
+}
+
+message PanelLoadingStrategy {
+    PanelInlineContent inlineContent = 1;
+}
+
+message PanelInlineContent {
+    PanelContentRenderer panelContentRenderer = 441573002;
+}
+
+message PanelContentRenderer {
+    repeated PanelContent contents = 4;
+}
+
+message PanelContent {
+    ElementRenderer elementRenderer = 153515154;
+}
+
+message ElementRenderer {
+    Element newElement = 172660663;
 }
 
 message BrowseEndpoint {
@@ -68,6 +136,7 @@ message LockupMetadata {
 
 message LockupMetadataViewModel {
     AttributedText title = 1;
+    LockupImage image = 2; // Only in the card layout.
     ContentMetadata metadata = 3;
 }
 
@@ -99,6 +168,51 @@ message YoutubeModel {
 
 message ViewModelHolder {
     ShortsLockupViewModel shortsLockupViewModel = 518308277;
+    // Video of the card layout (lockup.eml).
+    LockupViewModel lockupViewModel = 8179;
+    // Post that shares a post of another channel (shared_post.eml).
+    SharedPostViewModel sharedPostViewModel = 1965;
+    // Item of a sheet, such as a channel of a collaboration video.
+    ListItemViewModel listItemViewModel = 489973921;
+}
+
+message LockupViewModel {
+    ContentImage contentImage = 2;
+    LockupMetadata metadata = 3;
+}
+
+message ContentImage {
+    ThumbnailViewModel thumbnailViewModel = 1036; // Playlists and mixes have another view model.
+}
+
+message ThumbnailViewModel {
+    repeated ThumbnailOverlay overlays = 2;
+}
+
+message ThumbnailOverlay {
+    ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    ThumbnailOverlayBadgeViewModel thumbnailOverlayBadgeViewModel = 1295;
+}
+
+message ThumbnailBottomOverlayViewModel {
+    repeated ThumbnailBadge badges = 4;
+}
+
+message ThumbnailOverlayBadgeViewModel {
+    repeated ThumbnailBadge thumbnailBadges = 1;
+}
+
+message ThumbnailBadge {
+    ThumbnailBadgeViewModel thumbnailBadgeViewModel = 1128;
+}
+
+message ThumbnailBadgeViewModel {
+    string text = 2; // Such as the duration "45:41".
+}
+
+message ListItemViewModel {
+    AttributedText title = 1; // Such as the name of the channel.
+    AttributedText subtitle = 2; // Such as the handle and the subscribers of the channel: "@handle - 1.2M subscribers".
 }
 
 message ShortsLockupViewModel {
@@ -147,4 +261,119 @@ message CompactVideoMetadataModel {
 
 message CompactVideoMetadata {
     string title = 1;
+}
+
+message PostModel {
+    PostData data = 1;
+}
+
+message PostData {
+    Post post = 1;
+}
+
+message Post {
+    PostHeader header = 3;
+    PostText text = 4;
+}
+
+message PostHeader {
+    PostAuthor author = 2;
+}
+
+message PostAuthor {
+    string name = 1;
+    InnertubeCommandHolder endpoint = 3; // Opens the channel.
+}
+
+message PostText {
+    AttributedText text = 1;
+}
+
+message VideoPostModel {
+    VideoPostData data = 1;
+}
+
+message VideoPostData {
+    Post post = 1;
+    VideoPostAttachment attachment = 6;
+}
+
+message VideoPostAttachment {
+    VideoData video = 1;
+}
+
+message PollPostModel {
+    PollPostData data = 1;
+}
+
+message PollPostData {
+    Post post = 1;
+    PollPostAttachment attachment = 6;
+}
+
+message PollPostAttachment {
+    PollOptions poll = 1768;
+}
+
+message PollOptions {
+    repeated PollOptionHolder options = 1;
+}
+
+message PollOptionHolder {
+    PollOption option = 1767;
+}
+
+message PollOption {
+    string text = 1;
+}
+
+message ShelfPostModel {
+    ShelfPostData data = 4;
+}
+
+message ShelfPostData {
+    ShelfPost post = 1;
+}
+
+message ShelfPost {
+    ShelfPostHeader header = 1;
+    ShelfPostBody body = 2;
+}
+
+message ShelfPostHeader {
+    ShelfPostAuthorRow authorRow = 2;
+}
+
+message ShelfPostAuthorRow {
+    PostAuthor author = 1;
+}
+
+message ShelfPostBody {
+    ShelfPostText text = 3;
+}
+
+message ShelfPostText {
+    AttributedText text = 7;
+}
+
+message SharedPostViewModel {
+    SharedPostHeader header = 1;
+    SharedPostOriginal original = 2;
+    SharedPostAvatar avatar = 4;
+}
+
+message SharedPostHeader {
+    AttributedText text = 2; // Name of the channel that shares the post, and its text.
+}
+
+message SharedPostOriginal {
+    SharedPostElementHolder elementHolder = 36905;
+}
+
+message SharedPostElementHolder {
+    Element element = 1; // The shared post.
+}
+
+message SharedPostAvatar {
+    AvatarViewModel avatarViewModel = 437811886;
 }

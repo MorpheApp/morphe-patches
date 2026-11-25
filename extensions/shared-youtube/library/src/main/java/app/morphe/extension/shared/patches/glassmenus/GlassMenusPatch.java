@@ -75,7 +75,8 @@ import app.morphe.extension.shared.ui.Dim;
  * Only the content behind the menu is blurred ({@link BlurRegion}), and the menu is a translucent tint of the app
  * background with a light rim, so the blurred content shows through it. The rest of the screen is only dimmed, as
  * without the glass. The system turns the blur off when the device does not support it or while the battery saver
- * is on; the menu is then nearly opaque, so it stays readable.
+ * is on. On Android 14 and later the menu then blurs the app behind it itself ({@link AppBackdropDrawable}),
+ * otherwise the menu is nearly opaque, so it stays readable.
  * <p>
  * The content of the menu keeps its views. Backgrounds inside the menu that have the color of the menu are removed,
  * so they do not hide the glass. Items keep their ripples and their selected state.
@@ -215,6 +216,21 @@ public final class GlassMenusPatch {
     }
 
     /**
+     * Injection point (YouTube only): the touch feedback drawable of the app, which wraps the background of a Litho
+     * component, such as a row of a menu. It sets the callback of the background before it has a callback itself,
+     * so the background has none, and its fill is found through the wrapper instead.
+     */
+    public static void onWrappedDrawable(Drawable wrapper, @Nullable Drawable wrapped) {
+        if (wrapped == null || !isEnabled()) return;
+
+        try {
+            LithoFills.onWrapped(wrapped, wrapper);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onWrappedDrawable failure", ex);
+        }
+    }
+
+    /**
      * Injection point (YouTube only): a popup menu, before it is shown. The app can set its content view after
      * this call.
      */
@@ -274,25 +290,48 @@ public final class GlassMenusPatch {
             if (window == null) return;
             View decor = window.getDecorView();
             // After the fragment sets the window background, right after it shows the dialog.
-            decor.post(() -> styleWindowPanel(window, decor));
+            decor.post(() -> styleWindowPanel(window, decor, false));
         } catch (Throwable ex) {
             Logger.printException(() -> "onDialogShown failure", ex);
         }
     }
 
+    /**
+     * Injection point (YouTube only): the "Please wait" progress dialog before the download quality menu was shown.
+     * It is shown for a moment only, so it is drawn as glass from its first frame. Its window background is already
+     * set, and is a dialog color and not a menu color.
+     */
+    public static void onProgressDialogShown(@Nullable Dialog dialog) {
+        if (dialog == null || !isEnabled()) return;
+
+        try {
+            Window window = dialog.getWindow();
+            if (window == null) return;
+            styleWindowPanel(window, window.getDecorView(), true);
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onProgressDialogShown failure", ex);
+        }
+    }
+
+    /**
+     * @param anyColor If the background of the window and of the views inside it can be any opaque color,
+     *                 and not only a menu color.
+     */
     @RequiresApi(Build.VERSION_CODES.S)
-    private static void styleWindowPanel(Window window, View decor) {
+    private static void styleWindowPanel(Window window, View decor, boolean anyColor) {
         try {
             if (window.getAttributes().height != WindowManager.LayoutParams.WRAP_CONTENT) return;
 
             View content = decor.findViewById(android.R.id.content);
             Drawable background = decor.getBackground();
             if (content == null || background == null || glassViews.contains(content)) return;
-            if (!isMenuColor(decor.getContext(), SolidColors.colorOf(background))) return;
+            final int color = SolidColors.colorOf(background);
+            if (!(anyColor ? isOpaque(color) : isMenuColor(decor.getContext(), color))) return;
 
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             window.setDimAmount(dimAmount());
-            GlassSurface.apply(content, CORNERS_AUTO);
+            // The panel keeps the shape of the window background.
+            GlassSurface.apply(content, CORNERS_AUTO, false, background, anyColor);
         } catch (Throwable ex) {
             Logger.printException(() -> "styleWindowPanel failure", ex);
         }
@@ -363,8 +402,12 @@ public final class GlassMenusPatch {
         return DEFAULT_CORNER_RADIUS;
     }
 
+    private static boolean isOpaque(@ColorInt int color) {
+        return Color.alpha(color) >= 0xF0;
+    }
+
     private static boolean isSimilarOpaqueColor(@ColorInt int color, @ColorInt int other) {
-        return Color.alpha(color) >= 0xF0
+        return isOpaque(color)
                 && Math.abs(Color.red(color) - Color.red(other)) <= COLOR_TOLERANCE
                 && Math.abs(Color.green(color) - Color.green(other)) <= COLOR_TOLERANCE
                 && Math.abs(Color.blue(color) - Color.blue(other)) <= COLOR_TOLERANCE;
@@ -397,7 +440,7 @@ public final class GlassMenusPatch {
         private final View view;
         private final int corners;
         private final GlassDrawable tint;
-        private final Consumer<Boolean> blurListener = this::onBlurEnabledChanged;
+        private final Consumer<Boolean> blurListener = this::onSystemBlurEnabledChanged;
 
         /**
          * Colors of the menu, a background of one of these colors inside the menu is removed.
@@ -449,6 +492,11 @@ public final class GlassMenusPatch {
 
         @Nullable
         private Drawable blur;
+        /**
+         * Blurs the app behind the menu while the system does not. Android 14 and later only.
+         */
+        @Nullable
+        private final AppBackdropDrawable appBackdrop;
         @Nullable
         private WindowManager windowManager;
         private boolean blurEnabled;
@@ -461,23 +509,39 @@ public final class GlassMenusPatch {
          */
         private final boolean findPanel;
 
+        /**
+         * If every opaque fill of the window is hidden, of any color and size. The theme of a progress dialog gives
+         * its background to every view of the window, also to small ones such as the message.
+         */
+        private final boolean anyColor;
+
         static void apply(View view, int corners) {
             apply(view, corners, false);
         }
 
         static void apply(View view, int corners, boolean findPanel) {
+            apply(view, corners, findPanel, view.getBackground(), false);
+        }
+
+        static void apply(View view, int corners, boolean findPanel, @Nullable Drawable background,
+                          boolean anyColor) {
             if (glassViews.add(view)) {
-                new GlassSurface(view, corners, findPanel);
+                new GlassSurface(view, corners, findPanel, background, anyColor);
             }
         }
 
-        private GlassSurface(View view, int corners, boolean findPanel) {
+        private GlassSurface(View view, int corners, boolean findPanel, @Nullable Drawable background,
+                             boolean anyColor) {
             this.view = view;
             this.corners = corners;
             this.findPanel = findPanel;
+            this.anyColor = anyColor;
 
-            originalBackground = view.getBackground();
+            originalBackground = background;
             tint = new GlassDrawable(corners == CORNERS_NONE ? 0 : cornerRadiusOf(originalBackground));
+            appBackdrop = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+                    ? new AppBackdropDrawable(view, blurRadiusPx())
+                    : null;
             updateOpacity();
 
             menuColors.addAll(menuColors(view.getContext()));
@@ -519,14 +583,13 @@ public final class GlassMenusPatch {
                     setBackgroundLayers();
                     if (BlurRegion.isSamsungWindowBlurSupported()) {
                         onBlurEnabledChanged(true);
-                    } else {
-                        BlurRegion.setBlurRadius(blur, 0);
-                        // Called right away with the current state, and again when the system turns the blur
-                        // on or off.
-                        if (manager != null) {
-                            manager.addCrossWindowBlurEnabledListener(blurListener);
-                        }
+                    } else if (manager != null) {
+                        // The listener gets the current state only after the first frame of the menu is drawn.
+                        onSystemBlurEnabledChanged(manager.isCrossWindowBlurEnabled());
+                        manager.addCrossWindowBlurEnabledListener(blurListener);
                     }
+                } else {
+                    onBlurEnabledChanged(false);
                 }
                 updateCorners(true);
                 attachedTime = SystemClock.uptimeMillis();
@@ -557,8 +620,11 @@ public final class GlassMenusPatch {
                     blur = null;
                     blurEnabled = false;
                     setBackgroundLayers();
-                    updateOpacity();
                 }
+                if (appBackdrop != null) {
+                    appBackdrop.setShown(false);
+                }
+                updateOpacity();
                 windowManager = null;
             } catch (Throwable ex) {
                 Logger.printException(() -> "GlassSurface detach failure", ex);
@@ -566,12 +632,14 @@ public final class GlassMenusPatch {
         }
 
         /**
-         * The background of the view: the blur and the tint, both drawn within the panel of the menu.
+         * The background of the view: the blur and the tint, drawn within the panel of the menu.
          */
         private void setBackgroundLayers() {
-            layers = new LayerDrawable(blur != null
-                    ? new Drawable[]{blur, tint}
-                    : new Drawable[]{tint});
+            List<Drawable> drawables = new ArrayList<>(3);
+            if (blur != null) drawables.add(blur);
+            if (appBackdrop != null) drawables.add(appBackdrop);
+            drawables.add(tint);
+            layers = new LayerDrawable(drawables.toArray(new Drawable[0]));
             setLayerInsets();
             view.setBackground(layers);
         }
@@ -621,11 +689,15 @@ public final class GlassMenusPatch {
                 }
             }
 
+            // While the app replaces the content of the sheet, such as when a nested menu opens, no fill may be
+            // mounted for a frame. The glass then stays where the panel was, and does not cover the whole sheet.
+            if (panel.isEmpty()) return;
+
             boolean changed = false;
-            final int left = panel.isEmpty() ? 0 : panel.left;
-            final int top = panel.isEmpty() ? 0 : panel.top;
-            final int right = panel.isEmpty() ? 0 : width - panel.right;
-            final int bottom = panel.isEmpty() ? 0 : height - panel.bottom;
+            final int left = panel.left;
+            final int top = panel.top;
+            final int right = width - panel.right;
+            final int bottom = height - panel.bottom;
             if (left != panelInsets.left || top != panelInsets.top
                     || right != panelInsets.right || bottom != panelInsets.bottom) {
                 panelInsets.set(left, top, right, bottom);
@@ -654,16 +726,29 @@ public final class GlassMenusPatch {
             }
         }
 
+        private void onSystemBlurEnabledChanged(boolean enabled) {
+            BlurRegion.logBlurEnabled(view.getContext(), enabled);
+            onBlurEnabledChanged(enabled);
+        }
+
         private void onBlurEnabledChanged(boolean enabled) {
             blurEnabled = enabled;
             if (blur != null) {
                 BlurRegion.setBlurRadius(blur, enabled ? blurRadiusPx() : 0);
             }
+            if (appBackdrop != null) {
+                appBackdrop.setShown(!isSystemBlurred() && view.isAttachedToWindow());
+            }
             updateOpacity();
         }
 
+        private boolean isSystemBlurred() {
+            return blurEnabled && blur != null;
+        }
+
         private void updateOpacity() {
-            tint.setOpacityPercent(blurEnabled && blur != null
+            final boolean blurred = isSystemBlurred() || (appBackdrop != null && appBackdrop.isShown());
+            tint.setOpacityPercent(blurred
                     ? opacityPercent()
                     : Math.max(opacityPercent(), MIN_OPACITY_WITHOUT_BLUR));
         }
@@ -686,9 +771,10 @@ public final class GlassMenusPatch {
                     lastLithoChanges = lithoChanges;
                     laidOut = false;
                 }
-                removeMenuBackgrounds(view);
+                removeMenuBackgrounds(anyColor ? view.getRootView() : view);
                 if (scanLitho) hideLithoFills();
                 updatePanel();
+                if (appBackdrop != null) appBackdrop.invalidateIfMoved();
             } catch (Throwable ex) {
                 Logger.printException(() -> "GlassSurface onPreDraw failure", ex);
             }
@@ -722,7 +808,7 @@ public final class GlassMenusPatch {
         private void removeMenuBackgrounds(View parent) {
             if (!(parent instanceof ViewGroup group)) return;
 
-            final int minWidth = view.getWidth() / 2;
+            final int minWidth = anyColor ? 0 : view.getWidth() / 2;
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 View child = group.getChildAt(i);
                 Drawable background = child.getBackground();
@@ -843,6 +929,7 @@ public final class GlassMenusPatch {
         }
 
         private boolean isMenuColor(@ColorInt int color) {
+            if (anyColor) return isOpaque(color);
             for (int menu : menuColors) {
                 if (isSimilarOpaqueColor(color, menu)) return true;
             }

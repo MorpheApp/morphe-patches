@@ -449,6 +449,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">ซ่อนปุ่มคลังเพลง</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">แสดงปุ่มการตั้งค่า</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">การดำเนินการของปุ่มการตั้งค่า</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">เมื่อเปิดใช้งาน การแตะจะเปิดการตั้งค่า Morphe และการกดค้างจะเปิดการตั้งค่า YouTube Music ให้ปิดใช้งานเพื่อสลับกัน</string>
   <string name="morphe_music_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
   <string name="morphe_music_navigation_bar_glass_title">เปิดใช้งานแถบนำทางแบบกระจก</string>

@@ -81,6 +81,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_NAVIGATION_BAR_EXPLORE_BUTTON = new BooleanSetting("morphe_music_hide_navigation_bar_explore_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_NAVIGATION_BAR_LIBRARY_BUTTON = new BooleanSetting("morphe_music_hide_navigation_bar_library_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_NAVIGATION_BAR_UPGRADE_BUTTON = new BooleanSetting("morphe_music_hide_navigation_bar_upgrade_button", TRUE, true, parentNot(HIDE_NAVIGATION_BAR));
+    public static final BooleanSetting SHOW_NAVIGATION_BAR_SETTINGS_BUTTON = new BooleanSetting("morphe_music_show_navigation_bar_settings_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
+    public static final BooleanSetting SHOW_NAVIGATION_BAR_SETTINGS_BUTTON_TYPE = new BooleanSetting("morphe_music_show_navigation_bar_settings_button_type", FALSE, true, parentsAll(parent(SHOW_NAVIGATION_BAR_SETTINGS_BUTTON), parentNot(HIDE_NAVIGATION_BAR)));
     public static final BooleanSetting HIDE_NAVIGATION_BAR_LABEL = new BooleanSetting("morphe_music_hide_navigation_bar_labels", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting NAVIGATION_BAR_GLASS = new BooleanSetting("morphe_music_navigation_bar_glass", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final IntegerSetting NAVIGATION_BAR_GLASS_OPACITY = new IntegerSetting("morphe_music_navigation_bar_glass_opacity", 20, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
@@ -98,9 +100,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_ASK_MUSIC_BUTTON = new BooleanSetting("morphe_music_hide_ask_music_button", FALSE, true);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_music_hide_cast_button", FALSE, true);
     public static final BooleanSetting HIDE_HISTORY_BUTTON = new BooleanSetting("morphe_music_hide_history_button", FALSE, true);
+    public static final BooleanSetting HIDE_SAMPLES_BUTTON = new BooleanSetting("morphe_music_hide_samples_button", FALSE, true);
     public static final BooleanSetting HIDE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_search_button", FALSE, true);
     public static final BooleanSetting HIDE_SOUND_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_sound_search_button", FALSE, true);
     public static final BooleanSetting HIDE_VOICE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_voice_search_button", FALSE, true);
+    public static final BooleanSetting SHOW_TOOLBAR_SETTINGS_BUTTON = new BooleanSetting("morphe_music_show_toolbar_settings_button", FALSE, true);
+    public static final BooleanSetting SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE = new BooleanSetting("morphe_music_show_toolbar_settings_button_type", FALSE, true, parent(SHOW_TOOLBAR_SETTINGS_BUTTON));
 
     // Playlist tags
     public static final BooleanSetting PLAYLIST_TAGS = new BooleanSetting("morphe_music_playlist_tags", FALSE, true);
@@ -115,19 +120,27 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_ENABLED = new BooleanSetting("morphe_music_lyrics_enabled", TRUE, false);
     public static final BooleanSetting LYRICS_KEEP_SCREEN_ON = new BooleanSetting("morphe_music_lyrics_keep_screen_on", FALSE, false, parent(LYRICS_ENABLED));
     public static final String DEFAULT_LYRICS_ORDER =
-            "YTMusic,-Captions,Apple,LRCLIB,QQ,NetEase,KuGou,Luna,-PetitLyrics,-bLyrics,-BiniLyrics,-LrcRed,-Unison,-SimpMusic,-AMLL,-LunaBeat,-Lyricify,-Musixmatch,-Spotify,-Deezer,-RMM,-Genius,";
+            "YTMusic,-Captions,Apple,LRCLIB,QQ,NetEase,KuGou,-Luna,-Kuwo,-RMM,-PetitLyrics,-bLyrics,-LyricsPlus,-LrcRed,-Unison,-SimpMusic,-AMLL,-LunaBeat,-Lyricify,-Musixmatch,-Spotify,-Deezer,-Genius,";
     public static final StringSetting LYRICS_SOURCE = new StringSetting("morphe_music_lyrics_source", DEFAULT_LYRICS_ORDER, false, parent(LYRICS_ENABLED));
     public static final StringSetting APPLE_MUSIC_TOKEN = new StringSetting("morphe_music_apple_music_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting DEEZER_ARL = new StringSetting("morphe_music_deezer_arl", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting MUSIXMATCH_TOKEN = new StringSetting("morphe_music_musixmatch_token", "", false, parent(LYRICS_ENABLED));
+    // Hidden; blank keeps the official endpoint.
+    public static final StringSetting LRCLIB_ENDPOINT = new StringSetting("morphe_music_lyrics_lrclib_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting BLYRICS_ENDPOINT = new StringSetting("morphe_music_lyrics_blyrics_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_PLUS_ENDPOINT = new StringSetting("morphe_music_lyrics_plus_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting UNISON_ENDPOINT = new StringSetting("morphe_music_lyrics_unison_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting AMLL_ENDPOINT = new StringSetting("morphe_music_lyrics_amll_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LUNABEAT_ENDPOINT = new StringSetting("morphe_music_lyrics_lunabeat_endpoint", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting SIMPMUSIC_ENDPOINT = new StringSetting("morphe_music_lyrics_simpmusic_endpoint", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE = new BooleanSetting("morphe_music_lyrics_translate", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_COPY_BUTTON = new BooleanSetting("morphe_music_lyrics_show_copy_button", TRUE, false, parent(LYRICS_ENABLED));
-    /** Action mode for the copy/share toolbar button ("copy" or "share"). */
-    public static final StringSetting LYRICS_COPY_BUTTON_MODE = new StringSetting("morphe_music_lyrics_copy_button_mode", "copy", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_COPY_BUTTON)));
+    public static final BooleanSetting LYRICS_LONG_PRESS_SHARE_MODE = new BooleanSetting("morphe_music_lyrics_long_press_share_mode", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_TAP_TO_SEEK)));
     public static final BooleanSetting LYRICS_SHOW_CURRENT_BUTTON = new BooleanSetting("morphe_music_lyrics_show_current_button", TRUE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_SHOW_FULLSCREEN_BUTTON = new BooleanSetting("morphe_music_lyrics_show_fullscreen_button", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_SECTION = new BooleanSetting("morphe_music_lyrics_show_section", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_TRANSLATE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_translate_button", TRUE, false, parent(LYRICS_ENABLED));
     /** A comma separated priority list; a leading '-' disables a provider. */
@@ -184,10 +197,18 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_QUICKLRC_ENABLED = new BooleanSetting("morphe_music_lyrics_quicklrc_enabled", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_INFO = new BooleanSetting("morphe_music_lyrics_hide_info", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SWAP_TRANS_ROMA = new BooleanSetting("morphe_music_lyrics_swap_trans_roma", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_SHOW_TRANSLATE_BUTTON, LYRICS_SHOW_ROMANIZE_BUTTON)));
-    /** Puts every line in the middle, whatever the format and its duet sides ask for. */
-    public static final BooleanSetting LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false, parent(LYRICS_ENABLED));
-    /** Places the second singer of a duet on the opposite edge, disabled when Always center lyrics is active. */
-    public static final BooleanSetting LYRICS_DUET_OPPOSITE_SIDE = new BooleanSetting("morphe_music_lyrics_duet_opposite_side", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parentNot(LYRICS_FORCE_CENTER)));
+    public static final String ALIGNMENT_DEFAULT = "default";
+    public static final String ALIGNMENT_SAME_SIDE = "same_side";
+    public static final String ALIGNMENT_CENTER = "center";
+    public static final StringSetting LYRICS_ALIGNMENT_MODE = new StringSetting("morphe_music_lyrics_alignment_mode", ALIGNMENT_DEFAULT, false, parent(LYRICS_ENABLED));
+
+    public static boolean isAlignmentCenter() {
+        return ALIGNMENT_CENTER.equals(LYRICS_ALIGNMENT_MODE.get());
+    }
+
+    public static boolean isAlignmentSameSide() {
+        return ALIGNMENT_SAME_SIDE.equals(LYRICS_ALIGNMENT_MODE.get());
+    }
     public static final BooleanSetting LYRICS_ROMANIZE = new BooleanSetting("morphe_music_lyrics_romanize", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE_ONLY = new BooleanSetting("morphe_music_lyrics_romanize_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_WORD_SYNC = new BooleanSetting("morphe_music_lyrics_word_sync", TRUE, false, parent(LYRICS_ENABLED));
@@ -237,7 +258,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting LYRICS_MINI_ARTIST_MAX_MS = new IntegerSetting("morphe_music_lyrics_mini_artist_max_ms", 3000, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final FloatSetting LYRICS_MINI_FULL_WIDTH_MULTIPLIER = new FloatSetting("morphe_music_lyrics_mini_full_width_multiplier", 1.75f, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final StringSetting LYRICS_MINI_INSTRUMENTAL = new StringSetting("morphe_music_lyrics_mini_instrumental", MiniLyricsFormatter.DEFAULT_INSTRUMENTAL, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
-    public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", -800, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
+    public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", -500, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final BooleanSetting LYRICS_USE_EMBEDDED = new BooleanSetting("morphe_music_lyrics_use_embedded", TRUE, true, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_CAPTION_COOKIES = new StringSetting("morphe_music_lyrics_caption_cookies", "", false, parent(LYRICS_ENABLED));
     /** Preferred offline Japanese analyzer ("kuromoji" or "sudachi") when both are downloaded. */
@@ -441,6 +462,9 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_LYRICS_USE_AI_TRANSLATION = new BooleanSetting("morphe_music_lyrics_use_ai_translation", FALSE, false);
     private static final BooleanSetting DEPRECATED_LYRICS_USE_AI_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_use_ai_romanization", FALSE, false);
     private static final BooleanSetting DEPRECATED_LYRICS_LOCAL_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_local_romanization", FALSE, false);
+    private static final BooleanSetting DEPRECATED_LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false);
+    private static final BooleanSetting DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE = new BooleanSetting("morphe_music_lyrics_duet_opposite_side", TRUE, false);
+    private static final StringSetting DEPRECATED_LYRICS_COPY_BUTTON_MODE = new StringSetting("morphe_music_lyrics_copy_button_mode", "copy", false);
 
     static {
         migrateOldSettingToNew(DEPRECATED_HIDE_LIBRARY_NEW_BUTTON, HIDE_NEW_BUTTON);
@@ -453,6 +477,9 @@ public class Settings extends SharedYouTubeSettings {
         migrateLyricsArtistFirstToTrackFormat();
         migrateQuickLrcEnabled();
         migrateLyricsProviderSwitches();
+        migrateLyricsProviderRename();
+        migrateLyricsAlignment();
+        migrateLyricsCopyButtonMode();
     }
 
     static {
@@ -578,6 +605,48 @@ public class Settings extends SharedYouTubeSettings {
         DEPRECATED_LYRICS_USE_AI_TRANSLATION.resetToDefault();
         DEPRECATED_LYRICS_USE_AI_ROMANIZATION.resetToDefault();
         DEPRECATED_LYRICS_LOCAL_ROMANIZATION.resetToDefault();
+    }
+
+    /**
+     * The provider was renamed from {@code BiniLyrics} to {@code LyricsPlus}; keep the old stored
+     * position and enabled state, but under the new id.
+     */
+    private static void migrateLyricsProviderRename() {
+        if (LYRICS_SOURCE.isSetToDefault()) {
+            return;
+        }
+        final String order = LYRICS_SOURCE.get();
+        if (order == null || !order.contains("BiniLyrics")) {
+            return;
+        }
+        final String migrated = order.replace("BiniLyrics", "LyricsPlus");
+        if (migrated.equals(DEFAULT_LYRICS_ORDER)) {
+            LYRICS_SOURCE.resetToDefault();
+        } else {
+            LYRICS_SOURCE.save(migrated);
+        }
+    }
+
+    /** Always center lyrics and Opposite-side duet alignment became one alignment list. */
+    private static void migrateLyricsAlignment() {
+        if (DEPRECATED_LYRICS_FORCE_CENTER.get()) {
+            LYRICS_ALIGNMENT_MODE.save(ALIGNMENT_CENTER);
+        } else if (!DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE.get()) {
+            LYRICS_ALIGNMENT_MODE.save(ALIGNMENT_SAME_SIDE);
+        }
+        DEPRECATED_LYRICS_FORCE_CENTER.resetToDefault();
+        DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE.resetToDefault();
+    }
+
+    /**
+     * The share mode of the copy button moved to a long press on a line, so whoever picked it
+     * keeps a way to open the line selection.
+     */
+    private static void migrateLyricsCopyButtonMode() {
+        if ("share".equals(DEPRECATED_LYRICS_COPY_BUTTON_MODE.get())) {
+            LYRICS_LONG_PRESS_SHARE_MODE.save(true);
+        }
+        DEPRECATED_LYRICS_COPY_BUTTON_MODE.resetToDefault();
     }
 
     /**

@@ -70,23 +70,6 @@ internal object MainActivityOnPauseFingerprint : Fingerprint(
 )
 
 /**
- * BottomNavScreen.onNavBarStateChange(float), called with the fraction of the navigation bar
- * that is shown.
- */
-internal object NavBarStateChangeFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
-    returnType = "V",
-    parameters = listOf("F"),
-    filters = listOf(
-        // The coroutine class is BottomNavScreen$onNavBarStateChange$1$1 in older app versions.
-        methodCall(
-            definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen\$onNavBarStateChange\$1",
-            name = "<init>"
-        )
-    )
-)
-
-/**
  * Inflates the view of the post detail pager.
  */
 internal object PostDetailPagerInflateFingerprint : Fingerprint(
@@ -118,7 +101,7 @@ internal object ScreenAttachFingerprint : Fingerprint(
 )
 
 /**
- * Attached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ * Attached callback of a screen in the navigation stack, for app versions before 2026.37.0.
  */
 internal object ScreenAttachLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/navstack/",
@@ -146,7 +129,7 @@ internal object ScreenDetachFingerprint : Fingerprint(
 )
 
 /**
- * Detached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ * Detached callback of a screen in the navigation stack, for app versions before 2026.37.0.
  */
 internal object ScreenDetachLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/navstack/",

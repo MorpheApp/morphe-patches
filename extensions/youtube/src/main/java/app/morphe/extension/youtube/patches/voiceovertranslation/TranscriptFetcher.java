@@ -9,24 +9,15 @@ package app.morphe.extension.youtube.patches.voiceovertranslation;
 
 import androidx.annotation.Nullable;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.utils.AuthUtils;
-import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.youtube.patches.CaptionCookiesPatch;
+import app.morphe.extension.youtube.patches.utils.requests.CaptionTrackRequest;
 
 /**
  * Pulls the video's caption track (Innertube preferred, direct timedtext as fallback),
@@ -35,11 +26,6 @@ import app.morphe.extension.youtube.patches.CaptionCookiesPatch;
  * when the source language differs from the user's target.
  */
 final class TranscriptFetcher {
-
-    private static final int CONNECT_TIMEOUT_MS = 10_000;
-    private static final int READ_TIMEOUT_MS = 15_000;
-    private static final String INNERTUBE_PLAYER_URL =
-            "https://www.youtube.com/youtubei/v1/player?prettyPrint=false";
 
     /** Language code detected from the video's own caption track. Updated on every successful fetch. */
     static volatile String lastSourceLang = "en";
@@ -77,133 +63,58 @@ final class TranscriptFetcher {
     }
 
     private static List<TranscriptSegment> fetchEnglishSegments(String videoId) {
-        String captionUrl = null;
-        String poToken    = null;
         try {
-            String[] innertubeResult = fetchFromInnertube(videoId);
-            captionUrl = innertubeResult[0];
-            poToken    = innertubeResult[1];
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Innertube player failed", ex);
-        }
-
-        if (captionUrl != null) {
-            try {
-                String baseUrl = captionUrl.replaceAll("&fmt=[^&]*", "") + "&fmt=json3";
-                if (poToken != null) baseUrl += "&pot=" + poToken;
-
-                String json = fetchUrl(baseUrl);
-                String detectedLang = extractLangFromUrl(captionUrl).split("-")[0];
-                List<TranscriptSegment> segments = parseJson3(json, detectedLang);
+            CaptionTrackRequest.Track track = findBestTrack(CaptionTrackRequest.fetchCaptions(videoId).tracks());
+            if (track != null) {
+                String detectedLang = track.languageCode().split("-")[0];
+                List<TranscriptSegment> segments = toSegments(
+                        CaptionTrackRequest.fetchLines(track.url()), detectedLang);
                 if (!segments.isEmpty()) {
                     lastSourceLang = detectedLang;
                     return segments;
                 }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Caption fetch failed, trying direct", ex);
             }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Caption fetch failed, trying direct", ex);
         }
 
         return fetchDirect(videoId);
     }
 
-    private static String[] fetchFromInnertube(String videoId) throws Exception {
-        Utils.verifyOffMainThread();
-
-        String body = "{\"context\":{\"client\":{\"clientName\":\"ANDROID\","
-                + "\"clientVersion\":\"20.10.38\"}},"
-                + "\"videoId\":\"" + videoId + "\"}";
-
-        HttpURLConnection conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
-        conn.setRequestMethod("POST");
-        conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
-        conn.setReadTimeout(READ_TIMEOUT_MS);
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("User-Agent",
-                "com.google.android.youtube/20.10.38 (Linux; U; Android 11) gzip");
-        conn.setRequestProperty("X-YouTube-Client-Name", "3");
-        conn.setRequestProperty("X-YouTube-Client-Version", "20.10.38");
-        conn.setDoOutput(true);
-
-        try (OutputStream os = conn.getOutputStream()) {
-            os.write(body.getBytes(StandardCharsets.UTF_8));
-        }
-
-        final int code = conn.getResponseCode();
-        if (code != 200) throw new Exception("Unexpected response status: " + code);
-
-        String response = Requester.parseString(conn);
-        return new String[]{findBestCaptionUrl(response), extractPoToken(response)};
-    }
-
-    @Nullable
-    private static String extractPoToken(String json) {
-        int idx = json.indexOf("\"poToken\":\"");
-        if (idx < 0) return null;
-        idx += "\"poToken\":\"".length();
-        final int end = json.indexOf('"', idx);
-        return end < 0 ? null : json.substring(idx, end);
-    }
-
     /**
-     * Returns the best caption URL from the captionTracks list.
+     * Returns the best caption track.
      * Prefers a non-gemini track in the target language; falls back to a non-gemini
      * English track, then the first non-gemini track, then the first available.
      */
     @Nullable
-    private static String findBestCaptionUrl(String json) {
-        final int tracksIdx = json.indexOf("\"captionTracks\":[");
-        if (tracksIdx < 0) return null;
-
+    private static CaptionTrackRequest.Track findBestTrack(List<CaptionTrackRequest.Track> tracks) {
         String targetLang = VoiceCatalog.getIso639(VoiceOverTranslationPatch.resolveTargetLang());
-        String firstUrl = null;
-        String firstNonGemini = null;
-        String targetLangUrl = null;
-        String englishUrl = null;
-        int searchFrom = tracksIdx;
+        CaptionTrackRequest.Track firstNonGemini = null;
+        CaptionTrackRequest.Track englishTrack = null;
 
-        while (true) {
-            int baseUrlIdx = json.indexOf("\"baseUrl\":\"", searchFrom);
-            if (baseUrlIdx < 0 || baseUrlIdx > tracksIdx + 50_000) break;
-            baseUrlIdx += "\"baseUrl\":\"".length();
+        for (CaptionTrackRequest.Track track : tracks) {
+            if (track.gemini()) continue;
 
-            final int endIdx = json.indexOf('"', baseUrlIdx);
-            if (endIdx < 0) break;
-
-            String url = json.substring(baseUrlIdx, endIdx)
-                    .replace("\\u0026", "&")
-                    .replace("\\u003d", "=")
-                    .replace("\\u003e", ">")
-                    .replace("\\u003c", "<");
-
-            if (firstUrl == null) firstUrl = url;
-            final boolean nonGemini = !url.contains("variant=gemini");
-            if (firstNonGemini == null && nonGemini) firstNonGemini = url;
-
-            String urlLang = extractLangFromUrl(url).split("-")[0];
-            if (targetLangUrl == null && nonGemini && targetLang.equals(urlLang)) targetLangUrl = url;
-            if (englishUrl == null && nonGemini && "en".equals(urlLang)) englishUrl = url;
-
-            searchFrom = endIdx + 1;
+            String trackLang = track.languageCode().split("-")[0];
+            if (targetLang.equals(trackLang)) return track;
+            if (englishTrack == null && "en".equals(trackLang)) englishTrack = track;
+            if (firstNonGemini == null) firstNonGemini = track;
         }
 
-        if (targetLangUrl != null) return targetLangUrl;
-        if (englishUrl != null) return englishUrl;
-        return firstNonGemini != null ? firstNonGemini : firstUrl;
+        if (englishTrack != null) return englishTrack;
+        if (firstNonGemini != null) return firstNonGemini;
+        return tracks.isEmpty() ? null : tracks.get(0);
     }
 
     private static List<TranscriptSegment> fetchDirect(String videoId) {
         for (String srcLang : List.of("en", "en-US", "en-GB")) {
             try {
-                String urlStr = "https://www.youtube.com/api/timedtext?v=" + videoId
-                        + "&lang=" + srcLang + "&kind=asr&fmt=json3";
-                String json = fetchUrl(urlStr);
-                if (!json.isEmpty()) {
-                    List<TranscriptSegment> segments = parseJson3(json, "en");
-                    if (!segments.isEmpty()) {
-                        lastSourceLang = "en";
-                        return segments;
-                    }
+                String url = "https://www.youtube.com/api/timedtext?v=" + videoId
+                        + "&lang=" + srcLang + "&kind=asr";
+                List<TranscriptSegment> segments = toSegments(CaptionTrackRequest.fetchLines(url), "en");
+                if (!segments.isEmpty()) {
+                    lastSourceLang = "en";
+                    return segments;
                 }
             } catch (Exception ex) {
                 final String langFinal = srcLang;
@@ -212,18 +123,6 @@ final class TranscriptFetcher {
         }
         Logger.printDebug(() -> "No captions available for video: " + videoId);
         return new ArrayList<>();
-    }
-
-    private static String extractLangFromUrl(String url) {
-        for (String prefix : List.of("&lang=", "?lang=")) {
-            int idx = url.indexOf(prefix);
-            if (idx >= 0) {
-                idx += prefix.length();
-                final int end = url.indexOf('&', idx);
-                return end < 0 ? url.substring(idx) : url.substring(idx, end);
-            }
-        }
-        return "en";
     }
 
     // Flush a merged sentence when it grows past this size, to keep TTS utterances manageable.
@@ -246,36 +145,14 @@ final class TranscriptFetcher {
     // Tighter length cap so unpunctuated chunks stay short and re-sync with the video often.
     private static final int MAX_UNPUNCTUATED_CHARS = 200;
 
-    private static List<TranscriptSegment> parseJson3(String json, String sourceLang) throws Exception {
+    private static List<TranscriptSegment> toSegments(List<CaptionTrackRequest.Line> captionLines,
+                                                      String sourceLang) {
         List<TranscriptSegment> lines = new ArrayList<>();
-        JSONObject root = new JSONObject(json);
-        JSONArray events = root.optJSONArray("events");
-        if (events == null) return lines;
-
-        for (int i = 0, eventsLength = events.length(); i < eventsLength; i++) {
-            JSONObject event = events.getJSONObject(i);
-            // ASR streams emit append events that only carry a "\n" to scroll the
-            // 2-line caption window. They duplicate timing of real lines - skip them.
-            if (event.optInt("aAppend", 0) == 1) continue;
-
-            JSONArray segs = event.optJSONArray("segs");
-            if (segs == null) continue;
-
-            final long startMs = event.optLong("tStartMs", -1);
-            if (startMs < 0) continue;
-            final long durationMs = event.optLong("dDurationMs", 2000);
-
-            StringBuilder text = new StringBuilder();
-            for (int j = 0, segsLength = segs.length(); j < segsLength; j++) {
-                text.append(segs.getJSONObject(j).optString("utf8", ""));
-            }
-
-            String textStr = text.toString()
-                    .replace('\n', ' ')
+        for (CaptionTrackRequest.Line line : captionLines) {
+            String textStr = line.text()
                     .replace(">>", "")
                     .replace("♪", "")
-                    .replace("♫", "")
-                    .trim();
+                    .replace("♫", "");
 
             // Drop sound effect markers such as [Applause] or (music) - they should not be spoken.
             textStr = BRACKETS_PATTERN.matcher(textStr).replaceAll("");
@@ -283,8 +160,8 @@ final class TranscriptFetcher {
             textStr = textStr.trim();
 
             if (!textStr.isEmpty()) {
-                lines.add(new TranscriptSegment(startMs,
-                        startMs + durationMs, textStr, sourceLang));
+                lines.add(new TranscriptSegment(line.startMs(),
+                        line.startMs() + line.durationMs(), textStr, sourceLang));
             }
         }
 
@@ -443,28 +320,5 @@ final class TranscriptFetcher {
             }
         }
         return -1;
-    }
-
-    private static String fetchUrl(String urlStr) throws Exception {
-        HttpURLConnection conn = Requester.openConnection(urlStr);
-        conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
-        conn.setReadTimeout(READ_TIMEOUT_MS);
-        conn.setRequestProperty("User-Agent", CaptionCookiesPatch.getUserAgent());
-        String cookies = CaptionCookiesPatch.getCookies();
-        if (!cookies.isEmpty()) {
-            conn.setRequestProperty("Cookie", cookies);
-        }
-        Map<String, String> authHeaders = AuthUtils.getRequestHeader();
-        for (Map.Entry<String, String> entry : authHeaders.entrySet()) {
-            if (!entry.getValue().isEmpty()) {
-                conn.setRequestProperty(entry.getKey(), entry.getValue());
-            }
-        }
-
-        final int responseCode = conn.getResponseCode();
-        if (responseCode != 200) {
-            throw new Exception("HTTP response code: " + responseCode + " url: " + urlStr);
-        }
-        return Requester.parseString(conn);
     }
 }

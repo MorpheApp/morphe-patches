@@ -243,6 +243,7 @@ Els informes són públics i es revisen abans d'afegir un canal a una llista. L'
   <string name="morphe_hide_keyword_content_screen_title">Filtre de paraules clau</string>
   <string name="morphe_hide_keyword_content_screen_summary">Tria paraules o frases específiques per ocultar vídeos als feeds i a la cerca</string>
   <string name="morphe_hide_keyword_content_comments_title">Oculta els comentaris per paraules clau</string>
+  <string name="morphe_hide_keyword_content_posts_title">Ocultar publicacions per paraules clau</string>
   <string name="morphe_hide_keyword_content_home_title">Amagar vídeos de l\'Inici per paraules clau</string>
   <string name="morphe_hide_keyword_content_search_title">Amagar resultats de cerca per paraules clau</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Amagar vídeos de Subscripcions per paraules clau</string>
@@ -250,7 +251,7 @@ Els informes són públics i es revisen abans d'afegir un canal a una llista. L'
   <string name="morphe_hide_keyword_content_phrases_summary">"Introduïu paraules clau i frases per ocultar, separades per noves línies
 
 Les paraules clau poden ser qualsevol text que aparegui als títols dels vídeos. La paraula clau @NomDUsuari oculta tot el contingut de creadors específics"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Inici / Subscripcions / Cerca / Comentaris es filtren per ocultar el contingut que coincideix amb les frases de paraules clau
+  <string name="morphe_hide_keyword_content_about_summary">"Inici / Subscripcions / Cerca / Comentaris / Les publicacions es filtren per ocultar el contingut que coincideix amb frases de paraules clau
 
 Limitacions:
 • Alguns Shorts no es poden ocultar pel nom del canal
@@ -266,6 +267,39 @@ Limitacions:
 • Cerca: %3$s
 • Comentaris: %4$s
 • Total: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Filtre de nombre de visualitzacions</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Oculta els vídeos als feeds i a la cerca que tinguin massa poques o massa visualitzacions</string>
+  <string name="morphe_hide_videos_by_views_home_title">Oculta els vídeos de l\'Inici per visualitzacions</string>
+  <string name="morphe_hide_videos_by_views_search_title">Oculta els resultats de la cerca per visualitzacions</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Oculta els vídeos de Subscripcions per visualitzacions</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Vistes mínimes</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Es oculten els vídeos amb menys vistes. 0 = sense mínim</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Vistes màximes</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Es oculten els vídeos amb més vistes. 0 = sense màxim</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"L'Inici / Subscripcions / Cerca es filtren per ocultar vídeos i Shorts segons el seu nombre de vistes
+
+Limitacions:
+• YouTube rounding el nombre de vistes, per així que 1,2K vistes es compten com a 1200 vistes
+• Les retransmissions en directe no s'oculten
+• Un Short ocult pot deixar un espai buit en una prestatgeria de Shorts"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">El filtre de vistes ocultarà tots els vídeos</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Filtre de durada</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Oculte els vídeos dels feeds i de la cerca que siguin massa curts o massa llargs</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Oculte els vídeos de l\'Inici per durada</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Oculte els resultats de la cerca per durada</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Ocultar vídeos de Subscripcions per durada</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Durada mínima (minuts)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Els vídeos més curts que això s\'oculten. 0 = sense mínim</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Durada màxima (minuts)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Els vídeos més llargs que això s\'oculten. 0 = sense màxim</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Inici / Subscripcions / Cerca estan filtrats per ocultar vídeos segons la seva durada
+
+Limitacions:
+• Les retransmissions en directe, els Shorts, les llistes de reproducció i els mixes no s'oculten
+• Els vídeos amb una durada desconeguda no s'oculten"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">El filtre de durada ocultarà tots els vídeos</string>
   <string name="morphe_hide_stats_category_title">Estadístiques</string>
   <string name="morphe_hide_stats_hidden_24h_title">Vídeos ocults, últimes 24 hores</string>
   <string name="morphe_hide_stats_hidden_all_title">Vídeos ocults, tot el temps</string>
@@ -309,8 +343,6 @@ Limitacions:
   <string name="morphe_hide_sync_button_title">Ocultar el botó \'Sincronitzar amb el vídeo\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ocultar el degradat de tocar i mantenir</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Oculta el degradat dels controls del reproductor quan llisques el dit mentre mantens premut per accelerar</string>
-  <string name="morphe_hide_timed_reactions_title">Amagar reaccions temporitzades</string>
-  <string name="morphe_hide_timed_reactions_summary">Amaga la funció que permet als usuaris reaccionar amb emojis a la secció de comentaris i al xat en directe</string>
   <string name="morphe_hide_help_feedback_menu_summary">Oculta el menú \'Ajuda &amp; comentaris\' quan s\'utilitza el botó de tres punts, com ara als resultats de la cerca</string>
   <string name="morphe_hide_handle_title">Ocultar identificador</string>
   <string name="morphe_hide_handle_summary">Oculta l\'identificador del teu canal a la pestanya \'Tu\'</string>
@@ -425,10 +457,12 @@ Limitacions:
   <string name="morphe_hide_comments_menu_button_summary">Amaga el botó del menú de 3 punts de cada comentari</string>
   <string name="morphe_hide_comments_none_yet_title">Oculta la vista prèvia de \"Aïnés sense comentaris\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Amagar la vista prèvia del comentari</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Oculta la vista prèvia del comentari sota el vídeo abans d\'obrir la secció completa de comentaris</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Amaga la vista prèvia del comentari sota el vídeo abans d\'obrir la secció de comentaris</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Comentari ocult per Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Habilitar el botó de comentaris minimalistes</string>
-  <string name="morphe_minimal_comments_button_summary">Amaga les cartes lliscants i el seu selector de pàgina, mostrat al botó de comentaris</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Amagar les targetes de vista prèvia dels comentaris</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Amaga les targetes lliscants i l\'indicador de pàgina que apareixen al botó de comentaris</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Amagar les reaccions temporitzades</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Amaga la funció que permet als usuaris reaccionar amb emojis a la secció de comentaris i al xat en viu</string>
   <string name="morphe_hide_comments_timestamp_button_title">Amaga el botó de la marca temporal</string>
   <string name="morphe_hide_comments_top_fans_button_title">Amaga el botó \"Fans principals\"</string>
   <string name="morphe_hide_comments_topics_title">Ocultar \"Temes\"</string>
@@ -678,14 +712,14 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_ryd_feed_counts_position_entry_1">Al costat del recompte de visualitzacions</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Centre dreta</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Superior esquerra</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Cercar comentaris</string>
-  <string name="morphe_search_comments_summary">Toqueu el botó de cerca dels comentaris per mostrar només els comentaris carregats que contenguin totes les paraules cercades. Poseu les paraules entre cometes per cercar una frase</string>
-  <string name="morphe_search_comments_dialog_title">Cerca comentaris</string>
-  <string name="morphe_search_comments_hint">Paraules per a la cerca</string>
-  <string name="morphe_search_comments_clear">Esborra</string>
-  <string name="morphe_search_comments_applied">Canvieu l\'ordre de classificació o obriu els comentaris de nou per cercar-los</string>
-  <string name="morphe_search_comments_cleared">Cerca esborrada. Canvieu l\'ordre de classificació o obriu els comentaris de nou per mostrar tots els comentaris</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Cerca comentaris</string>
+  <string name="morphe_comment_search_summary">Toca el botó de cerca als comentaris per mostrar només els comentaris carregats que continguin totes les paraules cercades. Posa les paraules entre cometes per cercar una frase</string>
+  <string name="morphe_comment_search_dialog_title">Cerca comentaris</string>
+  <string name="morphe_comment_search_hint">Paraules a cercar</string>
+  <string name="morphe_comment_search_clear">Esborra</string>
+  <string name="morphe_comment_search_applied">Canvia l\'ordre de classificació o obre els comentaris de nou per cercar-los</string>
+  <string name="morphe_comment_search_cleared">Cerca eliminada. Canvia l\'ordre de classificació o obre els comentaris de nou per mostrar tots els comentaris</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desactiva la finestra emergenta \"Inicia sessió a la TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desactivar la finestra desplegable \"Connecta els teus dispositius\"</string>
@@ -1139,6 +1173,17 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Corrigir transcripció</string>
   <string name="morphe_fix_transcript_summary">Resol un error de comprovació de precondició que pot impedir que es carregui la transcripció</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Copiar transcripció</string>
+  <string name="morphe_copy_transcript_title">Copiar transcripció</string>
+  <string name="morphe_copy_transcript_summary">Afegeix un botó al panell de la transcripció que copia la transcripció en l\'idioma dels subtítols</string>
+  <string name="morphe_copy_transcript_timestamps_title">Incloure marques de temps</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Cada línia d\'una transcripció copiada comença amb la seva hora</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Mostrar als menus de Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Afegeix un element de Copiar transcripció als menus de Shorts</string>
+  <string name="morphe_copy_transcript_copied">Transcripció copiada al porta-retalls</string>
+  <string name="morphe_copy_transcript_empty">No hi ha cap transcripció disponible</string>
+  <string name="morphe_copy_transcript_error">No s\'ha pogut copiar la transcripció</string>
   <string name="morphe_captions_in_pip_title">Mostrar els subtítols en el mode picture-in-picture</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Mida dels subtítols</string>
@@ -1170,6 +1215,9 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <string name="morphe_show_settings_button_title">Mostra el botó de Configuració</string>
   <string name="morphe_show_settings_button_type_title">Acció del botó de Configuració</string>
   <string name="morphe_show_settings_button_type_summary">Quan està activat, tocar obre els ajustos de Morphe i mantenir premut obre els ajustos de YouTube, desactiva per intercanviar</string>
+  <string name="morphe_you_button_account_switcher_title">Accés directe al canvi de compte</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Mantingueu premut el botó \"Tu\" per obrir el canvi de compte</string>
   <string name="morphe_navigation_buttons_order_title">Ordre dels botons de navegació</string>
   <string name="morphe_navigation_buttons_order_summary">Arrossega els botons per canviar l\'ordre a la barra de navegació</string>
   <string name="morphe_swap_create_with_notifications_button_title">Intercanvia el botó de Crear amb el de Notificacions</string>
@@ -1390,6 +1438,17 @@ Disseny d'automoció
 • La superposició 'Més vídeos' pot no estar disponible
 • Els Shorts s'obrin al reproductor habitual
 • Es mostra la barra d'accions de vídeo antiga no col·lapsada"</string>
+  <string name="morphe_change_form_factor_car_display_title">Disseny automoció en pantalles de cotxe</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">El disseny automoció s\'utilitza quan YouTube s\'està mostrant en una pantalla de cotxe, per exemple mitjançant Android Auto o DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">El disseny automoció no s\'utilitza en pantalles de cotxe</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Ocultar automàticament la barra de navegació a les pantalles de cotxe</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">La barra de navegació s\'oculta a la pantalla del cotxe després d\'un temps sense utilitzar-la. Desllisa cap amunt des de la part inferior per mostrar-la</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">La barra de navegació sempre es mostra a les pantalles de cotxe</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Retard de l\'ocultació automàtica</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Quant de temps es manté la barra de navegació després de mostrar-se o de tocar-la</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Utilitzar en qualsevol pantalla externa</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Tota pantalla que no sigui la del telèfon és una pantalla de cotxe, incloent-hi una televisió o un monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Les pantalles de cotxe es detecten mitjançant Android Auto, els noms de les pantalles i el mode de interfície d'usuari del cotxe. A partir d'Android 15, la mirroring de pantalla mitjançant DriveDeck, Gearslip, graphene-auto o MyCar també és una pantalla de cotxe"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar el comportament antic dels subtítols</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar l\'opció antiga de desar a la llista de reproducció</string>
@@ -1446,6 +1505,8 @@ Disseny d'automoció
   <string name="morphe_playback_in_feeds_entry_always_on">Sempre activat</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Només Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Desactivat</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Mostra els botons de cerca als feeds</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Mostra els botons de cerca als vídeos que es reproduئين als feeds, també quan YouTube no els mostra</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurar els títols originals</string>
   <string name="morphe_restore_original_titles_summary">Mostra els títols originals dels vídeos, les descripcions dels vídeos i les descripcions dels canals en lloc dels traduïts automàticament</string>
@@ -2051,4 +2112,102 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_live_chat_translate_max_length_title">Longitud màxima del missatge</string>
   <string name="morphe_live_chat_translate_max_length_summary">Els missatges més llargs es mostren sense traduir</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Sense límit</string>
+  <string name="morphe_ghost_play_screen_title">Mode fantasma</string>
+  <string name="morphe_ghost_play_screen_summary">Mira vídeos sense afectar l\'historial de reproducció ni les recomanacions</string>
+  <string name="morphe_ghost_play_cat_general_title">General</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Botons</string>
+  <string name="morphe_ghost_play_cat_rules_title">Regles d\'auto-fantasma</string>
+  <string name="morphe_ghost_play_cat_history_title">Historial local</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Privacitat avançada</string>
+  <string name="morphe_ghost_play_enabled_title">Activar el mode Fantasma</string>
+  <string name="morphe_ghost_play_enabled_summary">Permet veure vídeos seleccionats, Shorts, cerques, canals o sessions completes sense afectar l\'historial de reproducció o les recomanacions</string>
+  <string name="morphe_ghost_play_mode_active_title">Mode Fantasma actiu</string>
+  <string name="morphe_ghost_play_mode_active_summary">Quan està activat, cada vídeo que obris normalment des dels feeds, els vídeos relacionats o la cerca es reprodueix en mode Ghost sense utilitzar el menú de tres punts</string>
+  <string name="morphe_ghost_play_persist_mode_title">Recorda el mode Ghost després dels reinicis</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Manté el mode Ghost activat fins i tot després de tancar i tornar a obrir YouTube</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Mostra el botó d\'activació del mode Ghost a la barra superior</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Col·loca un botó compacte d\'activació del mode Ghost al costat de les icones de la barra superior (toca per canviar, mantingues premut per controls ràpids)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Mostra al menú del vídeo</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Afegeix \"Reprodueix en mode Ghost\" al menú de tres punts dels vídeos</string>
+  <string name="morphe_ghost_play_player_button_title">Mostrar botó del mode Ghost</string>
+  <string name="morphe_ghost_play_player_button_summary">Mostra un botó d\'activació del mode Ghost al reproductor de vídeo (mantingueu premut per controls ràpids)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Anonimitzar sol·licituds de reproducció</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Elimina els encapçalaments del compte de la reproducció ghost i de les sol·licituds d\'esdeveniments per a un aïllament més fort. Les funcions amb restricció d\'edat, només per a membres i Premium no estan disponibles mentre estigui activat</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Ghost automàtic per a Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Mira automàticament els Shorts en mode Ghost perquè no afectin el teu feed d\'inici</string>
+  <string name="morphe_ghost_play_auto_search_title">Auto-ghost de vídeos de la cerca</string>
+  <string name="morphe_ghost_play_auto_search_summary">Mira automàticament els vídeos oberts des dels resultats de la cerca en mode Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_title">Auto-ghost de canals</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Cerca, afegeix, inspecciona i gestiona canals que sempre es reproduئين en mode Ghost</string>
+  <string name="morphe_ghost_play_local_history_title">Mantingui l\'historial local de Ghost</string>
+  <string name="morphe_ghost_play_local_history_summary">Recorda els vídeos i les posicions de reproducció del mode Ghost només en aquest dispositiu (mai s\'envien a YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">Límit de l\'historial local de Ghost</string>
+  <string name="morphe_ghost_play_history_limit_summary">Màxim de vídeos conservats al dispositiu (les entrades més antigues s\'eliminen automàticament)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d vídeos desats (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · No hi ha vídeos desats</string>
+  <string name="morphe_ghost_play_history_limit_100">100 vídeos</string>
+  <string name="morphe_ghost_play_history_limit_500">500 vídeos</string>
+  <string name="morphe_ghost_play_history_limit_2000">2.000 vídeos</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Ilimitat</string>
+  <string name="morphe_ghost_play_view_history_title">Obre l\'historial local de Ghost</string>
+  <string name="morphe_ghost_play_view_history_summary">Consulta, cerca, resumeix en mode Ghost o esborra l\'historial del dispositiu</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Encara no s\'han gravat vídeos (emmagatzats només en aquest dispositiu)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Reprodueix en mode Ghost</string>
+  <string name="morphe_ghost_play_video_active_toast">Mode Ghost actiu: l\'historial de visionat i les recomanacions estan protegits</string>
+  <string name="morphe_ghost_play_video_off_toast">Mode Ghost DESACTIVAT per a aquest vídeo</string>
+  <string name="morphe_ghost_play_session_on_toast">Mode Ghost ACTIVAT: els vídeos no afectaràn l\'historial ni les recomanacions</string>
+  <string name="morphe_ghost_play_session_off_toast">Mode fantasma DESACTIVAT: torna a la reproducció normal</string>
+  <string name="morphe_ghost_play_timer_set_toast">Mode fantasma actiu durant %d minuts</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Temporitzador cancel·lat: el mode fantasma es manté ACTIVAT</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Introdueix una durada entre 1 i 720 minuts</string>
+  <string name="morphe_ghost_play_dialog_title">Mode fantasma</string>
+  <string name="morphe_ghost_play_state_on">Activat</string>
+  <string name="morphe_ghost_play_state_off">Desactivat</string>
+  <string name="morphe_ghost_play_close">Tanca</string>
+  <string name="morphe_ghost_play_open_settings">Tots els ajustos</string>
+  <string name="morphe_ghost_play_quick_power_hint">Toca per activar/desactivar el mode fantasma</string>
+  <string name="morphe_ghost_play_quick_timer_title">Mode fantasma temporitzat</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Toca per triar la durada</string>
+  <string name="morphe_ghost_play_quick_timer_running">Temporitzador actiu · resten %d min</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Torna automàticament al mode normal quan hagi acabat</string>
+  <string name="morphe_ghost_play_quick_timer_change">Canvia el temps</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">N\'estura el temporitzador (mantingueu-lo activat)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Minuts personalitzats (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Establir</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost activat per a aquest canal</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost desactivat per a aquest canal</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Llista (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">S\'ha afegit \"%s\" als canals d\'auto-fantasma</string>
+  <string name="morphe_ghost_play_channel_removed_toast">S\'ha eliminat \"%s\" dels canals d\'auto-fantasma</string>
+  <string name="morphe_ghost_play_history_title">Historial de fantasma local</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d vídeos (%s) · toca per reprendre en mode Fantasma, manté premut per eliminar</string>
+  <string name="morphe_ghost_play_history_search_hint">Filtra per títol de vídeo o canal…</string>
+  <string name="morphe_ghost_play_history_no_match">No hi ha vídeos coincidents a l\'historial de fantasma local</string>
+  <string name="morphe_ghost_play_history_empty">Encara no hi ha historial de fantasma local</string>
+  <string name="morphe_ghost_play_history_clear_all">Esborra-ho tot</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Vols esborrar l\'historial de fantasma local?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Això eliminarà totes les entrades del mode Fantasma desades al dispositiu i no es pot desfer.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">S\'ha esborrat l\'historial local de Ghost</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">S\'ha eliminat de l\'historial local de Ghost</string>
+  <string name="morphe_ghost_play_channels_manager_title">Canals d\'Auto-ghost</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Afegits (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Cerca i afegeix</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filtra els canals afegits per nom, @usuari o tema…</string>
+  <string name="morphe_ghost_play_channels_empty">Encara no s\'han afegit canals. Passa a \"Cerca i afegeix\" per trobar canals per nom, @usuari o URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Cap canal afegit coincideix amb el teu filtre</string>
+  <string name="morphe_ghost_play_channels_add_current">Reproduint: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Afegeix</string>
+  <string name="morphe_ghost_play_channels_added_badge">Afegit</string>
+  <string name="morphe_ghost_play_channels_delete_button">Eliminar</string>
+  <string name="morphe_ghost_play_channels_search_hint">Nom del canal, @usuari o URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Cercar</string>
+  <string name="morphe_ghost_play_channels_search_guide">Introdueix un nom de canal, @usuari o l\'URL del canal de YouTube i toca Cerca</string>
+  <string name="morphe_ghost_play_channels_searching">Buscant canals de YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">Error en la cerca. Comprova la connexió i torna-ho a provar.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">No s\'han trobat canals per a aquesta consulta</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Vídeos recents</string>
+  <string name="morphe_ghost_play_channels_loading_details">Carregant vídeos recents…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">No s\'han trobat vídeos recents (toca per reintentar)</string>
 </resources>

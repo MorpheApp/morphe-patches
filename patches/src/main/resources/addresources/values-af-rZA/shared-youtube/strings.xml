@@ -140,6 +140,8 @@ Tik OK om Android System WebView oop te maak."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer om dit te aktiveer: Verfraai videostrome &gt; Android VR aanteken</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard kliënt</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Gebruik QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Gebruik QuackJS in plaas van yt-dlp-ejs (WebView) vir deobfuscation</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' teken in</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vereis \'n aparte aantekeningsproses. Tik hier om voort te gaan</string>
@@ -168,27 +170,28 @@ Om aan te meld, tik hieronder op Gaan voort"</string>
 • U Morphe-instellings sal nie Android VR-verifikasie invoer/uitvoer nie.
 • Indien hierdie app vir 6 maande nie gebruik word nie, sal Google hierdie verifikasie verwyder nie.
 • U moet weer aanteken indien u u Google-wagwoord verander of hierdie toestel van u Google-instellings deregistreer."</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobiele Web\' teken in</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web-intekening</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsioneel: teken in op die YouTube-webwerf om video\'s met jou rekening te speel. Tik hier om voort te gaan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Tans by \'Mobile Web\' aangemeld</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kringtans tekengesteel by die YouTube-webwerf</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na \'Mobiele Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Teken in by \'Mobiele Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobiele Web' speel video's uitgeteken, of ingeteken by die YouTube-webwerf
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na \'n Web-kliënt</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Teken in by die YouTube-webwerf</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webkliënte speel video's uitgeteken, of ingeteken by die YouTube-webwerf
 
-• Ingeteken kan video's wat 'n rekening vereis gespeel word, soos ouderdombeperkte video's
-• Die Google-intekeningsbladsy open in hierdie toepassing
-• Die intekening word slegs gebruik om die video's te kry wat jy speel
+• As jy ingeteken is, kan video's wat 'n rekening vereis gespeel word, soos ouderdombeperkte video's
+• Die Google-intekeningsblad open in hierdie toepassing
+• Die intekening word slegs gebruik om die video's wat jy speel te kry
 • Die intekening word slegs op hierdie toestel gestoor
+• Elke webkliënt het sy eie intekening vir die geselekteerde verstekkliënt
 
 Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Teken-in gestoor
 
-• Jou Morphe-instellings sal nie die 'Mobiele Web'-teken-in invoer/uitvoer nie
+• Jou Morphe-instellings sal nie die YouTube-webwerf teken-in invoer/uitvoer nie
 • As Google die teken-in beëindig, word video's sonder teken-in gespeel totdat jy weer teken in
-• Om uit te teken, teken ook hierdie toestel uit van die YouTube-webwerf af"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobiele Web-teken-in het verval, probeer om weer by \'Mobiele Web\' aan te teken</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uitgeteken by \'Mobiele Web\'</string>
+• Deur uit te teken, teken hierdie toestel ook uit van die YouTube-webwerf"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web teken-in het verval, probeer om weer teken in</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uitgeteken van die YouTube-webwerf</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' is nie beskikbaar nie. Installeer of aktiveer dit om aan te teken</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tans nie beskikbaar (API het tydperk verstryk)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\'-aantekening het verval, probeer om weer by VR aan te teken</string>

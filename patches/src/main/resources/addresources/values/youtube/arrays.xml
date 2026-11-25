@@ -157,6 +157,7 @@
         <item>TV Simply</item>
         <item>visionOS</item>
         <item>visionOS Experimental</item>
+        <item>Web</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_CREATOR</item>
@@ -168,6 +169,7 @@
         <item>TV_SIMPLY</item>
         <item>VISIONOS_1_02</item>
         <item>VISIONOS_1_06</item>
+        <item>WEB</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_player_js_variant_entries">
         <item>House Brand</item>
@@ -741,6 +743,16 @@
         <item>DEFAULT</item>
         <item>STRETCH</item>
         <item>ZOOM</item>
+    </string-array>
+    <string-array name="morphe_fullscreen_video_alignment_entries">
+        <item>@string/morphe_fullscreen_video_alignment_entry_top</item>
+        <item>@string/morphe_fullscreen_video_alignment_entry_center</item>
+        <item>@string/morphe_fullscreen_video_alignment_entry_bottom</item>
+    </string-array>
+    <string-array name="morphe_fullscreen_video_alignment_entry_values">
+        <item>TOP</item>
+        <item>CENTER</item>
+        <item>BOTTOM</item>
     </string-array>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
@@ -1324,5 +1336,19 @@
     <string-array name="morphe_custom_seekbar_thumb_scale_type_entry_values" translatable="false">
         <item>FIT_SEEKBAR</item>
         <item>ORIGINAL</item>
+    </string-array>
+
+    <!-- misc.privacy.ghostplay.ghostPlayPatch -->
+    <string-array name="morphe_ghost_play_history_limit_entries">
+        <item>@string/morphe_ghost_play_history_limit_100</item>
+        <item>@string/morphe_ghost_play_history_limit_500</item>
+        <item>@string/morphe_ghost_play_history_limit_2000</item>
+        <item>@string/morphe_ghost_play_history_limit_unlimited</item>
+    </string-array>
+    <string-array name="morphe_ghost_play_history_limit_entry_values" translatable="false">
+        <item>100</item>
+        <item>500</item>
+        <item>2000</item>
+        <item>0</item>
     </string-array>
 </resources>

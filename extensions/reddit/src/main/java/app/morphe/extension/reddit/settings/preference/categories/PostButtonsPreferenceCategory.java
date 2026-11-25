@@ -60,6 +60,14 @@ public class PostButtonsPreferenceCategory extends ConditionalPreferenceCategory
                     context,
                     Settings.HIDE_POST_VOTE_BUTTONS
             ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_POST_SHARE_COUNT
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_POST_VOTE_COUNT
+            ));
         }
 
         Utils.setPreferenceTitlesToMultiLine(this);

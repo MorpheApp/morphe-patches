@@ -31,6 +31,7 @@ import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.downloads.EXTENSION_FORMAT_STREAM_INTERFACE
 import app.morphe.patches.shared.misc.downloads.EXTENSION_STREAMING_DATA_INTERFACE
 import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
+import app.morphe.patches.shared.misc.downloads.formatStreamInterfacePatch
 import app.morphe.patches.shared.misc.downloads.hookDownloadQualities
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
@@ -111,6 +112,7 @@ val downloadsPatch = patch(
 ) {
     dependsOn(
         downloadsResourcePatch,
+        formatStreamInterfacePatch,
         sharedExtensionPatch,
         settingsPatch,
         textComponentPatch,
@@ -271,7 +273,8 @@ val downloadsPatch = patch(
                         if-eqz p0, :keep_player_response
                         invoke-interface { p0 }, $playerResponseModelType->${playerResponseGetter.name}()$playerResponseType
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;)[B
+                        const/4 v1, 0x0
+                        invoke-static { v0, v1 }, $EXTENSION_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;Z)[B
                         move-result-object v0
                         if-eqz v0, :keep_player_response
 

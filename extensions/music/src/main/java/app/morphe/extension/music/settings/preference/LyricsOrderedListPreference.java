@@ -74,9 +74,9 @@ public final class LyricsOrderedListPreference extends Preference {
     private static final int GRIP_COLUMN = Dim.dp24;
 
     private static final List<String> SOURCE_PROVIDER_ORDER = Arrays.asList(
-            "Apple", "BiniLyrics", "LrcRed", "bLyrics", "Lyricify", "Unison",
+            "Apple", "LyricsPlus", "LrcRed", "bLyrics", "Lyricify", "Unison",
             "PetitLyrics", "AMLL", "QQ", "SimpMusic", "KuGou", "Musixmatch",
-            "YTMusic", "LRCLIB", "NetEase", "Luna", "LunaBeat",
+            "YTMusic", "LRCLIB", "NetEase", "Luna", "Kuwo", "LunaBeat",
             "Captions", "Spotify", "Deezer", "RMM", "Genius");
 
     /** Friendlier labels for display; ids not present here are shown verbatim. */
@@ -88,7 +88,7 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_LABELS.put("RMM", "RMM Revival");
         PROVIDER_LABELS.put("Luna", "Soda (Luna)");
         PROVIDER_LABELS.put("bLyrics", "BetterLyrics (bLyrics)");
-        PROVIDER_LABELS.put("BiniLyrics", "BiniLyrics (Binimum)");
+        PROVIDER_LABELS.put("LyricsPlus", "LyricsPlus");
         PROVIDER_LABELS.put("Musixmatch", "Musixmatch");
         PROVIDER_LABELS.put("Spotify", "Spotify *");
         PROVIDER_LABELS.put("Deezer", "Deezer *");
@@ -103,10 +103,11 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_URLS.put("QQ", "https://y.qq.com/");
         PROVIDER_URLS.put("NetEase", "https://music.163.com/");
         PROVIDER_URLS.put("KuGou", "https://www.kugou.com/");
+        PROVIDER_URLS.put("Kuwo", "https://www.kuwo.cn/");
         PROVIDER_URLS.put("Luna", "https://www.qishui.com/");
         PROVIDER_URLS.put("PetitLyrics", "https://petitlyrics.com/");
         PROVIDER_URLS.put("bLyrics", "https://betterlyrics.org/");
-        PROVIDER_URLS.put("BiniLyrics", "https://lyrics.binimum.org/");
+        PROVIDER_URLS.put("LyricsPlus", "https://lyricsplus.prjktla.my.id/");
         PROVIDER_URLS.put("Unison", "https://unison.boidu.dev/");
         PROVIDER_URLS.put("SimpMusic", "https://lyrics.simpmusic.org/");
         PROVIDER_URLS.put("AMLL", "https://amlldb.bikonoo.com/");
@@ -510,37 +511,76 @@ public final class LyricsOrderedListPreference extends Preference {
         kuromoji.setOnCheckedChangeListener((b, c) -> updateJaVisibility.run());
         japanese.setOnCheckedChangeListener((b, c) -> updateJaVisibility.run());
 
+        final CheckBox zhParent = new CheckBox(context);
+        zhParent.setText(str("morphe_music_lyrics_local_romanization_dict_zh_parent"));
+        zhParent.setChecked(chosen[LyricsLocalRomanizationDownloads.UNIDICT]
+                || chosen[LyricsLocalRomanizationDownloads.PINYIN]
+                || chosen[LyricsLocalRomanizationDownloads.JIEBA]);
+        styleCheckBox(zhParent, fg);
+
+        final LinearLayout zhOptionsBox = new LinearLayout(context);
+        zhOptionsBox.setOrientation(LinearLayout.VERTICAL);
+        zhOptionsBox.setPadding(Dim.dp24, 0, 0, Dim.dp4);
+
         final CheckBox unidict = new CheckBox(context);
         unidict.setText(str("morphe_music_lyrics_local_romanization_dict_unidict"));
         unidict.setChecked(chosen[LyricsLocalRomanizationDownloads.UNIDICT]);
         styleCheckBox(unidict, fg);
+        zhOptionsBox.addView(unidict);
 
         final CheckBox chinese = new CheckBox(context);
         chinese.setText(str("morphe_music_lyrics_local_romanization_dict_chinese"));
         chinese.setChecked(chosen[LyricsLocalRomanizationDownloads.PINYIN]);
         styleCheckBox(chinese, fg);
+        zhOptionsBox.addView(chinese);
+
+        final CheckBox jieba = new CheckBox(context);
+        jieba.setText(str("morphe_music_lyrics_local_romanization_dict_jieba"));
+        jieba.setChecked(chosen[LyricsLocalRomanizationDownloads.JIEBA]);
+        styleCheckBox(jieba, fg);
+        zhOptionsBox.addView(jieba);
+
+        final Runnable updateZhVisibility = () ->
+                zhOptionsBox.setVisibility(zhParent.isChecked() ? View.VISIBLE : View.GONE);
+        updateZhVisibility.run();
+        zhParent.setOnCheckedChangeListener((b, checked) -> {
+            if (checked && !unidict.isChecked() && !chinese.isChecked() && !jieba.isChecked()) {
+                unidict.setChecked(true);
+            }
+            updateZhVisibility.run();
+        });
+        // The word table reads the rest of a line from the character tables, and jieba supplies
+        // boundaries only, so each one needs those before it.
+        unidict.setOnCheckedChangeListener((button, checked) -> {
+            if (!checked) {
+                chinese.setChecked(false);
+            }
+        });
+        chinese.setOnCheckedChangeListener((button, checked) -> {
+            if (checked) {
+                unidict.setChecked(true);
+            } else {
+                jieba.setChecked(false);
+            }
+        });
+        jieba.setOnCheckedChangeListener((button, checked) -> {
+            if (checked) {
+                chinese.setChecked(true);
+            }
+        });
 
         final CheckBox cldr = new CheckBox(context);
         cldr.setText(str("morphe_music_lyrics_local_romanization_dict_cldr"));
         cldr.setChecked(chosen[LyricsLocalRomanizationDownloads.CLDR]);
         styleCheckBox(cldr, fg);
 
-        // A Chinese word table reads the rest of a line from the character tables, so choosing
-        // one keeps the character provider on.
-        final CompoundButton.OnCheckedChangeListener keepUniDict = (button, checked) -> {
-            if (checked) {
-                unidict.setChecked(true);
-            }
-        };
-        chinese.setOnCheckedChangeListener(keepUniDict);
-
         final LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
         content.addView(hint);
         content.addView(jaParent);
         content.addView(jaOptionsBox);
-        content.addView(unidict);
-        content.addView(chinese);
+        content.addView(zhParent);
+        content.addView(zhOptionsBox);
         content.addView(cldr);
 
         // Attached here rather than on the dialog so a close in any way detaches it. A watched
@@ -568,7 +608,7 @@ public final class LyricsOrderedListPreference extends Preference {
         scrollView.addView(content, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f);
         scrollParams.bottomMargin = Dim.dp12;
         mainLayout.addView(scrollView, mainLayout.getChildCount() - 1, scrollParams);
 
@@ -589,9 +629,10 @@ public final class LyricsOrderedListPreference extends Preference {
                 Settings.LYRICS_JAPANESE_DICT_ENGINE.save("kuromoji");
             }
             // Saving with nothing ticked is a choice of its own: the rules alone.
+            final boolean zhOn = zhParent.isChecked();
             LyricsLocalRomanizationDownloads.saveChoice(
-                    saveKuromoji, saveSudachi, unidict.isChecked(),
-                    chinese.isChecked(), cldr.isChecked());
+                    saveKuromoji, saveSudachi, zhOn && unidict.isChecked(),
+                    zhOn && chinese.isChecked(), cldr.isChecked(), zhOn && jieba.isChecked());
             accepted[0] = true;
             if (switchV == null) {
                 // Opened from the name, so only a row that is already on fetches what is missing.

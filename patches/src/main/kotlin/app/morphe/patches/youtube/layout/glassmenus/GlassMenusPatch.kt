@@ -7,7 +7,9 @@
 
 package app.morphe.patches.youtube.layout.glassmenus
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.layout.glassmenus.GLASS_MENUS_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.glassmenus.glassMenusPatch
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
@@ -46,6 +48,27 @@ val glassMenusPatch = glassMenusPatch(
                     "invoke-static { v$register }, $GLASS_MENUS_EXTENSION_CLASS->onAddToPlaylistView(Landroid/view/View;)V",
                 )
             }
+        }
+
+        // The touch feedback drawable sets the callback of the background it wraps before it has a callback
+        // itself, so the background has none, and the view that draws it cannot be found from it.
+        TouchFeedbackDrawableConstructorFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0, p1 }, $GLASS_MENUS_EXTENSION_CLASS->" +
+                        "onWrappedDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V"
+            )
+        }
+
+        // The "Please wait" progress dialog before the download quality menu, which is not a dialog fragment.
+        DownloadProgressDialogFingerprint.matchAll().forEach { match ->
+            val showCall = match.instructionMatches.last()
+            val dialogRegister = showCall.instruction.registersUsed[0]
+            match.method.addInstruction(
+                showCall.index + 1,
+                "invoke-static { v$dialogRegister }, $GLASS_MENUS_EXTENSION_CLASS->" +
+                        "onProgressDialogShown(Landroid/app/Dialog;)V",
+            )
         }
     },
     useModernLithoColorHook = { is_21_30_or_greater },

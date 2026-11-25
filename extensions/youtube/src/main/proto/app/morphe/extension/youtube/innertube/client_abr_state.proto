@@ -16,3 +16,17 @@ message ClientAbrState {
     optional int32 videoQualitySetting = 26;
     optional bool powerSaveMode = 30;
 }
+
+// Formats the device can play, sent with the SABR requests so the server sends only formats the device can play.
+// Only the video formats.
+message MediaCapabilities {
+    repeated VideoFormatCapability videoFormatCapabilities = 1;
+}
+
+// Largest size of the video formats of a video codec the video decoder of the device supports.
+message VideoFormatCapability {
+    // Video codec, such as 2 for H.264 (AVC), 4 for VP9 and 8 for AV1.
+    optional int32 codec = 1;
+    optional int32 maxHeight = 3;
+    optional int32 maxWidth = 4;
+}

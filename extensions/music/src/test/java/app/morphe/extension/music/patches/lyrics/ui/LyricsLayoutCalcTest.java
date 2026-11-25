@@ -93,8 +93,9 @@ public class LyricsLayoutCalcTest {
     }
 
     @Test
-    public void duetOppositeSideDisabledKeepsDuetLineLeft() {
-        app.morphe.extension.music.settings.Settings.LYRICS_DUET_OPPOSITE_SIDE.save(false);
+    public void duetSameSideKeepsDuetLineLeft() {
+        app.morphe.extension.music.settings.Settings.LYRICS_ALIGNMENT_MODE.save(
+                app.morphe.extension.music.settings.Settings.ALIGNMENT_SAME_SIDE);
         try {
             List<LyricsLine> lines = List.of(
                     line(0, 5000, LTR, false, false),
@@ -103,13 +104,15 @@ public class LyricsLayoutCalcTest {
             assertFalse(right[0]);
             assertFalse(right[1]);
         } finally {
-            app.morphe.extension.music.settings.Settings.LYRICS_DUET_OPPOSITE_SIDE.save(true);
+            app.morphe.extension.music.settings.Settings.LYRICS_ALIGNMENT_MODE.save(
+                    app.morphe.extension.music.settings.Settings.ALIGNMENT_DEFAULT);
         }
     }
 
     @Test
-    public void forceCenterOverridesDuetRightAlignment() {
-        app.morphe.extension.music.settings.Settings.LYRICS_FORCE_CENTER.save(true);
+    public void centerAlignmentOverridesDuetRightAlignment() {
+        app.morphe.extension.music.settings.Settings.LYRICS_ALIGNMENT_MODE.save(
+                app.morphe.extension.music.settings.Settings.ALIGNMENT_CENTER);
         try {
             List<LyricsLine> lines = List.of(
                     line(0, 5000, LTR, false, false),
@@ -118,7 +121,25 @@ public class LyricsLayoutCalcTest {
             assertFalse(right[0]);
             assertFalse(right[1]);
         } finally {
-            app.morphe.extension.music.settings.Settings.LYRICS_FORCE_CENTER.save(false);
+            app.morphe.extension.music.settings.Settings.LYRICS_ALIGNMENT_MODE.save(
+                    app.morphe.extension.music.settings.Settings.ALIGNMENT_DEFAULT);
+        }
+    }
+
+    @Test
+    public void sameSideAlignmentAlsoMovesCenteredAgentLine() {
+        app.morphe.extension.music.settings.Settings.LYRICS_ALIGNMENT_MODE.save(
+                app.morphe.extension.music.settings.Settings.ALIGNMENT_SAME_SIDE);
+        try {
+            List<LyricsLine> lines = List.of(
+                    line(0, 5000, LTR, false, false),
+                    new LyricsLine(6000, 5000, LTR, List.of(), "v1000", true, false, null));
+            boolean[] right = LyricsLayoutCalc.rightAlignedLines(lines, noSec(2));
+            assertFalse(right[0]);
+            assertFalse(right[1]);
+        } finally {
+            app.morphe.extension.music.settings.Settings.LYRICS_ALIGNMENT_MODE.save(
+                    app.morphe.extension.music.settings.Settings.ALIGNMENT_DEFAULT);
         }
     }
 

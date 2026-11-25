@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -79,5 +80,11 @@ public class HangulRomanizerTest {
     public void romanizeWithKonglish() {
         // Konglish is phonetically romanized, not recognized as English
         assertEquals("lomanlaijeu", HangulRomanizer.romanize("로만라이즈"));
+    }
+
+    @Test
+    public void wordGroupsSplitOnSpaces() {
+        assertArrayEquals(new int[]{0, 0, 0, 0, 0, -1, 1, 1},
+                HangulRomanizer.wordGroups("안녕하세요 세계"));
     }
 }

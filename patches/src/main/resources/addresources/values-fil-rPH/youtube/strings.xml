@@ -243,6 +243,7 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_hide_keyword_content_screen_title">Filter ng keyword</string>
   <string name="morphe_hide_keyword_content_screen_summary">Pumili ng mga partikular na salita o parirala upang itago ang mga video sa feed at paghahanap</string>
   <string name="morphe_hide_keyword_content_comments_title">Itago ang mga komento ayon sa mga keyword</string>
+  <string name="morphe_hide_keyword_content_posts_title">Itago ang mga post sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_home_title">Itago ang mga video ng bahay sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_search_title">Itago ang mga resulta ng paghahanap sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Itago ang mga video sa Mga Subscription sa pamamagitan ng mga keyword</string>
@@ -250,7 +251,7 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_hide_keyword_content_phrases_summary">"Maglagay ng mga keyword at parirala na itatago, ihiwalay gamit ang mga bagong linya
 
 Ang mga keyword ay maaaring anumang text na ipinapakita sa mga titulo ng video. Itinatago ng keyword na @UserName ang lahat ng content mula sa mga partikular na creator"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Ang Home / Subscriptions / Search / Comments ay fini-filter upang itago ang nilalaman na tumutugma sa mga parirala ng keyword
+  <string name="morphe_hide_keyword_content_about_summary">"Bahay / Mga Subscription / Paghahanap / Mga Komento / Ang mga post ay fini-filter upang itago ang nilalaman na tumutugma sa mga parirala ng keyword
 
 Mga Limitasyon:
 • Ang ilang Shorts ay hindi maitatago sa pamamagitan ng pangalan ng channel
@@ -266,6 +267,39 @@ Mga Limitasyon:
 • Paghahanap: %3$s
 • Mga Comment: %4$s
 • Kabuuan: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Filter sa bilang ng view</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Itago ang mga video sa mga feed at paghahanap na may masyadong kaunti o masyadong maraming view</string>
+  <string name="morphe_hide_videos_by_views_home_title">Itago ang mga video sa Home sa pamamagitan ng mga view</string>
+  <string name="morphe_hide_videos_by_views_search_title">Itago ang mga resulta ng paghahanap sa pamamagitan ng mga view</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Itago ang mga video sa Mga Subscription sa pamamagitan ng mga view</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Minimum na mga view</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Itatago ang mga video na may mas kaunting view. 0 = walang minimum</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Maximum na mga view</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Itatago ang mga video na may mas maraming view. 0 = walang maximum</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Ang Home / Subscriptions / Search ay naka-filter para itago ang mga video at Shorts base sa bilang ng kanilang view
+
+Mga Limitasyon:
+• Ni-round ng YouTube ang bilang ng view, kaya ang 1.2K views ay binibilang bilang 1200 views
+• Hindi itatago ang mga live stream
+• Ang isang nakatagong Short ay maaaring mag-iwan ng bakanteng espasyo sa isang Shorts shelf"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Itatago ng view count filter ang lahat ng video</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Filter ng tagal</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Itago ang mga video sa mga feed at paghahanap na masyadong maikli o masyadong mahaba</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Itago ang mga video sa Home ayon sa tagal</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Itago ang mga resulta ng paghahanap ayon sa tagal</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Itago ang mga video sa Mga Subscription ayon sa tagal</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Minimum na tagal (minuto)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Ang mga video na mas maikli rito ay nakatago. 0 = walang minimum</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Maximum na tagal (minuto)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Ang mga video na mas mahaba rito ay nakatago. 0 = walang maximum</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Ang Home / Mga Subscription / Paghahanap ay naka-filter para itago ang mga video ayon sa kanilang tagal
+
+Mga Limitasyon:
+• Ang mga Live stream, Shorts, playlist at mix ay hindi nakatago
+• Ang mga video na hindi alam ang tagal ay hindi nakatago"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Itatago ng duration filter ang lahat ng mga video</string>
   <string name="morphe_hide_stats_category_title">Mga Estadistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Mga video na nakatago, nakaraang 24 oras</string>
   <string name="morphe_hide_stats_hidden_all_title">Mga video na nakatago, lahat ng oras</string>
@@ -309,8 +343,6 @@ Mga Limitasyon:
   <string name="morphe_hide_sync_button_title">Itago ang button na \'I-sync sa video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Itago ang gradient ng tap at hold</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Itinatago ang gradient ng mga kontrol ng player kapag iginagalaw ang daliri habang nakahawak upang bumilis</string>
-  <string name="morphe_hide_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
-  <string name="morphe_hide_timed_reactions_summary">Itinatago ang feature na nagbibigay-daan sa mga user na mag-react gamit ang mga emoji sa seksyon ng mga komento at live chat</string>
   <string name="morphe_hide_help_feedback_menu_summary">Itinatago ang menu na \'Help &amp; feedback\' kapag ginagamit ang button na may tatlong tuldok, tulad ng sa mga resulta ng paghahanap</string>
   <string name="morphe_hide_handle_title">Itago ang handle</string>
   <string name="morphe_hide_handle_summary">Itinatago ang iyong channel handle sa tab na \'Ikaw\'</string>
@@ -425,10 +457,12 @@ Mga Limitasyon:
   <string name="morphe_hide_comments_menu_button_summary">Itinatago ang pindutan ng menu na may tatlong tuldok para sa bawat komento</string>
   <string name="morphe_hide_comments_none_yet_title">Itago ang preview ng \'Wala pang mga komento\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang pasilip na komento sa ilalim ng video bago buksan ang seksyon ng mga komento</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Nakatago ang komento ni Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Paganahin ang minimal na button ng mga komento</string>
-  <string name="morphe_minimal_comments_button_summary">Itinatago ang mga dumudulas na card at ang tagapili ng pahina nito, na ipinapakita sa button ng mga komento</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Itago ang mga preview comment card</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Itinatago ang mga sliding card at page indicator na naka-display sa button ng mga komento</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Itinatago ang feature na nagpapahintulot sa mga user na mag-react gamit ang mga emoji sa comments section at live chat</string>
   <string name="morphe_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
   <string name="morphe_hide_comments_top_fans_button_title">Itago ang button na \'Top fans\'</string>
   <string name="morphe_hide_comments_topics_title">Itago ang \'Mga Paksa\'</string>
@@ -678,14 +712,14 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_ryd_feed_counts_position_entry_1">Katabi ng bilang ng panonood</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Gitna sa kanan</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Itaas sa kaliwa</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Maghanap ng mga komento</string>
-  <string name="morphe_search_comments_summary">I-tap ang search button sa mga comment upang ipakita lamang ang mga na-load na comment na naglalaman ng lahat ng mga hinahanap na salita. Maglagay ng mga salita sa loob ng panipi upang maghanap ng isang parirala</string>
-  <string name="morphe_search_comments_dialog_title">Maghanap ng mga komento</string>
-  <string name="morphe_search_comments_hint">Mga salitang hahanapin</string>
-  <string name="morphe_search_comments_clear">Alisin</string>
-  <string name="morphe_search_comments_applied">Baguhin ang pagkakasunod-sunod ng sort o buksan muli ang mga komento para hanapin ang mga ito</string>
-  <string name="morphe_search_comments_cleared">Nalinis na ang search. Baguhin ang pagkakasunod-sunod ng sort o buksan muli ang mga komento para ipakita ang lahat ng mga komento</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Maghanap sa mga komento</string>
+  <string name="morphe_comment_search_summary">I-tap ang button ng paghahanap sa mga comment para ipakita lamang ang mga naiload na comment na naglalaman ng lahat ng mga hinahanap na salita. Ilagay ang mga salita sa panipi para maghanap ng isang phrase</string>
+  <string name="morphe_comment_search_dialog_title">Maghanap sa mga comment</string>
+  <string name="morphe_comment_search_hint">Mga salitang hahanapin</string>
+  <string name="morphe_comment_search_clear">Alisin</string>
+  <string name="morphe_comment_search_applied">Baguhin ang pagkakasunod-sunod ng pag-sort o buksan muli ang mga comment para maghanap sa mga ito</string>
+  <string name="morphe_comment_search_cleared">Nalinis na ang paghahanap. Baguhin ang pagkakasunod-sunod ng pag-sort o buksan muli ang mga comment para ipakita ang lahat ng comment</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Patayin ang popup na \'Mag-sign in sa TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Huwag paganahin ang popup na \'Ikonekta ang iyong mga device\'</string>
@@ -1139,6 +1173,17 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Ayusin ang transcript</string>
   <string name="morphe_fix_transcript_summary">Nilulutas ang isang failure ng precondition check na maaaring pumigil sa pag-load ng transcript</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Kopyahin ang transcript</string>
+  <string name="morphe_copy_transcript_title">Kopyahin ang transcript</string>
+  <string name="morphe_copy_transcript_summary">Nagdaragdag ng button sa transcript panel na kumokopya ng transcript sa wika ng mga caption</string>
+  <string name="morphe_copy_transcript_timestamps_title">Isama ang mga timestamp</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Ang bawat linya ng kinopyang transcript ay nagsisimula sa oras nito</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Ipakita sa mga menu ng Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Nagdaragdag ng item na Kopyahin ang transcript sa mga menu ng Shorts</string>
+  <string name="morphe_copy_transcript_copied">Kinopya ang transcript sa clipboard</string>
+  <string name="morphe_copy_transcript_empty">Walang magagamit na transcript</string>
+  <string name="morphe_copy_transcript_error">Hindi makopya ang transcript</string>
   <string name="morphe_captions_in_pip_title">Ipakita ang mga caption sa picture-in-picture</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Laki ng caption</string>
@@ -1170,6 +1215,9 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_show_settings_button_title">Ipakita ang Settings button</string>
   <string name="morphe_show_settings_button_type_title">Aksyon ng button ng Mga Setting</string>
   <string name="morphe_show_settings_button_type_summary">Kapag naka-enable, ang pag-tap ay magbubukas ng mga setting ng Morphe at ang long press ay magbubukas ng mga setting ng YouTube, i-disable para pagpalitin</string>
+  <string name="morphe_you_button_account_switcher_title">Shortcut sa account switcher</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">I-long press ang button na \'Ikaw\' para buksan ang account switcher</string>
   <string name="morphe_navigation_buttons_order_title">Pagkakasunod-sunod ng mga button ng nabigasyon</string>
   <string name="morphe_navigation_buttons_order_summary">I-drag ang mga button upang baguhin ang pagkakasunod-sunod ng mga ito sa navigation bar</string>
   <string name="morphe_swap_create_with_notifications_button_title">Pagpalitin ang button na Create sa button na Notifications</string>
@@ -1390,6 +1438,17 @@ Automotive layout
 • Maaaring hindi available ang overlay na 'Higit pang mga video'
 • Ang mga Shorts ay bumubukas sa regular na player
 • Ipinapakita ang lumang video action bar na hindi collapsed"</string>
+  <string name="morphe_change_form_factor_car_display_title">Automotive layout sa mga display ng kotse</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Ginagamit ang automotive layout kapag ipinapakita ang YouTube sa display ng kotse, gaya ng sa pamamagitan ng Android Auto o DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Hindi ginagamit ang automotive layout sa mga display ng kotse</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Awtomatikong itago ang navigation bar sa mga car display</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Nakatago ang navigation bar sa car display pagkatapos itong hindi gamitin nang ilang sandali. Mag-swipe pataas mula sa ibabang gilid para ipakita ito</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Laging ipinapakita ang navigation bar sa mga car display</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Delay sa awtomatikong pagtatago</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Gaano katagal mananatili ang navigation bar pagkatapos itong ipakita o hawakan</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Gamitin sa anumang external display</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Ang bawat display maliban sa screen ng phone ay isang display ng kotse, kabilang ang TV o monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Ang mga display ng kotse ay nahahanap ng Android Auto, mga pangalan ng display at ang car UI mode. Sa Android 15 at mas bago, ang screen mirroring ng DriveDeck, Gearslip, graphene-auto o MyCar ay isa ring display ng kotse"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
@@ -1446,6 +1505,8 @@ Automotive layout
   <string name="morphe_playback_in_feeds_entry_always_on">Palaging naka-on</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi lamang</string>
   <string name="morphe_playback_in_feeds_entry_off">Naka-off</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Ipakita ang mga seek button sa mga feed</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Ipinapakita ang mga seek button sa mga video na nagpe-play sa mga feed, kahit na hindi ito ipinapakita ng YouTube</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Ibalik ang orihinal na mga pamagat</string>
   <string name="morphe_restore_original_titles_summary">Ipinapakita ang orihinal na mga pamagat ng video, mga paglalarawan ng video at mga paglalarawan ng channel sa halip na mga awtomatikong isinalin</string>
@@ -2051,4 +2112,106 @@ Opsyonal ang automatic recording. Humihinto ito sa incognito o kapag nagbago ang
   <string name="morphe_live_chat_translate_max_length_title">Maximum na haba ng mensahe</string>
   <string name="morphe_live_chat_translate_max_length_summary">Ang mga mas mahahabang mensahe ay ipinapakitang hindi isinalin</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Walang limitasyon</string>
+  <string name="morphe_ghost_play_screen_title">Ghost mode</string>
+  <string name="morphe_ghost_play_screen_summary">Manood ng mga video nang hindi naaapektuhan ang watch history o mga rekomendasyon</string>
+  <string name="morphe_ghost_play_cat_general_title">Pangkalahatan</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Mga Button</string>
+  <string name="morphe_ghost_play_cat_rules_title">Mga panuntunan sa Auto-ghost</string>
+  <string name="morphe_ghost_play_cat_history_title">Lokal na kasaysayan</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Advanced na privacy</string>
+  <string name="morphe_ghost_play_enabled_title">Paganahin ang Ghost mode</string>
+  <string name="morphe_ghost_play_enabled_summary">Nagbibigay-daan sa panonood ng mga napiling video, Shorts, paghahanap, channel, o buong session nang hindi naaapektuhan ang kasaysayan ng panonood o mga rekomendasyon</string>
+  <string name="morphe_ghost_play_mode_active_title">Aktibo ang Ghost mode</string>
+  <string name="morphe_ghost_play_mode_active_summary">Kapag NAKA-ON, bawat video na bubuksan mo nang normal mula sa mga feed, kaugnay na video, o paghahanap ay magpe-play sa Ghost mode nang hindi ginagamit ang three-dot menu</string>
+  <string name="morphe_ghost_play_persist_mode_title">Tandaan ang Ghost mode sa mga restart</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Pinapanatiling NAKA-ON ang Ghost mode kahit pagkatapos isara at muling buksan ang YouTube</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Ipakita ang Ghost mode toggle sa top bar</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Naglalagay ng compact Ghost mode toggle sa tabi ng mga icon sa top-bar (i-tap para magpalit, i-long press para sa quick controls)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Ipakita sa video menu</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Nagdaragdag ng \"Play in Ghost mode\" sa three-dot menu ng mga video</string>
+  <string name="morphe_ghost_play_player_button_title">Ipakita ang button ng Ghost mode</string>
+  <string name="morphe_ghost_play_player_button_summary">Nagpapakita ng toggle button para sa Ghost mode sa video player (i-long press para sa mabilis na mga control)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">I-anonymize ang mga playback request</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Inaalis ang mga account header mula sa ghost playback at event request para sa mas matibay na isolation. Ang mga feature na Age-restricted, members-only, at Premium ay hindi magagamit habang naka-enable ito</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Auto-ghost Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Awtomatikong pinapanood ang mga Shorts sa Ghost mode para hindi sila makaapekto sa iyong home feed</string>
+  <string name="morphe_ghost_play_auto_search_title">Auto-ghost ng mga video mula sa Search</string>
+  <string name="morphe_ghost_play_auto_search_summary">Awtomatikong pinapanood ang mga video na binuksan mula sa mga resulta ng search sa Ghost mode</string>
+  <string name="morphe_ghost_play_manage_channels_title">Auto-ghost ng mga channel</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Mag-search, magdagdag, mag-inspect, at mamahala ng mga channel na laging nagpe-play sa Ghost mode</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d na channel ang naka-configure — i-tap para mag-search, mag-inspect, o magtanggal</string>
+  <string name="morphe_ghost_play_local_history_title">Panatilihin ang lokal na Ghost history</string>
+  <string name="morphe_ghost_play_local_history_summary">Naaalala ang mga video sa Ghost mode at mga playback position sa device na ito lamang (hindi kailanman ipinapadala sa YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">Limitasyon ng Local Ghost history</string>
+  <string name="morphe_ghost_play_history_limit_summary">Maximum na mga video na itatabi sa device (awtomatikong tinatanggal ang mga pinakalumang entry)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d na video ang na-save (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Walang na-save na mga video</string>
+  <string name="morphe_ghost_play_history_limit_100">100 na video</string>
+  <string name="morphe_ghost_play_history_limit_500">500 na video</string>
+  <string name="morphe_ghost_play_history_limit_2000">2,000 na video</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Walang limitasyon</string>
+  <string name="morphe_ghost_play_view_history_title">Buksan ang lokal na Ghost history</string>
+  <string name="morphe_ghost_play_view_history_summary">Tingnan, maghanap, magpatuloy sa Ghost mode, o linisin ang iyong on-device history</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d na video ang naka-store sa device (%2$s) — i-tap para tingnan o ipagpatuloy</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Wala pang naire-record na video (naka-store lamang sa device na ito)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">I-play sa Ghost mode</string>
+  <string name="morphe_ghost_play_video_active_toast">Aktibo ang Ghost mode — protektado ang watch history at mga rekomendasyon</string>
+  <string name="morphe_ghost_play_video_off_toast">Naka-OFF ang Ghost mode para sa video na ito</string>
+  <string name="morphe_ghost_play_session_on_toast">Naka-ON ang Ghost mode — hindi makaaapekto ang mga video sa history o mga rekomendasyon</string>
+  <string name="morphe_ghost_play_session_off_toast">Naka-OFF ang Ghost mode — balik sa normal na playback</string>
+  <string name="morphe_ghost_play_timer_set_toast">Aktibo ang Ghost mode sa loob ng %d minuto</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Binura ang Timer — mananatiling NAKA-ON ang Ghost mode</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Maglagay ng tagal sa pagitan ng 1 at 720 minuto</string>
+  <string name="morphe_ghost_play_dialog_title">Ghost mode</string>
+  <string name="morphe_ghost_play_state_on">Naka-on</string>
+  <string name="morphe_ghost_play_state_off">Naka-off</string>
+  <string name="morphe_ghost_play_close">Isara</string>
+  <string name="morphe_ghost_play_open_settings">Lahat ng mga setting</string>
+  <string name="morphe_ghost_play_quick_power_hint">I-tap para i-toggle ang Ghost mode</string>
+  <string name="morphe_ghost_play_quick_timer_title">Timed Ghost mode</string>
+  <string name="morphe_ghost_play_quick_timer_sub">I-tap para pumili ng tagal</string>
+  <string name="morphe_ghost_play_quick_timer_running">Aktibo ang Timer · %d min na lang</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Awtomatikong babalik sa normal na mode kapag tapos na</string>
+  <string name="morphe_ghost_play_quick_timer_change">Baguhin ang oras</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">I-clear ang timer (panatilihing NAKABUKAS)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Custom na minuto (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">I-set</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost NAKABUKAS para sa channel na ito</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost NAKAPATAY para sa channel na ito</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d na channel ang na-configure</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Listahan (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">Idinagdag ang \"%s\" sa mga auto-ghost channel</string>
+  <string name="morphe_ghost_play_channel_removed_toast">Inalis ang \"%s\" mula sa mga auto-ghost channel</string>
+  <string name="morphe_ghost_play_history_title">Lokal na kasaysayan ng Ghost</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d na mga video (%s) · i-tap para ipagpatuloy sa Ghost mode, i-hold para alisin</string>
+  <string name="morphe_ghost_play_history_search_hint">I-filter ayon sa pamagat ng video o channel…</string>
+  <string name="morphe_ghost_play_history_no_match">Walang tumutugmang mga video sa lokal na kasaysayan ng Ghost</string>
+  <string name="morphe_ghost_play_history_empty">Wala pang lokal na kasaysayan ng Ghost</string>
+  <string name="morphe_ghost_play_history_clear_all">Alisin lahat</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Alisin ang lokal na kasaysayan ng Ghost?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Aalisin nito ang lahat ng nakasave na Ghost mode entry sa device at hindi na ito mababawi.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Nalinis na ang lokal na kasaysayan ng Ghost</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Inalis mula sa lokal na kasaysayan ng Ghost</string>
+  <string name="morphe_ghost_play_channels_manager_title">Mga auto-ghost channel</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Idinagdag (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Maghanap &amp; Magdagdag</string>
+  <string name="morphe_ghost_play_channels_filter_hint">I-filter ang mga idinagdag na channel ayon sa pangalan, @handle, o paksa…</string>
+  <string name="morphe_ghost_play_channels_empty">Wala pang idinagdag na mga channel. Lumipat sa \"Maghanap &amp; Magdagdag\" para maghanap ng mga channel ayon sa pangalan, @handle, o URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Walang idinagdag na channel ang tumutugma sa iyong filter</string>
+  <string name="morphe_ghost_play_channels_add_current">Naglalaro: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Idagdag</string>
+  <string name="morphe_ghost_play_channels_added_badge">Naidagdag</string>
+  <string name="morphe_ghost_play_channels_delete_button">Alisin</string>
+  <string name="morphe_ghost_play_channels_search_hint">Pangalan ng channel, @handle, o URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Hanapin</string>
+  <string name="morphe_ghost_play_channels_search_guide">Maglagay ng pangalan ng channel, @handle, o YouTube channel URL at i-tap ang Search</string>
+  <string name="morphe_ghost_play_channels_searching">Naghahanap ng mga YouTube channel…</string>
+  <string name="morphe_ghost_play_channels_search_error">Bigo ang paghahanap. Suriin ang iyong koneksyon at subukan muli.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Walang nahanap na mga channel para sa query na iyon</string>
+  <string name="morphe_ghost_play_channels_search_count">%d na channel ang nahanap — i-tap ang Add para i-enable ang auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Mga kamakailang video</string>
+  <string name="morphe_ghost_play_channels_loading_details">Naglo-load ng mga kamakailang video…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Walang nahanap na mga kamakailang video (i-tap para subukan muli)</string>
 </resources>

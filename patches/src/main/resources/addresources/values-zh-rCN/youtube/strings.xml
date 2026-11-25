@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">关键词过滤</string>
   <string name="morphe_hide_keyword_content_screen_summary">选择隐藏信息流和搜索中的视频的特定词语或短语</string>
   <string name="morphe_hide_keyword_content_comments_title">隐藏关键词评论</string>
+  <string name="morphe_hide_keyword_content_posts_title">过滤帖子关键词</string>
   <string name="morphe_hide_keyword_content_home_title">过滤首页视频</string>
   <string name="morphe_hide_keyword_content_search_title">过滤搜索结果</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">过滤订阅视频</string>
@@ -250,7 +251,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"输入要隐藏的关键词和短语，用换行符分隔
 
 关键词可以是视频标题中显示的任何文本。@UserName 关键词可隐藏特定创作者的所有内容"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"首页 / 订阅 / 搜索 / 评论将经过过滤，以隐藏与关键词短语匹配的内容
+  <string name="morphe_hide_keyword_content_about_summary">"首页 / 订阅 / 搜索 / 评论 / 帖子会过滤掉与关键词短语匹配的内容
 
 限制：
 • 部分 Shorts 无法通过频道名称隐藏
@@ -266,6 +267,39 @@ Second \"item\" text"</string>
 • 搜索：%3$s
 • 评论：%4$s
 • 总计：%5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">观看次数过滤器</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">在 Feed 和搜索中隐藏观看次数过多或过少的视频</string>
+  <string name="morphe_hide_videos_by_views_home_title">根据观看次数过滤首页视频</string>
+  <string name="morphe_hide_videos_by_views_search_title">根据观看次数过滤搜索结果</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">根据观看次数过滤订阅视频</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">最低播放量</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">播放量较低的视频将被隐藏。0 = 无最低限制</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">最高播放量</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">播放量较高的视频将被隐藏。0 = 无最高限制</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"首页 / 订阅 / 搜索将根据播放量过滤并隐藏视频和 Shorts
+
+限制：
+• YouTube 会对播放量进行四舍五入，因此 1.2K 次播放被计为 1200 次播放
+• 直播流不会被隐藏
+• 被隐藏的 Short 可能会在 Shorts 栏中留下空白空间"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">播放量过滤器将隐藏所有视频</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">时长过滤器</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">在馈送和搜索中隐藏过短或过长的视频</string>
+  <string name="morphe_hide_videos_by_duration_home_title">按时长过滤首页视频</string>
+  <string name="morphe_hide_videos_by_duration_search_title">按时长过滤搜索结果</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">根据时长隐藏订阅视频</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">最短时长（分钟）</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">时长短于此值的视频将被隐藏。0 = 无最短限制</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">最长时长（分钟）</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">时长长于此值的视频将被隐藏。0 = 无最长限制</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"首页 / 订阅 / 搜索将通过过滤时长来隐藏视频
+
+限制：
+• 直播、Shorts、播放列表和 mixes 不会被隐藏
+• 时长未知的视频不会被隐藏"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">时长过滤器将隐藏所有视频</string>
   <string name="morphe_hide_stats_category_title">统计</string>
   <string name="morphe_hide_stats_hidden_24h_title">过去 24 小时内隐藏的视频</string>
   <string name="morphe_hide_stats_hidden_all_title">所有时间隐藏的视频</string>
@@ -309,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">隐藏“同步到视频”按钮</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">隐藏点按并按住渐变</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">隐藏按住以加速时滑动手指所显示的播放器控件渐变</string>
-  <string name="morphe_hide_timed_reactions_title">隐藏限时反应</string>
-  <string name="morphe_hide_timed_reactions_summary">隐藏评论区和直播聊天中用表情符号互动的功能</string>
   <string name="morphe_hide_help_feedback_menu_summary">使用三点按钮时，例如在搜索结果中，隐藏“帮助和反馈”菜单</string>
   <string name="morphe_hide_handle_title">隐藏标识名</string>
   <string name="morphe_hide_handle_summary">在“我”标签页中隐藏你的频道标识名</string>
@@ -425,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">隐藏每条评论的三点菜单按钮</string>
   <string name="morphe_hide_comments_none_yet_title">隐藏“暂无评论”预览</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
-  <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
+  <string name="morphe_hide_comments_preview_comment_summary">在打开评论区之前，隐藏视频下方的评论预览</string>
   <string name="morphe_hide_comments_preview_comment_hidden">评论已被 Morphe 隐藏……</string>
-  <string name="morphe_minimal_comments_button_title">启用极简评论按钮</string>
-  <string name="morphe_minimal_comments_button_summary">隐藏评论按钮上显示的滑动卡片及其页面选择器</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">隐藏预览评论卡片</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">隐藏显示在评论按钮上的滑动卡片和页面指示器</string>
+  <string name="morphe_hide_comments_timed_reactions_title">隐藏限时反应</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">隐藏评论区和直播聊天中用表情符号互动的功能</string>
   <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
   <string name="morphe_hide_comments_top_fans_button_title">隐藏“Top fans”按钮</string>
   <string name="morphe_hide_comments_topics_title">隐藏“话题”</string>
@@ -678,14 +712,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">观看次数旁边</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">右侧中间</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">左上角</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">搜索评论</string>
-  <string name="morphe_search_comments_summary">点击评论区的搜索按钮，仅显示包含所有搜索词的已加载评论。将词组放入引号中以搜索短语</string>
-  <string name="morphe_search_comments_dialog_title">搜索评论</string>
-  <string name="morphe_search_comments_hint">要搜索的词语</string>
-  <string name="morphe_search_comments_clear">清除</string>
-  <string name="morphe_search_comments_applied">更改排序顺序或重新打开评论以进行搜索</string>
-  <string name="morphe_search_comments_cleared">搜索已清除。更改排序顺序或重新打开评论以显示所有评论</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">搜索评论</string>
+  <string name="morphe_comment_search_summary">点击评论中的搜索按钮，仅显示包含所有搜索词的已加载评论。将词语放在引号中以搜索短语</string>
+  <string name="morphe_comment_search_dialog_title">搜索评论</string>
+  <string name="morphe_comment_search_hint">要搜索的词语</string>
+  <string name="morphe_comment_search_clear">清除</string>
+  <string name="morphe_comment_search_applied">更改排序顺序或重新打开评论以进行搜索</string>
+  <string name="morphe_comment_search_cleared">搜索已清除。更改排序顺序或重新打开评论以显示所有评论</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
   <string name="morphe_disable_connect_your_devices_popup_title">禁用“连接您的设备”弹出窗口</string>
@@ -1139,6 +1173,17 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">修复文本</string>
   <string name="morphe_fix_transcript_summary">解决可能导致文字记录无法加载的前置条件检查失败</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">复制文字记录</string>
+  <string name="morphe_copy_transcript_title">复制文字记录</string>
+  <string name="morphe_copy_transcript_summary">在文字记录面板中添加一个按钮，用于复制字幕语言的文字记录</string>
+  <string name="morphe_copy_transcript_timestamps_title">包含时间戳</string>
+  <string name="morphe_copy_transcript_timestamps_summary">复制的转录文本每行开头都有时间戳</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">在 Shorts 菜单中显示</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">在 Shorts 菜单中添加“复制转录文本”项</string>
+  <string name="morphe_copy_transcript_copied">转录文本已复制到剪贴板</string>
+  <string name="morphe_copy_transcript_empty">没有可用的转录文本</string>
+  <string name="morphe_copy_transcript_error">无法复制转录文本</string>
   <string name="morphe_captions_in_pip_title">在画中画模式下显示字幕</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">字幕大小</string>
@@ -1170,6 +1215,9 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_title">显示设置按钮</string>
   <string name="morphe_show_settings_button_type_title">设置按钮操作</string>
   <string name="morphe_show_settings_button_type_summary">启用时，点击打开 Morphe 设置，长按打开 YouTube 设置，禁用以交换两者</string>
+  <string name="morphe_you_button_account_switcher_title">账号切换器快捷方式</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">长按“您”按钮以打开账号切换器</string>
   <string name="morphe_navigation_buttons_order_title">导航栏按钮顺序</string>
   <string name="morphe_navigation_buttons_order_summary">拖动按钮以更改它们在导航栏中的顺序</string>
   <string name="morphe_swap_create_with_notifications_button_title">交换“创作”按钮与“通知”按钮</string>
@@ -1390,6 +1438,17 @@ Second \"item\" text"</string>
 • 可能无法使用“更多视频”叠加层
 • Shorts 在常规播放器中打开
 • 显示未折叠的旧视频操作栏"</string>
+  <string name="morphe_change_form_factor_car_display_title">车载显示屏上的车载布局</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">当 YouTube 在车载显示屏上显示时，例如通过 Android Auto 或 DriveDeck，将使用车载布局</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">车载显示屏上不使用车载布局</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">在车载显示屏上自动隐藏导航栏</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">在车载显示屏上，导航栏在一段时间未被使用后会自动隐藏。从底部边缘向上滑动即可显示</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">在车载显示屏上始终显示导航栏</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">自动隐藏延迟</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">导航栏显示或被触摸后保留的时间</string>
+  <string name="morphe_change_form_factor_car_display_any_title">在任何外部显示屏上使用</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">除手机屏幕外的所有显示屏都被视为车载显示屏，包括电视或显示器</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Android Auto、显示名称和车载 UI 模式可识别车载显示屏。在 Android 15 及更高版本中，通过 DriveDeck、Gearslip、graphene-auto 或 MyCar 进行的屏幕镜像也被视为车载显示屏"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢复旧版字幕行为</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
@@ -1446,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">始终开启</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">仅限 Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">关闭</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">在 Feed 中显示快进/快退按钮</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">在 Feed 中播放的视频上显示快进/快退按钮，即使 YouTube 未显示它们时也显示</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">恢复原标题</string>
   <string name="morphe_restore_original_titles_summary">显示原始视频标题、视频描述和频道描述，而非自动翻译的内容</string>
@@ -2051,4 +2112,106 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_max_length_title">最大消息长度</string>
   <string name="morphe_live_chat_translate_max_length_summary">较长的消息将不被翻译</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">无限制</string>
+  <string name="morphe_ghost_play_screen_title">幽灵模式</string>
+  <string name="morphe_ghost_play_screen_summary">观看视频且不影响观看记录或推荐</string>
+  <string name="morphe_ghost_play_cat_general_title">常规</string>
+  <string name="morphe_ghost_play_cat_buttons_title">按钮</string>
+  <string name="morphe_ghost_play_cat_rules_title">自动幽灵模式规则</string>
+  <string name="morphe_ghost_play_cat_history_title">本地历史记录</string>
+  <string name="morphe_ghost_play_cat_advanced_title">高级隐私</string>
+  <string name="morphe_ghost_play_enabled_title">启用幽灵模式</string>
+  <string name="morphe_ghost_play_enabled_summary">允许观看选定的视频、Shorts、搜索、频道或整个会话，而不会影响观看记录或推荐</string>
+  <string name="morphe_ghost_play_mode_active_title">幽灵模式已激活</string>
+  <string name="morphe_ghost_play_mode_active_summary">开启后，您从 Feed、相关视频或搜索中正常打开的每个视频都将以幽灵模式播放，无需使用三点菜单</string>
+  <string name="morphe_ghost_play_persist_mode_title">重启后记住幽灵模式</string>
+  <string name="morphe_ghost_play_persist_mode_summary">即使在关闭并重新打开 YouTube 后，仍保持幽灵模式开启</string>
+  <string name="morphe_ghost_play_toolbar_button_title">在顶栏显示幽灵模式开关</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">在顶栏图标旁放置一个紧凑的幽灵模式开关（点击以切换，长按以进行快速控制）</string>
+  <string name="morphe_ghost_play_flyout_button_title">在视频菜单中显示</string>
+  <string name="morphe_ghost_play_flyout_button_summary">在视频的三点菜单中添加\"以幽灵模式播放\"</string>
+  <string name="morphe_ghost_play_player_button_title">显示幽灵模式按钮</string>
+  <string name="morphe_ghost_play_player_button_summary">在视频播放器中显示幽灵模式开关按钮（长按以进行快速控制）</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">匿名化播放请求</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">从幽灵播放和事件请求中移除账户标头，以实现更强的隔离。启用此功能时，年龄限制、仅限会员和 Premium 功能将不可用</string>
+  <string name="morphe_ghost_play_auto_shorts_title">自动幽灵播放 Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">自动在幽灵模式下观看 Shorts，以免它们影响您的首页 feed</string>
+  <string name="morphe_ghost_play_auto_search_title">自动幽灵播放搜索结果视频</string>
+  <string name="morphe_ghost_play_auto_search_summary">自动以幽灵模式播放从搜索结果打开的视频</string>
+  <string name="morphe_ghost_play_manage_channels_title">自动幽灵模式频道</string>
+  <string name="morphe_ghost_play_manage_channels_summary">搜索、添加、检查并管理始终以幽灵模式播放的频道</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">已配置 %d 个频道 — 点击进行搜索、检查或删除</string>
+  <string name="morphe_ghost_play_local_history_title">保留本地幽灵历史记录</string>
+  <string name="morphe_ghost_play_local_history_summary">仅在本设备上记录幽灵模式的视频和播放位置（绝不会发送至 YouTube）</string>
+  <string name="morphe_ghost_play_history_limit_title">本地幽灵历史记录上限</string>
+  <string name="morphe_ghost_play_history_limit_summary">设备上保存的最大视频数（最旧的条目将自动删除）</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · 已保存 %2$d 个视频 (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · 没有保存的视频</string>
+  <string name="morphe_ghost_play_history_limit_100">100 个视频</string>
+  <string name="morphe_ghost_play_history_limit_500">500 个视频</string>
+  <string name="morphe_ghost_play_history_limit_2000">2,000 个视频</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">无限制</string>
+  <string name="morphe_ghost_play_view_history_title">打开本地 Ghost 历史记录</string>
+  <string name="morphe_ghost_play_view_history_summary">在 Ghost 模式下查看、搜索、恢复播放或清除您的设备历史记录</string>
+  <string name="morphe_ghost_play_view_history_summary_count">设备上存储了 %1$d 个视频 (%2$s) — 点击查看或恢复播放</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">尚未记录视频（仅存储在本设备上）</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">以幽灵模式播放</string>
+  <string name="morphe_ghost_play_video_active_toast">幽灵模式已激活 — 观看记录和推荐内容已受保护</string>
+  <string name="morphe_ghost_play_video_off_toast">此视频已关闭幽灵模式</string>
+  <string name="morphe_ghost_play_session_on_toast">幽灵模式已开启 — 视频将不会影响记录或推荐</string>
+  <string name="morphe_ghost_play_session_off_toast">幽灵模式已关闭 — 回到常规播放</string>
+  <string name="morphe_ghost_play_timer_set_toast">幽灵模式已激活 %d 分钟</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">定时器已清除 — 幽灵模式保持开启</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">请输入 1 到 720 分钟之间的时长</string>
+  <string name="morphe_ghost_play_dialog_title">幽灵模式</string>
+  <string name="morphe_ghost_play_state_on">开启</string>
+  <string name="morphe_ghost_play_state_off">关闭</string>
+  <string name="morphe_ghost_play_close">关闭</string>
+  <string name="morphe_ghost_play_open_settings">所有设置</string>
+  <string name="morphe_ghost_play_quick_power_hint">点击以切换幽灵模式</string>
+  <string name="morphe_ghost_play_quick_timer_title">定时幽灵模式</string>
+  <string name="morphe_ghost_play_quick_timer_sub">点击选择时长</string>
+  <string name="morphe_ghost_play_quick_timer_running">定时器运行中 · 剩余 %d 分钟</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">结束后将自动返回普通模式</string>
+  <string name="morphe_ghost_play_quick_timer_change">更改时间</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">清除定时器（保持开启）</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%d 分钟</string>
+  <string name="morphe_ghost_play_timer_custom_hint">自定义分钟数 (1–720)……</string>
+  <string name="morphe_ghost_play_timer_custom_set">设置</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">此频道已开启自动幽灵模式</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">此频道已关闭自动幽灵模式</string>
+  <string name="morphe_ghost_play_quick_channel_count">已配置 %d 个频道</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">列表 (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">已将 \"%s\" 添加到自动幽灵频道</string>
+  <string name="morphe_ghost_play_channel_removed_toast">已将 \"%s\" 从自动幽灵频道中移除</string>
+  <string name="morphe_ghost_play_history_title">本地幽灵历史记录</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d 个视频 (%s) · 点击以在幽灵模式下恢复，长按以删除</string>
+  <string name="morphe_ghost_play_history_search_hint">通过视频标题或频道进行筛选……</string>
+  <string name="morphe_ghost_play_history_no_match">本地 Ghost 历史记录中没有匹配的视频</string>
+  <string name="morphe_ghost_play_history_empty">暂无本地 Ghost 历史记录</string>
+  <string name="morphe_ghost_play_history_clear_all">全部清除</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">清除本地 Ghost 历史记录？</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">这将删除所有保存在设备上的 Ghost 模式条目，且无法撤销。</string>
+  <string name="morphe_ghost_play_history_cleared_toast">本地 Ghost 历史记录已清除</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">已从本地 Ghost 历史记录中删除</string>
+  <string name="morphe_ghost_play_channels_manager_title">自动幽灵频道</string>
+  <string name="morphe_ghost_play_channels_tab_saved">已添加 (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">搜索 &amp; 添加</string>
+  <string name="morphe_ghost_play_channels_filter_hint">通过名称、@句柄或主题筛选已添加的频道……</string>
+  <string name="morphe_ghost_play_channels_empty">尚未添加频道。切换到 \"搜索 &amp; 添加\" 以通过名称、@句柄或 URL 查找频道。</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">没有已添加的频道匹配您的筛选条件</string>
+  <string name="morphe_ghost_play_channels_add_current">正在播放：%s</string>
+  <string name="morphe_ghost_play_channels_add_button">添加</string>
+  <string name="morphe_ghost_play_channels_added_badge">已添加</string>
+  <string name="morphe_ghost_play_channels_delete_button">移除</string>
+  <string name="morphe_ghost_play_channels_search_hint">频道名称、@句柄或 URL……</string>
+  <string name="morphe_ghost_play_channels_search_button">搜索</string>
+  <string name="morphe_ghost_play_channels_search_guide">输入频道名称、@ handle 或 YouTube 频道 URL，然后点击搜索</string>
+  <string name="morphe_ghost_play_channels_searching">正在搜索 YouTube 频道……</string>
+  <string name="morphe_ghost_play_channels_search_error">搜索失败。请检查网络连接并重试。</string>
+  <string name="morphe_ghost_play_channels_search_no_results">未找到该查询条件的频道</string>
+  <string name="morphe_ghost_play_channels_search_count">找到 %d 个频道 — 点击“添加”以启用自动 ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">最近的视频</string>
+  <string name="morphe_ghost_play_channels_loading_details">正在加载最近的视频……</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">未找到最近的视频（点击重试）</string>
 </resources>

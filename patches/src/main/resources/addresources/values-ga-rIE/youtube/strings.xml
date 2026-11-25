@@ -243,6 +243,7 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_hide_keyword_content_screen_title">Scagaire eochairfhocal</string>
   <string name="morphe_hide_keyword_content_screen_summary">Roghnaigh focail nó frásaí sonracha chun físeáin a cheilt i bhfothaí agus i gcuardach</string>
   <string name="morphe_hide_keyword_content_comments_title">Folaigh tuairimí de réir eochairfhocail</string>
+  <string name="morphe_hide_keyword_content_posts_title">Folaigh postálacha de réir eochairfhocal</string>
   <string name="morphe_hide_keyword_content_home_title">Folaigh físeáin Baile de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_search_title">Folaigh torthaí cuardaigh de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Folaigh físeáin Síntiúis de réir eochairfhocail</string>
@@ -250,10 +251,10 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_hide_keyword_content_phrases_summary">"Cuir isteach eochairfhocail agus frásaí le cur i bhfolach, scartha le línte nua
 
 Is féidir le heochairfhocail a bheith ina dtéacs ar bith a thaispeántar i dteidil físeáin. Folaíonn an eochairfhocal @AinmÚsáideora an t-ábhar go léir ó chruthaitheoirí sonracha"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Baile / Síntiúis / Cuardaigh / Déantar tráchtanna a scagadh chun ábhar a mheaitseálann frásaí eochairfhocail a cheilt
+  <string name="morphe_hide_keyword_content_about_summary">"Baile / Síntiúis / Cuardaigh / Tuairimí / Postálacha: déantar iad a scagadh chun ábhar a mheaitseálann frásaí eochairfhocail a cheilt
 
 Teorainneacha:
-• Ní féidir roinnt Gearrscannán a cheilt de réir ainm an chainéil
+• Ní féidir roinnt Shorts a cheilt de réir ainm an chainéil
 • B’fhéidir nach mbeidh roinnt comhpháirteanna den Chomhéadan Úsáideora i bhfolach"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Meaitseáil focail iomlána</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
@@ -266,6 +267,39 @@ Teorainneacha:
 • Cuardach: %3$s
 • Tráchtanna: %4$s
 • Iomlán: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Scagaire líon na radharcanna</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Folaigh físeáin i bhfothaí agus i dtorthaí cuardaigh a bhfuil líon róbheag nó rómhór de radhairc acu</string>
+  <string name="morphe_hide_videos_by_views_home_title">Folaigh físeáin bhaile de réir líon na radharcanna</string>
+  <string name="morphe_hide_videos_by_views_search_title">Folaigh torthaí cuardaigh de réir líon na radharcanna</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Folaigh físeáin ó shíntiúis de réir líon na n-amharc</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Íoslíon radharcanna</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Tá físeáin a bhfuil níos lú radharcanna acu i bhfolach. 0 = gan íosmhéid</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Uasmhéid radharcanna</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Tá físeáin a bhfuil níos mó radharcanna acu i bhfolach. 0 = gan uasmhéid</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Déantar scagadh ar an mBaile, ar na Síntiúis agus ar an gCuardach chun físeáin agus Shorts a cheilt bunaithe ar líon na radharcanna atá acu
+
+Teorainneacha:
+• Déanann YouTube slánú ar líon na radharcanna; mar sin, áirítear 1.2K radharc mar 1200 radharc
+• Ní chuirtear sruthanna beo i bhfolach
+• D’fhéadfadh spás folamh a bheith fágtha i seilf na Shorts má chuirtear Short i bhfolach"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Folóidh an scagaire comhaireamh amhairc na físeáin go léir</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Scagaire fad</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Folaigh físeáin i bhfothaí agus i dtorthaí cuardaigh atá róghannach nó rófhada</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Folaigh físeáin bhaile de réir fada</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Folaigh torthaí cuardaigh de réir fada</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Folaigh físeáin ó shíntiúis de réir durations</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Íosmhéid durations (nóiméid)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Tá físeáin níos giorra ná seo i bhfolach. 0 = gan íosmhéid</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Uasmhéid durations (nóiméid)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Tá físeáin níos faide ná seo i bhfolach. 0 = gan uasmhéid</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Baile / Liostraí / Cuardaigh tá siad scagtha chun físeáin a chur i bhfolach bunaithe ar aDURATION
+
+Teorainneacha:
+• Ní chuirtear sruthanna beo, Shorts, liostaí seansúla agus meirgí i bhfolach
+• Ní chuirtear físeáin le duration anaithnidhe i bhfolach"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Cuirfidh scagaire duration na físeáin go léir i bhfolach</string>
   <string name="morphe_hide_stats_category_title">Staitisticí</string>
   <string name="morphe_hide_stats_hidden_24h_title">Físeáin i bhfolach, 24 uair an chloig caite</string>
   <string name="morphe_hide_stats_hidden_all_title">Físeáin i bhfolach, i gcónaí</string>
@@ -309,8 +343,6 @@ Teorainneacha:
   <string name="morphe_hide_sync_button_title">Folaigh an cnaipe \'Sioncrónaigh le físeán\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Folaigh grádán tapáil agus coinnigh</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Folaíonn sé grádán rialtáin an imreora nuair a shleamhnaíonn tú do mhéar agus tú ag coinneáil chun luas a chur leis</string>
-  <string name="morphe_hide_timed_reactions_title">Folaigh imoibrithe uainithe</string>
-  <string name="morphe_hide_timed_reactions_summary">Folaíonn sé an ghné a ligeann d’úsáideoirí imoibriú le emojis sa chuid tuairimí agus sa chomhrá beo</string>
   <string name="morphe_hide_help_feedback_menu_summary">Folaíonn sé an roghchlár \'Cabhair &amp; aiseolas\' nuair a úsáidtear an cnaipe leis na trí phonc, mar shampla ar na torthaí cuardaigh.</string>
   <string name="morphe_hide_handle_title">Folaigh an láimhseáil</string>
   <string name="morphe_hide_handle_summary">Folaíonn sé do láimhseáil cainéil sa chluaisín \'Tusa\'</string>
@@ -425,10 +457,12 @@ Teorainneacha:
   <string name="morphe_hide_comments_menu_button_summary">Folaíonn sé cnaipe roghchláir trí phonc gach tráchtaireachta</string>
   <string name="morphe_hide_comments_none_yet_title">Folaigh an réamhamharc \'Gan tráchtanna go fóill\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Folaigh trácht réamhamharc</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Folaíonn sé réamhamharc na dtuairimí faoin bhfíseán sula n-osclaítear an chuid iomlán de na tuairimí</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Folaíonn sé réamhamharc na dtuairimí faoin bhfíseán sula n-osclaítear an rannóg tuairimí</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Trácht i bhfolach ag Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Cumasaigh an cnaipe tráchtanna íosta</string>
-  <string name="morphe_minimal_comments_button_summary">Folaíonn sé na cártaí sleamhnáin agus a roghnóir leathanaigh, a thaispeántar ar an gcnaipe tráchtaí</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Folaigh cártaí tráchtaireachta réamhamhairc</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Folaíonn sé na cártaí sleamhnaithe agus an táscaire leathanaigh a thaispeántar ar an gcnaipe tuairimí</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Folaigh imoibrithe uainithe</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Folaíonn sé an ghné a ligeann d’úsáideoirí freagairt le straoiseoga sa rannóg tuairimí agus sa chomhrá beo.</string>
   <string name="morphe_hide_comments_timestamp_button_title">Cnaipe Folaigh an Stampa Ama</string>
   <string name="morphe_hide_comments_top_fans_button_title">Folaigh cnaipe \'Top fans\'</string>
   <string name="morphe_hide_comments_topics_title">Folaigh \'Topaicí\'</string>
@@ -678,14 +712,14 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_ryd_feed_counts_position_entry_1">In aice leis an líon radharcanna</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Ar dheis sa lár</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Barr ar chlé</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Cuardaigh tuairimí</string>
-  <string name="morphe_search_comments_summary">Tapáil an cnaipe cuardaigh sna tráchtanna chun gan ach na tráchtanna atá luchtaithe agus ina bhfuil na focail chuardaigh ar fad a thaispeáint. Cuir focail idir comharthaí athfhriotail chun frása a chuardach</string>
-  <string name="morphe_search_comments_dialog_title">Cuardaigh tuairimí</string>
-  <string name="morphe_search_comments_hint">Focail le cuardach</string>
-  <string name="morphe_search_comments_clear">Glan</string>
-  <string name="morphe_search_comments_applied">Athraigh an t-ord sórtála nó oscail na tuairimí arís chun cuardach a dhéanamh iontu</string>
-  <string name="morphe_search_comments_cleared">Cuardaigh glanta. Athraigh an t-ord sórtála nó oscail na tráchtanna arís chun na tráchtanna go léir a thaispeáint.</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Cuardaigh tuairimí</string>
+  <string name="morphe_comment_search_summary">Tapáil an cnaipe cuardaigh sna tráchtanna chun gan ach na tráchtanna atá luchtaithe agus ina bhfuil na focail chuardaigh ar fad a thaispeáint. Cuir focail idir comharthaí athfhriotail chun frása a chuardach</string>
+  <string name="morphe_comment_search_dialog_title">Cuardaigh tuairimí</string>
+  <string name="morphe_comment_search_hint">Focail le cuardach</string>
+  <string name="morphe_comment_search_clear">Glan</string>
+  <string name="morphe_comment_search_applied">Athraigh an t-ord sórtála nó oscail na tuairimí arís chun cuardach a dhéanamh iontu</string>
+  <string name="morphe_comment_search_cleared">Cuardaigh glanta. Athraigh an t-ord sórtála nó oscail na tráchtanna arís chun na tráchtanna go léir a thaispeáint.</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Díchumasaigh aníos \'Sínigh isteach ar an Teilifís\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Díchumasaigh an preab ‘Ceangail do ghléasanna’</string>
@@ -1139,6 +1173,17 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Deisigh an tras-scríbhinn</string>
   <string name="morphe_fix_transcript_summary">Réitíonn sé teip seiceála réamhchoinníoll a d’fhéadfadh cosc ​​a chur ar an trascríbhinn ó lódáil</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Cóipeáil an tras-scríbhinn</string>
+  <string name="morphe_copy_transcript_title">Cóipeáil an tras-scríbhinn</string>
+  <string name="morphe_copy_transcript_summary">Cuireann sé cnaipe leis an phainéal tras-scríbhinn a chóipeálann an tras-scríbhinn i dteanga na focail-fhaisnéise</string>
+  <string name="morphe_copy_transcript_timestamps_title">Cuir stampaí ama isteach</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Tosaíonn gach líne de thrascríbhinn chóipeálta lena am féin</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Taispeáin i roghchláir Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Cuireann sé mír \"Cóipeáil trascríbhinn\" i roghchláir Shorts</string>
+  <string name="morphe_copy_transcript_copied">Cóipeáladh trascríbhinn chuig an ngearrthaisce</string>
+  <string name="morphe_copy_transcript_empty">Níl trascríbhinn ar fáil</string>
+  <string name="morphe_copy_transcript_error">Níorbh fhéidir an trainscripte a chóipeáil</string>
   <string name="morphe_captions_in_pip_title">Taispeáin fotheistí i bpirseal pictiúr-i-bpictiúr</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Méid an fho-theidil</string>
@@ -1170,6 +1215,9 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_show_settings_button_title">Taispeáin an cnaipe Socruithe</string>
   <string name="morphe_show_settings_button_type_title">Gníomh cnaipe socruithe</string>
   <string name="morphe_show_settings_button_type_summary">Nuair a bhíonn sé cumasaithe, osclaíonn sconka socruithe Morphe agus osclaíonn brú fada socruithe YouTube; díchumasaigh é chun na feidhmeanna a mhalartú.</string>
+  <string name="morphe_you_button_account_switcher_title">Aicearra chun aistriú idir cuntais</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Brúigh agus coinnigh an cnaipe \'Tú\' chun an roghnóir cuntas a oscailt</string>
   <string name="morphe_navigation_buttons_order_title">Ord na cnaipí nascleanúna</string>
   <string name="morphe_navigation_buttons_order_summary">Tarraing na cnaipí chun a n-ord a athrú sa bharr nascleanúna</string>
   <string name="morphe_swap_create_with_notifications_button_title">Malartaigh an cnaipe Cruthaigh leis an gcnaipe Fógraí</string>
@@ -1390,6 +1438,17 @@ Leagan amach feithicleach
 • Seans nach mbeidh an forleagan 'Tuilleadh físeáin' ar fáil
 • Oscailtear Shorts sa ghnáthimreoir
 • Taispeántar barra gníomhaíochta seanfhíseáin neamh-fhillte"</string>
+  <string name="morphe_change_form_factor_car_display_title">Leagadh gluaiseach ar taispeántais carr</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Úsáidtear leagadh gluaiseach nuair a thaispeántar YouTube ar taispeántais carr, mar shampla trí Android Auto nó DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Ní úsáidtear leagadh gluaiseach ar thaispeántais carr</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Curáil uathoibríoch an bhár navigation ar thaispeántais gléasanna carr</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Cuirtear an bár navigation i bhfolach ar thaispeántas gléasanna carr nuair nachnúsfar é ar feadh tamaill. Slongaigh anuas ón imeall íosa chun é a thaispeáint</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Taispeántar an bár navigation i gcónaí ar thaispeántais gléasanna carr</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Mallacht curail uathoibríoch</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Cé mhéad ama a fhanann an barra navigation tar éis a thaispeáint nó teagmháil a bheith air</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Úsáid ar aon taispeántais externach</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Is taispeántais carr iad gach taispeántais eile seachas scréen an fón, lena n-áirítear TV nó monitair</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Faightear taispeántais carr trí Android Auto, ainmneacha taispeántais agus mód UI an chairr. Ar Android 15 agus níos nýise, is taispeántais carr iad freis scréening na screamh trí DriveDeck, Gearslip, graphene-auto nó MyCar"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Athchóirigh iompar fotheidil d\'aois</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh an sean-shábháil chuig an seinmliosta</string>
@@ -1446,6 +1505,8 @@ Leagan amach feithicleach
   <string name="morphe_playback_in_feeds_entry_always_on">I gcónaí ar siúl</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi amháin</string>
   <string name="morphe_playback_in_feeds_entry_off">As</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Taispeáin cnaipí cuardaigh i bhfothaí</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Taispeánann sé na cnaipí nascleanúna ar na físeáin a sheinntear i bhfothaí, fiú nuair nach dtaispeánann YouTube iad.</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Athchóirigh na bunteidil</string>
   <string name="morphe_restore_original_titles_summary">Taispeánann sé na bunleaganacha de na teidil físeán, de na tuairiscí físeán agus de na tuairiscí cainéal in ionad na leaganacha aistrithe go huathoibríoch</string>
@@ -2051,4 +2112,106 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_live_chat_translate_max_length_title">Uasfhad teachtaireachta</string>
   <string name="morphe_live_chat_translate_max_length_summary">Taispeántar teachtaireachtaí níos faide gan aistriú</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Gan teorainn</string>
+  <string name="morphe_ghost_play_screen_title">Mód taibhsí</string>
+  <string name="morphe_ghost_play_screen_summary">Féach ar fhíseáin gan cur isteach ar stair féachana ná ar mholtaí</string>
+  <string name="morphe_ghost_play_cat_general_title">Ginearálta</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Cnaipí</string>
+  <string name="morphe_ghost_play_cat_rules_title">Rialacha uath-taibhse</string>
+  <string name="morphe_ghost_play_cat_history_title">Stair áitiúil</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Príobháideacht ardleibhéil</string>
+  <string name="morphe_ghost_play_enabled_title">Cumasaigh mód taibhse</string>
+  <string name="morphe_ghost_play_enabled_summary">Cuireann sé ar do chumas féachaint ar fhíseáin roghnaithe, Shorts, cuardaigh, cainéil, nó seisiúin iomlána, gan tionchar a imirt ar stair féachana ná ar mholtaí.</string>
+  <string name="morphe_ghost_play_mode_active_title">Mód taibhsí gníomhach</string>
+  <string name="morphe_ghost_play_mode_active_summary">Nuair a bhíonn sé AR, imrítear gach físeán a osclaíonn tú de ghnáth ó fhothaí, físeáin ghaolmhara, nó cuardach i mód Taibhse gan an roghchlár trí phonc a úsáid</string>
+  <string name="morphe_ghost_play_persist_mode_title">Cuimhnigh ar an mód Taibhse thar atosuithe</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Coinníonn sé Mód Taibhse AR, fiú tar éis YouTube a dhúnadh agus a oscailt arís</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Taispeáin lasc an mhodha Taibhse sa bharra uachtarach</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Cuireann sé lasc dhlúth don mhodh Taibhse in aice leis na deilbhíní sa bharra uachtarach (tapáil chun é a athrú, brúigh fada chun roghanna rialaithe tapa a fháil)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Taispeáin i roghchlár físe</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Cuireann sé \"Seinn i mód taibhsí\" le roghchlár na dtrí phonc ar fhíseáin</string>
+  <string name="morphe_ghost_play_player_button_title">Taispeáin an cnaipe don mhodh taibhse</string>
+  <string name="morphe_ghost_play_player_button_summary">Taispeánann sé cnaipe scoránaigh don mhodh Taibhse sa seinnteoir físe (brúigh fada chun rochtain a fháil ar rialuithe tapa)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Déan iarratais ar athsheinm gan ainm</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Baintear ceanntásca cuntais ó athsheinm taibhse agus iarratais imeachta le haghaidh aonrú níos láidre. Nuair a bhíonn sé seo gníomhach, ní bhíonn gnéithe atá srianta de réir aoise, gnéithe do bhaill amháin, ná gnéithe ‘Premium’ ar fáil.</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Shorts Uath-thaibhse</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Breathnaíonn sé ar Shorts go huathoibríoch i mód taibhse, ionas nach gcuireann siad isteach ar do phríomhfhotha.</string>
+  <string name="morphe_ghost_play_auto_search_title">Físeáin a cheilt go huathoibríoch ón gCuardach</string>
+  <string name="morphe_ghost_play_auto_search_summary">Breathnaíonn sé go huathoibríoch ar fhíseáin a osclaítear ó thorthaí cuardaigh i mód Taibhse</string>
+  <string name="morphe_ghost_play_manage_channels_title">Cainéil uath-thaibhse</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Cuardaigh, cuir leis, scrúdaigh agus bainistigh cainéil a sheinneann i gcónaí i mód taibhse</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d cainéal cumraithe — tapáil chun cuardach a dhéanamh, chun iniúchadh a dhéanamh, nó chun iad a bhaint</string>
+  <string name="morphe_ghost_play_local_history_title">Caomhnaigh stair áitiúil na dtaibhsí</string>
+  <string name="morphe_ghost_play_local_history_summary">Cuimhníonn sé ar fhíseáin i mód taibhse agus ar shuíomhanna athsheinm ar an ngléas seo amháin (ní sheoltar chuig YouTube riamh iad)</string>
+  <string name="morphe_ghost_play_history_limit_title">Teorainn le stair áitiúil na dtaibhsí</string>
+  <string name="morphe_ghost_play_history_limit_summary">Uasmhéid físeán le coinneáil ar an bhfeiste (baintear na hiontrálacha is sine go huathoibríoch)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d físeán sábháilte (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Níl físeáin ar bith sábháilte</string>
+  <string name="morphe_ghost_play_history_limit_100">100 físeán</string>
+  <string name="morphe_ghost_play_history_limit_500">500 físeáin</string>
+  <string name="morphe_ghost_play_history_limit_2000">2,000 físeáin</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Gan teorainn</string>
+  <string name="morphe_ghost_play_view_history_title">Oscail stair áitiúil na dTaibhsí</string>
+  <string name="morphe_ghost_play_view_history_summary">Féach ar do stair, déan cuardach inti, lean ar aghaidh i mód taibhse, nó glan an stair atá ar do ghléas</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d físeán stóráilte ar an bhfeiste (%2$s) — tapáil chun féachaint orthu nó chun leanúint ar aghaidh</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Níl aon fhíseáin taifeadta go fóill (stóráilte ar an ngléas seo amháin)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dn</string>
+  <string name="morphe_ghost_play_flyout_action">Imir i mód taibhsí</string>
+  <string name="morphe_ghost_play_video_active_toast">Mód taibhse gníomhach — tá stair an amhairc agus na moltaí cosanta</string>
+  <string name="morphe_ghost_play_video_off_toast">Mód taibhse MÚCHTA don fhíseán seo</string>
+  <string name="morphe_ghost_play_session_on_toast">Mód taibhse AR SIÚL — ní dhéanfaidh físeáin difear don stair ná do mholtaí</string>
+  <string name="morphe_ghost_play_session_off_toast">Mód taibhse MÚCHTA — ar ais go dtí gnáthsheinm</string>
+  <string name="morphe_ghost_play_timer_set_toast">Mód taibhsí gníomhach ar feadh %d nóiméad</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Uaineadóir glanta — Fanann mód taibhsí AR SIÚL</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Cuir isteach fad idir 1 agus 720 nóiméad</string>
+  <string name="morphe_ghost_play_dialog_title">Mód taibhsí</string>
+  <string name="morphe_ghost_play_state_on">Ar</string>
+  <string name="morphe_ghost_play_state_off">As</string>
+  <string name="morphe_ghost_play_close">Dún</string>
+  <string name="morphe_ghost_play_open_settings">Gach socruithe</string>
+  <string name="morphe_ghost_play_quick_power_hint">Beartaigh chun Mód Taibhse a scoránaigh</string>
+  <string name="morphe_ghost_play_quick_timer_title">Mód Taibhse le teorainn ama</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Tapáil chun an fad a roghnú</string>
+  <string name="morphe_ghost_play_quick_timer_running">Uaineadóir gníomhach · %d nóiméad fágtha</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Filleann sé go huathoibríoch ar an ngnáthmhód nuair a bhíonn sé críochnaithe</string>
+  <string name="morphe_ghost_play_quick_timer_change">Athraigh an t-am</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Glan an lasc ama (coinnigh AR)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dn</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Nóiméid saincheaptha (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Socraigh</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Uath-taibhse AR SIÚL don chainéal seo</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Uath-taibhse MÚCHTA don chainéal seo</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d cainéal cumraithe</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Liosta (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">Cuireadh \"%s\" le cainéil uath-thaibhse</string>
+  <string name="morphe_ghost_play_channel_removed_toast">Baineadh \"%s\" ó chainéil uath-thaibhse</string>
+  <string name="morphe_ghost_play_history_title">Stair áitiúil na dtaibhsí</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d físeán (%s) · tapáil chun leanúint ar aghaidh i mód Taibhse, coinnigh brúite chun é a bhaint</string>
+  <string name="morphe_ghost_play_history_search_hint">Scag de réir teideal físeáin nó cainéil…</string>
+  <string name="morphe_ghost_play_history_no_match">Níl físeáin mheaitseála le fáil i stair áitiúil Ghost</string>
+  <string name="morphe_ghost_play_history_empty">Níl aon stair áitiúil faoi thaibhsí ann go fóill</string>
+  <string name="morphe_ghost_play_history_clear_all">Glan gach rud</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Stair áitiúil Ghost a ghlanadh?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Scriosann sé seo gach iontráil ‘Mód Taibhse’ atá sábháilte ar an bhfeiste, agus ní féidir é a chealú.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Stair áitiúil na dtaibhsí soiléirithe</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Bainte ó stair áitiúil na dtaibhsí</string>
+  <string name="morphe_ghost_play_channels_manager_title">Cainéil uath-thaibhse</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Curtha leis (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Cuardaigh &amp; Cuir leis</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Scag cainéil a cuireadh leis de réir ainm, @láimhseála, nó ábhair…</string>
+  <string name="morphe_ghost_play_channels_empty">Níl aon chainéil curtha leis go fóill. Athraigh go dtí \"Cuardaigh &amp; Cuir Leis\" chun cainéil a aimsiú de réir ainm, @láimhseála, nó URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Níl aon chainéil bhreise ann a mheaitseálann do scagaire</string>
+  <string name="morphe_ghost_play_channels_add_current">Á sheinm: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Cuir leis</string>
+  <string name="morphe_ghost_play_channels_added_badge">Curtha leis</string>
+  <string name="morphe_ghost_play_channels_delete_button">Bain</string>
+  <string name="morphe_ghost_play_channels_search_hint">Ainm an chainéil, @láimhseáil, nó URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Cuardaigh</string>
+  <string name="morphe_ghost_play_channels_search_guide">Cuir isteach ainm cainéil, @láimhseáil, nó URL cainéil YouTube agus tapáil Cuardaigh</string>
+  <string name="morphe_ghost_play_channels_searching">Ag cuardach cainéal YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">Theip ar an gcuardach. Seiceáil do nasc agus bain triail as arís.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Níor aimsíodh aon chainéil don cheist sin</string>
+  <string name="morphe_ghost_play_channels_search_count">Aimsíodh %d cainéal — tapáil Cuir leis chun an ghné ‘auto-ghost’ a chumasú</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Físeáin le déanaí</string>
+  <string name="morphe_ghost_play_channels_loading_details">Ag lódáil físeáin le déanaí…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Níor aimsíodh físeáin le déanaí (tapáil chun triail arís)</string>
 </resources>

@@ -26,15 +26,11 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.ImageDecoder;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.RippleDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Pair;
@@ -42,13 +38,13 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -70,11 +66,14 @@ import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.Card
 import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.ShareLineEntry;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.ShareRenderOptions;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerView;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
 
 /**
  * Fullscreen Share Lyrics preview &amp; customization studio. Pairs a dark tinted preview stage
@@ -84,11 +83,16 @@ import app.morphe.extension.shared.ui.Dim;
 final class LyricsShareDialog {
 
     private static final int PREVIEW_WIDTH_PX = 900;
+    private static final int SLIDE_ANIMATION_MILLIS = 280;
     private static final int MAX_PICKED_IMAGE_DIM = 1280;
     private static final String PICKER_FRAGMENT_TAG = "MorpheSharePhotoPickerFragment";
-    private static final int STAGE_GROUND_COLOR = 0xFF0D0D10;
-    private static final int DOCK_SURFACE_COLOR = 0xFF17171B;
     private static final int SEGMENT_TRACK_COLOR = 0xFF222229;
+    private static final String ICON_ROMAJI = "morphe_yt_romanize";
+    private static final String ICON_TRANSLATE = "yt_outline_experimental_translate_vd_theme_24";
+    private static final String ICON_BG = "morphe_share_bg_tag";
+    private static final String ICON_BRANDING = "morphe_lyrics_brand";
+    private static final String ICON_COPY = "morphe_yt_copy_bold";
+    private static final String ICON_SHARE = "yt_outline_experimental_share_vd_theme_24";
 
     private LyricsShareDialog() {
     }
@@ -154,51 +158,21 @@ final class LyricsShareDialog {
         final boolean[] dismissed = {false};
         final boolean[] exportInFlight = {false};
 
-        Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            setStatusBarColor(window, STAGE_GROUND_COLOR);
-            setNavigationBarColor(window);
-        }
+        LinearLayout sheet = SheetBottomDialog.createMainLayout(context, LyricsSheetChrome.BACKGROUND_COLOR);
+        Dialog dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
 
         LinearLayout root = new LinearLayout(context);
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setFitsSystemWindows(true);
-        root.setBackgroundColor(STAGE_GROUND_COLOR);
 
         // Top studio header (>= 48dp accessible back button + high-contrast title)
-        LinearLayout topBar = new LinearLayout(context);
-        topBar.setOrientation(LinearLayout.HORIZONTAL);
-        topBar.setGravity(Gravity.CENTER_VERTICAL);
-        topBar.setPadding(Dim.dp8, Dim.dp8, Dim.dp16, Dim.dp4);
-
-        ImageView backBtn = new ImageView(context);
-        backBtn.setImageDrawable(new BackArrowDrawable());
-        backBtn.setScaleType(ImageView.ScaleType.CENTER);
-        backBtn.setContentDescription(str("morphe_music_lyrics_share_back"));
-        backBtn.setFocusable(true);
-        attachInteractiveBackground(backBtn, null, Dim.dp(24), 0x33FFFFFF);
-        backBtn.setOnClickListener(v -> dialog.dismiss());
-        topBar.addView(backBtn, new LinearLayout.LayoutParams(Dim.dp(48), Dim.dp(48)));
-
-        TextView titleView = new TextView(context);
-        titleView.setText(str("morphe_music_lyrics_share_preview_title"));
-        titleView.setTextColor(0xFFFFFFFF);
-        titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
-        titleView.setTypeface(null, Typeface.BOLD);
-        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-        titleParams.leftMargin = Dim.dp8;
-        topBar.addView(titleView, titleParams);
+        LinearLayout topBar = LyricsSheetChrome.createTopBar(context,
+                str("morphe_music_lyrics_share_preview_title"), dialog::dismiss);
         root.addView(topBar, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
         // Center preview stage with explicit loading state overlay
         FrameLayout previewContainer = new FrameLayout(context);
-        previewContainer.setPadding(Dim.dp20, Dim.dp4, Dim.dp20, Dim.dp12);
+        previewContainer.setPadding(Dim.dp12, Dim.dp4, Dim.dp12, Dim.dp12);
 
         ImageView previewImage = new ImageView(context);
         previewImage.setAdjustViewBounds(true);
@@ -216,7 +190,7 @@ final class LyricsShareDialog {
         loadingPill.setPadding(Dim.dp16, Dim.dp10, Dim.dp16, Dim.dp10);
         GradientDrawable loadingBg = new GradientDrawable();
         loadingBg.setShape(GradientDrawable.RECTANGLE);
-        loadingBg.setCornerRadius(Dim.dp(12));
+        loadingBg.setCornerRadius(Dim.dp(20));
         loadingBg.setColor(0xE6141418);
         loadingBg.setStroke(Math.max(1, Dim.dp(1)), 0x33FFFFFF);
         loadingPill.setBackground(loadingBg);
@@ -239,21 +213,15 @@ final class LyricsShareDialog {
         loadParams.gravity = Gravity.CENTER;
         previewContainer.addView(loadingPill, loadParams);
 
+        int screenHeight = context.getResources().getDisplayMetrics().heightPixels;
+        int previewHeight = Math.max(Dim.dp(200), Math.min(Dim.dp(360), (int) (screenHeight * 0.45f)));
         root.addView(previewContainer, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
+                LinearLayout.LayoutParams.MATCH_PARENT, previewHeight));
 
         // Grounded matte bottom control sheet (solid dark surface with crisp hairline divider)
         LinearLayout bottomDock = new LinearLayout(context);
         bottomDock.setOrientation(LinearLayout.VERTICAL);
         bottomDock.setPadding(Dim.dp16, Dim.dp(14), Dim.dp16, Dim.dp(18));
-        GradientDrawable dockBg = new GradientDrawable();
-        dockBg.setShape(GradientDrawable.RECTANGLE);
-        dockBg.setColor(DOCK_SURFACE_COLOR);
-        dockBg.setCornerRadii(new float[]{
-                Dim.dp(20), Dim.dp(20), Dim.dp(20), Dim.dp(20),
-                0f, 0f, 0f, 0f
-        });
-        bottomDock.setBackground(dockBg);
 
         // 1. Unified segmented background-mode control (Blur | Cover | Color | Photo)
         LinearLayout modeSegmentTrack = new LinearLayout(context);
@@ -262,7 +230,7 @@ final class LyricsShareDialog {
         modeSegmentTrack.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
         GradientDrawable trackBg = new GradientDrawable();
         trackBg.setShape(GradientDrawable.RECTANGLE);
-        trackBg.setCornerRadius(Dim.dp12);
+        trackBg.setCornerRadius(Dim.dp(26));
         trackBg.setColor(SEGMENT_TRACK_COLOR);
         modeSegmentTrack.setBackground(trackBg);
         LinearLayout.LayoutParams segTrackParams = new LinearLayout.LayoutParams(
@@ -285,10 +253,13 @@ final class LyricsShareDialog {
         // 3. Structured options strip: content toggles (BG vocals, Romaji, Translate) | YT Music logo
         HorizontalScrollView optionsScroll = new HorizontalScrollView(context);
         optionsScroll.setHorizontalScrollBarEnabled(false);
+        optionsScroll.setFillViewport(true);
         LinearLayout optionsRow = new LinearLayout(context);
         optionsRow.setOrientation(LinearLayout.HORIZONTAL);
-        optionsRow.setGravity(Gravity.CENTER_VERTICAL);
-        optionsScroll.addView(optionsRow);
+        optionsRow.setGravity(Gravity.CENTER);
+        optionsScroll.addView(optionsRow, new HorizontalScrollView.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
         LinearLayout.LayoutParams optionsParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         optionsParams.bottomMargin = Dim.dp(14);
@@ -299,22 +270,28 @@ final class LyricsShareDialog {
         actionRow.setOrientation(LinearLayout.HORIZONTAL);
         actionRow.setGravity(Gravity.CENTER_VERTICAL);
 
-        TextView copyBtn = createActionButton(context, str("morphe_music_lyrics_copy_text_cta"), false);
+        View copyBtn = createActionButton(context, str("morphe_music_lyrics_copy_text_cta"),
+                ICON_COPY, false);
         LinearLayout.LayoutParams copyParams = new LinearLayout.LayoutParams(
-                0, Dim.dp(48), 1f);
+                0, Dim.dp(44), 1f);
         copyParams.rightMargin = Dim.dp10;
         actionRow.addView(copyBtn, copyParams);
 
-        TextView shareBtn = createActionButton(context, str("morphe_music_lyrics_share_card_cta"), true);
+        View shareBtn = createActionButton(context, str("morphe_music_lyrics_share_card_cta"),
+                ICON_SHARE, true);
         LinearLayout.LayoutParams shareParams = new LinearLayout.LayoutParams(
-                0, Dim.dp(48), 1.45f);
+                0, Dim.dp(44), 1.45f);
         actionRow.addView(shareBtn, shareParams);
         bottomDock.addView(actionRow, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
         root.addView(bottomDock, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        dialog.setContentView(root);
+        ScrollView sheetScroll = SheetBottomDialog.createCappedScrollView(context, 85);
+        sheetScroll.addView(root, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        sheet.addView(sheetScroll, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
         final java.util.function.Supplier<ShareRenderOptions> buildOptions = () -> {
             CardPalette activePalette;
@@ -345,9 +322,6 @@ final class LyricsShareDialog {
                     : albumPalette.backgroundColor();
             int stageColor = computeStageBackdropColor(baseColor);
             root.setBackgroundColor(stageColor);
-            if (window != null) {
-                setStatusBarColor(window, stageColor);
-            }
 
             Bitmap bmp = LyricsShareCardRenderer.renderRichCardBitmap(
                     entries, track, rawTitle, rawArtist, snapshot, opts, PREVIEW_WIDTH_PX);
@@ -397,7 +371,7 @@ final class LyricsShareDialog {
             hitBox.setFocusable(true);
             hitBox.setContentDescription(String.format(
                     Locale.getDefault(), str("morphe_music_lyrics_share_color_swatch"), i + 1));
-            attachInteractiveBackground(hitBox, null, Dim.dp(24), 0x33FFFFFF);
+            LyricsSheetChrome.attachInteractiveBackground(hitBox, null, Dim.dp(24), 0x33FFFFFF);
 
             View disc = new View(context);
             FrameLayout.LayoutParams dp = new FrameLayout.LayoutParams(discPx, discPx, Gravity.CENTER);
@@ -418,7 +392,7 @@ final class LyricsShareDialog {
 
         customColorTarget.setFocusable(true);
         customColorTarget.setContentDescription(str("morphe_music_lyrics_share_custom_color"));
-        attachInteractiveBackground(customColorTarget, null, Dim.dp(24), 0x33FFFFFF);
+        LyricsSheetChrome.attachInteractiveBackground(customColorTarget, null, Dim.dp(24), 0x33FFFFFF);
         customColorTarget.addView(customColorDisc, new FrameLayout.LayoutParams(discPx, discPx, Gravity.CENTER));
         customColorTarget.setOnClickListener(v -> {
             if (busy[0]) return;
@@ -445,63 +419,57 @@ final class LyricsShareDialog {
         modeSegmentTrack.addView(colorTab, segmentTabParams());
         modeSegmentTrack.addView(photoTab, segmentTabParams());
 
-        // Checkable layer options + distinct watermark toggle
-        final TextView bgSwitch = hasBgOption
-                ? createOptionSwitch(context, str("morphe_music_lyrics_share_layer_bg")) : null;
-        final TextView romaSwitch = hasRomaOption
-                ? createOptionSwitch(context, str("morphe_music_lyrics_share_layer_romaji")) : null;
-        final TextView transSwitch = hasTransOption
-                ? createOptionSwitch(context, str("morphe_music_lyrics_share_layer_translate")) : null;
-        final TextView brandSwitch = createOptionSwitch(context, str("morphe_music_lyrics_share_branding_logo"));
+        final LinearLayout bgSwitch = hasBgOption
+                ? createOptionChip(context,
+                str("morphe_music_lyrics_share_layer_bg")) : null;
+        final LinearLayout romaSwitch = hasRomaOption
+                ? createOptionChip(context,
+                str("morphe_music_lyrics_share_layer_romaji")) : null;
+        final LinearLayout transSwitch = hasTransOption
+                ? createOptionChip(context,
+                str("morphe_music_lyrics_share_layer_translate")) : null;
+        final LinearLayout brandSwitch = createOptionChip(context,
+                str("morphe_music_lyrics_share_branding_logo"));
 
-        boolean hasLayerSwitches = bgSwitch != null || romaSwitch != null || transSwitch != null;
         if (bgSwitch != null) {
-            styleOptionSwitch(bgSwitch, includeBg[0]);
+            styleOptionChip(bgSwitch, includeBg[0], ICON_BG);
             bgSwitch.setOnClickListener(v -> {
                 if (busy[0]) return;
                 includeBg[0] = !includeBg[0];
-                styleOptionSwitch(bgSwitch, includeBg[0]);
+                styleOptionChip(bgSwitch, includeBg[0], ICON_BG);
                 updateBackdropAndPreview.run();
             });
-            optionsRow.addView(bgSwitch, optionLayoutParams(optionsRow.getChildCount() > 0));
+            optionsRow.addView(bgSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
         }
         if (romaSwitch != null) {
-            styleOptionSwitch(romaSwitch, includeRoma[0]);
+            styleOptionChip(romaSwitch, includeRoma[0], ICON_ROMAJI);
             romaSwitch.setOnClickListener(v -> {
                 if (busy[0]) return;
                 includeRoma[0] = !includeRoma[0];
-                styleOptionSwitch(romaSwitch, includeRoma[0]);
+                styleOptionChip(romaSwitch, includeRoma[0], ICON_ROMAJI);
                 updateBackdropAndPreview.run();
             });
-            optionsRow.addView(romaSwitch, optionLayoutParams(optionsRow.getChildCount() > 0));
+            optionsRow.addView(romaSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
         }
         if (transSwitch != null) {
-            styleOptionSwitch(transSwitch, includeTrans[0]);
+            styleOptionChip(transSwitch, includeTrans[0], ICON_TRANSLATE);
             transSwitch.setOnClickListener(v -> {
                 if (busy[0]) return;
                 includeTrans[0] = !includeTrans[0];
-                styleOptionSwitch(transSwitch, includeTrans[0]);
+                styleOptionChip(transSwitch, includeTrans[0], ICON_TRANSLATE);
                 updateBackdropAndPreview.run();
             });
-            optionsRow.addView(transSwitch, optionLayoutParams(optionsRow.getChildCount() > 0));
+            optionsRow.addView(transSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
         }
-        if (hasLayerSwitches) {
-            View divider = new View(context);
-            divider.setBackgroundColor(0x28FFFFFF);
-            LinearLayout.LayoutParams divParams = new LinearLayout.LayoutParams(Dim.dp(1), Dim.dp(22));
-            divParams.leftMargin = Dim.dp10;
-            divParams.rightMargin = Dim.dp10;
-            optionsRow.addView(divider, divParams);
-        }
-        styleOptionSwitch(brandSwitch, showBranding[0]);
+        styleOptionChip(brandSwitch, showBranding[0], ICON_BRANDING);
         brandSwitch.setOnClickListener(v -> {
             if (busy[0]) return;
             showBranding[0] = !showBranding[0];
             Settings.LYRICS_SHARE_SHOW_BRANDING.save(showBranding[0]);
-            styleOptionSwitch(brandSwitch, showBranding[0]);
+            styleOptionChip(brandSwitch, showBranding[0], ICON_BRANDING);
             updateBackdropAndPreview.run();
         });
-        optionsRow.addView(brandSwitch, optionLayoutParams(false));
+        optionsRow.addView(brandSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
 
         final Runnable refreshModeTabs = () -> {
             styleSegmentTab(blurTab, bgMode[0] == BackgroundMode.BLUR_MESH);
@@ -589,6 +557,10 @@ final class LyricsShareDialog {
         String shareCaption = displayTitle.isEmpty()
                 ? ""
                 : (displayArtist.isEmpty() ? displayTitle : displayTitle + " - " + displayArtist);
+        String videoId = VideoInformation.getVideoId();
+        String shareMenuText = videoId.isEmpty() ? shareCaption
+                : (shareCaption.isEmpty() ? "" : shareCaption + '\n')
+                        + "https://music.youtube.com/watch?v=" + videoId;
 
         copyBtn.setOnClickListener(v -> {
             if (busy[0]) return;
@@ -666,8 +638,8 @@ final class LyricsShareDialog {
                             Intent sendIntent = new Intent(Intent.ACTION_SEND);
                             sendIntent.setType("image/png");
                             sendIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-                            if (!shareCaption.isEmpty()) {
-                                sendIntent.putExtra(Intent.EXTRA_TEXT, shareCaption);
+                            if (!shareMenuText.isEmpty()) {
+                                sendIntent.putExtra(Intent.EXTRA_TEXT, shareMenuText);
                             }
                             sendIntent.setClipData(ClipData.newRawUri("lyrics_card", contentUri));
                             sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -715,7 +687,7 @@ final class LyricsShareDialog {
         try {
             dialog.show();
         } catch (WindowManager.BadTokenException ex) {
-            Logger.printException(() -> "Failed to show fullscreen share preview dialog", ex);
+            Logger.printException(() -> "Failed to show share preview sheet", ex);
             dismissed[0] = true;
             if (!exportInFlight[0]) {
                 recycleDialogBitmaps.run();
@@ -723,17 +695,6 @@ final class LyricsShareDialog {
             }
             onFinished.run();
         }
-    }
-
-    // Ignored for apps that draw edge to edge on Android 15 and later, but still used before that.
-    @SuppressWarnings("deprecation")
-    private static void setStatusBarColor(Window window, int color) {
-        window.setStatusBarColor(color);
-    }
-
-    @SuppressWarnings("deprecation")
-    private static void setNavigationBarColor(Window window) {
-        window.setNavigationBarColor(LyricsShareDialog.DOCK_SURFACE_COLOR);
     }
 
     static String buildCopyTextForSelection(
@@ -791,7 +752,8 @@ final class LyricsShareDialog {
                 null,
                 str("morphe_settings_save"),
                 () -> onColorSelected.accept(0xFF000000 | (pickerView.getColor() & 0x00FFFFFF)),
-                () -> {},
+                () -> {
+                },
                 null,
                 null,
                 true);
@@ -991,7 +953,7 @@ final class LyricsShareDialog {
     private static void styleSegmentTab(TextView tab, boolean active) {
         GradientDrawable bg = new GradientDrawable();
         bg.setShape(GradientDrawable.RECTANGLE);
-        bg.setCornerRadius(Dim.dp(9));
+        bg.setCornerRadius(Dim.dp(22));
         if (active) {
             bg.setColor(0xFFFFFFFF);
             tab.setTextColor(0xFF141418);
@@ -999,140 +961,95 @@ final class LyricsShareDialog {
             bg.setColor(Color.TRANSPARENT);
             tab.setTextColor(0xFFD2D2DC);
         }
-        attachInteractiveBackground(tab, bg, Dim.dp(9), active ? 0x22000000 : 0x2AFFFFFF);
+        LyricsSheetChrome.attachInteractiveBackground(tab, bg, Dim.dp(22), active ? 0x22000000 : 0x2AFFFFFF);
     }
 
-    private static TextView createOptionSwitch(Context context, String label) {
-        TextView tv = new TextView(context);
-        tv.setText(label);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f);
-        tv.setTypeface(null, Typeface.BOLD);
-        tv.setSingleLine(true);
-        tv.setGravity(Gravity.CENTER);
-        tv.setMinimumHeight(Dim.dp(44));
-        tv.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
-        tv.setFocusable(true);
-        return tv;
+    private static LinearLayout createOptionChip(Context context, String label) {
+        LinearLayout chip = new LinearLayout(context);
+        chip.setOrientation(LinearLayout.HORIZONTAL);
+        chip.setGravity(Gravity.CENTER_VERTICAL);
+        chip.setPadding(Dim.dp8, 0, Dim.dp8, 0);
+        chip.setMinimumHeight(Dim.dp(40));
+        chip.setContentDescription(label);
+        chip.setFocusable(true);
+
+        ImageView icon = new ImageView(context);
+        icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        chip.addView(icon, new LinearLayout.LayoutParams(Dim.dp(18), Dim.dp(18)));
+
+        TextView text = new TextView(context);
+        text.setText(label);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f);
+        text.setTypeface(null, Typeface.BOLD);
+        text.setSingleLine(true);
+        LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        textParams.leftMargin = Dim.dp4;
+        chip.addView(text, textParams);
+        return chip;
     }
 
-    private static LinearLayout.LayoutParams optionLayoutParams(boolean leftSpace) {
+    private static LinearLayout.LayoutParams iconOptionLayoutParams(boolean leftSpace) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, Dim.dp(44));
-        if (leftSpace) {
-            lp.leftMargin = Dim.dp8;
-        }
+                LinearLayout.LayoutParams.WRAP_CONTENT, Dim.dp(40));
+        if (leftSpace) lp.leftMargin = Dim.dp8;
         return lp;
     }
 
-    private static void styleOptionSwitch(TextView toggle, boolean active) {
+    private static void styleOptionChip(LinearLayout chip, boolean active, String iconName) {
+        ImageView icon = (ImageView) chip.getChildAt(0);
+        TextView text = (TextView) chip.getChildAt(1);
+        Drawable drawable = ResourceUtils.getDrawable(iconName);
+        if (drawable != null) {
+            drawable = drawable.mutate();
+            drawable.setTint(active ? 0xFF141418 : 0xFFD2D2DC);
+            icon.setImageDrawable(drawable);
+        }
+        text.setTextColor(active ? 0xFF141418 : 0xFFD2D2DC);
         GradientDrawable bg = new GradientDrawable();
         bg.setShape(GradientDrawable.RECTANGLE);
-        bg.setCornerRadius(Dim.dp(10));
-        if (active) {
-            bg.setColor(0xFF2D2D38);
-            bg.setStroke(Math.max(1, Dim.dp(1)), 0xB8FFFFFF);
-            toggle.setTextColor(0xFFFFFFFF);
-        } else {
-            bg.setColor(0xFF1F1F26);
-            bg.setStroke(Math.max(1, Dim.dp(1)), 0x2AFFFFFF);
-            toggle.setTextColor(0xFFB4B4C2);
-        }
-        attachInteractiveBackground(toggle, bg, Dim.dp(10), 0x2EFFFFFF);
+        bg.setCornerRadius(Dim.dp(20));
+        bg.setColor(active ? 0xFFFFFFFF : Color.TRANSPARENT);
+        LyricsSheetChrome.attachInteractiveBackground(chip, bg, Dim.dp(20),
+                active ? 0x22000000 : 0x2AFFFFFF);
     }
 
-    private static TextView createActionButton(Context context, String text, boolean primary) {
-        TextView btn = new TextView(context);
-        btn.setText(text);
+    private static View createActionButton(
+            Context context, String text, String iconName, boolean primary) {
+        LinearLayout btn = new LinearLayout(context);
+        btn.setOrientation(LinearLayout.HORIZONTAL);
         btn.setGravity(Gravity.CENTER);
-        btn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f);
-        btn.setTypeface(null, Typeface.BOLD);
-        btn.setMinimumHeight(Dim.dp(48));
+        btn.setMinimumHeight(Dim.dp(44));
         btn.setFocusable(true);
+
+        ImageView iconView = new ImageView(context);
+        Drawable icon = ResourceUtils.getDrawable(iconName);
+        if (icon != null) {
+            icon = icon.mutate();
+            icon.setTint(primary ? 0xFF0F0F14 : 0xFFD2D2DC);
+            iconView.setImageDrawable(icon);
+        }
+        btn.addView(iconView, new LinearLayout.LayoutParams(Dim.dp20, Dim.dp20));
+
+        TextView label = new TextView(context);
+        label.setText(text);
+        label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f);
+        label.setTypeface(null, Typeface.BOLD);
+        label.setGravity(Gravity.CENTER);
+        label.setTextColor(primary ? 0xFF141418 : 0xFFD2D2DC);
+        LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        labelParams.setMarginStart(Dim.dp8);
+        btn.addView(label, labelParams);
+
         GradientDrawable bg = new GradientDrawable();
         bg.setShape(GradientDrawable.RECTANGLE);
-        float radius = primary ? Dim.dp(24) : Dim.dp12;
+        float radius = Dim.dp(22);
         bg.setCornerRadius(radius);
-        if (primary) {
-            bg.setColor(0xFFFFFFFF);
-            btn.setTextColor(0xFF141418);
-        } else {
-            bg.setColor(0xFF25252E);
-            btn.setTextColor(0xFFFFFFFF);
-        }
-        attachInteractiveBackground(btn, bg, radius, primary ? 0x22000000 : 0x33FFFFFF);
+        bg.setColor(primary ? 0xFFFFFFFF : Color.TRANSPARENT);
+        LyricsSheetChrome.attachInteractiveBackground(btn, bg, radius, primary ? 0x22000000 : 0x2AFFFFFF);
         return btn;
-    }
-
-    private static void attachInteractiveBackground(
-            View view, @Nullable Drawable baseDrawable, float focusCornerRadiusPx, int rippleColor) {
-        GradientDrawable focusOverlay = new GradientDrawable();
-        focusOverlay.setShape(GradientDrawable.RECTANGLE);
-        focusOverlay.setCornerRadius(focusCornerRadiusPx);
-        focusOverlay.setColor(Color.TRANSPARENT);
-        focusOverlay.setStroke(Dim.dp(2), 0xFFFFFFFF);
-
-        StateListDrawable states = new StateListDrawable();
-        if (baseDrawable != null) {
-            states.addState(new int[]{android.R.attr.state_focused},
-                    new LayerDrawable(new Drawable[]{baseDrawable, focusOverlay}));
-            states.addState(new int[0], baseDrawable);
-        } else {
-            states.addState(new int[]{android.R.attr.state_focused}, focusOverlay);
-            states.addState(new int[0], new GradientDrawable());
-        }
-
-        GradientDrawable mask = new GradientDrawable();
-        mask.setShape(GradientDrawable.RECTANGLE);
-        mask.setCornerRadius(focusCornerRadiusPx);
-        mask.setColor(0xFFFFFFFF);
-
-        view.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor), states, mask));
-    }
-
-    /** Crisp 2dp stroke back arrow drawable matching Android Material metrics. */
-    private static final class BackArrowDrawable extends Drawable {
-        private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Path path = new Path();
-
-        BackArrowDrawable() {
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeCap(Paint.Cap.ROUND);
-            paint.setStrokeJoin(Paint.Join.ROUND);
-            paint.setColor(0xFFFFFFFF);
-            paint.setStrokeWidth(Math.max(3f, Dim.dp(2.2f)));
-        }
-
-        @Override
-        public void draw(@NonNull Canvas canvas) {
-            Rect b = getBounds();
-            if (b.isEmpty()) return;
-            float cx = b.exactCenterX();
-            float cy = b.exactCenterY();
-            float s = Dim.dp(8);
-            path.reset();
-            path.moveTo(cx + s, cy);
-            path.lineTo(cx - s, cy);
-            path.moveTo(cx - s * 0.1f, cy - s * 0.85f);
-            path.lineTo(cx - s, cy);
-            path.lineTo(cx - s * 0.1f, cy + s * 0.85f);
-            canvas.drawPath(path, paint);
-        }
-
-        @Override
-        public void setAlpha(int alpha) {
-            paint.setAlpha(alpha);
-        }
-
-        @Override
-        public void setColorFilter(@Nullable ColorFilter colorFilter) {
-            paint.setColorFilter(colorFilter);
-        }
-
-        @Deprecated
-        @Override
-        public int getOpacity() {
-            return PixelFormat.TRANSLUCENT;
-        }
     }
 
     /** Custom color wheel + plus icon drawn without literal text characters. */

@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -97,6 +99,37 @@ public final class AppleMusicArtworkPatch {
 
     private static WeakReference<AnimatedArtworkView> artworkViewRef = new WeakReference<>(null);
 
+    private static final List<WeakReference<AnimatedArtworkView>> extraArtworkViews = new ArrayList<>();
+
+    public interface ArtworkFileListener {
+        void onArtworkFileChanged(@Nullable File file);
+    }
+
+    private static final List<WeakReference<ArtworkFileListener>> artworkFileListeners = new ArrayList<>();
+
+    public static void addArtworkFileListener(ArtworkFileListener listener) {
+        artworkFileListeners.removeIf(ref -> ref.get() == null || ref.get() == listener);
+        artworkFileListeners.add(new WeakReference<>(listener));
+    }
+
+    public static void removeArtworkFileListener(ArtworkFileListener listener) {
+        artworkFileListeners.removeIf(ref -> ref.get() == null || ref.get() == listener);
+    }
+
+    private static void notifyArtworkFileChanged() {
+        Utils.runOnMainThread(() -> {
+            List<ArtworkFileListener> targets = new ArrayList<>();
+            for (WeakReference<ArtworkFileListener> ref : artworkFileListeners) {
+                ArtworkFileListener listener = ref.get();
+                if (listener != null) targets.add(listener);
+            }
+            artworkFileListeners.removeIf(ref -> ref.get() == null);
+            for (ArtworkFileListener listener : targets) {
+                listener.onArtworkFileChanged(artworkFile);
+            }
+        });
+    }
+
     /**
      * Injection point.
      *
@@ -111,6 +144,32 @@ public final class AppleMusicArtworkPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setPlayerThumbnail failure", ex);
         }
+    }
+
+    @Nullable
+    public static File currentArtworkFile() {
+        return ENABLED ? artworkFile : null;
+    }
+
+    @Nullable
+    public static View attachAnimatedArtwork(ImageView thumbnail) {
+        File file = currentArtworkFile();
+        if (file == null) return null;
+        try {
+            AnimatedArtworkView view = AnimatedArtworkView.addAbove(thumbnail, file);
+            extraArtworkViews.add(new WeakReference<>(view));
+            view.updatePlayback();
+            return view;
+        } catch (Exception ex) {
+            Logger.printException(() -> "attachAnimatedArtwork failure", ex);
+            return null;
+        }
+    }
+
+    public static void detachAnimatedArtwork(@Nullable View view) {
+        if (!(view instanceof AnimatedArtworkView animated)) return;
+        extraArtworkViews.removeIf(ref -> ref.get() == animated);
+        animated.remove();
     }
 
     /**
@@ -147,6 +206,13 @@ public final class AppleMusicArtworkPatch {
             if (artworkView != null) {
                 artworkView.updatePlayback();
             }
+            for (WeakReference<AnimatedArtworkView> ref : extraArtworkViews) {
+                AnimatedArtworkView extra = ref.get();
+                if (extra != null) {
+                    extra.updatePlayback();
+                }
+            }
+            extraArtworkViews.removeIf(ref -> ref.get() == null);
         });
     }
 
@@ -171,6 +237,7 @@ public final class AppleMusicArtworkPatch {
         artworkFile = null;
         artworkRetried = false;
         updateArtworkView();
+        notifyArtworkFileChanged();
 
         executor.execute(() -> findArtwork(song));
     }
@@ -214,6 +281,7 @@ public final class AppleMusicArtworkPatch {
         Song song = currentSong;
         File file = artworkFile;
         artworkFile = null;
+        notifyArtworkFileChanged();
         if (song == null || file == null) return;
 
         executor.execute(() -> {
@@ -269,6 +337,7 @@ public final class AppleMusicArtworkPatch {
                 if (song != currentSong) return;
                 artworkFile = file;
                 updateArtworkView();
+                notifyArtworkFileChanged();
             });
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not get the artwork of: " + song, ex);

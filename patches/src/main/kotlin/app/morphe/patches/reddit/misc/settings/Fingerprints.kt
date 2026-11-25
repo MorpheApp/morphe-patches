@@ -272,6 +272,11 @@ internal object GooglePlayUpdateCheckFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Play Store signature check of the Google Play libraries.
+ * The Engage and the Age Signals libraries each have a copy of it. Older app versions
+ * have only the Engage copy, newer versions only the Age Signal copy, and some have both.
+ */
 internal object PlayStoreVerificationFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(
@@ -282,6 +287,11 @@ internal object PlayStoreVerificationFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Play Store version code check of the Google Play libraries.
+ * The Play Integrity and the Age Signals libraries each have a copy of it,
+ * and some app versions have both.
+ */
 internal object CheckIntegrityPlayStoreFingerprint : Fingerprint(
     returnType = "I",
     parameters = listOf(

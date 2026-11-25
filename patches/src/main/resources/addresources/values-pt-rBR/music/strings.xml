@@ -449,6 +449,9 @@ Pausar o crossfade para assistir a um videoclipe pode deixar alguns vídeos pret
   <string name="morphe_music_hide_navigation_bar_library_button_title">Ocultar botão Biblioteca</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ocultar botão Atualizar</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Mostrar botão Configurações</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Ação do botão Configurações</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Quando ativado, tocar abre as configurações do Morphe e pressionar longamente abre as configurações do YouTube Music; desative para inverter</string>
   <string name="morphe_music_hide_navigation_bar_title">Ocultar barra de navegação</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_music_navigation_bar_glass_title">Ativar barra de navegação de vidro</string>

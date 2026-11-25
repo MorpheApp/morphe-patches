@@ -243,6 +243,7 @@ Salaketak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusten di
   <string name="morphe_hide_keyword_content_screen_title">Gako-hitz iragazkia</string>
   <string name="morphe_hide_keyword_content_screen_summary">Aukeratu hitz edo esaldi zehatzak feed-etan eta bilaketan bideoak ezkutatzeko</string>
   <string name="morphe_hide_keyword_content_comments_title">Ezkutatu iruzkinak gako-hitzen arabera</string>
+  <string name="morphe_hide_keyword_content_posts_title">Ezkutatu postak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_home_title">Ezkutatu Home bideoak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_search_title">Ezkutatu bilaketa-emaitzak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ezkutatu Harpidetzetako bideoak gako-hitzen arabera</string>
@@ -250,11 +251,11 @@ Salaketak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusten di
   <string name="morphe_hide_keyword_content_phrases_summary">"Sartu ezkutuko gako-hitzak eta esaldiak, berriztertuerekta bereizita
 
 Gako-hitzak bideo-izenetan agertzen den edozein testu izan daitezke. @Erabiltzaile gako-hitzak sortzaile zehatzetako edukia guztia ezkutzen du"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments filtrazten dira gako-hitz esaldiekin bat datorren edukia ezagutzeko
+  <string name="morphe_hide_keyword_content_about_summary">"Home / Harpidetzak / Bilaketa / Iruzkinak / Postak filtratzen dira gako-hitzen esaldiekin bat egiten duten edukia ezkutatzeko
 
-Mugak:
-• Balo batzuk ezin dira kanal-izenaren bidez ezagutu
-• UI komponentu batzuk agian ez dira ezagutuko"</string>
+Mugaak:
+• Shorts batzuk ezin dira kanalak izenaren arabera ezkutatu
+• UI komponentu batzuk agian ezin dira ezkutatu"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Hitz osoak batitu</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Gako-hitz edo esaldi bat aipuen artean jartzeak bideo eta kanal izenen bat datozen zatiak saihestuko ditu&lt;br&gt;&lt;br&gt;Adibidez,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;k bideo hau ezkutatuko du: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;baina hau ez: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -266,6 +267,39 @@ Mugak:
 • Bilaketa: %3$s
 • Iruzkinak: %4$s
 • Guztira: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Ikustaldi kopuruaren iragazkia</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Ezkutatu feed-etan eta bilaketan ikustaldi gutxegiko edo askegiko bideoak</string>
+  <string name="morphe_hide_videos_by_views_home_title">Ezkutatu Hasierako bideoak ikustaldien arabera</string>
+  <string name="morphe_hide_videos_by_views_search_title">Ezkutatu bilaketako emaitzak ikustaldien arabera</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Ezkutatu Harpidetzetako bideoak ikustaldien arabera</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Ikusteko gutxienezko kopurua</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Ikusteko kopuru gutxiago duten bideoak ezkutatzen dira. 0 = gutxienezkoik gabe</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Ikusteko gehienezko kopurua</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Ikusteko kopuru handiagoa duten bideoak ezkutatzen dira. 0 = gehienezkoik gabe</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Home / Subscriptions / Search filtraztu egiten dira bideoak eta Shorts-ak ikusteko kopuruaren arabera ezkutatzeko
+
+Mugaak:
+• YouTube-k ikusteko kopuruak birribiltzen ditu, beraz 1.2K ikusteko kopurua 1200 ikusteko kopuru gisa kontatzen da
+• Zuzeneko emitaisunak ez dira ezkutatzen
+• Ezkututako Shortsek hutsunea utzi dezakete Shorts-en estante batean"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Ikusteko kopuruen filtrok bideo guztiak ezkutuko ditu</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Iraupen-iragazkia</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Ezkutatu feed-etan eta bilaketan motzegiak edo luzeegiak diren bideoak</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Ezkutatu Home-ko bideoak iraupenaren arabera</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Ezkutatu bilaketako emaitzak iraupenaren arabera</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Ezkutatu Harpidetzetako bideoak iraupenaren arabera</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Iraupen minimoa (minutuak)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Honek baino laburragoak diren bideoak ezkutatzen dira. 0 = ez dago minimoik</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Iraupen maximoa (minutuak)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Honek baino luzeagoak diren bideoak ezkutatzen dira. 0 = ez dago maximoik</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Home / Harpidetzak / Bilaketa filtratzen dira bideoak irupenaren arabera ezkutatzeko
+
+Muga these:
+• Zuzeneko streamedak, Shorts, zerrendak eta nahasketak ez dira ezkutatzen
+• Iraupena ezaguna ez den bideoak ez dira ezkutatzen"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Iraupen-iragazkiak bideo guztiak ezkutuko ditu</string>
   <string name="morphe_hide_stats_category_title">Estatistikak</string>
   <string name="morphe_hide_stats_hidden_24h_title">Ezkutatutako bideoak, azken 24 orduetan</string>
   <string name="morphe_hide_stats_hidden_all_title">Ezkutatutako bideoak, denbora guztian</string>
@@ -309,8 +343,6 @@ Mugak:
   <string name="morphe_hide_sync_button_title">Ezkutatu \'Bideoarekin sinkronizatu\' botoia</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Sakatu eta eutsi gradientea ezkutatu</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Abiadura handitzeko eutsi bitartean hatza irristatzen denean, erreproduzigailuaren kontrolen gradientea ezkutatzen du</string>
-  <string name="morphe_hide_timed_reactions_title">Ezkutatu denbora mugatuko erreakzioak</string>
-  <string name="morphe_hide_timed_reactions_summary">Iruzkinen atalean eta zuzeneko txatean emotikonoekin erreakzionatzeko aukera ezkutatzen du</string>
   <string name="morphe_hide_help_feedback_menu_summary">Hiru-puntu botoia erabiltzean \'Laguntza &amp; iritzia\' menua ezkutatzen du, bilaketa emaitzetan bezalakoetan</string>
   <string name="morphe_hide_handle_title">Ezkutatu erabiltzaile-izena</string>
   <string name="morphe_hide_handle_summary">Zure kanalaren erabiltzaile-izena ezkutatzen du \'Zu\' fitxan</string>
@@ -427,8 +459,10 @@ Mugak:
   <string name="morphe_hide_comments_preview_comment_title">Ezkutatu iruzkinen aurrebista</string>
   <string name="morphe_hide_comments_preview_comment_summary">Bideo azpian agertzen den iruzkin aurrebista ezkutatzen du, iruzkin atal osoa ireki aurretik</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe-k ezkutatutako iruzkina…</string>
-  <string name="morphe_minimal_comments_button_title">Gaitu iruzkin minimalistikoen botoia</string>
-  <string name="morphe_minimal_comments_button_summary">Ezkutatzen ditu iruzkin-botoian agertzen diren txartel mugikorrak eta haien orrialde-hautatzailea</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Ezkutatu iruzkin aurrebista txartelak</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Ezkutatzen ditu iruzkin-botoian agertzen diren txartel mugikorrak eta haien orrialde-hautatzailea</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Ezkutatu denbora zehatzako erreakzioak</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Iruzkinen atalean eta zuzeneko txatean emotikonoekin erreakzionatzeko aukera ezkutatzen du</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ezkutatu Denbora-zigilua botoia</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ezkutatu \'Fan nagusiak\' botoia</string>
   <string name="morphe_hide_comments_topics_title">Ezkutatu \'Gaiak\'</string>
@@ -678,14 +712,14 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_ryd_feed_counts_position_entry_1">Ikustaldien kopuruaren ondoan</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Erdian eskuinean</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Goian eskerrean</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Bilatu iruzkinak</string>
-  <string name="morphe_search_comments_summary">Sakatu iruzkinen bilaketa botoia kargatutako iruzkin bakarrik erakusteko, bilatutako hitz guztiak dituztenak. Esaldi bat bilatzeko, jarri hitzak komilla artean</string>
-  <string name="morphe_search_comments_dialog_title">Iruzkinak bilatu</string>
-  <string name="morphe_search_comments_hint">Bilatu nahi dituzun hitzak</string>
-  <string name="morphe_search_comments_clear">Garbitu</string>
-  <string name="morphe_search_comments_applied">Aldatu ordena edo ireki berriro iruzkinak bilatzeko</string>
-  <string name="morphe_search_comments_cleared">Bilaketa garbituta. Aldatu ordena edo ireki berriro iruzkinak iruzkin guztiak ikusteko</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Bilatu iruzkinak</string>
+  <string name="morphe_comment_search_summary">Sakatu iruzkinen bilaketa botoia kargatutako iruzkin bakarrik erakusteko, bilatutako hitz guztiak dituztenak. Esaldi bat bilatzeko, jarri hitzak komilla artean</string>
+  <string name="morphe_comment_search_dialog_title">Bilatu iruzkinak</string>
+  <string name="morphe_comment_search_hint">Bilatu nahi dituzun hitzak</string>
+  <string name="morphe_comment_search_clear">Garbitu</string>
+  <string name="morphe_comment_search_applied">Aldatu ordenauntza edo ireki berriz komentarioak bilatzeko</string>
+  <string name="morphe_comment_search_cleared">Bilaketa garbituta. Aldatu ordenauntza edo ireki berriz komentarioak guztiz ikusteko</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desaktibatu \'Sartu TV-n\' popup-a</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desaktibatu \'Konektatu zure gailuak\' popup-a</string>
@@ -1139,6 +1173,17 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Konpondu transkripzioa</string>
   <string name="morphe_fix_transcript_summary">Transkripzioa kargatzea eragotzi dezakeen baldintza aurrekoaren egiaztapen hutsegite bat konpontzen du</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Kopiaitu transkripzioa</string>
+  <string name="morphe_copy_transcript_title">Kopiaitu transkripzioa</string>
+  <string name="morphe_copy_transcript_summary">Botoi bat gehitzen du transkripzio panelean, subtituluen hizkuntzan transkripzioa kopiatzeko</string>
+  <string name="morphe_copy_transcript_timestamps_title">Inklitu denbora-zigiluak</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Kopiatutako transkripzioaren lerro bakoitza denborarekin hasten da</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Erakutsi Shorts menuetan</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Transkripzioa kopiatu elementua gehitzen du Shorts menuetara</string>
+  <string name="morphe_copy_transcript_copied">Transkripzioa arbelean kopiatu da</string>
+  <string name="morphe_copy_transcript_empty">Ez dago transkripzioik eskuragarri</string>
+  <string name="morphe_copy_transcript_error">Ezin izan da transkripzioa kopiatu</string>
   <string name="morphe_captions_in_pip_title">Erakutsi azpitituluak irudian-irudian</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Azpitituluen tamaina</string>
@@ -1170,6 +1215,9 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_show_settings_button_title">Erakutsi Konfigurazio botoia</string>
   <string name="morphe_show_settings_button_type_title">Konfigurazio botoiaren ekintza</string>
   <string name="morphe_show_settings_button_type_summary">Gaituta dagoenean, ukitzean Morphe konfigurazioa irekitzen da eta luze sakatzean YouTube konfigurazioa; desgaitu trukatzeko</string>
+  <string name="morphe_you_button_account_switcher_title">Kontu aldatzaileko shortcut-a</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Sakatu luze \'Zu\' botoia kontu aldatzailea irekitzeko</string>
   <string name="morphe_navigation_buttons_order_title">Nabigazio botoien ordena</string>
   <string name="morphe_navigation_buttons_order_summary">Arrastatu botoiak nabigazio barrako ordena aldatzeko</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trukatu Sortu botoia Jakinarazpenen botoiarekin</string>
@@ -1390,6 +1438,17 @@ Automobilen diseinua
 • 'Bideo gehiago' gainjartzea agian ez dago erabilgarri
 • Shorts-ak erreproduzigailu ohikoan irekitzen dira
 • Bideo zaharren ekintza-barra tolestu gabe agertzen da"</string>
+  <string name="morphe_change_form_factor_car_display_title">Kupurgi auto-diseguak autoen pantailetan</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Kupurgi auto-disegua erabiltzen da YouTube autoen pantailan erakutsiko denean, Android Auto edo DriveDeck bidez, adibidez</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Kupurgi auto-disegua ez da autoen pantailan erabiltzen</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Nabigazio-barra automatikoki ezkutatu autoen pantailetan</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Nabigazio-barra ezkutatzen da autoen pantailatan denbora batez erabili gabe owndo. Beheko ertzatik gora irrastun egin barra erakusteko</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Nabigazio-barra beti erakusten da autoen pantailatan</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Automatikoki ezkutatzeko atzerapena</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Irekinagatik edo ukitzeagatik, nabigazio barraa zenbat denboran geratzen den</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Kanpoko edozein pantailan erabili</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Telefonoaren pantaila ez den edozein pantaila auto-pantaila bat da, telebista edo monitoreak barne</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Android Auto-ak, pantailen izenek eta autoaren UI moduak aurkitzen dituzte auto-pantailak. Android 15 eta berriagoetan, DriveDeck, Gearslip, graphene-auto edo MyCar bidezko pantaila-mirrorsala ere auto-pantaila bat da"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Lehengo azpitituluen jokabidea berrezarri</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Berrezarri gorde playlistera zaharra</string>
@@ -1446,6 +1505,8 @@ Automobilen diseinua
   <string name="morphe_playback_in_feeds_entry_always_on">Beti aktibatuta</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi soilik</string>
   <string name="morphe_playback_in_feeds_entry_off">Desaktibatuta</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Erakutsi bilaketa botoiak feed-etan</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Feed-etan txertatzen diren bideoetan bilaketa botoiak erakutsi, YouTube-k ez dituen erakutsiz ere</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Berrezarri jatorrizko izenburuak</string>
   <string name="morphe_restore_original_titles_summary">Bideo-izen originalak, bideo-deskribapenak eta kanal-deskribapenak erakusten ditu automatikoki itzulitakoen ordez</string>
@@ -2051,4 +2112,106 @@ Grabaketa automatikoa aukerakoa da. Inkognito moduan edo kontua aldatzean geldit
   <string name="morphe_live_chat_translate_max_length_title">Mezu luzeraren gehienezkoa</string>
   <string name="morphe_live_chat_translate_max_length_summary">Mezu luzeagoak itzuli gabe erakutsiko dira</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Muga gabe</string>
+  <string name="morphe_ghost_play_screen_title">Ghost modua</string>
+  <string name="morphe_ghost_play_screen_summary">Ikusi bideoak ikusimenduen historian edo gomendapenetan eragin gabe</string>
+  <string name="morphe_ghost_play_cat_general_title">Orokorra</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Botoiak</string>
+  <string name="morphe_ghost_play_cat_rules_title">Auto-ghost arauak</string>
+  <string name="morphe_ghost_play_cat_history_title">Historia lokala</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Kuptasun aurreratua</string>
+  <string name="morphe_ghost_play_enabled_title">Aktibatu Ghost modua</string>
+  <string name="morphe_ghost_play_enabled_summary">Bideoak, Shorts, bilaketak, kanalak edo saio osoak ikusteko aukera ematen du, ikusteko historiaan edo gomendapenetan eragina izan gabe</string>
+  <string name="morphe_ghost_play_mode_active_title">Ghost modua aktiboa</string>
+  <string name="morphe_ghost_play_mode_active_summary">Aktibatuta egon odkonean, feed-etatik, bideo gaihartuetatik edo bilaketan normalan irekitzen dituzun bideo guztiak Ghost moduan joko dira, hiru-puntuen menua erabili gabe</string>
+  <string name="morphe_ghost_play_persist_mode_title">Gogoratu Ghost modua berrestartuen artean</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Ghost modua aktibatuta mantentzen du YouTube itxi eta berriz ireki ondoren ere</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Erakutsi Ghost moduko aktibatzaileak barrai goikoan</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Ghost moduko aktibatzaile konpakto bat jartzen du barrai goikoako ikonoen ondoan (sakatu aldatzeko, sakatu luze kontrol azkarrek)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Erakutsi bideo-menuan</string>
+  <string name="morphe_ghost_play_flyout_button_summary">\"Ghost moduan joko\" aukera gehitu bideoen hiru-puntuen menuan</string>
+  <string name="morphe_ghost_play_player_button_title">Erakutsi \'Ghost\' moduaren botoia</string>
+  <string name="morphe_ghost_play_player_button_summary">Botoi bat erakutsi \'Ghost\' modua aktibatzeko/desaktibatzeko bideoatzailean (luze sakatu kontrol azkarretarako)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Erreproduzketa eskaerak anonimotu</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Kontu-headerrak kendu ghost erreproduzketa eta ekitalde-eskaerei isolamendua sendotzeko. Adina mugatutako, kideentzako eta Premium ezaugarriak ez daude eskuragarri aktibatuta dagoen bitartean</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Shorts automatikoki ghost-tu</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Shorts automatikoki Ghost moduan ikusten ditu, zure home feed-ean eragin ez duten</string>
+  <string name="morphe_ghost_play_auto_search_title">Bilaketako bideoak Ghost moduan automatikoki</string>
+  <string name="morphe_ghost_play_auto_search_summary">Bilaketa emaitzetatik irekitako bideoak automatikoki Ghost moduan ikusten ditu</string>
+  <string name="morphe_ghost_play_manage_channels_title">Kanalak Ghost moduan automatikoki</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Ghost moduan beti erreproduzitzen diren kanalak bilatu, gehitu, ikasi eta kudeatu</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d kanal konfiguratuta — sakatu bilatzeko, ikasteko edo ezabatzeko</string>
+  <string name="morphe_ghost_play_local_history_title">Ghost historiako tokiko datuak gordetu</string>
+  <string name="morphe_ghost_play_local_history_summary">Gogo-moduko bideoak eta playback posizioak gogoratzen ditu gailu honetan soilik (ez dira inoiz YouTube-ra bidaltzen)</string>
+  <string name="morphe_ghost_play_history_limit_title">Gogo-historia lokalaren limitea</string>
+  <string name="morphe_ghost_play_history_limit_summary">Gailuan gordetzen diren bideo gehienak (sarrerak zaharrenak automatikoki kenden dira)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d bideo gorduta (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Ez da bideoik gorduta</string>
+  <string name="morphe_ghost_play_history_limit_100">100 bideo</string>
+  <string name="morphe_ghost_play_history_limit_500">500 bideo</string>
+  <string name="morphe_ghost_play_history_limit_2000">2.000 bideo</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Muga gabe</string>
+  <string name="morphe_ghost_play_view_history_title">Ireki Ghost-en historia lokala</string>
+  <string name="morphe_ghost_play_view_history_summary">Ikusi, bilatu, berraktu Ghost moduan edo garbitu zure gailuko historiaa</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d bideo gailuan gorduta (%2$s) — sakatu ikusteko edo berraktzeko</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Oraindik ez da biderik grabarik (gailu honetan bakarrik gorduta)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Erreproduzitu Ghost moduan</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost moda aktiboa — ikusimenduen historia eta gomendapenak babestuta daude</string>
+  <string name="morphe_ghost_play_video_off_toast">Ghost moda TXT bideo honentzat</string>
+  <string name="morphe_ghost_play_session_on_toast">Ghost moda AKTIBO — bideoei ez걔ieku egintza historiak edo gomendapenak</string>
+  <string name="morphe_ghost_play_session_off_toast">Ghost modua DESAKTIBATUTA — normaleko erreprodukzioan itzuli}</string>
+  <string name="morphe_ghost_play_timer_set_toast">Ghost modua aktibo %d minutan</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Temporizadorea garbituta — Ghost modua AKTIBO jarraitzen da</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Sartu 1 eta 720 minutoren arteko iraupena</string>
+  <string name="morphe_ghost_play_dialog_title">Ghost modua</string>
+  <string name="morphe_ghost_play_state_on">Piztuta</string>
+  <string name="morphe_ghost_play_state_off">Itzalita</string>
+  <string name="morphe_ghost_play_close">Itxi</string>
+  <string name="morphe_ghost_play_open_settings">Konfigurazio guztiak</string>
+  <string name="morphe_ghost_play_quick_power_hint">Sakatu Ghost modua altxatzeko</string>
+  <string name="morphe_ghost_play_quick_timer_title">Ghost modua temporizatua</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Sakatu iraupena aukeratzeko remercie</string>
+  <string name="morphe_ghost_play_quick_timer_running">Temporizadore aktiboa · %d min geratzen dira</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Amaitu zabaltzean normalean modu aktiboera itzultzen da automatikoki</string>
+  <string name="morphe_ghost_play_quick_timer_change">Aldatu denbora</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Garbitu temporizadore (ON mantendu)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Minutu pertsonalizatuak (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Ezarri</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost ON kanala honentzat</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost OFF kanala honentzat</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d kanala konfiguratuta</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Zerrenda (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" auto-ghost kanaletara gehituta</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" auto-ghost kanaletatik kenduta</string>
+  <string name="morphe_ghost_play_history_title">Ghost lokaleko historia</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d bideo (%s) · sakatu Ghost moduan berraktzeko, sakatu luze kendzeko</string>
+  <string name="morphe_ghost_play_history_search_hint">Filtratu bideoaren izenaren edo kanalaren arabera…</string>
+  <string name="morphe_ghost_play_history_no_match">Ez da bideoik aurkitu Ghost lokaleko historian</string>
+  <string name="morphe_ghost_play_history_empty">Ez dago oraindik Ghost lokaleko historiak</string>
+  <string name="morphe_ghost_play_history_clear_all">Den garbitu</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Ghost-en historia lokala garbitu?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Honek gailuan gordetako Ghost moduko sarrera guztiak ezabatuko ditu eta ezin da berreskuritu.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Ghost-en historia lokala garbituta</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Ghost-en historia lokaletik kenduta</string>
+  <string name="morphe_ghost_play_channels_manager_title">Auto-ghost kanalak</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Gehituta (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Bilatu &amp; Gehitu</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filtratu gehitako kanalak izenaren, @handle-aren edo gaien arabera…</string>
+  <string name="morphe_ghost_play_channels_empty">Kanalik ez daik gehitakoik. Pasatu \"Bilatu &amp; Gehitu\" atalera izenaren, @handle-aren edo URL-aren arabera kanalak bilatzeko.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Gehitako kanalik ez daki zure filtroarekin bat egiten</string>
+  <string name="morphe_ghost_play_channels_add_current">Doitzen: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Gehitu</string>
+  <string name="morphe_ghost_play_channels_added_badge">Gehitu da</string>
+  <string name="morphe_ghost_play_channels_delete_button">Kendu</string>
+  <string name="morphe_ghost_play_channels_search_hint">Kanalaren izena, @handle edo URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Bilatu</string>
+  <string name="morphe_ghost_play_channels_search_guide">Sartu kanal-izen bat, @handle bat edo YouTube kanalak URL bat eta sakatu Bilatu botonetan কাগজপত্র</string>
+  <string name="morphe_ghost_play_channels_searching">YouTube kanaletan bilatzen...</string>
+  <string name="morphe_ghost_play_channels_search_error">Bilaketa huts egin du. Egiaztatu zure konexioa eta saiatu berriro.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Ez da kanalik aurkitu bilaketa horretarako</string>
+  <string name="morphe_ghost_play_channels_search_count">%d kanal aurkituta — sakatu Gehitu auto-ghost aktibatzeko</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Bideo berrienak</string>
+  <string name="morphe_ghost_play_channels_loading_details">Bideo berrienak kargatzen...</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Ez da bideo berrik aurkitu (sakatu berriro saiatzeko)</string>
 </resources>

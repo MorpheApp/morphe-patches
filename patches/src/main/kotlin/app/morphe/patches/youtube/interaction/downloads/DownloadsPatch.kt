@@ -30,6 +30,7 @@ import app.morphe.patches.shared.misc.downloads.EXTENSION_FORMAT_STREAM_INTERFAC
 import app.morphe.patches.shared.misc.downloads.EXTENSION_STREAMING_DATA_INTERFACE
 import app.morphe.patches.shared.misc.downloads.OfflineSettingsConstructorFingerprint
 import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
+import app.morphe.patches.shared.misc.downloads.formatStreamInterfacePatch
 import app.morphe.patches.shared.misc.downloads.hookDownloadQualities
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
@@ -158,6 +159,7 @@ val downloadsPatch = patch(
 ) {
     dependsOn(
         downloadsResourcePatch,
+        formatStreamInterfacePatch,
         authHookPatch,
         videoInformationPatch,
         legacyPlayerControlsPatch,
@@ -319,7 +321,9 @@ val downloadsPatch = patch(
                         if-eqz p0, :keep_player_response
                         invoke-interface { p0 }, $playerResponseModelType->${playerResponseGetter.name}()$playerResponseType
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;)[B
+                        # The storyboards are the seekbar thumbnails of the saved video.
+                        const/4 v1, 0x1
+                        invoke-static { v0, v1 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->replaceDeclinedOfflinePlayerResponse(Ljava/lang/Object;Z)[B
                         move-result-object v0
                         if-eqz v0, :keep_player_response
 

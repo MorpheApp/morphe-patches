@@ -243,6 +243,7 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_hide_keyword_content_screen_title">Märksõnafilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Valige kindlad sõnad või fraasid, et peida videoid voogudes ja otsingutulemustes</string>
   <string name="morphe_hide_keyword_content_comments_title">Peida kommentaare märksõnade põhjal</string>
+  <string name="morphe_hide_keyword_content_posts_title">Peida postitused märksõnade järgi</string>
   <string name="morphe_hide_keyword_content_home_title">Peida Avalehe videoid märksõnade põhjal</string>
   <string name="morphe_hide_keyword_content_search_title">Peida otsingutulemusi märksõnade põhjal</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Peida Tellimuste videoid märksõnade põhjal</string>
@@ -250,7 +251,7 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_hide_keyword_content_phrases_summary">"Sisestage peidetavaks soovitud märksõnad ja fraasid, eraldades need uue rea abil
 
 Märksõnades võib olla ükskõik milline videote pealkirjades kuvatav tekst. Märksõna @Kasutajanimi peidab kogu sisu konkreetsetelt loojatelt"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Avaleht / Tellimused / Otsing / Kommentaarid on filtreeritud, et peita sisu, mis vastab märksõnafraasidele
+  <string name="morphe_hide_keyword_content_about_summary">"Avaleht / Tellimused / Otsing / Kommentaarid / Postitused on filtreeritud, et peita sisu, mis vastab märksõnadele
 
 Piirangud:
 • Mõned Shorts-videod ei saa peita kanali nime järgi
@@ -266,6 +267,39 @@ Piirangud:
 • Otsing: %3$s
 • Kommentärid: %4$s
 • Kokku: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Vaatamiste filter</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Peida voogudes ja otsingutes videod, millel on liiga vähe või liiga palju vaatamiskorda</string>
+  <string name="morphe_hide_videos_by_views_home_title">Peida kodulehe videoid vaatamiskordade järgi</string>
+  <string name="morphe_hide_videos_by_views_search_title">Peida otsingutulemusi vaatamiskordade järgi</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Peida tellimuste videoid vaatamiskordade järgi</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Minimaalne vaadalist arv</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Videod väiksema vaadalist on peidetud. 0 = ilma minimaalseta</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Maksimaalne vaadalist</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Videod suurema vaadalist on peidetud. 0 = ilma maksimaalseta</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Avaleht / Tellimused / Otsing on filtreeritud, et peita videod ja Shorts'i nende vaadalist järgi
+
+Piirangud:
+• YouTube ümardab vaadalist, nii et 1,2K vaadalist loetakse 1200 vaadalist
+• Otseülekandeid ei peideta
+• Peidetud Shorts võib jätta Shorts'ide riiulile tühja ruumi"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Vaadalist filter peidab kõik videod</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Kestuse filter</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Peida voogudes ja otsingutes videod, mis on liiga lühikesed või liiga pikad</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Peida kodulehe videoid kestuse järgi</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Peida otsingutulemusi kestuse järgi</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Peida tellimuste videoid kestuse järgi</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Minimaalne kestus (minutit)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Selle kestusest lühemad videod on peidetud. 0 = ilma minimaalseta</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Maksimaalne kestus (minutit)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Selle kestusest pikemad videod on peidetud. 0 = ilma maksimaalseta</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Avalenek / Tellimused / Otsing on filtreeritud, et peita videod nende kestuse järgi
+
+Piirangud:
+• Otseüsteid, Shorts-videoid, loendeid ja mikse ei peidata
+• Videoid tundmatu kestusega ei peidata"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Kestuse filter peidab kõik videod</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Peidetud videod, viimased 24 tundi</string>
   <string name="morphe_hide_stats_hidden_all_title">Peidetud videod, kogu aeg</string>
@@ -309,8 +343,6 @@ Piirangud:
   <string name="morphe_hide_sync_button_title">Peida nuppu \"Sünkronise videoga\"</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Peida puuduta ja hoidi gradient</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Peidab pleieri juhtimise gradienti, kui sõrme kiirendamiseks hoidmisel liigutatakse</string>
-  <string name="morphe_hide_timed_reactions_title">Peida ajastatud reaktsioone</string>
-  <string name="morphe_hide_timed_reactions_summary">Peidab funktsiooni, mis võimaldab kasutajatel reageerida emojitega kommentaariumi ja otsevestluse ajal</string>
   <string name="morphe_hide_help_feedback_menu_summary">Peidab menüü \"Abi &amp; tagasiside\", kui kasutatakse kolme punktiga nuppu, näiteks otsingutulemustel</string>
   <string name="morphe_hide_handle_title">Peida kasutajanimi</string>
   <string name="morphe_hide_handle_summary">Peidab teie kanali kasutajanime \'Sina\' vahekaardil</string>
@@ -425,10 +457,12 @@ Piirangud:
   <string name="morphe_hide_comments_menu_button_summary">Peidab iga kommentaari 3-punktilise menüünupu</string>
   <string name="morphe_hide_comments_none_yet_title">Peida eelvaates tekst \"Kommentaare pole veel\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Peida kommentaari eelvaade</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Peidab kommentaaride eelvaate video alt enne täieliku kommentaaride jaotise avamist</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Peidab kommentaaride eelvaadet video all enne kommentaaride jaotise avamist</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Kommentaar on Morphe poolt peidetud…</string>
-  <string name="morphe_minimal_comments_button_title">Luba minimalistlik kommentaaride nupp</string>
-  <string name="morphe_minimal_comments_button_summary">Peidab libisevad kaardid ja nende leheseliku valimiku, mis kuvatakse kommentaaride nupul</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Peida kommentaaride eelvaadekaardid</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Peidab kommentaaride nupul kuvatavaid libisevaid kaarte ja leheindikaatorit</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Peida ajastatud reaktsioone</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Peidab funktsiooni, mis võimaldab kasutajatel kommentaaride sektsioonis ja reaalajas vestluses emotikonidega reageerida</string>
   <string name="morphe_hide_comments_timestamp_button_title">Peida ajatempli nuppu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Peida nupp \"Peakfännid\"</string>
   <string name="morphe_hide_comments_topics_title">Peida \"Teemad\"</string>
@@ -678,14 +712,14 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_ryd_feed_counts_position_entry_1">Vaatamiste arvu kõrval</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Keskelt paremale</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Ülal vasakule</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Otsi kommentaaridest</string>
-  <string name="morphe_search_comments_summary">Puudutage kommentaaride alas olevat otsingunuppu, et kuvada ainult need laaditud kommentaarid, mis sisaldavad kõiki otsitud sõnu. Fraasi otsimiseks pange sõnad jutumärkidesse</string>
-  <string name="morphe_search_comments_dialog_title">Otsi kommentaaridest</string>
-  <string name="morphe_search_comments_hint">Otsitavad sõnad</string>
-  <string name="morphe_search_comments_clear">Tühjenda</string>
-  <string name="morphe_search_comments_applied">Muutke sorteerimist või avage kommentaarid uuesti, et neid otsida</string>
-  <string name="morphe_search_comments_cleared">Otsing puhastatud. Muutke sorteerimiskorda või avage kommentaarid uuesti, et näidata kõiki kommentaare</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Otsi kommentaarid</string>
+  <string name="morphe_comment_search_summary">Puudutage kommentaaride alas olevat otsingunuppu, et kuvada ainult need laaditud kommentaarid, mis sisaldavad kõiki otsitud sõnu. Fraasi otsimiseks pange sõnad jutumärkidesse</string>
+  <string name="morphe_comment_search_dialog_title">Otsi kommentaarid</string>
+  <string name="morphe_comment_search_hint">Sõnad otsimiseks</string>
+  <string name="morphe_comment_search_clear">Tühjenda</string>
+  <string name="morphe_comment_search_applied">Muuda sorteerimist või ava kommentaarid uuesti, et neid otsida</string>
+  <string name="morphe_comment_search_cleared">Otsing tühistatud. Muuda sorteerimist või ava kommentaarid uuesti, et näidata kõiki kommentaarid</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Keela hüpikaken \"Logi sisse telerisse\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Keela riistmete ühendamise hüpikaken</string>
@@ -1139,6 +1173,17 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Paranda transkriptsiooni</string>
   <string name="morphe_fix_transcript_summary">Lahendab eeltingimuste kontrolli ebaõnnestumise, mis võib takistada transkriptsiooni laadimist</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Kopeeri transkript</string>
+  <string name="morphe_copy_transcript_title">Kopeeri transkript</string>
+  <string name="morphe_copy_transcript_summary">Lisab transkriptipaneelile nupu, mis kopeerib transkripti vastavalt alapealtekeele</string>
+  <string name="morphe_copy_transcript_timestamps_title">Lisa ajatemplid</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Iga kopeeritud transkripti rida algab ajatsähviga</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Kuva Shorts\'i menüüs</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Lisab Shorts\'i menüüssese pundi \"Kopeeri transkript\"</string>
+  <string name="morphe_copy_transcript_copied">Transkript kopeeriti lõikelauale</string>
+  <string name="morphe_copy_transcript_empty">Transkript pole saadaval</string>
+  <string name="morphe_copy_transcript_error">Transkripti ei õnnestunud kopeerida</string>
   <string name="morphe_captions_in_pip_title">Kuva altekstid pildis-pildis</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Subtiitrite suurus</string>
@@ -1170,6 +1215,9 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_show_settings_button_title">Kuva seadete nupp</string>
   <string name="morphe_show_settings_button_type_title">Seadistuste nupu tegevus</string>
   <string name="morphe_show_settings_button_type_summary">Kui see on sisse lülitatud, avab lühike puudutus Morphe seaded ja pikk vajutus YouTube\'i seaded. Funktsioonide vastupidiseks muutmiseks lülita see välja</string>
+  <string name="morphe_you_button_account_switcher_title">Konto vahetamise otsetee</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Konto vahetamise avamiseks hoia nuppu \"Sina\" pikka</string>
   <string name="morphe_navigation_buttons_order_title">Navigeerimisnuppude järjekord</string>
   <string name="morphe_navigation_buttons_order_summary">Lohistage nuppe, et muuta nende järjekorda navigeerimisribas</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaheta Loo nuppu Teavituste nupuga</string>
@@ -1345,17 +1393,17 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <string name="morphe_replay_video_button_title">Kuva aeglustatud korduse nupp</string>
   <string name="morphe_replay_video_button_summary">Kerib video tagasi ja aeglustab seda ajutiselt. Tühistamiseks puudutage uuesti</string>
   <string name="morphe_replay_video_swipe_title">Kevitage aeglustatult, pühkides vasakule</string>
-  <string name="morphe_replay_video_swipe_summary">Pühkige videol vasakule, et kerida tagasi 1–10 sekundit sõltuvalt pühkimise pikkusest. Pühkimise juhtimised otsivad ja ülaala pühkimised on prioriteetsed</string>
+  <string name="morphe_replay_video_swipe_summary">Pühkige videol vasakule, et kerida tagasi 1–10 sekundit sõltuvalt pühkimise pikkusest. Pühkimise juhtimised asukoha otsing ja ülaala pühkimised on prioriteetsed</string>
   <string name="morphe_replay_video_swipe_preview">Kordus %s s</string>
-  <string name="morphe_replay_video_seconds_title">Tagasipoolutuse kestus</string>
-  <string name="morphe_replay_video_seconds_summary">Kui mitu sekundit nupp videot tagasi poolutab</string>
+  <string name="morphe_replay_video_seconds_title">Tagasi poolutamise</string>
+  <string name="morphe_replay_video_seconds_summary">Kui mitu sekundit nupp videot kerib tagasi</string>
   <string name="morphe_replay_video_slow_seconds_title">Aeglustatud esituse kestus</string>
-  <string name="morphe_replay_video_slow_seconds_summary">Kui mitu sekundit videot esitatakse tagasipoolutuse järel aeglustatud kiirusega</string>
+  <string name="morphe_replay_video_slow_seconds_summary">Kui mitu sekundit videot esitatakse tagasikerimine järel aeglustatud kiirusega</string>
   <string name="morphe_replay_video_speed_title">Korduse kiirus</string>
   <string name="morphe_replay_video_speed_summary">Korduse esituskiirus, näiteks 0,5. Kordus ei ole kunagi praegusest kiirusest kiirem</string>
   <string name="morphe_replay_video_start">Esita kordust aeglasemalt</string>
   <string name="morphe_replay_video_unavailable">Aeglustatud kordus pole selle video puhul saadaval</string>
-  <string name="morphe_replay_video_speed_invalid">Taastoetuskiirus on vale, lähtestatakse vaikimisele</string>
+  <string name="morphe_replay_video_speed_invalid">Taasestuse kiirus on vale, lähtestatakse vaikimisele</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Näita vaigistamise nuppu</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -1390,6 +1438,17 @@ Auto paigutus
 • Ülekattekiht \"Rohkem videoid\" ei pruugi olla saadaval
 • Shortsid avanevad tavalises pleieris
 • Kuvatakse vana video tegevusriba, mis pole suletud"</string>
+  <string name="morphe_change_form_factor_car_display_title">Autoliigutuse paigutus autikuvadel</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Autoliigutuse paigutust kasutatakse siis, kui YouTubei kuvatakse autikuval, näiteks Android Auto või DriveDecki abil</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Autoliigutuse paigutust ei kasutata autikuvadel</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Navigeerimisriba automaatne peitmine autoekraanidel</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Navigeerimisriba peidetakse autoekraanil, kui seda mõni aeg ei kasutata. Selle kuvamiseks pühiki ülevalt allumõistest</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Navigeerimisriba on autoekraanidel alati nähtav</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Automaatse peitmise viivitus</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Kui kaua navigatsiooniriba jääb nähtavaks pärast selle kuvamist või puudutamist</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Kasuta suvalisel välisekuval</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Iga kuva peale telefoni ekraani on autikuva, sealhulgas TELEVISIOON või monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Autikuvad tuvastatakse Android Auto, kuvanimete ja auto kasutajaliidese režiimi abil. Androidi versioonis 15 ja uuemas on ka DriveDecki, Gearslipi, graphene-auto või MyCar ekraani peegeldamine autikuva"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Taastatakse tekstide vana käitumine</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Taasta vana salvestus loendisse</string>
@@ -1446,6 +1505,8 @@ Auto paigutus
   <string name="morphe_playback_in_feeds_entry_always_on">Alati sisse</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Ainult Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Väljas</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Kuva mähknuppud voogudes</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Kuvab mähknuppud voogudes esitatavatel videotel ka siis, kui YouTube neid ei kuva</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Taasta algsed pealkirjad</string>
   <string name="morphe_restore_original_titles_summary">Kuvab video algsed pealkirjad, videokirjeldused ja kanalite kirjeldused automaatsete tõlgete asemel</string>
@@ -2051,4 +2112,106 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_live_chat_translate_max_length_title">Sõnumi maksimaalne pikkus</string>
   <string name="morphe_live_chat_translate_max_length_summary">Pikemaid sõnumeid ei tõlgita</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Piiranguvaba</string>
+  <string name="morphe_ghost_play_screen_title">Ghost-režiim</string>
+  <string name="morphe_ghost_play_screen_summary">Vaata videoid ilma vaatamisajalugu või soovitusi</string>
+  <string name="morphe_ghost_play_cat_general_title">Üldine</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Nupud</string>
+  <string name="morphe_ghost_play_cat_rules_title">Automaatsed ghost-reeglid</string>
+  <string name="morphe_ghost_play_cat_history_title">Kohalik ajalugu</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Täpsem privaatsus</string>
+  <string name="morphe_ghost_play_enabled_title">Luba Ghost-režiim</string>
+  <string name="morphe_ghost_play_enabled_summary">Võimaldab vaadata valitud videoid, Shorts-videoid, otsinguid, kanaleid või tervi istunde ilma vaatamisajalugule või soovitustele mõjutamata</string>
+  <string name="morphe_ghost_play_mode_active_title">Privaatne režiim on aktiveeritud</string>
+  <string name="morphe_ghost_play_mode_active_summary">Kui see on sisse lülitatud, siis iga video, mille avad tavaliselt feedidest, seotud videotest või otsingust, esitatakse Ghost-režiimis ilma kolme punkti menüüt kasutamata</string>
+  <string name="morphe_ghost_play_persist_mode_title">Jäta Ghost-režiim meelde taaskäivitamisel</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Hoiab Ghost-režiimi sisse lülitatud ka pärast YouTube\'i sulgemist ja uuesti avamist</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Kuva Ghost-režiimi lüliti ülemises ribas</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Placeerib kompakse Ghost-režiimi lüliti ülemise riba ikoonide kõrvale (puuduta lülitamiseks, hoia pikalt kiirjuhtimist jaoks)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Kuva videomenüüs</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Lisab videote kolme punkti menüüsse valiku \"Esita Ghost-režiimis\"</string>
+  <string name="morphe_ghost_play_player_button_title">Näita Ghost-režiimi nuppu</string>
+  <string name="morphe_ghost_play_player_button_summary">Kuvab videopleieri Ghost-režiimi lülituse (pikapressimiseks kiired juhtimised)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Anonimiseeri esituse päringud</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Eemaldab konto päisid Ghost-esituse ja sündmuste päringutest suurema isolatsiooni tagamiseks. Vanusepiiranguga, liikmetele mõeldud ja Premium-funktsioonid pole lubatud oleku ajal saadaval</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Auto-Ghost Shorts-videoid</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Vaatab Shorts-videoid automaatselt Ghost-režiimis, et need ei mõjutaks teie avale voogu</string>
+  <string name="morphe_ghost_play_auto_search_title">Otsingutulemuste videode automaatne Ghost-režiim</string>
+  <string name="morphe_ghost_play_auto_search_summary">Vaatab otsingutulemustes avatud videoid automaatselt Ghost-režiimis</string>
+  <string name="morphe_ghost_play_manage_channels_title">Kanalite automaatne Ghost-režiim</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Otsige, lisage, kontrollige ja hallake kanaleid, mis mängivad alati Ghost-režiimis</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d kanalit konfigureeritud — puuduta, et otsida, kontrollida või eemaldada</string>
+  <string name="morphe_ghost_play_local_history_title">Hoidke kohalikku Ghost-ajalugu</string>
+  <string name="morphe_ghost_play_local_history_summary">Meletab Ghost-režiimi videoid ja taasestuskohti ainult selles seadmes (ei saadetage kunagi YouTube\'i)</string>
+  <string name="morphe_ghost_play_history_limit_title">Kohaliku Ghost-ajaloo piirang</string>
+  <string name="morphe_ghost_play_history_limit_summary">Seadmes hoitavate videode maksimaalne arv (vanimad kirjed eemaldatakse automaatselt)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d videot salvatud (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Videoid ei ole salvatud</string>
+  <string name="morphe_ghost_play_history_limit_100">100 videot</string>
+  <string name="morphe_ghost_play_history_limit_500">500 videot</string>
+  <string name="morphe_ghost_play_history_limit_2000">2000 videot</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Piiramatult</string>
+  <string name="morphe_ghost_play_view_history_title">Ava kohalik Ghost-ajalugu</string>
+  <string name="morphe_ghost_play_view_history_summary">Vaata, otsi, jätka Ghost-režiimis või kustuta oma seadmes olev ajalugu</string>
+  <string name="morphe_ghost_play_view_history_summary_count">Seadmel on salvestatud %1$d videot (%2$s) — puuduta, et vaadata või jätkata</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Videoid pole veel salvestatud (salvestatakse ainult selles seadmes)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Esita Ghost-režiimis</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost-režiim on aktiveeritud — vaatamisajalugu ja soovitused on kaitstud</string>
+  <string name="morphe_ghost_play_video_off_toast">Ghost-režiim on selle video puhul VÄLJA</string>
+  <string name="morphe_ghost_play_session_on_toast">Ghost-režiim on SEES — videod ei mõjuta ajalugu ega soovitusi</string>
+  <string name="morphe_ghost_play_session_off_toast">Ghost-režiim on VÄLJA — naastakse tavaseisundisse</string>
+  <string name="morphe_ghost_play_timer_set_toast">Ghost-režiim on aktiivne %d minutit</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Taimer tühistatud — Ghost-režiim jääb SEES</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Sisestage kestus vahemikus 1 kuni 720 minutit</string>
+  <string name="morphe_ghost_play_dialog_title">Hingerežiim</string>
+  <string name="morphe_ghost_play_state_on">Sees</string>
+  <string name="morphe_ghost_play_state_off">Väljas</string>
+  <string name="morphe_ghost_play_close">Sulge</string>
+  <string name="morphe_ghost_play_open_settings">Kõik seaded</string>
+  <string name="morphe_ghost_play_quick_power_hint">Puudutage, et lülitada Ghost-režiim</string>
+  <string name="morphe_ghost_play_quick_timer_title">Ajastatud Ghost-režiim</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Puudutage, et valida kestus</string>
+  <string name="morphe_ghost_play_quick_timer_running">Taimer on aktiivne · %d min jäänud</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Lõppedes naaseb automaatselt tavarežiimi</string>
+  <string name="morphe_ghost_play_quick_timer_change">Muuda aega</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Tühista taimer (hoia sisse)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Kendi minutid (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Määra</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Autovaimustus on selle kanali jaoks SISES</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Autovaimustus on selle kanali jaoks VÄLJA</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d kanalit konfigureeritud</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Loend (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">Lisatud \"%s\" automaatsetele Ghost-kanalitele</string>
+  <string name="morphe_ghost_play_channel_removed_toast">Eemaldatud \"%s\" automaatsetelt Ghost-kanalitelt</string>
+  <string name="morphe_ghost_play_history_title">Kohalik Ghost-ajalugu</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d videot (%s) · puuduta, et jätkata Ghost-režiimis, hoia kinni, et eemaldada</string>
+  <string name="morphe_ghost_play_history_search_hint">Filtreeri video pealkirja või kanali järgi…</string>
+  <string name="morphe_ghost_play_history_no_match">Kohalikust Ghost-ajaloost ei leitud vastavaid videoid</string>
+  <string name="morphe_ghost_play_history_empty">Kohalikku Ghost-ajaloogu veel pole</string>
+  <string name="morphe_ghost_play_history_clear_all">Tühjenda kõik</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Tühjenda kohalik Ghost-ajalugu?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">See eemaldab kõik seadmesse salvestatud Ghost-režiimi kirjed ja seda ei saa tagasi pöördata.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Kohalik Ghost-ajalugu tühjendatud</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Eemaldatud kohalikust Ghost-ajalugust</string>
+  <string name="morphe_ghost_play_channels_manager_title">Auto-ghost kanalid</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Lisatud (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Otsi &amp; lisa</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filtreeri lisatud kanaleid nime, @kasutajanime või teema järgi…</string>
+  <string name="morphe_ghost_play_channels_empty">Kanaleid ei ole veel lisatud. Lülitage vaatele \"Otsi &amp; lisa\", et leida kanaleid nime, @kasutajanime või URL-i järgi.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Ükski lisatud kanal ei vasta teie filtrile</string>
+  <string name="morphe_ghost_play_channels_add_current">Esitatakse: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Lisa</string>
+  <string name="morphe_ghost_play_channels_added_badge">Lisatud</string>
+  <string name="morphe_ghost_play_channels_delete_button">Eemalda</string>
+  <string name="morphe_ghost_play_channels_search_hint">Kanali nimi, @kasutajanimi või URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Otsing</string>
+  <string name="morphe_ghost_play_channels_search_guide">Sisestage kanali nimi, @kasutajanimi või YouTube\'i kanali URL ja puudutage nuppu Otsi</string>
+  <string name="morphe_ghost_play_channels_searching">Otsitakse YouTube\'i kanaleid…</string>
+  <string name="morphe_ghost_play_channels_search_error">Otsing nurjus. Kontrolli ühendust ja proovi uuesti.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Selle päringuga kanaleid ei leitud</string>
+  <string name="morphe_ghost_play_channels_search_count">%d kanalit leiti — puuduta Lisa, et lubada auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Viimased videod</string>
+  <string name="morphe_ghost_play_channels_loading_details">Laaditakse viimaseid videoid…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Viimaseid videoid ei leitud (puuduta uuesti proovimiseks)</string>
 </resources>

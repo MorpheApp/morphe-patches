@@ -307,4 +307,91 @@ public class LyricsWordTimingCalcTest {
             assertFalse(wt.averaged());
         }
     }
+
+    @Test
+    public void plainChineseLineIsGroupedByPinyinWord() {
+        LyricsLine wordless = line(0, 900, "一个人", List.of());
+        LyricsLine wordSynced = line(1000, 2000, "ab cd", List.of(
+                new Word(1100, 1400, "ab"),
+                new Word(1500, 1800, "cd")));
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(wordless, wordSynced), 0, false);
+        assertEquals(3, timings.size());
+        for (WordTiming timing : timings) {
+            assertEquals(0, timing.wordGroup());
+        }
+    }
+
+    @Test
+    public void koreanLineIsGroupedByHangulRun() {
+        LyricsLine wordless = line(0, 900, "안녕 세계", List.of());
+        LyricsLine wordSynced = line(1000, 2000, "ab cd", List.of(
+                new Word(1100, 1400, "ab"),
+                new Word(1500, 1800, "cd")));
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(wordless, wordSynced), 0, false);
+        assertEquals(4, timings.size());
+        assertArrayEquals(new int[]{0, 0, 1, 1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
+    public void sourceSyllableWordsAreRegroupedByPinyin() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "一个人",
+                        List.of(new Word(0, 400, "一个"), new Word(400, 1000, "人")))), 0, false);
+        assertEquals(2, timings.size());
+        assertEquals(0, timings.get(0).wordGroup());
+        assertEquals(0, timings.get(1).wordGroup());
+    }
+
+    @Test
+    public void krcSyllableWordsFollowPinyinWordBoundaries() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "重新开始", List.of(
+                        new Word(0, 200, "重"), new Word(200, 400, "新"),
+                        new Word(400, 700, "开"), new Word(700, 1000, "始")))), 0, false);
+        assertEquals(4, timings.size());
+        assertArrayEquals(new int[]{0, 0, 1, 1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
+    public void sourceWordsSurviveWithoutADictionary() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "你好世界", List.of(
+                        new Word(0, 500, "你好"), new Word(500, 1000, "世界")))), 0, false);
+        assertArrayEquals(new int[]{0, 1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
+    public void latinWordsInAChineseLineHaveNoGroup() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "重新ok开始", List.of(
+                        new Word(0, 300, "重新"), new Word(300, 600, "ok"),
+                        new Word(600, 1000, "开始")))), 0, false);
+        assertArrayEquals(new int[]{0, -1, 1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
+    public void japaneseWithoutATokenizerHasNoGroups() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "今日は", List.of(
+                        new Word(0, 300, "今"), new Word(300, 600, "日"),
+                        new Word(600, 1000, "は")))), 0, false);
+        assertArrayEquals(new int[]{0, 1, 2},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
+    public void aTimingAcrossTwoWordsHasNoGroup() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "重新开始", List.of(
+                        new Word(0, 500, "重新开"), new Word(500, 1000, "始")))), 0, false);
+        assertEquals(2, timings.size());
+        assertEquals(-1, timings.get(0).wordGroup());
+        assertEquals(1, timings.get(1).wordGroup());
+    }
 }

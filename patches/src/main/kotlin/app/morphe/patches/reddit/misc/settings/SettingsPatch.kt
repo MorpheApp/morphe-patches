@@ -144,7 +144,10 @@ val settingsPatch = patch(
         GooglePlayUpdateCheckFingerprint.method.returnEarly(null)
 
         // Force Play Store Verification checks to pass.
-        PlayStoreVerificationFingerprint.method.returnEarly(false)
+        // Each Google Play library bundles its own copy of the check.
+        PlayStoreVerificationFingerprint.matchAll(1..2).forEach {
+            it.method.returnEarly(false)
+        }
 
         // Show toast informing that Google sign-in does not work.
         if (is_2026_14_0_or_greater) {
@@ -233,7 +236,9 @@ val settingsPatch = patch(
             return@execute
         }
 
-        CheckIntegrityPlayStoreFingerprint.method.returnEarly(0)
+        CheckIntegrityPlayStoreFingerprint.matchAll(1..2).forEach {
+            it.method.returnEarly(0)
+        }
 
         /**
          * Replace settings label and icon
@@ -265,10 +270,14 @@ val settingsPatch = patch(
         }
 
         PreferenceDestinationLegacyFingerprint.let {
+            // Fragment.requireActivity()
             val getActivityMethod = Fingerprint(
                 accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                 returnType = RedditActivityFingerprint.originalClassDef.type,
-                parameters = listOf()
+                parameters = listOf(),
+                filters = listOf(
+                    string(" not attached to an activity.")
+                )
             ).method
 
             val startActivityMethod = Fingerprint(

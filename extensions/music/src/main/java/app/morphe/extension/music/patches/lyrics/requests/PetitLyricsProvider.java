@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -55,6 +56,45 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private static final int LSY_MIN_HEADER_LEN = LSY_PAYLOAD_START;
     private static final int LSY_MAX_LINES = 10_000;
     private static final int LSY_WRAP_CS = 65_536;
+
+    /** Full-width separators split a title as they are; ASCII ones only with spaces around. */
+    private static final Pattern TITLE_SEPARATOR = Pattern.compile("\\s*[—–／〜]\\s*|\\s+[-/~]\\s+");
+
+    /**
+     * Drops the subtitles PetitLyrics does not list, such as an English title or a bracketed
+     * note after the Japanese one.
+     */
+    static String cleanTitle(String raw) {
+        String[] parts = TITLE_SEPARATOR.split(raw.trim());
+        if (parts.length < 2) {
+            return raw;
+        }
+        StringBuilder cleaned = new StringBuilder(parts[0].trim());
+        for (int i = 1; i < parts.length; i++) {
+            String tail = parts[i].trim();
+            if (!tail.isEmpty() && !isBracketed(tail) && !isPureAscii(tail)) {
+                cleaned.append(" - ").append(tail);
+            }
+        }
+        String result = cleaned.toString().trim();
+        return result.isEmpty() ? raw : result;
+    }
+
+    private static boolean isBracketed(String s) {
+        int len = s.length();
+        if (len < 2) return false;
+        char first = s.charAt(0);
+        char last = s.charAt(len - 1);
+        return (first == '(' && last == ')') || (first == '[' && last == ']');
+    }
+
+    private static boolean isPureAscii(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c < 0x20 || c > 0x7E) return false;
+        }
+        return true;
+    }
 
     static int scoreOf(Song song, TrackInfo track) {
         return LyricsRequests.scoreTrackCandidate(
@@ -963,10 +1003,11 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private Response request(TrackInfo track, int lyricsType) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 
+        String title = cleanTitle(track.title());
         String form = "clientAppId=" + LyricsRequests.encode(CLIENT_APP_ID) +
                 "&terminalType=" + LyricsRequests.encode(TERMINAL_TYPE) +
                 "&lyricsType=" + lyricsType +
-                "&key_title=" + LyricsRequests.encode(track.title()) +
+                "&key_title=" + LyricsRequests.encode(title) +
                 "&key_artist=" + LyricsRequests.encode(track.artist()) +
                 "&key_album=" + LyricsRequests.encode(track.album());
 

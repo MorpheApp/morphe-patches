@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">ຕົວຕອງຄຳສັບຫຼັກ</string>
   <string name="morphe_hide_keyword_content_screen_summary">ເລືອກຄໍາ ຫຼື ວະລີສະເພາະເພື່ອເຊື່ອງວິດີໂອໃນ feed ແລະ ການຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_comments_title">ເຊື່ອງຄຳຄິດເຫັນຕາມຄຳຄົ້ນຫາ</string>
+  <string name="morphe_hide_keyword_content_posts_title">ເຊື່ອງໂພສດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_home_title">ເຊື່ອງວິດີໂອໃນໜ້າຫຼັກດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_search_title">ເຊື່ອງຜົນການຄົ້ນຫາດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">ເຊື່ອງວິດີໂອໃນການຕິດຕາມດ້ວຍຄຳຄົ້ນຫາ</string>
@@ -250,11 +251,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"ປ້ອນຄຳສັບຫຼັກ ແລະ ວະລີທີ່ຕ້ອງການເຊື່ອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່
 
 ຄຳສັບຫຼັກສາມາດເປັນຂໍ້ຄວາມໃດກໍໄດ້ທີ່ສະແດງໃນຫົວຂໍ້ວິດີໂອ. ຄຳສັບຫຼັກ @UserName ຈະເຊື່ອງເນື້ອຫາທັງໝົດຈາກຜູ້ສ້າງທີ່ລະບຸ"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ຄົ້ນຫາ / ຄຳຄິດເຫັນ ຈະຖືກກັ່ນຕອງເພື່ອເຊື່ອງເນື້ອຫາທີ່ກົງກັບວະລີຄຳຄົ້ນຫາ
+  <string name="morphe_hide_keyword_content_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ຄົ້ນຫາ / ຄຳຄິດເຫັນ / ໂພສ ຈະຖືກກັ່ນຕອງເພື່ອເຊື່ອງເນື້ອຫາທີ່ກົງກັບວະລີຄຳຄົ້ນຫາ
 
 ຂໍ້ຈຳກັດ:
-• Shorts ບາງອັນບໍ່ສາມາດເຊື່ອງໄດ້ດ້ວຍຊື່ຊ່ອງ
-• ອົງປະກອບ UI ບາງຢ່າງອາດຈະບໍ່ຖືກເຊື່ອງ"</string>
+• ບາງ Shorts ບໍ່ສາມາດເຊື່ອງໄດ້ດ້ວຍຊື່ຊ່ອງ
+• ບາງສ່ວນປະກອບຂອງ UI ອາດຈະບໍ່ຖືກເຊື່ອງ"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">ຈັບຄູ່ຄຳສັບທັງໝົດ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ການໃສ່ເຄື່ອງໝາຍຄຳເວົ້າຄູ່ລ້ອມຮອບຄຳສັບ/ວະລີ ຈະປ້ອງກັນການຈັບຄູ່ບາງສ່ວນຂອງຊື່ວິດີໂອ ແລະ ຊື່ຊ່ອງ&lt;br&gt;&lt;br&gt;ຕົວຢ່າງ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ຈະເຊື່ອງວິດີໂອ: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ແຕ່ຈະບໍ່ເຊື່ອງ: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -266,6 +267,39 @@ Second \"item\" text"</string>
 • ຄົ້ນຫາ: %3$s
 • ຄຳເຫັນ: %4$s
 • ທັງໝົດ: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">ຕົວຕອງຈຳນວນການເບິ່ງ</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">ເຊື່ອງວິດີໂອໃນ feed ແລະ ການຄົ້ນຫາ ທີ່ມີການເບິ່ງໜ້ອຍເກີນໄປ ຫຼື ຫຼາຍເກີນໄປ</string>
+  <string name="morphe_hide_videos_by_views_home_title">ເຊື່ອງວິດີໂອໃນໜ້າຫຼັກຕາມຈຳນວນການເບິ່ງ</string>
+  <string name="morphe_hide_videos_by_views_search_title">ເຊື່ອງຜົນການຄົ້ນຫາຕາມຈຳນວນການເບິ່ງ</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">ເຊື່ອງວິດີໂອໃນການຕິດຕາມຕາມຈຳນວນການເບິ່ງ</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">ຈຳນວນການເບິ່ງຕ່ຳສຸດ</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">ວິດີໂອທີ່ມີການເບິ່ງໜ້ອຍກວ່າຈະຖືກເຊື່ອງ. 0 = ບໍ່ມີຂີດຈຳກັດຕ່ຳສຸດ</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">ຈຳນວນການເບິ່ງສູງສຸດ</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">ວິດີໂອທີ່ມີການເບິ່ງຫຼາຍກວ່າຈະຖືກເຊື່ອງ. 0 = ບໍ່ມີຂີດຈຳກັດສູງສຸດ</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ການຄົ້ນຫາ ຈະຖືກກັ່ນຕອງເພື່ອເຊື່ອງວິດີໂອ ແລະ Shorts ຕາມຈຳນວນການເບິ່ງ
+
+ຂໍ້ຈຳກັດ:
+• YouTube ປັດຈຳນວນການເບິ່ງ, ດັ່ງນັ້ນ 1.2K views ຈະຖືກນັບເປັນ 1200 views
+• ການຖ່າຍທອດສົດຈະບໍ່ຖືກເຊື່ອງ
+• Shorts ທີ່ຖືກເຊື່ອງອາດຈະເຮັດໃຫ້ເກີດຊ່ອງວ່າງໃນຊັ້ນ Shorts"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">ຕົວຕອງຈຳນວນການເບິ່ງຈະເຊື່ອງທຸກວິດີໂອ</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">ຕົວຕອງໄລຍະເວລາ</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">ເຊື່ອງວິດີໂອໃນຟີດ ແລະ ການຄົ້ນຫາ ທີ່ມີຄວາມຍາວສັ້ນເກີນໄປ ຫຼື ຍາວເກີນໄປ</string>
+  <string name="morphe_hide_videos_by_duration_home_title">ເຊື່ອງວິດີໂອໃນໜ້າຫຼັກຕາມໄລຍະເວລາ</string>
+  <string name="morphe_hide_videos_by_duration_search_title">ເຊື່ອງຜົນການຄົ້ນຫາຕາມໄລຍະເວລາ</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">ເຊື່ອງວິດີໂອໃນການຕິດຕາມຕາມໄລຍະເວລາ</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">ໄລຍະເວລາຕ່ຳສຸດ (ນາທີ)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">ວິດີໂອທີ່ສັ້ນກວ່ານີ້ຈະຖືກເຊື່ອງ. 0 = ບໍ່ມີຂີດຈຳກັດຕ່ຳສຸດ</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">ໄລຍະເວລາສູງສຸດ (ນາທີ)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">ວິດີໂອທີ່ຍາວກວ່ານີ້ຈະຖືກເຊື່ອງ. 0 = ບໍ່ມີຂີດຈຳກັດສູງສຸດ</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ການຄົ້ນຫາ ຈະຖືກກັ່ນຕອງເພື່ອເຊື່ອງວິດີໂອຕາມໄລຍະເວລາຂອງພວກມັນ
+
+ຂໍ້ຈຳກັດ:
+• ການຖ່າຍທອດສົດ, Shorts, ພລິສເຕລິດ ແລະ ມິກສ໌ ຈະບໍ່ຖືກເຊື່ອງ
+• ວິດີໂອທີ່ບໍ່ຮູ້ໄລຍະເວລາຈະບໍ່ຖືກເຊື່ອງ"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">ຕົວຕອງໄລຍະເວລາຈະເຊື່ອງວິດີໂອທັງໝົດ</string>
   <string name="morphe_hide_stats_category_title">ສະຖິຕິ</string>
   <string name="morphe_hide_stats_hidden_24h_title">ວິດີໂອທີ່ຖືກເຊື່ອງ, 24 ຊົ່ວໂມງທີ່ຜ່ານມາ</string>
   <string name="morphe_hide_stats_hidden_all_title">ວິດີໂອທີ່ຖືກເຊື່ອງ, ທັງໝົດ</string>
@@ -309,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">ເຊື່ອງປຸ່ມ \'ຊິງຄ໌ກັບວິດີໂອ\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ເຊື່ອງການໄລ່ສີການແຕະ ແລະ ຄ້າງໄວ້</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">ເຊື່ອງການໄລ່ສີຂອງຕົວຄວບຄຸມເຄື່ອງຫຼິ້ນ ເມື່ອເລື່ອນນິ້ວມືໃນຂະນະທີ່ກົດຄ້າງໄວ້ເພື່ອເພີ່ມຄວາມໄວ</string>
-  <string name="morphe_hide_timed_reactions_title">ເຊື່ອງການຕອບສະໜອງແບບກຳນົດເວລາ</string>
-  <string name="morphe_hide_timed_reactions_summary">ເຊື່ອງຟີເຈີທີ່ຊ່ວຍໃຫ້ຜູ້ໃຊ້ສາມາດຕອບໂຕ້ດ້ວຍອີໂມຈິໃນສ່ວນຄຳຄິດເຫັນ ແລະ ແຊັດສົດ</string>
   <string name="morphe_hide_help_feedback_menu_summary">ເຊື່ອງເມນູ \'ຄວາມຊ່ວຍເຫຼືອ &amp; ຄຳຄິດເຫັນ\' ເມື່ອໃຊ້ປຸ່ມສາມຈຸດ, ເຊັ່ນ ໃນຜົນການຄົ້ນຫາ</string>
   <string name="morphe_hide_handle_title">ເຊື່ອງ handle</string>
   <string name="morphe_hide_handle_summary">ເຊື່ອງ handle ຂອງຊ່ອງທ່ານໃນແຖບ \'ທ່ານ\'</string>
@@ -425,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">ເຊື່ອງປຸ່ມເມນູ 3 ຈຸດ ຂອງແຕ່ລະຄຳເຫັນ</string>
   <string name="morphe_hide_comments_none_yet_title">ເຊື່ອງຕົວຢ່າງ \'ຍັງບໍ່ມີຄຳເຫັນ\'</string>
   <string name="morphe_hide_comments_preview_comment_title">ເຊື່ອງການເບິ່ງຄຳຄິດເຫັນລ່ວງໜ້າ</string>
-  <string name="morphe_hide_comments_preview_comment_summary">ເຊື່ອງຕົວຢ່າງຄໍາຄິດເຫັນພາຍໃຕ້ວິດີໂອກ່ອນທີ່ຈະເປີດສ່ວນຄໍາຄິດເຫັນທັງໝົດ</string>
+  <string name="morphe_hide_comments_preview_comment_summary">ເຊື່ອງການເບິ່ງລ່ວງໜ້າຂອງຄຳຄິດເຫັນພາຍໃຕ້ວິດີໂອກ່ອນທີ່ຈະເປີດສ່ວນຄຳຄິດເຫັນ</string>
   <string name="morphe_hide_comments_preview_comment_hidden">ຄວາມຄິດເຫັນຖືກເຊື່ອງໂດຍ Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">ເປີດໃຊ້ປຸ່ມຄຳຄິດເຫັນແບບມິນິມອລ</string>
-  <string name="morphe_minimal_comments_button_summary">ເຊື່ອງບັດທີ່ເລື່ອນໄດ້ ແລະ ຕົວເລືອກໜ້າຂອງມັນ, ທີ່ສະແດງຢູ່ໃນປຸ່ມຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">ເຊື່ອງບັດການເບິ່ງລ່ວງໜ້າຂອງຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">ເຊື່ອງບັດທີ່ເລື່ອນໄດ້ ແລະ ຕົວບົ່ງຊີ້ໜ້າທີ່ສະແດງຢູ່ເທິງປຸ່ມຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_timed_reactions_title">ເຊື່ອງການຕອບສະໜອງຕາມເວລາ</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">ເຊື່ອງຟີເຈີທີ່ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ຕອບໂຕ້ດ້ວຍອີໂມຈິໃນພາກສ່ວນຄຳຄິດເຫັນ ແລະ ແຊັດສົດ</string>
   <string name="morphe_hide_comments_timestamp_button_title">ເຊື່ອງປຸ່ມປະທັບເວລາ</string>
   <string name="morphe_hide_comments_top_fans_button_title">ເຊື່ອງປຸ່ມ \'ແຟນໂຕຍິ່ງ\'</string>
   <string name="morphe_hide_comments_topics_title">ເຊື່ອງ \'ຫົວຂໍ້\'</string>
@@ -678,14 +712,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">ຖັດຈາກຈຳນວນການເບິ່ງ</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">ກາງຂວາ</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">ເທິງຊ້າຍ</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
-  <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳທີ່ຄົ້ນຫາທັງໝົດ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາເປັນວະລີ</string>
-  <string name="morphe_search_comments_dialog_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
-  <string name="morphe_search_comments_hint">ຄຳສັບທີ່ຕ້ອງການຄົ້ນຫາ</string>
-  <string name="morphe_search_comments_clear">ລ້າງຂໍ້ມູນ</string>
-  <string name="morphe_search_comments_applied">ປ່ຽນລຳດັບການຈັດຮຽງ ຫຼື ເປີດຄຳຄິດເຫັນອີກຄັ້ງເພື່ອຄົ້ນຫາ</string>
-  <string name="morphe_search_comments_cleared">ລ້າງການຄົ້ນຫາແລ້ວ. ປ່ຽນລຳດັບການຈັດຮຽງ ຫຼື ເປີດຄຳຄິດເຫັນອີກຄັ້ງເພື່ອສະແດງທຸກຄຳຄິດເຫັນ</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
+  <string name="morphe_comment_search_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄໍາຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄໍາຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄໍາທີ່ຄົ້ນຫາທັງໝົດ. ໃສ່ຄໍາໃນເຄື່ອງໝາຍຄຳເວົ້າເພື່ອຄົ້ນຫາວະລີ</string>
+  <string name="morphe_comment_search_dialog_title">ຄົ້ນຫາຄໍາຄິດເຫັນ</string>
+  <string name="morphe_comment_search_hint">ຄໍາທີ່ຕ້ອງການຄົ້ນຫາ</string>
+  <string name="morphe_comment_search_clear">ລ້າງ</string>
+  <string name="morphe_comment_search_applied">ປ່ຽນລຳດັບການຈັດລຽງ ຫຼື ເປີດຄໍາຄິດເຫັນອີກຄັ້ງເພື່ອຄົ້ນຫາ</string>
+  <string name="morphe_comment_search_cleared">ລ້າງການຄົ້ນຫາແລ້ວ. ປ່ຽນລຳດັບການຈັດລຽງ ຫຼື ເປີດຄໍາຄິດເຫັນອີກຄັ້ງເພື່ອສະແດງຄໍາຄິດເຫັນທັງໝົດ</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">ປິດປັອບອັບ \'ລົງຊື່ເຂົ້າໃຊ້ໃນ TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ປິດປັອບອັບ \'ເຊື່ອມຕໍ່ອຸປະກອນຂອງທ່ານ\'</string>
@@ -1139,6 +1173,17 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">ແກ້ໄຂບົດບັນທຶກ</string>
   <string name="morphe_fix_transcript_summary">ແກ້ໄຂຄວາມລົ້ມເຫຼວຂອງການກວດສອບເງື່ອນໄຂເບື້ອງຕົ້ນ ທີ່ອາດຈະປ້ອງກັນບໍ່ໃຫ້ໂຫຼດບົດບັນທຶກການສົນທະນາໄດ້</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">ຄັດລອກບົດບັນທຶກ</string>
+  <string name="morphe_copy_transcript_title">ຄັດລອກບົດບັນທຶກ</string>
+  <string name="morphe_copy_transcript_summary">ເພີ່ມປຸ່ມເຂົ້າໃນແຜງບົດບັນທຶກ ເພື່ອຄັດລອກບົດບັນທຶກໃນພາສາຂອງຄຳບັນຍາຍ</string>
+  <string name="morphe_copy_transcript_timestamps_title">ລວມຈຸດເວລາ</string>
+  <string name="morphe_copy_transcript_timestamps_summary">ແຕ່ລະແຖວຂອງບົດບັນທຶກທີ່ຄັດລອກມາຈະເລີ່ມດ້ວຍເວລາຂອງມັນ</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">ສະແດງໃນເມນູ Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">ເພີ່ມລາຍການຄັດລອກບົດບັນທຶກລົງໃນເມນູຂອງ Shorts</string>
+  <string name="morphe_copy_transcript_copied">ຄັດລອກບົດບັນທຶກໄປຍັງຄລິບບອດແລ້ວ</string>
+  <string name="morphe_copy_transcript_empty">ບໍ່ມີບົດບັນທຶກ</string>
+  <string name="morphe_copy_transcript_error">ບໍ່ສາມາດຄັດລອກບົດບັນທຶກໄດ້</string>
   <string name="morphe_captions_in_pip_title">ສະແດງຄຳບັນຍາຍໃນຮູບພາບໃນຮູບພາບ</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">ຂະໜາດຄຳບັນຍາຍ</string>
@@ -1170,6 +1215,9 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_summary">ເມື່ອເປີດໃຊ້ງານ, ແຕະເພື່ອເປີດການຕັ້ງຄ່າ Morphe ແລະ ກົດຄ້າງໄວ້ເພື່ອເປີດການຕັ້ງຄ່າ YouTube, ປິດເພື່ອສະຫຼັບກັນ</string>
+  <string name="morphe_you_button_account_switcher_title">ທາງລັດໃນການປ່ຽນບັນຊີ</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">ກົດປຸ່ມ \'ທ່ານ\' ຄ້າງໄວ້ເພື່ອເປີດຕົວປ່ຽນບັນຊີ</string>
   <string name="morphe_navigation_buttons_order_title">ລຳດັບປຸ່ມນຳທາງ</string>
   <string name="morphe_navigation_buttons_order_summary">ລາກປຸ່ມເພື່ອປ່ຽນລຳດັບຂອງພວກມັນໃນແຖບນຳທາງ</string>
   <string name="morphe_swap_create_with_notifications_button_title">ສະຫຼັບປຸ່ມສ້າງ ດ້ວຍປຸ່ມການແຈ້ງເຕືອນ</string>
@@ -1390,6 +1438,17 @@ Second \"item\" text"</string>
 • ບ່ອນວາງຊ້ອນ 'ວິດີໂອເພີ່ມເຕີມ' ອາດຈະບໍ່ສາມາດນຳໃຊ້ໄດ້
 • Shorts ຈະເປີດໃນເຄື່ອງຫຼິ້ນປົກກະຕິ
 • ແຖບການເຮັດວິດີໂອແບບເກົ່າທີ່ບໍ່ໄດ້ຍຸບຈະສະແດງຂຶ້ນ"</string>
+  <string name="morphe_change_form_factor_car_display_title">ຮູບແບບການຈັດວາງສຳລັບລົດ Trênໜ້າຈໍລົດ</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">ຮູບແບບການຈັດວາງສຳລັບລົດ ຈະຖືກນຳໃຊ້ເມື່ອ YouTube ຖືກສະແດງເທິງໜ້າຈໍລົດ, ເຊັ່ນ ຜ່ານ Android Auto ຫຼື DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">ຮູບແບບການຈັດວາງສຳລັບລົດ ຈະບໍ່ຖືກນຳໃຊ້ເທິງໜ້າຈໍລົດ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">ເຊື່ອງແຖບການນຳທາງອັດຕະໂນມັດໃນໜ້າຈໍລົດ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">ແຖບການນຳທາງຈະຖືກເຊື່ອງໃນໜ້າຈໍລົດ ຫຼັງຈາກທີ່ບໍ່ໄດ້ໃຊ້ງານເປັນເວລາໄລຍະໜຶ່ງ. ປັດຂຶ້ນຈາກຂອບລຸ່ມເພື່ອສະແດງມັນ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">ແຖບການນຳທາງຈະຖືກສະແດງຕະຫຼອດໃນໜ້າຈໍລົດ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">ການໜ່ວງເວລາເຊື່ອງອັດຕະໂນມັດ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">ໄລຍະເວລາທີ່ແຖບນຳທາງຈະສະແດງຢູ່ ຫຼັງຈາກທີ່ມັນຖືກສະແດງ ຫຼື ຖືກສຳຜັດ</string>
+  <string name="morphe_change_form_factor_car_display_any_title">ນຳໃຊ້ກັບໜ້າຈໍພາຍນອກທຸກຊະນິດ</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">ທຸກໆໜ້າຈໍທີ່ບໍ່ແມ່ນໜ້າຈໍໂທລະສັບແມ່ນຖືວ່າເປັນໜ້າຈໍລົດ, ລວມທັງ ທີວີ ຫຼື ຈໍມໍນິເຕີ</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"ໜ້າຈໍລົດຈະຖືກຄົ້ນຫາໂດຍ Android Auto, ຊື່ໜ້າຈໍ ແລະ ໂໝດ UI ຂອງລົດ. ໃນ Android 15 ແລະ ເວີຊັນທີ່ໃໝ່ກວ່າ, ການຈຳລອງໜ້າຈໍໂດຍ DriveDeck, Gearslip, graphene-auto ຫຼື MyCar ກໍຖືວ່າເປັນໜ້າຈໍລົດເຊັ່ນກັນ"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - ກູ້ຄືນພຶດຕິກຳຂອງຄຳບັນຍາກິດແບບເກົ່າ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - ກູ້ຄືນການບັນທຶກເກົ່າໄປຍັງລາຍການຫຼິ້ນ</string>
@@ -1446,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">ເປີດຕະຫຼອດ</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">ສະເພາະ Wi-Fi ເທົ່ານັ້ນ</string>
   <string name="morphe_playback_in_feeds_entry_off">ປິດ</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">ສະແດງປຸ່ມຍ້ອນກັບ/ຂ້າມໃນຟີດ</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">ສະແດງປຸ່ມຍ້ອນກັບ/ຂ້າມໃນວິດີໂອທີ່ຫຼິ້ນໃນຟີດ, ລວມທັງໃນເວລາທີ່ YouTube ບໍ່ສະແດງປຸ່ມເຫຼົ່ານັ້ນ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">ຄືນຄ່າຫົວຂໍ້ດັ້ງເດີມ</string>
   <string name="morphe_restore_original_titles_summary">ສະແດງຫົວຂໍ້ວິດີໂອ, ຄຳອະທິບາຍວິດີໂອ ແລະ ຄຳອະທິບາຍຊ່ອງຕົ້ນສະບັບ ແທນທີ່ການແປອັດຕະໂນມັດ</string>
@@ -2051,4 +2112,106 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_max_length_title">ຄວາມຍາວສູງສຸດຂອງຂໍ້ຄວາມ</string>
   <string name="morphe_live_chat_translate_max_length_summary">ຂໍ້ຄວາມທີ່ຍາວເກີນກຳນົດຈະບໍ່ຖືກແປ</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">ບໍ່ຈຳກັດ</string>
+  <string name="morphe_ghost_play_screen_title">ໂໝດຜີດຸ</string>
+  <string name="morphe_ghost_play_screen_summary">ເບິ່ງວິດີໂອໂດຍບໍ່ສົ່ງຜົນກະທົບຕໍ່ປະຫວັດການເບິ່ງ ຫຼື ຄຳແນະນຳ</string>
+  <string name="morphe_ghost_play_cat_general_title">ທົ່ວໄປ</string>
+  <string name="morphe_ghost_play_cat_buttons_title">ປຸ່ມ</string>
+  <string name="morphe_ghost_play_cat_rules_title">ກົດລະບຽບ Auto-ghost</string>
+  <string name="morphe_ghost_play_cat_history_title">ປະຫວັດທ້ອງຖິ່ນ</string>
+  <string name="morphe_ghost_play_cat_advanced_title">ຄວາມເປັນສ່ວນຕົວຂັ້ນສູງ</string>
+  <string name="morphe_ghost_play_enabled_title">ເປີດໃຊ້ໂໝດ Ghost</string>
+  <string name="morphe_ghost_play_enabled_summary">ອະນຸຍາດໃຫ້ເບິ່ງວິດີໂອ, Shorts, ການຄົ້ນຫາ, ຊ່ອງ ທີ່ເລືອກ ຫຼື ທັງໝົດຂອງເຊດຊັນ ໂດຍບໍ່ມີຜົນກະທົບຕໍ່ປະຫວັດການເບິ່ງ ຫຼື ການແນະນຳ</string>
+  <string name="morphe_ghost_play_mode_active_title">ໂໝດ Ghost ກໍາລັງເຮັດວຽກ</string>
+  <string name="morphe_ghost_play_mode_active_summary">ເມື່ອເປີດ, ທຸກວິດີໂອທີ່ທ່ານເປີດປົກກະຕິຈາກ feed, ວິດີໂອທີ່ກ່ຽວຂ້ອງ ຫຼື ການຄົ້ນຫາ ຈະຖືກຫຼິ້ນໃນໂໝດ Ghost ໂດຍບໍ່ຕ້ອງໃຊ້ເມນູສາມຈຸດ</string>
+  <string name="morphe_ghost_play_persist_mode_title">ຈື່ໂໝດ Ghost ໄວ້ໃນການເລີ່ມລະບົບໃໝ່</string>
+  <string name="morphe_ghost_play_persist_mode_summary">ເປີດໂໝດ Ghost ໄວ້ ເຖິງແມ່ນວ່າຈະປິດ ແລະ ເປີດ YouTube ໃໝ່</string>
+  <string name="morphe_ghost_play_toolbar_button_title">ສະແດງປຸ່ມປ່ຽນໂໝດ Ghost ໃນແຖບດ້ານເທິງ</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">ວາງປຸ່ມປ່ຽນໂໝດ Ghost ແບບກະທັດຮັດໄວ້ຂ້າງໄອຄອນແຖບດ້ານເທິງ (ແຕະເພື່ອປ່ຽນ, ກົດຄ້າງໄວ້ເພື່ອຄວບຄຸມແບບດ່ວນ)</string>
+  <string name="morphe_ghost_play_flyout_button_title">ສະແດງໃນເມນູວິດີໂອ</string>
+  <string name="morphe_ghost_play_flyout_button_summary">ເພີ່ມ \"ຫຼິ້ນໃນໂໝດ Ghost\" ໄປໃນເມນູສາມຈຸດຂອງວິດີໂອ</string>
+  <string name="morphe_ghost_play_player_button_title">ສະແດງປຸ່ມໂໝດ Ghost</string>
+  <string name="morphe_ghost_play_player_button_summary">ສະແດງປຸ່ມປ່ຽນໂໝດ Ghost ໃນເຄື່ອງຫຼິ້ນວິດີໂອ (ກົດຄ້າງໄວ້ເພື່ອຄວບຄຸມແບບດ່ວນ)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">ປິດບັງຕົວຕົນຂອງຄຳຮ້ອງຂໍການຫຼິ້ນ</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">ຕັດສ່ວນຫົວຂອງບັນຊີອອກຈາກການຫຼິ້ນແບບ ghost ແລະ ການຮ້ອງຂໍເຫດການ ເພື່ອການແຍກທີ່ເຂັ້ມງວດຂຶ້ນ. ຟີເຈີທີ່ຈຳກັດອາຍຸ, ສຳລັບສະມາຊິກເທົ່ານັ້ນ, ແລະ Premium ຈະບໍ່ສາມາດນຳໃຊ້ໄດ້ໃນຂະນະທີ່ເປີດໃຊ້ງານ</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Auto-ghost Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">ເບິ່ງ Shorts ໃນໂໝດ Ghost ໂດຍອັດຕະໂນມັດ ເພື່ອບໍ່ໃຫ້ມັນສົ່ງຜົນກະທົບຕໍ່ feed ໜ້າຫຼັກຂອງທ່ານ</string>
+  <string name="morphe_ghost_play_auto_search_title">Auto-ghost ວິດີໂອຈາກການຄົ້ນຫາ</string>
+  <string name="morphe_ghost_play_auto_search_summary">ເບິ່ງວິດີໂອທີ່ເປີດຈາກຜົນການຄົ້ນຫາໃນໂໝດ Ghost ໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_ghost_play_manage_channels_title">Auto-ghost ຊ່ອງ</string>
+  <string name="morphe_ghost_play_manage_channels_summary">ຄົ້ນຫາ, ເພີ່ມ, ກວດສອບ, ແລະ ຈັດການຊ່ອງທີ່ຫຼິ້ນໃນໂໝດ Ghost ສະເໝີ</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">ຕັ້ງຄ່າ %d ຊ່ອງແລ້ວ — ແຕະເພື່ອຄົ້ນຫາ, ກວດສອບ, ຫຼື ລຶບອອກ</string>
+  <string name="morphe_ghost_play_local_history_title">ເກັບປະຫວັດ Ghost ໄວ້ໃນເຄື່ອງ</string>
+  <string name="morphe_ghost_play_local_history_summary">ຈື່ຈຳວິດີໂອໃນໂໝດ Ghost ແລະ ຕຳແໜ່ງການຫຼິ້ນໃນອຸປະກອນນີ້ເທົ່ານັ້ນ (ບໍ່ເຄີຍຖືກສົ່ງໄປຍັງ YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">ຂີດຈຳກັດປະຫວັດ Ghost ໃນເຄື່ອງ</string>
+  <string name="morphe_ghost_play_history_limit_summary">ຈຳນວນວິດີໂອສູງສຸດທີ່ເກັບໄວ້ໃນອຸປະກອນ (ລາຍການທີ່ເກົ່າທີ່ສຸດຈະຖືກລຶບອອກໂດຍອັດຕະໂນມັດ)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · ບັນທຶກວິດີໂອ %2$d ລາຍການ (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · ບໍ່ມີວິດີໂອທີ່ຖືກບັນທຶກ</string>
+  <string name="morphe_ghost_play_history_limit_100">100 ວິດີໂອ</string>
+  <string name="morphe_ghost_play_history_limit_500">ວິດີໂອ 500 ລາຍການ</string>
+  <string name="morphe_ghost_play_history_limit_2000">ວິດີໂອ 2,000 ລາຍການ</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">ບໍ່ຈຳກັດ</string>
+  <string name="morphe_ghost_play_view_history_title">ເປີດປະຫວັດ Ghost ທ້ອງຖິ່ນ</string>
+  <string name="morphe_ghost_play_view_history_summary">ເບິ່ງ, ຄົ້ນຫາ, ຫຼິ້ນຕໍ່ໃນໂໝດ Ghost, ຫຼື ລ້າງປະຫວັດໃນອຸປະກອນຂອງທ່ານ</string>
+  <string name="morphe_ghost_play_view_history_summary_count">ມີວິດີໂອ %1$d ລາຍການຖືກເກັບໄວ້ໃນອຸປະກອນ (%2$s) — ແຕະເພື່ອເບິ່ງ ຫຼື ຫຼິ້ນຕໍ່</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">ຍັງບໍ່ມີການບັນທຶກວິດີໂອ (ເກັບໄວ້ໃນອຸປະກອນນີ້ເທົ່ານັ້ນ)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">ຫຼິ້ນໃນໂໝດ Ghost</string>
+  <string name="morphe_ghost_play_video_active_toast">ໂໝດ Ghost ກຳລັງເຮັດວຽກ — ປະຫວັດການເບິ່ງ ແລະ ການແນະນຳຈະຖືກປົກປ້ອງ</string>
+  <string name="morphe_ghost_play_video_off_toast">ປິດໂໝດຜີສິງ ສຳລັບວິດີໂອນີ້</string>
+  <string name="morphe_ghost_play_session_on_toast">ເປີດໂໝດຜີສິງ — ວິດີໂອຈະບໍ່ມີຜົນຕໍ່ປະຫວັດ ຫຼື ການແນະນຳ</string>
+  <string name="morphe_ghost_play_session_off_toast">ປິດໂໝດຜີສິງ — ກັບຄືນສູ່ການຫຼິ້ນປົກກະຕິ</string>
+  <string name="morphe_ghost_play_timer_set_toast">ໂໝດຜີສິງ ຖືກເປີດໃຊ້ງານເປັນເວລາ %d ນາທີ</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">ລ້າງຕົວຈັບເວລາແລ້ວ — ໂໝດຜີສິງ ຍັງຄົງເປີດຢູ່</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">ກະລຸນາປ້ອນໄລຍະເວລາລະຫວ່າງ 1 ຫາ 720 ນາທີ</string>
+  <string name="morphe_ghost_play_dialog_title">ໂໝດຜີສິງ</string>
+  <string name="morphe_ghost_play_state_on">ເປີດ</string>
+  <string name="morphe_ghost_play_state_off">ປິດ</string>
+  <string name="morphe_ghost_play_close">ປິດ</string>
+  <string name="morphe_ghost_play_open_settings">ການຕັ້ງຄ່າທັງໝົດ</string>
+  <string name="morphe_ghost_play_quick_power_hint">ແຕະເພື່ອປ່ຽນໂໝດ Ghost</string>
+  <string name="morphe_ghost_play_quick_timer_title">ໂໝດ Ghost ແບບກຳນົດເວລາ</string>
+  <string name="morphe_ghost_play_quick_timer_sub">ແຕະເພື່ອເລືອກໄລຍະເວລາ</string>
+  <string name="morphe_ghost_play_quick_timer_running">ຕົວຈັບເວລາເຮັດວຽກຢູ່ · ເຫຼືອ %d ນາທີ</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">ຈະກັບຄືນສູ່ໂໝດປົກກະຕິໂດຍອັດຕະໂນມັດເມື່ອສິ້ນສຸດ</string>
+  <string name="morphe_ghost_play_quick_timer_change">ປ່ຽນເວລາ</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">ລ້າງຕົວຈັບເວລາ (ໃຫ້ເປີດໄວ້)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dn</string>
+  <string name="morphe_ghost_play_timer_custom_hint">ກຳນົດນາທີເອງ (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">ຕັ້ງຄ່າ</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">ເປີດ Auto-ghost ສຳລັບຊ່ອງນີ້</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">ປິດ Auto-ghost ສຳລັບຊ່ອງນີ້</string>
+  <string name="morphe_ghost_play_quick_channel_count">ຕັ້ງຄ່າແລ້ວ %d ຊ່ອງ</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">ລາຍການ (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">ເພີ່ມ \"%s\" ເຂົ້າໃນຊ່ອງ auto-ghost ແລ້ວ</string>
+  <string name="morphe_ghost_play_channel_removed_toast">ລຶບ \"%s\" ອອກຈາກຊ່ອງ auto-ghost ແລ້ວ</string>
+  <string name="morphe_ghost_play_history_title">ປະຫວັດ Ghost ທ້ອງຖິ່ນ</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d ວິດີໂອ (%s) · ແຕະເພື່ອຫຼິ້ນຕໍ່ໃນໂໝດ Ghost, ກົດຄ້າງເພື່ອລຶບ</string>
+  <string name="morphe_ghost_play_history_search_hint">ກັ່ນຕອງຕາມຊື່ວິດີໂອ ຫຼື ຊ່ອງ...</string>
+  <string name="morphe_ghost_play_history_no_match">ບໍ່ມີວິດີໂອທີ່ກົງກັນໃນປະຫວັດ Ghost ພາຍໃນເຄື່ອງ</string>
+  <string name="morphe_ghost_play_history_empty">ຍັງບໍ່ມີປະຫວັດ Ghost ພາຍໃນເຄື່ອງ</string>
+  <string name="morphe_ghost_play_history_clear_all">ລ້າງທັງໝົດ</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">ລ້າງປະຫວັດ Ghost ພາຍໃນເຄື່ອງບໍ?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">ການເຮັດແບບນີ້ຈະລຶບລາຍການໂໝດ Ghost ທັງໝົດທີ່ບັນທຶກໄວ້ໃນອຸປະກອນ ແລະ ບໍ່ສາມາດຍ້ອນກັບຄືນໄດ້.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">ລ້າງປະຫວັດ Ghost ພາຍໃນເຄື່ອງແລ້ວ</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">ລຶບອອກຈາກປະຫວັດ Ghost ພາຍໃນເຄື່ອງແລ້ວ</string>
+  <string name="morphe_ghost_play_channels_manager_title">ຊ່ອງ Auto-ghost</string>
+  <string name="morphe_ghost_play_channels_tab_saved">ເພີ່ມແລ້ວ (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">ຄົ້ນຫາ &amp; ເພີ່ມ</string>
+  <string name="morphe_ghost_play_channels_filter_hint">ກັ່ນຕອງຊ່ອງທີ່ເພີ່ມແລ້ວ ຕາມຊື່, @handle, ຫຼື ຫົວຂໍ້…</string>
+  <string name="morphe_ghost_play_channels_empty">ຍັງບໍ່ທັນມີຊ່ອງທີ່ເພີ່ມເທື່ອ. ປ່ຽນໄປທີ່ \"ຄົ້ນຫາ &amp; ເພີ່ມ\" ເພື່ອຊອກຫາຊ່ອງ ຕາມຊື່, @handle, ຫຼື URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">ບໍ່ມີຊ່ອງທີ່ເພີ່ມໄວ້ ທີ່ກົງກັບການກັ່ນຕອງຂອງທ່ານ</string>
+  <string name="morphe_ghost_play_channels_add_current">ກຳລັງຫຼິ້ນ: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">ເພີ່ມ</string>
+  <string name="morphe_ghost_play_channels_added_badge">ເພີ່ມແລ້ວ</string>
+  <string name="morphe_ghost_play_channels_delete_button">ລຶບ</string>
+  <string name="morphe_ghost_play_channels_search_hint">ຊື່ຊ່ອງ, @handle, ຫຼື URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">ຄົ້ນຫາ</string>
+  <string name="morphe_ghost_play_channels_search_guide">ປ້ອນຊື່ຊ່ອງ, @handle, ຫຼື URL ຂອງຊ່ອງ YouTube ແລ້ວແຕະ ຄົ້ນຫາ</string>
+  <string name="morphe_ghost_play_channels_searching">ກຳລັງຄົ້ນຫາຊ່ອງ YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">ການຄົ້ນຫາລົ້ມເຫຼວ. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່</string>
+  <string name="morphe_ghost_play_channels_search_no_results">ບໍ່ພົບຊ່ອງສຳລັບຄຳຄົ້ນຫານັ້ນ</string>
+  <string name="morphe_ghost_play_channels_search_count">ພົບ %d ຊ່ອງ — ແຕະ ເພີ່ມ ເພື່ອເປີດໃຊ້ auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">ວິດີໂອຫຼ້າສຸດ</string>
+  <string name="morphe_ghost_play_channels_loading_details">ກຳລັງໂຫຼດວິດີໂອຫຼ້າສຸດ…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">ບໍ່ພົບວິດີໂອຫຼ້າສຸດ (ແຕະເພື່ອລອງໃໝ່)</string>
 </resources>

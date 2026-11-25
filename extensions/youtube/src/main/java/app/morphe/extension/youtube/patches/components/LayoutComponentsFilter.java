@@ -163,6 +163,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup subscribedChannelsBarName;
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup surveys;
+    private final StringFilterGroup thumbnailOverlayBadge;
+    private final ByteArrayFilterGroup thumbnailCommissionBadgeBuffer;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroup videoLabelsBuffer;
     private final StringFilterGroup videoMetadataLabels;
@@ -530,10 +532,15 @@ public final class LayoutComponentsFilter extends Filter {
                 "in_short_survey"
         );
 
-        final var timedReactions = new StringFilterGroup(
-                Settings.HIDE_TIMED_REACTIONS,
-                "emoji_control_panel",
-                "timed_reaction"
+        thumbnailOverlayBadge = new StringFilterGroup(
+                Settings.HIDE_VIDEO_LABELS,
+                "thumbnail_badge.e"
+        );
+
+        thumbnailCommissionBadgeBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_experimental_bag_black",
+                "yt_outline_bag_black"
         );
 
         final var videoThumbnail = new StringFilterGroup(
@@ -621,7 +628,7 @@ public final class LayoutComponentsFilter extends Filter {
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
-                timedReactions,
+                thumbnailOverlayBadge,
                 videoThumbnail,
                 videoLabels,
                 videoMetadataLabels,
@@ -674,17 +681,26 @@ public final class LayoutComponentsFilter extends Filter {
         return Utils.endsWith(path, "|CellType|");
     }
 
+    /**
+     * YouTube now also shows community posts on a dedicated community page for channels,
+     * and hiding its posts prevents any posts from loading (the page shows a loading
+     * spinner forever) (<a href="https://github.com/MorpheApp/morphe-patches/issues/4101">...</a>).
+     * The page is found by its browse id, as the back button it is navigated with is also
+     * visible on other pages, such as the search results, and on the page below the watch page.
+     * The watch page, with its related videos, comments and other panels, covers the page
+     * below it, also when the video is opened from the community page
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4170">...</a>).
+     *
+     * @return If the community page of a channel or the page of a post is shown,
+     *         where posts must not be hidden.
+     */
+    static boolean isCommunityPostPage() {
+        return (COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen();
+    }
+
     private static boolean isCommunityPostHidden(ContextInterface contextInterface) {
-        // YouTube now also shows community posts on a dedicated community page for channels,
-        // and hiding its posts prevents any posts from loading (the page shows a loading
-        // spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
-        // The page is found by its browse id, as the back button it is navigated with is also
-        // visible on other pages, such as the search results, and on the page below the watch page.
-        // The watch page, with its related videos, comments and other panels, covers the page
-        // below it, also when the video is opened from the community page
-        // (https://github.com/MorpheApp/morphe-patches/issues/4170).
-        if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
-                && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+        if (isCommunityPostPage()) {
             return false;
         }
 
@@ -851,6 +867,11 @@ public final class LayoutComponentsFilter extends Filter {
                 singleItemInformationPanelIndex.set(-1);
             }
             return false;
+        }
+
+        if (matchedGroup == thumbnailOverlayBadge) {
+            return Utils.contains(path, "thumbnail_overlay_badge.e")
+                    && thumbnailCommissionBadgeBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == videoLabels) {

@@ -101,7 +101,7 @@ public final class LyricsSpanBuilder {
             final int start = formatted.offset(word.start() + originalStart) - base;
             final int end = formatted.offset(word.end() + originalStart) - base;
             if (end > start) mapped.add(new WordTiming(start, end, word.startMs(), word.endMs(),
-                    word.romaji(), word.hasTrailingSpace(), word.ruby(), word.averaged()));
+                    word.romaji(), word.hasTrailingSpace(), word.ruby(), word.averaged(), word.wordGroup()));
         }
         return new PresentedLine(new BuildResult(text, raw.unsungSpan(),
                 formatted.offset(raw.transStart()), formatted.offset(raw.transEnd()),
@@ -181,12 +181,12 @@ public final class LyricsSpanBuilder {
     static BuildResult buildLineText(LyricsLine line, List<WordTiming> timings, int index,
                                      boolean perWordRomaji, List<LyricsLine> romanizedLines,
                                      List<String> translatedLines,
-                                     LyricsPanelView.OnlyMode onlyMode, Paint basePaint,
+                                     OnlyModeState.Mode onlyMode, Paint basePaint,
                                      boolean isRightAligned, boolean embeddedReading) {
         Paint.FontMetricsInt baseFm = new Paint.FontMetricsInt();
         basePaint.getFontMetricsInt(baseFm);
         String original = LyricsTextUtils.displayLineText(line);
-        final boolean centered = line.isCentered();
+        final boolean centered = !Settings.isAlignmentSameSide() && line.isCentered();
 
         final int lineHeight = baseFm.descent - baseFm.ascent;
         final int mainClear = Math.max(0, (int) (lineHeight * MAIN_LINE_SPACING + 0.5f) - lineHeight);
@@ -198,7 +198,7 @@ public final class LyricsSpanBuilder {
 
         // An only mode never drops a line: what the provider left untranslated keeps the
         // original rather than leaving a hole in the song.
-        if (onlyMode == LyricsPanelView.OnlyMode.TRANS) {
+        if (onlyMode == OnlyModeState.Mode.TRANS) {
             String content = translation != null ? translation : original;
             SpannableString text = new SpannableString(content);
             final int transStart = content.isEmpty() ? -1 : 0;
@@ -212,7 +212,7 @@ public final class LyricsSpanBuilder {
             return new BuildResult(text, null, transStart, transEnd, -1, -1);
         }
 
-        if (onlyMode == LyricsPanelView.OnlyMode.ROMA) {
+        if (onlyMode == OnlyModeState.Mode.ROMA) {
             LyricsReadingCalc.Romanized roma = LyricsReadingCalc.romanizedWithTimings(
                     line, index, romanizedLines, timings);
             final boolean readsNothing = roma.text() == null;
@@ -233,7 +233,7 @@ public final class LyricsSpanBuilder {
         // Both at once: the original goes and whichever side carries more of the line takes
         // the main slot. Decided per line, so a line left untranslated keeps its translation
         // rather than going thin.
-        if (onlyMode == LyricsPanelView.OnlyMode.BOTH) {
+        if (onlyMode == OnlyModeState.Mode.BOTH) {
             DualLine mainAndSmall =
                     dualLineFor(line, timings, index, translation, original, romanizedLines);
             SpannableString dual = new SpannableString(mainAndSmall.text());
@@ -325,7 +325,7 @@ public final class LyricsSpanBuilder {
         final List<WordTiming> activeTimings = showSyllableRomanization ? syllableRomanTimings : timings;
         final boolean hasActiveWordTimings = line.hasWordTimings()
                 || (activeTimings != null && !activeTimings.isEmpty()
-                        && !LyricsReadingCalc.isEntirelyAveraged(activeTimings));
+                && !LyricsReadingCalc.isEntirelyAveraged(activeTimings));
         SpannableString text = new SpannableString(builder.toString());
         ForegroundColorSpan unsungSpan = applySpans(text,
                 activeTimings,
@@ -420,7 +420,7 @@ public final class LyricsSpanBuilder {
         for (WordTiming span : spans) {
             shifted.add(new WordTiming(span.start() + by, span.end() + by,
                     span.startMs(), span.endMs(), span.romaji(), span.hasTrailingSpace(),
-                    span.ruby(), span.averaged()));
+                    span.ruby(), span.averaged(), span.wordGroup()));
         }
         return shifted;
     }
@@ -532,13 +532,9 @@ public final class LyricsSpanBuilder {
         return ScriptDetector.isLineRtl(text);
     }
 
-    /**
-     * @param forceCenter The line's own agent says it is centred ({@code v1000}/{@code v2000}), so
-     *                    the "Always center lyrics" setting does not decide it.
-     */
     public static Layout.Alignment resolveAlignment(boolean isRtl, boolean isRightAligned,
                                                     boolean forceCenter) {
-        if (forceCenter || Settings.LYRICS_FORCE_CENTER.get()) {
+        if (forceCenter || Settings.isAlignmentCenter()) {
             return Layout.Alignment.ALIGN_CENTER;
         }
         if (isRightAligned) {

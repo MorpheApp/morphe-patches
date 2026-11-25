@@ -20,6 +20,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -41,6 +42,7 @@ import java.util.function.DoubleUnaryOperator;
 
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 /**
@@ -164,6 +166,7 @@ final class LyricsShareCardRenderer {
         double luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255.0;
         return luminance > 0.56;
     }
+
     static CardSwatch forCustomSolidColor(int argb) {
         int opaque = 0xFF000000 | (argb & 0x00FFFFFF);
         boolean light = isLightColor(opaque);
@@ -218,6 +221,7 @@ final class LyricsShareCardRenderer {
     static CardLayout computeLayout(int selectedLineCount) {
         return computeLayout(selectedLineCount, 0, true);
     }
+
     static CardLayout computeLayout(int selectedLineCount, int extraLayerCount, boolean showBranding) {
         float baseExtra = selectedLineCount >= 5 ? 54f : (selectedLineCount == 4 ? 26f : 0f);
         float layerExtra = Math.min(84f, Math.max(0, extraLayerCount) * 24f);
@@ -246,6 +250,7 @@ final class LyricsShareCardRenderer {
             DoubleUnaryOperator measureHeightPx) {
         return fitLyricsImageText(maxHeightPx, textScale, 13f, measureHeightPx);
     }
+
     static TextFit fitLyricsImageText(
             float maxHeightPx,
             float textScale,
@@ -479,7 +484,7 @@ final class LyricsShareCardRenderer {
         // Subtle inner highlight border
         Paint borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         borderPaint.setStyle(Paint.Style.STROKE);
-        borderPaint.setStrokeWidth(Math.max(1.5f, 1.0f * scale));
+        borderPaint.setStrokeWidth(Math.max(1.5f, scale));
         borderPaint.setColor(lightText ? 0x20FFFFFF : 0x16000000);
         RectF insetRect = new RectF(fullRect);
         insetRect.inset(scale * 0.5f, scale * 0.5f);
@@ -594,7 +599,6 @@ final class LyricsShareCardRenderer {
         }
         canvas.restoreToCount(lyricsSave);
 
-        // 5. Optional footer: YouTube Music badge + brand label
         if (options.showBranding()) {
             float footerTopPx = layout.footerTop() * scale;
             float badgeRadius = 9.5f * scale;
@@ -608,22 +612,17 @@ final class LyricsShareCardRenderer {
             int cutoutColor = (mode == BackgroundMode.ALBUM_COVER || mode == BackgroundMode.CUSTOM_IMAGE)
                     ? 0xFF1A1A1E
                     : palette.backgroundColor();
-            Paint ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            ringPaint.setStyle(Paint.Style.STROKE);
-            ringPaint.setStrokeWidth(1.2f * scale);
-            ringPaint.setColor(cutoutColor);
-            canvas.drawCircle(badgeCenterX, badgeCenterY, badgeRadius * 0.62f, ringPaint);
-
-            Paint playPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            playPaint.setStyle(Paint.Style.FILL);
-            playPaint.setColor(cutoutColor);
-            Path playTriangle = new Path();
-            float triR = badgeRadius * 0.34f;
-            playTriangle.moveTo(badgeCenterX - triR * 0.55f, badgeCenterY - triR * 0.85f);
-            playTriangle.lineTo(badgeCenterX + triR * 0.95f, badgeCenterY);
-            playTriangle.lineTo(badgeCenterX - triR * 0.55f, badgeCenterY + triR * 0.85f);
-            playTriangle.close();
-            canvas.drawPath(playTriangle, playPaint);
+            Drawable brandIcon = ResourceUtils.getDrawable("morphe_lyrics_brand");
+            if (brandIcon != null) {
+                brandIcon = brandIcon.mutate();
+                brandIcon.setTint(cutoutColor);
+                int iconSize = Math.round(badgeRadius * 1.5f);
+                brandIcon.setBounds((int) badgeCenterX - iconSize / 2,
+                        (int) badgeCenterY - iconSize / 2,
+                        (int) badgeCenterX + iconSize / 2,
+                        (int) badgeCenterY + iconSize / 2);
+                brandIcon.draw(canvas);
+            }
 
             TextPaint footerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
             LyricsViewSupport.applyLyricsBoldPaint(footerPaint);
@@ -631,7 +630,8 @@ final class LyricsShareCardRenderer {
             footerPaint.setTextSize(11.5f * scale);
             float footerLabelX = badgeCenterX + badgeRadius + 8f * scale;
             float footerMaxW = Math.max(40f, padPx + lyricsWidthPx - footerLabelX);
-            drawSingleLineLabel(canvas, "YouTube Music", footerPaint, footerLabelX, footerTopPx + 4.5f * scale, footerMaxW);
+            drawSingleLineLabel(canvas, str("morphe_custom_branding_name_entry_2"), footerPaint,
+                    footerLabelX, footerTopPx + 4.5f * scale, footerMaxW);
         }
 
         canvas.restoreToCount(rootSave);
@@ -671,6 +671,7 @@ final class LyricsShareCardRenderer {
         }
         return h;
     }
+
     private static List<StaticLayout> buildRichEntryLayouts(
             List<ShareLineEntry> entries,
             boolean[] entryRightAligned,
@@ -707,9 +708,11 @@ final class LyricsShareCardRenderer {
             String trans = (options.includeTranslation() && e.hasTranslation()) ? e.translationText().trim() : null;
             if (options.swapTransRoma()) {
                 if (trans != null) appendStyledSubLine(sb, trans, 0.75f, transColor, false);
-                if (roma != null) appendStyledSubLine(sb, roma, 0.73f, palette.secondaryTextColor(), false);
+                if (roma != null)
+                    appendStyledSubLine(sb, roma, 0.73f, palette.secondaryTextColor(), false);
             } else {
-                if (roma != null) appendStyledSubLine(sb, roma, 0.73f, palette.secondaryTextColor(), false);
+                if (roma != null)
+                    appendStyledSubLine(sb, roma, 0.73f, palette.secondaryTextColor(), false);
                 if (trans != null) appendStyledSubLine(sb, trans, 0.75f, transColor, false);
             }
 
@@ -764,6 +767,7 @@ final class LyricsShareCardRenderer {
                 Shader.TileMode.CLAMP));
         canvas.drawRect(rect, scrimPaint);
     }
+
     private static CardPalette forceWhiteTextPalette(CardPalette src) {
         return new CardPalette(
                 src.backgroundColor(), src.gradientStartColor(), src.gradientEndColor(),
@@ -817,6 +821,7 @@ final class LyricsShareCardRenderer {
         int b = Math.max(0, Math.min(255, Math.round((color & 0xFF) * factor)));
         return 0xFF000000 | (r << 16) | (g << 8) | b;
     }
+
     private static String resolveNonEmpty(@Nullable String first, @Nullable String second, String fallback) {
         if (first != null && !first.trim().isEmpty()) {
             return first.trim();

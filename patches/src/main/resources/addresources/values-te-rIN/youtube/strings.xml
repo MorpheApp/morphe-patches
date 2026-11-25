@@ -46,6 +46,8 @@ Second \"item\" text"</string>
 • సెర్చ్: %3$s
 • కామెంట్లు: %4$s
 • మొత్తం: %5$s"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_post_like_dislike_buttons_title">లైక్ మరియు డిస్‌లైక్ బటన్‌లను దాచు</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
@@ -117,7 +119,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <!-- interaction.commentsearch.commentSearchPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -155,6 +157,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
+  <!-- layout.captions.copyTranscriptPatch -->
   <!-- layout.captions.captionViewportPatch -->
   <!-- layout.captions.stableCaptionBlocksPatch -->
   <!-- layout.buttons.navigation.navigationBarPatch -->
@@ -165,6 +168,7 @@ Second \"item\" text"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

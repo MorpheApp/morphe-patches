@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">키워드 필터</string>
   <string name="morphe_hide_keyword_content_screen_summary">피드 및 검색 결과에서 동영상을 숨길 특정 단어 또는 구문를 설정할 수 있습니다</string>
   <string name="morphe_hide_keyword_content_comments_title">댓글 섹션에서 키워드 필터 활성화하기</string>
+  <string name="morphe_hide_keyword_content_posts_title">키워드로 게시물 숨기기</string>
   <string name="morphe_hide_keyword_content_home_title">키워드로 홈 동영상 숨기기</string>
   <string name="morphe_hide_keyword_content_search_title">키워드로 검색 결과 숨기기</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">키워드로 구독 동영상 숨기기</string>
@@ -250,7 +251,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"숨길 키워드와 문구를 줄바꿈으로 구분하여 설정하세요
 
 키워드는 동영상 제목에 표시되는 모든 텍스트일 수 있습니다. @사용자이름 키워드는 특정 제작자의 모든 콘텐츠를 숨깁니다"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과 / 댓글 섹션에서 키워드 구문과 일치하는 콘텐츠가 필터링되어 숨겨집니다
+  <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 / 댓글 / 게시물 섹션에서 키워드 구문과 일치하는 콘텐츠가 필터링되어 숨겨집니다
 
 제한 사항:
 • 채널 이름으로 일부 Shorts는 숨길 수 없습니다
@@ -266,6 +267,39 @@ Second \"item\" text"</string>
 • 검색: %3$s
 • 댓글: %4$s
 • 합계: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">조회수 필터</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">피드 및 검색에서 조회수가 너무 적거나 많은 동영상을 숨깁니다</string>
+  <string name="morphe_hide_videos_by_views_home_title">조회수로 홈 동영상 숨기기</string>
+  <string name="morphe_hide_videos_by_views_search_title">조회수로 검색 결과 숨기기</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">조회수로 구독 동영상 숨기기</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">최소 조회수</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">조회수가 더 적은 동영상이 숨겨집니다. 0 = 최소값 없음</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">최대 조회수</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">조회수가 더 많은 동영상이 숨겨집니다. 0 = 최대값 없음</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"홈 / 구독 / 검색에서 조회수에 따라 동영상 및 Shorts가 숨겨지도록 필터링됩니다
+
+제한 사항:
+• YouTube는 조회수를 반올림하므로, 1.2K회 조회수는 1200회로 계산됩니다
+• 실시간 스트리밍은 숨겨지지 않습니다
+• 숨겨진 Short는 Shorts 섹션에 빈 공간을 남길 수 있습니다"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">조회수 필터가 모든 동영상을 숨깁니다</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">재생 시간 필터</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">피드 및 검색에서 너무 짧거나 긴 동영상을 숨깁니다</string>
+  <string name="morphe_hide_videos_by_duration_home_title">재생 시간으로 홈 동영상 숨기기</string>
+  <string name="morphe_hide_videos_by_duration_search_title">재생 시간으로 검색 결과 숨기기</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">길이로 구독 동영상 숨기기</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">최소 길이 (분)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">이보다 짧은 동영상은 숨겨집니다. 0 = 최소 제한 없음</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">최대 길이 (분)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">이보다 긴 동영상은 숨겨집니다. 0 = 최대 제한 없음</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"홈 / 구독 / 검색에서 동영상 길이에 따라 동영상을 숨기도록 필터링합니다
+
+제한 사항:
+• 라이브 스트리밍, Shorts, 재생목록 및 믹스는 숨겨지지 않습니다
+• 길이를 알 수 없는 동영상은 숨겨지지 않습니다"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">기간 필터가 모든 동영상을 숨깁니다</string>
   <string name="morphe_hide_stats_category_title">통계</string>
   <string name="morphe_hide_stats_hidden_24h_title">지난 24시간 동안 숨겨진 동영상</string>
   <string name="morphe_hide_stats_hidden_all_title">전체 시간 동안 숨겨진 동영상</string>
@@ -309,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">길게 탭하기 그라데이션 숨기기</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">손가락으로 화면을 탭한 상태에서 드래그하여 재생 속도를 높일 때, 플레이어 컨트롤 버튼 주변에 표시되는 그라데이션을 숨깁니다</string>
-  <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
-  <string name="morphe_hide_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
   <string name="morphe_hide_help_feedback_menu_summary">검색 결과 등에서 점 세 개 버튼을 사용할 때 표시되는 고객센터 메뉴를 숨깁니다</string>
   <string name="morphe_hide_handle_title">핸들(@사용자 아이디) 숨기기</string>
   <string name="morphe_hide_handle_summary">\'내 페이지\' 탭에서 채널 핸들을 숨깁니다</string>
@@ -427,8 +459,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_comments_preview_comment_summary">전체 댓글 섹션을 열기 전에 동영상 아래에 있는 댓글 미리보기를 숨깁니다</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe에 의해 댓글이 숨겨졌습니다</string>
-  <string name="morphe_minimal_comments_button_title">최소화된 댓글 버튼 활성화하기</string>
-  <string name="morphe_minimal_comments_button_summary">댓글 버튼에 표시되는 슬라이딩 카드와 페이지 선택기를 숨깁니다</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">댓글 미리보기 카드 숨기기</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">댓글 버튼에 표시되는 슬라이딩 카드와 페이지 표시기를 숨깁니다</string>
+  <string name="morphe_hide_comments_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
   <string name="morphe_hide_comments_timestamp_button_title">타임스탬프 버튼 숨기기</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'탑 팬\' 버튼 숨기기</string>
   <string name="morphe_hide_comments_topics_title">\'주제\' 숨기기</string>
@@ -678,14 +712,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">조회수 옆</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">중앙 오른쪽</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">왼쪽 상단</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">댓글 검색</string>
-  <string name="morphe_search_comments_summary">댓글에서 검색 버튼을 탭하면 현재 불러온 댓글 중 검색한 단어가 모두 포함된 댓글만 표시됩니다. 구문을 검색하려면 단어를 따옴표로 묶으세요</string>
-  <string name="morphe_search_comments_dialog_title">댓글 검색</string>
-  <string name="morphe_search_comments_hint">검색어 입력</string>
-  <string name="morphe_search_comments_clear">지우기</string>
-  <string name="morphe_search_comments_applied">정렬 순서를 변경하거나 댓글을 다시 열어 검색하세요</string>
-  <string name="morphe_search_comments_cleared">검색이 지워졌습니다. 정렬 순서를 변경하거나 댓글을 다시 열어 모든 댓글을 표시하세요</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">댓글 검색</string>
+  <string name="morphe_comment_search_summary">댓글에서 검색 버튼을 탭하면 현재 불러온 댓글 중 검색한 단어가 모두 포함된 댓글만 표시됩니다. 구문을 검색하려면 단어를 따옴표로 묶으세요</string>
+  <string name="morphe_comment_search_dialog_title">댓글 검색</string>
+  <string name="morphe_comment_search_hint">검색어 입력</string>
+  <string name="morphe_comment_search_clear">지우기</string>
+  <string name="morphe_comment_search_applied">정렬 순서를 변경하거나 댓글을 다시 열면 댓글을 검색할 수 있습니다</string>
+  <string name="morphe_comment_search_cleared">검색이 초기화되었습니다. 모든 댓글을 표시하려면 정렬 순서를 변경하거나 댓글을 다시 여세요</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'기기 연결\' 팝업 비활성화하기</string>
@@ -1141,6 +1175,17 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">스크립트 수정하기</string>
   <string name="morphe_fix_transcript_summary">스크립트가 불러오지 않을 수 있는 사전 조건 검사 실패 문제를 해결할 수 있습니다</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">스크립트 복사</string>
+  <string name="morphe_copy_transcript_title">스크립트 복사</string>
+  <string name="morphe_copy_transcript_summary">자막 언어로 스크립트를 복사하는 버튼을 스크립트 패널에 추가합니다</string>
+  <string name="morphe_copy_transcript_timestamps_title">타임스탬프 포함</string>
+  <string name="morphe_copy_transcript_timestamps_summary">복사된 스크립트의 각 줄은 시간 정보로 시작합니다</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Shorts 메뉴에 표시하기</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Shorts 메뉴에 \'스크립트 복사\' 항목을 추가합니다</string>
+  <string name="morphe_copy_transcript_copied">스크립트가 클립보드에 복사되었습니다</string>
+  <string name="morphe_copy_transcript_empty">사용 가능한 스크립트가 없습니다</string>
+  <string name="morphe_copy_transcript_error">스크립트를 복사할 수 없습니다</string>
   <string name="morphe_captions_in_pip_title">PIP 모드에 자막 표시하기</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">자막 크기</string>
@@ -1172,6 +1217,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_show_settings_button_title">설정 버튼 표시하기</string>
   <string name="morphe_show_settings_button_type_title">설정 버튼 작업</string>
   <string name="morphe_show_settings_button_type_summary">활성화하면 버튼을 탭했을 경우에 Morphe 설정이 열리고, 길게 탭했을 경우에 YouTube 설정이 열립니다. 비활성화하면 작업이 반대로 바뀝니다</string>
+  <string name="morphe_you_button_account_switcher_title">계정 전환기 바로가기</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">\'나\' 버튼을 길게 눌러 계정 전환기를 여세요</string>
   <string name="morphe_navigation_buttons_order_title">하단바 버튼 순서</string>
   <string name="morphe_navigation_buttons_order_summary">버튼을 드래그하여 하단바의 순서를 변경하세요</string>
   <string name="morphe_swap_create_with_notifications_button_title">만들기 버튼과 알림 버튼의 위치 교환하기</string>
@@ -1391,6 +1439,17 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
 • '동영상 더보기' 오버레이가 표시되지 않을 수 있습니다
 • Shorts는 일반 플레이어에서 열립니다
 • 접히지 않은 이전 동영상 작업 버튼바가 표시됩니다"</string>
+  <string name="morphe_change_form_factor_car_display_title">차량 디스플레이의 Automotive 레이아웃</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Android Auto 또는 DriveDeck 등을 통해 YouTube가 차량 디스플레이에 표시될 때 Automotive 레이아웃이 사용됩니다</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">차량 디스플레이에서 Automotive 레이아웃을 사용하지 않습니다</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">차량 디스플레이에서 탐색 모음 자동 숨기기</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">차량 디스플레이에서 탐색 모음을 한동안 사용하지 않으면 숨겨집니다. 하단 가장자리에서 위로 밀어 올려 표시하세요</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">차량 디스플레이에서 탐색 모음이 항상 표시됩니다</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">자동 숨기기 지연 시간</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">탐색바가 표시되거나 터치된 후 유지되는 시간</string>
+  <string name="morphe_change_form_factor_car_display_any_title">모든 외부 디스플레이에서 사용</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">TV나 모니터를 포함하여 휴대폰 화면 이외의 모든 디스플레이를 차량 디스플레이로 간주합니다</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"차량 디스플레이는 Android Auto, 디스플레이 이름 및 차량 UI 모드를 통해 식별됩니다. Android 15 및 이후 버전에서는 DriveDeck, Gearslip, graphene-auto 또는 MyCar를 통한 화면 미러링 또한 차량 디스플레이로 간주됩니다"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 이전 자막 동작을 복원합니다</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 이전 \'재생목록에 저장\'을 복원합니다</string>
@@ -1447,6 +1506,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_playback_in_feeds_entry_always_on">항상 사용</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi 전용</string>
   <string name="morphe_playback_in_feeds_entry_off">사용 안함</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">피드에 탐색 버튼 표시</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">YouTube에서 표시하지 않는 경우에도 피드에서 재생되는 동영상에 탐색 버튼을 표시합니다</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">원본 제목 복원하기</string>
   <string name="morphe_restore_original_titles_summary">자동 번역된 동영상 제목, 동영상 설명 및 채널 설명 대신 원본 동영상 제목, 동영상 설명 및 채널 설명을 표시합니다</string>
@@ -2052,4 +2113,106 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_live_chat_translate_max_length_title">최대 메시지 길이</string>
   <string name="morphe_live_chat_translate_max_length_summary">설정한 길이보다 긴 메시지는 번역하지 않고 원본 그대로 표시합니다</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">제한 없음</string>
+  <string name="morphe_ghost_play_screen_title">고스트 모드</string>
+  <string name="morphe_ghost_play_screen_summary">시청 기록이나 추천에 영향을 주지 않고 동영상 시청</string>
+  <string name="morphe_ghost_play_cat_general_title">일반</string>
+  <string name="morphe_ghost_play_cat_buttons_title">버튼</string>
+  <string name="morphe_ghost_play_cat_rules_title">자동 고스트 규칙</string>
+  <string name="morphe_ghost_play_cat_history_title">로컬 기록</string>
+  <string name="morphe_ghost_play_cat_advanced_title">고급 개인정보 보호</string>
+  <string name="morphe_ghost_play_enabled_title">고스트 모드 활성화</string>
+  <string name="morphe_ghost_play_enabled_summary">시청 기록이나 추천에 영향을 주지 않고 선택한 동영상, Shorts, 검색, 채널 또는 전체 세션을 시청할 수 있습니다</string>
+  <string name="morphe_ghost_play_mode_active_title">고스트 모드 활성</string>
+  <string name="morphe_ghost_play_mode_active_summary">설정 시 피드, 관련 동영상 또는 검색에서 일반적으로 여는 모든 동영상이 세 개의 점 메뉴를 사용하지 않고 고스트 모드로 재생됩니다</string>
+  <string name="morphe_ghost_play_persist_mode_title">재시작 후에도 고스트 모드 기억하기</string>
+  <string name="morphe_ghost_play_persist_mode_summary">YouTube를 닫았다가 다시 열어도 고스트 모드를 켬 상태로 유지합니다</string>
+  <string name="morphe_ghost_play_toolbar_button_title">상단 바에 고스트 모드 토글 표시</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">상단 바 아이콘 옆에 컴팩트한 고스트 모드 토글을 배치합니다. (탭하여 전환, 길게 눌러 빠른 제어)</string>
+  <string name="morphe_ghost_play_flyout_button_title">동영상 메뉴에 표시</string>
+  <string name="morphe_ghost_play_flyout_button_summary">동영상의 세 개의 점 메뉴에 \"고스트 모드로 재생\"을 추가합니다</string>
+  <string name="morphe_ghost_play_player_button_title">Ghost 모드 버튼 표시하기</string>
+  <string name="morphe_ghost_play_player_button_summary">동영상 플레이어에 Ghost 모드 전환 버튼을 표시합니다 (길게 눌러 빠른 제어 가능)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">재생 요청 익명화</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">더 강력한 격리를 위해 Ghost 재생 및 이벤트 요청에서 계정 헤더를 제거합니다. 활성화된 동안에는 연령 제한, 멤버 전용 및 Premium 기능을 사용할 수 없습니다</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Shorts 자동 Ghost 모드</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Shorts를 고스트 모드로 자동 시청하여 홈 피드에 영향을 주지 않도록 합니다</string>
+  <string name="morphe_ghost_play_auto_search_title">검색 결과 동영상 자동 고스트 모드</string>
+  <string name="morphe_ghost_play_auto_search_summary">검색 결과에서 열린 동영상을 고스트 모드로 자동 시청합니다</string>
+  <string name="morphe_ghost_play_manage_channels_title">채널 자동 고스트 모드</string>
+  <string name="morphe_ghost_play_manage_channels_summary">항상 고스트 모드로 재생될 채널을 검색, 추가, 확인 및 관리합니다</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d개의 채널이 설정되었습니다. 탭하여 검색, 확인 또는 삭제하세요</string>
+  <string name="morphe_ghost_play_local_history_title">로컬 Ghost 기록 유지</string>
+  <string name="morphe_ghost_play_local_history_summary">이 기기에서만 Ghost 모드 동영상 및 재생 위치를 기억합니다 (YouTube로 전송되지 않음)</string>
+  <string name="morphe_ghost_play_history_limit_title">로컬 Ghost 기록 제한</string>
+  <string name="morphe_ghost_play_history_limit_summary">기기에 저장할 최대 동영상 수 (가장 오래된 항목부터 자동으로 삭제됨)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d개의 동영상 저장됨 (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · 저장된 동영상 없음</string>
+  <string name="morphe_ghost_play_history_limit_100">동영상 100개</string>
+  <string name="morphe_ghost_play_history_limit_500">동영상 500개</string>
+  <string name="morphe_ghost_play_history_limit_2000">동영상 2,000개</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">무제한</string>
+  <string name="morphe_ghost_play_view_history_title">로컬 Ghost 기록 열기</string>
+  <string name="morphe_ghost_play_view_history_summary">기기에 저장된 기록을 확인, 검색, Ghost 모드로 이어보기 또는 삭제하세요</string>
+  <string name="morphe_ghost_play_view_history_summary_count">기기에 저장된 동영상 %1$d개 (%2$s) — 탭하여 확인 또는 이어보기</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">아직 기록된 동영상이 없습니다 (이 기기에만 저장됨)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Ghost 모드로 재생</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost 모드 활성화됨 — 시청 기록 및 추천 동영상이 보호됩니다</string>
+  <string name="morphe_ghost_play_video_off_toast">이 동영상에 대해 고스트 모드 꺼짐</string>
+  <string name="morphe_ghost_play_session_on_toast">고스트 모드 켜짐 — 동영상이 기록이나 추천에 영향을 주지 않습니다</string>
+  <string name="morphe_ghost_play_session_off_toast">고스트 모드 꺼짐 — 일반 재생으로 돌아갑니다</string>
+  <string name="morphe_ghost_play_timer_set_toast">%d분 동안 고스트 모드 활성화</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">타이머 해제됨 — 고스트 모드 유지</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">1분에서 720분 사이의 시간을 입력하세요</string>
+  <string name="morphe_ghost_play_dialog_title">고스트 모드</string>
+  <string name="morphe_ghost_play_state_on">켜짐</string>
+  <string name="morphe_ghost_play_state_off">사용 안함</string>
+  <string name="morphe_ghost_play_close">닫기</string>
+  <string name="morphe_ghost_play_open_settings">모든 설정</string>
+  <string name="morphe_ghost_play_quick_power_hint">탭하여 고스트 모드 전환</string>
+  <string name="morphe_ghost_play_quick_timer_title">타이머 고스트 모드</string>
+  <string name="morphe_ghost_play_quick_timer_sub">탭하여 지속 시간 선택</string>
+  <string name="morphe_ghost_play_quick_timer_running">타이머 작동 중 · %d분 남음</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">종료 시 자동으로 일반 모드로 복구됩니다</string>
+  <string name="morphe_ghost_play_quick_timer_change">시간 변경</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">타이머 해제 (설정 유지)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">사용자 지정 분 (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">설정</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">이 채널의 자동 고스트 설정 켬</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">이 채널의 자동 고스트 설정 끔</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d 개의 채널 구성됨</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">목록 (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\"이 자동 고스트 채널에 추가되었습니다</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\"이 자동 고스트 채널에서 제거되었습니다</string>
+  <string name="morphe_ghost_play_history_title">로컬 고스트 기록</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d 개의 동영상 (%s) · 탭하여 고스트 모드로 재개, 길게 눌러 제거</string>
+  <string name="morphe_ghost_play_history_search_hint">동영상 제목 또는 채널로 필터링…</string>
+  <string name="morphe_ghost_play_history_no_match">로컬 고스트 기록에 일치하는 동영상이 없습니다</string>
+  <string name="morphe_ghost_play_history_empty">아직 로컬 Ghost 기록이 없습니다</string>
+  <string name="morphe_ghost_play_history_clear_all">모두 지우기</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">로컬 Ghost 기록을 지우시겠습니까?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">기기에 저장된 모든 Ghost 모드 항목이 제거되며, 이 작업은 취소할 수 없습니다.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">로컬 Ghost 기록이 삭제되었습니다</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">로컬 Ghost 기록에서 제거됨</string>
+  <string name="morphe_ghost_play_channels_manager_title">자동 Ghost 채널</string>
+  <string name="morphe_ghost_play_channels_tab_saved">추가됨 (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">검색 &amp; 추가</string>
+  <string name="morphe_ghost_play_channels_filter_hint">이름, @핸들 또는 주제로 추가된 채널 필터링...</string>
+  <string name="morphe_ghost_play_channels_empty">아직 추가된 채널이 없습니다. \"검색 &amp; 추가\"로 전환하여 이름, @핸들 또는 URL로 채널을 찾아보세요</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">필터와 일치하는 추가된 채널이 없습니다</string>
+  <string name="morphe_ghost_play_channels_add_current">재생 중: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">추가</string>
+  <string name="morphe_ghost_play_channels_added_badge">추가 일자</string>
+  <string name="morphe_ghost_play_channels_delete_button">제거</string>
+  <string name="morphe_ghost_play_channels_search_hint">채널 이름, @핸들 또는 URL...</string>
+  <string name="morphe_ghost_play_channels_search_button">검색</string>
+  <string name="morphe_ghost_play_channels_search_guide">채널 이름, @핸들 또는 YouTube 채널 URL을 입력하고 검색을 누르세요</string>
+  <string name="morphe_ghost_play_channels_searching">YouTube 채널 검색 중…</string>
+  <string name="morphe_ghost_play_channels_search_error">검색에 실패했습니다. 연결 상태를 확인하고 다시 시도하세요.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">해당 검색어와 일치하는 채널을 찾을 수 없습니다</string>
+  <string name="morphe_ghost_play_channels_search_count">%d개의 채널을 찾았습니다 — \'추가\'를 눌러 자동 고스트 기능을 활성화하세요</string>
+  <string name="morphe_ghost_play_channels_recent_videos">최근 동영상</string>
+  <string name="morphe_ghost_play_channels_loading_details">최근 동영상 불러오는 중…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">최근 동영상이 없습니다. (탭하여 다시 시도)</string>
 </resources>

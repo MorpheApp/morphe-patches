@@ -140,6 +140,8 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 속이기 &gt; Android VR에 로그인하기</string>
   <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS 사용</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">난독화 해제를 위해 yt-dlp-ejs(WebView) 대신 QuackJS를 사용합니다</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' 로그인</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'은 별도의 로그인이 필요합니다. 계속하려면 여기를 탭하세요</string>
@@ -168,27 +170,28 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
 • Morphe 설정에서 Android VR 인증을 가져오거나 내보낼 수 없습니다
 • 이 앱을 6개월 동안 사용하지 않으면 Google에서 이 인증을 취소합니다
 • Google 암호를 변경하거나 Google 설정에서 이 기기 등록을 해제하면 다시 로그인해야 합니다"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'모바일 웹\' 로그인</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">웹 로그인</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">선택 사항: 계정으로 동영상을 재생하려면 YouTube 웹사이트에 로그인하세요. 여기를 탭하여 계속하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">현재 \'모바일 웹\'에 로그인되어 있습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">현재 YouTube 웹사이트에 로그인되어 있습니다</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">이 기능을 사용하려면 \'기본 클라이언트\'를 \'모바일 웹\'으로 변경하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'모바일 웹\'에 로그인</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'모바일 웹'은 로그아웃 상태 또는 YouTube 웹사이트에 로그인한 상태로 동영상을 재생합니다
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">이 기능을 사용하려면 \'기본 클라이언트\'를 웹 클라이언트로 변경하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube 웹사이트에 로그인</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"웹 클라이언트는 로그아웃 상태 또는 YouTube 웹사이트에 로그인한 상태에서 동영상을 재생합니다
 
 • 로그인하면 연령 제한 동영상과 같이 계정이 필요한 동영상을 재생할 수 있습니다
 • 이 앱에서 Google 로그인 페이지가 열립니다
-• 로그인은 재생할 동영상을 가져오는 용도로만 사용됩니다
+• 로그인은 재생하려는 동영상을 가져오는 용도로만 사용됩니다
 • 로그인 정보는 이 기기에만 저장됩니다
+• 선택한 기본 클라이언트에 대해 각 웹 클라이언트마다 별도의 로그인이 필요합니다
 
-로그인하려면 아래의 계속을 누르세요"</string>
+로그인하려면 아래의 계속 버튼을 누르세요"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"로그인이 저장되었습니다
 
-• Morphe 설정에서 '모바일 웹' 로그인은 가져오기/내보내기를 지원하지 않습니다
-• Google 로그인이 종료되면 다시 로그인할 때까지 로그아웃 상태로 동영상이 재생됩니다
+• Morphe 설정은 YouTube 웹사이트 로그인을 가져오거나 내보내지 않습니다
+• Google에서 로그인을 종료하면 다시 로그인할 때까지 로그아웃 상태로 동영상이 재생됩니다
 • 로그아웃하면 이 기기의 YouTube 웹사이트에서도 로그아웃됩니다"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">모바일 웹 로그인이 만료되었습니다. \'모바일 웹\'에 다시 로그인하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'모바일 웹\'에서 로그아웃되었습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">웹 로그인이 만료되었습니다. 다시 로그인하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube 웹사이트에서 로그아웃되었습니다</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\'를 사용할 수 없습니다. 로그인하려면 설치하거나 활성화하세요</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2를 일시적으로 사용할 수 없습니다 (API 시간 초과)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' 로그인이 만료되었습니다. VR에 다시 로그인하세요</string>

@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -89,6 +90,42 @@ public final class KuromojiRomanizer {
             sawPendingSpace = false;
         }
         return out.toString().trim();
+    }
+
+    /** One group per token surface, so a word's own readings stay in one cluster. */
+    @Nullable
+    public static int[] wordGroups(String line, KuromojiTokenizer tokenizer) {
+        if (line == null || line.isEmpty() || tokenizer == null) {
+            return null;
+        }
+        final List<Token> tokens = tokenizer.tokenize(line);
+        if (tokens.isEmpty()) {
+            return null;
+        }
+        final int[] groups = new int[line.length()];
+        Arrays.fill(groups, -1);
+        int group = 0;
+        int cursor = 0;
+        for (Token token : tokens) {
+            final String surface = token.surfaceForm();
+            if (surface == null || surface.isEmpty() || isWhitespaceOnly(surface)) {
+                continue;
+            }
+            final int start = line.indexOf(surface, cursor);
+            if (start < 0) {
+                continue;
+            }
+            final int end = Math.min(line.length(), start + surface.length());
+            if (end <= start) {
+                continue;
+            }
+            for (int i = start; i < end; i++) {
+                groups[i] = group;
+            }
+            group++;
+            cursor = end;
+        }
+        return group > 0 ? groups : null;
     }
 
     private record LineCharRomaji(String[] charRomaji, boolean[] bunsetsuBreakAfterChar) {
@@ -460,7 +497,7 @@ public final class KuromojiRomanizer {
 
         return changed
                 ? new LyricsLine(line.startTimeMs(), line.endTimeMs(), lineText, enrichedWords,
-                        line.agentId(), line.isDuet(), line.isBG(), line.songPart())
+                line.agentId(), line.isDuet(), line.isBG(), line.songPart())
                 : line;
     }
 
@@ -592,7 +629,7 @@ public final class KuromojiRomanizer {
                     anyRuby = true;
                 }
             }
-        out.add(new Word(cursorMs, rEnd, subText, runRoms[r], trailSpace, ruby));
+            out.add(new Word(cursorMs, rEnd, subText, runRoms[r], trailSpace, ruby));
             cursorMs = rEnd;
         }
         return anyRuby ? out : Collections.emptyList();
@@ -895,12 +932,8 @@ public final class KuromojiRomanizer {
         if ("か".equals(surf) && "何".equals(prevSurf)) {
             return true;
         }
-        if ("も".equals(surf) && ("誰".equals(prevSurf) || "何".equals(prevSurf)
-                || "いつ".equals(prevSurf) || "どこ".equals(prevSurf))) {
-            return true;
-        }
-
-        return false;
+        return "も".equals(surf) && ("誰".equals(prevSurf) || "何".equals(prevSurf)
+                || "いつ".equals(prevSurf) || "どこ".equals(prevSurf));
     }
 
     /**
@@ -1209,9 +1242,7 @@ public final class KuromojiRomanizer {
         final int mCount = moras.length;
 
         if (mCount == kCount) {
-            for (int i = 0; i < kCount; i++) {
-                out[offset + i] = moras[i];
-            }
+            System.arraycopy(moras, 0, out, offset, kCount);
             return;
         }
 

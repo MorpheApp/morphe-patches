@@ -244,6 +244,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_keyword_content_screen_title">キーワード フィルタ</string>
   <string name="morphe_hide_keyword_content_screen_summary">フィードや検索結果から合致する動画を除外する単語やフレーズを設定します</string>
   <string name="morphe_hide_keyword_content_comments_title">コメントをキーワードで除外</string>
+  <string name="morphe_hide_keyword_content_posts_title">投稿をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_home_title">ホームの動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_search_title">検索結果の動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">登録チャンネルの動画をキーワードで除外</string>
@@ -251,11 +252,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_keyword_content_phrases_summary">"非表示にするキーワードやフレーズを改行区切りで入力してください
 
 キーワードには動画タイトルに表示される任意のテキストを指定できます。@ユーザー名のキーワードを指定すると、特定のクリエイターによるすべてのコンテンツを非表示にします"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索 / コメントでは、キーワードに合致するコンテンツを非表示にするようフィルタリングされます
+  <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索 / コメント / 投稿から、キーワードに合致するコンテンツを除外します
 
 制限事項:
-• 一部のショートはチャンネル名で非表示にできません
-• 一部の UI コンポーネントは非表示にならない場合があります"</string>
+• 一部のショートはチャンネル名で除外できない
+• 一部の UI コンポーネントが非表示にならない場合がある"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">単語全体で合致</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">キーワードを二重引用符で囲むことで、動画のタイトルやチャンネル名に含まれる単語の一部分とキーワードが合致しないようにできます&lt;br&gt;&lt;br&gt;例えば、&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;は、次の動画を除外します: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;しかし、次の動画は除外しません: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -267,6 +268,39 @@ AI について扱っているだけのチャンネルや、動画の一部に A
 • 検索結果: %3$s
 • コメント: %4$s
 • 合計: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">視聴回数フィルター</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">視聴回数が少なすぎる、または多すぎる動画をフィードや検索結果から除外します</string>
+  <string name="morphe_hide_videos_by_views_home_title">ホームの動画を視聴回数で除外</string>
+  <string name="morphe_hide_videos_by_views_search_title">検索結果の動画を視聴回数で除外</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">登録チャンネルの動画を視聴回数で除外</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">最小視聴回数</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">視聴回数が少ない動画が非表示になります。0 = 最小制限なし</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">最大視聴回数</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">視聴回数が多い動画が非表示になります。0 = 最大制限なし</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"ホーム / 登録チャンネル / 検索において、視聴回数に基づいて動画とショートを非表示にするようフィルタリングされます
+
+制限事項:
+• YouTubeは視聴回数を四捨五入するため、1.2K回は1200回としてカウントされます
+• ライブストリームは非表示になりません
+• 非表示になったショートにより、ショートシェルフに空白が残る場合があります"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">視聴回数フィルタにより全動画が非表示になります</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">再生時間のフィルタ</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">フィードや検索結果で、短すぎる、または長すぎる動画を非表示にします</string>
+  <string name="morphe_hide_videos_by_duration_home_title">ホームの動画を再生時間で除外</string>
+  <string name="morphe_hide_videos_by_duration_search_title">検索結果の動画を再生時間で除外</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">登録チャンネルの動画を再生時間で除外</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">最小再生時間（分）</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">これより短い動画は非表示になります。0 = 最小制限なし</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">最大再生時間（分）</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">これより長い動画は非表示になります。0 = 最大制限なし</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"ホーム / 登録チャンネル / 検索において、再生時間に基づいて動画を非表示にするフィルタリングが行われます
+
+制限事項:
+• ライブ配信、ショート、プレイリスト、ミックスは非表示になりません
+• 再生時間が不明な動画は非表示になりません"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">再生時間フィルタにより全動画が非表示になります</string>
   <string name="morphe_hide_stats_category_title">統計</string>
   <string name="morphe_hide_stats_hidden_24h_title">直近 24 時間の除外動画数</string>
   <string name="morphe_hide_stats_hidden_all_title">全期間の除外動画数</string>
@@ -310,8 +344,6 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_sync_button_title">「動画に同期」ボタンを非表示</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">長押し倍速再生の表示の不具合を修正</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">長押し倍速再生中に指を縦にスライドするとプレーヤー画面の上下が暗くなる不具合を修正します</string>
-  <string name="morphe_hide_timed_reactions_title">Timed Reaction を非表示</string>
-  <string name="morphe_hide_timed_reactions_summary">コメント欄やライブ配信のチャット欄で絵文字を使ってリアクションする機能 (ハート アイコン ボタン) を非表示にします</string>
   <string name="morphe_hide_help_feedback_menu_summary">検索結果などのツールバーに表示される 3 点ボタンから呼び出されるメニューの「ヘルプとフィードバック」を非表示にします</string>
   <string name="morphe_hide_handle_title">ハンドルを非表示</string>
   <string name="morphe_hide_handle_summary">「You」タブでチャンネルハンドルを非表示にします</string>
@@ -428,8 +460,10 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示される、コメントのプレビューを非表示にします</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe によってコメントが非表示になりました…</string>
-  <string name="morphe_minimal_comments_button_title">コメント セクションをコンパクト化</string>
-  <string name="morphe_minimal_comments_button_summary">コメント セクションの横スワイプ欄を切り替える機能を無効にし、コンパクトなスタイルで表示します</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">コメントのプレビューカードを非表示</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">コメントボタンに表示されるスライディングカードとページインジケーターを非表示にします</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Timed Reaction を非表示</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">コメント欄やライブ配信のチャット欄で絵文字を使ってリアクションする機能 (ハート アイコン ボタン) を非表示にします</string>
   <string name="morphe_hide_comments_timestamp_button_title">タイムスタンプ ボタンを非表示</string>
   <string name="morphe_hide_comments_top_fans_button_title">「トップファン」ボタンを非表示</string>
   <string name="morphe_hide_comments_topics_title">\"トピック\"を非表示にする</string>
@@ -679,14 +713,14 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_ryd_feed_counts_position_entry_1">視聴回数の隣</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">中央右</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">左上</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">コメントを検索</string>
-  <string name="morphe_search_comments_summary">コメント欄の検索ボタンをタップして、検索ワードをすべて含む読み込み済みコメントのみを表示します。フレーズで検索する場合は、単語を引用符で囲んでください</string>
-  <string name="morphe_search_comments_dialog_title">コメントを検索</string>
-  <string name="morphe_search_comments_hint">検索ワード</string>
-  <string name="morphe_search_comments_clear">解除</string>
-  <string name="morphe_search_comments_applied">検索によるフィルタを適用するには、コメントの並び順 (フィルタ) を変更するかコメント欄を開き直してください</string>
-  <string name="morphe_search_comments_cleared">検索によるフィルタを解除しました。コメントの並び順 (フィルタ) を変更するかコメント欄を開き直すと、すべてのコメントを表示します</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">コメントを検索</string>
+  <string name="morphe_comment_search_summary">コメント欄の検索ボタンをタップすると、読み込まれているコメントのうち、すべての検索ワードを含むコメントのみが表示されます。フレーズで検索する場合は、単語を引用符で囲んでください</string>
+  <string name="morphe_comment_search_dialog_title">コメントを検索</string>
+  <string name="morphe_comment_search_hint">検索ワード</string>
+  <string name="morphe_comment_search_clear">解除</string>
+  <string name="morphe_comment_search_applied">検索によるフィルタを適用するには、コメントの並び順 (フィルタ) を変更するかコメント欄を開き直してください</string>
+  <string name="morphe_comment_search_cleared">検索によるフィルタを解除しました。コメントの並び順 (フィルタ) を変更するかコメント欄を開き直すと、すべてのコメントを表示します</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
   <string name="morphe_disable_connect_your_devices_popup_title">「デバイスの接続」ポップアップを無効化</string>
@@ -1140,6 +1174,17 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">文字起こしの不具合を修正</string>
   <string name="morphe_fix_transcript_summary">文字起こしの読み込み失敗の原因となる前提条件チェックのエラーを修正します</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">文字起こしをコピー</string>
+  <string name="morphe_copy_transcript_title">文字起こしをコピー</string>
+  <string name="morphe_copy_transcript_summary">キャプションの言語で文字起こしをコピーするボタンを文字起こしパネルに追加します</string>
+  <string name="morphe_copy_transcript_timestamps_title">タイムスタンプを含める</string>
+  <string name="morphe_copy_transcript_timestamps_summary">コピーされた文字起こしの各行には、タイムスタンプが付加されます</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">ショートのメニューに表示</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">ショートのメニューに「文字起こしをコピー」項目を追加します</string>
+  <string name="morphe_copy_transcript_copied">文字起こしをクリップボードにコピーしました</string>
+  <string name="morphe_copy_transcript_empty">利用可能な文字起こしはありません</string>
+  <string name="morphe_copy_transcript_error">文字起こしをコピーできませんでした</string>
   <string name="morphe_captions_in_pip_title">ピクチャー イン ピクチャーで字幕を表示</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">字幕サイズ</string>
@@ -1171,6 +1216,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_show_settings_button_title">設定ボタンを表示</string>
   <string name="morphe_show_settings_button_type_title">設定ボタンの動作</string>
   <string name="morphe_show_settings_button_type_summary">この設定がオンの場合、タップすると Morphe の設定を、長押しすると YouTube の設定を開きます。オフの場合は動作が入れ替わります</string>
+  <string name="morphe_you_button_account_switcher_title">アカウント切り替えショートカット</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">「自分」ボタンを長押しして、アカウント切り替えを開きます</string>
   <string name="morphe_navigation_buttons_order_title">ナビゲーション ボタンの順序</string>
   <string name="morphe_navigation_buttons_order_summary">ボタンをドラッグして、ナビゲーション バー内の順序を変更します</string>
   <string name="morphe_swap_create_with_notifications_button_title">作成ボタンと通知ボタンを入れ替える</string>
@@ -1274,7 +1322,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_end_screen_suggested_video_summary">"動画が終了した後に表示される、「関連動画」のオーバーレイを非表示にします
 
 この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。[次の動画を自動再生] は、YouTube の設定で変更できます:
-[設定] > [再生] (または [自動再生] ) > [次の動画を自動再生]"</string>
+[設定] &gt; [再生] (または [自動再生] ) &gt; [次の動画を自動再生]"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">関連動画を非表示</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
@@ -1391,6 +1439,17 @@ Automotive レイアウト
 •「その他の動画」オーバーレイが表示されない場合がある
 • ショート動画が通常のプレーヤーで再生される
 • 動画プレーヤーのアクション ボタンにボタン名が表示される (旧仕様)"</string>
+  <string name="morphe_change_form_factor_car_display_title">車載ディスプレイでの車載レイアウト</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Android AutoやDriveDeckなどでYouTubeが車載ディスプレイに表示される際に、車載レイアウトが使用されます</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">車載ディスプレイで車載レイアウトを使用しません</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">車載ディスプレイでナビゲーションバーを自動的に隠す</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">車載ディスプレイでしばらく操作がないとナビゲーションバーが非表示になります。画面下端から上にスワイプして表示してください</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">車載ディスプレイでナビゲーションバーを常に表示する</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">自動的に隠すまでの遅延時間</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">ナビゲーションバーが表示された後、またはタッチされた後に表示され続ける時間</string>
+  <string name="morphe_change_form_factor_car_display_any_title">任意の外部ディスプレイで使用する</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">TVやモニターを含む、スマートフォンの画面以外のすべてのディスプレイを車載ディスプレイとして扱います</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"車載ディスプレイは、Android Auto、ディスプレイ名、および車載UIモードによって検出されます。Android 15以降では、DriveDeck、Gearslip、graphene-auto、またはMyCarによる画面ミラーリングも車載ディスプレイとして扱われます"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
@@ -1447,6 +1506,8 @@ Automotive レイアウト
   <string name="morphe_playback_in_feeds_entry_always_on">常に有効</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi のみ</string>
   <string name="morphe_playback_in_feeds_entry_off">オフ</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">フィードにシークボタンを表示する</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">YouTubeがシークボタンを表示しない場合でも、フィードで再生されるビデオにシークボタンを表示します</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">タイトルを原文に戻す</string>
   <string name="morphe_restore_original_titles_summary">動画のタイトルと動画およびチャンネルの説明文の自動翻訳を無効にし、原文を表示します</string>
@@ -2052,4 +2113,106 @@ AV1 を用いた動画再生では、カクつきやフレームの欠落が発�
   <string name="morphe_live_chat_translate_max_length_title">最大メッセージ長</string>
   <string name="morphe_live_chat_translate_max_length_summary">長いメッセージは翻訳されずに表示されます</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">上限なし</string>
+  <string name="morphe_ghost_play_screen_title">ゴーストモード</string>
+  <string name="morphe_ghost_play_screen_summary">視聴履歴やおすすめに影響を与えずに動画を視聴します</string>
+  <string name="morphe_ghost_play_cat_general_title">全般</string>
+  <string name="morphe_ghost_play_cat_buttons_title">ボタン</string>
+  <string name="morphe_ghost_play_cat_rules_title">オートゴースト ルール</string>
+  <string name="morphe_ghost_play_cat_history_title">ローカル履歴</string>
+  <string name="morphe_ghost_play_cat_advanced_title">高度なプライバシー</string>
+  <string name="morphe_ghost_play_enabled_title">ゴースト モードを有効にする</string>
+  <string name="morphe_ghost_play_enabled_summary">視聴履歴やおすすめに影響を与えることなく、選択した動画、ショート、検索、チャンネル、またはセッション全体を視聴できます</string>
+  <string name="morphe_ghost_play_mode_active_title">ゴースト モードがアクティブです</string>
+  <string name="morphe_ghost_play_mode_active_summary">ONにすると、フィード、関連動画、または検索から通常通りに開くすべてのビデオが、3点ドットメニューを使用せずにゴーストモードで再生されます</string>
+  <string name="morphe_ghost_play_persist_mode_title">再起動後もゴーストモードを保持する</string>
+  <string name="morphe_ghost_play_persist_mode_summary">YouTubeを閉じて再度開いた後でも、ゴーストモードをONのままにします</string>
+  <string name="morphe_ghost_play_toolbar_button_title">トップバーにゴーストモードの切り替えボタンを表示</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">トップバーのアイコンの隣にコンパクトなゴーストモード切り替えボタンを配置します（タップで切り替え、長押しでクイックコントロール）</string>
+  <string name="morphe_ghost_play_flyout_button_title">ビデオメニューに表示</string>
+  <string name="morphe_ghost_play_flyout_button_summary">ビデオの3点ドットメニューに\"ゴーストモードで再生\"を追加します</string>
+  <string name="morphe_ghost_play_player_button_title">「ゴーストモード」ボタンを表示</string>
+  <string name="morphe_ghost_play_player_button_summary">ビデオプレーヤーにゴーストモードの切り替えボタンを表示します（長押しでクイックコントロールを表示）</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">再生リクエストを匿名化する</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">より強力な分離を実現するため、ゴースト再生およびイベントリクエストからアカウントヘッダーを削除します。有効にしている間は、年齢制限のあるコンテンツ、メンバー限定コンテンツ、およびPremium機能は利用できなくなります</string>
+  <string name="morphe_ghost_play_auto_shorts_title">ショートを自動的にゴースト化</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">ゴーストモードでショートを自動的に視聴し、ホームフィードに影響を与えないようにします</string>
+  <string name="morphe_ghost_play_auto_search_title">検索結果からのビデオを自動ゴースト化</string>
+  <string name="morphe_ghost_play_auto_search_summary">検索結果から開いたビデオを自動的にゴーストモードで視聴します</string>
+  <string name="morphe_ghost_play_manage_channels_title">チャンネルを自動ゴースト化</string>
+  <string name="morphe_ghost_play_manage_channels_summary">常にゴーストモードで再生するチャンネルを検索、追加、確認、管理します</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d 個のチャンネルが設定されています。タップして検索、確認、または削除してください</string>
+  <string name="morphe_ghost_play_local_history_title">ローカルのGhost履歴を保持する</string>
+  <string name="morphe_ghost_play_local_history_summary">Ghostモードの動画と再生位置をこのデバイスのみに保存します（YouTubeに送信されることはありません）</string>
+  <string name="morphe_ghost_play_history_limit_title">ローカルGhost履歴の制限</string>
+  <string name="morphe_ghost_play_history_limit_summary">デバイスに保存される最大動画数（古い項目から自動的に削除されます）</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d 本の動画を保存済み (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · 保存された動画はありません</string>
+  <string name="morphe_ghost_play_history_limit_100">100本の動画</string>
+  <string name="morphe_ghost_play_history_limit_500">500本の動画</string>
+  <string name="morphe_ghost_play_history_limit_2000">2,000本の動画</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">無制限</string>
+  <string name="morphe_ghost_play_view_history_title">ローカルのゴースト履歴を開く</string>
+  <string name="morphe_ghost_play_view_history_summary">デバイス上の履歴の表示、検索、ゴーストモードでの再開、または履歴の消去を行えます</string>
+  <string name="morphe_ghost_play_view_history_summary_count">デバイスに%1$d本の動画が保存されています (%2$s) — タップして表示または再開</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">まだ録画された動画はありません（このデバイスにのみ保存されます）</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%df分</string>
+  <string name="morphe_ghost_play_flyout_action">ゴーストモードで再生</string>
+  <string name="morphe_ghost_play_video_active_toast">ゴーストモードが有効です — 再生履歴とおすすめが保護されています</string>
+  <string name="morphe_ghost_play_video_off_toast">このビデオのゴーストモードをOFFにしました</string>
+  <string name="morphe_ghost_play_session_on_toast">ゴーストモードON — ビデオは履歴やおすすめに影響しません</string>
+  <string name="morphe_ghost_play_session_off_toast">ゴーストモードOFF — 通常の再生に戻ります</string>
+  <string name="morphe_ghost_play_timer_set_toast">ゴーストモードを%d分間有効にします</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">タイマーを解除しました — ゴーストモードはONのままです</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">1分から720分の範囲で時間を入力してください</string>
+  <string name="morphe_ghost_play_dialog_title">ゴーストモード</string>
+  <string name="morphe_ghost_play_state_on">オン</string>
+  <string name="morphe_ghost_play_state_off">オフ</string>
+  <string name="morphe_ghost_play_close">閉じる</string>
+  <string name="morphe_ghost_play_open_settings">すべての設定</string>
+  <string name="morphe_ghost_play_quick_power_hint">タップしてゴーストモードを切り替えます</string>
+  <string name="morphe_ghost_play_quick_timer_title">タイマー付きゴーストモード</string>
+  <string name="morphe_ghost_play_quick_timer_sub">タップして時間を選択してください</string>
+  <string name="morphe_ghost_play_quick_timer_running">タイマー作動中 · 残り %d 分</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">終了すると自動的に通常モードに戻ります</string>
+  <string name="morphe_ghost_play_quick_timer_change">時間を変更</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">タイマーを解除 (ON のままにする)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%df分</string>
+  <string name="morphe_ghost_play_timer_custom_hint">カスタム分 (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">適用</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">このチャンネルの自動ゴーストが ON です</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">このチャンネルの自動ゴーストをOFFにしました</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d 個のチャンネルが設定済み</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">リスト (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" を自動ゴーストチャンネルに追加しました</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" を自動ゴーストチャンネルから削除しました</string>
+  <string name="morphe_ghost_play_history_title">ローカルゴースト履歴</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d 本のビデオ (%s) · タップしてゴーストモードで再開、長押しで削除</string>
+  <string name="morphe_ghost_play_history_search_hint">ビデオタイトルまたはチャンネルでフィルター…</string>
+  <string name="morphe_ghost_play_history_no_match">ローカルゴースト履歴に一致するビデオはありません</string>
+  <string name="morphe_ghost_play_history_empty">ローカルゴースト履歴はまだありません</string>
+  <string name="morphe_ghost_play_history_clear_all">すべて消去</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">ローカルのゴースト履歴を消去しますか？</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">デバイスに保存されているすべてのゴーストモードのエントリが削除され、元に戻すことはできません。</string>
+  <string name="morphe_ghost_play_history_cleared_toast">ローカルのゴースト履歴を消去しました</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">ローカルのゴースト履歴から削除しました</string>
+  <string name="morphe_ghost_play_channels_manager_title">オートゴーストチャンネル</string>
+  <string name="morphe_ghost_play_channels_tab_saved">追加済み (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">検索 &amp; 追加</string>
+  <string name="morphe_ghost_play_channels_filter_hint">追加済みチャンネルを名前、@ハンドル、またはトピックで絞り込む…</string>
+  <string name="morphe_ghost_play_channels_empty">まだチャンネルが追加されていません。「検索 &amp; 追加」に切り替えて、名前、@ハンドル、またはURLでチャンネルを探してください。</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">フィルターに一致する追加済みチャンネルはありません</string>
+  <string name="morphe_ghost_play_channels_add_current">再生中: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">追加</string>
+  <string name="morphe_ghost_play_channels_added_badge">追加済み</string>
+  <string name="morphe_ghost_play_channels_delete_button">削除</string>
+  <string name="morphe_ghost_play_channels_search_hint">チャンネル名、@ハンドル、またはURL…</string>
+  <string name="morphe_ghost_play_channels_search_button">検索</string>
+  <string name="morphe_ghost_play_channels_search_guide">チャンネル名、@ハンドル、またはYouTubeチャンネルURLを入力して「検索」をタップしてください</string>
+  <string name="morphe_ghost_play_channels_searching">YouTubeチャンネルを検索中…</string>
+  <string name="morphe_ghost_play_channels_search_error">検索に失敗しました。接続を確認してもう一度お試しください。</string>
+  <string name="morphe_ghost_play_channels_search_no_results">そのクエリに一致するチャンネルは見つかりませんでした</string>
+  <string name="morphe_ghost_play_channels_search_count">%d 個のチャンネルが見つかりました。 「追加」をタップしてオートゴーストを有効にします</string>
+  <string name="morphe_ghost_play_channels_recent_videos">最近の動画</string>
+  <string name="morphe_ghost_play_channels_loading_details">最近の動画を読み込み中…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">最近の動画は見つかりませんでした（タップして再試行）</string>
 </resources>
