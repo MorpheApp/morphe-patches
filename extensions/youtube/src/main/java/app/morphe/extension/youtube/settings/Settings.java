@@ -316,6 +316,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final LongSetting HIDE_VIDEOS_BY_VIEWS_MAXIMUM = new LongSetting("morphe_hide_videos_by_views_maximum", 0L,
             parentsAny(HIDE_VIDEOS_BY_VIEWS_HOME, HIDE_VIDEOS_BY_VIEWS_SEARCH, HIDE_VIDEOS_BY_VIEWS_SUBSCRIPTIONS));
 
+    // Duration filter
+    public static final BooleanSetting HIDE_VIDEOS_BY_DURATION_HOME = new BooleanSetting("morphe_hide_videos_by_duration_home", FALSE);
+    public static final BooleanSetting HIDE_VIDEOS_BY_DURATION_SEARCH = new BooleanSetting("morphe_hide_videos_by_duration_search", FALSE);
+    public static final BooleanSetting HIDE_VIDEOS_BY_DURATION_SUBSCRIPTIONS = new BooleanSetting("morphe_hide_videos_by_duration_subscriptions", FALSE);
+    public static final LongSetting HIDE_VIDEOS_BY_DURATION_MINIMUM = new LongSetting("morphe_hide_videos_by_duration_minimum", 0L,
+            parentsAny(HIDE_VIDEOS_BY_DURATION_HOME, HIDE_VIDEOS_BY_DURATION_SEARCH, HIDE_VIDEOS_BY_DURATION_SUBSCRIPTIONS));
+    public static final LongSetting HIDE_VIDEOS_BY_DURATION_MAXIMUM = new LongSetting("morphe_hide_videos_by_duration_maximum", 0L,
+            parentsAny(HIDE_VIDEOS_BY_DURATION_HOME, HIDE_VIDEOS_BY_DURATION_SEARCH, HIDE_VIDEOS_BY_DURATION_SUBSCRIPTIONS));
+
     // Player
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_CHAPTERS = new BooleanSetting("morphe_disable_haptic_feedback_chapters", FALSE);

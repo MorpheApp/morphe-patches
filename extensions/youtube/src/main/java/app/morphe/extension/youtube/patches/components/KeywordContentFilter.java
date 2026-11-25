@@ -382,7 +382,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      *         Remix menu item of a video.
      */
     @Nullable
-    private static ElementModel findModel(Element element) {
+    static ElementModel findModel(Element element) {
         ElementModel model = element.getType().getComponentType().getModel();
         ViewModelHolder viewModel = model.getYoutubeModel().getViewModel();
         if (model.hasVideoWithContextModel()

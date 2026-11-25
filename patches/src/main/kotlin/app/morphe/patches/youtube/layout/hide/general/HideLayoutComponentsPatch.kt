@@ -105,6 +105,8 @@ private const val COMMENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CommentsFilter;"
 private const val VIEW_COUNT_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ViewCountFilter;"
+private const val VIDEO_DURATION_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/VideoDurationFilter;"
 private const val CUSTOM_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CustomFilter;"
 private const val KEYWORD_FILTER =
@@ -324,6 +326,27 @@ val hideLayoutComponentsPatch = patch(
                 )
             ),
             PreferenceScreenPreference(
+                key = "morphe_hide_videos_by_duration_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_videos_by_duration_home"),
+                    SwitchPreference("morphe_hide_videos_by_duration_search"),
+                    SwitchPreference("morphe_hide_videos_by_duration_subscriptions"),
+                    TextPreference("morphe_hide_videos_by_duration_minimum", inputType = InputType.NUMBER),
+                    TextPreference("morphe_hide_videos_by_duration_maximum", inputType = InputType.NUMBER),
+                    screenInfoPreferenceCategory(
+                        key = "morphe_hide_videos_by_duration_about_category",
+                        preferences = setOf(
+                            NonInteractivePreference(
+                                key = "morphe_hide_videos_by_duration_about",
+                                titleKey = null,
+                                tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
+                            )
+                        )
+                    )
+                )
+            ),
+            PreferenceScreenPreference(
                 key = "morphe_hide_filter_bar_screen",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_filter_bar_in_channel_page"),
@@ -467,6 +490,7 @@ val hideLayoutComponentsPatch = patch(
         addLithoFilter(COMMENTS_FILTER)
         addLithoFilter(KEYWORD_FILTER)
         addLithoFilter(VIEW_COUNT_FILTER)
+        addLithoFilter(VIDEO_DURATION_FILTER)
         addLithoFilter(CUSTOM_FILTER)
         addSpanFilter(SANITIZE_VIDEO_SUBTITLE_FILTER)
         addSpanFilter(SEARCH_LINKS_FILTER)

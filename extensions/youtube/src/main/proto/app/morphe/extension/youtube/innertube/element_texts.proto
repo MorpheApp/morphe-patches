@@ -7,7 +7,7 @@ option java_package = "app.morphe.extension.youtube.innertube";
 option java_outer_classname = "ElementTexts";
 
 // Bytes of a Litho element (the newElement of an elementRenderer), with only the texts
-// that the video cards, the comments and the community posts show. The field numbers are the same as in feed_card_layout.proto.
+// that the video cards (including the duration), the comments and the community posts show. The field numbers are the same as in feed_card_layout.proto.
 message Element {
     ElementType type = 1;
     // Elements inside a container element, such as the Short inside the cell of a Short.
@@ -55,11 +55,16 @@ message VideoWithContextData {
 }
 
 message VideoData {
+    VideoThumbnail thumbnail = 1;
     ChannelAvatar avatar = 3;
     LockupMetadata lockupMetadata = 21;
     // Videos with one of these images have no channel avatar.
     LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
     LockupImage avatarStack = 24; // Avatars of the channels of a collaboration video.
+}
+
+message VideoThumbnail {
+    string timestampText = 2; // Duration, such as "45:41".
 }
 
 message LockupImage {
@@ -172,7 +177,37 @@ message ViewModelHolder {
 }
 
 message LockupViewModel {
+    ContentImage contentImage = 2;
     LockupMetadata metadata = 3;
+}
+
+message ContentImage {
+    ThumbnailViewModel thumbnailViewModel = 1036; // Playlists and mixes have another view model.
+}
+
+message ThumbnailViewModel {
+    repeated ThumbnailOverlay overlays = 2;
+}
+
+message ThumbnailOverlay {
+    ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    ThumbnailOverlayBadgeViewModel thumbnailOverlayBadgeViewModel = 1295;
+}
+
+message ThumbnailBottomOverlayViewModel {
+    repeated ThumbnailBadge badges = 4;
+}
+
+message ThumbnailOverlayBadgeViewModel {
+    repeated ThumbnailBadge thumbnailBadges = 1;
+}
+
+message ThumbnailBadge {
+    ThumbnailBadgeViewModel thumbnailBadgeViewModel = 1128;
+}
+
+message ThumbnailBadgeViewModel {
+    string text = 2; // Such as the duration "45:41".
 }
 
 message ListItemViewModel {
