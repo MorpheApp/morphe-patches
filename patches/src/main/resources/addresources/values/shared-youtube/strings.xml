@@ -414,7 +414,6 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs"
     <string name="morphe_glass_menus_screen_summary">Menus as frosted glass over the blurred content behind them</string>
     <string name="morphe_glass_menus_title">Enable glass menus</string>
     <string name="morphe_glass_menus_summary">Shows menus and bottom sheets as frosted glass, with the content behind them blurred</string>
-    <string name="morphe_glass_menus_user_dialog_message">Menus are shown nearly opaque while the battery saver is on, or if the device does not support blur</string>
     <string name="morphe_glass_menus_opacity_title">Glass opacity</string>
     <string name="morphe_glass_menus_opacity_summary">How much the menu covers the blurred content (0 is clear, 100 is opaque)</string>
     <string name="morphe_glass_menus_blur_title">Blur</string>

@@ -39,3 +39,14 @@ internal object TouchFeedbackDrawableConstructorFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Shows the "Please wait" progress dialog before the download quality menu. Matches 2 methods: the download button of
+ * a video and the download option of a menu.
+ */
+internal object DownloadProgressDialogFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "offline_stream_selection_waiting"),
+        methodCall(smali = "Landroid/app/ProgressDialog;->show()V"),
+    )
+)
