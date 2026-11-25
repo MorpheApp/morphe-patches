@@ -243,6 +243,7 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Kies specifieke woorden of zinsdelen om video\'s in feeds en zoekopdrachten te verbergen</string>
   <string name="morphe_hide_keyword_content_comments_title">Verberg reacties op trefwoorden</string>
+  <string name="morphe_hide_keyword_content_posts_title">Berichten verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_home_title">Home-video\'s verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_search_title">Zoekresultaten verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abonnementsvideo\'s verbergen door keywords</string>
@@ -250,7 +251,7 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_hide_keyword_content_phrases_summary">"Voer trefwoorden en zinnen in om te verbergen, gescheiden door nieuwe regels
 
 Trefwoorden kunnen elke tekst zijn die in videotitels wordt weergegeven. Het trefwoord @Gebruikersnaam verbergt alle inhoud van specifieke makers"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoeken / Reacties worden gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
+  <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoeken / Reacties / Berichten worden gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
 
 Beperkingen:
 • Sommige Shorts kunnen niet worden verborgen op kanaalnaam
@@ -266,6 +267,23 @@ Beperkingen:
 • Zoeken: %3$s
 • Reacties: %4$s
 • Totaal: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Filter voor weergaven</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Verberg video\'s in feeds en zoekopdrachten die te weinig of te veel weergaven hebben</string>
+  <string name="morphe_hide_videos_by_views_home_title">Home-video\'s verbergen door weergaven</string>
+  <string name="morphe_hide_videos_by_views_search_title">Zoekresultaten verbergen door weergaven</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Abonnementsvideo\'s verbergen door weergaven</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Minimaal aantal weergaven</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Video\'s met minder weergaven worden verborgen. 0 = geen minimum</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Maximaal aantal weergaven</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Video\'s met meer weergaven worden verborgen. 0 = geen maximum</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Home / Abonnementen / Zoeken worden gefilterd om video's en Shorts te verbergen op basis van hun weergavenaantal
+
+Beperkingen:
+• YouTube rondt weergavenaantallen af, dus 1,2K weergaven wordt geteld als 1200 weergaven
+• Livestreams worden niet verborgen
+• Een verborgen Short kan een lege ruimte achterlaten in een Shorts-plank"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Weergavefilter zal alle video\'s verbergen</string>
   <string name="morphe_hide_stats_category_title">Statistieken</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video\'s verborgen, afgelopen 24 uur</string>
   <string name="morphe_hide_stats_hidden_all_title">Video\'s verborgen, ooit</string>
@@ -678,14 +696,14 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_ryd_feed_counts_position_entry_1">Naast aantal weergaven</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Midden rechts</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Links boven</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Reacties zoeken</string>
-  <string name="morphe_search_comments_summary">Tik op de zoekknop in de reacties om alleen de geladen reacties te tonen die alle gezochte woorden bevatten. Zet woorden tussen aanhalingstekens om op een zin te zoeken</string>
-  <string name="morphe_search_comments_dialog_title">Reacties zoeken</string>
-  <string name="morphe_search_comments_hint">Woorden om op te zoeken</string>
-  <string name="morphe_search_comments_clear">Wissen</string>
-  <string name="morphe_search_comments_applied">Wijzig de sorteervolgorde of open de reacties opnieuw om erin te zoeken</string>
-  <string name="morphe_search_comments_cleared">Zoekopdracht gewist. Wijzig de sorteervolgorde of open de reacties opnieuw om alle reacties te tonen</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Reacties zoeken</string>
+  <string name="morphe_comment_search_summary">Tik op de zoekknop in de reacties om alleen de geladen reacties te tonen die alle gezochte woorden bevatten. Zet woorden tussen aanhalingstekens om op een zin te zoeken</string>
+  <string name="morphe_comment_search_dialog_title">Reacties doorzoeken</string>
+  <string name="morphe_comment_search_hint">Woorden om op te zoeken</string>
+  <string name="morphe_comment_search_clear">Wissen</string>
+  <string name="morphe_comment_search_applied">Wijzig de sorteervolgorde of open de reacties opnieuw om ze te doorzoeken</string>
+  <string name="morphe_comment_search_cleared">Zoekopdracht gewist. Wijzig de sorteervolgorde of open de reacties opnieuw om alle reacties te tonen</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Schakel de pop-up \'Verbind je apparaten\' uit</string>
@@ -1170,6 +1188,9 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_show_settings_button_title">Toon Instellingen-knop</string>
   <string name="morphe_show_settings_button_type_title">Actie van de instellingenknop</string>
   <string name="morphe_show_settings_button_type_summary">Wanneer ingeschakeld, opent een tik de Morphe-instellingen en een lange druk de YouTube-instellingen; schakel uit om te wisselen</string>
+  <string name="morphe_you_button_account_switcher_title">Snelkoppeling voor accountwisselaar</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Houd de knop \'Jij\' lang ingedrukt om de accountwisselaar te openen</string>
   <string name="morphe_navigation_buttons_order_title">Volgorde van navigatieknoppen</string>
   <string name="morphe_navigation_buttons_order_summary">Sleep de knoppen om hun volgorde in de navigatiebalk te wijzigen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Wissel de knop \'Maken\' om met de knop \'Meldingen\'</string>
@@ -1446,6 +1467,8 @@ Auto-indeling
   <string name="morphe_playback_in_feeds_entry_always_on">Altijd aan</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Alleen Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Uit</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Toon zoekknoppen in feeds</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Toont de zoekknoppen op de video\'s die in feeds worden afgespeeld, ook wanneer YouTube deze niet toont</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Originele titels herstellen</string>
   <string name="morphe_restore_original_titles_summary">Toont de originele videotitels, videobeschrijvingen en kanaalbeschrijvingen in plaats van de automatisch vertaalde</string>
@@ -2051,4 +2074,102 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_live_chat_translate_max_length_title">Maximale berichtlengte</string>
   <string name="morphe_live_chat_translate_max_length_summary">Langere berichten worden onvertaald getoond</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Geen limiet</string>
+  <string name="morphe_ghost_play_screen_title">Ghostmodus</string>
+  <string name="morphe_ghost_play_screen_summary">Bekijk video\'s zonder dat dit invloed heeft op je kijkgeschiedenis of aanbevelingen</string>
+  <string name="morphe_ghost_play_cat_general_title">Algemeen</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Knoppen</string>
+  <string name="morphe_ghost_play_cat_rules_title">Auto-ghost regels</string>
+  <string name="morphe_ghost_play_cat_history_title">Lokale geschiedenis</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Geavanceerde privacy</string>
+  <string name="morphe_ghost_play_enabled_title">Ghost-modus inschakelen</string>
+  <string name="morphe_ghost_play_enabled_summary">Hiermee kun je geselecteerde video\'s, Shorts, zoekopdrachten, kanalen of volledige sessies bekijken zonder dat dit invloed heeft op de kijkgeschiedenis of aanbevelingen</string>
+  <string name="morphe_ghost_play_mode_active_title">Ghost-modus actief</string>
+  <string name="morphe_ghost_play_mode_active_summary">Wanneer AAN, wordt elke video die je normaal opent vanuit feeds, gerelateerde video\'s of zoekopdrachten afgespeeld in Ghost-modus zonder het menu met drie puntjes te gebruiken</string>
+  <string name="morphe_ghost_play_persist_mode_title">Onthoud Ghost-modus na herstarts</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Houdt Ghost-modus AAN, zelfs na het sluiten en opnieuw openen van YouTube</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Schakelaar voor Ghost-modus tonen in bovenbalk</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Plaatst een compacte schakelaar voor Ghost-modus naast de pictogrammen in de bovenbalk (tik om te wisselen, houd lang ingedrukt voor snelle bediening)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Tonen in videomenu</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Voegt \"Afspelen in Ghost-modus\" toe aan het menu met de drie puntjes van video\'s</string>
+  <string name="morphe_ghost_play_player_button_title">Knop voor Ghost-modus weergeven</string>
+  <string name="morphe_ghost_play_player_button_summary">Toont een schakelknop voor Ghost-modus in de videospeler (houd lang ingedrukt voor snelle bediening)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Afspeelverzoeken anonimiseren</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Verwijder accountheaders uit ghost-afspeel- en eventverzoeken voor sterkere isolatie. Leeftijdsbeperkte functies, functies voor alleen leden en Premium-functies zijn niet beschikbaar wanneer dit is ingeschakeld</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Auto-ghost Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Bekijkt Shorts automatisch in Ghost-modus, zodat ze je homefeed niet beïnvloeden</string>
+  <string name="morphe_ghost_play_auto_search_title">Auto-ghost video\'s uit Zoeken</string>
+  <string name="morphe_ghost_play_auto_search_summary">Bekijkt automatisch video\'s die geopend zijn vanuit zoekresultaten in Ghost-modus</string>
+  <string name="morphe_ghost_play_manage_channels_title">Auto-ghost kanalen</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Zoek, voeg toe, inspecteer en beheer kanalen die altijd in Ghost-modus worden afgespeeld</string>
+  <string name="morphe_ghost_play_local_history_title">Lokale Ghost-geschiedenis bewaren</string>
+  <string name="morphe_ghost_play_local_history_summary">Onthoudt Ghost-modus video\'s en afspeelposities alleen op dit apparaat (worden nooit naar YouTube verzonden)</string>
+  <string name="morphe_ghost_play_history_limit_title">Limiet lokale Ghost-geschiedenis</string>
+  <string name="morphe_ghost_play_history_limit_summary">Maximaal aantal video\'s dat op het apparaat wordt bewaard (oudste vermeldingen worden automatisch verwijderd)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d video\'s opgeslagen (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Geen video\'s opgeslagen</string>
+  <string name="morphe_ghost_play_history_limit_100">100 video\'s</string>
+  <string name="morphe_ghost_play_history_limit_500">500 video\'s</string>
+  <string name="morphe_ghost_play_history_limit_2000">2.000 video\'s</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Onbeperkt</string>
+  <string name="morphe_ghost_play_view_history_title">Open lokale Ghost-geschiedenis</string>
+  <string name="morphe_ghost_play_view_history_summary">Bekijk, zoek, hervat in Ghost-modus of wis je geschiedenis op het apparaat</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d video\'s opgeslagen op apparaat (%2$s) — tik om te bekijken of te hervatten</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Nog geen video\'s opgenomen (alleen op dit apparaat opgeslagen)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Afspelen in Ghost-modus</string>
+  <string name="morphe_ghost_play_video_active_toast">Ghost-modus actief — geschiedenis en aanbevelingen zijn beschermd</string>
+  <string name="morphe_ghost_play_video_off_toast">Ghost-modus UIT voor deze video</string>
+  <string name="morphe_ghost_play_session_on_toast">Ghost-modus AAN — video\'s hebben geen invloed op geschiedenis of aanbevelingen</string>
+  <string name="morphe_ghost_play_session_off_toast">Ghost-modus UIT — terug naar normale weergave</string>
+  <string name="morphe_ghost_play_timer_set_toast">Ghost-modus actief voor %d minuten</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Timer gewist — Ghost-modus blijft AAN</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Voer een duur in tussen 1 en 720 minuten</string>
+  <string name="morphe_ghost_play_dialog_title">Ghost-modus</string>
+  <string name="morphe_ghost_play_state_on">Aan</string>
+  <string name="morphe_ghost_play_state_off">Uit</string>
+  <string name="morphe_ghost_play_close">Sluiten</string>
+  <string name="morphe_ghost_play_open_settings">Alle instellingen</string>
+  <string name="morphe_ghost_play_quick_power_hint">Tik om Ghost-modus in of uit te schakelen</string>
+  <string name="morphe_ghost_play_quick_timer_title">Ghost-modus met timer</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Tik om de duur te kiezen</string>
+  <string name="morphe_ghost_play_quick_timer_running">Timer actief · nog %d min</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Keert automatisch terug naar de normale modus wanneer voltooid</string>
+  <string name="morphe_ghost_play_quick_timer_change">Tijd wijzigen</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Timer wissen (AAN houden)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Aangepaste minuten (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Instellen</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost AAN voor dit kanaal</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost UIT voor dit kanaal</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Lijst (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" toegevoegd aan auto-ghost kanalen</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" verwijderd uit auto-ghost kanalen</string>
+  <string name="morphe_ghost_play_history_title">Lokale Ghost-geschiedenis</string>
+  <string name="morphe_ghost_play_history_search_hint">Filter op videotitel of kanaal…</string>
+  <string name="morphe_ghost_play_history_no_match">Geen overeenkomende video\'s in lokale Ghost-geschiedenis</string>
+  <string name="morphe_ghost_play_history_empty">Nog geen lokale Ghost-geschiedenis</string>
+  <string name="morphe_ghost_play_history_clear_all">Alles wissen</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Lokale Ghost-geschiedenis wissen?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Hiermee worden alle op het apparaat opgeslagen Ghost-modusvermeldingen verwijderd en dit kan ongedaan worden gemaakt.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Lokale Ghost-geschiedenis gewist</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Verwijderd uit lokale Ghost-geschiedenis</string>
+  <string name="morphe_ghost_play_channels_manager_title">Auto-ghost kanalen</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Toegevoegd (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Zoeken &amp; Toevoegen</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filter toegevoegde kanalen op naam, @handle of onderwerp…</string>
+  <string name="morphe_ghost_play_channels_empty">Nog geen kanalen toegevoegd. Schakel over naar \"Zoeken &amp; Toevoegen\" om kanalen te vinden op naam, @handle of URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Geen toegevoegde kanalen komen overeen met je filter</string>
+  <string name="morphe_ghost_play_channels_add_current">Afspelen: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Toevoegen</string>
+  <string name="morphe_ghost_play_channels_added_badge">Toegevoegd</string>
+  <string name="morphe_ghost_play_channels_delete_button">Verwijderen</string>
+  <string name="morphe_ghost_play_channels_search_hint">Kanaalnaam, @handle of URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Zoeken</string>
+  <string name="morphe_ghost_play_channels_search_guide">Voer een kanaalnaam, @handle of YouTube-kanaal-URL in en tik op Zoeken</string>
+  <string name="morphe_ghost_play_channels_searching">YouTube-kanalen zoeken…</string>
+  <string name="morphe_ghost_play_channels_search_error">Zoeken mislukt. Controleer je verbinding en probeer het opnieuw.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Geen kanalen gevonden voor die zoekopdracht</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Recente video\'s</string>
+  <string name="morphe_ghost_play_channels_loading_details">Recente video\'s laden…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Geen recente video\'s gevonden (tik om opnieuw te proberen)</string>
 </resources>

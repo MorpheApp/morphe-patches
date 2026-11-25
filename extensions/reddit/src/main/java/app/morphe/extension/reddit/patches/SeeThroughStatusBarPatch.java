@@ -21,6 +21,8 @@ import android.view.WindowManager;
 import java.lang.ref.WeakReference;
 import kotlin.jvm.functions.Function1;
 
+import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.ContentDrawScope;
+import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.Modifier;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -35,44 +37,42 @@ public final class SeeThroughStatusBarPatch {
     private static volatile Context windowContext = null;
     private static volatile boolean lifecycleRegistered = false;
 
-    private static final Function1<Object, Object> SCRIM_DRAW =
-            new Function1<Object, Object>() {
-                @Override
-                public Object invoke(Object scope) {
-                    try {
-                        GlassNavigationBarPatch.drawContent(scope);
-                    } catch (Throwable ex) {
-                        Logger.printException(() -> "drawContent failure", ex);
-                    }
-                    try {
-                        if (on()) {
-                            drawScrim(scope);
-                        }
-                    } catch (Throwable ex) {
-                        Logger.printException(() -> "drawScrim failure", ex);
-                    }
-                    return null;
-                }
-            };
+    /**
+     * Not a lambda and not in the outer class, for the same reasons as the glass capsule draw.
+     */
+    private static final class ScrimDraw implements Function1<ContentDrawScope, Object> {
+        private static final ScrimDraw INSTANCE = new ScrimDraw();
 
-    private static final Function1<Object, Object> BODY_DRAW =
-            new Function1<Object, Object>() {
-                @Override
-                public Object invoke(Object scope) {
-                    try {
-                        drawBody(scope);
-                    } catch (Throwable ex) {
-                        Logger.printException(() -> "drawBody failure", ex);
-                    } finally {
-                        try {
-                            GlassNavigationBarPatch.drawContent(scope);
-                        } catch (Throwable ex) {
-                            Logger.printException(() -> "drawContent failure", ex);
-                        }
-                    }
-                    return null;
+        @Override
+        public Object invoke(ContentDrawScope scope) {
+            scope.patch_drawContent();
+
+            try {
+                if (on()) {
+                    drawScrim(scope);
                 }
-            };
+            } catch (Exception ex) {
+                Logger.printException(() -> "ScrimDraw failure", ex);
+            }
+            return null;
+        }
+    }
+
+    private static final class BodyDraw implements Function1<ContentDrawScope, Object> {
+        private static final BodyDraw INSTANCE = new BodyDraw();
+
+        @Override
+        public Object invoke(ContentDrawScope scope) {
+            try {
+                drawBody(scope);
+            } catch (Exception ex) {
+                Logger.printException(() -> "BodyDraw failure", ex);
+            }
+
+            scope.patch_drawContent();
+            return null;
+        }
+    }
 
     private SeeThroughStatusBarPatch() {}
 
@@ -103,18 +103,18 @@ public final class SeeThroughStatusBarPatch {
         }
     }
 
-    public static Object appBarBody(Object modifier) {
+    public static Object appBarBody(Modifier modifier) {
         try {
-            return (on() && appBarColor != 0L) ? drawWithContent(modifier, BODY_DRAW) : modifier;
+            return (on() && appBarColor != 0L) ? modifier.patch_drawWithContent(BodyDraw.INSTANCE) : modifier;
         } catch (Throwable ex) {
             Logger.printException(() -> "appBarBody failure", ex);
             return modifier;
         }
     }
 
-    public static Object feedBoxModifier(Object padded, Object unpadded) {
+    public static Object feedBoxModifier(Modifier padded, Modifier unpadded) {
         try {
-            return on() ? drawWithContent(unpadded, SCRIM_DRAW) : padded;
+            return on() ? unpadded.patch_drawWithContent(ScrimDraw.INSTANCE) : padded;
         } catch (Throwable ex) {
             Logger.printException(() -> "feedBoxModifier failure", ex);
             return padded;
@@ -296,7 +296,7 @@ public final class SeeThroughStatusBarPatch {
                 | (Float.floatToRawIntBits(y) & 0xFFFFFFFFL);
     }
 
-    private static void drawScrim(Object scope) {
+    private static void drawScrim(ContentDrawScope scope) {
         final long color = appBarColor;
         if (color == 0L) {
             return;
@@ -305,7 +305,7 @@ public final class SeeThroughStatusBarPatch {
         if (h <= 0) {
             return;
         }
-        final long scopeSize = GlassNavigationBarPatch.drawScopeSize(scope);
+        final long scopeSize = scope.patch_getSize();
         final float width = Float.intBitsToFloat((int) (scopeSize >>> 32));
         if (width <= 0f) {
             return;
@@ -331,8 +331,7 @@ public final class SeeThroughStatusBarPatch {
                     final long size = packFloats(width, (float) (i - runStart));
                     final long cornerRadius = packFloats(0f, 0f);
 
-                    GlassNavigationBarPatch.drawRoundRect(
-                            scope, bandColor, topLeft, size, cornerRadius, null, 1.0f, 0xF0);
+                    scope.patch_drawRoundRect(bandColor, topLeft, size, cornerRadius);
                 }
                 runStart = i;
                 runAlpha = alpha;
@@ -340,24 +339,18 @@ public final class SeeThroughStatusBarPatch {
         }
     }
 
-    private static void drawBody(Object scope) {
+    private static void drawBody(ContentDrawScope scope) {
         final long color = appBarColor;
         if (color == 0L) {
             return;
         }
         final int h = statusBarPx();
-        final long scopeSize = GlassNavigationBarPatch.drawScopeSize(scope);
+        final long scopeSize = scope.patch_getSize();
         final float width = Float.intBitsToFloat((int) (scopeSize >>> 32));
         final float height = Float.intBitsToFloat((int) scopeSize);
         final long topLeft = packFloats(0f, -h);
         final long size = packFloats(width, height + h);
         final long cornerRadius = packFloats(0f, 0f);
-        GlassNavigationBarPatch.drawRoundRect(
-                scope, color, topLeft, size, cornerRadius, null, 1.0f, 0xF0);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private static Object drawWithContent(Object modifier, Function1 block) {
-        return modifier;
+        scope.patch_drawRoundRect(color, topLeft, size, cornerRadius);
     }
 }

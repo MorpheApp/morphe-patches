@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">شاردنەوەی ڕیکلامەکانی فید</string>
   <string name="morphe_hide_comment_ads_title">شاردنەوەی ڕیکلامی کۆمێنتەکان</string>
   <string name="morphe_screen_navigation_bar_title">شریتی ناڤیگەیشن</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">بێکارکردنی خۆکار-شاردنەوەی شریتی خوارەوە</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">شریتی گەڕانەوەی خوارەوە دەپارێزێت کە دیار بێت لە کاتی سکرۆڵکردن</string>
   <string name="morphe_hide_answers_button_title">شاردنەوەی دوگمەی Answers</string>
   <string name="morphe_hide_chat_button_title">شاردنەوەی دوگمەی Chat</string>
   <string name="morphe_hide_create_button_title">شاردنەوەی دوگمەی Create</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">فیدەکە نوێ بکەرەوە بۆ جێبەجێکردنی گۆڕانکارییەکان</string>
   <string name="morphe_screen_layout_title">ڕووکار</string>
   <string name="morphe_copy_text_title">کۆپیکردنی دەق</string>
-  <string name="morphe_copy_text_summary">ڕێگە دەدات دەق لە پۆست و کۆمێنتەکاندا هەڵبژێردرێت و کۆپی بکرێت. کۆکردنەوەی کۆمێنتەکان ناچالاک دەکات</string>
-  <string name="morphe_copy_text_user_dialog_message">کۆکردنەوەی کۆمێنتەکان کار ناکات لە کاتی چالاکبوونی کۆپیکردنی دەقدا</string>
+  <string name="morphe_copy_text_summary">ڕێگە دەدات دەق لە پۆست و کۆمێنتەکاندا هەڵبژێردرێت و کۆپی بکرێت</string>
   <string name="morphe_custom_font_title">فۆنتی تایبەت</string>
   <string name="morphe_custom_font_summary">فایلی فۆنتی تایبەتی TTF یان OTF لە ڕێگەی خوارەوە بار بکە. چالاککردنی ئەمە زۆرکردنی فۆنتی سیستەم ناچالاک دەکات</string>
   <string name="morphe_custom_font_file_path_title">فایلی فۆنتی تایبەت</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">ناچالاککردنی ڕووکاری نوێی لاپەڕەی سەرەکی</string>
   <string name="morphe_home_feed_tabs_title">تەبەکانی فیدی سەرەکی</string>
   <string name="morphe_home_feed_tabs_summary">تەبەکانی \"بۆ تۆ\"، \"شوێنکەوتووەکان\" و \"بەناوبانگەکان\" لە فیدی سەرەکی نیشان دەدات، و ڕێگەت پێ دەدات لە نێوانیاندا بسوڕێنیت. بۆ بەشی شوێنکەوتووەکان پێویستە هەژمارێکی تۆمارکراو هەبێت</string>
+  <string name="morphe_disable_refresh_on_back_title">بێکارکردنی نوێکردنەوە لە کاتی گەڕانەوە بۆ دەرچوون</string>
+  <string name="morphe_disable_refresh_on_back_summary">گەڕانەوە لە فیدی سەرەکی ئیتر ناچێت بۆ سەرەوە و نوێ ناکاتەوە. دووجار دوگمەی گەڕانەوە دابگرە بۆ چۆڵکردنی ئەپەکە</string>
   <string name="morphe_disable_screenshot_popup_title">ناچالاککردنی پەنجەرەی وێنەگرتنی شاشە</string>
   <string name="morphe_disable_screenshot_popup_summary">پەنجەرەکە ناچالاک دەکات کە دەردەکەوێت کاتێک وێنەی شاشە دەگریت</string>
   <string name="morphe_feed_auto_scroll_title">سکرۆڵکردنی خۆکارى فید</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">شاردنەوەی ڕەفەکانی Trending</string>
   <string name="morphe_hide_trending_shelves_summary">ڕەفەکانی Trending لە فید و پێشنیارەکانی گەڕان دەشارێتەوە</string>
   <string name="morphe_hide_videos_for_you_shelf_title">شەلافی \"ڤیدیۆیەکانی بۆ تۆ\" بشارە</string>
+  <string name="morphe_always_show_hide_title">هەمیشە پیشاندانی شاردنەوە</string>
+  <string name="morphe_always_show_hide_summary">اونه اوهيلن دهركهت لهي لين مهنوي پوستونهكان فيد وههرووس كات وكاتي كهل وههن لهي Reddit بهينهكان پیشنهروونهكان وهكو وهلهي وهلهي پوستونهكان وهكو لهي وهكونهي</string>
   <string name="morphe_remove_notification_dialog_title">دیالۆگی پێشنیاری ئاگادارکردنەوە لابەرە</string>
   <string name="morphe_remove_notification_dialog_summary">بە شێوەیەکی ئۆتۆماتیکی دیالۆگی پێشنیاری ئاگادارکردنەوە لادەبات کاتێک سەردانی سابڕێدیتێک دەکەیت</string>
   <string name="morphe_high_quality_avatars_title">ئەڤاتارەکانی کوالێتی بەرز</string>
   <string name="morphe_high_quality_avatars_summary">ئەڤاتارەکانی بەکارهێنەر بە تەواوی ڕەزۆلۆشن نیشان دەدات</string>
   <string name="morphe_search_hidden_profiles_title">گەڕان بەدوای پرۆفایلە شاراوەکاندا</string>
-  <string name="morphe_search_hidden_profiles_summary">دوگمەیەک لە پرۆفایلەکان پیشان دەدات کە پۆستەکانیان یان کۆمێنتەکانیان شاراوەتەوە، بۆ دۆزینەوەی پۆستەکانیان لە ڕێگەی گەڕانی Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">گەڕان</string>
+  <string name="morphe_search_hidden_profiles_summary">وایە گەڕانی پرۆفایل پۆستەکانی ئەو پرۆفایلانە بدۆزێتەوە کە پۆستەکانیان یان کۆمێنتەکانیان شاردووەتەوە</string>
   <string name="morphe_show_flairs_in_home_feed_title">پیشاندانی فلێرەکان لە فیدی سەرەکی</string>
   <string name="morphe_show_flairs_in_home_feed_summary">نیشانەکانی فلێری پۆستەکان لە فیدی سەرەکی پیشان دەدات</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">ڕەنگە هەندێک لە بابەتەکانی فید فلێریان نەبێت</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">هێزی تەڵەی تاریک لە پشت نووسینەکە کاتێک وێنە و ڤیدیۆکان دەبینیت، لە 0 (بێ تەڵە) تا 1 (بنەڕەتی ڕێدیت)</string>
   <string name="morphe_keep_feed_position_title">پاراستنی پێگەی فید</string>
   <string name="morphe_keep_feed_position_summary">پێگەی فیدەکە لە هەمان شوێن دەپارێزێت دوای داخستنی پۆستێک، وێنە یان ڤیدیۆ، لە جیاتی ئەوەی پۆستە کراوەکە بباتە سەرەوە</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">ناچالاككوني نویكهنهوهي خوكاوي فيدي سهههونهي</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">قون لهي بهومانهي قهل لهي ءهوهي فيدي سهههونهي نوی نهكهقهكههه و نهي ههنوهي يهي سهوهنهي لهي سهوهنهي. كيشانهي بو نویكهنهوههه ههولههي هههي</string>
   <string name="morphe_post_side_panel_title">پانێڵی لایەنی پۆست</string>
   <string name="morphe_post_side_panel_summary">لە شاشەی تابلێتی پاندا، پۆستەکان لە پانێڵێکدا دەکرێنەوە لە تەنیشت فیدەکە</string>
   <string name="morphe_post_side_panel_width_title">پانی پانێڵەکە</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">وەڵامەکان (کۆمێنتە سەرەکییەکان کراوە دەمێنن)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">وەڵامی وەڵامەکان (وەڵامە ڕاستەوخۆکان کراوە دەمێنن)</string>
   <string name="morphe_collapse_all_comments_button">کۆکەرانەوە یان فراوانکەرەوەی هەموو کۆمێنتەکان</string>
+  <string name="morphe_colorize_comment_indent_lines_title">ڕەنگینکردنی هێڵەکانی دوورکەوتنەوەی کۆمێنت</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">ڕەنگی تایبەت دەدات بە هەر ئاستێکی وەڵامدانەوە بۆ ئەوەی شوێنکەوتنی زنجیرە درێژەکانی گفتوگۆ ئاسانتر بێت</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">ڕەنگی هێڵەکان</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">کەمانگی (گەش)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">پاستێڵ (نەرم)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">سارد (لەکەلای پەڕەکەدا دەشارێتەوە)</string>
   <string name="morphe_remember_collapsed_comments_title">بیرهێنانەوەی کۆمێنتە داخراوەکان</string>
   <string name="morphe_remember_collapsed_comments_summary">ئەو کۆمێنتانەی دایدەخەیت، داخراو دەمێننەوە کاتێک دووبارە پۆستەکە دەکەیتەوە</string>
   <string name="morphe_app_icon_title">وێنۆچکەی ئەپ</string>

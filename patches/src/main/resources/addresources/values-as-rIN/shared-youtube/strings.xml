@@ -140,6 +140,8 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">এনেদৰে চেষ্টা কৰক: Spoof video streams &gt; Android VR sign in</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS ব্যৱহাৰ কৰক</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Deobfuscation-ৰ বাবে yt-dlp-ejs (WebView)-ৰ পৰিৱৰ্তে QuackJS ব্যৱহাৰ কৰক</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' ছাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-ৰ বাবে এক পৃথক ছাইন-ইনৰ প্ৰয়োজন। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
@@ -168,27 +170,28 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
 • আপোনাৰ Morphe ছেটিংছবোৰে Android VR প্ৰমাণীকৰণ আমদানি/ৰপ্তানি নকৰিব
 • যদি এই এপটো ৬ মাহৰ বাবে ব্যৱহাৰ নকৰা হয় তেন্তে Google-এ এই প্ৰমাণীকৰণটো আঁতৰাই দিব
 • যদি আপুনি আপোনাৰ Google পাছৱৰ্ড সলনি কৰে বা আপোনাৰ Google ছেটিংছৰ পৰা এই ডিভাইচটো ডি-ৰেজিষ্টৰ কৰে তেন্তে আপুনি পুনৰ ছাইন ইন কৰিব লাগিব"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' ছাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ৱেব ছাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ঐচ্ছিক: আপোনাৰ একাউণ্টৰ সৈতে ভিডিঅ’বোৰ চাবলৈ YouTube ৱেবছাইটত ছাইন ইন কৰক। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বৰ্তমান \'Mobile Web\'ত ছাইন ইন কৰা হৈছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বৰ্তমান YouTube ৱেবছাইটত ছাইন ইন কৰা হৈছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক \'Mobile Web\'-লৈ সলনি কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\'-ত ছাইন ইন কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web'-এ ছাইন আউট হৈ বা YouTube ৱেবছাইটত ছাইন ইন হৈ ভিডিঅ'সমূহ প্লে কৰে
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক এটা ৱেব ক্লায়েন্টলৈ সলনি কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube ৱেবছাইটত ছাইন ইন কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ৱেব ক্লাইয়ন্টেছবোৰে ছাইন আউট হৈ অথবা YouTube ৱেবছাইটত ছাইন ইন কৰি ভিডিঅ'বোৰ প্লে কৰে
 
-• ছাইন ইন কৰিলে, একাউণ্টৰ প্ৰয়োজন হোৱা ভিডিঅ'সমূহ প্লে কৰিব পৰা যাব, যেনে বয়স-সীমিত ভিডিঅ'
-• এই এপটোত গুগল ছাইন-ইন পৃষ্ঠাখন খোল খাই থাকে
-• আপুনি প্লে কৰা ভিডিঅ'সমূহ পাবলৈহে ছাইন-ইনটো ব্যৱহাৰ কৰা হয়
+• ছাইন ইন কৰিলে, একাউণ্টৰ প্ৰয়োজনীয় ভিডিঅ'বোৰ প্লে কৰিব পৰা যাব, যেনে বয়স-নিৰ্ধাৰিত ভিডিঅ'
+• এই এপটোত গুগল ছাইন-ইন পৃষ্ঠাখন খোল খাব
+• ছাইন-ইনটো কেৱল আপুনি প্লে কৰা ভিডিঅ'বোৰ পাবলৈ ব্যৱহাৰ কৰা হয়
 • ছাইন-ইনটো কেৱল এই ডিভাইচটোত সংৰক্ষণ কৰা হয়
+• নিৰ্বাচিত ডিফল্ট ক্লাইয়নটৰ বাবে প্ৰতিটো ৱেব ক্লাইয়নটৰ নিজাকৈ ছাইন-ইন থাকে
 
-ছাইন ইন কৰিবলৈ, তলত কন্টিনিউ (continue)ত ক্লিক কৰক"</string>
+ছাইন ইন কৰিবলৈ, তলত কন্টিনিউত ক্লিক কৰক"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ছাইন-ইন সংৰক্ষিত হৈছে
 
-• আপোনাৰ Morphe ছেটিংসে 'Mobile Web' ছাইন-ইন আমদানি/নিৰ্গত নকৰিব
-• যদি Google-এ ছাইন-ইন সমাপ্ত কৰে, তেন্তে আপুনি পুনৰ ছাইন-ইন নকৰালৈকে ভিডিঅ'বোৰ ছাইন-আউট অৱস্থাত চলিব
-• ছাইন-আউট কৰিলে এই ডিভাইচটো YouTube ৱেবছাইটৰ পৰাও ছাইন-আউট হৈ যাব"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web ছাইন-ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি \'Mobile Web\'-ত পুনৰ ছাইন-ইন কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobile Web\'ৰ পৰা ছাইন-আউট কৰা হৈছে</string>
+• আপোনাৰ Morphe ছেটিংসে YouTube ৱেবচাইট ছাইন-ইন আমদানি/ৰপ্তন নকৰিব
+• যদি Google-এ ছাইন-ইন বন্ধ কৰে, তেন্তে আপুনি পুনৰ ছাইন-ইন নকৰা পৰ্যন্ত ভিডিঅ'বোৰ ছাইন-আউট অৱস্থাত চলিব
+• ছাইন-আউট কৰিলে এই ডিভাইচটো YouTube ৱেবচাইটৰ পৰাও ছাইন-আউট হৈ যাব"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ৱেব ছাইন-ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি পুনৰ ছাইন-ইন কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube ৱেবচাইটৰ পৰা ছাইন-আউট কৰা হৈছে</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' উপলব্ধ নহয়। ছাইন-ইন কৰিবলৈ ইয়াক সংস্থাপন বা সক্ৰিয় কৰক</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাৱে উপলব্ধ নহয় (API টাইম আউট হৈছে)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' ছাইন ইনৰ সময়সীমা শেষ হৈছে, অনুগ্ৰহ কৰি পুনৰ VR-ত ছাইন ইন কৰিবলৈ চেষ্টা কৰক</string>

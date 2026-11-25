@@ -29,6 +29,8 @@ Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit be
   <string name="morphe_hide_post_ads_title">Fihla izikhangiso ze-feed</string>
   <string name="morphe_hide_comment_ads_title">Fihla izikhangiso zakomemovo</string>
   <string name="morphe_screen_navigation_bar_title">Ibar yakuhamba</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Vala ukuzifihla ngokuzenzakalela kwebha yaphansi</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Yigcine ibha yokuzisusa yaphansi ibonakale ngenkathi uslayida</string>
   <string name="morphe_hide_answers_button_title">Fihla inkinobho ye-Answers</string>
   <string name="morphe_hide_chat_button_title">Fihla inkinobho ye-Chat</string>
   <string name="morphe_hide_create_button_title">Fihla inkinobho ye-Create</string>
@@ -78,8 +80,7 @@ Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit be
   <string name="morphe_keyword_filters_saved">Vuselela i-feed ukuze ukwengeze izinguquko</string>
   <string name="morphe_screen_layout_title">Uhlelo</string>
   <string name="morphe_copy_text_title">Kopisha umbhalo</string>
-  <string name="morphe_copy_text_summary">Ivumela ukukhetha nokukopisha umbhalo ezifanekisweni nasezincazelweni. Ikhansela ukufihla izincazelo</string>
-  <string name="morphe_copy_text_user_dialog_message">Ukufihla izincazelo kuyoba yinto engasebenzi ngenkathi iKopisha umbhalo isebenza</string>
+  <string name="morphe_copy_text_summary">Kuvumela ukukhetha nokukopisha Umbhalo ezincwadini nemibono</string>
   <string name="morphe_custom_font_title">Ifonti eyikhethiwe</string>
   <string name="morphe_custom_font_summary">Loda ifayela lefonti le-TTF noma le-OTF eyikhethiwe endleleni engaphansi. Ukukwenza lokhu kuvala ukuphoqelela ifonti yesistimu</string>
   <string name="morphe_custom_font_file_path_title">Ifayela lefonti eyikhethiwe</string>
@@ -91,6 +92,8 @@ Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit be
   <string name="morphe_disable_modern_home_title">Khubaza i-UI yasekhaya yesimanje</string>
   <string name="morphe_home_feed_tabs_title">Ama-tab e-feed yasekhaya</string>
   <string name="morphe_home_feed_tabs_summary">Kukhombisa ama-tab e-For You, e-Following kanye ne-Popular ku-feed yasekhaya, futhi kuvumela ukuswayizela phakathi kwazo. I-Following idinga i-akhawunti engenile</string>
+  <string name="morphe_disable_refresh_on_back_title">Vala ukuvuselelwa lapho ubuyela emuva ukuze uphume</string>
+  <string name="morphe_disable_refresh_on_back_summary">Ukubuyela emuva ku-feed yasekhaya akusasebenzi ukugubuzela phezulu nokuvuselelwa. Cindezela emuva kabili ukuze uphume ohlelweni</string>
   <string name="morphe_disable_screenshot_popup_title">Vala i-popup yesikrinishoti</string>
   <string name="morphe_disable_screenshot_popup_summary">Kuvala i-popup evele lapho uthatha isikrinishoti</string>
   <string name="morphe_feed_auto_scroll_title">Ukuzisondela kwe-feed ngokuzenzakalela</string>
@@ -124,13 +127,14 @@ Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit be
   <string name="morphe_hide_trending_shelves_title">Fihla ama-shelves we-Trending</string>
   <string name="morphe_hide_trending_shelves_summary">Ifihla ama-shelves we-Trending ku-feed kanye neziphakamiso zokusesha</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Fihla ishelufu ethi \'Amavidiyo awakho\'</string>
+  <string name="morphe_always_show_hide_title">Khombisa uFihla ngaso sonke isikhathi</string>
+  <string name="morphe_always_show_hide_summary">Ikhombisa u\"Fihla\" ku-menu ye-feed yama-posts, futhi nanoma nini lapho iReddit ikhombisa izinketho zeziphakamiso ezifana nokuthi \"Khombisa ama-posts ambalwa afana nalawa\"</string>
   <string name="morphe_remove_notification_dialog_title">Susa i-dialog ya-notification suggestion</string>
   <string name="morphe_remove_notification_dialog_summary">Iqeda ngokuzenzakalela idayalogi yesiphakamiso sesaziso lapho uvakashela i-subreddit</string>
   <string name="morphe_high_quality_avatars_title">Ama-avatar asezingeni eliphezulu</string>
   <string name="morphe_high_quality_avatars_summary">Ikhombisa ama-avatar abasebenzisi ngesulushini ephelele</string>
   <string name="morphe_search_hidden_profiles_title">Sesha ama-profile afihliwe</string>
-  <string name="morphe_search_hidden_profiles_summary">Ikhombisa inkinobho kuma-profile afihla izithamo noma imibono yawo, ukuze uthole izithamo zawo ngokusebenzisa ukusesha kwe-Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Sesha</string>
+  <string name="morphe_search_hidden_profiles_summary">Kwenza ukuthi ukusesha kweprofayili kuthole izintshumayelo zeziprofayili ezifihla izintshumayelo noma imibono yazo</string>
   <string name="morphe_show_flairs_in_home_feed_title">Khombisa ama-flair ku-feed yasekhaya</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Khombisa ama-badge e-flair yokuthumela ku-feed yasekhaya</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Izinto ezithile ze-feed zingase zingakhombisani i-flair</string>
@@ -171,6 +175,8 @@ Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit be
   <string name="morphe_media_viewer_fade_summary">Amandla omnyama ashabalala ngemuva kocaphuna lapho ubuka izithombe namavidiyo, kusuka ku-0 (akukho ukushabalala) kuya ku-1 (okujwayelekile kwe-Reddit)</string>
   <string name="morphe_keep_feed_position_title">Gcina isikhundla se-feed</string>
   <string name="morphe_keep_feed_position_summary">Kugcina i-feed esikhundleni esifanayo emva kokuvala isithombe, ividiyo noma i-post, esikhundleni sokuhambisa i-post evuliwe phezulu</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Khwebha uku-auto-refresh kwe-home feed</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Ukubuyela ohlelweni ngemva kwesikhathi esithile akusaphinda ilode i-home feed futhi iyise phezulu. Ukudonsa uku-refresh kusasebenza</string>
   <string name="morphe_post_side_panel_title">Iphela lwesandla lepost</string>
   <string name="morphe_post_side_panel_summary">Eziscreen zamathabulethi abanzi, izipost zivuleka ephaneli eduze kwe-feed</string>
   <string name="morphe_post_side_panel_width_title">Ububanzi bephaneli</string>
@@ -260,6 +266,12 @@ Ukuze usebenzise inguqulwana endala, kumele &lt;b&gt;ususe&lt;/b&gt; i-Reddit be
   <string name="morphe_collapse_all_comments_scope_entry_replies">Izimpendulo (izikhomenti eziphezulu zihlala zivulekile)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Izimpendulo zezimpendulo (izimpendulo eziqondile zihlala zivulekile)</string>
   <string name="morphe_collapse_all_comments_button">Faka noma ukhiphe zonke izikhomenthi</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Faka imibala emigqeni yokungena komazisi</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Inika izinga ngalinye leophendulo umbala wayo womugqa ukuze kube lula ukulandela izingxoxo ezinde</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Imibala yemigqa</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Rainbow (eqhakazile)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (ethambile)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Muted (ehambisana nekhasi)</string>
   <string name="morphe_remember_collapsed_comments_title">Khumbula imibono evaliwe</string>
   <string name="morphe_remember_collapsed_comments_summary">Izincazelo ozifihliyo zihlala zifihleke lapho uvula futhi isifanekiso</string>
   <string name="morphe_app_icon_title">I-icon yohlelo</string>

@@ -7,6 +7,7 @@
 
 package app.morphe.patches.youtube.layout.glassmenus
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patches.shared.layout.glassmenus.GLASS_MENUS_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.glassmenus.glassMenusPatch
@@ -46,6 +47,16 @@ val glassMenusPatch = glassMenusPatch(
                     "invoke-static { v$register }, $GLASS_MENUS_EXTENSION_CLASS->onAddToPlaylistView(Landroid/view/View;)V",
                 )
             }
+        }
+
+        // The touch feedback drawable sets the callback of the background it wraps before it has a callback
+        // itself, so the background has none, and the view that draws it cannot be found from it.
+        TouchFeedbackDrawableConstructorFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0, p1 }, $GLASS_MENUS_EXTENSION_CLASS->" +
+                        "onWrappedDrawable(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V"
+            )
         }
     },
     useModernLithoColorHook = { is_21_30_or_greater },

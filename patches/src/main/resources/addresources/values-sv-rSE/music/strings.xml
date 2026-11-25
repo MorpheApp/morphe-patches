@@ -449,6 +449,9 @@ Att pausa crossfade för att titta på en musikvideo kan lämna vissa videor sva
   <string name="morphe_music_hide_navigation_bar_library_button_title">Dölj knappen Bibliotek</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Dölj knappen Uppgradera</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Visa knappen Inställningar</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Åtgärd för knappen Inställningar</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">När det här alternativet är aktiverat öppnar ett tryck Morphe-inställningarna och ett långt tryck YouTube Music-inställningarna. Inaktivera för att byta</string>
   <string name="morphe_music_hide_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
   <string name="morphe_music_navigation_bar_glass_title">Aktivera glänsande navigeringsfält</string>

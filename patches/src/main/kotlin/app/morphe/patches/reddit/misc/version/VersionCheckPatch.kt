@@ -38,6 +38,8 @@ var is_2026_33_0_or_greater: Boolean by Delegates.notNull()
     private set
 var is_2026_36_0_or_greater: Boolean by Delegates.notNull()
     private set
+var is_2026_37_0_or_greater: Boolean by Delegates.notNull()
+    private set
 var is_2026_38_0_or_greater: Boolean by Delegates.notNull()
     private set
 var is_2026_39_0_or_greater: Boolean by Delegates.notNull()
@@ -79,6 +81,7 @@ val versionCheckPatch = patch {
         is_2026_32_0_or_greater = isEqualsOrGreaterThan("2026.32.0")
         is_2026_33_0_or_greater = isEqualsOrGreaterThan("2026.33.0")
         is_2026_36_0_or_greater = isEqualsOrGreaterThan("2026.36.0")
+        is_2026_37_0_or_greater = isEqualsOrGreaterThan("2026.37.0")
         is_2026_38_0_or_greater = isEqualsOrGreaterThan("2026.38.0")
         is_2026_39_0_or_greater = isEqualsOrGreaterThan("2026.39.0")
         is_2026_40_0_or_greater = isEqualsOrGreaterThan("2026.40.0")

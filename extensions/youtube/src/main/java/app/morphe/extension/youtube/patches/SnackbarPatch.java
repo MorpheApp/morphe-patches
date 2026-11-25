@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.shared.LithoDrawables.getDrawableView;
+
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.drawable.Drawable;
@@ -251,15 +253,6 @@ public final class SnackbarPatch {
             Logger.printException(() -> "getLithoColor failure", ex);
         }
         return color;
-    }
-
-    @Nullable
-    private static View getDrawableView(Drawable drawable) {
-        Drawable.Callback callback = drawable.getCallback();
-        while (callback instanceof Drawable parent) {
-            callback = parent.getCallback();
-        }
-        return callback instanceof View view ? view : null;
     }
 
     private static GradientDrawable createBackground(@ColorInt int backgroundColor) {

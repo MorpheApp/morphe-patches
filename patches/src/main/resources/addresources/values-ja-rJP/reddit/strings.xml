@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">フィード広告を非表示</string>
   <string name="morphe_hide_comment_ads_title">コメント広告を非表示</string>
   <string name="morphe_screen_navigation_bar_title">ナビゲーションバー</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">ボトムバーの自動非表示を無効化</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">スクロール中もボトムナビゲーションバーを表示したままにします</string>
   <string name="morphe_hide_answers_button_title">Answers ボタンを非表示</string>
   <string name="morphe_hide_chat_button_title">チャットボタンを非表示</string>
   <string name="morphe_hide_create_button_title">作成ボタンを非表示</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">変更を適用するにはフィードを更新してください</string>
   <string name="morphe_screen_layout_title">レイアウト</string>
   <string name="morphe_copy_text_title">テキストをコピー</string>
-  <string name="morphe_copy_text_summary">投稿とコメント内のテキストを選択してコピーできるようにします。コメントの折りたたみを無効にします</string>
-  <string name="morphe_copy_text_user_dialog_message">コピーテキストが有効な間、折りたたみコメントは機能しなくなります</string>
+  <string name="morphe_copy_text_summary">投稿やコメント内のテキストを選択してコピーできるようにします</string>
   <string name="morphe_custom_font_title">カスタム フォント</string>
   <string name="morphe_custom_font_summary">設定した TTF フォントファイルまたは OTF フォントファイルを読み込みます。この設定を有効にすると、[システムフォントを使用] が自動的に無効になります</string>
   <string name="morphe_custom_font_file_path_title">カスタム フォント ファイル</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">モダンホーム UI を無効化</string>
   <string name="morphe_home_feed_tabs_title">ホームフィードのタブ</string>
   <string name="morphe_home_feed_tabs_summary">ホームフィードに「おすすめ」、「フォロー中」、「話題」タブを表示し、それらの間をスワイプで切り替えられるようにします。「フォロー中」を利用するにはアカウントへのログインが必要です</string>
+  <string name="morphe_disable_refresh_on_back_title">戻って終了時にリフレッシュを無効化</string>
+  <string name="morphe_disable_refresh_on_back_summary">ホームフィードで戻る操作をしても、トップへのスクロールと再読み込みが行われなくなります。アプリを終了するには、戻るを2回押してください</string>
   <string name="morphe_disable_screenshot_popup_title">スクリーンショットポップアップを無効化</string>
   <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効にします</string>
   <string name="morphe_feed_auto_scroll_title">フィードの自動スクロール</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">トレンド欄を非表示</string>
   <string name="morphe_hide_trending_shelves_summary">フィードと検索候補からトレンド欄を非表示にします</string>
   <string name="morphe_hide_videos_for_you_shelf_title">「おすすめの動画」欄を非表示</string>
+  <string name="morphe_always_show_hide_title">常に「非表示」を表示</string>
+  <string name="morphe_always_show_hide_summary">フィード投稿のメニューに「非表示」を表示します。また、Redditが「この投稿に似た投稿を減らす」などの推奨オプションを表示する場合にも適用されます</string>
   <string name="morphe_remove_notification_dialog_title">通知の提案ダイアログを削除</string>
   <string name="morphe_remove_notification_dialog_summary">subreddit を開いたときに表示される通知案内のポップアップを自動的に閉じます</string>
   <string name="morphe_high_quality_avatars_title">高品質なアバター</string>
   <string name="morphe_high_quality_avatars_summary">ユーザーのアバターをフル解像度で表示します</string>
   <string name="morphe_search_hidden_profiles_title">非公開プロフィールの検索</string>
-  <string name="morphe_search_hidden_profiles_summary">投稿やコメントを非公開にしているプロフィールにボタンを表示し、Reddit検索でそれらの投稿を見つけられるようにします</string>
-  <string name="morphe_search_hidden_profiles_button">検索</string>
+  <string name="morphe_search_hidden_profiles_summary">投稿やコメントを非表示にしているプロフィールの投稿を、プロフィール検索で見つけられるようにします</string>
   <string name="morphe_show_flairs_in_home_feed_title">ホームフィードにフレアを表示</string>
   <string name="morphe_show_flairs_in_home_feed_summary">ホームフィードに投稿フレア (タグ) を表示します</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">一部のフィード項目にはフレアが表示されない場合があります</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">メディアビューアーで画像や動画を表示した際にキャプションやボタンの背後に表示される、ふちどりのための影の濃さを設定します。0 (影なし) から 1 (Reddit のデフォルト) の範囲で指定できます。</string>
   <string name="morphe_keep_feed_position_title">フィードのスクロール位置を維持</string>
   <string name="morphe_keep_feed_position_summary">投稿、画像、または動画を閉じた後、開いた投稿を上部に移動する代わりに、フィードを同じ位置に維持します</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">ホームフィードの自動更新を無効化</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">しばらく経ってからアプリに戻っても、ホームフィードが再読み込みされてトップに移動することがなくなります。プルして更新は引き続き利用可能です</string>
   <string name="morphe_post_side_panel_title">投稿サイドパネル</string>
   <string name="morphe_post_side_panel_summary">幅の広いタブレット画面では、フィードの隣にパネルで投稿が開きます</string>
   <string name="morphe_post_side_panel_width_title">パネルの幅</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">返信（トップコメントは展開したままにする）</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">返信への返信（直接の返信は展開したままにする）</string>
   <string name="morphe_collapse_all_comments_button">すべてのコメントを折りたたむ、または展開する</string>
+  <string name="morphe_colorize_comment_indent_lines_title">コメントのインデント線に色を付ける</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">返信レベルごとに異なる線の色を割り当て、長いスレッドを追いやすくします</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">線の色</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">レインボー（明るい）</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">パステル（ソフト）</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">ミュート（ページに馴染ませる）</string>
   <string name="morphe_remember_collapsed_comments_title">閉じたコメントを記憶</string>
   <string name="morphe_remember_collapsed_comments_summary">閉じたコメントを記憶し、再度投稿を開いたときに閉じた状態で表示します</string>
   <string name="morphe_app_icon_title">アプリアイコン</string>

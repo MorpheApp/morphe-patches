@@ -35,15 +35,15 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.9](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.9)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;250 patches total
+> **[v2.4.0-dev.11](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.11)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;256 patches total
 <details>
 <summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;62 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.46.51 | 🧪&nbsp;9.45.51 | 🧪&nbsp;9.44.52 | 9.30.53 | 9.20.53 | 9.15.51 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;9.47.51 | 🧪&nbsp;9.46.51 | 🧪&nbsp;9.45.51 | 🧪&nbsp;9.44.52 | 9.30.53 | 9.20.53 | 9.15.51 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
@@ -81,7 +81,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Jam queue sharing](#jam-queue-sharing) | Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported. |  |
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
-| [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Samples button) and the upper navigation toolbar. |  |
+| [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Upgrade button) and the upper navigation toolbar. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
 | [Pause when muted](#pause-when-muted) | Adds an option to pause playback when the system volume is muted, and to resume it when the volume is raised. |  |
@@ -113,12 +113,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;128 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;129 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.46.522 | 🧪&nbsp;21.45.82 | 🧪&nbsp;21.44.528 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
+| 🧪&nbsp;21.47.483 | 🧪&nbsp;21.46.522 | 🧪&nbsp;21.45.82 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -140,6 +140,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Channel search](#channel-search) | Adds an option to search inside the channel that is currently open instead of searching all of YouTube. |  |
 | [Channel whitelist](#channel-whitelist) | Adds options to allow whitelisting specific channels to show ads or override playback speeds. |  |
 | [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
+| [Comment search](#comment-search) | Adds a button to the comments to show only the loaded comments that contain the searched words. |  |
 | [Copy text](#copy-text) | Adds options to copy the video title and comments, and to select text of video descriptions and posts, by tapping and holding them. |  |
 | [Copy video link](#copy-video-link) | Adds options to display buttons in the video player to copy video links. |  |
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |
@@ -174,6 +175,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Fullscreen playlist panel](#fullscreen-playlist-panel) | Adds an option to show the playlist panel over the fullscreen player on tablets, instead of exiting fullscreen. |  |
 | [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
+| [Ghost mode](#ghost-mode) | Adds a ghost mode to watch videos without affecting YouTube watch history or recommendations. |  |
 | [Glass menus](#glass-menus) | Adds an option to show the menus as frosted glass, with the content behind the menu blurred. This patch works on Android 12 and newer. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
@@ -210,7 +212,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Picture-in-picture button](#picture-in-picture-button) | Adds an option to display a picture-in-picture button in the video player. |  |
 | [Play all](#play-all) | Adds an option to play all the videos from a channel and to display play all button in the video player. |  |
 | [Playback buffer](#playback-buffer) | Adds an option to change the video playback buffer size. |  |
-| [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it. |  |
+| [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it, and an option to show the seek buttons of the videos that play in feeds. |  |
 | [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
 | [Player icon style](#player-icon-style) | Adds an option to change the style of the player button icons. | • Custom icons |
 | [Playlist button](#playlist-button) | Adds an option to display a button in the video player that opens the playlist panel. |  |
@@ -228,7 +230,6 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Reverse playlist autoplay](#reverse-playlist-autoplay) | Adds an option to autoplay playlists in reverse order, from the last video to the first. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
 | [Save to Watch later](#save-to-watch-later) | Adds an option to display save to Watch later button in the video player, and adds a setting to redirect Watch later saves to a playlist of your choice. |  |
-| [Search comments](#search-comments) | Adds a button to the comments to show only the loaded comments that contain the searched words. |  |
 | [Seekbar](#seekbar) | Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, customizing the seekbar thumb with an image or GIF, and expanding the live stream DVR duration. |  |
 | [Series tracking](#series-tracking) | Adds a series library to History with local progress and episode continuation. This patch works with YouTube 21.02 and newer. |  |
 | [Settings menu filter](#settings-menu-filter) | Adds an option to hide items on the standard YouTube settings screen by their visible name. |  |
@@ -250,12 +251,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Video effects](#video-effects) | Adds an option to change the colors of videos or add visual effects, such as black and white. This patch works with YouTube 20.51 and newer. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
-| [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home and subscription feed. |  |
+| [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home, subscription, notifications and You tabs. |  |
 
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;55 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;60 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -265,14 +266,19 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
+| [Always show Hide](#always-show-hide) | Adds an option to always show Hide in the menu of feed posts, also when Reddit replaces it with recommendation options. This patch works with Reddit 2026.40.0 and newer. |  |
 | [App icon](#app-icon) | Adds an option to select from the Reddit app icons available in the manifest. |  |
 | [AutoModerator comments](#automoderator-comments) | Adds an option to collapse or hide comments from u/AutoModerator. |  |
 | [Collapse all comments](#collapse-all-comments) | Adds an option to show a button next to the comment count of a post that collapses or expands all comments. This patch works with Reddit 2026.40.0 and newer. |  |
-| [Copy text](#copy-text) | Adds an option to make post and comment text selectable and copyable. Disables collapsing comments. This patch works with Reddit 2026.24.0 and newer. |  |
+| [Colorize comment indent lines](#colorize-comment-indent-lines) | Adds an option to give each reply level in a comment thread its own line color. |  |
+| [Copy text](#copy-text) | Adds an option to make post and comment text selectable and copyable. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Custom branding name for Reddit](#custom-branding-name-for-reddit) | Changes the Reddit app name to the name specified in patch options. | • App name |
 | [Custom font](#custom-font) | Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime. |  |
 | [Customize post layout](#customize-post-layout) | Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
+| [Disable bottom bar auto-hide](#disable-bottom-bar-auto-hide) | Adds an option to keep the bottom navigation bar visible while scrolling. |  |
+| [Disable home feed auto-refresh](#disable-home-feed-auto-refresh) | Adds an option to stop the home feed from reloading and jumping to the top when you return to the app. |  |
 | [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier, and 2026.40.0 and later. |  |
+| [Disable refresh on back to exit](#disable-refresh-on-back-to-exit) | Adds an option to exit the app with back on the home feed without first scrolling to the top and reloading. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
 | [Download all from gallery](#download-all-from-gallery) | Adds an option to download every item of a gallery post with the Download button of the share sheet. This patch works with Reddit 2026.44.0 and newer. |  |
 | [Download location](#download-location) | Adds options to choose the folder and file name of downloaded images and videos, which can use the subreddit, author and account, and can be set per account. |  |
@@ -313,7 +319,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Remember collapsed comments](#remember-collapsed-comments) | Adds an option to keep comments you collapsed collapsed when reopening a post. |  |
 | [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
-| [Search hidden profiles](#search-hidden-profiles) | Adds an option to show a search button on profiles that hide their posts or comments. |  |
+| [Search hidden profiles](#search-hidden-profiles) | Adds an option to make the profile search find the posts of profiles that hide their posts or comments. |  |
 | [Share post content](#share-post-content) | Adds an option to share the image, video or text of a post instead of its link when using app shortcuts or "Share via…" in the share sheet. |  |
 | [Show flairs in home feed](#show-flairs-in-home-feed) | Adds an option to show post flair badges in the home feed. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |

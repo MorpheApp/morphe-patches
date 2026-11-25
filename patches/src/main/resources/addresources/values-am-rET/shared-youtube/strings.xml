@@ -140,6 +140,8 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ይህንን ለማብራት ይሞክሩ፦ የቪዲዮ ስትሪሞችን አስመስል &gt; Android VR ይግቡ</string>
   <string name="morphe_spoof_video_streams_client_type_title">መደበኛ ደንበኛ</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS ይጠቀሙ</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">ለደኦብፉስኬሽን ከ yt-dlp-ejs (WebView) ይልቅ QuackJS ይጠቀሙ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' መግቢያ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' የተለየ መግቢያ ይፈልጋል። ለመቀጠል እዚህ ይጫኑ</string>
@@ -168,27 +170,28 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
 • የMorphe ቅንብሮች የAndroid VR ማረጋገጫን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
 • ይህ መተግበሪያ ለ6 ወራት ጥቅም ላይ ካልዋለ Google ይህን ማረጋገጫ ያስወግደዋል
 • የGoogle የይለፍ ቃልዎን ከቀየሩ ወይም ይህን መሣሪያ ከGoogle ቅንብሮችዎ ካስወገዱ እንደገና መግባት ይኖርብዎታል"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' መግቢያ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">የዌብ መግቢያ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">አማራጭ፦ በ አካውንትዎ ቪዲዮዎችን ለማጫወት በ YouTube ድረ-ገጽ ላይ ይግቡ። ለመቀጠል እዚህ ይጫኑ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">በአሁኑ ጊዜ በ\'Mobile Web\' ውስጥ ተስርተዋል</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">በአሁኑ ጊዜ ወደ YouTube ድረ-ገጽ ተገብቷል</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ይህን ባህሪ ለመጠቀም \'Default client\'ን ወደ \'Mobile Web\' ይቀይሩ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">በ\'Mobile Web\' ውስጥ ይግቡ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' ቪዲዮዎችን ያለ አካውንት ወይም በYouTube ድረ-ገጽ በኩል በመግባት ያጫውታል
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ይህን ባህሪ ለመጠቀም፣ \'የመነሻ ደንበኛ\'ን ወደ ዌብ ደንበኛ ይቀይሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ወደ YouTube ድረ-ገጽ ይግቡ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"የዌብ ደንበኞች ቪዲዮዎችን ያለ መግቢያ ወይም ወደ YouTube ድረ-ገጽ በመግባት ያጫውታሉ
 
-• በገቡበት ጊዜ፣ እንደ ዕድሜ ገደብ ያለባቸው ቪዲዮዎች ያሉ አካውንት የሚፈልጉ ቪዲዮዎችን ማጫወት ይቻላል
+• በመግባት፣ እንደ ዕድሜ ገደብ ያለባቸው ቪዲዮዎች ያሉ አካውንት የሚፈልጉ ቪዲዮዎችን ማጫወት ይቻላል
 • የGoogle መግቢያ ገጽ በዚህ መተግበሪያ ውስጥ ይከፈታል
-• መግቢያው የሚያገለግለው የሚያጫውቷቸውን ቪዲዮዎች ለማግኘት ብቻ ነው
-• መግቢያው በዚህ መሣሪያ ላይ ብቻ ይቀመጣል
+• መግቢያው የሚያጫውቱትን ቪዲዮዎች ለማግኘት ብቻ ጥቅም ላይ ይውላል
+• መግቢያው በዚህ መሳሪያ ላይ ብቻ ይቀመጣል
+• ለእያንዳንዱ የተመረጠ የመነሻ ደንበኛ የዌብ ደንበኛ የራሱ መግቢያ አለው
 
 ለመግባት፣ ከታች ያለውን ቀጥል የሚለውን ይጫኑ"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"የመግቢያ መረጃ ተቀምጧል
 
-• የMorphe ቅንብሮች የ'Mobile Web' መግቢያን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
-• Google መግቢያውን ካቆመው፣ እንደገና እስኪገቡ ድረስ ቪዲዮዎች ያለ መግቢያ ይጫወታሉ
-• መውጣት ይህንን መሣሪያ ከYouTube ድረ-ገጽም ያስወጣዋል"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">የMobile Web መግቢያ ጊዜው አልፎታል፣ እንደገና ወደ \'Mobile Web\' ለመግባት ይሞክሩ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ከ\'Mobile Web\' ተወጥቷል</string>
+• የ Morphe ቅንብሮች የ YouTube ድረ-ገጽ መግቢያን አያስገቡም/አያወጡም
+• Google መግቢያውን ካስቆመው፣ እንደገና እስኪገቡ ድረስ ቪዲዮዎች ያለ መግቢያ ይጫወታሉ
+• መውጣት ይህንን መሳሪያ ከ YouTube ድረ-ገጽ ላይም ያስወጣዋል"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">የድረ-ገጽ መግቢያው ጊዜ አብቅቷል፣ እንደገና ለመግባት ይሞክሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ከ YouTube ድረ-ገጽ ተወጥተዋል</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ዝግጁ አይደለም። ለመግባት ይጫኑት ወይም ያብሩት</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ለጊዜው ዝግጁ አይደለም (የAPI ጊዜው አልፏል)</string>
   <string name="morphe_oauth2_connection_failure_status_400">የ\'Android VR\' መግቢያ ጊዜው አልፎታል፣ እንደገና ወደ VR ለመግባት ይሞክሩ</string>

@@ -66,10 +66,11 @@ Second \"item\" text"</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_keyword_content_posts_title">முக்கிய வார்த்தைகள் மூலம் பதிவுகளை மறைக்கவும்</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"மறைக்க வேண்டிய முக்கிய வார்த்தைகள் மற்றும் சொற்றொடர்களை புதிய வரிகளால் பிரித்து உள்ளிடவும்
 
 வீடியோ தலைப்புகளில் காட்டப்படும் எந்தவொரு உரையையும் முக்கிய வார்த்தைகளாகப் பயன்படுத்தலாம். @UserName முக்கிய வார்த்தை குறிப்பிட்ட படைப்பாளர்களிடமிருந்து அனைத்து உள்ளடக்கத்தையும் மறைக்கும்"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"முக்கிய வார்த்தை சொற்றொடர்களுடன் பொருந்தும் உள்ளடக்கத்தை மறைக்க முகப்பு / சந்தாக்கள் / தேடல் / கருத்துகள் வடிகட்டப்படுகின்றன
+  <string name="morphe_hide_keyword_content_about_summary">"முகப்பு / சந்தாக்கள் / தேடல் / கருத்துகள் / பதிவுகள் ஆகியவற்றில் முக்கிய வார்த்தை சொற்றொடர்களுடன் பொருந்தும் உள்ளடக்கத்தை மறைக்க வடிகட்டப்படுகின்றன
 
 கட்டுப்பாடுகள்:
 • சில Shorts சேனல் பெயர் மூலம் மறைக்க முடியாது
@@ -81,6 +82,23 @@ Second \"item\" text"</string>
 • தேடல்: %3$s
 • கருத்துகள்: %4$s
 • மொத்தம்: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">காட்சிப்படுத்தப்பட்ட எண்ணிக்கையின் வடிகட்டி</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">மிகக் குறைந்த அல்லது மிக அதிகக் காட்சிகளைக் கொண்ட வீடியோக்களை ஃபீட்களிலும் தேடலிலும் மறைக்கவும்</string>
+  <string name="morphe_hide_videos_by_views_home_title">காட்சிகளின் அடிப்படையில் முகப்பு வீடியோக்களை மறைக்கவும்</string>
+  <string name="morphe_hide_videos_by_views_search_title">காட்சிகளின் அடிப்படையில் தேடல் முடிவுகளை மறைக்கவும்</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">காட்சிகளின் அடிப்படையில் சந்தா வீடியோக்களை மறைக்கவும்</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">குறைந்தபட்ச பார்வைகள்</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">குறைந்த பார்வைகள் கொண்ட வீடியோக்கள் மறைக்கப்படும். 0 = குறைந்தபட்சம் இல்லை</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">அதிகபட்ச பார்வைகள்</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">அதிக பார்வைகள் கொண்ட வீடியோக்கள் மறைக்கப்படும். 0 = அதிகபட்சம் இல்லை</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Home / Subscriptions / Search ஆகிய பகுதிகளில் வீடியோக்கள் மற்றும் Shorts அவற்றின் பார்வைகளின் எண்ணிக்கைக்கு ஏற்ப மறைக்க வடிகட்டப்படுகின்றன
+
+கட்டுப்பாடுகள்:
+• YouTube பார்வைகளின் எண்ணிக்கையை ரவுண்ட் செய்கிறது, எனவே 1.2K பார்வைகள் என்பது 1200 பார்வைகளாகக் கணக்கிடப்படும்
+• நேரலை ஒளிபரப்புகள் மறைக்கப்படாது
+• மறைக்கப்பட்ட ஒரு Short, Shorts ஷெல்ஃபில் காலியிடத்தை விட்டுச் செல்லக்கூடும்"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">பார்வை எண்ணிக்கை வடிகட்டி அனைத்து வீடியோக்களையும் மறைக்கும்</string>
   <string name="morphe_post_buttons_screen_title">பதிவு பொத்தான்கள்</string>
   <string name="morphe_post_buttons_screen_summary">சமூகப் பதிவுகளுக்குக் கீழே உள்ள பொத்தான்களின் தளவமைப்பைத் தேர்வு செய்யவும் மற்றும் எந்தப் பொத்தான்களை மறைக்க வேண்டும் என்பதையும் தேர்வு செய்யவும்</string>
   <string name="morphe_post_buttons_layout_title">பதிவு பொத்தான்களின் வடிவமைப்பு</string>
@@ -244,8 +262,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">வியூ கவுண்டிற்கு அருகில்</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">நடுவலதுபுறம்</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">மேல் இடதுபுறம்</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட ஏற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">கருத்துகளைத் தேடுக</string>
+  <string name="morphe_comment_search_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட ஏற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
+  <string name="morphe_comment_search_dialog_title">கருத்துகளைத் தேடுங்கள்</string>
+  <string name="morphe_comment_search_hint">தேட வேண்டிய வார்த்தைகள்</string>
+  <string name="morphe_comment_search_clear">அழி</string>
+  <string name="morphe_comment_search_applied">வரிசைப்படுத்தும் முறையை மாற்றவும் அல்லது கருத்துகளைத் தேட மீண்டும் அவற்றைத் திறக்கவும்</string>
+  <string name="morphe_comment_search_cleared">தேடல் நீக்கப்பட்டது. அனைத்து கருத்துகளையும் காட்ட வரிசைப்படுத்தும் முறையை மாற்றவும் அல்லது மீண்டும் கருத்துகளைத் திறக்கவும்</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -437,6 +461,9 @@ Second \"item\" text"</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">பின்னாளும் பாருங்கள்</string>
   <string name="morphe_show_settings_button_type_summary">இயக்குவதற்கு, தட்டினால் Morphe அமைப்புகள் திறக்கும் மற்றும் நீண்ட நேரம் அழுத்தினால் YouTube அமைப்புகள் திறக்கும், இதை மாற்ற முடக்கவும்</string>
+  <string name="morphe_you_button_account_switcher_title">கணக்கு மாற்றும் குறுக்குவழி</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">கணக்கு மாற்றியைத் திறக்க \'நீங்கள்\' பொத்தானை நீண்ட நேரம் அழுத்தவும்</string>
   <string name="morphe_navigation_buttons_order_title">வழிசெலுத்தல் பொத்தான்களின் வரிசை</string>
   <string name="morphe_navigation_buttons_order_summary">வழிசெலுத்தல் பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
   <string name="morphe_swap_create_with_notifications_button_summary">அறிவிப்புகள் பொத்தானை வழிசெலுத்தல் பட்டிற்கும், உருவாக்கு பொத்தானை கருவிப்பட்டிற்கும் மாற்றுகிறது. மாற்றங்கள் நடைமுறைக்கு வரவில்லை என்றால், மறைநிலை பயன்முறைக்கு மாற முயற்சிக்கவும்</string>
@@ -533,6 +560,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_seek_buttons_title">பீட்களில் தேடல் பொத்தான்களைக் காட்டு</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">YouTube அவற்றைக்காட்டாத போது கூட, பீட்களில் இயங்கும் வீடியோக்களில் தேடல் பொத்தான்களைக் காட்டும்</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.notifications.ungroupNotificationsPatch -->
@@ -751,4 +780,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_live_chat_translate_max_length_title">அதிகபட்ச செய்தி நீளம்</string>
   <string name="morphe_live_chat_translate_max_length_summary">நீளமான செய்திகள் மொழிபெயர்க்கப்படாமல் காட்டப்படும்</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">வரம்பு இல்லை</string>
+  <string name="morphe_ghost_play_screen_title">கோஸ்ட் மோட்</string>
+  <string name="morphe_ghost_play_screen_summary">கதாவ் வரலாறு அல்லது பரிந்துரைகளைப் பாதிக்காமல் வீடியோக்களைப் பார்க்கவும்</string>
+  <string name="morphe_ghost_play_cat_general_title">பொதுவானவை</string>
 </resources>

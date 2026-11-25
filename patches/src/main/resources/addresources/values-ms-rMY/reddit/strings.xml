@@ -29,6 +29,8 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_hide_post_ads_title">Sorokkan iklan suapan</string>
   <string name="morphe_hide_comment_ads_title">Sorokkan iklan komen</string>
   <string name="morphe_screen_navigation_bar_title">Bar pandu arah</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Nyahaktifkan sembunyi automatik bar bawah</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Kekalkan bar navigasi bawah kelihatan semasa menatal</string>
   <string name="morphe_hide_answers_button_title">Sorokkan butang Jawapan</string>
   <string name="morphe_hide_chat_button_title">Sorokkan butang Sembang</string>
   <string name="morphe_hide_create_button_title">Sorokkan butang \'Cipta\'</string>
@@ -78,8 +80,7 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_keyword_filters_saved">Segarkan suapan untuk menggunakan perubahan</string>
   <string name="morphe_screen_layout_title">Susun atur</string>
   <string name="morphe_copy_text_title">Salin teks</string>
-  <string name="morphe_copy_text_summary">Membenarkan pemilihan dan penyalinan teks dalam hantaran dan komen. Menyahaktifkan pengecilan komen</string>
-  <string name="morphe_copy_text_user_dialog_message">Pengecilan komen akan berhenti berfungsi semasa Salin teks diaktifkan</string>
+  <string name="morphe_copy_text_summary">Membolehkan pemilihan dan penyalinan teks dalam hantaran dan komen</string>
   <string name="morphe_custom_font_title">Fon tersuai</string>
   <string name="morphe_custom_font_summary">Muat naik fail fon TTF atau OTF tersuai daripada laluan di bawah. Mengaktifkan ini juga akan mematikan Paksa fon sistem</string>
   <string name="morphe_custom_font_file_path_title">Fail fon tersuai</string>
@@ -91,6 +92,8 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_disable_modern_home_title">Lumpuhkan antara muka laman utama moden</string>
   <string name="morphe_home_feed_tabs_title">Tab suapan utama</string>
   <string name="morphe_home_feed_tabs_summary">Memaparkan tab Untuk Anda, Mengikuti dan Popular pada feed utama, dan membenarkan leretan antara tab tersebut. Mengikuti memerlukan akaun yang telah log masuk</string>
+  <string name="morphe_disable_refresh_on_back_title">Nyahaktifkan segar semula apabila kembali untuk keluar</string>
+  <string name="morphe_disable_refresh_on_back_summary">Kembali pada feed utama tidak lagi skrol ke atas dan memuat semula. Tekan kembali dua kali untuk keluar daripada aplikasi</string>
   <string name="morphe_disable_screenshot_popup_title">Nyahaktifkan popup tangkapan skrin</string>
   <string name="morphe_disable_screenshot_popup_summary">Nyahaktifkan popup yang muncul apabila mengambil tangkapan skrin</string>
   <string name="morphe_feed_auto_scroll_title">Skrol auto suapan</string>
@@ -124,13 +127,14 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_hide_trending_shelves_title">Sorokkan rak Trending</string>
   <string name="morphe_hide_trending_shelves_summary">Menyembunyikan rak Trending daripada suapan dan cadangan carian</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Sembunyikan rak \'Video untuk anda\'</string>
+  <string name="morphe_always_show_hide_title">Sentiasa tunjuk Sembunyi</string>
+  <string name="morphe_always_show_hide_summary">Menunjukkan Sembunyi dalam menu hantaran feed, juga apabila Reddit menunjukkan pilihan syor seperti \'Tunjukkan kurang hantaran seperti ini\'</string>
   <string name="morphe_remove_notification_dialog_title">Alih keluar dialog cadangan pemberitahuan</string>
   <string name="morphe_remove_notification_dialog_summary">Menutup dialog cadangan pemberitahuan secara automatik apabila melawati subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatar berkualiti tinggi</string>
   <string name="morphe_high_quality_avatars_summary">Menunjukkan avatar pengguna dalam resolusi penuh</string>
   <string name="morphe_search_hidden_profiles_title">Cari profil tersembunyi</string>
-  <string name="morphe_search_hidden_profiles_summary">Menunjukkan butang pada profil yang menyembunyikan hantaran atau komen mereka, untuk mencari hantaran mereka dengan carian Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Carian</string>
+  <string name="morphe_search_hidden_profiles_summary">Menjadikan carian profil mencari hantaran daripada profil yang menyembunyikan hantaran atau komen mereka</string>
   <string name="morphe_show_flairs_in_home_feed_title">Tunjukkan flair dalam feed utama</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Menunjukkan lencana flair hantaran dalam feed utama</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Sesetengah item feed mungkin tidak menunjukkan flair</string>
@@ -171,6 +175,8 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_media_viewer_fade_summary">Kekuatan pudar gelap di belakang kapsyen semasa melihat imej dan video, daripada 0 (tiada pudar) hingga 1 (lalai Reddit)</string>
   <string name="morphe_keep_feed_position_title">Kekalkan kedudukan suapan</string>
   <string name="morphe_keep_feed_position_summary">Mengekalkan suapan pada kedudukan yang sama selepas menutup hantaran, imej atau video, berbanding mengalihkan hantaran yang dibuka ke bahagian atas</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Nyahaktifkan segar semula automatik feed utama</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Kembali ke aplikasi selepas sekian lama tidak lagi memuat semula feed utama dan mengalihkannya ke bahagian atas. Tarik untuk segar semula masih berfungsi</string>
   <string name="morphe_post_side_panel_title">Panel sisi hantaran</string>
   <string name="morphe_post_side_panel_summary">Pada skrin tablet yang lebar, hantaran dibuka dalam panel bersebelahan suapan</string>
   <string name="morphe_post_side_panel_width_title">Lebar panel</string>
@@ -260,6 +266,12 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_collapse_all_comments_scope_entry_replies">Balasan (komen teratas kekal terbuka)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Balasan kepada balasan (balasan terus kekal terbuka)</string>
   <string name="morphe_collapse_all_comments_button">Runtuhkan atau kembangkan semua komen</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Warnakan garis indenta komen</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Memberikan warna garis tersendiri bagi setiap tahap balasan supaya bebenang yang panjang lebih mudah diikuti</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Warna garis</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Pelangi (terang)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (lembut)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Redup (bercampur dengan halaman)</string>
   <string name="morphe_remember_collapsed_comments_title">Ingat komen yang dikecilkan</string>
   <string name="morphe_remember_collapsed_comments_summary">Komen yang anda kecilkan akan kekal dikecilkan apabila anda membuka semula hantaran</string>
   <string name="morphe_app_icon_title">Ikon aplikasi</string>

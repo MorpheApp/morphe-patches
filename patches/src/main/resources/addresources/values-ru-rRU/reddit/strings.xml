@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Скрыть рекламу в ленте</string>
   <string name="morphe_hide_comment_ads_title">Скрыть рекламу в комментариях</string>
   <string name="morphe_screen_navigation_bar_title">Панель навигации</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Выключить автоскрытие нижней панели</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Оставляет нижнюю панель навигации видимой при прокрутке</string>
   <string name="morphe_hide_answers_button_title">Скрыть кнопку \"Ответы\"</string>
   <string name="morphe_hide_chat_button_title">Скрыть кнопку \"Чат\"</string>
   <string name="morphe_hide_create_button_title">Скрыть кнопку \"Создать\"</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Обновите ленту, чтобы применить изменения</string>
   <string name="morphe_screen_layout_title">Макет</string>
   <string name="morphe_copy_text_title">Скопировать текст</string>
-  <string name="morphe_copy_text_summary">Позволяет выделять и копировать текст в постах и комментариях. Отключает сворачивание комментариев</string>
-  <string name="morphe_copy_text_user_dialog_message">Сворачивание комментариев не будет работать, пока включена функция «Копировать текст»</string>
+  <string name="morphe_copy_text_summary">Позволяет выделять и копировать текст в постах и комментариях</string>
   <string name="morphe_custom_font_title">Пользовательский шрифт</string>
   <string name="morphe_custom_font_summary">Загрузить пользовательский файл шрифта TTF или OTF из указанного пути. Включение этой опции также отключает использование системного шрифта.</string>
   <string name="morphe_custom_font_file_path_title">Файл пользовательского шрифта</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Отключить современный интерфейс главного экрана</string>
   <string name="morphe_home_feed_tabs_title">Вкладки ленты главного экрана</string>
   <string name="morphe_home_feed_tabs_summary">Показывает вкладки \"Для вас\", \"Подписки\" и \"Популярное\" в ленте на главной странице и позволяет переключаться между ними с помощью свайпа. Для работы вкладки \"Подписки\" необходимо войти в аккаунт</string>
+  <string name="morphe_disable_refresh_on_back_title">Отключить обновление при возврате для выхода</string>
+  <string name="morphe_disable_refresh_on_back_summary">Возврат на главной ленте больше не прокручивает страницу вверх и не перезагружает её. Нажмите \"Назад\" дважды, чтобы выйти из приложения</string>
   <string name="morphe_disable_screenshot_popup_title">Отключить всплывающее окно снимка экрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Отключает всплывающее окно, которое появляется при создании снимка экрана</string>
   <string name="morphe_feed_auto_scroll_title">Автопрокрутка ленты</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Скрыть полки \"В тренде\"</string>
   <string name="morphe_hide_trending_shelves_summary">Скрывает полки \"В тренде\" из ленты и предложений поиска</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Скрыть секцию \"Видео для вас\"</string>
+  <string name="morphe_always_show_hide_title">Всегда показывать «Скрыть»</string>
+  <string name="morphe_always_show_hide_summary">Показывает «Скрыть» в меню постов ленты, а также когда Reddit показывает варианты рекомендаций, такие как «Показывать меньше подобных постов»</string>
   <string name="morphe_remove_notification_dialog_title">Удалить диалоговое окно предложения уведомлений</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматически закрывает диалоговое окно с предложением уведомления при посещении сабреддита</string>
   <string name="morphe_high_quality_avatars_title">Высокое качество аватаров</string>
   <string name="morphe_high_quality_avatars_summary">Отображать аватары пользователей в полном разрешении</string>
   <string name="morphe_search_hidden_profiles_title">Поиск скрытых профилей</string>
-  <string name="morphe_search_hidden_profiles_summary">Добавляет кнопку в профили, которые скрывают свои посты или комментарии, чтобы найти их публикации с помощью поиска Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Поиск</string>
+  <string name="morphe_search_hidden_profiles_summary">Позволяет поиску по профилям находить посты пользователей, которые скрывают свои публикации или комментарии</string>
   <string name="morphe_show_flairs_in_home_feed_title">Показывать флейры в ленте \"Главная\"</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Показывает значки флейров постов в ленте \"Главная\"</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Некоторые элементы ленты могут не отображать флейр</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Сила тёмного затемнения за подписью при просмотре изображений и видео: от 0 (без затемнения) до 1 (по умолчанию Reddit)</string>
   <string name="morphe_keep_feed_position_title">Сохранять позицию в ленте</string>
   <string name="morphe_keep_feed_position_summary">Сохраняет позицию ленты после закрытия поста, изображения или видео, вместо перемещения открытого поста вверх</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Отключить автообновление главной ленты</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">При возвращении в приложение спустя некоторое время главная лента больше не перезагружается и не прокручивается вверх. Обновление с помощью потягивания всё ещё работает</string>
   <string name="morphe_post_side_panel_title">Боковая панель поста</string>
   <string name="morphe_post_side_panel_summary">На широких экранах планшетов посты открываются в панели рядом с лентой</string>
   <string name="morphe_post_side_panel_width_title">Ширина панели</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Ответы (основные комментарии остаются развернутыми)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Ответы на ответы (прямые ответы остаются развернутыми)</string>
   <string name="morphe_collapse_all_comments_button">Свернуть или развернуть все комментарии</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Раскрасить линии отступа комментариев</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Присваивает каждому уровню ответов свой цвет линии, чтобы в длинных ветках было проще ориентироваться</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Цвета линий</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Радужный (яркий)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастельный (мягкий)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Приглушенный (сливается со страницей)</string>
   <string name="morphe_remember_collapsed_comments_title">Запоминать свёрнутые комментарии</string>
   <string name="morphe_remember_collapsed_comments_summary">Свёрнутые комментарии остаются свёрнутыми при повторном открытии поста</string>
   <string name="morphe_app_icon_title">Иконка приложения</string>

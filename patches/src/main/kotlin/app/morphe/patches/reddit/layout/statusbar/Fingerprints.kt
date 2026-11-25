@@ -16,9 +16,6 @@ import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/SeeThroughStatusBarPatch;"
-
 internal object HomeScaffoldFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
@@ -115,11 +112,4 @@ internal object HomeTopBarHeightFingerprint : Fingerprint(
         literal(0x42500000),
         opcode(Opcode.RETURN, location = MatchAfterWithin(10))
     )
-)
-
-internal object DrawWithContentStubFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS,
-    name = "drawWithContent",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;", "Lkotlin/jvm/functions/Function1;")
 )

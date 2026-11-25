@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">ซ่อนโฆษณาในฟีด</string>
   <string name="morphe_hide_comment_ads_title">ซ่อนโฆษณาในความคิดเห็น</string>
   <string name="morphe_screen_navigation_bar_title">แถบนำทาง</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">ปิดการซ่อนแถบด้านล่างอัตโนมัติ</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">ทำให้แถบนำทางด้านล่างมองเห็นได้ในขณะที่เลื่อน</string>
   <string name="morphe_hide_answers_button_title">ซ่อนปุ่ม Answers</string>
   <string name="morphe_hide_chat_button_title">ซ่อนปุ่มแชท</string>
   <string name="morphe_hide_create_button_title">ซ่อนปุ่มสร้าง</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">รีเฟรชฟีดเพื่อใช้การเปลี่ยนแปลง</string>
   <string name="morphe_screen_layout_title">รูปแบบ</string>
   <string name="morphe_copy_text_title">คัดลอกข้อความ</string>
-  <string name="morphe_copy_text_summary">อนุญาตให้เลือกและคัดลอกข้อความในโพสต์และความคิดเห็น ปิดใช้งานการยุบความคิดเห็น</string>
-  <string name="morphe_copy_text_user_dialog_message">การยุบความคิดเห็นจะหยุดทำงานขณะที่เปิดใช้งานการคัดลอกข้อความ</string>
+  <string name="morphe_copy_text_summary">อนุญาตให้เลือกและคัดลอกข้อความในโพสต์และความคิดเห็นได้</string>
   <string name="morphe_custom_font_title">ฟอนต์ที่กำหนดเอง</string>
   <string name="morphe_custom_font_summary">โหลดไฟล์ฟอนต์ TTF หรือ OTF ที่กำหนดเองจากพาธด้านล่าง การเปิดใช้งานนี้จะปิดการใช้งานบังคับใช้ฟอนต์ระบบด้วย</string>
   <string name="morphe_custom_font_file_path_title">ไฟล์ฟอนต์ที่กำหนดเอง</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">ปิด UI หน้าแรกแบบใหม่</string>
   <string name="morphe_home_feed_tabs_title">แท็บฟีดหน้าแรก</string>
   <string name="morphe_home_feed_tabs_summary">แสดงแท็บ สำหรับคุณ, กำลังติดตาม และยอดนิยม บนฟีดหน้าแรก และอนุญาตให้ปัดเลื่อนระหว่างแท็บเหล่านี้ได้ โดยการติดตามจำเป็นต้องลงชื่อเข้าใช้บัญชี</string>
+  <string name="morphe_disable_refresh_on_back_title">ปิดการรีเฟรชเมื่อย้อนกลับเพื่อออก</string>
+  <string name="morphe_disable_refresh_on_back_summary">การย้อนกลับในฟีดหน้าแรกจะไม่เลื่อนขึ้นไปด้านบนและโหลดใหม่ ให้กดปุ่มย้อนกลับสองครั้งเพื่อออกจากแอป</string>
   <string name="morphe_disable_screenshot_popup_title">ปิดใช้งานหน้าต่างป๊อปอัพการจับภาพหน้าจอ</string>
   <string name="morphe_disable_screenshot_popup_summary">ปิดใช้งานหน้าต่างป๊อปอัพที่ปรากฏเมื่อถ่ายภาพหน้าจอ</string>
   <string name="morphe_feed_auto_scroll_title">เลื่อนฟีดอัตโนมัติ</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">ซ่อนชั้นวางกำลังเป็นที่นิยม</string>
   <string name="morphe_hide_trending_shelves_summary">ซ่อนชั้นวางที่กำลังมาแรงจากฟีดและคำแนะนำในการค้นหา</string>
   <string name="morphe_hide_videos_for_you_shelf_title">ซ่อนชั้นวาง \'วิดีโอสำหรับคุณ\'</string>
+  <string name="morphe_always_show_hide_title">แสดง \'ซ่อน\' เสมอ</string>
+  <string name="morphe_always_show_hide_summary">แสดง \'ซ่อน\' ในเมนูของโพสต์ในฟีด รวมถึงเมื่อ Reddit แสดงตัวเลือกการแนะนำ เช่น \'แสดงโพสต์แบบนี้ให้น้อยลง\'</string>
   <string name="morphe_remove_notification_dialog_title">นำกล่องโต้ตอบคำแนะนำการแจ้งเตือนออก</string>
   <string name="morphe_remove_notification_dialog_summary">ปิดกล่องโต้ตอบคำแนะนำการแจ้งเตือนโดยอัตโนมัติเมื่อเข้าสู่ subreddit</string>
   <string name="morphe_high_quality_avatars_title">อวตารคุณภาพสูง</string>
   <string name="morphe_high_quality_avatars_summary">แสดงอวตารของผู้ใช้ด้วยความละเอียดเต็มรูปแบบ</string>
   <string name="morphe_search_hidden_profiles_title">ค้นหาโปรไฟล์ที่ซ่อนอยู่</string>
-  <string name="morphe_search_hidden_profiles_summary">แสดงปุ่มบนโปรไฟล์ที่ซ่อนโพสต์หรือความคิดเห็น เพื่อค้นหาโพสต์ของพวกเขาด้วยการค้นหาของ Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">ค้นหา</string>
+  <string name="morphe_search_hidden_profiles_summary">ทำให้การค้นหาโปรไฟล์ค้นหาโพสต์ของโปรไฟล์ที่ซ่อนโพสต์หรือความคิดเห็นของตนเองได้</string>
   <string name="morphe_show_flairs_in_home_feed_title">แสดงแฟลร์ในฟีดหน้าแรก</string>
   <string name="morphe_show_flairs_in_home_feed_summary">แสดงตราสัญลักษณ์แฟลร์ของโพสต์ในฟีดหน้าแรก</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">บางรายการในฟีดอาจไม่แสดงแฟลร์</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">ความเข้มของการเฟดสีเข้มด้านหลังคำบรรยายเมื่อดูรูปภาพและวิดีโอ ตั้งแต่ 0 (ไม่มีการเฟด) ถึง 1 (ค่าเริ่มต้นของ Reddit)</string>
   <string name="morphe_keep_feed_position_title">คงตำแหน่งฟีด</string>
   <string name="morphe_keep_feed_position_summary">คงฟีดไว้ที่ตำแหน่งเดิมหลังจากปิดโพสต์ รูปภาพ หรือวิดีโอ แทนที่จะเลื่อนโพสต์ที่เปิดไปไว้ด้านบน</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">ปิดใช้งานการรีเฟรชฟีดหน้าแรกอัตโนมัติ</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">เมื่อกลับเข้าสู่แอปหลังจากผ่านไปสักพัก จะไม่มีการรีโหลดฟีดหน้าแรกและเลื่อนขึ้นไปด้านบนอีกครั้ง โดยที่การดึงเพื่อรีเฟรชยังคงใช้งานได้</string>
   <string name="morphe_post_side_panel_title">แผงด้านข้างของโพสต์</string>
   <string name="morphe_post_side_panel_summary">บนหน้าจอแท็บเล็ตขนาดกว้าง โพสต์จะเปิดในแผงข้างฟีด</string>
   <string name="morphe_post_side_panel_width_title">ความกว้างของแผง</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">การตอบกลับ (ความคิดเห็นหลักยังคงเปิดอยู่)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">การตอบกลับของการตอบกลับ (การตอบกลับโดยตรงยังคงเปิดอยู่)</string>
   <string name="morphe_collapse_all_comments_button">ยุบหรือขยายความคิดเห็นทั้งหมด</string>
+  <string name="morphe_colorize_comment_indent_lines_title">ใส่สีเส้นเยื้องของความคิดเห็น</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">กำหนดสีเส้นให้กับแต่ละระดับของการตอบกลับ เพื่อให้ติดตามเธรดที่ยาวได้ง่ายขึ้น</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">สีของเส้น</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">สีรุ้ง (สดใส)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">สีพาสเทล (อ่อน)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">ปิดเสียง (กลมกลืนกับหน้าเว็บ)</string>
   <string name="morphe_remember_collapsed_comments_title">จดจำความคิดเห็นที่ยุบไว้</string>
   <string name="morphe_remember_collapsed_comments_summary">ความคิดเห็นที่คุณยุบไว้จะยังคงยุบอยู่เมื่อคุณเปิดโพสต์อีกครั้ง</string>
   <string name="morphe_app_icon_title">ไอคอนแอป</string>

@@ -29,6 +29,8 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_hide_post_ads_title">Nascondi gli annunci nel feed</string>
   <string name="morphe_hide_comment_ads_title">Nascondi gli annunci nei commenti</string>
   <string name="morphe_screen_navigation_bar_title">Barra di navigazione</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Disattiva l\'occultamento automatico della barra inferiore</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantiene visibile la barra di navigazione inferiore durante lo scorrimento</string>
   <string name="morphe_hide_answers_button_title">Nascondi il pulsante Risposte</string>
   <string name="morphe_hide_chat_button_title">Nascondi il pulsante Chat</string>
   <string name="morphe_hide_create_button_title">Nascondi il pulsante Crea</string>
@@ -78,8 +80,7 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_keyword_filters_saved">Aggiorna il feed per applicare le modifiche</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Copia testo</string>
-  <string name="morphe_copy_text_summary">Consente di selezionare e copiare il testo nei post e nei commenti. Disattiva la compressione dei commenti</string>
-  <string name="morphe_copy_text_user_dialog_message">Il collasso dei commenti non funzionerà mentre la funzione Copia testo è abilitata</string>
+  <string name="morphe_copy_text_summary">Consente di selezionare e copiare il testo nei post e nei commenti</string>
   <string name="morphe_custom_font_title">Carattere personalizzato</string>
   <string name="morphe_custom_font_summary">Carica un file font TTF o OTF personalizzato dal percorso sottostante. Abilitando questa opzione, si disattiva anche l\'uso del font di sistema.</string>
   <string name="morphe_custom_font_file_path_title">File del carattere personalizzato</string>
@@ -91,6 +92,8 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_disable_modern_home_title">Disabilita la schermata principale moderna</string>
   <string name="morphe_home_feed_tabs_title">Schede del feed Home</string>
   <string name="morphe_home_feed_tabs_summary">Mostra le schede Per te, Seguiti e Popolari nel feed home e consente di scorrere tra di esse. Per Seguiti è necessario un account connesso</string>
+  <string name="morphe_disable_refresh_on_back_title">Disabilita l\'aggiornamento al ritorno per uscire</string>
+  <string name="morphe_disable_refresh_on_back_summary">Il tasto indietro nel feed home non scorre più verso l\'alto e non ricarica. Premi indietro due volte per uscire dall\'app</string>
   <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di salvataggio schermata</string>
   <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue la cattura di una schermata</string>
   <string name="morphe_feed_auto_scroll_title">Auto-scorrimento del feed</string>
@@ -124,13 +127,14 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_hide_trending_shelves_title">Nascondi gli scaffali di tendenza</string>
   <string name="morphe_hide_trending_shelves_summary">Nasconde gli scaffali di tendenza dal feed e dai suggerimenti di ricerca</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Nascondi sezione \"Video per te\"</string>
+  <string name="morphe_always_show_hide_title">Mostra sempre Nascondi</string>
+  <string name="morphe_always_show_hide_summary">Mostra \"Nascondi\" nel menu dei post del feed, anche quando Reddit mostra opzioni di raccomandazione come \"Mostra meno post come questo\"</string>
   <string name="morphe_remove_notification_dialog_title">Rimuovi finestra di dialogo dei suggerimenti di notifica</string>
   <string name="morphe_remove_notification_dialog_summary">Chiude automaticamente la finestra di dialogo del suggerimenti di notifica, che appaiono quando si visita un subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatar di alta qualità</string>
   <string name="morphe_high_quality_avatars_summary">Mostra gli avatar degli utenti a piena risoluzione</string>
   <string name="morphe_search_hidden_profiles_title">Cerca profili nascosti</string>
-  <string name="morphe_search_hidden_profiles_summary">Mostra un pulsante sui profili che nascondono i propri post o commenti, per trovare i loro post tramite la ricerca di Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Cerca</string>
+  <string name="morphe_search_hidden_profiles_summary">Permette alla ricerca dei profili di trovare i post di profili che nascondono i propri post o commenti</string>
   <string name="morphe_show_flairs_in_home_feed_title">Mostra i flair nel feed principale</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Mostra i badge dei flair nei post del feed principale</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Alcuni elementi del feed potrebbero non mostrare un flair</string>
@@ -171,6 +175,8 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_media_viewer_fade_summary">Intensità della dissolvenza scura dietro la didascalia quando si visualizzano immagini e video, da 0 (nessuna dissolvenza) a 1 (impostazione predefinita di Reddit)</string>
   <string name="morphe_keep_feed_position_title">Mantieni la posizione del feed</string>
   <string name="morphe_keep_feed_position_summary">Mantiene il feed nella stessa posizione dopo aver chiuso un post, un\'immagine o un video, invece di spostare il post aperto in cima</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Disabilita l\'aggiornamento automatico del feed home</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Ritornando all\'app dopo un po\' di tempo, il feed home non verrà più ricaricato e spostato all\'inizio. L\'aggiornamento tramite trascinamento continua a funzionare</string>
   <string name="morphe_post_side_panel_title">Pannello laterale del post</string>
   <string name="morphe_post_side_panel_summary">Sui tablet con schermo ampio, i post si aprono in un pannello accanto al feed</string>
   <string name="morphe_post_side_panel_width_title">Larghezza pannello</string>
@@ -260,6 +266,12 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_collapse_all_comments_scope_entry_replies">Risposte (i commenti principali rimangono aperti)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Risposte alle risposte (le risposte dirette rimangono aperte)</string>
   <string name="morphe_collapse_all_comments_button">Comprimi o espandi tutti i commenti</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Colora le linee di rientro dei commenti</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Assegna a ogni livello di risposta un proprio colore di linea, così i thread lunghi sono più facili da seguire</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Colori delle linee</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Arcobaleno (brillante)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastello (soft)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Tenue (si fonde con la pagina)</string>
   <string name="morphe_remember_collapsed_comments_title">Ricorda i commenti compressi</string>
   <string name="morphe_remember_collapsed_comments_summary">I commenti che comprimi restano compressi quando riapri il post</string>
   <string name="morphe_app_icon_title">Icona dell\'app</string>

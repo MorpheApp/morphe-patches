@@ -65,7 +65,13 @@ public final class PrioritizeVideoQualityPatch {
                     if (mimeType == null || !mimeType.contains("video")) {
                         continue;
                     }
+                    // The quality is the short side of the video, which is the width of a vertical video
+                    // such as a Short (1080p is 1080x1920).
+                    final int width = format.patch_getWidth();
                     int height = format.patch_getHeight();
+                    if (width > 0 && width < height) {
+                        height = width;
+                    }
                     if (!AVAILABLE_FORMAT_HEIGHT.contains(height)) {
                         continue;
                     }

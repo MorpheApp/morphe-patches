@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.reddit.layout.glassnav.BottomNavBarFingerprint
+import app.morphe.patches.reddit.layout.glassnav.MODIFIER_INTERFACE
 import app.morphe.patches.reddit.layout.glassnav.glassNavigationBarPatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
@@ -23,6 +23,9 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import java.util.logging.Logger
+
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/reddit/patches/SeeThroughStatusBarPatch;"
 
 @Suppress("unused")
 val seeThroughStatusBarPatch = patch(
@@ -46,7 +49,7 @@ val seeThroughStatusBarPatch = patch(
         val vG = a15Match.getInstruction<OneRegisterInstruction>().registerA
         val appBarBodyInvoke = invokeStatic(
             vG,
-            "$EXTENSION_CLASS->appBarBody(Ljava/lang/Object;)Ljava/lang/Object;"
+            "$EXTENSION_CLASS->appBarBody($MODIFIER_INTERFACE)Ljava/lang/Object;"
         )
 
         val a9Match = HomeScaffoldFingerprint.instructionMatches[9]
@@ -143,18 +146,6 @@ val seeThroughStatusBarPatch = patch(
             """
         )
 
-        val drawWithContentRef = BottomNavBarFingerprint.instructionMatches[0].methodReference
-        val drawWithContentParam0 = drawWithContentRef.parameterTypes[0]
-        DrawWithContentStubFingerprint.method.addInstructions(
-            0,
-            """
-                check-cast p0, $drawWithContentParam0
-                invoke-static { p0, p1 }, $drawWithContentRef
-                move-result-object p0
-                return-object p0
-            """
-        )
-
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }
@@ -163,9 +154,9 @@ private fun invokeFeedBoxModifier(vP: Int, vU: Int): String = if (vP > 15 || vU 
     if (vU != vP + 1) {
         throw PatchException("Registers v$vP and v$vU cannot be encoded for feedBoxModifier")
     }
-    "invoke-static/range { v$vP .. v$vU }, $EXTENSION_CLASS->feedBoxModifier(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+    "invoke-static/range { v$vP .. v$vU }, $EXTENSION_CLASS->feedBoxModifier($MODIFIER_INTERFACE$MODIFIER_INTERFACE)Ljava/lang/Object;"
 } else {
-    "invoke-static { v$vP, v$vU }, $EXTENSION_CLASS->feedBoxModifier(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+    "invoke-static { v$vP, v$vU }, $EXTENSION_CLASS->feedBoxModifier($MODIFIER_INTERFACE$MODIFIER_INTERFACE)Ljava/lang/Object;"
 }
 
 private fun invokeStatic(register: Int, method: Any, isWide: Boolean = false): String =

@@ -107,4 +107,12 @@
         <item>LIGHT</item>
         <item>DARK</item>
     </string-array>
+    <string-array name="morphe_glass_navigation_bar_style_entries">
+        <item>@string/morphe_glass_navigation_bar_style_entry_tinted</item>
+        <item>@string/morphe_glass_navigation_bar_style_entry_frosted</item>
+    </string-array>
+    <string-array name="morphe_glass_navigation_bar_style_entry_values" translatable="false">
+        <item>TINTED</item>
+        <item>FROSTED</item>
+    </string-array>
 </resources>

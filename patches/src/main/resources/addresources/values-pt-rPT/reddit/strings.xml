@@ -29,6 +29,8 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_hide_post_ads_title">Ocultar anúncios no feed</string>
   <string name="morphe_hide_comment_ads_title">Ocultar anúncios nos comentários</string>
   <string name="morphe_screen_navigation_bar_title">Barra de navegação</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Desativar ocultação automática da barra inferior</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantém a barra de navegação inferior visível durante a deslocação</string>
   <string name="morphe_hide_answers_button_title">Ocultar botão Respostas</string>
   <string name="morphe_hide_chat_button_title">Ocultar botão Chat</string>
   <string name="morphe_hide_create_button_title">Ocultar botão Criar</string>
@@ -78,8 +80,7 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_keyword_filters_saved">Atualize o feed para aplicar as alterações</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Copiar texto</string>
-  <string name="morphe_copy_text_summary">Permite selecionar e copiar texto em publicações e comentários. Desativa o recolhimento de comentários</string>
-  <string name="morphe_copy_text_user_dialog_message">A funcionalidade de comentários colapsados deixará de funcionar enquanto Copiar texto estiver ativado</string>
+  <string name="morphe_copy_text_summary">Permite selecionar e copiar texto em posts e comentários</string>
   <string name="morphe_custom_font_title">Fonte personalizada</string>
   <string name="morphe_custom_font_summary">Carregue um ficheiro de fonte TTF ou OTF personalizado a partir do caminho abaixo. Ativar isto também desativa a fonte do sistema.</string>
   <string name="morphe_custom_font_file_path_title">Ficheiro de fonte personalizada</string>
@@ -91,6 +92,8 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_disable_modern_home_title">Desativar IU moderna da página inicial</string>
   <string name="morphe_home_feed_tabs_title">Abas do feed inicial</string>
   <string name="morphe_home_feed_tabs_summary">Mostra as abas Para Você, Seguindo e Popular no feed inicial, e permite deslizar entre elas. A aba Seguindo requer uma conta conectada</string>
+  <string name="morphe_disable_refresh_on_back_title">Desativar atualização ao voltar para sair</string>
+  <string name="morphe_disable_refresh_on_back_summary">Voltar no feed inicial não rola mais para o topo nem recarrega. Pressione voltar duas vezes para sair do app</string>
   <string name="morphe_disable_screenshot_popup_title">Desativar janela pop-up de captura de ecrã</string>
   <string name="morphe_disable_screenshot_popup_summary">Desativa a janela pop-up que aparece ao tirar uma captura de ecrã</string>
   <string name="morphe_feed_auto_scroll_title">Rolagem automática do feed</string>
@@ -124,13 +127,14 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_hide_trending_shelves_title">Ocultar prateleiras em alta</string>
   <string name="morphe_hide_trending_shelves_summary">Oculta as secções de Tendências do feed e das sugestões de pesquisa</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ocultar estante \"Vídeos para você\"</string>
+  <string name="morphe_always_show_hide_title">Sempre mostrar Ocultar</string>
+  <string name="morphe_always_show_hide_summary">Mostra Ocultar no menu de posts do feed, também quando o Reddit mostra opções de recomendação como \"Mostrar menos posts como este\"</string>
   <string name="morphe_remove_notification_dialog_title">Remover diálogo de sugestão de notificação</string>
   <string name="morphe_remove_notification_dialog_summary">Fecha automaticamente a caixa de diálogo de sugestão de notificação ao visitar um subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatares de alta qualidade</string>
   <string name="morphe_high_quality_avatars_summary">Mostra os avatares dos usuários em resolução total</string>
   <string name="morphe_search_hidden_profiles_title">Pesquisar perfis ocultos</string>
-  <string name="morphe_search_hidden_profiles_summary">Exibe um botão em perfis que ocultam suas publicações ou comentários, para encontrar suas publicações com a pesquisa do Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Pesquisar</string>
+  <string name="morphe_search_hidden_profiles_summary">Faz com que a busca de perfil encontre as publicações de perfis que ocultam suas publicações ou comentários</string>
   <string name="morphe_show_flairs_in_home_feed_title">Mostrar selos no feed inicial</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Apresenta os distintivos das publicações no feed inicial</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Alguns itens do feed podem não mostrar um selo</string>
@@ -171,6 +175,8 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_media_viewer_fade_summary">Intensidade do esmaecimento escuro atrás da legenda ao visualizar imagens e vídeos, de 0 (sem esmaecimento) a 1 (padrão do Reddit)</string>
   <string name="morphe_keep_feed_position_title">Manter a posição do feed</string>
   <string name="morphe_keep_feed_position_summary">Mantém o feed na mesma posição após fechar uma publicação, imagem ou vídeo, em vez de mover a publicação aberta para o topo</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Desativar atualização automática do feed inicial</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Retornar ao aplicativo após algum tempo não recarrega mais o feed inicial nem o move para o topo. Puxar para atualizar continua funcionando</string>
   <string name="morphe_post_side_panel_title">Painel lateral da publicação</string>
   <string name="morphe_post_side_panel_summary">Em telas de tablets largos, as publicações abrem em um painel ao lado do feed</string>
   <string name="morphe_post_side_panel_width_title">Largura do painel</string>
@@ -260,6 +266,12 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_collapse_all_comments_scope_entry_replies">Respostas (comentários principais permanecem abertos)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Respostas de respostas (respostas diretas permanecem abertas)</string>
   <string name="morphe_collapse_all_comments_button">Recolher ou expandir todos os comentários</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Colorir linhas de recuo de comentários</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Atribui a cada nível de resposta a sua própria cor de linha para facilitar o acompanhamento de tópicos longos</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Cores das linhas</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Arco-íris (brilhante)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (suave)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Suave (mistura-se com a página)</string>
   <string name="morphe_remember_collapsed_comments_title">Lembrar comentários recolhidos</string>
   <string name="morphe_remember_collapsed_comments_summary">Os comentários que você recolher permanecem recolhidos ao reabrir a publicação</string>
   <string name="morphe_app_icon_title">Ícone da aplicação</string>

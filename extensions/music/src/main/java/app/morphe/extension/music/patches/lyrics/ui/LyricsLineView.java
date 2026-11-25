@@ -189,6 +189,14 @@ final class LyricsLineView extends TextView {
         invalidate();
     }
 
+    @Override
+    public void setTextSize(int unit, float size) {
+        super.setTextSize(unit, size);
+        cachedLayout = null;
+        exitingTransLayout = null;
+        exitingRomaLayout = null;
+    }
+
     private final LyricsFit.FittedState fittedState = new LyricsFit.FittedState();
 
     int transStart = -1;
@@ -2790,6 +2798,7 @@ final class LyricsLineView extends TextView {
         mainPaint.setTextSize(fontSizePx);
         LyricsViewSupport.applyLyricsBoldPaint(mainPaint);
         mainPaint.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(rawMainText, textSizeSp));
+        WordAnimationUtils.applyClusterFontFeatures(mainPaint, LyricsTextUtils.containsJoiningScript(rawMainText));
         return mainPaint;
     }
 

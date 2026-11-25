@@ -449,6 +449,9 @@ Pozastavenie crossfade kvôli sledovaniu hudobného videa môže spôsobiť, že
   <string name="morphe_music_hide_navigation_bar_library_button_title">Skryť tlačidlo Knižnica</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skryť tlačidlo Upgrade</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Zobraziť tlačidlo Nastavenia</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Akcia tlačidla Nastavenia</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Keď je táto možnosť zapnutá, klepnutie otvorí nastavenia Morphe a dlhý stlačený tlak otvorí nastavenia YouTube Music; pre prepnutie vypnite</string>
   <string name="morphe_music_hide_navigation_bar_title">Skryť navigačný panel</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skryť označenia tlačidiel navigačného panela</string>
   <string name="morphe_music_navigation_bar_glass_title">Povoliť sklenený navigačný panel</string>

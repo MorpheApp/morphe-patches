@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">სცადეთ ჩართვა: ვიდეო სტრიმების იმიტაცია &gt; Android VR-ზე ავტორიზაცია</string>
   <string name="morphe_spoof_video_streams_client_type_title">ნაგულისხმევი კლიენტი</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">გამოიყენეთ QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">დეობფუსკაციისთვის გამოიყენეთ QuackJS yt-dlp-ejs-ის (WebView) ნაცვლად</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ავტორიზაცია \"Android VR\"-ში</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ცალკე ავტორიზაციას საჭიროებს. გასაგრძელებლად შეეხּეთ აქ</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • თქვენი Morphe-ის პარამეტრები არ მოახდენს Android VR ავთენტიფიკაციის იმპორტს/ექსპორტს
 • თუ ეს აპლიკაცია 6 თვის განმავლობაში არ იქნება გამოყენებული, Google წაშლის ამ ავთენტიფიკაციას
 • დაგჭირდებათ ხელახლა ავტორიზაცია, თუ შეცვლით Google-ის პაროლს ან წაშლით ამ მოწყობილობას თქვენი Google-ის პარამეტრებიდან"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ავტორიზაცია \"Mobile Web\"-ში</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ვებ-ავტორიზაცია</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">სურვილისამებრ: შედით YouTube-ის ვებგვერდზე, რათა ვიდეოები თქვენი ანგარიშით ჩართოთ. გასაგრძელებლად დააჭირეთ აქ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ამჟამად შესული ხართ \'Mobile Web\'-ში</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ამჟამად ავტორიზებული ხართ YouTube-ის ვებგვერდზე</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \'ნაგულისხმევი კლიენტი\' მნიშვნელობით \'Mobile Web\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">შესვლა \'Mobile Web\'-ში</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' ასვამს ვიდეოებს ავტორიზაციის გარეშე ან YouTube-ის ვებგვერდზე შესვლის შემდეგ
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \"ნაგულისხმევი კლიენტი\" ვებკლიენტით</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ავტორიზაცია YouTube-ის ვებგვერდზე</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ვებკლიენტები თავსามารถთი ვიდეოებს ავტორიზაციის გარეშე, ან YouTube-ის ვებგვერდზე ავტორიზირებულ მდგომარეობაში
 
-• ავტორიზაციის შემთხვევაში შესაძლებელია იმ ვიდეოების ნახვა, რომლებიც საჭიროებს ანგარიშს, მაგალითად, ასაკობრივი შეზღუდვის მქონე ვიდეოები
-• Google-ის შესვლის გვერდი იხსნება ამ აპლიკაციაში
-• ავტორიზაცია გამოიყენება მხოლოდ თქვენ მიერ არჩეული ვიდეოების მისაღებად
-• ავტორიზაციის მონაცემები ინახება მხოლოდ ამ მოწყობილობაზე
+• ავტორიზაციის შემთხვევაში შესაძლებელია ისეთი ვიდეოების ყურება, რომლებიც მოითხოვს ანგარიშს, მაგალითად, ასაკობრივი შეზღუდვების მქონე ვიდეოები
+• Google-ის ავტორიზაციის გვერდი იხსნება ამ აპლიკაციაში
+• ავტორიზაცია გამოიყენება მხოლოდ თქვენ მიერ რჩეული ვიდეოების მისაღებად
+• ავტორიზაცია ინახება მხოლოდ ამ მოწყობილობაზე
+• თითოეულ ვებკლიენტს აქვს საკუთარი ავტორიზაცია არჩეული ნაგულისხმევი კლიენტისთვის
 
-შესასვლელად, დააჭირეთ ქვემოთ მოცემულ ღილაკს „გაგრძელება\""</string>
+ავტორიზაციისთვის დააჭირეთ ქვემოთ მოცემულ ღილაკს „გაგრძელება\""</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ავტორიზაცია შენახულია
 
-• თქვენი Morphe-ის პარამეტრები არ მოახდენს 'Mobile Web'-ის ავტორიზაციის იმპორტს/ექსპორტს
-• თუ Google შეწყვეტს ავტორიზაციას, ვიდეოები ჩაირთვება ავტორიზაციის გარეშე, სანამ ხელახლა გაივლით ავტორიზაციას
-• გამოსვლის შემთხვევაში, მოხდება ამ მოწყობილობის ავტორიზაციის გაუქმება YouTube-ის ვებგვერდიდანაც"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web-ის ავტორიზაციის ვადა ამოიწურა, სცადეთ \'Mobile Web\'-ში ხელახლა ავტორიზაცია</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">გადმოხვედრილი ხართ \'Mobile Web\'-იდან</string>
+• Morphe-ის პარამეტრები არ მოახდენს YouTube-ის ვებსაიტზე ავტორიზაციის იმპორტს/ექსპორტს
+• თუ Google გათიშავს ავტორიზაციას, ვიდეოები ჩაირთვება ავტორიზაციის გარეშე, სანამ ხელახლა არ გაივლით ავტორიზაციას
+• სისტემიდან გამოსვლა ასევე გამოსვლის ამ მოწყობილობას YouTube-ის ვებსაიტიდან"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ვებ-ავტორიზაციის ვადა ამოიწურა, სცადეთ ხელახლა ავტორიზაცია</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">გადმოხვედრილი ხართ YouTube-ის ვებსაიტიდან</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' недоступებელია. დააინსტალირეთ ან ჩართეთ იგი ავტორიზაციისთვის</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 დროებით მიუწვდომელია (API-ს დრო დასრულდა)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\'-ის ავტორიზაციის ვადა ამოიწურა, სცადეთ VR-ში ხელახლა ავტორიზაცია</string>

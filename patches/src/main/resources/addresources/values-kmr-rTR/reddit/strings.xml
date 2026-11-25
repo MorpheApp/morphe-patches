@@ -29,6 +29,8 @@ Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;
   <string name="morphe_hide_post_ads_title">Postan reklaman veşêre</string>
   <string name="morphe_hide_comment_ads_title">Reklaman li komentaran veşêre</string>
   <string name="morphe_screen_navigation_bar_title">Navîgeş bar</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Vegerekirina veşartina otomatîk a bara jêrîn</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Dema scroll dikî, barê navîgasyonê yê jêrîn xuya dimîne</string>
   <string name="morphe_hide_answers_button_title">Bikutana \'Bersiv\'ê ji holê erxe</string>
   <string name="morphe_hide_chat_button_title">Bikutana \'Çat\'ê ji holê erxe</string>
   <string name="morphe_hide_create_button_title">Bikutana \'Çêkirin\'ê ji holê erxe</string>
@@ -78,8 +80,7 @@ Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;
   <string name="morphe_keyword_filters_saved">Ji bo sepandina guherînan, fîd nû bike</string>
   <string name="morphe_screen_layout_title">Sazî</string>
   <string name="morphe_copy_text_title">Kopîkirina nivîsî</string>
-  <string name="morphe_copy_text_summary">Rêdide ku nivîsa post û komenatan were hilbijartin û kopîkirin. Komenatên ku tên xurtkirin radike</string>
-  <string name="morphe_copy_text_user_dialog_message">Gava Kopîkirina nivîsî hatî çalak kirin, xurtkirina komenatan êdî naxebite</string>
+  <string name="morphe_copy_text_summary">Ji bo hilbijartin û kopykirina nivîsê di post û komentan de rê dide</string>
   <string name="morphe_custom_font_title">Fonta xwerû</string>
   <string name="morphe_custom_font_summary">Pelgeya fontê ya TTF an OTF ya xwerû ji peldanka jêrîn barke. Çalak kirina vê jî fontiya sîstemê yê qehre kirin winda dike.</string>
   <string name="morphe_custom_font_file_path_title">Pelgeka fonta xwerû</string>
@@ -91,6 +92,8 @@ Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;
   <string name="morphe_disable_modern_home_title">Nexşeya nû ya malê bêçalak bike</string>
   <string name="morphe_home_feed_tabs_title">Tabên feed-a malê</string>
   <string name="morphe_home_feed_tabs_summary">Tabên \"Ji bo Te\", \"Şop dikim\" û \"Bi navdar\" di feed-a malê de nîşan dide, û rê dide ku mirov di nav wan de bi swîpanê herbike. Ji bo \"Şop dikim\" hesabek têkiliyê pêwîst e</string>
+  <string name="morphe_disable_refresh_on_back_title">Nûkirina vegere bo derkeftinê bêkar bike</string>
+  <string name="morphe_disable_refresh_on_back_summary">Vegere li ser fîda malê êdî naçe serê rûpelê û nû nake. Ji bo ku tu ji aplikasyonê derkevî, du caran li vegere bitikîne</string>
   <string name="morphe_disable_screenshot_popup_title">Dema çêkirina ekranê, ragihîner azad bike</string>
   <string name="morphe_disable_screenshot_popup_summary">Dema çêkirina ekranê, ragihîner azad bike</string>
   <string name="morphe_feed_auto_scroll_title">Xwe-scrollkirina feedê</string>
@@ -124,13 +127,14 @@ Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;
   <string name="morphe_hide_trending_shelves_title">Trending shelfên modayî veşêre</string>
   <string name="morphe_hide_trending_shelves_summary">Li ser fîdê û pêşniyarên lêgerînê şelfên \"Trending\" (Têne kilkirin) veşêrin</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Rafa \'Vîdyoyên ji bo te\' veşêre</string>
+  <string name="morphe_always_show_hide_title">Hemişe \'Vêşîne\' nîşan bide</string>
+  <string name="morphe_always_show_hide_summary">\'Vêşîne\' di menyuya postên feedê de nîşan dide, her wiha gava Reddit vebijardeyên pêşniyarkiyê wekî \'Kêm postures wekî vê nîşan bide\' nîşan dide</string>
   <string name="morphe_remove_notification_dialog_title">Ragihînerê îfadekirinê derxiste</string>
   <string name="morphe_remove_notification_dialog_summary">Bi serî de pêşniyara daxuyaniya agahiyê paşde dikit dema ku tu subredditê dîsan serdan dikî</string>
   <string name="morphe_high_quality_avatars_title">Avatarên bi kalîteya bilind</string>
   <string name="morphe_high_quality_avatars_summary">Avatarên bikaraneran bi rezolûsyona tam nîşan dide</string>
   <string name="morphe_search_hidden_profiles_title">Lêgerîna profîlên veşartî</string>
-  <string name="morphe_search_hidden_profiles_summary">Li ser profîlên ku postên xwe an komentên xwe veşartine bişkojekê nîşan dide, da ku postên wan bi lêgerîna Reddit bêne dîtin</string>
-  <string name="morphe_search_hidden_profiles_button">Lêgerîn</string>
+  <string name="morphe_search_hidden_profiles_summary">Dikele li lêgerîna profîlan, postên wan yên veşartî an komentên wan jî bibîne</string>
   <string name="morphe_show_flairs_in_home_feed_title">Flairan di fîda malê de nîşan bide</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Nîşaneyên flairên postan di fîda malê de nîşan dide</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Hinek nayên fîdayê dibe ku flairekê nîşan nedin</string>
@@ -171,6 +175,8 @@ Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;
   <string name="morphe_media_viewer_fade_summary">Hêza fadekirina tarî ya li pişt nivîsê gava mirov wêne û vîdyoyan dibîne, ji 0 (tu fadekirin) heta 1 (defaulta Reddit)</string>
   <string name="morphe_keep_feed_position_title">Pozîsiyona feed biparêze</string>
   <string name="morphe_keep_feed_position_summary">Piştî girtina post, wêneyekî an vîdyoyekê, feedi li heman pozîsyonê diheleve, li şûma ku posta hatî vekirin bibe serî</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Nûkirina otomatîk a feeda serike rawestîne</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Piştî demekê vegere appê, êdî feeda serike nû nabe û naçe serê rûpelê. Kêşana jê bo nûkirinê hîn jî dixebite</string>
   <string name="morphe_post_side_panel_title">Panela ya postê</string>
   <string name="morphe_post_side_panel_summary">Li ser ekranên tabletên fireh, post li paneleke li kêleka feedê vebikinin</string>
   <string name="morphe_post_side_panel_width_title">Berfirehiya panelê</string>
@@ -260,6 +266,12 @@ Ji bo bikaranîna versiyoneke kevin, divê hûn Reddit &lt;b&gt;jêderkeşin&lt;
   <string name="morphe_collapse_all_comments_scope_entry_replies">Bersiv (şîroveyên sereke vekirî dimînin)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Bersivên bersivan (bersivên rasterast vekirî dimînin)</string>
   <string name="morphe_collapse_all_comments_button">Hemû komentan biçik bike yan jî fireh bike</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Rengdankirina xetên indenya komentan</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Ji bo her asta bersivê rengê xeta xwe dide da ku şopandina rîsanên dirêj hêsan bibe</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Rengên xetan</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Kesk û sor (geş)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (nerm)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Bêdeng (bi rûpelê re tevlihev dibe)</string>
   <string name="morphe_remember_collapsed_comments_title">Komentên qelskirî bîranîn bike</string>
   <string name="morphe_remember_collapsed_comments_summary">Komentên ku we qels kirine, gava hûn postê dîsa vedikin, qels dimînin</string>
   <string name="morphe_app_icon_title">Îkona aplikasyonê</string>

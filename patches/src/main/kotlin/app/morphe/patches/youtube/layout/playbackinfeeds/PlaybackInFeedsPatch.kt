@@ -19,6 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_24_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -89,6 +90,23 @@ val playbackInFeedsPatch = patch(
                                 """
                             )
                         }
+                    }
+                }
+            }
+
+            if (is_21_24_or_greater) {
+                // The seek backwards button is drawn over the round background of its container,
+                // and YouTube hides only the button, so the background stays as an empty button.
+                SeekBackwardsToggleInflateFingerprint.let {
+                    it.method.apply {
+                        val index = it.instructionMatches.last().index
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstruction(
+                            index + 1,
+                            "invoke-static/range { v$register .. v$register }, " +
+                                    "$EXTENSION_CLASS->hideEmptySeekBackwardsButton(Landroid/view/View;)V"
+                        )
                     }
                 }
             }

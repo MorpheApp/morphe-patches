@@ -110,6 +110,12 @@ public class PreferredCaptionLanguagePatch {
     private static volatile String managerVideo;
     private static final ThreadLocal<Boolean> replayingSelection = new ThreadLocal<>();
 
+    /**
+     * Language of the caption track the player shows, or null if captions are off.
+     */
+    @Nullable
+    private static volatile String selectedLanguage;
+
     @Nullable
     private static volatile String lastProgrammaticTrackLang;
     @Nullable
@@ -245,6 +251,16 @@ public class PreferredCaptionLanguagePatch {
     public static CaptionTrackInterface onSetSubtitleTrack(SubtitleManagerInterface subtitleManager,
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
+        CaptionTrackInterface selected = chooseSubtitleTrack(subtitleManager, track, selectType);
+        selectedLanguage = selected == null || isExplicitlyDisabled(selected)
+                ? null
+                : selected.patch_getLanguageCode();
+        return selected;
+    }
+
+    private static CaptionTrackInterface chooseSubtitleTrack(SubtitleManagerInterface subtitleManager,
+                                                             @Nullable CaptionTrackInterface track,
+                                                             @Nullable Enum<?> selectType) {
         try {
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             final boolean userSelection = interactionAllowed && selectType != null
@@ -386,6 +402,14 @@ public class PreferredCaptionLanguagePatch {
         } finally {
             replayingSelection.remove();
         }
+    }
+
+    /**
+     * @return Language of the caption track the player shows, or null if captions are off.
+     */
+    @Nullable
+    static String getSelectedLanguage() {
+        return selectedLanguage;
     }
 
     static boolean hasUserSelectedTrack() {

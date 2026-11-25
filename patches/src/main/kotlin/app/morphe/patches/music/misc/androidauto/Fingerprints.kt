@@ -13,6 +13,7 @@ package app.morphe.patches.music.misc.androidauto
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchBeforeWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -633,6 +634,50 @@ internal fun mediaBrowserReloadFingerprint(baseServiceType: String) = Fingerprin
     parameters = listOf("Ljava/lang/String;", "L", "Landroid/os/Bundle;"),
     filters = listOf(
         string("onLoadChildren must call detach() or sendResult() before returning for package=")
+    )
+)
+
+// Third-party Android Auto apps
+
+/**
+ * MusicBrowserService's onGetRoot calls the allowlist check right before logging a rejected app.
+ * YTM 9.30 and newer also pass the calling app's UID to onGetRoot and the allowlist check.
+ */
+internal object MediaBrowserGetRootFingerprint : Fingerprint(
+    returnType = "L",
+    filters = listOf(
+        string("MBS: getRoot() failed. Client not allowlisted: %s"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "Z",
+            location = MatchBeforeWithin(10)
+        )
+    )
+)
+
+/** Checks whether the allowlist lets a media browser client browse. */
+internal fun mediaBrowserClientAllowlistFingerprint(allowlistType: String, clientType: String) = Fingerprint(
+    definingClass = allowlistType,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(clientType),
+    filters = listOf(
+        methodCall(definingClass = "Ljava/util/Set;", name = "contains")
+    )
+)
+
+/** YTM's media browser caller and client types store the app's package name. */
+internal fun mediaBrowserPackageNameFingerprint(type: String) = Fingerprint(
+    definingClass = type,
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        )
     )
 )
 

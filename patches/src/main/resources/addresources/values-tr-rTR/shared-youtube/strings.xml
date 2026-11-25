@@ -139,6 +139,8 @@ Android System WebView'u açmak için TAMAM'a dokunun."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
   <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS kullan</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Kod gizlemesini çözmek için yt-dlp-ejs (WebView) yerine QuackJS kullan</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' oturum açma</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ayrı bir oturum açma işlemi gerektirir. Devam etmek için buraya dokunun</string>
@@ -167,27 +169,28 @@ Oturum açmak için aşağıdan devam'a basın"</string>
 • Morphe ayarlarınız, Android VR kimlik doğrulamasını içe/dışa aktarmaz 
 • Bu uygulama 6 ay boyunca kullanılmazsa Google bu kimlik doğrulamasını kaldıracaktır 
 • Google şifrenizi değiştirirseniz veya bu cihazı Google ayarlarınızdan kaldırırsanız tekrar oturum açmanız gerekir"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobil Web\' oturum açma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web üzerinden oturum açma</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">İsteğe bağlı: Videoları hesabınızla oynatmak için YouTube web sitesinde oturum açın. Devam etmek için buraya dokunun</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Şu anda \'Mobil Web\' oturumu açık</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Şu anda YouTube web sitesinde oturum açıldı</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi \'Mobil Web\' olarak değiştirin</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobil Web\' ile oturum açın</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobil Web', videoları oturum açmadan veya YouTube web sitesinde oturum açmış şekilde oynatır
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi bir Web istemcisi olarak değiştirin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube web sitesinde oturum açın</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web istemcileri, videoları oturum açmadan veya YouTube web sitesinde oturum açmış olarak oynatır
 
 • Oturum açıldığında, yaş kısıtlamalı videolar gibi hesap gerektiren videolar oynatılabilir
 • Google oturum açma sayfası bu uygulamada açılır
 • Oturum açma işlemi yalnızca oynattığınız videoları almak için kullanılır
 • Oturum açma bilgileri yalnızca bu cihazda kaydedilir
+• Seçilen varsayılan istemci için her web istemcisinin kendi oturum açma işlemi vardır
 
 Oturum açmak için aşağıdan devam'a basın"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Oturum açma kaydedildi
 
-• Morphe ayarlarınız 'Mobil Web' oturum açma işlemini içe/dışa aktarmayacaktır
+• Morphe ayarlarınız YouTube web sitesi oturum açma işlemini içe/dışa aktarmayacaktır
 • Google oturumu sonlandırırsa, tekrar oturum açana kadar videolar oturum açılmamış olarak oynatılır
 • Oturumu kapatmak, bu cihazın YouTube web sitesindeki oturumunu da kapatır"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobil Web oturum süresi doldu, \'Mobil Web\' ile tekrar oturum açmayı deneyin</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobil Web\' oturumu kapatıldı</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web oturum süresi doldu, tekrar oturum açmayı deneyin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube web sitesinden çıkış yapıldı</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' mevcut değil. Oturum açmak için yükleyin veya etkinleştirin</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' oturum süresi doldu, VR\'da tekrar oturum açmayı deneyin</string>

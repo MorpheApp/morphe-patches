@@ -14,6 +14,7 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,12 @@ final class LithoFills {
     }
 
     private static final Map<Drawable, Integer> colors = new WeakHashMap<>();
+
+    /**
+     * The drawables that wrap a drawable without being its callback, by the drawable they wrap.
+     * The wrapper holds the wrapped drawable, so it is only weakly referenced here.
+     */
+    private static final Map<Drawable, WeakReference<Drawable>> wrappers = new WeakHashMap<>();
 
     /**
      * Counts the opaque fills Litho has drawn, so a menu can hide a new fill before it is drawn.
@@ -55,6 +62,15 @@ final class LithoFills {
      */
     static int changes() {
         return changes;
+    }
+
+    /**
+     * @param wrapper A drawable that draws {@code wrapped}, but is not its callback.
+     */
+    static void onWrapped(Drawable wrapped, Drawable wrapper) {
+        synchronized (wrappers) {
+            wrappers.put(wrapped, new WeakReference<>(wrapper));
+        }
     }
 
     /**
@@ -90,11 +106,24 @@ final class LithoFills {
      */
     @Nullable
     static View hostOf(Drawable drawable) {
-        Drawable.Callback callback = drawable.getCallback();
-        while (callback instanceof Drawable parent) {
-            callback = parent.getCallback();
+        Drawable current = drawable;
+        while (true) {
+            Drawable.Callback callback = current.getCallback();
+            if (callback instanceof Drawable parent) {
+                current = parent;
+            } else if (callback == null) {
+                // A wrapper that is not the callback of the drawable it draws.
+                Drawable wrapper;
+                synchronized (wrappers) {
+                    WeakReference<Drawable> ref = wrappers.get(current);
+                    wrapper = ref != null ? ref.get() : null;
+                }
+                if (wrapper == null) return null;
+                current = wrapper;
+            } else {
+                return callback instanceof View view ? view : null;
+            }
         }
-        return callback instanceof View view ? view : null;
     }
 
     static boolean isInside(View child, View view) {

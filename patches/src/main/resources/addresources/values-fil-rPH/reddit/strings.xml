@@ -29,6 +29,8 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_hide_post_ads_title">Itago ang mga patalastas sa feed</string>
   <string name="morphe_hide_comment_ads_title">Itago ang mga patalastas sa komento</string>
   <string name="morphe_screen_navigation_bar_title">Navigation bar</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">I-disable ang auto-hide ng bottom bar</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Panatilihing nakikita ang bottom navigation bar habang nag-i-scroll</string>
   <string name="morphe_hide_answers_button_title">Itago ang Answers button</string>
   <string name="morphe_hide_chat_button_title">Itago ang Chat button</string>
   <string name="morphe_hide_create_button_title">Itago ang Create button</string>
@@ -78,8 +80,7 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_keyword_filters_saved">I-refresh ang feed para ilapat ang mga pagbabago</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopyahin ang teksto</string>
-  <string name="morphe_copy_text_summary">Nagbibigay-daan sa pagpili at pagkopya ng teksto sa mga post at komento. Hindi pinapagana ang pag-collapse ng mga komento</string>
-  <string name="morphe_copy_text_user_dialog_message">Hihinto sa paggana ang pag-collapse ng mga komento habang naka-enable ang Copy text</string>
+  <string name="morphe_copy_text_summary">Pinapayagan ang pagpili at pagkopya ng teksto sa mga post at komento</string>
   <string name="morphe_custom_font_title">Pasadyang font</string>
   <string name="morphe_custom_font_summary">Mag-load ng custom na TTF o OTF font file mula sa path sa ibaba. Ang pagpapagana nito ay nagpapahinto din sa Force system font.</string>
   <string name="morphe_custom_font_file_path_title">Pasadyang font file</string>
@@ -91,6 +92,8 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_disable_modern_home_title">I-disable ang modernong UI ng home screen</string>
   <string name="morphe_home_feed_tabs_title">Mga tab ng home feed</string>
   <string name="morphe_home_feed_tabs_summary">Ipinapakita ang mga tab na For You, Following at Popular sa home feed, at pinapayagan ang pag-swipe sa pagitan ng mga ito. Ang Following ay nangangailangan ng isang naka-sign in na account</string>
+  <string name="morphe_disable_refresh_on_back_title">I-disable ang refresh sa pag-back para lumabas</string>
+  <string name="morphe_disable_refresh_on_back_summary">Ang Back sa home feed ay hindi na mag-i-scroll sa itaas at magre-reload. Pindutin ang back nang dalawang beses para lumabas sa app</string>
   <string name="morphe_disable_screenshot_popup_title">I-disable ang screenshot popup</string>
   <string name="morphe_disable_screenshot_popup_summary">Hindi pinapagana ang popup na lumalabas kapag kumukuha ng screenshot</string>
   <string name="morphe_feed_auto_scroll_title">Auto-scroll ng feed</string>
@@ -124,13 +127,14 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_hide_trending_shelves_title">Itago ang mga trending shelf</string>
   <string name="morphe_hide_trending_shelves_summary">Itinatago ang mga Trending na shelf mula sa feed at mga mungkahi sa paghahanap</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Itago ang \"Mga video para sa iyo\" shelf</string>
+  <string name="morphe_always_show_hide_title">Laging ipakita ang Hide</string>
+  <string name="morphe_always_show_hide_summary">Nagpapakita ng Hide sa menu ng mga feed post, pati na rin kapag nagpapakita ang Reddit ng mga opsyon sa rekomendasyon gaya ng \'Show fewer posts like this\'</string>
   <string name="morphe_remove_notification_dialog_title">Alisin ang notification suggestion dialog</string>
   <string name="morphe_remove_notification_dialog_summary">Awtomatikong itatanggal ang suhestiyon ng notipikasyon kapag binisita ang isang subreddit</string>
   <string name="morphe_high_quality_avatars_title">Mataas na kalidad na mga avatar</string>
   <string name="morphe_high_quality_avatars_summary">Nagpapakita ng mga avatar ng user sa full resolution</string>
   <string name="morphe_search_hidden_profiles_title">Maghanap ng mga nakatagong profile</string>
-  <string name="morphe_search_hidden_profiles_summary">Nagpapakita ng button sa mga profile na nagtatago ng kanilang mga post o komento, upang mahanap ang kanilang mga post gamit ang Reddit search</string>
-  <string name="morphe_search_hidden_profiles_button">Hanapin</string>
+  <string name="morphe_search_hidden_profiles_summary">Ginagawang posible sa paghahanap ng profile na mahanap ang mga post ng mga profile na itinago ang kanilang mga post o komento</string>
   <string name="morphe_show_flairs_in_home_feed_title">Ipakita ang mga flair sa home feed</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Ipinapakita ang mga badge ng post flair sa home feed</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Maaaring hindi ipakita ang flair sa ilang item sa feed</string>
@@ -171,6 +175,8 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_media_viewer_fade_summary">Lakas ng madilim na fade sa likod ng caption kapag tumitingin ng mga larawan at mga video, mula 0 (walang fade) hanggang 1 (default ng Reddit)</string>
   <string name="morphe_keep_feed_position_title">Panatilihin ang posisyon ng feed</string>
   <string name="morphe_keep_feed_position_summary">Pinapanatili ang feed sa parehong posisyon pagkatapos isara ang isang post, larawan o video, sa halip na ilipat sa itaas ang binuksang post</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">I-disable ang auto-refresh ng home feed</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Ang pagbabalik sa app pagkatapos ng ilang sandali ay hindi na muling maglo-load ng home feed at ililipat ito sa itaas. Gumagana pa rin ang Pull to refresh</string>
   <string name="morphe_post_side_panel_title">Side panel ng post</string>
   <string name="morphe_post_side_panel_summary">Sa malalapad na screen ng tablet, ang mga post ay bumubukas sa isang panel sa tabi ng feed</string>
   <string name="morphe_post_side_panel_width_title">Lapad ng panel</string>
@@ -260,6 +266,12 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_collapse_all_comments_scope_entry_replies">Mga reply (nananatiling open ang mga pangunahing comment)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Mga reply sa mga reply (nananatiling open ang mga direktang reply)</string>
   <string name="morphe_collapse_all_comments_button">I-collapse o i-expand ang lahat ng mga komento</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Kulayan ang mga indent line ng comment</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Binibigyan ang bawat level ng reply ng sariling kulay ng linya para mas madaling sundan ang mahahabang thread</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Mga kulay ng linya</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Rainbow (matingkad)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (malambot)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Muted (sumasama sa kulay ng pahina)</string>
   <string name="morphe_remember_collapsed_comments_title">Tandaan ang mga naka-collapse na komento</string>
   <string name="morphe_remember_collapsed_comments_summary">Ang mga komentong i-collapse mo ay nananatiling naka-collapse kapag muling binuksan mo ang post</string>
   <string name="morphe_app_icon_title">Icon ng aplikasyon</string>

@@ -442,13 +442,19 @@ public final class WebsiteSession {
          */
         @Nullable
         final String visitorData;
+        /**
+         * The page that made the session. A stream is kept for hours, so the page is not kept by the session.
+         */
+        private final WeakReference<Page> page;
 
         /**
+         * @param page        The page that made the session.
          * @param requestUrl  Url of a SABR request of the website.
          * @param requestBody Body of a SABR request of the website.
          * @param visitorData The visitor of the page, or empty.
          */
-        Session(String requestUrl, byte[] requestBody, String visitorData) throws IOException {
+        Session(Page page, String requestUrl, byte[] requestBody, String visitorData) throws IOException {
+            this.page = new WeakReference<>(page);
             this.visitorData = visitorData.isEmpty() ? null : visitorData;
             // The number of the request is added by each player to its own requests.
             Uri uri = Uri.parse(requestUrl);
@@ -794,7 +800,7 @@ public final class WebsiteSession {
      * Main thread only.
      */
     private static void addToFreePagesOrClose(Page page, boolean keep) {
-        if (keep && page.generation == generation.get() && !page.rendererGone) {
+        if (keep && !page.sessionFailed && page.generation == generation.get() && !page.rendererGone) {
             page.madeSession = true;
             synchronized (freePages) {
                 freePages.add(page);
@@ -804,6 +810,30 @@ public final class WebsiteSession {
         }
         mainHandler.removeCallbacks(closeIdlePages);
         mainHandler.postDelayed(closeIdlePages, IDLE_CLOSE_MILLISECONDS);
+    }
+
+    /**
+     * Called when the stream of a session cannot be played. The page that made the session is not used again,
+     * since its sessions can keep failing, for example after the server stopped attesting its playback.
+     * Then the next session of the web client is made by a new page, as when the app starts again.
+     */
+    static void onSessionFailed(Session session) {
+        Utils.runOnMainThread(() -> {
+            Page page = session.page.get();
+            if (page == null || page.sessionFailed) {
+                return;
+            }
+            Logger.printDebug(() -> "Website session: the page of a failed session is not used again");
+            page.sessionFailed = true;
+            final boolean free;
+            synchronized (freePages) {
+                free = freePages.remove(page);
+            }
+            // A page in use is closed when it's released.
+            if (free) {
+                page.close();
+            }
+        });
     }
 
     /**
@@ -1022,6 +1052,12 @@ public final class WebsiteSession {
          * If the page has made a session, so its player can load the next video. Main thread only.
          */
         boolean madeSession;
+
+        /**
+         * If the stream of a session of the page could not be played, so the page is not used again.
+         * Main thread only.
+         */
+        boolean sessionFailed;
 
         /**
          * If the pending video is loaded in the player of the page, instead of in a new page.
@@ -1372,7 +1408,7 @@ public final class WebsiteSession {
                                 + requestStreamId + " response: " + responseStreamId + " video: " + videoId);
                         return;
                     }
-                    Session session = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT), visitorData);
+                    Session session = new Session(page, url, Base64.decode(bodyBase64, Base64.DEFAULT), visitorData);
                     final int poTokenLength = session.poToken == null ? 0 : session.poToken.length;
                     if (poTokenLength < MIN_PO_TOKEN_LENGTH) {
                         // No PoToken, or the placeholder that a new page sends until BotGuard makes the PoToken.

@@ -189,18 +189,24 @@ public class CommentsFilter extends Filter {
         );
 
         var previewComment = new StringFilterGroup(
-                Settings.MINIMAL_COMMENTS_BUTTON,
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT_CARDS,
                 "|carousel_item.e"
         );
 
         commentCardsIndicator = new StringFilterGroup(
-                Settings.MINIMAL_COMMENTS_BUTTON,
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT_CARDS,
                 VIDEO_METADATA_CAROUSEL_PATH
         );
 
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
                 "super_thanks_button.e"
+        );
+
+        var timedReactions = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_TIMED_REACTIONS,
+                "emoji_control_panel",
+                "timed_reaction"
         );
 
         var timestampButton = new StringFilterGroup(
@@ -244,6 +250,7 @@ public class CommentsFilter extends Filter {
                 menuButton,
                 noCommentsYet,
                 thanksButton,
+                timedReactions,
                 timestampButton,
                 topFansButton,
                 translateButton,

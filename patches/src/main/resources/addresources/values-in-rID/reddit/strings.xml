@@ -29,6 +29,8 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_hide_post_ads_title">Sembunyikan iklan feed</string>
   <string name="morphe_hide_comment_ads_title">Sembunyikan iklan komentar</string>
   <string name="morphe_screen_navigation_bar_title">Bilah navigasi</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Nonaktifkan penyembunyian otomatis bilah bawah</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Menjaga bilah navigasi bawah tetap terlihat saat menggulir</string>
   <string name="morphe_hide_answers_button_title">Sembunyikan tombol Jawaban</string>
   <string name="morphe_hide_chat_button_title">Sembunyikan tombol Obrolan</string>
   <string name="morphe_hide_create_button_title">Sembunyikan tombol Buat</string>
@@ -78,8 +80,7 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_keyword_filters_saved">Segarkan feed untuk menerapkan perubahan</string>
   <string name="morphe_screen_layout_title">Tata Letak</string>
   <string name="morphe_copy_text_title">Salin teks</string>
-  <string name="morphe_copy_text_summary">Memungkinkan memilih dan menyalin teks dalam postingan dan komentar. Menonaktifkan penciutan komentar</string>
-  <string name="morphe_copy_text_user_dialog_message">Komentar yang disembunyikan akan berhenti berfungsi saat Salin teks diaktifkan</string>
+  <string name="morphe_copy_text_summary">Memungkinkan pemilihan dan penyalinan teks dalam postingan dan komentar</string>
   <string name="morphe_custom_font_title">Font kustom</string>
   <string name="morphe_custom_font_summary">Muat file font TTF atau OTF kustom dari jalur di bawah ini. Mengaktifkan ini juga menonaktifkan Paksa font sistem.</string>
   <string name="morphe_custom_font_file_path_title">Berkas font khusus</string>
@@ -91,6 +92,8 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_disable_modern_home_title">Nonaktifkan tampilan beranda modern</string>
   <string name="morphe_home_feed_tabs_title">Tab feed Beranda</string>
   <string name="morphe_home_feed_tabs_summary">Menampilkan tab Untuk Anda, Mengikuti dan Populer pada feed beranda, dan memungkinkan penggeseran di antaranya. Mengikuti memerlukan akun yang masuk</string>
+  <string name="morphe_disable_refresh_on_back_title">Nonaktifkan refresh saat kembali untuk keluar</string>
+  <string name="morphe_disable_refresh_on_back_summary">Kembali pada feed beranda tidak lagi menggulir ke atas dan memuat ulang. Tekan kembali dua kali untuk meninggalkan aplikasi</string>
   <string name="morphe_disable_screenshot_popup_title">Nonaktifkan kotak dialog tangkapan layar</string>
   <string name="morphe_disable_screenshot_popup_summary">Menonaktifkan kotak dialog yang muncul saat mengambil tangkapan layar</string>
   <string name="morphe_feed_auto_scroll_title">Gulir otomatis feed</string>
@@ -124,13 +127,14 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_hide_trending_shelves_title">Sembunyikan rak-rak Trending</string>
   <string name="morphe_hide_trending_shelves_summary">Menyembunyikan rak-rak Trending dari feed dan saran pencarian</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Sembunyikan rak \'Video untuk Anda\'</string>
+  <string name="morphe_always_show_hide_title">Selalu tampilkan Sembunyikan</string>
+  <string name="morphe_always_show_hide_summary">Menampilkan Sembunyikan di menu postingan feed, juga saat Reddit menampilkan opsi rekomendasi seperti \'Tampilkan lebih sedikit postingan seperti ini\'</string>
   <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
   <string name="morphe_remove_notification_dialog_summary">Secara otomatis menutup dialog saran notifikasi saat mengunjungi subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatar berkualitas tinggi</string>
   <string name="morphe_high_quality_avatars_summary">Menampilkan avatar pengguna dalam resolusi penuh</string>
   <string name="morphe_search_hidden_profiles_title">Cari profil tersembunyi</string>
-  <string name="morphe_search_hidden_profiles_summary">Menampilkan tombol pada profil yang menyembunyikan postingan atau komentar mereka, untuk menemukan postingan mereka dengan pencarian Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Telusuri</string>
+  <string name="morphe_search_hidden_profiles_summary">Membuat pencarian profil menemukan postingan dari profil yang menyembunyikan postingan atau komentar mereka</string>
   <string name="morphe_show_flairs_in_home_feed_title">Tampilkan flair di feed beranda</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Menampilkan badge flair postingan di feed beranda</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Beberapa item feed mungkin tidak menampilkan flair</string>
@@ -171,6 +175,8 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_media_viewer_fade_summary">Kekuatan fade gelap di belakang caption saat melihat gambar dan video, dari 0 (tanpa fade) hingga 1 (default Reddit)</string>
   <string name="morphe_keep_feed_position_title">Pertahankan posisi feed</string>
   <string name="morphe_keep_feed_position_summary">Menjaga posisi feed tetap sama setelah menutup postingan, gambar, atau video, alih-alih memindahkan postingan yang dibuka ke atas</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Nonaktifkan penyegaran otomatis feed beranda</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Kembali ke aplikasi setelah beberapa saat tidak lagi memuat ulang feed beranda dan memindahkannya ke atas. Tarik untuk menyegarkan tetap berfungsi</string>
   <string name="morphe_post_side_panel_title">Panel samping postingan</string>
   <string name="morphe_post_side_panel_summary">Pada layar tablet yang lebar, postingan terbuka di panel di samping feed</string>
   <string name="morphe_post_side_panel_width_title">Lebar panel</string>
@@ -260,6 +266,12 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_collapse_all_comments_scope_entry_replies">Balasan (komentar teratas tetap terbuka)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Balasan dari balasan (balasan langsung tetap terbuka)</string>
   <string name="morphe_collapse_all_comments_button">Ciutkan atau perluas semua komentar</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Berikan warna pada garis indentasi komentar</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Memberikan warna garis tersendiri untuk setiap level balasan agar utas yang panjang lebih mudah diikuti</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Warna garis</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Pelangi (terang)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (lembut)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Redup (menyatu dengan halaman)</string>
   <string name="morphe_remember_collapsed_comments_title">Ingat komentar yang diciutkan</string>
   <string name="morphe_remember_collapsed_comments_summary">Komentar yang Anda ciutkan akan tetap ciut saat Anda membuka kembali postingan</string>
   <string name="morphe_app_icon_title">Ikon aplikasi</string>

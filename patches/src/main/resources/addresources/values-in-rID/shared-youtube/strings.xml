@@ -140,6 +140,8 @@ Ketuk OK untuk membuka Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Gunakan QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Gunakan QuackJS sebagai pengganti yt-dlp-ejs (WebView) untuk deobfuscation</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' memerlukan masuk secara terpisah. Ketuk di sini untuk melanjutkan</string>
@@ -168,27 +170,28 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Setelan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan menghapus autentikasi ini
 • Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari setelan Google Anda"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Masuk \'Web Seluler\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsional: masuk ke situs web YouTube untuk memutar video dengan akun Anda. Ketuk di sini untuk melanjutkan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang masuk ke \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang login ke situs web YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' menjadi \'Web Seluler\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke \'Web Seluler\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Web Seluler' memutar video tanpa login, atau login ke situs web YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke klien Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke situs web YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Klien web memutar video tanpa masuk, atau masuk ke situs web YouTube
 
-• Saat login, video yang memerlukan akun dapat diputar, seperti video yang dibatasi usia
-• Halaman login Google terbuka di aplikasi ini
-• Login hanya digunakan untuk mendapatkan video yang Anda putar
-• Login hanya disimpan di perangkat ini
+• Jika masuk, video yang memerlukan akun dapat diputar, seperti video yang dibatasi usia
+• Halaman masuk Google terbuka di aplikasi ini
+• Masuk hanya digunakan untuk mendapatkan video yang Anda putar
+• Informasi masuk hanya disimpan di perangkat ini
+• Setiap klien web memiliki login sendiri, untuk klien default yang dipilih
 
-Untuk login, tekan lanjutkan di bawah"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Masuk tersimpan
+Untuk masuk, tekan lanjutkan di bawah"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Login tersimpan
 
-• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor masuk 'Web Seluler'
-• Jika Google mengakhiri sesi masuk, video akan diputar tanpa masuk sampai Anda masuk kembali
+• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor login situs web YouTube
+• Jika Google mengakhiri login, video akan diputar tanpa login sampai Anda login kembali
 • Keluar juga akan mengeluarkan perangkat ini dari situs web YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Masuk Web Seluler telah kadaluwarsa, coba masuk ke \'Web Seluler\' lagi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari \'Web Seluler\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Login web telah kedaluwarsa, coba login kembali</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari situs web YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' tidak tersedia. Instal atau aktifkan untuk masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Masuk ke \'Android VR\' telah kadaluwarsa, coba masuk ke VR lagi</string>

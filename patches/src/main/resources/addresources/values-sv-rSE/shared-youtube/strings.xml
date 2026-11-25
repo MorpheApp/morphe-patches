@@ -140,6 +140,8 @@ Tryck OK för att öppna Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Testa att aktivera: Förfalska videostreamar &gt; Logga in i Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Använd QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Använd QuackJS istället för yt-dlp-ejs (WebView) för deobfuskering</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inloggning i \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" kräver en separat inloggning. Tryck här för att fortsätta</string>
@@ -168,27 +170,28 @@ Tryck på Fortsätt nedan för att logga in"</string>
 • Dina Morphe-inställningar importerar och exporterar inte Android VR-autentiseringen
 • Om den här appen inte används på 6 månader tar Google bort den här autentiseringen
 • Du måste logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten i dina Google-inställningar"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Inloggning i \"Mobilwebb\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Webbinloggning</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfritt: logga in på YouTubes webbplats för att spela upp videor med ditt konto. Tryck här för att fortsätta</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">För närvarande inloggad i \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">För tillfället inloggad på YouTube-webbplatsen</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till \"Mobil webb\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logga in på \"Mobil webb\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobil webb\" spelar upp videor när du är utloggad eller inloggad på YouTubes webbplats
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till en webbklient</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logga in på YouTube-webbplatsen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webbklienter spelar videor utan inloggning, eller inloggad på YouTube-webbplatsen
 
-• När du är inloggad kan videor som kräver ett konto spelas upp, till exempel åldersbegränsade videor
+• Om du är inloggad kan videor som kräver ett konto spelas upp, till exempel åldersbegränsade videor
 • Googles inloggningssida öppnas i den här appen
 • Inloggningen används endast för att hämta videorna du spelar upp
 • Inloggningen sparas endast på den här enheten
+• Varje webbklient har sin egen inloggning för den valda standardklienten
 
 Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Inloggning sparad
 
-• Dina Morphe-inställningar kommer inte att importera/exportera inloggningen för \"Mobile Web\"
+• Dina Morphe-inställningar kommer inte att importera/exportera inloggningen till YouTube-webbplatsen
 • Om Google avslutar inloggningen spelas videor upp utan inloggning tills du loggar in igen
 • Att logga ut loggar även ut den här enheten från YouTube-webbplatsen"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Inloggningen för Mobile Web har gått ut, försök logga in i \"Mobile Web\" igen</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Utloggad från \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Webbinloggningen har gått ut, försök logga in igen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Utloggad från YouTube-webbplatsen</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" är inte tillgängligt. Installera eller aktivera det för att logga in</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är för tillfället inte tillgängligt (API-tidsgräns nådd)</string>
   <string name="morphe_oauth2_connection_failure_status_400">\"Android VR\"-inloggningen har gått ut. Försök logga in i VR igen</string>

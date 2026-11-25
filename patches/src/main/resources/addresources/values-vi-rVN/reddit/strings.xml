@@ -29,6 +29,8 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_hide_post_ads_title">Ẩn quảng cáo trong bảng tin</string>
   <string name="morphe_hide_comment_ads_title">Ẩn quảng cáo bình luận</string>
   <string name="morphe_screen_navigation_bar_title">Thanh điều hướng</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Tắt tự ẩn thanh dưới cùng</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Giữ thanh điều hướng dưới cùng luôn hiển thị khi cuộn</string>
   <string name="morphe_hide_answers_button_title">Ẩn nút Trả lời</string>
   <string name="morphe_hide_chat_button_title">Ẩn nút Trò chuyện</string>
   <string name="morphe_hide_create_button_title">Ẩn nút Tạo</string>
@@ -78,8 +80,7 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_keyword_filters_saved">Làm mới feed để áp dụng các thay đổi</string>
   <string name="morphe_screen_layout_title">Bố cục</string>
   <string name="morphe_copy_text_title">Sao chép văn bản</string>
-  <string name="morphe_copy_text_summary">Cho phép chọn và sao chép văn bản trong bài đăng và bình luận. Vô hiệu hóa tính năng thu gọn bình luận</string>
-  <string name="morphe_copy_text_user_dialog_message">Bình luận co lại sẽ ngừng hoạt động khi \"Sao chép văn bản\" được bật</string>
+  <string name="morphe_copy_text_summary">Cho phép chọn và sao chép văn bản trong các bài viết và bình luận</string>
   <string name="morphe_custom_font_title">Tùy chỉnh phông chữ</string>
   <string name="morphe_custom_font_summary">Nhập phông chữ TTF hoặc OTF tùy chỉnh từ đường dẫn bên dưới. Bật tùy chọn này cũng sẽ tắt cài đặt Luôn dùng phông chữ hệ thống</string>
   <string name="morphe_custom_font_file_path_title">Tệp phông chữ tùy chỉnh</string>
@@ -91,6 +92,8 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_disable_modern_home_title">Tắt chế độ hiện đại</string>
   <string name="morphe_home_feed_tabs_title">Các tab bảng tin Trang chủ</string>
   <string name="morphe_home_feed_tabs_summary">Hiển thị các tab Dành cho bạn, Đang theo dõi và Phổ biến trên bảng tin Trang chủ, và cho phép vuốt giữa các tab này. Tab Đang theo dõi yêu cầu một tài khoản đã đăng nhập</string>
+  <string name="morphe_disable_refresh_on_back_title">Tắt làm mới khi quay lại để thoát</string>
+  <string name="morphe_disable_refresh_on_back_summary">Nhấn quay lại trên bảng tin chính sẽ không còn cuộn lên đầu và tải lại. Nhấn quay lại hai lần để thoát ứng dụng</string>
   <string name="morphe_disable_screenshot_popup_title">Tắt hộp thoại chụp màn hình</string>
   <string name="morphe_disable_screenshot_popup_summary">Tắt hộp thoại xuất hiện khi chụp màn hình</string>
   <string name="morphe_feed_auto_scroll_title">Tự động cuộn nguồn cấp dữ liệu</string>
@@ -124,13 +127,14 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_hide_trending_shelves_title">Ẩn kệ Xu hướng</string>
   <string name="morphe_hide_trending_shelves_summary">Ẩn các kệ Xu hướng khỏi bảng tin và gợi ý tìm kiếm</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Ẩn kệ \'Video dành cho bạn\'</string>
+  <string name="morphe_always_show_hide_title">Luôn hiển thị Ẩn</string>
+  <string name="morphe_always_show_hide_summary">Hiển thị Ẩn trong menu của các bài viết trên bảng tin, cũng như khi Reddit hiển thị các tùy chọn đề xuất như \'Hiển thị ít bài viết như thế này hơn\'</string>
   <string name="morphe_remove_notification_dialog_title">Xóa hộp thoại gợi ý thông báo</string>
   <string name="morphe_remove_notification_dialog_summary">Tự động tắt hộp thoại gợi ý thông báo khi vào subreddit</string>
   <string name="morphe_high_quality_avatars_title">Ảnh đại diện chất lượng cao</string>
   <string name="morphe_high_quality_avatars_summary">Hiển thị ảnh đại diện của người dùng ở độ phân giải đầy đủ</string>
   <string name="morphe_search_hidden_profiles_title">Tìm kiếm hồ sơ ẩn</string>
-  <string name="morphe_search_hidden_profiles_summary">Hiển thị một nút trên các hồ sơ ẩn bài viết hoặc bình luận của họ, để tìm các bài viết đó bằng công cụ tìm kiếm của Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Tìm kiếm</string>
+  <string name="morphe_search_hidden_profiles_summary">Khiến tìm kiếm hồ sơ tìm thấy các bài viết của những hồ sơ ẩn bài viết hoặc bình luận của họ</string>
   <string name="morphe_show_flairs_in_home_feed_title">Hiển thị biểu tượng trong nguồn tại trang chủ</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Hiển thị huy hiệu dán nhãn trong nguồn tại trang chủ</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Một số mục trong nguồn có thể không hiển thị dán nhãn</string>
@@ -171,6 +175,8 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_media_viewer_fade_summary">Độ mạnh của hiệu ứng mờ tối phía sau chú thích khi xem hình ảnh và video, từ 0 (không mờ) đến 1 (mặc định của Reddit)</string>
   <string name="morphe_keep_feed_position_title">Giữ vị trí bảng tin</string>
   <string name="morphe_keep_feed_position_summary">Giữ bảng tin ở cùng vị trí sau khi đóng bài đăng, hình ảnh hoặc video, thay vì di chuyển bài đăng đã mở lên đầu trang</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Tắt tự động làm mới bảng tin chính</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Khi quay lại ứng dụng sau một thời gian, bảng tin chính sẽ không còn tự động tải lại và di chuyển lên trên cùng. Tính năng kéo để làm mới vẫn hoạt động</string>
   <string name="morphe_post_side_panel_title">Bảng bên bài viết</string>
   <string name="morphe_post_side_panel_summary">Trên màn hình máy tính bảng rộng, các bài viết sẽ mở trong một bảng bên cạnh nguồn cấp dữ liệu</string>
   <string name="morphe_post_side_panel_width_title">Chiều rộng bảng</string>
@@ -260,6 +266,12 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_collapse_all_comments_scope_entry_replies">Các phản hồi (giữ nguyên các bình luận hàng đầu)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Phản hồi của phản hồi (giữ nguyên các phản hồi trực tiếp)</string>
   <string name="morphe_collapse_all_comments_button">Thu gọn hoặc mở rộng tất cả bình luận</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Tô màu các đường thụt lề bình luận</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Gán cho mỗi cấp độ trả lời một màu đường riêng để dễ dàng theo dõi các luồng dài hơn</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Màu đường</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Cầu vồng (sáng)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (nhẹ)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Trung tính (hòa hợp với trang)</string>
   <string name="morphe_remember_collapsed_comments_title">Ghi nhớ các bình luận đã thu gọn</string>
   <string name="morphe_remember_collapsed_comments_summary">Các bình luận bạn thu gọn sẽ vẫn được thu gọn khi mở lại bài đăng.</string>
   <string name="morphe_app_icon_title">Biểu tượng</string>

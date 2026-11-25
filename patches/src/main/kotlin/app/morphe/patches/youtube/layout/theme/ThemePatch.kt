@@ -34,6 +34,7 @@ import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
+import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.layout.theme.patchedThemeColorDark
 import app.morphe.patches.shared.layout.theme.patchedThemeColorLight
 import app.morphe.patches.shared.layout.theme.usePatchedThemeColor
@@ -401,6 +402,9 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
+        // The feed video cards have the same color as backgrounds that are themed.
+        lithoDrawableColorHook("$EXTENSION_CLASS->getFeedCardColor(Landroid/graphics/drawable/Drawable;I)I")
+
         // A patched theme color cannot be changed, so there is nothing to select.
         val colorPreferences = if (usePatchedThemeColor) {
             emptyArray<BasePreference>()

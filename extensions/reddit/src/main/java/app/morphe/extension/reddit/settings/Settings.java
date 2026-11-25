@@ -16,7 +16,9 @@ import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModera
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch.CollapseAllScope;
 import app.morphe.extension.reddit.patches.ColorizeCommentIndentLinesPatch.CommentLinePalette;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
+import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.FrostedGlassAvailability;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassColor;
+import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassStyle;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
 import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrowsingMode;
@@ -27,6 +29,8 @@ import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 
 public class Settings extends BaseSettings {
     // Ads
@@ -36,11 +40,13 @@ public class Settings extends BaseSettings {
     // Navigation bar
     public static final BooleanSetting DISABLE_BOTTOM_BAR_AUTO_HIDE = new BooleanSetting("morphe_disable_bottom_bar_auto_hide", FALSE);
     public static final BooleanSetting GLASS_NAVIGATION_BAR = new BooleanSetting("morphe_glass_navigation_bar", FALSE, true);
-    public static final EnumSetting<GlassColor> GLASS_NAVIGATION_BAR_COLOR = new EnumSetting<>("morphe_glass_navigation_bar_color", GlassColor.AUTO, parent(GLASS_NAVIGATION_BAR));
-    public static final IntegerSetting GLASS_NAVIGATION_BAR_OPACITY = new IntegerSetting("morphe_glass_navigation_bar_opacity", 70, parent(GLASS_NAVIGATION_BAR));
-    public static final BooleanSetting GLASS_NAVIGATION_BAR_ROUND_ENDS = new BooleanSetting("morphe_glass_navigation_bar_round_ends", TRUE, parent(GLASS_NAVIGATION_BAR));
-    public static final IntegerSetting GLASS_NAVIGATION_BAR_HEIGHT = new IntegerSetting("morphe_glass_navigation_bar_height", 100, parent(GLASS_NAVIGATION_BAR));
-    public static final IntegerSetting GLASS_NAVIGATION_BAR_WIDTH = new IntegerSetting("morphe_glass_navigation_bar_width", 100, parent(GLASS_NAVIGATION_BAR));
+    public static final EnumSetting<GlassColor> GLASS_NAVIGATION_BAR_COLOR = new EnumSetting<>("morphe_glass_navigation_bar_color", GlassColor.AUTO, true, parent(GLASS_NAVIGATION_BAR));
+    public static final EnumSetting<GlassStyle> GLASS_NAVIGATION_BAR_STYLE = new EnumSetting<>("morphe_glass_navigation_bar_style", GlassStyle.TINTED, true, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_BLUR = new IntegerSetting("morphe_glass_navigation_bar_blur", 60, true, new FrostedGlassAvailability());
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_OPACITY = new IntegerSetting("morphe_glass_navigation_bar_opacity", 70, true, parent(GLASS_NAVIGATION_BAR));
+    public static final BooleanSetting GLASS_NAVIGATION_BAR_ROUND_ENDS = new BooleanSetting("morphe_glass_navigation_bar_round_ends", TRUE, true, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_HEIGHT = new IntegerSetting("morphe_glass_navigation_bar_height", 100, true, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_WIDTH = new IntegerSetting("morphe_glass_navigation_bar_width", 100, true, parent(GLASS_NAVIGATION_BAR));
     public static final BooleanSetting SEE_THROUGH_STATUS_BAR = new BooleanSetting("morphe_see_through_status_bar", FALSE, true);
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
@@ -168,6 +174,15 @@ public class Settings extends BaseSettings {
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
 
     static {
+        SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_BLUR,
+                0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_OPACITY,
+                0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_HEIGHT,
+                70, 150, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_WIDTH,
+                50, 100, 5, "%"));
+
         // region Migration
 
         migrateOldSettingToNew(DEPRECATED_HIDE_RECOMMENDED_COMMUNITIES_SHELF, HIDE_COMMUNITIES_SHELF);

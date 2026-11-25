@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Приховати рекламу у стрічці</string>
   <string name="morphe_hide_comment_ads_title">Приховати рекламу у коментарях</string>
   <string name="morphe_screen_navigation_bar_title">Панель навігації</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Вимкнути автоматичне приховування нижньої панелі</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Залишає нижню панель навігації видимою під час прокручування</string>
   <string name="morphe_hide_answers_button_title">Приховати кнопку \"Відповіді\"</string>
   <string name="morphe_hide_chat_button_title">Приховати кнопку \"Чат\"</string>
   <string name="morphe_hide_create_button_title">Приховати кнопку \"Створити\"</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Оновіть стрічку, щоб застосувати зміни</string>
   <string name="morphe_screen_layout_title">Макет</string>
   <string name="morphe_copy_text_title">Копіювати текст</string>
-  <string name="morphe_copy_text_summary">Дозволяє вибирати та копіювати текст у дописах і коментарях. Вимикає згортання коментарів</string>
-  <string name="morphe_copy_text_user_dialog_message">Згортання коментарів не працюватиме, поки увімкнено \"Копіювати текст\"</string>
+  <string name="morphe_copy_text_summary">Дозволяє вибирати та копіювати текст у дописах і коментарях</string>
   <string name="morphe_custom_font_title">Власний шрифт</string>
   <string name="morphe_custom_font_summary">Завантажити файл власного шрифту TTF або OTF за шляхом нижче. Увімкнення цього також вимикає примусове використання системного шрифту</string>
   <string name="morphe_custom_font_file_path_title">Файл власного шрифту</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Вимкнути сучасний домашній екран</string>
   <string name="morphe_home_feed_tabs_title">Вкладки стрічки головної сторінки</string>
   <string name="morphe_home_feed_tabs_summary">Відображає вкладки «Для вас», «Підписки» та «Популярне» у стрічці головної сторінки та дозволяє перемикатися між ними. Для вкладки «Підписки» потрібен вхід в обліковий запис</string>
+  <string name="morphe_disable_refresh_on_back_title">Вимкнути оновлення при поверненні для виходу</string>
+  <string name="morphe_disable_refresh_on_back_summary">Повернення на головній стрічці більше не прокручує вгору та не перезавантажує. Натисніть \"назад\" двічі, щоб вийти з програми</string>
   <string name="morphe_disable_screenshot_popup_title">Вимкнути спливаюче вікно знімку екрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Вимикає спливаюче вікно, яке з\'являється під час створення знімка екрана</string>
   <string name="morphe_feed_auto_scroll_title">Автопрокручування стрічки</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Приховати панелі \"Популярне\"</string>
   <string name="morphe_hide_trending_shelves_summary">Приховує панелі \"Популярне\" зі стрічки та пошукових підказок</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Приховати панель \"Відео для вас\"</string>
+  <string name="morphe_always_show_hide_title">Завжди показувати «Приховати»</string>
+  <string name="morphe_always_show_hide_summary">Показує «Приховати» в меню дописів стрічки, а також коли Reddit показує варіанти рекомендацій, як-от «Показувати менше таких дописів»</string>
   <string name="morphe_remove_notification_dialog_title">Видалити діалог пропозиції сповіщень</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично закриває діалог пропозиції сповіщень при відвідуванні субредіту</string>
   <string name="morphe_high_quality_avatars_title">Аватари високої якості</string>
   <string name="morphe_high_quality_avatars_summary">Показує аватари користувачів у повній роздільній здатності</string>
   <string name="morphe_search_hidden_profiles_title">Пошук прихованих профілів</string>
-  <string name="morphe_search_hidden_profiles_summary">Показує кнопку в профілях, які приховують свої дописи або коментарі, щоб знайти їхні дописи за допомогою пошуку Reddit</string>
-  <string name="morphe_search_hidden_profiles_button">Пошук</string>
+  <string name="morphe_search_hidden_profiles_summary">Дозволяє пошуку профілів знаходити дописи профілів, які приховують свої дописи або коментарі</string>
   <string name="morphe_show_flairs_in_home_feed_title">Показувати мітки в головній стрічці</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Показує позначки дописів у головній стрічці</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Деякі елементи стрічки можуть не показувати мітку</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Сила темного згасання за підписом під час перегляду зображень і відео, від 0 (без згасання) до 1 (типове значення Reddit)</string>
   <string name="morphe_keep_feed_position_title">Зберігати позицію в стрічці</string>
   <string name="morphe_keep_feed_position_summary">Зберігає стрічку в тій самій позиції після закриття допису, зображення чи відео, замість переміщення відкритого допису вгору</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Вимкнути автоматичне оновлення головної стрічки</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Повернення в застосунок через деякий час більше не перезавантажує головну стрічку і не переміщує її вгору. Оновлення шляхом потягування вниз усе ще працює</string>
   <string name="morphe_post_side_panel_title">Бічна панель допису</string>
   <string name="morphe_post_side_panel_summary">На широких екранах планшетів дописи відкриваються в панелі поруч зі стрічкою</string>
   <string name="morphe_post_side_panel_width_title">Ширина панелі</string>
@@ -258,6 +264,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Відповіді (головні коментарі залишаються відкритими)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Відповіді на відповіді (прямі відповіді залишаються відкритими)</string>
   <string name="morphe_collapse_all_comments_button">Згорнути або розгорнути всі коментарі</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Кольорувати лінії відступів коментарів</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Присвоює кожному рівню відповідей свій колір лінії, щоб за довгими гілками було легше стежити</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Кольори ліній</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Веселка (яскраві)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастельні (м\'які)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Приглушено (зливається зі сторінкою)</string>
   <string name="morphe_remember_collapsed_comments_title">Запам\'ятовувати згорнуті коментарі</string>
   <string name="morphe_remember_collapsed_comments_summary">Коментарі, які ви згорнули, залишаються згорнутими при повторному відкритті допису</string>
   <string name="morphe_app_icon_title">Іконка застосунку</string>

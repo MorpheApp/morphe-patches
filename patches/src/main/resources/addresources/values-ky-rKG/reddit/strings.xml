@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Лентадагы жарнамаларды жашыруу</string>
   <string name="morphe_hide_comment_ads_title">Комментарийдеги жарнамаларды жашыруу</string>
   <string name="morphe_screen_navigation_bar_title">Навигациялык панель</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Төмөн панелдин автоматтык түрдө жашырылышын өчүрүү</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Баракчаны жылдырганда төмөнкү навигациялык панелди көрүнүштө сактайт</string>
   <string name="morphe_hide_answers_button_title">Жооптор баскычын жашыруу</string>
   <string name="morphe_hide_chat_button_title">Чат баскычын жашыруу</string>
   <string name="morphe_hide_create_button_title">Жасоо баскычын жашыруу</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Өзгөртүүлөрдү колдонуу үчүн лентаны жаңыртыңыз</string>
   <string name="morphe_screen_layout_title">Макет</string>
   <string name="morphe_copy_text_title">Текстти көчүрүү</string>
-  <string name="morphe_copy_text_summary">Посттордогу жана комментарийлердеги текстти тандоого жана көчүрүүгө мүмкүндүк берет. Комментарийлерди жыйганды өчүрөт</string>
-  <string name="morphe_copy_text_user_dialog_message">Текстти көчүрүү күйгүзүлгөн учурда комментарийлерди жыюу функциясы иштебей калат</string>
+  <string name="morphe_copy_text_summary">Посттордо жана комментарийлерде текстти тандап, көчүрүүгө мүмкүндүк берет</string>
   <string name="morphe_custom_font_title">Ыйыкталган шрифт</string>
   <string name="morphe_custom_font_summary">Төмөнкү жолдон ыйыкталган TTF же OTF шрифт файлын жүктөңүз. Бул функцияны күйгүзүү Системалык шрифтти мажбурлоону өчүрөт</string>
   <string name="morphe_custom_font_file_path_title">Ыйыкталган шрифт файлы</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Заманбап башкы бет UI\'ын өчүрүү</string>
   <string name="morphe_home_feed_tabs_title">Башкы лентанын вкладкалары</string>
   <string name="morphe_home_feed_tabs_summary">Башкы лентада \"Сиз үчүн\", \"Күйпүрүү\" жана \"Популярдуу\" өтмөктөрүн көрсөтөт жана алардын ортосунда сыдырууга мүмкүндүк берет. \"Күйпүрүү\" үчүн аккаунтка кирүү керек</string>
+  <string name="morphe_disable_refresh_on_back_title">Чыгуу үчүн артка кайтууда жаңылоону өчүрүү</string>
+  <string name="morphe_disable_refresh_on_back_summary">Башкы лентада артка кайтуу эми жогору жылдырбайт жана кайра жүктөбөйт. Тиркемеден чыгуу үчүн артка эки жолу басыңыз</string>
   <string name="morphe_disable_screenshot_popup_title">Скриншоттун терезесин өчүрүү</string>
   <string name="morphe_disable_screenshot_popup_summary">Скриншот жасоодо пайда болгон терезени өчүрөт</string>
   <string name="morphe_feed_auto_scroll_title">Лентаны автоматтык түрдө барактоо</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Тренддеги текчелерди жашыруу</string>
   <string name="morphe_hide_trending_shelves_summary">Тренддеги текчелерди лентадан жана издөө сунуштарынан жашырат</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\"Сиз үчүн видеолор\" текчесин жашыруу</string>
+  <string name="morphe_always_show_hide_title">«Жашыруу» баскычын дайыма көрсөтүү</string>
+  <string name="morphe_always_show_hide_summary">Лентадагы посттордун менюсунда, ошондой эле Reddit \"Мындай постторду аз көрсөт\" сыяктуу сунуштоо варианттарын көрсөткөндө \"Жоюу\" баскычын көрсөтөт</string>
   <string name="morphe_remove_notification_dialog_title">Билдирүүлөр боюнча сунуш диалогин алып салуу</string>
   <string name="morphe_remove_notification_dialog_summary">Subreddit\'ке киргенде билдирүү сунушунун диалогин автоматтык түрдө жабат</string>
   <string name="morphe_high_quality_avatars_title">Жогорку сапаттагы аватарлар</string>
   <string name="morphe_high_quality_avatars_summary">Колдонуучунун аватарларын толук резолюцияда көрсөтөт</string>
   <string name="morphe_search_hidden_profiles_title">Жашыруу профилдерди издөө</string>
-  <string name="morphe_search_hidden_profiles_summary">Постторун же комментарийлерин жашырган профилдерде, Reddit издөөсү аркылуу алардын постторун табуу үчүн баскычты көрсөтөт</string>
-  <string name="morphe_search_hidden_profiles_button">Издөө</string>
+  <string name="morphe_search_hidden_profiles_summary">Профильди издөө учурунда өз پوسтторун же комментарийлерин жашырган профилдердин жазууларын табууга мүмкүндүк берет</string>
   <string name="morphe_show_flairs_in_home_feed_title">Башкы лентада флейрлерди көрсөтүү</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Башкы лентада посттун флейр белгилерин көрсөтөт</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Лентадагы кээ бир элементтерде флейр көрсөтүлбөй калышы мүмкүн</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Сүрөттөрдү жана видеолорду көрүүдө жазуунун артындагы кара күңгүртөтүүнүн күчү, 0дөн (күңгүртөтүү жок) 1ге чейин (Reddit\'тин стандарттуу жөндөөсү)</string>
   <string name="morphe_keep_feed_position_title">Лентанын абалын сактоо</string>
   <string name="morphe_keep_feed_position_summary">Постту, сүрөттү же видеону жапкандан кийин, ачылган постту жогоруга жылдыруунун ордуна, лентаны ошол эле абалда сактайт</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Башкы лентаны автоматтык түрдө жаңыртууну өчүрүү</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Кээ бир убакыттан кийин колдонмого кайтып келгенде, башкы лента кайра жүктөлбөйт жана жогоруга жылбайт. Жаңыртуу үчүн төмөн тартуу функциясы иштей берет</string>
   <string name="morphe_post_side_panel_title">Посттун каптал панели</string>
   <string name="morphe_post_side_panel_summary">Кенен планшеттик экрандарда посттор лентанын жанындагы панелде ачылат</string>
   <string name="morphe_post_side_panel_width_title">Панелдин туурасы</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Жооптор (негизги комментарийлер ачык калат)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Жоопторго жооптор (түз жооптор ачык калат)</string>
   <string name="morphe_collapse_all_comments_button">Бардык комментарийлерди жый же жайылтуу</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Комментарийдин чегин сызыктарын түстөө</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Ар бир жооп деңгээлине өзүнүн сызык түсүн берет, ошондо узун талкууларды окуу оңой болот</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Сызыктардын түстөрү</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">К көп түстүү (ачык)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастель (жумшак)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Жайдары (баракчанын түсү менен айкалышат)</string>
   <string name="morphe_remember_collapsed_comments_title">Жабылган комментарийлерди эстеп калуу</string>
   <string name="morphe_remember_collapsed_comments_summary">Сиз жапкан комментарийлер постту кайра ачканда жабык бойдон калат</string>
   <string name="morphe_app_icon_title">Тиркеменин белгиси</string>

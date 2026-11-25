@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">Сакриј рекламе у фиду</string>
   <string name="morphe_hide_comment_ads_title">Сакриј рекламе у коментарима</string>
   <string name="morphe_screen_navigation_bar_title">Трака за навигацију</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Онемогући аутоматско скривање доње траке</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Задржава доњу导航траку видљивом током скроловања</string>
   <string name="morphe_hide_answers_button_title">Сакриј дугме „Одговори“</string>
   <string name="morphe_hide_chat_button_title">Сакриј дугме „Ћаскање“</string>
   <string name="morphe_hide_create_button_title">Сакриј дугме „Креирај“</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">Освежите фид да бисте применили измене</string>
   <string name="morphe_screen_layout_title">Изглед</string>
   <string name="morphe_copy_text_title">Копирање текста</string>
-  <string name="morphe_copy_text_summary">Омогућава избор и копирање текста у објавама и коментарима. Онемогућава сажимање коментара</string>
-  <string name="morphe_copy_text_user_dialog_message">Коментари се сажимају док је укључено Копирај текст</string>
+  <string name="morphe_copy_text_summary">Омогућава избор и копирање текста у објавама и коментарима</string>
   <string name="morphe_custom_font_title">Прилагођени фонт</string>
   <string name="morphe_custom_font_summary">Учитајте прилагођени TTF или OTF фонт из путање испод. Омогућавање ове опције искључује и присилни системски фонт.</string>
   <string name="morphe_custom_font_file_path_title">Датотека прилагођеног фонта</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">Онемогући модерни кориснички интерфејс</string>
   <string name="morphe_home_feed_tabs_title">Картице почетног фида</string>
   <string name="morphe_home_feed_tabs_summary">Приказује картице \"За вас\", \"Пратим\" и \"Популарно\" на почетном фиду и омогућава пребацивање између њих путем превлачења. За картицу \"Пратим\" је потребан пријављен налог</string>
+  <string name="morphe_disable_refresh_on_back_title">Онемогући освежавање при повратку за излазак</string>
+  <string name="morphe_disable_refresh_on_back_summary">Повратак на почетни фид више не скролује до врха и не учитава садржиј поново. Притисните назад два пута да изађете из апликације</string>
   <string name="morphe_disable_screenshot_popup_title">Онемогући искачући прозор за снимак екрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Онемогућава искачући прозор који се појављује при снимању екрана</string>
   <string name="morphe_feed_auto_scroll_title">Аутоматско скроловање фида</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">Сакриј трендовске полице</string>
   <string name="morphe_hide_trending_shelves_summary">Сакрива полице Trending из фида и предлога за претрагу</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Сакриј полицу „Видео за вас”</string>
+  <string name="morphe_always_show_hide_title">Увек прикажи Скрий</string>
+  <string name="morphe_always_show_hide_summary">Приказује опцију Сакрий у менију објава у фиду, такође и када Reddit приказује опције за препоруку као што је \"Прикажи мање објава као ова\"</string>
   <string name="morphe_remove_notification_dialog_title">Уклони дијалог за предлог обавештења</string>
   <string name="morphe_remove_notification_dialog_summary">Аутоматски отклања предлог за дијалог обавештења приликом посете сабредиту</string>
   <string name="morphe_high_quality_avatars_title">Аватари високог квалитета</string>
   <string name="morphe_high_quality_avatars_summary">Приказује аватаре корисника у пуној резолуцији</string>
   <string name="morphe_search_hidden_profiles_title">Претрага скривених профила</string>
-  <string name="morphe_search_hidden_profiles_summary">Приказује дугме на профилима који крију своје објаве или коментаре, како би се њихове објаве пронашле помоћу Reddit претраге</string>
-  <string name="morphe_search_hidden_profiles_button">Претрага</string>
+  <string name="morphe_search_hidden_profiles_summary">Омогућава претрагу профила да пронађе објаве профила који крију своје објаве или коментаре</string>
   <string name="morphe_show_flairs_in_home_feed_title">Прикажи ознаке у кућној траци</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Приказује значке ознака објава у кућној траци</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Неки елементи у траци можда неће приказати ознаку</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">Јачина тамног прелива иза натписа при прегледању слика и видео записа, од 0 (без прелива) до 1 (Редитова подразумевана вредност)</string>
   <string name="morphe_keep_feed_position_title">Задржи позицију фида</string>
   <string name="morphe_keep_feed_position_summary">Задржава фид на истој позицији након затварања објаве, слике или видео записа, уместо да помера отворену објаву на врх</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Онемогући аутоматско освежавање почетног фида</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Повратак у апликацију након неког времена више не покреће поновно учитавање почетног фида и његово померање на врх. Повлачење за освежавање и даље ради</string>
   <string name="morphe_post_side_panel_title">Бочни панел објава</string>
   <string name="morphe_post_side_panel_summary">На широким екранима таблета, објаве се отварају у панелу поред фида</string>
   <string name="morphe_post_side_panel_width_title">Ширина панела</string>
@@ -258,6 +264,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">Одговори (главни коментари остају отворени)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Одговори на одговоре (директни одговори остају отворени)</string>
   <string name="morphe_collapse_all_comments_button">Склопи или прошири све კომентаре</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Обоји линије увлака за коментаре</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Сваком нивоу одговора додељује сопствену боју линије како би дугачки разговори били лакши за праћење</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Боје линија</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Дуга (јарка)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Пастелне (благе)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Пригушене (уклопљене у страницу)</string>
   <string name="morphe_remember_collapsed_comments_title">Запамти сажете коментаре</string>
   <string name="morphe_remember_collapsed_comments_summary">Коментари које сажмете остају сажети када поново отворите објаву</string>
   <string name="morphe_app_icon_title">Иконица апликације</string>

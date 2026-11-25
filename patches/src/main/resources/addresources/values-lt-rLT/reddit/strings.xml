@@ -29,6 +29,8 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_hide_post_ads_title">Paslėpti vaizdo reklamas</string>
   <string name="morphe_hide_comment_ads_title">Paslėpti komentaro reklamas</string>
   <string name="morphe_screen_navigation_bar_title">Naršymo juosta</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Išjungti apatinės juostos automatinį slėpimą</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Slankstant puslapiu apatinė navigacijos juosta išlieka matoma</string>
   <string name="morphe_hide_answers_button_title">Slepti Atsakymų mygtuką</string>
   <string name="morphe_hide_chat_button_title">Paslėpti Pokalbių mygtuką</string>
   <string name="morphe_hide_create_button_title">Paslėpti Kurti mygtuką</string>
@@ -78,8 +80,7 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_keyword_filters_saved">Atnaujinkite naujienų srautą, kad pritaikytumėte pakeitimus</string>
   <string name="morphe_screen_layout_title">Išdėstymas</string>
   <string name="morphe_copy_text_title">Kopijuoti tekstą</string>
-  <string name="morphe_copy_text_summary">Leidžia žymėti ir kopijuoti tekstą įrašuose ir komentaruose. Išjungia komentarų sutraukimą</string>
-  <string name="morphe_copy_text_user_dialog_message">Kai įjungta teksto kopijavimo funkcija, komentarų sutraukimas neveiks</string>
+  <string name="morphe_copy_text_summary">Suteikia galimybę pasirinkti ir nukopijuoti tekstą įrašuose ir komentaruose</string>
   <string name="morphe_custom_font_title">Pasirinktinis šriftas</string>
   <string name="morphe_custom_font_summary">Įkelkite pasirinktinį TTF arba OTF šrifto failą iš toliau nurodyto kelio. Įjungus šią parinktį taip pat išjungiama parinktis „Naudoti sistemos šriftą“</string>
   <string name="morphe_custom_font_file_path_title">Pasirinktinio šrifto failas</string>
@@ -91,6 +92,8 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_disable_modern_home_title">Išjungti modernų namų UI</string>
   <string name="morphe_home_feed_tabs_title">Pagrindinės naujienų sagių skirtukėliai</string>
   <string name="morphe_home_feed_tabs_summary">Rodo „Jums“, „Sekami“ ir „Populiariausi“ skirtukus pagrindinėje naujienų sraute ir leidžia perjungti juos braukiant. Norint naudotis skirtuku „Sekami“, reikia prisijungti prie paskyros</string>
+  <string name="morphe_disable_refresh_on_back_title">Išjungti atnaujinimą grįžus, kad būtų galima išeiti</string>
+  <string name="morphe_disable_refresh_on_back_summary">Grįžimas pagrindinėje naujienų srauto juostoje nebereikš perkėlimo į viršų ir perkraukimo. Norėdami palikti programėlę, paspauskite grįžimo mygtuką duas kartus</string>
   <string name="morphe_disable_screenshot_popup_title">Išjungti ekrano nuotraukos išokantį langą</string>
   <string name="morphe_disable_screenshot_popup_summary">Išjungia išokanį langą kuris pasirodo kai padarai ekrano nuotrauką</string>
   <string name="morphe_feed_auto_scroll_title">Terapios automatinis ritinimas</string>
@@ -124,13 +127,14 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_hide_trending_shelves_title">Slėpti Populiariausių skyrių</string>
   <string name="morphe_hide_trending_shelves_summary">Paslepia Populiariausių skyrių naujienų ir paieškos pasiūlymuose</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Slėpti „Vaizdo įrašai jums“ sekciją</string>
+  <string name="morphe_always_show_hide_title">Visada rodyti „Slėpti“</string>
+  <string name="morphe_always_show_hide_summary">Rodo „Slėpti“ nuorodą srauto įrašų meniu, taip pat kai „Reddit“ rodo rekomendacijų parinktį, pavyzdžiui, „Rodyti mažiau tokios įrašų“</string>
   <string name="morphe_remove_notification_dialog_title">Pašalinti pranešimo pasiūlymą dialogo langas</string>
   <string name="morphe_remove_notification_dialog_summary">Automatiškai uždaro pranešimo pasiūlymo dialogo langą, kai aplankyta subredditas</string>
   <string name="morphe_high_quality_avatars_title">Aukštos kokybės avatarai</string>
   <string name="morphe_high_quality_avatars_summary">Rodo vartotojų avatarus pilna raišyba</string>
   <string name="morphe_search_hidden_profiles_title">Ieškoti paslėptų profilių</string>
-  <string name="morphe_search_hidden_profiles_summary">Rodo mygtuką profiliuose, kurie slėpia savo įrašus arba komentarus, kad galima būtų rasti jų įrašus naudojant „Reddit“ paiešką</string>
-  <string name="morphe_search_hidden_profiles_button">Ieškoti</string>
+  <string name="morphe_search_hidden_profiles_summary">Leidžia profilių paieškai rasti įrašus iš profilių, kurie slepia savo įrašus ar komentarus</string>
   <string name="morphe_show_flairs_in_home_feed_title">Rodyti žymes pagrindinėje skiltyje</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Rodo postų žymių ženklelius pagrindinėje skiltyje</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Kai kuriuose skilties elementuose gali nebūti žymės</string>
@@ -171,6 +175,8 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_media_viewer_fade_summary">Tamsaus užtemimo už antraštės stiprumas žiūrint paveikslėlius ir vaizdo įrašus, nuo 0 (be užtemimo) iki 1 (Reddit numatytoji reikšmė)</string>
   <string name="morphe_keep_feed_position_title">Išlaikyti srauto padėtį</string>
   <string name="morphe_keep_feed_position_summary">Išlaiko srautą toje pačioje padėtyje uždarius įrašą, paveikslėlį ar vaizdo įrašą, užuot perkėlus atidarytą įrašą į viršų</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Išjungti automatinį pagrindinio srauto atnaujinimą</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Grįžus į programėlę po kurio laiko, pagrindinis srautas nebebus automatiškai perkraunamas ir perkeltas į viršų. Traukiant žemyn atnaujinimo funkcija vis tiek veikia</string>
   <string name="morphe_post_side_panel_title">Įrašo šoninis skiltelis</string>
   <string name="morphe_post_side_panel_summary">Plačiuose planšetečių ekranuose įrašai atsidaro skiltelyje šalia naujienų srauto</string>
   <string name="morphe_post_side_panel_width_title">Skiltelio plotis</string>
@@ -257,6 +263,12 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_collapse_all_comments_scope_entry_replies">Atsakymai (pagrindiniai komentarai lieka išskleisti)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Atsakymai į atsakymus (tiesioginiai atsakymai lieka išskleisti)</string>
   <string name="morphe_collapse_all_comments_button">Sutraukti arba išplėsti visus komentarus</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Dažyti komentarų įtraukimo linijas</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Kiekvienam atsakymo lygmeniui suteikiama savo linijos spalva, kad būtų lengviau sekti ilgus diskutavimus</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Linijų spalvos</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Lygvąs (ryškios)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastelinės (švelnios)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Prislabintos (sutampa su puslapiu)</string>
   <string name="morphe_remember_collapsed_comments_title">Įsiminti suskleistus komentarus</string>
   <string name="morphe_remember_collapsed_comments_summary">Komentarai, kuriuos suskleidžiate, lieka suskleisti, kai vėl atidarote įrašą</string>
   <string name="morphe_app_icon_title">Programėlės piktograma</string>

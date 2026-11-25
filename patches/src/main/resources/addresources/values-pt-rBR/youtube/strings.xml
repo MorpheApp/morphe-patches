@@ -243,6 +243,7 @@ As denúncias são públicas e passam por revisão antes de um canal ser adicion
   <string name="morphe_hide_keyword_content_screen_title">Filtro de palavras-chave</string>
   <string name="morphe_hide_keyword_content_screen_summary">Escolha palavras ou frases específicas para ocultar vídeos em feeds e na pesquisa</string>
   <string name="morphe_hide_keyword_content_comments_title">Ocultar comentários por palavras-chave</string>
+  <string name="morphe_hide_keyword_content_posts_title">Ocultar posts com palavras-chave</string>
   <string name="morphe_hide_keyword_content_home_title">Ocultar vídeos na tela inicial com palavras-chave</string>
   <string name="morphe_hide_keyword_content_search_title">Ocultar resultados de busca com palavras-chave</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ocultar vídeos de inscrições com palavras-chave</string>
@@ -250,7 +251,7 @@ As denúncias são públicas e passam por revisão antes de um canal ser adicion
   <string name="morphe_hide_keyword_content_phrases_summary">"Digite palavras-chave e frases para ocultar, separadas por novas linhas
 
 As palavras-chave podem ser qualquer texto exibido nos títulos dos vídeos. A palavra-chave @NomeDoUsuário oculta todo o conteúdo de criadores específicos"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Início / Inscrições / Pesquisa / Comentários são filtrados para ocultar conteúdo que corresponde a frases de palavras-chave
+  <string name="morphe_hide_keyword_content_about_summary">"Início / Inscrições / Pesquisa / Comentários / Posts são filtrados para ocultar conteúdo que corresponde a frases de palavras-chave
 
 Limitações:
 • Alguns Shorts não podem ser ocultados pelo nome do canal
@@ -266,6 +267,23 @@ Limitações:
 • Pesquisa: %3$s
 • Comentários: %4$s
 • Total: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Filtro de contagem de visualizações</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Ocultar vídeos em feeds e buscas que tenham poucas ou muitas visualizações</string>
+  <string name="morphe_hide_videos_by_views_home_title">Ocultar vídeos na tela inicial por visualizações</string>
+  <string name="morphe_hide_videos_by_views_search_title">Ocultar resultados de busca por visualizações</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Ocultar vídeos de inscrições por visualizações</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Mínimo de visualizações</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Vídeos com menos visualizações serão ocultados. 0 = sem mínimo</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Máximo de visualizações:</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Vídeos com mais visualizações serão ocultados. 0 = sem máximo</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Início / Inscrições / Pesquisa são filtrados para ocultar vídeos e Shorts por sua contagem de visualizações
+
+Limitações:
+• O YouTube arredonda a contagem de visualizações, portanto, 1,2 mil visualizações são contadas como 1200 visualizações
+• Transmissões ao vivo não são ocultadas
+• Um Short oculto pode deixar um espaço vazio em uma prateleira de Shorts"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">O filtro de contagem de visualizações ocultará todos os vídeos</string>
   <string name="morphe_hide_stats_category_title">Estatísticas</string>
   <string name="morphe_hide_stats_hidden_24h_title">Vídeos ocultos, últimas 24 horas</string>
   <string name="morphe_hide_stats_hidden_all_title">Vídeos ocultos, todos os tempos</string>
@@ -678,14 +696,14 @@ Depois que um vídeo com o botão Ask for aberto uma vez, o recurso funciona com
   <string name="morphe_ryd_feed_counts_position_entry_1">Ao lado da contagem de visualizações</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Meio direita</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Canto superior esquerdo</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Pesquisar comentários</string>
-  <string name="morphe_search_comments_summary">Toque no botão de pesquisa nos comentários para mostrar apenas os comentários carregados que contenham todas as palavras pesquisadas. Coloque as palavras entre aspas para pesquisar por uma frase</string>
-  <string name="morphe_search_comments_dialog_title">Pesquisar comentários</string>
-  <string name="morphe_search_comments_hint">Palavras para pesquisar</string>
-  <string name="morphe_search_comments_clear">Limpar</string>
-  <string name="morphe_search_comments_applied">Altere a ordem de classificação ou abra os comentários novamente para pesquisá-los</string>
-  <string name="morphe_search_comments_cleared">Pesquisa limpa. Altere a ordem de classificação ou abra os comentários novamente para mostrar todos os comentários</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Pesquisar comentários</string>
+  <string name="morphe_comment_search_summary">Toque no botão de busca nos comentários para mostrar apenas os comentários carregados que contenham todas as palavras pesquisadas. Coloque as palavras entre aspas para pesquisar por uma frase</string>
+  <string name="morphe_comment_search_dialog_title">Pesquisar comentários</string>
+  <string name="morphe_comment_search_hint">Palavras para pesquisar</string>
+  <string name="morphe_comment_search_clear">Limpar</string>
+  <string name="morphe_comment_search_applied">Altere a ordem de classificação ou abra os comentários novamente para pesquisá-los</string>
+  <string name="morphe_comment_search_cleared">Busca limpa. Altere a ordem de classificação ou abra os comentários novamente para mostrar todos os comentários</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desativar pop-up \'Fazer login na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desativar pop-up \'Conecte seus dispositivos\'</string>
@@ -1170,6 +1188,9 @@ Os 'cookies de legenda' devem ser fornecidos"</string>
   <string name="morphe_show_settings_button_title">Mostrar botão Configurações</string>
   <string name="morphe_show_settings_button_type_title">Ação do botão Configurações</string>
   <string name="morphe_show_settings_button_type_summary">Quando ativado, toque abre as configurações do Morphe e pressionar longamente abre as configurações do YouTube, desative para inverter</string>
+  <string name="morphe_you_button_account_switcher_title">Atalho do alternador de contas</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Pressione e segure o botão \"Você\" para abrir o alternador de contas</string>
   <string name="morphe_navigation_buttons_order_title">Ordem dos botões de navegação</string>
   <string name="morphe_navigation_buttons_order_summary">Arraste os botões para alterar a ordem deles na barra de navegação</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trocar o botão Criar pelo botão Notificações</string>
@@ -1445,6 +1466,8 @@ Layout automotivo
   <string name="morphe_playback_in_feeds_entry_always_on">Sempre ligado</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Somente Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Desligado</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Mostrar botões avanço/retrocesso nos feeds</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Mostra os botões de avanço/retrocesso nos vídeos reproduzidos nos feeds, mesmo quando o YouTube não os mostra</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurar títulos originais</string>
   <string name="morphe_restore_original_titles_summary">Mostra os títulos de vídeo originais, as descrições de vídeo e as descrições de canal em vez das versões traduzidas automaticamente</string>
@@ -2050,4 +2073,106 @@ A gravação automática é opcional. Ela é interrompida no modo anônimo ou qu
   <string name="morphe_live_chat_translate_max_length_title">Comprimento máximo da mensagem</string>
   <string name="morphe_live_chat_translate_max_length_summary">Mensagens mais longas são exibidas sem tradução</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Sem limite</string>
+  <string name="morphe_ghost_play_screen_title">Modo fantasma</string>
+  <string name="morphe_ghost_play_screen_summary">Assista a vídeos sem afetar o histórico de exibição ou as recomendações</string>
+  <string name="morphe_ghost_play_cat_general_title">Gerais</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Botões</string>
+  <string name="morphe_ghost_play_cat_rules_title">Regras de ghost automático</string>
+  <string name="morphe_ghost_play_cat_history_title">Histórico local</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Privacidade avançada</string>
+  <string name="morphe_ghost_play_enabled_title">Ativar o modo Ghost</string>
+  <string name="morphe_ghost_play_enabled_summary">Permite assistir a vídeos selecionados, Shorts, pesquisas, canais ou sessões completas sem afetar o histórico de exibição ou as recomendações</string>
+  <string name="morphe_ghost_play_mode_active_title">Modo Ghost ativo</string>
+  <string name="morphe_ghost_play_mode_active_summary">Quando ATIVADO, todo vídeo que você abrir normalmente a partir de feeds, vídeos relacionados ou pesquisa será reproduzido no modo Ghost sem usar o menu de três pontos</string>
+  <string name="morphe_ghost_play_persist_mode_title">Lembrar do modo Ghost após reinicializações</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Mantém o modo Ghost ATIVADO mesmo após fechar e reabrir o YouTube</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Mostrar alternador do modo Ghost na barra superior</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Coloca um alternador compacto do modo Ghost ao lado dos ícones da barra superior (toque para alternar, pressione longamente para controles rápidos)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Mostrar no menu do vídeo</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Adiciona \"Reproduzir no modo Ghost\" ao menu de três pontos dos vídeos</string>
+  <string name="morphe_ghost_play_player_button_title">Mostrar botão do modo Ghost</string>
+  <string name="morphe_ghost_play_player_button_summary">Exibe um botão de alternância do modo Ghost no player de vídeo (pressione e segure para controles rápidos)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Anonimizar solicitações de reprodução</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Remove os cabeçalhos da conta das solicitações de reprodução Ghost e de eventos para um isolamento maior. Recursos do Premium, exclusivos para membros e com restrição de idade ficam indisponíveis enquanto ativado</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Auto-ghost nos Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Assiste Shorts automaticamente no modo Ghost para que eles não afetem seu feed de início</string>
+  <string name="morphe_ghost_play_auto_search_title">Auto-ghost de vídeos da Pesquisa</string>
+  <string name="morphe_ghost_play_auto_search_summary">Assiste automaticamente vídeos abertos a partir de resultados de pesquisa no modo Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_title">Auto-ghost de canais</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Pesquise, adicione, inspecione e gerencie canais que sempre são reproduzidos no modo Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d canais configurados — toque para pesquisar, inspecionar ou remover</string>
+  <string name="morphe_ghost_play_local_history_title">Manter histórico local do Ghost</string>
+  <string name="morphe_ghost_play_local_history_summary">Lembra os vídeos do modo Ghost e as posições de reprodução apenas neste dispositivo (nunca enviados ao YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">Limite do histórico Local Ghost</string>
+  <string name="morphe_ghost_play_history_limit_summary">Máximo de vídeos mantidos no dispositivo (as entradas mais antigas são removidas automaticamente)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d vídeos salvos (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Nenhum vídeo salvo</string>
+  <string name="morphe_ghost_play_history_limit_100">100 vídeos</string>
+  <string name="morphe_ghost_play_history_limit_500">500 vídeos</string>
+  <string name="morphe_ghost_play_history_limit_2000">2.000 vídeos</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Ilimitado</string>
+  <string name="morphe_ghost_play_view_history_title">Abrir histórico local do Ghost</string>
+  <string name="morphe_ghost_play_view_history_summary">Exibir, pesquisar, retomar no modo Ghost ou limpar seu histórico no dispositivo</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d vídeos armazenados no dispositivo (%2$s) — toque para exibir ou retomar</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Nenhum vídeo gravado ainda (armazenados apenas neste dispositivo)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Reproduzir no modo Ghost</string>
+  <string name="morphe_ghost_play_video_active_toast">Modo Ghost ativo — o histórico de exibição e as recomendações estão protegidos</string>
+  <string name="morphe_ghost_play_video_off_toast">Modo Ghost DESATIVADO para este vídeo</string>
+  <string name="morphe_ghost_play_session_on_toast">Modo Ghost ATIVADO — os vídeos não afetarão o histórico ou as recomendações</string>
+  <string name="morphe_ghost_play_session_off_toast">Modo Ghost DESATIVADO — voltando à reprodução normal</string>
+  <string name="morphe_ghost_play_timer_set_toast">Modo Ghost ativo por %d minutos</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Timer limpo — Modo Ghost permanece ATIVADO</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Insira uma duração entre 1 e 720 minutos</string>
+  <string name="morphe_ghost_play_dialog_title">Modo Ghost</string>
+  <string name="morphe_ghost_play_state_on">Ativado</string>
+  <string name="morphe_ghost_play_state_off">Desativado</string>
+  <string name="morphe_ghost_play_close">Fechar</string>
+  <string name="morphe_ghost_play_open_settings">Todas as configurações</string>
+  <string name="morphe_ghost_play_quick_power_hint">Toque para alternar o Modo Ghost</string>
+  <string name="morphe_ghost_play_quick_timer_title">Modo Ghost com tempo</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Toque para escolher a duração</string>
+  <string name="morphe_ghost_play_quick_timer_running">Timer ativo · %d min restantes</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Retorna automaticamente ao modo normal quando terminar</string>
+  <string name="morphe_ghost_play_quick_timer_change">Alterar tempo</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Limpar timer (manter ATIVADO)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Minutos personalizados (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Definir</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost ATIVADO para este canal</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost DESATIVADO para este canal</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d canais configurados</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Lista (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" adicionado aos canais auto-ghost</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" removido dos canais auto-ghost</string>
+  <string name="morphe_ghost_play_history_title">Histórico Local Ghost</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d vídeos (%s) · toque para retomar no modo Ghost, segure para remover</string>
+  <string name="morphe_ghost_play_history_search_hint">Filtrar por título do vídeo ou canal…</string>
+  <string name="morphe_ghost_play_history_no_match">Nenhum vídeo correspondente no histórico Local Ghost</string>
+  <string name="morphe_ghost_play_history_empty">Ainda não há histórico Local Ghost</string>
+  <string name="morphe_ghost_play_history_clear_all">Limpar tudo</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Limpar histórico local do Ghost?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Isso remove todas as entradas do modo Ghost salvas no dispositivo e não pode ser desfeito.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Histórico local do Ghost limpo</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Removido do histórico local do Ghost</string>
+  <string name="morphe_ghost_play_channels_manager_title">Canais de auto-ghost</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Adicionados (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Pesquisar &amp; Adicionar</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filtrar canais adicionados por nome, @handle ou tópico…</string>
+  <string name="morphe_ghost_play_channels_empty">Nenhum canal adicionado ainda. Mude para \"Pesquisar &amp; Adicionar\" para encontrar canais por nome, @handle ou URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Nenhum canal adicionado corresponde ao seu filtro</string>
+  <string name="morphe_ghost_play_channels_add_current">Reproduzindo: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Adicionar</string>
+  <string name="morphe_ghost_play_channels_added_badge">Adicionado</string>
+  <string name="morphe_ghost_play_channels_delete_button">Remover</string>
+  <string name="morphe_ghost_play_channels_search_hint">Nome do canal, @identificador ou URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Procurar</string>
+  <string name="morphe_ghost_play_channels_search_guide">Insira um nome de canal, @identificador ou URL do canal do YouTube e toque em Pesquisar</string>
+  <string name="morphe_ghost_play_channels_searching">Pesquisando canais do YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">A pesquisa falhou. Verifique sua conexão e tente novamente.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Nenhum canal encontrado para essa pesquisa</string>
+  <string name="morphe_ghost_play_channels_search_count">%d canais encontrados — toque em Adicionar para ativar o auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Vídeos recentes</string>
+  <string name="morphe_ghost_play_channels_loading_details">Carregando vídeos recentes…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Nenhum vídeo recente encontrado (toque para tentar novamente)</string>
 </resources>

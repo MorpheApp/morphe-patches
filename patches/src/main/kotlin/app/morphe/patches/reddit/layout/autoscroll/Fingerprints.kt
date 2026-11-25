@@ -101,7 +101,7 @@ internal object ScreenAttachFingerprint : Fingerprint(
 )
 
 /**
- * Attached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ * Attached callback of a screen in the navigation stack, for app versions before 2026.37.0.
  */
 internal object ScreenAttachLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/navstack/",
@@ -129,7 +129,7 @@ internal object ScreenDetachFingerprint : Fingerprint(
 )
 
 /**
- * Detached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ * Detached callback of a screen in the navigation stack, for app versions before 2026.37.0.
  */
 internal object ScreenDetachLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/navstack/",

@@ -28,6 +28,8 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_hide_post_ads_title">Akış reklamlarını gizle</string>
   <string name="morphe_hide_comment_ads_title">Yorum reklamlarını gizle</string>
   <string name="morphe_screen_navigation_bar_title">Gezinme çubuğu</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Alt çubuğun otomatik gizlenmesini devre dışı bırak</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Kaydırma sırasında alt gezinme çubuğunun görünür kalmasını sağlar</string>
   <string name="morphe_hide_answers_button_title">Cevaplar düğmesini gizle</string>
   <string name="morphe_hide_chat_button_title">Sohbet düğmesini gizle</string>
   <string name="morphe_hide_create_button_title">Oluştur düğmesini gizle</string>
@@ -77,8 +79,7 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_keyword_filters_saved">Değişiklikleri uygulamak için akışı yenileyin</string>
   <string name="morphe_screen_layout_title">Düzen</string>
   <string name="morphe_copy_text_title">Metni kopyala</string>
-  <string name="morphe_copy_text_summary">Gönderilerde ve yorumlarda metin seçme ve kopyalama olanağı sağlar. Yorumların daraltılmasını devre dışı bırakır.</string>
-  <string name="morphe_copy_text_user_dialog_message">Metin kopyalama etkinleştirildiğinde yorumları daraltma özelliği çalışmayacaktır</string>
+  <string name="morphe_copy_text_summary">Gönderilerde ve yorumlarda metin seçme ve kopyalama olanağı sağlar</string>
   <string name="morphe_custom_font_title">Özel yazı tipi</string>
   <string name="morphe_custom_font_summary">Aşağıdaki yoldan özel bir TTF veya OTF font dosyası yükleyin. Bunu etkinleştirmek aynı zamanda zorunlu sistem fontunu da kapatır.</string>
   <string name="morphe_custom_font_file_path_title">Özel yazı tipi dosyası</string>
@@ -90,6 +91,8 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_disable_modern_home_title">Modern ana sayfa arayüzünü devre dışı bırak</string>
   <string name="morphe_home_feed_tabs_title">Ana akış sekmeleri</string>
   <string name="morphe_home_feed_tabs_summary">Ana sayfa akışında Sizin İçin, Takip Edilenler ve Popüler sekmelerini gösterir ve bunlar arasında kaydırmaya izin verir. Takip Edilenler için oturum açmış bir hesap gerekir</string>
+  <string name="morphe_disable_refresh_on_back_title">Çıkış için geri tuşunda yenilemeyi devre dışı bırak</string>
+  <string name="morphe_disable_refresh_on_back_summary">Ana akışta geri tuşuna basmak artık en üste kaydırmaz ve yeniden yüklemez. Uygulamadan ayrılmak için geri tuşuna iki kez basın</string>
   <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü açılır penceresini devre dışı bırak</string>
   <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü alındığında görünen açılır pencereyi devre dışı bırakır</string>
   <string name="morphe_feed_auto_scroll_title">Akış otomatik kaydırma</string>
@@ -123,13 +126,14 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_hide_trending_shelves_title">Trendler rafını gizle</string>
   <string name="morphe_hide_trending_shelves_summary">Arama önerilerinde Trendler rafını gizler</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\'Sizin için videolar\' rafını gizle</string>
+  <string name="morphe_always_show_hide_title">Gizle\'yi her zaman göster</string>
+  <string name="morphe_always_show_hide_summary">Akış gönderilerinin menüsünde ve Reddit, \'Buna benzer daha az gönderi göster\' gibi öneri seçenekleri sunduğunda Gizle\'yi gösterir</string>
   <string name="morphe_remove_notification_dialog_title">Bildirim öneri iletişim kutusunu kaldır</string>
   <string name="morphe_remove_notification_dialog_summary">Bir subreddit ziyaret edildiğinde bildirim önerisi iletişim kutusunu otomatik olarak kapatır</string>
   <string name="morphe_high_quality_avatars_title">Yüksek kaliteli avatarlar</string>
   <string name="morphe_high_quality_avatars_summary">Kullanıcı avatarlarını tam çözünürlükte gösterir</string>
   <string name="morphe_search_hidden_profiles_title">Gizli profilleri ara</string>
-  <string name="morphe_search_hidden_profiles_summary">Gönderilerini veya yorumlarını gizleyen profillerde, Reddit araması ile gönderilerini bulmak için bir düğme gösterir</string>
-  <string name="morphe_search_hidden_profiles_button">Ara</string>
+  <string name="morphe_search_hidden_profiles_summary">Profil aramasının, gönderilerini veya yorumlarını gizleyen profillerin gönderilerini bulmasını sağlar</string>
   <string name="morphe_show_flairs_in_home_feed_title">Ana akışta etiketleri göster</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Gönderi etiketi rozetlerini ana akışta gösterir</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Bazı akış öğeleri bir etiket göstermeyebilir</string>
@@ -170,6 +174,8 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_media_viewer_fade_summary">Görselleri ve videoları görüntülerken başlığın arkasındaki koyu karartmanın gücü; 0 (karartma yok) ile 1 (Reddit\'in varsayılanı) arasında değişir</string>
   <string name="morphe_keep_feed_position_title">Akış konumunu koru</string>
   <string name="morphe_keep_feed_position_summary">Bir gönderi, görsel veya video kapattıktan sonra akışı aynı konumda tutar; açılan gönderiyi en üste taşımak yerine</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Ana akış otomatik yenilemeyi devre dışı bırak</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Bir süre sonra uygulamaya dönüldüğünde ana akış artık yeniden yüklenmez ve en üste taşınmaz. Aşağı çekerek yenileme hâlâ çalışır</string>
   <string name="morphe_post_side_panel_title">Gönderi yan paneli</string>
   <string name="morphe_post_side_panel_summary">Geniş tablet ekranlarında gönderiler, akışın yanındaki bir panelde açılır</string>
   <string name="morphe_post_side_panel_width_title">Panel genişliği</string>
@@ -259,6 +265,12 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_collapse_all_comments_scope_entry_replies">Yanıtlar (üst yorumlar açık kalır)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Yanıtlara verilen yanıtlar (doğrudan yanıtlar açık kalır)</string>
   <string name="morphe_collapse_all_comments_button">Tüm yorumları daralt veya genişlet</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Yorum girinti çizgilerini renklendir</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Uzun başlıkların daha kolay takip edilebilmesi için her yanıt düzeyine kendi çizgi rengini verir</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Çizgi renkleri</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Gökkuşağı (parlak)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (yumuşak)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Sessiz (sayfa ile uyumlu)</string>
   <string name="morphe_remember_collapsed_comments_title">Daraltılmış yorumları hatırla</string>
   <string name="morphe_remember_collapsed_comments_summary">Daralttığınız yorumlar, gönderiyi yeniden açtığınızda daraltılmış olarak kalır</string>
   <string name="morphe_app_icon_title">Uygulama simgesi</string>

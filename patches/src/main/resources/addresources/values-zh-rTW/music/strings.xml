@@ -449,6 +449,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">隱藏「媒體庫」按鈕</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">隱藏「升級」按鈕</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">顯示設定按鈕</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">設定按鈕動作</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">啟用時，點擊可開啟 Morphe 設定，長按可開啟 YouTube Music 設定，停用以對調</string>
   <string name="morphe_music_hide_navigation_bar_title">隱藏導覽列</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隱藏導覽列按鈕標籤</string>
   <string name="morphe_music_navigation_bar_glass_title">啟用玻璃效果導覽列</string>

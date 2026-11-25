@@ -140,6 +140,8 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 &gt; 登录 Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">使用 QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">使用 QuackJS 代替 yt-dlp-ejs (WebView) 进行去混淆</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' 登录</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' 需要单独登录。点击此处继续</string>
@@ -168,27 +170,28 @@ Second \"item\" text"</string>
 • 您的 Morphe 设置将无法导出/导入 Android VR 认证
 • 长期未使用时，该认证可能被 Google 移除
 • 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'移动版网页\' 登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">网页登录</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">可选：登录 YouTube 网站以使用您的账号播放视频。点击此处继续</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录“Mobile Web”</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录 YouTube 网站</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">要使用此功能，请将“默认客户端”更改为“Mobile Web”</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登录“Mobile Web”</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"移动版网页\"在退出登录或登录 YouTube 网站时播放视频
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">要使用此功能，请将“默认客户端”更改为网页客户端</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登录 YouTube 网站</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web 客户端可在未登录或登录 YouTube 网站的状态下播放视频
 
-• 登录后可播放需要账号的视频，例如年龄限制视频
+• 登录后，可播放需要账户的视频，例如有年龄限制的视频
 • Google 登录页面将在本应用中打开
-• 登录仅用于获取您播放的视频
+• 登录仅用于获取您要播放的视频
 • 登录信息仅保存在此设备上
+• 每个 Web 客户端对其选定的默认客户端拥有独立的登录状态
 
-要登录，请点击下方继续"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"登录信息已保存
+如需登录，请点击下方继续"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"登录已保存
 
-• 您的 Morphe 设置将不会导入/导出\"移动版网页\"的登录信息
-• 如果 Google 终止登录，在您重新登录之前，视频将以退出登录状态播放
-• 退出登录同时也会使此设备退出 YouTube 网站的登录状态"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">移动版网页登录已过期，请尝试重新登录\"移动版网页\"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已退出\"移动版网页\"登录</string>
+• 您的 Morphe 设置不会导入/导出 YouTube 网站的登录状态
+• 如果 Google 终止登录，在您再次登录之前，视频将以退出登录状态播放
+• 退出登录同时也会将此设备从 YouTube 网站退出登录"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">网页登录已过期，请尝试重新登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已退出 YouTube 网站登录</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">无法使用“Android System WebView”。请安装或启用它以进行登录</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暂时不可用（API 超时）</string>
   <string name="morphe_oauth2_connection_failure_status_400">“Android VR”登录已过期，请尝试重新登录 VR</string>

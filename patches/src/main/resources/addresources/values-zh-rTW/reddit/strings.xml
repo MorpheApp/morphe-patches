@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">隱藏動態廣告</string>
   <string name="morphe_hide_comment_ads_title">隱藏留言廣告</string>
   <string name="morphe_screen_navigation_bar_title">導覽列</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">停用底部工具列自動隱藏</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">在滾動時保持底部導覽列可見</string>
   <string name="morphe_hide_answers_button_title">隱藏回覆按鈕</string>
   <string name="morphe_hide_chat_button_title">隱藏聊天按鈕</string>
   <string name="morphe_hide_create_button_title">隱藏建立按鈕</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">重新整理動態以套用變更</string>
   <string name="morphe_screen_layout_title">版面配置</string>
   <string name="morphe_copy_text_title">複製文字</string>
-  <string name="morphe_copy_text_summary">允許選取及複製貼文和留言中的文字。停用留言摺疊功能</string>
-  <string name="morphe_copy_text_user_dialog_message">啟用「複製文字」時，收合留言功能將無法使用</string>
+  <string name="morphe_copy_text_summary">允許在貼文和評論中選擇並複製文字</string>
   <string name="morphe_custom_font_title">自訂字型</string>
   <string name="morphe_custom_font_summary">從以下路徑載入自訂的 TTF 或 OTF 字型檔案。啟用這項選項也會關閉強制系統字型。</string>
   <string name="morphe_custom_font_file_path_title">自訂字型檔案</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">停用現代首頁</string>
   <string name="morphe_home_feed_tabs_title">首頁動態消息分頁</string>
   <string name="morphe_home_feed_tabs_summary">在首頁 feed 上顯示「為您推薦」、「關注」和「熱門」分頁，並允許在分頁之間切換。使用「關注」分頁需要登入帳號</string>
+  <string name="morphe_disable_refresh_on_back_title">停用返回以退出時的重新整理</string>
+  <string name="morphe_disable_refresh_on_back_summary">在首頁 feed 中返回將不再滾動到頂部並重新載入。按下返回鍵兩次即可離開應用程式</string>
   <string name="morphe_disable_screenshot_popup_title">停用截圖彈出視窗</string>
   <string name="morphe_disable_screenshot_popup_summary">停用截圖彈出視窗</string>
   <string name="morphe_feed_auto_scroll_title">Feed 自動捲動</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">隱藏熱門書架</string>
   <string name="morphe_hide_trending_shelves_summary">從動態消息和搜尋建議中隱藏熱門專區</string>
   <string name="morphe_hide_videos_for_you_shelf_title">隱藏「為你推薦的影片」區塊</string>
+  <string name="morphe_always_show_hide_title">始終顯示「隱藏」</string>
+  <string name="morphe_always_show_hide_summary">在動態貼文選單中顯示「隱藏」，以及在 Reddit 顯示推薦選項（例如「顯示較少此類貼文」）時也顯示</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建議對話框</string>
   <string name="morphe_remove_notification_dialog_summary">前往 subreddit 時自動解除通知建議對話方塊</string>
   <string name="morphe_high_quality_avatars_title">高品質頭像</string>
   <string name="morphe_high_quality_avatars_summary">以全解析度顯示使用者頭像</string>
   <string name="morphe_search_hidden_profiles_title">搜尋隱藏設定檔</string>
-  <string name="morphe_search_hidden_profiles_summary">在隱藏貼文或留言的設定檔上顯示按鈕，以便使用 Reddit 搜尋來查找其貼文</string>
-  <string name="morphe_search_hidden_profiles_button">搜尋</string>
+  <string name="morphe_search_hidden_profiles_summary">讓個人檔案搜尋能找到隱藏其貼文或留言之個人檔案的貼文</string>
   <string name="morphe_show_flairs_in_home_feed_title">在主資訊流中顯示標籤</string>
   <string name="morphe_show_flairs_in_home_feed_summary">在主資訊流中顯示文章標籤徽章</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">部份資訊流項目可能不會顯示標籤</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">觀看圖片和影片時，說明文字後方深色淡化效果的強度，範圍從 0（無淡化）到 1（Reddit 的預設值）</string>
   <string name="morphe_keep_feed_position_title">保留動態消息位置</string>
   <string name="morphe_keep_feed_position_summary">關閉貼文、圖片或影片後，會將動態消息保持在相同位置，而不是將已開啟的貼文移到頂端</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">停用首頁動態自動重新整理</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">一段時間後返回應用程式時，不再重新載入首頁動態並將其移至頂部。下拉重新整理功能仍然有效</string>
   <string name="morphe_post_side_panel_title">貼文側邊面板</string>
   <string name="morphe_post_side_panel_summary">在寬螢幕平板電腦上，貼文會開啟在饋送旁的面板中</string>
   <string name="morphe_post_side_panel_width_title">面板寬度</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">回覆 (頂層評論保持展開)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">回覆的回覆 (直接回覆保持展開)</string>
   <string name="morphe_collapse_all_comments_button">折疊或展開所有留言</string>
+  <string name="morphe_colorize_comment_indent_lines_title">為評論縮排線著色</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">為每個回覆層級設定專屬線條顏色，使長討論串更易於追蹤</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">線條顏色</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">彩虹 (明亮)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">柔和 (淡雅)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">靜音 (與頁面融合)</string>
   <string name="morphe_remember_collapsed_comments_title">記住已收合的留言</string>
   <string name="morphe_remember_collapsed_comments_summary">你收合的留言會在重新開啟貼文時保持收合</string>
   <string name="morphe_app_icon_title">應用程式圖示</string>

@@ -449,6 +449,9 @@ Pauziranje crossfade-a radi gledanja muzičkog spota može ostaviti neke video z
   <string name="morphe_music_hide_navigation_bar_library_button_title">Sakrij dugme Biblioteka</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Sakrij dugme Nadogradnja</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Prikaži dugme Postavke</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Akcija dugmeta za postavke</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Kada je omogućeno, dodir otvara Morphe postavke, a dugi pritisak otvara YouTube Music postavke; onemogućite da zamijenite</string>
   <string name="morphe_music_hide_navigation_bar_title">Sakrij navigacijsku traku</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sakrij oznake navigacijskih dugmadi</string>
   <string name="morphe_music_navigation_bar_glass_title">Omogući staklenu navigacijsku traku</string>

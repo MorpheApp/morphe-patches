@@ -449,6 +449,9 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_hide_navigation_bar_library_button_title">Itago ang Library button</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Itago ang Upgrade button</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_title">Ipakita ang button ng Settings</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Aksyon ng button ng Mga Setting</string>
+  <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Kapag naka-enable, ang pag-tap ay bubukas ng mga setting ng Morphe at ang long press ay bubukas ng mga setting ng YouTube Music, i-disable para pagpalitin</string>
   <string name="morphe_music_hide_navigation_bar_title">Itago ang navigation bar</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Itago ang mga tatak ng navigation button</string>
   <string name="morphe_music_navigation_bar_glass_title">I-enable ang glass navigation bar</string>

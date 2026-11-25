@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">फीडमधील जाहिराती लपवा</string>
   <string name="morphe_hide_comment_ads_title">टिप्पणीमधील जाहिराती लपवा</string>
   <string name="morphe_screen_navigation_bar_title">नेव्हिगेशन बार</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">बॉटम बार ऑटो-हाइड अक्षम करा</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">स्क्रोलिंग करताना बॉटम नेव्हिगेशन बार दिसत राहील</string>
   <string name="morphe_hide_answers_button_title">उत्तरे बटण लपवा</string>
   <string name="morphe_hide_chat_button_title">चॅट बटण लपवा</string>
   <string name="morphe_hide_create_button_title">तयार करा बटण लपवा</string>
@@ -78,8 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">बदल लागू करण्यासाठी फीड रिफ्रेश करा</string>
   <string name="morphe_screen_layout_title">मांडणी</string>
   <string name="morphe_copy_text_title">मजकूर कॉपी करा</string>
-  <string name="morphe_copy_text_summary">पोस्ट आणि कमेंट्समधील मजकूर निवडण्याची आणि कॉपी करण्याची परवानगी देते. कमेंट्स कोलॅप्स करणे बंद करते</string>
-  <string name="morphe_copy_text_user_dialog_message">मजकूर कॉपी करा पर्याय सुरू असताना कमेंट्स कोलॅप्स करणे बंद होईल</string>
+  <string name="morphe_copy_text_summary">पोस्ट आणि कमेंट्समधील मजकूर निवडण्याची आणि कॉपी करण्याची परवानगी देते</string>
   <string name="morphe_custom_font_title">कस्टम फॉन्ट</string>
   <string name="morphe_custom_font_summary">खालील मार्गावरून कस्टम TTF किंवा OTF फॉन्ट फाइल लोड करा. हे सक्षम केल्याने फोर्स सिस्टम फॉन्ट देखील बंद होईल.</string>
   <string name="morphe_custom_font_file_path_title">कस्टम फॉन्ट फाइल</string>
@@ -91,6 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">आधुनिक होम UI अक्षम करा</string>
   <string name="morphe_home_feed_tabs_title">होम फीड टॅब्स</string>
   <string name="morphe_home_feed_tabs_summary">होम फीडवर \'For You\', \'Following\' आणि \'Popular\' टॅब दर्शवते आणि त्यांच्यात स्वाइप करण्याची परवानगी देते. \'Following\' साठी साइन-इन केलेले अकाउंट आवश्यक आहे</string>
+  <string name="morphe_disable_refresh_on_back_title">बाहेर पडण्यासाठी बॅकवर रिफ्रेश बंद करा</string>
+  <string name="morphe_disable_refresh_on_back_summary">होम फीडवर बॅक केल्यावर आता वर स्क्रोल होणार नाही आणि रीलोड होणार नाही. ॲपमधून बाहेर पडण्यासाठी दोनदा बॅक दाबा</string>
   <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करा</string>
   <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट काढताना दिसणारा पॉपअप अक्षम करते</string>
   <string name="morphe_feed_auto_scroll_title">फीड ऑटो-स्क्रोल</string>
@@ -124,13 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">ट्रेंडिंग शेल्फ लपवा</string>
   <string name="morphe_hide_trending_shelves_summary">फीड आणि शोध शिफारशींमधून ट्रेंडिंग शेल्फ लपवते</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\'तुमच्यासाठी व्हिडिओ\' शेल्फ लपवा</string>
+  <string name="morphe_always_show_hide_title">\'लपा\' नेहमी दाखवा</string>
+  <string name="morphe_always_show_hide_summary">फीड पोस्टच्या मेनूमध्ये \'लपवा\' दाखवते, तसेच जेव्हा Reddit \'यासारख्या कमी पोस्ट दाखवा\' सारखे शिफारस पर्याय दाखवते तेव्हा देखील</string>
   <string name="morphe_remove_notification_dialog_title">सूचना सुचवणारा संवाद काढून टाका</string>
   <string name="morphe_remove_notification_dialog_summary">subredditला भेट देताना सूचना सूचना संवाद आपोआप बंद होतो</string>
   <string name="morphe_high_quality_avatars_title">उच्च दर्जाचे अवतार</string>
   <string name="morphe_high_quality_avatars_summary">वापरकर्त्याचे अवतार पूर्ण रिझोल्यूशनमध्ये दाखवते</string>
   <string name="morphe_search_hidden_profiles_title">लपविलेली प्रोफाइल्स शोधा</string>
-  <string name="morphe_search_hidden_profiles_summary">ज्या प्रोफाइल्सनी त्यांच्या पोस्ट किंवा कमेंट्स लपवल्या आहेत, त्यांच्या पोस्ट Reddit शोध वापरून शोधण्यासाठी अशा प्रोफाइल्सवर एक बटण दर्शवते</string>
-  <string name="morphe_search_hidden_profiles_button">शोधा</string>
+  <string name="morphe_search_hidden_profiles_summary">प्रोफाईल शोध सुरू केल्यावर, ज्या प्रोफाइल्सनी त्यांच्या पोस्ट किंवा कमेंट्स लपवल्या आहेत, त्यांच्या पोस्ट शोधता येतील</string>
   <string name="morphe_show_flairs_in_home_feed_title">होम फीडमध्ये फ्लेअर्स दाखवा</string>
   <string name="morphe_show_flairs_in_home_feed_summary">होम फीडमध्ये पोस्ट फ्लेअर बॅजेस दाखवते</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">काही फीड आयटम्समध्ये फ्लेअर दिसणार नाही</string>
@@ -171,6 +175,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">प्रतिमा आणि व्हिडिओ पाहताना कॅप्शनच्या मागे असलेल्या गडद फेडची तीव्रता, 0 (कोणताही फेड नाही) ते 1 (Reddit चे डीफॉल्ट) पर्यंत</string>
   <string name="morphe_keep_feed_position_title">फीड स्थिती राखा</string>
   <string name="morphe_keep_feed_position_summary">पोस्ट, इमेज किंवा व्हिडिओ बंद केल्यानंतर, उघडलेली पोस्ट वर नेण्याऐवजी फीड त्याच स्थितीत ठेवते</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">होम फीड ऑटो-रिफ्रेश अक्षम करा</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">काही वेळानंतर ॲपवर परत आल्यावर होम फीड पुन्हा लोड होऊन वरच्या बाजूला सरकत नाही. रिफ्रेश करण्यासाठी खाली ओढा हे अजूनही कार्य करते</string>
   <string name="morphe_post_side_panel_title">पोस्ट साइड पॅनेल</string>
   <string name="morphe_post_side_panel_summary">रुंद टॅब्लेट स्क्रीनवर, पोस्ट फीडच्या बाजूला असलेल्या पॅनेलमध्ये उघडतात</string>
   <string name="morphe_post_side_panel_width_title">पॅनेलची रुंदी</string>
@@ -260,6 +266,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">रिप्लाय (टॉप कमेंट्स उघडे राहतात)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">रिप्लायचे रिप्लाय (थेट रिप्लाय उघडे राहतात)</string>
   <string name="morphe_collapse_all_comments_button">सर्व कमेंट्स संक्षिप्त करा किंवा विस्तार करा</string>
+  <string name="morphe_colorize_comment_indent_lines_title">कमेंट इंडेंट लाईन्स रंगीत करा</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">प्रत्येक रिप्लाय लेव्हलला स्वतःचा लाईन रंग दिला जातो जेणेकरून लांब थ्रेड्स फॉलो करणे सोपे होते</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">लाईन्सचे रंग</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">रेनबो (तेजस्वी)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">पेस्टल (सौम्य)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">म्युटेड (पेजमध्ये मिसळणारे)</string>
   <string name="morphe_remember_collapsed_comments_title">कोलेप्स केलेल्या कमेंट्स लक्षात ठेवा</string>
   <string name="morphe_remember_collapsed_comments_summary">तुम्ही कोलेप्स केलेल्या कमेंट्स, पोस्ट पुन्हा उघडल्यावर सुद्धा कोलेप्स राहतील</string>
   <string name="morphe_app_icon_title">ॲप आयकॉन</string>

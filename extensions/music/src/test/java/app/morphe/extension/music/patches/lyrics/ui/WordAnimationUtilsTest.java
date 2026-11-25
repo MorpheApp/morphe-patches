@@ -77,13 +77,13 @@ public class WordAnimationUtilsTest {
                 0L, 0L, 0f, 0f, -1f, null,
                 1f, 0f, 0f, 0L, 0);
         WipeResult wipe = new WipeResult();
-        // Leading edge grow ramp when localX < halfGradientWidth (gradientWidth = 20f, half = 10f, localX = 5f + brushShift 0.25f = 5.25f -> growWidth = 10.5f)
+        // Leading edge grow ramp when localX < halfGradientWidth (gradientWidth = 20f, half = 10f, localX = 5f -> growWidth = 10.0f)
         WordAnimationUtils.computeWipe(
                 vc0, false, 0f, 200f, 0f, 50f,
                 0, 0, 5f, false, 0.25f, 20f, wipe);
         Assert.assertEquals(WordAnimationUtils.WIPE_BAND, wipe.mode);
         Assert.assertEquals(0f, wipe.bandStart, 0.001f);
-        Assert.assertEquals(10.5f, wipe.bandEnd, 0.001f);
+        Assert.assertEquals(10.0f, wipe.bandEnd, 0.001f);
     }
 
     @Test
@@ -242,5 +242,92 @@ public class WordAnimationUtilsTest {
         Assert.assertTrue(WordSweepAnimator.shouldForceRomanPast(true, true, true, true, false));
         // Active line never forces past unless allSung.
         Assert.assertFalse(WordSweepAnimator.shouldForceRomanPast(false, true, true, false, true));
+    }
+
+    @Test
+    public void testEmphasisRampsSmoothlyFromOneSecondThreshold() {
+        Assert.assertEquals(0f, WordSweepAnimator.emphasisAmplitude(1.0), 0.0001f);
+        Assert.assertEquals(0f, WordSweepAnimator.emphasisGlowMax(1.0), 0.0001f);
+        Assert.assertEquals(0.25f, WordSweepAnimator.emphasisAmplitude(1.25), 0.0001f);
+        Assert.assertEquals(0.225f, WordSweepAnimator.emphasisGlowMax(1.25), 0.0001f);
+        Assert.assertEquals(1.0f, WordSweepAnimator.emphasisAmplitude(2.5), 0.0001f);
+        Assert.assertEquals(0.45f, WordSweepAnimator.emphasisGlowMax(2.5), 0.0001f);
+    }
+
+    @Test
+    public void testComputeWipeDoesNotShiftBeforeFinalSyllable() {
+        WordAnimationUtils.VisualCluster midCluster = new WordAnimationUtils.VisualCluster(
+                0, 4, 0, 100f, 0f, 40f,
+                false, false, false, false,
+                0L, 400L, 0f, 0f, 0f,
+                null, 1f, 0f, 0f, 0L, 1, 1);
+        WordAnimationUtils.WipeResult out = new WordAnimationUtils.WipeResult();
+
+        // Mid-line active syllable (not last of line): gradient band stays centered on curGX (no lineProg advance).
+        WordAnimationUtils.computeWipe(
+                midCluster, false, 0f, 200f, 100f, 140f,
+                1, 0, 120f, false, 0.5f, 40f, out);
+        Assert.assertEquals(WordAnimationUtils.WIPE_BAND, out.mode);
+        Assert.assertEquals(0f, out.bandStart, 0.01f);
+        Assert.assertEquals(40f, out.bandEnd, 0.01f);
+
+        // Final syllable on line advances by activeSylProgress * halfGradientWidth (0.5 * 20 = 10px).
+        WordAnimationUtils.computeWipe(
+                midCluster, false, 0f, 200f, 100f, 140f,
+                1, 0, 120f, true, 0.5f, 40f, out);
+        Assert.assertEquals(WordAnimationUtils.WIPE_BAND, out.mode);
+        Assert.assertEquals(10f, out.bandStart, 0.01f);
+        Assert.assertEquals(50f, out.bandEnd, 0.01f);
+    }
+
+    @Test
+    public void testIndicJoiningDetectionAndGraphemeRanges() {
+        Assert.assertTrue(LyricsTextUtils.containsJoiningScript("रंग"));
+        Assert.assertTrue(LyricsTextUtils.containsJoiningScript("चाँद"));
+        Assert.assertFalse(LyricsTextUtils.containsJoiningScript("तरह"));
+
+        // Combining marks and matras stay grouped with their base character instead of splitting.
+        List<int[]> rang = WordAnimationUtils.graphemeRanges("रंग");
+        Assert.assertEquals(2, rang.size());
+        Assert.assertEquals("रं", "रंग".substring(rang.get(0)[0], rang.get(0)[1]));
+        Assert.assertEquals("ग", "रंग".substring(rang.get(1)[0], rang.get(1)[1]));
+
+        List<int[]> chaand = WordAnimationUtils.graphemeRanges("चाँद\nसा");
+        Assert.assertEquals(3, chaand.size());
+        Assert.assertEquals("चाँ", "चाँद\nसा".substring(chaand.get(0)[0], chaand.get(0)[1]));
+        Assert.assertEquals("द", "चाँद\nसा".substring(chaand.get(1)[0], chaand.get(1)[1]));
+        Assert.assertEquals("सा", "चाँद\nसा".substring(chaand.get(2)[0], chaand.get(2)[1]));
+    }
+
+    @Test
+    public void testRubyElevationTracksHeavyMainClusterTopDelta() {
+        float[] baseY = new float[]{100f, 100f, 100f};
+        float[] drawY = new float[]{95f, 92f, 80f};
+        float[] scaleX = new float[]{1.0f, 1.1f, 1.2f};
+        float[] pivotY = new float[]{60f, 60f, 60f};
+
+        // Regular syllable: no scaling, top moves purely with drawY - baseY (-5px).
+        Assert.assertEquals(-5f, WordSweepAnimator.clusterTopDelta(drawY[0], baseY[0], scaleX[0], pivotY[0]), 0.001f);
+
+        // Heavy glowing cluster at idx 1: -8px translation - (0.1 * 60) = -14px upward top expansion.
+        Assert.assertEquals(-14f, WordSweepAnimator.clusterTopDelta(drawY[1], baseY[1], scaleX[1], pivotY[1]), 0.001f);
+
+        // Ruby overlapping [0, 1] lifts cleanly above the heavy kanji even if rubyElev itself is only -2.5f.
+        // Cluster 2 does not overlap [0, 1] and must be ignored.
+        float resolved = WordSweepAnimator.resolveRubyClusterElevY(
+                -2.5f, new int[]{0, 1}, drawY, baseY, scaleX, pivotY);
+        Assert.assertEquals(-14f, resolved, 0.001f);
+
+        // Unrelated ruby falling back to its own ElevTracks value when no main cluster moved higher.
+        float solo = WordSweepAnimator.resolveRubyClusterElevY(
+                -2.5f, new int[0], drawY, baseY, scaleX, pivotY);
+        Assert.assertEquals(-2.5f, solo, 0.001f);
+
+        // Reveal/collapse shift: drawY matches restY when shiftProgress < 1f even though restY < static baseY.
+        float[] restYDuringShift = new float[]{70f, 70f, 70f};
+        float[] drawYDuringShift = new float[]{65f, 70f, 70f};
+        float duringShift = WordSweepAnimator.resolveRubyClusterElevY(
+                -5f, new int[]{0}, drawYDuringShift, restYDuringShift, new float[]{1f, 1f, 1f}, pivotY);
+        Assert.assertEquals(-5f, duringShift, 0.001f);
     }
 }

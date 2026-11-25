@@ -29,6 +29,8 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_hide_post_ads_title">Skrij oglase v viru</string>
   <string name="morphe_hide_comment_ads_title">Skrij oglase v komentarjih</string>
   <string name="morphe_screen_navigation_bar_title">Navigacijska vrstica</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Onemogoči samodejno skrivanje spodnje vrstice</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Ohrani spodnjo navigacijsko vrstico vidno med pomikanjem</string>
   <string name="morphe_hide_answers_button_title">Skrij gumb Odgovori</string>
   <string name="morphe_hide_chat_button_title">Skrij gumb Klepet</string>
   <string name="morphe_hide_create_button_title">Skrij gumb Ustvari</string>
@@ -78,8 +80,7 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_keyword_filters_saved">Osvežite podajnik, da uporabite spremembe</string>
   <string name="morphe_screen_layout_title">Postavitev</string>
   <string name="morphe_copy_text_title">Kopiraj besedilo</string>
-  <string name="morphe_copy_text_summary">Omogoča izbiro in kopiranje besedila v objavah in komentarjih. Onemogoči strnjevanje komentarjev</string>
-  <string name="morphe_copy_text_user_dialog_message">Strjevanje komentarjev bo prenehalo delovati, ko je omogočeno Kopiraj besedilo</string>
+  <string name="morphe_copy_text_summary">Omogoča izbiro in kopiranje besedila v objavah in komentarjih</string>
   <string name="morphe_custom_font_title">Poželjna pisava</string>
   <string name="morphe_custom_font_summary">Naložite datoteko pisave TTF ali OTF po spodnji poti. Omogočanje te možnosti onemogoči tudi možnost uporabe sistemske pisave.</string>
   <string name="morphe_custom_font_file_path_title">Datoteka pisave po meri</string>
@@ -91,6 +92,8 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_disable_modern_home_title">Onemogoči moderno domačo stran</string>
   <string name="morphe_home_feed_tabs_title">Zavihek za Newly-feed na domovni strani</string>
   <string name="morphe_home_feed_tabs_summary">Prikaže zavihke Zate, Sledim in Priljubljeno na domovnem feedu ter omogoča drsenje med njimi. Za zavihek Sledim je potreben prijavljen račun</string>
+  <string name="morphe_disable_refresh_on_back_title">Onemvoli osvežitev ob povratku za izhod</string>
+  <string name="morphe_disable_refresh_on_back_summary">Povratek na domovni feed ne povrti več na vrh in ne ponovno naloži. Za zaprtje aplikacije pritisnite nazaj dvakrat</string>
   <string name="morphe_disable_screenshot_popup_title">Onemogoči pojavno okno o posnetku zaslona</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogoči pojavno okno, ki se pojavi ob zajetju zaslona</string>
   <string name="morphe_feed_auto_scroll_title">Samodejno pomikanje vrstice</string>
@@ -124,13 +127,14 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_hide_trending_shelves_title">Skrij priljubljene police</string>
   <string name="morphe_hide_trending_shelves_summary">Skrije priljubljene police iz vira in predlogov iskanja</string>
   <string name="morphe_hide_videos_for_you_shelf_title">Skrij polico \"Videi zate\"</string>
+  <string name="morphe_always_show_hide_title">Vedno prikaži Skrij</string>
+  <string name="morphe_always_show_hide_summary">Prikaže možnost Skrij v meniju objav v pojavnem feedu, tudi ko Reddit prikaže možnosti za priporočila, kot je “Prikaži manj podobnih objav”</string>
   <string name="morphe_remove_notification_dialog_title">Odstrani dialog za predlog obvestil</string>
   <string name="morphe_remove_notification_dialog_summary">Samodejno skrije okno z obvestili, ko obiščete subreddit.</string>
   <string name="morphe_high_quality_avatars_title">Avatarji visoke kakovosti</string>
   <string name="morphe_high_quality_avatars_summary">Prikaže uporabnikove avatarje v polni ločljivosti</string>
   <string name="morphe_search_hidden_profiles_title">Iskanje skritih profilov</string>
-  <string name="morphe_search_hidden_profiles_summary">Na profilih, ki skrivajo svoje objave ali komentarje, prikaže gumb za iskanje njihovih objav z iskalnikom Reddita</string>
-  <string name="morphe_search_hidden_profiles_button">Išči</string>
+  <string name="morphe_search_hidden_profiles_summary">Omogoči, da iskanje profilov najde objave profilov, ki skrivajo svoje objave ali komentarje</string>
   <string name="morphe_show_flairs_in_home_feed_title">Prikaži oznake objav v domačem viru</string>
   <string name="morphe_show_flairs_in_home_feed_summary">V domačem viru prikaže oznake objav</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Nekateri elementi vira morda ne prikazujejo oznak objav</string>
@@ -171,6 +175,8 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_media_viewer_fade_summary">Moč temne zatemnitve za napisom pri ogledu slik in videoposnetkov, od 0 (brez zatemnitve) do 1 (Redditova privzeta vrednost)</string>
   <string name="morphe_keep_feed_position_title">Ohrani položaj vira</string>
   <string name="morphe_keep_feed_position_summary">Po zaprtju objave, slike ali videoposnetka ohrani vir na istem položaju, namesto da odprto objavo premakne na vrh</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Onemogoči samodejno osvežitev glavnega feeda</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Povratek v aplikacijo po nekaj časih ne bo več ponovno nalagal glavnega feeda in ga premikal na vrh. Povleka za osvežitev še vedno deluje</string>
   <string name="morphe_post_side_panel_title">Stranska plošča objave</string>
   <string name="morphe_post_side_panel_summary">Na širokih zaslonih tablic</string>
   <string name="morphe_post_side_panel_width_title">Širina plošče</string>
@@ -260,6 +266,12 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_collapse_all_comments_scope_entry_replies">Odgovori (glavni komentarji ostanejo odprti)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Odgovori na odgovore (neposredni odgovori ostanejo odprti)</string>
   <string name="morphe_collapse_all_comments_button">Skrči ali razširi vse komentarje</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Obarvi vrstice zamika komentarjev</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Vsaki ravni odgovora dodeli svojo barvo vrstice, da so dolge niti lažje za spremljanje</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Barve vrstic</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Rainbow (svetle)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastelne (mehke)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Priglusene (se zlijejo s stranjo)</string>
   <string name="morphe_remember_collapsed_comments_title">Zapomni si strnjene komentarje</string>
   <string name="morphe_remember_collapsed_comments_summary">Komentarji, ki jih strnete, ostanejo strnjeni, ko znova odprete objavo</string>
   <string name="morphe_app_icon_title">Ikona aplikacije</string>

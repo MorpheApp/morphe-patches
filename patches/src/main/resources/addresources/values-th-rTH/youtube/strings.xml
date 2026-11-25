@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">ตัวกรองคำหลัก</string>
   <string name="morphe_hide_keyword_content_screen_summary">เลือกคำหรือวลีเฉพาะเพื่อซ่อนวิดีโอในฟีดและผลการค้นหา</string>
   <string name="morphe_hide_keyword_content_comments_title">ซ่อนความคิดเห็นตามคำหลัก</string>
+  <string name="morphe_hide_keyword_content_posts_title">ซ่อนโพสต์ตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_home_title">ซ่อนวิดีโอหน้าแรกตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_search_title">ซ่อนผลลัพธ์การค้นหาตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">ซ่อนวิดีโอการติดตามตามคำสำคัญ</string>
@@ -250,10 +251,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"ป้อนคำสำคัญและวลีที่ต้องการซ่อน โดยแยกด้วยการขึ้นบรรทัดใหม่
 
 คำสำคัญสามารถเป็นข้อความใดก็ได้ที่แสดงในชื่อวิดีโอ คำสำคัญ @UserName จะซ่อนเนื้อหาทั้งหมดจากครีเอเตอร์ที่ระบุ"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก / การติดตาม / การค้นหา / ความคิดเห็น จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคำสำคัญ
+  <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก / การติดตาม / การค้นหา / ความคิดเห็น / โพสต์ จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคำสำคัญ
 
 ข้อจำกัด:
-• Shorts บางส่วนไม่สามารถซ่อนได้ตามชื่อช่อง
+• Shorts บางรายการไม่สามารถซ่อนได้ตามชื่อช่อง
 • บางส่วนของส่วนประกอบ UI อาจไม่ถูกซ่อน"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">จับคู่ทั้งคำ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
@@ -266,6 +267,23 @@ Second \"item\" text"</string>
 • ค้นหา: %3$s
 • ความคิดเห็น: %4$s
 • รวม: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">ตัวกรองจำนวนการดู</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">ซ่อนวิดีโอในฟีดและการค้นหาที่มีจำนวนการดูน้อยเกินไปหรือมากเกินไป</string>
+  <string name="morphe_hide_videos_by_views_home_title">ซ่อนวิดีโอหน้าแรกตามจำนวนการดู</string>
+  <string name="morphe_hide_videos_by_views_search_title">ซ่อนผลลัพธ์การค้นหาตามจำนวนการดู</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">ซ่อนวิดีโอการติดตามตามจำนวนการดู</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">จำนวนการดูขั้นต่ำ</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">วิดีโอที่มีจำนวนการดูน้อยกว่านี้จะถูกซ่อน 0 = ไม่มีขั้นต่ำ</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">จำนวนการดูสูงสุด</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">วิดีโอที่มีจำนวนการดูมากกว่านี้จะถูกซ่อน 0 = ไม่มีสูงสุด</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"หน้าแรก / การติดตาม / การค้นหา จะถูกกรองเพื่อซ่อนวิดีโอและ Shorts ตามจำนวนการดู
+
+ข้อจำกัด:
+• YouTube จะปัดเศษจำนวนการดู ดังนั้น 1.2K การดู จะถูกนับเป็น 1200 การดู
+• การสตรีมสดจะไม่ถูกซ่อน
+• Shorts ที่ถูกซ่อนอาจทิ้งช่องว่างไว้ในชั้นวาง Shorts"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">ตัวกรองจำนวนการดูจะซ่อนวิดีโอทั้งหมด</string>
   <string name="morphe_hide_stats_category_title">สถิติ</string>
   <string name="morphe_hide_stats_hidden_24h_title">วิดีโอที่ซ่อนไว้, 24 ชั่วโมงที่ผ่านมา</string>
   <string name="morphe_hide_stats_hidden_all_title">วิดีโอที่ซ่อนไว้, ตลอดเวลา</string>
@@ -678,14 +696,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">ถัดจากจำนวนการดู</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">ตรงกลางขวา</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">บนซ้าย</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">ค้นหาความคิดเห็น</string>
-  <string name="morphe_search_comments_summary">แตะปุ่มค้นหาในความคิดเห็นเพื่อแสดงเฉพาะความคิดเห็นที่โหลดไว้ซึ่งมีคำที่ค้นหาครบทุกคำ ใส่คำในเครื่องหมายอัญประกาศเพื่อค้นหาวลี</string>
-  <string name="morphe_search_comments_dialog_title">ค้นหาความคิดเห็น</string>
-  <string name="morphe_search_comments_hint">คำที่ต้องการค้นหา</string>
-  <string name="morphe_search_comments_clear">ล้าง</string>
-  <string name="morphe_search_comments_applied">เปลี่ยนลำดับการจัดเรียงหรือเปิดความคิดเห็นอีกครั้งเพื่อค้นหา</string>
-  <string name="morphe_search_comments_cleared">ล้างการค้นหาแล้ว เปลี่ยนลำดับการจัดเรียงหรือเปิดความคิดเห็นอีกครั้งเพื่อแสดงความคิดเห็นทั้งหมด</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">ค้นหาความคิดเห็น</string>
+  <string name="morphe_comment_search_summary">แตะปุ่มค้นหาในความคิดเห็นเพื่อแสดงเฉพาะความคิดเห็นที่โหลดแล้วซึ่งมีคำที่ค้นหาครบทุกคำ ใส่คำในเครื่องหมายคำพูดเพื่อค้นหาวลี</string>
+  <string name="morphe_comment_search_dialog_title">ค้นหาความคิดเห็น</string>
+  <string name="morphe_comment_search_hint">คำที่ต้องการค้นหา</string>
+  <string name="morphe_comment_search_clear">ล้าง</string>
+  <string name="morphe_comment_search_applied">เปลี่ยนลำดับการจัดเรียงหรือเปิดความคิดเห็นอีกครั้งเพื่อค้นหา</string>
+  <string name="morphe_comment_search_cleared">ล้างการค้นหาแล้ว เปลี่ยนลำดับการจัดเรียงหรือเปิดความคิดเห็นอีกครั้งเพื่อแสดงความคิดเห็นทั้งหมด</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ปิดหน้าต่างแจ้งเตือน \'เชื่อมต่ออุปกรณ์ของคุณ\'</string>
@@ -1170,6 +1188,9 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_title">แสดงปุ่มการตั้งค่า</string>
   <string name="morphe_show_settings_button_type_title">การดำเนินการปุ่มการตั้งค่า</string>
   <string name="morphe_show_settings_button_type_summary">เมื่อเปิดใช้งาน ให้แตะเพื่อเปิดการตั้งค่า Morphe และกดค้างเพื่อเปิดการตั้งค่า YouTube ปิดเพื่อสลับการทำงาน</string>
+  <string name="morphe_you_button_account_switcher_title">ทางลัดสำหรับสลับบัญชี</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">กดปุ่ม \"คุณ\" ค้างไว้เพื่อเปิดตัวสลับบัญชี</string>
   <string name="morphe_navigation_buttons_order_title">ลำดับปุ่มนำทาง</string>
   <string name="morphe_navigation_buttons_order_summary">ลากปุ่มเพื่อเปลี่ยนลำดับในแถบนำทาง</string>
   <string name="morphe_swap_create_with_notifications_button_title">สลับปุ่มสร้างกับปุ่มการแจ้งเตือน</string>
@@ -1446,6 +1467,8 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">เปิดตลอดเวลา</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi เท่านั้น</string>
   <string name="morphe_playback_in_feeds_entry_off">ปิด</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">แสดงปุ่มเลื่อนหาในฟีด</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">แสดงปุ่มเลื่อนหาบนวิดีโอที่เล่นในฟีด แม้ในกรณีที่ YouTube ไม่แสดงปุ่มดังกล่าว</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">กู้คืนชื่อวิดีโอต้นฉบับ</string>
   <string name="morphe_restore_original_titles_summary">แสดงชื่อวิดีโอ คำอธิบายวิดีโอ และคำอธิบายช่องต้นฉบับแทนรายการที่แปลอัตโนมัติ</string>
@@ -2051,4 +2074,106 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_max_length_title">ความยาวข้อความสูงสุด</string>
   <string name="morphe_live_chat_translate_max_length_summary">ข้อความที่ยาวกว่านี้จะแสดงแบบไม่แปล</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">ไม่จำกัด</string>
+  <string name="morphe_ghost_play_screen_title">โหมดผี</string>
+  <string name="morphe_ghost_play_screen_summary">รับชมวิดีโอโดยไม่ส่งผลกระทบต่อประวัติการรับชมหรือคำแนะนำ</string>
+  <string name="morphe_ghost_play_cat_general_title">ทั่วไป</string>
+  <string name="morphe_ghost_play_cat_buttons_title">ปุ่ม</string>
+  <string name="morphe_ghost_play_cat_rules_title">กฎ Auto-ghost</string>
+  <string name="morphe_ghost_play_cat_history_title">ประวัติภายในเครื่อง</string>
+  <string name="morphe_ghost_play_cat_advanced_title">ความเป็นส่วนตัวขั้นสูง</string>
+  <string name="morphe_ghost_play_enabled_title">เปิดใช้งานโหมด Ghost</string>
+  <string name="morphe_ghost_play_enabled_summary">อนุญาตให้รับชมวิดีโอที่เลือก, Shorts, การค้นหา, ช่อง หรือเซสชันทั้งหมดโดยไม่ส่งผลกระทบต่อประวัติการรับชมหรือคำแนะนำ</string>
+  <string name="morphe_ghost_play_mode_active_title">โหมด Ghost กำลังทำงาน</string>
+  <string name="morphe_ghost_play_mode_active_summary">เมื่อเปิดใช้งาน ทุกวิดีโอที่คุณเปิดตามปกติจากฟีด, วิดีโอที่เกี่ยวข้อง หรือการค้นหา จะเล่นในโหมด Ghost โดยไม่ต้องใช้เมนูสามจุด</string>
+  <string name="morphe_ghost_play_persist_mode_title">จำโหมด Ghost เมื่อเริ่มระบบใหม่</string>
+  <string name="morphe_ghost_play_persist_mode_summary">เปิดโหมด Ghost ไว้เสมอแม้หลังจากปิดและเปิด YouTube ใหม่</string>
+  <string name="morphe_ghost_play_toolbar_button_title">แสดงปุ่มสลับโหมด Ghost ในแถบด้านบน</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">วางปุ่มสลับโหมด Ghost ขนาดกะทัดรัดไว้ข้างไอคอนแถบด้านบน (แตะเพื่อสลับ, กดค้างเพื่อเข้าถึงการควบคุมด่วน)</string>
+  <string name="morphe_ghost_play_flyout_button_title">แสดงในเมนูวิดีโอ</string>
+  <string name="morphe_ghost_play_flyout_button_summary">เพิ่ม \"เล่นในโหมด Ghost\" ในเมนูจุดสามจุดของวิดีโอ</string>
+  <string name="morphe_ghost_play_player_button_title">แสดงปุ่มโหมด Ghost</string>
+  <string name="morphe_ghost_play_player_button_summary">แสดงปุ่มสลับโหมด Ghost ในเครื่องเล่นวิดีโอ (กดค้างเพื่อเข้าถึงการควบคุมด่วน)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">ทำให้คำขอการเล่นเป็นแบบไม่ระบุตัวตน</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">นำส่วนหัวของบัญชีออกจากการเล่นแบบ Ghost และคำขอเหตุการณ์เพื่อการแยกส่วนที่เข้มงวดขึ้น ฟีเจอร์ที่จำกัดอายุ เฉพาะสมาชิก และ Premium จะไม่สามารถใช้งานได้ในขณะที่เปิดใช้งาน</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Ghost Shorts อัตโนมัติ</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">ดู Shorts ในโหมด Ghost โดยอัตโนมัติ เพื่อไม่ให้ส่งผลกระทบต่อฟีดหน้าแรกของคุณ</string>
+  <string name="morphe_ghost_play_auto_search_title">Ghost วิดีโอจากการค้นหาอัตโนมัติ</string>
+  <string name="morphe_ghost_play_auto_search_summary">เล่นวิดีโอที่เปิดจากผลการค้นหาในโหมด Ghost โดยอัตโนมัติ</string>
+  <string name="morphe_ghost_play_manage_channels_title">ช่อง Ghost อัตโนมัติ</string>
+  <string name="morphe_ghost_play_manage_channels_summary">ค้นหา เพิ่ม ตรวจสอบ และจัดการช่องที่จะเล่นในโหมด Ghost เสมอ</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">กำหนดค่าไว้ %d ช่อง — แตะเพื่อค้นหา ตรวจสอบ หรือลบ</string>
+  <string name="morphe_ghost_play_local_history_title">เก็บประวัติ Ghost ไว้ในเครื่อง</string>
+  <string name="morphe_ghost_play_local_history_summary">จำวิดีโอในโหมด Ghost และตำแหน่งการเล่นบนอุปกรณ์นี้เท่านั้น (ไม่ส่งไปยัง YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">ขีดจำกัดประวัติ Ghost ในเครื่อง</string>
+  <string name="morphe_ghost_play_history_limit_summary">จำนวนวิดีโอสูงสุดที่เก็บไว้ในอุปกรณ์ (รายการที่เก่าที่สุดจะถูกลบโดยอัตโนมัติ)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · บันทึกวิดีโอไว้ %2$d รายการ (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · ไม่มีวิดีโอที่บันทึกไว้</string>
+  <string name="morphe_ghost_play_history_limit_100">วิดีโอ 100 รายการ</string>
+  <string name="morphe_ghost_play_history_limit_500">วิดีโอ 500 รายการ</string>
+  <string name="morphe_ghost_play_history_limit_2000">วิดีโอ 2,000 รายการ</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">ไม่จำกัด</string>
+  <string name="morphe_ghost_play_view_history_title">เปิดประวัติ Ghost ในเครื่อง</string>
+  <string name="morphe_ghost_play_view_history_summary">ดู ค้นหา เล่นต่อในโหมด Ghost หรือล้างประวัติในอุปกรณ์ของคุณ</string>
+  <string name="morphe_ghost_play_view_history_summary_count">มีวิดีโอ %1$d รายการที่เก็บไว้ในอุปกรณ์ (%2$s) — แตะเพื่อดูหรือเล่นต่อ</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">ยังไม่มีการบันทึกวิดีโอ (เก็บไว้ในอุปกรณ์นี้เท่านั้น)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">เล่นในโหมด Ghost</string>
+  <string name="morphe_ghost_play_video_active_toast">โหมด Ghost กำลังทำงาน — ประวัติการดูและคำแนะนำจะได้รับการปกป้อง</string>
+  <string name="morphe_ghost_play_video_off_toast">ปิดโหมด Ghost สำหรับวิดีโอนี้</string>
+  <string name="morphe_ghost_play_session_on_toast">เปิดโหมด Ghost — วิดีโอจะไม่ส่งผลต่อประวัติหรือคำแนะนำ</string>
+  <string name="morphe_ghost_play_session_off_toast">ปิดโหมด Ghost — กลับสู่การเล่นปกติ</string>
+  <string name="morphe_ghost_play_timer_set_toast">โหมด Ghost ทำงานเป็นเวลา %d นาที</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">ล้างตัวนับเวลาแล้ว — โหมด Ghost ยังคงเปิดอยู่</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">ระบุระยะเวลาระหว่าง 1 ถึง 720 นาที</string>
+  <string name="morphe_ghost_play_dialog_title">โหมด Ghost</string>
+  <string name="morphe_ghost_play_state_on">เปิด</string>
+  <string name="morphe_ghost_play_state_off">ปิด</string>
+  <string name="morphe_ghost_play_close">ปิด</string>
+  <string name="morphe_ghost_play_open_settings">การตั้งค่าทั้งหมด</string>
+  <string name="morphe_ghost_play_quick_power_hint">แตะเพื่อสลับโหมด Ghost</string>
+  <string name="morphe_ghost_play_quick_timer_title">โหมด Ghost แบบกำหนดเวลา</string>
+  <string name="morphe_ghost_play_quick_timer_sub">แตะเพื่อเลือกระยะเวลา</string>
+  <string name="morphe_ghost_play_quick_timer_running">ตัวจับเวลาทำงานอยู่ · เหลือ %d นาที</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">จะกลับสู่โหมดปกติโดยอัตโนมัติเมื่อสิ้นสุดเวลา</string>
+  <string name="morphe_ghost_play_quick_timer_change">เปลี่ยนเวลา</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">ล้างตัวจับเวลา (ให้เปิดไว้)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%d นาที</string>
+  <string name="morphe_ghost_play_timer_custom_hint">กำหนดนาทีเอง (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">ตั้งค่า</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">เปิด Auto-ghost สำหรับช่องนี้</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">ปิด Auto-ghost สำหรับช่องนี้</string>
+  <string name="morphe_ghost_play_quick_channel_count">กำหนดค่าแล้ว %d ช่อง</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">รายการ (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">เพิ่ม \"%s\" ในช่อง Auto-ghost แล้ว</string>
+  <string name="morphe_ghost_play_channel_removed_toast">นำ \"%s\" ออกจากช่อง Auto-ghost แล้ว</string>
+  <string name="morphe_ghost_play_history_title">ประวัติ Ghost ในเครื่อง</string>
+  <string name="morphe_ghost_play_history_subtitle_size">วิดีโอ %d รายการ (%s) · แตะเพื่อเล่นต่อในโหมด Ghost, กดค้างเพื่อนำออก</string>
+  <string name="morphe_ghost_play_history_search_hint">กรองตามชื่อวิดีโอหรือช่อง…</string>
+  <string name="morphe_ghost_play_history_no_match">ไม่มีวิดีโอที่ตรงกันในประวัติ Ghost ในเครื่อง</string>
+  <string name="morphe_ghost_play_history_empty">ยังไม่มีประวัติ Ghost ในเครื่อง</string>
+  <string name="morphe_ghost_play_history_clear_all">ล้างทั้งหมด</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">ล้างประวัติ Ghost ในเครื่องหรือไม่?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">การดำเนินการนี้จะลบรายการโหมด Ghost ที่บันทึกไว้ในอุปกรณ์ทั้งหมดและไม่สามารถย้อนกลับได้</string>
+  <string name="morphe_ghost_play_history_cleared_toast">ล้างประวัติ Ghost ในเครื่องแล้ว</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">นำออกจากประวัติ Ghost ในเครื่องแล้ว</string>
+  <string name="morphe_ghost_play_channels_manager_title">ช่อง Ghost อัตโนมัติ</string>
+  <string name="morphe_ghost_play_channels_tab_saved">เพิ่มแล้ว (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">ค้นหา &amp; เพิ่ม</string>
+  <string name="morphe_ghost_play_channels_filter_hint">กรองช่องที่เพิ่มแล้วตามชื่อ, @handle หรือหัวข้อ…</string>
+  <string name="morphe_ghost_play_channels_empty">ยังไม่มีการเพิ่มช่อง ให้สลับไปที่ \"ค้นหา &amp; เพิ่ม\" เพื่อค้นหาช่องตามชื่อ, @handle หรือ URL</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">ไม่มีช่องที่เพิ่มไว้ตรงกับตัวกรองของคุณ</string>
+  <string name="morphe_ghost_play_channels_add_current">กำลังเล่น: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">เพิ่ม</string>
+  <string name="morphe_ghost_play_channels_added_badge">เพิ่มแล้ว</string>
+  <string name="morphe_ghost_play_channels_delete_button">นำออก</string>
+  <string name="morphe_ghost_play_channels_search_hint">ชื่อช่อง, @handle หรือ URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">ค้นหา</string>
+  <string name="morphe_ghost_play_channels_search_guide">ป้อนชื่อช่อง, @handle หรือ URL ของช่อง YouTube แล้วแตะค้นหา</string>
+  <string name="morphe_ghost_play_channels_searching">กำลังค้นหาช่อง YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">การค้นหาล้มเหลว โปรดตรวจสอบการเชื่อมต่อของคุณแล้วลองอีกครั้ง</string>
+  <string name="morphe_ghost_play_channels_search_no_results">ไม่พบช่องสำหรับการค้นหานี้</string>
+  <string name="morphe_ghost_play_channels_search_count">พบ %d ช่อง — แตะเพิ่มเพื่อเปิดใช้งาน auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">วิดีโอล่าสุด</string>
+  <string name="morphe_ghost_play_channels_loading_details">กำลังโหลดวิดีโอล่าสุด…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">ไม่พบวิดีโอล่าสุด (แตะเพื่อลองอีกครั้ง)</string>
 </resources>

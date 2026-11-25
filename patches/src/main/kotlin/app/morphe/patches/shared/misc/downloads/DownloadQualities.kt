@@ -10,6 +10,7 @@ package app.morphe.patches.shared.misc.downloads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import app.morphe.util.findMethodFromToString
@@ -25,8 +26,9 @@ internal const val EXTENSION_FORMAT_STREAM_INTERFACE =
 
 /**
  * Offers the download qualities up to 2160p on every screen, labels the qualities above 1080p,
- * and adds the interfaces of the streaming data and the streams, which the extension uses to
- * pick the streams of a download. YouTube and YouTube Music save downloads the same way.
+ * and adds the interface of the streaming data, which the extension uses with the interface of
+ * the streams ([formatStreamInterfacePatch]) to pick the streams of a download.
+ * YouTube and YouTube Music save downloads the same way.
  */
 internal fun hookDownloadQualities() {
     // The app offers only the qualities up to the shorter side of the screen.
@@ -58,19 +60,35 @@ internal fun hookDownloadQualities() {
             it.instructionMatches.first().fieldReference
         )
     }
+}
 
-    FormatStreamModelToStringFingerprint.let {
-        mapOf(
-            "itag" to "patch_getItag",
-            "width" to "patch_getWidth",
-            "height" to "patch_getHeight",
-            "mimeType" to "patch_getMimeType",
-            "xtags=" to "patch_getXtags"
-        ).forEach { (toStringName, interfaceMethodName) ->
+/**
+ * Adds the interface of the streams, which the extension uses to read the streams of a video,
+ * such as the streams of a download or the video formats the player can play.
+ */
+internal val formatStreamInterfacePatch = patch {
+    execute {
+        FormatStreamModelToStringFingerprint.let {
+            mapOf(
+                "itag" to "patch_getItag",
+                "width" to "patch_getWidth",
+                "height" to "patch_getHeight",
+                "mimeType" to "patch_getMimeType",
+                "xtags=" to "patch_getXtags"
+            ).forEach { (toStringName, interfaceMethodName) ->
+                it.classDef.addPatchInterface(
+                    EXTENSION_FORMAT_STREAM_INTERFACE,
+                    interfaceMethodName,
+                    it.originalMethod.findMethodFromToString(toStringName)
+                )
+            }
+        }
+
+        FormatStreamModelConstructorFingerprint.let {
             it.classDef.addPatchInterface(
                 EXTENSION_FORMAT_STREAM_INTERFACE,
-                interfaceMethodName,
-                it.originalMethod.findMethodFromToString(toStringName)
+                "patch_getVideoId",
+                it.instructionMatches.first().fieldReference
             )
         }
     }

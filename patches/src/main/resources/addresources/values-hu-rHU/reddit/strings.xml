@@ -29,6 +29,8 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_hide_post_ads_title">Hirdetések elrejtése</string>
   <string name="morphe_hide_comment_ads_title">Hozzászólás hirdetések elrejtése</string>
   <string name="morphe_screen_navigation_bar_title">Navigációs sáv</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">Alsó sáv automatikus elrejtésének kikapcsolása</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">Görgetés közben is láthatóvá teszi az alsó navigációs sávot</string>
   <string name="morphe_hide_answers_button_title">Válasz gomb elrejtése</string>
   <string name="morphe_hide_chat_button_title">Csevegés gomb elrejtése</string>
   <string name="morphe_hide_create_button_title">Létrehozás gomb elrejtése</string>
@@ -78,8 +80,7 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_keyword_filters_saved">Frissítse a feedet a változtatások alkalmazásához</string>
   <string name="morphe_screen_layout_title">Elrendezés</string>
   <string name="morphe_copy_text_title">Szöveg másolása</string>
-  <string name="morphe_copy_text_summary">Lehetővé teszi a szöveg kijelölését és másolását a bejegyzésekben és hozzászólásokban. Letiltja a hozzászólások összecsukását</string>
-  <string name="morphe_copy_text_user_dialog_message">A hozzászólások összecsukása nem működik, amíg a Szöveg másolása engedélyezve van</string>
+  <string name="morphe_copy_text_summary">Lehetővé teszi a szöveg kijelölését és másolását a bejegyzésekben és kommentekben</string>
   <string name="morphe_custom_font_title">Egyéni betűtípus</string>
   <string name="morphe_custom_font_summary">Töltse be egyéni TTF vagy OTF betűtípus-fájlt az alábbi elérési útról. Ennek engedélyezése kikapcsolja a Rendszerbetű használatát is.</string>
   <string name="morphe_custom_font_file_path_title">Egyéni betűtípus-fájl</string>
@@ -91,6 +92,8 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_disable_modern_home_title">A modern kezdőképernyő felület letiltása</string>
   <string name="morphe_home_feed_tabs_title">Kezdőlap feed fülei</string>
   <string name="morphe_home_feed_tabs_summary">Megjeleníti a Számodra, Követett és Népszerű füleket a kezdőlap feedjén, és lehetővé teszi a görgetést közöttük. A Követett fülhez bejelentkezett fiók szükséges</string>
+  <string name="morphe_disable_refresh_on_back_title">Vissza gombbal való kilépésnél tiltsd a frissítést</string>
+  <string name="morphe_disable_refresh_on_back_summary">A kezdőleges feeden a vissza gomb már nem görgeti fel az oldal tetejére és nem tölti újra a tartalmat. Nyomja meg kétszer a vissza gombot az alkalmazásból a kilépéshez</string>
   <string name="morphe_disable_screenshot_popup_title">Képernyőfotó-felugró párbeszéd letiltása</string>
   <string name="morphe_disable_screenshot_popup_summary">Letiltja a képernyőfotó készítésekor megjelenő felugró párbeszédet</string>
   <string name="morphe_feed_auto_scroll_title">Hírfolyam automatikus görgetése</string>
@@ -124,13 +127,14 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_hide_trending_shelves_title">Népszerű polcok elrejtése</string>
   <string name="morphe_hide_trending_shelves_summary">Elrejti a népszerű polcokat a hírfolyamból és a keresési javaslatokból</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\"Neked ajánlott videók\" polc elrejtése</string>
+  <string name="morphe_always_show_hide_title">Mindig mutasd az Elrejtést</string>
+  <string name="morphe_always_show_hide_summary">Megjeleníti a „Elrejtés” opciót a feed bejegyzések menüjében, valamint akkor is, amikor a Reddit ajánlási lehetőségeket mutat, például a „Kevesebb ilyen bejegyzés” lehetőséget</string>
   <string name="morphe_remove_notification_dialog_title">Értesítési javaslat ablak eltávolítása</string>
   <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítja az értesítési javaslatok ablakot egy subreddit felkeresésekor</string>
   <string name="morphe_high_quality_avatars_title">Kiváló minőségű avatarok</string>
   <string name="morphe_high_quality_avatars_summary">A felhasználói avatarokat teljes felbontásban jeleníti meg</string>
   <string name="morphe_search_hidden_profiles_title">Rejtett profilok keresése</string>
-  <string name="morphe_search_hidden_profiles_summary">Gombot jelenít az olyan profiloknál, amelyek elrejtik a bejegyzéseiket vagy kommentjeiket, hogy a Reddit keresővel megtaláljuk azokat</string>
-  <string name="morphe_search_hidden_profiles_button">Keresés</string>
+  <string name="morphe_search_hidden_profiles_summary">Lehetővé teszi, hogy a profilkeresés megtalálja azon profilok bejegyzéseit, amelyek elrejtik a bejegyzéseiket vagy kommentjeiket</string>
   <string name="morphe_show_flairs_in_home_feed_title">Flairek megjelenítése a kezdőlapban</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Posztok flair jelvényeinek megjelenítése a kezdőlapon</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Egyes hírfolyambejegyzések nem jelenítenek meg flairt</string>
@@ -171,6 +175,8 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_media_viewer_fade_summary">A felirat mögötti sötétítés erőssége képek és videók megtekintésekor, 0 (nincs sötétítés) és 1 (a Reddit alapértelmezése) között</string>
   <string name="morphe_keep_feed_position_title">Hírfolyam pozíciójának megtartása</string>
   <string name="morphe_keep_feed_position_summary">A hírfolyamot ugyanazon a pozíción tartja egy bejegyzés, kép vagy videó bezárása után, ahelyett, hogy a megnyitott bejegyzést a tetejére mozgatná</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">Kezdőlap feed automatikus frissítésének kikapcsolása</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">Egy idő utáni visszatérés az alkalmazáshoz már nem tölti újra a kezdőlap feedet és nem görgeti azt vissza a tetejére. A lehúzással történő frissítés továbbra is működik</string>
   <string name="morphe_post_side_panel_title">Bejegyzés oldalsávja</string>
   <string name="morphe_post_side_panel_summary">A széles táblagépernyőkön a bejegyzések egy panelben nyílnak meg a hírsímen</string>
   <string name="morphe_post_side_panel_width_title">Panel szélessége</string>
@@ -260,6 +266,12 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_collapse_all_comments_scope_entry_replies">Válaszok (a főbb kommentek nyitva maradnak)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Válaszok a válaszokra (a közvetlen válaszok nyitva maradnak)</string>
   <string name="morphe_collapse_all_comments_button">Össze collapsed vagy kibontás minden kommentnek</string>
+  <string name="morphe_colorize_comment_indent_lines_title">Hozzászólás-bevonatási vonalak színezése</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">Minden válaszszint saját vonalszínt kap, így a hosszú beszélgetések könnyebben követhetőek</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">Vonalszínek</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Szivárvány (világos)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pasztell (lágy)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Haltott (beolvad az oldalba)</string>
   <string name="morphe_remember_collapsed_comments_title">Emlékezzen az összecsukott hozzászólásokra</string>
   <string name="morphe_remember_collapsed_comments_summary">Az összecsukott hozzászólások összecsukva maradnak a bejegyzés újranyitásakor</string>
   <string name="morphe_app_icon_title">Alkalmazásikon</string>

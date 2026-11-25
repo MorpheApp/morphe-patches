@@ -243,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_screen_title">Фільтр ключових слів</string>
   <string name="morphe_hide_keyword_content_screen_summary">Виберіть слова або фрази для приховування відео у стрічках і пошуку</string>
   <string name="morphe_hide_keyword_content_comments_title">Приховати коментарі за ключовими словами</string>
+  <string name="morphe_hide_keyword_content_posts_title">Приховати дописи за ключовими словами</string>
   <string name="morphe_hide_keyword_content_home_title">Приховати відео на головній</string>
   <string name="morphe_hide_keyword_content_search_title">Приховати відео в пошуку</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Приховати відео в підписках</string>
@@ -250,7 +251,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази для приховування, розділяючи їх новими рядками
 
 Ключовими словами може бути будь-який текст, що показується в назвах відео. Ключове слово @UserName приховує весь вміст конкретних авторів"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі фільтруються, щоб приховати вміст, який відповідає ключовим фразам
+  <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі / Дописи фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
 Обмеження:
 • Деякі Shorts неможливо приховати за назвою каналу
@@ -266,6 +267,23 @@ Second \"item\" text"</string>
 • Пошук: %3$s
 • Коментарі: %4$s
 • Усього: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Фільтр за кількістю переглядів</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Приховати відео у стрічках та пошуку, які мають занадто мало або занадто багато переглядів</string>
+  <string name="morphe_hide_videos_by_views_home_title">Приховати відео на головній за переглядами</string>
+  <string name="morphe_hide_videos_by_views_search_title">Приховати відео в пошуку за переглядами</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Приховати відео в підписках за переглядами</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Мінімум переглядів</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Відео з меншою кількістю переглядів приховано. 0 = без мінімуму</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Максимум переглядів</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Відео з більшою кількістю переглядів приховано. 0 = без максимуму</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Головна / Підписки / Пошук фільтруються, щоб приховати відео та Shorts за кількістю переглядів
+
+Обмеження:
+• YouTube округлює кількість переглядів, тому 1,2 тис. переглядів рахується як 1200 переглядів
+• Прямі ефіри не приховуються
+• Прихований Short може залишити порожній простір на полиці Shorts"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Фільтр за кількістю переглядів приховає всі відео</string>
   <string name="morphe_hide_stats_category_title">Статистика</string>
   <string name="morphe_hide_stats_hidden_24h_title">Прихованих відео за останні 24 години</string>
   <string name="morphe_hide_stats_hidden_all_title">Прихованих відео за весь час</string>
@@ -678,14 +696,14 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">Поруч із кількістю переглядів</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Посередині праворуч</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Зверху ліворуч</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Пошук у коментарях</string>
-  <string name="morphe_search_comments_summary">Натисніть кнопку пошуку в коментарях, щоб показувати лише завантажені коментарі, які містять усі шукані слова. Візьміть слова в лапки, щоб шукати фразу</string>
-  <string name="morphe_search_comments_dialog_title">Пошук у коментарях</string>
-  <string name="morphe_search_comments_hint">Слова для пошуку</string>
-  <string name="morphe_search_comments_clear">Очистити</string>
-  <string name="morphe_search_comments_applied">Змініть порядок сортування або відкрийте коментарі знову, щоб здійснити в них пошук</string>
-  <string name="morphe_search_comments_cleared">Пошук очищено. Змініть порядок сортування або відкрийте коментарі знову, щоб показувати всі коментарі</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Пошук у коментарях</string>
+  <string name="morphe_comment_search_summary">Натисніть кнопку пошуку в коментарях, щоб показувати лише завантажені коментарі, які містять усі шукані слова. Візьміть слова в лапки, щоб шукати фразу</string>
+  <string name="morphe_comment_search_dialog_title">Пошук у коментарях</string>
+  <string name="morphe_comment_search_hint">Слова для пошуку</string>
+  <string name="morphe_comment_search_clear">Очистити</string>
+  <string name="morphe_comment_search_applied">Змініть порядок сортування або відкрийте коментарі знову, щоб здійснити в них пошук</string>
+  <string name="morphe_comment_search_cleared">Пошук очищено. Змініть порядок сортування або відкрийте коментарі знову, щоб показувати всі коментарі</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Вимкнути вікно \"Увійти на телевізорі\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Вимкнути вікно \"Підключіть свої пристрої\"</string>
@@ -1170,6 +1188,9 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_title">Показувати кнопку \"Налаштування\"</string>
   <string name="morphe_show_settings_button_type_title">Дія кнопки \"Налаштування\"</string>
   <string name="morphe_show_settings_button_type_summary">Якщо ввімкнено, натискання відкриває налаштування Morphe, а натискання й утримування відкриває налаштування YouTube. Вимкніть, щоб поміняти місцями</string>
+  <string name="morphe_you_button_account_switcher_title">Гаряча клавіша для перемикання облікових записів</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Натисніть і утримуйте кнопку «Ви», щоб відкрити меню перемикання облікових записів</string>
   <string name="morphe_navigation_buttons_order_title">Порядок кнопок панелі навігації</string>
   <string name="morphe_navigation_buttons_order_summary">Перетягуйте кнопки, щоб змінити їхній порядок на панелі навігації</string>
   <string name="morphe_swap_create_with_notifications_button_title">Поміняти місцями кнопку \"Створити\" та кнопку \"Сповіщення\"</string>
@@ -1445,6 +1466,8 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Завжди ввімкнено</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Лише Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Вимкнено</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Показувати кнопки перемотування у стрічках</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Показує кнопки перемотування на відео, що відтворюються у стрічках, навіть коли YouTube їх не відображає</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Відновити оригінальні назви</string>
   <string name="morphe_restore_original_titles_summary">Показує оригінальні назви відео, описи відео та описи каналів замість автоматично перекладених</string>
@@ -2050,4 +2073,100 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_max_length_title">Максимальна довжина повідомлення</string>
   <string name="morphe_live_chat_translate_max_length_summary">Довші повідомлення показуються без перекладу</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Без обмежень</string>
+  <string name="morphe_ghost_play_screen_title">Привид-режим</string>
+  <string name="morphe_ghost_play_screen_summary">Дивіться відео, не впливаючи на історію переглядів або рекомендації</string>
+  <string name="morphe_ghost_play_cat_general_title">Загальні</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Кнопки</string>
+  <string name="morphe_ghost_play_cat_rules_title">Правила автопривида</string>
+  <string name="morphe_ghost_play_cat_history_title">Локальна історія</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Розширені налаштування конфіденційності</string>
+  <string name="morphe_ghost_play_enabled_title">Увімкнути режим привида</string>
+  <string name="morphe_ghost_play_enabled_summary">Дозволяє переглядати вибрані відео, Shorts, пошуки, канали або цілі сесії, не впливаючи на історію переглядів або рекомендації</string>
+  <string name="morphe_ghost_play_mode_active_title">Режим привида активний</string>
+  <string name="morphe_ghost_play_mode_active_summary">Якщо увімкнено, кожне відео, яке ви відкриваєте зі стрічок, рекомендованих відео або пошуку, відтворюється в режимі Ghost без використання меню з трьома крапками</string>
+  <string name="morphe_ghost_play_persist_mode_title">Запам\'ятовувати режим Ghost після перезапуску</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Залишає режим Ghost увімкненим навіть після закриття та повторного відкриття YouTube</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Показувати перемикач режиму Ghost у верхній панелі</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Розміщує компактний перемикач режиму Ghost поруч із іконками верхньої панелі (натисніть, щоб перемкнути, утримуйте для швидкого керування)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Показувати в меню відео</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Додає пункт \"Відтворити у режимі Ghost\" до меню з трьома крапками відео</string>
+  <string name="morphe_ghost_play_player_button_title">Показувати кнопку режиму Ghost</string>
+  <string name="morphe_ghost_play_player_button_summary">Відображає кнопку перемикання режиму Ghost у відеоплеєрі (довге натискання для швидкого керування)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Анонімізувати запити на відтворення</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Видаляє заголовки облікових записів із запитів на відтворення та події в режимі ghost для посилення ізоляції. Функції з обмеженням за віком, тільки для учасників та Premium недоступні, коли цей параметр увімкнено</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Авто-ghost Shorts</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Автоматично переглядає Shorts у режимі Ghost, щоб вони не впливали на вашу стрічку головної сторінки</string>
+  <string name="morphe_ghost_play_auto_search_title">Авто-ghost відео з пошуку</string>
+  <string name="morphe_ghost_play_auto_search_summary">Автоматично переглядає відео, відкриті з результатів пошуку, у режимі Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_title">Авто-ghost канали</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Шукайте, додавайте, перевіряйте та керуйте каналами, які завжди відтворюються в режимі Ghost</string>
+  <string name="morphe_ghost_play_local_history_title">Зберігати локальну історію Ghost</string>
+  <string name="morphe_ghost_play_local_history_summary">Запам\'ятовує відео в режимі Ghost та позиції відтворення лише на цьому пристрої (ніколи не надсилаються в YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">Ліміт локальної історії Ghost</string>
+  <string name="morphe_ghost_play_history_limit_summary">Максимальна кількість відео, що зберігаються на пристрої (найстаріші записи видаляються автоматично)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · %2$d відео збережено (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · Відео не збережено</string>
+  <string name="morphe_ghost_play_history_limit_100">100 відео</string>
+  <string name="morphe_ghost_play_history_limit_500">500 відео</string>
+  <string name="morphe_ghost_play_history_limit_2000">2 000 відео</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Необмежено</string>
+  <string name="morphe_ghost_play_view_history_title">Відкрити локальну історію Ghost</string>
+  <string name="morphe_ghost_play_view_history_summary">Переглядайте, шукайте, відновлюйте в режимі Ghost або очищайте історію на пристрої</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Відео ще не записано (зберігається лише на цьому пристрої)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Відтворити в режимі Ghost</string>
+  <string name="morphe_ghost_play_video_active_toast">Режим Ghost активний — історія переглядів і рекомендації захищені</string>
+  <string name="morphe_ghost_play_video_off_toast">Привид-режим ВИМК. для цього відео</string>
+  <string name="morphe_ghost_play_session_on_toast">Привид-режим УВМ. — відео не впливатимуть на історію чи рекомендації</string>
+  <string name="morphe_ghost_play_session_off_toast">Привид-режим ВИМК. — повернення до звичайного відтворення</string>
+  <string name="morphe_ghost_play_timer_set_toast">Привид-режим активний протягом %d хвилин</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Таймер скинуто — Режим привида залишається УВМ</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Введіть тривалість від 1 до 720 хвилин</string>
+  <string name="morphe_ghost_play_dialog_title">Привид-режим</string>
+  <string name="morphe_ghost_play_state_on">Увімк.</string>
+  <string name="morphe_ghost_play_state_off">Вимк.</string>
+  <string name="morphe_ghost_play_close">Закрити</string>
+  <string name="morphe_ghost_play_open_settings">Усі налаштування</string>
+  <string name="morphe_ghost_play_quick_power_hint">Натисніть, щоб перемкнути Привид-режим</string>
+  <string name="morphe_ghost_play_quick_timer_title">Привид-режим за таймером</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Натисніть, щоб вибрати тривалість</string>
+  <string name="morphe_ghost_play_quick_timer_running">Таймер активний · залишилося %d хв</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Після завершення автоматично повертається до звичайного режиму</string>
+  <string name="morphe_ghost_play_quick_timer_change">Змінити час</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Скинути таймер (залишити УВМ)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%d хв</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Свої хвилини (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Встановити</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Авто-ghost УВМ для цього каналу</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Авто-ghost ВИМ для цього каналу</string>
+  <string name="morphe_ghost_play_channel_added_toast">Додано «%s» до авто-привидів каналів</string>
+  <string name="morphe_ghost_play_channel_removed_toast">Вилучено «%s» з авто-привидів каналів</string>
+  <string name="morphe_ghost_play_history_title">Локальна історія Ghost</string>
+  <string name="morphe_ghost_play_history_search_hint">Фільтрувати за назвою відео або каналом…</string>
+  <string name="morphe_ghost_play_history_no_match">Немає відповідних відео в локальній історії Ghost</string>
+  <string name="morphe_ghost_play_history_empty">Локальної історії Ghost ще немає</string>
+  <string name="morphe_ghost_play_history_clear_all">Очистити все</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Очистити локальну історію Ghost?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Це видалить усі збережені на пристрої записи режиму Ghost, і цю дію неможливо скасувати.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Локальну історію Ghost очищено</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Видалено з локальної історії Ghost</string>
+  <string name="morphe_ghost_play_channels_manager_title">Канали авто-ghost</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Додано (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Пошук &amp; Додавання</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Фільтрувати додані канали за назвою, @handle або темою…</string>
+  <string name="morphe_ghost_play_channels_empty">Каналів ще не додано. Перейдіть до розділу \"Пошук &amp; Додавання\", щоб знайти канали за назвою, @handle або URL-адресою.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Жоден із доданих каналів не відповідає вашому фільтру</string>
+  <string name="morphe_ghost_play_channels_add_current">Відтворюється: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Додати</string>
+  <string name="morphe_ghost_play_channels_added_badge">Додано</string>
+  <string name="morphe_ghost_play_channels_delete_button">Видалити</string>
+  <string name="morphe_ghost_play_channels_search_hint">Назва каналу, @handle або URL-адреса…</string>
+  <string name="morphe_ghost_play_channels_search_button">Пошук</string>
+  <string name="morphe_ghost_play_channels_search_guide">Введіть назву каналу, @handle або URL-адресу каналу YouTube і натисніть \"Пошук\"</string>
+  <string name="morphe_ghost_play_channels_searching">Пошук каналів YouTube…</string>
+  <string name="morphe_ghost_play_channels_search_error">Помилка пошуку. Перевірте з\'єднання та спробуйте ще раз.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">За цим запитом каналів не знайдено</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Останні відео</string>
+  <string name="morphe_ghost_play_channels_loading_details">Завантаження останніх відео…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Не знайдено нещодавніх відео (натисніть, щоб повторити)</string>
 </resources>

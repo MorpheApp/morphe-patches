@@ -243,6 +243,7 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_hide_keyword_content_screen_title">Raktinių žodžių filtras</string>
   <string name="morphe_hide_keyword_content_screen_summary">Pasirinkite konkrečius žodžius ar frazes, kad paslėptumėte vaizdo įrašus kanaluose ir paieškoje</string>
   <string name="morphe_hide_keyword_content_comments_title">Slėpti komentarus pagal raktinius žodžius</string>
+  <string name="morphe_hide_keyword_content_posts_title">Slėpti įrašus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_home_title">Slėpti pagrindinio puslapio vaizdo įrašus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_search_title">Slėpti paieškos rezultatus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Slėpti prenumeratų vaizdo įrašus pagal raktinius žodžius</string>
@@ -250,11 +251,11 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_hide_keyword_content_phrases_summary">"Įveskite raktinius žodžius ir frazes, kurių norite paslėpti, atskirdami juos naujomis eilutėmis
 
 Raktiniai žodžiai gali būti bet koks tekstas, rodomas vaizdo įrašų pavadinimuose. Raktinis žodis @VartotojoVardas paslepia visą turinį iš konkrečių kūrėjų"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Pradžia / Prenumeratos / Paieška / Komentarai yra filtruojami, kad būtų paslėptas turinys, atitinkantis raktines frazes
+  <string name="morphe_hide_keyword_content_about_summary">"Pradžia / Prenumeratos / Paieška / Komentarai / Įrašai yra filtruojami, kad būtų paslėptas turinys, atitinkantis raktinių frazių
 
 Apribojimai:
-• kai kurių Shorts nepavyksta paslėpti pagal kanalų pavadinimą
-• kai kurie vartotojo sąsajos komponentai gali būti nepaslėpti"</string>
+• Kai kurių Shorts negalima paslėpti pagal kanalo pavadinimą
+• Kai kurie vartotojo sąsajos komponentai gali būti nepaslėpti"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Atitikti ištisus žodžius</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Apsupę raktinį žodį / frazę dvigubomis kabutėmis išvengsite dalinių vaizdo įrašų pavadinimų ir kanalų pavadinimų atitikimų&lt;br&gt;&lt;br&gt;Pavyzdžiui,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; paslėps vaizdo įrašą: &lt;b&gt;Kaip veikia dirbtinis intelektas?&lt;/b&gt;&lt;br&gt;bet nepaslėps: &lt;b&gt;Ką reiškia sąžiningas naudojimas?&lt;/b&gt;</string>
@@ -266,6 +267,23 @@ Apribojimai:
 • Paieška: %3$s
 • Komentarai: %4$s
 • Iš viso: %5$s"</string>
+  <string name="morphe_hide_videos_by_views_screen_title">Peržiūrų skaičiaus filtras</string>
+  <string name="morphe_hide_videos_by_views_screen_summary">Slėpti vaizdo įrašus feed\'uose ir paieškose, jei jų peržiūrų yra per mažai arba per daug</string>
+  <string name="morphe_hide_videos_by_views_home_title">Slėpti Pagrindinio puslapio vaizdo įrašus pagal peržiūras</string>
+  <string name="morphe_hide_videos_by_views_search_title">Slėpti paieškos rezultatus pagal peržiūras</string>
+  <string name="morphe_hide_videos_by_views_subscriptions_title">Slėpti Prenumeratų vaizdo įrašus pagal peržiūras</string>
+  <string name="morphe_hide_videos_by_views_minimum_title">Minimalus peržiūrų skaičius</string>
+  <string name="morphe_hide_videos_by_views_minimum_summary">Vaizdo įrašai, turintys mažiau peržiūrų, yra paslėpti. 0 = nėra minimumo</string>
+  <string name="morphe_hide_videos_by_views_maximum_title">Maksimalus peržiūrų skaičius</string>
+  <string name="morphe_hide_videos_by_views_maximum_summary">Vaizdo įrašai, turintys daugiau peržiūrų, yra paslėpti. 0 = nėra maksimumo</string>
+  <string name="morphe_hide_videos_by_views_about_summary">"Pagrindinis puslapis / Prenumeratos / Paieška yra filtruojami, kad pagal peržiūrų skaičių būtų paslėpti vaizdo įrašai ir Shorts
+
+Apribojimai:
+• YouTube apvalgo peržiūrų skaičių, todėl 1,2K peržiūrų yra skaičiuojama kaip 1200 peržiūrų
+• Tiesiogios transliacijos nėra slėpiamos
+• Paslėptas Shorts gali palikti tuščią vietą Shorts lentynoje"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_views_toast_broad">Peržiūrų skaičiaus filtras paslėps visus vaizdo įrašus</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Paslėpta vaizdo įrašų per paskutines 24 valandas</string>
   <string name="morphe_hide_stats_hidden_all_title">Paslėpta vaizdo įrašų per visą laiką</string>
@@ -678,14 +696,14 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_ryd_feed_counts_position_entry_1">Šalia peržiūrų skaičiaus</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Viduryje į dešinę</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Viršuje kairėje</string>
-  <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_title">Ieškoti komentaruose</string>
-  <string name="morphe_search_comments_summary">Bakstelėkite paieškos mygtuką komentaruose, kad parodytumėte tik įkeltus komentarus, kuriuose yra visi ieškomi žodžiai. Norėdami ieškoti frazės, įrašykite ją kabutėse</string>
-  <string name="morphe_search_comments_dialog_title">Ieškoti komentaruose</string>
-  <string name="morphe_search_comments_hint">Žodžiai paieškai</string>
-  <string name="morphe_search_comments_clear">Valyti</string>
-  <string name="morphe_search_comments_applied">Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad ieškotumėte jų</string>
-  <string name="morphe_search_comments_cleared">Paieška išvalyta. Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad pamatytumėte visus komentarus</string>
+  <!-- interaction.commentsearch.commentSearchPatch -->
+  <string name="morphe_comment_search_title">Ieškoti komentarų</string>
+  <string name="morphe_comment_search_summary">Bakstelėkite paieškos mygtuką komentaruose, kad parodytumėte tik įkeltus komentarus, kuriuose yra visi ieškomi žodžiai. Norėdami ieškoti frazės, įrašykite ją kabutėse</string>
+  <string name="morphe_comment_search_dialog_title">Ieieži komentaruose</string>
+  <string name="morphe_comment_search_hint">Žodžiai, kurių ieškoti</string>
+  <string name="morphe_comment_search_clear">Valyti</string>
+  <string name="morphe_comment_search_applied">Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad juose ieškotumėte</string>
+  <string name="morphe_comment_search_cleared">Paieška išvalyta. Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad pamatytumėte visus komentarus</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Išjungti iššokantįjį langą „Prisijungti prie TV“</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Išjungti iššokantįjį langą „Prijunkite savo įrenginius“</string>
@@ -1169,6 +1187,9 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_show_settings_button_title">Rodyti nustatymų mygtuką</string>
   <string name="morphe_show_settings_button_type_title">Nustatymų mygtuko veiksmas</string>
   <string name="morphe_show_settings_button_type_summary">Įjungus šią funkciją, paliesus atsidaro \"Morphe\" nustatymai, o ilgiau paspaudus – \"YouTube\" nustatymai; išjunkite, norėdami pakeisti jų vietą</string>
+  <string name="morphe_you_button_account_switcher_title">Paskyros keitiklio shortcutas</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+  <string name="morphe_you_button_account_switcher_summary">Ilgai paspauskite mygtuką „Jūs“, kad atidarytumėte paskyros keitiklio</string>
   <string name="morphe_navigation_buttons_order_title">Navigacijos mygtukų tvarka</string>
   <string name="morphe_navigation_buttons_order_summary">Vilkite mygtukus, kad pakeistumėte jų tvarką navigacijos juostoje</string>
   <string name="morphe_swap_create_with_notifications_button_title">Sukeisti „Kurti“ mygtuką su pranešimų mygtuku</string>
@@ -1445,6 +1466,8 @@ Automobilio išdėstymas
   <string name="morphe_playback_in_feeds_entry_always_on">Visada</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Tik „Wi-Fi“</string>
   <string name="morphe_playback_in_feeds_entry_off">Išjungta</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_title">Rodyti per windingo mygtukus feed\'uose</string>
+  <string name="morphe_playback_in_feeds_seek_buttons_summary">Rodo per windingo mygtukus feed\'uose grojamuose vaizdo įrašuose, net ir tada, kai \"YouTube\" jų nerodo</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Atkurti originalius pavadinimus</string>
   <string name="morphe_restore_original_titles_summary">Rodo originalius vaizdo įrašų pavadinimus, vaizdo įrašų ir kanalų aprašymus vietoj automatiškai išverstų</string>
@@ -2050,4 +2073,106 @@ Automatinis įrašymas neprivalomas. Jis sustabdomas slaptajame režime arba pak
   <string name="morphe_live_chat_translate_max_length_title">Maksimalus žinutės ilgis</string>
   <string name="morphe_live_chat_translate_max_length_summary">Ilgines žinutės rodomos nevertomos</string>
   <string name="morphe_live_chat_translate_max_length_no_limit">Be apriboties</string>
+  <string name="morphe_ghost_play_screen_title">Vaidu režimas</string>
+  <string name="morphe_ghost_play_screen_summary">Žiūrėkite vaizdo įrašus, nepodavindami į peržiūros istoriją ar rekomendacijas</string>
+  <string name="morphe_ghost_play_cat_general_title">Bendra</string>
+  <string name="morphe_ghost_play_cat_buttons_title">Mygtukai</string>
+  <string name="morphe_ghost_play_cat_rules_title">„Auto-ghost“ taisyklės</string>
+  <string name="morphe_ghost_play_cat_history_title">Vietinė istorija</string>
+  <string name="morphe_ghost_play_cat_advanced_title">Išplėstinta privatumo apsauga</string>
+  <string name="morphe_ghost_play_enabled_title">Įjungti „Ghost“ režimą</string>
+  <string name="morphe_ghost_play_enabled_summary">Leidžia žiūrėti pasirinktus vaizdo įrašus, Shorts, paieškas, kanalus arba visas sesijas nepavikus peržiūrų istorijai ar rekomendacijoms</string>
+  <string name="morphe_ghost_play_mode_active_title">Aktyvus „Ghost“ režimas</string>
+  <string name="morphe_ghost_play_mode_active_summary">Kai šia opcija įjungta, kiekvienas vaizdo įrašas, kurį įprastai atidarote iš naujienų srautų, susijusių vaizdo įrašų arba paieškos, yra paleidžiamas „Ghost“ režimu, nenaudojant trijų taškų meniu</string>
+  <string name="morphe_ghost_play_persist_mode_title">Išsaugoti „Ghost“ režimą po perklaikymo</string>
+  <string name="morphe_ghost_play_persist_mode_summary">Išlaiko įjungtą „Ghost“ režimą net ir uždarius bei vėl atidarius „YouTube“</string>
+  <string name="morphe_ghost_play_toolbar_button_title">Rodyti „Ghost“ režimo perjungiklį viršutinėje juostoje</string>
+  <string name="morphe_ghost_play_toolbar_button_summary">Viršutinės juostos piktogramų šalia įstato kompaktišką „Ghost“ režimo perjungiklį (bakstelėkite, kad pakeistumėte, palaikykite norėdami greitai valdyti)</string>
+  <string name="morphe_ghost_play_flyout_button_title">Rodyti vaizdo įrašo meniu</string>
+  <string name="morphe_ghost_play_flyout_button_summary">Prideda \"Leisti Ghost režimu\" į vaizdo įrašų trijų taškų meniu</string>
+  <string name="morphe_ghost_play_player_button_title">Rodyti Ghost režimo mygtuką</string>
+  <string name="morphe_ghost_play_player_button_summary">Vaizdo įrašų grotuve rodo Ghost režimo perjungimo mygtuką (ilgai paspauskite greitiesiems valdymams)</string>
+  <string name="morphe_ghost_play_anonymize_requests_title">Anoniminti atkūrimo už请求us</string>
+  <string name="morphe_ghost_play_anonymize_requests_summary">Ištrina paskyros antraštes iš Ghost atkūrimo ir įvykių užrequests, kad užtikrintų stipresnę izoliaciją. Įjungus šią funkciją, nepasiekiami turiniai su amžiaus apribojimu, tik nariams skirtos funkcijos ir Premium funkcijos</string>
+  <string name="morphe_ghost_play_auto_shorts_title">Automatinis Shorts Ghost režimas</string>
+  <string name="morphe_ghost_play_auto_shorts_summary">Automatiškai žiūri Shorts „Ghost“ režimu, kad jie nepovikų į jūsų pagrindinę naujienų srautą</string>
+  <string name="morphe_ghost_play_auto_search_title">Automatinis „ghost“ režimas paieškos vaizdo įrašams</string>
+  <string name="morphe_ghost_play_auto_search_summary">Automatiškai žiūri iš paieškos rezultatų atidarytus vaizdo įrašus „Ghost“ režimu</string>
+  <string name="morphe_ghost_play_manage_channels_title">Automatinis kanalų „ghost“ režimas</string>
+  <string name="morphe_ghost_play_manage_channels_summary">Ieškokite, pridėkite, peržiūrėkite ir tvarkykite kanalus, kurie visada veikia „Ghost“ režimu</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d channels configured — tap to search, inspect, or remove</string>
+  <string name="morphe_ghost_play_local_history_title">Išlaikyti vietinę „Ghost“ istoriją</string>
+  <string name="morphe_ghost_play_local_history_summary">Prisimena „Ghost“ režimo vaizdo įrašus ir atkūrimo pozicijas tik šioje įrenginyje (niekada nesiunčiama į YouTube)</string>
+  <string name="morphe_ghost_play_history_limit_title">Vietinės „Ghost“ istorijos riba sprach</string>
+  <string name="morphe_ghost_play_history_limit_summary">Maksimalus įrenginyje saugomų vaizdo įrašų skaičius (seniausi įrašai pašalinami automatiškai)</string>
+  <string name="morphe_ghost_play_history_limit_summary_active">%1$s · išsaugoti %2$d vaizdo įrašai (%3$s)</string>
+  <string name="morphe_ghost_play_history_limit_summary_empty">%1$s · jokių išsaugotų vaizdo įrašų</string>
+  <string name="morphe_ghost_play_history_limit_100">100 vaizdo įrašų</string>
+  <string name="morphe_ghost_play_history_limit_500">500 vaizdo įrašų</string>
+  <string name="morphe_ghost_play_history_limit_2000">2 000 vaizdo įrašų</string>
+  <string name="morphe_ghost_play_history_limit_unlimited">Be ribų</string>
+  <string name="morphe_ghost_play_view_history_title">Atidaryti vietinę „Ghost“ istoriją</string>
+  <string name="morphe_ghost_play_view_history_summary">Peržiūrėkite, ieškokite, atnaujinkite peržiūrą „Ghost“ režime arba išvalykite savo įrenginio istoriją</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d vaizdo įrašai išsaugoti įrenginyje (%2$s) — palieskite, kad peržiūrėtumėte arba tęstumėte</string>
+  <string name="morphe_ghost_play_view_history_summary_empty">Vaizdiniai įrašai dar neįrašyti (išsaugomi tik šiame įrenginyje)</string>
+  <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
+  <string name="morphe_ghost_play_flyout_action">Leisti „Ghost“ režimu</string>
+  <string name="morphe_ghost_play_video_active_toast">„Ghost“ režimas aktyvus – peržiūros istorija ir rekomendacijos yra apsaugotos</string>
+  <string name="morphe_ghost_play_video_off_toast">Šiam vaizdiniui „Ghost“ režimas IŠJUNGTAS</string>
+  <string name="morphe_ghost_play_session_on_toast">„Ghost“ režimas ĮJUNGTAS – vaizdiniai įrašai nep повлияs peržiūros istorijai ar rekomendacijoms</string>
+  <string name="morphe_ghost_play_session_off_toast">„Ghost“ režimas IŠJUNGTAS – grįžtama prie įprasto atkūrimo</string>
+  <string name="morphe_ghost_play_timer_set_toast">Ghost režimas aktyvus %d minutės</string>
+  <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Laikmatis išvalytas – „Ghost“ režimas lieka ĮJUNGTAS</string>
+  <string name="morphe_ghost_play_timer_invalid_toast">Įveskite trukmę nuo 1 iki 720 minučių</string>
+  <string name="morphe_ghost_play_dialog_title">„Ghost“ režimas</string>
+  <string name="morphe_ghost_play_state_on">Įjungta</string>
+  <string name="morphe_ghost_play_state_off">Išjungta</string>
+  <string name="morphe_ghost_play_close">Užverti</string>
+  <string name="morphe_ghost_play_open_settings">Visi nustatymai</string>
+  <string name="morphe_ghost_play_quick_power_hint">Bakstelėkite, kad įjungtumėte arba išjungtumėte „Ghost“ režimą</string>
+  <string name="morphe_ghost_play_quick_timer_title">„Ghost“ režimas su laikmatimiu</string>
+  <string name="morphe_ghost_play_quick_timer_sub">Bakstelėkite, kad pasirinktumėte trukmę</string>
+  <string name="morphe_ghost_play_quick_timer_running">Laikmatis aktyvus · liko %d min</string>
+  <string name="morphe_ghost_play_quick_timer_running_sub">Baigusi jis automatiškai grįžta į įprastą režimą</string>
+  <string name="morphe_ghost_play_quick_timer_change">Pakeisti laiką</string>
+  <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Išvalyti laikmatį (palikti ĮJUNGTA)</string>
+  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
+  <string name="morphe_ghost_play_timer_custom_hint">Savo minutes (1–720)…</string>
+  <string name="morphe_ghost_play_timer_custom_set">Nustatyti</string>
+  <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost ĮJUNGTA šiam kanalui</string>
+  <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost IŠJUNGTA šiam kanalui</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d channels configured</string>
+  <string name="morphe_ghost_play_quick_channel_manage_btn">Sąrašas (%d)</string>
+  <string name="morphe_ghost_play_channel_added_toast">\"%s\" pridėta prie automatinio „Ghost“ režimo kanalų</string>
+  <string name="morphe_ghost_play_channel_removed_toast">\"%s\" pašalinta iš automatinio „Ghost“ režimo kanalų</string>
+  <string name="morphe_ghost_play_history_title">Vietinė „Ghost“ istorija</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d vaizdiniai (%s) · palieskite, kad tęstumėte „Ghost“ režimu, palaikykite, kad pašalintumėte</string>
+  <string name="morphe_ghost_play_history_search_hint">Filtruoti pagal vaizdinio pavadinimą arba kanalą…</string>
+  <string name="morphe_ghost_play_history_no_match">Vietinėje „Ghost“ istorijoje nėra atitinkamų vaizdinių</string>
+  <string name="morphe_ghost_play_history_empty">Dar nėra vietinės „Ghost“ istorijos</string>
+  <string name="morphe_ghost_play_history_clear_all">Išvalyti viską</string>
+  <string name="morphe_ghost_play_history_clear_confirm_title">Išvalyti vietinę Ghost istoriją?</string>
+  <string name="morphe_ghost_play_history_clear_confirm_message">Tai ištrins visus įrenginyje išsaugotus Ghost režimo įrašus, ir šios veiksmo atšaukti nebegalėsite.</string>
+  <string name="morphe_ghost_play_history_cleared_toast">Vietinė Ghost istorija išvalyta</string>
+  <string name="morphe_ghost_play_history_item_removed_toast">Pašalinta iš vietinės Ghost istorijos</string>
+  <string name="morphe_ghost_play_channels_manager_title">Automatinio Ghost režimo kanalai</string>
+  <string name="morphe_ghost_play_channels_tab_saved">Pridėta (%d)</string>
+  <string name="morphe_ghost_play_channels_tab_search">Ieškoti &amp; pridėti</string>
+  <string name="morphe_ghost_play_channels_filter_hint">Filtruokite pridėtus kanalus pagal pavadinimą, @vartotojo vardą arba temą…</string>
+  <string name="morphe_ghost_play_channels_empty">Kanalų dar nepridėta. Pereikite į skiltį „Ieškoti &amp; pridėti“, kad rastumėte kanalus pagal pavadinimą, @vartotojo vardą arba URL.</string>
+  <string name="morphe_ghost_play_channels_filter_no_match">Pridėti kanalai neatitinka jūsų filtro</string>
+  <string name="morphe_ghost_play_channels_add_current">Groja: %s</string>
+  <string name="morphe_ghost_play_channels_add_button">Pridėti</string>
+  <string name="morphe_ghost_play_channels_added_badge">Pridėta</string>
+  <string name="morphe_ghost_play_channels_delete_button">Šalinti</string>
+  <string name="morphe_ghost_play_channels_search_hint">Kanalo pavadinimas, @vartotojo vardas arba URL…</string>
+  <string name="morphe_ghost_play_channels_search_button">Ieškoti</string>
+  <string name="morphe_ghost_play_channels_search_guide">Įveskite kanalo pavadinimą, @vartotojo vardą arba „YouTube“ kanalo URL ir palieskite „Ieškoti“</string>
+  <string name="morphe_ghost_play_channels_searching">Ieškoma „YouTube“ kanalų…</string>
+  <string name="morphe_ghost_play_channels_search_error">Paieška nepavyko. Patikrinkite ryšį ir pabandykite dar kartą.</string>
+  <string name="morphe_ghost_play_channels_search_no_results">Šia užklausa jokių kanalų nerasta</string>
+  <string name="morphe_ghost_play_channels_search_count">%d channels found — tap Add to enable auto-ghost</string>
+  <string name="morphe_ghost_play_channels_recent_videos">Naujausi vaizdo įrašai</string>
+  <string name="morphe_ghost_play_channels_loading_details">Kraunami naujausi vaizdo įrašai…</string>
+  <string name="morphe_ghost_play_channels_no_recent_videos">Naujausi vaizdo įrašai nerasti (bakstelėkite, kad pabandytumėte dar kartą)</string>
 </resources>

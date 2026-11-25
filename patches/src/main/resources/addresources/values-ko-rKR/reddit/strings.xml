@@ -25,6 +25,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_ads_title">피드 광고 숨기기</string>
   <string name="morphe_hide_comment_ads_title">댓글 광고 숨기기</string>
   <string name="morphe_screen_navigation_bar_title">하단바</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_title">하단바 자동 숨김 비활성화하기</string>
+  <string name="morphe_disable_bottom_bar_auto_hide_summary">스크롤하는 동안 하단 탐색바를 계속 표시합니다</string>
   <string name="morphe_hide_answers_button_title">Answers 버튼 숨기기</string>
   <string name="morphe_hide_chat_button_title">채팅 버튼 숨기기</string>
   <string name="morphe_hide_create_button_title">만들기 버튼 숨기기</string>
@@ -74,8 +76,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_saved">변경 사항을 적용하려면 피드를 새로고침하세요</string>
   <string name="morphe_screen_layout_title">레이아웃</string>
   <string name="morphe_copy_text_title">텍스트 복사하기</string>
-  <string name="morphe_copy_text_summary">게시물과 댓글에서 텍스트를 선택하고 복사할 수 있습니다. 댓글 접기를 비활성화합니다</string>
-  <string name="morphe_copy_text_user_dialog_message">\'텍스트 복사하기\'가 활성화되어 있는 동안에는 댓글 접기가 작동하지 않습니다</string>
+  <string name="morphe_copy_text_summary">게시물과 댓글에서 텍스트를 선택하고 복사할 수 있습니다</string>
   <string name="morphe_custom_font_title">사용자 정의 글꼴</string>
   <string name="morphe_custom_font_summary">아래 경로에 있는 사용자 정의 TTF 또는 OTF 글꼴 파일을 불러옵니다. 이 옵션을 활성화하면 \'시스템 글꼴 강제 사용\'이 자동으로 비활성화됩니다</string>
   <string name="morphe_custom_font_file_path_title">사용자 정의 글꼴 파일</string>
@@ -87,6 +88,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_title">모던 홈 비활성화하기</string>
   <string name="morphe_home_feed_tabs_title">홈 피드 탭</string>
   <string name="morphe_home_feed_tabs_summary">홈 피드에 \'추천\', \'팔로잉\' 및 \'인기\' 탭을 표시하고 탭 간 스와이프를 가능하게 합니다. 팔로잉 기능을 사용하려면 계정 로그인이 필요합니다</string>
+  <string name="morphe_disable_refresh_on_back_title">종료 시 뒤로 가기 새로고침 비활성화</string>
+  <string name="morphe_disable_refresh_on_back_summary">홈 피드에서 뒤로 가기를 눌러도 더 이상 상단으로 스크롤하거나 다시 로드하지 않습니다. 앱을 종료하려면 뒤로 가기를 두 번 누르세요</string>
   <string name="morphe_disable_screenshot_popup_title">스크린샷 팝업 비활성화하기</string>
   <string name="morphe_disable_screenshot_popup_summary">스크린샷 촬영 시 나타나는 팝업을 비활성화합니다</string>
   <string name="morphe_feed_auto_scroll_title">피드 자동 스크롤</string>
@@ -120,13 +123,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">\'인기 급상승 중\' 선반 숨기기</string>
   <string name="morphe_hide_trending_shelves_summary">피드 및 검색 추천에서 \'인기 급상승 중\' 선반을 숨깁니다</string>
   <string name="morphe_hide_videos_for_you_shelf_title">\'맞춤 동영상\' 선반 숨기기</string>
+  <string name="morphe_always_show_hide_title">항상 숨기기 표시</string>
+  <string name="morphe_always_show_hide_summary">피드 게시물 메뉴와 Reddit이 \"이와 유사한 게시물 적게 표시\"와 같은 추천 옵션을 표시할 때 \'숨기기\'를 표시합니다</string>
   <string name="morphe_remove_notification_dialog_title">알림 제안 대화 상자 제거하기</string>
   <string name="morphe_remove_notification_dialog_summary">서브레딧 방문 시 나타나는 알림 제안 대화 상자를 자동으로 닫습니다</string>
   <string name="morphe_high_quality_avatars_title">고화질 아바타</string>
   <string name="morphe_high_quality_avatars_summary">사용자 아바타를 전체 해상도로 표시합니다</string>
   <string name="morphe_search_hidden_profiles_title">숨겨진 프로필 검색</string>
-  <string name="morphe_search_hidden_profiles_summary">게시물이나 댓글을 숨긴 프로필에 버튼을 표시하여 Reddit 검색으로 해당 게시물을 찾을 수 있게 합니다</string>
-  <string name="morphe_search_hidden_profiles_button">검색</string>
+  <string name="morphe_search_hidden_profiles_summary">게시물이나 댓글을 숨긴 프로필의 게시물도 프로필 검색에서 찾을 수 있게 합니다</string>
   <string name="morphe_show_flairs_in_home_feed_title">홈 피드에 분류 태그 배지 표시하기</string>
   <string name="morphe_show_flairs_in_home_feed_summary">홈 피드에 게시글 분류 태그 배지를 표시합니다</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">일부 피드 항목에는 분류 태그 배지가 표시되지 않을 수 있습니다</string>
@@ -167,6 +171,8 @@ Second \"item\" text"</string>
   <string name="morphe_media_viewer_fade_summary">이미지와 동영상을 볼 때 캡션 뒤에 적용되는 어두운 페이드의 강도를 0에서 1 사이에서 조절할 수 있습니다 (0: 페이드 없음, 1: Reddit 기본값)</string>
   <string name="morphe_keep_feed_position_title">피드 위치 유지하기</string>
   <string name="morphe_keep_feed_position_summary">게시물, 이미지 또는 동영상을 열었다가 닫아도 피드가 원래 위치에 그대로 유지됩니다. 열린 게시물이 피드 맨 위로 이동하지 않습니다</string>
+  <string name="morphe_disable_home_feed_auto_refresh_title">홈 피드 자동 새로고침 비활성화</string>
+  <string name="morphe_disable_home_feed_auto_refresh_summary">한동안 앱을 벗어났다가 돌아와도 더 이상 홈 피드를 다시 로드하거나 상단으로 이동시키지 않습니다. 당겨서 새로고침 기능은 여전히 작동합니다</string>
   <string name="morphe_post_side_panel_title">게시물 사이드 패널</string>
   <string name="morphe_post_side_panel_summary">와이드 태블릿 화면에서는 게시물이 피드 옆의 패널에서 열립니다</string>
   <string name="morphe_post_side_panel_width_title">패널 너비</string>
@@ -256,6 +262,12 @@ Second \"item\" text"</string>
   <string name="morphe_collapse_all_comments_scope_entry_replies">답글 (상위 댓글은 유지)</string>
   <string name="morphe_collapse_all_comments_scope_entry_nested_replies">답글의 답글 (직접적인 답글은 유지)</string>
   <string name="morphe_collapse_all_comments_button">모든 댓글 접기 또는 펼치기</string>
+  <string name="morphe_colorize_comment_indent_lines_title">댓글 들여쓰기 선 색상 지정</string>
+  <string name="morphe_colorize_comment_indent_lines_summary">각 답글 레벨에 고유한 선 색상을 부여하여 긴 스레드를 더 쉽게 따라갈 수 있게 합니다</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_title">선 색상</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">무지개색 (밝게)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">파스텔 (부드럽게)</string>
+  <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">뮤트 (페이지와 조화롭게)</string>
   <string name="morphe_remember_collapsed_comments_title">접힌 댓글 기억하기</string>
   <string name="morphe_remember_collapsed_comments_summary">댓글을 접어 놓으면 게시물을 다시 열어도 해당 댓글이 접힌 상태로 유지됩니다</string>
   <string name="morphe_app_icon_title">앱 아이콘</string>

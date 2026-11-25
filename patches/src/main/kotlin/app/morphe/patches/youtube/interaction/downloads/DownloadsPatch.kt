@@ -30,6 +30,7 @@ import app.morphe.patches.shared.misc.downloads.EXTENSION_FORMAT_STREAM_INTERFAC
 import app.morphe.patches.shared.misc.downloads.EXTENSION_STREAMING_DATA_INTERFACE
 import app.morphe.patches.shared.misc.downloads.OfflineSettingsConstructorFingerprint
 import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
+import app.morphe.patches.shared.misc.downloads.formatStreamInterfacePatch
 import app.morphe.patches.shared.misc.downloads.hookDownloadQualities
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
@@ -158,6 +159,7 @@ val downloadsPatch = patch(
 ) {
     dependsOn(
         downloadsResourcePatch,
+        formatStreamInterfacePatch,
         authHookPatch,
         videoInformationPatch,
         legacyPlayerControlsPatch,
