@@ -67,6 +67,20 @@ public class SponsorBlockUtils {
     private static long newSponsorSegmentEndMillis = -1;
     private static boolean newSponsorSegmentPreviewed;
     private static SegmentCategory newUserCreatedSegmentCategory;
+    /**
+     * Video that a seek moved to its start while the video was not playing, until the next seek
+     * or until the video plays again.
+     */
+    private static volatile String videoSeekedToStartId;
+
+    static {
+        VideoState.getOnChange().addObserver(state -> {
+            if (state == VideoState.PLAYING) {
+                videoSeekedToStartId = null;
+            }
+        });
+    }
+
     private static final DialogInterface.OnClickListener segmentTypeListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
@@ -204,10 +218,34 @@ public class SponsorBlockUtils {
         }
     }
 
+    /**
+     * Injection point.
+     * Called when the player seeks, such as with the seekbar or the rewind button of the new segment.
+     *
+     * @param seekTime The time the player seeks to, which is before the start of the video
+     *                 when a relative seek goes past the start.
+     */
+    public static void onVideoSeek(long seekTime) {
+        videoSeekedToStartId = seekTime <= 0 && VideoState.getCurrent() != VideoState.PLAYING
+                ? VideoInformation.getVideoId()
+                : null;
+    }
+
+    /**
+     * @return The current video time for a new segment, or the start of the video after a seek to the start.
+     *         A seek to the start of a video lands on its first frame, which some formats, such as H.264,
+     *         have after the start, such as at 40 ms.
+     */
+    private static long getNewSegmentVideoTime() {
+        return VideoInformation.getVideoId().equals(videoSeekedToStartId)
+                ? 0
+                : VideoInformation.getVideoTime();
+    }
+
     public static void onMarkLocationClicked() {
         try {
             Utils.verifyOnMainThread();
-            newSponsorSegmentDialogShownMillis = VideoInformation.getVideoTime();
+            newSponsorSegmentDialogShownMillis = getNewSegmentVideoTime();
             Context context = SponsorBlockViewController.getOverLaysViewGroupContext();
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
@@ -545,7 +583,7 @@ public class SponsorBlockUtils {
 
                 final long time;
                 if (useCurrentTime) {
-                    time = VideoInformation.getVideoTime();
+                    time = getNewSegmentVideoTime();
                 } else {
                     time = parseSegmentTime(editText.getText().toString());
                     if (time < 0) {
