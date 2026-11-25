@@ -316,6 +316,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final LongSetting HIDE_VIDEOS_BY_VIEWS_MAXIMUM = new LongSetting("morphe_hide_videos_by_views_maximum", 0L,
             parentsAny(HIDE_VIDEOS_BY_VIEWS_HOME, HIDE_VIDEOS_BY_VIEWS_SEARCH, HIDE_VIDEOS_BY_VIEWS_SUBSCRIPTIONS));
 
+    // Duration filter
+    public static final BooleanSetting HIDE_VIDEOS_BY_DURATION_HOME = new BooleanSetting("morphe_hide_videos_by_duration_home", FALSE);
+    public static final BooleanSetting HIDE_VIDEOS_BY_DURATION_SEARCH = new BooleanSetting("morphe_hide_videos_by_duration_search", FALSE);
+    public static final BooleanSetting HIDE_VIDEOS_BY_DURATION_SUBSCRIPTIONS = new BooleanSetting("morphe_hide_videos_by_duration_subscriptions", FALSE);
+    public static final LongSetting HIDE_VIDEOS_BY_DURATION_MINIMUM = new LongSetting("morphe_hide_videos_by_duration_minimum", 0L,
+            parentsAny(HIDE_VIDEOS_BY_DURATION_HOME, HIDE_VIDEOS_BY_DURATION_SEARCH, HIDE_VIDEOS_BY_DURATION_SUBSCRIPTIONS));
+    public static final LongSetting HIDE_VIDEOS_BY_DURATION_MAXIMUM = new LongSetting("morphe_hide_videos_by_duration_maximum", 0L,
+            parentsAny(HIDE_VIDEOS_BY_DURATION_HOME, HIDE_VIDEOS_BY_DURATION_SEARCH, HIDE_VIDEOS_BY_DURATION_SUBSCRIPTIONS));
+
     // Player
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_CHAPTERS = new BooleanSetting("morphe_disable_haptic_feedback_chapters", FALSE);
@@ -506,6 +515,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
+    public static final BooleanSetting COPY_TRANSCRIPT = new BooleanSetting("morphe_copy_transcript", TRUE);
+    public static final BooleanSetting COPY_TRANSCRIPT_TIMESTAMPS =
+            new BooleanSetting("morphe_copy_transcript_timestamps", FALSE, false, parent(COPY_TRANSCRIPT));
+    public static final BooleanSetting COPY_TRANSCRIPT_SHORTS_FLYOUT =
+            new BooleanSetting("morphe_copy_transcript_shorts_flyout", FALSE, false, parent(COPY_TRANSCRIPT));
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", FALSE);
     public static final BooleanSetting STABLE_CAPTION_BLOCKS = new BooleanSetting("morphe_stable_caption_blocks", FALSE, true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
@@ -688,6 +702,10 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting RESTORE_OLD_SETTINGS_MENUS = new BooleanSetting("morphe_restore_old_settings_menus", FALSE, true);
     public static final BooleanSetting NATIVE_SNACKBAR = new BooleanSetting("morphe_native_snackbar", FALSE);
     public static final EnumSetting<FormFactor> CHANGE_FORM_FACTOR = new EnumSetting<>("morphe_change_form_factor", FormFactor.DEFAULT, true, "morphe_change_form_factor_user_dialog_message");
+    public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY = new BooleanSetting("morphe_change_form_factor_car_display", FALSE, true);
+    public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR = new BooleanSetting("morphe_change_form_factor_car_display_hide_navigation_bar", FALSE, true);
+    public static final IntegerSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR_DELAY = new IntegerSetting("morphe_change_form_factor_car_display_hide_navigation_bar_delay", 5, true, parent(CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR));
+    public static final BooleanSetting CHANGE_FORM_FACTOR_CAR_DISPLAY_ANY = new BooleanSetting("morphe_change_form_factor_car_display_any", FALSE, true, parentsAny(CHANGE_FORM_FACTOR_CAR_DISPLAY, CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR));
     public static final BooleanSetting BYPASS_IMAGE_REGION_RESTRICTIONS = new BooleanSetting("morphe_bypass_image_region_restrictions", FALSE, true);
     public static final BooleanSetting GRADIENT_LOADING_SCREEN = new BooleanSetting("morphe_gradient_loading_screen", FALSE, true);
     public static final IntegerSetting RIVE_SPLASH_SCREEN_STATE = new IntegerSetting("morphe_rive_splash_screen_state", 0, false, false);
@@ -1568,6 +1586,8 @@ public class Settings extends SharedYouTubeSettings {
                 0, 100, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(ENHANCED_AMBIENT_MODE_DIM_DURATION,
                 0, 10, 1, "s"));
+        SeekBarPreference.register(new SeekBarConfig(CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR_DELAY,
+                1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(VOT_ORIGINAL_AUDIO_VOLUME,
                 0, 100, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(VOT_TRANSLATION_VOLUME,

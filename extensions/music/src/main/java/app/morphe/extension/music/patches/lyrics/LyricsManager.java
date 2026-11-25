@@ -1471,7 +1471,7 @@ public final class LyricsManager {
             }
         }
 
-        LyricsPanelInstaller.enableLyricsButton();
+        LyricsPanelInstaller.enableLyricsTab();
         Utils.runOnMainThreadDelayed(LyricsPanelInstaller::onLyricsPanelDetected, 300);
         rememberPreference(display);
     }
@@ -2369,7 +2369,7 @@ public final class LyricsManager {
             }
             shownFingerprints.add(LyricsMatch.fingerprint(prepared));
             setState(State.LOADED, prepared);
-            LyricsPanelInstaller.enableLyricsButton();
+            LyricsPanelInstaller.enableLyricsTab();
             Utils.runOnMainThreadDelayed(LyricsPanelInstaller::onLyricsPanelDetected, 300);
             rememberPreference(prepared);
         }
@@ -2601,7 +2601,7 @@ public final class LyricsManager {
             // The app never builds its own lyrics into the panel for a music video, so an
             // open one is covered from here instead.
             LyricsPanelInstaller.onLyricsPanelDetected();
-            LyricsPanelInstaller.enableLyricsButton();
+            LyricsPanelInstaller.enableLyricsTab();
             detectSections(lyrics);
         }
     }

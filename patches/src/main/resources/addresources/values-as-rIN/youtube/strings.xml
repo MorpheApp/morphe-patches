@@ -284,6 +284,22 @@ Second \"item\" text"</string>
 • এটা লুকোৱা Short-এ Shorts শ্বেলফত এটা খালী ঠাই এৰি থৈ যাব পাৰে"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">ভিউ কাউণ্ট ফিল্টাৰৰ বাবে সকলো ভিডিঅ\' লুকাব</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">সময়সীমা ফিল্টাৰ</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">ফিড আৰু সন্ধানত অতি চুটি বা অতি দীঘলীয়া ভিডিঅ\'সমূহ লুকুৱাই থওক</string>
+  <string name="morphe_hide_videos_by_duration_home_title">সময়সীমা অনুযায়ী হোম ভিডিঅ\'সমূহ লুকুৱাই থওক</string>
+  <string name="morphe_hide_videos_by_duration_search_title">সময়সীমা অনুযায়ী সন্ধানৰ ফলাফলসমূহ লুকুৱাই থওক</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">সময়সীমাৰ দ্বাৰা চাবস্ক্ৰিপচন ভিডিঅ’বোৰ লুকুৱাই ৰাখক</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">নূন্যতম সময়সীমা (মিনিট)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">ইয়াৰতকৈ চুটি ভিডিঅ’বোৰ লুকুৱাই ৰখা হ’ব। 0 = কোনো নূন্যতম নাই</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">সৰ্বোচ্চ সময়সীমা (মিনিট)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">ইয়াৰতকৈ দীঘল ভিডিঅ’বোৰ লুকুৱাই ৰখা হ’ব। 0 = কোনো সৰ্বোচ্চ নাই</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"সময়সীমাৰ দ্বাৰা ভিডিঅ’বোৰ লুকুৱাবলৈ Home / Subscriptions / Search ফিল্টাৰ কৰা হৈছে
+
+সীমাবদ্ধতাসমূহ:
+• লাইভ ষ্ট্ৰিম, Shorts, প্লেলিষ্ট আৰু মিক্সবোৰ লুকুৱাই ৰখা নহয়
+• অজ্ঞাত সময়সীমাৰ ভিডিঅ’বোৰ লুকুৱাই ৰখা নহয়"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">সময়সীমা ফিল্টাৰটোৱে সকলো ভিডিঅ’ লুকুৱাই ৰাখিব</string>
   <string name="morphe_hide_stats_category_title">ষ্টাটছ</string>
   <string name="morphe_hide_stats_hidden_24h_title">ভিডিঅ’সমূহ লুকুৱাইছে, শেষ ২৪ ঘণ্টা</string>
   <string name="morphe_hide_stats_hidden_all_title">ভিডিঅ’সমূহ লুকুৱাইছে, সকলো সময়ৰ</string>
@@ -327,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'Sync to video\' বুটামটো লুকুৱাওক</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ট্যাপ কৰি ধৰি থকাৰ গ্ৰেডিয়েণ্টটো লুকুৱাওক</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">গতি বৃদ্ধি কৰিবলৈ ধৰি থকা অৱস্থাত আঙুলি সৰুৱালে প্লেয়াৰ কন্ট্ৰলৰ গ্ৰেডিয়েণ্টটো লুকুৱাই ৰাখে</string>
-  <string name="morphe_hide_timed_reactions_title">সময়সীমা নিৰ্ধাৰিত প্ৰতিক্ৰিয়াবোৰ লুকুৱাওক</string>
-  <string name="morphe_hide_timed_reactions_summary">মন্তব্য অংশ আৰু লাইভ চ্যাটত ইমোজীৰ সৈতে প্ৰতিক্ৰিয়া জনোৱাৰ সুবিধাটো লুকুৱাই ৰাখে</string>
   <string name="morphe_hide_help_feedback_menu_summary">ত্ৰি-বিন্দু বুটামটো ব্যৱহাৰ কৰোঁতে \'সহায়তা আৰু মতামত\' মেনুটো লুকুৱাই ৰাখে, যেনে সন্ধানৰ ফলাফলত</string>
   <string name="morphe_hide_handle_title">হ্যান্ডেলটো লুকুৱাওক</string>
   <string name="morphe_hide_handle_summary">\'You\' টেবত আপোনাৰ চেনেলৰ হ্যান্ডেলটো লুকুৱাই দিয়ে</string>
@@ -443,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">প্ৰতিটো মন্তব্যৰ ৩-ডট মেনু বুটামটো লুকুৱায়</string>
   <string name="morphe_hide_comments_none_yet_title">\'এতিয়াও কোনো মন্তব্য নাই\' প্ৰিভিউ লুকুৱাওক</string>
   <string name="morphe_hide_comments_preview_comment_title">প্ৰিভিউ কমেন্ট লুকুৱাওক</string>
-  <string name="morphe_hide_comments_preview_comment_summary">সম্পূৰ্ণ মন্তব্যৰ বিভাগটো খোলাৰ আগতে ভিডিঅ\'ৰ তলত থকা মন্তব্যৰ প্ৰিভিউটো লুকুৱাই ৰাখে</string>
+  <string name="morphe_hide_comments_preview_comment_summary">কমেন্ট সেকচনটো খোলাৰ আগতে ভিডিঅ\'টোৰ তলত থকা কমেন্ট প্ৰিভিউটো লুকুৱাই ৰাখে</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe ৰ দ্বাৰা মন্তব্যটো লুকাই ৰখা হৈছে…</string>
-  <string name="morphe_minimal_comments_button_title">মিনিমেল কমেন্ট বুটাম সক্ৰিয় কৰক</string>
-  <string name="morphe_minimal_comments_button_summary">স্লাইডিং কাৰ্ড আৰু ইয়াৰ পেজ চেলেক্টৰক লুকুৱাই ৰাখে, যিবোৰ কমেন্ট বুটামত প্ৰদৰ্শিত হয়</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">প্ৰিভিউ কমেন্ট কাৰ্ডবোৰ লুকুৱাওক</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">কমেন্ট বুটামত প্ৰদৰ্শিত স্লাইডিং কাৰ্ড আৰু পেজ ইনডিকেটৰটো লুকুৱাই ৰাখে</string>
+  <string name="morphe_hide_comments_timed_reactions_title">সময় নিৰ্ধাৰিত ৰিয়েকচনবোৰ লুকুৱাওক</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">মন্তব্য অংশ আৰু লাইভ চ্যাটত ইমোজীৰ সৈতে প্ৰতিক্ৰিয়া জনোৱাৰ সুবিধাটো লুকুৱাই ৰাখে</string>
   <string name="morphe_hide_comments_timestamp_button_title">Timestamp বুটামটো লুকুৱাওক</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'শীৰ্ষ সমৰ্থক\' বুটামটো লুকুৱাওক</string>
   <string name="morphe_hide_comments_topics_title">\'Topics\' লুকুৱাও</string>
@@ -1157,6 +1173,17 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">ট্ৰান্সক্ৰিপ্ট ঠিক কৰক</string>
   <string name="morphe_fix_transcript_summary">এটা প্ৰাক-চৰ্ত পৰীক্ষাৰ বিফলতা সমাধান কৰে যাৰ বাবে ট্ৰান্সক্ৰিপ্ট লোড হোৱাত বাধা আহিব পাৰে</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">ট্ৰেন্সক্ৰিপ্ট কপি কৰক</string>
+  <string name="morphe_copy_transcript_title">ট্ৰেন্সক্ৰিপ্ট কপি কৰক</string>
+  <string name="morphe_copy_transcript_summary">ট্ৰেন্সক্ৰিপ্ট পেনেললৈ এটা বুটাম যোগ কৰে যিয়ে কেপশ্যনৰ ভাষাত থকা ট্ৰেন্সক্ৰিপ্টটো কপি কৰে</string>
+  <string name="morphe_copy_transcript_timestamps_title">টাইমষ্টেম্পসমূহ অন্তৰ্ভুক্ত কৰক</string>
+  <string name="morphe_copy_transcript_timestamps_summary">কপি কৰা ট্ৰান্সক্ৰিপ্টৰ প্ৰতিটো শাৰী ইয়াৰ সময়ৰ সৈতে আৰম্ভ হয়</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Shorts মেনুসমূহত দেখুৱাওক</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Shorts-ৰ মেনুসমূহত এটা Copy transcript আইটেম যোগ কৰে</string>
+  <string name="morphe_copy_transcript_copied">ট্ৰান্সক্ৰিপ্টটো ক্লিপবৰ্ডলৈ কপি কৰা হৈছে</string>
+  <string name="morphe_copy_transcript_empty">কোনো ট্ৰান্সক্ৰিপ্ট উপলব্ধ নহয়</string>
+  <string name="morphe_copy_transcript_error">ট্ৰেন্সক্ৰিপ্ট কপি কৰিব পৰা নগ’ল</string>
   <string name="morphe_captions_in_pip_title">পিকচাৰ-ইন-পিকচাৰত কেপচন দেখুৱাওক</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">কেপচনৰ আকাৰ</string>
@@ -1411,6 +1438,17 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
 • 'অধিক ভিডিঅ' অভাৰলে উপলব্ধ নহ’ব পাৰে
 • Shortsবোৰ নিয়মীয়া প্লেয়াৰত খোলা হয়
 • ন-কোল্যাপচড পুৰণি ভিডিঅ এক্সন বাৰটো দেখুৱাইছে"</string>
+  <string name="morphe_change_form_factor_car_display_title">কাৰ ডিসপ্লেৰ ওপৰত অটোমোটিভ লেআউট</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">যেতিয়া YouTube কাৰ ডিসপ্লেত দেখুওৱা হয়, যেনে Android Auto বা DriveDeck-ৰ দ্বাৰা, তেতিয়া অটোমোটিভ লেআউট ব্যৱহাৰ কৰা হয়</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">কাৰ ডিসপ্লেত অটোমোটিভ লেআউট ব্যৱহাৰ কৰা নহয়</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">কাৰ ডিসপ্লেত নেভিগেচন বাৰটো স্বয়ংক্ৰিয়ভাৱে লুকাই ৰাখক</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">কাৰ ডিসপ্লেত নেভিগেচন বাৰটো কিছু সময় ব্যৱহাৰ নকৰিলে লুকাই থাকে। ইয়াৰ দৃশ্যমান কৰিবলৈ তলৰ কাষৰ পৰা ওপৰলৈ সোয়াইপ কৰক</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">কাৰ ডিসপ্লেত নেভিগেচন বাৰটো সদায় দেখুৱায়</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">স্বয়ংক্ৰিয়ভাৱে লুকাই থকাৰ পলম</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">নেভিগেচন বাৰটো দেখুৱাৰ পিছত বা স্পৰ্শ কৰাৰ পিছত ই কিমান সময়লৈ থাকিব</string>
+  <string name="morphe_change_form_factor_car_display_any_title">যিকোনো বাহ্যিক ডিসপ্লেত ব্যৱহাৰ কৰক</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">ফোনৰ স্ক্ৰীণৰ বাহিৰে প্ৰতিটো ডিসপ্লে এটা কাৰ ডিসপ্লে, য’ত টিভি বা মনিটৰো অন্তৰ্ভুক্ত</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"কাৰ ডিসপ্লেসমূহ Android Auto, ডিসপ্লেৰ নাম আৰু কাৰ UI মোডৰ দ্বাৰা পোৱা যায়। Android 15 আৰু তাৰ পিছৰ সংস্কৰণত, DriveDeck, Gearslip, graphene-auto বা MyCar-ৰ দ্বাৰা স্ক্ৰীণ মিৰৰিং আৰু এটা কাৰ ডিসপ্লে হয়"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">২১.১১.৪৮ - পুৰণি কেপচনৰ আচৰণ পুনৰুদ্ধাৰ কৰক</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিষ্টলৈ পুৰণি ছেভ পুনৰুদ্ধাৰ কৰক</string>

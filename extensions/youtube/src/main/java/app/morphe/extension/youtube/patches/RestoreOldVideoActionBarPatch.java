@@ -138,8 +138,11 @@ public class RestoreOldVideoActionBarPatch {
      * Channel name beside the avatar, and the subscribe button at the end of the row, as on tablets.
      */
     private static final int TWO_ROWS_CHANNEL_BAR_STYLE = 2;
-    private static final FeedCardLayoutPatch.VideoTemplate CHANNEL_BAR_TEMPLATE =
-            new FeedCardLayoutPatch.VideoTemplate("compact_channel_bar.eml", 391108665, 6, 5);
+    /**
+     * Some app versions, such as 20.26, cache only the variant of the channel bar that the action bar uses.
+     */
+    private static final FeedCardLayoutPatch.VideoTemplate CHANNEL_BAR_TEMPLATE = new FeedCardLayoutPatch.VideoTemplate(
+            "compact_channel_bar.eml", "compact_channel_bar.eml-js", 391108665, 6, 5);
     private static final int CHANNEL_BAR_ENVIRONMENT_FIELD = 4;
     private static final String SHARE_BUTTON_ID = "id.video.share.button";
     /**

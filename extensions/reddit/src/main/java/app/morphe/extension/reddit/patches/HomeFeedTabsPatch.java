@@ -35,6 +35,7 @@ public class HomeFeedTabsPatch {
      * @param original If the tabs can be switched by swiping.
      */
     public static boolean enableTabSwipe(boolean original) {
+        if (Settings.DISABLE_HOME_FEED_SWIPE.get()) return false;
         return showHomeFeedTabs() || original;
     }
 }

@@ -8,6 +8,7 @@
 package app.morphe.patches.reddit.layout.postbuttons
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
@@ -21,13 +22,17 @@ import app.morphe.patcher.util.returnEarly
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_37_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_39_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21t
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import java.util.logging.Logger
 
@@ -36,6 +41,9 @@ private const val EXTENSION_CLASS =
 
 private const val EXTENSION_HIDEABLE_STATE_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/HidePostButtonsPatch$HideableState;"
+
+private const val EXTENSION_LABELED_ACTION_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/HidePostButtonsPatch$LabeledAction;"
 
 @Suppress("unused")
 val hidePostButtonsPatch = patch(
@@ -49,10 +57,10 @@ val hidePostButtonsPatch = patch(
     dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
-        if (is_2026_39_0_or_greater) {
-            listOf(PostJoinButtonFingerprint, PostDetailJoinButtonFingerprint).forEach { fingerprint ->
-                fingerprint.method.returnEarlyIf("invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z")
-            }
+        val hideJoinButtonCondition = "invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z"
+
+        if (is_2026_37_0_or_greater) {
+            PostJoinButtonFingerprint.method.returnEarlyIf(hideJoinButtonCondition)
         } else {
             PostJoinButtonLegacyFingerprint.let {
                 it.method.apply {
@@ -63,7 +71,7 @@ val hidePostButtonsPatch = patch(
                     addInstructionsAtControlFlowLabel(
                         index,
                         """
-                            invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z
+                            $hideJoinButtonCondition
                             move-result v$register
                             if-nez v$register, :hide
                         """,
@@ -71,23 +79,25 @@ val hidePostButtonsPatch = patch(
                     )
                 }
             }
+        }
 
-            if (is_2026_24_0_or_greater) {
-                PostDetailJoinButtonLegacyFingerprint.let {
-                    it.method.apply {
-                        val index = it.instructionMatches.last().index
-                        val register = findFreeRegister(index)
+        if (is_2026_39_0_or_greater) {
+            PostDetailJoinButtonFingerprint.method.returnEarlyIf(hideJoinButtonCondition)
+        } else if (is_2026_24_0_or_greater) {
+            PostDetailJoinButtonLegacyFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = findFreeRegister(index)
 
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                invoke-static { }, $EXTENSION_CLASS->hideJoinButton()Z
-                                move-result v$register
-                                if-nez v$register, :hide
-                            """,
-                            ExternalLabel("hide", getInstruction(index + 1))
-                        )
-                    }
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            $hideJoinButtonCondition
+                            move-result v$register
+                            if-nez v$register, :hide
+                        """,
+                        ExternalLabel("hide", getInstruction(index + 1))
+                    )
                 }
             }
         }
@@ -149,9 +159,11 @@ private fun hideActionBarButtons() {
     ActionBarActionToStringFingerprint.classDef.addHiddenState()
     ActionBarVoteStateToStringFingerprint.classDef.addHiddenState()
 
+    hideCounts()
+
     val buttonFingerprint: Fingerprint
     val voteButtonsFingerprint: Fingerprint
-    if (is_2026_39_0_or_greater) {
+    if (is_2026_37_0_or_greater) {
         buttonFingerprint = ActionBarButtonFingerprint
         voteButtonsFingerprint = ActionBarVoteButtonsFingerprint
     } else {
@@ -212,6 +224,15 @@ private fun hideActionBarButtons() {
                 hideButton(firstButtonIndex, "getAwardButton", "Lkotlin/jvm/functions/Function2;")
             }
 
+            // Award button of the refreshed action bar, after the mod button.
+            val legacyRefreshAwardButton = if (is_2026_37_0_or_greater && !is_2026_39_0_or_greater) {
+                val awardIndex = modIndex + 1
+                val awardType = it.instructionMatches.last().methodReference.parameterTypes[awardIndex]
+                hideButton(awardIndex, "getAwardButton", awardType.toString())
+            } else {
+                ""
+            }
+
             // Takes the buttons that can be null, from the first to the last.
             val hideActionBarParameters = "Ljava/lang/Object;".repeat(modIndex - firstButtonIndex + 1)
 
@@ -225,6 +246,7 @@ private fun hideActionBarButtons() {
                     invoke-static/range { v$voteRegister .. v$voteRegister }, $EXTENSION_CLASS->setVoteButtonsHidden(Ljava/lang/Object;)V
                     invoke-static/range { v$commentRegister .. v$commentRegister }, $EXTENSION_CLASS->setCommentButtonHidden(Ljava/lang/Object;)V
                     $legacyAwardButton
+                    $legacyRefreshAwardButton
                     ${hideButton(repostIndex, "getRepostButton", actionType)}
                     ${hideButton(repostIndex + 1, "getShareButton", actionType)}
                     ${hideButton(modIndex, "getModButton", actionType)}
@@ -241,4 +263,45 @@ private fun hideActionBarButtons() {
         definingClass = EXTENSION_CLASS,
         name = "isActionBarIncluded"
     ).method.returnEarly(true)
+}
+
+private fun hideCounts() {
+    val labelField = ActionBarActionLabelFingerprint.instructionMatches.last().fieldReference
+    ActionBarActionToStringFingerprint.classDef.addPatchInterface(
+        EXTENSION_LABELED_ACTION_INTERFACE,
+        "patch_clearLabel",
+        """
+            const/4 v0, 0x0
+            iput-object v0, p0, $labelField
+            return-void
+        """
+    )
+
+    ActionBarVoteStateConstructorFingerprint.let {
+        it.method.apply {
+            val index = it.instructionMatches.first().index
+            val register = getInstruction(index).registersUsed[0]
+            addInstructions(
+                index,
+                """
+                    invoke-static { v$register }, $EXTENSION_CLASS->hideScore(Z)Z
+                    move-result v$register
+                """
+            )
+        }
+    }
+
+    CommentScoreHiddenFingerprint.method.apply {
+        findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+            val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+            addInstructionsAtControlFlowLabel(
+                index,
+                """
+                    invoke-static { v$register }, $EXTENSION_CLASS->hideScore(Z)Z
+                    move-result v$register
+                """
+            )
+        }
+    }
 }

@@ -284,6 +284,22 @@ Korlátozások:
 • Egy elrejtett Shorts videó üres helyet hagyhat a Shorts polcon"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">A megtekintetésszám-szűrő minden videót el fog rejteni</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Hosszúság szűrő</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Rejtelje a hírfolyamokban és a keresésben található túl rövid vagy túl hosszú videókat</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Főoldali videók elrejtése hosszúság alapján</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Keresési találatok elrejtése hosszúság alapján</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Feliratkozások videóinak elrejtése időtartam alapján</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Minimum időtartam (perc)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">A ennél rövidebb videók lesznek elrejtve. 0 = nincs minimum</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Maximum időtartam (perc)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">A ennél hosszabb videók lesznek elrejtve. 0 = nincs maximum</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"A Kezdőlap / Feliratkozások / Keresés szűrésre kerül a videók időtartama alapján történő elrejtéséhez
+
+Korlátozások:
+• az élő közvetítések, a Shorts, a lejátszási listák és a mixek nem lesznek elrejtve
+• a ismeretlen időtartamú videók nem lesznek elrejtve"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Az időtartom-szűrő minden videót el fog rejteni</string>
   <string name="morphe_hide_stats_category_title">Statisztikák</string>
   <string name="morphe_hide_stats_hidden_24h_title">Elrejtett videók, az elmúlt 24 órában</string>
   <string name="morphe_hide_stats_hidden_all_title">Elrejtett videók, összességében</string>
@@ -327,8 +343,6 @@ Korlátozások:
   <string name="morphe_hide_sync_button_title">„Szinkronizálás videóval” gomb elrejtése</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Az érintés és nyomva tartás színátmenetének elrejtése</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Elrejti a lejátszóvezérlők színátmenetét, amikor a gyorsításhoz nyomva tartva húzza az ujját</string>
-  <string name="morphe_hide_timed_reactions_title">Időzített reakciók elrejtése</string>
-  <string name="morphe_hide_timed_reactions_summary">Kikapcsolja az emojikkal való reagálást a kommenteknél és az élő chaten</string>
   <string name="morphe_hide_help_feedback_menu_summary">Elrejti a \'Súgó &amp; visszajelzés\' menüt a hárompontos gomb használatakor, például a keresési találatoknál</string>
   <string name="morphe_hide_handle_title">Handle elrejtése</string>
   <string name="morphe_hide_handle_summary">Elrejti a csatornád handle-jét a „Neked” lapon</string>
@@ -443,10 +457,12 @@ Korlátozások:
   <string name="morphe_hide_comments_menu_button_summary">Elrejti minden hozzászólás 3-pontos menü gombját</string>
   <string name="morphe_hide_comments_none_yet_title">„Még nincsenek hozzászólások” előnézet elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_title">Megjegyzés előnézet elrejtése</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Megjegyzések előnézetének elrejtése a teljes megjegyzések szekció megnyitása előtt</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Elrejti a megjegyzések előnézetét a videó alatt a megjegyzések szekció megnyitása előtt</string>
   <string name="morphe_hide_comments_preview_comment_hidden">A megjegyzést Morphe… elrejtette</string>
-  <string name="morphe_minimal_comments_button_title">Minimális hozzászólásgomb engedélyezése</string>
-  <string name="morphe_minimal_comments_button_summary">Elrejti a hozzászólásgombon megjelenő csúsztatható kártyákat és azok oldalválasztóját</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Előnézeti megjegyzéskártyák elrejtése</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Elrejti a megjegyzések gombon megjelenő csúszó kártyákat és az oldaljelzőt</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Időzített reakciók elrejtése</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Kikapcsolja az emojikkal való reagálást a kommenteknél és az élő chaten</string>
   <string name="morphe_hide_comments_timestamp_button_title">Időbélyeg gomb elrejtése</string>
   <string name="morphe_hide_comments_top_fans_button_title">A \'Top fans\' gomb elrejtése</string>
   <string name="morphe_hide_comments_topics_title">\'Témák\' elrejtése</string>
@@ -1157,6 +1173,17 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Átirat javítása</string>
   <string name="morphe_fix_transcript_summary">Megoldja egy előfeltétel-ellenőrzési hibát, amely megakadályozhatja az átirat betöltését</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Átirat másolása</string>
+  <string name="morphe_copy_transcript_title">Átirat másolása</string>
+  <string name="morphe_copy_transcript_summary">Gombot ad hozzá az átirat panelhez, amely lemásolja az átiratot a feliratok nyelvén</string>
+  <string name="morphe_copy_transcript_timestamps_title">Időbélyegzők beinclusionálása</string>
+  <string name="morphe_copy_transcript_timestamps_summary">A másolt átirathoz minden sor időbélyegzővel kezdődik</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Mutassa a Shorts menükben</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Hozzáad egy „Átirat másolása” elemet a Shorts menükhöz</string>
+  <string name="morphe_copy_transcript_copied">Az átirat másolva a vágólapra</string>
+  <string name="morphe_copy_transcript_empty">Nincs elérhető átirat</string>
+  <string name="morphe_copy_transcript_error">Nem sikerült kimásolni az átiratot</string>
   <string name="morphe_captions_in_pip_title">Feliratok megjelenítése kép a képben módban</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Feliratméret</string>
@@ -1411,6 +1438,17 @@ Autós elrendezés
 • A 'További videók' átfedő ablak lehet, hogy nem érhető el
 • A Shorts a szabályos lejátszóban nyílik meg
 • A nem összecsukott régi videóműveletsáv megjelenítése"</string>
+  <string name="morphe_change_form_factor_car_display_title">Autóelrendezés autóos kijelzőkön</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Az autóelrendezést akkor használják, amikor a YouTube egy autóos kijelzőn jelenik meg, például az Android Auto vagy a DriveDeck segítségével</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Az autóelrendezés nem kerül alkalmazásra az autóos kijelzőkön</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Navigációs sáv automatikus elrejtése autóos kijelzőkön</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">A navigációs sáv egy autóos kijelzőn egy ideig tartó használatatlanság utáni elrejtésre kerül. Húzza felfelé az alsó szélről a megjelenítéséhez</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">A navigációs sáv mindig megjelenik az autóos kijelzőkön</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Automatikus elrejtési késleltetés</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Mennyi időig marad megjelenve a navigációs sáv azután, hogy megjelenült vagy hozzáértek</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Használata bármilyen külső kijelzőn</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Minden kijelző, amely nem a telefon képernyője, autóos kijelzőnek számít, beleértve a TV-ket vagy a monitorokat</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Az autóos kijelzőket az Android Auto, a kijelzőnevek és az autó UI módja határozza meg. Az Android 15 és újabb verziókban a DriveDeck, a Gearslip, a graphene-auto vagy a MyCar által történő képernyőtükrözés szintén autóos kijelzőnek számít"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - A régi felirat-viselkedés visszaállítása</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Régi mentés visszaállítása a lejátszási listába</string>

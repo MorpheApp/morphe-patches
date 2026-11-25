@@ -248,10 +248,9 @@ final class JamPanel {
                     str("morphe_music_jam_setup_layer"),
                     false,
                     !busy,
-                    () -> {
-                        dialog.dismiss();
-                        JamUI.pair(activity);
-                    }
+                    // Keep the panel open while Jam Layer asks for approval, so it
+                    // switches to the start and join actions once pairing completes.
+                    () -> JamUI.pair(activity)
                 );
             }
         };

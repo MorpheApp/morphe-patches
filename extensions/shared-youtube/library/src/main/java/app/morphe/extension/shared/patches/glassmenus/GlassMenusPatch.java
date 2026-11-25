@@ -215,6 +215,21 @@ public final class GlassMenusPatch {
     }
 
     /**
+     * Injection point (YouTube only): the touch feedback drawable of the app, which wraps the background of a Litho
+     * component, such as a row of a menu. It sets the callback of the background before it has a callback itself,
+     * so the background has none, and its fill is found through the wrapper instead.
+     */
+    public static void onWrappedDrawable(Drawable wrapper, @Nullable Drawable wrapped) {
+        if (wrapped == null || !isEnabled()) return;
+
+        try {
+            LithoFills.onWrapped(wrapped, wrapper);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onWrappedDrawable failure", ex);
+        }
+    }
+
+    /**
      * Injection point (YouTube only): a popup menu, before it is shown. The app can set its content view after
      * this call.
      */
@@ -397,7 +412,7 @@ public final class GlassMenusPatch {
         private final View view;
         private final int corners;
         private final GlassDrawable tint;
-        private final Consumer<Boolean> blurListener = this::onBlurEnabledChanged;
+        private final Consumer<Boolean> blurListener = this::onSystemBlurEnabledChanged;
 
         /**
          * Colors of the menu, a background of one of these colors inside the menu is removed.
@@ -652,6 +667,11 @@ public final class GlassMenusPatch {
                 updateCorners(true);
                 view.invalidate();
             }
+        }
+
+        private void onSystemBlurEnabledChanged(boolean enabled) {
+            BlurRegion.logBlurEnabled(view.getContext(), enabled);
+            onBlurEnabledChanged(enabled);
         }
 
         private void onBlurEnabledChanged(boolean enabled) {

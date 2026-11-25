@@ -63,6 +63,7 @@ import app.morphe.extension.shared.patches.glassmenus.GlassMenusPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
+import app.morphe.extension.youtube.patches.CopyTranscriptPatch;
 import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.LoopCountPatch;
@@ -164,6 +165,10 @@ public final class FlyoutUtils {
          */
         @Nullable
         private View divider;
+        /**
+         * If ScrollView is deciding to take over a touch.
+         */
+        private boolean interceptingTouch;
 
         private InjectedItemsScrollView(Context context, ViewGroup menuContainer,
                                         @Nullable PopupWindow popupWindow, @Nullable RecyclerView appList) {
@@ -300,7 +305,20 @@ public final class FlyoutUtils {
         }
 
         /**
-         * Called by the touch scroll of this view, and by the nested scroll of the app list.
+         * Scroll that the app list did not consume. The app list can report that it can still scroll
+         * when it cannot, as it estimates its scroll range, so the rest must never be given back to it.
+         */
+        @Override
+        public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+            final int oldScrollY = getScrollY();
+            scrollBy(0, dyUnconsumed);
+            final int scrolledY = getScrollY() - oldScrollY;
+            // This is not the touch scroll of this view, so the override below is skipped.
+            super.dispatchNestedScroll(0, scrolledY, 0, dyUnconsumed - scrolledY, null);
+        }
+
+        /**
+         * Called by the touch scroll of this view, when the drag starts on the injected items.
          * Scrolling down, once the injected items are scrolled out, a drag that started
          * on the injected items scrolls the app list.
          */
@@ -517,6 +535,28 @@ public final class FlyoutUtils {
                 heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
             }
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        }
+
+        /**
+         * ScrollView ignores a drag if its content fits, and the bottom sheet leaves the drag to this view.
+         * The drag must still start a nested scroll, so dragging the injected items moves the bottom sheet.
+         */
+        @Override
+        public boolean onInterceptTouchEvent(MotionEvent ev) {
+            if (appList == null) {
+                return super.onInterceptTouchEvent(ev);
+            }
+            interceptingTouch = true;
+            try {
+                return super.onInterceptTouchEvent(ev);
+            } finally {
+                interceptingTouch = false;
+            }
+        }
+
+        @Override
+        public boolean canScrollVertically(int direction) {
+            return interceptingTouch || super.canScrollVertically(direction);
         }
 
         @Override
@@ -884,6 +924,9 @@ public final class FlyoutUtils {
             flyoutChannelIdRequest = null;
         }
         isShortsPlayerFlyout = false;
+        // Moving the list of the player menu binds its items again, after the field was reset.
+        // Otherwise the next menu is treated as the player menu.
+        PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
@@ -956,6 +999,10 @@ public final class FlyoutUtils {
 
         final String flyoutVideoId = getFlyoutVideoId();
         final String shortVideoId = flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId;
+
+        if (CopyTranscriptPatch.isPatchIncluded()) {
+            nextButtonIndex = CopyTranscriptPatch.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId);
+        }
 
         if (ShortsDownloadButton.isPatchIncluded()) {
             nextButtonIndex = ShortsDownloadButton.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId, true, null);
@@ -1044,6 +1091,10 @@ public final class FlyoutUtils {
                     isVideoFlyoutWithoutSaveItem,
                     PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
             );
+        }
+
+        if (isShortFlyout && CopyTranscriptPatch.isPatchIncluded()) {
+            nextButtonIndex = CopyTranscriptPatch.addFlyoutButton(flyoutPanel, nextButtonIndex, flyoutVideoId);
         }
 
         // The menus of Shorts in the feed have no download option,

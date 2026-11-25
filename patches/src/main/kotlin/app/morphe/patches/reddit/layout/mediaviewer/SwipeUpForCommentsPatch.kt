@@ -13,7 +13,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
-import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_37_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -44,7 +44,7 @@ val swipeUpForCommentsPatch = patch(
             )
         }
 
-        if (is_2026_40_0_or_greater) {
+        if (is_2026_37_0_or_greater) {
             // Several branches jump to the boxing of the lazy value result.
             VerticalChainingFingerprint.let {
                 val valueOf = it.instructionMatches.last()

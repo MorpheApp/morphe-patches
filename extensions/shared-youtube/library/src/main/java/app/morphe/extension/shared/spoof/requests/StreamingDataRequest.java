@@ -75,10 +75,11 @@ import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 public class StreamingDataRequest {
 
     /**
-     * @param client Client the streams are of.
+     * @param client   Client the streams are of.
+     * @param signedIn If the streams were fetched signed in to the account of the user.
      */
     public record StreamData(byte[] streamingData, @Nullable byte[] playerConfig, boolean hasAndroidMedia,
-                             ClientType client) {
+                             ClientType client, boolean signedIn) {
     }
 
     private static volatile ClientType[] clientOrderToUse = ClientType.values();
@@ -201,18 +202,19 @@ public class StreamingDataRequest {
             Utils.createSizeRestrictedMap(50));
 
     /**
-     * Client of the streams last given to the player.
+     * Streams last given to the player.
      * Several videos are fetched at once, such as the inline previews of the search results
      * or the next track of the queue, so the last fetch to finish can be of another video.
      */
-    private static volatile ClientType lastSpoofedClientType;
+    @Nullable
+    private static volatile StreamData lastPlayerStream;
 
     /**
-     * Clients of the streams given to the player, by video id.
+     * Streams given to the player, by video id.
      * The streams of another video can be given before the player is set up for a video,
      * so the player chooses SABR from the client of that video and not from the last one.
      */
-    private static final Map<String, ClientType> playerClients = Collections.synchronizedMap(
+    private static final Map<String, StreamData> playerStreams = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
     /**
@@ -229,6 +231,12 @@ public class StreamingDataRequest {
     private static final ThreadLocal<Boolean> newVisitorIdOnThread = ThreadLocal.withInitial(() -> false);
 
     /**
+     * If the last player request sent on the thread is signed in to the account of the user.
+     * A fetch runs on a single thread, and other fetches running at the same time must not see this.
+     */
+    private static final ThreadLocal<Boolean> signedInOnThread = ThreadLocal.withInitial(() -> false);
+
+    /**
      * Fetches of a visionOS client, each with another visitor id, before the next client is used.
      */
     private static final int VISITOR_ID_ATTEMPTS = 3;
@@ -242,11 +250,6 @@ public class StreamingDataRequest {
      * Number of times a media response asked the player to load the player response again.
      */
     private static final AtomicInteger playerResponseReloadCount = new AtomicInteger();
-
-    /**
-     * Used only for stats for nerds to show VR sign-in was used.
-     */
-    private static volatile boolean authHeadersOverrides;
 
     /**
      * Video the player was last set up for, or null if the player was not set up for a video yet.
@@ -268,33 +271,30 @@ public class StreamingDataRequest {
      */
     public static String getPlayerClientName() {
         String videoId = playerVideoId;
-        ClientType client = videoId == null ? lastSpoofedClientType : playerClients.get(videoId);
-        if (client == null) {
+        StreamData stream = videoId == null ? lastPlayerStream : playerStreams.get(videoId);
+        if (stream == null) {
             return "Unknown";
-        } else {
-            String clientName = client.friendlyName;
-            if (client.supportsOAuth2 && authHeadersOverrides) {
-                clientName += " Signed in";
-            }
-            return clientName;
         }
+        return stream.signedIn
+                ? stream.client.friendlyName + " Signed in"
+                : stream.client.friendlyName;
     }
 
     public static boolean getLastSpoofedClientUseSABR() {
-        ClientType client = lastSpoofedClientType;
-        return client != null && client.requireSABR;
+        StreamData stream = lastPlayerStream;
+        return stream != null && stream.client.requireSABR;
     }
 
     /**
-     * @param client Client of the streams given to the player for the video,
+     * @param stream Streams given to the player for the video,
      *               or null if the player uses the streams of the app.
      */
-    public static void setPlayerClient(String videoId, @Nullable ClientType client) {
-        lastSpoofedClientType = client;
-        if (client == null) {
-            playerClients.remove(videoId);
+    public static void setPlayerStream(String videoId, @Nullable StreamData stream) {
+        lastPlayerStream = stream;
+        if (stream == null) {
+            playerStreams.remove(videoId);
         } else {
-            playerClients.put(videoId, client);
+            playerStreams.put(videoId, stream);
         }
     }
 
@@ -320,8 +320,8 @@ public class StreamingDataRequest {
      * @return If the streams given to the player for the video are SABR streams.
      */
     public static boolean playerClientUsesSABR(@Nullable String videoId) {
-        ClientType client = videoId == null ? null : playerClients.get(videoId);
-        return client != null && client.requireSABR;
+        StreamData stream = videoId == null ? null : playerStreams.get(videoId);
+        return stream != null && stream.client.requireSABR;
     }
 
     private final String videoId;
@@ -643,7 +643,7 @@ public class StreamingDataRequest {
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
-            authHeadersOverrides = false;
+            signedInOnThread.set(false);
 
             // The web sign in is used, and the request is made to the website host, as the website makes it:
             // MWEB, WEB.
@@ -658,6 +658,7 @@ public class StreamingDataRequest {
                     // The website host refuses a proto response, which a browser could run as a script,
                     // unless it is encoded. See buildPlayerResponseBuffer.
                     connection.setRequestProperty(ENCODE_RESPONSE_HEADER, BASE64_ENCODING);
+                    signedInOnThread.set(true);
                     Logger.printDebug(() -> "Set web sign in: " + clientType + ", videoId: " + videoId);
                 }
             }
@@ -672,6 +673,7 @@ public class StreamingDataRequest {
             // ANDROID_CREATOR, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK, TV_SABR, TV_SIMPLY.
             else if (clientType.canLogin && authHeadersIncludes) {
                 connection.setRequestProperty(AUTHORIZATION_HEADER, authorization);
+                signedInOnThread.set(true);
                 Logger.printDebug(() -> "Set auth header: " + clientType + ", videoId: " + videoId);
             }
             // If oauth2 login is supported and the user is logged in via oauth2 flow, the header is set:
@@ -679,7 +681,7 @@ public class StreamingDataRequest {
             else if (clientType.supportsOAuth2 && clientType.requireLogin) {
                 String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded(true);
                 if (Utils.isNotEmpty(oauth2Authorization)) {
-                    authHeadersOverrides = true;
+                    signedInOnThread.set(true);
                     connection.setRequestProperty(AUTHORIZATION_HEADER, oauth2Authorization);
                     Logger.printDebug(() -> "Set oauth2 auth header: " + clientType + ", videoId: " + videoId);
                 }
@@ -918,7 +920,8 @@ public class StreamingDataRequest {
                 playerConfigBuffer = playerConfigBuilder.build().toByteArray();
             }
 
-            return new StreamData(streamingDataBuffer, playerConfigBuffer, hasAndroidMedia, clientType);
+            return new StreamData(streamingDataBuffer, playerConfigBuffer, hasAndroidMedia, clientType,
+                    signedInOnThread.get());
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to write player response for video stream", ex);
             return null;
@@ -934,13 +937,14 @@ public class StreamingDataRequest {
      * The quality menu belongs to the app, so the app player config also tells if the quality selected
      * in the quality menu is used only for the video it was selected for. Without it, the quality selected
      * is also used for the next videos.
+     * <p>
+     * The app player plays the streams of every client, so this is done for the clients that are not
+     * Android clients too, such as the TV and web clients, for the parts of the config they have.
      *
-     * @param hasAndroidMedia If the streams are the streams of an Android client,
-     *                        so the app player config tells how to play them inline and how to buffer them.
      * @return The player config with how the app player config plays the video inline, buffers it,
      *         and uses the quality selected in the quality menu.
      */
-    public static byte[] addAppPlayerConfig(byte[] playerConfig, byte[] appPlayerConfig, boolean hasAndroidMedia) {
+    public static byte[] addAppPlayerConfig(byte[] playerConfig, byte[] appPlayerConfig) {
         try {
             PlayerConfig appConfig = PlayerConfig.parseFrom(appPlayerConfig);
             PlayerConfig.Builder builder = PlayerConfig.parseFrom(playerConfig).toBuilder();
@@ -949,9 +953,6 @@ public class StreamingDataRequest {
                 builder.setStickyQualitySelectionConfig(appConfig.getStickyQualitySelectionConfig());
             } else {
                 builder.clearStickyQualitySelectionConfig();
-            }
-            if (!hasAndroidMedia) {
-                return builder.build().toByteArray();
             }
 
             if (appConfig.getAudioConfig().getMuteOnStart()) {
@@ -987,6 +988,11 @@ public class StreamingDataRequest {
                     exoConfig.setUseMediaTimeCappedLoadControl(appExoConfig.getUseMediaTimeCappedLoadControl());
                 }
                 builder.setExoPlayerConfig(exoConfig);
+            } else if (appConfig.hasExoPlayerConfig()) {
+                // The configs of the TV and web clients have no ExoPlayer config, so the app player buffers
+                // without one, and the playback of some videos restarts again and again, such as a Short
+                // in the regular player with a forced video quality. The config of the app is used whole.
+                builder.setExoPlayerConfig(appConfig.getExoPlayerConfig());
             }
 
             if (builder.hasAndroidMedialibConfig()) {

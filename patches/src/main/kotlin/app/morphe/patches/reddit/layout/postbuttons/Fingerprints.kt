@@ -15,6 +15,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.reddit.misc.version.is_2026_37_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_39_0_or_greater
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -31,6 +32,20 @@ internal object ActionBarActionToStringFingerprint : Fingerprint(
 )
 
 /**
+ * toString of the state of an action bar button, which logs its label.
+ */
+internal object ActionBarActionLabelFingerprint : Fingerprint(
+    classFingerprint = ActionBarActionToStringFingerprint,
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string(", label="),
+        methodCall(name = "append", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+/**
  * toString of the state of the vote buttons of an action bar.
  */
 internal object ActionBarVoteStateToStringFingerprint : Fingerprint(
@@ -39,6 +54,44 @@ internal object ActionBarVoteStateToStringFingerprint : Fingerprint(
     filters = listOf(
         string("ActionBarVoteState(selectedDirection=")
     )
+)
+
+/**
+ * toString of the state of the vote buttons of an action bar, which logs whether the score is hidden.
+ */
+internal object ActionBarVoteStateHideScoreFingerprint : Fingerprint(
+    classFingerprint = ActionBarVoteStateToStringFingerprint,
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string(", hideScore="),
+        methodCall(name = "append", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Constructor of the vote button state, which sets whether the score is hidden.
+ */
+internal object ActionBarVoteStateConstructorFingerprint : Fingerprint(
+    classFingerprint = ActionBarVoteStateToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        fieldAccess(
+            reference = { ActionBarVoteStateHideScoreFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IPUT_BOOLEAN
+        )
+    )
+)
+
+/**
+ * Whether the score of a comment is hidden, like in new posts of some communities.
+ */
+internal object CommentScoreHiddenFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/domain/model/Comment;",
+    name = "getScoreHidden",
+    returnType = "Z",
+    parameters = listOf()
 )
 
 /**
@@ -64,12 +117,18 @@ private val voteStateType get() = ActionBarVoteStateToStringFingerprint.original
  * Call of the action bar, which posts, comments and the media viewer use.
  * Parameters: vote state, comment button, modifier, appearance, then the buttons that are null
  * when not shown: the award button before 2026.39.0, a composable lambda, and the repost, share
- * and mod buttons.
+ * and mod buttons. 2026.37.0 also has a second award button after the mod button,
+ * which is shown instead of the first by the refreshed action bar of a server flag.
  */
 private val actionBarCallFilter = methodCall(
     parameters = {
         if (is_2026_39_0_or_greater) {
             listOf(voteStateType, actionType, "L", "L", actionType, actionType, actionType, "L", "I", "I")
+        } else if (is_2026_37_0_or_greater) {
+            listOf(
+                voteStateType, actionType, "L", "L", "Lkotlin/jvm/functions/Function2;",
+                actionType, actionType, actionType, "L", "L", "I", "I"
+            )
         } else {
             listOf(
                 voteStateType, actionType, "L", "L", "Lkotlin/jvm/functions/Function2;",
@@ -197,7 +256,7 @@ internal object ActionBarButtonFingerprint : Fingerprint(
 )
 
 /**
- * Action bar button before 2026.39.0.
+ * Action bar button before 2026.37.0.
  * Parameters: button state, icon, appearance, modifier, composer, flags.
  */
 internal object ActionBarButtonLegacyFingerprint : Fingerprint(
@@ -229,7 +288,7 @@ internal object ActionBarVoteButtonsFingerprint : Fingerprint(
 )
 
 /**
- * Upvote and downvote buttons of an action bar before 2026.39.0.
+ * Upvote and downvote buttons of an action bar before 2026.37.0.
  * Parameters: vote state, appearance, modifier, composer, flags.
  */
 internal object ActionBarVoteButtonsLegacyFingerprint : Fingerprint(
@@ -261,7 +320,7 @@ internal object PostJoinButtonFingerprint : Fingerprint(
 )
 
 /**
- * Post header in the feeds before 2026.39.0, which shows the Join button itself if the first
+ * Post header in the feeds before 2026.37.0, which shows the Join button itself if the first
  * checked flag is set and the post is not of a certain type.
  */
 internal object PostJoinButtonLegacyFingerprint : Fingerprint(

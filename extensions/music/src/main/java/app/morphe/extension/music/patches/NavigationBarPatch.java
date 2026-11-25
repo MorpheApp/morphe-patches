@@ -35,7 +35,6 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.MessageLite;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.music.settings.MusicActivityHook;
@@ -193,35 +192,34 @@ public class NavigationBarPatch {
         }
     }
 
-    @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
     private enum NavigationButton {
         HOME(
-                Arrays.asList(
+                List.of(
                         "TAB_HOME"
                 ),
                 Settings.HIDE_NAVIGATION_BAR_HOME_BUTTON.get()
         ),
         SAMPLES(
-                Arrays.asList(
+                List.of(
                         "TAB_SAMPLES"
                 ),
                 Settings.HIDE_NAVIGATION_BAR_SAMPLES_BUTTON.get()
         ),
         EXPLORE(
-                Arrays.asList(
+                List.of(
                         "TAB_EXPLORE"
                 ),
                 Settings.HIDE_NAVIGATION_BAR_EXPLORE_BUTTON.get()
         ),
         LIBRARY(
-                Arrays.asList(
+                List.of(
                         "LIBRARY_MUSIC",
                         "TAB_BOOKMARK" // YouTube Music 8.24+
                 ),
                 Settings.HIDE_NAVIGATION_BAR_LIBRARY_BUTTON.get()
         ),
         UPGRADE(
-                Arrays.asList(
+                List.of(
                         "TAB_MUSIC_PREMIUM"
                 ),
                 Settings.HIDE_NAVIGATION_BAR_UPGRADE_BUTTON.get()
@@ -334,19 +332,24 @@ public class NavigationBarPatch {
 
     /**
      * Injection point.
-     * The server sends the top bar buttons without an id, so the Ask Music button is told apart by its icon.
+     * The server sends the top bar buttons without an id, so the Ask Music button and
+     * the Samples button of artist and album pages are told apart by their icons.
      */
-    public static void hideAskMusicButton(View view, Object renderer) {
-        if (!Settings.HIDE_ASK_MUSIC_BUTTON.get() || !(renderer instanceof MessageLite message)) {
+    public static void hideTopBarButton(View view, Object renderer) {
+        final boolean hideAskMusic = Settings.HIDE_ASK_MUSIC_BUTTON.get();
+        final boolean hideSamples = Settings.HIDE_SAMPLES_BUTTON.get();
+        if ((!hideAskMusic && !hideSamples) || !(renderer instanceof MessageLite message)) {
             return;
         }
         try {
             YTIconType icon = ButtonRenderer.parseFrom(message.toByteArray()).getIcon().getYtIconType();
-            if (icon == YTIconType.SPARK && view.getParent() instanceof ViewGroup viewGroup) {
+            final boolean hide = (hideAskMusic && icon == YTIconType.SPARK)
+                    || (hideSamples && icon == YTIconType.TAB_SAMPLES);
+            if (hide && view.getParent() instanceof ViewGroup viewGroup) {
                 Utils.hideViewBy0dpUnderCondition(true, viewGroup);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "hideAskMusicButton failure", ex);
+            Logger.printException(() -> "hideTopBarButton failure", ex);
         }
     }
 
@@ -386,7 +389,6 @@ public class NavigationBarPatch {
     public static void hideSearchButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SEARCH_BUTTON, view);
     }
-
 
     /**
      * Injection point

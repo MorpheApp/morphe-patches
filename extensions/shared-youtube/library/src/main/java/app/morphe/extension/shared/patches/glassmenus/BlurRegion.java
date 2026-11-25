@@ -8,8 +8,11 @@
 package app.morphe.extension.shared.patches.glassmenus;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -38,6 +41,10 @@ import app.morphe.extension.shared.Logger;
 final class BlurRegion {
 
     private static final String SAMSUNG_CORE_RUNE = "com.samsung.android.rune.CoreRune";
+    private static final String CROSS_WINDOW_BLUR_LISTENERS = "android.view.CrossWindowBlurListeners";
+
+    @Nullable
+    private static Boolean lastLoggedBlurEnabled;
 
     private static boolean initialized;
     @Nullable
@@ -82,6 +89,38 @@ final class BlurRegion {
     static boolean isSamsungWindowBlurSupported() {
         initialize();
         return samsungWindowBlurSupported;
+    }
+
+    /**
+     * Logs the cross-window blur state when it changes, with the reasons Android may have turned it off.
+     * Android does not report tunneled video playback, but if all the reasons here are fine and the blur is off
+     * only while a video plays, that is the cause.
+     */
+    static void logBlurEnabled(Context context, boolean enabled) {
+        if (!Logger.isDebugEnabled()) return;
+        if (lastLoggedBlurEnabled != null && lastLoggedBlurEnabled == enabled) return;
+        lastLoggedBlurEnabled = enabled;
+
+        String supported;
+        try {
+            HiddenApiBypass.addHiddenApiExemptions("L" + CROSS_WINDOW_BLUR_LISTENERS.replace('.', '/') + ";");
+            supported = String.valueOf(Class.forName(CROSS_WINDOW_BLUR_LISTENERS)
+                    .getField("CROSS_WINDOW_BLUR_SUPPORTED").getBoolean(null));
+        } catch (Throwable ex) {
+            supported = "unknown";
+        }
+        final boolean turnedOffInSettings = Settings.Global.getInt(context.getContentResolver(),
+                "disable_window_blurs", 0) == 1;
+        PowerManager power = context.getSystemService(PowerManager.class);
+        final String powerState = power == null
+                ? "unknown"
+                : "battery saver: " + power.isPowerSaveMode() + ", thermal status: " + power.getCurrentThermalStatus();
+
+        final String state = "Window blur " + (enabled ? "on" : "off")
+                + ", supported: " + supported
+                + ", turned off in developer options: " + turnedOffInSettings
+                + ", " + powerState;
+        Logger.printDebug(() -> state);
     }
 
     /**

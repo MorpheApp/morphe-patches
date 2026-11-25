@@ -288,6 +288,7 @@ public final class WebsiteStream {
         }
         failed = true;
         StreamingDataRequest.onWebClientFailed(videoId, reason);
+        WebsiteSession.onSessionFailed(session);
     }
 
     private void onPart(long partType, byte[] part) {

@@ -120,7 +120,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     // Spoof video streams
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
-    public static final BooleanSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK = new BooleanSetting("morphe_spoof_video_streams_player_js_quack", FALSE, true, new JavaScriptClientAvailability());
+    public static final BooleanSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK = new BooleanSetting("morphe_spoof_video_streams_player_js_quack", TRUE, true, new JavaScriptClientAvailability());
     public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_player_js_variant", JavaScriptVariant.HOUSE_BRAND, true, new JavaScriptVariantAvailability());
     public static final StringSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE = new StringSetting("morphe_spoof_video_streams_player_js_hash_value", "", true, false);
     public static final LongSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_player_js_saved_milliseconds", -1L, false, false);

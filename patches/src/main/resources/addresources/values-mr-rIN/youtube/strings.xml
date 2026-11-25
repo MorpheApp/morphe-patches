@@ -284,6 +284,22 @@ Second \"item\" text"</string>
 • लपवल्यामुळे Shorts शेल्फमध्ये रिकामी जागा राहू शकते"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">व्ह्यू काउंट फिल्टर सर्व व्हिडिओ लपवेल</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">कालावधी फिल्टर</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">फीड आणि शोधामध्ये खूप लहान किंवा खूप मोठे असलेले व्हिडिओ लपवा</string>
+  <string name="morphe_hide_videos_by_duration_home_title">कालावधीनुसार होम व्हिडिओ लपवा</string>
+  <string name="morphe_hide_videos_by_duration_search_title">कालावधीनुसार शोध निकाल लपवा</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">कालावधीनुसार सबस्क्रिप्शन व्हिडिओ लपवा</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">किमान कालावधी (मिनिटे)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">यापेक्षा कमी कालावधीचे व्हिडिओ लपवले जातात. 0 = कोणतीही किमान मर्यादा नाही</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">कमाल कालावधी (मिनिटे)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">यापेक्षा जास्त कालावधीचे व्हिडिओ लपवले जातात. 0 = कोणतीही कमाल मर्यादा नाही</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"होम / सबस्क्रिप्शन / सर्च मधील व्हिडिओ त्यांच्या कालावधीनुसार लपवण्यासाठी फिल्टर केले जातात
+
+मर्यादा:
+• लाईव्ह स्ट्रीम्स, Shorts, प्लेलिस्ट आणि मिक्स लपवले जात नाहीत
+• अज्ञात कालावधी असलेले व्हिडिओ लपवले जात नाहीत"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">कालावधी फिल्टर सर्व व्हिडिओ लपवेल</string>
   <string name="morphe_hide_stats_category_title">आकडेवारी</string>
   <string name="morphe_hide_stats_hidden_24h_title">गेल्या 24 तासांत लपलेले व्हिडिओ</string>
   <string name="morphe_hide_stats_hidden_all_title">सर्व काळासाठी लपलेले व्हिडिओ</string>
@@ -327,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\"सिंक टू व्हिडिओ\" बटण लपवा</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">टॅप आणि होल्ड ग्रेडियंट लपवा</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">वेग वाढवण्यासाठी होल्ड करून ठेवताना बोट सरकवल्यावर प्लेयर कंट्रोल ग्रेडियंट लपवला जातो</string>
-  <string name="morphe_hide_timed_reactions_title">वेळेनुसार प्रतिक्रिया लपवा</string>
-  <string name="morphe_hide_timed_reactions_summary">टिप्पणी विभागात आणि लाइव्ह चॅटमध्ये इमोजीसह प्रतिक्रिया देण्याची परवानगी देणारे वैशिष्ट्य लपवते</string>
   <string name="morphe_hide_help_feedback_menu_summary">थ्री-डॉट बटण वापरताना, जसे की शोध निकालांवर, \'मदत आणि अभिप्राय\' मेनू लपवते</string>
   <string name="morphe_hide_handle_title">हँडल लपवा</string>
   <string name="morphe_hide_handle_summary">\'तुम्ही\' टॅबमध्ये तुमच्या चॅनेलचे हँडल लपवते</string>
@@ -443,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">प्रत्येक कमेंटचे ३-बिंदूंचे मेनू बटण लपवते</string>
   <string name="morphe_hide_comments_none_yet_title">\'अद्याप कोणतीही टिप्पणी नाही\' प्रिव्ह्यू लपवा</string>
   <string name="morphe_hide_comments_preview_comment_title">पूर्वावलोकन टिप्पणी लपवा</string>
-  <string name="morphe_hide_comments_preview_comment_summary">पूर्ण टिप्पणी विभाग उघडण्यापूर्वी व्हिडिओच्या खाली टिप्पणी पूर्वावलोकन लपवते</string>
+  <string name="morphe_hide_comments_preview_comment_summary">कमेंट्स विभाग उघडण्यापूर्वी व्हिडिओच्या खाली कमेंट प्रिव्ह्यू लपवते</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe कडून लपवलेली टिप्पणी...</string>
-  <string name="morphe_minimal_comments_button_title">मिनिमल कमेंट्स बटण सक्षम करा</string>
-  <string name="morphe_minimal_comments_button_summary">कमेंट्स बटणावर दिसणारे स्लाइडिंग कार्ड्स आणि त्याचा पेज सिलेक्टर लपवते</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">प्रिव्ह्यू कमेंट कार्ड्स लपवा</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">कमेंट बटणावर दिसणारे स्लायडिंग कार्ड्स आणि पेज इंडिकेटर लपवते</string>
+  <string name="morphe_hide_comments_timed_reactions_title">वेळितील रिअ‍ॅक्शन्स लपवा</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">कमेंट्स विभाग आणि लाईव्ह चॅटमध्ये वापरकर्त्यांना इमोजीसह प्रतिक्रिया देण्याची परवानगी देणारे वैशिष्ट्य लपवते</string>
   <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टॅम्प बटण लपवा</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top fans\' बटण लपवा</string>
   <string name="morphe_hide_comments_topics_title">\'विषय\' लपवा</string>
@@ -1157,6 +1173,17 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">ट्रान्सक्रिप्ट सुधारा</string>
   <string name="morphe_fix_transcript_summary">ट्रान्सक्रिप्ट लोड होण्यापासून प्रतिबंधित करणारी अट तपासणी अपयश दूर करते</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">ट्रान्सक्रिप्ट कॉपी करा</string>
+  <string name="morphe_copy_transcript_title">ट्रान्सक्रिप्ट कॉपी करा</string>
+  <string name="morphe_copy_transcript_summary">ट्रान्सक्रिप्ट पॅनेलमध्ये एक बटण जोडते जे कॅप्शन्सच्या भाषेतील ट्रान्सक्रिप्ट कॉपी करते</string>
+  <string name="morphe_copy_transcript_timestamps_title">टाइमस्टॅम्प समाविष्ट करा</string>
+  <string name="morphe_copy_transcript_timestamps_summary">कॉपी केलेल्या ट्रान्स्क्रिप्टची प्रत्येक ओळ तिच्या वेळेने सुरू होते</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Shorts मेनूमध्ये दाखवा</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Shorts च्या मेनूमध्ये \'ट्रान्स्क्रिप्ट कॉपी करा\' हा पर्याय जोडतो</string>
+  <string name="morphe_copy_transcript_copied">ट्रान्स्क्रिप्ट क्लिपबोर्डवर कॉपी केले</string>
+  <string name="morphe_copy_transcript_empty">कोणतेही ट्रान्स्क्रिप्ट उपलब्ध नाही</string>
+  <string name="morphe_copy_transcript_error">ट्रान्स्क्रिप्ट कॉपी करता आले नाही</string>
   <string name="morphe_captions_in_pip_title">पिक्चर-इन-पिक्चरमध्ये कॅप्शन्स दाखवा</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">कॅप्शनचा आकार</string>
@@ -1411,6 +1438,17 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
 • 'अधिक व्हिडिओ' ओव्हरले उपलब्ध नसू शकतो
 • Shorts नियमित प्लेयरमध्ये उघडतात
 • नॉन कोलॅप्स झालेला जुना व्हिडिओ ॲक्शन बार दिसतो"</string>
+  <string name="morphe_change_form_factor_car_display_title">कार डिस्प्लेवर ऑटोमोटिव्ह लेआउट</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">जेव्हा YouTube कार डिस्प्लेवर दाखवले जाते, जसे की Android Auto किंवा DriveDeck द्वारे, तेव्हा ऑटोमोटिव्ह लेआउट वापरला जातो</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">कार डिस्प्लेवर ऑटोमोटिव्ह लेआउट वापरला जात नाही</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">कार डिस्प्लेवर नेव्हिगेशन बार ऑटो-हाईड करा</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">कार डिस्प्लेवर काही वेळ वापर न केल्यावर नेव्हिगेशन बार लपवला जातो. तो दिसण्यासाठी खालच्या कडेकडून वर स्वाइप करा</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">कार डिस्प्लेवर नेव्हिगेशन बार नेहमी दिसतो</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">ऑटो-हाईड विलंब</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">नेव्हिगेशन बार दिसल्यानंतर किंवा त्याला स्पर्श केल्यानंतर तो किती वेळ राहतो</string>
+  <string name="morphe_change_form_factor_car_display_any_title">कोणत्याही बाह्य डिस्प्लेवर वापरा</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">फोन स्क्रीन व्यतिरिक्त प्रत्येक डिस्प्ले, ज्यामध्ये टीव्ही किंवा मॉनिटरचा समावेश आहे, तो कार डिस्प्ले आहे</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Android Auto, डिस्प्लेची नावे आणि कार UI मोडद्वारे कार डिस्प्ले आढळतात. Android 15 आणि त्यानंतरच्या आवृत्तीत, DriveDeck, Gearslip, graphene-auto किंवा MyCar द्वारे स्क्रीन मिररिंग देखील कार डिस्प्ले आहे"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">२१.११.४८ - कॅप्शनचे जुने वर्तन पुनर्संचयित करा</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - प्लेलिस्टमध्ये जुने सेव्ह वैशिष्ट्य परत आणा</string>

@@ -284,6 +284,22 @@ Beperkings:
 • 'n Versteekte Short kan 'n leë spasie in 'n Shorts-rak laat"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Kykgetal-filter sal alle video\'s versteek</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Duurasie-filter</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Verberg video\'s in feeds en soektogte wat te kort of te lank is</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Verberg Tuis-video\'s volgens duurasie</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Verberg soekresultate volgens duurasie</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Verberg Inskrywings-video\'s volgens duur</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Minimum duur (minute)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Video\'s korter as dit word verstek. 0 = geen minimum</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Maksimum duur (minute)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Video\'s langer as dit word verstek. 0 = geen maksimum</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Tuis / Inskrywings / Soek word gefiltreer om video's volgens hul duur te verberg
+
+Beperkings:
+• Regstreekse strome, Shorts, speellyste en mengsels word nie verstek nie
+• Video's met 'n onbekende duur word nie verstek nie"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Duurasie-filter sal alle video\'s versteek</string>
   <string name="morphe_hide_stats_category_title">Statistiek</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video\'s versteek, laaste 24 uur</string>
   <string name="morphe_hide_stats_hidden_all_title">Video\'s versteek, altyd</string>
@@ -327,8 +343,6 @@ Beperkings:
   <string name="morphe_hide_sync_button_title">Versteek \'Sinkroniseer met video\'-knoppie</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Verberg tik-en-hou-gradiënt</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Verberg die gradiënt van die spelerkontroles wanneer jy jou vinger sleep terwyl jy vashou om vinniger te laat speel</string>
-  <string name="morphe_hide_timed_reactions_title">Verberg tydelike reaksies</string>
-  <string name="morphe_hide_timed_reactions_summary">Verberg die funksie wat gebruikers toelaat om met emojis in die kommentaarafdeling en regstreekse klets te reageer</string>
   <string name="morphe_hide_help_feedback_menu_summary">Verberg die \'Hulp &amp; terugvoer\'-kieslys wanneer die drie-kolletjie-knoppie gebruik word, soos op die soekresultate</string>
   <string name="morphe_hide_handle_title">Versteek handvatsel</string>
   <string name="morphe_hide_handle_summary">Versteek jou kanaalhandvatsel in die \'Jy\'-oortjie</string>
@@ -443,10 +457,12 @@ Beperkings:
   <string name="morphe_hide_comments_menu_button_summary">Versteek die 3-kolletjie-menu-knoppie van elke kommentaar</string>
   <string name="morphe_hide_comments_none_yet_title">Verberg \'Nog geen kommentaar nie\' voorskou</string>
   <string name="morphe_hide_comments_preview_comment_title">Verberg voorskoukommentaar</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Verberg die kommentaarvoorskou onder die video voordat die volledige kommentaarafdeling oopgemaak word</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Verberg die kommentaarvoorskou onder die video voordat die kommentaarafdeling oopgemaak word</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Kommentaar verberg deur Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Aktiveer minimale kommentaarknoppie</string>
-  <string name="morphe_minimal_comments_button_summary">Versteek die skuifkaarte en hul bladsykieser wat op die kommentaarknoppie vertoon word</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Verberg voorskou-kommentaarkaarte</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Verberg die skuifkaarte en bladsy-aanduider wat op die kommentaarknoppie vertoon word</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Verberg tydsbepaalde reaksies</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Verberg die funksie wat gebruikers toelaat om met emojis in die kommentaarafdeling en regstreekse klets te reageer</string>
   <string name="morphe_hide_comments_timestamp_button_title">Verberg Tydstempel-knoppie</string>
   <string name="morphe_hide_comments_top_fans_button_title">Versteek die \'Top fans\'-knoppie</string>
   <string name="morphe_hide_comments_topics_title">Steek \'Onderwerpe\' weg</string>
@@ -1157,6 +1173,17 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Herstel transkripsie</string>
   <string name="morphe_fix_transcript_summary">Los \'n vooraf-kontrolfout op wat verhoed dat die transkripsie laai</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Kopieer transkripsie</string>
+  <string name="morphe_copy_transcript_title">Kopieer transkripsie</string>
+  <string name="morphe_copy_transcript_summary">Voeg \'n knoppie by die transkripsiepaneel wat die transkripsie in die taal van die onderskrifte kopieer</string>
+  <string name="morphe_copy_transcript_timestamps_title">Sluit tydstempels in</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Elke reël van \'n gekopieerde transkripsie begin met sy tydstempel</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Wys in Shorts-spyskaar</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Voeg \'n Kopieer transkripsie-item by die Shorts-spyskaar</string>
+  <string name="morphe_copy_transcript_copied">Transkripsie gekopieer na knipbord</string>
+  <string name="morphe_copy_transcript_empty">Geen transkripsie beskikbaar nie</string>
+  <string name="morphe_copy_transcript_error">Kon nie transkripsie kopieer nie</string>
   <string name="morphe_captions_in_pip_title">Wys onderskrifte in prent-in-prent</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Ondertitelgrootte</string>
@@ -1411,6 +1438,17 @@ Automotive-uitleg
 • 'Meer video's'-oorvleuning is moontlik nie beskikbaar nie
 • Shorts maak oop in die gewone speler
 • Nie-ingeklapte ou video-aksiebalk word vertoon"</string>
+  <string name="morphe_change_form_factor_car_display_title">Automotiewe uitleg op motorvertonings</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Automotiewe uitleg word gebruik wanneer YouTube op \'n motorvertoning getoon word, soos deur Android Auto of DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Automotiewe uitleg word nie op motorvertonings gebruik nie</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Skakel navigasiebalk outomaties weg op motorvertonings</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Navigasiebalk word weggesteek op \'n motorvertoning nadat dit vir \'n rukkie nie gebruik is nie. Veeg op vanaf die onderste rand om dit te wys</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Navigasiebalk word altyd op motorvertonings gewys</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Outomatiese wegsteek-vertraging</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Hoe lank die navigasiebalk bly nadat dit gewys of aangeraak is</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Gebruik op enige eksterne vertoning</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Elke vertoning behalwe die foonskerm is \'n motorvertoning, insluitend \'n TV of \'n monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Motorvertonings word gevind deur Android Auto, vertoningsname en die motor-UI-modus. In Android 15 en later is skermspieëling deur DriveDeck, Gearslip, graphene-auto of MyCar ook 'n motorvertoning"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel ou onderskrifgedrag</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel ou stoor na speellys</string>

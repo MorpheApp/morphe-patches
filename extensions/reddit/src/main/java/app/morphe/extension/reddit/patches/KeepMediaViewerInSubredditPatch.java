@@ -97,4 +97,33 @@ public final class KeepMediaViewerInSubredditPatch {
             return posts;
         }
     }
+
+    /**
+     * Injection point.
+     * Ends the list when the page has no posts from the subreddit.
+     */
+    @Nullable
+    public static String getAfter(@Nullable List<?> posts, @Nullable String after) {
+        if (!Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT.get()) {
+            return after;
+        }
+
+        try {
+            final String id = subredditId;
+            if (id == null || after == null || posts == null || posts.isEmpty()) {
+                return after;
+            }
+
+            for (Object post : posts) {
+                if (post instanceof Link link && id.equals(link.getSubredditId())) {
+                    return after;
+                }
+            }
+
+            return null;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getAfter failure", ex);
+            return after;
+        }
+    }
 }

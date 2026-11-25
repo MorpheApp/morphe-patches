@@ -285,6 +285,22 @@ Second \"item\" text"</string>
 • Shortsـێکی شاراوە ڕەنگە شوێنێکی بەتاڵ لە ڕەفەی Shorts جێبهێڵێت"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">فلتەری ژمارەی بینەر هەموو ڤیدیۆکان دەشارێتەوە</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">فلتەری ماوە</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">شاردنەوەی ئەو ڤیدیۆیانەی لە فید و گەڕاندا کە زۆر کورت یان زۆر درێژن</string>
+  <string name="morphe_hide_videos_by_duration_home_title">شاردنەوەی ڤیدیۆکانی سەرەکی بەپێی ماوە</string>
+  <string name="morphe_hide_videos_by_duration_search_title">شاردنەوەی ئەنجامەکانی گەڕان بەپێی ماوە</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">شاردنەوەی ڤیدیۆکانی بەشداربوون بەپێی ماوەی ڤیدیۆکە</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">کەمترین ماوە (خولەک)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">ئەو ڤیدیۆیانەی لەم ماوەیە کورتترن دەشاردرێنەوە. 0 = هیچ کەمترین ماوەیەک نییە</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">زۆرترین ماوە (خولەک)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">ئەو ڤیدیۆیانەی لەم ماوەیە درێژترن دەشاردرێنەوە. 0 = هیچ زۆرترین ماوەیەک نییە</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"لاپەڕەی سەرەکی / بەشداربوونەکان / گەڕان فلتەر دەکرێن بۆ شاردنەوەی ڤیدیۆکان بەپێی ماوەکانیان
+
+سەندنەوەکان:
+• پەخشانە ڕاستەوخۆکان، Shorts، لیستە ڤیدیۆکان و تێکەڵەکان ناشردرێنەوە
+• ئەو ڤیدیۆیانەی ماوەکانیان نەزانراوە ناشردرێنەوە"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">فلتەری ماوە هەموو ڤیدیۆکان دەشارێتەوە</string>
   <string name="morphe_hide_stats_category_title">ئامار</string>
   <string name="morphe_hide_stats_hidden_24h_title">ڤیدیۆکانی شاراوە، ٢٤ کاتژمێری ڕابردوو</string>
   <string name="morphe_hide_stats_hidden_all_title">ڤیدیۆکانی شاراوە، هەموو کات</string>
@@ -328,8 +344,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">شاردنەوەی دوگمەی \'هماهەنگکردن لەگەڵ ڤیدیۆ\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">شاردنەوەی گرادیێنتی دەستلێدان و ڕاگرتن</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">گرادیێنتی کۆنتڕۆڵەکانی پلەیەر دەشارێتەوە کاتێک پەنجەت دەجوڵێنیت لە کاتی ڕاگرتندا بۆ خێراکردن</string>
-  <string name="morphe_hide_timed_reactions_title">شاردنەوەی کاردانەوە کاتدارەکان</string>
-  <string name="morphe_hide_timed_reactions_summary">ئەو تایبەتمەندییە دەشارێتەوە کە ڕێگە بە بەکارهێنەران دەدات بە ئیمۆجی کاردانەوە نیشان بدەن لە بەشی کۆمێنت و چاتی ڕاستەوخۆدا</string>
   <string name="morphe_hide_help_feedback_menu_summary">مینیۆی \'یارمەتی &amp; فیدباک\' دەشارێتەوە کاتێک دوگمەی سێ خاڵەکە بەکاردێت، وەک لە ئەنجامەکانی گەڕاندا</string>
   <string name="morphe_hide_handle_title">شاردنەوەی هاندڵ</string>
   <string name="morphe_hide_handle_summary">هاندڵی کەناڵەکەت لە بەشی \'تۆ\' دەشارێتەوە</string>
@@ -444,10 +458,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">دوگمەی مێنیۆی ٣-خاڵی هەر کۆمێنتێک دەشارێتەوە</string>
   <string name="morphe_hide_comments_none_yet_title">شاردنی پێشنرووی \'تا ئێستا هیچ کۆمێنتێک نییە\'</string>
   <string name="morphe_hide_comments_preview_comment_title">شاردنەوەی پێشبینینی کۆمێنت</string>
-  <string name="morphe_hide_comments_preview_comment_summary">پێش کردنەوەی بەشی تەواوی کۆمێنتەکان، پێشبینینی کۆمێنت لە ژێر ڤیدیۆکە دەشارێتەوە</string>
+  <string name="morphe_hide_comments_preview_comment_summary">پێش کردنەوەی بەشی کۆمێنتەکان، پێشبینینی کۆمێنت لە ژێر ڤیدیۆکە دەشارێتەوە</string>
   <string name="morphe_hide_comments_preview_comment_hidden">کۆمێنتەکە لەلایەن Morpheـەوە شاردراوەتەوە…</string>
-  <string name="morphe_minimal_comments_button_title">چالاککردنی دوگمەی کۆمێنتە کەمترینەکان</string>
-  <string name="morphe_minimal_comments_button_summary">کارتی لێخوڕ و هەڵبژاردەری لاپەڕەکەی دەشارێتەوە، کە لەسەر دوگمەی کۆمێنتەکان پیشان دەدرێت</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">شاردنەوەی کارتەکانی پێشبینینی کۆمێنت</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">کارتە لێخوڕەکان و نیشاندەری لاپەڕەی کە لەسەر دوگمەی کۆمێنتەکان پیشان دەدرێت دەشارێتەوە</string>
+  <string name="morphe_hide_comments_timed_reactions_title">شاردنەوەی کاردانەوە کاتدارەکان</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
   <string name="morphe_hide_comments_timestamp_button_title">شاردنەوەی دوگمەی کاتنیشاندەر</string>
   <string name="morphe_hide_comments_top_fans_button_title">شاردنەوەی دوگمەی \'فانە سەرەکییەکان\'</string>
   <string name="morphe_hide_comments_topics_title">شاردنی \'بابەتەکان\'</string>
@@ -1158,6 +1174,17 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">چاککردنی دەقی نووسراو</string>
   <string name="morphe_fix_transcript_summary">چارەسەری شکستێکی پشکنینی پێشەکی دەکات کە ڕەنگە ڕێگری بکات لە بارکربوونی دەقەکەی ڤیدیۆکە</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">کۆپیکردنی دەقی نووسراو</string>
+  <string name="morphe_copy_transcript_title">کۆپیکردنی دەقی نووسراو</string>
+  <string name="morphe_copy_transcript_summary">دوگمەیەک زیاد دەکات بۆ پانێڵی دەقی نووسراو کە دەقەکە بەو زمانەی ژێرنووسەکان کۆپی دەکات</string>
+  <string name="morphe_copy_transcript_timestamps_title">کاتەکان بخاتە ناوەوە</string>
+  <string name="morphe_copy_transcript_timestamps_summary">هەر دێڕێکی دەقێکی کۆپی کراو بە کاتەکانی دەست پێ دەکات</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">نیشاندانی لە مینیوکانى Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">بڕگەی کۆپی کردنی دەق زیاد دەکات بۆ مینیوکانى Shorts</string>
+  <string name="morphe_copy_transcript_copied">دەقەکە کۆپی کرا بۆ ڕوونووسگە</string>
+  <string name="morphe_copy_transcript_empty">هیچ دەقێک بەردەست نییە</string>
+  <string name="morphe_copy_transcript_error">نەتوانرا دەقەکە کۆپی بکرێت</string>
   <string name="morphe_captions_in_pip_title">پیشاندانی سەردێڕەکان لە وێنە-لە-ناو-وێنەدا</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">قەبارەی ژێرنووس</string>
@@ -1412,6 +1439,17 @@ Second \"item\" text"</string>
 • ڕەنگە پەردەی 'ڤیدیۆی زیاتر' بەردەست نەبێت
 • Shorts لە پلەیەری ئاسایی دەکرێنەوە
 • شریتی کردارەکانی ڤیدیۆی کۆنی نەقۆشراو نیشان دەدرێت"</string>
+  <string name="morphe_change_form_factor_car_display_title">ڕێکخستنی ئۆتۆمبێل لەسەر شاشەکانی ئۆتۆمبێل</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">ڕێکخستنی ئۆتۆمبێل بەکاردێت کاتێک YouTube لەسەر شاشەی ئۆتۆمبێل پیشان دەدرێت، وەک Android Auto یان DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">ڕێکخستنی ئۆتۆمبێل لەسەر شاشەکانی ئۆتۆمبێل بەکار ناهێنرێت</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">شاردنی خۆکارەی شریتی گەڕان لە شاشەکانی ئۆتۆمبێل</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">شریتی گەڕان لە شاشەی ئۆتۆمبێلدا دەشارێتەوە ئەگەر بۆ ماوەیەک بەکارنەهێنرێت. بۆ پیشاندانی، لە لای خوارەوە بەرەو سەرەوە ڕابکێشە</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">شریتی گەڕان هەمیشە لە شاشەکانی ئۆتۆمبێلدا دەردەکەوێت</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">کاتی ڕاوەستانی شاردنی خۆکار</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">ماوەی مانەوەی شریتی گەڕان دوای ئەوەی پیشان دەدرێت یان دەست لێ دەدرێت</string>
+  <string name="morphe_change_form_factor_car_display_any_title">بەکارهێنانی لەسەر هەر شاشەیەکی دەرەکی</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">هەر شاشەیەک جگە لە شاشەی مۆبایلەکە شاشەی ئۆتۆمبێلە، لەوانە تەلەفزیۆن یان مۆنیتەر</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"شاشەکانی ئۆتۆمبێل لە ڕێگەی Android Auto، ناوی شاشەکان و شێوازی UI ئۆتۆمبێل دەدۆزرێنەوە. لە Android 15 و دواتر، ڕەنگدانەوەی شاشە لە ڕێگەی DriveDeck، Gearslip، graphene-auto یان MyCar هەروەها شاشەی ئۆتۆمبێلە"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - گەڕاندنەوەی ڕەفتاری کۆنی ژێرنووسەکان</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - گەڕاندنەوەی پاشکەوتکردن بۆ لیست بە شێوازی کۆن</string>

@@ -56,6 +56,10 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 public final class ShortsFilter extends Filter {
     private static final boolean HIDE_SHORTS_NAVIGATION_BAR = Settings.HIDE_SHORTS_NAVIGATION_BAR.get();
     /**
+     * Videos of the modern home feed layout. The Shorts tab of a channel uses the same element.
+     */
+    private static final String MODERN_FEED_LOCKUP_PATH = "lockup.e";
+    /**
      * Videos of the feed and the search that can be Shorts.
      */
     private static final String[] SHORTS_COMPACT_FEED_VIDEO_PATHS = {
@@ -65,8 +69,8 @@ public final class ShortsFilter extends Filter {
             "video_lockup_with_attachment.e",
             // Search results that appear in a horizontal shelf.
             "video_card.e",
-            // Shorts that appear as feed cards in modern layout.
-            "lockup.e"
+            // Videos of the modern home feed layout.
+            MODERN_FEED_LOCKUP_PATH
     };
     private static final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
@@ -192,9 +196,7 @@ public final class ShortsFilter extends Filter {
                 "/oardefault.jpg", // Vertical orientation video.
                 "/oar1.jpg",
                 "/oar2.jpg",
-                "/oar3.jpg",
-                "heart_black_",
-                "shorts_black_")
+                "/oar3.jpg")
         );
 
         shelfHeaderPath = new StringFilterGroup(
@@ -637,6 +639,10 @@ public final class ShortsFilter extends Filter {
                 if (Utils.indexOf(path, ".e", nameEnd + 2) >= 0) {
                     return false;
                 }
+                // Same check as the Shorts shelf header, to not hide the Shorts tab of a channel.
+                if (Utils.contains(path, MODERN_FEED_LOCKUP_PATH) && !contextInterface.isHomeFeedOrRelatedVideo()) {
+                    return false;
+                }
                 // When a video is autoplaying in the feed, no new components are drawn on the screen.
                 // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
                 return PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
@@ -745,6 +751,13 @@ public final class ShortsFilter extends Filter {
             }
             // For now, consider Shorts under video player the same as the home feed.
             return logDecision(component, hideHome, "player: home");
+        }
+
+        // The feed behind the Shorts player is laid out again while the Shorts player is open,
+        // such as the search results a Short was opened from, whose search bar is not shown meanwhile.
+        if (NavigationBar.isSearchBarBehindShortsPlayer()) {
+            return hideShortsInFeed(component, "search behind the Shorts player",
+                    Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
         }
 
         // Must check second, as search can be from any tab.
