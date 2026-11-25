@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.4.0-dev.12",
+  "version": "2.4.0-dev.13",
   "patches": [
     {
       "name": "A-B loop",
@@ -7785,7 +7785,7 @@
     },
     {
       "name": "Fullscreen video scale",
-      "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
+      "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode, or to align videos to the top or bottom of the screen.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -16993,6 +16993,77 @@
       "options": []
     },
     {
+      "name": "Settings in sidebar",
+      "description": "Adds an option to show the Morphe settings at the top of the sidebar.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Settings menu filter",
       "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
       "default": true,
@@ -19044,7 +19115,7 @@
     },
     {
       "name": "Third-party lyrics",
-      "description": "Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel.",
+      "description": "Adds an option to show synced lyrics with experience enhancement from 20+ providers in the lyrics panel.",
       "default": true,
       "category": null,
       "compatiblePackages": [

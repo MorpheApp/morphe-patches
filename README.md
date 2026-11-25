@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.12](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.12)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;265 patches total
+> **[v2.4.0-dev.13](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.13)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;266 patches total
 <details>
 <summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;63 patches</summary>
 <br>
@@ -108,7 +108,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color |
-| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel. |  |
+| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 20+ providers in the lyrics panel. |  |
 | [Video effects](#video-effects) | Adds an option to change the colors of videos or add visual effects, such as black and white. |  |
 
 </details>
@@ -175,7 +175,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force fullscreen landscape](#force-fullscreen-landscape) | Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Fullscreen playlist panel](#fullscreen-playlist-panel) | Adds an option to show the playlist panel over the fullscreen player on tablets, instead of exiting fullscreen. |  |
-| [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
+| [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode, or to align videos to the top or bottom of the screen. |  |
 | [Ghost mode](#ghost-mode) | Adds a ghost mode to watch videos without affecting YouTube watch history or recommendations. |  |
 | [Glass menus](#glass-menus) | Adds an option to show the menus as frosted glass, with the content behind the menu blurred. This patch works on Android 12 and newer. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
@@ -257,7 +257,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;68 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;69 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -328,6 +328,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
 | [Search hidden profiles](#search-hidden-profiles) | Adds an option to make the profile search find the posts of profiles that hide their posts or comments. |  |
 | [See-through status bar](#see-through-status-bar) | Adds an option to let the home feed scroll up under the status bar and fade into it. This patch works with Reddit 2026.43.0 and newer. |  |
+| [Settings in sidebar](#settings-in-sidebar) | Adds an option to show the Morphe settings at the top of the sidebar. |  |
 | [Share post content](#share-post-content) | Adds an option to share the image, video or text of a post instead of its link when using app shortcuts or "Share via…" in the share sheet. |  |
 | [Show flairs in home feed](#show-flairs-in-home-feed) | Adds an option to show post flair badges in the home feed. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |
