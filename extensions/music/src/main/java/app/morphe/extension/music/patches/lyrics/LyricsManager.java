@@ -99,10 +99,19 @@ public final class LyricsManager {
     private volatile TrackInfo currentTrack;
 
     @Nullable
-    private volatile String sectionsPendingFingerprint;
+    private volatile Lyrics sectionsPendingFor;
 
     @Nullable
     private volatile List<String> pendingSections;
+
+    @Nullable
+    private volatile Lyrics pendingSectionsFor;
+
+    @Nullable
+    private volatile TrackInfo pendingSectionsTrack;
+
+    @Nullable
+    private volatile Lyrics sectionDetectionTarget;
 
     private volatile boolean sectionDetecting;
 
@@ -393,11 +402,23 @@ public final class LyricsManager {
 
     public void setTemporaryOffsetMs(int ms) {
         temporaryOffsetMs = ms;
+        notifyTemporaryOffsetChanged(ms);
     }
 
     /** Called after saved offsets are cleared so the in-session value is not written back. */
     public void clearTemporaryOffsetMs() {
         temporaryOffsetMs = 0;
+        notifyTemporaryOffsetChanged(0);
+    }
+
+    private void notifyTemporaryOffsetChanged(int ms) {
+        for (Listener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onTemporaryOffsetChanged(ms);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Temporary offset listener failure", ex);
+            }
+        }
     }
 
     /** Called from the panel when the track is about to change or to go away, not per drag frame. */
@@ -784,6 +805,12 @@ public final class LyricsManager {
         preferenceVideoId = VideoInformation.getVideoId();
         loadedForVideoId = preferenceVideoId;
         displaySegs = null;
+        sectionsPendingFor = null;
+        pendingSections = null;
+        pendingSectionsFor = null;
+        pendingSectionsTrack = null;
+        sectionDetectionTarget = null;
+        sectionDetecting = false;
 
         // Started after this track's own lookup is on its way, so they never wait on
         // each other.
@@ -2299,6 +2326,7 @@ public final class LyricsManager {
             if (splitBackground) {
                 lyrics = LyricsBracketSplitter.apply(lyrics);
             }
+            lyrics = restoreCachedSections(lyrics);
             if (cacheKey != null) {
                 filteredCache.put(cacheKey, lyrics);
             }
@@ -2316,23 +2344,31 @@ public final class LyricsManager {
         return lyrics;
     }
 
-    @NonNull
-    private static StringBuilder getSb(Lyrics lyrics, boolean splitBackground) {
-        List<LyricsLine> lines = lyrics.lines();
-        boolean hasSections = false;
-        for (LyricsLine line : lines) {
-            String part = line.songPart();
-            if (part != null && !part.isEmpty()) {
-                hasSections = true;
-                break;
-            }
+    private Lyrics restoreCachedSections(Lyrics lyrics) {
+        if (lyrics == null || lyrics.isEmpty() || currentTrack == null
+                || !Settings.LYRICS_USE_AI_SECTION.get()
+                || !SectionDetector.needsDetection(lyrics)) {
+            return lyrics;
         }
+        List<LyricsLine> lines = lyrics.lines();
+        List<String> texts = new ArrayList<>(lines.size());
+        for (LyricsLine line : lines) {
+            texts.add(line.text());
+        }
+        List<String> sections = LyricsCache.getSectionAI(currentTrack, lyrics.providerName(), texts);
+        Lyrics restored = SectionDetector.applySections(lyrics, sections);
+        return restored != null ? restored : lyrics;
+    }
+
+    @NonNull
+    static StringBuilder getSb(Lyrics lyrics, boolean splitBackground) {
+        List<LyricsLine> lines = lyrics.lines();
         StringBuilder sb = new StringBuilder(lyrics.providerName())
                 .append(splitBackground ? "|bg" : "|")
-                .append(hasSections ? "|sec" : "|nosec");
-        int limit = Math.min(3, lines.size());
-        for (int i = 0; i < limit; i++) {
-            sb.append('|').append(lines.get(i).text());
+                .append('|').append(lines.size());
+        for (LyricsLine line : lines) {
+            String part = line.songPart();
+            sb.append('|').append(part != null ? part : "").append('|').append(line.text());
         }
         return sb;
     }
@@ -2418,7 +2454,6 @@ public final class LyricsManager {
      * answers. A track change while the request is out would leave them on the wrong song, so the
      * callback checks the lyrics and the track it was asked about are still the current ones.
      */
-    @SuppressWarnings({"UnnecessaryLocalVariable", "ConstantValue"})
     private void detectSections(@Nullable Lyrics lyrics) {
         if (!Settings.LYRICS_USE_AI_SECTION.get()) {
             return;
@@ -2428,24 +2463,17 @@ public final class LyricsManager {
         }
         final TrackInfo track = currentTrack;
         final Lyrics target = lyrics;
-        if (track == null || target == null) {
+        if (track == null || target == null || sectionsPendingFor == target) {
             return;
         }
-        final String fingerprint = LyricsMatch.fingerprint(target);
-        if (fingerprint.equals(sectionsPendingFingerprint)) {
-            return;
-        }
-        sectionsPendingFingerprint = fingerprint;
+        sectionsPendingFor = target;
         SectionDetector.detect(track, target,
-                () -> fingerprint.equals(sectionsPendingFingerprint), sections -> {
-                    if (sectionsPendingFingerprint != null
-                            && Objects.equals(sectionsPendingFingerprint, fingerprint)) {
-                        sectionsPendingFingerprint = null;
+                () -> sectionsPendingFor == target, sections -> {
+                    if (sectionsPendingFor == target) {
+                        sectionsPendingFor = null;
                     }
-                    Lyrics shown = currentLyrics;
-                    boolean stillShowing = shown != null && fingerprint.equals(LyricsMatch.fingerprint(shown));
-                    // A track change or a newer request cancels it; neither is a failure.
-                    if (!stillShowing || currentTrack != track) {
+                    // Sections belong to this exact lyrics object, never to whatever replaced it.
+                    if (currentLyrics != target || currentTrack != track) {
                         return;
                     }
                     if (sections == null) {
@@ -2456,7 +2484,7 @@ public final class LyricsManager {
                         }
                         return;
                     }
-                    setState(State.LOADED, SectionDetector.applySections(shown, sections));
+                    setState(State.LOADED, SectionDetector.applySections(target, sections));
                 });
     }
 
@@ -2464,27 +2492,31 @@ public final class LyricsManager {
         if (!Settings.LYRICS_USE_AI_SECTION.get()) {
             return;
         }
-        Lyrics lyrics = currentLyrics;
-        TrackInfo track = currentTrack;
-        if (track == null || !SectionDetector.needsDetection(lyrics)) {
+        final Lyrics target = currentLyrics;
+        final TrackInfo track = currentTrack;
+        if (track == null || !SectionDetector.needsDetection(target)) {
             return;
         }
         if (sectionDetecting) {
             return;
         }
-        final String fingerprint = LyricsMatch.fingerprint(lyrics);
+        sectionDetectionTarget = target;
         sectionDetecting = true;
         notifySectionDetectionStateChanged();
-        SectionDetector.detect(track, lyrics,
-                () -> sectionDetecting, sections -> {
-                    sectionDetecting = false;
-                    Lyrics shown = currentLyrics;
-                    if (shown == null || !fingerprint.equals(LyricsMatch.fingerprint(shown))) {
+        SectionDetector.detect(track, target,
+                () -> sectionDetectionTarget == target, sections -> {
+                    if (sectionDetectionTarget == target) {
+                        sectionDetectionTarget = null;
+                        sectionDetecting = false;
+                    }
+                    if (currentLyrics != target || currentTrack != track) {
                         notifySectionDetectionStateChanged();
                         return;
                     }
                     if (sections != null) {
                         pendingSections = sections;
+                        pendingSectionsFor = target;
+                        pendingSectionsTrack = track;
                     }
                     notifySectionDetectionStateChanged();
                 });
@@ -2502,15 +2534,15 @@ public final class LyricsManager {
 
     public void applyPendingSections() {
         List<String> sections = pendingSections;
-        if (sections == null) {
-            return;
-        }
+        Lyrics target = pendingSectionsFor;
+        TrackInfo track = pendingSectionsTrack;
         pendingSections = null;
-        Lyrics shown = currentLyrics;
-        if (shown == null) {
+        pendingSectionsFor = null;
+        pendingSectionsTrack = null;
+        if (sections == null || target == null || currentLyrics != target || currentTrack != track) {
             return;
         }
-        setState(State.LOADED, SectionDetector.applySections(shown, sections));
+        setState(State.LOADED, SectionDetector.applySections(target, sections));
     }
 
     public boolean hasPendingSections() {
@@ -2556,6 +2588,10 @@ public final class LyricsManager {
         void onLyricsChanged(State state, @Nullable Lyrics lyrics);
 
         default void onSectionDetectionStateChanged() {
+        }
+
+        /** Called when the temporary offset changes outside the panel's own drag. */
+        default void onTemporaryOffsetChanged(int offsetMs) {
         }
     }
 

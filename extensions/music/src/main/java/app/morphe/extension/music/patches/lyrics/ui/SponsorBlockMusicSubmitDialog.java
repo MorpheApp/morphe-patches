@@ -18,7 +18,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
-import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -27,6 +26,7 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +48,8 @@ import app.morphe.extension.shared.sponsorblock.requests.SBRequester.SegmentSubm
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.shared.ui.SheetBottomDialog.SlideDialog;
 
 /**
  * YouTube Music dialog that submits the span recorded in the lyrics panel as a SponsorBlock
@@ -64,6 +66,8 @@ final class SponsorBlockMusicSubmitDialog {
 
     /** How long the server takes before a new segment is returned by segment requests. */
     private static final long REFRESH_DELAY_MS = 10_000;
+
+    private static final int SLIDE_ANIMATION_MILLIS = 160;
 
     private SponsorBlockMusicSubmitDialog() {
     }
@@ -91,6 +95,7 @@ final class SponsorBlockMusicSubmitDialog {
         final int[] selected = {DEFAULT_CATEGORY_INDEX};
         final boolean[] submitted = {false};
         final LyricsManager manager = LyricsManager.getInstance();
+        manager.clearDialogSegment();
 
         final TextView startView = createTimeView(context);
         final TextView endView = createTimeView(context);
@@ -176,43 +181,90 @@ final class SponsorBlockMusicSubmitDialog {
         });
         content.addView(categoryButton, blockParams(Dim.dp16));
 
-        final Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                context,
+        LinearLayout sheet = SheetBottomDialog.createMainLayout(
+                context, LyricsSheetChrome.BACKGROUND_COLOR);
+        SlideDialog dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
+
+        final boolean[] cleaned = {false};
+        final SlideDialog[] activeDialog = {dialog};
+        Runnable cleanup = () -> {
+            if (cleaned[0] || activeDialog[0] != dialog) {
+                return;
+            }
+            cleaned[0] = true;
+            if (!submitted[0]) {
+                manager.clearDialogSegment();
+            }
+            onExit.run();
+        };
+        dialog.setOnCancelListener(d -> cleanup.run());
+        dialog.setOnDismissListener(d -> cleanup.run());
+
+        LinearLayout sheetRoot = new LinearLayout(context);
+        sheetRoot.setOrientation(LinearLayout.VERTICAL);
+        sheetRoot.setBackgroundColor(LyricsSheetChrome.BACKGROUND_COLOR);
+        sheetRoot.addView(LyricsSheetChrome.createTopBar(context,
                 str("morphe_sb_new_segment_title"),
-                null,
-                null,
+                () -> {
+                    cleanup.run();
+                    dialog.dismissImmediately();
+                }), new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        ScrollView scroll = SheetBottomDialog.createCappedScrollView(context, 70);
+        scroll.addView(content, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        LinearLayout contentHost = LyricsSheetChrome.createContentHost(context);
+        contentHost.addView(scroll, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        sheetRoot.addView(contentHost, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        LinearLayout buttonRow = new LinearLayout(context);
+        buttonRow.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        rowParams.topMargin = Dim.dp12;
+        buttonRow.setLayoutParams(rowParams);
+
+        Button copyButton = CustomDialog.createButton(context, dialog,
+                str("morphe_sb_settings_copy"), () -> copySpan(context, videoId, times), false, false);
+        Button submitButton = CustomDialog.createButton(context, dialog,
                 str("morphe_sb_new_segment_confirm_submit"),
                 () -> {
                     final long start = times[0];
                     final long end = times[1];
                     if (start >= end) {
-                        Utils.showToastShort(
-                                str("morphe_sb_new_segment_start_is_before_end"));
+                        Utils.showToastShort(str("morphe_sb_new_segment_start_is_before_end"));
                         return;
                     }
                     final SegmentCategory category = CATEGORIES[selected[0]];
                     submitted[0] = true;
+                    cleanup.run();
+                    dialog.dismissImmediately();
                     Utils.runOnBackgroundThread(() -> submitSegment(
                             videoId, category, start, end, videoLength, manager));
-                },
-                () -> {
-                },
-                str("morphe_sb_settings_copy"),
-                () -> copySpan(context, videoId, times),
-                false);
+                }, true, false);
+        for (Button button : new Button[]{copyButton, submitButton}) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, Dim.dp36, 1f);
+            params.setMargins(Dim.dp4, 0, Dim.dp4, 0);
+            buttonRow.addView(button, params);
+        }
+        LinearLayout dock = LyricsSheetChrome.createBottomDock(context);
+        dock.addView(buttonRow, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        sheetRoot.addView(dock, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        sheet.addView(sheetRoot, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        final Dialog dialog = dialogPair.first;
-        dialog.setOnDismissListener(d -> {
-            if (!submitted[0]) {
-                manager.clearDialogSegment();
-            }
-            onExit.run();
-        });
-        final LinearLayout mainLayout = dialogPair.second;
-        mainLayout.addView(content, mainLayout.getChildCount() - 1,
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
         try {
             dialog.show();
         } catch (WindowManager.BadTokenException ex) {

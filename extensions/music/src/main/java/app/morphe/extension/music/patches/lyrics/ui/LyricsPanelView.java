@@ -1053,6 +1053,12 @@ public final class LyricsPanelView extends FrameLayout
         }
     }
 
+    private void restoreOffsetRulerIfNeeded() {
+        if (LyricsManager.getInstance().getTemporaryOffsetMs() != 0) {
+            showOffsetRuler();
+        }
+    }
+
     private void hideOffsetRuler() {
         handler.removeCallbacks(hideOffsetRulerRunnable);
         if (offsetRulerView.getVisibility() == VISIBLE) {
@@ -1359,6 +1365,19 @@ public final class LyricsPanelView extends FrameLayout
         updateSectionButton();
     }
 
+    @Override
+    public void onTemporaryOffsetChanged(int offsetMs) {
+        if (offsetState.isOffsetAdjusting()) {
+            return;
+        }
+        offsetRulerView.setOffsetMs(offsetMs);
+        if (offsetMs != 0) {
+            showOffsetRuler();
+        } else {
+            scheduleHideOffsetRuler();
+        }
+    }
+
     private static boolean sameLinesExceptSongPart(@NonNull Lyrics a, @NonNull Lyrics b) {
         return sameLineStructure(a, b, true);
     }
@@ -1392,12 +1411,6 @@ public final class LyricsPanelView extends FrameLayout
             return false;
         }
 
-        for (TextView agentTag : agentTags) {
-            if (agentTag != null) {
-                return false;
-            }
-        }
-
         Context context = getContext();
         final boolean showSection = Settings.LYRICS_SHOW_SECTION.get();
         String previousLeadSongPart = null;
@@ -1416,11 +1429,14 @@ public final class LyricsPanelView extends FrameLayout
                 builtTag.setText(songPart);
                 continue;
             }
-            TextView agentTag = i < agentTags.size() ? agentTags.get(i) : null;
+            TextView agentTag = agentTags.get(i);
             if (opensSection) {
                 TextView tag = createSectionTag(context, songPart);
                 if (tag == null) {
                     continue;
+                }
+                if (agentTag != null && !(agentTag.getParent() instanceof FrameLayout)) {
+                    return false;
                 }
                 boolean isRight = (lineViews.get(i) instanceof LyricsLineView llv)
                         ? llv.isRightAligned()
@@ -1448,31 +1464,17 @@ public final class LyricsPanelView extends FrameLayout
                     }
                 }
                 sectionTags.set(i, null);
+            } else {
+                continue;
+            }
+            GapLineView gap = gapLineViewsByLine.get(i);
+            if (gap != null) {
+                gap.setHasTagBelow(showSection && (sectionTags.get(i) != null || agentTag != null));
             }
         }
         lyrics = newLyrics;
         lastBuiltLyrics = newLyrics;
-        // Carry section labels into rawLyrics so applyRuby and romanize keep them.
-        if (rawLyrics != null && rawLyrics != newLyrics
-                && rawLyrics.lines().size() == newLines.size()) {
-            List<LyricsLine> base = rawLyrics.lines();
-            List<LyricsLine> updated = new ArrayList<>(base.size());
-            boolean changed = false;
-            for (int i = 0; i < base.size(); i++) {
-                LyricsLine r = base.get(i);
-                String part = newLines.get(i).songPart();
-                if (Objects.equals(r.songPart(), part)) {
-                    updated.add(r);
-                    continue;
-                }
-                updated.add(new LyricsLine(r.startTimeMs(), r.endTimeMs(), r.text(), r.words(),
-                        r.agentId(), r.isDuet(), r.isBG(), part));
-                changed = true;
-            }
-            if (changed) {
-                rawLyrics = rawLyrics.withLines(updated);
-            }
-        }
+        rawLyrics = newLyrics;
         return true;
     }
 
@@ -1580,6 +1582,7 @@ public final class LyricsPanelView extends FrameLayout
 
     private void onPanelReopened() {
         exitBrowsing();
+        restoreOffsetRulerIfNeeded();
         seekState.markSeekPending();
         long nowPos = LyricsManager.getInstance().getPositionMs();
         seekState.noteLivePosition(nowPos);
@@ -2268,7 +2271,7 @@ public final class LyricsPanelView extends FrameLayout
         final boolean showSection = Settings.LYRICS_SHOW_SECTION.get();
         GapLineView gv = gapLineViewsByLine.get(i);
         if (gv != null) {
-            gv.setHasTagBelow(showSection);
+            gv.setHasTagBelow(showSection && (sectionTag != null || agentTag != null));
         }
         FrameLayout tagRow = new FrameLayout(context);
         if (sectionTag != null) {
@@ -3510,39 +3513,8 @@ public final class LyricsPanelView extends FrameLayout
         romanizedAiModel = stashed.aiModel();
         romanizedLocalDictionary = stashed.localDictionary();
         appliedRubyLanguage = stashed.appliedRubyLanguage();
-        if (stashed.rubyAppliedLyrics() != null) {
-            lyrics = copySectionLabels(stashed.rubyAppliedLyrics(), current);
-        }
         stashedRomanization = null;
         return true;
-    }
-
-    private static Lyrics copySectionLabels(Lyrics target, @Nullable Lyrics sectionSource) {
-        if (sectionSource == null || target.lines().size() != sectionSource.lines().size()) {
-            return target;
-        }
-        List<LyricsLine> base = target.lines();
-        List<LyricsLine> sec = sectionSource.lines();
-        List<LyricsLine> updated = null;
-        for (int i = 0; i < base.size(); i++) {
-            LyricsLine b = base.get(i);
-            String part = sec.get(i).songPart();
-            if (Objects.equals(b.songPart(), part)) {
-                if (updated != null) {
-                    updated.add(b);
-                }
-                continue;
-            }
-            if (updated == null) {
-                updated = new ArrayList<>(base.size());
-                for (int j = 0; j < i; j++) {
-                    updated.add(base.get(j));
-                }
-            }
-            updated.add(new LyricsLine(b.startTimeMs(), b.endTimeMs(), b.text(), b.words(),
-                    b.agentId(), b.isDuet(), b.isBG(), part));
-        }
-        return updated != null ? target.withLines(updated) : target;
     }
 
     private static boolean sameLineTexts(@Nullable Lyrics a, @Nullable Lyrics b) {
@@ -4956,6 +4928,10 @@ public final class LyricsPanelView extends FrameLayout
 
     ScrollView getScrollView() {
         return scrollView;
+    }
+
+    View getTranscribePromptView() {
+        return transcribePromptView;
     }
 
     ViewGroup getButtonRow() {
@@ -6374,6 +6350,7 @@ public final class LyricsPanelView extends FrameLayout
         shareSelectionBar.setVisibility(GONE);
         buttonRow.setAlpha(1f);
         updateButtonRowVisibility();
+        restoreOffsetRulerIfNeeded();
         if (lyrics != null && lyrics.synced()) {
             long pos = LyricsManager.getInstance().getPositionMs();
             handleSeekOrRewind(pos);

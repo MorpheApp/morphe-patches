@@ -9,15 +9,15 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Pair;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -34,9 +34,13 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.shared.ui.SheetBottomDialog.SlideDialog;
 
 /**
  * The dialog opened by long-pressing the refresh button. It edits the search terms and can
@@ -44,6 +48,8 @@ import app.morphe.extension.shared.ui.Dim;
  * its own rather than as another block inside the panel view.
  */
 final class LyricsSearchDialog {
+
+    private static final int SLIDE_ANIMATION_MILLIS = 180;
 
     /**
      * The panel operations the dialog reaches back for, since the transcribe and section buttons
@@ -152,7 +158,7 @@ final class LyricsSearchDialog {
             }
         });
 
-        final Dialog[] dialogRef = new Dialog[1];
+        final SlideDialog[] dialogRef = new SlideDialog[1];
 
         // Sits with the terms rather than in the button row, which this dialog leaves empty: it
         // reuses the same two fields rather than searching on its own. Read at open time, so the
@@ -178,7 +184,7 @@ final class LyricsSearchDialog {
             transcribeButton.setOnClickListener(view -> {
                 if (pendingAlignment != null) {
                     callbacks.applyPendingAlignment();
-                    if (dialogRef[0] != null) dialogRef[0].dismiss();
+                    if (dialogRef[0] != null) dialogRef[0].dismissImmediately();
                     return;
                 }
                 if (QuickLRCClient.isRunning()) {
@@ -216,7 +222,7 @@ final class LyricsSearchDialog {
             sectionButton.setOnClickListener(view -> {
                 if (manager.hasPendingSections()) {
                     manager.applyPendingSections();
-                    if (dialogRef[0] != null) dialogRef[0].dismiss();
+                    if (dialogRef[0] != null) dialogRef[0].dismissImmediately();
                 } else {
                     Lyrics current = callbacks.getCurrentLyrics();
                     if (current == null || current.isEmpty() || current == Lyrics.NOT_FOUND) {
@@ -228,12 +234,39 @@ final class LyricsSearchDialog {
             });
         }
 
-        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                context,
-                str("morphe_music_lyrics_search_dialog_title"),
-                null,
-                null,
-                null,
+        LinearLayout sheet = SheetBottomDialog.createMainLayout(
+                context, LyricsSheetChrome.BACKGROUND_COLOR);
+        SlideDialog dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
+        dialogRef[0] = dialog;
+        dialog.setOnDismissListener(d -> {
+            dialogRef[0] = null;
+            callbacks.onSearchDialogDismiss();
+        });
+
+        LinearLayout sheetRoot = new LinearLayout(context);
+        sheetRoot.setOrientation(LinearLayout.VERTICAL);
+        sheetRoot.setBackgroundColor(LyricsSheetChrome.BACKGROUND_COLOR);
+        sheetRoot.addView(LyricsSheetChrome.createTopBar(context,
+                str("morphe_music_lyrics_search_dialog_title"), dialog::dismissImmediately),
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        ScrollView scroll = SheetBottomDialog.createCappedScrollView(context, 70);
+        scroll.addView(content, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        LinearLayout contentHost = LyricsSheetChrome.createContentHost(context);
+        contentHost.addView(scroll, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        sheetRoot.addView(contentHost, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        Button okButton = CustomDialog.createButton(context, dialog,
+                ResourceUtils.getSystemStringByLocale("ok",
+                        BaseSettings.MORPHE_LANGUAGE.get().getLocale()),
                 () -> {
                     String title = titleInput.getText().toString().trim();
                     String artist = artistInput.getText().toString().trim();
@@ -244,29 +277,26 @@ final class LyricsSearchDialog {
                     boolean defaultTerms = title.equals(defaultTitle)
                             && artist.equals(defaultArtist);
                     callbacks.onConfirmSearch(title, artist, defaultTerms);
-                },
-                () -> {
-                },
-                null,
-                null,
-                false
-        );
+                }, true, true);
+        LyricsSheetChrome.stylePrimaryButton(okButton);
+        LinearLayout dock = LyricsSheetChrome.createBottomDock(context);
+        dock.addView(okButton, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp(36)));
+        sheetRoot.addView(dock, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        sheet.addView(sheetRoot, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        Dialog dialog = dialogPair.first;
-        dialogRef[0] = dialog;
-        LinearLayout mainLayout = dialogPair.second;
-        // Dropped first so nothing touches a detached view. Only a run still going is cut: a
-        // result already back is kept, since reopening the dialog still offers it.
-        dialog.setOnDismissListener(d -> callbacks.onSearchDialogDismiss());
-        mainLayout.addView(content, mainLayout.getChildCount() - 1,
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        dialog.setCanceledOnTouchOutside(false);
         Window window = dialog.getWindow();
         if (window != null) {
-            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+                    | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         }
         dialog.show();
+        titleInput.requestFocus();
 
         // One round per dialog, fetched once it is on screen so the first keystroke never
         // waits for MusicBrainz.
@@ -279,7 +309,7 @@ final class LyricsSearchDialog {
                 if (titles.isEmpty() && artists.isEmpty()) {
                     return;
                 }
-                if (!dialog.isShowing()) {
+                if (dialogRef[0] != dialog || !dialog.isShowing()) {
                     return;
                 }
                 if (!titles.isEmpty()) {

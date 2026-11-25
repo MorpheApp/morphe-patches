@@ -17,15 +17,18 @@ import android.graphics.Bitmap;
 import android.graphics.Outline;
 import android.graphics.Typeface;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.TypedValue;
+import android.view.DisplayCutout;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
+import android.view.WindowInsets;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -99,6 +102,11 @@ final class LyricsFullscreenController {
     private int scrollOriginalIndex;
     @Nullable
     private ViewGroup.LayoutParams scrollOriginalParams;
+    private int promptOriginalIndex;
+    @Nullable
+    private ViewGroup.LayoutParams promptOriginalParams;
+    @Nullable
+    private FrameLayout lyricsPane;
     @Nullable
     private View animatedArtworkView;
     @Nullable
@@ -115,6 +123,10 @@ final class LyricsFullscreenController {
     LyricsFullscreenController(LyricsPanelView panel) {
         this.panel = panel;
         Context context = panel.getContext();
+        panel.setOnApplyWindowInsetsListener((v, insets) -> {
+            if (splitActive) applyLyricsCutoutInset(insets);
+            return insets;
+        });
 
         artworkView = new ImageView(context);
         artworkView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -487,12 +499,16 @@ final class LyricsFullscreenController {
 
     private void setSplitActive(boolean active) {
         View scroll = panel.getScrollView();
+        View prompt = panel.getTranscribePromptView();
         if (active) {
             LinearLayout root = new LinearLayout(panel.getContext());
             root.setOrientation(LinearLayout.HORIZONTAL);
             scrollOriginalIndex = panel.indexOfChild(scroll);
             scrollOriginalParams = scroll.getLayoutParams();
+            promptOriginalIndex = panel.indexOfChild(prompt);
+            promptOriginalParams = prompt.getLayoutParams();
             detach(scroll);
+            detach(prompt);
             FrameLayout pane = new FrameLayout(panel.getContext());
             pane.setOnTouchListener(coverTouchListener);
             LinearLayout coverStack = new LinearLayout(panel.getContext());
@@ -525,11 +541,28 @@ final class LyricsFullscreenController {
                                             oldLeft, oldTop, oldRight, oldBottom) -> updateArtworkSize());
             root.addView(pane, new LinearLayout.LayoutParams(0,
                     LinearLayout.LayoutParams.MATCH_PARENT, 0.45f));
-            root.addView(scroll, new LinearLayout.LayoutParams(0,
+            FrameLayout lyricsPane = new FrameLayout(panel.getContext());
+            // Keep the right edge clear of a landscape punch-hole camera.
+            lyricsPane.setPadding(0, 0, Dim.dp16, 0);
+            lyricsPane.setClipChildren(false);
+            lyricsPane.setClipToPadding(false);
+            lyricsPane.addView(scroll, new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    FrameLayout.LayoutParams.MATCH_PARENT));
+            FrameLayout.LayoutParams promptParams = new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    Gravity.CENTER);
+            promptParams.leftMargin = Dim.dp32;
+            promptParams.rightMargin = Dim.dp32;
+            lyricsPane.addView(prompt, promptParams);
+            root.addView(lyricsPane, new LinearLayout.LayoutParams(0,
                     LinearLayout.LayoutParams.MATCH_PARENT, 0.55f));
             artworkView.setVisibility(View.VISIBLE);
             splitRoot = root;
             artPane = pane;
+            this.lyricsPane = lyricsPane;
+            applyLyricsCutoutInset(panel.getRootWindowInsets());
             panel.addView(root, 1, new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
             AppleMusicArtworkPatch.addArtworkFileListener(artworkFileListener);
@@ -557,11 +590,34 @@ final class LyricsFullscreenController {
             artworkView.setVisibility(View.GONE);
             artPane = null;
             detach(scroll);
+            detach(prompt);
+            if (lyricsPane != null) lyricsPane.removeAllViews();
             panel.addView(scroll, Math.min(scrollOriginalIndex, panel.getChildCount()),
                     scrollOriginalParams != null ? scrollOriginalParams : scroll.getLayoutParams());
+            panel.addView(prompt, Math.min(promptOriginalIndex, panel.getChildCount()),
+                    promptOriginalParams != null ? promptOriginalParams : prompt.getLayoutParams());
+            lyricsPane = null;
             splitRoot = null;
         }
         splitActive = active;
+    }
+
+    /** Reserves the right edge the system says is occupied by a cutout. */
+    private void applyLyricsCutoutInset(@Nullable WindowInsets insets) {
+        if (lyricsPane == null || insets == null) {
+            return;
+        }
+        int safeRight = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            DisplayCutout cutout = insets.getDisplayCutout();
+            if (cutout != null) {
+                safeRight = cutout.getSafeInsetRight();
+            }
+        }
+        final int padding = Math.max(Dim.dp16, safeRight + Dim.dp8);
+        if (lyricsPane.getPaddingRight() != padding) {
+            lyricsPane.setPadding(0, 0, padding, 0);
+        }
     }
 
     private void updateArtworkSize() {
