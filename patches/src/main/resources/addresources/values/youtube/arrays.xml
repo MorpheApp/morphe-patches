@@ -744,6 +744,16 @@
         <item>STRETCH</item>
         <item>ZOOM</item>
     </string-array>
+    <string-array name="morphe_fullscreen_video_alignment_entries">
+        <item>@string/morphe_fullscreen_video_alignment_entry_top</item>
+        <item>@string/morphe_fullscreen_video_alignment_entry_center</item>
+        <item>@string/morphe_fullscreen_video_alignment_entry_bottom</item>
+    </string-array>
+    <string-array name="morphe_fullscreen_video_alignment_entry_values">
+        <item>TOP</item>
+        <item>CENTER</item>
+        <item>BOTTOM</item>
+    </string-array>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string-array name="morphe_exit_fullscreen_entries">
