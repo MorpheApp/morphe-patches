@@ -166,6 +166,26 @@ internal object BottomNavStackHostFingerprint : Fingerprint(
     )
 )
 
+private object ModifierCompanionToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("Modifier")
+    )
+)
+
+/**
+ * Creates the empty Modifier.
+ */
+internal object ModifierCompanionFingerprint : Fingerprint(
+    classFingerprint = ModifierCompanionToStringFingerprint,
+    name = "<clinit>",
+    filters = listOf(
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this")
+    )
+)
+
 private object NavScreenContentStateToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
