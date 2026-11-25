@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Προεπιλογή</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Τάνυση (γέμισμα οθόνης)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Μεγέθυνση (περικοπή για γέμισμα)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Στοίχιση βίντεο πλήρους οθόνης</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Πάνω</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Κέντρο</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Κάτω</string>
   <string name="morphe_fullscreen_video_scale_button_title">Εμφάνιση κουμπιού κλίμακας βίντεο</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Πατήστε για εναλλαγή: Προεπιλογή, Τάνυση, Μεγέθυνση</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Εμφάνιση μόνο σε πλήρη οθόνη</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Απόκρυψη του κουμπιού αλλαγής μεγέθους βίντεο στο πρόγραμμα αναπαραγωγής σε κατακόρυφη λειτουργία</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Εμφάνιση κουμπιού ευθυγράμμισης βίντεο</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Πατήστε για εναλλαγή μεταξύ Πάνω, Κέντρο και Κάτω σε πλήρη οθόνη</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Εμφάνιση κουμπιού «Αναπαραγωγή αργότερα»</string>
   <string name="morphe_replay_video_button_summary">Αναπαραγεί προς τα πίσω και επιβραδύνει προσωρινά το βίντεο. Πατήστε ξανά για ακύρωση</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Απόκρυψη γραμμής κατάστασης</string>
   <string name="morphe_hide_status_bar_summary">Αποκρύπτει τη γραμμή κατάστασης του συστήματος. Σύρετε προς τα κάτω από το πάνω άκρο για να εμφανιστεί για μια στιγμή</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Διατήρηση παίκτη κάτω από την ει cuts της οθόνης</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Μετακινεί τον πρόγραμμα αναπαραγωγής κατακόρυφου βίντεο κάτω από την ει cuts της οθόνης όταν η γραμμή κατάστασης είναι κρυμμένη, αφήνοντας μια κενή γραμμή στο πάνω μέρος. Απενεργοποιήστε το για να επιτρέψετε στο βίντεο να γεμίσει την οθόνη πίσω από την ει cuts</string>
   <string name="morphe_fix_status_bar_layout_title">Διόρθωση της μπάρας κατάστασης που καλύπτει τις πάνω μπάρες</string>
   <string name="morphe_fix_status_bar_layout_summary">Διατηρεί τη διάταξη της μπάρας κατάστασης συνεπή, ώστε να μην καλύπτει τις πάνω μπάρες και δεν αφήνει κενό χώρο πάνω από το πρόγραμμα αναπαραγωγής. Απενεργοποιήστε αυτό αν η εφαρμογή καταρρεύσει ή οι πάνω μπάρες φαίνονται λάθος</string>
   <!-- layout.theme.themePatch -->

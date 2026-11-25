@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">ברירת מחדל</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">מתיחה (מילוי מסך)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">זום (חיתוך למילוי)</string>
+  <string name="morphe_fullscreen_video_alignment_title">יישור וידאו במסך מלא</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">למעלה</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">מרכז</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">למטה</string>
   <string name="morphe_fullscreen_video_scale_button_title">הצג כפתור קנה מידה של וידאו</string>
   <string name="morphe_fullscreen_video_scale_button_summary">הקש כדי לעבור בין ברירת מחדל, מתיחה וזום</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">הצג רק במסך מלא</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">הסתר את כפתור קנה המידה של הסרטון בנגן במצב לאורך</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">הצג לחצן יישור סרטון</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">הקש כדי למעבר בין למעלה, מרכז ולמטה במסך מלא</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">הצג לחצן \'נגן שוב לאט יותר\'</string>
   <string name="morphe_replay_video_button_summary">ממיס לאחור ומאט את הסרטון באופן זמני. הקישו שוב כדי לבטל</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">הסתר את שורת הסטטוס</string>
   <string name="morphe_hide_status_bar_summary">מסתיר את שורת הסטטוס של המערכת. החלק מטה מהקצה העליון כדי להציג אותה לרגע</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">השאר את נגן הווידאו מתחת למגרעת התצוגה</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">מעביר את נגן הווידאו במצב פורטרט אל מתחת למגרעת התצוגה כאשר סרגל המצב מוסתר, מה שמותיר פס ריק בחלק העליון. כבה אפשרות זו כדי לאפשר לווידאו למלא את המסך מאחורי המגרעת</string>
   <string name="morphe_fix_status_bar_layout_title">תיקון שורת הסטטוס שמכסה את הסרגלים העליונים</string>
   <string name="morphe_fix_status_bar_layout_summary">שומר על פריסה עקבית של שורת הסטטוס, כך שהיא לא מכסה את הסרגלים העליונים ולא משאירה רווח ריק מעל הנגן. כבה אפשרות זו אם האפליקציה קורסת או שהסרגלים העליונים נראים לא תקין</string>
   <!-- layout.theme.themePatch -->

@@ -1385,10 +1385,16 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_fullscreen_video_scale_entry_default">Predefinita</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Adatta (riempi schermo)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (ritaglia per riempire)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Allineamento video a schermo intero</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Sopra</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centro</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Sotto</string>
   <string name="morphe_fullscreen_video_scale_button_title">Mostra pulsante scala video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tocca per passare da Predefinito, Adatta e Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Mostra solo a schermo intero</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Nascondi il pulsante di ridimensionamento video nel player verticale</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Mostra pulsante allineamento video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tocca per alternare tra Alto, Centro e Basso a schermo intero</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Mostra pulsante Riproduci più lentamente</string>
   <string name="morphe_replay_video_button_summary">Riavvolge e rallenta temporaneamente il video. Tocca di nuovo per annullare</string>
@@ -1572,6 +1578,8 @@ Layout automotive
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Nascondi barra di stato</string>
   <string name="morphe_hide_status_bar_summary">Nasconde la barra di stato di sistema. Scorri verso il basso dal bordo superiore per mostrarla per un attimo</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Mantieni il player sotto il ritaglio del display</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Sposta il player video in modalità ritratto sotto il ritaglio del display quando la barra di stato è nascosta, lasciando una barra vuota in alto. Disattiva questa opzione per consentire al video di riempire lo schermo dietro il ritaglio</string>
   <string name="morphe_fix_status_bar_layout_title">Correggi la barra di stato che copre le barre superiori</string>
   <string name="morphe_fix_status_bar_layout_summary">Mantiene coerente il layout della barra di stato, in modo che non copra le barre superiori e non lasci spazio vuoto sopra il player. Disattiva questa opzione se l\'app si arresta in modo anomalo o se le barre superiori appaiono errate</string>
   <!-- layout.theme.themePatch -->

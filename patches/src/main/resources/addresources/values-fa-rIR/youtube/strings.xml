@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">پیش‌فرض</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">کشیده (پرکردن صفحه)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">بزرگ‌نمایی (برش برای پرکردن)</string>
+  <string name="morphe_fullscreen_video_alignment_title">ترازبندی ویدئو در حالت تمام‌صفحه</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">بالا</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">وسط</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">پایین</string>
   <string name="morphe_fullscreen_video_scale_button_title">نمایش دکمهٔ مقیاس ویدئو</string>
   <string name="morphe_fullscreen_video_scale_button_summary">برای جابه‌جایی بین حالت‌های پیش‌فرض، کشیده و بزرگ‌نمایی ضربه بزنید</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">فقط در حالت تمام‌صفحه نمایش داده شود</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">دکمه مقیاس ویدئو را در پخش‌کننده حالت عمودی مخفی کنید</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">نمایش دکمهٔ تراز ویدئو</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">برای جابجایی بین حالت‌های بالا، مرکز و پایین در حالت تمام‌صفحه ضرب کنید</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">نمایش دکمهٔ پخش مجدد آرام‌تر</string>
   <string name="morphe_replay_video_button_summary">ویدئو را به عقب برمی‌گرداند و به‌طور موقت سرعت آن را کاهش می‌دهد. برای لغو، دوباره ضربه بزنید</string>
@@ -1572,6 +1578,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">پنهان کردن نوار وضعیت</string>
   <string name="morphe_hide_status_bar_summary">نوار وضعیت سیستم را پنهان می‌کند. برای نمایش لحظه‌ای آن، از لبه بالایی به پایین بکشید</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">نگه‌داشتن پخش‌کننده پایین‌تر از بریدگی نمایشگر</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">هنگامی که نوار وضعیت پنهان است، پخش‌کننده ویدئوی عمودی را به پایین‌تر از بریدگی نمایشگر منتقل می‌کند و یک نوار خالی در بالا باقی می‌گذارد. برای اینکه ویدئو کل صفحه را حتی پشت بریدگی پر کند، این گزینه را خاموش کنید</string>
   <string name="morphe_fix_status_bar_layout_title">رفع پوشانده شدن نوارهای بالا توسط نوار وضعیت</string>
   <string name="morphe_fix_status_bar_layout_summary">چیدمان نوار وضعیت را یکپارچه نگه می‌دارد، بنابراین بر نوارهای بالایی پوشانده نمی‌شود و فضای خالی در بالای پخش‌کننده باقی نمی‌گذارد. اگر برنامه کرش کرد یا نوارهای بالایی به درستی نمایش داده نشدند، این گزینه را غیرفعال کنید</string>
   <!-- layout.theme.themePatch -->

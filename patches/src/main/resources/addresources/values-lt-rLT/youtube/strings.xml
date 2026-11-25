@@ -1384,10 +1384,16 @@ Nustatymai → Atkūrimas (arba Automatinis atkūrimas) → Automatiškai leisti
   <string name="morphe_fullscreen_video_scale_entry_default">Numatytasis</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Ištempti (užpildyti ekraną)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Priartinti (apkarpyti, kad užpildytų ekraną)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Pilno ekrano vaizdo išdėstymas</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Viršuje</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centras</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Apačioje</string>
   <string name="morphe_fullscreen_video_scale_button_title">Rodyti vaizdo įrašo mastelio mygtuką</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Bakstelėkite, kad perjungtumėte numatytąjį, ištemptą ir priartintą režimus</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Rodyti tik viso ekrano režimu</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Slėpti vaizdo mastelio mygtuką vertikaliajame grotuve</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Rodyti vaizdo išdėstymo mygtuką</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Bakstelėkite, kad pilno ekrano režime perjungtumėte tarp viršutinio, vidurinio ir apatinio išdėstymo</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Rodyti lėtesnio atkūrimo mygtuką</string>
   <string name="morphe_replay_video_button_summary">Atgrąžina ir laikinai sulėtina vaizdo įrašą. Bakstelėkite dar kartą, kad atšauktumėte</string>
@@ -1572,6 +1578,8 @@ Automobilio išdėstymas
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Slėpti būsenos juostą</string>
   <string name="morphe_hide_status_bar_summary">Paslepia sistemos būsenos juostą. Braukite žemyn nuo viršutinio krašto, kad ją trumpam parodytumėte</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Laikyti grotuvą žemiau ekrano iškirpimo</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Paslėpus būsenos juostai, portretinio vaizdo grotuvas nukeliamas žemiau ekrano iškirpimo, paliekant tuščią juostą viršuje. Išjunkite šią funkciją, kad vaizdas užpildytų ekraną už iškirpimo</string>
   <string name="morphe_fix_status_bar_layout_title">Ištaisyti būsenos juostą, dengiančią viršutines juostas</string>
   <string name="morphe_fix_status_bar_layout_summary">Laiko būsenos juostos išdėstymą nuoseklų, kad ji nengeltų viršutinių juostų ir nepaliktų tuščios vietos virš grojimo įrenginio. Išjunkite šią parinktį, jei programėlė žlunga arba viršutinės juostos atrodo netinkamai</string>
   <!-- layout.theme.themePatch -->

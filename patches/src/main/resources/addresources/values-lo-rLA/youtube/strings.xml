@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">ຢືດ (ເຕັມຈໍ)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">ຊູມ (ຕັດໃຫ້ເຕັມ)</string>
+  <string name="morphe_fullscreen_video_alignment_title">ການຈັດວາງວິດີໂອເຕັມຈໍ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">ເທິງ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">ກາງ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">ລຸ່ມ</string>
   <string name="morphe_fullscreen_video_scale_button_title">ສະແດງປຸ່ມຂະໜາດວິດີໂອ</string>
   <string name="morphe_fullscreen_video_scale_button_summary">ແຕະເພື່ອປ່ຽນລະຫວ່າງ ຄ່າເລີ່ມຕົ້ນ, ຢືດ, ແລະ ຊູມ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">ສະແດງສະເພາະໃນໂໝດເຕັມຈໍ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">ເຊື່ອງປຸ່ມປັບຂະໜາດວິດີໂອໃນເຄື່ອງຫຼິ້ນແນວຕັ້ງ</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">ສະແດງປຸ່ມຈັດຕຳແໜ່ງວິດີໂອ</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">ແຕະເພື່ອປ່ຽນລະຫວ່າງ ດ້ານເທິງ, ກາງ, ແລະ ດ້ານລຸ່ມ ໃນໂໝດເຕັມຈໍ</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">ສະແດງປຸ່ມຫຼິ້ນຄືນໃຫ້ຊ້າລົງ</string>
   <string name="morphe_replay_video_button_summary">ຍ້ອນກັບ ແລະ ຫຼຸດຄວາມໄວຂອງວິດີໂອຊົ່ວຄາວ. ແຕະອີກຄັ້ງເພື່ອຍົກເລີກ</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ເຊື່ອງແຖບສະຖານະ</string>
   <string name="morphe_hide_status_bar_summary">ເຊື່ອງແຖບສະຖານະຂອງລະບົບ. ປັດລົງຈາກຂອບເທິງເພື່ອສະແດງມັນຊົ່ວຄາວ</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">ໃຫ້ເຄື່ອງຫຼິ້ນວິດີໂອຢູ່ລຸ່ມສ່ວນທີ່ຖືກຕັດຂອງໜ້າຈໍ</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">ຍ້າຍເຄື່ອງຫຼິ້ນວິດີໂອແນວຕັ້ງໃຫ້ຢູ່ລຸ່ມສ່ວນທີ່ຖືກຕັດຂອງໜ້າຈໍ ເມື່ອແຖບສະຖານະຖືກເຊື່ອງໄວ້, ເຊິ່ງຈະເຮັດໃຫ້ມີແຖບວ່າງຢູ່ດ້ານເທິງ. ປິດຟັງຊັນນີ້ເພື່ອໃຫ້ວິດີໂອເຕັມໜ້າຈໍຢູ່ເບື້ອງຫຼັງສ່ວນທີ່ຖືກຕັດ</string>
   <string name="morphe_fix_status_bar_layout_title">ແກ້ໄຂແຖບສະຖານະທີ່ປິດບັງແຖບດ້ານເທິງ</string>
   <string name="morphe_fix_status_bar_layout_summary">ຮັກສາຮູບແບບຂອງແຖບສະຖານະໃຫ້ຄົງທີ່ ເພື່ອບໍ່ໃຫ້ມັນປິດບັງແຖບດ້ານເທິງ ແລະ ບໍ່ໃຫ້ມີຊ່ອງວ່າງເປົ່າຢູ່ເໜືອເຄື່ອງຫຼິ້ນ. ປິດຟັງຊັນນີ້ ຫາກແອັບມີບັນຫາ ຫຼື ແຖບດ້ານເທິງສະແດງຜົນຜິດພາດ</string>
   <!-- layout.theme.themePatch -->

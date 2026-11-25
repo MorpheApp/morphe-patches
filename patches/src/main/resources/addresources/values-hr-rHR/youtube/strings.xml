@@ -1385,10 +1385,16 @@ Postavke → Reprodukcija (ili Automatsko reproduciranje) → Automatski reprodu
   <string name="morphe_fullscreen_video_scale_entry_default">Zadano</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Rastegni (ispuni zaslon)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Povećaj (obreži da ispuni)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Poravnanje videa u punom zaslonu</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Vrh</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centar</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Dno</string>
   <string name="morphe_fullscreen_video_scale_button_title">Prikaži gumb za skaliranje videa</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Dodirnite za cikliranje: Zadano, Rastegni, Povećaj</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Prikaži samo na cijelom zaslonu</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Sakrij gumb za skaliranje videa u portretnom playeru</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Prikaži gumb za poravnanje videozapisa</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Dodirnite za izmjenu položaja: Gore, Centrirano i Dolje u zaslonu preko cijelog ekrana</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Prikaži tipku Sporije reproduciraj</string>
   <string name="morphe_replay_video_button_summary">Vraća video unatrag i privremeno ga usporava. Dodirnite ponovno za otkazivanje</string>
@@ -1573,6 +1579,8 @@ Automobilski izgled
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Skriva statusnu traku sustava. Povucite prstom prema dolje s gornjeg ruba da biste je na trenutak prikazali.</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Zadrži player ispod izreza zaslona</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Pomiče video player u portretnom načinu ispod izreza zaslona kada je traka statusa skrivena, ostavljajući praznu traku na vrhu. Isključite ovo kako bi video ispunio zaslon iza izreza</string>
   <string name="morphe_fix_status_bar_layout_title">Ispravi statusnu traku koja prekriva gornje trake</string>
   <string name="morphe_fix_status_bar_layout_summary">Održava dosljednost rasporeda statusne trake, tako da ne prekriva gornje trake i ne ostavlja prazan prostor iznad playera. Isključite ovo ako aplikacija zapne ili gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->
@@ -2210,6 +2218,7 @@ Automatsko snimanje je opcionalno. Zaustavlja se u incognito načinu rada ili ka
   <string name="morphe_ghost_play_channels_searching">Pretraživanje YouTube kanala…</string>
   <string name="morphe_ghost_play_channels_search_error">Pretraživanje nije uspjelo. Provjerite svoju vezu i pokušajte ponovno.</string>
   <string name="morphe_ghost_play_channels_search_no_results">Nema pronađenih kanala za taj upit</string>
+  <string name="morphe_ghost_play_channels_search_count">Pronađeno %d kanala — dodirnite „Dodaj” kako biste omogućili automatsko skrivanje</string>
   <string name="morphe_ghost_play_channels_recent_videos">Nedavni videozapisi</string>
   <string name="morphe_ghost_play_channels_loading_details">Učitavanje nedavnih videozapisa…</string>
   <string name="morphe_ghost_play_channels_no_recent_videos">Nema pronađenih nedavnih videozapisa (dodirnite za ponovni pokušaj)</string>

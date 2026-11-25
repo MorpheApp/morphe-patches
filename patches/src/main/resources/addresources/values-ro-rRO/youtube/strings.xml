@@ -1385,10 +1385,16 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_fullscreen_video_scale_entry_default">Implicit</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Întindere (umple ecranul)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (decupare pentru umplere)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Aliniere video ecran complet</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Sus</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centru</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Jos</string>
   <string name="morphe_fullscreen_video_scale_button_title">Afișează butonul de scală video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Atingeți pentru a comuta între Implicit, Întindere și Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Afișează doar pe ecran complet</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ascunde butonul pentru scalarea videoclipului din playerul portret</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Afișați butonul de aliniere video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Apasă pentru a alterna între Sus, Centru și Jos în modul pe ecran complet</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Afișează butonul Redare mai lentă</string>
   <string name="morphe_replay_video_button_summary">Rewinda și încetinește temporar videoclipul. Apasă din nou pentru a anula</string>
@@ -1573,6 +1579,8 @@ Aspect pentru automotive
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ascunde bara de stare</string>
   <string name="morphe_hide_status_bar_summary">Ascunde bara de stare a sistemului. Glisează în jos din partea de sus pentru a o afișa pentru o clipă</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Menține playerul sub decupajul ecranului</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Mută playerul video în format portret sub decupajul ecranului atunci când bara de stare este ascunsă, lăsând o bară goală în partea superioară. Dezactivează această opțiune pentru a permite videoclipului să filling ecranul în spatele decupajului</string>
   <string name="morphe_fix_status_bar_layout_title">Corectează bara de stare pentru a nu acoperi barele superioare</string>
   <string name="morphe_fix_status_bar_layout_summary">Păstrează aspectul barei de stare constant, astfel încât să nu acopere barele superioare și să lase spațiu liber deasupra player-ului. Dezactivează această opțiune dacă aplicația se blochează sau dacă barele superioare arată incorect</string>
   <!-- layout.theme.themePatch -->

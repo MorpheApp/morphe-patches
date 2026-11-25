@@ -1381,10 +1381,16 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_fullscreen_video_scale_entry_default">Негизги</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Созуу (экранды толтуруу)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Жакындатуу (толугу менен толтуруу үчүн кесүү)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Толук экрандагы видеонун жайгашуусу</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Жогору</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Орто</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Төмөн</string>
   <string name="morphe_fullscreen_video_scale_button_title">Видео масштабдоо баскычын көрсөтүү</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Негизги, Созуу жана Жакындатуу режимдерин алмаштыруу үчүн басыңыз</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Толук экранда гана көрсөтүү</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Портреттик плеерде видео масштабтоо баскычын жашыруу</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Видеону тегилүү баскычын көрсөтүү</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Толугу менен экранда Жогору, Орто жана Төмөн позицияларын алмаштыруу үчүн басыңыз</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Кайталоону жай көрсөтүү баскычын көрсөтүү</string>
   <string name="morphe_replay_video_button_summary">Видеону артка кайтарып, убактылуу жайлатат. Жокко чыгаруу үчүн кайра басыңыз</string>
@@ -1569,6 +1575,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Статус балкасын жашыруу</string>
   <string name="morphe_hide_status_bar_summary">Системалык статус балкасын жашырат. Аны убактылуу көрсөтүү үчүн жогорку четинен төмөн сүрүңүз</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Плеерди экрандын кесилишүүсүнөн төмөн сактоо</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Статус бары жашырылганда, портреттик видео плеерди экрандын кесилишүүсүнөн төмөн жылдырат жана жогору жагында бош боштук калтырат. Видеону кесилишүү артындагы экранды толук толтуруу үчүн бул функцияны өчүрүңүз</string>
   <string name="morphe_fix_status_bar_layout_title">Статус барынын жогорку панелдерди жаап алганын оңдоо</string>
   <string name="morphe_fix_status_bar_layout_summary">Статус барынын түзүлүшүн бирдей сактайт, ошондо ал жогорку панелдерди жабабыз жана плеердин үстүндө боштук калбайт. Эгер колдонмо ката берип жабылса же жогорку панелдер туура эмес көрүнсө, бул функцияны өчүрүңүз</string>
   <!-- layout.theme.themePatch -->

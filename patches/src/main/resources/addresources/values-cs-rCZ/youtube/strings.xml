@@ -1385,10 +1385,16 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_fullscreen_video_scale_entry_default">Výchozí</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Roztáhnout (vyplnit obrazovku)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Přiblížit (vyplnit obrazovku)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Zarovnání videa na celou obrazovku</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Nahoru</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Střed</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Dolů</string>
   <string name="morphe_fullscreen_video_scale_button_title">Zobrazit tlačítko měřítka videa</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Klepnutím přepínáte mezi Výchozí, Roztáhnout a Přiblížit</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Zobrazit pouze na celé obrazovce</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Skrýt tlačítko pro změnu měřítka videa v přehrávači na výšku</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Zobrazit tlačítko zarovnání videa</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Klepnutím přepínáte mezi horním, středovým a spodním zarovnáním v režimu plné obrazovky</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Zobrazit tlačítko pro pomalejší opakování</string>
   <string name="morphe_replay_video_button_summary">Převine a dočasně zpomalí video. Klepnutím zrušíte</string>
@@ -1573,6 +1579,8 @@ Automobilní rozvržení
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skrýt stavový řádek</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový řádek. Přejetím prstem dolů z horního okraje jej na chvíli zobrazíte</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Udržet přehrávač pod výřezem displeje</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Přesune přehrávač portrétního videa pod výřez displeje, když je stavový řádek skrytý, a ponechá nahoře prázdný pruh. Vypněte tuto možnost, aby video vyplnilo obrazovku i za výřezem</string>
   <string name="morphe_fix_status_bar_layout_title">Oprava stavového řádku zakrývajícího horní lišty</string>
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentní rozvržení stavového řádku, takže nezakrývá horní lišty a nezanechává prázdný prostor nad přehrávačem. Toto vypněte, pokud aplikace havaruje nebo pokud horní lišty vypadají špatně</string>
   <!-- layout.theme.themePatch -->

@@ -1385,10 +1385,16 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">ডিফল্ট</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">ষ্ট্ৰেচ (স্ক্ৰীন ভৰাই তোলা)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">জুম (ভৰাবলৈ ক্ৰপ কৰা)</string>
+  <string name="morphe_fullscreen_video_alignment_title">ফুলস্ক্ৰীন ভিডিঅ\'ৰেৰে এলনমেণ্ট</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">ওপৰ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">কেন্দ্ৰ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">তল}]}</string>
   <string name="morphe_fullscreen_video_scale_button_title">ভিডিঅ\' স্কেল বুটামটো দেখুৱাওক</string>
   <string name="morphe_fullscreen_video_scale_button_summary">ডিফল্ট, ষ্ট্ৰেচ আৰু জুমৰ মাজত পৰিৱৰ্তন কৰিবলৈ টেপ কৰক</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">কেৱল ফুলস্ক্ৰীণত দেখুৱাওক</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">পৰ্ট্ৰেইট প্লেয়াৰত ভিডিঅ\' স্কেল বুটামটো লুকুৱাই থৈ দিয়ক</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">ভিডিঅ\'ৰ এললাইনমেণ্ট বুটামটো দেখুৱাওক</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">ফুলস্ক্ৰীনত Top, Center আৰু Bottom-ৰ মাজত পৰিৱৰ্তন কৰিবলৈ ট্যাপ কৰক</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">ৰিপ্লে স্লোৱাৰ বুটাম দেখুৱাওক</string>
   <string name="morphe_replay_video_button_summary">ভিডিঅ’টো ৰিৱাইন্ড কৰে আৰু সাময়িকভাৱে লেহৰীয়া কৰে। বাতিল কৰিবলৈ পুনৰ টেপ কৰক</string>
@@ -1573,6 +1579,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ষ্টেটাচ বাৰ লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_status_bar_summary">চিস্টেম ষ্টেটাচ বাৰটো লুকুৱাই ৰাখে। ইয়াৰ এটা মুহূৰ্তৰ বাবে দেখুৱাবলৈ ওপৰৰ কাষৰ পৰা তললৈ সোয়াইপ কৰক</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">প্লেয়াৰক ডিছপ্লে কাটআউটৰ তলত ৰাখক</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">ষ্টেটাছ বাৰটো লুকাই থকাৰ সময়ত পৰ্ট্ৰেট ভিডিঅ\' প্লেয়াৰটোক ডিছপ্লে কাটআউটৰ তললৈ স্থানান্তৰ কৰে, যাৰ ফলত ওপৰত এটা খালী বাৰ ৰৈ যায়। ভিডিঅ\'টোৱে কাটআউটৰ পিছত স্ক্ৰীণটো সম্পূৰ্ণকৈ ভৰাই তোলাৰ বাবে ইয়াক বন্ধ কৰক</string>
   <string name="morphe_fix_status_bar_layout_title">ষ্টেটাছ বাৰে টপ বাৰসমূহ ঢাকি থকা সমস্যাটো সমাধান কৰক</string>
   <string name="morphe_fix_status_bar_layout_summary">ষ্টেটাছ বাৰৰ লেআউটো সংগত কৰি ৰাখে, যাতে ই টপ বাৰসমূহক ঢাকি নেৰাখে আৰু প্লেয়াৰৰ ওপৰত কোনো খালী ঠাই নেৰে। যদি এপটো ক্ৰাশ কৰে বা টপ বাৰবোৰ ভুলকৈ দেখায় তেন্তে ইয়াক বন্ধ কৰক</string>
   <!-- layout.theme.themePatch -->

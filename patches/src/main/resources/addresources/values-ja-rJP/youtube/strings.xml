@@ -1045,7 +1045,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
   <string name="morphe_swipe_press_to_engage_summary">スワイプ ジェスチャーを、「画面をスワイプ」から「画面を長押ししてからスワイプ」に変更します</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
-  <string name="morphe_swipe_haptic_feedback_summary">長押ししてスワイプジェスチャを開始したときに振動します</string>
+  <string name="morphe_swipe_haptic_feedback_summary">長押しでスワイプ ジェスチャーを開始したときに振動します</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">明るさを保存 &amp; 復元</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">全画面表示を終了 / 開始するときに明るさを保存 / 復元します</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">明るさジェスチャーの自動調節を有効化</string>
@@ -1090,17 +1090,17 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_change_video_title">スワイプによる動画の切り替えを有効化</string>
   <string name="morphe_swipe_change_video_summary">全画面表示モードで左 / 右にスワイプすると前 / 次の動画に移動します</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
-  <string name="morphe_hold_gesture_screen_title">ホールドジェスチャー</string>
+  <string name="morphe_hold_gesture_screen_title">ホールド ジェスチャー</string>
   <string name="morphe_hold_gesture_screen_summary">長押ししてからドラッグすることで、再生速度の変更と固定、およびアクションの実行ができます</string>
-  <string name="morphe_hold_gesture_title">ホールドジェスチャーを有効化</string>
+  <string name="morphe_hold_gesture_title">ホールド ジェスチャーを有効化</string>
   <string name="morphe_hold_gesture_summary">ビデオをタップして長押しした後、ドラッグすることができます。長押し中の速度は、タップ＆ホールド再生速度になります</string>
   <string name="morphe_hold_gesture_press_to_swipe_summary">長押しスワイプがオンの間は使用できません。タップして変更してください</string>
   <string name="morphe_hold_gesture_press_to_swipe_dialog_title">長押しスワイプは有効です</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ホールドジェスチャーとスワイプコントロールの長押しスワイプジェスチャーは、どちらもタップして保持することから始まるため、どちらか一方のみをオンにできます。</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ホールド ジェスチャーとスワイプ コントロールの長押しスワイプ ジェスチャーは、いずれもタップして長押しすることから始まるため、同時に有効にできるのはどちらか一方のみです。</string>
   <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">長押しスワイプをオフにする</string>
-  <string name="morphe_hold_gesture_press_to_swipe_toast">長押しスワイプがオンの間はホールドジェスチャーは使用できません</string>
-  <string name="morphe_hold_gesture_dialog_title">ホールドジェスチャーがオンです</string>
-  <string name="morphe_hold_gesture_dialog_turn_off">ホールドジェスチャーをオフにする</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">「長押しスワイプ」が有効な間は、「ホールド ジェスチャー」は使用できません</string>
+  <string name="morphe_hold_gesture_dialog_title">ホールド ジェスチャーが有効になっています</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">ホールド ジェスチャーをオフにする</string>
   <string name="morphe_hold_gesture_haptic_feedback_title">触覚フィードバックを有効化</string>
   <string name="morphe_hold_gesture_haptic_feedback_summary">速度が変更されたときと、速度が固定されたときに振動します</string>
   <string name="morphe_hold_gesture_speed_swipe_title">横にドラッグして速度を変更します</string>
@@ -1113,15 +1113,15 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hold_gesture_speed_min_title">最低速度</string>
   <string name="morphe_hold_gesture_speed_min_summary">ドラッグで到達できる最低速度</string>
   <string name="morphe_hold_gesture_speed_max_title">最高速度</string>
-  <string name="morphe_hold_gesture_speed_max_summary">ドラッグで到達できる最高速度（最大8倍）</string>
+  <string name="morphe_hold_gesture_speed_max_summary">ドラッグで到達できる最高速度（最大 8 倍）</string>
   <string name="morphe_hold_gesture_lock_title">下にドラッグして速度を固定</string>
   <string name="morphe_hold_gesture_lock_summary">タップして長押しした後、下にドラッグすると、指を離した後も速度が維持されます。バッジをタップするか、もう一度長押しすると固定が解除されます</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">常に固定バッジを表示</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">プレーヤーコントロールが表示されていないときでも、固定された速度のバッジを表示します。オフにすると、バッジはプレーヤーコントロールと一緒に表示されます</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">プレーヤー コントロールが表示されていない場合でも、ロックされた再生速度のバッジが表示されます。オフにすると、バッジはプレーヤー コントロールと併せて表示されます</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">動画が変わったときに固定を解除</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_summary">別の動画が開始されると、速度の固定が終了します</string>
   <string name="morphe_hold_gesture_lock_hint">下に引いて固定</string>
-  <string name="morphe_hold_gesture_lock_release">%sを離してロック</string>
+  <string name="morphe_hold_gesture_lock_release">%s をロック解除</string>
   <string name="morphe_hold_gesture_launcher_title">上にドラッグしてランチャーを開く</string>
   <string name="morphe_hold_gesture_launcher_summary">タップして長押しした後、上にドラッグして指の周りにアクションを表示します。アクションの上で指を離すと、そのアクションが実行されます</string>
   <string name="morphe_hold_gesture_launcher_slot_count_title">アクション数</string>
@@ -1386,10 +1386,16 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_fullscreen_video_scale_entry_default">デフォルト</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">ストレッチ（画面いっぱい）</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">ズーム（切り抜いて画面いっぱい）</string>
+  <string name="morphe_fullscreen_video_alignment_title">全画面ビデオの配置</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">上</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">中央</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">下</string>
   <string name="morphe_fullscreen_video_scale_button_title">ビデオスケールボタンを表示</string>
   <string name="morphe_fullscreen_video_scale_button_summary">タップすると、デフォルト → 引き伸ばす → ズーム → デフォルトの順に切り替わります</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">全画面表示でのみ表示</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">縦画面表示のプレーヤーの「画面の埋め方」ボタンを非表示にします</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">「ビデオの配置」ボタンを表示</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">タップして全画面表示での上、中央、下を切り替えます</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">「低速リプレイ」ボタンを表示</string>
   <string name="morphe_replay_video_button_summary">ビデオを巻き戻し、一時的に低速再生します。もう一度タップするとキャンセルされます</string>
@@ -1440,7 +1446,7 @@ Automotive レイアウト
 • ショート動画が通常のプレーヤーで再生される
 • 動画プレーヤーのアクション ボタンにボタン名が表示される (旧仕様)"</string>
   <string name="morphe_change_form_factor_car_display_title">車載ディスプレイでの車載レイアウト</string>
-  <string name="morphe_change_form_factor_car_display_summary_on">Android AutoやDriveDeckなどでYouTubeが車載ディスプレイに表示される際に、車載レイアウトが使用されます</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Android Auto や DriveDeck など、車載ディスプレイで YouTube を表示する際は、車載レイアウトが使用されます</string>
   <string name="morphe_change_form_factor_car_display_summary_off">車載ディスプレイで車載レイアウトを使用しません</string>
   <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">車載ディスプレイでナビゲーションバーを自動的に隠す</string>
   <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">車載ディスプレイでしばらく操作がないとナビゲーションバーが非表示になります。画面下端から上にスワイプして表示してください</string>
@@ -1449,7 +1455,7 @@ Automotive レイアウト
   <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">ナビゲーションバーが表示された後、またはタッチされた後に表示され続ける時間</string>
   <string name="morphe_change_form_factor_car_display_any_title">任意の外部ディスプレイで使用する</string>
   <string name="morphe_change_form_factor_car_display_any_summary_on">TVやモニターを含む、スマートフォンの画面以外のすべてのディスプレイを車載ディスプレイとして扱います</string>
-  <string name="morphe_change_form_factor_car_display_any_summary_off">"車載ディスプレイは、Android Auto、ディスプレイ名、および車載UIモードによって検出されます。Android 15以降では、DriveDeck、Gearslip、graphene-auto、またはMyCarによる画面ミラーリングも車載ディスプレイとして扱われます"</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"車載ディスプレイは、Android Auto、ディスプレイ名、および車載 UI モードによって識別されます。Android 15 以降では、DriveDeck、Gearslip、graphene-auto、または MyCar による画面ミラーリングも車載ディスプレイに含まれます"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
@@ -1574,6 +1580,8 @@ Automotive レイアウト
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ステータスバーを非表示</string>
   <string name="morphe_hide_status_bar_summary">システムのステータスバーを非表示にします。上端から下にスワイプすると、一時的に表示できます</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">プレイヤーをディスプレイカットアウトの下に配置</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">ステータスバーを非表示にした際、ポートレートビデオプレイヤーをディスプレイカットアウトの下に移動させ、上部に空白のバーを残します。これをオフにすると、ビデオがカットアウトの背後まで画面いっぱいに表示されます</string>
   <string name="morphe_fix_status_bar_layout_title">ステータスバーが上部のバーを覆っている問題を修正</string>
   <string name="morphe_fix_status_bar_layout_summary">ステータスバーのレイアウトを統一し、上部のバーが覆われないようにして、プレイヤーの上に空白ができないようにします。アプリがクラッシュしたり、上部のバーの表示がおかしい場合は、これをオフにしてください</string>
   <!-- layout.theme.themePatch -->

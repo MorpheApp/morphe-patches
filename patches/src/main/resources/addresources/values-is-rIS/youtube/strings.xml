@@ -1385,10 +1385,16 @@ Stillingar → Spilun (eða Sjálfvirk spilun) → Sjálfvirk spilun næsta mynd
   <string name="morphe_fullscreen_video_scale_entry_default">Sjálfgefið</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Teygja (fylla skjá)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Aðdráttur (klippa til að fylla)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Uppsetning myndbands í fullskjá</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Efst</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Miðstilt</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Neðst</string>
   <string name="morphe_fullscreen_video_scale_button_title">Sýna hnapp fyrir stærð myndbands</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Ýttu til að skipta á milli Sjálfgefið, Teygja og Aðdráttur</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Sýna aðeins í fullskjá</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Fela stærðarhnapp myndbandsins í andlitsmynd spilara</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Sýna hnapp fyrir stillingu myndbands</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Ýttu til að skipta á efri, miðju og neðri stillingu í fullskjáham</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Sýna hnappinn Spila aftur hægar</string>
   <string name="morphe_replay_video_button_summary">Spólar aftur og hægir tímabundið á myndbandinu. Ýttu aftur til að hætta</string>
@@ -1573,6 +1579,8 @@ Bílaútlit
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Fela stöðustikuna</string>
   <string name="morphe_hide_status_bar_summary">Felur stöðustiku kerfisins. Strjúktu niður frá efri brúninni til að sýna hana í smá stund</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Hald spilara undir skurði skjásins</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Flytur myndspilara í lóðréttri stillingu undir skurð skjásins þegar stöðustikuna er falin, sem skilur eftir tómum stöku efst. Slökkvið á þessu til að leyfa myndbandinu að fylla skjáinn á bak við skurðinn</string>
   <string name="morphe_fix_status_bar_layout_title">Laga stöðustiku sem þekur efstu stikurnar</string>
   <string name="morphe_fix_status_bar_layout_summary">Heldur útliti stöðustikunnar samræmdu, svo hún þeki ekki efstu stikurnar og skilji ekki eftir tómt svæði fyrir ofan spilarann. Slökktu á þessu ef forritið hrynur eða efstu stikurnar líta rangt út</string>
   <!-- layout.theme.themePatch -->

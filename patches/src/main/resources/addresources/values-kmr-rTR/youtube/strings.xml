@@ -1385,10 +1385,16 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Bixweber</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Dirêjkirin (dagirtina ekranê)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zûmkirin (ji bo dagirtinê)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Rêkxistina vîdyoya ekrana tam</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Jor</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Navend</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Bin</string>
   <string name="morphe_fullscreen_video_scale_button_title">Nîşandana bişkoka pîvana vîdyoyê</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Bikirtînin ji bo guhertina Default, Dirêjkirin û Zûmkirin</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Tenê di ekrana tam de nîşan bide</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Bişkoja pîvana vîdyoyê di lîstikvana portreyê de veşêre</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Bişkoja rasteqîna vîdyoyê nîşan bide</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Ji bo guhertina Serî, Navîn û Binî di ekrana tam de bitapîne</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Bişkoşka \"Replay hêdîtir nîşan bide\"</string>
   <string name="morphe_replay_video_button_summary">Vîdyoyê paşve dibire û demeke kurt hêdîtir dike. Ji bo betalkirinê dîsa lê bitikîne</string>
@@ -1573,6 +1579,8 @@ Layouta otomotîvê
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Barê statûsê veşêre</string>
   <string name="morphe_hide_status_bar_summary">Barê statûsa sîstemê veşêre. Ji bo demeke kurt xuyabûnê, ji jorê ber bi xwarê ve bikişîne</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Lîstera vîdyoyê li jêrê qada jêbirî ya ekranê bihêle</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Gava şirita rewşê veşartî ye, lîstera vîdyoyê ya portreyê dikeve jêrê qada jêbirî ya ekranê û şiriteke vala li serê ekranê dihêle. Ji bo ku vîdyo li pişt qada jêbirî hemû ekranê dagire, vê veguherîne</string>
   <string name="morphe_fix_status_bar_layout_title">Status barê ku barên jorîn digire çareser bike</string>
   <string name="morphe_fix_status_bar_layout_summary">Layouta status barê li hev digire, da ku barên jorîn negire û li ser lîstikvanê valahiyek çênekin. Heke app têk bice an barên jorîn şaş xuya bikin, vê bigûhêre</string>
   <!-- layout.theme.themePatch -->

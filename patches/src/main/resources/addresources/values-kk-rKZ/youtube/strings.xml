@@ -1385,10 +1385,16 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_fullscreen_video_scale_entry_default">Әдепкі</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Созу (экранды толтыру)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Зум (толтыру үшін қию)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Толық экранды бейнетірімді туралау</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Жоғары</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Орта</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Төмен</string>
   <string name="morphe_fullscreen_video_scale_button_title">Бейне масштабы түймесін көрсету</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Әдепкі, Созу және Зум режимдері арасында ауысу үшін түртіңіз</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Тек толық экранда көрсету</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Портретті ойнатқышта бейне масштабы батырмасын жасыру</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Бейне туралау түймесін көрсету</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Толтырған экранда Жоғары, Орта және Төмен позицияларын ауыстыру үшін түртіңіз</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Қайта ойнатуды баяулату түймесін көрсету</string>
   <string name="morphe_replay_video_button_summary">Бейнені артқа қайтарады және уақытша баяулатады. Бас тарту үшін қайта түртіңіз</string>
@@ -1573,6 +1579,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Күй жолағын жасыру</string>
   <string name="morphe_hide_status_bar_summary">Жүйелік күй жолағын жасырады. Оны сәтке көрсету үшін жоғарғы жиектен төмен қарай сырғытыңыз</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Плеерді дисплей қиындығынан төмен ұстау</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Мәзір жолағы жасырылғанда, портреттік бейне плеерді дисплей қиындығынан төмен жылжытып, жоғарғы жағында бос жолақ қалдырады. Бейне файлдың қиындықтың артында бүкіл экранды толтыруы үшін бұл функцияны өшіріңіз</string>
   <string name="morphe_fix_status_bar_layout_title">Жоғарғы жолақтарды жауып тұрған күй жолағын түзету</string>
   <string name="morphe_fix_status_bar_layout_summary">Күй жолағының макетін біркелкі сақтайды, сонда ол жоғарғы жолақтарды жаппайды және плеердің үстінде бос орын қалдырмайды. Қолданба қате берсе немесе жоғарғы жолақтар дұрыс көрінбесе, бұл функцияны өшіріңіз</string>
   <!-- layout.theme.themePatch -->

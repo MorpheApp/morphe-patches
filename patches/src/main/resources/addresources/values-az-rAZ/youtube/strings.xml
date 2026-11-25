@@ -1385,10 +1385,16 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_fullscreen_video_scale_entry_default">İlkin</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Uzat (ekranı doldur)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Yaxınlaşdır (doldurmaq üçün kəs)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Tam ekran video uyğunlaşdırması</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Yuxarı</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Mərkəz</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Aşağı</string>
   <string name="morphe_fullscreen_video_scale_button_title">Video miqyası düyməsini göstər</string>
   <string name="morphe_fullscreen_video_scale_button_summary">İlkin, Uzatma və Yaxınlaşdırma rejiminə keçmək üçün toxun</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Yalnız tam ekranda göstər</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Portret oynadıcıda video miqyası düyməsini gizlət</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Video uyğunlaşdırma düyməsini göstər</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tam ekranda Yuxarı, Mərkəz və Aşağı arası keçid etmək üçün toxun</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Daha yavaş təkrar oynat düyməsini göstər</string>
   <string name="morphe_replay_video_button_summary">Videonu geri çəkir və müvəqqəti yavaşladır. Ləğv etmək üçün yenidən toxun</string>
@@ -1573,6 +1579,8 @@ Avtomobil tərtibatı
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Status panelini gizlət</string>
   <string name="morphe_hide_status_bar_summary">Sistem status panelini gizlədir. Onu bir anlıq göstərmək üçün yuxarı kənardan aşağı sürüşdür</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Oynadıcını ekran kəsiyinin altında saxla</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Status zolağı gizlədildikdə portret video oynadıcısını ekran kəsiyinin altına keçirir, yuxarıda boş zolaq qoyur. Videonun kəsiyin arxasında ekranı doldurmasına icazə vermək üçün bunu bağla</string>
   <string name="morphe_fix_status_bar_layout_title">Üst cərgələri örtən status panelini düzəlt</string>
   <string name="morphe_fix_status_bar_layout_summary">Status zolağının tərtibatını sabit saxlayır, beləliklə o, yuxarı zolaqları örtmür və oynadıcı yuxarısında boş yer saxlamır. Tətbiq çöksə və ya yuxarı zolaqlar yanlış görünsə, bunu qapat</string>
   <!-- layout.theme.themePatch -->

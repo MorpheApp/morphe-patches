@@ -1385,10 +1385,16 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <string name="morphe_fullscreen_video_scale_entry_default">Standaard</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Uitrekken (vul scherm)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (bijsnijden om te vullen)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Uitlijning video op volledig scherm</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Boven</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Midden</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Onder</string>
   <string name="morphe_fullscreen_video_scale_button_title">Toon videoschaalknop</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tik om te wisselen tussen Standaard, Uitrekken en Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Alleen in volledig scherm weergeven</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Verbergt de videoscalingknop in de staande speler</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Toon video-uitlijningsknop</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tik om te wisselen tussen Boven, Midden en Onder in volledig scherm</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Toon knop voor langzamere weergave</string>
   <string name="morphe_replay_video_button_summary">Spoelt terug en vertraagt de video tijdelijk. Tik opnieuw om te annuleren</string>
@@ -1573,6 +1579,8 @@ Auto-indeling
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusbalk verbergen</string>
   <string name="morphe_hide_status_bar_summary">Verbergt de systeemstatusbalk. Veeg omlaag vanaf de bovenrand om hem even weer te tonen</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Houd speler onder display-uitsparing</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Verplaatst de portretvideospeler onder de display-uitsparing wanneer de statusbalk is verborgen, waardoor er een lege balk aan de bovenkant overblijft. Schakel dit uit om de video het scherm achter de uitsparing te laten vullen</string>
   <string name="morphe_fix_status_bar_layout_title">Statusbalk oplossen die bovenste balken bedekt</string>
   <string name="morphe_fix_status_bar_layout_summary">Houdt de lay-out van de statusbalk consistent, zodat deze de bovenste balken niet bedekt en er geen lege ruimte boven de speler overblijft. Schakel dit uit als de app crasht of als de bovenste balken verkeerd eruitzien</string>
   <!-- layout.theme.themePatch -->

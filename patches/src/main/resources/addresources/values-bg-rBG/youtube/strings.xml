@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">По подразбиране</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Разтягане (запълване на екрана)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Увеличение (изрязване, за да запълни)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Подравняване на видеото на цял екран</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Горе</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Център</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Долу</string>
   <string name="morphe_fullscreen_video_scale_button_title">Показване на бутона за мащаб на видеото</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Докоснете, за да превключвате между По подразбиране, Разтягане и Увеличение</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Показване само на цял екран</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Скриване на бутона за мащабиране на видеото в плейъра в портретен режим</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Показване на бутона за подравняване на видеото</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Докоснете, за да превключвате между Горе, Център и Долу при пълен екран</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Показване на бутона за по-бавно възпроизвеждане</string>
   <string name="morphe_replay_video_button_summary">Превърта видеото назад и временно го забавя. Докоснете отново, за да отмените</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Скриване на лентата за състояние</string>
   <string name="morphe_hide_status_bar_summary">Скрива системната лента за състояние. Плъзнете надолу от горния ръб, за да я покажете за момент</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Поддържане на плейъра под изрязането на дисплея</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Премества портретноя видео плейър под изрязането на дисплея, когато лентата за статус е скрита, оставяйки празна лента в горната част. Изключете това, за да позволите на видеото да запълни екрана зад изрязането</string>
   <string name="morphe_fix_status_bar_layout_title">Оправя статус бара да не покрива горните ленти</string>
   <string name="morphe_fix_status_bar_layout_summary">Поддържа последователен макет на статус бара, така че той да не покрива горните ленти и да не оставя празно пространство над плеъра. Изключете тази опция, ако приложението се счупи или горните ленти изглеждат неправилно</string>
   <!-- layout.theme.themePatch -->

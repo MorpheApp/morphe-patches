@@ -1385,10 +1385,16 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_fullscreen_video_scale_entry_default">Default</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Iunat (punan ang screen)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Mag-zoom (i-crop upang punan)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Pag-align ng fullscreen video</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Itaas</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Gitna</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Ibaba</string>
   <string name="morphe_fullscreen_video_scale_button_title">Ipakita ang button ng sukat ng video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">I-tap upang magpalit sa Default, Stretch, at Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Ipakita lamang sa fullscreen</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Itago ang video scale button sa portrait player</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Ipakita ang button ng alignment ng video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">I-tap para magpalit-palit sa Itaas, Gitna, at Ibaba sa fullscreen</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Ipakita ang button para sa mas mabagal na Replay</string>
   <string name="morphe_replay_video_button_summary">I-rewind at pansamantalang pabagalin ang video. I-tap muli para kanselahin</string>
@@ -1573,6 +1579,8 @@ Automotive layout
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Itago ang status bar</string>
   <string name="morphe_hide_status_bar_summary">Itinatago ang system status bar. Mag-swipe pababa mula sa tuktok na gilid upang maipakita ito sandali</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Panatilihin ang player sa ibaba ng display cutout</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Inililipat ang portrait video player sa ibaba ng display cutout kapag nakatago ang status bar, na nag-iiwan ng bakanteng bar sa itaas. I-off ito upang hayaang punan ng video ang screen sa likod ng cutout</string>
   <string name="morphe_fix_status_bar_layout_title">Ayusin ang layout ng status bar na sumasakop sa mga itaas na bar</string>
   <string name="morphe_fix_status_bar_layout_summary">Pinapanatiling pare-pareho ang layout ng status bar upang hindi ito sumakop sa mga itaas na bar at walang bakanteng espasyo sa itaas ng player. I-off ito kung nagka-crash ang app o mali ang itsura ng mga itaas na bar</string>
   <!-- layout.theme.themePatch -->

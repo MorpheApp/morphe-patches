@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">ნაგულისხმები</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">გაწელვა (ეკრანის შევსება)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">ზუმი (ჩამოჭრა შევსებისთვის)</string>
+  <string name="morphe_fullscreen_video_alignment_title">სრულეკრანიანი ვიდეოს გასწორება</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">ზემოთ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">ცენტრში</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">ქვემოთ</string>
   <string name="morphe_fullscreen_video_scale_button_title">ვიდეოს მასშტაბის ღილაკის ჩვენება</string>
   <string name="morphe_fullscreen_video_scale_button_summary">დააჭირეთ ნაგულისხმევი, გაწელვისა და ზუმის რეჟიმების შესაცვლელად</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">აჩვენე მხოლოდ სრულეკრანზე</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">ვიდეოს მასშტაბირების ღილაკის დამალვა პორტრეტულ პლეიერში</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">ვიდეოს გასწორების ღილაკის ჩვენება</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">დააჭირეთ ზედა, ცენტრალური და ქვედა მდებარეობების შესაცვლელად სრული ეკრანის რეჟიმში</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">ნელა განმეორების ღილაკის ჩვენება</string>
   <string name="morphe_replay_video_button_summary">უკან გადის და დროებით ამცირებს ვიდეოს სიჩქარეს. გასაუქრებლად დააკლიკეთ კიდევ ერთხელ</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">სტატუსის პანელის დამალვა</string>
   <string name="morphe_hide_status_bar_summary">მალავს სისტემის სტატუსის პანელს. მისი დროებითი გამოჩენისთვის ჩამოაცურეთ ზედა კიდიდან</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">დატოვეთ პლეერი ეკრანის ღრუეთის ქვემოთ</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">სტატუსის პანელის დამალვისას, პორტრეტული ვიდეო პლეერი გადაინაცვლებს ეკრანის ღრუეთის ქვემოთ, რის შედეგንም ზედა ნაწილში ცარიელი ზოლი დარჩება. გამორთეთ ეს ფუნქცია, რათა ვიდეომ შეავსოს ეკრანი ღრუეთის უკისკენ</string>
   <string name="morphe_fix_status_bar_layout_title">სტატუსის პანელის გამოსწორება, რომელიც ფარავს ზედა პანელებს</string>
   <string name="morphe_fix_status_bar_layout_summary">ინარჩუნებს სტატუსის პანელის განლაგების თანმიმდევრულობას, რათა მან არ დაფაროს ზედა პანელები და არ დატოვოს ცარიელი სივრცე პლეერის ზემოთ. გამორთეთ ეს ფუნქცია, თუ აპლიკაცია ავარიულად იხურება ან ზედა პანელები არასწორად გამოიყურება</string>
   <!-- layout.theme.themePatch -->

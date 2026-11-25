@@ -1389,10 +1389,16 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_fullscreen_video_scale_entry_default">الوضع الافتراضي</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">تمديد (ملء الشاشة)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">تكبير (قص لملء الفراغ)</string>
+  <string name="morphe_fullscreen_video_alignment_title">محاذاة الفيديو بملء الشاشة</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">أعلى</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">توسيط</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">أسفل</string>
   <string name="morphe_fullscreen_video_scale_button_title">عرض زر مقياس الفيديو</string>
   <string name="morphe_fullscreen_video_scale_button_summary">انقر للتنقل بين الوضع الافتراضي، التمديد، والتكبير</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">العرض في وضع ملء الشاشة فقط</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">إخفاء زر ضبط مقياس الفيديو في مشغل الوضع الرأسي</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">عرض زر محاذاة الفيديو</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">انقر للتنقل بين الأعلى والوسط والأسفل في وضع ملء الشاشة</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">عرض زر إعادة التشغيل ببطء</string>
   <string name="morphe_replay_video_button_summary">يرجع الفيديو إلى الوراء ويبطئ سرعته مؤقتًا. انقر مرة أخرى للإلغاء</string>
@@ -1577,6 +1583,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">إخفاء شريط الحالة</string>
   <string name="morphe_hide_status_bar_summary">يخفي شريط حالة النظام. اسحب لأسفل من الحافة العلوية لإظهاره للحظة</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">إبقاء المشغل أسفل فتحة الكاميرا</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">ينقل مشغل الفيديو العمودي إلى أسفل فتحة الكاميرا عند إخفاء شريط الحالة، مما يترك شريطًا فارغًا في الأعلى. قم بإيقاف تشغيل هذا الخيار للسماح للفيديو بملء الشاشة خلف فتحة الكاميرا</string>
   <string name="morphe_fix_status_bar_layout_title">إصلاح شريط الحالة بحيث لا يغطي الشريط العلوي</string>
   <string name="morphe_fix_status_bar_layout_summary">يحافظ على تخطيط شريط الحالة بشكل متسق، بحيث لا يغطي الأشرطة العلوية ولا يترك مساحة فارغة فوق المشغل. قم بإيقاف تشغيل هذا إذا تعطل التطبيق أو ظهرت الأشرطة العلوية بشكل خاطئ</string>
   <!-- layout.theme.themePatch -->

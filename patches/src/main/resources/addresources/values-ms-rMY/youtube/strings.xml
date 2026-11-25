@@ -1385,10 +1385,16 @@ Tetapan → Main balik (atau Main automatik) → Main automatik video seterusnya
   <string name="morphe_fullscreen_video_scale_entry_default">Lalai</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Regang (isi skrin)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zum (potong untuk isi)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Penjajaran video skrin penuh</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Atas</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Tengah</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Bawah</string>
   <string name="morphe_fullscreen_video_scale_button_title">Tunjukkan butang skala video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Ketik untuk kitaran Lalai, Regang, dan Zum</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Tunjukkan dalam skrin penuh sahaja</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Sembunyikan butang skala video dalam pemain potret</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Tunjukkan butang penjajaran video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Ketik untuk kitaran Atas, Tengah, dan Bawah dalam skrin penuh</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Tunjukkan butang Main Semula lebih perlahan</string>
   <string name="morphe_replay_video_button_summary">Mengundurkan dan memperlahankan video buat sementara waktu. Ketik sekali lagi untuk membatalkan</string>
@@ -1573,6 +1579,8 @@ Tata letak automotif
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sorokkan bar status</string>
   <string name="morphe_hide_status_bar_summary">Sembunyikan bar status sistem. Leret ke bawah dari tepi atas untuk memaparkannya seketika</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Kekalkan pemain di bawah potongan paparan</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Mengalihkan pemain video potret ke bawah potongan paparan apabila bar status disembunyikan, meninggalkan bar kosong di bahagian atas. Matikan fungsi ini untuk membiarkan video memenuhi skrin di belakang potongan tersebut</string>
   <string name="morphe_fix_status_bar_layout_title">Betulkan bar status yang menutup bar atas</string>
   <string name="morphe_fix_status_bar_layout_summary">Kekalkan susun atur bar status agar konsisten, supaya ia tidak menutup bar atas dan tidak meninggalkan ruang kosong di atas pemain. Matikan fungsi ini jika aplikasi terhenti atau bar atas kelihatan tidak betul</string>
   <!-- layout.theme.themePatch -->

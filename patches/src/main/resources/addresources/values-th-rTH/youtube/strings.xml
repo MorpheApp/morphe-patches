@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">ค่าเริ่มต้น</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">ยืด (เติมเต็มหน้าจอ)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">ซูม (ครอปเพื่อเติมเต็ม)</string>
+  <string name="morphe_fullscreen_video_alignment_title">การจัดวางวิดีโอแบบเต็มหน้าจอ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">บน</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">กลาง</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">ล่าง</string>
   <string name="morphe_fullscreen_video_scale_button_title">แสดงปุ่มมาตราส่วนวิดีโอ</string>
   <string name="morphe_fullscreen_video_scale_button_summary">แตะเพื่อสลับค่าเริ่มต้น ยืด และซูม</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">แสดงเฉพาะในโหมดเต็มหน้าจอ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">ซ่อนปุ่มปรับขนาดวิดีโอในเครื่องเล่นแนวตั้ง</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">แสดงปุ่มการจัดวางวิดีโอ</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">แตะเพื่อสลับระหว่าง ด้านบน, ตรงกลาง และด้านล่าง ในโหมดเต็มจอ</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">แสดงปุ่มเล่นซ้ำให้ช้าลง</string>
   <string name="morphe_replay_video_button_summary">ย้อนกลับและชะลอวิดีโอชั่วคราว แตะอีกครั้งเพื่อยกเลิก</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ซ่อนแถบสถานะ</string>
   <string name="morphe_hide_status_bar_summary">ซ่อนแถบสถานะของระบบ ปัดลงจากขอบด้านบนเพื่อแสดงชั่วครู่</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">ให้ผู้เล่นอยู่ต่ำกว่าส่วนเว้าของหน้าจอ</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">ย้ายเครื่องเล่นวิดีโอแนวตั้งให้อยู่ต่ำกว่าส่วนเว้าของหน้าจอเมื่อซ่อนแถบสถานะ ซึ่งจะทำให้เหลือแถบว่างที่ด้านบน ปิดใช้งานส่วนนี้เพื่อให้วิดีโอแสดงเต็มหน้าจอหลังส่วนเว้า</string>
   <string name="morphe_fix_status_bar_layout_title">แก้ไขแถบสถานะไม่ให้บังแถบด้านบน</string>
   <string name="morphe_fix_status_bar_layout_summary">คงรูปแบบของแถบสถานะให้สอดคล้องกัน เพื่อไม่ให้เกิดการบังแถบด้านบนและเหลือพื้นที่ว่างเปล่าเหนือเครื่องเล่น เปิดการใช้งานนี้หากแอปค้างหรือแถบด้านบนแสดงผลผิดปกติ</string>
   <!-- layout.theme.themePatch -->

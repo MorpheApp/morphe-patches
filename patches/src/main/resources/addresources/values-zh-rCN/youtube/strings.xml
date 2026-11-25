@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">默认</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">拉伸（填充屏幕）</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">缩放（裁剪填充）</string>
+  <string name="morphe_fullscreen_video_alignment_title">全屏视频对齐方式</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">顶部</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">居中</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">底部</string>
   <string name="morphe_fullscreen_video_scale_button_title">显示视频缩放按钮</string>
   <string name="morphe_fullscreen_video_scale_button_summary">点击循环切换默认、拉伸和缩放</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">仅在全屏显示</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">在竖屏播放器中隐藏视频缩放按钮</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">显示视频对齐按钮</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">点击可在全屏模式下循环切换顶部、中间和底部</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">显示慢速回放按钮</string>
   <string name="morphe_replay_video_button_summary">回退并暂时减慢视频速度。再次点击可取消</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隐藏状态栏</string>
   <string name="morphe_hide_status_bar_summary">隐藏系统状态栏。从顶部边缘向下滑动可短暂显示它</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">将播放器保持在显示屏挖孔下方</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">当状态栏隐藏时，将竖屏视频播放器移至显示屏挖孔下方，顶部将留出空白栏。关闭此选项可让视频在挖孔后方填满屏幕</string>
   <string name="morphe_fix_status_bar_layout_title">修复状态栏覆盖顶部栏的问题</string>
   <string name="morphe_fix_status_bar_layout_summary">保持状态栏布局一致，使其不覆盖顶部栏且播放器上方无空白区域。如果应用崩溃或顶部栏显示异常，请关闭此选项</string>
   <!-- layout.theme.themePatch -->

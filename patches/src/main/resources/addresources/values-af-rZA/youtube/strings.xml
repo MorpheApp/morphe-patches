@@ -1385,10 +1385,16 @@ Instellings → Afspeel (of outoplay) → Speel volgende video outomaties"</stri
   <string name="morphe_fullscreen_video_scale_entry_default">Verstek</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Rek (vul skerm)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoem (sny om te vul)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Volskerm-video-belyning</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Bo</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Middel</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Onder</string>
   <string name="morphe_fullscreen_video_scale_button_title">Wys videoskaalknoppie</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tik om deur Verstek, Rek en Zoem te wissel</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Wys slegs in volskerm</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Versteek die video-skaalknoppie in die portretspeler</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Wys video-belyningsknoppie</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tik om tussen Bo, Middel en Onder in volle skerm te wissel</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Wys Herhaal stadiger-knoppie</string>
   <string name="morphe_replay_video_button_summary">Spoel terug en vertraag die video tydelik. Tik weer om te kanselleer</string>
@@ -1573,6 +1579,8 @@ Automotive-uitleg
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Versteek statusbalk</string>
   <string name="morphe_hide_status_bar_summary">Versteek die stelselstatusbalk. Vee af van die boonste rand om dit vir \'n oomblik te wys</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Hou speler onder skermuitsnyding</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Skuif die portret-videospeler onder die skermuitsnyding wanneer die statusbalk versteek is, wat \'n leë balk bo aan laat. Skakel dit af om die video toe te laat om die skerm agter die uitsnyding te vul</string>
   <string name="morphe_fix_status_bar_layout_title">Maak reg dat die statusbalk nie die boonste balke bedek nie</string>
   <string name="morphe_fix_status_bar_layout_summary">Hou die uitleg van die statusbalk konsekwent, sodat dit nie die boonste balke bedek nie en geen spasie bo die speler los nie. Skakel dit af as die app ineenstort of die boonste balke verkeerd lyk</string>
   <!-- layout.theme.themePatch -->

@@ -1385,10 +1385,16 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fullscreen_video_scale_entry_default">डिफ़ॉल्ट</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">स्ट्रेच (स्क्रीन भरें)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">ज़ूम (भरने के लिए क्रॉप करें)</string>
+  <string name="morphe_fullscreen_video_alignment_title">फुलस्क्रीन वीडियो संरेखण</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">ऊपर</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">केंद्र</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">नीचे</string>
   <string name="morphe_fullscreen_video_scale_button_title">वीडियो स्केल बटन दिखाएं</string>
   <string name="morphe_fullscreen_video_scale_button_summary">डिफ़ॉल्ट, स्ट्रेच और ज़ूम के बीच बदलने के लिए टैप करें</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">केवल फ़ुलस्क्रीन में दिखाएँ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">पोर्ट्रेट प्लेयर में वीडियो स्केल बटन छिपाएँ</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">वीडियो एलाइनमेंट बटन दिखाएं</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">फुलस्क्रीन में Top, Center, और Bottom के बीच स्विच करने के लिए टैप करें</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">रीप्ले धीमा करें बटन दिखाएं</string>
   <string name="morphe_replay_video_button_summary">वीडियो को पीछे करता है और अस्थायी रूप से धीमा करता है। रद्द करने के लिए फिर से टैप करें</string>
@@ -1573,6 +1579,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
   <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">प्लेयर को डिस्प्ले कटआउट के नीचे रखें</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">जब स्टेटस बार छिपा होता है, तो यह पोर्ट्रेट वीडियो प्लेयर को डिस्प्ले कटआउट के नीचे ले जाता है, जिससे ऊपर एक खाली बार रह जाता है। वीडियो को कटआउट के पीछे स्क्रीन भरने देने के लिए इसे बंद करें</string>
   <string name="morphe_fix_status_bar_layout_title">स्टेटस बार से टॉप बार्स ढकने की समस्या ठीक करें</string>
   <string name="morphe_fix_status_bar_layout_summary">स्टेटस बार की लेआउट को स्थिर रखता है, ताकि यह टॉप बार्स को न कवर करे और प्लेयर के ऊपर खाली जगह न छोड़े। अगर ऐप क्रैश हो जाए या टॉप बार्स गलत दिखें तो इसे बंद करें</string>
   <!-- layout.theme.themePatch -->

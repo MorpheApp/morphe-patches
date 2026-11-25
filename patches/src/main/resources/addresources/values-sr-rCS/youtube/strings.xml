@@ -1385,10 +1385,16 @@ Postavke → Reprodukcija (ili Automatsko puštanje) → Automatski pusti slede�
   <string name="morphe_fullscreen_video_scale_entry_default">Podrazumevana</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Rastegni (ispuni ekran)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zumiraj (iseci da ispuni)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Poravnanje video snimka u punom ekranu</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Gore</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centrirano</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Dole</string>
   <string name="morphe_fullscreen_video_scale_button_title">Prikaži dugme za skaliranje videa</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Dodirnite da ciklično menjate: Podrazumevano, Rastegnuto i Zumirano</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Prikaži samo na celom ekranu</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Sakrij dugme za skaliranje videa u portretnom plejeru</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Prikaži dugme za poravnanje videa</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Dodirnite da biste menjali između opcija Gore, Centrirano i Dole u punom ekranu</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Prikaži dugme za sporije ponavljanje</string>
   <string name="morphe_replay_video_button_summary">Vraća video unazad i privremeno ga usporava. Dodirnite ponovo da otkažete</string>
@@ -1573,6 +1579,8 @@ Automotive raspored
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Sakriva sistemsku statusnu traku. Prevucite prstom nadole od gornje ivice da biste je na trenutak prikazali</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Zadrži plejer ispod izreza na ekranu</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Pomera video plejer u portretnom režimu ispod izreza na ekranu kada je traka statusa skrivena, ostavljajući praznu traku na vrhu. Isključite ovo kako biste omogućili videu da ispuni ekran iza izreza</string>
   <string name="morphe_fix_status_bar_layout_title">Popravi statusnu traku koja prekriva gornje trake</string>
   <string name="morphe_fix_status_bar_layout_summary">Održava dosledan izgled statusne trake, tako da ne prekrije gornje trake i ostavlja prazan prostor iznad plejera. Isključite ovo ako aplikacija padne ili gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->

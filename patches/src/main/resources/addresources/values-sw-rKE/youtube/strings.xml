@@ -1385,10 +1385,16 @@ Settings → Playback (au Autoplay) → Autoplay next video"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Kawaida</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Tanua (jaza skrini)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (kata ili ujaze)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Upangaji wa video ya skrini kamili</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Juu</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Katikati</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Chini</string>
   <string name="morphe_fullscreen_video_scale_button_title">Onyesha kitufe cha ukubwa wa video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Gusa ili ubadilishe kati ya Chaguo-msingi, Tanua, na Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Onyesha katika skrini kamili pekee</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ficha kitufe cha ukubwa wa video kwenye kicheza cha wima</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Onyesha kitufe cha mpangilio wa video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Gusa ili kubadili Juu, Kati, na Chini katika skrini nzima</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Onyesha kitufe cha kurudia video kwa mwendo wa polepole</string>
   <string name="morphe_replay_video_button_summary">Inarudisha nyuma na kupunguza kasi ya video kwa muda. Gusa tena ili ghairi</string>
@@ -1573,6 +1579,8 @@ Mpangilio wa Automotive
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ficha upau wa hali</string>
   <string name="morphe_hide_status_bar_summary">Huficha upau wa hali wa mfumo. Teleza chini kutoka ukingo wa juu ili kuuonyesha kwa muda</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Weka kinchezaji chini ya kata ya kioo</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Husogeza kinchezaji cha video cha wima chini ya kata ya kioo wakati mwambaa wa hali ukiwa umejificha, na kuacha mwambaa mtupu juu. Zima hii ili kuruhusu video ijaze skrini nyuma ya kata</string>
   <string name="morphe_fix_status_bar_layout_title">Rekebisha upau wa hali unaofunika upau wa juu</string>
   <string name="morphe_fix_status_bar_layout_summary">Huifanya mpangilio ya upau wa hali kuwa thabiti, ili isifunike upau wa juu na isiache nafasi tupu juu ya kichezaji. Zima hii ikiwa programu itafunga ghafla au upau wa juu ukionekana vibaya</string>
   <!-- layout.theme.themePatch -->

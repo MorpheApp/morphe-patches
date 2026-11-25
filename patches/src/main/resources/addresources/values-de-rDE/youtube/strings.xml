@@ -1385,10 +1385,16 @@ Einstellungen → Wiedergabe (oder Automatische Wiedergabe) → Nächstes Video 
   <string name="morphe_fullscreen_video_scale_entry_default">Standard</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Strecken (Bildschirm ausfüllen)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoomen (Zuschneiden zum Ausfüllen)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Ausrichtung des Vollbildvideos</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Oben</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Zentriert</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Unten</string>
   <string name="morphe_fullscreen_video_scale_button_title">Schaltfläche für Video-Skalierung anzeigen</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tippen, um zwischen Standard, Strecken und Zoomen zu wechseln</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Nur im Vollbild anzeigen</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Videoskalierungs-Schaltfläche im Hochformat-Player ausblenden</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Videoausrichtung-Schaltfläche anzeigen</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tippen, um im Vollbildmodus zwischen Oben, Mitte und Unten zu wechseln</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Zeige Langsam-Wiedergeben-Button</string>
   <string name="morphe_replay_video_button_summary">Spult das Video zurück und verlangsamt es vorübergehend. Erneut tippen zum Abbrechen</string>
@@ -1573,6 +1579,8 @@ Automobil-Layout
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusleiste ausblenden</string>
   <string name="morphe_hide_status_bar_summary">Blendet die Systemstatusleiste aus. Wische vom oberen Bildschirmrand nach unten, um sie kurz einzublenden</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Player unter Display-Ausschnitt halten</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Verschiebt den Portrait-Videoplayer unter den Display-Ausschnitt, wenn die Statusleiste ausgeblendet ist, wodurch oben eine leere Leiste bleibt. Deaktivieren Sie dies, damit das Video den Bildschirm hinter dem Ausschnitt ausfüllt</string>
   <string name="morphe_fix_status_bar_layout_title">Überdeckung der oberen Leisten durch die Statusleiste beheben</string>
   <string name="morphe_fix_status_bar_layout_summary">Behält das Layout der Statusleiste bei, sodass sie die oberen Leisten nicht überdeckt und über dem Player kein leerer Raum entsteht. Schalte diese Option aus, wenn die App abstürzt oder die oberen Leisten falsch aussehen</string>
   <!-- layout.theme.themePatch -->

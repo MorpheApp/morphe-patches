@@ -1385,10 +1385,16 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_fullscreen_video_scale_entry_default">Padrão</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Esticar (preencher a tela)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (cortar para preencher)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Alinhamento de vídeo em tela cheia</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Topo</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centro</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Inferior</string>
   <string name="morphe_fullscreen_video_scale_button_title">Mostrar botão de escala de vídeo</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Toque para alternar entre Padrão, Esticar e Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Mostrar somente em tela cheia</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ocultar o botão de escala de vídeo no player em modo retrato</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Mostrar botão de alinhamento de vídeo</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Toque para alternar entre Superior, Central e Inferior em tela cheia</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Mostrar botão Reproduzir replay mais lento</string>
   <string name="morphe_replay_video_button_summary">Retrocede e reduz temporariamente a velocidade do vídeo. Toque novamente para cancelar</string>
@@ -1572,6 +1578,8 @@ Layout automotivo
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar barra de status</string>
   <string name="morphe_hide_status_bar_summary">Oculta a barra de status do sistema. Deslize para baixo a partir da borda superior para mostrá-la por um momento</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Manter o player abaixo do limite da tela</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Move o player de vídeo em modo retrato para baixo do limite da tela quando a barra de status está oculta, deixando uma barra vazia no topo. Desative isso para permitir que o vídeo preencha a tela atrás do recorte</string>
   <string name="morphe_fix_status_bar_layout_title">Corrige a barra de status cobrindo as barras superiores</string>
   <string name="morphe_fix_status_bar_layout_summary">Mantém o layout da barra de status consistente, para que não cubra as barras superiores e não deixe espaço vazio acima do player. Desative esta opção se o aplicativo travar ou se as barras superiores parecerem incorretas</string>
   <!-- layout.theme.themePatch -->

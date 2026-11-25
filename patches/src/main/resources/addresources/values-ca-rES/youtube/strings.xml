@@ -1385,10 +1385,16 @@ Configuració → Reproducció (o Reproducció automàtica) → Reproducció aut
   <string name="morphe_fullscreen_video_scale_entry_default">Per defecte</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Estirar (omplir pantalla)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (recortar per omplir)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Alineació del vídeo a pantalla completa</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Superior</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centre</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Inferior</string>
   <string name="morphe_fullscreen_video_scale_button_title">Mostrar botó d\'escala de vídeo</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Toca per alternar entre Per defecte, Estirar i Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Mostrar només en pantalla completa</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Oculta el botó d\'escala del vídeo al reproductor en mode vertical</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Mostra el botó d\'alineació del vídeo</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Toca per alternar entre Superior, Centre i Inferior en pantalla completa</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Mostrar botó de repetició més lenta</string>
   <string name="morphe_replay_video_button_summary">Retrocedeix i slowing temporalment el vídeo. Torna a tocar per cancel·lar</string>
@@ -1573,6 +1579,8 @@ Disseny d'automoció
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar la barra d\'estat</string>
   <string name="morphe_hide_status_bar_summary">Oculta la barra d\'estat del sistema. Desllisa cap avall des de la part superior per mostrar-la durant un moment</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Mantenir el reproductor sota el retall de la pantalla</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Desplaça el reproductor de vídeo en vertical sota el retall de la pantalla quan la barra d\'estat està oculta, deixant una barra buida a la part superior. Desactiva aquesta opció per permetre que el vídeo ompli la pantalla darrere del retall</string>
   <string name="morphe_fix_status_bar_layout_title">Corregeix la barra d\'estat que cobreix les barres superiors</string>
   <string name="morphe_fix_status_bar_layout_summary">Manté la disposició de la barra d\'estat coherent, de manera que no cobreixi les barres superiors i no deixi espai buit sobre el reproductor. Desactiva aquesta opció si l\'aplicació es tanca inesperadament o si les barres superiors no es veuen bé</string>
   <!-- layout.theme.themePatch -->

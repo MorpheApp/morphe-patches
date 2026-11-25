@@ -1387,10 +1387,16 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_fullscreen_video_scale_entry_default">기본값</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">늘리기 (화면 채우기)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">확대 (잘라서 채우기)</string>
+  <string name="morphe_fullscreen_video_alignment_title">전체 화면 동영상 정렬</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">상단</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">가운데</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">하단</string>
   <string name="morphe_fullscreen_video_scale_button_title">동영상 크기 조절 버튼 표시하기</string>
   <string name="morphe_fullscreen_video_scale_button_summary">버튼을 탭하여 기본값, 화면 늘리기, 화면 확대 순으로 전환하여 전체 화면 동영상 크기를 조절할 수 있습니다</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">전체 화면에서만 표시하기</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">세로 모드 플레이어에서 동영상 크기 조절 버튼을 숨깁니다</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">동영상 정렬 버튼 표시하기</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">탭하여 전체 화면에서 상단, 중앙, 하단으로 전환하세요</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">느리게 다시 보기 버튼 표시하기</string>
   <string name="morphe_replay_video_button_summary">동영상을 되감고 일시적으로 속도를 늦춥니다. 다시 탭하면 취소됨</string>
@@ -1574,6 +1580,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">상태바 숨기기</string>
   <string name="morphe_hide_status_bar_summary">시스템 상태바를 숨깁니다. 상단 가장자리에서 아래로 스와이프하면 잠시 표시됩니다</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">플레이어를 디스플레이 컷아웃 아래에 유지</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">상태 표시줄이 숨겨져 있을 때 세로형 비디오 플레이어를 디스플레이 컷아웃 아래로 이동시켜 상단에 빈 바를 남깁니다. 이 설정을 끄면 비디오가 컷아웃 뒤의 화면을 가득 채우게 됩니다</string>
   <string name="morphe_fix_status_bar_layout_title">상태바가 상단바를 가리는 문제 수정하기</string>
   <string name="morphe_fix_status_bar_layout_summary">상태바 레이아웃을 일정하게 유지하여 상단바가 가려지지 않도록 하고, 플레이어 위쪽에 빈 공간이 생기지 않도록 합니다. 앱이 강제 종료되거나 상단바가 비정상적으로 표시되면 이 기능을 비활성화하세요</string>
   <!-- layout.theme.themePatch -->

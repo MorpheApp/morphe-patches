@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">По умолчанию</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Растянуть (заполнить экран)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Масштаб (обрезка для заполнения)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Выравнивание полноэкранного видео</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Сверху</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">По центру</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Снизу</string>
   <string name="morphe_fullscreen_video_scale_button_title">Показать кнопку масштабирования видео</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Нажмите для переключения между режимами «По умолчанию», «Растянуть» и «Масштаб»</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Показывать только в полноэкранном режиме</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Скрывать кнопку масштабирования видео в портретном плеере</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Показать кнопку выравнивания видео</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Нажмите, чтобы переключать верхнее, центральное и нижнее положение в полноэкранном режиме</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Показать кнопку \"Замедленный повтор\"</string>
   <string name="morphe_replay_video_button_summary">Перематывает и временно замедляет видео. Нажмите еще раз, чтобы отменить</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Скрыть строку состояния</string>
   <string name="morphe_hide_status_bar_summary">Скрывает системную строку состояния. Проведите вниз от верхнего края, чтобы на мгновение показать её</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Располагать плеер ниже выреза экрана</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Перемещает портретный видеоплеер ниже выреза экрана, когда строка состояния скрыта, оставляя пустую полосу сверху. Выключите эту опцию, чтобы видео заполняло экран за вырезом</string>
   <string name="morphe_fix_status_bar_layout_title">Исправлена строка состояния, закрывающая верхние панели</string>
   <string name="morphe_fix_status_bar_layout_summary">Сохраняет неизменным расположение строки состояния, поэтому она не закрывает верхние панели и не оставляет пустого пространства над проигрывателем. Отключите, если приложение выходит из строя или верхние панели выглядят неправильно.</string>
   <!-- layout.theme.themePatch -->

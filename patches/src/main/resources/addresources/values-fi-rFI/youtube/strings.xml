@@ -1385,10 +1385,16 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_fullscreen_video_scale_entry_default">Oletus</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Venytä (täytä näyttö)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoomaa (rajaa täyttöön)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Koko näytön videon kohdistus</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Yläreuna</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Keskikohta</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Alareuna</string>
   <string name="morphe_fullscreen_video_scale_button_title">Näytä videon skaalauspainike</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Napauta vaihtaaksesi oletuksen, venytyksen ja zoomin välillä</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Näytä vain koko näytössä</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Piilota videoskaalauspainike pystyasennon soittimessa</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Näytä videon kohdistuspainike</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Napauta vaihtaaksesi ylä-, keski- ja alareunan välillä koko näytön tilassa</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Näytä Toista hitaammin -painike</string>
   <string name="morphe_replay_video_button_summary">Kelaa videota taaksepäin ja hidasta sitä tilapäisesti. Napauta uudelleen peruuttaaksesi</string>
@@ -1573,6 +1579,8 @@ Auton asettelu
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Piilota tilapalkki</string>
   <string name="morphe_hide_status_bar_summary">Piilottaa järjestelmän tilapalkin. Pyyhkäise yläreunasta alaspäin, niin se näkyy hetkeksi</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Pidä soitin näytön loven alapuolella</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Siirtää pystyvideosoittimen näytön loven alapuolelle, kun tilapalkki on piilotettu, jolloin yläreunaan jää tyhjä palkki. Poista tämä käytöstä, jotta video täyttää näytön loven takaa</string>
   <string name="morphe_fix_status_bar_layout_title">Korjaa tilapalkin peittämät yläpalkit</string>
   <string name="morphe_fix_status_bar_layout_summary">Pitää tilapalkin asettelun johdonmukaisena, joten se ei peitä yläpalkkeja eikä jätä tyhjää tilaa soittimen yläpuolelle. Poista tämä käytöstä, jos sovellus kaatuu tai yläpalkit näyttävät vääriltä</string>
   <!-- layout.theme.themePatch -->

@@ -565,6 +565,12 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_alignment_title">முழுத்திரை வீடியோ சீரமைப்பு</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">மேலே</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">மையம்</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">கீழே</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">வீடியோ சீரமைப்பு பொத்தானைக் காட்டு</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">முழுத்திரையில் மேல், மையம் மற்றும் கீழ் ஆகியவற்றை மாற்றத் தட்டுங்கள்</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">மெதுவாக மீண்டும் காண்பி பொத்தானைக் காட்டு</string>
   <string name="morphe_replay_video_button_summary">வீடியோவை பின்னோக்கி நகர்த்தி தற்காலிகமாக மெதுவாக்குகிறது. ரத்து செய்ய மீண்டும் தட்டவும்</string>
@@ -623,6 +629,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_avoid_cutout_title">டிஸ்ப்ளே கட்அவுட்டுக்கு கீழே பிளேயரை வைத்திருங்கள்</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">ஸ்டேட்டஸ் பார் மறைக்கப்பட்டிருக்கும் போது, போர்ட்ரெய்ட் வீடியோ பிளேயரை டிஸ்ப்ளே கட்அவுட்டுக்கு கீழே நகர்த்தும், இதனால் மேலே ஒரு காலியான பார் இருக்கும். வீடியோ கட்அவுட்டுக்கு பின்னால் திரையை முழுமையாக நிரப்ப இதை ஆஃப் செய்யவும்</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>

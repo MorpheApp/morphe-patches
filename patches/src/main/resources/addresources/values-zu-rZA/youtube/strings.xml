@@ -1385,10 +1385,16 @@ Izilungiselelo → Playback (noma Autoplay) → Autoplay next video"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Okujwayelekile</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Ukwelula (gcwalisa isikrini)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (sika ukuze ugcwalise)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Ukuhleleka kwe-video yesikrini esigcwele</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Phezulu</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Phakathi</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Phansi</string>
   <string name="morphe_fullscreen_video_scale_button_title">Khombisa inkinobho yesayizi ye-video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Thinta ukushintsha phakathi kwe-Default, Stretch, kanye ne-Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Khombisa kuphela esikrinini esigcwele</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Fihla inkinobho yesikala sevidiyo kudlala-vidiyo okumile</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Khombisa inkinobho yokulungisa ividiyo</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Thinta ukuze ushintshe phakathi kwePhezulu, Phakathi, kanye Nephansi ku-fullscreen</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Khombisa inkinobho yokudlala kabusha kancane</string>
   <string name="morphe_replay_video_button_summary">Buyisa emuva futhi yehlise isivinyela sevidiyo yesikhashana. Thinta futhi ukukhansela</string>
@@ -1573,6 +1579,8 @@ Indlela yokuhlela yezimoto
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Fihla i-status bar</string>
   <string name="morphe_hide_status_bar_summary">Ifihla i-status bar yesistimu. Sula phansi kusukela phezulu ukuze uyibone okwesikhashana</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Gcina umdlali ngaphansi kokukhipha kwesikrinishi</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Yisusa umdlali wevidiyo we-portrait ukuba abe ngaphansi kokukhipha kwesikrinishi lapho ibha yesimo ifihliwe, kushiyelwe ibha engenalutho phezulu. Cima lokhu ukuze uvideyo ugcwalise isikrinishi ngemuva kokukhipha</string>
   <string name="morphe_fix_status_bar_layout_title">Lungisa i-status bar emboza imigqa engenhla</string>
   <string name="morphe_fix_status_bar_layout_summary">Gcina ukuhleleka kwe-status bar kukufana, ukuze ingabozi imigqa engenhla futhi ingashiyi isikhala esingenalutho ngaphezu kwedlala. Cima lokhu uma i-app i-crash noma imigqa engenhla ibukeka ngendlela engalungile</string>
   <!-- layout.theme.themePatch -->

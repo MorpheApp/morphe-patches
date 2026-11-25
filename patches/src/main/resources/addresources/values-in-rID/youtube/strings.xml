@@ -1385,10 +1385,16 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <string name="morphe_fullscreen_video_scale_entry_default">Bawaan</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Regangkan (isi layar)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Perbesar (potong untuk mengisi)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Perataan video layar penuh</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Atas</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Tengah</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Bawah</string>
   <string name="morphe_fullscreen_video_scale_button_title">Tampilkan tombol skala video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Ketuk untuk mengganti Bawaan, Regangkan, dan Perbesar</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Tampilkan hanya dalam layar penuh</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Sembunyikan tombol skala video di pemutar potret</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Tampilkan tombol perataan video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Ketuk untuk mengganti Atas, Tengah, dan Bawah dalam layar penuh</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Tampilkan tombol Putar ulang lebih lambat</string>
   <string name="morphe_replay_video_button_summary">Memutar ulang dan memperlambat video untuk sementara. Ketuk lagi untuk membatalkan</string>
@@ -1572,6 +1578,8 @@ Tata letak Otomotif
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sembunyikan bilah status</string>
   <string name="morphe_hide_status_bar_summary">Menyembunyikan bilah status sistem. Geser ke bawah dari tepi atas untuk menampilkannya sesaat</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Jaga pemutar tetap di bawah potongan layar</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Memindahkan pemutar video potret ke bawah potongan layar saat bilah status tersembunyi, meninggalkan bilah kosong di bagian atas. Matikan ini agar video mengisi layar di belakang potongan</string>
   <string name="morphe_fix_status_bar_layout_title">Perbaiki status bar yang menutupi bar atas</string>
   <string name="morphe_fix_status_bar_layout_summary">Menjaga tata letak status bar konsisten, sehingga tidak menutupi bar atas dan tidak meninggalkan ruang kosong di atas pemutar. Matikan ini jika aplikasi mengalami crash atau bar atas terlihat salah</string>
   <!-- layout.theme.themePatch -->

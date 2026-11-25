@@ -1385,10 +1385,16 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_fullscreen_video_scale_entry_default">Standard</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Strekk (fyll skjermen)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (beskjær for å fylle)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Justering av video i fullskjerm</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Topp</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Senter</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Bunn</string>
   <string name="morphe_fullscreen_video_scale_button_title">Vis videoskala-knapp</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Trykk for å veksle mellom Standard, Strekk og Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Vis kun i fullskjerm</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Skjul videostørrelsesknappen i stående spiller</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Vis knapp for videojustering</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Trykk for å veksle mellom Topp, Senter og Bunn i fullskjerm</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Vis knapp for saktere avspilling</string>
   <string name="morphe_replay_video_button_summary">Spoler tilbake og senker hastigheten på videoen midlertidig. Trykk igjen for å avbryte</string>
@@ -1573,6 +1579,8 @@ Bilvisning
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
   <string name="morphe_hide_status_bar_summary">Skjuler systemstatuslinjen. Sveip ned fra toppkanten for å vise den et øyeblikk</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Hold spiller under skjermutskjæring</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Flytter portrettvideospilleren under skjermutskjæringen når statuslinjen er skjult, noe som etterlater en tom linje øverst. Slå dette av for å la videoen fylle skjermen bak utskjæringen</string>
   <string name="morphe_fix_status_bar_layout_title">Fiks at statuslinjen dekker toppbaren</string>
   <string name="morphe_fix_status_bar_layout_summary">Holder utseendet til statuslinjen konsistent, slik at den ikke dekker topparene og etterlater ingen tom plass over avspilleren. Skru dette av hvis appen krasjer eller topparene ser feil ut</string>
   <!-- layout.theme.themePatch -->

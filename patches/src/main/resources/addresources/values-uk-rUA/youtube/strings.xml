@@ -1384,10 +1384,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Типовий</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Розтягнутий (заповнити екран)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Масштабований (обрізати для заповнення)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Вирівнювання повноекранного відео</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Зверху</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">По центру</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Знизу</string>
   <string name="morphe_fullscreen_video_scale_button_title">Показувати кнопку масштабу відео</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Натисніть, щоб перемикати між \"Типовим\", \"Розтягнутим\" та \"Масштабованим\"</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Показувати лише в повноекранному режимі</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Приховати кнопку масштабу відео в портретному плеєрі</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Показувати кнопку вирівнювання відео</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Натисніть, щоб перемикати вирівнювання по верхньому краю, по центру та по нижньому краю у повноекранному режимі</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Показувати кнопку \"Повторити повільніше\"</string>
   <string name="morphe_replay_video_button_summary">Перемотує та тимчасово сповільнює відео. Натисніть ще раз, щоб скасувати</string>
@@ -1572,6 +1578,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Приховати панель стану</string>
   <string name="morphe_hide_status_bar_summary">Приховує системну панель стану. Проведіть донизу від верхнього краю, щоб показати її на мить</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Тримати плеєр нижче вирізу дисплея</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Переміщує портретний відеоплеєр нижче вирізу дисплея, коли рядок стану приховано, залишаючи порожній рядок зверху. Вимкніть цю опцію, щоб відео заповнювало екран за вирізом</string>
   <string name="morphe_fix_status_bar_layout_title">Виправити перекриття верхніх панелей рядком стану</string>
   <string name="morphe_fix_status_bar_layout_summary">Підтримує сталий макет рядка стану, щоб він не перекривав верхні панелі та не залишав порожнього місця над плеєром. Вимкніть це, якщо застосунок аварійно завершує роботу або верхні панелі виглядають неправильно</string>
   <!-- layout.theme.themePatch -->

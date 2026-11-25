@@ -1385,10 +1385,16 @@ Ezarpenak → Erreprodukzioa (edo Autoplay) → Hurrengo bideoa automatikoki err
   <string name="morphe_fullscreen_video_scale_entry_default">Lehenetsia</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Luzatu (pantaila betetzeko)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (moztu betetzeko)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Pantaila osoko bideoaren lerrakatzea</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Goi</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Erdi</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Behe</string>
   <string name="morphe_fullscreen_video_scale_button_title">Erakutsi bideo eskala botoia</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Sakatu Lehenetsia, Luzatu eta Zoom artean txandakatzeko</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Pantaila osoan bakarrik erakutsi</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ezkutatu bideoaren eskala botoia erreproduzigailu bertikalean</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Erakutsi bideo lerrakatze botoia</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Sakatu Goiko, Erdi eta Beheko posizioen artean altxeratzeko pantaila osoan</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Erakutsi \'Berriz ikusi motel\' botoia</string>
   <string name="morphe_replay_video_button_summary">Atzerantz doa eta bideoa batzuetan moteldu egiten du. Berriz sakatu bertan bertan eutsi kanggo</string>
@@ -1573,6 +1579,8 @@ Automobilen diseinua
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Egoera-barra ezkutatu</string>
   <string name="morphe_hide_status_bar_summary">Sistemaren egoera-barra ezkutatzen du. Goiko ertzetik behera irristatu une batez agertzeko</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Mantendu jokalaria pantailako zubiaparen behean</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Status barra ezkututa dagoenean, bideo-jokalari bertikaldua pantailako zubiaparen behealdera lekukoa da, goian barra huts bat utziz. Desaktibu aukera hau bideoak pantaila guztia betetzea ahalbide ditzaten zubiaparen atzean</string>
   <string name="morphe_fix_status_bar_layout_title">Konpondu egoera-barrak goiko barrak estaltzea</string>
   <string name="morphe_fix_status_bar_layout_summary">Egoera-barraren diseinu koherentea mantentzen du, goiko barrak ez estaltzeko eta erreproduzigailuaren gainean hutsune bat ez uzteko. Desaktibatu aukera hau aplikazioak huts egiten badu edo goiko barrak gaizki agertzen badira</string>
   <!-- layout.theme.themePatch -->

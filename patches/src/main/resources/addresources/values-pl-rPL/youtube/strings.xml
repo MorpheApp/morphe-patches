@@ -1217,7 +1217,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_show_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube. Wyłącz, aby odwrócić te akcje</string>
   <string name="morphe_you_button_account_switcher_title">Skrót przełącznika kont</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
-  <string name="morphe_you_button_account_switcher_summary">Przytrzymaj przycisk \"Ty\", aby otworzyć przełącznik kont</string>
+  <string name="morphe_you_button_account_switcher_summary">Przytrzymaj przycisk Ty, aby otworzyć przełącznik kont</string>
   <string name="morphe_navigation_buttons_order_title">Kolejność przycisków nawigacji</string>
   <string name="morphe_navigation_buttons_order_summary">Przeciągnij przyciski, aby zmienić ich kolejność na pasku nawigacji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamień przycisk Utwórz z przyciskiem Powiadomienia</string>
@@ -1384,10 +1384,16 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_fullscreen_video_scale_entry_default">Domyślne</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Rozciągnij (wypełnij ekran)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Powiększ (przytnij, aby wypełnić)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Wyrównanie filmu na pełnym ekranie</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Góra</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Środek</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Dół</string>
   <string name="morphe_fullscreen_video_scale_button_title">Pokaż przycisk skalowania filmu</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Dotknij, aby przełączać między trybami: Domyślne, Rozciągnij i Powiększ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Pokaż tylko na pełnym ekranie</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ukryj przycisk skalowania filmu w odtwarzaczu pionowym</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Pokaż przycisk wyrównania filmu</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Dotknij, aby przełączać między ustawieniami Góra, Środek i Dół w trybie pełnoekranowym</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Pokaż przycisk \"Powtórz wolniej\"</string>
   <string name="morphe_replay_video_button_summary">Cofa i tymczasowo spowalnia film. Dotknij ponownie, aby anulować</string>
@@ -1572,6 +1578,8 @@ Układ samochodowy
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ukryj pasek stanu</string>
   <string name="morphe_hide_status_bar_summary">Ukrywa systemowy pasek stanu. Przesuń w dół od górnej krawędzi, aby na chwilę go wyświetlić</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Utrzymaj odtwarzacz poniżej wycięcia w wyświetlaczu</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Przesuwa pionowy odtwarzacz wideo poniżej wycięcia w wyświetlaczu, gdy pasek stanu jest ukryty, pozostawiając pusty pasek na górze. Wyłącz tę opcję, aby wideo wypełniało ekran za wycięciem</string>
   <string name="morphe_fix_status_bar_layout_title">Napraw pasek stanu zasłaniający górne paski</string>
   <string name="morphe_fix_status_bar_layout_summary">Utrzymuje spójny układ paska stanu, dzięki czemu nie zasłania on górnych pasków ani nie zostawia pustego miejsca nad odtwarzaczem. Wyłącz tę opcję, jeśli aplikacja ulega awarii lub górne paski wyświetlają się nieprawidłowo</string>
   <!-- layout.theme.themePatch -->

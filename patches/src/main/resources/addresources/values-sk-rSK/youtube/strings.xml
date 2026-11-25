@@ -284,19 +284,19 @@ Obmedzenia:
 • Skrytý Short môže zanechať prázdne miesto v sekcii Shorts"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Filter počtu zobrazení skryje všetky videá</string>
-  <string name="morphe_hide_videos_by_duration_screen_title">Filter dĺžky</string>
-  <string name="morphe_hide_videos_by_duration_screen_summary">Skryte videá v feedoch a vo vyhľadávaní, ktoré sú príliš krátke alebo príliš dlhé</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Filter trvania</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Skryť videá vo feedoch a vo vyhľadávaní, ktoré sú príliš krátke alebo príliš dlhé</string>
   <string name="morphe_hide_videos_by_duration_home_title">Skryť videá na Domovkej stránke podľa dĺžky</string>
   <string name="morphe_hide_videos_by_duration_search_title">Skryť výsledky vyhľadávania podľa dĺžky</string>
   <string name="morphe_hide_videos_by_duration_subscriptions_title">Skryť videá v Odberoch podľa dĺžky</string>
   <string name="morphe_hide_videos_by_duration_minimum_title">Minimálna dĺžka (minúty)</string>
   <string name="morphe_hide_videos_by_duration_minimum_summary">Videá kratšie ako táto dĺžka sa skryjú. 0 = žiadne minimum</string>
   <string name="morphe_hide_videos_by_duration_maximum_title">Maximálna dĺžka (minúty)</string>
-  <string name="morphe_hide_videos_by_duration_maximum_summary">Videá dlhšie ako táto dĺžka sa skryjú. 0 = žiadny maximum</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Videá dlhšie ako táto dĺžka sa skryjú. 0 = žiadne maximum</string>
   <string name="morphe_hide_videos_by_duration_about_summary">"Domov / Odbery / Vyhľadávanie sú filtrované tak, aby sa skryli videá podľa ich dĺžky
 
 Obmedzenia:
-• Livestreamy, Shorts, playlists a mixy sa neskryjú
+• Livestreamy, Shorts, playlisty a mixy sa neskryjú
 • Videá s neznámou dĺžkou sa neskryjú"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_duration_toast_broad">Filter dĺžky skryje všetky videá</string>
@@ -1383,10 +1383,16 @@ Nastavenia → Prehrávanie (alebo Automatické prehrávanie) → Automaticky pr
   <string name="morphe_fullscreen_video_scale_entry_default">Predvolený</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Natiahnuť (vyplniť obrazovku)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Priblížiť (orezať na vyplnenie)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Zarovnanie videa na celú obrazovku</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Horná</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Stred</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Dolná</string>
   <string name="morphe_fullscreen_video_scale_button_title">Zobraziť tlačidlo mierky videa</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Klepnutím prepínate medzi Predvolené, Natiahnuť a Priblížiť</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Zobraziť iba v celoobrazovkovom režime</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Skryť tlačidlo zmeny veľkosti videa v prehrávači v režime na výšku</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Zobraziť tlačidlo zarovnania videa</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Ťuknutím prepínajte medzi možnosťami Horná, Stred a Spodná v celoobrazovom režime</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Zobraziť tlačidlo pre pomalšie prehratie</string>
   <string name="morphe_replay_video_button_summary">Pretočí video späť a dočasne ho spomalí. Opätovne ťuknite na zrušenie</string>
@@ -1571,6 +1577,8 @@ Rozloženie pre automobil
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skryť stavový riadok</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový riadok. Potiahnite prstom nadol z horného okraja, aby sa na chvíľu zobrazil</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Umiestniť prehrávač pod výrez displeja</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Pri skrytom stavovom riadku presunie prehrávač portrétnych videí pod výrez displeja, čím v hornej časti ponechá prázdny pás. Vypnite túto možnosť, aby video vyplnilo obrazovku aj za výrezom</string>
   <string name="morphe_fix_status_bar_layout_title">Opraviť stavový riadok, ktorý zakrýva horné panely</string>
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentné rozloženie stavového riadka, takže nezakrýva horné panely a nenecháva prázdny priestor nad prehrávačom. Toto vypnite, ak sa aplikácia zrúti alebo horné panely vyzerajú nesprávne</string>
   <!-- layout.theme.themePatch -->

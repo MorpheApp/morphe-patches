@@ -1385,10 +1385,16 @@ Iestatījumi → Atskaņošana (vai Automātiska atskaņošana) → Automātiski
   <string name="morphe_fullscreen_video_scale_entry_default">Noklusējums</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Stretch (aizpildīt ekrānu)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (apkopt, lai aizpildītu)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Piln ekrāna video izvietojums</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Augša</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centrs</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Apakša</string>
   <string name="morphe_fullscreen_video_scale_button_title">Rādīt video mēroga pogu</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Pieskarieties, lai pārslēgtos starp Noklusējums, Stretch un Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Rādīt tikai pilnā ekrāna režīmā</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Slēpt video mēroga pogu portreta režīma spēlētājā</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Rādīt video izcentrēšanas pogu</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Pieskarieties, lai mainītu pozīciju Augša, Centrs un Apakša piln ekrāna režīm</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Rādīt pogu \"Atskaņot lēnāk\"</string>
   <string name="morphe_replay_video_button_summary">Atvērs videoklipu atpakaļ un īslaicīgi samazinās tā ātrumu. Pieskarieties vēlreiz, lai atceltu</string>
@@ -1573,6 +1579,8 @@ Automašīnas izkārtojums
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Slēpt statusa joslu</string>
   <string name="morphe_hide_status_bar_summary">Slēpj sistēmas statusa joslu. Norullājiet lejup no augšējās malas, lai to uz brīdi rādītu</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Atstāt atskaņotāju zem ekrāna izgriezuma</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Pārvieto portreta video atskaņotāju zem ekrāna izgriezuma, kad statusa josla ir slēpta, atstājot tukšu joslu augšpusē. Izslēdziet šo iespēju, lai video aizpildītu ekrānu aiz izgriezuma</string>
   <string name="morphe_fix_status_bar_layout_title">Labot statusa joslas pārklājumu augšējām joslām</string>
   <string name="morphe_fix_status_bar_layout_summary">Uztur statusa joslas izkārtojumu konsekventu, lai tā nepārklātu augšējās joslas un neatstātu tukšu vietu virs atskaņotāja. Izslēdziet šo iespēju, ja lietotne avarē vai augšējās joslas izskatās nepareizi</string>
   <!-- layout.theme.themePatch -->

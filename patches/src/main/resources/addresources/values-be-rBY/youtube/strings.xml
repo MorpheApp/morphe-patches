@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Звычайны</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Растягнуць (запоўніць экран)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Маштабаваць (абрэзаць для запаўнення)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Выраўняванне відэа ў паўнаэкранным рэжыме</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Зверху</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Па цэнтры</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Знізу</string>
   <string name="morphe_fullscreen_video_scale_button_title">Паказваць кнопку маштабавання відэа</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Націсніце, каб пераключацца паміж \"Па змаўчанні\", \"Растянуць\" і \"Маштабаваць\"</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Паказваць толькі ў паўнаэкранным рэжыме</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Схаваць кнопку маштабавання відэа ў плеяры ў партрэтным рэжыме</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Паказваць кнопку выраўнявання відэа</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Націсніце, каб пераключаць пазіцыі \"Зверху\", \"У цэнтры» і \"Знізу\" ў паўнаэкранным рэжыме</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Паказваць кнопку \"Прайграць паўтор павольні\"</string>
   <string name="morphe_replay_video_button_summary">Пераматывае і часова запавольвае відэа. Націсніце яшчэ раз, каб скасаваць</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Схаваць панэль стану</string>
   <string name="morphe_hide_status_bar_summary">Хавае панэль стану сістэмы. Правядзіце пальцам уніз ад верхняга краю, каб паказаць яе на момант</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Трымаць плеер ніжэй вырэзу дысплея</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Пераносіць пратрактны відэаплеер ніжэй вырэзу дысплея, калі панэль стану схавана, пакідаючы пустую палосу зверху. Выключайце гэтую функцыю, каб відэа запаўняла экран за вырэзам</string>
   <string name="morphe_fix_status_bar_layout_title">Выправіць перакрыццё верхніх панэляў панэллю стану</string>
   <string name="morphe_fix_status_bar_layout_summary">Забяспечвае стабільнасць размяшчаўкі панэлі стану, каб яна не перакрывала верхнія панэлі і не пакідала пустога месца над плэерам. Выключайце гэтую функцыю, калі праграма вылетае або верхнія панэлі выглядаюць няправільна</string>
   <!-- layout.theme.themePatch -->

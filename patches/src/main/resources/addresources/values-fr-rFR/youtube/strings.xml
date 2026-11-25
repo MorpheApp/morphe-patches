@@ -1386,10 +1386,16 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <string name="morphe_fullscreen_video_scale_entry_default">Par défaut</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Étirer (remplir l\'écran)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (recadrer pour remplir)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Alignement de la vidéo en plein écran</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Haut</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Centre</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Bas</string>
   <string name="morphe_fullscreen_video_scale_button_title">Afficher un bouton de mise à l\'échelle de la vidéo</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Appuyez pour passer entre Par défaut, Étirer et Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Afficher uniquement en plein écran</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Masquer le bouton de mise à l\'échelle de la vidéo dans le lecteur en mode portrait</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Afficher un bouton d’alignement de la vidéo</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Appuyez pour alterner entre \'Haut\', \'Centre\' et \'Bas\' en plein écran</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Afficher un bouton \'Relecture au ralenti\'</string>
   <string name="morphe_replay_video_button_summary">Revient en arrière et ralentit temporairement la vidéo. Appuyez à nouveau pour annuler</string>
@@ -1574,6 +1580,8 @@ Mise en page pour automobile
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Masquer la barre d\'état</string>
   <string name="morphe_hide_status_bar_summary">Masque la barre d\'état du système. Balayez vers le bas depuis le bord supérieur pour l\'afficher momentanément</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Maintenir le lecteur sous la découpe de l\'écran</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Déplace le lecteur vidéo en mode portrait sous la découpe de l\'écran lorsque la barre d\'état est masquée, laissant une bande vide en haut. Désactivez cela pour permettre à la vidéo de remplir l\'écran derrière la découpe</string>
   <string name="morphe_fix_status_bar_layout_title">Corriger la barre d\'état qui recouvre les barres supérieures</string>
   <string name="morphe_fix_status_bar_layout_summary">Maintient une mise en page cohérente de la barre d\'état, afin qu\'elle ne masque pas les barres supérieures et ne laisse aucun espace vide au-dessus du lecteur. Désactivez cette option si l\'application plante ou si les barres supérieures s\'affichent incorrectement</string>
   <!-- layout.theme.themePatch -->

@@ -1385,10 +1385,16 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <string name="morphe_fullscreen_video_scale_entry_default">Alapértelmezett</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Nyújtás (képernyő kitöltése)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Nagyítás (vágás a kitöltéshez)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Teljes képernyős videó igazítása</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Felső</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Közep</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Alsó</string>
   <string name="morphe_fullscreen_video_scale_button_title">Videó méret gombjának megjelenítése</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Koppintson az Alapértelmezett, Nyújtás és Nagyítás közötti váltáshoz</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Csak teljes képernyőn jelenjen meg</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">A videóméretezés-gomb elrejtése az álló módú lejátszóban</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Videó igazítás gombjának megjelenítése</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Koppintson a felül, közép és alul közötti váltáshoz teljes képernyőben</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Lassanabb lejtszítás gombjának megjelenítése</string>
   <string name="morphe_replay_video_button_summary">Visszatekeri és ideiglenesen lassítja a videót. A törléshez koppints újra</string>
@@ -1573,6 +1579,8 @@ Autós elrendezés
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Állapotsor elrejtése</string>
   <string name="morphe_hide_status_bar_summary">Elrejti a rendszer állapotsorát. Húzza le az ujját a felső szélétől, hogy egy pillanatra megjelenjen</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Lejátszó tartása a kijelző kiszaladás alatt</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Elcsúsztatja a portré módú videolejátszót a kijelző kiszaladása alá, amikor az állapotruharecsze el vanrejtve, így egy üres sáv marad a tetején. Kapcsolja ki ezt, hogy a videó kitöltse a képernyőt a kiszaladás mögött is</string>
   <string name="morphe_fix_status_bar_layout_title">Állítsa be, hogy az állapotsáv ne takarja ki a felső sávokat</string>
   <string name="morphe_fix_status_bar_layout_summary">Az állapotsáv elrendezése konzisztens marad, így nem takarja le a felső sávokat, és nincs üres hely a lejátszó felett. Kapcsolja ki ezt, ha az alkalmazás összeomlik vagy a felső sávok rossz megjelenésűek</string>
   <!-- layout.theme.themePatch -->

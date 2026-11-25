@@ -1385,10 +1385,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Լռելյայն</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Ձգել (լրացնել էկրանը)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Մեծացնել (կտրել լրացնելու համար)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Լրամասշտաբ տեսանյութի դասավորությունը</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Վերև</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Կենտրոն</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Ներքև</string>
   <string name="morphe_fullscreen_video_scale_button_title">Ցուցադրել տեսանյութի մասշտաբի կոճակը</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Հպեք՝ փոխելու Լռելյայն, Ձգել և Մեծացնել տարբերակների միջև</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Ցույց տալ միայն լրամասշտաբային ռեժիմում</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Թաքցնել տեսանյութի մասշտաբի կոճակը ուղղահայաց նվագարկիչում</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Ցուցադրել տեսանյութի հավասարեցման կոճակը</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Հպեք լրիվ էկրանի ռեժիմում Վերև, Կենտրոն և Ներքև տարբերակների միջև անցում կատարելու համար</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Ցուցադրել կրկնափայմանում դանդաղեցնելու կոճակը</string>
   <string name="morphe_replay_video_button_summary">Հետ է թափັດրում և ժամանակավորապես դանդաղեցնում տեսանյութը: Հንկիծեք նորից՝ չեղարկելու համար</string>
@@ -1573,6 +1579,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Թաքցնել կարգավիճակի տողը</string>
   <string name="morphe_hide_status_bar_summary">Թաքցնում է համակարգի կարգավիճակի տողը: Սահեցրեք վերևից ներքև՝ այն մի պահ ցուցադրելու համար</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Պահել նվագարկիչը էկրանի recorte-ից ներքև</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Տեղափոխում է դիվերտիզացված տեսանվագարկիչը էկրանի recorte-ից ներքև, երբ կարգավիճակի տողը թաքցված է՝ վերևում թողնելով դատարկ տող: Անջատեք սա, որպեսզի տեսանյութը լրացնի էկրանը՝ recorte-ի հետևից</string>
   <string name="morphe_fix_status_bar_layout_title">Ուղղել կարգավիճակի տողը, որը ծածկում է վերին տողերը</string>
   <string name="morphe_fix_status_bar_layout_summary">Պահպանում է կարգավիճակի տողի դասավորությունը հետևողական, որպեսզի այն չծածկի վերին տողերը և չթողնի դատարկ տարածք նվագարկիչի վերևում: Անջատեք սա, եթե հավելվածը փակվում է կամ վերին տողերը սխալ են երևում</string>
   <!-- layout.theme.themePatch -->

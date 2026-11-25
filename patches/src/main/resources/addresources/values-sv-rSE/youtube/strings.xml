@@ -1385,10 +1385,16 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_fullscreen_video_scale_entry_default">Standard</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Töj (fyll skärmen)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zooma (beskär för att fylla)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Justering av video i fullskärm</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Överst</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Mitten</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Nederst</string>
   <string name="morphe_fullscreen_video_scale_button_title">Visa videons skalningsknapp</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tryck för att växla mellan Standard, Töj och Zooma</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Visa endast i helskärm</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Dölj videons skalningsknapp i porträttspelaren</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Visa knapp för videojustering</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tryck för att växla mellan Överst, Mitten och Nederst i helskärmsläge</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Visa knapp för långsammare uppspelning</string>
   <string name="morphe_replay_video_button_summary">Spolar tillbaka och saktar ner videon tillfälligt. Tryck igen för att avbryta</string>
@@ -1573,6 +1579,8 @@ Billayout
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Dölj statusfältet</string>
   <string name="morphe_hide_status_bar_summary">Döljer systemets statusfält. Svep nedåt från överkanten för att visa det en stund</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Håll spelaren under skärmutskärningen</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Flyttar videospelaren i porträttläge under skärmutskärningen när statusfältet är dolt, vilket lämnar ett tomt fält högst upp. Stäng av detta för att låta videon fylla skärmen bakom utskärningen</string>
   <string name="morphe_fix_status_bar_layout_title">Fixa statusraden så att den inte täcker de övre fälten</string>
   <string name="morphe_fix_status_bar_layout_summary">Behåller statusradens layout konsekvent, så att den inte täcker de övre fälten och lämnar inget tomt utrymme ovanför spelaren. Stäng av detta om appen kraschar eller om de övre fälten ser fel ut</string>
   <!-- layout.theme.themePatch -->

@@ -1385,10 +1385,16 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <string name="morphe_fullscreen_video_scale_entry_default">Mặc định</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Kéo giãn (lấp đầy màn hình)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Thu phóng (cắt để lấp đầy)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Căn chỉnh video toàn màn hình</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Trên cùng</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Giữa</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Dưới cùng</string>
   <string name="morphe_fullscreen_video_scale_button_title">Hiển thị nút tỷ lệ video</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Chạm để chuyển đổi giữa Mặc định, Kéo giãn và Thu phóng</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Chỉ hiển thị ở chế độ toàn màn hình</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ẩn nút chỉnh tỷ lệ video trong trình phát dọc</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Hiện nút căn chỉnh video</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Nhấn để chuyển đổi giữa Trên, Giữa và Dưới ở chế độ toàn màn hình</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Hiện nút Phát lại chậm hơn</string>
   <string name="morphe_replay_video_button_summary">Tua lại và tạm thời làm chậm video. Nhấn lần nữa để hủy</string>
@@ -1573,6 +1579,8 @@ Giao diện ô tô
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ẩn thanh trạng thái</string>
   <string name="morphe_hide_status_bar_summary">Ẩn thanh trạng thái hệ thống. Vuốt xuống từ mép trên để hiện thanh trạng thái trong giây lát</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Giữ trình phát bên dưới phần khuyết của màn hình</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Di chuyển trình phát video chân dung xuống dưới phần khuyết của màn hình khi thanh trạng thái bị ẩn, để lại một thanh trống ở phía trên. Tắt tùy chọn này để cho phép video lấp đầy màn hình phía sau phần khuyết</string>
   <string name="morphe_fix_status_bar_layout_title">Sửa thanh trạng thái che các thanh trên cùng</string>
   <string name="morphe_fix_status_bar_layout_summary">Giữ bố cục thanh trạng thái nhất quán, để thanh này không che các thanh trên cùng và không để khoảng trống phía trên trình phát. Tắt tùy chọn này nếu ứng dụng bị lỗi hoặc các thanh trên cùng hiển thị sai</string>
   <!-- layout.theme.themePatch -->

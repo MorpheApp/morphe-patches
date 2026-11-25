@@ -1386,10 +1386,16 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">بنەڕەت</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">کێشان (پڕکردنی شاشە)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">زووم (بڕین بۆ پڕکردن)</string>
+  <string name="morphe_fullscreen_video_alignment_title">ڕێکخستنی ڤیدیۆی شاشەی تەواو</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">سەروو</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">ناوەند</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">خوارەوە</string>
   <string name="morphe_fullscreen_video_scale_button_title">نیشاندانی دوگمەی پێوانەی ڤیدیۆ</string>
   <string name="morphe_fullscreen_video_scale_button_summary">کلیک بکە بۆ گۆڕانکاری لە نێوان Default، Stretch، و Zoom</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">تەنها لە شاشەی تەواودا نیشان بدە</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">شاردنەوەی دوگمەی پێوانەی ڤیدیۆ لە پلەیەری ستوونی</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">دوومە بۆ نیشاندانی دوگمەی ڕێکخستنی ڤیدیۆ</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">کلیک بکە بۆ گۆڕینی شوێنی سەرەوە، ناوەڕاست و خوارەوە لە شاشەی تەواودا</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">دوگمەی نیشاندانی دووبارە لایەنی خاوتر</string>
   <string name="morphe_replay_video_button_summary">ڤیدیۆکە دەگەڕێنێتەوە و بە شێوەیەکی کاتی خاوتر دەکات. بۆ هەڵوەشاندنەوە دووبارە کلیک بکە</string>
@@ -1574,6 +1580,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">شاردنەوەی شریتی دۆخی</string>
   <string name="morphe_hide_status_bar_summary">شریتی دۆخی سیستەم دەشارێتەوە. بۆ ئەوەی بۆ ماوەیەکی کورت دەرکەوێت، لە لێواری سەرەوەوە بەرەو خوارەوە ڕابکێشە</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">پێیەرەکە لە خوارەوەی بڕاوەی شاشەکە بهێڵەوە</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">کاتێک شریتی ستاتس شاردراوەتەوە، پێیەری ڤیدیۆی ستوونی دەگوازێتەوە بۆ خوارەوەی بڕاوەی شاشەکە، و شریتێکی بەتاڵ لە سەرەوە جێدەهێڵێت. ئەمە بکە بە دابەخکاو بۆ ئەوەی ڤیدیۆکە هەموو شاشەکە پڕ بکات لە پشت بڕاوەکەوە</string>
   <string name="morphe_fix_status_bar_layout_title">چاککردنی شریتی بارودۆخی کە شریتەکانی سەرەوە دادەپۆشێت</string>
   <string name="morphe_fix_status_bar_layout_summary">شێوەی شریتی بارودۆخەکە جێگیر دەکات، بە جۆرێک کە شریتەکانی سەرەوە نەپۆشێت و هیچ بۆشاییەکی بەجێ نەهێڵێت لە سەرووی پلەیەرەکە. ئەم بژاردەیە بکە بە کوژاندنەوە ئەگەر ئەپەکە پچڕا یان شریتەکانی سەرەوە بە شێوەیەکی هەڵە دەرکەوتن</string>
   <!-- layout.theme.themePatch -->

@@ -285,21 +285,21 @@ Teorainneacha:
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Folóidh an scagaire comhaireamh amhairc na físeáin go léir</string>
   <string name="morphe_hide_videos_by_duration_screen_title">Scagaire fad</string>
-  <string name="morphe_hide_videos_by_duration_screen_summary">Folaigh físeáin i bhfothaí agus i dtorthaí cuardaigh atá róghannach nó rófhada</string>
-  <string name="morphe_hide_videos_by_duration_home_title">Folaigh físeáin bhaile de réir fada</string>
-  <string name="morphe_hide_videos_by_duration_search_title">Folaigh torthaí cuardaigh de réir fada</string>
-  <string name="morphe_hide_videos_by_duration_subscriptions_title">Folaigh físeáin ó shíntiúis de réir durations</string>
-  <string name="morphe_hide_videos_by_duration_minimum_title">Íosmhéid durations (nóiméid)</string>
-  <string name="morphe_hide_videos_by_duration_minimum_summary">Tá físeáin níos giorra ná seo i bhfolach. 0 = gan íosmhéid</string>
-  <string name="morphe_hide_videos_by_duration_maximum_title">Uasmhéid durations (nóiméid)</string>
-  <string name="morphe_hide_videos_by_duration_maximum_summary">Tá físeáin níos faide ná seo i bhfolach. 0 = gan uasmhéid</string>
-  <string name="morphe_hide_videos_by_duration_about_summary">"Baile / Liostraí / Cuardaigh tá siad scagtha chun físeáin a chur i bhfolach bunaithe ar aDURATION
+  <string name="morphe_hide_videos_by_duration_screen_summary">Folaigh físeáin i bhfothaí agus i gcuardaigh atá ró-ghearr nó ró-fhada</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Folaigh físeáin bhaile de réir faid</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Folaigh torthaí cuardaigh de réir faid</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Folaigh físeáin ó shíntiúis de réir faid</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Íosmhéid ré (nóiméid)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Tá físeáin atá níos giorra ná seo i bhfolach. 0 = gan íosmhéid</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Fad uasta (nóiméid)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Tá físeáin atá níos faide ná seo i bhfolach. 0 = gan uaslíon</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Baile / Síntiúis / Cuardach – scagtha chun físeáin a cheilt bunaithe ar a bhfad
 
 Teorainneacha:
-• Ní chuirtear sruthanna beo, Shorts, liostaí seansúla agus meirgí i bhfolach
-• Ní chuirtear físeáin le duration anaithnidhe i bhfolach"</string>
+• Ní chuirtear sruthanna beo, Shorts, seinmliostaí ná meascáin i bhfolach
+• Ní chuirtear físeáin a bhfuil fad anaithnid acu i bhfolach"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_videos_by_duration_toast_broad">Cuirfidh scagaire duration na físeáin go léir i bhfolach</string>
+  <string name="morphe_hide_videos_by_duration_toast_broad">Folaigh an scagaire faid gach físeán</string>
   <string name="morphe_hide_stats_category_title">Staitisticí</string>
   <string name="morphe_hide_stats_hidden_24h_title">Físeáin i bhfolach, 24 uair an chloig caite</string>
   <string name="morphe_hide_stats_hidden_all_title">Físeáin i bhfolach, i gcónaí</string>
@@ -1176,12 +1176,12 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <!-- layout.captions.copyTranscriptPatch -->
   <string name="morphe_copy_transcript_category_title">Cóipeáil an tras-scríbhinn</string>
   <string name="morphe_copy_transcript_title">Cóipeáil an tras-scríbhinn</string>
-  <string name="morphe_copy_transcript_summary">Cuireann sé cnaipe leis an phainéal tras-scríbhinn a chóipeálann an tras-scríbhinn i dteanga na focail-fhaisnéise</string>
-  <string name="morphe_copy_transcript_timestamps_title">Cuir stampaí ama isteach</string>
-  <string name="morphe_copy_transcript_timestamps_summary">Tosaíonn gach líne de thrascríbhinn chóipeálta lena am féin</string>
+  <string name="morphe_copy_transcript_summary">Cuireann sé cnaipe leis an bpainéal tras-scríbhinní a chóipeálann an tras-scríbhinn i dteanga na bhfo-theideal</string>
+  <string name="morphe_copy_transcript_timestamps_title">Cuir stampaí ama san áireamh</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Tosaíonn gach líne de thras-scríbhinn chóipeáilte leis an am a bhaineann léi</string>
   <string name="morphe_copy_transcript_shorts_flyout_title">Taispeáin i roghchláir Shorts</string>
   <string name="morphe_copy_transcript_shorts_flyout_summary">Cuireann sé mír \"Cóipeáil trascríbhinn\" i roghchláir Shorts</string>
-  <string name="morphe_copy_transcript_copied">Cóipeáladh trascríbhinn chuig an ngearrthaisce</string>
+  <string name="morphe_copy_transcript_copied">Tras-scríbhinn cóipeáilte chuig an ghearrthaisce</string>
   <string name="morphe_copy_transcript_empty">Níl trascríbhinn ar fáil</string>
   <string name="morphe_copy_transcript_error">Níorbh fhéidir an trainscripte a chóipeáil</string>
   <string name="morphe_captions_in_pip_title">Taispeáin fotheistí i bpirseal pictiúr-i-bpictiúr</string>
@@ -1385,10 +1385,16 @@ Socruithe → Athsheinm (nó Uathsheinm) → Uathsheinm an chéad fhíseán eile
   <string name="morphe_fullscreen_video_scale_entry_default">Réamhshocrú</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Síneadh (líon an scáileán)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zúmáil (bearr chun líonadh)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Ailíniú físeáin lánscáileáin</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Barr</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Lár</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Bun</string>
   <string name="morphe_fullscreen_video_scale_button_title">Taispeáin cnaipe scála físe</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tapáil chun dul tríd an Réamhshocrú, an Síneadh agus an Súmáil</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Taispeáin ar lánscáileán amháin</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Folaigh an cnaipe scála físeáin san imreoir portráide</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Taispeáin cnaipe ailínithe físe</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Beartaigh chun rothlú trí na suíomhanna Barr, Lár agus Bun i mód lánscáileáin</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Taispeáin an cnaipe chun athsheinm a dhéanamh níos moille</string>
   <string name="morphe_replay_video_button_summary">Cuireann sé an físeán ar ais agus moillíonn sé síos go sealadach é. Beartaigh arís chun cealú</string>
@@ -1438,17 +1444,17 @@ Leagan amach feithicleach
 • Seans nach mbeidh an forleagan 'Tuilleadh físeáin' ar fáil
 • Oscailtear Shorts sa ghnáthimreoir
 • Taispeántar barra gníomhaíochta seanfhíseáin neamh-fhillte"</string>
-  <string name="morphe_change_form_factor_car_display_title">Leagadh gluaiseach ar taispeántais carr</string>
-  <string name="morphe_change_form_factor_car_display_summary_on">Úsáidtear leagadh gluaiseach nuair a thaispeántar YouTube ar taispeántais carr, mar shampla trí Android Auto nó DriveDeck</string>
-  <string name="morphe_change_form_factor_car_display_summary_off">Ní úsáidtear leagadh gluaiseach ar thaispeántais carr</string>
-  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Curáil uathoibríoch an bhár navigation ar thaispeántais gléasanna carr</string>
-  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Cuirtear an bár navigation i bhfolach ar thaispeántas gléasanna carr nuair nachnúsfar é ar feadh tamaill. Slongaigh anuas ón imeall íosa chun é a thaispeáint</string>
-  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Taispeántar an bár navigation i gcónaí ar thaispeántais gléasanna carr</string>
-  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Mallacht curail uathoibríoch</string>
-  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Cé mhéad ama a fhanann an barra navigation tar éis a thaispeáint nó teagmháil a bheith air</string>
-  <string name="morphe_change_form_factor_car_display_any_title">Úsáid ar aon taispeántais externach</string>
-  <string name="morphe_change_form_factor_car_display_any_summary_on">Is taispeántais carr iad gach taispeántais eile seachas scréen an fón, lena n-áirítear TV nó monitair</string>
-  <string name="morphe_change_form_factor_car_display_any_summary_off">"Faightear taispeántais carr trí Android Auto, ainmneacha taispeántais agus mód UI an chairr. Ar Android 15 agus níos nýise, is taispeántais carr iad freis scréening na screamh trí DriveDeck, Gearslip, graphene-auto nó MyCar"</string>
+  <string name="morphe_change_form_factor_car_display_title">Leagan amach feithicleach ar thaispeántais gluaisteán</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Úsáidtear leagan amach feithicle nuair a thaispeántar YouTube ar scáileán gluaisteáin, trí Android Auto nó DriveDeck, mar shampla</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Ní úsáidtear leagan amach feithicleach ar thaispeántais gluaisteán</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Folaigh an barra nascleanúna go huathoibríoch ar thaispeántais ghluaisteáin</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Folaítear an barra nascleanúna ar thaispeáint an ghluaisteáin nuair nach mbaintear úsáid as ar feadh tamaill. Sleamhnaigh suas ón imeall íochtarach chun é a thaispeáint</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Bíonn an barra nascleanúna le feiceáil i gcónaí ar thaispeántais gluaisteán</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Moill ar an bhfolach uathoibríoch</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">An fhad a fhanann an barra nascleanúna ar taispeáint tar éis é a thaispeáint nó a theagmháil</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Úsáid ar aon taispeáint sheachtrach</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Is taispeáint ghluaisteáin í gach taispeáint seachas scáileán an fhóin, lena n-áirítear teilifís nó monatóir</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Aithníonn Android Auto taispeántais feithicle, ainmneacha taispeántais, agus mód comhéadan úsáideora na feithicle. Ar Android 15 agus níos déanaí, meastar gur taispeántas feithicle é scáthánú scáileáin trí DriveDeck, Gearslip, graphene-auto nó MyCar freisin"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Athchóirigh iompar fotheidil d\'aois</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh an sean-shábháil chuig an seinmliosta</string>
@@ -1573,6 +1579,8 @@ Leagan amach feithicleach
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Folaigh an barra stádais</string>
   <string name="morphe_hide_status_bar_summary">Folaíonn sé barra stádais an chórais. Svaip anuas ón imeall uachtarach chun é a thaispeáint ar feadh tamaill</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Coimeád antáirgeoir beo faoi ghearrán taispeartha</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Bogann sé an táirgeoir físeáin phortaigh faoi ghearrán taispeartha nuair a bhíonn an mbar staidís ceilte, rud a fhágann mbar folmha ag an mbard. Múch an rogha seo chun lig uncsa don fhíseán an scáileán a líonadh taobh thiar den ghearrán</string>
   <string name="morphe_fix_status_bar_layout_title">Ceartaigh an barra stádais a bhíonn ag clúdach na mbarraí uachtaracha</string>
   <string name="morphe_fix_status_bar_layout_summary">Coinníonn sé leagan amach an bharra stádais comhsheasmhach, ionas nach gclúdaíonn sé na barraí uachtaracha agus nach bhfágann sé spás folamh os cionn an imreora. Múch an rogha seo má thuairteálann an aip nó má bhíonn cuma mhícheart ar na barraí uachtaracha.</string>
   <!-- layout.theme.themePatch -->

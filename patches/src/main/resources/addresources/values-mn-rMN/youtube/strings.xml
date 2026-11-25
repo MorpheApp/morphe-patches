@@ -1385,10 +1385,16 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">Үндсэн</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Сунах (дэлгэцийг дүүргэх)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Томруулах (дүүргэж таслах)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Бүрэн дэлгэцийн видеоны байрлал</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Дээгүүр</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Төв</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Доогуур</string>
   <string name="morphe_fullscreen_video_scale_button_title">Видеоны хэмжээг өөрчлөх товчийг харуулах</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Үндсэн, Сунгах, Томруулах горимуудын хооронд шилжүүлэхээр дарна уу</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Зөвхөн бүтэн дэлгэцээр харуулах</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Босоо тоглуулагч дээрх видеоны хэмжээг өөрчлөх товчийг нуух</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Видеоны байрлалын товчийг харуулах</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Бүрэн дэлгэц дээр Дээд, Төв, Доод байрлалыг солихын тулд товчлоорой</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Дахин тоглуулах хурдыг удаашруулах товчлуурыг харуулах</string>
   <string name="morphe_replay_video_button_summary">Бичлэгийг ухрааж, түр зуур удаашруулна. Цуцлахын тулд дахин дарна уу</string>
@@ -1573,6 +1579,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Төлөвийн мэдэгдлийн зургийг нуух</string>
   <string name="morphe_hide_status_bar_summary">Системийн төлөвийн мэдэгдлийн зургийг нууна. Түр зуур харахын тулд дээд ирмэгээс доошоо гүйлгээрэй</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Тоглуулагчийг дэлгэцийн заагны доор байлгах</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Төлөвийн мэдэгдэх баарыг нуусан үед босоо видео тоглуулагчийг дэлгэцийн заагны доор шилжүүлж, дээр нь хоосон зай үлдээнэ. Видеог заагны ард дэлгэцийг бүхэлд нь дүүргэхийн тулд үүнийг унтраагаарай</string>
   <string name="morphe_fix_status_bar_layout_title">Статус баар дээд хэсгийг халхлахыг засах</string>
   <string name="morphe_fix_status_bar_layout_summary">Статус баарыг тогтмол байлгаж, дээд хэсгийг халхлахгүй, тоглуулагчийн дээр хоосон зай үлдээхгүй болгоно. Хэрэв апп гацах эсвэл дээд хэсэг буруу харагдах бол үүнийг унтраагаарай</string>
   <!-- layout.theme.themePatch -->

@@ -1383,10 +1383,16 @@ Sozlamalar → Oynatish (yoki Avtoijro) → Keyingi videoni avtomatik ravishda i
   <string name="morphe_fullscreen_video_scale_entry_default">Standart</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Cho‘zish (ekranni to‘ldirish)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Kattalashtirish (kesib to‘ldirish)</string>
+  <string name="morphe_fullscreen_video_alignment_title">To\'liq ekranli videoni tekislash</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Yuqori</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Markaz</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Past</string>
   <string name="morphe_fullscreen_video_scale_button_title">Video o‘lchami tugmasini ko‘rsatish</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Bosilganda Default, Stretch va Zoom o‘rtasida almashadi</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Faqat to\'liq ekranda ko\'rsatish</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Portret pleyerda video masshtab tugmasini yashirish</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Video tekislash tugmasini ko\'rsatish</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">To\'liq ekranda Tepaga, Markazga va Pastga almashish uchun bosing</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Qayta ko\'rishni sekinroq ko\'rsatish tugmasini ko\'rsatish</string>
   <string name="morphe_replay_video_button_summary">Videoni orqaga qaytaradi va vaqtincha sekinlashtiradi. Bekor qilish uchun qayta bosing</string>
@@ -1571,6 +1577,8 @@ Avtomobil maketi
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Holat panelini yashirish</string>
   <string name="morphe_hide_status_bar_summary">Tizim holat panelini yashiradi. Uni bir lahzaga ko\'rish uchun yuqori chetdan pastga suring</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Pleerni displey kesimidan pastda saqlash</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Holat paneli yashirilganda, portret video pleyerni displey kesimidan pastga suradi va tepada bo\'sh joy qoldiradi. Videoni kesim orqasida butun ekranni egallashi uchun ushbu funksiyani o\'chiring</string>
   <string name="morphe_fix_status_bar_layout_title">Holat paneli yuqori panellarni yopishini tuzatish</string>
   <string name="morphe_fix_status_bar_layout_summary">Holat panelining maketini izchil saqlaydi, shunda u yuqori panellarni yopmaydi va pleyer tepasida bo\'sh joy qoldirmaydi. Agar ilova ishdan chiqsa yoki yuqori panellar noto\'g\'ri ko\'rinsa, buni o\'chiring</string>
   <!-- layout.theme.themePatch -->

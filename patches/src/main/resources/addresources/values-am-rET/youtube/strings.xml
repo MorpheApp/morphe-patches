@@ -1385,10 +1385,16 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_fullscreen_video_scale_entry_default">መደበኛ</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">ዘርጋ (ስክሪኑን ሙሉ አድርግ)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">ዙም (ለመሙላት ቁረጥ)</string>
+  <string name="morphe_fullscreen_video_alignment_title">የሙሉ ስክሪን ቪዲዮ አሰላለፍ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">በላይ</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">መሃል</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">በታች</string>
   <string name="morphe_fullscreen_video_scale_button_title">የቪዲዮ መጠን ቁልፍን አሳይ</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Default፣ Stretch እና Zoom መካከል ለመቀያየር ይንኩ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">በሙሉ ስክሪን ብቻ አሳይ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">በቁመት ማጫወቻው ውስጥ የቪዲዮ መጠን ቁልፉን ደብቅ</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">የቪዲዮ አሰላለፍ ቁልፍን አሳይ</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">በሙሉ ስክሪን ላይ በላዩ፣ በመሃል እና በታችኛው ክፍል መካከል ለመቀያየር ይጫኑ</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">ቀስ ብሎ መልሶ ማጫወቻ ቁልፍን አሳይ</string>
   <string name="morphe_replay_video_button_summary">ቪዲዮውን ወደ ኋላ ይመልሰዋል እንዲሁም ለጊዜው ያዘገየዋል። ለመሰረዝ እንደገና ይንኩ</string>
@@ -1573,6 +1579,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">የሁኔታ አሞሌውን ደብቅ</string>
   <string name="morphe_hide_status_bar_summary">የስርዓቱን የሁኔታ አሞሌ ይደብቃል። ለጥቂት ጊዜ ለማሳየት ከላይኛው ጠርዝ ወደ ታች ይሳቡ</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">ተጫዋቹን ከስክሪኑ ኮርት በታች ያድርጉ</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">የሁኔታው አሞሌ (status bar) በሚደበቅበት ጊዜ፣ የቁልቁል ቪዲዮ ተጫዋቹን ከስክሪኑ ኮርት በታች ያንቀሳቅሰዋል፣ ይህም ከላይ ባዶ ቦታ እንዲኖር ያደርጋል። ቪዲዮው ከኮርቱ በስተጀርባ ስክሪኑን ሙሉ በሙሉ እንዲሞላ ይህንን ያጥፉት</string>
   <string name="morphe_fix_status_bar_layout_title">የሁኔታ አሞሌ የላይኛውን ባሮች እንዳይሸፍን ያስተካክላል</string>
   <string name="morphe_fix_status_bar_layout_summary">የሁኔታ አሞሌው አቀማመጥ ወጥ እንዲሆን በማድረግ የላይኞቹን ባሮች እንዳይሸፍን እና ከቪዲዮ ማጫወቻው በላይ ምንም ባዶ ቦታ እንዳይኖር ያደርጋል። መተግበሪያው ካቆመ ወይም የላይኞቹ ባሮች የተሳሳተ አቀማመጥ ካሳዩ ይህንን ያጥፉት</string>
   <!-- layout.theme.themePatch -->

@@ -1385,10 +1385,16 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_fullscreen_video_scale_entry_default">Privzeto</string>
   <string name="morphe_fullscreen_video_scale_entry_stretch">Raztegni (zapolni zaslon)</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">Povečaj (obreži za zapolnitev)</string>
+  <string name="morphe_fullscreen_video_alignment_title">Poravnanje videa v polnem zaslonu</string>
+  <string name="morphe_fullscreen_video_alignment_entry_top">Zgorej</string>
+  <string name="morphe_fullscreen_video_alignment_entry_center">Na sredino</string>
+  <string name="morphe_fullscreen_video_alignment_entry_bottom">Spodaj</string>
   <string name="morphe_fullscreen_video_scale_button_title">Prikaži gumb za merilo videa</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tapnite za preklapljanje med Privzeto, Raztegni in Povečaj</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Prikaži samo v celozaslonskem načinu</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Skrij gumb za spreminjanje velikosti videa v pokončnem predvajalniku</string>
+  <string name="morphe_fullscreen_video_alignment_button_title">Prikaži gumb za poravnavo videa</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Tapnite za preklapljanje med zgornjim, srednjim in spodnjim položajem v polnem zaslonu</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Prikaži gumb za počasnejše predvajanje</string>
   <string name="morphe_replay_video_button_summary">Nazaj previje in začasno upočasni videoposnetek. Ponovni dotik prekine delovanje</string>
@@ -1573,6 +1579,8 @@ Razporeditev za avtomobile
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skrij statusno vrstico</string>
   <string name="morphe_hide_status_bar_summary">Skrije sistemsko statusno vrstico. Povlecite navzdol z zgornjega roba, da se za trenutek prikaže</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Ohranite predvorilnik pod izrezom zaslona</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Premakne predvorilnik za portretne videoposnetke pod izrez zaslona, ko je vrstica s statusom skrita, s čimer na vrhu ostane prazna vrstica. Izklopite to, da bo videoposnetek zapolnil zaslon za izrezom</string>
   <string name="morphe_fix_status_bar_layout_title">Odpravi pokritje zgornjih vrstic s strani vrstice stanja</string>
   <string name="morphe_fix_status_bar_layout_summary">Ohranja dosledno zasnovo vrstice stanja, tako da ne prekriva zgornjih vrstic in ne pušča praznega prostora nad predvajalnikom. To funkcijo izklopite, če se aplikacija sesuje ali zgornje vrstice ne izgledajo pravilno</string>
   <!-- layout.theme.themePatch -->
