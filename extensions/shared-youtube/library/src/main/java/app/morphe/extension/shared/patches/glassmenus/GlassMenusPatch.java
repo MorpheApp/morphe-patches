@@ -412,7 +412,7 @@ public final class GlassMenusPatch {
         private final View view;
         private final int corners;
         private final GlassDrawable tint;
-        private final Consumer<Boolean> blurListener = this::onBlurEnabledChanged;
+        private final Consumer<Boolean> blurListener = this::onSystemBlurEnabledChanged;
 
         /**
          * Colors of the menu, a background of one of these colors inside the menu is removed.
@@ -667,6 +667,11 @@ public final class GlassMenusPatch {
                 updateCorners(true);
                 view.invalidate();
             }
+        }
+
+        private void onSystemBlurEnabledChanged(boolean enabled) {
+            BlurRegion.logBlurEnabled(view.getContext(), enabled);
+            onBlurEnabledChanged(enabled);
         }
 
         private void onBlurEnabledChanged(boolean enabled) {
