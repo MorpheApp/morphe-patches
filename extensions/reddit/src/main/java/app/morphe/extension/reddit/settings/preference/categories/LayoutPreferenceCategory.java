@@ -33,6 +33,7 @@ import app.morphe.extension.reddit.patches.HideAnswersPreviewPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
 import app.morphe.extension.reddit.patches.HideCommunityHighlightsPatch;
+import app.morphe.extension.reddit.patches.HideCommunityMenuBadgePatch;
 import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
 import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
@@ -85,6 +86,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideCommunitiesShelfPatch.isPatchIncluded() ||
                 HideCommunityHighlightsPatch.isPatchIncluded() ||
+                HideCommunityMenuBadgePatch.isPatchIncluded() ||
                 HideHomeTabsPatch.isPatchIncluded() ||
                 HideInteractivePostsPatch.isPatchIncluded() ||
                 HidePeopleAlsoSearchForSectionPatch.isPatchIncluded() ||
@@ -201,6 +203,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_COMMUNITY_HIGHLIGHTS
+            ));
+        }
+
+        if (HideCommunityMenuBadgePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMUNITY_MENU_BADGE
             ));
         }
 
