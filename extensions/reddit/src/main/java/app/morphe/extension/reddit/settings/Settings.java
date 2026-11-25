@@ -24,6 +24,7 @@ import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
 import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrowsingMode;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch.ViewCount;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch.GridColumns;
+import app.morphe.extension.reddit.patches.VideoPlaybackSpeedPatch.PlaybackSpeedControls;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
@@ -133,6 +134,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting KEEP_MEDIA_VIEWER_IN_SUBREDDIT = new BooleanSetting("morphe_keep_media_viewer_in_subreddit", FALSE);
     public static final BooleanSetting MEDIA_VIEWER_BLACK_BACKGROUND = new BooleanSetting("morphe_media_viewer_black_background", FALSE);
     public static final FloatSetting MEDIA_VIEWER_FADE = new FloatSetting("morphe_media_viewer_fade", 1f);
+    public static final EnumSetting<PlaybackSpeedControls> VIDEO_PLAYBACK_SPEED_CONTROLS = new EnumSetting<>("morphe_video_playback_speed_controls", PlaybackSpeedControls.DEFAULT, true);
     public static final BooleanSetting POST_SIDE_PANEL = new BooleanSetting("morphe_post_side_panel", TRUE);
     public static final EnumSetting<PanelWidth> POST_SIDE_PANEL_WIDTH =
             new EnumSetting<>("morphe_post_side_panel_width", PanelWidth.ONE_THIRD, parent(POST_SIDE_PANEL));

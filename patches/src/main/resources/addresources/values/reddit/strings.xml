@@ -294,6 +294,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_keep_media_viewer_in_subreddit_title">Keep media viewer in subreddit</string>
     <string name="morphe_keep_media_viewer_in_subreddit_summary_on">Swiping in the full screen media viewer shows only posts from the subreddit of the post you opened. In small subreddits the list ends sooner</string>
     <string name="morphe_keep_media_viewer_in_subreddit_summary_off">Swiping in the full screen media viewer can show posts from other subreddits</string>
+    <string name="morphe_video_playback_speed_controls_title">Video playback speed</string>
+    <string name="morphe_video_playback_speed_controls_summary">Adds Reddit\'s playback speed controls (0.5× to 2×) to the full-screen video player</string>
+    <string name="morphe_video_playback_speed_controls_entry_default">Default</string>
+    <string name="morphe_video_playback_speed_controls_entry_menu">Menu</string>
+    <string name="morphe_video_playback_speed_controls_entry_menu_and_hold">Menu and hold to speed up</string>
     <string name="morphe_open_links_externally_title">Open links externally</string>
     <string name="morphe_open_links_externally_summary">Opens links in your browser instead of the in-app browser</string>
     <string name="morphe_full_screen_reply_title">Full-screen reply</string>
