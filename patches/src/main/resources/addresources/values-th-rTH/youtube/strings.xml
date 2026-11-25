@@ -284,6 +284,22 @@ Second \"item\" text"</string>
 • Shorts ที่ถูกซ่อนอาจทิ้งช่องว่างไว้ในชั้นวาง Shorts"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">ตัวกรองจำนวนการดูจะซ่อนวิดีโอทั้งหมด</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">ตัวกรองระยะเวลา</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">ซ่อนวิดีโอในฟีดและการค้นหาที่สั้นเกินไปหรือยาวเกินไป</string>
+  <string name="morphe_hide_videos_by_duration_home_title">ซ่อนวิดีโอหน้าแรกตามระยะเวลา</string>
+  <string name="morphe_hide_videos_by_duration_search_title">ซ่อนผลลัพธ์การค้นหาตามระยะเวลา</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">ซ่อนวิดีโอการติดตามตามระยะเวลา</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">ระยะเวลาขั้นต่ำ (นาที)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">วิดีโอที่สั้นกว่านี้จะถูกซ่อน 0 = ไม่มีขั้นต่ำ</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">ระยะเวลาสูงสุด (นาที)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">วิดีโอที่ยาวกว่านี้จะถูกซ่อน 0 = ไม่มีสูงสุด</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"หน้าแรก / การติดตาม / การค้นหา จะถูกกรองเพื่อซ่อนวิดีโอตามระยะเวลา
+
+ข้อจำกัด:
+• การสตรีมสด, Shorts, เพลย์ลิสต์ และมิกซ์ จะไม่ถูกซ่อน
+• วิดีโอที่ไม่ทราบระยะเวลาจะไม่ถูกซ่อน"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">ตัวกรองระยะเวลาจะซ่อนวิดีโอทั้งหมด</string>
   <string name="morphe_hide_stats_category_title">สถิติ</string>
   <string name="morphe_hide_stats_hidden_24h_title">วิดีโอที่ซ่อนไว้, 24 ชั่วโมงที่ผ่านมา</string>
   <string name="morphe_hide_stats_hidden_all_title">วิดีโอที่ซ่อนไว้, ตลอดเวลา</string>
@@ -327,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">ซ่อนปุ่ม \'ซิงค์กับวิดีโอ\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">ซ่อนการไล่ระดับสีเมื่อแตะค้าง</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">ซ่อนการไล่ระดับสีของตัวควบคุมเครื่องเล่นเมื่อเลื่อนนิ้วในขณะที่กดค้างเพื่อเพิ่มความเร็ว</string>
-  <string name="morphe_hide_timed_reactions_title">ซ่อนปฏิกิริยาตามเวลา</string>
-  <string name="morphe_hide_timed_reactions_summary">ซ่อนคุณสมบัติที่ช่วยให้ผู้ใช้แสดงความรู้สึกด้วยอิโมจิในส่วนความคิดเห็นและแชทสด</string>
   <string name="morphe_hide_help_feedback_menu_summary">ซ่อนเมนู \'ความช่วยเหลือและความคิดเห็น\' เมื่อใช้ปุ่มสามจุด เช่น ในหน้าผลการค้นหา</string>
   <string name="morphe_hide_handle_title">ซ่อนแฮนเดิล</string>
   <string name="morphe_hide_handle_summary">ซ่อนแฮนเดิลช่องของคุณในแท็บ \'คุณ\'</string>
@@ -443,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">ซ่อนปุ่มเมนู 3 จุดของความคิดเห็นแต่ละรายการ</string>
   <string name="morphe_hide_comments_none_yet_title">ซ่อนตัวอย่าง \'ยังไม่มีความคิดเห็น\'</string>
   <string name="morphe_hide_comments_preview_comment_title">ซ่อนความคิดเห็นตัวอย่าง</string>
-  <string name="morphe_hide_comments_preview_comment_summary">ซ่อนตัวอย่างความคิดเห็นใต้คลิปวิดีโอ ก่อนที่จะเปิดส่วนความคิดเห็นทั้งหมด</string>
+  <string name="morphe_hide_comments_preview_comment_summary">ซ่อนตัวอย่างความคิดเห็นใต้วิดีโอก่อนที่จะเปิดส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_preview_comment_hidden">ความคิดเห็นซ่อนโดย Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">เปิดใช้ปุ่มความคิดเห็นแบบมินิมอล</string>
-  <string name="morphe_minimal_comments_button_summary">ซ่อนการ์ดเลื่อนและตัวเลือกหน้าซึ่งแสดงอยู่บนปุ่มความคิดเห็น</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">ซ่อนการ์ดความคิดเห็นตัวอย่าง</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">ซ่อนการ์ดแบบเลื่อนและตัวบ่งชี้หน้าซึ่งแสดงอยู่บนปุ่มความคิดเห็น</string>
+  <string name="morphe_hide_comments_timed_reactions_title">ซ่อนปฏิกิริยาตามเวลา</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">ซ่อนฟีเจอร์ที่อนุญาตให้ผู้ใช้แสดงความรู้สึกด้วยอิโมจิในส่วนความคิดเห็นและแชทสด</string>
   <string name="morphe_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <string name="morphe_hide_comments_top_fans_button_title">ซ่อนปุ่ม \'Top fans\'</string>
   <string name="morphe_hide_comments_topics_title">ซ่อน \'หัวข้อ\'</string>
@@ -1157,6 +1173,17 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">แก้ไขข้อความถอดเสียง</string>
   <string name="morphe_fix_transcript_summary">แก้ไขข้อผิดพลาดในการตรวจสอบเงื่อนไขเบื้องต้นที่อาจทำให้การโหลดข้อความถอดเสียงไม่สำเร็จ</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">คัดลอกข้อความถอดเสียง</string>
+  <string name="morphe_copy_transcript_title">คัดลอกข้อความถอดเสียง</string>
+  <string name="morphe_copy_transcript_summary">เพิ่มปุ่มในแผงข้อความถอดเสียงเพื่อคัดลอกข้อความถอดเสียงในภาษาเดียวกับคำบรรยาย</string>
+  <string name="morphe_copy_transcript_timestamps_title">รวมการประทับเวลา</string>
+  <string name="morphe_copy_transcript_timestamps_summary">แต่ละบรรทัดของคำบรรยายที่คัดลอกจะเริ่มต้นด้วยเวลาของบรรทัดนั้น</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">แสดงในเมนูของ Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">เพิ่มรายการคัดลอกคำบรรยายลงในเมนูของ Shorts</string>
+  <string name="morphe_copy_transcript_copied">คัดลอกคำบรรยายไปยังคลิปบอร์ดแล้ว</string>
+  <string name="morphe_copy_transcript_empty">ไม่มีคำบรรยายที่ใช้งานได้</string>
+  <string name="morphe_copy_transcript_error">ไม่สามารถคัดลอกคำบรรยายได้</string>
   <string name="morphe_captions_in_pip_title">แสดงคำบรรยายในภาพซ้อนภาพ</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">ขนาดคำบรรยาย</string>
@@ -1411,6 +1438,17 @@ Second \"item\" text"</string>
 • ภาพซ้อนทับ 'วิดีโอเพิ่มเติม' อาจไม่ปรากฏ
 • Shorts จะเปิดในเครื่องเล่นปกติ
 • แถบดำเนินการวิดีโอแบบเก่าที่ไม่ยุบจะแสดง"</string>
+  <string name="morphe_change_form_factor_car_display_title">เลย์เอาต์ยานยนต์บนจอแสดงผลในรถยนต์</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">เลย์เอาต์ยานยนต์จะถูกใช้เมื่อแสดง YouTube บนจอแสดงผลในรถยนต์ เช่น ผ่าน Android Auto หรือ DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">ไม่ใช้เลย์เอาต์ยานยนต์บนจอแสดงผลในรถยนต์</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">ซ่อนแถบนำทางอัตโนมัติบนจอแสดงผลของรถยนต์</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">แถบนำทางจะถูกซ่อนบนจอแสดงผลของรถยนต์หลังจากที่ไม่ได้ใช้งานสักพัก ปัดขึ้นจากขอบด้านล่างเพื่อแสดงแถบนำทาง</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">แสดงแถบนำทางบนจอแสดงผลของรถยนต์เสมอ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">ระยะเวลาหน่วงการซ่อนอัตโนมัติ</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">ระยะเวลาที่แถบการนำทางจะแสดงค้างไว้หลังจากปรากฏขึ้นหรือถูกแตะ</string>
+  <string name="morphe_change_form_factor_car_display_any_title">ใช้กับจอแสดงผลภายนอกใดๆ</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">จอแสดงผลทุกจอที่ไม่ใช่หน้าจอโทรศัพท์จะถือเป็นจอแสดงผลในรถยนต์ รวมถึงทีวีหรือมอนิเตอร์ด้วย</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"จอแสดงผลในรถยนต์จะถูกตรวจพบโดย Android Auto ชื่อจอแสดงผล และโหมด UI ของรถยนต์ สำหรับ Android 15 และเวอร์ชันที่ใหม่กว่า การสะท้อนหน้าจอโดย DriveDeck, Gearslip, graphene-auto หรือ MyCar จะถือเป็นจอแสดงผลในรถยนต์เช่นกัน"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - กู้คืนพฤติกรรมคำบรรยายแบบเดิม</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าการบันทึกลงเพลย์ลิสต์แบบเก่า</string>

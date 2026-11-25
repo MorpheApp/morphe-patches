@@ -284,6 +284,22 @@ Cheklovlar:
 • Yashirilgan Short Shorts'lar polosasida bo'sh joy qoldirishi mumkin"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Ko\'rishlar soni filtri barcha videolarni yashiradi</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Davomiylik filtri</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Lentalar va qidiruvda juda qisqa yoki juda uzun videolarni yashirish</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Bosh sahifa videolarini davomiyligi bo\"yicha yashirish</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Qidiruv natijalarini davomiyligi bo\"yicha yashirish</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Obunalar videolarini davomiyligi bo\"yicha yashirish</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Minimal davomiyligi (daqiqalar)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Ushbu vaqtdan qisqa videolar yashiriladi. 0 = minimal chegara yo\"q</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Maksimal davomiyligi (daqiqalar)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Ushbu vaqtdan uzun videolar yashiriladi. 0 = maksimal chegara yo\"q</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Bosh sahifa / Obunalar / Qidiruv bo\"limlarida videolar davomiyligi bo\"yicha filtrlanadi
+
+Cheklovlar:
+• Jonli efirlar, Shorts, pleylistlar va mikslar yashirilmaydi
+• Davomiyligi noma\"lum videolar yashirilmaydi"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Davomiylik filtri barcha videolarni yashiradi</string>
   <string name="morphe_hide_stats_category_title">Statistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Yashirilgan videolar, so\'nggi 24 soat</string>
   <string name="morphe_hide_stats_hidden_all_title">Hamma vaqtda yashirilgan videolar</string>
@@ -327,8 +343,6 @@ Cheklovlar:
   <string name="morphe_hide_sync_button_title">\'Sync to video\' tugmasini yashirish</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Bosib turish gradientini yashirish</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Tezlashtirish uchun bosib turgan holda barmog\'ingizni surganingizda pleyer boshqaruvi gradientini yashiradi</string>
-  <string name="morphe_hide_timed_reactions_title">Vaqtli reaksiya bildirishlarni yashirish</string>
-  <string name="morphe_hide_timed_reactions_summary">Izohlar boʻlimida va jonli chatda emoji bilan munosabat bildiruvchi funksiyani yashiradi</string>
   <string name="morphe_hide_help_feedback_menu_summary">Qidiruv natijalari kabi joylarda uch nuqtali tugma bosilganda \"Yordam va fikr-mulohazalar\" menyusini yashiradi</string>
   <string name="morphe_hide_handle_title">Handle-ni yashirish</string>
   <string name="morphe_hide_handle_summary">\"Siz\" vkladkasida kanalingiz handle-ini yashiradi</string>
@@ -443,10 +457,12 @@ Cheklovlar:
   <string name="morphe_hide_comments_menu_button_summary">Har bir izohning 3 nuqtali menyu tugmasini yashiradi</string>
   <string name="morphe_hide_comments_none_yet_title">\"Hali izohlar yo\'q\" oldindan ko\'rishni yashirish</string>
   <string name="morphe_hide_comments_preview_comment_title">Oldindan ko\'rsatish izohini yashirish</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Toʻliq izohlar boʻlimini ochishdan oldin videoning ostidagi sharh old koʻrinishini yashiradi</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Izohlar bo\"limini ochishdan oldin video ostidagi izohlar previewini yashiradi</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Izoh Morphe tomonidan yashirildi…</string>
-  <string name="morphe_minimal_comments_button_title">Minimalistik izohlar tugmasini yoqish</string>
-  <string name="morphe_minimal_comments_button_summary">Izohlar tugmasida ko\'rsatiladigan sirpanuvchi kartalar va ularning sahifalar selektorini yashiradi</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Preview izoh kartalarini yashirish</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Izohlar tugmasida ko\'rsatilgan sirpanuvchi kartalar va sahifa ko\'rsatkichini yashiradi</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Vaqtga bog\'langan reaksiyalarni yashirish</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Foydalanuvchilarga izohlar bo\"limi va jonli chatda emojilar bilan reaksiya bildirish imkonini beruvchi funksiyani yashiradi</string>
   <string name="morphe_hide_comments_timestamp_button_title">Vaqt belgisi tugmasini yashirish</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top muxlislar\' tugmasini yashirish</string>
   <string name="morphe_hide_comments_topics_title">\"Mavzular\"ni yashirish</string>
@@ -1155,6 +1171,17 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Transkriptni tuzatish</string>
   <string name="morphe_fix_transcript_summary">Transkriptni yuklashni to\'sishi mumkin bo\'lgan shart tekshiruvi xatosini tuzatadi</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Transcriptni nusxalash</string>
+  <string name="morphe_copy_transcript_title">Transcriptni nusxalash</string>
+  <string name="morphe_copy_transcript_summary">Transcriptlar paneliga subtitrlar tilidagi transcriptni nusxalovchi tugmani qo\'shadi</string>
+  <string name="morphe_copy_transcript_timestamps_title">Vaqt belgilarni kiritish</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Nusxalangan transkriptning har bir qatori vaqti bilan boshlanadi</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Shorts menyularida ko\'rsatish</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Shorts menyulariga transkriptni nusxalash elementini qo\'shadi</string>
+  <string name="morphe_copy_transcript_copied">Transkript buferga nusxalandi</string>
+  <string name="morphe_copy_transcript_empty">Transkript mavjud emas</string>
+  <string name="morphe_copy_transcript_error">Transkriptni nusxalab bo\'lmadi</string>
   <string name="morphe_captions_in_pip_title">Rasmdagi rasm rejimida subtitrlarni ko\'rsatish</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Subtitr hajmi</string>
@@ -1409,6 +1436,17 @@ Avtomobil maketi
 • \"Ko'proq videolar\" qatlami mavjud bo'lmasligi mumkin
 • Shorts oddiy pleyerda ochiladi
 • Yopilmagan eski video amalari paneli ko'rsatiladi"</string>
+  <string name="morphe_change_form_factor_car_display_title">Avtomobil ekranlarida avtomobil taksidi</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Avtomobil taksidi YouTube Android Auto yoki DriveDeck kabi avtomobil ekranida ko\'rsatilganda ishlatiladi</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Avtomobil ekranlarida avtomobil taksidi ishlatilmaydi</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Avtomobil displeylarida navigatsiya panelini avtomatik yashirish</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Avtomobil displeyida navigatsiya paneli bir muddat ishlatilmagach yashiriladi. Uni ko\'rsatish uchun pastki chetidan yuqoriga suring</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Avtomobil displeylarida navigatsiya paneli doimo ko\'rinib turadi</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Avtomatik yashirish kechikishi</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Navigatsiya paneli ko\'rsatilgandan yoki unga tegilgandan so\'ng qancha vaqt qolishi</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Har qanday tashqi ekranda foydalanish</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Telefon ekrani bo\'lmagan barcha ekranlar, jumladan televizor yoki monitor avtomobil ekrani hisoblanadi</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Avtomobil ekranlari Android Auto, ekran nomlari va avtomobil UI rejimi orqali aniqlanadi. Android 15 va undan keyingi versiyalarda DriveDeck, Gearslip, graphene-auto yoki MyCar orqali ekran ko'zgulash ham avtomobil ekrani hisoblanadi"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Subtitrlarning eski ishlash tartibini tiklash</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Eski pleyer saqlashni tiklash</string>

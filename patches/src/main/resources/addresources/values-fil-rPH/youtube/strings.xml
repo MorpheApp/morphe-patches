@@ -284,6 +284,22 @@ Mga Limitasyon:
 • Ang isang nakatagong Short ay maaaring mag-iwan ng bakanteng espasyo sa isang Shorts shelf"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Itatago ng view count filter ang lahat ng video</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Filter ng tagal</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Itago ang mga video sa mga feed at paghahanap na masyadong maikli o masyadong mahaba</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Itago ang mga video sa Home ayon sa tagal</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Itago ang mga resulta ng paghahanap ayon sa tagal</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Itago ang mga video sa Mga Subscription ayon sa tagal</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Minimum na tagal (minuto)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Ang mga video na mas maikli rito ay nakatago. 0 = walang minimum</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Maximum na tagal (minuto)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Ang mga video na mas mahaba rito ay nakatago. 0 = walang maximum</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Ang Home / Mga Subscription / Paghahanap ay naka-filter para itago ang mga video ayon sa kanilang tagal
+
+Mga Limitasyon:
+• Ang mga Live stream, Shorts, playlist at mix ay hindi nakatago
+• Ang mga video na hindi alam ang tagal ay hindi nakatago"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Itatago ng duration filter ang lahat ng mga video</string>
   <string name="morphe_hide_stats_category_title">Mga Estadistika</string>
   <string name="morphe_hide_stats_hidden_24h_title">Mga video na nakatago, nakaraang 24 oras</string>
   <string name="morphe_hide_stats_hidden_all_title">Mga video na nakatago, lahat ng oras</string>
@@ -327,8 +343,6 @@ Mga Limitasyon:
   <string name="morphe_hide_sync_button_title">Itago ang button na \'I-sync sa video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Itago ang gradient ng tap at hold</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Itinatago ang gradient ng mga kontrol ng player kapag iginagalaw ang daliri habang nakahawak upang bumilis</string>
-  <string name="morphe_hide_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
-  <string name="morphe_hide_timed_reactions_summary">Itinatago ang feature na nagbibigay-daan sa mga user na mag-react gamit ang mga emoji sa seksyon ng mga komento at live chat</string>
   <string name="morphe_hide_help_feedback_menu_summary">Itinatago ang menu na \'Help &amp; feedback\' kapag ginagamit ang button na may tatlong tuldok, tulad ng sa mga resulta ng paghahanap</string>
   <string name="morphe_hide_handle_title">Itago ang handle</string>
   <string name="morphe_hide_handle_summary">Itinatago ang iyong channel handle sa tab na \'Ikaw\'</string>
@@ -443,10 +457,12 @@ Mga Limitasyon:
   <string name="morphe_hide_comments_menu_button_summary">Itinatago ang pindutan ng menu na may tatlong tuldok para sa bawat komento</string>
   <string name="morphe_hide_comments_none_yet_title">Itago ang preview ng \'Wala pang mga komento\'</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang pasilip na komento sa ilalim ng video bago buksan ang seksyon ng mga komento</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Nakatago ang komento ni Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Paganahin ang minimal na button ng mga komento</string>
-  <string name="morphe_minimal_comments_button_summary">Itinatago ang mga dumudulas na card at ang tagapili ng pahina nito, na ipinapakita sa button ng mga komento</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Itago ang mga preview comment card</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Itinatago ang mga sliding card at page indicator na naka-display sa button ng mga komento</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Itinatago ang feature na nagpapahintulot sa mga user na mag-react gamit ang mga emoji sa comments section at live chat</string>
   <string name="morphe_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
   <string name="morphe_hide_comments_top_fans_button_title">Itago ang button na \'Top fans\'</string>
   <string name="morphe_hide_comments_topics_title">Itago ang \'Mga Paksa\'</string>
@@ -1157,6 +1173,17 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Ayusin ang transcript</string>
   <string name="morphe_fix_transcript_summary">Nilulutas ang isang failure ng precondition check na maaaring pumigil sa pag-load ng transcript</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Kopyahin ang transcript</string>
+  <string name="morphe_copy_transcript_title">Kopyahin ang transcript</string>
+  <string name="morphe_copy_transcript_summary">Nagdaragdag ng button sa transcript panel na kumokopya ng transcript sa wika ng mga caption</string>
+  <string name="morphe_copy_transcript_timestamps_title">Isama ang mga timestamp</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Ang bawat linya ng kinopyang transcript ay nagsisimula sa oras nito</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Ipakita sa mga menu ng Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Nagdaragdag ng item na Kopyahin ang transcript sa mga menu ng Shorts</string>
+  <string name="morphe_copy_transcript_copied">Kinopya ang transcript sa clipboard</string>
+  <string name="morphe_copy_transcript_empty">Walang magagamit na transcript</string>
+  <string name="morphe_copy_transcript_error">Hindi makopya ang transcript</string>
   <string name="morphe_captions_in_pip_title">Ipakita ang mga caption sa picture-in-picture</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Laki ng caption</string>
@@ -1411,6 +1438,17 @@ Automotive layout
 • Maaaring hindi available ang overlay na 'Higit pang mga video'
 • Ang mga Shorts ay bumubukas sa regular na player
 • Ipinapakita ang lumang video action bar na hindi collapsed"</string>
+  <string name="morphe_change_form_factor_car_display_title">Automotive layout sa mga display ng kotse</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Ginagamit ang automotive layout kapag ipinapakita ang YouTube sa display ng kotse, gaya ng sa pamamagitan ng Android Auto o DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Hindi ginagamit ang automotive layout sa mga display ng kotse</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Awtomatikong itago ang navigation bar sa mga car display</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Nakatago ang navigation bar sa car display pagkatapos itong hindi gamitin nang ilang sandali. Mag-swipe pataas mula sa ibabang gilid para ipakita ito</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Laging ipinapakita ang navigation bar sa mga car display</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Delay sa awtomatikong pagtatago</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Gaano katagal mananatili ang navigation bar pagkatapos itong ipakita o hawakan</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Gamitin sa anumang external display</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Ang bawat display maliban sa screen ng phone ay isang display ng kotse, kabilang ang TV o monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Ang mga display ng kotse ay nahahanap ng Android Auto, mga pangalan ng display at ang car UI mode. Sa Android 15 at mas bago, ang screen mirroring ng DriveDeck, Gearslip, graphene-auto o MyCar ay isa ring display ng kotse"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
