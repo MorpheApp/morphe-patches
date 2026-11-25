@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package app.morphe.extension.shared.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+
+// YouTube Music includes the tab type in the media IDs it receives from the server.
+message MediaItemInfo {
+    enum TabType {
+        UNKNOWN = 0;
+        LAST_PLAYED = 1;
+        HOME = 2;
+        LIBRARY = 3;
+        PODCASTS = 4;
+    }
+    TabType tabType = 4;
+}

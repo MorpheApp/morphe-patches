@@ -58,6 +58,7 @@ import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.menuSubtitle;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.playCommand;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.textRuns;
+import static app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer.SELECTED_FIELD_NUMBER;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -126,18 +127,27 @@ final class AndroidAutoSearchResponseParser {
             String requestedTabId = uploaded ? "music_search_upload" : "music_search_catalog";
             boolean hasCatalogTab = false;
             boolean hasUploadTab = false;
+            ProtoMessage resultContents = ProtoMessage.EMPTY;
             for (ProtoMessage tabWrapper : pageContents.messageField(TABBED_SEARCH).repeatedMessageField(SEARCH_TABS)) {
                 ProtoMessage tab = tabWrapper.messageField(TAB);
-                hasCatalogTab |= tab.stringField(TAB_ID).equals("music_search_catalog");
-                hasUploadTab |= tab.stringField(TAB_ID).equals("music_search_upload");
-                if (!tab.stringField(TAB_ID).isEmpty() && !tab.stringField(TAB_ID).equals(requestedTabId)) continue;
-                ProtoMessage tabContents = tab.messageField(TAB_CONTENTS);
-                if (!tabContents.messageField(MESSAGE).isEmpty()) return Collections.emptyList();
-                sectionList = tabContents.messageField(SECTION_LIST);
-                if (!sectionList.isEmpty()) break;
+                String tabId = tab.stringField(TAB_ID);
+                hasCatalogTab |= tabId.equals("music_search_catalog");
+                hasUploadTab |= tabId.equals("music_search_upload");
+                if (!tabId.isEmpty() && !tabId.equals(requestedTabId)) continue;
+
+                ProtoMessage contents = tab.messageField(TAB_CONTENTS);
+                if (contents.messageField(SECTION_LIST).isEmpty() && contents.messageField(MESSAGE).isEmpty()) continue;
+                if (tabId.equals(requestedTabId)) {
+                    resultContents = contents;
+                    break;
+                }
+                // Some responses omit tab IDs. Keep a fallback while looking for the requested tab.
+                if (resultContents.isEmpty() || tab.varintField(SELECTED_FIELD_NUMBER) != 0) resultContents = contents;
             }
             // Accounts without uploads omit that tab from an otherwise valid search response.
             if (uploaded && hasCatalogTab && !hasUploadTab) return Collections.emptyList();
+            if (!resultContents.messageField(MESSAGE).isEmpty()) return Collections.emptyList();
+            sectionList = resultContents.messageField(SECTION_LIST);
         }
         if (sectionList.isEmpty()) throw new IllegalArgumentException("Unrecognized search contents");
         return readSections(sectionList);

@@ -32,12 +32,14 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.media.MediaDescriptionCompat;
+import android.util.Base64;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
@@ -65,6 +67,7 @@ import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.Search
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.MediaBrowser.MediaItemInfo;
 
 /**
  * Uses YTM's phone browse responses for music recommendations and Library content.
@@ -386,11 +389,7 @@ public final class AndroidAutoPatch {
     public static synchronized void setPhoneBrowseClient(PhoneBrowseClient client) {
         phoneBrowseClient = client;
         settingsSubscription = null;
-        libraryMediaId = null;
-        librarySubscription = null;
-        podcastsSubscription = null;
-        homeSubscription = null;
-        mainHandler.removeCallbacks(REFRESH_LIBRARY);
+        resetBrowseTabs(null, null);
         Logger.printDebug(() -> "Ready to request phone Library contents: " +
                 client.getClass().getName());
     }
@@ -890,14 +889,7 @@ public final class AndroidAutoPatch {
         try {
             String parentMediaId = request.patch_getRequestedMediaId();
             if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
-                // A queued request gets the tabs that were just initialized for the earlier request.
-                // Initializing them again would clear the folder subscriptions and Home's podcast folders.
-                if (deferredRoots.remove(request) && ytmItems != null && ytmItems.size() == 2
-                        && Objects.equals(ytmItems.get(0).a(), homeMediaId)
-                        && Objects.equals(ytmItems.get(1).a(), libraryMediaId)) {
-                    return addTabs(ytmItems);
-                }
-                return initializeTabs(ytmItems);
+                return updateTabs(ytmItems, deferredRoots.remove(request));
             }
             if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
                 return new ArrayList<>(cachedPodcastFolders);
@@ -937,45 +929,76 @@ public final class AndroidAutoPatch {
 
     @Nullable
     @GuardedBy("AndroidAutoPatch.class")
-    private static List<MediaBrowserCompat.MediaItem> initializeTabs(
-            @Nullable List<MediaBrowserCompat.MediaItem> rootTabs) {
-        boolean hasNativeFolder = false;
-        if (rootTabs != null) {
-            for (MediaBrowserCompat.MediaItem tab : rootTabs) {
-                // The tabs were already updated.
-                if (SETTINGS_MEDIA_ID.equals(tab.a())) return rootTabs;
-                if (isContentFolder(tab)) hasNativeFolder = true;
+    private static List<MediaBrowserCompat.MediaItem> updateTabs(
+            @Nullable List<MediaBrowserCompat.MediaItem> rootTabs, boolean queued) {
+        if (rootTabs == null) {
+            resetBrowseTabs(null, null);
+            return null;
+        }
+
+        List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs.size() + 2);
+        MediaBrowserCompat.MediaItem settings = null;
+        MediaBrowserCompat.MediaItem podcasts = null;
+        String homeId = null;
+        String libraryId = null;
+        int podcastsIndex = -1;
+        boolean hasNativePodcasts = false;
+        boolean hasContent = false;
+        for (MediaBrowserCompat.MediaItem tab : rootTabs) {
+            String id = tab.a();
+            if (SETTINGS_MEDIA_ID.equals(id)) {
+                settings = tab;
+                continue;
+            }
+            if (PODCASTS_MEDIA_ID.equals(id)) {
+                podcasts = tab;
+                continue;
+            }
+            tabs.add(tab);
+            if (!isContentFolder(tab)) continue;
+            hasContent = true;
+            switch (tabType(id)) {
+                case HOME -> {
+                    homeId = id;
+                    podcastsIndex = tabs.size();
+                }
+                case LIBRARY -> libraryId = id;
+                case PODCASTS -> hasNativePodcasts = true;
             }
         }
 
-        // Do not reuse saved requests or podcast content after the main tabs reload.
+        // A cached or queued root can return the folders Auto has already subscribed to.
+        if ((!queued && settings == null && podcasts == null)
+                || !Objects.equals(homeId, homeMediaId) || !Objects.equals(libraryId, libraryMediaId)) {
+            resetBrowseTabs(homeId, libraryId);
+        }
+        if (hasContent) {
+            if (podcastsIndex >= 0 && !hasNativePodcasts) {
+                tabs.add(podcastsIndex, podcasts != null ? podcasts : podcastsTab());
+            }
+            tabs.add(settings != null ? settings : AndroidAutoSettingsTab.settingsTab());
+        }
+        return tabs.equals(rootTabs) ? rootTabs : tabs;
+    }
+
+    private static MediaItemInfo.TabType tabType(String mediaId) {
+        try {
+            return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getTabType();
+        } catch (IllegalArgumentException | InvalidProtocolBufferException ignored) {
+            // Local folders such as Downloads use plain text IDs.
+            return MediaItemInfo.TabType.UNKNOWN;
+        }
+    }
+
+    @GuardedBy("AndroidAutoPatch.class")
+    private static void resetBrowseTabs(@Nullable String homeId, @Nullable String libraryId) {
+        homeMediaId = homeId;
+        libraryMediaId = libraryId;
         librarySubscription = null;
         podcastsSubscription = null;
         homeSubscription = null;
-        mainHandler.removeCallbacks(REFRESH_LIBRARY);
-        homeMediaId = null;
-        libraryMediaId = null;
         cachedPodcastFolders = Collections.emptyList();
-
-        if (rootTabs == null || !hasNativeFolder) return rootTabs;
-        // The patch reads the Home and Library IDs by position when YTM returns just those two tabs.
-        // Offline, YTM can put Last played between them in 9.30.53 or Podcasts in 9.46.51.
-        // Without the size check, the middle tab would open Library and 9.46.51 would show Podcasts twice.
-        if (rootTabs.size() == 2) {
-            homeMediaId = rootTabs.get(0).a();
-            libraryMediaId = rootTabs.get(1).a();
-        }
-        return addTabs(rootTabs);
-    }
-
-    /** Adds Podcasts when YTM returns just Home and Library, and adds Settings at the end. */
-    private static List<MediaBrowserCompat.MediaItem> addTabs(List<MediaBrowserCompat.MediaItem> rootTabs) {
-        List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs);
-        if (rootTabs.size() == 2) {
-            tabs.add(1, podcastsTab());
-        }
-        tabs.add(AndroidAutoSettingsTab.settingsTab());
-        return tabs;
+        mainHandler.removeCallbacks(REFRESH_LIBRARY);
     }
 
     private static boolean isContentFolder(MediaBrowserCompat.MediaItem item) {

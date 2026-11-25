@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches;
 
+import static app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer.SELECTED_FIELD_NUMBER;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -204,8 +206,11 @@ final class AndroidAutoBrowseResponseParser {
         ProtoMessage sectionList = pageContents.messageField(SECTION_LIST);
         if (sectionList.isEmpty()) {
             for (ProtoMessage tabWrapper : pageContents.messageField(SINGLE_COLUMN_BROWSE).repeatedMessageField(BROWSE_TABS)) {
-                sectionList = tabWrapper.messagePath(TAB, TAB_CONTENTS, SECTION_LIST);
-                if (!sectionList.isEmpty()) break;
+                ProtoMessage tab = tabWrapper.messageField(TAB);
+                ProtoMessage sections = tab.messagePath(TAB_CONTENTS, SECTION_LIST);
+                if (sections.isEmpty()) continue;
+                if (tab.varintField(SELECTED_FIELD_NUMBER) != 0) return sections;
+                if (sectionList.isEmpty()) sectionList = sections;
             }
         }
         if (sectionList.isEmpty()) throw new IllegalArgumentException("Unrecognized browse contents");
