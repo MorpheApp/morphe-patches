@@ -1380,7 +1380,8 @@ val navigationBarPatch = patch(
                             move-result v$iconRegister
                             invoke-static { v$iconRegister }, $iconTypeLookupMethod
                             move-result-object v$iconRegister
-                            const/4 v$iconOnlyRegister, 0x0
+                            invoke-static { }, $EXTENSION_SUBSCRIPTIONS_CLASS->isSubscriptionsIconOnly()Z
+                            move-result v$iconOnlyRegister
                             invoke-static { v$browseIdRegister, v$labelRegister, v$iconRegister, v$iconOnlyRegister }, ${PivotBarItemProtoFactoryFingerprint.method}
                             move-result-object v$browseIdRegister
                             invoke-static { v$browseIdRegister }, ${PivotBarRendererFingerprint.method}
