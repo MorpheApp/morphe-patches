@@ -84,7 +84,12 @@ final class LyricsFullscreenController {
     private Bitmap shownArtwork;
     private final AppleMusicArtworkPatch.ArtworkFileListener artworkFileListener =
             this::onArtworkFileChanged;
-    private final View.OnTouchListener coverTouchListener = this::onCoverTouch;
+    private final View.OnTouchListener coverTouchListener = (v, event) -> {
+        if (onCoverTouch(v, event) && !v.performClick()) {
+            dispatchMediaKey(v.getContext(), KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+        }
+        return true;
+    };
     private float coverDownX;
     private float coverDownY;
     private long coverDownTime;
@@ -457,6 +462,9 @@ final class LyricsFullscreenController {
         return params;
     }
 
+    /**
+     * Handles cover touch gestures and returns {@code true} if the gesture was a tap.
+     */
     private boolean onCoverTouch(View v, MotionEvent event) {
         panel.requestDisallowInterceptTouchEvent(true);
         switch (event.getActionMasked()) {
@@ -464,7 +472,7 @@ final class LyricsFullscreenController {
                 coverDownX = event.getX();
                 coverDownY = event.getY();
                 coverDownTime = SystemClock.uptimeMillis();
-                return true;
+                return false;
             case MotionEvent.ACTION_UP: {
                 float dx = event.getX() - coverDownX;
                 float dy = event.getY() - coverDownY;
@@ -474,14 +482,12 @@ final class LyricsFullscreenController {
                             dx < 0 ? KeyEvent.KEYCODE_MEDIA_NEXT : KeyEvent.KEYCODE_MEDIA_PREVIOUS);
                 } else if (Math.abs(dy) > Dim.dp(40) && Math.abs(dy) > Math.abs(dx) * 1.4f) {
                     toggleTrackInfo();
-                } else if (Math.abs(dx) < Dim.dp(12) && Math.abs(dy) < Dim.dp(12)
-                        && elapsed < 600L) {
-                    dispatchMediaKey(v.getContext(), KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
-                }
-                return true;
+                } else return Math.abs(dx) < Dim.dp(12) && Math.abs(dy) < Dim.dp(12)
+                        && elapsed < 600L;
+                return false;
             }
             default:
-                return true;
+                return false;
         }
     }
 
@@ -510,7 +516,7 @@ final class LyricsFullscreenController {
             promptOriginalParams = prompt.getLayoutParams();
             detach(scroll);
             detach(prompt);
-            FrameLayout pane = new FrameLayout(panel.getContext());
+            CoverPane pane = new CoverPane(panel.getContext());
             pane.setOnTouchListener(coverTouchListener);
             LinearLayout coverStack = new LinearLayout(panel.getContext());
             coverStack.setOrientation(LinearLayout.VERTICAL);
@@ -745,6 +751,19 @@ final class LyricsFullscreenController {
             decorView.setSystemUiVisibility(flags);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not set system bars", ex);
+        }
+    }
+
+    private static final class CoverPane extends FrameLayout {
+        CoverPane(Context context) {
+            super(context);
+        }
+
+        @Override
+        public boolean performClick() {
+            super.performClick();
+            dispatchMediaKey(getContext(), KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+            return true;
         }
     }
 }

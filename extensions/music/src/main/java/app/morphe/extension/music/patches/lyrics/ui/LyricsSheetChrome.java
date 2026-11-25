@@ -166,6 +166,7 @@ final class LyricsSheetChrome {
             paint.setColorFilter(colorFilter);
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

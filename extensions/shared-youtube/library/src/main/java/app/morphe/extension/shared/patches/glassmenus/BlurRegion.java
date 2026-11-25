@@ -52,8 +52,11 @@ final class BlurRegion {
     @Nullable
     private static Method createBackgroundBlurDrawable;
     private static boolean samsungWindowBlurSupported;
+    @Nullable
+    private static Boolean crossWindowBlurSupported;
 
     @SuppressLint({"DiscouragedPrivateApi", "BlockedPrivateApi", "PrivateApi"})
+    @SuppressWarnings("JavaReflectionMemberAccess")
     private static void initialize() {
         if (initialized) return;
         initialized = true;
@@ -81,6 +84,14 @@ final class BlurRegion {
         } catch (Throwable ex) {
             Logger.printException(() -> "Samsung window blur support is not known", ex);
         }
+
+        try {
+            HiddenApiBypass.addHiddenApiExemptions("L" + CROSS_WINDOW_BLUR_LISTENERS.replace('.', '/') + ";");
+            crossWindowBlurSupported = Class.forName(CROSS_WINDOW_BLUR_LISTENERS)
+                    .getField("CROSS_WINDOW_BLUR_SUPPORTED").getBoolean(null);
+        } catch (Throwable ex) {
+            Logger.printDebug(() -> "Cross-window blur support is not known: " + ex);
+        }
     }
 
     /**
@@ -101,14 +112,9 @@ final class BlurRegion {
         if (lastLoggedBlurEnabled != null && lastLoggedBlurEnabled == enabled) return;
         lastLoggedBlurEnabled = enabled;
 
-        String supported;
-        try {
-            HiddenApiBypass.addHiddenApiExemptions("L" + CROSS_WINDOW_BLUR_LISTENERS.replace('.', '/') + ";");
-            supported = String.valueOf(Class.forName(CROSS_WINDOW_BLUR_LISTENERS)
-                    .getField("CROSS_WINDOW_BLUR_SUPPORTED").getBoolean(null));
-        } catch (Throwable ex) {
-            supported = "unknown";
-        }
+        initialize();
+        final String supported = crossWindowBlurSupported == null
+                ? "unknown" : String.valueOf(crossWindowBlurSupported);
         final boolean turnedOffInSettings = Settings.Global.getInt(context.getContentResolver(),
                 "disable_window_blurs", 0) == 1;
         PowerManager power = context.getSystemService(PowerManager.class);

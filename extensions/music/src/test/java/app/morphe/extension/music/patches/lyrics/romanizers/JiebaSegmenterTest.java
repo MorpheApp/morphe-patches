@@ -20,19 +20,16 @@ public class JiebaSegmenterTest {
 
     private static WordReadingTable table(String[] words, int[] frequencies) throws Exception {
         Path file = Files.createTempFile("jieba-test", ".bin");
-        try {
-            WordReadingTable.Builder builder =
-                    new WordReadingTable.Builder(file, JiebaSegmentStore.MAGIC, 1 << 10);
-            for (int i = 0; i < words.length; i++) {
-                builder.put(words[i], String.valueOf(frequencies[i]));
-            }
-            builder.finish(0);
-            WordReadingTable table = WordReadingTable.open(file, JiebaSegmentStore.MAGIC);
-            assertNotNull(table);
-            return table;
-        } finally {
-            Files.deleteIfExists(file);
+        file.toFile().deleteOnExit();
+        WordReadingTable.Builder builder =
+                new WordReadingTable.Builder(file, JiebaSegmentStore.MAGIC, 1 << 10);
+        for (int i = 0; i < words.length; i++) {
+            builder.put(words[i], String.valueOf(frequencies[i]));
         }
+        builder.finish(0);
+        WordReadingTable table = WordReadingTable.open(file, JiebaSegmentStore.MAGIC);
+        assertNotNull(table);
+        return table;
     }
 
     @Test
