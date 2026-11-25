@@ -147,6 +147,13 @@ public final class GlassNavigationBarPatch {
     static final int BLUR_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_BLUR);
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
     private static final int WIDTH_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_WIDTH);
+    /**
+     * How far the bottom bar is lifted.
+     */
+    private static final int POSITION_DP = GLASS_ENABLED
+            ? SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_POSITION)
+            : 0;
+    private static final boolean HIDE_LABELS = GLASS_ENABLED && !Settings.GLASS_NAVIGATION_BAR_SHOW_LABELS.get();
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -166,11 +173,6 @@ public final class GlassNavigationBarPatch {
     private static int pageColor = Color.BLACK;
 
     private static boolean isRailCentered;
-
-    /**
-     * How far the bottom bar is slid down while it hides, in pixels.
-     */
-    private static int barSlide;
 
     /**
      * @return If this patch was included during patching.
@@ -261,13 +263,67 @@ public final class GlassNavigationBarPatch {
     /**
      * Injection point.
      *
-     * @param lift      How far the bar is lifted from below the screen, in pixels.
+     * @param slide     How far the bar is slid down while it hides, in pixels.
      * @param barHeight Height of the bar, in pixels.
      */
-    public static void setBarOffset(int lift, float barHeight) {
-        if (FROSTED_ENABLED) {
-            barSlide = Math.max(0, Math.max(lift, Math.round(barHeight)) - lift);
+    public static float getBarSlide(float slide, float barHeight) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED) {
+            return slide;
         }
+
+        try {
+            if (barHeight > 0) {
+                // The lift decreases while the bar hides, so it still slides fully away.
+                slide -= getLift() * (1 - slide / barHeight);
+            }
+            updateBlurOffset(slide);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getBarSlide failure", ex);
+        }
+
+        return slide;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of the bar, if it does not hide on the current screen.
+     */
+    public static Object getStaticBarModifier(Modifier modifier) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED) {
+            return modifier;
+        }
+
+        try {
+            updateBlurOffset(-getLift());
+
+            if (POSITION_DP > 0) {
+                return modifier.patch_offset(0, -POSITION_DP);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getStaticBarModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param barHeight Height of the bar, in pixels.
+     * @return How far the create button is above the bottom of the screen.
+     */
+    public static float getCreateButtonOffset(float barHeight) {
+        return POSITION_DP == 0 ? barHeight : barHeight + getLift();
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return If the buttons show their labels.
+     */
+    public static boolean showLabel(boolean original) {
+        return original && !HIDE_LABELS;
     }
 
     /**
@@ -311,6 +367,19 @@ public final class GlassNavigationBarPatch {
         return width * (100 - WIDTH_PERCENT) / 200;
     }
 
+    /**
+     * @return How far the bottom bar is lifted up, in pixels.
+     */
+    private static float getLift() {
+        return POSITION_DP * getDensity();
+    }
+
+    private static void updateBlurOffset(float barOffset) {
+        if (FROSTED_ENABLED) {
+            GlassNavigationBarBlur.setBarOffset(Math.round(barOffset));
+        }
+    }
+
     private static void drawBarCapsule(ContentDrawScope scope) {
         final long size = scope.patch_getSize();
         final float width = unpackFirst(size);
@@ -324,7 +393,7 @@ public final class GlassNavigationBarPatch {
 
         if (unpackSecond(size) - rowHeight > GESTURE_NAVIGATION_MAX_HEIGHT_DP * density) {
             // Do not draw the capsule behind the system navigation bar.
-            height = Math.min(height, rowHeight - top);
+            height = Math.min(height, rowHeight - top + getLift());
         }
 
         drawCapsule(scope, left, top, width - 2 * left, height, density, true);
@@ -392,26 +461,5 @@ public final class GlassNavigationBarPatch {
         final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
 
         return argb << 32;
-    }
-
-    static float getDensity() {
-        return Utils.getContext().getResources().getDisplayMetrics().density;
-    }
-
-    static int getBarSlide() {
-        return barSlide;
-    }
-
-    private static long pack(float first, float second) {
-        return ((long) Float.floatToRawIntBits(first) << 32)
-                | (Float.floatToRawIntBits(second) & 0xFFFFFFFFL);
-    }
-
-    static float unpackFirst(long packed) {
-        return Float.intBitsToFloat((int) (packed >>> 32));
-    }
-
-    static float unpackSecond(long packed) {
-        return Float.intBitsToFloat((int) packed);
     }
 }

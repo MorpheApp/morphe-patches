@@ -72,6 +72,28 @@ internal object LottieAnimationDrawFingerprint : Fingerprint(
 )
 
 /**
+ * Modifier.offset
+ */
+internal object OffsetFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L", "F", "F"),
+    filters = listOf(
+        methodCall(
+            name = "<init>",
+            parameters = listOf("F", "F", "L")
+        ),
+        // Modifier.then
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("L"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
  * Modifier.padding
  */
 internal object PaddingFingerprint : Fingerprint(

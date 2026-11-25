@@ -9,11 +9,13 @@ package app.morphe.patches.reddit.layout.glassnav
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.compose.MODIFIER_INTERFACE
 import app.morphe.patches.reddit.misc.compose.composePatch
@@ -25,8 +27,12 @@ import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
@@ -163,19 +169,48 @@ val glassNavigationBarPatch = patch(
         }
 
         BottomNavStackHostFingerprint.matchAll().forEach {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
-                val modifierRegister = it.instructionMatches[1].instruction.registersUsed[1]
+            val navStackHostMatch = it.instructionMatches[1]
+            val navStackHostMethod = navStackHostMatch.methodReference
+            val companionField = ModifierCompanionFingerprint.instructionMatches[0].fieldReference
 
-                addInstructions(
-                    index,
+            // 2026.40.0 and lower can omit the modifier. It is then null and a flag is set that
+            // replaces it with the default, so set the default here and clear the flag.
+            val helperMethod = ImmutableMethod(
+                it.classDef.type,
+                "patch_${it.method.name}_navStackHost",
+                navStackHostMethod.parameterTypes.map { type ->
+                    ImmutableMethodParameter(type.toString(), null, null)
+                },
+                navStackHostMethod.returnType,
+                AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(8)
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
                     """
-                        invoke-static/range { v$modifierRegister .. v$modifierRegister }, $EXTENSION_CLASS->getContentModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
-                        move-result-object v$modifierRegister
-                        check-cast v$modifierRegister, $modifierType
+                        and-int/lit8 v0, p6, 0x1
+                        if-eqz v0, :has_modifier
+                        sget-object p1, $companionField
+                        and-int/lit8 p6, p6, -0x2
+                        :has_modifier
+                        invoke-static { p1 }, $EXTENSION_CLASS->getContentModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object p1
+                        check-cast p1, $modifierType
+                        invoke-static/range { p0 .. p6 }, $navStackHostMethod
+                        return-void
                     """
                 )
             }
+            it.classDef.methods.add(helperMethod)
+
+            val firstRegister = navStackHostMatch.instruction.registersUsed.first()
+            val lastRegister = navStackHostMatch.instruction.registersUsed.last()
+            it.method.replaceInstruction(
+                navStackHostMatch.index,
+                "invoke-static/range { v$firstRegister .. v$lastRegister }, $helperMethod"
+            )
         }
 
         if (is_2026_47_0_or_greater) {
@@ -188,22 +223,67 @@ val glassNavigationBarPatch = patch(
             )
         }
 
-        if (is_2026_45_0_or_greater) {
-            BottomNavBarOffsetFingerprint.let {
-                it.method.apply {
-                    val heightRegister =
-                        getInstruction<TwoRegisterInstruction>(it.instructionMatches[1].index).registerA
-                    val moveResultIndex = it.instructionMatches[3].index
-                    val liftRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+        BottomNavBarPlacementFingerprint.let {
+            it.method.apply {
+                val heightIndex = it.instructionMatches[3].index
+                val heightRegister = getInstruction<TwoRegisterInstruction>(heightIndex).registerA
+                val roundIndex = it.instructionMatches[5].index
+                val slideRegister = it.instructionMatches[5].instruction.registersUsed[0]
 
-                    addInstruction(
-                        moveResultIndex + 1,
-                        "invoke-static { v$liftRegister, v$heightRegister }, " +
-                            "$EXTENSION_CLASS->setBarOffset(IF)V"
+                addInstructions(
+                    roundIndex,
+                    """
+                        invoke-static { v$slideRegister, v$heightRegister }, $EXTENSION_CLASS->getBarSlide(FF)F
+                        move-result v$slideRegister
+                    """
+                )
+            }
+        }
+
+        StaticBottomNavBarFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[0].index
+                val modifierRegister = it.instructionMatches[0].instruction.registersUsed[1]
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$modifierRegister .. v$modifierRegister }, $EXTENSION_CLASS->getStaticBarModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object v$modifierRegister
+                        check-cast v$modifierRegister, $modifierType
+                    """
+                )
+            }
+        }
+
+        if (is_2026_45_0_or_greater) {
+            CreateButtonOffsetFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches[2].index
+                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getCreateButtonOffset(F)F
+                            move-result v$register
+                        """
                     )
                 }
             }
         }
+
+        // endregion
+
+        // region Labels.
+
+        SideNavRailContentFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
+            0,
+            """
+                invoke-static { p2 }, $EXTENSION_CLASS->showLabel(Z)Z
+                move-result p2
+            """
+        )
 
         // endregion
 

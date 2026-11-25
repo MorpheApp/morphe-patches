@@ -100,9 +100,14 @@ final class GlassNavigationBarBlur {
     private static final int BLUR_MARGIN;
 
     /**
-     * Blurred area relative to the bottom left corner of the page.
+     * Blurred area relative to the bottom left corner of the page, if the bar is not moved.
      */
     private static int blurLeft, blurTopFromBottom, blurWidth, blurHeight;
+
+    /**
+     * How far down the bar is moved from the bottom of the page, in pixels.
+     */
+    private static int barOffset;
 
     /**
      * Drawn below the page, because not all pages have their own background.
@@ -133,6 +138,16 @@ final class GlassNavigationBarBlur {
     }
 
     /**
+     * The bar is not drawn again if only its position changes.
+     */
+    static void setBarOffset(int offset) {
+        if (barOffset != offset) {
+            barOffset = offset;
+            recordBackdrop();
+        }
+    }
+
+    /**
      * Draws the blurred page inside the capsule.
      *
      * @param scope Scope of the navigation bar, which is at the bottom of the page
@@ -151,7 +166,7 @@ final class GlassNavigationBarBlur {
         final float barHeight = unpackSecond(scope.patch_getSize());
 
         blurLeft = capsuleLeft - BLUR_MARGIN;
-        blurTopFromBottom = Math.round(barHeight) - capsuleTop - GlassNavigationBarPatch.getBarSlide() + BLUR_MARGIN;
+        blurTopFromBottom = Math.round(barHeight) - capsuleTop + BLUR_MARGIN;
         blurWidth = (int) Math.ceil(left + width) - capsuleLeft + 2 * BLUR_MARGIN;
         blurHeight = (int) Math.ceil(top + height) - capsuleTop + 2 * BLUR_MARGIN;
         backgroundColor = color;
@@ -180,7 +195,7 @@ final class GlassNavigationBarBlur {
         RecordingCanvas recording = BLUR_NODE.beginRecording(blurWidth, blurHeight);
         try {
             recording.drawColor(backgroundColor);
-            recording.translate(-blurLeft, blurTopFromBottom - PAGE_NODE.getHeight());
+            recording.translate(-blurLeft, blurTopFromBottom - barOffset - PAGE_NODE.getHeight());
             recording.drawRenderNode(PAGE_NODE);
         } finally {
             BLUR_NODE.endRecording();

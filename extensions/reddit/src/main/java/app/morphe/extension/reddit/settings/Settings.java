@@ -49,6 +49,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting GLASS_NAVIGATION_BAR_ROUND_ENDS = new BooleanSetting("morphe_glass_navigation_bar_round_ends", TRUE, true, parent(GLASS_NAVIGATION_BAR));
     public static final IntegerSetting GLASS_NAVIGATION_BAR_HEIGHT = new IntegerSetting("morphe_glass_navigation_bar_height", 100, true, parent(GLASS_NAVIGATION_BAR));
     public static final IntegerSetting GLASS_NAVIGATION_BAR_WIDTH = new IntegerSetting("morphe_glass_navigation_bar_width", 100, true, parent(GLASS_NAVIGATION_BAR));
+    public static final IntegerSetting GLASS_NAVIGATION_BAR_POSITION = new IntegerSetting("morphe_glass_navigation_bar_position", 0, true, parent(GLASS_NAVIGATION_BAR));
+    public static final BooleanSetting GLASS_NAVIGATION_BAR_SHOW_LABELS = new BooleanSetting("morphe_glass_navigation_bar_show_labels", TRUE, true, parent(GLASS_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true);
@@ -196,6 +198,8 @@ public class Settings extends BaseSettings {
                 70, 150, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_WIDTH,
                 50, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_NAVIGATION_BAR_POSITION,
+                0, 32, 4, "dp"));
 
         // region Migration
 
