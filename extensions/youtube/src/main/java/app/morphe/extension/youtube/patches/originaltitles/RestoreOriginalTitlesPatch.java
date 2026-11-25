@@ -852,9 +852,12 @@ public final class RestoreOriginalTitlesPatch {
                 videoId = findVerifiedVideoId(videoIds, trimmedText);
                 if (videoId == null) {
                     // The other titles of the text are fetched again, and the fetching is not yet started.
+                    // A retry whose candidate is already verified, such as by another element of the video,
+                    // is not fetched again. Its span would be outdated at once, and the text laid out again
+                    // in a loop until the retry is done, so the text is found as after the retry instead.
                     for (String candidateVideoId : videoIds) {
                         CandidateRetry retry = candidateRetries.get(candidateKey(candidateVideoId));
-                        if (retry != null && !retry.started && !retry.done.isDone()) {
+                        if (retry != null && !retry.started && !retry.done.isDone() && !retry.isVerified()) {
                             return spannedText(translatedText, LOADING_TITLE.toString(), new RetryTitleSpan(retry));
                         }
                     }

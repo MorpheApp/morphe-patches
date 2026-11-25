@@ -57,6 +57,9 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/compo
 
 internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/shared/patches/components/Filter;"
 
+private const val EXTENSION_ELEMENT_BYTES_INTERFACE =
+    $$"Lapp/morphe/extension/shared/patches/components/LithoFilterPatch$ElementBytesInterface;"
+
 private const val EXTENSION_LIST_ITEM_DECORATOR_INTERFACE =
     $$"Lapp/morphe/extension/shared/patches/components/LithoFilterPatch$ListItemDecoratorInterface;"
 
@@ -175,7 +178,16 @@ internal fun sharedLithoFilterPatch(
         // region Modify the create component method and
         // if the component is filtered then return an empty component.
 
-        val protoBufferEncodeMethod = ProtobufBufferEncodeFingerprint.method
+        // The element is passed to the filter as is, and its bytes are encoded only if a filter
+        // of a matched identifier or path needs them. Every layout converts all its elements,
+        // and encoding each of them made every layout much slower.
+        ProtobufBufferEncodeFingerprint.let {
+            it.classDef.addPatchInterface(
+                EXTENSION_ELEMENT_BYTES_INTERFACE,
+                "patch_getElementBytes",
+                it.method
+            )
+        }
 
         // Find class and methods to create an empty component.
         val builderMethodDescriptor = EmptyComponentFingerprint.method
@@ -234,7 +246,7 @@ internal fun sharedLithoFilterPatch(
                     insertIndex, 3, buttonViewModelRegister
                 )
                 val contextRegister = registerProvider.getFreeRegister()
-                val bufferRegister = registerProvider.getFreeRegister()
+                val elementRegister = registerProvider.getFreeRegister()
                 val freeRegister = registerProvider.getFreeRegister()
 
                 // We need to find a free register to store the accessibilityId and accessibilityText.
@@ -250,24 +262,9 @@ internal fun sharedLithoFilterPatch(
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
-                        move-object/from16 v$bufferRegister, p3
-
-                        # Verify it's the expected subclass just in case.
-                        instance-of v$freeRegister, v$bufferRegister, ${protoBufferEncodeMethod.definingClass}
-                        if-eqz v$freeRegister, :empty_buffer
-
-                        check-cast v$bufferRegister, ${protoBufferEncodeMethod.definingClass}
-                        invoke-virtual { v$bufferRegister }, $protoBufferEncodeMethod
-                        move-result-object v$bufferRegister
-                        goto :hook
-
-                        :empty_buffer
-                        const/4 v$freeRegister, 0x0
-                        new-array v$bufferRegister, v$freeRegister, [B
-
-                        :hook
+                        move-object/from16 v$elementRegister, p3
                         move-object/from16 v$contextRegister, p2
-                        invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
+                        invoke-static { v$contextRegister, v$elementRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS->isFiltered(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :unfiltered
 
@@ -732,22 +729,6 @@ internal fun sharedLithoFilterPatch(
         }
 
         // endregion
-
-
-        // region Change Litho thread executor to 1 thread to fix layout issue in unpatched YouTube.
-
-        LithoThreadExecutorFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->getExecutorCorePoolSize(I)I
-                move-result p1
-                invoke-static { p2 }, $EXTENSION_CLASS->getExecutorMaxThreads(I)I
-                move-result p2
-            """
-        )
-
-        // endregion
-
 
         // region A/B test of new Litho native code.
 

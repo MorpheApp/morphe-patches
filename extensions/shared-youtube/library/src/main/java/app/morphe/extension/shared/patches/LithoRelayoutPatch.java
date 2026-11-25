@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -142,6 +143,19 @@ public final class LithoRelayoutPatch {
      * A fling is faster, and a slow scroll or a live chat that scrolls to new messages is slower.
      */
     private static final float FAST_SCROLL_DP_PER_MILLISECOND = 0.5f;
+
+    /**
+     * Most relayouts in a row requested by mounted texts that are already outdated, without a relayout
+     * requested by a patch in between, such as when titles are fetched. A text that is outdated
+     * again each time it's laid out would otherwise be laid out again forever, also while the app
+     * is in the background. A text outdated before it's mounted needs one relayout.
+     */
+    private static final int MAX_MOUNTED_TEXT_RELAYOUTS = 5;
+
+    /**
+     * Relayouts requested by mounted outdated texts since the last relayout requested by a patch.
+     */
+    private static final AtomicInteger mountedTextRelayouts = new AtomicInteger();
 
     /**
      * Mounted text drawables that showed a text with a {@link RelayoutSpan}.
@@ -273,6 +287,7 @@ public final class LithoRelayoutPatch {
      * Can be called on any thread.
      */
     public static void relayoutOutdatedTexts() {
+        mountedTextRelayouts.set(0);
         scheduleRelayout();
     }
 
@@ -284,6 +299,7 @@ public final class LithoRelayoutPatch {
      */
     public static void remountListViews() {
         remountListViewsRequested.set(true);
+        mountedTextRelayouts.set(0);
         scheduleRelayout();
     }
 
@@ -294,6 +310,7 @@ public final class LithoRelayoutPatch {
     public static void remountListViews(Collection<View> views) {
         if (!views.isEmpty()) {
             remountViewsRequested.addAll(views);
+            mountedTextRelayouts.set(0);
             scheduleRelayout();
         }
     }
@@ -321,12 +338,17 @@ public final class LithoRelayoutPatch {
         return shownSpans;
     }
 
-    private static void scheduleRelayout() {
+    /**
+     * @return If a relayout was scheduled, or false if one is already scheduled.
+     */
+    private static boolean scheduleRelayout() {
         if (relayoutScheduled.compareAndSet(false, true)) {
             relayoutRequestTime = SystemClock.uptimeMillis();
             // Delayed, so the layouts calculated in the current frame are mounted.
             Utils.runOnMainThreadDelayed(LithoRelayoutPatch::relayoutOutdatedViews, RELAYOUT_DELAY_MILLISECONDS);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -369,8 +391,10 @@ public final class LithoRelayoutPatch {
             if (outdated != null) {
                 relayoutTextDrawables.add(textDrawable);
                 // The text can be outdated before it's mounted, such as a title fetched meanwhile.
-                if (outdated) {
-                    relayoutOutdatedTexts();
+                // Texts mounted while a relayout is already scheduled are laid out by it,
+                // so only the relayouts that are scheduled count.
+                if (outdated && mountedTextRelayouts.get() < MAX_MOUNTED_TEXT_RELAYOUTS && scheduleRelayout()) {
+                    mountedTextRelayouts.incrementAndGet();
                 }
             }
         } catch (Exception ex) {

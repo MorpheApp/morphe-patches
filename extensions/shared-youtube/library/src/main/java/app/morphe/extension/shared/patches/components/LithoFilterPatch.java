@@ -59,7 +59,9 @@ public final class LithoFilterPatch {
         @Nullable
         private final String accessibilityText;
         private String accessibility;
-        final byte[] buffer;
+        @Nullable
+        private final Object element;
+        private byte[] buffer;
         private BufferAsciiStrings asciiStrings;
 
         LithoFilterParameters(ContextInterface contextInterface,
@@ -67,13 +69,29 @@ public final class LithoFilterPatch {
                               CharSequence path,
                               @Nullable String accessibilityId,
                               @Nullable String accessibilityText,
-                              byte[] buffer) {
+                              @Nullable Object element) {
             this.contextInterface = contextInterface;
             this.identifier = identifier;
             this.path = path;
             this.accessibilityId = accessibilityId;
             this.accessibilityText = accessibilityText;
-            this.buffer = buffer;
+            this.element = element;
+        }
+
+        /**
+         * The bytes of the element are encoded from its native message only when a filter
+         * of a matched identifier or path needs them. Every layout converts all its elements,
+         * and encoding each of them made every layout much slower.
+         */
+        public byte[] buffer() {
+            if (buffer == null) {
+                byte[] bytes = element instanceof ElementBytesInterface elementBytes
+                        ? elementBytes.patch_getElementBytes()
+                        : null;
+                // Use an empty buffer if there is none, so the litho id/path filters that do not use a buffer still work.
+                buffer = bytes == null ? EMPTY_BYTE_ARRAY : bytes;
+            }
+            return buffer;
         }
 
         public String accessibility() {
@@ -91,7 +109,7 @@ public final class LithoFilterPatch {
 
         public BufferAsciiStrings asciiStrings() {
             if (asciiStrings == null) {
-                asciiStrings = new BufferAsciiStrings(buffer);
+                asciiStrings = new BufferAsciiStrings(buffer());
             }
             return asciiStrings;
         }
@@ -103,7 +121,7 @@ public final class LithoFilterPatch {
             StringBuilder builder = new StringBuilder(identifier.length()
                     + path.length()
                     + acc.length()
-                    + buffer.length);
+                    + buffer().length);
 
             builder.append("ID: ");
             builder.append(identifier);
@@ -121,6 +139,16 @@ public final class LithoFilterPatch {
 
             return builder.toString();
         }
+    }
+
+    /**
+     * Interface added to the native message of an element, passed to the filter as is.
+     */
+    public interface ElementBytesInterface {
+        /**
+         * @return The encoded bytes of the element.
+         */
+        byte[] patch_getElementBytes();
     }
 
     /**
@@ -242,7 +270,7 @@ public final class LithoFilterPatch {
                                 LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
                                 final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
                                         parameters.identifier, parameters.accessibility(), parameters.path,
-                                        parameters.buffer, parameters.asciiStrings(),
+                                        parameters.buffer(), parameters.asciiStrings(),
                                         group, type, matchedStartIndex);
 
                                 if (isFiltered) {
@@ -265,8 +293,10 @@ public final class LithoFilterPatch {
 
     /**
      * Injection point.
+     *
+     * @param element The native message of the element, whose bytes are encoded only if a filter needs them.
      */
-    public static boolean isFiltered(ContextInterface contextInterface, @Nullable byte[] bytes,
+    public static boolean isFiltered(ContextInterface contextInterface, @Nullable Object element,
                                      @Nullable String accessibilityId, @Nullable String accessibilityText) {
         try {
             String identifier = contextInterface.patch_getIdentifier();
@@ -275,12 +305,9 @@ public final class LithoFilterPatch {
                 return false;
             }
 
-            // Use an empty buffer if there is none, so the litho id/path filters that do not use a buffer still work.
-            byte[] buffer = bytes == null ? EMPTY_BYTE_ARRAY : bytes;
-
             LithoFilterParameters parameter = new LithoFilterParameters(
                     contextInterface, identifier, pathBuilder,
-                    accessibilityId, accessibilityText, buffer);
+                    accessibilityId, accessibilityText, element);
             if (SharedYouTubeSettings.DEBUG_LITHO.get() != LithoLogging.DISABLED) {
                 Logger.printDebug(() -> "Searching " + parameter);
             }
