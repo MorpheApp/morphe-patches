@@ -36,7 +36,6 @@ import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
-import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -239,7 +238,7 @@ val navigationBarPatch = patch(
     hideSubscriptionsAppShortcutOption()
 
     execute {
-        val navPreferences = mutableSetOf<BasePreference>(
+        val navPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_home_button"),
             SwitchPreference("morphe_hide_shorts_button"),
             SwitchPreference("morphe_hide_create_button"),
@@ -249,14 +248,7 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_show_watch_later_button"),
             SwitchPreference("morphe_show_settings_button"),
             SwitchPreference("morphe_show_settings_button_type", summary = true),
-        )
-
-        // Older versions have no account switcher, and the command opens the Google account sign in.
-        if (is_21_30_or_greater) {
-            navPreferences += SwitchPreference("morphe_you_button_account_switcher", summary = true)
-        }
-
-        navPreferences += listOf(
+            SwitchPreference("morphe_you_button_account_switcher", summary = true),
             NonInteractivePreference(
                 "morphe_navigation_buttons_order",
                 tag = "app.morphe.extension.youtube.settings.preference.NavigationButtonsOrderPreference",
