@@ -626,6 +626,8 @@ message LikeStatusEntity {
 
 message AddToPlaylistButtonViewModel {
     ToggleButtonViewModelHolder toggleButtonViewModel = 1;
+    // Key of the playlists that the video is saved to. The button is toggled if the video is saved.
+    string addToPlaylistEntityKey = 2;
 }
 
 message InnertubeCommandHolder {

@@ -223,6 +223,7 @@ message NavigationEndpoint {
     // Playlist ID used by the playlist page's Play last in queue action.
     optional string playlist_page_play_last_playlist_id = 500000007;
     optional ShareEntityServiceEndpoint legacy_share_entity_endpoint = 90650344;
+    optional SaveToPlaylistListEntityUpdateCommand save_to_playlist_list_entity_update_command = 455257696;
 }
 
 // Native playlist-position navigation can omit a video ID, including at a
@@ -251,6 +252,20 @@ message ConfirmationDialogRenderer {
 message PlaylistEditEndpoint {
     optional string playlist_id = 1;
     repeated PlaylistEditAction actions = 2;
+    // Commands run when the request is sent, such as the update of the saved state of the video.
+    repeated NavigationEndpoint client_actions = 5;
+}
+
+// Updates the playlists that a video is saved to, which the save buttons of the video show.
+message SaveToPlaylistListEntityUpdateCommand {
+    enum Action {
+        UNKNOWN = 0;
+        ADD = 1;
+        REMOVE = 2;
+    }
+    optional string save_to_playlist_list_entity_key = 1;
+    optional string playlist_id = 2;
+    optional Action action = 3;
 }
 
 message PlaylistEditAction {

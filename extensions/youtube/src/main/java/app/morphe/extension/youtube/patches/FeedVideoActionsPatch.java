@@ -42,9 +42,11 @@ import com.google.protobuf.MessageLite;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -224,6 +226,18 @@ public final class FeedVideoActionsPatch {
      * Number of changes of the saved videos, to not replace a change with an older list of the videos.
      */
     private static final AtomicInteger savedVideosChanges = new AtomicInteger();
+    /** If the saved videos of the account are loaded. Used only on the main thread. */
+    private static boolean savedVideosLoaded;
+    /**
+     * Videos of the feed cards with a save button, whose saved state is set when the saved videos are loaded,
+     * with the key of their entity. Used only on the main thread.
+     */
+    private static final Map<String, String> pendingSaveButtons = new HashMap<>();
+    /**
+     * Videos whose saved state is set on the save button of their feed cards. The app keeps the state for the
+     * app session, and changes it itself when the video is saved or removed. Used only on the main thread.
+     */
+    private static final Set<String> saveButtonVideos = new HashSet<>();
 
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
@@ -1376,6 +1390,11 @@ public final class FeedVideoActionsPatch {
             return;
         }
 
+        if (!requestHeader.equals(savedVideosRequestHeader)) {
+            // The saved state is of the videos of the previous account.
+            savedVideosLoaded = false;
+            saveButtonVideos.clear();
+        }
         savedVideosFetching = true;
         savedVideosFetchTime = now;
         savedVideosRequestHeader = requestHeader;
@@ -1390,10 +1409,75 @@ public final class FeedVideoActionsPatch {
                 } else if (videos != null) {
                     savedVideos.clear();
                     savedVideos.putAll(videos);
+                    savedVideosLoaded = true;
                     updateWatchLaterBadges();
+                    for (Map.Entry<String, String> entry : pendingSaveButtons.entrySet()) {
+                        setSaveButtonState(entry.getKey(), entry.getValue());
+                    }
+                    pendingSaveButtons.clear();
                 }
             });
         });
+    }
+
+    /**
+     * Called by {@link FeedCardLayoutPatch} when it adds a save button to a feed card.
+     *
+     * @param entityKey Key of the entity of the playlists that the video is saved to, which the button shows.
+     */
+    public static void onCardSaveButton(String videoId, String entityKey) {
+        if (AuthUtils.isNotLoggedIn()) {
+            return;
+        }
+        Utils.runOnMainThread(() -> {
+            try {
+                if (saveButtonVideos.contains(videoId)) {
+                    return;
+                }
+                fetchSavedVideosIfNeeded();
+                if (savedVideosLoaded) {
+                    setSaveButtonState(videoId, entityKey);
+                } else {
+                    pendingSaveButtons.put(videoId, entityKey);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "onCardSaveButton failure", ex);
+            }
+        });
+    }
+
+    /**
+     * The app knows the playlists of a video only after it's saved in the app session,
+     * so a saved video gets the Watch later playlist, the same as the app does when the video is saved.
+     */
+    private static void setSaveButtonState(String videoId, String entityKey) {
+        saveButtonVideos.add(videoId);
+        if (!savedVideos.containsKey(videoId)) {
+            return;
+        }
+
+        Logger.printDebug(() -> "Showing the save button of a saved video: " + videoId);
+        var command = saveButtonStateCommand(entityKey,
+                PlaylistQueueRenderer.SaveToPlaylistListEntityUpdateCommand.Action.ADD);
+        if (!CommandRouterPatch.executeCommand(command.toByteArray(), new HashMap<>())) {
+            // Set again when the card is shown.
+            saveButtonVideos.remove(videoId);
+        }
+    }
+
+    /**
+     * @return The command that adds or removes Watch later in the playlists of a video,
+     *         which the save buttons of the video show.
+     */
+    private static PlaylistQueueRenderer.NavigationEndpoint saveButtonStateCommand(
+            String entityKey, PlaylistQueueRenderer.SaveToPlaylistListEntityUpdateCommand.Action action) {
+        return PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                .setSaveToPlaylistListEntityUpdateCommand(
+                        PlaylistQueueRenderer.SaveToPlaylistListEntityUpdateCommand.newBuilder()
+                                .setSaveToPlaylistListEntityKey(entityKey)
+                                .setPlaylistId(SaveToWatchLaterPatch.WATCH_LATER_PLAYLIST_ID)
+                                .setAction(action))
+                .build();
     }
 
     private static void updateWatchLaterBadges() {
@@ -1492,6 +1576,9 @@ public final class FeedVideoActionsPatch {
         Logger.printDebug(() -> (saveToPlaylist ? "Opening Save to playlist: "
                 : saved ? "Removing from Watch later: " : "Saving to Watch later: ") + videoId);
         var command = PlaylistQueueRenderer.NavigationEndpoint.newBuilder();
+        // The save buttons of the video, such as on the feed cards, are updated the same as by the menu items.
+        String entityKey = FeedCardLayoutPatch.videoEntityKey(videoId,
+                FeedCardLayoutPatch.SAVE_TO_PLAYLIST_LIST_ENTITY_TYPE);
         if (saveToPlaylist) {
             command.setAddToPlaylistEndpoint(PlaylistQueueRenderer.AddToPlaylistEndpoint.newBuilder()
                     .setVideoId(videoId));
@@ -1500,13 +1587,17 @@ public final class FeedVideoActionsPatch {
                     .setPlaylistId(getSavedVideosPlaylistId())
                     .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
                             .setAction(PlaylistEdit.PlaylistEditActionType.ACTION_REMOVE_VIDEO_BY_VIDEO_ID_VALUE)
-                            .setRemovedVideoId(videoId)));
+                            .setRemovedVideoId(videoId))
+                    .addClientActions(saveButtonStateCommand(entityKey,
+                            PlaylistQueueRenderer.SaveToPlaylistListEntityUpdateCommand.Action.REMOVE)));
         } else {
             command.setPlaylistEditEndpoint(PlaylistQueueRenderer.PlaylistEditEndpoint.newBuilder()
                     .setPlaylistId(SaveToWatchLaterPatch.WATCH_LATER_PLAYLIST_ID)
                     .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
                             .setAction(PlaylistEdit.PlaylistEditActionType.ACTION_ADD_VIDEO_VALUE)
-                            .setAddedVideoId(videoId)));
+                            .setAddedVideoId(videoId))
+                    .addClientActions(saveButtonStateCommand(entityKey,
+                            PlaylistQueueRenderer.SaveToPlaylistListEntityUpdateCommand.Action.ADD)));
         }
         if (!CommandRouterPatch.executeCommand(command.build().toByteArray(), new HashMap<>())) {
             Logger.printDebug(() -> "No command router of a shown activity");
