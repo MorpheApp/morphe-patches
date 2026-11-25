@@ -113,6 +113,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_ANSWERS_PREVIEW = new BooleanSetting("morphe_hide_answers_preview", FALSE, true);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_communities_shelf", FALSE, true);
+    public static final BooleanSetting HIDE_COMMUNITY_HIGHLIGHTS = new BooleanSetting("morphe_hide_community_highlights", FALSE, true);
     public static final BooleanSetting HIDE_FOLLOWING_TAB = new BooleanSetting("morphe_hide_following_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
     public static final BooleanSetting HIDE_FOR_YOU_TAB = new BooleanSetting("morphe_hide_for_you_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
     public static final BooleanSetting HIDE_INTERACTIVE_POSTS = new BooleanSetting("morphe_hide_interactive_posts", FALSE, true);
