@@ -118,6 +118,10 @@ public final class AndroidAutoPatch {
         Iterable<?> patch_getPaginationCommands();
     }
 
+    public interface MediaItemExtras {
+        @Nullable Bundle patch_getExtras();
+    }
+
     /** Android Auto's request for the children of a folder media ID. */
     public interface BrowseRequest {
         @Nullable String patch_getRequestedMediaId();
@@ -699,7 +703,7 @@ public final class AndroidAutoPatch {
 
     // Refresh after Library changes
 
-    /** Injection point. Remembers the browser subscriptions used to refresh Settings and Library folders. */
+    /** Injection point. Saves folder subscriptions for later refreshes. */
     public static synchronized void rememberSubscription(FolderReload browserService,
             @Nullable String parentMediaId, Object connection) {
         if (parentMediaId == null) return;
@@ -994,7 +998,7 @@ public final class AndroidAutoPatch {
         // YTM also marks its upgrade prompt as browsable.
         if (!item.b()) return false;
         String id = item.a();
-        Bundle extras = item.a.f;
+        Bundle extras = ((MediaItemExtras) item).patch_getExtras();
         return !UPGRADE_PROMPT_MEDIA_ID.equals(id) && !DEFAULT_PROMOTION_MEDIA_ID.equals(id)
                 && (extras == null || !extras.getBoolean(IS_PROMOTION));
     }

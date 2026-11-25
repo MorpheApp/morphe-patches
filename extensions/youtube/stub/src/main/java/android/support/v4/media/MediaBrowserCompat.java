@@ -9,9 +9,6 @@ public class MediaBrowserCompat {
         public static final int FLAG_BROWSABLE = 1;
         public static final int FLAG_PLAYABLE = 2;
 
-        // Media description.
-        public final MediaDescriptionCompat a;
-
         public MediaItem(MediaDescriptionCompat description, int flags) {
             throw new UnsupportedOperationException("Stub");
         }

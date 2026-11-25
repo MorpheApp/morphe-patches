@@ -364,12 +364,7 @@ private fun addPaginatedLibraryGridDecoder(
     return clonedDecoderMethod
 }
 
-// Read returned Library data
-
-/**
- * Exposes YTM's Library readers and the response bytes needed to parse Home and collections.
- * The pagination getter uses YTM's parser copied by [addPaginatedLibraryGridDecoder].
- */
+/** Home and collections read the browse response. Library pagination uses YTM's grid parser. */
 private fun addPhoneBrowseResponseInterface() {
     val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
     val decodePaginatedLibraryGridMethod = LibraryPaginationDecoderFingerprint.originalMethod
@@ -612,6 +607,7 @@ private fun addArtworkUriGetter(
 // region Android Auto requests
 
 private fun patchBrowseRequests() {
+    addMediaItemExtrasInterface()
     addBrowseRequestInterface()
 
     val handler = BrowseRequestHandlerFingerprint.method
@@ -626,6 +622,23 @@ private fun patchBrowseRequests() {
             return-void
             :resume
             nop
+        """
+    )
+}
+
+private fun addMediaItemExtrasInterface() {
+    val itemClass = mutableClassDefBy($$"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;")
+    val descriptionClass = mutableClassDefBy("Landroid/support/v4/media/MediaDescriptionCompat;")
+    val descriptionField = itemClass.instanceFields.single { it.type == descriptionClass.type }
+    val extrasField = descriptionClass.instanceFields.single { it.type == "Landroid/os/Bundle;" }
+    extrasField.accessFlags = extrasField.accessFlags.toPublicAccessFlags()
+    itemClass.addPatchInterface(
+        $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$MediaItemExtras;",
+        "patch_getExtras",
+        """
+            iget-object p0, p0, $descriptionField
+            iget-object p0, p0, $extrasField
+            return-object p0
         """
     )
 }
