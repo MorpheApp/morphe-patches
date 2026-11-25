@@ -27,6 +27,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.InvalidProtocolBufferException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,9 +47,13 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.FilterGroup.FilterGroupResult;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupViewModel;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.patches.FeedViewCountPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -69,6 +75,18 @@ public final class LayoutComponentsFilter extends Filter {
             "cell_description_body",
             "channel_profile"
     );
+
+    /**
+     * Template of the cards of a newer layout, which have no url of the mix.
+     */
+    private static final String LOCKUP_TEMPLATE = "lockup.eml";
+    /**
+     * Part of the name of the mix icon on the thumbnail of a card, such as "yt_outline_experimental_mix_black_24".
+     */
+    private static final String LOCKUP_MIX_ICON = "_mix_";
+    private static final String MIX_PLAYLIST_ID_PREFIX = "RD";
+    private static final int LOCKUP_CONTENT_TYPE_PLAYLIST = 2;
+    private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
@@ -167,6 +185,10 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup thumbnailCommissionBadgeBuffer;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroup videoLabelsBuffer;
+    private final ByteArrayFilterGroup badgeThemeBuffer;
+    private final ByteArrayFilterGroup videoLabelFillIconBuffer;
+    private final ByteArrayFilterGroup videoLabelOutlineIconBuffer;
+    private final ByteArrayFilterGroup membersOnlyBadgeIconBuffer;
     private final StringFilterGroup videoMetadataLabels;
     private final StringFilterGroup videoRecommendationLabels;
 
@@ -558,6 +580,32 @@ public final class LayoutComponentsFilter extends Filter {
                 "badge.e"
         );
 
+        // The text and the icon of a badge are before its theme. In the search results, a list of
+        // icons used by the whole video card follows, which is not the icon of the badge.
+        badgeThemeBuffer = new ByteArrayFilterGroup(
+                null,
+                "theme|"
+        );
+
+        // Labels such as 'Auto-dubbed' and 'Hyped' have an icon. The texts are localized, so the badges
+        // are told apart by their icons. Badges without an icon, such as 'Featured', are not labels.
+        // Each prefix is a separate group, as a group only returns the index of its first matched prefix.
+        videoLabelFillIconBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_fill_"
+        );
+
+        videoLabelOutlineIconBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_"
+        );
+
+        // 'Members only' badge of the videos of channel memberships.
+        membersOnlyBadgeIconBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_fill_experimental_star_circle"
+        );
+
         // Labels such as 'Auto-dubbed' or 'Hyped' in the metadata of the feed cards of a newer A/B test.
         videoMetadataLabels = new StringFilterGroup(
                 Settings.HIDE_VIDEO_LABELS,
@@ -668,6 +716,45 @@ public final class LayoutComponentsFilter extends Filter {
         FilterGroupResult button = buttonComponentBuffer.check(buffer);
         return button.isFiltered() && !buttonComponentBuffer.check(buffer,
                 button.getMatchedIndex() + button.getMatchedLength()).isFiltered();
+    }
+
+    /**
+     * A container of badges holds the buffers of all its badges. A row that has the 'Members only'
+     * badge is kept as a whole, and a row that has a label is hidden as a whole, such as the
+     * 'products' label with the 'Earns commission' badge in the search results.
+     *
+     * @param buffer Buffer of a badge, or of a container of badges.
+     * @return If the badge is a label to hide, and not a badge such as 'Members only' or 'Featured'.
+     */
+    private boolean isVideoLabelBadge(byte[] buffer) {
+        boolean hasLabelIcon = false;
+
+        FilterGroupResult badge = videoLabelsBuffer.check(buffer);
+        while (badge.isFiltered()) {
+            final int badgeStart = badge.getMatchedIndex();
+            final int themeIndex = badgeThemeBuffer.check(buffer, badgeStart).getMatchedIndex();
+            final int badgeEnd = themeIndex < 0 ? buffer.length : themeIndex;
+
+            if (isInBadge(membersOnlyBadgeIconBuffer, buffer, badgeStart, badgeEnd)) {
+                return false;
+            }
+            if (isInBadge(videoLabelFillIconBuffer, buffer, badgeStart, badgeEnd)
+                    || isInBadge(videoLabelOutlineIconBuffer, buffer, badgeStart, badgeEnd)) {
+                hasLabelIcon = true;
+            }
+
+            badge = videoLabelsBuffer.check(buffer, badgeEnd);
+        }
+
+        return hasLabelIcon;
+    }
+
+    /**
+     * @return If the group matches between the start of a badge and its theme.
+     */
+    private static boolean isInBadge(ByteArrayFilterGroup group, byte[] buffer, int badgeStart, int badgeEnd) {
+        final int index = group.check(buffer, badgeStart).getMatchedIndex();
+        return index >= 0 && index < badgeEnd;
     }
 
     /**
@@ -881,12 +968,14 @@ public final class LayoutComponentsFilter extends Filter {
             return VersionCheckPatch.IS_20_31_OR_GREATER
                     && Utils.contains(path, "lockup_metadata.e")
                     && videoLabelsBuffer.check(buffer).isFiltered()
-                    && Utils.startsWith(asciiStrings.getStrings(), "badge.e");
+                    && Utils.startsWith(asciiStrings.getStrings(), "badge.e")
+                    && isVideoLabelBadge(buffer);
         }
 
         if (matchedGroup == videoMetadataLabels) {
             // Only the label itself, and not a larger part of the metadata that contains a label.
-            return Utils.startsWith(asciiStrings.getStrings(), "badge.e");
+            return Utils.startsWith(asciiStrings.getStrings(), "badge.e")
+                    && isVideoLabelBadge(buffer);
         }
 
         if (matchedGroup == videoRecommendationLabels) {
@@ -911,8 +1000,13 @@ public final class LayoutComponentsFilter extends Filter {
                 return false;
             }
 
-            if (!mixPlaylistsBuffersExceptions.check(buffer).isFiltered() &&
-                    mixPlaylistUrlBuffer.check(buffer).isFiltered()) {
+            if (mixPlaylistsBuffersExceptions.check(buffer).isFiltered()) {
+                return false;
+            }
+
+            // The mix cards are hidden by hideMixCards() when they are loaded. The cards loaded
+            // before the setting is turned on are hidden here, until the feed is loaded again.
+            if (mixPlaylistUrlBuffer.check(buffer).isFiltered() || isMixCard(buffer)) {
                 Logger.printDebug(() -> "Filtered mix playlist");
                 return true;
             }
@@ -921,6 +1015,47 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return false;
+    }
+
+    /**
+     * Injection point.
+     * Hides the mixes of the card layout (lockup.eml), which have no url of the mix for
+     * {@link #filterMixPlaylists(byte[])}. The bytes of the element are removed, so its list item is
+     * removed when it's created, without the spacing of the list that an empty list item keeps.
+     */
+    public static byte[] hideMixCards(byte[] bytes) {
+        try {
+            if (Settings.HIDE_MIX_PLAYLISTS.get() && isMixCard(bytes)) {
+                Logger.printDebug(() -> "Hiding mix playlist card");
+                return EMPTY_BYTE_ARRAY;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideMixCards failure", ex);
+        }
+
+        return bytes;
+    }
+
+    /**
+     * @return If the element is a mix of the card layout (lockup.eml), which has the id of the mix
+     *         but no url of the mix.
+     */
+    private static boolean isMixCard(byte[] buffer) throws InvalidProtocolBufferException {
+        // The mix icon is checked first, so that only the few cards with the icon are parsed.
+        final String elementText = FeedVideoCardsPatch.getElementText(buffer);
+        if (!elementText.contains(LOCKUP_TEMPLATE) || !elementText.contains(LOCKUP_MIX_ICON)) {
+            return false;
+        }
+
+        ElementModel model = Element.parseFrom(buffer).getType().getComponentType().getModel();
+        if (!model.hasLockupModel()) {
+            return false;
+        }
+
+        // A video can have the id of a mix in its tap command, so the content type is checked too.
+        LockupViewModel lockup = model.getLockupModel().getViewModel().getLockupViewModel();
+        return lockup.getContentType() == LOCKUP_CONTENT_TYPE_PLAYLIST
+                && lockup.getContentId().startsWith(MIX_PLAYLIST_ID_PREFIX);
     }
 
     /**

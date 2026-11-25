@@ -498,6 +498,9 @@ val hideLayoutComponentsPatch = patch(
 
         // region hide mix playlists
 
+        // The mixes of the card layout have no url of the mix, and are hidden by their element.
+        hookElement("$LAYOUT_COMPONENTS_FILTER->hideMixCards")
+
         ParseElementFromBufferFingerprint.let {
             // The conversion context parameter is reused before the filter is called.
             it.method.cloneParameters().apply {
