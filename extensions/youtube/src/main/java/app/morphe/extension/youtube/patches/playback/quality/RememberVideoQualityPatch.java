@@ -107,9 +107,20 @@ public class RememberVideoQualityPatch {
             Utils.createSizeRestrictedMap(MAX_VIDEO_FORMAT_CODECS, true));
 
     /**
+     * Height divided by width of the largest video format of each vertical video, such as a Short, by video ID.
+     */
+    private static final Map<String, Float> verticalVideoAspectRatios = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_VIDEO_FORMAT_CODECS, true));
+
+    /**
      * Format ID (itag) of the video format playing.
      */
     private static volatile int currentVideoFormatId;
+
+    /**
+     * Last message of {@link #logQualityDecision(Logger.LogMessage)}.
+     */
+    private static volatile String lastQualityDecisionLog = "";
 
     static {
         // A quality selected by the user is used for its video until another video plays or its player closes,
@@ -239,20 +250,62 @@ public class RememberVideoQualityPatch {
     }
 
     /**
+     * Logs how the quality of the player and of the SABR requests is chosen, to find why a video does not play
+     * with a default quality from the debug logs. The SABR requests repeat every few seconds,
+     * so a message is logged only if it differs from the last one.
+     */
+    private static void logQualityDecision(Logger.LogMessage message) {
+        Logger.printDebug(() -> {
+            final String text = message.buildMessageString();
+            if (text.equals(lastQualityDecisionLog)) return null;
+            lastQualityDecisionLog = text;
+            return text;
+        });
+    }
+
+    /**
      * Injection point.
      */
     public static List<FormatInterface> setVideoFormats(@NonNull String videoId, @NonNull List<FormatInterface> adaptiveFormats) {
         try {
             final Map<Integer, String> codecs = new HashMap<>();
+            long largestArea = 0;
+            float aspectRatio = 0;
             for (FormatInterface format : adaptiveFormats) {
                 final String mimeType = format.patch_getMimeType();
                 if (mimeType != null && mimeType.startsWith("video")) {
                     // The codec without its profile, such as 'video/mp4; codecs="avc1' for 'video/mp4; codecs="avc1.4d401e"'.
                     final int profileIndex = mimeType.indexOf('.');
                     codecs.put(format.patch_getItag(), profileIndex > 0 ? mimeType.substring(0, profileIndex) : mimeType);
+
+                    final int width = format.patch_getWidth();
+                    final int height = format.patch_getHeight();
+                    final long area = (long) width * height;
+                    if (width > 0 && area > largestArea) {
+                        largestArea = area;
+                        aspectRatio = (float) height / width;
+                    }
                 }
             }
             videoFormatCodecs.put(videoId, codecs);
+            final float finalAspectRatio = aspectRatio;
+            Logger.printDebug(() -> {
+                StringBuilder builder = new StringBuilder("Video formats of ").append(videoId)
+                        .append(" height/width: ").append(finalAspectRatio).append(':');
+                for (FormatInterface format : adaptiveFormats) {
+                    final String mimeType = format.patch_getMimeType();
+                    if (mimeType != null && mimeType.startsWith("video")) {
+                        builder.append(' ').append(format.patch_getItag()).append('=').append(format.patch_getWidth())
+                                .append('x').append(format.patch_getHeight()).append(' ').append(codecs.get(format.patch_getItag()));
+                    }
+                }
+                return builder.toString();
+            });
+            if (aspectRatio > 1) {
+                verticalVideoAspectRatios.put(videoId, aspectRatio);
+            } else {
+                verticalVideoAspectRatios.remove(videoId);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoFormats failure", ex);
         }
@@ -265,6 +318,12 @@ public class RememberVideoQualityPatch {
      * @param formatId Format ID (itag) of the video format playing.
      */
     public static void setCurrentVideoFormat(int formatId) {
+        if (currentVideoFormatId != formatId) {
+            Logger.printDebug(() -> {
+                final Map<Integer, String> codecs = videoFormatCodecs.get(VideoInformation.getVideoId());
+                return "Video format playing: " + formatId + " " + (codecs == null ? null : codecs.get(formatId));
+            });
+        }
         currentVideoFormatId = formatId;
     }
 
@@ -485,17 +544,26 @@ public class RememberVideoQualityPatch {
             // So the highest quality of the current video that is not above the default quality
             // is used, or the default quality if the qualities of the video are not known yet
             // or all of them are above it (the player then uses the lowest quality).
+            // A quality the player cannot play is skipped, as when it is selected in the quality menu
+            // (see isQualityPlayable()), otherwise the player and the SABR requests keep asking for it,
+            // and the video reloads without playing.
             VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
             if (qualities != null) {
                 // Ordered from largest to smallest, with index 0 being 'Auto'.
                 for (VideoQualityInterface quality : qualities) {
                     final int resolution = quality.patch_getResolution();
                     if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= preferredQuality) {
-                        return resolution;
+                        if (isQualityPlayable(quality)) {
+                            return resolution;
+                        }
+                        logQualityDecision(() -> "Default quality skips " + quality.patch_getQualityName()
+                                + ", it has no format with the codec playing: " + quality.patch_getFormatIds());
                     }
                 }
             }
 
+            logQualityDecision(() -> "Default quality " + preferredQuality + " is used as is, the qualities "
+                    + (qualities == null ? "are not known yet" : "of the video are all above it or not playable"));
             return preferredQuality;
         } catch (Exception ex) {
             Logger.printException(() -> "getLastSelectedVideoQuality failure", ex);
@@ -551,14 +619,25 @@ public class RememberVideoQualityPatch {
 
             // The server does not choose a quality above the size of the player.
             // The resolution is the short side of the video, so it is compared with the short side of the player.
+            // A vertical video, such as a Short in the regular player, must also fit the height of the player
+            // at the resolution, otherwise the server sends the formats of a lower quality that fit the player,
+            // such as 608x1080 for 1080p, while the player asks for the formats of 1080p.
             if (state.hasClientViewportWidth() && state.hasClientViewportHeight()) {
                 final int width = state.getClientViewportWidth();
                 final int height = state.getClientViewportHeight();
-                final int shortSide = Math.min(width, height);
-                if (shortSide > 0 && shortSide < resolution) {
-                    builder.setClientViewportWidth((int) Math.ceil((double) width * resolution / shortSide))
-                            .setClientViewportHeight((int) Math.ceil((double) height * resolution / shortSide));
+                final Float verticalAspectRatio = verticalVideoAspectRatios.get(
+                        VideoInformation.getStartingOrPlayingVideoId());
+                final double scale = verticalAspectRatio == null
+                        ? (double) resolution / Math.min(width, height)
+                        : Math.max((double) resolution / width, resolution * verticalAspectRatio / height);
+                if (width > 0 && height > 0 && scale > 1) {
+                    builder.setClientViewportWidth((int) Math.ceil(width * scale))
+                            .setClientViewportHeight((int) Math.ceil(height * scale));
                 }
+                logQualityDecision(() -> "SABR quality: " + resolution + (selectedResolution != null
+                        ? " (selected by the user)" : " (default)") + " viewport: " + width + "x" + height
+                        + " sent: " + builder.getClientViewportWidth() + "x" + builder.getClientViewportHeight()
+                        + " vertical height/width: " + verticalAspectRatio);
             }
 
             return builder.build().toByteArray();
