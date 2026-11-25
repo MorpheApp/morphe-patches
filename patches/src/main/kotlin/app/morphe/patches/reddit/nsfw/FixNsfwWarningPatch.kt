@@ -25,20 +25,21 @@ private const val NSFW_BOTTOM_SHEET_BACK_CALLBACK_CLASS =
     $$"Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet$onInitialize$1$1;"
 
 @Suppress("unused")
-val nsfwNavigationPatch = patch(
-    name = "Fix NSFW warning navigation",
+val fixNsfwWarningPatch = patch(
+    name = "Fix NSFW warning",
     description = "Makes the NSFW warning and the back gesture return to the previous screen instead of the home screen. " +
-            "This patch works with Reddit 2026.24.0 and newer.",
+            "This patch works with Reddit 2026.24.0 and newer. " +
+            "With Reddit 2026.40.0 and newer, also prevents NSFW posts and profiles from briefly showing before the warning.",
     default = true
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch, versionCheckPatch)
+    dependsOn(settingsPatch, versionCheckPatch, preventNsfwFlashingPatch)
 
     execute {
         if (!is_2026_24_0_or_greater) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Fix NSFW warning navigation' requires Reddit 2026.24.0+"
+                "'Fix NSFW warning' requires Reddit 2026.24.0+"
             )
         }
 

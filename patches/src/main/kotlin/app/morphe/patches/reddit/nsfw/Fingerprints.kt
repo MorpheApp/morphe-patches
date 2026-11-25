@@ -102,7 +102,7 @@ internal object ReplaceScreenFingerprint : Fingerprint(
 
 // endregion
 
-// region Prevent NSFW content flashing.
+// region Fix NSFW warning: Prevent NSFW content flashing.
 
 internal object PostLoadedNsfwIncognitoVerifyEventHandlerConstructorFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/postdetail/refactor/events/handlers/PostLoadedNsfwIncognitoVerifyEventHandler;",
@@ -208,7 +208,7 @@ internal object ReplaceScreenExtensionFingerprint : Fingerprint(
 
 // endregion
 
-// region Fix NSFW warning navigation.
+// region Fix NSFW warning: Navigation.
 
 internal object ShowNsfwBottomSheetFingerprint : Fingerprint(
     returnType = "V",

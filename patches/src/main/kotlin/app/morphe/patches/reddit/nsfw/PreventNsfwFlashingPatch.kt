@@ -16,35 +16,25 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
-import java.util.logging.Logger
 
 internal const val PREVENT_NSFW_FLASHING_EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/PreventNsfwFlashingPatch;"
 
-@Suppress("unused")
-val preventNsfwFlashingPatch = patch(
-    name = "Prevent NSFW content flashing",
-    description = "Prevents NSFW posts and profiles from briefly showing before the NSFW warning " +
-            "when NSFW content is turned off. This patch works with Reddit 2026.40.0 and newer.",
-    default = true
-) {
-    compatibleWith(COMPATIBILITY_REDDIT)
-
+/**
+ * Prevents NSFW posts and profiles from briefly showing before the NSFW warning
+ * when NSFW content is turned off.
+ */
+internal val preventNsfwFlashingPatch = patch {
     dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
-        if (!is_2026_40_0_or_greater) {
-            return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Prevent NSFW content flashing' requires Reddit 2026.40.0+"
-            )
-        }
+        if (!is_2026_40_0_or_greater) return@execute
 
         val nsfwViewingPreference = NsfwViewingPreferenceFingerprint.originalMethod
         // The preference repository interface, implemented by the class of the getter.
