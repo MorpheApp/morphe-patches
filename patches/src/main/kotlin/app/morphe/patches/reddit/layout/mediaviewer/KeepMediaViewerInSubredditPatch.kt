@@ -31,12 +31,16 @@ val keepMediaViewerInSubredditPatch = patch(
 
     execute {
         fun Fingerprint.hookRequest() = method.apply {
-            // Filter the loaded posts before the Listing is created.
+            // Filter the loaded posts before the Listing is created, and end the list when none are left.
             val listingInitIndex = instructionMatches[3].index
-            val postsRegister = getInstruction(listingInitIndex).registersUsed[1]
+            val registersUsed = getInstruction(listingInitIndex).registersUsed
+            val postsRegister = registersUsed[1]
+            val afterRegister = registersUsed[2]
             addInstructionsAtControlFlowLabel(
                 listingInitIndex,
                 """
+                    invoke-static/range { v$postsRegister .. v$afterRegister }, $EXTENSION_CLASS->getAfter(Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+                    move-result-object v$afterRegister
                     invoke-static/range { v$postsRegister .. v$postsRegister }, $EXTENSION_CLASS->filterPosts(Ljava/util/List;)Ljava/util/List;
                     move-result-object v$postsRegister
                 """
