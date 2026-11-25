@@ -77,8 +77,12 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_post_mod_button_title">Hide Mod button</string>
     <string name="morphe_hide_post_repost_button_title">Hide Repost button</string>
     <string name="morphe_hide_post_share_button_title">Hide Share button</string>
+    <string name="morphe_hide_post_share_count_title">Hide Share count</string>
+    <string name="morphe_hide_post_share_count_summary">Shows the Share button without its count</string>
     <string name="morphe_hide_post_vote_buttons_title">Hide Vote buttons</string>
     <string name="morphe_hide_post_vote_buttons_summary">Hides the Upvote and Downvote buttons</string>
+    <string name="morphe_hide_post_vote_count_title">Hide vote count</string>
+    <string name="morphe_hide_post_vote_count_summary">Hides the score between the Upvote and Downvote buttons of posts and comments</string>
 
     <string name="morphe_screen_filters_title">Filters</string>
     <string name="morphe_flair_filters_title">Flair filters</string>
