@@ -61,6 +61,7 @@ public final class LithoFilterPatch {
         private String accessibility;
         @Nullable
         private final Object element;
+        @Nullable
         private byte[] buffer;
         private BufferAsciiStrings asciiStrings;
 
@@ -118,10 +119,7 @@ public final class LithoFilterPatch {
         @Override
         public String toString() {
             String acc = accessibility();
-            StringBuilder builder = new StringBuilder(identifier.length()
-                    + path.length()
-                    + acc.length()
-                    + buffer().length);
+            StringBuilder builder = new StringBuilder(identifier.length() + path.length() + acc.length());
 
             builder.append("ID: ");
             builder.append(identifier);

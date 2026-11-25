@@ -730,6 +730,22 @@ internal fun sharedLithoFilterPatch(
 
         // endregion
 
+
+        // region Change Litho thread executor to 1 thread to fix layout issue in unpatched YouTube.
+
+        LithoThreadExecutorFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->getExecutorCorePoolSize(I)I
+                move-result p1
+                invoke-static { p2 }, $EXTENSION_CLASS->getExecutorMaxThreads(I)I
+                move-result p2
+            """
+        )
+
+        // endregion
+
+
         // region A/B test of new Litho native code.
 
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).

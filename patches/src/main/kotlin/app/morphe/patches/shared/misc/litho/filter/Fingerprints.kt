@@ -78,6 +78,15 @@ internal object ProtobufBufferEncodeFingerprint : Fingerprint(
     )
 )
 
+internal object LithoThreadExecutorFingerprint : Fingerprint(
+    superclass = "Ljava/util/concurrent/ThreadPoolExecutor;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("I", "I", "I"),
+    filters = listOf(
+        literal(1L) // 1L = default thread timeout.
+    )
+)
+
 internal object LithoConverterBufferUpbFeatureFlagFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(

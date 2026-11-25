@@ -5,17 +5,17 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.shared.misc.fix.litholayout
+package app.morphe.patches.youtube.misc.fix.litholayout
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
@@ -57,18 +57,6 @@ internal const val DETACH_ONLY_OWN_TREE_FLAG = 45708674L
 internal const val MAX_STATE_UPDATES_DURING_LAYOUT = 50L
 
 /**
- * Thread pool of the Litho layout threads.
- */
-internal object LithoThreadExecutorFingerprint : Fingerprint(
-    superclass = "Ljava/util/concurrent/ThreadPoolExecutor;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf("I", "I", "I"),
-    filters = listOf(
-        literal(1L) // 1L = default thread timeout.
-    )
-)
-
-/**
  * RecyclerBinder, which lays out the items of the Litho lists.
  */
 internal object RecyclerBinderFingerprint : Fingerprint(
@@ -84,13 +72,39 @@ internal object RecyclerBinderConstructorFingerprint : Fingerprint(
     classFingerprint = RecyclerBinderFingerprint,
     name = "<init>",
     filters = listOf(
-        methodCall(smali = "Ljava/util/HashMap;-><init>()V"),
+        newInstance("Ljava/util/HashMap;"),
+        methodCall(smali = "Ljava/util/HashMap;-><init>()V", location = MatchAfterWithin(5)),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
             type = "Ljava/util/Map;",
-            location = MatchAfterWithin(3)
+            location = MatchAfterWithin(5)
         )
+    )
+)
+
+/**
+ * Called when a list item is measured, on a layout thread or the main thread. Puts the height of the item
+ * in the map of the heights of the list items, unless the map already has another height of the item.
+ */
+internal object ItemMeasureListenerFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            // Field of the map of the heights.
+            reference = { RecyclerBinderConstructorFingerprint.instructionMatches.last().fieldReference },
+            opcodes = listOf(Opcode.IGET_OBJECT)
+        ),
+        methodCall(
+            smali = "Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(Opcode.IF_EQZ, location = MatchAfterWithin(5)),
+        methodCall(
+            smali = "Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        ),
+        checkCast("Ljava/lang/Integer;", location = MatchAfterWithin(5))
     )
 )
 
@@ -109,8 +123,7 @@ internal object ComponentTreeUpdateStateFingerprint : Fingerprint(
             definingClass = "this",
             type = "I"
         ),
-        literal(MAX_STATE_UPDATES_DURING_LAYOUT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
+        literal(MAX_STATE_UPDATES_DURING_LAYOUT, location = MatchAfterWithin(5)),
         string("State update loop during layout detected. Most recent attribution: ")
     )
 )
