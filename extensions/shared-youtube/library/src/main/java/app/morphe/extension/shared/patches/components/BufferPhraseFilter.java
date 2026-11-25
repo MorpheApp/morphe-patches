@@ -115,7 +115,7 @@ public abstract class BufferPhraseFilter extends Filter {
      * If filtering is temporarily turned off, the time to resume filtering.
      * Field is zero if no backoff is in effect.
      */
-    protected volatile long timeToResumeFiltering;
+    private volatile long timeToResumeFiltering;
 
     protected BufferPhraseFilter(StringFilterGroup... extraPathCallbacks) {
         StringFilterGroup[] all = new StringFilterGroup[2 + extraPathCallbacks.length];
@@ -134,11 +134,18 @@ public abstract class BufferPhraseFilter extends Filter {
     /**
      * @param contextInterface Context of the Litho element that is filtered.
      * @return whether filtering is active for the current feed / search context.
-     * Only consulted when the matched group is {@link #startsWithFilter} or
-     * {@link #containsFilter}. Extra path callbacks are assumed to be self-gated
-     * by their own {@link app.morphe.extension.shared.settings.BooleanSetting}.
+     * Only consulted when the matched group is {@link #isFeedGroup(StringFilterGroup)}.
+     * Other path callbacks are assumed to be self-gated by their own {@link app.morphe.extension.shared.settings.BooleanSetting}.
      */
     protected abstract boolean isActiveForFeedContext(ContextInterface contextInterface);
+
+    /**
+     * @return whether the buffer of the path is searched. Paths that are not searched do not change the
+     * statistics used to detect excessively broad phrases.
+     */
+    protected boolean isSearchedPath(CharSequence path, StringFilterGroup matchedGroup) {
+        return true;
+    }
 
     /**
      * @param path             Path of the Litho element that is filtered.
@@ -172,9 +179,13 @@ public abstract class BufferPhraseFilter extends Filter {
             return false;
         }
 
+        if (!isSearchedPath(path, matchedGroup)) {
+            return false;
+        }
+
         reparseIfNeeded();
 
-        if (isBaseFeedGroup(matchedGroup) && !isActiveForFeedContextGuarded(contextInterface)) {
+        if (isFeedGroup(matchedGroup) && !isActiveForFeedContextGuarded(contextInterface)) {
             return false;
         }
 
@@ -193,7 +204,11 @@ public abstract class BufferPhraseFilter extends Filter {
         return false;
     }
 
-    private boolean isBaseFeedGroup(StringFilterGroup group) {
+    /**
+     * @return whether the group is only filtered if {@link #isActiveForFeedContext(ContextInterface)},
+     * and is not filtered while an excessively broad phrase is paused.
+     */
+    protected boolean isFeedGroup(StringFilterGroup group) {
         return group == startsWithFilter || group == containsFilter;
     }
 

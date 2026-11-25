@@ -494,7 +494,7 @@ val hideLayoutComponentsPatch = patch(
         addLithoFilter(CUSTOM_FILTER)
         addSpanFilter(SANITIZE_VIDEO_SUBTITLE_FILTER)
         addSpanFilter(SEARCH_LINKS_FILTER)
-        hookElement("$KEYWORD_FILTER->hideSearchShortsShelf")
+        hookElement("$KEYWORD_FILTER->onElementLoaded")
         hookTreeNodeResult("$COMMENTS_FILTER->hideCommentsFilterBarOptions")
 
         // region hide mix playlists
