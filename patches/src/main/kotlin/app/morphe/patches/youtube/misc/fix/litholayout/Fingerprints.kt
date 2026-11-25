@@ -52,11 +52,6 @@ internal const val REMOVE_RELEASED_ITEM_HEIGHTS_FLAG = 45795775L
 internal const val DETACH_ONLY_OWN_TREE_FLAG = 45708674L
 
 /**
- * State updates dispatched while a layout is calculated after which Litho reports a loop.
- */
-internal const val MAX_STATE_UPDATES_DURING_LAYOUT = 50L
-
-/**
  * RecyclerBinder, which lays out the items of the Litho lists.
  */
 internal object RecyclerBinderFingerprint : Fingerprint(
@@ -117,13 +112,6 @@ internal object ComponentTreeUpdateStateFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Z", "Ljava/lang/String;", "Z"),
     filters = listOf(
-        // Count of the state updates of the current layout.
-        fieldAccess(
-            opcode = Opcode.IPUT,
-            definingClass = "this",
-            type = "I"
-        ),
-        literal(MAX_STATE_UPDATES_DURING_LAYOUT, location = MatchAfterWithin(5)),
         string("State update loop during layout detected. Most recent attribution: ")
     )
 )

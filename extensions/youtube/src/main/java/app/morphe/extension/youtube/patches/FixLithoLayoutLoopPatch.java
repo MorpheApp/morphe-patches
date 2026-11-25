@@ -16,15 +16,11 @@ public final class FixLithoLayoutLoopPatch {
 
     /**
      * Injection point.
-     * Called when a state update of a component tree is not laid out, as too many were dispatched
-     * while a layout is calculated. Logged once each time the updates stop being laid out.
+     * Called when Litho detects a state update loop, once for each loop.
      *
-     * @param stateUpdates State updates counted by the component tree.
-     * @param maxStateUpdates State updates that are laid out.
+     * @param attribution Attribution of the last state update.
      */
-    public static void onStateUpdateLoop(int stateUpdates, int maxStateUpdates, @Nullable String attribution) {
-        if (stateUpdates == maxStateUpdates + 1) {
-            Logger.printInfo(() -> "Litho state update loop, state updates are not laid out: " + attribution);
-        }
+    public static void onStateUpdateLoop(@Nullable String attribution) {
+        Logger.printInfo(() -> "Litho state update loop during layout: " + attribution);
     }
 }

@@ -7,6 +7,7 @@
 
 package app.morphe.patches.youtube.misc.fix.litholayout
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
@@ -20,7 +21,6 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21t
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/FixLithoLayoutLoopPatch;"
 
@@ -58,32 +58,13 @@ val fixLithoLayoutLoopPatch = patch(
 
         // A component that dispatches a state update each time it's laid out, such as from its render,
         // makes the layouts loop. Litho reports the 50th state update of a layout as a loop, which is an
-        // exception only in its debug builds, and the layouts go on forever. The later state updates of
-        // the loop are not laid out. They are still queued, and the next layout that is not started by
-        // a state update dispatched during a layout applies them and starts counting again.
-        // Until then the tree shows its last layout, so it's logged.
+        // exception only in its debug builds, and the layouts go on. The report is only logged,
+        // as a component tree whose later state updates are not laid out can keep showing an old layout.
         ComponentTreeUpdateStateFingerprint.let {
-            it.method.apply {
-                val countRegister = getInstruction<TwoRegisterInstruction>(
-                    it.instructionMatches.first().index
-                ).registerA
-                val limitIndex = it.instructionMatches[1].index
-                val limitRegister = getInstruction<OneRegisterInstruction>(limitIndex).registerA
-
-                // The method holds the lock of the tree here, as its other early returns do.
-                addInstructionsWithLabels(
-                    limitIndex,
-                    """
-                        const/16 v$limitRegister, $MAX_STATE_UPDATES_DURING_LAYOUT
-                        if-le v$countRegister, v$limitRegister, :lay_out
-                        invoke-static { v$countRegister, v$limitRegister, p2 }, $EXTENSION_CLASS->onStateUpdateLoop(IILjava/lang/String;)V
-                        monitor-exit p0
-                        return-void
-                        :lay_out
-                        nop
-                    """
-                )
-            }
+            it.method.addInstruction(
+                it.instructionMatches.first().index,
+                "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->onStateUpdateLoop(Ljava/lang/String;)V"
+            )
         }
 
         // The measure listeners of the list items change the map of the item heights on the layout threads,
