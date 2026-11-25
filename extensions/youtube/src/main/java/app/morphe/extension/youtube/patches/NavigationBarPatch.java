@@ -1308,6 +1308,13 @@ public final class NavigationBarPatch {
     private static final boolean YOU_BUTTON_ACCOUNT_SWITCHER = VersionCheckPatch.IS_21_30_OR_GREATER
             && Settings.YOU_BUTTON_ACCOUNT_SWITCHER.get();
 
+    /**
+     * The server rejects the request of 21.30 for the content of the lite account switcher,
+     * and the switcher closes right after it opens. 21.30 opens the account dialog of the
+     * 'Accounts' button of the 'You' page instead.
+     */
+    private static final boolean USE_LITE_ACCOUNT_SWITCHER = VersionCheckPatch.IS_21_35_OR_GREATER;
+
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
 
     private static volatile WeakReference<View> youTabRef = new WeakReference<>(null);
@@ -1372,8 +1379,12 @@ public final class NavigationBarPatch {
      */
     private static void openAccountSwitcher(View view) {
         try {
+            SignInEndpoint.Builder signInEndpoint = SignInEndpoint.newBuilder();
+            if (USE_LITE_ACCOUNT_SWITCHER) {
+                signInEndpoint.setUseAccountSwitcher(true);
+            }
             byte[] command = NavigationEndpoint.newBuilder()
-                    .setSignInEndpoint(SignInEndpoint.newBuilder().setUseAccountSwitcher(true))
+                    .setSignInEndpoint(signInEndpoint)
                     .build()
                     .toByteArray();
             Map<String, Object> context = new HashMap<>();
