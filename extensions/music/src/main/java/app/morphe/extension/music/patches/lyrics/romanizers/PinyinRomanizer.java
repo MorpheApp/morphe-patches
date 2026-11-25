@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,10 +29,88 @@ public final class PinyinRomanizer {
 
     static {
         WORDS.put("一个人", "yí gè rén");
-        WORDS.put("重新开始", "chóng xīn kāi shǐ");
+        // Kept split so the cluster boundary lands here.
+        WORDS.put("重新", "chóng xīn");
+        WORDS.put("开始", "kāi shǐ");
     }
 
     private PinyinRomanizer() {
+    }
+
+    /** Word groups for plain Chinese; kana keeps its own boundaries. */
+    @Nullable
+    public static int[] wordGroups(String line) {
+        if (line.isEmpty()) {
+            return null;
+        }
+        boolean hasHan = false;
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if (ScriptDetector.isKana(c)) {
+                return null;
+            }
+            if (ScriptDetector.isHan(c)) {
+                hasHan = true;
+            }
+        }
+        if (!hasHan) {
+            return null;
+        }
+        // Dictionary boundaries beat the reading table's longest match.
+        final int[] jieba = JiebaSegmenter.wordGroups(line);
+        if (jieba != null) {
+            return jieba;
+        }
+
+        int[] groups = new int[line.length()];
+        Arrays.fill(groups, -1);
+        int group = 0;
+        try (WordReadingTable table = PinyinDictionaryStore.word()) {
+            int i = 0;
+            int unknown = -1;
+            while (i < line.length()) {
+                if (!ScriptDetector.isHan(line.charAt(i))) {
+                    unknown = -1;
+                    i++;
+                    continue;
+                }
+                final int length = longestWord(line, i, table);
+                if (length == 0) {
+                    if (table != null) {
+                        // Unknown stretch: one group, not per-character.
+                        if (unknown < 0) {
+                            unknown = group++;
+                        }
+                        groups[i] = unknown;
+                    } else if (PinyinDictionaryStore.reading(line.charAt(i)) != null) {
+                        // A reading alone cannot place a boundary.
+                        groups[i] = group++;
+                    }
+                    i++;
+                    continue;
+                }
+                unknown = -1;
+                final int end = i + length;
+                for (int j = i; j < end; j++) {
+                    groups[j] = group;
+                }
+                group++;
+                i = end;
+            }
+        }
+        return groups;
+    }
+
+    /** {@return the longest word of at least two characters starting here, or 0 when none} */
+    private static int longestWord(String line, int index, @Nullable WordReadingTable table) {
+        final int longest = Math.min(WordReadingTable.MAX_WORD_LENGTH, line.length() - index);
+        for (int length = longest; length >= 2; length--) {
+            final String word = line.substring(index, index + length);
+            if ((table != null && table.reading(word) != null) || WORDS.containsKey(word)) {
+                return length;
+            }
+        }
+        return 0;
     }
 
     /** Pinyin for a Chinese line, with a space between readings. */

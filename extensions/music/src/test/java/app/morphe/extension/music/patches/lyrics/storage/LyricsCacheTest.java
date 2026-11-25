@@ -37,6 +37,7 @@ public class LyricsCacheTest {
     @Before
     public void setUp() {
         LyricsTestEnv.bootstrap();
+        TrackOffsetStore.clear();
         track = LyricsFixtures.track("Test Song", "Test Artist");
     }
 
@@ -333,5 +334,57 @@ public class LyricsCacheTest {
         }
         assertEquals(1, remainingRawCount);
         assertEquals(0, LyricsCache.stats().translation().items());
+    }
+
+    @Test
+    public void statsAndClearKeepAiSectionSeparateFromLyrics() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        LyricsCache.putSectionAI(track, "TestProvider", List.of("hello"), List.of("Verse"));
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.lyrics().items());
+        assertEquals(1, stats.aiSection().items());
+        assertTrue(stats.aiSection().bytes() > 0);
+        assertEquals(2, stats.total().items());
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.AI_SECTION) > 0);
+        assertNull(LyricsCache.getSectionAI(track, "TestProvider", List.of("hello")));
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+
+        LyricsCache.CacheStats after = LyricsCache.stats();
+        assertEquals(0, after.aiSection().items());
+        assertEquals(1, after.lyrics().items());
+    }
+
+    @Test
+    public void offsetBucketJoinsTotalAndClearsIndependently() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        TrackOffsetStore.put(track, 500);
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.offset().items());
+        assertEquals(2, stats.total().items());
+
+        assertEquals(0, LyricsCache.clear(LyricsCache.CacheBucket.OFFSET));
+        assertEquals(0, TrackOffsetStore.get(track));
+        LyricsCache.CacheStats after = LyricsCache.stats();
+        assertEquals(0, after.offset().items());
+        assertEquals(1, after.total().items());
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+    }
+
+    @Test
+    public void clearAllAlsoClearsSavedOffsets() {
+        LyricsCache.clear();
+        TrackOffsetStore.put(track, 500);
+        assertEquals(1, LyricsCache.stats().offset().items());
+
+        LyricsCache.clear();
+        assertEquals(0, TrackOffsetStore.get(track));
+        assertEquals(0, LyricsCache.stats().total().items());
     }
 }

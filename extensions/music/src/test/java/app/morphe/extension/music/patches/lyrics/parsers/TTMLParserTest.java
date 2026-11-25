@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.parsers;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -196,5 +197,70 @@ public class TTMLParserTest {
         assertNotNull(lyrics);
         assertEquals(500L, lyrics.lines().get(0).startTimeMs());
         assertEquals(1000L, lyrics.lines().get(0).endTimeMs());
+    }
+
+    private static String ttmlWithBody(String body) {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<tt xmlns=\"http://www.w3.org/ns/ttml\""
+                + " xmlns:itunes=\"http://music.apple.com/lyric-ttml-internal\">"
+                + "<head></head><body>" + body + "</body></tt>";
+    }
+
+    @Test
+    public void emptyDivSongPartFallsBackToHyphenatedAttribute() {
+        String ttml = ttmlWithBody("<div itunes:songPart=\"\" itunes:song-part=\"Chorus\">"
+                + "<p begin=\"00:01.000\" end=\"00:02.000\">Hello</p></div>");
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertEquals(1, lyrics.lines().size());
+        assertEquals("Chorus", lyrics.lines().get(0).songPart());
+    }
+
+    @Test
+    public void nestedDivWithoutSongPartKeepsOuterLabel() {
+        String ttml = ttmlWithBody("<div itunes:songPart=\"Verse\">"
+                + "<p begin=\"00:01.000\" end=\"00:02.000\">One</p>"
+                + "<div><p begin=\"00:02.000\" end=\"00:03.000\">Two</p></div>"
+                + "<p begin=\"00:03.000\" end=\"00:04.000\">Three</p></div>");
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertEquals(3, lyrics.lines().size());
+        assertEquals("Verse", lyrics.lines().get(0).songPart());
+        assertEquals("Verse", lyrics.lines().get(1).songPart());
+        assertEquals("Verse", lyrics.lines().get(2).songPart());
+    }
+
+    @Test
+    public void paragraphSongPartIsUsedWhenDivHasNone() {
+        String ttml = ttmlWithBody("<div><p itunes:songPart=\"Bridge\""
+                + " begin=\"00:01.000\" end=\"00:02.000\">Hello</p></div>");
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertEquals(1, lyrics.lines().size());
+        assertEquals("Bridge", lyrics.lines().get(0).songPart());
+    }
+
+    @Test
+    public void paragraphSongPartOverridesDiv() {
+        String ttml = ttmlWithBody("<div itunes:songPart=\"Verse\"><p itunes:songPart=\"Bridge\""
+                + " begin=\"00:01.000\" end=\"00:02.000\">Hello</p></div>");
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertEquals("Bridge", lyrics.lines().get(0).songPart());
+    }
+
+    @Test
+    public void sequentialDivsResetSongPart() {
+        String ttml = ttmlWithBody("<div itunes:songPart=\"Verse\">"
+                + "<p begin=\"00:01.000\" end=\"00:02.000\">One</p></div>"
+                + "<div itunes:songPart=\"Chorus\">"
+                + "<p begin=\"00:02.000\" end=\"00:03.000\">Two</p></div>"
+                + "<div><p begin=\"00:03.000\" end=\"00:04.000\">Three</p></div>");
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertEquals(3, lyrics.lines().size());
+        assertEquals("Verse", lyrics.lines().get(0).songPart());
+        assertEquals("Chorus", lyrics.lines().get(1).songPart());
+        assertNull(lyrics.lines().get(2).songPart());
     }
 }

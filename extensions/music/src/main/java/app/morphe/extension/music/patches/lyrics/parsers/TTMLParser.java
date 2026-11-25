@@ -15,7 +15,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -259,6 +261,7 @@ public final class TTMLParser {
             boolean inHead = false;
             boolean inBody = false;
             String divSongPart = null;
+            Deque<String> divPartStack = new ArrayDeque<>();
 
             int event = p.getEventType();
             while (event != XmlPullParser.END_DOCUMENT) {
@@ -274,13 +277,16 @@ public final class TTMLParser {
                     } else if ("body".equals(local)) {
                         inBody = true;
                     } else if ("div".equals(local) && inBody && !inHead) {
-                        divSongPart = getLyricAttr(p, "songPart", "itunes:songPart");
-                        if (divSongPart == null) {
-                            divSongPart = getLyricAttr(p, "songPart", "itunes:song-part");
+                        divPartStack.push(divSongPart != null ? divSongPart : "");
+                        String part = readSongPart(p);
+                        if (part != null) {
+                            divSongPart = part;
                         }
                     } else if ("p".equals(local) && inBody && !inHead) {
                         final String lineId = getLyricAttr(p, "key", "itunes:key");
                         final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
+                        final String ownSongPart = readSongPart(p);
+                        final String lineSongPart = ownSongPart != null ? ownSongPart : divSongPart;
                         final String pBeginRaw = noTiming ? null : getAttr(p, null, "begin", "begin");
                         final String pEndRaw = noTiming ? null : getAttr(p, null, "end", "end");
                         final String pDurRaw = noTiming ? null : getAttr(p, null, "dur", "dur");
@@ -304,7 +310,7 @@ public final class TTMLParser {
                             if (hasText) {
                                 final LyricsLine line = new LyricsLine(
                                         pl.begin(), pl.end(), pl.text(), pl.words(),
-                                        agentId, false, false, divSongPart);
+                                        agentId, false, false, lineSongPart);
                                 lines.add(line);
                             }
                             mainLineCount = lines.size();
@@ -314,7 +320,7 @@ public final class TTMLParser {
                                 final LyricsLine bgLine = new LyricsLine(
                                         bgSrc.startTimeMs(), bgSrc.endTimeMs(),
                                         bgSrc.text(), bgSrc.words(),
-                                        bgAgent, false, true, divSongPart);
+                                        bgAgent, false, true, lineSongPart);
                                 lines.add(bgLine);
                             }
 
@@ -398,7 +404,10 @@ public final class TTMLParser {
                     switch (localName(p.getName())) {
                         case "head" -> inHead = false;
                         case "body" -> inBody = false;
-                        case "div" -> divSongPart = null;
+                        case "div" -> {
+                            String previous = divPartStack.isEmpty() ? "" : divPartStack.pop();
+                            divSongPart = previous.isEmpty() ? null : previous;
+                        }
                     }
                 }
                 event = p.next();
@@ -1858,6 +1867,18 @@ public final class TTMLParser {
         if (!excluded.contains(key)) {
             credits.add(key + ": " + value.trim());
         }
+    }
+
+    @Nullable
+    private static String readSongPart(XmlPullParser p) {
+        String part = getLyricAttr(p, "songPart", "itunes:songPart");
+        if (part == null || part.trim().isEmpty()) {
+            part = getAttr(p, NS_ITUNES, "song-part", "itunes:song-part");
+        }
+        if (part == null) return null;
+
+        String trimmed = part.trim();
+        return trimmed.isEmpty() ? null : trimmed;
     }
 
     /**

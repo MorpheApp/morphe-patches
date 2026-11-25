@@ -30,6 +30,9 @@ class LicensesDialog extends AboutWebViewDialog {
             new License("Google Material Design icons", LicenseContent.APACHE_2),
             new License("Gson", LicenseContent.APACHE_2),
             new License("Guava", LicenseContent.APACHE_2),
+            new License("jieba", LicenseContent.JIEBA),
+            new License("Kuromoji (IPADIC)",
+                    List.of(LicenseContent.KUROMOJI_NOTICE, LicenseContent.APACHE_2)),
             new License("Morphe", List.of(LicenseContent.MORPHE_NOTICE, LicenseContent.GPL_3)),
             new License("pinyin-pro-data", LicenseContent.PINYIN_PRO_DATA),
             new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS),
@@ -985,6 +988,51 @@ class LicensesDialog extends AboutWebViewDialog {
                 The rules stored by the lyrics patch are the literal letter-to-letter rules of
                 CLDR transform files, with the combining marks of the standard dropped and a few
                 readings a lyric wants replacing the standard's where they differ.
+                """);
+
+        static final LicenseContent JIEBA = new LicenseContent("MIT License", """
+                jieba Chinese word dictionary
+                https://github.com/fxsjy/jieba
+                Pinned commit 67fa2e36e72f69d9134b8a1037b83fbb070b9775
+                
+                MIT License
+                
+                Copyright (c) 2013 Sun Junyi
+                
+                Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:
+                
+                The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the Software.
+                
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.
+                
+                What the lyrics patch stores is each word and its frequency from dict.txt,
+                packed into a disk hash. Parts of speech and the HMM model are not bundled.
+                """);
+
+        static final LicenseContent KUROMOJI_NOTICE = new LicenseContent("NOTICE", """
+                Kuromoji.js IPADIC dictionary
+                https://github.com/takuyaa/kuromoji.js
+                https://www.npmjs.com/package/kuromoji/v/0.1.2
+                
+                kuromoji.js is distributed under the Apache License, Version 2.0, and the
+                dictionary tables it bundles are the IPADIC morphological dictionary. The
+                lyrics patch downloads version 0.1.2 of those tables.
+                
+                What the lyrics patch stores is the trie, token information and connection
+                costs needed to tokenize a Japanese line and read its words. No kuromoji.js
+                source code is bundled.
                 """);
 
         static final LicenseContent PINYIN_PRO_DATA = new LicenseContent("MIT License", """

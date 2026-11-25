@@ -15,17 +15,18 @@ import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.requests.AMLLProvider;
 import app.morphe.extension.music.patches.lyrics.requests.AppleMusicProvider;
-import app.morphe.extension.music.patches.lyrics.requests.BinimumProvider;
 import app.morphe.extension.music.patches.lyrics.requests.BlyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.CaptionsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.GeniusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.KuGouProvider;
+import app.morphe.extension.music.patches.lyrics.requests.KuwoProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LRCLIBProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsPlusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.MusixmatchProvider;
 import app.morphe.extension.music.patches.lyrics.requests.NetEaseProvider;
@@ -41,9 +42,9 @@ import app.morphe.extension.music.settings.Settings;
 public final class LyricsProviders {
 
     static final List<String> PROVIDER_ORDER = Arrays.asList(
-            "Apple", "BiniLyrics", "LrcRed", "bLyrics", "Lyricify", "Unison",
+            "Apple", "LyricsPlus", "LrcRed", "bLyrics", "Lyricify", "Unison",
             "PetitLyrics", "AMLL", "QQ", "SimpMusic", "KuGou", "Musixmatch",
-            "YTMusic", "LRCLIB", "NetEase", "Luna", "LunaBeat",
+            "YTMusic", "LRCLIB", "NetEase", "Luna", "Kuwo", "LunaBeat",
             "Captions", "Spotify", "Deezer", "RMM", "Genius");
 
     private LyricsProviders() {
@@ -121,10 +122,11 @@ public final class LyricsProviders {
             case "QQ" -> new QQProvider();
             case "NetEase" -> new NetEaseProvider();
             case "KuGou" -> new KuGouProvider();
+            case "Kuwo" -> new KuwoProvider();
             case "Luna" -> new LunaProvider();
             case "PetitLyrics" -> new PetitLyricsProvider();
             case "bLyrics" -> new BlyricsProvider();
-            case "BiniLyrics" -> new BinimumProvider();
+            case "LyricsPlus" -> new LyricsPlusProvider();
             case "Unison" -> new UnisonProvider();
             case "SimpMusic" -> new SimpMusicProvider();
             case "AMLL" -> new AMLLProvider();

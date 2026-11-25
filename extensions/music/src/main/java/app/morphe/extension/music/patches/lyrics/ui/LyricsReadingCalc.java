@@ -428,7 +428,7 @@ final class LyricsReadingCalc {
                 anyRuby = true;
             }
             out.add(new WordTiming(wt.start(), wt.end(), wt.startMs(), wt.endMs(),
-                    r.isEmpty() ? null : r, trailSpace, drawnRuby, wt.averaged()));
+                    r.isEmpty() ? null : r, trailSpace, drawnRuby, wt.averaged(), wt.wordGroup()));
         }
 
         return (anyRoman || anyRuby) ? out : null;
@@ -849,7 +849,8 @@ final class LyricsReadingCalc {
             }
             closed.add(end > span.endMs()
                     ? new WordTiming(span.start(), span.end(), span.startMs(), end,
-                    span.romaji(), span.hasTrailingSpace(), span.ruby(), span.averaged())
+                    span.romaji(), span.hasTrailingSpace(), span.ruby(), span.averaged(),
+                    span.wordGroup())
                     : span);
         }
         return closed;

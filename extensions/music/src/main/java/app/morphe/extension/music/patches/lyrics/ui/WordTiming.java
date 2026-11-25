@@ -18,24 +18,31 @@ import androidx.annotation.Nullable;
  * @param ruby             The furigana drawn above the word.
  * @param averaged         The line's own time spread evenly over its words, not the source's
  *                         word timings.
+ * @param wordGroup        Same id for all timings inside one dictionary word; -1 when unknown.
  */
 public record WordTiming(int start, int end, long startMs, long endMs,
                          @Nullable String romaji, boolean hasTrailingSpace,
-                         @Nullable String ruby, boolean averaged) {
+                         @Nullable String ruby, boolean averaged, int wordGroup) {
 
     public WordTiming(int start, int end, long startMs, long endMs,
                       @Nullable String romaji, boolean hasTrailingSpace,
                       @Nullable String ruby) {
-        this(start, end, startMs, endMs, romaji, hasTrailingSpace, ruby, false);
+        this(start, end, startMs, endMs, romaji, hasTrailingSpace, ruby, false, -1);
+    }
+
+    public WordTiming(int start, int end, long startMs, long endMs,
+                      @Nullable String romaji, boolean hasTrailingSpace,
+                      @Nullable String ruby, boolean averaged) {
+        this(start, end, startMs, endMs, romaji, hasTrailingSpace, ruby, averaged, -1);
     }
 
     public WordTiming(int start, int end, long startMs, long endMs,
                       @Nullable String romaji, boolean hasTrailingSpace, boolean averaged) {
-        this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged);
+        this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged, -1);
     }
 
     public WordTiming(int start, int end, long startMs, long endMs,
                       @Nullable String romaji, boolean hasTrailingSpace) {
-        this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, false);
+        this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, false, -1);
     }
 }

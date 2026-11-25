@@ -7,12 +7,15 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
+import app.morphe.extension.music.settings.Settings;
 
 public class PinyinRomanizerTest {
 
@@ -91,5 +94,47 @@ public class PinyinRomanizerTest {
     @Test
     public void romanizeKanaInWordLine() {
         assertEquals("yí gè rén konnichiha", PinyinRomanizer.romanize("一个人こんにちは"));
+    }
+
+    @Test
+    public void wordGroupsKnownWord() {
+        assertArrayEquals(new int[]{0, 0, 0}, PinyinRomanizer.wordGroups("一个人"));
+    }
+
+    @Test
+    public void wordGroupsLongerWord() {
+        assertArrayEquals(new int[]{0, 0, 1, 1}, PinyinRomanizer.wordGroups("重新开始"));
+    }
+
+    @Test
+    public void wordGroupsStopWhereNoWordIsKnown() {
+        assertArrayEquals(new int[]{0, 0, 0, -1, -1}, PinyinRomanizer.wordGroups("一个人来了"));
+    }
+
+    @Test
+    public void wordGroupsAlsoWorkWithRime() {
+        final String before = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
+        try {
+            Settings.LYRICS_ROMANIZE_LANGUAGE.save("yue");
+            assertArrayEquals(new int[]{0, 0, 0}, PinyinRomanizer.wordGroups("一个人"));
+        } finally {
+            Settings.LYRICS_ROMANIZE_LANGUAGE.save(before);
+        }
+    }
+
+    @Test
+    public void wordGroupsUnknownHanStayUngrouped() {
+        // No table loaded: nothing to group.
+        assertArrayEquals(new int[]{-1, -1}, PinyinRomanizer.wordGroups("你好"));
+    }
+
+    @Test
+    public void wordGroupsKanaLineIsNull() {
+        assertNull(PinyinRomanizer.wordGroups("こんにちは"));
+    }
+
+    @Test
+    public void wordGroupsLatinLineIsNull() {
+        assertNull(PinyinRomanizer.wordGroups("Hello"));
     }
 }

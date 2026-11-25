@@ -10,9 +10,12 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.AlignedSyllable;
+import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.MergedRomanCluster;
+import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.MergedRuby;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ReconstructedWord;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.VisualCluster;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WipeResult;
@@ -183,6 +186,140 @@ public class WordAnimationUtilsTest {
     }
 
     @Test
+    public void testRomajiClusterKeepsOneToOneSyllableReadings() {
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, false, "kagi", "ri", 1, false, false));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "黒", "い", 1, 1, false, "kuro", "i", 1, false, false));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "爱", "し", 1, 1, false, "ai", "shi", 1, false, false));
+
+        Assert.assertTrue(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "りの", 1, 1, false, "kagi", null, 1, false, false));
+
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, true, "kagi ", null, 1, false, false));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, false, "kagi", null, 3, false, false));
+    }
+
+    @Test
+    public void testRomajiClusterMergesOnlyWithinOneWord() {
+        Assert.assertTrue(WordAnimationUtils.canMergeRomanSyllable(
+                "一", "个", 1, 1, false, "yí", "gè", 1, true, true));
+        Assert.assertTrue(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, false, "kagi", "ri", 1, true, true));
+
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "个", "人", 1, 1, false, "gè", "rén", 1, false, true));
+
+        // Same word ignores the cap.
+        Assert.assertTrue(WordAnimationUtils.canMergeRomanSyllable(
+                "一", "个", 1, 1, false, "yí", "gè", 3, true, true));
+    }
+
+    @Test
+    public void testSameWordMergesEvenWithAnEmptyReading() {
+        Assert.assertTrue(WordAnimationUtils.canMergeRomanSyllable(
+                "一", "个", 1, 1, false, "yí", null, 3, true, true));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "个", "人", 1, 1, false, "gè", null, 1, false, true));
+    }
+
+    @Test
+    public void testRepeatedSyllablesKeepTheirOwnOffsets() {
+        List<WordTimestamp> words = List.of(
+                new WordTimestamp("人", 0, 0.1, false, false, "rén"),
+                new WordTimestamp("人", 0.1, 0.2, false, false, "rén"),
+                new WordTimestamp("人", 0.2, 0.3, false, false, "rén"));
+        List<AlignedSyllable> aligned = WordAnimationUtils.alignSyllablesForFormatting(
+                words, "人 人 人");
+        Assert.assertEquals(0, aligned.get(0).startOffset());
+        Assert.assertEquals(2, aligned.get(1).startOffset());
+        Assert.assertEquals(4, aligned.get(2).startOffset());
+    }
+
+    @Test
+    public void testMergedClusterKeepsEverySyllableReading() {
+        String mainText = "一个人";
+        List<AlignedSyllable> aligned = syllableLine(mainText, new int[]{0, 0, 0});
+        MergedRomanCluster merged = WordAnimationUtils.mergeRomanCluster(aligned,
+                new String[]{"yí", "gè", "rén"}, new long[]{0, 100, 200},
+                new long[]{100, 200, 300}, mainText, new int[]{0, 0, 0}, 0, true);
+        Assert.assertEquals("yígèrén", merged.text());
+        Assert.assertEquals(3, merged.endOffset());
+        Assert.assertEquals(300L, merged.endMs());
+        Assert.assertEquals(2, merged.lastIndex());
+        Assert.assertEquals(3, merged.segments().size());
+        Assert.assertEquals(200L, merged.segments().get(2).startMs());
+    }
+
+    @Test
+    public void testRubyRunSharesTheWordBoundary() {
+        List<AlignedSyllable> aligned = List.of(
+                new AlignedSyllable(new WordTimestamp("限", 0, 0.1, false, false, null, "かぎ", 0), 0, 1),
+                new AlignedSyllable(new WordTimestamp("り", 0.1, 0.2, false, false, null, "り", 0), 1, 2),
+                new AlignedSyllable(new WordTimestamp("時", 0.2, 0.3, false, false, null, "とき", 1), 2, 3));
+        MergedRuby run = WordAnimationUtils.mergeRubyRun(aligned, 0);
+        Assert.assertEquals("かぎり", run.text());
+        Assert.assertEquals(1, run.endIndex());
+        MergedRuby single = WordAnimationUtils.mergeRubyRun(aligned, 2);
+        Assert.assertEquals("とき", single.text());
+        Assert.assertEquals(2, single.endIndex());
+    }
+
+    @Test
+    public void testMergedClusterStopsAtAWordBoundary() {
+        String mainText = "一个人";
+        List<AlignedSyllable> aligned = syllableLine(mainText, new int[]{0, 0, 1});
+        MergedRomanCluster merged = WordAnimationUtils.mergeRomanCluster(aligned,
+                new String[]{"yí", "gè", "rén"}, new long[]{0, 100, 200},
+                new long[]{100, 200, 300}, mainText, new int[]{0, 0, 0}, 0, true);
+        Assert.assertEquals("yígè", merged.text());
+        Assert.assertEquals(2, merged.endOffset());
+        Assert.assertEquals(1, merged.lastIndex());
+        Assert.assertEquals(2, merged.segments().size());
+    }
+
+    @Test
+    public void testMergedClusterFillsAnEmptyReadingWithoutLosingTheNext() {
+        String mainText = "一个人";
+        List<AlignedSyllable> aligned = syllableLine(mainText, new int[]{0, 0, 0});
+        MergedRomanCluster merged = WordAnimationUtils.mergeRomanCluster(aligned,
+                new String[]{"yí", "", "rén"}, new long[]{0, 100, 200},
+                new long[]{100, 200, 300}, mainText, new int[]{0, 0, 0}, 0, true);
+        Assert.assertEquals("yírén", merged.text());
+        Assert.assertEquals(2, merged.segments().size());
+        Assert.assertEquals(200L, merged.segments().get(0).endMs());
+        Assert.assertEquals(200L, merged.segments().get(1).startMs());
+    }
+
+    private static List<AlignedSyllable> syllableLine(String text, int[] groups) {
+        List<AlignedSyllable> out = new ArrayList<>(groups.length);
+        for (int i = 0; i < groups.length; i++) {
+            WordTimestamp syllable = new WordTimestamp(
+                    text.substring(i, i + 1), i / 100.0, (i + 1) / 100.0,
+                    false, false, "yí", null, groups[i]);
+            out.add(new AlignedSyllable(syllable, i, i + 1));
+        }
+        return out;
+    }
+
+    @Test
+    public void testWordGroupSurvivesSpanConversion() {
+        List<WordTiming> timings = List.of(
+                new WordTiming(0, 1, 0, 100, "yí", false, null, false, 4),
+                new WordTiming(1, 2, 100, 200, "gè", false, null, false, 4),
+                new WordTiming(2, 3, 200, 300, "rén", false, null, false, 5));
+
+        List<WordTimestamp> words = WordTimestamp.fromSpanTimings("一个人", timings, false);
+        Assert.assertEquals(3, words.size());
+        Assert.assertEquals(4, words.get(0).wordGroup());
+        Assert.assertEquals(4, words.get(1).wordGroup());
+        Assert.assertEquals(5, words.get(2).wordGroup());
+    }
+
+    @Test
     public void testIndependentRomanWipeFollowsRomajiSegmentTimings() {
         // Simulates merged cluster "kagiri no" [0..40px="kagi" 100..300ms, 40..90px="ri no" 300..700ms]
         // followed by a gap/space [90..110px], then "nai" [110..150px 800..1200ms]
@@ -230,6 +367,38 @@ public class WordAnimationUtilsTest {
         WordAnimationUtils.computeIndependentRomanWipe(
                 segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 500L, subGrad, true, out);
         Assert.assertEquals(Float.MAX_VALUE, out[0], 0.01f);
+    }
+
+    @Test
+    public void testResolvedRomanSyllableTextsKeepOneToOneMapping() {
+        String mainText = "限りの";
+        List<WordTimestamp> words = List.of(
+                new WordTimestamp("限", 0.0, 0.4, false, false, null, null),
+                new WordTimestamp("り", 0.4, 0.7, false, false, null, null),
+                new WordTimestamp("の", 0.7, 1.0, false, false, null, null));
+        List<AlignedSyllable> aligned = WordAnimationUtils.alignSyllablesForFormatting(words, mainText);
+
+        // Per-word readings.
+        List<WordTimestamp> romanized = List.of(
+                new WordTimestamp("kagi", 0.0, 0.4, false, false, "kagi", null),
+                new WordTimestamp("ri", 0.4, 0.7, false, false, "ri", null),
+                new WordTimestamp("no", 0.7, 1.0, false, false, "no", null));
+        String[] fromWords = WordAnimationUtils.resolvedRomanSyllableTexts(
+                aligned, romanized, null, mainText);
+        Assert.assertNotNull(fromWords);
+        Assert.assertEquals(3, fromWords.length);
+        Assert.assertEquals("kagi", fromWords[0].trim());
+        Assert.assertEquals("ri", fromWords[1].trim());
+        Assert.assertEquals("no", fromWords[2].trim());
+
+        // Whole-line reading split into the same number of slots.
+        String[] fromLine = WordAnimationUtils.resolvedRomanSyllableTexts(
+                aligned, null, "kagi ri no", mainText);
+        Assert.assertNotNull(fromLine);
+        Assert.assertEquals(3, fromLine.length);
+        Assert.assertEquals("kagi", fromLine[0].trim());
+        Assert.assertEquals("ri", fromLine[1].trim());
+        Assert.assertEquals("no", fromLine[2].trim());
     }
 
     @Test
