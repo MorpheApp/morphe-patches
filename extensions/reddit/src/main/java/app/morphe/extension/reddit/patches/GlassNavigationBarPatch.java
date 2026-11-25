@@ -200,6 +200,11 @@ public final class GlassNavigationBarPatch {
     private static boolean isRailCentered;
 
     /**
+     * How far the bottom bar is slid down while it hides, in pixels.
+     */
+    private static int barSlide;
+
+    /**
      * @return If this patch was included during patching.
      */
     @SuppressWarnings("SameReturnValue")
@@ -283,6 +288,18 @@ public final class GlassNavigationBarPatch {
      */
     public static void setRailHeight(float heightDp) {
         isRailCentered = heightDp > RAIL_CENTERED_MIN_HEIGHT_DP;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param lift      How far the bar is lifted from below the screen, in pixels.
+     * @param barHeight Height of the bar, in pixels.
+     */
+    public static void setBarOffset(int lift, float barHeight) {
+        if (FROSTED_ENABLED) {
+            barSlide = Math.max(0, Math.max(lift, Math.round(barHeight)) - lift);
+        }
     }
 
     /**
@@ -411,6 +428,10 @@ public final class GlassNavigationBarPatch {
 
     static float getDensity() {
         return Utils.getContext().getResources().getDisplayMetrics().density;
+    }
+
+    static int getBarSlide() {
+        return barSlide;
     }
 
     private static long pack(float first, float second) {
