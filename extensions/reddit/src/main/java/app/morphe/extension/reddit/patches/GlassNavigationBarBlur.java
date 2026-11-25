@@ -147,7 +147,7 @@ final class GlassNavigationBarBlur {
         final float barHeight = GlassNavigationBarPatch.unpackSecond(scope.patch_getSize());
 
         blurLeft = capsuleLeft - BLUR_MARGIN;
-        blurTopFromBottom = Math.round(barHeight) - capsuleTop + BLUR_MARGIN;
+        blurTopFromBottom = Math.round(barHeight) - capsuleTop - GlassNavigationBarPatch.getBarSlide() + BLUR_MARGIN;
         blurWidth = (int) Math.ceil(left + width) - capsuleLeft + 2 * BLUR_MARGIN;
         blurHeight = (int) Math.ceil(top + height) - capsuleTop + 2 * BLUR_MARGIN;
         backgroundColor = color;
