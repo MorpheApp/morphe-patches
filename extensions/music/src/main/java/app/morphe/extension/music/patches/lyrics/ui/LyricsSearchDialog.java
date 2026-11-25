@@ -245,7 +245,6 @@ final class LyricsSearchDialog {
 
         LinearLayout sheetRoot = new LinearLayout(context);
         sheetRoot.setOrientation(LinearLayout.VERTICAL);
-        sheetRoot.setBackgroundColor(LyricsSheetChrome.BACKGROUND_COLOR);
         sheetRoot.addView(LyricsSheetChrome.createTopBar(context,
                 str("morphe_music_lyrics_search_dialog_title"), dialog::dismissImmediately),
                 new LinearLayout.LayoutParams(
@@ -260,9 +259,10 @@ final class LyricsSearchDialog {
         contentHost.addView(scroll, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
+        // Weighted so the content shrinks before the dock is pushed off a short screen.
         sheetRoot.addView(contentHost, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
+                LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
         Button okButton = CustomDialog.createButton(context, dialog,
                 ResourceUtils.getSystemStringByLocale("ok",

@@ -241,6 +241,15 @@ public class TTMLParserTest {
     }
 
     @Test
+    public void paragraphSongPartOverridesDiv() {
+        String ttml = ttmlWithBody("<div itunes:songPart=\"Verse\"><p itunes:songPart=\"Bridge\""
+                + " begin=\"00:01.000\" end=\"00:02.000\">Hello</p></div>");
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertEquals("Bridge", lyrics.lines().get(0).songPart());
+    }
+
+    @Test
     public void sequentialDivsResetSongPart() {
         String ttml = ttmlWithBody("<div itunes:songPart=\"Verse\">"
                 + "<p begin=\"00:01.000\" end=\"00:02.000\">One</p></div>"

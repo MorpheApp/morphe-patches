@@ -285,8 +285,8 @@ public final class TTMLParser {
                     } else if ("p".equals(local) && inBody && !inHead) {
                         final String lineId = getLyricAttr(p, "key", "itunes:key");
                         final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
-                        final String lineSongPart = divSongPart != null
-                                ? divSongPart : readSongPart(p);
+                        final String ownSongPart = readSongPart(p);
+                        final String lineSongPart = ownSongPart != null ? ownSongPart : divSongPart;
                         final String pBeginRaw = noTiming ? null : getAttr(p, null, "begin", "begin");
                         final String pEndRaw = noTiming ? null : getAttr(p, null, "end", "end");
                         final String pDurRaw = noTiming ? null : getAttr(p, null, "dur", "dur");
@@ -1875,9 +1875,8 @@ public final class TTMLParser {
         if (part == null || part.trim().isEmpty()) {
             part = getAttr(p, NS_ITUNES, "song-part", "itunes:song-part");
         }
-        if (part == null) {
-            return null;
-        }
+        if (part == null) return null;
+
         String trimmed = part.trim();
         return trimmed.isEmpty() ? null : trimmed;
     }

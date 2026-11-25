@@ -2344,8 +2344,9 @@ public final class LyricsManager {
         return lyrics;
     }
 
-    private Lyrics restoreCachedSections(Lyrics lyrics) {
-        if (lyrics == null || lyrics.isEmpty() || currentTrack == null
+    private Lyrics restoreCachedSections(@Nullable Lyrics lyrics) {
+        final TrackInfo track = currentTrack;
+        if (lyrics == null || lyrics.isEmpty() || track == null
                 || !Settings.LYRICS_USE_AI_SECTION.get()
                 || !SectionDetector.needsDetection(lyrics)) {
             return lyrics;
@@ -2355,7 +2356,7 @@ public final class LyricsManager {
         for (LyricsLine line : lines) {
             texts.add(line.text());
         }
-        List<String> sections = LyricsCache.getSectionAI(currentTrack, lyrics.providerName(), texts);
+        List<String> sections = LyricsCache.getSectionAI(track, lyrics.providerName(), texts);
         Lyrics restored = SectionDetector.applySections(lyrics, sections);
         return restored != null ? restored : lyrics;
     }

@@ -48,7 +48,7 @@ final class LyricsWordTimingCalc {
             }
             if (rangeStart >= 0 && rangeEnd > rangeStart) {
                 List<WordTiming> synthesized =
-                        LyricsWordBoundaries.synthesizeLineChars(lineText, rangeStart, rangeEnd, -1);
+                        LyricsWordBoundaries.synthesizeLineChars(lineText, rangeStart, rangeEnd);
                 if (!synthesized.isEmpty()) {
                     return withWordGroups(lineText, synthesized);
                 }
@@ -71,7 +71,7 @@ final class LyricsWordTimingCalc {
                 if (lineStart >= 0 && lineEnd > lineStart) {
                     List<WordTiming> synthesized = songWordSynced
                             ? (!hasMultipleSpacedTokens(lineText)
-                                    ? LyricsWordBoundaries.synthesizeLineChars(lineText, lineStart, lineEnd, -1)
+                                    ? LyricsWordBoundaries.synthesizeLineChars(lineText, lineStart, lineEnd)
                                     : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd, false))
                             : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd);
                     if (!synthesized.isEmpty()) {
@@ -90,7 +90,7 @@ final class LyricsWordTimingCalc {
         return withWordGroups(lineText, computeWordTimingsFromWords(line));
     }
 
-    /** Real boundaries replace source words; a KRC word is only a syllable. */
+    /** The source's words are no boundaries, since a KRC word is only a syllable. */
     private static List<WordTiming> withWordGroups(String lineText, List<WordTiming> timings) {
         if (timings.isEmpty()) {
             return timings;
@@ -117,11 +117,10 @@ final class LyricsWordTimingCalc {
                 }
             }
             // A timing across two words gets no group.
-            final int assigned = mixed ? -1 : (group >= 0 ? group : timing.wordGroup());
             grouped.add(new WordTiming(
                     timing.start(), timing.end(), timing.startMs(), timing.endMs(),
                     timing.romaji(), timing.hasTrailingSpace(), timing.ruby(), timing.averaged(),
-                    assigned));
+                    mixed ? -1 : group));
         }
         return grouped;
     }
@@ -173,8 +172,7 @@ final class LyricsWordTimingCalc {
         // Ruby on a plain-text line has no real timing; all its timings are averaged.
         final boolean averaged = !hasRealTimings;
         int offset = 0;
-        for (int wi = 0; wi < line.words().size(); wi++) {
-            Word word = line.words().get(wi);
+        for (Word word : line.words()) {
             String rawWordText = secondary
                     ? LyricsBracketSplitter.stripAllBrackets(word.text()) : word.text();
             String trimmed = rawWordText.trim();
@@ -217,13 +215,13 @@ final class LyricsWordTimingCalc {
                     offset = appendMatchedWordTiming(
                             timings, text, textLength, offset, part, wordToken(part),
                             hasRealTimings ? curStartMs : LyricsLine.NO_TIME, partEndMs,
-                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged, wi);
+                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged);
                     curStartMs = partEndMs;
                 }
             } else {
                 offset = appendMatchedWordTiming(
                         timings, text, textLength, offset, trimmed, wordToken(trimmed),
-                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged, wi);
+                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged);
             }
         }
 
@@ -339,23 +337,6 @@ final class LyricsWordTimingCalc {
             boolean wordTrailingSpace,
             @Nullable String ruby,
             boolean averaged) {
-        return appendMatchedWordTiming(timings, text, textLength, offset, token, bareToken,
-                startMs, endMs, rom, wordTrailingSpace, ruby, averaged, -1);
-    }
-
-    static int appendMatchedWordTiming(
-            List<WordTiming> timings,
-            String text,
-            int textLength,
-            int offset,
-            String token,
-            String bareToken,
-            long startMs,
-            long endMs,
-            @Nullable String rom,
-            boolean wordTrailingSpace,
-            @Nullable String ruby,
-            boolean averaged, int wordGroup) {
         // The drawn line may hold the word's marks elsewhere, hence the bare word to fall back on.
         int start = usableHit(text, textLength, offset, token, wordTrailingSpace);
         String matched = token;
@@ -389,7 +370,7 @@ final class LyricsWordTimingCalc {
         if (wordEnd > wordStart) {
             final boolean trailSpace = wordTrailingSpace
                     || (wordEnd < textLength && Character.isWhitespace(text.charAt(wordEnd)));
-            timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged, wordGroup));
+            timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged));
         } else if (hasTiming) {
             appendMarksTiming(timings, text, textLength, wordStart, spanEnd, timedStart, averaged);
         }
@@ -406,7 +387,7 @@ final class LyricsWordTimingCalc {
             return;
         }
         final boolean trailSpace = end < textLength && Character.isWhitespace(text.charAt(end));
-        timings.add(new WordTiming(start, end, atMs, atMs + 1L, null, trailSpace, null, averaged, -1));
+        timings.add(new WordTiming(start, end, atMs, atMs + 1L, null, trailSpace, null, averaged));
     }
 
     static void fillUntimedGap(
@@ -425,7 +406,7 @@ final class LyricsWordTimingCalc {
                 if (!prev.hasTrailingSpace()) {
                     timings.set(lastIdx, new WordTiming(
                             prev.start(), prev.end(), prev.startMs(), prev.endMs(), prev.romaji(),
-                            true, prev.ruby(), prev.averaged(), prev.wordGroup()));
+                            true, prev.ruby(), prev.averaged()));
                 }
             }
             return;
@@ -454,14 +435,14 @@ final class LyricsWordTimingCalc {
                 if (prev.end() == sp[0]) {
                     final boolean trail = sp[1] < textLength && Character.isWhitespace(text.charAt(sp[1]));
                     timings.set(lastIdx, new WordTiming(
-                            prev.start(), sp[1], prev.startMs(), prev.endMs(), prev.romaji(), trail, prev.ruby(), prev.averaged(), prev.wordGroup()));
+                            prev.start(), sp[1], prev.startMs(), prev.endMs(), prev.romaji(), trail, prev.ruby(), prev.averaged()));
                     continue;
                 }
             }
             final long wStart = safeStart + (dur * idx) / spans.size();
             final long wEnd = safeStart + (dur * (idx + 1)) / spans.size();
             final boolean trail = sp[1] < textLength && Character.isWhitespace(text.charAt(sp[1]));
-            timings.add(new WordTiming(sp[0], sp[1], wStart, Math.max(wEnd, wStart + 1L), null, trail, true, -1));
+            timings.add(new WordTiming(sp[0], sp[1], wStart, Math.max(wEnd, wStart + 1L), null, trail, true));
         }
     }
 }

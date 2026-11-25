@@ -186,9 +186,8 @@ final class SponsorBlockMusicSubmitDialog {
         SlideDialog dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
 
         final boolean[] cleaned = {false};
-        final SlideDialog[] activeDialog = {dialog};
         Runnable cleanup = () -> {
-            if (cleaned[0] || activeDialog[0] != dialog) {
+            if (cleaned[0]) {
                 return;
             }
             cleaned[0] = true;
@@ -202,7 +201,6 @@ final class SponsorBlockMusicSubmitDialog {
 
         LinearLayout sheetRoot = new LinearLayout(context);
         sheetRoot.setOrientation(LinearLayout.VERTICAL);
-        sheetRoot.setBackgroundColor(LyricsSheetChrome.BACKGROUND_COLOR);
         sheetRoot.addView(LyricsSheetChrome.createTopBar(context,
                 str("morphe_sb_new_segment_title"),
                 () -> {
@@ -220,16 +218,13 @@ final class SponsorBlockMusicSubmitDialog {
         contentHost.addView(scroll, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
+        // Weighted so the content shrinks before the dock is pushed off a short screen.
         sheetRoot.addView(contentHost, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
+                LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
         LinearLayout buttonRow = new LinearLayout(context);
         buttonRow.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        rowParams.topMargin = Dim.dp12;
-        buttonRow.setLayoutParams(rowParams);
 
         Button copyButton = CustomDialog.createButton(context, dialog,
                 str("morphe_sb_settings_copy"), () -> copySpan(context, videoId, times), false, false);

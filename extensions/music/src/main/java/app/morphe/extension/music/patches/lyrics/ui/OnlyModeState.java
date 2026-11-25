@@ -6,13 +6,8 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 
 /** Translation/romanization only-mode state machine. */
 final class OnlyModeState {
@@ -38,29 +33,6 @@ final class OnlyModeState {
         static Transition unchanged(Mode mode) {
             return new Transition(mode, List.of());
         }
-    }
-
-    record StashedTranslation(
-            List<String> lines,
-            boolean fromGoogle,
-            boolean fromAI,
-            @Nullable String aiModel,
-            Lyrics sourceLyrics,
-            String cacheSignature) {
-    }
-
-    record StashedRomanization(
-            @Nullable List<LyricsLine> lines,
-            boolean perWord,
-            boolean fromGoogle,
-            boolean fromAI,
-            boolean fromEmbedded,
-            @Nullable String aiModel,
-            @Nullable String localDictionary,
-            @Nullable String appliedRubyLanguage,
-            @Nullable Lyrics rubyAppliedLyrics,
-            Lyrics sourceLyrics,
-            String cacheSignature) {
     }
 
     private static final OnlyModeEffect APPLY_MODE = new OnlyModeEffect.ApplyMode();

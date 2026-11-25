@@ -60,7 +60,7 @@ final class LyricsWordBoundaries {
             final boolean trailSpace = bounds[i + 1] < text.length()
                     && Character.isWhitespace(text.charAt(bounds[i + 1]));
             timings.add(new WordTiming(bounds[i], bounds[i + 1], wordStart,
-                    Math.max(wordEnd, wordStart + 1), null, trailSpace, averaged, -1));
+                    Math.max(wordEnd, wordStart + 1), null, trailSpace, averaged));
             seen++;
         }
         return timings;
@@ -181,10 +181,6 @@ final class LyricsWordBoundaries {
     }
 
     static List<WordTiming> synthesizeLineChars(String text, long startMs, long endMs) {
-        return synthesizeLineChars(text, startMs, endMs, -1);
-    }
-
-    static List<WordTiming> synthesizeLineChars(String text, long startMs, long endMs, int wordGroup) {
         int[] boundaries = clusterBoundaries(text);
         final int clusterCount = boundaries.length - 1;
         if (clusterCount < 1 || endMs <= startMs) {
@@ -196,7 +192,7 @@ final class LyricsWordBoundaries {
             final long clusterEnd = i + 1 == clusterCount
                     ? endMs
                     : startMs + (endMs - startMs) * (i + 1) / clusterCount;
-            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null, false, false, wordGroup));
+            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null, false, false));
         }
         return timings;
     }

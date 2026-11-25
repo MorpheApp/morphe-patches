@@ -10,11 +10,19 @@ package app.morphe.extension.music.patches.lyrics.requests;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
 public class LyricsEndpointsTest {
 
     private static final String OFFICIAL = "https://official.example/api/";
+
+    @Before
+    public void setUp() {
+        LyricsTestEnv.bootstrap();
+    }
 
     @Test
     public void blankKeepsOfficial() {

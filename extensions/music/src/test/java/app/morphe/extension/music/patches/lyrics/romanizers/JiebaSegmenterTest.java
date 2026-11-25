@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
@@ -47,9 +48,25 @@ public class JiebaSegmenterTest {
     public void segmentsAWholeLine() throws Exception {
         WordReadingTable table = table(
                 new String[]{"一个", "人", "来了", "一个人"},
-                new int[]{2000, 100, 800, 3});
-        assertArrayEquals(new int[]{0, 0, 1, 2, 2},
+                new int[]{2000, 100, 800, 300});
+        assertArrayEquals(new int[]{0, 0, 0, 1, 1},
                 JiebaSegmenter.wordGroups("一个人来了", table));
+    }
+
+    @Test
+    public void commonSingleCharactersDoNotSplitAWord() throws Exception {
+        WordReadingTable table = table(
+                new String[]{"我", "爱", "北", "京", "北京"},
+                new int[]{328841, 14000, 17860, 6583, 34488});
+        assertArrayEquals(new int[]{0, 1, 2, 2},
+                JiebaSegmenter.wordGroups("我爱北京", table));
+    }
+
+    @Test
+    public void otherScriptsHaveNoGroup() throws Exception {
+        WordReadingTable table = table(new String[]{"北京"}, new int[]{34488});
+        assertArrayEquals(new int[]{0, 0, -1, -1, -1, 1, 1},
+                JiebaSegmenter.wordGroups("北京 OK北京", table));
     }
 
     @Test
@@ -61,6 +78,6 @@ public class JiebaSegmenterTest {
     @Test
     public void emptyLineHasNoGroups() throws Exception {
         WordReadingTable table = table(new String[]{"你"}, new int[]{1});
-        org.junit.Assert.assertNull(JiebaSegmenter.wordGroups("", table));
+        assertNull(JiebaSegmenter.wordGroups("", table));
     }
 }

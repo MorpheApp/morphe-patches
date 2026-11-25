@@ -357,6 +357,26 @@ public class LyricsWordTimingCalcTest {
     }
 
     @Test
+    public void latinWordsInAChineseLineHaveNoGroup() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "重新ok开始", List.of(
+                        new Word(0, 300, "重新"), new Word(300, 600, "ok"),
+                        new Word(600, 1000, "开始")))), 0, false);
+        assertArrayEquals(new int[]{0, -1, 1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
+    public void japaneseWithoutATokenizerHasNoGroups() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "今日は", List.of(
+                        new Word(0, 300, "今"), new Word(300, 600, "日"),
+                        new Word(600, 1000, "は")))), 0, false);
+        assertArrayEquals(new int[]{-1, -1, -1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
     public void aTimingAcrossTwoWordsHasNoGroup() {
         List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
                 List.of(line(0, 1000, "重新开始", List.of(

@@ -3479,8 +3479,7 @@ public final class LyricsPanelView extends FrameLayout
         stashedRomanization = new StashedRomanization(
                 romanizedLines, perWordRomaji, romanizedFromGoogle, romanizedFromAI,
                 romanizedFromEmbedded, romanizedAiModel, romanizedLocalDictionary,
-                appliedRubyLanguage, hasRubyInLyrics(source) ? source : null,
-                source, romanizeCacheSignature());
+                appliedRubyLanguage, source, romanizeCacheSignature());
     }
 
     private boolean restoreStashedTranslation(Lyrics current) {
@@ -7213,7 +7212,6 @@ public final class LyricsPanelView extends FrameLayout
             @Nullable String aiModel,
             @Nullable String localDictionary,
             @Nullable String appliedRubyLanguage,
-            @Nullable Lyrics rubyAppliedLyrics,
             Lyrics sourceLyrics,
             String cacheSignature) {
     }

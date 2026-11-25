@@ -840,7 +840,7 @@ public final class LocalRomanizer {
                 }
                 yield PinyinDictionaryStore.isReady()
                         ? new Read(PinyinRomanizer.romanize(text),
-                        JiebaSegmentStore.isReady() ? PINYIN + ", jieba" : PINYIN)
+                                JiebaSegmentStore.isReady() ? PINYIN + ", jieba" : PINYIN)
                         : new Read(text, null);
             }
             case JAPANESE -> {

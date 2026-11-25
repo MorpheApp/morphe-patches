@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import app.morphe.extension.shared.Logger;
+
 /** Official endpoint unless a valid http(s) override replaces it. */
 final class LyricsEndpoints {
 
@@ -55,6 +57,7 @@ final class LyricsEndpoints {
             final String host = uri.getHost();
             return host != null && !host.isEmpty();
         } catch (URISyntaxException ex) {
+            Logger.printDebug(() -> "Ignoring invalid lyrics endpoint: " + trimmed, ex);
             return false;
         }
     }

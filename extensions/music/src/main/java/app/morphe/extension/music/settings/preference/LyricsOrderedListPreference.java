@@ -549,21 +549,24 @@ public final class LyricsOrderedListPreference extends Preference {
             }
             updateZhVisibility.run();
         });
-        unidict.setOnCheckedChangeListener((b, c) -> updateZhVisibility.run());
-        // A word table reads the rest of a line from the character tables.
-        final CompoundButton.OnCheckedChangeListener keepUniDict = (button, checked) -> {
+        // The word table reads the rest of a line from the character tables, and jieba supplies
+        // boundaries only, so each one needs those before it.
+        unidict.setOnCheckedChangeListener((button, checked) -> {
+            if (!checked) {
+                chinese.setChecked(false);
+            }
+        });
+        chinese.setOnCheckedChangeListener((button, checked) -> {
             if (checked) {
                 unidict.setChecked(true);
+            } else {
+                jieba.setChecked(false);
             }
-            updateZhVisibility.run();
-        };
-        chinese.setOnCheckedChangeListener(keepUniDict);
-        // jieba supplies boundaries only, so it needs the word readings too.
+        });
         jieba.setOnCheckedChangeListener((button, checked) -> {
             if (checked) {
                 chinese.setChecked(true);
             }
-            updateZhVisibility.run();
         });
 
         final CheckBox cldr = new CheckBox(context);
@@ -626,9 +629,10 @@ public final class LyricsOrderedListPreference extends Preference {
                 Settings.LYRICS_JAPANESE_DICT_ENGINE.save("kuromoji");
             }
             // Saving with nothing ticked is a choice of its own: the rules alone.
+            final boolean zhOn = zhParent.isChecked();
             LyricsLocalRomanizationDownloads.saveChoice(
-                    saveKuromoji, saveSudachi, unidict.isChecked(),
-                    chinese.isChecked(), cldr.isChecked(), jieba.isChecked());
+                    saveKuromoji, saveSudachi, zhOn && unidict.isChecked(),
+                    zhOn && chinese.isChecked(), cldr.isChecked(), zhOn && jieba.isChecked());
             accepted[0] = true;
             if (switchV == null) {
                 // Opened from the name, so only a row that is already on fetches what is missing.

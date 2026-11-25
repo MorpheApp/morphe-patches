@@ -86,7 +86,6 @@ final class LyricsShareDialog {
     private static final int SLIDE_ANIMATION_MILLIS = 280;
     private static final int MAX_PICKED_IMAGE_DIM = 1280;
     private static final String PICKER_FRAGMENT_TAG = "MorpheSharePhotoPickerFragment";
-    private static final int STAGE_GROUND_COLOR = 0xFF0D0D10;
     private static final int SEGMENT_TRACK_COLOR = 0xFF222229;
     private static final String ICON_ROMAJI = "morphe_yt_romanize";
     private static final String ICON_TRANSLATE = "yt_outline_experimental_translate_vd_theme_24";
@@ -159,12 +158,11 @@ final class LyricsShareDialog {
         final boolean[] dismissed = {false};
         final boolean[] exportInFlight = {false};
 
-        LinearLayout sheet = SheetBottomDialog.createMainLayout(context, STAGE_GROUND_COLOR);
+        LinearLayout sheet = SheetBottomDialog.createMainLayout(context, LyricsSheetChrome.BACKGROUND_COLOR);
         Dialog dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
 
         LinearLayout root = new LinearLayout(context);
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setBackgroundColor(STAGE_GROUND_COLOR);
 
         // Top studio header (>= 48dp accessible back button + high-contrast title)
         LinearLayout topBar = LyricsSheetChrome.createTopBar(context,
@@ -1053,7 +1051,6 @@ final class LyricsShareDialog {
         LyricsSheetChrome.attachInteractiveBackground(btn, bg, radius, primary ? 0x22000000 : 0x2AFFFFFF);
         return btn;
     }
-
 
     /** Custom color wheel + plus icon drawn without literal text characters. */
     private static final class CustomPaletteDrawable extends Drawable {

@@ -90,6 +90,7 @@ final class LyricsFullscreenController {
     private long coverDownTime;
 
     private boolean isFullscreen;
+    private int originalSystemUiVisibility;
     @Nullable
     private ViewGroup originalParent;
     private int originalIndex;
@@ -725,9 +726,13 @@ final class LyricsFullscreenController {
         row.setVisibility(View.GONE);
     }
 
-    private static void setSystemBarsHidden(boolean hidden) {
+    private void setSystemBarsHidden(boolean hidden) {
         Activity activity = Utils.getActivity();
         if (activity == null) return;
+        View decorView = activity.getWindow().getDecorView();
+        if (hidden) {
+            originalSystemUiVisibility = decorView.getSystemUiVisibility();
+        }
         int flags = hidden
                 ? View.SYSTEM_UI_FLAG_FULLSCREEN
                   | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -735,9 +740,9 @@ final class LyricsFullscreenController {
                   | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                   | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                   | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                : 0;
+                : originalSystemUiVisibility;
         try {
-            activity.getWindow().getDecorView().setSystemUiVisibility(flags);
+            decorView.setSystemUiVisibility(flags);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not set system bars", ex);
         }

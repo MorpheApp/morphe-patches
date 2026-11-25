@@ -18,6 +18,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -63,7 +64,7 @@ final class LyricsSheetChrome {
         titleView.setText(title);
         titleView.setTextColor(0xFFFFFFFF);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
-        titleView.setTypeface(null, android.graphics.Typeface.BOLD);
+        titleView.setTypeface(null, Typeface.BOLD);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
         params.leftMargin = Dim.dp8;

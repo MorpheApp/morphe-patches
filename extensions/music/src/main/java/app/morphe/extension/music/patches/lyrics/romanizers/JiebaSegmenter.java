@@ -11,13 +11,18 @@ import androidx.annotation.Nullable;
 
 import java.util.Arrays;
 
-/** Highest-frequency path through the jieba dict; unknown stretches stay single. */
+import app.morphe.extension.shared.Logger;
+
+/** Most probable path through the jieba dict; unknown stretches stay single. */
 public final class JiebaSegmenter {
+
+    /** Log of the sum of all frequencies in the pinned jieba dictionary. */
+    private static final double LOG_TOTAL_FREQUENCY = Math.log(60_101_967);
 
     private JiebaSegmenter() {
     }
 
-    /** {@return one group id per character, or null when the dictionary is not loaded} */
+    /** {@return one group id per Han character and -1 elsewhere, or null when the dictionary is not loaded} */
     @Nullable
     public static int[] wordGroups(String line) {
         try (WordReadingTable table = JiebaSegmentStore.words()) {
@@ -35,8 +40,8 @@ public final class JiebaSegmenter {
         final int[] next = new int[n + 1];
         best[n] = 0.0;
         for (int i = n - 1; i >= 0; i--) {
-            // No word covers this character; leave it alone.
-            double score = best[i + 1] - 2.0;
+            // No word covers this character, so it counts as a word seen once.
+            double score = best[i + 1] - LOG_TOTAL_FREQUENCY;
             int end = i + 1;
             final int max = Math.min(n, i + WordReadingTable.MAX_WORD_LENGTH);
             for (int j = i + 1; j <= max; j++) {
@@ -44,7 +49,8 @@ public final class JiebaSegmenter {
                 if (frequency == null) continue;
                 final double weight = frequency(frequency);
                 if (weight <= 0.0) continue;
-                final double candidate = Math.log(weight) + best[j];
+                // Every word costs the total, otherwise the path with the most words always wins.
+                final double candidate = Math.log(weight) - LOG_TOTAL_FREQUENCY + best[j];
                 if (candidate > score) {
                     score = candidate;
                     end = j;
@@ -57,13 +63,17 @@ public final class JiebaSegmenter {
         final int[] groups = new int[n];
         Arrays.fill(groups, -1);
         int group = 0;
-        for (int i = 0; i < n; ) {
-            final int end = next[i] > i ? next[i] : i + 1;
-            for (int j = i; j < end; j++) {
-                groups[j] = group;
+        for (int i = 0; i < n; i = next[i]) {
+            boolean grouped = false;
+            for (int j = i; j < next[i]; j++) {
+                if (ScriptDetector.isHan(line.charAt(j))) {
+                    groups[j] = group;
+                    grouped = true;
+                }
             }
-            group++;
-            i = end;
+            if (grouped) {
+                group++;
+            }
         }
         return groups;
     }
@@ -72,6 +82,7 @@ public final class JiebaSegmenter {
         try {
             return Integer.parseInt(value.trim());
         } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Jieba frequency is not a number: " + value, ex);
             return 0.0;
         }
     }

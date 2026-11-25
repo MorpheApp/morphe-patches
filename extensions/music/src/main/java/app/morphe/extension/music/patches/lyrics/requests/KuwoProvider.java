@@ -488,6 +488,7 @@ public final class KuwoProvider implements LyricsProvider {
             try {
                 seconds = Double.parseDouble(timeStr);
             } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Kuwo line time is not a number: " + timeStr);
                 continue;
             }
             if (!Double.isFinite(seconds)) continue;
