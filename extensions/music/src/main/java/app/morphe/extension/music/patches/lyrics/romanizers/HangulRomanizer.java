@@ -7,6 +7,10 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
+import androidx.annotation.Nullable;
+
+import java.util.Arrays;
+
 /**
  * Revised Romanization for Korean, as Google writes it so both paths spell a line the same:
  * a coda before a silent ㅇ is written out with a hyphen (시간이 {@code sigan-i}), ㄹ always reads
@@ -14,6 +18,30 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
  * {@code h} joins are left out: they need morphological analysis, not a romanization.
  */
 public final class HangulRomanizer {
+
+    /** Spaces end a Korean phrase, so one run of Hangul stays in one cluster. */
+    @Nullable
+    public static int[] wordGroups(String line) {
+        if (line == null || line.isEmpty()) {
+            return null;
+        }
+        final int[] groups = new int[line.length()];
+        Arrays.fill(groups, -1);
+        int group = -1;
+        boolean inRun = false;
+        for (int i = 0; i < line.length(); i++) {
+            if (ScriptDetector.isHangul(line.charAt(i))) {
+                if (!inRun) {
+                    group++;
+                    inRun = true;
+                }
+                groups[i] = group;
+            } else {
+                inRun = false;
+            }
+        }
+        return group >= 0 ? groups : null;
+    }
 
     /** The silent {@code ㅇ} sits at index 11 and writes nothing. */
     private static final String[] INITIALS = {

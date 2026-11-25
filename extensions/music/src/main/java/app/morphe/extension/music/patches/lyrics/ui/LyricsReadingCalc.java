@@ -102,7 +102,7 @@ final class LyricsReadingCalc {
                         spreadWordWindow(spans, shiftedTokens, 0, shiftedTokens.length, wStart, wEnd, avg);
                     } else {
                         spans.add(new WordTiming(start, text.length(), wStart, word.endMs(),
-                                null, false, null, avg));
+                                null, false, null, avg, -1));
                     }
                     if (found >= 0) {
                         at = found + own.length();
@@ -428,7 +428,7 @@ final class LyricsReadingCalc {
                 anyRuby = true;
             }
             out.add(new WordTiming(wt.start(), wt.end(), wt.startMs(), wt.endMs(),
-                    r.isEmpty() ? null : r, trailSpace, drawnRuby, wt.averaged()));
+                    r.isEmpty() ? null : r, trailSpace, drawnRuby, wt.averaged(), wt.wordGroup()));
         }
 
         return (anyRoman || anyRuby) ? out : null;
@@ -849,7 +849,7 @@ final class LyricsReadingCalc {
             }
             closed.add(end > span.endMs()
                     ? new WordTiming(span.start(), span.end(), span.startMs(), end,
-                    span.romaji(), span.hasTrailingSpace(), span.ruby(), span.averaged())
+                    span.romaji(), span.hasTrailingSpace(), span.ruby(), span.averaged(), span.wordGroup())
                     : span);
         }
         return closed;
@@ -1035,7 +1035,7 @@ final class LyricsReadingCalc {
                 long startMs = words.get(firstWordIdx).startMs();
                 long endMs = windowEndFor(words, lastWordIdx, words.get(lastWordIdx).endMs());
                 spans.add(new WordTiming(tokens[t][0], tokens[t][1], startMs,
-                        Math.max(endMs, startMs + 1), null, false, null, averaged));
+                        Math.max(endMs, startMs + 1), null, false, null, averaged, -1));
             }
         }
         return spans.isEmpty() ? null : spans;
@@ -1085,7 +1085,7 @@ final class LyricsReadingCalc {
             final long end = Math.max(endMs, startMs + 1);
             for (int at = from; at < to; at++) {
                 out.add(new WordTiming(tokens[at][0], tokens[at][1], startMs, end,
-                        null, false, null, averaged));
+                        null, false, null, averaged, -1));
             }
             return;
         }
@@ -1097,7 +1097,7 @@ final class LyricsReadingCalc {
                     ? Math.max(endMs, cursor + 1)
                     : Math.max(startMs + window * said / spelling, cursor + 1);
             out.add(new WordTiming(tokens[at][0], tokens[at][1], cursor, share,
-                    null, false, null, averaged));
+                    null, false, null, averaged, -1));
             cursor = share;
         }
     }

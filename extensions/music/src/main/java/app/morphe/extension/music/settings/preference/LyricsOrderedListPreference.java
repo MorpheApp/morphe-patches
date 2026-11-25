@@ -511,37 +511,73 @@ public final class LyricsOrderedListPreference extends Preference {
         kuromoji.setOnCheckedChangeListener((b, c) -> updateJaVisibility.run());
         japanese.setOnCheckedChangeListener((b, c) -> updateJaVisibility.run());
 
+        final CheckBox zhParent = new CheckBox(context);
+        zhParent.setText(str("morphe_music_lyrics_local_romanization_dict_zh_parent"));
+        zhParent.setChecked(chosen[LyricsLocalRomanizationDownloads.UNIDICT]
+                || chosen[LyricsLocalRomanizationDownloads.PINYIN]
+                || chosen[LyricsLocalRomanizationDownloads.JIEBA]);
+        styleCheckBox(zhParent, fg);
+
+        final LinearLayout zhOptionsBox = new LinearLayout(context);
+        zhOptionsBox.setOrientation(LinearLayout.VERTICAL);
+        zhOptionsBox.setPadding(Dim.dp24, 0, 0, Dim.dp4);
+
         final CheckBox unidict = new CheckBox(context);
         unidict.setText(str("morphe_music_lyrics_local_romanization_dict_unidict"));
         unidict.setChecked(chosen[LyricsLocalRomanizationDownloads.UNIDICT]);
         styleCheckBox(unidict, fg);
+        zhOptionsBox.addView(unidict);
 
         final CheckBox chinese = new CheckBox(context);
         chinese.setText(str("morphe_music_lyrics_local_romanization_dict_chinese"));
         chinese.setChecked(chosen[LyricsLocalRomanizationDownloads.PINYIN]);
         styleCheckBox(chinese, fg);
+        zhOptionsBox.addView(chinese);
+
+        final CheckBox jieba = new CheckBox(context);
+        jieba.setText(str("morphe_music_lyrics_local_romanization_dict_jieba"));
+        jieba.setChecked(chosen[LyricsLocalRomanizationDownloads.JIEBA]);
+        styleCheckBox(jieba, fg);
+        zhOptionsBox.addView(jieba);
+
+        final Runnable updateZhVisibility = () ->
+                zhOptionsBox.setVisibility(zhParent.isChecked() ? View.VISIBLE : View.GONE);
+        updateZhVisibility.run();
+        zhParent.setOnCheckedChangeListener((b, checked) -> {
+            if (checked && !unidict.isChecked() && !chinese.isChecked() && !jieba.isChecked()) {
+                unidict.setChecked(true);
+            }
+            updateZhVisibility.run();
+        });
+        unidict.setOnCheckedChangeListener((b, c) -> updateZhVisibility.run());
+        // A word table reads the rest of a line from the character tables.
+        final CompoundButton.OnCheckedChangeListener keepUniDict = (button, checked) -> {
+            if (checked) {
+                unidict.setChecked(true);
+            }
+            updateZhVisibility.run();
+        };
+        chinese.setOnCheckedChangeListener(keepUniDict);
+        // jieba supplies boundaries only, so it needs the word readings too.
+        jieba.setOnCheckedChangeListener((button, checked) -> {
+            if (checked) {
+                chinese.setChecked(true);
+            }
+            updateZhVisibility.run();
+        });
 
         final CheckBox cldr = new CheckBox(context);
         cldr.setText(str("morphe_music_lyrics_local_romanization_dict_cldr"));
         cldr.setChecked(chosen[LyricsLocalRomanizationDownloads.CLDR]);
         styleCheckBox(cldr, fg);
 
-        // A Chinese word table reads the rest of a line from the character tables, so choosing
-        // one keeps the character provider on.
-        final CompoundButton.OnCheckedChangeListener keepUniDict = (button, checked) -> {
-            if (checked) {
-                unidict.setChecked(true);
-            }
-        };
-        chinese.setOnCheckedChangeListener(keepUniDict);
-
         final LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
         content.addView(hint);
         content.addView(jaParent);
         content.addView(jaOptionsBox);
-        content.addView(unidict);
-        content.addView(chinese);
+        content.addView(zhParent);
+        content.addView(zhOptionsBox);
         content.addView(cldr);
 
         // Attached here rather than on the dialog so a close in any way detaches it. A watched
@@ -592,7 +628,7 @@ public final class LyricsOrderedListPreference extends Preference {
             // Saving with nothing ticked is a choice of its own: the rules alone.
             LyricsLocalRomanizationDownloads.saveChoice(
                     saveKuromoji, saveSudachi, unidict.isChecked(),
-                    chinese.isChecked(), cldr.isChecked());
+                    chinese.isChecked(), cldr.isChecked(), jieba.isChecked());
             accepted[0] = true;
             if (switchV == null) {
                 // Opened from the name, so only a row that is already on fetches what is missing.

@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -89,6 +90,42 @@ public final class KuromojiRomanizer {
             sawPendingSpace = false;
         }
         return out.toString().trim();
+    }
+
+    /** One group per token surface, so a word's own readings stay in one cluster. */
+    @Nullable
+    public static int[] wordGroups(String line, KuromojiTokenizer tokenizer) {
+        if (line == null || line.isEmpty() || tokenizer == null) {
+            return null;
+        }
+        final List<Token> tokens = tokenizer.tokenize(line);
+        if (tokens.isEmpty()) {
+            return null;
+        }
+        final int[] groups = new int[line.length()];
+        Arrays.fill(groups, -1);
+        int group = 0;
+        int cursor = 0;
+        for (Token token : tokens) {
+            final String surface = token.surfaceForm();
+            if (surface == null || surface.isEmpty() || isWhitespaceOnly(surface)) {
+                continue;
+            }
+            final int start = line.indexOf(surface, cursor);
+            if (start < 0) {
+                continue;
+            }
+            final int end = Math.min(line.length(), start + surface.length());
+            if (end <= start) {
+                continue;
+            }
+            for (int i = start; i < end; i++) {
+                groups[i] = group;
+            }
+            group++;
+            cursor = end;
+        }
+        return group > 0 ? groups : null;
     }
 
     private record LineCharRomaji(String[] charRomaji, boolean[] bunsetsuBreakAfterChar) {

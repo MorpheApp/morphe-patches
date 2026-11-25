@@ -140,7 +140,7 @@ final class LyricsViewSupport {
         for (WordTiming span : readingSpans) {
             combined.add(new WordTiming(
                     span.start() + shift, span.end() + shift, span.startMs(), span.endMs(),
-                    null, span.hasTrailingSpace(), null, span.averaged()));
+                    null, span.hasTrailingSpace(), null, span.averaged(), span.wordGroup()));
         }
         return combined;
     }

@@ -101,7 +101,7 @@ public final class LyricsSpanBuilder {
             final int start = formatted.offset(word.start() + originalStart) - base;
             final int end = formatted.offset(word.end() + originalStart) - base;
             if (end > start) mapped.add(new WordTiming(start, end, word.startMs(), word.endMs(),
-                    word.romaji(), word.hasTrailingSpace(), word.ruby(), word.averaged()));
+                    word.romaji(), word.hasTrailingSpace(), word.ruby(), word.averaged(), word.wordGroup()));
         }
         return new PresentedLine(new BuildResult(text, raw.unsungSpan(),
                 formatted.offset(raw.transStart()), formatted.offset(raw.transEnd()),
@@ -420,7 +420,7 @@ public final class LyricsSpanBuilder {
         for (WordTiming span : spans) {
             shifted.add(new WordTiming(span.start() + by, span.end() + by,
                     span.startMs(), span.endMs(), span.romaji(), span.hasTrailingSpace(),
-                    span.ruby(), span.averaged()));
+                    span.ruby(), span.averaged(), span.wordGroup()));
         }
         return shifted;
     }
