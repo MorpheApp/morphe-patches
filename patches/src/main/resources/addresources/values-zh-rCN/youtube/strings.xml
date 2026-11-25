@@ -284,6 +284,22 @@ Second \"item\" text"</string>
 • 被隐藏的 Short 可能会在 Shorts 栏中留下空白空间"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">播放量过滤器将隐藏所有视频</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">时长过滤器</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">在馈送和搜索中隐藏过短或过长的视频</string>
+  <string name="morphe_hide_videos_by_duration_home_title">按时长过滤首页视频</string>
+  <string name="morphe_hide_videos_by_duration_search_title">按时长过滤搜索结果</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">根据时长隐藏订阅视频</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">最短时长（分钟）</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">时长短于此值的视频将被隐藏。0 = 无最短限制</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">最长时长（分钟）</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">时长长于此值的视频将被隐藏。0 = 无最长限制</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"首页 / 订阅 / 搜索将通过过滤时长来隐藏视频
+
+限制：
+• 直播、Shorts、播放列表和 mixes 不会被隐藏
+• 时长未知的视频不会被隐藏"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">时长过滤器将隐藏所有视频</string>
   <string name="morphe_hide_stats_category_title">统计</string>
   <string name="morphe_hide_stats_hidden_24h_title">过去 24 小时内隐藏的视频</string>
   <string name="morphe_hide_stats_hidden_all_title">所有时间隐藏的视频</string>
@@ -327,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">隐藏“同步到视频”按钮</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">隐藏点按并按住渐变</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">隐藏按住以加速时滑动手指所显示的播放器控件渐变</string>
-  <string name="morphe_hide_timed_reactions_title">隐藏限时反应</string>
-  <string name="morphe_hide_timed_reactions_summary">隐藏评论区和直播聊天中用表情符号互动的功能</string>
   <string name="morphe_hide_help_feedback_menu_summary">使用三点按钮时，例如在搜索结果中，隐藏“帮助和反馈”菜单</string>
   <string name="morphe_hide_handle_title">隐藏标识名</string>
   <string name="morphe_hide_handle_summary">在“我”标签页中隐藏你的频道标识名</string>
@@ -443,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">隐藏每条评论的三点菜单按钮</string>
   <string name="morphe_hide_comments_none_yet_title">隐藏“暂无评论”预览</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
-  <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
+  <string name="morphe_hide_comments_preview_comment_summary">在打开评论区之前，隐藏视频下方的评论预览</string>
   <string name="morphe_hide_comments_preview_comment_hidden">评论已被 Morphe 隐藏……</string>
-  <string name="morphe_minimal_comments_button_title">启用极简评论按钮</string>
-  <string name="morphe_minimal_comments_button_summary">隐藏评论按钮上显示的滑动卡片及其页面选择器</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">隐藏预览评论卡片</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">隐藏显示在评论按钮上的滑动卡片和页面指示器</string>
+  <string name="morphe_hide_comments_timed_reactions_title">隐藏限时反应</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">隐藏评论区和直播聊天中用表情符号互动的功能</string>
   <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
   <string name="morphe_hide_comments_top_fans_button_title">隐藏“Top fans”按钮</string>
   <string name="morphe_hide_comments_topics_title">隐藏“话题”</string>
@@ -1157,6 +1173,17 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">修复文本</string>
   <string name="morphe_fix_transcript_summary">解决可能导致文字记录无法加载的前置条件检查失败</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">复制文字记录</string>
+  <string name="morphe_copy_transcript_title">复制文字记录</string>
+  <string name="morphe_copy_transcript_summary">在文字记录面板中添加一个按钮，用于复制字幕语言的文字记录</string>
+  <string name="morphe_copy_transcript_timestamps_title">包含时间戳</string>
+  <string name="morphe_copy_transcript_timestamps_summary">复制的转录文本每行开头都有时间戳</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">在 Shorts 菜单中显示</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">在 Shorts 菜单中添加“复制转录文本”项</string>
+  <string name="morphe_copy_transcript_copied">转录文本已复制到剪贴板</string>
+  <string name="morphe_copy_transcript_empty">没有可用的转录文本</string>
+  <string name="morphe_copy_transcript_error">无法复制转录文本</string>
   <string name="morphe_captions_in_pip_title">在画中画模式下显示字幕</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">字幕大小</string>
@@ -1411,6 +1438,17 @@ Second \"item\" text"</string>
 • 可能无法使用“更多视频”叠加层
 • Shorts 在常规播放器中打开
 • 显示未折叠的旧视频操作栏"</string>
+  <string name="morphe_change_form_factor_car_display_title">车载显示屏上的车载布局</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">当 YouTube 在车载显示屏上显示时，例如通过 Android Auto 或 DriveDeck，将使用车载布局</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">车载显示屏上不使用车载布局</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">在车载显示屏上自动隐藏导航栏</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">在车载显示屏上，导航栏在一段时间未被使用后会自动隐藏。从底部边缘向上滑动即可显示</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">在车载显示屏上始终显示导航栏</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">自动隐藏延迟</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">导航栏显示或被触摸后保留的时间</string>
+  <string name="morphe_change_form_factor_car_display_any_title">在任何外部显示屏上使用</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">除手机屏幕外的所有显示屏都被视为车载显示屏，包括电视或显示器</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Android Auto、显示名称和车载 UI 模式可识别车载显示屏。在 Android 15 及更高版本中，通过 DriveDeck、Gearslip、graphene-auto 或 MyCar 进行的屏幕镜像也被视为车载显示屏"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢复旧版字幕行为</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>

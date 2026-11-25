@@ -163,7 +163,8 @@ message CreationEntryEndpoint {
 
 // Opens the account switcher when signed in, and the incognito sheet when incognito.
 message SignInEndpoint {
-    // Without it, the Google account sign in flow opens instead of the account switcher.
+    // Opens the lite account switcher. Without it, the account dialog opens instead,
+    // or the Google account sign in flow on versions before 21.30.
     bool useAccountSwitcher = 15;
 }
 

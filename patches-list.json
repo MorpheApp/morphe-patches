@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.4.0-dev.11",
+  "version": "2.4.0-dev.12",
   "patches": [
     {
       "name": "A-B loop",
@@ -253,25 +253,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -527,6 +534,78 @@
       "options": []
     },
     {
+      "name": "Android Auto third-party apps",
+      "description": "Allows third-party Android Auto apps, such as DriveDeck, Gearslip, AARE and Flywheel, to browse Home and Library. Any installed app can then browse YouTube Music.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "9.47.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.45.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.44.52",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.30.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.20.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.15.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "App icon",
       "description": "Adds an option to select from the Reddit app icons available in the manifest.",
       "default": true,
@@ -547,25 +626,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -913,25 +999,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -1195,7 +1288,7 @@
     },
     {
       "name": "Captions",
-      "description": "Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, and show captions in stable blocks and in picture-in-picture. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer.",
+      "description": "Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, show captions in stable blocks and in picture-in-picture, and copy the transcript. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -1274,7 +1367,7 @@
     },
     {
       "name": "Change form factor",
-      "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+      "description": "Adds options to change the UI appearance to a phone, tablet, or automotive device, and to use the automotive layout and auto-hide the navigation bar on a car display.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -2216,25 +2309,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -2280,25 +2380,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -2423,25 +2530,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -2942,25 +3056,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -3090,25 +3211,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -3293,7 +3421,7 @@
     },
     {
       "name": "Customize post layout",
-      "description": "Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer.",
+      "description": "Adds options to show or hide the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -3312,25 +3440,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -4067,25 +4202,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -4519,25 +4661,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -4662,25 +4811,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -4864,6 +5020,77 @@
       "options": []
     },
     {
+      "name": "Disable post detail swipe",
+      "description": "Adds an option to stop swiping sideways in a post from opening the next or previous post.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable refresh on back to exit",
       "description": "Adds an option to exit the app with back on the home feed without first scrolling to the top and reloading. This patch works with Reddit 2026.24.0 and newer.",
       "default": true,
@@ -4884,25 +5111,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -5027,25 +5261,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -5479,25 +5720,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -5543,25 +5791,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -5981,25 +6236,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -6419,25 +6681,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -6562,25 +6831,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -6784,25 +7060,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -7229,25 +7512,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -7293,25 +7583,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -7357,25 +7654,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -7789,6 +8093,77 @@
       "options": []
     },
     {
+      "name": "Glass navigation bar",
+      "description": "Adds an option to show the bottom navigation bar, or the side rail on tablets, as a floating translucent capsule. This patch works with Reddit 2026.24.0 and newer.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "GmsCore support",
       "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
       "default": true,
@@ -7940,6 +8315,77 @@
       "options": []
     },
     {
+      "name": "Hide Answers preview",
+      "description": "Adds an option to hide the Reddit Answers preview at the top of search results.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide Ask button",
       "description": "Adds an option to hide Ask button in the search bar.",
       "default": true,
@@ -7960,25 +8406,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8024,25 +8477,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8088,25 +8548,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8152,25 +8619,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8314,25 +8788,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8378,25 +8859,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8514,25 +9002,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -8716,6 +9211,77 @@
       "options": []
     },
     {
+      "name": "Hide comment flairs and badges",
+      "description": "Adds options to hide user flairs and community badges next to the authors of comments.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide communities shelf",
       "description": "Adds an option to hide the related or suggested communities shelf in subreddits.",
       "default": true,
@@ -8736,25 +9302,174 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide community highlights",
+      "description": "Adds an option to hide the Community highlights section at the top of subreddits.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide community menu badge",
+      "description": "Adds an option to hide the red dot on the community menu button.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -9030,25 +9745,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -9173,25 +9895,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -9388,25 +10117,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -9524,25 +10260,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -9746,25 +10489,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -9968,25 +10718,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -10269,25 +11026,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -10393,7 +11157,7 @@
     },
     {
       "name": "Home feed tabs",
-      "description": "Adds an option to show the For You, Following and Popular tabs on the home feed, and to switch them by swiping. This patch works with Reddit 2026.43.0 and newer.",
+      "description": "Adds options to show the For You, Following and Popular tabs on the home feed, and to switch them by swiping or only by tapping. This patch works with Reddit 2026.43.0 and newer.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -10412,25 +11176,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -10548,25 +11319,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -10612,25 +11390,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -10676,25 +11461,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -11049,25 +11841,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -11113,25 +11912,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -12044,25 +12850,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -12108,25 +12921,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -12402,25 +13222,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -13943,25 +14770,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -14007,25 +14841,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -14143,25 +14984,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -14286,25 +15134,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -14796,25 +15651,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -15550,25 +16412,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -15844,25 +16713,103 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "See-through status bar",
+      "description": "Adds an option to let the home feed scroll up under the status bar and fade into it. This patch works with Reddit 2026.43.0 and newer.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -16217,25 +17164,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -16449,25 +17403,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -17355,25 +18316,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -17577,25 +18545,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -17720,25 +18695,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -17784,25 +18766,32 @@
               "version": "2026.47.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.46.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
-              "minSdk": 29,
+              "minSdk": 32,
               "description": null
             },
             {
               "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 29,
@@ -18585,6 +19574,77 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Video playback speed",
+      "description": "Adds an option to show Reddit's playback speed controls in the full-screen video player. This patch works with Reddit 2026.40.0 and newer.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
               "description": null
             }
           ]

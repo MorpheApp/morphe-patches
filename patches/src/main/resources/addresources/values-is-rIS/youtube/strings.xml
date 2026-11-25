@@ -284,6 +284,22 @@ Takmarkanir:
 • Falið Short getur skilja eftir tómt rými í Shorts-hillu"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Sía á fjölda skoðana mun fela öll myndskeið</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Tímastillingarsía</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Fela myndskeið í gáttum og leit sem eru of stutt eða of löng</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Fela myndskeið á forsíðu eftir tímasetningu</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Fela leitarniðurstöður eftir tímasetningu</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Fela myndskeið í áskriftum eftir tímeigin</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Lágmarkstímeigin (mínútur)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Myndskeið styttri en þetta eru falin. 0 = enginn lágmarkstími</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Hámarkstímeigin (mínútur)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Myndskeið lengri en þetta eru falin. 0 = enginn hámarkstími</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Heima / Áskriftir / Leitarstathi eru síaðir til að fela myndskeið eftir tímeigin
+
+Takmarkanir:
+• Beinar útvarðanir, Shorts, spilunarlistar og blandaðar listar eru ekki faldar
+• Myndskeið með óþekktan tímeigin eru ekki faldin"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Tímamark mun fela öll myndskeið</string>
   <string name="morphe_hide_stats_category_title">Tölfræði</string>
   <string name="morphe_hide_stats_hidden_24h_title">Myndskeið falin, síðasta sólarhring</string>
   <string name="morphe_hide_stats_hidden_all_title">Myndskeið falin, samtals</string>
@@ -327,8 +343,6 @@ Takmarkanir:
   <string name="morphe_hide_sync_button_title">Fela hnappinn \'Samstilla við myndband\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Fela litaverkið við snertingu og hald</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Felur litaverkið á stýringum spilarans þegar þú rennir fingrinum á meðan þú heldur niðri til að flýta fyrir</string>
-  <string name="morphe_hide_timed_reactions_title">Fela tímasettar viðbrögð</string>
-  <string name="morphe_hide_timed_reactions_summary">Felur eiginleikann sem gerir notendum kleift að bregðast við með emojium í athugasemdum og beinu streymi</string>
   <string name="morphe_hide_help_feedback_menu_summary">Felur valmyndina \'Hjálp &amp; endurgjöf\' þegar þrípunktahnappurinn er notaður, eins og í leitarniðurstöðum</string>
   <string name="morphe_hide_handle_title">Fela notandanafn</string>
   <string name="morphe_hide_handle_summary">Felur notandanafnið þitt í flipanum \'Þú\'</string>
@@ -443,10 +457,12 @@ Takmarkanir:
   <string name="morphe_hide_comments_menu_button_summary">Felur þriggja punkta valmyndarhnappinn á hverri athugasemd</string>
   <string name="morphe_hide_comments_none_yet_title">Fela forsýn fyrir \"Engar athugasemdir ennþá\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Fela forsýningu athugasemda</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Felur forskoðun athugasemda undir myndskeiði áður en allur athugasemdahlutinn opnast</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Felur forskoðun athugasemda undir myndskeiði áður en athugasemdahlutinn opnast</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Athugasemd falin af Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Virkja lágmarkshnapp fyrir athugasemdir</string>
-  <string name="morphe_minimal_comments_button_summary">Felur rennispjöldin og síðuveljarann sem birtast á athugasemdahnappinum</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Fela forskoðunarkort fyrir athugasemdir</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Felur rennandi kort og síðutölvunareinkenni sem birtast á athugasemdbuttanum</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Fela tímasettar viðbrögð</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Felur eiginleikann sem gerir notendum kleift að bregðast við með emojium í athugasemdum og beinu streymi</string>
   <string name="morphe_hide_comments_timestamp_button_title">Fela tímamerkjahnappinn</string>
   <string name="morphe_hide_comments_top_fans_button_title">Fela \'Topp aðdáendur\' hnappinn</string>
   <string name="morphe_hide_comments_topics_title">Fela \"Efni\"</string>
@@ -1157,6 +1173,17 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Lagfæra afrit</string>
   <string name="morphe_fix_transcript_summary">Lagar villu í forskilyrðisathugun sem getur komið í veg fyrir að afrit hleðst</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Afrita texta</string>
+  <string name="morphe_copy_transcript_title">Afrita texta</string>
+  <string name="morphe_copy_transcript_summary">Bætir hnappi við textagluggann sem afritar textann á tungumáli textunum</string>
+  <string name="morphe_copy_transcript_timestamps_title">Taka með tíðastempel</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Hver lína í afrituðum texta byrjar á tímasetningu</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Sýna í Shorts-valmyndum</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Bætir afritunartexta í valmyndir Shorts</string>
+  <string name="morphe_copy_transcript_copied">Texti afritaður á klippiborðið</string>
+  <string name="morphe_copy_transcript_empty">Enginn texti tiltækur</string>
+  <string name="morphe_copy_transcript_error">Gat ekki afritað texta</string>
   <string name="morphe_captions_in_pip_title">Sýna texta í mynd-í-mynd</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Stærð texta</string>
@@ -1411,6 +1438,17 @@ Bílaútlit
 • Yfirlagið 'Fleiri myndskeið' er kannski ekki tiltækt
 • Shorts opnast í venjulega spilaranum
 • Gömul aðgerðastika myndskeiðs sem er ekki samanfellanleg er sýnd"</string>
+  <string name="morphe_change_form_factor_car_display_title">Bílastilling á bílaskjám</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Bílastilling er notuð þegar YouTube er sýnd á bílaskjá, til dæmis með Android Auto eða DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Bílastilling er ekki notuð á bílaskjám</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Sjálfvirk fellingu stýrislána á skjáum bíla</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Stýrislána fellur sjálfkrafa á skjáum bíla ef hún er ekki notuð í nokkrum tíma. Renndu upp frá neðra brúnni til að sýna hana</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Stýrislána er alltaf sýnd á skjáum bíla</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Töf á sjálfvirkri fellingu</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Hversu lengi vendingarslássinn sýnist eftir að hann hafi komið fram eða verið snertur</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Nota á öllum uttanhliðarskjám</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Hvert og einn skjár aðrúgnum skjá síma er talinn bílaskjár, þar á meðal sjónvarp eða vöktunarskjár</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Bílaskjár eru greindir með Android Auto, skjánumnefnum og notendaviðmóti bíla. Í Android 15 og nýrri er skjáspegling með DriveDeck, Gearslip, graphene-auto eða MyCar einnig talin bílaskjár"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Endurheimta gamla hegðun texta</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Endurheimta gamla vistun á spilunarlista</string>

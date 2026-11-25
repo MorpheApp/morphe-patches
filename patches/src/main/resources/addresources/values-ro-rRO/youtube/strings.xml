@@ -284,6 +284,22 @@ Limitări:
 • Un Short ascuns poate lăsa un spațiu gol într-o raft de Shorts"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Filtrul de vizualizări va ascunde toate videoclipurile</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Filtru după durată</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Ascunde videoclipurile din feed-uri și căutări care sunt prea scurte sau prea lungi</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Ascunde videoclipurile de acasă după durată</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Ascunde rezultatele căutării după durată</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Ascunde videoclipurile din Abonamente după durată</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Durată minimă (minute)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Videoclipurile mai scurte decât aceasta sunt ascunse. 0 = fără minim</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Durată maximă (minute)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Videoclipurile mai lungi decât aceasta sunt ascunse. 0 = fără maxim</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Pagini Inicio / Abonamente / Căutare sunt filtrate pentru a ascunde videoclipurile în funcție de durata acestora
+
+Limitări:
+• Live stream-urile, Shorts, playlist-urile și mix-urile nu sunt ascunse
+• Videoclipurile cu durată necunoscută nu sunt ascunse"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Filtrul de durată va ascunde toate videoclipurile</string>
   <string name="morphe_hide_stats_category_title">Statistici</string>
   <string name="morphe_hide_stats_hidden_24h_title">Videoclipuri ascunse, ultimele 24 de ore</string>
   <string name="morphe_hide_stats_hidden_all_title">Videoclipuri ascunse, total</string>
@@ -327,8 +343,6 @@ Limitări:
   <string name="morphe_hide_sync_button_title">Ascunde butonul „Sincronizare cu video”</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Ascunde gradientul de atingere și menținere</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Ascunde gradientul controalelor playerului când glisezi degetul în timp ce ții apăsat pentru a accelera</string>
-  <string name="morphe_hide_timed_reactions_title">Ascunde reacțiile cronologice</string>
-  <string name="morphe_hide_timed_reactions_summary">Ascunde funcția care permite utilizatorilor să reacționeze cu emoji-uri în secțiunea de comentarii și chat live</string>
   <string name="morphe_hide_help_feedback_menu_summary">Ascunde meniul \'Ajutor &amp; feedback\' atunci când folosești butonul cu trei puncte, cum ar fi în rezultatele căutării</string>
   <string name="morphe_hide_handle_title">Ascunde identificatorul</string>
   <string name="morphe_hide_handle_summary">Ascunde identificatorul canalului tău în fila „Tu”</string>
@@ -443,10 +457,12 @@ Limitări:
   <string name="morphe_hide_comments_menu_button_summary">Ascunde butonul de meniu cu 3 puncte al fiecărui comentariu</string>
   <string name="morphe_hide_comments_none_yet_title">Ascunde previzualizarea \"Nu există comentarii încă\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de a deschide secțiunea completă de comentarii</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de deschiderea secțiunii de comentarii</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Comentariu ascuns de Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Activează butonul minimal de comentarii</string>
-  <string name="morphe_minimal_comments_button_summary">Ascunde cardurile glisante și selectorul de pagini al acestora de pe butonul de comentarii</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Ascunde cardurile de previzualizare a comentariilor</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Ascunde cardurile glisante și indicatorul de pagină afișate pe butonul de comentarii</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Ascunde reacțiile cronologice</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Ascunde funcția care permite utilizatorilor să reacționeze cu emoji-uri în secțiunea de comentarii și în chat-ul live</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ascunde butonul Timestamp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ascunde butonul \'Top fani\'</string>
   <string name="morphe_hide_comments_topics_title">Ascunde \"Subiecte\"</string>
@@ -1157,6 +1173,17 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Corectați transcrierea</string>
   <string name="morphe_fix_transcript_summary">Elimină o eroare de verificare a precondițiilor care poate împiedica încărcarea transcrierii</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Copiază transcrierea</string>
+  <string name="morphe_copy_transcript_title">Copiază transcrierea</string>
+  <string name="morphe_copy_transcript_summary">Adaugă un buton în panoul de transcriere care copiază transcrierea în limba subtitrărilor</string>
+  <string name="morphe_copy_transcript_timestamps_title">Include marcajele temporale</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Fiecare linie a unei transcrieri copiate începe cu marcajul temporal</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Afișare în meniurile Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Adaugă un element de Copiere transcriere în meniurile Shorts</string>
+  <string name="morphe_copy_transcript_copied">Transcriere copiată în clipboard</string>
+  <string name="morphe_copy_transcript_empty">Nicio transcriere disponibilă</string>
+  <string name="morphe_copy_transcript_error">Nu s-a putut copia transcrierea</string>
   <string name="morphe_captions_in_pip_title">Arată subtitrările în picture-in-picture</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Dimensiunea subtitrărilor</string>
@@ -1411,6 +1438,17 @@ Aspect pentru automotive
 • Suprapunerea „Alte videoclipuri” poate să nu fie disponibilă
 • Shorts se deschide în playerul obișnuit
 • Se afișează bara de acțiuni video vechi, necolapsată"</string>
+  <string name="morphe_change_form_factor_car_display_title">Aspect auto pentru ecranele auto</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Aspectul auto este utilizat atunci când YouTube este afișat pe un ecran auto, cum ar fi prin Android Auto sau DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Aspectul auto nu este utilizat pe ecranele auto</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Ascundere automată a barei de navigare pe ecranele auto</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Bara de navigare este ascunsă pe ecranul auto după ce nu a fost utilizată o perioadă de timp. Glisați în sus de la marginea de jos pentru a o afișa</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Bara de navigare este întotdeauna afișată pe ecranele auto</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Întârzierea ascunderii automate</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Cât timp rămâne bara de navigare după ce a fost afișată sau atinsă</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Utilizare pe orice ecran extern</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Orice ecran altul decât ecranul telefonului este considerat ecran auto, inclusiv un televizor sau un monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Ecranele auto sunt detectate prin Android Auto, numele ecranelor și modul UI al mașinii. Pe Android 15 și versiunile ulterioare, oglindirea ecranului prin DriveDeck, Gearslip, graphene-auto sau MyCar este, de asemenea, un ecran auto"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restabilește comportamentul vechi al subtitrărilor</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurează vechea salvare în lista de redare</string>

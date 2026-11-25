@@ -141,7 +141,7 @@ Toque em OK para abrir o Android System WebView. "</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente ativar: Simular streams de vídeo &gt; Fazer login no Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente padrão</string>
   <string name="morphe_spoof_video_streams_player_js_quack_title">Usar QuackJS</string>
-  <string name="morphe_spoof_video_streams_player_js_quack_summary">Usar QuackJS em vez do yt-dlp-ejs (WebView) para desobfuscação</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Usar QuackJS em vez do yt-dlp-ejs (WebView) para desenfuscação</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Login do \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' requer um login separado. Toque aqui para continuar</string>
@@ -188,10 +188,10 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Login salvo
 
 • Suas configurações do Morphe não importarão/exportarão o login do site do YouTube
-• Se o Google encerrar o login, os vídeos serão reproduzidos sem login até que você faça login novamente
+• Se o Google encerrar o login, os vídeos serão reproduzidos sem login até você fazer login novamente
 • Sair do login também desconecta este dispositivo do site do YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">O login na Web expirou, tente fazer login novamente</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Sessão encerrada no site do YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">O login via Web expirou, tente fazer login novamente</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Deslogado do site do YouTube</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView não disponível. Instale-o ou habilite-o para logar-se</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 está temporariamente indisponível (API expirou)</string>
   <string name="morphe_oauth2_connection_failure_status_400">O login do \'Android VR\' expirou, tente fazer login no VR novamente</string>

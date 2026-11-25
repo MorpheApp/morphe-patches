@@ -284,6 +284,22 @@ Limitazioni:
 • Uno Short nascosto può lasciare uno spazio vuoto in una sezione Shorts"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Il filtro visualizzazioni nasconderà tutti i video</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Filtro durata</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Nascondi nei feed e nella ricerca i video troppo brevi o troppo lunghi</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Nascondi i video della Home in base alla durata</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Nascondi i risultati della ricerca in base alla durata</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Nascondi i video della scheda Iscrizioni in base alla durata</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Durata minima (minuti)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">I video più brevi di questo valore sono nascosti. 0 = nessun minimo</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Durata massima (minuti)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">I video più lunghi di questo valore sono nascosti. 0 = nessun massimo</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Home / Iscrizioni / Ricerca sono filtrati per nascondere i video in base alla loro durata
+
+Limitazioni:
+• Live stream, Shorts, playlist e mix non vengono nascosti
+• I video con durata sconosciuta non vengono nascosti"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Il filtro durata nasconderà tutti i video</string>
   <string name="morphe_hide_stats_category_title">Statistiche</string>
   <string name="morphe_hide_stats_hidden_24h_title">Video nascosti, ultime 24 ore</string>
   <string name="morphe_hide_stats_hidden_all_title">Video nascosti, totale</string>
@@ -327,8 +343,6 @@ Limitazioni:
   <string name="morphe_hide_sync_button_title">Nascondi il pulsante \'Sincronizza con video\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Nascondi il gradiente di tocco prolungato</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Nasconde il gradiente dei controlli del player quando scorri il dito mentre tieni premuto per accelerare</string>
-  <string name="morphe_hide_timed_reactions_title">Nascondi le reazioni a tempo</string>
-  <string name="morphe_hide_timed_reactions_summary">Nasconde la funzionalità che consente agli utenti di reagire con emoji nella sezione commenti e nella chat live</string>
   <string name="morphe_hide_help_feedback_menu_summary">Nasconde il menu \'Aiuto &amp; feedback\' quando si usa il pulsante a tre puntini, ad esempio nei risultati di ricerca</string>
   <string name="morphe_hide_handle_title">Nascondi handle</string>
   <string name="morphe_hide_handle_summary">Nasconde l\'handle del tuo canale nella scheda \'Tu\'</string>
@@ -443,10 +457,12 @@ Limitazioni:
   <string name="morphe_hide_comments_menu_button_summary">Nasconde il pulsante del menu a tre puntini di ogni commento</string>
   <string name="morphe_hide_comments_none_yet_title">Nascondi l\'anteprima \"Nessun commento ancora\"</string>
   <string name="morphe_hide_comments_preview_comment_title">Nascondi il commento di anteprima</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Nasconde l\'anteprima del commento sotto il video prima di aprire la sezione commenti completa</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Nasconde l\'anteprima del commento sotto il video prima di aprire la sezione commenti</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Commento nascosto da Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Abilita il pulsante minimale dei commenti</string>
-  <string name="morphe_minimal_comments_button_summary">Nasconde le card scorrevoli e il relativo selettore di pagina, mostrati sul pulsante dei commenti</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Nascondi schede di anteprima dei commenti</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Nasconde le schede scorrevoli e l\'indicatore di pagina visualizzati sul pulsante dei commenti</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Nascondi le reazioni a tempo</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Nasconde la funzionalità che consente agli utenti di reagire con emoji nella sezione commenti e nella chat live</string>
   <string name="morphe_hide_comments_timestamp_button_title">Nascondi il pulsante Timestamp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Nascondi il pulsante \'Migliori fan\'</string>
   <string name="morphe_hide_comments_topics_title">Nascondi \"Argomenti\"</string>
@@ -834,6 +850,7 @@ La tua chiave API non deve mai essere condivisa. Chiunque vi abbia accesso può 
   <string name="morphe_loop_count_clear_done">Numeri di loop salvati cancellati</string>
   <string name="morphe_loop_count_flyout_name">Conteggio loop</string>
   <string name="morphe_loop_count_dialog_message">Quante volte il video viene riprodotto prima del video successivo, da %1$s a %2$s. Lascia vuoto per riprodurre il video in loop senza limiti.</string>
+  <string name="morphe_loop_count_times">%s volte</string>
   <string name="morphe_loop_count_no_limit">Senza limiti</string>
   <string name="morphe_loop_count_decrease">Meno volte</string>
   <string name="morphe_loop_count_increase">Più volte</string>
@@ -1156,6 +1173,17 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Correggi trascrizione</string>
   <string name="morphe_fix_transcript_summary">Risolve un errore di controllo dei prerequisiti che potrebbe impedire il caricamento della trascrizione</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Copia trascrizione</string>
+  <string name="morphe_copy_transcript_title">Copia trascrizione</string>
+  <string name="morphe_copy_transcript_summary">Aggiunge un pulsante al pannello della trascrizione che copia la trascrizione nella lingua dei sottotitoli</string>
+  <string name="morphe_copy_transcript_timestamps_title">Includi timestamp</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Ogni riga di una trascrizione copiata inizia con il relativo timestamp</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Mostra nei menu di Shorts</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Aggiunge una voce Copia trascrizione ai menu di Shorts</string>
+  <string name="morphe_copy_transcript_copied">Trascrizione copiata negli appunti</string>
+  <string name="morphe_copy_transcript_empty">Nessuna trascrizione disponibile</string>
+  <string name="morphe_copy_transcript_error">Impossibile copiare la trascrizione</string>
   <string name="morphe_captions_in_pip_title">Mostra i sottotitoli in picture-in-picture</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Dimensioni sottotitoli</string>
@@ -1409,6 +1437,17 @@ Layout automotive
 • L'overlay 'Altri video' potrebbe non essere disponibile
 • Gli Short si aprono nel lettore normale
 • Viene mostrata la vecchia barra delle azioni del video non compattata"</string>
+  <string name="morphe_change_form_factor_car_display_title">Layout Automotive sui display dell\'auto</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Il layout Automotive viene utilizzato quando YouTube viene visualizzato su un display dell\'auto, ad esempio tramite Android Auto o DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Il layout Automotive non viene utilizzato sui display dell\'auto</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Nascondi automaticamente la barra di navigazione nei display per auto</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">La barra di navigazione viene nascosta in un display per auto dopo un periodo di inattività. Scorri verso l\'alto dal bordo inferiore per mostrarla</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">La barra di navigazione è sempre visibile nei display per auto</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Ritardo occultamento automatico</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Quanto tempo rimane visibile la barra di navigazione dopo essere stata mostrata o toccata</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Usa su qualsiasi display esterno</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Ogni display diverso dallo schermo del telefono è considerato un display dell\'auto, inclusi TV o monitor</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"I display dell'auto vengono rilevati tramite Android Auto, i nomi dei display e la modalità UI dell'auto. In Android 15 e versioni successive, anche il mirroring dello schermo tramite DriveDeck, Gearslip, graphene-auto o MyCar è considerato un display dell'auto"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ripristina il vecchio comportamento dei sottotitoli</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ripristina il vecchio pulsante Salva nella playlist</string>
@@ -2099,6 +2138,7 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_ghost_play_auto_search_summary">Guarda automaticamente in modalità Ghost i video aperti dai risultati di ricerca</string>
   <string name="morphe_ghost_play_manage_channels_title">Auto-ghost per i canali</string>
   <string name="morphe_ghost_play_manage_channels_summary">Cerca, aggiungi, ispeziona e gestisci i canali che vengono sempre riprodotti in modalità Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d canali configurati — tocca per cercare, ispezionare o rimuovere</string>
   <string name="morphe_ghost_play_local_history_title">Conserva la cronologia Ghost locale</string>
   <string name="morphe_ghost_play_local_history_summary">Ricorda i video in modalità Ghost e le posizioni di riproduzione solo su questo dispositivo (mai inviati a YouTube)</string>
   <string name="morphe_ghost_play_history_limit_title">Limite cronologia Ghost locale</string>
@@ -2111,6 +2151,7 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_ghost_play_history_limit_unlimited">Illimitato</string>
   <string name="morphe_ghost_play_view_history_title">Apri cronologia Ghost locale</string>
   <string name="morphe_ghost_play_view_history_summary">Visualizza, cerca, riprendi in modalità Ghost o cancella la cronologia del dispositivo</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d video memorizzati sul dispositivo (%2$s) — tocca per visualizzare o riprendere</string>
   <string name="morphe_ghost_play_view_history_summary_empty">Nessun video registrato finora (memorizzati solo su questo dispositivo)</string>
   <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
   <string name="morphe_ghost_play_flyout_action">Riproduci in modalità Ghost</string>
@@ -2168,6 +2209,7 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_ghost_play_channels_searching">Ricerca canali YouTube in corso…</string>
   <string name="morphe_ghost_play_channels_search_error">Ricerca fallita. Controlla la connessione e riprova.</string>
   <string name="morphe_ghost_play_channels_search_no_results">Nessun canale trovato per quella query</string>
+  <string name="morphe_ghost_play_channels_search_count">%d canali trovati — tocca Aggiungi per abilitare l\'auto-ghost</string>
   <string name="morphe_ghost_play_channels_recent_videos">Video recenti</string>
   <string name="morphe_ghost_play_channels_loading_details">Caricamento video recenti…</string>
   <string name="morphe_ghost_play_channels_no_recent_videos">Nessun video recente trovato (tocca per riprovare)</string>

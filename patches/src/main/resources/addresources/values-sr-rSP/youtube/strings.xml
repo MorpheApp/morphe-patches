@@ -284,6 +284,22 @@ Second \"item\" text"</string>
 • Сакривен Short може оставити празан простор у Shorts полици"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_hide_videos_by_views_toast_broad">Филтер броја прегледа ће сакрити све видео записе</string>
+  <string name="morphe_hide_videos_by_duration_screen_title">Филтер трајања</string>
+  <string name="morphe_hide_videos_by_duration_screen_summary">Сакриј видео записе у фидовима и претрази који су прекратки или предуги</string>
+  <string name="morphe_hide_videos_by_duration_home_title">Сакриј видео записе на картици „Почетна“ према трајању</string>
+  <string name="morphe_hide_videos_by_duration_search_title">Сакриј резултате претраге према трајању</string>
+  <string name="morphe_hide_videos_by_duration_subscriptions_title">Сакриј видео записе на картици „Праћења“ према трајању</string>
+  <string name="morphe_hide_videos_by_duration_minimum_title">Минимално трајање (минути)</string>
+  <string name="morphe_hide_videos_by_duration_minimum_summary">Видео записи краћи од овога су сакријени. 0 = нема минимума</string>
+  <string name="morphe_hide_videos_by_duration_maximum_title">Максимално трајање (минути)</string>
+  <string name="morphe_hide_videos_by_duration_maximum_summary">Видео записи дужи од овога су сакријени. 0 = нема максимума</string>
+  <string name="morphe_hide_videos_by_duration_about_summary">"Почетна / Праћења / Претрага су филтриране како би се сакрили видео записи према њиховом трајању
+
+Ограничења:
+• Струјни преноси, Shorts, плејлисте и миксови нису сакријени
+• Видео записи са непознатим трајањем нису сакријени"</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_videos_by_duration_toast_broad">Филтер трајања ће сакрити све видео записе</string>
   <string name="morphe_hide_stats_category_title">Статистика</string>
   <string name="morphe_hide_stats_hidden_24h_title">Видео снимци сакривени, последњих 24 сата</string>
   <string name="morphe_hide_stats_hidden_all_title">Видео снимци су сакривени, укупно</string>
@@ -327,8 +343,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">Сакриј дугме „Синхронизуј са видео снимком“</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Сакриј градијент при додиру и задржавању</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Сакрива градијент контрола плејера када превлачите прстом док држите да бисте убрзали</string>
-  <string name="morphe_hide_timed_reactions_title">Сакриј временске реакције</string>
-  <string name="morphe_hide_timed_reactions_summary">Сакрива функцију која корисницима омогућава да реагују емотиконима у одељку за коментаре и ћаскању уживо</string>
   <string name="morphe_hide_help_feedback_menu_summary">Сакрива мени \'Помоћ &amp; повратне информације\' када користите дугме са три тачке, на пример на резултатима претраге</string>
   <string name="morphe_hide_handle_title">Сакриј хендл</string>
   <string name="morphe_hide_handle_summary">Сакрива хендл вашег канала у картици „Ви”</string>
@@ -443,10 +457,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">Сакрива дугме менија са 3 тачке сваког коментара</string>
   <string name="morphe_hide_comments_none_yet_title">Сакриј преглед „Још нема коментара“</string>
   <string name="morphe_hide_comments_preview_comment_title">Сакриј коментар за преглед</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Сакрива преглед коментара испод видеа пре отварања пуног одељка за коментаре</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Сакрива преглед коментара испод видеа пре отварања одељка за коментаре</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Коментар сакривен од Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Омогући минимално дугме за коментаре</string>
-  <string name="morphe_minimal_comments_button_summary">Сакрива клизне картице и њихов селектор страница, који су приказани на дугмету за коментаре.</string>
+  <string name="morphe_hide_comments_preview_comment_cards_title">Сакриј картице са прегледом коментара</string>
+  <string name="morphe_hide_comments_preview_comment_cards_summary">Сакрива клизне картице и индикатор страница који се приказују на дугмету за коментаре</string>
+  <string name="morphe_hide_comments_timed_reactions_title">Сакриј временске реакције</string>
+  <string name="morphe_hide_comments_timed_reactions_summary">Сакрива функцију која корисницима омогућава да реагују емотиконима у одељку за коментаре и ћаскању уживо</string>
   <string name="morphe_hide_comments_timestamp_button_title">Сакриј дугме за временску ознаку</string>
   <string name="morphe_hide_comments_top_fans_button_title">Сакриј дугме „Топ фанови“</string>
   <string name="morphe_hide_comments_topics_title">Сакриј „Теме”</string>
@@ -1157,6 +1173,17 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Поправи транскрипт</string>
   <string name="morphe_fix_transcript_summary">Решава проблем са претпоставком која може да спречи учитавање транскрипта.</string>
+  <!-- layout.captions.copyTranscriptPatch -->
+  <string name="morphe_copy_transcript_category_title">Копирај транскрипт</string>
+  <string name="morphe_copy_transcript_title">Копирај транскрипт</string>
+  <string name="morphe_copy_transcript_summary">Додаје дугме у панел транскрипта које копира транскрипт на језику титлова</string>
+  <string name="morphe_copy_transcript_timestamps_title">Укључи временске ознаке</string>
+  <string name="morphe_copy_transcript_timestamps_summary">Свака линија копираног транскрипта почиње својим временом</string>
+  <string name="morphe_copy_transcript_shorts_flyout_title">Прикажи у Shorts менијима</string>
+  <string name="morphe_copy_transcript_shorts_flyout_summary">Додаје ставку Копирај транскрипт у меније Shorts-а</string>
+  <string name="morphe_copy_transcript_copied">Транскрипт је копиран у привремену меморију</string>
+  <string name="morphe_copy_transcript_empty">Транскрипт није доступан</string>
+  <string name="morphe_copy_transcript_error">Није било могућности да се копира транскрипт</string>
   <string name="morphe_captions_in_pip_title">Прикажи титлове унутар слике-у-слици</string>
   <!-- layout.captions.captionViewportPatch -->
   <string name="morphe_caption_scale_title">Величина титлова</string>
@@ -1411,6 +1438,17 @@ Second \"item\" text"</string>
 • Прекривање „Више видео снимака” можда неће бити доступно
 • Shorts се отварају у редовном плејеру
 • Приказује се стара трака са радњама за видео снимке која није скупљена"</string>
+  <string name="morphe_change_form_factor_car_display_title">Automobilски изглед на екранима у аутомобилима</string>
+  <string name="morphe_change_form_factor_car_display_summary_on">Automobilски изглед се користи када се YouTube приказује на екрану у аутомобилу, као што је то случај са Android Auto или DriveDeck</string>
+  <string name="morphe_change_form_factor_car_display_summary_off">Automobilски изглед се не користи на екранима у аутомобилима</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_title">Аутоматски сакрий навигациону траку на екранима у аутомобилима</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_on">Навигациона трака се сакрива на екрану у аутомобилу након што се не користи одређено време. Превуци прстом нагоре са доње ивице да је прикажеш</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_summary_off">Навигациона трака се увек приказује на екранима у аутомобилима</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_title">Кашњење аутоматског скривања</string>
+  <string name="morphe_change_form_factor_car_display_hide_navigation_bar_delay_summary">Колико дуго навигациона трака остаје након што се прикаже или дотакне</string>
+  <string name="morphe_change_form_factor_car_display_any_title">Користи на било ком спољашњем екрану</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_on">Сваки екран осим екрана телефона се сматра екраном у аутомобилу, укључујући телевизор или монитор</string>
+  <string name="morphe_change_form_factor_car_display_any_summary_off">"Екрани у аутомобилима се препознају путем Android Auto, назива екрана и режима корисничког интерфејса аутомобила. На Android 15 и новијим верзијама, рефлектовање екрана путем DriveDeck, Gearslip, graphene-auto или MyCar такође се сматра екраном у аутомобилу"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Врати старо понашање титлова</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Враћа стари изглед дугмета за чување у плејлисту</string>
