@@ -145,11 +145,17 @@ internal object PostDetailStateProducerFingerprint : Fingerprint(
 )
 
 /**
- * Finds the post view state builder and its view model register.
+ * Creates the post view state. If the post has no link yet, the empty post view state is returned early.
  */
 internal object PostUnitViewStateFingerprint : Fingerprint(
     definingClass = POST_DETAIL_VIEW_MODEL_CLASS,
     filters = listOf(
+        // The link is also read earlier, so match the read after this effect.
+        newInstance($$"Lcom/reddit/postdetail/refactor/RedditPostDetailViewModel$viewState$2$1;"),
+        fieldAccess(
+            reference = { PostDetailPostStateToStringFingerprint.instructionMatches[1].getFieldAccessed() },
+            opcode = Opcode.IGET_OBJECT
+        ),
         methodCall(
             definingClass = $$"Lcom/reddit/postdetail/refactor/RedditPostDetailViewModel$viewState$postUnitViewState$1$1;",
             name = "<init>"
@@ -175,8 +181,10 @@ internal object ProfileToStringFingerprint : Fingerprint(
  * Publishes the loaded profile to the profile header and feed.
  */
 internal object PublishProfileDetailsFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/profile/viewmodel/",
     filters = listOf(
-        newInstance($$"Lcom/reddit/profile/viewmodel/ProfileDetailsViewModel$loadProfileDetails$1$1$emit$1;"),
+        // The rest of the class name is different with 2026.46.0 and newer.
+        newInstance($$"Lcom/reddit/profile/viewmodel/ProfileDetailsViewModel$loadProfileDetails$1$"),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             definingClass = PROFILE_DETAILS_VIEW_MODEL_CLASS
@@ -362,6 +370,23 @@ internal object NsfwBottomSheetButtonsFingerprint : Fingerprint(
 )
 
 /**
+ * Finds a method that uses a boxed string resource.
+ */
+internal fun boxedStringResourceFingerprint(name: String) = Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, name),
+        methodCall(
+            smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
  * NSFW dialog, where the positive button turns on NSFW content.
  */
 internal object NsfwDialogFingerprint : Fingerprint(
@@ -371,6 +396,41 @@ internal object NsfwDialogFingerprint : Fingerprint(
             name = "setPositiveButton",
             parameters = listOf("I", "Landroid/content/DialogInterface\$OnClickListener;")
         )
+    )
+)
+
+/**
+ * NSFW dialog with a title and message for the type of content.
+ * Reddit 2026.46.0 and newer.
+ */
+internal object NsfwWarningTargetDialogFingerprint : Fingerprint(
+    parameters = listOf(
+        "Landroid/content/Context;",
+        "Landroid/content/DialogInterface\$OnClickListener;",
+        "Landroid/content/DialogInterface\$OnClickListener;",
+        "Lcom/reddit/nsfw/NsfwWarningTarget;"
+    ),
+    filters = listOf(
+        methodCall(
+            name = "setPositiveButton",
+            parameters = listOf("I", "Landroid/content/DialogInterface\$OnClickListener;")
+        )
+    )
+)
+
+/**
+ * Shows the NSFW bottom sheet or the NSFW dialog, based on a feature flag.
+ */
+internal object ShowNsfwAlertFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Lkotlin/jvm/functions/Function0;"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Boolean;->booleanValue()Z"),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        newInstance("Lcom/reddit/safety/roadblocks/nsfw/NsfwCommunityBottomSheet;")
     )
 )
 
@@ -478,19 +538,15 @@ internal object SetUpSubredditFingerprint : Fingerprint(
     )
 )
 
-/** Finds a recent communities collector before it converts Subreddit objects to UI rows. */
-internal fun recentlyVisitedFingerprint(continuationClass: String) = Fingerprint(
-    definingClass = "Lcom/reddit/screens/drawer/community/",
-    name = "emit",
-    returnType = "Ljava/lang/Object;",
+/**
+ * Maps recently visited communities to the rows of the community drawer and the recently visited screen.
+ */
+internal object RecentlyVisitedMapperFingerprint : Fingerprint(
+    returnType = "Ljava/util/ArrayList;",
+    parameters = listOf("Ljava/util/List;", "Z"),
     filters = listOf(
-        newInstance(continuationClass),
-        checkCast("Ljava/util/List;"),
-        methodCall(
-            returnType = "Ljava/util/ArrayList;",
-            parameters = listOf("Ljava/util/List;", "Z"),
-            location = MatchAfterWithin(6)
-        )
+        checkCast("Lcom/reddit/domain/model/Subreddit;"),
+        methodCall(smali = "Lcom/reddit/domain/model/Subreddit;->getSubredditType()Ljava/lang/String;")
     )
 )
 

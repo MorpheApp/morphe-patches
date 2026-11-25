@@ -10,7 +10,6 @@ package app.morphe.patches.reddit.nsfw
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -19,11 +18,8 @@ import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -55,10 +51,7 @@ val preventNsfwFlashingPatch = patch(
         val preferenceRepositoryType = PostLoadedNsfwIncognitoVerifyEventHandlerConstructorFingerprint
             .instructionMatches.first().getFieldAccessed().type
 
-        // region Use Reddit's empty post view while the NSFW warning is being resolved.
-
-        val postStateMatches = PostDetailPostStateToStringFingerprint.instructionMatches
-        val postLinkField = postStateMatches[1].getFieldAccessed()
+        // region Show the empty post view of NSFW posts until the NSFW warning is shown.
 
         val mapperField = PostDetailStateProducerFingerprint.instructionMatches.last().getFieldAccessed()
         val mapperPreferencesField = constructorFieldFingerprint(mapperField.type, preferenceRepositoryType)
@@ -69,7 +62,7 @@ val preventNsfwFlashingPatch = patch(
         val shouldHidePostMethod = ImmutableMethod(
             POST_DETAIL_VIEW_MODEL_CLASS,
             "patch_shouldHideNsfw",
-            listOf(ImmutableMethodParameter(postLinkField.type, null, null)),
+            listOf(ImmutableMethodParameter("Lcom/reddit/domain/model/Link;", null, null)),
             "Z",
             AccessFlags.PRIVATE.value,
             null,
@@ -102,28 +95,16 @@ val preventNsfwFlashingPatch = patch(
             it.classDef.methods.add(shouldHidePostMethod)
 
             it.method.apply {
-                val factoryAnchor = it.instructionMatches.first().index
-                val viewModelRegister = getInstruction<FiveRegisterInstruction>(factoryAnchor).registerD
-                val instructions = implementation!!.instructions
-                val linkRead = (factoryAnchor - 1 downTo 0).firstOrNull { index ->
-                    val instruction = instructions[index]
-                    instruction.opcode == Opcode.IGET_OBJECT &&
-                            (instruction as ReferenceInstruction).reference == postLinkField
-                } ?: throw PatchException("Could not find the post link used by the view state")
-                val linkRegister = getInstruction<OneRegisterInstruction>(linkRead).registerA
-                val index = linkRead + 1
-                if ((index until factoryAnchor).none { branch ->
-                    val instruction = instructions[branch]
-                    instruction.opcode == Opcode.IF_NEZ &&
-                            (instruction as OneRegisterInstruction).registerA == linkRegister
-                }) {
-                    throw PatchException("Could not find the post view state's empty-content branch")
-                }
+                val viewModelRegister = getInstruction<FiveRegisterInstruction>(
+                    it.instructionMatches.last().index
+                ).registerD
+                val linkIndex = it.instructionMatches[1].index
+                val linkRegister = getInstruction<TwoRegisterInstruction>(linkIndex).registerA
+                val index = linkIndex + 1
                 val freeRegister = findFreeRegister(index)
 
-                // Suppress the local render input. Keep the post in the state producer so Reddit's
-                // own warning logic can still inspect it. This also prevents the separate media preview
-                // from rendering before that warning arrives.
+                // Show the empty post view, which also hides the media preview. The post state
+                // is not changed, so Reddit can still check the post and show the warning.
                 addInstructionsWithLabels(
                     index,
                     """

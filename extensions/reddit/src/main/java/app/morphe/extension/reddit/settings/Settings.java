@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 
-import android.content.Context;
-
 import org.json.JSONObject;
 
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModeratorComments;
@@ -30,7 +28,6 @@ import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrows
 import app.morphe.extension.reddit.patches.ShowViewCountPatch.ViewCount;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch.GridColumns;
 import app.morphe.extension.reddit.patches.VideoPlaybackSpeedPatch.PlaybackSpeedControls;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
@@ -157,19 +154,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting PERMANENTLY_DISABLE_NSFW = new BooleanSetting("morphe_permanently_disable_nsfw", FALSE, true, false,
             "morphe_permanently_disable_nsfw_user_dialog_message", NSFW_NOT_PERMANENTLY_DISABLED) {
         @Override
-        protected void load() {
-            super.load();
-            // Preserve activation from earlier test bundles when updating in place.
-            if (PermanentNsfwPatch.isPatchIncluded() && !get()
-                    && Utils.getContext().getSharedPreferences("reddit_permanent_nsfw_lock", Context.MODE_PRIVATE)
-                    .getBoolean("enabled", false)) {
-                save(TRUE);
-            }
-        }
-
-        @Override
         protected Boolean readFromJSON(JSONObject json, String importExportKey) {
-            // The shared importer still reads explicitly supplied keys excluded from export.
+            // Import reads any key that is present, including settings excluded from import/export.
             return get();
         }
     };

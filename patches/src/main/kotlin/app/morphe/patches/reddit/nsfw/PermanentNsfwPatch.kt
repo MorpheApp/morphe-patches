@@ -22,6 +22,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_43_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_46_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -29,7 +30,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -185,15 +185,22 @@ val permanentNsfwPatch = patch(
 
         // region Change the NSFW warnings to say NSFW content is permanently disabled.
 
-        mapOf(
+        val warningStrings = mutableMapOf(
             "nsfw_title" to "getWarningTitle",
             "nsfw_dialog_title" to "getWarningTitle",
             "nsfw_description" to "getWarningMessage",
             "nsfw_dialog_message" to "getWarningMessage",
-            "nsfw_dialog_over18_submessage" to "getWarningMessage",
-            "nsfw_dialog_under18_submessage" to "getWarningMessage",
             "nsfw_no_thanks" to "getWarningDismissLabel"
-        ).forEach { (name, methodName) ->
+        )
+
+        if (is_2026_46_0_or_greater) {
+            listOf("community", "post", "profile").forEach { target ->
+                warningStrings["nsfw_warning_${target}_title"] = "getWarningTitle"
+                warningStrings["nsfw_warning_${target}_body"] = "getWarningMessage"
+            }
+        }
+
+        warningStrings.forEach { (name, methodName) ->
             stringResourceFingerprint(name).matchAll(1..4).forEach { match ->
                 match.method.apply {
                     val index = match.instructionMatches.first().index
@@ -207,6 +214,41 @@ val permanentNsfwPatch = patch(
                         """
                     )
                 }
+            }
+        }
+
+        // The message already says why the content is unavailable.
+        listOf("nsfw_dialog_over18_submessage", "nsfw_dialog_under18_submessage").forEach { name ->
+            boxedStringResourceFingerprint(name).let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getWarningSubMessage(Ljava/lang/Integer;)Ljava/lang/Integer;
+                            move-result-object v$register
+                        """
+                    )
+                }
+            }
+        }
+
+        // Use the NSFW dialog instead of the newer bottom sheet that has the same buttons,
+        // because the button that turns on NSFW content is only removed from the dialog.
+        ShowNsfwAlertFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->allowNsfwBottomSheet(Z)Z
+                        move-result v$register
+                    """
+                )
             }
         }
 
@@ -230,8 +272,15 @@ val permanentNsfwPatch = patch(
         }
 
         // Remove the button that turns on NSFW content.
-        val optInButtons = NsfwBottomSheetButtonsFingerprint.let { listOf(it.method to it.instructionMatches[1].index) } +
-                NsfwDialogFingerprint.matchAll(2..2).map { it.method to it.instructionMatches[1].index }
+        val optInButtons = mutableListOf(
+            NsfwBottomSheetButtonsFingerprint.let { it.method to it.instructionMatches[1].index }
+        )
+        if (is_2026_46_0_or_greater) {
+            optInButtons += NsfwDialogFingerprint.let { it.method to it.instructionMatches[1].index }
+            optInButtons += NsfwWarningTargetDialogFingerprint.let { it.method to it.instructionMatches.first().index }
+        } else {
+            optInButtons += NsfwDialogFingerprint.matchAll(2..2).map { it.method to it.instructionMatches[1].index }
+        }
         optInButtons.forEach { (method, index) ->
             method.apply {
                 val register = findFreeRegister(index)
@@ -389,25 +438,13 @@ val permanentNsfwPatch = patch(
 
         // Hide NSFW communities that were saved before NSFW content was disabled,
         // in the community drawer and the recently visited screen.
-        listOf(
-            $$$"Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$refreshRecentlyVisited$1$1$invokeSuspend$$inlined$map$1$2$1;",
-            $$$"Lcom/reddit/screens/drawer/community/CommunityDrawerRecentlyVisitedDelegate$loadRecentlyVisited$$inlined$map$1$2$1;"
-        ).forEach { continuationClass ->
-            recentlyVisitedFingerprint(continuationClass).let {
-                it.method.apply {
-                    val index = it.instructionMatches.last().index
-                    val register = getInstruction<FiveRegisterInstruction>(index).registerD
-
-                    addInstructions(
-                        index,
-                        """
-                            invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->filterRecentSubreddits(Ljava/util/List;)Ljava/util/List;
-                            move-result-object v$register
-                        """
-                    )
-                }
-            }
-        }
+        RecentlyVisitedMapperFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->filterRecentSubreddits(Ljava/util/List;)Ljava/util/List;
+                move-result-object p1
+            """
+        )
 
         // endregion
 

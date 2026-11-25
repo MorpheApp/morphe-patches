@@ -83,6 +83,21 @@ public final class PermanentNsfwPatch {
     /**
      * Injection point.
      */
+    @Nullable
+    public static Integer getWarningSubMessage(Integer original) {
+        return isEnabled() ? null : original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean allowNsfwBottomSheet(boolean original) {
+        return original && !isEnabled();
+    }
+
+    /**
+     * Injection point.
+     */
     public static int getWarningDismissLabel(int original) {
         return isEnabled() ? GO_BACK_LABEL : original;
     }
