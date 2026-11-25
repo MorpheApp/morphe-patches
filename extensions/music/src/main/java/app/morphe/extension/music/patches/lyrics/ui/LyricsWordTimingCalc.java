@@ -17,6 +17,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.CjkWordGroups;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 
 /**
  * Turns a line's words into the timings the karaoke pass lights, matching each word back to the
@@ -105,7 +106,11 @@ final class LyricsWordTimingCalc {
             final int end = Math.max(start, Math.min(groups.length, timing.end()));
             int group = -1;
             boolean mixed = false;
+            boolean han = false;
             for (int i = start; i < end; i++) {
+                if (i < lineText.length() && ScriptDetector.isHan(lineText.charAt(i))) {
+                    han = true;
+                }
                 if (groups[i] < 0) {
                     continue;
                 }
@@ -116,11 +121,12 @@ final class LyricsWordTimingCalc {
                     break;
                 }
             }
-            // A timing across two words gets no group.
+            // A timing across two words gets no group; without a dictionary group a Han timing
+            // keeps the source's own word, while Latin stays separate.
             grouped.add(new WordTiming(
                     timing.start(), timing.end(), timing.startMs(), timing.endMs(),
                     timing.romaji(), timing.hasTrailingSpace(), timing.ruby(), timing.averaged(),
-                    mixed ? -1 : group));
+                    mixed ? -1 : (group >= 0 ? group : (han ? timing.wordGroup() : -1))));
         }
         return grouped;
     }
@@ -172,7 +178,8 @@ final class LyricsWordTimingCalc {
         // Ruby on a plain-text line has no real timing; all its timings are averaged.
         final boolean averaged = !hasRealTimings;
         int offset = 0;
-        for (Word word : line.words()) {
+        for (int wi = 0; wi < line.words().size(); wi++) {
+            Word word = line.words().get(wi);
             String rawWordText = secondary
                     ? LyricsBracketSplitter.stripAllBrackets(word.text()) : word.text();
             String trimmed = rawWordText.trim();
@@ -215,13 +222,13 @@ final class LyricsWordTimingCalc {
                     offset = appendMatchedWordTiming(
                             timings, text, textLength, offset, part, wordToken(part),
                             hasRealTimings ? curStartMs : LyricsLine.NO_TIME, partEndMs,
-                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged);
+                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged, wi);
                     curStartMs = partEndMs;
                 }
             } else {
                 offset = appendMatchedWordTiming(
                         timings, text, textLength, offset, trimmed, wordToken(trimmed),
-                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged);
+                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged, wi);
             }
         }
 
@@ -337,6 +344,23 @@ final class LyricsWordTimingCalc {
             boolean wordTrailingSpace,
             @Nullable String ruby,
             boolean averaged) {
+        return appendMatchedWordTiming(timings, text, textLength, offset, token, bareToken,
+                startMs, endMs, rom, wordTrailingSpace, ruby, averaged, -1);
+    }
+
+    static int appendMatchedWordTiming(
+            List<WordTiming> timings,
+            String text,
+            int textLength,
+            int offset,
+            String token,
+            String bareToken,
+            long startMs,
+            long endMs,
+            @Nullable String rom,
+            boolean wordTrailingSpace,
+            @Nullable String ruby,
+            boolean averaged, int wordGroup) {
         // The drawn line may hold the word's marks elsewhere, hence the bare word to fall back on.
         int start = usableHit(text, textLength, offset, token, wordTrailingSpace);
         String matched = token;
@@ -370,7 +394,7 @@ final class LyricsWordTimingCalc {
         if (wordEnd > wordStart) {
             final boolean trailSpace = wordTrailingSpace
                     || (wordEnd < textLength && Character.isWhitespace(text.charAt(wordEnd)));
-            timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged));
+            timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged, wordGroup));
         } else if (hasTiming) {
             appendMarksTiming(timings, text, textLength, wordStart, spanEnd, timedStart, averaged);
         }

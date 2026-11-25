@@ -357,6 +357,15 @@ public class LyricsWordTimingCalcTest {
     }
 
     @Test
+    public void sourceWordsSurviveWithoutADictionary() {
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(line(0, 1000, "你好世界", List.of(
+                        new Word(0, 500, "你好"), new Word(500, 1000, "世界")))), 0, false);
+        assertArrayEquals(new int[]{0, 1},
+                timings.stream().mapToInt(WordTiming::wordGroup).toArray());
+    }
+
+    @Test
     public void latinWordsInAChineseLineHaveNoGroup() {
         List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
                 List.of(line(0, 1000, "重新ok开始", List.of(
@@ -372,7 +381,7 @@ public class LyricsWordTimingCalcTest {
                 List.of(line(0, 1000, "今日は", List.of(
                         new Word(0, 300, "今"), new Word(300, 600, "日"),
                         new Word(600, 1000, "は")))), 0, false);
-        assertArrayEquals(new int[]{-1, -1, -1},
+        assertArrayEquals(new int[]{0, 1, 2},
                 timings.stream().mapToInt(WordTiming::wordGroup).toArray());
     }
 

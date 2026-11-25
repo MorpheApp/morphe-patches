@@ -15,6 +15,7 @@ import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.AlignedSyllable;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.MergedRomanCluster;
+import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.MergedRuby;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ReconstructedWord;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.VisualCluster;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WipeResult;
@@ -251,6 +252,20 @@ public class WordAnimationUtilsTest {
         Assert.assertEquals(2, merged.lastIndex());
         Assert.assertEquals(3, merged.segments().size());
         Assert.assertEquals(200L, merged.segments().get(2).startMs());
+    }
+
+    @Test
+    public void testRubyRunSharesTheWordBoundary() {
+        List<AlignedSyllable> aligned = List.of(
+                new AlignedSyllable(new WordTimestamp("限", 0, 0.1, false, false, null, "かぎ", 0), 0, 1),
+                new AlignedSyllable(new WordTimestamp("り", 0.1, 0.2, false, false, null, "り", 0), 1, 2),
+                new AlignedSyllable(new WordTimestamp("時", 0.2, 0.3, false, false, null, "とき", 1), 2, 3));
+        MergedRuby run = WordAnimationUtils.mergeRubyRun(aligned, 0);
+        Assert.assertEquals("かぎり", run.text());
+        Assert.assertEquals(1, run.endIndex());
+        MergedRuby single = WordAnimationUtils.mergeRubyRun(aligned, 2);
+        Assert.assertEquals("とき", single.text());
+        Assert.assertEquals(2, single.endIndex());
     }
 
     @Test

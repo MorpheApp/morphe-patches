@@ -957,6 +957,30 @@ public final class WordAnimationUtils {
         return false;
     }
 
+    /** One ruby run: its joined reading and the last syllable it covers. */
+    record MergedRuby(String text, int endIndex) {
+    }
+
+    /** Ruby shares the romaji word boundary, so a word's readings make one annotation. */
+    static MergedRuby mergeRubyRun(List<AlignedSyllable> aligned, int idx) {
+        final AlignedSyllable first = aligned.get(idx);
+        final String own = first.syllable.ruby;
+        final StringBuilder text = new StringBuilder(own == null ? "" : own.trim());
+        int end = idx;
+        final int group = first.syllable.wordGroup();
+        if (group >= 0) {
+            while (end + 1 < aligned.size()
+                    && aligned.get(end + 1).syllable.wordGroup() == group) {
+                end++;
+                final String next = aligned.get(end).syllable.ruby;
+                if (next != null && !next.trim().isEmpty()) {
+                    text.append(next.trim());
+                }
+            }
+        }
+        return new MergedRuby(text.toString(), end);
+    }
+
     public static List<RomanizedWordCluster> buildRubyClusters(
             boolean rubyActive,
             List<AlignedSyllable> alignedSyllables,
@@ -981,26 +1005,31 @@ public final class WordAnimationUtils {
         TextPaint rubyPaint = createConfiguredRunPaint(createRubyPaint(lyricPaint, expressiveAccent), expressiveAccent, false);
         List<RomanizedWordCluster> result = new ArrayList<>(alignedSyllables.size());
         int maxCharIdx = mainText.length() - 1;
-        for (int idx = 0; idx < alignedSyllables.size(); idx++) {
+        for (int idx = 0; idx < alignedSyllables.size(); ) {
             AlignedSyllable syl = alignedSyllables.get(idx);
-            String text = syl.syllable.ruby;
-            if (text != null && !text.trim().isEmpty()) {
-                int safeStart = Math.max(0, Math.min(maxCharIdx, syl.startOffset));
-                int li = textLayoutResult.getLineForOffset(safeStart);
-                Layout subLayout = measureRunWithConfiguredPaint(text.trim(), rubyPaint, false);
-                float hPos = textLayoutResult.getPrimaryHorizontal(Math.min(syl.startOffset, mainText.length()));
-                result.add(new RomanizedWordCluster(
-                        idx,
-                        syl.startOffset,
-                        syl.endOffset,
-                        text.trim(),
-                        li,
-                        syl.syllable.startTimeMs(),
-                        syl.syllable.endTimeMs(),
-                        hPos,
-                        subLayout
-                ));
+            String own = syl.syllable.ruby;
+            if (own == null || own.trim().isEmpty()) {
+                idx++;
+                continue;
             }
+            MergedRuby run = mergeRubyRun(alignedSyllables, idx);
+            AlignedSyllable last = alignedSyllables.get(run.endIndex());
+            int safeStart = Math.max(0, Math.min(maxCharIdx, syl.startOffset));
+            int li = textLayoutResult.getLineForOffset(safeStart);
+            Layout subLayout = measureRunWithConfiguredPaint(run.text(), rubyPaint, false);
+            float hPos = textLayoutResult.getPrimaryHorizontal(Math.min(syl.startOffset, mainText.length()));
+            result.add(new RomanizedWordCluster(
+                    idx,
+                    syl.startOffset,
+                    last.endOffset(),
+                    run.text(),
+                    li,
+                    syl.syllable.startTimeMs(),
+                    last.syllable.endTimeMs(),
+                    hPos,
+                    subLayout
+            ));
+            idx = run.endIndex() + 1;
         }
         return result;
     }

@@ -1086,9 +1086,10 @@ public final class LyricsPanelView extends FrameLayout
 
     private void hideTemporaryOffsetUi() {
         handler.removeCallbacks(hideOffsetRulerRunnable);
-        if (offsetState.restoreButtonRowAfterOffset()) {
-            buttonRow.setAlpha(1f);
+        if (offsetState.restoreButtonRowAfterOffset() && !fullscreenController.isFullscreen()) {
+            buttonRow.setVisibility(VISIBLE);
         }
+        buttonRow.setAlpha(1f);
         offsetSliderBarView.animate().cancel();
         offsetSliderBarView.setAlpha(0f);
         offsetSliderBarView.setVisibility(GONE);
@@ -1527,6 +1528,7 @@ public final class LyricsPanelView extends FrameLayout
         } else if (!visible && wasVisible) {
             followState.setLastScrollTarget(-1);
             hideJumpToCurrentButton();
+            resetTransientModes();
         }
 
         if (!(getParent() instanceof ViewGroup parent)) {
@@ -1550,14 +1552,22 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     void dismissForOtherPanel() {
-        if (isShareSelectionMode) {
-            exitShareSelectionMode();
-        }
+        resetTransientModes();
         restoreHiddenSiblings();
         if (getParent() instanceof ViewGroup parent) {
             parent.removeView(this);
         }
         setVisibility(GONE);
+    }
+
+    /** Leaving the panel returns offset adjustment, SponsorBlock recording and sharing to normal. */
+    private void resetTransientModes() {
+        if (offsetState.isRecording()) {
+            stopSbRecording();
+        }
+        offsetState.cancelOffsetAdjustment();
+        hideTemporaryOffsetUi();
+        exitShareSelectionMode();
     }
 
     /**
