@@ -82,6 +82,11 @@ final class OriginalDescription {
         }
         List<String> originalTexts = splitAtAttachments(segments, originalDescription);
         if (originalTexts == null) {
+            // The shown description can be the original description, with an attachment whose link
+            // is not found, such as a playlist card, which would be removed with the link left as text.
+            if (showsOriginalTexts(segments, originalDescription)) {
+                return false;
+            }
             // The shown description is not a translation of the original description,
             // such as a description localized by the uploader with other attachments.
             // The original description replaces the first text, and the other segments are removed.
@@ -121,6 +126,32 @@ final class OriginalDescription {
             Logger.printDebug(() -> "Restored description");
         }
         return modified;
+    }
+
+    /**
+     * @return If the texts of the text segments are in the original description in the same order,
+     *         so the shown description is not translated.
+     */
+    private static boolean showsOriginalTexts(List<ProtoNode> segments, String originalDescription) {
+        int from = 0;
+        boolean hasText = false;
+        for (ProtoNode segment : segments) {
+            ProtoNode text = ProtoNode.field(segment.children, SEGMENT_TEXT_FIELD);
+            ProtoNode content = text == null || text.children == null
+                    ? null
+                    : ProtoNode.field(text.children, TEXT_CONTENT_FIELD);
+            String shownText = content == null ? "" : trim(content.decodeUtf8());
+            if (shownText.isEmpty()) {
+                continue;
+            }
+            final int index = originalDescription.indexOf(shownText, from);
+            if (index < 0) {
+                return false;
+            }
+            from = index + shownText.length();
+            hasText = true;
+        }
+        return hasText;
     }
 
     /**
