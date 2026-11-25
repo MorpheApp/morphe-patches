@@ -58,6 +58,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
+private const val LYRICS_BUTTON_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsButtonPatch;"
 internal const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
 private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
 private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
@@ -314,7 +315,7 @@ val lyricsPatch = patch(
 
         // The Lyrics button under the player is disabled by the server for tracks it has no
         // lyrics for, so it is enabled again to open the panel with the third-party lyrics.
-        hookElement("$EXTENSION_CLASS->enableLyricsButton")
+        hookElement("$LYRICS_BUTTON_CLASS->enableLyricsButton")
 
         // The app builds the watch next response of device files itself, with only a Songs tab,
         // so there is no lyrics tab to show the panel in. A lyrics tab is added to that response,

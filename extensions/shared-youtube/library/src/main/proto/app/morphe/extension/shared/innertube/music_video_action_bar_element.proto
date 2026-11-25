@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package app.morphe.extension.shared.innertube.actionbar;
+package app.morphe.extension.shared.innertube.musicactionbar;
 
 option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
-option java_outer_classname = "VideoActionBarElementOuterClass";
+option java_outer_classname = "MusicVideoActionBarElementOuterClass";
 
 // Bytes of the YouTube Music video_action_bar element (the newElement of an elementRenderer),
 // the row of buttons under the player, such as the Lyrics button.

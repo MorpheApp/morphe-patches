@@ -66,8 +66,8 @@ public final class LyricsPanelInstaller {
 
     /** How long the panel is waited for before the attempt is given up. */
     private static final long INSTALL_TIMEOUT_MILLISECONDS = 2000;
-    private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
-    private static final long ENABLE_BUTTON_MIN_INTERVAL_MS = 2000;
+    private static final long[] ENABLE_TAB_DELAYS_MS = {0, 150, 500, 1000, 2000};
+    private static final long ENABLE_TAB_MIN_INTERVAL_MS = 2000;
     /** Collapses the many component callbacks of one panel opening into one attempt. */
     private static boolean installPending;
     private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
@@ -90,8 +90,8 @@ public final class LyricsPanelInstaller {
                 Utils.runOnMainThread(() -> onLyricsSettingChanged(key));
             };
     private static boolean settingsListenerRegistered;
-    private static long lastEnableButtonWalkUptimeMs;
-    private static boolean enableButtonWalkPending;
+    private static long lastEnableTabUptimeMs;
+    private static boolean enableTabPending;
 
     private LyricsPanelInstaller() {
     }
@@ -793,88 +793,83 @@ public final class LyricsPanelInstaller {
         }
     }
 
-    public static void enableLyricsButton() {
+    /**
+     * The server disables the Lyrics tab of the player when it has no lyrics for the track, and the
+     * app then disables and dims the tab. The tab is enabled again so it can show third-party lyrics.
+     * The tabs can be updated after the lyrics are loaded, so it is tried more than once.
+     */
+    public static void enableLyricsTab() {
         try {
-            walkForLyricsButton();
+            if (enableTabPending) {
+                return;
+            }
+            final long now = SystemClock.uptimeMillis();
+            if (now - lastEnableTabUptimeMs < ENABLE_TAB_MIN_INTERVAL_MS) {
+                return;
+            }
+            enableTabPending = true;
+            lastEnableTabUptimeMs = now;
+            scheduleEnableLyricsTab(0);
         } catch (Exception ex) {
-            Logger.printException(() -> "enableLyricsButton failure", ex);
-            enableButtonWalkPending = false;
+            Logger.printException(() -> "enableLyricsTab failure", ex);
+            enableTabPending = false;
         }
     }
 
-    private static void walkForLyricsButton() {
-        if (enableButtonWalkPending) {
-            return;
-        }
-        final long now = SystemClock.uptimeMillis();
-        if (now - lastEnableButtonWalkUptimeMs < ENABLE_BUTTON_MIN_INTERVAL_MS) {
-            return;
-        }
-        Activity activity = Utils.getActivity();
-        if (activity == null) {
-            return;
-        }
-        String title = lyricsTitle(activity);
-        if (title == null) {
-            return;
-        }
-        final View root = activity.getWindow().getDecorView();
-        enableButtonWalkPending = true;
-        lastEnableButtonWalkUptimeMs = now;
-        scheduleEnableButtonPass(root, title, 0);
-    }
-
-    private static void scheduleEnableButtonPass(final View root, final String title, final int step) {
+    private static void scheduleEnableLyricsTab(final int step) {
         final long delay = step == 0
-                ? ENABLE_BUTTON_DELAYS_MS[0]
-                : ENABLE_BUTTON_DELAYS_MS[step] - ENABLE_BUTTON_DELAYS_MS[step - 1];
+                ? ENABLE_TAB_DELAYS_MS[0]
+                : ENABLE_TAB_DELAYS_MS[step] - ENABLE_TAB_DELAYS_MS[step - 1];
         Utils.runOnMainThreadDelayed(() -> {
             boolean scheduledNext = false;
             try {
-                final String normTitle = normalizeTitle(title);
-                boolean matched = enableLyricsButtonPass(root, title, normTitle);
-                if (!matched && step + 1 < ENABLE_BUTTON_DELAYS_MS.length) {
-                    scheduleEnableButtonPass(root, title, step + 1);
+                if (!findAndEnableLyricsTab() && step + 1 < ENABLE_TAB_DELAYS_MS.length) {
+                    scheduleEnableLyricsTab(step + 1);
                     scheduledNext = true;
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "enableLyricsButton pass failure", ex);
+                Logger.printException(() -> "enableLyricsTab pass failure", ex);
             } finally {
                 if (!scheduledNext) {
-                    enableButtonWalkPending = false;
+                    enableTabPending = false;
                 }
             }
         }, delay);
     }
 
-    private static boolean enableLyricsButtonPass(View view, String title, String normTitle) {
-        if (view.getVisibility() != View.VISIBLE) {
+    /**
+     * @return Whether the Lyrics tab was found.
+     */
+    private static boolean findAndEnableLyricsTab() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) {
             return false;
         }
-        boolean matched = false;
-        CharSequence description = view.getContentDescription();
-        if (description != null) {
-            String desc = description.toString();
-            String normDesc = normalizeTitle(desc);
-            final boolean matches = isSameTitle(title, desc)
-                    || (!normTitle.isEmpty() && (normDesc.contains(normTitle) || normTitle.contains(normDesc)))
-                    || normDesc.contains("lyric");
-            if (matches) {
+        if (!(activity.findViewById(ResourceUtils.getIdentifier(ResourceType.ID, TABBED_VIEW_ID))
+                instanceof ViewGroup tabbedView) || tabbedView.getChildCount() == 0) {
+            return false;
+        }
+        String title = lyricsTitle(activity);
+        return title != null && enableTabWithTitle(tabbedView.getChildAt(0), title);
+    }
+
+    private static boolean enableTabWithTitle(View view, String title) {
+        if (isSameTitle(title, view.getContentDescription())) {
+            if (!view.isEnabled()) {
+                Logger.printDebug(() -> "Enabling Lyrics tab");
                 view.setEnabled(true);
                 view.setClickable(true);
                 view.setAlpha(1.0f);
-                Logger.printDebug(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
-                        + " content description: '" + desc + "'");
-                matched = true;
             }
+            return true;
         }
         if (view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                if (enableLyricsButtonPass(group.getChildAt(i), title, normTitle)) {
-                    matched = true;
+                if (enableTabWithTitle(group.getChildAt(i), title)) {
+                    return true;
                 }
             }
         }
-        return matched;
+        return false;
     }
 }
