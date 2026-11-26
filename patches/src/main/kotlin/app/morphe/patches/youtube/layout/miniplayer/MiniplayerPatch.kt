@@ -32,6 +32,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.videoformat.hookAdaptiveFormat
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
@@ -90,12 +91,20 @@ val miniplayerPatch = patch(
         videoFormatPatch,
         openVideoIntentPatch,
         videoInformationPatch,
+        fixProtoLibraryPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val preferences = mutableSetOf<BasePreference>()
+        val (showMiniplayer, resumeBranchIndex) = if (is_21_43_or_greater) {
+            ShowMiniplayerCommandFingerprint to 2
+        } else if (is_21_42_or_greater) {
+            ShowMiniplayerCommandLegacy2142Fingerprint to 1
+        } else {
+            ShowMiniplayerCommandLegacyFingerprint to 3
+        }
 
         if (is_20_37_or_greater) {
             // 21.29 removed all modern miniplayers except modern 4
@@ -126,6 +135,9 @@ val miniplayerPatch = patch(
         }
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
+        if (is_21_30_or_greater && installPlaybackSessionHooks()) {
+            preferences += SwitchPreference("morphe_miniplayer_restore_session", summary = true)
+        }
         preferences += SwitchPreference("morphe_miniplayer_hide_title")
         preferences += SwitchPreference("morphe_miniplayer_swipe_up_expand", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_docked", summary = true)
@@ -189,13 +201,7 @@ val miniplayerPatch = patch(
 
         // Only skip the resume branch of the command. Other show miniplayer commands,
         // such as "Play next in queue" from the feed when no video is open, still work.
-        (if (is_21_43_or_greater) {
-            ShowMiniplayerCommandFingerprint to 2
-        } else if (is_21_42_or_greater) {
-            ShowMiniplayerCommandLegacy2142Fingerprint to 1
-        } else {
-            ShowMiniplayerCommandLegacyFingerprint to 3
-        }).let { (fingerprint, matchIndex) ->
+        (showMiniplayer to resumeBranchIndex).let { (fingerprint, matchIndex) ->
             fingerprint.method.apply {
                 val index = fingerprint.instructionMatches[matchIndex].index + 1
                 val free = findFreeRegister(index)

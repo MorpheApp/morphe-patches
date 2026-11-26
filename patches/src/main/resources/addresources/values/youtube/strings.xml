@@ -1565,6 +1565,8 @@ Automotive layout
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
+    <string name="morphe_miniplayer_restore_session_title">Continue watching on startup</string>
+    <string name="morphe_miniplayer_restore_session_summary">Saves your playback and queue on this device and opens it paused when YouTube starts</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
     <string name="morphe_miniplayer_not_available_title">Additional miniplayers</string>
     <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To restore more miniplayer types, then patch YouTube 21.28.208 or older</string>

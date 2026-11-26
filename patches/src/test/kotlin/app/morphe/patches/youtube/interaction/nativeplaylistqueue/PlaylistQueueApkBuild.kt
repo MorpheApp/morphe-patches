@@ -37,6 +37,7 @@ import app.morphe.patches.youtube.layout.sharesheet.openSystemShareSheetPatch
 import app.morphe.patches.youtube.misc.backgroundplayback.backgroundPlaybackPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.medianotification.mediaNotificationControlsPatchYouTube
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
@@ -113,6 +114,9 @@ fun main(arguments: Array<String>) {
             verifyNativeQueueUndo(dexDir, mode != "unselected")
             verifyNativeMixTap(dexDir, mode != "unselected")
             verifyNativePlaylistPaging(dexDir, mode != "unselected")
+            if (is_21_30_or_greater && !is_21_32_or_greater) {
+                verifyPlaybackSessionHooks(dexDir, mode != "standalone")
+            }
         }
     }
     // Disable only when isolating a known upstream validation failure; normal
@@ -131,6 +135,29 @@ fun main(arguments: Array<String>) {
         arguments.getOrNull(2)?.let { result.applyTo(File(it)) }
         println("$mode: APK patched and SDK DEX/resource verification completed: $workspace")
     }
+}
+
+private fun verifyPlaybackSessionHooks(directory: File, selected: Boolean) {
+    val prefix = "Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch"
+    val classes = directory.listFiles()!!.filter { it.extension == "dex" }.flatMap { file ->
+        file.inputStream().buffered().use { DexBackedDexFile.fromInputStream(Opcodes.getDefault(), it).classes.toList() }
+    }
+    for (bridge in listOf("Descriptor", "WatchStarter", "PlaylistReader")) {
+        check(classes.count { "$prefix\$$bridge;" in it.interfaces } == if (selected) 1 else 0) {
+            "Unexpected playback session bridge for $bridge"
+        }
+    }
+    val nativeCalls = classes.asSequence().filterNot { it.type.startsWith("Lapp/morphe/") }
+        .flatMap { it.methods.asSequence() }
+        .flatMap { it.implementation?.instructions?.asSequence() ?: emptySequence() }
+        .mapNotNull { (it as? ReferenceInstruction)?.reference as? MethodReference }
+        .filter { it.definingClass == "$prefix;" }.map { it.name }.toList()
+    for (hook in listOf("prepareWatchDescriptor", "prepareShortsDescriptor", "initialize")) {
+        check(nativeCalls.count { it == hook } == if (selected) 1 else 0) {
+            "Unexpected playback session injection for $hook"
+        }
+    }
+    check(nativeCalls.count { it == "onMiniplayerDismissed" } == if (selected) 4 else 0)
 }
 
 /** Check the emitted native request, scroll branch and intent replay contracts. */

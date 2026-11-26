@@ -39,6 +39,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"unused", "SpellCheckingInspection"})
@@ -332,6 +333,9 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static boolean disableResumingStartupMiniPlayer() {
+        if (PlaybackSessionPatch.isPatchIncluded() && Settings.MINIPLAYER_RESTORE_SESSION.get()) {
+            return PlaybackSessionPatch.suppressNativeResume();
+        }
         return Settings.MINIPLAYER_DISABLE_RESUMING.get();
     }
 

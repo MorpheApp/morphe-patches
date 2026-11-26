@@ -18,6 +18,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
@@ -34,6 +35,7 @@ private lateinit var shortsPlaybackIntentMethod: WeakReference<MutableMethod>
 private val videoIntentContextHooks = mutableListOf<Pair<String, String>>()
 private val videoIntentCommandTransforms = mutableListOf<Pair<String, String>>()
 private val videoIntentInterceptors = mutableListOf<Pair<String, String>>()
+private val playbackDescriptorTransforms = mutableListOf<Triple<String, String, String>>()
 
 val openVideoIntentPatch = patch(
     description = "Provides hooks into intent components to open videos for extension filtering."
@@ -50,6 +52,7 @@ val openVideoIntentPatch = patch(
         videoIntentContextHooks.clear()
         videoIntentCommandTransforms.clear()
         videoIntentInterceptors.clear()
+        playbackDescriptorTransforms.clear()
         VideoPlaybackIntentFingerprint.let {
             it.method.apply {
                 val match = it.instructionMatches[1]
@@ -87,6 +90,33 @@ val openVideoIntentPatch = patch(
         // Existing filtering hooks cache an instruction index during execute.
         // Insert entry transforms only after all consumers have used that index.
         val method = videoPlaybackIntentMethod.get()!!
+        if (playbackDescriptorTransforms.isNotEmpty()) {
+            val index = method.indexOfFirstStringInstructionOrThrow("PLAYBACK_START_DESCRIPTOR_MUTATOR")
+            val descriptor = "v$videoPlaybackIntentPlayerDescriptorClassRegister"
+            val context = "v$videoPlaybackIntentFreeRegister1"
+
+            playbackDescriptorTransforms.asReversed().forEach { (classDescriptor, regularMethod, shortsMethod) ->
+                val descriptorType = PlaybackStartDescriptorToStringFingerprint.originalClassDef.type
+                method.addInstructionsAtControlFlowLabel(
+                    index,
+                    """
+                        move-object/from16 $context, p2
+                        invoke-static {$descriptor, $context}, $classDescriptor->$regularMethod(Ljava/lang/Object;Ljava/util/Map;)Ljava/lang/Object;
+                        move-result-object $descriptor
+                        if-nez $descriptor, :continue_watch
+                        return-void
+                        :continue_watch
+                        check-cast $descriptor, $descriptorType
+                    """
+                )
+                shortsPlaybackIntentMethod.get()!!.addInstructionsAtControlFlowLabel(
+                    0,
+                    """
+                        invoke-static/range {p1 .. p2}, $classDescriptor->$shortsMethod(Ljava/lang/Object;Ljava/util/Map;)V
+                    """
+                )
+            }
+        }
         videoIntentContextHooks.asReversed().forEach { (classDescriptor, methodName) ->
             method.addInstructionsAtControlFlowLabel(
                 0,
@@ -124,6 +154,11 @@ val openVideoIntentPatch = patch(
             )
         }
     }
+}
+
+/** Observes or replaces a watch descriptor before native code applies its context. Null cancels the start. */
+internal fun hookPlaybackStartDescriptor(classDescriptor: String, watchMethod: String, shortsMethod: String) {
+    playbackDescriptorTransforms += Triple(classDescriptor, watchMethod, shortsMethod)
 }
 
 /** Transform the command context before native watch-descriptor construction, without consuming it. */

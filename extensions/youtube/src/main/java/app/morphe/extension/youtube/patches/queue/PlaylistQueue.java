@@ -105,6 +105,11 @@ public final class PlaylistQueue {
         return new PlaylistQueue(entries, 0, REPEAT_OFF, null, entries.size(), null);
     }
 
+    static PlaylistQueue fromSavedVideoIds(List<String> videoIds, int selectedIndex, int repeatMode) {
+        List<Entry> entries = videoIds.stream().map(videoId -> new Entry(videoId, videoId)).toList();
+        return new PlaylistQueue(entries, selectedIndex, repeatMode, null, entries.size(), null);
+    }
+
     PlaylistQueue appendPage(PlaylistPage page, boolean end) {
         if (source == null || source.anchor() == null) {
             throw new IllegalStateException("Queue has no pending playlist page");

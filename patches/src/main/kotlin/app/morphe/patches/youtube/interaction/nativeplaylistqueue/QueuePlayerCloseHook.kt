@@ -7,42 +7,26 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+
+private const val QUEUE_CLOSE = "$EXTENSION_CLASS->onQueuePlayerClosing()V"
 
 /** Observe the user close before teardown; keep the original native listener and dismissal. */
 internal fun installQueuePlayerClose(
     endpointType: String,
     dispatch: MethodReference
 ) {
-    // Before 21.31 the fling has a second accepted-dismiss branch. Hook every user
-    // dismissal, preserving thresholds, branch targets and the native continuation,
-    // without hooking programmatic closes that use the same dismiss method.
-    val closes = listOf(QueuePlayerCloseClickFingerprint) +
-        if (is_21_44_or_greater) listOf(
-            QueuePlayerControllerFlingFingerprint,
-            QueuePlayerControllerReleaseFingerprint
-        ) else listOf(
-            if (is_21_31_or_greater) QueuePlayerCloseFlingFingerprint
-            else QueuePlayerCloseFlingLegacyFingerprint,
-            QueuePlayerCloseTouchFingerprint
-        )
-
-    closes.forEach { fingerprint ->
-        val match = fingerprint.matchSingle()
-
-        match.instructionMatches.asReversed().forEach { call ->
-            match.method.addInstructionsAtControlFlowLabel(
-                call.index,
-                "invoke-static {}, $EXTENSION_CLASS->onQueuePlayerClosing()V"
-            )
-        }
-    }
+    hookUserMiniplayerDismissal(QUEUE_CLOSE)
 
     // This dispatcher belongs to the activity, not the disposed playback backend.
     // Reading it remains valid after the watch view detaches. No listener is replaced.
@@ -63,4 +47,33 @@ internal fun installQueuePlayerClose(
             return-void
         """
     )
+}
+
+internal fun hookUserMiniplayerDismissal(extensionMethod: String) {
+    // Before 21.31 the fling has a second accepted-dismiss branch. Hook every user
+    // dismissal, preserving thresholds, branch targets and the native continuation,
+    // without hooking programmatic closes that use the same dismiss method.
+    val closes = listOf(QueuePlayerCloseClickFingerprint) +
+        if (is_21_44_or_greater) listOf(
+            QueuePlayerControllerFlingFingerprint,
+            QueuePlayerControllerReleaseFingerprint
+        ) else listOf(
+            if (is_21_31_or_greater) QueuePlayerCloseFlingFingerprint
+            else QueuePlayerCloseFlingLegacyFingerprint,
+            QueuePlayerCloseTouchFingerprint
+        )
+
+    closes.forEach { fingerprint ->
+        val match = fingerprint.matchSingle()
+        val dismiss = match.instructionMatches.first().methodReference
+        match.method.findInstructionIndicesReversedOrThrow(methodCall(reference = { dismiss })).forEach { index ->
+            // The queue's Undo hook must still be immediately before native teardown.
+            val previous = match.method.getInstruction(index - 1) as? ReferenceInstruction
+            val insertIndex = if (previous?.reference?.toString() == QUEUE_CLOSE) index - 1 else index
+            match.method.addInstructionsAtControlFlowLabel(
+                insertIndex,
+                "invoke-static {}, $extensionMethod"
+            )
+        }
+    }
 }

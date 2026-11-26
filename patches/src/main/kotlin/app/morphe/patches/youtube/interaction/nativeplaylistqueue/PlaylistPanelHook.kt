@@ -20,6 +20,42 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
+private const val SESSION = "Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch;"
+private const val SESSION_PLAYLIST_READER =
+    $$"Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch$PlaylistReader;"
+
+/** Capture the stock panel without installing the optional native queue engine. */
+internal fun installPlaybackSessionPlaylistReader() {
+    val description = PlaylistModelDescriptionFingerprint.originalMethod
+    val responseVideoField = description.findFieldFromToString("{videoId=")
+    val panelField = description.findFieldFromToString(", playlistPanel=")
+    val constructor = PlaylistControllerConstructorFingerprint
+    val accept = acceptedPlaylistModelFingerprint(constructor.originalClassDef.type,
+        description.definingClass, responseVideoField)
+    val modelField = accept.instructionMatches.last().fieldReference
+    val activeVideoField = accept.instructionMatches[2].fieldReference
+    constructor.classDef.apply {
+        addPatchInterface(SESSION_PLAYLIST_READER, "patch_sessionPlaylistVideoId", activeVideoField)
+        addPatchInterface(
+            SESSION_PLAYLIST_READER,
+            "patch_sessionPlaylistPanel",
+            """
+                iget-object v0, p0, $modelField
+                if-eqz v0, :return_panel
+                iget-object v0, v0, $panelField
+
+                :return_panel
+                return-object v0
+            """
+        )
+    }
+    constructor.method.apply {
+        findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+            addInstruction(index, "invoke-static/range {p0 .. p0}, $SESSION->attachPlaylist($SESSION_PLAYLIST_READER)V")
+        }
+    }
+}
+
 // The native model factory initializes queueMode to 1 before accepting a watch response.
 // Keep that neutral mode: rows use ordinary watch endpoints, without attaching
 // a native playlist navigator through navigationSets.
