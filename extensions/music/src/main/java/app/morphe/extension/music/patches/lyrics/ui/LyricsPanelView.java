@@ -526,7 +526,7 @@ public final class LyricsPanelView extends FrameLayout
         footerBlur = new LyricsViewSupport.BlurTarget(footerContainer);
         footerContainer.setOrientation(LinearLayout.VERTICAL);
         // The bottom padding keeps the last lines clear of the pinned buttons.
-        footerContainer.setPadding(0, Dim.dp16, 0, Dim.dp(200));
+        footerContainer.setPadding(0, Dim.dp24, 0, Dim.dp(128));
 
         creditView = new TextView(context);
         creditView.setTextSize(TypedValue.COMPLEX_UNIT_SP, FOOTER_TEXT_SIZE_SP);
@@ -585,6 +585,21 @@ public final class LyricsPanelView extends FrameLayout
                 updateLinesContainerPadding();
             }
         });
+        final Runnable refreshFooterPadding = () -> {
+            if (isAttachedToWindow() && scrollView.getHeight() > 0) {
+                updateLinesContainerPadding();
+            }
+        };
+        OnLayoutChangeListener footerContentLayoutListener = (v, left, top, right, bottom,
+                oldLeft, oldTop, oldRight, oldBottom) -> {
+            if ((bottom - top) != (oldBottom - oldTop) && scrollView.getHeight() > 0) {
+                // Defer past the active layout pass so parent setPadding/requestLayout isn't dropped mid-layout.
+                footerContainer.removeCallbacks(refreshFooterPadding);
+                footerContainer.post(refreshFooterPadding);
+            }
+        };
+        creditView.addOnLayoutChangeListener(footerContentLayoutListener);
+        footerView.addOnLayoutChangeListener(footerContentLayoutListener);
         scrollView.addView(linesContainer, new FrameLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT));
@@ -853,7 +868,7 @@ public final class LyricsPanelView extends FrameLayout
                 });
     }
 
-    /** Room below the footer, so the last lines can scroll up to the anchor too. */
+    /** Room below the footer so the last lines and credits clear the bottom toolbar without overscrolling into blank space. */
     private void updateLinesContainerPadding() {
         final int top = Dim.dp16;
         final int bottom = Dim.dp(32);
@@ -862,9 +877,14 @@ public final class LyricsPanelView extends FrameLayout
         }
         final int viewportH = scrollView.getHeight();
         if (viewportH > 0) {
-            final int footerBottom = Math.max(Dim.dp(240), viewportH);
-            if (footerContainer.getPaddingBottom() != footerBottom) {
-                footerContainer.setPadding(0, Dim.dp24, 0, footerBottom);
+            final int footerTop = Dim.dp24;
+            final int footerContentH = (creditView.getVisibility() == VISIBLE ? creditView.getHeight() + Dim.dp16 : 0)
+                    + (footerView.getVisibility() == VISIBLE ? footerView.getHeight() : 0);
+            final int footerBottom = LyricsViewSupport.computeFooterBottomPaddingPx(
+                    viewportH, footerTop, footerContentH, bottom,
+                    getScrollAnchorPx(), Dim.dp(96), Dim.dp(128));
+            if (footerContainer.getPaddingTop() != footerTop || footerContainer.getPaddingBottom() != footerBottom) {
+                footerContainer.setPadding(0, footerTop, 0, footerBottom);
             }
         }
     }
@@ -2900,6 +2920,7 @@ public final class LyricsPanelView extends FrameLayout
         }
         footerContainer.setVisibility(VISIBLE);
         footerView.setVisibility(VISIBLE);
+        updateLinesContainerPadding();
         restoreToolbarButtons();
         updateButtonRowVisibility();
         updateTranslateLabel();
@@ -4800,6 +4821,14 @@ public final class LyricsPanelView extends FrameLayout
         return activeGroupEdge(targetIndex, true);
     }
 
+    private int clampScrollTargetY(int rawTargetY) {
+        return LyricsViewSupport.clampScrollTargetY(
+                rawTargetY,
+                scrollView.getHeight(),
+                linesContainer.getHeight(),
+                pendingGapDeltaBefore(Integer.MAX_VALUE));
+    }
+
     /**
      * {@return the scroll position that puts this line, or the whole run of active lines it is
      * in, at the anchor, or -1 when it is not laid out yet}
@@ -4817,7 +4846,7 @@ public final class LyricsPanelView extends FrameLayout
             if (footerContainer.getVisibility() == View.GONE || footerContainer.getHeight() <= 0) {
                 return -1;
             }
-            return Math.max(0, footerContainer.getTop() + pendingGapDeltaBefore(Integer.MAX_VALUE) - anchorPx);
+            return clampScrollTargetY(footerContainer.getTop() + pendingGapDeltaBefore(Integer.MAX_VALUE) - anchorPx);
         }
 
         View targetRow = lineRows.get(targetIndex);
@@ -4847,7 +4876,7 @@ public final class LyricsPanelView extends FrameLayout
             bottom = Math.max(bottom, rowTop + (row.getHeight() > 0 ? row.getHeight() : getPrimaryChildHeight(row)));
         }
         if (top == Integer.MAX_VALUE) {
-            return Math.max(0, targetRowTop + mainOffset - anchorPx);
+            return clampScrollTargetY(targetRowTop + mainOffset - anchorPx);
         }
 
         // Keep simultaneous duet pairs anchored together, while ensuring sequential 3+ line
@@ -4861,7 +4890,7 @@ public final class LyricsPanelView extends FrameLayout
         if (bottom - targetTop > availableH && availableH > 0) {
             targetTop = Math.max(targetTop, bottom - availableH);
         }
-        return Math.max(0, targetTop + mainOffset - anchorPx);
+        return clampScrollTargetY(targetTop + mainOffset - anchorPx);
     }
 
     /** {@return the row a scroll comes from: the line that was sung before, or the fallback} */
@@ -5049,7 +5078,7 @@ public final class LyricsPanelView extends FrameLayout
         final int beforeIdx = gv.getInterval().beforeLineIndex();
         return beforeIdx == 0
                 ? 0
-                : Math.max(0, gv.getTop() + pendingGapDeltaBefore(beforeIdx - 1) - getScrollAnchorPx());
+                : clampScrollTargetY(gv.getTop() + pendingGapDeltaBefore(beforeIdx - 1) - getScrollAnchorPx());
     }
 
     private void scrollToGapView(GapLineView gv, boolean forceInstant) {
@@ -5485,7 +5514,7 @@ public final class LyricsPanelView extends FrameLayout
                 } else if (lineRow != null && lineRow.getTop() > 0) {
                     // The dots are not laid out yet, but go right above the line.
                     int openGapH = gv != null ? gv.targetOpenHeightPx() : Dim.dp(GapLineView.TARGET_HEIGHT_DP);
-                    clamped = Math.max(0, lineRow.getTop() + pendingGapDeltaBefore(targetIdx)
+                    clamped = clampScrollTargetY(lineRow.getTop() + pendingGapDeltaBefore(targetIdx)
                             - openGapH - anchorPx);
                 } else {
                     clamped = -1;
