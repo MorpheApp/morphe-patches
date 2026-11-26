@@ -84,3 +84,9 @@ The Java status-bar implementation has eight `catch (Exception)` blocks versus s
 Potential recovery edge case from static review: the controller clears its applied flag before restoring system bars and background views. If the insets controller is temporarily null, or a restoration operation throws, restoration may not be retried on the next update. This has not been reproduced on the device; review recovery behavior before declaring all lifecycle paths safe. The supplied diagnostic logs are from the earlier probe, not the final build, so they cannot establish that the rebased controller is exception-free.
 
 No runtime code was changed by this documentation update.
+
+## Restoration hardening and final settings validation (26 November 2026)
+
+Commit `25c3e1c9250a03dd80cb23ea444d0fbdd1cc0cb3` retains the pending restoration state if the window insets controller is unavailable or restoration throws, allowing another attempt on an existing layout, focus or player-state update. It introduces no new exception handlers, timers or polling. [CI run 45783214367](https://github.com/ioneng/morphe-patches/actions/runs/45783214367) passed automated tests, Android bundle compilation and artifact upload.
+
+The user reported testing all combinations of Hide status bar, Hide status bar in tabletop mode and Keep player below display cutout on the OPPO Find N6, using both physical folding and simulated folding through Fold Switcher. All combinations behaved as expected. This supersedes the earlier settings-combination coverage gap; the cutout preference is unavailable in the UI when both hide modes are off. These are user-reported functional results, not an injected failure test. Other devices, multi-window/PiP, activity recreation, layout-fix-disabled behavior and the exceptional restoration path remain unverified. Fullscreen restoration after unfolding remains outside the patch scope.
