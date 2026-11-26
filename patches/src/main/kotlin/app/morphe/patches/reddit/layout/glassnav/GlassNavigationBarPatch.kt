@@ -17,6 +17,8 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.reddit.layout.autoscroll.ScreenAttachFingerprint
+import app.morphe.patches.reddit.layout.autoscroll.ScreenDetachFingerprint
 import app.morphe.patches.reddit.misc.compose.MODIFIER_INTERFACE
 import app.morphe.patches.reddit.misc.compose.composePatch
 import app.morphe.patches.reddit.misc.compose.modifierType
@@ -26,6 +28,7 @@ import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -217,6 +220,7 @@ val glassNavigationBarPatch = patch(
             NavScreenContentStateConstructorFingerprint.method.addInstructions(
                 0,
                 """
+                    invoke-static { p1 }, $EXTENSION_CLASS->setShowBottomNav(Z)V
                     invoke-static { p2 }, $EXTENSION_CLASS->padContentForBottomNav(Z)Z
                     move-result p2
                 """
@@ -271,6 +275,73 @@ val glassNavigationBarPatch = patch(
                     )
                 }
             }
+        }
+
+        // endregion
+
+        // region Search button.
+
+        if (is_2026_45_0_or_greater) {
+            HomeTopBarFingerprint.let {
+                it.method.apply {
+                    val avatarIndex = it.instructionMatches[7].index
+                    val avatarModifierRegister = it.instructionMatches[7].instruction.registersUsed[3]
+
+                    addInstructionsAtControlFlowLabel(
+                        avatarIndex,
+                        """
+                            invoke-static/range { v$avatarModifierRegister .. v$avatarModifierRegister }, $EXTENSION_CLASS->getSearchCircleModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                            move-result-object v$avatarModifierRegister
+                            check-cast v$avatarModifierRegister, $modifierType
+                        """
+                    )
+
+                    val clickIndex = it.instructionMatches[5].index
+                    val clickRegister = getInstruction<OneRegisterInstruction>(clickIndex).registerA
+
+                    addInstructions(
+                        clickIndex + 1,
+                        """
+                            invoke-static/range { v$clickRegister .. v$clickRegister }, $EXTENSION_CLASS->getSearchFieldClick(Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
+                            move-result-object v$clickRegister
+                        """
+                    )
+
+                    val fieldIndex = it.instructionMatches[4].index
+                    val fieldModifierRegister = getInstruction<OneRegisterInstruction>(fieldIndex).registerA
+
+                    addInstructions(
+                        fieldIndex + 1,
+                        """
+                            invoke-static/range { v$fieldModifierRegister .. v$fieldModifierRegister }, $EXTENSION_CLASS->getSearchFieldModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                            move-result-object v$fieldModifierRegister
+                            check-cast v$fieldModifierRegister, $modifierType
+                        """
+                    )
+
+                    val menuIndex = it.instructionMatches[1].index
+                    val menuModifierRegister = it.instructionMatches[1].instruction.registersUsed[1]
+
+                    addInstructionsAtControlFlowLabel(
+                        menuIndex,
+                        """
+                            invoke-static/range { v$menuModifierRegister .. v$menuModifierRegister }, $EXTENSION_CLASS->getSearchCircleModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                            move-result-object v$menuModifierRegister
+                            check-cast v$menuModifierRegister, $modifierType
+                        """
+                    )
+                }
+            }
+
+            ScreenAttachFingerprint.method.addInstruction(
+                0,
+                "invoke-static { p0, p1 }, $EXTENSION_CLASS->onScreenAttached(Ljava/lang/Object;Landroid/view/View;)V"
+            )
+
+            ScreenDetachFingerprint.method.addInstruction(
+                0,
+                "invoke-static { p0, p1 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;Landroid/view/View;)V"
+            )
         }
 
         // endregion

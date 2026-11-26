@@ -75,6 +75,7 @@ final class GlassNavigationBarBlur {
 
             canvas.drawRenderNode(PAGE_NODE);
             recordBackdrop();
+            GlassNavigationBarPatch.invalidateSearchButton();
             return null;
         }
     }
@@ -90,8 +91,10 @@ final class GlassNavigationBarBlur {
 
     private static final RenderNode PAGE_NODE = new RenderNode("morphe_glass_page");
     private static final RenderNode BLUR_NODE = new RenderNode("morphe_glass_blur");
+    private static final RenderNode BUTTON_BLUR_NODE = new RenderNode("morphe_glass_button_blur");
 
     private static final Path CAPSULE_PATH = new Path();
+    private static final Path BUTTON_CLIP_PATH = new Path();
     private static final Paint EDGE_PAINT = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     /**
@@ -103,6 +106,8 @@ final class GlassNavigationBarBlur {
      * Blurred area relative to the bottom left corner of the page, if the bar is not moved.
      */
     private static int blurLeft, blurTopFromBottom, blurWidth, blurHeight;
+    private static int buttonBlurLeft, buttonBlurTopFromBottom, buttonBlurSize;
+    private static boolean buttonBlurStale;
 
     /**
      * How far down the bar is moved from the bottom of the page, in pixels.
@@ -125,10 +130,12 @@ final class GlassNavigationBarBlur {
 
         ColorMatrix colors = new ColorMatrix();
         colors.setSaturation(SATURATION);
-        BLUR_NODE.setRenderEffect(RenderEffect.createChainEffect(
+        RenderEffect effect = RenderEffect.createChainEffect(
                 RenderEffect.createBlurEffect(radius, radius, Shader.TileMode.CLAMP),
                 RenderEffect.createColorFilterEffect(new ColorMatrixColorFilter(colors))
-        ));
+        );
+        BLUR_NODE.setRenderEffect(effect);
+        BUTTON_BLUR_NODE.setRenderEffect(effect);
 
         EDGE_PAINT.setStyle(Paint.Style.STROKE);
         EDGE_PAINT.setStrokeWidth(EDGE_WIDTH_DP * density);
@@ -143,7 +150,7 @@ final class GlassNavigationBarBlur {
     static void setBarOffset(int offset) {
         if (barOffset != offset) {
             barOffset = offset;
-            recordBackdrop();
+            recordCapsuleBackdrop();
         }
     }
 
@@ -170,7 +177,7 @@ final class GlassNavigationBarBlur {
         blurWidth = (int) Math.ceil(left + width) - capsuleLeft + 2 * BLUR_MARGIN;
         blurHeight = (int) Math.ceil(top + height) - capsuleTop + 2 * BLUR_MARGIN;
         backgroundColor = color;
-        recordBackdrop();
+        recordCapsuleBackdrop();
 
         CAPSULE_PATH.rewind();
         CAPSULE_PATH.addRoundRect(left, top, left + width, top + height,
@@ -184,21 +191,79 @@ final class GlassNavigationBarBlur {
     }
 
     /**
-     * Records the area of the page that is behind the capsule.
+     * Draws the blurred page inside the floating search button.
      */
-    private static void recordBackdrop() {
-        if (blurWidth <= 0 || blurHeight <= 0) {
-            return; // The bar is not drawn yet.
+    static void drawButtonBackdrop(Canvas canvas, int left, int topFromBottom, int size,
+                                   float cx, float cy, float radius, @ColorInt int color) {
+        if (!canvas.isHardwareAccelerated() || size <= 0 || PAGE_NODE.getHeight() <= 0) {
+            return;
         }
 
-        BLUR_NODE.setPosition(0, 0, blurWidth, blurHeight);
-        RecordingCanvas recording = BLUR_NODE.beginRecording(blurWidth, blurHeight);
+        final int newLeft = left - BLUR_MARGIN;
+        final int newTopFromBottom = topFromBottom + BLUR_MARGIN;
+        final int newSize = size + 2 * BLUR_MARGIN;
+        final boolean boundsChanged = newLeft != buttonBlurLeft
+                || newTopFromBottom != buttonBlurTopFromBottom
+                || newSize != buttonBlurSize
+                || backgroundColor != color;
+        if (boundsChanged || buttonBlurStale || !BUTTON_BLUR_NODE.hasDisplayList()) {
+            buttonBlurLeft = newLeft;
+            buttonBlurTopFromBottom = newTopFromBottom;
+            buttonBlurSize = newSize;
+            backgroundColor = color;
+            recordNode(BUTTON_BLUR_NODE, buttonBlurLeft, buttonBlurTopFromBottom,
+                    buttonBlurSize, buttonBlurSize);
+            buttonBlurStale = false;
+        }
+
+        if (!BUTTON_BLUR_NODE.hasDisplayList()) {
+            return;
+        }
+
+        final int saveCount = canvas.save();
+        BUTTON_CLIP_PATH.rewind();
+        BUTTON_CLIP_PATH.addCircle(cx, cy, radius, Path.Direction.CW);
+        canvas.clipPath(BUTTON_CLIP_PATH);
+        canvas.translate(cx - radius - BLUR_MARGIN, cy - radius - BLUR_MARGIN);
+        canvas.drawRenderNode(BUTTON_BLUR_NODE);
+        canvas.restoreToCount(saveCount);
+    }
+
+    private static void recordCapsuleBackdrop() {
+        recordNode(BLUR_NODE, blurLeft, blurTopFromBottom - barOffset, blurWidth, blurHeight);
+    }
+
+    /**
+     * Records the area of the page that is behind the capsule and the search button.
+     */
+    private static void recordBackdrop() {
+        recordCapsuleBackdrop();
+
+        if (buttonBlurSize > 0) {
+            if (GlassNavigationBarPatch.isSearchButtonVisible()) {
+                recordNode(BUTTON_BLUR_NODE, buttonBlurLeft, buttonBlurTopFromBottom,
+                        buttonBlurSize, buttonBlurSize);
+                buttonBlurStale = false;
+            } else {
+                buttonBlurStale = true;
+            }
+        }
+    }
+
+    private static void recordNode(RenderNode node, int left, int topFromBottom,
+                                   int width, int height) {
+        if (width <= 0 || height <= 0 || PAGE_NODE.getHeight() <= 0) {
+            return;
+        }
+
+        node.setPosition(0, 0, width, height);
+        RecordingCanvas recording = node.beginRecording(width, height);
         try {
             recording.drawColor(backgroundColor);
-            recording.translate(-blurLeft, blurTopFromBottom - barOffset - PAGE_NODE.getHeight());
+            recording.translate(-left, topFromBottom - PAGE_NODE.getHeight());
             recording.drawRenderNode(PAGE_NODE);
         } finally {
-            BLUR_NODE.endRecording();
+            node.endRecording();
         }
     }
 
@@ -206,6 +271,12 @@ final class GlassNavigationBarBlur {
      * Draws a light edge that fades to the bottom of the capsule.
      */
     static void drawEdge(ContentDrawScope scope, float left, float top, float width, float height,
+                         float cornerRadius, boolean dark) {
+        drawEdge(scope.patch_getCanvas().patch_getNativeCanvas(),
+                left, top, width, height, cornerRadius, dark);
+    }
+
+    static void drawEdge(Canvas canvas, float left, float top, float width, float height,
                          float cornerRadius, boolean dark) {
         EDGE_PAINT.setShader(new LinearGradient(
                 0, top, 0, top + height,
@@ -216,7 +287,7 @@ final class GlassNavigationBarBlur {
 
         final float inset = EDGE_PAINT.getStrokeWidth() / 2;
         final float edgeRadius = Math.max(0, cornerRadius - inset);
-        scope.patch_getCanvas().patch_getNativeCanvas().drawRoundRect(
+        canvas.drawRoundRect(
                 left + inset,
                 top + inset,
                 left + width - inset,
