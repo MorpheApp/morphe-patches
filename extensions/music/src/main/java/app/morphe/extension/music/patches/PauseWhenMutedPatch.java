@@ -158,6 +158,10 @@ public final class PauseWhenMutedPatch {
             if (nowMuted == muted) return;
             muted = nowMuted;
 
+            // The media volume of the phone does not reach remote playback, such as a speaker.
+            MediaController.PlaybackInfo info = controller.getPlaybackInfo();
+            if (info != null && info.getPlaybackType() == MediaController.PlaybackInfo.PLAYBACK_TYPE_REMOTE) return;
+
             PlaybackState state = controller.getPlaybackState();
             int playbackState = state == null ? PlaybackState.STATE_NONE : state.getState();
 

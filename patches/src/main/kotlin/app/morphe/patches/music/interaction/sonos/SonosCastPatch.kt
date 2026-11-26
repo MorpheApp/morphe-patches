@@ -10,8 +10,9 @@ package app.morphe.patches.music.interaction.sonos
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.music.interaction.audioducking.AudioFocusChangeFingerprint
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
+import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -92,6 +93,21 @@ val sonosCastPatch = patch(
             )
         }
 
-        addSetMetadataHook("$EXTENSION_CLASS->onSetMetadata(Landroid/media/MediaMetadata;)V")
+        // Keep playing on the speaker when another app plays on the phone.
+        AudioFocusChangeFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->deferAudioFocusChange(Landroid/media/AudioManager${'$'}OnAudioFocusChangeListener;I)Z
+                move-result v0
+                if-eqz v0, :handle
+                return-void
+                :handle
+                nop
+            """
+        )
+
+        addSetMetadataWithSessionHook(
+            "$EXTENSION_CLASS->onSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
+        )
     }
 }
