@@ -184,12 +184,12 @@ val feedCardLayoutPatch = patch(
                 // The default layout gives the spacing of the cards only to the cards of a newer A/B test,
                 // so the gap is removed only from the lists with these cards, found by the items of the list
                 // when the layout manager of the list reads the gap.
-                val columnCountField = descriptor.instructionMatches[0].fieldReference!!
-                val rowGapField = descriptor.instructionMatches[1].fieldReference!!
+                val columnCountField = descriptor.instructionMatches[0].fieldReference
+                val rowGapField = descriptor.instructionMatches[1].fieldReference
 
                 ListLayoutInfoConstructorFingerprint.let { constructor ->
                     val layoutInfoType = constructor.classDef.type
-                    val sectionsField = constructor.instructionMatches.first().fieldReference!!
+                    val sectionsField = constructor.instructionMatches.first().fieldReference
                     val sectionType = sectionsField.type
 
                     constructor.classDef.apply {
@@ -205,7 +205,7 @@ val feedCardLayoutPatch = patch(
                         addPatchInterface(
                             EXTENSION_LIST_SECTION_INTERFACE,
                             "patch_getItemCount",
-                            listSectionIsEmptyFingerprint(sectionType).instructionMatches.first().methodReference!!
+                            listSectionIsEmptyFingerprint(sectionType).instructionMatches.first().methodReference
                         )
                         addPatchInterface(
                             EXTENSION_LIST_SECTION_INTERFACE,
