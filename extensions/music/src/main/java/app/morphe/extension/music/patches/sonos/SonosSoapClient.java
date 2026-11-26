@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -95,6 +96,19 @@ final class SonosSoapClient {
      */
     @Nullable
     static Integer getVolume(SonosDevice device) {
+        try {
+            return executor.submit(() -> readVolume(device)).get();
+        } catch (ExecutionException ex) {
+            Logger.printException(() -> "getVolume failure", ex);
+            return null;
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+            return null;
+        }
+    }
+
+    @Nullable
+    private static Integer readVolume(SonosDevice device) {
         final String response = send(device.renderingControlUrl, RENDERING_CONTROL, "GetVolume",
                 "<u:GetVolume xmlns:u=\"" + RENDERING_CONTROL + "\">"
                         + "<InstanceID>0</InstanceID><Channel>Master</Channel>"
@@ -122,6 +136,16 @@ final class SonosSoapClient {
         final String response = send(device.avTransportControlUrl, AV_TRANSPORT, "GetTransportInfo",
                 "<u:GetTransportInfo xmlns:u=\"" + AV_TRANSPORT + "\"><InstanceID>0</InstanceID></u:GetTransportInfo>");
         return extractTag(response, "CurrentTransportState");
+    }
+
+    /**
+     * @return The URI the speaker plays, empty if it has none.
+     */
+    @Nullable
+    static String getSourceUri(SonosDevice device) {
+        final String response = send(device.avTransportControlUrl, AV_TRANSPORT, "GetMediaInfo",
+                "<u:GetMediaInfo xmlns:u=\"" + AV_TRANSPORT + "\"><InstanceID>0</InstanceID></u:GetMediaInfo>");
+        return extractTag(response, "CurrentURI");
     }
 
     private static String didl(String streamUrl, TrackInfo track) {
