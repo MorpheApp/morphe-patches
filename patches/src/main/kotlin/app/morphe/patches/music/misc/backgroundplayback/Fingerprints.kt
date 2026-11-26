@@ -1,8 +1,10 @@
 package app.morphe.patches.music.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.literal
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -28,6 +30,23 @@ internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "L", "Z"),
     filters = listOf(
-        literal(45638079L)
+        methodCall(smali = "Lj$/util/Optional;->get()Ljava/lang/Object;"),
+        // Saves the parameters.
+        fieldAccess(
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            definingClass = "this",
+            type = "Z",
+            location = MatchAfterWithin(5)
+        )
     )
 )

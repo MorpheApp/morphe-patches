@@ -16,7 +16,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.Range;
 import android.view.Gravity;
 import android.view.View;
@@ -223,7 +222,12 @@ public class SegmentPlaybackController {
             if (currentVideoId != null && segments != null
                     && whitelist.isChannelWhitelisted(channelId)) {
                 Logger.printDebug(() -> "Channel is whitelisted, discarding loaded segments: " + channelId);
-                discardSegmentsForWhitelistedChannel();
+                // Discard segments when a whitelisted channel ID arrives after the download already completed.
+                String videoId = currentVideoId;
+                clearData();
+                currentVideoId = videoId;
+                ui().hideAll();
+                maybeShowWhitelistToast();
             }
         });
     }
@@ -344,17 +348,6 @@ public class SegmentPlaybackController {
         Logger.printDebug(() -> "Skipping SponsorBlock for whitelisted channel");
         maybeShowWhitelistToast();
         return true;
-    }
-
-    /**
-     * Discard segments when a whitelisted channel ID arrives after the download already completed.
-     */
-    private static void discardSegmentsForWhitelistedChannel() {
-        String videoId = currentVideoId;
-        clearData();
-        currentVideoId = videoId;
-        ui().hideAll();
-        maybeShowWhitelistToast();
     }
 
     /**
@@ -1099,7 +1092,7 @@ public class SegmentPlaybackController {
         try {
             if (isOn(settings().videoLengthWithoutSegments())
                     && settings().sbEnabled().get()
-                    && !TextUtils.isEmpty(totalTime)) {
+                    && Utils.isNotEmpty(totalTime)) {
                 // Segments can load before the player reports the length of the new video,
                 // so the time is calculated again once the length changes.
                 final long videoLength = video().getVideoLength();
@@ -1108,7 +1101,7 @@ public class SegmentPlaybackController {
                     calculateTimeWithoutSegments(videoLength);
                 }
 
-                if (!TextUtils.isEmpty(timeWithoutSegments)) {
+                if (Utils.isNotEmpty(timeWithoutSegments)) {
                     // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages
                     return "\u202D" + totalTime + timeWithoutSegments; // u202D = left to right override
                 }

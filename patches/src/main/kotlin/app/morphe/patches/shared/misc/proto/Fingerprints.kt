@@ -8,6 +8,7 @@
 package app.morphe.patches.shared.misc.proto
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -55,5 +56,30 @@ internal fun resourceBytesFingerprint(elementProtoParser: MethodReference) = Fin
     filters = listOf(
         methodCall(reference = elementProtoParser),
         opcode(Opcode.ARRAY_LENGTH)
+    )
+)
+
+/**
+ * Checks if an element is rendered with RenderNext, from the bytes of the element.
+ */
+internal object RenderNextEnablementCheckFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Z",
+    filters = listOf(
+        string("RenderNextEnablementCheck", StringComparisonType.CONTAINS)
+    )
+)
+
+/**
+ * Converts an element. The bytes of the element are parsed for the RenderNext check,
+ * and the converted element parses them again.
+ */
+internal fun elementConverterFingerprint(renderNextEnablementCheck: MethodReference) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(returnType = "[B"),
+        methodCall(reference = renderNextEnablementCheck)
     )
 )

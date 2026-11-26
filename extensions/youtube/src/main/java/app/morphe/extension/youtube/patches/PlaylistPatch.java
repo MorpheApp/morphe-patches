@@ -34,7 +34,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.innertube.PlaylistEdit.PlaylistEditAction;
 import app.morphe.extension.youtube.innertube.PlaylistEdit.PlaylistEditActionType;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 

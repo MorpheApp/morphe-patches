@@ -122,6 +122,27 @@ public final class YouTubeGlassNavigationBar {
     private static final float CORNER_RADIUS_FRACTION = getCornerRadiusFraction();
 
     /**
+     * How bright the edge of the capsule is: 1 draws its light edge, 0 draws none.
+     * Also used by the preview in the settings.
+     */
+    public static float getRimScale() {
+        return Settings.NAVIGATION_BAR_GLASS_EDGE.get() ? 1 : 0;
+    }
+
+    /**
+     * Room added between the bottom of the capsule and the system navigation buttons, gesture handle
+     * or bottom of the screen, so the capsule floats higher.
+     */
+    private static final int BOTTOM_MARGIN = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BOTTOM_MARGIN));
+
+    /**
+     * The rooms below the buttons last returned by {@link #getFloatingRoom(View, int)} with the bottom margin,
+     * which already include it. The padding is set again from several places with the room it already has.
+     */
+    private static final int[] floatingRooms = new int[4];
+    private static int floatingRoomIndex;
+
+    /**
      * The most alpha of the tint the app draws over its blurred background.
      */
     private static final float LIGHT_BLUR_TINT_ALPHA = 0.50f;
@@ -152,8 +173,12 @@ public final class YouTubeGlassNavigationBar {
     /**
      * Views of a button that hold its content, the icon and the label. Other views of the button,
      * such as the badge of the new content count, are left out. Also used by the preview in the settings.
+     * The buttons without a label hold their icon in an image view, except the You button.
      */
-    public static final int BUTTON_ICON = ResourceUtils.getIdentifier(ResourceType.ID, "thumbnail_layout");
+    public static final int[] BUTTON_ICONS = {
+            ResourceUtils.getIdentifier(ResourceType.ID, "thumbnail_layout"),
+            ResourceUtils.getIdentifier(ResourceType.ID, "image")
+    };
     public static final int BUTTON_LABEL = ResourceUtils.getIdentifier(ResourceType.ID, "text");
 
     /**
@@ -191,6 +216,7 @@ public final class YouTubeGlassNavigationBar {
      */
     private static volatile int seenAppRoom;
     private static volatile int seenAppRoomPadding;
+    private static volatile boolean seenAppRoomKnown;
 
     /**
      * How far the room the app adds to the height may differ from the bottom padding.
@@ -209,15 +235,29 @@ public final class YouTubeGlassNavigationBar {
         if (padding != seenAppRoomPadding) {
             seenAppRoom = 0;
             seenAppRoomPadding = padding;
+            seenAppRoomKnown = false;
         }
 
         // The app can round the room it adds differently from the padding, such as 109 for a padding of 110.
         final int base = baseHeight;
         final int room = height - base;
-        if (base > 0 && padding > 0 && Math.abs(room - padding) <= SEEN_ROOM_TOLERANCE && seenAppRoom != room) {
+        if (base > 0 && padding > 0 && isAppRoom(room, padding) && (seenAppRoom != room || !seenAppRoomKnown)) {
             seenAppRoom = room;
+            seenAppRoomKnown = true;
             Logger.printDebug(() -> "Glass navigation bar room added by the app: " + room + " padding: " + padding);
         }
+    }
+
+    /**
+     * @param room    The height the app gives the bar, less its height without the room below the buttons.
+     * @param padding The bottom padding of the bar.
+     * @return If the room is the room the app added for that padding: the padding itself, or with the bottom
+     *         margin, the room for the system navigation buttons the margin was added to.
+     */
+    private static boolean isAppRoom(int room, int padding) {
+        if (Math.abs(room - padding) <= SEEN_ROOM_TOLERANCE) return true;
+        return BOTTOM_MARGIN > 0 && room >= 0
+                && Math.abs(Math.max(room, FLOATING_ROOM) + BOTTOM_MARGIN - padding) <= SEEN_ROOM_TOLERANCE;
     }
 
     /**
@@ -225,6 +265,12 @@ public final class YouTubeGlassNavigationBar {
      */
     private static int getAppRoom(View navigationBar) {
         final int padding = navigationBar.getPaddingBottom();
+        // With the bottom margin, the app adds only the room for the system navigation buttons to the height,
+        // not the margin, so the room seen is the room it added.
+        if (BOTTOM_MARGIN > 0 && padding == seenAppRoomPadding && seenAppRoomKnown) {
+            return seenAppRoom;
+        }
+
         final int seenRoom = padding == seenAppRoomPadding ? seenAppRoom : 0;
         // The stored room can still be the room of a previous bar, such as after switching between
         // gesture and 3-button navigation, and the app never adds more room than the padding.
@@ -335,11 +381,28 @@ public final class YouTubeGlassNavigationBar {
      * @return The room below the buttons.
      */
     static int getFloatingRoom(View navigationBar, int room) {
-        if (!ENABLED || room >= FLOATING_ROOM) return room;
+        if (!ENABLED || (BOTTOM_MARGIN == 0 && room >= FLOATING_ROOM)) return room;
 
         try {
             final int width = navigationBar.getWidth();
             if (width > 0 && !GlassNavigationBarLayout.isHorizontalBottomBar(navigationBar)) return room;
+
+            if (BOTTOM_MARGIN > 0) {
+                synchronized (floatingRooms) {
+                    for (int floatingRoom : floatingRooms) {
+                        if (floatingRoom != 0 && floatingRoom == room) return room;
+                    }
+                    final int newRoom = Math.max(room, FLOATING_ROOM) + BOTTOM_MARGIN;
+                    floatingRooms[floatingRoomIndex] = newRoom;
+                    floatingRoomIndex = (floatingRoomIndex + 1) % floatingRooms.length;
+                    if (!floatingRoomLogged) {
+                        floatingRoomLogged = true;
+                        Logger.printDebug(() -> "Glass navigation bar floating room with bottom margin: "
+                                + room + " -> " + newRoom);
+                    }
+                    return newRoom;
+                }
+            }
 
             if (!floatingRoomLogged) {
                 floatingRoomLogged = true;
@@ -441,7 +504,7 @@ public final class YouTubeGlassNavigationBar {
         currentPivotBar = new WeakReference<>(pivotBar);
 
         CapsuleHost capsuleHost = new CapsuleHost(pivotBar);
-        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, OPACITY_SCALE);
+        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, OPACITY_SCALE, false, getRimScale());
         currentDrawable = new WeakReference<>(glass);
 
         // The height the app gives the bar, without the room below the buttons.
@@ -497,11 +560,15 @@ public final class YouTubeGlassNavigationBar {
                     // it is put back right before the frame is drawn, so no frame is drawn with the
                     // buttons moved down.
                     // The room is added to the height of the bar when it is measured.
+                    // The padding can also still be the room for the system navigation buttons without
+                    // the bottom margin, if it was set before the bar had a size, so the margin is added to it.
                     final int room = pivotBar.getPaddingBottom();
-                    if (room < FLOATING_ROOM) {
-                        Logger.printDebug(() -> "Glass navigation bar floating room set: " + room + " -> " + FLOATING_ROOM);
+                    final int newRoom = getFloatingRoom(pivotBar, room);
+                    if (newRoom != room) {
+                        Logger.printDebug(() -> "Glass navigation bar floating room set: " + room + " -> " + newRoom);
+                        // The patched setPadding keeps this room, as it already includes the bottom margin.
                         pivotBar.setPadding(pivotBar.getPaddingLeft(), pivotBar.getPaddingTop(),
-                                pivotBar.getPaddingRight(), FLOATING_ROOM);
+                                pivotBar.getPaddingRight(), newRoom);
                         layoutChanged = true;
                     }
 
@@ -513,7 +580,7 @@ public final class YouTubeGlassNavigationBar {
                     if (pivotBar instanceof ViewGroup bar && bar.getChildCount() > 0
                             && bar.getChildAt(0) instanceof ViewGroup tabs) {
                         GlassNavigationBarLayout.Buttons buttons = GlassNavigationBarLayout.measureButtons(
-                                tabs, BUTTON_ICON, BUTTON_LABEL, hiddenButtons);
+                                tabs, BUTTON_ICONS, BUTTON_LABEL, hiddenButtons);
                         final int contentWidth = buttons.contentWidth;
                         final int contentTop = buttons.contentTop;
 
@@ -620,7 +687,7 @@ public final class YouTubeGlassNavigationBar {
             // and reaches only slightly into that room, so it floats above the gesture handle.
             final int bottomRoom = host.getPaddingBottom();
             float bottom = bounds.bottom - bottomRoom
-                    + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, MAX_MARGIN_BOTTOM));
+                    + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM - BOTTOM_MARGIN, MAX_MARGIN_BOTTOM));
             // Some accounts lay the slim status bar ("No connection", "You're incognito") out over the room
             // below the buttons, and it is drawn over the bar. The capsule then does not reach into the room
             // the slim status bar covers, or its edge is cut. The bar's own translation is left out,

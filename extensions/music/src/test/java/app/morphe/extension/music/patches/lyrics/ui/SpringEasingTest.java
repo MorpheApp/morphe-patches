@@ -34,9 +34,17 @@ public class SpringEasingTest {
         Assert.assertEquals(0.73f, SpringEasing.computeZeta(2500L), 0.0001f);
         Assert.assertEquals(0.73f, SpringEasing.computeZeta(10000L), 0.0001f);
 
+        // Relax scrolling damping (+0.05f, default 0.80f)
+        Assert.assertEquals(0.80f, SpringEasing.computeZeta(0L, true), 0.0001f);
+        Assert.assertEquals(0.90f, SpringEasing.computeZeta(1L, true), 0.001f);
+        Assert.assertEquals(0.78f, SpringEasing.computeZeta(2500L, true), 0.0001f);
+
         Assert.assertEquals(400L, LyricsRetiming.calculateScrollDuration(400L));
+        Assert.assertEquals(600L, LyricsRetiming.calculateScrollDuration(400L, true));
         Assert.assertEquals(450L, LyricsRetiming.calculateScrollDuration(900L));
+        Assert.assertEquals(675L, LyricsRetiming.calculateScrollDuration(900L, true));
         Assert.assertEquals(40f, LyricsRetiming.calculateScrollDelayIncrement(400L), 0.001f);
+        Assert.assertEquals(20f, LyricsRetiming.calculateScrollDelayIncrement(400L, true), 0.001f);
     }
 
     @Test
@@ -83,6 +91,11 @@ public class SpringEasingTest {
         Assert.assertEquals(0, upStagger.steps(7));
         Assert.assertEquals(1, upStagger.steps(4));
         Assert.assertEquals(3, upStagger.steps(2));
+
+        // Upward scroll in Relax Scrolling mode halves delayIncrementMs
+        SpringEasing.LyricsScrollStagger upRelaxStagger = new SpringEasing.LyricsScrollStagger(
+                false, 5, 5, 600L, 30f, true, noGaps);
+        Assert.assertEquals(15f, upRelaxStagger.delayIncrementMs, 0.001f);
     }
 
     @Test

@@ -14,6 +14,13 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public final class HideAskButtonPatch {
     private static final String ANDROID_SEARCH_BAR_ASK_BUTTON = "android_search_bar_ask_button";
+    /**
+     * Expanded search composer (wide multi-line search field with the Ask chip below
+     * the back button and the send button on the right).
+     * Disabling it restores the regular search top bar, whose Ask button is hidden by
+     * {@link #shouldHideAskButton()}.
+     */
+    private static final String SEARCH_EXPANDED_COMPOSER = "search_expanded_composer";
 
     /**
      * @return If this patch was included during patching.
@@ -42,7 +49,8 @@ public final class HideAskButtonPatch {
             return original;
         }
         if (Settings.HIDE_ASK_BUTTON.get() && experimentName != null
-                && experimentName.startsWith(ANDROID_SEARCH_BAR_ASK_BUTTON)) {
+                && (experimentName.startsWith(ANDROID_SEARCH_BAR_ASK_BUTTON)
+                || experimentName.startsWith(SEARCH_EXPANDED_COMPOSER))) {
             return false;
         }
 

@@ -11,6 +11,7 @@
 package app.morphe.extension.music.settings.preference;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.preference.PreferenceScreen;
 import android.widget.Toolbar;
 
@@ -30,6 +31,14 @@ public class MusicPreferenceFragment extends ToolbarPreferenceFragment {
      * The main PreferenceScreen used to display the current set of preferences.
      */
     private PreferenceScreen preferenceScreen;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LyricsCustomFontPreference.PICK_FONT_REQUEST_CODE) {
+            LyricsCustomFontPreference.handleActivityResult(getContext(), resultCode, data);
+        }
+    }
 
     /**
      * Initializes the preference fragment.

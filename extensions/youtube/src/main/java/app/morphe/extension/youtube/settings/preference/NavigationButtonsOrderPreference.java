@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -171,11 +172,21 @@ public class NavigationButtonsOrderPreference extends Preference {
                     for (int i = 0, count = rows.getChildCount(); i < count; i++) {
                         names.add((String) rows.getChildAt(i).getTag());
                     }
-                    setting.save(String.join(",", names));
+                    String newOrder = String.join(",", names);
+                    if (!newOrder.equals(setting.get())) {
+                        setting.save(newOrder);
+                        // The buttons are ordered when the bar is created.
+                        AbstractPreferenceFragment.setRestartNeeded();
+                    }
                 },
                 () -> {},
                 str("morphe_settings_reset"),
-                setting::resetToDefault,
+                () -> {
+                    if (!setting.isSetToDefault()) {
+                        setting.resetToDefault();
+                        AbstractPreferenceFragment.setRestartNeeded();
+                    }
+                },
                 true
         );
 

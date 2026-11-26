@@ -29,13 +29,13 @@ public class WordReadingTableTest {
     @Test
     public void openReturnsNullForNonexistentFile() throws Exception {
         Path path = Files.createTempFile("nonexistent", ".bin");
-        path.toFile().delete();
+        Files.deleteIfExists(path);
         assertNull(WordReadingTable.open(path, MAGIC));
     }
 
     @Test
     public void openReturnsNullForWrongMagic() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("hello", "ハロー");
             builder.finish(1);
         });
@@ -45,7 +45,7 @@ public class WordReadingTableTest {
 
     @Test
     public void builderPutAndReadingFindsEntry() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("hello", "ハロー");
             builder.put("world", "ワールド");
             builder.finish(1);
@@ -60,7 +60,7 @@ public class WordReadingTableTest {
 
     @Test
     public void readingMissingReturnsNull() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("hello", "ハロー");
             builder.finish(1);
         });
@@ -73,7 +73,7 @@ public class WordReadingTableTest {
 
     @Test
     public void sizeReturnsEntryCount() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("one", "一");
             builder.put("two", "二");
             builder.put("three", "三");
@@ -87,7 +87,7 @@ public class WordReadingTableTest {
 
     @Test
     public void builderFirstReadingWins() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("hello", "ハロー");
             builder.put("hello", "グッダイ"); // Should be ignored
             builder.finish(1);
@@ -101,7 +101,7 @@ public class WordReadingTableTest {
 
     @Test
     public void builderSkipsEmptySurface() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("", "reading"); // Should be skipped
             builder.put("valid", "reading");
             builder.finish(1);
@@ -116,7 +116,7 @@ public class WordReadingTableTest {
     @Test
     public void builderSkipsTooLongSurface() throws Exception {
         String longWord = "a".repeat(WordReadingTable.MAX_WORD_LENGTH + 1);
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put(longWord, "reading"); // Should be skipped
             builder.put("valid", "reading");
             builder.finish(1);
@@ -131,7 +131,7 @@ public class WordReadingTableTest {
     @Test
     public void builderAllowsMaxLengthSurface() throws Exception {
         String maxWord = "a".repeat(WordReadingTable.MAX_WORD_LENGTH);
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put(maxWord, "reading");
             builder.finish(1);
         });
@@ -145,8 +145,8 @@ public class WordReadingTableTest {
     @Test
     public void builderHandlesNonPackableReading() throws Exception {
         // Readings with non-katakana characters use the escape mechanism
-        Path path = buildTable(MAGIC, (builder) -> {
-            builder.put("test", "テス\u0020ト"); // space is not packable
+        Path path = buildTable((builder) -> {
+            builder.put("test", "テス ト"); // space is not packable
             builder.finish(1);
         });
         try (WordReadingTable table = WordReadingTable.open(path, MAGIC)) {
@@ -158,7 +158,7 @@ public class WordReadingTableTest {
 
     @Test
     public void closeDoesNotThrow() throws Exception {
-        Path path = buildTable(MAGIC, (builder) -> {
+        Path path = buildTable((builder) -> {
             builder.put("hello", "ハロー");
             builder.finish(1);
         });
@@ -180,10 +180,10 @@ public class WordReadingTableTest {
         void apply(WordReadingTable.Builder builder) throws Exception;
     }
 
-    private static Path buildTable(byte[] magic, BuilderAction action) throws Exception {
+    private static Path buildTable(BuilderAction action) throws Exception {
         Path path = Files.createTempFile("word-reading-test", ".bin");
         path.toFile().deleteOnExit();
-        WordReadingTable.Builder builder = new WordReadingTable.Builder(path, magic, 1 << 10);
+        WordReadingTable.Builder builder = new WordReadingTable.Builder(path, WordReadingTableTest.MAGIC, 1 << 10);
         action.apply(builder);
         return path;
     }

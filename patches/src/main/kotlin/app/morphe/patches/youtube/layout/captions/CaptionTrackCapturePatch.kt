@@ -70,26 +70,24 @@ internal val captionTrackCapturePatch = patch(
 
         // Make the extension callback a native request callback.
         mutableClassDefBy(EXTENSION_UPLOADED_CALLBACK_CLASS).apply {
-            interfaces.add(callbackType)
-
-            addHelperMethod(
+            addPatchInterface(
+                callbackType,
                 handlerResult.method.name,
-                "V",
-                parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-                smali = """
+                """
                     invoke-virtual { p0, p2 }, $EXTENSION_UPLOADED_CALLBACK_CLASS->onResult(Ljava/lang/Object;)V
                     return-void
-                """
+                """,
+                listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
             )
 
-            addHelperMethod(
+            addPatchInterface(
+                callbackType,
                 CaptionTrackHandlerErrorFingerprint.method.name,
-                "V",
-                parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
-                smali = """
+                """
                     invoke-virtual { p0, p2 }, $EXTENSION_UPLOADED_CALLBACK_CLASS->onError(Ljava/lang/Exception;)V
                     return-void
-                """
+                """,
+                listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
             )
         }
 

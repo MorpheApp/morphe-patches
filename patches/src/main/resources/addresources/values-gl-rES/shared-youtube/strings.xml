@@ -78,6 +78,7 @@ Verifica que o nome do paquete sexa correcto e que a aplicación estea instalada
   <string name="morphe_export_download_folder_missing">Non se puido atopar o cartafol de exportación %s</string>
   <string name="morphe_export_download_flyout_title">Exportar ao dispositivo</string>
   <string name="morphe_export_download_canceled">Exportación cancelada</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
   <string name="morphe_custom_branding_icon_title">Icona da aplicación</string>
@@ -139,14 +140,16 @@ Toca en OK para abrir Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proba a activar: Simular fluxos de vídeo &gt; Inicio de sesión en Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente predefinido</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Usar QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Usar QuackJS en lugar de yt-dlp-ejs (WebView) para a desofuscación</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inicio de sesión en Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR require un inicio de sesión separado. Toca aquí para continuar</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actualmente iniciou sesión en Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inicio de sesión de \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' require un inicio de sesión separado. Toca aquí para continuar</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actualmente iniciado sesión en \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Para usar esta función, cambie \'Cliente predefinido\' a Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Inicia sesión en Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Iniciar sesión en Android VR pode solucionar problemas de reprodución para algúns usuarios
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Para usar esta función, cambia \'Cliente predeterminado\' a \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Iniciar sesión en \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Iniciar sesión en 'Android VR' pode solucionar problemas de reprodución para algúns usuarios
 
 Para iniciar sesión, preme en continuar abaixo"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Saír</string>
@@ -167,35 +170,36 @@ Para iniciar sesión, preme en continuar abaixo"</string>
 • As túas configuracións de Morphe non importarán/exportarán a autenticación de Android VR
 • Se esta aplicación non se usa durante 6 meses, Google eliminará esta autenticación
 • Terás que iniciar sesión de novo se cambias o teu contrasinal de Google ou se desrexistras este dispositivo nas túas configuracións de Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Inicio de sesión na web móbil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Inicio de sesión web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcional: inicia sesión no sitio web de YouTube para reproducir vídeos coa túa conta. Toca aquí para continuar</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actualmente sesión iniciada na web móbil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actualmente sesión iniciada no sitio web de YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Para usar esta función, cambia \'Cliente predefinido\' a Web móbil</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Inicia sesión na Web móbil</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"A Web móbil reproduce vídeos sen iniciar sesión, ou iniciando sesión no sitio web de YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Para usar esta función, cambia \'Cliente predeterminado\' por un cliente web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Inicia sesión no sitio web de YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Os clientes web reproducen vídeos sen iniciar sesión ou con a sesión iniciada no sitio web de YouTube
 
-• Ao iniciar sesión, poden reproducirse vídeos que requiren unha conta, como os vídeos con restrición de idade
+• Con a sesión iniciada, poden reproducirse vídeos que requiren unha conta, como os vídeos con restrición de idade
 • A páxina de inicio de sesión de Google abrese nesta aplicación
-• O inicio de sesión úsase nura para obter os vídeos que reproduces
-• O inicio de sesión gardase nura neste dispositivo
+• O inicio de sesión úsase nuramente para obter os vídeos que reproduces
+• O inicio de sesión gardase nuramente neste dispositivo
+• Cada cliente web ten o seu propio inicio de sesión para o cliente predeterminado seleccionado
 
-Para iniciar sesión, preme continuar abaixo"</string>
+Para iniciar sesión, preme continuar a continuación"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Inicio de sesión gardado
 
-• As túas configuracións de Morphe non importarán/exportarán o inicio de sesión da Web móbil
-• Se Google finaliza o inicio de sesión, os vídeos reprodúcense sen iniciar sesión ata que volvas iniciar sesión
+• As configuracións de Morphe non importarán/exportarán o inicio de sesión do sitio web de YouTube
+• Se Google finaliza a sesión, os vídeos reprodúcense sen iniciar sesión ata que volvas iniciar sesión
 • Ao cerrar sesión tamén se cierra a sesión deste dispositivo no sitio web de YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">A sesión de Mobile Web expirou, tenta iniciar sesión en Mobile Web de novo</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Sesión cerrada en Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView non está dispoñible. Instálao ou actívao para iniciar sesión</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">A sesión web expirou, tenta iniciar sesión de novo</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Sesión cerrada no sitio web de YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' non está dispoñible. Instálao ou actívao para iniciar sesión</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 non está dispoñible temporalmente (tempo límite da API esgotado)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">A sesión de Android VR expirou, tenta iniciar sesión en VR de novo</string>
+  <string name="morphe_oauth2_connection_failure_status_400">A sesión de \'Android VR\' expirou, tenta iniciar sesión en VR de novo</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 non está dispoñible temporalmente (estado %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 non está dispoñible temporalmente</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Non se pode iniciar sesión en VR, a autenticación do sitio web non foi aprobada</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Non se pode iniciar sesión en VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Saída de Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Sesión cerrada en \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Token de inicio de sesión de VR inválido, tenta iniciar sesión en VR de novo</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Controls de multimedia de notificacións</string>
@@ -213,8 +217,15 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_seek_notification_media_length_invalid">A duración do salto debe estar entre 1 e %s segundos. Usando o valor predefinido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desactivar o protocolo QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizar a calidade do vídeo</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriza a calidade de vídeo máis alta dispoñible sobre a eficiencia do códec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Se esta configuración está desactivada, os vídeos máis antigos poden non amosar opcións de calidade de vídeo</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Desactivar o audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Desactivar o audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Reproduce o audio orixinal en lugar da versión con rango dinámico comprimido</string>
+  <string name="morphe_disable_loudness_normalization_title">Desactivar a normalización da sonoridade</string>
+  <string name="morphe_disable_loudness_normalization_summary">Reproduce o audio alto ao seu volume orixinal en lugar de baixalo a un nivel estándar</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forzar o idioma orixinal do audio</string>
   <string name="morphe_force_original_audio_summary">Reproduce sempre a pista de audio orixinal do vídeo en lugar dunha versión doblada</string>
@@ -223,6 +234,32 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_skip_silence_summary">Salta automaticamente as pausas silenciosas no audio do vídeo</string>
   <string name="morphe_skip_silence_minimum_pause_title">Lonxitude mínima da pausa</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Só se acurtan as pausas que teñan polo menos esta lonxitude. Terá efecto cando comece o seguinte vídeo</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Efecto de vídeo</string>
+  <string name="morphe_video_effect_entry_none">Desactivado</string>
+  <string name="morphe_video_effects_custom_title">Editar efectos de vídeo</string>
+  <string name="morphe_video_effects_custom_summary">Cambia, renomea, elimina ou engade efectos de vídeo. Os efectos son código de shader, polo que un chatbot de IA pode escribir novos</string>
+  <string name="morphe_video_effects_custom_empty">Non hai efectos de vídeo. Toca en Engadir efecto para crear un.</string>
+  <string name="morphe_video_effects_custom_add">Engadir efecto</string>
+  <string name="morphe_video_effects_custom_restore">Restaurar valores predefinidos</string>
+  <string name="morphe_video_effects_custom_add_title">Novo efecto</string>
+  <string name="morphe_video_effects_custom_edit_title">Editar efecto</string>
+  <string name="morphe_video_effects_custom_name_hint">Nome</string>
+  <string name="morphe_video_effects_custom_name_empty">Introduce un nome para o efecto</string>
+  <string name="morphe_video_effects_custom_name_exists">Xa existe un efecto con este nome</string>
+  <string name="morphe_video_effects_custom_copy_code">Copiar código</string>
+  <string name="morphe_video_effects_custom_error_title">O efecto ten un erro</string>
+  <string name="morphe_video_effects_custom_error_message">"Os vídeos móstranse sen o efecto ata que se corrixa o código. Dá este erro á IA que escribiu o código:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"O código remata dentro dunha función ou comentario, polo que probablemente se cortou ao copialo ou pegalo. O texto pegado pode cortarse aos %d caracteres.
+
+Pídalle á IA un código máis curto ou pegue o código por partes."</string>
+  <string name="morphe_video_effects_custom_copy_error">Erro ao copiar</string>
+  <string name="morphe_video_effects_custom_save_anyway">Gardar de todos modos</string>
+  <string name="morphe_video_effects_custom_delete">Eliminar</string>
+  <string name="morphe_video_effects_custom_delete_title">Eliminar efecto?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s será eliminado.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de rede</string>
   <string name="morphe_proxy_screen_summary">Enruta as solicitudes de rede compatibles a través dun proxy</string>
@@ -253,7 +290,7 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_replace_music_with_youtube_title">Cambiar os enlaces de compartir a youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Substitúe music.youtube.com por youtube.com nos enlaces compartidos</string>
   <string name="morphe_replace_links_with_shortener_title">Cambiar os ligazóns de compartir a youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Obliga aos vídeos a usar o formato de URL acortado youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Forza os vídeos a usar o formato de URL abreviado \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automático</string>
@@ -265,19 +302,16 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_video_quality_default_mobile_title">Calidade de vídeo predefinida en rede móbil</string>
   <string name="morphe_remember_video_quality_toast_mobile">Cambiouse a calidade móbil predefinida a: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Cambiouse a calidade Wi-Fi predefinida a: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Abrir a folla de comparte do sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Abre a folla de comparte do sistema en lugar da da aplicación ao compartir contido</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Rexistro de Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Desactivado</string>
   <string name="morphe_debug_litho_entry_path">Ruta</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Ruta e buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"O rexistro de Litho rexistra os compoñentes do deseño da aplicación, incluidas as etiquetas de texto en pantalla de algúns compoñentes da UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Rexistra os compoñentes do deseño da aplicación, incluíndo o texto en pantalla de algúns compoñentes da UI.
 
 Isto pode axudar a identificar compoñentes ao crear filtros personalizados.
 
-Porén, isto tamén rexistrará algúns datos do usuario, como a súa dirección IP"</string>
+Porén, isto tamén rexistrará algúns datos do usuario como a súa dirección IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Configura filtros personalizados para ocultar calquera compoñente</string>
@@ -342,6 +376,17 @@ Se se desactiva posteriormente, recoméndase borrar os datos da aplicación para
   <string name="morphe_custom_font_file_summary">Escolle un ficheiro de fonte TTF ou OTF</string>
   <string name="morphe_custom_font_file_invalid">O ficheiro seleccionado non é unha fonte TTF ou OTF</string>
   <string name="morphe_custom_font_failed_to_load">Non se puido cargar a fonte personalizada e desactivouse</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menús de vidro</string>
+  <string name="morphe_glass_menus_screen_summary">Menús como vidro fosco sobre o contido borroso que hai detrás</string>
+  <string name="morphe_glass_menus_title">Activar menus de vidro</string>
+  <string name="morphe_glass_menus_summary">Mostra os menus e as follas inferiores como vidro esmerilado, co contido detrás deles desenfocado</string>
+  <string name="morphe_glass_menus_opacity_title">Opacidade do vidro</string>
+  <string name="morphe_glass_menus_opacity_summary">Quanto cobre o menú o contido desenfocado (0 é transparente, 100 é opaco)</string>
+  <string name="morphe_glass_menus_blur_title">Desenfoque</string>
+  <string name="morphe_glass_menus_blur_summary">Quanto se desenfoca o contido detrás do menú</string>
+  <string name="morphe_glass_menus_dim_title">Escurecer</string>
+  <string name="morphe_glass_menus_dim_summary">Quanto se escurece a pantalla arredor dunha folla inferior</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Os dislikes non están dispoñibles temporalmente (tempo limite da API)</string>
@@ -379,4 +424,8 @@ O ID do vídeo que ves envíase á API de Return YouTube Dislike, e os teus \"g�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Non se atoparon límites de frecuencia do cliente</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Atopouse o límite de solicitudes do cliente %s veces</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisegundos</string>
+  <string name="morphe_navigation_bar_screen_title">Barra de navegación</string>
+  <string name="morphe_navigation_bar_screen_summary">Elixe que botóns aparecen na barra de navegación inferior</string>
+  <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
+  <string name="morphe_toolbar_screen_summary">Escolle que compoñentes aparecen na barra de ferramentas</string>
 </resources>

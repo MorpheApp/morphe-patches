@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">پوشه خروجی %s پیدا نشد</string>
   <string name="morphe_export_download_flyout_title">صادر کردن به دستگاه</string>
   <string name="morphe_export_download_canceled">خروجی لغو شد</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">سفارشی</string>
   <string name="morphe_custom_branding_icon_title">آیکون برنامه</string>
@@ -139,14 +140,16 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">سعی کنید فعال کنید: جعل جریان‌های ویدئویی &gt; ورود به Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">کلاینت پیش‌فرض</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">استفاده از QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">برای رفع کدگذاری، به‌جای yt-dlp-ejs (WebView) از QuackJS استفاده کنید</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ورود به Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR به یک ورود به سیستم مجزا نیاز دارد. برای ادامه اینجا را لمس کنید</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">در حال حاضر به Android VR وارد شده‌اید</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ورود به \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" به یک ورود جداگانه نیاز دارد. برای ادامه اینجا را لمس کنید</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">در حال حاضر به \"Android VR\" وارد شده‌اید</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به Android VR تغییر دهید</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ورود به Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ورود به Android VR می‌تواند مشکلات پخش را برای برخی کاربران برطرف کند
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">برای استفاده از این قابلیت، \"کلاینت پیش‌فرض\" را به \"Android VR\" تغییر دهید</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ورود به \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ورود به 'Android VR' می‌تواند مشکلات پخش را برای برخی کاربران برطرف کند
 
 برای ورود، دکمهٔ ادامه را در زیر فشار دهید"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">خروج از حساب</string>
@@ -167,35 +170,36 @@ Second \"item\" text"</string>
 • تنظیمات Morphe شما احراز هویت Android VR را وارد یا صادر نمی‌کنند
 • اگر این برنامه به مدت ۶ ماه استفاده نشود، Google این احراز هویت را حذف می‌کند
 • اگر گذرواژهٔ Google خود را تغییر دهید یا این دستگاه را از تنظیمات Google لغو ثبت کنید، باید دوباره وارد شوید"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ورود به وب موبایل</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ورود به حساب وب</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">اختیاری: برای پخش ویدیوها با حساب کاربری خود، به وب‌سایت YouTube وارد شوید. برای ادامه اینجا را لمس کنید</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">در حال حاضر به وب موبایل وارد شده‌اید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">در حال حاضر در وب‌سایت YouTube وارد شده‌اید</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به Mobile Web تغییر دهید</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ورود به Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ویدیوها را در حالت خارج از حساب یا با ورود به وب‌سایت YouTube پخش می‌کند
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به یک کلاینت وب تغییر دهید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ورود به وب‌سایت YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"کلاینت‌های وب، ویدیوها را در حالت خارج از حساب یا وارد شده به وب‌سایت YouTube پخش می‌کنند
 
-• در حالت ورود، ویدیوهایی که نیاز به حساب کاربری دارند، مانند ویدیوهای دارای محدودیت سنی، قابل پخش هستند
+• در حالت وارد شده، ویدیوهایی که به حساب کاربری نیاز دارند مانند ویدیوهای دارای محدودیت سنی قابل پخش هستند
 • صفحه ورود گوگل در این برنامه باز می‌شود
-• ورود تنها برای دریافت ویدیوهایی که پخش می‌کنید استفاده می‌شود
-• اطلاعات ورود فقط روی این دستگاه ذخیره می‌شود
+• از ورود به حساب تنها برای دریافت ویدیوهایی که پخش می‌کنید استفاده می‌شود
+• ورود به حساب تنها روی این دستگاه ذخیره می‌شود
+• هر کلاینت وب، برای کلاینت پیش‌فرض انتخاب شده، ورود به حساب مخصوص به خود را دارد
 
-برای ورود، دکمه ادامه در پایین را فشار دهید"</string>
+برای ورود به حساب، دکمه ادامه در پایین را فشار دهید"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ورود ذخیره شد
 
-• تنظیمات Morphe شما، ورود به Mobile Web را وارد/خارج نخواهد کرد
-• اگر گوگل نشست ورود را پایان دهد، ویدیوها تا زمانی که دوباره وارد شوید، در حالت خارج شده پخش می‌شوند
-• خروج از حساب، این دستگاه را از وب‌سایت YouTube نیز خارج می‌کند"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ورود به وب موبایل منقضی شده است؛ دوباره سعی کنید به وب موبایل وارد شوید</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">از وب موبایل خارج شد</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView در دسترس نیست. برای ورود، آن را نصب یا فعال کنید</string>
+• تنظیمات Morphe شما، ورود به وب‌سایت YouTube را وارد/خارج نخواهد کرد
+• اگر Google ورود را پایان دهد، ویدیوها تا زمانی که دوباره وارد شوید، در حالت خارج از حساب پخش می‌شوند
+• خارج شدن از حساب، این دستگاه را از وب‌سایت YouTube نیز خارج می‌کند"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ورود به وب منقضی شده است، دوباره برای ورود تلاش کنید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">از وب‌سایت YouTube خارج شدید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" در دسترس نیست. برای ورود، آن را نصب یا فعال کنید</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 موقتاً در دسترس نیست (مهلت API تمام شد)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">ورود به Android VR منقضی شده است؛ دوباره به VR وارد شوید</string>
+  <string name="morphe_oauth2_connection_failure_status_400">ورود به \'Android VR\' منقضی شده است، دوباره سعی کنید به VR وارد شوید</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 موقتاً در دسترس نیست (وضعیت %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 موقتاً در دسترس نیست</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">نمی‌توان به VR وارد شد؛ احراز هویت وب‌سایت تأیید نشد</string>
   <string name="morphe_oauth2_connection_failure_auth_error">نمی‌توان به VR وارد شد: %s</string>
-  <string name="morphe_oauth2_toast_reset">از Android VR خارج شدید</string>
+  <string name="morphe_oauth2_toast_reset">از \'Android VR\' خارج شدید</string>
   <string name="morphe_oauth2_toast_invalid">توکن ورود به VR نامعتبر است؛ دوباره به VR وارد شوید</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">کنترل‌های رسانهٔ اعلان</string>
@@ -213,8 +217,15 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">طول جستجو باید بین ۱ تا %s ثانیه باشد. استفاده از پیش‌فرض</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">غیرفعال‌کردن پروتکل QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">اولویت‌دادن به کیفیت ویدئو</string>
+  <string name="morphe_prioritize_video_quality_summary">بالاترین کیفیت موجود را بر کارایی کدک اولویت می‌دهد</string>
+  <string name="morphe_prioritize_video_quality_dialog">اگر این تنظیم خاموش باشد، ویدئوهای قدیمی ممکن است هیچ گزینهٔ کیفیت ویدئویی نشان ندهند</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">غیرفعال‌کردن صدای DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">غیرفعال‌کردن صدای DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">صوت اصلی را به جای نسخه‌ای با محدوده دینامیکی فشرده پخش می‌کند</string>
+  <string name="morphe_disable_loudness_normalization_title">غیرفعال کردن نرمال‌سازی بلندی صدا</string>
+  <string name="morphe_disable_loudness_normalization_summary">صداهای بلند را با صدای اصلی پخش می‌کند، به جای اینکه آن‌ها را به یک سطح استاندارد کاهش دهد</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">اجبار زبان صدای اصلی</string>
   <string name="morphe_force_original_audio_summary">همیشه ترک صوتی اصلی ویدئو را به‌جای نسخهٔ دوبله‌شده پخش می‌کند</string>
@@ -223,6 +234,32 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">به‌طور خودکار مکث‌های بی‌صدا در صدای ویدیو را رد می‌کند</string>
   <string name="morphe_skip_silence_minimum_pause_title">حداقل طول مکث</string>
   <string name="morphe_skip_silence_minimum_pause_summary">فقط مکث‌هایی که حداقل این مدت طول بکشند کوتاه‌تر می‌شوند. با شروع ویدیوی بعدی اعمال می‌شود</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">افکت ویدیو</string>
+  <string name="morphe_video_effect_entry_none">خاموش</string>
+  <string name="morphe_video_effects_custom_title">ویرایش افکت‌های ویدیو</string>
+  <string name="morphe_video_effects_custom_summary">تغییر، تغییر نام، حذف یا افزودن افکت‌های ویدیو. افکت‌ها کدهای شیدر هستند، بنابراین یک چت‌بات هوش مصنوعی می‌تواند موارد جدیدی بنویسد</string>
+  <string name="morphe_video_effects_custom_empty">هیچ افکت ویدیویی وجود ندارد. برای ساخت یکی، روی افزودن افکت ضرب کنید.</string>
+  <string name="morphe_video_effects_custom_add">افزودن افکت</string>
+  <string name="morphe_video_effects_custom_restore">بازیابی پیش‌فرض‌ها</string>
+  <string name="morphe_video_effects_custom_add_title">افکت جدید</string>
+  <string name="morphe_video_effects_custom_edit_title">ویرایش افکت</string>
+  <string name="morphe_video_effects_custom_name_hint">نام</string>
+  <string name="morphe_video_effects_custom_name_empty">یک نام برای افکت وارد کنید</string>
+  <string name="morphe_video_effects_custom_name_exists">افکتی با این نام قبلاً وجود دارد</string>
+  <string name="morphe_video_effects_custom_copy_code">کپی کد</string>
+  <string name="morphe_video_effects_custom_error_title">افکت دارای خطا است</string>
+  <string name="morphe_video_effects_custom_error_message">"تا زمانی که کد اصلاح شود، ویدیوها بدون افکت نمایش داده می‌شوند. این خطا را به هوش مصنوعی که کد را نوشته است بدهید:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"کد در داخل یک تابع یا کامنت به پایان رسیده است، بنابراین احتمالاً هنگام کپی یا چسباندن قطع شده است. متن چسبانده شده می‌تواند در %d کاراکتر قطع شود.
+
+از هوش مصنوعی بخواهید کد کوتاه‌تری ارائه دهد یا کد را در بخش‌های مختلف بچسبانید."</string>
+  <string name="morphe_video_effects_custom_copy_error">کپی خطا</string>
+  <string name="morphe_video_effects_custom_save_anyway">به‌هر‌حال ذخیره کن</string>
+  <string name="morphe_video_effects_custom_delete">حذف</string>
+  <string name="morphe_video_effects_custom_delete_title">حذف افکت؟</string>
+  <string name="morphe_video_effects_custom_delete_message">%s حذف خواهد شد.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">پروکسی شبکه</string>
   <string name="morphe_proxy_screen_summary">درخواست‌های شبکهٔ پشتیبانی‌شده را از طریق یک پروکسی هدایت کنید</string>
@@ -253,7 +290,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">تغییر پیوندهای اشتراک‌گذاری به youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">music.youtube.com را در پیوندهای اشتراک‌گذاری‌شده به youtube.com تبدیل می‌کند</string>
   <string name="morphe_replace_links_with_shortener_title">تغییر پیوندهای اشتراک‌گذاری به youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">ویدئوها را مجبور می‌کند از قالب پیوند کوتاه‌شدهٔ youtu.be استفاده کنند</string>
+  <string name="morphe_replace_links_with_shortener_summary">ویدئوها را مجبور می‌کند از قالب URL کوتاه‌شدهٔ \'youtu.be\' استفاده کنند</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">خودکار</string>
@@ -265,17 +302,14 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">کیفیت پیش‌فرض ویدئو در شبکهٔ تلفن همراه</string>
   <string name="morphe_remember_video_quality_toast_mobile">کیفیت پیش‌فرض تلفن همراه به این مقدار تغییر کرد: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">کیفیت پیش‌فرض Wi-Fi به این مقدار تغییر کرد: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">بازکردن برگهٔ اشتراک‌گذاری سیستم</string>
-  <string name="morphe_open_system_share_sheet_summary">هنگام اشتراک‌گذاری محتوا، به‌جای برگهٔ درون‌برنامه‌ای، برگهٔ اشتراک‌گذاری سیستم را باز می‌کند</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">ثبت وقایع لیتو</string>
   <string name="morphe_debug_litho_entry_disabled">غیرفعال</string>
   <string name="morphe_debug_litho_entry_path">مسیر</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">مسیر و بافر</string>
-  <string name="morphe_debug_litho_user_dialog_message">"گزارش‌گیری Litho، مؤلفه‌های چیدمان برنامه، از جمله متن روی صفحه را برای برخی مؤلفه‌های رابط کاربری ثبت می‌کند
+  <string name="morphe_debug_litho_user_dialog_message">"مؤلفه‌های چیدمان برنامه، از جمله متن روی صفحه برای برخی مؤلفه‌های رابط کاربری را ثبت می‌کند.
 
-این کار می‌تواند به شناسایی مؤلفه‌ها هنگام ایجاد فیلترهای سفارشی کمک کند
+این کار می‌تواند به شناسایی مؤلفه‌ها هنگام ایجاد فیلترهای سفارشی کمک کند.
 
 بااین‌حال، این کار برخی داده‌های کاربر مانند نشانی IP شما را نیز ثبت می‌کند"</string>
   <!-- Custom filter -->
@@ -342,6 +376,17 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">یک فایل فونت TTF یا OTF انتخاب کنید</string>
   <string name="morphe_custom_font_file_invalid">فایل انتخاب‌شده فونت TTF یا OTF نیست</string>
   <string name="morphe_custom_font_failed_to_load">فونت سفارشی بارگذاری نشد و غیرفعال است</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_screen_summary">منوها به صورت شیشه مات روی محتوای محو شده در پشت آن‌ها</string>
+  <string name="morphe_glass_menus_title">فعال‌سازی منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_summary">منوها و صفحات پایین را به صورت شیشه مات نمایش می‌دهد، در حالی که محتوای پشت آن‌ها تار می‌شود</string>
+  <string name="morphe_glass_menus_opacity_title">شفافیت شیشه</string>
+  <string name="morphe_glass_menus_opacity_summary">میزان پوشش محتوای تار شده توسط منو (۰ شفاف، ۱۰۰ کدر)</string>
+  <string name="morphe_glass_menus_blur_title">تاری</string>
+  <string name="morphe_glass_menus_blur_summary">میزان تاری محتوای پشت منو</string>
+  <string name="morphe_glass_menus_dim_title">تیرگی</string>
+  <string name="morphe_glass_menus_dim_summary">میزان تیره شدن صفحه اطراف صفحه پایین</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">نپسندیدن‌ها موقتاً در دسترس نیستند (مهلت API تمام شد)</string>
@@ -379,4 +424,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">با هیچ محدودیت نرخ کلاینتی مواجه نشد</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">با محدودیت نرخ کلاینت %s بار مواجه شد</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s میلی‌ثانیه</string>
+  <string name="morphe_navigation_bar_screen_title">نوار پیمایش</string>
+  <string name="morphe_navigation_bar_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
+  <string name="morphe_toolbar_screen_title">نوار ابزار</string>
+  <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
 </resources>

@@ -81,6 +81,27 @@ internal object ActionbarRingoViewLegacyFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Fills the toolbar leading accessories container, such as the "Accounts" button of the You tab.
+ */
+internal object ToolbarLeadingAccessoriesFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "leading_accessories_container"),
+        resourceLiteral(ResourceType.ID, "leading_accessories_container_stub"),
+        resourceLiteral(ResourceType.DIMEN, "actionbar_leading_accessories_padding"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/ViewGroup;->setPadding(IIII)V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/ViewGroup;->addView(Landroid/view/View;)V"
+        )
+    )
+)
+
 internal object SetWordmarkHeaderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

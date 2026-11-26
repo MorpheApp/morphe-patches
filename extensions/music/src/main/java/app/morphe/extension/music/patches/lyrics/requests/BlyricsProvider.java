@@ -15,11 +15,16 @@ import java.net.HttpURLConnection;
 
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class BlyricsProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://lyrics-api.boidu.dev/getLyrics";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.base(BASE_URL, Settings.BLYRICS_ENDPOINT.get());
+    }
 
     @Override
     public String name() {
@@ -33,7 +38,7 @@ public final class BlyricsProvider implements LyricsProvider {
             return null;
         }
 
-        StringBuilder url = new StringBuilder(BASE_URL);
+        StringBuilder url = new StringBuilder(baseUrl());
         url.append("?s=").append(LyricsRequests.encode(track.title()));
         url.append("&a=").append(LyricsRequests.encode(track.artist()));
         if (track.durationSeconds() > 0) {

@@ -17,6 +17,7 @@ import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_37_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
@@ -60,6 +61,23 @@ val mediaViewerFadePatch = patch(
                         move-result v0
                         if-eqz v0, :keep_fade_style
                         sget-object v$styleRegister, $SCRIM_STYLE_CLASS->LEGACY_GRADIENT:$SCRIM_STYLE_CLASS
+                        :keep_fade_style
+                        nop
+                    """
+                )
+            }
+        } else if (is_2026_37_0_or_greater) {
+            // The last boolean parameter replaces the legacy gradient with two darker static gradients.
+            MediaViewerChromeFingerprint.method.apply {
+                // The method is static and has no wide parameters.
+                val darkerFadeRegister = p0Register + parameterTypes.indexOfLast { it.toString() == "Z" }
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->useLegacyFadeStyle()Z
+                        move-result v0
+                        if-eqz v0, :keep_fade_style
+                        const/16 v$darkerFadeRegister, 0x0
                         :keep_fade_style
                         nop
                     """

@@ -313,6 +313,18 @@ public class RedditActivityHook {
     }
 
     /**
+     * Opens the Morphe settings from app code that has no activity.
+     */
+    public static void openSettings() {
+        Activity activity = Utils.getActivity();
+        if (RedditSettingsStyle.isModernStyle()) {
+            showSettingsDialog(activity);
+        } else if (activity != null) { // 2026.24.0 and older.
+            activity.startActivity(initializeByIntent(activity));
+        }
+    }
+
+    /**
      * Shows the Morphe settings on top of the current screen.
      */
     public static void showSettingsDialog(Activity activity) {

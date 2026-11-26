@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "app/morphe/extension/shared/innertube/guide_response.proto";
+
+package app.morphe.extension.shared.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+
+// Payload of a push notification.
+message PushNotificationSupportedRenderers {
+    AndroidPushNotificationRenderer androidPushNotificationRenderer = 77819057;
+}
+
+message AndroidPushNotificationRenderer {
+    // Opened when the notification is tapped.
+    NavigationEndpoint navigationEndpoint = 2;
+}

@@ -18,7 +18,12 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <!-- String is also duplicated in Reddit import / export preference -->
-  <!-- String is also duplicated in Reddit about preference -->
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->
@@ -31,6 +36,7 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <!-- misc.announcements.patchesUpdateNoticePatch -->

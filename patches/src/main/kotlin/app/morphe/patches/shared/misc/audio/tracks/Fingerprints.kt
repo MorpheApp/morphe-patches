@@ -147,6 +147,54 @@ internal fun getSetVideoQualityListFingerprint(
 ) {}
 
 /**
+ * YT 21.26+
+ *
+ * Quality menu controller of YouTube, a subclass of the class of [getSetVideoQualityListFingerprint]
+ * shared by the regular player and the Shorts player, with a second player controller field
+ * for the Shorts player.
+ */
+internal fun getShortsQualityMenuControllerFingerprint(
+    qualityMenuControllerClass: String,
+    playerControllerClass: String
+) = object : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            definingClass = qualityMenuControllerClass,
+            name = "<init>"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = playerControllerClass
+        )
+    )
+) {}
+
+/**
+ * YT 21.26+
+ *
+ * Returns if a Short is playing, which makes the class of [getShortsQualityMenuControllerFingerprint]
+ * use the player controller of the Shorts player.
+ */
+internal fun getShortsQualityMenuControllerIsShortsPlayerFingerprint(
+    shortsQualityMenuControllerClass: String
+) = object : Fingerprint(
+    definingClass = shortsQualityMenuControllerClass,
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(smali = "Lj$/util/Optional;->isPresent()Z"),
+        methodCall(
+            smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;",
+            location = MatchAfterWithin(20)
+        )
+    )
+) {}
+
+/**
  * ~ YT 21.25
  * ~ YTM 9.25
  */

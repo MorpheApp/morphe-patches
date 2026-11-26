@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">პარამეტრები</string>
   <string name="morphe_settings_confirm_user_dialog_title">დარწმუნებული ხართ, რომ გსურთ გაგრძელება?</string>
   <string name="morphe_settings_save">შენახვა</string>
   <string name="morphe_settings_reset">გადაყენება</string>
@@ -74,18 +73,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ექსპორტი ფაილში</string>
   <string name="morphe_settings_export_file_success">პარამეტრები წარმატებით იქნა ექსპორტირებული</string>
   <string name="morphe_settings_export_file_failed">პარამეტრების ექსპორტი ვერ მოხერხდა</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">თქვენ იყენებთ Morphe Patches-ის უახლეს ვერსიას &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">თქვენ იყენებთ Morphe Patches-ის ვერსიას &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;ხელმისაწვდომია განახლება: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;პატჩების განსაახლებლად, გამოიყენეთ Morphe ამ აპლიკაციის ხელახლა დასაპატჩებლად</string>
-  <string name="morphe_settings_about_links_dev_header">შენიშვნა</string>
-  <string name="morphe_settings_about_links_dev_body">ეს ვერსია წინასწარი გამოშვებაა და შესაძლოა მოულოდნელი პრობლემები შეგექმნათ</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">პატჩები</string>
+  <string name="morphe_settings_about_version">ვერსია</string>
+  <string name="morphe_settings_about_close">დახურვა</string>
+  <string name="morphe_settings_about_prerelease">წინასწარი რელიზი</string>
+  <string name="morphe_settings_about_update_available">ხელმისაწვდომია განახლება: %s</string>
+  <string name="morphe_settings_about_update_hint">პატჩების განაახლებად გამოიყენეთ Morphe ამ აპლიკაციის ხელახალი პატჩირებისთვის</string>
   <string name="morphe_settings_about_links_header">ოფიციალური ბმულები</string>
   <string name="morphe_settings_about_links_website">ვებგვერდი</string>
   <string name="morphe_settings_about_links_donate">დონაცია</string>
   <string name="morphe_settings_about_links_translations">თარგმანები</string>
-  <string name="morphe_settings_about_links_credits">ავტორები</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">განახლებულია</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">ხელმისაწვდომია განახლება</string>
+  <string name="morphe_settings_about_contributors">კონტრიბუტორები</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">მთელი პერიოდი</string>
+  <string name="morphe_settings_about_contributors_6_months">6 თვე</string>
+  <string name="morphe_settings_about_contributors_3_months">3 თვე</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">დროის პერიოდი</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s მომხმარებელი</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">მხარდამჭერები</string>
+  <string name="morphe_settings_about_supporters_summary">მხარდამჭერები Open Collective-ზე</string>
+  <string name="morphe_settings_about_supporters_become">გახდით მხარდამჭერი</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">და კიდევ %s</string>
+  <string name="morphe_settings_about_people_unavailable">სпиკის ჩატვირთვა ვერ მოხერხდა</string>
   <string name="morphe_settings_about_contributors_current">მიმდინარე დეველოპმენტი</string>
   <string name="morphe_settings_about_contributors_prior">წინა დეველოპმენტი</string>
   <string name="morphe_settings_about_links_morphe">აქტიური დეველოპმენტი</string>
@@ -213,6 +228,9 @@ MicroG-ისთვის ბატარეის ოპტიმიზაც�
 • აპლიკაცია შეიძლება შემთხვევით დაიხუროს
 • შეტყობინებებმა შესაძლოა არ იმუშაოს
 • ფონურ რეჟიმში დაკვრამ შესაძლოა არ იმუშაოს"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">გახსენით სისტემური გაზიარების ფანჯარა</string>
+  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას ხსნის სისტემურ გაზიარების პანელს აპლიკაციის შიდა პანელის ნაცვლად</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">აპლიკაციის ბმულების მართვა</string>
   <string name="morphe_link_handling_summary">ბმულების კონფიგურაცია ამ აპლიკაციაში გასახსნელად</string>

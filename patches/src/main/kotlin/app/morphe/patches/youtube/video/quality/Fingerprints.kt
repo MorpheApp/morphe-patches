@@ -22,14 +22,12 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
+import app.morphe.patches.shared.initialResolutionField
 import app.morphe.patches.youtube.video.information.SetVideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualitySetterFingerprint
-import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-
-internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
 
 internal object NewFlyoutMenuFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
@@ -80,6 +78,62 @@ internal fun getVideoQualitySettingFingerprint(
         checkCast(videoQualitySettingType)
     )
 ) {}
+
+/**
+ * Event of the player when the video quality setting changes, such as when a video loads.
+ * The quality is 'Auto' (-2), as the event has no quality, unlike the event of a quality
+ * selected in the quality menu.
+ */
+internal fun getVideoQualitySettingChangedEventFingerprint(
+    videoQualitySettingType: String
+) = Fingerprint(
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(videoQualitySettingType, "Z"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = videoQualitySettingType
+        ),
+        literal(-2)
+    )
+)
+
+/**
+ * State of the quality menu of regular videos: the qualities, the quality playing, the video
+ * quality setting and the quality selected, which the menu shows with a check mark.
+ * The quality selected is the quality of the last quality event, found by its formats
+ * or else by its resolution.
+ */
+internal fun getQualityMenuSelectedQualityFingerprint(
+    videoQualityEventType: String,
+    videoQualitySettingType: String
+) = Fingerprint(
+    filters = listOf(
+        methodCall(smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
+        fieldAccess( // Resolution of the quality event.
+            opcode = Opcode.IGET,
+            definingClass = videoQualityEventType,
+            type = "I",
+            location = MatchAfterWithin(8)
+        ),
+        methodCall(
+            definingClass = "Lj$/util/stream/Stream;",
+            name = "filter",
+            location = MatchAfterWithin(8)
+        ),
+        methodCall(
+            smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess( // Video quality setting of the quality event.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = videoQualityEventType,
+            type = videoQualitySettingType
+        )
+    )
+)
 
 internal const val CLIENT_ABR_STATE_CLASS =
     $$"Lcom/google/android/apps/youtube/proto/ClientAbrStateOuterClass$ClientAbrState;"
@@ -152,6 +206,109 @@ internal fun getVideoQualityConstraintFingerprint(
         methodCall(returnType = lastSelectedVideoQualityType),
         methodCall(smali = videoQualitySettingMethod)
     )
+) {}
+
+internal const val SELECTABLE_FORMATS_TYPE =
+    "Lcom/google/android/apps/youtube/proto/streaming/SelectableFormatsOuterClass\$SelectableFormats;"
+
+/**
+ * Chooses the formats the SABR player asks the server for, from the quality constraint,
+ * the formats of the video and the media capabilities of the device.
+ * 20.26 also has a method with one parameter less that calls it.
+ */
+internal fun getSabrFormatSelectionFingerprint(constraintType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    filters = listOf(
+        methodCall(definingClass = constraintType, returnType = "Z", parameters = listOf("I"))
+    ),
+    custom = { method, _ ->
+        val types = method.parameterTypes.map { it.toString() }
+        val index = types.indexOf(SELECTABLE_FORMATS_TYPE)
+        types.getOrNull(0) == constraintType
+                && types.getOrNull(index - 2) == "Ljava/util/List;"
+                && types.getOrNull(index - 1) == "Ljava/util/List;"
+                && types.getOrNull(index + 1) ==
+                "Lcom/google/android/apps/youtube/proto/streaming/MediaCapabilitiesOuterClass\$MediaCapabilities;"
+    }
+) {}
+
+/**
+ * Equality of the quality constraints, which compares the quality range first.
+ */
+internal fun getVideoQualityConstraintEqualsFingerprint(constraintType: String) = object : Fingerprint(
+    definingClass = constraintType,
+    name = "equals",
+    filters = listOf(
+        fieldAccess( // Quality range.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this"
+        )
+    )
+) {}
+
+/**
+ * Constructor of the quality range of a quality constraint, from the highest to the lowest quality.
+ */
+internal fun getVideoQualityRangeConstructorFingerprint(rangeType: String) = object : Fingerprint(
+    definingClass = rangeType,
+    name = "<init>",
+    parameters = listOf("I", "I", "I", "L"),
+    filters = listOf(
+        fieldAccess( // Highest quality.
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I"
+        ),
+        fieldAccess( // Lowest quality.
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess( // Mode.
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess( // Formats.
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}
+
+/**
+ * Constructor of the quality constraint with all its fields.
+ */
+internal fun getVideoQualityConstraintConstructorFingerprint(
+    constraintType: String,
+    rangeType: String
+) = object : Fingerprint(
+    definingClass = constraintType,
+    name = "<init>",
+    parameters = listOf(rangeType, rangeType, "Z", "Ljava/lang/String;", "I", "I", "J", "I", "I", "L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_WIDE,
+            definingClass = "this",
+            type = "J"
+        ),
+        fieldAccess( // Last field.
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this"
+        )
+    )
+) {}
+
+/**
+ * Copy of the quality constraint that allows only one quality.
+ */
+internal fun getFixedVideoQualityConstraintFingerprint(constraintType: String) = object : Fingerprint(
+    definingClass = constraintType,
+    returnType = constraintType,
+    parameters = listOf("I")
 ) {}
 
 internal object ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint : Fingerprint(
@@ -349,6 +506,31 @@ internal fun mediaPushMediaSourceDiscardBufferFingerprint(bufferManagerClass: St
     )
 )
 
+/**
+ * The player in front saves the client playback nonce (CPN) of the video of each video stage event,
+ * in the method that also gives the video ID of the player (VideoIdFingerprint).
+ * An ad saves its own CPN in another branch.
+ */
+internal fun getPlayingVideoCpnFingerprint(videoIdMethod: MethodReference) = object : Fingerprint(
+    definingClass = videoIdMethod.definingClass,
+    name = videoIdMethod.name,
+    returnType = "V",
+    parameters = videoIdMethod.parameterTypes.map { it.toString() },
+    filters = listOf(
+        fieldAccess( // CPN of the video of the event.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = videoIdMethod.parameterTypes.first().toString(),
+            type = "Ljava/lang/String;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}
+
 internal fun getCurrentVideoFormatConstructorFingerprint(
     videoQualityArray: String
 ) = object : Fingerprint(
@@ -390,33 +572,6 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     custom = { _, classDef ->
         AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
     }
-)
-
-/**
- * The field of the initial video quality of the playback start parameters.
- */
-private fun initialResolutionField() =
-    PlaybackStartParametersToStringFingerprint.method.findFieldFromToString(FIXED_RESOLUTION_STRING)
-
-internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        string(FIXED_RESOLUTION_STRING)
-    )
-)
-
-internal object PlaybackStartParametersConstructorFingerprint : Fingerprint(
-    classFingerprint = PlaybackStartParametersToStringFingerprint,
-    name = "<init>",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            reference = { initialResolutionField() }
-        )
-    )
 )
 
 /**

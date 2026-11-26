@@ -27,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicButtonsPatch;"
 
-private fun overrideYouTubeMusicManifestPatch() = patch{
+private val overrideYouTubeMusicManifestPatch = patch {
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
@@ -61,7 +61,7 @@ val overrideYouTubeMusicButtonsPatch = patch(
     name = "Override YouTube Music buttons",
     description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
 ) {
-    dependsOn(settingsPatch, overrideYouTubeMusicManifestPatch())
+    dependsOn(settingsPatch, overrideYouTubeMusicManifestPatch)
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {

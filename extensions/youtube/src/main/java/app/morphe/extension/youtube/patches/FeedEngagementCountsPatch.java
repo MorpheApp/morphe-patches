@@ -35,10 +35,13 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.shared.returnyoutubedislike.requests.RYDVoteData;
+import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -73,6 +76,14 @@ public final class FeedEngagementCountsPatch {
      */
     private static final boolean MIDDLE_RIGHT = ENABLED
             && Settings.RYD_FEED_COUNTS_POSITION.get() == FeedCountsPosition.MIDDLE_RIGHT;
+
+    /**
+     * @return If the counts are at the top left corner of the thumbnails of the view.
+     */
+    public static boolean isAtTopLeft(View view) {
+        return ENABLED && !NEXT_TO_VIEW_COUNT && !MIDDLE_RIGHT
+                && !FeedViewCountPatch.isRtl(view);
+    }
 
     /**
      * Where the counts are shown on the thumbnails.
@@ -138,6 +149,11 @@ public final class FeedEngagementCountsPatch {
      * too small to fit the badge above the duration, such as of the rows of a list on phones.
      */
     private static final int COMPACT_HEIGHT_DP = 20;
+    /**
+     * Height of the smallest thumbnail that fits the compact badge at its top, above the row of the duration,
+     * such as of the rows of a list. Smaller thumbnails are not known as thumbnails.
+     */
+    public static final int MIN_THUMBNAIL_HEIGHT_DP = RIGHT_MARGIN_DP + COMPACT_HEIGHT_DP + ABOVE_DURATION_DP;
     private static final int COMPACT_PADDING_DP = 4;
     private static final int COMPACT_ICON_DP = 12;
     private static final int COMPACT_CORNER_RADIUS_DP = 4;
@@ -184,6 +200,22 @@ public final class FeedEngagementCountsPatch {
      */
     private static final Map<View, CountsBadge> badges = new WeakHashMap<>();
 
+    /**
+     * Fetches again at once the counts that failed to fetch while the device was offline,
+     * instead of after the retry delay.
+     */
+    private static final Runnable RETRY_FAILED_FETCHES = () -> {
+        for (CountsBadge badge : badges.values().toArray(new CountsBadge[0])) {
+            Runnable retry = badge.failedFetchRetry;
+            if (retry != null) {
+                handler.removeCallbacks(retry);
+                retry.run();
+            }
+        }
+    };
+
+    private static final String ROUNDED_LIKE_ICON = "yt_outline_experimental_thumb_up_black_24";
+
     @Nullable
     private static Drawable likeIcon;
     private static boolean likeIconLoaded;
@@ -198,7 +230,11 @@ public final class FeedEngagementCountsPatch {
     private static Drawable getLikeIcon() {
         if (!likeIconLoaded) {
             likeIconLoaded = true;
-            Drawable icon = ResourceUtils.getDrawable("yt_outline_thumb_up_black_24");
+            // The rounded icon of the like button, which 20.26 does not have.
+            Drawable icon = ResourceUtils.getDrawable(
+                    ResourceUtils.getIdentifier(ResourceType.DRAWABLE, ROUNDED_LIKE_ICON) != 0
+                            ? ROUNDED_LIKE_ICON
+                            : "yt_outline_thumb_up_black_24");
             if (icon == null) {
                 icon = ResourceUtils.getDrawable("yt_delhi_thumbs_up_not_filled_24dp");
             }
@@ -458,48 +494,63 @@ public final class FeedEngagementCountsPatch {
          * @param wait The number of waits for the same fetch before this one, see {@link #MAX_FETCH_WAITS}.
          */
         private void fetch(View host, String fetchVideoId, int wait) {
+            if (ReturnYouTubeDislikeAPI.isApiCallsPaused()) {
+                // No request is sent while the API calls are paused, such as after the API limited the requests.
+                // The fetch fails at once, so the badge is not shown as loading for a moment on every card.
+                onFetchResult(host, fetchVideoId, wait, null, true);
+                return;
+            }
             fetching = true;
             ReturnYouTubeDislike fetch = ReturnYouTubeDislike.getFetchForVideoId(fetchVideoId);
             Utils.runOnBackgroundThread(() -> {
                 RYDVoteData data = fetch.getFetchData(FETCH_TIMEOUT_MS);
                 final boolean completed = fetch.fetchCompleted();
-                Utils.runOnMainThread(() -> {
-                    try {
-                        // The card may show another video now.
-                        if (!fetchVideoId.equals(videoId) || badges.get(host) != this) {
-                            return;
-                        }
-                        fetching = false;
-                        if (data != null) {
-                            setData(data);
-                            startFadeIn();
-                        } else if (!completed && wait + 1 < MAX_FETCH_WAITS && host.isAttachedToWindow()) {
-                            // The fetch is still running, and the loading spinner is shown until it completes.
-                            fetch(host, fetchVideoId, wait + 1);
-                            return;
-                        } else if (failedFetchRetry == null && failedFetchRetries < MAX_FAILED_FETCH_RETRIES
-                                && host.isAttachedToWindow()) {
-                            // The fetch failed, such as without a connection or while the API limits the requests.
-                            // The card is not laid out again while it's shown, so the fetch is tried again later.
-                            // A layout of the card meanwhile gets the same failed fetch, and keeps this retry.
-                            failedFetchRetries++;
-                            Runnable retry = () -> {
-                                failedFetchRetry = null;
-                                if (fetchVideoId.equals(videoId) && host.isAttachedToWindow() && !hasContent()) {
-                                    requestFetch(host, fetchVideoId, 0);
-                                    place(host);
-                                }
-                            };
-                            failedFetchRetry = retry;
-                            handler.postDelayed(retry, FAILED_FETCH_RETRY_DELAY_MS);
-                        }
-                        // The counts replace the loading spinner, or the badge is removed if the fetch failed.
-                        place(host);
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "Feed counts update failure", ex);
-                    }
-                });
+                Utils.runOnMainThread(() -> onFetchResult(host, fetchVideoId, wait, data, completed));
             });
+        }
+
+        /**
+         * Called on the main thread with the result of a fetch.
+         *
+         * @param completed If the fetch completed, otherwise it's still running.
+         */
+        private void onFetchResult(View host, String fetchVideoId, int wait,
+                                   @Nullable RYDVoteData data, boolean completed) {
+            try {
+                // The card may show another video now.
+                if (!fetchVideoId.equals(videoId) || badges.get(host) != this) {
+                    return;
+                }
+                fetching = false;
+                if (data != null) {
+                    setData(data);
+                    startFadeIn();
+                } else if (!completed && wait + 1 < MAX_FETCH_WAITS && host.isAttachedToWindow()) {
+                    // The fetch is still running, and the loading spinner is shown until it completes.
+                    fetch(host, fetchVideoId, wait + 1);
+                    return;
+                } else if (failedFetchRetry == null && failedFetchRetries < MAX_FAILED_FETCH_RETRIES
+                        && host.isAttachedToWindow()) {
+                    // The fetch failed, such as without a connection or while the API limits the requests.
+                    // The card is not laid out again while it's shown, so the fetch is tried again later.
+                    // A layout of the card meanwhile gets the same failed fetch, and keeps this retry.
+                    failedFetchRetries++;
+                    Runnable retry = () -> {
+                        failedFetchRetry = null;
+                        if (fetchVideoId.equals(videoId) && host.isAttachedToWindow() && !hasContent()) {
+                            requestFetch(host, fetchVideoId, 0);
+                            place(host);
+                        }
+                    };
+                    failedFetchRetry = retry;
+                    handler.postDelayed(retry, FAILED_FETCH_RETRY_DELAY_MS);
+                    NetworkReconnect.runWhenOnline(RETRY_FAILED_FETCHES);
+                }
+                // The counts replace the loading spinner, or the badge is removed if the fetch failed.
+                place(host);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Feed counts update failure", ex);
+            }
         }
 
         private void startFadeIn() {
@@ -752,6 +803,14 @@ public final class FeedEngagementCountsPatch {
             final int thumbnailLeft = thumbnail != null ? thumbnail.left : 0;
             final int thumbnailRight = thumbnail != null ? thumbnail.right : host.getWidth();
             final Rect viewCount = FeedViewCountPatch.getBadgeBounds(host);
+            if (viewCount == null && FeedViewCountPatch.isViewCountPending(host)) {
+                // The view count is shown once the texts below the title are shown, so the row waits for it,
+                // instead of being shown alone and then moving next to it.
+                row = false;
+                setJoined(host, false);
+                removeFromOverlay(host);
+                return true;
+            }
 
             // Same height and bottom as the view count badge and the duration badge.
             final int top;
@@ -949,10 +1008,6 @@ public final class FeedEngagementCountsPatch {
         public void draw(@NonNull Canvas canvas) {
             final boolean loading = isLoading();
             if (!confirmed || (!hasContent() && !loading)) {
-                return;
-            }
-            if (hostRef.get() instanceof ComponentHost host && FeedVideoCardsPatch.isCardPlayingInline(host)) {
-                // The inline player shows its own buttons over the thumbnail.
                 return;
             }
             if (row) {

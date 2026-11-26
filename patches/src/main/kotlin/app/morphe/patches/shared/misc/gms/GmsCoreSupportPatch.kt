@@ -20,9 +20,10 @@ import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.replaceStrings
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
-import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
@@ -37,8 +38,6 @@ import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference
 
 internal const val EXTENSION_CLASS =
@@ -55,6 +54,7 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  *
  * @param fromPackageName The package name of the original app.
  * @param toPackageNameDefault The package name to fall back to if no custom package name is specified in patch options.
+ * @param spoofedPackageSignature The SHA-1 of the original app signature, as hex.
  * @param primeMethodFingerprint The fingerprint of the "prime" method that needs to be patched.
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
@@ -67,6 +67,7 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
 fun gmsCoreSupportPatch(
     fromPackageName: String,
     toPackageNameDefault: String,
+    spoofedPackageSignature: String,
     primeMethodFingerprint: Fingerprint? = null,
     earlyReturnFingerprints: Set<Fingerprint> = setOf(),
     mainActivityOnCreateFingerprint: Fingerprint,
@@ -101,37 +102,18 @@ fun gmsCoreSupportPatch(
 
         // Exact string replacements.
 
-        fun replaceStrings(fromString: String, toString: String) {
-            string(fromString).matchAllMethodIndicesForEach(requireMatches = false) { index ->
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-                replaceInstruction(
-                    index,
-                    BuilderInstruction21c(
-                        Opcode.CONST_STRING,
-                        register,
-                        ImmutableStringReference(toString)
-                    )
-                )
-            }
-        }
-
-        arrayOf(
+        val exactReplacements = listOf(
             "com.google" to GMS_CORE_VENDOR_GROUP_ID,
             "com.google.android.gms" to "$GMS_CORE_VENDOR_GROUP_ID.android.gms",
 
             // Package names.
             "$fromPackageName.SuggestionProvider" to "$toPackageName.SuggestionProvider",
             "$fromPackageName.fileprovider" to "$toPackageName.fileprovider"
-        ).forEach { (fromString, toString) ->
-            replaceStrings(fromString, toString)
+        ) + (PERMISSIONS + ACTIONS + AUTHORITIES).map { fromString ->
+            fromString to fromString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)
         }
 
-        (PERMISSIONS + ACTIONS + AUTHORITIES).forEach { fromString ->
-            replaceStrings(
-                fromString,
-                fromString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID),
-            )
-        }
+        replaceStrings(exactReplacements.map { (fromString, toString) -> string(fromString) to toString })
 
         val authoritiesPrefix = AUTHORITIES.map { it to "content://$it" }
         fun contentUrisTransform(str: String): String? {
@@ -149,37 +131,19 @@ fun gmsCoreSupportPatch(
             return null
         }
 
-        fun transformPrimeMethod(packageName: String) {
-            primeMethodFingerprint!!.method.apply {
-                val index = indexOfFirstStringInstructionOrThrow(fromPackageName)
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                replaceInstruction(index, "const-string v$register, \"$packageName\"")
-            }
-        }
-
         // endregion
 
-        string(
-            "content://", StringComparisonType.STARTS_WITH
-        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
-            val instruction = getInstruction<ReferenceInstruction>(index)
-            val string = (instruction.reference as StringReference).string
-            val transformedString = contentUrisTransform(string)
-            if (transformedString != null) {
-                replaceInstruction(
-                    index,
-                    BuilderInstruction21c(
-                        Opcode.CONST_STRING,
-                        (instruction as OneRegisterInstruction).registerA,
-                        ImmutableStringReference(transformedString),
-                    )
-                )
-            }
+        replaceStrings(string("content://", StringComparisonType.STARTS_WITH)) { _, _, string ->
+            contentUrisTransform(string)
         }
 
         // Specific method that needs to be patched.
-        primeMethodFingerprint?.let { transformPrimeMethod(toPackageName) }
+        primeMethodFingerprint?.method?.apply {
+            val index = indexOfFirstStringInstructionOrThrow(fromPackageName)
+            val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+            replaceInstruction(index, "const-string v$register, \"$toPackageName\"")
+        }
 
         // Return these methods early to prevent the app from crashing.
         earlyReturnFingerprints.forEach {
@@ -224,6 +188,29 @@ fun gmsCoreSupportPatch(
                     ImmutableStringReference(fromPackageName),
                 ),
             )
+        }
+
+        // GNP requests made with an API key send the package name and the signature of the app.
+        // The API key only accepts the original app, so registering for push notifications fails.
+        // GNP formats the signature as upper case hex.
+        val originalSignature = spoofedPackageSignature.uppercase()
+        arrayOf(GnpRegistrationHeadersFingerprint, GnpRequestHeadersFingerprint).forEach { fingerprint ->
+            fingerprint.method.apply {
+                // The registers of the header calls are the builder, the header name, then the value.
+                val certHeaderMatch = fingerprint.instructionMatches[3]
+                val certRegister = certHeaderMatch.instruction.registersUsed[2]
+                addInstruction(
+                    certHeaderMatch.index,
+                    "const-string v$certRegister, \"$originalSignature\""
+                )
+
+                val packageNameMatch = fingerprint.instructionMatches[1]
+                val packageNameRegister = packageNameMatch.instruction.registersUsed.first()
+                addInstruction(
+                    packageNameMatch.index + 1,
+                    "const-string v$packageNameRegister, \"$fromPackageName\""
+                )
+            }
         }
 
         executeBlock()

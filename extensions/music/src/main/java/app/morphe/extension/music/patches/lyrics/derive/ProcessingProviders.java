@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Translation and romanization provider ids, and the AI request path they share. Provider
@@ -134,8 +135,7 @@ public final class ProcessingProviders {
     public static String serializeOrder(List<ProviderEntry> entries) {
         StringBuilder sb = new StringBuilder();
         for (ProviderEntry entry : entries) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (sb.length() > 0) {
+            if (Utils.isNotEmpty(sb)) {
                 sb.append(',');
             }
             if (!entry.enabled()) {

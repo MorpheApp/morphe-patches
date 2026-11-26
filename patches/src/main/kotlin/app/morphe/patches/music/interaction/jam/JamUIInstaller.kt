@@ -180,7 +180,7 @@ private fun installClock(clock: ClockAbi) {
             return-void
         """
     )
-    installNativeAccessor(timeBar, "patch_jamDragging", clock.dragging)
+    timeBar.addPatchInterface(CLOCK_BAR, "patch_jamDragging", clock.dragging)
 
     val seekOwner = mutableClassDefBy(clock.seek.definingClass)
     val seek = clock.seek.getMutableMethod()

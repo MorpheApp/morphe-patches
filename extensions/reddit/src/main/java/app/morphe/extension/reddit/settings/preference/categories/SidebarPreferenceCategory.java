@@ -13,6 +13,7 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.HideSidebarComponentsPatch;
+import app.morphe.extension.reddit.patches.SettingsInSidebarPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.Utils;
@@ -26,15 +27,35 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public boolean getSettingsStatus() {
-        return HideSidebarComponentsPatch.isPatchIncluded();
+        return SettingsInSidebarPatch.isPatchIncluded() ||
+                HideSidebarComponentsPatch.isPatchIncluded();
     }
 
     @Override
     public void addPreferences(Context context) {
+        if (SettingsInSidebarPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SETTINGS_IN_SIDEBAR
+            ));
+        }
+
         if (HideSidebarComponentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_RECENTLY_VISITED_SHELF
+                    Settings.HIDE_POPULAR_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_LATEST_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_DISCOVER_COMMUNITIES_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_START_A_COMMUNITY_SHELF
             ));
             addPreference(new BooleanSettingPreference(
                     context,
@@ -42,16 +63,19 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
             ));
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_REDDIT_PRO_SHELF
+                    Settings.HIDE_RECENTLY_VISITED_SHELF
             ));
-
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_ABOUT_SHELF
+                    Settings.HIDE_REDDIT_PRO_SHELF
             ));
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_RESOURCES_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ABOUT_SHELF
             ));
         }
 

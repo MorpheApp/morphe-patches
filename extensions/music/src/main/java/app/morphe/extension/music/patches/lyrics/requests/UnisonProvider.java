@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -35,6 +36,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -42,6 +44,13 @@ import app.morphe.extension.shared.requests.Requester;
 public final class UnisonProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://unison.boidu.dev/lyrics";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.base(BASE_URL, Settings.UNISON_ENDPOINT.get());
+    }
+
+    /** How many song+artist matches to ask for; the search response carries their lyrics. */
+    private static final int SEARCH_LIMIT = 10;
 
     private static final String FALLBACK_KEY_ID =
             "0000000000000000000000000000000000000000000000000000000000000000";
@@ -140,7 +149,7 @@ public final class UnisonProvider implements LyricsProvider {
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws IOException {
         final String videoId = VideoInformation.getVideoId();
         final JSONObject root = videoId.isEmpty() ? null
-                : request(BASE_URL + "/variants/" + LyricsRequests.encode(videoId));
+                : request(baseUrl() + "/variants/" + LyricsRequests.encode(videoId));
         final JSONArray data = root == null ? null : root.optJSONArray("data");
         if (data == null) {
             return Collections.emptyList();
@@ -159,12 +168,126 @@ public final class UnisonProvider implements LyricsProvider {
         return LyricsRequests.videoIdCandidates(found);
     }
 
+    /**
+     * Searches by the user's title and artist; automatic lookups stay keyed by video id.
+     */
+    @Nullable
+    @Override
+    public FetchResult fetchBySearch(TrackInfo track) {
+        for (SearchHit hit : searchHits(track)) {
+            final Lyrics lyrics = parseVariant(hit.variant(), hit.videoId());
+            if (lyrics != null && !lyrics.isEmpty()) {
+                return FetchResult.of(lyrics, hit.title(), hit.artist(),
+                        hit.durationSec(), track);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidatesBySearch(TrackInfo track) {
+        final List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (SearchHit hit : searchHits(track)) {
+            final Lyrics lyrics = parseVariant(hit.variant(), hit.videoId());
+            if (lyrics == null || lyrics.isEmpty()) {
+                continue;
+            }
+            int score = LyricsRequests.scoreLyricsCandidate(
+                    hit.title(), hit.artist(), hit.durationSec(), lyrics, track);
+            if (score < 0) {
+                // A search hit kept only as a fallback has no passing metadata score.
+                score = hit.score() + LyricsRequests.syncRank(lyrics);
+            }
+            scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+        }
+        return Lyrics.sortScoredByScore(scored);
+    }
+
+    /** The song+artist matches worth parsing, the best first. */
+    private List<SearchHit> searchHits(TrackInfo track) {
+        final String title = track.title();
+        final String artist = track.artist();
+        if (title == null || title.isEmpty() || artist == null || artist.isEmpty()) {
+            return Collections.emptyList();
+        }
+        final StringBuilder url = new StringBuilder(baseUrl());
+        try {
+            url.append("/search?song=").append(LyricsRequests.encode(title))
+                    .append("&artist=").append(LyricsRequests.encode(artist))
+                    .append("&limit=").append(SEARCH_LIMIT);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.printDebug(() -> name() + " encode failure", ex);
+            return Collections.emptyList();
+        }
+        final JSONObject root = request(url.toString());
+        return rankSearchHits(root == null ? null : root.optJSONArray("data"), track);
+    }
+
+    /**
+     * Ranks hits by the shared match score, keeping one fallback when none passes.
+     */
+    static List<SearchHit> rankSearchHits(@Nullable JSONArray data, TrackInfo track) {
+        if (data == null || data.length() == 0) {
+            return Collections.emptyList();
+        }
+        final List<SearchHit> gated = new ArrayList<>();
+        SearchHit fallback = null;
+        int fallbackScore = Integer.MIN_VALUE;
+        for (int i = 0; i < data.length(); i++) {
+            final JSONObject entry = data.optJSONObject(i);
+            if (entry == null || entry.optBoolean("hidden", false)) {
+                continue;
+            }
+            final String videoId = LyricsRequests.optString(entry, "videoId");
+            if (videoId == null) {
+                continue;
+            }
+            final String song = Objects.requireNonNullElse(
+                    LyricsRequests.optString(entry, "song"), "");
+            final String artist = Objects.requireNonNullElse(
+                    LyricsRequests.optString(entry, "artist"), "");
+            final long durationSec = entry.optLong("duration", 0);
+            final int score = LyricsRequests.scoreTrackCandidate(
+                    song, artist, durationSec, track);
+            if (score >= 0) {
+                gated.add(new SearchHit(videoId, song, artist, durationSec, score, entry));
+            } else {
+                final int raw = LyricsRequests.evaluate(song, artist, durationSec, track).score();
+                if (raw > fallbackScore) {
+                    fallbackScore = raw;
+                    fallback = new SearchHit(videoId, song, artist, durationSec, score, entry);
+                }
+            }
+        }
+        gated.sort((a, b) -> {
+            if (a.score != b.score) {
+                return b.score - a.score;
+            }
+            if (track.durationSeconds() <= 0) {
+                return 0;
+            }
+            return Long.compare(Math.abs(a.durationSec - track.durationSeconds()),
+                    Math.abs(b.durationSec - track.durationSeconds()));
+        });
+        if (!gated.isEmpty()) {
+            return gated.size() > LyricsRequests.MAX_CANDIDATES
+                    ? new ArrayList<>(gated.subList(0, LyricsRequests.MAX_CANDIDATES))
+                    : gated;
+        }
+        return fallback == null ? Collections.emptyList() : List.of(fallback);
+    }
+
+    /** One song+artist match, with the lyric object the search response already carries. */
+    record SearchHit(String videoId, String title, String artist, long durationSec, int score,
+                     JSONObject variant) {
+    }
+
     @Nullable
     private Lyrics fetchByVideoId(String videoId, String title, String artist,
                                   int duration, String album) {
         final StringBuilder url = new StringBuilder();
         try {
-            url.append(BASE_URL)
+            url.append(baseUrl())
                     .append("?v=").append(LyricsRequests.encode(videoId));
             if (!title.isEmpty()) {
                 url.append("&song=").append(LyricsRequests.encode(title));

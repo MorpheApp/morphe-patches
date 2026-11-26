@@ -16,8 +16,10 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 internal const val TABBED_VIEW_CLASS = "Lcom/google/android/apps/youtube/music/ui/tabs/TabbedView;"
 
@@ -140,12 +142,19 @@ internal object TabControllerRemoveTabFingerprint : Fingerprint(
 
 /**
  * Constructor of the tab model that the tab controller adds, which keeps the tab renderer.
+ * The tab model is the first parameter of [TabControllerAddTabFingerprint], and the tab renderer is
+ * the type [SideloadedWatchNextResponseFingerprint] casts to.
  */
-internal fun tabModelConstructorFingerprint(tabModelType: String, tabRendererType: String) = Fingerprint(
-    definingClass = tabModelType,
+internal object TabModelConstructorFingerprint : Fingerprint(
+    definingClass = { TabControllerAddTabFingerprint.originalMethod.parameterTypes.first() },
     name = "<init>",
-    parameters = listOf(tabRendererType),
+    parameters = {
+        listOf(
+            SideloadedWatchNextResponseFingerprint.instructionMatches[1]
+                .instruction.getReference<TypeReference>()!!.type
+        )
+    },
     filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = tabModelType)
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this")
     )
 )

@@ -55,17 +55,19 @@ public class LyricsProvidersTest {
     }
 
     @Test
-    public void searchableFiltersUnison() {
+    public void searchableKeepsUnison() {
         List<LyricsProvider> result = LyricsProviders.searchableProviders(
                 List.of(namedProvider("Unison")));
-        assertTrue(result.isEmpty());
+        assertEquals(1, result.size());
+        assertEquals("Unison", result.get(0).name());
     }
 
     @Test
-    public void searchableFiltersSimpMusic() {
+    public void searchableKeepsSimpMusic() {
         List<LyricsProvider> result = LyricsProviders.searchableProviders(
                 List.of(namedProvider("SimpMusic")));
-        assertTrue(result.isEmpty());
+        assertEquals(1, result.size());
+        assertEquals("SimpMusic", result.get(0).name());
     }
 
     @Test
@@ -84,9 +86,10 @@ public class LyricsProvidersTest {
                 namedProvider("LRCLIB"),
                 namedProvider("SimpMusic"));
         List<LyricsProvider> result = LyricsProviders.searchableProviders(input);
-        assertEquals(2, result.size());
+        assertEquals(3, result.size());
         assertEquals("QQ", result.get(0).name());
         assertEquals("LRCLIB", result.get(1).name());
+        assertEquals("SimpMusic", result.get(2).name());
     }
 
     @Test

@@ -73,7 +73,7 @@ public final class MusicGlassNavigationBar {
     /**
      * Views of a button that hold its content, the icon and the label. Also used by the preview in the settings.
      */
-    public static final int BUTTON_ICON = ResourceUtils.getIdentifier(ResourceType.ID, "icon");
+    public static final int[] BUTTON_ICONS = {ResourceUtils.getIdentifier(ResourceType.ID, "icon")};
     public static final int BUTTON_LABEL = ResourceUtils.getIdentifier(ResourceType.ID, "text1");
 
     private static final boolean ENABLED = Settings.NAVIGATION_BAR_GLASS.get()
@@ -750,7 +750,7 @@ public final class MusicGlassNavigationBar {
                     }
 
                     GlassNavigationBarLayout.Buttons buttons = GlassNavigationBarLayout.measureButtons(
-                            tabs, BUTTON_ICON, BUTTON_LABEL, hiddenButtons);
+                            tabs, BUTTON_ICONS, BUTTON_LABEL, hiddenButtons);
                     View laidOutButton = null;
                     for (View button : buttons.views) {
                         if (button.getVisibility() == View.VISIBLE && button.getHeight() > 0) {

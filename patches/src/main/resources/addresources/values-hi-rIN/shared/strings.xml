@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">सेटिंग्स</string>
   <string name="morphe_settings_confirm_user_dialog_title">क्या आप वाकई आगे बढ़ना चाहते हैं?</string>
   <string name="morphe_settings_save">सेव करें</string>
   <string name="morphe_settings_reset">रीसेट करें</string>
@@ -74,18 +73,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">फ़ाइल में एक्सपोर्ट करें</string>
   <string name="morphe_settings_export_file_success">सेटिंग्स सफलतापूर्वक एक्सपोर्ट हो गईं</string>
   <string name="morphe_settings_export_file_failed">सेटिंग्स एक्सपोर्ट नहीं हो सकीं</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">आप Morphe Patches का लेटेस्ट वर्ज़न &lt;i&gt;%s&lt;/i&gt; इस्तेमाल कर रहे हैं</string>
-  <string name="morphe_settings_about_links_body_version_outdated">आप Morphe Patches संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध है: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;अपडेट करने के लिए, इस ऐप को पुनः पैच करें</string>
-  <string name="morphe_settings_about_links_dev_header">नोट</string>
-  <string name="morphe_settings_about_links_dev_body">यह संस्करण एक प्री-रीलिज़ संस्करण है और आप अप्रत्याशित समस्याओं का अनुभव कर सकते हैं</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">पैच</string>
+  <string name="morphe_settings_about_version">संस्करण</string>
+  <string name="morphe_settings_about_close">बंद करें</string>
+  <string name="morphe_settings_about_prerelease">प्री-रिलीज़</string>
+  <string name="morphe_settings_about_update_available">अपडेट उपलब्ध है: %s</string>
+  <string name="morphe_settings_about_update_hint">अपने पैच को अपडेट करने के लिए, इस ऐप को फिर से पैच करने के लिए Morphe का उपयोग करें</string>
   <string name="morphe_settings_about_links_header">आधिकारिक लिंक</string>
   <string name="morphe_settings_about_links_website">वेबसाइट</string>
   <string name="morphe_settings_about_links_donate">दान करें</string>
   <string name="morphe_settings_about_links_translations">ट्रांसलेशन्स</string>
-  <string name="morphe_settings_about_links_credits">क्रेडिट</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">नवीनतम</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">अपडेट उपलब्ध है</string>
+  <string name="morphe_settings_about_contributors">योगदानकर्ता</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">हमेशा के लिए</string>
+  <string name="morphe_settings_about_contributors_6_months">6 महीने</string>
+  <string name="morphe_settings_about_contributors_3_months">3 महीने</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">समय अवधि</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s उपयोगकर्ता</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">समर्थक</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective पर समर्थक</string>
+  <string name="morphe_settings_about_supporters_become">एक समर्थक बनें</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">और %s अधिक</string>
+  <string name="morphe_settings_about_people_unavailable">सूची लोड नहीं की जा सकी</string>
   <string name="morphe_settings_about_contributors_current">वर्तमान विकास</string>
   <string name="morphe_settings_about_contributors_prior">पूर्व विकास</string>
   <string name="morphe_settings_about_links_morphe">सक्रिय विकास</string>
@@ -213,6 +228,9 @@ MicroG के लिए बैटरी ऑप्टिमाइजेशन क
 • ऐप बेतरतीब ढंग से बंद हो सकता है
 • सूचनाएं काम नहीं कर सकती हैं
 • पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">सिस्टम शेयर शीट खोलें</string>
+  <string name="morphe_open_system_share_sheet_summary">सामग्री साझा करते समय इन-ऐप शेयर शीट के बजाय सिस्टम शेयर शीट खोलता है</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">ऐप लिंक हैंडलिंग</string>
   <string name="morphe_link_handling_summary">इस ऐप में खोलने के लिए लिंक कॉन्फ़िगर करें</string>

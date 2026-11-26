@@ -98,7 +98,7 @@ private val spoofVideoStreamsResourcePatch = patch {
                 "astring-1.9.0.min.js",
                 "meriyah-6.1.4.min.js",
                 "polyfill.js",
-                "yt.solver.core.js", // yt-dlp-ejs 0.8.0: https://github.com/yt-dlp/ejs/releases/tag/0.8.0
+                "yt.solver.core.js", // yt-dlp-ejs 0.8.1: https://github.com/MorpheApp/ejs/releases/tag/v0.8.1
                 "yt.solver.wrapper.js",
                 "po_token.html",
             )
@@ -161,6 +161,21 @@ internal fun spoofVideoStreamsPatch(
         ReloadPlayerResponseFingerprint.method.addInstruction(
             0,
             "invoke-static { }, $EXTENSION_CLASS->onReloadPlayerResponse()V"
+        )
+
+        // The Onesie response of the app cannot be used with replaced SABR streams,
+        // and its native check reports an error for each video. YouTube Music may not have it.
+        OnesieResponseCompatibilityFingerprint.methodOrNull?.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->skipOnesieCompatibilityCheck(Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :check
+                const/4 v0, 0x0
+                return v0
+                :check
+                nop
+            """
         )
 
         // endregion
@@ -432,7 +447,7 @@ internal fun spoofVideoStreamsPatch(
         // The server can also answer a range with only a SABR error and no media. The app finds no media
         // and requests the same range again right away, over and over, until the server sends it, which
         // freezes playback for seconds or minutes. Instead, the response fails like a response with a
-        // server error status, and the app requests the range from a fallback host.
+        // server error status, and the range is requested again without UMP.
         CronetDataSourceReadFingerprint.let {
             val remainingBytesField = it.instructionMatches.last().fieldReference
             val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass

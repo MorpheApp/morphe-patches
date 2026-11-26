@@ -41,10 +41,12 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Subscribe
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.SubscriptionConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItem;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItemContent;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeCount;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeDislike;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarOverflow;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarSize;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarViewModel;
@@ -109,6 +111,11 @@ public class RestoreOldVideoActionBarPatch {
             || LAYOUT == VideoActionBarLayout.CLASSIC_TWO_ROWS;
 
     private static final String VIDEO_ACTION_BAR_TEMPLATE = "compactify_video_action_bar.eml";
+    /**
+     * Template of the action bar of the large screens, such as tablets, whose layout is not changed.
+     * The name is also part of the name of {@link #VIDEO_ACTION_BAR_TEMPLATE}.
+     */
+    private static final String LARGE_SCREEN_VIDEO_ACTION_BAR_TEMPLATE = "video_action_bar.eml";
 
     /**
      * Template of the title of the watch page, with the channel name, the views and the date below it.
@@ -131,8 +138,11 @@ public class RestoreOldVideoActionBarPatch {
      * Channel name beside the avatar, and the subscribe button at the end of the row, as on tablets.
      */
     private static final int TWO_ROWS_CHANNEL_BAR_STYLE = 2;
-    private static final FeedCardLayoutPatch.VideoTemplate CHANNEL_BAR_TEMPLATE =
-            new FeedCardLayoutPatch.VideoTemplate("compact_channel_bar.eml", 391108665, 6, 5);
+    /**
+     * Some app versions, such as 20.26, cache only the variant of the channel bar that the action bar uses.
+     */
+    private static final FeedCardLayoutPatch.VideoTemplate CHANNEL_BAR_TEMPLATE = new FeedCardLayoutPatch.VideoTemplate(
+            "compact_channel_bar.eml", "compact_channel_bar.eml-js", 391108665, 6, 5);
     private static final int CHANNEL_BAR_ENVIRONMENT_FIELD = 4;
     private static final String SHARE_BUTTON_ID = "id.video.share.button";
     /**
@@ -273,16 +283,47 @@ public class RestoreOldVideoActionBarPatch {
      * chooses the style, so the action bar of the chosen layout is built from the element it sends.
      */
     public static byte[] setVideoActionBarLayout(byte[] bytes) {
-        if (LAYOUT == VideoActionBarLayout.DEFAULT
-                || !FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+        final String elementText = FeedVideoCardsPatch.getElementText(bytes);
+        if (!elementText.contains(LARGE_SCREEN_VIDEO_ACTION_BAR_TEMPLATE)) {
             return bytes;
         }
 
         try {
             Element element = Element.parseFrom(bytes);
             ComponentType componentType = element.getType().getComponentType();
+            if (!elementText.contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+                // The action bar of the large screens keeps its layout, but the buttons that the server sends
+                // without an icon name, such as the like and dislike buttons, get the icon of the button.
+                VideoActionBarModel actionBarModel = componentType.getModel().getVideoActionBarModel();
+                VideoActionBarData data = actionBarModel.getVideoActionBarData();
+                VideoActionBarViewModel actionBar = VideoActionBarViewModel.newBuilder()
+                        .addAllActions(data.getActionsList())
+                        .build();
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
+                return newActionBar == actionBar
+                        ? bytes
+                        : element.toBuilder()
+                        .setType(element.getType().toBuilder()
+                                .setComponentType(componentType.toBuilder()
+                                        .setModel(componentType.getModel().toBuilder()
+                                                .setVideoActionBarModel(actionBarModel.toBuilder()
+                                                        .setVideoActionBarData(data.toBuilder()
+                                                                .clearActions()
+                                                                .addAllActions(newActionBar.getActionsList()))))))
+                        .build().toByteArray();
+            }
+
             LockupModel lockupModel = componentType.getModel().getLockupModel();
             VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
+            if (LAYOUT == VideoActionBarLayout.DEFAULT) {
+                // The layout of the server is kept, but the buttons that the server sends without an icon,
+                // such as the Save item of the More menu, get the icon of the button.
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
+                return newActionBar == actionBar
+                        ? bytes
+                        : withActionBar(element, componentType, lockupModel, newActionBar).toByteArray();
+            }
+
             final boolean minimal = LAYOUT == VideoActionBarLayout.MINIMAL;
             if (actionBar.getLayoutStyle() != (minimal ? LAYOUT_STYLE_CLASSIC : LAYOUT_STYLE_MINIMAL)) {
                 // The server sends the chosen layout, or a layout that is not changed.
@@ -950,15 +991,6 @@ public class RestoreOldVideoActionBarPatch {
                 configInfo.patch_setColdHashData(coldHashData);
             }
         }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static String getVideoActionBarAppVersionOverride(String original) {
-        return FIX_VIDEO_ACTION_BAR
-                ? "20.13.41"
-                : original;
     }
 
     /**

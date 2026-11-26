@@ -159,12 +159,17 @@ public class OpenAIClientTest {
         assertTrue(OpenAIClient.isSkipToken("<SKIP>"));
         assertTrue(OpenAIClient.isSkipToken("(SKIP)"));
         assertTrue(OpenAIClient.isSkipToken("SKIP."));
+        assertTrue(OpenAIClient.isSkipToken("SKIP: lyric text"));
+        assertTrue(OpenAIClient.isSkipToken("Skip - lyric text"));
+        assertTrue(OpenAIClient.isSkipToken("[SKIP] lyric text"));
+        assertTrue(OpenAIClient.isSkipToken("SKIP — lyric text"));
     }
 
     @Test
     public void isSkipTokenNormalTextFalse() {
         assertFalse(OpenAIClient.isSkipToken("hello"));
         assertFalse(OpenAIClient.isSkipToken("translate"));
+        assertFalse(OpenAIClient.isSkipToken("Skip a beat"));
     }
 
     // ── extractLastNumberedBlock ──

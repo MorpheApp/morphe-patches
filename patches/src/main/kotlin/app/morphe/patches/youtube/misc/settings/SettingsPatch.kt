@@ -54,6 +54,8 @@ import app.morphe.patches.youtube.misc.fix.accessibility.fixCaptionsAccessibilit
 import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityPatch
 import app.morphe.patches.youtube.misc.fix.accessibility.fixTouchExplorationPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
+import app.morphe.patches.youtube.misc.fix.delayedping.fixDelayedPingCrashPatch
+import app.morphe.patches.youtube.misc.fix.location.fixLocationSettingPatch
 import app.morphe.patches.youtube.misc.fix.guidecache.fixGuideCachePatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.mediasession.fixMediaSessionStopPatch
@@ -106,7 +108,8 @@ private val settingsResourcePatch = patch {
                     preferences = setOf(
                         IntentPreference(
                             key = SETTINGS_NAME_PREFERENCE_KEY,
-                            titleKey = "morphe_settings_submenu_title",
+                            // The app inflates this entry itself, so only its own strings are translated here.
+                            titleKey = "settings",
                             summaryKey = null,
                             icon = "@drawable/morphe_settings_icon_dynamic",
                             layout = "@layout/preference_with_icon",
@@ -220,6 +223,8 @@ val settingsPatch = patch(
         preferenceScreenHookPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
+        fixDelayedPingCrashPatch,
+        fixLocationSettingPatch,
         fixGuideCachePatch,
         fixPipChatBarPatch,
         fixPagePaddingPatch,

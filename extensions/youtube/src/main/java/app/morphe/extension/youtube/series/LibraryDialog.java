@@ -305,8 +305,7 @@ final class LibraryDialog {
             }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //noinspection SizeReplaceableByIsEmpty
-                clear.setVisibility(s.length() == 0 ? View.GONE : View.VISIBLE);
+                clear.setVisibility(Utils.isEmpty(s) ? View.GONE : View.VISIBLE);
                 if (selected.isEmpty() && alive()) {
                     scroll.scrollTo(0, 0);
                     renderLibrary(libraryRows);

@@ -21,7 +21,6 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.album.albumMusicVideoPatch -->
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -32,14 +31,20 @@ Second \"item\" text"</string>
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
   <!-- Empty string because custom preference handles the title itself -->
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
+  <!-- interaction.sonos.sonosCastPatch -->
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- video.effects.videoEffectsPatch -->
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
@@ -50,7 +55,6 @@ Second \"item\" text"</string>
   <!-- %s is the name of the playlist. -->
   <!-- %s is the number of playlists that have the tag. -->
   <!-- %s is the name of the tag. -->
-  <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -65,13 +69,15 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <!-- layout.navigationbar.navigationBarPatch -->
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- interaction.scrobbling.scrobblingPatch -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbled' must be kept untranslated -->
@@ -91,6 +97,7 @@ Second \"item\" text"</string>
   <!-- Number of votes saying the artist is AI. Example: 41 AI -->
   <!-- 'SoundProof' must be kept untranslated -->
   <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
   <!-- layout.lyrics.lyricsPatch -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->

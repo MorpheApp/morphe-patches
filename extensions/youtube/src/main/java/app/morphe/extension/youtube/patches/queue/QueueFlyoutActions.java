@@ -19,11 +19,11 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuItem;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuItem;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
@@ -33,6 +33,8 @@ import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 public final class QueueFlyoutActions {
     private static final int MDX_CONNECTED = 1;
     private static final int MDX_DISCONNECTED = 2;
+
+    private static volatile boolean isPlaylistPageMenuBound;
 
     public interface Menu {
         MessageLite patch_parseQueueFlyout(byte[] bytes);
@@ -60,11 +62,10 @@ public final class QueueFlyoutActions {
             }
             FlyoutUtils.setNativeQueuePlaylistId(playlistId);
             // Menus of Shorts in the feed have no stock queue items to replace.
-            final boolean addShortsItems = playlistId.isEmpty() && FlyoutUtils.isShortsFeedMenu();
+            final boolean isAddShortsItems = playlistId.isEmpty() && FlyoutUtils.isShortsFeedMenu();
             MenuRenderer completed = completeMenu(menu,
-                    !playlistId.isEmpty() || NativePlaylistQueuePatch.canShowFlyoutLast(),
                     str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,
-                    addShortsItems);
+                    isAddShortsItems);
             if (completed == menu) {
                 return original;
             }
@@ -75,6 +76,131 @@ public final class QueueFlyoutActions {
         }
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * Binds Play next of the playlist page toolbar menu to the native queue, and adds Play last after it.
+     */
+    @Nullable
+    public static MessageLite preparePlaylistPageMenu(@Nullable MessageLite original) {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || !(original instanceof Menu menu)) {
+            return original;
+        }
+        try {
+            var stock = MenuRenderer.parseFrom(original.toByteArray());
+            var bound = bindPlaylistPageMenu(stock, str("morphe_native_playlist_queue_last"));
+            if (bound == stock) {
+                return original;
+            }
+            isPlaylistPageMenuBound = true;
+            return menu.patch_parseQueueFlyout(bound.toByteArray());
+        } catch (Exception ex) {
+            Logger.printException(() -> "preparePlaylistPageMenu failure", ex);
+            return original;
+        }
+    }
+
+    static MenuRenderer bindPlaylistPageMenu(MenuRenderer menu, String lastLabel) {
+        String playlistId = shufflePlaylistId(menu);
+        if (playlistId.isEmpty()) {
+            return menu;
+        }
+
+        var bound = menu.toBuilder();
+        int nextIndex = -1;
+        int lastIndex = -1;
+        for (int index = 0; index < menu.getItemsCount(); index++) {
+            MenuItem item = menu.getItems(index);
+            if (!isLocalItem(item)) {
+                continue;
+            }
+            YTIconType icon = icon(item);
+            if (icon == YTIconType.QUEUE_PLAY_NEXT) {
+                // The stock command still runs if the native queue declines the tap.
+                bound.setItems(index, withEndpoint(item, endpoint(item).toBuilder()
+                        .setPlaylistPagePlayNextPlaylistId(playlistId)));
+                if (nextIndex < 0 && isToolbarItem(item)) {
+                    nextIndex = index;
+                }
+            } else if (icon == YTIconType.QUEUE_PLAY_LAST && lastIndex < 0 && isToolbarItem(item)) {
+                lastIndex = index;
+            }
+        }
+
+        if (nextIndex >= 0) {
+            MenuItem last;
+            if (lastIndex >= 0) {
+                last = menu.getItems(lastIndex);
+                bound.removeItems(lastIndex);
+                if (lastIndex < nextIndex) {
+                    nextIndex--;
+                }
+            } else {
+                last = MenuItem.newBuilder().setMenuServiceItemRenderer(
+                        PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(lastLabel))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.QUEUE_PLAY_LAST))).build();
+            }
+            bound.addItems(nextIndex + 1, withEndpoint(last, endpoint(last).toBuilder()
+                    .setPlaylistPagePlayLastPlaylistId(playlistId)));
+        }
+        MenuRenderer result = bound.build();
+        return result.equals(menu) ? menu : result;
+    }
+
+    /** The playlist of the Shuffle items, or an empty string if they have none or differ. */
+    private static String shufflePlaylistId(MenuRenderer menu) {
+        String playlistId = "";
+        for (MenuItem item : menu.getItemsList()) {
+            if (icon(item) != YTIconType.SHUFFLE) {
+                continue;
+            }
+            String target = endpoint(item).getWatchEndpoint().getPlaylistId();
+            if (!PlaylistCardSource.isPlaylistId(target) || !playlistId.isEmpty() && !playlistId.equals(target)) {
+                return "";
+            }
+            playlistId = target;
+        }
+        return playlistId;
+    }
+
+    /** The toolbar does not show the conditional rows of the feed menus. */
+    private static boolean isToolbarItem(MenuItem item) {
+        return item.hasMenuServiceItemRenderer() || item.hasMenuNavigationItemRenderer();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Runs a command of the playlist page toolbar menu with the native queue.
+     *
+     * @return If the command was handled and the original command must not run.
+     */
+    public static boolean onPlaylistPageCommand(@Nullable MessageLite command) {
+        // Commands are only checked after a toolbar menu has been bound.
+        if (!isPlaylistPageMenuBound || command == null) {
+            return false;
+        }
+        try {
+            var endpoint = PlaylistQueueRenderer.NavigationEndpoint.parseFrom(command.toByteArray());
+            final boolean isPlayLast = endpoint.hasPlaylistPagePlayLastPlaylistId();
+            if (!isPlayLast && !endpoint.hasPlaylistPagePlayNextPlaylistId()) {
+                return false;
+            }
+            Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction(isPlayLast
+                    ? endpoint.getPlaylistPagePlayLastPlaylistId()
+                    : endpoint.getPlaylistPagePlayNextPlaylistId(), isPlayLast);
+            if (action == null) {
+                return false;
+            }
+            action.run();
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "onPlaylistPageCommand failure", ex);
+            return false;
+        }
+    }
+
     /** Direct native sheet dispatch, which does not run the button model's Runnable. */
     public static boolean onStockQueueItemClick(Enum<?> icon) {
         return icon != null && AddToQueuePatch.isNativeQueueEnabled()
@@ -82,12 +208,12 @@ public final class QueueFlyoutActions {
     }
 
     @SuppressWarnings("SameParameterValue")
-    static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel) {
-        return completeMenu(menu, allowLast, nextLabel, lastLabel, "", false);
+    static MenuRenderer completeMenu(MenuRenderer menu, String nextLabel, String lastLabel) {
+        return completeMenu(menu, nextLabel, lastLabel, "", false);
     }
 
-    static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel,
-                                     String playlistId, boolean addIfMissing) {
+    static MenuRenderer completeMenu(MenuRenderer menu, String nextLabel, String lastLabel,
+                                     String playlistId, boolean isAddIfMissing) {
         MenuItem next = null;
         MenuItem last = null;
         for (MenuItem item : menu.getItemsList()) {
@@ -102,18 +228,14 @@ public final class QueueFlyoutActions {
             }
         }
 
-        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !addIfMissing) {
+        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !isAddIfMissing) {
             return menu;
         }
         next = prepareLocalItem(next == null ? queueItem(YTIconType.QUEUE_PLAY_NEXT, nextLabel) : next);
-        if (allowLast) {
-            last = prepareLocalItem(last == null ? queueItem(YTIconType.QUEUE_PLAY_LAST, lastLabel) : last);
-        }
+        last = prepareLocalItem(last == null ? queueItem(YTIconType.QUEUE_PLAY_LAST, lastLabel) : last);
         if (PlaylistCardSource.isPlaylistId(playlistId)) {
             next = bindPlaylist(next, playlistId);
-            if (allowLast) {
-                last = bindPlaylist(last, playlistId);
-            }
+            last = bindPlaylist(last, playlistId);
         }
         var completed = menu.toBuilder().clearItems();
         boolean added = false;
@@ -122,9 +244,7 @@ public final class QueueFlyoutActions {
             if (isLocalItem(item) && (icon == YTIconType.QUEUE_PLAY_NEXT || icon == YTIconType.QUEUE_PLAY_LAST)) {
                 if (!added) {
                     completed.addItems(next);
-                    if (allowLast) {
-                        completed.addItems(last);
-                    }
+                    completed.addItems(last);
                     added = true;
                 }
             } else {
@@ -134,9 +254,7 @@ public final class QueueFlyoutActions {
 
         if (!added) {
             completed.clearItems().addItems(next);
-            if (allowLast) {
-                completed.addItems(last);
-            }
+            completed.addItems(last);
             completed.addAllItems(menu.getItemsList());
         }
         MenuRenderer result = completed.build();
@@ -262,6 +380,10 @@ public final class QueueFlyoutActions {
         var command = PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
                 .setQueuePlaylistId(playlistId)
                 .setWatchEndpoint(PlaylistQueueRenderer.WatchEndpoint.newBuilder().setPlaylistId(playlistId));
+        return withEndpoint(item, command);
+    }
+
+    private static MenuItem withEndpoint(MenuItem item, PlaylistQueueRenderer.NavigationEndpoint.Builder command) {
         if (item.hasMenuConditionalServiceItemRenderer()) {
             return item.toBuilder().setMenuConditionalServiceItemRenderer(item.getMenuConditionalServiceItemRenderer()
                     .toBuilder().setServiceEndpoint(command)).build();

@@ -42,6 +42,12 @@ public final class HideStatusBarPatch {
      */
     private static final boolean HIDE_STATUS_BAR = Settings.HIDE_STATUS_BAR.get();
 
+    /**
+     * If the portrait player is kept below the display cutout instead of filling the screen
+     * behind it, leaving an empty bar at the top.
+     */
+    private static final boolean AVOID_CUTOUT = Settings.HIDE_STATUS_BAR_AVOID_CUTOUT.get();
+
     private static final boolean FIX_STATUS_BAR_LAYOUT = Settings.FIX_STATUS_BAR_LAYOUT.get();
 
     /**
@@ -128,6 +134,9 @@ public final class HideStatusBarPatch {
      * The display cutout inset is then left out, so the video is laid out at the top of the screen
      * instead of below the cutout. It is added back in the miniplayer, in fullscreen and without
      * a video.
+     * <p>
+     * With {@link Settings#HIDE_STATUS_BAR_AVOID_CUTOUT} the inset is kept while watching,
+     * so the video is laid out below the cutout.
      */
     private static volatile boolean isWatchingVideo;
 
@@ -450,6 +459,10 @@ public final class HideStatusBarPatch {
      * an empty bar above the top bars.
      * The top inset is replaced by the inset of a display cutout at the top, so the top bars
      * are still laid out below a front camera hole, the same as with the status bar inset.
+     * <p>
+     * While watching a video the top inset is removed, so the player fills the screen behind
+     * the cutout. With {@link Settings#HIDE_STATUS_BAR_AVOID_CUTOUT} it is kept, so the top bars
+     * stay aligned with the player below the cutout.
      */
     public static void setSystemWindowInsetTop(Rect systemWindowInsets, @Nullable View view) {
         if (view == null || !HIDE_STATUS_BAR) {
@@ -463,7 +476,8 @@ public final class HideStatusBarPatch {
                 return;
             }
 
-            systemWindowInsets.top = isWatchingVideo ? 0 : getDisplayCutoutInsetTop(insets);
+            systemWindowInsets.top = isWatchingVideo && !AVOID_CUTOUT
+                    ? 0 : getDisplayCutoutInsetTop(insets);
         } catch (Exception ex) {
             Logger.printException(() -> "setSystemWindowInsetTop failure", ex);
         }
@@ -478,9 +492,16 @@ public final class HideStatusBarPatch {
      * it is hidden. The player is then laid out below the status bar twice, or below an empty bar with
      * the status bar hidden. Newer targets read the insets of the watch layout, which gets none because
      * the main view consumes them, but they start with the insets of the whole window if it already has them.
+     * <p>
+     * With {@link Settings#HIDE_STATUS_BAR_AVOID_CUTOUT} the top inset is kept while watching a video,
+     * so the player stays below the display cutout. It is still removed when the window is already laid
+     * out below the status bar, to not add the room for the cutout twice.
      */
     public static Rect getPlayerStableInsets(Rect insets) {
         if (FIX_STATUS_BAR_LAYOUT && insets.top != 0 && Boolean.FALSE.equals(edgeToEdgeTopBarUsed)) {
+            if (AVOID_CUTOUT && isWatchingVideo && !Settings.WINDOW_BELOW_STATUS_BAR.get()) {
+                return insets;
+            }
             Rect playerInsets = new Rect(insets);
             playerInsets.top = 0;
             return playerInsets;

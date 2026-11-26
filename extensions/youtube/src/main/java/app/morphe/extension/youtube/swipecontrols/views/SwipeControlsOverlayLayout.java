@@ -25,6 +25,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.ViewAnimations;
 import app.morphe.extension.youtube.patches.SoundBoostPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.playback.speed.ReplaySwipeGesture;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay;
@@ -67,6 +68,9 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
     private final HorizontalProgressView horizontalProgressView;
     private final VerticalProgressView verticalBrightnessProgressView;
     private final VerticalProgressView verticalVolumeProgressView;
+
+    @Nullable
+    private HorizontalProgressView replayProgressView;
 
     // Handler and callback for hiding progress bars.
     private final Handler feedbackHideHandler = new Handler(Looper.getMainLooper());
@@ -184,6 +188,39 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
         );
         drawable.setTint(SwipeControlsConfigurationProvider.OVERLAY_TEXT_COLOR);
         return drawable;
+    }
+
+    /** Shows the selected rewind inside the player, including in portrait mode. */
+    public void showReplayFeedback(int seconds, Rect playerBounds) {
+        if (replayProgressView == null) {
+            replayProgressView = new HorizontalProgressView(getContext(),
+                    config.getOverlayBackgroundOpacity(), true, config.getOverlaySpeedProgressColor(),
+                    SwipeControlsConfigurationProvider.OVERLAY_FILL_BACKGROUND_COLOR,
+                    SwipeControlsConfigurationProvider.OVERLAY_TEXT_COLOR, config.getOverlayTextSize());
+            replayProgressView.icon = getDrawable("morphe_replay_video_button");
+            replayProgressView.setVisibility(GONE);
+            addView(replayProgressView);
+        }
+        String text = str("morphe_replay_video_swipe_preview", seconds);
+        replayProgressView.setProgress(seconds, ReplaySwipeGesture.MAX_REWIND_SECONDS, text, false);
+        replayProgressView.setContentDescription(text);
+        final int maxWidth = playerBounds.width() * 4 / 5;
+        final int height = (int) toDisplayPixels(32f);
+        replayProgressView.measure(MeasureSpec.makeMeasureSpec(maxWidth, MeasureSpec.AT_MOST),
+                MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY));
+        final int width = replayProgressView.getMeasuredWidth();
+        int[] location = new int[2];
+        getLocationOnScreen(location);
+        LayoutParams params = new LayoutParams(width, height);
+        params.leftMargin = playerBounds.centerX() - location[0] - width / 2;
+        params.topMargin = playerBounds.centerY() - location[1] - height / 2;
+        replayProgressView.setLayoutParams(params);
+        // Also cancels a pending fade-out when another swipe starts immediately.
+        ViewAnimations.fadeIn(replayProgressView, FADE_DURATION_MILLIS);
+    }
+
+    public void hideReplayFeedback() {
+        if (replayProgressView != null) ViewAnimations.fadeOut(replayProgressView, FADE_DURATION_MILLIS);
     }
 
     /**

@@ -111,12 +111,15 @@ public class SaveToWatchLaterButton {
     }
 
     public static int addFlyoutButton(Object flyoutPanel, int nextButtonIndex, String flyoutVideoId,
-                                      boolean isTopFlyout) {
+                                      boolean isVideoFlyoutWithoutSaveItem, boolean isTopFlyout) {
         final String saveToWatchLaterButtonVideoId;
         if (!flyoutVideoId.isEmpty()) {
-            // Only if the menu has no save item of the app, otherwise there are two items for the same action.
+            // Only the menus without a save item, such as the menus of the videos in the watch page
+            // of a video for kids. Not the menus of the feed videos, whose save item can be hidden on purpose.
+            // Not if the app menu still has a save item, otherwise there are two items for the same action.
             // The menus of playlists have no video to save.
-            saveToWatchLaterButtonVideoId = !FlyoutUtils.hasAppSaveButton() && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+            saveToWatchLaterButtonVideoId = isVideoFlyoutWithoutSaveItem
+                    && !FlyoutUtils.hasAppSaveButton() && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
                     ? flyoutVideoId
                     : "";
         } else if (Settings.SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&

@@ -34,6 +34,14 @@ public interface LyricsProvider {
     FetchResult fetch(TrackInfo track) throws Exception;
 
     /**
+     * Fetches lyrics for the user's own terms, which may name a different recording.
+     */
+    @Nullable
+    default FetchResult fetchBySearch(TrackInfo track) throws Exception {
+        return fetch(track);
+    }
+
+    /**
      * Returns scored candidate lyrics for the track, the best first.
      * Scores use the shared match+sync scale from {@link LyricsRequests}.
      */
@@ -44,6 +52,13 @@ public interface LyricsProvider {
         }
         int score = result.matchScore(track) + LyricsRequests.syncRank(result.lyrics());
         return Collections.singletonList(new Lyrics.ScoredLyrics(score, result.lyrics()));
+    }
+
+    /**
+     * Candidate form of {@link #fetchBySearch(TrackInfo)}.
+     */
+    default List<Lyrics.ScoredLyrics> fetchCandidatesBySearch(TrackInfo track) throws Exception {
+        return fetchCandidates(track);
     }
 
     /**

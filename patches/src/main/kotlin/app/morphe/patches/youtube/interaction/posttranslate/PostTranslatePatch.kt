@@ -10,6 +10,8 @@ package app.morphe.patches.youtube.interaction.posttranslate
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.litho.relayout.LithoTextDrawableDrawFingerprint
+import app.morphe.patches.shared.misc.litho.relayout.LithoTextDrawableGetTextItemsFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference

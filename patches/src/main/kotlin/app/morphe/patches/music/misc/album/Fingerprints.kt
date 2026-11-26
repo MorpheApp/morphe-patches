@@ -8,16 +8,24 @@
 package app.morphe.patches.music.misc.album
 
 import app.morphe.patcher.Fingerprint
-import com.android.tools.smali.dexlib2.AccessFlags
+import app.morphe.patcher.literal
 
 /**
- * The wrapper every part of the app reads its preferences through, which is the single place the
- * built-in 'Don't play music videos' setting can be reported as off from.
+ * Case of the WatchNextResponse oneof the watch next model reads its playlist from.
  */
-internal object SharedPreferencesGetBooleanFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/content/SharedPreferences;"),
-    name = "getBoolean",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf("Ljava/lang/String;", "Z")
+private const val WATCH_NEXT_PLAYLIST_CASE = 51779735L
+
+/**
+ * Constructor of the watch next model, which every watch next response the app shows is built
+ * into, whether it came from the network, the streaming watch response or the offline store.
+ * The only parameter is the WatchNextResponse.
+ */
+internal object WatchNextResponseModelConstructorFingerprint : Fingerprint(
+    interfaces = listOf("Landroid/os/Parcelable;"),
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        literal(WATCH_NEXT_PLAYLIST_CASE)
+    )
 )

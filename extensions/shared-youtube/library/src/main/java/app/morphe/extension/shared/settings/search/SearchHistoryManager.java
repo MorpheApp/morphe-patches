@@ -172,12 +172,20 @@ public class SearchHistoryManager {
 
         if (searchHistory.isEmpty()) {
             // Show empty history state.
-            showEmptyHistoryViews(emptyHistoryTitle, emptyHistorySummary);
-            hideHistoryViews(historyHeader, historyList, clearHistoryButton);
+            emptyHistoryTitle.setVisibility(View.VISIBLE);
+            emptyHistoryTitle.setText(str("morphe_settings_search_empty_history_title"));
+            emptyHistorySummary.setVisibility(View.VISIBLE);
+            emptyHistorySummary.setText(str("morphe_settings_search_empty_history_summary"));
+            historyHeader.setVisibility(View.GONE);
+            historyList.setVisibility(View.GONE);
+            clearHistoryButton.setVisibility(View.GONE);
         } else {
             // Show history list state.
-            hideEmptyHistoryViews(emptyHistoryTitle, emptyHistorySummary);
-            showHistoryViews(historyHeader, historyList, clearHistoryButton);
+            emptyHistoryTitle.setVisibility(View.GONE);
+            emptyHistorySummary.setVisibility(View.GONE);
+            historyHeader.setVisibility(View.VISIBLE);
+            historyList.setVisibility(View.VISIBLE);
+            clearHistoryButton.setVisibility(View.VISIBLE);
 
             // Update adapter with current history.
             searchHistoryAdapter.clear();
@@ -239,42 +247,6 @@ public class SearchHistoryManager {
      */
     public void hideSearchHistoryContainer() {
         searchHistoryContainer.setVisibility(View.GONE);
-    }
-
-    /**
-     * Helper method to show empty history views.
-     */
-    protected void showEmptyHistoryViews(TextView emptyTitle, TextView emptySummary) {
-        emptyTitle.setVisibility(View.VISIBLE);
-        emptyTitle.setText(str("morphe_settings_search_empty_history_title"));
-        emptySummary.setVisibility(View.VISIBLE);
-        emptySummary.setText(str("morphe_settings_search_empty_history_summary"));
-    }
-
-    /**
-     * Helper method to hide empty history views.
-     */
-    protected void hideEmptyHistoryViews(TextView emptyTitle, TextView emptySummary) {
-        emptyTitle.setVisibility(View.GONE);
-        emptySummary.setVisibility(View.GONE);
-    }
-
-    /**
-     * Helper method to show history list views.
-     */
-    protected void showHistoryViews(TextView header, LinearLayout list, TextView clearButton) {
-        header.setVisibility(View.VISIBLE);
-        list.setVisibility(View.VISIBLE);
-        clearButton.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * Helper method to hide history list views.
-     */
-    protected void hideHistoryViews(TextView header, LinearLayout list, TextView clearButton) {
-        header.setVisibility(View.GONE);
-        list.setVisibility(View.GONE);
-        clearButton.setVisibility(View.GONE);
     }
 
     /**

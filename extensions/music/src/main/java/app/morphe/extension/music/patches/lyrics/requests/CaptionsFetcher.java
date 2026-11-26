@@ -36,6 +36,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -725,8 +726,7 @@ public final class CaptionsFetcher {
             if (eq > 0) {
                 String key = entry.substring(0, eq).trim();
                 if (COOKIE_KEYS.contains(key)) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (sb.length() > 0) sb.append("; ");
+                    if (Utils.isNotEmpty(sb)) sb.append("; ");
                     sb.append(entry);
                 }
             }
@@ -765,8 +765,7 @@ public final class CaptionsFetcher {
         for (String part : value.split("[;\\r\\n]+")) {
             String trimmed = part.trim();
             if (trimmed.isEmpty() || trimmed.indexOf('=') <= 0) continue;
-            //noinspection SizeReplaceableByIsEmpty
-            if (sb.length() > 0) sb.append("; ");
+            if (Utils.isNotEmpty(sb)) sb.append("; ");
             sb.append(trimmed);
         }
         return sb.toString();

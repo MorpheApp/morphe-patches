@@ -11,8 +11,11 @@
 package app.morphe.patches.youtube.video.videoid
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -20,6 +23,7 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
@@ -53,10 +57,40 @@ fun hookVideoId(
  */
 fun hookBackgroundPlayVideoId(
     methodDescriptor: String,
-) = backgroundPlaybackMethodRef.get()!!.addInstruction(
-    backgroundPlaybackInsertIndex++, // move-result-object offset
-    "invoke-static {v$backgroundPlaybackVideoIdRegister}, $methodDescriptor",
-)
+) {
+    backgroundPlaybackMethodRef.get()!!.addInstruction(
+        backgroundPlaybackInsertIndex++, // move-result-object offset
+        "invoke-static {v$backgroundPlaybackVideoIdRegister}, $methodDescriptor",
+    )
+
+    // The hook above is not called when the next video of a playlist plays in the background
+    // without a user action. The media session gets the same video stage events, also in the background.
+    // Other patches can change the media session method or replace it with a copy,
+    // so the title call is matched again, and each hook is added after the hooks added before.
+    mediaSessionMethods.forEach { mediaSessionMethod ->
+        mediaSessionVideoTitleFingerprint(
+            mediaSessionMethod.definingClass,
+            mediaSessionMethod.name,
+            videoStageEventType,
+            mediaSessionMethod.titleMethod
+        ).let {
+            it.method.apply {
+                val titleMatch = it.instructionMatches.first()
+                val videoRegister = titleMatch.getInstruction<FiveRegisterInstruction>().registerC
+                val videoIdRegister = findFreeRegister(titleMatch.index, videoRegister)
+
+                addInstructions(
+                    titleMatch.index,
+                    """
+                        invoke-interface { v$videoRegister }, $videoStageVideoIdMethod
+                        move-result-object v$videoIdRegister
+                        invoke-static { v$videoIdRegister }, $methodDescriptor
+                    """
+                )
+            }
+        }
+    }
+}
 
 /**
  * Hooks the playlist ID of every video when loaded.
@@ -121,6 +155,16 @@ private lateinit var backgroundPlaybackMethodRef : WeakReference<MutableMethod>
 private var backgroundPlaybackVideoIdRegister = -1
 private var backgroundPlaybackInsertIndex = -1
 
+private lateinit var videoStageEventType: String
+private lateinit var videoStageVideoIdMethod: String
+
+/**
+ * Method of a media session implementation that sets the title of the video of a video stage event.
+ */
+private class MediaSessionMethod(val definingClass: String, val name: String, val titleMethod: String)
+
+private lateinit var mediaSessionMethods: List<MediaSessionMethod>
+
 val videoIdPatch = patch(
     description = "Hooks to detect when the video ID changes.",
 ) {
@@ -145,7 +189,19 @@ val videoIdPatch = patch(
                 val index = it.instructionMatches.first().index
                 backgroundPlaybackVideoIdRegister = getInstruction<OneRegisterInstruction>(index + 1).registerA
                 backgroundPlaybackInsertIndex = index + 2
+
+                videoStageEventType = parameterTypes.first().toString()
+                // Video id of the video of the event.
+                videoStageVideoIdMethod = it.instructionMatches.first().methodReference.toString()
             }
+        }
+
+        mediaSessionMethods = mediaSessionVideoStageFingerprint(videoStageEventType).matchAll().map {
+            val titleMethod = it.instructionMatches.first().methodReference
+            if (titleMethod.definingClass != videoStageVideoIdMethod.substringBefore("->")) {
+                throw PatchException("Unexpected video of the media session: $titleMethod")
+            }
+            MediaSessionMethod(it.method.definingClass, it.method.name, titleMethod.toString())
         }
 
         // Inject the call for add-on patch bundles, which cannot hook the video id themselves.

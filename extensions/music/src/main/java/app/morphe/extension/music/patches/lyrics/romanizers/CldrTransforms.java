@@ -78,7 +78,7 @@ final class CldrTransforms {
 
     @Nullable
     private static File tableFile(String script) {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         return directory == null ? null : new File(directory, script + "_transforms.txt");
     }
 

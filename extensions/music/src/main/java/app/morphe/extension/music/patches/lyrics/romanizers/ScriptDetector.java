@@ -9,6 +9,8 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.Utils;
+
 import java.util.List;
 
 /**
@@ -142,6 +144,7 @@ public final class ScriptDetector {
                 Character.UnicodeScript.KATAKANA, Character.UnicodeScript.HANGUL);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean containsUnspaced(@Nullable CharSequence text) {
         return containsCjk(text)
                 || contains(text, Character.UnicodeScript.THAI, Character.UnicodeScript.LAO,
@@ -158,8 +161,7 @@ public final class ScriptDetector {
      * Requires RTL characters to meet or exceed LTR characters, avoiding false positives from stray symbols.
      */
     public static boolean isLineRtl(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text == null || text.length() == 0) {
+        if (Utils.isEmpty(text)) {
             return false;
         }
         int rtlCount = 0;

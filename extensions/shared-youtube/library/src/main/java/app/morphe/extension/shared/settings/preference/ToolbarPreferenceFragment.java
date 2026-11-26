@@ -264,15 +264,8 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
                 Utils.appIsUsingBoldIcons()
                         ? "morphe_settings_toolbar_arrow_left_bold"
                         : "morphe_settings_toolbar_arrow_left");
-        customizeBackButtonDrawable(drawable);
-        return drawable;
-    }
-
-    /**
-     * Customizes the back button drawable.
-     */
-    protected static void customizeBackButtonDrawable(Drawable drawable) {
         drawable.setTint(ThemeUtils.getAppForegroundColor());
+        return drawable;
     }
 
     /**

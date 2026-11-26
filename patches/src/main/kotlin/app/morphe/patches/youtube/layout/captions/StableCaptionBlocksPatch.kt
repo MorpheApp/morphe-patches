@@ -287,14 +287,7 @@ internal val stableCaptionBlocksPatch = patch(
                 )
 
                 windowFields.forEach { (name, field) ->
-                    addHelperMethod(
-                        name,
-                        if (field.type == "Ljava/util/List;") field.type else "Ljava/lang/Object;",
-                        smali = """
-                            iget-object v0, p0, $field
-                            return-object v0
-                        """
-                    )
+                    addPatchInterface(EXTENSION_WINDOW_INTERFACE, name, field)
                 }
             }
         }

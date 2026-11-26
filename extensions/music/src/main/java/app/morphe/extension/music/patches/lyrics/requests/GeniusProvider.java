@@ -34,6 +34,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Genius song pages, read through the public endpoints its own web app uses, so no client token
@@ -246,7 +247,6 @@ public final class GeniusProvider implements LyricsProvider {
         return credits.isEmpty() ? null : credits;
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void addCredit(List<String> credits, String label,
                                   @Nullable JSONArray artists) {
         if (artists == null) {
@@ -262,12 +262,12 @@ public final class GeniusProvider implements LyricsProvider {
             if (name.isEmpty()) {
                 continue;
             }
-            if (names.length() > 0) {
+            if (Utils.isNotEmpty(names)) {
                 names.append(", ");
             }
             names.append(name);
         }
-        if (names.length() == 0) {
+        if (Utils.isEmpty(names)) {
             return;
         }
         // An empty label means the page shows the names on their own.
@@ -627,7 +627,6 @@ public final class GeniusProvider implements LyricsProvider {
      * are page furniture rather than lyrics (a translations menu, annotation links), so nesting is
      * tracked and anything inside {@code data-exclude-from-selection} is dropped.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     static String lyricsText(@Nullable String html) {
         if (html == null || html.isEmpty()) {
@@ -679,7 +678,7 @@ public final class GeniusProvider implements LyricsProvider {
                     depth++;
                 }
             }
-            if (container.length() > 0) {
+            if (Utils.isNotEmpty(container)) {
                 out.append(container).append('\n');
             }
             from = at;
@@ -692,7 +691,7 @@ public final class GeniusProvider implements LyricsProvider {
         String[] split = decoded.split("\n", -1);
         StringBuilder joined = new StringBuilder(decoded.length());
         for (String line : split) {
-            if (joined.length() > 0) {
+            if (Utils.isNotEmpty(joined)) {
                 joined.append('\n');
             }
             joined.append(line.trim());

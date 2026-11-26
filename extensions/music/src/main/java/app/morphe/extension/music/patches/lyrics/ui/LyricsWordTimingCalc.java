@@ -16,6 +16,8 @@ import java.util.List;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.romanizers.CjkWordGroups;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 
 /**
  * Turns a line's words into the timings the karaoke pass lights, matching each word back to the
@@ -31,9 +33,11 @@ final class LyricsWordTimingCalc {
         LyricsLine line = lines.get(index);
         String lineText = LyricsTextUtils.displayLineText(line);
         // A lone word with furigana stays whole, so its reading sits over all of it. Any other
-        // lone word is swept by character across its own span, but only when it has one: a
-        // line timed only as a whole lights in one go like every other such line in the song.
-        if (!LyricsReadingCalc.hasAnyRuby(line) && LyricsWordBoundaries.countWords(lineText) == 1 && line.words().size() == 1
+        // lone word (including unspaced CJK/Katakana like "グッバイ" as well as "Goodbye") is swept
+        // by character across its own span whenever that word carries a real duration.
+        if (!LyricsReadingCalc.hasAnyRuby(line)
+                && !hasMultipleSpacedTokens(lineText)
+                && line.words().size() == 1
                 && line.words().get(0).endMs() > line.words().get(0).startMs()) {
             Word singleWord = line.words().get(0);
             long rangeStart = singleWord.startMs() >= 0 ? singleWord.startMs() : line.startTimeMs();
@@ -47,38 +51,117 @@ final class LyricsWordTimingCalc {
                 List<WordTiming> synthesized =
                         LyricsWordBoundaries.synthesizeLineChars(lineText, rangeStart, rangeEnd);
                 if (!synthesized.isEmpty()) {
-                    return synthesized;
+                    return withWordGroups(lineText, synthesized);
                 }
             }
-        } else if (splitWordlessLine && !line.hasWords()) {
-            // An only or dual mode shows the translation or the reading in its main slot while
-            // the timings it lights by are still the original's, so a line carrying no word
-            // timings leaves that slot with nothing to light. Splitting it is what fills it.
-            final long lineStart = line.startTimeMs();
-            final long lineEnd = line.endTimeMs() > lineStart ? line.endTimeMs()
-                    : index + 1 < lines.size() ? lines.get(index + 1).startTimeMs()
-                      : LyricsLine.NO_TIME;
-            if (lineStart >= 0 && lineEnd > lineStart) {
-                List<WordTiming> synthesized =
-                        LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd);
-                if (!synthesized.isEmpty()) {
-                    return synthesized;
+        } else if (!line.hasWords()) {
+            final boolean songWordSynced = songHasWordTimings(lines);
+            if (songWordSynced || splitWordlessLine) {
+                // In a word-synced song (e.g. Enhanced LRC / TTML where a single-word line
+                // omitted inner word tags), synthesize real sweep timings across the line's span.
+                final long lineStart = line.startTimeMs();
+                final boolean explicitEnd = line.endTimeMs() > lineStart;
+                long lineEnd = explicitEnd ? line.endTimeMs()
+                        : index + 1 < lines.size() ? lines.get(index + 1).startTimeMs()
+                          : LyricsLine.NO_TIME;
+                if (songWordSynced && !explicitEnd && lineStart >= 0 && lineEnd > lineStart) {
+                    int cpCount = Math.max(1, lineText.codePointCount(0, lineText.length()));
+                    long maxInferredDur = Math.max(1800L, cpCount * 350L);
+                    lineEnd = Math.min(lineEnd, lineStart + maxInferredDur);
                 }
-            } else if (lineStart <= 0) {
-                // Plain text has no timing; a dummy range lets the per-syllable
-                // romaji align under each character.
-                List<WordTiming> synthesized = LyricsWordBoundaries.synthesizeLineWords(lineText, 0, 1);
-                if (!synthesized.isEmpty()) {
-                    return synthesized;
+                if (lineStart >= 0 && lineEnd > lineStart) {
+                    List<WordTiming> synthesized = songWordSynced
+                            ? (!hasMultipleSpacedTokens(lineText)
+                                    ? LyricsWordBoundaries.synthesizeLineChars(lineText, lineStart, lineEnd)
+                                    : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd, false))
+                            : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd);
+                    if (!synthesized.isEmpty()) {
+                        return withWordGroups(lineText, synthesized);
+                    }
+                } else if (splitWordlessLine && lineStart <= 0) {
+                    // Plain text has no timing; a dummy range lets the per-syllable
+                    // romaji align under each character.
+                    List<WordTiming> synthesized = LyricsWordBoundaries.synthesizeLineWords(lineText, 0, 1);
+                    if (!synthesized.isEmpty()) {
+                        return withWordGroups(lineText, synthesized);
+                    }
                 }
             }
         }
-        return computeWordTimingsFromWords(line);
+        return withWordGroups(lineText, computeWordTimingsFromWords(line));
+    }
+
+    /** The source's words are no boundaries, since a KRC word is only a syllable. */
+    private static List<WordTiming> withWordGroups(String lineText, List<WordTiming> timings) {
+        if (timings.isEmpty()) {
+            return timings;
+        }
+        final int[] groups = CjkWordGroups.forLine(lineText);
+        if (groups == null) {
+            return timings;
+        }
+        List<WordTiming> grouped = new ArrayList<>(timings.size());
+        for (WordTiming timing : timings) {
+            final int start = Math.max(0, Math.min(groups.length, timing.start()));
+            final int end = Math.max(start, Math.min(groups.length, timing.end()));
+            int group = -1;
+            boolean mixed = false;
+            boolean han = false;
+            for (int i = start; i < end; i++) {
+                if (i < lineText.length() && ScriptDetector.isHan(lineText.charAt(i))) {
+                    han = true;
+                }
+                if (groups[i] < 0) {
+                    continue;
+                }
+                if (group < 0) {
+                    group = groups[i];
+                } else if (group != groups[i]) {
+                    mixed = true;
+                    break;
+                }
+            }
+            // A timing across two words gets no group; without a dictionary group a Han timing
+            // keeps the source's own word, while Latin stays separate.
+            grouped.add(new WordTiming(
+                    timing.start(), timing.end(), timing.startMs(), timing.endMs(),
+                    timing.romaji(), timing.hasTrailingSpace(), timing.ruby(), timing.averaged(),
+                    mixed ? -1 : (group >= 0 ? group : (han ? timing.wordGroup() : -1))));
+        }
+        return grouped;
+    }
+
+    static boolean songHasWordTimings(List<LyricsLine> lines) {
+        if (lines == null || lines.isEmpty()) {
+            return false;
+        }
+        for (int i = 0; i < lines.size(); i++) {
+            if (lines.get(i).hasWordTimings()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasMultipleSpacedTokens(String text) {
+        if (text == null) {
+            return false;
+        }
+        String trimmed = text.trim();
+        for (int i = 0; i < trimmed.length(); i++) {
+            if (Character.isWhitespace(trimmed.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** The line's own word timings, with any text they leave out lit along with its neighbours. */
     static List<WordTiming> computeWordTimingsFromWords(LyricsLine line) {
-        final boolean hasRealTimings = line.hasWordTimings();
+        final boolean singleTimedWord = line.words().size() == 1
+                && line.words().get(0).startMs() >= 0
+                && line.words().get(0).endMs() > line.words().get(0).startMs();
+        final boolean hasRealTimings = line.hasWordTimings() || singleTimedWord;
         if (!hasRealTimings && !LyricsReadingCalc.hasAnyRuby(line)) {
             return Collections.emptyList();
         }
@@ -93,9 +176,10 @@ final class LyricsWordTimingCalc {
         // The drawn text of a background vocal has lost its brackets, so its words lose them too.
         final boolean secondary = LyricsTextUtils.isSecondaryLine(line);
         // Ruby on a plain-text line has no real timing; all its timings are averaged.
-        final boolean averaged = !line.hasWordTimings();
+        final boolean averaged = !hasRealTimings;
         int offset = 0;
-        for (Word word : line.words()) {
+        for (int wi = 0; wi < line.words().size(); wi++) {
+            Word word = line.words().get(wi);
             String rawWordText = secondary
                     ? LyricsBracketSplitter.stripAllBrackets(word.text()) : word.text();
             String trimmed = rawWordText.trim();
@@ -138,13 +222,13 @@ final class LyricsWordTimingCalc {
                     offset = appendMatchedWordTiming(
                             timings, text, textLength, offset, part, wordToken(part),
                             hasRealTimings ? curStartMs : LyricsLine.NO_TIME, partEndMs,
-                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged);
+                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged, wi);
                     curStartMs = partEndMs;
                 }
             } else {
                 offset = appendMatchedWordTiming(
                         timings, text, textLength, offset, trimmed, wordToken(trimmed),
-                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged);
+                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged, wi);
             }
         }
 
@@ -260,6 +344,23 @@ final class LyricsWordTimingCalc {
             boolean wordTrailingSpace,
             @Nullable String ruby,
             boolean averaged) {
+        return appendMatchedWordTiming(timings, text, textLength, offset, token, bareToken,
+                startMs, endMs, rom, wordTrailingSpace, ruby, averaged, -1);
+    }
+
+    static int appendMatchedWordTiming(
+            List<WordTiming> timings,
+            String text,
+            int textLength,
+            int offset,
+            String token,
+            String bareToken,
+            long startMs,
+            long endMs,
+            @Nullable String rom,
+            boolean wordTrailingSpace,
+            @Nullable String ruby,
+            boolean averaged, int wordGroup) {
         // The drawn line may hold the word's marks elsewhere, hence the bare word to fall back on.
         int start = usableHit(text, textLength, offset, token, wordTrailingSpace);
         String matched = token;
@@ -293,7 +394,7 @@ final class LyricsWordTimingCalc {
         if (wordEnd > wordStart) {
             final boolean trailSpace = wordTrailingSpace
                     || (wordEnd < textLength && Character.isWhitespace(text.charAt(wordEnd)));
-            timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged));
+            timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged, wordGroup));
         } else if (hasTiming) {
             appendMarksTiming(timings, text, textLength, wordStart, spanEnd, timedStart, averaged);
         }

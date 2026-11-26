@@ -12,7 +12,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_26_or_greater
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -34,6 +37,7 @@ val changeStartPagePatch = patch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -74,6 +78,25 @@ val changeStartPagePatch = patch(
                         """
                             invoke-static/range { v$returnRegister .. v$returnRegister }, $EXTENSION_CLASS->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;
                             move-result-object v$returnRegister
+                        """
+                    )
+                }
+            }
+        }
+
+        if (is_9_26_or_greater) {
+            // On cold start no root tab is active yet, and a library page that is not a
+            // Library tab root (Subscriptions) opens outside the Library tab and shows blank.
+            OpenInLibraryTabFingerprint.let {
+                it.method.apply {
+                    val equalsMatch = it.instructionMatches.last()
+                    val activeRootTagRegister = equalsMatch.instruction.registersUsed[1]
+
+                    addInstructions(
+                        equalsMatch.index,
+                        """
+                            invoke-static { v$activeRootTagRegister }, $EXTENSION_CLASS->overrideActiveRootTag(Ljava/lang/String;)Ljava/lang/String;
+                            move-result-object v$activeRootTagRegister
                         """
                     )
                 }

@@ -14,8 +14,17 @@ public final class DisableDRCAudioPatch {
 
     /**
      * Injection point.
+     *
+     * @return If the original version of audio formats is played instead of the DRC version.
      */
     public static boolean disableDrcAudio() {
         return SharedYouTubeSettings.DISABLE_DRC_AUDIO.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableLoudnessNormalization() {
+        return SharedYouTubeSettings.DISABLE_LOUDNESS_NORMALIZATION.get();
     }
 }

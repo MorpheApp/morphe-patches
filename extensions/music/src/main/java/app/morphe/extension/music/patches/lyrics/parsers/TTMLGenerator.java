@@ -28,6 +28,7 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
@@ -564,7 +565,7 @@ public final class TTMLGenerator {
     }
 
     private void appendRoleSpan(String role, String language, String text) {
-        if (sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
+        if (Utils.isNotEmpty(sb) && sb.charAt(sb.length() - 1) != ' ') {
             sb.append(' ');
         }
         sb.append("<span ttm:role=\"").append(role).append("\" xml:lang=\"")

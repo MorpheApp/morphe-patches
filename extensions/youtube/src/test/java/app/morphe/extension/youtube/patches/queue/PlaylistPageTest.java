@@ -18,7 +18,7 @@ import org.junit.Test;
 
 import java.util.Base64;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 
 public class PlaylistPageTest {
     @SuppressWarnings("SameParameterValue")

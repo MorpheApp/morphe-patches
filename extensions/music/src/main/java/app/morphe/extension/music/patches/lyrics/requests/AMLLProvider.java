@@ -19,12 +19,17 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class AMLLProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://api.amll.dev/v1/lyrics";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.base(BASE_URL, Settings.AMLL_ENDPOINT.get());
+    }
 
     private static final long REQUEST_THROTTLE_MS = 500;
 
@@ -93,7 +98,7 @@ public final class AMLLProvider implements LyricsProvider {
         try {
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             getConnection = LyricsRequests.openConnection(
-                    BASE_URL + "/get?id=" + lyricId + "&format=ttml");
+                    baseUrl() + "/get?id=" + lyricId + "&format=ttml");
             if (getConnection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 LyricsRequests.logFailure(name(), getConnection);
                 return null;
@@ -125,7 +130,7 @@ public final class AMLLProvider implements LyricsProvider {
         try {
             String searchUrl = String.format(
                     "%s/search?musicName=%s&artistName=%s",
-                    BASE_URL,
+                    baseUrl(),
                     LyricsRequests.encode(title),
                     LyricsRequests.encode(artist)
             );

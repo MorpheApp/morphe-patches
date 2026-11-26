@@ -71,6 +71,9 @@ public final class CaptionLanguagePreference extends CustomDialogListPreference 
     @Override
     public CharSequence getSummary() {
         CharSequence selected = getEntry();
-        return (selected == null ? "" : selected + "\n") + StringRef.str(summaryKey);
+        if (selected == null || "off".equalsIgnoreCase(getValue())) {
+            return StringRef.str(summaryKey);
+        }
+        return selected + "\n" + StringRef.str(summaryKey);
     }
 }

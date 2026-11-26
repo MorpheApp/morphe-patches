@@ -22,8 +22,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Objects;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
 
 public class MixPlaylistRequestTest {
     private static JSONObject response(JSONArray rows) throws Exception {

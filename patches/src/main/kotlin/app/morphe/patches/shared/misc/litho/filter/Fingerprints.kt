@@ -242,6 +242,135 @@ internal object ElementItemConstructorFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Puts the lists of a section, such as the lists of the cards of the feed of the tablet layout, in the order
+ * that fills the rows of the grid. Each list with more or less than one item is laid out as wide as the grid.
+ */
+internal object ReorderedListSectionFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        // The lists of the section, copied to know if the order changed.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/util/List;"),
+        methodCall(
+            definingClass = "Ljava/util/ArrayList;",
+            name = "<init>",
+            parameters = listOf("Ljava/util/Collection;"),
+            location = MatchAfterWithin(3)
+        ),
+        methodCall(definingClass = "Ljava/util/List;", name = "indexOf"),
+        methodCall(definingClass = "Ljava/util/Collections;", name = "swap", location = MatchAfterWithin(3)),
+        methodCall(definingClass = "Ljava/util/List;", name = "equals")
+    )
+)
+
+/**
+ * Removes a list from a section that puts its lists in the order that fills the rows of the grid,
+ * which puts the other lists in order again.
+ */
+internal object ReorderedListSectionRemoveListFingerprint : Fingerprint(
+    classFingerprint = ReorderedListSectionFingerprint,
+    returnType = "V",
+    filters = listOf(
+        opcode(Opcode.INVOKE_SUPER),
+        methodCall(definingClass = "Ljava/util/List;", name = "size", location = MatchAfterWithin(3)),
+        // The removed list.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(10)),
+        opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
+        methodCall(
+            definingClass = "Ljava/util/List;",
+            name = "remove",
+            parameters = listOf("I"),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * The count of the items of a section of a list.
+ */
+internal fun listSectionIsEmptyFingerprint(sectionType: String) = Fingerprint(
+    definingClass = sectionType,
+    name = "isEmpty",
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, definingClass = "this", returnType = "I", parameters = listOf()),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Updates an item of a Litho list with new render info.
+ */
+internal object LithoBinderUpdateItemFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I", "L"),
+    filters = listOf(
+        string("Trying to update an item while the list of components is empty (index=")
+    )
+)
+
+/**
+ * Updates a range of items of a Litho list with new render info.
+ */
+internal object LithoBinderUpdateItemRangeFingerprint : Fingerprint(
+    classFingerprint = LithoBinderUpdateItemFingerprint,
+    returnType = "V",
+    parameters = listOf("I", "Ljava/util/List;"),
+    filters = listOf(
+        string(") updateRangeAt ")
+    )
+)
+
+/**
+ * The view of an updated item of a Litho list is bound again if the old or the new render info renders a view.
+ * Otherwise, the view keeps the size of the old render info.
+ */
+internal fun lithoBinderUpdateRenderInfoFingerprint(
+    binderType: String,
+    methodName: String,
+    parameters: List<String>,
+    renderInfoType: String
+) = Fingerprint(
+    definingClass = binderType,
+    name = methodName,
+    returnType = "V",
+    parameters = parameters,
+    filters = listOf(
+        // The old render info of the item.
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = renderInfoType, parameters = listOf()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // If it renders a view.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            definingClass = renderInfoType,
+            returnType = "Z",
+            parameters = listOf(),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        // Sets the new render info of the item.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "V",
+            parameters = listOf("L", renderInfoType),
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
+/**
+ * If the item of a render info of a Litho list is laid out as wide as the list.
+ */
+internal object RenderInfoIsFullSpanFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        string("is_full_span")
+    )
+)
+
 // region Sticky headers
 
 /**

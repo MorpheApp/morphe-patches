@@ -53,7 +53,7 @@ val captionsPatch = patch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +
             "select a preferred and a secondary caption language, add more auto-translate languages, " +
-            "and show captions in stable blocks and in picture-in-picture. " +
+            "show captions in stable blocks and in picture-in-picture, and copy the transcript. " +
             "Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer.",
 ) {
     dependsOn(
@@ -69,6 +69,7 @@ val captionsPatch = patch(
         captionViewportPatch,
         captionsInPipPatch,
         captionsAfterSeekPatch,
+        copyTranscriptPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -88,6 +89,11 @@ val captionsPatch = patch(
             "morphe_auto_captions_style",
             "morphe_captions_in_pip",
         )
+        val copyTranscript = take(
+            "morphe_copy_transcript",
+            "morphe_copy_transcript_timestamps",
+            "morphe_copy_transcript_shorts_flyout",
+        )
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
@@ -103,6 +109,11 @@ val captionsPatch = patch(
                         key = "morphe_captions_presentation",
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                         preferences = presentation
+                    ),
+                    PreferenceCategory(
+                        key = "morphe_copy_transcript_category",
+                        sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                        preferences = copyTranscript
                     ),
                     PreferenceScreenPreference(
                         key = "morphe_captions_advanced",

@@ -8,7 +8,13 @@
 package app.morphe.patches.youtube.layout.playbackinfeeds
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -54,5 +60,61 @@ internal object PlaybackInFeedsSetModeFingerprint : Fingerprint(
     parameters = listOf("I"),
     filters = listOf(
         methodCall(returnType = "Lcom/google/common/util/concurrent/ListenableFuture;")
+    )
+)
+
+/**
+ * Description of a video that plays in a feed (feed autoplay).
+ * The last instruction match appends the value of 'enableSeekingUi', which the server sets to show
+ * the seek buttons of the video. Older versions read the value between the two appends.
+ */
+internal object SimpleAutoplayableToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("SimpleAutoplayable{inlinePlaybackStyleType="),
+        string(", enableSeekingUi="),
+        methodCall(
+            smali = "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            smali = "Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+            location = MatchAfterWithin(2)
+        )
+    )
+)
+
+/**
+ * Getter of the 'enableSeekingUi' field of [SimpleAutoplayableToStringFingerprint].
+ */
+internal fun enableSeekingUiGetterFingerprint(fieldName: String) = Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            definingClass = "this",
+            name = fieldName,
+            type = "Z"
+        ),
+        opcode(Opcode.RETURN, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Inflates the seek backwards button of a video that plays in a feed, the button and the round
+ * background of its container. The last instruction match is the container. 21.24+
+ */
+internal object SeekBackwardsToggleInflateFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "seek_backwards_toggle_container_stub"),
+        methodCall(
+            smali = "Landroid/view/ViewStub;->inflate()Landroid/view/View;",
+            location = MatchAfterWithin(8)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )

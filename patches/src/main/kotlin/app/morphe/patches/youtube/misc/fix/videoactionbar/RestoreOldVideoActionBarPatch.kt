@@ -30,11 +30,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.spoof.addMediaSessionOverride
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.layout.hide.relatedvideos.watchNextResultsFingerprint
-import app.morphe.patches.youtube.misc.contexthook.Endpoint
-import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
-import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -74,7 +70,6 @@ internal val restoreOldVideoActionBarPatch = patch(
         sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
-        clientContextHookPatch,
         buildRequestPatch,
         fixProtoLibraryPatch,
         elementProtoParserHookPatch,
@@ -173,118 +168,104 @@ internal val restoreOldVideoActionBarPatch = patch(
             addMediaSessionOverride("$EXTENSION_CLASS->useMediaSessionFeatureFlag(Z)Z")
         }
 
-        if (is_20_30_or_greater) {
-            hookBuildRequest(
-                descriptor = "$EXTENSION_CLASS->fixVideoActionBar",
-                hookHeader = true
+        hookBuildRequest(
+            descriptor = "$EXTENSION_CLASS->fixVideoActionBar",
+            hookHeader = true
+        )
+
+        val buildInnerTubeFingerprint = if (is_21_02_or_greater) BuildInnerTubeProtoRequestUriFingerprint
+        else BuildInnerTubeProtoRequestUriLegacyFingerprint
+
+        // Comment requests use the same 'next' endpoint as watch page requests.
+        // Their config must not be overridden, so find out which requests are for the watch page.
+        // Some app versions build requests in more than one class (21.16 has two, and the watch
+        // page 'next' request uses the second one), so every request class is hooked.
+        buildInnerTubeFingerprint.matchAll().forEach { uriMatch ->
+            // uri.buildUpon().appendEncodedPath("youtubei/v1").appendEncodedPath(this.request.endpoint)
+            val (requestField, endpointField) = uriMatch.method.let { method ->
+                val appendEndpointIndex = method.indexOfFirstInstructionReversedOrThrow(
+                    methodCall(name = "appendEncodedPath")
+                )
+                val endpointRegister = method.getInstruction<FiveRegisterInstruction>(appendEndpointIndex).registerD
+                val endpointIndex = method.indexOfFirstInstructionReversedOrThrow(appendEndpointIndex) {
+                    opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == endpointRegister
+                }
+                val requestRegister = method.getInstruction<TwoRegisterInstruction>(endpointIndex).registerB
+                val requestIndex = method.indexOfFirstInstructionReversedOrThrow(endpointIndex) {
+                    opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == requestRegister
+                }
+                Pair(
+                    method.getInstruction<ReferenceInstruction>(requestIndex).reference as FieldReference,
+                    method.getInstruction<ReferenceInstruction>(endpointIndex).reference as FieldReference
+                )
+            }
+
+            uriMatch.classDef.apply {
+                addPatchInterface(
+                    EXTENSION_REQUEST_INTERFACE,
+                    "patch_getEndpoint",
+                    """
+                        iget-object v0, p0, $requestField
+                        iget-object v0, v0, $endpointField
+                        return-object v0
+                    """
+                )
+            }
+
+            InnerTubeRequestBodyFingerprint.matchAll(uriMatch.classDef).forEach { bodyMatch ->
+                bodyMatch.method.apply {
+                    findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                        addInstruction(
+                            index,
+                            "invoke-static { v$register, p0 }, $EXTENSION_CLASS->" +
+                                    "onBuildRequestBody(Lcom/google/protobuf/MessageLite;$EXTENSION_REQUEST_INTERFACE)V"
+                        )
+                    }
+                }
+            }
+        }
+
+        val configInfoClass = BuildInnerTubeProtoRequestBodyFingerprint.match(
+            buildInnerTubeFingerprint.originalClassDef
+        ).let {
+            val match = it.instructionMatches.first()
+            val index = match.index
+            val instruction = match.instruction
+            val register = instruction.registersUsed[0]
+
+            it.method.addInstructions(
+                index,
+                "invoke-static { v$register }, $EXTENSION_CLASS->fixVideoActionBar($EXTENSION_CONFIG_INFO_INTERFACE)V"
             )
 
-            val buildInnerTubeFingerprint = if (is_21_02_or_greater) BuildInnerTubeProtoRequestUriFingerprint
-            else BuildInnerTubeProtoRequestUriLegacyFingerprint
+            instruction.getReference<FieldReference>()!!.type
+        }
 
-            // Comment requests use the same 'next' endpoint as watch page requests.
-            // Their config must not be overridden, so find out which requests are for the watch page.
-            // Some app versions build requests in more than one class (21.16 has two, and the watch
-            // page 'next' request uses the second one), so every request class is hooked.
-            buildInnerTubeFingerprint.matchAll().forEach { uriMatch ->
-                // uri.buildUpon().appendEncodedPath("youtubei/v1").appendEncodedPath(this.request.endpoint)
-                val (requestField, endpointField) = uriMatch.method.let { method ->
-                    val appendEndpointIndex = method.indexOfFirstInstructionReversedOrThrow(
-                        methodCall(name = "appendEncodedPath")
-                    )
-                    val endpointRegister = method.getInstruction<FiveRegisterInstruction>(appendEndpointIndex).registerD
-                    val endpointIndex = method.indexOfFirstInstructionReversedOrThrow(appendEndpointIndex) {
-                        opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == endpointRegister
-                    }
-                    val requestRegister = method.getInstruction<TwoRegisterInstruction>(endpointIndex).registerB
-                    val requestIndex = method.indexOfFirstInstructionReversedOrThrow(endpointIndex) {
-                        opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == requestRegister
-                    }
-                    Pair(
-                        method.getInstruction<ReferenceInstruction>(requestIndex).reference as FieldReference,
-                        method.getInstruction<ReferenceInstruction>(endpointIndex).reference as FieldReference
-                    )
-                }
+        getConfigInfoFingerprint(configInfoClass).let {
+            it.classDef.apply {
+                mapOf(
+                    0 to "patch_setColdConfigData",
+                    1 to "patch_setColdHashData"
+                ).forEach { (matchIndex, interfaceMethodName) ->
+                    val coldDataField = it.instructionMatches[matchIndex].fieldReference
 
-                uriMatch.classDef.apply {
-                    addPatchInterface(
-                        EXTENSION_REQUEST_INTERFACE,
-                        "patch_getEndpoint",
-                        """
-                            iget-object v0, p0, $requestField
-                            iget-object v0, v0, $endpointField
-                            return-object v0
-                        """
-                    )
-                }
-
-                InnerTubeRequestBodyFingerprint.matchAll(uriMatch.classDef).forEach { bodyMatch ->
-                    bodyMatch.method.apply {
-                        findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
-                            val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                            addInstruction(
-                                index,
-                                "invoke-static { v$register, p0 }, $EXTENSION_CLASS->" +
-                                        "onBuildRequestBody(Lcom/google/protobuf/MessageLite;$EXTENSION_REQUEST_INTERFACE)V"
-                            )
-                        }
-                    }
+                    addPatchInterface(EXTENSION_CONFIG_INFO_INTERFACE, interfaceMethodName, coldDataField)
                 }
             }
+        }
 
-            val configInfoClass = BuildInnerTubeProtoRequestBodyFingerprint.match(
-                buildInnerTubeFingerprint.originalClassDef
-            ).let {
-                val match = it.instructionMatches.first()
-                val index = match.index
-                val instruction = match.instruction
-                val register = instruction.registersUsed[0]
-
-                it.method.addInstructions(
-                    index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->fixVideoActionBar($EXTENSION_CONFIG_INFO_INTERFACE)V"
-                )
-
-                instruction.getReference<FieldReference>()!!.type
-            }
-
-            getConfigInfoFingerprint(configInfoClass).let {
-                it.classDef.apply {
-                    mapOf(
-                        0 to "patch_setColdConfigData",
-                        1 to "patch_setColdHashData"
-                    ).forEach { (matchIndex, interfaceMethodName) ->
-                        val coldDataField = it.instructionMatches[matchIndex].fieldReference
-
-                        addPatchInterface(EXTENSION_CONFIG_INFO_INTERFACE, interfaceMethodName, coldDataField)
-                    }
-                }
-            }
-
-            // fix: related video overlay is broken due to patch.
-            listOf(
-                ModernRelateVideoOverlayFingerprint,
-                RelateVideoOverlayLayoutParamFingerprint
-            ).forEach { fingerprint ->
-                fingerprint.clearMatch()
-                fingerprint.matchAll().forEach {
-                    it.method.insertLiteralOverride(
-                        it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->fixRelatedVideoOverlay(Z)Z"
-                    )
-                }
-            }
-        } else {
-            // In YT 20.29 or earlier, there are no issues even if the app version is spoofed.
-            // Simply spoofing the app version (in the player).
-            setOf(
-                Endpoint.GET_WATCH,
-                Endpoint.NEXT,
-            ).forEach { endpoint ->
-                addClientVersionHook(
-                    endpoint,
-                    "$EXTENSION_CLASS->getVideoActionBarAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
+        // fix: related video overlay is broken due to patch.
+        listOf(
+            ModernRelateVideoOverlayFingerprint,
+            RelateVideoOverlayLayoutParamFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.clearMatch()
+            fingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->fixRelatedVideoOverlay(Z)Z"
                 )
             }
         }

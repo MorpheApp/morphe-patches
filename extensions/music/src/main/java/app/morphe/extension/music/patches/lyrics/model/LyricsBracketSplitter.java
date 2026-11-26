@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
+import app.morphe.extension.shared.Utils;
 
 public final class LyricsBracketSplitter {
 
@@ -153,8 +154,7 @@ public final class LyricsBracketSplitter {
             backgroundText.append(text, head.open() + 1, head.close());
         }
         if (tail != null) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (backgroundText.length() > 0) {
+            if (Utils.isNotEmpty(backgroundText)) {
                 backgroundText.append(' ');
             }
             backgroundText.append(text, tail.open() + 1, tail.close());

@@ -30,7 +30,7 @@ body:
     id: app-version
     attributes:
       label: App version
-      description: The version of the app you patched. It must be a supported version, as listed in the [patches list](https://github.com/MorpheApp/morphe-patches#-patches-list).
+      description: The version of the app you patched. It must be a supported version, as listed in the [patches list](https://github.com/MorpheApp/morphe-patches/tree/dev#-patches-list).
       placeholder: 'e.g. 21.30.216'
     validations:
       required: true

@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
@@ -106,17 +107,13 @@ internal fun installNativeQueueEngine(
     ).toMutable()
     mutableClassDefBy(wrapperType).fields.add(localFlag)
     mutableClassDefBy(mutableType).fields.add(localItemsFlag)
-    mutableClassDefBy(wrapperType).interfaces.add(NATIVE_PLAYBACK_INTERFACE)
 
     fun bridge(type: String, name: String, parameters: List<String>, result: String, locals: Int, body: String) =
         mutableClassDefBy(type).addBridgeMethod(name, parameters, result, locals, body)
 
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_isLocalQueue",
-        emptyList(),
-        "Z",
-        1,
         """
             iget-boolean v0, p0, $localFlag
             return v0
@@ -147,12 +144,9 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_restoreQueueRepeat",
-        listOf("I"),
-        "V",
-        1,
         """
             iget-boolean v0, p0, $localFlag
             if-eqz v0, :done
@@ -181,12 +175,9 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_attachQueue",
-        listOf("[B", "[B"),
-        "Z",
-        7,
         """
             invoke-virtual {p0, p1}, $wrapperType->patch_localPanel([B)$responseType
             move-result-object v0
@@ -241,12 +232,9 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_updateSnapshot",
-        listOf("[B"),
-        "V",
-        2,
         """
             iget-boolean v0, p0, $localFlag
             if-eqz v0, :done
@@ -273,12 +261,9 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_getSelectedIndex",
-        emptyList(),
-        "I",
-        1,
         """
             iget-object v0, p0, $nativeNavigator
             check-cast v0, $queueType
@@ -289,12 +274,9 @@ internal fun installNativeQueueEngine(
         """
     )
 
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_getRepeatMode",
-        emptyList(),
-        "I",
-        1,
         """
             iget-object v0, p0, $nativeNavigator
             check-cast v0, $queueType
@@ -408,12 +390,9 @@ internal fun installNativeQueueEngine(
 
     // Reuse the ordinary autoplay navigator's initialization and response handling.
     // This detaches the local sequence without loading/seeking/stopping the player.
-    bridge(
-        wrapperType,
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_clearQueue",
-        emptyList(),
-        "Z",
-        6,
         """
             iget-boolean v0, p0, $localFlag
             if-eqz v0, :missing
@@ -559,12 +538,9 @@ internal fun installNativeQueueEngine(
     val sequencerField = nativeQueueSequencerNavigatorFingerprint(sequencerType, navigatorType)
         .instructionMatches.single().fieldReference
 
-    bridge(
-        serviceType,
+    mutableClassDefBy(serviceType).addPatchInterface(
+        SERVICE_NAVIGATOR_INTERFACE,
         "patch_getQueuePlayback",
-        emptyList(),
-        NATIVE_PLAYBACK_INTERFACE,
-        1,
         """
             iget-object v0, p0, $sequencerOwner
             iget-object v0, v0, $sequencer

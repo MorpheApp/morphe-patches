@@ -224,6 +224,52 @@ internal object FeedPostSectionConstructorFingerprint : Fingerprint(
     )
 )
 
+internal object ClassicPostElementToStringFingerprint : Fingerprint(
+    name = "toString",
+    parameters = listOf(),
+    returnType = "Ljava/lang/String;",
+    strings = listOf(
+        "ClassicPostElement(linkId=",
+        ", uniqueId="
+    )
+)
+
+internal object ClassicPostElementConstructorFingerprint : Fingerprint(
+    classFingerprint = ClassicPostElementToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Flairs element.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = { PostFlairsElementToStringFingerprint.originalClassDef.type }
+        )
+    )
+)
+
+internal object ClassicPostSectionToStringFingerprint : Fingerprint(
+    name = "toString",
+    parameters = listOf(),
+    returnType = "Ljava/lang/String;",
+    strings = listOf(
+        "ClassicPostSection(linkId=",
+        ", data="
+    )
+)
+
+internal object ClassicPostSectionConstructorFingerprint : Fingerprint(
+    classFingerprint = ClassicPostSectionToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Classic post element.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = { ClassicPostElementToStringFingerprint.originalClassDef.type }
+        )
+    )
+)
+
 internal object FeedPostSectionMapperFingerprint : Fingerprint(
     filters = listOf(
         newInstance(type = { FeedPostSectionToStringFingerprint.classDef }),
@@ -276,5 +322,77 @@ internal object PostsToLoadLegacyFingerprint : Fingerprint(
         methodCall(smali = "Ljava/lang/Boolean;->booleanValue()Z"),
         opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
         opcode(Opcode.IF_NEZ, MatchAfterImmediately())
+    )
+)
+
+internal object PostFlairFeedPresentationModelConstructorFingerprint : Fingerprint(
+    classFingerprint = PostFlairFeedPresentationModelToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Text.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        // Rich text.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Id.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Community name.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object PostFlairsElementConstructorFingerprint : Fingerprint(
+    classFingerprint = PostFlairsElementToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Link id.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        // Unique id.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Promoted.
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        // Identifier.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        // Flairs.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        )
     )
 )

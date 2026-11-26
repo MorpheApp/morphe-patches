@@ -71,6 +71,26 @@ public final class ChannelSearchRoutes {
     ).compile();
 
     /**
+     * The name of a channel, in the language of the request if the channel added a translation.
+     */
+    public static final Route.CompiledRoute GET_CHANNEL_NAME = new Route(
+            Route.Method.POST,
+            "browse" +
+                    "?prettyPrint=false" +
+                    "&fields=metadata.channelMetadataRenderer.title"
+    ).compile();
+
+    /**
+     * The channel id of a channel url, such as "<a href="https://www.youtube.com/@handle">...</a>".
+     */
+    public static final Route.CompiledRoute RESOLVE_CHANNEL_URL = new Route(
+            Route.Method.POST,
+            "navigation/resolve_url" +
+                    "?prettyPrint=false" +
+                    "&fields=endpoint.browseEndpoint.browseId"
+    ).compile();
+
+    /**
      * The title of a video in the language of the request, if the uploader added a translation
      * of the title. Titles that are not translated by the uploader are the original title.
      */
@@ -208,6 +228,19 @@ public final class ChannelSearchRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "createChannelBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    public static byte[] createUrlBody(String url, Locale locale) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", createContext(locale));
+            body.put("url", url);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createUrlBody failed", ex);
         }
         return new byte[0];
     }

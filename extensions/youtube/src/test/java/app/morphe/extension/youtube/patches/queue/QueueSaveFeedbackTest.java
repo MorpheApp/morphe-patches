@@ -15,10 +15,10 @@ import org.junit.Test;
 
 import java.util.List;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveAddedEntry;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResult;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveAddedEntry;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResult;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
 
 public class QueueSaveFeedbackTest {
     private static final List<String> IDS = List.of("abcdefghijk", "lmnopqrstuv", "ZYXWVUTSRQP");

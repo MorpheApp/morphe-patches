@@ -25,11 +25,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +36,8 @@ import java.util.concurrent.ConcurrentMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.SharedSettings;
+import app.morphe.extension.shared.settings.preference.FeatureFlags;
 import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
 
 @SuppressWarnings("unused")
@@ -51,6 +50,40 @@ public final class EnableDebuggingPatch {
      * resulting in an incomplete log.
      */
     private static final boolean LOG_FEATURE_FLAGS = Logger.isDebugEnabled();
+
+    /**
+     * Flags to hide from the UI.
+     */
+    private static final Set<Long> FLAGS_TO_IGNORE = Set.of(
+            45386834L, // 'You' tab settings icon.
+            45532100L  // Cairo flag. Turning this off with all other flags causes the settings menu to be a mix of old/new.
+    );
+
+    public static final FeatureFlags<Long> FEATURE_FLAGS = new FeatureFlags<>() {
+        @Override
+        public Map<Long, Boolean> getLoggedFlags() {
+            if (LOG_FEATURE_FLAGS) {
+                return Collections.unmodifiableMap(featureFlags);
+            }
+
+            return Collections.emptyMap();
+        }
+
+        @Override
+        protected Long parseFlag(String flag) {
+            return Long.parseLong(flag);
+        }
+
+        @Override
+        protected boolean hasNumericFlags() {
+            return true;
+        }
+
+        @Override
+        protected Set<Long> getFlagsToIgnore() {
+            return FLAGS_TO_IGNORE;
+        }
+    };
 
     private static final Map<Long, Boolean> OVERRIDDEN_FEATURE_FLAGS = loadOverriddenFlags();
 
@@ -119,8 +152,8 @@ public final class EnableDebuggingPatch {
     private static Map<Long, Boolean> loadOverriddenFlags() {
         if (!LOG_FEATURE_FLAGS) return Collections.emptyMap();
 
-        List<Long> disabled = parseFlagList(SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get());
-        List<Long> forced = parseFlagList(SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get());
+        List<Long> disabled = FEATURE_FLAGS.parseFlagList(SharedSettings.DISABLED_FEATURE_FLAGS.get());
+        List<Long> forced = FEATURE_FLAGS.parseFlagList(SharedSettings.FORCED_FEATURE_FLAGS.get());
 
         logFlags("Disabled feature flags:", disabled);
         logFlags("Forced feature flags:", forced);
@@ -243,77 +276,5 @@ public final class EnableDebuggingPatch {
         }
 
         return value;
-    }
-
-    /**
-     * Get all logged feature flags.
-     * @return Map of all known flags and their current state
-     */
-    public static Map<Long, Boolean> getAllLoggedFlags() {
-        if (LOG_FEATURE_FLAGS) {
-            return Collections.unmodifiableMap(featureFlags);
-        }
-
-        return Collections.emptyMap();
-    }
-
-    /**
-     * Serializes flags into the format used by the settings.
-     * @param flags Flag IDs to serialize
-     * @return String containing newline-separated flag IDs
-     */
-    public static String serializeFlags(Collection<Long> flags) {
-        return serializeFlags(flags, '\n');
-    }
-
-    /**
-     * @param flags     Flag IDs to serialize
-     * @param separator Separator to put between the flag IDs
-     * @return String containing the separated flag IDs
-     */
-    public static String serializeFlags(Collection<Long> flags, char separator) {
-        StringBuilder builder = new StringBuilder(10 * flags.size());
-        for (Long flag : flags) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (builder.length() != 0) {
-                builder.append(separator);
-            }
-            builder.append(flag);
-        }
-
-        return builder.toString();
-    }
-
-    /**
-     * Public method for parsing flags.
-     * @param flags String containing flag IDs separated by commas or whitespace
-     * @return Set of parsed flag IDs
-     */
-    public static Set<Long> parseFlags(String flags) {
-        return new HashSet<>(parseFlagList(flags));
-    }
-
-    /**
-     * @param flags String containing flag IDs separated by commas or whitespace
-     * @return Parsed flag IDs, in the order they appear
-     */
-    public static List<Long> parseFlagList(String flags) {
-        if (flags.isBlank()) {
-            return Collections.emptyList();
-        }
-
-        String[] split = flags.split("[,\\s]+");
-        List<Long> parsedFlags = new ArrayList<>(split.length);
-        for (String flag : split) {
-            String trimmedFlag = flag.trim();
-            if (trimmedFlag.isEmpty()) continue; // Skip empty entries.
-            try {
-                parsedFlags.add(Long.parseLong(trimmedFlag));
-            } catch (NumberFormatException e) {
-                Logger.printException(() -> "Invalid flag ID: " + flag);
-            }
-        }
-
-        return parsedFlags;
     }
 }

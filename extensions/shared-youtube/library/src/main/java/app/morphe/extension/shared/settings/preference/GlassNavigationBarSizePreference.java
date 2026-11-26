@@ -104,12 +104,17 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
          * @return The icons, the labels and the selected button of the last glass navigation bar,
          *         as the bar shows them, such as without labels.
          */
-        public static PreviewButtons fromLastBar(int iconId, int labelId) {
+        public static PreviewButtons fromLastBar(int[] iconIds, int labelId) {
             PreviewButtons buttons = new PreviewButtons();
             for (WeakReference<View> reference : GlassNavigationBarLayout.lastButtons) {
                 if (!(reference.get() instanceof ViewGroup button)) continue;
 
-                View icon = iconId == 0 ? null : button.findViewById(iconId);
+                View icon = null;
+                for (int iconId : iconIds) {
+                    if (icon == null && iconId != 0) {
+                        icon = button.findViewById(iconId);
+                    }
+                }
                 Picture picture = null;
                 if (icon != null && icon.getWidth() > 0 && icon.getHeight() > 0) {
                     // Recorded, not drawn to a bitmap, so the hardware bitmaps of the icons (the account avatar) work.

@@ -1,24 +1,18 @@
 package android.support.v7.widget;
 
 import android.content.Context;
-import android.view.View;
+import android.view.ViewGroup;
 
 @SuppressWarnings("unused")
-public class RecyclerView extends View {
+public class RecyclerView extends ViewGroup {
 
     public RecyclerView(Context context) {
         super(context);
         throw new UnsupportedOperationException("Stub");
     }
 
-    @SuppressWarnings("SameReturnValue")
-    public View getChildAt(final int index) {
-        return null;
-    }
-
-    @SuppressWarnings("SameReturnValue")
-    public int getChildCount() {
-        return 0;
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
     }
 
     @Override

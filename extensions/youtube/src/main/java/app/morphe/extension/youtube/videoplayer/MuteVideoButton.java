@@ -38,9 +38,11 @@ public class MuteVideoButton {
                 return;
             }
 
+            // YouTube shows its own mute button to some accounts, and then this one is not needed.
             overlayButtonRef = new WeakReference<>(PlayerOverlayButton.addButton(
                     controlsView,
                     getIconName(),
+                    () -> PlayerOverlayButton.getShownMuteButton() == null,
                     view -> toggleMute(),
                     null
             ));

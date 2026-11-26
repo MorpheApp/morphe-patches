@@ -15,14 +15,19 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 
 @SuppressWarnings("unused")
 public class LyricsCacheTest {
@@ -32,6 +37,7 @@ public class LyricsCacheTest {
     @Before
     public void setUp() {
         LyricsTestEnv.bootstrap();
+        TrackOffsetStore.clear();
         track = LyricsFixtures.track("Test Song", "Test Artist");
     }
 
@@ -143,14 +149,52 @@ public class LyricsCacheTest {
         assertNull(LyricsCache.getRomanization(track, "TestProvider", List.of("line 1")));
     }
 
-    // ── preference cache ──
+    @Test
+    public void translationPutSanitizesEmbeddedNewlines() {
+        List<String> sourceLines = List.of("first", "second");
+        List<String> translation = List.of("first line\nwrapped", "second line\r\nwrapped");
+        LyricsCache.putTranslation(track, "TestProvider", "en", sourceLines, translation);
+        List<String> result = LyricsCache.getTranslation(track, "TestProvider", "en", sourceLines);
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("first line wrapped", result.get(0));
+        assertEquals("second line wrapped", result.get(1));
+    }
+
+    @Test
+    public void wordRomanizationPutThenGetRoundTrip() {
+        List<Word> origWords = List.of(
+                new Word(100, 300, "君", null, false, null),
+                new Word(300, 600, "と", null, true, null)
+        );
+        LyricsLine origLine = new LyricsLine(100, 600, "君と", origWords, "v1", false, false, "Verse");
+        LyricsLine romLine = new LyricsLine(100, 600, "kimi to", List.of(
+                new Word(100, 300, "君", "kimi", false, null),
+                new Word(300, 600, "と", "to", true, null)
+        ), "v1", false, false, "Verse");
+        List<String> sourceLines = List.of("君と");
+
+        LyricsCache.putWordRomanization(track, "TestProvider", sourceLines, List.of(romLine));
+        List<LyricsLine> restored = LyricsCache.getWordRomanization(
+                track, "TestProvider", sourceLines, List.of(origLine));
+        assertNotNull(restored);
+        assertEquals(1, restored.size());
+        assertEquals("kimi to", restored.get(0).text());
+        assertEquals(2, restored.get(0).words().size());
+        assertEquals("kimi", restored.get(0).words().get(0).romaji());
+        assertEquals("to", restored.get(0).words().get(1).romaji());
+        assertEquals(100, restored.get(0).words().get(0).startMs());
+        assertEquals("v1", restored.get(0).agentId());
+    }
+
+    // -- preference cache --
 
     @Test
     public void preferenceGetReturnsNullWhenMissing() {
         assertNull(LyricsCache.getPreference("video123", track));
     }
 
-    // ── clear / size ──
+    // -- clear / size --
 
     @Test
     public void clearRemovesAllEntries() {
@@ -168,5 +212,179 @@ public class LyricsCacheTest {
         // After clear, size should be 0 or close to it.
         LyricsCache.clear();
         assertEquals(0, LyricsCache.size());
+    }
+
+    @Test
+    public void statsAndBucketClearSeparateLyricsTranslationAndTransliteration() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        LyricsCache.putTranslation(track, "TestProvider", "en", List.of("hello"), List.of("halo"));
+        LyricsCache.putRomanization(track, "TestProvider", List.of("hello"),
+                List.of(new LyricsLine(0, "helo")));
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.lyrics().items());
+        assertEquals(1, stats.translation().items());
+        assertEquals(1, stats.transliteration().items());
+        assertEquals(3, stats.total().items());
+        assertTrue(stats.lyrics().bytes() > 0);
+        assertTrue(stats.translation().bytes() > 0);
+        assertTrue(stats.transliteration().bytes() > 0);
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.TRANSLATION) > 0);
+        assertNull(LyricsCache.getTranslation(track, "TestProvider", "en", List.of("hello")));
+        assertNotNull(LyricsCache.getRomanization(track, "TestProvider", List.of("hello")));
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+
+        LyricsCache.CacheStats afterTransClear = LyricsCache.stats();
+        assertEquals(1, afterTransClear.lyrics().items());
+        assertEquals(0, afterTransClear.translation().items());
+        assertEquals(1, afterTransClear.transliteration().items());
+        assertEquals(2, afterTransClear.total().items());
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.TRANSLITERATION) > 0);
+        assertNull(LyricsCache.getRomanization(track, "TestProvider", List.of("hello")));
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+
+        LyricsCache.CacheStats afterRomaClear = LyricsCache.stats();
+        assertEquals(1, afterRomaClear.lyrics().items());
+        assertEquals(0, afterRomaClear.transliteration().items());
+        assertEquals(1, afterRomaClear.total().items());
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.LYRICS) > 0);
+        assertEquals(0, LyricsCache.stats().total().items());
+    }
+
+    @Test
+    public void statsExcludesNotFoundAndDuplicatePreferences() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "MissingProvider", Lyrics.NOT_FOUND, "vid1");
+        LyricsCache.putPreference("vid1", track, null, null, lyrics, List.of(), "fp1");
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.lyrics().items());
+    }
+
+    @Test
+    public void clearLyricsRemovesEmbeddedAndRawSidecars() {
+        LyricsCache.clear();
+        Lyrics lyrics = new Lyrics(
+                List.of(new LyricsLine(0, "hello")),
+                "TestProvider",
+                true,
+                List.of(new LyricsLine(0, "helo")),
+                Map.of("en", List.of(new LyricsLine(0, "halo"))),
+                null,
+                null,
+                "[00:00.00]hello",
+                "lrc",
+                null);
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+
+        File dir = LyricsDirectories.directory(LyricsDirectories.OFFLINE);
+        assertNotNull(dir);
+        assertTrue(dir.listFiles().length >= 4);
+
+        LyricsCache.clear(LyricsCache.CacheBucket.LYRICS);
+        assertEquals(0, dir.listFiles().length);
+        assertEquals(0, LyricsCache.stats().total().items());
+    }
+
+    @Test
+    public void clearTranslationRemovesTtmlRawButPreservesNonTtmlRaw() {
+        LyricsCache.clear();
+        Lyrics ttmlLyrics = new Lyrics(
+                List.of(new LyricsLine(0, "hello")),
+                "TtmlProvider",
+                true,
+                List.of(new LyricsLine(0, "helo")),
+                Map.of("en", List.of(new LyricsLine(0, "halo"))),
+                null,
+                null,
+                "<tt>raw</tt>",
+                "ttml",
+                null);
+        Lyrics krcLyrics = new Lyrics(
+                List.of(new LyricsLine(0, "world")),
+                "KrcProvider",
+                true,
+                null,
+                null,
+                null,
+                null,
+                "[00:00.00]world",
+                "krc",
+                null);
+        LyricsCache.put(track, "TtmlProvider", ttmlLyrics, null);
+        LyricsCache.put(track, "KrcProvider", krcLyrics, null);
+        LyricsCache.putTranslation(track, "TtmlProvider", "en", List.of("hello"), List.of("halo"));
+
+        LyricsCache.clear(LyricsCache.CacheBucket.TRANSLATION);
+        File dir = LyricsDirectories.directory(LyricsDirectories.OFFLINE);
+        assertNotNull(dir);
+        int remainingRawCount = 0;
+        for (File file : dir.listFiles()) {
+            String name = file.getName();
+            assertTrue("Unexpected translation file remained: " + name, !name.contains(".trans."));
+            if (name.endsWith(".raw")) {
+                remainingRawCount++;
+            }
+        }
+        assertEquals(1, remainingRawCount);
+        assertEquals(0, LyricsCache.stats().translation().items());
+    }
+
+    @Test
+    public void statsAndClearKeepAiSectionSeparateFromLyrics() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        LyricsCache.putSectionAI(track, "TestProvider", List.of("hello"), List.of("Verse"));
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.lyrics().items());
+        assertEquals(1, stats.aiSection().items());
+        assertTrue(stats.aiSection().bytes() > 0);
+        assertEquals(2, stats.total().items());
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.AI_SECTION) > 0);
+        assertNull(LyricsCache.getSectionAI(track, "TestProvider", List.of("hello")));
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+
+        LyricsCache.CacheStats after = LyricsCache.stats();
+        assertEquals(0, after.aiSection().items());
+        assertEquals(1, after.lyrics().items());
+    }
+
+    @Test
+    public void offsetBucketJoinsTotalAndClearsIndependently() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        TrackOffsetStore.put(track, 500);
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.offset().items());
+        assertEquals(2, stats.total().items());
+
+        assertEquals(0, LyricsCache.clear(LyricsCache.CacheBucket.OFFSET));
+        assertEquals(0, TrackOffsetStore.get(track));
+        LyricsCache.CacheStats after = LyricsCache.stats();
+        assertEquals(0, after.offset().items());
+        assertEquals(1, after.total().items());
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+    }
+
+    @Test
+    public void clearAllAlsoClearsSavedOffsets() {
+        LyricsCache.clear();
+        TrackOffsetStore.put(track, 500);
+        assertEquals(1, LyricsCache.stats().offset().items());
+
+        LyricsCache.clear();
+        assertEquals(0, TrackOffsetStore.get(track));
+        assertEquals(0, LyricsCache.stats().total().items());
     }
 }

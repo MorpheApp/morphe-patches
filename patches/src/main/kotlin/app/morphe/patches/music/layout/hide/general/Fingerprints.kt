@@ -10,6 +10,7 @@ package app.morphe.patches.music.layout.hide.general
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -115,6 +116,16 @@ internal object SearchSuggestionsRenderFingerprint : Fingerprint(
 )
 
 /**
+ * Converts a section list item to its renderer. It is in the section list wrapper,
+ * which [SearchSuggestionsRenderFingerprint] creates. The parameter is the section list item.
+ */
+internal object SectionListItemRendererFingerprint : Fingerprint(
+    definingClass = { SearchSuggestionsRenderFingerprint.instructionMatches[1].methodReference.definingClass },
+    returnType = { "Lj$/util/Optional;" },
+    parameters = { listOf("L") }
+)
+
+/**
  * A bit of the music shelf item bit field set when the item is a search history entry.
  */
 private const val MUSIC_SHELF_ITEM_SEARCH_HISTORY_BIT = 0x8000000L
@@ -137,5 +148,31 @@ internal object MusicShelfItemsFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6)),
         literal(MUSIC_SHELF_ITEM_SUGGESTED_SEARCH_BIT),
         fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6))
+    )
+)
+
+/**
+ * Copies a proto list into a mutable list with the given capacity.
+ * The list is the type of the shelf items field that [MusicShelfItemsFingerprint] reads first.
+ */
+internal object ProtoListMutableCopyFingerprint : Fingerprint(
+    definingClass = { MusicShelfItemsFingerprint.instructionMatches.first().fieldReference.type },
+    returnType = { MusicShelfItemsFingerprint.instructionMatches.first().fieldReference.type },
+    parameters = { listOf("I") }
+)
+
+/**
+ * The Library tab binds its floating New button as an extended button. Other fragments bind
+ * a view with the same id as a different class, so the cast tells the Library button apart.
+ */
+internal object NewButtonFingerprint : Fingerprint(
+    name = "onCreateView",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "floating_action_button"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        checkCast(
+            "Lcom/google/android/material/floatingactionbutton/ExtendedFloatingActionButton;",
+            location = MatchAfterImmediately()
+        )
     )
 )

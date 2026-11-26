@@ -50,8 +50,8 @@ import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
-import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -77,21 +77,6 @@ public final class LyricsManager {
     private static final LyricsManager INSTANCE = new LyricsManager();
     private static final long PENDING_COMMIT_MS = 1500;
     private static final long REBINDING_CONFIRM_MS = 1500;
-    /**
-     * A video time sample this far ahead of the estimate is a seek, which the estimate jumps to
-     * instead of catching up with. So is a sample this far off after none came for a while.
-     */
-    private static final long SEEK_THRESHOLD_MS = 1000;
-    /** A video time sample this far behind the estimate is a seek backwards. */
-    private static final long BACKWARD_SEEK_THRESHOLD_MS = 500;
-    /** While paused, a video time sample this far off replaces the estimate. */
-    private static final long PAUSED_RESYNC_THRESHOLD_MS = 600;
-    /** A playback state sample this far off the estimate is a seek. */
-    private static final long PLAYBACK_STATE_SEEK_THRESHOLD_MS = 1200;
-    /** Playback state samples older than this no longer vouch for the estimate. */
-    private static final long PLAYBACK_STALE_MS = 500;
-    /** A longer gap between two reads, such as after the app was in the background, is not extrapolated over. */
-    private static final long MAX_EXTRAPOLATION_MS = 500;
     /** Shorter tracks are too short for where the lyrics end to say anything. */
     private static final int MIN_CUT_OFF_CHECK_SECONDS = 60;
     /** Lyrics ending before 15% of the track are taken as cut off. */
@@ -114,10 +99,19 @@ public final class LyricsManager {
     private volatile TrackInfo currentTrack;
 
     @Nullable
-    private volatile String sectionsPendingFingerprint;
+    private volatile Lyrics sectionsPendingFor;
 
     @Nullable
     private volatile List<String> pendingSections;
+
+    @Nullable
+    private volatile Lyrics pendingSectionsFor;
+
+    @Nullable
+    private volatile TrackInfo pendingSectionsTrack;
+
+    @Nullable
+    private volatile Lyrics sectionDetectionTarget;
 
     private volatile boolean sectionDetecting;
 
@@ -168,16 +162,7 @@ public final class LyricsManager {
     private volatile String dialogPreviewVideoId;
 
     private volatile State state = State.IDLE;
-    // The position is sampled a few times a second, and estimated in between on every read
-    // so the highlight moves smoothly.
-    private long smoothPositionMs;
-    private long lastSmoothUpdateUptimeMs;
-    private long lastSampledPlaybackPosMs = -1;
-    private long lastVideoTimeSample = -1;
-    private long lastPlaybackSampleUptimeMs;
-    private float playbackSpeed = 1f;
-    private float driftSpeedFactor = 1f;
-    private boolean playing;
+    private final PlaybackClock clock = new PlaybackClock();
     private int temporaryOffsetMs = 0;
     private volatile boolean phase2Done;
     /**
@@ -291,35 +276,21 @@ public final class LyricsManager {
         }
     }
 
-    /** Carries the estimate forward by the time since it was last moved, while playing. */
-    private void advanceSmoothPosition(long now) {
-        final long elapsed = Math.min(MAX_EXTRAPOLATION_MS, now - lastSmoothUpdateUptimeMs);
-        if (playing && lastSmoothUpdateUptimeMs > 0 && elapsed > 0) {
-            final float effectiveSpeed = Math.max(0.1f, playbackSpeed * driftSpeedFactor);
-            long advanced = Math.round(smoothPositionMs + elapsed * effectiveSpeed);
-            final TrackInfo track = currentTrack;
-            if (track != null && track.durationSeconds() > 0) {
-                advanced = Math.min(advanced, track.durationSeconds() * 1000L);
-            }
-            smoothPositionMs = advanced;
-        }
-        lastSmoothUpdateUptimeMs = now;
-    }
-
-    /** Pulls the estimate towards a sample, all the way when it is far off. */
+    /** Test seam. */
     private static long correctSmoothEstimate(long currentSmoothMs, long reportedPositionMs) {
-        final double error = reportedPositionMs - currentSmoothMs;
-        final double absError = Math.abs(error);
-        final double factor = absError > 150 ? 1 : absError > 30 ? 0.85 : 0.5;
-        return Math.max(0L, Math.round(currentSmoothMs + error * factor));
+        return PlaybackClock.correctSmoothEstimate(currentSmoothMs, reportedPositionMs);
     }
 
-    /** Proportional rate damping when smooth position runs ahead of video time. */
+    /** Test seam. */
     static float calculateDriftSpeedFactor(long drift) {
-        if (drift >= -20L) {
-            return 1.0f;
-        }
-        return Math.max(0.9f, 1.0f + (float) drift / 1000f);
+        return PlaybackClock.calculateDriftSpeedFactor(drift);
+    }
+
+    private long trackDurationMs() {
+        final TrackInfo track = currentTrack;
+        return track != null && track.durationSeconds() > 0
+                ? (long) (track.durationSeconds() * 1000.0)
+                : Long.MAX_VALUE;
     }
 
     /**
@@ -396,12 +367,11 @@ public final class LyricsManager {
     }
 
     private void resetPosition() {
-        smoothPositionMs = 0;
-        lastSmoothUpdateUptimeMs = SystemClock.uptimeMillis();
-        lastSampledPlaybackPosMs = -1;
-        lastVideoTimeSample = -1;
-        lastPlaybackSampleUptimeMs = 0;
-        driftSpeedFactor = 1f;
+        resetPositionAt(SystemClock.uptimeMillis());
+    }
+
+    void resetPositionAt(long now) {
+        clock.reset(now);
     }
 
     /**
@@ -419,35 +389,11 @@ public final class LyricsManager {
     }
 
     private long computeExpectedPositionMs() {
-        final long now = SystemClock.uptimeMillis();
-        advanceSmoothPosition(now);
+        return computeExpectedPositionAt(VideoInformation.getVideoTime(), SystemClock.uptimeMillis());
+    }
 
-        final long videoTime = VideoInformation.getVideoTime();
-        if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
-            lastVideoTimeSample = videoTime;
-
-            final long drift = videoTime - smoothPositionMs;
-            final boolean isInitial = lastPlaybackSampleUptimeMs == 0 || smoothPositionMs == 0;
-            final boolean isBackwardSeek = smoothPositionMs > 0 && drift < -BACKWARD_SEEK_THRESHOLD_MS;
-            final boolean isForwardSeek = drift > SEEK_THRESHOLD_MS;
-            final boolean isStaleDrift = Math.abs(drift) > SEEK_THRESHOLD_MS
-                    && now - lastPlaybackSampleUptimeMs > PLAYBACK_STALE_MS;
-
-            if (isInitial || isBackwardSeek || isForwardSeek || isStaleDrift
-                    || (!playing && Math.abs(drift) > PAUSED_RESYNC_THRESHOLD_MS)) {
-                smoothPositionMs = videoTime;
-                driftSpeedFactor = 1f;
-            } else if (playing) {
-                if (drift > 50) {
-                    smoothPositionMs = correctSmoothEstimate(smoothPositionMs, videoTime);
-                    driftSpeedFactor = 1f;
-                } else {
-                    driftSpeedFactor = calculateDriftSpeedFactor(drift);
-                }
-            }
-        }
-
-        return Math.max(0L, smoothPositionMs);
+    long computeExpectedPositionAt(long videoTime, long now) {
+        return clock.expectedPositionAt(videoTime, now, trackDurationMs());
     }
 
     public int getTemporaryOffsetMs() {
@@ -456,6 +402,23 @@ public final class LyricsManager {
 
     public void setTemporaryOffsetMs(int ms) {
         temporaryOffsetMs = ms;
+        notifyTemporaryOffsetChanged(ms);
+    }
+
+    /** Called after saved offsets are cleared so the in-session value is not written back. */
+    public void clearTemporaryOffsetMs() {
+        temporaryOffsetMs = 0;
+        notifyTemporaryOffsetChanged(0);
+    }
+
+    private void notifyTemporaryOffsetChanged(int ms) {
+        for (Listener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onTemporaryOffsetChanged(ms);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Temporary offset listener failure", ex);
+            }
+        }
     }
 
     /** Called from the panel when the track is about to change or to go away, not per drag frame. */
@@ -470,7 +433,12 @@ public final class LyricsManager {
 
     /** Main thread. */
     public boolean isPlaying() {
-        return playing;
+        return clock.isPlaying();
+    }
+
+    /** Main thread. */
+    public float getPlaybackSpeed() {
+        return clock.getPlaybackSpeed();
     }
 
     /** The artwork of the current media session track, null if it has none. Main thread. */
@@ -728,54 +696,45 @@ public final class LyricsManager {
                 pending.mediaUri(), pending.videoId(), false);
     }
 
+    /** Injection point; main thread. Immediately freezes word-sync when MedialibPlayer pauses. */
+    public void onPauseVideo() {
+        Utils.verifyOnMainThread();
+        onPauseVideoAt(SystemClock.uptimeMillis());
+    }
+
+    void onPauseVideoAt(long now) {
+        clock.onPause(now, trackDurationMs());
+    }
+
+    /** Injection point; main thread. Immediately resumes word-sync when MedialibPlayer plays. */
+    public void onPlayVideo() {
+        Utils.verifyOnMainThread();
+        onPlayVideoAt(SystemClock.uptimeMillis());
+        ensureLoadedForCurrentVideo();
+    }
+
+    void onPlayVideoAt(long now) {
+        clock.onPlay(now, trackDurationMs());
+    }
+
     /** Injection point; main thread. */
-    @SuppressWarnings("StatementWithEmptyBody")
     public void onSetPlaybackState(@Nullable PlaybackState playbackState) {
         Utils.verifyOnMainThread();
         if (playbackState == null) {
             return;
         }
-
-        final boolean wasPlaying = playing;
-        final boolean nowPlaying = playbackState.getState() == PlaybackState.STATE_PLAYING;
-        final long now = SystemClock.uptimeMillis();
-        // Up to now at the old state, so a pause keeps the time played since the last read.
-        advanceSmoothPosition(now);
-        if (wasPlaying != nowPlaying) {
-            driftSpeedFactor = 1f;
-        }
-        playing = nowPlaying;
-        final long newPosition = playbackState.getPosition();
-        final long videoTime = VideoInformation.getVideoTime();
-        // A new state can report zero before it reports where the video really is.
-        final boolean isStaleZero = newPosition == 0 && videoTime > SEEK_THRESHOLD_MS;
-        if (newPosition >= 0 && !isStaleZero) {
-            if (lastSampledPlaybackPosMs < 0
-                    || Math.abs(newPosition - smoothPositionMs) > PLAYBACK_STATE_SEEK_THRESHOLD_MS) {
-                smoothPositionMs = newPosition;
-            } else if (wasPlaying != nowPlaying) {
-                // The sample sent with a pause or a resume is coarse, and taking it would
-                // make the highlight step back on pause or lag behind on resume.
-            } else if (newPosition != lastSampledPlaybackPosMs) {
-                // While playing, a coarse sample may only pull the estimate forward, unless it
-                // is the only source of the position.
-                if (!nowPlaying || videoTime < 0 || newPosition > smoothPositionMs) {
-                    smoothPositionMs = nowPlaying
-                            ? correctSmoothEstimate(smoothPositionMs, newPosition)
-                            : newPosition;
-                }
-            }
-            lastSampledPlaybackPosMs = newPosition;
-            lastPlaybackSampleUptimeMs = now;
-        }
-
-        final float speed = playbackState.getPlaybackSpeed();
-        // A paused state reports speed zero, which would freeze the extrapolation even
-        // after playback resumes, so only positive speeds are kept.
-        if (speed > 0) {
-            playbackSpeed = speed;
-        }
+        applyPlaybackState(
+                playbackState.getState(),
+                playbackState.getPosition(),
+                playbackState.getPlaybackSpeed(),
+                VideoInformation.getVideoTime(),
+                SystemClock.uptimeMillis()
+        );
         ensureLoadedForCurrentVideo();
+    }
+
+    void applyPlaybackState(int state, long newPosition, float speed, long videoTime, long now) {
+        clock.applyPlaybackState(state, newPosition, speed, videoTime, now, trackDurationMs());
     }
 
     public void onDisplayedTrackChanged(@Nullable String title, @Nullable String artist, @Nullable Uri mediaUri) {
@@ -846,6 +805,12 @@ public final class LyricsManager {
         preferenceVideoId = VideoInformation.getVideoId();
         loadedForVideoId = preferenceVideoId;
         displaySegs = null;
+        sectionsPendingFor = null;
+        pendingSections = null;
+        pendingSectionsFor = null;
+        pendingSectionsTrack = null;
+        sectionDetectionTarget = null;
+        sectionDetecting = false;
 
         // Started after this track's own lookup is on its way, so they never wait on
         // each other.
@@ -884,6 +849,10 @@ public final class LyricsManager {
             }
             final TrackInfo searchTrack = LyricsMatch.withEffectiveDuration(track, segs);
             phase2Done = false;
+            // Re-read the file first so retagged lyrics take effect on refresh.
+            if (refreshEmbeddedLyrics(id, searchTrack)) {
+                return;
+            }
             if (pollAndPublishNext(id, track)) {
                 return;
             }
@@ -897,7 +866,8 @@ public final class LyricsManager {
                 if (queryTrack != null) {
                     providers = LyricsProviders.searchableProviders(providers);
                 }
-                collectRemainingCandidates(id, queryTrack != null ? queryTrack : searchTrack, providers);
+                collectRemainingCandidates(id, queryTrack != null ? queryTrack : searchTrack,
+                        providers, queryTrack != null);
 
                 if (pollAndPublishNext(id, track)) {
                     return;
@@ -923,6 +893,48 @@ public final class LyricsManager {
                 }
             });
         });
+    }
+
+    /** Re-read the file's lyrics on refresh; a provider result stays so the cycle can wrap back. */
+    private boolean refreshEmbeddedLyrics(int id, TrackInfo track) {
+        if (id != requestId.get() || !Settings.LYRICS_USE_EMBEDDED.get()) {
+            return false;
+        }
+        final Lyrics current = currentLyrics;
+        if (current == null || !LocalLyricsFetcher.PROVIDER_NAME.equals(current.providerName())) {
+            return false;
+        }
+        final Uri embeddedUri = localUriFor(track);
+        if (embeddedUri == null) {
+            return false;
+        }
+        final Lyrics embedded = LocalLyricsFetcher.fetch(embeddedUri);
+        if (embedded == null || embedded.isEmpty()) {
+            return false;
+        }
+        // Compare after the display filters, so an unchanged file keeps cycling.
+        Lyrics prepared;
+        try {
+            prepared = prepareForDisplay(embedded);
+        } catch (Throwable ignored) {
+            prepared = embedded;
+        }
+        if (!shouldRefreshLocal(current, prepared)) {
+            return false;
+        }
+        publishFromLookup(id, embedded);
+        return true;
+    }
+
+    /** True when the refreshed file lyric differs from the one on screen. */
+    static boolean shouldRefreshLocal(@Nullable Lyrics current, @Nullable Lyrics fresh) {
+        if (current == null || fresh == null || fresh.isEmpty()) {
+            return false;
+        }
+        if (!LocalLyricsFetcher.PROVIDER_NAME.equals(current.providerName())) {
+            return false;
+        }
+        return !LyricsMatch.fingerprint(current).equals(LyricsMatch.fingerprint(fresh));
     }
 
     /**
@@ -987,7 +999,7 @@ public final class LyricsManager {
     }
 
     private void collectRemainingCandidates(int id, TrackInfo track,
-                                            List<LyricsProvider> providers) {
+                                            List<LyricsProvider> providers, boolean search) {
         if (id != requestId.get()) {
             return;
         }
@@ -1013,7 +1025,9 @@ public final class LyricsManager {
             }
             futures.add(submitFetch(id, cs, () -> {
                 try {
-                    return provider.fetchCandidates(candidateTrack);
+                    return search
+                            ? provider.fetchCandidatesBySearch(candidateTrack)
+                            : provider.fetchCandidates(candidateTrack);
                 } catch (Exception ex) {
                     Logger.printDebug(() -> "Phase 2 fetch failed: " + provider.name(), ex);
                     return null;
@@ -1291,7 +1305,7 @@ public final class LyricsManager {
             }
         }
 
-        LyricsPanelInstaller.enableLyricsButton();
+        LyricsPanelInstaller.enableLyricsTab();
         Utils.runOnMainThreadDelayed(LyricsPanelInstaller::onLyricsPanelDetected, 300);
         rememberPreference(display);
     }
@@ -1492,7 +1506,8 @@ public final class LyricsManager {
                 shownFingerprints.add(preferredFp);
             }
 
-            Tiers tiers = buildTiers(queryTrack, defaultTerms ? currentRawTitle : queryTitle);
+            Tiers tiers = buildTiers(queryTrack,
+                    defaultTerms ? currentRawTitle : queryTitle, !defaultTerms);
             boolean[] failed = {false};
             LookupResult fetchResult = fetchFromProviders(id, tiers.original(), tiers.derived(),
                     failed, providers, !defaultTerms);
@@ -1603,8 +1618,8 @@ public final class LyricsManager {
         // Custom terms carry none of the playing track's InnerTube metadata, which says
         // nothing about them.
         Tiers tiers = queryTrack != null
-                ? buildTiers(queryTrack, queryTrack.title())
-                : buildTiers(track, currentRawTitle);
+                ? buildTiers(queryTrack, queryTrack.title(), true)
+                : buildTiers(track, currentRawTitle, false);
 
         LookupResult fetchResult = fetchFromProviders(id, tiers.original(), tiers.derived(),
                 failed, providers, false);
@@ -1783,16 +1798,18 @@ public final class LyricsManager {
 
     /**
      * Builds the query tiers for a lookup.
+     *
+     * @param search true for the user's own terms (matched by title and artist).
      */
-    private Tiers buildTiers(TrackInfo track, @Nullable String rawTitle) {
+    private Tiers buildTiers(TrackInfo track, @Nullable String rawTitle, boolean search) {
         if (LyricsRequests.isCustomMatchMode()) {
             track = new TrackInfo(track.title(), track.artist(), "", 0);
         }
         List<VariantQuery> originalTier = new ArrayList<>();
         List<VariantQuery> derivedTier = new ArrayList<>();
-        originalTier.add(new VariantQuery(track, 0));
+        originalTier.add(new VariantQuery(track, 0, search));
         for (TrackInfo v : CharactersConverter.variants(track)) {
-            derivedTier.add(new VariantQuery(v, 1));
+            derivedTier.add(new VariantQuery(v, 1, search));
         }
 
         if (track.artist() != null) {
@@ -1800,7 +1817,7 @@ public final class LyricsManager {
             for (String artist : splitArtists) {
                 if (!artist.equals(track.artist())) {
                     derivedTier.add(new VariantQuery(new TrackInfo(
-                            track.title(), artist, track.album(), track.durationSeconds()), 2));
+                            track.title(), artist, track.album(), track.durationSeconds()), 2, search));
                 }
             }
         }
@@ -1808,19 +1825,19 @@ public final class LyricsManager {
         TrackInfo trusted = MetadataCleaner.trustedDashSplit(
                 rawTitle, track.artist(), track.album(), track.durationSeconds());
         if (trusted != null && !trusted.equals(track)) {
-            originalTier.add(new VariantQuery(trusted, 1));
+            originalTier.add(new VariantQuery(trusted, 1, search));
         }
 
         TrackInfo dashSplit = MetadataCleaner.anyDashSplit(
                 rawTitle, track.album(), track.durationSeconds());
         if (dashSplit != null && !dashSplit.equals(track) && !dashSplit.equals(trusted)) {
-            derivedTier.add(new VariantQuery(dashSplit, 2));
+            derivedTier.add(new VariantQuery(dashSplit, 2, search));
         }
         TrackInfo dashSplitRev = MetadataCleaner.anyDashSplitReversed(
                 rawTitle, track.album(), track.durationSeconds());
         if (dashSplitRev != null && !dashSplitRev.equals(track)
                 && !dashSplitRev.equals(trusted) && !dashSplitRev.equals(dashSplit)) {
-            derivedTier.add(new VariantQuery(dashSplitRev, 2));
+            derivedTier.add(new VariantQuery(dashSplitRev, 2, search));
         }
         return new Tiers(originalTier, derivedTier);
     }
@@ -2079,7 +2096,9 @@ public final class LyricsManager {
     @Nullable
     private static LyricsProvider.FetchResult fetchWithRetry(LyricsProvider provider,
                                                              VariantQuery vq) throws Exception {
-        final LyricsProvider.FetchResult result = provider.fetch(vq.track());
+        final LyricsProvider.FetchResult result = vq.search()
+                ? provider.fetchBySearch(vq.track())
+                : provider.fetch(vq.track());
         if (!hasLyrics(result)) {
             return null;
         }
@@ -2087,7 +2106,9 @@ public final class LyricsManager {
             return result;
         }
         try {
-            final LyricsProvider.FetchResult retry = provider.fetch(vq.track());
+            final LyricsProvider.FetchResult retry = vq.search()
+                    ? provider.fetchBySearch(vq.track())
+                    : provider.fetch(vq.track());
             return hasLyrics(retry) ? retry : result;
         } catch (InterruptedException | CancellationException ex) {
             throw ex;
@@ -2182,7 +2203,7 @@ public final class LyricsManager {
             }
             shownFingerprints.add(LyricsMatch.fingerprint(prepared));
             setState(State.LOADED, prepared);
-            LyricsPanelInstaller.enableLyricsButton();
+            LyricsPanelInstaller.enableLyricsTab();
             Utils.runOnMainThreadDelayed(LyricsPanelInstaller::onLyricsPanelDetected, 300);
             rememberPreference(prepared);
         }
@@ -2290,22 +2311,7 @@ public final class LyricsManager {
         String cacheKey = null;
         if (lyrics != null && lyrics != Lyrics.NOT_FOUND && !lyrics.isEmpty()) {
             // Split and section labels change the output, so both belong in the cache key.
-            List<LyricsLine> lines = lyrics.lines();
-            boolean hasSections = false;
-            for (LyricsLine line : lines) {
-                String part = line.songPart();
-                if (part != null && !part.isEmpty()) {
-                    hasSections = true;
-                    break;
-                }
-            }
-            StringBuilder sb = new StringBuilder(lyrics.providerName())
-                    .append(splitBackground ? "|bg" : "|")
-                    .append(hasSections ? "|sec" : "|nosec");
-            int limit = Math.min(3, lines.size());
-            for (int i = 0; i < limit; i++) {
-                sb.append('|').append(lines.get(i).text());
-            }
+            StringBuilder sb = getSb(lyrics, splitBackground);
             cacheKey = sb.toString();
             Lyrics cached = filteredCache.get(cacheKey);
             if (cached != null) {
@@ -2320,6 +2326,7 @@ public final class LyricsManager {
             if (splitBackground) {
                 lyrics = LyricsBracketSplitter.apply(lyrics);
             }
+            lyrics = restoreCachedSections(lyrics);
             if (cacheKey != null) {
                 filteredCache.put(cacheKey, lyrics);
             }
@@ -2335,6 +2342,36 @@ public final class LyricsManager {
                     lyrics.agentNames());
         }
         return lyrics;
+    }
+
+    private Lyrics restoreCachedSections(@Nullable Lyrics lyrics) {
+        final TrackInfo track = currentTrack;
+        if (lyrics == null || lyrics.isEmpty() || track == null
+                || !Settings.LYRICS_USE_AI_SECTION.get()
+                || !SectionDetector.needsDetection(lyrics)) {
+            return lyrics;
+        }
+        List<LyricsLine> lines = lyrics.lines();
+        List<String> texts = new ArrayList<>(lines.size());
+        for (LyricsLine line : lines) {
+            texts.add(line.text());
+        }
+        List<String> sections = LyricsCache.getSectionAI(track, lyrics.providerName(), texts);
+        Lyrics restored = SectionDetector.applySections(lyrics, sections);
+        return restored != null ? restored : lyrics;
+    }
+
+    @NonNull
+    static StringBuilder getSb(Lyrics lyrics, boolean splitBackground) {
+        List<LyricsLine> lines = lyrics.lines();
+        StringBuilder sb = new StringBuilder(lyrics.providerName())
+                .append(splitBackground ? "|bg" : "|")
+                .append('|').append(lines.size());
+        for (LyricsLine line : lines) {
+            String part = line.songPart();
+            sb.append('|').append(part != null ? part : "").append('|').append(line.text());
+        }
+        return sb;
     }
 
     private void setErrorStateIfCurrent(int id) {
@@ -2386,7 +2423,7 @@ public final class LyricsManager {
         state = newState;
         currentLyrics = lyrics;
 
-        LrcRedProvider.onDisplayed(lyrics);
+        LRCRedProvider.onDisplayed(lyrics);
 
         // A re-time only stays revertible while its result is still what is on screen.
         final SyncPatch patch = activeSyncPatch;
@@ -2408,7 +2445,7 @@ public final class LyricsManager {
             // The app never builds its own lyrics into the panel for a music video, so an
             // open one is covered from here instead.
             LyricsPanelInstaller.onLyricsPanelDetected();
-            LyricsPanelInstaller.enableLyricsButton();
+            LyricsPanelInstaller.enableLyricsTab();
             detectSections(lyrics);
         }
     }
@@ -2418,7 +2455,6 @@ public final class LyricsManager {
      * answers. A track change while the request is out would leave them on the wrong song, so the
      * callback checks the lyrics and the track it was asked about are still the current ones.
      */
-    @SuppressWarnings({"UnnecessaryLocalVariable", "ConstantValue"})
     private void detectSections(@Nullable Lyrics lyrics) {
         if (!Settings.LYRICS_USE_AI_SECTION.get()) {
             return;
@@ -2428,24 +2464,17 @@ public final class LyricsManager {
         }
         final TrackInfo track = currentTrack;
         final Lyrics target = lyrics;
-        if (track == null || target == null) {
+        if (track == null || target == null || sectionsPendingFor == target) {
             return;
         }
-        final String fingerprint = LyricsMatch.fingerprint(target);
-        if (fingerprint.equals(sectionsPendingFingerprint)) {
-            return;
-        }
-        sectionsPendingFingerprint = fingerprint;
+        sectionsPendingFor = target;
         SectionDetector.detect(track, target,
-                () -> fingerprint.equals(sectionsPendingFingerprint), sections -> {
-                    if (sectionsPendingFingerprint != null
-                            && Objects.equals(sectionsPendingFingerprint, fingerprint)) {
-                        sectionsPendingFingerprint = null;
+                () -> sectionsPendingFor == target, sections -> {
+                    if (sectionsPendingFor == target) {
+                        sectionsPendingFor = null;
                     }
-                    Lyrics shown = currentLyrics;
-                    boolean stillShowing = shown != null && fingerprint.equals(LyricsMatch.fingerprint(shown));
-                    // A track change or a newer request cancels it; neither is a failure.
-                    if (!stillShowing || currentTrack != track) {
+                    // Sections belong to this exact lyrics object, never to whatever replaced it.
+                    if (currentLyrics != target || currentTrack != track) {
                         return;
                     }
                     if (sections == null) {
@@ -2456,7 +2485,7 @@ public final class LyricsManager {
                         }
                         return;
                     }
-                    setState(State.LOADED, SectionDetector.applySections(shown, sections));
+                    setState(State.LOADED, SectionDetector.applySections(target, sections));
                 });
     }
 
@@ -2464,27 +2493,31 @@ public final class LyricsManager {
         if (!Settings.LYRICS_USE_AI_SECTION.get()) {
             return;
         }
-        Lyrics lyrics = currentLyrics;
-        TrackInfo track = currentTrack;
-        if (track == null || !SectionDetector.needsDetection(lyrics)) {
+        final Lyrics target = currentLyrics;
+        final TrackInfo track = currentTrack;
+        if (track == null || !SectionDetector.needsDetection(target)) {
             return;
         }
         if (sectionDetecting) {
             return;
         }
-        final String fingerprint = LyricsMatch.fingerprint(lyrics);
+        sectionDetectionTarget = target;
         sectionDetecting = true;
         notifySectionDetectionStateChanged();
-        SectionDetector.detect(track, lyrics,
-                () -> sectionDetecting, sections -> {
-                    sectionDetecting = false;
-                    Lyrics shown = currentLyrics;
-                    if (shown == null || !fingerprint.equals(LyricsMatch.fingerprint(shown))) {
+        SectionDetector.detect(track, target,
+                () -> sectionDetectionTarget == target, sections -> {
+                    if (sectionDetectionTarget == target) {
+                        sectionDetectionTarget = null;
+                        sectionDetecting = false;
+                    }
+                    if (currentLyrics != target || currentTrack != track) {
                         notifySectionDetectionStateChanged();
                         return;
                     }
                     if (sections != null) {
                         pendingSections = sections;
+                        pendingSectionsFor = target;
+                        pendingSectionsTrack = track;
                     }
                     notifySectionDetectionStateChanged();
                 });
@@ -2502,15 +2535,15 @@ public final class LyricsManager {
 
     public void applyPendingSections() {
         List<String> sections = pendingSections;
-        if (sections == null) {
-            return;
-        }
+        Lyrics target = pendingSectionsFor;
+        TrackInfo track = pendingSectionsTrack;
         pendingSections = null;
-        Lyrics shown = currentLyrics;
-        if (shown == null) {
+        pendingSectionsFor = null;
+        pendingSectionsTrack = null;
+        if (sections == null || target == null || currentLyrics != target || currentTrack != track) {
             return;
         }
-        setState(State.LOADED, SectionDetector.applySections(shown, sections));
+        setState(State.LOADED, SectionDetector.applySections(target, sections));
     }
 
     public boolean hasPendingSections() {
@@ -2557,6 +2590,10 @@ public final class LyricsManager {
 
         default void onSectionDetectionStateChanged() {
         }
+
+        /** Called when the temporary offset changes outside the panel's own drag. */
+        default void onTemporaryOffsetChanged(int offsetMs) {
+        }
     }
 
     record ScoredCandidate(int score, int rank, Lyrics lyrics)
@@ -2576,7 +2613,10 @@ public final class LyricsManager {
     private record SyncPatch(Lyrics before, String afterFingerprint) {
     }
 
-    private record VariantQuery(TrackInfo track, int penalty) {
+    /**
+     * One query of a lookup. {@code search} marks the user's own terms.
+     */
+    private record VariantQuery(TrackInfo track, int penalty, boolean search) {
     }
 
     /** The two query tiers of a lookup: exact metadata first, spelling variants after. */

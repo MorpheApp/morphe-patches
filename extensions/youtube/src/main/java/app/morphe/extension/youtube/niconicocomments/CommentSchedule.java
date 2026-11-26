@@ -162,7 +162,10 @@ final class CommentSchedule {
     }
 
     void redistributeLanes(int laneCount) {
-        resetLaneShuffle();
+        shuffledLanes = new int[0];
+        shuffledLaneCount = 0;
+        shuffledLaneIndex = 0;
+        lastLane = -1;
         List<ScheduledComment> scheduled = new ArrayList<>(comments);
         scheduled.sort(Comparator.comparingLong(comment -> comment.startTimeMs));
         comments.clear();
@@ -341,13 +344,6 @@ final class CommentSchedule {
         int lane = shuffledLanes[shuffledLaneIndex++];
         lastLane = lane;
         return lane;
-    }
-
-    private void resetLaneShuffle() {
-        shuffledLanes = new int[0];
-        shuffledLaneCount = 0;
-        shuffledLaneIndex = 0;
-        lastLane = -1;
     }
 
     private void recalculateLiveCursor(long videoTimeMs, long liveStepMs) {

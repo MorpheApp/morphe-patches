@@ -19,11 +19,11 @@ import java.util.Queue;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastItem;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.Text;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastItem;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Text;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**

@@ -42,8 +42,8 @@ import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.PushNotification.PushNotificationSupportedRenderers;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.PushNotification.PushNotificationSupportedRenderers;
 import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -55,6 +55,23 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 @SuppressWarnings("unused")
 public final class ShortsFilter extends Filter {
     private static final boolean HIDE_SHORTS_NAVIGATION_BAR = Settings.HIDE_SHORTS_NAVIGATION_BAR.get();
+    /**
+     * Videos of the modern home feed layout. The Shorts tab of a channel uses the same element.
+     */
+    private static final String MODERN_FEED_LOCKUP_PATH = "lockup.e";
+    /**
+     * Videos of the feed and the search that can be Shorts.
+     */
+    private static final String[] SHORTS_COMPACT_FEED_VIDEO_PATHS = {
+            // Shorts that appear in the feed/search when the device is using tablet layout.
+            "compact_video.e",
+            // 'video_lockup_with_attachment.e' is shown instead of 'compact_video.e' for some users
+            "video_lockup_with_attachment.e",
+            // Search results that appear in a horizontal shelf.
+            "video_card.e",
+            // Videos of the modern home feed layout.
+            MODERN_FEED_LOCKUP_PATH
+    };
     private static final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
     /**
@@ -168,12 +185,7 @@ public final class ShortsFilter extends Filter {
 
         shortsCompactFeedVideo = new StringFilterGroup(
                 null,
-                // Shorts that appear in the feed/search when the device is using tablet layout.
-                "compact_video.e",
-                // 'video_lockup_with_attachment.e' is shown instead of 'compact_video.e' for some users
-                "video_lockup_with_attachment.e",
-                // Search results that appear in a horizontal shelf.
-                "video_card.e");
+                SHORTS_COMPACT_FEED_VIDEO_PATHS);
 
         // Filter out items that use the 'frame0' thumbnail and other Shorts specific images.
         // 'frame0' is a valid thumbnail for both regular videos and Shorts,
@@ -620,6 +632,17 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == shortsCompactFeedVideo) {
+                // Every nested component of the video matches the path too. Their buffers are parts of the
+                // buffer of the video, which was checked before them, so only the video itself is checked.
+                // Searching the buffer of each nested component made the layout of the feed slow.
+                final int nameEnd = Utils.indexOf(path, ".e", Utils.indexOfFirstFound(path, SHORTS_COMPACT_FEED_VIDEO_PATHS));
+                if (Utils.indexOf(path, ".e", nameEnd + 2) >= 0) {
+                    return false;
+                }
+                // Same check as the Shorts shelf header, to not hide the Shorts tab of a channel.
+                if (Utils.contains(path, MODERN_FEED_LOCKUP_PATH) && !contextInterface.isHomeFeedOrRelatedVideo()) {
+                    return false;
+                }
                 // When a video is autoplaying in the feed, no new components are drawn on the screen.
                 // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
                 return PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
@@ -728,6 +751,13 @@ public final class ShortsFilter extends Filter {
             }
             // For now, consider Shorts under video player the same as the home feed.
             return logDecision(component, hideHome, "player: home");
+        }
+
+        // The feed behind the Shorts player is laid out again while the Shorts player is open,
+        // such as the search results a Short was opened from, whose search bar is not shown meanwhile.
+        if (NavigationBar.isSearchBarBehindShortsPlayer()) {
+            return hideShortsInFeed(component, "search behind the Shorts player",
+                    Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
         }
 
         // Must check second, as search can be from any tab.

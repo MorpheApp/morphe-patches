@@ -8,10 +8,15 @@
 package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
+import android.view.View;
+import android.view.ViewTreeObserver;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
@@ -45,6 +50,12 @@ public final class PlaybackInFeedsPatch {
     private static volatile PlaybackInFeedsController controller;
 
     /**
+     * Seek backwards button of a video that plays in a feed.
+     */
+    private static final int SEEK_BACKWARDS_TOGGLE_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "seek_backwards_toggle");
+
+    /**
      * An import changes only this copy, and on the next start the copy is refreshed from YouTube.
      * So an import marks the copy as the one to keep, and YouTube takes it over once its
      * controller exists. The mark survives the restart that an imported change asks for.
@@ -63,6 +74,63 @@ public final class PlaybackInFeedsPatch {
         public void settingsExported(@Nullable Activity context) {
         }
     };
+
+    /**
+     * Injection point.
+     * <p>
+     * The seek buttons of a video that plays in a feed are shown only if the server enables them for the video.
+     */
+    public static boolean showSeekButtons(boolean original) {
+        return original || Settings.PLAYBACK_IN_FEEDS_SEEK_BUTTONS.get();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The seek backwards button is drawn over the round background of its container. YouTube shows
+     * and hides only the button, unlike the seek forward button, whose container is hidden with it.
+     * So the container follows the button, and is not left as an empty button while the button is hidden.
+     *
+     * @param container Container of the seek backwards button, just inflated.
+     */
+    public static void hideEmptySeekBackwardsButton(View container) {
+        try {
+            if (!Settings.PLAYBACK_IN_FEEDS_SEEK_BUTTONS.get()) return;
+
+            View button = container.findViewById(SEEK_BACKWARDS_TOGGLE_ID);
+            if (button == null) {
+                Logger.printException(() -> "Seek backwards button not found");
+                return;
+            }
+
+            // Showing or hiding the button lays out the window again.
+            ViewTreeObserver.OnGlobalLayoutListener followButton = () -> {
+                final int visibility = button.getVisibility() == View.VISIBLE ? View.VISIBLE : View.GONE;
+                if (container.getVisibility() != visibility) {
+                    container.setVisibility(visibility);
+                }
+            };
+            followButton.onGlobalLayout();
+
+            // Only while attached, the observer of the window outlives the player.
+            if (container.isAttachedToWindow()) {
+                container.getViewTreeObserver().addOnGlobalLayoutListener(followButton);
+            }
+            container.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(@NonNull View view) {
+                    view.getViewTreeObserver().addOnGlobalLayoutListener(followButton);
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(@NonNull View view) {
+                    view.getViewTreeObserver().removeOnGlobalLayoutListener(followButton);
+                }
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideEmptySeekBackwardsButton failure", ex);
+        }
+    }
 
     /**
      * Injection point.

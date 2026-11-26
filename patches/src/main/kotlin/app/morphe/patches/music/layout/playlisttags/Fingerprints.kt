@@ -35,8 +35,7 @@ internal fun libraryPresenterConstructorFingerprint(presenterClass: ClassDef) = 
 
 /**
  * Binds a new response to the Library list presenter. It keeps the renderer and the items it builds in fields.
- *
- * @param itemsMethod Static method that builds the items of the renderer.
+ * The items are built by the static method of [GridRendererItemsFingerprint].
  */
 internal object LibraryListBindFingerprint : Fingerprint(
     definingClass = { GridRendererItemsFingerprint.originalMethod.definingClass },
@@ -77,14 +76,20 @@ internal object LibraryGridItemsFingerprint : Fingerprint(
 
 /**
  * Constructor of the wrapper of a Library grid item, which keeps the wrapped proto in a field.
+ * The wrapper and the proto are the return type and the parameter of the method that
+ * [LibraryGridItemsFingerprint] calls to wrap an item.
  */
-internal fun libraryGridItemWrapperConstructorFingerprint(wrapperType: String, messageType: String) = Fingerprint(
-    definingClass = wrapperType,
+internal object LibraryGridItemWrapperConstructorFingerprint : Fingerprint(
+    definingClass = { LibraryGridItemsFingerprint.instructionMatches.first().methodReference.returnType },
     name = "<init>",
-    returnType = "V",
-    parameters = listOf(messageType),
+    returnType = { "V" },
+    parameters = { listOf(LibraryGridItemsFingerprint.instructionMatches.first().methodReference.parameterTypes.first()) },
     filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this", type = messageType)
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = { LibraryGridItemsFingerprint.instructionMatches.first().methodReference.parameterTypes.first() }
+        )
     )
 )
 

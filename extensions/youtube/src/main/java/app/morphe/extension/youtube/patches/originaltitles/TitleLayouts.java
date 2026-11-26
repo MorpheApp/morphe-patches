@@ -10,12 +10,14 @@ package app.morphe.extension.youtube.patches.originaltitles;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -101,13 +103,27 @@ final class TitleLayouts {
      */
     static List<String> fieldPaths(List<ProtoNode> textNodes) {
         List<String> paths = new ArrayList<>(textNodes.size());
+        // The paths are written as the string of a list of the field numbers, such as "[1, 4, 2]".
+        // Elements are parsed on the main thread while a list loads, so the string is written at once.
+        int[] fieldNumbers = new int[16];
+        StringBuilder builder = new StringBuilder();
         for (ProtoNode node : textNodes) {
-            List<Integer> path = new ArrayList<>();
+            int depth = 0;
             for (ProtoNode field = node; field != null; field = field.getParent()) {
-                path.add(field.getFieldNumber());
+                if (depth == fieldNumbers.length) {
+                    fieldNumbers = Arrays.copyOf(fieldNumbers, depth * 2);
+                }
+                fieldNumbers[depth++] = field.getFieldNumber();
             }
-            Collections.reverse(path);
-            paths.add(path.toString());
+            builder.setLength(0);
+            builder.append('[');
+            for (int i = depth - 1; i >= 0; i--) {
+                builder.append(fieldNumbers[i]);
+                if (i > 0) {
+                    builder.append(", ");
+                }
+            }
+            paths.add(builder.append(']').toString());
         }
         return paths;
     }
@@ -125,14 +141,15 @@ final class TitleLayouts {
     /**
      * Saves the field paths of a title found in another way, or of a title that is not translated.
      *
-     * @param paths Field paths of the text nodes.
+     * @param fieldPaths Field paths of the text nodes, which are found only if the title is saved.
      * @param texts Texts of the text nodes, without title markers.
      */
-    static void confirmTitle(String component, String videoId, List<String> paths,
+    static void confirmTitle(String component, String videoId, Supplier<List<String>> fieldPaths,
                              List<String> texts, String title) {
         if (!texts.contains(title) || countedElements.put(videoId + component, Boolean.TRUE) != null) {
             return;
         }
+        List<String> paths = fieldPaths.get();
 
         synchronized (components) {
             ComponentPaths componentPaths = components.computeIfAbsent(component, key -> new ComponentPaths());
@@ -234,7 +251,7 @@ final class TitleLayouts {
         }
         String title = originalTitle.trim();
         if (candidates.texts().contains(title)) {
-            confirmTitle(candidates.component(), videoId, candidates.paths(), candidates.texts(), title);
+            confirmTitle(candidates.component(), videoId, candidates::paths, candidates.texts(), title);
         }
     }
 }

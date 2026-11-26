@@ -21,9 +21,9 @@ import java.util.List;
 
 import app.morphe.extension.youtube.innertube.PlaylistEdit.PlaylistEditAction;
 import app.morphe.extension.youtube.innertube.PlaylistEdit.PlaylistEditActionType;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
 import app.morphe.extension.youtube.patches.PlaylistPatch.RemovalSnackbar;
 
 public class PlaylistPatchTest {

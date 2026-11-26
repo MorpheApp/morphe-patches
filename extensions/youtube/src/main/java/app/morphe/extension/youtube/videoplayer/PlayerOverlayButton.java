@@ -321,14 +321,20 @@ public class PlayerOverlayButton {
                 );
             }
 
+            // The mute button of YouTube is to the left of the fullscreen button, so it takes a slot too.
+            View muteButton = getShownMuteButton();
             final int effectiveCustomButtons = Math.max(0, getNumberOfEnabledButtons()
-                    - (HIDE_FULLSCREEN_BUTTON_ENABLED ? 1 : 0));
+                    - (HIDE_FULLSCREEN_BUTTON_ENABLED ? 1 : 0)) + (muteButton != null ? 1 : 0);
             final float spacingPercentage = getButtonWidthPercentage(effectiveCustomButtons, source);
 
             // Convert from 0 indexing to 1 indexing.
             final int buttonNumber = getEnabledButtonIndex() + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
-            final float xOffset = (int) (source.getX()
-                    - (buttonNumber * (spacingPercentage * source.getWidth())));
+            final float buttonSpacing = spacingPercentage * source.getWidth();
+            // The buttons after the mute button continue from its left, and a button in the place
+            // of the hidden fullscreen button stays there.
+            final float xOffset = muteButton != null && buttonNumber > 0
+                    ? (int) (muteButton.getX() - buttonNumber * buttonSpacing)
+                    : (int) (source.getX() - buttonNumber * buttonSpacing);
 
             if (button.getX() != xOffset) {
                 button.setX(xOffset);
@@ -387,6 +393,14 @@ public class PlayerOverlayButton {
             new MarginAdjustableContainer("time_bar_chapter_title_container");
 
     private static WeakReference<View> ytSourceButtonRef = new WeakReference<>(null);
+
+    /**
+     * Mute button of YouTube, to the left of the fullscreen button. Only some versions and accounts have it.
+     */
+    private static final int MUTE_TOGGLE_BUTTON_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "mute_toggle_button");
+    private static WeakReference<View> ytMuteButtonRef = new WeakReference<>(null);
+
     private static final List<PlayerOverlayButtonController> buttonControllers = new ArrayList<>();
 
     /** ConstantState of the fullscreen button background the opacity was last applied to. */
@@ -649,6 +663,29 @@ public class PlayerOverlayButton {
         });
     }
 
+    /**
+     * @return The mute button of YouTube beside the fullscreen button, or null if it is not shown.
+     */
+    @Nullable
+    static View getShownMuteButton() {
+        View source = ytSourceButtonRef.get();
+        if (MUTE_TOGGLE_BUTTON_ID == 0 || source == null
+                || !(source.getParent() instanceof ViewGroup sourceParent)) {
+            return null;
+        }
+
+        View muteButton = ytMuteButtonRef.get();
+        if (muteButton == null || muteButton.getParent() != sourceParent) {
+            muteButton = sourceParent.findViewById(MUTE_TOGGLE_BUTTON_ID);
+            if (muteButton == null) {
+                return null;
+            }
+            ytMuteButtonRef = new WeakReference<>(muteButton);
+        }
+
+        return muteButton.getVisibility() == View.VISIBLE ? muteButton : null;
+    }
+
     private static int getNumberOfEnabledButtons() {
         return (int) buttonControllers.stream().filter(PlayerOverlayButtonController::isEnabled).count();
     }
@@ -667,7 +704,8 @@ public class PlayerOverlayButton {
                     styleSourceButtonBackground(controlsViewGroup);
 
                     final int effectiveCustomButtons = Math.max(0, getNumberOfEnabledButtons()
-                            - (Settings.HIDE_FULLSCREEN_BUTTON.get() ? 1 : 0));
+                            - (Settings.HIDE_FULLSCREEN_BUTTON.get() ? 1 : 0))
+                            + (getShownMuteButton() != null ? 1 : 0);
 
                     int buttonWidth = BUTTON_WIDTH;
                     View ytSource = ytSourceButtonRef.get();

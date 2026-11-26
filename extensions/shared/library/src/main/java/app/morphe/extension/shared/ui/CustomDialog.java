@@ -181,7 +181,7 @@ public class CustomDialog {
      * @param title The title text to display.
      */
     private void addTitle(CharSequence title) {
-        if (TextUtils.isEmpty(title)) return;
+        if (Utils.isEmpty(title)) return;
 
         TextView titleView = new TextView(context);
         titleView.setText(title);
@@ -601,7 +601,7 @@ public class CustomDialog {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 searchBar.setCompoundDrawables(searchIcon, null,
-                        TextUtils.isEmpty(s) ? null : clearIcon, null);
+                        Utils.isEmpty(s) ? null : clearIcon, null);
                 if (onQueryChanged != null) {
                     onQueryChanged.accept(s.toString());
                 }

@@ -30,7 +30,7 @@ import app.morphe.extension.shared.Logger;
  * media as was already watched. The app keeps all the buffered media in the Java heap, so videos of
  * high quality or at a high speed filled the heap after a few minutes and the app ran out of memory.
  * The target is lowered so the media buffered ahead fits in a part of the heap, using the bitrate of
- * the media that is received.
+ * the media that is received, and is never more than the readahead of the player config of the app.
  */
 final class SabrReadaheadLimit {
     private static final int PART_MEDIA_HEADER = 20;
@@ -44,11 +44,17 @@ final class SabrReadaheadLimit {
     private static final int POLICY_TARGET_VIDEO_READAHEAD_MS_FIELD = 2;
 
     /**
-     * Part of the maximum heap size that the media buffered ahead can use.
+     * Memory that the media buffered ahead can use: a part of the maximum heap size, up to 100 MB,
+     * which is about 30 seconds of 4K video at 60 fps.
      * The media behind the playback position and the rest of the app need the remaining heap.
      */
-    private static final long MAX_BUFFERED_BYTES = Runtime.getRuntime().maxMemory() / 4;
+    private static final long MAX_BUFFERED_BYTES = Math.min(100L * 1024 * 1024, Runtime.getRuntime().maxMemory() / 5);
     private static final long MIN_READAHEAD_MS = 10_000;
+    /**
+     * Max readahead of the player config of the app (exoPlayerConfig maxReadAheadMediaTimeMs).
+     * The player configs of the SABR clients have no readahead, so the server target was not limited by time.
+     */
+    private static final long MAX_READAHEAD_MS = 120_000;
 
     /**
      * Formats that were not received for this long are no longer counted in the bitrate.
@@ -140,7 +146,7 @@ final class SabrReadaheadLimit {
     }
 
     /**
-     * @return The largest readahead that fits in the heap, or -1 if the bitrate is not known yet.
+     * @return The largest readahead that fits in the heap, or the max readahead if the bitrate is not known yet.
      */
     private static long getReadaheadLimitMs() {
         final long now = SystemClock.elapsedRealtime();
@@ -157,9 +163,9 @@ final class SabrReadaheadLimit {
             }
         }
         if (bytesPerMs <= 0) {
-            return -1;
+            return MAX_READAHEAD_MS;
         }
-        return Math.max(MIN_READAHEAD_MS, (long) (MAX_BUFFERED_BYTES / bytesPerMs));
+        return Math.max(MIN_READAHEAD_MS, Math.min(MAX_READAHEAD_MS, (long) (MAX_BUFFERED_BYTES / bytesPerMs)));
     }
 
     /**
@@ -169,9 +175,6 @@ final class SabrReadaheadLimit {
      */
     private static void limitReadahead(ByteBuffer chunk, int offset, int length) {
         final long limitMs = getReadaheadLimitMs();
-        if (limitMs < 0) {
-            return;
-        }
         final int end = offset + length;
         int position = offset;
         while (position < end) {

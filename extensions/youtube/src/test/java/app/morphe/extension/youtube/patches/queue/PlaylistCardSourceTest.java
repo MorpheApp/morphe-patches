@@ -19,7 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 
 public class PlaylistCardSourceTest {
     private static final String VIDEO = "abcdefghijk";
@@ -67,7 +67,7 @@ public class PlaylistCardSourceTest {
         assertTrue(source.playlist());
         assertEquals(MIX, source.playlistId());
         var menu = QueueFlyoutActions.completeMenu(PlaylistQueueRenderer.MenuRenderer.getDefaultInstance(),
-                true, "Next", "Last", source.playlistId(), false);
+                "Next", "Last", source.playlistId(), false);
         for (var item : menu.getItemsList()) {
             assertEquals(MIX, item.getMenuConditionalServiceItemRenderer().getServiceEndpoint().getQueuePlaylistId());
         }

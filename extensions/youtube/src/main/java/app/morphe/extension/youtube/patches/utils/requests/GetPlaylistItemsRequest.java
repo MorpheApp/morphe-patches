@@ -45,42 +45,24 @@ public class GetPlaylistItemsRequest {
         final long startTime = System.currentTimeMillis();
 
         try {
-            JSONObject response = sendRequest(PlaylistRoutes.BROWSE_PLAYLIST_VIDEO_IDS,
-                    PlaylistRoutes.browsePlaylistBody(playlistId), requestHeader);
-            if (response == null) {
-                return null;
-            }
-
             Map<String, String> videos = new HashMap<>();
-            JSONObject page = findPlaylistRenderer(response);
-            for (int i = 0; page != null && i < MAX_PLAYLIST_PAGES; i++) {
-                JSONArray contents = page.optJSONArray("contents");
-                if (contents != null) {
-                    for (int j = 0, length = contents.length(); j < length; j++) {
-                        JSONObject element = contents.optJSONObject(j);
-                        JSONObject renderer = element == null ? null : element.optJSONObject("playlistVideoRenderer");
-                        String videoId = renderer == null ? "" : renderer.optString("videoId");
-                        if (!videoId.isEmpty()) {
-                            videos.put(videoId, renderer.optString("setVideoId"));
+            final PagesResult result = fetchPages(PlaylistRoutes.BROWSE_PLAYLIST_VIDEO_IDS, playlistId, requestHeader,
+                    (response, page) -> {
+                        JSONArray contents = page.optJSONArray("contents");
+                        if (contents != null) {
+                            for (int j = 0, length = contents.length(); j < length; j++) {
+                                JSONObject element = contents.optJSONObject(j);
+                                JSONObject renderer = element == null ? null : element.optJSONObject("playlistVideoRenderer");
+                                String videoId = renderer == null ? "" : renderer.optString("videoId");
+                                if (!videoId.isEmpty()) {
+                                    videos.put(videoId, renderer.optString("setVideoId"));
+                                }
+                            }
                         }
-                    }
-                }
-
-                JSONArray continuations = page.optJSONArray("continuations");
-                if (continuations == null || continuations.length() == 0) {
-                    break;
-                }
-                response = sendRequest(PlaylistRoutes.BROWSE_PLAYLIST_VIDEO_IDS,
-                        PlaylistRoutes.browseContinuationBody(continuations.getJSONObject(0)
-                                .getJSONObject("nextContinuationData").getString("continuation")),
-                        requestHeader);
-                if (response == null) {
-                    break;
-                }
-                JSONObject continuationContents = response.optJSONObject("continuationContents");
-                page = continuationContents == null
-                        ? null
-                        : continuationContents.optJSONObject("playlistVideoListContinuation");
+                        return true;
+                    });
+            if (result == PagesResult.FAILED) {
+                return null;
             }
             Logger.printDebug(() -> "Fetched " + videos.size() + " video ids of playlist: " + playlistId);
             return videos;
@@ -94,6 +76,62 @@ public class GetPlaylistItemsRequest {
             Logger.printDebug(() -> "playlist video ids fetch took: " + (System.currentTimeMillis() - startTime) + "ms");
         }
         return null;
+    }
+
+    enum PagesResult {
+        /** The first page could not be fetched. */
+        FAILED,
+        /** A page after the first could not be fetched, or the callback stopped the pages. */
+        PARTIAL,
+        COMPLETE
+    }
+
+    interface PageCallback {
+        /**
+         * @param response Response the page is in. The response of the first page has the header of the playlist.
+         * @param page     Renderer of the page, with the videos of the page in its contents.
+         * @return Whether to fetch the next page.
+         */
+        boolean onPage(JSONObject response, JSONObject page);
+    }
+
+    /**
+     * Fetches the pages of the videos of a playlist one after the other.
+     *
+     * @param route Browse route, whose field mask keeps the playlist video list renderers and their continuations.
+     * @return Whether all pages were fetched. A page after the first that fails only stops the pages,
+     *         as the videos of the pages before it are still valid.
+     */
+    static PagesResult fetchPages(Route.CompiledRoute route, String playlistId, Map<String, String> requestHeader,
+                                  PageCallback callback) throws IOException, JSONException {
+        JSONObject response = sendRequest(route, PlaylistRoutes.browsePlaylistBody(playlistId), requestHeader);
+        if (response == null) {
+            return PagesResult.FAILED;
+        }
+
+        JSONObject page = findPlaylistRenderer(response);
+        for (int i = 0; page != null && i < MAX_PLAYLIST_PAGES; i++) {
+            if (!callback.onPage(response, page)) {
+                return PagesResult.PARTIAL;
+            }
+
+            JSONArray continuations = page.optJSONArray("continuations");
+            if (continuations == null || continuations.length() == 0) {
+                break;
+            }
+            response = sendRequest(route,
+                    PlaylistRoutes.browseContinuationBody(continuations.getJSONObject(0)
+                            .getJSONObject("nextContinuationData").getString("continuation")),
+                    requestHeader);
+            if (response == null) {
+                return PagesResult.PARTIAL;
+            }
+            JSONObject continuationContents = response.optJSONObject("continuationContents");
+            page = continuationContents == null
+                    ? null
+                    : continuationContents.optJSONObject("playlistVideoListContinuation");
+        }
+        return PagesResult.COMPLETE;
     }
 
     @Nullable

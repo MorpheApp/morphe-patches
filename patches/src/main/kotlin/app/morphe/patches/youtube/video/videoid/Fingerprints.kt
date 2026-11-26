@@ -74,3 +74,52 @@ internal object VideoIdBackgroundPlayFingerprint : Fingerprint(
                         || classDef.methods.count() == 16) // 20.40+
     }
 )
+
+/**
+ * The media session sets the title of the video of a video stage event, also when the next video
+ * of a playlist plays in the background, when the other video id hooks are not called.
+ * The media session has two implementations since 20.51, which the app chooses between.
+ *
+ * @param videoStageEventType The type of the video stage event.
+ */
+internal fun mediaSessionVideoStageFingerprint(videoStageEventType: String) = Fingerprint(
+    returnType = "V",
+    parameters = listOf(videoStageEventType),
+    filters = listOf(
+        // Title of the video.
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "Ljava/lang/String;"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        anyInstruction(
+            // Title and artist.
+            methodCall(
+                returnType = "V",
+                parameters = listOf("Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;")
+            ),
+            // Title only.
+            methodCall(
+                returnType = "I",
+                parameters = listOf("Ljava/lang/CharSequence;")
+            ),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Same method as [mediaSessionVideoStageFingerprint], matched again with its title call,
+ * as other patches can change the method or replace it with a copy.
+ */
+internal fun mediaSessionVideoTitleFingerprint(
+    definingClass: String,
+    name: String,
+    videoStageEventType: String,
+    titleMethod: String
+) = Fingerprint(
+    definingClass = definingClass,
+    name = name,
+    returnType = "V",
+    parameters = listOf(videoStageEventType),
+    filters = listOf(
+        methodCall(smali = titleMethod)
+    )
+)

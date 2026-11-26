@@ -31,6 +31,7 @@ import app.morphe.patches.youtube.misc.backgesture.backGesturePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
@@ -43,6 +44,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -283,6 +285,23 @@ val navigationBarHookPatch = patch(description = "Hooks the active navigation or
                     "invoke-static { v$viewRegister, v$isSelectedRegister }, " +
                             "$EXTENSION_CLASS->navigationTabSelected(Landroid/view/View;Z)V",
                 )
+            }
+        }
+
+        // Hook the selected tab of pages with tabs. Needed to detect the Subscriptions tab
+        // at the top of Home, with the A/B layout that moves Subscriptions from the navigation bar.
+        if (is_21_35_or_greater) {
+            TabListControllerTabSelectedFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.first().index
+                    val tabIdentifierRegister = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                    addInstruction(
+                        index + 1,
+                        "invoke-static { p0, v$tabIdentifierRegister }, " +
+                                "$EXTENSION_CLASS->browseTabSelected(Ljava/lang/Object;Ljava/lang/String;)V"
+                    )
+                }
             }
         }
 

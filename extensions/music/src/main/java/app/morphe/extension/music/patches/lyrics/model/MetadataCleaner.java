@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Normalizes YouTube Music metadata into what a lyrics database expects.
@@ -328,8 +329,7 @@ public final class MetadataCleaner {
                 new InputStreamReader(conn.getInputStream(), charset))) {
             String line;
             while ((line = br.readLine()) != null) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (sb.length() > 0) {
+                if (Utils.isNotEmpty(sb)) {
                     sb.append('\n');
                 }
                 sb.append(line);

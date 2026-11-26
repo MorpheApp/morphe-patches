@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import app.morphe.extension.shared.Utils;
+
 /**
  * Download folders and the subfolder and file name pattern.
  * <p>
@@ -92,8 +94,7 @@ public final class DownloadPathPattern {
             if (segment.isEmpty() || segment.equals(".")) continue;
             if (segment.equals("..")) return null;
 
-            //noinspection SizeReplaceableByIsEmpty
-            if (normalized.length() == 0) {
+            if (Utils.isEmpty(normalized)) {
                 segment = getRootFolder(segment);
                 if (segment == null) return null;
             } else {
@@ -103,8 +104,7 @@ public final class DownloadPathPattern {
             normalized.append(segment);
         }
 
-        //noinspection SizeReplaceableByIsEmpty
-        return normalized.length() == 0 ? null : normalized.toString();
+        return Utils.isEmpty(normalized) ? null : normalized.toString();
     }
 
     /**
@@ -120,8 +120,7 @@ public final class DownloadPathPattern {
             segment = sanitizeName(segment);
             if (segment.isEmpty() || segment.equals(".") || segment.equals("..")) continue;
 
-            //noinspection SizeReplaceableByIsEmpty
-            if (path.length() > 0) path.append('/');
+            if (Utils.isNotEmpty(path)) path.append('/');
             path.append(segment);
         }
         return path.toString();

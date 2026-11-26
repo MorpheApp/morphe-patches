@@ -9,13 +9,10 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.classDefByOrNull
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.util.findFieldFromToString
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val PRIVACY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy;"
 private const val SOURCE = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy$Source;"
@@ -68,20 +65,9 @@ internal fun wirePrivacy(): NativeAccountContract {
         val currentMatch = CurrentAccountGetterFingerprint(contract).match(provider)
         val current = currentMatch.originalMethod
         val mutable = currentMatch.classDef
-        mutable.interfaces.add(SOURCE)
-        val bridge = ImmutableMethod(
-            provider.type,
+        mutable.addPatchInterface(
+            SOURCE,
             "patch_seriesTrackerIdentity",
-            null,
-            IDENTITY,
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(5),
-        ).toMutable()
-
-        bridge.addInstructions(
-            0,
             """
                 invoke-virtual {p0}, $current
                 move-result-object v0
@@ -98,7 +84,6 @@ internal fun wirePrivacy(): NativeAccountContract {
                 return-object v0
             """
         )
-        mutable.methods.add(bridge)
         // Capture only when YouTube actually uses the current-account getter. Constructor order
         // does not establish which provider is active. attach() never calls back into the provider.
         currentMatch.method.addInstructions(

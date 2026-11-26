@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 
 /**
@@ -76,6 +77,10 @@ public final class LyricsTestEnv {
         // Utils.isDarkModeEnabled() NPE. SharedYouTubeSettings reads it during its static init,
         // which Settings pulls in. Pin the value so no static initializer hits the system resources.
         Utils.setIsDarkModeEnabled(false);
+        // Settings and LyricsFilterDefaults use each other in their static initializers. Load them
+        // here on one thread. Otherwise two LyricsManager fetch threads started by a test can load
+        // them at the same time and deadlock.
+        Settings.LYRICS_ENABLED.get();
         bootstrapped = true;
     }
 

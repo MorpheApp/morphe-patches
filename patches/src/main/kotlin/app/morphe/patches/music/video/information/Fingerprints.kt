@@ -13,7 +13,7 @@ import app.morphe.patcher.string
 
 /**
  * Matches the player class that exposes a seek method.
- * Used to add a seekTo(J)Z bridge and hook the constructor.
+ * Used to add the seek method of the player interface for the extension, and to hook the constructor.
  */
 internal object VideoEndFingerprint : Fingerprint(
     parameters = listOf("J", "L"),

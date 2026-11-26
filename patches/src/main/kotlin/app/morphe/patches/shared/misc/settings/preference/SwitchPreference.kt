@@ -15,17 +15,19 @@ package app.morphe.patches.shared.misc.settings.preference
  *
  * @param key The preference key. If null, other parameters must be specified.
  * @param titleKey The preference title key.
+ * @param summary Whether to use a summary.
+ * @param summaryKey The preference summary key.
+ * @param tag The preference tag.
  * @param icon The preference icon resource name.
  * @param layout Layout declaration.
- * @param tag The preference tag.
- * @param summary Whether to use a summary.
  */
 class SwitchPreference(
     key: String? = null,
     titleKey: String = "${key}_title",
     summary: Boolean = false,
+    summaryKey: String? = if (summary) "${key}_summary" else null,
     tag: String = "app.morphe.extension.shared.settings.preference.BooleanSettingPreference",
     icon: String? = null,
     iconBold: String? = null,
     layout: String? = null
-) : BasePreference(key, titleKey, if (summary) "${key}_summary" else null, icon, iconBold, layout, tag)
+) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag)

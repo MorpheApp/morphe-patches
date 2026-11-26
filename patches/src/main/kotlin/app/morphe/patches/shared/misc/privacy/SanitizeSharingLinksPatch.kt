@@ -55,16 +55,6 @@ internal fun sanitizeSharingLinksPatch(
             """
         }
 
-        fun Fingerprint.hookUrlString(matchIndex: Int) {
-            val index = instructionMatches[matchIndex].index
-            val urlRegister = method.getInstruction<OneRegisterInstruction>(index).registerA
-
-            method.addInstructions(
-                index + 1,
-                patchLogic(urlRegister)
-            )
-        }
-
         fun Fingerprint.hookIntentPutExtra(matchIndex: Int) {
             val index = instructionMatches[matchIndex].index
             val urlRegister = method.getInstruction<FiveRegisterInstruction>(index).registerE
@@ -76,7 +66,15 @@ internal fun sanitizeSharingLinksPatch(
         }
 
         // YouTube share sheet copy link.
-        YouTubeCopyTextFingerprint.hookUrlString(0)
+        YouTubeCopyTextFingerprint.apply {
+            val index = instructionMatches[0].index
+            val urlRegister = method.getInstruction<OneRegisterInstruction>(index).registerA
+
+            method.addInstructions(
+                index + 1,
+                patchLogic(urlRegister)
+            )
+        }
 
         // YouTube share sheet other apps.
         YouTubeShareSheetFingerprint.hookIntentPutExtra(3)

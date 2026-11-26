@@ -1,0 +1,1089 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/5107
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.shared.patches.glassmenus;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Outline;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.NinePatchDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.os.Build;
+import android.os.SystemClock;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ListPopupWindow;
+import android.widget.PopupWindow;
+
+import androidx.annotation.ChecksSdkIntAtLeast;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
+import java.util.function.Consumer;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.Dim;
+
+/**
+ * Draws the menus of YouTube and YT Music as frosted glass: the bottom sheets (the menu of a video or a song,
+ * the player settings, the share sheet), the dialogs that are a panel at the bottom of the screen
+ * (the video quality, the download quality) and the sheets of Morphe (playback speed, voice over translation).
+ * In YouTube also the popup menus and the sheet to save a video to a playlist.
+ * <p>
+ * Only the content behind the menu is blurred ({@link BlurRegion}), and the menu is a translucent tint of the app
+ * background with a light rim, so the blurred content shows through it. The rest of the screen is only dimmed, as
+ * without the glass. The system turns the blur off when the device does not support it or while the battery saver
+ * is on. On Android 14 and later the menu then blurs the app behind it itself ({@link AppBackdropDrawable}),
+ * otherwise the menu is nearly opaque, so it stays readable.
+ * <p>
+ * The content of the menu keeps its views. Backgrounds inside the menu that have the color of the menu are removed,
+ * so they do not hide the glass. Items keep their ripples and their selected state.
+ */
+@SuppressWarnings("unused")
+public final class GlassMenusPatch {
+
+    /**
+     * How opaque the menu is at least, in percent, while the content behind it is not blurred.
+     */
+    static final int MIN_OPACITY_WITHOUT_BLUR = 92;
+
+    private static final int DESIGN_BOTTOM_SHEET = ResourceUtils.getIdentifier(ResourceType.ID, "design_bottom_sheet");
+    // YouTube only.
+    private static final int PLAYLIST_LIST = ResourceUtils.getIdentifier(ResourceType.ID, "list");
+    private static final int PLAYLIST_CLOSE_BAR =
+            ResourceUtils.getIdentifier(ResourceType.ID, "add_to_playlist_bottom_sheet_close_button");
+
+    /**
+     * Theme colors the app gives the background of its menus.
+     */
+    private static final int[] MENU_COLOR_ATTRIBUTES = {
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytRaisedBackground"),
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytBaseBackground"),
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytMenuBackground"),
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytAdditiveBackground"),
+    };
+
+    /**
+     * Corner radius of a menu if its background does not give one.
+     */
+    private static final float DEFAULT_CORNER_RADIUS = Dim.dp(12);
+
+    /**
+     * How much a background color may differ from the color of the menu, per channel, to be the color of the menu.
+     */
+    private static final int COLOR_TOLERANCE = 8;
+
+    /**
+     * Rounds the corners that are not at an edge of the screen.
+     */
+    private static final int CORNERS_AUTO = 0;
+    /**
+     * Rounds the top corners only.
+     */
+    private static final int CORNERS_TOP = 1;
+    /**
+     * Does not round the corners.
+     */
+    private static final int CORNERS_NONE = 2;
+
+    /**
+     * Views that are drawn as glass. Each view keeps its {@link GlassSurface} as its attach listener.
+     */
+    private static final Set<View> glassViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * How often the fills of Litho are checked while a menu is shown.
+     */
+    private static final long LITHO_SCAN_INTERVAL_MS = 150;
+
+    /**
+     * How long the fills of Litho are checked on every frame after a menu is attached.
+     */
+    private static final long LITHO_SCAN_EVERY_FRAME_MS = 1000;
+
+    private static final PorterDuffColorFilter TRANSPARENT_FILTER =
+            new PorterDuffColorFilter(Color.TRANSPARENT, PorterDuff.Mode.SRC);
+
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * The blur behind a menu needs Android 12.
+     */
+    public static final class GlassMenusAvailability implements Setting.Availability {
+        @Override
+        @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
+        public boolean isAvailable() {
+            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S;
+        }
+    }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    private static boolean isEnabled() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && SharedYouTubeSettings.GLASS_MENUS.get();
+    }
+
+    private static int opacityPercent() {
+        return SeekBarPreference.clampToRange(SharedYouTubeSettings.GLASS_MENUS_OPACITY);
+    }
+
+    private static int blurRadiusPx() {
+        return Dim.dp(SeekBarPreference.clampToRange(SharedYouTubeSettings.GLASS_MENUS_BLUR));
+    }
+
+    private static float dimAmount() {
+        return SeekBarPreference.clampToRange(SharedYouTubeSettings.GLASS_MENUS_DIM) / 100f;
+    }
+
+    /**
+     * Injection point: a bottom sheet dialog was attached to its window.
+     */
+    public static void onBottomSheetDialog(@Nullable Dialog dialog) {
+        if (dialog == null || !isEnabled()) return;
+
+        try {
+            Window window = dialog.getWindow();
+            if (window != null) {
+                window.setDimAmount(dimAmount());
+            }
+
+            View sheet = dialog.findViewById(DESIGN_BOTTOM_SHEET);
+            if (sheet != null) {
+                // The panel of the sheet is a fill inside it, with a margin at the top and the sides.
+                GlassSurface.apply(sheet, CORNERS_AUTO, true);
+            }
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onBottomSheetDialog failure", ex);
+        }
+    }
+
+    /**
+     * Injection point: the color a Litho background is drawn with.
+     */
+    public static void onLithoBackgroundColor(Drawable drawable, @ColorInt int color) {
+        if (!isEnabled()) return;
+
+        try {
+            LithoFills.onColor(drawable, color);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onLithoBackgroundColor failure", ex);
+        }
+    }
+
+    /**
+     * Injection point (YouTube only): the touch feedback drawable of the app, which wraps the background of a Litho
+     * component, such as a row of a menu. It sets the callback of the background before it has a callback itself,
+     * so the background has none, and its fill is found through the wrapper instead.
+     */
+    public static void onWrappedDrawable(Drawable wrapper, @Nullable Drawable wrapped) {
+        if (wrapped == null || !isEnabled()) return;
+
+        try {
+            LithoFills.onWrapped(wrapped, wrapper);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onWrappedDrawable failure", ex);
+        }
+    }
+
+    /**
+     * Injection point (YouTube only): a popup menu, before it is shown. The app can set its content view after
+     * this call.
+     */
+    public static void onPopupWindow(@Nullable PopupWindow popup) {
+        if (popup == null || !isEnabled()) return;
+
+        Utils.runOnMainThreadDelayed(() -> {
+            try {
+                View content = popup.getContentView();
+                if (content == null) return;
+
+                applyToPopupContent(content);
+            } catch (Throwable ex) {
+                Logger.printException(() -> "onPopupWindow failure", ex);
+            }
+        }, 0);
+    }
+
+    /**
+     * Injection point (YouTube only): a menu shown as a list popup, after it is shown.
+     * Its list is created when it is shown.
+     */
+    public static void onListPopupWindow(@Nullable ListPopupWindow popup) {
+        if (popup == null || !isEnabled()) return;
+
+        try {
+            View list = popup.getListView();
+            if (list != null) {
+                applyToPopupContent(list);
+            }
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onListPopupWindow failure", ex);
+        }
+    }
+
+    /**
+     * Draws the glass on the background view the popup adds around its content if it has a background,
+     * otherwise on the content itself.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.S)
+    private static void applyToPopupContent(View content) {
+        View surface = content.getParent() instanceof View parent && parent.getBackground() != null
+                ? parent
+                : content;
+        GlassSurface.apply(surface, CORNERS_AUTO);
+    }
+
+    /**
+     * Injection point (YouTube only): the view of the sheet to save a video to a playlist, which is not a bottom
+     * sheet dialog.
+     */
+    public static void onAddToPlaylistView(@Nullable View root) {
+        if (root == null || !isEnabled()) return;
+
+        try {
+            View list = root.findViewById(PLAYLIST_LIST);
+            if (list != null) {
+                GlassSurface.apply(list, CORNERS_TOP);
+            }
+            View closeBar = root.findViewById(PLAYLIST_CLOSE_BAR);
+            if (closeBar != null) {
+                GlassSurface.apply(closeBar, CORNERS_NONE);
+            }
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onAddToPlaylistView failure", ex);
+        }
+    }
+
+    /**
+     * Injection point: a dialog of a dialog fragment of the app was shown.
+     * <p>
+     * Some menus, such as the video quality and the download quality, are a dialog whose window is a panel at the
+     * bottom of the screen, with the color of a menu as the window background. The window background is removed,
+     * and the content of the window is drawn as glass. Dialogs that fill the screen keep their look.
+     */
+    public static void onDialogShown(@Nullable Dialog dialog) {
+        if (dialog == null || !isEnabled()) return;
+
+        try {
+            Window window = dialog.getWindow();
+            if (window == null) return;
+            View decor = window.getDecorView();
+            // After the fragment sets the window background, right after it shows the dialog.
+            decor.post(() -> styleWindowPanel(window, decor, false));
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onDialogShown failure", ex);
+        }
+    }
+
+    /**
+     * Injection point (YouTube only): the "Please wait" progress dialog before the download quality menu was shown.
+     * It is shown for a moment only, so it is drawn as glass from its first frame. Its window background is already
+     * set, and is a dialog color and not a menu color.
+     */
+    public static void onProgressDialogShown(@Nullable Dialog dialog) {
+        if (dialog == null || !isEnabled()) return;
+
+        try {
+            Window window = dialog.getWindow();
+            if (window == null) return;
+            styleWindowPanel(window, window.getDecorView(), true);
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onProgressDialogShown failure", ex);
+        }
+    }
+
+    /**
+     * @param anyColor If the background of the window and of the views inside it can be any opaque color,
+     *                 and not only a menu color.
+     */
+    @RequiresApi(Build.VERSION_CODES.S)
+    private static void styleWindowPanel(Window window, View decor, boolean anyColor) {
+        try {
+            if (window.getAttributes().height != WindowManager.LayoutParams.WRAP_CONTENT) return;
+
+            View content = decor.findViewById(android.R.id.content);
+            Drawable background = decor.getBackground();
+            if (content == null || background == null || glassViews.contains(content)) return;
+            final int color = SolidColors.colorOf(background);
+            if (!(anyColor ? isOpaque(color) : isMenuColor(decor.getContext(), color))) return;
+
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.setDimAmount(dimAmount());
+            // The panel keeps the shape of the window background.
+            GlassSurface.apply(content, CORNERS_AUTO, false, background, anyColor);
+        } catch (Throwable ex) {
+            Logger.printException(() -> "styleWindowPanel failure", ex);
+        }
+    }
+
+    /**
+     * Injection point: a sheet of Morphe ({@code SheetBottomDialog.createSlideDialog}) was created.
+     * Its panel is the first view with a filled round background ({@code SheetBottomDialog.createMainLayout}).
+     */
+    public static void onSlideDialog(@Nullable Dialog dialog) {
+        if (dialog == null || !isEnabled()) return;
+
+        try {
+            Window window = dialog.getWindow();
+            if (window == null) return;
+
+            Deque<View> queue = new ArrayDeque<>();
+            queue.add(window.getDecorView());
+            while (!queue.isEmpty()) {
+                View view = queue.remove();
+                if (view.getBackground() instanceof ShapeDrawable shape
+                        && Color.alpha(shape.getPaint().getColor()) == 255) {
+                    GlassSurface.apply(view, CORNERS_AUTO);
+                    return;
+                }
+                if (view instanceof ViewGroup group) {
+                    for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                        queue.add(group.getChildAt(i));
+                    }
+                }
+            }
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onSlideDialog failure", ex);
+        }
+    }
+
+    /**
+     * @return The colors the app and Morphe give the background of their menus.
+     */
+    private static List<Integer> menuColors(Context context) {
+        List<Integer> colors = new ArrayList<>();
+        for (int attribute : MENU_COLOR_ATTRIBUTES) {
+            Integer color = resolveThemeColor(context, attribute);
+            if (color != null) colors.add(color);
+        }
+        colors.add(ThemeUtils.getAppBackgroundColor());
+        colors.add(ThemeUtils.getDialogBackgroundColor());
+        return colors;
+    }
+
+    private static boolean isMenuColor(Context context, @ColorInt int color) {
+        for (int menu : menuColors(context)) {
+            if (isSimilarOpaqueColor(color, menu)) return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return The corner radius of the background the app gave the menu, or the default radius.
+     */
+    private static float cornerRadiusOf(@Nullable Drawable background) {
+        if (background != null && !background.getBounds().isEmpty()) {
+            Outline outline = new Outline();
+            background.getOutline(outline);
+            final float radius = outline.getRadius();
+            if (radius > 0) return radius;
+        }
+        return DEFAULT_CORNER_RADIUS;
+    }
+
+    private static boolean isOpaque(@ColorInt int color) {
+        return Color.alpha(color) >= 0xF0;
+    }
+
+    private static boolean isSimilarOpaqueColor(@ColorInt int color, @ColorInt int other) {
+        return isOpaque(color)
+                && Math.abs(Color.red(color) - Color.red(other)) <= COLOR_TOLERANCE
+                && Math.abs(Color.green(color) - Color.green(other)) <= COLOR_TOLERANCE
+                && Math.abs(Color.blue(color) - Color.blue(other)) <= COLOR_TOLERANCE;
+    }
+
+    @Nullable
+    private static Integer resolveThemeColor(Context context, int attribute) {
+        TypedValue value = new TypedValue();
+        if (!context.getTheme().resolveAttribute(attribute, value, true)) return null;
+        if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+            return value.data;
+        }
+        if (value.resourceId != 0) {
+            try {
+                return context.getColor(value.resourceId);
+            } catch (Resources.NotFoundException ex) {
+                Logger.printDebug(() -> "Theme attribute is not a color: " + attribute, ex);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * A view of a menu drawn as glass, from when it is attached to its window until it is detached.
+     */
+    @RequiresApi(Build.VERSION_CODES.S)
+    private static final class GlassSurface implements View.OnAttachStateChangeListener,
+            ViewTreeObserver.OnPreDrawListener {
+
+        private final View view;
+        private final int corners;
+        private final GlassDrawable tint;
+        private final Consumer<Boolean> blurListener = this::onSystemBlurEnabledChanged;
+
+        /**
+         * Colors of the menu, a background of one of these colors inside the menu is removed.
+         */
+        private final List<Integer> menuColors = new ArrayList<>();
+        /**
+         * The background the app gave the menu, until its color is known.
+         */
+        @Nullable
+        private Drawable originalBackground;
+        /**
+         * Backgrounds and drawables of Litho hosts that are hidden with a color filter, shown again when the menu
+         * is detached. They are never removed: the app can use the background of a view it set.
+         */
+        private final Set<Drawable> hiddenDrawables = Collections.newSetFromMap(new IdentityHashMap<>());
+        /**
+         * The fills of the menu color that were hidden, and the view each is drawn in. The panel of the menu is
+         * where these are: the view drawn as glass can be larger than the panel, such as the bottom sheet, whose
+         * panel is a fill inside it with a margin at the top and the sides.
+         */
+        private final Map<Drawable, View> panelFills = new IdentityHashMap<>();
+        /**
+         * How far the panel of the menu is inside the view, at each side.
+         */
+        private final Rect panelInsets = new Rect();
+        private final Rect panel = new Rect();
+        private final Rect fillBounds = new Rect();
+        private final Outline fillOutline = new Outline();
+        private final int[] viewLocation = new int[2];
+        private final int[] hostLocation = new int[2];
+        /**
+         * The background of the view: the blur and the tint.
+         */
+        private LayerDrawable layers;
+        private long lastLithoScan;
+        private int lastLithoChanges;
+        /**
+         * If the views of the menu were laid out again since the fills of Litho were checked. Litho mounts new
+         * fills when it lays out, such as on every letter typed in the comment box, and a new fill must be hidden
+         * before it is drawn, or the menu flickers opaque.
+         */
+        private boolean laidOut;
+        private final ViewTreeObserver.OnGlobalLayoutListener layoutListener = () -> laidOut = true;
+        /**
+         * When the menu was attached. Litho is checked on every frame right after, so the menu is not shown
+         * opaque before the glass, and then less often.
+         */
+        private long attachedTime;
+
+        @Nullable
+        private Drawable blur;
+        /**
+         * Blurs the app behind the menu while the system does not. Android 14 and later only.
+         */
+        @Nullable
+        private final AppBackdropDrawable appBackdrop;
+        @Nullable
+        private WindowManager windowManager;
+        private boolean blurEnabled;
+        private boolean roundBottom = true;
+        private boolean roundTop = true;
+        private final int[] location = new int[2];
+
+        /**
+         * If the glass is drawn only where the fills of the menu color are, and not over the whole view.
+         */
+        private final boolean findPanel;
+
+        /**
+         * If every opaque fill of the window is hidden, of any color and size. The theme of a progress dialog gives
+         * its background to every view of the window, also to small ones such as the message.
+         */
+        private final boolean anyColor;
+
+        static void apply(View view, int corners) {
+            apply(view, corners, false);
+        }
+
+        static void apply(View view, int corners, boolean findPanel) {
+            apply(view, corners, findPanel, view.getBackground(), false);
+        }
+
+        static void apply(View view, int corners, boolean findPanel, @Nullable Drawable background,
+                          boolean anyColor) {
+            if (glassViews.add(view)) {
+                new GlassSurface(view, corners, findPanel, background, anyColor);
+            }
+        }
+
+        private GlassSurface(View view, int corners, boolean findPanel, @Nullable Drawable background,
+                             boolean anyColor) {
+            this.view = view;
+            this.corners = corners;
+            this.findPanel = findPanel;
+            this.anyColor = anyColor;
+
+            originalBackground = background;
+            tint = new GlassDrawable(corners == CORNERS_NONE ? 0 : cornerRadiusOf(originalBackground));
+            appBackdrop = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+                    ? new AppBackdropDrawable(view, blurRadiusPx())
+                    : null;
+            updateOpacity();
+
+            menuColors.addAll(menuColors(view.getContext()));
+            sampleOriginalBackground();
+
+            setBackgroundLayers();
+            view.setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View outlineView, Outline outline) {
+                    tint.getOutline(outline);
+                }
+            });
+            if (corners != CORNERS_NONE) {
+                view.setClipToOutline(true);
+            }
+            view.addOnAttachStateChangeListener(this);
+            if (view.isAttachedToWindow()) {
+                onViewAttachedToWindow(view);
+            }
+        }
+
+        private void sampleOriginalBackground() {
+            if (originalBackground == null) return;
+            final int color = SolidColors.colorOf(originalBackground);
+            if (Color.alpha(color) != 0) {
+                menuColors.add(color);
+                originalBackground = null;
+            }
+        }
+
+        @Override
+        public void onViewAttachedToWindow(@NonNull View attached) {
+            try {
+                // The blur belongs to the window the view is attached to.
+                WindowManager manager = view.getContext().getSystemService(WindowManager.class);
+                windowManager = manager;
+                blur = BlurRegion.create(view);
+                if (blur != null) {
+                    setBackgroundLayers();
+                    if (BlurRegion.isSamsungWindowBlurSupported()) {
+                        onBlurEnabledChanged(true);
+                    } else if (manager != null) {
+                        // The listener gets the current state only after the first frame of the menu is drawn.
+                        onSystemBlurEnabledChanged(manager.isCrossWindowBlurEnabled());
+                        manager.addCrossWindowBlurEnabledListener(blurListener);
+                    }
+                } else {
+                    onBlurEnabledChanged(false);
+                }
+                updateCorners(true);
+                attachedTime = SystemClock.uptimeMillis();
+                view.getViewTreeObserver().addOnPreDrawListener(this);
+                view.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
+                if (Logger.isDebugEnabled()) {
+                    view.postDelayed(this::logViewTree, 800);
+                }
+            } catch (Throwable ex) {
+                Logger.printException(() -> "GlassSurface attach failure", ex);
+            }
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(@NonNull View detached) {
+            try {
+                view.getViewTreeObserver().removeOnPreDrawListener(this);
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(layoutListener);
+                for (Drawable drawable : hiddenDrawables) {
+                    drawable.setColorFilter(null);
+                }
+                hiddenDrawables.clear();
+                panelFills.clear();
+                if (blur != null) {
+                    if (windowManager != null && !BlurRegion.isSamsungWindowBlurSupported()) {
+                        windowManager.removeCrossWindowBlurEnabledListener(blurListener);
+                    }
+                    blur = null;
+                    blurEnabled = false;
+                    setBackgroundLayers();
+                }
+                if (appBackdrop != null) {
+                    appBackdrop.setShown(false);
+                }
+                updateOpacity();
+                windowManager = null;
+            } catch (Throwable ex) {
+                Logger.printException(() -> "GlassSurface detach failure", ex);
+            }
+        }
+
+        /**
+         * The background of the view: the blur and the tint, drawn within the panel of the menu.
+         */
+        private void setBackgroundLayers() {
+            List<Drawable> drawables = new ArrayList<>(3);
+            if (blur != null) drawables.add(blur);
+            if (appBackdrop != null) drawables.add(appBackdrop);
+            drawables.add(tint);
+            layers = new LayerDrawable(drawables.toArray(new Drawable[0]));
+            setLayerInsets();
+            view.setBackground(layers);
+        }
+
+        private void setLayerInsets() {
+            for (int i = 0, count = layers.getNumberOfLayers(); i < count; i++) {
+                layers.setLayerInset(i, panelInsets.left, panelInsets.top, panelInsets.right, panelInsets.bottom);
+            }
+        }
+
+        /**
+         * Finds the panel of the menu, the area of the fills of the menu color, and draws the glass only there.
+         */
+        private void updatePanel() {
+            if (!findPanel) return;
+            final int width = view.getWidth();
+            final int height = view.getHeight();
+            if (width <= 0 || height <= 0) return;
+
+            view.getLocationInWindow(viewLocation);
+            panel.setEmpty();
+            Drawable largest = null;
+            long largestArea = 0;
+            Iterator<Map.Entry<Drawable, View>> iterator = panelFills.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Drawable, View> entry = iterator.next();
+                Drawable drawable = entry.getKey();
+                View host = entry.getValue();
+                // The fill is no longer drawn in the menu. It is added again if it is mounted again.
+                if (LithoFills.hostOf(drawable) != host || !LithoFills.isInside(host, view)) {
+                    iterator.remove();
+                    continue;
+                }
+                if (!host.isShown()) continue;
+
+                fillBounds.set(drawable.getBounds());
+                if (fillBounds.isEmpty()) continue;
+                host.getLocationInWindow(hostLocation);
+                fillBounds.offset(hostLocation[0] - viewLocation[0], hostLocation[1] - viewLocation[1]);
+                if (!fillBounds.intersect(0, 0, width, height)) continue;
+
+                panel.union(fillBounds);
+                final long area = (long) fillBounds.width() * fillBounds.height();
+                if (area > largestArea) {
+                    largestArea = area;
+                    largest = drawable;
+                }
+            }
+
+            // While the app replaces the content of the sheet, such as when a nested menu opens, no fill may be
+            // mounted for a frame. The glass then stays where the panel was, and does not cover the whole sheet.
+            if (panel.isEmpty()) return;
+
+            boolean changed = false;
+            final int left = panel.left;
+            final int top = panel.top;
+            final int right = width - panel.right;
+            final int bottom = height - panel.bottom;
+            if (left != panelInsets.left || top != panelInsets.top
+                    || right != panelInsets.right || bottom != panelInsets.bottom) {
+                panelInsets.set(left, top, right, bottom);
+                setLayerInsets();
+                // The layers are placed again only when the bounds change.
+                Rect bounds = layers.copyBounds();
+                layers.setBounds(0, 0, 0, 0);
+                layers.setBounds(bounds);
+                changed = true;
+                Logger.printDebug(() -> "Glass menu panel insets: " + left + ", " + top + ", " + right + ", " + bottom);
+            }
+
+            if (largest != null && corners != CORNERS_NONE) {
+                fillOutline.setEmpty();
+                largest.getOutline(fillOutline);
+                final float radius = fillOutline.getRadius();
+                if (radius > 0 && radius != tint.radius) {
+                    tint.setRadius(radius);
+                    changed = true;
+                }
+            }
+
+            if (changed) {
+                updateCorners(true);
+                view.invalidate();
+            }
+        }
+
+        private void onSystemBlurEnabledChanged(boolean enabled) {
+            BlurRegion.logBlurEnabled(view.getContext(), enabled);
+            onBlurEnabledChanged(enabled);
+        }
+
+        private void onBlurEnabledChanged(boolean enabled) {
+            blurEnabled = enabled;
+            if (blur != null) {
+                BlurRegion.setBlurRadius(blur, enabled ? blurRadiusPx() : 0);
+            }
+            if (appBackdrop != null) {
+                appBackdrop.setShown(!isSystemBlurred() && view.isAttachedToWindow());
+            }
+            updateOpacity();
+        }
+
+        private boolean isSystemBlurred() {
+            return blurEnabled && blur != null;
+        }
+
+        private void updateOpacity() {
+            final boolean blurred = isSystemBlurred() || (appBackdrop != null && appBackdrop.isShown());
+            tint.setOpacityPercent(blurred
+                    ? opacityPercent()
+                    : Math.max(opacityPercent(), MIN_OPACITY_WITHOUT_BLUR));
+        }
+
+        @Override
+        public boolean onPreDraw() {
+            try {
+                if (originalBackground != null) {
+                    sampleOriginalBackground();
+                }
+                updateCorners(false);
+                final long now = SystemClock.uptimeMillis();
+                final int lithoChanges = LithoFills.changes();
+                final boolean scanLitho = laidOut
+                        || lithoChanges != lastLithoChanges
+                        || now - attachedTime < LITHO_SCAN_EVERY_FRAME_MS
+                        || now - lastLithoScan >= LITHO_SCAN_INTERVAL_MS;
+                if (scanLitho) {
+                    lastLithoScan = now;
+                    lastLithoChanges = lithoChanges;
+                    laidOut = false;
+                }
+                removeMenuBackgrounds(anyColor ? view.getRootView() : view);
+                if (scanLitho) hideLithoFills();
+                updatePanel();
+                if (appBackdrop != null) appBackdrop.invalidateIfMoved();
+            } catch (Throwable ex) {
+                Logger.printException(() -> "GlassSurface onPreDraw failure", ex);
+            }
+            return true;
+        }
+
+        /**
+         * A menu at the bottom of the screen has round top corners only, a floating menu has all corners round.
+         */
+        private void updateCorners(boolean force) {
+            boolean top = corners != CORNERS_NONE;
+            boolean bottom = false;
+            if (corners == CORNERS_AUTO) {
+                if (windowManager == null) return;
+                view.getLocationOnScreen(location);
+                final int screenBottom = windowManager.getCurrentWindowMetrics().getBounds().bottom;
+                bottom = location[1] + view.getHeight() - panelInsets.bottom < screenBottom - Dim.dp(2);
+            }
+            if (!force && top == roundTop && bottom == roundBottom) return;
+
+            roundTop = top;
+            roundBottom = bottom;
+            tint.setRoundCorners(top, bottom);
+            view.invalidateOutline();
+            if (blur != null) {
+                final float radius = tint.radius;
+                BlurRegion.setCornerRadius(blur, top ? radius : 0, bottom ? radius : 0);
+            }
+        }
+
+        private void removeMenuBackgrounds(View parent) {
+            if (!(parent instanceof ViewGroup group)) return;
+
+            final int minWidth = anyColor ? 0 : view.getWidth() / 2;
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View child = group.getChildAt(i);
+                Drawable background = child.getBackground();
+                if (background instanceof NinePatchDrawable && child.getWidth() == view.getWidth()
+                        && child.getHeight() == view.getHeight()) {
+                    // A frame with the shadow of the menu. The shadow is drawn under the whole menu,
+                    // so it would darken the glass.
+                    hide(background);
+                } else if (background != null && child.getWidth() >= minWidth) {
+                    // Only fills of the menu, not small views such as buttons or a progress circle.
+                    if (hideIfMenuColor(background) && findPanel) {
+                        panelFills.put(background, child);
+                    }
+                }
+                removeMenuBackgrounds(child);
+            }
+        }
+
+        /**
+         * Hides the fills of Litho inside the menu that have the color of the menu.
+         */
+        private void hideLithoFills() {
+            final int minWidth = view.getWidth() / 2;
+            for (LithoFills.Fill fill : LithoFills.fillsInside(view)) {
+                Drawable drawable = fill.drawable();
+                if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color())) {
+                    if (findPanel) panelFills.put(drawable, fill.host());
+                    if (hide(drawable)) {
+                        fill.host().invalidate();
+                    }
+                }
+            }
+        }
+
+        /**
+         * Hides a drawable that has the color of the menu with a transparent color filter. The drawable itself is not
+         * changed, as the app can draw it again elsewhere, and the filter is removed when the menu is detached.
+         *
+         * @return If the drawable has the color of the menu.
+         */
+        private boolean hideIfMenuColor(Drawable drawable) {
+            // Checked every time: the drawable a wrapper holds can change.
+            List<Drawable> chain = new ArrayList<>();
+            if (!isMenuColor(SolidColors.colorOf(drawable, chain))) return false;
+
+            // A wrapper may not pass the filter on, so every drawable down to the color gets it.
+            boolean hidden = false;
+            for (Drawable link : chain) {
+                hidden |= hide(link);
+            }
+            if (hidden) drawable.invalidateSelf();
+            return true;
+        }
+
+        /**
+         * @return If the drawable was hidden now.
+         */
+        private boolean hide(Drawable drawable) {
+            if (!hiddenDrawables.add(drawable)) return false;
+            drawable.setColorFilter(TRANSPARENT_FILTER);
+            return true;
+        }
+
+        /**
+         * Writes the views of the menu to the debug log, to find backgrounds that are not removed.
+         */
+        private void logViewTree() {
+            try {
+                StringBuilder builder = new StringBuilder("Glass menu views:\n");
+                appendViewTree(builder, view, LithoFills.fillsInside(view), 0);
+                Logger.printDebug(builder::toString);
+            } catch (Throwable ex) {
+                Logger.printException(() -> "logViewTree failure", ex);
+            }
+        }
+
+        private void appendViewTree(StringBuilder builder, View current, List<LithoFills.Fill> fills, int depth) {
+            if (depth > 12) return;
+            for (int i = 0; i < depth; i++) builder.append("  ");
+            builder.append(current.getClass().getName());
+            if (current.getId() != View.NO_ID) {
+                try {
+                    builder.append(" #").append(current.getResources().getResourceEntryName(current.getId()));
+                } catch (Resources.NotFoundException ex) {
+                    // A generated id.
+                    builder.append(" #").append(Integer.toHexString(current.getId()));
+                }
+            }
+            builder.append(' ').append(current.getWidth()).append('x').append(current.getHeight());
+            appendDrawable(builder, "bg", current.getBackground());
+            for (LithoFills.Fill fill : fills) {
+                if (fill.host() == current) appendDrawable(builder, "litho", fill.drawable());
+            }
+            builder.append('\n');
+            if (current instanceof ViewGroup group) {
+                for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                    appendViewTree(builder, group.getChildAt(i), fills, depth + 1);
+                }
+            }
+        }
+
+        private void appendDrawable(StringBuilder builder, String kind, @Nullable Drawable drawable) {
+            if (drawable == null) return;
+            builder.append(' ').append(kind).append('=');
+            try {
+                List<Drawable> chain = new ArrayList<>();
+                final int color = SolidColors.colorOf(drawable, chain);
+                for (int i = 0; i < chain.size(); i++) {
+                    if (i > 0) builder.append('>');
+                    builder.append(chain.get(i).getClass().getSimpleName());
+                }
+                builder.append(String.format(Locale.US, "(#%08X %dx%d%s)", color, drawable.getBounds().width(),
+                        drawable.getBounds().height(), hiddenDrawables.contains(drawable) ? " hidden" : ""));
+            } catch (Exception ex) {
+                builder.append(drawable.getClass().getSimpleName()).append("(?)");
+                Logger.printDebug(() -> "Drawable color check failed: " + drawable, ex);
+            }
+        }
+
+        private boolean isMenuColor(@ColorInt int color) {
+            if (anyColor) return isOpaque(color);
+            for (int menu : menuColors) {
+                if (isSimilarOpaqueColor(color, menu)) return true;
+            }
+            return false;
+        }
+    }
+
+    /**
+     * A translucent tint of the app background with rounded corners and a light rim.
+     */
+    private static final class GlassDrawable extends Drawable {
+        private static final float RIM_WIDTH = Dim.dp(1);
+
+        float radius;
+        private boolean roundTop = true;
+        private boolean roundBottom = true;
+        private final Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint rim = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Path fillPath = new Path();
+        private final Path rimPath = new Path();
+        private final RectF rect = new RectF();
+        private int opacityPercent = 100;
+
+        GlassDrawable(float radius) {
+            this.radius = radius;
+
+            final boolean dark = Utils.isDarkModeEnabled();
+            final int background = ThemeUtils.getAppBackgroundColor();
+            // A menu is raised above the page, so it is a little lighter than the page, as in the app.
+            fill.setColor(blendWithWhite(background, dark ? 0.08f : 0.6f));
+
+            rim.setStyle(Paint.Style.STROKE);
+            rim.setStrokeWidth(RIM_WIDTH);
+            rim.setColor(dark ? Color.WHITE : Color.BLACK);
+            rim.setAlpha(dark ? 0x30 : 0x18);
+        }
+
+        void setOpacityPercent(int percent) {
+            opacityPercent = Math.max(0, Math.min(100, percent));
+            fill.setAlpha(255 * opacityPercent / 100);
+            invalidateSelf();
+        }
+
+        void setRadius(float radius) {
+            this.radius = radius;
+            updatePaths();
+            invalidateSelf();
+        }
+
+        void setRoundCorners(boolean top, boolean bottom) {
+            roundTop = top;
+            roundBottom = bottom;
+            updatePaths();
+            invalidateSelf();
+        }
+
+        private static int blendWithWhite(@ColorInt int color, float amount) {
+            final float keep = 1 - amount;
+            final float white = 255 * amount;
+            return Color.rgb(
+                    (int) (Color.red(color) * keep + white),
+                    (int) (Color.green(color) * keep + white),
+                    (int) (Color.blue(color) * keep + white));
+        }
+
+        @Override
+        protected void onBoundsChange(@NonNull Rect bounds) {
+            updatePaths();
+        }
+
+        private void updatePaths() {
+            Rect bounds = getBounds();
+            final float top = roundTop ? radius : 0;
+            final float bottom = roundBottom ? radius : 0;
+
+            rect.set(bounds);
+            fillPath.reset();
+            fillPath.addRoundRect(rect, new float[]{top, top, top, top, bottom, bottom, bottom, bottom},
+                    Path.Direction.CW);
+
+            // The rim is drawn inside the menu, so it is not cut by the outline.
+            final float inset = RIM_WIDTH / 2;
+            final float rimTop = Math.max(0, top - inset);
+            final float rimBottom = Math.max(0, bottom - inset);
+            rect.inset(inset, inset);
+            rimPath.reset();
+            rimPath.addRoundRect(rect, new float[]{rimTop, rimTop, rimTop, rimTop, rimBottom, rimBottom, rimBottom,
+                    rimBottom}, Path.Direction.CW);
+        }
+
+        @Override
+        public void draw(@NonNull Canvas canvas) {
+            canvas.drawPath(fillPath, fill);
+            canvas.drawPath(rimPath, rim);
+        }
+
+        @Override
+        public void getOutline(@NonNull Outline outline) {
+            Rect bounds = getBounds();
+            if (!roundTop && !roundBottom) {
+                outline.setRect(bounds);
+            } else if (roundTop && !roundBottom) {
+                // Round top corners only: the outline reaches below the bottom of the menu.
+                outline.setRoundRect(bounds.left, bounds.top, bounds.right,
+                        bounds.bottom + (int) Math.ceil(radius), radius);
+            } else if (!roundTop) {
+                outline.setRoundRect(bounds.left, bounds.top - (int) Math.ceil(radius), bounds.right,
+                        bounds.bottom, radius);
+            } else {
+                outline.setRoundRect(bounds, radius);
+            }
+            outline.setAlpha(opacityPercent / 100f);
+        }
+
+        @Override
+        public void setAlpha(int alpha) {
+        }
+
+        @Override
+        public void setColorFilter(@Nullable ColorFilter colorFilter) {
+        }
+
+        @Deprecated
+        @Override
+        public int getOpacity() {
+            return PixelFormat.TRANSLUCENT;
+        }
+    }
+
+    private GlassMenusPatch() {
+    }
+}

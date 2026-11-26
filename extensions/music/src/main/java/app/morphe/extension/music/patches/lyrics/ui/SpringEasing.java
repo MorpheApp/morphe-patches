@@ -20,6 +20,10 @@ final class SpringEasing {
             new PathInterpolator(0.41f, 0f, 0.12f, 0.99f);
 
     private static final float DEFAULT_ZETA = 0.78f;
+    /** Relaxed scrolling damps a little more, so the slower scroll overshoots less. */
+    private static final float RELAX_ZETA = 0.80f;
+    private static final float RELAX_ZETA_BOOST = 0.05f;
+    private static final float RELAX_MAX_ZETA = 0.95f;
     /** Damping between lines that follow closely, so a quick run of lines does not bounce. */
     private static final float ZETA_TIGHT = 0.85f;
     /** Damping between lines with a pause of {@link #MAX_DYNAMIC_GAP_MS} or more. */
@@ -40,17 +44,28 @@ final class SpringEasing {
      * this pause}
      */
     static float computeZeta(long timeGapMs) {
+        return computeZeta(timeGapMs, false);
+    }
+
+    /** Same as {@link #computeZeta(long)}, with more damping for relaxed scrolling. */
+    static float computeZeta(long timeGapMs, boolean isRelaxMode) {
         if (timeGapMs <= 0) {
-            return DEFAULT_ZETA;
+            return isRelaxMode ? RELAX_ZETA : DEFAULT_ZETA;
         }
         final float t = Math.min(1f, timeGapMs / MAX_DYNAMIC_GAP_MS);
-        return ZETA_TIGHT - t * (ZETA_TIGHT - ZETA_WIDE);
+        final float zeta = ZETA_TIGHT - t * (ZETA_TIGHT - ZETA_WIDE);
+        return isRelaxMode ? Math.min(RELAX_MAX_ZETA, zeta + RELAX_ZETA_BOOST) : zeta;
     }
 
     /** {@return a spring that rises in about this time, cached as most scrolls share one} */
     static LyricsSpring springFor(long durationMs, long timeGapMs) {
+        return springFor(durationMs, timeGapMs, false);
+    }
+
+    /** Same as {@link #springFor(long, long)}, with the damping of relaxed scrolling if set. */
+    static LyricsSpring springFor(long durationMs, long timeGapMs, boolean isRelaxMode) {
         final int durationKey = Math.max(10, (int) ((Math.max(1L, durationMs) + 5L) / 10L * 10L));
-        final int zetaKey = Math.round(computeZeta(timeGapMs) * 1000f);
+        final int zetaKey = Math.round(computeZeta(timeGapMs, isRelaxMode) * 1000f);
         final long key = ((long) durationKey << 16) | zetaKey;
         LyricsSpring spring = SPRING_CACHE.get(key);
         if (spring == null) {
@@ -107,6 +122,8 @@ final class SpringEasing {
      */
     static final class LyricsScrollStagger {
         static final int MAX_STAGGER_STEPS = 12;
+        /** Relaxed scrolling moves the lines above with half the delay when scrolling up. */
+        private static final float RELAX_UPWARD_DELAY_FACTOR = 0.5f;
 
         private final boolean scrollingDown;
         private final int referenceIndex;
@@ -116,17 +133,25 @@ final class SpringEasing {
         /** Lyric lines among the rows before each row index, one entry longer than the rows. */
         private final int[] linesBefore;
 
+        LyricsScrollStagger(boolean scrollingDown, int referenceIndex, int staggerAfterIndex,
+                            long durationMs, float delayIncrementMs, int[] linesBefore) {
+            this(scrollingDown, referenceIndex, staggerAfterIndex, durationMs, delayIncrementMs, false, linesBefore);
+        }
+
         /**
          * @param staggerAfterIndex The last row that moves without delay when scrolling down,
          *                          such as the end of a group of lines sung together.
          */
         LyricsScrollStagger(boolean scrollingDown, int referenceIndex, int staggerAfterIndex,
-                            long durationMs, float delayIncrementMs, int[] linesBefore) {
+                            long durationMs, float delayIncrementMs, boolean isRelaxMode,
+                            int[] linesBefore) {
             this.scrollingDown = scrollingDown;
             this.referenceIndex = referenceIndex;
             this.staggerAfterIndex = Math.max(referenceIndex, staggerAfterIndex);
             this.durationMs = durationMs;
-            this.delayIncrementMs = delayIncrementMs;
+            this.delayIncrementMs = (!scrollingDown && isRelaxMode)
+                    ? delayIncrementMs * RELAX_UPWARD_DELAY_FACTOR
+                    : delayIncrementMs;
             this.linesBefore = linesBefore;
         }
 

@@ -117,6 +117,8 @@ public final class MusicGlassMiniplayer {
      */
     private static final Map<View, ViewOutlineProvider> artworkOutlines = new WeakHashMap<>();
     private static final Map<View, Boolean> artworkClips = new WeakHashMap<>();
+    private static final Map<View, Float> artworkElevations = new WeakHashMap<>();
+    private static final Map<View, Float> artworkTranslationZs = new WeakHashMap<>();
     private static final Map<View, ObjectAnimator> spinAnimators = new WeakHashMap<>();
     private static final Map<Drawable, Integer> fadedBackgrounds = new WeakHashMap<>();
     private static WeakReference<View> clippedTimeBar = new WeakReference<>(null);
@@ -384,6 +386,7 @@ public final class MusicGlassMiniplayer {
             if (artwork != null && artwork.getWidth() > 0) {
                 fitArtwork(miniplayer, artwork, horizontalInset, rtl);
                 roundArtwork(artwork, getArtworkRadius(cardRadius, artworkPadding));
+                raiseArtworkAboveGlass(artwork);
             }
         }
 
@@ -453,6 +456,34 @@ public final class MusicGlassMiniplayer {
         artwork.setScaleX(scale);
         artwork.setScaleY(scale);
         artwork.setTranslationX(translation);
+    }
+
+    private static void raiseArtworkAboveGlass(View artwork) {
+        if (!artworkElevations.containsKey(artwork)) {
+            artworkElevations.put(artwork, artwork.getElevation());
+            artworkTranslationZs.put(artwork, artwork.getTranslationZ());
+        }
+
+        final float cardElevation = currentMiniplayer.get() == null ? 0 : currentMiniplayer.get().getElevation();
+        final float artworkElevation = Math.max(cardElevation + Dim.dp(1), Dim.dp(1));
+
+        artwork.setElevation(artworkElevation);
+        artwork.setTranslationZ(Dim.dp(1));
+        artwork.bringToFront();
+    }
+
+    private static void restoreArtworkZ() {
+        for (Map.Entry<View, Float> entry : artworkElevations.entrySet()) {
+            View artwork = entry.getKey();
+            if (artworkElevations.containsKey(artwork)) {
+                artwork.setElevation(artworkElevations.get(artwork));
+            }
+            if (artworkTranslationZs.containsKey(artwork)) {
+                artwork.setTranslationZ(artworkTranslationZs.get(artwork));
+            }
+        }
+        artworkElevations.clear();
+        artworkTranslationZs.clear();
     }
 
     private static void roundArtwork(View artwork, float radius) {
@@ -532,6 +563,8 @@ public final class MusicGlassMiniplayer {
         }
         artworkOutlines.clear();
         artworkClips.clear();
+
+        restoreArtworkZ();
 
         for (View artwork : movedArtworks.keySet()) {
             artwork.setScaleX(1);

@@ -34,6 +34,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -156,6 +157,15 @@ public class ReturnYouTubeDislikeAPI {
     } // utility class
 
     /**
+     * @return If the API calls are paused, such as after the API limited the requests,
+     *         so a fetch gives no data until they resume.
+     */
+    public static boolean isApiCallsPaused() {
+        final long resumeTime = timeToResumeAPICalls;
+        return resumeTime != 0 && System.currentTimeMillis() <= resumeTime;
+    }
+
+    /**
      * @return True, if api rate limit is in effect.
      */
     private static boolean checkIfRateLimitInEffect(String apiEndPointName) {
@@ -200,7 +210,6 @@ public class ReturnYouTubeDislikeAPI {
         fetchCallResponseTimeMax = Math.max(responseTimeOfFetchCall, fetchCallResponseTimeMax);
         fetchCallCount++;
         if (connectionError) {
-            timeToResumeAPICalls = System.currentTimeMillis() + BACKOFF_CONNECTION_ERROR_MILLISECONDS;
             fetchCallResponseTimeLast = responseTimeOfFetchCall;
             fetchCallNumberOfFailures++;
             lastApiCallFailed = true;
@@ -254,6 +263,8 @@ public class ReturnYouTubeDislikeAPI {
         }
         Logger.printDebug(() -> "Fetching votes for: " + videoId);
         final long timeNetworkCallStarted = System.currentTimeMillis();
+        // If the fetch failed because the device has no connection, which is not an error of the API.
+        boolean offline = false;
 
         try {
             HttpURLConnection connection = getRYDConnectionFromRoute(ReturnYouTubeDislikeRoutes.GET_DISLIKES, videoId);
@@ -305,13 +316,18 @@ public class ReturnYouTubeDislikeAPI {
             connection.disconnect(); // Something went wrong, might as well disconnect.
         } catch (SocketTimeoutException ex) {
             handleConnectionError((str("morphe_ryd_failure_connection_timeout")), null, ex, Toast.LENGTH_SHORT);
+            offline = !NetworkReconnect.isOnline();
         } catch (IOException ex) {
             handleConnectionError((str("morphe_ryd_failure_generic", ex.getMessage())), null, ex, Toast.LENGTH_LONG);
+            offline = !NetworkReconnect.isOnline();
         } catch (Exception ex) {
             // should never happen
             Logger.printException(() -> "fetchVotes failure", ex);
         }
 
+        if (!offline) {
+            timeToResumeAPICalls = System.currentTimeMillis() + BACKOFF_CONNECTION_ERROR_MILLISECONDS;
+        }
         updateRateLimitAndStats(timeNetworkCallStarted, true, false);
         return null;
     }

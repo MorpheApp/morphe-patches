@@ -166,11 +166,9 @@ internal fun installPlaylistPages() {
         """
     )
     for (navigation in listOf(false, true)) {
-        service.addBridgeMethod(
+        service.addPatchInterface(
+            SOURCE,
             if (navigation) "patch_getPlaylistNavigation" else "patch_getPlaylistPage",
-            listOf("Ljava/lang/Object;"),
-            "Lcom/google/protobuf/MessageLite;",
-            if (navigation && defaultNavigation.parameterTypes.isNotEmpty()) 2 else 1,
             """
                 check-cast p1, $rawResponse
                 new-instance v0, $responseType

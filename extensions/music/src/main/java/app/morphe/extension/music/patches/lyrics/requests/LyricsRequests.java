@@ -286,9 +286,7 @@ public final class LyricsRequests {
         // Always return a new list so the caller never shares a mutable reference with the input.
         if (offsetMs == 0L) {
             List<LyricsLine> copy = new ArrayList<>(lines.size());
-            for (LyricsLine line : lines) {
-                copy.add(line);
-            }
+            copy.addAll(lines);
             return copy;
         }
         List<LyricsLine> adjusted = new ArrayList<>(lines.size());
@@ -643,15 +641,13 @@ public final class LyricsRequests {
             if (Character.isLetterOrDigit(cp)) {
                 cur.appendCodePoint(cp);
             } else {
-                //noinspection SizeReplaceableByIsEmpty
-                if (cur.length() > 0) {
+                if (Utils.isNotEmpty(cur)) {
                     out.add(cur.toString());
                     cur.setLength(0);
                 }
             }
         }
-        //noinspection SizeReplaceableByIsEmpty
-        if (cur.length() > 0) {
+        if (Utils.isNotEmpty(cur)) {
             out.add(cur.toString());
         }
         return out;

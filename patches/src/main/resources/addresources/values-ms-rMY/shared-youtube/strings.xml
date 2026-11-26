@@ -78,6 +78,7 @@ Sahkan nama pakej adalah betul dan aplikasi telah dipasang"</string>
   <string name="morphe_export_download_folder_missing">Tidak dapat mencari folder eksport %s</string>
   <string name="morphe_export_download_flyout_title">Eksport ke peranti</string>
   <string name="morphe_export_download_canceled">Eksport dibatalkan</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tersuai</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
@@ -139,14 +140,16 @@ Ketik OK untuk membuka Android System WebView."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cuba dayakan: Spoof penstriman video &gt; Log masuk VR Android</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien lalai</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Gunakan QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Gunakan QuackJS sebagai ganti yt-dlp-ejs (WebView) untuk deobfuscation</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log masuk VR Android</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR memerlukan log masuk berasingan. Ketik di sini untuk meneruskan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kini log masuk ke Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log masuk \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' memerlukan log masuk berasingan. Ketik di sini untuk meneruskan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kini log masuk ke \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log masuk ke Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Log masuk ke Android VR boleh membaiki masalah main balik bagi sesetengah pengguna
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log masuk ke \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Log masuk ke 'Android VR' boleh membaiki isu main balik bagi sesetengah pengguna
 
 Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Log keluar</string>
@@ -167,35 +170,36 @@ Untuk log masuk, tekan teruskan di bawah"</string>
 • Tetapan Morphe anda tidak akan mengimport/mengeksport pengesahan Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan membuang pengesahan ini
 • Anda perlu log masuk semula jika anda menukar kata laluan Google anda atau menyahdaftar peranti ini daripada tetapan Google anda"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log masuk Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log masuk Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Pilihan: log masuk ke laman web YouTube untuk memainkan video dengan akaun anda. Ketik di sini untuk meneruskan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kini log masuk ke Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kini log masuk ke laman web YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada Web Mudah Alih</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log masuk ke Web Mudah Alih</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Mudah Alih memainkan video tanpa log masuk, atau log masuk ke laman web YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada klien Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log masuk ke laman web YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Klien Web memainkan video tanpa log masuk, atau log masuk ke laman web YouTube
 
-• Jika log masuk, video yang memerlukan akaun boleh dimainkan, seperti video yang dihadkan umur
+• Apabila log masuk, video yang memerlukan akaun boleh dimainkan, seperti video yang terhad umur
 • Halaman log masuk Google dibuka dalam apl ini
-• Log masuk digunakan hanya untuk mendapatkan video yang anda mainkan
+• Log masuk hanya digunakan untuk mendapatkan video yang anda mainkan
 • Log masuk hanya disimpan pada peranti ini
+• Setiap klien Web mempunyai log masuknya sendiri, untuk klien lalai yang dipilih
 
 Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Log masuk disimpan
 
-• Tetapan Morphe anda tidak akan mengimport/mengeksport log masuk Web Mudah Alih
-• Jika Google menamatkan log masuk, video dimainkan tanpa log masuk sehingga anda log masuk semula
+• Tetapan Morphe anda tidak akan mengimport/mengeksport log masuk laman web YouTube
+• Jika Google menamatkan log masuk, video akan dimainkan tanpa log masuk sehingga anda log masuk semula
 • Log keluar juga akan mengeluarkan peranti ini daripada laman web YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Log masuk Web Mudah Alih telah tamat tempoh, cuba log masuk ke Web Mudah Alih sekali lagi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Log keluar daripada Web Mudah Alih</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView tidak tersedia. Pasang atau dayakannya untuk log masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Log masuk web tamat tempoh, cuba log masuk semula</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Log keluar daripada laman web YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' tidak tersedia. Pasang atau dayakannya untuk log masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 tidak tersedia buat sementara waktu (API tamat masa)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Log masuk VR Android telah tamat tempoh, cuba log masuk ke VR sekali lagi</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Log masuk \'Android VR\' telah tamat tempoh, cuba log masuk ke VR sekali lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 tidak tersedia buat sementara waktu (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 tidak tersedia buat sementara waktu</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Tidak dapat log masuk ke VR, pengesahan laman web tidak diluluskan</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat log masuk ke VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Log keluar daripada Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Log keluar daripada \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Token log masuk VR tidak sah, cuba log masuk ke VR sekali lagi</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kawalan media pemberitahuan</string>
@@ -213,8 +217,15 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_seek_notification_media_length_invalid">Panjang carian mestilah antara 1 dan %s saat. Menggunakan lalai</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nyahaktifkan protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Utamakan kualiti video</string>
+  <string name="morphe_prioritize_video_quality_summary">Mengutamakan kualiti video tertinggi yang tersedia berbanding kecekapan codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jika tetapan ini dimatikan, video lama mungkin tidak menunjukkan pilihan kualiti video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Nyahaktifkan audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Nyahaktifkan audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Memainkan audio asal berbanding versi dengan julat dinamik yang dimampatkan</string>
+  <string name="morphe_disable_loudness_normalization_title">Nyahaktifkan penormalan kelantangan</string>
+  <string name="morphe_disable_loudness_normalization_summary">Memainkan audio yang kuat pada volum asalnya berbanding merendahkannya ke tahap standard</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asal</string>
   <string name="morphe_force_original_audio_summary">Sentiasa mainkan trek audio asal video berbanding versi alih suara</string>
@@ -223,6 +234,32 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_skip_silence_summary">Melangkau jeda senyap secara automatik dalam audio video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Panjang jeda minimum</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Hanya jeda yang sekurang-kurangnya sepanjang ini akan dipendekkan. Berkesan apabila video seterusnya bermula</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Kesan video</string>
+  <string name="morphe_video_effect_entry_none">Matikan</string>
+  <string name="morphe_video_effects_custom_title">Edit kesan video</string>
+  <string name="morphe_video_effects_custom_summary">Tukar, namakan semula, padam atau tambah kesan video. Kesan adalah kod shader, jadi chatbot AI boleh menulis yang baharu</string>
+  <string name="morphe_video_effects_custom_empty">Tiada kesan video. Ketik Tambah kesan untuk menciptanya.</string>
+  <string name="morphe_video_effects_custom_add">Tambah kesan</string>
+  <string name="morphe_video_effects_custom_restore">Pulihkan tetapan lalai</string>
+  <string name="morphe_video_effects_custom_add_title">Kesan baharu</string>
+  <string name="morphe_video_effects_custom_edit_title">Edit kesan</string>
+  <string name="morphe_video_effects_custom_name_hint">Nama</string>
+  <string name="morphe_video_effects_custom_name_empty">Masukkan nama untuk kesan tersebut</string>
+  <string name="morphe_video_effects_custom_name_exists">Kesan dengan nama ini sudah ada</string>
+  <string name="morphe_video_effects_custom_copy_code">Salin kod</string>
+  <string name="morphe_video_effects_custom_error_title">Kesan mempunyai ralat</string>
+  <string name="morphe_video_effects_custom_error_message">"Video dipaparkan tanpa kesan sehingga kod diperbetulkan. Berikan ralat ini kepada AI yang menulis kod tersebut:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Kod berakhir di dalam fungsi atau komen, jadi ia mungkin terpotong semasa disalin atau ditampal. Teks yang ditampal boleh terpotong pada %d aksara.
+
+Minta AI untuk kod yang lebih pendek, atau tampal kod secara berperingkat."</string>
+  <string name="morphe_video_effects_custom_copy_error"> Salin ralat</string>
+  <string name="morphe_video_effects_custom_save_anyway">Simpan juga</string>
+  <string name="morphe_video_effects_custom_delete">Padam</string>
+  <string name="morphe_video_effects_custom_delete_title">Padam kesan?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s akan dipadamkan.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proksi rangkaian</string>
   <string name="morphe_proxy_screen_summary">Hala permintaan rangkaian yang disokong melalui proksi</string>
@@ -253,7 +290,7 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_replace_music_with_youtube_title">Tukar pautan kongsi ke youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Menggantikan music.youtube.com kepada youtube.com dalam pautan yang dikongsi</string>
   <string name="morphe_replace_links_with_shortener_title">Tukar pautan kongsi kepada youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Memaksa video menggunakan format URL youtu.be yang dipendekkan</string>
+  <string name="morphe_replace_links_with_shortener_summary">Memaksa video menggunakan format URL \'youtu.be\' yang dipendekkan</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatik</string>
@@ -265,15 +302,12 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_video_quality_default_mobile_title">Kualiti video lalai pada rangkaian mudah alih</string>
   <string name="morphe_remember_video_quality_toast_mobile">Tukar kualiti mudah alih lalai kepada: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Tukar kualiti Wi-Fi lalai kepada: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka helaian perkongsian sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka helaian perkongsian sistem berbanding helaian dalam aplikasi apabila berkongsi kandungan</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Dilumpuhkan</string>
   <string name="morphe_debug_litho_entry_path">Laluan</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Laluan dan penimbal</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Log Litho mencatat log komponen tataletak aplikasi, termasuk teks pada skrin untuk beberapa komponen UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Mencatat komponen tataletak apl, termasuk teks pada skrin untuk beberapa komponen UI.
 
 Ini boleh membantu mengenal pasti komponen apabila mencipta penapis tersuai.
 
@@ -340,6 +374,17 @@ Jika dimatikan kemudian, anda disyorkan untuk mengosongkan data aplikasi untuk m
   <string name="morphe_custom_font_file_summary">Pilih fail fon TTF atau OTF</string>
   <string name="morphe_custom_font_file_invalid">Fail yang dipilih bukan fon TTF atau OTF</string>
   <string name="morphe_custom_font_failed_to_load">Fon tersuai tidak dapat dimuatkan dan telah dimatikan</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menu kaca</string>
+  <string name="morphe_glass_menus_screen_summary">Menu sebagai kaca beku di atas kandungan kabur di belakangnya</string>
+  <string name="morphe_glass_menus_title">Dayakan menu kaca</string>
+  <string name="morphe_glass_menus_summary">Memaparkan menu dan helaian bawah sebagai kaca beku, dengan kandungan di belakangnya dikaburkan</string>
+  <string name="morphe_glass_menus_opacity_title">Kelegapan kaca</string>
+  <string name="morphe_glass_menus_opacity_summary">Sejauh mana menu menutup kandungan yang dikaburkan (0 adalah jernih, 100 adalah legap)</string>
+  <string name="morphe_glass_menus_blur_title">Kabur</string>
+  <string name="morphe_glass_menus_blur_summary">Sejauh mana kandungan di belakang menu dikaburkan</string>
+  <string name="morphe_glass_menus_dim_title">Malapkan</string>
+  <string name="morphe_glass_menus_dim_summary">Sejauh mana skrin di sekeliling helaian bawah digelapkan</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Tidak suka tidak tersedia buat sementara waktu (API tamat masa)</string>
@@ -377,4 +422,8 @@ ID video yang anda tonton dihantar ke API Return YouTube Dislike, dan suka serta
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tiada had kadar klien ditemui</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Had kadar klien ditemui %s kali</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisaat</string>
+  <string name="morphe_navigation_bar_screen_title">Bar pandu arah</string>
+  <string name="morphe_navigation_bar_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
+  <string name="morphe_toolbar_screen_title">Bar alatan</string>
+  <string name="morphe_toolbar_screen_summary">Pilih komponen yang akan muncul pada bar alatan</string>
 </resources>

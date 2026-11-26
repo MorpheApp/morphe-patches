@@ -30,6 +30,7 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 
 /**
- * Makes the watch page transparent, so the light surfaces underneath the window show through.
+ * Makes the watch page transparent, so the light surface underneath the window shows through.
  * Litho backgrounds change color in {@link AmbientLightController#getLithoColor}.
  * This class handles the backgrounds of regular views.
  */
@@ -84,10 +85,21 @@ final class SeeThroughPage {
      * description and the playlist.
      */
     private static final int PANEL_WRAPPER_ID = ResourceUtils.getIdentifier(ResourceType.ID, "engagement_panel_wrapper");
+    /**
+     * Holds the panel that opens next to the video in fullscreen, such as the comments. It is a
+     * part of the player.
+     */
+    private static final int PLAYER_PANEL_HOLDER_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "fullscreen_engagement_panel_holder");
     /** The bar at the bottom of the page that opens the playlist. It lies over the list of the page. */
     private static final int PLAYLIST_BAR_ID = ResourceUtils.getIdentifier(ResourceType.ID, "playlist_entry_point_bar");
-    /** How much of the page color stays on the bar, so that it still shows as a bar. */
-    private static final int PLAYLIST_BAR_ALPHA = 0x40;
+    /**
+     * The poll of a live chat. It lies over the list of the chat, and over the message that is
+     * pinned below the list.
+     */
+    private static final int LIVE_CHAT_POLL_ID = ResourceUtils.getIdentifier(ResourceType.ID, "live_chat_poll");
+    /** How much of the page color stays on what lies over a list, so that it still shows as a thing of its own. */
+    private static final int ROUND_LIGHT_ALPHA = 0x40;
     /** Draws a layer in place of what is under it, and not over it. */
     private static final Paint REPLACING_LAYER_PAINT = new Paint();
 
@@ -124,6 +136,7 @@ final class SeeThroughPage {
     private static WeakReference<LightDrawable> pageBackdropLightRef = new WeakReference<>(null);
     private static final List<WeakReference<View>> systemBarBackgrounds = new ArrayList<>(2);
     private static WeakReference<ViewGroup> panelWrapperRef = new WeakReference<>(null);
+    private static WeakReference<ViewGroup> playerPanelHolderRef = new WeakReference<>(null);
     /** The views of the panels that show the light in place of their background, with that background. */
     private static final IdentityHashMap<View, Drawable> panelBackgrounds = new IdentityHashMap<>();
     /** The layers of the panels that are drawn in place of what is under them. */
@@ -133,6 +146,13 @@ final class SeeThroughPage {
     /** The colors under the ripples of these rows, with the alpha they had. */
     private static final WeakHashMap<Drawable, Integer> panelRowFills = new WeakHashMap<>();
     private static volatile boolean panelShown;
+    private static volatile boolean playerPanelShown;
+    /** If a panel that shows the light lies over the player, as when it is dragged up to fill the screen. */
+    private static volatile boolean panelOverPlayer;
+    /** The player, or the view of the page that holds it. */
+    private static WeakReference<View> playerRef = new WeakReference<>(null);
+    private static final int[] panelLocation = new int[2];
+    private static final int[] playerLocation = new int[2];
     private static WeakReference<View> playlistBarRef = new WeakReference<>(null);
     @Nullable
     private static Drawable playlistBarBackground;
@@ -156,9 +176,15 @@ final class SeeThroughPage {
         panelBackgrounds.keySet().removeIf(view -> !view.isAttachedToWindow());
         panelRowLights.keySet().removeIf(view -> !view.isAttachedToWindow());
         SeeThroughPage.pageColor = pageColor;
+        playerRef = new WeakReference<>(player);
         ViewGroup panelWrapper = panelWrapperRef.get();
         if (PANEL_WRAPPER_ID != 0 && (panelWrapper == null || !panelWrapper.isAttachedToWindow())) {
             panelWrapperRef = new WeakReference<>(page.findViewById(PANEL_WRAPPER_ID) instanceof ViewGroup found ? found : null);
+        }
+        ViewGroup playerPanelHolder = playerPanelHolderRef.get();
+        if (PLAYER_PANEL_HOLDER_ID != 0 && (playerPanelHolder == null || !playerPanelHolder.isAttachedToWindow())) {
+            playerPanelHolderRef = new WeakReference<>(
+                    player.findViewById(PLAYER_PANEL_HOLDER_ID) instanceof ViewGroup found ? found : null);
         }
         clearBackgrounds(page, player, page.getWidth() / 3, pageColor, 0);
         lightPageContent(page);
@@ -249,13 +275,31 @@ final class SeeThroughPage {
      * @param lists If the items of the lists are looked at too.
      */
     private static void lightPanels(boolean lists) {
-        ViewGroup wrapper = panelWrapperRef.get();
+        final boolean onPage = lightPanels(panelWrapperRef.get(), false, lists);
+        // The panel of the player lies over the light around the video, and is lit in the same way.
+        final boolean inPlayer = lightPanels(playerPanelHolderRef.get(), true, lists);
+        if ((onPage || inPlayer) != panelShown || inPlayer != playerPanelShown) {
+            panelShown = onPage || inPlayer;
+            playerPanelShown = inPlayer;
+            AmbientLightController.onPanelChanged();
+        }
+    }
+
+    /**
+     * @param inPlayer If the panels are a part of the player. Such a panel lies next to the video.
+     * @return If a panel of the wrapper shows the light.
+     */
+    private static boolean lightPanels(@Nullable ViewGroup wrapper, boolean inPlayer, boolean lists) {
+        View player = inPlayer ? null : playerRef.get();
         boolean shown = false;
+        boolean overPlayer = false;
         for (int i = 0; wrapper != null && wrapper.isShown() && i < wrapper.getChildCount(); i++) {
             if (!(wrapper.getChildAt(i) instanceof ViewGroup panel) || panel.getVisibility() != View.VISIBLE) continue;
             Drawable background = panel.getBackground();
-            if (background == null) {
-                panelBackgrounds.put(panel, null);
+            // The view that holds the panel below another one while they slide has a see-through color.
+            // What it holds, and the shade over it, would be black.
+            if (background == null || (background instanceof ColorDrawable color && Color.alpha(color.getColor()) == 0)) {
+                panelBackgrounds.put(panel, background);
                 panel.setBackground(new PanelLight(panel, pageColor));
                 // What the panel shows was drawn before the panel had the light.
                 invalidateBackgrounds(panel, 0);
@@ -266,11 +310,14 @@ final class SeeThroughPage {
             // A panel of a tablet is as wide as a column.
             lightPanel(panel, null, panel.getWidth() / 3, lists, 0);
             shown = true;
+            if (player != null && player.isShown()) {
+                panel.getLocationInWindow(panelLocation);
+                player.getLocationInWindow(playerLocation);
+                overPlayer |= panelLocation[1] < playerLocation[1] + player.getHeight() - 1;
+            }
         }
-        if (shown != panelShown) {
-            panelShown = shown;
-            AmbientLightController.onPanelChanged();
-        }
+        if (!inPlayer) panelOverPlayer = overPlayer;
+        return shown;
     }
 
     /**
@@ -302,12 +349,67 @@ final class SeeThroughPage {
     }
 
     /**
+     * Main thread.
+     *
+     * @return The width of the panel the view is in, or 0 if it is in none.
+     */
+    static int panelWidth(@Nullable View view) {
+        ViewGroup wrapper = panelWrapperRef.get();
+        for (int depth = 0; wrapper != null && view != null && depth <= MAX_DEPTH; depth++) {
+            ViewParent parent = view.getParent();
+            if (parent == wrapper) return view.getWidth();
+            view = parent instanceof View parentView ? parentView : null;
+        }
+        return 0;
+    }
+
+    /**
      * Any thread.
      *
      * @return If a panel that shows the light is open. A panel is there to be read.
      */
     static boolean hasPanel() {
         return panelShown;
+    }
+
+    /**
+     * Any thread.
+     *
+     * @return If a panel that shows the light lies over the player. The panel hides the video,
+     *         so the window draws the light where the video is too, as the surfaces leave it out.
+     */
+    static boolean isPanelOverPlayer() {
+        return panelOverPlayer;
+    }
+
+    /**
+     * Any thread.
+     *
+     * @return If the panel of the player, as the comments of fullscreen, shows the light.
+     */
+    static boolean hasPlayerPanel() {
+        return playerPanelShown;
+    }
+
+    /**
+     * Main thread.
+     *
+     * @param bounds Gets where the panel of the player is in the window: left, top, right, bottom.
+     * @return If the panel of the player shows the light.
+     */
+    static boolean playerPanel(int[] bounds) {
+        ViewGroup holder = playerPanelHolderRef.get();
+        for (int i = 0; playerPanelShown && holder != null && holder.isShown() && i < holder.getChildCount(); i++) {
+            View panel = holder.getChildAt(i);
+            if (panel.getVisibility() == View.VISIBLE && panel.getBackground() instanceof PanelLight) {
+                panel.getLocationInWindow(bounds);
+                bounds[2] = bounds[0] + panel.getWidth();
+                bounds[3] = bounds[1] + panel.getHeight();
+                return true;
+            }
+        }
+        Arrays.fill(bounds, 0);
+        return false;
     }
 
     /**
@@ -336,8 +438,10 @@ final class SeeThroughPage {
             if (!isOpaquePageColor(color)) return false;
         }
         ViewGroup wrapper = panelWrapperRef.get();
+        ViewGroup playerPanelHolder = playerPanelHolderRef.get();
         View panel = view;
-        for (int depth = 0; panel != null && panel.getParent() != wrapper; depth++) {
+        for (int depth = 0; panel != null && panel.getParent() != wrapper && panel.getParent() != playerPanelHolder;
+             depth++) {
             panel = depth < MAX_DEPTH && panel.getParent() instanceof View parent ? parent : null;
         }
         if (panel == null || !(panel.getBackground() instanceof PanelLight) || view.getWidth() < panel.getWidth() / 3) {
@@ -378,10 +482,17 @@ final class SeeThroughPage {
                 panelBackgrounds.put(view, background);
                 background = new PanelLight(view, color.getColor());
                 view.setBackground(background);
-            } else if (background instanceof GradientDrawable gradient && hasPageColor(gradient)) {
-                // The backgrounds with round corners lie next to each other, and over the light of
-                // the panel. The shade at the top of the description fades into the color of the page.
-                clear(view);
+            } else if (background instanceof GradientDrawable gradient && !(background instanceof RoundLight)
+                    && hasPageColor(gradient)) {
+                if (LIVE_CHAT_POLL_ID != 0 && view.getId() == LIVE_CHAT_POLL_ID && gradient.getColor() != null) {
+                    // The poll would show the chat under it through a see-through background.
+                    panelBackgrounds.put(view, background);
+                    view.setBackground(new RoundLight(view, gradient));
+                } else {
+                    // The backgrounds with round corners lie next to each other, and over the light of
+                    // the panel. The shade at the top of the description fades into the color of the page.
+                    clear(view);
+                }
             }
         }
         // YouTube draws what slides in, as the replies of a comment over the comments, into a
@@ -471,7 +582,10 @@ final class SeeThroughPage {
 
     private static void restorePanels() {
         for (Map.Entry<View, Drawable> entry : panelBackgrounds.entrySet()) {
-            if (entry.getKey().getBackground() instanceof PanelLight) entry.getKey().setBackground(entry.getValue());
+            Drawable background = entry.getKey().getBackground();
+            if (background instanceof PanelLight || background instanceof RoundLight) {
+                entry.getKey().setBackground(entry.getValue());
+            }
         }
         panelBackgrounds.clear();
         for (WeakReference<View> reference : panelLayers) {
@@ -486,7 +600,10 @@ final class SeeThroughPage {
         }
         panelRowFills.clear();
         panelShown = false;
+        panelOverPlayer = false;
+        playerPanelShown = false;
         panelWrapperRef = new WeakReference<>(null);
+        playerPanelHolderRef = new WeakReference<>(null);
         View playlistBar = playlistBarRef.get();
         if (playlistBar != null && playlistBar.getBackground() instanceof RoundLight) {
             playlistBar.setBackground(playlistBarBackground);
@@ -625,7 +742,12 @@ final class SeeThroughPage {
         invalidateIfMoved(pageContentRef.get());
         invalidateIfMoved(pageInfoPanelRef.get());
         for (View view : panelBackgrounds.keySet()) {
-            if (view.getBackground() instanceof PanelLight panelLight) panelLight.light.invalidateIfMoved();
+            Drawable background = view.getBackground();
+            if (background instanceof PanelLight panelLight) {
+                panelLight.light.invalidateIfMoved();
+            } else if (background instanceof RoundLight roundLight) {
+                roundLight.light.invalidateIfMoved();
+            }
         }
         for (LightDrawable light : panelRowLights.values()) light.invalidateIfMoved();
         View playlistBar = playlistBarRef.get();
@@ -890,19 +1012,19 @@ final class SeeThroughPage {
             canvas.save();
             canvas.clipPath(outline);
             light.draw(canvas);
-            tint.setColor(PLAYLIST_BAR_ALPHA << 24 | (color & 0xFFFFFF));
+            tint.setColor(ROUND_LIGHT_ALPHA << 24 | (color & 0xFFFFFF));
             canvas.drawPaint(tint);
             canvas.restore();
         }
     }
 
     /**
-     * Shows the light in a view. While the surfaces show the light, it removes what was drawn
+     * Shows the light in a view. While the surface shows the light, it removes what was drawn
      * below the view, such as the home feed below the page. While the player moves, it draws
      * the light itself. The page has it as its background, and so have the content of the page
      * and the panel below the player of a tablet, as YouTube draws black under them while the
      * page changes. The backdrop of the page has it over what it draws. The views of a panel
-     * have it in place of their backgrounds.
+     * have it in place of their backgrounds, also those of the panel of the player.
      */
     private static final class LightDrawable extends Drawable {
         private final View view;
@@ -952,7 +1074,8 @@ final class SeeThroughPage {
             } else {
                 covered = lightBounds(content, view, 1f, contentLightBounds);
             }
-            if (!AmbientLightController.drawWindowLight(canvas, view, true, alpha, covered)) {
+            // A panel dragged up over the player hides the video, and is never see-through.
+            if (!AmbientLightController.drawWindowLight(canvas, view, true, alpha, covered, inPanel, false)) {
                 canvas.drawColor(0, PorterDuff.Mode.CLEAR);
             }
         }

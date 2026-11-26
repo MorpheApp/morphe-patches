@@ -49,6 +49,7 @@ internal fun forceOriginalAudioPatch(
     executeBlock: () -> Unit = {},
     fixUseLocalizedAudioTrackFlag: () -> Boolean,
     forcedServerAdaptiveStreaming: () -> Boolean,
+    shortsQualityMenuController: Boolean = false,
     mainActivityOnCreateFingerprint: Fingerprint,
     subclassExtensionClassDescriptor: String,
     preferenceScreen: BasePreferenceScreen.Screen
@@ -200,7 +201,8 @@ internal fun forceOriginalAudioPatch(
                             )
                         ),
                         "V",
-                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                        // Public and not final, so a subclass can override it.
+                        AccessFlags.PUBLIC.value,
                         null,
                         null,
                         MutableMethodImplementation(3),
@@ -227,6 +229,59 @@ internal fun forceOriginalAudioPatch(
 
                     it.classDef.methods.add(helperMethod)
 
+                    if (shortsQualityMenuController) {
+                        // The quality menu controller is a subclass that sends the changes to the
+                        // player controller of the Shorts player while a Short is playing.
+                        // The player controller of the superclass has no player while a Short
+                        // is playing and ignores the audio track, so do the same as the subclass.
+                        val shortsQualityMenuControllerClass = getShortsQualityMenuControllerFingerprint(
+                            qualityMenuControllerClass = definingClass,
+                            playerControllerClass = playerControllerClass
+                        ).classDef
+
+                        val isShortsPlayerMethod = getShortsQualityMenuControllerIsShortsPlayerFingerprint(
+                            shortsQualityMenuControllerClass.type
+                        ).method
+
+                        val shortsPlayerControllerField = shortsQualityMenuControllerClass.fields.single { field ->
+                            field.type == playerControllerClass
+                        }
+
+                        shortsQualityMenuControllerClass.methods.add(
+                            ImmutableMethod(
+                                shortsQualityMenuControllerClass.type,
+                                helperMethod.name,
+                                helperMethod.parameters,
+                                helperMethod.returnType,
+                                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                                null,
+                                null,
+                                MutableMethodImplementation(3),
+                            ).toMutable().apply {
+                                addInstructionsWithLabels(
+                                    0,
+                                    """
+                                        invoke-virtual { p0 }, $isShortsPlayerMethod
+                                        move-result v0
+                                        if-eqz v0, :regular_player
+                                        
+                                        # Check if the audio track id is null.
+                                        if-eqz p1, :ignore
+                                        iget-object v0, p0, $shortsPlayerControllerField
+                                        invoke-virtual { v0, p1 }, $setAudioTrackMethod
+                                        
+                                        :ignore
+                                        return-void
+                                        
+                                        :regular_player
+                                        invoke-super { p0, p1 }, $helperMethod
+                                        return-void
+                                    """
+                                )
+                            }
+                        )
+                    }
+
                     val index = it.instructionMatches.first().index
                     val instruction = getInstruction<TwoRegisterInstruction>(index)
                     val freeRegister = instruction.registerA
@@ -238,7 +293,7 @@ internal fun forceOriginalAudioPatch(
                             iget-object v$freeRegister, v$audioVideoFormatRegister, $audioTrackRecordArrayField
                             invoke-static { v$freeRegister }, $EXTENSION_CLASS->getDefaultAudioTrackId([${EXTENSION_AUDIO_TRACK_INTERFACE})Ljava/lang/String;
                             move-result-object v$freeRegister
-                            invoke-direct { p0, v$freeRegister }, $helperMethod
+                            invoke-virtual { p0, v$freeRegister }, $helperMethod
                         """
                     )
                 }

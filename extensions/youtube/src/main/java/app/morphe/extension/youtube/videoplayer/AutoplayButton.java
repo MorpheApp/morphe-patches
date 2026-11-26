@@ -14,6 +14,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
@@ -39,6 +41,9 @@ public final class AutoplayButton {
 
     private static WeakReference<TextView> textRef = new WeakReference<>(null);
 
+    @Nullable
+    private static LegacyPlayerControlButton legacy;
+
     /**
      * Injection point.
      */
@@ -60,6 +65,34 @@ public final class AutoplayButton {
             update();
         } catch (Exception ex) {
             Logger.printException(() -> "Autoplay button initializeButton failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void initializeLegacyButton(View controlsView) {
+        try {
+            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) {
+                return;
+            }
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    "morphe_autoplay_button_container",
+                    "morphe_autoplay_button",
+                    "morphe_autoplay_button_text",
+                    null,
+                    Settings.AUTOPLAY_CONTROL,
+                    view -> cycleMode(),
+                    view -> {
+                        showList(view.getContext());
+                        return true;
+                    }
+            );
+            update();
+        } catch (Exception ex) {
+            Logger.printException(() -> "Autoplay button initializeLegacyButton failure", ex);
         }
     }
 
@@ -127,9 +160,13 @@ public final class AutoplayButton {
     public static void update() {
         try {
             Utils.verifyOnMainThread();
+            String text = text();
             TextView view = textRef.get();
             if (view != null) {
-                view.setText(text());
+                view.setText(text);
+            }
+            if (legacy != null) {
+                legacy.setTextOverlay(text);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Autoplay button update failure", ex);

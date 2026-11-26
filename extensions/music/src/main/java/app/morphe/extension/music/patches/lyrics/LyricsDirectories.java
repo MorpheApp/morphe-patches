@@ -26,6 +26,7 @@ public final class LyricsDirectories {
 
     public static final String ROMAN_DICT = "romandict";
     public static final String OFFLINE = "offline";
+    public static final String FONT = "font";
 
     private static final String ROOT_NAME = "morphe_lyrics";
 
@@ -34,8 +35,12 @@ public final class LyricsDirectories {
 
     @Nullable
     public static File directory(String name) {
+        return directory(Utils.getContext(), name);
+    }
+
+    @Nullable
+    public static File directory(@Nullable Context context, String name) {
         try {
-            Context context = Utils.getContext();
             if (context == null) return null;
             File directory = new File(new File(context.getFilesDir(), ROOT_NAME), name);
             if (!directory.exists() && !directory.mkdirs()) return null;

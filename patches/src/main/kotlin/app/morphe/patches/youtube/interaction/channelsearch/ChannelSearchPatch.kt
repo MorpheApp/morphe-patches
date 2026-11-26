@@ -7,9 +7,6 @@
 
 package app.morphe.patches.youtube.interaction.channelsearch
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -23,7 +20,6 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
 
@@ -63,34 +59,5 @@ val channelSearchPatch = patch(
         // Leaving a channel for the search feed shows no browse page, so nothing would
         // otherwise replace the browse id of the channel.
         addSearchResultsHook("$EXTENSION_CLASS->clearBrowseId()V")
-
-        // The search box otherwise still reads as a search of all of YouTube.
-        // Only the default hint is replaced, not the hint of Shorts or playlist search.
-        SearchBoxHintFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                addInstructions(
-                    index + 1,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS->getSearchHint(Ljava/lang/String;)Ljava/lang/String;
-                        move-result-object v$register
-                    """
-                )
-            }
-        }
-
-        SearchSubmitFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->searchInChannel(Ljava/lang/String;)Z
-                move-result v0
-                if-eqz v0, :search_all_of_youtube
-                return-void
-                :search_all_of_youtube
-                nop
-            """
-        )
     }
 }

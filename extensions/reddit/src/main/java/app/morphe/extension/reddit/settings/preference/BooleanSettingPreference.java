@@ -24,6 +24,9 @@ public class BooleanSettingPreference
         String summaryKey = setting.key + "_summary";
         if (ResourceUtils.getStringIdentifier(summaryKey) != 0) {
             this.setSummary(str(summaryKey));
+        } else if (ResourceUtils.getStringIdentifier(summaryKey + "_on") != 0) {
+            this.setSummaryOn(str(summaryKey + "_on"));
+            this.setSummaryOff(str(summaryKey + "_off"));
         }
     }
 }

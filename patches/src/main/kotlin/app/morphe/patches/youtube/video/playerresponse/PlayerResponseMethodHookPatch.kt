@@ -81,22 +81,6 @@ val playerResponseMethodHookPatch = patch {
     }
 
     finalize {
-        fun hookPlaylistId(hook: Hook) {
-            playerResponseMethodRef.get()!!.addInstruction(
-                0,
-                "invoke-static { $registerPlaylistId, $registerIsShortAndOpeningOrPlaying }, $hook",
-            )
-            numberOfInstructionsAdded++
-        }
-
-        fun hookVideoId(hook: Hook) {
-            playerResponseMethodRef.get()!!.addInstruction(
-                0,
-                "invoke-static { $registerVideoId, $registerIsShortAndOpeningOrPlaying }, $hook",
-            )
-            numberOfInstructionsAdded++
-        }
-
         fun hookProtoBufferParameter(hook: Hook) {
             playerResponseMethodRef.get()!!.addInstructions(
                 0,
@@ -116,8 +100,20 @@ val playerResponseMethodHookPatch = patch {
 
         // Add the hooks in this specific order as they insert instructions at the beginning of the method.
         afterVideoIdHooks.forEach(::hookProtoBufferParameter)
-        playlistIdHooks.forEach(::hookPlaylistId)
-        videoIdHooks.forEach(::hookVideoId)
+        playlistIdHooks.forEach { hook ->
+            playerResponseMethodRef.get()!!.addInstruction(
+                0,
+                "invoke-static { $registerPlaylistId, $registerIsShortAndOpeningOrPlaying }, $hook",
+            )
+            numberOfInstructionsAdded++
+        }
+        videoIdHooks.forEach { hook ->
+            playerResponseMethodRef.get()!!.addInstruction(
+                0,
+                "invoke-static { $registerVideoId, $registerIsShortAndOpeningOrPlaying }, $hook",
+            )
+            numberOfInstructionsAdded++
+        }
         beforeVideoIdHooks.forEach(::hookProtoBufferParameter)
 
         if (playerResponseMethodCopyRegisters) {

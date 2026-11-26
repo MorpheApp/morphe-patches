@@ -42,6 +42,8 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 /**
@@ -50,6 +52,24 @@ import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
  */
 @SuppressWarnings("unused")
 public class CrossfadePatch {
+
+    /**
+     * The outgoing song of a SABR stream falls silent on the track change, so crossfade needs
+     * a spoofed client without SABR.
+     */
+    public static final class CrossfadeAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SpoofVideoStreamsPatch.isPatchIncluded()
+                    && Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.isAvailable()
+                    && !Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get().requireSABR;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.SPOOF_VIDEO_STREAMS, Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE);
+        }
+    }
 
     public enum CrossFadeDuration {
         MILLISECONDS_250(250),
@@ -300,9 +320,10 @@ public class CrossfadePatch {
     }
 
     /**
-     * Changing the setting restarts the app, so it is read once.
+     * Changing the setting or the spoofed client restarts the app, so it is read once.
      */
-    private static final boolean CROSSFADE_ENABLED = Settings.CROSSFADE_ENABLED.get();
+    private static final boolean CROSSFADE_ENABLED = Settings.CROSSFADE_ENABLED.get()
+            && Settings.CROSSFADE_ENABLED.isAvailable();
 
     /**
      * The internal second stopVideo(5) arrives about 1 ms after the first, a real double skip 200 ms+.
@@ -552,7 +573,11 @@ public class CrossfadePatch {
                 logDebug(() -> "stopVideo(5): skip, SABR stream");
                 if (!sabrToastShown) {
                     sabrToastShown = true;
-                    Utils.showToastShort(str("morphe_music_crossfade_sabr_toast"));
+                    // The spoofed client failed and playback fell back to a client with SABR.
+                    ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
+                    Utils.showToastShort(str(client == ClientType.VISIONOS_1_02 || client == ClientType.VISIONOS_1_06
+                            ? "morphe_music_crossfade_visionos_toast"
+                            : "morphe_music_crossfade_spoof_client_toast"));
                 }
                 return false;
             }

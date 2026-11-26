@@ -36,15 +36,17 @@ public class LyricsSpanBuilderRomanizationTest {
 
     private static String joinedRomaji(List<WordTiming> timings) {
         StringBuilder out = new StringBuilder();
+        boolean pendingSpace = false;
         for (WordTiming timing : timings) {
             String romaji = timing.romaji();
             if (romaji == null || romaji.trim().isEmpty()) {
                 continue;
             }
-            if (out.length() > 0) {
+            if (pendingSpace && !out.isEmpty()) {
                 out.append(' ');
             }
             out.append(romaji.trim());
+            pendingSpace = timing.hasTrailingSpace() || romaji.endsWith(" ");
         }
         return out.toString();
     }

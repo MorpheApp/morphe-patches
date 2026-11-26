@@ -59,7 +59,11 @@ val hideVideoActionButtonsPatch = patch(
                             SwitchPreference("morphe_hide_action_bar"),
                             SwitchPreference("morphe_hide_ask_button"),
                             SwitchPreference("morphe_hide_channel_profile_button", summary = true),
-                            SwitchPreference("morphe_hide_channel_profile_subscribe_button", summary = true),
+                            SwitchPreference(
+                                "morphe_hide_channel_profile_subscribe_button",
+                                titleKey = "morphe_hide_subscribe_button_title",
+                                summary = true
+                            ),
                             SwitchPreference("morphe_hide_clip_button", summary = true),
                             SwitchPreference("morphe_hide_comments_button"),
                             SwitchPreference("morphe_hide_connect_button"),

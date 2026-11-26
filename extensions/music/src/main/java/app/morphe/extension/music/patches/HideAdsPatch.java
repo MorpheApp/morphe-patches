@@ -12,11 +12,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.innertube.ListItemElementOuterClass.ListItemElement;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
+import app.morphe.extension.shared.patches.components.FilterGroup.FilterGroupResult;
 
 @SuppressWarnings("unused")
 public class HideAdsPatch {
+
+    private static final int BADGE_STYLE_PREMIUM = 11;
+    private static final int LIST_ITEM_TEMPLATE_MAX_OFFSET = 64;
+
+    private static final ByteArrayFilterGroup LIST_ITEM_TEMPLATE = new ByteArrayFilterGroup(
+            null,
+            "list_item.eml"
+    );
 
     /**
      * Injection point.
@@ -33,6 +46,30 @@ public class HideAdsPatch {
             return false;
         }
         return original;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * When casting, the cast device loads and plays ads on its own, so they cannot be blocked.
+     * The app still draws its ad overlay (ad title, progress text and skip button) over the player.
+     * <p>
+     * The app shows and hides the overlay by changing the visibility of the root view only,
+     * so hiding the views inside the root keeps the overlay hidden.
+     *
+     * @param overlayRoot Root view of the inflated default_ad_overlay layout.
+     */
+    public static void hideAdOverlay(ViewGroup overlayRoot) {
+        try {
+            if (!Settings.HIDE_VIDEO_ADS.get()) {
+                return;
+            }
+            for (int i = 0, count = overlayRoot.getChildCount(); i < count; i++) {
+                overlayRoot.getChildAt(i).setVisibility(View.GONE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideAdOverlay failure", ex);
+        }
     }
 
     /**
@@ -61,6 +98,58 @@ public class HideAdsPatch {
                     Logger.printException(() -> "hidePremiumPromotionBottomSheet failure", ex);
                 }
             });
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Strips the Premium badge and promotional trial subtitle (e.g. "Premium" / "Try 1 month for $0")
+     * from menu {@code list_item} elements such as the Download button.
+     */
+    public static byte[] hideMenuItemPremiumPromo(@Nullable byte[] bytes) {
+        if (!Settings.HIDE_MUSIC_PREMIUM_PROMOTIONS.get() || bytes == null || bytes.length == 0) {
+            return bytes;
+        }
+
+        try {
+            FilterGroupResult match = LIST_ITEM_TEMPLATE.check(bytes);
+            if (!match.isFiltered()) {
+                return bytes;
+            }
+
+            final int index = match.getMatchedIndex();
+            // Root list_item elements carry their template URI near the start of the buffer;
+            // outer elements (e.g. carousels embedding a menu) and music_list_item elements are skipped.
+            if (index <= 0 || index >= LIST_ITEM_TEMPLATE_MAX_OFFSET || bytes[index - 1] == '_') {
+                return bytes;
+            }
+
+            ListItemElement element = ListItemElement.parseFrom(bytes);
+            var type = element.getType();
+            var component = type.getComponentType();
+            var model = component.getModel();
+            var youtubeModel = model.getYoutubeModel();
+            var viewModel = youtubeModel.getViewModel();
+            if (!viewModel.hasListItemViewModel()) {
+                return bytes;
+            }
+
+            var listItem = viewModel.getListItemViewModel();
+            if (!listItem.hasSubtitleBadge()
+                    || listItem.getSubtitleBadge().getBadgeViewModel().getBadgeStyle() != BADGE_STYLE_PREMIUM) {
+                return bytes;
+            }
+
+            Logger.printDebug(() -> "Hiding Premium promotion in menu list item");
+            return element.toBuilder().setType(type.toBuilder().setComponentType(
+                    component.toBuilder().setModel(model.toBuilder().setYoutubeModel(
+                            youtubeModel.toBuilder().setViewModel(viewModel.toBuilder().setListItemViewModel(
+                                    listItem.toBuilder().clearSubtitle().clearSubtitleBadge()
+                            )))))).build().toByteArray();
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideMenuItemPremiumPromo failure", ex);
+            return bytes;
         }
     }
 }

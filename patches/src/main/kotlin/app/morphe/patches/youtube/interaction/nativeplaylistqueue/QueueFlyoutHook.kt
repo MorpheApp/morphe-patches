@@ -8,13 +8,23 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutButtonsInitializerFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.CommandRouterExecuteCommandFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.CommandRouterFragmentFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.accountScopedCommandRouterExecuteCommandFingerprint
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val ACTIONS = "Lapp/morphe/extension/youtube/patches/queue/QueueFlyoutActions;"
 private const val MESSAGE = "Lcom/google/protobuf/MessageLite;"
@@ -79,12 +89,9 @@ internal fun installQueueFlyout() {
     }
 
     val menu = mutableClassDefBy(menuType)
-    menu.interfaces.add($$"$${ACTIONS.removeSuffix(";")}$Menu;")
-    menu.addBridgeMethod(
+    menu.addPatchInterface(
+        $$"$${ACTIONS.removeSuffix(";")}$Menu;",
         "patch_parseQueueFlyout",
-        listOf("[B"),
-        MESSAGE,
-        2,
         """
             ${parseProtoInstructions(menuType, bytes = "p1", result = "v0", registry = "v1")}
             return-object v0
@@ -112,6 +119,48 @@ internal fun installQueueFlyout() {
             invoke-static/range {p0 .. p0}, $ACTIONS->completeQueueMenu($MESSAGE)$MESSAGE
             move-result-object p0
             check-cast p0, $menuType
+        """
+    )
+    installPlaylistPageToolbar(menuType, itemFields.single())
+}
+
+/** Bind the playlist page toolbar menu and run its queue commands with the native queue. */
+private fun installPlaylistPageToolbar(menuType: String, items: FieldReference) {
+    val presenter = PlaylistPageHeaderFactoryFingerprint.instructionMatches.last()
+        .getInstruction<ReferenceInstruction>().reference.toString()
+    val menuBuilders = buildList {
+        add(playlistPageToolbarFingerprint(classDefBy(presenter).superclass!!, items))
+        // 21.25+ presenters also build the menu themselves.
+        if (is_21_25_or_greater) {
+            add(playlistPageToolbarFingerprint(presenter, items))
+        }
+    }
+    menuBuilders.forEach {
+        val read = it.instructionMatches.last()
+        val menu = read.getInstruction<TwoRegisterInstruction>().registerB
+        it.method.addInstructionsAtControlFlowLabel(
+            read.index,
+            """
+                invoke-static/range { v$menu .. v$menu }, $ACTIONS->preparePlaylistPageMenu($MESSAGE)$MESSAGE
+                move-result-object v$menu
+                check-cast v$menu, $menuType
+            """
+        )
+    }
+
+    // The toolbar rows run their commands with the account scoped command router.
+    accountScopedCommandRouterExecuteCommandFingerprint(
+        CommandRouterFragmentFingerprint.originalMethod.returnType,
+        CommandRouterExecuteCommandFingerprint.originalMethod.parameterTypes.first().toString()
+    ).method.addInstructionsWithLabels(
+        0,
+        """
+            invoke-static/range { p1 .. p1 }, $ACTIONS->onPlaylistPageCommand($MESSAGE)Z
+            move-result v0
+            if-eqz v0, :run_command
+            return-void
+            :run_command
+            nop
         """
     )
 }

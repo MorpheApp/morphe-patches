@@ -21,6 +21,7 @@ import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.MiniLyricsTimeline;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -255,6 +256,17 @@ public final class YouTubeMusicProvider implements LyricsProvider {
             JSONObject cueRange = entry.optJSONObject("cueRange");
             final long startMs = parseTimestamp(cueRange, "startTimeMilliseconds");
             final long endMs = parseTimestamp(cueRange, "endTimeMilliseconds");
+            if (MiniLyricsTimeline.isInstrumentalMarker(text)) {
+                if (!lines.isEmpty() && startMs != LyricsLine.NO_TIME) {
+                    final int lastIdx = lines.size() - 1;
+                    final LyricsLine last = lines.get(lastIdx);
+                    if (last.endTimeMs() == LyricsLine.NO_TIME && startMs > last.startTimeMs()) {
+                        lines.set(lastIdx, new LyricsLine(
+                                last.startTimeMs(), startMs, last.text(), last.words()));
+                    }
+                }
+                continue;
+            }
             lines.add(new LyricsLine(startMs, endMs, text, List.of()));
         }
         return lines;

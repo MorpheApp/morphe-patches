@@ -431,8 +431,6 @@ final class LyricsProviderConfigDialog {
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setBackground(CustomDialog.createRoundedBackground(Dim.dp8,
-                ThemeUtils.getAppBackgroundColor() & 0x33FFFFFF));
         row.setPadding(Dim.dp12, Dim.dp10, Dim.dp12, Dim.dp10);
         row.setVisibility(View.GONE);
 
@@ -456,12 +454,15 @@ final class LyricsProviderConfigDialog {
         section.addView(row, params);
 
         Utils.runOnBackgroundThread(() -> {
-            final String[] efforts = OpenAIClient.fetchReasoningEfforts(
+            final String[] supported = OpenAIClient.fetchReasoningEfforts(
                     Settings.LYRICS_AI_BASE_URL.get(), Settings.LYRICS_AI_API_TOKEN.get(),
                     Settings.LYRICS_AI_MODEL.get());
-            if (efforts.length == 0) {
+            if (supported.length == 0) {
                 return;
             }
+            final String[] efforts = new String[supported.length + 1];
+            efforts[0] = "";
+            System.arraycopy(supported, 0, efforts, 1, supported.length);
             Utils.runOnMainThread(() -> {
                 final CharSequence[] labels = new CharSequence[efforts.length];
                 for (int i = 0; i < efforts.length; i++) {

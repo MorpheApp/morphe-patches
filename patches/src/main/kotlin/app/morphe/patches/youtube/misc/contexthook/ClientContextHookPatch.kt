@@ -16,6 +16,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -214,6 +215,30 @@ fun addClientFormFactorHook(endPoint: Endpoint, descriptor: String) {
         """
 
     endPoint.smaliInstructions += smaliInstructions
+}
+
+/**
+ * Same as [addClientFormFactorHook] for the browse endpoint, but also passes the browse ID
+ * so the form factor can be chosen per page.
+ *
+ * @param descriptor Method that takes the form factor and the browse ID, and returns the form factor.
+ */
+fun addBrowseClientFormFactorHook(descriptor: String) {
+    val clientFormFactorField = clientFormFactorFieldRef.get()!!
+    val browseIdField = if (is_20_51_or_greater) {
+        BrowseEndpointBrowseIdFingerprint.instructionMatches.last()
+    } else {
+        BrowseEndpointBrowseIdLegacyFingerprint.instructionMatches.first()
+    }.fieldReference
+    val smaliInstructions = """
+        iget v2, v1, $clientFormFactorField
+        iget-object v3, p0, $browseIdField
+        invoke-static { v2, v3 }, $descriptor
+        move-result v2
+        iput v2, v1, $clientFormFactorField
+        """
+
+    Endpoint.BROWSE.smaliInstructions += smaliInstructions
 }
 
 fun addClientVersionHook(endPoint: Endpoint, descriptor: String) {

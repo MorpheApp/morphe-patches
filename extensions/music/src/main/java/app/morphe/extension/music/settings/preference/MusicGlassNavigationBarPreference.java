@@ -96,7 +96,7 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
     protected PreviewButtons getButtons() {
         // The icons, the labels and the selected button of the last glass navigation bar.
         PreviewButtons buttons = PreviewButtons.fromLastBar(
-                MusicGlassNavigationBar.BUTTON_ICON, MusicGlassNavigationBar.BUTTON_LABEL);
+                MusicGlassNavigationBar.BUTTON_ICONS, MusicGlassNavigationBar.BUTTON_LABEL);
         if (!buttons.isEmpty()) return buttons;
 
         // The usual buttons, if no navigation bar with the glass was shown yet.

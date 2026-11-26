@@ -81,7 +81,7 @@ public final class MusicActionButtonsFilter extends Filter {
     // the shared icon catalogue that trails at the end.
     private static final String COMMENTS_ICON = "_text_bubble_";
     private static final String LIVE_CHAT_REPLAY_ICON = "_bubble_stack_";
-    private static final String LYRICS_ICON = "_quote_";
+    public static final String LYRICS_ICON = "_quote_";
     private static final String THUMB_UP_ICON = "_thumb_up_";
     private static final String THUMB_DOWN_ICON = "_thumb_down_";
     private static final int ICON_SCAN_HEAD_LIMIT = 500;
@@ -185,7 +185,7 @@ public final class MusicActionButtonsFilter extends Filter {
                 return;
             }
             if (LyricsManager.getInstance().hasLyrics()) {
-                LyricsPanelInstaller.enableLyricsButton();
+                LyricsPanelInstaller.enableLyricsTab();
             }
             if (Settings.HIDE_ACTION_BAR.get()) {
                 treeNodeResultList.clear();

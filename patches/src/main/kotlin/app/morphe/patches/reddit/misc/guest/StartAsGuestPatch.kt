@@ -9,6 +9,8 @@ package app.morphe.patches.reddit.misc.guest
 
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.returnEarly
+import app.morphe.patches.reddit.misc.version.is_2026_44_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 
 @Suppress("unused")
@@ -18,9 +20,17 @@ val startAsGuestPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
+    dependsOn(versionCheckPatch)
+
     execute {
         // Force "onboarding complete"
         FrontPageApplicationHasFinishedOnboardingFingerprint.instructionMatches.last()
             .getMethodCalled().returnEarly(true)
+
+        if (is_2026_44_0_or_greater) {
+            // A server experiment can force logged out users to the login screen
+            // once onboarding is complete.
+            IsLoginForcedFingerprint.method.returnEarly(false)
+        }
     }
 }

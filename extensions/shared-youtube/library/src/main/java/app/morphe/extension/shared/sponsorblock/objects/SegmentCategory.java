@@ -360,22 +360,15 @@ public enum SegmentCategory {
     }
 
     /**
-     * Creates a {@link SpannableString} that starts with a colored dot followed by the provided text.
+     * Returns the category title with a colored dot.
      */
-    private static SpannableString getCategoryColorDotSpan(String text, @ColorInt int color) {
-        SpannableString dotSpan = new SpannableString(COLOR_DOT_STRING + text);
+    public SpannableString getTitleWithColorDot() {
+        SpannableString dotSpan = new SpannableString(COLOR_DOT_STRING + " " + title);
         dotSpan.setSpan(new ForegroundColorSpan(color), 0, 1,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         dotSpan.setSpan(new RelativeSizeSpan(1.5f), 0, 1,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return dotSpan;
-    }
-
-    /**
-     * Returns the category title with a colored dot.
-     */
-    public SpannableString getTitleWithColorDot() {
-        return getCategoryColorDotSpan(" " + title, color);
     }
 
     /**

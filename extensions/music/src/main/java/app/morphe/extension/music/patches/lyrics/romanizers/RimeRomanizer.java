@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 /**
  * The reading of a line of Han characters in the romanization language's script: {@link
- * RimeDictStore#word()} reads it a word at a time, and {@link RimeDictStore#reading(char)} reads
+ * RimeDictionaryStore#word()} reads it a word at a time, and {@link RimeDictionaryStore#reading(char)} reads
  * the rest a character at a time. A character neither has is kept as it is, since dropping it
  * would lose the surrounding characters.
  */
@@ -21,19 +21,20 @@ public final class RimeRomanizer {
     }
 
     public static String romanize(String line) {
-        final WordReadingTable table = RimeDictStore.word();
-        return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
-            @Nullable
-            @Override
-            public String word(String word) {
-                return table != null ? table.reading(word) : null;
-            }
+        try (WordReadingTable table = RimeDictionaryStore.word()) {
+            return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
+                @Nullable
+                @Override
+                public String word(String word) {
+                    return table != null ? table.reading(word) : null;
+                }
 
-            @Nullable
-            @Override
-            public String character(char c) {
-                return RimeDictStore.reading(c);
-            }
-        });
+                @Nullable
+                @Override
+                public String character(char c) {
+                    return RimeDictionaryStore.reading(c);
+                }
+            });
+        }
     }
 }

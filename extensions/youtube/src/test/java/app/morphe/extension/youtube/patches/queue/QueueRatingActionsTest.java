@@ -37,8 +37,8 @@ import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SerialComma
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.Type;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.VideoActionBarData;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.VideoActionBarModel;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.LikeEndpoint.Status;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.LikeEndpoint.Status;
 
 public class QueueRatingActionsTest {
     private static ByteString endpoint(String id, Status status) throws Exception {

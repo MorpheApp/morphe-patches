@@ -47,19 +47,26 @@ public final class DeepLClient {
     }
 
     /**
-     * Translates a single text and reports the language it was written in.
+     * Translates texts in one request, and reports the language each was written in.
      * Always call off the main thread.
      *
+     * @param texts          At most 50 texts, the limit of a DeepL request.
      * @param targetLanguage Language code such as {@code uk} or {@code zh-TW}.
+     * @return The translations, in the order the texts were given.
      * @throws TextTranslator.TranslationHttpException If DeepL answers with an error.
      */
-    public static TextTranslator.Translation translateText(String text, String targetLanguage,
-                                                           String apiKey) throws Exception {
-        JSONObject translation = request(List.of(text), targetLanguage, apiKey).getJSONObject(0);
-        // An upper case code such as EN, without the region.
-        String detected = translation.optString("detected_source_language");
-        return new TextTranslator.Translation(translation.getString("text"),
-                detected.isEmpty() ? null : detected);
+    public static List<TextTranslator.Translation> translateTexts(List<String> texts, String targetLanguage,
+                                                                  String apiKey) throws Exception {
+        JSONArray translations = request(texts, targetLanguage, apiKey);
+        List<TextTranslator.Translation> result = new ArrayList<>(translations.length());
+        for (int i = 0, length = translations.length(); i < length; i++) {
+            JSONObject translation = translations.getJSONObject(i);
+            // An upper case code such as EN, without the region.
+            String detected = translation.optString("detected_source_language");
+            result.add(new TextTranslator.Translation(translation.getString("text"),
+                    detected.isEmpty() ? null : detected));
+        }
+        return result;
     }
 
     private static JSONArray request(List<String> texts, String targetLanguage, String apiKey)

@@ -537,8 +537,7 @@ public final class ChannelSearchRequest {
         if (value.isEmpty()) {
             return;
         }
-        //noinspection SizeReplaceableByIsEmpty
-        if (metadata.length() > 0) {
+        if (Utils.isNotEmpty(metadata)) {
             metadata.append("  •  ");
         }
         metadata.append(value);

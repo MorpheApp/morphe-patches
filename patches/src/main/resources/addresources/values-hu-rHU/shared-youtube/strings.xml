@@ -78,6 +78,7 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_export_download_folder_missing">Nem található az exportmappa: %s</string>
   <string name="morphe_export_download_flyout_title">Exportálás a készülékre</string>
   <string name="morphe_export_download_canceled">Exportálás törölve</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Egyéni</string>
   <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
@@ -139,14 +140,16 @@ Koppintson az OK gombra az Android System WebView megnyitásához."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Próbálja meg a következők engedélyezését: Videófolyamok hamisítása &gt; Android VR bejelentkezés</string>
   <string name="morphe_spoof_video_streams_client_type_title">Alapértelmezett kliens</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS használata</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Használja a QuackJS-t a yt-dlp-ejs (WebView) helyett a visszafordulási obfuscáláshoz</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR bejelentkezés</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Az Android VR külön bejelentkezést igényel. Koppintson ide a folytatáshoz</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Jelenleg bejelentkezve az Android VR-ben</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' bejelentkezés</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Az \'Android VR\' külön bejelentkezést igényel. Koppints ide a folytatáshoz</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Jelenleg az \'Android VR\' fiókba van bejelentkezve</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ennek a funkciónak a használatához állítsa az \"Alapértelmezett kliens\" beállítást Android VR-re</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bejelentkezés az Android VR-ba</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Az Android VR-be való bejelentkezés egyes felhasználóknál megoldhatja a lejátszási problémákat
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ennek a funkciónak a használatához állítsa az \'Alapértelmezett kliens\' beállítást \'Android VR\'-re</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bejelentkezés az \'Android VR\'-be</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Az 'Android VR'-be való bejelentkezés egyes felhasználóknál megoldhatja a lejátszási problémákat
 
 A bejelentkezéshez nyomd meg lent a folytatást"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Kijelentkezés</string>
@@ -167,35 +170,36 @@ A bejelentkezéshez nyomd meg lent a folytatást"</string>
 • A Morphe-beállítások exportálása és importálása nem tartalmazza az Android VR-hitelesítést
 • Ha ez az alkalmazás 6 hónapig nem használatos, a Google eltávolítja a hitelesítést
 • Újra be kell jelentkeznie, ha megváltoztatja a Google-jelszavát, vagy eltávolítja ezt az eszközt a Google-beállításaiból"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Bejelentkezés mobilweben</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Webbe lépek</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcionális: jelentkezz be a YouTube weboldalára, hogy a fiókoddal játszass videókat. Koppints ide a folytatáshoz</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Jelenleg mobilweben bejelentkezve</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Jelenleg be van jelentkezve a YouTube weboldalra</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ennek a funkciónak a használatához állítsa az \"Alapértelmezett kliens\" beállítást Mobil webre</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Jelentkezzen be a Mobil webbe</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"A Mobil web kijelentkezett állapotban, vagy a YouTube weboldalra bejelentkezve játszítja le a videókat
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ennek a funkciónak a használatához állítsa az \"Alapértelmezett kliens\" beállítást Webkliensre</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Jelentkezzen be a YouTube weboldalra</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"A webkliensek kijelentkezett állapotban, vagy a YouTube weboldalra bejelentkezve játszítják le a videókat
 
-• Bejelentkezve lejtszathatók a fiókot igénylő videók, például a korlátozott korhatárú videók
+• Bejelentkezve lejtszathatók azok a videók is, amelyekhez fiók szükséges, például a korlátozott korhatárú videók
 • A Google bejelentkezési oldala ebben az alkalmazásban nyílik meg
-• A bejelentkezést csak a lejátszott videók lekérézésére használják
+• A bejelentkezést csak a lejátszott videók lekérézére használjuk
 • A bejelentkezési adatok csak ezen a készüléken lesznek mentve
+• Minden webkliens rendelkezik saját bejelentkezéssel a kiválasztott alapértelmezett klienshez
 
 A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Bejelentkezés mentve
 
-• A Morphe beállításai nem importálják/exportálják a mobil webes bejelentkezést
-• Ha a Google befejezi a bejelentkezést, a videók kijelentkezett állapotban futnak, amíg újra be nem jelentkezesz
-• A kijelentkezés ezt az eszközt kijelentkezteti a YouTube weboldaláról is"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">A mobil webes bejelentkezés lejárt, próbáld meg újra bejelentkezni a mobil webes felületre</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kijelentkezés a mobil webes felületről</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Az Android System WebView nem érhető el. Telepítsd vagy engedélyezd a bejelentkezéshez</string>
+• A Morphe beállításai nem importálják/exportálják a YouTube weboldal bejelentkezését
+• Ha a Google be tutupja a bejelentkezést, a videók kiemelvezett állapotban futnak, amíg újra be nem jelentkezesz
+• A kijelentkezés ezzel a készülékkel való kijelentkezést is eredményezi a YouTube weboldaláról"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">A webes bejelentkezés lejárt, próbáld meg újra bejelentkezni</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kijelentkezve a YouTube weboldalról</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Az \"Android System WebView\" nem érhető el. Telepítsd vagy engedélyezd a bejelentkezéshez</string>
   <string name="morphe_oauth2_connection_failure_timeout">Az OAuth2 átmenetileg nem elérhető (az API időtúllépés miatt)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Az Android VR-bejelentkezés lejárt, próbáld meg újra bejelentkezni a VR-ba</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\"Az Android VR-bejelentkezés lejárt, próbáld meg újra bejelentkezni a VR-ba\"</string>
   <string name="morphe_oauth2_connection_failure_status">Az OAuth2 átmenetileg nem érhető el (státusz: %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Az OAuth2 átmenetileg nem elérhető</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nem lehet bejelentkezni a VR-ba, mert a webhely hitelesítését nem hagyták jóvá</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nem lehet bejelentkezni a VR-ba: %s</string>
-  <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
+  <string name="morphe_oauth2_toast_reset">Kijelentkezve az \"Android VR\" alkalmazásból</string>
   <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Médiavezérlők az értesítésben</string>
@@ -213,8 +217,15 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_seek_notification_media_length_invalid">A keresési hossznak 1 és %s másodperc közötti értéknek kell lennie. Az alapértelmezett érték lesz használva</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizáld a videó minőségét</string>
+  <string name="morphe_prioritize_video_quality_summary">A rendelkezésre álló legmagasabb videóminőséget prioritásba helyezi a kódolási hatékonyságnak</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ha ez a beállítás ki van kapcsolva, a régebbi videóknál előfordulhat, hogy nem érhető el videóminőségi választás</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC hang letiltása</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC audio letiltása</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Az eredeti audiót játssza vissza a komprimált dinamikus tartományú verzió helyett</string>
+  <string name="morphe_disable_loudness_normalization_title">Hangszint-normalizálás letiltása</string>
+  <string name="morphe_disable_loudness_normalization_summary">A hangos audiót az eredeti hangerőben játssza vissza, ehelyez a standard szintre csökkentve</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
   <string name="morphe_force_original_audio_summary">Mindig a videó eredeti hangsávját játssza le, nem a szinkronizált változatot</string>
@@ -223,6 +234,32 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_skip_silence_summary">Automatikusan kihagyja a néma szüneteket a videó hangjában</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimális szünet hossza</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Csak a legalább ilyen hosszú szünetek rövidülnek le. A következő videó indításakor lép érvénybe</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videóeffekt</string>
+  <string name="morphe_video_effect_entry_none">Ki</string>
+  <string name="morphe_video_effects_custom_title">Videóeffektek szerkesztése</string>
+  <string name="morphe_video_effects_custom_summary">Videóeffektek módosítása, átnevezése, törlése vagy hozzáadása. Az effektek shader-kódok, így egy AI csevegőbot képes újakat írni</string>
+  <string name="morphe_video_effects_custom_empty">Nincsenek videóeffektek. Koppints az Effekt hozzáadása gombra egy létrehozásához.</string>
+  <string name="morphe_video_effects_custom_add">Effekt hozzáadása</string>
+  <string name="morphe_video_effects_custom_restore">Alapértelmezések visszaállítása</string>
+  <string name="morphe_video_effects_custom_add_title">Új effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Effekt szerkesztése</string>
+  <string name="morphe_video_effects_custom_name_hint">Név</string>
+  <string name="morphe_video_effects_custom_name_empty">Adjon meg egy nevet az effektnek</string>
+  <string name="morphe_video_effects_custom_name_exists">Ezzel a névvel már létezik egy effekt</string>
+  <string name="morphe_video_effects_custom_copy_code">Kód másolása</string>
+  <string name="morphe_video_effects_custom_error_title">Az effektben hiba történt</string>
+  <string name="morphe_video_effects_custom_error_message">"A videók effekt nélkül jelennek meg, amíg a kód nem javul. Add át ezt a hibát annak az AI-nak, amely írta a kódot:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"A kód egy függvényen vagy kommenten belül ér véget, így valószínűleg le lett vágva a másolás vagy a beillesztés során. A beillesztett szöveg %d karakternél le lehet vágódni.
+
+Kérj rövidebb kódot a MI-tól, vagy illeszd be a kódot részletben."</string>
+  <string name="morphe_video_effects_custom_copy_error">Hiba másolása</string>
+  <string name="morphe_video_effects_custom_save_anyway">Mégis mentés</string>
+  <string name="morphe_video_effects_custom_delete">Törlés</string>
+  <string name="morphe_video_effects_custom_delete_title">Törle lje az effektet?</string>
+  <string name="morphe_video_effects_custom_delete_message">A(z) %s törölve lesz.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Hálózati proxy</string>
   <string name="morphe_proxy_screen_summary">A hálózati kérések proxy-n keresztül történő irányítása.</string>
@@ -253,7 +290,7 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_replace_music_with_youtube_title">Módosítsa a megosztási linkeket youtube.com-ra</string>
   <string name="morphe_replace_music_with_youtube_summary">A megosztott linkekben lecseréli a music.youtube.com-ot a youtube.com-ra</string>
   <string name="morphe_replace_links_with_shortener_title">Módosítsa a megosztási linkeket youtu.be-ra</string>
-  <string name="morphe_replace_links_with_shortener_summary">Arra kényszeríti a videókat, hogy a rövidített youtu.be URL-formátumot használják</string>
+  <string name="morphe_replace_links_with_shortener_summary">Arra kényszeríti a videókat, hogy a rövidített \"youtu.be\" URL-formátumot használják</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatikus</string>
@@ -265,15 +302,12 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_video_quality_default_mobile_title">Alapértelmezett videóminőség mobilhálózaton</string>
   <string name="morphe_remember_video_quality_toast_mobile">Alapértelmezett mobil minőség módosítva: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Alapértelmezett Wi-Fi minőség módosítva: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Rendszer megosztási lapjának megnyitása</string>
-  <string name="morphe_open_system_share_sheet_summary">Tartalom megosztásakor a rendszer megosztási lapját nyitja meg az alkalmazásbéli helyett</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho naplózás</string>
   <string name="morphe_debug_litho_entry_disabled">Kikapcsolva</string>
   <string name="morphe_debug_litho_entry_path">Útvonal</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Út és pütyör</string>
-  <string name="morphe_debug_litho_user_dialog_message">"A Litho naplózás rögzíti az alkalmazás elrendezési összetevőit, beleértve egyes felületi elemek képernyőn megjelenő szövegeit is
+  <string name="morphe_debug_litho_user_dialog_message">"Naplózza az alkalmazás elrendezési összetevőit, beleértve egyes felületi elemek képernyőn megjelenő szövegeit is
 
 Ez segíthet az összetevők beazonosításában egyedi szűrők készítésekor
 
@@ -342,6 +376,17 @@ Ha később kikapcsolja, ajánlott törölni az alkalmazás adatait a felhaszná
   <string name="morphe_custom_font_file_summary">Válasszon ki egy TTF vagy OTF betűtípusfájlt</string>
   <string name="morphe_custom_font_file_invalid">A kiválasztott fájl nem TTF vagy OTF betűtípus</string>
   <string name="morphe_custom_font_failed_to_load">Az egyéni betűtípus betöltése nem sikerült, ezért ki van kapcsolva</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Üveges menük</string>
+  <string name="morphe_glass_menus_screen_summary">A menük matt üvegként jelennek meg a mögöttük lévő elmosódott tartalom felett</string>
+  <string name="morphe_glass_menus_title">Üveges menük engedélyezése</string>
+  <string name="morphe_glass_menus_summary">A menük és a lapok alsó része matt üvegként jelenik meg, mögöttük lévő tartalom pedig elmosódik</string>
+  <string name="morphe_glass_menus_opacity_title">Üveg átlátszatossága</string>
+  <string name="morphe_glass_menus_opacity_summary">Mibennyeg takarja a menü az elmosódott tartalmat (0 az teljesen átlátszó, 100 az átfogó)</string>
+  <string name="morphe_glass_menus_blur_title">Elmosódás</string>
+  <string name="morphe_glass_menus_blur_summary">Mennyire mosódik el a menü mögött lévő tartalom</string>
+  <string name="morphe_glass_menus_dim_title">Sötétítés</string>
+  <string name="morphe_glass_menus_dim_summary">Mennyire sötétül el a képernyő egy alsó lap körül</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">A nem tetszések jelenleg nem elérhetők (az API időtúllépése miatt)</string>
@@ -379,4 +424,8 @@ A megtekintett videó azonosítóját elküldjük a Return YouTube Dislike API-n
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nem történt ügyfél-sebességkorlátozás</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s alkalommal lépett fel ügyfélszintű sebességkorlátozás</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ezredmásodperc</string>
+  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
+  <string name="morphe_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
+  <string name="morphe_toolbar_screen_title">Eszköztár</string>
+  <string name="morphe_toolbar_screen_summary">Válaszd ki, mely komponensek jelenjenek meg a eszközkötben</string>
 </resources>

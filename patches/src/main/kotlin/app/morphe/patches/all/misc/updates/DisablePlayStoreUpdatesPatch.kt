@@ -81,6 +81,11 @@ internal val disablePlayStoreUpdatesPatch = patch(
 
         val logger by lazy { Logger.getLogger(this::class.java.name) }
 
+        // The extension class must read the real version code, otherwise the hooks call themselves.
+        // R8 can move the reads into synthetic classes (such as
+        // DisablePlayStoreUpdatesPatch$$ExternalSyntheticApiModelOutline0), so exclude those too.
+        val extensionClassPrefix = EXTENSION_CLASS.removeSuffix(";")
+
         Fingerprint(
             filters = listOf(
                 fieldAccess(
@@ -89,7 +94,7 @@ internal val disablePlayStoreUpdatesPatch = patch(
                 )
             ),
             custom = { _, classDef ->
-                !classDef.type.startsWith("Lapp/morphe/extension")
+                !classDef.type.startsWith(extensionClassPrefix)
             }
         ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             val instruction = this.getInstruction<TwoRegisterInstruction>(index)
@@ -144,7 +149,7 @@ internal val disablePlayStoreUpdatesPatch = patch(
                 )
             ),
             custom = { _, classDef ->
-                !classDef.type.startsWith("Lapp/morphe/extension")
+                !classDef.type.startsWith(extensionClassPrefix)
             }
         ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             if (getInstruction(index + 1).opcode != Opcode.MOVE_RESULT_WIDE) {

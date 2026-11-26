@@ -10,9 +10,6 @@ package app.morphe.patches.music.misc.audiovideoswitch
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
-import app.morphe.patcher.util.numberOfParameterRegisters
-import app.morphe.patches.music.interaction.jam.addBridge
-import app.morphe.patches.music.interaction.jam.addReferenceGetter
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.installNativeAccessor
 import app.morphe.patches.music.interaction.jam.installQueueConstructorCapture
@@ -25,9 +22,6 @@ private const val ACCESS =
     $$"Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch$QueueAccess;"
 private const val QUEUE_LISTENER =
     $$"Lapp/morphe/extension/music/patches/AutoSongVersionPatch$QueueListener;"
-
-/** The receiver, plus a wide register for a default return value. */
-private const val LISTENER_LOCAL_REGISTERS = 3
 
 /**
  * Every bridge is named patch_atv* and the original queue operations are never renamed here, so
@@ -44,9 +38,10 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
         return-void
     """
     )
-    manager.addReferenceGetter("patch_atvExecutor", queue.executor)
+    manager.addPatchInterface(ACCESS, "patch_atvExecutor", queue.executor)
     installNativeAccessor(
         manager,
+        ACCESS,
         "patch_atvCurrentIndex",
         queue.storage.currentIndex,
         receiverField = queue.storage.field,
@@ -66,6 +61,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
     )
     installNativeAccessor(
         manager,
+        ACCESS,
         "patch_atvVideoId",
         queue.videoId,
         opaqueReceiver = true,
@@ -138,7 +134,6 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
  */
 private fun installQueueListener(listenerType: String) {
     val listener = mutableClassDefBy(QUEUE_LISTENER)
-    listener.interfaces.add(listenerType)
     classDefBy(listenerType).methods
         .filter { AccessFlags.ABSTRACT.isSet(it.accessFlags) }
         .forEach { callback ->
@@ -148,15 +143,14 @@ private fun installQueueListener(listenerType: String) {
                 'J', 'D' -> "const-wide/16 v0, 0x0\nreturn-wide v0"
                 else -> "const/4 v0, 0x0\nreturn v0"
             }
-            listener.addBridge(
+            listener.addPatchInterface(
+                listenerType,
                 callback.name,
-                callback.parameterTypes.map { it.toString() },
-                callback.returnType,
-                callback.numberOfParameterRegisters + LISTENER_LOCAL_REGISTERS,
-                body = """
+                """
                     invoke-static {}, $AUTO_SONG_VERSION_CLASS->onQueueChanged()V
                     $returnDefault
-                """
+                """,
+                callback.parameterTypes.map { it.toString() },
             )
         }
 }

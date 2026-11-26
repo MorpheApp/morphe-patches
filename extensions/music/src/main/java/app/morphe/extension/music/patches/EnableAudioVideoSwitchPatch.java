@@ -467,8 +467,7 @@ public final class EnableAudioVideoSwitchPatch {
                 .replaceFirst("(?i)\\s*VEVO\\s*$", "")
                 .trim();
         if (!channel.isEmpty() && !channel.equalsIgnoreCase(query.toString())) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (query.length() > 0) query.append(' ');
+            if (Utils.isNotEmpty(query)) query.append(' ');
             query.append(channel);
         }
         return query.toString().replaceAll("\\s+", " ").trim();
@@ -575,8 +574,7 @@ public final class EnableAudioVideoSwitchPatch {
             for (int i = 0, length = array.length(); i < length; i++) {
                 String text = flatten(array.opt(i), depth + 1);
                 if (text.isEmpty()) continue;
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) builder.append(' ');
+                if (Utils.isNotEmpty(builder)) builder.append(' ');
                 builder.append(text);
             }
             return builder.toString();

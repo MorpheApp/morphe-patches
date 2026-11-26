@@ -30,6 +30,7 @@ import app.morphe.patcher.string
 import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object HideShowMoreButtonSetViewFingerprint : Fingerprint(
     returnType = "V",
@@ -189,6 +190,27 @@ internal object LiveChatDonatorsBarFingerprint : Fingerprint(
 )
 
 /**
+ * Shows a HaTS survey ("Which of these issues do you have?") in the bottom UI container.
+ */
+internal object HatsSurveyDisplayFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+            parameters = listOf(),
+            returnType = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/HatsContainer;"
+        ),
+        methodCall(
+            definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+            parameters = listOf("L", "L", "L"),
+            returnType = "V"
+        )
+    )
+)
+
+/**
  * Makes the engagement panels extend behind the navigation bar, which hides the bottom
  * of the panels that do not add the bottom padding themselves, such as the live chat.
  */
@@ -341,7 +363,12 @@ internal object ShowFloatingMicrophoneButtonLegacyFingerprint : Fingerprint(
     )
 )
 
-// FIXME? This originally matched two different very similar methods. Both may need to be modified
+/**
+ * Creates the text of an element, such as the subtitle of a feed video.
+ *
+ * Without the first string, this also matches a similar method of the experimental
+ * multiplatform text, which does not create the feed video subtitles.
+ */
 internal object HideViewCountFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/CharSequence;",
@@ -354,6 +381,54 @@ internal object HideViewCountFingerprint : Fingerprint(
             parameters = listOf("Landroid/text/SpannableString;", "Ljava/lang/Object;", "I", "Z", "I"),
             returnType = "V",
             location = MatchAfterWithin(10)
+        )
+    )
+)
+
+/**
+ * 20.51 and lower. 21.23+ shows the rows of a playlist as Litho elements,
+ * whose metadata is changed by [HideViewCountFingerprint].
+ *
+ * Constructor of a row of a playlist, which shows the view count and the upload time
+ * of its video in a text view of its own, such as "1M views • 2 years ago".
+ */
+internal object PlaylistVideoViewCountConstructorFingerprint : Fingerprint(
+    name = "<init>",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "view_count_upload_info"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById",
+            location = MatchAfterWithin(3)
+        ),
+        checkCast("Landroid/widget/TextView;", location = MatchAfterWithin(2)),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/widget/TextView;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * 20.51 and lower.
+ *
+ * Sets the text of the view count and upload time of a row of a playlist.
+ *
+ * @param viewCountField The text view of [PlaylistVideoViewCountConstructorFingerprint].
+ */
+internal fun getPlaylistVideoViewCountSetTextFingerprint(viewCountField: FieldReference) = Fingerprint(
+    definingClass = viewCountField.definingClass,
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            reference = { viewCountField }
+        ),
+        methodCall( // Sets the text of the text view.
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "V",
+            location = MatchAfterWithin(20)
         )
     )
 )
@@ -840,6 +915,90 @@ internal object HideTimeBarEntryPointContainerFingerprint : Fingerprint(
             name = "findViewById"
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * 21.23+
+ *
+ * Sets the visibility of the button next to the timestamp, which shows the chapter title,
+ * or 'In this video' for videos without chapters.
+ */
+internal object TimeBarEntryPointVisibilityFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = listOf(
+        methodCall(smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"),
+        methodCall( // If the chapter title is shown.
+            definingClass = "this",
+            returnType = "Z",
+            parameters = listOf("Z")
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        fieldAccess( // The button.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        methodCall( // Sets the visibility of the button.
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "V",
+            parameters = listOf("Z", "Z"),
+            location = MatchAfterWithin(6)
+        ),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * 21.22 and lower. Legacy version of [TimeBarEntryPointVisibilityFingerprint].
+ *
+ * The button next to the timestamp is always shown, and the chapter title and 'In this video'
+ * inside it are shown separately. Sets the visibility of the chapter title.
+ */
+internal object TimeBarChapterTitleVisibilityLegacyFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = listOf(
+        methodCall(smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"),
+        methodCall(smali = "Landroid/widget/TextView;->setContentDescription(Ljava/lang/CharSequence;)V"),
+        fieldAccess( // The chapter title.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterWithin(3)
+        ),
+        methodCall( // Sets the visibility of the chapter title.
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "V",
+            parameters = listOf("Z", "Z"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * 21.22 and lower. Legacy version of [TimeBarEntryPointVisibilityFingerprint].
+ *
+ * Sets the text and the visibility of 'In this video'.
+ *
+ * @param timeBarType Class of [TimeBarChapterTitleVisibilityLegacyFingerprint].
+ */
+internal fun getTimeBarTimelineTitleVisibilityLegacyFingerprint(timeBarType: String) = Fingerprint(
+    name = "accept",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(smali = "Landroid/widget/TextView;->setContentDescription(Ljava/lang/CharSequence;)V"),
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            definingClass = timeBarType
+        ),
+        methodCall( // Sets the visibility of 'In this video'.
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "V",
+            parameters = listOf("Z", "Z")
+        )
     )
 )
 

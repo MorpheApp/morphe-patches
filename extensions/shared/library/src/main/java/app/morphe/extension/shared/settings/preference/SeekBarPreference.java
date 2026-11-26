@@ -205,7 +205,14 @@ public class SeekBarPreference extends Preference {
                 null,
                 null,
                 null,
-                () -> config.setting.save(pending[0]),
+                () -> {
+                    if (pending[0] != config.setting.get()) {
+                        config.setting.save(pending[0]);
+                        if (config.setting.rebootApp) {
+                            AbstractPreferenceFragment.setRestartNeeded();
+                        }
+                    }
+                },
                 () -> {},
                 StringRef.str("morphe_settings_reset"),
                 () -> {

@@ -297,12 +297,10 @@ public final class DeezerProvider extends ScoredSongProvider {
             for (int i = 0; i < array.length(); i++) {
                 final String entry = array.optString(i, "").trim();
                 if (entry.isEmpty()) continue;
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) builder.append(", ");
+                if (Utils.isNotEmpty(builder)) builder.append(", ");
                 builder.append(entry);
             }
-            //noinspection SizeReplaceableByIsEmpty
-            return builder.length() == 0 ? null : builder.toString();
+            return Utils.isEmpty(builder) ? null : builder.toString();
         }
         return null;
     }

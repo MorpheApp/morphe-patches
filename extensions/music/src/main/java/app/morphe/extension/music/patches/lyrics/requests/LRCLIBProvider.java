@@ -25,6 +25,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricsFileParser;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -36,6 +37,10 @@ import app.morphe.extension.shared.requests.Requester;
 public final class LRCLIBProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://lrclib.net/api/";
+
+    private static String baseUrl() {
+        return LyricsEndpoints.directory(BASE_URL, Settings.LRCLIB_ENDPOINT.get());
+    }
 
     /**
      * Public ID of the registered client application, which gets higher rate limits.
@@ -110,7 +115,7 @@ public final class LRCLIBProvider implements LyricsProvider {
                     LyricsRequests.scoreSingleResult(exactLyrics), exactLyrics));
         }
 
-        String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
+        String url = baseUrl() + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
         HttpURLConnection connection = LyricsRequests.openConnection(url, HEADERS);
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
@@ -174,7 +179,7 @@ public final class LRCLIBProvider implements LyricsProvider {
 
     @Nullable
     private FetchResult fetchExact(TrackInfo track) throws Exception {
-        StringBuilder url = new StringBuilder(BASE_URL);
+        StringBuilder url = new StringBuilder(baseUrl());
         url.append("get?track_name=").append(LyricsRequests.encode(track.title()));
         url.append("&artist_name=").append(LyricsRequests.encode(track.artist()));
         if (!track.album().isEmpty()) {
@@ -200,7 +205,7 @@ public final class LRCLIBProvider implements LyricsProvider {
 
     @Nullable
     private FetchResult fetchSearch(TrackInfo track) throws Exception {
-        String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
+        String url = baseUrl() + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
 
         HttpURLConnection connection = LyricsRequests.openConnection(url, HEADERS);

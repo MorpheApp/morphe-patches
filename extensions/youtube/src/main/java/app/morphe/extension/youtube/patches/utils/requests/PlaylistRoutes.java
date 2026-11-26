@@ -20,8 +20,13 @@ import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 
@@ -35,6 +40,8 @@ public final class PlaylistRoutes {
     private static final String PACKAGE_NAME = "com.google.android.youtube";
 
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 10 * 1000;
+
+    private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
 
     public static final Route.CompiledRoute CREATE_PLAYLIST = new Route(
             Route.Method.POST, "playlist/create?prettyPrint=false"
@@ -69,6 +76,23 @@ public final class PlaylistRoutes {
             "browse?fields=contents.singleColumnBrowseResultsRenderer.tabs.tabRenderer.content.sectionListRenderer"
                     + ".contents(" + PLAYLIST_VIDEO_LIST_FIELDS + ",itemSectionRenderer.contents." + PLAYLIST_VIDEO_LIST_FIELDS + ")"
                     + ",continuationContents.playlistVideoListContinuation(" + PLAYLIST_VIDEO_FIELDS + ")&prettyPrint=false"
+    ).compile();
+
+    private static final String PLAYLIST_SEARCH_VIDEO_FIELDS =
+            "contents.playlistVideoRenderer(videoId,title,thumbnail,lengthText,shortBylineText.runs.text,videoInfo)"
+                    + ",continuations";
+    private static final String PLAYLIST_SEARCH_VIDEO_LIST_FIELDS =
+            "playlistVideoListRenderer(" + PLAYLIST_SEARCH_VIDEO_FIELDS + ")";
+
+    /**
+     * The title of a playlist, and the videos of a playlist with what is shown of them in the playlist.
+     */
+    public static final Route.CompiledRoute BROWSE_PLAYLIST_SEARCH_VIDEOS = new Route(
+            Route.Method.POST,
+            "browse?fields=header.pageHeaderRenderer.pageTitle"
+                    + ",contents.singleColumnBrowseResultsRenderer.tabs.tabRenderer.content.sectionListRenderer"
+                    + ".contents(" + PLAYLIST_SEARCH_VIDEO_LIST_FIELDS + ",itemSectionRenderer.contents." + PLAYLIST_SEARCH_VIDEO_LIST_FIELDS + ")"
+                    + ",continuationContents.playlistVideoListContinuation(" + PLAYLIST_SEARCH_VIDEO_FIELDS + ")&prettyPrint=false"
     ).compile();
 
     public static final Route.CompiledRoute GET_MIX_PLAYLIST = new Route(
@@ -320,5 +344,31 @@ public final class PlaylistRoutes {
         }
 
         return connection;
+    }
+
+    /**
+     * @param name The name of the result in the log.
+     * @return The result of a playlist request, or null if it failed or did not finish in time.
+     */
+    @Nullable
+    static <T> T getResult(Future<T> future, String name) {
+        try {
+            Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
+                    ? "Debug: Blocking main thread"
+                    : null);
+            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+        } catch (TimeoutException ex) {
+            Logger.printInfo(() -> name + " timed out", ex);
+        } catch (InterruptedException ex) {
+            Logger.printException(() -> name + " interrupted", ex);
+            Thread.currentThread().interrupt();
+        } catch (ExecutionException ex) {
+            Logger.printException(() -> name + " failure", ex);
+        }
+        return null;
+    }
+
+    static void handleConnectionError(String message, @Nullable Exception ex) {
+        Logger.printInfo(() -> message, ex);
     }
 }

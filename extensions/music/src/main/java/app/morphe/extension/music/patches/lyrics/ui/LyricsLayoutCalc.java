@@ -30,11 +30,9 @@ final class LyricsLayoutCalc {
     /** The dots of a break show for at least this long before they close. */
     static final long MIN_GAP_DOTS_MS = 600L;
 
-    /**
-     * {@return which lines sit on the right: those in a right-to-left script, swapped for the
-     * second singer of a duet}
-     */
     static boolean[] rightAlignedLines(List<LyricsLine> lines, boolean[] isSecFlags) {
+        final boolean centerMode = Settings.isAlignmentCenter();
+        final boolean sameSideMode = Settings.isAlignmentSameSide();
         boolean isDuetSong = false;
         for (LyricsLine l : lines) {
             if (l.isDuet()) {
@@ -42,6 +40,8 @@ final class LyricsLayoutCalc {
                 break;
             }
         }
+        final boolean baseRight = !lines.isEmpty()
+                && ScriptDetector.isLineRtl(lines.get(0).text());
         boolean[] rightAligned = new boolean[lines.size()];
         int parentIdx = -1;
         for (int i = 0; i < rightAligned.length; i++) {
@@ -49,6 +49,20 @@ final class LyricsLayoutCalc {
                 parentIdx = i;
             }
             LyricsLine l = lines.get(i);
+            if (centerMode) {
+                rightAligned[i] = false;
+                continue;
+            }
+            if (sameSideMode) {
+                rightAligned[i] = baseRight;
+                continue;
+            }
+            final boolean isCenteredLine = l.isCentered()
+                    || (isSecFlags[i] && parentIdx >= 0 && lines.get(parentIdx).isCentered());
+            if (isCenteredLine) {
+                rightAligned[i] = false;
+                continue;
+            }
             final boolean lineRtl = ScriptDetector.isLineRtl(l.text());
             // A background vocal sits on its lead line's side.
             final boolean isDuetLine = l.isDuet()
@@ -65,7 +79,6 @@ final class LyricsLayoutCalc {
     static List<GapInterval> buildGapIntervals(List<LyricsLine> lines, boolean[] isSecFlags,
                                                boolean[] lineRightAligned) {
         List<GapInterval> gaps = new ArrayList<>();
-        final boolean forceCenter = Settings.LYRICS_FORCE_CENTER.get();
         int prevMainIdx = -1;
         for (int i = 0; i < lines.size(); i++) {
             if (isSecFlags[i] && prevMainIdx >= 0) {
@@ -121,8 +134,10 @@ final class LyricsLayoutCalc {
             }
             final long gapEnd = Math.max(gapStart + MIN_GAP_DOTS_MS,
                     currentStart - GapLineView.GAP_EXIT_DURATION_MS);
+            final boolean isCenteredForGaps = Settings.isAlignmentCenter()
+                    || (!Settings.isAlignmentSameSide() && line.isCentered());
             gaps.add(new GapInterval(gapStart, gapEnd, currentStart, i, lineRightAligned[i],
-                    forceCenter || line.isCentered(), ScriptDetector.isLineRtl(line.text())));
+                    isCenteredForGaps, ScriptDetector.isLineRtl(line.text())));
         }
         return gaps;
     }

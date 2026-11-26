@@ -599,8 +599,7 @@ public class GmsCoreSupportPatch {
 
         StringBuilder signature = new StringBuilder();
         for (String entry : entries) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (signature.length() > 0) signature.append(';');
+            if (Utils.isNotEmpty(signature)) signature.append(';');
             signature.append(entry);
         }
         return signature.toString();
@@ -617,8 +616,7 @@ public class GmsCoreSupportPatch {
         Utils.runOnMainThreadDelayed(() -> {
             StringBuilder list = new StringBuilder();
             for (VariantPackage variant : conflicts) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (list.length() > 0) list.append('\n');
+                if (Utils.isNotEmpty(list)) list.append('\n');
                 list.append(variant);
             }
 

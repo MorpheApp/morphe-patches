@@ -136,7 +136,7 @@ final class LyricsPrefetcher {
             if (LyricsRequests.isCustomMatchMode()) return;
 
             try {
-                LyricsProvider.FetchResult result = provider.fetch(track);
+                LyricsProvider.FetchResult result = provider.fetchBySearch(track);
                 if (result == null || result.lyrics() == null
                         || result.lyrics() == Lyrics.NOT_FOUND) {
                     continue;

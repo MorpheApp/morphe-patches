@@ -40,7 +40,7 @@ final class WordTableFile {
 
     @Nullable
     File file() {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         return directory == null ? null : new File(directory, name);
     }
 
@@ -72,22 +72,22 @@ final class WordTableFile {
 
     /** Downloads the source unless an earlier attempt left it behind, and builds the table. */
     void build(File directory, String url, String archiveName, Source source,
-               RomanizationDict.Listener listener) throws IOException {
+               RomanizationDictionary.Listener listener) throws IOException {
         build(directory, url, archiveName, source, listener, Long.MAX_VALUE);
     }
 
     /**
-     * As {@link #build(File, String, String, Source, RomanizationDict.Listener)}, refusing a
+     * As {@link #build(File, String, String, Source, RomanizationDictionary.Listener)}, refusing a
      * source larger than {@code maxBytes}.
      */
     void build(File directory, String url, String archiveName, Source source,
-               RomanizationDict.Listener listener, long maxBytes) throws IOException {
+               RomanizationDictionary.Listener listener, long maxBytes) throws IOException {
         File target = new File(directory, name);
         if (target.isFile()) return;
 
         File archive = new File(directory, archiveName);
         if (!archive.isFile()) {
-            RomanizationDict.download(url, archive, archiveName, listener, maxBytes);
+            RomanizationDictionary.download(url, archive, archiveName, listener, maxBytes);
         }
 
         File built = new File(directory, name + ".building");
@@ -103,13 +103,13 @@ final class WordTableFile {
         }
         Utils.deleteQuietly(archive);
 
-        RomanizationDict.commit(built, target);
+        RomanizationDictionary.commit(built, target);
         table = null;
     }
 
     /** Reads a downloaded source into the table being built. */
     interface Source {
         void addTo(File archive, WordReadingTable.Builder builder,
-                   RomanizationDict.Listener listener) throws IOException;
+                   RomanizationDictionary.Listener listener) throws IOException;
     }
 }

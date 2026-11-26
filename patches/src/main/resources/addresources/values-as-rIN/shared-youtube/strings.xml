@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">এক্সপোর্ট ফোল্ডাৰ %s বিচাৰি পোৱা নগ\'ল</string>
   <string name="morphe_export_download_flyout_title">ডিভাইসলৈ এক্সপোর্ট কৰক</string>
   <string name="morphe_export_download_canceled">এক্সপোর্ট বাতিল কৰা হৈছে</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">কষ্টম</string>
   <string name="morphe_custom_branding_icon_title">এপ আইকন</string>
@@ -139,13 +140,15 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">এনেদৰে চেষ্টা কৰক: Spoof video streams &gt; Android VR sign in</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">QuackJS ব্যৱহাৰ কৰক</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Deobfuscation-ৰ বাবে yt-dlp-ejs (WebView)-ৰ পৰিৱৰ্তে QuackJS ব্যৱহাৰ কৰক</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR ছাইন ইন</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-ৰ বাবে এটা পৃথক ছাইন-ইনৰ প্ৰয়োজন। অব্যাহত ৰাখিবলৈ ইয়াত টেপ কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">বৰ্তমান Android VR-ত ছাইন ইন কৰা হৈছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' ছাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-ৰ বাবে এক পৃথক ছাইন-ইনৰ প্ৰয়োজন। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">বৰ্তমান \'Android VR\'-ত ছাইন ইন কৰা হৈছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক Android VR-লৈ সলনি কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-ত ছাইন ইন কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক \'Android VR\'-লৈ সলনি কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'ত ছাইন ইন কৰক</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR ত ছাইন ইন কৰিলে কিছুমান ব্যৱহাৰকাৰীৰ বাবে প্লেবেকৰ সমস্যা সমাধান হ'ব পাৰে
 
 ছাইন ইন কৰিবলৈ, তলত 'অব্যাহত ৰাখক' টিপক"</string>
@@ -167,35 +170,36 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
 • আপোনাৰ Morphe ছেটিংছবোৰে Android VR প্ৰমাণীকৰণ আমদানি/ৰপ্তানি নকৰিব
 • যদি এই এপটো ৬ মাহৰ বাবে ব্যৱহাৰ নকৰা হয় তেন্তে Google-এ এই প্ৰমাণীকৰণটো আঁতৰাই দিব
 • যদি আপুনি আপোনাৰ Google পাছৱৰ্ড সলনি কৰে বা আপোনাৰ Google ছেটিংছৰ পৰা এই ডিভাইচটো ডি-ৰেজিষ্টৰ কৰে তেন্তে আপুনি পুনৰ ছাইন ইন কৰিব লাগিব"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ম’বাইল ৱেব ছাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ৱেব ছাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ঐচ্ছিক: আপোনাৰ একাউণ্টৰ সৈতে ভিডিঅ’বোৰ চাবলৈ YouTube ৱেবছাইটত ছাইন ইন কৰক। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বৰ্তমান ম’বাইল ৱেবত ছাইন ইন কৰা হৈছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বৰ্তমান YouTube ৱেবছাইটত ছাইন ইন কৰা হৈছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক Mobile Web-লৈ সলনি কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ত ছাইন ইন কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-এ ছাইন আউট কৰি অথবা YouTube ৱেবছাইটত ছাইন ইন কৰি ভিডিঅ'বোৰ প্লে কৰে
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক এটা ৱেব ক্লায়েন্টলৈ সলনি কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">YouTube ৱেবছাইটত ছাইন ইন কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ৱেব ক্লাইয়ন্টেছবোৰে ছাইন আউট হৈ অথবা YouTube ৱেবছাইটত ছাইন ইন কৰি ভিডিঅ'বোৰ প্লে কৰে
 
-• ছাইন ইন কৰিলে, একাউণ্টৰ প্ৰয়োজন হোৱা ভিডিঅ'বোৰ প্লে কৰিব পৰা যাব, যেনে বয়স-সীমিত ভিডিঅ'বোৰ
-• এই এপটোত Google ছাইন-ইন পৃষ্ঠাখন খোল খাই থাকে
-• আপুনি প্লে কৰা ভিডিঅ'বোৰ পাবলৈহে ছাইন-ইন ব্যৱহাৰ কৰা হয়
-• ছাইন-ইন কেৱল এই ডিভাইচটোতহে সংৰক্ষণ কৰা হয়
+• ছাইন ইন কৰিলে, একাউণ্টৰ প্ৰয়োজনীয় ভিডিঅ'বোৰ প্লে কৰিব পৰা যাব, যেনে বয়স-নিৰ্ধাৰিত ভিডিঅ'
+• এই এপটোত গুগল ছাইন-ইন পৃষ্ঠাখন খোল খাব
+• ছাইন-ইনটো কেৱল আপুনি প্লে কৰা ভিডিঅ'বোৰ পাবলৈ ব্যৱহাৰ কৰা হয়
+• ছাইন-ইনটো কেৱল এই ডিভাইচটোত সংৰক্ষণ কৰা হয়
+• নিৰ্বাচিত ডিফল্ট ক্লাইয়নটৰ বাবে প্ৰতিটো ৱেব ক্লাইয়নটৰ নিজাকৈ ছাইন-ইন থাকে
 
 ছাইন ইন কৰিবলৈ, তলত কন্টিনিউত ক্লিক কৰক"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"চাইন-ইন সংৰক্ষিত হ'ল
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ছাইন-ইন সংৰক্ষিত হৈছে
 
-• আপোনাৰ Morphe ছেটিংসে Mobile Web চাইন-ইন ইমপোর্ট/এক্সপৰ্ট নকৰিব
-• যদি Google-এ চাইন-ইন শেষ কৰে, তেন্তে আপুনি পুনৰ চাইন-ইন নোহোৱালৈকে ভিডিঅ'বোৰ ছাইন আউট অৱস্থাত চলিব
-• ছাইন আউট কৰিলে এই ডিভাইচটো YouTube ৱেবছাইটৰ পৰাও ছাইন আউট হ'ব"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web চাইন-ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি Mobile Web-ত পুনৰ চাইন-ইন কৰিবলৈ চেষ্টা কৰক</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web-ৰ পৰা ছাইন আউট কৰা হৈছে</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView উপলব্ধ নহয়। চাইন-ইন কৰিবলৈ ইয়াক সংস্থাপন বা সক্ৰিয় কৰক</string>
+• আপোনাৰ Morphe ছেটিংসে YouTube ৱেবচাইট ছাইন-ইন আমদানি/ৰপ্তন নকৰিব
+• যদি Google-এ ছাইন-ইন বন্ধ কৰে, তেন্তে আপুনি পুনৰ ছাইন-ইন নকৰা পৰ্যন্ত ভিডিঅ'বোৰ ছাইন-আউট অৱস্থাত চলিব
+• ছাইন-আউট কৰিলে এই ডিভাইচটো YouTube ৱেবচাইটৰ পৰাও ছাইন-আউট হৈ যাব"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ৱেব ছাইন-ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি পুনৰ ছাইন-ইন কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">YouTube ৱেবচাইটৰ পৰা ছাইন-আউট কৰা হৈছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' উপলব্ধ নহয়। ছাইন-ইন কৰিবলৈ ইয়াক সংস্থাপন বা সক্ৰিয় কৰক</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাৱে উপলব্ধ নহয় (API টাইম আউট হৈছে)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR ছাইন ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি পুনৰ VR-ত ছাইন ইন কৰক</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' ছাইন ইনৰ সময়সীমা শেষ হৈছে, অনুগ্ৰহ কৰি পুনৰ VR-ত ছাইন ইন কৰিবলৈ চেষ্টা কৰক</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাৱে উপলব্ধ নহয় (স্থিতি %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 সাময়িকভাৱে উপলব্ধ নহয়</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-ত ছাইন ইন কৰিব পৰা নাই, ৱেবছাইট প্ৰমাণীকৰণ অনুমোদিত হোৱা নাই</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-ত ছাইন ইন কৰিব পৰা নাই: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR ৰ পৰা লগ আউট কৰা হৈছে</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\'ৰ পৰা লগ আউট কৰা হৈছে</string>
   <string name="morphe_oauth2_toast_invalid">অবৈধ VR ছাইন ইন টোকেন, অনুগ্ৰহ কৰি পুনৰ VR-ত ছাইন ইন কৰক</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">নটিফিকেচন মিডিয়া নিয়ন্ত্ৰক</string>
@@ -213,8 +217,15 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_seek_notification_media_length_invalid">সীকৰ দৈৰ্ঘ্য ১ আৰু %s ছেকেণ্ডৰ ভিতৰত হ\'ব লাগে। ডিফল্ট ব্যৱহাৰ কৰা হৈছে</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC প্ৰটোকল নিষ্ক্ৰীয় কৰক</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">ভিডিঅ’ৰ গুণগতমানক অগ্ৰাধিকাৰ দিয়ক</string>
+  <string name="morphe_prioritize_video_quality_summary">কোডেক কাৰ্যক্ষমতাৰ পৰিবৰ্তে উপলব্ধ উচ্চতম ভিডিঅ’ গুণগতমানক অগ্ৰাধিকাৰ দিয়ে</string>
+  <string name="morphe_prioritize_video_quality_dialog">যদি এই ছেটিংটো বন্ধ কৰা হয়, তেন্তে পুৰণি ভিডিঅ’বোৰত কোনো ভিডিঅ’ গুণগতমানৰ বিকল্প দেখা নাযাব পাৰে</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC অডিঅ\' নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC অডিঅ\' নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_disable_drc_audio_stream_summary">কম্প্ৰেছড ডায়নামিক ৰেঞ্জৰ সংস্কৰণৰ পৰিৱৰ্তে মূল অডিঅ\'টো প্লে কৰে</string>
+  <string name="morphe_disable_loudness_normalization_title">লাউডনেছ নৰ্মালাইজেশ্বন নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_disable_loudness_normalization_summary">উচ্চ শব্দৰ অডিঅ\'ক এটা মানক স্তৰলৈ নমোৱাৰ পৰিৱৰ্তে ইয়াৰ মূল ভলিউমত প্লে কৰে</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিঅ\' ভাষা প্ৰয়োগ কৰক</string>
   <string name="morphe_force_original_audio_summary">ডাব কৰা সংস্কৰণৰ পৰিৱৰ্তে সদায় ভিডিঅ\'ৰ মূল অডিঅ\' ট্ৰেকটো প্লে কৰে</string>
@@ -223,6 +234,32 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_skip_silence_summary">ভিডিঅ’ অডিঅ’ত থকা নিৰৱ স্তব্ধতাবোৰ স্বয়ংক্ৰিয়ভাৱে বাদ দিয়ে</string>
   <string name="morphe_skip_silence_minimum_pause_title">নূন্যতম বিৰতিৰ দৈৰ্ঘ্য</string>
   <string name="morphe_skip_silence_minimum_pause_summary">কেৱল এইমান সময়ৰ বাবে হোৱা বিৰতিবোৰহে চুটি কৰা হয়। পৰৱৰ্তী ভিডিঅ\'টো আৰম্ভ হোৱাৰ পিছত ই কাৰ্যকৰী হ\'ব</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">ভিডিঅ\' ইফেক্ট</string>
+  <string name="morphe_video_effect_entry_none">বন্ধ</string>
+  <string name="morphe_video_effects_custom_title">ভিডিঅ\' ইফেক্টসমূহ সম্পাদনা কৰক</string>
+  <string name="morphe_video_effects_custom_summary">ভিডিঅ\' ইফেক্টসমূহ সলনি কৰক, নাম সলনি কৰক, মচি পেলাওক বা যোগ কৰক। ইফেক্টসমূহ হৈছে চেডাৰ কোড, সেয়েহে এটা AI চেটবটে নতুন ইফেক্ট লিখিব পাৰিব</string>
+  <string name="morphe_video_effects_custom_empty">কোনো ভিডিঅ’ এফেক্ট নাই। এটা বনাবলৈ \'এফেক্ট যোগ কৰক\'ত টেপ কৰক।</string>
+  <string name="morphe_video_effects_custom_add">এফেক্ট যোগ কৰক</string>
+  <string name="morphe_video_effects_custom_restore">ডিফল্টসমূহ পুনৰুদ্ধাৰ কৰক</string>
+  <string name="morphe_video_effects_custom_add_title">নতুন এফেক্ট</string>
+  <string name="morphe_video_effects_custom_edit_title">এফেক্ট সম্পাদনা কৰক</string>
+  <string name="morphe_video_effects_custom_name_hint">নাম</string>
+  <string name="morphe_video_effects_custom_name_empty">এফেক্টটোৰ বাবে এটা নাম লিখক</string>
+  <string name="morphe_video_effects_custom_name_exists">এই নামৰ এটা এফেক্ট ইতিমধ্যে আছে</string>
+  <string name="morphe_video_effects_custom_copy_code">কোড কপি কৰক</string>
+  <string name="morphe_video_effects_custom_error_title">এফেক্টটোত এটা ত্ৰুটি আছে</string>
+  <string name="morphe_video_effects_custom_error_message">"কোডটো ঠিক নোহোৱালৈকে ভিডিঅ'সমূহ ইফেক্ট অবিহনে দেখুৱাব। এই ত্ৰুটিটো সেই AI-ক দিয়ক যাৰ দ্বাৰা কোডটো লিখা হৈছিল:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"ক'ডটো এটা ফাংচন বা কমেন্টৰ ভিতৰত শেষ হৈছে, গতিকে ই কপি বা পেষ্ট কৰাৰ সময়ত সম্ভৱতকৈ কাটি যোৱা হৈছে। পেষ্ট কৰা পাঠটো %d টা চৰিত্ৰত কাটি যাব পাৰে।
+
+AI-ক চুটি ক'ডৰ বাবে জানক, অথবা ক'ডটো খণ্ড খণ্ডকৈ পেষ্ট কৰক।"</string>
+  <string name="morphe_video_effects_custom_copy_error">ত্ৰুটি কপি কৰক</string>
+  <string name="morphe_video_effects_custom_save_anyway">তথাপি সংৰক্ষণ কৰক</string>
+  <string name="morphe_video_effects_custom_delete">মচি পেলাওক</string>
+  <string name="morphe_video_effects_custom_delete_title">ইফেক্টটো মচি পেলাবনে?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s মচি পেলোৱা হ\'ব।</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">নেটৱৰ্ক প্ৰক্সি</string>
   <string name="morphe_proxy_screen_summary">প্ৰক্সিৰ জৰিয়তে সমৰ্থিত নেটৱৰ্ক অনুৰোধসমূহ পৰিচালনা কৰক</string>
@@ -253,7 +290,7 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_replace_music_with_youtube_title">শেয়াৰ লিংকবোৰ youtube.com লৈ সলনি কৰক</string>
   <string name="morphe_replace_music_with_youtube_summary">শেয়াৰ কৰা লিংকবোৰত music.youtube.com ৰ ঠাইত youtube.com প্ৰতিস্থাপন কৰে</string>
   <string name="morphe_replace_links_with_shortener_title">শেয়াৰ লিংকসমূহ youtu.be লৈ সলনি কৰক</string>
-  <string name="morphe_replace_links_with_shortener_summary">ভিডিঅ\'সমূহক চুটি youtu.be URL ফৰ্মেট ব্যৱহাৰ কৰিবলৈ বাধ্য কৰে</string>
+  <string name="morphe_replace_links_with_shortener_summary">ভিডিঅ\'সমূহক চুটি \'youtu.be\' URL ফৰ্মেট ব্যৱহাৰ কৰিবলৈ বাধ্য কৰে</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">অটো</string>
@@ -265,19 +302,16 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_video_quality_default_mobile_title">মবাইল নেটৱৰ্কত ডিফল্ট ভিডিঅ\' কোৱালিটি</string>
   <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মবাইল কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
-  <string name="morphe_open_system_share_sheet_summary">সামগ্ৰী শ্বেয়াৰ কৰাৰ সময়ত ইন-এপৰ পৰিৱৰ্তে ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">লিথো লগিং</string>
   <string name="morphe_debug_litho_entry_disabled">অক্ষম কৰা হৈছে</string>
   <string name="morphe_debug_litho_entry_path">পথ</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">পথ আৰু বাফৰ</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho logging-এ এপটোৰ লেআউট উপাদানসমূহ ৰেৰিকৰ্ড কৰে, যাৰ ভিতৰত কিছুমান UI উপাদানৰ বাবে স্ক্ৰীনত থকা পাঠও অন্তৰ্ভুক্ত থাকে।
+  <string name="morphe_debug_litho_user_dialog_message">"এপ্লিকেচনটোৰ লেআউট কম্পোনেন্টসমূহ লগ কৰে, যাৰ ভিতৰত কিছুমান UI কম্পোনেন্টৰ বাবে অন-স্ক্ৰীণ টেক্সট অন্তৰ্ভুক্ত থাকে।
 
-ই কাস্টম ফিল্টাৰ সৃষ্টি কৰোতে উপাদানসমূহ চিনাক্ত কৰাত সহায় কৰিব পাৰে।
+ custom ফিল্টাৰ সৃষ্টি কৰোঁতে এইটোৱে কম্পোনেন্টসমূহ চিনাক্ত কৰাত সহায় কৰিব পাৰে।
 
-অৱশিকত, ই আপোনাৰ IP ঠিকনাৰ দৰে কিছুমান ব্যৱহাৰকাৰী তথ্যও ৰেৰিকৰ্ড কৰিব"</string>
+অৱশ্যে, ই আপোনাৰ IP ঠিকনাৰ দৰে কিছুমান ব্যৱহাৰকাৰীৰ ডাটাও লগ কৰিব"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">কষ্টম ফিল্টাৰ</string>
   <string name="morphe_custom_filter_screen_summary">যিকোনো উপাদান লুকুৱাবলৈ কাস্টম ফিল্টাৰ কনফিগাৰ কৰক</string>
@@ -342,6 +376,17 @@ PotHelper ডাউনলোড কৰিবলৈ ইয়াত টিপক"</s
   <string name="morphe_custom_font_file_summary">এটা TTF বা OTF ফণ্ট ফাইল বাছনি কৰক</string>
   <string name="morphe_custom_font_file_invalid">পছন্দ কৰা ফাইলটো TTF বা OTF ফন্ট নহয়</string>
   <string name="morphe_custom_font_failed_to_load">কাষ্টম ফন্টটো লোড কৰিব পৰা নগ’ল আৰু ই বন্ধ হৈ আছে</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">গ্লাছ মেনুসমূহ</string>
+  <string name="morphe_glass_menus_screen_summary">পিছলৈ থকা ব্লাৰ্ড কন্টেন্টৰ ওপৰত ফ্ৰোষ্টেড গ্লাছৰ দৰে মেনু</string>
+  <string name="morphe_glass_menus_title">গ্লাছ মেনুসমূহ সক্ৰিয় কৰক</string>
+  <string name="morphe_glass_menus_summary">মেনু আৰু বটম শ্বিটসমূহক ফ্ৰষ্টেড গ্লাছৰ দৰে দেখুৱায়, যাৰ পিছৰ সমগ্ৰ বিষয়বস্তু ব্লাৰ হৈ থাকে</string>
+  <string name="morphe_glass_menus_opacity_title">গ্লাছ অপেচিটি</string>
+  <string name="morphe_glass_menus_opacity_summary">মেনুৱে ব্লাৰ হোৱা বিষয়বস্তুটোক কিমান ঢাকিব (০ মানে স্বচ্ছ, ১০০ মানে অপেক)</string>
+  <string name="morphe_glass_menus_blur_title">ব্লাৰ</string>
+  <string name="morphe_glass_menus_blur_summary">মেনুৰ পিছৰ বিষয়বস্তুটো কিমান ব্লাৰ হ\'ব</string>
+  <string name="morphe_glass_menus_dim_title">ডিম</string>
+  <string name="morphe_glass_menus_dim_summary">বটম শ্বিটৰ চাৰিওফালৰ স্ক্ৰীনখন কিমান অন্ধকাৰ হ\'ব</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ডিসলাইকসমূহ সাময়িকভাৱে উপলব্ধ নহয় (API টাইম আউট হৈছে)</string>
@@ -379,4 +424,8 @@ PotHelper ডাউনলোড কৰিবলৈ ইয়াত টিপক"</s
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">কোনো ক্লায়েণ্ট ৰেট লিমিট পোৱা নগ\'ল</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট ৰেট লিমিট %s বাৰ সন্মুখীন হৈছে</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s মিলিছেকেণ্ড</string>
+  <string name="morphe_navigation_bar_screen_title">নেভিগেচন বাৰ</string>
+  <string name="morphe_navigation_bar_screen_summary">তলৰ নেভিগেচন বাৰত কোনটো বুটাম দেখিব সেইটো বাছনি কৰক</string>
+  <string name="morphe_toolbar_screen_title">টুলবাৰ</string>
+  <string name="morphe_toolbar_screen_summary">টুলবাৰত কোনবোৰ উপাদান দেখা যাব বাছনি কৰক</string>
 </resources>

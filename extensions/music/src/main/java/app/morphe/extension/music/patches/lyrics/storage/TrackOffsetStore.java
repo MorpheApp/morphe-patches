@@ -41,6 +41,28 @@ public final class TrackOffsetStore {
     private TrackOffsetStore() {
     }
 
+    /** {@return how many tracks have an offset saved} */
+    public static int count() {
+        SharedPreferences preferences = preferences();
+        if (preferences == null) {
+            return 0;
+        }
+        int items = 0;
+        for (String key : preferences.getAll().keySet()) {
+            if (!KEY_ORDER.equals(key)) {
+                items++;
+            }
+        }
+        return items;
+    }
+
+    public static void clear() {
+        SharedPreferences preferences = preferences();
+        if (preferences != null) {
+            preferences.edit().clear().apply();
+        }
+    }
+
     /** Safe on the main thread: only the first read of the file touches disk. */
     public static int get(@NonNull TrackInfo track) {
         SharedPreferences preferences = preferences();
@@ -99,8 +121,7 @@ public final class TrackOffsetStore {
     private static String join(List<String> order) {
         StringBuilder result = new StringBuilder();
         for (String entry : order) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (result.length() > 0) {
+            if (Utils.isNotEmpty(result)) {
                 result.append(SEPARATOR);
             }
             result.append(entry);

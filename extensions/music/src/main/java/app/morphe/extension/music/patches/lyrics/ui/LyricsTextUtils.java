@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Text-level helpers shared by the span builder and the views: stripping invisible characters,
@@ -92,7 +93,7 @@ final class LyricsTextUtils {
 
     /** Arabic script or combining marks, whose letters join up and break apart under letter spacing. */
     static boolean containsJoiningScript(@Nullable CharSequence text) {
-        if (text == null || text.length() == 0) {
+        if (Utils.isEmpty(text)) {
             return false;
         }
         for (int i = 0; i < text.length(); ) {

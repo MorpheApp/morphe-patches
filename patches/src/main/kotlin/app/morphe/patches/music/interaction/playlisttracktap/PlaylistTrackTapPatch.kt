@@ -62,9 +62,7 @@ val playlistTrackTapPatch = patch(
         val setExtensionMethod = builderMatches[9].getMethodCalled()
         val extendableBuilderClass = setExtensionMethod.definingClass
 
-        val getExtensionMethod = getCommandBuilderExtensionFingerprint(
-            extendableBuilderClass, setExtensionMethod.parameterTypes.first().toString()
-        ).method
+        val getExtensionMethod = CommandBuilderGetExtensionFingerprint.method
 
         val queueAddEndpointExtensionField = QueueAddEndpointCommandFingerprint
             .instructionMatches.first().fieldReference

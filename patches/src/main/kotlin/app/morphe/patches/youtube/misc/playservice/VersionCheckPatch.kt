@@ -70,6 +70,8 @@ var is_21_14_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_15_or_greater : Boolean by Delegates.notNull()
     private set
+var is_21_16_or_greater : Boolean by Delegates.notNull()
+    private set
 var is_21_17_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_18_or_greater : Boolean by Delegates.notNull()
@@ -122,6 +124,8 @@ var is_21_45_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_46_or_greater : Boolean by Delegates.notNull()
     private set
+var is_21_47_or_greater : Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = patch {
     execute {
@@ -161,6 +165,7 @@ val versionCheckPatch = patch {
         is_21_13_or_greater = isEqualsOrGreaterThan("21.13.000")
         is_21_14_or_greater = isEqualsOrGreaterThan("21.14.000")
         is_21_15_or_greater = isEqualsOrGreaterThan("21.15.000")
+        is_21_16_or_greater = isEqualsOrGreaterThan("21.16.000")
         is_21_17_or_greater = isEqualsOrGreaterThan("21.17.000")
         is_21_18_or_greater = isEqualsOrGreaterThan("21.18.000")
         is_21_19_or_greater = isEqualsOrGreaterThan("21.19.000")
@@ -187,5 +192,6 @@ val versionCheckPatch = patch {
         is_21_44_or_greater = isEqualsOrGreaterThan("21.44.000")
         is_21_45_or_greater = isEqualsOrGreaterThan("21.45.00")
         is_21_46_or_greater = isEqualsOrGreaterThan("21.46.000")
+        is_21_47_or_greater = isEqualsOrGreaterThan("21.47.000")
     }
 }

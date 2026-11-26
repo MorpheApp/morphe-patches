@@ -33,6 +33,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class MusixmatchProvider extends ScoredSongProvider {
@@ -119,13 +120,11 @@ public final class MusixmatchProvider extends ScoredSongProvider {
         final StringBuilder filtered = new StringBuilder();
         for (String param : query.split("&")) {
             if (!param.toLowerCase(Locale.ROOT).startsWith("utm")) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (filtered.length() > 0) filtered.append('&');
+                if (Utils.isNotEmpty(filtered)) filtered.append('&');
                 filtered.append(param);
             }
         }
-        //noinspection SizeReplaceableByIsEmpty
-        return filtered.length() > 0 ? base + "?" + filtered : base;
+        return Utils.isNotEmpty(filtered) ? base + "?" + filtered : base;
     }
 
     private static String requestId() {

@@ -15,7 +15,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Parses Apple Music style TTML into lyric lines.
@@ -258,6 +261,7 @@ public final class TTMLParser {
             boolean inHead = false;
             boolean inBody = false;
             String divSongPart = null;
+            Deque<String> divPartStack = new ArrayDeque<>();
 
             int event = p.getEventType();
             while (event != XmlPullParser.END_DOCUMENT) {
@@ -273,13 +277,16 @@ public final class TTMLParser {
                     } else if ("body".equals(local)) {
                         inBody = true;
                     } else if ("div".equals(local) && inBody && !inHead) {
-                        divSongPart = getLyricAttr(p, "songPart", "itunes:songPart");
-                        if (divSongPart == null) {
-                            divSongPart = getLyricAttr(p, "songPart", "itunes:song-part");
+                        divPartStack.push(divSongPart != null ? divSongPart : "");
+                        String part = readSongPart(p);
+                        if (part != null) {
+                            divSongPart = part;
                         }
                     } else if ("p".equals(local) && inBody && !inHead) {
                         final String lineId = getLyricAttr(p, "key", "itunes:key");
                         final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
+                        final String ownSongPart = readSongPart(p);
+                        final String lineSongPart = ownSongPart != null ? ownSongPart : divSongPart;
                         final String pBeginRaw = noTiming ? null : getAttr(p, null, "begin", "begin");
                         final String pEndRaw = noTiming ? null : getAttr(p, null, "end", "end");
                         final String pDurRaw = noTiming ? null : getAttr(p, null, "dur", "dur");
@@ -303,7 +310,7 @@ public final class TTMLParser {
                             if (hasText) {
                                 final LyricsLine line = new LyricsLine(
                                         pl.begin(), pl.end(), pl.text(), pl.words(),
-                                        agentId, false, false, divSongPart);
+                                        agentId, false, false, lineSongPart);
                                 lines.add(line);
                             }
                             mainLineCount = lines.size();
@@ -313,7 +320,7 @@ public final class TTMLParser {
                                 final LyricsLine bgLine = new LyricsLine(
                                         bgSrc.startTimeMs(), bgSrc.endTimeMs(),
                                         bgSrc.text(), bgSrc.words(),
-                                        bgAgent, false, true, divSongPart);
+                                        bgAgent, false, true, lineSongPart);
                                 lines.add(bgLine);
                             }
 
@@ -397,7 +404,10 @@ public final class TTMLParser {
                     switch (localName(p.getName())) {
                         case "head" -> inHead = false;
                         case "body" -> inBody = false;
-                        case "div" -> divSongPart = null;
+                        case "div" -> {
+                            String previous = divPartStack.isEmpty() ? "" : divPartStack.pop();
+                            divSongPart = previous.isEmpty() ? null : previous;
+                        }
                     }
                 }
                 event = p.next();
@@ -860,13 +870,12 @@ public final class TTMLParser {
                         last.romaji(), true, last.ruby()));
             }
         }
-        //noinspection SizeReplaceableByIsEmpty
-        if (text.length() > 0 && text.charAt(text.length() - 1) != ' ') {
+        if (Utils.isNotEmpty(text) && text.charAt(text.length() - 1) != ' ') {
             text.append(' ');
         }
     }
 
-    @SuppressWarnings({"DataFlowIssue", "StatementWithEmptyBody", "ExtractMethodRecommender"})
+    @SuppressWarnings({"DataFlowIssue", "StatementWithEmptyBody"})
     private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd, int frameRate)
             throws XmlPullParserException, IOException {
 
@@ -1148,12 +1157,10 @@ public final class TTMLParser {
                                 }
                                 StringBuilder rubyBuilder = new StringBuilder();
                                 for (RomajiSyllable rs : rubyTags) {
-                                    //noinspection SizeReplaceableByIsEmpty
-                                    if (rubyBuilder.length() > 0) rubyBuilder.append(' ');
+                                    if (Utils.isNotEmpty(rubyBuilder)) rubyBuilder.append(' ');
                                     rubyBuilder.append(rs.text());
                                 }
-                                //noinspection SizeReplaceableByIsEmpty
-                                final String rubyText = rubyBuilder.length() > 0 ? rubyBuilder.toString() : null;
+                                final String rubyText = Utils.isNotEmpty(rubyBuilder) ? rubyBuilder.toString() : null;
                                 // The ruby is drawn as furigana. The romaji reads the kana, which is
                                 // the ruby unless that is a gloss, such as "Normal" over ノルマ.
                                 final String romaji;
@@ -1246,8 +1253,7 @@ public final class TTMLParser {
                             final Word prev = bgWords.get(bgWords.size() - 1);
                             final boolean cjk = isContinuousCjk(prev.text());
                             if (!hasNewline || !cjk) {
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
+                                if (Utils.isNotEmpty(bgFullText) && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
                                     bgFullText.append(' ');
                                 }
                                 if (!prev.endsWithSpace()) {
@@ -1272,8 +1278,7 @@ public final class TTMLParser {
                             final Word prev = words.get(words.size() - 1);
                             final boolean cjk = isContinuousCjk(prev.text());
                             if (!hasNewline || !cjk) {
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (fullText.length() > 0 && fullText.charAt(fullText.length() - 1) != ' ') {
+                                if (Utils.isNotEmpty(fullText) && fullText.charAt(fullText.length() - 1) != ' ') {
                                     fullText.append(' ');
                                 }
                                 if (!prev.endsWithSpace()) {
@@ -1290,8 +1295,7 @@ public final class TTMLParser {
             }
         }
 
-        final String rawLineText = normalizeText(fullText.toString());
-        String lineText = rawLineText;
+        String lineText = normalizeText(fullText.toString());
 
         // A background vocal that is still open ends with its line.
         if (inBg) {
@@ -1371,8 +1375,7 @@ public final class TTMLParser {
             long bgEndMs,
             long pBegin,
             long pEnd) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (bgWords.isEmpty() && bgFullText.length() == 0) {
+        if (bgWords.isEmpty() && Utils.isEmpty(bgFullText)) {
             return;
         }
         String bgText = normalizeText(bgFullText.toString());
@@ -1461,8 +1464,7 @@ public final class TTMLParser {
                 if (startsTogether || mostlyInsideMain) {
                     String piece = sub.text() != null ? sub.text().trim() : "";
                     if (!piece.isEmpty()) {
-                        //noinspection SizeReplaceableByIsEmpty
-                        if (multiRoma.length() > 0) multiRoma.append(' ');
+                        if (Utils.isNotEmpty(multiRoma)) multiRoma.append(' ');
                         multiRoma.append(piece);
                         multiLastIdx = j;
                     }
@@ -1480,8 +1482,7 @@ public final class TTMLParser {
                 j++;
             }
 
-            //noinspection SizeReplaceableByIsEmpty
-            if (multiLastIdx >= 0 && multiRoma.length() > 0) {
+            if (multiLastIdx >= 0 && Utils.isNotEmpty(multiRoma)) {
                 words.set(i, new Word(main.startMs(), main.endMs(), main.text(),
                         multiRoma.toString(), main.endsWithSpace(), main.ruby()));
                 romanSearchStart = multiLastIdx + 1;
@@ -1541,8 +1542,7 @@ public final class TTMLParser {
                     }
                 }
             }
-            //noinspection SizeReplaceableByIsEmpty
-            if (perWord.length() > 0) {
+            if (Utils.isNotEmpty(perWord)) {
                 return perWord.toString().trim();
             }
         }
@@ -1867,6 +1867,18 @@ public final class TTMLParser {
         if (!excluded.contains(key)) {
             credits.add(key + ": " + value.trim());
         }
+    }
+
+    @Nullable
+    private static String readSongPart(XmlPullParser p) {
+        String part = getLyricAttr(p, "songPart", "itunes:songPart");
+        if (part == null || part.trim().isEmpty()) {
+            part = getAttr(p, NS_ITUNES, "song-part", "itunes:song-part");
+        }
+        if (part == null) return null;
+
+        String trimmed = part.trim();
+        return trimmed.isEmpty() ? null : trimmed;
     }
 
     /**

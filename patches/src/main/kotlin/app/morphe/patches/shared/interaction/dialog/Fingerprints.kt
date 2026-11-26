@@ -34,7 +34,7 @@ internal object AdultContentRunnableFingerprint : Fingerprint(
 )
 
 internal object AdultContentSetPropertiesFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    // Private in YouTube 21.47+.
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     strings = listOf(

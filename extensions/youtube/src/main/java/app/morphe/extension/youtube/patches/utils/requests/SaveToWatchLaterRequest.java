@@ -18,10 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -29,7 +26,6 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 
 public class SaveToWatchLaterRequest {
-    private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
     private final Future<Boolean> future;
 
     private SaveToWatchLaterRequest(
@@ -46,20 +42,7 @@ public class SaveToWatchLaterRequest {
 
     @Nullable
     public Boolean getResult() {
-        try {
-            Logger.printExceptionIfDebug(() -> !fetchIsDone() && Utils.isCurrentlyOnMainThread()
-                    ? "Debug: Blocking main thread"
-                    : null);
-            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-        } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getResult timed out", ex);
-        } catch (InterruptedException ex) {
-            Logger.printException(() -> "getResult interrupted", ex);
-            Thread.currentThread().interrupt();
-        } catch (ExecutionException ex) {
-            Logger.printException(() -> "getResult failure", ex);
-        }
-        return null;
+        return PlaylistRoutes.getResult(future, "getResult");
     }
 
     public static SaveToWatchLaterRequest fetchRequest(
@@ -67,10 +50,6 @@ public class SaveToWatchLaterRequest {
             @NonNull Map<String, String> requestHeader
     ) {
         return new SaveToWatchLaterRequest(videoId, requestHeader);
-    }
-
-    private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
-        Logger.printInfo(() -> toastMessage, ex);
     }
 
     @Nullable
@@ -94,11 +73,11 @@ public class SaveToWatchLaterRequest {
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
-            handleConnectionError("Save to Watch later failed with code: " + responseCode, null);
+            PlaylistRoutes.handleConnectionError("Save to Watch later failed with code: " + responseCode, null);
         } catch (SocketTimeoutException ex) {
-            handleConnectionError("Connection timeout", ex);
+            PlaylistRoutes.handleConnectionError("Connection timeout", ex);
         } catch (IOException ex) {
-            handleConnectionError("Network error", ex);
+            PlaylistRoutes.handleConnectionError("Network error", ex);
         } catch (Exception ex) {
             Logger.printException(() -> "sendRequest failed", ex);
         } finally {

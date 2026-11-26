@@ -8,7 +8,18 @@
 package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.music.misc.album.SharedPreferencesGetBooleanFingerprint
+import com.android.tools.smali.dexlib2.AccessFlags
+
+/**
+ * The wrapper every part of the app reads its preferences through.
+ */
+internal object SharedPreferencesGetBooleanFingerprint : Fingerprint(
+    interfaces = listOf("Landroid/content/SharedPreferences;"),
+    name = "getBoolean",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Ljava/lang/String;", "Z")
+)
 
 /**
  * Preferences that prefix every key with the account, like 'Don't play music videos'.

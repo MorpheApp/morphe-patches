@@ -42,6 +42,11 @@ public class LoopVideoPatch {
 
     private static WeakReference<SleepTimerController> sleepTimerControllerRef = new WeakReference<>(null);
 
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     /**
      * Injection point.
      */

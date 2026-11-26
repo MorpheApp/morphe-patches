@@ -136,14 +136,14 @@ final class DynamicBackgroundView extends View {
     private boolean visualizerFailed;
 
     @Nullable
-    private Bitmap currentArtwork;
+    private volatile Bitmap currentArtwork;
     @Nullable
     private Bitmap previousArtwork;
     /** The media session bitmap the current artwork was made from, null if it is a thumbnail. */
     @Nullable
     private Bitmap currentArtworkSource;
     @Nullable
-    private String videoId;
+    private volatile String videoId;
     private float transitionProgress = 1.0f;
     private long transitionStartUptimeMs;
     private long lastDrawUptimeMs;
@@ -224,7 +224,7 @@ final class DynamicBackgroundView extends View {
         }
 
         Utils.runOnBackgroundThread(() -> {
-            Bitmap thumbnail = downloadThumbnail(id);
+            Bitmap thumbnail = downloadThumbnail(id, ARTWORK_SIZE);
             if (thumbnail == null) {
                 return;
             }
@@ -238,7 +238,7 @@ final class DynamicBackgroundView extends View {
     }
 
     @Nullable
-    private static Bitmap downloadThumbnail(String videoId) {
+    private static Bitmap downloadThumbnail(String videoId, int targetSize) {
         final String url = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
         HttpURLConnection connection = null;
         try {
@@ -252,7 +252,7 @@ final class DynamicBackgroundView extends View {
                 }
                 // The 4:3 thumbnail letterboxes a 16:9 frame, and a square cover sits in the
                 // middle of that frame, so the center square of the frame is the cover itself.
-                Bitmap artwork = cropAndScale(downloaded, downloaded.getWidth() * 9 / 16);
+                Bitmap artwork = cropAndScaleTo(downloaded, downloaded.getWidth() * 9 / 16, targetSize);
                 if (artwork != downloaded) {
                     downloaded.recycle();
                 }
@@ -268,18 +268,135 @@ final class DynamicBackgroundView extends View {
         }
     }
 
-    /** Scales the centered square of at most {@code side} pixels to the artwork size. */
-    private static Bitmap cropAndScale(Bitmap source, int side) {
+    /** Scales the centered square of at most {@code side} pixels to {@code targetSize}. */
+    private static Bitmap cropAndScaleTo(Bitmap source, int side, int targetSize) {
         final int width = source.getWidth();
         final int height = source.getHeight();
         side = Math.min(side, Math.min(width, height));
-        if (side == ARTWORK_SIZE && width == side && height == side) {
+        if (side <= 0) {
+            return source;
+        }
+        int dstSide = Math.min(targetSize, side);
+        if (dstSide == width && dstSide == height) {
             return source;
         }
         Matrix scale = new Matrix();
-        scale.setScale((float) ARTWORK_SIZE / side, (float) ARTWORK_SIZE / side);
+        scale.setScale((float) dstSide / side, (float) dstSide / side);
         return Bitmap.createBitmap(source, (width - side) / 2, (height - side) / 2,
                 side, side, scale, true);
+    }
+
+    /** Scales the centered square of at most {@code side} pixels to the artwork size. */
+    private static Bitmap cropAndScale(Bitmap source, int side) {
+        return cropAndScaleTo(source, side, ARTWORK_SIZE);
+    }
+
+    /** Off-screen artwork, blurred multi-layer mesh, and extracted color palette for share cards. */
+    record ShareSnapshot(
+            @Nullable Bitmap artwork,
+            boolean ownsArtwork,
+            @Nullable Bitmap blurredMesh,
+            LyricsShareCardRenderer.CardPalette palette
+    ) {
+        ShareSnapshot(
+                @Nullable Bitmap artwork,
+                @Nullable Bitmap blurredMesh,
+                LyricsShareCardRenderer.CardPalette palette) {
+            this(artwork, false, blurredMesh, palette);
+        }
+    }
+
+    /**
+     * Captures the current track's artwork, {@link DynamicBackgroundView} blurred multi-layer
+     * mesh, and extracted color palette on a background thread for {@link LyricsShareCardRenderer}.
+     */
+    ShareSnapshot captureShareSnapshot() {
+        Bitmap coverArt = null;
+        Bitmap meshSource = currentArtwork;
+
+        Bitmap sessionBmp = LyricsManager.getInstance().getCurrentArtworkBitmap();
+        if (sessionBmp != null && !sessionBmp.isRecycled()) {
+            coverArt = cropAndScaleTo(sessionBmp, Math.min(sessionBmp.getWidth(), sessionBmp.getHeight()), 512);
+            if (meshSource == null || meshSource.isRecycled()) {
+                meshSource = cropAndScale(sessionBmp, sessionBmp.getHeight());
+            }
+        } else {
+            final String id = videoId;
+            if (id != null && !id.isEmpty()) {
+                Bitmap hiResThumb = downloadThumbnail(id, 512);
+                if (hiResThumb != null) {
+                    coverArt = hiResThumb;
+                    if (meshSource == null || meshSource.isRecycled()) {
+                        meshSource = cropAndScale(hiResThumb, hiResThumb.getHeight());
+                    }
+                }
+            }
+            if (coverArt == null && meshSource != null && !meshSource.isRecycled()) {
+                coverArt = meshSource;
+            }
+        }
+
+        boolean ownsArtwork = coverArt != null && coverArt != sessionBmp && coverArt != meshSource;
+        LyricsShareCardRenderer.CardPalette palette = LyricsShareCardRenderer.CardPalette.DEFAULT;
+        Bitmap blurredOut = null;
+        Bitmap sampleArt = meshSource != null && !meshSource.isRecycled() ? meshSource : coverArt;
+        if (sampleArt != null && !sampleArt.isRecycled()) {
+            int sw = sampleArt.getWidth();
+            int sh = sampleArt.getHeight();
+            if (sw > 0 && sh > 0) {
+                int[] samplePixels = new int[sw * sh];
+                sampleArt.getPixels(samplePixels, 0, sw, 0, 0, sw, sh);
+                palette = LyricsShareCardRenderer.extractPaletteFromPixels(samplePixels);
+                blurredOut = renderOffscreenBlurredMesh(sampleArt);
+            }
+        }
+        return new ShareSnapshot(coverArt, ownsArtwork, blurredOut, palette);
+    }
+
+    private static Bitmap renderOffscreenBlurredMesh(Bitmap artwork) {
+        final int w = 64;
+        final int h = 64;
+        Bitmap rawBuf = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas rawCanvas = new Canvas(rawBuf);
+        rawCanvas.drawColor(BACKGROUND_COLOR);
+
+        Paint p = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG);
+        Matrix m = new Matrix();
+        float aw = artwork.getWidth();
+        float ah = artwork.getHeight();
+        for (int i = 0; i < LAYER_COUNT; i++) {
+            float reachX = 1.0f + Math.abs(LAYER_BASE_POSITIONS[i * 2]);
+            float reachY = 1.0f + Math.abs(LAYER_BASE_POSITIONS[i * 2 + 1]);
+            float size = (float) Math.hypot(reachX, reachY) * LAYER_SCALES[i];
+
+            m.reset();
+            m.postTranslate(-aw * 0.5f, -ah * 0.5f);
+            m.postScale(1.0f / aw, 1.0f / ah);
+            m.postRotate((float) -Math.toDegrees(INITIAL_ROTATIONS[i]));
+            m.postScale(size * w * 0.5f, size * h * 0.5f);
+            m.postTranslate((0.5f + 0.5f * LAYER_BASE_POSITIONS[i * 2]) * w,
+                    (0.5f - 0.5f * LAYER_BASE_POSITIONS[i * 2 + 1]) * h);
+            rawCanvas.drawBitmap(artwork, m, p);
+        }
+
+        int[] src = new int[w * h];
+        int[] tmp = new int[w * h];
+        int[] dst = new int[w * h];
+        rawBuf.getPixels(src, 0, w, 0, 0, w, h);
+        rawBuf.recycle();
+        BoxBlur.blur(src, tmp, dst, w, h, 5, 5);
+
+        Bitmap blurredRaw = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        blurredRaw.setPixels(dst, 0, w, 0, 0, w, h);
+
+        Bitmap finalMesh = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
+        Canvas finalCanvas = new Canvas(finalMesh);
+        Paint postPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
+        postPaint.setColorFilter(new ColorMatrixColorFilter(createPostProcessMatrix()));
+        finalCanvas.drawBitmap(blurredRaw, null, new Rect(0, 0, 256, 256), postPaint);
+        finalCanvas.drawColor(TINT_COLOR);
+        blurredRaw.recycle();
+        return finalMesh;
     }
 
     private void showArtwork(Bitmap artwork) {

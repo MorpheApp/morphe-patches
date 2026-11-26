@@ -78,6 +78,7 @@ Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
   <string name="morphe_export_download_folder_missing">Kon nie uitvoer-houer %s vind nie</string>
   <string name="morphe_export_download_flyout_title">Voer uit na toestel</string>
   <string name="morphe_export_download_canceled">Uitvoer gekanselleer</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasgemaak</string>
   <string name="morphe_custom_branding_icon_title">Program ikoon</string>
@@ -139,14 +140,16 @@ Tik OK om Android System WebView oop te maak."</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer om dit te aktiveer: Verfraai videostrome &gt; Android VR aanteken</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard kliënt</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">Gebruik QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">Gebruik QuackJS in plaas van yt-dlp-ejs (WebView) vir deobfuscation</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR aanteken</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vereis \'n aparte teken-in. Tik hier om voort te gaan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Tans by Android VR aangeteken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' teken in</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vereis \'n aparte aantekeningsproses. Tik hier om voort te gaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Tans by \'Android VR\' aangeteken</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Teken by Android VR aan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Om by Android VR aan te meld, kan speelprobleme vir sommige gebruikers oplos.
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Teken by \'Android VR\' aan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Om by 'Android VR' aan te meld, kan speelprobleme vir sommige gebruikers oplos.
 
 Om aan te meld, tik hieronder op Gaan voort"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Meld af</string>
@@ -167,35 +170,36 @@ Om aan te meld, tik hieronder op Gaan voort"</string>
 • U Morphe-instellings sal nie Android VR-verifikasie invoer/uitvoer nie.
 • Indien hierdie app vir 6 maande nie gebruik word nie, sal Google hierdie verifikasie verwyder nie.
 • U moet weer aanteken indien u u Google-wagwoord verander of hierdie toestel van u Google-instellings deregistreer."</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Teken in op mobiele web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web-intekening</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsioneel: teken in op die YouTube-webwerf om video\'s met jou rekening te speel. Tik hier om voort te gaan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Tans by Mobiele Web aangeteken</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kringtans tekengesteel by die YouTube-webwerf</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Teken in by Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web speel video's terwyl jy uitgeteken is, of ingeteken is by die YouTube-webwerf
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na \'n Web-kliënt</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Teken in by die YouTube-webwerf</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Webkliënte speel video's uitgeteken, of ingeteken by die YouTube-webwerf
 
-• Indien ingeteken, kan video's wat 'n rekening vereis gespeel word, soos ouderdombeperkte video's
-• Die Google-intekeningsbladsy open in hierdie toepassing
-• Die intekening word slegs gebruik om die video's wat jy speel, te kry
+• As jy ingeteken is, kan video's wat 'n rekening vereis gespeel word, soos ouderdombeperkte video's
+• Die Google-intekeningsblad open in hierdie toepassing
+• Die intekening word slegs gebruik om die video's wat jy speel te kry
 • Die intekening word slegs op hierdie toestel gestoor
+• Elke webkliënt het sy eie intekening vir die geselekteerde verstekkliënt
 
 Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Teken-in gestoor
 
-• Jou Morphe-instellings sal nie die Mobiele Web-teken-in invoer/uitvoer nie
-• As Google die teken-in beëindig, word video's uitgeteken gespeel totdat jy weer teken in
-• Om uit te teken, teken ook hierdie toestel uit van die YouTube-webwerf af"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobiele Web-teken-in het verval, probeer om weer by Mobiele Web aan te teken</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uitgeteken uit Mobiele Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView is nie beskikbaar nie. Installeer of aktiveer dit om aan te teken</string>
+• Jou Morphe-instellings sal nie die YouTube-webwerf teken-in invoer/uitvoer nie
+• As Google die teken-in beëindig, word video's sonder teken-in gespeel totdat jy weer teken in
+• Deur uit te teken, teken hierdie toestel ook uit van die YouTube-webwerf"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Web teken-in het verval, probeer om weer teken in</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uitgeteken van die YouTube-webwerf</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' is nie beskikbaar nie. Installeer of aktiveer dit om aan te teken</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tans nie beskikbaar (API het tydperk verstryk)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-aanmelding het verstryk, probeer om weer by VR aan te meld</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\'-aantekening het verval, probeer om weer by VR aan te teken</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 is tans nie beskikbaar nie (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 is tans nie beskikbaar</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan nie by VR aanteken nie: webwerfverifikasie is nie goedgekeur nie</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan nie by VR aanteken nie: %s</string>
-  <string name="morphe_oauth2_toast_reset">Afgemeld by Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Afgemeld by \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Ongeldige VR-aantekentokken, probeer om weer by VR aan te teken</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kennisgewing-mediabediening</string>
@@ -213,8 +217,15 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_seek_notification_media_length_invalid">Soeklengte moet tussen 1 en %s sekondes wees. Gebruik verstekwaarde</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiveer QUIC-protokol</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Gee prioriteit aan videokwaliteit</string>
+  <string name="morphe_prioritize_video_quality_summary">Gee prioriteit aan die hoogste beskikbare videokwaliteit bo kodek-doeltreffendheid</string>
+  <string name="morphe_prioritize_video_quality_dialog">As hierdie instelling afgeskakel is, kan ouer video\'s geen videokwaliteitsopsies toon nie</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Deaktiveer DRC-oudio</string>
+  <string name="morphe_disable_drc_audio_stream_title">Deaktiveer DRC-oudio</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Speel die oorspronklike oudio in plaas van die weergawe met gekomprimeerde dinamiese omvang</string>
+  <string name="morphe_disable_loudness_normalization_title">Deaktiveer hardheidsnormalisering</string>
+  <string name="morphe_disable_loudness_normalization_summary">Speel harde oudio teen sy oorspronklike volume in plaas daarvan om dit na \'n standaardvlak te verlaag</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Dwing oorspronklike oudiotaal af</string>
   <string name="morphe_force_original_audio_summary">Speel altyd die oorspronklike klanksspoor van die video in plaas van \'n dubbingweergawe</string>
@@ -223,6 +234,32 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_skip_silence_summary">Slaan outomaties stil pouses in video-oudio oor</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimum pouselengte</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Slegs pouses van minstens hierdie lengte word verkort. Dit tree in werking wanneer die volgende video begin</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Video-effek</string>
+  <string name="morphe_video_effect_entry_none">Af</string>
+  <string name="morphe_video_effects_custom_title">Wysig video-effekte</string>
+  <string name="morphe_video_effects_custom_summary">Verander, hernoem, skrap of voeg video-effekte by. Effekte is shader-kode, so \'n KI-chatbot kan nuwes skryf</string>
+  <string name="morphe_video_effects_custom_empty">Geen video-effekte nie. Tik Voeg effek by om een te maak.</string>
+  <string name="morphe_video_effects_custom_add">Voeg effek by</string>
+  <string name="morphe_video_effects_custom_restore">Herstel verstekke</string>
+  <string name="morphe_video_effects_custom_add_title">Nuwe effek</string>
+  <string name="morphe_video_effects_custom_edit_title">Wysig effek</string>
+  <string name="morphe_video_effects_custom_name_hint">Naam</string>
+  <string name="morphe_video_effects_custom_name_empty">Voer \'n naam vir die effek in</string>
+  <string name="morphe_video_effects_custom_name_exists">\'n Effek met hierdie naam bestaan reeds</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopieer kode</string>
+  <string name="morphe_video_effects_custom_error_title">Effek het \'n fout</string>
+  <string name="morphe_video_effects_custom_error_message">"Video's word sonder die effek gewys totdat die kode reggestel is. Gee hierdie fout aan die KI wat die kode geskryf het:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"Die kode eindig binne 'n funksie of kommentaar, so dit is waarskynlik afgesny terwyl dit gekopieer of geplak is. Geplakte teks kan by %d karakters afgesny word.
+
+Vra die KI vir korter kode, of plak die kode in dele."</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopieer fout</string>
+  <string name="morphe_video_effects_custom_save_anyway">Stoor tog</string>
+  <string name="morphe_video_effects_custom_delete">Vee uit</string>
+  <string name="morphe_video_effects_custom_delete_title">Vee effek uit?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s sal uitgevee word.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netwerkproxy</string>
   <string name="morphe_proxy_screen_summary">Lei ondersteunde netwerkversoeke deur \'n proxy</string>
@@ -253,7 +290,7 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_replace_music_with_youtube_title">Verander deelskakels na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Vervang music.youtube.com met youtube.com in gedeelde skakels</string>
   <string name="morphe_replace_links_with_shortener_title">Verander deelskakels na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Dwing video\'s om die verkorte youtu.be URL-formaat te gebruik</string>
+  <string name="morphe_replace_links_with_shortener_summary">Forceer video\'s om die verkorte \'youtu.be\'-URL-formaat te gebruik</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Outomaties</string>
@@ -265,19 +302,16 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_video_quality_default_mobile_title">Verstek video-kwaliteit op mobiele netwerk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Verstek mobiele kwaliteit verander na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Verstek Wi-Fi-kwaliteit verander na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Maak stelsel-deelblad oop</string>
-  <string name="morphe_open_system_share_sheet_summary">Maak die stelsel se deelblad oop in plaas van die in-app-een wanneer inhoud gedeel word</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logboek</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiveer</string>
   <string name="morphe_debug_litho_entry_path">Pad</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Pad en buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-logging teken die uitlegkomponente van die toepassing aan, insluitend op-skermteks vir sommige UK-komponente.
+  <string name="morphe_debug_litho_user_dialog_message">"Teken die uitlegkomponente van die toepassing aan, insluitend op-skermteks vir sommige UI-komponente.
 
 Dit kan help om komponente te identifiseer wanneer pasgemaakte filters geskep word.
 
-Dit sal egter ook sommige gebruikersdata, soos jou IP-adres, aanteken"</string>
+Dit sal egter ook sommige gebruikerdata, soos jou IP-adres, aanteken"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Pasgestelde filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigureer pasgestelde filters om enige komponent te verberg</string>
@@ -342,6 +376,17 @@ As dit later gedeaktiveer word, word aanbeveel dat die appdata gewis word om UI-
   <string name="morphe_custom_font_file_summary">Kies \'n TTF- of OTF-fontlêer</string>
   <string name="morphe_custom_font_file_invalid">Die gekose lêer is nie \'n TTF- of OTF-font nie</string>
   <string name="morphe_custom_font_failed_to_load">Die pasgemaakte lettertipe kon nie gelaai word nie en is afgeskakel</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Glasmenu\'s</string>
+  <string name="morphe_glass_menus_screen_summary">Kiesmenu\'s as matglas oor die vervaagde inhoud agter hulle</string>
+  <string name="morphe_glass_menus_title">Aktiveer glas-spyskaarte</string>
+  <string name="morphe_glass_menus_summary">Wys spyskaarte en onderste blaaie as gematteerde glas, met die inhoud agter hulle vervaag</string>
+  <string name="morphe_glass_menus_opacity_title">Glas-ondeursigtigheid</string>
+  <string name="morphe_glass_menus_opacity_summary">Hoeveel die spyskaart die vervaagde inhoud bedek (0 is helder, 100 is ondoorsigtig)</string>
+  <string name="morphe_glass_menus_blur_title">Vervaag</string>
+  <string name="morphe_glass_menus_blur_summary">Hoeveel die inhoud agter die spyskaart vervaag is</string>
+  <string name="morphe_glass_menus_dim_title">Dim</string>
+  <string name="morphe_glass_menus_dim_summary">Hoeveel die skerm rondom \'n onderste blaaie verdonker is</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes is tans nie beskikbaar nie (API het tydperk verstryk)</string>
@@ -379,4 +424,8 @@ Die ID van die video wat jy kyk, word na die Return YouTube Dislike API gestuur,
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen kliënt-tarieflimiete teëgekom nie</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliënt-tarieflimiet %s keer teëgekom</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekondes</string>
+  <string name="morphe_navigation_bar_screen_title">Navigasiebalk</string>
+  <string name="morphe_navigation_bar_screen_summary">Kies watter knoppies in die onderste navigasiebalk verskyn</string>
+  <string name="morphe_toolbar_screen_title">Nutsbalk</string>
+  <string name="morphe_toolbar_screen_summary">Kies watter komponente in die wenkbalk verskyn</string>
 </resources>

@@ -16,15 +16,16 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.youtube.innertube.BrowseResponseOuterClass.BrowseTab;
-import app.morphe.extension.youtube.innertube.BrowseResponseOuterClass.TabRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.FormattedString;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.TextRun;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseTab;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.FormattedString;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.TextRun;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -83,6 +84,11 @@ public final class ClassicSubscriptionsLayoutPatch {
      * Icon of the Subscriptions navigation button, with the same style of the Home button.
      */
     private static volatile YTIconType subscriptionsIconType = YTIconType.PIVOT_SUBSCRIPTIONS;
+
+    /**
+     * If the Subscriptions button is added without a label, as the other buttons of the A/B layout without labels.
+     */
+    private static volatile boolean subscriptionsIconOnly;
 
     /**
      * Injection point.
@@ -263,23 +269,51 @@ public final class ClassicSubscriptionsLayoutPatch {
     public static boolean needsSubscriptionsPivotBarItem(List<Object> list) {
         if (!DISABLE_TOOLBAR_NAVIGATION_TABS || list == null || list.isEmpty()) return false;
 
-        PivotBarItemRenderer homeRenderer = null;
-        for (Object item : list) {
-            PivotBarItemInfo info = getPivotBarItemInfo(item);
-            String pivotIdentifier = info == null ? null : info.id();
-            if (SUBSCRIPTIONS_BROWSE_ID.equals(pivotIdentifier)) {
-                return false;
+        try {
+            YTIconType homeIconType = null;
+            boolean homeIconOnly = false;
+            for (Object item : list) {
+                PivotBarItemInfo info = getPivotBarItemInfo(item);
+                String pivotIdentifier = info == null ? null : info.id();
+                if (SUBSCRIPTIONS_BROWSE_ID.equals(pivotIdentifier)) {
+                    return false;
+                }
+                if (homeIconType == null && HOME_BROWSE_ID.equals(pivotIdentifier)) {
+                    PivotBarItemRenderer homeRenderer = getPivotBarItemRenderer(item);
+                    if (homeRenderer != null) {
+                        homeIconType = homeRenderer.getIcon().getYtIconType();
+                    } else if (item instanceof PivotBarItemInterface renderInterface) {
+                        // The A/B layout without labels, if its buttons are not converted to buttons with labels.
+                        MessageLite iconOnly = renderInterface.patch_getPivotBarIconOnlyItemRenderer();
+                        if (iconOnly != null) {
+                            homeIconType = Icon.parseFrom(PivotBarIconOnlyItemRendererBytes.parseFrom(
+                                    iconOnly.toByteArray()).getIcon()).getYtIconType();
+                            homeIconOnly = true;
+                        }
+                    }
+                }
             }
-            if (homeRenderer == null && HOME_BROWSE_ID.equals(pivotIdentifier)) {
-                homeRenderer = getPivotBarItemRenderer(item);
-            }
-        }
-        if (homeRenderer == null) return false;
+            if (homeIconType == null) return false;
 
-        subscriptionsIconType = homeRenderer.getIcon().getYtIconType() == YTIconType.TAB_HOME_CAIRO
-                ? YTIconType.TAB_SUBSCRIPTIONS_CAIRO
-                : YTIconType.PIVOT_SUBSCRIPTIONS;
-        return true;
+            subscriptionsIconType = homeIconType == YTIconType.TAB_HOME_CAIRO
+                    ? YTIconType.TAB_SUBSCRIPTIONS_CAIRO
+                    : YTIconType.PIVOT_SUBSCRIPTIONS;
+            subscriptionsIconOnly = homeIconOnly;
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "needsSubscriptionsPivotBarItem failure", ex);
+        }
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * Called after {@link #needsSubscriptionsPivotBarItem(List)}.
+     *
+     * @return If the Subscriptions navigation button has no label.
+     */
+    public static boolean isSubscriptionsIconOnly() {
+        return subscriptionsIconOnly;
     }
 
     /**

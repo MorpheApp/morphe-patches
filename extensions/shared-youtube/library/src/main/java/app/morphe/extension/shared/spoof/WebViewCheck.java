@@ -102,7 +102,7 @@ public final class WebViewCheck {
         try {
             if (dialogAnswered || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_WEBVIEW_DIALOG.get()
                     || !SpoofVideoStreamsPatch.isSpoofingEnabled()
-                    || !SpoofVideoStreamsPatch.getPreferredClient().requireJS) {
+                    || !SpoofVideoStreamsPatch.clientRequiresWebView(SpoofVideoStreamsPatch.getPreferredClient())) {
                 return;
             }
 

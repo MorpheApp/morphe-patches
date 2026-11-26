@@ -1058,3 +1058,18 @@ internal object CaptionFontSizeFingerprint : Fingerprint(
         literal(13.0f)
     )
 )
+
+/**
+ * Sets up the header of an engagement panel, such as the transcript panel.
+ * The first parameter is the layout of the panel.
+ */
+internal object EngagementPanelHeaderFingerprint : Fingerprint(
+    isStatic = true,
+    returnType = "V",
+    parameters = listOf("Landroid/view/ViewGroup;", "L"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "panel_header"),
+        resourceLiteral(ResourceType.ID, "close_button"),
+        resourceLiteral(ResourceType.ID, "panel_subheader"),
+    )
+)

@@ -48,3 +48,15 @@ internal object CommandRouterExecuteCommandFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Runs one command with its context in the account scoped command router, which the return type of
+ * [CommandRouterFragmentFingerprint] is. Commands of the activity command router and of the toolbar menus
+ * of pages run here.
+ */
+internal fun accountScopedCommandRouterExecuteCommandFingerprint(routerType: String, commandType: String) =
+    Fingerprint(
+        definingClass = routerType,
+        returnType = "V",
+        parameters = listOf(commandType, "Ljava/util/Map;")
+    )

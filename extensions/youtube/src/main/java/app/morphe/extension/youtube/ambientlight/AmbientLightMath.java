@@ -40,6 +40,9 @@ final class AmbientLightMath {
     // Reused between frames. The light is only computed on one thread.
     private static float[] nearRows = new float[0];
     private static float[] farRows = new float[0];
+    private static float[] softColumnDistance = new float[0];
+    private static float[] softColumnWeight = new float[0];
+    private static float[] sameRowColors = new float[0];
     /** Cells of the light this far inside the picture are behind it, and only show while the player moves. */
     private static final float HIDDEN_MARGIN = 2f;
     private static final short HALF_ONE = 0x3C00;
@@ -326,6 +329,7 @@ final class AmbientLightMath {
         final float cellHeight = windowHeight / (float) outHeight;
 
         float[] columnDistance = new float[outWidth];
+        float[] columnSoftness = new float[outWidth];
         int[] nearLeft = new int[outWidth];
         float[] nearWeight = new float[outWidth];
         int[] farLeft = new int[outWidth];
@@ -334,6 +338,7 @@ final class AmbientLightMath {
             final float x = (column + 0.5f) * cellWidth;
             final float u = clamp((x - video[0]) / videoWidth);
             columnDistance[column] = Math.max(Math.max(video[0] - x, x - video[2]), 0f);
+            columnSoftness[column] = clamp(columnDistance[column] / farDistance);
             final float nearX = u * (nearWidth - 1);
             nearLeft[column] = Math.min((int) nearX, nearWidth - 2);
             nearWeight[column] = nearX - nearLeft[column];
@@ -345,11 +350,20 @@ final class AmbientLightMath {
         farRows = interpolateColumns(far, farWidth, farHeight, farLeft, farWeight, outWidth, farRows);
 
         final int rowLength = outWidth * 3;
+        boolean sameRow = false;
         int index = 0;
         for (int row = 0; row < outHeight; row++) {
             final float y = (row + 0.5f) * cellHeight;
             final float v = clamp((y - video[1]) / videoHeight);
             final float verticalDistance = Math.max(Math.max(video[1] - y, y - video[3]), 0f);
+            // Only the bottom column averages are left this far below the picture, so the rows are all the same.
+            final boolean same = v >= 1f && verticalDistance >= farDistance;
+            if (same && sameRow) {
+                System.arraycopy(out, index - rowLength, out, index, rowLength);
+                index += rowLength;
+                continue;
+            }
+            sameRow = same;
             final float nearY = v * (nearHeight - 1);
             final int nearTop = Math.min((int) nearY, nearHeight - 2);
             final float nearRowWeight = nearY - nearTop;
@@ -357,22 +371,29 @@ final class AmbientLightMath {
             final int farTop = Math.min((int) farY, farHeight - 2);
             final float farRowWeight = farY - farTop;
 
+            final float rowSoftness = clamp(verticalDistance / farDistance);
             int nearIndex = nearTop * rowLength;
             int farIndex = farTop * rowLength;
             for (int column = 0; column < outWidth; column++) {
-                final float softness = clamp(Math.max(verticalDistance, columnDistance[column]) / farDistance);
-                for (int channel = 0; channel < 3; channel++) {
-                    float value = 0f;
-                    if (softness < 1f) {
+                final float softness = verticalDistance >= columnDistance[column] ? rowSoftness : columnSoftness[column];
+                if (softness <= 0f) {
+                    for (int channel = 0; channel < 3; channel++) {
                         final float upper = nearRows[nearIndex + channel];
-                        value = upper + (nearRows[nearIndex + rowLength + channel] - upper) * nearRowWeight;
+                        out[index++] = upper + (nearRows[nearIndex + rowLength + channel] - upper) * nearRowWeight;
                     }
-                    if (softness > 0f) {
+                } else if (softness >= 1f) {
+                    for (int channel = 0; channel < 3; channel++) {
                         final float upper = farRows[farIndex + channel];
-                        value += (upper + (farRows[farIndex + rowLength + channel] - upper) * farRowWeight - value)
-                                * softness;
+                        out[index++] = (upper + (farRows[farIndex + rowLength + channel] - upper) * farRowWeight) * softness;
                     }
-                    out[index++] = value;
+                } else {
+                    for (int channel = 0; channel < 3; channel++) {
+                        final float nearUpper = nearRows[nearIndex + channel];
+                        final float value = nearUpper + (nearRows[nearIndex + rowLength + channel] - nearUpper) * nearRowWeight;
+                        final float farUpper = farRows[farIndex + channel];
+                        out[index++] = value + (farUpper + (farRows[farIndex + rowLength + channel] - farUpper) * farRowWeight
+                                - value) * softness;
+                    }
                 }
                 nearIndex += 3;
                 farIndex += 3;
@@ -431,24 +452,48 @@ final class AmbientLightMath {
         final float redPage = pageColor[0];
         final float greenPage = pageColor[1];
         final float bluePage = pageColor[2];
+        if (softColumnDistance.length != width) {
+            softColumnDistance = new float[width];
+            softColumnWeight = new float[width];
+            sameRowColors = new float[width * 3];
+        }
+        // From here on the rows of the light and the rows of the soft light are all the same.
+        final int sameFrom = Math.max(sharpRows, uniformFrom + BLUR_PASSES * softRadius);
+        boolean sameRow = false;
+        for (int x = 0; x < width; x++) {
+            final float centerX = x + 0.5f;
+            softColumnDistance[x] = Math.max(Math.max(picture[0] - centerX, centerX - picture[2]), 0f);
+            final float blend = clamp(softColumnDistance[x] / softDistance);
+            softColumnWeight[x] = blend * blend * (3f - 2f * blend);
+        }
         int index = 0;
         for (int y = 0; y < height; y++) {
             final boolean hiddenRow = hiddenFrom < hiddenTo && isHiddenRow(y, picture);
             final float centerY = y + 0.5f;
             final float verticalDistance = Math.max(Math.max(picture[1] - centerY, centerY - picture[3]), 0f);
+            final float rowBlend = clamp(verticalDistance / softDistance);
+            final float rowWeight = rowBlend * rowBlend * (3f - 2f * rowBlend);
             final float t = clamp((centerY - picture[3]) / rows);
             final float pageWeight = t * t * (3f - 2f * t) * BOTTOM_PAGE_COLOR;
+            // Only the soft light is left in such a row, so it differs from the row above by the page color only.
+            final boolean same = y >= sameFrom && rowBlend >= 1f;
+            if (same && sameRow) {
+                for (int i = 0; i < sameRowColors.length; i += 3) {
+                    light[index] = sameRowColors[i] + (redPage - sameRowColors[i]) * pageWeight;
+                    light[index + 1] = sameRowColors[i + 1] + (greenPage - sameRowColors[i + 1]) * pageWeight;
+                    light[index + 2] = sameRowColors[i + 2] + (bluePage - sameRowColors[i + 2]) * pageWeight;
+                    index += 3;
+                }
+                continue;
+            }
+            sameRow = same;
             for (int x = 0; x < width; x++) {
                 if (hiddenRow && x == hiddenFrom) {
                     index += (hiddenTo - hiddenFrom) * 3;
                     x = hiddenTo - 1;
                     continue;
                 }
-                final float centerX = x + 0.5f;
-                final float distance = Math.max(verticalDistance,
-                        Math.max(Math.max(picture[0] - centerX, centerX - picture[2]), 0f));
-                final float blend = clamp(distance / softDistance);
-                final float softWeight = blend * blend * (3f - 2f * blend);
+                final float softWeight = verticalDistance >= softColumnDistance[x] ? rowWeight : softColumnWeight[x];
                 final float red = light[index] + (soft[index] - light[index]) * softWeight;
                 final float green = light[index + 1] + (soft[index + 1] - light[index + 1]) * softWeight;
                 final float blue = light[index + 2] + (soft[index + 2] - light[index + 2]) * softWeight;
@@ -456,6 +501,11 @@ final class AmbientLightMath {
                 final float saturatedRed = Math.max(0f, gray + (red - gray) * SATURATION);
                 final float saturatedGreen = Math.max(0f, gray + (green - gray) * SATURATION);
                 final float saturatedBlue = Math.max(0f, gray + (blue - gray) * SATURATION);
+                if (same) {
+                    sameRowColors[x * 3] = saturatedRed;
+                    sameRowColors[x * 3 + 1] = saturatedGreen;
+                    sameRowColors[x * 3 + 2] = saturatedBlue;
+                }
                 light[index] = saturatedRed + (redPage - saturatedRed) * pageWeight;
                 light[index + 1] = saturatedGreen + (greenPage - saturatedGreen) * pageWeight;
                 light[index + 2] = saturatedBlue + (bluePage - saturatedBlue) * pageWeight;

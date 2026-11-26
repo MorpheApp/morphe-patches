@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -44,7 +45,8 @@ public final class OpenSystemShareSheetPatch {
     private static final int ENTITY_COMMENT_FIELD = 18;
     /**
      * Fields of the entities shared with a plain link.
-     * 10, 12 and 20 are Shorts and entity type metadata that does not change the link.
+     * 10, 12 and 20 are Shorts and entity type metadata, and 13 is set on videos made for kids
+     * (their in-app share sheet only has Copy link and More), none of which changes the link.
      */
     private static final Set<Integer> SHARE_ENTITY_FIELDS = Set.of(
             ENTITY_VIDEO_ID_FIELD,
@@ -52,7 +54,7 @@ public final class OpenSystemShareSheetPatch {
             ENTITY_CHANNEL_ID_FIELD,
             ENTITY_POST_ID_FIELD,
             ENTITY_POST_CHANNEL_ID_FIELD,
-            10, 12, 20
+            10, 12, 13, 20
     );
 
     // Comment entity fields. 3, 4 and 6 are the header, text and avatar of the share sheet.
@@ -198,7 +200,7 @@ public final class OpenSystemShareSheetPatch {
      * @return If the in-app share sheet must not be opened.
      */
     public static boolean openSystemShareSheet(byte[] shareEndpoint) {
-        if (!Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
+        if (!SharedSettings.OPEN_SYSTEM_SHARE_SHEET.get()) {
             return false;
         }
 

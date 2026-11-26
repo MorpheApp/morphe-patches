@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">לא ניתן למצוא את תיקיית הייצוא %s</string>
   <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
   <string name="morphe_export_download_canceled">הייצוא בוטל</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">מותאם אישית</string>
   <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
@@ -139,14 +140,16 @@ Second \"item\" text"</string>
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">נסה להפעיל: זיוף זרמי וידאו > כניסה ל-Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_title">השתמש ב-QuackJS</string>
+  <string name="morphe_spoof_video_streams_player_js_quack_summary">השתמש ב-QuackJS במקום ב-yt-dlp-ejs (WebView) עבור ביטול ערפול</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">כניסה ל-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR דורש התחברות נפרדת. הקש כאן כדי להמשיך</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">כרגע מחובר ל-Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" דורש כניסה נפרדת. הקש כאן כדי להמשיך</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">כרגע מחובר ל-\"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">התחברות ל-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"התחברות ל-Android VR יכולה לתקן בעיות השמעה עבור חלק מהמשתמשים
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \"לקוח ברירת מחדל\" ל-\"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">התחברות ל- \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"התחברות ל- 'Android VR' יכולה לתקן בעיות השמעה עבור חלק מהמשתמשים
 
 להתחברות, הקש על 'המשך' למטה"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">התנתק</string>
@@ -167,35 +170,36 @@ Second \"item\" text"</string>
 • הגדרות Morphe לא ייובאו או ייוצאו עם אימות Android VR
 • אם לא תשתמש באפליקציה זו במשך 6 חודשים, Google תסיר את האימות
 • יהיה עליך להתחבר שוב אם תשנה את סיסמת Google שלך או תבטל את רישום המכשיר בהגדרות Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">התחברות דרך דפדפן בנייד</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">התחברות דרך הדפדפן</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">אופציונלי: התחבר לאתר YouTube כדי להפעיל סרטונים עם החשבון שלך. הקש כאן כדי להמשיך</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">כרגע מחובר לדפדפן בנייד</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">מחובר כעת לאתר YouTube</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר ל-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web משמיעה סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ללקוח דפדפן</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר לאתר YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"לקליינטים של רשת ניתן להפעיל סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
 
-• כאשר המשתמש מחובר, ניתן להשמיע סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
-• דף ההתחברות של Google נפתח בתוך אפליקציה זו
-• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתה משמיע
-• ההתחברות נשמרת במכשיר זה בלבד
+• כאשר אתם מחוברים, ניתן להפעיל סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
+• דף ההתחברות של Google נפתח באפליקציה זו
+• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתם מפעילים
+• ההתחברות נשמרת רק במכשיר זה
+• לכל לקליאנט רשת יש התחברות משלו, עבור לקליאנט ברירת המחדל שנבחר
 
-כדי להתחבר, לחץ על המשך למטה"</string>
+כדי להתחבר, לחצו על 'המשך' למטה"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ההתחברות נשמרה
 
-• הגדרות ה-Morphe שלך לא ייבאו/יצאי את ההתחברות ל-Mobile Web
-• אם Google יסגור את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
-• התנתקות תנתק גם את המכשיר הזה מאתר YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות ל-Mobile Web פגה, נסה להתחבר ל-Mobile Web שוב</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מ-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView אינו זמין. התקן או הפעל אותו כדי להתחבר</string>
+• הגדרות ה-Morphe שלך לא ייבאו/ייייצאו את ההתחברות לאתר YouTube
+• אם Google תסיים את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
+• התנתקות תנתק גם את המכשיר הזה מהאתר של YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות לאתר פגה, נסה להתחבר שוב</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מהאתר של YouTube</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">‘Android System WebView’ אינו זמין. התקן או הפעל אותו כדי להתחבר</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 אינו זמין כרגע (תם הזמן של ה-API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">ההתחברות ל-Android VR פגה, נסה להתחבר ל-VR שוב</string>
+  <string name="morphe_oauth2_connection_failure_status_400">ההתחברות ל- \'Android VR\' פגה, נסה להתחבר ל-VR שוב</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 אינו זמין זמנית (מצב %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 אינו זמין כרגע</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">לא ניתן להתחבר ל-VR, אימות האתר לא אושר</string>
   <string name="morphe_oauth2_connection_failure_auth_error">לא ניתן להתחבר ל-VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">בוצעה יציאה מ-Android VR</string>
+  <string name="morphe_oauth2_toast_reset">בוצעה יציאה מ- \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">אסימון ההתחברות ל-VR אינו תקין, נסה להתחבר ל-VR שוב</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">בקרות מדיה של התראה</string>
@@ -213,8 +217,15 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">אורך החיפוש חייב להיות בין 1 ל-%s שניות. ייעשה שימוש בברירת המחדל</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">תעדוף איכות וידאו</string>
+  <string name="morphe_prioritize_video_quality_summary">מתעדף את איכות הווידאו הגבוהה ביותר הזמינה על פני יעילות המקודד</string>
+  <string name="morphe_prioritize_video_quality_dialog">אם הגדרה זו כבויה, ייתכן שסרטונים ישנים יותר לא יציגו אפשרויות לאיכות הווידאו</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">השבת אודיו DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">בטל אודיו DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">משמיע את האודיו המקורי במקום את הגרסה עם טווח דינמי דחוס</string>
+  <string name="morphe_disable_loudness_normalization_title">בטל נורמליזציית עוצמה</string>
+  <string name="morphe_disable_loudness_normalization_summary">משמיע אודיו חזק בעוצמתו המקורית במקום להוריד אותה לרמה סטנדרטית</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary">תמיד מנגן את רצועת האודיו המקורית של הסרטון במקום גרסה מדובבת</string>
@@ -223,6 +234,32 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">מדלג אוטומטית על הפסקות שקט באודיו של וידאו</string>
   <string name="morphe_skip_silence_minimum_pause_title">אורך הפסקה מינימלי</string>
   <string name="morphe_skip_silence_minimum_pause_summary">רק הפסקות שאורכן לפחות משך זה יתקצרו. ההגדרה תיכנס לתוקף כשהסרטון הבא מתחיל</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">אפקט וידאו</string>
+  <string name="morphe_video_effect_entry_none">כבוי</string>
+  <string name="morphe_video_effects_custom_title">עריכת אפקטי וידאו</string>
+  <string name="morphe_video_effects_custom_summary">שינוי, שינוי שם, מחיקה או הוספה של אפקטי וידאו. אפקטים הם קוד shader, לכן צ\'אטבוט AI יכול לכתוב כאלו חדשים</string>
+  <string name="morphe_video_effects_custom_empty">אין אפקטי וידאו. הקש על הוסף אפקט כדי ליצור אחד.</string>
+  <string name="morphe_video_effects_custom_add">הוסף אפקט</string>
+  <string name="morphe_video_effects_custom_restore">שחזור ברירת מחדל</string>
+  <string name="morphe_video_effects_custom_add_title">אפקט חדש</string>
+  <string name="morphe_video_effects_custom_edit_title">עריכת אפקט</string>
+  <string name="morphe_video_effects_custom_name_hint">שם</string>
+  <string name="morphe_video_effects_custom_name_empty">הזן שם לאפקט</string>
+  <string name="morphe_video_effects_custom_name_exists">אפקט עם שם זה כבר קיים</string>
+  <string name="morphe_video_effects_custom_copy_code">העתקת קוד</string>
+  <string name="morphe_video_effects_custom_error_title">שגיאה באפקט</string>
+  <string name="morphe_video_effects_custom_error_message">"סרטונים מוצגים ללא האפקט עד שהקוד יתוקן. העבר את השגיאה הזו ל-AI שכתב את הקוד:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_cut_off_message">"הקוד מסתיים בתוך פונקציה או הערה, לכן הוא כנראה נקטע בזמן ההעתקה או ההדבקה. טקסט שהודבק עלול להיקטע ב-%d תווים.
+
+בקש מה-AI קוד קצר יותר, או הדבק את הקוד בחלקים."</string>
+  <string name="morphe_video_effects_custom_copy_error">שגיאת העתקה</string>
+  <string name="morphe_video_effects_custom_save_anyway">שמור בכל מקרה</string>
+  <string name="morphe_video_effects_custom_delete">מחק</string>
+  <string name="morphe_video_effects_custom_delete_title">למחוק אפקט?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s יימחק.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">פרוקסי רשת</string>
   <string name="morphe_proxy_screen_summary">מנתב בקשות רשת נתמכות דרך פרוקסי</string>
@@ -253,7 +290,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">שנה קישורי שיתוף ל-youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">מחליף את music.youtube.com ב-youtube.com בקישורים משותפים</string>
   <string name="morphe_replace_links_with_shortener_title">שנה קישורי שיתוף ל-youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">כופה על סרטונים להשתמש בפורמט הקיצור youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">מכריח סרטונים להשתמש בפורמט ה-URL המקוצר \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
@@ -265,15 +302,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
   <string name="morphe_remember_video_quality_toast_mobile">איכות סלולרית ברירת מחדל שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">איכות Wi-Fi ברירת מחדל שונתה ל: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">פתח את גיליון השיתוף של המערכת</string>
-  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">רישום Litho</string>
   <string name="morphe_debug_litho_entry_disabled">מושבת</string>
   <string name="morphe_debug_litho_entry_path">נתיב</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">נתיב ומסנן</string>
-  <string name="morphe_debug_litho_user_dialog_message">"רישום Litho מתעד את רכיבי הפריסה של האפליקציה, כולל טקסט שעל המסך עבור רכיבי ממשק משתמש מסוימים.
+  <string name="morphe_debug_litho_user_dialog_message">"מתעד את רכיבי הפריסה של האפליקציה, כולל טקסט שעל המסך עבור רכיבי ממשק משתמש מסוימים.
 
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.
 
@@ -342,6 +376,17 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">בחר קובץ גופן TTF או OTF</string>
   <string name="morphe_custom_font_file_invalid">הקובץ שנבחר אינו גופן TTF או OTF</string>
   <string name="morphe_custom_font_failed_to_load">לא ניתן היה לטעון את הגופן המותאם אישית ולכן הוא כבוי</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">תפריטי זכוכית</string>
+  <string name="morphe_glass_menus_screen_summary">תפריטים במראה זכוכית חלבית מעל התוכן המטשטש שמאחוריהם</string>
+  <string name="morphe_glass_menus_title">הפעל תפריטי זכוכית</string>
+  <string name="morphe_glass_menus_summary">מציג תפריטים וגיליונות תחתונים כזכוכית מט, כאשר התוכן שמאחוריהם מטושטש</string>
+  <string name="morphe_glass_menus_opacity_title">אטימות זכוכית</string>
+  <string name="morphe_glass_menus_opacity_summary">מידת הכיסוי של התפריט על התוכן המטושטש (0 הוא שקוף, 100 הוא אטום)</string>
+  <string name="morphe_glass_menus_blur_title">טשטוש</string>
+  <string name="morphe_glass_menus_blur_summary">מידת הטשטוש של התוכן שמאחורי התפריט</string>
+  <string name="morphe_glass_menus_dim_title">החשכה</string>
+  <string name="morphe_glass_menus_dim_summary">מידת ההחשכה של המסך מסביב לגיליון תחתון</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">דיסלייקים אינם זמינים באופן זמני (תם פסק הזמן של ה-API)</string>
@@ -379,4 +424,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">לא נתקלו במגבלות קצב לקוח</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">מגבלת קצב לקוח נתקלה %s פעמים</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s מילישניות</string>
+  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
+  <string name="morphe_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
+  <string name="morphe_toolbar_screen_title">סרגל כלים</string>
+  <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
 </resources>

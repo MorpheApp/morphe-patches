@@ -102,7 +102,15 @@ message ShortsShelfModel {
 }
 
 message ShortsVideoCellModel {
+    ShortsVideoCellGrid grid = 4;
     ShortsVideoCellData data = 17;
+}
+
+// Layout of the grid of the Shorts shelf, which the template of the Short reads.
+message ShortsVideoCellGrid {
+    // The grid has no margins at its sides, such as in a newer A/B test of the cards. Without it, the grid has
+    // margins of 12 dp.
+    bool noMargins = 40;
 }
 
 message ShortsVideoCellData {
@@ -125,6 +133,7 @@ message HorizontalShelfData {
 
 message ShelfHeaderModel {
     ShelfHeaderData data = 1;
+    ElementContext context = 4;
 }
 
 message ShelfHeaderData {
@@ -562,6 +571,28 @@ message ButtonViewModel {
     int32 state = 14;
     string targetId = 17;
     int32 iconStyle = 40;
+    ButtonImage image = 51;
+}
+
+// Icon of a button by its number, such as the Shop button of live streams, which has no icon name.
+message ButtonImage {
+    repeated ButtonImageSource sources = 1;
+}
+
+message ButtonImageSource {
+    ButtonImageType type = 6;
+}
+
+message ButtonImageType {
+    ButtonImageIcon icon = 1002;
+}
+
+message ButtonImageIcon {
+    ButtonImageIconNumber number = 1;
+}
+
+message ButtonImageIconNumber {
+    int32 value = 1;
 }
 
 message ToggleButtonViewModelHolder {
@@ -595,6 +626,8 @@ message LikeStatusEntity {
 
 message AddToPlaylistButtonViewModel {
     ToggleButtonViewModelHolder toggleButtonViewModel = 1;
+    // Key of the playlists that the video is saved to. The button is toggled if the video is saved.
+    string addToPlaylistEntityKey = 2;
 }
 
 message InnertubeCommandHolder {
@@ -641,7 +674,8 @@ message ElementsExperiments {
     CardLayoutExperiments cardLayoutExperiments = 5;
     // Experiments read by lockup_metadata_ue.eml.
     bytes lockupMetadataExperiments = 26;
-    // Experiments read by lockup.eml and lockup_thumbnail.eml (field 524937).
+    // Experiments read by lockup.eml and lockup_thumbnail.eml (field 524937), which the shelf headers
+    // of the same A/B test have too.
     bytes lockupExperiments = 42;
 }
 

@@ -203,7 +203,8 @@ internal object VideoLengthFingerprint : Fingerprint(
         methodCall(returnType = "J", location = MatchAfterWithin(10)),
 
         methodCall(returnType = "Z", parameters = listOf()),
-        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(8))
+        // 21.47+ has a branch before the compare that can skip it.
+        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(30))
     )
 )
 
@@ -305,18 +306,6 @@ internal object SetPlaybackSpeedFormattedStringFingerprint : Fingerprint(
             name = "userSelectedPlaybackSpeed",
             parameters = listOf("F")
         )
-    )
-)
-
-// Class name is un-obfuscated in targets before 21.01
-internal object VideoQualityFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(
-        "I", // Resolution.
-        "L",
-        "Ljava/lang/String;", // Human-readable resolution: "480p", "1080p Premium", etc
-        "Z",
-        "L"
     )
 )
 

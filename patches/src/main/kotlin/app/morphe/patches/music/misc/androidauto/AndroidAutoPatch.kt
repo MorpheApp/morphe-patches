@@ -7,27 +7,29 @@
 
 package app.morphe.patches.music.misc.androidauto
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addFreeRegisters
+import app.morphe.patcher.util.addInstructionsAtControlFlowLabel
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
-import app.morphe.patches.music.interaction.jam.installNativeAccessor
 import app.morphe.patches.music.interaction.jam.resolveProto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
@@ -39,6 +41,7 @@ import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -57,6 +60,8 @@ private const val GRID_RENDERER =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$GridRenderer;"
 private const val BROWSE_REQUEST =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$BrowseRequest;"
+private const val BROWSE_CACHE =
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$BrowseCache;"
 private const val FOLDER_RELOAD =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$FolderReload;"
 private const val PHONE_BROWSE_ITEM =
@@ -99,6 +104,18 @@ val androidAutoPatch = patch(
         IsGoogleSignedFingerprint.method.returnEarly(false)
         // endregion
 
+        AssistantBrowseUiModeFingerprint.let {
+            val result = it.instructionMatches.last()
+            val register = result.getInstruction<OneRegisterInstruction>().registerA
+            it.method.addInstructions(
+                result.index + 1,
+                """
+                    invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getAssistantBrowseUiMode(I)I
+                    move-result v$register
+                """
+            )
+        }
+
         hookPlaylistsTitleMediaIds()
         patchPhoneBrowseClient()
         patchPhoneBrowseResponses()
@@ -108,6 +125,7 @@ val androidAutoPatch = patch(
         patchPlaylistMediaIdBuilder(encodeCommandMediaIdMethod)
         patchCommandEncoder(encodeCommandMediaIdMethod)
         patchSearch()
+        patchSettingsTab()
     }
 }
 
@@ -163,7 +181,7 @@ private fun patchPhoneBrowseClient() {
         phoneBrowseRequestType,
         sendPhoneBrowseRequestMethod,
     )
-    hookPhoneClientOnServiceCreate(
+    hookMusicBrowserServiceDependency(
         phoneBrowseClientType,
         PHONE_BROWSE_CLIENT,
         "$EXTENSION_CLASS->setPhoneBrowseClient($PHONE_BROWSE_CLIENT)V",
@@ -195,8 +213,7 @@ private fun addPhoneBrowseRequestMethod(
         """
     )
 
-    val continuationField = phoneBrowseContinuationFingerprint(createPhoneBrowseRequestMethod.returnType)
-        .instructionMatches.last().fieldReference
+    val continuationField = PhoneBrowseContinuationFingerprint.instructionMatches.last().fieldReference
     phoneBrowseClientClass.addPatchInterface(
         PHONE_BROWSE_CLIENT,
         "patch_requestBrowseContinuation",
@@ -250,25 +267,28 @@ private fun addLibraryPaginationRequestMethod(
     )
 }
 
-// Obtain YTM's phone request clients
+// Obtain dependencies when YTM's media service starts
 
-internal fun hookPhoneClientOnServiceCreate(
-    clientType: String,
-    clientInterface: String,
+/**
+ * Passes a YTM object to the extension when MusicBrowserService starts.
+ *
+ * @param providerReaderClass Limits the provider lookup to this class, if the type alone matches several providers.
+ */
+internal fun hookMusicBrowserServiceDependency(
+    dependencyType: String,
+    extensionInterface: String,
     setter: String,
+    providerReaderClass: String? = null,
 ) {
     val providerCandidates =
-        phoneClientProviderFingerprint(clientType)
+        dependencyProviderFingerprint(dependencyType, providerReaderClass)
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches
-                val providerField = providerFieldMatch.fieldReference
-                val providerGetMethod =
-                    providerGetMatch.methodReference
-                providerField to providerGetMethod
+                providerFieldMatch.fieldReference to providerGetMatch.methodReference
             }
             .distinctBy { (field, _) -> field }
-    // Several providers create this request sender. Select the one used when MusicBrowserService starts.
+    // Select the provider on the component used when MusicBrowserService starts.
     val (onCreateMatch, providerField, providerGetMethod) = providerCandidates
         .mapNotNull { (providerField, providerGetMethod) ->
             browserServiceOnCreateFingerprint(
@@ -280,29 +300,25 @@ internal fun hookPhoneClientOnServiceCreate(
         }
         .singleOrNull()
         ?: throw PatchException(
-            "Could not resolve MusicBrowserService's phone client provider: $clientType",
+            "Could not resolve MusicBrowserService's provider for $dependencyType",
         )
     val mutableOnCreateMethod = onCreateMatch.method
-    val generatedComponentReadIndex = onCreateMatch.instructionMatches.single { match ->
-        val field = match.instruction.getReference<FieldReference>()
-        match.instruction.opcode == Opcode.IGET_OBJECT && field?.type == providerField.definingClass
-    }.index
-    val generatedComponentRegister = mutableOnCreateMethod
-        .getInstruction<TwoRegisterInstruction>(generatedComponentReadIndex)
-        .registerA
-    val clientRegister = mutableOnCreateMethod.findFreeRegister(
-        generatedComponentReadIndex + 1,
+    val componentRead = onCreateMatch.instructionMatches[1]
+    val generatedComponentRegister = componentRead.getInstruction<TwoRegisterInstruction>().registerA
+    val insertionIndex = componentRead.index + 1
+    val dependencyRegister = mutableOnCreateMethod.findFreeRegister(
+        insertionIndex,
         mutableOnCreateMethod.p0Register,
     )
 
     mutableOnCreateMethod.addInstructions(
-        generatedComponentReadIndex + 1,
+        insertionIndex,
         """
-            iget-object v$clientRegister, v$generatedComponentRegister, $providerField
-            invoke-interface/range { v$clientRegister .. v$clientRegister }, $providerGetMethod
-            move-result-object v$clientRegister
-            check-cast v$clientRegister, $clientInterface
-            invoke-static/range { v$clientRegister .. v$clientRegister }, $setter
+            iget-object v$dependencyRegister, v$generatedComponentRegister, $providerField
+            invoke-interface/range { v$dependencyRegister .. v$dependencyRegister }, $providerGetMethod
+            move-result-object v$dependencyRegister
+            check-cast v$dependencyRegister, $extensionInterface
+            invoke-static/range { v$dependencyRegister .. v$dependencyRegister }, $setter
         """
     )
 }
@@ -358,13 +374,7 @@ private fun addPhoneBrowseResponseInterface() {
     val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
     val decodePaginatedLibraryGridMethod = LibraryPaginationDecoderFingerprint.originalMethod
 
-    val getLibraryPaginationResponseProtoMethod = Fingerprint(
-        definingClass = getTabsMethod.definingClass,
-        isStatic = false,
-        returnType = decodePaginatedLibraryGridMethod
-            .parameterTypes.single().toString(),
-        parameters = listOf()
-    ).method
+    val getLibraryPaginationResponseProtoMethod = PhoneBrowseResponsePaginationProtoFingerprint.method
 
     val paginatedLibraryGridDecoderMethod = addPaginatedLibraryGridDecoder(
         decodePaginatedLibraryGridMethod,
@@ -385,10 +395,7 @@ private fun addPhoneBrowseResponseInterface() {
             return-object p0
         """
     )
-    installNativeAccessor(
-        phoneBrowseResponseClass, "patch_getTabs", getTabsMethod,
-        resultType = findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_getTabs").returnType,
-    )
+    phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getTabs", getTabsMethod)
 
     phoneBrowseResponseClass.addPatchInterface(
         PHONE_BROWSE_RESPONSE,
@@ -461,16 +468,10 @@ private fun addGridRendererInterface() {
 
 /** Exposes Library playlist metadata and returns YTM's media ID encoder for playback. */
 private fun patchPhoneBrowseItem(): MethodReference {
-    // The field read after YTM's presence check identifies the class used for Library items.
-    val phoneBrowseItemType = GridRendererItemsFingerprint
-        .instructionMatches
-        .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
-        .fieldReference
-        .type
     val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).instanceFields.toList()
 
     // Both phone thumbnail renderers must agree on the container and decoded thumbnail fields.
-    val (artworkContainerField, thumbnailDetailsField) = phoneBrowseItemArtworkFingerprint(phoneBrowseItemType)
+    val (artworkContainerField, thumbnailDetailsField) = PhoneBrowseItemArtworkFingerprint
         .matchAll()
         .map { match ->
             match.instructionMatches.mapNotNull { it.instruction.getReference<FieldReference>() }
@@ -506,7 +507,6 @@ private fun patchPhoneBrowseItem(): MethodReference {
     val formatTextMethod = formatTextFingerprint(titleField.type).originalMethod
 
     val phoneBrowseItemClass = mutableClassDefBy(phoneBrowseItemType)
-    phoneBrowseItemClass.interfaces.add(PHONE_BROWSE_ITEM)
     phoneBrowseItemClass.addPlaylistBrowseIdGetter(
         "patch_getPlaylistBrowseId",
         commandFields[0],
@@ -621,46 +621,64 @@ private fun addArtworkUriGetter(
 // region Android Auto requests
 
 private fun patchBrowseRequests() {
-    val sendEmptyItemsMethod = SendEmptyMediaItemsFingerprint.originalMethod
-    addBrowseRequestInterface(sendEmptyItemsMethod)
-    hookBrowseRequest(
-        sendEmptyItemsMethod.definingClass,
-        sendEmptyItemsMethod.parameterTypes.first().toString(),
+    addBrowseRequestInterface()
+
+    val handler = BrowseRequestHandlerFingerprint.method
+    patchPendingRootFetch(handler)
+    // When the patch handles a page request, skip YTM's handler to avoid returning two results.
+    handler.addInstructionsWithLabels(
+        0,
+        """
+            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z
+            move-result v0
+            if-eqz v0, :resume
+            return-void
+            :resume
+            nop
+        """
     )
 }
 
-private fun addBrowseRequestInterface(
-    sendEmptyItemsMethod: Method,
-) {
-    val requestType = sendEmptyItemsMethod.parameterTypes.first().toString()
-    val requestClass = mutableClassDefBy(requestType)
-    val requestFields = sendEmptyItemsMethod.instructions.asSequence()
-        .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
-        .distinct()
-        .toList()
-    // YTM's "Invalid media id" log reads the requested Android Auto folder ID through these two fields.
-    val requestedMediaIdHolderField = requestFields.single { field ->
-        field.definingClass == requestType
+/**
+ * A root request asks YTM which tabs to show in Android Auto, such as Home and Library.
+ * At startup, Android Auto can open two browse connections, each requesting the same tabs.
+ * Queue the later request so it doesn't get an empty list while YTM is still loading the tabs.
+ */
+private fun patchPendingRootFetch(handler: MutableMethod) {
+    val (containsKey, moveResult, cacheBranch) = BrowseRequestHandlerFingerprint.instructionMatches
+    val (map, client) = containsKey.instruction.registersUsed
+    val result = moveResult.getInstruction<OneRegisterInstruction>().registerA
+    handler.addInstructionsWithLabels(cacheBranch.index, """
+        if-gez v$result, :resume
+        return-void
+        :resume
+        nop
+    """)
+    val checkRootFetch = "$EXTENSION_CLASS->checkRootFetch(Ljava/util/Map;Ljava/lang/Object;$BROWSE_REQUEST$BROWSE_CACHE)I"
+    handler.replaceInstruction(containsKey.index, "invoke-static { v$map, v$client, p1, p0 }, $checkRootFetch")
+
+    CachedBrowseFingerprint.apply {
+        classDef.addPatchInterface(BROWSE_CACHE, "patch_sendCachedRoot", method)
     }
-    val requestedMediaIdField = requestFields.single { field ->
-        field.definingClass == requestedMediaIdHolderField.type && field.type == "Ljava/lang/String;"
-    }
+
+    // YTM overwrites p0 during delivery, so preserve the fetch object for finishRootFetch.
+    val delivery = RootLoadedFingerprint.instructionMatches.last().getMethodCalled().cloneParameters()
+    delivery.addInstructionsAtControlFlowLabel(delivery.instructions.lastIndex,
+        "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->finishRootFetch(Ljava/lang/Object;)V")
+}
+
+private fun addBrowseRequestInterface() {
+    val (holder, mediaId) = SendEmptyMediaItemsFingerprint.instructionMatches
+    val requestedMediaIdField = mediaId.fieldReference
     skipCustomMediaIdDecoding(requestedMediaIdField)
 
-    // YTM 9.15's one-argument overload forwards the list and null to this two-argument method.
-    // Newer supported versions call it directly, so the patch can use the same method for all versions.
-    val deliverItemsMethod = requestClass.methods.single { method ->
-        method.returnType == "V" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes.first().toString() == "Ljava/util/List;" &&
-                method.parameterTypes.last().toString().startsWith("L")
-    }
-
+    val requestClass = DeliverBrowseItemsFingerprint.classDef
+    val deliverItemsMethod = DeliverBrowseItemsFingerprint.method
     requestClass.addPatchInterface(
         BROWSE_REQUEST,
         "patch_getRequestedMediaId",
         """
-            iget-object p0, p0, $requestedMediaIdHolderField
+            iget-object p0, p0, ${holder.fieldReference}
             iget-object p0, p0, $requestedMediaIdField
             return-object p0
         """
@@ -693,29 +711,6 @@ private fun skipCustomMediaIdDecoding(requestedMediaIdField: FieldReference) {
             if-eqz v0, :resume
             const/4 v0, 0x0
             return-object v0
-            :resume
-            nop
-        """
-    )
-}
-
-/** When the patch handles a page request, skip YTM's handler to avoid returning two results. */
-private fun hookBrowseRequest(
-    requestHandlerType: String,
-    requestType: String,
-) {
-    Fingerprint(
-        definingClass = requestHandlerType,
-        returnType = "V",
-        parameters = listOf(requestType),
-        strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
-    ).method.addInstructionsWithLabels(
-        0,
-        """
-            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z
-            move-result v0
-            if-eqz v0, :resume
-            return-void
             :resume
             nop
         """
@@ -756,9 +751,7 @@ private fun addRequestConnectionGetter(reloadMethod: Method) {
         field.type == connectionType
     }
 
-    val requestType =
-        SendEmptyMediaItemsFingerprint.originalMethod.parameterTypes.first().toString()
-    val requestClass = mutableClassDefBy(requestType)
+    val requestClass = DeliverBrowseItemsFingerprint.classDef
     // The request can hold other result types; check for the result object that stores the Android Auto connection.
     val resultBaseType = folderResultClass.superclass
         ?: throw PatchException("Could not resolve the Android Auto folder result base class")
@@ -815,14 +808,13 @@ private fun addFolderReload(
 
 /** Refreshes Android Auto when a successful request changes the Library. */
 private fun hookLibraryChangeCompletion() {
-    val createRequestType = libraryChangeRequestFingerprint("playlist/create").originalMethod.definingClass
-    val requestBaseType = classDefBy(createRequestType).superclass
+    val requestBaseType = LibraryChangeRequestFingerprint.originalClassDef.superclass
         ?: throw PatchException("Could not resolve the Library request base class")
     val endpointOwnerType = classDefBy(requestBaseType).superclass
         ?: throw PatchException("Could not resolve the request endpoint's declaring class")
 
     // Callback and future requests both clear their serialized body after a successful response.
-    val completionMethods = requestSuccessCallbackFingerprint(requestBaseType).matchAll()
+    val completionMethods = RequestSuccessCallbackFingerprint.matchAll()
         .map { match -> match.instructionMatches.first().methodReference }
         .distinct()
     completionMethods.forEach { completionReference ->
@@ -937,11 +929,5 @@ private fun patchCommandEncoder(encoder: MethodReference) {
         return-object v0
     """)
 }
-
-internal fun findInterfaceMethod(
-    interfaceType: String,
-    name: String,
-) = classDefBy(interfaceType).methods.singleOrNull { method -> method.name == name }
-    ?: throw PatchException("Could not resolve $name in $interfaceType")
 
 // endregion

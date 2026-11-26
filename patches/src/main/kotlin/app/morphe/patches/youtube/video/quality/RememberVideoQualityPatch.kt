@@ -10,9 +10,11 @@
 
 package app.morphe.patches.youtube.video.quality
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
@@ -23,10 +25,15 @@ import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
+import app.morphe.patches.shared.PlaybackStartParametersConstructorFingerprint
+import app.morphe.patches.shared.misc.downloads.EXTENSION_FORMAT_STREAM_INTERFACE
+import app.morphe.patches.shared.misc.downloads.formatStreamInterfacePatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.videoformat.hookAdaptiveFormat
+import app.morphe.patches.shared.misc.videoinformation.VideoQualityFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
@@ -37,20 +44,19 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.shared.hookVideoIntent
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
-import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_MENU_INTERFACE
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
-import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.patches.youtube.video.videoid.VideoIdFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.findMethodFromToString
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.removeFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -74,6 +80,7 @@ val rememberVideoQualityPatch = patch {
         openVideoIntentPatch,
         fixProtoLibraryPatch,
         videoFormatPatch,
+        formatStreamInterfacePatch,
     )
 
     execute {
@@ -204,6 +211,45 @@ val rememberVideoQualityPatch = patch {
             val videoQualitySettingType = it.classDef.type
             val advancedMenuField = it.instructionMatches.last().fieldReference
 
+            // The quality menu of regular videos shows a check mark on the quality selected,
+            // which is the quality of the last quality event. When the video loads, the event is
+            // the video quality setting without a quality, so the default quality is not checked.
+            // With the 'Advanced' setting, the quality playing is used as the quality selected.
+            val qualityEventType = getVideoQualitySettingChangedEventFingerprint(
+                videoQualitySettingType
+            ).classDef.type
+            getQualityMenuSelectedQualityFingerprint(qualityEventType, videoQualitySettingType).let { match ->
+                match.method.apply {
+                    val resolutionMatch = match.instructionMatches[1]
+                    val resolutionInstruction = resolutionMatch.getInstruction<TwoRegisterInstruction>()
+                    val resolutionRegister = resolutionInstruction.registerA
+                    val qualityEventRegister = resolutionInstruction.registerB
+                    val settingField = match.instructionMatches.last().fieldReference
+                    val insertIndex = resolutionMatch.index + 1
+                    val registerProvider = getFreeRegisterProvider(
+                        insertIndex,
+                        2,
+                        resolutionRegister,
+                        qualityEventRegister
+                    )
+                    val settingRegister = registerProvider.getFreeRegister4Bit()
+                    val advancedRegister = registerProvider.getFreeRegister4Bit()
+
+                    addInstructionsWithLabels(
+                        insertIndex,
+                        """
+                            iget-object v$settingRegister, v$qualityEventRegister, $settingField
+                            sget-object v$advancedRegister, $advancedMenuField
+                            if-ne v$settingRegister, v$advancedRegister, :not_advanced
+                            invoke-static { v$resolutionRegister }, $EXTENSION_CLASS->getQualityMenuSelectedResolution(I)I
+                            move-result v$resolutionRegister
+                            :not_advanced
+                            nop
+                        """
+                    )
+                }
+            }
+
             getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
                 addInstructionsWithLabels(
                     0,
@@ -273,20 +319,21 @@ val rememberVideoQualityPatch = patch {
         // the player and the SABR requests use the quality last selected in the quality menu,
         // and without one the quality is chosen automatically, such as 720p for the size of the player.
         // The default quality is used as the quality last selected, as if the user just selected it.
-        val videoIdField = LastSelectedVideoQualityConstructorFingerprint.let {
-            val videoIdField = it.instructionMatches[1].fieldReference
-
+        val videoIdField = LastSelectedVideoQualityConstructorFingerprint.instructionMatches[1].fieldReference
+        val resolutionField = LastSelectedVideoQualityConstructorFingerprint.instructionMatches[4].fieldReference
+        LastSelectedVideoQualityConstructorFingerprint.let {
             it.method.apply {
                 val selectedTimeField = it.instructionMatches[0].fieldReference
                 val playbackStartTimeField = it.instructionMatches[3].fieldReference
-                val resolutionField = it.instructionMatches[4].fieldReference
                 val directionField = it.instructionMatches[5].fieldReference
 
                 // All fields are set, so the registers are free before the return.
+                // The video the qualities are chosen for is not known here, so it is the video of the player in front.
                 addInstructionsAtControlFlowLabel(
                     indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
                     """
-                        invoke-static { }, $EXTENSION_CLASS->getLastSelectedVideoQuality()I
+                        const/4 v0, 0x0
+                        invoke-static { v0 }, $EXTENSION_CLASS->getLastSelectedVideoQuality(Ljava/lang/String;)I
                         move-result v0
                         if-ltz v0, :original
                         iput v0, p0, $resolutionField
@@ -312,13 +359,17 @@ val rememberVideoQualityPatch = patch {
                 )
             }
 
-            videoIdField
+            // The constraint method below sets the resolution for the video it chooses the qualities for.
+            it.instructionMatches[4].getFieldAccessed().removeFlags(AccessFlags.FINAL)
         }
 
         // With some accounts, the quality selected in the quality menu is used only for the video
         // it was selected for, and the player of other videos chooses the quality automatically.
         // The default quality is used as if the user selected it for the current video.
-        getVideoQualityConstraintFingerprint(
+        // The video is the client playback nonce (CPN) of the video the qualities are chosen for,
+        // which can be another video than the one of the player in front, such as the next Short
+        // loaded by the Shorts player. So the resolution is set again for that video.
+        val constraintType = getVideoQualityConstraintFingerprint(
             LastSelectedVideoQualityConstructorFingerprint.classDef.type,
             videoQualitySettingMethod.toString()
         ).let {
@@ -334,17 +385,117 @@ val rememberVideoQualityPatch = patch {
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        invoke-static { }, $EXTENSION_CLASS->getLastSelectedVideoQuality()I
+                        invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->getLastSelectedVideoQuality(Ljava/lang/String;)I
                         move-result v$videoIdRegister
                         if-ltz v$videoIdRegister, :original
-                        move-object/from16 v$videoIdRegister, p3
                         move-object/from16 v$lastSelectedFreeRegister, v$lastSelectedRegister
+                        iput v$videoIdRegister, v$lastSelectedFreeRegister, $resolutionField
+                        move-object/from16 v$videoIdRegister, p3
                         iput-object v$videoIdRegister, v$lastSelectedFreeRegister, $videoIdField
                         :original
                         nop
                     """
                 )
             }
+
+            it.method.returnType
+        }
+
+        // The SABR player asks the server for the video formats of the quality range of the constraint,
+        // and the server sends only the formats that fit the video decoders of the device (media capabilities).
+        // The quality is chosen before the formats of the video are known, such as the initial quality
+        // or the quality of the next Shorts the Shorts player loads, so a quality without a video format
+        // that fits is lowered here, otherwise no video plays.
+        val rangeField = getVideoQualityConstraintEqualsFingerprint(constraintType).let {
+            // The copy of the constraint gets the original quality range.
+            it.instructionMatches.first().getFieldAccessed().removeFlags(AccessFlags.FINAL)
+            it.instructionMatches.first().fieldReference
+        }
+        val rangeConstructor = getVideoQualityRangeConstructorFingerprint(rangeField.type)
+        val (highestQualityField, lowestQualityField, rangeModeField, rangeFormatsField) =
+            rangeConstructor.instructionMatches.map { it.fieldReference }
+        val constraintLastField = getVideoQualityConstraintConstructorFingerprint(constraintType, rangeField.type)
+            .instructionMatches.last().let {
+                it.getFieldAccessed().removeFlags(AccessFlags.FINAL)
+                it.fieldReference
+            }
+        val fixedQualityMethod = getFixedVideoQualityConstraintFingerprint(constraintType).method
+        getSabrFormatSelectionFingerprint(constraintType).method.apply {
+            val selectableFormatsIndex = parameterTypes.indexOfFirst { it.toString() == SELECTABLE_FORMATS_TYPE }
+            // Wide parameters use two registers.
+            val parameterRegisters = parameterTypes.runningFold(0) { register, type ->
+                register + if (type.toString() == "J" || type.toString() == "D") 2 else 1
+            }
+
+            // The first registers are free at the start of the method. The copy of the constraint made for
+            // a fixed quality has a range of that quality with no formats, so it gets the original range
+            // with the lower quality, and the last field the copy does not keep.
+            addInstructionsWithLabels(
+                0,
+                """
+                    move-object/from16 v0, p0
+                    iget-object v1, v0, $rangeField
+                    iget v2, v1, $highestQualityField
+                    move-object/from16 v3, p${parameterRegisters[selectableFormatsIndex - 2]}
+                    move-object/from16 v4, p${parameterRegisters[selectableFormatsIndex - 1]}
+                    move-object/from16 v5, p${parameterRegisters[selectableFormatsIndex + 1]}
+                    invoke-static { v2, v3, v4, v5 }, $EXTENSION_CLASS->getDecodableSabrResolution(ILjava/util/List;Ljava/util/List;Lcom/google/protobuf/MessageLite;)I
+                    move-result v2
+                    if-ltz v2, :original
+                    invoke-virtual { v0, v2 }, $fixedQualityMethod
+                    move-result-object v3
+                    iget v4, v1, $lowestQualityField
+                    invoke-static { v4, v2 }, Ljava/lang/Math;->min(II)I
+                    move-result v4
+                    iget v5, v1, $rangeModeField
+                    iget-object v1, v1, $rangeFormatsField
+                    new-instance v6, ${rangeField.type}
+                    invoke-direct { v6, v2, v4, v5, v1 }, ${rangeConstructor.method}
+                    iput-object v6, v3, $rangeField
+                    iget-object v1, v0, $constraintLastField
+                    iput-object v1, v3, $constraintLastField
+                    move-object/from16 p0, v3
+                    :original
+                    nop
+                """
+            )
+        }
+
+        // The CPN of the video of the player in front, to know the video the qualities are chosen for.
+        // The instruction that saves it is replaced, so the hooks of the video ID
+        // in the same method keep their position.
+        getPlayingVideoCpnFingerprint(VideoIdFingerprint.method).let {
+            val cpnMatch = it.instructionMatches[1]
+            val cpnField = cpnMatch.fieldReference
+            val setCpnMethod = ImmutableMethod(
+                it.classDef.type,
+                "patch_setPlayingVideoCpn",
+                listOf(
+                    ImmutableMethodParameter(it.classDef.type, null, null),
+                    ImmutableMethodParameter("Ljava/lang/String;", null, null)
+                ),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(2),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        iput-object p1, p0, $cpnField
+                        invoke-static { p1 }, $EXTENSION_CLASS->setPlayingVideoCpn(Ljava/lang/String;)V
+                        return-void
+                    """
+                )
+            }
+            it.classDef.methods.add(setCpnMethod)
+
+            val instruction = cpnMatch.getInstruction<TwoRegisterInstruction>()
+            it.method.replaceInstruction(
+                cpnMatch.index,
+                "invoke-static { v${instruction.registerB}, v${instruction.registerA} }, $setCpnMethod"
+            )
         }
 
         // A quality selected by the user is used again if YouTube reloads the video,
@@ -456,25 +607,18 @@ val rememberVideoQualityPatch = patch {
         // to know the qualities the player can play.
         hookAdaptiveFormat("$EXTENSION_CLASS->setVideoFormats")
 
-        val formatIdMethod = FormatStreamModelToStringFingerprint.originalMethod.findMethodFromToString("itag")
+        val formatStreamType = FormatStreamModelToStringFingerprint.classDef.type
         getCurrentVideoFormatConstructorFingerprint("[${VideoQualityFingerprint.classDef.type}").method.apply {
-            // The first video format field set is the video format playing. The constructor
-            // has no free register, so the register of the video format is used once it is set.
+            // The first video format field set is the video format playing.
             val videoFormatIndex = indexOfFirstInstructionOrThrow(
-                fieldAccess(opcode = Opcode.IPUT_OBJECT, type = formatIdMethod.definingClass)
+                fieldAccess(opcode = Opcode.IPUT_OBJECT, type = formatStreamType)
             )
             val videoFormatRegister = getInstruction<TwoRegisterInstruction>(videoFormatIndex).registerA
 
-            addInstructionsWithLabels(
+            addInstruction(
                 videoFormatIndex + 1,
-                """
-                    if-eqz v$videoFormatRegister, :no_video_format
-                    invoke-virtual/range { v$videoFormatRegister .. v$videoFormatRegister }, $formatIdMethod
-                    move-result v$videoFormatRegister
-                    invoke-static/range { v$videoFormatRegister .. v$videoFormatRegister }, $EXTENSION_CLASS->setCurrentVideoFormat(I)V
-                    :no_video_format
-                    nop
-                """
+                "invoke-static/range { v$videoFormatRegister .. v$videoFormatRegister }, " +
+                        "$EXTENSION_CLASS->setCurrentVideoFormat($EXTENSION_FORMAT_STREAM_INTERFACE)V"
             )
         }
 
@@ -544,6 +688,41 @@ val rememberVideoQualityPatch = patch {
             }
             val bufferManagerClass = getMediaSegmentHolderMethod.definingClass
             val mediaSegmentHolderClass = getMediaSegmentHolderMethod.returnType
+
+            // The method that clears the media after a segment is not public in some versions, such as 21.23,
+            // and the player calls it from another package. The call then fails, the buffered video is not
+            // cleared, and the selected quality plays only after it. A public method of its class calls it instead.
+            val discardBufferAfterSegmentCall = mutableClassDefBy(discardBufferAfterSegmentMethod.definingClass).let { classDef ->
+                val method = classDef.methods.first {
+                    it.name == discardBufferAfterSegmentMethod.name
+                            && it.returnType == discardBufferAfterSegmentMethod.returnType
+                            && it.parameterTypes.map(CharSequence::toString) ==
+                            discardBufferAfterSegmentMethod.parameterTypes.map(CharSequence::toString)
+                }
+                if (AccessFlags.PUBLIC.isSet(method.accessFlags)) {
+                    return@let discardBufferAfterSegmentMethod
+                }
+
+                ImmutableMethod(
+                    classDef.type,
+                    "patch_discardBufferAfterSegment",
+                    listOf(ImmutableMethodParameter("J", null, null)),
+                    "V",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(3),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-virtual { p0, p1, p2 }, $discardBufferAfterSegmentMethod
+                            return-void
+                        """
+                    )
+                    classDef.methods.add(this)
+                }
+            }
 
             // The video buffered before the segment that is playing is cleared too,
             // otherwise a Short plays the previous quality from its start when it loops.
@@ -622,7 +801,7 @@ val rememberVideoQualityPatch = patch {
                         iget-object v2, p0, $bufferManagerField
                         invoke-virtual { v2, p1 }, $getMediaSegmentHolderMethod
                         move-result-object v2
-                        invoke-virtual { v2, v0, v1 }, $discardBufferAfterSegmentMethod
+                        invoke-virtual { v2, v0, v1 }, $discardBufferAfterSegmentCall
                         check-cast v2, ${sampleHolderDiscardBufferMethod.definingClass}
                         invoke-virtual { v2, v0, v1 }, $sampleHolderDiscardBufferMethod
                         return-void

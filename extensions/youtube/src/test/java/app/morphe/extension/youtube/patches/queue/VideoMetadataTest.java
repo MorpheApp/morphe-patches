@@ -31,7 +31,7 @@ import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.ThemePalet
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.VideoData;
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.VideoWithContextData;
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.VideoWithContextModel;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 
 public class VideoMetadataTest {
     private static AttributedText text(String content) {

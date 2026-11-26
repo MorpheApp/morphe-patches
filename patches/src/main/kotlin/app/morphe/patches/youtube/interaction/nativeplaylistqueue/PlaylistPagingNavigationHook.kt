@@ -76,11 +76,9 @@ internal fun installPlaylistPagingSequence(
     // Older constructors delegate to an overload with an extra marker parameter.
     // The request still declares exactly one field of the discovered intent enum.
     val intent = classDefBy(requestType).fields.single { it.type == enumType }
-    mutableClassDefBy(wrapperType).addBridgeMethod(
+    mutableClassDefBy(wrapperType).addPatchInterface(
+        NATIVE_PLAYBACK_INTERFACE,
         "patch_getQueueSequence",
-        emptyList(),
-        "Ljava/lang/Object;",
-        1,
         """
             iget-object v0, p0, $navigator
             return-object v0
