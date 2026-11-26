@@ -7,7 +7,10 @@
 
 package app.morphe.extension.reddit.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.database.DataSetObserver;
@@ -21,18 +24,21 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.TwoStatePreference;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toolbar;
 import android.widget.WrapperListAdapter;
 
 import androidx.annotation.NonNull;
@@ -40,6 +46,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
 
@@ -68,6 +75,11 @@ public final class RedditSettingsStyle {
      * Views that were already styled, so recycled views are not changed twice.
      */
     private static final Set<View> styledViews = Collections.newSetFromMap(new WeakHashMap<>());
+    private static final Set<Preference> indentedPreferences = Collections.newSetFromMap(new WeakHashMap<>());
+
+    public static void setIndented(Preference preference) {
+        indentedPreferences.add(preference);
+    }
 
     private static final Typeface DEFAULT_BODY_TYPEFACE = Typeface.DEFAULT;
     private static final Typeface DEFAULT_BOLD_TYPEFACE = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD);
@@ -652,10 +664,15 @@ public final class RedditSettingsStyle {
             return;
         }
 
+        // Views are recycled between indented and normal rows, so start padding runs on every bind.
+        final int startPadding = item instanceof Preference pref && indentedPreferences.contains(pref)
+                ? Dim.dp40
+                : Dim.dp16;
+        view.setPaddingRelative(startPadding, 0, Dim.dp16, 0);
+
         // Text is set again for every bind, the style only once per view.
         if (styledViews.add(view)) {
             view.setMinimumHeight(Dim.dp48);
-            view.setPaddingRelative(Dim.dp16, 0, Dim.dp16, 0);
 
             title.setTypeface(bodyTypeface);
             title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
@@ -699,13 +716,13 @@ public final class RedditSettingsStyle {
             title.setPaddingRelative(0, topPadding, 0, Dim.dp8);
         }
 
-        if (!styledViews.add(view)) return;
-
         title.setAllCaps(true);
         title.setTypeface(boldTypeface);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         title.setLetterSpacing(0);
         title.setTextColor(headerColor());
+
+        if (!styledViews.add(view)) return;
 
         view.setMinimumHeight(0);
         if (view != title) {
@@ -1005,5 +1022,76 @@ public final class RedditSettingsStyle {
         title.setTypeface(boldTypeface);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         title.setTextColor(getTitleColor());
+    }
+
+    public static int getActionBarSize(Context context) {
+        TypedValue tv = new TypedValue();
+        if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+            return TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+        }
+        return (int) (56 * context.getResources().getDisplayMetrics().density);
+    }
+
+    public static void styleWindow(@Nullable Window window) {
+        if (window == null) return;
+        final int appBackgroundColor = isModernStyle()
+                ? getBackgroundColor()
+                : ThemeUtils.getAppBackgroundColor();
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setStatusBarColor(appBackgroundColor);
+        window.setNavigationBarColor(appBackgroundColor);
+        // Dark system bar icons only on a light background.
+        window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
+                ? 0
+                : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+    }
+
+    public static void applyToolbarElevation(View view) {
+        final boolean modernStyle = isModernStyle();
+        final boolean isDark = Utils.isDarkModeEnabled();
+        view.setElevation(modernStyle ? (isDark ? Dim.dp1 : Dim.dp6) : Dim.dp2);
+        if (modernStyle && !isDark) {
+            view.setTranslationZ(Dim.dp2);
+        }
+    }
+
+    public static Toolbar createToolbar(Context context, CharSequence title, Runnable onBack) {
+        final boolean modernStyle = isModernStyle();
+        // Icons use the text color of the rows, the title is white or black like the app titles.
+        final int appForegroundColor = modernStyle
+                ? getTextColor()
+                : ThemeUtils.getAppForegroundColor();
+        final int titleColor = modernStyle
+                ? getTitleColor()
+                : appForegroundColor;
+        final int appBackgroundColor = modernStyle
+                ? getBackgroundColor()
+                : ThemeUtils.getAppBackgroundColor();
+
+        Toolbar toolbar = new Toolbar(context);
+        toolbar.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, getActionBarSize(context)));
+        toolbar.setBackgroundColor(appBackgroundColor);
+        toolbar.setTitle(title);
+        toolbar.setTitleTextColor(titleColor);
+
+        toolbar.post(() -> {
+            TextView titleTextView = Utils.getChildView(toolbar, false,
+                    view -> view instanceof TextView);
+            if (titleTextView != null) {
+                if (modernStyle) {
+                    styleToolbarTitle(titleTextView);
+                } else {
+                    titleTextView.setTextSize(18);
+                }
+            }
+        });
+
+        Drawable backIcon = Objects.requireNonNull(ResourceUtils.getDrawable("icon_arrow_back")).mutate();
+        backIcon.setTint(appForegroundColor);
+        toolbar.setNavigationIcon(backIcon);
+        toolbar.setNavigationContentDescription(str("morphe_settings_navigate_up"));
+        toolbar.setNavigationOnClickListener(v -> onBack.run());
+        return toolbar;
     }
 }
