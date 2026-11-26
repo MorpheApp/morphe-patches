@@ -90,7 +90,7 @@ final class SonosSoapClient {
     }
 
     /**
-     * Blocks until the speaker answers.
+     * Blocks until the speaker answers. Runs after the volume changes that are still queued.
      *
      * @return The volume of the speaker in percent, or null if the request failed.
      */
@@ -139,7 +139,9 @@ final class SonosSoapClient {
     }
 
     /**
-     * @return The URI the speaker plays, empty if it has none.
+     * Blocks until the speaker answers.
+     *
+     * @return The URI the speaker plays, empty if it has none, or null if the request failed.
      */
     @Nullable
     static String getSourceUri(SonosDevice device) {

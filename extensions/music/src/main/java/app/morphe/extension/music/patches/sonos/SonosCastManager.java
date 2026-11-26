@@ -74,6 +74,10 @@ final class SonosCastManager {
     @Nullable
     private static ScheduledFuture<?> pollTask;
     private static int stoppedPolls;
+    /**
+     * If the speaker played the stream since connecting. Until then it can still report the URI it
+     * played before, which is not another app taking over.
+     */
     private static boolean streamSeen;
 
     /**
@@ -110,6 +114,10 @@ final class SonosCastManager {
     @GuardedBy("sessionLock")
     @Nullable
     private static AudioAttributes localAudioAttributes;
+    /**
+     * The last audio focus change while connected, delivered to the app after disconnecting.
+     * Only used on the main thread.
+     */
     @Nullable
     private static AudioManager.OnAudioFocusChangeListener deferredFocusListener;
     private static int deferredFocusChange;
@@ -172,6 +180,7 @@ final class SonosCastManager {
     static void connect(SonosDevice device) {
         final SonosDevice previousDevice = activeDevice;
         if (previousDevice != null) {
+            // Switch speakers without giving the playback back to the phone in between.
             SonosSoapClient.stop(previousDevice);
             stopStreaming(previousDevice);
         }
@@ -191,15 +200,22 @@ final class SonosCastManager {
         activeDevice = device;
         speakerVolume = UNKNOWN_VOLUME;
         sentTrack = null;
+        stoppedPolls = 0;
+        streamSeen = false;
 
         applyPlayerVolumes(true);
         acquireLocks(Utils.getContext());
         syncSessionPlayback();
 
         sendTrackIfChanged(true);
-        pollExecutor.execute(() -> pollVolume(device));
-        stoppedPolls = 0;
-        streamSeen = false;
+        // Read the volume now, as the volume keys do nothing until it is known.
+        pollExecutor.execute(() -> {
+            try {
+                pollVolume(device);
+            } catch (Exception ex) {
+                Logger.printException(() -> "pollVolume failure", ex);
+            }
+        });
         pollTask = pollExecutor.scheduleWithFixedDelay(SonosCastManager::poll,
                 POLL_INTERVAL_MILLIS, POLL_INTERVAL_MILLIS, TimeUnit.MILLISECONDS);
     }
@@ -213,6 +229,9 @@ final class SonosCastManager {
         }
     }
 
+    /**
+     * Disconnects without stopping the speaker, which now plays for another app.
+     */
     private static void onSpeakerTakenOver(SonosDevice device) {
         stopStreaming(device);
         final MediaSession session = mediaSession;
@@ -234,6 +253,10 @@ final class SonosCastManager {
         releaseLocks();
     }
 
+    /**
+     * Gives the playback back to the phone. A deferred audio focus loss pauses the app before
+     * the phone is unmuted.
+     */
     private static void restorePhone() {
         deliverDeferredFocusChange();
         syncSessionPlayback();
@@ -248,6 +271,11 @@ final class SonosCastManager {
         }
     }
 
+    /**
+     * Like with Cast, other apps playing on the phone do not pause the speaker.
+     *
+     * @return If the change is deferred and the app must not handle it now.
+     */
     static boolean deferAudioFocusChange(AudioManager.OnAudioFocusChangeListener listener, int focusChange) {
         if (!isConnected()) {
             return false;
@@ -287,6 +315,10 @@ final class SonosCastManager {
         }
     }
 
+    /**
+     * Makes the media session remote while connected, so the volume keys and the system volume
+     * panel change the speaker volume instead of the phone volume.
+     */
     private static void syncSessionPlayback() {
         synchronized (sessionLock) {
             final MediaSession session = isConnected() ? mediaSession : null;
@@ -448,6 +480,9 @@ final class SonosCastManager {
         return LocalStreamServer.getCoverUrl(serverUrl, ++coverVersion);
     }
 
+    /**
+     * Reads the volume that was changed in a speaker app or with the speaker buttons.
+     */
     private static void pollVolume(SonosDevice device) {
         final int previousVolume = speakerVolume;
         final Integer volume = SonosSoapClient.getVolume(device);
@@ -458,6 +493,11 @@ final class SonosCastManager {
         }
     }
 
+    /**
+     * Blocks until the speaker answers.
+     *
+     * @return If another app plays on the speaker, which then disconnects on the main thread.
+     */
     private static boolean disconnectIfTakenOver(SonosDevice device) {
         final String url = serverUrl;
         final String sourceUri = SonosSoapClient.getSourceUri(device);

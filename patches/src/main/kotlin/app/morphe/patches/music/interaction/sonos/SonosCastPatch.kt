@@ -93,6 +93,7 @@ val sonosCastPatch = patch(
             )
         }
 
+        // Keep playing on the speaker when another app plays on the phone.
         AudioFocusChangeFingerprint.method.addInstructionsWithLabels(
             0,
             """
