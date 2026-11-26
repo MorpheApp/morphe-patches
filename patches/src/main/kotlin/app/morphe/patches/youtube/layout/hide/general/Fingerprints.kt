@@ -1058,3 +1058,30 @@ internal object MetadataHighlightsColumnMeasureFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "I")
 )
+
+/**
+ * Enum of the timeline marker types, such as chapters.
+ */
+internal object TimelineMarkerTypeFingerprint : Fingerprint(
+    name = "<clinit>",
+    strings = listOf("AD_MARKER", "LIVE_AD_MARKER", "HEATMAP_MARKER")
+)
+
+/**
+ * Adds a list of timeline markers of a type with a key, such as the Base64 entity key
+ * of the auto-generated chapters.
+ */
+internal object AddTimelineMarkersFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;", "L", "L"),
+    filters = listOf(
+        methodCall(smali = "Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z"),
+        methodCall(smali = "Lj$/util/DesugarCollections;->synchronizedMap(Ljava/util/Map;)Ljava/util/Map;"),
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = { TimelineMarkerTypeFingerprint.originalClassDef.type },
+            type = { TimelineMarkerTypeFingerprint.originalClassDef.type }
+        )
+    )
+)

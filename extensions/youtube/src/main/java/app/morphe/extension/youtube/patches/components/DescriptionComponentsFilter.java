@@ -175,6 +175,10 @@ public final class DescriptionComponentsFilter extends Filter {
 
         macroMarkersCarouselGroupList.addAll(
                 new ByteArrayFilterGroup(
+                        Settings.HIDE_AUTO_GENERATED_CHAPTERS,
+                        "auto-chapters"
+                ),
+                new ByteArrayFilterGroup(
                         Settings.HIDE_CHAPTERS_SECTION,
                         "chapters_horizontal_shelf",
                         "auto-chapters",
