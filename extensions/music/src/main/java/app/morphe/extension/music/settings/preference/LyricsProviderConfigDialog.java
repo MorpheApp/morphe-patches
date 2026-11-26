@@ -152,7 +152,8 @@ final class LyricsProviderConfigDialog {
                 Settings.LYRICS_AI_EXTRA_BODY.get(), false);
         makeMultiLine(extraBodyInput, 2, 5);
         setHint(extraBodyInput, "morphe_music_lyrics_ai_config_extra_body_hint");
-        urlBox[0] = addBaseUrlInput(content, Settings.LYRICS_AI_BASE_URL.get(), preset -> modelInput.setText(preset.model()));
+        urlBox[0] = addBaseUrlInput(content, Settings.LYRICS_AI_BASE_URL.get(),
+                preset -> applyPresetModel(preset, modelInput));
         final EditText urlInput = urlBox[0];
         addTestButton(context, content, () -> {
             final String url = urlInput.getText().toString().trim();
@@ -160,10 +161,18 @@ final class LyricsProviderConfigDialog {
                 Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
                 return;
             }
-            test(context, () -> OpenAIClient.validateConfig(url,
-                    tokenInput.getText().toString().trim(),
-                    modelInput.getText().toString().trim()) ? List.of("ok") : null,
-                    ProcessingProviders.OPENAI_COMPATIBLE_LABEL);
+            final String model = modelInput.getText().toString().trim();
+            if (model.isEmpty()) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid"));
+                return;
+            }
+            // Tests what is typed, so headers and body that are not saved yet are sent too.
+            final String token = tokenInput.getText().toString().trim();
+            final String extraHeaders = extraHeadersInput.getText().toString().trim();
+            final String extraBody = extraBodyInput.getText().toString().trim();
+            test(context, () -> OpenAIClient.validateConfig(url, token, model,
+                    extraHeaders, extraBody) ? List.of("ok") : null
+            );
         });
         addReasoningRow(content);
         final PromptField promptField = addPromptSection(content, prompt,
@@ -241,41 +250,34 @@ final class LyricsProviderConfigDialog {
                 () -> keyInput.getText().toString().trim().isEmpty());
     }
 
-    /** The prompt box and the setting behind it; a no-op pair when the service takes no prompt. */
-    private static final class PromptField {
-        @Nullable
-        private final StringSetting setting;
-        @Nullable
-        private final EditText input;
-
-        PromptField(@Nullable StringSetting setting, @Nullable EditText input) {
-            this.setting = setting;
-            this.input = input;
-        }
+    /**
+     * The prompt box and the setting behind it; a no-op pair when the service takes no prompt.
+     */
+        private record PromptField(@Nullable StringSetting setting, @Nullable EditText input) {
 
         void save() {
-            if (setting == null || input == null) {
-                return;
-            }
-            final String text = input.getText().toString().trim();
-            if (text.isEmpty()) {
-                setting.resetToDefault();
-            } else {
-                setting.save(text);
-            }
-            input.setText(setting.get());
-        }
-
-        void reset() {
-            if (setting == null) {
-                return;
-            }
-            setting.resetToDefault();
-            if (input != null) {
+                if (setting == null || input == null) {
+                    return;
+                }
+                final String text = input.getText().toString().trim();
+                if (text.isEmpty()) {
+                    setting.resetToDefault();
+                } else {
+                    setting.save(text);
+                }
                 input.setText(setting.get());
             }
+
+            void reset() {
+                if (setting == null) {
+                    return;
+                }
+                setting.resetToDefault();
+                if (input != null) {
+                    input.setText(setting.get());
+                }
+            }
         }
-    }
 
     /** The prompt box for a list whose service reads one; null for both members otherwise. */
     private static PromptField addPromptSection(LinearLayout content,
@@ -358,14 +360,14 @@ final class LyricsProviderConfigDialog {
         return content;
     }
 
-    private static void test(Activity context, Supplier<List<String>> request, String label) {
+    private static void test(Activity context, Supplier<List<String>> request) {
         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
         Utils.runOnBackgroundThread(() -> {
             List<String> result;
             try {
                 result = request.get();
             } catch (Exception ex) {
-                Logger.printDebug(() -> label + " validation failed", ex);
+                Logger.printDebug(() -> ProcessingProviders.OPENAI_COMPATIBLE_LABEL + " validation failed", ex);
                 result = null;
             }
             final List<String> response = result;
@@ -373,13 +375,33 @@ final class LyricsProviderConfigDialog {
                 if (response != null && !response.isEmpty()) {
                     Utils.showToastShort(str(
                             "morphe_music_lyrics_ai_config_status_connected",
-                            label, response.get(0)));
+                            ProcessingProviders.OPENAI_COMPATIBLE_LABEL, response.get(0)));
                 } else {
                     Utils.showToastShort(str(
-                            "morphe_music_lyrics_ai_config_status_failed", label));
+                            "morphe_music_lyrics_ai_config_status_failed",
+                            ProcessingProviders.OPENAI_COMPATIBLE_LABEL));
                 }
             });
         });
+    }
+
+    /**
+     * Most presets name no model. Picking one of those keeps a model the user typed, and only
+     * clears a model that came from another preset, since that model belongs to another service.
+     */
+    private static void applyPresetModel(ProcessingProviders.EndpointPreset preset, EditText modelInput) {
+        final String presetModel = preset.model();
+        if (!presetModel.isEmpty()) {
+            modelInput.setText(presetModel);
+            return;
+        }
+        final String current = modelInput.getText().toString().trim();
+        for (ProcessingProviders.EndpointPreset other : ProcessingProviders.ENDPOINT_PRESETS) {
+            if (!other.model().isEmpty() && other.model().equals(current)) {
+                modelInput.setText("");
+                return;
+            }
+        }
     }
 
     /** The endpoint box and its preset button, added at the top of the form. */

@@ -127,20 +127,28 @@ public final class OpenAIClient {
     private OpenAIClient() {
     }
 
+    /** Validates with the stored extra headers and body. */
     public static boolean validateConfig(String baseUrl, String apiToken, String model) {
+        return validateConfig(baseUrl, apiToken, model,
+                Settings.LYRICS_AI_EXTRA_HEADERS.get(), Settings.LYRICS_AI_EXTRA_BODY.get());
+    }
+
+    /**
+     * @param extraHeaders The headers to send, which may not be saved yet.
+     * @param extraBody    The body keys to send, which may not be saved yet.
+     */
+    public static boolean validateConfig(String baseUrl, String apiToken, String model,
+                                         String extraHeaders, String extraBody) {
         if (baseUrl == null || baseUrl.trim().isEmpty()
                 || model == null || model.trim().isEmpty()) {
             return false;
         }
         HttpURLConnection conn = null;
         try {
-            JSONObject body = new JSONObject();
-            body.put("model", model);
-            body.put("messages", new JSONArray().put(
-                    new JSONObject().put("role", "user").put("content", "hi")));
-            body.put("max_tokens", 1);
-            // Validate with the same body the feature will send, so what works here works there.
-            applyExtraBody(body);
+            // The body the feature sends, so a parameter the model refuses fails here and not
+            // at playback. A token limit is left out for the same reason: reasoning models
+            // refuse max_tokens, and the feature never sends it.
+            JSONObject body = chatBody(model, "hi", extraBody);
 
             conn = (HttpURLConnection) new URL(chatUrl(baseUrl)).openConnection();
             conn.setRequestMethod("POST");
@@ -151,7 +159,7 @@ public final class OpenAIClient {
                 conn.setRequestProperty("Authorization", "Bearer " + apiToken);
             }
             // Applied last, so user headers override defaults.
-            applyExtraHeaders(conn);
+            applyExtraHeaders(conn, extraHeaders);
             conn.setDoOutput(true);
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
@@ -223,7 +231,7 @@ public final class OpenAIClient {
                 if (apiToken != null && !apiToken.isEmpty()) {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
-                applyExtraHeaders(conn);
+                applyExtraHeaders(conn, Settings.LYRICS_AI_EXTRA_HEADERS.get());
                 if (conn.getResponseCode() != 200) {
                     return null;
                 }
@@ -409,8 +417,7 @@ public final class OpenAIClient {
      * Adds the headers the endpoint asks for. An empty value removes a header we would otherwise
      * send, so an endpoint that wants its own key instead of a bearer token can drop ours.
      */
-    private static void applyExtraHeaders(HttpURLConnection conn) {
-        final String extra = Settings.LYRICS_AI_EXTRA_HEADERS.get();
+    private static void applyExtraHeaders(HttpURLConnection conn, String extra) {
         final String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
@@ -428,7 +435,7 @@ public final class OpenAIClient {
             }
         } catch (JSONException e) {
             // A header list that will not parse is ignored; it must not take the feature down.
-            Logger.printDebug(() -> "The stored extra request headers are not valid JSON");
+            Logger.printDebug(() -> "The extra request headers are not valid JSON");
         }
     }
 
@@ -436,8 +443,7 @@ public final class OpenAIClient {
      * Two keys stay ours: the model, which has a setting the endpoint was validated against, and the
      * messages, whose length decides where the answer is cut into lines.
      */
-    private static void applyExtraBody(JSONObject body) {
-        final String extra = Settings.LYRICS_AI_EXTRA_BODY.get();
+    private static void applyExtraBody(JSONObject body, String extra) {
         final String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
@@ -452,29 +458,36 @@ public final class OpenAIClient {
             }
         } catch (JSONException e) {
             // An invalid stored body is ignored; it must not take the feature down.
-            Logger.printDebug(() -> "The stored extra request body is not valid JSON");
+            Logger.printDebug(() -> "The extra request body is not valid JSON");
         }
+    }
+
+    /** The chat request body, shared by the feature and the connection test. */
+    private static JSONObject chatBody(String model, String userPrompt, String extraBody)
+            throws JSONException {
+        JSONObject body = new JSONObject();
+        body.put("model", model);
+        final String effort = reasoningEffort();
+        if (!effort.isEmpty()) {
+            body.put("reasoning_effort", effort);
+        }
+
+        JSONArray messages = new JSONArray();
+        messages.put(new JSONObject()
+                .put("role", "user")
+                .put("content", userPrompt));
+        body.put("messages", messages);
+
+        // Applied last, so user body wins even where it disagrees with the effort.
+        applyExtraBody(body, extraBody);
+        return body;
     }
 
     @Nullable
     static String request(String baseUrl, String apiToken, String model,
                           String userPrompt) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("model", model);
-            final String effort = reasoningEffort();
-            if (!effort.isEmpty()) {
-                body.put("reasoning_effort", effort);
-            }
-
-            JSONArray messages = new JSONArray();
-            messages.put(new JSONObject()
-                    .put("role", "user")
-                    .put("content", userPrompt));
-            body.put("messages", messages);
-
-            // Applied last, so user body wins even where it disagrees with the effort.
-            applyExtraBody(body);
+            JSONObject body = chatBody(model, userPrompt, Settings.LYRICS_AI_EXTRA_BODY.get());
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
 
@@ -488,7 +501,7 @@ public final class OpenAIClient {
                 if (apiToken != null && !apiToken.isEmpty()) {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
-                applyExtraHeaders(conn);
+                applyExtraHeaders(conn, Settings.LYRICS_AI_EXTRA_HEADERS.get());
                 conn.setDoOutput(true);
 
                 try (OutputStream os = conn.getOutputStream()) {
