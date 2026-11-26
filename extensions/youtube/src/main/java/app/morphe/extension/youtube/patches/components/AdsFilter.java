@@ -12,6 +12,8 @@ package app.morphe.extension.youtube.patches.components;
 
 import android.view.View;
 
+import com.google.protobuf.InvalidProtocolBufferException;
+
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -23,6 +25,10 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.innertube.ElementTexts;
+import app.morphe.extension.youtube.innertube.ElementTexts.LockupMetadataViewModel;
+import app.morphe.extension.youtube.innertube.ElementTexts.MetadataBadge;
+import app.morphe.extension.youtube.innertube.ElementTexts.MetadataRow;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
 import app.morphe.extension.youtube.patches.NavigationBarPatch;
@@ -57,15 +63,20 @@ public final class AdsFilter extends Filter {
      */
     private static final String PREMIUM_BROWSE_ID = "SPunlimited";
     /**
-     * Images of the YouTube promotions, such as https://www.gstatic.com/youtube/img/promos/growth/abc_960x300.png.
+     * Images of the YouTube promotions, such as <a href="https://www.gstatic.com/youtube/img/promos/growth/abc_960x300.png">...</a>.
      * The images of the videos are on other hosts.
      */
     private static final String PROMOTION_IMAGE_PATH = "gstatic.com/youtube/img/promos/";
+    /**
+     * Style of the 'Premium' badge below the metadata of a video.
+     */
+    private static final int PREMIUM_BADGE_STYLE = 11;
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
+    private final StringFilterGroup premiumVideo;
     private final StringFilterGroup productCard;
     private final ByteArrayFilterGroup productCardBuffer;
     private final StringFilterGroup shortsPaidPromotionLabel;
@@ -157,6 +168,14 @@ public final class AdsFilter extends Filter {
                 "shorts_disclosures.e"
         );
 
+        // Root elements of the videos, which hold the badges of the video.
+        // The videos that only YouTube Premium can play are hidden as Premium promotions.
+        premiumVideo = new StringFilterGroup(
+                Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
+                "video_lockup_with_attachment.e",
+                "lockup.e" // Card layout.
+        );
+
         productCard = new StringFilterGroup(
                 Settings.HIDE_SHOPPING_LINKS,
                 "expandable_metadata.e",
@@ -208,6 +227,7 @@ public final class AdsFilter extends Filter {
                 merchandise,
                 movieAds,
                 paidPromotionLabel,
+                premiumVideo,
                 productCard,
                 productSticker,
                 selfSponsor,
@@ -235,6 +255,10 @@ public final class AdsFilter extends Filter {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
         }
 
+        if (matchedGroup == premiumVideo) {
+            return contentIndex == 0 && isPremiumVideo(buffer);
+        }
+
         if (matchedGroup == productCard) {
             return productCardBuffer.check(buffer).isFiltered();
         }
@@ -244,6 +268,41 @@ public final class AdsFilter extends Filter {
         }
 
         return !exceptions.matches(path);
+    }
+
+    /**
+     * The text of the badge is localized, so the badge is found by its style.
+     *
+     * @param buffer Buffer of the root element of a video.
+     * @return If the video has the 'Premium' badge, such as the YouTube Premium exclusive movies,
+     *         which can only be played with YouTube Premium.
+     */
+    private static boolean isPremiumVideo(byte[] buffer) {
+        try {
+            ElementTexts.ElementModel model = KeywordContentFilter.findModel(ElementTexts.Element.parseFrom(buffer));
+            if (model == null) {
+                return false;
+            }
+
+            LockupMetadataViewModel metadata = model.hasVideoWithContextModel()
+                    ? model.getVideoWithContextModel().getData().getVideoData()
+                            .getLockupMetadata().getLockupMetadataViewModel()
+                    : model.getYoutubeModel().getViewModel().getLockupViewModel()
+                            .getMetadata().getLockupMetadataViewModel();
+
+            for (MetadataRow row : metadata.getMetadata().getContentMetadataViewModel().getMetadataRowsList()) {
+                for (MetadataBadge badge : row.getBadgesList()) {
+                    if (badge.getBadgeViewModel().getBadgeStyle() == PREMIUM_BADGE_STYLE) {
+                        Logger.printDebug(() -> "Hiding YouTube Premium video");
+                        return true;
+                    }
+                }
+            }
+        } catch (InvalidProtocolBufferException ex) {
+            Logger.printException(() -> "isPremiumVideo failure", ex);
+        }
+
+        return false;
     }
 
     /**

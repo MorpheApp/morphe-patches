@@ -152,6 +152,16 @@ message ContentMetadataViewModel {
 
 message MetadataRow {
     repeated MetadataPart metadataParts = 1;
+    // Badges below the lines of the metadata, such as "New" or "Premium".
+    repeated MetadataBadge badges = 2;
+}
+
+message MetadataBadge {
+    BadgeViewModel badgeViewModel = 1147;
+}
+
+message BadgeViewModel {
+    int32 badgeStyle = 3; // 11: the "Premium" badge of the videos that only YouTube Premium can play.
 }
 
 message MetadataPart {
