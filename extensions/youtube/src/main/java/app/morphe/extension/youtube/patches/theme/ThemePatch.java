@@ -112,6 +112,19 @@ public class ThemePatch extends BaseThemePatch {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * The view below the ambient mode image of the watch page is always black. 21.47+ shows it behind the whole
+     * watch page, where older versions show the background of the theme, so it gets the selected dark theme color.
+     */
+    @ColorInt
+    public static int getCinematicBackgroundColor(@ColorInt int color) {
+        return color == Color.BLACK && Utils.isDarkModeEnabled() && !ThemeColorPatch.isAppDefaultColor()
+                ? ThemeUtils.getThemeDarkColor()
+                : color;
+    }
+
+    /**
      * @return If the closest list of the drawable is the feed. Items of lists nested in the feed,
      *         such as chips, are not feed items.
      */
