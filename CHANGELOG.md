@@ -1,3 +1,22 @@
+## [2.4.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.14...v2.4.0-dev.15) (2026-11-26)
+
+### ✨ New Features
+
+* **Spoof video streams:** Update yt-dlp-ejs ([#5369](https://github.com/MorpheApp/morphe-patches/issues/5369)) ([6e1b8d4](https://github.com/MorpheApp/morphe-patches/commit/6e1b8d475da1b4d17b1ff9f35f3b9ea9dd7dbdd2))
+* **YouTube - Hide ads:** Hide YouTube Premium exclusive videos ([50e48c9](https://github.com/MorpheApp/morphe-patches/commit/50e48c9ab743a2073e0f14c4c3d144059e85a0f1))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** "Hide 'Members only' chip" leaves an empty space in the channel filter bar and does not select the 'Public' chip ([63578d1](https://github.com/MorpheApp/morphe-patches/commit/63578d1234c2e5c62fa89479b77431d5b5b43137))
+* **YouTube - Keyword content filter:** Check the channel when filtering “Latest from” Shorts in search ([#5248](https://github.com/MorpheApp/morphe-patches/issues/5248)) ([59bdab6](https://github.com/MorpheApp/morphe-patches/commit/59bdab6551474d69b82171057669d9bbf77831fe))
+* **YouTube - Return YouTube Username:** Handles are not replaced in the feed cards ([e5c2568](https://github.com/MorpheApp/morphe-patches/commit/e5c256863828fe8b4b937a4f4b0aed155e502744))
+* **YouTube - Spoof video streams:** Truncated base64 response and reset warm-up page address ([db5649b](https://github.com/MorpheApp/morphe-patches/commit/db5649becacf660f6fc65cab9c9c09e84c0bd845))
+* **YouTube Music - Downloads:** Fix seeking and duration of downloaded songs ([#5352](https://github.com/MorpheApp/morphe-patches/issues/5352)) ([c7c81b8](https://github.com/MorpheApp/morphe-patches/commit/c7c81b89919a532c2d4e619b662e7a7e1a6d7e29))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.48.0` ([#5358](https://github.com/MorpheApp/morphe-patches/issues/5358)) ([d0b92b1](https://github.com/MorpheApp/morphe-patches/commit/d0b92b1c9dce003ebfcd2d4bdfa308794927308a))
+
 ## [2.4.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.13...v2.4.0-dev.14) (2026-11-25)
 
 ### 🐛 Bug Fixes

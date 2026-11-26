@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.14](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.14)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;266 patches total
+> **[v2.4.0-dev.15](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.15)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;266 patches total
 <details>
 <summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;63 patches</summary>
 <br>
@@ -262,7 +262,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.47.0 | 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 2026.40.0 | 2026.37.0 | 2026.24.0 | 2026.10.0 |
+| 🧪&nbsp;2026.48.0 | 🧪&nbsp;2026.47.0 | 🧪&nbsp;2026.46.0 | 2026.40.0 | 2026.37.0 | 2026.24.0 | 2026.10.0 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -321,7 +321,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Post side panel](#post-side-panel) | Adds an option to open posts in a panel next to the feed on wide tablet screens. |  |
-| [Private browsing mode](#private-browsing-mode) | Adds an option to choose whether private browsing uses Anonymous Browsing or Incognito. This patch works with Reddit 2026.43.0 and newer. |  |
+| [Private browsing mode](#private-browsing-mode) | Adds an option to choose whether private browsing uses Anonymous Browsing or Incognito. This patch works with Reddit 2026.43.0 to 2026.47.0. |  |
 | [Redgifs audio](#redgifs-audio) | Adds an option to play the original Redgifs video, which has audio, instead of Reddit's silent copy. |  |
 | [Remember collapsed comments](#remember-collapsed-comments) | Adds an option to keep comments you collapsed collapsed when reopening a post. |  |
 | [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
