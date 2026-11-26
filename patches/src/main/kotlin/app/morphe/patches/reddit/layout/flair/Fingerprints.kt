@@ -162,6 +162,19 @@ internal object PostPreviewFeedElementConstructorFingerprint : Fingerprint(
     )
 )
 
+internal object PostPreviewFeedElementClassicPostFingerprint : Fingerprint(
+    classFingerprint = PostPreviewFeedElementToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Classic post element.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = { ClassicPostElementToStringFingerprint.originalClassDef.type }
+        )
+    )
+)
+
 /**
  * Kotlin data class copy method with a default value bit mask.
  */

@@ -103,6 +103,12 @@ val showFlairsInHomeFeedPatch = patch(
             move-object v14, v2
         """
 
+        // Classic posts show their flairs inside the classic post element.
+        val classicElementFlairsField =
+            ClassicPostElementConstructorFingerprint.instructionMatches.first().fieldReference
+        val flairsElementFlairsField =
+            PostFlairsElementConstructorFingerprint.instructionMatches.last().fieldReference
+
         //
         // Add flairs to post preview elements.
         //
@@ -115,6 +121,8 @@ val showFlairsInHomeFeedPatch = patch(
         val previewCopyFingerprint = PostPreviewFeedElementCopyFingerprint
         val previewCopyMethod = previewCopyFingerprint.method
         val previewFlairsField = previewCopyFingerprint.instructionMatches.last().fieldReference
+        val previewClassicElementField =
+            PostPreviewFeedElementClassicPostFingerprint.instructionMatches.first().fieldReference
         // Copy method bit mask where all values except the flairs element are copied from the original.
         val previewCopyMask = previewCopyFingerprint.instructionMatches.first()
             .getInstruction<NarrowLiteralInstruction>().narrowLiteral.inv()
@@ -142,6 +150,16 @@ val showFlairsInHomeFeedPatch = patch(
                 iget-object v1, v0, $previewFlairsField
                 if-nez v1, :return
 
+                # The classic post element is only present in the classic post view.
+                iget-object v1, v0, $previewClassicElementField
+                if-eqz v1, :add_flairs
+                iget-object v1, v1, $classicElementFlairsField
+                iget-object v1, v1, $flairsElementFlairsField
+                invoke-interface { v1 }, Ljava/util/Collection;->isEmpty()Z
+                move-result v1
+                if-eqz v1, :return
+
+                :add_flairs
                 iget-object v11, v0, $previewLinkIdField
                 iget-object v12, v0, $previewUniqueIdField
                 iget-object v13, v0, $previewIdentifierField
@@ -157,7 +175,7 @@ val showFlairsInHomeFeedPatch = patch(
                 const/4 v1, 0x1
                 return v1
 
-                # The post already has a flairs element.
+                # The post already has flairs.
                 :return
                 const/4 v1, 0x0
                 return v1
@@ -176,10 +194,6 @@ val showFlairsInHomeFeedPatch = patch(
         val classicSectionType = ClassicPostSectionToStringFingerprint.classDef.type
         val classicSectionElementField =
             ClassicPostSectionConstructorFingerprint.instructionMatches.first().fieldReference
-        val classicElementFlairsField =
-            ClassicPostElementConstructorFingerprint.instructionMatches.first().fieldReference
-        val flairsElementFlairsField =
-            PostFlairsElementConstructorFingerprint.instructionMatches.last().fieldReference
 
         FeedPostSectionToStringFingerprint.classDef.addCachedPostMethods(
             linkIdField = sectionLinkIdField,
