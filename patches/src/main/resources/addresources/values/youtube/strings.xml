@@ -768,6 +768,8 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_ryd_feed_counts_position_entry_1">Next to view count</string>
     <string name="morphe_ryd_feed_counts_position_entry_2">Middle right</string>
     <string name="morphe_ryd_feed_counts_position_entry_3">Top left</string>
+    <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
+    <string name="morphe_ryd_video_details_dislikes">Dislikes</string>
 
     <!-- interaction.commentsearch.commentSearchPatch -->
     <string name="morphe_comment_search_title">Search comments</string>
