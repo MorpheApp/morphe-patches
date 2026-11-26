@@ -29,7 +29,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideS
 
 val hideStatusBarPatch = patch(
     name = "Hide status bar",
-    description = "Adds options to hide the system status bar globally or only in tabletop mode. Swipe down from the top edge to show it for a moment.",
+    description = "Adds options to hide the system status bar, always or only in the tabletop mode of foldable devices. Swipe down from the top edge to show it for a moment.",
 ) {
     dependsOn(
         sharedExtensionPatch,

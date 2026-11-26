@@ -44,10 +44,18 @@ public final class HideStatusBarPatch {
      * until the app restarts, also if a setting is changed and the restart is postponed.
      */
     private static final boolean HIDE_STATUS_BAR = Settings.HIDE_STATUS_BAR.get();
+
+    /**
+     * If the status bar is hidden only in the tabletop layout of the player on foldable devices,
+     * see {@link TabletopStatusBar}.
+     */
     private static final boolean HIDE_STATUS_BAR_TABLETOP = !HIDE_STATUS_BAR
             && Settings.HIDE_STATUS_BAR_TABLETOP.get();
 
-    /** Whether a hidden status bar should still reserve the display cutout. */
+    /**
+     * If the portrait player is kept below the display cutout instead of filling the screen
+     * behind it, leaving an empty bar at the top.
+     */
     private static final boolean AVOID_CUTOUT = Settings.HIDE_STATUS_BAR_AVOID_CUTOUT.get();
 
     private static final boolean FIX_STATUS_BAR_LAYOUT = Settings.FIX_STATUS_BAR_LAYOUT.get();
@@ -55,7 +63,8 @@ public final class HideStatusBarPatch {
     /**
      * If the edge to edge top bar feature flag is turned off for the whole session even if it is
      * not read yet: with the status bar layout fix, and the status bar hidden or the window laid out
-     * below the status bar at a previous app start.
+     * below the status bar at a previous app start. With the status bar hidden only in the tabletop
+     * layout it is also turned off, as the flag can't change while the app runs.
      */
     private static final boolean EDGE_TO_EDGE_TOP_BAR_TURNED_OFF = FIX_STATUS_BAR_LAYOUT
             && (HIDE_STATUS_BAR || HIDE_STATUS_BAR_TABLETOP || Settings.WINDOW_BELOW_STATUS_BAR.get());
@@ -112,17 +121,13 @@ public final class HideStatusBarPatch {
 
         public void onActivityStarted(@NonNull Activity activity) {
             try {
-                if (windowPositionActivities.remove(activity)
-                        && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    watchWindowPosition(activity);
-                }
-                if (HIDE_STATUS_BAR_TABLETOP && tabletopActivity.get() == activity) {
-                    TabletopController controller = tabletopController.get();
-                    if (controller == null || controller.activity != activity) {
-                        controller = new TabletopController(activity);
-                        tabletopController = new WeakReference<>(controller);
+                if (windowPositionActivities.remove(activity)) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        watchWindowPosition(activity);
                     }
-                    controller.scheduleUpdate();
+                    if (HIDE_STATUS_BAR_TABLETOP) {
+                        tabletopStatusBar = new WeakReference<>(new TabletopStatusBar(activity));
+                    }
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "onActivityStarted window position failure", ex);
@@ -130,32 +135,29 @@ public final class HideStatusBarPatch {
         }
 
         public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
-        public void onActivityResumed(@NonNull Activity a) {
-            if (tabletopActivity.get() == a) {
-                scheduleTabletopUpdate();
-            }
-        }
+        public void onActivityResumed(@NonNull Activity a) {}
         public void onActivityPaused(@NonNull Activity a) {}
         public void onActivityStopped(@NonNull Activity a) {}
         public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
-        public void onActivityDestroyed(@NonNull Activity a) {
-            if (tabletopActivity.get() == a) {
-                tabletopActivity.clear();
-                tabletopController.clear();
-            }
-        }
+        public void onActivityDestroyed(@NonNull Activity a) {}
     };
 
     private static boolean windowPositionLifecycleCallbacksRegistered;
-    private static boolean tabletopObserversRegistered;
-    private static WeakReference<Activity> tabletopActivity = new WeakReference<>(null);
-    private static volatile WeakReference<TabletopController> tabletopController = new WeakReference<>(null);
+
+    /**
+     * Status bar of the last started main activity, with {@link #HIDE_STATUS_BAR_TABLETOP}.
+     * Kept alive by the listeners of its window.
+     */
+    private static volatile WeakReference<TabletopStatusBar> tabletopStatusBar = new WeakReference<>(null);
 
     /**
      * If a video is watched in the player that fills the screen in portrait, not in fullscreen.
      * The display cutout inset is then left out, so the video is laid out at the top of the screen
      * instead of below the cutout. It is added back in the miniplayer, in fullscreen and without
      * a video.
+     * <p>
+     * With {@link Settings#HIDE_STATUS_BAR_AVOID_CUTOUT} the inset is kept while watching,
+     * so the video is laid out below the cutout.
      */
     private static volatile boolean isWatchingVideo;
 
@@ -237,6 +239,7 @@ public final class HideStatusBarPatch {
                     edgeToEdgeTopBar = value;
                     Logger.printDebug(() -> "Edge to edge top bar: " + used + " (original: " + original
                             + ", hide status bar: " + HIDE_STATUS_BAR
+                            + ", hide status bar in tabletop: " + HIDE_STATUS_BAR_TABLETOP
                             + ", window below status bar: " + Settings.WINDOW_BELOW_STATUS_BAR.get() + ")");
                 }
             }
@@ -274,22 +277,20 @@ public final class HideStatusBarPatch {
      * Called when the main activity is created.
      */
     public static void initialize(Activity activity) {
-        // The window position is watched once the activity is started, see watchWindowPosition().
+        // The window position and the tabletop layout are watched once the activity is started,
+        // see watchWindowPosition() and TabletopStatusBar.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R || HIDE_STATUS_BAR_TABLETOP) {
             try {
                 if (!windowPositionLifecycleCallbacksRegistered) {
                     windowPositionLifecycleCallbacksRegistered = true;
                     activity.getApplication().registerActivityLifecycleCallbacks(WINDOW_POSITION_LIFECYCLE_CALLBACKS);
-                }
-                windowPositionActivities.add(activity);
-                if (HIDE_STATUS_BAR_TABLETOP) {
-                    tabletopActivity = new WeakReference<>(activity);
-                    if (!tabletopObserversRegistered) {
-                        tabletopObserversRegistered = true;
-                        EngagementPanel.getOnTabletopChange().addObserver(open -> scheduleTabletopUpdate());
-                        PlayerType.getOnChange().addObserver(type -> scheduleTabletopUpdate());
+
+                    if (HIDE_STATUS_BAR_TABLETOP) {
+                        EngagementPanel.getOnTabletopChange().addObserver(open -> updateTabletopStatusBar());
+                        PlayerType.getOnChange().addObserver(type -> updateTabletopStatusBar());
                     }
                 }
+                windowPositionActivities.add(activity);
             } catch (Exception ex) {
                 Logger.printException(() -> "initialize window position failure", ex);
             }
@@ -419,114 +420,157 @@ public final class HideStatusBarPatch {
         });
     }
 
-    private static void scheduleTabletopUpdate() {
-        TabletopController controller = tabletopController.get();
-        if (controller != null) {
-            controller.scheduleUpdate();
+    private static void updateTabletopStatusBar() {
+        TabletopStatusBar statusBar = tabletopStatusBar.get();
+        if (statusBar != null) {
+            statusBar.postUpdate();
         }
     }
 
     /**
-     * Controls only the main activity. The engagement panel tracks the actual tabletop
-     * layout, including when it is entered without changing the physical hinge angle.
-     * Never change the session-wide edge-to-edge feature flags on a posture transition.
+     * @return The tabletop status bar of the main activity if it is hidden now, or null.
      */
-    private static final class TabletopController {
+    @Nullable
+    private static TabletopStatusBar getHiddenTabletopStatusBar() {
+        if (!HIDE_STATUS_BAR_TABLETOP) {
+            return null;
+        }
+        TabletopStatusBar statusBar = tabletopStatusBar.get();
+        return statusBar != null && statusBar.hidden ? statusBar : null;
+    }
+
+    /**
+     * Hides the status bar of the main activity while the player fills the screen in the tabletop
+     * layout of a foldable device, with the video on the upper half and the controls on the lower half.
+     * The layout is found by its engagement panel, which is also shown when the device is not
+     * folded but the app is told it is, so it follows what is shown and not the hinge angle.
+     * <p>
+     * The edge to edge top bar is turned off for the whole session (see
+     * {@link #EDGE_TO_EDGE_TOP_BAR_TURNED_OFF}), so only the status bar is changed here.
+     */
+    private static final class TabletopStatusBar {
         private final Activity activity;
         private final Window window;
         private final View decorView;
-        private final Map<View, Integer> hiddenBackgrounds = new WeakHashMap<>();
-        private volatile boolean applied;
-        private int previousBarsBehavior;
-        private int previousLegacyFlags;
 
-        private TabletopController(Activity activity) {
+        /**
+         * Status bar background views hidden while the status bar is hidden,
+         * with the visibility to restore.
+         */
+        private final Map<View, Integer> hiddenBackgrounds = new WeakHashMap<>();
+
+        private volatile boolean hidden;
+
+        /**
+         * System bars behavior before the status bar was hidden, restored when it is shown again.
+         */
+        private int systemBarsBehavior;
+
+        private TabletopStatusBar(Activity activity) {
             this.activity = activity;
             window = activity.getWindow();
             decorView = window.getDecorView();
+
+            // The app shows the status bar again after some dialogs, and showing it can fail during
+            // a posture change, so the state is checked again whenever the window is laid out.
             decorView.getViewTreeObserver().addOnGlobalLayoutListener(this::update);
-            decorView.getViewTreeObserver().addOnWindowFocusChangeListener(focused -> {
-                if (focused) scheduleUpdate();
-            });
+            postUpdate();
         }
 
-        private void scheduleUpdate() {
-            // Wait until YouTube has processed the engagement panel or player change.
+        /**
+         * The engagement panel and player type change before the app shows the new layout.
+         */
+        private void postUpdate() {
             decorView.post(this::update);
         }
 
+        private boolean isTabletopPlayer() {
+            return PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MAXIMIZED
+                    && EngagementPanel.isTabletopOpen()
+                    && !activity.isInPictureInPictureMode()
+                    && !activity.isInMultiWindowMode();
+        }
+
+        /**
+         * @return If the app hides the status bar itself, in fullscreen and picture in picture.
+         */
+        private boolean isStatusBarHiddenByApp() {
+            PlayerType type = PlayerType.getCurrent();
+            return type == PlayerType.WATCH_WHILE_FULLSCREEN
+                    || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN
+                    || type == PlayerType.VIRTUAL_REALITY_FULLSCREEN
+                    || type == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE
+                    || activity.isInPictureInPictureMode();
+        }
+
         private void update() {
-            if (tabletopController.get() != this || activity.isFinishing() || activity.isDestroyed()) {
+            // A newer main activity replaced this one.
+            if (tabletopStatusBar.get() != this) {
                 return;
             }
-            try {
-                PlayerType type = PlayerType.getCurrent();
-                boolean hide = type == PlayerType.WATCH_WHILE_MAXIMIZED
-                        && EngagementPanel.isTabletopOpen()
-                        && !activity.isInPictureInPictureMode() && !activity.isInMultiWindowMode();
 
-                if (hide) {
-                    boolean wasApplied = applied;
-                    if (!wasApplied) {
+            try {
+                if (isTabletopPlayer()) {
+                    if (!hidden) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                             WindowInsetsController controller = window.getInsetsController();
-                            if (controller == null) return;
-                            previousBarsBehavior = controller.getSystemBarsBehavior();
-                        } else {
-                            previousLegacyFlags = decorView.getSystemUiVisibility();
+                            if (controller == null) {
+                                return;
+                            }
+                            systemBarsBehavior = controller.getSystemBarsBehavior();
                         }
-                        applied = true;
-                        Logger.printDebug(() -> "Tabletop status bar: hide");
-                    }
-                    if (!wasApplied || isStatusBarVisible(decorView)) {
+                        hidden = true;
+                        Logger.printDebug(() -> "Tabletop status bar hidden");
+                        hideStatusBar(window, decorView);
+                        decorView.requestApplyInsets();
+                    } else if (isStatusBarVisible(decorView)) {
                         hideStatusBar(window, decorView);
                     }
-                    if (!wasApplied) decorView.requestApplyInsets();
-                } else if (applied) {
-                    // Do not force the status bar visible over YouTube's normal fullscreen
-                    // transition or PiP. YouTube owns the bars in those states.
-                    boolean stockFullscreen = type == PlayerType.WATCH_WHILE_FULLSCREEN
-                            || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN
-                            || type == PlayerType.VIRTUAL_REALITY_FULLSCREEN
-                            || type == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE
-                            || activity.isInPictureInPictureMode();
-                    if (!stockFullscreen) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            WindowInsetsController controller = window.getInsetsController();
-                            // The window may temporarily have no controller during a posture change.
-                            // Keep the restoration pending for the next layout or focus update.
-                            if (controller == null) return;
-                            controller.setSystemBarsBehavior(previousBarsBehavior);
-                            controller.show(WindowInsets.Type.statusBars());
-                        } else {
-                            int mask = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-                            decorView.setSystemUiVisibility((decorView.getSystemUiVisibility() & ~mask)
-                                    | (previousLegacyFlags & mask));
-                        }
+                } else if (hidden) {
+                    // Stays hidden until the status bar is shown, so it is tried again.
+                    if (!isStatusBarHiddenByApp() && !showStatusBar()) {
+                        return;
                     }
                     for (Map.Entry<View, Integer> entry : hiddenBackgrounds.entrySet()) {
                         View view = entry.getKey();
-                        if (view != null && view.getVisibility() == View.INVISIBLE) {
+                        if (view.getVisibility() == View.INVISIBLE) {
                             view.setVisibility(entry.getValue());
                         }
                     }
-                    // Release ownership only after restoration succeeds, so a failed update can retry.
-                    decorView.requestApplyInsets();
                     hiddenBackgrounds.clear();
-                    applied = false;
-                    Logger.printDebug(() -> "Tabletop status bar: release, player=" + type);
+                    hidden = false;
+                    Logger.printDebug(() -> "Tabletop status bar shown, player: " + PlayerType.getCurrent());
+                    decorView.requestApplyInsets();
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "Tabletop status bar update failure", ex);
+                Logger.printException(() -> "TabletopStatusBar update failure", ex);
             }
         }
 
-        private boolean ownsView(View view) {
-            return applied && view.getRootView() == decorView;
+        /**
+         * @return If the status bar is shown, or false if the window has no insets controller yet.
+         */
+        private boolean showStatusBar() {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                WindowInsetsController controller = window.getInsetsController();
+                if (controller == null) {
+                    return false;
+                }
+                controller.setSystemBarsBehavior(systemBarsBehavior);
+                controller.show(WindowInsets.Type.statusBars());
+                return true;
+            }
+            decorView.setSystemUiVisibility(decorView.getSystemUiVisibility()
+                    & ~(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY));
+            return true;
+        }
+
+        private boolean isInWindow(View view) {
+            return view.getRootView() == decorView;
         }
 
         private void hideBackground(View view) {
-            if (ownsView(view)) {
+            if (isInWindow(view)) {
                 hiddenBackgrounds.putIfAbsent(view, view.getVisibility());
                 view.setVisibility(View.INVISIBLE);
             }
@@ -589,9 +633,12 @@ public final class HideStatusBarPatch {
     public static void hideStatusBarBackground(View view) {
         if (HIDE_STATUS_BAR) {
             view.setVisibility(View.INVISIBLE);
-        } else if (HIDE_STATUS_BAR_TABLETOP) {
-            TabletopController controller = tabletopController.get();
-            if (controller != null) controller.hideBackground(view);
+            return;
+        }
+
+        TabletopStatusBar tabletop = getHiddenTabletopStatusBar();
+        if (tabletop != null) {
+            tabletop.hideBackground(view);
         }
     }
 
@@ -603,16 +650,26 @@ public final class HideStatusBarPatch {
      * an empty bar above the top bars.
      * The top inset is replaced by the inset of a display cutout at the top, so the top bars
      * are still laid out below a front camera hole, the same as with the status bar inset.
-     * The inset is removed while watching with a hidden status bar unless cutout avoidance is enabled.
+     * <p>
+     * While watching a video the top inset is removed, so the player fills the screen behind
+     * the cutout. With {@link Settings#HIDE_STATUS_BAR_AVOID_CUTOUT} it is kept, so the top bars
+     * stay aligned with the player below the cutout. The status bar hidden in the tabletop layout
+     * is only hidden while watching a video.
      */
     public static void setSystemWindowInsetTop(Rect systemWindowInsets, @Nullable View view) {
         if (view == null) {
             return;
         }
-        TabletopController controller = tabletopController.get();
-        boolean tabletop = HIDE_STATUS_BAR_TABLETOP && controller != null && controller.ownsView(view);
-        if (!HIDE_STATUS_BAR && !tabletop) {
-            return;
+
+        final boolean watchingVideo;
+        if (HIDE_STATUS_BAR) {
+            watchingVideo = isWatchingVideo;
+        } else {
+            TabletopStatusBar tabletop = getHiddenTabletopStatusBar();
+            if (tabletop == null || !tabletop.isInWindow(view)) {
+                return;
+            }
+            watchingVideo = true;
         }
 
         try {
@@ -622,7 +679,7 @@ public final class HideStatusBarPatch {
                 return;
             }
 
-            systemWindowInsets.top = (isWatchingVideo || tabletop) && !AVOID_CUTOUT
+            systemWindowInsets.top = watchingVideo && !AVOID_CUTOUT
                     ? 0 : getDisplayCutoutInsetTop(insets);
         } catch (Exception ex) {
             Logger.printException(() -> "setSystemWindowInsetTop failure", ex);
@@ -638,13 +695,15 @@ public final class HideStatusBarPatch {
      * it is hidden. The player is then laid out below the status bar twice, or below an empty bar with
      * the status bar hidden. Newer targets read the insets of the watch layout, which gets none because
      * the main view consumes them, but they start with the insets of the whole window if it already has them.
-     * Keep the top inset when cutout avoidance is enabled and the window is not already below it.
+     * <p>
+     * With {@link Settings#HIDE_STATUS_BAR_AVOID_CUTOUT} the top inset is kept while watching a video,
+     * so the player stays below the display cutout. It is still removed when the window is already laid
+     * out below the status bar, to not add the room for the cutout twice.
      */
     public static Rect getPlayerStableInsets(Rect insets) {
         if (FIX_STATUS_BAR_LAYOUT && insets.top != 0 && Boolean.FALSE.equals(edgeToEdgeTopBarUsed)) {
-            TabletopController controller = tabletopController.get();
-            boolean tabletop = HIDE_STATUS_BAR_TABLETOP && controller != null && controller.applied;
-            if (AVOID_CUTOUT && (isWatchingVideo || tabletop) && !Settings.WINDOW_BELOW_STATUS_BAR.get()) {
+            if (AVOID_CUTOUT && (isWatchingVideo || getHiddenTabletopStatusBar() != null)
+                    && !Settings.WINDOW_BELOW_STATUS_BAR.get()) {
                 return insets;
             }
             Rect playerInsets = new Rect(insets);

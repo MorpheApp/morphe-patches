@@ -24,22 +24,23 @@ public final class EngagementPanel {
     // panels, in order to automatically close the panels lower in the hierarchy.
     private static final List<String> videoDescriptionPanelName = List.of("video-description-ep-identifier");
 
+    /**
+     * Panel of the player in the tabletop layout of foldable devices, with the video on the upper half
+     * and the controls on the lower half.
+     */
     private static final String TABLETOP_PANEL_ID = "tabletop-controls";
-    private static final Event<Boolean> onTabletopChange = new Event<>();
 
-    public static boolean isTabletopOpen() {
-        return contains(TABLETOP_PANEL_ID);
-    }
+    /**
+     * Called with true when the tabletop panel opens and false when it closes.
+     */
+    private static final Event<Boolean> onTabletopChange = new Event<>();
 
     public static Event<Boolean> getOnTabletopChange() {
         return onTabletopChange;
     }
 
-    private static void notifyTabletopChange(boolean wasOpen) {
-        boolean open = isTabletopOpen();
-        if (open != wasOpen) {
-            onTabletopChange.invoke(open);
-        }
+    public static boolean isTabletopOpen() {
+        return contains(TABLETOP_PANEL_ID);
     }
 
     /**
@@ -48,18 +49,23 @@ public final class EngagementPanel {
     public static void close(@Nullable String panelId) {
         if (Utils.isNotEmpty(panelId)) {
             if (contains(panelId)) {
-                boolean wasTabletopOpen = isTabletopOpen();
+                boolean tabletopClosed = false;
                 while (!engagementPanels.isEmpty()) {
                     Panel panelToRemove = engagementPanels.pollLast();
 
                     if (panelToRemove != null) {
                         Logger.printDebug(() -> "EngagementPanel closed: " + panelToRemove.id());
+                        if (panelToRemove.id().equals(TABLETOP_PANEL_ID)) {
+                            tabletopClosed = true;
+                        }
                         if (panelToRemove.id().equals(panelId)) {
                             break;
                         }
                     }
                 }
-                notifyTabletopChange(wasTabletopOpen);
+                if (tabletopClosed) {
+                    onTabletopChange.invoke(false);
+                }
             }
         }
     }
@@ -71,11 +77,12 @@ public final class EngagementPanel {
         if (Utils.isNotEmpty(panelId)) {
             // A panel can be opened again while it is open, such as the live chat of a live stream,
             // and is then closed only once.
-            boolean wasTabletopOpen = isTabletopOpen();
             remove(panelId);
             engagementPanels.addLast(new Panel(panelId, ShortsPlayerState.isOpen()));
             Logger.printDebug(() -> "EngagementPanel open: " + panelId);
-            notifyTabletopChange(wasTabletopOpen);
+            if (panelId.equals(TABLETOP_PANEL_ID)) {
+                onTabletopChange.invoke(true);
+            }
         }
     }
 
