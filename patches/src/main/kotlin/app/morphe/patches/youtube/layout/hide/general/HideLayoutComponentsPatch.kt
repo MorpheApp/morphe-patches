@@ -276,11 +276,11 @@ val hideLayoutComponentsPatch = patch(
                 key = "morphe_hide_keyword_content_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("morphe_hide_keyword_content_home"),
+                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
+                    SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_comments"),
                     SwitchPreference("morphe_hide_keyword_content_posts"),
-                    SwitchPreference("morphe_hide_keyword_content_home"),
-                    SwitchPreference("morphe_hide_keyword_content_search"),
-                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
                     TextPreference("morphe_hide_keyword_content_phrases", inputType = InputType.TEXT_MULTI_LINE),
                     PreferenceCategory(
                         key = "morphe_hide_keyword_content_stats_category",
