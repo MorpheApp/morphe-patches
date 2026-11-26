@@ -20,6 +20,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public class AutoCaptionsPatch {
 
     public enum AutoCaptionsStyle {
+        DEFAULT,
         BOTH_ENABLED,
         BOTH_DISABLED,
         WITH_VOLUME_ONLY,
@@ -52,6 +53,9 @@ public class AutoCaptionsPatch {
      */
     public static boolean disableAutoCaptions(boolean original) {
         AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
+        if (style == AutoCaptionsStyle.DEFAULT) {
+            return original;
+        }
 
         // 'Always show' overrides a manual caption-off, including after the guard window.
         if (style == AutoCaptionsStyle.BOTH_ENABLED) {
@@ -92,6 +96,9 @@ public class AutoCaptionsPatch {
      */
     public static boolean disableMuteAutoCaptions(boolean original) {
         AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
+        if (style == AutoCaptionsStyle.DEFAULT) {
+            return original;
+        }
 
         return style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY;
     }

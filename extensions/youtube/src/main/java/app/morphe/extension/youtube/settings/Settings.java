@@ -513,7 +513,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", FALSE, true, new DisableFullscreenAmbientModeAvailability());
 
     // Captions
-    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
+    public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.DEFAULT, false);
     public static final StringSetting PREFERRED_CAPTION_LANGUAGE = new StringSetting("morphe_preferred_caption_language", "off", true);
     public static final BooleanSetting AUTO_TRANSLATE_ADDITIONAL_LANGUAGES = new BooleanSetting("morphe_auto_translate_additional_languages", FALSE);
     public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
@@ -1047,6 +1047,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DOWNLOAD_BUTTON_OVERRIDE_MIGRATED = new BooleanSetting("morphe_download_button_override_migrated", FALSE, false, false);
     private static final BooleanSetting TOOLBAR_CAST_BUTTON_MIGRATED = new BooleanSetting("morphe_toolbar_cast_button_migrated", FALSE, false, false);
     private static final BooleanSetting COMMENTS_VISIT_THE_COMMUNITY_MIGRATED = new BooleanSetting("morphe_comments_visit_the_community_migrated", FALSE, false, false);
+    private static final BooleanSetting AUTO_CAPTIONS_DEFAULT_MIGRATED = new BooleanSetting("morphe_auto_captions_default_migrated", FALSE, false, false);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_LIBRARY = new EnumSetting<>("morphe_alt_thumbnail_library", ThumbnailOption.ORIGINAL);
@@ -1229,6 +1230,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateDownloadButtonOverride();
         migrateToolbarCastButton();
         migrateCommentsVisitTheCommunity();
+        migrateAutoCaptionsDefault();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
         migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
@@ -1489,6 +1491,25 @@ public class Settings extends SharedYouTubeSettings {
             HIDE_COMMENTS_VISIT_THE_COMMUNITY_SECTION.save(true);
         }
         COMMENTS_VISIT_THE_COMMUNITY_MIGRATED.save(true);
+    }
+
+    private static final long AUTO_CAPTIONS_DEFAULT_STYLE_CHANGED = 1795737600000L;
+
+    /**
+     * 'Always show' was the default auto captions style before 'Default' was added. A value equal to the
+     * default is not stored, so a choice of 'Always show' cannot be told apart from the old default.
+     * Installs from before the change keep 'Always show', and only new installations start with 'Default'.
+     * The style stays in use, so a marker is the only way to tell this already ran.
+     */
+    private static void migrateAutoCaptionsDefault() {
+        if (AUTO_CAPTIONS_DEFAULT_MIGRATED.get()) {
+            return;
+        }
+        if (AUTO_CAPTIONS_STYLE.isSetToDefault()
+                && FIRST_TIME_APP_LAUNCHED.get() < AUTO_CAPTIONS_DEFAULT_STYLE_CHANGED) {
+            AUTO_CAPTIONS_STYLE.save(AutoCaptionsStyle.BOTH_ENABLED);
+        }
+        AUTO_CAPTIONS_DEFAULT_MIGRATED.save(true);
     }
 
     /**

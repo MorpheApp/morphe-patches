@@ -1237,6 +1237,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
     <!-- layout.captions.autoCaptionsPatch -->
     <string name="morphe_auto_captions_style_title">Auto captions visibility</string>
+    <string name="morphe_auto_captions_style_entry_default">Default</string>
     <string name="morphe_auto_captions_style_entry_1">Always show</string>
     <string name="morphe_auto_captions_style_entry_2">Never show</string>
     <string name="morphe_auto_captions_style_entry_3">Show when unmuted</string>
