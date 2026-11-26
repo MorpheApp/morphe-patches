@@ -45,6 +45,7 @@ import app.morphe.extension.shared.innertube.Offline.OfflineVideoEndpoint;
 import app.morphe.extension.shared.innertube.Offline.OfflineabilityContainer;
 import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.VideoDetails;
 import app.morphe.extension.shared.innertube.SavedVideo.OfflineState;
 import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -626,7 +627,12 @@ public class BaseInAppDownloadsPatch {
             // The video details of other clients lack the music video type, and YouTube Music
             // then shows a black player background instead of the colors of the album artwork.
             // The video details of the app's own response are kept, including the fields the proto does not declare.
-            builder.setVideoDetails(original.getVideoDetails());
+            VideoDetails details = original.getVideoDetails();
+            final int replacementLength = builder.getVideoDetails().getLengthSeconds();
+            if (details.getLengthSeconds() <= 0 && replacementLength > 0) {
+                details = details.toBuilder().setLengthSeconds(replacementLength).build();
+            }
+            builder.setVideoDetails(details);
             if (builder.hasCaptions()) {
                 builder.setCaptions(srv3Captions(builder.getCaptions()));
             }
