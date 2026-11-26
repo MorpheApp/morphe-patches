@@ -121,6 +121,12 @@ public class ReturnYouTubeDislike {
     @GuardedBy("ReturnYouTubeDislike.class")
     private static NumberFormat dislikePercentageFormatter;
 
+    /**
+     * For formatting dislikes as a full number.
+     */
+    @GuardedBy("ReturnYouTubeDislike.class")
+    private static NumberFormat fullCountFormatter;
+
     private final String videoId;
 
     /**
@@ -450,6 +456,40 @@ public class ReturnYouTubeDislike {
         return SharedYouTubeSettings.RYD_DISLIKE_PERCENTAGE.get()
                 ? formatDislikePercentage(voteData.getDislikePercentage())
                 : formatDislikeCount(voteData.getDislikeCount());
+    }
+
+    /**
+     * @return The dislike count as a full number with grouping (such as 12,345),
+     *         or the percentage if dislikes are shown as a percentage.
+     *         Null if the fetch has not completed, or it failed.
+     */
+    @Nullable
+    public String getFormattedDislikesFullNumber() {
+        RYDVoteData voteData = getCompletedVoteData();
+        if (voteData == null) {
+            return null;
+        }
+        return SharedYouTubeSettings.RYD_DISLIKE_PERCENTAGE.get()
+                ? formatDislikePercentage(voteData.getDislikePercentage())
+                : formatFullCount(voteData.getDislikeCount());
+    }
+
+    private static String formatFullCount(long count) {
+        synchronized (ReturnYouTubeDislike.class) {
+            if (fullCountFormatter == null) {
+                Locale locale = Locale.getDefault();
+                fullCountFormatter = NumberFormat.getIntegerInstance(locale);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                        && fullCountFormatter instanceof DecimalFormat decimalFormatter) {
+                    DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
+                    symbols.setDigitStrings(DecimalFormatSymbols.getInstance(Locale.ENGLISH).getDigitStrings());
+                    decimalFormatter.setDecimalFormatSymbols(symbols);
+                }
+            }
+
+            return fullCountFormatter.format(count);
+        }
     }
 
     /**
