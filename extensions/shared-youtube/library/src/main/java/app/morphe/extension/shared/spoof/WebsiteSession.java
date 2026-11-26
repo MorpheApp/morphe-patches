@@ -127,6 +127,13 @@ public final class WebsiteSession {
             + "var m=u.pathname.match(/^\\/shorts\\/([\\w-]{11})/);return m?m[1]:'';}catch(e){return '';}}";
 
     /**
+     * Sets the page address to a video, and keeps {@link #DESKTOP_THEME_REFRESH_PARAMETER} in a page
+     * of the desktop website. The video id is added with String.format.
+     */
+    private static final String SET_PAGE_ADDRESS_SCRIPT = "try{history.replaceState(history.state,'','/watch?v=%s'"
+            + "+(window.__morpheDesktop?'" + DESKTOP_THEME_REFRESH_PARAMETER + "':''));}catch(e){}";
+
+    /**
      * Loads a video in the player of a page that has already made a session. The player makes the PoToken
      * of the new video at once, while a new page makes it in several seconds, since BotGuard starts again.
      * The held media requests are given up first, so the player does not wait for them.
@@ -137,8 +144,7 @@ public final class WebsiteSession {
     private static final String LOAD_IN_PAGE_SCRIPT = "(function(){" + PLAYER_FUNCTIONS + "var p=player();"
             + "if(!window.__morpheRelease||!p||!p.loadVideoById)return 'no player';"
             + "window.__morphePruneAds=%s;window.__morphePlay=false;window.__morpheRelease();"
-            + "try{history.replaceState(history.state,'','/watch?v=%s'+(window.__morpheDesktop?'"
-            + DESKTOP_THEME_REFRESH_PARAMETER + "':''));}catch(e){}"
+            + SET_PAGE_ADDRESS_SCRIPT
             + "p.loadVideoById('%s');return 'ok';})();";
 
     /**
@@ -1391,7 +1397,18 @@ public final class WebsiteSession {
                         }
                         return;
                     }
-                    if ((!pageVideoId.isEmpty() && !pageVideoId.equals(videoId))
+                    // The page made while the app starts can still be starting when the video is loaded in its player,
+                    // and the website then sets the page address back to the video the page opened.
+                    // The address is set to the video again, as the player is started again with it.
+                    final boolean addressChanged = !pageVideoId.isEmpty() && !pageVideoId.equals(videoId)
+                            && page.loadedInPage && playerVideoId.equals(videoId) && responseVideoId.equals(videoId);
+                    if (addressChanged) {
+                        Logger.printDebug(() -> "Website session: the website changed the page address to: "
+                                + pageVideoId + ", setting it again to: " + videoId);
+                        mainHandler.post(() -> page.webView.evaluateJavascript(
+                                String.format(SET_PAGE_ADDRESS_SCRIPT, videoId), null));
+                    }
+                    if ((!pageVideoId.isEmpty() && !pageVideoId.equals(videoId) && !addressChanged)
                             || (!playerVideoId.isEmpty() && !playerVideoId.equals(videoId))
                             || (!responseVideoId.isEmpty() && !responseVideoId.equals(videoId))) {
                         Logger.printDebug(() -> "Website session: ignoring a request of another video, page: "
