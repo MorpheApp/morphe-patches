@@ -95,15 +95,17 @@ public final class SeeThroughStatusBarPatch {
         @Override
         public Object invoke(ContentDrawScope scope) {
             try {
-                final int statusBarHeight = getStatusBarHeight();
-                final long size = scope.patch_getSize();
+                if (!GlassNavigationBarPatch.isSearchButtonActive()) {
+                    final int statusBarHeight = getStatusBarHeight();
+                    final long size = scope.patch_getSize();
 
-                scope.patch_drawRoundRect(
-                        appBarColor,
-                        pack(0, -statusBarHeight),
-                        pack(unpackFirst(size), unpackSecond(size) + statusBarHeight),
-                        pack(0, 0)
-                );
+                    scope.patch_drawRoundRect(
+                            appBarColor,
+                            pack(0, -statusBarHeight),
+                            pack(unpackFirst(size), unpackSecond(size) + statusBarHeight),
+                            pack(0, 0)
+                    );
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "AppBarDraw failure", ex);
             }

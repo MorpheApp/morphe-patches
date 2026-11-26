@@ -295,3 +295,55 @@ internal object CreateButtonOffsetFingerprint : Fingerprint(
         opcode(Opcode.NEG_INT, location = MatchAfterWithin(5))
     )
 )
+
+/**
+ * Top bar of Home with the menu button, the search field and the avatar.
+ */
+internal object HomeTopBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Lkotlin/jvm/functions/Function0;",
+        "Z",
+        "Z",
+        "L",
+        "Landroidx/compose/runtime/internal/a;",
+        "Lkotlin/jvm/functions/Function2;",
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        string("home_revamp_m1_app_bar"),
+        // Menu button slot.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            name = "invoke",
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;"
+        ),
+        string("main_top_app_bar_search"),
+        // Modifier.testTag of the search field.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "Ljava/lang/String;"),
+            returnType = "L",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Search click action.
+        opcode(Opcode.MOVE_OBJECT_FROM16, location = MatchAfterWithin(15)),
+        // Search field.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        // Avatar slot.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("I", "I", "L", "L", "Landroidx/compose/runtime/internal/a;"),
+            returnType = "V"
+        )
+    )
+)
