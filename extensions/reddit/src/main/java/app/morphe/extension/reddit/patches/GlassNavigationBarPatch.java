@@ -14,6 +14,7 @@ import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
@@ -55,6 +56,12 @@ public final class GlassNavigationBarPatch {
     public enum GlassStyle {
         TINTED,
         FROSTED
+    }
+
+    public enum GlassStrength {
+        CLEAR,
+        BALANCED,
+        SOLID
     }
 
     public static final class FrostedGlassAvailability implements Setting.Availability {
@@ -166,6 +173,7 @@ public final class GlassNavigationBarPatch {
      * The tint of frosted glass is lighter, so more of the blurred page shows.
      */
     private static final float FROSTED_OPACITY = 0.6f;
+    private static final int SOLID_MIN_OPACITY_PERCENT = 85;
 
     /**
      * Corner radius if the ends are not round.
@@ -212,6 +220,9 @@ public final class GlassNavigationBarPatch {
     };
 
     private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
+    static final GlassStrength STRENGTH = GLASS_ENABLED
+            ? Settings.GLASS_NAVIGATION_BAR_STRENGTH.get()
+            : GlassStrength.CLEAR;
     private static final int OPACITY_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_OPACITY);
     static final int BLUR_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_BLUR);
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
@@ -729,6 +740,13 @@ public final class GlassNavigationBarPatch {
                 ? Math.min(width, height) / 2
                 : CORNER_RADIUS_DP * density;
         final boolean dark = isGlassDark();
+        Canvas canvas = STRENGTH != GlassStrength.CLEAR
+                ? scope.patch_getCanvas().patch_getNativeCanvas()
+                : null;
+
+        if (canvas != null) {
+            GlassNavigationBarStrength.drawShadow(canvas, left, top, width, height, radius);
+        }
 
         if (FROSTED_ENABLED && hasPageBehind) {
             GlassNavigationBarBlur.drawBackdrop(scope, left, top, width, height, radius, pageColor);
@@ -741,7 +759,9 @@ public final class GlassNavigationBarPatch {
                 pack(radius, radius)
         );
 
-        if (FROSTED_ENABLED) {
+        if (canvas != null) {
+            GlassNavigationBarStrength.drawOutline(canvas, left, top, width, height, radius);
+        } else if (FROSTED_ENABLED) {
             GlassNavigationBarBlur.drawEdge(scope, left, top, width, height, radius, dark);
         }
     }
@@ -768,6 +788,13 @@ public final class GlassNavigationBarPatch {
         final float left = (width - rectWidth) / 2;
         final float top = (height - rectHeight) / 2;
         final float radius = rectHeight / 2;
+        Canvas canvas = STRENGTH != GlassStrength.CLEAR
+                ? scope.patch_getCanvas().patch_getNativeCanvas()
+                : null;
+
+        if (canvas != null) {
+            GlassNavigationBarStrength.drawShadow(canvas, left, top, rectWidth, rectHeight, radius);
+        }
 
         scope.patch_drawRoundRect(
                 getGlassColor(isGlassDark()),
@@ -775,6 +802,10 @@ public final class GlassNavigationBarPatch {
                 pack(rectWidth, rectHeight),
                 pack(radius, radius)
         );
+
+        if (canvas != null) {
+            GlassNavigationBarStrength.drawOutline(canvas, left, top, rectWidth, rectHeight, radius);
+        }
     }
 
     private static void ensureSearchButton(@Nullable View view) {
@@ -931,8 +962,11 @@ public final class GlassNavigationBarPatch {
     }
 
     static long getGlassColor(boolean dark) {
+        final int opacityPercent = STRENGTH == GlassStrength.SOLID
+                ? Math.max(OPACITY_PERCENT, SOLID_MIN_OPACITY_PERCENT)
+                : OPACITY_PERCENT;
         final float opacity = FROSTED_ENABLED ? FROSTED_OPACITY : 1;
-        final long alpha = Math.round(255 * OPACITY_PERCENT * opacity / 100);
+        final long alpha = Math.round(255 * opacityPercent * opacity / 100);
         final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
 
         return argb << 32;

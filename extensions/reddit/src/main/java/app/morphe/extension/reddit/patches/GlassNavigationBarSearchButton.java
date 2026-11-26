@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/5282
+ * https://github.com/MorpheApp/morphe-patches/pull/5363
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -17,11 +17,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -29,6 +32,7 @@ import android.view.ViewParent;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
+import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassStrength;
 import app.morphe.extension.shared.Logger;
 
 /**
@@ -56,6 +60,8 @@ final class GlassNavigationBarSearchButton extends View {
     };
 
     private int navBarInsetPx;
+    private int shadowMarginPx;
+    private int cachedRippleMargin = -1;
 
     GlassNavigationBarSearchButton(Context context) {
         super(context);
@@ -70,15 +76,33 @@ final class GlassNavigationBarSearchButton extends View {
         setOutlineProvider(new ViewOutlineProvider() {
             @Override
             public void getOutline(View view, Outline outline) {
-                outline.setOval(0, 0, view.getWidth(), view.getHeight());
+                final int margin = shadowMarginPx;
+                outline.setOval(
+                        margin,
+                        margin,
+                        Math.max(margin, view.getWidth() - margin),
+                        Math.max(margin, view.getHeight() - margin)
+                );
             }
         });
-        setClipToOutline(true);
 
-        ShapeDrawable mask = new ShapeDrawable(new OvalShape());
-        setForeground(new RippleDrawable(ColorStateList.valueOf(RIPPLE_COLOR), null, mask));
+        shadowMarginPx = GlassNavigationBarStrength.getSearchButtonMarginPx();
+        updateClipAndRipple(shadowMarginPx);
 
         setOnClickListener(v -> GlassNavigationBarPatch.invokeSearchAction());
+    }
+
+    private void updateClipAndRipple(int margin) {
+        if (margin == cachedRippleMargin) {
+            return;
+        }
+        cachedRippleMargin = margin;
+        setClipToOutline(margin == 0);
+        invalidateOutline();
+
+        ShapeDrawable mask = new ShapeDrawable(new OvalShape());
+        Drawable maskLayer = margin > 0 ? new InsetDrawable(mask, margin) : mask;
+        setForeground(new RippleDrawable(ColorStateList.valueOf(RIPPLE_COLOR), null, maskLayer));
     }
 
     @Override
@@ -143,31 +167,51 @@ final class GlassNavigationBarSearchButton extends View {
             return;
         }
 
+        final int margin = GlassNavigationBarStrength.getSearchButtonMarginPx();
+        shadowMarginPx = margin;
+        updateClipAndRipple(margin);
+
         final int diameter = Math.round(GlassNavigationBarPatch.getCapsuleHeightPx(navBarInsetPx));
+        final int viewSize = diameter + 2 * margin;
         ViewParent parent = getParent();
         final float parentWidth = (parent instanceof View parentView && parentView.getWidth() > 0)
                 ? parentView.getWidth()
                 : getResources().getDisplayMetrics().widthPixels;
-        final int endMargin = Math.round(GlassNavigationBarPatch.getCapsuleSideGapPx(parentWidth));
+        final int endMargin = Math.round(GlassNavigationBarPatch.getCapsuleSideGapPx(parentWidth)) - margin;
         final int capsuleBottomOffset = Math.round(
                 GlassNavigationBarPatch.getCapsuleBottomOffsetPx(navBarInsetPx));
         final int bottomMargin = Math.max(
                 0,
                 navBarInsetPx + capsuleBottomOffset + Math.round(GlassNavigationBarPatch.getLift())
-        );
+        ) - margin;
 
-        if (lp.width != diameter
-                || lp.height != diameter
+        if (lp.width != viewSize
+                || lp.height != viewSize
                 || lp.gravity != (Gravity.BOTTOM | Gravity.END)
                 || lp.bottomMargin != bottomMargin
                 || lp.getMarginEnd() != endMargin) {
-            lp.width = diameter;
-            lp.height = diameter;
+            lp.width = viewSize;
+            lp.height = viewSize;
             lp.gravity = Gravity.BOTTOM | Gravity.END;
             lp.bottomMargin = bottomMargin;
             lp.setMarginEnd(endMargin);
             setLayoutParams(lp);
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (shadowMarginPx > 0 && event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+            final float cx = getWidth() / 2f;
+            final float cy = getHeight() / 2f;
+            final float radius = Math.min(getWidth(), getHeight()) / 2f - shadowMarginPx;
+            final float dx = event.getX() - cx;
+            final float dy = event.getY() - cy;
+            if (radius <= 0f || dx * dx + dy * dy > radius * radius) {
+                return false;
+            }
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -178,13 +222,21 @@ final class GlassNavigationBarSearchButton extends View {
             return;
         }
 
-        final float diameter = Math.min(width, height);
-        final float left = (width - diameter) / 2;
-        final float top = (height - diameter) / 2;
+        final int margin = shadowMarginPx;
+        final float diameter = Math.min(width, height) - 2f * margin;
+        if (diameter <= 0f) {
+            return;
+        }
+        final float left = (width - diameter) / 2f;
+        final float top = (height - diameter) / 2f;
         final float cx = width / 2f;
         final float cy = height / 2f;
-        final float radius = diameter / 2;
+        final float radius = diameter / 2f;
         final boolean dark = GlassNavigationBarPatch.isGlassDark();
+
+        if (GlassNavigationBarPatch.STRENGTH != GlassStrength.CLEAR) {
+            GlassNavigationBarStrength.drawShadow(canvas, left, top, diameter, diameter, radius);
+        }
 
         if (GlassNavigationBarPatch.FROSTED_ENABLED && canvas.isHardwareAccelerated()) {
             ViewParent parent = getParent();
@@ -210,7 +262,9 @@ final class GlassNavigationBarSearchButton extends View {
         circlePaint.setColor((int) (GlassNavigationBarPatch.getGlassColor(dark) >>> 32));
         canvas.drawCircle(cx, cy, radius, circlePaint);
 
-        if (GlassNavigationBarPatch.FROSTED_ENABLED) {
+        if (GlassNavigationBarPatch.STRENGTH != GlassStrength.CLEAR) {
+            GlassNavigationBarStrength.drawOutline(canvas, left, top, diameter, diameter, radius);
+        } else if (GlassNavigationBarPatch.FROSTED_ENABLED) {
             GlassNavigationBarBlur.drawEdge(canvas, left, top, diameter, diameter, radius, dark);
         }
 

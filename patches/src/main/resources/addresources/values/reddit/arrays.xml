@@ -127,6 +127,16 @@
         <item>TINTED</item>
         <item>FROSTED</item>
     </string-array>
+    <string-array name="morphe_glass_navigation_bar_strength_entries">
+        <item>@string/morphe_glass_navigation_bar_strength_entry_clear</item>
+        <item>@string/morphe_glass_navigation_bar_strength_entry_balanced</item>
+        <item>@string/morphe_glass_navigation_bar_strength_entry_solid</item>
+    </string-array>
+    <string-array name="morphe_glass_navigation_bar_strength_entry_values" translatable="false">
+        <item>CLEAR</item>
+        <item>BALANCED</item>
+        <item>SOLID</item>
+    </string-array>
 
     <!-- layout.playbackspeed.videoPlaybackSpeedPatch -->
     <string-array name="morphe_video_playback_speed_controls_entries">
