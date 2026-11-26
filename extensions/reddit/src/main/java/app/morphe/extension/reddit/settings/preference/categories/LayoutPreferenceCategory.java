@@ -10,7 +10,6 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 
@@ -551,10 +550,5 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.HIDE_COMMUNITY_MENU_BADGE
             ));
         }
-    }
-
-    private static void addIndentedPreference(PreferenceGroup group, Preference preference) {
-        group.addPreference(preference);
-        RedditSettingsStyle.setIndented(preference);
     }
 }

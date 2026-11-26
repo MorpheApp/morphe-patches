@@ -11,11 +11,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Insets;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.view.View;
@@ -28,7 +26,6 @@ import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.FiltersPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
@@ -38,7 +35,6 @@ import app.morphe.extension.reddit.settings.preference.categories.PostButtonsPre
 import app.morphe.extension.reddit.settings.preference.categories.SidebarPreferenceCategory;
 import app.morphe.extension.reddit.settings.search.RedditSearchViewController;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 
@@ -58,15 +54,6 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
     @Nullable
     private RedditSearchViewController searchViewController;
 
-    private final SharedPreferences.OnSharedPreferenceChangeListener glassSummaryListener =
-            (sharedPreferences, key) -> {
-                if (Settings.GLASS_NAVIGATION_BAR.key.equals(key)) {
-                    final boolean enabled = sharedPreferences.getBoolean(
-                            key, Settings.GLASS_NAVIGATION_BAR.defaultValue);
-                    Utils.runOnMainThread(() -> updateGlassScreenSummary(enabled));
-                }
-            };
-
     @Override
     protected void initialize() {
         Context context = getContext();
@@ -84,7 +71,7 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
 
         if (RedditSettingsStyle.isModernStyle()) {
-            setPreferenceScreenToolbar(preferenceScreen);
+            addSubPageToolbars(preferenceScreen);
         }
     }
 
@@ -100,52 +87,22 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
     @Override
     public void onStart() {
         super.onStart();
-        try {
-            if (RedditSettingsStyle.isModernStyle()) {
-                getPreferenceManager().getSharedPreferences()
-                        .registerOnSharedPreferenceChangeListener(glassSummaryListener);
-                updateGlassScreenSummary();
-            }
-            if (searchViewController != null) {
-                searchViewController.initializeSearchData();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onStart failure", ex);
+        if (searchViewController != null) {
+            searchViewController.initializeSearchData();
         }
     }
 
-    @Override
-    public void onStop() {
-        try {
-            if (RedditSettingsStyle.isModernStyle()) {
-                getPreferenceManager().getSharedPreferences()
-                        .unregisterOnSharedPreferenceChangeListener(glassSummaryListener);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onStop failure", ex);
-        }
-        super.onStop();
-    }
-
-    private void updateGlassScreenSummary() {
-        updateGlassScreenSummary(Settings.GLASS_NAVIGATION_BAR.get());
-    }
-
-    private void updateGlassScreenSummary(boolean enabled) {
-        Preference glassScreen = findPreference(NavigationBarPreferenceCategory.GLASS_SCREEN_KEY);
-        if (glassScreen != null) {
-            NavigationBarPreferenceCategory.updateGlassScreenSummary(glassScreen, enabled);
-        }
-    }
-
-    private void setPreferenceScreenToolbar(PreferenceGroup parentGroup) {
-        for (int i = 0, count = parentGroup.getPreferenceCount(); i < count; i++) {
-            Preference child = parentGroup.getPreference(i);
-            if (child instanceof PreferenceGroup subGroup) {
-                setPreferenceScreenToolbar(subGroup);
-                if (child instanceof PreferenceScreen childScreen) {
-                    childScreen.setOnPreferenceClickListener(preference -> {
-                        decorateNestedScreenDialog((PreferenceScreen) preference);
+    /**
+     * Styles the dialog of every sub-page when it opens, and adds a toolbar to it.
+     */
+    private void addSubPageToolbars(PreferenceGroup group) {
+        for (int i = 0, count = group.getPreferenceCount(); i < count; i++) {
+            if (group.getPreference(i) instanceof PreferenceGroup subGroup) {
+                addSubPageToolbars(subGroup);
+                if (subGroup instanceof PreferenceScreen subPage) {
+                    // Runs after the dialog of the page is shown.
+                    subPage.setOnPreferenceClickListener(preference -> {
+                        decorateSubPageDialog(subPage);
                         return false;
                     });
                 }
@@ -153,16 +110,12 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
         }
     }
 
-    private void decorateNestedScreenDialog(PreferenceScreen screen) {
+    private void decorateSubPageDialog(PreferenceScreen subPage) {
         try {
-            Dialog dialog = screen.getDialog();
-            if (dialog == null) return;
-
+            Dialog dialog = subPage.getDialog();
             RedditSettingsStyle.styleWindow(dialog.getWindow());
 
-            View content = dialog.findViewById(android.R.id.content);
-            if (content == null || !(content.getParent() instanceof ViewGroup rootView)) return;
-
+            ViewGroup rootView = (ViewGroup) dialog.findViewById(android.R.id.content).getParent();
             rootView.setBackgroundColor(RedditSettingsStyle.getBackgroundColor());
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 rootView.setOnApplyWindowInsetsListener((v, insets) -> {
@@ -181,44 +134,27 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
                 rootView.requestApplyInsets();
             }
 
-            CharSequence title = screen.getTitle();
             Toolbar toolbar = RedditSettingsStyle.createToolbar(
-                    screen.getContext(),
-                    title != null ? title : "",
-                    dialog::dismiss
-            );
+                    subPage.getContext(), subPage.getTitle(), dialog::dismiss);
             RedditSettingsStyle.applyToolbarElevation(toolbar);
             rootView.addView(toolbar, 0);
 
-            ListView listView = dialog.findViewById(android.R.id.list);
-            if (listView != null) {
-                ViewTreeObserver.OnPreDrawListener preDrawListener = RedditSettingsStyle.styleList(listView);
-                // PreferenceScreen owns the dialog's OnDismissListener, so detach cleans up the pre-draw listener.
-                listView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                    @Override
-                    public void onViewAttachedToWindow(View v) {}
+            // The list view and its pre-draw listener go away with the dialog.
+            RedditSettingsStyle.styleList(dialog.findViewById(android.R.id.list));
 
-                    @Override
-                    public void onViewDetachedFromWindow(View v) {
-                        v.getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
-                        v.removeOnAttachStateChangeListener(this);
-                        try {
-                            updateGlassScreenSummary(Settings.GLASS_NAVIGATION_BAR.get());
-                            if (getPreferenceScreen().getRootAdapter() instanceof BaseAdapter adapter) {
-                                adapter.notifyDataSetChanged();
-                            }
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "onViewDetachedFromWindow failure", ex);
-                        }
-                    }
-                });
-            }
+            // Rows of the main list that change while the page covers it, such as the summary
+            // of the page, are not redrawn until the list is told again.
+            dialog.setOnDismissListener(dialogInterface -> {
+                subPage.onDismiss(dialogInterface);
+                ((BaseAdapter) getPreferenceScreen().getRootAdapter()).notifyDataSetChanged();
+            });
 
+            // Search navigates to a setting of a sub-page by opening the page.
             if (searchViewController != null && searchViewController.isSearchActive()) {
                 toolbar.post(searchViewController::closeSearch);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "decorateNestedScreenDialog failure", ex);
+            Logger.printException(() -> "decorateSubPageDialog failure", ex);
         }
     }
 

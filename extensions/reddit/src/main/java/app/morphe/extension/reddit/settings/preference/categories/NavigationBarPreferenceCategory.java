@@ -10,6 +10,7 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
@@ -27,21 +28,16 @@ import app.morphe.extension.shared.settings.preference.CustomDialogListPreferenc
 
 @SuppressWarnings("deprecation")
 public class NavigationBarPreferenceCategory extends ConditionalPreferenceCategory {
-    public static final String GLASS_SCREEN_KEY = "morphe_glass_navigation_bar_screen";
+    /**
+     * Updates the On/Off summary of the glass navigation bar page.
+     * Assigned in {@link #addPreferences(Context)}, which runs in the super constructor before
+     * field initializers, and kept here because SharedPreferences holds its listeners weakly.
+     */
+    private SharedPreferences.OnSharedPreferenceChangeListener glassPageSummaryListener;
 
     public NavigationBarPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
         setTitle(str("morphe_screen_navigation_bar_title"));
-    }
-
-    public static void updateGlassScreenSummary(Preference screen) {
-        updateGlassScreenSummary(screen, Settings.GLASS_NAVIGATION_BAR.get());
-    }
-
-    public static void updateGlassScreenSummary(Preference screen, boolean enabled) {
-        screen.setSummary(str(enabled
-                ? "morphe_glass_navigation_bar_screen_summary_on"
-                : "morphe_glass_navigation_bar_screen_summary_off"));
     }
 
     @Override
@@ -91,112 +87,106 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
     }
 
     private void addGlassPreferences(Context context) {
+        // The modern style shows the settings on their own page, the legacy settings a flat list.
         final boolean modernStyle = RedditSettingsStyle.isModernStyle();
-        PreferenceGroup mainGroup = this;
-        PreferenceGroup lookGroup = this;
-        PreferenceGroup sizeGroup = this;
-        PreferenceGroup buttonsGroup = this;
+        PreferenceGroup page = this;
 
         if (modernStyle) {
-            PreferenceScreen glassScreen = RedditSettingsStyle.createSubPage(
+            PreferenceScreen glassPage = RedditSettingsStyle.createSubPage(
                     getPreferenceManager(),
                     context,
-                    GLASS_SCREEN_KEY,
+                    "morphe_glass_navigation_bar_screen",
                     str("morphe_glass_navigation_bar_title"),
                     null
             );
-            updateGlassScreenSummary(glassScreen);
-            addPreference(glassScreen);
-
-            mainGroup = glassScreen;
+            addPreference(glassPage);
+            updateGlassPageSummary(glassPage);
+            glassPageSummaryListener = (sharedPreferences, key) -> {
+                if (Settings.GLASS_NAVIGATION_BAR.key.equals(key)) {
+                    updateGlassPageSummary(glassPage);
+                }
+            };
+            getSharedPreferences().registerOnSharedPreferenceChangeListener(glassPageSummaryListener);
+            page = glassPage;
         }
 
-        mainGroup.addPreference(new BooleanSettingPreference(
+        page.addPreference(new BooleanSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR
         ));
 
-        if (modernStyle) {
-            PreferenceCategory lookCategory = new PreferenceCategory(context);
-            lookCategory.setTitle(str("morphe_glass_navigation_bar_category_look"));
-            mainGroup.addPreference(lookCategory);
-            lookGroup = lookCategory;
-        }
-
-        lookGroup.addPreference(new CustomDialogListPreference(
+        PreferenceGroup look = addPageCategory(context, page, modernStyle,
+                "morphe_glass_navigation_bar_category_look");
+        look.addPreference(new CustomDialogListPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_COLOR
         ));
-        lookGroup.addPreference(new CustomDialogListPreference(
+        look.addPreference(new CustomDialogListPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_STYLE
         ));
-        if (modernStyle) {
-            addGlassBlurPreference(context, lookGroup, true);
-        }
-        lookGroup.addPreference(new CustomDialogListPreference(
+        addIndentedPreference(look, new SeekBarSettingPreference(
+                context,
+                Settings.GLASS_NAVIGATION_BAR_BLUR
+        ));
+        look.addPreference(new CustomDialogListPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_STRENGTH
         ));
-        if (!modernStyle) {
-            addGlassBlurPreference(context, lookGroup, false);
-        }
-        lookGroup.addPreference(new SeekBarSettingPreference(
+        look.addPreference(new SeekBarSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_OPACITY
         ));
-        lookGroup.addPreference(new BooleanSettingPreference(
+        look.addPreference(new BooleanSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_ROUND_ENDS
         ));
 
-        if (modernStyle) {
-            PreferenceCategory sizeCategory = new PreferenceCategory(context);
-            sizeCategory.setTitle(str("morphe_glass_navigation_bar_category_size"));
-            mainGroup.addPreference(sizeCategory);
-            sizeGroup = sizeCategory;
-        }
-
-        sizeGroup.addPreference(new SeekBarSettingPreference(
+        PreferenceGroup size = addPageCategory(context, page, modernStyle,
+                "morphe_glass_navigation_bar_category_size");
+        size.addPreference(new SeekBarSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_HEIGHT
         ));
-        sizeGroup.addPreference(new SeekBarSettingPreference(
+        size.addPreference(new SeekBarSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_WIDTH
         ));
-        sizeGroup.addPreference(new SeekBarSettingPreference(
+        size.addPreference(new SeekBarSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_POSITION
         ));
 
-        if (modernStyle) {
-            PreferenceCategory buttonsCategory = new PreferenceCategory(context);
-            buttonsCategory.setTitle(str("morphe_glass_navigation_bar_category_buttons"));
-            mainGroup.addPreference(buttonsCategory);
-            buttonsGroup = buttonsCategory;
-        }
-
-        buttonsGroup.addPreference(new BooleanSettingPreference(
+        PreferenceGroup buttons = addPageCategory(context, page, modernStyle,
+                "morphe_glass_navigation_bar_category_buttons");
+        buttons.addPreference(new BooleanSettingPreference(
                 context,
                 Settings.GLASS_NAVIGATION_BAR_SHOW_LABELS
         ));
         if (GlassNavigationBarPatch.isSearchButtonSupported()) {
-            buttonsGroup.addPreference(new BooleanSettingPreference(
+            buttons.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON
             ));
         }
     }
 
-    private static void addGlassBlurPreference(Context context, PreferenceGroup group, boolean indent) {
-        SeekBarSettingPreference blur = new SeekBarSettingPreference(
-                context,
-                Settings.GLASS_NAVIGATION_BAR_BLUR
-        );
-        if (indent) {
-            RedditSettingsStyle.setIndented(blur);
-        }
-        group.addPreference(blur);
+    /**
+     * @return A new titled category on the page with the modern style, otherwise the page itself.
+     */
+    private static PreferenceGroup addPageCategory(Context context, PreferenceGroup page,
+                                                   boolean modernStyle, String titleKey) {
+        if (!modernStyle) return page;
+
+        PreferenceCategory category = new PreferenceCategory(context);
+        category.setTitle(str(titleKey));
+        page.addPreference(category);
+        return category;
+    }
+
+    private static void updateGlassPageSummary(Preference glassPage) {
+        glassPage.setSummary(str(Settings.GLASS_NAVIGATION_BAR.get()
+                ? "morphe_glass_navigation_bar_screen_summary_on"
+                : "morphe_glass_navigation_bar_screen_summary_off"));
     }
 }

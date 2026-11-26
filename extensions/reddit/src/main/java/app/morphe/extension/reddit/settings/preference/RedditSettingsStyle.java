@@ -24,6 +24,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
@@ -78,10 +79,25 @@ public final class RedditSettingsStyle {
      * Views that were already styled, so recycled views are not changed twice.
      */
     private static final Set<View> styledViews = Collections.newSetFromMap(new WeakHashMap<>());
-    private static final Set<Preference> indentedPreferences = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Toolbar height if the theme has none.
+     */
+    private static final int DEFAULT_ACTION_BAR_SIZE_DP = 56;
+
+    /**
+     * Preference extras key of a child setting that is indented under its parent.
+     */
+    private static final String EXTRA_INDENTED = "morphe_indented";
 
     public static void setIndented(Preference preference) {
-        indentedPreferences.add(preference);
+        preference.getExtras().putBoolean(EXTRA_INDENTED, true);
+    }
+
+    private static boolean isIndented(Object item) {
+        if (!(item instanceof Preference preference)) return false;
+        Bundle extras = preference.peekExtras();
+        return extras != null && extras.getBoolean(EXTRA_INDENTED);
     }
 
     private static final Typeface DEFAULT_BODY_TYPEFACE = Typeface.DEFAULT;
@@ -506,6 +522,9 @@ public final class RedditSettingsStyle {
         return currentPalette.background;
     }
 
+    /**
+     * @return A sub-page that opens in its own dialog, see RedditPreferenceFragment for its toolbar.
+     */
     public static PreferenceScreen createSubPage(PreferenceManager preferenceManager,
                                                    Context context,
                                                    String key,
@@ -686,7 +705,7 @@ public final class RedditSettingsStyle {
         }
 
         // Views are recycled between indented and normal rows, so start padding runs on every bind.
-        final int startPadding = item instanceof Preference pref && indentedPreferences.contains(pref)
+        final int startPadding = isIndented(item)
                 ? Dim.dp40
                 : Dim.dp16;
         view.setPaddingRelative(startPadding, 0, Dim.dp16, 0);
@@ -1045,19 +1064,31 @@ public final class RedditSettingsStyle {
         title.setTextColor(getTitleColor());
     }
 
+    /**
+     * @return The toolbar height of the theme of the context.
+     */
     public static int getActionBarSize(Context context) {
         TypedValue tv = new TypedValue();
         if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
             return TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
         }
-        return (int) (56 * context.getResources().getDisplayMetrics().density);
+        return Dim.dp(DEFAULT_ACTION_BAR_SIZE_DP);
     }
 
-    public static void styleWindow(@Nullable Window window) {
-        if (window == null) return;
-        final int appBackgroundColor = isModernStyle()
+    /**
+     * @return The background color of the settings dialog and its sub-pages.
+     */
+    public static int getSettingsBackgroundColor() {
+        return isModernStyle()
                 ? getBackgroundColor()
                 : ThemeUtils.getAppBackgroundColor();
+    }
+
+    /**
+     * Makes a settings dialog window fill the screen, with system bars colored like the settings.
+     */
+    public static void styleWindow(Window window) {
+        final int appBackgroundColor = getSettingsBackgroundColor();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         window.setStatusBarColor(appBackgroundColor);
         window.setNavigationBarColor(appBackgroundColor);
@@ -1067,6 +1098,9 @@ public final class RedditSettingsStyle {
                 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
     }
 
+    /**
+     * Sets the shadow below a settings toolbar.
+     */
     public static void applyToolbarElevation(View view) {
         final boolean modernStyle = isModernStyle();
         final boolean isDark = Utils.isDarkModeEnabled();
@@ -1076,6 +1110,9 @@ public final class RedditSettingsStyle {
         }
     }
 
+    /**
+     * @return A settings toolbar with a title and a back button.
+     */
     public static Toolbar createToolbar(Context context, CharSequence title, Runnable onBack) {
         final boolean modernStyle = isModernStyle();
         // Icons use the text color of the rows, the title is white or black like the app titles.
@@ -1085,9 +1122,7 @@ public final class RedditSettingsStyle {
         final int titleColor = modernStyle
                 ? getTitleColor()
                 : appForegroundColor;
-        final int appBackgroundColor = modernStyle
-                ? getBackgroundColor()
-                : ThemeUtils.getAppBackgroundColor();
+        final int appBackgroundColor = getSettingsBackgroundColor();
 
         Toolbar toolbar = new Toolbar(context);
         toolbar.setLayoutParams(new ViewGroup.LayoutParams(

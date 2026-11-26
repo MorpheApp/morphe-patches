@@ -8,8 +8,12 @@
 package app.morphe.extension.reddit.settings.preference.categories;
 
 import android.content.Context;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+
+import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
 
 @SuppressWarnings("deprecation")
 public abstract class ConditionalPreferenceCategory extends PreferenceCategory {
@@ -25,4 +29,12 @@ public abstract class ConditionalPreferenceCategory extends PreferenceCategory {
     public abstract boolean getSettingsStatus();
 
     public abstract void addPreferences(Context context);
+
+    /**
+     * Adds a child setting of the preference above it, indented with the modern settings style.
+     */
+    protected static void addIndentedPreference(PreferenceGroup group, Preference preference) {
+        RedditSettingsStyle.setIndented(preference);
+        group.addPreference(preference);
+    }
 }
