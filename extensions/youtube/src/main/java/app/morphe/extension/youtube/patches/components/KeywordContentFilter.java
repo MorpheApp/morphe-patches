@@ -17,6 +17,7 @@
  * https://github.com/MorpheApp/morphe-patches/commit/017eac71a3f9542b8ad6221e3600797d6b97fae4
  * https://github.com/MorpheApp/morphe-patches/pull/1972
  * https://github.com/MorpheApp/morphe-patches/pull/4530
+ * https://github.com/MorpheApp/morphe-patches/pull/5248
  * https://github.com/MorpheApp/morphe-patches/pull/5264
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
@@ -26,11 +27,16 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.text.TextUtils;
+import android.util.Base64;
+
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -44,8 +50,10 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.youtube.innertube.ElementTexts.CommentData;
+import app.morphe.extension.youtube.innertube.ElementTexts.CompactChannelData;
 import app.morphe.extension.youtube.innertube.ElementTexts.Element;
 import app.morphe.extension.youtube.innertube.ElementTexts.ElementModel;
+import app.morphe.extension.youtube.innertube.ElementTexts.HorizontalShelfItem;
 import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommand;
 import app.morphe.extension.youtube.innertube.ElementTexts.InnertubeCommandHolder;
 import app.morphe.extension.youtube.innertube.ElementTexts.ListItemViewModel;
@@ -58,15 +66,18 @@ import app.morphe.extension.youtube.innertube.ElementTexts.PollOptionHolder;
 import app.morphe.extension.youtube.innertube.ElementTexts.PollPostData;
 import app.morphe.extension.youtube.innertube.ElementTexts.Post;
 import app.morphe.extension.youtube.innertube.ElementTexts.PostAuthor;
+import app.morphe.extension.youtube.innertube.ElementTexts.ReelSequenceParams;
 import app.morphe.extension.youtube.innertube.ElementTexts.SharedPostViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShelfPost;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupMetadata;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.VideoData;
+import app.morphe.extension.youtube.innertube.ElementTexts.VideoMetadata;
 import app.morphe.extension.youtube.innertube.ElementTexts.VideoPostData;
 import app.morphe.extension.youtube.innertube.ElementTexts.ViewModelHolder;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.TitleCleanup;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -88,6 +99,10 @@ import app.morphe.extension.youtube.shared.PlayerType;
  * Keywords match any casing, and fancy text such as math bold letters matches the plain letters.
  * Keywords that start with @ also match the channel handle of the videos.
  * Collaboration videos match the names and the handles of all their channels.
+ * A shelf of the search results is hidden if all its videos and Shorts match, such as the latest videos
+ * of a channel. The Shorts of these shelves have only the id of the channel, and the videos of
+ * a channel that is live have no handle, so the name and the handle of the channel are found
+ * with the channel card that is above the shelf.
  *
  * Limitations:
  * - Shorts in the Home and Subscriptions feeds do not show the channel name,
@@ -126,6 +141,19 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     private static final String CHANNEL_ID_PREFIX = "UC";
     private static final int CHANNEL_ID_LENGTH = 24;
 
+    private static final int MAX_CHANNELS = 100;
+
+    private record Channel(String name, String handle) {
+    }
+
+    private static final String CHANNEL_CARD_TEMPLATE = "compact_channel.e";
+
+    /**
+     * Channels of the channel cards of the search results, by channel id. Oldest channels are removed first.
+     */
+    private static final Map<String, Channel> channels = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_CHANNELS));
+
     private final StringFilterGroup commentsFilter = new StringFilterGroup(
             Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
             "comment_thread.eml"
@@ -146,6 +174,17 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             "text_post_root_slim.e",
             "videos_post_responsive_root.e",
             "videos_post_root.e"
+    );
+
+    /**
+     * Shelves of the search results. Only the root element is searched, which hides the whole shelf.
+     */
+    private final StringFilterGroup shelvesFilter = new StringFilterGroup(
+            Settings.HIDE_KEYWORD_CONTENT_SEARCH,
+            // Shelf of videos and Shorts, such as "Latest videos".
+            "horizontal_shelf.e",
+            // Shelf of only Shorts, such as "Latest from" a channel.
+            "shorts_shelf.e"
     );
 
     /**
@@ -282,7 +321,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     public KeywordContentFilter() {
         super(); // The groups are registered below because instance fields initialize after super().
-        addPathCallbacks(commentsFilter, postsFilter);
+        addPathCallbacks(commentsFilter, postsFilter, shelvesFilter);
         // Keywords are parsed on first call to isFiltered().
     }
 
@@ -341,6 +380,28 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     @Override
+    protected boolean isFeedGroup(StringFilterGroup group) {
+        return super.isFeedGroup(group) || group == shelvesFilter;
+    }
+
+    @Override
+    protected boolean isSearchedPath(CharSequence path, StringFilterGroup matchedGroup) {
+        if (matchedGroup == postsFilter) {
+            return Utils.endsWith(path, ROOT_ELEMENT_PATH_END) && !isPostsPage();
+        }
+
+        if (matchedGroup == shelvesFilter) {
+            // Elements inside the root element have the same start of the path.
+            return Utils.endsWith(path, ROOT_ELEMENT_PATH_END)
+                    && TextUtils.indexOf(path, ROOT_ELEMENT_PATH_END)
+                    == path.length() - ROOT_ELEMENT_PATH_END.length()
+                    && NavigationBar.isSearchBarActive();
+        }
+
+        return true;
+    }
+
+    @Override
     @Nullable
     protected String matchBuffer(byte[] buffer, CharSequence path, StringFilterGroup matchedGroup,
                                  ContextInterface contextInterface) {
@@ -349,24 +410,23 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             return null;
         }
 
-        if (matchedGroup == postsFilter && (!Utils.endsWith(path, ROOT_ELEMENT_PATH_END) || isPostsPage())) {
-            return null;
-        }
-
         try {
-            ElementModel model = findModel(Element.parseFrom(buffer));
-            if (model == null) {
-                return null;
-            }
-
+            Element element = Element.parseFrom(buffer);
             KeywordMatch match = new KeywordMatch();
-            if (!matchesShownTexts(search, model, match)) {
-                return null;
+            if (matchedGroup == shelvesFilter) {
+                if (!matchesShelf(search, element, match)) {
+                    return null;
+                }
+            } else {
+                ElementModel model = findModel(element);
+                if (model == null || !matchesShownTexts(search, model, match)) {
+                    return null;
+                }
             }
 
             recordHide(matchedGroup, buffer, contextInterface);
             return match.keyword;
-        } catch (InvalidProtocolBufferException ex) {
+        } catch (IllegalArgumentException | InvalidProtocolBufferException ex) {
             Logger.printException(() -> "matchBuffer failure", ex);
             return null;
         }
@@ -445,10 +505,72 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * The template of the channel card is JavaScript, and the Litho filter sees only the components
+     * the template makes, which do not have the model.
+     */
+    public static byte[] onElementLoaded(byte[] bytes) {
+        try {
+            if (Settings.HIDE_KEYWORD_CONTENT_SEARCH.get()
+                    && FeedVideoCardsPatch.getElementText(bytes).contains(CHANNEL_CARD_TEMPLATE)) {
+                CompactChannelData channel = Element.parseFrom(bytes).getType().getComponentType().getModel()
+                        .getCompactChannelModel().getData();
+                String channelId = channel.getEndpoint().getInnertubeCommand().getBrowseEndpoint().getBrowseId();
+                if (!channelId.isEmpty()) {
+                    channels.put(channelId, new Channel(channel.getName(), channel.getHandle()));
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onElementLoaded failure", ex);
+        }
+
+        return bytes;
+    }
+
+    /**
+     * @return If a keyword matches the channel of a Shorts shelf, or the keywords match
+     *         all items of a shelf of videos and Shorts.
+     */
+    private static boolean matchesShelf(StringTrieSearch search, Element element, KeywordMatch match)
+            throws InvalidProtocolBufferException {
+        ElementModel model = element.getType().getComponentType().getModel();
+        if (model.hasShortsShelfModel()) {
+            InnertubeCommandHolder endpoint = model.getShortsShelfModel().getHeader().getEndpoint();
+            // Some shelves do not have the handle.
+            return matchesChannel(search, endpoint, match) || matchesChannelId(search,
+                    endpoint.getInnertubeCommand().getBrowseEndpoint().getBrowseId(), match);
+        }
+
+        List<HorizontalShelfItem> items = model.getHorizontalShelfModel().getData().getItemsList();
+        for (HorizontalShelfItem item : items) {
+            if (!matchesShelfItem(search, item, match)) {
+                return false;
+            }
+        }
+        return !items.isEmpty();
+    }
+
+    private static boolean matchesShelfItem(StringTrieSearch search, HorizontalShelfItem item, KeywordMatch match)
+            throws InvalidProtocolBufferException {
+        if (item.hasVideo()) {
+            return matchesVideo(search, item.getVideo().getVideoData(), match);
+        }
+
+        ElementModel model = item.getElementContainer().getElementHolder().getElement()
+                .getType().getComponentType().getModel();
+        ViewModelHolder viewModel = model.getYoutubeModel().getViewModel();
+        // Shelves of posts are not hidden, as the posts have their own setting and are hidden one by one.
+        return (viewModel.hasShortsLockupViewModel() || viewModel.hasLockupViewModel())
+                && matchesShownTexts(search, model, match);
+    }
+
+    /**
      * @return If a keyword matches a text of the model that is shown,
      *         or a channel of a video or a post.
      */
-    private static boolean matchesShownTexts(StringTrieSearch search, ElementModel model, KeywordMatch match) {
+    private static boolean matchesShownTexts(StringTrieSearch search, ElementModel model, KeywordMatch match)
+            throws InvalidProtocolBufferException {
         if (model.hasVideoWithContextModel()) {
             return matchesVideo(search, model.getVideoWithContextModel().getData().getVideoData(), match);
         }
@@ -501,7 +623,24 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             return true;
         }
 
-        return matchesChannel(search, metadata.getAvatar().getAvatarViewModel().getOnTap(), match);
+        if (metadata.hasAvatar()) {
+            return matchesChannel(search, metadata.getAvatar().getAvatarViewModel().getOnTap(), match);
+        }
+        return matchesChannelId(search, getChannelId(shorts), match);
+    }
+
+    /**
+     * @return The channel id of a Short that does not show its channel, such as the Shorts of a shelf
+     *         of a channel. Empty if not known.
+     */
+    private static String getChannelId(ShortsLockupViewModel shorts) throws InvalidProtocolBufferException {
+        InnertubeCommand command = shorts.getOnTap().getInnertubeCommand();
+        if (command.hasWrapper()) {
+            command = command.getWrapper().getCommand();
+        }
+
+        String params = command.getReelWatchEndpoint().getSequenceParams().replace("%3D", "=");
+        return ReelSequenceParams.parseFrom(Base64.decode(params, Base64.URL_SAFE)).getChannelId();
     }
 
     /**
@@ -509,10 +648,14 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      *         or a channel of the video.
      */
     private static boolean matchesVideo(StringTrieSearch search, VideoData video, KeywordMatch match) {
-        return matchesLockup(search, video.getLockupMetadata().getLockupMetadataViewModel(), match)
+        VideoMetadata metadata = video.getMetadata();
+        return matches(search, metadata.getTitle(), match)
+                || matches(search, metadata.getByline(), match)
+                || matchesLockup(search, video.getLockupMetadata().getLockupMetadataViewModel(), match)
                 || matchesChannel(search, video.getAvatar().getEndpoint(), match)
                 || matchesImage(search, video.getDecoratedAvatar(), match)
-                || matchesImage(search, video.getAvatarStack(), match);
+                || matchesImage(search, video.getAvatarStack(), match)
+                || matchesChannelId(search, video.getChannelId(), match);
     }
 
     /**
@@ -569,7 +712,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      *         or the shared post.
      */
     private static boolean matchesSharedPost(StringTrieSearch search, SharedPostViewModel sharedPost,
-                                             KeywordMatch match) {
+                                             KeywordMatch match) throws InvalidProtocolBufferException {
         if (matches(search, sharedPost.getHeader().getText().getContent(), match)
                 || matchesChannel(search, sharedPost.getAvatar().getAvatarViewModel().getOnTap(), match)) {
             return true;
@@ -606,6 +749,15 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             }
         }
         return false;
+    }
+
+    /**
+     * @return If a keyword matches the name or the handle of a channel of the channel cards.
+     */
+    private static boolean matchesChannelId(StringTrieSearch search, String channelId, KeywordMatch match) {
+        Channel channel = channels.get(channelId);
+        return channel != null && (matches(search, channel.name(), match)
+                || matchesHandle(search, channel.handle(), match));
     }
 
     private static boolean matchesHandle(StringTrieSearch search, String text, KeywordMatch match) {
