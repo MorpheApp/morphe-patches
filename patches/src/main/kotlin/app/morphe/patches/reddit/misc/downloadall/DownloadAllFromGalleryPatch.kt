@@ -8,6 +8,7 @@
 package app.morphe.patches.reddit.misc.downloadall
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
@@ -18,6 +19,7 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.fiveRegisters
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
@@ -43,10 +45,16 @@ val downloadAllFromGalleryPatch = patch(
             )
         }
 
-        ShareSheetLinkFingerprint.method.addInstruction(
-            0,
-            "invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->setShareSheetLink(Lcom/reddit/domain/model/Link;)V"
-        )
+        ShareSheetLoadLinkFingerprint.let {
+            val castIndex = it.instructionMatches.first().index
+            val linkRegister = it.method.getInstruction<OneRegisterInstruction>(castIndex).registerA
+
+            it.method.addInstruction(
+                castIndex + 1,
+                "invoke-static/range { v$linkRegister .. v$linkRegister }, " +
+                        "$EXTENSION_CLASS->setShareSheetLink(Lcom/reddit/domain/model/Link;)V"
+            )
+        }
 
         // The media viewer is an activity of its own, and the dialog must show over it.
         FbpActivityOnCreateFingerprint.method.addInstruction(
