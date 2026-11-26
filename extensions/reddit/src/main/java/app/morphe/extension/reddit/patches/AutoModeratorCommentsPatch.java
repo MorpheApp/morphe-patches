@@ -49,8 +49,6 @@ public final class AutoModeratorCommentsPatch {
      * Called with the comments loaded for a post, in tree order, before Reddit builds the comment tree.
      */
     public static List<?> filterComments(List<?> comments) {
-        if (comments == null || comments.isEmpty()) return comments;
-
         AutoModeratorComments setting = Settings.AUTOMODERATOR_COMMENTS.get();
         if (setting == AutoModeratorComments.SHOW) return comments;
 
@@ -75,11 +73,9 @@ public final class AutoModeratorCommentsPatch {
     /**
      * Injection point.
      * <p>
-     * Called with the comment trees loaded or appended for a post.
+     * Called with the comment trees set or appended for a post, Reddit 2026.40.0 and newer.
      */
     public static List<?> filterCommentTrees(List<?> trees) {
-        if (trees == null || trees.isEmpty()) return trees;
-
         AutoModeratorComments setting = Settings.AUTOMODERATOR_COMMENTS.get();
         if (setting == AutoModeratorComments.SHOW) return trees;
 
@@ -87,47 +83,36 @@ public final class AutoModeratorCommentsPatch {
             if (setting == AutoModeratorComments.COLLAPSE) {
                 for (Object item : trees) {
                     if (item instanceof CommentTree tree) {
-                        ArrayList<Object> comments = tree.patch_getComments();
-                        if (comments != null) {
-                            collapseTargets(comments);
-                        }
+                        collapseTargets(tree.patch_getComments());
                     }
                 }
                 return trees;
             }
 
-            List<Object> filteredTrees = null;
+            // Filter each tree in place, and remove the trees left without comments.
+            List<Object> filteredTrees = new ArrayList<>(trees.size());
             int hiddenCount = 0;
-            for (int i = 0, size = trees.size(); i < size; i++) {
-                Object item = trees.get(i);
+            for (Object item : trees) {
                 if (item instanceof CommentTree tree) {
                     ArrayList<Object> comments = tree.patch_getComments();
-                    if (comments != null && !comments.isEmpty()) {
-                        List<Object> kept = filterHiddenComments(comments);
-                        final int removed = comments.size() - kept.size();
-                        if (removed > 0) {
-                            hiddenCount += removed;
-                            if (kept.isEmpty()) {
-                                if (filteredTrees == null) {
-                                    filteredTrees = new ArrayList<>(trees.subList(0, i));
-                                }
-                                continue;
-                            }
-                            comments.clear();
-                            comments.addAll(kept);
-                        }
+                    List<Object> kept = filterHiddenComments(comments);
+                    final int removed = comments.size() - kept.size();
+                    if (removed > 0) {
+                        hiddenCount += removed;
+                        if (kept.isEmpty()) continue;
+
+                        comments.clear();
+                        comments.addAll(kept);
                     }
                 }
-                if (filteredTrees != null) {
-                    filteredTrees.add(item);
-                }
+                filteredTrees.add(item);
             }
 
-            if (hiddenCount > 0) {
-                final int totalHidden = hiddenCount;
-                Logger.printDebug(() -> "Hid " + totalHidden + " target comments and replies from comment trees");
-            }
-            return filteredTrees != null ? filteredTrees : trees;
+            if (hiddenCount == 0) return trees;
+
+            final int totalHidden = hiddenCount;
+            Logger.printDebug(() -> "Hid " + totalHidden + " target comments and replies from comment trees");
+            return filteredTrees;
         } catch (Exception ex) {
             Logger.printException(() -> "filterCommentTrees failure", ex);
             return trees;

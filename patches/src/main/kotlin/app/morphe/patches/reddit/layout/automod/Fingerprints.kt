@@ -30,6 +30,9 @@ internal object CommentsResultConstructorFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Reddit 2026.40.0 and newer.
+ */
 internal object SetCommentTreesToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
@@ -41,6 +44,7 @@ internal object SetCommentTreesToStringFingerprint : Fingerprint(
 
 /**
  * Constructor of the tree event that sets comment trees for a post.
+ * Reddit 2026.40.0 and newer.
  */
 internal object SetCommentTreesConstructorFingerprint : Fingerprint(
     classFingerprint = SetCommentTreesToStringFingerprint,
@@ -49,6 +53,9 @@ internal object SetCommentTreesConstructorFingerprint : Fingerprint(
     parameters = listOf("Ljava/util/List;")
 )
 
+/**
+ * Reddit 2026.40.0 and newer.
+ */
 internal object AppendCommentTreesToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
@@ -60,6 +67,7 @@ internal object AppendCommentTreesToStringFingerprint : Fingerprint(
 
 /**
  * Constructor of the tree event that appends comment trees for a post.
+ * Reddit 2026.40.0 and newer.
  */
 internal object AppendCommentTreesConstructorFingerprint : Fingerprint(
     classFingerprint = AppendCommentTreesToStringFingerprint,
@@ -68,6 +76,9 @@ internal object AppendCommentTreesConstructorFingerprint : Fingerprint(
     parameters = listOf("Ljava/util/List;")
 )
 
+/**
+ * Reddit 2026.40.0 and newer.
+ */
 internal object CommentTreeToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
@@ -79,6 +90,7 @@ internal object CommentTreeToStringFingerprint : Fingerprint(
 
 /**
  * Constructor of CommentTree. The matched field holds the tree's comments list.
+ * Reddit 2026.40.0 and newer.
  */
 internal object CommentTreeConstructorFingerprint : Fingerprint(
     classFingerprint = CommentTreeToStringFingerprint,
