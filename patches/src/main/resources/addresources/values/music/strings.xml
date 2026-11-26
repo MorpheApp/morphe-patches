@@ -1040,7 +1040,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_ai_config_status_invalid">Settings incomplete or rejected by the provider</string>
     <string name="morphe_music_lyrics_ai_config_status_validating">Validating connection…</string>
     <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connected! (%2$s)</string>
-    <string name="morphe_music_lyrics_ai_config_status_failed">%s: Connection failed. Check the settings.</string>
+    <string name="morphe_music_lyrics_ai_config_status_failed_reason">Connection failed: %s</string>
     <string name="morphe_music_lyrics_ai_config_test_connection">Test connection</string>
     <string name="morphe_music_lyrics_ai_config_fetching_models">Fetching models…</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models">Fetch models</string>

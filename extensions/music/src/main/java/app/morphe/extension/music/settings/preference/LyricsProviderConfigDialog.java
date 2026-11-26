@@ -170,9 +170,7 @@ final class LyricsProviderConfigDialog {
             final String token = tokenInput.getText().toString().trim();
             final String extraHeaders = extraHeadersInput.getText().toString().trim();
             final String extraBody = extraBodyInput.getText().toString().trim();
-            test(context, () -> OpenAIClient.validateConfig(url, token, model,
-                    extraHeaders, extraBody) ? List.of("ok") : null
-            );
+            testConnection(context, url, token, model, extraHeaders, extraBody);
         });
         addReasoningRow(content);
         final PromptField promptField = addPromptSection(content, prompt,
@@ -360,26 +358,27 @@ final class LyricsProviderConfigDialog {
         return content;
     }
 
-    private static void test(Activity context, Supplier<List<String>> request) {
+    private static void testConnection(Activity context, String url, String token, String model,
+                                       String extraHeaders, String extraBody) {
         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
         Utils.runOnBackgroundThread(() -> {
-            List<String> result;
-            try {
-                result = request.get();
-            } catch (Exception ex) {
-                Logger.printDebug(() -> ProcessingProviders.OPENAI_COMPATIBLE_LABEL + " validation failed", ex);
-                result = null;
-            }
-            final List<String> response = result;
+            final String error = OpenAIClient.validationError(
+                    url, token, model, extraHeaders, extraBody);
             Utils.runOnMainThread(() -> {
-                if (response != null && !response.isEmpty()) {
-                    Utils.showToastShort(str(
-                            "morphe_music_lyrics_ai_config_status_connected",
-                            ProcessingProviders.OPENAI_COMPATIBLE_LABEL, response.get(0)));
-                } else {
-                    Utils.showToastShort(str(
-                            "morphe_music_lyrics_ai_config_status_failed",
-                            ProcessingProviders.OPENAI_COMPATIBLE_LABEL));
+                if (error == null) {
+                    Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_connected",
+                            ProcessingProviders.OPENAI_COMPATIBLE_LABEL, model));
+                    return;
+                }
+                // A dialog, because the reason often runs past the two lines a toast shows.
+                try {
+                    CustomDialog.create(context,
+                            ProcessingProviders.OPENAI_COMPATIBLE_LABEL,
+                            str("morphe_music_lyrics_ai_config_status_failed_reason", error),
+                            null, null, () -> { }, null, null, null, false
+                    ).first.show();
+                } catch (WindowManager.BadTokenException ex) {
+                    Logger.printException(() -> "Could not show the connection test result", ex);
                 }
             });
         });
