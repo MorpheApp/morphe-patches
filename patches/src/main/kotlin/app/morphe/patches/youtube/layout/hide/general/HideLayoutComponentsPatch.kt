@@ -662,6 +662,12 @@ val hideLayoutComponentsPatch = patch(
 
         // endregion
 
+        // region hide 'Members only' chip
+
+        hookElement("$LAYOUT_COMPONENTS_FILTER->hideMembersOnlyChip")
+
+        // endregion
+
         // region post buttons
 
         hookElement("$LAYOUT_COMPONENTS_FILTER->setPostButtons")

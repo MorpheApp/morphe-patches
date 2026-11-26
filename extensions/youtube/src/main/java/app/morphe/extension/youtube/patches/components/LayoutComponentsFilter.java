@@ -10,8 +10,10 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -29,6 +31,7 @@ import androidx.annotation.Nullable;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -152,7 +155,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup buttonComponentBuffer;
     private final StringFilterGroup channelFilterBar;
     private final StringFilterGroup channelHandle;
-    private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup communityPostsNew;
@@ -333,11 +335,6 @@ public final class LayoutComponentsFilter extends Filter {
         channelFilterBar = new StringFilterGroup(
                 null,
                 "channels_chip_bar.e"
-        );
-
-        channelMembersOnlyChipId = new StringFilterGroup(
-                null,
-                "id.chip.EhAKDgoD6gEACgcaBQoDggEA"
         );
 
         final var channelLinksPreview = new StringFilterGroup(
@@ -820,15 +817,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelFilterBar) {
-            if (Settings.HIDE_FILTER_BAR_IN_CHANNEL_PAGE.get()) {
-                return true;
-            }
-
-            if (Settings.HIDE_MEMBERS_ONLY_CHIP.get()) {
-                return channelMembersOnlyChipId.check(accessibility).isFiltered();
-            }
-
-            return false;
+            return Settings.HIDE_FILTER_BAR_IN_CHANNEL_PAGE.get();
         }
 
         if (matchedGroup == channelHandle) {
@@ -1056,6 +1045,201 @@ public final class LayoutComponentsFilter extends Filter {
         LockupViewModel lockup = model.getLockupModel().getViewModel().getLockupViewModel();
         return lockup.getContentType() == LOCKUP_CONTENT_TYPE_PLAYLIST
                 && lockup.getContentId().startsWith(MIX_PLAYLIST_ID_PREFIX);
+    }
+
+    /**
+     * ID of the 'Members only' chip of the channel filter bar.
+     */
+    private static final String MEMBERS_ONLY_CHIP_ID = "EhAKDgoD6gEACgcaBQoDggEA";
+
+    private static final ByteArrayFilterGroup channelChipBarBuffer = new ByteArrayFilterGroup(
+            null,
+            "channels_chip_bar.e"
+    );
+    private static final ByteArrayFilterGroup membersOnlyChipIdBuffer = new ByteArrayFilterGroup(
+            null,
+            MEMBERS_ONLY_CHIP_ID
+    );
+
+    /**
+     * Field numbers of the chips in the channel filter bar element,
+     * and of the fields of a chip: its id, the group of the chips that exclude each other
+     * (the 'Members only' and 'Public' chips), and its text.
+     */
+    private static final int[] CHANNEL_CHIP_PATH = {37117, 1, 2222};
+    private static final int CHANNEL_CHIP_ID_FIELD = 1;
+    private static final int CHANNEL_CHIP_GROUP_FIELD = 4;
+    private static final int CHANNEL_CHIP_TEXT_FIELD = 7;
+    private static final int CHANNEL_CHIP_TEXT_MODEL_FIELD = 515398970;
+    private static final int CHANNEL_CHIP_TEXT_LABEL_FIELD = 1;
+    private static final int CHANNEL_CHIP_TEXT_SELECTED_FIELD = 3;
+
+    /**
+     * The 'Public' chip is laid out after its filter bar is loaded, so it's searched again until it's shown.
+     */
+    private static final long PUBLIC_CHIP_SEARCH_INTERVAL_MS = 100;
+    private static final int PUBLIC_CHIP_SEARCH_MAX_ATTEMPTS = 30;
+
+    /**
+     * The list of the channel tab where the 'Public' chip was last selected. Selecting or deselecting
+     * a chip loads the filter bar again in the same list, so the chip is selected only once for each
+     * opened tab, and the user can deselect it.
+     */
+    private static WeakReference<View> publicChipSelectedListRef = new WeakReference<>(null);
+
+    /**
+     * Incremented for each filter bar loaded without the 'Public' chip selected,
+     * so only the search of the last loaded filter bar continues.
+     */
+    private static int publicChipSearchId;
+
+    /**
+     * Injection point.
+     * Removes the 'Members only' chip from the data of the channel filter bar, so the filter bar lays out
+     * the other chips without the empty space of the hidden chip, and selects the 'Public' chip
+     * so the members only videos that can not be watched are not shown.
+     */
+    public static byte[] hideMembersOnlyChip(byte[] bytes) {
+        try {
+            if (!Settings.HIDE_MEMBERS_ONLY_CHIP.get()
+                    || !channelChipBarBuffer.check(bytes).isFiltered()
+                    || !membersOnlyChipIdBuffer.check(bytes).isFiltered()) {
+                return bytes;
+            }
+
+            List<ProtoNode> element = ProtoNode.parse(bytes);
+            if (element == null) {
+                return bytes;
+            }
+
+            List<ProtoNode> chips = ProtoNode.findMessages(element, CHANNEL_CHIP_PATH);
+            ProtoNode membersOnlyChip = null;
+            for (ProtoNode chip : chips) {
+                if (MEMBERS_ONLY_CHIP_ID.equals(chipField(chip, CHANNEL_CHIP_ID_FIELD))) {
+                    membersOnlyChip = chip;
+                    break;
+                }
+            }
+            if (membersOnlyChip == null) {
+                return bytes;
+            }
+
+            String group = chipField(membersOnlyChip, CHANNEL_CHIP_GROUP_FIELD);
+            // The chip is the only field of its list item.
+            ProtoNode membersOnlyItem = membersOnlyChip.getParent();
+            if (membersOnlyItem == null) {
+                return bytes;
+            }
+            membersOnlyItem.remove();
+            Logger.printDebug(() -> "Removed 'Members only' chip");
+
+            if (group != null) {
+                for (ProtoNode chip : chips) {
+                    if (chip != membersOnlyChip && group.equals(chipField(chip, CHANNEL_CHIP_GROUP_FIELD))) {
+                        selectPublicChip(chip);
+                        break;
+                    }
+                }
+            }
+
+            return ProtoNode.write(element);
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideMembersOnlyChip failure", ex);
+        }
+
+        return bytes;
+    }
+
+    /**
+     * @return The text of the field of the chip, or null if it has no such field.
+     */
+    @Nullable
+    private static String chipField(ProtoNode chip, int fieldNumber) {
+        ProtoNode field = ProtoNode.field(chip.children, fieldNumber);
+        return field == null ? null : field.decodeText();
+    }
+
+    /**
+     * Taps the 'Public' chip if it's not selected, once for each opened channel tab.
+     * Selecting a chip loads the filtered videos and then the filter bar again, with the chip selected.
+     */
+    private static void selectPublicChip(ProtoNode publicChip) {
+        List<ProtoNode> text = ProtoNode.message(publicChip.children,
+                CHANNEL_CHIP_TEXT_FIELD, CHANNEL_CHIP_TEXT_MODEL_FIELD);
+        ProtoNode selected = ProtoNode.field(text, CHANNEL_CHIP_TEXT_SELECTED_FIELD);
+        if (selected != null && Long.valueOf(1).equals(selected.getVarint())) {
+            return;
+        }
+
+        ProtoNode labelField = ProtoNode.field(text, CHANNEL_CHIP_TEXT_LABEL_FIELD);
+        String label = labelField == null ? null : labelField.decodeText();
+        if (label == null) {
+            return;
+        }
+
+        Utils.runOnMainThread(() -> tapPublicChip(label, ++publicChipSearchId, PUBLIC_CHIP_SEARCH_MAX_ATTEMPTS));
+    }
+
+    /**
+     * Taps the 'Public' chip view, which has the chip text as its content description,
+     * unless the chip was already selected in its list.
+     */
+    private static void tapPublicChip(String label, final int searchId, final int attemptsLeft) {
+        try {
+            if (searchId != publicChipSearchId) {
+                return;
+            }
+
+            Activity activity = Utils.getActivity();
+            if (activity == null) {
+                return;
+            }
+
+            View chip = Utils.getChildView((ViewGroup) activity.getWindow().getDecorView(), true,
+                    view -> view.isClickable() && view.isShown()
+                            && TextUtils.equals(label, view.getContentDescription()));
+            if (chip == null) {
+                if (attemptsLeft > 1) {
+                    Utils.runOnMainThreadDelayed(() -> tapPublicChip(label, searchId, attemptsLeft - 1),
+                            PUBLIC_CHIP_SEARCH_INTERVAL_MS);
+                } else {
+                    Logger.printDebug(() -> "Could not find chip: " + label);
+                }
+                return;
+            }
+
+            View list = getChannelTabList(chip);
+            if (list == null || list == publicChipSelectedListRef.get()) {
+                Logger.printDebug(() -> "Not selecting chip again in the same list: " + label);
+                return;
+            }
+            publicChipSelectedListRef = new WeakReference<>(list);
+
+            Logger.printDebug(() -> "Selecting chip: " + label);
+            chip.performClick();
+        } catch (Exception ex) {
+            Logger.printException(() -> "tapPublicChip failure", ex);
+        }
+    }
+
+    /**
+     * The chips are in a horizontal list, which is an item of the list of the channel tab.
+     * Both lists stay the same when a chip is selected, and are new for each opened tab.
+     *
+     * @return The list of the channel tab, or null if the chip is not inside two lists.
+     */
+    @Nullable
+    private static View getChannelTabList(View chip) {
+        boolean isInChipList = false;
+        for (ViewParent parent = chip.getParent(); parent != null; parent = parent.getParent()) {
+            if (parent instanceof RecyclerView list) {
+                if (isInChipList) {
+                    return list;
+                }
+                isInChipList = true;
+            }
+        }
+        return null;
     }
 
     /**
