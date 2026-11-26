@@ -27,8 +27,7 @@ internal const val PREVENT_NSFW_FLASHING_EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/PreventNsfwFlashingPatch;"
 
 /**
- * Prevents NSFW posts and profiles from briefly showing before the NSFW warning
- * when NSFW content is turned off.
+ * Prevents unintended NSFW content reveals when NSFW viewing is turned off.
  */
 internal val preventNsfwFlashingPatch = patch {
     dependsOn(settingsPatch, versionCheckPatch)
@@ -40,6 +39,45 @@ internal val preventNsfwFlashingPatch = patch {
         // The preference repository interface, implemented by the class of the getter.
         val preferenceRepositoryType = PostLoadedNsfwIncognitoVerifyEventHandlerConstructorFingerprint
             .instructionMatches.first().getFieldAccessed().type
+
+        // Feed images can open the viewer without the post going through the NSFW warning.
+        // The handlers do not have a preference repository, so get it from the active session.
+        val getUserComponent = ActiveUserComponentFingerprint.instructionMatches.first().getMethodCalled()
+        val getPreferences = userComponentPreferencesFingerprint(
+            getUserComponent.returnType,
+            preferenceRepositoryType
+        ).originalMethod
+        listOf("OnClickImageEventHandler", "OnClickGalleryImageEventHandler").forEach { handler ->
+            val fingerprint = feedImageClickFingerprint(handler)
+            val (linkField, unitField) = fingerprint.instructionMatches.map { it.getFieldAccessed() }
+            fingerprint.method.apply {
+                val register = findFreeRegister(0)
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        move-object/from16 v$register, p0
+                        iget-object v$register, v$register, $linkField
+                        if-eqz v$register, :openImage
+                        invoke-virtual { v$register }, Lcom/reddit/domain/model/Link;->getOver18()Z
+                        move-result v$register
+                        if-eqz v$register, :openImage
+                        invoke-static {}, $getUserComponent
+                        move-result-object v$register
+                        check-cast v$register, ${getPreferences.definingClass}
+                        invoke-virtual { v$register }, $getPreferences
+                        move-result-object v$register
+                        check-cast v$register, ${nsfwViewingPreference.definingClass}
+                        invoke-virtual { v$register }, $nsfwViewingPreference
+                        move-result v$register
+                        if-nez v$register, :openImage
+                        sget-object v$register, $unitField
+                        return-object v$register
+                        :openImage
+                        nop
+                    """
+                )
+            }
+        }
 
         // region Show the empty post view of NSFW posts until the NSFW warning is shown.
 

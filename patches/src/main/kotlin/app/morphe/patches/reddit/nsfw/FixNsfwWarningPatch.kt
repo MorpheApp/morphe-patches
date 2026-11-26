@@ -26,10 +26,11 @@ private const val NSFW_BOTTOM_SHEET_BACK_CALLBACK_CLASS =
 
 @Suppress("unused")
 val fixNsfwWarningPatch = patch(
-    name = "Fix NSFW warning",
+    name = "Fix NSFW warnings and unintended reveals",
     description = "Makes the NSFW warning and the back gesture return to the previous screen instead of the home screen. " +
             "This patch works with Reddit 2026.24.0 and newer. " +
-            "With Reddit 2026.40.0 and newer, also prevents NSFW posts and profiles from briefly showing before the warning.",
+            "With Reddit 2026.40.0 and newer, also prevents brief flashes of NSFW posts and profiles " +
+            "and stops tagged feed images from opening when NSFW viewing is off.",
     default = true
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
@@ -39,7 +40,7 @@ val fixNsfwWarningPatch = patch(
     execute {
         if (!is_2026_24_0_or_greater) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Fix NSFW warning' requires Reddit 2026.24.0+"
+                "'Fix NSFW warnings and unintended reveals' requires Reddit 2026.24.0+"
             )
         }
 

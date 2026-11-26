@@ -70,16 +70,6 @@ internal object NsfwViewingPreferenceFingerprint : Fingerprint(
     )
 )
 
-/** Reads the effective blur preference for the current account or private session. */
-internal object NsfwBlurPreferenceFingerprint : Fingerprint(
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        string("nsfw_blur_enabled"),
-        methodCall(definingClass = ACCOUNT_PREFERENCES_CLASS, name = "getNoProfanity")
-    )
-)
-
 /**
  * Opens the home screen when declining the NSFW warning.
  */
@@ -312,6 +302,24 @@ internal object LeaveIncognitoModeScreenCreateViewFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/incognito/screens/leave/LeaveIncognitoModeScreen;",
     returnType = "Landroid/view/View;",
     parameters = listOf("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;")
+)
+
+/** The active user component is recreated when Reddit switches sessions. */
+internal object ActiveUserComponentFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/frontpage/di/RedditComponentHolder$asyncInit$1$2;",
+    name = "get",
+    filters = listOf(
+        methodCall(definingClass = "Lcom/reddit/frontpage/di/", parameters = emptyList(), returnType = "L")
+    )
+)
+
+internal fun userComponentPreferencesFingerprint(
+    componentType: String,
+    preferenceRepositoryType: String
+) = Fingerprint(
+    parameters = emptyList(),
+    returnType = preferenceRepositoryType,
+    custom = { _, classDef -> componentType in classDef.interfaces }
 )
 
 internal fun feedImageClickFingerprint(eventHandler: String) = Fingerprint(
