@@ -62,6 +62,12 @@ public final class ReturnYouTubeUsernamePatch {
     private static final String SHORTS_CHANNEL_BAR_PATH = "|reel_channel_bar.e";
 
     /**
+     * Elements of the metadata of the feed cards, whose first line is the handle of the channel.
+     */
+    private static final String LOCKUP_METADATA_PATH = "|lockup_metadata_ue.e";
+    private static final String CONTENT_METADATA_PATH = "|content_metadata.e";
+
+    /**
      * Element of the comment shown below the video, whose text is the handle of the author
      * followed by the comment.
      */
@@ -173,7 +179,8 @@ public final class ReturnYouTubeUsernamePatch {
     private static boolean showsHandle(StringBuilder path) {
         return (path.indexOf(AUTHOR_PATH) >= 0 && path.indexOf(COMMENT_PATH) >= 0)
                 || (path.indexOf(VIDEO_SUBTITLE_PATH) >= 0 && path.indexOf(VIDEO_METADATA_PATH) >= 0)
-                || path.indexOf(SHORTS_CHANNEL_BAR_PATH) >= 0;
+                || path.indexOf(SHORTS_CHANNEL_BAR_PATH) >= 0
+                || (path.indexOf(CONTENT_METADATA_PATH) >= 0 && path.indexOf(LOCKUP_METADATA_PATH) >= 0);
     }
 
     /**
