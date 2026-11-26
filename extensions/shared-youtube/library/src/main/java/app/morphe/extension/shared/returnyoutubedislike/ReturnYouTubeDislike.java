@@ -122,7 +122,7 @@ public class ReturnYouTubeDislike {
     private static NumberFormat dislikePercentageFormatter;
 
     /**
-     * For formatting dislikes as a full number.
+     * For formatting dislikes as a full count.
      */
     @GuardedBy("ReturnYouTubeDislike.class")
     private static NumberFormat fullCountFormatter;
@@ -324,17 +324,21 @@ public class ReturnYouTubeDislike {
         return destination;
     }
 
+    private static void useEnglishDigits(NumberFormat formatter, Locale locale) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                && formatter instanceof DecimalFormat decimalFormatter) {
+            DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
+            symbols.setDigitStrings(DecimalFormatSymbols.getInstance(Locale.ENGLISH).getDigitStrings());
+            decimalFormatter.setDecimalFormatSymbols(symbols);
+        }
+    }
+
     protected static String formatDislikeCount(long dislikeCount) {
         synchronized (ReturnYouTubeDislike.class) {
             if (dislikeCountFormatter == null) {
                 Locale locale = Locale.getDefault();
                 dislikeCountFormatter = CompactDecimalFormat.getInstance(locale, CompactDecimalFormat.CompactStyle.SHORT);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
-                    symbols.setDigitStrings(DecimalFormatSymbols.getInstance(Locale.ENGLISH).getDigitStrings());
-                    dislikeCountFormatter.setDecimalFormatSymbols(symbols);
-                }
+                useEnglishDigits(dislikeCountFormatter, locale);
             }
 
             return dislikeCountFormatter.format(dislikeCount);
@@ -382,13 +386,7 @@ public class ReturnYouTubeDislike {
             if (dislikePercentageFormatter == null) {
                 Locale locale = Locale.getDefault();
                 dislikePercentageFormatter = NumberFormat.getPercentInstance(locale);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-                        && dislikePercentageFormatter instanceof DecimalFormat decimalFormatter) {
-                    DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
-                    symbols.setDigitStrings(DecimalFormatSymbols.getInstance(Locale.ENGLISH).getDigitStrings());
-                    decimalFormatter.setDecimalFormatSymbols(symbols);
-                }
+                useEnglishDigits(dislikePercentageFormatter, locale);
             }
 
             if (dislikePercentage >= 0.01) {
@@ -459,12 +457,11 @@ public class ReturnYouTubeDislike {
     }
 
     /**
-     * @return The dislike count as a full number with grouping (such as 12,345),
-     *         or the percentage if dislikes are shown as a percentage.
-     *         Null if the fetch has not completed, or it failed.
+     * @return The full dislike count with grouping (such as 12,345), or the percentage if dislikes
+     *         are shown as a percentage. Null if the fetch has not completed, or it failed.
      */
     @Nullable
-    public String getFormattedDislikesFullNumber() {
+    public String getFormattedDislikesFullCount() {
         RYDVoteData voteData = getCompletedVoteData();
         if (voteData == null) {
             return null;
@@ -479,13 +476,7 @@ public class ReturnYouTubeDislike {
             if (fullCountFormatter == null) {
                 Locale locale = Locale.getDefault();
                 fullCountFormatter = NumberFormat.getIntegerInstance(locale);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-                        && fullCountFormatter instanceof DecimalFormat decimalFormatter) {
-                    DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
-                    symbols.setDigitStrings(DecimalFormatSymbols.getInstance(Locale.ENGLISH).getDigitStrings());
-                    decimalFormatter.setDecimalFormatSymbols(symbols);
-                }
+                useEnglishDigits(fullCountFormatter, locale);
             }
 
             return fullCountFormatter.format(count);
