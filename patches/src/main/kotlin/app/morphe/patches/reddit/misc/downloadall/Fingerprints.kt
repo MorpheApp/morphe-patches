@@ -13,22 +13,24 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val ACTION_SHEET_ARGS_CLASS = $$"Lcom/reddit/sharing/actions/ActionSheet$Args;"
 
 /**
- * Builds the preview of the post in the share sheet.
+ * Loads the post shown in the share sheet.
  */
-internal object ShareSheetLinkFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Lcom/reddit/domain/model/Link;"),
+internal object ShareSheetLoadLinkFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/sharing/actions/handler/ActionsScreenEventHandler$loadLink$1;",
+    name = "invokeSuspend",
     filters = listOf(
-        methodCall(definingClass = "Lcom/reddit/domain/model/Link;", name = "getCrossPostParentList"),
-        string(" · shared from "),
-        methodCall(definingClass = "Lcom/reddit/sharing/SharePreview;", name = "<init>")
+        checkCast("Lcom/reddit/domain/model/Link;"),
+        methodCall(
+            definingClass = "Lcom/reddit/domain/model/Link;",
+            name = "getPromoted",
+            location = MatchAfterWithin(10)
+        )
     )
 )
 

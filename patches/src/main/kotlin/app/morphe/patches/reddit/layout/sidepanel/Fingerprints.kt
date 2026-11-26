@@ -56,6 +56,20 @@ internal object PostDetailPresentationFingerprint : Fingerprint(
  * Creates the dialog presentation, with the default values for all parameters except the first.
  */
 internal object DialogPresentationFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/emailcollection/screens/EmailCollectionPopupScreen;",
+    name = "<init>",
+    filters = listOf(
+        methodCall(
+            name = "<init>",
+            parameters = listOf("Z", "L", "L", "I")
+        )
+    )
+)
+
+/**
+ * Creates the dialog presentation, before 2026.48.0.
+ */
+internal object DialogPresentationLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/incognito/screens/welcome/WelcomeIncognitoModeScreen;",
     name = "<init>",
     filters = listOf(

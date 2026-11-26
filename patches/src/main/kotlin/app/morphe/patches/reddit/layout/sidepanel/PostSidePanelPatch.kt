@@ -15,6 +15,8 @@ import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_48_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -32,11 +34,13 @@ val postSidePanelPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
         // Show the post screen as a dialog, which keeps the feed visible behind it.
-        val dialogConstructor = DialogPresentationFingerprint.instructionMatches.first().methodReference
+        val dialogConstructor =
+            (if (is_2026_48_0_or_greater) DialogPresentationFingerprint else DialogPresentationLegacyFingerprint)
+                .instructionMatches.first().methodReference
 
         PostDetailPresentationFingerprint.let {
             val createPanelPresentation = ImmutableMethod(

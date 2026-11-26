@@ -299,21 +299,9 @@ internal object ActionBarVoteButtonsLegacyFingerprint : Fingerprint(
 
 /**
  * Join button in the header of a post in the feeds.
- * Parameters: joined, on click, visibility tracking, on joined, modifier, enabled, composer, flags.
  */
 internal object PostJoinButtonFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf(
-        "Z",
-        "Lkotlin/jvm/functions/Function0;",
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "L",
-        "Z",
-        "L",
-        "I",
-        "I"
-    ),
     filters = listOf(
         string("post_join_button")
     )
