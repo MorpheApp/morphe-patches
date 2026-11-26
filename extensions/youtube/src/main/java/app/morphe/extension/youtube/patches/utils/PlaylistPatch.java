@@ -414,7 +414,7 @@ public class PlaylistPatch {
                             currentPlaylistId;
                 }
 
-                LoadVideoPatch.openVideoIntent(url, reload);
+                LoadVideoPatch.openUrl(url, reload);
             } catch (Exception ex) {
                 Logger.printException(() -> "openQueue failure", ex);
             }

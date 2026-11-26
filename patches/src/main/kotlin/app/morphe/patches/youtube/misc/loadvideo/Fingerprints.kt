@@ -52,18 +52,6 @@ internal object MiniAppOpenYtContentCommandEndpointFingerprint : Fingerprint(
     }
 )
 
-internal object OpenNewVideoIntentParcelableFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "L",
-    parameters = listOf("Landroid/content/Intent;"),
-    strings = listOf(
-        "android.intent.extra.inventory_identifier",
-        "http",
-        "vnd.youtube",
-        "No video id in the Uri: "
-    )
-)
-
 internal object AppWatchDescriptorToStringFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",

@@ -63,13 +63,13 @@ public class OpenShortsInRegularPlayerPatch {
                 return false; // Always use Shorts player for the Shorts nav button.
             }
 
-            Logger.printDebug(() -> "Setting back button override and opening Shorts intent");
+            Logger.printDebug(() -> "Setting back button override and opening Shorts in the regular player");
             overrideBackPressToExit = true;
 
             final boolean forceFullScreen = (type == ShortsPlayerType.REGULAR_PLAYER_FULLSCREEN);
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(forceFullScreen);
 
-            LoadVideoPatch.openVideoIntentWithInternalContext(videoId);
+            LoadVideoPatch.openUrl("https://www.youtube.com/watch?v=" + videoId, false);
             return true;
         } catch (Exception ex) {
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(null);

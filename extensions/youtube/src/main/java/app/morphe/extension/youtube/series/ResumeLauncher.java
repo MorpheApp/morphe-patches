@@ -7,14 +7,12 @@
 
 package app.morphe.extension.youtube.series;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 
 import app.morphe.extension.youtube.patches.LoadVideoPatch;
 
 public final class ResumeLauncher {
-    public static Intent intent(Context context, LaunchRequest request) {
+    private static String url(LaunchRequest request) {
         Uri.Builder uri = new Uri.Builder()
                 .scheme("https")
                 .authority("www.youtube.com")
@@ -23,26 +21,18 @@ public final class ResumeLauncher {
         if (!request.playlistId().isEmpty()) uri.appendQueryParameter("list", request.playlistId());
         // Include zero explicitly: omitting it can restore YouTube's own remembered position.
         uri.appendQueryParameter("t", request.seconds() + "s");
-        return new Intent(Intent.ACTION_VIEW, uri.build())
-                .setPackage(context.getPackageName())
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return uri.build().toString();
     }
 
-    static void launch(Context context, LaunchRequest request) {
-        Intent launch = intent(context, request);
+    static void launch(LaunchRequest request) {
         TrackerRuntime.prepareLaunch();
         TrackerRuntime.awaitLaunch(request);
-        try {
-            if (request.videoId().equals(PlaybackBridge.videoId())) {
-                // Measured on 21.13.164: an ordinary watch intent leaves a paused
-                // same-video player at its old timestamp. Recreate it via the host.
-                LoadVideoPatch.openVideoIntent(launch.getDataString(), true);
-            } else {
-                context.startActivity(launch);
-            }
-        } catch (RuntimeException failure) {
+        // Measured on 21.13.164: an ordinary watch intent leaves a paused
+        // same-video player at its old timestamp. Recreate it via the host.
+        final boolean closeCurrentPlayer = request.videoId().equals(PlaybackBridge.videoId());
+        if (!LoadVideoPatch.openUrl(url(request), closeCurrentPlayer)) {
             TrackerRuntime.cancelLaunch();
-            throw failure;
+            throw new IllegalStateException("Could not open video: " + request.videoId());
         }
     }
 

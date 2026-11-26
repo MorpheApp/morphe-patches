@@ -27,7 +27,7 @@ record QueueStart(PlaylistQueue candidate, String previousVideoId, long resumePo
     }
 
     String watchUrl() {
-        // Match the native watch intent used by LoadVideoPatch's Reload action.
+        // Match the watch link used by LoadVideoPatch's Reload action.
         return "https://www.youtube.com/watch?v=" + candidate.currentEntry().videoId()
                 + (restoresClosedPlayer() ? "&t=" + resumePositionMilliseconds / 1000 + "s" : "");
     }

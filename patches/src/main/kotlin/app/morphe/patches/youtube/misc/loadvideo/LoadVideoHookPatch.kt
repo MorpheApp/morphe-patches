@@ -13,8 +13,8 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.returnEarly
+import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -27,16 +27,16 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_PLAYER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/LoadVideoPatch$PlayerInterface;"
 
-private const val EXTENSION_MAIN_ACTIVITY_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/LoadVideoPatch$MainActivityInterface;"
-
 private const val EXTENSION_INLINE_PLAYBACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/LoadVideoPatch$InlinePlaybackInterface;"
 
 internal val loadVideoHookPatch = patch(
     description = "Hooks the player so the extension can dismiss it and open videos."
 ) {
-    dependsOn(sharedExtensionPatch)
+    dependsOn(
+        sharedExtensionPatch,
+        commandRouterHookPatch,
+    )
 
     execute {
         val dismissPlayerInnerMethod = MiniAppOpenYtContentCommandEndpointFingerprint
@@ -51,11 +51,6 @@ internal val loadVideoHookPatch = patch(
                 EXTENSION_PLAYER_INTERFACE,
                 "patch_dismissPlayer",
                 dismissPlayerInnerMethod
-            )
-            addPatchInterface(
-                EXTENSION_PLAYER_INTERFACE,
-                "patch_getIntentParcelable",
-                OpenNewVideoIntentParcelableFingerprint.method
             )
 
             methods.single { method ->
@@ -98,18 +93,6 @@ internal val loadVideoHookPatch = patch(
                             "initializeInlinePlayback($EXTENSION_INLINE_PLAYBACK_INTERFACE)V"
                 )
             }
-        }
-
-        // Activity.onNewIntent() is protected, so the extension calls it through a public method.
-        mutableClassDefBy(YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE).apply {
-            addPatchInterface(
-                EXTENSION_MAIN_ACTIVITY_INTERFACE,
-                "patch_onNewIntent",
-                """
-                    invoke-virtual { p0, p1 }, $type->onNewIntent(Landroid/content/Intent;)V
-                    return-void
-                """
-            )
         }
 
         BackButtonFinishActivityOnNewVideoIntentFingerprint(

@@ -363,7 +363,7 @@ public final class GhostPlayPatch {
         }
 
         boolean closeCurrent = !PlayerType.getCurrent().isNoneOrHidden();
-        LoadVideoPatch.openVideoIntent(url.toString(), closeCurrent);
+        LoadVideoPatch.openUrl(url.toString(), closeCurrent);
         scheduleButtonRefresh();
     }
 

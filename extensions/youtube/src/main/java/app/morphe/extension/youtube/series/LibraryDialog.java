@@ -846,7 +846,7 @@ final class LibraryDialog {
                     }
                     try {
                         SeriesPlayback.activate(s, id, ordinal);
-                        ResumeLauncher.launch(activity, new LaunchRequest(id, s.id(), position));
+                        ResumeLauncher.launch(new LaunchRequest(id, s.id(), position));
                     } catch (RuntimeException failure) {
                         Logger.printException(() -> "Could not open episode", failure);
                         SeriesPlayback.clear();

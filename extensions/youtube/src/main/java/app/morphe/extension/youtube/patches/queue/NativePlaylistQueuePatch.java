@@ -3066,7 +3066,7 @@ public final class NativePlaylistQueuePatch {
         pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
 
         try {
-            LoadVideoPatch.openVideoIntent(start.watchUrl(), false);
+            LoadVideoPatch.openUrl(start.watchUrl(), false);
         } catch (RuntimeException ex) {
             if (pendingQueueStart == start) {
                 clearPendingQueueStart();

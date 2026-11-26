@@ -128,7 +128,7 @@ final class SeriesPlayback {
                 if (!valid(active, source, request)) return;
                 activate(current, next.videoId, next.ordinal);
                 try {
-                    ResumeLauncher.launch(Utils.getContext(), new LaunchRequest(
+                    ResumeLauncher.launch(new LaunchRequest(
                             next.videoId, current.id(), watched ? 0 : progress.positionMs()));
                 } catch (RuntimeException ex) {
                     Logger.printException(() -> "Could not open episode", ex);

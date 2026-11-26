@@ -10,21 +10,23 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.BrowseEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
 import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.patches.queue.NativePlaylistQueuePatch;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -38,15 +40,6 @@ public final class LoadVideoPatch {
     public interface PlayerInterface {
         // Method is added during patching.
         void patch_dismissPlayer();
-        Parcelable patch_getIntentParcelable(Intent intent);
-    }
-
-    /**
-     * Interface to deliver intents to the main activity, as {@code Activity.onNewIntent(Intent)} is protected.
-     */
-    public interface MainActivityInterface {
-        // Method is added during patching.
-        void patch_onNewIntent(Intent intent);
     }
 
     /**
@@ -67,6 +60,11 @@ public final class LoadVideoPatch {
      * Unblocks playback in feeds if the player does not open again.
      */
     private static final long INLINE_PLAYBACK_BLOCK_TIMEOUT_MILLISECONDS = 10_000;
+
+    /**
+     * Time the player needs to close before the video playing can be opened again.
+     */
+    private static final long RELOAD_VIDEO_DELAY_MILLISECONDS = 500;
 
     private static WeakReference<PlayerInterface> playerInterfaceRef = new WeakReference<>(null);
 
@@ -151,10 +149,6 @@ public final class LoadVideoPatch {
         }
     }
 
-    public static boolean isPlayerInterfaceAvailable() {
-        return playerInterfaceRef.get() != null;
-    }
-
     @SuppressWarnings("ExtractMethodRecommender")
     public static void initializeReloadVideo() {
         try {
@@ -196,7 +190,7 @@ public final class LoadVideoPatch {
             String builderString = "https://www.youtube.com/watch?v=" + builder;
             Logger.printDebug(() -> "Opening: " + builderString);
 
-            openVideoIntent(builderString, true, queueReload);
+            openUrl(builderString, true, queueReload);
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to reload video", ex);
         }
@@ -211,92 +205,106 @@ public final class LoadVideoPatch {
         return playerInterface;
     }
 
-    public static void openVideoIntent(String url, boolean closeCurrentPlayerInstance) {
-        openVideoIntent(url, closeCurrentPlayerInstance, null);
+    /**
+     * Opens a link of YouTube the same as a tap in the app does: the link is turned into the command
+     * of the app, such as a video with its playlist and start time, or a playlist page.
+     * Other links open the same as a link tapped outside the app.
+     * Must be called from the main thread.
+     *
+     * @param closeCurrentPlayer Closes the player first, so the video playing can be opened again.
+     * @return If the link was opened, or is opened once the player is closed.
+     */
+    public static boolean openUrl(String url, boolean closeCurrentPlayer) {
+        return openUrl(url, closeCurrentPlayer, null);
     }
 
-    private static void openVideoIntent(String url, boolean closeCurrentPlayerInstance, @Nullable Runnable onDispatch) {
-        int loadVideoDelay = 0;
-
-        // Close the current player instance.
-        PlayerInterface playerInterface;
-        if (closeCurrentPlayerInstance) {
+    private static boolean openUrl(String url, boolean closeCurrentPlayer, @Nullable Runnable onDispatch) {
+        if (closeCurrentPlayer) {
             RememberPlaybackSpeedPatch.preservePlaybackParametersForReload();
+
+            PlayerInterface playerInterface = getPlayerInterface();
+            if (playerInterface != null) {
+                blockInlinePlaybackUntilPlayerOpens();
+                playerInterface.patch_dismissPlayer();
+
+                Utils.runOnMainThreadDelayed(() -> openUrlNow(url, onDispatch), RELOAD_VIDEO_DELAY_MILLISECONDS);
+                return true;
+            }
         }
-        if (closeCurrentPlayerInstance && (playerInterface = getPlayerInterface()) != null) {
-            blockInlinePlaybackUntilPlayerOpens();
-            playerInterface.patch_dismissPlayer();
 
-            loadVideoDelay = 500;
+        // A video opened while the miniplayer is being dismissed starts behind the dismissed player,
+        // and the screen stays covered by the scrim of the player. Open it once the dismiss ends.
+        if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED) {
+            Logger.printDebug(() -> "Opening once the player is dismissed: " + url);
+            PlayerType.getOnChange().addObserver(new Consumer<>() {
+                @Override
+                public void accept(PlayerType type) {
+                    PlayerType.getOnChange().removeObserver(this);
+                    // Not while the player changes its state.
+                    Utils.runOnMainThreadDelayed(() -> openUrlNow(url, onDispatch), 0);
+                }
+            });
+            return true;
         }
 
-        // Reopens the video after 0ms or 500ms.
-        Utils.runOnMainThreadDelayed(() -> {
-            Context context = Utils.getContext();
+        return openUrlNow(url, onDispatch);
+    }
 
-            if (context == null) {
-                return;
+    private static boolean openUrlNow(String url, @Nullable Runnable onDispatch) {
+        try {
+            if (onDispatch != null) onDispatch.run();
+
+            Uri uri = Uri.parse(url);
+            String path = uri.getPath();
+            String videoId = uri.getQueryParameter("v");
+            String playlistId = uri.getQueryParameter("list");
+
+            NavigationEndpoint.Builder command = NavigationEndpoint.newBuilder();
+            if ("/watch".equals(path) && videoId != null) {
+                WatchEndpoint.Builder watch = WatchEndpoint.newBuilder().setVideoId(videoId);
+                if (playlistId != null) {
+                    watch.setPlaylistId(playlistId);
+                }
+                String index = uri.getQueryParameter("index");
+                if (index != null) {
+                    watch.setIndex(Integer.parseInt(index));
+                }
+                String time = uri.getQueryParameter("t");
+                if (time != null) {
+                    watch.setStartTimeSeconds(Long.parseLong(time.endsWith("s")
+                            ? time.substring(0, time.length() - 1) : time));
+                }
+                command.setWatchEndpoint(watch);
+            } else if ("/playlist".equals(path) && playlistId != null) {
+                command.setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId("VL" + playlistId));
+            } else {
+                command = null;
             }
 
-            Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
-            intent.setPackage(context.getPackageName());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            if (onDispatch != null) onDispatch.run();
-            context.startActivity(intent);
-        }, loadVideoDelay);
-    }
+            if (command != null) {
+                // Android blocks opening links while the app is in the background, such as when
+                // a queued video starts. The app runs the command once it is shown again.
+                Activity activity = Utils.getActivity();
+                final boolean appShown = activity != null && activity.getWindow().getDecorView().isShown();
+                if (CommandRouterPatch.executeCommand(command.build().toByteArray(), new HashMap<>(), !appShown)) {
+                    Logger.printDebug(() -> "Opened: " + url);
+                    return true;
+                }
+            }
 
-    // This method opens a video based on hardcoded parameters found in an obfuscated class.
-    // It is generally faster than the solution that uses 'Intent.FLAG_ACTIVITY_NEW_TASK'.
-    public static void openVideoIntentWithInternalContext(String videoIDWithParams) {
-        PlayerInterface playerInterface;
-        if ((playerInterface = getPlayerInterface()) != null) {
-            Context context = Utils.getActivity();
-            // No videoID is needed to put inside the Intent initialization.
-            Intent reloadVideoIntent = new Intent();
-            reloadVideoIntent.setComponent(new ComponentName(
-                    context,
-                    "com.google.android.apps.youtube.app.watchwhile.InternalMainActivity"
-            ));
-            // NEW_TASK intent is not needed by this code.
-            reloadVideoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            // Always put 'inventory_identifier' putExtra before 'watch'
-            // putExtra, to ensure the patch works correctly.
-            reloadVideoIntent.putExtra(
-                    "android.intent.extra.inventory_identifier", new String[]{"vnd.youtube://" + videoIDWithParams}
-            );
-            // Get the needed Parcelable object from a static method, which will
-            // read inventory_identifier inside the currently built Intent.
-            reloadVideoIntent.putExtra("watch", playerInterface.patch_getIntentParcelable(reloadVideoIntent));
-
-            context.startActivity(reloadVideoIntent);
-        }
-    }
-
-    /**
-     * Starts a video by handing the watch intent to the running activity, which does not need the app to be on screen.
-     */
-    public static boolean deliverVideoIntentInProcess(String videoId) {
-        try {
-            PlayerInterface playerInterface = playerInterfaceRef.get();
-            Activity activity = Utils.getActivity();
-            if (playerInterface == null || !(activity instanceof MainActivityInterface mainActivity)) {
+            Context context = Utils.getContext();
+            if (context == null) {
                 return false;
             }
 
-            Intent intent = new Intent();
-            intent.setComponent(new ComponentName(
-                    activity,
-                    "com.google.android.apps.youtube.app.watchwhile.InternalMainActivity"
-            ));
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("android.intent.extra.inventory_identifier", new String[]{"vnd.youtube://" + videoId});
-            intent.putExtra("watch", playerInterface.patch_getIntentParcelable(intent));
-
-            mainActivity.patch_onNewIntent(intent);
+            Logger.printDebug(() -> "Opening outside the app: " + url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage(context.getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
             return true;
         } catch (Exception ex) {
-            Logger.printException(() -> "deliverVideoIntentInProcess failure", ex);
+            Logger.printException(() -> "openUrl failure: " + url, ex);
             return false;
         }
     }

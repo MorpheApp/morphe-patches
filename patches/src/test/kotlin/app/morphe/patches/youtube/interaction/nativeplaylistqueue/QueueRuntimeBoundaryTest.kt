@@ -487,7 +487,7 @@ class QueueRuntimeBoundaryTest {
                     public static void releaseInlinePlaybackBlock(int token) {
                         if (token != 0 && token == activeBlock) { activeBlock = 0; releases++; }
                     }
-                    public static void openVideoIntent(String value, boolean dismiss) {
+                    public static boolean openUrl(String value, boolean dismiss) {
                         if (dismiss) {
                             throw new AssertionError("Queue startup must not dismiss a replacement player");
                         }
@@ -498,6 +498,7 @@ class QueueRuntimeBoundaryTest {
                             throw new IllegalStateException("Watch dispatch failed");
                         }
                         opens++; url = value;
+                        return true;
                     }
                 }
             """,
