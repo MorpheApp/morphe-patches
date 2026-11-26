@@ -116,16 +116,7 @@ internal fun patchSearch() {
     val responseMessageType = responseConstructor.parameterTypes.single().toString()
     val responseClass = mutableClassDefBy(responseType)
     val responseMessageField = responseClass.instanceFields.single { it.type == responseMessageType }
-    responseClass.addPatchInterface(
-        PHONE_SEARCH_RESPONSE,
-        "patch_responseBytes",
-        """
-            iget-object p0, p0, $responseMessageField
-            invoke-virtual { p0 }, $responseMessageType->toByteArray()[B
-            move-result-object p0
-            return-object p0
-        """
-    )
+    responseClass.addPatchInterface(PHONE_SEARCH_RESPONSE, "patch_getResponse", responseMessageField)
     hookMusicBrowserServiceDependency(
         clientClass.type, PHONE_SEARCH_CLIENT,
         "$SEARCH_PATCH_CLASS->setPhoneSearchClient($PHONE_SEARCH_CLIENT)V",

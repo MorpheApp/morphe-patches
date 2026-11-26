@@ -19,7 +19,6 @@ import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.libraryItems;
 import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.SETTINGS_MEDIA_ID;
 import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.isSettingsMediaId;
-import static app.morphe.extension.music.patches.ProtoMessage.WIRE_LENGTH_DELIMITED;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -32,16 +31,17 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.media.MediaDescriptionCompat;
+import android.util.Base64;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.MessageLite;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -65,6 +65,15 @@ import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.Search
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseResponse;
+import app.morphe.extension.shared.innertube.MusicMediaItemInfo.MediaItemInfo;
+import app.morphe.extension.shared.innertube.MusicMediaItemInfo.MediaItemInfo.ContainerType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MusicPlaylistConfig;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistCollectionOptions;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistPlaybackOptions;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistSupportedConfig;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchPlaylistEndpoint;
 
 /**
  * Uses YTM's phone browse responses for music recommendations and Library content.
@@ -88,7 +97,7 @@ public final class AndroidAutoPatch {
      * later pages use {@link #patch_getPaginatedLibraryGrid}.
      */
     public interface PhoneBrowseResponse {
-        byte[] patch_responseBytes();
+        MessageLite patch_getResponse();
         Iterable<PhoneBrowseTab> patch_getTabs();
         @Nullable GridRenderer patch_getPaginatedLibraryGrid();
     }
@@ -107,6 +116,11 @@ public final class AndroidAutoPatch {
          * YTM's pagination commands: NEXT requests the next Library page; RELOAD refreshes the list.
          */
         Iterable<?> patch_getPaginationCommands();
+    }
+
+    /** Added to MediaBrowserCompat.MediaItem to read the extras of its description. */
+    public interface MediaItemExtras {
+        @Nullable Bundle patch_getExtras();
     }
 
     /** Android Auto's request for the children of a folder media ID. */
@@ -257,6 +271,9 @@ public final class AndroidAutoPatch {
     private static final String[] CAR_CONNECTION_COLUMNS = { "CarConnectionState" };
     private static final int CONNECTION_TYPE_PROJECTION = 2;
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
+    private static final String DEFAULT_PROMOTION_MEDIA_ID = "__DEFAULT_PROMOTION_ITEM_ID__";
+    private static final String IS_PROMOTION = "com.google.android.apps.youtube.music.mediabrowser.IS_PROMOTION";
+    private static final String LOCAL_MEDIA_ID_PREFIX = "__";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
     private static final String THIRD_PARTY_HOME_MEDIA_ID = "morphe:aa:home";
@@ -386,11 +403,7 @@ public final class AndroidAutoPatch {
     public static synchronized void setPhoneBrowseClient(PhoneBrowseClient client) {
         phoneBrowseClient = client;
         settingsSubscription = null;
-        libraryMediaId = null;
-        librarySubscription = null;
-        podcastsSubscription = null;
-        homeSubscription = null;
-        mainHandler.removeCallbacks(REFRESH_LIBRARY);
+        resetBrowseTabs(null, null);
         Logger.printDebug(() -> "Ready to request phone Library contents: " +
                 client.getClass().getName());
     }
@@ -658,47 +671,21 @@ public final class AndroidAutoPatch {
         return null;
     }
 
-    private static final int PLAYLIST_SUPPORTED_CONFIG = 96_593_618;
-    private static final int PLAYLIST_MUSIC_CONFIG = 96_593_634;
-    private static final int PLAYLIST_OPTIONS = 7;
-    private static final int PLAYLIST_COLLECTION_OPTIONS = 2;
-    // Both option messages encode their value as a field-2 varint.
-    private static final byte OPTION_VALUE_TAG = 0x10;
-    private static final byte ORDERED_PLAYBACK = 0x02;
+    private static final int ORDERED_PLAYBACK = 2;
     private static final int UPLOADED_COLLECTION = 1;
     private static final int CATALOG_COLLECTION = 2;
 
     /** Ordered playlist commands for podcasts and uploaded music. */
     static byte[] orderedPlaylistCommand(String playlistId, boolean uploaded) {
         if (playlistId.isEmpty()) return new byte[0];
-        // Auto's ordered WatchPlaylist action distinguishes catalog playlists from uploads.
-        byte[] playbackOptions = {OPTION_VALUE_TAG, ORDERED_PLAYBACK};
-        byte[] collectionOptions = {OPTION_VALUE_TAG, (byte) (uploaded ? UPLOADED_COLLECTION : CATALOG_COLLECTION)};
-        byte[] collectionConfig = message(PLAYLIST_COLLECTION_OPTIONS, collectionOptions);
-        byte[] musicConfig = message(PLAYLIST_MUSIC_CONFIG, collectionConfig);
-        byte[] supportedConfig = message(PLAYLIST_SUPPORTED_CONFIG, musicConfig);
-        return message(WATCH_PLAYLIST,
-                message(PLAYLIST_ID, playlistId.getBytes(StandardCharsets.UTF_8)),
-                message(PLAYLIST_OPTIONS, playbackOptions),
-                supportedConfig);
-    }
-
-    private static byte[] message(int field, byte[]... values) {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        int size = 0;
-        for (byte[] value : values) size += value.length;
-        writeVarint(output, (field << 3) | WIRE_LENGTH_DELIMITED);
-        writeVarint(output, size);
-        for (byte[] value : values) output.write(value, 0, value.length);
-        return output.toByteArray();
-    }
-
-    private static void writeVarint(ByteArrayOutputStream output, int value) {
-        while ((value & ~0x7F) != 0) {
-            output.write((value & 0x7F) | 0x80);
-            value >>>= 7;
-        }
-        output.write(value);
+        var collection = PlaylistCollectionOptions.newBuilder()
+                .setCollectionType(uploaded ? UPLOADED_COLLECTION : CATALOG_COLLECTION);
+        var playlist = WatchPlaylistEndpoint.newBuilder()
+                .setPlaylistId(playlistId)
+                .setPlaybackOptions(PlaylistPlaybackOptions.newBuilder().setPlaybackOrder(ORDERED_PLAYBACK))
+                .setSupportedConfig(PlaylistSupportedConfig.newBuilder()
+                        .setMusicConfig(MusicPlaylistConfig.newBuilder().setCollectionOptions(collection)));
+        return NavigationEndpoint.newBuilder().setWatchPlaylistEndpoint(playlist).build().toByteArray();
     }
 
     /** Android Auto can project while the phone remains in its normal UI mode. */
@@ -717,7 +704,7 @@ public final class AndroidAutoPatch {
 
     // Refresh after Library changes
 
-    /** Injection point. Remembers the browser subscriptions used to refresh Settings and Library folders. */
+    /** Injection point. Saves folder subscriptions for later refreshes. */
     public static synchronized void rememberSubscription(FolderReload browserService,
             @Nullable String parentMediaId, Object connection) {
         if (parentMediaId == null) return;
@@ -788,8 +775,6 @@ public final class AndroidAutoPatch {
     // Root requests that wait for a root fetch YTM started for an earlier request, keyed by that fetch.
     @GuardedBy("AndroidAutoPatch.class")
     private static final Map<Object, List<Runnable>> waitingForRoot = new WeakHashMap<>();
-    @GuardedBy("AndroidAutoPatch.class")
-    private static final Set<BrowseRequest> deferredRoots = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
      * Injection point. Replaces YTM's check for a root fetch that is already loading for the same client.
@@ -810,7 +795,6 @@ public final class AndroidAutoPatch {
                         request.patch_deliverBrowseItems(Collections.emptyList());
                     }
                 });
-                deferredRoots.add(request);
                 return ROOT_REQUEST_QUEUED;
             }
         } catch (RuntimeException ex) {
@@ -890,14 +874,7 @@ public final class AndroidAutoPatch {
         try {
             String parentMediaId = request.patch_getRequestedMediaId();
             if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
-                // A queued request gets the tabs that were just initialized for the earlier request.
-                // Initializing them again would clear the folder subscriptions and Home's podcast folders.
-                if (deferredRoots.remove(request) && ytmItems != null && ytmItems.size() == 2
-                        && Objects.equals(ytmItems.get(0).a(), homeMediaId)
-                        && Objects.equals(ytmItems.get(1).a(), libraryMediaId)) {
-                    return addTabs(ytmItems);
-                }
-                return initializeTabs(ytmItems);
+                return updateTabs(ytmItems);
             }
             if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
                 return new ArrayList<>(cachedPodcastFolders);
@@ -937,50 +914,75 @@ public final class AndroidAutoPatch {
 
     @Nullable
     @GuardedBy("AndroidAutoPatch.class")
-    private static List<MediaBrowserCompat.MediaItem> initializeTabs(
+    private static List<MediaBrowserCompat.MediaItem> updateTabs(
             @Nullable List<MediaBrowserCompat.MediaItem> rootTabs) {
-        boolean hasNativeFolder = false;
-        if (rootTabs != null) {
-            for (MediaBrowserCompat.MediaItem tab : rootTabs) {
-                // The tabs were already updated.
-                if (SETTINGS_MEDIA_ID.equals(tab.a())) return rootTabs;
-                if (isContentFolder(tab)) hasNativeFolder = true;
+        // YTM returns no tabs if the root fetch failed or is still loading.
+        // Another connection can still be using the tabs that loaded earlier.
+        if (rootTabs == null || rootTabs.isEmpty()) return rootTabs;
+
+        List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs.size() + 2);
+        String homeId = null;
+        String libraryId = null;
+        int podcastsIndex = -1;
+        boolean hasNativePodcasts = false;
+        boolean hasContent = false;
+        for (MediaBrowserCompat.MediaItem tab : rootTabs) {
+            tabs.add(tab);
+            if (!isContentFolder(tab)) continue;
+            hasContent = true;
+            String id = tab.a();
+            switch (containerType(id)) {
+                case HOME -> {
+                    homeId = id;
+                    podcastsIndex = tabs.size();
+                }
+                case LIBRARY -> libraryId = id;
+                case PODCASTS -> hasNativePodcasts = true;
             }
         }
 
-        // Do not reuse saved requests or podcast content after the main tabs reload.
-        librarySubscription = null;
-        podcastsSubscription = null;
-        homeSubscription = null;
-        mainHandler.removeCallbacks(REFRESH_LIBRARY);
-        homeMediaId = null;
-        libraryMediaId = null;
-        cachedPodcastFolders = Collections.emptyList();
-
-        if (rootTabs == null || !hasNativeFolder) return rootTabs;
-        // The patch reads the Home and Library IDs by position when YTM returns just those two tabs.
-        // Offline, YTM can put Last played between them in 9.30.53 or Podcasts in 9.46.51.
-        // Without the size check, the middle tab would open Library and 9.46.51 would show Podcasts twice.
-        if (rootTabs.size() == 2) {
-            homeMediaId = rootTabs.get(0).a();
-            libraryMediaId = rootTabs.get(1).a();
+        // Android Auto can request the same tabs again, such as from a second connection at startup.
+        // Keep the folder subscriptions and the cached podcast folders.
+        if (!Objects.equals(homeId, homeMediaId) || !Objects.equals(libraryId, libraryMediaId)) {
+            resetBrowseTabs(homeId, libraryId);
         }
-        return addTabs(rootTabs);
-    }
-
-    /** Adds Podcasts when YTM returns just Home and Library, and adds Settings at the end. */
-    private static List<MediaBrowserCompat.MediaItem> addTabs(List<MediaBrowserCompat.MediaItem> rootTabs) {
-        List<MediaBrowserCompat.MediaItem> tabs = new ArrayList<>(rootTabs);
-        if (rootTabs.size() == 2) {
-            tabs.add(1, podcastsTab());
-        }
-        tabs.add(AndroidAutoSettingsTab.settingsTab());
+        if (podcastsIndex >= 0 && !hasNativePodcasts) tabs.add(podcastsIndex, podcastsTab());
+        if (hasContent) tabs.add(AndroidAutoSettingsTab.settingsTab());
         return tabs;
     }
 
+    /** Reads a tab's type from its media ID, like YTM does. */
+    private static ContainerType containerType(String mediaId) {
+        // YTM serves these from local content, such as Downloads and the offline Home and Library.
+        // The IDs are plain text, not an encoded message.
+        if (mediaId.startsWith(LOCAL_MEDIA_ID_PREFIX)) return ContainerType.UNKNOWN;
+        try {
+            return MediaItemInfo.parseFrom(Base64.decode(mediaId, Base64.URL_SAFE)).getContainerType();
+        } catch (IllegalArgumentException | InvalidProtocolBufferException ex) {
+            Logger.printDebug(() -> "Could not read Android Auto tab ID: " + mediaId, ex);
+            return ContainerType.UNKNOWN;
+        }
+    }
+
+    @GuardedBy("AndroidAutoPatch.class")
+    private static void resetBrowseTabs(@Nullable String homeId, @Nullable String libraryId) {
+        Logger.printDebug(() -> "Android Auto Home: " + homeId + " Library: " + libraryId);
+        homeMediaId = homeId;
+        libraryMediaId = libraryId;
+        librarySubscription = null;
+        podcastsSubscription = null;
+        homeSubscription = null;
+        cachedPodcastFolders = Collections.emptyList();
+        mainHandler.removeCallbacks(REFRESH_LIBRARY);
+    }
+
     private static boolean isContentFolder(MediaBrowserCompat.MediaItem item) {
-        // YTM also marks its upgrade prompt as browsable.
-        return item.b() && !UPGRADE_PROMPT_MEDIA_ID.equals(item.a());
+        if (!item.b()) return false;
+        // YTM also marks its upgrade prompt and other promotions as browsable.
+        String id = item.a();
+        Bundle extras = ((MediaItemExtras) item).patch_getExtras();
+        return !UPGRADE_PROMPT_MEDIA_ID.equals(id) && !DEFAULT_PROMOTION_MEDIA_ID.equals(id)
+                && (extras == null || !extras.getBoolean(IS_PROMOTION));
     }
 
     private static MediaBrowserCompat.MediaItem podcastsTab() {
@@ -1023,7 +1025,7 @@ public final class AndroidAutoPatch {
         // Always queue the reload so handleBrowseResult releases its lock first.
         mainHandler.post(() -> {
             synchronized (AndroidAutoPatch.class) {
-                // Reloading the main tabs or reconnecting replaces the saved Podcasts request.
+                // Only reload the subscription that was active when Home supplied these podcast folders.
                 if (podcastsSubscription != subscription) return;
             }
             subscription.reload(false);
@@ -1067,7 +1069,7 @@ public final class AndroidAutoPatch {
 
         private void requestPage(String continuation) {
             requestPage(browseId, continuation, response -> {
-                HomePage page = homePage(response.patch_responseBytes());
+                HomePage page = homePage(response);
                 synchronized (this) { collected.addAll(page.items()); }
                 if (page.continuation().isEmpty() || !continuations.add(page.continuation())) {
                     finishCollected();
@@ -1167,7 +1169,7 @@ public final class AndroidAutoPatch {
             LibraryFolder folder = podcastPage ? null : LibraryFolder.valueOf(mediaId.substring(LIBRARY_PREFIX.length()));
             String browseId = podcastPage ? Uri.decode(mediaId.substring(PODCAST_COLLECTION_PREFIX.length())) : folder.browseId;
             requestPage(browseId, "", response -> {
-                var phoneItems = libraryItems(response.patch_responseBytes());
+                var phoneItems = libraryItems(response);
                 finish(podcastPage ? playableItems(phoneItems, CONTENT_STYLE_LIST) : libraryMediaItems(folder, phoneItems));
             });
         }
@@ -1312,7 +1314,7 @@ public final class AndroidAutoPatch {
 
         abstract void load();
 
-        final void requestPage(String browseId, String continuation, Consumer<PhoneBrowseResponse> receive) {
+        final void requestPage(String browseId, String continuation, Consumer<BrowseResponse> receive) {
             if (finished.get()) return;
             try {
                 if (!current(client)) {
@@ -1331,8 +1333,7 @@ public final class AndroidAutoPatch {
                 future.addListener(() -> {
                     if (finished.get()) return;
                     try {
-                        PhoneBrowseResponse response = future.get();
-                        receive.accept(response);
+                        receive.accept(BrowseResponse.parseFrom(future.get().patch_getResponse().toByteArray()));
                     } catch (Exception ex) {
                         Logger.printException(() -> "Could not read Android Auto page", ex);
                         timedOut();

@@ -25,7 +25,7 @@ import java.util.List;
 public final class ProtoMessage {
     private static final int WIRE_VARINT = WireFormat.WIRETYPE_VARINT;
     private static final int WIRE_FIXED64 = WireFormat.WIRETYPE_FIXED64;
-    static final int WIRE_LENGTH_DELIMITED = WireFormat.WIRETYPE_LENGTH_DELIMITED;
+    private static final int WIRE_LENGTH_DELIMITED = WireFormat.WIRETYPE_LENGTH_DELIMITED;
     private static final int WIRE_FIXED32 = WireFormat.WIRETYPE_FIXED32;
     static final ProtoMessage EMPTY = new ProtoMessage(new byte[0]);
     private final byte[] data;

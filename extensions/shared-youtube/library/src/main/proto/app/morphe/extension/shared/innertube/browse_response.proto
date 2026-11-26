@@ -8,7 +8,28 @@ option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
 option java_outer_classname = "BrowseResponseOuterClass";
 
-// Tab of singleColumnBrowseResultsRenderer.
+message BrowseResponse {
+    PageContents contents = 9;
+    PageContents continuationContents = 10;
+}
+
+message SearchResponse {
+    PageContents contents = 4;
+}
+
+message PageContents {
+    // Kept as bytes, because Android Auto parses the sections separately.
+    // Optional, because an empty section list or message is a valid result.
+    optional bytes sectionListRenderer = 49399797;
+    optional bytes messageRenderer = 58508690;
+    TabbedResults singleColumnBrowseResultsRenderer = 58173949;
+    TabbedResults tabbedSearchResultsRenderer = 60498879;
+}
+
+message TabbedResults {
+    repeated BrowseTab tabs = 1;
+}
+
 message BrowseTab {
     TabRenderer tabRenderer = 58174010;
 }
@@ -16,5 +37,6 @@ message BrowseTab {
 message TabRenderer {
     NavigationEndpoint endpoint = 1;
     bool selected = 3;
+    PageContents content = 4;
     string tabIdentifier = 11;
 }
