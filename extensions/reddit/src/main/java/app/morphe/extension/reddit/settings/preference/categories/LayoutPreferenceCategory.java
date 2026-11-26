@@ -10,7 +10,6 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AlwaysShowHidePatch;
@@ -66,7 +65,6 @@ import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreferenc
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
 import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
 import app.morphe.extension.reddit.settings.preference.PostSidePanelWidthPreference;
-import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
@@ -435,7 +433,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.COLLAPSE_ALL_COMMENTS
             ));
-            addIndentedPreference(new CustomDialogListPreference(
+            addIndentedPreference(this, new CustomDialogListPreference(
                     context,
                     Settings.COLLAPSE_ALL_COMMENTS_SCOPE
             ));
@@ -446,7 +444,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.COLORIZE_COMMENT_INDENT_LINES
             ));
-            addIndentedPreference(new CustomDialogListPreference(
+            addIndentedPreference(this, new CustomDialogListPreference(
                     context,
                     Settings.COLORIZE_COMMENT_INDENT_LINES_PALETTE
             ));
@@ -464,7 +462,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.TABLET_GRID_FEED
             ));
-            addIndentedPreference(new CustomDialogListPreference(
+            addIndentedPreference(this, new CustomDialogListPreference(
                     context,
                     Settings.TABLET_GRID_COLUMNS
             ));
@@ -475,7 +473,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.FEED_AUTO_SCROLL
             ));
-            addIndentedPreference(new CustomDialogListPreference(
+            addIndentedPreference(this, new CustomDialogListPreference(
                     context,
                     Settings.FEED_AUTO_SCROLL_SPEED
             ));
@@ -486,12 +484,12 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.POST_SIDE_PANEL
             ));
-            addIndentedPreference(new PostSidePanelWidthPreference(context));
-            addIndentedPreference(new BooleanSettingPreference(
+            addIndentedPreference(this, new PostSidePanelWidthPreference(context));
+            addIndentedPreference(this, new BooleanSettingPreference(
                     context,
                     Settings.POST_SIDE_PANEL_REMEMBER_WIDTH
             ));
-            addIndentedPreference(new CustomDialogListPreference(
+            addIndentedPreference(this, new CustomDialogListPreference(
                     context,
                     Settings.POST_SIDE_PANEL_DIM
             ));
@@ -505,10 +503,5 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.SHOW_FLAIRS_IN_HOME_FEED
             ));
         }
-    }
-
-    private void addIndentedPreference(Preference preference) {
-        addPreference(preference);
-        RedditSettingsStyle.setIndented(preference);
     }
 }

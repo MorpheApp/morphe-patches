@@ -45,7 +45,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
-import app.morphe.extension.shared.theme.ThemeUtils;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function2;
 
@@ -438,9 +437,7 @@ public class RedditActivityHook {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Activity activity = getActivity();
-            final int appBackgroundColor = RedditSettingsStyle.isModernStyle()
-                    ? RedditSettingsStyle.getBackgroundColor()
-                    : ThemeUtils.getAppBackgroundColor();
+            final int appBackgroundColor = RedditSettingsStyle.getSettingsBackgroundColor();
 
             // Ensure the dialog window fills the screen and shows the status bar.
             Window window = Objects.requireNonNull(getDialog().getWindow());
@@ -461,7 +458,7 @@ public class RedditActivityHook {
             RedditSettingsStyle.applyToolbarElevation(toolbarParent);
 
             Toolbar toolbar = RedditSettingsStyle.createToolbar(activity, MORPHE_LABEL, this::closeSettings);
-            toolbarParent.addView(toolbar, new FrameLayout.LayoutParams(-1, actionBarSize));
+            toolbarParent.addView(toolbar);
 
             FrameLayout searchContainer = (FrameLayout) inflater.inflate(
                     LAYOUT_MORPHE_SETTINGS_SEARCH_BAR, toolbarParent, false);
