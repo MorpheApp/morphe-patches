@@ -207,11 +207,16 @@ public class FeedCardLayoutPatch {
      */
     private static volatile boolean newServerCardsShown;
 
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     /**
      * @return If the lists draw the cards: with the card layout, or with the default layout
      *         once the cards of the newer A/B test are shown.
      */
-    private static boolean listsDrawCards() {
+    public static boolean listsDrawCards() {
         return CARD_LAYOUT || newServerCardsShown;
     }
 

@@ -60,6 +60,7 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -100,6 +101,9 @@ public class ThemePatch extends BaseThemePatch {
         try {
             if (color == DARK_CHIP_AND_CARD_COLOR
                     && !ThemeColorPatch.isAppDefaultColor()
+                    // A feed without cards has this color only in places that are themed,
+                    // such as the header of the Shorts shelf.
+                    && (!FeedCardLayoutPatch.isPatchIncluded() || FeedCardLayoutPatch.listsDrawCards())
                     && isFeedItem(drawable)) {
                 // Only exact colors are themed. The lowest bit of green is not visible, and blue is not used
                 // because the feed card layout hook flips its lowest bit, which would undo the change.
