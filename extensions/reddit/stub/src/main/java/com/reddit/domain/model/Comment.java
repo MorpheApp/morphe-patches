@@ -14,6 +14,14 @@ public final class Comment extends IComment {
         throw new UnsupportedOperationException("Stub");
     }
 
+    public AccountType getAccountType() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public boolean getStickied() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
     /**
      * Added during patching by the Remember collapsed comments and AutoModerator comments patches.
      */
