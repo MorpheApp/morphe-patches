@@ -51,7 +51,12 @@ public class SpoofVideoStreamsPatch {
             }
         }
 
+        // Clients with plain stream urls first (the player loads them by itself, in RAM),
+        // then the SABR clients as a fallback.
         List<ClientType> availableClients = List.of(
+                ClientType.VISIONOS_1_02, // visionOS
+                ClientType.VISIONOS_1_06, // visionOS Experimental
+                ClientType.TV_SIMPLY,
                 ClientType.TV_SABR,
                 ClientType.ANDROID_CREATOR
                 // If not signed in to Android VR, there may be playback issues.

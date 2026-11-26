@@ -121,6 +121,15 @@ import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 public class Settings extends SharedYouTubeSettings {
     // Video
     public static final EnumSetting<PlaybackBufferSize> PLAYBACK_BUFFER_SIZE = new EnumSetting<>("morphe_playback_buffer_size", PlaybackBufferSize.DEFAULT, true);
+    public static final BooleanSetting CUSTOM_BUFFER = new BooleanSetting("morphe_custom_buffer", TRUE, true);
+    public static final IntegerSetting CUSTOM_BUFFER_FORWARD_MAX = new IntegerSetting("morphe_custom_buffer_forward_max", 120, false, parent(CUSTOM_BUFFER));
+    public static final IntegerSetting CUSTOM_BUFFER_RESUME_BELOW = new IntegerSetting("morphe_custom_buffer_resume_below", 20, false, parent(CUSTOM_BUFFER));
+    public static final IntegerSetting CUSTOM_BUFFER_BACK = new IntegerSetting("morphe_custom_buffer_back", 21, false, parent(CUSTOM_BUFFER));
+    public static final BooleanSetting CUSTOM_BUFFER_DONATE = new BooleanSetting("morphe_custom_buffer_donate", TRUE, false, parent(CUSTOM_BUFFER));
+    public static final IntegerSetting CUSTOM_BUFFER_SABR_FORWARD_MAX = new IntegerSetting("morphe_custom_buffer_sabr_forward_max", 120, false, parent(CUSTOM_BUFFER));
+    public static final IntegerSetting CUSTOM_BUFFER_SABR_BACK = new IntegerSetting("morphe_custom_buffer_sabr_back", 30, false, parent(CUSTOM_BUFFER));
+    public static final IntegerSetting CUSTOM_BUFFER_RAM_MB = new IntegerSetting("morphe_custom_buffer_ram_mb", 384, false, parent(CUSTOM_BUFFER));
+    public static final BooleanSetting CUSTOM_BUFFER_DISABLE_DISK_CACHE = new BooleanSetting("morphe_custom_buffer_disable_disk_cache", TRUE, true);
     public static final IntegerSetting VIDEO_DELAY = new IntegerSetting("morphe_video_delay", 0);
     public static final BooleanSetting VIDEO_DELAY_BLUETOOTH_ONLY = new BooleanSetting("morphe_video_delay_bluetooth_only", TRUE);
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);

@@ -1762,6 +1762,28 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_playback_buffer_size_entry_medium">Medium</string>
     <string name="morphe_playback_buffer_size_entry_maximum">Maximum</string>
 
+    <!-- video.buffer.customBufferPatch -->
+    <string name="morphe_custom_buffer_screen_title">Custom buffer</string>
+    <string name="morphe_custom_buffer_screen_summary">Forward buffer, back buffer and RAM limit in seconds and MB</string>
+    <string name="morphe_custom_buffer_title">Enable custom buffer</string>
+    <string name="morphe_custom_buffer_summary">Uses the values below instead of the YouTube buffer and the Playback buffer size option</string>
+    <string name="morphe_custom_buffer_forward_max_title">Forward buffer (seconds)</string>
+    <string name="morphe_custom_buffer_forward_max_summary">visionOS / TV Simply: stops loading when this much video is loaded ahead</string>
+    <string name="morphe_custom_buffer_resume_below_title">Resume loading below (seconds)</string>
+    <string name="morphe_custom_buffer_resume_below_summary">After loading stops, starts again when less than this is loaded ahead. A lower value means fewer, longer downloads</string>
+    <string name="morphe_custom_buffer_back_title">Back buffer (seconds)</string>
+    <string name="morphe_custom_buffer_back_summary">visionOS / TV Simply: played video kept in RAM, so seeking back does not download again</string>
+    <string name="morphe_custom_buffer_donate_title">Donate unused buffer</string>
+    <string name="morphe_custom_buffer_donate_summary">Keeps played video until new video is loaded: the back buffer also gets the unused part of the forward buffer</string>
+    <string name="morphe_custom_buffer_sabr_forward_max_title">SABR forward buffer (seconds)</string>
+    <string name="morphe_custom_buffer_sabr_forward_max_summary">SABR clients (TV, Android Studio, no spoofing): stops loading at this limit. Below it, the server paces loading</string>
+    <string name="morphe_custom_buffer_sabr_back_title">SABR back buffer (seconds)</string>
+    <string name="morphe_custom_buffer_sabr_back_summary">SABR clients: played video kept in RAM. No donation</string>
+    <string name="morphe_custom_buffer_ram_mb_title">RAM limit (MB)</string>
+    <string name="morphe_custom_buffer_ram_mb_summary">Maximum RAM for the forward and back buffer together (16-384). Loading stops when it is full</string>
+    <string name="morphe_custom_buffer_disable_disk_cache_title">Disable disk cache</string>
+    <string name="morphe_custom_buffer_disable_disk_cache_summary">Keeps video in RAM only and does not write it to storage</string>
+
     <!-- video.delay.videoDelayPatch -->
     <string name="morphe_video_delay_title">Video delay</string>
     <string name="morphe_video_delay_summary">Delays the video to keep it in sync with laggy audio, such as Bluetooth headphones (0-5000 ms)</string>

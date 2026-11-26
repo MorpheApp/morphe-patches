@@ -285,6 +285,15 @@ public class StreamingDataRequest {
         return client != null && client.requireSABR;
     }
 
+    /**
+     * @return If the streams given to the player for the video are of a spoofed client with
+     *         stream urls (not SABR). False if unknown or if the player uses the streams of the app.
+     */
+    public static boolean playerClientUsesStreamUrls(@Nullable String videoId) {
+        ClientType client = videoId == null ? null : playerClients.get(videoId);
+        return client != null && !client.requireSABR;
+    }
+
     private final String videoId;
     @Nullable
     private final String authorization;
