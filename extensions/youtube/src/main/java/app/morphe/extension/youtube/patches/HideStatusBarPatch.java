@@ -483,7 +483,6 @@ public final class HideStatusBarPatch {
                     }
                     if (!wasApplied) decorView.requestApplyInsets();
                 } else if (applied) {
-                    applied = false;
                     // Do not force the status bar visible over YouTube's normal fullscreen
                     // transition or PiP. YouTube owns the bars in those states.
                     boolean stockFullscreen = type == PlayerType.WATCH_WHILE_FULLSCREEN
@@ -494,10 +493,11 @@ public final class HideStatusBarPatch {
                     if (!stockFullscreen) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                             WindowInsetsController controller = window.getInsetsController();
-                            if (controller != null) {
-                                controller.setSystemBarsBehavior(previousBarsBehavior);
-                                controller.show(WindowInsets.Type.statusBars());
-                            }
+                            // The window may temporarily have no controller during a posture change.
+                            // Keep the restoration pending for the next layout or focus update.
+                            if (controller == null) return;
+                            controller.setSystemBarsBehavior(previousBarsBehavior);
+                            controller.show(WindowInsets.Type.statusBars());
                         } else {
                             int mask = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
                             decorView.setSystemUiVisibility((decorView.getSystemUiVisibility() & ~mask)
@@ -510,8 +510,10 @@ public final class HideStatusBarPatch {
                             view.setVisibility(entry.getValue());
                         }
                     }
-                    hiddenBackgrounds.clear();
+                    // Release ownership only after restoration succeeds, so a failed update can retry.
                     decorView.requestApplyInsets();
+                    hiddenBackgrounds.clear();
+                    applied = false;
                     Logger.printDebug(() -> "Tabletop status bar: release, player=" + type);
                 }
             } catch (Exception ex) {
