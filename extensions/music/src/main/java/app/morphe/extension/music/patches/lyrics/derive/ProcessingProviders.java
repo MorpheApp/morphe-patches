@@ -53,10 +53,11 @@ public final class ProcessingProviders {
     public static final List<EndpointPreset> ENDPOINT_PRESETS = List.of(
             EndpointPreset.of("OpenAI", "https://api.openai.com/v1"),
             EndpointPreset.of("Anthropic Claude", "https://api.anthropic.com/v1"),
-            // Its compatibility layer lists no models and wants the "models/" form.
+            // Its compatibility layer wants the "models/" form. The -latest alias follows the
+            // newest Flash model, so the preset does not end on a retired one.
             EndpointPreset.of("Gemini",
                     "https://generativelanguage.googleapis.com/v1beta/openai",
-                    "models/gemini-2.5-flash"),
+                    "models/gemini-flash-latest"),
             EndpointPreset.of("OpenRouter", "https://openrouter.ai/api/v1"),
             EndpointPreset.of("DeepSeek", "https://api.deepseek.com/v1"),
             EndpointPreset.of("Groq", "https://api.groq.com/openai/v1"),

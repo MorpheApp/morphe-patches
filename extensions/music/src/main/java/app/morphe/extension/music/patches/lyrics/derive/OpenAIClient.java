@@ -7,14 +7,18 @@
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -110,6 +114,8 @@ public final class OpenAIClient {
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
     private static final int MAX_CHARS = 3000;
+    /** Long enough for a whole error body, so its message can be read from the JSON. */
+    private static final int MAX_ERROR_CHARS = 4000;
     private static final String MODELS_PATH_SUFFIX = "/models";
     private static final String CHAT_PATH = "/chat/completions";
     private static final String COMPLETIONS_PATH = "/completions";
@@ -129,19 +135,22 @@ public final class OpenAIClient {
 
     /** Validates with the stored extra headers and body. */
     public static boolean validateConfig(String baseUrl, String apiToken, String model) {
-        return validateConfig(baseUrl, apiToken, model,
-                Settings.LYRICS_AI_EXTRA_HEADERS.get(), Settings.LYRICS_AI_EXTRA_BODY.get());
+        return validationError(baseUrl, apiToken, model,
+                Settings.LYRICS_AI_EXTRA_HEADERS.get(), Settings.LYRICS_AI_EXTRA_BODY.get()) == null;
     }
 
     /**
      * @param extraHeaders The headers to send, which may not be saved yet.
      * @param extraBody    The body keys to send, which may not be saved yet.
+     * @return Null when the endpoint answers, otherwise why it did not. An endpoint that explains
+     *         its refusal is quoted, so a retired model or a rejected key says so.
      */
-    public static boolean validateConfig(String baseUrl, String apiToken, String model,
+    @Nullable
+    public static String validationError(String baseUrl, String apiToken, String model,
                                          String extraHeaders, String extraBody) {
         if (baseUrl == null || baseUrl.trim().isEmpty()
                 || model == null || model.trim().isEmpty()) {
-            return false;
+            return str("morphe_music_lyrics_ai_config_status_invalid");
         }
         HttpURLConnection conn = null;
         try {
@@ -168,10 +177,17 @@ public final class OpenAIClient {
                 stream.write(payload);
             }
 
-            return conn.getResponseCode() == 200;
+            final int code = conn.getResponseCode();
+            if (code == 200) {
+                return null;
+            }
+            final String error = readErrorBody(conn);
+            Logger.printDebug(() -> "AI endpoint validation failed with " + code + ": " + error);
+            return errorMessage(code, error);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not validate the AI endpoint", ex);
-            return false;
+            final String message = ex.getMessage();
+            return message == null ? ex.getClass().getSimpleName() : message;
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -521,6 +537,55 @@ public final class OpenAIClient {
         } catch (Exception e) {
             Logger.printDebug(() -> "OpenAI request failed", e);
             return null;
+        }
+    }
+
+    /**
+     * The message of an error body, or the status code when the body has none. OpenAI-style
+     * endpoints answer {"error": {"message": ...}}, Gemini wraps that in an array, and some
+     * services put a plain message at the top level.
+     */
+    private static String errorMessage(int code, String body) {
+        String message = "";
+        try {
+            Object root = new JSONTokener(body.trim()).nextValue();
+            if (root instanceof JSONArray array && array.length() > 0) {
+                root = array.opt(0);
+            }
+            if (root instanceof JSONObject object) {
+                final Object error = object.opt("error");
+                if (error instanceof JSONObject detail) {
+                    message = detail.optString("message", "");
+                } else if (error instanceof String text) {
+                    message = text;
+                } else {
+                    message = object.optString("message", "");
+                }
+            }
+        } catch (JSONException ex) {
+            Logger.printDebug(() -> "The error body is not JSON", ex);
+        }
+        message = message.trim();
+        return message.isEmpty() ? "HTTP " + code : message;
+    }
+
+    /** The error body of a failed request, cut short, or empty when there is none. */
+    private static String readErrorBody(HttpURLConnection conn) {
+        try (InputStream stream = conn.getErrorStream()) {
+            if (stream == null) {
+                return "";
+            }
+            StringBuilder sb = new StringBuilder(512);
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(stream, StandardCharsets.UTF_8))) {
+                String line;
+                while ((line = br.readLine()) != null && sb.length() < MAX_ERROR_CHARS) {
+                    sb.append(line);
+                }
+            }
+            return sb.length() > MAX_ERROR_CHARS ? sb.substring(0, MAX_ERROR_CHARS) : sb.toString();
+        } catch (IOException ex) {
+            return "";
         }
     }
 
