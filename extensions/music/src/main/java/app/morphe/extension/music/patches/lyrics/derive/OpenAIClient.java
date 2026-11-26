@@ -114,8 +114,6 @@ public final class OpenAIClient {
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
     private static final int MAX_CHARS = 3000;
-    /** Long enough for a whole error body, so its message can be read from the JSON. */
-    private static final int MAX_ERROR_CHARS = 4000;
     private static final String MODELS_PATH_SUFFIX = "/models";
     private static final String CHAT_PATH = "/chat/completions";
     private static final String COMPLETIONS_PATH = "/completions";
@@ -546,9 +544,13 @@ public final class OpenAIClient {
      * services put a plain message at the top level.
      */
     private static String errorMessage(int code, String body) {
+        final String fallback = "HTTP " + code;
+        if (body.trim().isEmpty()) {
+            return fallback;
+        }
         String message = "";
         try {
-            Object root = new JSONTokener(body.trim()).nextValue();
+            Object root = new JSONTokener(body).nextValue();
             if (root instanceof JSONArray array && array.length() > 0) {
                 root = array.opt(0);
             }
@@ -566,33 +568,31 @@ public final class OpenAIClient {
             Logger.printDebug(() -> "The error body is not JSON", ex);
         }
         message = message.trim();
-        return message.isEmpty() ? "HTTP " + code : message;
+        return message.isEmpty() ? fallback : message;
     }
 
-    /** The error body of a failed request, cut short, or empty when there is none. */
+    /** The error body of a failed request, or empty when there is none. */
     private static String readErrorBody(HttpURLConnection conn) {
-        try (InputStream stream = conn.getErrorStream()) {
-            if (stream == null) {
-                return "";
-            }
-            StringBuilder sb = new StringBuilder(512);
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(stream, StandardCharsets.UTF_8))) {
-                String line;
-                while ((line = br.readLine()) != null && sb.length() < MAX_ERROR_CHARS) {
-                    sb.append(line);
-                }
-            }
-            return sb.length() > MAX_ERROR_CHARS ? sb.substring(0, MAX_ERROR_CHARS) : sb.toString();
+        final InputStream stream = conn.getErrorStream();
+        if (stream == null) {
+            return "";
+        }
+        try {
+            return readStream(stream);
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not read the error body", ex);
             return "";
         }
     }
 
     static String readResponse(HttpURLConnection conn) throws IOException {
+        return readStream(conn.getInputStream());
+    }
+
+    private static String readStream(InputStream stream) throws IOException {
         StringBuilder sb = new StringBuilder(512);
         try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+                new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             String line;
             while ((line = br.readLine()) != null) {
                 sb.append(line);

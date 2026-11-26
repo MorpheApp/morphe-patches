@@ -170,9 +170,7 @@ final class LyricsProviderConfigDialog {
             final String token = tokenInput.getText().toString().trim();
             final String extraHeaders = extraHeadersInput.getText().toString().trim();
             final String extraBody = extraBodyInput.getText().toString().trim();
-            test(context,
-                    () -> OpenAIClient.validationError(url, token, model, extraHeaders, extraBody),
-                    model);
+            testConnection(context, url, token, model, extraHeaders, extraBody);
         });
         addReasoningRow(content);
         final PromptField promptField = addPromptSection(content, prompt,
@@ -360,14 +358,12 @@ final class LyricsProviderConfigDialog {
         return content;
     }
 
-    /**
-     * @param request Returns null when the endpoint answers, otherwise why it did not.
-     * @param model   Named in the toast when the endpoint answers.
-     */
-    private static void test(Activity context, Supplier<String> request, String model) {
+    private static void testConnection(Activity context, String url, String token, String model,
+                                       String extraHeaders, String extraBody) {
         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
         Utils.runOnBackgroundThread(() -> {
-            final String error = request.get();
+            final String error = OpenAIClient.validationError(
+                    url, token, model, extraHeaders, extraBody);
             Utils.runOnMainThread(() -> {
                 if (error == null) {
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_connected",
