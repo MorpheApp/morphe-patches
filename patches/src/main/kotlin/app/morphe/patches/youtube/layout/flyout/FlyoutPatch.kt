@@ -62,10 +62,7 @@ val flyoutPatch = patch(
                 addPatchInterface(
                     EXTENSION_PROTOCOL_BUFFER_INTERFACE,
                     "patch_getBuffer",
-                    """
-                        iget-object v0, p0, $bufferField
-                        return-object v0
-                    """
+                    bufferField
                 )
             }
         }
@@ -90,10 +87,7 @@ val flyoutPatch = patch(
                 addPatchInterface(
                     EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE,
                     "patch_getVideoId",
-                    """
-                        iget-object v0, p0, $videoIdStringField
-                        return-object v0
-                    """
+                    videoIdStringField
                 )
             }
         }

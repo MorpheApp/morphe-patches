@@ -1102,21 +1102,14 @@ val crossfadePatch = patch(
         medialibPlayerClass.addPatchInterface(
             MEDIALIB_PLAYER_INTERFACE,
             "patch_playNextInQueue",
-            """
-                invoke-virtual { p0 }, $playNextInQueueMethod
-                return-void
-            """
+            playNextInQueueMethod
         )
         // Repeat-one reloads the cached descriptor instead of advancing the queue.
         val loadVideoMethod = LoadVideoFingerprint.method
         medialibPlayerClass.addPatchInterface(
             MEDIALIB_PLAYER_INTERFACE,
             "patch_loadVideoWith",
-            """
-                check-cast p1, ${loadVideoMethod.parameterTypes.first()}
-                invoke-virtual { p0, p1 }, $loadVideoMethod
-                return-void
-            """
+            loadVideoMethod
         )
 
         // 9.28+ merges the audio/video state provider with unrelated classes, so it is found

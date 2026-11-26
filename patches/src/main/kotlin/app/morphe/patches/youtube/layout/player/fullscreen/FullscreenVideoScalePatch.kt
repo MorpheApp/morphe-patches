@@ -115,10 +115,7 @@ val fullscreenVideoScalePatch = patch(
                 addPatchInterface(
                     EXTENSION_PLAYER_VIEW_INTERFACE,
                     "patch_getVideoView",
-                    """
-                        iget-object v0, p0, $videoViewField
-                        return-object v0
-                    """
+                    videoViewField
                 )
             }
         }

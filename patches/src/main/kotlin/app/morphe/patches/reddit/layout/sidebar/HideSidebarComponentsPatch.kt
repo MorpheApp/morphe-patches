@@ -89,10 +89,7 @@ val hideSidebarComponentsPatch = patch(
             fingerprint.classDef.addPatchInterface(
                 EXTENSION_TITLE_ITEM_INTERFACE,
                 "patch_getTitleResId",
-                """
-                    iget v0, p0, $titleResIdField
-                    return v0
-                """
+                titleResIdField
             )
         }
 

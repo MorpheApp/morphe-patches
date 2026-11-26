@@ -95,11 +95,7 @@ internal val composePatch = patch {
             addPatchInterface(
                 CONTENT_DRAW_SCOPE_INTERFACE,
                 "patch_getSize",
-                """
-                    invoke-interface { p0 }, ${DrawRoundRectFingerprint.instructionMatches[0].methodReference}
-                    move-result-wide v0
-                    return-wide v0
-                """
+                DrawRoundRectFingerprint.instructionMatches[0].methodReference
             )
             addPatchInterface(
                 CONTENT_DRAW_SCOPE_INTERFACE,

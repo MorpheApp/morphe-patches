@@ -24,6 +24,7 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenVideosFullscreenHookPatch;"
@@ -46,16 +47,13 @@ internal val openVideosFullscreenHookPatch = patch {
 
         // Implement fullscreen interface.
         mutableClassDefBy(fullScreenDefiningClass).apply {
-            fun addInterfaceMethod(name: String, methodCall: String) = addPatchInterface(
+            fun addInterfaceMethod(name: String, method: MethodReference) = addPatchInterface(
                 EXTENSION_FULLSCREEN_INTERFACE,
                 name,
-                """
-                    invoke-virtual { p0 }, $methodCall
-                    return-void
-                """
+                method
             )
 
-            addInterfaceMethod("patch_exitFullscreen", "$fullScreenMethod")
+            addInterfaceMethod("patch_exitFullscreen", fullScreenMethod)
 
             val enterFullscreenMethod = Fingerprint(
                 name = "onClick",
@@ -81,7 +79,7 @@ internal val openVideosFullscreenHookPatch = patch {
                 )
             ).instructionMatches[1].getMethodCalled()
 
-            addInterfaceMethod("patch_enterFullscreen", "$enterFullscreenMethod")
+            addInterfaceMethod("patch_enterFullscreen", enterFullscreenMethod)
         }
 
         // Pass the fullscreen interface object to extension code.

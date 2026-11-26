@@ -345,10 +345,7 @@ private fun addSummarizeItemToMenu() {
         addPatchInterface(
             MENU_ROW_ACCESS_INTERFACE,
             "patch_getMenuItem",
-            """
-                iget-object v0, p0, $rowMenuItemField
-                return-object v0
-            """
+            rowMenuItemField
         )
     }
 
@@ -361,10 +358,7 @@ private fun addSummarizeItemToMenu() {
             addPatchInterface(
                 MENU_ACCESS_INTERFACE,
                 "patch_getRows",
-                """
-                    iget-object v0, p0, ${menu.rowsField}
-                    return-object v0
-                """
+                menu.rowsField
             )
             addPatchInterface(
                 MENU_ACCESS_INTERFACE,
@@ -556,10 +550,7 @@ private fun addElementsResourceLoading(protos: Protos) {
         addPatchInterface(
             ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE,
             "patch_getUsedResources",
-            """
-                iget-object v0, p0, $usedResourcesField
-                return-object v0
-            """
+            usedResourcesField
         )
     }
 }

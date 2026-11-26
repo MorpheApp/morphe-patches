@@ -49,10 +49,7 @@ internal val translatedCaptionPensPatch = patch(
                 addPatchInterface(
                     EXTENSION_CAPTION_REQUEST_INTERFACE,
                     "patch_getCaptionTrack",
-                    """
-                        iget-object v0, p0, $trackField
-                        return-object v0
-                    """
+                    trackField
                 )
             }
 

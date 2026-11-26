@@ -314,10 +314,7 @@ private fun MutableClass.addCachedPostMethods(
     addPatchInterface(
         CACHED_POST_INTERFACE,
         "patch_getLinkId",
-        """
-            iget-object v0, p0, $linkIdField
-            return-object v0
-        """
+        linkIdField
     )
 
     addPatchInterface(CACHED_POST_INTERFACE, "patch_addHomeFlair", addHomeFlairSmali)

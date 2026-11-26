@@ -389,10 +389,7 @@ val videoInformationPatch = patch(
                 addPatchInterface(
                     EXTENSION_VIDEO_QUALITY_INTERFACE,
                     "patch_getQualityName",
-                    """
-                        iget-object v0, p0, $qualityNameField
-                        return-object v0
-                    """
+                    qualityNameField
                 )
 
                 addPatchInterface(
@@ -410,10 +407,7 @@ val videoInformationPatch = patch(
                 addPatchInterface(
                     EXTENSION_VIDEO_QUALITY_INTERFACE,
                     "patch_getFormatIds",
-                    """
-                        iget-object v0, p0, $formatIdsField
-                        return-object v0
-                    """
+                    formatIdsField
                 )
             }
         }

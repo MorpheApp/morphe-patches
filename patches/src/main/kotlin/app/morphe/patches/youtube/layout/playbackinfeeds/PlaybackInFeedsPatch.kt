@@ -127,20 +127,13 @@ val playbackInFeedsPatch = patch(
             addPatchInterface(
                 EXTENSION_CONTROLLER_INTERFACE,
                 "patch_getPlaybackInFeedsMode",
-                """
-                    invoke-virtual { p0 }, $getModeMethod
-                    move-result v0
-                    return v0
-                """
+                getModeMethod
             )
 
             addPatchInterface(
                 EXTENSION_CONTROLLER_INTERFACE,
                 "patch_setPlaybackInFeedsMode",
-                """
-                    invoke-virtual { p0, p1 }, $setModeMethod
-                    return-void
-                """
+                setModeMethod
             )
 
             // Hook the end of the constructor, since the fields this class uses

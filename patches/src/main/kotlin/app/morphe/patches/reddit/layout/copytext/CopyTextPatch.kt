@@ -341,10 +341,7 @@ val copyTextPatch = patch(
                 addPatchInterface(
                     EXTENSION_SELECTION_MANAGER_INTERFACE,
                     "patch_release",
-                    """
-                        invoke-virtual { p0 }, ${it.method}
-                        return-void
-                    """
+                    it.method
                 )
             }
 

@@ -32,19 +32,13 @@ internal fun installPlaylistTitle() {
         addPatchInterface(
             PLAYLIST_TITLE_INTERFACE,
             "patch_getPanel",
-            """
-                iget-object v0, p0, $panel
-                return-object v0
-            """
+            panel
         )
 
         addPatchInterface(
             PLAYLIST_TITLE_INTERFACE,
             "patch_getTitle",
-            """
-                iget-object v0, p0, $title
-                return-object v0
-            """
+            title
         )
     }
 

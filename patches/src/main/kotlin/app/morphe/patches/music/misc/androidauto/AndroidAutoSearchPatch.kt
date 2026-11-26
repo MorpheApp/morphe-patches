@@ -137,10 +137,7 @@ private fun hookSearchRequests() {
     searchRequestClass.addPatchInterface(
         SEARCH_REQUEST,
         "patch_deliverSearchResults",
-        """
-            invoke-virtual { p0, p1 }, $deliverSearchResultsMethod
-            return-void
-        """
+        deliverSearchResultsMethod
     )
     val contentSupplierClass = mutableClassDefBy(ContentSupplierFingerprint.originalMethod.definingClass)
     val handleSearchRequestMethod = contentSupplierClass.methods.single {

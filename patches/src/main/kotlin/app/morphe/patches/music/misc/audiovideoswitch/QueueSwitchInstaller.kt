@@ -69,11 +69,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
     manager.addPatchInterface(
         ACCESS,
         "patch_atvRemove",
-        """
-            check-cast p1, ${queue.itemType}
-            ${invokeKind(queue.remove)} {p0, p1}, ${queue.remove}
-            return-void
-        """
+        queue.remove
     )
     manager.addPatchInterface(
         ACCESS,

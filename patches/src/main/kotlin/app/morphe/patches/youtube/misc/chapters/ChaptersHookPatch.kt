@@ -46,30 +46,21 @@ val chaptersHookPatch = patch {
                 addPatchInterface(
                     EXTENSION_TIMELINE_MARKER_INTERFACE,
                     "patch_getStartMillis",
-                    """
-                        iget-wide v0, p0, $startMillis
-                        return-wide v0
-                    """
+                    startMillis
                 )
 
                 val endMillis = it.method.findFieldFromToString("endMillis=")
                 addPatchInterface(
                     EXTENSION_TIMELINE_MARKER_INTERFACE,
                     "patch_getEndMillis",
-                    """
-                        iget-wide v0, p0, $endMillis
-                        return-wide v0
-                    """
+                    endMillis
                 )
 
                 val title = it.method.findFieldFromToString("title=")
                 addPatchInterface(
                     EXTENSION_TIMELINE_MARKER_INTERFACE,
                     "patch_getTitle",
-                    """
-                        iget-object v0, p0, $title
-                        return-object v0
-                    """
+                    title
                 )
             }
         }

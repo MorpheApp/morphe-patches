@@ -69,20 +69,13 @@ internal val onTheGoStateHookPatch = patch {
                 addPatchInterface(
                     EXTENSION_STATE_INTERFACE,
                     "patch_setOnTheGoActive",
-                    """
-                        invoke-virtual { p0, p1 }, ${it.method}
-                        return-void
-                    """
+                    it.method
                 )
 
                 addPatchInterface(
                     EXTENSION_STATE_INTERFACE,
                     "patch_isOnTheGoActive",
-                    """
-                        invoke-virtual { p0 }, $stateGetter
-                        move-result v0
-                        return v0
-                    """
+                    stateGetter
                 )
             }
         }

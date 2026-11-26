@@ -106,10 +106,7 @@ val rememberVideoQualityPatch = patch(
             addPatchInterface(
                 EXTENSION_VIDEO_QUALITY_INTERFACE,
                 "patch_getResolution",
-                """
-                    iget v0, p0, $resolutionField
-                    return v0
-                """
+                resolutionField
             )
         }
 

@@ -160,11 +160,7 @@ val backgroundPlaybackPatch = patch(
                 addPatchInterface(
                     EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE,
                     "patch_isBackgroundPlaybackAllowed",
-                    """
-                        invoke-virtual { p0 }, ${BackgroundPlaybackSettingFingerprint.method}
-                        move-result v0
-                        return v0
-                    """
+                    BackgroundPlaybackSettingFingerprint.method
                 )
             }
 

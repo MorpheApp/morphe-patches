@@ -163,11 +163,7 @@ internal fun wireHistory() {
         it.classDef.addPatchInterface(
             $$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaylistMenu$ToolbarSource;",
             "patch_seriesTrackerMenu",
-            """
-                invoke-virtual { p0 }, ${it.method}
-                move-result-object v0
-                return-object v0
-            """
+            it.method
         )
     }
 }

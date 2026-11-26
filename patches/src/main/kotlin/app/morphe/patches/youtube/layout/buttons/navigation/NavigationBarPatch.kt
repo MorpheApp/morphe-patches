@@ -397,10 +397,7 @@ val navigationBarPatch = patch(
                 addPatchInterface(
                     PIVOT_BAR_ACCESS_INTERFACE,
                     "patch_getSystemButtonsRoom",
-                    """
-                        iget v0, p0, $roomField
-                        return v0
-                    """
+                    roomField
                 )
 
                 // The glass style keeps some room below the buttons, so the capsule floats above

@@ -47,10 +47,7 @@ internal fun installPlaylistNotificationControls(ownerType: String) {
         adapter.addPatchInterface(
             NOTIFICATION_CONTROLS_INTERFACE,
             "patch_getQueueMediaControls",
-            """
-                iget-object v0, p0, $owner
-                return-object v0
-            """
+            owner
         )
 
         // Recompute from the original adapter inputs on every refresh. Releasing

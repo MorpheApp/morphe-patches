@@ -163,10 +163,7 @@ val feedCardLayoutPatch = patch(
                     addPatchInterface(
                         EXTENSION_ELEMENT_ITEM_INTERFACE,
                         "patch_getElementBytes",
-                        """
-                            iget-object v0, p0, $elementBytesField
-                            return-object v0
-                        """
+                        elementBytesField
                     )
                 }
             }

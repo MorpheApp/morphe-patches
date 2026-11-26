@@ -811,11 +811,7 @@ private fun addFolderReload(
     baseServiceClass.addPatchInterface(
         FOLDER_RELOAD,
         "patch_reloadFolder",
-        """
-            check-cast p2, $connectionType
-            invoke-virtual { p0, p1, p2, p3 }, $reloadMethod
-            return-void
-        """
+        reloadMethod
     )
     val rememberSubscriptionMethod = "$EXTENSION_CLASS->rememberSubscription(" +
             FOLDER_RELOAD +

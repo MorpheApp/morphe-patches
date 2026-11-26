@@ -120,10 +120,7 @@ internal val captionTrackCapturePatch = patch(
             addPatchInterface(
                 EXTENSION_HANDLER_INTERFACE,
                 "patch_updateCaption",
-                """
-                    invoke-virtual/range { p0 .. p3 }, ${CaptionTrackHandlerTimeFingerprint.method}
-                    return-void
-                """
+                CaptionTrackHandlerTimeFingerprint.method
             )
         }
 

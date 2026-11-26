@@ -83,10 +83,7 @@ val loopCountPatch = patch(
             it.classDef.addPatchInterface(
                 EXTENSION_MENU_INTERFACE,
                 "patch_closeMenu",
-                """
-                    invoke-virtual { p0 }, ${it.originalMethod}
-                    return-void
-                """
+                it.originalMethod
             )
 
             it.method.addInstructionsWithLabels(
@@ -138,10 +135,7 @@ val loopCountPatch = patch(
                 navigatorClass.addPatchInterface(
                     EXTENSION_NAVIGATOR_INTERFACE,
                     "patch_setNavigatorRepeatMode",
-                    """
-                        invoke-interface { p0, p1 }, $setRepeatMode
-                        return-void
-                    """
+                    setRepeatMode
                 )
             }
 

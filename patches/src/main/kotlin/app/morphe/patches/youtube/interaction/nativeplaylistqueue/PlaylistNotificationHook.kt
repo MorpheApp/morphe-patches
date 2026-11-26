@@ -178,10 +178,7 @@ internal fun installPlaylistNotification(
     mutableClassDefBy(directType).addPatchInterface(
         SERVICE_NAVIGATOR_INTERFACE,
         "patch_getQueuePlayback",
-        """
-            iget-object v0, p0, $backend
-            return-object v0
-        """
+        backend
     )
     installVideoIdBridge(directType, playerOwner)
     val directNavigate = directQueueNavigateFingerprint(directType, wrapperType).originalMethod

@@ -382,10 +382,7 @@ private fun addComposeSettingRow() {
         addPatchInterface(
             EXTENSION_SETTING_ROW_INTERFACE,
             "patch_getKey",
-            """
-                iget-object v0, p0, $keyField
-                return-object v0
-            """
+            keyField
         )
 
         // A shallow copy keeps the section, the order and the content of the original row.

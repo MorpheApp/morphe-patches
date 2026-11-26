@@ -43,10 +43,7 @@ internal fun installPlaylistPlayerControls(
     controls.addPatchInterface(
         PLAYER_CONTROLS_INTERFACE,
         "patch_getNavigator",
-        """
-            iget-object v0, p0, $navigatorField
-            return-object v0
-        """
+        navigatorField
     )
 
     // Recompute both cached enablement values, even when native history delegates are present.

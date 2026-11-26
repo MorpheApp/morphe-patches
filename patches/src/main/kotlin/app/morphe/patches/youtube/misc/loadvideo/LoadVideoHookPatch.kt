@@ -43,8 +43,6 @@ internal val loadVideoHookPatch = patch(
             .instructionMatches.last()
             .getInstruction<ReferenceInstruction>()
             .getReference<MethodReference>()!!
-        val openNewVideoParcelableMethod = OpenNewVideoIntentParcelableFingerprint.method
-        val openNewVideoParcelableDefiningClass = openNewVideoParcelableMethod.definingClass
 
         mutableClassDefBy(dismissPlayerInnerMethod.definingClass).apply {
             // Add interface and helper methods to allow extension code to call obfuscated methods.
@@ -52,19 +50,12 @@ internal val loadVideoHookPatch = patch(
             addPatchInterface(
                 EXTENSION_PLAYER_INTERFACE,
                 "patch_dismissPlayer",
-                """
-                    invoke-virtual { p0 }, $dismissPlayerInnerMethod
-                    return-void
-                """
+                dismissPlayerInnerMethod
             )
             addPatchInterface(
                 EXTENSION_PLAYER_INTERFACE,
                 "patch_getIntentParcelable",
-                """
-                    invoke-static { p1 }, $openNewVideoParcelableDefiningClass->${openNewVideoParcelableMethod.name}(Landroid/content/Intent;)$openNewVideoParcelableDefiningClass
-                    move-result-object v0
-                    return-object v0
-                """
+                OpenNewVideoIntentParcelableFingerprint.method
             )
 
             methods.single { method ->
@@ -92,10 +83,7 @@ internal val loadVideoHookPatch = patch(
                 addPatchInterface(
                     EXTENSION_INLINE_PLAYBACK_INTERFACE,
                     name,
-                    """
-                        invoke-virtual { p0, p1 }, $method
-                        return-void
-                    """
+                    method
                 )
             }
 

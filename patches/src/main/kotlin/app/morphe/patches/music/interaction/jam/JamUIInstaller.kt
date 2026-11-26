@@ -84,10 +84,7 @@ private fun installPlaybackIcon(icon: PlaybackIconAbi) {
     owner.addPatchInterface(
         PLAYER_ICON,
         "patch_jamView",
-        """
-            iget-object v0, p0, ${icon.view}
-            return-object v0
-        """
+        icon.view
     )
     owner.addPatchInterface(
         PLAYER_ICON,
@@ -108,11 +105,7 @@ private fun installPlaybackIcon(icon: PlaybackIconAbi) {
     owner.addPatchInterface(
         PLAYER_ICON,
         "patch_jamRender",
-        """
-            check-cast p1, $modelType
-            ${invokeKind(icon.render)} {p0, p1}, $render
-            return-void
-        """
+        render
     )
 }
 
@@ -298,12 +291,7 @@ private fun installPlayback(playback: PlaybackAbi) {
         owner.addPatchInterface(
             ROUTER_ACCESS,
             "patch_jamDispatch",
-            """
-                check-cast p1, ${playback.command.type}
-                check-cast p2, Ljava/util/Map;
-                ${invokeKind(router.dispatch)} {p0, p1, p2}, $dispatch
-                return-void
-            """
+            dispatch
         )
         owner.addPatchInterface(
             ROUTER_ACCESS,
@@ -403,10 +391,7 @@ private fun installNowPlaying(now: NowPlayingAbi, item: QueueItemAbi) {
         owner.addPatchInterface(
             NOW_ACCESS,
             "patch_jamRefreshNow",
-            """
-                ${invokeKind(binding.refresh)} {p0}, ${binding.refresh}
-                return-void
-            """
+            binding.refresh
         )
     }
 }
@@ -437,10 +422,7 @@ private fun installQueueRow(row: QueueRowAbi, item: QueueItemAbi) {
     owner.addPatchInterface(
         MENU_ROW,
         "patch_jamMenuItem",
-        """
-            iget-object v0, p0, ${row.item}
-            return-object v0
-        """
+        row.item
     )
     owner.addPatchInterface(
         MENU_ROW,

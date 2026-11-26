@@ -129,10 +129,7 @@ internal val stableCaptionBlocksPatch = patch(
             addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getCaptionId",
-                """
-                    iget v0, p0, $idField
-                    return v0
-                """
+                idField
             )
 
             addPatchInterface(
@@ -148,19 +145,13 @@ internal val stableCaptionBlocksPatch = patch(
             addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionVisible",
-                """
-                    iget-object v0, p0, $visibleTextField
-                    return-object v0
-                """
+                visibleTextField
             )
 
             addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionFull",
-                """
-                    iget-object v0, p0, $fullTextField
-                    return-object v0
-                """
+                fullTextField
             )
 
             addPatchInterface(
@@ -219,20 +210,13 @@ internal val stableCaptionBlocksPatch = patch(
             addPatchInterface(
                 EXTENSION_ROW_INTERFACE,
                 "patch_getCaptionLayout",
-                """
-                    invoke-virtual { p0 }, ${CaptionRowLayoutFingerprint.method}
-                    move-result-object v0
-                    return-object v0
-                """
+                CaptionRowLayoutFingerprint.method
             )
 
             addPatchInterface(
                 EXTENSION_ROW_INTERFACE,
                 "patch_setCaptionText",
-                """
-                    invoke-virtual { p0, p1 }, ${CaptionRowSetTextFingerprint.method}
-                    return-void
-                """
+                CaptionRowSetTextFingerprint.method
             )
         }
 
@@ -339,37 +323,29 @@ internal val stableCaptionBlocksPatch = patch(
         // Each parsed track keeps the block state of its source captions.
         CaptionWindowsConstructorFingerprint.let {
             val timelineType = it.classDef.type
-            val stateField = "$timelineType->patch_blockState:$EXTENSION_STATE_CLASS"
+            val stateField = ImmutableField(
+                timelineType,
+                "patch_blockState",
+                EXTENSION_STATE_CLASS,
+                AccessFlags.PRIVATE.value,
+                null,
+                null,
+                null
+            )
 
             mutableClassDefBy(timelineType).apply {
-                instanceFields.add(
-                    ImmutableField(
-                        type,
-                        "patch_blockState",
-                        EXTENSION_STATE_CLASS,
-                        AccessFlags.PRIVATE.value,
-                        null,
-                        null,
-                        null
-                    ).toMutable()
-                )
+                instanceFields.add(stateField.toMutable())
 
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_getBlockState",
-                    """
-                        iget-object v0, p0, $stateField
-                        return-object v0
-                    """
+                    stateField
                 )
 
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_setBlockState",
-                    """
-                        iput-object p1, p0, $stateField
-                        return-void
-                    """
+                    stateField
                 )
 
                 it.method.apply {
@@ -390,10 +366,7 @@ internal val stableCaptionBlocksPatch = patch(
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_getCaptionEventTimes",
-                    """
-                        iget-object v0, p0, $events
-                        return-object v0
-                    """
+                    events
                 )
 
                 // New timeline with the windows of both timelines, and the block state of this timeline.

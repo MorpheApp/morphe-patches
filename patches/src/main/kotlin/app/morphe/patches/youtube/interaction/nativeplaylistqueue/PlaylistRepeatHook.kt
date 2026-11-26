@@ -66,19 +66,13 @@ internal fun installPlaylistRepeat(
     header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_getNavigator",
-        """
-            iget-object v0, p0, $navigator
-            return-object v0
-        """
+        navigator
     )
 
     header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_getPanel",
-        """
-            iget-object v0, p0, $panel
-            return-object v0
-        """
+        panel
     )
 
     header.addPatchInterface(

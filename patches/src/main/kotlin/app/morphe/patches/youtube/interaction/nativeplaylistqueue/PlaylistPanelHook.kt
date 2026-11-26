@@ -76,10 +76,7 @@ internal fun installPlaylistPanel() {
         addPatchInterface(
             PLAYLIST_MODEL_INTERFACE,
             "patch_getPlaylistId",
-            """
-                iget-object v0, p0, $playlistField
-                return-object v0
-            """
+            playlistField
         )
     }
 
@@ -118,10 +115,7 @@ internal fun installPlaylistPanel() {
     controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_getModel",
-        """
-            iget-object v0, p0, $modelField
-            return-object v0
-        """
+        modelField
     )
 
     controller.addPatchInterface(
