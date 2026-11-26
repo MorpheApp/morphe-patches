@@ -43,7 +43,7 @@ Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplik
   <string name="morphe_glass_navigation_bar_blur_title">Rozmycie szkła</string>
   <string name="morphe_glass_navigation_bar_blur_summary">Stopień rozmycia strony za matowym szkłem (Android 14 i nowsze). Przy wartości 0 oraz w wersjach starszych niż Android 14, szkło jest barwione</string>
   <string name="morphe_glass_navigation_bar_opacity_title">Krycie szkła</string>
-  <string name="morphe_glass_navigation_bar_opacity_summary">Niższe wartości pokazują więcej strony za paskiem nawigacji</string>
+  <string name="morphe_glass_navigation_bar_opacity_summary">Niższe wartości wyświetlają więcej strony za paskiem nawigacji</string>
   <string name="morphe_glass_navigation_bar_round_ends_title">Zaokrąglone końce</string>
   <string name="morphe_glass_navigation_bar_round_ends_summary_on">Końce są w pełni zaokrąglone</string>
   <string name="morphe_glass_navigation_bar_round_ends_summary_off">Końce mają zaokrąglone rogi</string>
@@ -52,7 +52,7 @@ Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplik
   <string name="morphe_glass_navigation_bar_width_title">Szerokość szkła</string>
   <string name="morphe_glass_navigation_bar_width_summary">Szerokość paska nawigacji i jego przycisków na telefonach</string>
   <string name="morphe_glass_navigation_bar_position_title">Pozycja paska</string>
-  <string name="morphe_glass_navigation_bar_position_summary">Podnosi pasek nawigacji do góry od dołu ekranu w telefonach</string>
+  <string name="morphe_glass_navigation_bar_position_summary">Unosi pasek nawigacji nad dolną krawędź ekranu na telefonach</string>
   <string name="morphe_glass_navigation_bar_show_labels_title">Pokaż etykiety</string>
   <string name="morphe_glass_navigation_bar_show_labels_summary_on">Przyciski wyświetlają swoje etykiety</string>
   <string name="morphe_glass_navigation_bar_show_labels_summary_off">Przyciski wyświetlają tylko ikony</string>
@@ -180,7 +180,7 @@ Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplik
   <string name="morphe_show_flairs_in_home_feed_summary">Wyświetla odznaki wyróżników postów na stronie głównej</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Niektóre elementy na stronie głównej mogą nie wyświetlać wyróżnika</string>
   <string name="morphe_see_through_status_bar_title">Przezroczysty pasek stanu</string>
-  <string name="morphe_see_through_status_bar_summary">Feed strony głównej przewija się w górę pod paskiem stanu i w niego znika. Tylko dla układu telefonu</string>
+  <string name="morphe_see_through_status_bar_summary">Strona główna przewija się pod paskiem stanu i płynnie w nim zanika. Tylko w układzie telefonu</string>
   <string name="morphe_view_count_title">Liczba wyświetleń na postach</string>
   <string name="morphe_view_count_summary">Ograniczenie: opcja Pokaż działa tylko wtedy, gdy odpowiedź API zawiera liczbę wyświetleń</string>
   <string name="morphe_view_count_entry_default">Domyślnie</string>
@@ -305,7 +305,7 @@ Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplik
   <string name="morphe_open_links_externally_title">Otwieraj linki zewnętrznie</string>
   <string name="morphe_open_links_externally_summary">Otwiera linki w zewnętrznej przeglądarce zamiast we wbudowanej</string>
   <string name="morphe_full_screen_reply_title">Pełnoekranowa odpowiedź</string>
-  <string name="morphe_full_screen_reply_summary">Odpowiedzi otwierają się w starszym pełnoekranowym edytorze, który pokazuje komentowany wpis, umożliwiając zaznaczanie i cytowanie jego tekstu. Przycinanie obrazów nie jest tam dostępne</string>
+  <string name="morphe_full_screen_reply_summary">Odpowiedzi otwierają się w starszym pełnoekranowym edytorze, który wyświetla komentowany wpis, umożliwiając zaznaczanie i cytowanie jego tekstu. Przycinanie obrazów nie jest tam dostępne</string>
   <string name="morphe_automoderator_comments_title">Komentarze AutoModeratora</string>
   <string name="morphe_automoderator_comments_entry_show">Pokaż</string>
   <string name="morphe_automoderator_comments_entry_collapse">Zwiń</string>

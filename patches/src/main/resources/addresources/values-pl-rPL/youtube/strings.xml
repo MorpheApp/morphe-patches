@@ -202,7 +202,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_links_preview_title">Ukryj podgląd linków</string>
   <string name="morphe_hide_links_preview_summary">Ukrywa klikalne linki do stron internetowych w nagłówku kanału</string>
   <string name="morphe_hide_members_only_chip_title">Ukryj etykietę \"Tylko wspierający\"</string>
-  <string name="morphe_hide_members_only_chip_summary">Ukrywa etykietę \"Tylko wspierający\" na pasku filtrów kanału</string>
   <string name="morphe_hide_members_shelf_title">Ukryj sekcję wspierających</string>
   <string name="morphe_hide_members_shelf_summary">Ukrywa listę wspierających kanał</string>
   <string name="morphe_hide_posts_shelf_title">Ukryj sekcję postów</string>
@@ -651,7 +650,7 @@ Ograniczenia:
   <string name="morphe_open_post_images_fullscreen_summary">Dotknięcie obrazu w poście otwiera go na pełnym ekranie zamiast w widoku postów</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Pobieraj obrazy z postów</string>
-  <string name="morphe_post_image_download_summary">Pokazuje przycisk pobierania obok przycisku \"Udostępnij\" pod postami z obrazami lub plikami GIF oraz dodaje opcję pobierania do ich menu</string>
+  <string name="morphe_post_image_download_summary">Wyświetla przycisk pobierania obok przycisku \"Udostępnij\" pod postami z obrazami lub plikami GIF oraz dodaje opcję pobierania do ich menu</string>
   <string name="morphe_post_image_download_flyout">Pobierz obrazy</string>
   <string name="morphe_post_image_download_flyout_single">Pobierz obraz</string>
   <string name="morphe_post_image_download_started">Pobieranie obrazów (%s)…</string>
@@ -1393,7 +1392,7 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Pokaż tylko na pełnym ekranie</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ukryj przycisk skalowania filmu w odtwarzaczu pionowym</string>
   <string name="morphe_fullscreen_video_alignment_button_title">Pokaż przycisk wyrównania filmu</string>
-  <string name="morphe_fullscreen_video_alignment_button_summary">Dotknij, aby przełączać między ustawieniami Góra, Środek i Dół w trybie pełnoekranowym</string>
+  <string name="morphe_fullscreen_video_alignment_button_summary">Dotknij, aby przełączać między górą, środkiem i dołem na pełnym ekranie</string>
   <!-- video.speed.replay.replayVideoPatch -->
   <string name="morphe_replay_video_button_title">Pokaż przycisk \"Powtórz wolniej\"</string>
   <string name="morphe_replay_video_button_summary">Cofa i tymczasowo spowalnia film. Dotknij ponownie, aby anulować</string>
@@ -1578,8 +1577,8 @@ Układ samochodowy
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ukryj pasek stanu</string>
   <string name="morphe_hide_status_bar_summary">Ukrywa systemowy pasek stanu. Przesuń w dół od górnej krawędzi, aby na chwilę go wyświetlić</string>
-  <string name="morphe_hide_status_bar_avoid_cutout_title">Utrzymaj odtwarzacz poniżej wycięcia w wyświetlaczu</string>
-  <string name="morphe_hide_status_bar_avoid_cutout_summary">Przesuwa pionowy odtwarzacz wideo poniżej wycięcia w wyświetlaczu, gdy pasek stanu jest ukryty, pozostawiając pusty pasek na górze. Wyłącz tę opcję, aby wideo wypełniało ekran za wycięciem</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_title">Utrzymuj odtwarzacz poniżej wycięcia ekranu</string>
+  <string name="morphe_hide_status_bar_avoid_cutout_summary">Przesuwa odtwarzacz filmów w pionie poniżej wycięcia ekranu, gdy pasek stanu jest ukryty, pozostawiając pusty pasek u góry. Wyłącz tę opcję, aby film wypełniał ekran za wycięciem</string>
   <string name="morphe_fix_status_bar_layout_title">Napraw pasek stanu zasłaniający górne paski</string>
   <string name="morphe_fix_status_bar_layout_summary">Utrzymuje spójny układ paska stanu, dzięki czemu nie zasłania on górnych pasków ani nie zostawia pustego miejsca nad odtwarzaczem. Wyłącz tę opcję, jeśli aplikacja ulega awarii lub górne paski wyświetlają się nieprawidłowo</string>
   <!-- layout.theme.themePatch -->

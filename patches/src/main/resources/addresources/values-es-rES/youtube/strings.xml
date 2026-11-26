@@ -202,7 +202,6 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_hide_links_preview_title">Ocultar vista previa de enlaces</string>
   <string name="morphe_hide_links_preview_summary">Oculta los enlaces web en la cabecera del canal</string>
   <string name="morphe_hide_members_only_chip_title">Ocultar etiqueta \'Solo para miembros\'</string>
-  <string name="morphe_hide_members_only_chip_summary">Oculta la etiqueta \'Solo para miembros\' en la barra de filtro del canal</string>
   <string name="morphe_hide_members_shelf_title">Ocultar estantería de miembros</string>
   <string name="morphe_hide_members_shelf_summary">Oculta la lista de miembros del canal</string>
   <string name="morphe_hide_posts_shelf_title">Ocultar estantería Publicaciones</string>
@@ -2147,6 +2146,7 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_ghost_play_auto_search_summary">Ve automáticamente en modo Ghost los videos abiertos desde los resultados de búsqueda</string>
   <string name="morphe_ghost_play_manage_channels_title">Auto-ghost de canales</string>
   <string name="morphe_ghost_play_manage_channels_summary">Busca, añade, inspecciona y gestiona los canales que siempre se reproducen en modo Ghost</string>
+  <string name="morphe_ghost_play_manage_channels_summary_count">%d canales configurados: toca para buscar, revisar o eliminar</string>
   <string name="morphe_ghost_play_local_history_title">Mantener historial local de Ghost</string>
   <string name="morphe_ghost_play_local_history_summary">Recuerda los vídeos del modo Ghost y las posiciones de reproducción solo en este dispositivo (nunca se envían a YouTube)</string>
   <string name="morphe_ghost_play_history_limit_title">Límite del historial local de Ghost</string>
@@ -2159,6 +2159,7 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_ghost_play_history_limit_unlimited">Ilimitado</string>
   <string name="morphe_ghost_play_view_history_title">Abrir historial local de Ghost</string>
   <string name="morphe_ghost_play_view_history_summary">Ver, buscar, reanudar en modo Ghost o borrar el historial del dispositivo</string>
+  <string name="morphe_ghost_play_view_history_summary_count">%1$d vídeos almacenados en el dispositivo (%2$s): pulsa para verlos o reanudarlos</string>
   <string name="morphe_ghost_play_view_history_summary_empty">Aún no hay videos grabados (almacenados solo en este dispositivo)</string>
   <string name="morphe_ghost_play_toolbar_timed_badge">%dm</string>
   <string name="morphe_ghost_play_flyout_action">Reproducir en modo Ghost</string>
@@ -2186,10 +2187,12 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_ghost_play_timer_custom_set">Establecer</string>
   <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost ACTIVADO para este canal</string>
   <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost DESACTIVADO para este canal</string>
+  <string name="morphe_ghost_play_quick_channel_count">%d canales configurados</string>
   <string name="morphe_ghost_play_quick_channel_manage_btn">Lista (%d)</string>
   <string name="morphe_ghost_play_channel_added_toast">Se añadió \"%s\" a los canales de auto-ghost</string>
   <string name="morphe_ghost_play_channel_removed_toast">Se eliminó \"%s\" de los canales de auto-ghost</string>
   <string name="morphe_ghost_play_history_title">Historial local de Ghost</string>
+  <string name="morphe_ghost_play_history_subtitle_size">%d vídeos (%s) · toca para reanudar en modo Fantasma; mantén pulsado para eliminarlos</string>
   <string name="morphe_ghost_play_history_search_hint">Filtrar por título de video o canal…</string>
   <string name="morphe_ghost_play_history_no_match">No hay videos coincidentes en el historial local de Ghost</string>
   <string name="morphe_ghost_play_history_empty">Aún no hay historial local de Ghost</string>
@@ -2214,6 +2217,7 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_ghost_play_channels_searching">Buscando canales de YouTube…</string>
   <string name="morphe_ghost_play_channels_search_error">Error en la búsqueda. Comprueba tu conexión e inténtalo de nuevo.</string>
   <string name="morphe_ghost_play_channels_search_no_results">No se han encontrado canales para esa consulta</string>
+  <string name="morphe_ghost_play_channels_search_count">Se han encontrado %d canales: pulsa en Añadir para activar auto-fantasma</string>
   <string name="morphe_ghost_play_channels_recent_videos">Vídeos recientes</string>
   <string name="morphe_ghost_play_channels_loading_details">Cargando vídeos recientes…</string>
   <string name="morphe_ghost_play_channels_no_recent_videos">No se han encontrado vídeos recientes (pulsa para reintentar)</string>
