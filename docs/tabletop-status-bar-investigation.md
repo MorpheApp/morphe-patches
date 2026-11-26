@@ -56,3 +56,31 @@ Upstream dev at `59bdab6551474d69b82171057669d9bbf77831fe` adds a display-cutout
 ## Rebase onto v2.4.0-dev.15
 
 The cutout-avoidance preference is available when either status-bar hide mode is enabled. The global hide mode retains priority. Both inset hooks respect cutout avoidance while the tabletop controller owns the status bar. The default remains off, preserving the previously tested layout. Re-run the eight device tests with avoidance off, then check the protected tabletop layout and unchanged global behavior with avoidance on. These combined behaviors are not yet device-tested.
+
+
+### Post-rebase build and device validation (26 November 2026)
+
+Tested code: `582b7833fad3018762495e9db07d8fc1a732d09d`, built on `feature/tabletop-status-bar` ([CI run 45780935471](https://github.com/ioneng/morphe-patches/actions/runs/45780935471)). Automated tests, Android patch bundle compilation and artifact upload passed. The initial build on the separate rebase branch failed resolving Gradle plugin 2.1.2 before compilation; rebuilding the same code on the original feature branch succeeded. Cache differences are consistent with branch-scoped dependency caches, but the exact cause of the registry resolution failure was not established.
+
+Device: OPPO Find N6, Android 17. User-reported results with tabletop-only hiding enabled and global hiding disabled:
+
+| Scenario | Observed result |
+| --- | --- |
+| Physical tabletop, Keep player below display cutout on | Status bar hidden; empty space above video retained |
+| Unfold with cutout avoidance on | Normal player; status bar restored |
+| Physical tabletop, cutout avoidance off | Status bar hidden; video occupies full height of upper half |
+| Unfold with cutout avoidance off | Normal player; status bar restored |
+| Fold Switcher half-open while physically flat, cutout avoidance off | Tabletop layout displayed; status bar hidden |
+| Fold Switcher open while physically flat | Normal player; status bar restored |
+
+Returning to normal rather than fullscreen is the previously established stock behavior, not part of this change. The earlier eight functional results apply to the pre-rebase build; the full matrix was not repeated on the rebased build. Global hiding, layout fix disabled, other devices/Android versions, multi-window/PiP, activity recreation and normal browsing/navigation-bar regressions remain unverified on the final build.
+
+### Final static review
+
+Compared with the tested upstream merge base `4bba711f`, the change is limited to the status-bar implementation, the existing engagement-panel hook, preference registration/strings and this document. Upstream dev at review time (`d38d9d84`) is seven commits ahead of that merge base and does not modify any of these files.
+
+The Java status-bar implementation has eight `catch (Exception)` blocks versus seven in upstream. The only new catch is at the tabletop controller update boundary, following the existing pattern of logging unexpected UI callback failures. No explicit throws or catch-driven normal control flow were found in the added logic. The minimum SDK is 26, and the newer insets-controller APIs are guarded by SDK checks. Retain the existing upstream exception handlers; do not remove them merely to reduce their count.
+
+Potential recovery edge case from static review: the controller clears its applied flag before restoring system bars and background views. If the insets controller is temporarily null, or a restoration operation throws, restoration may not be retried on the next update. This has not been reproduced on the device; review recovery behavior before declaring all lifecycle paths safe. The supplied diagnostic logs are from the earlier probe, not the final build, so they cannot establish that the rebased controller is exception-free.
+
+No runtime code was changed by this documentation update.
