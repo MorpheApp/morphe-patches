@@ -295,3 +295,40 @@ internal object CreateButtonOffsetFingerprint : Fingerprint(
         opcode(Opcode.NEG_INT, location = MatchAfterWithin(5))
     )
 )
+
+internal object IsSearchButtonSupportedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch;",
+    name = "isSearchButtonSupported",
+    returnType = "Z",
+    parameters = listOf()
+)
+
+/**
+ * Top of Home with the menu button, the search field and the avatar.
+ */
+internal object HomeTopBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        string("home_revamp_m1_app_bar"),
+        // Menu button.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            name = "invoke",
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;"
+        ),
+        string("main_top_app_bar_search"),
+        // Search field. The order of its parameters differs between app versions.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            returnType = "V"
+        ),
+        // Avatar.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("I", "I", "L", "L", "Landroidx/compose/runtime/internal/a;"),
+            returnType = "V"
+        )
+    )
+)

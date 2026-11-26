@@ -14,12 +14,15 @@ import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
+import android.view.View;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+
+import com.reddit.launch.bottomnav.BottomNavScreen;
 
 import java.util.List;
 
@@ -30,6 +33,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings("unused")
@@ -107,6 +111,58 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
+     * Draws nothing, hiding the search field while keeping its layout space.
+     */
+    private static final class EmptyDraw implements Function1<ContentDrawScope, Object> {
+        private static final EmptyDraw INSTANCE = new EmptyDraw();
+
+        private EmptyDraw() {
+        }
+
+        @Override
+        public Object invoke(ContentDrawScope scope) {
+            return null;
+        }
+    }
+
+    /**
+     * Draws glass behind the menu button or the avatar.
+     */
+    private static final class TopBarButtonDraw implements Function1<ContentDrawScope, Object> {
+        private static final TopBarButtonDraw INSTANCE = new TopBarButtonDraw();
+
+        private TopBarButtonDraw() {
+        }
+
+        @Override
+        public Object invoke(ContentDrawScope scope) {
+            try {
+                drawTopBarButtonGlass(scope);
+            } catch (Exception ex) {
+                Logger.printException(() -> "TopBarButtonDraw failure", ex);
+            }
+
+            scope.patch_drawContent();
+            return null;
+        }
+    }
+
+    /**
+     * Click action of the hidden search field.
+     */
+    private static final class NoClick implements Function0<Object> {
+        private static final NoClick INSTANCE = new NoClick();
+
+        private NoClick() {
+        }
+
+        @Override
+        public Object invoke() {
+            return null;
+        }
+    }
+
+    /**
      * Mask of everything except the alpha of a packed Compose sRGB color.
      */
     private static final long COLOR_WITHOUT_ALPHA_MASK = 0x00FFFFFFFFFFFFFFL;
@@ -142,6 +198,17 @@ public final class GlassNavigationBarPatch {
     private static final float RAIL_CENTERED_MIN_HEIGHT_DP = 500;
     private static final float RAIL_GAP_DP = 12;
 
+    /**
+     * Narrower windows show the bottom navigation bar instead of the side rail.
+     */
+    private static final int SIDE_RAIL_MIN_WIDTH_DP = 600;
+    private static final float SEARCH_BUTTON_GAP_DP = 10;
+
+    /**
+     * How much larger the glass behind the menu button and the avatar is than the button.
+     */
+    private static final float TOP_BAR_BUTTON_GLASS_EXTRA_DP = 8;
+
     private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
     private static final int OPACITY_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_OPACITY);
     static final int BLUR_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_BLUR);
@@ -154,9 +221,12 @@ public final class GlassNavigationBarPatch {
             ? SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_POSITION)
             : 0;
     private static final boolean HIDE_LABELS = GLASS_ENABLED && !Settings.GLASS_NAVIGATION_BAR_SHOW_LABELS.get();
+    private static final boolean SEARCH_BUTTON_ENABLED = GLASS_ENABLED
+            && isSearchButtonSupported()
+            && Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON.get();
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    private static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+    static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
             && GLASS_ENABLED
             && Settings.GLASS_NAVIGATION_BAR_STYLE.get() == GlassStyle.FROSTED
             && BLUR_PERCENT > 0;
@@ -175,10 +245,23 @@ public final class GlassNavigationBarPatch {
     private static boolean isRailCentered;
 
     /**
+     * If the side rail is shown instead of the bottom navigation bar.
+     */
+    private static boolean isRailShown;
+
+    /**
      * @return If this patch was included during patching.
      */
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * @return If the app version supports the search button.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isSearchButtonSupported() {
         return false; // Modified during patching.
     }
 
@@ -217,13 +300,23 @@ public final class GlassNavigationBarPatch {
      */
     public static Object getBarModifier(Modifier modifier) {
         try {
-            if (GLASS_ENABLED && WIDTH_PERCENT < 100) {
-                // Split screen windows are narrower than the display.
-                Activity activity = Utils.getActivity();
-                Context context = activity == null ? Utils.getContext() : activity;
-                Configuration configuration = context.getResources().getConfiguration();
+            if (!GLASS_ENABLED) {
+                return modifier;
+            }
 
-                final float padding = getSidePadding(configuration.screenWidthDp);
+            setRailShown(false);
+
+            if (isSearchButtonActive()) {
+                // The buttons are inside the capsule, which ends before the search button.
+                final float start = getSidePadding(getScreenWidthDp())
+                        + BAR_CAPSULE_INSET_DP * WIDTH_PERCENT / 100;
+                final float end = start + BAR_CAPSULE_HEIGHT_DP * HEIGHT_PERCENT / 100
+                        + SEARCH_BUTTON_GAP_DP;
+                return modifier.patch_padding(start, 0, end, 0);
+            }
+
+            if (WIDTH_PERCENT < 100) {
+                final float padding = getSidePadding(getScreenWidthDp());
                 return modifier.patch_padding(padding, 0, padding, 0);
             }
         } catch (Exception ex) {
@@ -267,7 +360,7 @@ public final class GlassNavigationBarPatch {
      * @param barHeight Height of the bar, in pixels.
      */
     public static float getBarSlide(float slide, float barHeight) {
-        if (POSITION_DP == 0 && !FROSTED_ENABLED) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED && !SEARCH_BUTTON_ENABLED) {
             return slide;
         }
 
@@ -276,7 +369,7 @@ public final class GlassNavigationBarPatch {
                 // The lift decreases while the bar hides, so it still slides fully away.
                 slide -= getLift() * (1 - slide / barHeight);
             }
-            updateBlurOffset(slide);
+            updateBarOffset(slide, barHeight > 0 && slide >= barHeight);
         } catch (Exception ex) {
             Logger.printException(() -> "getBarSlide failure", ex);
         }
@@ -290,12 +383,12 @@ public final class GlassNavigationBarPatch {
      * @param modifier Modifier of the bar, if it does not hide on the current screen.
      */
     public static Object getStaticBarModifier(Modifier modifier) {
-        if (POSITION_DP == 0 && !FROSTED_ENABLED) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED && !SEARCH_BUTTON_ENABLED) {
             return modifier;
         }
 
         try {
-            updateBlurOffset(-getLift());
+            updateBarOffset(-getLift(), false);
 
             if (POSITION_DP > 0) {
                 return modifier.patch_offset(0, -POSITION_DP);
@@ -329,12 +422,109 @@ public final class GlassNavigationBarPatch {
     /**
      * Injection point.
      *
+     * @param modifier Modifier of the search field at the top of Home.
+     */
+    public static Object getSearchFieldModifier(Modifier modifier) {
+        return isSearchButtonActive()
+                ? modifier.patch_drawWithContent(EmptyDraw.INSTANCE)
+                : modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param action Opens search, if the search field at the top of Home is clicked.
+     */
+    public static Function0<?> getSearchFieldClick(Function0<?> action) {
+        try {
+            if (SEARCH_BUTTON_ENABLED) {
+                GlassNavigationBarSearchButton.setSearchAction(action);
+
+                if (isSearchButtonActive()) {
+                    return NoClick.INSTANCE;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSearchFieldClick failure", ex);
+        }
+
+        return action;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of the menu button or of the avatar at the top of Home.
+     */
+    public static Object getTopBarButtonModifier(Modifier modifier) {
+        return isSearchButtonActive()
+                ? modifier.patch_drawWithContent(TopBarButtonDraw.INSTANCE)
+                : modifier;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onScreenAttached(Object screen, @Nullable View view) {
+        if (!SEARCH_BUTTON_ENABLED) {
+            return;
+        }
+
+        try {
+            if (screen instanceof BottomNavScreen) {
+                GlassNavigationBarSearchButton.onBottomNavAttached(view);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onScreenAttached failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onScreenDetached(Object screen, @Nullable View view) {
+        if (!SEARCH_BUTTON_ENABLED) {
+            return;
+        }
+
+        try {
+            if (screen instanceof BottomNavScreen) {
+                GlassNavigationBarSearchButton.onBottomNavDetached();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onScreenDetached failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param show If the current screen shows the bottom navigation bar.
+     */
+    public static void setShowBottomNav(boolean show) {
+        if (!SEARCH_BUTTON_ENABLED) {
+            return;
+        }
+
+        try {
+            GlassNavigationBarSearchButton.setShowBottomNav(show);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setShowBottomNav failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     *
      * @param modifier Modifier of the column with the buttons of the side rail.
      */
     public static Object getRailModifier(Modifier modifier) {
-        return GLASS_ENABLED
-                ? modifier.patch_drawWithContent(CapsuleDraw.RAIL)
-                : modifier;
+        if (!GLASS_ENABLED) {
+            return modifier;
+        }
+
+        setRailShown(true);
+        return modifier.patch_drawWithContent(CapsuleDraw.RAIL);
     }
 
     /**
@@ -353,11 +543,39 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
+     * @return If search is a button next to the bottom navigation bar.
+     */
+    static boolean isSearchButtonActive() {
+        // The window width is checked too, because the top of Home can be shown before the side rail.
+        return SEARCH_BUTTON_ENABLED && !isRailShown && getScreenWidthDp() < SIDE_RAIL_MIN_WIDTH_DP;
+    }
+
+    private static void setRailShown(boolean shown) {
+        if (SEARCH_BUTTON_ENABLED && isRailShown != shown) {
+            isRailShown = shown;
+            GlassNavigationBarSearchButton.update();
+        }
+    }
+
+    private static int getScreenWidthDp() {
+        // Split screen windows are narrower than the display.
+        Activity activity = Utils.getActivity();
+        Context context = activity == null ? Utils.getContext() : activity;
+        return context.getResources().getConfiguration().screenWidthDp;
+    }
+
+    /**
      * @param color Packed Compose sRGB color, with the ARGB color in the upper 32 bits.
      */
     private static void updateTheme(long color) {
-        pageColor = (int) (color >>> 32) | 0xFF000000;
+        final int newPageColor = (int) (color >>> 32) | 0xFF000000;
+        final boolean changed = pageColor != newPageColor;
+        pageColor = newPageColor;
         isDarkTheme = Color.luminance(pageColor) < 0.5f;
+
+        if (changed && SEARCH_BUTTON_ENABLED) {
+            GlassNavigationBarSearchButton.redraw();
+        }
     }
 
     /**
@@ -374,29 +592,53 @@ public final class GlassNavigationBarPatch {
         return POSITION_DP * getDensity();
     }
 
-    private static void updateBlurOffset(float barOffset) {
+    /**
+     * @param barOffset How far down the bar is moved, in pixels.
+     * @param hidden    If the bar is moved off the screen.
+     */
+    private static void updateBarOffset(float barOffset, boolean hidden) {
         if (FROSTED_ENABLED) {
             GlassNavigationBarBlur.setBarOffset(Math.round(barOffset));
+        }
+        if (SEARCH_BUTTON_ENABLED) {
+            GlassNavigationBarSearchButton.setBarOffset(Math.round(barOffset), hidden);
         }
     }
 
     private static void drawBarCapsule(ContentDrawScope scope) {
         final long size = scope.patch_getSize();
         final float width = unpackFirst(size);
+        final float barHeight = unpackSecond(size);
         final float density = getDensity();
         final float rowHeight = BAR_ROW_HEIGHT_DP * density;
 
-        final float left = getSidePadding(width)
+        float left = getSidePadding(width)
                 + BAR_CAPSULE_INSET_DP * density * WIDTH_PERCENT / 100;
         float height = BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
         final float top = (rowHeight - height) / 2;
 
-        if (unpackSecond(size) - rowHeight > GESTURE_NAVIGATION_MAX_HEIGHT_DP * density) {
+        if (barHeight - rowHeight > GESTURE_NAVIGATION_MAX_HEIGHT_DP * density) {
             // Do not draw the capsule behind the system navigation bar.
             height = Math.min(height, rowHeight - top + getLift());
         }
 
-        drawCapsule(scope, left, top, width - 2 * left, height, density, true);
+        float capsuleWidth = width - 2 * left;
+        if (isSearchButtonActive()) {
+            // The search button is a circle as tall as the capsule, at the end of the bar.
+            GlassNavigationBarSearchButton.setBounds(
+                    Math.round(height),
+                    Math.round(left),
+                    Math.round(barHeight - top - height)
+            );
+
+            final float buttonWidth = height + SEARCH_BUTTON_GAP_DP * density;
+            capsuleWidth -= buttonWidth;
+            if (Utils.isRightToLeftLocale()) {
+                left += buttonWidth;
+            }
+        }
+
+        drawCapsule(scope, left, top, capsuleWidth, height, density, true);
     }
 
     private static void drawRailCapsule(ContentDrawScope scope) {
@@ -447,7 +689,29 @@ public final class GlassNavigationBarPatch {
         }
     }
 
-    private static boolean isGlassDark() {
+    /**
+     * Draws a circle, or a pill if the button is wider than tall.
+     */
+    private static void drawTopBarButtonGlass(ContentDrawScope scope) {
+        final long size = scope.patch_getSize();
+        final float extra = TOP_BAR_BUTTON_GLASS_EXTRA_DP * getDensity();
+        final float height = unpackSecond(size) + extra;
+        final float width = Math.max(unpackFirst(size) + extra, height);
+        final float radius = height / 2;
+
+        scope.patch_drawRoundRect(
+                getGlassColor(isGlassDark()),
+                pack((unpackFirst(size) - width) / 2, -extra / 2),
+                pack(width, height),
+                pack(radius, radius)
+        );
+    }
+
+    static int getPageColor() {
+        return pageColor;
+    }
+
+    static boolean isGlassDark() {
         return switch (Settings.GLASS_NAVIGATION_BAR_COLOR.get()) {
             case AUTO -> isDarkTheme;
             case LIGHT -> false;
@@ -455,7 +719,7 @@ public final class GlassNavigationBarPatch {
         };
     }
 
-    private static long getGlassColor(boolean dark) {
+    static long getGlassColor(boolean dark) {
         final float opacity = FROSTED_ENABLED ? FROSTED_OPACITY : 1;
         final long alpha = Math.round(255 * OPACITY_PERCENT * opacity / 100);
         final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
