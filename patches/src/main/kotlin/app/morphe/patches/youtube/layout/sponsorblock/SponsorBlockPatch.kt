@@ -39,6 +39,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
+import app.morphe.patches.youtube.video.information.SeekFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
@@ -211,6 +212,8 @@ private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/CreateSegmentButton;"
 private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/VotingButton;"
+private const val EXTENSION_SPONSORBLOCK_UTILS_CLASS =
+    "Lapp/morphe/extension/youtube/sponsorblock/SponsorBlockUtils;"
 private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/SponsorBlockViewController;"
 
@@ -235,6 +238,13 @@ val sponsorBlockPatch = patch(
         videoTimeHook(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS,
             "setVideoTime"
+        )
+
+        // A seek to the start of a video lands on its first frame, which some formats have after the start,
+        // so the start of a new segment is found by the seeks to the start.
+        SeekFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p1 .. p2 }, $EXTENSION_SPONSORBLOCK_UTILS_CLASS->onVideoSeek(J)V"
         )
 
         hookBackgroundPlayVideoId(
