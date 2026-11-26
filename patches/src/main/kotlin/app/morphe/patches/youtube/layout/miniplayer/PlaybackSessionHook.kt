@@ -54,6 +54,8 @@ internal fun installPlaybackSessionHooks(): Boolean {
     val dispatch = watch.originalMethod
     val builder = watch.instructionMatches.first().getMethodCalled()
     if (builder.returnType != descriptorType) return unavailable("watch descriptor builder")
+    val watchActivity = watch.originalClassDef.fields.singleOrNull { it.type == "Landroid/app/Activity;" }
+        ?: return unavailable("watch handler activity")
 
     // The native startup miniplayer's descriptor mutator sets this boolean in the watch proto.
     val pause = Fingerprint(
@@ -126,6 +128,14 @@ internal fun installPlaybackSessionHooks(): Boolean {
     val commandType = dispatch.parameterTypes.first().toString()
     val watchType = dispatch.definingClass
     mutableClassDefBy(watchType).apply {
+        addPatchInterface(
+            WATCH_STARTER,
+            "patch_sessionActivity",
+            """
+                iget-object v0, p0, $watchActivity
+                return-object v0
+            """
+        )
         addPatchInterface(
             WATCH_STARTER,
             "patch_startSessionWatch",

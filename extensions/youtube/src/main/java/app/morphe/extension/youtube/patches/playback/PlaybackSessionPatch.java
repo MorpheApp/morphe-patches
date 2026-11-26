@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.AtomicFile;
@@ -34,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -59,6 +61,7 @@ public final class PlaybackSessionPatch {
     private static final long STARTUP_POLL_MS = 250;
 
     public interface WatchStarter {
+        Activity patch_sessionActivity();
         void patch_startSessionWatch(byte[] command, Map<?, ?> context);
     }
 
@@ -84,25 +87,33 @@ public final class PlaybackSessionPatch {
         @Override public void onActivityCreated(Activity activity, Bundle state) {}
         @Override public void onActivityStarted(Activity activity) {}
         @Override public void onActivityResumed(Activity activity) {
-            if (activity == owner.get() && checkingStartup) {
+            if (activity == owner.get() && checkingStartup && startupDeadline == 0) {
+                startupDeadline = SystemClock.elapsedRealtime() + STARTUP_TIMEOUT_MS;
                 Utils.runOnMainThread(() -> restoreIfReady(activity));
             }
         }
-        @Override public void onActivityPaused(Activity activity) {
+        @Override public void onActivityPrePaused(Activity activity) {
+            // Flush while the activity still owns its player and playback clock.
             if (activity == owner.get()) save(true);
+        }
+        @Override public void onActivityPaused(Activity activity) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && activity == owner.get()) save(true);
         }
         @Override public void onActivityStopped(Activity activity) {
             if (activity == owner.get()) save(true);
         }
         @Override public void onActivitySaveInstanceState(Activity activity, Bundle state) {}
         @Override public void onActivityDestroyed(Activity activity) {
-            if (activity == owner.get()) cancelStartup();
+            if (activity == owner.get()) {
+                cancelStartup();
+                owner.clear();
+            }
         }
     };
 
     private static WeakReference<Activity> owner = new WeakReference<>(null);
     private static volatile WeakReference<AccountProvider> accountProvider = new WeakReference<>(null);
-    private static volatile WeakReference<WatchStarter> watchStarter = new WeakReference<>(null);
+    private static final Map<Activity, WeakReference<WatchStarter>> watchStarters = new WeakHashMap<>();
     private static volatile WeakReference<MediaSession> mediaSession = new WeakReference<>(null);
     private static volatile WeakReference<PlaylistReader> playlist = new WeakReference<>(null);
     @Nullable private static AtomicFile storage;
@@ -128,25 +139,50 @@ public final class PlaybackSessionPatch {
 
     public static void initialize(Activity activity, @Nullable Bundle state) {
         try {
-            if (!enabled()) return;
-            owner = new WeakReference<>(activity);
-            if (initialized) return;
-            initialized = true;
-            storage = new AtomicFile(new File(activity.getNoBackupFilesDir(), "morphe_playback_session.json"));
-            saved = read();
-            Intent intent = activity.getIntent();
-            checkingStartup = saved != null && state == null && intent != null
-                    && Intent.ACTION_MAIN.equals(intent.getAction()) && intent.getData() == null;
-            startupDeadline = SystemClock.elapsedRealtime() + STARTUP_TIMEOUT_MS;
-            activity.getApplication().registerActivityLifecycleCallbacks(LIFECYCLE);
-            PlayerType.getOnChange().addObserver(PlaybackSessionPatch::playerTypeChanged);
+            if (enabled()) initializeActivity(activity, state);
         } catch (Exception ex) {
             Logger.printException(() -> "Playback session initialization failed", ex);
         }
     }
 
+    static void initializeActivity(Activity activity, @Nullable Bundle state) {
+        if (activity == owner.get()) return;
+        boolean firstActivity = !initialized;
+        if (firstActivity) {
+            storage = new AtomicFile(new File(activity.getNoBackupFilesDir(), "morphe_playback_session.json"));
+            saved = read();
+            activity.getApplication().registerActivityLifecycleCallbacks(LIFECYCLE);
+            PlayerType.getOnChange().addObserver(PlaybackSessionPatch::playerTypeChanged);
+            initialized = true;
+        }
+
+        // Swiping the task away can destroy the activity while keeping this process alive.
+        cancelStartup();
+        owner = new WeakReference<>(activity);
+        startupDeadline = 0;
+        Intent intent = activity.getIntent();
+        if ((firstActivity || state == null) && intent != null && Intent.ACTION_MAIN.equals(intent.getAction())
+                && intent.getData() == null) {
+            checkingStartup = saved != null;
+            Logger.printDebug(() -> checkingStartup ? "Saved playback session found on launch"
+                    : "No saved playback session on launch");
+        }
+    }
+
     public static void attachWatchStarter(WatchStarter starter) {
-        watchStarter = new WeakReference<>(starter);
+        Activity activity = starter.patch_sessionActivity();
+        if (activity == null) return;
+        synchronized (watchStarters) {
+            watchStarters.put(activity, new WeakReference<>(starter));
+        }
+    }
+
+    @Nullable
+    private static WatchStarter watchStarter(Activity activity) {
+        synchronized (watchStarters) {
+            var reference = watchStarters.get(activity);
+            return reference == null ? null : reference.get();
+        }
     }
 
     public static void attachAccount(AccountProvider provider) {
@@ -196,6 +232,7 @@ public final class PlaybackSessionPatch {
             stream.write(bytes);
             storage.finishWrite(stream);
             saved = snapshot;
+            Logger.printDebug(() -> "Saved playback session at " + snapshot.positionMilliseconds() + " ms");
         } catch (IOException | JSONException ex) {
             if (stream != null) storage.failWrite(stream);
             Logger.printException(() -> "Could not save the playback session", ex);
@@ -208,17 +245,24 @@ public final class PlaybackSessionPatch {
 
     private static void save(boolean flush) {
         try {
-            if (!enabled() || !initialized || checkingStartup || restoring != null) return;
+            if (!enabled() || owner.get() == null || checkingStartup || restoring != null) return;
             final long now = SystemClock.elapsedRealtime();
-            if (!flush && now - lastSaveTime < SAVE_INTERVAL_MS) return;
             String videoId = VideoInformation.getVideoId();
             if (!VideoInformation.isVideoId(videoId) || videoId.equals(dismissedVideo)) return;
+            if (!flush && saved != null && videoId.equals(saved.videoId())
+                    && now - lastSaveTime < SAVE_INTERVAL_MS) return;
             PlayerType type = PlayerType.getCurrent();
             final boolean shorts = ShortsPlayerState.isOpen() && !type.isMaximizedOrFullscreen();
             if (!shorts && (type.isNoneOrHidden() || type == PlayerType.INLINE_MINIMAL)) return;
             String account = currentAccount();
             final long position = VideoInformation.getVideoTime();
-            if (account == null || position < 0) return;
+            if (account == null || position < 0) {
+                if (flush) {
+                    Logger.printDebug(() -> "Playback session not saved on exit. Account ready=" + (account != null)
+                            + ", playback time ready=" + (position >= 0));
+                }
+                return;
+            }
             PlaybackSessionSnapshot.Kind kind;
             final boolean sameSavedVideo = saved != null && account.equals(saved.account())
                     && videoId.equals(saved.videoId());
@@ -338,32 +382,45 @@ public final class PlaybackSessionPatch {
         try {
             if (!checkingStartup || activity != owner.get()) return;
             var snapshot = saved;
-            if (!enabled() || snapshot == null || activity.isFinishing() || activity.isDestroyed()
-                    || SystemClock.elapsedRealtime() >= startupDeadline) {
+            if (!enabled() || snapshot == null || activity.isFinishing() || activity.isDestroyed()) {
                 cancelStartup();
                 return;
             }
             String account = currentAccount();
-            WatchStarter starter = watchStarter.get();
-            if (account == null || starter == null || !activity.hasWindowFocus()) {
+            WatchStarter starter = watchStarter(activity);
+            boolean focused = activity.hasWindowFocus();
+            if (SystemClock.elapsedRealtime() >= startupDeadline) {
+                Logger.printDebug(() -> "Playback session startup timed out. Account ready=" + (account != null)
+                        + ", watch starter ready=" + (starter != null) + ", window focused=" + focused);
+                cancelStartup();
+                return;
+            }
+            if (account == null || (starter == null && !usesShortsPlayer(snapshot)) || !focused) {
                 Utils.runOnMainThreadDelayed(() -> restoreIfReady(activity), STARTUP_POLL_MS);
                 return;
             }
             checkingStartup = false;
-            if (!account.equals(snapshot.account())) return;
+            if (!account.equals(snapshot.account())) {
+                Logger.printDebug(() -> "Playback session belongs to a different account");
+                return;
+            }
             if (!canRestore(snapshot)) {
+                Logger.printDebug(() -> "Playback session restore disabled for this player");
                 if (snapshot.kind() == PlaybackSessionSnapshot.Kind.SHORT
                         && Settings.DISABLE_SHORTS_RESUMING_ON_STARTUP.get()) update(null);
                 return;
             }
-            if (!PlayerType.getCurrent().isNoneOrHidden() && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
-                    || ShortsPlayerState.isOpen()) return;
+            PlayerType type = PlayerType.getCurrent();
+            if ((!type.isNoneOrHidden() && type != PlayerType.INLINE_MINIMAL) || ShortsPlayerState.isOpen()) {
+                Logger.printDebug(() -> "Playback session restore skipped because a player is already open: " + type);
+                return;
+            }
             restoring = snapshot;
             if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) {
                 Utils.runOnBackgroundThread(() -> {
                     Boolean live = LiveStatusRequest.fetchFresh(snapshot.videoId());
                     Utils.runOnMainThread(() -> {
-                        if (restoring != snapshot) return;
+                        if (activity != owner.get() || restoring != snapshot) return;
                         if (Boolean.TRUE.equals(live)) start(activity, starter, snapshot);
                         else {
                             cancelStartup();
@@ -380,7 +437,7 @@ public final class PlaybackSessionPatch {
         }
     }
 
-    private static void start(Activity activity, WatchStarter starter, PlaybackSessionSnapshot snapshot) {
+    private static void start(Activity activity, @Nullable WatchStarter starter, PlaybackSessionSnapshot snapshot) {
         try {
             if (!enabled() || activity != owner.get() || !activity.hasWindowFocus()
                     || SystemClock.elapsedRealtime() >= startupDeadline
@@ -389,11 +446,16 @@ public final class PlaybackSessionPatch {
                 return;
             }
             Utils.runOnMainThreadDelayed(() -> {
-                if (restoring == snapshot) cancelStartup();
+                if (activity == owner.get() && restoring == snapshot) cancelStartup();
             }, STARTUP_TIMEOUT_MS);
+            Logger.printDebug(() -> "Opening saved playback session at " + snapshot.positionMilliseconds() + " ms");
             if (usesShortsPlayer(snapshot)) {
                 var uri = Uri.parse("https://www.youtube.com/shorts/" + snapshot.videoId());
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, uri).setPackage(activity.getPackageName()));
+                return;
+            }
+            if (starter == null) {
+                cancelStartup();
                 return;
             }
             var watch = WatchEndpoint.newBuilder().setVideoId(snapshot.videoId());
@@ -419,6 +481,9 @@ public final class PlaybackSessionPatch {
         if (!enabled()) return original;
         try {
             if (context == null || !(context.get(RESTORE_CONTEXT) instanceof PlaybackSessionSnapshot snapshot)) {
+                if (checkingStartup || restoring != null) {
+                    Logger.printDebug(() -> "Playback session restore canceled by another watch command");
+                }
                 cancelStartup();
                 dismissedVideo = null;
                 return original;
@@ -442,6 +507,7 @@ public final class PlaybackSessionPatch {
             restoringMinimizedVideo = snapshot.videoId();
             restoreWasMinimized = false;
             restoring = null;
+            Logger.printDebug(() -> "Prepared paused playback session in the miniplayer");
             return descriptor;
         } catch (Exception ex) {
             cancelStartup();
