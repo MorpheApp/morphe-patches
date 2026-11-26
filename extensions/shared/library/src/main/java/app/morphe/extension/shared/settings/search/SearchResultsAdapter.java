@@ -47,10 +47,10 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
-import app.morphe.extension.shared.settings.preference.ToolbarButtons;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.ColorDot;
@@ -636,7 +636,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     }
 
     private void handlePreferenceClick(Preference preference) {
-        ToolbarButtons.performClick(preference, fragment.getPreferenceScreenForSearch());
+        AbstractPreferenceFragment.performClick(preference, fragment.getPreferenceScreenForSearch());
     }
 
     /**

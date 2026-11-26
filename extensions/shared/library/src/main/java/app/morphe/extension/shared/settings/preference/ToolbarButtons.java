@@ -9,42 +9,23 @@ package app.morphe.extension.shared.settings.preference;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
-import android.preference.Preference;
-import android.preference.PreferenceScreen;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
-import java.lang.reflect.Method;
-
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
-@SuppressWarnings({"deprecation", "unused"})
+/**
+ * Icon buttons of the Morphe settings toolbar, such as search or screen info.
+ */
 public final class ToolbarButtons {
 
-    private ToolbarButtons() {}
-
-    /**
-     * Clicks a preference as if its row was tapped. A nested PreferenceScreen opens its screen.
-     *
-     * @param preference The preference to click.
-     * @param rootScreen The main screen of the fragment that holds the preference.
-     */
-    @SuppressWarnings("all")
-    public static void performClick(Preference preference, PreferenceScreen rootScreen) {
-        try {
-            Method m = Preference.class.getDeclaredMethod("performClick", PreferenceScreen.class);
-            m.setAccessible(true);
-            m.invoke(preference, rootScreen);
-        } catch (Exception e) {
-            Logger.printException(() -> "Failed to invoke performClick()", e);
-        }
+    private ToolbarButtons() {
     }
 
     /**
-     * Adds an icon button to the toolbar, such as search or screen info.
+     * Adds an icon button to the toolbar.
      *
      * @param iconName Drawable name, the "_bold" variant is used with bold icons.
      */

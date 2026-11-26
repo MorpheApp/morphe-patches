@@ -89,7 +89,7 @@ public abstract class BaseSearchViewController {
     protected final Toolbar toolbar;
     protected MenuItem searchMenuItem;
     protected FrameLayout overlayContainer;
-    protected FrameLayout searchContainer;
+    protected final FrameLayout searchContainer;
     protected Object nativeBackCallback;
     protected final SearchHistoryManager searchHistoryManager;
     protected SearchView searchView;
@@ -111,8 +111,6 @@ public abstract class BaseSearchViewController {
 
     protected static final int ID_MORPHE_SEARCH_VIEW = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view");
-    protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "morphe_search_view_container");
 
     /**
      * @return The search icon, bold or not depending on the Morphe UI setting, and colored like
@@ -126,25 +124,20 @@ public abstract class BaseSearchViewController {
     /**
      * Constructs a new BaseSearchViewController instance.
      *
-     * @param activity The activity hosting the search view.
-     * @param toolbar  The toolbar containing the search action.
-     * @param fragment The preference fragment to manage search preferences.
-     */
-    protected BaseSearchViewController(Activity activity, Toolbar toolbar, BasePreferenceFragment fragment) {
-        this(activity, activity.getWindow(), toolbar,
-                activity.findViewById(ResourceUtils.getIdentifierOrThrow(
-                        ResourceType.ID, "morphe_settings_fragments")),
-                fragment);
-    }
-
-    /**
-     * Constructs a new BaseSearchViewController instance for a specific window and overlay parent.
+     * @param activity        The activity hosting the search view.
+     * @param window          The window that shows the settings, such as the window of a dialog.
+     * @param toolbar         The toolbar containing the search action.
+     * @param searchContainer The morphe_search_view_container view that is shown over the toolbar.
+     * @param overlayParent   The container of the preference fragment, the search results are shown over it.
+     * @param fragment        The preference fragment to manage search preferences.
      */
     protected BaseSearchViewController(Activity activity, Window window, Toolbar toolbar,
-                                       @Nullable FrameLayout overlayParent, BasePreferenceFragment fragment) {
+                                       FrameLayout searchContainer, FrameLayout overlayParent,
+                                       BasePreferenceFragment fragment) {
         this.activity = activity;
         this.window = window;
         this.toolbar = toolbar;
+        this.searchContainer = searchContainer;
         this.fragment = fragment;
         this.originalTitle = toolbar.getTitle();
         this.allSearchItems = new ArrayList<>();
@@ -168,18 +161,12 @@ public abstract class BaseSearchViewController {
      * Initializes the search view with proper configurations, such as background, query hint, and RTL support.
      */
     private void initializeSearchView() {
-        // Retrieve SearchView and container from XML.
-        // Fall back to window decor view when toolbar is not attached yet during construction.
-        View rootView = toolbar.getParent() != null
-                ? toolbar.getRootView()
-                : window.getDecorView();
-        searchView = rootView.findViewById(ID_MORPHE_SEARCH_VIEW);
+        // Retrieve SearchView from XML.
+        searchView = searchContainer.findViewById(ID_MORPHE_SEARCH_VIEW);
         EditText searchEditText = searchView.findViewById(ResourceUtils.getIdentifierOrThrow(
                 null, "android:id/search_src_text"));
         // Disable fullscreen keyboard mode.
         searchEditText.setImeOptions(searchEditText.getImeOptions() | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-
-        searchContainer = rootView.findViewById(ID_MORPHE_SEARCH_VIEW_CONTAINER);
 
         // Set background and query hint.
         searchView.setBackground(createBackgroundDrawable());
@@ -222,7 +209,7 @@ public abstract class BaseSearchViewController {
     /**
      * Initializes the overlay container for displaying search results and history.
      */
-    private void initializeOverlayContainer(@Nullable FrameLayout overlayParent) {
+    private void initializeOverlayContainer(FrameLayout overlayParent) {
         // Create overlay container for search results and history.
         overlayContainer = new FrameLayout(activity);
         overlayContainer.setVisibility(View.GONE);
@@ -251,13 +238,11 @@ public abstract class BaseSearchViewController {
                 FrameLayout.LayoutParams.MATCH_PARENT));
 
         // Add overlay to the main content container.
-        if (overlayParent != null) {
-            FrameLayout.LayoutParams overlayParams = new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.MATCH_PARENT,
-                    FrameLayout.LayoutParams.MATCH_PARENT);
-            overlayParams.gravity = Gravity.TOP;
-            overlayParent.addView(overlayContainer, overlayParams);
-        }
+        FrameLayout.LayoutParams overlayParams = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT);
+        overlayParams.gravity = Gravity.TOP;
+        overlayParent.addView(overlayContainer, overlayParams);
     }
 
     // Abstract interface for preference fragments.
@@ -347,11 +332,22 @@ public abstract class BaseSearchViewController {
         });
     }
 
+    /**
+     * Closes the settings, such as with the toolbar back button while search is not open.
+     */
     protected abstract void closeSettings();
 
-    protected void onSwitchToggled(SwitchPreference preference) {}
+    /**
+     * Called after a switch of a search result is toggled without opening the preference.
+     */
+    protected void onSwitchToggled(SwitchPreference preference) {
+    }
 
-    protected void bindColorDot(View colorDot, Preference preference) {}
+    /**
+     * Binds app specific state to the color dot of a color search result.
+     */
+    protected void bindColorDot(View colorDot, Preference preference) {
+    }
 
     /**
      * Initializes search data by collecting all searchable preferences from the fragment.

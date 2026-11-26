@@ -8,9 +8,6 @@
 package app.morphe.extension.reddit.settings.search;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.preference.PreferenceScreen;
-import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.Toolbar;
@@ -20,59 +17,27 @@ import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 
 /**
- * Reddit-specific search view controller implementation.
+ * Search view controller of the Reddit settings dialog.
  */
-@SuppressWarnings("deprecation")
 public class RedditSearchViewController extends BaseSearchViewController {
 
-    private final Runnable closeSettingsAction;
+    private final Runnable closeSettings;
 
-    public static RedditSearchViewController addSearchViewComponents(Activity activity,
-                                                                     Window window,
-                                                                     Toolbar toolbar,
-                                                                     FrameLayout overlayParent,
-                                                                     RedditPreferenceFragment fragment,
-                                                                     Runnable closeSettings) {
-        return new RedditSearchViewController(activity, window, toolbar, overlayParent, fragment, closeSettings);
-    }
-
-    private RedditSearchViewController(Activity activity,
-                                       Window window,
-                                       Toolbar toolbar,
-                                       FrameLayout overlayParent,
-                                       RedditPreferenceFragment fragment,
-                                       Runnable closeSettings) {
-        super(activity, window, toolbar, overlayParent, new PreferenceFragmentAdapter(fragment));
-        this.closeSettingsAction = closeSettings;
+    public RedditSearchViewController(Activity activity, Window window, Toolbar toolbar,
+                                      FrameLayout searchContainer, FrameLayout overlayParent,
+                                      RedditPreferenceFragment fragment, Runnable closeSettings) {
+        super(activity, window, toolbar, searchContainer, overlayParent, fragment);
+        this.closeSettings = closeSettings;
 
         if (RedditSettingsStyle.isModernStyle()) {
             overlayContainer.setBackgroundColor(RedditSettingsStyle.getBackgroundColor());
-            Drawable searchIcon = searchMenuItem.getIcon();
-            if (searchIcon != null) {
-                searchIcon.setTint(RedditSettingsStyle.getTextColor());
-            }
+            // Same color as the back button.
+            searchMenuItem.getIcon().setTint(RedditSettingsStyle.getTextColor());
         }
     }
 
     @Override
     protected void closeSettings() {
-        closeSettingsAction.run();
-    }
-
-    private record PreferenceFragmentAdapter(RedditPreferenceFragment fragment) implements BasePreferenceFragment {
-        @Override
-        public PreferenceScreen getPreferenceScreenForSearch() {
-            return fragment.getPreferenceScreenForSearch();
-        }
-
-        @Override
-        public View getView() {
-            return fragment.getView();
-        }
-
-        @Override
-        public Activity getActivity() {
-            return fragment.getActivity();
-        }
+        closeSettings.run();
     }
 }

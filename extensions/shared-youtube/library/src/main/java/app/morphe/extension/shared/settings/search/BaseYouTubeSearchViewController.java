@@ -13,18 +13,28 @@ import android.preference.SwitchPreference;
 import android.view.View;
 import android.widget.Toolbar;
 
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
 
 /**
- * Shared search view controller base class for YouTube and YouTube Music.
+ * Search view controller of the YouTube and YouTube Music settings activity.
  */
 @SuppressWarnings("deprecation")
 public abstract class BaseYouTubeSearchViewController extends BaseSearchViewController {
 
+    private static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.ID, "morphe_search_view_container");
+    private static final int ID_MORPHE_SETTINGS_FRAGMENTS = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.ID, "morphe_settings_fragments");
+
     protected BaseYouTubeSearchViewController(Activity activity, Toolbar toolbar, BasePreferenceFragment fragment) {
-        super(activity, toolbar, fragment);
+        super(activity, activity.getWindow(), toolbar,
+                activity.findViewById(ID_MORPHE_SEARCH_VIEW_CONTAINER),
+                activity.findViewById(ID_MORPHE_SETTINGS_FRAGMENTS),
+                fragment);
     }
 
     @Override

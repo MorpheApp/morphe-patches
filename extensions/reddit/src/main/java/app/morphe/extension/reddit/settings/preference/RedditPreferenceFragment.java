@@ -26,22 +26,21 @@ import app.morphe.extension.reddit.settings.preference.categories.NavigationBarP
 import app.morphe.extension.reddit.settings.preference.categories.PostButtonsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.SidebarPreferenceCategory;
 import app.morphe.extension.reddit.settings.search.RedditSearchViewController;
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
+import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 
 /**
  * Preference fragment for Reddit Morphe settings.
  */
 @SuppressWarnings("deprecation")
-public class RedditPreferenceFragment extends AbstractPreferenceFragment {
+public class RedditPreferenceFragment extends AbstractPreferenceFragment
+        implements BaseSearchViewController.BasePreferenceFragment {
 
     /**
      * Restyles the rows if the app uses the Compose settings.
      */
     @Nullable
     private ViewTreeObserver.OnPreDrawListener styleListener;
-
-    private PreferenceScreen preferenceScreen;
 
     @Nullable
     private RedditSearchViewController searchViewController;
@@ -50,7 +49,7 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
     protected void initialize() {
         Context context = getContext();
 
-        preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
+        PreferenceScreen preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
         setPreferenceScreen(preferenceScreen);
 
         // Custom categories reference app specific Settings class.
@@ -63,23 +62,20 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
     }
 
-    public void setSearchViewController(@Nullable RedditSearchViewController controller) {
-        this.searchViewController = controller;
+    public void setSearchViewController(RedditSearchViewController controller) {
+        searchViewController = controller;
     }
 
+    @Override
     public PreferenceScreen getPreferenceScreenForSearch() {
-        return preferenceScreen;
+        return getPreferenceScreen();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        try {
-            if (searchViewController != null) {
-                searchViewController.initializeSearchData();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onStart failure", ex);
+        if (searchViewController != null) {
+            searchViewController.initializeSearchData();
         }
     }
 

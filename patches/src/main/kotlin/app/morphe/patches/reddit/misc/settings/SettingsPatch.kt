@@ -47,6 +47,7 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.announcements.patchesUpdateNoticePatch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.settings.settingsSearchResources
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -110,26 +111,9 @@ val settingsPatch = patch(
                         "morphe_ic_dialog_alert.xml",
                         "morphe_settings_custom_checkmark.xml",
                         "morphe_settings_custom_checkmark_bold.xml",
-                        "morphe_settings_icon_reddit.xml",
-                        "morphe_settings_search_icon.xml",
-                        "morphe_settings_search_icon_bold.xml",
-                        "morphe_settings_search_remove.xml",
-                        "morphe_settings_search_remove_bold.xml",
-                        "morphe_settings_arrow_time.xml",
-                        "morphe_settings_arrow_time_bold.xml"
+                        "morphe_settings_icon_reddit.xml"
                     ),
-                    ResourceGroup(
-                        "layout",
-                        "morphe_color_dot_widget.xml",
-                        "morphe_preference_search_history_item.xml",
-                        "morphe_preference_search_history_screen.xml",
-                        "morphe_preference_search_no_result.xml",
-                        "morphe_preference_search_result_color.xml",
-                        "morphe_preference_search_result_list.xml",
-                        "morphe_preference_search_result_regular.xml",
-                        "morphe_preference_search_result_switch.xml",
-                        "morphe_settings_search_bar.xml"
-                    )
+                    *settingsSearchResources
                 )
             }
         }
