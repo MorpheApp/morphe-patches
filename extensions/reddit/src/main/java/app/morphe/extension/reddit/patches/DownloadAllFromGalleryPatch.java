@@ -129,7 +129,7 @@ public final class DownloadAllFromGalleryPatch {
     }
 
     /**
-     * Injection point. Called when the share sheet preview of a post is built.
+     * Injection point. Called when the share sheet has loaded its post.
      */
     public static void setShareSheetLink(@Nullable Link link) {
         try {

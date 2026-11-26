@@ -40,9 +40,10 @@ val privateBrowsingModePatch = patch(
                 "'Private browsing mode' requires Reddit 2026.43.0+"
             )
         }
+        // Reddit 2026.48.0 removed Anonymous Browsing and always uses Incognito.
         if (is_2026_48_0_or_greater) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Private browsing mode' does not work with Reddit 2026.48.0 and later"
+                "'Private browsing mode' does not work with Reddit 2026.48.0 and later, which removed Anonymous Browsing"
             )
         }
 
