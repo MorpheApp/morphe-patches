@@ -11,6 +11,7 @@ import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
+import static app.morphe.extension.shared.settings.Setting.parentsAll;
 
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModeratorComments;
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch.CollapseAllScope;
@@ -54,6 +55,7 @@ public class Settings extends BaseSettings {
     public static final IntegerSetting GLASS_NAVIGATION_BAR_POSITION = new IntegerSetting("morphe_glass_navigation_bar_position", 0, true, parent(GLASS_NAVIGATION_BAR));
     public static final BooleanSetting GLASS_NAVIGATION_BAR_SHOW_LABELS = new BooleanSetting("morphe_glass_navigation_bar_show_labels", TRUE, true, parent(GLASS_NAVIGATION_BAR));
     public static final BooleanSetting GLASS_NAVIGATION_BAR_SEARCH_BUTTON = new BooleanSetting("morphe_glass_navigation_bar_search_button", FALSE, true, parent(GLASS_NAVIGATION_BAR));
+    public static final BooleanSetting GLASS_NAVIGATION_BAR_TOP_TABS = new BooleanSetting("morphe_glass_navigation_bar_top_tabs", TRUE, true, parentsAll(parent(GLASS_NAVIGATION_BAR), parent(GLASS_NAVIGATION_BAR_SEARCH_BUTTON)));
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true);

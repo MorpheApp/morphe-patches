@@ -332,3 +332,162 @@ internal object HomeTopBarFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Home feed tab row (For You, Following, Popular), 2026.45.0+
+ */
+internal object HomeTabBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "L",
+        "Lkotlin/jvm/functions/Function1;",
+        "Z",
+        "Z",
+        "Lcom/reddit/listing/model/sort/SortType;",
+        "Lkotlin/jvm/functions/Function2;",
+        "F",
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        string("home_tab_bar"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf(
+                "Ljava/util/List;",
+                "L",
+                "L",
+                "Z",
+                "Lcom/reddit/ui/compose/ds/TabsArrangement;",
+                "L",
+                "Lcom/reddit/ui/compose/ds/TabSize;",
+                "L",
+                "Lkotlin/jvm/functions/Function1;",
+                "L",
+                "Landroidx/compose/runtime/internal/a;",
+                "L",
+                "I",
+                "I"
+            ),
+            returnType = "V"
+        )
+    )
+)
+
+/**
+ * Wrapper around the home tab bar with its modifier and top padding, 2026.45.0+
+ */
+internal object HomeTabBarWrapperFingerprint : Fingerprint(
+    classFingerprint = HomeTabBarFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "L",
+        "Lkotlin/jvm/functions/Function1;",
+        "L",
+        "Z",
+        "Lcom/reddit/listing/model/sort/SortType;",
+        "Lkotlin/jvm/functions/Function2;",
+        "F",
+        "L",
+        "I"
+    )
+)
+
+/**
+ * Height of the home feed tab row header, 2026.45.0+
+ */
+internal object HomeTabBarHeightFingerprint : Fingerprint(
+    classFingerprint = HomeTabBarFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "F",
+    parameters = listOf("Z", "L")
+)
+
+/**
+ * Item of the home feed tab row, 2026.47.0+
+ */
+internal object HomeTabItemFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf("L", "F", "F", "F", "F", "I"),
+            returnType = "L"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        string("home_tab_", location = MatchAfterWithin(3)),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf(
+                "Landroidx/compose/runtime/internal/a;",
+                "Lkotlin/jvm/functions/Function0;",
+                "L",
+                "Z",
+                "Z",
+                "Lcom/reddit/ui/compose/ds/TabSize;",
+                "Lkotlin/jvm/functions/Function2;",
+                "Lkotlin/jvm/functions/Function2;",
+                "L",
+                "Ljava/lang/String;",
+                "L",
+                "L",
+                "I",
+                "I"
+            ),
+            returnType = "V"
+        )
+    )
+)
+
+/**
+ * Label of an item in the home feed tab row, 2026.47.0+
+ */
+internal object HomeTabLabelFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "Lcom/reddit/feedslegacy/switcher/homepager/model/HomePagerScreenTabUiModel;",
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf(
+                "Ljava/lang/String;", "L", "J", "J", "L", "L", "L", "J", "L", "I", "J",
+                "I", "Z", "I", "I", "Lkotlin/jvm/functions/Function1;", "L", "L", "I", "I", "I"
+            ),
+            returnType = "V",
+            location = MatchAfterWithin(40)
+        )
+    )
+)
+
+/**
+ * Button in the bottom navigation bar.
+ */
+internal object BottomNavButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Lkotlin/jvm/functions/Function0;",
+        "Ljava/lang/String;",
+        "Z",
+        "L",
+        "Lkotlin/jvm/functions/Function0;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lkotlin/jvm/functions/Function2;",
+        "Lkotlin/jvm/functions/Function2;",
+        "Landroidx/compose/runtime/internal/a;",
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        string("bottom_nav_button")
+    )
+)

@@ -36,6 +36,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
 
 @SuppressWarnings("unused")
 public final class GlassNavigationBarPatch {
@@ -155,6 +156,30 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
+     * Draws a soft pill behind the selected bottom navigation bar button.
+     */
+    private static final class BarPillDraw implements Function1<ContentDrawScope, Object> {
+        private static final BarPillDraw INSTANCE = new BarPillDraw();
+
+        private BarPillDraw() {
+        }
+
+        @Override
+        public Object invoke(ContentDrawScope scope) {
+            try {
+                if (isBarPillActive()) {
+                    drawNavPill(scope);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "BarPillDraw failure", ex);
+            }
+
+            scope.patch_drawContent();
+            return null;
+        }
+    }
+
+    /**
      * Click action of the hidden search field.
      */
     private static final class NoClick implements Function0<Object> {
@@ -198,6 +223,9 @@ public final class GlassNavigationBarPatch {
     private static final float BAR_ROW_HEIGHT_DP = 50;
     private static final float BAR_CAPSULE_HEIGHT_DP = 60;
     private static final float BAR_CAPSULE_INSET_DP = 20;
+    private static final float BAR_PILL_INSET_DP = 6f;
+    private static final float LIGHT_PILL_ALPHA = 0.07f;
+    private static final float DARK_PILL_ALPHA = 0.14f;
 
     /**
      * A taller system navigation bar has buttons and can be almost opaque.
@@ -239,6 +267,8 @@ public final class GlassNavigationBarPatch {
     private static final boolean SEARCH_BUTTON_ENABLED = GLASS_ENABLED
             && isSearchButtonSupported()
             && Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON.get();
+    static final boolean TOP_TABS_ENABLED = SEARCH_BUTTON_ENABLED
+            && Settings.GLASS_NAVIGATION_BAR_TOP_TABS.get();
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -263,6 +293,11 @@ public final class GlassNavigationBarPatch {
      * If the side rail is shown instead of the bottom navigation bar.
      */
     private static boolean isRailShown;
+
+    /**
+     * Full glass height of the top bar buttons, in pixels.
+     */
+    private static float topBarButtonGlassHeightPx;
 
     /**
      * @return If this patch was included during patching.
@@ -437,6 +472,29 @@ public final class GlassNavigationBarPatch {
     /**
      * Injection point.
      *
+     * @param selected Whether the bottom navigation bar button is selected.
+     * @param modifier Modifier of the bottom navigation bar button.
+     */
+    @Nullable
+    public static Object getBarButtonModifier(boolean selected, @Nullable Modifier modifier) {
+        if (modifier == null || !selected) {
+            return modifier;
+        }
+
+        try {
+            if (isBarPillActive()) {
+                return modifier.patch_drawWithContent(BarPillDraw.INSTANCE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getBarButtonModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * Injection point.
+     *
      * @param modifier Modifier of the search field at the top of Home.
      */
     public static Object getSearchFieldModifier(Modifier modifier) {
@@ -475,6 +533,235 @@ public final class GlassNavigationBarPatch {
         return isSearchButtonActive()
                 ? modifier.patch_drawWithContent(TopBarButtonDraw.INSTANCE)
                 : modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param below Content slot shown below the Home top bar.
+     */
+    @Nullable
+    public static Function2<?, ?, ?> getTopBarBelow(@Nullable Function2<?, ?, ?> below) {
+        if (!TOP_TABS_ENABLED) {
+            return below;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getBelow(below);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopBarBelow failure", ex);
+        }
+
+        return below;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param composer Compose composer inside the Home top bar row.
+     */
+    public static void inlineTopTabs(@Nullable Object composer) {
+        if (!TOP_TABS_ENABLED) {
+            return;
+        }
+
+        try {
+            GlassNavigationBarTopTabs.inlineTabs(composer);
+        } catch (Exception ex) {
+            Logger.printException(() -> "inlineTopTabs failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of the Home tab bar wrapper.
+     */
+    @Nullable
+    public static Object getTopTabsModifier(@Nullable Modifier modifier) {
+        if (!TOP_TABS_ENABLED) {
+            return modifier;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getModifier(modifier);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param evenly Whether the Home tabs are spread evenly.
+     */
+    public static boolean getTopTabsEvenly(boolean evenly) {
+        if (!TOP_TABS_ENABLED) {
+            return evenly;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getEvenly(evenly);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsEvenly failure", ex);
+        }
+
+        return evenly;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param height Height reserved for the Home tab bar below the top bar.
+     */
+    public static float getHeaderTabsHeight(float height) {
+        if (!TOP_TABS_ENABLED) {
+            return height;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getHeaderHeight(height);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getHeaderTabsHeight failure", ex);
+        }
+
+        return height;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of a Home tab item.
+     */
+    @Nullable
+    public static Object getTopTabsItemModifier(@Nullable Modifier modifier) {
+        if (!TOP_TABS_ENABLED) {
+            return modifier;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getItemModifier(modifier);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsItemModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param padding Top padding of a Home tab item.
+     */
+    public static float getTopTabsItemTopPadding(float padding) {
+        if (!TOP_TABS_ENABLED) {
+            return padding;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getItemTopPadding(padding);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsItemTopPadding failure", ex);
+        }
+
+        return padding;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param fontSize Font size of a Home tab label.
+     */
+    public static long getTopTabsLabelFontSize(long fontSize) {
+        if (!TOP_TABS_ENABLED) {
+            return fontSize;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getLabelFontSize(fontSize);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsLabelFontSize failure", ex);
+        }
+
+        return fontSize;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param lineHeight Line height of a Home tab label.
+     */
+    public static long getTopTabsLabelLineHeight(long lineHeight) {
+        if (!TOP_TABS_ENABLED) {
+            return lineHeight;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getLabelLineHeight(lineHeight);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsLabelLineHeight failure", ex);
+        }
+
+        return lineHeight;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param mask Default parameter mask of a Home tab label.
+     */
+    public static int getTopTabsLabelMask(int mask) {
+        if (!TOP_TABS_ENABLED) {
+            return mask;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getLabelMask(mask);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsLabelMask failure", ex);
+        }
+
+        return mask;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param pager Pager state of the Home feed tabs.
+     */
+    public static void setTopTabsPager(@Nullable Object pager) {
+        if (!TOP_TABS_ENABLED) {
+            return;
+        }
+
+        try {
+            GlassNavigationBarTopTabs.setPager(pager);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setTopTabsPager failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of a tab row indicator.
+     * @param pager    Pager state of the tab row.
+     */
+    @Nullable
+    public static Object getTopTabsIndicatorModifier(@Nullable Modifier modifier, @Nullable Object pager) {
+        if (!TOP_TABS_ENABLED) {
+            return modifier;
+        }
+
+        try {
+            return GlassNavigationBarTopTabs.getIndicatorModifier(modifier, pager);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopTabsIndicatorModifier failure", ex);
+        }
+
+        return modifier;
     }
 
     /**
@@ -565,6 +852,22 @@ public final class GlassNavigationBarPatch {
         return SEARCH_BUTTON_ENABLED && !isRailShown && getScreenWidthDp() < SIDE_RAIL_MIN_WIDTH_DP;
     }
 
+    static boolean isTopTabsActive() {
+        return TOP_TABS_ENABLED && isSearchButtonActive();
+    }
+
+    static boolean isTopTabsShown() {
+        return isTopTabsActive() && GlassNavigationBarTopTabs.isTabsInRow();
+    }
+
+    private static boolean isBarPillActive() {
+        return GLASS_ENABLED && !isRailShown && getScreenWidthDp() < SIDE_RAIL_MIN_WIDTH_DP;
+    }
+
+    static float getTopBarButtonGlassHeightPx() {
+        return topBarButtonGlassHeightPx;
+    }
+
     private static void setRailShown(boolean shown) {
         if (SEARCH_BUTTON_ENABLED && isRailShown != shown) {
             isRailShown = shown;
@@ -629,7 +932,7 @@ public final class GlassNavigationBarPatch {
 
         float left = getSidePadding(width)
                 + BAR_CAPSULE_INSET_DP * density * WIDTH_PERCENT / 100;
-        float height = BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
+        float height = getBarCapsuleHeightPx(density);
         final float top = (rowHeight - height) / 2;
 
         if (barHeight - rowHeight > GESTURE_NAVIGATION_MAX_HEIGHT_DP * density) {
@@ -713,9 +1016,23 @@ public final class GlassNavigationBarPatch {
         final float extra = TOP_BAR_BUTTON_GLASS_EXTRA_DP * getDensity();
         final float height = unpackSecond(size) + extra;
         final float width = Math.max(unpackFirst(size) + extra, height);
-        final float radius = height / 2;
         final float left = (unpackFirst(size) - width) / 2;
         final float top = -extra / 2;
+
+        topBarButtonGlassHeightPx = height;
+        drawTopBarGlass(scope, left, top, width, height);
+    }
+
+    /**
+     * Draws a glass pill behind a top bar element.
+     */
+    static void drawTopBarGlass(ContentDrawScope scope, float left, float top,
+                                float width, float height) {
+        if (width <= 0 || height <= 0) {
+            return;
+        }
+
+        final float radius = height / 2;
         final boolean dark = isGlassDark();
         Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
 
@@ -731,8 +1048,57 @@ public final class GlassNavigationBarPatch {
         GlassNavigationBarEdge.drawOutline(canvas, left, top, width, height, radius, dark);
     }
 
+    private static float getBarCapsuleHeightPx(float density) {
+        return BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
+    }
+
+    private static void drawNavPill(ContentDrawScope scope) {
+        final long size = scope.patch_getSize();
+        final float width = unpackFirst(size);
+        final float height = unpackSecond(size);
+        if (width <= 0 || height <= 0) {
+            return;
+        }
+
+        final float density = getDensity();
+        final float inset = BAR_PILL_INSET_DP * density;
+        final float pillWidth = width - 2 * inset;
+        final float pillHeight = getBarCapsuleHeightPx(density) - 2 * inset;
+        if (pillWidth <= 0 || pillHeight <= 0) {
+            return;
+        }
+
+        final float left = (width - pillWidth) / 2;
+        final float top = (height - pillHeight) / 2;
+        final float radius = Settings.GLASS_NAVIGATION_BAR_ROUND_ENDS.get()
+                ? pillHeight / 2
+                : (CORNER_RADIUS_DP - BAR_PILL_INSET_DP) * density;
+
+        drawPill(scope, left, top, pillWidth, pillHeight, radius);
+    }
+
+    static void drawPill(ContentDrawScope scope, float left, float top,
+                         float width, float height, float radius) {
+        final boolean dark = isGlassDark();
+        final float alpha = dark ? DARK_PILL_ALPHA : LIGHT_PILL_ALPHA;
+        final int alphaByte = Math.round(alpha * 255f) & 0xFF;
+        final int rgb = dark ? 0xFFFFFF : 0x000000;
+        final long color = ((long) ((alphaByte << 24) | rgb) & 0xFFFFFFFFL) << 32;
+
+        scope.patch_drawRoundRect(
+                color,
+                pack(left, top),
+                pack(width, height),
+                pack(radius, radius)
+        );
+    }
+
     static int getPageColor() {
         return pageColor;
+    }
+
+    static long getPackedPageColor() {
+        return ((long) pageColor) << 32;
     }
 
     static boolean isGlassDark() {
