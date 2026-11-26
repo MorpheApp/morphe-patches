@@ -271,6 +271,7 @@ public final class GlassMenusPatch {
      * Draws the glass on the background view the popup adds around its content if it has a background,
      * otherwise on the content itself.
      */
+    @RequiresApi(api = Build.VERSION_CODES.S)
     private static void applyToPopupContent(View content) {
         View surface = content.getParent() instanceof View parent && parent.getBackground() != null
                 ? parent
