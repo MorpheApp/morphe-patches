@@ -173,13 +173,6 @@ internal object NewWeightModifierFingerprint : Fingerprint(
 internal object GraphicsLayerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "L",
-    parameters = listOf("L", "F", "F", "F", "F", "F", "L", "Z", "I", "I"),
-    custom = { _, classDef -> classDef.type.startsWith("Landroidx/compose/ui/graphics/") }
-)
-
-internal object NewRoundedCornerShapeFingerprint : Fingerprint(
-    definingClass = "Lapp/morphe/extension/reddit/utils/ComposeUtils;",
-    name = "newRoundedCornerShape",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("F")
+    definingClass = "Landroidx/compose/ui/graphics/",
+    parameters = listOf("L", "F", "F", "F", "F", "F", "L", "Z", "I", "I")
 )

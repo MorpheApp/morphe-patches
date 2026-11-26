@@ -14,10 +14,8 @@ import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.Map;
-import java.util.WeakHashMap;
 
+import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.utils.ComposeUtils;
 import app.morphe.extension.reddit.utils.ComposeUtils.ContentDrawScope;
 import app.morphe.extension.reddit.utils.ComposeUtils.Modifier;
@@ -27,61 +25,30 @@ import kotlin.jvm.functions.Function2;
 
 /**
  * Moves the Home feed tabs into a glass capsule in the top bar row.
+ * <p>
+ * The tab bar is composed inside the top bar row, and its original place below the top bar
+ * composes nothing.
  */
-final class GlassNavigationBarTopTabs {
+@SuppressWarnings("unused")
+public final class GlassNavigationBarTopTabs {
 
-    private static final class TopTabsDraw implements Function1<ContentDrawScope, Object> {
-        private static final TopTabsDraw INSTANCE = new TopTabsDraw();
+    /**
+     * Draws the glass capsule behind the tabs.
+     */
+    private static final class CapsuleDraw implements Function1<ContentDrawScope, Object> {
+        private static final CapsuleDraw INSTANCE = new CapsuleDraw();
 
-        private TopTabsDraw() {
+        private CapsuleDraw() {
         }
 
         @Override
         public Object invoke(ContentDrawScope scope) {
             try {
-                if (GlassNavigationBarPatch.isTopTabsActive()) {
-                    drawTabsCapsule(scope);
+                if (isActive()) {
+                    drawCapsule(scope);
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "TopTabsDraw failure", ex);
-            } finally {
-                scope.patch_drawContent();
-            }
-            return null;
-        }
-    }
-
-    private static final class BelowWrapper implements Function2<Object, Object, Object> {
-        private final Function2<Object, Object, Object> original;
-
-        private BelowWrapper(Function2<Object, Object, Object> original) {
-            this.original = original;
-        }
-
-        @Override
-        public Object invoke(Object composer, Object changed) {
-            if (GlassNavigationBarPatch.isTopTabsActive() && !Boolean.TRUE.equals(IN_ROW.get())) {
-                return null;
-            }
-            return original.invoke(composer, changed);
-        }
-    }
-
-    private static final class TabPillDraw implements Function1<ContentDrawScope, Object> {
-        private static final TabPillDraw INSTANCE = new TabPillDraw();
-
-        private TabPillDraw() {
-        }
-
-        @Override
-        public Object invoke(ContentDrawScope scope) {
-            try {
-                if (GlassNavigationBarPatch.isTopTabsActive()) {
-                    drawTabPill(scope);
-                    return null;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "TabPillDraw failure", ex);
+                Logger.printException(() -> "CapsuleDraw failure", ex);
             }
 
             scope.patch_drawContent();
@@ -89,237 +56,391 @@ final class GlassNavigationBarTopTabs {
         }
     }
 
-    private static final float TABS_WEIGHT = 1000f;
-    private static final float HEADER_TABS_HEIGHT_DP = 8f;
-    private static final float CAPSULE_MARGIN_DP = 4f;
-    private static final float PILL_INSET_X_DP = 2f;
-    private static final float PILL_INSET_Y_DP = 4f;
-    private static final float LABEL_FONT_SIZE_SP = 13f;
-    private static final float LABEL_LINE_HEIGHT_SP = 17f;
-    private static final int TEXT_DEFAULT_BITS = (1 << 3) | (1 << 10);
-    private static final float TAB_ITEM_CORNER_DP = 100f;
+    /**
+     * Draws a pill behind the selected tab, in place of the indicator line.
+     */
+    private static final class SelectedPillDraw implements Function1<ContentDrawScope, Object> {
+        private static final SelectedPillDraw INSTANCE = new SelectedPillDraw();
 
-    private static final Map<Function2<?, ?, ?>, WeakReference<BelowWrapper>> BELOW_WRAPPERS =
-            Collections.synchronizedMap(new WeakHashMap<>());
-    private static final Map<Object, WeakReference<Modifier>> WRAPPED_TO_ORIG =
-            Collections.synchronizedMap(new WeakHashMap<>());
-    private static final ThreadLocal<Boolean> IN_ROW = new ThreadLocal<>();
+        private SelectedPillDraw() {
+        }
+
+        @Override
+        public Object invoke(ContentDrawScope scope) {
+            try {
+                if (isActive()) {
+                    drawSelectedPill(scope);
+                    return null;
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "SelectedPillDraw failure", ex);
+            }
+
+            scope.patch_drawContent();
+            return null;
+        }
+    }
+
+    /**
+     * Content below the top bar. Composes nothing there while the tabs are in the top bar row.
+     */
+    private static final class BelowContent implements Function2<Object, Object, Object> {
+        private final Function2<Object, Object, Object> original;
+
+        private BelowContent(Function2<Object, Object, Object> original) {
+            this.original = original;
+        }
+
+        @Override
+        public Object invoke(Object composer, Object changed) {
+            if (isActive() && !composingInRow) {
+                return null;
+            }
+
+            return original.invoke(composer, changed);
+        }
+    }
+
+    /**
+     * Much larger than the weight of the invisible search field in the same row,
+     * so the tabs get nearly all the free space of the row.
+     */
+    private static final float TABS_WEIGHT = 1000;
+    private static final float HEADER_HEIGHT_DP = 8;
+    private static final float CAPSULE_MARGIN_DP = 4;
+    private static final float SELECTED_PILL_INSET_X_DP = 2;
+    private static final float SELECTED_PILL_INSET_Y_DP = 4;
+    private static final float TAB_CORNER_RADIUS_DP = 100;
+    private static final float LABEL_FONT_SIZE_SP = 13;
+    private static final float LABEL_LINE_HEIGHT_SP = 17;
+    /**
+     * TextUnit type bits of a sp value.
+     */
+    private static final long TEXT_UNIT_TYPE_SP = 0x100000000L;
+    /**
+     * Default parameter bits of the font size and line height of the label text.
+     */
+    private static final int LABEL_TEXT_DEFAULT_BITS = (1 << 3) | (1 << 10);
+
+    private static final boolean ENABLED = GlassNavigationBarPatch.isSearchButtonEnabled()
+            && Settings.GLASS_NAVIGATION_BAR_TOP_TABS.get();
 
     @Nullable
-    private static volatile WeakReference<Function2<Object, Object, Object>> currentBelow;
+    private static WeakReference<BelowContent> belowContentRef;
     @Nullable
-    private static volatile WeakReference<Object> pagerRef;
+    private static WeakReference<Object> pagerRef;
     @Nullable
-    private static volatile Object cachedWrappedModifier;
+    private static WeakReference<Modifier> replacedModifierRef;
+    /**
+     * Weight and capsule modifier of the tab bar. Created once.
+     */
     @Nullable
-    private static volatile Object cachedItemShape;
-    private static volatile boolean tabsInRow;
-    private static volatile float tabsHeightPx;
-    private static volatile float capsuleHeightPx;
+    private static Object tabsModifier;
+    @Nullable
+    private static Object tabShape;
+
+    /**
+     * If the tab bar is being composed inside the top bar row.
+     */
+    private static boolean composingInRow;
+    private static boolean tabsInRow;
+    private static float tabsHeightPx;
+    private static float capsuleHeightPx;
 
     private GlassNavigationBarTopTabs() {
     }
 
+    private static boolean isActive() {
+        return ENABLED && GlassNavigationBarPatch.isSearchButtonActive();
+    }
+
+    /**
+     * @return If the tabs are currently shown in the top bar row.
+     */
+    static boolean isShown() {
+        return isActive() && tabsInRow;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param below Content shown below the Home top bar.
+     */
     @SuppressWarnings("unchecked")
     @Nullable
-    static Function2<?, ?, ?> getBelow(@Nullable Function2<?, ?, ?> original) {
-        if (original == null) {
-            return null;
-        }
-        if (original instanceof BelowWrapper wrapper) {
-            currentBelow = new WeakReference<>(wrapper.original);
-            return original;
-        }
-        if (!GlassNavigationBarPatch.isTopTabsActive()) {
-            return original;
+    public static Function2<?, ?, ?> getTopBarBelow(@Nullable Function2<?, ?, ?> below) {
+        if (!ENABLED || below == null) {
+            return below;
         }
 
-        Function2<Object, Object, Object> typed = (Function2<Object, Object, Object>) original;
-        BelowWrapper wrapper;
-        synchronized (BELOW_WRAPPERS) {
-            WeakReference<BelowWrapper> ref = BELOW_WRAPPERS.get(original);
-            wrapper = ref != null ? ref.get() : null;
-            if (wrapper == null) {
-                wrapper = new BelowWrapper(typed);
-                BELOW_WRAPPERS.put(original, new WeakReference<>(wrapper));
-            }
-        }
-        currentBelow = new WeakReference<>(typed);
-        return wrapper;
-    }
-
-    static void inlineTabs(@Nullable Object composer) {
-        if (!GlassNavigationBarPatch.isTopTabsActive() || composer == null) {
-            return;
-        }
-
-        WeakReference<Function2<Object, Object, Object>> ref = currentBelow;
-        Function2<Object, Object, Object> below = ref != null ? ref.get() : null;
-        if (below == null) {
-            tabsInRow = false;
-            return;
-        }
-
-        IN_ROW.set(Boolean.TRUE);
         try {
-            below.invoke(composer, 0);
-        } finally {
-            IN_ROW.remove();
+            // Recomposition passes the replaced content again.
+            if (below instanceof BelowContent content) {
+                belowContentRef = new WeakReference<>(content);
+                return below;
+            }
+
+            if (!isActive()) {
+                return below;
+            }
+
+            // Keep the same instance, so Compose can skip the content.
+            BelowContent content = belowContentRef == null ? null : belowContentRef.get();
+            if (content == null || content.original != below) {
+                content = new BelowContent((Function2<Object, Object, Object>) below);
+                belowContentRef = new WeakReference<>(content);
+            }
+
+            return content;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopBarBelow failure", ex);
+        }
+
+        return below;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param composer Composer of the Home top bar row, after the search field.
+     */
+    public static void composeTabsInRow(@Nullable Object composer) {
+        if (!ENABLED || composer == null) {
+            return;
+        }
+
+        try {
+            if (!isActive()) {
+                return;
+            }
+
+            BelowContent content = belowContentRef == null ? null : belowContentRef.get();
+            if (content == null) {
+                tabsInRow = false;
+                return;
+            }
+
+            composingInRow = true;
+            try {
+                content.original.invoke(composer, 0);
+            } finally {
+                composingInRow = false;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "composeTabsInRow failure", ex);
         }
     }
 
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of the Home tab bar.
+     */
     @Nullable
-    static Object getModifier(@Nullable Modifier modifier) {
-        if (modifier == null) {
-            return null;
-        }
-        if (!GlassNavigationBarPatch.isTopTabsActive()) {
-            WeakReference<Modifier> origRef;
-            synchronized (WRAPPED_TO_ORIG) {
-                origRef = WRAPPED_TO_ORIG.get(modifier);
-            }
-            Modifier orig = origRef != null ? origRef.get() : null;
-            return orig != null ? orig : modifier;
-        }
-
-        if (Boolean.TRUE.equals(IN_ROW.get())) {
-            tabsInRow = true;
-        }
-
-        synchronized (WRAPPED_TO_ORIG) {
-            if (WRAPPED_TO_ORIG.containsKey(modifier)) {
-                return modifier;
-            }
-        }
-
-        // Without the original modifier, the tab bar keeps its full height in the top bar row.
-        Object wrapped = cachedWrappedModifier;
-        if (wrapped == null) {
-            Object weight = ComposeUtils.newWeightModifier(TABS_WEIGHT, true);
-            if (!(weight instanceof Modifier weightModifier)) {
-                return modifier;
-            }
-            wrapped = weightModifier.patch_drawWithContent(TopTabsDraw.INSTANCE);
-            cachedWrappedModifier = wrapped;
-        }
-        synchronized (WRAPPED_TO_ORIG) {
-            WRAPPED_TO_ORIG.put(wrapped, new WeakReference<>(modifier));
-        }
-        return wrapped;
-    }
-
-    static boolean isTabsInRow() {
-        return tabsInRow;
-    }
-
-    static float getHeaderHeight(float original) {
-        return GlassNavigationBarPatch.isTopTabsActive() ? HEADER_TABS_HEIGHT_DP : original;
-    }
-
-    static boolean getEvenly(boolean original) {
-        return GlassNavigationBarPatch.isTopTabsActive() || original;
-    }
-
-    static float getItemTopPadding(float original) {
-        return GlassNavigationBarPatch.isTopTabsActive() ? 0f : original;
-    }
-
-    @Nullable
-    static Object getItemModifier(@Nullable Modifier modifier) {
-        if (modifier == null || !GlassNavigationBarPatch.isTopTabsActive()) {
+    public static Object getTabBarModifier(@Nullable Modifier modifier) {
+        if (!ENABLED || modifier == null) {
             return modifier;
         }
-        Object shape = cachedItemShape;
-        if (shape == null) {
-            shape = ComposeUtils.newRoundedCornerShape(TAB_ITEM_CORNER_DP);
-            if (shape == null) {
+
+        try {
+            // Recomposition passes the replaced modifier again.
+            final boolean replaced = modifier == tabsModifier;
+
+            if (!isActive()) {
+                Modifier original = replaced && replacedModifierRef != null
+                        ? replacedModifierRef.get()
+                        : null;
+                return original != null ? original : modifier;
+            }
+
+            if (composingInRow) {
+                tabsInRow = true;
+            }
+
+            if (replaced) {
                 return modifier;
             }
-            cachedItemShape = shape;
+
+            // The original modifier is not used, because it gives the tab bar
+            // its full height in the top bar row.
+            if (tabsModifier == null) {
+                Modifier weight = (Modifier) ComposeUtils.newWeightModifier(TABS_WEIGHT, true);
+                tabsModifier = weight.patch_drawWithContent(CapsuleDraw.INSTANCE);
+            }
+            replacedModifierRef = new WeakReference<>(modifier);
+
+            return tabsModifier;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTabBarModifier failure", ex);
         }
-        return modifier.patch_clip(shape);
+
+        return modifier;
     }
 
-    static long getLabelFontSize(long original) {
-        return GlassNavigationBarPatch.isTopTabsActive() ? packSp(LABEL_FONT_SIZE_SP) : original;
+    /**
+     * Injection point.
+     *
+     * @param evenly If the tabs are spread evenly.
+     */
+    public static boolean spreadTabsEvenly(boolean evenly) {
+        return evenly || isActive();
     }
 
-    static long getLabelLineHeight(long original) {
-        return GlassNavigationBarPatch.isTopTabsActive() ? packSp(LABEL_LINE_HEIGHT_SP) : original;
+    /**
+     * Injection point.
+     *
+     * @param pager Pager state of the Home feed tabs.
+     */
+    public static void setTabBarPager(@Nullable Object pager) {
+        if (ENABLED) {
+            pagerRef = pager == null ? null : new WeakReference<>(pager);
+        }
     }
 
-    static int getLabelMask(int original) {
-        // Clear the default bits of fontSize and lineHeight, so the values above are used.
-        return GlassNavigationBarPatch.isTopTabsActive() ? original & ~TEXT_DEFAULT_BITS : original;
+    /**
+     * Injection point.
+     *
+     * @param height Height of the Home tab bar header below the top bar.
+     */
+    public static float getHeaderHeight(float height) {
+        return isActive() ? HEADER_HEIGHT_DP : height;
     }
 
-    static void setPager(@Nullable Object pager) {
-        pagerRef = pager != null ? new WeakReference<>(pager) : null;
-    }
-
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of a Home tab.
+     */
     @Nullable
-    static Object getIndicatorModifier(@Nullable Modifier modifier, @Nullable Object pager) {
-        if (modifier == null || pager == null || !GlassNavigationBarPatch.isTopTabsActive()) {
+    public static Object getTabModifier(@Nullable Modifier modifier) {
+        if (!ENABLED || modifier == null) {
             return modifier;
         }
-        WeakReference<Object> ref = pagerRef;
-        if (ref == null || ref.get() != pager) {
+
+        try {
+            if (isActive()) {
+                if (tabShape == null) {
+                    tabShape = newRoundedCornerShape(TAB_CORNER_RADIUS_DP);
+                }
+
+                return modifier.patch_clip(tabShape);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTabModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param padding Top padding of a Home tab.
+     */
+    public static float getTabTopPadding(float padding) {
+        return isActive() ? 0 : padding;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param fontSize Font size of a Home tab label, as a TextUnit.
+     */
+    public static long getLabelFontSize(long fontSize) {
+        return isActive() ? packSp(LABEL_FONT_SIZE_SP) : fontSize;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param lineHeight Line height of a Home tab label, as a TextUnit.
+     */
+    public static long getLabelLineHeight(long lineHeight) {
+        return isActive() ? packSp(LABEL_LINE_HEIGHT_SP) : lineHeight;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param mask Default parameter mask of a Home tab label.
+     */
+    public static int getLabelDefaultMask(int mask) {
+        // Clear the default bits of the font size and line height, so the values above are used.
+        return isActive() ? mask & ~LABEL_TEXT_DEFAULT_BITS : mask;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier of a tab row indicator.
+     * @param pager    Pager state of the tab row.
+     */
+    @Nullable
+    public static Object getIndicatorModifier(@Nullable Modifier modifier, @Nullable Object pager) {
+        if (!ENABLED || modifier == null || pager == null) {
             return modifier;
         }
-        return modifier.patch_drawWithContent(TabPillDraw.INSTANCE);
+
+        try {
+            // Other tab rows use the same indicator.
+            if (isActive() && pagerRef != null && pagerRef.get() == pager) {
+                return modifier.patch_drawWithContent(SelectedPillDraw.INSTANCE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getIndicatorModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * RoundedCornerShape(dp).
+     */
+    @SuppressWarnings("SameReturnValue")
+    @Nullable
+    public static Object newRoundedCornerShape(float dp) {
+        return null; // Modified during patching.
     }
 
     private static long packSp(float value) {
-        return 0x100000000L | (Float.floatToRawIntBits(value) & 0xFFFFFFFFL);
+        return TEXT_UNIT_TYPE_SP | (Float.floatToRawIntBits(value) & 0xFFFFFFFFL);
     }
 
-    private static void drawTabsCapsule(ContentDrawScope scope) {
+    private static void drawCapsule(ContentDrawScope scope) {
         final long size = scope.patch_getSize();
         final float width = unpackFirst(size);
         final float height = unpackSecond(size);
-        if (width <= 0f || height <= 0f) {
-            return;
-        }
-
         final float marginX = CAPSULE_MARGIN_DP * getDensity();
-        final float rectWidth = width - 2f * marginX;
         final float buttonHeight = GlassNavigationBarPatch.getTopBarButtonGlassHeightPx();
-        final float rectHeight = buttonHeight > 0f ? buttonHeight : height;
-        if (rectWidth <= 0f || rectHeight <= 0f) {
-            return;
-        }
+        final float capsuleHeight = buttonHeight > 0 ? buttonHeight : height;
 
         tabsHeightPx = height;
-        capsuleHeightPx = rectHeight;
+        capsuleHeightPx = capsuleHeight;
 
-        final float top = (height - rectHeight) / 2f;
-        GlassNavigationBarPatch.drawTopBarGlass(scope, marginX, top, rectWidth, rectHeight);
+        GlassNavigationBarPatch.drawTopBarGlass(scope, marginX, (height - capsuleHeight) / 2,
+                width - 2 * marginX, capsuleHeight);
     }
 
-    private static void drawTabPill(ContentDrawScope scope) {
-        final float tabsHeight = tabsHeightPx;
-        final float capsuleHeight = capsuleHeightPx;
-        if (tabsHeight <= 0f || capsuleHeight <= 0f) {
+    private static void drawSelectedPill(ContentDrawScope scope) {
+        if (tabsHeightPx <= 0 || capsuleHeightPx <= 0) {
             return;
         }
 
         final long size = scope.patch_getSize();
-        final float w = unpackFirst(size);
-        final float h = unpackSecond(size);
-        if (w <= 0f || h <= 0f) {
-            return;
-        }
-
+        final float width = unpackFirst(size);
+        final float height = unpackSecond(size);
         final float density = getDensity();
-        final float pillHeight = capsuleHeight - 2f * PILL_INSET_Y_DP * density;
-        final float pillLeft = PILL_INSET_X_DP * density;
-        final float pillWidth = w - 2f * pillLeft;
-        if (pillWidth <= 0f || pillHeight <= 0f) {
+        final float left = SELECTED_PILL_INSET_X_DP * density;
+        final float pillWidth = width - 2 * left;
+        final float pillHeight = capsuleHeightPx - 2 * SELECTED_PILL_INSET_Y_DP * density;
+        if (pillWidth <= 0 || pillHeight <= 0) {
             return;
         }
 
-        final float pillTop = (h - tabsHeight / 2f) - pillHeight / 2f;
-        final float radius = Math.min(pillWidth, pillHeight) / 2f;
-        GlassNavigationBarPatch.drawPill(scope, pillLeft, pillTop, pillWidth, pillHeight, radius);
+        // The indicator is at the bottom of the tab bar, so center the pill on the tab bar.
+        final float top = height - tabsHeightPx / 2 - pillHeight / 2;
+        final float radius = Math.min(pillWidth, pillHeight) / 2;
+
+        GlassNavigationBarPatch.drawPill(scope, left, top, pillWidth, pillHeight, radius);
     }
 }

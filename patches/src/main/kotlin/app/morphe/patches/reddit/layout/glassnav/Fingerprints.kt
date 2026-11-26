@@ -20,6 +20,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val BOTTOM_NAV_SCREEN_CLASS = "Lcom/reddit/launch/bottomnav/BottomNavScreen;"
 
@@ -467,26 +468,75 @@ internal object HomeTabLabelFingerprint : Fingerprint(
 )
 
 /**
- * Button in the bottom navigation bar.
+ * Indicator of a tab row. Uses a RoundedCornerShape, 2026.47.0+
+ */
+internal fun tabRowIndicatorFingerprint(tabRowClass: String) = Fingerprint(
+    definingClass = tabRowClass,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "L", "L", "Z"),
+    filters = listOf(
+        literal(2.0f),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("F"),
+            returnType = "L",
+            location = MatchAfterWithin(6)
+        )
+    )
+)
+
+/**
+ * Calls the indicator of a tab row with the pager state of the tab row, 2026.48.0+
+ */
+internal fun tabRowIndicatorCallerFingerprint(pagerType: String, indicatorMethod: MethodReference) = Fingerprint(
+    filters = listOf(
+        checkCast(pagerType),
+        methodCall(reference = indicatorMethod)
+    )
+)
+
+/**
+ * Calls the indicator of a tab row with the pager state of the tab row.
+ * Before 2026.48.0 the pager state is a field of the indicator lambda.
+ */
+internal fun tabRowIndicatorCallerLegacyFingerprint(pagerType: String, indicatorMethod: MethodReference) = Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = pagerType
+        ),
+        methodCall(reference = indicatorMethod)
+    )
+)
+
+/**
+ * Uses the height of the home feed tab row header.
+ * The tab bar itself uses the height too, so its class is excluded.
+ */
+internal fun homeTabBarHeightCallerFingerprint(heightMethod: MethodReference, tabBarClass: String) = Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(reference = heightMethod),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    ),
+    custom = { _, classDef -> classDef.type != tabBarClass }
+)
+
+internal object NewRoundedCornerShapeFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs;",
+    name = "newRoundedCornerShape",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("F")
+)
+
+/**
+ * Button in the bottom navigation bar. Its parameters start with
+ * (L, Function0, String, Z selected, Modifier) in all versions, and the later ones differ.
  */
 internal object BottomNavButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Ljava/lang/String;",
-        "Z",
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Ljava/lang/String;",
-        "Ljava/lang/String;",
-        "Lkotlin/jvm/functions/Function2;",
-        "Lkotlin/jvm/functions/Function2;",
-        "Landroidx/compose/runtime/internal/a;",
-        "L",
-        "I"
-    ),
     filters = listOf(
         string("bottom_nav_button")
     )

@@ -111,13 +111,4 @@ public final class ComposeUtils {
     public static Object newWeightModifier(float weight, boolean fill) {
         return null; // Modified during patching.
     }
-
-    /**
-     * RoundedCornerShape(dp). Available only with 2026.47.0+
-     */
-    @SuppressWarnings("SameReturnValue")
-    @Nullable
-    public static Object newRoundedCornerShape(float dp) {
-        return null; // Modified during patching.
-    }
 }

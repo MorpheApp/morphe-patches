@@ -95,8 +95,9 @@ public final class SeeThroughStatusBarPatch {
         @Override
         public Object invoke(ContentDrawScope scope) {
             try {
-                final boolean topTabsShown = GlassNavigationBarPatch.isTopTabsShown();
-                // The menu button and the avatar have their own glass.
+                final boolean topTabsShown = GlassNavigationBarTopTabs.isShown();
+                // The menu button and the avatar have their own glass. With the tabs in the
+                // top bar row, the top bar is drawn with the color of the page instead.
                 if (topTabsShown || !GlassNavigationBarPatch.isSearchButtonActive()) {
                     final int statusBarHeight = getStatusBarHeight();
                     final long size = scope.patch_getSize();
