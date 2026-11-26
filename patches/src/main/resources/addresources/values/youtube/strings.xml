@@ -861,6 +861,7 @@ Tap here to open OpenRouter.ai"</string>
     <string name="morphe_vot_voice_gender_male">Male</string>
     <string name="morphe_vot_voice_gender_female">Female</string>
     <string name="morphe_vot_tts_sample">It\'s morphing time!</string>
+    <string name="morphe_vot_no_captions">This video has no captions to translate</string>
     <string name="morphe_vot_http_error_title">Translation unavailable</string>
     <string name="morphe_vot_http_error_message">"The translation service returned HTTP error %s. Your IP address has likely been rate-limited for up to 24 hours.
 

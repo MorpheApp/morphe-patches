@@ -519,6 +519,9 @@ public class VoiceOverTranslationPatch {
                         if (segments.isEmpty()) segments = fetched;
                         TTSPrefetcher.updateVideo(videoId, segments);
                         Logger.printDebug(() -> "Loaded: " + fetched.size() + " segments for :" + videoId);
+                        if (fetched.isEmpty() && sessionEnabled) {
+                            Utils.showSnackbarLong(str("morphe_vot_no_captions"));
+                        }
                         notifyStateChanged();
                     }
                 });
