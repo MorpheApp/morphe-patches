@@ -14,7 +14,6 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.view.ContextThemeWrapper;
 
 import app.morphe.extension.reddit.patches.DisableBottomBarAutoHidePatch;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch;
@@ -99,13 +98,13 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
         PreferenceGroup buttonsGroup = this;
 
         if (modernStyle) {
-            // Sub-page dialog inherits its theme from the PreferenceScreen context rather than the main DialogFragment.
-            Context screenContext = new ContextThemeWrapper(context, Utils.isDarkModeEnabled()
-                    ? android.R.style.Theme_DeviceDefault_NoActionBar
-                    : android.R.style.Theme_DeviceDefault_Light_NoActionBar);
-            PreferenceScreen glassScreen = getPreferenceManager().createPreferenceScreen(screenContext);
-            glassScreen.setKey(GLASS_SCREEN_KEY);
-            glassScreen.setTitle(str("morphe_glass_navigation_bar_title"));
+            PreferenceScreen glassScreen = RedditSettingsStyle.createSubPage(
+                    getPreferenceManager(),
+                    context,
+                    GLASS_SCREEN_KEY,
+                    str("morphe_glass_navigation_bar_title"),
+                    null
+            );
             updateGlassScreenSummary(glassScreen);
             addPreference(glassScreen);
 

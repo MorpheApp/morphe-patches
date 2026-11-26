@@ -26,8 +26,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.preference.TwoStatePreference;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -501,6 +504,24 @@ public final class RedditSettingsStyle {
     public static int getBackgroundColor() {
         if (!themeColorsLoaded) return ThemeUtils.getAppBackgroundColor();
         return currentPalette.background;
+    }
+
+    public static PreferenceScreen createSubPage(PreferenceManager preferenceManager,
+                                                   Context context,
+                                                   String key,
+                                                   String title,
+                                                   @Nullable String summary) {
+        // Sub-page dialog inherits its theme from the PreferenceScreen context rather than the main DialogFragment.
+        Context screenContext = new ContextThemeWrapper(context, Utils.isDarkModeEnabled()
+                ? android.R.style.Theme_DeviceDefault_NoActionBar
+                : android.R.style.Theme_DeviceDefault_Light_NoActionBar);
+        PreferenceScreen screen = preferenceManager.createPreferenceScreen(screenContext);
+        screen.setKey(key);
+        screen.setTitle(title);
+        if (summary != null) {
+            screen.setSummary(summary);
+        }
+        return screen;
     }
 
     private static int backgroundColor() {
