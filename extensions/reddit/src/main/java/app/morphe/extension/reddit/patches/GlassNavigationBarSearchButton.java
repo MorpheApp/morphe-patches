@@ -7,227 +7,252 @@
 
 package app.morphe.extension.reddit.patches;
 
-import static app.morphe.extension.reddit.utils.ComposeUtils.getDensity;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
-import android.view.ViewParent;
-import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
+import androidx.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
+import java.util.Objects;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
+import kotlin.jvm.functions.Function0;
 
 /**
- * Floating round glass search button next to the bottom navigation bar.
+ * Round search button next to the floating navigation bar of {@link GlassNavigationBarPatch}.
+ * It is a view above all screens, so it is hidden on screens without the navigation bar.
  */
 final class GlassNavigationBarSearchButton extends View {
 
+    private static final int SEARCH_ICON = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "icon_search");
+    private static final int ICON_SIZE = Dim.dp24;
+
+    private static final String BUTTON_TAG = "morphe_glass_navigation_bar_search_button";
+
     private static final int RIPPLE_COLOR = 0x33888888;
     private static final int ICON_COLOR_LIGHT = 0xFF1C1C1E;
-    private static final float ICON_LENS_RADIUS_RATIO = 0.135f;
-    private static final float ICON_LENS_OFFSET_RATIO = 0.045f;
-    private static final float ICON_HANDLE_END_RATIO = 0.19f;
-    private static final float ICON_STROKE_RATIO = 0.036f;
-    private static final float MIN_ICON_STROKE_DP = 1.5f;
-    private static final float COS_45 = 0.70710678f;
+
+    private static WeakReference<GlassNavigationBarSearchButton> buttonRef = new WeakReference<>(null);
+    private static boolean isBottomNavAttached;
+
+    /**
+     * If the current screen shows the navigation bar.
+     * Screens opened from Home are not detected otherwise, because all screens are in one Compose view.
+     */
+    private static boolean showBottomNav = true;
+
+    @Nullable
+    private static Function0<?> searchAction;
+
+    /**
+     * Position of the button, in pixels. Set when the navigation bar is drawn.
+     */
+    private static int buttonSize, endMargin, bottomMargin;
+
+    private static int barOffset;
+    private static boolean isBarHidden;
 
     private final Paint circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint iconPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final int[] windowLocation = new int[2];
+    private final int[] location = new int[2];
     private final int[] parentLocation = new int[2];
-    private final OnLayoutChangeListener parentLayoutListener = (v, l, t, r, b, ol, ot, or, ob) -> {
-        if (r - l != or - ol || b - t != ob - ot) {
-            GlassNavigationBarPatch.onConfigurationChanged();
-        }
-    };
 
-    private int navBarInsetPx;
+    private final Drawable icon;
 
-    GlassNavigationBarSearchButton(Context context) {
+    private GlassNavigationBarSearchButton(Context context) {
         super(context);
+        setTag(BUTTON_TAG);
         setContentDescription(str("morphe_glass_navigation_bar_search_button_label"));
-        setClickable(true);
-        setFocusable(true);
-
-        circlePaint.setStyle(Paint.Style.FILL);
-        iconPaint.setStyle(Paint.Style.STROKE);
-        iconPaint.setStrokeCap(Paint.Cap.ROUND);
-
-        setOutlineProvider(new ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, Outline outline) {
-                outline.setOval(0, 0, view.getWidth(), view.getHeight());
+        setForeground(new RippleDrawable(ColorStateList.valueOf(RIPPLE_COLOR), null,
+                new ShapeDrawable(new OvalShape())));
+        setOnClickListener(v -> {
+            try {
+                if (searchAction != null) {
+                    searchAction.invoke();
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "onClick failure", ex);
             }
         });
-        setClipToOutline(true);
 
-        ShapeDrawable mask = new ShapeDrawable(new OvalShape());
-        setForeground(new RippleDrawable(ColorStateList.valueOf(RIPPLE_COLOR), null, mask));
-
-        setOnClickListener(v -> GlassNavigationBarPatch.invokeSearchAction());
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        try {
-            if (getParent() instanceof View parentView) {
-                parentView.addOnLayoutChangeListener(parentLayoutListener);
-            }
-            WindowInsets rootInsets = getRootWindowInsets();
-            if (rootInsets != null) {
-                readBottomInset(rootInsets);
-                updateLayoutParams();
-            }
-            requestApplyInsets();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onAttachedToWindow failure", ex);
-        }
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        if (getParent() instanceof View parentView) {
-            parentView.removeOnLayoutChangeListener(parentLayoutListener);
-        }
-        super.onDetachedFromWindow();
-    }
-
-    @Override
-    public WindowInsets onApplyWindowInsets(WindowInsets insets) {
-        try {
-            readBottomInset(insets);
-            updateLayoutParams();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onApplyWindowInsets failure", ex);
-        }
-        return super.onApplyWindowInsets(insets);
-    }
-
-    @Override
-    protected void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        GlassNavigationBarPatch.onConfigurationChanged();
-    }
-
-    @SuppressWarnings("deprecation")
-    private void readBottomInset(WindowInsets insets) {
-        if (insets == null) {
-            return;
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            navBarInsetPx = insets.getInsets(WindowInsets.Type.navigationBars()).bottom;
-        } else {
-            navBarInsetPx = insets.getSystemWindowInsetBottom();
-        }
-        GlassNavigationBarPatch.setNavBarInsetPx(navBarInsetPx);
-    }
-
-    void updateLayoutParams() {
-        ViewGroup.LayoutParams rawLp = getLayoutParams();
-        if (!(rawLp instanceof FrameLayout.LayoutParams lp)) {
-            return;
-        }
-
-        final int diameter = Math.round(GlassNavigationBarPatch.getCapsuleHeightPx(navBarInsetPx));
-        ViewParent parent = getParent();
-        final float parentWidth = (parent instanceof View parentView && parentView.getWidth() > 0)
-                ? parentView.getWidth()
-                : getResources().getDisplayMetrics().widthPixels;
-        final int endMargin = Math.round(GlassNavigationBarPatch.getCapsuleSideGapPx(parentWidth));
-        final int capsuleBottomOffset = Math.round(
-                GlassNavigationBarPatch.getCapsuleBottomOffsetPx(navBarInsetPx));
-        final int bottomMargin = Math.max(
-                0,
-                navBarInsetPx + capsuleBottomOffset + Math.round(GlassNavigationBarPatch.getLift())
-        );
-
-        if (lp.width != diameter
-                || lp.height != diameter
-                || lp.gravity != (Gravity.BOTTOM | Gravity.END)
-                || lp.bottomMargin != bottomMargin
-                || lp.getMarginEnd() != endMargin) {
-            lp.width = diameter;
-            lp.height = diameter;
-            lp.gravity = Gravity.BOTTOM | Gravity.END;
-            lp.bottomMargin = bottomMargin;
-            lp.setMarginEnd(endMargin);
-            setLayoutParams(lp);
-        }
+        icon = Objects.requireNonNull(context.getDrawable(SEARCH_ICON)).mutate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        final int width = getWidth();
-        final int height = getHeight();
-        if (width <= 0 || height <= 0) {
-            return;
-        }
+        try {
+            final int size = getWidth();
+            final float radius = size / 2f;
+            final boolean dark = GlassNavigationBarPatch.isGlassDark();
 
-        final float diameter = Math.min(width, height);
-        final float left = (width - diameter) / 2;
-        final float top = (height - diameter) / 2;
-        final float cx = width / 2f;
-        final float cy = height / 2f;
-        final float radius = diameter / 2;
-        final boolean dark = GlassNavigationBarPatch.isGlassDark();
-
-        if (GlassNavigationBarPatch.FROSTED_ENABLED && canvas.isHardwareAccelerated()) {
-            ViewParent parent = getParent();
-            if (parent instanceof View parentView) {
-                getLocationInWindow(windowLocation);
-                parentView.getLocationInWindow(parentLocation);
-                final int leftInPage = windowLocation[0] - parentLocation[0] + Math.round(left);
-                final int topFromBottom = parentView.getHeight()
-                        - (windowLocation[1] - parentLocation[1] + Math.round(top));
+            if (GlassNavigationBarPatch.FROSTED_ENABLED && getParent() instanceof View parent) {
+                // The page behind the navigation bar fills the parent.
+                getLocationInWindow(location);
+                parent.getLocationInWindow(parentLocation);
                 GlassNavigationBarBlur.drawButtonBackdrop(
                         canvas,
-                        leftInPage,
-                        topFromBottom,
-                        Math.round(diameter),
-                        cx,
-                        cy,
-                        radius,
+                        location[0] - parentLocation[0],
+                        parent.getHeight() - (location[1] - parentLocation[1]),
+                        size,
                         GlassNavigationBarPatch.getPageColor()
                 );
             }
+
+            circlePaint.setColor((int) (GlassNavigationBarPatch.getGlassColor(dark) >>> 32));
+            canvas.drawCircle(radius, radius, radius, circlePaint);
+
+            if (GlassNavigationBarPatch.FROSTED_ENABLED) {
+                GlassNavigationBarBlur.drawEdge(canvas, 0, 0, size, size, radius, dark);
+            }
+
+            final int iconStart = (size - ICON_SIZE) / 2;
+            icon.setBounds(iconStart, iconStart, iconStart + ICON_SIZE, iconStart + ICON_SIZE);
+            icon.setTint(dark ? Color.WHITE : ICON_COLOR_LIGHT);
+            icon.draw(canvas);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onDraw failure", ex);
+        }
+    }
+
+    /**
+     * Adds the button to the window of the screen with the navigation bar.
+     */
+    static void onBottomNavAttached(@Nullable View bottomNavView) {
+        isBottomNavAttached = true;
+
+        // The activity can be new.
+        ViewGroup content = bottomNavView == null
+                ? null
+                : bottomNavView.getRootView().findViewById(android.R.id.content);
+        if (content == null) {
+            Logger.printDebug(() -> "No content view");
+        } else {
+            GlassNavigationBarSearchButton button = content.findViewWithTag(BUTTON_TAG);
+            if (button == null) {
+                button = new GlassNavigationBarSearchButton(content.getContext());
+                content.addView(button, new FrameLayout.LayoutParams(0, 0, Gravity.BOTTOM | Gravity.END));
+            }
+            buttonRef = new WeakReference<>(button);
         }
 
-        circlePaint.setColor((int) (GlassNavigationBarPatch.getGlassColor(dark) >>> 32));
-        canvas.drawCircle(cx, cy, radius, circlePaint);
+        update();
+    }
 
-        if (GlassNavigationBarPatch.FROSTED_ENABLED) {
-            GlassNavigationBarBlur.drawEdge(canvas, left, top, diameter, diameter, radius, dark);
+    static void onBottomNavDetached() {
+        isBottomNavAttached = false;
+        update();
+    }
+
+    static void setShowBottomNav(boolean show) {
+        if (showBottomNav != show) {
+            showBottomNav = show;
+            update();
+        }
+    }
+
+    static void setSearchAction(Function0<?> action) {
+        if (searchAction != action) {
+            searchAction = action;
+            update();
+        }
+    }
+
+    /**
+     * @param size         Diameter of the button.
+     * @param endMargin    Space between the button and the end of the screen.
+     * @param bottomMargin Space between the button and the bottom of the navigation bar.
+     */
+    static void setBounds(int size, int endMargin, int bottomMargin) {
+        if (buttonSize != size
+                || GlassNavigationBarSearchButton.endMargin != endMargin
+                || GlassNavigationBarSearchButton.bottomMargin != bottomMargin) {
+            buttonSize = size;
+            GlassNavigationBarSearchButton.endMargin = endMargin;
+            GlassNavigationBarSearchButton.bottomMargin = bottomMargin;
+            // Called while the navigation bar draws.
+            Utils.runOnMainThread(GlassNavigationBarSearchButton::update);
+        }
+    }
+
+    /**
+     * @param offset How far down the navigation bar is moved, in pixels.
+     * @param hidden If the navigation bar is moved off the screen.
+     */
+    static void setBarOffset(int offset, boolean hidden) {
+        if (barOffset == offset && isBarHidden == hidden) {
+            return;
+        }
+        barOffset = offset;
+
+        if (isBarHidden != hidden) {
+            // The glass can be taller than the navigation bar.
+            isBarHidden = hidden;
+            update();
+            return;
         }
 
-        iconPaint.setColor(dark ? Color.WHITE : ICON_COLOR_LIGHT);
-        iconPaint.setStrokeWidth(Math.max(MIN_ICON_STROKE_DP * getDensity(), diameter * ICON_STROKE_RATIO));
-        final float lensRadius = diameter * ICON_LENS_RADIUS_RATIO;
-        final float lensCx = cx - diameter * ICON_LENS_OFFSET_RATIO;
-        final float lensCy = cy - diameter * ICON_LENS_OFFSET_RATIO;
-        canvas.drawCircle(lensCx, lensCy, lensRadius, iconPaint);
-        final float handleOffset = lensRadius * COS_45;
-        final float handleEnd = diameter * ICON_HANDLE_END_RATIO;
-        canvas.drawLine(
-                lensCx + handleOffset,
-                lensCy + handleOffset,
-                cx + handleEnd,
-                cy + handleEnd,
-                iconPaint
-        );
+        GlassNavigationBarSearchButton button = buttonRef.get();
+        if (button != null) {
+            button.setTranslationY(offset);
+            if (GlassNavigationBarPatch.FROSTED_ENABLED) {
+                // The blurred area moves with the button.
+                button.invalidate();
+            }
+        }
+    }
+
+    /**
+     * Draws the button again, such as after the theme changes.
+     */
+    static void redraw() {
+        GlassNavigationBarSearchButton button = buttonRef.get();
+        if (button != null) {
+            button.invalidate();
+        }
+    }
+
+    static void update() {
+        GlassNavigationBarSearchButton button = buttonRef.get();
+        if (button == null) {
+            return;
+        }
+
+        final boolean show = GlassNavigationBarPatch.isSearchButtonActive()
+                && searchAction != null
+                && buttonSize > 0
+                && isBottomNavAttached
+                && showBottomNav
+                && !isBarHidden;
+        button.setVisibility(show ? VISIBLE : GONE);
+        if (!show) {
+            return;
+        }
+
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) button.getLayoutParams();
+        if (params.width != buttonSize || params.getMarginEnd() != endMargin
+                || params.bottomMargin != bottomMargin) {
+            params.width = buttonSize;
+            params.height = buttonSize;
+            params.setMarginEnd(endMargin);
+            params.bottomMargin = bottomMargin;
+            button.setLayoutParams(params);
+        }
+        button.setTranslationY(barOffset);
     }
 }

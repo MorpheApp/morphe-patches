@@ -16,22 +16,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import com.reddit.launch.bottomnav.BottomNavScreen;
+
 import java.util.List;
-import java.util.Set;
-import java.util.WeakHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.utils.ComposeUtils.ContentDrawScope;
@@ -133,23 +126,38 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
-     * Draws a glass circle or pill behind the menu button or avatar.
+     * Draws glass behind the menu button or the avatar.
      */
-    private static final class CircleDraw implements Function1<ContentDrawScope, Object> {
-        private static final CircleDraw INSTANCE = new CircleDraw();
+    private static final class TopBarButtonDraw implements Function1<ContentDrawScope, Object> {
+        private static final TopBarButtonDraw INSTANCE = new TopBarButtonDraw();
 
-        private CircleDraw() {
+        private TopBarButtonDraw() {
         }
 
         @Override
         public Object invoke(ContentDrawScope scope) {
             try {
-                drawSearchCircle(scope);
+                drawTopBarButtonGlass(scope);
             } catch (Exception ex) {
-                Logger.printException(() -> "CircleDraw failure", ex);
+                Logger.printException(() -> "TopBarButtonDraw failure", ex);
             }
 
             scope.patch_drawContent();
+            return null;
+        }
+    }
+
+    /**
+     * Click action of the hidden search field.
+     */
+    private static final class NoClick implements Function0<Object> {
+        private static final NoClick INSTANCE = new NoClick();
+
+        private NoClick() {
+        }
+
+        @Override
+        public Object invoke() {
             return null;
         }
     }
@@ -190,26 +198,16 @@ public final class GlassNavigationBarPatch {
     private static final float RAIL_CENTERED_MIN_HEIGHT_DP = 500;
     private static final float RAIL_GAP_DP = 12;
 
-    private static final int TABLET_MIN_WIDTH_DP = 600;
+    /**
+     * Narrower windows show the bottom navigation bar instead of the side rail.
+     */
+    private static final int SIDE_RAIL_MIN_WIDTH_DP = 600;
     private static final float SEARCH_BUTTON_GAP_DP = 10;
-    private static final float SEARCH_CIRCLE_EXTRA_DP = 8;
-    private static final String BOTTOM_NAV_SCREEN_CLASS = "com.reddit.launch.bottomnav.BottomNavScreen";
-    private static final String SEARCH_BUTTON_TAG = "morphe_glass_search_button";
 
-    private static final Handler MAIN_HANDLER = new Handler(Looper.getMainLooper());
-    private static final AtomicBoolean UPDATE_PENDING = new AtomicBoolean(false);
-    private static final Runnable UPDATE_RUNNABLE = () -> {
-        UPDATE_PENDING.set(false);
-        updateSearchButtonState();
-    };
-    private static final Set<Object> OVERLAY_SCREENS =
-            Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap<>()));
-    private static final Function0<Object> NO_OP_CLICK = new Function0<>() {
-        @Override
-        public Object invoke() {
-            return null;
-        }
-    };
+    /**
+     * How much larger the glass behind the menu button and the avatar is than the button.
+     */
+    private static final float TOP_BAR_BUTTON_GLASS_EXTRA_DP = 8;
 
     private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
     private static final int OPACITY_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_OPACITY);
@@ -223,7 +221,9 @@ public final class GlassNavigationBarPatch {
             ? SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_POSITION)
             : 0;
     private static final boolean HIDE_LABELS = GLASS_ENABLED && !Settings.GLASS_NAVIGATION_BAR_SHOW_LABELS.get();
-    static final boolean SEARCH_ENABLED = GLASS_ENABLED && Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON.get();
+    private static final boolean SEARCH_BUTTON_ENABLED = GLASS_ENABLED
+            && isSearchButtonSupported()
+            && Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON.get();
 
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     static final boolean FROSTED_ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
@@ -243,25 +243,25 @@ public final class GlassNavigationBarPatch {
     private static int pageColor = Color.BLACK;
 
     private static boolean isRailCentered;
-    private static boolean railInUse;
 
-    private static int lastNavBarInsetPx = -1;
-    private static int screenWidthDp = -1;
-
-    @Nullable
-    private static Function0<?> searchAction;
-    private static WeakReference<GlassNavigationBarSearchButton> buttonRef = new WeakReference<>(null);
-    private static WeakReference<View> bottomNavViewRef = new WeakReference<>(null);
-    private static boolean bottomNavAttached;
-    private static boolean showBottomNav = true;
-    private static int lastSlideDownPx;
-    private static boolean barAutoHidden;
+    /**
+     * If the side rail is shown instead of the bottom navigation bar.
+     */
+    private static boolean isRailShown;
 
     /**
      * @return If this patch was included during patching.
      */
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * @return If the app version supports the search button.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isSearchButtonSupported() {
         return false; // Modified during patching.
     }
 
@@ -300,25 +300,24 @@ public final class GlassNavigationBarPatch {
      */
     public static Object getBarModifier(Modifier modifier) {
         try {
-            screenWidthDp = -1;
-            if (SEARCH_ENABLED && railInUse) {
-                railInUse = false;
-                postUpdateSearchButtonState();
+            if (!GLASS_ENABLED) {
+                return modifier;
             }
 
-            final boolean searchActive = isSearchButtonActive();
-            if (GLASS_ENABLED && (WIDTH_PERCENT < 100 || searchActive)) {
-                final float sidePadding = WIDTH_PERCENT < 100
-                        ? getSidePadding(getScreenWidthDp())
-                        : 0;
-                final float inset = searchActive
-                        ? BAR_CAPSULE_INSET_DP * WIDTH_PERCENT / 100
-                        : 0;
-                final float endExtra = searchActive
-                        ? getCapsuleHeightDp() + SEARCH_BUTTON_GAP_DP
-                        : 0;
-                return modifier.patch_padding(
-                        sidePadding + inset, 0, sidePadding + inset + endExtra, 0);
+            setRailShown(false);
+
+            if (isSearchButtonActive()) {
+                // The buttons are inside the capsule, which ends before the search button.
+                final float start = getSidePadding(getScreenWidthDp())
+                        + BAR_CAPSULE_INSET_DP * WIDTH_PERCENT / 100;
+                final float end = start + BAR_CAPSULE_HEIGHT_DP * HEIGHT_PERCENT / 100
+                        + SEARCH_BUTTON_GAP_DP;
+                return modifier.patch_padding(start, 0, end, 0);
+            }
+
+            if (WIDTH_PERCENT < 100) {
+                final float padding = getSidePadding(getScreenWidthDp());
+                return modifier.patch_padding(padding, 0, padding, 0);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getBarModifier failure", ex);
@@ -361,7 +360,7 @@ public final class GlassNavigationBarPatch {
      * @param barHeight Height of the bar, in pixels.
      */
     public static float getBarSlide(float slide, float barHeight) {
-        if (POSITION_DP == 0 && !FROSTED_ENABLED && !SEARCH_ENABLED) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED && !SEARCH_BUTTON_ENABLED) {
             return slide;
         }
 
@@ -384,7 +383,7 @@ public final class GlassNavigationBarPatch {
      * @param modifier Modifier of the bar, if it does not hide on the current screen.
      */
     public static Object getStaticBarModifier(Modifier modifier) {
-        if (POSITION_DP == 0 && !FROSTED_ENABLED && !SEARCH_ENABLED) {
+        if (POSITION_DP == 0 && !FROSTED_ENABLED && !SEARCH_BUTTON_ENABLED) {
             return modifier;
         }
 
@@ -423,38 +422,27 @@ public final class GlassNavigationBarPatch {
     /**
      * Injection point.
      *
-     * @param modifier Modifier of the search field in the Home top bar.
+     * @param modifier Modifier of the search field at the top of Home.
      */
     public static Object getSearchFieldModifier(Modifier modifier) {
-        try {
-            if (isSearchButtonActive()) {
-                return modifier.patch_drawWithContent(EmptyDraw.INSTANCE);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getSearchFieldModifier failure", ex);
-        }
-
-        return modifier;
+        return isSearchButtonActive()
+                ? modifier.patch_drawWithContent(EmptyDraw.INSTANCE)
+                : modifier;
     }
 
     /**
      * Injection point.
      *
-     * @param action Search click action of the Home top bar.
+     * @param action Opens search, if the search field at the top of Home is clicked.
      */
     public static Function0<?> getSearchFieldClick(Function0<?> action) {
         try {
-            if (!SEARCH_ENABLED) {
-                return action;
-            }
+            if (SEARCH_BUTTON_ENABLED) {
+                GlassNavigationBarSearchButton.setSearchAction(action);
 
-            if (searchAction != action) {
-                searchAction = action;
-                postUpdateSearchButtonState();
-            }
-
-            if (isSearchButtonActive()) {
-                return NO_OP_CLICK;
+                if (isSearchButtonActive()) {
+                    return NoClick.INSTANCE;
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getSearchFieldClick failure", ex);
@@ -466,45 +454,26 @@ public final class GlassNavigationBarPatch {
     /**
      * Injection point.
      *
-     * @param modifier Modifier of the menu button or avatar in the Home top bar.
+     * @param modifier Modifier of the menu button or of the avatar at the top of Home.
      */
-    public static Object getSearchCircleModifier(Modifier modifier) {
-        try {
-            if (isSearchButtonActive()) {
-                return modifier.patch_drawWithContent(CircleDraw.INSTANCE);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getSearchCircleModifier failure", ex);
-        }
-
-        return modifier;
+    public static Object getTopBarButtonModifier(Modifier modifier) {
+        return isSearchButtonActive()
+                ? modifier.patch_drawWithContent(TopBarButtonDraw.INSTANCE)
+                : modifier;
     }
 
     /**
      * Injection point.
      */
     public static void onScreenAttached(Object screen, @Nullable View view) {
-        if (!SEARCH_ENABLED || screen == null) {
+        if (!SEARCH_BUTTON_ENABLED) {
             return;
         }
 
         try {
-            if (BOTTOM_NAV_SCREEN_CLASS.equals(screen.getClass().getName())) {
-                bottomNavAttached = true;
-                bottomNavViewRef = new WeakReference<>(view);
-                OVERLAY_SCREENS.clear();
-                ensureSearchButton(view);
-            } else if (view != null) {
-                View bottomView = bottomNavViewRef.get();
-                if (bottomView != null
-                        && bottomView != view
-                        && bottomView.getParent() != null
-                        && view.getParent() == bottomView.getParent()) {
-                    OVERLAY_SCREENS.add(screen);
-                }
+            if (screen instanceof BottomNavScreen) {
+                GlassNavigationBarSearchButton.onBottomNavAttached(view);
             }
-
-            updateSearchButtonState();
         } catch (Exception ex) {
             Logger.printException(() -> "onScreenAttached failure", ex);
         }
@@ -514,18 +483,14 @@ public final class GlassNavigationBarPatch {
      * Injection point.
      */
     public static void onScreenDetached(Object screen, @Nullable View view) {
-        if (!SEARCH_ENABLED || screen == null) {
+        if (!SEARCH_BUTTON_ENABLED) {
             return;
         }
 
         try {
-            if (BOTTOM_NAV_SCREEN_CLASS.equals(screen.getClass().getName())) {
-                bottomNavAttached = false;
-            } else {
-                OVERLAY_SCREENS.remove(screen);
+            if (screen instanceof BottomNavScreen) {
+                GlassNavigationBarSearchButton.onBottomNavDetached();
             }
-
-            updateSearchButtonState();
         } catch (Exception ex) {
             Logger.printException(() -> "onScreenDetached failure", ex);
         }
@@ -533,17 +498,16 @@ public final class GlassNavigationBarPatch {
 
     /**
      * Injection point.
+     *
+     * @param show If the current screen shows the bottom navigation bar.
      */
     public static void setShowBottomNav(boolean show) {
-        if (!SEARCH_ENABLED) {
+        if (!SEARCH_BUTTON_ENABLED) {
             return;
         }
 
         try {
-            if (showBottomNav != show) {
-                showBottomNav = show;
-                updateSearchButtonState();
-            }
+            GlassNavigationBarSearchButton.setShowBottomNav(show);
         } catch (Exception ex) {
             Logger.printException(() -> "setShowBottomNav failure", ex);
         }
@@ -555,15 +519,12 @@ public final class GlassNavigationBarPatch {
      * @param modifier Modifier of the column with the buttons of the side rail.
      */
     public static Object getRailModifier(Modifier modifier) {
-        screenWidthDp = -1;
-        if (SEARCH_ENABLED && !railInUse) {
-            railInUse = true;
-            postUpdateSearchButtonState();
+        if (!GLASS_ENABLED) {
+            return modifier;
         }
 
-        return GLASS_ENABLED
-                ? modifier.patch_drawWithContent(CapsuleDraw.RAIL)
-                : modifier;
+        setRailShown(true);
+        return modifier.patch_drawWithContent(CapsuleDraw.RAIL);
     }
 
     /**
@@ -581,18 +542,26 @@ public final class GlassNavigationBarPatch {
         return color;
     }
 
+    /**
+     * @return If search is a button next to the bottom navigation bar.
+     */
     static boolean isSearchButtonActive() {
-        return SEARCH_ENABLED && !railInUse && getScreenWidthDp() < TABLET_MIN_WIDTH_DP;
+        // The window width is checked too, because the top of Home can be shown before the side rail.
+        return SEARCH_BUTTON_ENABLED && !isRailShown && getScreenWidthDp() < SIDE_RAIL_MIN_WIDTH_DP;
+    }
+
+    private static void setRailShown(boolean shown) {
+        if (SEARCH_BUTTON_ENABLED && isRailShown != shown) {
+            isRailShown = shown;
+            GlassNavigationBarSearchButton.update();
+        }
     }
 
     private static int getScreenWidthDp() {
-        if (screenWidthDp < 0) {
-            // Split screen windows are narrower than the display.
-            Activity activity = Utils.getActivity();
-            Context context = activity == null ? Utils.getContext() : activity;
-            screenWidthDp = context.getResources().getConfiguration().screenWidthDp;
-        }
-        return screenWidthDp;
+        // Split screen windows are narrower than the display.
+        Activity activity = Utils.getActivity();
+        Context context = activity == null ? Utils.getContext() : activity;
+        return context.getResources().getConfiguration().screenWidthDp;
     }
 
     /**
@@ -600,12 +569,12 @@ public final class GlassNavigationBarPatch {
      */
     private static void updateTheme(long color) {
         final int newPageColor = (int) (color >>> 32) | 0xFF000000;
-        final boolean newIsDarkTheme = Color.luminance(newPageColor) < 0.5f;
-        final boolean changed = pageColor != newPageColor || isDarkTheme != newIsDarkTheme;
+        final boolean changed = pageColor != newPageColor;
         pageColor = newPageColor;
-        isDarkTheme = newIsDarkTheme;
-        if (changed && SEARCH_ENABLED) {
-            invalidateSearchButton();
+        isDarkTheme = Color.luminance(pageColor) < 0.5f;
+
+        if (changed && SEARCH_BUTTON_ENABLED) {
+            GlassNavigationBarSearchButton.redraw();
         }
     }
 
@@ -616,86 +585,60 @@ public final class GlassNavigationBarPatch {
         return width * (100 - WIDTH_PERCENT) / 200;
     }
 
-    static float getCapsuleSideGapPx(float width) {
-        return getSidePadding(width) + BAR_CAPSULE_INSET_DP * getDensity() * WIDTH_PERCENT / 100;
-    }
-
-    private static float getCapsuleHeightDp() {
-        if (lastNavBarInsetPx >= 0) {
-            return getCapsuleHeightPx(lastNavBarInsetPx) / getDensity();
-        }
-        return BAR_CAPSULE_HEIGHT_DP * HEIGHT_PERCENT / 100;
-    }
-
-    static float getCapsuleHeightPx(float navBarInsetPx) {
-        final float density = getDensity();
-        final float rowHeight = BAR_ROW_HEIGHT_DP * density;
-        float height = BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
-        if (navBarInsetPx > GESTURE_NAVIGATION_MAX_HEIGHT_DP * density) {
-            // Do not draw the capsule behind the system navigation bar.
-            final float top = (rowHeight - height) / 2;
-            height = Math.min(height, rowHeight - top + getLift());
-        }
-        return height;
-    }
-
-    static float getCapsuleBottomOffsetPx(float navBarInsetPx) {
-        final float density = getDensity();
-        final float rowHeight = BAR_ROW_HEIGHT_DP * density;
-        final float rawHeight = BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
-        final float top = (rowHeight - rawHeight) / 2;
-        final float height = getCapsuleHeightPx(navBarInsetPx);
-        return rowHeight - (top + height);
-    }
-
-    static void setNavBarInsetPx(int insetPx) {
-        lastNavBarInsetPx = insetPx;
-    }
-
     /**
      * @return How far the bottom bar is lifted up, in pixels.
      */
-    static float getLift() {
+    private static float getLift() {
         return POSITION_DP * getDensity();
     }
 
+    /**
+     * @param barOffset How far down the bar is moved, in pixels.
+     * @param hidden    If the bar is moved off the screen.
+     */
     private static void updateBarOffset(float barOffset, boolean hidden) {
-        updateBlurOffset(barOffset);
-        if (isSearchButtonActive()) {
-            onBarSlide(Math.round(barOffset + getLift()), hidden);
-        }
-    }
-
-    private static void updateBlurOffset(float barOffset) {
         if (FROSTED_ENABLED) {
             GlassNavigationBarBlur.setBarOffset(Math.round(barOffset));
+        }
+        if (SEARCH_BUTTON_ENABLED) {
+            GlassNavigationBarSearchButton.setBarOffset(Math.round(barOffset), hidden);
         }
     }
 
     private static void drawBarCapsule(ContentDrawScope scope) {
         final long size = scope.patch_getSize();
         final float width = unpackFirst(size);
+        final float barHeight = unpackSecond(size);
         final float density = getDensity();
         final float rowHeight = BAR_ROW_HEIGHT_DP * density;
 
-        final float left = getCapsuleSideGapPx(width);
-        final float navBarInsetPx = unpackSecond(size) - rowHeight;
-        lastNavBarInsetPx = Math.round(navBarInsetPx);
-        final float height = getCapsuleHeightPx(navBarInsetPx);
-        final float rawHeight = BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
-        final float top = (rowHeight - rawHeight) / 2;
+        float left = getSidePadding(width)
+                + BAR_CAPSULE_INSET_DP * density * WIDTH_PERCENT / 100;
+        float height = BAR_CAPSULE_HEIGHT_DP * density * HEIGHT_PERCENT / 100;
+        final float top = (rowHeight - height) / 2;
 
-        float capsuleLeft = left;
+        if (barHeight - rowHeight > GESTURE_NAVIGATION_MAX_HEIGHT_DP * density) {
+            // Do not draw the capsule behind the system navigation bar.
+            height = Math.min(height, rowHeight - top + getLift());
+        }
+
         float capsuleWidth = width - 2 * left;
         if (isSearchButtonActive()) {
-            final float reserved = height + SEARCH_BUTTON_GAP_DP * density;
-            capsuleWidth -= reserved;
+            // The search button is a circle as tall as the capsule, at the end of the bar.
+            GlassNavigationBarSearchButton.setBounds(
+                    Math.round(height),
+                    Math.round(left),
+                    Math.round(barHeight - top - height)
+            );
+
+            final float buttonWidth = height + SEARCH_BUTTON_GAP_DP * density;
+            capsuleWidth -= buttonWidth;
             if (Utils.isRightToLeftLocale()) {
-                capsuleLeft += reserved;
+                left += buttonWidth;
             }
         }
 
-        drawCapsule(scope, capsuleLeft, top, capsuleWidth, height, density, true);
+        drawCapsule(scope, left, top, capsuleWidth, height, density, true);
     }
 
     private static void drawRailCapsule(ContentDrawScope scope) {
@@ -746,176 +689,22 @@ public final class GlassNavigationBarPatch {
         }
     }
 
-    private static void drawSearchCircle(ContentDrawScope scope) {
+    /**
+     * Draws a circle, or a pill if the button is wider than tall.
+     */
+    private static void drawTopBarButtonGlass(ContentDrawScope scope) {
         final long size = scope.patch_getSize();
-        final float width = unpackFirst(size);
-        final float height = unpackSecond(size);
-        if (width <= 0 || height <= 0) {
-            return;
-        }
-
-        final float extra = SEARCH_CIRCLE_EXTRA_DP * getDensity();
-        final float rectWidth;
-        final float rectHeight;
-        if (width > height) {
-            rectWidth = width + extra;
-            rectHeight = height + extra;
-        } else {
-            final float diameter = Math.max(width, height) + extra;
-            rectWidth = diameter;
-            rectHeight = diameter;
-        }
-        final float left = (width - rectWidth) / 2;
-        final float top = (height - rectHeight) / 2;
-        final float radius = rectHeight / 2;
+        final float extra = TOP_BAR_BUTTON_GLASS_EXTRA_DP * getDensity();
+        final float height = unpackSecond(size) + extra;
+        final float width = Math.max(unpackFirst(size) + extra, height);
+        final float radius = height / 2;
 
         scope.patch_drawRoundRect(
                 getGlassColor(isGlassDark()),
-                pack(left, top),
-                pack(rectWidth, rectHeight),
+                pack((unpackFirst(size) - width) / 2, -extra / 2),
+                pack(width, height),
                 pack(radius, radius)
         );
-    }
-
-    private static void ensureSearchButton(@Nullable View view) {
-        View root = view != null ? view.getRootView() : null;
-        View contentView = root != null ? root.findViewById(android.R.id.content) : null;
-        if (contentView == null) {
-            Activity activity = Utils.getActivity();
-            if (activity != null) {
-                contentView = activity.findViewById(android.R.id.content);
-            }
-        }
-        if (!(contentView instanceof FrameLayout content)) {
-            return;
-        }
-
-        View existing = content.findViewWithTag(SEARCH_BUTTON_TAG);
-        if (existing instanceof GlassNavigationBarSearchButton existingButton) {
-            buttonRef = new WeakReference<>(existingButton);
-            existingButton.updateLayoutParams();
-            return;
-        }
-
-        GlassNavigationBarSearchButton button = new GlassNavigationBarSearchButton(content.getContext());
-        button.setTag(SEARCH_BUTTON_TAG);
-        button.setVisibility(View.GONE);
-        final int diameter = Math.round(getCapsuleHeightPx(Math.max(0, lastNavBarInsetPx)));
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-                diameter, diameter, Gravity.BOTTOM | Gravity.END);
-        content.addView(button, lp);
-        buttonRef = new WeakReference<>(button);
-        button.updateLayoutParams();
-    }
-
-    private static void onBarSlide(int slideDownPx, boolean hidden) {
-        if (lastSlideDownPx == slideDownPx && barAutoHidden == hidden) {
-            return;
-        }
-        lastSlideDownPx = slideDownPx;
-        barAutoHidden = hidden;
-
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-            postUpdateSearchButtonState();
-            return;
-        }
-
-        GlassNavigationBarSearchButton button = buttonRef.get();
-        if (button == null) {
-            return;
-        }
-
-        if (button.getTranslationY() != slideDownPx) {
-            button.setTranslationY(slideDownPx);
-            if (FROSTED_ENABLED && !hidden && button.getVisibility() == View.VISIBLE) {
-                button.invalidate();
-            }
-        }
-
-        updateSearchButtonVisibility(button);
-    }
-
-    private static void postUpdateSearchButtonState() {
-        if (UPDATE_PENDING.compareAndSet(false, true)) {
-            MAIN_HANDLER.post(UPDATE_RUNNABLE);
-        }
-    }
-
-    private static void updateSearchButtonState() {
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-            postUpdateSearchButtonState();
-            return;
-        }
-
-        GlassNavigationBarSearchButton button = buttonRef.get();
-        if (button == null) {
-            View bottomView = bottomNavViewRef.get();
-            if (bottomView != null && isSearchButtonActive()) {
-                ensureSearchButton(bottomView);
-                button = buttonRef.get();
-            }
-            if (button == null) {
-                return;
-            }
-        }
-
-        updateSearchButtonVisibility(button);
-        if (button.getVisibility() == View.VISIBLE) {
-            if (button.getTranslationY() != lastSlideDownPx) {
-                button.setTranslationY(lastSlideDownPx);
-            }
-            button.updateLayoutParams();
-            button.invalidate();
-        }
-    }
-
-    private static void updateSearchButtonVisibility(GlassNavigationBarSearchButton button) {
-        final boolean visible = isSearchButtonActive()
-                && searchAction != null
-                && bottomNavAttached
-                && OVERLAY_SCREENS.isEmpty()
-                && showBottomNav
-                && !barAutoHidden;
-        final int targetVisibility = visible ? View.VISIBLE : View.GONE;
-        if (button.getVisibility() != targetVisibility) {
-            button.setVisibility(targetVisibility);
-        }
-    }
-
-    static void onConfigurationChanged() {
-        screenWidthDp = -1;
-        GlassNavigationBarSearchButton button = buttonRef.get();
-        if (button != null) {
-            button.updateLayoutParams();
-        }
-        updateSearchButtonState();
-    }
-
-    static void invokeSearchAction() {
-        try {
-            Function0<?> action = searchAction;
-            if (action != null) {
-                action.invoke();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "invokeSearchAction failure", ex);
-        }
-    }
-
-    static void invalidateSearchButton() {
-        GlassNavigationBarSearchButton button = buttonRef.get();
-        if (button != null && button.isShown()) {
-            if (Utils.isCurrentlyOnMainThread()) {
-                button.invalidate();
-            } else {
-                button.postInvalidate();
-            }
-        }
-    }
-
-    static boolean isSearchButtonVisible() {
-        GlassNavigationBarSearchButton button = buttonRef.get();
-        return button != null && button.isShown();
     }
 
     static int getPageColor() {
