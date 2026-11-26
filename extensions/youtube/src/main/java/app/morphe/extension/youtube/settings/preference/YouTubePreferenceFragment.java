@@ -20,6 +20,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
+import app.morphe.extension.shared.settings.preference.ToolbarButtons;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.youtube.patches.HideStatusBarPatch;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
@@ -66,7 +67,7 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
             // Removed so recreating the activity, such as for a theme change, shows the main screen.
             intent.removeExtra(YouTubeActivityHook.EXTRA_SCREEN_KEY);
             if (screenKey != null && findPreference(screenKey) instanceof PreferenceScreen screen) {
-                performClick(screen, preferenceScreen);
+                ToolbarButtons.performClick(screen, preferenceScreen);
                 // Opened from outside the settings, so closing the screen goes straight back.
                 Dialog dialog = screen.getDialog();
                 if (dialog != null) {

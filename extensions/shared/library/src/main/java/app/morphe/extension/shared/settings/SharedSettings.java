@@ -15,6 +15,9 @@ public class SharedSettings extends BaseSettings {
     /** Name shown for the Morphe settings: a preset entry value, or a name the user typed. */
     public static final StringSetting SETTINGS_NAME = new StringSetting("morphe_settings_name", "DEFAULT", true);
 
+    public static final BooleanSetting SETTINGS_SEARCH_HISTORY = new BooleanSetting("morphe_settings_search_history", TRUE, true);
+    public static final StringSetting SETTINGS_SEARCH_ENTRIES = new StringSetting("morphe_settings_search_entries", "");
+
     public static final StringSetting EXPERIMENTAL_APP_CONFIRMED = new StringSetting("morphe_experimental_app_target_confirmed", "", false, false);
 
     public static final EnumSetting<UpdateNoticeType> PATCHES_UPDATE_NOTICE = new EnumSetting<>("morphe_patches_update_notice", UpdateNoticeType.OFF);

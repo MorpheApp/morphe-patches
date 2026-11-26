@@ -110,7 +110,25 @@ val settingsPatch = patch(
                         "morphe_ic_dialog_alert.xml",
                         "morphe_settings_custom_checkmark.xml",
                         "morphe_settings_custom_checkmark_bold.xml",
-                        "morphe_settings_icon_reddit.xml"
+                        "morphe_settings_icon_reddit.xml",
+                        "morphe_settings_search_icon.xml",
+                        "morphe_settings_search_icon_bold.xml",
+                        "morphe_settings_search_remove.xml",
+                        "morphe_settings_search_remove_bold.xml",
+                        "morphe_settings_arrow_time.xml",
+                        "morphe_settings_arrow_time_bold.xml"
+                    ),
+                    ResourceGroup(
+                        "layout",
+                        "morphe_color_dot_widget.xml",
+                        "morphe_preference_search_history_item.xml",
+                        "morphe_preference_search_history_screen.xml",
+                        "morphe_preference_search_no_result.xml",
+                        "morphe_preference_search_result_color.xml",
+                        "morphe_preference_search_result_list.xml",
+                        "morphe_preference_search_result_regular.xml",
+                        "morphe_preference_search_result_switch.xml",
+                        "morphe_settings_search_bar.xml"
                     )
                 )
             }

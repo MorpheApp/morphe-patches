@@ -26,9 +26,11 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
@@ -59,12 +61,11 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
-import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
-import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
+import app.morphe.extension.shared.settings.preference.ToolbarButtons;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -78,6 +79,7 @@ public abstract class BaseSearchViewController {
     protected boolean isSearchActive;
     protected boolean isShowingSearchHistory;
     protected final Activity activity;
+    protected final Window window;
     protected final BasePreferenceFragment fragment;
     protected final CharSequence originalTitle;
     protected final InputMethodManager inputMethodManager;
@@ -111,8 +113,6 @@ public abstract class BaseSearchViewController {
             ResourceType.ID, "morphe_search_view");
     protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view_container");
-    protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "morphe_settings_fragments");
 
     /**
      * @return The search icon, bold or not depending on the Morphe UI setting, and colored like
@@ -120,7 +120,7 @@ public abstract class BaseSearchViewController {
      *         which is not the foreground color of the app.
      */
     public static Drawable getSearchIconDrawable() {
-        return ToolbarPreferenceFragment.getToolbarIconDrawable("morphe_settings_search_icon");
+        return ToolbarButtons.getToolbarIconDrawable("morphe_settings_search_icon");
     }
 
     /**
@@ -131,7 +131,19 @@ public abstract class BaseSearchViewController {
      * @param fragment The preference fragment to manage search preferences.
      */
     protected BaseSearchViewController(Activity activity, Toolbar toolbar, BasePreferenceFragment fragment) {
+        this(activity, activity.getWindow(), toolbar,
+                activity.findViewById(ResourceUtils.getIdentifierOrThrow(
+                        ResourceType.ID, "morphe_settings_fragments")),
+                fragment);
+    }
+
+    /**
+     * Constructs a new BaseSearchViewController instance for a specific window and overlay parent.
+     */
+    protected BaseSearchViewController(Activity activity, Window window, Toolbar toolbar,
+                                       @Nullable FrameLayout overlayParent, BasePreferenceFragment fragment) {
         this.activity = activity;
+        this.window = window;
         this.toolbar = toolbar;
         this.fragment = fragment;
         this.originalTitle = toolbar.getTitle();
@@ -143,7 +155,7 @@ public abstract class BaseSearchViewController {
 
         // Initialize components
         initializeSearchView();
-        initializeOverlayContainer();
+        initializeOverlayContainer(overlayParent);
         searchHistoryManager = new SearchHistoryManager(activity, overlayContainer, query -> {
             searchView.setQuery(query, true);
             hideSearchHistory();
@@ -157,13 +169,17 @@ public abstract class BaseSearchViewController {
      */
     private void initializeSearchView() {
         // Retrieve SearchView and container from XML.
-        searchView = activity.findViewById(ID_MORPHE_SEARCH_VIEW);
+        // Fall back to window decor view when toolbar is not attached yet during construction.
+        View rootView = toolbar.getParent() != null
+                ? toolbar.getRootView()
+                : window.getDecorView();
+        searchView = rootView.findViewById(ID_MORPHE_SEARCH_VIEW);
         EditText searchEditText = searchView.findViewById(ResourceUtils.getIdentifierOrThrow(
                 null, "android:id/search_src_text"));
         // Disable fullscreen keyboard mode.
         searchEditText.setImeOptions(searchEditText.getImeOptions() | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
 
-        searchContainer = activity.findViewById(ID_MORPHE_SEARCH_VIEW_CONTAINER);
+        searchContainer = rootView.findViewById(ID_MORPHE_SEARCH_VIEW_CONTAINER);
 
         // Set background and query hint.
         searchView.setBackground(createBackgroundDrawable());
@@ -206,7 +222,7 @@ public abstract class BaseSearchViewController {
     /**
      * Initializes the overlay container for displaying search results and history.
      */
-    private void initializeOverlayContainer() {
+    private void initializeOverlayContainer(@Nullable FrameLayout overlayParent) {
         // Create overlay container for search results and history.
         overlayContainer = new FrameLayout(activity);
         overlayContainer.setVisibility(View.GONE);
@@ -235,13 +251,12 @@ public abstract class BaseSearchViewController {
                 FrameLayout.LayoutParams.MATCH_PARENT));
 
         // Add overlay to the main content container.
-        FrameLayout mainContainer = activity.findViewById(ID_MORPHE_SETTINGS_FRAGMENTS);
-        if (mainContainer != null) {
+        if (overlayParent != null) {
             FrameLayout.LayoutParams overlayParams = new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT,
                     FrameLayout.LayoutParams.MATCH_PARENT);
             overlayParams.gravity = Gravity.TOP;
-            mainContainer.addView(overlayContainer, overlayParams);
+            overlayParent.addView(overlayContainer, overlayParams);
         }
     }
 
@@ -270,7 +285,7 @@ public abstract class BaseSearchViewController {
      * Sets up the toolbar menu for the search action.
      */
     protected void setupToolbarMenu() {
-        searchMenuItem = ToolbarPreferenceFragment.addToolbarButton(toolbar,
+        searchMenuItem = ToolbarButtons.addToolbarButton(toolbar,
                 "morphe_settings_search_icon", str("morphe_settings_search_hint"), () -> {
                     if (!isSearchActive) {
                         openSearch();
@@ -327,10 +342,16 @@ public abstract class BaseSearchViewController {
             if (isSearchActive) {
                 closeSearch();
             } else {
-                BaseActivityHook.closeSettings(activity);
+                closeSettings();
             }
         });
     }
+
+    protected abstract void closeSettings();
+
+    protected void onSwitchToggled(SwitchPreference preference) {}
+
+    protected void bindColorDot(View colorDot, Preference preference) {}
 
     /**
      * Initializes search data by collecting all searchable preferences from the fragment.
@@ -497,7 +518,7 @@ public abstract class BaseSearchViewController {
         Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback == null) {
-            nativeBackCallback = PredictiveBackHandler.register(activity, this::handleBackPress);
+            nativeBackCallback = PredictiveBackHandler.register(window, this::handleBackPress);
         }
 
         searchMenuItem.setVisible(false);
@@ -505,7 +526,7 @@ public abstract class BaseSearchViewController {
         searchContainer.setVisibility(View.VISIBLE);
         searchView.requestFocus();
         // Configure soft input mode to adjust layout and show keyboard.
-        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
                 | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         inputMethodManager.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT);
         // Always show search history when opening search.
@@ -522,7 +543,7 @@ public abstract class BaseSearchViewController {
         Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback != null) {
-            PredictiveBackHandler.unregister(activity, nativeBackCallback);
+            PredictiveBackHandler.unregister(window, nativeBackCallback);
             nativeBackCallback = null;
         }
 
@@ -537,7 +558,7 @@ public abstract class BaseSearchViewController {
         searchView.setQuery("", false);
         // Hide keyboard and reset soft input mode.
         inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
-        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         currentQueryPattern = null;
 
         searchResultsAdapter.notifyDataSetChanged();
@@ -614,7 +635,7 @@ public abstract class BaseSearchViewController {
 
         boolean isKeyboardVisible = false;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
+            WindowInsets insets = window.getDecorView().getRootWindowInsets();
             if (insets != null) {
                 isKeyboardVisible = insets.isVisible(WindowInsets.Type.ime());
             }
@@ -637,18 +658,18 @@ public abstract class BaseSearchViewController {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private static class PredictiveBackHandler {
-        static Object register(Activity activity, Runnable onBackAction) {
+        static Object register(Window window, Runnable onBackAction) {
             OnBackInvokedCallback callback = onBackAction::run;
-            activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+            window.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
                     OnBackInvokedDispatcher.PRIORITY_OVERLAY,
                     callback
             );
             return callback;
         }
 
-        static void unregister(Activity activity, Object callbackObj) {
+        static void unregister(Window window, Object callbackObj) {
             if (callbackObj instanceof OnBackInvokedCallback callback) {
-                activity.getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(callback);
+                window.getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(callback);
             }
         }
     }

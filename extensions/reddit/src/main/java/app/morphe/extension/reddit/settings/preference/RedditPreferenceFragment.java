@@ -25,6 +25,8 @@ import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousP
 import app.morphe.extension.reddit.settings.preference.categories.NavigationBarPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.PostButtonsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.SidebarPreferenceCategory;
+import app.morphe.extension.reddit.settings.search.RedditSearchViewController;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**
@@ -39,11 +41,16 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
     @Nullable
     private ViewTreeObserver.OnPreDrawListener styleListener;
 
+    private PreferenceScreen preferenceScreen;
+
+    @Nullable
+    private RedditSearchViewController searchViewController;
+
     @Override
     protected void initialize() {
         Context context = getContext();
 
-        PreferenceScreen preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
+        preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
         setPreferenceScreen(preferenceScreen);
 
         // Custom categories reference app specific Settings class.
@@ -54,6 +61,26 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         new PostButtonsPreferenceCategory(context, preferenceScreen);
         new LayoutPreferenceCategory(context, preferenceScreen);
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
+    }
+
+    public void setSearchViewController(@Nullable RedditSearchViewController controller) {
+        this.searchViewController = controller;
+    }
+
+    public PreferenceScreen getPreferenceScreenForSearch() {
+        return preferenceScreen;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            if (searchViewController != null) {
+                searchViewController.initializeSearchData();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onStart failure", ex);
+        }
     }
 
     @Override
