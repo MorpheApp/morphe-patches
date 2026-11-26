@@ -24,12 +24,31 @@ public final class EngagementPanel {
     // panels, in order to automatically close the panels lower in the hierarchy.
     private static final List<String> videoDescriptionPanelName = List.of("video-description-ep-identifier");
 
+    private static final String TABLETOP_PANEL_ID = "tabletop-controls";
+    private static final Event<Boolean> onTabletopChange = new Event<>();
+
+    public static boolean isTabletopOpen() {
+        return contains(TABLETOP_PANEL_ID);
+    }
+
+    public static Event<Boolean> getOnTabletopChange() {
+        return onTabletopChange;
+    }
+
+    private static void notifyTabletopChange(boolean wasOpen) {
+        boolean open = isTabletopOpen();
+        if (open != wasOpen) {
+            onTabletopChange.invoke(open);
+        }
+    }
+
     /**
      * Injection point.
      */
     public static void close(@Nullable String panelId) {
         if (Utils.isNotEmpty(panelId)) {
             if (contains(panelId)) {
+                boolean wasTabletopOpen = isTabletopOpen();
                 while (!engagementPanels.isEmpty()) {
                     Panel panelToRemove = engagementPanels.pollLast();
 
@@ -40,6 +59,7 @@ public final class EngagementPanel {
                         }
                     }
                 }
+                notifyTabletopChange(wasTabletopOpen);
             }
         }
     }
@@ -51,9 +71,11 @@ public final class EngagementPanel {
         if (Utils.isNotEmpty(panelId)) {
             // A panel can be opened again while it is open, such as the live chat of a live stream,
             // and is then closed only once.
+            boolean wasTabletopOpen = isTabletopOpen();
             remove(panelId);
             engagementPanels.addLast(new Panel(panelId, ShortsPlayerState.isOpen()));
             Logger.printDebug(() -> "EngagementPanel open: " + panelId);
+            notifyTabletopChange(wasTabletopOpen);
         }
     }
 
