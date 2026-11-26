@@ -29,6 +29,7 @@ import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.patcher.util.returnEarly
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -281,66 +282,67 @@ val glassNavigationBarPatch = patch(
 
         // region Search button.
 
-        if (is_2026_45_0_or_greater) {
+        // Older versions do not tell if the current screen shows the bar,
+        // so the button would stay on top of screens opened from Home.
+        if (is_2026_47_0_or_greater) {
+            IsSearchButtonSupportedFingerprint.method.returnEarly(true)
+
             HomeTopBarFingerprint.let {
                 it.method.apply {
-                    val avatarIndex = it.instructionMatches[7].index
-                    val avatarModifierRegister = it.instructionMatches[7].instruction.registersUsed[3]
+                    fun hookModifier(index: Int, register: Int, hookMethod: String) {
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                                invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->$hookMethod($MODIFIER_INTERFACE)Ljava/lang/Object;
+                                move-result-object v$register
+                                check-cast v$register, $modifierType
+                            """
+                        )
+                    }
 
-                    addInstructionsAtControlFlowLabel(
-                        avatarIndex,
-                        """
-                            invoke-static/range { v$avatarModifierRegister .. v$avatarModifierRegister }, $EXTENSION_CLASS->getSearchCircleModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
-                            move-result-object v$avatarModifierRegister
-                            check-cast v$avatarModifierRegister, $modifierType
-                        """
+                    // Hook the last instructions first, so the earlier indexes stay the same.
+                    val avatarMatch = it.instructionMatches[4]
+                    hookModifier(
+                        avatarMatch.index,
+                        avatarMatch.instruction.registersUsed[3],
+                        "getTopBarButtonModifier"
                     )
 
-                    val clickIndex = it.instructionMatches[5].index
-                    val clickRegister = getInstruction<OneRegisterInstruction>(clickIndex).registerA
+                    val fieldMatch = it.instructionMatches[3]
+                    val fieldParameters = fieldMatch.methodReference.parameterTypes.map { type -> type.toString() }
+                    val fieldRegisters = fieldMatch.instruction.registersUsed
+                    val clickRegister = fieldRegisters[fieldParameters.indexOf("Lkotlin/jvm/functions/Function0;")]
 
-                    addInstructions(
-                        clickIndex + 1,
+                    addInstructionsAtControlFlowLabel(
+                        fieldMatch.index,
                         """
                             invoke-static/range { v$clickRegister .. v$clickRegister }, $EXTENSION_CLASS->getSearchFieldClick(Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
                             move-result-object v$clickRegister
                         """
                     )
-
-                    val fieldIndex = it.instructionMatches[4].index
-                    val fieldModifierRegister = getInstruction<OneRegisterInstruction>(fieldIndex).registerA
-
-                    addInstructions(
-                        fieldIndex + 1,
-                        """
-                            invoke-static/range { v$fieldModifierRegister .. v$fieldModifierRegister }, $EXTENSION_CLASS->getSearchFieldModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
-                            move-result-object v$fieldModifierRegister
-                            check-cast v$fieldModifierRegister, $modifierType
-                        """
+                    hookModifier(
+                        fieldMatch.index,
+                        fieldRegisters[fieldParameters.indexOf(modifierType)],
+                        "getSearchFieldModifier"
                     )
 
-                    val menuIndex = it.instructionMatches[1].index
-                    val menuModifierRegister = it.instructionMatches[1].instruction.registersUsed[1]
-
-                    addInstructionsAtControlFlowLabel(
-                        menuIndex,
-                        """
-                            invoke-static/range { v$menuModifierRegister .. v$menuModifierRegister }, $EXTENSION_CLASS->getSearchCircleModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
-                            move-result-object v$menuModifierRegister
-                            check-cast v$menuModifierRegister, $modifierType
-                        """
+                    val menuMatch = it.instructionMatches[1]
+                    hookModifier(
+                        menuMatch.index,
+                        menuMatch.instruction.registersUsed[1],
+                        "getTopBarButtonModifier"
                     )
                 }
             }
 
             ScreenAttachFingerprint.method.addInstruction(
                 0,
-                "invoke-static { p0, p1 }, $EXTENSION_CLASS->onScreenAttached(Ljava/lang/Object;Landroid/view/View;)V"
+                "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->onScreenAttached(Ljava/lang/Object;Landroid/view/View;)V"
             )
 
             ScreenDetachFingerprint.method.addInstruction(
                 0,
-                "invoke-static { p0, p1 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;Landroid/view/View;)V"
+                "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;Landroid/view/View;)V"
             )
         }
 

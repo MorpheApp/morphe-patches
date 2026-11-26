@@ -296,26 +296,22 @@ internal object CreateButtonOffsetFingerprint : Fingerprint(
     )
 )
 
+internal object IsSearchButtonSupportedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch;",
+    name = "isSearchButtonSupported",
+    returnType = "Z",
+    parameters = listOf()
+)
+
 /**
- * Top bar of Home with the menu button, the search field and the avatar.
+ * Top of Home with the menu button, the search field and the avatar.
  */
 internal object HomeTopBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "Lkotlin/jvm/functions/Function0;",
-        "Z",
-        "Z",
-        "L",
-        "Landroidx/compose/runtime/internal/a;",
-        "Lkotlin/jvm/functions/Function2;",
-        "L",
-        "I"
-    ),
     filters = listOf(
         string("home_revamp_m1_app_bar"),
-        // Menu button slot.
+        // Menu button.
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             name = "invoke",
@@ -323,23 +319,12 @@ internal object HomeTopBarFingerprint : Fingerprint(
             returnType = "Ljava/lang/Object;"
         ),
         string("main_top_app_bar_search"),
-        // Modifier.testTag of the search field.
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("L", "Ljava/lang/String;"),
-            returnType = "L",
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        // Search click action.
-        opcode(Opcode.MOVE_OBJECT_FROM16, location = MatchAfterWithin(15)),
-        // Search field.
+        // Search field. The order of its parameters differs between app versions.
         methodCall(
             opcode = Opcode.INVOKE_STATIC_RANGE,
-            returnType = "V",
-            location = MatchAfterImmediately()
+            returnType = "V"
         ),
-        // Avatar slot.
+        // Avatar.
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("I", "I", "L", "L", "Landroidx/compose/runtime/internal/a;"),
