@@ -14,6 +14,7 @@ import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
@@ -48,6 +49,12 @@ public final class GlassNavigationBarPatch {
     public enum GlassStyle {
         TINTED,
         FROSTED
+    }
+
+    public enum GlassStrength {
+        CLEAR,
+        BALANCED,
+        SOLID
     }
 
     public static final class FrostedGlassAvailability implements Setting.Availability {
@@ -176,6 +183,11 @@ public final class GlassNavigationBarPatch {
     private static final float FROSTED_OPACITY = 0.6f;
 
     /**
+     * Solid glass is at least this opaque.
+     */
+    private static final int SOLID_MIN_OPACITY_PERCENT = 85;
+
+    /**
      * Corner radius if the ends are not round.
      */
     private static final float CORNER_RADIUS_DP = 18;
@@ -210,6 +222,9 @@ public final class GlassNavigationBarPatch {
     private static final float TOP_BAR_BUTTON_GLASS_EXTRA_DP = 8;
 
     private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
+    static final GlassStrength STRENGTH = GLASS_ENABLED
+            ? Settings.GLASS_NAVIGATION_BAR_STRENGTH.get()
+            : GlassStrength.CLEAR;
     private static final int OPACITY_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_OPACITY);
     static final int BLUR_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_BLUR);
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
@@ -672,6 +687,9 @@ public final class GlassNavigationBarPatch {
                 ? Math.min(width, height) / 2
                 : CORNER_RADIUS_DP * density;
         final boolean dark = isGlassDark();
+        Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
+
+        GlassNavigationBarEdge.drawShadow(canvas, left, top, width, height, radius);
 
         if (FROSTED_ENABLED && hasPageBehind) {
             GlassNavigationBarBlur.drawBackdrop(scope, left, top, width, height, radius, pageColor);
@@ -684,9 +702,7 @@ public final class GlassNavigationBarPatch {
                 pack(radius, radius)
         );
 
-        if (FROSTED_ENABLED) {
-            GlassNavigationBarBlur.drawEdge(scope, left, top, width, height, radius, dark);
-        }
+        GlassNavigationBarEdge.drawEdges(canvas, left, top, width, height, radius, dark);
     }
 
     /**
@@ -698,13 +714,21 @@ public final class GlassNavigationBarPatch {
         final float height = unpackSecond(size) + extra;
         final float width = Math.max(unpackFirst(size) + extra, height);
         final float radius = height / 2;
+        final float left = (unpackFirst(size) - width) / 2;
+        final float top = -extra / 2;
+        final boolean dark = isGlassDark();
+        Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
+
+        GlassNavigationBarEdge.drawShadow(canvas, left, top, width, height, radius);
 
         scope.patch_drawRoundRect(
-                getGlassColor(isGlassDark()),
-                pack((unpackFirst(size) - width) / 2, -extra / 2),
+                getGlassColor(dark),
+                pack(left, top),
                 pack(width, height),
                 pack(radius, radius)
         );
+
+        GlassNavigationBarEdge.drawOutline(canvas, left, top, width, height, radius, dark);
     }
 
     static int getPageColor() {
@@ -720,8 +744,11 @@ public final class GlassNavigationBarPatch {
     }
 
     static long getGlassColor(boolean dark) {
+        final int opacityPercent = STRENGTH == GlassStrength.SOLID
+                ? Math.max(OPACITY_PERCENT, SOLID_MIN_OPACITY_PERCENT)
+                : OPACITY_PERCENT;
         final float opacity = FROSTED_ENABLED ? FROSTED_OPACITY : 1;
-        final long alpha = Math.round(255 * OPACITY_PERCENT * opacity / 100);
+        final long alpha = Math.round(255 * opacityPercent * opacity / 100);
         final long argb = (alpha << 24) | (dark ? GLASS_RGB_DARK : GLASS_RGB_LIGHT);
 
         return argb << 32;

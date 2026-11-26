@@ -14,8 +14,6 @@ import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RecordingCanvas;
 import android.graphics.RenderEffect;
@@ -86,15 +84,12 @@ final class GlassNavigationBarBlur {
      */
     private static final float SATURATION = 1.4f;
 
-    private static final float EDGE_WIDTH_DP = 1;
-
     private static final RenderNode PAGE_NODE = new RenderNode("morphe_glass_page");
     private static final RenderNode BLUR_NODE = new RenderNode("morphe_glass_blur");
     private static final RenderNode BUTTON_BLUR_NODE = new RenderNode("morphe_glass_button_blur");
 
     private static final Path CAPSULE_PATH = new Path();
     private static final Path BUTTON_PATH = new Path();
-    private static final Paint EDGE_PAINT = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     /**
      * Extra size on each side of the blurred area, so the page next to the capsule blurs into it.
@@ -137,9 +132,6 @@ final class GlassNavigationBarBlur {
         );
         BLUR_NODE.setRenderEffect(effect);
         BUTTON_BLUR_NODE.setRenderEffect(effect);
-
-        EDGE_PAINT.setStyle(Paint.Style.STROKE);
-        EDGE_PAINT.setStrokeWidth(EDGE_WIDTH_DP * density);
     }
 
     private GlassNavigationBarBlur() {
@@ -257,36 +249,5 @@ final class GlassNavigationBarBlur {
         } finally {
             node.endRecording();
         }
-    }
-
-    /**
-     * Draws a light edge that fades to the bottom of the glass.
-     */
-    static void drawEdge(ContentDrawScope scope, float left, float top, float width, float height,
-                         float cornerRadius, boolean dark) {
-        drawEdge(scope.patch_getCanvas().patch_getNativeCanvas(),
-                left, top, width, height, cornerRadius, dark);
-    }
-
-    static void drawEdge(Canvas canvas, float left, float top, float width, float height,
-                         float cornerRadius, boolean dark) {
-        EDGE_PAINT.setShader(new LinearGradient(
-                0, top, 0, top + height,
-                dark ? 0x40FFFFFF : 0xB3FFFFFF,
-                dark ? 0x0DFFFFFF : 0x14000000,
-                Shader.TileMode.CLAMP
-        ));
-
-        final float inset = EDGE_PAINT.getStrokeWidth() / 2;
-        final float edgeRadius = Math.max(0, cornerRadius - inset);
-        canvas.drawRoundRect(
-                left + inset,
-                top + inset,
-                left + width - inset,
-                top + height - inset,
-                edgeRadius,
-                edgeRadius,
-                EDGE_PAINT
-        );
     }
 }

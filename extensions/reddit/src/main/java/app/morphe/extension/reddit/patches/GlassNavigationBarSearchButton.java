@@ -15,10 +15,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -48,6 +50,11 @@ final class GlassNavigationBarSearchButton extends View {
 
     private static final int RIPPLE_COLOR = 0x33888888;
     private static final int ICON_COLOR_LIGHT = 0xFF1C1C1E;
+
+    /**
+     * Space around the circle for its shadow, in pixels.
+     */
+    private static final int SHADOW_MARGIN = GlassNavigationBarEdge.getShadowMargin();
 
     private static WeakReference<GlassNavigationBarSearchButton> buttonRef = new WeakReference<>(null);
     private static boolean isBottomNavAttached;
@@ -80,7 +87,7 @@ final class GlassNavigationBarSearchButton extends View {
         setTag(BUTTON_TAG);
         setContentDescription(str("morphe_glass_navigation_bar_search_button_label"));
         setForeground(new RippleDrawable(ColorStateList.valueOf(RIPPLE_COLOR), null,
-                new ShapeDrawable(new OvalShape())));
+                new InsetDrawable(new ShapeDrawable(new OvalShape()), SHADOW_MARGIN)));
         setOnClickListener(v -> {
             try {
                 if (searchAction != null) {
@@ -95,11 +102,30 @@ final class GlassNavigationBarSearchButton extends View {
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (SHADOW_MARGIN > 0 && event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+            // Ignore touches on the shadow.
+            final float radius = getWidth() / 2f;
+            final float x = event.getX() - radius;
+            final float y = event.getY() - radius;
+            final float circleRadius = radius - SHADOW_MARGIN;
+            if (x * x + y * y > circleRadius * circleRadius) {
+                return false;
+            }
+        }
+
+        return super.onTouchEvent(event);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         try {
-            final int size = getWidth();
+            final int size = getWidth() - 2 * SHADOW_MARGIN;
             final float radius = size / 2f;
             final boolean dark = GlassNavigationBarPatch.isGlassDark();
+
+            canvas.translate(SHADOW_MARGIN, SHADOW_MARGIN);
+            GlassNavigationBarEdge.drawShadow(canvas, 0, 0, size, size, radius);
 
             if (GlassNavigationBarPatch.FROSTED_ENABLED && getParent() instanceof View parent) {
                 // The page behind the navigation bar fills the parent.
@@ -107,8 +133,8 @@ final class GlassNavigationBarSearchButton extends View {
                 parent.getLocationInWindow(parentLocation);
                 GlassNavigationBarBlur.drawButtonBackdrop(
                         canvas,
-                        location[0] - parentLocation[0],
-                        parent.getHeight() - (location[1] - parentLocation[1]),
+                        location[0] - parentLocation[0] + SHADOW_MARGIN,
+                        parent.getHeight() - (location[1] - parentLocation[1] + SHADOW_MARGIN),
                         size,
                         GlassNavigationBarPatch.getPageColor()
                 );
@@ -117,9 +143,7 @@ final class GlassNavigationBarSearchButton extends View {
             circlePaint.setColor((int) (GlassNavigationBarPatch.getGlassColor(dark) >>> 32));
             canvas.drawCircle(radius, radius, radius, circlePaint);
 
-            if (GlassNavigationBarPatch.FROSTED_ENABLED) {
-                GlassNavigationBarBlur.drawEdge(canvas, 0, 0, size, size, radius, dark);
-            }
+            GlassNavigationBarEdge.drawEdges(canvas, 0, 0, size, size, radius, dark);
 
             final int iconStart = (size - ICON_SIZE) / 2;
             icon.setBounds(iconStart, iconStart, iconStart + ICON_SIZE, iconStart + ICON_SIZE);
@@ -244,13 +268,17 @@ final class GlassNavigationBarSearchButton extends View {
             return;
         }
 
+        // The view is larger than the circle by the shadow margin.
+        final int viewSize = buttonSize + 2 * SHADOW_MARGIN;
+        final int viewEndMargin = endMargin - SHADOW_MARGIN;
+        final int viewBottomMargin = bottomMargin - SHADOW_MARGIN;
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) button.getLayoutParams();
-        if (params.width != buttonSize || params.getMarginEnd() != endMargin
-                || params.bottomMargin != bottomMargin) {
-            params.width = buttonSize;
-            params.height = buttonSize;
-            params.setMarginEnd(endMargin);
-            params.bottomMargin = bottomMargin;
+        if (params.width != viewSize || params.getMarginEnd() != viewEndMargin
+                || params.bottomMargin != viewBottomMargin) {
+            params.width = viewSize;
+            params.height = viewSize;
+            params.setMarginEnd(viewEndMargin);
+            params.bottomMargin = viewBottomMargin;
             button.setLayoutParams(params);
         }
         button.setTranslationY(barOffset);
