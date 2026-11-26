@@ -46,10 +46,7 @@ val enableDebuggingPatch = patch(
                 "morphe_settings_copy_all.xml",
                 "morphe_settings_deselect_all.xml",
                 "morphe_settings_import_export.xml",
-                "morphe_settings_select_all.xml",
-                // Search bar of the feature flags manager and the debug logs.
-                "morphe_settings_search_icon_bold.xml",
-                "morphe_settings_search_remove_bold.xml"
+                "morphe_settings_select_all.xml"
             )
         )
 

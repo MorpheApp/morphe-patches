@@ -63,6 +63,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
@@ -359,6 +360,23 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     pref.setEnabled(setting.isAvailable());
                 }
             }
+        }
+    }
+
+    /**
+     * Clicks a preference as if its row was tapped. A nested PreferenceScreen opens its screen.
+     *
+     * @param preference The preference to click.
+     * @param rootScreen The main screen of the fragment that holds the preference.
+     */
+    @SuppressWarnings("all")
+    public static void performClick(Preference preference, PreferenceScreen rootScreen) {
+        try {
+            Method m = Preference.class.getDeclaredMethod("performClick", PreferenceScreen.class);
+            m.setAccessible(true);
+            m.invoke(preference, rootScreen);
+        } catch (Exception e) {
+            Logger.printException(() -> "Failed to invoke performClick()", e);
         }
     }
 

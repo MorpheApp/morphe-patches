@@ -18,14 +18,14 @@ import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.Toolbar;
 
-import app.morphe.extension.shared.settings.search.BaseSearchViewController;
+import app.morphe.extension.shared.settings.search.BaseYouTubeSearchViewController;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
 
 /**
  * YouTube-specific search view controller implementation.
  */
 @SuppressWarnings("deprecation")
-public class YouTubeSearchViewController extends BaseSearchViewController {
+public class YouTubeSearchViewController extends BaseYouTubeSearchViewController {
 
     public static YouTubeSearchViewController addSearchViewComponents(Activity activity, Toolbar toolbar,
                                                                       YouTubePreferenceFragment fragment) {

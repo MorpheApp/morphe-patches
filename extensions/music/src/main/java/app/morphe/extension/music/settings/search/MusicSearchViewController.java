@@ -19,13 +19,13 @@ import android.view.View;
 import android.widget.Toolbar;
 
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
-import app.morphe.extension.shared.settings.search.BaseSearchViewController;
+import app.morphe.extension.shared.settings.search.BaseYouTubeSearchViewController;
 
 /**
  * Music-specific search view controller implementation.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class MusicSearchViewController extends BaseSearchViewController {
+public class MusicSearchViewController extends BaseYouTubeSearchViewController {
 
     public static MusicSearchViewController addSearchViewComponents(Activity activity, Toolbar toolbar,
                                                                     MusicPreferenceFragment fragment) {

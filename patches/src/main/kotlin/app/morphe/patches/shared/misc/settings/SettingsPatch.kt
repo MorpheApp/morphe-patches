@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.misc.settings
 
 import app.morphe.patcher.patch.PatchException
@@ -30,6 +40,32 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
     lightThemeColor = lightThemeColorString
     darkThemeColor = darkThemeColorString
 }
+
+/**
+ * Resources of the settings search, in the "settings" resource directory.
+ */
+internal val settingsSearchResources = arrayOf(
+    ResourceGroup("drawable",
+        "morphe_settings_arrow_time.xml",
+        "morphe_settings_arrow_time_bold.xml",
+        "morphe_settings_search_icon.xml",
+        "morphe_settings_search_icon_bold.xml",
+        "morphe_settings_search_remove.xml",
+        "morphe_settings_search_remove_bold.xml",
+    ),
+    ResourceGroup("layout",
+        // Also used by the color picker.
+        "morphe_color_dot_widget.xml",
+        "morphe_preference_search_history_item.xml",
+        "morphe_preference_search_history_screen.xml",
+        "morphe_preference_search_no_result.xml",
+        "morphe_preference_search_result_color.xml",
+        "morphe_preference_search_result_list.xml",
+        "morphe_preference_search_result_regular.xml",
+        "morphe_preference_search_result_switch.xml",
+        "morphe_settings_search_bar.xml",
+    ),
+)
 
 private val settingsColorPatch = patch {
     finalize {
@@ -68,31 +104,15 @@ fun settingsPatch (
             ResourceGroup("drawable",
                 // CustomListPreference resources.
                 "morphe_ic_dialog_alert.xml",
-                // Search resources.
-                "morphe_settings_arrow_time.xml",
-                "morphe_settings_arrow_time_bold.xml",
                 "morphe_settings_custom_checkmark.xml",
                 "morphe_settings_custom_checkmark_bold.xml",
-                "morphe_settings_search_icon.xml",
-                "morphe_settings_search_icon_bold.xml",
-                "morphe_settings_search_remove.xml",
-                "morphe_settings_search_remove_bold.xml",
                 "morphe_settings_toolbar_arrow_left.xml",
                 "morphe_settings_toolbar_arrow_left_bold.xml",
             ),
             ResourceGroup("layout",
-                // Color picker.
-                "morphe_color_dot_widget.xml",
-                // Search.
-                "morphe_preference_search_history_item.xml",
-                "morphe_preference_search_history_screen.xml",
-                "morphe_preference_search_no_result.xml",
-                "morphe_preference_search_result_color.xml",
-                "morphe_preference_search_result_list.xml",
-                "morphe_preference_search_result_regular.xml",
-                "morphe_preference_search_result_switch.xml",
                 "morphe_settings_with_toolbar.xml"
-            )
+            ),
+            *settingsSearchResources
         )
     }
 

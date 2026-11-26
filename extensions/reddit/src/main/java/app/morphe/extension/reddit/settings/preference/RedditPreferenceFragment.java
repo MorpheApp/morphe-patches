@@ -25,19 +25,25 @@ import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousP
 import app.morphe.extension.reddit.settings.preference.categories.NavigationBarPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.PostButtonsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.SidebarPreferenceCategory;
+import app.morphe.extension.reddit.settings.search.RedditSearchViewController;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
+import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 
 /**
  * Preference fragment for Reddit Morphe settings.
  */
 @SuppressWarnings("deprecation")
-public class RedditPreferenceFragment extends AbstractPreferenceFragment {
+public class RedditPreferenceFragment extends AbstractPreferenceFragment
+        implements BaseSearchViewController.BasePreferenceFragment {
 
     /**
      * Restyles the rows if the app uses the Compose settings.
      */
     @Nullable
     private ViewTreeObserver.OnPreDrawListener styleListener;
+
+    @Nullable
+    private RedditSearchViewController searchViewController;
 
     @Override
     protected void initialize() {
@@ -54,6 +60,23 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         new PostButtonsPreferenceCategory(context, preferenceScreen);
         new LayoutPreferenceCategory(context, preferenceScreen);
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
+    }
+
+    public void setSearchViewController(RedditSearchViewController controller) {
+        searchViewController = controller;
+    }
+
+    @Override
+    public PreferenceScreen getPreferenceScreenForSearch() {
+        return getPreferenceScreen();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (searchViewController != null) {
+            searchViewController.initializeSearchData();
+        }
     }
 
     @Override

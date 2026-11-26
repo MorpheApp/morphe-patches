@@ -47,13 +47,11 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
-import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
-import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
-import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.ColorDot;
 import app.morphe.extension.shared.ui.Dim;
@@ -283,7 +281,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
                         switchPref.getOnPreferenceChangeListener().onPreferenceChange(switchPref, newState);
                     }
                     // Toggled without a click on the preference.
-                    NewSettingsIndicator.markSeen(switchPref);
+                    searchViewController.onSwitchToggled(switchPref);
                     notifyDataSetChanged();
                 },
                 () -> navigateAndScrollToPreference(item));
@@ -295,8 +293,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         bindTitleAndSummary(prefItem, holder.titleView, holder.summaryView,
                 searchViewController.getCurrentQueryPattern());
         ColorDot.applyColorDot(holder.colorDot, prefItem.getColor(), prefItem.preference.isEnabled());
-        SegmentCategoryPreference.bindColorTarget(holder.colorDot,
-                prefItem.preference instanceof SegmentCategoryPreference categoryPref ? categoryPref : null);
+        searchViewController.bindColorDot(holder.colorDot, prefItem.preference);
         setupPreferenceView(view, holder.titleView, holder.summaryView, prefItem.preference,
                 () -> handlePreferenceClick(prefItem),
                 () -> navigateAndScrollToPreference(item));
@@ -353,6 +350,10 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         if (!(item instanceof BaseSearchResultItem.PreferenceSearchItem prefItem)) return;
 
         Preference targetPreference = prefItem.preference;
+
+        if (targetScreen == fragment.getPreferenceScreenForSearch()) {
+            searchViewController.closeSearch();
+        }
 
         fragment.getView().post(() -> {
             ListView listView = targetScreen == fragment.getPreferenceScreenForSearch()
@@ -635,7 +636,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     }
 
     private void handlePreferenceClick(Preference preference) {
-        ToolbarPreferenceFragment.performClick(preference, fragment.getPreferenceScreenForSearch());
+        AbstractPreferenceFragment.performClick(preference, fragment.getPreferenceScreenForSearch());
     }
 
     /**

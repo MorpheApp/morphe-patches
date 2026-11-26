@@ -31,6 +31,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import androidx.annotation.Nullable;
+
 import java.lang.reflect.Field;
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -38,8 +40,10 @@ import java.util.Set;
 
 import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
+import app.morphe.extension.reddit.settings.search.RedditSearchViewController;
 import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
@@ -391,6 +395,12 @@ public class RedditActivityHook {
     }
 
     public static class MorpheSettingsDialog extends DialogFragment {
+        private static final int LAYOUT_MORPHE_SETTINGS_SEARCH_BAR = ResourceUtils.getIdentifierOrThrow(
+                ResourceType.LAYOUT, "morphe_settings_search_bar");
+
+        @Nullable
+        private RedditSearchViewController searchViewController;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -411,6 +421,9 @@ public class RedditActivityHook {
                 @Override
                 @SuppressLint("GestureBackNavigation")
                 public void onBackPressed() {
+                    if (searchViewController != null && searchViewController.handleBackPress()) {
+                        return;
+                    }
                     closeSettings();
                 }
             };
@@ -441,19 +454,14 @@ public class RedditActivityHook {
                     : ThemeUtils.getAppBackgroundColor();
 
             // Ensure the dialog window fills the screen and shows the status bar.
-            Dialog dialog = getDialog();
-            if (dialog != null) {
-                Window window = dialog.getWindow();
-                if (window != null) {
-                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                    window.setStatusBarColor(appBackgroundColor);
-                    window.setNavigationBarColor(appBackgroundColor);
-                    // Dark system bar icons only on a light background.
-                    window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
-                            ? 0
-                            : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
-                }
-            }
+            Window window = Objects.requireNonNull(getDialog().getWindow());
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            window.setStatusBarColor(appBackgroundColor);
+            window.setNavigationBarColor(appBackgroundColor);
+            // Dark system bar icons only on a light background.
+            window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
+                    ? 0
+                    : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
 
             LinearLayout linearLayout = new LinearLayout(activity);
             linearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
@@ -469,16 +477,21 @@ public class RedditActivityHook {
                 actionBarSize = (int) (56 * getResources().getDisplayMetrics().density);
             }
 
+            // Holds the toolbar and the search bar that is shown over it.
+            FrameLayout toolbarParent = new FrameLayout(activity);
+            toolbarParent.setLayoutParams(new LinearLayout.LayoutParams(-1, actionBarSize));
+            toolbarParent.setBackgroundColor(appBackgroundColor);
+            boolean isDark = Utils.isDarkModeEnabled();
+            toolbarParent.setElevation(modernStyle ? (isDark ? Dim.dp1 : Dim.dp6) : Dim.dp2);
+            if (modernStyle && !isDark) {
+                toolbarParent.setTranslationZ(Dim.dp2);
+            }
+
             Toolbar toolbar = new Toolbar(activity);
-            toolbar.setLayoutParams(new LinearLayout.LayoutParams(-1, actionBarSize));
+            toolbar.setLayoutParams(new FrameLayout.LayoutParams(-1, actionBarSize));
             toolbar.setBackgroundColor(appBackgroundColor);
             toolbar.setTitle(MORPHE_LABEL);
             toolbar.setTitleTextColor(titleColor);
-            boolean isDark = Utils.isDarkModeEnabled();
-            toolbar.setElevation(modernStyle ? (isDark ? Dim.dp1 : Dim.dp6) : Dim.dp2);
-            if (modernStyle && !isDark) {
-                toolbar.setTranslationZ(Dim.dp2);
-            }
 
             toolbar.post(() -> {
                 TextView titleTextView = Utils.getChildView(toolbar, false,
@@ -495,19 +508,40 @@ public class RedditActivityHook {
             Drawable backIcon = Objects.requireNonNull(ResourceUtils.getDrawable("icon_arrow_back"));
             backIcon.setTint(appForegroundColor);
             toolbar.setNavigationIcon(backIcon);
-            toolbar.setNavigationOnClickListener(v -> closeSettings());
-            linearLayout.addView(toolbar);
+            // The search view controller sets the navigation click listener.
+            toolbarParent.addView(toolbar);
+
+            FrameLayout searchContainer = (FrameLayout) inflater.inflate(
+                    LAYOUT_MORPHE_SETTINGS_SEARCH_BAR, toolbarParent, false);
+            toolbarParent.addView(searchContainer);
+            linearLayout.addView(toolbarParent);
 
             final int fragmentId = View.generateViewId();
             FrameLayout fragmentContainer = new FrameLayout(activity);
             fragmentContainer.setId(fragmentId);
             linearLayout.addView(fragmentContainer, new LinearLayout.LayoutParams(-1, -1));
 
+            RedditPreferenceFragment fragment = new RedditPreferenceFragment();
             getChildFragmentManager().beginTransaction()
-                    .replace(fragmentId, new RedditPreferenceFragment())
+                    .replace(fragmentId, fragment)
                     .commit();
 
+            searchViewController = new RedditSearchViewController(activity, window, toolbar,
+                    searchContainer, fragmentContainer, fragment, this::closeSettings);
+            fragment.setSearchViewController(searchViewController);
+
             return linearLayout;
+        }
+
+        @Override
+        public void onDestroyView() {
+            if (searchViewController != null) {
+                if (searchViewController.isSearchActive()) {
+                    searchViewController.closeSearch();
+                }
+                searchViewController = null;
+            }
+            super.onDestroyView();
         }
     }
 }

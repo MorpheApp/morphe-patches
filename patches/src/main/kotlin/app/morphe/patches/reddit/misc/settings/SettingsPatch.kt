@@ -47,6 +47,7 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.announcements.patchesUpdateNoticePatch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.settings.settingsSearchResources
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -111,7 +112,8 @@ val settingsPatch = patch(
                         "morphe_settings_custom_checkmark.xml",
                         "morphe_settings_custom_checkmark_bold.xml",
                         "morphe_settings_icon_reddit.xml"
-                    )
+                    ),
+                    *settingsSearchResources
                 )
             }
         }

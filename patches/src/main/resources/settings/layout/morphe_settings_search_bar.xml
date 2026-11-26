@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/morphe_search_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone">
+
+    <android.widget.SearchView
+            android:id="@+id/morphe_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_gravity="center_vertical"
+            android:iconifiedByDefault="false"
+            android:searchIcon="@null"
+            android:queryBackground="@null"
+            android:padding="2dp" />
+
+</FrameLayout>

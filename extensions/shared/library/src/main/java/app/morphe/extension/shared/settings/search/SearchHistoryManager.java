@@ -24,7 +24,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.settings.preference.BulletPointPreference;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -91,18 +91,18 @@ public class SearchHistoryManager {
     SearchHistoryManager(Activity activity, FrameLayout overlayContainer,
                          OnSelectHistoryItemListener onSelectHistoryItemAction) {
         this.activity = activity;
-        this.showSettingsSearchHistory = SharedYouTubeSettings.SETTINGS_SEARCH_HISTORY.get();
+        this.showSettingsSearchHistory = SharedSettings.SETTINGS_SEARCH_HISTORY.get();
         this.searchHistory = new LinkedList<>();
 
         // Initialize search history from settings.
         if (showSettingsSearchHistory) {
-            String entries = SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES.get();
+            String entries = SharedSettings.SETTINGS_SEARCH_ENTRIES.get();
             if (!entries.isBlank()) {
                 searchHistory.addAll(Arrays.asList(entries.split("\n")));
             }
         } else {
             // Clear old saved history if the feature is disabled.
-            SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES.resetToDefault();
+            SharedSettings.SETTINGS_SEARCH_ENTRIES.resetToDefault();
         }
 
         // Create search history container.
@@ -220,7 +220,7 @@ public class SearchHistoryManager {
      */
     protected void saveSearchHistory() {
         Logger.printDebug(() -> "Saving search history: " + searchHistory);
-        SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES.save(String.join("\n", searchHistory));
+        SharedSettings.SETTINGS_SEARCH_ENTRIES.save(String.join("\n", searchHistory));
     }
 
     /**
