@@ -1,0 +1,169 @@
+syntax = "proto2";
+
+package app.morphe.extension.youtube.innertube.postimagelightbox;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+option java_outer_classname = "PostImageLightboxOuterClass";
+
+// Element of a post of the feed cards (lockup.eml), and the element of the fullscreen view
+// of the images of a post (post_image_lightbox.eml), which the posts feed shows in a dialog.
+message Element {
+    optional ElementType type = 1;
+}
+
+message ElementType {
+    optional ComponentType componentType = 168777401;
+}
+
+message ComponentType {
+    optional TemplateConfig templateConfig = 3;
+    optional ElementModel model = 5;
+    optional SubscriptionConfig subscriptionConfig = 6;
+}
+
+message TemplateConfig {
+    optional UriTemplateConfig uriTemplateConfig = 172035250;
+}
+
+message UriTemplateConfig {
+    optional string uri = 1;
+}
+
+message ElementModel {
+    optional LightboxModel lightbox = 33554878;
+    optional LockupModel lockupModel = 413471385;
+}
+
+// Model of the feed cards, of which the fullscreen view gets the context and the environment.
+message LockupModel {
+    optional bytes context = 3;
+    optional bytes environment = 5;
+}
+
+// Model of the fullscreen view. The subscriptions write the theme to the context and the states
+// of the view, such as the shown image and the gestures, to other fields.
+message LightboxModel {
+    optional LightboxContent content = 1;
+    optional bytes environment = 2;
+    optional bytes context = 3;
+}
+
+message LightboxContent {
+    // The images of the post, each the image of the cards without its command.
+    repeated bytes image = 1;
+    // Key of the state of the shown image, empty for a post with one image.
+    optional string indexStateKey = 3;
+    optional LightboxCloseButton closeButton = 5;
+}
+
+message LightboxCloseButton {
+    optional string label = 1;
+    optional int32 type = 2;
+}
+
+// Fills fields of the model when the element is bound.
+message SubscriptionConfig {
+    optional StateSubscriptionConfig stateSubscriptionConfig = 188490103;
+    optional EnvironmentSubscriptionConfig environmentSubscriptionConfig = 212323971;
+    optional ThemeSubscriptionConfig themeSubscriptionConfig = 386334485;
+    optional CapabilitiesSubscriptionConfig capabilitiesSubscriptionConfig = 386334486;
+}
+
+message StateSubscriptionConfig {
+    repeated StateMapping mapping = 1;
+    optional int32 modelField = 2;
+}
+
+message StateMapping {
+    // Key of the state, or the identifier of the theme subscription.
+    optional bytes key = 1;
+    optional int32 field = 2;
+    // Field numbers of the field of the model that gets the state.
+    repeated int32 path = 3;
+    optional int32 entity = 4;
+    optional int32 type = 6;
+}
+
+message EnvironmentSubscriptionConfig {
+    optional int32 modelField = 1;
+    optional int32 type = 2;
+    optional EnvironmentFields fields = 4;
+}
+
+message EnvironmentFields {
+    repeated int32 field = 1;
+}
+
+message ThemeSubscriptionConfig {
+    optional ThemeMapping mapping = 1;
+    optional int32 modelField = 2;
+}
+
+message ThemeMapping {
+    optional bytes identifier = 1;
+    // Field numbers of the field of the model that gets the theme.
+    repeated int32 path = 2;
+}
+
+message CapabilitiesSubscriptionConfig {
+    optional CapabilitiesMapping mapping = 1;
+    optional int32 modelField = 2;
+}
+
+message CapabilitiesMapping {
+    optional string identifier = 1;
+    optional int32 resultField = 2;
+}
+
+// Command of an element, such as the command of an image of a post.
+message Command {
+    // Runs the commands.
+    optional CommandList commandList = 170382656;
+    // Runs the commands one after another.
+    optional CommandList commandSequence = 170382688;
+    optional SetStateCommand setState = 170382720;
+    optional ShowDialogCommand showDialog = 221293762;
+}
+
+message CommandList {
+    repeated Command commands = 1;
+}
+
+message SetStateCommand {
+    optional string key = 1;
+    // BooleanState, IntState or VectorState, by the state.
+    optional bytes value = 2;
+}
+
+message BooleanState {
+    optional bool value = 1;
+}
+
+message IntState {
+    optional int32 value = 2;
+}
+
+message VectorState {
+    optional float x = 1;
+    optional float y = 2;
+}
+
+message ShowDialogCommand {
+    optional DialogContent content = 2;
+    optional int32 style = 3;
+    optional bool cancelable = 5;
+    repeated DialogTheme theme = 8;
+    optional int32 animation = 9;
+    optional bool fullscreen = 15;
+}
+
+message DialogContent {
+    optional Element element = 1;
+}
+
+message DialogTheme {
+    // Name of the theme, such as USER_INTERFACE_THEME_DARK.
+    optional string theme = 1;
+    optional int32 color = 2;
+}
