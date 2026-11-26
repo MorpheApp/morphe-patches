@@ -16,6 +16,7 @@ import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.EngagementPanelControllerFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /**
@@ -82,13 +83,95 @@ internal object SectionLayoutDescriptorToStringFingerprint : Fingerprint(
 
 /**
  * Constructor of the layout of a section: column count, row gap, column gap, start, end, top and bottom margin
- * (in dp), and section id.
+ * (in dp), and section id. The matches set the column count and the row gap.
  */
 internal object SectionLayoutDescriptorConstructorFingerprint : Fingerprint(
     classFingerprint = SectionLayoutDescriptorToStringFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
-    parameters = listOf("I", "F", "F", "F", "F", "F", "F", "I")
+    parameters = listOf("I", "F", "F", "F", "F", "F", "F", "I"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT, type = "I"),
+        fieldAccess(opcode = Opcode.IPUT, type = "F", location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Constructor of the layout info of a list, which gives the layouts of the sections of the list
+ * to the layout manager of the list. The first match sets the sections of the list.
+ * Not available on 21.13 and older.
+ */
+internal object ListLayoutInfoConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("L", "Lcom/google/android/libraries/elements/converters/layout/FlowLayoutManager;"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT_OBJECT)
+    )
+)
+
+/**
+ * Returns a value of the layout of the section of a list item, or of the list without a position.
+ *
+ * @param listLayoutInfoType Class of [ListLayoutInfoConstructorFingerprint].
+ * @param field              Field of the value in the class of [SectionLayoutDescriptorToStringFingerprint].
+ * @param parameters         The position of the item, or none for the value of the list.
+ */
+internal class ListLayoutInfoValueFingerprint(
+    listLayoutInfoType: String,
+    field: FieldReference,
+    parameters: List<String>
+) : Fingerprint(
+    definingClass = listLayoutInfoType,
+    returnType = "I",
+    parameters = parameters,
+    filters = listOf(
+        fieldAccess(reference = field, opcode = Opcode.IGET)
+    )
+)
+
+/**
+ * Makes the layout of the rows of the section of a list item, with the row gap of the section
+ * and the row gap of the list.
+ *
+ * @param rowGapMethodName     Name of the method of [ListLayoutInfoValueFingerprint] that returns the row gap
+ *                             of a section.
+ * @param listRowGapMethodName Name of the method of [ListLayoutInfoValueFingerprint] that returns the row gap
+ *                             of the list.
+ */
+internal class ListSectionRowLayoutFingerprint(
+    rowGapMethodName: String,
+    listRowGapMethodName: String
+) : Fingerprint(
+    returnType = "L",
+    parameters = listOf("I", "L", "I", "I", "I", "Landroid/util/DisplayMetrics;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            name = rowGapMethodName,
+            returnType = "I",
+            parameters = listOf("I")
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            name = listRowGapMethodName,
+            returnType = "I",
+            parameters = listOf()
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately())
+    )
+)
+
+/**
+ * Returns the item of a list section at a position.
+ *
+ * @param sectionType Type of the sections of [ListLayoutInfoConstructorFingerprint].
+ */
+internal class ListSectionItemFingerprint(sectionType: String) : Fingerprint(
+    definingClass = sectionType,
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("I")
 )
 
 /**
