@@ -25,9 +25,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_restart_title">Restart required</string>
     <string name="morphe_settings_restart_dialog_message">Restart the app for this change to take effect</string>
     <string name="morphe_settings_restart">Restart</string>
-    <!-- String is also duplicated in Reddit import / export preference -->
     <string name="morphe_settings_import">Import</string>
-    <string name="morphe_settings_import_copy">Copy</string>
     <string name="morphe_settings_import_reset">Morphe settings reset to default</string>
     <string name="morphe_settings_import_success">Imported %s settings</string>
     <string name="morphe_settings_import_failure_parse">Import failed: %s</string>
@@ -78,7 +76,6 @@ To translate new languages or improve the existing translations, visit morphe.so
     <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
     <string name="morphe_settings_about_component">Patches</string>
     <string name="morphe_settings_about_version">Version</string>
-    <string name="morphe_settings_about_close">Close</string>
     <string name="morphe_settings_about_prerelease">Pre-release</string>
     <string name="morphe_settings_about_update_available">Update available: %s</string>
     <string name="morphe_settings_about_update_hint">To update your patches, use Morphe to repatch this app</string>
@@ -110,7 +107,6 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
     <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
     <string name="morphe_settings_about_links_licenses">License notices</string>
-    <string name="morphe_settings_about_licenses_loading">Loading…</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
@@ -128,7 +124,6 @@ You will not be notified of any unexpected events"</string>
     <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
     <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
     <string name="morphe_debug_logs_search_hint">Search debug logs…</string>
-    <string name="morphe_debug_export_logs_clear">Clear</string>
     <string name="morphe_debug_logs_disabled">Debug logging is disabled</string>
     <string name="morphe_debug_logs_none_found">No debug logs found</string>
     <string name="morphe_debug_logs_copied_to_clipboard">Debug logs copied</string>
@@ -145,15 +140,8 @@ You will not be notified of any unexpected events"</string>
     <string name="morphe_debug_feature_flags_manager_filter_blocked">Blocked (%s)</string>
     <!-- Keep short, four of these are shown in one row. -->
     <string name="morphe_debug_feature_flags_manager_filter_forced">Forced (%s)</string>
-    <!-- Keep short, shown as a badge and as a button. -->
-    <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
-    <!-- Keep short, shown as a badge and as a button. -->
-    <string name="morphe_debug_feature_flags_manager_state_blocked">Off</string>
-    <!-- Keep short, shown as a badge and as a button. -->
-    <string name="morphe_debug_feature_flags_manager_state_forced">On</string>
     <string name="morphe_debug_feature_flags_manager_action_force_on">Force on</string>
     <string name="morphe_debug_feature_flags_manager_action_force_off">Block</string>
-    <string name="morphe_debug_feature_flags_manager_action_remove">Remove</string>
     <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags saved</string>
     <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags reset</string>
     <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags copied to clipboard</string>
@@ -205,7 +193,6 @@ The behavior went away earlier in the search, so more than one flag may be invol
     <string name="gms_core_dialog_outdated_message">"Your MicroG v%1$s is outdated and may cause issues.
 
 Please update MicroG to the latest version v%2$s"</string>
-    <string name="gms_core_dialog_update_text">Update</string>
     <string name="gms_core_dialog_ignore_text">Ignore</string>
     <string name="gms_core_dialog_conflict_message">"The installed MicroG is not recommended by Morphe:
 
@@ -226,7 +213,6 @@ This is required for the app to work"</string>
 Disabling battery optimizations for MicroG will not negatively affect battery usage.
 
 Tap the continue button and allow optimization changes"</string>
-    <string name="gms_core_dialog_continue_text">Continue</string>
     <string name="morphe_gms_core_battery_optimization_dialog_title">Show MicroG battery optimization dialog</string>
     <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
 
@@ -269,10 +255,31 @@ If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this a
     <string name="morphe_patches_update_notice_dialog_fixes">🐛 Bug fixes</string>
     <string name="morphe_patches_update_notice_dialog_other">🚀 Other changes</string>
     <string name="morphe_patches_update_notice_dialog_more">…and %s more</string>
-    <string name="morphe_patches_update_notice_dialog_update">Update</string>
     <string name="morphe_patches_update_notice_dialog_dismiss">Dismiss</string>
 
     <!-- misc.crashlog.crashLogPatch -->
     <string name="morphe_crash_log_saved_documents">Crash log saved to user documents: %s</string>
     <string name="morphe_crash_log_saved">Crash log saved: %s</string>
+
+    <!-- Shared strings -->
+    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+    <string name="morphe_about_screen_title">About</string>
+    <string name="morphe_ads_screen_title">Ads</string>
+    <string name="morphe_misc_screen_title">Miscellaneous</string>
+    <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
+    <string name="morphe_post_buttons_screen_title">Post buttons</string>
+    <string name="morphe_custom_branding_icon_title">App icon</string>
+    <string name="morphe_download">Download</string>
+    <string name="morphe_hide_create_button_title">Hide Create button</string>
+    <string name="morphe_hide_post_comment_button_title">Hide Comment button</string>
+    <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
+    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
+    <string name="morphe_settings_add">Add</string>
+    <string name="morphe_settings_clear">Clear</string>
+    <string name="morphe_settings_close">Close</string>
+    <string name="morphe_settings_continue">Continue</string>
+    <string name="morphe_settings_copy">Copy</string>
+    <string name="morphe_settings_delete">Delete</string>
+    <string name="morphe_settings_remove">Remove</string>
+    <string name="morphe_settings_update">Update</string>
 </resources>

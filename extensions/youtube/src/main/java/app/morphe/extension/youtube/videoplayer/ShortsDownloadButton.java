@@ -14,6 +14,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
@@ -46,7 +47,7 @@ public final class ShortsDownloadButton {
     /**
      * Duration of a video, such as 6:01 or 1:02:03, at the start of a text of the card.
      */
-    private static final Pattern DURATION_PATTERN = Pattern.compile("(?:^|\u2759)\\d{1,2}(?::[0-5]\\d){1,2}");
+    private static final Pattern DURATION_PATTERN = Pattern.compile("(?:^|❙)\\d{1,2}(?::[0-5]\\d){1,2}");
 
     /**
      * Time for the menu to close, so a menu or dialog opened by the download is not dismissed with it.
@@ -91,12 +92,13 @@ public final class ShortsDownloadButton {
                 return nextButtonIndex;
             }
 
-            String text = str("morphe_shorts_download_flyout_title");
+            String text = str("morphe_download");
             // The menus leave out the download item of the app when its text is hidden
             // by "Hide feed flyout menu", so this item is left out as well.
             if (!isShort && Settings.HIDE_FEED_FLYOUT_MENU.get()
                     && (LayoutComponentsFilter.isFlyoutMenuFiltered(text)
-                    || LayoutComponentsFilter.isFlyoutMenuFiltered(ResourceUtils.getString("menu_offline_placeholder")))) {
+                    || LayoutComponentsFilter.isFlyoutMenuFiltered(Objects.requireNonNull(
+                            ResourceUtils.getString("menu_offline_placeholder"))))) {
                 return nextButtonIndex;
             }
 

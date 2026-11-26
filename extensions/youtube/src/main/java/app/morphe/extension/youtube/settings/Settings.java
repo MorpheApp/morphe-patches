@@ -1641,16 +1641,16 @@ public class Settings extends SharedYouTubeSettings {
                 10, 100, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_LENGTH,
                 10, NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, 10, "", 1,
-                StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
+                StringRef.sf("morphe_no_limit")));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_REFRESH_RATE,
                 30, NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT, 30, "Hz", 1,
-                StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
+                StringRef.sf("morphe_no_limit")));
         SeekBarPreference.register(new SeekBarConfig(REPLAY_VIDEO_SECONDS,
                 1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(REPLAY_VIDEO_SLOW_SECONDS,
                 1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_TRANSLATE_MAX_LENGTH,
                 20, LIVE_CHAT_TRANSLATE_MAX_LENGTH_NO_LIMIT, 20, "", 1,
-                StringRef.sf("morphe_live_chat_translate_max_length_no_limit")));
+                StringRef.sf("morphe_no_limit")));
     }
 }

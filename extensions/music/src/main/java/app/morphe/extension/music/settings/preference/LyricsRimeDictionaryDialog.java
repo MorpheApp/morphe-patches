@@ -113,13 +113,13 @@ public final class LyricsRimeDictionaryDialog {
         final LyricsLocalRomanizationDownloads.ProgressSink sink = guidance::setText;
 
         final Pair<Dialog, LinearLayout> pair = CustomDialog.create(context,
-                str("morphe_music_lyrics_rime_dict_title"),
+                str("morphe_music_lyrics_romanization_provider_rime"),
                 null,
                 null,
                 str("morphe_settings_save"),
                 () -> { },
                 () -> { },
-                str("morphe_music_lyrics_rime_dict_add"),
+                str("morphe_settings_add"),
                 // Closed first, so the list does not stay behind the form it opened.
                 () -> {
                     handover[0] = true;
@@ -390,7 +390,7 @@ public final class LyricsRimeDictionaryDialog {
                 "morphe_music_lyrics_rime_dict_field_code_hint");
         codeInput.setText(codeText);
         EditText labelInput = addField(context, content,
-                "morphe_music_lyrics_rime_dict_field_label",
+                "morphe_name",
                 "morphe_music_lyrics_rime_dict_field_label_hint");
         labelInput.setText(labelText);
         EditText urlInput = addField(context, content,

@@ -83,6 +83,7 @@ val saveToWatchLaterButtonPatch = patch(
             SwitchPreference("morphe_save_to_watch_later_flyout_button", summary = true),
             NonInteractivePreference(
                 "morphe_save_to_watch_later_redirect_playlist_id",
+                summaryKey = "morphe_watch_later",
                 tag = "app.morphe.extension.youtube.settings.preference.WatchLaterPlaylistPreference",
                 selectable = true
             )

@@ -52,7 +52,7 @@ public class DeArrowTimeStepPreference extends ResettableEditTextPreference {
             } catch (NumberFormatException ex) {
                 Logger.printInfo(() -> "Invalid DeArrow time step", ex);
             }
-            Utils.showSnackbarLong(str("morphe_dearrow_vote_time_step_invalid"));
+            Utils.showSnackbarLong(str("morphe_positive_number_invalid"));
             return false;
         });
     }

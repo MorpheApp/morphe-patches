@@ -85,7 +85,7 @@ private val hideShortsComponentsResourcePatch = patch {
                 // Like fountain may no longer be used by YT anymore.
                 //SwitchPreference("morphe_hide_shorts_like_fountain"),
                 SwitchPreference("morphe_disable_shorts_double_tap_to_like"),
-                SwitchPreference("morphe_hide_shorts_like_button"),
+                SwitchPreference("morphe_hide_shorts_like_button", titleKey = "morphe_hide_like_button_title"),
                 SwitchPreference("morphe_hide_shorts_comments_button", titleKey = "morphe_hide_comments_button_title"),
                 SwitchPreference("morphe_hide_shorts_save_button", titleKey = "morphe_hide_save_button_title"),
                 SwitchPreference("morphe_hide_shorts_share_button", titleKey = "morphe_hide_share_button_title"),
@@ -131,13 +131,13 @@ private val hideShortsComponentsResourcePatch = patch {
             PreferenceCategory(
                 titleKey = "morphe_hide_shorts_category_title",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_shorts_channel"),
+                    SwitchPreference("morphe_hide_shorts_channel", titleKey = "morphe_hide_in_channel_page_title"),
                     SwitchPreference("morphe_hide_shorts_home"),
                     SwitchPreference("morphe_hide_shorts_notifications"),
-                    SwitchPreference("morphe_hide_shorts_search"),
+                    SwitchPreference("morphe_hide_shorts_search", titleKey = "morphe_hide_in_search_results_title"),
                     SwitchPreference("morphe_hide_shorts_subscriptions"),
                     SwitchPreference("morphe_hide_shorts_video_description"),
-                    SwitchPreference("morphe_hide_shorts_history")
+                    SwitchPreference("morphe_hide_shorts_history", titleKey = "morphe_hide_in_watch_history_title")
                 )
             ),
 

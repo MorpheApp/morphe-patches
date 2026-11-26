@@ -575,7 +575,7 @@ public final class CommentsSearchFilter extends Filter {
 
         FrameLayout button = new FrameLayout(context);
         button.setTag(SEARCH_BUTTON_TAG);
-        button.setContentDescription(str("morphe_comment_search_dialog_title"));
+        button.setContentDescription(str("morphe_comment_search_title"));
         button.setClickable(true);
         button.setFocusable(true);
 
@@ -605,7 +605,7 @@ public final class CommentsSearchFilter extends Filter {
     private static void showSearchDialog(Context context, View searchButton) {
         SearchDialog.show(
                 context,
-                str("morphe_comment_search_dialog_title"),
+                str("morphe_comment_search_title"),
                 str("morphe_comment_search_hint"),
                 isSearching() ? searchText : "",
                 newText -> {
@@ -618,7 +618,7 @@ public final class CommentsSearchFilter extends Filter {
                                 : "morphe_comment_search_applied"));
                     }
                 },
-                str("morphe_comment_search_clear"),
+                str("morphe_settings_clear"),
                 () -> {
                     setSearch("");
                     updateSearchButtonIcon(searchButton);

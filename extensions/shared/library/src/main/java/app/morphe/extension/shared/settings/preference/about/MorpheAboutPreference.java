@@ -168,7 +168,7 @@ public class MorpheAboutPreference extends Preference {
                         .append(getString("morphe_settings_about_update_hint"))
                         .append("</div></div><a href=\"").append(MANAGER_LINK_PLACEHOLDER_URL)
                         .append("\" class=\"update-button\">")
-                        .append(getString("morphe_patches_update_notice_dialog_update"))
+                        .append(getString("morphe_settings_update"))
                         .append("</a></div>");
             }
         }
@@ -191,7 +191,7 @@ public class MorpheAboutPreference extends Preference {
         appendTile(html, SUPPORTERS_LINK_PLACEHOLDER_URL, getString("morphe_settings_about_supporters"),
                 AboutDialogStyle.linkIcon(SUPPORTERS_LINK_PLACEHOLDER_URL), false);
         html.append("</div></div>")
-                .append(AboutDialogStyle.pageEnd(getString("morphe_settings_about_close"), null))
+                .append(AboutDialogStyle.pageEnd(getString("morphe_settings_close"), null))
                 .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();

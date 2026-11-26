@@ -205,7 +205,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
         } else {
             titleKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_title";
             messageKey = "morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message";
-            okButtonTextKey = "gms_core_dialog_continue_text";
+            okButtonTextKey = "morphe_settings_continue";
             okButtonRunnable = this::showActivationCodeDialog;
         }
 

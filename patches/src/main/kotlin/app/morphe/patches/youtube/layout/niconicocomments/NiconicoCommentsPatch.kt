@@ -87,7 +87,7 @@ val niconicoCommentsPatch = patch(
                     SwitchPreference("morphe_niconico_comments_pip", summary = true),
                     PreferenceCategory(
                         key = "morphe_niconico_comments_appearance_category",
-                        titleKey = "morphe_niconico_comments_appearance_title",
+                        titleKey = "morphe_appearance_title",
                         sorting = Sorting.UNSORTED,
                         preferences = setOf(
                             NonInteractivePreference(
@@ -125,7 +125,7 @@ val niconicoCommentsPatch = patch(
                     ),
                     PreferenceCategory(
                         key = "morphe_niconico_comments_portrait_category",
-                        titleKey = "morphe_niconico_comments_portrait_category_title",
+                        titleKey = "morphe_portrait",
                         sorting = Sorting.UNSORTED,
                         preferences = setOf(
                             SwitchPreference("morphe_niconico_comments_portrait", summary = true),

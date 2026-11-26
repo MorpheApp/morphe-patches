@@ -225,6 +225,7 @@ public class SponsorBlockUtils {
      * @param seekTime The time the player seeks to, which is before the start of the video
      *                 when a relative seek goes past the start.
      */
+    @SuppressWarnings("unused")
     public static void onVideoSeek(long seekTime) {
         videoSeekedToStartId = seekTime <= 0 && VideoState.getCurrent() != VideoState.PLAYING
                 ? VideoInformation.getVideoId()
@@ -295,7 +296,7 @@ public class SponsorBlockUtils {
                         str("morphe_sb_new_segment_highlight_content",
                                 formatSegmentTime(newSponsorSegmentStartMillis)),
                         null,
-                        str("morphe_sb_new_segment_highlight_submit"),
+                        str("morphe_sb_new_segment_highlight_title"),
                         () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
                             newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
@@ -328,7 +329,7 @@ public class SponsorBlockUtils {
                             formatSegmentTime(newSponsorSegmentEndMillis),
                             getTimeSavedString(segmentLength)),
                     null,
-                    str("morphe_sb_new_segment_confirm_submit"),
+                    str("morphe_submit"),
                     () -> {
                         SponsorBlockViewController.hideNewSegmentLayout();
                         CharSequence[] titles = getTitlesWithColorDot(

@@ -61,9 +61,9 @@ val holdGesturePatch = patch(
                         summary = true,
                         tag = "app.morphe.extension.youtube.settings.preference.HoldGestureSwitchPreference"
                     ),
-                    SwitchPreference("morphe_hold_gesture_haptic_feedback", summary = true),
+                    SwitchPreference("morphe_hold_gesture_haptic_feedback", titleKey = "morphe_haptic_feedback_title", summary = true),
                     SwitchPreference("morphe_hold_gesture_speed_swipe", summary = true),
-                    ListPreference("morphe_hold_gesture_speed_step"),
+                    ListPreference("morphe_hold_gesture_speed_step", titleKey = "morphe_speed_step_title"),
                     ListPreference("morphe_hold_gesture_speed_sensitivity"),
                     TextPreference("morphe_hold_gesture_speed_min", inputType = InputType.NUMBER_DECIMAL),
                     TextPreference("morphe_hold_gesture_speed_max", inputType = InputType.NUMBER_DECIMAL),

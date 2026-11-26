@@ -378,7 +378,7 @@ public class FeedCardLayoutPatch {
     /**
      * Menu items that the menu of the cards with a save button doesn't have.
      */
-    private static final StringRef SAVE_TO_WATCH_LATER = StringRef.sfc("morphe_save_to_watch_later_flyout_title");
+    private static final StringRef SAVE_TO_WATCH_LATER = StringRef.sfc("morphe_save_to_watch_later_title");
     private static final StringRef SAVE_TO_PLAYLIST = StringRef.sfc("accessibility_save_to_playlists");
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
     /**

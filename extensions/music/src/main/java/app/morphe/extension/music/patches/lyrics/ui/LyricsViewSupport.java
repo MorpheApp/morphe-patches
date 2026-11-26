@@ -399,19 +399,19 @@ final class LyricsViewSupport {
             if (LyricsRequests.isRomanizationOff()) {
                 // No romanization, so the ruby takes its place.
                 if (rubyProvider != null) {
-                    source = String.format(str("morphe_music_lyrics_romanized_by_local"), rubyProvider);
+                    source = String.format(str("morphe_music_lyrics_romanized_by"), rubyProvider);
                 }
             } else if (romanized) {
                 if (romanizedFromGoogle) {
                     source = str("morphe_music_lyrics_romanized_by_google");
                 } else if (romanizedFromAI && romanizedAiModel != null) {
-                    source = String.format(str("morphe_music_lyrics_romanized_by_ai"), romanizedAiModel);
+                    source = String.format(str("morphe_music_lyrics_romanized_by"), romanizedAiModel);
                 } else if (romanizedLocalDictionary != null) {
                     // Named and nothing more: the licenses are in the licenses dialog.
-                    source = String.format(str("morphe_music_lyrics_romanized_by_local"),
+                    source = String.format(str("morphe_music_lyrics_romanized_by"),
                             romanizedLocalDictionary);
                 } else if (romanizedFromEmbedded && rubyProvider != null) {
-                    source = String.format(str("morphe_music_lyrics_romanized_by_local"), rubyProvider);
+                    source = String.format(str("morphe_music_lyrics_romanized_by"), rubyProvider);
                 }
                 if (source != null && rubyProvider != null && !source.contains(rubyProvider)) {
                     source = str("morphe_music_lyrics_with_ruby_provider", source, rubyProvider);

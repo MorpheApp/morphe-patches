@@ -75,6 +75,7 @@ val snackbarPatch = patch(
                     ),
                     TextPreference(
                         "morphe_custom_snackbar_corner_radius",
+                        titleKey = "morphe_corner_radius_title",
                         inputType = InputType.NUMBER
                     )
                 )

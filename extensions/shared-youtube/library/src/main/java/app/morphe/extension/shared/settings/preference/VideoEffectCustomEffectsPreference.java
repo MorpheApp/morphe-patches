@@ -78,7 +78,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
                     getTitle() != null ? getTitle().toString() : "",
                     null,
                     null,
-                    str("morphe_settings_about_close"),
+                    str("morphe_settings_close"),
                     () -> {},
                     null,
                     str("morphe_video_effects_custom_add"),
@@ -147,7 +147,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
             ImageView delete = new ImageView(context);
             delete.setImageResource(Utils.appIsUsingBoldIcons() ? DRAWABLE_DELETE_BOLD : DRAWABLE_DELETE);
             delete.setColorFilter(ThemeUtils.getDialogTextColor());
-            delete.setContentDescription(str("morphe_video_effects_custom_delete"));
+            delete.setContentDescription(str("morphe_settings_delete"));
             delete.setPadding(Dim.dp8, Dim.dp8, Dim.dp8, Dim.dp8);
             delete.setOnClickListener(v -> confirmDelete(context, effect.name,
                     () -> addEffectRows(context, dialog, rows)));
@@ -202,7 +202,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
                 str("morphe_video_effects_custom_delete_title"),
                 str("morphe_video_effects_custom_delete_message", name),
                 null,
-                str("morphe_video_effects_custom_delete"),
+                str("morphe_settings_delete"),
                 () -> {
                     try {
                         deleteEffect(name);

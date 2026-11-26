@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.settings.preference;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.content.Context;
 import android.util.AttributeSet;
 
@@ -16,9 +14,8 @@ import app.morphe.extension.youtube.sponsorblock.preferences.SponsorBlockPrivate
 
 /**
  * The SponsorBlock private user id, which DeArrow also uses.
- * Uses its own strings since the SponsorBlock strings are only added with the SponsorBlock patch.
  */
-@SuppressWarnings({"unused", "deprecation"})
+@SuppressWarnings("unused")
 public class DeArrowPrivateUserIdPreference extends SponsorBlockPrivateUserIdPreference {
 
     public DeArrowPrivateUserIdPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -35,15 +32,5 @@ public class DeArrowPrivateUserIdPreference extends SponsorBlockPrivateUserIdPre
 
     public DeArrowPrivateUserIdPreference(Context context) {
         super(context);
-    }
-
-    @Override
-    protected String getInvalidUserIdMessage() {
-        return str("morphe_dearrow_private_user_id_invalid");
-    }
-
-    @Override
-    protected String getCopyButtonText() {
-        return str("morphe_settings_import_copy");
     }
 }

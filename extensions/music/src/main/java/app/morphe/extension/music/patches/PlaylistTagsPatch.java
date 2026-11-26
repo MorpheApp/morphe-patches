@@ -365,7 +365,7 @@ public final class PlaylistTagsPatch {
                     ThemeUtils.getThemeResourceId(context, android.R.attr.selectableItemBackground)));
 
             row.addView(PlaylistTagsDialogs.createLineText(context,
-                    str("morphe_music_playlist_tags_menu_item"), 16));
+                    str("morphe_music_tags"), 16));
             row.addView(PlaylistTagsDialogs.createSummaryText(context,
                     PlaylistTagsDialogs.describeTags(PlaylistTagsStore.getPlaylistTags(playlistId)), 13));
 
@@ -475,7 +475,7 @@ public final class PlaylistTagsPatch {
         } else if (hiddenCount > 0) {
             button.setText(str("morphe_music_playlist_tags_filter_button_hidden", hiddenCount));
         } else {
-            button.setText(str("morphe_music_playlist_tags_filter_button"));
+            button.setText(str("morphe_music_tags"));
         }
     }
 

@@ -50,9 +50,10 @@ val hideFlyoutMenuComponentsPatch = patch(
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_music_hide_flyout_menu_components_screen",
+                titleKey = "morphe_flyout_menu_screen_title",
                 preferences = setOf(
                     SwitchPreference("morphe_music_hide_flyout_menu_3_column_component"),
-                    SwitchPreference("morphe_music_hide_flyout_menu_like_dislike"),
+                    SwitchPreference("morphe_music_hide_flyout_menu_like_dislike", titleKey = "morphe_hide_like_dislike_buttons_title"),
                     SwitchPreference("morphe_music_hide_flyout_menu_taste_match"),
                     SwitchPreference("morphe_music_hide_flyout_menu_add_to_listen_later"),
                     SwitchPreference("morphe_music_hide_flyout_menu_add_to_queue"),

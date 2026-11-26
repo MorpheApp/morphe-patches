@@ -112,6 +112,7 @@ val ghostPlayPatch = patch(
                 preferences = setOf(
                     PreferenceCategory(
                         key = "morphe_ghost_play_cat_general",
+                        titleKey = "morphe_general_title",
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                         preferences = setOf(
                             SwitchPreference("morphe_ghost_play_enabled", summary = true),

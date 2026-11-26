@@ -25,7 +25,7 @@ import app.morphe.extension.shared.settings.preference.CustomDialogListPreferenc
 public class NavigationBarPreferenceCategory extends ConditionalPreferenceCategory {
     public NavigationBarPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle(str("morphe_screen_navigation_bar_title"));
+        setTitle(str("morphe_navigation_bar_screen_title"));
     }
 
     @Override

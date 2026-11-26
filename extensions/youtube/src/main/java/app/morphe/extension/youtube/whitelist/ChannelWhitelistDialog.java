@@ -80,7 +80,7 @@ public final class ChannelWhitelistDialog {
                     context,
                     currentChannelName.isEmpty() ? currentChannelId : currentChannelName,
                     isWhitelisted
-                            ? str("morphe_channel_whitelist_remove")
+                            ? str("morphe_settings_remove")
                             : str("morphe_channel_whitelist_add"),
                     !isWhitelisted,
                     () -> {
@@ -120,7 +120,7 @@ public final class ChannelWhitelistDialog {
             listContainer.addView(createChannelRow(
                     context,
                     channelName.isEmpty() ? channelId : channelName,
-                    str("morphe_channel_whitelist_remove"),
+                    str("morphe_settings_remove"),
                     false,
                     () -> {
                         ChannelWhitelist.removeChannel(type, channelId);

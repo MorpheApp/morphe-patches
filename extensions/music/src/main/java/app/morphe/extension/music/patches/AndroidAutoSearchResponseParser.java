@@ -96,7 +96,7 @@ final class AndroidAutoSearchResponseParser {
         ALBUMS("library_albums_shelf_title"),
         ARTISTS("library_artists_shelf_title"),
         PLAYLISTS("library_playlists_shelf_title"),
-        VIDEOS("morphe_music_android_auto_videos"),
+        VIDEOS("morphe_videos"),
         PODCASTS("offline_podcasts_shelf_title"),
         EPISODES("library_episodes_shelf_title"),
         UPLOADED_SONGS("morphe_music_android_auto_uploaded_songs"),
@@ -112,7 +112,7 @@ final class AndroidAutoSearchResponseParser {
                         boolean preservePlaybackCommand, ResultCategory category) {}
 
     static List<SearchResult> parseSearchResults(PageContents contents, boolean uploaded) {
-        if (!hasContents(contents)) {
+        if (hasNoContents(contents)) {
             String requestedTabId = uploaded ? UPLOADS_TAB_ID : CATALOG_TAB_ID;
             boolean hasCatalogTab = false;
             boolean hasUploadsTab = false;
@@ -123,7 +123,7 @@ final class AndroidAutoSearchResponseParser {
                 hasCatalogTab |= CATALOG_TAB_ID.equals(id);
                 hasUploadsTab |= UPLOADS_TAB_ID.equals(id);
                 if (!id.isEmpty() && !requestedTabId.equals(id)) continue;
-                if (!hasContents(tab.getContent())) continue;
+                if (hasNoContents(tab.getContent())) continue;
                 // Without tab IDs, prefer the selected tab.
                 if (resultsTab == null || (tab.getSelected() && !resultsTab.getSelected())) {
                     resultsTab = tab;
@@ -139,8 +139,8 @@ final class AndroidAutoSearchResponseParser {
         return readSections(new ProtoMessage(contents.getSectionListRenderer().toByteArray()));
     }
 
-    private static boolean hasContents(PageContents contents) {
-        return contents.hasSectionListRenderer() || contents.hasMessageRenderer();
+    private static boolean hasNoContents(PageContents contents) {
+        return !contents.hasSectionListRenderer() && !contents.hasMessageRenderer();
     }
 
     static String uploadedSearchParams(PageContents contents) {

@@ -85,7 +85,7 @@ public class CheckWatchHistoryDomainNameResolutionPatch {
                             null, // OK button text.
                             () -> {}, // OK button action (just dismiss).
                             null, // No cancel button.
-                            str("morphe_check_watch_history_domain_name_dialog_ignore"), // Neutral button text.
+                            str("morphe_do_not_show_again"), // Neutral button text.
                             () -> SharedYouTubeSettings.CHECK_WATCH_HISTORY_DOMAIN_NAME.save(false),    // Neutral button action (Ignore).
                             true // Dismiss dialog on Neutral button click.
                     );

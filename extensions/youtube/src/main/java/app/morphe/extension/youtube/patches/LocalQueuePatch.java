@@ -163,7 +163,7 @@ public final class LocalQueuePatch {
                 fetchMetadataIfNeeded(item);
             }
 
-            Utils.showSnackbarShort(str("morphe_local_queue_added"));
+            Utils.showSnackbarShort(str("morphe_queue_added"));
             notifyChanged();
         } catch (Exception ex) {
             Logger.printException(() -> "add failure", ex);

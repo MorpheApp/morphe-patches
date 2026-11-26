@@ -27,6 +27,7 @@ val customPlayerOverlayOpacityPatch = patch(
         addPlayerOverlayPreferences(
             NonInteractivePreference(
                 key = "morphe_player_overlay_opacity",
+                summaryKey = "morphe_opacity_summary",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             )
         )

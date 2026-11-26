@@ -209,7 +209,7 @@ class MorpheCreditsDialog extends AboutWebViewDialog {
                 .append("</a>")
                 .append("</div></div>");
 
-        html.append(AboutDialogStyle.pageEnd(str("morphe_settings_about_close"), null))
+        html.append(AboutDialogStyle.pageEnd(str("morphe_settings_close"), null))
                 .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();

@@ -131,7 +131,7 @@ public final class WebViewCheck {
                         openWebViewPage(activity, packageName);
                     }, // OK button action.
                     null, // No cancel button.
-                    str("morphe_spoof_video_streams_webview_dialog_ignore"), // Neutral button text.
+                    str("morphe_do_not_show_again"), // Neutral button text.
                     () -> {
                         dialogAnswered = true;
                         SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_WEBVIEW_DIALOG.save(false);

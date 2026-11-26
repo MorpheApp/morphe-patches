@@ -394,7 +394,7 @@ public final class PatchesUpdateNoticePatch {
                     str("morphe_patches_update_notice_dialog_title"), // Title.
                     message, // Message.
                     null, // No EditText.
-                    str("morphe_patches_update_notice_dialog_update"), // OK button text.
+                    str("morphe_settings_update"), // OK button text.
                     () -> openManager(activity), // OK button action.
                     null, // No cancel button.
                     str("morphe_patches_update_notice_dialog_dismiss"), // Neutral button text.

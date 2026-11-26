@@ -354,10 +354,10 @@ public class SBRequester {
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
-            return str("morphe_sb_stats_username_change_unknown_error", responseCode, responseMessage);
+            return str("morphe_username_change_unknown_error", responseCode, responseMessage);
         } catch (Exception ex) { // should never happen
             Logger.printInfo(() -> "failed to set username", ex); // do not toast
-            return str("morphe_sb_stats_username_change_unknown_error", 0, ex.getMessage());
+            return str("morphe_username_change_unknown_error", 0, ex.getMessage());
         }
     }
 

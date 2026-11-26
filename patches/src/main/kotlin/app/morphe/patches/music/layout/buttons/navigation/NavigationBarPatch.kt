@@ -85,11 +85,11 @@ val navigationBarPatch = patch(
                     SwitchPreference("morphe_music_hide_navigation_bar_explore_button"),
                     SwitchPreference("morphe_music_hide_navigation_bar_library_button"),
                     SwitchPreference("morphe_music_hide_navigation_bar_upgrade_button"),
-                    SwitchPreference("morphe_music_show_navigation_bar_settings_button"),
-                    SwitchPreference("morphe_music_show_navigation_bar_settings_button_type", summary = true),
-                    SwitchPreference("morphe_music_hide_navigation_bar"),
-                    SwitchPreference("morphe_music_hide_navigation_bar_labels"),
-                    SwitchPreference("morphe_music_navigation_bar_glass", summary = true),
+                    SwitchPreference("morphe_music_show_navigation_bar_settings_button", titleKey = "morphe_show_settings_button_title"),
+                    SwitchPreference("morphe_music_show_navigation_bar_settings_button_type", titleKey = "morphe_show_settings_button_type_title", summary = true),
+                    SwitchPreference("morphe_music_hide_navigation_bar", titleKey = "morphe_hide_navigation_bar_title"),
+                    SwitchPreference("morphe_music_hide_navigation_bar_labels", titleKey = "morphe_hide_navigation_button_labels_title"),
+                    SwitchPreference("morphe_music_navigation_bar_glass", titleKey = "morphe_navigation_bar_glass_title", summary = true),
                     // Height, width, button spacing, opacity and rim brightness, with a preview.
                     NonInteractivePreference(
                         key = "morphe_music_navigation_bar_glass_height",
@@ -264,22 +264,22 @@ val navigationBarPatch = patch(
         val toolbarPreferences = setOf(
             SwitchPreference("morphe_music_hide_activity_button"),
             SwitchPreference("morphe_music_hide_ask_music_button"),
-            SwitchPreference("morphe_music_hide_cast_button"),
+            SwitchPreference("morphe_music_hide_cast_button", titleKey = "morphe_hide_cast_button_title"),
             SwitchPreference("morphe_music_hide_history_button"),
             SwitchPreference(
                 "morphe_music_hide_samples_button",
                 titleKey = "morphe_music_hide_navigation_bar_samples_button_title"
             ),
-            SwitchPreference("morphe_music_hide_search_button"),
+            SwitchPreference("morphe_music_hide_search_button", titleKey = "morphe_hide_search_button_title"),
             SwitchPreference("morphe_music_hide_sound_search_button"),
             SwitchPreference("morphe_music_hide_voice_search_button"),
             SwitchPreference(
                 "morphe_music_show_toolbar_settings_button",
-                titleKey = "morphe_music_show_navigation_bar_settings_button_title"
+                titleKey = "morphe_show_settings_button_title"
             ),
             SwitchPreference(
                 "morphe_music_show_toolbar_settings_button_type",
-                titleKey = "morphe_music_show_navigation_bar_settings_button_type_title",
+                titleKey = "morphe_show_settings_button_type_title",
                 summaryKey = "morphe_music_show_navigation_bar_settings_button_type_summary"
             )
         )

@@ -130,7 +130,7 @@ final class NativeSheet {
     static void confirm(Context c, String title, String message, String action, Runnable work) {
         NativeSheet sheet = new NativeSheet(c, title);
         sheet.message(message);
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
         sheet.action(
                 action,
                 () -> {

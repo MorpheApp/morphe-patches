@@ -72,7 +72,7 @@ public enum LauncherAction {
                     ? "morphe_hold_gesture_launcher_action_loop_off"
                     : "morphe_hold_gesture_launcher_action_loop";
             case SCREENSHOT -> "morphe_hold_gesture_launcher_action_screenshot";
-            case WATCH_LATER -> "morphe_hold_gesture_launcher_action_watch_later";
+            case WATCH_LATER -> "morphe_save_to_watch_later_title";
             case TIMESTAMP_URL -> "morphe_hold_gesture_launcher_action_timestamp_url";
         });
     }

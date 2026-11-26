@@ -33,11 +33,11 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
     };
 
     private static final String[] TITLES = {
-            "morphe_music_navigation_bar_glass_size_height",
-            "morphe_music_navigation_bar_glass_size_width",
-            "morphe_music_navigation_bar_glass_size_button_spacing",
-            "morphe_music_navigation_bar_glass_opacity_title",
-            "morphe_music_navigation_bar_glass_rim_title"
+            "morphe_navigation_bar_glass_size_height",
+            "morphe_navigation_bar_glass_size_width",
+            "morphe_navigation_bar_glass_size_button_spacing",
+            "morphe_music_opacity_title",
+            "morphe_music_rim_brightness_title"
     };
 
     private static final int INDEX_OPACITY = 3;
@@ -59,7 +59,7 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
 
     @Override
     protected String getButtonsShownKey() {
-        return "morphe_music_navigation_bar_glass_size_buttons_shown";
+        return "morphe_navigation_bar_glass_size_buttons_shown";
     }
 
     @Override

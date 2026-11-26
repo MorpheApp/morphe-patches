@@ -183,7 +183,7 @@ public final class OpenPostImagesFullscreenPatch {
         }
 
         Lightbox lightbox = new Lightbox(uri, model, theme.getIdentifier(), capabilities.getIdentifier(),
-                str("morphe_settings_about_close"));
+                str("morphe_settings_close"));
 
         boolean replaced = false;
         for (Map.Entry<ProtoNode, List<ProtoNode>> post : getPostImages(images).entrySet()) {
@@ -238,188 +238,174 @@ public final class OpenPostImagesFullscreenPatch {
     }
 
     /**
-     * The fullscreen view of the images of a post (post_image_lightbox.eml), shown in a dialog
-     * the same as the posts feed shows it, with the context of the model of the card.
-     */
-    private static final class Lightbox {
-        /**
-         * Fields of the model that the subscriptions write: the capabilities of the app, the index
-         * of the shown image, the theme in the context, and the states of the gestures.
+         * The fullscreen view of the images of a post (post_image_lightbox.eml), shown in a dialog
+         * the same as the posts feed shows it, with the context of the model of the card.
          */
-        private static final int CAPABILITIES_FIELD = 4;
-        private static final int INDEX_STATE_FIELD = 5;
-        private static final int TOUCH_POSITION_STATE_FIELD = 8;
-        private static final int DRAGGING_STATE_FIELD = 9;
-        private static final int WINDOW_INSETS_STATE_FIELD = 11;
-        private static final int ORIENTATION_STATE_FIELD = 12;
-        private static final int CONTEXT_THEME_FIELD = 352047819;
+        private record Lightbox(String uri, LockupModel cardModel, ByteString themeIdentifier,
+                                String capabilitiesIdentifier, String closeLabel) {
+            /**
+             * Fields of the model that the subscriptions write: the capabilities of the app, the index
+             * of the shown image, the theme in the context, and the states of the gestures.
+             */
+            private static final int CAPABILITIES_FIELD = 4;
+            private static final int INDEX_STATE_FIELD = 5;
+            private static final int TOUCH_POSITION_STATE_FIELD = 8;
+            private static final int DRAGGING_STATE_FIELD = 9;
+            private static final int WINDOW_INSETS_STATE_FIELD = 11;
+            private static final int ORIENTATION_STATE_FIELD = 12;
+            private static final int CONTEXT_THEME_FIELD = 352047819;
 
-        private static final int THEME_STATE_ENTITY = 1;
-        private static final int THEME_STATE_TYPE = 1;
-        private static final int CAPABILITIES_STATE_TYPE = 2;
-        private static final int ENVIRONMENT_SUBSCRIPTION_TYPE = 2;
-        private static final int CLOSE_BUTTON_TYPE = 1;
-        private static final int DIALOG_THEME_COLOR = 0x1A000000;
-        private static final String[] DIALOG_THEMES = {"USER_INTERFACE_THEME_LIGHT", "USER_INTERFACE_THEME_DARK"};
+            private static final int THEME_STATE_ENTITY = 1;
+            private static final int THEME_STATE_TYPE = 1;
+            private static final int CAPABILITIES_STATE_TYPE = 2;
+            private static final int ENVIRONMENT_SUBSCRIPTION_TYPE = 2;
+            private static final int CLOSE_BUTTON_TYPE = 1;
+            private static final int DIALOG_THEME_COLOR = 0x1A000000;
+            private static final String[] DIALOG_THEMES = {"USER_INTERFACE_THEME_LIGHT", "USER_INTERFACE_THEME_DARK"};
 
-        /**
-         * States of the gestures, which are reset before the view is shown.
-         */
-        private static final String DRAG_DISTANCE_STATE = "post_image_lightbox_drag_distance";
-        private static final String TOUCH_POSITION_STATE = "post_image_lightbox_touch_position";
-        private static final String ZOOMING_STATE = "post_image_lightbox_is_zooming";
-        private static final String DRAGGING_STATE = "post_image_lightbox_is_dragging";
-        private static final String DRAG_END_STATE = "post_image_lightbox_is_drag_end";
-        private static final String WINDOW_INSETS_STATE = "post_image_lightbox_window_insets";
-        private static final String ORIENTATION_STATE = "post_image_lightbox_orientation";
-        private static final float NO_TOUCH_POSITION = -1;
+            /**
+             * States of the gestures, which are reset before the view is shown.
+             */
+            private static final String DRAG_DISTANCE_STATE = "post_image_lightbox_drag_distance";
+            private static final String TOUCH_POSITION_STATE = "post_image_lightbox_touch_position";
+            private static final String ZOOMING_STATE = "post_image_lightbox_is_zooming";
+            private static final String DRAGGING_STATE = "post_image_lightbox_is_dragging";
+            private static final String DRAG_END_STATE = "post_image_lightbox_is_drag_end";
+            private static final String WINDOW_INSETS_STATE = "post_image_lightbox_window_insets";
+            private static final String ORIENTATION_STATE = "post_image_lightbox_orientation";
+            private static final float NO_TOUCH_POSITION = -1;
 
-        /**
-         * Uri of the template, with the hash of the version the app has.
-         */
-        static final FeedCardLayoutPatch.VideoTemplate TEMPLATE = new FeedCardLayoutPatch.VideoTemplate(
-                "post_image_lightbox.eml", null, ElementModel.LIGHTBOX_FIELD_NUMBER,
-                LightboxModel.CONTEXT_FIELD_NUMBER, CAPABILITIES_FIELD);
+            /**
+             * Uri of the template, with the hash of the version the app has.
+             */
+            static final FeedCardLayoutPatch.VideoTemplate TEMPLATE = new FeedCardLayoutPatch.VideoTemplate(
+                    "post_image_lightbox.eml", null, ElementModel.LIGHTBOX_FIELD_NUMBER,
+                    LightboxModel.CONTEXT_FIELD_NUMBER, CAPABILITIES_FIELD);
 
-        private static final Command RESET_GESTURE_STATES = list(
-                setState(DRAG_DISTANCE_STATE, VectorState.newBuilder().setX(0).setY(0).build()),
-                setState(TOUCH_POSITION_STATE, VectorState.newBuilder()
-                        .setX(NO_TOUCH_POSITION).setY(NO_TOUCH_POSITION).build()),
-                setState(ZOOMING_STATE, BooleanState.newBuilder().setValue(false).build()),
-                setState(DRAGGING_STATE, BooleanState.newBuilder().setValue(false).build()),
-                setState(DRAG_END_STATE, BooleanState.newBuilder().setValue(false).build()));
-
-        private final String uri;
-        private final LockupModel cardModel;
-        private final ByteString themeIdentifier;
-        private final String capabilitiesIdentifier;
-        private final String closeLabel;
-
-        Lightbox(String uri, LockupModel cardModel, ByteString themeIdentifier,
-                 String capabilitiesIdentifier, String closeLabel) {
-            this.uri = uri;
-            this.cardModel = cardModel;
-            this.themeIdentifier = themeIdentifier;
-            this.capabilitiesIdentifier = capabilitiesIdentifier;
-            this.closeLabel = closeLabel;
-        }
+            private static final Command RESET_GESTURE_STATES = list(
+                    setState(DRAG_DISTANCE_STATE, VectorState.newBuilder().setX(0).setY(0).build()),
+                    setState(TOUCH_POSITION_STATE, VectorState.newBuilder()
+                            .setX(NO_TOUCH_POSITION).setY(NO_TOUCH_POSITION).build()),
+                    setState(ZOOMING_STATE, BooleanState.newBuilder().setValue(false).build()),
+                    setState(DRAGGING_STATE, BooleanState.newBuilder().setValue(false).build()),
+                    setState(DRAG_END_STATE, BooleanState.newBuilder().setValue(false).build()));
 
         /**
-         * @param indexState Key of the state of the shown image, or null if the post has one image.
-         * @return The command that shows the images in fullscreen.
-         */
-        Command show(List<ByteString> images, @Nullable String indexState) {
-            String indexStateKey = indexState == null ? "" : indexState;
-            LightboxModel model = LightboxModel.newBuilder()
-                    .setContent(LightboxContent.newBuilder()
-                            .addAllImage(images)
-                            .setIndexStateKey(indexStateKey)
-                            .setCloseButton(LightboxCloseButton.newBuilder()
-                                    .setLabel(closeLabel)
-                                    .setType(CLOSE_BUTTON_TYPE)))
-                    .setEnvironment(cardModel.getEnvironment())
-                    // The theme subscription adds the theme to the context when the element is shown.
-                    .setContext(cardModel.getContext())
-                    .build();
-            ComponentType lightbox = ComponentType.newBuilder()
-                    .setTemplateConfig(TemplateConfig.newBuilder()
-                            .setUriTemplateConfig(UriTemplateConfig.newBuilder().setUri(uri)))
-                    .setModel(ElementModel.newBuilder().setLightbox(model))
-                    .setSubscriptionConfig(subscriptions(indexStateKey))
-                    .build();
+             * @param indexState Key of the state of the shown image, or null if the post has one image.
+             * @return The command that shows the images in fullscreen.
+             */
+            Command show(List<ByteString> images, @Nullable String indexState) {
+                String indexStateKey = indexState == null ? "" : indexState;
+                LightboxModel model = LightboxModel.newBuilder()
+                        .setContent(LightboxContent.newBuilder()
+                                .addAllImage(images)
+                                .setIndexStateKey(indexStateKey)
+                                .setCloseButton(LightboxCloseButton.newBuilder()
+                                        .setLabel(closeLabel)
+                                        .setType(CLOSE_BUTTON_TYPE)))
+                        .setEnvironment(cardModel.getEnvironment())
+                        // The theme subscription adds the theme to the context when the element is shown.
+                        .setContext(cardModel.getContext())
+                        .build();
+                ComponentType lightbox = ComponentType.newBuilder()
+                        .setTemplateConfig(TemplateConfig.newBuilder()
+                                .setUriTemplateConfig(UriTemplateConfig.newBuilder().setUri(uri)))
+                        .setModel(ElementModel.newBuilder().setLightbox(model))
+                        .setSubscriptionConfig(subscriptions(indexStateKey))
+                        .build();
 
-            ShowDialogCommand.Builder dialog = ShowDialogCommand.newBuilder()
-                    .setContent(DialogContent.newBuilder().setElement(Element.newBuilder()
-                            .setType(ElementType.newBuilder().setComponentType(lightbox))))
-                    .setFullscreen(true)
-                    .setCancelable(true)
-                    .setAnimation(0)
-                    .setStyle(0);
-            for (String theme : DIALOG_THEMES) {
-                dialog.addTheme(DialogTheme.newBuilder().setTheme(theme).setColor(DIALOG_THEME_COLOR));
+                ShowDialogCommand.Builder dialog = ShowDialogCommand.newBuilder()
+                        .setContent(DialogContent.newBuilder().setElement(Element.newBuilder()
+                                .setType(ElementType.newBuilder().setComponentType(lightbox))))
+                        .setFullscreen(true)
+                        .setCancelable(true)
+                        .setAnimation(0)
+                        .setStyle(0);
+                for (String theme : DIALOG_THEMES) {
+                    dialog.addTheme(DialogTheme.newBuilder().setTheme(theme).setColor(DIALOG_THEME_COLOR));
+                }
+                return sequence(RESET_GESTURE_STATES, Command.newBuilder().setShowDialog(dialog).build());
             }
-            return sequence(RESET_GESTURE_STATES, Command.newBuilder().setShowDialog(dialog).build());
-        }
 
-        /**
-         * @param show       Command of {@link #show}.
-         * @param indexState Key of the state of the shown image, or null if the post has one image.
-         * @return The command that shows the images in fullscreen, with the image at the index shown.
-         */
-        static Command open(Command show, int index, @Nullable String indexState) {
-            if (indexState != null) {
-                show = sequence(setState(indexState, IntState.newBuilder().setValue(index).build()), show);
+            /**
+             * @param show       Command of {@link #show}.
+             * @param indexState Key of the state of the shown image, or null if the post has one image.
+             * @return The command that shows the images in fullscreen, with the image at the index shown.
+             */
+            static Command open(Command show, int index, @Nullable String indexState) {
+                if (indexState != null) {
+                    show = sequence(setState(indexState, IntState.newBuilder().setValue(index).build()), show);
+                }
+                return list(show);
             }
-            return list(show);
-        }
 
-        /**
-         * @return The subscriptions of the theme, the capabilities, the shown image and the gesture
-         *         states, the same as the posts feed has.
-         */
-        private SubscriptionConfig subscriptions(String indexStateKey) {
-            final int modelField = ElementModel.LIGHTBOX_FIELD_NUMBER;
-            final int contextField = LightboxModel.CONTEXT_FIELD_NUMBER;
-            return SubscriptionConfig.newBuilder()
-                    .setStateSubscriptionConfig(StateSubscriptionConfig.newBuilder()
-                            .setModelField(modelField)
-                            .addMapping(StateMapping.newBuilder()
-                                    .setKey(themeIdentifier)
-                                    .addPath(contextField)
-                                    .addPath(CONTEXT_THEME_FIELD)
-                                    .setEntity(THEME_STATE_ENTITY)
-                                    .setType(THEME_STATE_TYPE))
-                            .addMapping(stateMapping(capabilitiesIdentifier, CAPABILITIES_FIELD)
-                                    .setType(CAPABILITIES_STATE_TYPE))
-                            .addMapping(stateMapping(indexStateKey, INDEX_STATE_FIELD))
-                            .addMapping(stateMapping(TOUCH_POSITION_STATE, TOUCH_POSITION_STATE_FIELD))
-                            .addMapping(stateMapping(DRAGGING_STATE, DRAGGING_STATE_FIELD))
-                            .addMapping(stateMapping(WINDOW_INSETS_STATE, WINDOW_INSETS_STATE_FIELD))
-                            .addMapping(stateMapping(ORIENTATION_STATE, ORIENTATION_STATE_FIELD)))
-                    .setThemeSubscriptionConfig(ThemeSubscriptionConfig.newBuilder()
-                            .setModelField(modelField)
-                            .setMapping(ThemeMapping.newBuilder()
-                                    .setIdentifier(themeIdentifier)
-                                    .addPath(contextField)
-                                    .addPath(CONTEXT_THEME_FIELD)))
-                    .setCapabilitiesSubscriptionConfig(CapabilitiesSubscriptionConfig.newBuilder()
-                            .setModelField(modelField)
-                            .setMapping(CapabilitiesMapping.newBuilder()
-                                    .setIdentifier(capabilitiesIdentifier)
-                                    .setResultField(CAPABILITIES_FIELD)))
-                    .setEnvironmentSubscriptionConfig(EnvironmentSubscriptionConfig.newBuilder()
-                            .setModelField(modelField)
-                            .setFields(EnvironmentFields.newBuilder()
-                                    .addField(contextField)
-                                    .addField(TOUCH_POSITION_STATE_FIELD))
-                            .setType(ENVIRONMENT_SUBSCRIPTION_TYPE))
-                    .build();
-        }
+            /**
+             * @return The subscriptions of the theme, the capabilities, the shown image and the gesture
+             * states, the same as the posts feed has.
+             */
+            private SubscriptionConfig subscriptions(String indexStateKey) {
+                final int modelField = ElementModel.LIGHTBOX_FIELD_NUMBER;
+                final int contextField = LightboxModel.CONTEXT_FIELD_NUMBER;
+                return SubscriptionConfig.newBuilder()
+                        .setStateSubscriptionConfig(StateSubscriptionConfig.newBuilder()
+                                .setModelField(modelField)
+                                .addMapping(StateMapping.newBuilder()
+                                        .setKey(themeIdentifier)
+                                        .addPath(contextField)
+                                        .addPath(CONTEXT_THEME_FIELD)
+                                        .setEntity(THEME_STATE_ENTITY)
+                                        .setType(THEME_STATE_TYPE))
+                                .addMapping(stateMapping(capabilitiesIdentifier, CAPABILITIES_FIELD)
+                                        .setType(CAPABILITIES_STATE_TYPE))
+                                .addMapping(stateMapping(indexStateKey, INDEX_STATE_FIELD))
+                                .addMapping(stateMapping(TOUCH_POSITION_STATE, TOUCH_POSITION_STATE_FIELD))
+                                .addMapping(stateMapping(DRAGGING_STATE, DRAGGING_STATE_FIELD))
+                                .addMapping(stateMapping(WINDOW_INSETS_STATE, WINDOW_INSETS_STATE_FIELD))
+                                .addMapping(stateMapping(ORIENTATION_STATE, ORIENTATION_STATE_FIELD)))
+                        .setThemeSubscriptionConfig(ThemeSubscriptionConfig.newBuilder()
+                                .setModelField(modelField)
+                                .setMapping(ThemeMapping.newBuilder()
+                                        .setIdentifier(themeIdentifier)
+                                        .addPath(contextField)
+                                        .addPath(CONTEXT_THEME_FIELD)))
+                        .setCapabilitiesSubscriptionConfig(CapabilitiesSubscriptionConfig.newBuilder()
+                                .setModelField(modelField)
+                                .setMapping(CapabilitiesMapping.newBuilder()
+                                        .setIdentifier(capabilitiesIdentifier)
+                                        .setResultField(CAPABILITIES_FIELD)))
+                        .setEnvironmentSubscriptionConfig(EnvironmentSubscriptionConfig.newBuilder()
+                                .setModelField(modelField)
+                                .setFields(EnvironmentFields.newBuilder()
+                                        .addField(contextField)
+                                        .addField(TOUCH_POSITION_STATE_FIELD))
+                                .setType(ENVIRONMENT_SUBSCRIPTION_TYPE))
+                        .build();
+            }
 
-        /**
-         * @return Mapping of the state to the field of the model with the same field number.
-         */
-        private static StateMapping.Builder stateMapping(String key, int field) {
-            return StateMapping.newBuilder()
-                    .setKey(ByteString.copyFromUtf8(key))
-                    .setField(field)
-                    .addPath(field);
-        }
+            /**
+             * @return Mapping of the state to the field of the model with the same field number.
+             */
+            private static StateMapping.Builder stateMapping(String key, int field) {
+                return StateMapping.newBuilder()
+                        .setKey(ByteString.copyFromUtf8(key))
+                        .setField(field)
+                        .addPath(field);
+            }
 
-        private static Command setState(String key, MessageLite value) {
-            return Command.newBuilder().setSetState(SetStateCommand.newBuilder()
-                    .setKey(key)
-                    .setValue(value.toByteString())).build();
-        }
+            private static Command setState(String key, MessageLite value) {
+                return Command.newBuilder().setSetState(SetStateCommand.newBuilder()
+                        .setKey(key)
+                        .setValue(value.toByteString())).build();
+            }
 
-        private static Command list(Command... commands) {
-            return Command.newBuilder().setCommandList(CommandList.newBuilder()
-                    .addAllCommands(Arrays.asList(commands))).build();
-        }
+            private static Command list(Command... commands) {
+                return Command.newBuilder().setCommandList(CommandList.newBuilder()
+                        .addAllCommands(Arrays.asList(commands))).build();
+            }
 
-        private static Command sequence(Command... commands) {
-            return Command.newBuilder().setCommandSequence(CommandList.newBuilder()
-                    .addAllCommands(Arrays.asList(commands))).build();
+            private static Command sequence(Command... commands) {
+                return Command.newBuilder().setCommandSequence(CommandList.newBuilder()
+                        .addAllCommands(Arrays.asList(commands))).build();
+            }
         }
-    }
 }

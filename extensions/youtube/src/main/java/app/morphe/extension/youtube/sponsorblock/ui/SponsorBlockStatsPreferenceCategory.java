@@ -69,7 +69,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
             addPreference(loadingPlaceholderPreference);
 
             if (enabled) {
-                loadingPlaceholderPreference.setTitle(str("morphe_sb_stats_loading"));
+                loadingPlaceholderPreference.setTitle(str("morphe_loading"));
                 Utils.runOnBackgroundThread(() -> {
                     UserStats stats = SBRequester.retrieveUserStats();
                     Utils.runOnMainThread(() -> { // get back on main thread to modify UI elements
@@ -99,7 +99,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 // If user has not created any segments, there's no reason to set a username.
                 String userName = stats.userName;
                 ResettableEditTextPreference preference = new ResettableEditTextPreference(context);
-                preference.setTitle(Html.fromHtml(str("morphe_sb_stats_username", userName), Html.FROM_HTML_MODE_COMPACT));
+                preference.setTitle(Html.fromHtml(str("morphe_username_html", userName), Html.FROM_HTML_MODE_COMPACT));
                 preference.setSummary(str("morphe_sb_stats_username_change"));
                 preference.setText(userName);
                 preference.setOnPreferenceChangeListener((preference1, value) -> {
@@ -108,9 +108,9 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                         String errorMessage = SBRequester.setUsername(newUserName);
                         Utils.runOnMainThread(() -> {
                             if (errorMessage == null) {
-                                preference.setTitle(Html.fromHtml(str("morphe_sb_stats_username", newUserName), Html.FROM_HTML_MODE_COMPACT));
+                                preference.setTitle(Html.fromHtml(str("morphe_username_html", newUserName), Html.FROM_HTML_MODE_COMPACT));
                                 preference.setText(newUserName);
-                                Utils.showSnackbarLong(str("morphe_sb_stats_username_changed"));
+                                Utils.showSnackbarLong(str("morphe_username_changed"));
                             } else {
                                 preference.setText(userName); // revert to previous
                                 SponsorBlockUtils.showErrorDialog(errorMessage);

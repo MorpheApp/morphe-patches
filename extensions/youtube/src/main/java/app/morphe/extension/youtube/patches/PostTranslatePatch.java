@@ -760,7 +760,7 @@ public final class PostTranslatePatch {
         if (!pendingTranslations.add(key)) {
             return;
         }
-        Utils.showToastShort(str("morphe_post_translate_started"));
+        Utils.showToastShort(str("morphe_translating"));
 
         final String original = postText.original();
         final String language = TextTranslator.resolveLanguage(Settings.POST_TRANSLATE_LANGUAGE.get());
