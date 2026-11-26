@@ -157,32 +157,6 @@ val permanentNsfwPatch = patch(
 
         // endregion
 
-        // Feed images can open the media viewer without going through the post warning.
-        listOf("OnClickImageEventHandler", "OnClickGalleryImageEventHandler").forEach { handler ->
-            val fingerprint = feedImageClickFingerprint(handler)
-            val (linkField, unitField) = fingerprint.instructionMatches.map { it.getFieldAccessed() }
-            fingerprint.method.apply {
-                val register = findFreeRegister(0)
-                addInstructionsWithLabels(
-                    0,
-                    """
-                        invoke-static {}, $EXTENSION_CLASS->isEnabled()Z
-                        move-result v$register
-                        if-eqz v$register, :openImage
-                        move-object/from16 v$register, p0
-                        iget-object v$register, v$register, $linkField
-                        invoke-virtual { v$register }, Lcom/reddit/domain/model/Link;->getOver18()Z
-                        move-result v$register
-                        if-eqz v$register, :openImage
-                        sget-object v$register, $unitField
-                        return-object v$register
-                        :openImage
-                        nop
-                    """
-                )
-            }
-        }
-
         // region Remove the NSFW settings.
 
         // Viewing and blur settings, used for both accounts and anonymous browsing.

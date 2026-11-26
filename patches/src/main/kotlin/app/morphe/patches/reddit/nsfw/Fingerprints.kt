@@ -304,21 +304,6 @@ internal object LeaveIncognitoModeScreenCreateViewFingerprint : Fingerprint(
     parameters = listOf("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;")
 )
 
-internal fun feedImageClickFingerprint(eventHandler: String) = Fingerprint(
-    definingClass = "Lcom/reddit/feeds/impl/ui/actions/$eventHandler\$handleEvent\$",
-    name = "invokeSuspend",
-    returnType = "Ljava/lang/Object;",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            name = "\$link",
-            type = "Lcom/reddit/domain/model/Link;"
-        ),
-        fieldAccess(opcode = Opcode.SGET_OBJECT, type = "Lkotlin/Unit;")
-    )
-)
-
 internal fun accountPreferencesFingerprint(name: String, returnType: String) = Fingerprint(
     definingClass = ACCOUNT_PREFERENCES_CLASS,
     name = name,
