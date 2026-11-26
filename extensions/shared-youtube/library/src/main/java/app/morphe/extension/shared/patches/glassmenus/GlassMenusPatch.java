@@ -107,6 +107,13 @@ public final class GlassMenusPatch {
     };
 
     /**
+     * Theme color of the panel of a menu shown over a video, such as the dropdown of the Shorts header.
+     * Unlike the other menu colors, it is translucent.
+     */
+    private static final int OVERLAY_MENU_COLOR_ATTRIBUTE =
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytOverlayBackgroundMedium");
+
+    /**
      * Corner radius of a menu if its background does not give one.
      */
     private static final float DEFAULT_CORNER_RADIUS = Dim.dp(12);
@@ -472,6 +479,12 @@ public final class GlassMenusPatch {
          */
         private final List<Integer> menuColors = new ArrayList<>();
         /**
+         * Color of the panel of a menu shown over a video, a background of this exact color inside the menu is
+         * also removed.
+         */
+        @Nullable
+        private final Integer overlayMenuColor;
+        /**
          * The background the app gave the menu, until its color is known.
          */
         @Nullable
@@ -570,6 +583,7 @@ public final class GlassMenusPatch {
             updateOpacity();
 
             menuColors.addAll(menuColors(view.getContext()));
+            overlayMenuColor = resolveThemeColor(view.getContext(), OVERLAY_MENU_COLOR_ATTRIBUTE);
             sampleOriginalBackground();
 
             setBackgroundLayers();
@@ -958,7 +972,7 @@ public final class GlassMenusPatch {
             for (int menu : menuColors) {
                 if (isSimilarOpaqueColor(color, menu)) return true;
             }
-            return false;
+            return overlayMenuColor != null && color == overlayMenuColor;
         }
     }
 
