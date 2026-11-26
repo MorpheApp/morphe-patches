@@ -70,6 +70,16 @@ internal object NsfwViewingPreferenceFingerprint : Fingerprint(
     )
 )
 
+/** Reads the effective blur preference for the current account or private session. */
+internal object NsfwBlurPreferenceFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        string("nsfw_blur_enabled"),
+        methodCall(definingClass = ACCOUNT_PREFERENCES_CLASS, name = "getNoProfanity")
+    )
+)
+
 /**
  * Opens the home screen when declining the NSFW warning.
  */
@@ -302,6 +312,21 @@ internal object LeaveIncognitoModeScreenCreateViewFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/incognito/screens/leave/LeaveIncognitoModeScreen;",
     returnType = "Landroid/view/View;",
     parameters = listOf("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;")
+)
+
+internal fun feedImageClickFingerprint(eventHandler: String) = Fingerprint(
+    definingClass = "Lcom/reddit/feeds/impl/ui/actions/$eventHandler\$handleEvent\$",
+    name = "invokeSuspend",
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            name = "\$link",
+            type = "Lcom/reddit/domain/model/Link;"
+        ),
+        fieldAccess(opcode = Opcode.SGET_OBJECT, type = "Lkotlin/Unit;")
+    )
 )
 
 internal fun accountPreferencesFingerprint(name: String, returnType: String) = Fingerprint(
