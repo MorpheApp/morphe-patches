@@ -75,8 +75,7 @@ import app.morphe.extension.shared.settings.preference.CustomDialogListPreferenc
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public LayoutPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context, screen);
-        setTitle(str("morphe_screen_layout_title"));
+        super(context, screen, "morphe_layout_screen", "morphe_screen_layout_title", "morphe_layout_screen_summary");
     }
 
     @Override
