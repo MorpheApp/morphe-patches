@@ -31,6 +31,10 @@ public final class LyricsTranslator {
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    /** A provider answered with the source text, so the lyrics are already in the requested language. */
+    private static final ProviderTranslation UNCHANGED =
+            new ProviderTranslation(List.of(), false, false, null);
+
     private LyricsTranslator() {
     }
 
@@ -140,6 +144,11 @@ public final class LyricsTranslator {
                                    : new ProviderTranslation(embedded, false, false, null))
                                 : translateWithProvider(
                                 provider, track, source, language, lines);
+                        if (result == UNCHANGED) {
+                            Utils.runOnMainThread(
+                                    () -> callback.onTranslated(null, false, false, null, true));
+                            return;
+                        }
                         if (result != null) {
                             Utils.runOnMainThread(() -> callback.onTranslated(
                                     result.lines(), result.fromGoogle(), result.fromAI(),
@@ -177,7 +186,7 @@ public final class LyricsTranslator {
                 LyricsCache.putTranslation(track, source, language, lines, translated);
                 return new ProviderTranslation(translated, true, false, null);
             }
-            return null;
+            return isSameAsSource(translated, lines) ? UNCHANGED : null;
         }
 
         final boolean deepl = ProcessingProviders.DEEPL.equals(provider);
@@ -198,9 +207,11 @@ public final class LyricsTranslator {
                 : ProcessingProviders.mapLines(provider, OpenAIClient.renderPrompt(
                 Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
                 language, track.title(), track.artist(), lines), lines);
-        if (ai == null || ai.lines() == null || ai.lines().isEmpty()
-                || !hasTranslation(ai.lines(), lines)) {
+        if (ai == null || ai.lines() == null || ai.lines().isEmpty()) {
             return null;
+        }
+        if (!hasTranslation(ai.lines(), lines)) {
+            return isSameAsSource(ai.lines(), lines) ? UNCHANGED : null;
         }
 
         List<String> translated = sanitizeTranslation(ai.lines());
@@ -214,6 +225,24 @@ public final class LyricsTranslator {
             clean.add(line == null ? "" : line);
         }
         return clean;
+    }
+
+    /**
+     * Whether a provider answered with every line unchanged, which means the lyrics are already
+     * written in the requested language. An empty line in place of text is an incomplete answer.
+     */
+    private static boolean isSameAsSource(@Nullable List<String> translated,
+                                          List<String> source) {
+        if (translated == null || translated.isEmpty() || translated.size() != source.size()) {
+            return false;
+        }
+        for (int i = 0; i < translated.size(); i++) {
+            final String text = translated.get(i);
+            if (!(text == null ? "" : text.trim()).equals(source.get(i).trim())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /** A translation is usable if at least one line differs from the source. */
@@ -261,7 +290,10 @@ public final class LyricsTranslator {
     }
 
     public interface Callback {
-        /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
+        /**
+         * @param skipped The lyrics are already in the requested language, so a caller reports
+         *                nothing to do instead of a failure.
+         */
         void onTranslated(@Nullable List<String> translatedLines,
                           boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
                           boolean skipped);
