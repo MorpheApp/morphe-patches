@@ -239,7 +239,7 @@ internal val customPlaybackSpeedPatch = patch(
                     }
                     val helperMethod = ImmutableMethod(
                         type,
-                        "patch_showOldPlaybackSpeedMenu",
+                        "patch_showOldPlaybackSpeedBottomSheet",
                         listOf(),
                         "V",
                         AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
