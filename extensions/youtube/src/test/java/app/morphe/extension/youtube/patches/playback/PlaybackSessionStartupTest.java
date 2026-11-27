@@ -32,7 +32,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Item;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Panel;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Video;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 public class PlaybackSessionStartupTest {
@@ -61,6 +65,61 @@ public class PlaybackSessionStartupTest {
             assertSame(request, context.get().get("app.morphe.continue_watching"));
             assertNull(PlaybackSessionPatch.prepareWatchDescriptor(new Object(), context.get()));
         }
+    }
+
+    @Test
+    public void restoresTheSavedUpcomingOrderForPlaylistsAndMixes() throws Exception {
+        String current = "abcdefghijk";
+        String next = "lmnopqrstuv";
+        String last = "wxyz1234567";
+        for (String playlistId : List.of("PL1234567890", "RD" + current)) {
+            // The server index is relative to the full source, not this partially loaded panel.
+            var panel = Panel.newBuilder().setPlaylistId(playlistId).setSelectedIndex(42)
+                    .addItems(playlistRow(playlistId, current, 40))
+                    .addItems(playlistRow(playlistId, next, 41))
+                    .addItems(playlistRow(playlistId, current, 42))
+                    .addItems(Item.getDefaultInstance())
+                    .addItems(playlistRow(playlistId, last, 44))
+                    .addItems(playlistRow(playlistId, next, 45))
+                    .addItems(playlistRow(playlistId, last, 46))
+                    .build();
+            var queue = PlaybackSessionSnapshot.Queue.fromPanel(panel, current);
+            var saved = new PlaybackSessionSnapshot("account", current, 12_345,
+                    PlaybackSessionSnapshot.Kind.VIDEO, playlistId, false, queue);
+            var request = new PlaybackSessionPatch.RestoreRequest(PlaybackSessionSnapshot.fromJson(saved.toJson()));
+            var descriptor = new TestDescriptor(current);
+            try {
+                assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
+                assertEquals(List.of(current, last, next, last), descriptor.queue);
+                assertEquals(12_345, descriptor.position);
+                assertTrue(descriptor.paused);
+            } finally {
+                PlaybackSessionPatch.onRegularWatchCommand(new TestDescriptor(next));
+            }
+        }
+    }
+
+    @Test
+    public void opensLivePausedWithoutApplyingTheGenericSavedPosition() {
+        String current = "abcdefghijk";
+        var saved = new PlaybackSessionSnapshot("account", current, 12_345,
+                PlaybackSessionSnapshot.Kind.LIVE, "", false, null);
+        var descriptor = new TestDescriptor(current);
+        try {
+            var request = new PlaybackSessionPatch.RestoreRequest(saved);
+            assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
+            assertTrue(descriptor.paused);
+            assertEquals(-1, descriptor.position);
+        } finally {
+            PlaybackSessionPatch.onRegularWatchCommand(new TestDescriptor("lmnopqrstuv"));
+        }
+    }
+
+    private static Item playlistRow(String playlistId, String videoId, int index) {
+        return Item.newBuilder().setVideo(Video.newBuilder().setVideoId(videoId)
+                .setNavigationEndpoint(NavigationEndpoint.newBuilder()
+                        .setWatchEndpoint(WatchEndpoint.newBuilder()
+                                .setVideoId(videoId).setPlaylistId(playlistId).setIndex(index)))).build();
     }
 
     @Test
@@ -285,13 +344,15 @@ public class PlaybackSessionStartupTest {
     private static final class TestDescriptor implements PlaybackSessionPatch.Descriptor {
         private final String videoId;
         private boolean paused;
-        private long position;
+        private long position = -1;
+        private List<String> queue;
         TestDescriptor(String videoId) { this.videoId = videoId; }
         @Override public String patch_sessionVideoId() { return videoId; }
         @Override public void patch_startSessionPaused() { paused = true; }
         @Override public void patch_setSessionPosition(long value) { position = value; }
         @Override public PlaybackSessionPatch.Descriptor patch_newSessionQueue(List<String> videoIds) {
-            throw new AssertionError("This session has no queue");
+            queue = List.copyOf(videoIds);
+            return this;
         }
     }
 

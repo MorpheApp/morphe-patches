@@ -18,7 +18,6 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -128,7 +127,7 @@ public final class RememberLiveStreamPositionPatch {
             restorePending = false;
             newVideoGeneration++;
 
-            if (!Settings.REMEMBER_LIVE_STREAM_POSITION.get() || PlaybackSessionPatch.handlesLiveRestore()) {
+            if (!Settings.REMEMBER_LIVE_STREAM_POSITION.get()) {
                 return;
             }
 

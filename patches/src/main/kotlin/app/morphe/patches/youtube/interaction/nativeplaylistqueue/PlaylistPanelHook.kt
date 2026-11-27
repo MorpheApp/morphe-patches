@@ -49,11 +49,12 @@ internal fun installPlaybackSessionPlaylistReader() {
             """
         )
     }
-    constructor.method.apply {
-        findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-            addInstruction(index, "invoke-static/range {p0 .. p0}, $SESSION->attachPlaylist($SESSION_PLAYLIST_READER)V")
-        }
-    }
+    val storedModel = accept.instructionMatches.last()
+    val controller = storedModel.getInstruction<TwoRegisterInstruction>().registerB
+    accept.method.addInstruction(
+        storedModel.index + 1,
+        "invoke-static/range {v$controller .. v$controller}, $SESSION->attachPlaylist($SESSION_PLAYLIST_READER)V",
+    )
 }
 
 // The native model factory initializes queueMode to 1 before accepting a watch response.

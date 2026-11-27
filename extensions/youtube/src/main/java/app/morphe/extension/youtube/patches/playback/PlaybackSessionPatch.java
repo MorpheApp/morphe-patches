@@ -32,7 +32,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -173,7 +172,6 @@ public final class PlaybackSessionPatch {
     private static volatile boolean keepMiniplayerControls;
     @Nullable private static volatile PlaybackSessionSnapshot restoringCaptions;
     @Nullable private static volatile String restoredShort;
-    @Nullable private static String restoredLive;
     private static boolean initialized;
     private static boolean checkingStartup;
     private static boolean miniplayerTouchReleased;
@@ -235,7 +233,13 @@ public final class PlaybackSessionPatch {
     }
 
     public static void attachPlaylist(PlaylistReader reader) {
-        if (enabled()) playlist = new WeakReference<>(reader);
+        if (!enabled()) return;
+        PlaylistReader previous = playlist.get();
+        String playing = VideoInformation.getVideoId();
+        if (previous == null || playing.equals(reader.patch_sessionPlaylistVideoId())
+                || !playing.equals(previous.patch_sessionPlaylistVideoId())) {
+            playlist = new WeakReference<>(reader);
+        }
     }
 
     public static void attachCaptions(CaptionSource source) {
@@ -343,6 +347,11 @@ public final class PlaybackSessionPatch {
                     && playlistId.equals(Settings.QUEUE_PLAYLIST_ID.get());
             var queue = usesKeptQueue || kind == PlaybackSessionSnapshot.Kind.SHORT
                     ? null : captureQueue(videoId, playlistId);
+            if (queue == null && !usesKeptQueue && sameSavedVideo && !playlistId.isEmpty()
+                    && playlistId.equals(saved.playlistId())) {
+                // The panel may already be detached when the activity stops.
+                queue = saved.queue();
+            }
             CaptionSource captionSource = captions.get();
             Boolean captionsEnabled = sameSavedVideo ? saved.captionsEnabled() : null;
             if (captionSource != null && videoId.equals(captionSource.patch_sessionCaptionVideoId())
@@ -367,19 +376,7 @@ public final class PlaybackSessionPatch {
             Panel panel = Panel.parseFrom(message.toByteArray());
             if (!playlistId.isEmpty() && !panel.getPlaylistId().isEmpty()
                     && !playlistId.equals(panel.getPlaylistId())) return null;
-            List<String> videoIds = new ArrayList<>();
-            int selectedIndex = -1;
-            for (var item : panel.getItemsList()) {
-                if (!item.hasVideo()) continue;
-                var video = item.getVideo();
-                if (video.hasUnplayableText() || !VideoInformation.isVideoId(video.getVideoId())) continue;
-                if (video.getSelected()) {
-                    if (selectedIndex >= 0 || !videoId.equals(video.getVideoId())) return null;
-                    selectedIndex = videoIds.size();
-                }
-                videoIds.add(video.getVideoId());
-            }
-            return selectedIndex < 0 ? null : new PlaybackSessionSnapshot.Queue(videoIds, selectedIndex, null);
+            return PlaybackSessionSnapshot.Queue.fromPanel(panel, videoId);
         } catch (Exception ex) {
             Logger.printException(() -> "Could not capture the active playlist", ex);
             return null;
@@ -421,10 +418,6 @@ public final class PlaybackSessionPatch {
             Logger.printException(() -> "Could not check native playback resume", ex);
             return false;
         }
-    }
-
-    public static boolean handlesLiveRestore() {
-        return enabled() && restoredLive != null;
     }
 
     public static boolean isShortAwaitingPlay() {
@@ -583,10 +576,12 @@ public final class PlaybackSessionPatch {
                     Boolean live = LiveStatusRequest.fetch(snapshot.videoId());
                     Utils.runOnMainThread(() -> {
                         if (activity != owner.get() || restoring != request) return;
-                        if (Boolean.TRUE.equals(live)) start(activity, router, request);
-                        else {
+                        if (Boolean.FALSE.equals(live)) {
                             cancelStartup();
-                            if (Boolean.FALSE.equals(live)) update(null);
+                            update(null);
+                        } else {
+                            // The signed-in app can still open a stream when the status request fails.
+                            start(activity, router, request);
                         }
                     });
                 });
@@ -703,11 +698,10 @@ public final class PlaybackSessionPatch {
             descriptor = descriptor.patch_newSessionQueue(snapshot.queue().upcoming());
         }
         descriptor.patch_startSessionPaused();
-        if (snapshot.kind() != PlaybackSessionSnapshot.Kind.LIVE
-                || Settings.REMEMBER_LIVE_STREAM_POSITION.get()) {
+        // Let Remember live stream playback position apply its own setting and DVR checks.
+        if (snapshot.kind() != PlaybackSessionSnapshot.Kind.LIVE) {
             descriptor.patch_setSessionPosition(snapshot.positionMilliseconds());
         }
-        if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) restoredLive = snapshot.videoId();
         restoredWatch = new RestoredWatch(snapshot.videoId());
         keepMiniplayerControls = true;
         restoringCaptions = snapshot;
@@ -791,7 +785,6 @@ public final class PlaybackSessionPatch {
         startupWaitReason = null;
         restoring = null;
         restoringCaptions = null;
-        restoredLive = null;
         restoredShort = null;
         clearRestoredWatch();
     }
