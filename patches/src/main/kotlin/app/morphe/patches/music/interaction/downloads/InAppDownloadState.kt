@@ -7,261 +7,145 @@
 
 package app.morphe.patches.music.interaction.downloads
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.classDefBy
-import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.layout.hide.flyoutmenu.MenuItemFingerprint
 import app.morphe.patches.music.layout.hide.flyoutmenu.MenuItemIconFingerprint
 import app.morphe.patches.shared.TextComponentLookupFingerprint
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val STATE = "Lapp/morphe/extension/music/patches/downloads/InAppDownloadState"
-private const val RESOLVER = "$STATE\$Resolver;"
-private const val CONTROLLER = "$STATE\$Controller;"
-private const val SAVE_CALLBACK = "$STATE\$SaveCallback;"
-private const val STRING = "Ljava/lang/String;"
-private const val OBJECT = "Ljava/lang/Object;"
-private const val LIST = "Ljava/util/List;"
-private const val FUTURE = "Lcom/google/common/util/concurrent/ListenableFuture;"
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/music/patches/downloads/InAppDownloadState;"
+private const val ENDPOINT_RESOLVER =
+    "Lapp/morphe/extension/music/patches/downloads/InAppDownloadState\$EndpointResolver;"
+private const val TRACK_STORE =
+    "Lapp/morphe/extension/music/patches/downloads/InAppDownloadState\$TrackStore;"
+private const val ALREADY_SAVED_CALLBACK =
+    "Lapp/morphe/extension/music/patches/downloads/InAppDownloadState\$AlreadySavedCallback;"
 
-private object AlreadySavedFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf(OBJECT),
-    strings = listOf("PPSV"),
-    filters = listOf(resourceLiteral(ResourceType.STRING, "video_already_added_to_offline")),
-)
-
-private fun Method.calls() = implementation!!.instructions.mapNotNull { it.getReference<MethodReference>() }
-
+/**
+ * Shows the downloaded songs in their menus, and asks to remove the download
+ * when the download button of a downloaded song is tapped.
+ */
 internal fun hookInAppDownloadState() {
-    val resolver = MusicOfflineVideoEndpointFingerprint
-    val save = resolver.instructionMatches.first()
-    val remove = resolver.method.calls().distinct().single {
-        it.definingClass == save.methodReference.definingClass &&
-            it.parameterTypes == listOf(STRING) && it.returnType == "V"
-    }
-    val alreadySaved = AlreadySavedFingerprint
-    val controllerField = alreadySaved.classDef.instanceFields.single {
-        it.type == remove.definingClass || classDefByOrNull(it.type)?.interfaces?.contains(remove.definingClass) == true
-    }
-    val videoIdField = alreadySaved.classDef.instanceFields.single { it.type == STRING }
-    val controller = mutableClassDefBy(controllerField.type)
-    val promptRemoval = controller.methods.single { it.name == remove.name && it.parameterTypes == remove.parameterTypes }
+    // The resolver of the offline video endpoint is created when a download is first tapped.
+    MusicOfflineVideoEndpointFingerprint.let {
+        val resolveMethod = it.method
+        val commandType = resolveMethod.parameterTypes.first().toString()
 
-    // Read the same current-account playlist snapshot used by the app's removal action.
-    val read = promptRemoval.calls().single { it.parameterTypes == listOf(STRING) && it.returnType == FUTURE }
-    val databaseField = promptRemoval.implementation!!.instructions.mapNotNull { it.getReference<FieldReference>() }
-        .distinct().single { it.type == read.definingClass }
-    val playlistKey = promptRemoval.calls().single { it.parameterTypes.isEmpty() && it.returnType == STRING }
-    val removalCallback = promptRemoval.calls().single {
-        it.name == "<init>" && it.parameterTypes == listOf(controller.type, STRING)
-    }
-    val onOfflinePlaylistsLoaded = classDefBy(removalCallback.definingClass).virtualMethods.single {
-        it.parameterTypes == listOf(OBJECT) && it.returnType == "V"
-    }
-    val calls = onOfflinePlaylistsLoaded.calls()
-    val optionalGet = calls.single { it.name == "get" && it.parameterTypes.isEmpty() && it.returnType == OBJECT }
-    val optionalIsPresent = calls.single { it.definingClass == optionalGet.definingClass && it.name == "isPresent" }
-    val trackKey = calls.distinct().single { it.parameterTypes == listOf(STRING) && it.returnType == STRING }
-    val songLists = calls.filter { it.parameterTypes.isEmpty() && it.returnType == LIST }
-    check(songLists.size == 3 && songLists.map { it.definingClass }.distinct().size == 1) {
-        "Unexpected YouTube Music offline song lists"
-    }
-    val containsTrack = songLists.joinToString("\n") { getter ->
-        """
-            invoke-virtual { v0 }, $getter
-            move-result-object v2
-            invoke-interface { v2, v1 }, $LIST->contains(Ljava/lang/Object;)Z
-            move-result v2
-            if-nez v2, :found
-        """.trimIndent()
-    }
-    controller.addPatchInterface(CONTROLLER, "patch_readDownloadedSongs", """
-        iget-object v0, p0, $databaseField
-        invoke-static { }, $playlistKey
-        move-result-object v1
-        invoke-interface { v0, v1 }, $read
-        move-result-object v0
-        return-object v0
-    """)
-    controller.addPatchInterface(CONTROLLER, "patch_containsDownloadedSong", """
-        if-eqz p1, :absent
-        check-cast p1, ${optionalGet.definingClass}
-        invoke-virtual { p1 }, $optionalIsPresent
-        move-result v0
-        if-eqz v0, :absent
-        invoke-virtual { p1 }, $optionalGet
-        move-result-object v0
-        check-cast v0, ${songLists.first().definingClass}
-        invoke-static { p2 }, $trackKey
-        move-result-object v1
-        $containsTrack
-        :absent
-        const/4 v0, 0x0
-        return v0
-        :found
-        const/4 v0, 0x1
-        return v0
-    """)
-    controller.addPatchInterface(CONTROLLER, "patch_promptRemoval", promptRemoval)
-
-    // Playlist membership also includes queued transfers. Use the same per-track state as
-    // the save controller to distinguish completed downloads.
-    val saveMethod = controller.methods.single {
-        it.name == save.methodReference.name && it.parameterTypes == save.methodReference.parameterTypes
-    }
-    val readTrack = saveMethod.calls().single {
-        it.parameterTypes == listOf(STRING) && it.returnType == FUTURE && it != read
-    }
-    val trackRepositoryField = saveMethod.implementation!!.instructions.mapNotNull { it.getReference<FieldReference>() }
-        .distinct().single { it.type == readTrack.definingClass }
-    val trackRepository = classDefBy(readTrack.definingClass)
-    val offlineChecks = alreadySaved.method.calls().distinct().filter {
-        it.definingClass == trackRepository.type && it.returnType == "Z"
-    }
-    val offlineEligibility = offlineChecks.single { it.parameterTypes.size == 1 }
-    val trackState = offlineEligibility.parameterTypes.single().toString()
-    // Use the native completion predicate that precedes the downloaded notification.
-    val downloadComplete = Fingerprint(
-        parameters = listOf(trackState),
-        returnType = "V",
-        filters = listOf(
-            methodCall(smali = offlineEligibility.toString()),
-            methodCall(
-                definingClass = trackRepository.type,
-                parameters = listOf(trackState),
-                returnType = "Z",
-                location = MatchAfterWithin(5),
-            ),
-            resourceLiteral(ResourceType.STRING, "notification_offline_video_completed"),
-        ),
-    ).instructionMatches[1].methodReference
-
-    controller.addPatchInterface(CONTROLLER, "patch_readTrackState", """
-        iget-object v0, p0, $trackRepositoryField
-        invoke-virtual { v0, p1 }, $readTrack
-        move-result-object v0
-        return-object v0
-    """)
-    controller.addPatchInterface(CONTROLLER, "patch_isTrackDownloadComplete", """
-        if-eqz p1, :pending
-        check-cast p1, $trackState
-        iget-object v0, p0, $trackRepositoryField
-        invoke-virtual { v0, p1 }, $downloadComplete
-        move-result v0
-        return v0
-        :pending
-        const/4 v0, 0x0
-        return v0
-    """)
-
-    // Use the command resolver's provider so a menu can check the store before the first download tap.
-    val provider = Fingerprint(
-        filters = listOf(
-            fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = resolver.classDef.type),
-            methodCall(
-                opcodes = listOf(Opcode.INVOKE_INTERFACE, Opcode.INVOKE_VIRTUAL),
-                parameters = emptyList(),
-                returnType = OBJECT,
-                location = MatchAfterImmediately(),
-            ),
-            opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-            checkCast(remove.definingClass, location = MatchAfterImmediately()),
-        ),
-    ).match(resolver.method, resolver.classDef).instructionMatches
-    val providerField = provider.first().fieldReference
-    val getController = provider[1]
-    val invokeProvider = if (getController.instruction.opcode == Opcode.INVOKE_INTERFACE) {
-        "invoke-interface"
-    } else {
-        "invoke-virtual"
-    }
-    resolver.classDef.addPatchInterface(RESOLVER, "patch_downloadController", """
-        iget-object v0, p0, $providerField
-        $invokeProvider { v0 }, ${getController.methodReference}
-        move-result-object v0
-        check-cast v0, $CONTROLLER
-        return-object v0
-    """)
-    // Reading directMethods here would cache the list before the offlineability helper is added.
-    resolver.classDef.methods.filter { it.name == "<init>" }.forEach { constructor ->
-        constructor.addInstruction(
-            constructor.implementation!!.instructions.count() - 1,
-            "invoke-static/range { p0 .. p0 }, $STATE;->setResolver($RESOLVER)V",
+        it.classDef.addPatchInterface(
+            ENDPOINT_RESOLVER,
+            "patch_resolveCommand",
+            """
+                sget-object v0, ${protoDefaultInstance(commandType)}
+                invoke-static { }, $GET_GENERATED_REGISTRY
+                move-result-object v1
+                invoke-static { v0, p1, v1 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                move-result-object v0
+                check-cast v0, $commandType
+                new-instance v1, Ljava/util/HashMap;
+                invoke-direct { v1 }, Ljava/util/HashMap;-><init>()V
+                invoke-virtual { p0, v0, v1 }, $resolveMethod
+                return-void
+            """
         )
     }
 
-    alreadySaved.classDef.addPatchInterface(SAVE_CALLBACK, "patch_videoId", videoIdField)
-    alreadySaved.classDef.addPatchInterface(SAVE_CALLBACK, "patch_downloadController", """
-        iget-object v0, p0, $controllerField
-        check-cast v0, $CONTROLLER
-        return-object v0
-    """)
-    val toast = alreadySaved.instructionMatches.single()
-    val toastRegister = (toast.instruction as OneRegisterInstruction).registerA
-    alreadySaved.method.cloneParameters().apply {
-        addInstructionsAtControlFlowLabel(
-            toast.index + numberOfParameterRegistersLogical,
+    MusicOfflineVideoEndpointConstructorFingerprint.let {
+        it.method.addInstruction(
+            it.instructionMatches.first().index,
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setEndpointResolver($ENDPOINT_RESOLVER)V"
+        )
+    }
+
+    MusicSaveTrackFingerprint.let {
+        val trackStoreClass = mutableClassDefBy(it.instructionMatches.first().fieldReference!!.type)
+
+        MusicTrackStoreConstructorFingerprint.match(trackStoreClass).let { constructor ->
+            constructor.method.addInstruction(
+                constructor.instructionMatches.first().index,
+                "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setTrackStore($TRACK_STORE)V"
+            )
+        }
+
+        trackStoreClass.addPatchInterface(
+            TRACK_STORE,
+            "patch_readTrackState",
+            it.instructionMatches[1].methodReference!!
+        )
+        trackStoreClass.addPatchInterface(
+            TRACK_STORE,
+            "patch_isDownloadComplete",
+            MusicDownloadCompletedNotificationFingerprint.instructionMatches[1].methodReference!!
+        )
+    }
+
+    // Ask to remove the download instead of showing "Video already saved".
+    MusicVideoAlreadySavedFingerprint.let {
+        it.classDef.addPatchInterface(
+            ALREADY_SAVED_CALLBACK,
+            "patch_getVideoId",
+            it.instructionMatches.last().fieldReference!!
+        )
+
+        val toastIndex = it.instructionMatches.first().index
+        val freeRegister = it.method.getInstruction<OneRegisterInstruction>(toastIndex).registerA
+        it.method.cloneParameters().addInstructionsAtControlFlowLabel(
+            toastIndex + it.method.numberOfParameterRegistersLogical,
             """
-                invoke-static/range { p0 .. p1 }, $STATE;->onAlreadySaved($SAVE_CALLBACK$OBJECT)Z
-                move-result v$toastRegister
-                if-eqz v$toastRegister, :show_toast
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onAlreadySaved($ALREADY_SAVED_CALLBACK)Z
+                move-result v$freeRegister
+                if-eqz v$freeRegister, :show_toast
                 return-void
                 :show_toast
                 nop
-            """,
+            """
         )
     }
 
-    // The native bottom sheet binds real TextViews and bypasses Litho text hooks.
-    MenuItemIconFingerprint.let { fingerprint ->
-        fingerprint.clearMatch()
-        val textSet = fingerprint.instructionMatches.first()
-        val textView = textSet.instruction.registersUsed.first()
-        fingerprint.method.addInstruction(
-            textSet.index + 1,
-            "invoke-static/range { v$textView .. v$textView }, $STATE;->onNativeDownloadLabelBound(Landroid/widget/TextView;)V",
+    // Native menus, such as the menus of the downloads list, bind their labels to text views.
+    MenuItemIconFingerprint.let {
+        // Another patch can have changed the method.
+        it.clearMatch()
+        val setText = it.instructionMatches.first()
+        val textViewRegister = setText.instruction.registersUsed.first()
+
+        it.method.addInstruction(
+            setText.index + 1,
+            "invoke-static/range { v$textViewRegister .. v$textViewRegister }, " +
+                    "$EXTENSION_CLASS->onNativeMenuLabelBound(Landroid/widget/TextView;)V"
         )
-        fingerprint.clearMatch()
+
+        // Before 9.44 this is the same method as the menu item, so its match is outdated too.
+        it.clearMatch()
         MenuItemFingerprint.clearMatch()
     }
 
+    // Litho menus reuse the labels they cached, so the label is updated when it's bound.
     TextComponentLookupFingerprint.method.apply {
-        // Music's text component consumes cached spans without keeping a conversion context.
-        val bindText = indexOfFirstInstructionOrThrow(
+        val setTextIndex = indexOfFirstInstructionOrThrow(
             0,
             fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/CharSequence;")
         )
-        val text = getInstruction<TwoRegisterInstruction>(bindText).registerA
+        val textRegister = getInstruction<TwoRegisterInstruction>(setTextIndex).registerA
+
         addInstructionsAtControlFlowLabel(
-            bindText,
+            setTextIndex,
             """
-                invoke-static/range { v$text .. v$text }, $STATE;->resolveLithoMenuLabel(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                move-result-object v$text
-            """,
+                invoke-static/range { v$textRegister .. v$textRegister }, $EXTENSION_CLASS->onLithoMenuLabelBound(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                move-result-object v$textRegister
+            """
         )
     }
 }

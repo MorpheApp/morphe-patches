@@ -73,13 +73,13 @@ private const val PLAYLIST_PAGE_FILTER =
     "Lapp/morphe/extension/music/patches/components/PlaylistPageFilter;"
 private const val EXPORT_MENU_ITEM =
     "Lapp/morphe/extension/music/patches/downloads/ExportMenuItem;"
-private const val GET_GENERATED_REGISTRY =
+internal const val GET_GENERATED_REGISTRY =
     "Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;"
 
 /**
  * @return The default instance field of a proto message, which the message is parsed with.
  */
-private fun protoDefaultInstance(messageType: String) =
+internal fun protoDefaultInstance(messageType: String) =
     protoDefaultInstanceFingerprint(messageType).instructionMatches.first().fieldReference
 
 private val downloadsResourcePatch = patch {
@@ -128,9 +128,7 @@ val downloadsPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        hookInAppDownloadState()
-
-        // Captures player text and marks Litho menu labels before they are cached.
+        // Captures the localized download button label, and marks the Download labels of menus.
         hookSpannableStringResult(EXTENSION_CLASS)
 
         // Finds the song of a menu, for the menu Download of accounts offered Premium.
@@ -481,5 +479,8 @@ val downloadsPatch = patch(
         }
 
         // endregion
+
+        // The resolver of the offline video endpoint has all its methods added by now.
+        hookInAppDownloadState()
     }
 }

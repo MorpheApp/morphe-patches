@@ -36,6 +36,8 @@ message OfflineVideoEndpoint {
 enum OfflineVideoAction {
     OFFLINE_VIDEO_ACTION_UNKNOWN = 0;
     OFFLINE_VIDEO_ACTION_ADD = 1;
+    // Asks to remove the saved video.
+    OFFLINE_VIDEO_ACTION_REMOVE = 2;
 }
 
 message OfflinePlaylistEndpoint {

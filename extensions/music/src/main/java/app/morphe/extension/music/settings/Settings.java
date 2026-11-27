@@ -42,9 +42,6 @@ import app.morphe.extension.shared.spoof.ClientType;
 @SuppressWarnings("unused")
 public class Settings extends SharedYouTubeSettings {
 
-    public static final BooleanSetting SYNC_IN_APP_DOWNLOADS = new BooleanSetting(
-            "morphe_music_sync_in_app_downloads", TRUE, DOWNLOAD_MODE.availability(DownloadMode.IN_APP));
-
     // Ads
     public static final BooleanSetting HIDE_GET_PREMIUM_LABEL = new BooleanSetting("morphe_music_hide_get_premium_label", TRUE, true);
     public static final BooleanSetting HIDE_MUSIC_PREMIUM_PROMOTIONS = new BooleanSetting("morphe_music_hide_music_premium_promotions", TRUE, true);
@@ -333,6 +330,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting CROSSFADE_ON_SKIP = new BooleanSetting("morphe_music_crossfade_on_skip", TRUE, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
     public static final BooleanSetting CROSSFADE_ON_AUTO_ADVANCE = new BooleanSetting("morphe_music_crossfade_on_auto_advance", TRUE, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
     public static final BooleanSetting CROSSFADE_SESSION_CONTROL = new BooleanSetting("morphe_music_crossfade_session_control", TRUE, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
+
+    // Downloads
+    public static final BooleanSetting SYNC_IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_sync_in_app_downloads", TRUE, DOWNLOAD_MODE.availability(DownloadMode.IN_APP));
 
     // Flyout menu
     public static final BooleanSetting HIDE_FLYOUT_MENU_3_COLUMN_COMPONENT = new BooleanSetting("morphe_music_hide_flyout_menu_3_column_component", FALSE);

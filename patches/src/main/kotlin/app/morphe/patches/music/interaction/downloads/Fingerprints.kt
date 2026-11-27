@@ -180,3 +180,89 @@ internal object MusicDownloadStreamPairFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Constructor of the resolver of the offline video endpoint.
+ */
+internal object MusicOfflineVideoEndpointConstructorFingerprint : Fingerprint(
+    classFingerprint = MusicOfflineVideoEndpointFingerprint,
+    name = "<init>",
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
+)
+
+/**
+ * Download controller of songs and videos.
+ */
+internal object MusicTrackActionsControllerFingerprint : Fingerprint(
+    name = "<clinit>",
+    strings = listOf(
+        "com/google/android/apps/youtube/music/offline/actionscontroller/MusicOfflineTrackEntityActionsController"
+    )
+)
+
+/**
+ * Saves a song or video, after reading if it's already saved.
+ */
+internal object MusicSaveTrackFingerprint : Fingerprint(
+    classFingerprint = MusicTrackActionsControllerFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;", "L", "L", "L"),
+    filters = listOf(
+        // Track store of the controller.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
+        // Reads the download state of the track.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("Ljava/lang/String;"),
+            returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Constructor of the track store, matched in the class of the track store field.
+ * The track store is created when the first list with download badges is shown.
+ */
+internal object MusicTrackStoreConstructorFingerprint : Fingerprint(
+    name = "<init>",
+    parameters = listOf("Landroid/content/Context;", "L", "L", "Ljava/util/concurrent/Executor;"),
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
+)
+
+/**
+ * Shows the notification of a song or video that finished downloading.
+ */
+internal object MusicDownloadCompletedNotificationFingerprint : Fingerprint(
+    filters = listOf(
+        // If the download failed.
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf("L"), returnType = "Z"),
+        // If the download is complete.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L"),
+            returnType = "Z",
+            location = MatchAfterWithin(5)
+        ),
+        resourceLiteral(ResourceType.STRING, "notification_offline_video_completed")
+    )
+)
+
+/**
+ * Shows "Video already saved" when a song or video that is already saved is saved again.
+ */
+internal object MusicVideoAlreadySavedFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    strings = listOf("PPSV"),
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "video_already_added_to_offline"),
+        // Video ID of the save.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = "Ljava/lang/String;")
+    )
+)

@@ -109,10 +109,12 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
+            // Items of song menus.
             if (InAppDownloadState.isMenuSyncEnabled()
-                    && (Utils.startsWith(path, "list_item.") || Utils.contains(path, "|list_item.")
+                    && (Utils.startsWith(path, "list_item.")
+                    || Utils.contains(path, "|list_item.")
                     || Utils.contains(path, "tile_button_carousel."))) {
-                return InAppDownloadState.markLithoMenuLabel(original, downloadButtonLabel);
+                return InAppDownloadState.onLithoMenuTextLoaded(original, downloadButtonLabel);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
@@ -252,9 +254,13 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             final boolean hasUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered();
             final boolean syncMenu = InAppDownloadState.isMenuSyncEnabled();
             final boolean opensMenu = (hasUpsell || syncMenu) && MENU_COMMAND.check(commandBytes).isFiltered();
-            if (syncMenu && opensMenu) SongMenuFilter.prefetchDownloadStatus(commandBytes);
             final boolean premiumUpsell = hasUpsell && !opensMenu
                     && !offlineCommand.hasCommandExecutorContainer();
+
+            // Reads if the song of the menu is downloaded before the labels of the menu are created.
+            if (syncMenu && opensMenu) {
+                SongMenuFilter.readMenuDownloadState(commandBytes);
+            }
 
             // Menu Download of accounts offered Premium.
             if (insideDialog && premiumUpsell) {
@@ -342,8 +348,9 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                     if (useExternalDownloader(insideDialog)) {
                         return videoDownload(videoId, true);
                     }
+                    // Commands the app resolves itself have no sender view.
                     if (map != null && map.get(ELEMENTS_SENDER_VIEW) instanceof View) {
-                        InAppDownloadState.onDownloadRequested(videoId);
+                        InAppDownloadState.onDownloadTapped(videoId);
                     }
                 }
                 return null;
@@ -392,7 +399,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             return EMPTY_COMMAND;
         }
         if (isInAppDownloadMode()) {
-            InAppDownloadState.onDownloadRequested(videoId);
+            InAppDownloadState.onDownloadTapped(videoId);
             return saveVideoCommand(videoId, List.of()).toByteArray();
         }
         return null;

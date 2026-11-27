@@ -63,10 +63,14 @@ public final class SongMenuFilter extends Filter {
         return menuVideoId;
     }
 
-    /** Starts the download status lookup before the menu's Litho text is created. */
-    public static void prefetchDownloadStatus(byte[] menuCommand) {
+    /**
+     * Reads if the song of a menu is downloaded, from the command that opens the menu.
+     */
+    public static void readMenuDownloadState(byte[] menuCommand) {
         String videoId = findLikeButtonVideoId(menuCommand);
-        if (videoId != null) InAppDownloadState.onMenuHeader(videoId);
+        if (videoId != null) {
+            InAppDownloadState.onMenuHeader(videoId);
+        }
     }
 
     @Override
