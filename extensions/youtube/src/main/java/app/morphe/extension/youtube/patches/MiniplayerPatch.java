@@ -696,14 +696,31 @@ public final class MiniplayerPatch {
      */
     public static void hideMiniplayerActionButton(View view) {
         MinimalMiniplayerPatch.setModernOverlayButton(view);
-        if (!MINIMAL_BAR_SELECTED && PlaybackSessionPatch.isPatchIncluded()
-                && Settings.MINIPLAYER_RESTORE_SESSION.get()) {
+        if (showRestoredMiniplayerActionButton()) {
             RestoredMiniplayerControls.bind(view);
         }
 
         if (CURRENT_TYPE == MODERN_4) {
             Utils.hideViewByRemovingFromParentUnderCondition(HIDE_OVERLAY_BUTTONS_ENABLED, view);
         }
+    }
+
+    /** Injection point for the freshly inflated floating miniplayer overlay. */
+    public static void bindRestoredMiniplayerOverlay(View overlay) {
+        if (!showRestoredMiniplayerActionButton()) return;
+
+        try {
+            int actionId = ResourceUtils.getIdIdentifier("modern_miniplayer_overlay_action_button");
+            View action = actionId == 0 ? null : overlay.findViewById(actionId);
+            if (action != null) RestoredMiniplayerControls.bind(action);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not bind the restored miniplayer action button", ex);
+        }
+    }
+
+    private static boolean showRestoredMiniplayerActionButton() {
+        return !MINIMAL_BAR_SELECTED && !(CURRENT_TYPE == MODERN_4 && HIDE_OVERLAY_BUTTONS_ENABLED)
+                && PlaybackSessionPatch.isPatchIncluded() && Settings.MINIPLAYER_RESTORE_SESSION.get();
     }
 
     /**

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/issues/4863
+ * https://github.com/MorpheApp/morphe-patches/pull/5436
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -30,6 +29,7 @@ import app.morphe.patches.youtube.video.series.resolveNativeAccountContract
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.util.logging.Logger
 
 private const val SESSION = "Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch;"
@@ -136,6 +136,16 @@ internal fun installPlaybackSessionHooks(): Boolean {
         0,
         "invoke-static/range {p0 .. p0}, $SESSION->observeWatchPlayer(Landroid/view/View;)V"
     )
+    // The action button getter can first run on touch, even when the overlay has been inflated.
+    MiniplayerModernOverlayInflationFingerprint.matchOrNull()?.let { overlay ->
+        val inflated = overlay.instructionMatches.last()
+        val register = inflated.getInstruction<OneRegisterInstruction>().registerA
+        overlay.method.addInstruction(
+            inflated.index + 1,
+            "invoke-static/range {v$register .. v$register}, " +
+                    "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;->bindRestoredMiniplayerOverlay(Landroid/view/View;)V"
+        )
+    }
     hookPlaybackStartDescriptor(SESSION, "prepareWatchDescriptor", "prepareShortsDescriptor")
     hookUserMiniplayerDismissal(
         "$SESSION->onMiniplayerDismissed()V",

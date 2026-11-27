@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/issues/4863
+ * https://github.com/MorpheApp/morphe-patches/pull/5436
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.layout.miniplayer
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode

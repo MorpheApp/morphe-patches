@@ -366,6 +366,22 @@ internal object MiniplayerModernActionButtonFingerprint : Fingerprint(
     )
 )
 
+internal object MiniplayerModernOverlayInflationFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "modern_miniplayer_controls_overlay"),
+        methodCall(
+            definingClass = "Landroid/view/LayoutInflater;",
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+            location = MatchAfterWithin(6)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
+    )
+)
+
 internal object MiniplayerMinimumSizeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
