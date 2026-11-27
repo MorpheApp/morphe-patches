@@ -541,3 +541,38 @@ internal object BottomNavButtonFingerprint : Fingerprint(
         string("bottom_nav_button")
     )
 )
+
+internal object NestedListTrackerFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/feeds/ui/composables/NestedListTrackerKt$NestedListTracker$1$1;",
+    name = "invokeSuspend",
+    filters = listOf(
+        opcode(Opcode.NEW_INSTANCE),
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        methodCall(
+            name = "<init>",
+            parameters = listOf("Landroidx/compose/foundation/lazy/", "I"),
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            parameters = listOf("Lkotlin/jvm/functions/Function0;"),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object MutableStateOfFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/runtime/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    parameters = listOf("Ljava/lang/Object;"),
+    returnType = "L",
+    filters = listOf(
+        newInstance("Landroidx/compose/runtime/ParcelableSnapshotMutableState;")
+    )
+)
+
+internal object NewMutableStateFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/utils/ComposeUtils;",
+    name = "newMutableState",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;")
+)
