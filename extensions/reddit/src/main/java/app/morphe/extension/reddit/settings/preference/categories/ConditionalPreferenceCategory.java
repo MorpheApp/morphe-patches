@@ -18,19 +18,26 @@ import android.preference.PreferenceScreen;
 import android.view.View;
 import android.view.ViewGroup;
 
-import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
+import androidx.annotation.Nullable;
 
 import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
 
 @SuppressWarnings("deprecation")
 public abstract class ConditionalPreferenceCategory extends PreferenceCategory {
+    /**
+     * Page that holds this category with the modern style, otherwise null.
+     * Categories cannot be added to a category, so titled sections go on the page.
+     */
+    @Nullable
+    protected PreferenceScreen page;
+
     public ConditionalPreferenceCategory(Context context, PreferenceScreen screen,
                                          String pageKey, String titleKey, String summaryKey) {
         super(context);
 
         if (getSettingsStatus()) {
             if (RedditSettingsStyle.isModernStyle()) {
-                PreferenceScreen page = RedditSettingsStyle.createSubPage(
+                page = RedditSettingsStyle.createSubPage(
                         screen.getPreferenceManager(),
                         context,
                         pageKey,

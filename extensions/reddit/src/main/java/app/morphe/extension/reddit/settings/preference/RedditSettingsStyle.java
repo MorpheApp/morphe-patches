@@ -627,7 +627,7 @@ public final class RedditSettingsStyle {
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = adapter.getView(position, convertView, parent);
             try {
-                styleRow(view, adapter.getItem(position), position);
+                styleRow(view, adapter.getItem(position), isFirstVisibleRow(adapter, position));
             } catch (Exception ex) {
                 Logger.printException(() -> "styleRow failure", ex);
             }
@@ -695,12 +695,25 @@ public final class RedditSettingsStyle {
 
     // region Rows.
 
-    private static void styleRow(View view, Object item, int position) {
+    /**
+     * @return If only untitled categories, which show nothing, are above the row.
+     */
+    private static boolean isFirstVisibleRow(ListAdapter adapter, int position) {
+        for (int i = 0; i < position; i++) {
+            if (!(adapter.getItem(i) instanceof PreferenceCategory category)
+                    || category.getTitle() != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void styleRow(View view, Object item, boolean isFirst) {
         TextView title = view.findViewById(android.R.id.title);
         if (title == null) return;
 
         if (item instanceof PreferenceCategory) {
-            styleSectionHeader(view, title, position == 0);
+            styleSectionHeader(view, title, isFirst);
             return;
         }
 
