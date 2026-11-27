@@ -24,6 +24,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import com.reddit.launch.bottomnav.BottomNavScreen;
+import com.reddit.screen.ComposeBottomSheetScreen;
 
 import java.util.List;
 
@@ -539,6 +540,8 @@ public final class GlassNavigationBarPatch {
         try {
             if (screen instanceof BottomNavScreen) {
                 GlassNavigationBarSearchButton.onBottomNavAttached(view);
+            } else if (screen instanceof ComposeBottomSheetScreen) {
+                GlassNavigationBarSearchButton.onBottomSheetAttached(screen);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onScreenAttached failure", ex);
@@ -556,6 +559,8 @@ public final class GlassNavigationBarPatch {
         try {
             if (screen instanceof BottomNavScreen) {
                 GlassNavigationBarSearchButton.onBottomNavDetached();
+            } else if (screen instanceof ComposeBottomSheetScreen) {
+                GlassNavigationBarSearchButton.onBottomSheetDetached(screen);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onScreenDetached failure", ex);
