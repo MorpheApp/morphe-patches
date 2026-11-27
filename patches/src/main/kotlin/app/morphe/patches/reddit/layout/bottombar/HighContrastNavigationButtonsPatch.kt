@@ -7,12 +7,14 @@
 
 package app.morphe.patches.reddit.layout.bottombar
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -29,31 +31,40 @@ val highContrastNavigationButtonsPatch = patch(
     dependsOn(settingsPatch)
 
     execute {
-        val matches = BottomNavButtonColorFingerprint.matchAll()
-        if (matches.isEmpty()) {
-            throw PatchException("BottomNavButtonColorFingerprint did not match any methods.")
-        }
+        /**
+         * Replaces the color moved by the move-result-wide instruction at [moveResultIndex].
+         */
+        fun MutableMethod.hookUnselectedColor(moveResultIndex: Int) {
+            val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-        val labelClass = BottomNavButtonLabelFingerprint.instructionMatches[1].methodReference.definingClass
-        val labelColorMatch = Fingerprint(
-            definingClass = labelClass,
-            name = "invoke",
-            returnType = "Ljava/lang/Object;",
-            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-            filters = unselectedButtonColorFilters
-        ).match()
-
-        (matches + labelColorMatch).forEach { match ->
-            val colorMatch = match.instructionMatches.last()
-            val register = (colorMatch.instruction as OneRegisterInstruction).registerA
-
-            match.method.addInstructions(
-                colorMatch.index + 1,
+            addInstructions(
+                moveResultIndex + 1,
                 """
                     invoke-static/range { v$register .. v${register + 1} }, $EXTENSION_CLASS->getUnselectedButtonColor(J)J
                     move-result-wide v$register
                 """
             )
+        }
+
+        val labelClasses = BottomNavButtonColorFingerprint.matchAll().map { match ->
+            val labelClass = match.instructionMatches[5].methodReference.definingClass
+            match.method.hookUnselectedColor(match.instructionMatches[4].index)
+            labelClass
+        }
+
+        // A label lambda class can be shared by both buttons, with the color chosen in a case of each.
+        labelClasses.distinct().forEach { labelClass ->
+            BottomNavButtonLabelFingerprint(labelClass).let {
+                val unselectedColorMethod = it.instructionMatches[2].methodReference
+
+                it.method.apply {
+                    findInstructionIndicesReversedOrThrow(
+                        methodCall(reference = unselectedColorMethod)
+                    ).forEach { index ->
+                        hookUnselectedColor(index + 1)
+                    }
+                }
+            }
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

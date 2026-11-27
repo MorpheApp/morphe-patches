@@ -21,6 +21,11 @@ public final class HighContrastNavigationButtonsPatch {
     private static final long WHITE = 0xFFFFFFFFL << 32;
 
     /**
+     * Unselected buttons are a lighter grey in dark mode and a darker grey in light mode.
+     */
+    private static final float DARK_MODE_MIN_LUMINANCE = 0.179f;
+
+    /**
      * @return If this patch was included during patching.
      */
     @SuppressWarnings("SameReturnValue")
@@ -31,7 +36,7 @@ public final class HighContrastNavigationButtonsPatch {
     /**
      * Injection point.
      *
-     * @param color Packed Compose sRGB color of an unselected button, with the ARGB color in the upper 32 bits.
+     * @param color Compose color of an unselected icon or label.
      * @return The high-contrast color, or the original color if disabled.
      */
     public static long getUnselectedButtonColor(long color) {
@@ -40,10 +45,11 @@ public final class HighContrastNavigationButtonsPatch {
         }
 
         try {
-            final boolean dark = GlassNavigationBarPatch.isPatchIncluded()
-                    && Settings.GLASS_NAVIGATION_BAR.get()
+            // Buttons on the glass bar must contrast with the glass, which can differ from the theme.
+            final boolean dark = GlassNavigationBarPatch.isPatchIncluded() && Settings.GLASS_NAVIGATION_BAR.get()
                     ? GlassNavigationBarPatch.isGlassDark()
-                    : Color.luminance((int) (color >>> 32)) > 0.179f;
+                    // A Compose color uses the same packed format as a color long.
+                    : Color.luminance(color) > DARK_MODE_MIN_LUMINANCE;
             return dark ? WHITE : BLACK;
         } catch (Exception ex) {
             Logger.printException(() -> "getUnselectedButtonColor failure", ex);
