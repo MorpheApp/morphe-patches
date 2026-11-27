@@ -19,6 +19,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.DisableBottomBarAutoHidePatch;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
+import app.morphe.extension.reddit.patches.SubredditCreateButtonPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
@@ -73,6 +74,12 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.HIDE_CREATE_BUTTON
             ));
+            if (SubredditCreateButtonPatch.isPatchIncluded()) {
+                addIndentedPreference(this, new BooleanSettingPreference(
+                        context,
+                        Settings.SUBREDDIT_CREATE_BUTTON
+                ));
+            }
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_DISCOVER_BUTTON

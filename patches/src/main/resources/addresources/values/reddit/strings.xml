@@ -77,6 +77,10 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_discover_button_title">Hide Discover or Communities button</string>
     <string name="morphe_hide_games_button_title">Hide Games button</string>
+    <string name="morphe_subreddit_create_button_title">Create button in communities</string>
+    <string name="morphe_subreddit_create_button_summary">Shows a button next to Search in each community that starts a post there</string>
+    <string name="morphe_subreddit_create_button_label">Create post</string>
+    <string name="morphe_subreddit_create_button_description">Create post in r/%s</string>
 
     <string name="morphe_screen_sidebar_title">Sidebar</string>
     <string name="morphe_sidebar_screen_summary">Shelves and buttons in the sidebar</string>
