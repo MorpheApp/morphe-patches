@@ -39,7 +39,7 @@ public final class SongMenuFilter extends Filter {
     @Nullable
     private static volatile String menuVideoId;
 
-    private final ByteArrayFilterGroup likeButton = new ByteArrayFilterGroup(
+    private static final ByteArrayFilterGroup LIKE_BUTTON = new ByteArrayFilterGroup(
             null,
             "like_toggle_button."
     );
@@ -61,6 +61,12 @@ public final class SongMenuFilter extends Filter {
     @Nullable
     public static String getMenuVideoId() {
         return menuVideoId;
+    }
+
+    /** Starts the download status lookup before the menu's Litho text is created. */
+    public static void prefetchDownloadStatus(byte[] menuCommand) {
+        String videoId = findLikeButtonVideoId(menuCommand);
+        if (videoId != null) InAppDownloadState.onMenuHeader(videoId);
     }
 
     @Override
@@ -96,8 +102,8 @@ public final class SongMenuFilter extends Filter {
      * @return The video ID of the like button, or null if the header has no like button.
      */
     @Nullable
-    private String findLikeButtonVideoId(byte[] buffer) {
-        FilterGroupResult result = likeButton.check(buffer);
+    private static String findLikeButtonVideoId(byte[] buffer) {
+        FilterGroupResult result = LIKE_BUTTON.check(buffer);
         if (!result.isFiltered()) return null;
 
         // The video ID is the first string field after the button name

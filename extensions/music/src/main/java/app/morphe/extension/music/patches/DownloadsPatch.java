@@ -109,10 +109,10 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
-            if (!flyoutMenuUsesExternalDownloader()
+            if (InAppDownloadState.isMenuSyncEnabled()
                     && (Utils.startsWith(path, "list_item.") || Utils.contains(path, "|list_item.")
                     || Utils.contains(path, "tile_button_carousel."))) {
-                return InAppDownloadState.menuLabel(original, downloadButtonLabel);
+                return InAppDownloadState.markLithoMenuLabel(original, downloadButtonLabel);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
@@ -249,8 +249,11 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
 
             // The app resolves each command of a list on its own. Only the upsell of the list
             // is replaced, so the other commands still run, such as the one that closes the menu.
-            final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()
-                    && !MENU_COMMAND.check(commandBytes).isFiltered()
+            final boolean hasUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered();
+            final boolean syncMenu = InAppDownloadState.isMenuSyncEnabled();
+            final boolean opensMenu = (hasUpsell || syncMenu) && MENU_COMMAND.check(commandBytes).isFiltered();
+            if (syncMenu && opensMenu) SongMenuFilter.prefetchDownloadStatus(commandBytes);
+            final boolean premiumUpsell = hasUpsell && !opensMenu
                     && !offlineCommand.hasCommandExecutorContainer();
 
             // Menu Download of accounts offered Premium.

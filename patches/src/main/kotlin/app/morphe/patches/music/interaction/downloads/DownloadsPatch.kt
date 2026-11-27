@@ -130,7 +130,7 @@ val downloadsPatch = patch(
     execute {
         hookInAppDownloadState()
 
-        // Captures the localized download button label from Litho text creation.
+        // Captures player text and marks Litho menu labels before they are cached.
         hookSpannableStringResult(EXTENSION_CLASS)
 
         // Finds the song of a menu, for the menu Download of accounts offered Premium.

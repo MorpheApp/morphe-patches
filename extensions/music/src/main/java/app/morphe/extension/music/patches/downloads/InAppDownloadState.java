@@ -12,6 +12,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -68,6 +69,7 @@ public final class InAppDownloadState {
         final String videoId;
         volatile long reuseUntil;
         volatile boolean downloaded;
+        volatile WeakReference<TextView> nativeLabel = new WeakReference<>(null);
 
         MenuState(String videoId, long reuseUntil) {
             this.videoId = videoId;
@@ -76,7 +78,7 @@ public final class InAppDownloadState {
 
         @Override
         public boolean isOutdated() {
-            return downloaded && this == menu && enabled();
+            return downloaded && this == menu && isMenuSyncEnabled();
         }
     }
 
@@ -84,6 +86,10 @@ public final class InAppDownloadState {
 
     private static boolean enabled() {
         return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP && Settings.SYNC_IN_APP_DOWNLOADS.get();
+    }
+
+    public static boolean isMenuSyncEnabled() {
+        return enabled() && !Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
     public static void setResolver(Resolver value) {
@@ -125,7 +131,7 @@ public final class InAppDownloadState {
     }
 
     public static void onMenuHeader(@Nullable String videoId) {
-        if (!enabled() || Settings.EXTERNAL_DOWNLOADER_MENU.get() || videoId == null) {
+        if (!isMenuSyncEnabled() || videoId == null) {
             menu = null;
             return;
         }
@@ -150,6 +156,9 @@ public final class InAppDownloadState {
                         // Litho may convert the menu header again while applying the new label.
                         current.reuseUntil = SystemClock.uptimeMillis() + SAME_MENU_RELAYOUT_MS;
                         current.downloaded = true;
+                        if (current.nativeLabel.get() != null) {
+                            Utils.runOnMainThreadNowOrLater(() -> updateNativeLabel(current));
+                        }
                         LithoRelayoutPatch.relayoutOutdatedTexts();
                     });
                 }
@@ -161,7 +170,7 @@ public final class InAppDownloadState {
 
     private static void onMenuStateRead(MenuState current, ListenableFuture<?> future, Consumer<Object> callback) {
         future.addListener(() -> {
-            if (menu != current || !enabled()) return;
+            if (menu != current || !isMenuSyncEnabled()) return;
             try {
                 callback.accept(future.get());
             } catch (InterruptedException ex) {
@@ -172,20 +181,71 @@ public final class InAppDownloadState {
         }, Runnable::run);
     }
 
-    public static CharSequence menuLabel(CharSequence original, String playerDownloadLabel) {
+    public static CharSequence markLithoMenuLabel(CharSequence original, String playerDownloadLabel) {
         MenuState current = menu;
-        if (current == null || !enabled()) return original;
+        if (current == null || !isMenuSyncEnabled()) return original;
 
-        if (!TextUtils.equals(original, playerDownloadLabel)
-                && !TextUtils.equals(original, ResourceUtils.getString("action_add_to_offline_songs"))) {
+        if (!TextUtils.equals(original, playerDownloadLabel) && !isDownloadLabel(original)) {
             return original;
         }
-        if (current.downloaded) {
-            String downloaded = ResourceUtils.getString("notification_offline_video_completed");
-            return new SpannableStringBuilder(original).replace(0, original.length(), downloaded);
+        return withPendingMenuSpan(original, current);
+    }
+
+    /** Called when Litho copies cached text into the menu row's layout. */
+    public static CharSequence resolveLithoMenuLabel(CharSequence original) {
+        try {
+            MenuState current = menu;
+            if (current == null || !isMenuSyncEnabled() || !(original instanceof Spanned spanned)) {
+                return original;
+            }
+            MenuState[] markers = spanned.getSpans(0, spanned.length(), MenuState.class);
+            if (markers.length == 0 || !current.videoId.equals(markers[0].videoId)) return original;
+            if (current.downloaded) {
+                SpannableStringBuilder downloaded = downloadedLabel(original);
+                for (MenuState marker : markers) downloaded.removeSpan(marker);
+                return downloaded;
+            }
+            return current == markers[0] ? original : withPendingMenuSpan(original, current);
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "Could not resolve the downloaded song label", ex);
+            return original;
         }
+    }
+
+    private static CharSequence withPendingMenuSpan(CharSequence original, MenuState current) {
         SpannableString pending = new SpannableString(original);
+        for (MenuState marker : pending.getSpans(0, pending.length(), MenuState.class)) {
+            pending.removeSpan(marker);
+        }
         pending.setSpan(current, 0, pending.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return pending;
+    }
+
+    public static void onNativeDownloadLabelBound(TextView view) {
+        try {
+            MenuState current = menu;
+            if (current == null || !isMenuSyncEnabled() || !isDownloadLabel(view.getText())) return;
+            current.nativeLabel = new WeakReference<>(view);
+            updateNativeLabel(current);
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "Could not bind the downloaded song label", ex);
+        }
+    }
+
+    private static void updateNativeLabel(MenuState current) {
+        if (menu != current || !current.downloaded || !isMenuSyncEnabled()) return;
+        TextView view = current.nativeLabel.get();
+        if (view != null && isDownloadLabel(view.getText())) {
+            view.setText(downloadedLabel(view.getText()));
+        }
+    }
+
+    private static boolean isDownloadLabel(CharSequence label) {
+        return TextUtils.equals(label, ResourceUtils.getString("action_add_to_offline_songs"));
+    }
+
+    private static SpannableStringBuilder downloadedLabel(CharSequence original) {
+        String downloaded = ResourceUtils.getString("notification_offline_video_completed");
+        return new SpannableStringBuilder(original).replace(0, original.length(), downloaded);
     }
 }

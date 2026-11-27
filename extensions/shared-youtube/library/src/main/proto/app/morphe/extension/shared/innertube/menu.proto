@@ -20,6 +20,7 @@ message MenuItem {
 // Also the items that the app adds to the player menu, such as Quality.
 message MenuServiceItemRenderer {
     optional MenuIcon icon = 2;
+    optional MenuCommand serviceEndpoint = 3;
 }
 
 message MenuNavigationItemRenderer {

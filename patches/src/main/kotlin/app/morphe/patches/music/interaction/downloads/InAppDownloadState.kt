@@ -9,8 +9,10 @@ package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -23,10 +25,16 @@ import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
+import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.music.layout.hide.flyoutmenu.MenuItemFingerprint
+import app.morphe.patches.music.layout.hide.flyoutmenu.MenuItemIconFingerprint
+import app.morphe.patches.shared.TextComponentLookupFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -136,19 +144,21 @@ internal fun hookInAppDownloadState() {
     }
     val offlineEligibility = offlineChecks.single { it.parameterTypes.size == 1 }
     val trackState = offlineEligibility.parameterTypes.single().toString()
-    val optionalType = optionalGet.definingClass
-    val trackStateGetters = trackRepository.methods.single { it.name == offlineEligibility.name }.calls()
-        .filter { it.definingClass == trackState && it.returnType == optionalType }
-    val (_, getTransfer, getProgress) = trackStateGetters.also { check(it.size == 3) }
-    val transferCheck = offlineChecks.single { it.parameterTypes == listOf(optionalType, optionalType) }
-    val getTransferState = trackRepository.methods.single { it.name == transferCheck.name }.calls().single {
-        it.definingClass == trackRepository.type && it.parameterTypes == listOf(optionalType)
-    }
-    val progressComplete = Fingerprint(
-        parameters = listOf(optionalType),
-        returnType = "Z",
-        filters = listOf(methodCall(name = "getStreamsProgress", returnType = LIST)),
-    ).match(trackRepository).method
+    // Use the native completion predicate that precedes the downloaded notification.
+    val downloadComplete = Fingerprint(
+        parameters = listOf(trackState),
+        returnType = "V",
+        filters = listOf(
+            methodCall(smali = offlineEligibility.toString()),
+            methodCall(
+                definingClass = trackRepository.type,
+                parameters = listOf(trackState),
+                returnType = "Z",
+                location = MatchAfterWithin(5),
+            ),
+            resourceLiteral(ResourceType.STRING, "notification_offline_video_completed"),
+        ),
+    ).instructionMatches[1].methodReference
 
     controller.addPatchInterface(CONTROLLER, "patch_readTrackState", """
         iget-object v0, p0, $trackRepositoryField
@@ -159,24 +169,9 @@ internal fun hookInAppDownloadState() {
     controller.addPatchInterface(CONTROLLER, "patch_isTrackDownloadComplete", """
         if-eqz p1, :pending
         check-cast p1, $trackState
-        invoke-virtual { p1 }, $getTransfer
-        move-result-object v0
-        invoke-static { v0 }, $getTransferState
-        move-result-object v0
-        invoke-virtual { v0 }, Ljava/lang/Enum;->name()Ljava/lang/String;
-        move-result-object v0
-        const-string v1, "TRANSFER_STATE_COMPLETE"
-        invoke-virtual { v1, v0 }, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-        move-result v0
-        if-nez v0, :complete
         iget-object v0, p0, $trackRepositoryField
-        invoke-virtual { p1 }, $getProgress
-        move-result-object v1
-        invoke-virtual { v0, v1 }, $progressComplete
+        invoke-virtual { v0, p1 }, $downloadComplete
         move-result v0
-        return v0
-        :complete
-        const/4 v0, 0x1
         return v0
         :pending
         const/4 v0, 0x0
@@ -237,6 +232,35 @@ internal fun hookInAppDownloadState() {
                 return-void
                 :show_toast
                 nop
+            """,
+        )
+    }
+
+    // The native bottom sheet binds real TextViews and bypasses Litho text hooks.
+    MenuItemIconFingerprint.let { fingerprint ->
+        fingerprint.clearMatch()
+        val textSet = fingerprint.instructionMatches.first()
+        val textView = textSet.instruction.registersUsed.first()
+        fingerprint.method.addInstruction(
+            textSet.index + 1,
+            "invoke-static/range { v$textView .. v$textView }, $STATE;->onNativeDownloadLabelBound(Landroid/widget/TextView;)V",
+        )
+        fingerprint.clearMatch()
+        MenuItemFingerprint.clearMatch()
+    }
+
+    TextComponentLookupFingerprint.method.apply {
+        // Music's text component consumes cached spans without keeping a conversion context.
+        val bindText = indexOfFirstInstructionOrThrow(
+            0,
+            fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/CharSequence;")
+        )
+        val text = getInstruction<TwoRegisterInstruction>(bindText).registerA
+        addInstructionsAtControlFlowLabel(
+            bindText,
+            """
+                invoke-static/range { v$text .. v$text }, $STATE;->resolveLithoMenuLabel(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                move-result-object v$text
             """,
         )
     }
