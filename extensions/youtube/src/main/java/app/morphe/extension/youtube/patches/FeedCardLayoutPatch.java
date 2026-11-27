@@ -452,10 +452,11 @@ public class FeedCardLayoutPatch {
     private static final ByteTrieSearch defaultLayoutSearch = new ByteTrieSearch(
             ByteTrieSearch.convertStringsToBytes(CARD_TEMPLATE, SHORTS_VIDEO_CELL_TEMPLATE));
     /**
-     * Template of the cards, which get the style of the converted cards with every layout, see withCardStyle().
+     * Experiment of the blurred background at the bottom of the cards, enableBlurredBottomBackground (field 500561)
+     * set to true, in the bytes of the elements.
      */
-    private static final ByteTrieSearch cardTemplateSearch = new ByteTrieSearch(
-            ByteTrieSearch.convertStringsToBytes(CARD_TEMPLATE));
+    private static final ByteTrieSearch blurredBottomBackgroundSearch = new ByteTrieSearch(
+            new byte[]{(byte) 0x88, (byte) 0xB5, (byte) 0xF4, 0x01, 0x01});
     /**
      * Labels of the shelf headers, in the bytes of the converted elements.
      */
@@ -816,9 +817,10 @@ public class FeedCardLayoutPatch {
     public static byte[] setFeedCardLayout(byte[] bytes) {
         if (LAYOUT == FeedCardLayout.DEFAULT) {
             // The default layout shows the elements as YouTube sends them, and only checks if YouTube sends
-            // the cards of a newer A/B test, see feedShowsCards(). The cards only get the style
-            // of the converted cards, see withCardStyle().
-            if ((!newServerCardsShown && defaultLayoutSearch.matches(bytes)) || cardTemplateSearch.matches(bytes)) {
+            // the cards of a newer A/B test, see feedShowsCards(). The cards only lose the blurred background
+            // at the bottom.
+            if ((!newServerCardsShown && defaultLayoutSearch.matches(bytes))
+                    || blurredBottomBackgroundSearch.matches(bytes)) {
                 try {
                     Element element = Element.parseFrom(bytes);
                     ComponentType componentType = element.getType().getComponentType();
@@ -835,10 +837,21 @@ public class FeedCardLayoutPatch {
                         newServerCardsShown = true;
                     }
 
-                    ComponentType withStyle = isCard ? withCardStyle(componentType, model.getLockupModel()) : null;
-                    if (withStyle != null) {
+                    // The cards of a newer A/B test have a blurred background at the bottom, which RenderNext draws
+                    // as a fade into the card. The app is always rendered with Litho, which draws it as a panel with
+                    // rounded corners that show light arcs on the card, so the background is removed, and the rest
+                    // of the style of the server is kept, such as the rounded corners.
+                    LockupModel card = model.getLockupModel();
+                    ElementsExperiments experiments = card.getContext().getElementsExperiments();
+                    CardLayoutExperiments cardExperiments = experiments.getCardLayoutExperiments();
+                    if (isCard && cardExperiments.getEnableBlurredBottomBackground()) {
                         return element.toBuilder()
-                                .setType(element.getType().toBuilder().setComponentType(withStyle))
+                                .setType(element.getType().toBuilder().setComponentType(componentType.toBuilder()
+                                        .setModel(model.toBuilder().setLockupModel(card.toBuilder()
+                                                .setContext(card.getContext().toBuilder()
+                                                        .setElementsExperiments(experiments.toBuilder()
+                                                                .setCardLayoutExperiments(cardExperiments.toBuilder()
+                                                                        .clearEnableBlurredBottomBackground())))))))
                                 .build()
                                 .toByteArray();
                     }
@@ -3080,9 +3093,10 @@ public class FeedCardLayoutPatch {
      * The style of the cards that YouTube sends changes with the A/B tests of the server, which add experiments
      * to the cards and subscriptions to the elements. Some styles are not drawn as intended by Litho, such as
      * the blurred background at the bottom of the cards of a newer A/B test, which is drawn as a panel with
-     * rounded corners that show light arcs on the card. The cards get the style of the converted cards instead,
-     * such as the search results converted to cards: only the experiments of setCardExperiments() and the theme
-     * and capabilities subscriptions, so a new style of the server does not change the cards.
+     * rounded corners that show light arcs on the card. With the card layouts, the cards get the style of the
+     * converted cards instead, such as the search results converted to cards: only the experiments of
+     * setCardExperiments() and the theme and capabilities subscriptions, so a new style of the server does not
+     * change the cards. The default layout keeps the style of the server, without the blurred background.
      * The elements without the experiments of the cards, which YouTube does not show as cards, are not changed.
      *
      * @return The card with the style of the converted cards, or null if the card is not changed.

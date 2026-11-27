@@ -684,13 +684,14 @@ message LockupExperiments {
     bool enableCardStyle = 524937;
 }
 
-// Experiments read by the cards and the classic layout. Besides these, lockup.eml reads 500561 (blurred
-// background at the bottom of the cards of a newer A/B test), lockup_metadata_ue.eml 516593 (leaves out
-// the menu button) and 520547, video_lockup_with_attachment.eml 475852 and 513889,
+// Experiments read by the cards and the classic layout. Besides these, lockup_metadata_ue.eml reads 516593
+// (leaves out the menu button) and 520547, video_lockup_with_attachment.eml 475852 and 513889,
 // video_lockup_attachments.eml 445511.
 message CardLayoutExperiments {
     // Background in the color sampled from the thumbnail.
     bool enableColorSampledBackground = 491718;
     // Background below the title and the metadata.
     bool enableMetadataBackground = 489259;
+    // Blurred background at the bottom of the cards of a newer A/B test.
+    bool enableBlurredBottomBackground = 500561;
 }
