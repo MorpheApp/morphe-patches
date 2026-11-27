@@ -32,6 +32,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.WindowInsetsController;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -64,8 +65,10 @@ import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
+import app.morphe.extension.youtube.patches.NavigationBarPatch.NavigationBarStyle;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public class ThemePatch extends BaseThemePatch {
@@ -95,6 +98,25 @@ public class ThemePatch extends BaseThemePatch {
     private static final int FEED_ID = ResourceUtils.getIdentifier(ResourceType.ID, "results");
 
     /**
+     * The view the app dims the status bar with, drawn over the Shorts player.
+     */
+    private static final int STATUS_BAR_VIEW_ID = ResourceUtils.getIdentifier(ResourceType.ID, "global_status_bar_view");
+
+    private static final int PIVOT_BAR_ID = ResourceUtils.getIdentifier(ResourceType.ID, "pivot_bar");
+
+    /**
+     * The container of the app below the navigation bar, whose background shows around the system navigation
+     * buttons.
+     */
+    private static final int PLAYER_CONTAINER_ID = ResourceUtils.getIdentifier(ResourceType.ID,
+            "slim_status_bar_player_container");
+
+    /**
+     * The container of the navigation bar whose system bars of the Shorts player are colored.
+     */
+    private static WeakReference<View> shortsSystemBarsContainer = new WeakReference<>(null);
+
+    /**
      * Injection point.
      * <p>
      * Called with the original color of a Litho background drawable, before {@link #getValue(int)}.
@@ -117,6 +139,131 @@ public class ThemePatch extends BaseThemePatch {
             Logger.printException(() -> "getFeedCardColor failure", ex);
         }
         return color;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The Shorts player is always dark, so its status bar and navigation bar get the dark theme color,
+     * whatever theme the app shows. The app draws the player behind the status bar with a black background,
+     * gives the navigation bar a plain color, which with the light theme is a dark color of its own, and
+     * shows the background of the app below the navigation bar, around the system navigation buttons.
+     * The view the app dims the status bar with is empty and drawn over the player, and the app keeps writing
+     * the dimming into its background, so the color is its foreground. The icons of the status bar are light
+     * on it, as the app keeps the dark icons of the light theme.
+     * The opaque navigation bar style paints the bars itself.
+     */
+    public static void setShortsSystemBarsColor(View bottomBarContainer) {
+        try {
+            if (ThemeColorPatch.isAppDefaultDarkColor()
+                    || Settings.NAVIGATION_BAR_STYLE.get() == NavigationBarStyle.OPAQUE
+                    || bottomBarContainer == shortsSystemBarsContainer.get()) {
+                return;
+            }
+            shortsSystemBarsContainer = new WeakReference<>(bottomBarContainer);
+
+            final int color = ThemeUtils.getThemeDarkColor();
+            View root = bottomBarContainer.getRootView();
+
+            View statusBarView = root.findViewById(STATUS_BAR_VIEW_ID);
+            if (statusBarView != null) {
+                Drawable foreground = new ColorDrawable(color);
+                // If the dark icons of the status bar were turned off for the Shorts player.
+                boolean[] darkIconsRemoved = {false};
+                statusBarView.getViewTreeObserver().addOnPreDrawListener(() -> {
+                    final boolean open = ShortsPlayerState.isOpen();
+                    final Drawable current = statusBarView.getForeground();
+                    if (open && current != foreground) {
+                        statusBarView.setForeground(foreground);
+                    } else if (!open && current == foreground) {
+                        statusBarView.setForeground(null);
+                    }
+                    darkIconsRemoved[0] = setShortsStatusBarIcons(statusBarView, open, darkIconsRemoved[0]);
+                    return true;
+                });
+            }
+
+            View pivotBar = bottomBarContainer.findViewById(PIVOT_BAR_ID);
+            if (pivotBar != null) {
+                // Only a plain color, so the background of other navigation bar styles, such as the glass, stays.
+                keepShortsBackground(pivotBar, color, true);
+            }
+
+            View playerContainer = root.findViewById(PLAYER_CONTAINER_ID);
+            if (playerContainer != null) {
+                keepShortsBackground(playerContainer, color, false);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setShortsSystemBarsColor failure", ex);
+        }
+    }
+
+    /**
+     * Gives a view the dark theme color as its background while the Shorts player is open.
+     *
+     * @param plainColorOnly If only a plain color background of the app is replaced.
+     */
+    private static void keepShortsBackground(View view, @ColorInt int color, boolean plainColorOnly) {
+        Drawable background = new ColorDrawable(color);
+        // The background the app gave the view, put back when the Shorts player closes,
+        // in case the app does not give the view a new one.
+        Drawable[] appBackground = {null};
+        view.getViewTreeObserver().addOnPreDrawListener(() -> {
+            final Drawable current = view.getBackground();
+            if (ShortsPlayerState.isOpen()) {
+                if (current != background && (!plainColorOnly || current instanceof ColorDrawable)) {
+                    appBackground[0] = current;
+                    view.setBackground(background);
+                }
+            } else if (current == background) {
+                view.setBackground(appBackground[0]);
+            }
+            return true;
+        });
+    }
+
+    /**
+     * Turns off the dark icons of the status bar while the Shorts player is open,
+     * and turns them on again when it closes.
+     *
+     * @param darkIconsRemoved If the dark icons were turned off for the Shorts player.
+     * @return If the dark icons are turned off for the Shorts player.
+     */
+    @SuppressWarnings("deprecation")
+    private static boolean setShortsStatusBarIcons(View view, boolean shortsOpen, boolean darkIconsRemoved) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowInsetsController controller = view.getWindowInsetsController();
+            if (controller == null) return darkIconsRemoved;
+
+            final int lightBars = WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS;
+            final boolean darkIcons = (controller.getSystemBarsAppearance() & lightBars) != 0;
+            if (shortsOpen && darkIcons) {
+                controller.setSystemBarsAppearance(0, lightBars);
+                return true;
+            }
+            if (!shortsOpen && darkIconsRemoved) {
+                if (!darkIcons && !Utils.isDarkModeEnabled()) {
+                    controller.setSystemBarsAppearance(lightBars, lightBars);
+                }
+                return false;
+            }
+            return darkIconsRemoved;
+        }
+
+        View decorView = view.getRootView();
+        final int flags = decorView.getSystemUiVisibility();
+        final boolean darkIcons = (flags & View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR) != 0;
+        if (shortsOpen && darkIcons) {
+            decorView.setSystemUiVisibility(flags & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            return true;
+        }
+        if (!shortsOpen && darkIconsRemoved) {
+            if (!darkIcons && !Utils.isDarkModeEnabled()) {
+                decorView.setSystemUiVisibility(flags | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
+            return false;
+        }
+        return darkIconsRemoved;
     }
 
     /**

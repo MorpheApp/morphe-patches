@@ -574,19 +574,25 @@ public class ThemeColorPatch {
      * the unpatched app.
      */
     public static boolean isAppDefaultColor() {
-        // A patched color replaces the app colors, and nothing is left untouched.
-        if (isPatchedTheme()) {
-            return false;
+        if (isDarkTheme()) {
+            return isAppDefaultDarkColor();
         }
 
-        final boolean dark = isDarkTheme();
-
+        // A patched color replaces the app colors, and nothing is left untouched.
         // The config value is used instead of the setting because a Material-You color
         // falls back to the app default on Android 11 and earlier.
-        if (dark) {
-            return darkConfigValue == (DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
-        }
-        return lightConfigValue == (LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
+        return !isPatchedTheme() && lightConfigValue == (LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
+    }
+
+    /**
+     * If the dark theme uses the color of the app itself, whatever theme the app shows,
+     * such as for a player that is always dark.
+     */
+    public static boolean isAppDefaultDarkColor() {
+        // A patched color replaces the app colors, and nothing is left untouched.
+        // The config value is used instead of the setting because a Material-You color
+        // falls back to the app default on Android 11 and earlier.
+        return !isPatchedTheme() && darkConfigValue == (DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
     }
 
     /**

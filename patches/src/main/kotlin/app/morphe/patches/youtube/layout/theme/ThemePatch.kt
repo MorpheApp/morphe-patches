@@ -47,6 +47,9 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
+import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
@@ -390,6 +393,9 @@ val themePatch = baseThemePatch(
             versionCheckPatch,
             // The fade of the collapsed description is themed only in the description panel.
             engagementPanelHookPatch,
+            // The system bars of the Shorts player get the dark theme color.
+            navigationBarHookPatch,
+            playerTypeHookPatch,
             baseThemeResourcePatch(
                 includeLightColor = true,
                 colorNamesDark = youTubeColorNamesDark,
@@ -439,6 +445,13 @@ val themePatch = baseThemePatch(
                 )
             }
         }
+
+        // The Shorts player is always dark, so its system bars get the dark theme color with any app theme.
+        // Before the other hooks of the navigation bar, so the glass navigation bar gets the color as well.
+        addBottomBarContainerHook(
+            descriptor = "$EXTENSION_CLASS->setShortsSystemBarsColor(Landroid/view/View;)V",
+            highPriority = true
+        )
 
         // A patched theme color cannot be changed, so there is nothing to select.
         val colorPreferences = if (usePatchedThemeColor) {
