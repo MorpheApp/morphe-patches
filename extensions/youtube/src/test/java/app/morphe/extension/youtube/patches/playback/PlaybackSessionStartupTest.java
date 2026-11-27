@@ -50,7 +50,13 @@ public class PlaybackSessionStartupTest {
                 new PlaybackSessionSnapshot.Queue(List.of(videoId, "lmnopqrstuv"), 0, null));
         var command = new AtomicReference<byte[]>();
         var context = new AtomicReference<Map<String, Object>>();
-        for (var snapshot : List.of(playlist, localQueue)) {
+        var personalPlaylist = new PlaybackSessionSnapshot("account", videoId, 450,
+                PlaybackSessionSnapshot.Kind.VIDEO, "PL1234567890", false,
+                new PlaybackSessionSnapshot.Queue(List.of(videoId), 0, null, 42));
+        var partialMix = new PlaybackSessionSnapshot("account", videoId, 450,
+                PlaybackSessionSnapshot.Kind.VIDEO, "RD" + videoId, false,
+                new PlaybackSessionSnapshot.Queue(List.of(videoId), 0, null));
+        for (var snapshot : List.of(playlist, localQueue, personalPlaylist, partialMix)) {
             var request = new PlaybackSessionPatch.RestoreRequest(snapshot);
             PlaybackSessionPatch.dispatchSavedWatch((bytes, values) -> {
                 command.set(bytes);
@@ -59,7 +65,13 @@ public class PlaybackSessionStartupTest {
 
             var watch = NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint();
             assertEquals(videoId, watch.getVideoId());
-            assertEquals(snapshot.queue() == null ? snapshot.playlistId() : "", watch.getPlaylistId());
+            assertEquals(snapshot == localQueue ? "" : snapshot.playlistId(), watch.getPlaylistId());
+            if (snapshot == personalPlaylist) {
+                assertTrue(watch.hasIndex());
+                assertEquals(42, watch.getIndex());
+            } else {
+                assertFalse(watch.hasIndex());
+            }
             assertEquals(Boolean.TRUE, context.get().get("start_watch_minimized"));
             assertEquals(Boolean.TRUE, context.get().get("ALLOW_RELOAD"));
             assertSame(request, context.get().get("app.morphe.continue_watching"));
@@ -68,7 +80,7 @@ public class PlaybackSessionStartupTest {
     }
 
     @Test
-    public void restoresTheSavedUpcomingOrderForPlaylistsAndMixes() throws Exception {
+    public void restoresNamedPlaylistAndPreservesCapturedMixOrder() throws Exception {
         String current = "abcdefghijk";
         String next = "lmnopqrstuv";
         String last = "wxyz1234567";
@@ -90,7 +102,12 @@ public class PlaybackSessionStartupTest {
             var descriptor = new TestDescriptor(current);
             try {
                 assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
-                assertEquals(List.of(current, last, next, last), descriptor.queue);
+                if (playlistId.startsWith("RD")) {
+                    assertEquals(List.of(current, last, next, last), descriptor.queue);
+                } else {
+                    assertNull(descriptor.queue);
+                    assertEquals(Integer.valueOf(42), request.snapshot().queue().playlistIndex());
+                }
                 assertEquals(12_345, descriptor.position);
                 assertTrue(descriptor.paused);
                 var restored = request.snapshot();

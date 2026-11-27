@@ -350,10 +350,12 @@ public final class PlaybackSessionPatch {
                 return;
             }
             String playlistId = kind == PlaybackSessionSnapshot.Kind.SHORT ? "" : VideoInformation.getPlaylistId();
+            CapturedQueue captured = kind == PlaybackSessionSnapshot.Kind.SHORT
+                    ? null : captureQueue(videoId, playlistId);
+            if (captured != null) playlistId = captured.playlistId();
             final boolean usesKeptQueue = !playlistId.isEmpty() && Settings.QUEUE_RESTORE.get()
                     && playlistId.equals(Settings.QUEUE_PLAYLIST_ID.get());
-            var queue = usesKeptQueue || kind == PlaybackSessionSnapshot.Kind.SHORT
-                    ? null : captureQueue(videoId, playlistId);
+            var queue = usesKeptQueue || captured == null ? null : captured.queue();
             if (queue == null && !usesKeptQueue && sameSavedVideo) {
                 // The native panel may be detached or still loading after the saved queue was reopened.
                 queue = saved.queueWhilePanelUnavailable(playlistId, showRestoredSessionFor(videoId));
@@ -371,10 +373,12 @@ public final class PlaybackSessionPatch {
         }
     }
 
+    private record CapturedQueue(String playlistId, @Nullable PlaybackSessionSnapshot.Queue queue) {}
+
     @Nullable
-    private static PlaybackSessionSnapshot.Queue captureQueue(String videoId, String playlistId) {
+    private static CapturedQueue captureQueue(String videoId, String playlistId) {
         var nativeQueue = NativePlaylistQueuePatch.captureSessionQueue(videoId);
-        if (nativeQueue != null) return nativeQueue;
+        if (nativeQueue != null) return new CapturedQueue(playlistId, nativeQueue);
         PlaylistReader reader = playlist.get();
         if (reader == null || !videoId.equals(reader.patch_sessionPlaylistVideoId())
                 || !(reader.patch_sessionPlaylistPanel() instanceof MessageLite message)) return null;
@@ -382,7 +386,8 @@ public final class PlaybackSessionPatch {
             Panel panel = Panel.parseFrom(message.toByteArray());
             if (!playlistId.isEmpty() && !panel.getPlaylistId().isEmpty()
                     && !playlistId.equals(panel.getPlaylistId())) return null;
-            return PlaybackSessionSnapshot.Queue.fromPanel(panel, videoId);
+            return new CapturedQueue(playlistId.isEmpty() ? panel.getPlaylistId() : playlistId,
+                    PlaybackSessionSnapshot.Queue.fromPanel(panel, videoId));
         } catch (Exception ex) {
             Logger.printException(() -> "Could not capture the active playlist", ex);
             return null;
@@ -634,10 +639,14 @@ public final class PlaybackSessionPatch {
     static void dispatchSavedWatch(CommandRouter router, RestoreRequest request) {
         var snapshot = request.snapshot();
         var watch = WatchEndpoint.newBuilder().setVideoId(snapshot.videoId());
-        if (snapshot.queue() == null) {
+        if (snapshot.queueForRestore() == null) {
             String playlistId = snapshot.usesKeptQueue() && Settings.QUEUE_RESTORE.get()
                     ? Settings.QUEUE_PLAYLIST_ID.get() : snapshot.playlistId();
-            if (!playlistId.isEmpty()) watch.setPlaylistId(playlistId);
+            if (!playlistId.isEmpty()) {
+                watch.setPlaylistId(playlistId);
+                var queue = snapshot.queue();
+                if (queue != null && queue.playlistIndex() != null) watch.setIndex(queue.playlistIndex());
+            }
         }
         var command = NavigationEndpoint.newBuilder().setWatchEndpoint(watch).build();
         Map<String, Object> context = new HashMap<>();
@@ -689,9 +698,9 @@ public final class PlaybackSessionPatch {
 
     static Descriptor applyRestoredWatch(Descriptor descriptor, RestoreRequest request) {
         var snapshot = request.snapshot();
-        if (snapshot.queue() != null
-                && !NativePlaylistQueuePatch.prepareSessionQueue(snapshot.queue(), snapshot.positionMilliseconds())) {
-            descriptor = descriptor.patch_newSessionQueue(snapshot.queue().upcoming());
+        var queue = snapshot.queueForRestore();
+        if (queue != null && !NativePlaylistQueuePatch.prepareSessionQueue(queue, snapshot.positionMilliseconds())) {
+            descriptor = descriptor.patch_newSessionQueue(queue.upcoming());
         }
         descriptor.patch_startSessionPaused();
         // Let Remember live stream playback position apply its own setting and DVR checks.

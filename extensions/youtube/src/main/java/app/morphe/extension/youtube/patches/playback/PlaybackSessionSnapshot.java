@@ -31,11 +31,17 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
         VIDEO, SHORT, LIVE
     }
 
-    public record Queue(List<String> videoIds, int selectedIndex, @Nullable Integer nativeRepeatMode) {
+    public record Queue(List<String> videoIds, int selectedIndex, @Nullable Integer nativeRepeatMode,
+                        @Nullable Integer playlistIndex) {
+        public Queue(List<String> videoIds, int selectedIndex, @Nullable Integer nativeRepeatMode) {
+            this(videoIds, selectedIndex, nativeRepeatMode, null);
+        }
+
         public Queue {
             videoIds = List.copyOf(videoIds);
             if (videoIds.size() > MAX_QUEUE_ITEMS || selectedIndex < 0 || selectedIndex >= videoIds.size()
                     || nativeRepeatMode != null && (nativeRepeatMode < 0 || nativeRepeatMode > 2)
+                    || playlistIndex != null && playlistIndex < 0
                     || !videoIds.stream().allMatch(BaseVideoInformation::isVideoId)) {
                 throw new IllegalArgumentException("Invalid playback queue");
             }
@@ -80,7 +86,8 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
             if (selected < 0) selected = local;
             if (selected < 0) selected = byIndex;
             if (selected < 0 && matches == 1) selected = firstMatch;
-            return selected < 0 ? null : new Queue(videoIds, selected, null);
+            return selected < 0 ? null : new Queue(videoIds, selected, null,
+                    panel.hasSelectedIndex() && panel.getSelectedIndex() >= 0 ? panel.getSelectedIndex() : null);
         }
 
         List<String> upcoming() {
@@ -110,6 +117,14 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
         return samePlaylist ? queue : null;
     }
 
+    @Nullable
+    Queue queueForRestore() {
+        // Opening a named playlist lets YouTube load the full list and keep its playlist panel.
+        if (queue == null || queue.nativeRepeatMode() != null || playlistId.isEmpty()) return queue;
+        // Preserve generated Mix order when we actually captured upcoming items.
+        return playlistId.startsWith("RD") && queue.selectedIndex() + 1 < queue.videoIds().size() ? queue : null;
+    }
+
     boolean hadCaptionsEnabled() {
         return Boolean.TRUE.equals(captionsEnabled);
     }
@@ -131,7 +146,8 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
                 videoIds.add(ids.getString(index));
             }
             queue = new Queue(videoIds, savedQueue.getInt("selected"),
-                    savedQueue.has("repeat") ? savedQueue.getInt("repeat") : null);
+                    savedQueue.has("repeat") ? savedQueue.getInt("repeat") : null,
+                    savedQueue.has("playlistIndex") ? savedQueue.getInt("playlistIndex") : null);
         }
         return new PlaybackSessionSnapshot(data.getString("account"), data.getString("video"),
                 data.getLong("position"), Kind.valueOf(data.getString("kind")), data.getString("playlist"),
@@ -153,7 +169,8 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
             data.put("queue", new JSONObject()
                     .put("videos", new JSONArray(queue.videoIds()))
                     .put("selected", queue.selectedIndex())
-                    .put("repeat", queue.nativeRepeatMode()));
+                    .put("repeat", queue.nativeRepeatMode())
+                    .put("playlistIndex", queue.playlistIndex()));
         }
         return data.toString();
     }
