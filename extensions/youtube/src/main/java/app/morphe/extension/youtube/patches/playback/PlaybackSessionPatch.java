@@ -44,6 +44,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Panel;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
+import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.CommandRouterPatch;
 import app.morphe.extension.youtube.patches.CommandRouterPatch.CommandRouter;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
@@ -73,6 +74,11 @@ public final class PlaybackSessionPatch {
 
     public interface AccountProvider {
         @Nullable Account patch_sessionAccount();
+    }
+
+    public interface CaptionSource {
+        @Nullable String patch_sessionCaptionVideoId();
+        boolean patch_sessionCaptionsEnabled();
     }
 
     public interface PlaylistReader {
@@ -122,11 +128,13 @@ public final class PlaybackSessionPatch {
     private static volatile WeakReference<AccountProvider> accountProvider = new WeakReference<>(null);
     private static volatile WeakReference<MediaSession> mediaSession = new WeakReference<>(null);
     private static volatile WeakReference<PlaylistReader> playlist = new WeakReference<>(null);
+    private static volatile WeakReference<CaptionSource> captions = new WeakReference<>(null);
     @Nullable private static AtomicFile storage;
     @Nullable private static PlaybackSessionSnapshot saved;
     @Nullable private static RestoreRequest restoring;
     @Nullable private static String dismissedVideo;
     @Nullable private static volatile String restoringMinimizedVideo;
+    @Nullable private static volatile PlaybackSessionSnapshot restoringCaptions;
     @Nullable private static volatile String restoredShort;
     @Nullable private static String restoredLive;
     private static boolean initialized;
@@ -191,6 +199,20 @@ public final class PlaybackSessionPatch {
 
     public static void attachPlaylist(PlaylistReader reader) {
         if (enabled()) playlist = new WeakReference<>(reader);
+    }
+
+    public static void attachCaptions(CaptionSource source) {
+        if (enabled() && captions.get() != source) captions = new WeakReference<>(source);
+    }
+
+    public static boolean restoreCaptionPreference(boolean original, CaptionSource source) {
+        var snapshot = restoringCaptions;
+        if (snapshot == null || !snapshot.videoId().equals(source.patch_sessionCaptionVideoId())) return original;
+        restoringCaptions = null;
+        Boolean savedState = snapshot.captionsEnabled();
+        if (savedState != null) return savedState;
+        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
+        return style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
     }
 
     @Nullable
@@ -282,8 +304,14 @@ public final class PlaybackSessionPatch {
                     && playlistId.equals(Settings.QUEUE_PLAYLIST_ID.get());
             var queue = usesKeptQueue || kind == PlaybackSessionSnapshot.Kind.SHORT
                     ? null : captureQueue(videoId, playlistId);
+            CaptionSource captionSource = captions.get();
+            Boolean captionsEnabled = sameSavedVideo ? saved.captionsEnabled() : null;
+            if (captionSource != null && videoId.equals(captionSource.patch_sessionCaptionVideoId())
+                    && (restoringCaptions == null || !videoId.equals(restoringCaptions.videoId()))) {
+                captionsEnabled = captionSource.patch_sessionCaptionsEnabled();
+            }
             update(new PlaybackSessionSnapshot(account, videoId, position, kind,
-                    usesKeptQueue ? "" : playlistId, usesKeptQueue, queue));
+                    usesKeptQueue ? "" : playlistId, usesKeptQueue, queue, captionsEnabled));
         } catch (Exception ex) {
             Logger.printException(() -> "Could not capture playback session", ex);
         }
@@ -370,10 +398,24 @@ public final class PlaybackSessionPatch {
                 && restoredShort.equals(VideoInformation.getVideoId())) {
             restoredShort = null;
         }
+        PlayerType type = PlayerType.getCurrent();
         if (restoringMinimizedVideo != null && status != null && "VIDEO_PLAYING".equals(status.name())
+                && !type.isNoneOrHidden() && type != PlayerType.INLINE_MINIMAL
                 && restoringMinimizedVideo.equals(VideoInformation.getVideoId())) {
             restoringMinimizedVideo = null;
+            RestoredMiniplayerControls.refresh();
         }
+    }
+
+    public static boolean showRestoredMiniplayer(PlayerType type) {
+        return restoringMinimizedVideo != null && type == PlayerType.WATCH_WHILE_MINIMIZED;
+    }
+
+    static boolean ownsMiniplayerControls(View view) {
+        Activity activity = owner.get();
+        View decor = activity == null ? null : activity.getWindow().peekDecorView();
+        IBinder window = view.getWindowToken();
+        return decor != null && window != null && window.equals(decor.getWindowToken());
     }
 
     private static boolean canRestore(PlaybackSessionSnapshot snapshot) {
@@ -436,23 +478,25 @@ public final class PlaybackSessionPatch {
                 Utils.runOnMainThreadDelayed(() -> restoreIfReady(activity), STARTUP_POLL_MS);
                 return;
             }
-            checkingStartup = false;
             if (!account.equals(snapshot.account())) {
+                cancelStartup();
                 Logger.printDebug(() -> "Playback session belongs to a different account");
                 return;
             }
             if (!canRestore(snapshot)) {
+                cancelStartup();
                 Logger.printDebug(() -> "Playback session restore disabled for this player");
                 if (snapshot.kind() == PlaybackSessionSnapshot.Kind.SHORT
                         && Settings.DISABLE_SHORTS_RESUMING_ON_STARTUP.get()) update(null);
                 return;
             }
             if (player == StartupPlayer.OPEN) {
+                cancelStartup();
                 Logger.printDebug(() -> "Playback session restore skipped because a player is already open: " + type);
                 return;
             }
-            var request = new RestoreRequest(snapshot);
-            restoring = request;
+            var request = beginRestore();
+            if (request == null) return;
             if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) {
                 Utils.runOnBackgroundThread(() -> {
                     Boolean live = LiveStatusRequest.fetchFresh(snapshot.videoId());
@@ -472,6 +516,14 @@ public final class PlaybackSessionPatch {
             cancelStartup();
             Logger.printException(() -> "Could not restore playback session", ex);
         }
+    }
+
+    @Nullable
+    static RestoreRequest beginRestore() {
+        if (!checkingStartup || saved == null) return null;
+        checkingStartup = false;
+        restoring = new RestoreRequest(saved);
+        return restoring;
     }
 
     private static void start(Activity activity, @Nullable CommandRouter router, RestoreRequest request) {
@@ -544,21 +596,9 @@ public final class PlaybackSessionPatch {
                 cancelStartup();
                 return null;
             }
-            descriptor.patch_startSessionPaused();
-            if (snapshot.queue() != null
-                    && !NativePlaylistQueuePatch.prepareSessionQueue(snapshot.queue(), snapshot.positionMilliseconds())) {
-                descriptor = descriptor.patch_newSessionQueue(snapshot.queue().upcoming());
-                descriptor.patch_startSessionPaused();
-            }
-            if (snapshot.kind() != PlaybackSessionSnapshot.Kind.LIVE
-                    || Settings.REMEMBER_LIVE_STREAM_POSITION.get()) {
-                descriptor.patch_setSessionPosition(snapshot.positionMilliseconds());
-            }
-            if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) restoredLive = snapshot.videoId();
-            restoringMinimizedVideo = snapshot.videoId();
+            descriptor = applyRestoredWatch(descriptor, request);
             OpenVideosFullscreenHookPatch.keepVideoMinimized(snapshot.videoId());
-            restoreWasMinimized = false;
-            restoring = null;
+            RestoredMiniplayerControls.refresh();
             Logger.printDebug(() -> "Prepared paused playback session in the miniplayer");
             return descriptor;
         } catch (Exception ex) {
@@ -566,6 +606,25 @@ public final class PlaybackSessionPatch {
             Logger.printException(() -> "Could not prepare paused watch session", ex);
             return null;
         }
+    }
+
+    static Descriptor applyRestoredWatch(Descriptor descriptor, RestoreRequest request) {
+        var snapshot = request.snapshot();
+        if (snapshot.queue() != null
+                && !NativePlaylistQueuePatch.prepareSessionQueue(snapshot.queue(), snapshot.positionMilliseconds())) {
+            descriptor = descriptor.patch_newSessionQueue(snapshot.queue().upcoming());
+        }
+        descriptor.patch_startSessionPaused();
+        if (snapshot.kind() != PlaybackSessionSnapshot.Kind.LIVE
+                || Settings.REMEMBER_LIVE_STREAM_POSITION.get()) {
+            descriptor.patch_setSessionPosition(snapshot.positionMilliseconds());
+        }
+        if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) restoredLive = snapshot.videoId();
+        restoringMinimizedVideo = snapshot.videoId();
+        restoringCaptions = snapshot;
+        restoreWasMinimized = false;
+        restoring = null;
+        return descriptor;
     }
 
     public static void prepareShortsDescriptor(Object original, @Nullable Map<?, ?> ignoredContext) {
@@ -577,6 +636,7 @@ public final class PlaybackSessionPatch {
                     && snapshot.videoId().equals(descriptor.patch_sessionVideoId())) {
                 descriptor.patch_startSessionPaused();
                 restoredShort = snapshot.videoId();
+                restoringCaptions = snapshot;
                 restoring = null;
             } else {
                 cancelStartup();
@@ -589,6 +649,7 @@ public final class PlaybackSessionPatch {
     }
 
     private static void playerTypeChanged(PlayerType type) {
+        RestoredMiniplayerControls.refresh();
         Utils.runOnMainThreadNowOrLater(() -> {
             String videoId = restoringMinimizedVideo;
             if (videoId == null) return;
@@ -629,12 +690,14 @@ public final class PlaybackSessionPatch {
         checkingStartup = false;
         startupWaitReason = null;
         restoring = null;
+        restoringCaptions = null;
         restoredLive = null;
         restoredShort = null;
         if (restoringMinimizedVideo != null) {
             restoringMinimizedVideo = null;
             OpenVideosFullscreenHookPatch.keepVideoMinimized(null);
         }
+        RestoredMiniplayerControls.refresh();
     }
 
     private PlaybackSessionPatch() {}

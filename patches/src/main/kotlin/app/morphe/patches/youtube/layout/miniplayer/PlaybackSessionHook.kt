@@ -143,6 +143,10 @@ internal fun installPlaybackSessionHooks(): Boolean {
         "$SESSION->onMiniplayerTouchDismissed()V",
     )
     installPlaybackSessionPlaylistReader()
+    if (!installPlaybackSessionCaptionHooks()) {
+        Logger.getLogger("app.morphe.patches.youtube.layout.miniplayer")
+            .warning("Continue watching caption preference hooks unavailable")
+    }
     videoTimeHook(SESSION, "videoTimeChanged")
     playerStatusHook(SESSION, "onPlayerStatus")
     setExtensionIsPatchIncluded(SESSION)

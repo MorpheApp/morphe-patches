@@ -9,9 +9,15 @@ package app.morphe.extension.youtube.patches.playback;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Binder;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.junit.Test;
 
@@ -94,10 +100,13 @@ public class PlaybackSessionStartupTest {
         var deepLink = activity(Intent.ACTION_VIEW);
         try {
             initialized.setBoolean(null, true);
-            saved.set(null, new PlaybackSessionSnapshot("account", "abcdefghijk", 10_000,
-                    PlaybackSessionSnapshot.Kind.VIDEO, "", false, null));
+            saved.set(null, null);
             PlaybackSessionPatch.initializeActivity(firstLaunch, null);
-            assertTrue(pending.getBoolean(null));
+            assertFalse(pending.getBoolean(null));
+
+            var recorded = new PlaybackSessionSnapshot("account", "abcdefghijk", 10_437,
+                    PlaybackSessionSnapshot.Kind.VIDEO, "", false, null, true);
+            saved.set(null, PlaybackSessionSnapshot.fromJson(recorded.toJson()));
             lifecycle.onActivityDestroyed(firstLaunch);
             assertFalse(pending.getBoolean(null));
 
@@ -106,8 +115,34 @@ public class PlaybackSessionStartupTest {
             lifecycle.onActivityDestroyed(firstLaunch);
             assertTrue(pending.getBoolean(null));
 
+            var request = PlaybackSessionPatch.beginRestore();
+            assertEquals(recorded, request.snapshot());
+            assertFalse(pending.getBoolean(null));
+            var command = new AtomicReference<byte[]>();
+            var context = new AtomicReference<Map<String, Object>>();
+            PlaybackSessionPatch.dispatchSavedWatch((bytes, values) -> {
+                command.set(bytes);
+                context.set(values);
+            }, request);
+            var watch = NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint();
+            assertEquals(recorded.videoId(), watch.getVideoId());
+            assertEquals(Boolean.TRUE, context.get().get("start_watch_minimized"));
+            assertSame(request, context.get().get("app.morphe.continue_watching"));
+
+            var descriptor = new TestDescriptor(watch.getVideoId());
+            assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
+            assertTrue(descriptor.paused);
+            assertEquals(10_437, descriptor.position);
+            assertTrue(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
+            assertFalse(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MAXIMIZED));
+            assertPausedControls(secondLaunch);
+            assertFalse(PlaybackSessionPatch.restoreCaptionPreference(false, new TestCaptionSource("lmnopqrstuv")));
+            assertTrue(PlaybackSessionPatch.restoreCaptionPreference(false, new TestCaptionSource(recorded.videoId())));
+            assertFalse(PlaybackSessionPatch.restoreCaptionPreference(false, new TestCaptionSource(recorded.videoId())));
+
             PlaybackSessionPatch.initializeActivity(recreated, new Bundle());
             assertFalse(pending.getBoolean(null));
+            assertFalse(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
             PlaybackSessionPatch.initializeActivity(deepLink, null);
             assertFalse(pending.getBoolean(null));
         } finally {
@@ -117,6 +152,72 @@ public class PlaybackSessionStartupTest {
             lifecycle.onActivityDestroyed(deepLink);
             saved.set(null, previousSnapshot);
             initialized.setBoolean(null, wasInitialized);
+        }
+    }
+
+    private static void assertPausedControls(Context context) {
+        var overlay = new TestBadge(context);
+        var action = new TestAction(context);
+        var badge = new TestBadge(context);
+        var label = new TestLabel(context);
+        var play = new ColorDrawable();
+        RestoredMiniplayerControls.showPaused(overlay, action, play, "Phát", badge, label, "Tiếp tục xem");
+        assertEquals(View.VISIBLE, overlay.getVisibility());
+        assertEquals(View.VISIBLE, action.getVisibility());
+        assertEquals(1f, action.getAlpha(), 0f);
+        assertSame(play, action.getDrawable());
+        assertEquals("Phát", action.getContentDescription());
+        assertEquals(View.VISIBLE, badge.getVisibility());
+        assertEquals("Tiếp tục xem", label.getText());
+    }
+
+    private static final class TestAction extends ImageView {
+        private int visibility = View.GONE;
+        private float alpha;
+        private Drawable drawable;
+        private CharSequence description = "Tạm dừng";
+
+        TestAction(Context context) { super(context); }
+
+        @Override public int getVisibility() { return visibility; }
+        @Override public void setVisibility(int value) { visibility = value; }
+        @Override public float getAlpha() { return alpha; }
+        @Override public void setAlpha(float value) { alpha = value; }
+        @Override public Drawable getDrawable() { return drawable; }
+        @Override public void setImageDrawable(Drawable value) { drawable = value; }
+        @Override public CharSequence getContentDescription() { return description; }
+        @Override public void setContentDescription(CharSequence value) { description = value; }
+    }
+
+    private static final class TestBadge extends View {
+        private int visibility = View.GONE;
+        TestBadge(Context context) { super(context); }
+        @Override public int getVisibility() { return visibility; }
+        @Override public void setVisibility(int value) { visibility = value; }
+    }
+
+    private static final class TestLabel extends TextView {
+        private CharSequence text = "";
+        TestLabel(Context context) { super(context); }
+        @Override public CharSequence getText() { return text; }
+        @Override public void setText(CharSequence value, BufferType type) { text = value; }
+    }
+
+    private record TestCaptionSource(String videoId) implements PlaybackSessionPatch.CaptionSource {
+        @Override public String patch_sessionCaptionVideoId() { return videoId; }
+        @Override public boolean patch_sessionCaptionsEnabled() { return false; }
+    }
+
+    private static final class TestDescriptor implements PlaybackSessionPatch.Descriptor {
+        private final String videoId;
+        private boolean paused;
+        private long position;
+        TestDescriptor(String videoId) { this.videoId = videoId; }
+        @Override public String patch_sessionVideoId() { return videoId; }
+        @Override public void patch_startSessionPaused() { paused = true; }
+        @Override public void patch_setSessionPosition(long value) { position = value; }
+        @Override public PlaybackSessionPatch.Descriptor patch_newSessionQueue(List<String> videoIds) {
+            throw new AssertionError("This session has no queue");
         }
     }
 

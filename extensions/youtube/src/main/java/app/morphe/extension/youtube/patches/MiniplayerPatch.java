@@ -40,6 +40,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
+import app.morphe.extension.youtube.patches.playback.RestoredMiniplayerControls;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"unused", "SpellCheckingInspection"})
@@ -695,6 +696,10 @@ public final class MiniplayerPatch {
      */
     public static void hideMiniplayerActionButton(View view) {
         MinimalMiniplayerPatch.setModernOverlayButton(view);
+        if (!MINIMAL_BAR_SELECTED && PlaybackSessionPatch.isPatchIncluded()
+                && Settings.MINIPLAYER_RESTORE_SESSION.get()) {
+            RestoredMiniplayerControls.bind(view);
+        }
 
         if (CURRENT_TYPE == MODERN_4) {
             Utils.hideViewByRemovingFromParentUnderCondition(HIDE_OVERLAY_BUTTONS_ENABLED, view);

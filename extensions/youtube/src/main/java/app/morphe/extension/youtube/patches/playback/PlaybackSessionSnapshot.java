@@ -21,7 +21,8 @@ import app.morphe.extension.shared.patches.BaseVideoInformation;
 
 /** The last eligible player session for one YouTube account on this device. */
 public record PlaybackSessionSnapshot(String account, String videoId, long positionMilliseconds, Kind kind,
-                                      String playlistId, boolean usesKeptQueue, @Nullable Queue queue) {
+                                      String playlistId, boolean usesKeptQueue, @Nullable Queue queue,
+                                      @Nullable Boolean captionsEnabled) {
     private static final int VERSION = 1;
     private static final int MAX_QUEUE_ITEMS = 5000;
 
@@ -54,6 +55,11 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
         Objects.requireNonNull(playlistId);
     }
 
+    public PlaybackSessionSnapshot(String account, String videoId, long positionMilliseconds, Kind kind,
+                                   String playlistId, boolean usesKeptQueue, @Nullable Queue queue) {
+        this(account, videoId, positionMilliseconds, kind, playlistId, usesKeptQueue, queue, null);
+    }
+
     static PlaybackSessionSnapshot fromJson(String json) throws JSONException {
         JSONObject data = new JSONObject(json);
         if (data.getInt("version") != VERSION) {
@@ -75,7 +81,8 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
         }
         return new PlaybackSessionSnapshot(data.getString("account"), data.getString("video"),
                 data.getLong("position"), Kind.valueOf(data.getString("kind")), data.getString("playlist"),
-                data.optBoolean("keptQueue"), queue);
+                data.optBoolean("keptQueue"), queue,
+                data.opt("captions") instanceof Boolean enabled ? enabled : null);
     }
 
     String toJson() throws JSONException {
@@ -86,7 +93,8 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
                 .put("position", positionMilliseconds)
                 .put("kind", kind.name())
                 .put("playlist", playlistId)
-                .put("keptQueue", usesKeptQueue);
+                .put("keptQueue", usesKeptQueue)
+                .put("captions", captionsEnabled);
         if (queue != null) {
             data.put("queue", new JSONObject()
                     .put("videos", new JSONArray(queue.videoIds()))
