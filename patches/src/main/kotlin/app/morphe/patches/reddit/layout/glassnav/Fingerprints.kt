@@ -23,6 +23,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val BOTTOM_NAV_SCREEN_CLASS = "Lcom/reddit/launch/bottomnav/BottomNavScreen;"
+private const val BOTTOM_NAV_WIDGET_CLASS = "Lcom/reddit/widget/bottomnav/a;"
 
 internal object BottomNavBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
@@ -45,7 +46,7 @@ internal object BottomNavBarFingerprint : Fingerprint(
 )
 
 /**
- * Row of buttons in the bottom navigation bar.
+ * Row of buttons in the bottom navigation bar, with a height of 50dp.
  */
 internal object BottomNavRowHeightFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
@@ -58,52 +59,24 @@ internal object BottomNavRowHeightFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("L", "F"),
             returnType = "L",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         )
     )
 )
 
 /**
- * Outer height of the bottom navigation bar, 2026.46.0+
+ * Height of the bottom navigation bar, which is the row of buttons (50dp)
+ * plus the system navigation bar below it.
  */
 internal object BottomNavBarHeightFingerprint : Fingerprint(
-    definingClass = BOTTOM_NAV_SCREEN_CLASS,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "F",
-    parameters = listOf("L", "I"),
     filters = listOf(
-        literal(50f),
-        opcode(Opcode.ADD_FLOAT_2ADDR, location = MatchAfterImmediately())
-    )
-)
-
-/**
- * Outer height of the bottom navigation bar, 2026.40.0 and lower.
- */
-internal object BottomNavBarHeightLegacyFingerprint : Fingerprint(
-    filters = listOf(
-        literal(1f),
-        // Modifier.fillMaxWidth
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("L", "F"),
-            returnType = "L",
-            location = MatchAfterImmediately()
+        fieldAccess(
+            opcode = Opcode.SGET,
+            definingClass = BOTTOM_NAV_WIDGET_CLASS,
+            type = "I"
         ),
-        literal(50f, location = MatchAfterWithin(3)),
-        opcode(Opcode.ADD_FLOAT_2ADDR, location = MatchAfterImmediately()),
-        // Modifier.height
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("L", "F"),
-            returnType = "L",
-            location = MatchAfterImmediately()
-        ),
-        methodCall(
-            definingClass = "Lcom/reddit/widget/bottomnav/a;",
-            returnType = "V",
-            location = MatchAfterWithin(10)
-        )
+        literal(50f, location = MatchAfterWithin(15)),
+        opcode(Opcode.ADD_FLOAT_2ADDR, location = MatchAfterWithin(5))
     )
 )
 
@@ -599,7 +572,16 @@ internal object BottomNavButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        string("bottom_nav_button")
+        string("bottom_nav_button"),
+        // Space above the icon.
+        literal(8f),
+        // Modifier.height
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "F"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        )
     )
 )
 

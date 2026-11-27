@@ -264,6 +264,12 @@ public final class GlassNavigationBarPatch {
     private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_HEIGHT);
     private static final int WIDTH_PERCENT = SeekBarPreference.clampToRange(Settings.GLASS_NAVIGATION_BAR_WIDTH);
     /**
+     * How much taller the row of buttons is, so a capsule taller than the default fits in it.
+     */
+    private static final float BAR_ROW_EXTRA_HEIGHT_DP = GLASS_ENABLED
+            ? Math.max(0, BAR_CAPSULE_HEIGHT_DP * (HEIGHT_PERCENT - 100) / 100)
+            : 0;
+    /**
      * How far the bottom bar is lifted.
      */
     private static final int POSITION_DP = GLASS_ENABLED
@@ -380,17 +386,7 @@ public final class GlassNavigationBarPatch {
      * @param original Height of the bottom navigation bar buttons, in dp.
      */
     public static float getBarRowHeight(float original) {
-        if (!GLASS_ENABLED) {
-            return original;
-        }
-
-        try {
-            return original + Math.max(0, BAR_CAPSULE_HEIGHT_DP * HEIGHT_PERCENT / 100 - BAR_CAPSULE_HEIGHT_DP);
-        } catch (Exception ex) {
-            Logger.printException(() -> "getBarRowHeight failure", ex);
-        }
-
-        return original;
+        return original + BAR_ROW_EXTRA_HEIGHT_DP;
     }
 
     /**
@@ -865,7 +861,7 @@ public final class GlassNavigationBarPatch {
     }
 
     private static float getBarRowHeightPx(float density) {
-        return getBarRowHeight(BAR_ROW_HEIGHT_DP) * density;
+        return (BAR_ROW_HEIGHT_DP + BAR_ROW_EXTRA_HEIGHT_DP) * density;
     }
 
     private static float getBarCapsuleHeightPx(float density) {

@@ -34,10 +34,8 @@ import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -183,29 +181,14 @@ val glassNavigationBarPatch = patch(
             }
         }
 
-        BottomNavRowHeightFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
+        // The row and the bar are taller if the capsule is taller than the row.
+        listOf(BottomNavRowHeightFingerprint, BottomNavBarHeightFingerprint).forEach { fingerprint ->
+            fingerprint.method.apply {
+                // 50dp height of the row.
+                val index = fingerprint.instructionMatches[1].index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstructions(
-                    index + 1,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS->getBarRowHeight(F)F
-                        move-result v$register
-                    """
-                )
-            }
-        }
-
-        (
-            BottomNavBarHeightFingerprint.matchOrNull()?.let { it.method to it.instructionMatches[0].index }
-                ?: BottomNavBarHeightLegacyFingerprint.matchOrNull()?.let { it.method to it.instructionMatches[2].index }
-            )
-            ?.let { (method, index) ->
-                val register = method.getInstruction<OneRegisterInstruction>(index).registerA
-
-                method.addInstructions(
                     index + 1,
                     """
                         invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getBarRowHeight(F)F
@@ -213,6 +196,7 @@ val glassNavigationBarPatch = patch(
                     """
                 )
             }
+        }
 
         BottomNavStackHostFingerprint.matchAll().forEach {
             val navStackHostMatch = it.instructionMatches[1]
@@ -326,16 +310,8 @@ val glassNavigationBarPatch = patch(
 
         BottomNavButtonFingerprint.matchAll().forEach { match ->
             match.method.apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-static/range { p3 .. p4 }, $EXTENSION_CLASS->getBarButtonModifier(Z$MODIFIER_INTERFACE)Ljava/lang/Object;
-                        move-result-object p4
-                        check-cast p4, $modifierType
-                    """
-                )
-
-                val spaceIndex = indexOfFirstLiteralInstructionOrThrow(8f)
+                // Hook the space first, so its index stays the same.
+                val spaceIndex = match.instructionMatches[1].index
                 val spaceRegister = getInstruction<OneRegisterInstruction>(spaceIndex).registerA
 
                 addInstructions(
@@ -343,6 +319,15 @@ val glassNavigationBarPatch = patch(
                     """
                         invoke-static/range { v$spaceRegister .. v$spaceRegister }, $EXTENSION_CLASS->getBarButtonTopSpace(F)F
                         move-result v$spaceRegister
+                    """
+                )
+
+                addInstructions(
+                    0,
+                    """
+                        invoke-static/range { p3 .. p4 }, $EXTENSION_CLASS->getBarButtonModifier(Z$MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object p4
+                        check-cast p4, $modifierType
                     """
                 )
             }
