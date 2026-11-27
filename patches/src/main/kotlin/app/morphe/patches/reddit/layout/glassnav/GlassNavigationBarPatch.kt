@@ -181,6 +181,23 @@ val glassNavigationBarPatch = patch(
             }
         }
 
+        // The row and the bar are taller if the capsule is taller than the row.
+        listOf(BottomNavRowHeightFingerprint, BottomNavBarHeightFingerprint).forEach { fingerprint ->
+            fingerprint.method.apply {
+                // 50dp height of the row.
+                val index = fingerprint.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getBarRowHeight(F)F
+                        move-result v$register
+                    """
+                )
+            }
+        }
+
         BottomNavStackHostFingerprint.matchAll().forEach {
             val navStackHostMatch = it.instructionMatches[1]
             val navStackHostMethod = navStackHostMatch.methodReference
@@ -292,14 +309,28 @@ val glassNavigationBarPatch = patch(
         // region Bottom bar pill.
 
         BottomNavButtonFingerprint.matchAll().forEach { match ->
-            match.method.addInstructions(
-                0,
-                """
-                    invoke-static/range { p3 .. p4 }, $EXTENSION_CLASS->getBarButtonModifier(Z$MODIFIER_INTERFACE)Ljava/lang/Object;
-                    move-result-object p4
-                    check-cast p4, $modifierType
-                """
-            )
+            match.method.apply {
+                // Hook the space first, so its index stays the same.
+                val spaceIndex = match.instructionMatches[1].index
+                val spaceRegister = getInstruction<OneRegisterInstruction>(spaceIndex).registerA
+
+                addInstructions(
+                    spaceIndex + 1,
+                    """
+                        invoke-static/range { v$spaceRegister .. v$spaceRegister }, $EXTENSION_CLASS->getBarButtonTopSpace(F)F
+                        move-result v$spaceRegister
+                    """
+                )
+
+                addInstructions(
+                    0,
+                    """
+                        invoke-static/range { p3 .. p4 }, $EXTENSION_CLASS->getBarButtonModifier(Z$MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object p4
+                        check-cast p4, $modifierType
+                    """
+                )
+            }
         }
 
         // endregion

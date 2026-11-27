@@ -23,6 +23,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val BOTTOM_NAV_SCREEN_CLASS = "Lcom/reddit/launch/bottomnav/BottomNavScreen;"
+private const val BOTTOM_NAV_WIDGET_CLASS = "Lcom/reddit/widget/bottomnav/a;"
 
 internal object BottomNavBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
@@ -41,6 +42,41 @@ internal object BottomNavBarFingerprint : Fingerprint(
             returnType = "V",
             location = MatchAfterWithin(40)
         )
+    )
+)
+
+/**
+ * Row of buttons in the bottom navigation bar, with a height of 50dp.
+ */
+internal object BottomNavRowHeightFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(
+        literal(28f),
+        literal(50f),
+        // Modifier.height
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "F"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Height of the bottom navigation bar, which is the row of buttons (50dp)
+ * plus the system navigation bar below it.
+ */
+internal object BottomNavBarHeightFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SGET,
+            definingClass = BOTTOM_NAV_WIDGET_CLASS,
+            type = "I"
+        ),
+        literal(50f, location = MatchAfterWithin(15)),
+        opcode(Opcode.ADD_FLOAT_2ADDR, location = MatchAfterWithin(5))
     )
 )
 
@@ -536,7 +572,16 @@ internal object BottomNavButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        string("bottom_nav_button")
+        string("bottom_nav_button"),
+        // Space above the icon.
+        literal(8f),
+        // Modifier.height
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "F"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        )
     )
 )
 
