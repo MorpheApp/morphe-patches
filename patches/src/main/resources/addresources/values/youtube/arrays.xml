@@ -548,12 +548,16 @@
         <item>@string/morphe_feed_card_layout_entry_1</item>
         <item>@string/morphe_feed_card_layout_entry_2</item>
         <item>@string/morphe_feed_card_layout_entry_3</item>
+        <item>@string/morphe_feed_card_layout_entry_4</item>
+        <item>@string/morphe_feed_card_layout_entry_5</item>
     </string-array>
     <string-array name="morphe_feed_card_layout_entry_values">
         <item>DEFAULT</item>
         <item>CLASSIC</item>
         <item>CARDS</item>
         <item>CARDS_WITH_ACTION_BUTTONS</item>
+        <item>CARDS_WITH_AVATAR_GLOW</item>
+        <item>CARDS_WITH_ACTION_BUTTONS_AND_AVATAR_GLOW</item>
     </string-array>
 
     <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
