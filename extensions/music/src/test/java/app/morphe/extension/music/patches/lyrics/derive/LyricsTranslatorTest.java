@@ -97,6 +97,35 @@ public class LyricsTranslatorTest {
     }
 
     @Test
+    public void isSameAsSourceTrueWhenProviderReturnsSourceText() throws Exception {
+        List<String> source = List.of("Hello darkness", "", "my old friend");
+        assertTrue(callIsSameAsSource(List.of("Hello darkness", "", "my old friend"), source));
+    }
+
+    @Test
+    public void isSameAsSourceIgnoresSurroundingWhitespace() throws Exception {
+        assertTrue(callIsSameAsSource(List.of(" Hello darkness "), List.of("Hello darkness")));
+    }
+
+    @Test
+    public void isSameAsSourceFalseWhenOneLineIsTranslated() throws Exception {
+        assertFalse(callIsSameAsSource(List.of("Hello", "mi viejo amigo"), List.of("Hello", "my old friend")));
+    }
+
+    @Test
+    public void isSameAsSourceFalseWhenProviderReturnsNothing() throws Exception {
+        assertFalse(callIsSameAsSource(null, List.of("Hello")));
+        assertFalse(callIsSameAsSource(List.of(), List.of("Hello")));
+    }
+
+    @Test
+    public void isSameAsSourceFalseWhenLinesAreMissing() throws Exception {
+        // An empty or null line in place of text is an incomplete answer, not the source text.
+        assertFalse(callIsSameAsSource(Arrays.asList("Hello", null), List.of("Hello", "friend")));
+        assertFalse(callIsSameAsSource(List.of("Hello", ""), List.of("Hello", "friend")));
+    }
+
+    @Test
     public void embeddedTranslationNullWhenNoTranslations() throws Exception {
         List<LyricsLine> lines = List.of(new LyricsLine(0, "hello"));
         Lyrics lyrics = new Lyrics(lines, "provider", true, null, null, null, null, null, null, null);
@@ -120,6 +149,12 @@ public class LyricsTranslatorTest {
     @SuppressWarnings("unchecked")
     private static boolean callHasTranslation(List<String> translated, List<String> source) throws Exception {
         Method method = LyricsTranslator.class.getDeclaredMethod("hasTranslation", List.class, List.class);
+        method.setAccessible(true);
+        return (boolean) method.invoke(null, translated, source);
+    }
+
+    private static boolean callIsSameAsSource(List<String> translated, List<String> source) throws Exception {
+        Method method = LyricsTranslator.class.getDeclaredMethod("isSameAsSource", List.class, List.class);
         method.setAccessible(true);
         return (boolean) method.invoke(null, translated, source);
     }
