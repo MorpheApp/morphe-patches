@@ -32,6 +32,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_disable_bottom_bar_auto_hide_summary">Keeps the bottom navigation bar visible while scrolling</string>
     <string name="morphe_glass_navigation_bar_title">Glass navigation bar</string>
     <string name="morphe_glass_navigation_bar_summary">Shows the navigation bar as a floating, translucent capsule over the feed. On tablets, the side rail has the same look</string>
+    <string name="morphe_glass_navigation_bar_screen_summary_on">On</string>
+    <string name="morphe_glass_navigation_bar_screen_summary_off">Off</string>
+    <string name="morphe_glass_navigation_bar_category_look">Look</string>
+    <string name="morphe_glass_navigation_bar_category_size">Size and position</string>
+    <string name="morphe_glass_navigation_bar_category_buttons">Buttons</string>
     <string name="morphe_glass_navigation_bar_color_title">Glass color</string>
     <string name="morphe_glass_navigation_bar_color_entry_auto">Auto</string>
     <string name="morphe_glass_navigation_bar_color_entry_light">Light</string>
@@ -116,6 +121,18 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_filters_saved">Refresh the feed to apply the changes</string>
 
     <string name="morphe_screen_layout_title">Layout</string>
+    <string name="morphe_layout_home_feed_title">Home feed</string>
+    <string name="morphe_layout_home_feed_summary">Tabs, refreshing, scrolling and the grid</string>
+    <string name="morphe_layout_shelves_title">Shelves and sections</string>
+    <string name="morphe_layout_shelves_summary">Recommended content in feeds and search</string>
+    <string name="morphe_layout_posts_title">Posts</string>
+    <string name="morphe_layout_posts_summary">Post screen, buttons and the side panel</string>
+    <string name="morphe_layout_comments_title">Comments</string>
+    <string name="morphe_layout_comments_summary">Collapsing, flairs and AutoModerator</string>
+    <string name="morphe_layout_media_viewer_title">Media viewer</string>
+    <string name="morphe_layout_media_viewer_summary">Full-screen images and videos</string>
+    <string name="morphe_layout_app_title">App</string>
+    <string name="morphe_layout_app_summary">Fonts, dialogs, status bar and more</string>
     <string name="morphe_copy_text_title">Copy text</string>
     <string name="morphe_copy_text_summary">Allows selecting and copying text in posts and comments</string>
     <string name="morphe_custom_font_title">Custom font</string>

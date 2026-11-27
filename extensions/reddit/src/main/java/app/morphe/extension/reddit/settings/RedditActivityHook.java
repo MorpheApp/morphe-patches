@@ -21,14 +21,12 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
@@ -47,8 +45,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
-import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.shared.ui.Dim;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function2;
 
@@ -441,27 +437,11 @@ public class RedditActivityHook {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Activity activity = getActivity();
-            final boolean modernStyle = RedditSettingsStyle.isModernStyle();
-            // Icons use the text color of the rows, the title is white or black like the app titles.
-            final int appForegroundColor = modernStyle
-                    ? RedditSettingsStyle.getTextColor()
-                    : ThemeUtils.getAppForegroundColor();
-            final int titleColor = modernStyle
-                    ? RedditSettingsStyle.getTitleColor()
-                    : appForegroundColor;
-            final int appBackgroundColor = modernStyle
-                    ? RedditSettingsStyle.getBackgroundColor()
-                    : ThemeUtils.getAppBackgroundColor();
+            final int appBackgroundColor = RedditSettingsStyle.getSettingsBackgroundColor();
 
             // Ensure the dialog window fills the screen and shows the status bar.
             Window window = Objects.requireNonNull(getDialog().getWindow());
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            window.setStatusBarColor(appBackgroundColor);
-            window.setNavigationBarColor(appBackgroundColor);
-            // Dark system bar icons only on a light background.
-            window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
-                    ? 0
-                    : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            RedditSettingsStyle.styleWindow(window);
 
             LinearLayout linearLayout = new LinearLayout(activity);
             linearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
@@ -469,46 +449,15 @@ public class RedditActivityHook {
             linearLayout.setBackgroundColor(appBackgroundColor);
             linearLayout.setFitsSystemWindows(true);
 
-            final int actionBarSize;
-            TypedValue tv = new TypedValue();
-            if (activity.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-                actionBarSize = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
-            } else {
-                actionBarSize = (int) (56 * getResources().getDisplayMetrics().density);
-            }
+            final int actionBarSize = RedditSettingsStyle.getActionBarSize(activity);
 
             // Holds the toolbar and the search bar that is shown over it.
             FrameLayout toolbarParent = new FrameLayout(activity);
             toolbarParent.setLayoutParams(new LinearLayout.LayoutParams(-1, actionBarSize));
             toolbarParent.setBackgroundColor(appBackgroundColor);
-            boolean isDark = Utils.isDarkModeEnabled();
-            toolbarParent.setElevation(modernStyle ? (isDark ? Dim.dp1 : Dim.dp6) : Dim.dp2);
-            if (modernStyle && !isDark) {
-                toolbarParent.setTranslationZ(Dim.dp2);
-            }
+            RedditSettingsStyle.applyToolbarElevation(toolbarParent);
 
-            Toolbar toolbar = new Toolbar(activity);
-            toolbar.setLayoutParams(new FrameLayout.LayoutParams(-1, actionBarSize));
-            toolbar.setBackgroundColor(appBackgroundColor);
-            toolbar.setTitle(MORPHE_LABEL);
-            toolbar.setTitleTextColor(titleColor);
-
-            toolbar.post(() -> {
-                TextView titleTextView = Utils.getChildView(toolbar, false,
-                        view -> view instanceof TextView);
-                if (titleTextView != null) {
-                    if (modernStyle) {
-                        RedditSettingsStyle.styleToolbarTitle(titleTextView);
-                    } else {
-                        titleTextView.setTextSize(18);
-                    }
-                }
-            });
-
-            Drawable backIcon = Objects.requireNonNull(ResourceUtils.getDrawable("icon_arrow_back"));
-            backIcon.setTint(appForegroundColor);
-            toolbar.setNavigationIcon(backIcon);
-            // The search view controller sets the navigation click listener.
+            Toolbar toolbar = RedditSettingsStyle.createToolbar(activity, MORPHE_LABEL, this::closeSettings);
             toolbarParent.addView(toolbar);
 
             FrameLayout searchContainer = (FrameLayout) inflater.inflate(
