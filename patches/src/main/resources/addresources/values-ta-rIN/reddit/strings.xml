@@ -23,10 +23,17 @@ Second \"item\" text"</string>
 &lt;br/&gt;&lt;br/&gt;
 பழைய பதிப்பைப் பயன்படுத்த, நீங்கள் Reddit-ஐ &lt;b&gt;நீக்கிவிட்டு&lt;/b&gt; அதன் பிறகு பழைய பதிப்பை நிறுவ வேண்டும்."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">செயலி தகவலைத் திறக்கவும்</string>
+  <string name="morphe_ads_screen_summary">ஃபீட் மற்றும் கருத்து விளம்பரங்கள்</string>
+  <string name="morphe_navigation_bar_screen_summary">கீழ் பட்டைக் பொத்தான்கள் மற்றும் கண்ணாடிப் பட்டை</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">கீழ் பட்டையைத் தானாக மறைப்பதை முடக்கு</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">ஸ்க்ரோல் செய்யும்போது கீழ் வழிசெலுத்தல் பட்டையைத் தெரியும்படி வைத்திருக்கும்</string>
   <string name="morphe_glass_navigation_bar_title">கிளாஸ் நேவிகேஷன் பார்</string>
   <string name="morphe_glass_navigation_bar_summary">ஃபீடிற்கு மேலே மிதக்கும், ஒளிபுகும் கேப்சூலாக நேவிகேஷன் பாரைக் காட்டுகிறது. டேப்லெட்டுகளில், சைடு ரெயிலும் இதே தோற்றத்தைக் கொண்டிருக்கும்</string>
+  <string name="morphe_glass_navigation_bar_screen_summary_on">ஆன்</string>
+  <string name="morphe_glass_navigation_bar_screen_summary_off">ஆஃப்</string>
+  <string name="morphe_glass_navigation_bar_category_look">தோற்றம்</string>
+  <string name="morphe_glass_navigation_bar_category_size">அளவு மற்றும் இடம்</string>
+  <string name="morphe_glass_navigation_bar_category_buttons">பொத்தான்கள்</string>
   <string name="morphe_glass_navigation_bar_color_title">கிளாஸ் நிறம்</string>
   <string name="morphe_glass_navigation_bar_color_entry_auto">தானியங்கி</string>
   <string name="morphe_glass_navigation_bar_color_entry_light">லைட்</string>
@@ -34,6 +41,10 @@ Second \"item\" text"</string>
   <string name="morphe_glass_navigation_bar_style_title">கண்ணாடி பாணி</string>
   <string name="morphe_glass_navigation_bar_style_entry_tinted">சாயமிடப்பட்டது</string>
   <string name="morphe_glass_navigation_bar_style_entry_frosted">முறைக்கப்பட்ட கண்ணாடி</string>
+  <string name="morphe_glass_navigation_bar_strength_title">கண்ணாடியின் வலிமை</string>
+  <string name="morphe_glass_navigation_bar_strength_entry_clear">தெளிவு</string>
+  <string name="morphe_glass_navigation_bar_strength_entry_balanced">சமநிலைப்படுத்தப்பட்டது</string>
+  <string name="morphe_glass_navigation_bar_strength_entry_solid">திடமானது</string>
   <string name="morphe_glass_navigation_bar_blur_title">கண்ணாடி மங்கலாக்கம்</string>
   <string name="morphe_glass_navigation_bar_blur_summary">முறைக்கப்பட்ட கண்ணாடியின் பின்னால் உள்ள பக்கம் எவ்வளவு மங்கலாக இருக்க வேண்டும் (Android 14 மற்றும் அதற்குப் பிறகு). 0-ல், மற்றும் Android 14-க்கு முன்னதாக, கண்ணாடி சாயமிடப்பட்டிருக்கும்</string>
   <string name="morphe_glass_navigation_bar_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
@@ -50,6 +61,14 @@ Second \"item\" text"</string>
   <string name="morphe_glass_navigation_bar_show_labels_title">லேபிள்களைக் காட்டு</string>
   <string name="morphe_glass_navigation_bar_show_labels_summary_on">பொத்தான்கள் அவற்றின் லேபிள்களைக் காட்டும்</string>
   <string name="morphe_glass_navigation_bar_show_labels_summary_off">பொத்தான்கள் ஐகான்களை மட்டுமே காட்டும்</string>
+  <string name="morphe_glass_navigation_bar_search_button_title">தேடல் பொத்தான்</string>
+  <string name="morphe_glass_navigation_bar_search_button_summary_on">ஃபோன்களில் தேடல் என்பது வழிசெலுத்தல் பட்டைக்கு அருகில் உள்ள ஒரு வட்டப் பொத்தானாகும்</string>
+  <string name="morphe_glass_navigation_bar_search_button_summary_off">தேடல் முகப்புப் பக்கத்தின் மேல்பகுதியில் உள்ளது</string>
+  <string name="morphe_glass_navigation_bar_search_button_label">தேடல்</string>
+  <string name="morphe_glass_navigation_bar_top_tabs_title">மேல் பட்டியில் உள்ள டேப்கள்</string>
+  <string name="morphe_glass_navigation_bar_top_tabs_summary_on">ஹோம் ஃபீட் டேப்கள் மெனுவிற்கும் அவதாரிற்கும் இடையே உள்ள ஒரு கிளாஸ் கேப்சூலில் உள்ளன</string>
+  <string name="morphe_glass_navigation_bar_top_tabs_summary_off">ஹோம் ஃபீட் டேப்கள் மேல் பட்டிற்கு கீழே உள்ளன</string>
+  <string name="morphe_sidebar_screen_summary">பக்கப் பட்டையில் உள்ள அலமாரிகள் மற்றும் பொத்தான்கள்</string>
   <string name="morphe_settings_in_sidebar_title">Morphe அமைப்புகளைக் காட்டு</string>
   <string name="morphe_settings_in_sidebar_summary">சைட்பாரின் மேற்பகுதியில் Morphe அமைப்புகளைக் காட்டுகிறது</string>
   <string name="morphe_hide_popular_shelf_title">பிரபலமான அடுக்கு மறைக்கவும்</string>
@@ -59,10 +78,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">\'Games on Reddit\' அலமாரியை மறைக்கவும்</string>
   <string name="morphe_hide_recently_visited_shelf_title">\'சமீபத்தில் பார்வையிட்டவை\' அலமாரியை மறைக்கவும்</string>
   <string name="morphe_hide_reddit_pro_shelf_title">\'Reddit Pro\' அலமாரியை மறைக்கவும்</string>
-  <string name="morphe_screen_post_buttons_title">பதிவு பொத்தான்கள்</string>
+  <string name="morphe_post_buttons_screen_summary">பதிவுகளில் உள்ள பொத்தான்கள் மற்றும் எண்ணிக்கைகள்</string>
   <string name="morphe_hide_post_award_button_title">விருது பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_post_award_button_summary">பதிவுகள் மற்றும் கருத்துகளில் விருது பொத்தானை மறைக்கிறது</string>
-  <string name="morphe_hide_post_comment_button_title">கருத்து பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_post_join_button_title">சேரு பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_post_mod_button_title">மாடு பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_post_repost_button_title">மறுபதிவு பொத்தானை மறைக்கவும்</string>
@@ -74,14 +92,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_vote_count_title">வாக்கு எண்ணிக்கையை மறைக்கவும்</string>
   <string name="morphe_hide_post_vote_count_summary">பதிவுகள் மற்றும் கருத்துகளின் Upvote மற்றும் Downvote பொத்தான்களுக்கு இடையே உள்ள மதிப்பெண்ணை மறைக்கிறது</string>
   <string name="morphe_screen_filters_title">வடிகட்டிகள்</string>
+  <string name="morphe_filters_screen_summary">ஃபிளேயர் அல்லது முக்கிய வார்த்தை மூலம் ஃபீட் பதிவுகளை மறைக்கவும்</string>
   <string name="morphe_flair_filters_title">Flair வடிகட்டிகள்</string>
   <string name="morphe_flair_filters_summary">ஒரு சமூகத்தின் flair கொண்ட feed பதிவுகளை மறைக்கவும். பொருத்தம் கண்டறிதலில் எழுத்து வடிவங்கள் புறக்கணிக்கப்படும்</string>
   <string name="morphe_flair_filters_empty">Flair வடிகட்டிகள் எதுவும் இல்லை</string>
-  <string name="morphe_flair_filters_add">சேர்க்கவும்</string>
-  <string name="morphe_flair_filters_remove">நீக்குக</string>
   <string name="morphe_flair_filters_hint">சமூகம்::ஃப்ளையர்</string>
   <string name="morphe_flair_filters_invalid">ஒரு சமூகம் மற்றும் ஒரு ஃபிளாரை உள்ளிடவும், உதாரணமாக gaming::Discussion</string>
-  <string name="morphe_flair_filters_saved">மாற்றங்களைச் செயல்படுத்த ஃபீடைப் புதுப்பிக்கவும்</string>
   <string name="morphe_flair_filters_remember_seen_title">பார்த்த ஃபிளாரை நினைவில் கொள்க</string>
   <string name="morphe_flair_filters_remember_seen_summary">ஃபிளார் ஃபில்டர்களைத் தேர்வு செய்ய, ஆப் மூடப்படும் வரை ஃபீட் பதிவுகளின் ஃபிளாரை நினைவில் கொள்க</string>
   <string name="morphe_flair_filters_seen_title">பார்த்த ஃபிளாரைத் தேர்வு செய்க</string>
@@ -90,11 +106,16 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_title">முக்கிய வார்த்தை வடிகட்டிகள்</string>
   <string name="morphe_keyword_filters_summary">வழக்கமான வெளிப்பாட்டிற்கு பொருந்தக்கூடிய தலைப்பு அல்லது உரை கொண்ட ஃபீட் பதிவுகளை மறைக்கவும். பொருத்தம் சரிபார்க்கப்படும்போது எழுத்துக்களின் வகை புறக்கணிக்கப்படும்</string>
   <string name="morphe_keyword_filters_empty">முக்கிய வார்த்தை வடிகட்டிகள் ஏதுமில்லை</string>
-  <string name="morphe_keyword_filters_add">சேர்</string>
-  <string name="morphe_keyword_filters_remove">நீக்கு</string>
   <string name="morphe_keyword_filters_hint">வழக்கமான வெளிப்பாடு</string>
   <string name="morphe_keyword_filters_invalid">தவறான வழக்கமான வெளிப்பாடு: %s</string>
-  <string name="morphe_keyword_filters_saved">மாற்றங்களை நடைமுறைப்படுத்த ஃபீட்டைப் புதுப்பிக்கவும்</string>
+  <string name="morphe_filters_saved">மாற்றங்களைப் பயன்படுத்த ஃபீடைப் புதுப்பிக்கவும்</string>
+  <string name="morphe_layout_screen_summary">ஃபீட், பதிவுகள், கருத்துகள், ஊடகங்கள் மற்றும் செயலி</string>
+  <string name="morphe_layout_home_feed_title">முகப்பு ஃபீடு</string>
+  <string name="morphe_layout_shelves_title">ஷெல்ஃப்கள் மற்றும் பிரிவுகள்</string>
+  <string name="morphe_layout_posts_title">பதிவுகள்</string>
+  <string name="morphe_layout_comments_title">கருத்துகள்</string>
+  <string name="morphe_layout_media_viewer_title">மீடியா வியூவர்</string>
+  <string name="morphe_layout_app_title">செயலி</string>
   <string name="morphe_copy_text_summary">பதிவுகள் மற்றும் கருத்துகளில் உரையைத் தேர்ந்தெடுத்து நகலெடுக்க அனுமதிக்கிறது</string>
   <string name="morphe_home_feed_tabs_title">ஹோம் ஃபீட் டேப்கள்</string>
   <string name="morphe_home_feed_tabs_summary">முகப்பு ஃபீட்டில் For You, Following மற்றும் Popular டேப்களைக் காண்பிக்கும், மேலும் அவற்றுக்கிடையே ஸ்வைப் செய்ய அனுமதிக்கும். Following வசதிக்கு கணக்கில் உள்நுழைந்திருக்க வேண்டும்</string>
@@ -156,6 +177,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_grid_feed_title">டேப்லெட் கிரிட் ஃபீட்</string>
   <string name="morphe_tablet_grid_feed_summary_on">ஃபீட்கள் டேப்லெட்களில் கிரிட்டாகக் காட்டப்படும். போன்களில் மாற்றம் இல்லை</string>
   <string name="morphe_tablet_grid_feed_summary_off">ஃபீட்கள் ஒரு பட்டியலாகக் காட்டப்படுகின்றன</string>
+  <string name="morphe_miscellaneous_screen_summary">பற்றி, மொழி, இணைப்புகள், பகிர்தல் மற்றும் பிழைத்திருத்தம்</string>
   <string name="morphe_share_post_content_title">பதிவின் உள்ளடக்கத்தைப் பகிரவும்</string>
   <string name="morphe_share_post_content_summary">செயலி குறுக்குவழிகள் மற்றும் பகிர்வுத் தாளின் \"...மூலம் பகிரவும்\" என்பவை பதிவின் இணைப்பிற்குப் பதிலாக அதன் படம், வீடியோ அல்லது உரையை அனுப்புகின்றன. இணைப்பை நகலெடுப்பது இன்னும் இணைப்பையே நகலெடுக்கும்</string>
   <string name="morphe_share_post_content_preparing">பகிர்வதற்குத் தயாராகிறது…</string>
@@ -188,7 +210,6 @@ Second \"item\" text"</string>
   <string name="morphe_redgifs_hd_summary">HD Redgifs வீடியோவை இயக்குகிறது. HD வீடியோக்கள் பெரியவை மற்றும் பதிவிறக்கம் செய்ய இடைநிறுத்தப்படலாம்</string>
   <string name="morphe_download_all_from_gallery_title">கேலரியிலிருந்து அனைத்தையும் பதிவிறக்கவும்</string>
   <string name="morphe_download_all_from_gallery_summary">பகிர்வு தாளில் கேலரி பதிவொன்றில் பதிவிறக்கு என்பதைத் தட்டும்போது, நீங்கள் பார்க்கும் உருப்படி மற்றும் கேலரியில் உள்ள அனைத்து உருப்படிகளுக்கும் இடையே ஒன்றைத் தேர்ந்தெடுக்கவும்</string>
-  <string name="morphe_download_all_dialog_title">பதிவிறக்கு</string>
   <string name="morphe_download_all_dialog_message">நீங்கள் பார்க்கும் உருப்படியை மட்டும் சேமிக்க வேண்டுமா, அல்லது கேலரியில் உள்ள அனைத்து உருப்படிகளையும் சேமிக்க வேண்டுமா?</string>
   <string name="morphe_download_all_this_one">இதை மட்டும்</string>
   <string name="morphe_download_all_all">அனைத்து %s</string>
@@ -216,9 +237,6 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_pattern_help">ஒரு டோக்கனை உள்ளிட அதைத் தட்டவும். / ஒரு துணைக்கோப்புறையை உருவாக்கும். தெரியாத மதிப்புகள் \"unknown\" என மாறும்</string>
   <string name="morphe_download_location_example_images">படங்கள்: %s</string>
   <string name="morphe_download_location_example_videos">வீடியோக்கள்: %s</string>
-  <string name="morphe_download_location_save">சேமி</string>
-  <string name="morphe_download_location_reset">மீட்டமை</string>
-  <string name="morphe_download_location_delete">நீக்கு</string>
   <string name="morphe_download_location_reset_confirm">அனைத்து கணக்குகளின் பதிவிறக்க இருப்பிடத்தை Reddit-ன் இயல்பு நிலைக்கு மீட்டமைக்க வேண்டுமா?</string>
   <string name="morphe_download_location_delete_confirm">%s-ன் பதிவிறக்க இருப்பிடத்தை நீக்க வேண்டுமா?</string>
   <string name="morphe_download_location_save_failed">பதிவிறக்க இருப்பிடத்தில் சேமிக்க முடியவில்லை. அதற்குப் பதிலாக Reddit-ன் இயல்புநிலை கோப்புறையில் சேமிக்கப்பட்டது</string>
@@ -240,7 +258,7 @@ Second \"item\" text"</string>
   <string name="morphe_video_playback_speed_controls_entry_menu_and_hold">வேகத்தை அதிகரிக்க மெனுவை அழுத்திக் கொள்ளவும்</string>
   <string name="morphe_full_screen_reply_title">முழுத்திரை பதில்</string>
   <string name="morphe_full_screen_reply_summary">பதில்கள் பழைய முழுத்திரை எடிட்டரில் திறக்கப்படும், இது நீங்கள் பதிலளிக்கும் கருத்தைக் காண்பிக்கும், இதன் மூலம் அதன் உரையை நீங்கள் தேர்ந்தெடுத்து மேற்கோள் காட்டலாம். அங்கு படங்களை வெட்டும் வசதி இல்லை</string>
-  <string name="morphe_automoderator_comments_title">AutoModerator கருத்துகள்</string>
+  <string name="morphe_automoderator_comments_title">AutoModerator, பாட் மற்றும் பின் செய்யப்பட்ட கருத்துகள்</string>
   <string name="morphe_automoderator_comments_entry_show">காட்டு</string>
   <string name="morphe_automoderator_comments_entry_collapse">சுருக்கு</string>
   <string name="morphe_automoderator_comments_entry_hide">மறை</string>
@@ -261,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">வானவில் (பிரகாசமானது)</string>
   <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">பாஸ்டல் (மென்மையானது)</string>
   <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">மறைக்கப்பட்ட (பக்கத்துடன் ஒன்றிப்போகும்)</string>
-  <string name="morphe_app_icon_title">செயலி ஐகான்</string>
   <string name="morphe_app_icon_choose_title">செயலி ஐகானைத் தேர்வு செய்யவும்</string>
   <string name="morphe_app_icon_default">இயல்பானது</string>
   <string name="morphe_app_icon_unknown">தெரியவில்லை</string>

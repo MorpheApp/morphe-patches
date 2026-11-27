@@ -26,7 +26,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
@@ -48,7 +47,6 @@ Second \"item\" text"</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.playlisttags.playlistTagsPatch -->
-  <!-- Title of the row added to the menu of a playlist. -->
   <!-- %s is the name of the tag. -->
   <!-- %s is the number of hidden tags. -->
   <!-- %s is the name of the playlist. -->
@@ -104,4 +102,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_language_none">કોઈપણ નહિ </string>
   <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ડિફૉલ્ટ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <!-- Shared YouTube Music strings -->
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
 </resources>

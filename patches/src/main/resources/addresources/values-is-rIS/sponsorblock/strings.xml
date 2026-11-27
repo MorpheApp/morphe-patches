@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Virkja SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock er samfélagsdrifið kerfi til að sleppa leiðinlegum hlutum YouTube-myndbanda</string>
-  <string name="morphe_sb_appearance_category_title">Útlit</string>
   <string name="morphe_sb_voting_button_title">Sýna atkvæðahnapp</string>
   <string name="morphe_sb_voting_button_summary">Bætir við hnappi til að kjósa hluta upp eða niður</string>
   <string name="morphe_sb_square_layout_title">Notaðu ferkantað útlit</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Felur sleppahnappinn eftir nokkrar sekúndur í stað þess að hafa hann sýnilegan allan hlutann</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Lengd sleppahnapps</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Stilltu hversu lengi sleppahnapparnir eru sýnilegir</string>
-  <string name="morphe_sb_toast_on_skip_title">Sýna tilkynningu um sleppingu</string>
   <string name="morphe_sb_toast_on_skip_summary">Sýnir tilkynningu þegar hluti er sleppt sjálfvirkt</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Lengd tilkynningar um sleppingu</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Stilltu hversu lengi afturköllunartilkynningin er sýnileg</string>
-  <string name="morphe_sb_duration_1s">1 sekúnda</string>
-  <string name="morphe_sb_duration_2s">2 sekúndur</string>
-  <string name="morphe_sb_duration_3s">3 sekúndur</string>
-  <string name="morphe_sb_duration_4s">4 sekúndur</string>
-  <string name="morphe_sb_duration_5s">5 sekúndur</string>
-  <string name="morphe_sb_duration_6s">6 sekúndur</string>
-  <string name="morphe_sb_duration_7s">7 sekúndur</string>
-  <string name="morphe_sb_duration_8s">8 sekúndur</string>
-  <string name="morphe_sb_duration_9s">9 sekúndur</string>
-  <string name="morphe_sb_duration_10s">10 sekúndur</string>
   <string name="morphe_sb_video_length_without_segments_title">Sýna lengd myndbands án hluta</string>
   <string name="morphe_sb_video_length_without_segments_summary">Dregur alla hluta frá heildarlengd myndbandsins sem sýnd er á leitarstikunni</string>
   <string name="morphe_sb_create_segment_category_title">Búa til nýja hluta</string>
   <string name="morphe_sb_create_new_segment_title">Sýna \'Búa til nýjan hluta\' hnapp</string>
   <string name="morphe_sb_create_new_segment_summary">Bætir við hnappi við myndbandsspilarann sem gerir þér kleift að senda inn nýja SponsorBlock-hluta</string>
-  <string name="morphe_sb_create_new_segment_step_title">Skref tímastillingar</string>
   <string name="morphe_sb_create_new_segment_step_summary">Leitarsvið tímastillingarhnappa (í millisekúndum)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Gildið verður að vera jákvæð tala</string>
   <string name="morphe_sb_guidelines_title">Sendingarleiðbeiningar</string>
   <string name="morphe_sb_guidelines_summary">Leiðbeiningar innihalda reglur og ábendingar um að búa til nýja hluta</string>
   <string name="morphe_sb_guidelines_popup_title">Fylgdu leiðbeiningunum</string>
   <string name="morphe_sb_guidelines_popup_content">Lestu leiðbeiningar SponsorBlock áður en þú býrð til nýja hluta</string>
   <string name="morphe_sb_guidelines_popup_already_read">Þegar lesið</string>
   <string name="morphe_sb_guidelines_popup_open">Sýndu mér</string>
-  <string name="morphe_sb_general_title">Almennt</string>
   <string name="morphe_sb_offline_segments_title">Vista hluta af niðurhlaðnum myndböndum</string>
   <string name="morphe_sb_offline_segments_summary">Leyfir að sleppa hluta af niðurhlaðnum myndböndum þegar engin nettenging er</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Sýna villuskilaboð um tengingu</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Sýnir tilkynningu þegar SponsorBlock netþjónninn er ekki tiltækur</string>
   <string name="morphe_sb_track_skip_count_title">Virkja skráningu á fjölda sleppinga</string>
   <string name="morphe_sb_track_skip_count_summary">Sendir fjölda sleppinga á stigatöflu SponsorBlock til að fylgjast með hversu mikill tími sparast</string>
   <string name="morphe_sb_min_segment_duration_title">Lágmarkslengd hluta</string>
   <string name="morphe_sb_min_segment_duration_summary">Hlutir sem eru styttri en þetta gildi (í sekúndum) verða hvorki sýndir né sleppt</string>
   <string name="morphe_sb_min_segment_duration_invalid">Ógildur tími</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Persónulegt notendaauðkenni þitt</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Þetta á að halda leyndu. Þetta er eins og lykilorð og á ekki að deila með neinum. Ef einhver hefur þetta getur hann/hún þóst vera þú</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Persónulegt notendaauðkenni verður að vera að minnsta kosti 30 stafir að lengd</string>
   <string name="morphe_sb_api_url_title">Breyta API URL</string>
   <string name="morphe_sb_api_url_summary">Vefslóðin sem SponsorBlock notar til að senda beiðnir á netþjóninn</string>
   <string name="morphe_sb_channel_whitelist_title">Hvítlisti rása</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">Ógild API-slóð</string>
   <string name="morphe_sb_api_url_changed">API-slóð breytt</string>
   <string name="morphe_sb_settings_ie_title">Flytja inn / út stillingar</string>
-  <string name="morphe_sb_settings_copy">Afrita</string>
   <string name="morphe_sb_settings_ie_summary">JSON-stillingar þínar fyrir SponsorBlock sem hægt er að flytja inn og út í Morphe og á öðrum SponsorBlock-vettvangi</string>
   <string name="morphe_sb_settings_ie_summary_warning">"JSON-stillingar þínar fyrir SponsorBlock sem hægt er að flytja inn og út í Morphe og á öðrum SponsorBlock-vettvangi.
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Stillingar þínar innihalda einkvæmt SponsorBlock-notendaauðkenni.
 
 Notendaauðkenni þitt er eins og lykilorð og ætti aldrei að deila því"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ekki sýna aftur</string>
   <string name="morphe_sb_diff_segments_title">Breyta hegðun hluta</string>
   <string name="morphe_sb_segments_sponsor">Kostun</string>
   <string name="morphe_sb_segments_sponsor_summary">Greidd kynning, greidd tilvísun og beinar auglýsingar. Ekki sjálfskynning eða ókeypis hrós til málefna / skapara / vefsvæða / vara sem þeim líkar við</string>
@@ -122,11 +102,9 @@ Notendaauðkenni þitt er eins og lykilorð og ætti aldrei að deila því"</st
   <string name="morphe_sb_skip_button_highlight">Sleppa á hápunkt</string>
   <string name="morphe_sb_skip_button_intro_beginning">Sleppa inngangi</string>
   <string name="morphe_sb_skip_button_intro_middle">Sleppa millispilli</string>
-  <string name="morphe_sb_skip_button_intro_end">Sleppa millispilli</string>
   <string name="morphe_sb_skip_button_outro">Sleppa lokakafla</string>
   <string name="morphe_sb_skip_button_hook">Sleppa inngangi</string>
   <string name="morphe_sb_skip_button_preview_beginning">Sleppa forskoðun</string>
-  <string name="morphe_sb_skip_button_preview_middle">Sleppa forskoðun</string>
   <string name="morphe_sb_skip_button_preview_end">Sleppa endurskoðun</string>
   <string name="morphe_sb_skip_button_filler">Sleppa útúrdúr</string>
   <string name="morphe_sb_skip_button_nomusic">Sleppa kafla án tónlistar</string>
@@ -137,11 +115,9 @@ Notendaauðkenni þitt er eins og lykilorð og ætti aldrei að deila því"</st
   <string name="morphe_sb_skipped_highlight">Sleppt á hápunkt</string>
   <string name="morphe_sb_skipped_intro_beginning">Sleppt inngangi</string>
   <string name="morphe_sb_skipped_intro_middle">Sleppt millispilli</string>
-  <string name="morphe_sb_skipped_intro_end">Sleppt millispilli</string>
   <string name="morphe_sb_skipped_outro">Sleppt lokakafla</string>
   <string name="morphe_sb_skipped_hook">Sleppt inngangi</string>
   <string name="morphe_sb_skipped_preview_beginning">Sleppt forskoðun</string>
-  <string name="morphe_sb_skipped_preview_middle">Sleppt forskoðun</string>
   <string name="morphe_sb_skipped_preview_end">Sleppt endurskoðun</string>
   <string name="morphe_sb_skipped_filler">Sleppt útúrdúr</string>
   <string name="morphe_sb_skipped_nomusic">Sleppt kafla án tónlistar</string>
@@ -167,8 +143,6 @@ Hann er þegar til"</string>
   <string name="morphe_sb_vote_failed_timeout">Ekki hægt að greiða atkvæði um hluta (API rann út á tíma)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Ekki hægt að greiða atkvæði um hluta (staða: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Ekki hægt að greiða atkvæði um hluta: %s</string>
-  <string name="morphe_sb_vote_upvote">Atkvæði upp</string>
-  <string name="morphe_sb_vote_downvote">Atkvæði niður</string>
   <string name="morphe_sb_vote_category">Breyta flokki</string>
   <string name="morphe_sb_vote_no_segments">Engir hlutar til að greiða atkvæði um</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ til
 (%3$s)
 
 Tilbúinn að senda?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Senda</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Upphaf verður að vera fyrir lok</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Merktu fyrst stað á tímastikunni</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Forskoða hluta og tryggja að hann sleppi vandræðalaust</string>
@@ -205,16 +178,11 @@ Tilbúinn að senda?"</string>
 %s
 
 Ef þú ert ekki að senda hápunkt, ýttu á Hætta við og merktu seinni staðinn"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Senda hápunkt</string>
   <string name="morphe_sb_stats_title">Tölfræði</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Tölfræði er tímabundið ekki tiltæk (API er niðri)</string>
-  <string name="morphe_sb_stats_loading">Hlaða…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock er óvirkt</string>
-  <string name="morphe_sb_stats_username">Notandanafn þitt: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Pikkaðu hér til að breyta notandanafninu þínu</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Ekki hægt að breyta notandanafni: Staða: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Notandanafn breytt</string>
   <string name="morphe_sb_stats_reputation">Orðstír þinn er &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Þú hefur búið til &lt;b&gt;%s&lt;/b&gt; hluta</string>
   <string name="morphe_sb_stats_submissions_summary">Snertu hér til að skoða hlutana þína</string>

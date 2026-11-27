@@ -81,7 +81,6 @@ Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</str
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
-  <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Originalna</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe crni</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tamno</string>
@@ -107,7 +106,6 @@ Da biste promenili ikonu svuda, ponovo izvršite patch i promenite opciju patch-
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Lažirani video strimovi</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurišite lažiranje klijenta kako biste sprečili probleme sa reprodukcijom</string>
@@ -134,7 +132,6 @@ Dodirnite OK da otvorite Android System WebView."</string>
 Reprodukcija video zapisa može biti onemogućena sve dok Android System WebView ne bude ažuriran na najnoviju verziju.
 
 Dodirnite OK da otvorite Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne prikazuj ponovo</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nije instaliran. Instalirajte ga kako biste popravili reprodukciju video zapisa</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Da biste se prijavili, pritisnite „Nastavi“ ispod"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kontrole medija u obaveštenju</string>
   <string name="morphe_notification_media_screen_summary">Prilagodite kontrole reprodukcije prikazane na zaključanom ekranu i u panelu za obaveštenja</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Sakrij dugmad za prethodni i sledeći video</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Sakriva dugmad za prethodni i sledeći video u medijskom obaveštenju, na zaključanom ekranu i u kontrolama na slušalicama</string>
   <string name="morphe_disable_notification_media_seekbar_title">Onemogući klizač</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Sprečava prevlačenje klizača na zaključanom ekranu i u panelu za obaveštenja</string>
@@ -244,10 +240,8 @@ Da biste se prijavili, pritisnite „Nastavi“ ispod"</string>
   <string name="morphe_video_effects_custom_restore">Vrati podrazumevane vrednosti</string>
   <string name="morphe_video_effects_custom_add_title">Novi efekat</string>
   <string name="morphe_video_effects_custom_edit_title">Izmeni efekat</string>
-  <string name="morphe_video_effects_custom_name_hint">Ime</string>
   <string name="morphe_video_effects_custom_name_empty">Unesite ime za efekat</string>
   <string name="morphe_video_effects_custom_name_exists">Efekat sa ovim imenom već postoji</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopiraj kod</string>
   <string name="morphe_video_effects_custom_error_title">Efekat ima grešku</string>
   <string name="morphe_video_effects_custom_error_message">"Video snimci se prikazuju bez efekta dok kod ne bude ispravljen. Prosledite ovu grešku veštačkoj inteligenciji koja je napisala kod:
 
@@ -257,7 +251,6 @@ Da biste se prijavili, pritisnite „Nastavi“ ispod"</string>
 Zatražite od AI-ja kraći kod ili zalepite kod u delovima."</string>
   <string name="morphe_video_effects_custom_copy_error">Greška pri kopiranju</string>
   <string name="morphe_video_effects_custom_save_anyway">Ipak sačuvaj</string>
-  <string name="morphe_video_effects_custom_delete">Obriši</string>
   <string name="morphe_video_effects_custom_delete_title">Obrisati efekat?</string>
   <string name="morphe_video_effects_custom_delete_message">%s će biti obrisano.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Zatražite od AI-ja kraći kod ili zalepite kod u delovima."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Da biste koristili ovu funkciju, promenite opciju „Lažirani video strimovi” na bilo koji klijent osim \'Android Studio\' i \'Android VR Downgraded\'.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Očisti deljene linkove</string>
-  <string name="morphe_sanitize_sharing_links_summary">Uklanja parametre upita za praćenje iz deljenih linkova</string>
   <string name="morphe_replace_music_with_youtube_title">Promeni linkove za deljenje na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Zamenjuje music.youtube.com sa youtube.com u deljenim linkovima</string>
   <string name="morphe_replace_links_with_shortener_title">Promeni linkove za deljenje na youtu.be</string>
@@ -370,7 +361,6 @@ Ako se kasnije isključi, preporučuje se brisanje podataka aplikacije kako bi s
   <string name="morphe_custom_font_type_title">Tip fonta</string>
   <string name="morphe_custom_font_type_entry_default">Podrazumevan</string>
   <string name="morphe_custom_font_type_entry_system">Sistemski font uređaja</string>
-  <string name="morphe_custom_font_type_entry_custom">Datoteka prilagođenog fonta</string>
   <string name="morphe_custom_font_file_title">Datoteka prilagođenog fonta</string>
   <string name="morphe_custom_font_file_summary">Izaberite TTF ili OTF font datoteku</string>
   <string name="morphe_custom_font_file_invalid">Izabrana datoteka nije TTF ili OTF font</string>
@@ -380,7 +370,6 @@ Ako se kasnije isključi, preporučuje se brisanje podataka aplikacije kako bi s
   <string name="morphe_glass_menus_screen_summary">Meniji kao matirano staklo preko zamućenog sadržaja iza njih</string>
   <string name="morphe_glass_menus_title">Omogući staklene menije</string>
   <string name="morphe_glass_menus_summary">Prikazuje menije i donje tablove kao matirano staklo, pri čemu je sadržaj iza njih zamućen</string>
-  <string name="morphe_glass_menus_opacity_title">Neprozirnost stakla</string>
   <string name="morphe_glass_menus_opacity_summary">U kojoj meri meni prekriva zamućen sadržaj (0 je potpuno prozirno, 100 je neprozirno)</string>
   <string name="morphe_glass_menus_blur_title">Zamućenje</string>
   <string name="morphe_glass_menus_blur_summary">U kojoj meri je sadržaj iza menija zamućen</string>
@@ -401,7 +390,6 @@ Ako se kasnije isključi, preporučuje se brisanje podataka aplikacije kako bi s
   <string name="morphe_ryd_dislike_percentage_summary">Prikazuje nesviđanja kao procenat lajkova umesto broja</string>
   <string name="morphe_ryd_estimated_like_title">Prikaži procenjeni broj sviđanja</string>
   <string name="morphe_ryd_estimated_like_summary">Prikazuje procenjeni broj lajkova na video zapisima gde je kreator onemogućio lajkove</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Prikaži upozorenja o grešci konekcije</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Prikazuje obaveštenje kada je Return YouTube Dislike server nedostupan</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike vraća broj dislajkova koje je YouTube sakrio 2021. Brojevi potiču iz podataka arhiviranih pre uklanjanja i procenjuju se za novije video zapise na osnovu glasova korisnika, tako da su približni i ažuriraju se svakih nekoliko dana
 
@@ -423,8 +411,89 @@ ID video zapisa koji gledate šalje se Return YouTube Dislike API-ju, a vaši la
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nije naišlo na ograničenja brzine klijenta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Suočeni smo sa limitom brzine klijenta %s puta</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekundi</string>
-  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
   <string name="morphe_navigation_bar_screen_summary">Izaberite koja dugmad se pojavljuju u donjoj traci za navigaciju</string>
   <string name="morphe_toolbar_screen_title">Alatna traka</string>
   <string name="morphe_toolbar_screen_summary">Izaberite koje komponente se pojavljuju u traci sa alatkama</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekunda</string>
+  <string name="morphe_duration_2s">2 sekunde</string>
+  <string name="morphe_duration_3s">3 sekunde</string>
+  <string name="morphe_duration_4s">4 sekunde</string>
+  <string name="morphe_duration_5s">5 sekundi</string>
+  <string name="morphe_duration_6s">6 sekundi</string>
+  <string name="morphe_duration_7s">7 sekundi</string>
+  <string name="morphe_duration_8s">8 sekundi</string>
+  <string name="morphe_duration_9s">9 sekundi</string>
+  <string name="morphe_duration_10s">10 sekundi</string>
+  <string name="morphe_change_start_page_entry_default">Podrazumevana</string>
+  <string name="morphe_change_start_page_entry_explore">Istraži</string>
+  <string name="morphe_change_start_page_entry_history">Istorija</string>
+  <string name="morphe_change_start_page_entry_library">Biblioteka</string>
+  <string name="morphe_change_start_page_entry_playlists">Plejliste</string>
+  <string name="morphe_change_start_page_entry_search">Pretraga</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Praćenja</string>
+  <string name="morphe_change_start_page_title">Početna stranica</string>
+  <string name="morphe_action_buttons_screen_title">Dugmad radnji</string>
+  <string name="morphe_comments_screen_title">Komentari</string>
+  <string name="morphe_feed_screen_title">Feed</string>
+  <string name="morphe_flyout_menu_screen_title">Padajući meni</string>
+  <string name="morphe_general_title">Opšte</string>
+  <string name="morphe_miniplayer_screen_title">Mini-plejer</string>
+  <string name="morphe_player_screen_title">Plejer</string>
+  <string name="morphe_video_screen_title">Video snimci</string>
+  <string name="morphe_appearance_title">Izgled</string>
+  <string name="morphe_cancel">Otkaži</string>
+  <string name="morphe_comments_screen_summary">Izaberite koje komponente se pojavljuju u odeljku sa komentarima</string>
+  <string name="morphe_copy_code">Kopiraj kod</string>
+  <string name="morphe_corner_radius_title">Radijus ugla</string>
+  <string name="morphe_do_not_show_again">Ne prikazuj ponovo</string>
+  <string name="morphe_download_force_4k_title">Prisilna dostupnost 4K preuzimanja</string>
+  <string name="morphe_glass_opacity_title">Neprozirnost stakla</string>
+  <string name="morphe_header_logo_title">Logotip u zaglavlju</string>
+  <string name="morphe_hide_action_bar_title">Sakrij traku sa alatkama</string>
+  <string name="morphe_hide_cast_button_title">Sakrij dugme „Prebacuj”</string>
+  <string name="morphe_hide_comments_button_title">Sakrij dugme „Komentari”</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Sakrij smernice zajednice</string>
+  <string name="morphe_hide_comments_emoji_button_title">Sakrij dugme za emojije</string>
+  <string name="morphe_hide_comments_gif_button_title">Sakrij GIF dugme</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Sakriva GIF-ove i slike priložene uz komentare i odgovore</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Sakrij GIF-ove i slike</string>
+  <string name="morphe_hide_comments_info_button_title">Sakrij dugme „Info”</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Sakrij dugme „Vremenski žig”</string>
+  <string name="morphe_hide_horizontal_shelves_title">Sakrij horizontalne police</string>
+  <string name="morphe_hide_like_dislike_button_title">Sakrij dugme „Sviđanje” i „Nesviđanje”</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Sakrij dugmad „Sviđanje” i „Nesviđanje”</string>
+  <string name="morphe_hide_navigation_bar_title">Sakrij traku za navigaciju</string>
+  <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake dugmadi za navigaciju</string>
+  <string name="morphe_hide_previous_next_buttons_title">Sakrij dugmad Prethodno &amp; Sledeće</string>
+  <string name="morphe_hide_search_button_title">Sakrij dugme „Pretraga”</string>
+  <string name="morphe_hide_translate_button_title">Sakrij dugme „Prevedi”</string>
+  <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
+  <string name="morphe_loading">Učitavanje…</string>
+  <string name="morphe_name">Ime</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između dugmića</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Prikazana dugmad: %1$s od %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Visina</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
+  <string name="morphe_navigation_bar_glass_title">Omogući staklenu navigacionu traku</string>
+  <string name="morphe_positive_number_invalid">Vrednost mora biti pozitivan broj</string>
+  <string name="morphe_private_user_id_invalid">Privatni korisnički ID mora da ima najmanje 30 znakova</string>
+  <string name="morphe_private_user_id_title">Vaš privatni korisnički ID</string>
+  <string name="morphe_rename">Preimenuj</string>
+  <string name="morphe_show_settings_button_title">Prikaži dugme za Podešavanja</string>
+  <string name="morphe_show_settings_button_type_title">Akcija dugmeta za Podešavanja</string>
+  <string name="morphe_show_video_effect_menu_title">Prikaži meni za video efekat</string>
+  <string name="morphe_submit">Potvrdi</string>
+  <string name="morphe_time_adjustment_step_title">Korak za podešavanje vremena</string>
+  <string name="morphe_toast_on_connection_error_title">Prikaži upozorenja o grešci veze</string>
+  <string name="morphe_toast_on_skip_title">Prikaži obaveštenje o preskakanju</string>
+  <string name="morphe_translated_only">Samo prevedeno</string>
+  <string name="morphe_translating">Prevođenje…</string>
+  <string name="morphe_translation_language_title">Jezik prevoda</string>
+  <string name="morphe_username_change_unknown_error">Nije moguće promeniti korisničko ime: Status: %1$s %2$s</string>
+  <string name="morphe_username_changed">Korisničko ime uspešno promenjeno</string>
+  <string name="morphe_username_html">Vaše korisničko ime: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Video snimci</string>
+  <string name="morphe_vote_downvote">Glasaj protiv</string>
+  <string name="morphe_vote_upvote">Glasaj za</string>
 </resources>

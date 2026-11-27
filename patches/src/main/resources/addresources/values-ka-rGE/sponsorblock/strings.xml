@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">ჩართეთ SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock არის კოლექტიური სისტემა YouTube ვიდეოების გამაღიზიანებელი ნაწილების გამოსატოვებლად</string>
-  <string name="morphe_sb_appearance_category_title">გარეგნობა</string>
   <string name="morphe_sb_voting_button_title">ხმის მიცემის ღილაკის ჩვენება</string>
   <string name="morphe_sb_voting_button_summary">ამატებს ღილაკს სეგმენტების დადებითი ან უარყოფითი შეფასებისთვის</string>
   <string name="morphe_sb_square_layout_title">კვადრატული განლაგების გამოყენება</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">მალავს გამოტოვების ღილაკს რამდენიმე წამის შემდეგ, ნაცვლად იმისა, რომ ის მთელი სეგმენტის განმავლობაში ხილული იყოს</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">გამოტოვების ღილაკის ხილვადობის ხანგრძლივობა</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">განსაზღვრეთ, რამდენ ხანს დარჩეს გამოტოვების ღილაკი ხილვადი</string>
-  <string name="morphe_sb_toast_on_skip_title">გამოტოვების შეტყობინების ჩვენება</string>
   <string name="morphe_sb_toast_on_skip_summary">აჩვენებს შეტყობინებას, როდესაც სეგმენტი ავტომატურად გამოიტოვება</string>
   <string name="morphe_sb_toast_on_skip_duration_title">გამოტოვების შეტყობინების ხანგრძლივობა</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">განსაზღვრეთ, რამდენ ხანს დარჩეს გაუქმების შეტყობინება ხილვადი</string>
-  <string name="morphe_sb_duration_1s">1 წამი</string>
-  <string name="morphe_sb_duration_2s">2 წამი</string>
-  <string name="morphe_sb_duration_3s">3 წამი</string>
-  <string name="morphe_sb_duration_4s">4 წამი</string>
-  <string name="morphe_sb_duration_5s">5 წამი</string>
-  <string name="morphe_sb_duration_6s">6 წამი</string>
-  <string name="morphe_sb_duration_7s">7 წამი</string>
-  <string name="morphe_sb_duration_8s">8 წამი</string>
-  <string name="morphe_sb_duration_9s">9 წამი</string>
-  <string name="morphe_sb_duration_10s">10 წამი</string>
   <string name="morphe_sb_video_length_without_segments_title">ვიდეოს სიგრძის ჩვენება სეგმენტების გარეშე</string>
   <string name="morphe_sb_video_length_without_segments_summary">გამოკლებს ყველა სეგმენტს seekbar-ზე ჩვენებულ ვიდეოს საერთო ხანგრძლივობას</string>
   <string name="morphe_sb_create_segment_category_title">ახალი სეგმენტების შექმნა</string>
   <string name="morphe_sb_create_new_segment_title">აჩვენე ღილაკი \'ახალი სეგმენტის შექმნა\'</string>
   <string name="morphe_sb_create_new_segment_summary">ამატებს ღილაკს ვიდეოპლეიერში, რაც საშუალებას გაძლევთ გაგზავნოთ SponsorBlock-ის ახალი სეგმენტები</string>
-  <string name="morphe_sb_create_new_segment_step_title">დროის კორექტირების ნაბიჯი</string>
   <string name="morphe_sb_create_new_segment_step_summary">დროის კორექტირების ღილაკების გადახვევის რაოდენობა (მილიწამებში)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">მნიშვნელობა უნდა იყოს დადებითი რიცხვი</string>
   <string name="morphe_sb_guidelines_title">გაგზავნის სახელმძღვანელო</string>
   <string name="morphe_sb_guidelines_summary">სახელმძღვანელო შეიცავს წესებსა და რჩევებს ახალი სეგმენტების შესაქმნელად</string>
   <string name="morphe_sb_guidelines_popup_title">მიჰყევით სახელმძღვანელოს</string>
   <string name="morphe_sb_guidelines_popup_content">გაეცანით SponsorBlock-ის სახელმძღვანელოს ახალი სეგმენტების შექმნამდე</string>
   <string name="morphe_sb_guidelines_popup_already_read">უკვე წაკითხულია</string>
   <string name="morphe_sb_guidelines_popup_open">მაჩვენე</string>
-  <string name="morphe_sb_general_title">ზოგადი</string>
   <string name="morphe_sb_offline_segments_title">ჩამოტვირთული ვიდეოების სეგმენტების შენახვა</string>
   <string name="morphe_sb_offline_segments_summary">აძლევს საშუალებას, ოფლაინ რეჟიმში ჩამოტვირთული ვიდეოების სეგმენტები გადაახტეთ</string>
-  <string name="morphe_sb_toast_on_connection_error_title">კავშირის შეცდომის შეტყობინებების ჩვენება</string>
   <string name="morphe_sb_toast_on_connection_error_summary">აჩვენებს შეტყობინებას, როდესაც SponsorBlock-ის სერვერი მიუწვდომელია</string>
   <string name="morphe_sb_track_skip_count_title">გამოტოვების რაოდენობის თვალყურის დევნების ჩართვა</string>
   <string name="morphe_sb_track_skip_count_summary">გზავნის გამოტოვების რაოდენობას SponsorBlock-ის სატაბლოზე, რათა დაითვალოს დაზოგვის დრო</string>
   <string name="morphe_sb_min_segment_duration_title">სეგმენტის მინიმალური ხანგრძლივობა</string>
   <string name="morphe_sb_min_segment_duration_summary">სეგმენტები, რომლებიც ამ მნიშვნელობაზე (წამებში) მოკლეა, არ გამოჩნდება და არ იქნება გამოტოვებული</string>
   <string name="morphe_sb_min_segment_duration_invalid">დროის არასწორი ხანგრძლივობა</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">თქვენი პირადი მომხმარებლის ID</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">ეს ინფორმაცია კონფიდენციალურად უნდა დარჩეს. ეს ჰგავს პაროლს და არ უნდა გაუზიაროთ სხვას. თუ ვინმე მოიპოვებს მას, შეძლებს თქვენს სახელით მოქმედებას</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">პირადი მომხმარებლის ID უნდა შედგებოდეს სულ მცირე 30 სიმბოლოსგან</string>
   <string name="morphe_sb_api_url_title">API URL-ის შეცვლა</string>
   <string name="morphe_sb_api_url_summary">მისამართი, რომელსაც SponsorBlock იყენებს სერვერზე მოთხოვნების გასაგზავნად</string>
   <string name="morphe_sb_channel_whitelist_title">არხების თეთრი სია</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL არასწორია</string>
   <string name="morphe_sb_api_url_changed">API URL შეიცვალა</string>
   <string name="morphe_sb_settings_ie_title">პარამეტრების იმპორტი / ექსპორტი</string>
-  <string name="morphe_sb_settings_copy">კოპირება</string>
   <string name="morphe_sb_settings_ie_summary">თქვენი SponsorBlock JSON კონფიგურაცია, რომელიც შეიძლება được იმპორტირებული / ექსპორტირებული იყოს Morphe-სა და სხვა SponsorBlock პლატფორმებზე</string>
   <string name="morphe_sb_settings_ie_summary_warning">"თქვენი SponsorBlock JSON კონფიგურაცია, რომელიც შეიძლება იმპორტირებული / ექსპორტირებული იყოს Morphe-სა და სხვა SponsorBlock პლატფორმებზე
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"თქვენი პარამეტრები შეიცავს SponsorBlock-ის პირადი მომხმარებლის ID-ს.
 
 თქვენი მომხმარებლის ID ჰგავს პაროლს და მისი გაზიარება არასოდეს არ უნდა მოხდეს"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">აღარასოდეს გამოჩენა</string>
   <string name="morphe_sb_diff_segments_title">სეგმენტის ქცევის შეცვლა</string>
   <string name="morphe_sb_segments_sponsor">სპონსორი</string>
   <string name="morphe_sb_segments_sponsor_summary">ფასიანი რეკლამა, ფასიანი რეფერალები და პირდაპირი რეკლამები. არა თვითპრომოციისა ან უფასო რეკლამებისთვის საქმეების / კრეატორების / ვებსაიტების / პროდუქტების, რომლებიც მათ მოსწონთ</string>
@@ -122,11 +102,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_highlight">გადმოხტი გამოკვეთილზე</string>
   <string name="morphe_sb_skip_button_intro_beginning">გამოტოვე შესავალი</string>
   <string name="morphe_sb_skip_button_intro_middle">გამოტოვე შესვენება</string>
-  <string name="morphe_sb_skip_button_intro_end">გამოტოვე შესვენება</string>
   <string name="morphe_sb_skip_button_outro">გამოტოვე დასასრული</string>
   <string name="morphe_sb_skip_button_hook">გამოტოვე ჰუკი</string>
   <string name="morphe_sb_skip_button_preview_beginning">გამოტოვე პრევიუ</string>
-  <string name="morphe_sb_skip_button_preview_middle">გამოტოვე პრევიუ</string>
   <string name="morphe_sb_skip_button_preview_end">გამოტოვე შეჯამება</string>
   <string name="morphe_sb_skip_button_filler">გამოტოვე გვერდითი თემა</string>
   <string name="morphe_sb_skip_button_nomusic">გამოტოვე არამუსიკალური</string>
@@ -137,11 +115,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_highlight">გაგრძელება მთავარ ნაწილზე</string>
   <string name="morphe_sb_skipped_intro_beginning">ინტროს გამოტოვება</string>
   <string name="morphe_sb_skipped_intro_middle">შუალედის გამოტოვება</string>
-  <string name="morphe_sb_skipped_intro_end">შუალედის გამოტოვება</string>
   <string name="morphe_sb_skipped_outro">აუტროს გამოტოვება</string>
   <string name="morphe_sb_skipped_hook">ჰუკის გამოტოვება</string>
   <string name="morphe_sb_skipped_preview_beginning">პრევიუს გამოტოვება</string>
-  <string name="morphe_sb_skipped_preview_middle">გამოტოვებული წინასწარი ნახვა</string>
   <string name="morphe_sb_skipped_preview_end">გამოტოვებული შეჯამება</string>
   <string name="morphe_sb_skipped_filler">გამოტოვებული გვერდითი თემა</string>
   <string name="morphe_sb_skipped_nomusic">გამოტოვებული არამუსიკალური სექცია</string>
@@ -167,8 +143,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_failed_timeout">სეგმენტზე ხმის მიცემა ვერ მოხერხდა (API-ის დრო დასრულდა)</string>
   <string name="morphe_sb_vote_failed_unknown_error">სეგმენტზე ხმის მიცემა ვერ მოხერხდა (სტატუსი: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">სეგმენტზე ხმის მიცემა ვერ მოხერხდა: %s</string>
-  <string name="morphe_sb_vote_upvote">დადებითი ხმა</string>
-  <string name="morphe_sb_vote_downvote">უარყოფითი ხმა</string>
   <string name="morphe_sb_vote_category">კატეგორიის შეცვლა</string>
   <string name="morphe_sb_vote_no_segments">ხმის მისაცემად სეგმენტები არ არსებობს</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -191,7 +165,6 @@ Second \"item\" text"</string>
 (%3$s)
 
 მზად ხართ გასაგზავნად?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">გაგზავნა</string>
   <string name="morphe_sb_new_segment_start_is_before_end">დასაწყისი უნდა იყოს დასრულების წინ</string>
   <string name="morphe_sb_new_segment_mark_locations_first">ჯერ მონიშნეთ ადგილი დროის ზოლზე</string>
   <string name="morphe_sb_new_segment_preview_segment_first">გადახედეთ სეგმენტს და დარწმუნდით, რომ იგი შეუფერხებლად გადავარდნილია</string>
@@ -204,16 +177,11 @@ Second \"item\" text"</string>
 %s
 
 თუ არ აგზავნით გამოკვეთილს, დააჭირეთ გაუქმებას და მონიშნეთ მეორე მდებარეობა"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">გაგზავნეთ მონიშვნა</string>
   <string name="morphe_sb_stats_title">სტატისტიკა</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">სტატისტიკა დროებით მიუწვდომელია (API გათიშულია)</string>
-  <string name="morphe_sb_stats_loading">იტვირთება…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock გათიშულია</string>
-  <string name="morphe_sb_stats_username">თქვენი მომხმარებლის სახელი: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">დააჭირეთ აქ მომხმარებლის სახელის შესაცვლელად</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">მომხმარებლის სახელის შეცვლა ვერ მოხერხდა: სტატუსი: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">მომხმარებლის სახელი წარმატებით შეიცვალა</string>
   <string name="morphe_sb_stats_reputation">თქვენი რეპუტაციაა &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">თქვენ შექმენით &lt;b&gt;%s&lt;/b&gt; სეგმენტი</string>
   <string name="morphe_sb_stats_submissions_summary">შეეხეთ აქ თქვენი სეგმენტების სანახავად</string>

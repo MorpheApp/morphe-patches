@@ -81,7 +81,6 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Egyéni</string>
-  <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
   <string name="morphe_custom_branding_icon_entry_1">Eredeti</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe fekete</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe sötét</string>
@@ -107,7 +106,6 @@ Az ikon mindenhol történő megváltoztatásához futtasd újra a javítást, �
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne jelenjen meg többet</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videófolyamok hamisítása</string>
   <string name="morphe_spoof_video_streams_screen_summary">Kliens-videófolyamok hamisítása a lejátszási problémák megelőzése érdekében</string>
@@ -134,7 +132,6 @@ Koppintson az OK gombra az Android System WebView megnyitásához."</string>
 A videólejátszás esetleg nem működik, amíg az Android System WebView nem frissül a legújabb verzióra.
 
 Koppintson az OK gombra az Android System WebView megnyitásához."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne jelenjen meg többet</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Az Android System WebView nincs telepítve. Telepítse a videólejátszás javításához</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Médiavezérlők az értesítésben</string>
   <string name="morphe_notification_media_screen_summary">A lezárási képernyőn és az értesítési panelen megjelenő lejátszásvezérlők testreszabása</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Előző és következő gombok elrejtése</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Elrejti az előző és következő gombokat a médiaértesítésben, a lezárási képernyőn és a fejhallgató-vezérlőkben</string>
   <string name="morphe_disable_notification_media_seekbar_title">Keresősáv letiltása</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Megakadályozza a keresősáv húzását a lezárási képernyőn és az értesítési panelen</string>
@@ -244,10 +240,8 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_video_effects_custom_restore">Alapértelmezések visszaállítása</string>
   <string name="morphe_video_effects_custom_add_title">Új effekt</string>
   <string name="morphe_video_effects_custom_edit_title">Effekt szerkesztése</string>
-  <string name="morphe_video_effects_custom_name_hint">Név</string>
   <string name="morphe_video_effects_custom_name_empty">Adjon meg egy nevet az effektnek</string>
   <string name="morphe_video_effects_custom_name_exists">Ezzel a névvel már létezik egy effekt</string>
-  <string name="morphe_video_effects_custom_copy_code">Kód másolása</string>
   <string name="morphe_video_effects_custom_error_title">Az effektben hiba történt</string>
   <string name="morphe_video_effects_custom_error_message">"A videók effekt nélkül jelennek meg, amíg a kód nem javul. Add át ezt a hibát annak az AI-nak, amely írta a kódot:
 
@@ -257,7 +251,6 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
 Kérj rövidebb kódot a MI-tól, vagy illeszd be a kódot részletben."</string>
   <string name="morphe_video_effects_custom_copy_error">Hiba másolása</string>
   <string name="morphe_video_effects_custom_save_anyway">Mégis mentés</string>
-  <string name="morphe_video_effects_custom_delete">Törlés</string>
   <string name="morphe_video_effects_custom_delete_title">Törle lje az effektet?</string>
   <string name="morphe_video_effects_custom_delete_message">A(z) %s törölve lesz.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Kérj rövidebb kódot a MI-tól, vagy illeszd be a kódot részletben."</string
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">A funkció használatához állítsd át a „Spoof video streams” opciót bármelyik kliensre az „Android Studio” és „Android VR Downgraded” kivételével</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
-  <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a követési paramétereket a megosztott linkekből</string>
   <string name="morphe_replace_music_with_youtube_title">Módosítsa a megosztási linkeket youtube.com-ra</string>
   <string name="morphe_replace_music_with_youtube_summary">A megosztott linkekben lecseréli a music.youtube.com-ot a youtube.com-ra</string>
   <string name="morphe_replace_links_with_shortener_title">Módosítsa a megosztási linkeket youtu.be-ra</string>
@@ -371,7 +362,6 @@ Ha később kikapcsolja, ajánlott törölni az alkalmazás adatait a felhaszná
   <string name="morphe_custom_font_type_title">Betűtípus</string>
   <string name="morphe_custom_font_type_entry_default">Alapértelmezett</string>
   <string name="morphe_custom_font_type_entry_system">Eszköz rendszerbetűtípusa</string>
-  <string name="morphe_custom_font_type_entry_custom">Egyéni betűtípusfájl</string>
   <string name="morphe_custom_font_file_title">Egyéni betűtípusfájl</string>
   <string name="morphe_custom_font_file_summary">Válasszon ki egy TTF vagy OTF betűtípusfájlt</string>
   <string name="morphe_custom_font_file_invalid">A kiválasztott fájl nem TTF vagy OTF betűtípus</string>
@@ -381,7 +371,6 @@ Ha később kikapcsolja, ajánlott törölni az alkalmazás adatait a felhaszná
   <string name="morphe_glass_menus_screen_summary">A menük matt üvegként jelennek meg a mögöttük lévő elmosódott tartalom felett</string>
   <string name="morphe_glass_menus_title">Üveges menük engedélyezése</string>
   <string name="morphe_glass_menus_summary">A menük és a lapok alsó része matt üvegként jelenik meg, mögöttük lévő tartalom pedig elmosódik</string>
-  <string name="morphe_glass_menus_opacity_title">Üveg átlátszatossága</string>
   <string name="morphe_glass_menus_opacity_summary">Mibennyeg takarja a menü az elmosódott tartalmat (0 az teljesen átlátszó, 100 az átfogó)</string>
   <string name="morphe_glass_menus_blur_title">Elmosódás</string>
   <string name="morphe_glass_menus_blur_summary">Mennyire mosódik el a menü mögött lévő tartalom</string>
@@ -402,7 +391,6 @@ Ha később kikapcsolja, ajánlott törölni az alkalmazás adatait a felhaszná
   <string name="morphe_ryd_dislike_percentage_summary">A nem tetszéseket a szám helyett a tetszések százalékaként mutatja</string>
   <string name="morphe_ryd_estimated_like_title">Becsült kedvelések mutatása</string>
   <string name="morphe_ryd_estimated_like_summary">Becsült lájkszám megjelenítése azokon a videókon, ahol a készítő letiltotta a lájkokat</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Hálózati hibaértesítések megjelenítése</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Értesítést jelenít meg, ha a Return YouTube Dislike szerver nem érhető el</string>
   <string name="morphe_ryd_attribution_summary">"A Return YouTube Dislike visszaállítja a YouTube által 2021-ben elrejtett nemtetszés-számlálókat. A számok a törlés előtt archivált adatokból származnak, az újabb videóknál pedig a felhasználók szavazatai alapján becsülik őket, így közelítőek, és néhány naponta frissülnek.
 
@@ -424,8 +412,89 @@ A megtekintett videó azonosítóját elküldjük a Return YouTube Dislike API-n
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nem történt ügyfél-sebességkorlátozás</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s alkalommal lépett fel ügyfélszintű sebességkorlátozás</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ezredmásodperc</string>
-  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
   <string name="morphe_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
   <string name="morphe_toolbar_screen_title">Eszköztár</string>
   <string name="morphe_toolbar_screen_summary">Válaszd ki, mely komponensek jelenjenek meg a eszközkötben</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 másodperc</string>
+  <string name="morphe_duration_2s">2 másodperc</string>
+  <string name="morphe_duration_3s">3 másodperc</string>
+  <string name="morphe_duration_4s">4 másodperc</string>
+  <string name="morphe_duration_5s">5 másodperc</string>
+  <string name="morphe_duration_6s">6 másodperc</string>
+  <string name="morphe_duration_7s">7 másodperc</string>
+  <string name="morphe_duration_8s">8 másodperc</string>
+  <string name="morphe_duration_9s">9 másodperc</string>
+  <string name="morphe_duration_10s">10 másodperc</string>
+  <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>
+  <string name="morphe_change_start_page_entry_explore">Felfedezés</string>
+  <string name="morphe_change_start_page_entry_history">Előzmények</string>
+  <string name="morphe_change_start_page_entry_library">Könyvtár</string>
+  <string name="morphe_change_start_page_entry_playlists">Lejátszási listák</string>
+  <string name="morphe_change_start_page_entry_search">Keresés</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Feliratkozások</string>
+  <string name="morphe_change_start_page_title">Kezdőlap</string>
+  <string name="morphe_action_buttons_screen_title">Művelet gombok</string>
+  <string name="morphe_comments_screen_title">Megjegyzések</string>
+  <string name="morphe_feed_screen_title">Feed</string>
+  <string name="morphe_flyout_menu_screen_title">Előugró menü</string>
+  <string name="morphe_general_title">Általános</string>
+  <string name="morphe_miniplayer_screen_title">Minilejátszó</string>
+  <string name="morphe_player_screen_title">Lejátszó</string>
+  <string name="morphe_video_screen_title">Videó</string>
+  <string name="morphe_appearance_title">Megjelenés</string>
+  <string name="morphe_cancel">Mégse</string>
+  <string name="morphe_comments_screen_summary">Válaszd ki, mely elemek jelenjenek meg a megjegyzéseknél</string>
+  <string name="morphe_copy_code">Kód másolása</string>
+  <string name="morphe_corner_radius_title">Sarok sugár</string>
+  <string name="morphe_do_not_show_again">Ne jelenjen meg többet</string>
+  <string name="morphe_download_force_4k_title">4K letöltési elérhetőség kényszerítése</string>
+  <string name="morphe_glass_opacity_title">Üveg átlátszósága</string>
+  <string name="morphe_header_logo_title">Fejléclogó</string>
+  <string name="morphe_hide_action_bar_title">Action bar elrejtése</string>
+  <string name="morphe_hide_cast_button_title">Átküldés gomb elrejtése</string>
+  <string name="morphe_hide_comments_button_title">Hozzászólások gomb elrejtése</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji gomb elrejtése</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF gomb elrejtése</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Elrejti a kommentekhez és válaszokhoz csatolt GIF-eket és képeket</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-ek és képek elrejtése</string>
+  <string name="morphe_hide_comments_info_button_title">Információ gomb elrejtése</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Időbélyeg gomb elrejtése</string>
+  <string name="morphe_hide_horizontal_shelves_title">Vízszintes polcok elrejtése</string>
+  <string name="morphe_hide_like_dislike_button_title">Tetszik és nem tetszik gomb elrejtése</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Tetszik és nem tetszik gombok elrejtése</string>
+  <string name="morphe_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
+  <string name="morphe_hide_navigation_button_labels_title">A navigációs gombok címkéinek elrejtése</string>
+  <string name="morphe_hide_previous_next_buttons_title">Előző &amp; következő gombok elrejtése</string>
+  <string name="morphe_hide_search_button_title">Keresés gomb elrejtése</string>
+  <string name="morphe_hide_translate_button_title">Fordítás gomb elrejtése</string>
+  <string name="morphe_hide_video_ads_title">Videóhirdetések elrejtése</string>
+  <string name="morphe_loading">Betöltés…</string>
+  <string name="morphe_name">Név</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Gombtávolság</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Megjelenített gombok: %1$s a %2$s-ból</string>
+  <string name="morphe_navigation_bar_glass_size_height">Magasság</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximális szélesség</string>
+  <string name="morphe_navigation_bar_glass_title">Üveg navigációs sáv engedélyezése</string>
+  <string name="morphe_positive_number_invalid">Az értéknek pozitív számnak kell lennie</string>
+  <string name="morphe_private_user_id_invalid">A privát felhasználói azonosítónak legalább 30 karakter hosszúnak kell lennie</string>
+  <string name="morphe_private_user_id_title">Az Ön privát felhasználói azonosítója</string>
+  <string name="morphe_rename">Átnevezés</string>
+  <string name="morphe_show_settings_button_title">Beállítások gomb megjelenítése</string>
+  <string name="morphe_show_settings_button_type_title">Beállítások gomb művelete</string>
+  <string name="morphe_show_video_effect_menu_title">Videó effekt menü megjelenítése</string>
+  <string name="morphe_submit">Beküldés</string>
+  <string name="morphe_time_adjustment_step_title">Időbeállítás lépése</string>
+  <string name="morphe_toast_on_connection_error_title">Kapcsolati hiba riasztások megjelenítése</string>
+  <string name="morphe_toast_on_skip_title">Ugrás utáni értesítés megjelenítése</string>
+  <string name="morphe_translated_only">Csak lefordítva</string>
+  <string name="morphe_translating">Fordítás folyamatban…</string>
+  <string name="morphe_translation_language_title">Fordítás nyelve</string>
+  <string name="morphe_username_change_unknown_error">A felhasználónév nem módosítható: állapot: %1$s %2$s</string>
+  <string name="morphe_username_changed">A felhasználónév sikeresen módosítva</string>
+  <string name="morphe_username_html">Az ön felhasználóneve: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Videók</string>
+  <string name="morphe_vote_downvote">Leszavazás</string>
+  <string name="morphe_vote_upvote">Pozitív szavazás</string>
 </resources>

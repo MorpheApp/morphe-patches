@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">По избор</string>
-  <string name="morphe_custom_branding_icon_title">Икона на приложението</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинал</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокер на реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, добавете &lt;b&gt;s.youtube.com&lt;/b&gt; в белия списък или изключете всички DNS блокери и проксита</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показвай отново</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подправяне на видео потоци</string>
   <string name="morphe_spoof_video_streams_screen_summary">Подправете клиентските видео потоци, за да предотвратите проблеми с възпроизвеждането</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 Възпроизвеждането на видео може да не успее, докато Android System WebView не бъде актуализиран до последната версия.
 
 Докоснете OK, за да отворите Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Да не се показва отново</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не е инсталиран. Инсталирайте го, за да поправите възпроизвеждането на видео</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Медийни контроли за известия</string>
   <string name="morphe_notification_media_screen_summary">Персонализирайте контролите за възпроизвеждане, показани на заключения екран и в панела за известия</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Скриване на бутоните „Предишна“ и „Следваща“</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Скрива бутоните „Предишна“ и „Следваща“ в известията за медии, на заключения екран и в контролите на слушалките</string>
   <string name="morphe_disable_notification_media_seekbar_title">Деактивиране на лентата за превъртане</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Предотвратява плъзгането на лентата за превъртане на заключения екран и в панела за известия</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">Възстановяване на настройките по подразбиране</string>
   <string name="morphe_video_effects_custom_add_title">Нов ефект</string>
   <string name="morphe_video_effects_custom_edit_title">Редактиране на ефект</string>
-  <string name="morphe_video_effects_custom_name_hint">Име</string>
   <string name="morphe_video_effects_custom_name_empty">Въведете име за ефекта</string>
   <string name="morphe_video_effects_custom_name_exists">Вече съществува ефект с това име</string>
-  <string name="morphe_video_effects_custom_copy_code">Копиране на кода</string>
   <string name="morphe_video_effects_custom_error_title">Ефектът има грешка</string>
   <string name="morphe_video_effects_custom_error_message">"Видеото се показва без ефекта, докато кодът не бъде коригиран. Предайте тази грешка на AI, който е написал кода:
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 Поискайте от AI по-кратък код или поставете кода на части."</string>
   <string name="morphe_video_effects_custom_copy_error">Грешка при копиране</string>
   <string name="morphe_video_effects_custom_save_anyway">Запази въпреки това</string>
-  <string name="morphe_video_effects_custom_delete">Изтриване</string>
   <string name="morphe_video_effects_custom_delete_title">Изтриване на ефекта?</string>
   <string name="morphe_video_effects_custom_delete_message">%s ще бъде изтрит.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">За да използвате тази функция, променете „Симулиране на видео потоци“ на всеки клиент освен „Android Studio“ и „Android VR Downgraded“</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Почистване на споделените връзки</string>
-  <string name="morphe_sanitize_sharing_links_summary">Премахва параметрите за проследяване на заявките от споделени връзки</string>
   <string name="morphe_replace_music_with_youtube_title">Сменете споделяните връзки на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Заменя music.youtube.com с youtube.com в споделени връзки</string>
   <string name="morphe_replace_links_with_shortener_title">Сменете споделяните връзки на youtu.be</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">Шрифт</string>
   <string name="morphe_custom_font_type_entry_default">По подразбиране</string>
   <string name="morphe_custom_font_type_entry_system">Системен шрифт на устройството</string>
-  <string name="morphe_custom_font_type_entry_custom">Файл с персонализиран шрифт</string>
   <string name="morphe_custom_font_file_title">Файл с персонализиран шрифт</string>
   <string name="morphe_custom_font_file_summary">Изберете TTF или OTF файл с шрифт</string>
   <string name="morphe_custom_font_file_invalid">Избраният файл не е TTF или OTF шрифт</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">Менюта като матирано стъкло върху размитото съдържание зад тях</string>
   <string name="morphe_glass_menus_title">Разрешаване на стъклени менюта</string>
   <string name="morphe_glass_menus_summary">Показва менютата и долните панели като матирано стъкло, като съдържанието зад тях е размазано</string>
-  <string name="morphe_glass_menus_opacity_title">Прозрачност на стъклото</string>
   <string name="morphe_glass_menus_opacity_summary">Доколко менюто покрива размазаното съдържание (0 е прозрачно, 100 е непрозрачно)</string>
   <string name="morphe_glass_menus_blur_title">Размазване</string>
   <string name="morphe_glass_menus_blur_summary">Доколко съдържанието зад менюто е размазано</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">Показва нехаресванията като процент от харесванията вместо като число</string>
   <string name="morphe_ryd_estimated_like_title">Показване на приблизителни харесвания</string>
   <string name="morphe_ryd_estimated_like_summary">Показва приблизителен брой харесвания на видеа, където създателят е деактивирал харесванията</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Показване на съобщения за грешка при връзката</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показва известие, когато сървърът на Return YouTube Dislike не е достъпен</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike възстановява броячите на нехаресвания, които YouTube скри през 2021 г. Броячите идват от данни, архивирани преди премахването, и за по-нови видеоклипове се оценяват по гласовете на потребителите, така че са приблизителни и се актуализират на всеки няколко дни
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Не са отчетени лимити на клиентския API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Срещнати са %s пъти ограничения за честота на клиента</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s милисекунди</string>
-  <string name="morphe_navigation_bar_screen_title">Навигационна лента</string>
   <string name="morphe_navigation_bar_screen_summary">Изберете кои бутони да се показват в долната навигационна лента</string>
   <string name="morphe_toolbar_screen_title">Лента с инструменти</string>
   <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се показват в лентата с инструменти</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 секунда</string>
+  <string name="morphe_duration_2s">2 секунди</string>
+  <string name="morphe_duration_3s">3 секунди</string>
+  <string name="morphe_duration_4s">4 секунди</string>
+  <string name="morphe_duration_5s">5 секунди</string>
+  <string name="morphe_duration_6s">6 секунди</string>
+  <string name="morphe_duration_7s">7 секунди</string>
+  <string name="morphe_duration_8s">8 секунди</string>
+  <string name="morphe_duration_9s">9 секунди</string>
+  <string name="morphe_duration_10s">10 секунди</string>
+  <string name="morphe_change_start_page_entry_default">По подразбиране</string>
+  <string name="morphe_change_start_page_entry_explore">Разгледай</string>
+  <string name="morphe_change_start_page_entry_history">История</string>
+  <string name="morphe_change_start_page_entry_library">Библиотека</string>
+  <string name="morphe_change_start_page_entry_playlists">Плейлисти</string>
+  <string name="morphe_change_start_page_entry_search">Търсене</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Абонаменти</string>
+  <string name="morphe_change_start_page_title">Начална страница</string>
+  <string name="morphe_action_buttons_screen_title">Бутони за действие</string>
+  <string name="morphe_comments_screen_title">Коментари</string>
+  <string name="morphe_feed_screen_title">Емисия </string>
+  <string name="morphe_flyout_menu_screen_title">Изскачащо меню</string>
+  <string name="morphe_general_title">Основни</string>
+  <string name="morphe_miniplayer_screen_title">Миниплейър</string>
+  <string name="morphe_player_screen_title">Плейър</string>
+  <string name="morphe_video_screen_title">Видео</string>
+  <string name="morphe_appearance_title">Външен вид</string>
+  <string name="morphe_cancel">Отказ</string>
+  <string name="morphe_comments_screen_summary">Изберете кои компоненти да се показват в раздела с коментари</string>
+  <string name="morphe_copy_code">Копиране на код</string>
+  <string name="morphe_corner_radius_title">Радиус на ъгъла</string>
+  <string name="morphe_do_not_show_again">Да не се показва отново</string>
+  <string name="morphe_download_force_4k_title">Принудителна наличност на 4K изтегляне</string>
+  <string name="morphe_glass_opacity_title">Прозрачност на стъклото</string>
+  <string name="morphe_header_logo_title">Лого на заглавието</string>
+  <string name="morphe_hide_action_bar_title">Скриване на лентата с действия</string>
+  <string name="morphe_hide_cast_button_title">Скриване на бутона за предаване</string>
+  <string name="morphe_hide_comments_button_title">Скриване на бутона „Коментари“</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Скриване на Правилата за общността</string>
+  <string name="morphe_hide_comments_emoji_button_title">Скриване на бутона за емоджи</string>
+  <string name="morphe_hide_comments_gif_button_title">Скриване на бутона за GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Скрива GIF файловете и изображенията, прикачени към коментари и отговори.</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Скриване на GIF файлове и изображения</string>
+  <string name="morphe_hide_comments_info_button_title">Скриване на бутона за информация</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Скриване на бутона за времевия печат</string>
+  <string name="morphe_hide_horizontal_shelves_title">Хоризонтални секции</string>
+  <string name="morphe_hide_like_dislike_button_title">Скриване на бутоните „Харесва ми“ и „Не харесва ми“</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Скриване на бутоните „Харесва ми“ и „Не харесва ми“</string>
+  <string name="morphe_hide_navigation_bar_title">Скриване на навигационната лента</string>
+  <string name="morphe_hide_navigation_button_labels_title">Скриване на етикетите на бутоните за навигация</string>
+  <string name="morphe_hide_previous_next_buttons_title">Скриване на бутоните „Предишна“ &amp; „Следваща“</string>
+  <string name="morphe_hide_search_button_title">Скриване на бутона за Търсене</string>
+  <string name="morphe_hide_translate_button_title">Скриване на бутона за Превод</string>
+  <string name="morphe_hide_video_ads_title">Скрийте видеореклами</string>
+  <string name="morphe_loading">Зарежда се…</string>
+  <string name="morphe_name">Име</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Разстояние между бутоните</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Показани бутони: %1$s от %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Височина</string>
+  <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
+  <string name="morphe_navigation_bar_glass_title">Активирай навигационната лента със стъклен ефект.</string>
+  <string name="morphe_positive_number_invalid">Стойността трябва да бъде положително число</string>
+  <string name="morphe_private_user_id_invalid">Частният потребителски ID трябва да бъде поне 30 символа</string>
+  <string name="morphe_private_user_id_title">Вашият частен потребителски ID</string>
+  <string name="morphe_rename">Преименуване</string>
+  <string name="morphe_show_settings_button_title">Показване на бутона „Настройки“</string>
+  <string name="morphe_show_settings_button_type_title">Действие на бутона Настройки</string>
+  <string name="morphe_show_video_effect_menu_title">Показване на менюто за видеоефекти</string>
+  <string name="morphe_submit">Изпрати</string>
+  <string name="morphe_time_adjustment_step_title">Стъпка за корекция на времето</string>
+  <string name="morphe_toast_on_connection_error_title">Показване на предупреждения за грешки във връзката</string>
+  <string name="morphe_toast_on_skip_title">Показване на известие при пропускане</string>
+  <string name="morphe_translated_only">Само превод</string>
+  <string name="morphe_translating">Превеждане…</string>
+  <string name="morphe_translation_language_title">Език за превод</string>
+  <string name="morphe_username_change_unknown_error">Неуспешна промяна на потребителското име: Статус: %1$s %2$s</string>
+  <string name="morphe_username_changed">Потребителското име е променено</string>
+  <string name="morphe_username_html">Вашето потребителско име: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Видеоклипове</string>
+  <string name="morphe_vote_downvote">Отхвърли</string>
+  <string name="morphe_vote_upvote">Одобри</string>
 </resources>

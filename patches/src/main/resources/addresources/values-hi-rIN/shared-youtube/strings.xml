@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
-  <string name="morphe_custom_branding_icon_title">ऐप आइकन</string>
   <string name="morphe_custom_branding_icon_entry_1">ओरिजिनल</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ब्लैक</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe डार्क</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe नोटिस</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी वॉच हिस्ट्री सेव नहीं हो रही है।&lt;br&gt;&lt;br&gt;इसकी सबसे अधिक संभावना किसी DNS ऐड ब्लॉकर या नेटवर्क प्रॉक्सी के कारण है।&lt;br&gt;&lt;br&gt;इसे ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS ब्लॉकर्स और प्रॉक्सी को बंद कर दें।</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा न दिखाएँ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम को स्पूफ़ करें</string>
   <string name="morphe_spoof_video_streams_screen_summary">प्लेबैक समस्याओं को रोकने के लिए क्लाइंट स्पूफिंग को कॉन्फ़िगर करें</string>
@@ -134,7 +132,6 @@ Android System WebView खोलने के लिए OK पर टैप क�
 जब तक Android System WebView को नवीनतम वर्ज़न में अपडेट नहीं किया जाता, तब तक वीडियो प्लेबैक विफल हो सकता है।
 
 Android System WebView खोलने के लिए OK पर टैप करें।"</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">दोबारा न दिखाएँ</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView इंस्टॉल नहीं है। वीडियो प्लेबैक को ठीक करने के लिए इसे इंस्टॉल करें</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Android System WebView खोलने के लिए OK पर टैप क�
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">नोटिफिकेशन मीडिया नियंत्रण</string>
   <string name="morphe_notification_media_screen_summary">अपनी लॉक स्क्रीन और नोटिफिकेशन पैनल पर दिखाए जाने वाले प्लेबैक नियंत्रणों को अनुकूलित करें</string>
-  <string name="morphe_hide_notification_media_prev_next_title">पिछला और अगला बटन छिपाएँ</string>
   <string name="morphe_hide_notification_media_prev_next_summary">मीडिया नोटिफिकेशन, लॉक स्क्रीन और हेडफ़ोन नियंत्रणों में पिछले और अगले बटन छिपाता है</string>
   <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करें</string>
   <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन और नोटिफिकेशन पैनल पर सीकबार को खींचने से रोकता है</string>
@@ -244,10 +240,8 @@ Android System WebView खोलने के लिए OK पर टैप क�
   <string name="morphe_video_effects_custom_restore">डिफ़ॉल्ट रीस्टोर करें</string>
   <string name="morphe_video_effects_custom_add_title">नया प्रभाव</string>
   <string name="morphe_video_effects_custom_edit_title">प्रभाव संपादित करें</string>
-  <string name="morphe_video_effects_custom_name_hint">नाम</string>
   <string name="morphe_video_effects_custom_name_empty">प्रभाव के लिए एक नाम दर्ज करें</string>
   <string name="morphe_video_effects_custom_name_exists">इस नाम का प्रभाव पहले से ही मौजूद है</string>
-  <string name="morphe_video_effects_custom_copy_code">कोड कॉपी करें</string>
   <string name="morphe_video_effects_custom_error_title">प्रभाव में त्रुटि है</string>
   <string name="morphe_video_effects_custom_error_message">"जब तक कोड ठीक नहीं हो जाता, तब तक वीडियो बिना प्रभाव के दिखाए जाएंगे। यह त्रुटि उस AI को दें जिसने कोड लिखा था:
 
@@ -257,7 +251,6 @@ Android System WebView खोलने के लिए OK पर टैप क�
 AI से छोटे कोड के लिए कहें, या कोड को हिस्सों में पेस्ट करें।"</string>
   <string name="morphe_video_effects_custom_copy_error">त्रुटि कॉपी करें</string>
   <string name="morphe_video_effects_custom_save_anyway">फिर भी सहेजें</string>
-  <string name="morphe_video_effects_custom_delete">हटाएँ</string>
   <string name="morphe_video_effects_custom_delete_title">इफेक्ट हटाएँ?</string>
   <string name="morphe_video_effects_custom_delete_message">%s हटा दिया जाएगा।</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ AI से छोटे कोड के लिए कहें, या कोड
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम स्पूफ\' को \'Android Studio\' और \'Android VR Downgraded\' को छोड़कर किसी भी क्लाइंट में बदलें।</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">शेयरिंग लिंक्स को साफ़ करें</string>
-  <string name="morphe_sanitize_sharing_links_summary">साझा लिंक से ट्रैकिंग क्वेरी पैरामीटर हटाता है</string>
   <string name="morphe_replace_music_with_youtube_title">शेयर लिंक्स को youtube.com पर बदलें</string>
   <string name="morphe_replace_music_with_youtube_summary">साझा लिंक में music.youtube.com को youtube.com से बदलता है।</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be के साथ शेयर लिंक बदलें</string>
@@ -371,7 +362,6 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_custom_font_type_title">फॉन्ट</string>
   <string name="morphe_custom_font_type_entry_default">डिफ़ॉल्ट</string>
   <string name="morphe_custom_font_type_entry_system">डिवाइस सिस्टम फ़ॉन्ट</string>
-  <string name="morphe_custom_font_type_entry_custom">कस्टम फ़ॉन्ट फ़ाइल</string>
   <string name="morphe_custom_font_file_title">कस्टम फ़ॉन्ट फ़ाइल</string>
   <string name="morphe_custom_font_file_summary">TTF या OTF फ़ॉन्ट फ़ाइल चुनें</string>
   <string name="morphe_custom_font_file_invalid">चुनी गई फ़ाइल TTF या OTF फ़ॉन्ट नहीं है</string>
@@ -381,7 +371,6 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_glass_menus_screen_summary">उनके पीछे की धुंधली सामग्री पर फ्रॉस्टेड ग्लास के रूप में मेनू</string>
   <string name="morphe_glass_menus_title">ग्लास मेनू सक्षम करें</string>
   <string name="morphe_glass_menus_summary">मेनू और बॉटम शीट को फ्रॉस्टेड ग्लास के रूप में दिखाता है, जिसमें उनके पीछे की सामग्री धुंधली होती है</string>
-  <string name="morphe_glass_menus_opacity_title">ग्लास अपारदर्शिता</string>
   <string name="morphe_glass_menus_opacity_summary">मेनू धुंधली सामग्री को कितना ढकता है (0 साफ़ है, 100 अपारदर्शी है)</string>
   <string name="morphe_glass_menus_blur_title">ब्लर</string>
   <string name="morphe_glass_menus_blur_summary">मेनू के पीछे की सामग्री कितनी धुंधली है</string>
@@ -402,7 +391,6 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_ryd_dislike_percentage_summary">संख्या के बजाय लाइक के प्रतिशत के रूप में डिसलाइक दिखाता है</string>
   <string name="morphe_ryd_estimated_like_title">अनुमानित लाइक दिखाएँ</string>
   <string name="morphe_ryd_estimated_like_summary">उन वीडियो पर अनुमानित लाइक गिनती दिखाता है जहाँ निर्माता ने लाइक को अक्षम कर दिया है</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">कनेक्शन त्रुटि अलर्ट दिखाएँ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">जब Return YouTube Dislike सर्वर अनुपलब्ध हो तो एक सूचना दिखाता है</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike 2021 में YouTube ने जो नापसंद गणनाएँ छिपाई थीं, उन्हें पुनर्स्थापित करता है। ये गणनाएँ हटाए जाने से पहले के संग्रहीत डेटा से आती हैं और नए वीडियो के लिए उपयोगकर्ताओं के वोटों से अनुमानित की जाती हैं, इसलिए वे अनुमानित हैं और कुछ दिनों में अपडेट होती हैं
 
@@ -424,8 +412,89 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">कोई क्लाइंट दर सीमा नहीं मिली</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s बार क्लाइंट रेट लिमिट का सामना किया गया</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s मिलिसेकंड</string>
-  <string name="morphe_navigation_bar_screen_title">नेविगेशन बार</string>
   <string name="morphe_navigation_bar_screen_summary">नीचे के नेविगेशन बार में कौन से बटन दिखाई दें, चुनें</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन‑कौन से घटक दिखाई दें, चुनें</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 सेकंड</string>
+  <string name="morphe_duration_2s">2 सेकंड</string>
+  <string name="morphe_duration_3s">3 सेकंड</string>
+  <string name="morphe_duration_4s">4 सेकंड</string>
+  <string name="morphe_duration_5s">5 सेकंड</string>
+  <string name="morphe_duration_6s">6 सेकंड</string>
+  <string name="morphe_duration_7s">7 सेकंड</string>
+  <string name="morphe_duration_8s">8 सेकंड</string>
+  <string name="morphe_duration_9s">9 सेकंड</string>
+  <string name="morphe_duration_10s">10 सेकंड</string>
+  <string name="morphe_change_start_page_entry_default">डिफ़ॉल्ट</string>
+  <string name="morphe_change_start_page_entry_explore">एक्सप्लोर</string>
+  <string name="morphe_change_start_page_entry_history">इतिहास</string>
+  <string name="morphe_change_start_page_entry_library">लाइब्रेरी</string>
+  <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट</string>
+  <string name="morphe_change_start_page_entry_search">खोजें</string>
+  <string name="morphe_change_start_page_entry_subscriptions">सदस्यताएँ</string>
+  <string name="morphe_change_start_page_title">शुरुआती पेज</string>
+  <string name="morphe_action_buttons_screen_title">क्रिया बटन</string>
+  <string name="morphe_comments_screen_title">टिप्पणियाँ</string>
+  <string name="morphe_feed_screen_title">फ़ीड</string>
+  <string name="morphe_flyout_menu_screen_title">फ़्लाईआउट मेनू</string>
+  <string name="morphe_general_title">सामान्य</string>
+  <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
+  <string name="morphe_player_screen_title">प्लेयर</string>
+  <string name="morphe_video_screen_title">वीडियो</string>
+  <string name="morphe_appearance_title">दिखावट</string>
+  <string name="morphe_cancel">रद्द करें</string>
+  <string name="morphe_comments_screen_summary">कमेंट्स सेक्शन में कौन-कौन से घटक दिखाई दें, चुनें</string>
+  <string name="morphe_copy_code">कोड कॉपी करें</string>
+  <string name="morphe_corner_radius_title">कॉर्नर रेडियस</string>
+  <string name="morphe_do_not_show_again">दोबारा न दिखाएँ</string>
+  <string name="morphe_download_force_4k_title">4K डाउनलोड उपलब्धता को फोर्स करें</string>
+  <string name="morphe_glass_opacity_title">ग्लास ओपेसिटी</string>
+  <string name="morphe_header_logo_title">हेडर लोगो</string>
+  <string name="morphe_hide_action_bar_title">एक्शन बार छिपाएं</string>
+  <string name="morphe_hide_cast_button_title">Cast बटन छिपाएँ</string>
+  <string name="morphe_hide_comments_button_title">टिप्पणियाँ बटन छुपाएं</string>
+  <string name="morphe_hide_comments_community_guidelines_title">समुदाय दिशानिर्देश छुपाएं</string>
+  <string name="morphe_hide_comments_emoji_button_title">इमोजी बटन छुपाएं</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF बटन छुपाएं</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">कमेंट और रिप्लाई से जुड़े GIF और इमेज को छुपाता है</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF और इमेज छुपाएं</string>
+  <string name="morphe_hide_comments_info_button_title">जानकारी बटन छुपाएं</string>
+  <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
+  <string name="morphe_hide_horizontal_shelves_title">हॉरिजॉन्टल शेल्फ़ छिपाएँ</string>
+  <string name="morphe_hide_like_dislike_button_title">लाइक और डिस्लाइक बटन छुपाएं</string>
+  <string name="morphe_hide_like_dislike_buttons_title">लाइक और डिस्लाइक बटन छुपाएं</string>
+  <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
+  <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल छिपाएं</string>
+  <string name="morphe_hide_previous_next_buttons_title">पिछला और अगला बटन छुपाएं</string>
+  <string name="morphe_hide_search_button_title">सर्च बटन छुपाएं</string>
+  <string name="morphe_hide_translate_button_title">अनुवाद बटन छुपाएं</string>
+  <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छुपाएं</string>
+  <string name="morphe_loading">लोड हो रहा है…</string>
+  <string name="morphe_name">नाम</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">दिखाए गए बटन: %2$s में से %1$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">ऊँचाई</string>
+  <string name="morphe_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
+  <string name="morphe_navigation_bar_glass_title">ग्लास नेविगेशन बार सक्षम करें</string>
+  <string name="morphe_positive_number_invalid">वैल्यू एक पॉजिटिव नंबर होना चाहिए</string>
+  <string name="morphe_private_user_id_invalid">प्राइवेट यूजर आईडी कम से कम 30 वर्णों की होनी चाहिए</string>
+  <string name="morphe_private_user_id_title">आपका प्राइवेट यूजर ID</string>
+  <string name="morphe_rename">नाम बदलें</string>
+  <string name="morphe_show_settings_button_title">सेटिंग्स बटन दिखाएं</string>
+  <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
+  <string name="morphe_show_video_effect_menu_title">वीडियो इफेक्ट मेनू दिखाएं</string>
+  <string name="morphe_submit">जमा करें</string>
+  <string name="morphe_time_adjustment_step_title">टाइम एडजस्ट करने का स्टेप</string>
+  <string name="morphe_toast_on_connection_error_title">कनेक्शन एरर के अलर्ट्स दिखाएँ</string>
+  <string name="morphe_toast_on_skip_title">स्किप नोटिफ़िकेशन दिखाएँ</string>
+  <string name="morphe_translated_only">केवल अनुवाद किया गया</string>
+  <string name="morphe_translating">अनुवाद किया जा रहा है…</string>
+  <string name="morphe_translation_language_title">अनुवाद भाषा</string>
+  <string name="morphe_username_change_unknown_error">उपयोगकर्ता नाम बदलने में असमर्थ: स्थिति: %1$s %2$s</string>
+  <string name="morphe_username_changed">उपयोगकर्ता नाम सफलतापूर्वक बदल गया</string>
+  <string name="morphe_username_html">आपका उपयोगकर्ता नाम: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">वीडियो</string>
+  <string name="morphe_vote_downvote">डाउन वोट करें</string>
+  <string name="morphe_vote_upvote">ऊपर वोट करें</string>
 </resources>

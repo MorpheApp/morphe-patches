@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Riavvio necessario</string>
   <string name="morphe_settings_restart_dialog_message">Riavvia l\'app affinché questa modifica abbia effetto</string>
   <string name="morphe_settings_restart">Riavvia</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importa</string>
-  <string name="morphe_settings_import_copy">Copia</string>
   <string name="morphe_settings_import_reset">Reimposta le impostazioni di Morphe ai valori predefiniti</string>
   <string name="morphe_settings_import_success">Importate %s impostazioni</string>
   <string name="morphe_settings_import_failure_parse">Importazione non riuscita: %s</string>
@@ -76,7 +74,6 @@ Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.so
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Modifiche</string>
   <string name="morphe_settings_about_version">Versione</string>
-  <string name="morphe_settings_about_close">Chiudi</string>
   <string name="morphe_settings_about_prerelease">Anteprima</string>
   <string name="morphe_settings_about_update_available">Aggiornamento disponibile: %s</string>
   <string name="morphe_settings_about_update_hint">Per aggiornare le modifiche, usa Morphe per applicare nuovamente le patch a questa app</string>
@@ -93,6 +90,7 @@ Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.so
   <!-- Spoken name of the button in the header that opens the menu of periods -->
   <string name="morphe_settings_about_contributors_period_menu">Periodo di tempo</string>
   <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s utenti</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Sostenitori</string>
   <string name="morphe_settings_about_supporters_summary">Sostenitori su Open Collective</string>
@@ -107,7 +105,6 @@ Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.so
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Avvisi di licenza</string>
-  <string name="morphe_settings_about_licenses_loading">Caricamento…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Configura opzioni avanzate per sviluppatori e registri diagnostici</string>
@@ -124,7 +121,6 @@ Non sarai notificato di eventi imprevisti"</string>
   <string name="morphe_debug_export_logs_success">Registri di debug esportati con successo</string>
   <string name="morphe_debug_export_logs_failed">Esportazione dei registri di debug non riuscita</string>
   <string name="morphe_debug_logs_search_hint">Cerca registro di debug…</string>
-  <string name="morphe_debug_export_logs_clear">Cancella</string>
   <string name="morphe_debug_logs_disabled">La registrazione di debug è disabilitata</string>
   <string name="morphe_debug_logs_none_found">Nessun registro di debug trovato</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Registri di debug copiati</string>
@@ -141,15 +137,8 @@ Non sarai notificato di eventi imprevisti"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloccati (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Forzati (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automatico</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Spento</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Attivo</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Forza attivazione</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blocca</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Rimuovi</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flag di funzionalità salvati</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flag di funzionalità ripristinati</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flag di funzionalità copiati negli appunti</string>
@@ -199,7 +188,6 @@ Il comportamento è scomparso in una fase precedente della ricerca, quindi potre
   <string name="gms_core_dialog_outdated_message">"La tua MicroG v%1$s è obsoleta e potrebbe causare problemi.
 
 Aggiorna MicroG all'ultima versione v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Aggiorna</string>
   <string name="gms_core_dialog_ignore_text">Ignora</string>
   <string name="gms_core_dialog_conflict_message">"Il MicroG installato non è consigliato da Morphe:
 
@@ -219,7 +207,6 @@ Questo è necessario per il corretto funzionamento dell'app"</string>
 Disabilitare le ottimizzazioni della batteria non influirà negativamente sull'utilizzo della batteria.
 
 Tocca \"Continua\" per consentire le modifiche"</string>
-  <string name="gms_core_dialog_continue_text">Continua</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Mostra la finestra di dialogo di ottimizzazione della batteria MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabilitando questa opzione, verrà nascosto l'avviso di disattivazione dell'ottimizzazione della batteria per MicroG.
 
@@ -258,9 +245,29 @@ Se desideri un'esperienza più stabile, allora &lt;b&gt;disinstalla&lt;/b&gt; qu
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correzioni di bug</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Altri cambiamenti</string>
   <string name="morphe_patches_update_notice_dialog_more">...e altri %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Aggiorna</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Chiudi</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Registro degli arresti anomali salvato nei documenti utente: %s</string>
   <string name="morphe_crash_log_saved">Registro degli arresti anomali salvato: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">A proposito di</string>
+  <string name="morphe_ads_screen_title">Pubblicità</string>
+  <string name="morphe_misc_screen_title">Varie</string>
+  <string name="morphe_navigation_bar_screen_title">Barra di navigazione</string>
+  <string name="morphe_post_buttons_screen_title">Pulsanti post</string>
+  <string name="morphe_custom_branding_icon_title">Icona dell\'app</string>
+  <string name="morphe_download">Scarica</string>
+  <string name="morphe_hide_create_button_title">Nascondi il pulsante Crea</string>
+  <string name="morphe_hide_post_comment_button_title">Nascondi il pulsante Commenti</string>
+  <string name="morphe_sanitize_sharing_links_summary">Rimuove i parametri di query utilizzati a scopo di tracciamento dai collegamenti condivisi</string>
+  <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
+  <string name="morphe_settings_add">Aggiungi</string>
+  <string name="morphe_settings_clear">Disattiva</string>
+  <string name="morphe_settings_close">Chiudi</string>
+  <string name="morphe_settings_continue">Continua</string>
+  <string name="morphe_settings_copy">Copia</string>
+  <string name="morphe_settings_delete">Elimina</string>
+  <string name="morphe_settings_remove">Rimuovi</string>
+  <string name="morphe_settings_update">Aggiorna</string>
 </resources>

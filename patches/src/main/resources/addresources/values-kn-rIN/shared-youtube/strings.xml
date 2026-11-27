@@ -68,4 +68,12 @@ Second \"item\" text"</string>
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <!-- Shared strings -->
+  <string name="morphe_hide_action_bar_title">ಆಕ್ಷನ್ ಬಾರ್ ಅನ್ನು ಮರೆಮಾಡಿ</string>
+  <string name="morphe_hide_cast_button_title">ಕಾಸ್ಟ್ ಬಟನ್ ಅನ್ನು ಮರೆಮಾಡಿ</string>
+  <string name="morphe_hide_comments_button_title">ಕಮೆಂಟ್‌ಗಳ ಬಟನ್ ಅನ್ನು ಮರೆಮಾಡಿ</string>
+  <string name="morphe_hide_like_dislike_button_title">ಇಷ್ಟ ಮತ್ತು ಇಷ್ಟವಿಲ್ಲದ ಬಟನ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ</string>
+  <string name="morphe_hide_like_dislike_buttons_title">ಲೈಕ್ ಮತ್ತು ಡಿಸ್ಲೈಕ್ ಬಟನ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ</string>
+  <string name="morphe_hide_search_button_title">ಹುಡುಕಾಟ ಬಟನ್ ಅನ್ನು ಮರೆಮಾಡಿ</string>
+  <string name="morphe_hide_translate_button_title">ಅನುವಾದ ಬಟನ್ ಅನ್ನು ಮರೆಮಾಡಿ</string>
 </resources>

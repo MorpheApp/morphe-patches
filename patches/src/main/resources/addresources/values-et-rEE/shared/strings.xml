@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Vajalik taaskäivitus</string>
   <string name="morphe_settings_restart_dialog_message">Selle muudatuse jõustumiseks taaskäivitage rakendus</string>
   <string name="morphe_settings_restart">Taaskäivita</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importimine</string>
-  <string name="morphe_settings_import_copy">Kopeeri</string>
   <string name="morphe_settings_import_reset">Morphe seaded lähtestati vaikiväärtustele</string>
   <string name="morphe_settings_import_success">Imporditud %s seaded</string>
   <string name="morphe_settings_import_failure_parse">Importimine ebaõnnestus: %s</string>
@@ -76,7 +74,6 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage mo
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Parandused</string>
   <string name="morphe_settings_about_version">Versioon</string>
-  <string name="morphe_settings_about_close">Sulge</string>
   <string name="morphe_settings_about_prerelease">Eelversioon</string>
   <string name="morphe_settings_about_update_available">Uuendus on saadaval: %s</string>
   <string name="morphe_settings_about_update_hint">Paikade uuendamiseks kasuta rakenduse uuesti paikamiseks programmi Morphe</string>
@@ -108,7 +105,6 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage mo
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Litsentsiteavitused</string>
-  <string name="morphe_settings_about_licenses_loading">Laaditakse…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Veaotsing</string>
   <string name="morphe_debug_screen_summary">Konfigureerige arendaja täpsemaid suvandeid ja diagnostikalogid</string>
@@ -125,7 +121,6 @@ Teid ei teavitatakse ühegi ootamatutest sündmustest"</string>
   <string name="morphe_debug_export_logs_success">Veaotsingupäevikud eksporteeriti edukalt</string>
   <string name="morphe_debug_export_logs_failed">Veaotsingupäevikute eksport ebaõnnestus</string>
   <string name="morphe_debug_logs_search_hint">Otsi debugi logidest…</string>
-  <string name="morphe_debug_export_logs_clear">Tühjenda</string>
   <string name="morphe_debug_logs_disabled">Veaotsingu logimine on keelatud</string>
   <string name="morphe_debug_logs_none_found">Veaotsingupäevikuid ei leitud</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Veaotsingupäevikud kopeeritud</string>
@@ -142,15 +137,8 @@ Teid ei teavitatakse ühegi ootamatutest sündmustest"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokeeritud (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Sunnitud (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automaatne</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Väljas</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Sisse</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Sunni sisse</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokeeri</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Eemalda</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktsioonilipud salvestatud</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktsioonilipud lähtestatud</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktsioonilipud kopeeritud lõikelauale</string>
@@ -200,7 +188,6 @@ Käitumine kadus otsingu käigus, seega võib olla kaasatud rohkem kui üks lipp
   <string name="gms_core_dialog_outdated_message">"Sinu MicroG versioon v%1$s on aegunud ja võib põhjustada probleeme.
 
 Palun uuenda MicroG uusimale versioonile v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Uuenda</string>
   <string name="gms_core_dialog_ignore_text">Ignoreeri</string>
   <string name="gms_core_dialog_conflict_message">"Installitud MicroG versioon ei ole Morphe poolt soovitata:
 
@@ -220,7 +207,6 @@ See on rakenduse toimimiseks vajalik"</string>
 MicroG akupõhiste optimeerimiste keelamine ei mõjuta negatiivselt aku kulu.
 
 Puudutage jätkamise nuppu ja lubage optimeerimise muudatused"</string>
-  <string name="gms_core_dialog_continue_text">Jätka</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Kuva MicroG aku optimeerimise dialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Selle väljalülitamine peidab MicroG aku optimeerimise teavituse.
 
@@ -259,9 +245,29 @@ Kui soovite võimalikult tõrgetemat kogemust, siis &lt;b&gt;eemaldage&lt;/b&gt;
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Veaparandused</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Muud muudatused</string>
   <string name="morphe_patches_update_notice_dialog_more">…ja veel %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Uuenda</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Sulge</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Crash-log salvestati kasutaja dokumentidesse: %s</string>
   <string name="morphe_crash_log_saved">Crash-log salvestatud: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Teave</string>
+  <string name="morphe_ads_screen_title">Reklaamid</string>
+  <string name="morphe_misc_screen_title">Muu</string>
+  <string name="morphe_navigation_bar_screen_title">Navigeerimisriba</string>
+  <string name="morphe_post_buttons_screen_title">Postituse nupud</string>
+  <string name="morphe_custom_branding_icon_title">Rakenduse ikoon</string>
+  <string name="morphe_download">Laadi alla</string>
+  <string name="morphe_hide_create_button_title">Peida loo nupp</string>
+  <string name="morphe_hide_post_comment_button_title">Peida nupp Kommentaarid</string>
+  <string name="morphe_sanitize_sharing_links_summary">Eemaldab jagatud linkidest jälitamise päringuparameetrid</string>
+  <string name="morphe_sanitize_sharing_links_title">Puhasta jagamislinkide</string>
+  <string name="morphe_settings_add">Lisa</string>
+  <string name="morphe_settings_clear">Tühjenda</string>
+  <string name="morphe_settings_close">Sulge</string>
+  <string name="morphe_settings_continue">Jätka</string>
+  <string name="morphe_settings_copy">Kopeeri</string>
+  <string name="morphe_settings_delete">Kustuta</string>
+  <string name="morphe_settings_remove">Eemalda</string>
+  <string name="morphe_settings_update">Uuenda</string>
 </resources>

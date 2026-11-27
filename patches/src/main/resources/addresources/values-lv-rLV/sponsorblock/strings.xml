@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Iespējot SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock ir kopienas veidota sistēma, lai izlaistu kaitinošas daļas YouTube video</string>
-  <string name="morphe_sb_appearance_category_title">Izskats</string>
   <string name="morphe_sb_voting_button_title">Rādīt balsošanas pogu</string>
   <string name="morphe_sb_voting_button_summary">Pievieno pogu, lai segmentus novērtētu pozitīvi vai negatīvi</string>
   <string name="morphe_sb_square_layout_title">Izmantot kvadrātveida izkārtojumu</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Pēc dažām sekundēm slēpj izlaišanas pogu, nevis atstāj to redzamu visa segmenta garumā</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Izlaišanas pogas rādīšanas ilgums</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Iestatiet, cik ilgi izlaišanas poga paliek redzama</string>
-  <string name="morphe_sb_toast_on_skip_title">Rādīt izlaišanas paziņojumu</string>
   <string name="morphe_sb_toast_on_skip_summary">Rāda paziņojumu, ja segments tiek izlaists automātiski</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Izlaišanas paziņojuma ilgums</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Iestatiet, cik ilgi atsaukšanas paziņojums paliek redzams</string>
-  <string name="morphe_sb_duration_1s">1 sekunde</string>
-  <string name="morphe_sb_duration_2s">2 sekundes</string>
-  <string name="morphe_sb_duration_3s">3 sekundes</string>
-  <string name="morphe_sb_duration_4s">4 sekundes</string>
-  <string name="morphe_sb_duration_5s">5 sekundes</string>
-  <string name="morphe_sb_duration_6s">6 sekundes</string>
-  <string name="morphe_sb_duration_7s">7 sekundes</string>
-  <string name="morphe_sb_duration_8s">8 sekundes</string>
-  <string name="morphe_sb_duration_9s">9 sekundes</string>
-  <string name="morphe_sb_duration_10s">10 sekundes</string>
   <string name="morphe_sb_video_length_without_segments_title">Rādīt video garumu bez segmentiem</string>
   <string name="morphe_sb_video_length_without_segments_summary">Atņem visus segmentus no kopējā video ilguma, kas rādīts meklēšanas joslā</string>
   <string name="morphe_sb_create_segment_category_title">Jaunu segmentu izveide</string>
   <string name="morphe_sb_create_new_segment_title">Rādīt pogu \'Izveidot jaunu segmentu\'</string>
   <string name="morphe_sb_create_new_segment_summary">Pievieno video atskaņotājam pogu, kas ļauj iesniegt jaunus SponsorBlock segmentus</string>
-  <string name="morphe_sb_create_new_segment_step_title">Laika korekcijas solis</string>
   <string name="morphe_sb_create_new_segment_step_summary">Laika korekcijas pogu meklēšanas apjoms (milisekundēs)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Vērtībai jābūt pozitīvam skaitlim</string>
   <string name="morphe_sb_guidelines_title">Iesniegšanas vadlīnijas</string>
   <string name="morphe_sb_guidelines_summary">Vadlīnijas satur noteikumus un padomus jaunu segmentu izveidei</string>
   <string name="morphe_sb_guidelines_popup_title">Ievērojiet vadlīnijas</string>
   <string name="morphe_sb_guidelines_popup_content">Pirms jaunu segmentu izveides izlasiet SponsorBlock vadlīnijas</string>
   <string name="morphe_sb_guidelines_popup_already_read">Jau izlasīju</string>
   <string name="morphe_sb_guidelines_popup_open">Rādīt man</string>
-  <string name="morphe_sb_general_title">Vispārīgi</string>
   <string name="morphe_sb_offline_segments_title">Saglabāt lejupielādēto video segmentus</string>
   <string name="morphe_sb_offline_segments_summary">Ļauj izlaist lejupielādēto video segmentus, strādājot bezsaistē</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Rādīt savienojuma kļūdas brīdinājumus</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Rāda paziņojumu, ja SponsorBlock serveris nav pieejams</string>
   <string name="morphe_sb_track_skip_count_title">Iespējot izlaisto reižu skaitīšanu</string>
   <string name="morphe_sb_track_skip_count_summary">Sūta izlaisto reižu skaitu SponsorBlock līderu tabulai, lai sekotu līdzi ietaupītajam laikam</string>
   <string name="morphe_sb_min_segment_duration_title">Minimālā segmenta ilgums</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmenti, kas ir īsāki par šo vērtību (sekundēs), netiks rādīti vai pārlēkti</string>
   <string name="morphe_sb_min_segment_duration_invalid">Nederīgs laika ilgums</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Jūsu privātais lietotāja ID</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Tas jāglabā slepenībā. Tas ir kā parole, un to nedrīkst kopīgot ar nevienu. Ja kāds to iegūst, viņš var uzdoties par jums</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Privātajam lietotāja ID garumam jābūt vismaz 30 rakstzīmēm</string>
   <string name="morphe_sb_api_url_title">Mainīt API URL</string>
   <string name="morphe_sb_api_url_summary">Adrese, kuru SponsorBlock izmanto, lai veiktu izsaukumus serverim</string>
   <string name="morphe_sb_channel_whitelist_title">Kanālu baltais saraksts</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL ir nederīgs</string>
   <string name="morphe_sb_api_url_changed">API URL mainīts</string>
   <string name="morphe_sb_settings_ie_title">Importēt / Eksportēt iestatījumus</string>
-  <string name="morphe_sb_settings_copy">Kopēt</string>
   <string name="morphe_sb_settings_ie_summary">Jūsu SponsorBlock JSON konfigurācija, kuru var importēt / eksportēt Morphe un citās SponsorBlock platformās</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Jūsu SponsorBlock JSON konfigurācija, kuru var importēt / eksportēt Morphe un citās SponsorBlock platformās
 
@@ -92,7 +73,6 @@ Tajā ietilpst jūsu privātais lietotāja ID. Esiet piesardzīgi, kopīgojot š
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Jūsu iestatījumos ir privāts SponsorBlock lietotāja ID.
 
 Jūsu lietotāja ID ir līdzīgi kā parole, un to nedrīkst kopīgot"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Nerādīt vairs</string>
   <string name="morphe_sb_diff_segments_title">Mainīt segmenta uzvedību</string>
   <string name="morphe_sb_segments_sponsor">Sponsoru reklāma</string>
   <string name="morphe_sb_segments_sponsor_summary">Maksas reklāma, maksas ieteikumi un tiešās reklāmas. Nav paredzēts pašreklāmai vai bezmaksas reklāmai mērķiem / izveidotājiem / vietnēm / produktiem, kas viņiem patīk</string>
@@ -122,11 +102,9 @@ Jūsu lietotāja ID ir līdzīgi kā parole, un to nedrīkst kopīgot"</string>
   <string name="morphe_sb_skip_button_highlight">Izlaist uz svarīgāko momentu</string>
   <string name="morphe_sb_skip_button_intro_beginning">Izlaist ievadu</string>
   <string name="morphe_sb_skip_button_intro_middle">Izlaist pārtraukumu</string>
-  <string name="morphe_sb_skip_button_intro_end">Izlaist pārtraukumu</string>
   <string name="morphe_sb_skip_button_outro">Izlaist noslēgumu</string>
   <string name="morphe_sb_skip_button_hook">Izlaist ievadu</string>
   <string name="morphe_sb_skip_button_preview_beginning">Izlaist priekšskatījumu</string>
-  <string name="morphe_sb_skip_button_preview_middle">Izlaist priekšskatījumu</string>
   <string name="morphe_sb_skip_button_preview_end">Izlaist kopsavilkumu</string>
   <string name="morphe_sb_skip_button_filler">Izlaist atkāpi</string>
   <string name="morphe_sb_skip_button_nomusic">Izlaist daļu bez mūzikas</string>
@@ -137,11 +115,9 @@ Jūsu lietotāja ID ir līdzīgi kā parole, un to nedrīkst kopīgot"</string>
   <string name="morphe_sb_skipped_highlight">Izlaists līdz svarīgākajam posmam</string>
   <string name="morphe_sb_skipped_intro_beginning">Izlaists ievads</string>
   <string name="morphe_sb_skipped_intro_middle">Izlaists pārtraukums</string>
-  <string name="morphe_sb_skipped_intro_end">Izlaists pārtraukums</string>
   <string name="morphe_sb_skipped_outro">Izlaists noslēgums</string>
   <string name="morphe_sb_skipped_hook">Izlaists ievadīšanas posms</string>
   <string name="morphe_sb_skipped_preview_beginning">Izlaists priekšskatījums</string>
-  <string name="morphe_sb_skipped_preview_middle">Izlaists priekšskatījums</string>
   <string name="morphe_sb_skipped_preview_end">Izlaists kopsavilkums</string>
   <string name="morphe_sb_skipped_filler">Izlaista atkāpe</string>
   <string name="morphe_sb_skipped_nomusic">Izlaista sadaļa bez mūzikas</string>
@@ -167,8 +143,6 @@ Tas jau eksistē"</string>
   <string name="morphe_sb_vote_failed_timeout">Nevar nobalsot par segmentu (API laika beigas)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Neizdevās balsot par segmentu (statuss: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nevar balsot par segmentu: %s</string>
-  <string name="morphe_sb_vote_upvote">Balsot par</string>
-  <string name="morphe_sb_vote_downvote">Balsot pret</string>
   <string name="morphe_sb_vote_category">Mainīt kategoriju</string>
   <string name="morphe_sb_vote_no_segments">Nav segmentu, par kuriem varētu balsot</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ līdz
 (%3$s)
 
 Gatavs iesniegt?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Iesniegt</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Sākumam jābūt pirms beigām</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Vispirms atzīmējiet vietu laika joslā</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Priekšskatiet segmentu un pārliecinieties, ka tas tiek izlaists vienmērīgi</string>
@@ -205,16 +178,11 @@ Gatavs iesniegt?"</string>
 %s
 
 Ja jūs neiesniedzat izcēlumu, nospiediet Atcelt un atzīmējiet otro vietu"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Iesniegt izcēlumu</string>
   <string name="morphe_sb_stats_title">Statistika</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistika pagaidām nav pieejama (API nedarbojas)</string>
-  <string name="morphe_sb_stats_loading">Ielādē…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock ir izslēgts</string>
-  <string name="morphe_sb_stats_username">Jūsu lietotājvārds: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Pieskarieties šeit, lai mainītu lietotājvārdu</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Neizdevās mainīt lietotājvārdu: statuss: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Lietotājvārds veiksmīgi mainīts</string>
   <string name="morphe_sb_stats_reputation">Jūsu reputācija ir &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Jūs esat izveidojis &lt;b&gt;%s&lt;/b&gt; segmentus</string>
   <string name="morphe_sb_stats_submissions_summary">Pieskarieties šeit, lai aplūkotu savus segmentus</string>

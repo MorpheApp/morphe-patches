@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Ativar o SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">O SponsorBlock é um sistema feito pela comunidade para pular partes chatas de vídeos do YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Aparência</string>
   <string name="morphe_sb_voting_button_title">Mostrar botão votar</string>
   <string name="morphe_sb_voting_button_summary">Adiciona um botão para votar nos segmentos de forma positiva ou negativa</string>
   <string name="morphe_sb_square_layout_title">Usar layout quadrado</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Esconde o botão Pular após alguns segundos, em vez de mantê-lo visível durante todo o segmento</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Duração do botão Pular</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Defina por quanto tempo os botões Pular permanecem visíveis</string>
-  <string name="morphe_sb_toast_on_skip_title">Mostrar notificação de pular</string>
   <string name="morphe_sb_toast_on_skip_summary">Mostra uma notificação quando um segmento é pulado automaticamente</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Duração da notificação de pular</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Defina por quanto tempo a notificação de desfazer permanece visível</string>
-  <string name="morphe_sb_duration_1s">1 segundo</string>
-  <string name="morphe_sb_duration_2s">2 segundos</string>
-  <string name="morphe_sb_duration_3s">3 segundos</string>
-  <string name="morphe_sb_duration_4s">4 segundos</string>
-  <string name="morphe_sb_duration_5s">5 segundos</string>
-  <string name="morphe_sb_duration_6s">6 segundos</string>
-  <string name="morphe_sb_duration_7s">7 segundos</string>
-  <string name="morphe_sb_duration_8s">8 segundos</string>
-  <string name="morphe_sb_duration_9s">9 segundos</string>
-  <string name="morphe_sb_duration_10s">10 segundos</string>
   <string name="morphe_sb_video_length_without_segments_title">Mostrar duração do vídeo sem segmentos</string>
   <string name="morphe_sb_video_length_without_segments_summary">Subtrai todos os segmentos da duração total do vídeo exibida na barra de busca</string>
   <string name="morphe_sb_create_segment_category_title">Criando segmentos</string>
   <string name="morphe_sb_create_new_segment_title">Mostrar botão \'Criar novo segmento\'</string>
   <string name="morphe_sb_create_new_segment_summary">Adiciona um botão ao player de vídeo permitindo enviar novos segmentos do SponsorBlock</string>
-  <string name="morphe_sb_create_new_segment_step_title">Etapa de ajuste de tempo</string>
   <string name="morphe_sb_create_new_segment_step_summary">Quantidade de avanço/retrocesso do tempo dos botões de ajuste (em milissegundos)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Valor deve ser um número positivo</string>
   <string name="morphe_sb_guidelines_title">Diretrizes de envio</string>
   <string name="morphe_sb_guidelines_summary">Diretrizes contêm regras e dicas para criar segmentos</string>
   <string name="morphe_sb_guidelines_popup_title">Siga as diretrizes</string>
   <string name="morphe_sb_guidelines_popup_content">Leia as diretrizes do SponsorBlock antes de criar segmentos</string>
   <string name="morphe_sb_guidelines_popup_already_read">Já lido</string>
   <string name="morphe_sb_guidelines_popup_open">Me mostre</string>
-  <string name="morphe_sb_general_title">Geral</string>
   <string name="morphe_sb_offline_segments_title">Salvar segmentos de vídeos baixados</string>
   <string name="morphe_sb_offline_segments_summary">Permite pular segmentos de vídeos baixados enquanto estiver offline</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Mostra uma notificação quando o servidor SponsorBlock estiver indisponível</string>
   <string name="morphe_sb_track_skip_count_title">Ativar rastreamento de contagem de pulos</string>
   <string name="morphe_sb_track_skip_count_summary">Envia contagens de pulos para a tabela de classificação do SponsorBlock para rastrear quanto tempo é economizado</string>
   <string name="morphe_sb_min_segment_duration_title">Duração mínima de segmento</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmentos menores que este valor (em segundos) não serão mostrados ou pulados</string>
   <string name="morphe_sb_min_segment_duration_invalid">Duração de tempo inválida</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Seu ID de usuário privado</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Isso deve ser mantido em particular. Isto é como uma senha e não deve ser compartilhado com ninguém. Se alguém tiver isso, ele pode se passar por você</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">O ID do usuário privado deve ter pelo menos 30 caracteres</string>
   <string name="morphe_sb_api_url_title">Alterar URL da API</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock usa esse endereço para fazer chamadas ao servidor</string>
   <string name="morphe_sb_channel_whitelist_title">Lista branca de canais</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL da API é inválida</string>
   <string name="morphe_sb_api_url_changed">Endereço da API alterado</string>
   <string name="morphe_sb_settings_ie_title">Importar/Exportar Configurações</string>
-  <string name="morphe_sb_settings_copy">Copiar</string>
   <string name="morphe_sb_settings_ie_summary">Sua configuração JSON do SponsorBlock que pode ser importada/exportada para Morphe e outras plataformas do SponsorBlock</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Sua configuração JSON do SponsorBlock que pode ser importada/exportada para o Morphe e outras plataformas do SponsorBlock. Isso inclui sua identificação de usuário privada. Certifique-se de compartilhar isso sabiamente"</string>
   <string name="morphe_sb_settings_import_successful">Configurações importadas com sucesso</string>
@@ -90,7 +71,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Suas configurações contêm um ID de usuário SponsorBlock privado.
 
 Seu ID de usuário é como uma senha e nunca deve ser compartilhado"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Não exibir novamente</string>
   <string name="morphe_sb_diff_segments_title">Alterar comportamento do segmento</string>
   <string name="morphe_sb_segments_sponsor">Patrocinador</string>
   <string name="morphe_sb_segments_sponsor_summary">Promoção paga, indicações pagas e anúncios diretos. Não é para autopromoção ou anúncios gratuitos para causas/criadores/sites/produtos que eles gostam</string>
@@ -120,11 +100,9 @@ Seu ID de usuário é como uma senha e nunca deve ser compartilhado"</string>
   <string name="morphe_sb_skip_button_highlight">Destaque</string>
   <string name="morphe_sb_skip_button_intro_beginning">Pular introdução</string>
   <string name="morphe_sb_skip_button_intro_middle">Pular intervalo</string>
-  <string name="morphe_sb_skip_button_intro_end">Pular intervalo</string>
   <string name="morphe_sb_skip_button_outro">Pular encerramento</string>
   <string name="morphe_sb_skip_button_hook">Pular gancho</string>
   <string name="morphe_sb_skip_button_preview_beginning">Pular prévia</string>
-  <string name="morphe_sb_skip_button_preview_middle">Pular prévia</string>
   <string name="morphe_sb_skip_button_preview_end">Pular recapitulação</string>
   <string name="morphe_sb_skip_button_filler">Pular desvio</string>
   <string name="morphe_sb_skip_button_nomusic">Pular sem música</string>
@@ -135,11 +113,9 @@ Seu ID de usuário é como uma senha e nunca deve ser compartilhado"</string>
   <string name="morphe_sb_skipped_highlight">Pulado para destaque</string>
   <string name="morphe_sb_skipped_intro_beginning">Introdução pulada</string>
   <string name="morphe_sb_skipped_intro_middle">Intervalo pulado</string>
-  <string name="morphe_sb_skipped_intro_end">Intervalo pulado</string>
   <string name="morphe_sb_skipped_outro">Encerramento pulado</string>
   <string name="morphe_sb_skipped_hook">Gancho pulado</string>
   <string name="morphe_sb_skipped_preview_beginning">Prévia pulada</string>
-  <string name="morphe_sb_skipped_preview_middle">Prévia pulada</string>
   <string name="morphe_sb_skipped_preview_end">Recapitulação pulada</string>
   <string name="morphe_sb_skipped_filler">Tangente pulada</string>
   <string name="morphe_sb_skipped_nomusic">Seção sem música pulada</string>
@@ -165,8 +141,6 @@ Já existe"</string>
   <string name="morphe_sb_vote_failed_timeout">Não foi possível votar no segmento (API expirou)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Não é possível votar para o segmento (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Não foi possível votar no segmento: %s</string>
-  <string name="morphe_sb_vote_upvote">Aprovar</string>
-  <string name="morphe_sb_vote_downvote">Voto negativo</string>
   <string name="morphe_sb_vote_category">Alterar categoria</string>
   <string name="morphe_sb_vote_no_segments">Não há segmentos para votar</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -190,7 +164,6 @@ para
 (%3$s)
 
 Pronto para enviar?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Enviar</string>
   <string name="morphe_sb_new_segment_start_is_before_end">O início deve ser antes do fim</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Marque primeiro uma localização na barra de tempo</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Visualize o segmento e certifique-se de que ele pule sem problemas</string>
@@ -203,16 +176,11 @@ Pronto para enviar?"</string>
 %s
 
 Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda localização."</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Enviar destaque</string>
   <string name="morphe_sb_stats_title">Estatísticas</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">As estatísticas não estão disponíveis temporariamente (API está inativa)</string>
-  <string name="morphe_sb_stats_loading">Carregando…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock está desativado</string>
-  <string name="morphe_sb_stats_username">Seu nome de usuário: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Toque aqui para mudar o seu nome de usuário</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Não foi possível alterar o nome de usuário. Status: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Nome de usuário alterado com sucesso</string>
   <string name="morphe_sb_stats_reputation">Sua reputação é &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Você criou &lt;b&gt;%s&lt;/b&gt; segmentos</string>
   <string name="morphe_sb_stats_submissions_summary">Toque aqui para ver seus segmentos</string>

@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock\'ê bidarixe</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock ji hêla gel ve hatî çêkirin ku beşên tûj ên vîdyoyên YouTube\'ê derbas bike</string>
-  <string name="morphe_sb_appearance_category_title">Dîmen</string>
   <string name="morphe_sb_voting_button_title">Nîşanê bi kurtike bide</string>
   <string name="morphe_sb_voting_button_summary">Bi kurtike rojkirin an kêmkirina beşan deşt bike</string>
   <string name="morphe_sb_square_layout_title">Layouta qereqîşan bikar bîne</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Butona bi kurtike piştî çend saniyetan veşêre li şûna wê ku ew hemû beşa tevahiya vîdyoyê dîmen bike</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Demahiya butona bi kurtike</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Destbîne ku Butona Rabit bi darê ve çiqas dirêj xuya bimîne</string>
-  <string name="morphe_sb_toast_on_skip_title">Nîşana bi kurtike nîşan bide</string>
   <string name="morphe_sb_toast_on_skip_summary">Têxiv û nîşane nîşan dide gava ku beşek bi xweber derbas bibe</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Dûrbigiya ragihandinê ji demê</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Destbîne ku îşaretê çiqas dirêj xuya bimîne</string>
-  <string name="morphe_sb_duration_1s">1 sekund</string>
-  <string name="morphe_sb_duration_2s">2 sekund</string>
-  <string name="morphe_sb_duration_3s">3 sekund</string>
-  <string name="morphe_sb_duration_4s">4 sekund</string>
-  <string name="morphe_sb_duration_5s">5 sekund</string>
-  <string name="morphe_sb_duration_6s">6 sekund</string>
-  <string name="morphe_sb_duration_7s">7 sekund</string>
-  <string name="morphe_sb_duration_8s">8 sekund</string>
-  <string name="morphe_sb_duration_9s">9 sekund</string>
-  <string name="morphe_sb_duration_10s">10 sekund</string>
   <string name="morphe_sb_video_length_without_segments_title">Dirêjiya vîdyoyê bêyî beşan nîşan bide</string>
   <string name="morphe_sb_video_length_without_segments_summary">Hemû beşan ji dirêjiya tevahiya vîdyoyê ya ku li ser bara dîtinê tê nîşan dan derbas bike</string>
   <string name="morphe_sb_create_segment_category_title">Çêkirina beşên nû</string>
   <string name="morphe_sb_create_new_segment_title">Butona \'Çêkirina beşa nû\' nîşan bide</string>
   <string name="morphe_sb_create_new_segment_summary">Butonekê li ser lîstikvanê vîdyoyê zêde bike ku bihêle hûn beşên nû yên SponsorBlock\'ê bidin</string>
-  <string name="morphe_sb_create_new_segment_step_title">Gavê sererastkirina demê</string>
   <string name="morphe_sb_create_new_segment_step_summary">Mîqdarê sererastkirina demê ya butonên sererastkirinê (bi milîsekundan)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Nirx divê hejmareke erênî be</string>
   <string name="morphe_sb_guidelines_title">Rêbernameya şandinê</string>
   <string name="morphe_sb_guidelines_summary">Rêbernameyê rêgez û şîretên çêkirina beşên nû dihewîne</string>
   <string name="morphe_sb_guidelines_popup_title">Rêbernameyê bişopîne</string>
   <string name="morphe_sb_guidelines_popup_content">Berî çêkirina beşên nû, rêbernameya SponsorBlock bixwîne</string>
   <string name="morphe_sb_guidelines_popup_already_read">Berê xwandiye</string>
   <string name="morphe_sb_guidelines_popup_open">Nîşan bide min</string>
-  <string name="morphe_sb_general_title">Giştî</string>
   <string name="morphe_sb_offline_segments_title">Segmentên vîdyoyên daxistî tomar bike</string>
   <string name="morphe_sb_offline_segments_summary">Dihêle ku segmentên vîdyoyên daxistî dema offline bin derbas bibin</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Hişyariyên çewtiya girêdanê nîşan bide</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Dema servera SponsorBlock nayê gihîştin hişyarî nîşan dide</string>
   <string name="morphe_sb_track_skip_count_title">Şopandina hejmara derbasbûnan çalak bike</string>
   <string name="morphe_sb_track_skip_count_summary">Hejmara derbasbûnan ji bo lîsteya serkeftinê ya SponsorBlock dişîne da ku were dîtin ka çiqas dem hatiye teserûfkirin</string>
   <string name="morphe_sb_min_segment_duration_title">Dirêjiya herî kêm a beşê</string>
   <string name="morphe_sb_min_segment_duration_summary">Beşên ku ji vê mîqdarê (bi saniyeyan) kêmtir in, dê neyên nîşan kirin an derbas kirin</string>
   <string name="morphe_sb_min_segment_duration_invalid">Dirêjiya demê nederbasdar e</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">ID-ya bikarhêner a taybet a te</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Divê ev taybet bimîne. Ew mîna şîfreyekê ye û divê bi kesî re parve nebe. Eger kesek vê ID-yê bibîne, dikare wek we tevbigere</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ID-ya bikarhêner a taybet divê bi kêmanî 30 tîp be</string>
   <string name="morphe_sb_api_url_title">Guherandina URL-ya API-yê</string>
   <string name="morphe_sb_api_url_summary">Navnîşana ku SponsorBlock ji bo banga serverê bikar tîne</string>
   <string name="morphe_sb_channel_whitelist_title">Lîsteya spî ya kanalê</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL-a API-yê nederbasdar e</string>
   <string name="morphe_sb_api_url_changed">URL-a API-yê hate guhertin</string>
   <string name="morphe_sb_settings_ie_title">Import / Export mîhengan</string>
-  <string name="morphe_sb_settings_copy">Kopî bike</string>
   <string name="morphe_sb_settings_ie_summary">Konfîgurasyona JSON ya SponsorBlock ku dikare bi Morphe û platformên din ên SponsorBlock re were importkirin / exportkirin</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Konfîgurasyona JSON ya SponsorBlock ku dikare bi Morphe û platformên din ên SponsorBlock re were importkirin / exportkirin
 
@@ -92,7 +73,6 @@ Ev ID-ya bikarhênerê we ya taybet dihewîne. Bi baldarî parve bike"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Mîhengên we ID-ya bikarhênerê SponsorBlock ya taybet dihewîne.
 
 ID-ya bikarhênerê we mîna şîfreyekê ye, û divê tu carî parve nekî"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Dîsa nîşan nede</string>
   <string name="morphe_sb_diff_segments_title">Guherandina tevgera beşan</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
   <string name="morphe_sb_segments_sponsor_summary">Danasîna bi drav, referansên bi drav û reklamên rasterast. Ne ji bo pêşxistina xwe an pesnê belaş ji bo doz / afirîner / malper / berhemên ku hez dikin</string>
@@ -122,11 +102,9 @@ ID-ya bikarhênerê we mîna şîfreyekê ye, û divê tu carî parve nekî"</st
   <string name="morphe_sb_skip_button_highlight">Here ronahîkirinê derbas bike</string>
   <string name="morphe_sb_skip_button_intro_beginning">Destpêkê derbas bike</string>
   <string name="morphe_sb_skip_button_intro_middle">Navbera navîn derbas bike</string>
-  <string name="morphe_sb_skip_button_intro_end">Navbera navîn derbas bike</string>
   <string name="morphe_sb_skip_button_outro">Dawiyê derbas bike</string>
   <string name="morphe_sb_skip_button_hook">Hook derbas bike</string>
   <string name="morphe_sb_skip_button_preview_beginning">Pêşdîtina destpêkê derbas bike</string>
-  <string name="morphe_sb_skip_button_preview_middle">Pêşdîtina navîn derbas bike</string>
   <string name="morphe_sb_skip_button_preview_end">Kurteyê derbas bike</string>
   <string name="morphe_sb_skip_button_filler">Dûrketinê derbas bike</string>
   <string name="morphe_sb_skip_button_nomusic">Beşa bê-mûzîk derbas bike</string>
@@ -137,11 +115,9 @@ ID-ya bikarhênerê we mîna şîfreyekê ye, û divê tu carî parve nekî"</st
   <string name="morphe_sb_skipped_highlight">Here ronahîkirinê derbas kir</string>
   <string name="morphe_sb_skipped_intro_beginning">Destpêkê derbas kir</string>
   <string name="morphe_sb_skipped_intro_middle">Navbera navîn derbas kir</string>
-  <string name="morphe_sb_skipped_intro_end">Navbera navîn derbas kir</string>
   <string name="morphe_sb_skipped_outro">Dawiyê derbas kir</string>
   <string name="morphe_sb_skipped_hook">Hook derbas kir</string>
   <string name="morphe_sb_skipped_preview_beginning">Pêşdîtina destpêkê derbas kir</string>
-  <string name="morphe_sb_skipped_preview_middle">Pêşdîtina navîn derbas kir</string>
   <string name="morphe_sb_skipped_preview_end">Kurteyê derbas kir</string>
   <string name="morphe_sb_skipped_filler">Dûrketinê derbas kir</string>
   <string name="morphe_sb_skipped_nomusic">Beşa bê-mûzîk derbas kir</string>
@@ -167,8 +143,6 @@ Jixwe heye"</string>
   <string name="morphe_sb_vote_failed_timeout">Nikare ji bo segmentê deng bide (dema API qediya)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Nikare ji bo segmentê deng bide (statû: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nikare ji bo segmentê deng bide: %s</string>
-  <string name="morphe_sb_vote_upvote">Erênî deng bide</string>
-  <string name="morphe_sb_vote_downvote">Neyînî deng bide</string>
   <string name="morphe_sb_vote_category">Kategoriyê biguherîne</string>
   <string name="morphe_sb_vote_no_segments">Ji bo dengdanê segmentek tune ye</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -193,7 +167,6 @@ heta
 (%3$s)
 
 Amade ye ji bo weşandinê?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Şandin</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Destpêk divê berî dawiyê be</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Pêşî li ser darika demê cihekî nîşan bike</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Segmentê pêşdîtin bike û piştrast be ku bi awayekî hêsan derbas dibe</string>
@@ -206,16 +179,11 @@ Amade ye ji bo weşandinê?"</string>
 %s
 
 Heke hûn ronahîkirinê nayên şandin, li Betal bitikîne û cihê duyemîn nîşan bide"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Ronahîkirinê bişînin</string>
   <string name="morphe_sb_stats_title">Statîstîk</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statîstîk demekê ne berdest in (API ne li xebatê ye)</string>
-  <string name="morphe_sb_stats_loading">Barkirin…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock neçalak e</string>
-  <string name="morphe_sb_stats_username">Navê bikarhênerê we: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Li vir bitikîne da ku navê bikarhênerê xwe biguherîne</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Nikarî navê bikarhêner biguherîne: Statû: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Navê bikarhêner bi serkeftî hate guhertin</string>
   <string name="morphe_sb_stats_reputation">Navdariya we &lt;b&gt;%.2f&lt;/b&gt; ye</string>
   <string name="morphe_sb_stats_submissions">Hwar %s segment afirandîye</string>
   <string name="morphe_sb_stats_submissions_summary">Li vir bitikîne da ku segmentên xwe bibînî</string>

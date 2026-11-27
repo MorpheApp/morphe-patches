@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">הושמע לאחרונה</string>
   <string name="morphe_music_android_auto_subscriptions">מינויים</string>
-  <string name="morphe_music_android_auto_videos">סרטונים</string>
   <string name="morphe_music_android_auto_other_results">תוצאות אחרות</string>
   <string name="morphe_music_android_auto_uploaded_songs">שירים שהועלו</string>
   <string name="morphe_music_android_auto_uploaded_albums">אלבומים שהועלו</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">להפעיל Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">הפעל את ה-Wi-Fi, ולאחר מכן נסה שוב להתחיל את ה-Jam או להצטרף אליו</string>
   <string name="morphe_music_jam_wifi_settings">פתח את הגדרות ה-Wi-Fi.</string>
-  <string name="morphe_music_jam_cancel">בטל</string>
   <string name="morphe_music_jam_use_package">השתמש בחבילה</string>
   <string name="morphe_music_jam_invalid_package">הזן שם חבילת Android חוקי.</string>
   <string name="morphe_music_jam_package_saved">החבילה נשמרה. הגדר את Jam Layer כדי להתחבר</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">סרוק QR</string>
   <string name="morphe_music_jam_invalid_invite">הזן את הקוד בן שמונה התווים או הדבק הזמנה.</string>
   <string name="morphe_music_jam_join_your_jam">הצטרף ל-Jam שלך</string>
-  <string name="morphe_music_jam_copy_code">העתק קוד</string>
   <string name="morphe_music_jam_code_clip">קוד Jam</string>
   <string name="morphe_music_jam_show_qr">הצג QR</string>
   <string name="morphe_music_jam_done">בוצע</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">צא מ-Jam</string>
   <string name="morphe_music_jam_start_jam">התחל Jam</string>
   <string name="morphe_music_jam_setup_layer">הגדר את Jam Layer</string>
-  <string name="morphe_music_jam_manage">נהל</string>
   <string name="morphe_music_jam_details">פרטים</string>
   <string name="morphe_music_jam_open">פתח</string>
   <string name="morphe_music_jam_loading_song_options">טוען אפשרויות שיר…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">התור השתנה; נסה שוב את המחווה.</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">לוגו כותרת</string>
   <string name="morphe_header_logo_entry_1">ברירת מחדל</string>
   <string name="morphe_header_logo_entry_3">מותג</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">השתמש במוריד חיצוני לתפריט ההורדות</string>
   <string name="morphe_external_downloader_menu_summary">אפשרות ההורדה בתפריטים תפתח את המוריד החיצוני שלך במקום</string>
-  <string name="morphe_download_force_4k_title">כפה זמינות הורדה ב-4K</string>
   <string name="morphe_download_force_4k_summary">שומר הורדות ב-1440p וב-4K גם אם YouTube Music מחליט שמכשיר זה אינו יכול להריץ אותן</string>
   <string name="morphe_export_download_folder_title">ייצוא הורדות</string>
   <string name="morphe_export_download_folder_summary">"ייצוא שירים וסרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקש לשינוי תיקיית הייצוא
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">החלף את כפתור השמירה באקראי בכפתור לולאה</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">מציג את כפתור הלולאה במקום את כפתור השמירה באקראי בהודעת המדיה ובמסך הנעילה</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">אודות</string>
-  <string name="morphe_settings_music_screen_01_ads_title">מודעות</string>
-  <string name="morphe_settings_music_screen_02_feed_title">פיד</string>
-  <string name="morphe_settings_music_screen_03_general_title">כללי</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">מילים</string>
-  <string name="morphe_settings_music_screen_05_misc_title">שונות</string>
-  <string name="morphe_settings_music_screen_06_player_title">נגן</string>
-  <string name="morphe_settings_music_screen_10_video_title">סרטון</string>
   <string name="morphe_music_app_language_title">שפת YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">שפת המערכת</string>
   <string name="morphe_music_app_language_summary_unsupported">דורש Android 13 ומעלה</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">הסתר קידומי Music Premium</string>
-  <string name="morphe_music_hide_video_ads_title">הסתר מודעות וידאו</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">הסתר החלפת שמע/וידאו</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">מסתיר את כפתור ההורדה במסך הפודקאסט</string>
   <string name="morphe_music_hide_explore_shelf_title">הסתר מדף \'explore\'</string>
   <string name="morphe_music_hide_filter_bar_title">הסתר סרגל סינון</string>
   <string name="morphe_music_hide_grid_shelves_title">הסתר מדפים ברשת</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">הסתר מדפים אופקיים</string>
   <string name="morphe_music_hide_new_button_title">הסתר לחצן חדש</string>
   <string name="morphe_music_hide_new_button_summary">מסתיר את לחצן \'חדש\' בלשונית הספרייה</string>
   <string name="morphe_music_hide_list_shelves_title">הסתר מדפים ברשימה</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">פאנל מילים</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">הסתר לחצן תרגום</string>
   <string name="morphe_music_hide_new_from_shelf_title">הסתר מדף \'חדש מ...\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">הסתר מדפי פלייליסט</string>
   <string name="morphe_music_hide_repeat_button_title">הסתר לחצן חזרה</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">הסתר מדף \'חיוג מהיר\'</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">הסתר את סעיף \'אולי תאהב גם\'</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">הסתר מדף \'ההורדות שלך\'</string>
-  <string name="morphe_music_comments_screen_title">תגובות</string>
-  <string name="morphe_music_comments_screen_summary">בחר אילו רכיבים יוצגו בסעיף התגובות</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">הסתר הנחיות קהילה</string>
   <string name="morphe_music_hide_comments_context_title">הסתר הודעת הקשר</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">הסתר לחצן אימוג\'י</string>
-  <string name="morphe_music_hide_comments_gif_button_title">הסתר לחצן GIF</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">הסתר תצלומי GIF ותמונות</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">מסתיר תצלומי GIF ותמונות המצורפים לתגובות ולתשובות</string>
-  <string name="morphe_music_hide_comments_info_button_title">הסתר לחצן מידע</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">הסתר לחצן חותמת זמן</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">מעבר הדרגתי</string>
   <string name="morphe_music_crossfade_screen_summary">ערבבו בצורה חלקה רצועות זו בזו</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 אלפיות שנייה</string>
   <string name="morphe_crossfade_duration_500ms">500 אלפיות שנייה</string>
   <string name="morphe_crossfade_duration_750ms">750 אלפיות שנייה</string>
-  <string name="morphe_crossfade_duration_1000ms">שנייה אחת</string>
-  <string name="morphe_crossfade_duration_2000ms">2 שניות</string>
-  <string name="morphe_crossfade_duration_3000ms">3 שניות</string>
-  <string name="morphe_crossfade_duration_4000ms">4 שניות</string>
-  <string name="morphe_crossfade_duration_5000ms">5 שניות</string>
-  <string name="morphe_crossfade_duration_6000ms">6 שניות</string>
-  <string name="morphe_crossfade_duration_7000ms">7 שניות</string>
-  <string name="morphe_crossfade_duration_8000ms">8 שניות</string>
-  <string name="morphe_crossfade_duration_9000ms">9 שניות</string>
-  <string name="morphe_crossfade_duration_10000ms">10 שניות</string>
   <string name="morphe_crossfade_duration_11000ms">11 שניות</string>
   <string name="morphe_crossfade_duration_12000ms">12 שניות</string>
   <string name="morphe_music_crossfade_on_skip_title">דעיכה בעת דילוג ידני</string>
@@ -283,7 +247,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_summary">המהירות המשמשת לכל הרצועות. ב-100% נעשה שימוש במהירות האפליקציה, כמו מהירות השמעת הפודקאסט</string>
   <string name="morphe_music_playback_speed_change_pitch_title">שנה גובה צליל עם המהירות</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">הצג תפריט אפקטי וידאו</string>
   <string name="morphe_music_video_effect_menu_summary">מוסיף אפקט וידאו לתפריט הנגן בזמן שסרטון פועל</string>
   <string name="morphe_music_video_effect_next_video">האפקט יופיע מהסרטון הבא</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_summary">מוסיף פריט \"תגיות\" לתפריט הפלייליסטים, וכפתור סינון תגיות לצד כפתור המיון של הספרייה</string>
   <string name="morphe_music_playlist_tags_manage_title">ניהול תגיות פלייליסט</string>
   <string name="morphe_music_playlist_tags_manage_summary">צור, שנה שם ומחק תגיות, ותייג את הפלייליסטים המופיעים בספרייה שלך</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">תגיות</string>
   <string name="morphe_music_playlist_tags_menu_item_none">אין תגיות</string>
-  <string name="morphe_music_playlist_tags_filter_button">תגיות</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">תגית: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">תגיות (%s מוסתרים)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">תגיות עבור %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">תגית חדשה</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 פלייליסט</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s פלייליסטים</string>
@@ -344,22 +303,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_show_only">הצג רק</string>
   <string name="morphe_music_playlist_tags_filter_all">כל הפלייליסטים</string>
   <string name="morphe_music_playlist_tags_filter_visible">תגיות גלויות</string>
-  <string name="morphe_music_playlist_tags_manage">ניהול</string>
   <string name="morphe_music_playlist_tags_none">אין עדיין תגיות. לחיצה ארוכה על פלייליסט ובחירה ב\"תגיות\" תאפשר ליצור אחת</string>
-  <string name="morphe_music_playlist_tags_section_tags">תגיות</string>
   <string name="morphe_music_playlist_tags_section_playlists">פלייליסטים</string>
   <string name="morphe_music_playlist_tags_no_playlists">פתח את הספרייה פעם אחת כדי שהפלייליסטים שלך יופיעו כאן</string>
   <string name="morphe_music_playlist_tags_new_tag">תגית חדשה</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">עריכת תגית</string>
-  <string name="morphe_music_playlist_tags_rename">שנה שם</string>
-  <string name="morphe_music_playlist_tags_delete">מחק</string>
   <string name="morphe_music_playlist_tags_hidden">מוסתר</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">לחצני פעולה</string>
   <string name="morphe_music_action_buttons_screen_summary">בחר אילו כפתורי פעולה יוצגו מתחת לנגן</string>
-  <string name="morphe_music_hide_action_bar_title">הסתר סרגל פעולות</string>
-  <string name="morphe_music_hide_like_dislike_button_title">הסתר כפתור אהבתי ודיסלייק</string>
-  <string name="morphe_music_hide_comments_button_title">הסתר כפתור תגובות</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">הסתר את כפתור \'שידור חוזר של הצ\'אט החי\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Second \"item\" text"</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">הסתר את כפתור \'התחל רדיו\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">תפריט נשלף</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">בחר אילו רכיבים יופיעו בתפריטים הנשלפים של הנגן והתור</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">הסתר רכיב 3 עמודות</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">הסתר לחצני אהבתי ודיסלייק</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">הסתר את תפריט \'התאמת טעם\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">הסתר את תפריט \'הוסף לרשימת ההשמעה \'להאזנה מאוחר יותר\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">הסתר את תפריט \'הוסף לתור\'</string>
@@ -410,17 +359,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">הסתר תפריט \'הסר מחיוג מהיר\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">הסתר תפריט \'צפה בקרדיטים של השיר\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">דף התחלה</string>
-  <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>
   <string name="morphe_change_start_page_entry_charts">גרפים</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">פרקים לעתיד</string>
-  <string name="morphe_change_start_page_entry_explore">גילוי</string>
-  <string name="morphe_change_start_page_entry_history">היסטוריה</string>
-  <string name="morphe_change_start_page_entry_library">ספרייה</string>
   <string name="morphe_change_start_page_entry_liked_music">מוזיקה שאהבתי</string>
-  <string name="morphe_change_start_page_entry_playlists">פלייליסטים</string>
-  <string name="morphe_change_start_page_entry_search">חיפוש</string>
-  <string name="morphe_change_start_page_entry_subscriptions">מינויים</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">אלץ כיוון לאורך</string>
   <string name="morphe_music_force_portrait_orientation_summary">שומר על כיוון האפליקציה לאורך כשהמכשיר מסובב</string>
@@ -449,21 +390,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">הסתר כפתור ספריה</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">הסתר כפתור שדרוג</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">הצג לחצן הגדרות</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">פעולה של כפתור הגדרות</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">כאשר אפשרות זו מופעלת, הקשה תפתח את הגדרות Morphe ולחיצה ארוכה תפתח את הגדרות YouTube Music; בטל כדי להחליף ביניהן</string>
-  <string name="morphe_music_hide_navigation_bar_title">הסתר סרגל ניווט</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
-  <string name="morphe_music_navigation_bar_glass_title">הפעל שורת ניווט מזכוכית</string>
   <string name="morphe_music_navigation_bar_glass_summary">מציג את סרגל הניווט כקפסולה שקופה, מעוגלת וצפה</string>
   <string name="morphe_music_navigation_bar_glass_size_title">גודל וסגנון של סרגל ניווט זכוכית.</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">התאם את הגובה, הרוחב, המרווחים בין הכפתורים, השקיפות ובהירות השוליים של סרגל ניווט הזכוכית, כולל תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים.</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">גובה</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">רוחב מקסימלי</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">מרווח בין כפתורים</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">כפתורים מוצגים: %1$s מתוך %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">אטימות</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">בהירות השוליים</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">טשטוש זכוכית</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">עד כמה הדף מאחורי סרגל ניווט הזכוכית מטושטש (Android 14 ומעלה). ב-0 הדף נראה חד, ולפני Android 14 הדף מכוסה.</string>
   <string name="morphe_music_navigation_bar_glass_light_title">זכוכית בהירה</string>
@@ -472,16 +402,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">צובע את סרגל ניווט הזכוכית בגוון של עטיפת האלבום של השיר שמתנגן.</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">הסתר מחוון כפתור נבחר</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">מסתיר את ההדגשה המעוגלת מאחורי הכפתור הנבחר של סרגל ניווט הזכוכית.</string>
-  <string name="morphe_music_miniplayer_screen_title">מיני-נגן</string>
   <string name="morphe_music_miniplayer_screen_summary">שנה את הסגנון, הכפתורים והמחוות של המיני-פלייר.</string>
   <string name="morphe_music_miniplayer_glass_title">הפעל אפקט זכוכית</string>
   <string name="morphe_music_miniplayer_glass_summary">מציג את המיני-פלייר הצף ככרטיס זכוכית מעוגל ושקוף.</string>
   <string name="morphe_music_miniplayer_glass_style_title">סגנון מיני-פלייר זכוכית</string>
   <string name="morphe_music_miniplayer_glass_style_summary">התאם את רדיוס הפינות, את המרווח של העטיפה, את בהירות השוליים ואת השקיפות של מיני-פלייר הזכוכית, כולל תצוגה מקדימה.</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">רדיוס פינות</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">מרווח עטיפה</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">בהירות השוליים</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">אטימות</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">עד כמה הדף מאחורי מיני-פלייר הזכוכית מטושטש (Android 14 ומעלה). ב-0 הדף נראה חד, ולפני Android 14 הדף מכוסה.</string>
   <string name="morphe_music_miniplayer_glass_light_summary">צובע את מיני-פלייר הזכוכית בלבן במקום בכהה, למראה זכוכית בהירה וצלולה יותר.</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">צובע את מיני-פלייר הזכוכית בגוון של עטיפת האלבום של השיר שמתנגן.</string>
@@ -498,9 +424,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_activity_button_title">הסתר לחצן פעילות</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">הסתר לחצן \'שאל את המוזיקה\'</string>
-  <string name="morphe_music_hide_cast_button_title">הסתר לחצן שידור</string>
   <string name="morphe_music_hide_history_button_title">הסתר לחצן היסטוריה</string>
-  <string name="morphe_music_hide_search_button_title">הסתר לחצן חיפוש</string>
   <string name="morphe_music_hide_voice_search_button_title">הסתר לחצן \'חיפוש קולי\'</string>
   <string name="morphe_music_hide_sound_search_button_title">הסתר את לחצן \"חיפוש קולי\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_summary">מציג כפתור בסרגל העליון של הנגן כדי לראות ולהצביע בהצבעות הקהילה עבור האמן הנוכחי</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">דלג על אמני AI</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">מדלג באופן אוטומטי על רצועות שהאמן שלהן מגיע לסף ה-AI שמוגדר למטה</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">הצג הודעת דילוג</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">מציג הודעה כאשר רצועה מדלגת באופן אוטומטי</string>
   <string name="morphe_music_soundproof_threshold_title">סף זיהוי</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">מינימום הצבעות AI</string>
@@ -624,7 +547,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">כל הספקים מבוטלים - שירים מובנים ושירים מוטבעים</string>
   <string name="morphe_music_lyrics_source_reset_title">לאפס את סדר הספקים?</string>
   <string name="morphe_music_lyrics_source_reset_message">שחזר את הספקים לסדר העדיפות המוגדר כברירת מחדל</string>
-  <string name="morphe_music_lyrics_rime_dict_title">רשימת מילים של Rime</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"רשימת מילים של Rime דורשת גם את UniDict: בספק המילון המקומי, סמן \"תווים סיניים וקנטונזיים (UniDict)\" והמתן לסיום ההורדה. בלעדיו, רשימה הקוראת תווים לא תספק הגייה.
 
 סמן את הרשימות ש-Rime Wordlist צריך לקרוא, ואז הקש על שמור להורדתן. רשימה שהוספת תוסר כאשר תבטל את הסימון שלה.
@@ -634,12 +556,10 @@ Second \"item\" text"</string>
 典 din2
 העמודה הראשונה היא המילה, השנייה ההגייה שלה; עמודות נוספות ושורות ללא טאב מתעלמים."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">לא מסומנת אף רשימת מילים של Rime לשפה למעלה. הקש על השם כדי לסמן אחת, או בחר שפה שיש לה רשימה</string>
-  <string name="morphe_music_lyrics_rime_dict_add">הוסף</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">הוסף רשימת מילים של Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">קובץ .dict.yaml, או קובץ zip המכיל אחד כזה, עם שורות כגון 字 ham ו-典 din2. הרשימה נשלפת כאשר מסמנים אותה ולוחצים על שמירה, והרישיונות שלה הם לבדיקתך</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">קוד שפה</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">שתי או שלוש אותיות, כמו ב-hak או wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">שם</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">מוצג מתחת להגייה, כמו ב-Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">כתובת רשימת המילים</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">כתובת https:// של ה-.dict.yaml או ה-zip שלו</string>
@@ -682,8 +602,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_cache_total_category_title">סה\"כ שימוש במטמון</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">נקה את כל המטמון</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d פריטים)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">ניקוי</string>
-  <string name="morphe_music_lyrics_cache_close_action">סגור</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">מחק %1$s MB (%2$d שירים) של מילות שירים שמורות במכשיר זה?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">מחק %1$s MB (%2$d תרגומים) של תרגומים שמורים במכשיר זה?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">מחק %1$s MB (%2$d תעתיקים) של תעתיקים שמורים במכשיר זה?</string>
@@ -766,7 +684,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">מוריד מילונים להגייה...</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">קריאות מוכנות (%s רשומות)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ההורדה נכשלה - כבה והדלק מחדש כדי לנסות שוב</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">מילון לא מקוון</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">יפנית</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">סינית</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — מנתח מורפולוגי ו-ruby מהירים &amp;</string>
@@ -785,8 +702,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_custom_font_invalid">קובץ גופן לא תקין או לא נתמך (נדרש .ttf או .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">שיתוף מילים</string>
   <string name="morphe_music_lyrics_share_button">שיתוף</string>
-  <string name="morphe_music_lyrics_copy">העתק</string>
-  <string name="morphe_music_lyrics_share_cancel">בטל</string>
   <string name="morphe_music_lyrics_share_select_hint">הקש על 1–5 שורות</string>
   <string name="morphe_music_lyrics_share_max_lines">מקסימום 5 שורות</string>
   <string name="morphe_music_lyrics_share_failed">לא ניתן היה ליצור כרטיס שיתוף למילים</string>
@@ -903,18 +818,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_google">תורגם על ידי Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">רומניזציה על ידי Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">תורגם על ידי %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">רומניזציה על ידי %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">רומניזציה על ידי %s</string>
+  <string name="morphe_music_lyrics_romanized_by">רומניזציה על ידי %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (עם %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">תרגום</string>
-  <string name="morphe_music_lyrics_translation_language_title">שפת התרגום</string>
   <string name="morphe_music_lyrics_romanize_language_title">שפת רומניזציה או האברה</string>
   <string name="morphe_music_lyrics_translation_target_language">"שפת יעד לתרגום:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"שפת יעד לרומניזציה או האברה:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">מתרגם…</string>
   <string name="morphe_music_lyrics_translate_failed">לא ניתן לתרגם את המילים</string>
   <string name="morphe_music_lyrics_romanize_hide">רומניזציה</string>
   <string name="morphe_romanize_language_DEFAULT">אוטומטי</string>
@@ -922,7 +834,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_failed">לא ניתן היה לבצע רומניזציה למילות השיר</string>
   <string name="morphe_music_lyrics_romanize_language_none">אין</string>
   <string name="morphe_music_lyrics_ruby_language_title">Ruby Target</string>
-  <string name="morphe_music_lyrics_translate_only">תרגום בלבד</string>
   <string name="morphe_music_lyrics_romanize_only">רומניזציה בלבד</string>
   <string name="morphe_music_lyrics_dual_only">מצב דואלי</string>
   <string name="morphe_music_lyrics_copied">הועתק ללוח הגזירים</string>
@@ -975,7 +886,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">הגדרות חסרות או נדחו על ידי הספק</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">מאמת חיבור…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: מחובר! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: החיבור נכשל. בדוק את ההגדרות.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">החיבור נכשל: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">בדיקת חיבור</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">מביא מודלים...</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">הבאת מודלים</string>
@@ -1003,4 +914,10 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - השבת אייקונים מודגשים</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - שחזור לשוניות הבא בתור, מילים, וקשורות בנגן</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">ניהול</string>
+  <string name="morphe_music_opacity_title">אטימות</string>
+  <string name="morphe_music_rim_brightness_title">בהירות שוליים</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">תגיות</string>
 </resources>

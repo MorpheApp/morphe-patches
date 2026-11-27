@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">กำหนดเอง</string>
-  <string name="morphe_custom_branding_icon_title">ไอคอนแอป</string>
   <string name="morphe_custom_branding_icon_entry_1">ต้นฉบับ</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ดำ</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe มืด</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">ประกาศ Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">ประวัติการรับชมของคุณไม่ได้ถูกบันทึก&lt;br&gt;&lt;br&gt;สาเหตุที่เป็นไปได้มากที่สุดคือตัวบล็อกโฆษณา DNS หรือพร็อกซีเครือข่าย&lt;br&gt;&lt;br&gt;เพื่อแก้ไขปัญหานี้ ให้เพิ่ม &lt;b&gt;s.youtube.com&lt;/b&gt; ในรายการที่อนุญาต หรือปิดตัวบล็อกโฆษณา DNS และพร็อกซีทั้งหมด</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">อย่าแสดงอีก</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">ปลอมแปลงสตรีมวิดีโอ</string>
   <string name="morphe_spoof_video_streams_screen_summary">ปลอมแปลงสตรีมวิดีโอของไคลเอนต์เพื่อป้องกันปัญหาการเล่น</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 การเล่นวิดีโออาจล้มเหลวจนกว่า Android System WebView จะได้รับการอัปเดตเป็นเวอร์ชันล่าสุด
 
 แตะ ตกลง เพื่อเปิด Android System WebView"</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">อย่าแสดงอีก</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">ไม่ได้ติดตั้ง Android System WebView โปรดติดตั้งเพื่อแก้ไขการเล่นวิดีโอ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">ตัวควบคุมสื่อการแจ้งเตือน</string>
   <string name="morphe_notification_media_screen_summary">ปรับแต่งการควบคุมการเล่นที่แสดงบนหน้าจอล็อกและแผงการแจ้งเตือน</string>
-  <string name="morphe_hide_notification_media_prev_next_title">ซ่อนปุ่มก่อนหน้าและถัดไป</string>
   <string name="morphe_hide_notification_media_prev_next_summary">ซ่อนปุ่มก่อนหน้าและถัดไปในการแจ้งเตือนสื่อ หน้าจอล็อก และตัวควบคุมหูฟัง</string>
   <string name="morphe_disable_notification_media_seekbar_title">ปิดใช้งานแถบเลื่อน</string>
   <string name="morphe_disable_notification_media_seekbar_summary">ป้องกันการลากแถบเลื่อนบนหน้าจอล็อกและแผงการแจ้งเตือน</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">คืนค่าเริ่มต้น</string>
   <string name="morphe_video_effects_custom_add_title">เอฟเฟ็กต์ใหม่</string>
   <string name="morphe_video_effects_custom_edit_title">แก้ไขเอฟเฟกต์</string>
-  <string name="morphe_video_effects_custom_name_hint">ชื่อ</string>
   <string name="morphe_video_effects_custom_name_empty">ป้อนชื่อสำหรับเอฟเฟกต์</string>
   <string name="morphe_video_effects_custom_name_exists">มีเอฟเฟกต์ที่ใช้ชื่อนี้อยู่แล้ว</string>
-  <string name="morphe_video_effects_custom_copy_code">คัดลอกโค้ด</string>
   <string name="morphe_video_effects_custom_error_title">เอฟเฟกต์มีข้อผิดพลาด</string>
   <string name="morphe_video_effects_custom_error_message">"วิดีโอจะแสดงโดยไม่มีเอฟเฟกต์จนกว่าโค้ดจะได้รับการแก้ไข โปรดส่งข้อผิดพลาดนี้ให้กับ AI ที่เขียนโค้ด:
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 ขอให้ AI เขียนโค้ดให้สั้นลง หรือวางโค้ดแยกเป็นส่วนๆ"</string>
   <string name="morphe_video_effects_custom_copy_error">คัดลอกข้อผิดพลาด</string>
   <string name="morphe_video_effects_custom_save_anyway">บันทึกต่อไป</string>
-  <string name="morphe_video_effects_custom_delete">ลบ</string>
   <string name="morphe_video_effects_custom_delete_title">ลบเอฟเฟกต์หรือไม่?</string>
   <string name="morphe_video_effects_custom_delete_message">%s จะถูกลบ</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'ปลอมแปลงสตรีมวิดีโอ\' เป็นไคลเอ็นต์อื่น ๆ ยกเว้น \'Android Studio\' และ \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
-  <string name="morphe_sanitize_sharing_links_summary">พารามิเตอร์การติดตามจะถูกลบออกจากลิงก์ที่แชร์</string>
   <string name="morphe_replace_music_with_youtube_title">เปลี่ยนลิงก์การแชร์เป็น youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">แทนที่ music.youtube.com ด้วย youtube.com ในลิงก์ที่แชร์</string>
   <string name="morphe_replace_links_with_shortener_title">เปลี่ยนลิงก์การแชร์เป็น youtu.be</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">แบบอักษร</string>
   <string name="morphe_custom_font_type_entry_default">ค่าเริ่มต้น</string>
   <string name="morphe_custom_font_type_entry_system">แบบอักษรระบบของอุปกรณ์</string>
-  <string name="morphe_custom_font_type_entry_custom">ไฟล์แบบอักษรที่กำหนดเอง</string>
   <string name="morphe_custom_font_file_title">ไฟล์แบบอักษรที่กำหนดเอง</string>
   <string name="morphe_custom_font_file_summary">เลือกไฟล์แบบอักษร TTF หรือ OTF</string>
   <string name="morphe_custom_font_file_invalid">ไฟล์ที่เลือกไม่ใช่แบบอักษร TTF หรือ OTF</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">เมนูแบบกระจกฝ้าทับบนเนื้อหาที่เบลออยู่ด้านหลัง</string>
   <string name="morphe_glass_menus_title">เปิดใช้งานเมนูกระจก</string>
   <string name="morphe_glass_menus_summary">แสดงเมนูและแผ่นด้านล่างเป็นกระจกฝ้า โดยจะทำให้เนื้อหาด้านหลังเบลอ</string>
-  <string name="morphe_glass_menus_opacity_title">ความทึบแสงของกระจก</string>
   <string name="morphe_glass_menus_opacity_summary">ระดับที่เมนูจะปกคลุมเนื้อหาที่เบลอ (0 คือใส, 100 คือทึบแสง)</string>
   <string name="morphe_glass_menus_blur_title">เบลอ</string>
   <string name="morphe_glass_menus_blur_summary">ระดับความเบลอของเนื้อหาที่อยู่ด้านหลังเมนู</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">แสดงจำนวนไม่ชอบเป็นเปอร์เซ็นต์ของจำนวนชอบ แทนที่จะเป็นตัวเลข</string>
   <string name="morphe_ryd_estimated_like_title">แสดงจำนวนการกดชอบโดยประมาณ</string>
   <string name="morphe_ryd_estimated_like_summary">แสดงจำนวนการกดชอบโดยประมาณในวิดีโอที่ผู้สร้างปิดการนับจำนวนการกดชอบ</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">แสดงการแจ้งเตือนข้อผิดพลาดในการเชื่อมต่อ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">แสดงการแจ้งเตือนเมื่อเซิร์ฟเวอร์ Return YouTube Dislike ไม่สามารถใช้งานได้</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike คืนค่าการไม่ชอบที่ YouTube ซ่อนไว้ในปี 2021 จำนวนเหล่านี้มาจากข้อมูลที่เก็บถาวรก่อนการนำออก และประมาณการสำหรับวิดีโอใหม่จากการโหวตของผู้ใช้ ดังนั้นจึงเป็นค่าโดยประมาณและอัปเดตทุกสองสามวัน
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ไม่พบข้อจำกัดอัตราของไคลเอนต์</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">พบขีดจำกัดอัตราการใช้งานของไคลเอ็นต์ %s ครั้ง</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s มิลลิวินาที</string>
-  <string name="morphe_navigation_bar_screen_title">แถบนำทาง</string>
   <string name="morphe_navigation_bar_screen_summary">เลือกปุ่มที่จะปรากฏในแถบนำทางด้านล่าง</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">เลือกส่วนประกอบที่จะปรากฏในแถบเครื่องมือ</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 วินาที</string>
+  <string name="morphe_duration_2s">2 วินาที</string>
+  <string name="morphe_duration_3s">3 วินาที</string>
+  <string name="morphe_duration_4s">4 วินาที</string>
+  <string name="morphe_duration_5s">5 วินาที</string>
+  <string name="morphe_duration_6s">6 วินาที</string>
+  <string name="morphe_duration_7s">7 วินาที</string>
+  <string name="morphe_duration_8s">8 วินาที</string>
+  <string name="morphe_duration_9s">9 วินาที</string>
+  <string name="morphe_duration_10s">10 วินาที</string>
+  <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
+  <string name="morphe_change_start_page_entry_explore">สำรวจ</string>
+  <string name="morphe_change_start_page_entry_history">ประวัติ</string>
+  <string name="morphe_change_start_page_entry_library">คลัง</string>
+  <string name="morphe_change_start_page_entry_playlists">เพลย์ลิสต์</string>
+  <string name="morphe_change_start_page_entry_search">ค้นหา</string>
+  <string name="morphe_change_start_page_entry_subscriptions">การติดตาม</string>
+  <string name="morphe_change_start_page_title">หน้าเริ่มต้น</string>
+  <string name="morphe_action_buttons_screen_title">ปุ่มการกระทำ</string>
+  <string name="morphe_comments_screen_title">ความคิดเห็น</string>
+  <string name="morphe_feed_screen_title">ฟีด</string>
+  <string name="morphe_flyout_menu_screen_title">เมนูแบบเลื่อนออก</string>
+  <string name="morphe_general_title">ทั่วไป</string>
+  <string name="morphe_miniplayer_screen_title">มินิเพลเยอร์</string>
+  <string name="morphe_player_screen_title">เครื่องเล่น</string>
+  <string name="morphe_video_screen_title">วิดีโอ</string>
+  <string name="morphe_appearance_title">หน้าตา</string>
+  <string name="morphe_cancel">ยกเลิก</string>
+  <string name="morphe_comments_screen_summary">เลือกส่วนประกอบที่จะปรากฏในส่วนความคิดเห็น</string>
+  <string name="morphe_copy_code">คัดลอกรหัส</string>
+  <string name="morphe_corner_radius_title">รัศมีมุม</string>
+  <string name="morphe_do_not_show_again">อย่าแสดงอีก</string>
+  <string name="morphe_download_force_4k_title">บังคับให้ดาวน์โหลด 4K ได้</string>
+  <string name="morphe_glass_opacity_title">ความทึบแสงของกระจก</string>
+  <string name="morphe_header_logo_title">โลโก้ส่วนหัว</string>
+  <string name="morphe_hide_action_bar_title">ซ่อนแถบเครื่องมือ</string>
+  <string name="morphe_hide_cast_button_title">ซ่อนปุ่มแคสต์</string>
+  <string name="morphe_hide_comments_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
+  <string name="morphe_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
+  <string name="morphe_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
+  <string name="morphe_hide_comments_gif_button_title">ซ่อนปุ่ม GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">ซ่อน GIF และรูปภาพที่แนบมากับความคิดเห็นและการตอบกลับ</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">ซ่อน GIF และรูปภาพ</string>
+  <string name="morphe_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
+  <string name="morphe_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
+  <string name="morphe_hide_horizontal_shelves_title">ซ่อนชั้นวางแนวนอน</string>
+  <string name="morphe_hide_like_dislike_button_title">ซ่อนปุ่มชอบและไม่ชอบ</string>
+  <string name="morphe_hide_like_dislike_buttons_title">ซ่อนปุ่มชอบและไม่ชอบ</string>
+  <string name="morphe_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
+  <string name="morphe_hide_navigation_button_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
+  <string name="morphe_hide_previous_next_buttons_title">ซ่อนปุ่มก่อนหน้า &amp; ถัดไป</string>
+  <string name="morphe_hide_search_button_title">ซ่อนปุ่มค้นหา</string>
+  <string name="morphe_hide_translate_button_title">ซ่อนปุ่มแปลภาษา</string>
+  <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
+  <string name="morphe_loading">กำลังโหลด…</string>
+  <string name="morphe_name">ชื่อ</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ระยะห่างของปุ่ม</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">แสดงปุ่ม: %1$s จาก %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">ความสูง</string>
+  <string name="morphe_navigation_bar_glass_size_width">ความกว้างสูงสุด</string>
+  <string name="morphe_navigation_bar_glass_title">เปิดใช้งานแถบนำทางแบบกระจก</string>
+  <string name="morphe_positive_number_invalid">ค่าต้องเป็นจำนวนบวก</string>
+  <string name="morphe_private_user_id_invalid">รหัสผู้ใช้ส่วนตัวต้องมีความยาวอย่างน้อย 30 อักขระ</string>
+  <string name="morphe_private_user_id_title">รหัสผู้ใช้ส่วนตัวของคุณ</string>
+  <string name="morphe_rename">เปลี่ยนชื่อ</string>
+  <string name="morphe_show_settings_button_title">แสดงปุ่มการตั้งค่า</string>
+  <string name="morphe_show_settings_button_type_title">การดำเนินการของปุ่มการตั้งค่า</string>
+  <string name="morphe_show_video_effect_menu_title">แสดงเมนูเอฟเฟกต์วิดีโอ</string>
+  <string name="morphe_submit">ส่ง</string>
+  <string name="morphe_time_adjustment_step_title">ขั้นตอนการปรับเวลา</string>
+  <string name="morphe_toast_on_connection_error_title">แสดงการแจ้งเตือนข้อผิดพลาดในการเชื่อมต่อ</string>
+  <string name="morphe_toast_on_skip_title">แสดงการแจ้งเตือนการข้าม</string>
+  <string name="morphe_translated_only">เฉพาะที่แปลแล้ว</string>
+  <string name="morphe_translating">กำลังแปล...</string>
+  <string name="morphe_translation_language_title">ภาษาที่แปล</string>
+  <string name="morphe_username_change_unknown_error">ไม่สามารถเปลี่ยนชื่อได้: สถานะ: %1$s %2$s</string>
+  <string name="morphe_username_changed">เปลี่ยนชื่อผู้ใช้สำเร็จ</string>
+  <string name="morphe_username_html">ชื่อผู้ใช้ของคุณ: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">วิดีโอ</string>
+  <string name="morphe_vote_downvote">โหวตลง</string>
+  <string name="morphe_vote_upvote">โหวตขึ้น</string>
 </resources>

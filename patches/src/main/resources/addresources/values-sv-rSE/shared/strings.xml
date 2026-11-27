@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Omstart krävs</string>
   <string name="morphe_settings_restart_dialog_message">Starta om appen för att denna ändring ska träda i kraft</string>
   <string name="morphe_settings_restart">Starta om</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importera</string>
-  <string name="morphe_settings_import_copy">Kopiera</string>
   <string name="morphe_settings_import_reset">Morphe-inställningarna återställdes till standard</string>
   <string name="morphe_settings_import_success">Importerade %s inställningar</string>
   <string name="morphe_settings_import_failure_parse">Importen misslyckades: %s</string>
@@ -76,7 +74,6 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Tillägg</string>
   <string name="morphe_settings_about_version">Version</string>
-  <string name="morphe_settings_about_close">Stäng</string>
   <string name="morphe_settings_about_prerelease">Förhandsversion</string>
   <string name="morphe_settings_about_update_available">Uppdatering är tillgänglig: %s</string>
   <string name="morphe_settings_about_update_hint">För att uppdatera dina patchar, använd Morphe för att patcha om den här appen</string>
@@ -108,7 +105,6 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_settings_about_links_rv">2022–2025</string>
   <string name="morphe_settings_about_links_vanced">2019–2022</string>
   <string name="morphe_settings_about_links_licenses">Licensmeddelanden</string>
-  <string name="morphe_settings_about_licenses_loading">Läser in …</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Felsökning</string>
   <string name="morphe_debug_screen_summary">Konfigurera avancerade utvecklaralternativ och diagnostikloggar</string>
@@ -125,7 +121,6 @@ Du kommer inte att bli meddelad om oväntade händelser"</string>
   <string name="morphe_debug_export_logs_success">Felsökningsloggar har exporterats</string>
   <string name="morphe_debug_export_logs_failed">Det gick inte att exportera felsökningsloggar</string>
   <string name="morphe_debug_logs_search_hint">Sök i felsökningsloggarna…</string>
-  <string name="morphe_debug_export_logs_clear">Rensa</string>
   <string name="morphe_debug_logs_disabled">Felsökningsloggar är inaktiverade</string>
   <string name="morphe_debug_logs_none_found">Inga felsökningsloggar hittades</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Felsökningsloggarna kopierades</string>
@@ -142,15 +137,8 @@ Du kommer inte att bli meddelad om oväntade händelser"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blockerade (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Forcerade (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automatiskt</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Av</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">På</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Tvinga på</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blockera</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Ta bort</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflaggorna sparades</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflaggorna återställdes</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflaggorna kopierades till urklipp</string>
@@ -200,7 +188,6 @@ Beteendet försvann tidigare i sökningen, så fler än en flagga kan vara inbla
   <string name="gms_core_dialog_outdated_message">"Din MicroG-version v%1$s är inaktuell och kan orsaka problem.
 
 Uppdatera MicroG till den senaste versionen v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Uppdatera</string>
   <string name="gms_core_dialog_ignore_text">Ignorera</string>
   <string name="gms_core_dialog_conflict_message">"Den installerade MicroG-versionen rekommenderas inte av Morphe:
 
@@ -220,7 +207,6 @@ Detta krävs för att appen ska fungera"</string>
 Om du inaktiverar batterioptimeringar för MicroG påverkas inte batteritiden negativt.
 
 Tryck på knappen Fortsätt och tillåt optimeringsändringar"</string>
-  <string name="gms_core_dialog_continue_text">Fortsätt</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Visa dialogruta för MicroG-batterioptimering</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Om du inaktiverar det här döljs meddelandet om MicroG-batterioptimeringar. 
 
@@ -259,9 +245,29 @@ Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; 
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Buggfixar</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Andra ändringar</string>
   <string name="morphe_patches_update_notice_dialog_more">…och %s till</string>
-  <string name="morphe_patches_update_notice_dialog_update">Uppdatera</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Avvisa</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Kraschlogg har sparats i användardokument: %s</string>
   <string name="morphe_crash_log_saved">Kraschlogg har sparats: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Om</string>
+  <string name="morphe_ads_screen_title">Annonser</string>
+  <string name="morphe_misc_screen_title">Övrigt</string>
+  <string name="morphe_navigation_bar_screen_title">Navigeringsfält</string>
+  <string name="morphe_post_buttons_screen_title">Inläggsknappar</string>
+  <string name="morphe_custom_branding_icon_title">Appikon</string>
+  <string name="morphe_download">Ladda ned</string>
+  <string name="morphe_hide_create_button_title">Dölj knappen Skapa</string>
+  <string name="morphe_hide_post_comment_button_title">Dölj knappen Kommentera</string>
+  <string name="morphe_sanitize_sharing_links_summary">Tar bort frågeparametrar för spårning från delade länkar</string>
+  <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
+  <string name="morphe_settings_add">Lägg till</string>
+  <string name="morphe_settings_clear">Rensa</string>
+  <string name="morphe_settings_close">Stäng</string>
+  <string name="morphe_settings_continue">Fortsätt</string>
+  <string name="morphe_settings_copy">Kopiera</string>
+  <string name="morphe_settings_delete">Radera</string>
+  <string name="morphe_settings_remove">Ta bort</string>
+  <string name="morphe_settings_update">Uppdatera</string>
 </resources>

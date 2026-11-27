@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -95,7 +94,6 @@ Second \"item\" text"</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- Search dialog of comments search, channel search and playlist search. -->
-  <string name="morphe_search_dialog_search">શોધો</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.playlistsearch.playlistSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -116,6 +114,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
   <!-- interaction.commentsearch.commentSearchPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -150,6 +149,7 @@ Second \"item\" text"</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_entry_default">ડિફૉલ્ટ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
@@ -163,7 +163,6 @@ Second \"item\" text"</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -258,5 +257,7 @@ Second \"item\" text"</string>
   <!-- video.series.seriesTrackerPatch -->
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_ghost_play_channels_added_badge">ઉમેરાયેલ છે</string>
-  <string name="morphe_ghost_play_channels_search_button">શોધો</string>
+  <!-- Shared YouTube strings -->
+  <string name="morphe_search">શોધો</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
 </resources>

@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Reikia iš naujo paleisti</string>
   <string name="morphe_settings_restart_dialog_message">Kad pokytis įsigaliotų, paleiskite programą iš naujo</string>
   <string name="morphe_settings_restart">Paleisti iš naujo</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importuoti</string>
-  <string name="morphe_settings_import_copy">Kopijuoti</string>
   <string name="morphe_settings_import_reset">Morphe nustatymai atstatyti į numatytuosius</string>
   <string name="morphe_settings_import_success">Importuota %s nustatymų</string>
   <string name="morphe_settings_import_failure_parse">Nepavyko importuoti: %s</string>
@@ -76,7 +74,6 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Pataisos</string>
   <string name="morphe_settings_about_version">Versija</string>
-  <string name="morphe_settings_about_close">Užverti</string>
   <string name="morphe_settings_about_prerelease">Išankstinis išleidimas</string>
   <string name="morphe_settings_about_update_available">Yra atnaujinimas: %s</string>
   <string name="morphe_settings_about_update_hint">Norėdami atnaujinti pataikymus, naudokite \"Morphe\", kad dar kartą pataisytumėte šią programėlę</string>
@@ -93,6 +90,7 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <!-- Spoken name of the button in the header that opens the menu of periods -->
   <string name="morphe_settings_about_contributors_period_menu">Laiko tarpis</string>
   <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s vartotojų</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Rėmėjai</string>
   <string name="morphe_settings_about_supporters_summary">Rėmėjai „Open Collective“</string>
@@ -107,7 +105,6 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Licencijų pranešimai</string>
-  <string name="morphe_settings_about_licenses_loading">Įkeliama…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Derinimas</string>
   <string name="morphe_debug_screen_summary">Konfigūruoti išplėstines kūrėjo parinktis ir diagnostikos žurnalus</string>
@@ -122,7 +119,6 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <string name="morphe_debug_export_logs_success">Derinimo žurnalai sėkmingai eksportuoti</string>
   <string name="morphe_debug_export_logs_failed">Nepavyko eksportuoti derinimo žurnalų</string>
   <string name="morphe_debug_logs_search_hint">Ieškoti derinimo žurnaluose…</string>
-  <string name="morphe_debug_export_logs_clear">Išvalyti</string>
   <string name="morphe_debug_logs_disabled">Derinimo žurnalų registravimas išjungtas</string>
   <string name="morphe_debug_logs_none_found">Derinimo žurnalų nerasta</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Derinimo žurnalai nukopijuoti</string>
@@ -139,15 +135,8 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Užblokuotos (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Priverstinės (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automatinis</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Išjungta</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Įjungta</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Priverstinai įjungti</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokuoti</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Pašalinti</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funkcijų vėliavėlės išsaugotos</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funkcijų vėliavėlės atstatytos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funkcijų vėliavėlės nukopijuotos į iškarpinę</string>
@@ -197,7 +186,6 @@ Elgesys išnyko anksčiau paieškos metu, todėl gali būti susijusios kelios v�
   <string name="gms_core_dialog_outdated_message">"Jūsų MicroG v%1$s versija yra pasenusi ir gali sukelti problemų.
 
 Atnaujinkite MicroG iki naujausios v%2$s versijos"</string>
-  <string name="gms_core_dialog_update_text">Naujinti</string>
   <string name="gms_core_dialog_ignore_text">Ignoruoti</string>
   <string name="gms_core_dialog_conflict_message">"Įdiegtos MicroG versijos „Morphe“ nerekomenduoja:
 
@@ -217,7 +205,6 @@ Tai būtina, kad programėlė veiktų"</string>
 Išjungus „MicroG“ baterijos optimizavimą, akumuliatoriaus naudojimas nenukentės.
 
 Spustelėkite toliau mygtuką ir leiskite pakeisti optimizavimus"</string>
-  <string name="gms_core_dialog_continue_text">Tęsti</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Rodyti „MicroG“ akumuliatoriaus optimizavimo dialogI langą</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Išjungus tai bus paslėptas MicroG akumuliatoriaus optimizavimo raginimas.
 
@@ -256,9 +243,29 @@ Jei norite kuo sklandesnės patirties, &lt;b&gt;pašalinkite&lt;/b&gt; šią ver
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Klaidų ištaisymai</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Kiti pakeitimai</string>
   <string name="morphe_patches_update_notice_dialog_more">…ir dar %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Naujinti</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Atmesti</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Klaidos žurnalas išsaugotas vartotojo dokumentuose: %s</string>
   <string name="morphe_crash_log_saved">Klaidos žurnalas išsaugotas: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Apie</string>
+  <string name="morphe_ads_screen_title">Skelbimai</string>
+  <string name="morphe_misc_screen_title">Kiti nustatymai</string>
+  <string name="morphe_navigation_bar_screen_title">Naršymo juosta</string>
+  <string name="morphe_post_buttons_screen_title">Įrašų mygtukai</string>
+  <string name="morphe_custom_branding_icon_title">Programėlės piktograma</string>
+  <string name="morphe_download">Atsisiųsti</string>
+  <string name="morphe_hide_create_button_title">Paslėpti Kurti mygtuką</string>
+  <string name="morphe_hide_post_comment_button_title">Paslėpti komentaro mygtuką</string>
+  <string name="morphe_sanitize_sharing_links_summary">Pašalina sekimo užklausos parametrus iš bendrinamų nuorodų</string>
+  <string name="morphe_sanitize_sharing_links_title">Nuvalyti bendrinimo nuorodas</string>
+  <string name="morphe_settings_add">Pridėti</string>
+  <string name="morphe_settings_clear">Valyti</string>
+  <string name="morphe_settings_close">Užverti</string>
+  <string name="morphe_settings_continue">Tęsti</string>
+  <string name="morphe_settings_copy">Kopijuoti</string>
+  <string name="morphe_settings_delete">Ištrinti</string>
+  <string name="morphe_settings_remove">Šalinti</string>
+  <string name="morphe_settings_update">Naujinti</string>
 </resources>

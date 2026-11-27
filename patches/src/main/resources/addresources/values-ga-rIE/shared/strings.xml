@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Atosú ag teastáil</string>
   <string name="morphe_settings_restart_dialog_message">Atosaigh an aip chun go dtiocfaidh an t-athrú seo i bhfeidhm.</string>
   <string name="morphe_settings_restart">Atosaigh</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Iompórtáil</string>
-  <string name="morphe_settings_import_copy">Cóipeáil</string>
   <string name="morphe_settings_import_reset">Athshocraigh socruithe Morphe go réamhshocrú</string>
   <string name="morphe_settings_import_success">Socruithe %s allmhairithe</string>
   <string name="morphe_settings_import_failure_parse">Theip ar allmhairiú: %s</string>
@@ -76,7 +74,6 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Paistí</string>
   <string name="morphe_settings_about_version">Leagan</string>
-  <string name="morphe_settings_about_close">Dún</string>
   <string name="morphe_settings_about_prerelease">Réamh-eisiúint</string>
   <string name="morphe_settings_about_update_available">Nuashonrú ar fáil: %s</string>
   <string name="morphe_settings_about_update_hint">Chun do phaistí a nuashonrú, bain úsáid as Morphe chun an aip seo a phaisteáil arís</string>
@@ -108,7 +105,6 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Fógraí ceadúnais</string>
-  <string name="morphe_settings_about_licenses_loading">Ag lódáil…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
   <string name="morphe_debug_screen_summary">Cumraigh roghanna forbróra ardleibhéil agus logaí diagnóiseacha</string>
@@ -125,7 +121,6 @@ Ní chuirfear in iúl duit faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_export_logs_success">Easpórtáladh logaí dífhabhtaithe go rathúil</string>
   <string name="morphe_debug_export_logs_failed">Theip ar logaí dífhabhtaithe a onnmhairiú</string>
   <string name="morphe_debug_logs_search_hint">Cuardaigh logaí dífhabhtaithe…</string>
-  <string name="morphe_debug_export_logs_clear">Glan</string>
   <string name="morphe_debug_logs_disabled">Tá logáil dífhabhtaithe díchumasaithe</string>
   <string name="morphe_debug_logs_none_found">Níor aimsíodh aon logaí dífhabhtaithe</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Logaí dífhabhtaithe cóipeáilte</string>
@@ -142,15 +137,8 @@ Ní chuirfear in iúl duit faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blocáilte (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Éigeantach (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Uath</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">As</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Ar</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Fórsa ar</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Bloc</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Bain</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha gné sábháilte</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Athshocrú bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha gné cóipeáilte chuig an ghearrthaisce</string>
@@ -200,7 +188,6 @@ D’imigh an t-iompar níos luaithe sa chuardach, mar sin d’fhéadfadh níos m
   <string name="gms_core_dialog_outdated_message">"Tá do MicroG v%1$s as dáta agus d’fhéadfadh fadhbanna a bheith mar thoradh air.
 
 Déan MicroG a nuashonrú go dtí an leagan is déanaí, v%2$s, le do thoil."</string>
-  <string name="gms_core_dialog_update_text">NuashonrúNuashonrú</string>
   <string name="gms_core_dialog_ignore_text">Déan neamhaird</string>
   <string name="gms_core_dialog_conflict_message">"Ní mholann Morphe an MicroG atá suiteáilte:
 
@@ -220,7 +207,6 @@ Tá sé seo riachtanach chun go n-oibreoidh an aip."</string>
 Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí a dhíchumasú do MicroG ar úsáid ceallraí.
 
 Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe"</string>
-  <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Taispeáin dialóg optamaithe ceallraí MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Má dhíchumasaítear é seo, folófar an leid um optamú ceallraí MicroG.
 
@@ -259,9 +245,29 @@ Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo 
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ceartúcháin ar fhabhtanna</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Athruithe eile</string>
   <string name="morphe_patches_update_notice_dialog_more">…agus %s eile</string>
-  <string name="morphe_patches_update_notice_dialog_update">Nuashonrú</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Diúltaigh</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Loga tuairte sábháilte i ndoiciméid an úsáideora: %s</string>
   <string name="morphe_crash_log_saved">Loga tuairte sábháilte: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Maidir le</string>
+  <string name="morphe_ads_screen_title">Fógraí</string>
+  <string name="morphe_misc_screen_title">Ilghnéitheach</string>
+  <string name="morphe_navigation_bar_screen_title">Barra nascleanúna</string>
+  <string name="morphe_post_buttons_screen_title">Cnaipí postála</string>
+  <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
+  <string name="morphe_download">Íoslódáil</string>
+  <string name="morphe_hide_create_button_title">Folaigh an cnaipe Cruthaigh</string>
+  <string name="morphe_hide_post_comment_button_title">Folaigh an cnaipe Trácht</string>
+  <string name="morphe_sanitize_sharing_links_summary">Baintear paraiméadair fiosrúcháin rianaithe as naisc chomhroinnte</string>
+  <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
+  <string name="morphe_settings_add">Cuir leis</string>
+  <string name="morphe_settings_clear">Soiléir</string>
+  <string name="morphe_settings_close">Dún</string>
+  <string name="morphe_settings_continue">Lean ar aghaidh</string>
+  <string name="morphe_settings_copy">Cóipeáil</string>
+  <string name="morphe_settings_delete">Scrios</string>
+  <string name="morphe_settings_remove">Bain</string>
+  <string name="morphe_settings_update">NuashonrúNuashonrú</string>
 </resources>

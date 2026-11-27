@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Bật SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock là một hệ thống dựa trên đóng góp bởi cộng đồng để bỏ qua các phần gây khó chịu trong video YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Giao diện</string>
   <string name="morphe_sb_voting_button_title">Hiện nút bỏ phiếu</string>
   <string name="morphe_sb_voting_button_summary">Thêm nút để bình chọn cho các phân đoạn</string>
   <string name="morphe_sb_square_layout_title">Dùng bố cục vuông</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Ẩn nút Bỏ qua sau vài giây thay vì giữ nó hiển thị trong suốt phân đoạn</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Thời gian hiển thị nút bỏ qua</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Đặt thời gian hiển thị nút Bỏ qua</string>
-  <string name="morphe_sb_toast_on_skip_title">Hiện thông báo ngắn hoàn tác bỏ qua</string>
   <string name="morphe_sb_toast_on_skip_summary">Hiển thị thông báo khi một phân đoạn bị tự động bỏ qua</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Thời gian thông báo ngắn tồn tại</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Đặt thời gian hiển thị thông báo hoàn tác</string>
-  <string name="morphe_sb_duration_1s">1 giây</string>
-  <string name="morphe_sb_duration_2s">2 giây</string>
-  <string name="morphe_sb_duration_3s">3 giây</string>
-  <string name="morphe_sb_duration_4s">4 giây</string>
-  <string name="morphe_sb_duration_5s">5 giây</string>
-  <string name="morphe_sb_duration_6s">6 giây</string>
-  <string name="morphe_sb_duration_7s">7 giây</string>
-  <string name="morphe_sb_duration_8s">8 giây</string>
-  <string name="morphe_sb_duration_9s">9 giây</string>
-  <string name="morphe_sb_duration_10s">10 giây</string>
   <string name="morphe_sb_video_length_without_segments_title">Hiện thời lượng video không có phân đoạn</string>
   <string name="morphe_sb_video_length_without_segments_summary">Trừ tất cả các phân đoạn khỏi tổng thời lượng video hiển thị trên thanh tiến trình</string>
   <string name="morphe_sb_create_segment_category_title">Tạo phân đoạn mới</string>
   <string name="morphe_sb_create_new_segment_title">Hiện nút \'Tạo phân đoạn mới\'</string>
   <string name="morphe_sb_create_new_segment_summary">Thêm nút vào trình phát video cho phép bạn gửi các phân đoạn SponsorBlock mới</string>
-  <string name="morphe_sb_create_new_segment_step_title">Mức tua thời gian</string>
   <string name="morphe_sb_create_new_segment_step_summary">Mức tua của các nút tua thời gian (tính bằng mili giây)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Giá trị phải là một số dương</string>
   <string name="morphe_sb_guidelines_title">Hướng dẫn gửi bài</string>
   <string name="morphe_sb_guidelines_summary">Hướng dẫn bao gồm các quy tắc và mẹo về cách tạo phân đoạn mới</string>
   <string name="morphe_sb_guidelines_popup_title">Thực hiện theo các hướng dẫn</string>
   <string name="morphe_sb_guidelines_popup_content">Đọc hướng dẫn SponsorBlock trước khi tạo phân đoạn mới</string>
   <string name="morphe_sb_guidelines_popup_already_read">Đã đọc</string>
   <string name="morphe_sb_guidelines_popup_open">Hiện cho tôi</string>
-  <string name="morphe_sb_general_title">Chung</string>
   <string name="morphe_sb_offline_segments_title">Lưu các đoạn của video đã tải xuống</string>
   <string name="morphe_sb_offline_segments_summary">Cho phép bỏ qua các đoạn của video đã tải xuống khi ngoại tuyến</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Hiển thị thông báo khi máy chủ SponsorBlock không khả dụng</string>
   <string name="morphe_sb_track_skip_count_title">Bật theo dõi số lần bỏ qua</string>
   <string name="morphe_sb_track_skip_count_summary">Gửi số lần bỏ qua tới bảng xếp hạng SponsorBlock để theo dõi lượng thời gian được tiết kiệm</string>
   <string name="morphe_sb_min_segment_duration_title">Thời lượng phân đoạn tối thiểu</string>
   <string name="morphe_sb_min_segment_duration_summary">Các phân đoạn ngắn hơn giá trị này (tính bằng giây) sẽ bị ẩn hoặc bỏ qua</string>
   <string name="morphe_sb_min_segment_duration_invalid">Thời lượng không hợp lệ</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Mã người dùng riêng tư</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Không nên chia sẻ mã này với bất kỳ ai. Nó hoạt động như một mật khẩu và có thể được dùng để mạo danh nếu ai đó có nó</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Mã riêng tư phải dài ít nhất 30 ký tự</string>
   <string name="morphe_sb_api_url_title">Thay đổi URL API</string>
   <string name="morphe_sb_api_url_summary">Địa chỉ SponsorBlock dùng để gửi yêu cầu đến máy chủ</string>
   <string name="morphe_sb_channel_whitelist_title">Danh sách ngoại lệ</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL API không hợp lệ</string>
   <string name="morphe_sb_api_url_changed">URL API đã thay đổi</string>
   <string name="morphe_sb_settings_ie_title">Nhập hoặc Xuất cài đặt</string>
-  <string name="morphe_sb_settings_copy">Sao chép</string>
   <string name="morphe_sb_settings_ie_summary">Cấu hình JSON SponsorBlock của bạn có thể dùng để nhập/xuất vào Morphe và các nền tảng SponsorBlock khác</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Tệp cấu hình JSON của SponsorBlock của bạn có thể được nhập / xuất vào Morphe và các nền tảng SponsorBlock khác
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Cài đặt của bạn chứa mã định danh người dùng SponsorBlock riêng tư.
 
 Mã định danh người dùng giống như mật khẩu, và nó không bao giờ được chia sẻ"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Không hiện lại nữa</string>
   <string name="morphe_sb_diff_segments_title">Thay đổi hành vi phân đoạn</string>
   <string name="morphe_sb_segments_sponsor">Tài trợ</string>
   <string name="morphe_sb_segments_sponsor_summary">Quảng cáo, giới thiệu trả phí và quảng cáo trực tiếp. Không phải tự quảng bá hoặc quảng bá miễn phí cho các mục đích, người sáng tạo, trang web hay sản phẩm mà họ thích</string>
@@ -122,11 +102,9 @@ Mã định danh người dùng giống như mật khẩu, và nó không bao gi
   <string name="morphe_sb_skip_button_highlight">Bỏ qua đến phần nổi bật</string>
   <string name="morphe_sb_skip_button_intro_beginning">Bỏ qua giới thiệu</string>
   <string name="morphe_sb_skip_button_intro_middle">Bỏ qua phần gián đoạn</string>
-  <string name="morphe_sb_skip_button_intro_end">Bỏ qua phần gián đoạn</string>
   <string name="morphe_sb_skip_button_outro">Bỏ qua kết thúc</string>
   <string name="morphe_sb_skip_button_hook">Bỏ qua đoạn mở đầu</string>
   <string name="morphe_sb_skip_button_preview_beginning">Bỏ qua xem trước</string>
-  <string name="morphe_sb_skip_button_preview_middle">Bỏ qua xem trước</string>
   <string name="morphe_sb_skip_button_preview_end">Bỏ qua tóm tắt</string>
   <string name="morphe_sb_skip_button_filler">Bỏ qua đoạn lạc đề</string>
   <string name="morphe_sb_skip_button_nomusic">Bỏ qua phần không nhạc</string>
@@ -137,11 +115,9 @@ Mã định danh người dùng giống như mật khẩu, và nó không bao gi
   <string name="morphe_sb_skipped_highlight">Đã bỏ qua đến phần nổi bật</string>
   <string name="morphe_sb_skipped_intro_beginning">Đã bỏ qua giới thiệu</string>
   <string name="morphe_sb_skipped_intro_middle">Đã bỏ qua phần gián đoạn</string>
-  <string name="morphe_sb_skipped_intro_end">Đã bỏ qua phần gián đoạn</string>
   <string name="morphe_sb_skipped_outro">Đã bỏ qua kết thúc</string>
   <string name="morphe_sb_skipped_hook">Đã bỏ qua đoạn mở đầu</string>
   <string name="morphe_sb_skipped_preview_beginning">Đã bỏ qua xem trước</string>
-  <string name="morphe_sb_skipped_preview_middle">Đã bỏ qua xem trước</string>
   <string name="morphe_sb_skipped_preview_end">Đã bỏ qua tóm tắt</string>
   <string name="morphe_sb_skipped_filler">Đã bỏ qua đoạn lạc đề</string>
   <string name="morphe_sb_skipped_nomusic">Đã bỏ qua phần không phải âm nhạc</string>
@@ -166,8 +142,6 @@ Mã định danh người dùng giống như mật khẩu, và nó không bao gi
   <string name="morphe_sb_vote_failed_timeout">Không thể bỏ phiếu phân đoạn (hết thời gian chờ API)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Không thể bỏ phiếu phân đoạn (trạng thái: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Không thể bỏ phiếu cho phân đoạn: %s</string>
-  <string name="morphe_sb_vote_upvote">Ủng hộ</string>
-  <string name="morphe_sb_vote_downvote">Phản đối</string>
   <string name="morphe_sb_vote_category">Thay đổi danh mục</string>
   <string name="morphe_sb_vote_no_segments">Không có phân đoạn nào để bỏ phiếu</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -191,7 +165,6 @@ Mã định danh người dùng giống như mật khẩu, và nó không bao gi
 (%3$s)
 
 Bạn đã sẵn sàng gửi?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Gửi</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Thời gian bắt đầu phải trước thời gian kết thúc</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Trước tiên, hãy đánh dấu một vị trí trên thanh thời gian</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Hãy xem trước phân đoạn để đảm bảo rằng nó bỏ qua suôn sẻ</string>
@@ -204,16 +177,11 @@ Bạn đã sẵn sàng gửi?"</string>
 %s
 
 Nếu bạn chưa muốn gửi đoạn nổi bật, hãy bấm Hủy và đánh dấu vị trí thứ hai"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Gửi đoạn nổi bật</string>
   <string name="morphe_sb_stats_title">Thống kê</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Số liệu thống kê tạm thời không khả dụng (API ngừng hoạt động)</string>
-  <string name="morphe_sb_stats_loading">Đang tải…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock đã tắt</string>
-  <string name="morphe_sb_stats_username">Tên người dùng của bạn: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Chạm vào đây để thay đổi tên người dùng của bạn</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Không thay đổi được tên người dùng: Trạng thái: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Tên người dùng đã được thay đổi thành công</string>
   <string name="morphe_sb_stats_reputation">Danh tiếng của bạn là &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Bạn đã tạo &lt;b&gt;%s&lt;/b&gt; phân đoạn</string>
   <string name="morphe_sb_stats_submissions_summary">Chạm vào đây để xem các phân đoạn của bạn</string>

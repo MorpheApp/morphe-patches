@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">Ostatnio odtwarzane</string>
   <string name="morphe_music_android_auto_subscriptions">Subskrypcje</string>
-  <string name="morphe_music_android_auto_videos">Filmy</string>
   <string name="morphe_music_android_auto_other_results">Inne wyniki</string>
   <string name="morphe_music_android_auto_uploaded_songs">Przesłane utwory</string>
   <string name="morphe_music_android_auto_uploaded_albums">Przesłane albumy</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">Włączyć Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">Włącz Wi-Fi, a następnie spróbuj ponownie rozpocząć Jam lub dołączyć do niego</string>
   <string name="morphe_music_jam_wifi_settings">Otwórz ustawienia Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">Anuluj</string>
   <string name="morphe_music_jam_use_package">Użyj pakietu</string>
   <string name="morphe_music_jam_invalid_package">Wprowadź prawidłową nazwę pakietu Androida</string>
   <string name="morphe_music_jam_package_saved">Zapisano pakiet. Skonfiguruj Jam Layer, aby się połączyć</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">Zeskanuj kod QR</string>
   <string name="morphe_music_jam_invalid_invite">Wprowadź ośmioznakowy kod lub wklej zaproszenie</string>
   <string name="morphe_music_jam_join_your_jam">Dołącz do swojego Jam</string>
-  <string name="morphe_music_jam_copy_code">Skopiuj kod</string>
   <string name="morphe_music_jam_code_clip">Kod Jam</string>
   <string name="morphe_music_jam_show_qr">Pokaż kod QR</string>
   <string name="morphe_music_jam_done">Gotowe</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">Opuść Jam</string>
   <string name="morphe_music_jam_start_jam">Rozpocznij Jam</string>
   <string name="morphe_music_jam_setup_layer">Skonfiguruj Jam Layer</string>
-  <string name="morphe_music_jam_manage">Zarządzaj</string>
   <string name="morphe_music_jam_details">Szczegóły</string>
   <string name="morphe_music_jam_open">Otwórz</string>
   <string name="morphe_music_jam_loading_song_options">Wczytywanie opcji utworu…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">Kolejka została zmieniona, powtórz gest</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Logo w nagłówku</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
   <string name="morphe_header_logo_entry_3">Własne</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Użyj zewnętrznej aplikacji dla opcji \"Pobierz\" w menu</string>
   <string name="morphe_external_downloader_menu_summary">Opcja \"Pobierz\" w menu otwiera zamiast tego zewnętrzną aplikację do pobierania</string>
-  <string name="morphe_download_force_4k_title">Wymuś dostępność pobierania w 4K</string>
   <string name="morphe_download_force_4k_summary">Umożliwia pobieranie w jakości 1440p i 4K, nawet jeśli YouTube Music uzna, że to urządzenie nie jest w stanie ich odtworzyć</string>
   <string name="morphe_export_download_folder_title">Eksportuj pobrane pliki</string>
   <string name="morphe_export_download_folder_summary">"Eksportuj utwory i filmy zapisane w aplikacji do pamięci urządzenia za pomocą menu w sekcji Pobrane. Dotknij, aby zmienić folder eksportu
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">Zastąp przycisk \"Odtwarzaj losowo\" przyciskiem \"Pętla\"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">Wyświetla przycisk Pętla zamiast przycisku \"Odtwarzaj losowo\" w powiadomieniu o multimediach oraz na ekranie blokady</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">Informacje</string>
-  <string name="morphe_settings_music_screen_01_ads_title">Reklamy</string>
-  <string name="morphe_settings_music_screen_02_feed_title">Strona główna</string>
-  <string name="morphe_settings_music_screen_03_general_title">Ogólne</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">Tekst utworu</string>
-  <string name="morphe_settings_music_screen_05_misc_title">Pozostałe</string>
-  <string name="morphe_settings_music_screen_06_player_title">Odtwarzacz</string>
-  <string name="morphe_settings_music_screen_10_video_title">Film</string>
   <string name="morphe_music_app_language_title">Język YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Język systemowy</string>
   <string name="morphe_music_app_language_summary_unsupported">Wymaga Androida 13 lub nowszego</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ukryj etykietę \"Kup Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ukryj promocje Music Premium</string>
-  <string name="morphe_music_hide_video_ads_title">Ukryj reklamy w filmach</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ukryj przełącznik Utwór / Teledysk</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Ukrywa przycisk Pobierz w podcaście</string>
   <string name="morphe_music_hide_explore_shelf_title">Ukryj sekcję Odkrywaj</string>
   <string name="morphe_music_hide_filter_bar_title">Ukryj pasek filtrów</string>
   <string name="morphe_music_hide_grid_shelves_title">Ukryj sekcje siatki</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">Ukryj sekcje poziome</string>
   <string name="morphe_music_hide_new_button_title">Ukryj przycisk Nowa</string>
   <string name="morphe_music_hide_new_button_summary">Ukrywa przycisk Nowa w zakładce Biblioteka</string>
   <string name="morphe_music_hide_list_shelves_title">Ukryj sekcje listy</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel tekstu</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Ukryj przycisk Przetłumacz</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ukryj sekcję \"Nowości od\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ukryj sekcje playlist</string>
   <string name="morphe_music_hide_repeat_button_title">Ukryj przycisk Powtórz</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ukryj sekcję \"Szybkie wybieranie\"</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Ukryj sekcję \"To też może Ci się spodobać\"</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">Ukryj sekcję \"Pobrane utwory\"</string>
-  <string name="morphe_music_comments_screen_title">Komentarze</string>
-  <string name="morphe_music_comments_screen_summary">Zdecyduj, które elementy będą wyświetlane w sekcji komentarzy</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">Ukryj wytyczne społeczności</string>
   <string name="morphe_music_hide_comments_context_title">Ukryj komunikat kontekstowy</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">Ukryj przycisk Emoji</string>
-  <string name="morphe_music_hide_comments_gif_button_title">Ukryj przycisk GIF</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">Ukryj GIF-y i obrazy</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">Ukrywa GIF-y i obrazy załączone do komentarzy oraz odpowiedzi</string>
-  <string name="morphe_music_hide_comments_info_button_title">Ukryj przycisk Informacje</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">Ukryj przycisk Znacznik czasu</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Przenikanie</string>
   <string name="morphe_music_crossfade_screen_summary">Płynne miksowanie między utworami</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 milisekund</string>
   <string name="morphe_crossfade_duration_500ms">500 milisekund</string>
   <string name="morphe_crossfade_duration_750ms">750 milisekund</string>
-  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
-  <string name="morphe_crossfade_duration_2000ms">2 sekundy</string>
-  <string name="morphe_crossfade_duration_3000ms">3 sekundy</string>
-  <string name="morphe_crossfade_duration_4000ms">4 sekundy</string>
-  <string name="morphe_crossfade_duration_5000ms">5 sekund</string>
-  <string name="morphe_crossfade_duration_6000ms">6 sekund</string>
-  <string name="morphe_crossfade_duration_7000ms">7 sekund</string>
-  <string name="morphe_crossfade_duration_8000ms">8 sekund</string>
-  <string name="morphe_crossfade_duration_9000ms">9 sekund</string>
-  <string name="morphe_crossfade_duration_10000ms">10 sekund</string>
   <string name="morphe_crossfade_duration_11000ms">11 sekund</string>
   <string name="morphe_crossfade_duration_12000ms">12 sekund</string>
   <string name="morphe_music_crossfade_on_skip_title">Przenikanie przy ręcznym pominięciu</string>
@@ -283,7 +247,6 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_playback_speed_summary">Prędkość stosowana dla wszystkich utworów. Przy 100% używana jest prędkość aplikacji, np. prędkość odtwarzania podcastów</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Zmieniaj tonację wraz z prędkością</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">Pokaż menu \"Efekt filmu\"</string>
   <string name="morphe_music_video_effect_menu_summary">Dodaje opcję \"Efekt filmu\" do menu odtwarzacza podczas odtwarzania filmu</string>
   <string name="morphe_music_video_effect_next_video">Efekt będzie widoczny od następnego filmu</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_playlist_tags_summary">Dodaje pozycję \"Tagi\" do menu playlist oraz przycisk filtrowania według tagów obok przycisku sortowania w Bibliotece</string>
   <string name="morphe_music_playlist_tags_manage_title">Zarządzaj tagami playlist</string>
   <string name="morphe_music_playlist_tags_manage_summary">Twórz, zmieniaj nazwy i usuwaj tagi oraz przypisuj je do playlist widocznych w Bibliotece</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">Tagi</string>
   <string name="morphe_music_playlist_tags_menu_item_none">Brak tagów</string>
-  <string name="morphe_music_playlist_tags_filter_button">Tagi</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">Tagi (ukryte: %s)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">Tagi dla: %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">Nowy tag</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 playlista</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">Playlisty: %s</string>
@@ -344,22 +303,14 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_playlist_tags_filter_show_only">Pokaż tylko</string>
   <string name="morphe_music_playlist_tags_filter_all">Wszystkie playlisty</string>
   <string name="morphe_music_playlist_tags_filter_visible">Widoczne tagi</string>
-  <string name="morphe_music_playlist_tags_manage">Zarządzaj</string>
   <string name="morphe_music_playlist_tags_none">Brak tagów. Przytrzymaj playlistę i wybierz \"Tagi\", aby utworzyć pierwszy</string>
-  <string name="morphe_music_playlist_tags_section_tags">Tagi</string>
   <string name="morphe_music_playlist_tags_section_playlists">Playlisty</string>
   <string name="morphe_music_playlist_tags_no_playlists">Otwórz raz Bibliotekę, aby Twoje playlisty pojawiły się tutaj</string>
   <string name="morphe_music_playlist_tags_new_tag">Nowy tag</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Edytuj tag</string>
-  <string name="morphe_music_playlist_tags_rename">Zmień nazwę</string>
-  <string name="morphe_music_playlist_tags_delete">Usuń</string>
   <string name="morphe_music_playlist_tags_hidden">Ukryty</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">Przyciski akcji</string>
   <string name="morphe_music_action_buttons_screen_summary">Zdecyduj, które przyciski akcji będą wyświetlane pod odtwarzaczem</string>
-  <string name="morphe_music_hide_action_bar_title">Ukryj pasek akcji</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Ukryj przyciski Lubię i \"Nie podoba mi się\"</string>
-  <string name="morphe_music_hide_comments_button_title">Ukryj przycisk Komentarze</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">Ukryj przycisk \"Powtórka czatu na żywo\"</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">Ukryj przycisk Składanka</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu wysuwane</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Zdecyduj, które elementy będą wyświetlane w menu wysuwanym odtwarzacza i kolejki</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Ukryj element 3-kolumnowy</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ukryj przyciski Lubię i \"Nie podoba mi się\"</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Ukryj menu \"Dopasowanie gustu\"</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Ukryj menu \"Dodaj do playlisty: Słuchaj później\"</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Ukryj menu \"Dodaj do kolejki\"</string>
@@ -410,17 +359,9 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Ukryj menu \"Odepnij od szybkiego wybierania\"</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Ukryj menu \"Wyświetl informacje o autorach utworu\"</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Strona startowa</string>
-  <string name="morphe_change_start_page_entry_default">Domyślna</string>
   <string name="morphe_change_start_page_entry_charts">Listy przebojów</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Odcinki na później</string>
-  <string name="morphe_change_start_page_entry_explore">Odkrywaj</string>
-  <string name="morphe_change_start_page_entry_history">Historia</string>
-  <string name="morphe_change_start_page_entry_library">Biblioteka</string>
   <string name="morphe_change_start_page_entry_liked_music">Muzyka, która Ci się podoba</string>
-  <string name="morphe_change_start_page_entry_playlists">Playlisty</string>
-  <string name="morphe_change_start_page_entry_search">Wyszukiwanie</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Subskrypcje</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Wymuś orientację pionową</string>
   <string name="morphe_music_force_portrait_orientation_summary">Utrzymuje aplikację w orientacji pionowej po obróceniu urządzenia</string>
@@ -449,21 +390,10 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_hide_navigation_bar_library_button_title">Ukryj przycisk Biblioteka</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ukryj przycisk Zmień</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">Pokaż przycisk Ustawienia</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Działanie przycisku Ustawienia</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube Music. Wyłącz, aby odwrócić te akcje</string>
-  <string name="morphe_music_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Ukryj etykiety przycisków nawigacji</string>
-  <string name="morphe_music_navigation_bar_glass_title">Włącz szklany pasek nawigacji</string>
   <string name="morphe_music_navigation_bar_glass_summary">Wyświetla pasek nawigacji jako pływającą, zaokrągloną, półprzezroczystą kapsułę</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Rozmiar i styl szklanego paska nawigacji</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość, odstępy między przyciskami, krycie oraz jasność krawędzi szklanego paska nawigacji za pomocą podglądu. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">Wysokość</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">Maks. szerokość</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Odstęp między przyciskami</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Widoczne przyciski: %1$s z %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Krycie</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">Jasność krawędzi</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">Rozmycie szkła</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">Określa stopień rozmycia strony za szklanym paskiem nawigacji (Android 14 i nowsze). Przy wartości 0 strona prześwituje ostro, a w wersjach starszych niż Android 14 jest zakryta</string>
   <string name="morphe_music_navigation_bar_glass_light_title">Jasne szkło</string>
@@ -472,16 +402,12 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">Barwi szklany pasek nawigacji kolorem z okładki albumu odtwarzanego utworu</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Ukryj wskaźnik wybranego przycisku</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Ukrywa zaokrąglone podświetlenie za wybranym przyciskiem szklanego paska nawigacji</string>
-  <string name="morphe_music_miniplayer_screen_title">Miniodtwarzacz</string>
   <string name="morphe_music_miniplayer_screen_summary">Zmień styl, przyciski oraz gesty miniodtwarzacza</string>
   <string name="morphe_music_miniplayer_glass_title">Włącz efekt szkła</string>
   <string name="morphe_music_miniplayer_glass_summary">Wyświetla pływający miniodtwarzacz jako zaokrągloną, półprzezroczystą szklaną kartę</string>
   <string name="morphe_music_miniplayer_glass_style_title">Styl szklanego miniodtwarzacza</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Dostosuj promień zaokrąglenia rogów, odstęp okładki, jasność krawędzi oraz krycie szklanego miniodtwarzacza za pomocą podglądu</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">Promień zaokrąglenia rogów</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Odstęp okładki</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">Jasność krawędzi</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">Krycie</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Określa stopień rozmycia strony za szklanym miniodtwarzaczem (Android 14 i nowsze). Przy wartości 0 strona prześwituje ostro, a w wersjach starszych niż Android 14 jest zakryta</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Nadaje szklanemu miniodtwarzaczowi biały odcień zamiast ciemnego, co zapewnia efekt jaśniejszego i bardziej przejrzystego szkła</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Barwi szklany miniodtwarzacz kolorem z okładki albumu odtwarzanego utworu</string>
@@ -498,9 +424,7 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_hide_activity_button_title">Ukryj przycisk Aktywności</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">Ukryj przycisk \"Zapytaj o muzykę\"</string>
-  <string name="morphe_music_hide_cast_button_title">Ukryj przycisk Przesyłaj</string>
   <string name="morphe_music_hide_history_button_title">Ukryj przycisk Historia</string>
-  <string name="morphe_music_hide_search_button_title">Ukryj przycisk Szukaj</string>
   <string name="morphe_music_hide_voice_search_button_title">Ukryj przycisk \"Wyszukiwanie głosowe\"</string>
   <string name="morphe_music_hide_sound_search_button_title">Ukryj przycisk \"Wyszukiwanie dźwiękiem\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <string name="morphe_music_soundproof_show_button_summary">Wyświetla na górnym pasku odtwarzacza przycisk umożliwiający sprawdzenie głosów społeczności oraz oddanie głosu na bieżącego wykonawcę</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">Pomijaj wykonawców AI</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">Automatycznie pomija utwory wykonawców, którzy przekroczyli poniższy próg AI</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">Pokaż powiadomienie o pominięciu</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">Wyświetla powiadomienie, gdy utwór jest pomijany automatycznie</string>
   <string name="morphe_music_soundproof_threshold_title">Próg wykrywania</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">Minimalny odsetek głosów AI</string>
@@ -624,7 +547,6 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <string name="morphe_music_lyrics_source_all_disabled">Wszyscy dostawcy wyłączeni. Teksty wbudowane i osadzone</string>
   <string name="morphe_music_lyrics_source_reset_title">Zresetować kolejność dostawców?</string>
   <string name="morphe_music_lyrics_source_reset_message">Przywróć domyślną kolejność priorytetów dla dostawców</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Słownik Rime</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Słownik Rime wymaga również pakietu UniDict: w ustawieniach dostawcy \"Słownik offline\" zaznacz \"Znaki chińskie i kantońskie (UniDict)\" i poczekaj na zakończenie pobierania. Bez tego słownik odczytujący pojedyncze znaki nie zwróci żadnej transkrypcji.
 
 Zaznacz słowniki, z których ma korzystać Słownik Rime, a następnie dotknij Zapisz, aby je pobrać. Dodany przez Ciebie słownik zostanie usunięty po jego odznaczeniu.
@@ -634,12 +556,10 @@ Każdy słownik to Twoja własna tabela przypisująca transkrypcję do słów, p
 典 din2
 Pierwsza kolumna to słowo, a druga to jego transkrypcja. Dodatkowe kolumny oraz wiersze bez znaku tabulacji są ignorowane."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Dla powyższego języka nie zaznaczono żadnego słownika Rime. Dotknij tej nazwy, aby go zaznaczyć, lub wybierz język z przypisanym słownikiem</string>
-  <string name="morphe_music_lyrics_rime_dict_add">Dodaj</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Dodaj słownik Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">Plik .dict.yaml lub zawierające go archiwum zip z wierszami takimi jak 字 ham oraz 典 din2. Słownik zostanie pobrany po zaznaczeniu go i dotknięciu Zapisz, sprawdzenie jego licencji należy do Ciebie</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kod języka</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dwie lub trzy litery, np. hak lub wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">Nazwa</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">Pokazywana pod transkrypcją, np. Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">Adres słownika</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">Adres pliku .dict.yaml lub archiwum ZIP</string>
@@ -682,8 +602,6 @@ Pierwsza kolumna to słowo, a druga to jego transkrypcja. Dodatkowe kolumny oraz
   <string name="morphe_music_lyrics_cache_total_category_title">Łączne użycie pamięci podręcznej</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">Wyczyść całą pamięć podręczną</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (elementy: %2$d)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">Wyczyść</string>
-  <string name="morphe_music_lyrics_cache_close_action">Zamknij</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">Usunąć %1$s MB (utwory: %2$d) tekstów utworów zapisanych w pamięci podręcznej na tym urządzeniu?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">Usunąć %1$s MB (tłumaczenia: %2$d) tłumaczeń zapisanych w pamięci podręcznej na tym urządzeniu?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">Usunąć %1$s MB (transliteracje: %2$d) transliteracji zapisanych w pamięci podręcznej na tym urządzeniu?</string>
@@ -766,7 +684,6 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_download_started">Pobieranie słowników transkrypcji…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Dane wymowy gotowe (wpisy: %s)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Pobieranie się nie powiodło. Wyłącz i włącz tę opcję ponownie, aby ponowić próbę</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Słownik offline</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japoński</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">Chiński</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) - szybki analizator morfologiczny i ruby</string>
@@ -785,8 +702,6 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_custom_font_invalid">Nieprawidłowy lub nieobsługiwany plik czcionki (wymagany format .ttf lub .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">Udostępnij tekst utworu</string>
   <string name="morphe_music_lyrics_share_button">Udostępnij</string>
-  <string name="morphe_music_lyrics_copy">Skopiuj</string>
-  <string name="morphe_music_lyrics_share_cancel">Anuluj</string>
   <string name="morphe_music_lyrics_share_select_hint">Dotknij 1-5 wersów</string>
   <string name="morphe_music_lyrics_share_max_lines">Maksymalnie 5 wersów</string>
   <string name="morphe_music_lyrics_share_failed">Nie udało się utworzyć karty udostępniania tekstu</string>
@@ -903,18 +818,15 @@ Dotknij dwukrotnie poniżej, aby nagrać segment SponsorBlock"</string>
   <string name="morphe_music_lyrics_translated_by_google">Przetłumaczone przez Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Zromanizowane przez Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Przetłumaczone przez %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">Zromanizowane przez %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">Zromanizowane przez %s</string>
+  <string name="morphe_music_lyrics_romanized_by">Zromanizowane przez %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (z %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Przetłumaczone</string>
-  <string name="morphe_music_lyrics_translation_language_title">Język tłumaczenia</string>
   <string name="morphe_music_lyrics_romanize_language_title">Język romanizacji lub transliteracji</string>
   <string name="morphe_music_lyrics_translation_target_language">"Docelowy język tłumaczenia:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"Docelowy język romanizacji lub transliteracji:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">Tłumaczenie…</string>
   <string name="morphe_music_lyrics_translate_failed">Nie udało się przetłumaczyć tekstu</string>
   <string name="morphe_music_lyrics_romanize_hide">Zromanizowane</string>
   <string name="morphe_romanize_language_DEFAULT">Automatyczny</string>
@@ -922,7 +834,6 @@ Dotknij dwukrotnie poniżej, aby nagrać segment SponsorBlock"</string>
   <string name="morphe_music_lyrics_romanize_failed">Nie udało się zromanizować tekstu</string>
   <string name="morphe_music_lyrics_romanize_language_none">Brak</string>
   <string name="morphe_music_lyrics_ruby_language_title">Język docelowy ruby</string>
-  <string name="morphe_music_lyrics_translate_only">Tylko tłumaczenie</string>
   <string name="morphe_music_lyrics_romanize_only">Tylko romanizacja</string>
   <string name="morphe_music_lyrics_dual_only">Tryb podwójny</string>
   <string name="morphe_music_lyrics_copied">Skopiowano do schowka</string>
@@ -975,7 +886,7 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_ai_config_status_invalid">Ustawienia są niekompletne lub zostały odrzucone przez dostawcę</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Sprawdzanie połączenia…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Połączono! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Połączenie nie powiodło się. Sprawdź ustawienia</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">Błąd połączenia: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testuj połączenie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Pobieranie modeli…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Pobierz modele</string>
@@ -1003,4 +914,10 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Wyłącza pogrubione ikony</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Przywraca zakładki Następne, Tekst i Powiązane w odtwarzaczu</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">Zarządzaj</string>
+  <string name="morphe_music_opacity_title">Krycie</string>
+  <string name="morphe_music_rim_brightness_title">Jasność krawędzi</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">Tagi</string>
 </resources>

@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Пользовательское</string>
-  <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинальная</string>
   <string name="morphe_custom_branding_icon_entry_2">Мorphe чёрный</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe тёмный</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt; Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt; Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показывать снова</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подмена видеопотоков</string>
   <string name="morphe_spoof_video_streams_screen_summary">Настройте подмену клиента, чтобы предотвратить проблемы с воспроизведением</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 Воспроизведение видео может быть недоступно до обновления Android System WebView до последней версии.
 
 Нажмите ОК, чтобы открыть Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Не показывать снова</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не установлен. Установите его, чтобы исправить воспроизведение видео</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Элементы управления мультимедиа в уведомлении</string>
   <string name="morphe_notification_media_screen_summary">Настройте элементы управления воспроизведением, отображаемые на экране блокировки и в панели уведомлений</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Скрыть кнопки «Предыдущий» &amp; «Следующий»</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Скрывает кнопки «Предыдущий» и «Следующий» в медиауведомлении, на экране блокировки и в элементах управления гарнитуры</string>
   <string name="morphe_disable_notification_media_seekbar_title">Отключить ползунок перемотки</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Предотвращает перетаскивание ползунка перемотки на экране блокировки и в панели уведомлений</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">Восстановить значения по умолчанию</string>
   <string name="morphe_video_effects_custom_add_title">Новый эффект</string>
   <string name="morphe_video_effects_custom_edit_title">Редактировать эффект</string>
-  <string name="morphe_video_effects_custom_name_hint">Имя</string>
   <string name="morphe_video_effects_custom_name_empty">Введите название эффекта</string>
   <string name="morphe_video_effects_custom_name_exists">Эффект с таким названием уже существует</string>
-  <string name="morphe_video_effects_custom_copy_code">Копировать код</string>
   <string name="morphe_video_effects_custom_error_title">В эффекте ошибка</string>
   <string name="morphe_video_effects_custom_error_message">"Видео будут отображаться без эффекта, пока код не будет исправлен. Передайте эту ошибку ИИ, который написал код:
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 Попросите ИИ сократить код или вставьте его по частям."</string>
   <string name="morphe_video_effects_custom_copy_error">Ошибка копирования</string>
   <string name="morphe_video_effects_custom_save_anyway">Все равно сохранить</string>
-  <string name="morphe_video_effects_custom_delete">Удалить</string>
   <string name="morphe_video_effects_custom_delete_title">Удалить эффект?</string>
   <string name="morphe_video_effects_custom_delete_message">%s будет удален.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Чтобы использовать эту функцию, измените \'Подмена видеопотоков\' на любой клиент, кроме \'Android Studio\' и \'Android VR Downgraded\'.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Очищать ссылки для обмена</string>
-  <string name="morphe_sanitize_sharing_links_summary">Удаляет параметры отслеживания запросов из общих ссылок</string>
   <string name="morphe_replace_music_with_youtube_title">Изменить ссылки для обмена на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Заменяет music.youtube.com на youtube.com в общих ссылках.</string>
   <string name="morphe_replace_links_with_shortener_title">Изменить ссылки для обмена на youtu.be</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">Шрифт</string>
   <string name="morphe_custom_font_type_entry_default">По умолчанию</string>
   <string name="morphe_custom_font_type_entry_system">Системный шрифт устройства</string>
-  <string name="morphe_custom_font_type_entry_custom">Файл пользовательского шрифта</string>
   <string name="morphe_custom_font_file_title">Файл пользовательского шрифта</string>
   <string name="morphe_custom_font_file_summary">Выберите TTF или OTF файл шрифта</string>
   <string name="morphe_custom_font_file_invalid">Выбранный файл не является TTF или OTF шрифтом</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">Меню в виде матового стекла поверх размытого контента позади них</string>
   <string name="morphe_glass_menus_title">Включить стеклянные меню</string>
   <string name="morphe_glass_menus_summary">Отображает меню и нижние панели в виде матового стекла с размытием контента за ними</string>
-  <string name="morphe_glass_menus_opacity_title">Непрозрачность стекла</string>
   <string name="morphe_glass_menus_opacity_summary">Насколько сильно меню перекрывает размытый контент (0 — прозрачно, 100 — непрозрачно)</string>
   <string name="morphe_glass_menus_blur_title">Размытие</string>
   <string name="morphe_glass_menus_blur_summary">Степень размытия контента за меню</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">Отображает дизлайки в процентах от лайков вместо количества</string>
   <string name="morphe_ryd_estimated_like_title">Показать примерное количество лайков</string>
   <string name="morphe_ryd_estimated_like_summary">Показывает приблизительное количество лайков на видео, где автор отключил лайки</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Показывать уведомления об ошибках подключения</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показывает уведомление, когда сервер Return YouTube Dislike недоступен</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike возвращает счётчики дизлайков, которые YouTube скрыл в 2021 году. Счётчики берутся из данных, архивированных до удаления, и оцениваются для новых видео на основе голосов пользователей, поэтому они приблизительны и обновляются каждые несколько дней
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ограничения скорости клиентского API не обнаружены</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Превышен лимит запросов клиента %s раз</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
-  <string name="morphe_navigation_bar_screen_title">Панель навигации</string>
   <string name="morphe_navigation_bar_screen_summary">Выберите, какие кнопки отображаются на нижней панели навигации</string>
   <string name="morphe_toolbar_screen_title">Панель инструментов</string>
   <string name="morphe_toolbar_screen_summary">Выберите, какие компоненты отображать на панели инструментов</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 секунда</string>
+  <string name="morphe_duration_2s">2 секунды</string>
+  <string name="morphe_duration_3s">3 секунды</string>
+  <string name="morphe_duration_4s">4 секунды</string>
+  <string name="morphe_duration_5s">5 секунд</string>
+  <string name="morphe_duration_6s">6 секунд</string>
+  <string name="morphe_duration_7s">7 секунд</string>
+  <string name="morphe_duration_8s">8 секунд</string>
+  <string name="morphe_duration_9s">9 секунд</string>
+  <string name="morphe_duration_10s">10 секунд</string>
+  <string name="morphe_change_start_page_entry_default">По умолчанию</string>
+  <string name="morphe_change_start_page_entry_explore">Навигатор</string>
+  <string name="morphe_change_start_page_entry_history">История просмотров</string>
+  <string name="morphe_change_start_page_entry_library">Библиотека</string>
+  <string name="morphe_change_start_page_entry_playlists">Плейлисты</string>
+  <string name="morphe_change_start_page_entry_search">Поиск</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Подписки</string>
+  <string name="morphe_change_start_page_title">Стартовая страница</string>
+  <string name="morphe_action_buttons_screen_title">Кнопки действий</string>
+  <string name="morphe_comments_screen_title">Комментарии</string>
+  <string name="morphe_feed_screen_title">Лента</string>
+  <string name="morphe_flyout_menu_screen_title">Выдвижное меню плеера</string>
+  <string name="morphe_general_title">Общие</string>
+  <string name="morphe_miniplayer_screen_title">Миниплеер</string>
+  <string name="morphe_player_screen_title">Плеер</string>
+  <string name="morphe_video_screen_title">Видео</string>
+  <string name="morphe_appearance_title">Внешний вид</string>
+  <string name="morphe_cancel">Отмена</string>
+  <string name="morphe_comments_screen_summary">Выберите, какие компоненты будут отображаться в разделе комментариев</string>
+  <string name="morphe_copy_code">Копировать код</string>
+  <string name="morphe_corner_radius_title">Радиус углов</string>
+  <string name="morphe_do_not_show_again">Не показывать снова</string>
+  <string name="morphe_download_force_4k_title">Принудительная доступность загрузки в 4K</string>
+  <string name="morphe_glass_opacity_title">Прозрачность стекла</string>
+  <string name="morphe_header_logo_title">Логотип заголовка</string>
+  <string name="morphe_hide_action_bar_title">Скрыть панель действий</string>
+  <string name="morphe_hide_cast_button_title">Скрыть кнопку \"Трансляция\"</string>
+  <string name="morphe_hide_comments_button_title">Скрыть кнопку \"Комментарии\"</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
+  <string name="morphe_hide_comments_emoji_button_title">Скрыть кнопку \"Эмодзи\"</string>
+  <string name="morphe_hide_comments_gif_button_title">Скрыть кнопку GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Скрывает GIF-файлы и изображения, прикрепленные к комментариям и ответам</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Скрыть GIF-файлы и изображения</string>
+  <string name="morphe_hide_comments_info_button_title">Скрыть кнопку \"Инфо\"</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Скрыть кнопку метки времени</string>
+  <string name="morphe_hide_horizontal_shelves_title">Скрыть горизонтальные секции</string>
+  <string name="morphe_hide_like_dislike_button_title">Скрыть кнопку \"Лайк\" и \"Дизлайк\"</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Скрыть кнопки \"Лайк\" и \"Дизлайк\"</string>
+  <string name="morphe_hide_navigation_bar_title">Скрыть панель навигации</string>
+  <string name="morphe_hide_navigation_button_labels_title">Скрыть подписи кнопок навигации</string>
+  <string name="morphe_hide_previous_next_buttons_title">Скрыть кнопки «Предыдущий» &amp; «Следующий»</string>
+  <string name="morphe_hide_search_button_title">Скрыть кнопку поиска</string>
+  <string name="morphe_hide_translate_button_title">Скрыть кнопку \"Перевести\"</string>
+  <string name="morphe_hide_video_ads_title">Скрыть видеорекламу</string>
+  <string name="morphe_loading">Загрузка…</string>
+  <string name="morphe_name">Имя</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Расстояние между кнопками</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Показанные кнопки: %1$s из %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Высота</string>
+  <string name="morphe_navigation_bar_glass_size_width">Максимальная ширина</string>
+  <string name="morphe_navigation_bar_glass_title">Включить стеклянную панель навигации</string>
+  <string name="morphe_positive_number_invalid">Значение должно быть положительным числом</string>
+  <string name="morphe_private_user_id_invalid">Уникальный идентификатор пользователя должен содержать не менее 30 символов</string>
+  <string name="morphe_private_user_id_title">Ваш идентификатор пользователя</string>
+  <string name="morphe_rename">Переименовать</string>
+  <string name="morphe_show_settings_button_title">Показать кнопку настроек</string>
+  <string name="morphe_show_settings_button_type_title">Действие кнопки \"Настройки\"</string>
+  <string name="morphe_show_video_effect_menu_title">Показать меню видеоэффектов</string>
+  <string name="morphe_submit">Отправить</string>
+  <string name="morphe_time_adjustment_step_title">Шаг регулировки времени</string>
+  <string name="morphe_toast_on_connection_error_title">Показывать уведомления об ошибке подключения</string>
+  <string name="morphe_toast_on_skip_title">Показывать уведомление о пропуске</string>
+  <string name="morphe_translated_only">Только переведенные</string>
+  <string name="morphe_translating">Перевод…</string>
+  <string name="morphe_translation_language_title">Язык перевода</string>
+  <string name="morphe_username_change_unknown_error">Невозможно изменить имя пользователя: Статус: %1$s %2$s</string>
+  <string name="morphe_username_changed">Имя пользователя успешно изменено</string>
+  <string name="morphe_username_html">Ваше имя пользователя: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Видео</string>
+  <string name="morphe_vote_downvote">Голос \"против\"</string>
+  <string name="morphe_vote_upvote">Голос \"за\"</string>
 </resources>

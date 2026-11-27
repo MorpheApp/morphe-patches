@@ -81,7 +81,6 @@ Verifiera att paketnamnet är korrekt och att appen har installerats"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Anpassad</string>
-  <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Ursprunglig</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe – svart</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe – mörk</string>
@@ -107,7 +106,6 @@ För att ändra ikonen överallt, applicera patchen igen och ändra patchalterna
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Visa inte igen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Förfalska videostreamar</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurera klientförfalskning för att förhindra uppspelningsproblem</string>
@@ -134,7 +132,6 @@ Tryck OK för att öppna Android System WebView."</string>
 Videouppspelningen kan misslyckas tills Android System WebView har uppdaterats till den senaste versionen.
 
 Tryck OK för att öppna Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Visa inte igen</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView är inte installerad. Installera den för att åtgärda videouppspelningen</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Tryck på fortsätt nedan för att logga in"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mediekontroller för avisering</string>
   <string name="morphe_notification_media_screen_summary">Anpassa de uppspelningskontroller som visas på låsskärmen och i aviseringspanelen</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Dölj föregående och nästa knappar</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Döljer knapparna Föregående och Nästa i medieaviseringen, på låsskärmen och för hörlursstyrning</string>
   <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökfältet</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Förhindrar att sökreglaget kan dras på låsskärmen och i aviseringspanelen</string>
@@ -244,10 +240,8 @@ Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_video_effects_custom_restore">Återställ till standard</string>
   <string name="morphe_video_effects_custom_add_title">Ny effekt</string>
   <string name="morphe_video_effects_custom_edit_title">Redigera effekt</string>
-  <string name="morphe_video_effects_custom_name_hint">Namn</string>
   <string name="morphe_video_effects_custom_name_empty">Ange ett namn för effekten</string>
   <string name="morphe_video_effects_custom_name_exists">En effekt med det här namnet finns redan</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopiera kod</string>
   <string name="morphe_video_effects_custom_error_title">Effekten har ett fel</string>
   <string name="morphe_video_effects_custom_error_message">"Videor visas utan effekten tills koden är åtgärdad. Ge det här felet till AI:n som skrev koden:
 
@@ -257,7 +251,6 @@ Tryck på fortsätt nedan för att logga in"</string>
 Be AI:n om kortare kod, eller klistra in koden i delar."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopieringsfel</string>
   <string name="morphe_video_effects_custom_save_anyway">Spara ändå</string>
-  <string name="morphe_video_effects_custom_delete">Radera</string>
   <string name="morphe_video_effects_custom_delete_title">Ta bort effekt?</string>
   <string name="morphe_video_effects_custom_delete_message">%s kommer att tas bort.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Be AI:n om kortare kod, eller klistra in koden i delar."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Om du vill använda den här funktionen ändrar du \'Förfalska videoströmmar\' till valfri klient utom \'Android Studio\' och \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
-  <string name="morphe_sanitize_sharing_links_summary">Tar bort frågeparametrar för spårning från delade länkar</string>
   <string name="morphe_replace_music_with_youtube_title">Ändra delningslänkar till youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersätter music.youtube.com med youtube.com i delade länkar</string>
   <string name="morphe_replace_links_with_shortener_title">Ändra delningslänkar till youtu.be</string>
@@ -371,7 +362,6 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_custom_font_type_title">Teckensnitt</string>
   <string name="morphe_custom_font_type_entry_default">Standard</string>
   <string name="morphe_custom_font_type_entry_system">Enhetens systemteckensnitt</string>
-  <string name="morphe_custom_font_type_entry_custom">Egen typsnittsfil</string>
   <string name="morphe_custom_font_file_title">Egen typsnittsfil</string>
   <string name="morphe_custom_font_file_summary">Välj en TTF- eller OTF-teckensnittsfil</string>
   <string name="morphe_custom_font_file_invalid">Den valda filen är inte ett TTF- eller OTF-teckensnitt</string>
@@ -381,7 +371,6 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_glass_menus_screen_summary">Menyer som frostat glas över det suddiga innehållet bakom dem</string>
   <string name="morphe_glass_menus_title">Aktivera glasmenyer</string>
   <string name="morphe_glass_menus_summary">Visar menyer och bottenark som frostat glas, där innehållet bakom dem suddas ut</string>
-  <string name="morphe_glass_menus_opacity_title">Glasets opacitet</string>
   <string name="morphe_glass_menus_opacity_summary">Hur mycket menyn täcker det suddiga innehållet (0 är genomskinligt, 100 är opakt)</string>
   <string name="morphe_glass_menus_blur_title">Oskärpa</string>
   <string name="morphe_glass_menus_blur_summary">Hur mycket innehållet bakom menyn ska suddas ut</string>
@@ -402,7 +391,6 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_ryd_dislike_percentage_summary">Visa ogilla-markeringar som procentandelen av antalet gilla-markeringar istället för som ett tal</string>
   <string name="morphe_ryd_estimated_like_title">Visa uppskattade gilla-markeringar</string>
   <string name="morphe_ryd_estimated_like_summary">Visar ett uppskattat antal gilla-markeringar för videor där kreatören har inaktiverat gilla-markeringar</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Visar ett meddelande när Return YouTube Dislike-servern inte är tillgänglig</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike återställer antalet ogilla-markeringar som YouTube dolde 2021. Antalen kommer från data som arkiverades före borttagningen och uppskattas för nyare videor från användarnas röster, så de är ungefärliga och uppdateras med några dagars mellanrum
 
@@ -424,8 +412,89 @@ ID för videon du tittar på skickas till Return YouTube Dislike API, och dina g
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Inga klientbegränsningar påträffades</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientens hastighetsbegränsning inträffade %s gånger</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
-  <string name="morphe_navigation_bar_screen_title">Navigeringsfält</string>
   <string name="morphe_navigation_bar_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ner</string>
   <string name="morphe_toolbar_screen_title">Verktygsfält</string>
   <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekund</string>
+  <string name="morphe_duration_2s">2 sekunder</string>
+  <string name="morphe_duration_3s">3 sekunder</string>
+  <string name="morphe_duration_4s">4 sekunder</string>
+  <string name="morphe_duration_5s">5 sekunder</string>
+  <string name="morphe_duration_6s">6 sekunder</string>
+  <string name="morphe_duration_7s">7 sekunder</string>
+  <string name="morphe_duration_8s">8 sekunder</string>
+  <string name="morphe_duration_9s">9 sekunder</string>
+  <string name="morphe_duration_10s">10 sekunder</string>
+  <string name="morphe_change_start_page_entry_default">Standard</string>
+  <string name="morphe_change_start_page_entry_explore">Utforska</string>
+  <string name="morphe_change_start_page_entry_history">Historik</string>
+  <string name="morphe_change_start_page_entry_library">Bibliotek</string>
+  <string name="morphe_change_start_page_entry_playlists">Spellistor</string>
+  <string name="morphe_change_start_page_entry_search">Sök</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Prenumerationer</string>
+  <string name="morphe_change_start_page_title">Startsida</string>
+  <string name="morphe_action_buttons_screen_title">Åtgärdsknappar</string>
+  <string name="morphe_comments_screen_title">Kommentarer</string>
+  <string name="morphe_feed_screen_title">Flöde</string>
+  <string name="morphe_flyout_menu_screen_title">Flyout-meny</string>
+  <string name="morphe_general_title">Allmänt</string>
+  <string name="morphe_miniplayer_screen_title">Minispelare</string>
+  <string name="morphe_player_screen_title">Spelare</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Utseende</string>
+  <string name="morphe_cancel">Avbryt</string>
+  <string name="morphe_comments_screen_summary">Välj vilka komponenter som visas i kommentarsfältet</string>
+  <string name="morphe_copy_code">Kopiera kod</string>
+  <string name="morphe_corner_radius_title">Hörnradie</string>
+  <string name="morphe_do_not_show_again">Visa inte igen</string>
+  <string name="morphe_download_force_4k_title">Tvinga tillgänglighet för 4K-nedladdning</string>
+  <string name="morphe_glass_opacity_title">Glasets opacitet</string>
+  <string name="morphe_header_logo_title">Logotyp i sidhuvudet</string>
+  <string name="morphe_hide_action_bar_title">Dölj åtgärdsfält</string>
+  <string name="morphe_hide_cast_button_title">Dölj knappen Casta</string>
+  <string name="morphe_hide_comments_button_title">Dölj knappen Kommentarer</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Dölj riktlinjerna för communityn</string>
+  <string name="morphe_hide_comments_emoji_button_title">Dölj emoji-knappen</string>
+  <string name="morphe_hide_comments_gif_button_title">Dölj GIF-knappen</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Döljer GIF:er och bilder som är bifogade till kommentarer och svar</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Dölj GIF:er och bilder</string>
+  <string name="morphe_hide_comments_info_button_title">Dölj knappen Info</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Dölj knappen för tidsstämpel</string>
+  <string name="morphe_hide_horizontal_shelves_title">Dölj horisontella hyllor</string>
+  <string name="morphe_hide_like_dislike_button_title">Dölj knappen Gilla och Ogilla</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Dölj knapparna Gilla och Ogilla</string>
+  <string name="morphe_hide_navigation_bar_title">Dölj navigeringsfältet</string>
+  <string name="morphe_hide_navigation_button_labels_title">Dölj etiketter för navigeringsknappar</string>
+  <string name="morphe_hide_previous_next_buttons_title">Dölj knapparna Föregående &amp; Nästa</string>
+  <string name="morphe_hide_search_button_title">Dölj sökknappen</string>
+  <string name="morphe_hide_translate_button_title">Dölj översättningsknappen</string>
+  <string name="morphe_hide_video_ads_title">Dölj videoannonser</string>
+  <string name="morphe_loading">Läser in …</string>
+  <string name="morphe_name">Namn</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Avstånd mellan knappar</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knappar som visas: %1$s av %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Höjd</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximal bredd</string>
+  <string name="morphe_navigation_bar_glass_title">Aktivera glasnavigeringsfält</string>
+  <string name="morphe_positive_number_invalid">Värdet måste vara ett positivt tal</string>
+  <string name="morphe_private_user_id_invalid">Privat användar-id måste vara minst 30 tecken långt</string>
+  <string name="morphe_private_user_id_title">Ditt privata användar-id</string>
+  <string name="morphe_rename">Byt namn</string>
+  <string name="morphe_show_settings_button_title">Visa knappen Inställningar</string>
+  <string name="morphe_show_settings_button_type_title">Åtgärd för knappen Inställningar</string>
+  <string name="morphe_show_video_effect_menu_title">Visa meny för videovideeffekter</string>
+  <string name="morphe_submit">Skicka in</string>
+  <string name="morphe_time_adjustment_step_title">Tidsjusteringssteg</string>
+  <string name="morphe_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
+  <string name="morphe_toast_on_skip_title">Visa avisering vid överhoppning</string>
+  <string name="morphe_translated_only">Endast översatt</string>
+  <string name="morphe_translating">Översätter…</string>
+  <string name="morphe_translation_language_title">Översättningsspråk</string>
+  <string name="morphe_username_change_unknown_error">Det gick inte att ändra användarnamn: Status: %1$s %2$s</string>
+  <string name="morphe_username_changed">Användarnamnet har ändrats</string>
+  <string name="morphe_username_html">Ditt användarnamn: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Videor</string>
+  <string name="morphe_vote_downvote">Nedrösta</string>
+  <string name="morphe_vote_upvote">Upprösta</string>
 </resources>

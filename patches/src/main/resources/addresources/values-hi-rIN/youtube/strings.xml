@@ -17,17 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">इसके बारे में</string>
-  <string name="morphe_settings_screen_01_ads_title">विज्ञापन</string>
-  <string name="morphe_settings_screen_03_feed_title">फ़ीड</string>
-  <string name="morphe_settings_screen_04_general_title">सामान्य</string>
-  <string name="morphe_settings_screen_05_player_title">प्लेयर</string>
-  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">सीकबार</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">स्वाइप कंट्रोल्स</string>
-  <string name="morphe_settings_screen_11_misc_title">अन्य</string>
-  <string name="morphe_settings_screen_12_video_title">वीडियो</string>
   <string name="morphe_restore_old_settings_menus_title">पुरानी YouTube सेटिंग स्क्रीन वापस लाएँ</string>
   <string name="morphe_native_snackbar_title">YouTube स्नैकबार में संदेश दिखाएं</string>
   <string name="morphe_native_snackbar_summary">Morphe संदेश, जैसे प्लेयर बटन की पुष्टि, पॉपअप के बजाय YouTube स्नैकबार में दिखाए जाते हैं</string>
@@ -82,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary">सर्च सुझाव स्क्रीन के नीचे दाईं ओर दिखने वाला फ़्लोटिंग माइक्रोफ़ोन बटन छिपाता है</string>
   <string name="morphe_hide_get_premium_button_title">\'Premium की सदस्यता लें\' बटन छिपाएँ</string>
   <string name="morphe_hide_history_shelf_title">इतिहास शेल्फ़ छिपाएँ</string>
-  <string name="morphe_hide_horizontal_shelves_title">हॉरिजॉन्टल शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_horizontal_shelves_summary">ताज़ा खबरें, आपके पसंद आ सकने वाले पोस्ट, देखना जारी रखें, और चैनल एक्सप्लोर करें, और विषय एक्सप्लोर करें, आपके लिए, नए वीडियो, सबसे प्रासंगिक, क्रिएटर कम्युनिटी पोस्ट, शॉपिंग और दोबारा देखें जैसी हॉरिज़ॉन्टल शेल्फ़ छिपाता है</string>
   <string name="morphe_hide_image_shelf_title">इमेज शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_image_shelf_summary">सर्च नतीजों में इमेज शेल्फ़ छिपाता है</string>
@@ -202,6 +192,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_links_preview_title">लिंक्स का पूर्वावलोकन छुपाएं</string>
   <string name="morphe_hide_links_preview_summary">चैनल हेडर में क्लिक करने योग्य वेब लिंक को छुपाता है</string>
   <string name="morphe_hide_members_only_chip_title">\'केवल सदस्य\' चिप छिपाएं</string>
+  <string name="morphe_hide_members_only_chip_summary">चैनल फ़िल्टर बार में \'केवल सदस्यों के लिए\' चिप को छिपाता है और \'पब्लिक\' चिप को चुनता है</string>
   <string name="morphe_hide_members_shelf_title">सदस्य शेल्फ छुपाएं</string>
   <string name="morphe_hide_members_shelf_summary">चैनल सदस्यों की सूची को छुपाता है</string>
   <string name="morphe_hide_posts_shelf_title">पोस्ट शेल्फ छिपाएं</string>
@@ -233,12 +224,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_privacy_tos_footer_title">कानूनी और गोपनीयता फ़ूटर छुपाएं</string>
   <string name="morphe_hide_filter_bar_screen_title">फ़िल्टर बार</string>
   <string name="morphe_hide_filter_bar_screen_summary">स्क्रॉलिंग फ़िल्टर बार को छिपाने के लिए स्थान चुनें</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">चैनल पेज में छिपाएं</string>
   <string name="morphe_hide_filter_bar_in_comments_title">टिप्पणियों में छिपाएं</string>
   <string name="morphe_hide_filter_bar_in_feed_title">फ़ीड में छुपाएं</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">संबंधित वीडियो में छुपाएं</string>
-  <string name="morphe_hide_filter_bar_in_search_title">खोज परिणामों में छुपाएं</string>
-  <string name="morphe_hide_filter_bar_in_history_title">देखने के इतिहास में छुपाएं</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फ़िल्टर</string>
   <string name="morphe_hide_keyword_content_screen_summary">फ़ीड और खोज में वीडियो को छिपाने के लिए विशिष्ट शब्द या वाक्यांश चुनें</string>
   <string name="morphe_hide_keyword_content_comments_title">कीवर्ड द्वारा टिप्पणियाँ छिपाएँ</string>
@@ -304,15 +292,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stats_hidden_all_title">सभी समय के लिए छिपे हुए वीडियो</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">पिछले 24 घंटों के काउंटर को रीसेट करें?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">क्या सभी समय काउंटर रीसेट करें?</string>
-  <string name="morphe_post_buttons_screen_title">पोस्ट बटन</string>
   <string name="morphe_post_buttons_screen_summary">सामुदायिक पोस्ट के नीचे बटन के लेआउट को चुनें और यह चुनें कि किन बटनों को छिपाना है</string>
   <string name="morphe_post_buttons_layout_title">पोस्ट बटन लेआउट</string>
   <string name="morphe_post_buttons_layout_entry_1">सर्वर</string>
   <string name="morphe_post_buttons_layout_entry_2">लागू किया गया</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">लाइक और डिस्लाइक बटन छुपाएं</string>
-  <string name="morphe_hide_post_dislike_button_title">डिस्लाइक बटन छुपाएं</string>
   <string name="morphe_hide_post_dislike_button_summary">एनफोर्सड लेआउट के साथ, बटन का स्थान खाली छोड़ दिया जाता है</string>
-  <string name="morphe_hide_post_comment_button_title">कमेंट बटन छुपाएं</string>
   <string name="morphe_hide_post_comments_preview_title">टिप्पणियों का पूर्वावलोकन छुपाएं</string>
   <string name="morphe_hide_post_comments_preview_summary">पोस्ट के नीचे टिप्पणियों के पूर्वावलोकन को छुपाता है</string>
   <string name="morphe_hide_post_share_button_summary">पोस्ट इमेज का डाउनलोड बटन शेयर बटन के बगल में बना होता है, इसलिए वह भी छुप जाता है</string>
@@ -321,6 +305,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ऑटोप्ले प्रीव्यू छुपाएं</string>
   <string name="morphe_hide_autoplay_preview_summary">ऑटोप्ले शुरू होने से पहले फुलस्क्रीन में आने वाले वीडियो पूर्वावलोकन को छुपाता है</string>
+  <string name="morphe_hide_auto_generated_chapters_title">ऑटो-जनरेटेड चैप्टर छिपाएं</string>
   <string name="morphe_hide_channel_bar_title">चैनल बार को छुपाएं</string>
   <string name="morphe_hide_channel_watermark_title">चैनल वॉटरमार्क को छुपाएं</string>
   <string name="morphe_hide_chapters_button_title">चैप्टर्स बटन छिपाएँ</string>
@@ -350,19 +335,15 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_video_subtitle_title">वीडियो उपशीर्षक को सैनिटाइज़ करें</string>
   <string name="morphe_sanitize_video_subtitle_summary">वीडियो सबटाइटल से \'#\', \'फंडरेज़र\', \'उत्पाद(ओं)\', और \'दुकान\' जैसे वाक्यांशों को साफ करता है</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">क्रिया बटन</string>
   <string name="morphe_action_buttons_screen_summary">पोर्ट्रेट और फुलस्क्रीन मोड में प्रदर्शित होने वाले एक्शन बटन चुनें</string>
   <string name="morphe_portrait_buttons">पोर्ट्रेट बटन</string>
   <string name="morphe_disable_like_subscribe_glow_title">लाइक और सब्सक्राइब चमक अक्षम करें</string>
   <string name="morphe_disable_like_subscribe_glow_summary">जब कोई निर्माता उनका उल्लेख करता है तो लाइक और सब्सक्राइब बटन को चमकने से रोकता है</string>
-  <string name="morphe_hide_action_bar_title">एक्शन बार छिपाएँ</string>
-  <string name="morphe_hide_like_dislike_button_title">लाइक और डिसलाइक बटन छुपाएं</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">शेयर बटन छुपाएं</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_stop_ads_button_title">\'विज्ञापन रोकें\' बटन छुपाएं</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">टिप्पणी बटन छुपाएं</string>
   <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_connect_button_title">कनेक्ट बटन छिपाएं</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
@@ -394,8 +375,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">सहेजें बटन छुपाएं</string>
   <string name="morphe_hide_more_button_title">अधिक बटन छिपाएं</string>
   <string name="morphe_fullscreen_buttons">फ़ुलस्क्रीन बटन</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">डिसलाइक बटन छुपाएं</string>
-  <string name="morphe_hide_quick_actions_like_button_title">लाइक बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">\'लाइव चैट\' बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_mix_button_title">मिक्स बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">\'अधिक वीडियो\' बटन छुपाएं</string>
@@ -423,8 +402,6 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">पेज को स्क्रॉल करने या छूने पर लाइट मंद हो जाती है</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_title">मंद अवधि</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_summary">स्क्रॉलिंग रुकने के बाद लाइट कितनी देर तक मंद रहती है। 0 के साथ केवल स्क्रॉलिंग लाइट को मंद करती है, और स्क्रॉलिंग रुकते ही यह वापस आ जाती है</string>
-  <string name="morphe_comments_screen_title">टिप्पणियाँ</string>
-  <string name="morphe_comments_screen_summary">टिप्पणी अनुभाग में प्रदर्शित होने वाले घटकों को चुनें</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कैरोसेल फ़िल्टर</string>
   <string name="morphe_hide_comments_carousel_summary">"• कीवर्ड या पूरा नाम दर्ज करें (जैसे, Ask, Community, Hype, Listen)
 • सभी आइटम छिपाने से पूरा कमेंट सेक्शन छिप जाता है"</string>
@@ -436,18 +413,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_by_members_header_title">\'सदस्यों की टिप्पणियाँ\' शीर्षक छुपाएं</string>
   <string name="morphe_hide_comments_section_title">टिप्पणियों का अनुभाग छुपाएं</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">होम फ़ीड में टिप्पणियों का अनुभाग छुपाएं</string>
-  <string name="morphe_hide_comments_community_guidelines_title">छुपाएं समुदाय निदेशिका</string>
   <string name="morphe_hide_comments_create_a_short_button_title">\'छोटा बनाएं\' बटन छुपाएं</string>
-  <string name="morphe_hide_comments_dislike_button_title">नापसंद बटन छिपाएं</string>
-  <string name="morphe_hide_comments_emoji_button_title">इमोजी बटन छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_title">फ़िल्टर बार विकल्प छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी फ़िल्टर बार विकल्प छुपाता है</string>
-  <string name="morphe_hide_comments_gif_button_title">GIF बटन छिपाएँ</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">GIF और इमेज छिपाएँ</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">कमेंट्स और रिप्लाई से जुड़े GIF और इमेज को छिपाता है</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">उपहार एनीमेशन और कार्ड छिपाएं</string>
   <string name="morphe_hide_comments_gift_button_title">उपहार बटन छिपाएं</string>
-  <string name="morphe_hide_comments_info_button_title">जानकारी बटन छुपाएं</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">लाइव चैट दानदाता बार छुपाएं</string>
   <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">लाइव चैट स्क्रॉल टू बाटम बटन छुपाएँ</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">लाइव चैट टूलटिप्स छुपाएं</string>
@@ -462,16 +432,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_cards_summary">कमेंट बटन पर प्रदर्शित स्लाइडिंग कार्ड और पेज संकेतक को छुपाता है</string>
   <string name="morphe_hide_comments_timed_reactions_title">समयबद्ध प्रतिक्रियाएं छुपाएं</string>
   <string name="morphe_hide_comments_timed_reactions_summary">उस फ़ीचर को छिपाता है जो उपयोगकर्ताओं को कमेंट सेक्शन और लाइव चैट में इमोजी के साथ रिएक्ट करने की अनुमति देता है</string>
-  <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'टॉप फैंस\' बटन छिपाएँ</string>
   <string name="morphe_hide_comments_topics_title">\'विषय\' छिपाएं</string>
   <string name="morphe_hide_comments_topics_summary">\'विषय\' फ़िल्टर बार विकल्प और वीडियो के नीचे \'विषय\' टिप्पणी पूर्वावलोकन को छिपाता है</string>
-  <string name="morphe_hide_comments_translate_button_title">अनुवाद बटन छिपाएँ</string>
   <string name="morphe_hide_comments_visit_the_community_section_title">\'कम्युनिटी पर जाएँ\' सेक्शन छुपाएँ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करें</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करता है, केवल मूल सादे पाठ को छोड़ देता है</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">फ़्लाईआउट मेनू</string>
   <string name="morphe_hide_player_flyout_summary">फ़्लाईआउट मेनू में कौन से घटक दिखाई दें, चुनें</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">\'अतिरिक्त सेटिंग्स\' / अधिक मेनू छुपाएं</string>
@@ -517,14 +484,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_button_title">ऑटोप्ले बटन छुपाएं</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">कैप्शन बटन छुपाएं</string>
-  <string name="morphe_hide_cast_button_title">कास्ट बटन छुपाएं</string>
   <string name="morphe_hide_collapse_button_title">कोलैप्स बटन छुपाएं</string>
   <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन बटन छुपाएं</string>
   <string name="morphe_hide_player_control_buttons_background_title">प्लेयर नियंत्रण पृष्ठभूमि छिपाएं</string>
   <string name="morphe_hide_player_control_buttons_background_summary">वीडियो प्लेयर नियंत्रणों के चारों ओर डार्क शेडिंग छुपाता है</string>
   <string name="morphe_player_control_buttons_background_opacity_title">नियंत्रण बटनों की पृष्ठभूमि अपारदर्शिता</string>
   <string name="morphe_player_control_buttons_background_opacity_summary">प्लेयर नियंत्रण बटन और टाइम बार के पीछे की पृष्ठभूमि की अपारदर्शिता समायोजित करें (0 अदृश्य है, 100 अपारदर्शी है)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">पिछले और अगले बटन छुपाएं</string>
   <string name="morphe_hide_settings_button_title">सेटिंग्स बटन छुपाएं</string>
   <string name="morphe_hide_description_components_screen_title">वीडियो विवरण</string>
   <string name="morphe_hide_description_components_screen_summary">वीडियो विवरण में प्रदर्शित होने वाले घटकों को चुनें</string>
@@ -566,7 +531,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_snackbar_color_light_summary">लाइट थीम में स्नैकबार्ज़ का बैकग्राउंड कलर। टेक्स्ट काला या सफेद होगा, जो भी पढ़ने में आसान हो</string>
   <string name="morphe_custom_snackbar_stroke_color_title">बॉर्डर कलर</string>
   <string name="morphe_custom_snackbar_stroke_color_summary">स्नैकबार्ज़ के चारों ओर बॉर्डर का रंग। ट्रांसपेरेंट रंग से कोई बॉर्डर नहीं दिखता</string>
-  <string name="morphe_custom_snackbar_corner_radius_title">कॉर्नर रेडियस</string>
   <string name="morphe_custom_snackbar_corner_radius_summary">स्नैकबार का कॉर्नर रेडियस dp में</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">चैनल विज्ञापन श्वेतसूची</string>
@@ -581,22 +545,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">प्लेयर पॉपअप विज्ञापन छिपाएं</string>
   <string name="morphe_hide_self_sponsor_ads_title">स्वयं प्रायोजित कार्ड छुपाएं</string>
   <string name="morphe_hide_shopping_links_title">शॉपिंग लिंक छुपाएं</string>
-  <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छुपाएं</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube प्रीमियम प्रोमोशन छुपाएं</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
-  <string name="morphe_flyout_button_loading">लोड हो रहा है…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">वर्तमान चैनल:</string>
   <string name="morphe_channel_whitelist_add">व्हाइटलिस्ट में जोड़ें</string>
-  <string name="morphe_channel_whitelist_remove">हटाएं</string>
   <string name="morphe_channel_whitelist_channels_header">व्हाइटलिस्ट किए गए चैनल</string>
   <string name="morphe_channel_whitelist_empty">कोई भी चैनल व्हाइटलिस्ट नहीं किया गया</string>
   <string name="morphe_channel_whitelist_channel_added">चैनल को व्हाइटलिस्ट में जोड़ा गया</string>
   <string name="morphe_channel_whitelist_channel_removed">चैनल को व्हाइटलिस्ट से हटा दिया गया</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- Search dialog of comments search, channel search and playlist search. -->
-  <string name="morphe_search_dialog_search">खोजें</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">चैनल में खोजें</string>
   <string name="morphe_channel_search_summary">चैनल पृष्ठों पर केवल उस चैनल को खोजने के लिए एक दूसरा खोज बटन जोड़ता है</string>
@@ -604,7 +564,6 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">चैनल खोज परिणाम</string>
   <string name="morphe_channel_search_no_results">इस चैनल पर कुछ नहीं मिला</string>
   <string name="morphe_channel_search_failed">इस चैनल में खोज नहीं की जा सकी</string>
-  <string name="morphe_channel_search_videos">वीडियो</string>
   <string name="morphe_channel_search_posts">पोस्ट</string>
   <string name="morphe_channel_search_no_posts">इस चैनल पर कोई पोस्ट मेल नहीं खाता</string>
   <string name="morphe_channel_search_sort_relevance">प्रासंगिकता</string>
@@ -665,7 +624,6 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_language_title">पोस्ट अनुवाद भाषा</string>
   <string name="morphe_post_translate_flyout">अनुवाद करें</string>
   <string name="morphe_post_translate_flyout_original">मूल दिखाएं</string>
-  <string name="morphe_post_translate_started">अनुवाद हो रहा है…</string>
   <string name="morphe_post_translate_failed">पोस्ट का अनुवाद नहीं किया जा सका</string>
   <string name="morphe_post_translate_same_language">पोस्ट पहले से ही अनुवाद भाषा में है</string>
   <!-- interaction.onthego.onTheGoPatch -->
@@ -677,8 +635,6 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_panel_title">चलते-फिरते</string>
   <string name="morphe_on_the_go_audio_mode">ऑडियो मोड पर स्विच करें</string>
   <string name="morphe_on_the_go_video_mode">वीडियो मोड पर स्विच करें</string>
-  <string name="morphe_on_the_go_download">डाउनलोड करें</string>
-  <string name="morphe_on_the_go_queue">कतार</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask आइटम को फ़्लाईआउट मेनू में जोड़ें</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">फ़ीड फ़्लाईआउट मेनू में वीडियो सारांश आइटम जोड़ता है</string>
@@ -711,12 +667,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">व्यू काउंट के बगल में</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">मध्य दायां</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">ऊपर बायां</string>
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
+  <string name="morphe_ryd_video_details_dislikes">नापसंद</string>
   <!-- interaction.commentsearch.commentSearchPatch -->
   <string name="morphe_comment_search_title">कमेंट खोजें</string>
   <string name="morphe_comment_search_summary">केवल उन लोड किए गए कमेंट्स को दिखाने के लिए कमेंट्स में सर्च बटन पर टैप करें जिनमें खोजे गए सभी शब्द हों। किसी वाक्यांश को खोजने के लिए शब्दों को कोटेशन मार्क्स में रखें</string>
-  <string name="morphe_comment_search_dialog_title">कमेंट्स खोजें</string>
   <string name="morphe_comment_search_hint">खोजने के लिए शब्द</string>
-  <string name="morphe_comment_search_clear">साफ़ करें</string>
   <string name="morphe_comment_search_applied">सॉर्ट ऑर्डर बदलें या उन्हें खोजने के लिए कमेंट्स को फिर से खोलें</string>
   <string name="morphe_comment_search_cleared">सर्च साफ़ कर दिया गया है। सभी कमेंट्स दिखाने के लिए सॉर्ट ऑर्डर बदलें या कमेंट्स को फिर से खोलें</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -741,10 +697,8 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_options">सभी विकल्प</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts मेनू में डाउनलोड दिखाएं</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts प्लेयर के मेनू में डाउनलोड आइटम जोड़ता है</string>
-  <string name="morphe_shorts_download_flyout_title">डाउनलोड करें</string>
   <string name="morphe_feed_download_flyout_button_title">फ्लाईआउट डाउनलोड मेनू आइटम को फोर्स करें</string>
   <string name="morphe_feed_download_flyout_button_summary">उन फीड वीडियो के मेनू में डाउनलोड आइटम जोड़ता है जिनमें यह नहीं है</string>
-  <string name="morphe_download_force_4k_title">4K डाउनलोड उपलब्धता को ज़बरदस्ती लागू करें</string>
   <string name="morphe_download_force_4k_summary">1440p और 4K डाउनलोड की सुविधा देता है, भले ही YouTube यह तय करे कि यह डिवाइस उन्हें नहीं चला सकता</string>
   <string name="morphe_download_quality_about_title">1080p उपलब्ध नहीं है</string>
   <string name="morphe_download_quality_about_summary">यदि इन-ऐप डाउनलोड 1080p प्रदान नहीं करते हैं, तो Miscellaneous सेटिंग्स में \'Spoof device dimensions\' चालू करें</string>
@@ -793,11 +747,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_vot_voice_gender_male">पुरुष</string>
   <string name="morphe_vot_voice_gender_female">महिला</string>
   <string name="morphe_vot_tts_sample">यह रूप बदलने का समय है!</string>
+  <string name="morphe_vot_no_captions">इस वीडियो में अनुवाद करने के लिए कोई कैप्शन नहीं हैं</string>
   <string name="morphe_vot_http_error_title">अनुवाद उपलब्ध नहीं है</string>
   <string name="morphe_vot_http_error_message">"अनुवाद सेवा ने HTTP त्रुटि %s लौटाई है। आपके IP पते को संभवतः 24 घंटे तक के लिए दर-सीमित किया गया है।
 
 अनुवाद का उपयोग जारी रखने के लिए, सेटिंग्स में एक अलग अनुवाद प्रदाता पर स्विच करें या वीपीएन का उपयोग करें"</string>
-  <string name="morphe_vot_do_not_show_again">फिर से न दिखाएं</string>
   <string name="morphe_vot_export_api_key_warning">"आपकी सेटिंग्स में एक OpenRouter API कुंजी शामिल है।
 
 आपकी API कुंजी कभी भी साझा नहीं की जानी चाहिए। जो भी व्यक्ति इसके पास पहुंच रखता है, वह आपके OpenRouter क्रेडिट का उपयोग कर सकता है"</string>
@@ -830,8 +784,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_loop_video_range_label_end">समाप्त</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
   <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (खाली = वीडियो अंत)</string>
-  <string name="morphe_loop_video_range_set">सेट करें</string>
-  <string name="morphe_loop_video_range_clear">खाली करें</string>
   <string name="morphe_loop_video_range_toast_on">%1$s से %2$s लूपिंग</string>
   <string name="morphe_loop_video_range_invalid_time">अमान्य समय सीमा</string>
   <!-- interaction.loop.loopCountPatch -->
@@ -847,10 +799,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_loop_count_clear_dialog_title">सेव किए गए लूप काउंट साफ़ करें?</string>
   <string name="morphe_loop_count_clear_dialog_message">आपकी प्लेलिस्ट के वीडियो अपना लूप काउंट भूल जाएंगे, और जब कोई प्लेलिस्ट उन्हें चलाएगी तो Loop video अब चालू नहीं होगा</string>
   <string name="morphe_loop_count_clear_done">सेव किए गए लूप काउंट साफ़ कर दिए गए</string>
-  <string name="morphe_loop_count_flyout_name">लूप काउंट</string>
   <string name="morphe_loop_count_dialog_message">अगला वीडियो चलने से पहले वीडियो कितनी बार चलेगा, %1$s से %2$s तक। वीडियो को बिना किसी सीमा के लूप करने के लिए इसे खाली छोड़ दें।</string>
   <string name="morphe_loop_count_times">%s बार</string>
-  <string name="morphe_loop_count_no_limit">कोई सीमा नहीं</string>
   <string name="morphe_loop_count_decrease">कम बार</string>
   <string name="morphe_loop_count_increase">अधिक बार</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
@@ -904,11 +854,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_save_to_watch_later_success_toast">वीडियो को बाद में देखने की प्लेलिस्ट में सफलतापूर्वक सहेजा गया</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">यह वीडियो पहले से ही बाद में देखने की प्लेलिस्ट में सहेजा गया है</string>
   <string name="morphe_save_to_watch_later_error_toast">इस वीडियो को बाद में देखने की प्लेलिस्ट में सहेजा नहीं जा सकता</string>
-  <string name="morphe_save_to_watch_later_flyout_title">बाद में देखने के लिए सहेजें</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">प्लेयर सेटिंग फ्लाईआउट में बाद में देखने के लिए सेव करें बटन दिखाएँ</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">वीडियो सेटिंग फ्लाईआउट से वर्तमान में देखे जा रहे वीडियो को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\'बाद में देखें\' को प्लेलिस्ट पर रीडायरेक्ट करें</string>
-  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">बाद में देखें</string>
   <string name="morphe_queue_flyout_title">Morphe कतार में जोड़ें</string>
   <string name="morphe_queue_restore_title">सत्रों के बीच कतार बनाए रखें</string>
   <string name="morphe_queue_restore_summary">ऐप को पुनरारंभ करने के बाद कतार बनी रहती है</string>
@@ -920,17 +868,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_queue_type_entry_2">नेटिव कतार</string>
   <string name="morphe_queue_type_entry_3">Morphe कतार</string>
   <string name="morphe_queue_type_entry_4">Morphe क्लाइंट-साइड कतार</string>
-  <string name="morphe_local_queue_sheet_title">कतार</string>
   <string name="morphe_local_queue_open">कतार (%s)</string>
-  <string name="morphe_local_queue_clear">सभी साफ़ करें</string>
   <string name="morphe_local_queue_empty">कतार में कुछ नहीं है</string>
   <string name="morphe_local_queue_empty_hint">किसी भी वीडियो पर कतार में अगला चलाएं का उपयोग करें</string>
   <string name="morphe_local_queue_now_playing">अभी चल रहा है</string>
-  <string name="morphe_local_queue_play_next">कतार में अगला चलाएं</string>
-  <string name="morphe_local_queue_play_last">कतार में आखिर में चलाएं</string>
   <string name="morphe_local_queue_reorder">क्रम बदलें</string>
-  <string name="morphe_local_queue_remove">हटाएँ</string>
-  <string name="morphe_local_queue_added">कतार में जोड़ा गया</string>
   <string name="morphe_local_queue_unavailable">इस वीडियो को कतार में जोड़ नहीं सका</string>
   <string name="morphe_local_queue_playlist_unsupported">प्लेलिस्ट कतार में जोड़ी नहीं जा सकती</string>
   <string name="morphe_local_queue_full">कतार भरी हुई है</string>
@@ -950,12 +892,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_queue_manager_fetch_failed_create">क्यू बनाने में विफल</string>
   <string name="morphe_queue_manager_fetch_failed_remove">क्यू से हटाने में विफल</string>
   <string name="morphe_queue_manager_fetch_failed_save">क्यू सहेजने में विफल</string>
-  <string name="morphe_queue_manager_fetch_succeeded_add">क्यू में जोड़ा गया</string>
   <string name="morphe_queue_manager_fetch_succeeded_create">क्यू बनाया गया</string>
   <string name="morphe_queue_manager_fetch_succeeded_remove">क्यू से हटाया गया</string>
   <string name="morphe_queue_manager_fetch_succeeded_save">क्यू को %s में सहेजा गया</string>
   <string name="morphe_queue_manager_playlist_title">Morphe कतार</string>
-  <string name="morphe_queue_manager_add_to_queue">क्यू में जोड़ें</string>
   <string name="morphe_queue_manager_add_to_queue_and_open_queue">क्यू में जोड़ें और खोलें</string>
   <string name="morphe_queue_manager_add_to_queue_and_play_video">क्यू में जोड़ें और चलाएं</string>
   <string name="morphe_queue_manager_add_to_queue_and_reload_video">वीडियो जोड़ें और रीलोड करें</string>
@@ -975,14 +915,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_native_playlist_queue_saved_to">%s में सहेजा गया</string>
   <string name="morphe_native_playlist_queue_clear">कतार खाली करें</string>
   <string name="morphe_native_playlist_queue_cleared">कतार खाली की गई</string>
-  <string name="morphe_native_playlist_queue_title">कतार</string>
-  <string name="morphe_native_playlist_queue_last">आखिरी कतार में चलाएँ</string>
-  <string name="morphe_native_playlist_queue_next">अगला कतार में चलाएँ</string>
   <string name="morphe_native_playlist_queue_unavailable">YouTube कतार प्रदर्शित नहीं कर सका।</string>
   <string name="morphe_native_playlist_queue_not_ready">यह वीडियो के लिए कतार तैयार नहीं है। वीडियो प्लेयर खोलें और पुनः प्रयास करें।</string>
   <string name="morphe_native_playlist_queue_mix_choice">मिक्स कतार में जोड़ें या मिक्स देखें?</string>
   <string name="morphe_native_playlist_queue_watch_mix">देखें</string>
-  <string name="morphe_native_playlist_queue_add_mix">कतार में जोड़ें</string>
   <string name="morphe_native_playlist_queue_loading_mix">मिक्स लोड हो रहा है…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">लाइव अवतार से चैनल खोलें</string>
@@ -1042,7 +978,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_ignore_when_locked_summary">जब प्लेयर \'लॉक स्क्रीन\' से लॉक होता है तो स्वाइप जेस्चर अनदेखा किए जाते हैं</string>
   <string name="morphe_swipe_press_to_engage_title">दबाकर स्वाइप करने का जेस्चर सक्षम करें</string>
   <string name="morphe_swipe_press_to_engage_summary">स्वाइप जेस्चर को पहचानने से पहले दबाकर रखना आवश्यक है</string>
-  <string name="morphe_swipe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
   <string name="morphe_swipe_haptic_feedback_summary">स्वाइप जेस्चर शुरू करने के लिए दबाकर रखने पर वाइब्रेट करता है</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ब्राइटनेस को बचाएं और पुनर्स्थापित करें</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">फुलस्क्रीन मोड में प्रवेश करते/से बाहर निकलते समय चमक स्तर को याद रखता है</string>
@@ -1052,7 +987,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_overlay_timeout_title">स्वाइप ओवरले समय सीमा</string>
   <string name="morphe_swipe_overlay_timeout_summary">ओवरले कितने मिलीसेकंड तक दिखाई दे</string>
   <string name="morphe_swipe_overlay_background_opacity_title">स्वाइप ओवरले बैकग्राउंड अपारदर्शिता</string>
-  <string name="morphe_swipe_overlay_background_opacity_summary">ओवरले पृष्ठभूमि की पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">स्वाइप ओवरले ब्राइटनेस रंग</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">चमक नियंत्रण प्रगति बार का रंग सेट करें</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">स्वाइप ओवरले वॉल्यूम रंग</string>
@@ -1073,7 +1007,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_brightness_sensitivity_summary">उच्च मान प्रति चमक चरण के लिए अधिक स्वाइपिंग की आवश्यकता होती है</string>
   <string name="morphe_swipe_speed_sensitivity_title">स्पीड स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_speed_sensitivity_summary">उच्च मान प्रति स्पीड चरण के लिए अधिक स्वाइपिंग की आवश्यकता होती है</string>
-  <string name="morphe_swipe_speed_step_title">स्पीड स्टेप</string>
   <string name="morphe_swipe_speed_zone_height_title">स्पीड ज़ोन ऊंचाई</string>
   <string name="morphe_swipe_speed_zone_height_summary">प्लेयर ऊंचाई के प्रतिशत के रूप में स्पीड जेस्चर ज़ोन की ऊंचाई (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">स्पीड</string>
@@ -1099,11 +1032,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hold_gesture_press_to_swipe_toast">प्रेस टू स्वाइप चालू होने पर होल्ड जेस्चर का उपयोग नहीं किया जाता</string>
   <string name="morphe_hold_gesture_dialog_title">होल्ड जेस्चर चालू है</string>
   <string name="morphe_hold_gesture_dialog_turn_off">होल्ड जेस्चर बंद करें</string>
-  <string name="morphe_hold_gesture_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
   <string name="morphe_hold_gesture_haptic_feedback_summary">जब गति बदलती है और जब गति लॉक होती है तो वाइब्रेट करता है</string>
   <string name="morphe_hold_gesture_speed_swipe_title">गति बदलने के लिए अगल-बगल खींचें</string>
   <string name="morphe_hold_gesture_speed_swipe_summary">टैप करके होल्ड करने के बाद, धीमा चलाने के लिए बाईं ओर और तेज़ चलाने के लिए दाईं ओर खींचें। उंगली वापस आने तक, गति बदलती रहती है</string>
-  <string name="morphe_hold_gesture_speed_step_title">स्पीड स्टेप</string>
   <string name="morphe_hold_gesture_speed_sensitivity_title">ड्रैग संवेदनशीलता</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_1">कम</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_2">सामान्य</string>
@@ -1132,7 +1063,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hold_gesture_launcher_action_loop">वीडियो लूप करें</string>
   <string name="morphe_hold_gesture_launcher_action_loop_off">लूपिंग रोकें</string>
   <string name="morphe_hold_gesture_launcher_action_screenshot">फ्रेम सेव करें</string>
-  <string name="morphe_hold_gesture_launcher_action_watch_later">बाद में देखने के लिए सेव करें</string>
   <string name="morphe_hold_gesture_launcher_action_timestamp_url">वर्तमान समय पर लिंक कॉपी करें</string>
   <string name="morphe_hold_gesture_screen_unlock">अनलॉक करने के लिए टैप करें</string>
   <string name="morphe_hold_gesture_frame_saved">फ्रेम %s में सेव किया गया</string>
@@ -1146,6 +1076,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_captions_advanced_summary">कुकी और ट्रांसक्रिप्ट विकल्प</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">ऑटो कैप्शंस दृश्यता</string>
+  <string name="morphe_auto_captions_style_entry_default">डिफ़ॉल्ट</string>
   <string name="morphe_auto_captions_style_entry_1">हमेशा दिखाएं</string>
   <string name="morphe_auto_captions_style_entry_2">कभी भी नहीं दिखाएं</string>
   <string name="morphe_auto_captions_style_entry_3">जब अनम्यूट पर दिखाएं</string>
@@ -1173,7 +1104,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fix_transcript_title">ट्रांसक्रिप्ट को ठीक करें</string>
   <string name="morphe_fix_transcript_summary">एक पूर्व शर्त जांच विफलता को हल करता है जो ट्रांसक्रिप्ट को लोड होने से रोक सकता है</string>
   <!-- layout.captions.copyTranscriptPatch -->
-  <string name="morphe_copy_transcript_category_title">ट्रांसक्रिप्ट कॉपी करें</string>
   <string name="morphe_copy_transcript_title">ट्रांसक्रिप्ट कॉपी करें</string>
   <string name="morphe_copy_transcript_summary">ट्रांसक्रिप्ट पैनल में एक बटन जोड़ता है जो कैप्शन की भाषा में ट्रांसक्रिप्ट को कॉपी करता है</string>
   <string name="morphe_copy_transcript_timestamps_title">टाइमस्टैम्प शामिल करें</string>
@@ -1201,7 +1131,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_button_title">Shorts बटन छिपाएँ</string>
   <!-- 'Create' has no display name. Translate normally. -->
-  <string name="morphe_hide_create_button_title">बनाएं बटन छिपाएं</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">सदस्यताएँ बटन छुपाएं</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1209,10 +1138,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_show_search_button_title">खोज बटन दिखाएं</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">\"बाद में देखें\" बटन दिखाएं</string>
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-  <string name="morphe_watch_later_navigation_label">बाद में देखें</string>
-  <string name="morphe_show_settings_button_title">सेटिंग्स बटन दिखाएं</string>
-  <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
   <string name="morphe_show_settings_button_type_summary">सक्षम होने पर, टैप करने से Morphe सेटिंग्स खुलती हैं और लॉन्ग प्रेस करने से YouTube सेटिंग्स खुलती हैं, बदलने के लिए अक्षम करें</string>
   <string name="morphe_you_button_account_switcher_title">अकाउंट स्विचर शॉर्टकट</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
@@ -1221,9 +1146,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_buttons_order_summary">नविगेशन बार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <string name="morphe_swap_create_with_notifications_button_title">बनाएं बटन को सूचनाएँ बटन से बदलें</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Notifications बटन को नेविगेशन बार में और Create बटन को टूलबार में ले जाता है। यदि परिवर्तन प्रभावी नहीं होते हैं, तो Incognito मोड में स्विच करने का प्रयास करें</string>
-  <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल्स छिपाएं</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नए कंटेंट का डॉट छिपाएं</string>
-  <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"यह 'You' टैब सहित नेविगेशन बार को पूरी तरह से छिपा देता है।
 
 सेटिंग्स तक पहुँचने के लिए, General → Toolbar → Show Settings button के ज़रिए सेटिंग्स बटन को सक्षम करें"</string>
@@ -1243,9 +1166,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_style_entry_3">पारदर्शी</string>
   <string name="morphe_navigation_bar_style_entry_4">अपारदर्शी</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">हो सकता है कि यह स्टाइल आपके डिवाइस या YouTube वर्ज़न द्वारा समर्थित न हो, और इससे लेआउट संबंधी समस्याएं या क्रैश हो सकते हैं</string>
-  <string name="morphe_navigation_bar_glass_title">ग्लास नेविगेशन बार सक्षम करें</string>
   <string name="morphe_navigation_bar_glass_summary">नेविगेशन बार को एक फ्लोटिंग, राउंडेड, ट्रांसलूसेंट कैप्सूल के रूप में दिखाता है। ओपेक नेविगेशन बार स्टाइल के साथ उपलब्ध नहीं है</string>
-  <string name="morphe_navigation_bar_glass_opacity_title">ग्लास ओपेसिटी</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेविगेशन बार के पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
   <string name="morphe_navigation_bar_glass_round_title">राउंड ग्लास नेविगेशन बार</string>
   <string name="morphe_navigation_bar_glass_round_summary">ग्लास मिनीप्लेयर जैसे कोनों के बजाय, ग्लास नेविगेशन बार को राउंड सिरे देता है</string>
@@ -1255,14 +1176,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ग्लास नेविगेशन बार और स्क्रीन के निचले हिस्से या सिस्टम नेविगेशन के बीच की जगह को एडजस्ट करें</string>
   <string name="morphe_navigation_bar_glass_size_title">ग्लास नेविगेशन बार का आकार</string>
   <string name="morphe_navigation_bar_glass_size_summary">एक प्रिव्यू के साथ, ग्लास नेविगेशन बार की ऊंचाई, चौड़ाई और बटन स्पेसिंग को एडजस्ट करें। वे बटन जो स्क्रीन की चौड़ाई में फिट नहीं होते, वे छिप जाते हैं</string>
-  <string name="morphe_navigation_bar_glass_size_height">ऊंचाई</string>
-  <string name="morphe_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
-  <string name="morphe_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">दिखाए गए बटन: %2$s में से %1$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_companion_button_title">कंपैनियन बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_microphone_button_title">माइक्रोफ़ोन बटन छुपाएं</string>
-  <string name="morphe_hide_toolbar_search_button_title">खोज छिपाएं</string>
   <string name="morphe_toolbar_buttons_order_title">टूलबार बटन का क्रम</string>
   <string name="morphe_toolbar_buttons_order_summary">टूलबार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1279,14 +1195,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fullscreen_large_seekbar_title">फुलस्क्रीन में बड़ा सीकबार सक्षम करें</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_hide_shorts_category_title">Shorts बटन छिपाएं</string>
-  <string name="morphe_hide_shorts_channel_title">चैनल पेज में छुपाएं</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">होम फ़ीड और संबंधित वीडियो में छुपाएं</string>
-  <string name="morphe_hide_shorts_search_title">खोज परिणामों में छुपाएं</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">सदस्यता फ़ीड में छुपाएं</string>
   <string name="morphe_hide_shorts_video_description_title">वीडियो विवरण में छुपाएं</string>
-  <string name="morphe_hide_shorts_history_title">इतिहास में छुपाएं</string>
   <string name="morphe_hide_shorts_notifications_title">पुश नोटिफिकेशन में छुपाएं</string>
   <string name="morphe_shorts_player_screen_title">Shorts खिलाड़ी</string>
   <string name="morphe_shorts_player_screen_summary">Shorts प्लेयर में कौन‑कौन से घटक दिखाई दें, चुनें</string>
@@ -1299,7 +1212,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_shorts_green_screen_button_title">\'ग्रीन स्क्रीन\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_hashtag_button_title">हैशटैग बटन छिपाएं</string>
   <string name="morphe_hide_shorts_info_panel_title">इन्फो पैनल्स को छुपाएं</string>
-  <string name="morphe_hide_shorts_like_button_title">लाइक बटन छुपाएं</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">लाइक बटन का फव्वारा एनिमेशन छिपाएं</string>
   <string name="morphe_hide_shorts_live_preview_title">शॉर्ट्स लाइव पूर्वावलोकन छुपाएं</string>
@@ -1377,7 +1289,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">फ़ुलस्क्रीन मोड में वीडियो खोलें</string>
   <string name="morphe_open_videos_fullscreen_entry_1">अक्षम</string>
-  <string name="morphe_open_videos_fullscreen_entry_2">पोर्ट्रेट</string>
   <string name="morphe_open_videos_fullscreen_entry_3">लैंडस्केप</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
   <string name="morphe_fullscreen_video_scale_title">फुलस्क्रीन वीडियो स्केल</string>
@@ -1413,7 +1324,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_mute_video_button_title">म्यूट बटन दिखाएं</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेयर ओवरले अस्पष्टता</string>
-  <string name="morphe_player_overlay_opacity_summary">ओवरले पारदर्शिता स्तर समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">खोज बार</string>
   <string name="morphe_searchbar_type_entry_disabled">अक्षम</string>
@@ -1424,7 +1334,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_change_form_factor_title">डिवाइस लेआउट</string>
   <string name="morphe_change_form_factor_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_change_form_factor_entry_2">फ़ोन</string>
-  <string name="morphe_change_form_factor_entry_3">टैबलेट</string>
   <string name="morphe_change_form_factor_entry_4">ऑटोमोटिव</string>
   <string name="morphe_change_form_factor_user_dialog_message">"बदलाव इस प्रकार हैं:
 
@@ -1465,31 +1374,21 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_custom_music_package_name_title">म्यूज़िक ऐप पैकेज नाम</string>
   <string name="morphe_custom_music_package_name_summary">आपके इंस्टॉल किए गए संगीत ऐप का पैकेज नाम</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">स्टार्ट पेज</string>
-  <string name="morphe_change_start_page_entry_default">डिफ़ॉल्ट</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">सभी सदस्यताएँ</string>
   <string name="morphe_change_start_page_entry_browse">चैनल ब्राउज़ करें</string>
   <string name="morphe_change_start_page_entry_courses">कोर्स / सीखना</string>
-  <string name="morphe_change_start_page_entry_explore">एक्सप्लोर</string>
   <string name="morphe_change_start_page_entry_fashion">फ़ैशन और ब्यूटी</string>
   <string name="morphe_change_start_page_entry_gaming">गेमिंग</string>
-  <string name="morphe_change_start_page_entry_history">इतिहास</string>
-  <string name="morphe_change_start_page_entry_library">लाइब्रेरी</string>
   <string name="morphe_change_start_page_entry_liked_videos">पसंद किए गए वीडियो</string>
   <string name="morphe_change_start_page_entry_live">लाइव</string>
   <string name="morphe_change_start_page_entry_movies">फ़िल्में</string>
   <string name="morphe_change_start_page_entry_music">संगीत</string>
   <string name="morphe_change_start_page_entry_news">समाचार</string>
   <string name="morphe_change_start_page_entry_notifications">सूचनाएं</string>
-  <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट</string>
-  <string name="morphe_change_start_page_entry_search">खोज</string>
   <string name="morphe_change_start_page_entry_shopping">खरीदारी</string>
-  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">खेल</string>
-  <string name="morphe_change_start_page_entry_subscriptions">सदस्यताएँ</string>
   <string name="morphe_change_start_page_entry_trending">ट्रेंडिंग</string>
   <string name="morphe_change_start_page_entry_virtual_reality">वर्चुअल रियलिटी</string>
-  <string name="morphe_change_start_page_entry_watch_later">बाद में देखें</string>
   <string name="morphe_change_start_page_entry_your_clips">आपके क्लिप</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">स्टार्टअप पर फिर से शुरू करने को अक्षम करें</string>
@@ -1531,7 +1430,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयर में फिर से शुरू करने की सुविधा बंद करें</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'जारी रखें देखें\' मिनीप्लेयर को अक्षम करता है, एक YouTube प्रीमियम सुविधा जो ऐप शुरू होने पर दिखाई देती है।</string>
-  <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
   <string name="morphe_miniplayer_screen_summary">मिनीकृत प्लेयर को कस्टमाइज़ करें</string>
   <string name="morphe_miniplayer_not_available_title">अतिरिक्त मिनीप्लेयर</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube ने सभी अतिरिक्त मिनीप्लेयर हटा दिए हैं। अधिक मिनीप्लेयर प्रकारों को रिस्टोर करने के लिए, YouTube 21.28.208 या उससे पुराने वर्ज़न को पैच करें</string>
@@ -1547,7 +1445,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_miniplayer_type_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">न्यूनतम</string>
   <string name="morphe_miniplayer_type_entry_3">न्यूनतम 2</string>
-  <string name="morphe_miniplayer_type_entry_4">टैबलेट</string>
   <string name="morphe_miniplayer_type_entry_5">आधुनिक 1</string>
   <string name="morphe_miniplayer_type_entry_6">आधुनिक 2</string>
   <string name="morphe_miniplayer_type_entry_7">आधुनिक 3</string>
@@ -1566,7 +1463,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_miniplayer_width_dip_summary">शुरुआती ऑन-स्क्रीन साइज़ सेट करें, पिक्सेल में</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होना चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अस्पष्टता</string>
-  <string name="morphe_miniplayer_opacity_summary">ओवरले पारदर्शिता स्तर समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">बैक बटन फ़ीड से बाहर निकलता है</string>
   <string name="morphe_back_button_always_exits_feed_summary">बैक दबाने से हमेशा ऐप से बाहर निकलता है, फ़ीड के शीर्ष पर स्क्रॉल करने के बजाय</string>
@@ -1578,6 +1474,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
   <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>
+  <string name="morphe_hide_status_bar_tabletop_title">टेबलटॉप मोड में स्टेटस बार छिपाएं</string>
+  <string name="morphe_hide_status_bar_tabletop_summary">आधे मुड़े हुए डिवाइस के टेबलटॉप मोड में वीडियो देखते समय सिस्टम स्टेटस बार को छिपा देता है, जिसमें वीडियो ऊपरी आधे हिस्से में और प्लेबैक कंट्रोल निचले आधे हिस्से में होते हैं</string>
   <string name="morphe_hide_status_bar_avoid_cutout_title">प्लेयर को डिस्प्ले कटआउट के नीचे रखें</string>
   <string name="morphe_hide_status_bar_avoid_cutout_summary">जब स्टेटस बार छिपा होता है, तो यह पोर्ट्रेट वीडियो प्लेयर को डिस्प्ले कटआउट के नीचे ले जाता है, जिससे ऊपर एक खाली बार रह जाता है। वीडियो को कटआउट के पीछे स्क्रीन भरने देने के लिए इसे बंद करें</string>
   <string name="morphe_fix_status_bar_layout_title">स्टेटस बार से टॉप बार्स ढकने की समस्या ठीक करें</string>
@@ -1615,7 +1513,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_custom_branding_icon_entry_9">ओरिजिनल केक</string>
   <string name="morphe_custom_branding_icon_entry_10">ओरिजिनल मेटल</string>
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">हेडर लोगो</string>
   <string name="morphe_header_logo_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_header_logo_entry_2">नियमित</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
@@ -1650,7 +1547,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_dearrow_about_summary">"DeArrow क्लिकबेट शीर्षकों और थंबनेल को क्राउडसोर्स किए गए शीर्षकों और थंबनेल से बदल देता है जो अधिक सटीक और कम सनसनीखेज होते हैं। शीर्षक समुदाय द्वारा लिखे और वोट किए जाते हैं, और थंबनेल वीडियो से लिए गए फ्रेम होते हैं
 
 वीडियो हैश किए गए वीडियो आईडी के छोटे उपसर्ग द्वारा अनुरोध किए जाते हैं, इसलिए सर्वर यह नहीं बता सकता कि आप कौन सा वीडियो देख रहे हैं। यदि किसी वीडियो में DeArrow थंबनेल नहीं है, तो मूल या स्थिर कैप्चर दिखाया जाता है"</string>
-  <string name="morphe_dearrow_connection_toast_title">कनेक्शन त्रुटि अलर्ट दिखाएं</string>
   <string name="morphe_dearrow_connection_toast_summary">जब DeArrow सर्वर अनुपलब्ध हो तो एक सूचना दिखाता है</string>
   <string name="morphe_dearrow_api_url_title">API एंडपॉइंट</string>
   <string name="morphe_dearrow_api_url_summary">DeArrow थंबनेल कैश एंडपॉइंट का URL</string>
@@ -1672,7 +1568,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_dearrow_guidelines_popup_already_read">पहले से पढ़ लिया है</string>
   <string name="morphe_dearrow_guidelines_popup_open">मुझे दिखाएँ</string>
   <string name="morphe_dearrow_vote_title">DeArrow</string>
-  <string name="morphe_dearrow_vote_loading">लोड हो रहा है…</string>
   <string name="morphe_dearrow_vote_fetch_failed">इस वीडियो के शीर्षक और थंबनेल लोड नहीं किए जा सके</string>
   <string name="morphe_dearrow_vote_titles">शीर्षक</string>
   <string name="morphe_dearrow_vote_thumbnails">थंबनेल</string>
@@ -1686,11 +1581,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
   <string name="morphe_dearrow_vote_unverified">अनवेरिफ़ाइड</string>
   <string name="morphe_dearrow_vote_locked">लॉक्ड</string>
-  <string name="morphe_dearrow_vote_upvote">ऊपर वोट करें</string>
-  <string name="morphe_dearrow_vote_downvote">डाउन वोट करें</string>
   <string name="morphe_dearrow_vote_new_title">नया नाम</string>
   <string name="morphe_dearrow_vote_new_title_hint">नाम टाइप करें</string>
-  <string name="morphe_dearrow_vote_submit">जमा करें</string>
   <string name="morphe_dearrow_vote_new_thumbnail">नया थंबनेल</string>
   <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
   <string name="morphe_dearrow_vote_frame_step">%s सेकंड</string>
@@ -1706,18 +1598,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_dearrow_vote_failed_code">वोट सबमिट नहीं किया जा सका (स्टेटस कोड: %s)</string>
   <string name="morphe_dearrow_vote_failed_connection">वोट सबमिट नहीं किया जा सका। अपना कनेक्शन जांचें और फिर से प्रयास करें</string>
   <string name="morphe_dearrow_submitting_title">शीर्षक और थंबनेल सबमिट किए जा रहे हैं</string>
-  <string name="morphe_dearrow_vote_time_step_title">टाइम एडजस्ट करने का स्टेप</string>
   <string name="morphe_dearrow_vote_time_step_summary">थंबनेल सबमिट करते समय टाइम एडजस्ट करने वाले बटन से कितना आगे/पीछे करना है (मिलीसेकंड में)</string>
-  <string name="morphe_dearrow_vote_time_step_invalid">वैल्यू एक पॉजिटिव नंबर होना चाहिए</string>
-  <string name="morphe_dearrow_private_user_id_title">आपका प्राइवेट यूजर ID</string>
   <string name="morphe_dearrow_private_user_id_summary">SponsorBlock जैसा ही यूजर ID। इसे गोपनीय रखा जाना चाहिए। यह एक पासवर्ड की तरह है और इसे किसी के साथ साझा नहीं किया जाना चाहिए। यदि किसी के पास यह है, तो वे आपकी पहचान चुरा सकते हैं</string>
-  <string name="morphe_dearrow_private_user_id_invalid">प्राइवेट यूजर ID कम से कम 30 वर्णों का होना चाहिए</string>
-  <string name="morphe_dearrow_account_loading">लोड हो रहा है…</string>
   <string name="morphe_dearrow_account_connection_failure">अकाउंट का विवरण अस्थायी रूप से उपलब्ध नहीं है</string>
-  <string name="morphe_dearrow_account_username">आपका उपयोगकर्ता नाम: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_dearrow_account_username_change">अपना यूजरनेम बदलने के लिए यहां टैप करें। यूजरनेम SponsorBlock की तरह ही है</string>
-  <string name="morphe_dearrow_account_username_changed">उपयोगकर्ता नाम सफलतापूर्वक बदल गया</string>
-  <string name="morphe_dearrow_account_username_change_error">उपयोगकर्ता नाम बदलने में असमर्थ: स्थिति: %1$s %2$s</string>
   <string name="morphe_dearrow_account_titles">आपने &lt;b&gt;%s&lt;/b&gt; शीर्षक सबमिट किए हैं</string>
   <string name="morphe_dearrow_account_titles_summary">अपने शीर्षक देखने के लिए यहां टैप करें</string>
   <string name="morphe_dearrow_account_thumbnails">आपने &lt;b&gt;%s&lt;/b&gt; थंबनेल सबमिट किए हैं</string>
@@ -1771,7 +1655,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_video_delay_button_flyout_title">वीडियो विलंब मेनू दिखाएं</string>
   <string name="morphe_video_delay_dialog_input_hint">मिलीसेकंड में विलंब</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_video_effect_button_flyout_title">वीडियो प्रभाव मेनू दिखाएं</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">शॉर्ट्स गुणवत्ता याद रखें</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">सभी भविष्य के शॉर्ट्स पर अपनी मैन्युअल गुणवत्ता चयन लागू करता है</string>
@@ -1909,14 +1792,11 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_series_tracker_show_button_summary">वर्तमान वीडियो की श्रृंखला का अनुसरण करने या खोलने के लिए प्लेयर बटन जोड़ता है</string>
   <string name="morphe_series_tracker_record_followed_progress_title">अनुसरित-श्रृंखला प्रगति रिकॉर्ड करें</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">सहेजी गई सीरीज़ और बुकमार्क के लिए इस फ़ोन पर प्लेबैक रिकॉर्ड करें</string>
-  <string name="morphe_series_tracker_ui_cancel">रद्द करें</string>
-  <string name="morphe_series_tracker_ui_save">सेव करें</string>
   <string name="morphe_series_tracker_ui_save_bookmark">बुकमार्क सहेजें</string>
   <string name="morphe_series_tracker_ui_series_name">श्रृंखला का नाम</string>
   <string name="morphe_series_tracker_ui_series_options">श्रृंखला विकल्प</string>
   <string name="morphe_series_tracker_ui_library_options">लाइब्रेरी विकल्प</string>
   <string name="morphe_series_tracker_ui_refresh_episodes">एपिसोड रीफ़्रेश करें</string>
-  <string name="morphe_series_tracker_ui_rename">नाम बदलें</string>
   <string name="morphe_series_tracker_ui_open_playlist_in_youtube">YouTube में प्लेलिस्ट खोलें</string>
   <string name="morphe_series_tracker_ui_remove_from_library">लाइब्रेरी से हटाएं</string>
   <string name="morphe_series_tracker_ui_playlist_link_or_id">प्लेलिस्ट लिंक या ID</string>
@@ -1967,7 +1847,6 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_series_tracker_saved_position">सहेजा गया वीडियो · %s</string>
   <string name="morphe_series_tracker_follow">सीरीज़ फॉलो करें</string>
   <string name="morphe_series_tracker_view_series">सीरीज़ देखें</string>
-  <string name="morphe_series_tracker_continue">जारी रखें</string>
   <string name="morphe_series_tracker_start_here">यहाँ से शुरू करें</string>
   <string name="morphe_series_tracker_start_saved">शुरुआत बिंदु सहेजा गया</string>
   <string name="morphe_series_tracker_watched_to_here">यहाँ तक देखा गया</string>
@@ -2052,8 +1931,6 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_summary">वीडियो प्लेयर में एक ओवरले बटन दिखाता है। कमेंट्स दिखाने या छिपाने के लिए टैप करें, क्विक सेटिंग्स के लिए टैप करके रखें</string>
   <string name="morphe_niconico_comments_pip_title">पिक्चर-इन-पिक्चर में दिखाएं</string>
   <string name="morphe_niconico_comments_pip_summary">विंडो में फिट होने के लिए कमेंट्स को छोटा किया गया है</string>
-  <string name="morphe_niconico_comments_appearance_title">दिखावट</string>
-  <string name="morphe_niconico_comments_portrait_category_title">पोर्ट्रेट</string>
   <string name="morphe_niconico_comments_video_types_title">वीडियो प्रकार</string>
   <string name="morphe_niconico_comments_font_size_title">कमेंट फ़ॉन्ट आकार</string>
   <string name="morphe_niconico_comments_font_size_summary">कमेंट्स के टेक्स्ट का आकार (12-40 sp)</string>
@@ -2077,7 +1954,6 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_hide_crowded_summary">जब डिस्प्ले एरिया पूरा भर जाता है, तो अन्य कमेंट्स के ऊपर ओवरलैप होने के बजाय नए कमेंट्स छिपा दिए जाते हैं</string>
   <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
   <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
-  <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>
   <string name="morphe_niconico_comments_max_refresh_rate_title">अधिकतम रिफ्रेश रेट</string>
   <string name="morphe_niconico_comments_max_refresh_rate_summary">कमेंट्स चलते समय उपयोग की जाने वाली उच्चतम डिस्प्ले रिफ्रेश रेट। कम मान कम बैटरी का उपयोग करते हैं</string>
   <string name="morphe_niconico_comments_live_streams_title">लाइव स्ट्रीम पर दिखाएं</string>
@@ -2090,13 +1966,11 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_timed_comments_summary">बिना चैट वाले वीडियो पर, वे शीर्ष टिप्पणियाँ जिनमें 1:23 जैसा समय होता है, उसी समय पर दिखाई देती हैं</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">चैट रीप्ले के साथ समयबद्ध टिप्पणियाँ दिखाएं</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">लाइव स्ट्रीम और प्रीमियर के रीप्ले पर, समयबद्ध टिप्पणियाँ चैट के साथ भी दिखाई जाती हैं</string>
-  <string name="morphe_niconico_comments_all_settings">सभी सेटिंग्स</string>
   <string name="morphe_niconico_comments_reset_title">इन सेटिंग्स को रीसेट करें?</string>
   <string name="morphe_live_chat_translate_screen_title">लाइव चैट अनुवाद</string>
   <string name="morphe_live_chat_translate_screen_summary">लाइव चैट और लाइव चैट रीप्ले संदेशों का अनुवाद करें</string>
   <string name="morphe_live_chat_translate_title">लाइव चैट का अनुवाद करें</string>
   <string name="morphe_live_chat_translate_summary">लाइव चैट और लाइव चैट रीप्ले संदेशों का उनके स्क्रीन पर आने के बाद अनुवाद करता है</string>
-  <string name="morphe_live_chat_translate_language_title">अनुवाद भाषा</string>
   <string name="morphe_live_chat_translate_exclude_title">अपवादित भाषाएँ</string>
   <string name="morphe_live_chat_translate_exclude_summary">कोमा से अलग किए गए भाषा कोड जैसे id,en। इन भाषाओं के संदेशों का अनुवाद नहीं किया जाता है</string>
   <string name="morphe_live_chat_translate_provider_google">गूगल ट्रांसलेट</string>
@@ -2107,7 +1981,6 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_live_chat_translate_copy_button_summary">हर चैट संदेश में एक छोटा कॉपी बटन जोड़ता है</string>
   <string name="morphe_live_chat_translate_copied">संदेश क्लिपबोर्ड पर कॉपी किया गया</string>
   <string name="morphe_live_chat_translate_style_title">अनुवाद शैली</string>
-  <string name="morphe_live_chat_translate_style_translated_only">केवल अनुवादित</string>
   <string name="morphe_live_chat_translate_style_original_and_translated">मूल (अनुवादित)</string>
   <string name="morphe_live_chat_translate_style_translated_and_original">(अनुवादित) मूल</string>
   <string name="morphe_live_chat_translate_bold_title">अनुवादित टेक्स्ट बोल्ड करें</string>
@@ -2118,10 +1991,8 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_live_chat_translate_color_summary">अनुवादित टेक्स्ट का हेक्स रंग सेट करें</string>
   <string name="morphe_live_chat_translate_max_length_title">अधिकतम संदेश लंबाई</string>
   <string name="morphe_live_chat_translate_max_length_summary">लंबे संदेश बिना अनुवाद के दिखाए जाते हैं</string>
-  <string name="morphe_live_chat_translate_max_length_no_limit">कोई सीमा नहीं</string>
   <string name="morphe_ghost_play_screen_title">घोस्ट मोड</string>
   <string name="morphe_ghost_play_screen_summary">वॉच हिस्ट्री या रिकमेंडेशन को प्रभावित किए बिना वीडियो देखें</string>
-  <string name="morphe_ghost_play_cat_general_title">सामान्य</string>
   <string name="morphe_ghost_play_cat_buttons_title">बटन</string>
   <string name="morphe_ghost_play_cat_rules_title">ऑटो-घोस्ट नियम</string>
   <string name="morphe_ghost_play_cat_history_title">स्थानीय इतिहास</string>
@@ -2170,11 +2041,8 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_ghost_play_timer_set_toast">%d मिनट के लिए Ghost mode सक्रिय है</string>
   <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">टाइमर साफ़ कर दिया गया — Ghost mode चालू रहता है</string>
   <string name="morphe_ghost_play_timer_invalid_toast">1 और 720 मिनट के बीच की अवधि दर्ज करें</string>
-  <string name="morphe_ghost_play_dialog_title">घोस्ट मोड</string>
   <string name="morphe_ghost_play_state_on">चालू करें</string>
   <string name="morphe_ghost_play_state_off">बंद</string>
-  <string name="morphe_ghost_play_close">बंद करें</string>
-  <string name="morphe_ghost_play_open_settings">सभी सेटिंग्स</string>
   <string name="morphe_ghost_play_quick_power_hint">Ghost mode को टॉगल करने के लिए टैप करें</string>
   <string name="morphe_ghost_play_quick_timer_title">समयबद्ध Ghost mode</string>
   <string name="morphe_ghost_play_quick_timer_sub">अवधि चुनने के लिए टैप करें</string>
@@ -2182,9 +2050,7 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_ghost_play_quick_timer_running_sub">पूरा होने पर स्वचालित रूप से सामान्य मोड पर वापस आ जाता है</string>
   <string name="morphe_ghost_play_quick_timer_change">समय बदलें</string>
   <string name="morphe_ghost_play_quick_timer_cancel_keep_on">टाइमर साफ़ करें (ON रखें)</string>
-  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
   <string name="morphe_ghost_play_timer_custom_hint">कस्टम मिनट (1–720)…</string>
-  <string name="morphe_ghost_play_timer_custom_set">सेट करें</string>
   <string name="morphe_ghost_play_quick_channel_state_on">इस चैनल के लिए ऑटो-घोस्ट ON है</string>
   <string name="morphe_ghost_play_quick_channel_state_off">इस चैनल के लिए ऑटो-घोस्ट OFF है</string>
   <string name="morphe_ghost_play_quick_channel_count">%d चैनल कॉन्फ़िगर किए गए</string>
@@ -2196,23 +2062,18 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_ghost_play_history_search_hint">वीडियो शीर्षक या चैनल द्वारा फ़िल्टर करें…</string>
   <string name="morphe_ghost_play_history_no_match">लोकल घोस्ट इतिहास में कोई मेल खाने वाले वीडियो नहीं मिले</string>
   <string name="morphe_ghost_play_history_empty">अभी तक कोई लोकल घोस्ट इतिहास नहीं है</string>
-  <string name="morphe_ghost_play_history_clear_all">सभी साफ़ करें</string>
   <string name="morphe_ghost_play_history_clear_confirm_title">लोकल Ghost हिस्ट्री मिटाएं?</string>
   <string name="morphe_ghost_play_history_clear_confirm_message">इससे डिवाइस पर सेव की गई सभी Ghost मोड एंट्रीज़ हट जाएंगी और इसे वापस नहीं लाया जा सकता।</string>
   <string name="morphe_ghost_play_history_cleared_toast">लोकल Ghost हिस्ट्री मिटा दी गई</string>
   <string name="morphe_ghost_play_history_item_removed_toast">लोकल Ghost हिस्ट्री से हटा दिया गया</string>
-  <string name="morphe_ghost_play_channels_manager_title">ऑटो-घोस्ट चैनल</string>
   <string name="morphe_ghost_play_channels_tab_saved">जोड़ा गया (%d)</string>
   <string name="morphe_ghost_play_channels_tab_search">खोजें और जोड़ें</string>
   <string name="morphe_ghost_play_channels_filter_hint">जोड़े गए चैनलों को नाम, @हैंडल या विषय द्वारा फ़िल्टर करें…</string>
   <string name="morphe_ghost_play_channels_empty">अभी तक कोई चैनल नहीं जोड़ा गया है। नाम, @handle, या URL के द्वारा चैनल खोजने के लिए \"Search &amp; Add\" पर स्विच करें।</string>
   <string name="morphe_ghost_play_channels_filter_no_match">कोई भी जोड़ा गया चैनल आपके फ़िल्टर से मेल नहीं खाता</string>
   <string name="morphe_ghost_play_channels_add_current">चल रहा है: %s</string>
-  <string name="morphe_ghost_play_channels_add_button">जोड़ें</string>
   <string name="morphe_ghost_play_channels_added_badge">जोड़ा गया</string>
-  <string name="morphe_ghost_play_channels_delete_button">हटाएँ</string>
   <string name="morphe_ghost_play_channels_search_hint">चैनल का नाम, @handle, या URL…</string>
-  <string name="morphe_ghost_play_channels_search_button">खोजें</string>
   <string name="morphe_ghost_play_channels_search_guide">चैनल का नाम, @handle, या YouTube चैनल URL दर्ज करें और Search पर टैप करें</string>
   <string name="morphe_ghost_play_channels_searching">YouTube चैनल खोजे जा रहे हैं…</string>
   <string name="morphe_ghost_play_channels_search_error">खोज विफल रही। अपना कनेक्शन जांचें और फिर से प्रयास करें।</string>
@@ -2221,4 +2082,29 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_ghost_play_channels_recent_videos">हालिया वीडियो</string>
   <string name="morphe_ghost_play_channels_loading_details">हालिया वीडियो लोड हो रहे हैं…</string>
   <string name="morphe_ghost_play_channels_no_recent_videos">कोई हालिया वीडियो नहीं मिले (पुनः प्रयास करने के लिए टैप करें)</string>
+  <!-- Shared YouTube strings -->
+  <string name="morphe_all_settings">सभी सेटिंग्स</string>
+  <string name="morphe_clear_all">सभी साफ़ करें</string>
+  <string name="morphe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
+  <string name="morphe_hide_dislike_button_title">डिस्लाइक बटन छुपाएं</string>
+  <string name="morphe_hide_in_channel_page_title">चैनल पेज में छुपाएं</string>
+  <string name="morphe_hide_in_search_results_title">खोज परिणामों में छुपाएं</string>
+  <string name="morphe_hide_in_watch_history_title">इतिहास में छुपाएं</string>
+  <string name="morphe_hide_like_button_title">लाइक बटन छुपाएं</string>
+  <string name="morphe_no_limit">कोई सीमा नहीं</string>
+  <string name="morphe_opacity_summary">पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
+  <string name="morphe_portrait">पोर्ट्रेट</string>
+  <string name="morphe_queue_add_to_queue">कतार में जोड़ें</string>
+  <string name="morphe_queue_added">कतार में जोड़ा गया</string>
+  <string name="morphe_queue_play_last">कतार में आखिर में चलाएं</string>
+  <string name="morphe_queue_play_next">कतार में अगला चलाएं</string>
+  <string name="morphe_queue_title">कतार</string>
+  <string name="morphe_save_to_watch_later_title">बाद में देखने के लिए सहेजें</string>
+  <string name="morphe_search">खोजें</string>
+  <string name="morphe_set">सेट करें</string>
+  <string name="morphe_shorts_title">Shorts</string>
+  <string name="morphe_speed_step_title">गति चरण</string>
+  <string name="morphe_tablet">टैबलेट</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later">बाद में देखें</string>
 </resources>

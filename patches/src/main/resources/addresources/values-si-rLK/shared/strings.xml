@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <!-- String is also duplicated in Reddit import / export preference -->
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <!-- Periods the contributors are listed for, picked from a menu in the header -->
   <!-- Spoken name of the button in the header that opens the menu of periods -->
@@ -29,9 +28,6 @@ Second \"item\" text"</string>
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->
-  <!-- Keep short, shown as a badge and as a button. -->
-  <!-- Keep short, shown as a badge and as a button. -->
-  <!-- Keep short, shown as a badge and as a button. -->
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -41,4 +37,6 @@ Second \"item\" text"</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <!-- misc.announcements.patchesUpdateNoticePatch -->
   <!-- misc.crashlog.crashLogPatch -->
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
 </resources>

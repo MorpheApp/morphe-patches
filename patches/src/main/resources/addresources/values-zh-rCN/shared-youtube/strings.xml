@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">自定义</string>
-  <string name="morphe_custom_branding_icon_title">应用图标</string>
   <string name="morphe_custom_branding_icon_entry_1">原始</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe 黑色</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe 深色</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">您的观看历史记录未保存。&lt;br&gt;&lt;br&gt;这很可能是由 DNS 广告拦截器或网络代理造成的。&lt;br&gt;&lt;br&gt;要解决此问题，请将 &lt;b&gt;s.youtube.com&lt;/b&gt; 添加到白名单或关闭所有 DNS 广告拦截器和代理</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再显示</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">欺骗视频流</string>
   <string name="morphe_spoof_video_streams_screen_summary">配置客户端欺骗以防止播放问题</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 在 Android System WebView 更新至最新版本前，视频播放可能会失败。
 
 点击“确定”以打开 Android System WebView。"</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">不再显示</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView 未安装。请安装它以修复视频播放</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">通知媒体控件</string>
   <string name="morphe_notification_media_screen_summary">自定义锁屏和通知面板上显示的播放控件</string>
-  <string name="morphe_hide_notification_media_prev_next_title">隐藏上一个和下一个按钮</string>
   <string name="morphe_hide_notification_media_prev_next_summary">在媒体通知、锁屏和耳机控制中隐藏上一个和下一个按钮</string>
   <string name="morphe_disable_notification_media_seekbar_title">禁用进度条</string>
   <string name="morphe_disable_notification_media_seekbar_summary">防止在锁屏和通知面板上拖动进度条</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">恢复默认值</string>
   <string name="morphe_video_effects_custom_add_title">新效果</string>
   <string name="morphe_video_effects_custom_edit_title">编辑效果</string>
-  <string name="morphe_video_effects_custom_name_hint">名称</string>
   <string name="morphe_video_effects_custom_name_empty">请输入效果名称</string>
   <string name="morphe_video_effects_custom_name_exists">已存在同名效果</string>
-  <string name="morphe_video_effects_custom_copy_code">复制代码</string>
   <string name="morphe_video_effects_custom_error_title">效果出错</string>
   <string name="morphe_video_effects_custom_error_message">"在代码修复前，视频将不显示效果。请将此错误提供给编写该代码的 AI：
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 请要求 AI 提供更短的代码，或分部分粘贴代码。"</string>
   <string name="morphe_video_effects_custom_copy_error">复制错误</string>
   <string name="morphe_video_effects_custom_save_anyway">仍然保存</string>
-  <string name="morphe_video_effects_custom_delete">删除</string>
   <string name="morphe_video_effects_custom_delete_title">删除效果？</string>
   <string name="morphe_video_effects_custom_delete_message">%s 将被删除。</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">要使用此功能，请将“伪造视频流”更改为除“Android Studio”和“Android VR 降级”之外的任何客户端</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">净化分享链接</string>
-  <string name="morphe_sanitize_sharing_links_summary">从共享链接中删除跟踪查询参数</string>
   <string name="morphe_replace_music_with_youtube_title">将分享链接更改为 youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">将共享链接中的music.youtube.com替换为youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">将分享链接更改为 youtu.be</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">字体</string>
   <string name="morphe_custom_font_type_entry_default">默认</string>
   <string name="morphe_custom_font_type_entry_system">设备系统字体</string>
-  <string name="morphe_custom_font_type_entry_custom">自定义字体文件</string>
   <string name="morphe_custom_font_file_title">自定义字体文件</string>
   <string name="morphe_custom_font_file_summary">选择 TTF 或 OTF 字体文件</string>
   <string name="morphe_custom_font_file_invalid">所选文件不是 TTF 或 OTF 字体</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">菜单呈现为覆盖在背后模糊内容之上的磨砂玻璃效果</string>
   <string name="morphe_glass_menus_title">启用玻璃菜单</string>
   <string name="morphe_glass_menus_summary">将菜单和底部工作表显示为磨砂玻璃效果，并模糊其背后的内容</string>
-  <string name="morphe_glass_menus_opacity_title">玻璃不透明度</string>
   <string name="morphe_glass_menus_opacity_summary">菜单覆盖模糊内容的程度（0 为透明，100 为不透明）</string>
   <string name="morphe_glass_menus_blur_title">模糊</string>
   <string name="morphe_glass_menus_blur_summary">菜单背后内容的模糊程度</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">以点赞数量的百分比形式显示点踩数，而不是数字</string>
   <string name="morphe_ryd_estimated_like_title">显示估计的点赞数</string>
   <string name="morphe_ryd_estimated_like_summary">在创作者禁用点赞的视频上显示估计的点赞数量</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">显示连接错误提示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">当 Return YouTube Dislike 服务器不可用时显示通知</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike 恢复了 YouTube 在 2021 年隐藏的不喜欢数量。这些数量来自移除前存档的数据，较新视频的数量则根据其用户的投票估算，因此它们只是近似值，并且每隔几天更新一次
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遇到客户端速率限制</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">遇到客户端速率限制 %s 次</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s 毫秒</string>
-  <string name="morphe_navigation_bar_screen_title">导航栏</string>
   <string name="morphe_navigation_bar_screen_summary">选择在底部导航栏中显示哪些按钮</string>
   <string name="morphe_toolbar_screen_title">工具栏</string>
   <string name="morphe_toolbar_screen_summary">选择在工具栏中显示哪些组件</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 秒</string>
+  <string name="morphe_duration_2s">2 秒</string>
+  <string name="morphe_duration_3s">3 秒</string>
+  <string name="morphe_duration_4s">4 秒</string>
+  <string name="morphe_duration_5s">5 秒</string>
+  <string name="morphe_duration_6s">6 秒</string>
+  <string name="morphe_duration_7s">7 秒</string>
+  <string name="morphe_duration_8s">8 秒</string>
+  <string name="morphe_duration_9s">9 秒</string>
+  <string name="morphe_duration_10s">10 秒</string>
+  <string name="morphe_change_start_page_entry_default">默认</string>
+  <string name="morphe_change_start_page_entry_explore">探索</string>
+  <string name="morphe_change_start_page_entry_history">历史记录</string>
+  <string name="morphe_change_start_page_entry_library">媒体库</string>
+  <string name="morphe_change_start_page_entry_playlists">播放列表</string>
+  <string name="morphe_change_start_page_entry_search">搜索</string>
+  <string name="morphe_change_start_page_entry_subscriptions">订阅</string>
+  <string name="morphe_change_start_page_title">启动页</string>
+  <string name="morphe_action_buttons_screen_title">操作按钮</string>
+  <string name="morphe_comments_screen_title">评论</string>
+  <string name="morphe_feed_screen_title">订阅源</string>
+  <string name="morphe_flyout_menu_screen_title">弹出菜单</string>
+  <string name="morphe_general_title">常规</string>
+  <string name="morphe_miniplayer_screen_title">小型播放器</string>
+  <string name="morphe_player_screen_title">播放器</string>
+  <string name="morphe_video_screen_title">视频</string>
+  <string name="morphe_appearance_title">外观</string>
+  <string name="morphe_cancel">取消</string>
+  <string name="morphe_comments_screen_summary">选择在评论区显示哪些组件</string>
+  <string name="morphe_copy_code">复制代码</string>
+  <string name="morphe_corner_radius_title">圆角半径</string>
+  <string name="morphe_do_not_show_again">不再显示</string>
+  <string name="morphe_download_force_4k_title">强制 4K 下载可用性</string>
+  <string name="morphe_glass_opacity_title">玻璃不透明度</string>
+  <string name="morphe_header_logo_title">标题logo</string>
+  <string name="morphe_hide_action_bar_title">隐藏操作栏</string>
+  <string name="morphe_hide_cast_button_title">隐藏投屏按钮</string>
+  <string name="morphe_hide_comments_button_title">隐藏评论按钮</string>
+  <string name="morphe_hide_comments_community_guidelines_title">隐藏社区准则</string>
+  <string name="morphe_hide_comments_emoji_button_title">隐藏 Emoji 按钮</string>
+  <string name="morphe_hide_comments_gif_button_title">隐藏 GIF 按钮</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">隐藏评论和回复中附带的 GIF 和图片</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">隐藏 GIF 和图片</string>
+  <string name="morphe_hide_comments_info_button_title">隐藏信息按钮</string>
+  <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
+  <string name="morphe_hide_horizontal_shelves_title">隐藏横排展示架</string>
+  <string name="morphe_hide_like_dislike_button_title">隐藏「顶」和「踩」按钮</string>
+  <string name="morphe_hide_like_dislike_buttons_title">隐藏「顶」和「踩」按钮</string>
+  <string name="morphe_hide_navigation_bar_title">隐藏导航栏</string>
+  <string name="morphe_hide_navigation_button_labels_title">隐藏导航栏按钮标签</string>
+  <string name="morphe_hide_previous_next_buttons_title">隐藏上一个 &amp; 下一个按钮</string>
+  <string name="morphe_hide_search_button_title">隐藏搜索按钮</string>
+  <string name="morphe_hide_translate_button_title">隐藏翻译按钮</string>
+  <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
+  <string name="morphe_loading">正在加载…</string>
+  <string name="morphe_name">名称</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">按钮间距</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">显示按钮：%1$s / %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">高度</string>
+  <string name="morphe_navigation_bar_glass_size_width">最大宽度</string>
+  <string name="morphe_navigation_bar_glass_title">启用玻璃导航栏</string>
+  <string name="morphe_positive_number_invalid">值必须是正数</string>
+  <string name="morphe_private_user_id_invalid">私人用户 ID 必须至少 30 个字符长</string>
+  <string name="morphe_private_user_id_title">您的私人用户 ID</string>
+  <string name="morphe_rename">重命名</string>
+  <string name="morphe_show_settings_button_title">显示设置按钮</string>
+  <string name="morphe_show_settings_button_type_title">设置按钮操作</string>
+  <string name="morphe_show_video_effect_menu_title">显示视频效果菜单</string>
+  <string name="morphe_submit">提交</string>
+  <string name="morphe_time_adjustment_step_title">时间调整步长</string>
+  <string name="morphe_toast_on_connection_error_title">显示连接错误通知</string>
+  <string name="morphe_toast_on_skip_title">显示跳过通知</string>
+  <string name="morphe_translated_only">仅限已翻译</string>
+  <string name="morphe_translating">正在翻译……</string>
+  <string name="morphe_translation_language_title">翻译目标语言</string>
+  <string name="morphe_username_change_unknown_error">无法更改用户名：状态：%1$s %2$s</string>
+  <string name="morphe_username_changed">用户名称修改成功</string>
+  <string name="morphe_username_html">您的用户名: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">视频</string>
+  <string name="morphe_vote_downvote">反对票</string>
+  <string name="morphe_vote_upvote">赞成票</string>
 </resources>

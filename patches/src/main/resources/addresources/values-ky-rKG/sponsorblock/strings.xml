@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock\'ту күйгүзүү</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock — бул YouTube видеолорунун жагымсыз бөлүктөрүн аттап өтүү үчүн элдик система</string>
-  <string name="morphe_sb_appearance_category_title">Сырткы көрүнүш</string>
   <string name="morphe_sb_voting_button_title">Добуш берүү баскычын көрсөтүү</string>
   <string name="morphe_sb_voting_button_summary">Бөлүктөргө колдоо же каршы добуш берүү баскычын кошот</string>
   <string name="morphe_sb_square_layout_title">Квадраттуу макетти колдонуу</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">«Аттоо» баскычын бүтүндөй сегмент бою көрсөтүүнүн ордуна, бир нече секунддан кийин жашырат</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">«Аттоо» баскычынын көрсөтүлүү убактысы</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">«Аттоо» баскычы канча убакытка көрүнүп турушу керектигин белгилеңиз</string>
-  <string name="morphe_sb_toast_on_skip_title">Аттоо жөнүндө билдирүүнү көрсөтүү</string>
   <string name="morphe_sb_toast_on_skip_summary">Сегмент автоматтык түрдө аттоолгондо билдирүүнү көрсөтөт</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Аттоо билдирүүсүнүн көрсөтүлүү убактысы</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Жокко чыгаруу билдирүүсү канча убакытка көрүнүп турушу керектигин белгилеңиз</string>
-  <string name="morphe_sb_duration_1s">1 секунд</string>
-  <string name="morphe_sb_duration_2s">2 секунд</string>
-  <string name="morphe_sb_duration_3s">3 секунд</string>
-  <string name="morphe_sb_duration_4s">4 секунд</string>
-  <string name="morphe_sb_duration_5s">5 секунд</string>
-  <string name="morphe_sb_duration_6s">6 секунд</string>
-  <string name="morphe_sb_duration_7s">7 секунд</string>
-  <string name="morphe_sb_duration_8s">8 секунд</string>
-  <string name="morphe_sb_duration_9s">9 секунд</string>
-  <string name="morphe_sb_duration_10s">10 секунд</string>
   <string name="morphe_sb_video_length_without_segments_title">Видеонун узундугун сегменттерсиз көрсөтүү</string>
   <string name="morphe_sb_video_length_without_segments_summary">Издөө тилкесинде көрсөтүлгөн видеонун жалпы узактыгынан бардык сегменттерди кемитти</string>
   <string name="morphe_sb_create_segment_category_title">Жаңы сегменттерди түзүү</string>
   <string name="morphe_sb_create_new_segment_title">\'Жаңы сегмент түзүү\' баскычын көрсөтүү</string>
   <string name="morphe_sb_create_new_segment_summary">Видео плеерге жаңы SponsorBlock сегменттерин жөнөтүүгө мүмкүндүк берүүчү баскычты кошот</string>
-  <string name="morphe_sb_create_new_segment_step_title">Убакытты жөндөө кадамы</string>
   <string name="morphe_sb_create_new_segment_step_summary">Убакытты жөндөө баскычтарынын издөө өлчөмү (миллисекундаларда)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Маани оң сан болушу керек</string>
   <string name="morphe_sb_guidelines_title">Жөнөтүү боюнча колдонмо</string>
   <string name="morphe_sb_guidelines_summary">Колдонмодо жаңы сегменттерди түзүү боюнча эрежелер жана кеңештер камтылган</string>
   <string name="morphe_sb_guidelines_popup_title">Эрежелерди аткарыңыз</string>
   <string name="morphe_sb_guidelines_popup_content">Жаңы бөлүктөрдү түзүүдөн мурун SponsorBlock колдонмолору менен таанышыңыз</string>
   <string name="morphe_sb_guidelines_popup_already_read">Мурун окулган</string>
   <string name="morphe_sb_guidelines_popup_open">Көрсөтүңүз</string>
-  <string name="morphe_sb_general_title">Жалпы</string>
   <string name="morphe_sb_offline_segments_title">Жүктөлгөн видеолордун сегменттерин сактоо</string>
   <string name="morphe_sb_offline_segments_summary">Оффлайн режиминде жүктөлгөн видеолордун сегменттерин аттоо мүмкүнчүлүгүн берет</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Байланыш катасы боюнча эскертүүлөрдү көрсөтүү</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock сервери жеткиликсиз болгондо билдирүүнү көрсөтөт</string>
   <string name="morphe_sb_track_skip_count_title">Аттоо санын көзөмөлдөөнү күйгүзүү</string>
   <string name="morphe_sb_track_skip_count_summary">Канча убакыт үнөмдөлгөнүн көзөмөлдөө үчүн өткөрүп жиберүү сандарын SponsorBlock лидерлер тактасына жөнөтөт</string>
   <string name="morphe_sb_min_segment_duration_title">Сегменттин минималдуу узактыгы</string>
   <string name="morphe_sb_min_segment_duration_summary">Бул мааниден (секунда менен) кыска сегменттер көрсөтүлбөйт же атталып өтүлбөйт</string>
   <string name="morphe_sb_min_segment_duration_invalid">Убакыттын туура эмес узактыгы</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Сиздин жеке колдонуучу ID-ңиз</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Бул купуя сакталышы керек. Бул сырсөзгө окшош жана эч ким менен бөлүшпөө керек. Эгерде кимдир бирөө муну алса, алар сиздин атыңыздан иш алып барышы мүмкүн</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Колдонуучунун купуя ID\'си кеминде 30 белгиден турушу керек</string>
   <string name="morphe_sb_api_url_title">API URL дарегин өзгөртүү</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock серверге суроо-жооп жасоо үчүн колдонгон дарек</string>
   <string name="morphe_sb_channel_whitelist_title">Каналдардын ак тизмеси</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL жарамсыз</string>
   <string name="morphe_sb_api_url_changed">API URL өзгөрдү</string>
   <string name="morphe_sb_settings_ie_title">Орнотууларды импорттоо / экспорттоо</string>
-  <string name="morphe_sb_settings_copy">Көчүрүү</string>
   <string name="morphe_sb_settings_ie_summary">Сиздин Morphe жана башка SponsorBlock платформаларына импорттоого / экспорттоого мүмкүн болгон SponsorBlock JSON конфигурацияңыз</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Сиздин Morphe жана башка SponsorBlock платформаларына импорттоого / экспорттоого мүмкүн болгон SponsorBlock JSON конфигурацияңыз
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Сиздин жөндөөлөрүңүздө жеке SponsorBlock колдонуучу ID'си камтылган.
 
 Сиздин колдонуучу ID'ңиз сырсөзгө окшош, аны эч качан бөлүшпөңүз"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Кайра көрсөтпө</string>
   <string name="morphe_sb_diff_segments_title">Сегменттин жүрүм-турумун өзгөртүү</string>
   <string name="morphe_sb_segments_sponsor">Демөөчү</string>
   <string name="morphe_sb_segments_sponsor_summary">Акы төлөнүүчү жарнама, акы төлөнүүчү шилтемелер жана түз жарнамалар. Өзүн жарнамалоо же өздөрү жаккан нерселер, жаратуучулар, веб-сайттар же продукциялар жөнүндө акысыз айтуу үчүн эмес</string>
@@ -122,11 +102,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_highlight">Белгиленген жерге өтүү</string>
   <string name="morphe_sb_skip_button_intro_beginning">Киришүүнү өткөрүү</string>
   <string name="morphe_sb_skip_button_intro_middle">Тынымды өткөрүү</string>
-  <string name="morphe_sb_skip_button_intro_end">Тынымды өткөрүү</string>
   <string name="morphe_sb_skip_button_outro">Аягын өткөрүү</string>
   <string name="morphe_sb_skip_button_hook">Киришүү бөлүгүн өткөрүү</string>
   <string name="morphe_sb_skip_button_preview_beginning">Алдын ала көрүүнү өткөрүү</string>
-  <string name="morphe_sb_skip_button_preview_middle">Алдын ала көрүүнү өткөрүү</string>
   <string name="morphe_sb_skip_button_preview_end">Кыскача мазмунду өткөрүү</string>
   <string name="morphe_sb_skip_button_filler">Темадан четтөөнү өткөрүү</string>
   <string name="morphe_sb_skip_button_nomusic">Музыка эмес бөлүктөрдү өткөрүү</string>
@@ -137,11 +115,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_highlight">Негизги бөлүккө өткөрүлдү</string>
   <string name="morphe_sb_skipped_intro_beginning">Киришүү өткөрүлдү</string>
   <string name="morphe_sb_skipped_intro_middle">Тыныгуу өткөрүлдү</string>
-  <string name="morphe_sb_skipped_intro_end">Тыныгуу өткөрүлдү</string>
   <string name="morphe_sb_skipped_outro">Корутунду өткөрүлдү</string>
   <string name="morphe_sb_skipped_hook">Кызыктыруу бөлүгү өткөрүлдү</string>
   <string name="morphe_sb_skipped_preview_beginning">Алдын ала көрүү өткөрүлүп кетти</string>
-  <string name="morphe_sb_skipped_preview_middle">Алдын ала көрүү өткөрүлүп кетти</string>
   <string name="morphe_sb_skipped_preview_end">Кыскача маалымат өткөрүлүп кетти</string>
   <string name="morphe_sb_skipped_filler">Темадан четтөө өткөрүлүп кетти</string>
   <string name="morphe_sb_skipped_nomusic">Музыкасыз бөлүм өткөрүлүп кетти</string>
@@ -167,8 +143,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_failed_timeout">Сегментке добуш берүү мүмкүн болгон жок (API убактысы бүттү)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Сегментке добуш берүү мүмкүн болгон жок (статус: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Сегментке добуш берүү мүмкүн болгон жок: %s</string>
-  <string name="morphe_sb_vote_upvote">Жактыруу</string>
-  <string name="morphe_sb_vote_downvote">Жактырбоо</string>
   <string name="morphe_sb_vote_category">Категорияны өзгөртүү</string>
   <string name="morphe_sb_vote_no_segments">Добуш бериле турган сегменттер жок</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -193,7 +167,6 @@ Second \"item\" text"</string>
 (%3$s)
 
 Жөнөтүүгө даярсызбы?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Жөнөтүү</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Башталышы аяктаганынан мурун болушу керек</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Алгач убакыт панелинен жайгашууну белгилеңиз</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Сегментти алдын ала көрүңүз жана анын жылмакай өтүп кеткенине ынаныңыз</string>
@@ -206,16 +179,11 @@ Second \"item\" text"</string>
 %s
 
 Эгерде сиз белгилөөнү жөнөтпөй жатсаңыз, «Жокко чыгаруу» баскычын басып, экинчи жайга белги коюңуз"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Белгилөөнү жөнөтүү</string>
   <string name="morphe_sb_stats_title">Статистика</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Статистика убактылуу жеткиликсиз (API иштебей жатат)</string>
-  <string name="morphe_sb_stats_loading">Жүктөлүүдө…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock өчүрүлгөн</string>
-  <string name="morphe_sb_stats_username">Сиздин колдонуучу атыңыз: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Колдонуучу атыңызды өзгөртүү үчүн бул жерди басыңыз</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Колдонуучунун атын өзгөртүү мүмкүн болгон жок: Статус: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Колдонуучу аты ийгиликтүү өзгөртүлдү</string>
   <string name="morphe_sb_stats_reputation">Сиздин репутацияңыз &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Сиз &lt;b&gt;%s&lt;/b&gt; сегмент түзүп алдыңыз</string>
   <string name="morphe_sb_stats_submissions_summary">Сегменттериңизди көрүү үчүн бул жерди басыңыз</string>

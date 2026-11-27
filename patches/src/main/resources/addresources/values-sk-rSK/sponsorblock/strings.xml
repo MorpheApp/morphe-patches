@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Povoliť SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock je systém, ktorý umožňuje preskakovanie nepríjemných častí videí na YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Vzhľad</string>
   <string name="morphe_sb_voting_button_title">Zobraziť tlačidlo Preskočiť</string>
   <string name="morphe_sb_voting_button_summary">Pridá tlačidlo na preskočenie alebo hodnotenie segmentov</string>
   <string name="morphe_sb_square_layout_title">Použiť štvorcový layout</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Skryje tlačidlo Preskočiť po niekoľkých sekundách namiesto toho, aby zostalo viditeľné počas celého segmentu</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Dĺžka zobrazenia sa tlačidla Preskočiť</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Nastavte, na ako dlho zostane tlačidlo Preskočiť viditeľné</string>
-  <string name="morphe_sb_toast_on_skip_title">Zobraziť upozornenie na preskočenie</string>
   <string name="morphe_sb_toast_on_skip_summary">Zobrazuje upozornenie, keď je segment automaticky preskočený</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Dĺžka zobrazenia upozornenia na preskočenie</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Nastavte, na ako dlho zostane upozornenie na zrušenie viditeľné</string>
-  <string name="morphe_sb_duration_1s">1 sekunda</string>
-  <string name="morphe_sb_duration_2s">2 sekundy</string>
-  <string name="morphe_sb_duration_3s">3 sekundy</string>
-  <string name="morphe_sb_duration_4s">4 sekundy</string>
-  <string name="morphe_sb_duration_5s">5 sekúnd</string>
-  <string name="morphe_sb_duration_6s">6 sekúnd</string>
-  <string name="morphe_sb_duration_7s">7 sekúnd</string>
-  <string name="morphe_sb_duration_8s">8 sekúnd</string>
-  <string name="morphe_sb_duration_9s">9 sekúnd</string>
-  <string name="morphe_sb_duration_10s">10 sekúnd</string>
   <string name="morphe_sb_video_length_without_segments_title">Zobraziť dĺžku videa bez segmentov</string>
   <string name="morphe_sb_video_length_without_segments_summary">Odčíta všetky segmenty z celkovej dĺžky videa zobrazeného na seekbare</string>
   <string name="morphe_sb_create_segment_category_title">Vytváranie nových segmentov</string>
   <string name="morphe_sb_create_new_segment_title">Zobraziť tlačidlo \'Vytvoriť nový segment\'</string>
   <string name="morphe_sb_create_new_segment_summary">Pridá tlačidlo do prehrávača videa, ktoré vám umožní odoslať nové segmenty SponsorBlock</string>
-  <string name="morphe_sb_create_new_segment_step_title">Krok úpravy času</string>
   <string name="morphe_sb_create_new_segment_step_summary">Množstvo posunu tlačidiel úpravy času (v milisekundách)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Hodnota musí byť kladné číslo</string>
   <string name="morphe_sb_guidelines_title">Pokyny na odosielanie</string>
   <string name="morphe_sb_guidelines_summary">Pokyny obsahujú pravidlá a tipy na vytváranie nových segmentov</string>
   <string name="morphe_sb_guidelines_popup_title">Dodržujte pokyny</string>
   <string name="morphe_sb_guidelines_popup_content">Pred vytvorením nových segmentov si prečítajte pokyny pre SponsorBlock</string>
   <string name="morphe_sb_guidelines_popup_already_read">Už som si prečítal</string>
   <string name="morphe_sb_guidelines_popup_open">Zobraziť mi</string>
-  <string name="morphe_sb_general_title">Všeobecné</string>
   <string name="morphe_sb_offline_segments_title">Ukladať segmenty stiahnutých videí</string>
   <string name="morphe_sb_offline_segments_summary">Umožňuje preskakovať segmenty stiahnutých videí v režime offline</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Zobraziť upozornenia na chyby pripojenia</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Zobrazuje upozornenie, keď server SponsorBlock nie je k dispozícii</string>
   <string name="morphe_sb_track_skip_count_title">Povoliť sledovanie počtu preskočení</string>
   <string name="morphe_sb_track_skip_count_summary">Posiela počty preskočení do rebríčka SponsorBlock na sledovanie, koľko času sa ušetrí</string>
   <string name="morphe_sb_min_segment_duration_title">Minimálna dĺžka segmentu</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmenty kratšie ako táto hodnota (v sekundách) sa nezobrazia ani nepreskočia</string>
   <string name="morphe_sb_min_segment_duration_invalid">Neplatný časový interval</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Vaše súkromné ID používateľa</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">ID by ste mali držať v súkromí. Je to ako heslo a nemali by ste ho s nikým zdieľať. Pokiaľ ho niekto má, môže sa za vás vydávať</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Súkromné ID používateľa musí mať minimálne 30 znakov</string>
   <string name="morphe_sb_api_url_title">Zmeniť URL API</string>
   <string name="morphe_sb_api_url_summary">Adresa, ktorú SponsorBlock používa pre volania na server</string>
   <string name="morphe_sb_channel_whitelist_title">Biela listina kanálov</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">Neplatná URL API</string>
   <string name="morphe_sb_api_url_changed">API URL sa zmenila</string>
   <string name="morphe_sb_settings_ie_title">Importovať / Exportovať nastavenia</string>
-  <string name="morphe_sb_settings_copy">Kopírovať</string>
   <string name="morphe_sb_settings_ie_summary">JSON konfigurácia SponsorBlocku, ktorú je možné importovať / exportovať do Morphe a iných SponsorBlock platforiem</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Vaša konfigurácia JSON pre SponsorBlock, ktorú je možné importovať / exportovať do Morphe a iných platforiem SponsorBlock
 
@@ -92,7 +73,6 @@ Tieto informácie zahŕňajú aj vaše súkromné používateľské ID. Buďte p
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Nastavenia obsahujú aj vaše súkromné ID používateľa SponsorBlock.
 
 ID používateľa je ako heslo a nemalo by sa zdieľať"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Už nezobrazovať</string>
   <string name="morphe_sb_diff_segments_title">Zmeniť správanie segmentov</string>
   <string name="morphe_sb_segments_sponsor">Sponzor</string>
   <string name="morphe_sb_segments_sponsor_summary">Platená propagácia, platené odporúčania a priame reklamy. Nie pre vlastnú propagáciu alebo bezodplatné odporúčania iniciatív / tvorcov / webových stránok / produktov, ktoré sa im páčia</string>
@@ -122,11 +102,9 @@ ID používateľa je ako heslo a nemalo by sa zdieľať"</string>
   <string name="morphe_sb_skip_button_highlight">Preskočiť na zvýraznenie</string>
   <string name="morphe_sb_skip_button_intro_beginning">Preskočiť intro</string>
   <string name="morphe_sb_skip_button_intro_middle">Preskočiť intermezzo</string>
-  <string name="morphe_sb_skip_button_intro_end">Preskočiť intermezzo</string>
   <string name="morphe_sb_skip_button_outro">Preskočiť outro</string>
   <string name="morphe_sb_skip_button_hook">Preskočiť predohru</string>
   <string name="morphe_sb_skip_button_preview_beginning">Preskočiť náhľad</string>
-  <string name="morphe_sb_skip_button_preview_middle">Preskočiť náhľad</string>
   <string name="morphe_sb_skip_button_preview_end">Preskočiť rekapituláciu</string>
   <string name="morphe_sb_skip_button_filler">Preskočiť odklon</string>
   <string name="morphe_sb_skip_button_nomusic">Preskočiť nehudobnú časť</string>
@@ -137,11 +115,9 @@ ID používateľa je ako heslo a nemalo by sa zdieľať"</string>
   <string name="morphe_sb_skipped_highlight">Preskočené na zvýraznenie</string>
   <string name="morphe_sb_skipped_intro_beginning">Preskočené intro</string>
   <string name="morphe_sb_skipped_intro_middle">Preskočené intermezzo</string>
-  <string name="morphe_sb_skipped_intro_end">Preskočené intermezzo</string>
   <string name="morphe_sb_skipped_outro">Preskočené outro</string>
   <string name="morphe_sb_skipped_hook">Preskočená predohra</string>
   <string name="morphe_sb_skipped_preview_beginning">Preskočený náhľad</string>
-  <string name="morphe_sb_skipped_preview_middle">Preskočený náhľad</string>
   <string name="morphe_sb_skipped_preview_end">Preskočená rekapitulácia</string>
   <string name="morphe_sb_skipped_filler">Preskočený odklon</string>
   <string name="morphe_sb_skipped_nomusic">Preskočená nehudobná sekcia</string>
@@ -167,8 +143,6 @@ Už existuje"</string>
   <string name="morphe_sb_vote_failed_timeout">Nie je možné hlasovať pre segment (vypršal časový limit API)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Nie je možné hlasovať pre segment (stav: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nie je možné hlasovať pre segment: %s</string>
-  <string name="morphe_sb_vote_upvote">Hlasovať za</string>
-  <string name="morphe_sb_vote_downvote">Hlasovať proti</string>
   <string name="morphe_sb_vote_category">Zmeniť kategóriu</string>
   <string name="morphe_sb_vote_no_segments">Nie sú dostupné žiadne segmenty pre hlasovanie</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ a
 (%3$s)
 
 Chcete to odoslať?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Odoslať</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začiatok musí byť pred koncom</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Najprv označte miesto na časovej osi</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Skontrolujte segment a uistite sa, že preskočí plynulo</string>
@@ -205,16 +178,11 @@ Chcete to odoslať?"</string>
 %s
 
 Ak neodosielate zvýraznenie, klepnite na Zrušiť a označte druhú polohu"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Odoslať zvýraznenie</string>
   <string name="morphe_sb_stats_title">Štatistiky</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Štatistiky sú dočasne nedostupné (API je nedostupné)</string>
-  <string name="morphe_sb_stats_loading">Načítava sa…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock je zakázaný</string>
-  <string name="morphe_sb_stats_username">Vaše používateľské meno: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Ťuknutím sem zmeníte používateľské meno</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Nebolo možné zmeniť používateľské meno: Stav: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Používateľské meno bolo úspešne zmenené</string>
   <string name="morphe_sb_stats_reputation">Vaša reputácia je &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Vytvorili ste &lt;b&gt;%s&lt;/b&gt; segmentov</string>
   <string name="morphe_sb_stats_submissions_summary">Ťuknite sem, aby ste si pozreli vaše segmenty</string>

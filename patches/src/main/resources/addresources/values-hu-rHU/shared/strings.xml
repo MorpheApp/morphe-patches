@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Újraindítás szükséges</string>
   <string name="morphe_settings_restart_dialog_message">Indítsa újra az alkalmazást, hogy a változás érvénybe lépjen</string>
   <string name="morphe_settings_restart">Újraindítás</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importálás</string>
-  <string name="morphe_settings_import_copy">Másolás</string>
   <string name="morphe_settings_import_reset">A Morphe beállításai visszaálltak az alapértelmezettre</string>
   <string name="morphe_settings_import_success">%s beállítás importálva</string>
   <string name="morphe_settings_import_failure_parse">Sikertelen importálás: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Módosítások</string>
   <string name="morphe_settings_about_version">Verzió</string>
-  <string name="morphe_settings_about_close">Bezárás</string>
   <string name="morphe_settings_about_prerelease">Előzetes kiadás</string>
   <string name="morphe_settings_about_update_available">Frissítés elérhető: %s</string>
   <string name="morphe_settings_about_update_hint">A javítások frissítéséhez használd a Morphe-t az alkalmazás újabb javításhoz</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Licencmegjegyzések</string>
-  <string name="morphe_settings_about_licenses_loading">Betöltés…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hibakeresés</string>
   <string name="morphe_debug_screen_summary">Konfigurálja a fejlett fejlesztői beállításokat és a részletes naplókat</string>
@@ -125,7 +121,6 @@ Nem fog értesülni semmilyen váratlan eseményről"</string>
   <string name="morphe_debug_export_logs_success">A hibakeresési naplók sikeresen exportálva</string>
   <string name="morphe_debug_export_logs_failed">Nem sikerült exportálni a hibakeresési naplókat</string>
   <string name="morphe_debug_logs_search_hint">Keresés a hibakeresési naplókban…</string>
-  <string name="morphe_debug_export_logs_clear">Törlés</string>
   <string name="morphe_debug_logs_disabled">A hibakeresési naplózás ki van kapcsolva</string>
   <string name="morphe_debug_logs_none_found">Nincs hibakeresési napló</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Hibakeresési naplók a vágólapra másolva</string>
@@ -142,15 +137,8 @@ Nem fog értesülni semmilyen váratlan eseményről"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokkolt (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Kényszerített (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automatikus</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Ki</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Be</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Bekapcsolás kényszerítése</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Letiltás</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Eltávolítás</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funkciójelzők mentve</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funkciójelzők visszaállítva</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funkciójelzők a vágólapra másolva</string>
@@ -200,7 +188,6 @@ A viselkedés korábban eltűnt a keresés során, így több funkciókapcsoló 
   <string name="gms_core_dialog_outdated_message">"A MicroG v%1$s verziója elavult, és problémákat okozhat.
 
 Kérjük, frissítse a MicroG-t a legújabb v%2$s verzióra"</string>
-  <string name="gms_core_dialog_update_text">Frissítés</string>
   <string name="gms_core_dialog_ignore_text">Mellőzés</string>
   <string name="gms_core_dialog_conflict_message">"A telepített MicroG használatát a Morphe nem javasolja:
 
@@ -220,7 +207,6 @@ Ez szükséges az alkalmazás működéséhez"</string>
 A MicroG akkumulátor-optimalizálásának letiltása nem befolyásolja negatívan az akkumulátor használatát.
 
 Kattintson a folytatás gombra, és engedélyezze az optimalizálási módosításokat"</string>
-  <string name="gms_core_dialog_continue_text">Folytatás</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG akkumulátor-optimalizálási párbeszédpanel megjelenítése</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"A letiltás elrejti a MicroG akkumulátor-optimalizációs kérést.
 
@@ -259,9 +245,29 @@ A problémamentes élményhez &lt;b&gt;távolítsa el&lt;/b&gt; ezt, és javíts
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Hibajavítások</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Egyéb változtatások</string>
   <string name="morphe_patches_update_notice_dialog_more">…és további %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Frissítés</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Elvetés</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Összeomlási napló mentve a felhasználói dokumentumok közé: %s</string>
   <string name="morphe_crash_log_saved">Összeomlási napló mentve: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Névjegy</string>
+  <string name="morphe_ads_screen_title">Hirdetések</string>
+  <string name="morphe_misc_screen_title">Egyéb</string>
+  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
+  <string name="morphe_post_buttons_screen_title">Bejegyzés gombok</string>
+  <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
+  <string name="morphe_download">Letöltés</string>
+  <string name="morphe_hide_create_button_title">Létrehozás gomb elrejtése</string>
+  <string name="morphe_hide_post_comment_button_title">Hozzászólás gomb elrejtése</string>
+  <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a nyomkövetést a megosztott linkekből</string>
+  <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
+  <string name="morphe_settings_add">Hozzáadás</string>
+  <string name="morphe_settings_clear">Törlés</string>
+  <string name="morphe_settings_close">Bezárás</string>
+  <string name="morphe_settings_continue">Folytatás</string>
+  <string name="morphe_settings_copy">Másolás</string>
+  <string name="morphe_settings_delete">Törlés</string>
+  <string name="morphe_settings_remove">Eltávolítás</string>
+  <string name="morphe_settings_update">Frissítés</string>
 </resources>

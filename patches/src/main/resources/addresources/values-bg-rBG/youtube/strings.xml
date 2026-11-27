@@ -17,17 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">Относно</string>
-  <string name="morphe_settings_screen_01_ads_title">Реклами</string>
-  <string name="morphe_settings_screen_03_feed_title">Емисия </string>
-  <string name="morphe_settings_screen_04_general_title">Основни</string>
-  <string name="morphe_settings_screen_05_player_title">Плейър</string>
-  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Лента на прогрес</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Плъзгащи контроли</string>
-  <string name="morphe_settings_screen_11_misc_title">Други</string>
-  <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">Възстановяване на старите менюта за настройки</string>
   <string name="morphe_native_snackbar_title">Показвай съобщенията в изскачащата лента на YouTube</string>
   <string name="morphe_native_snackbar_summary">Съобщенията от Morphe, като например потвърждението при натискане на бутон в плейъра, се показват в изскачащата лента на YouTube вместо в изскачащ прозорец.</string>
@@ -82,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary">Скрива плаващия бутон за микрофон в долния десен ъгъл на екрана за предложения за търсене</string>
   <string name="morphe_hide_get_premium_button_title">Скриване на бутона \"Получи Premium\"</string>
   <string name="morphe_hide_history_shelf_title">Скриване на рафта „История“</string>
-  <string name="morphe_hide_horizontal_shelves_title">Хоризонтални секции</string>
   <string name="morphe_hide_horizontal_shelves_summary">Скрива хоризонтални рафтове като Актуални новини, Публикации от общността, които може да ви харесат, Продължете да гледате, Разгледайте повече канали, Разгледайте повече теми, За вас, Последни видеа, Най-подходящи, Публикации от общността на автора, Пазаруване и Гледайте отново</string>
   <string name="morphe_hide_image_shelf_title">Скр. рафтовете със снимки</string>
   <string name="morphe_hide_image_shelf_summary">Скрива рафтовете с изображения в резултатите от търсенето</string>
@@ -234,12 +224,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_privacy_tos_footer_title">Скрий правни бележки и поверителност</string>
   <string name="morphe_hide_filter_bar_screen_title">Лента с филтри</string>
   <string name="morphe_hide_filter_bar_screen_summary">Изберете къде да скриете лентата с филтри</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">Скриване в страницата на канала</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Скриване в коментарите</string>
   <string name="morphe_hide_filter_bar_in_feed_title">Скриване в емисиите</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Скриване в свързани видеоклипове</string>
-  <string name="morphe_hide_filter_bar_in_search_title">Скриване в резултатите от търсенето</string>
-  <string name="morphe_hide_filter_bar_in_history_title">Скриване в историята на гледане</string>
   <string name="morphe_hide_keyword_content_screen_title">Филтър по ключова дума</string>
   <string name="morphe_hide_keyword_content_screen_summary">Изберете конкретни думи или фрази за скриване на видеа в емисиите и търсенето</string>
   <string name="morphe_hide_keyword_content_comments_title">Скриване на коментари по ключови думи</string>
@@ -305,15 +292,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stats_hidden_all_title">Скрити видеа, за цялото време</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Нулиране на брояча за последните 24 часа?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">Нулиране на брояча за цялото време?</string>
-  <string name="morphe_post_buttons_screen_title">Бутони за публикация</string>
   <string name="morphe_post_buttons_screen_summary">Изберете разположението на бутоните под публикациите в общността и кои бутони да бъдат скрити</string>
   <string name="morphe_post_buttons_layout_title">Разположение на бутоните за публикации</string>
   <string name="morphe_post_buttons_layout_entry_1">Сървър</string>
   <string name="morphe_post_buttons_layout_entry_2">Принудително</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Скриване на бутоните „Харесва ми“ и „Не харесва ми“</string>
-  <string name="morphe_hide_post_dislike_button_title">Скриване на бутона „Не харесва ми“</string>
   <string name="morphe_hide_post_dislike_button_summary">При разположение „Принудително“, мястото на бутона остава празно</string>
-  <string name="morphe_hide_post_comment_button_title">Скриване на бутона „Коментари“</string>
   <string name="morphe_hide_post_comments_preview_title">Скриване на предгледа на коментарите</string>
   <string name="morphe_hide_post_comments_preview_summary">Скрива предгледа на коментарите под публикациите</string>
   <string name="morphe_hide_post_share_button_summary">Бутонът за изтегляне на изображенията от публикацията се изчертава до бутона „Споделяне“, така че той също е скрит</string>
@@ -322,6 +305,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Скриване на прегледа за автоматично пускане</string>
   <string name="morphe_hide_autoplay_preview_summary">Скрива предварителния преглед на следващото видео в режим на цял екран преди началото на автоматичното възпроизвеждане</string>
+  <string name="morphe_hide_auto_generated_chapters_title">Скрий автоматично генерираните глави</string>
   <string name="morphe_hide_channel_bar_title">Скриване на лентата на канала</string>
   <string name="morphe_hide_channel_watermark_title">Скриване на водния знак на канала</string>
   <string name="morphe_hide_chapters_button_title">Скриване на бутона „Глави“</string>
@@ -351,19 +335,15 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_video_subtitle_title">Почистване на субтитрите на видео</string>
   <string name="morphe_sanitize_video_subtitle_summary">Премахва фрази като „#“, „Набиране на средства“, „продукт(и)“ и „Пазаруване“ от подзаглавието на видеоклипа</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Бутони за действие</string>
   <string name="morphe_action_buttons_screen_summary">Изберете кои бутони за действие да се показват в портретен и на цял екран режим</string>
   <string name="morphe_portrait_buttons">Бутони за портретен режим</string>
   <string name="morphe_disable_like_subscribe_glow_title">Изключване на светене на бутоните \"Like\" и \"Subscribe\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary">Предотвратява светенето на бутоните „Харесвай“ и „Абонирай се“, когато създателят ги спомене</string>
-  <string name="morphe_hide_action_bar_title">Скриване на лентата с действия</string>
-  <string name="morphe_hide_like_dislike_button_title">Скриване на бутоните „Харесва ми“ и „Не харесва ми“</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">Скриване на бутона „Споделяне“</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_stop_ads_button_title">Скриване на бутона „Спиране на рекламите“</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">Скриване на бутона „Коментари“</string>
   <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_connect_button_title">Скриване на бутона \"Свързване\"</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
@@ -395,8 +375,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Скриване на бутона „Запази“</string>
   <string name="morphe_hide_more_button_title">Скриване на бутона \"Още\"</string>
   <string name="morphe_fullscreen_buttons">Бутони за цял екран</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Скриване на бутона „Не харесва ми“</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Скриване на бутона „Харесва ми“</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Скриване на бутона „Чат на живо“</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Скриване на бутона „Микс“</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Скриване на бутона „Още видеа“</string>
@@ -424,8 +402,6 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Затъмнява светлината, докато страницата се скролва или се докосва</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_title">Продължителност на затъмняването</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Колко дълго светлината остава затъмнена след спиране на скролването. При 0 само скролването затъмнява светлината и тя се възстановява веднага след спиране на скролването</string>
-  <string name="morphe_comments_screen_title">Коментари</string>
-  <string name="morphe_comments_screen_summary">Изберете кои компоненти да се показват в секцията с коментари</string>
   <string name="morphe_hide_comments_carousel_title">Активиране на филтър за каруселите с коментари</string>
   <string name="morphe_hide_comments_carousel_summary">"• Въведете ключова дума или пълно име (напр. Ask, Community, Hype, Listen)
 • Скриването на всички елементи крие целия раздел с коментари"</string>
@@ -437,18 +413,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_by_members_header_title">Скрийте или покажете заглавието \'Коментари от членове\'</string>
   <string name="morphe_hide_comments_section_title">Скрийте раздел за коментари</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Скриване на коментарите в емисията на началната страница</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Скриване на правилата на общността</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Скриване на бутона \'Създаване на Short\'</string>
-  <string name="morphe_hide_comments_dislike_button_title">Скрий бутона Не харесвам</string>
-  <string name="morphe_hide_comments_emoji_button_title">Скриване на бутона за емоджи</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Скриване на опциите на филтърната лента</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Скрива всички опции на филтърната лента, с изключение на „Най-нови“ и „Най-добри“</string>
-  <string name="morphe_hide_comments_gif_button_title">Скриване на бутона за GIF</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">Скриване на GIF файлове и изображения</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Скрива GIF файловете и изображенията, прикачени към коментари и отговори.</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Скрий анимацията и картите за подаръци</string>
   <string name="morphe_hide_comments_gift_button_title">Скриване на бутона „Подарък“</string>
-  <string name="morphe_hide_comments_info_button_title">Скрий бутона Информация</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Скрий лентата с дарители в чата на живо</string>
   <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Скриване на бутона за превъртане долу в чата на живо</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Скриване на подсказките в чата на живо</string>
@@ -463,16 +432,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_cards_summary">Скрива плъзящите се карти и индикатора за страница, изгледани върху бутона за коментари</string>
   <string name="morphe_hide_comments_timed_reactions_title">Скриване на времевите реакции</string>
   <string name="morphe_hide_comments_timed_reactions_summary">Скрива функцията, която позволява на потребителите да реагират с емотикони в секцията за коментари и в чата на живо</string>
-  <string name="morphe_hide_comments_timestamp_button_title">Скриване на бутона за времевия печат</string>
   <string name="morphe_hide_comments_top_fans_button_title">Скриване на бутона „Топ фенове“</string>
   <string name="morphe_hide_comments_topics_title">Скрий \"Теми\"</string>
   <string name="morphe_hide_comments_topics_summary">Скрива опцията за филтър \"Теми\" и предварителните прегледи на коментари по теми под видеото</string>
-  <string name="morphe_hide_comments_translate_button_title">Скриване на бутона „Преведи“</string>
   <string name="morphe_hide_comments_visit_the_community_section_title">Скриване на раздела „Посетете общността“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Пречистване на подчертаните връзки от търсенето</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Пречиства връзките от търсенето, оставяйки само оригиналния обикновен текст</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Изскачащо меню</string>
   <string name="morphe_hide_player_flyout_summary">Изберете кои компоненти да се показват в изскачащото меню</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Скриване на менюто \'Допълнителни настройки\' / Повече</string>
@@ -518,14 +484,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_button_title">Скрий бутон „Автоматично възпроизвеждане“</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Скрий бутон „Субтитри“</string>
-  <string name="morphe_hide_cast_button_title">Скрий бутон „Предаване“</string>
   <string name="morphe_hide_collapse_button_title">Скрий бутон „Свий“</string>
   <string name="morphe_hide_fullscreen_button_title">Скрий бутон „Цял екран“</string>
   <string name="morphe_hide_player_control_buttons_background_title">Скриване на фона на контролите на плейъра</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Скрива тъмното засенчване около контролите на видео плейъра</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Прозрачност на фона на бутоните за управление</string>
   <string name="morphe_player_control_buttons_background_opacity_summary">Регулирайте непрозрачността на фона зад бутоните за управление на плейъра и времевата лента (0 е невидимо, 100 е непрозрачно)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Скрий бутоните „Предишен“ и „Следващ“</string>
   <string name="morphe_hide_settings_button_title">Скрий бутон „Настройки“</string>
   <string name="morphe_hide_description_components_screen_title">Видеоописание</string>
   <string name="morphe_hide_description_components_screen_summary">Изберете кои компоненти да се показват в описанието на видеото</string>
@@ -567,7 +531,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_snackbar_color_light_summary">Цвят на фона на snackbar-ите при светла тема. Текстът е черен или бял, в зависимост от това кой е по-лесен за четене</string>
   <string name="morphe_custom_snackbar_stroke_color_title">Цвят на рамката</string>
   <string name="morphe_custom_snackbar_stroke_color_summary">Цвят на рамката около snackbar-ите. Прозрачният цвят означава, че няма рамка</string>
-  <string name="morphe_custom_snackbar_corner_radius_title">Радиус на ъглите</string>
   <string name="morphe_custom_snackbar_corner_radius_summary">Радиус на ъглите на snackbar-ите в dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Бял списък за реклами на канали</string>
@@ -582,22 +545,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">Скриване на изскачащи реклами в плейъра</string>
   <string name="morphe_hide_self_sponsor_ads_title">Скрийте самопромотирани карти</string>
   <string name="morphe_hide_shopping_links_title">Скрийте връзките за пазаруване</string>
-  <string name="morphe_hide_video_ads_title">Скрийте видеореклами</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Скриване на YouTube Premium предложения</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
-  <string name="morphe_flyout_button_loading">Зарежда се…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Текущ канал:</string>
   <string name="morphe_channel_whitelist_add">Добавяне към списъка с разрешени канали</string>
-  <string name="morphe_channel_whitelist_remove">Премахване</string>
   <string name="morphe_channel_whitelist_channels_header">Разрешени канали</string>
   <string name="morphe_channel_whitelist_empty">Няма добавени канали в списъка с разрешени канали</string>
   <string name="morphe_channel_whitelist_channel_added">Каналът е добавен към списъка с разрешени канали</string>
   <string name="morphe_channel_whitelist_channel_removed">Каналът е премахнат от списъка с разрешени канали</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- Search dialog of comments search, channel search and playlist search. -->
-  <string name="morphe_search_dialog_search">Търсене</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Търсене в канала</string>
   <string name="morphe_channel_search_summary">Добавя втори бутон за търсене на страниците на каналите, за да търсите само в този канал</string>
@@ -605,7 +564,6 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">Резултати от търсенето на канали</string>
   <string name="morphe_channel_search_no_results">Нищо не е намерено в този канал</string>
   <string name="morphe_channel_search_failed">Неуспешно търсене в този канал</string>
-  <string name="morphe_channel_search_videos">Видеа</string>
   <string name="morphe_channel_search_posts">Публикации</string>
   <string name="morphe_channel_search_no_posts">Няма публикации в този канал, които  да съвпадат</string>
   <string name="morphe_channel_search_sort_relevance">Уместност</string>
@@ -666,7 +624,6 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_language_title">Език за превод на публикацията</string>
   <string name="morphe_post_translate_flyout">Превод</string>
   <string name="morphe_post_translate_flyout_original">Покажи оригинала</string>
-  <string name="morphe_post_translate_started">Превеждане…</string>
   <string name="morphe_post_translate_failed">Публикацията не можа да бъде преведена</string>
   <string name="morphe_post_translate_same_language">Публикацията вече е на езика за превод</string>
   <!-- interaction.onthego.onTheGoPatch -->
@@ -678,8 +635,6 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_panel_title">В движение</string>
   <string name="morphe_on_the_go_audio_mode">Превключи в аудио режим</string>
   <string name="morphe_on_the_go_video_mode">Превключи в видео режим</string>
-  <string name="morphe_on_the_go_download">Изтегляне</string>
-  <string name="morphe_on_the_go_queue">Опашка</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Добавяне на елемент Ask в изплъзгащото се меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Добавяне на елемент за обобщение на видео към изплъзгащото се меню на емисията</string>
@@ -712,12 +667,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">До броя гледания</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Среда вдясно</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Горе вляво</string>
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
+  <string name="morphe_ryd_video_details_dislikes">Нехаресвания</string>
   <!-- interaction.commentsearch.commentSearchPatch -->
   <string name="morphe_comment_search_title">Търсене на коментари</string>
   <string name="morphe_comment_search_summary">Докоснете бутона за търсене в коментарите, за да покажете само заредените коментари, които съдържат всички търсени думи. Поставете думите в кавички, за да потърсите фраза</string>
-  <string name="morphe_comment_search_dialog_title">Търсене в коментарите</string>
   <string name="morphe_comment_search_hint">Думи за търсене</string>
-  <string name="morphe_comment_search_clear">Изчистване</string>
   <string name="morphe_comment_search_applied">Променете реда на сортиране или отворете коментарите отново, за да ги потърсите</string>
   <string name="morphe_comment_search_cleared">Търсенето е изчистено. Променете реда на сортиране или отворете коментарите отново, за да покажете всички коментари</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -742,10 +697,8 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_options">Всички опции</string>
   <string name="morphe_shorts_download_flyout_button_title">Показване на изтегляне в менюто на Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Добавя елемент за изтегляне в менюто на плейъра за Shorts</string>
-  <string name="morphe_shorts_download_flyout_title">Изтегляне</string>
   <string name="morphe_feed_download_flyout_button_title">Принудително добавяне на елемента за изтегляне в изскачащото меню</string>
   <string name="morphe_feed_download_flyout_button_summary">Добавя елемент за изтегляне към менютата на видеоклиповете във feed, които нямат такъв</string>
-  <string name="morphe_download_force_4k_title">Принудителна наличност на 4K изтегляния</string>
   <string name="morphe_download_force_4k_summary">Предлага изтегляния в 1440p и 4K, дори ако YouTube реши, че това устройство не може да ги възпроизвежда</string>
   <string name="morphe_download_quality_about_title">1080p не е налично</string>
   <string name="morphe_download_quality_about_summary">Ако изтеглянията в приложението не предлагат 1080p, включете \"Симулиране на размерите на устройството\" в Разни настройки</string>
@@ -794,11 +747,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_voice_gender_male">Мъжки</string>
   <string name="morphe_vot_voice_gender_female">Женски</string>
   <string name="morphe_vot_tts_sample">Време е за трансформация!</string>
+  <string name="morphe_vot_no_captions">Това видео няма субтитри за превод</string>
   <string name="morphe_vot_http_error_title">Преводът не е достъпен</string>
   <string name="morphe_vot_http_error_message">"Услугата за превод върна HTTP грешка %s. Вашият IP адрес вероятно е ограничен за до 24 часа.
 
 За да продължите да използвате преводи, превключете към друг доставчик на превод в настройките или използвайте VPN"</string>
-  <string name="morphe_vot_do_not_show_again">Не показвай отново</string>
   <string name="morphe_vot_export_api_key_warning">"Вашите настройки съдържат OpenRouter API ключ.
 
 Вашият API ключ никога не трябва да се споделя. Всеки, който има достъп до него, може да използва вашите кредити на OpenRouter"</string>
@@ -831,8 +784,6 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_label_end">Край</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
   <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (празно = край на видеото)</string>
-  <string name="morphe_loop_video_range_set">Задаване</string>
-  <string name="morphe_loop_video_range_clear">Изчистване</string>
   <string name="morphe_loop_video_range_toast_on">Повтаряне от %1$s до %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Невалиден времеви диапазон</string>
   <!-- interaction.loop.loopCountPatch -->
@@ -848,10 +799,8 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_dialog_title">Изтриване на запазените броеве повторения?</string>
   <string name="morphe_loop_count_clear_dialog_message">Видеоклиповете от вашите плейлисти забравят броя на повторенията си, а „Повтаряне на видеоклипа“ вече не се включва, когато плейлист ги възпроизвежда.</string>
   <string name="morphe_loop_count_clear_done">Запазените броячи на повторения са изчистени</string>
-  <string name="morphe_loop_count_flyout_name">Брой повторения</string>
   <string name="morphe_loop_count_dialog_message">Колко пъти да се възпроизвежда видеото преди следващото, от %1$s до %2$s. Оставете празно, за да се повтаря видеото без ограничение.</string>
   <string name="morphe_loop_count_times">%s пъти</string>
-  <string name="morphe_loop_count_no_limit">Без ограничение</string>
   <string name="morphe_loop_count_decrease">По-малко пъти</string>
   <string name="morphe_loop_count_increase">Повече пъти</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
@@ -905,11 +854,9 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">Видеоклипът е запазен успешно в плейлиста Гледай по-късно</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Този видеоклип вече е запазен в плейлиста Гледай по-късно</string>
   <string name="morphe_save_to_watch_later_error_toast">Не може да се запази този видеоклип в плейлиста Гледай по-късно</string>
-  <string name="morphe_save_to_watch_later_flyout_title">Запазване в „Гледай по-късно“</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Показване на бутона за запазване в „Гледай по-късно“ в изскачащото меню с настройки на плейъра</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Позволява запазването на гледания в момента видеоклип в „Гледай по-късно“ от изскачащото меню с настройките на видеоклипа.</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Пренасочване на \"Гледай по-късно\" към плейлист</string>
-  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Гледай по-късно</string>
   <string name="morphe_queue_flyout_title">Добавяне към опашката на Morphe</string>
   <string name="morphe_queue_restore_title">Запазване на опашката между сесиите</string>
   <string name="morphe_queue_restore_summary">Опашката се запазва след рестартиране на приложението</string>
@@ -921,17 +868,11 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">Родна опашка</string>
   <string name="morphe_queue_type_entry_3">Morphe опашка</string>
   <string name="morphe_queue_type_entry_4">Morphe опашка от страна на клиента</string>
-  <string name="morphe_local_queue_sheet_title">Опашка</string>
   <string name="morphe_local_queue_open">Опашка (%s)</string>
-  <string name="morphe_local_queue_clear">Изчисти всичко</string>
   <string name="morphe_local_queue_empty">Няма нищо в опашката</string>
   <string name="morphe_local_queue_empty_hint">Използвайте „Пусни след това в опашката“ за произволен видеоклип</string>
   <string name="morphe_local_queue_now_playing">В момента се възпроизвежда</string>
-  <string name="morphe_local_queue_play_next">Пусни след това в опашката</string>
-  <string name="morphe_local_queue_play_last">Пускане на последното в опашката</string>
   <string name="morphe_local_queue_reorder">Пренареждане</string>
-  <string name="morphe_local_queue_remove">Премахване</string>
-  <string name="morphe_local_queue_added">Добавено в опашката</string>
   <string name="morphe_local_queue_unavailable">Това видео не може да се добави в опашката</string>
   <string name="morphe_local_queue_playlist_unsupported">Плейлисти не могат да бъдат добавени към опашката</string>
   <string name="morphe_local_queue_full">Опашката е пълна</string>
@@ -951,12 +892,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_fetch_failed_create">Неуспешно създаване на опашка</string>
   <string name="morphe_queue_manager_fetch_failed_remove">Неуспешно премахване от опашката</string>
   <string name="morphe_queue_manager_fetch_failed_save">Неуспешно запазване на опашката</string>
-  <string name="morphe_queue_manager_fetch_succeeded_add">Добавено към опашката</string>
   <string name="morphe_queue_manager_fetch_succeeded_create">Опашката е създадена</string>
   <string name="morphe_queue_manager_fetch_succeeded_remove">Премахнато от опашката</string>
   <string name="morphe_queue_manager_fetch_succeeded_save">Опашката е запазена в %s</string>
   <string name="morphe_queue_manager_playlist_title">Опашка на Morphe</string>
-  <string name="morphe_queue_manager_add_to_queue">Добавяне към опашката</string>
   <string name="morphe_queue_manager_add_to_queue_and_open_queue">Добавяне към опашката и отваряне</string>
   <string name="morphe_queue_manager_add_to_queue_and_play_video">Добавяне към опашката и възпроизвеждане</string>
   <string name="morphe_queue_manager_add_to_queue_and_reload_video">Добавяне и презареждане на видеото</string>
@@ -976,14 +915,10 @@ Second \"item\" text"</string>
   <string name="morphe_native_playlist_queue_saved_to">Запазено в %s</string>
   <string name="morphe_native_playlist_queue_clear">Изчистване на опашката</string>
   <string name="morphe_native_playlist_queue_cleared">Опашката е изчистена</string>
-  <string name="morphe_native_playlist_queue_title">Опашка</string>
-  <string name="morphe_native_playlist_queue_last">Пускане на последното в опашката</string>
-  <string name="morphe_native_playlist_queue_next">Пускане на следващото в опашката</string>
   <string name="morphe_native_playlist_queue_unavailable">YouTube не може да покаже опашката.</string>
   <string name="morphe_native_playlist_queue_not_ready">Опашката не е готова за това видео. Отворете видео плейъра и опитайте отново.</string>
   <string name="morphe_native_playlist_queue_mix_choice">Добавяне на микс към опашката или гледане на микса?</string>
   <string name="morphe_native_playlist_queue_watch_mix">Гледане</string>
-  <string name="morphe_native_playlist_queue_add_mix">Добавяне към опашката</string>
   <string name="morphe_native_playlist_queue_loading_mix">Зареждане на микс…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Отворете канал от аватара на живо</string>
@@ -1043,7 +978,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_ignore_when_locked_summary">Жестовете с плъзгане се игнорират, докато плейърът е заключен с „Заключване на екрана“</string>
   <string name="morphe_swipe_press_to_engage_title">Активиране на жеста за плъзгане при натискане</string>
   <string name="morphe_swipe_press_to_engage_summary">Изисква натискане и задържане преди да бъде разпознат жестът на плъзгане.</string>
-  <string name="morphe_swipe_haptic_feedback_title">Включване на тактилна обратна връзка</string>
   <string name="morphe_swipe_haptic_feedback_summary">Вибрира, когато задържането започне жест за плъзгане</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Запазване и възстановяване на яркост</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запазва нивото на яркост при влизане и излизане от режим на цял екран</string>
@@ -1053,7 +987,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_title">Време на показване на прозореца за плъзгане</string>
   <string name="morphe_swipe_overlay_timeout_summary">Времето в милисекунди, за което наслагването е видимо</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Прозрачност на фона на прозореца за плъзгане</string>
-  <string name="morphe_swipe_overlay_background_opacity_summary">Регулирайте нивото на прозрачност (0 е прозрачно, 100 е непрозрачно)</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Цвят на наслагването за яркост</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Задайте цвета на лентата за напредъка на контрола за яркост</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Цвят на прозореца за сила на звука</string>
@@ -1074,7 +1007,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">По-високите стойности изискват повече плъзгане за всяка стъпка на яркостта.</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чувствителност при плъзгане за скорост</string>
   <string name="morphe_swipe_speed_sensitivity_summary">По-високите стойности изискват повече плъзгане за всяка стъпка на скоростта.</string>
-  <string name="morphe_swipe_speed_step_title">Стъпка на скоростта</string>
   <string name="morphe_swipe_speed_zone_height_title">Височина на зоната за скорост</string>
   <string name="morphe_swipe_speed_zone_height_summary">Височина на зоната с жестове за скорост като процент от височината на плейъра (5-75).</string>
   <string name="morphe_swipe_zone_label_speed">Скорост</string>
@@ -1100,11 +1032,9 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_press_to_swipe_toast">Жестът за задържане не се използва, докато \"натисване за плъзгане\" е включено</string>
   <string name="morphe_hold_gesture_dialog_title">Жестът за задържане е включен</string>
   <string name="morphe_hold_gesture_dialog_turn_off">Изключете жеста за задържане</string>
-  <string name="morphe_hold_gesture_haptic_feedback_title">Разрете тактилна обратна връзка</string>
   <string name="morphe_hold_gesture_haptic_feedback_summary">Вибрира, когато скоростта се променя и когато скоростта е фиксирана</string>
   <string name="morphe_hold_gesture_speed_swipe_title">Плъзгайте настрани, за да промените скоростта</string>
   <string name="morphe_hold_gesture_speed_swipe_summary">След докосване и задържане, плъзгайте наляво за по-бавно възпроизвеждане и надясно за по-бързо. Колкото по-далеч, толкова повече се променя скоростта, докато пръстът се върне</string>
-  <string name="morphe_hold_gesture_speed_step_title">Стъпка на скоростта</string>
   <string name="morphe_hold_gesture_speed_sensitivity_title">Чувствителност на плъзгането</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Ниска</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Нормална</string>
@@ -1133,7 +1063,6 @@ Second \"item\" text"</string>
   <string name="morphe_hold_gesture_launcher_action_loop">Повтаряне на видео</string>
   <string name="morphe_hold_gesture_launcher_action_loop_off">Спри повтарянето</string>
   <string name="morphe_hold_gesture_launcher_action_screenshot">Запази кадър</string>
-  <string name="morphe_hold_gesture_launcher_action_watch_later">Запази в „Гледай по-късно“</string>
   <string name="morphe_hold_gesture_launcher_action_timestamp_url">Копирай връзка към текущото време</string>
   <string name="morphe_hold_gesture_screen_unlock">Докоснете, за да отключите</string>
   <string name="morphe_hold_gesture_frame_saved">Кадърът е запазен в %s</string>
@@ -1147,6 +1076,7 @@ Second \"item\" text"</string>
   <string name="morphe_captions_advanced_summary">Опции за бисквитки и транскрипции</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Видимост на автоматични надписи</string>
+  <string name="morphe_auto_captions_style_entry_default">По подразбиране</string>
   <string name="morphe_auto_captions_style_entry_1">Винаги показвай</string>
   <string name="morphe_auto_captions_style_entry_2">Никога не показвай</string>
   <string name="morphe_auto_captions_style_entry_3">Показване при включен звук</string>
@@ -1174,7 +1104,6 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Поправяне на транскрипцията</string>
   <string name="morphe_fix_transcript_summary">Отстранява грешка при проверка на предварително условие, която може да попречи на зареждането на транскрипцията</string>
   <!-- layout.captions.copyTranscriptPatch -->
-  <string name="morphe_copy_transcript_category_title">Копиране на транскрипцията</string>
   <string name="morphe_copy_transcript_title">Копиране на транскрипцията</string>
   <string name="morphe_copy_transcript_summary">Добавя бутон към панела с транскрипция, който копира транскрипцията на езика на субтитрите</string>
   <string name="morphe_copy_transcript_timestamps_title">Включване на времеви отпечатъци</string>
@@ -1202,7 +1131,6 @@ Second \"item\" text"</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_button_title">Скриване на бутона Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
-  <string name="morphe_hide_create_button_title">Скриване на бутона „Създаване“</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">Скриване на бутона „Абонаменти“</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1210,10 +1138,6 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">Показване на бутона „Търсене“</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Показване на бутона „Гледайте по-късно\"</string>
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-  <string name="morphe_watch_later_navigation_label">Гледайте по-късно</string>
-  <string name="morphe_show_settings_button_title">Показване на бутона „Настройки“</string>
-  <string name="morphe_show_settings_button_type_title">Действие на бутона за Настройки</string>
   <string name="morphe_show_settings_button_type_summary">Когато е активирано, докосването отваря настройките на Morphe, а продължителното натискане отваря настройките на YouTube; деактивирайте, за да ги размените</string>
   <string name="morphe_you_button_account_switcher_title">Прекиза за смяна на профила</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
@@ -1222,9 +1146,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_buttons_order_summary">Плъзгайте бутоните, за да промените техния ред в навигационната лента</string>
   <string name="morphe_swap_create_with_notifications_button_title">Размяна на бутона \"Създаване\" с бутона \"Известия\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Премества бутона за известия в навигационната лента, а бутона за създаване в лентата с инструменти. Ако промените не влязат в сила, опитайте се да преминете в инкогнито режим</string>
-  <string name="morphe_hide_navigation_button_labels_title">Скриване на етикетите на бутоните за навигация</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Скриване на точката за ново съдържание</string>
-  <string name="morphe_hide_navigation_bar_title">Скриване на лентата за навигация</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Това напълно скрива навигационната лента, включително раздела \"Вие\".
 
 За достъп до Настройки активирайте бутона Настройки чрез Общи → Инструменти → Показване на бутона Настройки"</string>
@@ -1244,9 +1166,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_style_entry_3">Прозрачен</string>
   <string name="morphe_navigation_bar_style_entry_4">Непрозрачен</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Този стил може да не се поддържа от вашето устройство или версия на YouTube и може да причини проблеми с оформянето или сривове</string>
-  <string name="morphe_navigation_bar_glass_title">Активирай навигационната лента със стъклен ефект.</string>
   <string name="morphe_navigation_bar_glass_summary">Показва навигационната лента като плаваща, заоблена, полупрозрачна капсула. Не е налично при стила \"Непрозрачна\" навигационна лента</string>
-  <string name="morphe_navigation_bar_glass_opacity_title">Непрозрачност на стъклото</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Регулирайте нивото на прозрачност на стъклената навигационна лента (0 е прозрачно, 100 е непрозрачно)</string>
   <string name="morphe_navigation_bar_glass_round_title">Закръглена стъклена навигационна лента</string>
   <string name="morphe_navigation_bar_glass_round_summary">Придава закръглени краища на стъклената навигационна лента, вместо ъгли като при стъкления миниплейър</string>
@@ -1256,14 +1176,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Регулирайте разстоянието между стъклената навигационна лента и долната част на екрана или системната навигация</string>
   <string name="morphe_navigation_bar_glass_size_title">Размер на стъклената лента за навигация</string>
   <string name="morphe_navigation_bar_glass_size_summary">Регулирайте височината, ширината и разстоянието между бутоните на стъклената лента за навигация с предгледно изображение. Бутоните, които не се побират в ширината на екрана, се скриват</string>
-  <string name="morphe_navigation_bar_glass_size_height">Височина</string>
-  <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
-  <string name="morphe_navigation_bar_glass_size_button_spacing">Разстояние между бутоните</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Показани бутони: %1$s от %2$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скрий бутона за чат</string>
   <string name="morphe_hide_toolbar_companion_button_title">Скриване на бутона „Companion“</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Скриване на бутона за микрофон</string>
-  <string name="morphe_hide_toolbar_search_button_title">Скриване на бутона за Търсене</string>
   <string name="morphe_toolbar_buttons_order_title">Ред на бутоните в лентата с инструменти</string>
   <string name="morphe_toolbar_buttons_order_summary">Плъзгайте бутоните, за да промените техния ред в лентата с инструменти</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1280,14 +1195,11 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_large_seekbar_title">Активиране на голямата лента за превъртане на цял екран</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_hide_shorts_category_title">Скриване на Shorts</string>
-  <string name="morphe_hide_shorts_channel_title">Скрий в страницата на канала</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Скрий в началната страница и свързани видеа</string>
-  <string name="morphe_hide_shorts_search_title">Скрий в резултатите от търсенето</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">Скрий в емисиите от абонаменти</string>
   <string name="morphe_hide_shorts_video_description_title">Скрий в описанието на видеото</string>
-  <string name="morphe_hide_shorts_history_title">Скрий в историята на гледане</string>
   <string name="morphe_hide_shorts_notifications_title">Скриване в push известията</string>
   <string name="morphe_shorts_player_screen_title">Плейър на Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Изберете кои компоненти да се показват в плейъра на Shorts</string>
@@ -1300,7 +1212,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Скриване на бутона \'Зелен екран\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Скриване на бутона за хаштагове</string>
   <string name="morphe_hide_shorts_info_panel_title">Скриване на информационния панел</string>
-  <string name="morphe_hide_shorts_like_button_title">Скриване на бутона Харесва ми</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Скриване на анимацията на фонтана при харесване</string>
   <string name="morphe_hide_shorts_live_preview_title">Скриване на визуализацията на живо</string>
@@ -1378,7 +1289,6 @@ Second \"item\" text"</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Отваряне на видеа в режим на цял екран</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Изключено</string>
-  <string name="morphe_open_videos_fullscreen_entry_2">Портрет</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Пейзаж</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
   <string name="morphe_fullscreen_video_scale_title">Мащаб на видеото на цял екран</string>
@@ -1414,7 +1324,6 @@ Second \"item\" text"</string>
   <string name="morphe_mute_video_button_title">Показване на бутона за заглушаване</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Прозрачност на наслагването на плейъра</string>
-  <string name="morphe_player_overlay_opacity_summary">Регулирайте нивото на прозрачност (0 е прозрачно, 100 е непрозрачно)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Лента за търсене</string>
   <string name="morphe_searchbar_type_entry_disabled">Деактивирано</string>
@@ -1425,7 +1334,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_title">Оформление на устройството</string>
   <string name="morphe_change_form_factor_entry_1">По подразбиране</string>
   <string name="morphe_change_form_factor_entry_2">Телефон</string>
-  <string name="morphe_change_form_factor_entry_3">Таблет</string>
   <string name="morphe_change_form_factor_entry_4">Автомобилен</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Промените включват:
 
@@ -1466,31 +1374,21 @@ Second \"item\" text"</string>
   <string name="morphe_custom_music_package_name_title">Име на пакета на музикалното приложение</string>
   <string name="morphe_custom_music_package_name_summary">Име на пакета на инсталираното музикално приложение</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Начална страница</string>
-  <string name="morphe_change_start_page_entry_default">По подразбиране</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Всички абонаменти</string>
   <string name="morphe_change_start_page_entry_browse">Преглед на канали</string>
   <string name="morphe_change_start_page_entry_courses">Курсове / Обучение</string>
-  <string name="morphe_change_start_page_entry_explore">Разгледай</string>
   <string name="morphe_change_start_page_entry_fashion">Мода и красота</string>
   <string name="morphe_change_start_page_entry_gaming">Игри</string>
-  <string name="morphe_change_start_page_entry_history">История</string>
-  <string name="morphe_change_start_page_entry_library">Библиотека</string>
   <string name="morphe_change_start_page_entry_liked_videos">Харесани видеа</string>
   <string name="morphe_change_start_page_entry_live">На живо</string>
   <string name="morphe_change_start_page_entry_movies">Филми</string>
   <string name="morphe_change_start_page_entry_music">Музика</string>
   <string name="morphe_change_start_page_entry_news">Новини</string>
   <string name="morphe_change_start_page_entry_notifications">Известия</string>
-  <string name="morphe_change_start_page_entry_playlists">Плейлисти</string>
-  <string name="morphe_change_start_page_entry_search">Търсене</string>
   <string name="morphe_change_start_page_entry_shopping">Пазаруване</string>
-  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Спорт</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Абонаменти</string>
   <string name="morphe_change_start_page_entry_trending">Трендове</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Виртуална реалност</string>
-  <string name="morphe_change_start_page_entry_watch_later">Гледай по-късно</string>
   <string name="morphe_change_start_page_entry_your_clips">Ваши клипове</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Деактивирай възстановяването при стартиране</string>
@@ -1532,7 +1430,6 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Изключване на възобновяването на миниплейъра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Деактивира мини плейъра „Продължи да гледаш“, функция на YouTube Premium, която се появява при стартиране на приложението</string>
-  <string name="morphe_miniplayer_screen_title">Миниплейър</string>
   <string name="morphe_miniplayer_screen_summary">Персонализирайте външния вид и поведението на минимизирания видео плейър</string>
   <string name="morphe_miniplayer_not_available_title">Допълнителни миниплеъри</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube премахна всички допълнителни миниплейъри. За да възстановите повече типове миниплейъри, пачнете YouTube 21.28.208 или по-стара версия</string>
@@ -1548,7 +1445,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_1">По подразбиране</string>
   <string name="morphe_miniplayer_type_entry_2">Минимален</string>
   <string name="morphe_miniplayer_type_entry_3">Минимален 2</string>
-  <string name="morphe_miniplayer_type_entry_4">Таблет</string>
   <string name="morphe_miniplayer_type_entry_5">Модерен 1</string>
   <string name="morphe_miniplayer_type_entry_6">Модерен 2</string>
   <string name="morphe_miniplayer_type_entry_7">Модерен 3</string>
@@ -1567,7 +1463,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_summary">Задайте началния размер на екрана, в пиксели</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Размерът в пиксели трябва да бъде между %1$s и %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Прозрачност на наслагването</string>
-  <string name="morphe_miniplayer_opacity_summary">Регулирайте нивото на прозрачност (0 е прозрачно, 100 е непрозрачно)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Бутонът „Назад“ излиза от емисията</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискането на „Назад“ винаги излиза от приложението, вместо да превърта до началото на емисията</string>
@@ -1579,6 +1474,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Скриване на лентата за състояние</string>
   <string name="morphe_hide_status_bar_summary">Скрива системната лента за състояние. Плъзнете надолу от горния ръб, за да я покажете за момент</string>
+  <string name="morphe_hide_status_bar_tabletop_title">Скриване на лентата със състояние в режим „на маса“</string>
+  <string name="morphe_hide_status_bar_tabletop_summary">Скрива системната лента със състояние при гледане на видео в режим „на маса“ на частично сгънато устройство, като видеото е в горната половина, а контролите за възпроизвеждане – в долната половина</string>
   <string name="morphe_hide_status_bar_avoid_cutout_title">Поддържане на плейъра под изрязането на дисплея</string>
   <string name="morphe_hide_status_bar_avoid_cutout_summary">Премества портретноя видео плейър под изрязането на дисплея, когато лентата за статус е скрита, оставяйки празна лента в горната част. Изключете това, за да позволите на видеото да запълни екрана зад изрязането</string>
   <string name="morphe_fix_status_bar_layout_title">Оправя статус бара да не покрива горните ленти</string>
@@ -1616,7 +1513,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_9">Оригинална торта</string>
   <string name="morphe_custom_branding_icon_entry_10">Оригинален метал</string>
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Лого на заглавието</string>
   <string name="morphe_header_logo_entry_1">По подразбиране</string>
   <string name="morphe_header_logo_entry_2">Обикновен</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
@@ -1651,7 +1547,6 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_about_summary">"DeArrow заменя кликбейт заглавията и миниатюрите с такива, създадени от общността, които са по-точни и по-малко сензационни. Заглавията се пишат и гласуват от общността, а миниатюрите са кадри, взети от видеоклипа
 
 Видеоклиповете се заявяват с кратък префикс на хеширания ID на видеоклипа, така че сървърът не може да разбере точно кой видеоклип гледате. Ако даден видеоклип няма DeArrow миниатюра, се показва оригиналната миниатюра или неподвижен кадър"</string>
-  <string name="morphe_dearrow_connection_toast_title">Показване на предупреждения за грешки във връзката</string>
   <string name="morphe_dearrow_connection_toast_summary">Показва известие, когато сървърът на DeArrow не е достъпен</string>
   <string name="morphe_dearrow_api_url_title">API крайна точка</string>
   <string name="morphe_dearrow_api_url_summary">URL адресът на крайната точка за съхранение на миниатюри DeArrow</string>
@@ -1673,7 +1568,6 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_guidelines_popup_already_read">Вече прочетено</string>
   <string name="morphe_dearrow_guidelines_popup_open">Покажи ми</string>
   <string name="morphe_dearrow_vote_title">DeArrow</string>
-  <string name="morphe_dearrow_vote_loading">Зарежда се…</string>
   <string name="morphe_dearrow_vote_fetch_failed">Не успяхме да заредим заглавията и миниатюрите на това видео</string>
   <string name="morphe_dearrow_vote_titles">Заглавия</string>
   <string name="morphe_dearrow_vote_thumbnails">Миниатюри</string>
@@ -1687,11 +1581,8 @@ Second \"item\" text"</string>
   <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
   <string name="morphe_dearrow_vote_unverified">Непотвърдено</string>
   <string name="morphe_dearrow_vote_locked">Заключено</string>
-  <string name="morphe_dearrow_vote_upvote">Одобри</string>
-  <string name="morphe_dearrow_vote_downvote">Отхвърли</string>
   <string name="morphe_dearrow_vote_new_title">Ново заглавие</string>
   <string name="morphe_dearrow_vote_new_title_hint">Въведете заглавие</string>
-  <string name="morphe_dearrow_vote_submit">Изпрати</string>
   <string name="morphe_dearrow_vote_new_thumbnail">Нова миниатюра</string>
   <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
   <string name="morphe_dearrow_vote_frame_step">%s с</string>
@@ -1707,18 +1598,10 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_vote_failed_code">Гласуването не можа да бъде изпратено (код на състоянието: %s)</string>
   <string name="morphe_dearrow_vote_failed_connection">Гласуването не можа да бъде изпратено. Проверете връзката си и опитайте отново</string>
   <string name="morphe_dearrow_submitting_title">Изпращане на заглавия и thumbnail-и</string>
-  <string name="morphe_dearrow_vote_time_step_title">Стъпка за корекция на времето</string>
   <string name="morphe_dearrow_vote_time_step_summary">Количеството за превъртане на бутоните за фина корекция на времето при изпращане на thumbnail (в милисекунди)</string>
-  <string name="morphe_dearrow_vote_time_step_invalid">Стойността трябва да бъде положително число</string>
-  <string name="morphe_dearrow_private_user_id_title">Вашият частен потребителски ID</string>
   <string name="morphe_dearrow_private_user_id_summary">Същият потребителски ID като в SponsorBlock. Той трябва да се пази в тайна. Това е като парола и не трябва да се споделя с никого. Ако някой го придобие, може да се представи за вас</string>
-  <string name="morphe_dearrow_private_user_id_invalid">Частният потребителски ID трябва да бъде поне 30 символа</string>
-  <string name="morphe_dearrow_account_loading">Зарежда се…</string>
   <string name="morphe_dearrow_account_connection_failure">Детайлите на профила временно не са налични</string>
-  <string name="morphe_dearrow_account_username">Вашето потребителско име: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_dearrow_account_username_change">Докоснете тук, за да промените потребителското си име. Потребителското име е същото като в SponsorBlock</string>
-  <string name="morphe_dearrow_account_username_changed">Потребителското име е променено</string>
-  <string name="morphe_dearrow_account_username_change_error">Неуспешна промяна на потребителското име: Статус: %1$s %2$s</string>
   <string name="morphe_dearrow_account_titles">Изпратили сте &lt;b&gt;%s&lt;/b&gt; заглавия</string>
   <string name="morphe_dearrow_account_titles_summary">Докоснете тук, за да видите вашите заглавия</string>
   <string name="morphe_dearrow_account_thumbnails">Изпратили сте &lt;b&gt;%s&lt;/b&gt; thumbnail-а</string>
@@ -1772,7 +1655,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">Показване на менюто за забавяне на видеото</string>
   <string name="morphe_video_delay_dialog_input_hint">Забавяне в милисекунди</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_video_effect_button_flyout_title">Покажи меню Видео ефект</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Запомни качеството на Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Прилага вашата ръчна селекция на качество към всички бъдещи Shorts</string>
@@ -1910,14 +1792,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_show_button_summary">Добавя бутон на плеъра за проследяване или отваряне на поредицата от текущия видеоклип</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Записвай прогреса на следените поредици</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Записвай възпроизвеждането на това устройство за запазените поредици и отметки</string>
-  <string name="morphe_series_tracker_ui_cancel">Отказ</string>
-  <string name="morphe_series_tracker_ui_save">Запази</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Запази отметка</string>
   <string name="morphe_series_tracker_ui_series_name">Име на поредицата</string>
   <string name="morphe_series_tracker_ui_series_options">Опции за поредица</string>
   <string name="morphe_series_tracker_ui_library_options">Опции за библиотека</string>
   <string name="morphe_series_tracker_ui_refresh_episodes">Обнови епизодите</string>
-  <string name="morphe_series_tracker_ui_rename">Преименувай</string>
   <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Отвори плейлиста в YouTube</string>
   <string name="morphe_series_tracker_ui_remove_from_library">Премахни от библиотеката</string>
   <string name="morphe_series_tracker_ui_playlist_link_or_id">Връзка към плейлист или ID</string>
@@ -1968,7 +1847,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_saved_position">Запазено видео · %s</string>
   <string name="morphe_series_tracker_follow">Проследявай поредица</string>
   <string name="morphe_series_tracker_view_series">Разгледай поредицата</string>
-  <string name="morphe_series_tracker_continue">Продължи</string>
   <string name="morphe_series_tracker_start_here">Започнете тук</string>
   <string name="morphe_series_tracker_start_saved">Началната точка е запазена</string>
   <string name="morphe_series_tracker_watched_to_here">Прегледано до тук</string>
@@ -2053,8 +1931,6 @@ AVC (H.264)
   <string name="morphe_niconico_comments_summary">Показва бутон с припокриване във видеоплейъра. Докоснете, за да покажете или скриете коментарите, докоснете и задръжте за бързи настройки</string>
   <string name="morphe_niconico_comments_pip_title">Показване в режим „картина в картина“</string>
   <string name="morphe_niconico_comments_pip_summary">Коментарите са мащабирани, за да се поберат в прозореца</string>
-  <string name="morphe_niconico_comments_appearance_title">Външен вид</string>
-  <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
   <string name="morphe_niconico_comments_video_types_title">Видове видео</string>
   <string name="morphe_niconico_comments_font_size_title">Размер на шрифта на коментарите</string>
   <string name="morphe_niconico_comments_font_size_summary">Размер на текста на коментарите (12-40 sp)</string>
@@ -2078,7 +1954,6 @@ AVC (H.264)
   <string name="morphe_niconico_comments_hide_crowded_summary">Когато зоната за показване е пълна, новите коментари се крият вместо да се застъпват с други коментари</string>
   <string name="morphe_niconico_comments_max_length_title">Максимална дължина на коментара</string>
   <string name="morphe_niconico_comments_max_length_summary">Скрива коментари с повече знаци от посочения брой. Всеки емоджи се брои за един знак</string>
-  <string name="morphe_niconico_comments_max_length_no_limit">Без ограничение</string>
   <string name="morphe_niconico_comments_max_refresh_rate_title">Максимална честота на опресняване</string>
   <string name="morphe_niconico_comments_max_refresh_rate_summary">Най-високата честота на опресняване на дисплея, използвана, докато коментарите се движат. По-ниските стойности консумират по-малко батерия</string>
   <string name="morphe_niconico_comments_live_streams_title">Показване при предавания на живо</string>
@@ -2091,13 +1966,11 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">Във видеа без чат, най-популярните коментари, които съдържат време като 1:23, се показват в този момент</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Показвай времеви коментари с повтор на чата</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">При повтори на стриймове на живо и премиери, времевите коментари се показват също и с чата</string>
-  <string name="morphe_niconico_comments_all_settings">Всички настройки</string>
   <string name="morphe_niconico_comments_reset_title">Нулиране на тези настройки?</string>
   <string name="morphe_live_chat_translate_screen_title">Превод на чата на живо</string>
   <string name="morphe_live_chat_translate_screen_summary">Превеждай съобщенията от чата на живо и повторението на чата</string>
   <string name="morphe_live_chat_translate_title">Преведи чата на живо</string>
   <string name="morphe_live_chat_translate_summary">Превежда съобщенията от чата на живо и повторението на чата, щом се появят на екрана.</string>
-  <string name="morphe_live_chat_translate_language_title">Език за превод</string>
   <string name="morphe_live_chat_translate_exclude_title">Изключени езици</string>
   <string name="morphe_live_chat_translate_exclude_summary">Кодове на езици, разделени със запетая, като например id,en. Съобщенията на тези езици не се превеждат.</string>
   <string name="morphe_live_chat_translate_provider_google">Google Превод</string>
@@ -2108,7 +1981,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_copy_button_summary">Добавя малък бутон за копиране на всяко съобщение в чата.</string>
   <string name="morphe_live_chat_translate_copied">Съобщението е копирано в клипборда</string>
   <string name="morphe_live_chat_translate_style_title">Стил на превода</string>
-  <string name="morphe_live_chat_translate_style_translated_only">Само превод</string>
   <string name="morphe_live_chat_translate_style_original_and_translated">Оригинал (превод)</string>
   <string name="morphe_live_chat_translate_style_translated_and_original">(Превод) оригинал</string>
   <string name="morphe_live_chat_translate_bold_title">Удебели преведения текст</string>
@@ -2119,10 +1991,8 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_color_summary">Задайте HEX кода на цвета за преведения текст</string>
   <string name="morphe_live_chat_translate_max_length_title">Максимална дължина на съобщението</string>
   <string name="morphe_live_chat_translate_max_length_summary">По-дългите съобщения се показват непреведени.</string>
-  <string name="morphe_live_chat_translate_max_length_no_limit">Без ограничение</string>
   <string name="morphe_ghost_play_screen_title">Режим „Призрак“</string>
   <string name="morphe_ghost_play_screen_summary">Гледайте видеоклипове, без да влияете на историята на гледане или препоръките</string>
-  <string name="morphe_ghost_play_cat_general_title">Основни</string>
   <string name="morphe_ghost_play_cat_buttons_title">Бутони</string>
   <string name="morphe_ghost_play_cat_rules_title">Правила за автоматичен Ghost режим</string>
   <string name="morphe_ghost_play_cat_history_title">Локална история</string>
@@ -2171,11 +2041,8 @@ AVC (H.264)
   <string name="morphe_ghost_play_timer_set_toast">Режим „Призрак“ е активен за %d минути</string>
   <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Таймерът е изчистен — Режим „Призрак“ остава ВКЛ</string>
   <string name="morphe_ghost_play_timer_invalid_toast">Въведете времетраене между 1 и 720 минути</string>
-  <string name="morphe_ghost_play_dialog_title">Режим „Призрак“</string>
   <string name="morphe_ghost_play_state_on">Вкл</string>
   <string name="morphe_ghost_play_state_off">Изкл</string>
-  <string name="morphe_ghost_play_close">Затвори</string>
-  <string name="morphe_ghost_play_open_settings">Всички настройки</string>
   <string name="morphe_ghost_play_quick_power_hint">Докоснете, за да превключите Режим „Призрак“</string>
   <string name="morphe_ghost_play_quick_timer_title">Режим „Призрак“ с таймер</string>
   <string name="morphe_ghost_play_quick_timer_sub">Докоснете, за да изберете продължителност</string>
@@ -2183,9 +2050,7 @@ AVC (H.264)
   <string name="morphe_ghost_play_quick_timer_running_sub">Автоматично се връща към нормален режим след приключване</string>
   <string name="morphe_ghost_play_quick_timer_change">Промяна на времето</string>
   <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Изчистване на таймера (оставане ВКЛ)</string>
-  <string name="morphe_ghost_play_timer_minutes_chip">%d мин</string>
   <string name="morphe_ghost_play_timer_custom_hint">Персонализирани минути (1–720)…</string>
-  <string name="morphe_ghost_play_timer_custom_set">Задаване</string>
   <string name="morphe_ghost_play_quick_channel_state_on">Авто-призрак ВКЛ за този канал</string>
   <string name="morphe_ghost_play_quick_channel_state_off">Авто-ghost ИЗКЛ. за този канал</string>
   <string name="morphe_ghost_play_quick_channel_count">%d канала са конфигурирани</string>
@@ -2197,23 +2062,18 @@ AVC (H.264)
   <string name="morphe_ghost_play_history_search_hint">Филтрирай по заглавие на видео или канал…</string>
   <string name="morphe_ghost_play_history_no_match">Няма съвпадащи видеа в локалната Ghost история</string>
   <string name="morphe_ghost_play_history_empty">Все още няма локална Ghost история</string>
-  <string name="morphe_ghost_play_history_clear_all">Изчисти всички</string>
   <string name="morphe_ghost_play_history_clear_confirm_title">Изтрий локалната история на Ghost?</string>
   <string name="morphe_ghost_play_history_clear_confirm_message">Това премахва всички записани на устройството записи в режим Ghost и не може да бъде отменено.</string>
   <string name="morphe_ghost_play_history_cleared_toast">Локалната история на Ghost е изчистена</string>
   <string name="morphe_ghost_play_history_item_removed_toast">Премахнато от локалната история на Ghost</string>
-  <string name="morphe_ghost_play_channels_manager_title">Канали за автоматичен ghost</string>
   <string name="morphe_ghost_play_channels_tab_saved">Добавени (%d)</string>
   <string name="morphe_ghost_play_channels_tab_search">Търсене &amp; добавяне</string>
   <string name="morphe_ghost_play_channels_filter_hint">Филтриране на добавените канали по име, @handle или тема…</string>
   <string name="morphe_ghost_play_channels_empty">Още не са добавени канали. Превключете към \"Търсене &amp; добавяне\", за да намерите канали по име, @handle или URL адрес.</string>
   <string name="morphe_ghost_play_channels_filter_no_match">Няма добавени канали, които отговарят на вашия филтър</string>
   <string name="morphe_ghost_play_channels_add_current">Възпроизвеждане: %s</string>
-  <string name="morphe_ghost_play_channels_add_button">Добавяне</string>
   <string name="morphe_ghost_play_channels_added_badge">Добавено</string>
-  <string name="morphe_ghost_play_channels_delete_button">Премахване</string>
   <string name="morphe_ghost_play_channels_search_hint">Име на канал, @handle или URL адрес…</string>
-  <string name="morphe_ghost_play_channels_search_button">Търсене</string>
   <string name="morphe_ghost_play_channels_search_guide">Въведете име на канал, @handle или URL адрес на YouTube канал и докоснете Търсене</string>
   <string name="morphe_ghost_play_channels_searching">Търсене на YouTube канали…</string>
   <string name="morphe_ghost_play_channels_search_error">Търсенето не успя. Проверете връзката си и опитайте отново.</string>
@@ -2222,4 +2082,29 @@ AVC (H.264)
   <string name="morphe_ghost_play_channels_recent_videos">Последни видеа</string>
   <string name="morphe_ghost_play_channels_loading_details">Зареждане на последните видеа…</string>
   <string name="morphe_ghost_play_channels_no_recent_videos">Няма намерени последни видеа (докоснете, за да опитате отново)</string>
+  <!-- Shared YouTube strings -->
+  <string name="morphe_all_settings">Всички настройки</string>
+  <string name="morphe_clear_all">Изчисти всичко</string>
+  <string name="morphe_haptic_feedback_title">Разрешаване на тактилна обратна връзка</string>
+  <string name="morphe_hide_dislike_button_title">Скриване на бутона „Не харесва ми“</string>
+  <string name="morphe_hide_in_channel_page_title">Скриване в страницата на канала</string>
+  <string name="morphe_hide_in_search_results_title">Скриване в резултатите от търсенето</string>
+  <string name="morphe_hide_in_watch_history_title">Скриване в историята на гледане</string>
+  <string name="morphe_hide_like_button_title">Скриване на бутона „Харесва ми“</string>
+  <string name="morphe_no_limit">Без ограничение</string>
+  <string name="morphe_opacity_summary">Регулирайте нивото на прозрачност (0 е прозрачно, 100 е непрозрачно)</string>
+  <string name="morphe_portrait">Портрет</string>
+  <string name="morphe_queue_add_to_queue">Добавяне в опашката</string>
+  <string name="morphe_queue_added">Добавено в опашката</string>
+  <string name="morphe_queue_play_last">Пускане на последното в опашката</string>
+  <string name="morphe_queue_play_next">Пускане на следващото в опашката</string>
+  <string name="morphe_queue_title">Опашка</string>
+  <string name="morphe_save_to_watch_later_title">Запазване в „Гледай по-късно“</string>
+  <string name="morphe_search">Търсене</string>
+  <string name="morphe_set">Задаване</string>
+  <string name="morphe_shorts_title">Shorts</string>
+  <string name="morphe_speed_step_title">Стъпка на скорост</string>
+  <string name="morphe_tablet">Таблет</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later">Гледай по-късно</string>
 </resources>

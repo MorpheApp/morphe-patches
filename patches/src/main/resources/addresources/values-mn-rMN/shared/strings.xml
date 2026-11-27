@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Дахин ачаалах шаардлагатай</string>
   <string name="morphe_settings_restart_dialog_message">Энэхүү өөрчлөлтийг хэрэгжүүлэхийн тулд аппликейшныг дахин ачааллана уу</string>
   <string name="morphe_settings_restart">Дахин ачаалах</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортлох</string>
-  <string name="morphe_settings_import_copy">Хуулах</string>
   <string name="morphe_settings_import_reset">Morphe тохиргоог анхны хэвээр сэргээлээ</string>
   <string name="morphe_settings_import_success">%s тохиргоог импорт хийлээ</string>
   <string name="morphe_settings_import_failure_parse">Импортлж чадсангүй: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Патчууд</string>
   <string name="morphe_settings_about_version">Хувилбар</string>
-  <string name="morphe_settings_about_close">Хаах</string>
   <string name="morphe_settings_about_prerelease">Туршилтын хувилбар</string>
   <string name="morphe_settings_about_update_available">Шинэчлэл боломжтой: %s</string>
   <string name="morphe_settings_about_update_hint">Патчуудаа шинэчлэхийн тулд Morphe-г ашиглан энэ аппликейшнийг дахин патчлах хэрэгтэй</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Лицензийн мэдэгдэл</string>
-  <string name="morphe_settings_about_licenses_loading">Ачаалж байна…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Алдаа засах</string>
   <string name="morphe_debug_screen_summary">Хөгжүүлэгчийн ахисан түвшний тохиргоо болон оношилгооны логуудыг тохируулах</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Алдааг засах логуудыг амжилттай экспортлолоо</string>
   <string name="morphe_debug_export_logs_failed">Алдааг засах логуудыг экспортлоход алдаа гарлаа</string>
   <string name="morphe_debug_logs_search_hint">Алдааны лог хайх…</string>
-  <string name="morphe_debug_export_logs_clear">Цэвэрлэх</string>
   <string name="morphe_debug_logs_disabled">Алдаа засах лог бүртгэл идэвхгүй байна</string>
   <string name="morphe_debug_logs_none_found">Алдааг засах лог олдсонгүй</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Алдааг засах логуудыг хууллаа</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Блоклогдсон (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Албадсан (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Автомат</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Үгүй</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Тийм</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Албадан асаах</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Блоклох</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Устгах</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Боломжийн төлөвүүдийг хадгаллаа</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Функцын төлөвүүдийг шинэчлэлээ</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Боломжийн төлөвүүдийг санах ой руу хууллаа</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Таны MicroG v%1$s хувилбар хуучирсан тул асуудал үүсгэж болзошгүй.
 
 MicroG-г хамгийн сүүлийн v%2$s хувилбар руу шинэчлэнэ үү"</string>
-  <string name="gms_core_dialog_update_text">Шинэчлэх</string>
   <string name="gms_core_dialog_ignore_text">Үл тоомсорлох</string>
   <string name="gms_core_dialog_conflict_message">"Суусан MicroG нь Morphe-ийн зөвлөсөн хувилбар биш байна:
 
@@ -220,7 +207,6 @@ MicroG-г хамгийн сүүлийн v%2$s хувилбар руу шинэч
 MicroG-ийн батерейны оновчлолыг идэвхгүй болгох нь батерейны хэрэглээнд сөргөөр нөлөөлөхгүй.
 
 Үргэлжлүүлэх товчийг дарж, оновчлолын өөрчлөлтийг зөвшөөрнө үү"</string>
-  <string name="gms_core_dialog_continue_text">Үргэлжлүүлэх</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG-ийн батерей оновчлолын цонхыг харуулах</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Үүнийг идэвхгүй болгосноор MicroG-ийн батарейг оптимизошлох саналжийг нуух болно.
 
@@ -259,9 +245,29 @@ MicroG-ийн батерейны оновчлолыг идэвхгүй болг�
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Алдааны засварууд</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Бусад өөрчлөлтүүд</string>
   <string name="morphe_patches_update_notice_dialog_more">…ба өдөр %s нэмэгдэх</string>
-  <string name="morphe_patches_update_notice_dialog_update">Шинэчлэх</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Хаах</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Системийн алдааны лог хэрэглэгчийн баримт бичигт хадгалагдлаа: %s</string>
   <string name="morphe_crash_log_saved">Системийн алдааны лог хадгалагдлаа: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Morphe-ийн тухай</string>
+  <string name="morphe_ads_screen_title">Зар</string>
+  <string name="morphe_misc_screen_title">Бусад</string>
+  <string name="morphe_navigation_bar_screen_title">Навигацийн мөр</string>
+  <string name="morphe_post_buttons_screen_title">Постны товчнууд</string>
+  <string name="morphe_custom_branding_icon_title">Апп-ын дүрс</string>
+  <string name="morphe_download">Татаж авах</string>
+  <string name="morphe_hide_create_button_title">\"Үүсгэх\" товчийг нуух</string>
+  <string name="morphe_hide_post_comment_button_title">Сэтгэгдлийн товчийг нуух</string>
+  <string name="morphe_sanitize_sharing_links_summary">Хуваалцсан холбоосуудаас хяналтын хайлтын параметрийг устгана</string>
+  <string name="morphe_sanitize_sharing_links_title">Хуваалцах холбоосуудыг цэвэрлэх</string>
+  <string name="morphe_settings_add">Нэмэх</string>
+  <string name="morphe_settings_clear">Цэвэрлэх</string>
+  <string name="morphe_settings_close">Хаах</string>
+  <string name="morphe_settings_continue">Үргэлжлүүлэх</string>
+  <string name="morphe_settings_copy">Хуулах</string>
+  <string name="morphe_settings_delete">Устгах</string>
+  <string name="morphe_settings_remove">Хасах</string>
+  <string name="morphe_settings_update">Шинэчлэх</string>
 </resources>

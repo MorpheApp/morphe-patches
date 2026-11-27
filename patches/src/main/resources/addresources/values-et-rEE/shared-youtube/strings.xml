@@ -81,7 +81,6 @@ Veenduge, et paketinimi on õige ja rakendus on installitud"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Customiseeritud</string>
-  <string name="morphe_custom_branding_icon_title">Rakenduse ikoon</string>
   <string name="morphe_custom_branding_icon_entry_1">Originaal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe must</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tume</string>
@@ -107,7 +106,6 @@ Ikooni kõikjal muutmiseks rakendage pätš uuesti ja muutke pätsi valikut \"Ra
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe teavitus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Teie vaatamislugu ei salvestata.&lt;br&gt;&lt;br&gt;See on tõenäoliselt tingitud DNS-i reklaamiblokeerijast või võrguproxyst.&lt;br&gt;&lt;br&gt;Selle parandamiseks lisage &lt;b&gt;s.youtube.com&lt;/b&gt; lubatud loendisse või lülitage välja kõik DNS-i blokeerijad ja proxyd</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ära näita uuesti</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videovoogude imiteerimine</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigureeri kliendi imiteerimist, et vältida taasesituse probleeme</string>
@@ -134,7 +132,6 @@ Puudutage OK, et avada Android System WebView."</string>
 Video esitus võib ebaõnnestuda, kuni Android System WebView on uuendatud uusimale versioonile.
 
 Puudutage OK, et avada Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ära rohkem näita</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView pole installitud. Installige see video esituse parandamiseks</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Teavituste meediakontrollid</string>
   <string name="morphe_notification_media_screen_summary">Kohandage lukustusväljal ja teavituste paneelil kuvatavaid esituskontrolle</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Peida eelmise &amp; järgmise video nupud</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Peidab nupud Eelmine ja Järgmine meediateavituses, lukustatud ekraanil ja kõrvaside juhtimises</string>
   <string name="morphe_disable_notification_media_seekbar_title">Keela otsinguliist</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Hoiab ära otsinguriiba lohistamise lukuseinal ja teavituste paneelil</string>
@@ -244,10 +240,8 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_video_effects_custom_restore">Taasta vaikeväärtused</string>
   <string name="morphe_video_effects_custom_add_title">Uus efekt</string>
   <string name="morphe_video_effects_custom_edit_title">Redigeeri efekti</string>
-  <string name="morphe_video_effects_custom_name_hint">Nimi</string>
   <string name="morphe_video_effects_custom_name_empty">Sisestage efekti nimi</string>
   <string name="morphe_video_effects_custom_name_exists">Selle nimega efekt on juba olemas</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopeeri kood</string>
   <string name="morphe_video_effects_custom_error_title">Efektil on viga</string>
   <string name="morphe_video_effects_custom_error_message">"Videoid kuvatakse ilma efektita seni, kuni kood on parandatud. Saatke see viga tehisintellektile, kes koodi kirjutas:
 
@@ -257,7 +251,6 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
 Paluge tehisintellektilt lühemat koodi või liimige kood osade kaugu."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopeerimise viga</string>
   <string name="morphe_video_effects_custom_save_anyway">Salvesta ikkagi</string>
-  <string name="morphe_video_effects_custom_delete">Kustuta</string>
   <string name="morphe_video_effects_custom_delete_title">Kas kustutada efekt?</string>
   <string name="morphe_video_effects_custom_delete_message">%s kustutatakse.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Paluge tehisintellektilt lühemat koodi või liimige kood osade kaugu."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Selle funktsiooni kasutamiseks muutke \'Videovoolude imiteerimine\' muu kliendiks, välja arvatud \'Android Studio\' ja \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Jagamislinkide puhastamine</string>
-  <string name="morphe_sanitize_sharing_links_summary">Eemaldab jagatud linkidest jälgimisparametrid</string>
   <string name="morphe_replace_music_with_youtube_title">Asenda jagamislingid aadressiga youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Asendab jagatud linkides aadressi music.youtube.com aadressiga youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Muuda jagamislinkideks youtu.be</string>
@@ -371,7 +362,6 @@ Kui see hiljem välja lülitada, on soovitatav puhastada rakenduse andmed, et v�
   <string name="morphe_custom_font_type_title">Font</string>
   <string name="morphe_custom_font_type_entry_default">Vaikimisi</string>
   <string name="morphe_custom_font_type_entry_system">Seadme süsteemifont</string>
-  <string name="morphe_custom_font_type_entry_custom">Kohandatud fondifail</string>
   <string name="morphe_custom_font_file_title">Kohandatud fondifail</string>
   <string name="morphe_custom_font_file_summary">Valige TTF või OTF fondifail</string>
   <string name="morphe_custom_font_file_invalid">Valitud fail ei ole TTF või OTF font</string>
@@ -381,7 +371,6 @@ Kui see hiljem välja lülitada, on soovitatav puhastada rakenduse andmed, et v�
   <string name="morphe_glass_menus_screen_summary">Menüüd on nagu matte klaas häguse sisu kohal</string>
   <string name="morphe_glass_menus_title">Luba klaasmenüüd</string>
   <string name="morphe_glass_menus_summary">Kuvab menüüd ja alumised paneelid kui matt klaas, kus nende taga olev sisu on hägusetatud</string>
-  <string name="morphe_glass_menus_opacity_title">Klaasi läbipaistmatus</string>
   <string name="morphe_glass_menus_opacity_summary">Kui palju menüü katab häguse sisu (0 on läbipaistev, 100 on läbivaatamatu)</string>
   <string name="morphe_glass_menus_blur_title">Hägu</string>
   <string name="morphe_glass_menus_blur_summary">Kui palju on menüü taga olev sisu hägune</string>
@@ -402,7 +391,6 @@ Kui see hiljem välja lülitada, on soovitatav puhastada rakenduse andmed, et v�
   <string name="morphe_ryd_dislike_percentage_summary">Kuvab mittemeeldimised protsendina meeldimistest asemel arvuna</string>
   <string name="morphe_ryd_estimated_like_title">Kuva hinnangulikud meeldimised</string>
   <string name="morphe_ryd_estimated_like_summary">Kuvab hinnanguliku meeldimiste arvu videotel, kus looja on meeldimised keelanud</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Kuva ühenduse vea teavitused</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Kuvab teavituse, kui Return YouTube Dislike server ei ole saadaval</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike taastab mittemeeldimise arvud, mille YouTube 2021. aastal peitis. Arvud pärinevad enne eemaldamist arhiveeritud andmetest ja uusimate videote puhul on need hinnatud kasutajate hääletuste põhjal, seega on need ligikaudsed ja uuenevad iga mõne päeva tagant
 
@@ -424,8 +412,89 @@ Vaadatud video ID saadetakse Return YouTube Dislike API-le ning teie meeldimis- 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Kliendi kiirusepiirangutega ei esinenud</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliendi kiirusepiiranguga tekkis %s korda</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekundit</string>
-  <string name="morphe_navigation_bar_screen_title">Navigeerimisriba</string>
   <string name="morphe_navigation_bar_screen_summary">Vali, millised nupud kuvatakse alumisel navigeerimisribal</string>
   <string name="morphe_toolbar_screen_title">Tööriistariba</string>
   <string name="morphe_toolbar_screen_summary">Vali, millised komponendid kuvatakse tööriistade ribal</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekund</string>
+  <string name="morphe_duration_2s">2 sekundit</string>
+  <string name="morphe_duration_3s">3 sekundit</string>
+  <string name="morphe_duration_4s">4 sekundit</string>
+  <string name="morphe_duration_5s">5 sekundit</string>
+  <string name="morphe_duration_6s">6 sekundit</string>
+  <string name="morphe_duration_7s">7 sekundit</string>
+  <string name="morphe_duration_8s">8 sekundit</string>
+  <string name="morphe_duration_9s">9 sekundit</string>
+  <string name="morphe_duration_10s">10 sekundit</string>
+  <string name="morphe_change_start_page_entry_default">Vaikimisi</string>
+  <string name="morphe_change_start_page_entry_explore">Avasta</string>
+  <string name="morphe_change_start_page_entry_history">Ajalugu</string>
+  <string name="morphe_change_start_page_entry_library">Raamatukogu</string>
+  <string name="morphe_change_start_page_entry_playlists">Esitusloendid</string>
+  <string name="morphe_change_start_page_entry_search">Otsing</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Tellimused</string>
+  <string name="morphe_change_start_page_title">Avaleht</string>
+  <string name="morphe_action_buttons_screen_title">Toimingunupud</string>
+  <string name="morphe_comments_screen_title">Kommentaarid</string>
+  <string name="morphe_feed_screen_title">Voog</string>
+  <string name="morphe_flyout_menu_screen_title">Hüpikmenüü</string>
+  <string name="morphe_general_title">Üldine</string>
+  <string name="morphe_miniplayer_screen_title">Minipleier</string>
+  <string name="morphe_player_screen_title">Pleier</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Välimus</string>
+  <string name="morphe_cancel">Tühista</string>
+  <string name="morphe_comments_screen_summary">Vali, millised komponendid kommentaaride jaotises kuvatakse</string>
+  <string name="morphe_copy_code">Kopeeri kood</string>
+  <string name="morphe_corner_radius_title">Nurga raadius</string>
+  <string name="morphe_do_not_show_again">Ära rohkem näita</string>
+  <string name="morphe_download_force_4k_title">Sunni 4K allalaadimise võimaldamine</string>
+  <string name="morphe_glass_opacity_title">Klaasi läbipaistmatus</string>
+  <string name="morphe_header_logo_title">Päise logo</string>
+  <string name="morphe_hide_action_bar_title">Peida toiminguriba</string>
+  <string name="morphe_hide_cast_button_title">Peida ülekandmisnupp</string>
+  <string name="morphe_hide_comments_button_title">Peida nupp Kommentaarid</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Peida kogukonnajuhised</string>
+  <string name="morphe_hide_comments_emoji_button_title">Peida emotikonide nupp</string>
+  <string name="morphe_hide_comments_gif_button_title">Peida GIF-nupp</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Peidab kommentaaridele ja vastustele lisatud GIF-id ja pildid</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Peida GIF-id ja pildid</string>
+  <string name="morphe_hide_comments_info_button_title">Peida teabenupp</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Peida ajatempli nupp</string>
+  <string name="morphe_hide_horizontal_shelves_title">Peida horisontaalsed riiulid</string>
+  <string name="morphe_hide_like_dislike_button_title">Peida Meeldib ja Ei meeldib nupp</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Peida meeldimise ja mittemeeldimise nupud</string>
+  <string name="morphe_hide_navigation_bar_title">Peida navigeerimisriba</string>
+  <string name="morphe_hide_navigation_button_labels_title">Peida navigeerimisnuppude sildid</string>
+  <string name="morphe_hide_previous_next_buttons_title">Peida eelmise &amp; järgmise video nupud</string>
+  <string name="morphe_hide_search_button_title">Peida otsingunupp</string>
+  <string name="morphe_hide_translate_button_title">Peida tõlkenupp</string>
+  <string name="morphe_hide_video_ads_title">Peida videoreklaamid</string>
+  <string name="morphe_loading">Laadimine…</string>
+  <string name="morphe_name">Nimi</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Nuppude vahe</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Kuvatud nupud: %1$s est %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Kõrgus</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimaalne laius</string>
+  <string name="morphe_navigation_bar_glass_title">Luba klaasist navigeerimisriba</string>
+  <string name="morphe_positive_number_invalid">Väärtus peab olema positiivne number</string>
+  <string name="morphe_private_user_id_invalid">Kasutaja privaatne ID peab olema vähemalt 30 märki pikkune</string>
+  <string name="morphe_private_user_id_title">Teie privaatne kasutaja ID</string>
+  <string name="morphe_rename">Nimeta ümber</string>
+  <string name="morphe_show_settings_button_title">Kuva seadete nupp</string>
+  <string name="morphe_show_settings_button_type_title">Seadete nupu tegevus</string>
+  <string name="morphe_show_video_effect_menu_title">Kuva videofekti menüü</string>
+  <string name="morphe_submit">Saada</string>
+  <string name="morphe_time_adjustment_step_title">Aja reguleerimise samm</string>
+  <string name="morphe_toast_on_connection_error_title">Kuva ühenduse vea teavitused</string>
+  <string name="morphe_toast_on_skip_title">Kuva sättmise teavitus</string>
+  <string name="morphe_translated_only">Ainult tõlgitud</string>
+  <string name="morphe_translating">Tõlkimine…</string>
+  <string name="morphe_translation_language_title">Tõlkekeel</string>
+  <string name="morphe_username_change_unknown_error">Kasutajanime ei õnnestunud muuta: Staatus: %1$s %2$s</string>
+  <string name="morphe_username_changed">Kasutajanimi muudeti edukalt</string>
+  <string name="morphe_username_html">Teie kasutajanimi: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Videod</string>
+  <string name="morphe_vote_downvote">Miinus</string>
+  <string name="morphe_vote_upvote">Pluss</string>
 </resources>

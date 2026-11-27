@@ -81,7 +81,6 @@ Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasgemaak</string>
-  <string name="morphe_custom_branding_icon_title">Program ikoon</string>
   <string name="morphe_custom_branding_icon_entry_1">Oorspronklik</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe swart</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe donker</string>
@@ -107,7 +106,6 @@ Om die ikoon oral te verander, pas die patch weer toe en verander die patchopsie
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Kennisgewing</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Jou kykgeskiedenis word nie gestoor nie.&lt;br&gt;&lt;br&gt;Dit word heel waarskynlik veroorsaak deur \'n DNS-advertensieblokkeerder of \'n netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit op te los, voeg &lt;b&gt;s.youtube.com&lt;/b&gt; by die witlys of skakel alle DNS-blokkeerders en -proxies af</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Moenie weer wys nie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videostrome naboots</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigureer kliëntvervalsing om speelprobleme te voorkom</string>
@@ -134,7 +132,6 @@ Tik OK om Android System WebView oop te maak."</string>
 Videowiedergawing mag misluk totdat Android System WebView na die nuutste weergawe opgedateer is.
 
 Tik OK om Android System WebView oop te maak."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Moet nie weer wys nie</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView is nie geïnstalleer nie. Installeer dit om videowiedergawing reg te stel</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Om in te teken, druk voortgaan hieronder"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kennisgewing-mediabediening</string>
   <string name="morphe_notification_media_screen_summary">Pas die afspeelbeheer aan wat op jou sluitskerm en kennisgewingspaneel vertoon word</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Verberg Vorige- &amp; Volgende-knoppies</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Verberg Vorige- en Volgende-knoppies in die media-kennisgewing, op die sluitskerm en in die koptelefoonbeheer</string>
   <string name="morphe_disable_notification_media_seekbar_title">Deaktiveer soekbalk</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Voorkom dat die soekbalk op die sluitskerm en kennisgewingspaneel gesleep word</string>
@@ -244,10 +240,8 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_video_effects_custom_restore">Herstel verstekke</string>
   <string name="morphe_video_effects_custom_add_title">Nuwe effek</string>
   <string name="morphe_video_effects_custom_edit_title">Wysig effek</string>
-  <string name="morphe_video_effects_custom_name_hint">Naam</string>
   <string name="morphe_video_effects_custom_name_empty">Voer \'n naam vir die effek in</string>
   <string name="morphe_video_effects_custom_name_exists">\'n Effek met hierdie naam bestaan reeds</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopieer kode</string>
   <string name="morphe_video_effects_custom_error_title">Effek het \'n fout</string>
   <string name="morphe_video_effects_custom_error_message">"Video's word sonder die effek gewys totdat die kode reggestel is. Gee hierdie fout aan die KI wat die kode geskryf het:
 
@@ -257,7 +251,6 @@ Om in te teken, druk voortgaan hieronder"</string>
 Vra die KI vir korter kode, of plak die kode in dele."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopieer fout</string>
   <string name="morphe_video_effects_custom_save_anyway">Stoor tog</string>
-  <string name="morphe_video_effects_custom_delete">Vee uit</string>
   <string name="morphe_video_effects_custom_delete_title">Vee effek uit?</string>
   <string name="morphe_video_effects_custom_delete_message">%s sal uitgevee word.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Vra die KI vir korter kode, of plak die kode in dele."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Om hierdie funksie te gebruik, verander \'Videostrome naboots\' na enige kliënt behalwe \'Android Studio\' en \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Ontsmet deel skakels</string>
-  <string name="morphe_sanitize_sharing_links_summary">Verwyder opsporingsparameters van gedeelde skakels</string>
   <string name="morphe_replace_music_with_youtube_title">Verander deelskakels na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Vervang music.youtube.com met youtube.com in gedeelde skakels</string>
   <string name="morphe_replace_links_with_shortener_title">Verander deelskakels na youtu.be</string>
@@ -371,7 +362,6 @@ As dit later gedeaktiveer word, word aanbeveel dat die appdata gewis word om UI-
   <string name="morphe_custom_font_type_title">Lettertipe</string>
   <string name="morphe_custom_font_type_entry_default">Verstek</string>
   <string name="morphe_custom_font_type_entry_system">Toestelstelsel-lettertipe</string>
-  <string name="morphe_custom_font_type_entry_custom">Pasgemaakte lettertipelêer</string>
   <string name="morphe_custom_font_file_title">Pasgemaakte lettertipelêer</string>
   <string name="morphe_custom_font_file_summary">Kies \'n TTF- of OTF-fontlêer</string>
   <string name="morphe_custom_font_file_invalid">Die gekose lêer is nie \'n TTF- of OTF-font nie</string>
@@ -381,7 +371,6 @@ As dit later gedeaktiveer word, word aanbeveel dat die appdata gewis word om UI-
   <string name="morphe_glass_menus_screen_summary">Kiesmenu\'s as matglas oor die vervaagde inhoud agter hulle</string>
   <string name="morphe_glass_menus_title">Aktiveer glas-spyskaarte</string>
   <string name="morphe_glass_menus_summary">Wys spyskaarte en onderste blaaie as gematteerde glas, met die inhoud agter hulle vervaag</string>
-  <string name="morphe_glass_menus_opacity_title">Glas-ondeursigtigheid</string>
   <string name="morphe_glass_menus_opacity_summary">Hoeveel die spyskaart die vervaagde inhoud bedek (0 is helder, 100 is ondoorsigtig)</string>
   <string name="morphe_glass_menus_blur_title">Vervaag</string>
   <string name="morphe_glass_menus_blur_summary">Hoeveel die inhoud agter die spyskaart vervaag is</string>
@@ -402,7 +391,6 @@ As dit later gedeaktiveer word, word aanbeveel dat die appdata gewis word om UI-
   <string name="morphe_ryd_dislike_percentage_summary">Wys dislikes as \'n persentasie van likes in plaas van \'n getal</string>
   <string name="morphe_ryd_estimated_like_title">Wys geskatte likes</string>
   <string name="morphe_ryd_estimated_like_summary">Wys \'n geskatte like-telling op video\'s waar die skepper likes gedeaktiveer het</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Wys konneksiefoutwaarskuwings</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Wys \'n kennisgewing wanneer die Return YouTube Dislike-bediener nie beskikbaar is nie</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike herstel die dislike-tellings wat YouTube in 2021 weggesteek het. Die tellings kom uit data wat voor die verwydering geargiveer is en word vir nuwer video's geskat op grond van die stemme van sy gebruikers, dus is hulle benaderd en word hulle elke paar dae bygewerk
 
@@ -424,8 +412,89 @@ Die ID van die video wat jy kyk, word na die Return YouTube Dislike API gestuur,
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen kliënt-tarieflimiete teëgekom nie</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliënt-tarieflimiet %s keer teëgekom</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekondes</string>
-  <string name="morphe_navigation_bar_screen_title">Navigasiebalk</string>
   <string name="morphe_navigation_bar_screen_summary">Kies watter knoppies in die onderste navigasiebalk verskyn</string>
   <string name="morphe_toolbar_screen_title">Nutsbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies watter komponente in die wenkbalk verskyn</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekonde</string>
+  <string name="morphe_duration_2s">2 sekondes</string>
+  <string name="morphe_duration_3s">3 sekondes</string>
+  <string name="morphe_duration_4s">4 sekondes</string>
+  <string name="morphe_duration_5s">5 sekondes</string>
+  <string name="morphe_duration_6s">6 sekondes</string>
+  <string name="morphe_duration_7s">7 sekondes</string>
+  <string name="morphe_duration_8s">8 sekondes</string>
+  <string name="morphe_duration_9s">9 sekondes</string>
+  <string name="morphe_duration_10s">10 sekondes</string>
+  <string name="morphe_change_start_page_entry_default">Verstek</string>
+  <string name="morphe_change_start_page_entry_explore">Verken</string>
+  <string name="morphe_change_start_page_entry_history">Geskiedenis</string>
+  <string name="morphe_change_start_page_entry_library">Biblioteek</string>
+  <string name="morphe_change_start_page_entry_playlists">Speellyste</string>
+  <string name="morphe_change_start_page_entry_search">Soek</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Intekeninge</string>
+  <string name="morphe_change_start_page_title">Beginbladsy</string>
+  <string name="morphe_action_buttons_screen_title">Aksieknoppies</string>
+  <string name="morphe_comments_screen_title">Kommentaar</string>
+  <string name="morphe_feed_screen_title">Feed</string>
+  <string name="morphe_flyout_menu_screen_title">Vloumenu</string>
+  <string name="morphe_general_title">Algemeen</string>
+  <string name="morphe_miniplayer_screen_title">Mini-speler</string>
+  <string name="morphe_player_screen_title">Speler</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Voorkoms</string>
+  <string name="morphe_cancel">Kanselleer</string>
+  <string name="morphe_comments_screen_summary">Kies watter komponente in die kommentaarafdeling verskyn</string>
+  <string name="morphe_copy_code">Kopieer kode</string>
+  <string name="morphe_corner_radius_title">Hoekradius</string>
+  <string name="morphe_do_not_show_again">Moet nie weer wys nie</string>
+  <string name="morphe_download_force_4k_title">Dwing 4K-aflaai beskikbaarheid</string>
+  <string name="morphe_glass_opacity_title">Glas-opeksiteit</string>
+  <string name="morphe_header_logo_title">Kopstuk-logo</string>
+  <string name="morphe_hide_action_bar_title">Verberg aksiebalk</string>
+  <string name="morphe_hide_cast_button_title">Verberg Cast-knoppie</string>
+  <string name="morphe_hide_comments_button_title">Verberg Kommentaar-knoppie</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Verberg Gemeenskapsriglyne</string>
+  <string name="morphe_hide_comments_emoji_button_title">Verberg Emoji-knoppie</string>
+  <string name="morphe_hide_comments_gif_button_title">Verberg GIF-knoppie</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Verberg GIFs en beelde wat aan kommentare en antwoorde aangeheg is</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Verberg GIFs en beelde</string>
+  <string name="morphe_hide_comments_info_button_title">Verberg Info-knoppie</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Verberg Tydstempel-knoppie</string>
+  <string name="morphe_hide_horizontal_shelves_title">Verberg horisontale rakke</string>
+  <string name="morphe_hide_like_dislike_button_title">Verberg Like- en Dislike-knoppies</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Verberg Like- en Dislike-knoppies</string>
+  <string name="morphe_hide_navigation_bar_title">Verberg navigasiebalk</string>
+  <string name="morphe_hide_navigation_button_labels_title">Verberg navigasieknoppie-etikette</string>
+  <string name="morphe_hide_previous_next_buttons_title">Verberg Vorige- &amp; Volgende-knoppies</string>
+  <string name="morphe_hide_search_button_title">Verberg Soek-knoppie</string>
+  <string name="morphe_hide_translate_button_title">Verberg Vertaal-knoppie</string>
+  <string name="morphe_hide_video_ads_title">Verberg video-advertensies</string>
+  <string name="morphe_loading">Laai…</string>
+  <string name="morphe_name">Naam</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Knoppie-spasiëring</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Knoppies gewys: %1$s van %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimum breedte</string>
+  <string name="morphe_navigation_bar_glass_title">Aktiveer glas-navigasiebalk</string>
+  <string name="morphe_positive_number_invalid">Waarde moet \'n positiewe getal wees</string>
+  <string name="morphe_private_user_id_invalid">Privaat gebruikers-ID moet ten minste 30 karakters lank wees</string>
+  <string name="morphe_private_user_id_title">Jou privaat gebruikers-ID</string>
+  <string name="morphe_rename">Hernoem</string>
+  <string name="morphe_show_settings_button_title">Wys Instellings-knoppie</string>
+  <string name="morphe_show_settings_button_type_title">Instellingsknoppie-aksie</string>
+  <string name="morphe_show_video_effect_menu_title">Wys Video-effek-menu</string>
+  <string name="morphe_submit">Stuur in</string>
+  <string name="morphe_time_adjustment_step_title">Tydaanpassingsstap</string>
+  <string name="morphe_toast_on_connection_error_title">Wys konneksiefout-waarskuwings</string>
+  <string name="morphe_toast_on_skip_title">Wys oorslaan-kennisgewing</string>
+  <string name="morphe_translated_only">Slegs vertaling</string>
+  <string name="morphe_translating">Besig om te vertaal…</string>
+  <string name="morphe_translation_language_title">Vertaaltaal</string>
+  <string name="morphe_username_change_unknown_error">Kon gebruikersnaam nie verander nie: Status: %1$s %2$s</string>
+  <string name="morphe_username_changed">Gebruikersnaam is suksesvol verander</string>
+  <string name="morphe_username_html">Jou gebruikersnaam: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Video\'s</string>
+  <string name="morphe_vote_downvote">Stem af</string>
+  <string name="morphe_vote_upvote">Stem op</string>
 </resources>

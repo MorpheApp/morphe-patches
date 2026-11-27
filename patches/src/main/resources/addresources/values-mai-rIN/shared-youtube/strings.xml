@@ -68,4 +68,14 @@ Second \"item\" text"</string>
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <!-- Shared strings -->
+  <string name="morphe_hide_cast_button_title">कास्ट बटन लुकाउ</string>
+  <string name="morphe_hide_comments_button_title">कमेंट बटन लुकाउ</string>
+  <string name="morphe_hide_like_dislike_button_title">पसंद आ नापसंद बटन लुकाउ</string>
+  <string name="morphe_hide_like_dislike_buttons_title">लाइक आ डिसलाइक बटन लुकाउ</string>
+  <string name="morphe_hide_search_button_title">सर्च बटन लुकाउ</string>
+  <string name="morphe_hide_translate_button_title">अनुवाद बटन लुकाउ</string>
+  <string name="morphe_loading">लोड भ\' रहल अछि...</string>
+  <string name="morphe_toast_on_connection_error_title">कनेक्शन त्रुटि अलर्ट देखाऊ</string>
+  <string name="morphe_username_change_unknown_error">उपयोगकर्ता नाम बदलने में असमर्थ: स्थिति: %1$s %2$s</string>
 </resources>

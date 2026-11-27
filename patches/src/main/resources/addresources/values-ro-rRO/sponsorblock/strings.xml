@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Activează SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock este un sistem bazat pe crowdsourcing pentru a sări peste părțile enervante din videoclipurile de pe YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Aspect</string>
   <string name="morphe_sb_voting_button_title">Arată butonul de votare</string>
   <string name="morphe_sb_voting_button_summary">Adaugă un buton pentru a aproba sau respinge segmentele</string>
   <string name="morphe_sb_square_layout_title">Utilizați aspectul pătrat</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Ascunde butonul „Treci” după câteva secunde, în loc să-l mențină vizibil pe toată durata segmentului</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Durata butonului de omitere</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Stabilește cât timp rămâne vizibil butonul Skip</string>
-  <string name="morphe_sb_toast_on_skip_title">Afișează notificare de trecere</string>
   <string name="morphe_sb_toast_on_skip_summary">Afișează o notificare când un segment este sărit automat</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Durata notificării pop-up de omitere</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Stabilește cât timp rămâne vizibilă notificarea de anulare</string>
-  <string name="morphe_sb_duration_1s">1 secundă</string>
-  <string name="morphe_sb_duration_2s">2 secunde</string>
-  <string name="morphe_sb_duration_3s">3 secunde</string>
-  <string name="morphe_sb_duration_4s">4 secunde</string>
-  <string name="morphe_sb_duration_5s">5 secunde</string>
-  <string name="morphe_sb_duration_6s">6 secunde</string>
-  <string name="morphe_sb_duration_7s">7 secunde</string>
-  <string name="morphe_sb_duration_8s">8 secunde</string>
-  <string name="morphe_sb_duration_9s">9 secunde</string>
-  <string name="morphe_sb_duration_10s">10 secunde</string>
   <string name="morphe_sb_video_length_without_segments_title">Arată lungimea videoclipului fără segmente</string>
   <string name="morphe_sb_video_length_without_segments_summary">Scade toate segmentele din durata totală a videoclipului afișată pe bara de progres</string>
   <string name="morphe_sb_create_segment_category_title">Crearea de noi segmente</string>
   <string name="morphe_sb_create_new_segment_title">Afișează butonul „Creează segment nou”</string>
   <string name="morphe_sb_create_new_segment_summary">Adaugă un buton la playerul video care îți permite să trimiți noi segmente SponsorBlock</string>
-  <string name="morphe_sb_create_new_segment_step_title">Pasul de ajustare a timpului</string>
   <string name="morphe_sb_create_new_segment_step_summary">Cantitatea de deplasare a butoanelor de ajustare a timpului (în milisecunde)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Valoarea trebuie să fie un număr pozitiv</string>
   <string name="morphe_sb_guidelines_title">Ghiduri de trimitere</string>
   <string name="morphe_sb_guidelines_summary">Orientările conțin reguli și sugestii pentru crearea de noi segmente</string>
   <string name="morphe_sb_guidelines_popup_title">Respectaţi recomandările</string>
   <string name="morphe_sb_guidelines_popup_content">Citiți ghidurile SponsorBlock înainte de a crea noi segmente</string>
   <string name="morphe_sb_guidelines_popup_already_read">Deja citite</string>
   <string name="morphe_sb_guidelines_popup_open">Arată-mi</string>
-  <string name="morphe_sb_general_title">Generalități</string>
   <string name="morphe_sb_offline_segments_title">Salvează segmentele din videoclipurile descărcate</string>
   <string name="morphe_sb_offline_segments_summary">Permite sărirea peste segmentele videoclipurilor descărcate în modul offline</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Afișează o notificare atunci când serverul SponsorBlock este indisponibil</string>
   <string name="morphe_sb_track_skip_count_title">Activează urmărirea numărului de salturi</string>
   <string name="morphe_sb_track_skip_count_summary">Trimite numărul de salturi către clasamentul SponsorBlock pentru a urmări cât timp se economisește</string>
   <string name="morphe_sb_min_segment_duration_title">Durata minimă a segmentului</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmentele mai scurte decât această valoare (în secunde) nu vor fi afișate sau omise</string>
   <string name="morphe_sb_min_segment_duration_invalid">Durată de timp invalidă</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">ID-ul tău privat de utilizator</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Acesta trebuie păstrat privat. Este ca o parolă și nu ar trebui să fie împărtășit cu nimeni. Dacă cineva îl are, te poate imita</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ID-ul utilizatorului privat trebuie să aibă cel puțin 30 de caractere</string>
   <string name="morphe_sb_api_url_title">Schimbă URL-ul API</string>
   <string name="morphe_sb_api_url_summary">Adresa pe care SponsorBlock o folosește pentru a face apeluri către server</string>
   <string name="morphe_sb_channel_whitelist_title">Listă albă de canale</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL-ul API nu este valid</string>
   <string name="morphe_sb_api_url_changed">URL API schimbat</string>
   <string name="morphe_sb_settings_ie_title">Importă/Exportă setări</string>
-  <string name="morphe_sb_settings_copy">Copiere</string>
   <string name="morphe_sb_settings_ie_summary">Configurația SponsorBlock JSON care poate fi importată/exportată către Morphe și alte platforme SponsorBlock</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Configurația ta SponsorBlock JSON care poate fi importată/exportată în Morphe și alte platforme SponsorBlock
 
@@ -92,7 +73,6 @@ Aceasta include ID-ul tău privat de utilizator. Asigură-te că distribui asta 
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Setările tale conțin un ID de utilizator SponsorBlock privat.
 
 ID-ul tău de utilizator este ca o parolă și nu ar trebui niciodată partajat"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Nu mai afișa</string>
   <string name="morphe_sb_diff_segments_title">Schimbă comportamentul segmentului</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
   <string name="morphe_sb_segments_sponsor_summary">Promoție plătită, recomandări plătite și reclame directe. Nu este pentru autopromovare sau strigăte gratuite cauzelor/creatorilor/site-urilor web/produselor care le plac</string>
@@ -122,11 +102,9 @@ ID-ul tău de utilizator este ca o parolă și nu ar trebui niciodată partajat"
   <string name="morphe_sb_skip_button_highlight">Sari la evidențiere</string>
   <string name="morphe_sb_skip_button_intro_beginning">Sari peste introducere</string>
   <string name="morphe_sb_skip_button_intro_middle">Omitere intermisiune</string>
-  <string name="morphe_sb_skip_button_intro_end">Omitere intermisiune</string>
   <string name="morphe_sb_skip_button_outro">Sari peste final</string>
   <string name="morphe_sb_skip_button_hook">Omite introducerea</string>
   <string name="morphe_sb_skip_button_preview_beginning">Sari peste previzualizare</string>
-  <string name="morphe_sb_skip_button_preview_middle">Sari peste previzualizare</string>
   <string name="morphe_sb_skip_button_preview_end">Sari peste rezumat</string>
   <string name="morphe_sb_skip_button_filler">Omite tangenta</string>
   <string name="morphe_sb_skip_button_nomusic">Omite non-muzica</string>
@@ -137,11 +115,9 @@ ID-ul tău de utilizator este ca o parolă și nu ar trebui niciodată partajat"
   <string name="morphe_sb_skipped_highlight">Salt la evidențiere</string>
   <string name="morphe_sb_skipped_intro_beginning">Introducere sărită</string>
   <string name="morphe_sb_skipped_intro_middle">Intermisiune sărită</string>
-  <string name="morphe_sb_skipped_intro_end">Intermisiune sărită</string>
   <string name="morphe_sb_skipped_outro">Final sărit</string>
   <string name="morphe_sb_skipped_hook">Introducerea omisă</string>
   <string name="morphe_sb_skipped_preview_beginning">Previzualizare sărită</string>
-  <string name="morphe_sb_skipped_preview_middle">Previzualizare sărită</string>
   <string name="morphe_sb_skipped_preview_end">Rezumat sărit</string>
   <string name="morphe_sb_skipped_filler">Tangenta omisă</string>
   <string name="morphe_sb_skipped_nomusic">S-a sărit o secţiune non-muzică</string>
@@ -167,8 +143,6 @@ Există deja"</string>
   <string name="morphe_sb_vote_failed_timeout">Imposibil de votat pentru segment (API a expirat)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Nu se poate vota pentru segment (stare: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nu se poate vota pentru segment: %s</string>
-  <string name="morphe_sb_vote_upvote">Votează</string>
-  <string name="morphe_sb_vote_downvote">Votează negativ</string>
   <string name="morphe_sb_vote_category">Schimbă categoria</string>
   <string name="morphe_sb_vote_no_segments">Nu există segmente pentru care să votezi</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ până în
 (%3$s)
 
 Ești gata să trimiți?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Trimite</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Începe trebuie să fie înainte de sfârșit</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Marchează mai întâi o locație pe bara de timp</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Previzualizați segmentul și asigurați-vă că sare fără probleme</string>
@@ -205,16 +178,11 @@ Ești gata să trimiți?"</string>
 %s
 
 Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locație"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Trimite evidențiere</string>
   <string name="morphe_sb_stats_title">Statistici</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statisticile nu sunt disponibile temporar (API nu funcționează)</string>
-  <string name="morphe_sb_stats_loading">Se încarcă</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock este dezactivat</string>
-  <string name="morphe_sb_stats_username">Numele de utilizator: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Apasă aici pentru a-ți schimba numele de utilizator</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Imposibil de modificat numele de utilizator: Stare: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Nume utilizator schimbat cu succes</string>
   <string name="morphe_sb_stats_reputation">Reputaţia ta este &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Ați creat &lt;b&gt;%s&lt;/b&gt; segmente </string>
   <string name="morphe_sb_stats_submissions_summary">Apasă aici pentru a vedea segmentele tale</string>

@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">נדרשת הפעלה מחדש</string>
   <string name="morphe_settings_restart_dialog_message">יש להפעיל מחדש את היישום כדי שהשינוי ייכנס לתוקף</string>
   <string name="morphe_settings_restart">הפעלה מחדש</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">ייבוא</string>
-  <string name="morphe_settings_import_copy">העתק</string>
   <string name="morphe_settings_import_reset">הגדרות Morphe אופסו לברירת מחדל</string>
   <string name="morphe_settings_import_success">יובאו %s הגדרות</string>
   <string name="morphe_settings_import_failure_parse">ייבוא נכשל: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">טלאים</string>
   <string name="morphe_settings_about_version">גרסה</string>
-  <string name="morphe_settings_about_close">סגור</string>
   <string name="morphe_settings_about_prerelease">גרסת Pre-release</string>
   <string name="morphe_settings_about_update_available">עדכון זמין: %s</string>
   <string name="morphe_settings_about_update_hint">כדי לעדכן את הפאצ\'ים שלך, השתמש ב-Morphe כדי להחיל את הפאצ\'ים מחדש על אפליקציה זו</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">הודעות רישיון</string>
-  <string name="morphe_settings_about_licenses_loading">טוען…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">איתור באגים</string>
   <string name="morphe_debug_screen_summary">הגדרת אפשרויות מפתחים ודיאגנוסטיקה</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">יומני איתור הבאגים יוצאו בהצלחה</string>
   <string name="morphe_debug_export_logs_failed">נכשל לייצא יומני איתור באגים</string>
   <string name="morphe_debug_logs_search_hint">חפש ביומני איתור באגים…</string>
-  <string name="morphe_debug_export_logs_clear">נקה</string>
   <string name="morphe_debug_logs_disabled">תיעוד איתור באגים מושבת</string>
   <string name="morphe_debug_logs_none_found">לא נמצאו יומני איתור באגים</string>
   <string name="morphe_debug_logs_copied_to_clipboard">יומני איתור באגים הועתקו</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">חסומים (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">כפויים (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">אוטומטי</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">כבוי</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">מופעל</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">הפעל בכפייה</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">חסום</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">הסר</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">דגלי תכונות נשמרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">דגלי התכונה אופסו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"גרסת MicroG v%1$s שלך אינה מעודכנת ועלולה לגרום לבעיות.
 
 אנא עדכן את MicroG לגרסה האחרונה v%2$s"</string>
-  <string name="gms_core_dialog_update_text">עדכן</string>
   <string name="gms_core_dialog_ignore_text">התעלם</string>
   <string name="gms_core_dialog_conflict_message">"גרסת ה-MicroG המותקנת אינה מומלצת על ידי Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 השבתת אופטימיזציית הסוללה עבור MicroG לא תשפיע לרעה על שימוש בסוללה.
 
 הקש על כפתור ההמשך ואפשר שינויים באופטימיזציה"</string>
-  <string name="gms_core_dialog_continue_text">המשך</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">הצג תיבת דו-שיח לאופטימיזציית סוללה של MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ביטול האפשרות יסתר את ההודעה של MicroG לאופטימיזציית הסוללה.
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 תיקוני באגים</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 שינויים אחרים</string>
   <string name="morphe_patches_update_notice_dialog_more">…ועוד %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">עדכון</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">דחה</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">יומן קריסה נשמר למסמכי המשתמש: %s</string>
   <string name="morphe_crash_log_saved">יומן קריסה נשמר: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">אודות</string>
+  <string name="morphe_ads_screen_title">מודעות</string>
+  <string name="morphe_misc_screen_title">שונות</string>
+  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
+  <string name="morphe_post_buttons_screen_title">לחצני פוסט</string>
+  <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
+  <string name="morphe_download">הורדה</string>
+  <string name="morphe_hide_create_button_title">הסתר לחצן יצירה</string>
+  <string name="morphe_hide_post_comment_button_title">הסתר לחצן תגובה</string>
+  <string name="morphe_sanitize_sharing_links_summary">מסיר פרמטרי שאילתה של מעקב מקישורי שיתוף</string>
+  <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
+  <string name="morphe_settings_add">הוספה</string>
+  <string name="morphe_settings_clear">ניקוי</string>
+  <string name="morphe_settings_close">סגירה</string>
+  <string name="morphe_settings_continue">המשך</string>
+  <string name="morphe_settings_copy">העתק</string>
+  <string name="morphe_settings_delete">מחק</string>
+  <string name="morphe_settings_remove">הסר</string>
+  <string name="morphe_settings_update">עדכן</string>
 </resources>

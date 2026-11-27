@@ -17,17 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">Tentang</string>
-  <string name="morphe_settings_screen_01_ads_title">Iklan</string>
-  <string name="morphe_settings_screen_03_feed_title">Feed</string>
-  <string name="morphe_settings_screen_04_general_title">Umum</string>
-  <string name="morphe_settings_screen_05_player_title">Pemutar</string>
-  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Bilah geser</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kontrol usap</string>
-  <string name="morphe_settings_screen_11_misc_title">Lain-lain</string>
-  <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Pulihkan layar setelan lama YouTube</string>
   <string name="morphe_native_snackbar_title">Tampilkan pesan di snackbar YouTube</string>
   <string name="morphe_native_snackbar_summary">Pesan Morphe, seperti konfirmasi tombol pemutar, ditampilkan di snackbar YouTube, bukan popup</string>
@@ -82,7 +73,6 @@ Perubahan mencakup:
   <string name="morphe_hide_floating_microphone_button_summary">Menyembunyikan tombol mikrofon yang mengambang di sudut kanan bawah layar saran pencarian</string>
   <string name="morphe_hide_get_premium_button_title">Sembunyikan tombol \'Dapatkan Premium\'</string>
   <string name="morphe_hide_history_shelf_title">Sembunyikan rak Riwayat</string>
-  <string name="morphe_hide_horizontal_shelves_title">Sembunyikan rak-rak mendatar</string>
   <string name="morphe_hide_horizontal_shelves_summary">Rak horizontal disembunyikan, seperti Berita terkini, Postingan komunitas yang mungkin Anda sukai, Lanjutkan menonton, Jelajahi lebih banyak saluran, Jelajahi lebih banyak topik, Untuk Anda, Video terbaru, Paling relevan, Postingan dari Komunitas Kreator, Belanja dan Tonton lagi</string>
   <string name="morphe_hide_image_shelf_title">Sembunyikan rak gambar</string>
   <string name="morphe_hide_image_shelf_summary">Menyembunyikan rak gambar dalam hasil pencarian</string>
@@ -202,6 +192,7 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_hide_links_preview_title">Sembunyikan pratinjau tautan</string>
   <string name="morphe_hide_links_preview_summary">Menyembunyikan tautan web yang dapat diklik di header saluran</string>
   <string name="morphe_hide_members_only_chip_title">Sembunyikan chip \'Khusus pelanggan\'</string>
+  <string name="morphe_hide_members_only_chip_summary">Menyembunyikan chip \'Khusus pelanggan\' di bilah filter saluran dan memilih chip \'Publik\'</string>
   <string name="morphe_hide_members_shelf_title">Sembunyikan rak pelanggan</string>
   <string name="morphe_hide_members_shelf_summary">Menyembunyikan daftar pelanggan saluran</string>
   <string name="morphe_hide_posts_shelf_title">Sembunyikan rak postingan</string>
@@ -233,12 +224,9 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_hide_privacy_tos_footer_title">Sembunyikan footer hukum dan privasi</string>
   <string name="morphe_hide_filter_bar_screen_title">Bilah saring</string>
   <string name="morphe_hide_filter_bar_screen_summary">Pilih di mana bilah penyaring gulir akan disembunyikan</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">Sembunyikan di halaman saluran</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Sembunyikan di komentar</string>
   <string name="morphe_hide_filter_bar_in_feed_title">Sembunyikan di feed</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Sembunyikan di video terkait</string>
-  <string name="morphe_hide_filter_bar_in_search_title">Sembunyikan di hasil pencarian</string>
-  <string name="morphe_hide_filter_bar_in_history_title">Sembunyikan di riwayat tontonan</string>
   <string name="morphe_hide_keyword_content_screen_title">Penyaring kata kunci</string>
   <string name="morphe_hide_keyword_content_screen_summary">Pilih kata atau frasa tertentu untuk menyembunyikan video di feed dan pencarian</string>
   <string name="morphe_hide_keyword_content_comments_title">Sembunyikan komentar berdasarkan kata kunci</string>
@@ -304,15 +292,11 @@ Batasan:
   <string name="morphe_hide_stats_hidden_all_title">Video disembunyikan, sepanjang waktu</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Atur ulang penghitung 24 jam terakhir?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">Atur ulang semua penghitung waktu?</string>
-  <string name="morphe_post_buttons_screen_title">Tombol postingan</string>
   <string name="morphe_post_buttons_screen_summary">Pilih tata letak tombol di bawah postingan komunitas dan tombol mana yang ingin disembunyikan</string>
   <string name="morphe_post_buttons_layout_title">Tata letak tombol postingan</string>
   <string name="morphe_post_buttons_layout_entry_1">Server</string>
   <string name="morphe_post_buttons_layout_entry_2">Dipaksakan</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Sembunyikan tombol Suka dan Tidak Suka</string>
-  <string name="morphe_hide_post_dislike_button_title">Sembunyikan tombol Tidak Suka</string>
   <string name="morphe_hide_post_dislike_button_summary">Dengan tata letak Dipaksakan, ruang tombol akan dikosongkan</string>
-  <string name="morphe_hide_post_comment_button_title">Sembunyikan tombol Komentar</string>
   <string name="morphe_hide_post_comments_preview_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_post_comments_preview_summary">Menyembunyikan pratinjau komentar di bawah postingan</string>
   <string name="morphe_hide_post_share_button_summary">Tombol unduh pada postingan gambar diletakkan di sebelah tombol Bagikan, jadi tombol tersebut tersembunyi juga</string>
@@ -321,6 +305,7 @@ Batasan:
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sembunyikan pratinjau putar otomatis</string>
   <string name="morphe_hide_autoplay_preview_summary">Menyembunyikan pratinjau video yang akan datang dalam mode layar penuh sebelum pemutaran otomatis dimulai</string>
+  <string name="morphe_hide_auto_generated_chapters_title">Sembunyikan bab yang dibuat otomatis</string>
   <string name="morphe_hide_channel_bar_title">Sembunyikan bilah saluran</string>
   <string name="morphe_hide_channel_watermark_title">Sembunyikan tanda air saluran</string>
   <string name="morphe_hide_chapters_button_title">Sembunyikan tombol Bab</string>
@@ -350,19 +335,15 @@ Batasan:
   <string name="morphe_sanitize_video_subtitle_title">Bersihkan teks subtitel video</string>
   <string name="morphe_sanitize_video_subtitle_summary">Membersihkan frasa seperti \'#\', \'Penggalangan dana\', \'produk(s)\', dan \'Toko\' dari subjudul video</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan dalam mode potret dan layar penuh</string>
   <string name="morphe_portrait_buttons">Tombol potret</string>
   <string name="morphe_disable_like_subscribe_glow_title">Nonaktifkan kilauan Suka dan Subscribe</string>
   <string name="morphe_disable_like_subscribe_glow_summary">Mencegah tombol Suka dan Subscribe bersinar saat kreator menyebutkannya</string>
-  <string name="morphe_hide_action_bar_title">Sembunyikan bilah tindakan</string>
-  <string name="morphe_hide_like_dislike_button_title">Sembunyikan tombol Suka dan Tidak Suka</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">Sembunyikan tombol Bagikan</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_stop_ads_button_title">Sembunyikan tombol \'Hentikan iklan\'</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">Sembunyikan tombol Komentar</string>
   <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_connect_button_title">Sembunyikan tombol Sambungkan</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
@@ -394,8 +375,6 @@ Batasan:
   <string name="morphe_hide_save_button_title">Sembunyikan tombol Simpan</string>
   <string name="morphe_hide_more_button_title">Sembunyikan tombol Lainnya</string>
   <string name="morphe_fullscreen_buttons">Tombol layar penuh</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Sembunyikan tombol Tidak Suka</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Sembunyikan tombol Suka</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Sembunyikan tombol \'Live chat\'</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Sembunyikan tombol Campur</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Sembunyikan tombol \'Video lainnya\'</string>
@@ -423,8 +402,6 @@ Batasan:
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Meredupkan cahaya saat halaman digulir atau disentuh</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durasi redup</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Berapa lama cahaya tetap redup setelah pengguliran berhenti. Dengan 0, hanya pengguliran yang meredupkan cahaya, dan cahaya akan kembali segera setelah pengguliran berhenti</string>
-  <string name="morphe_comments_screen_title">Komentar</string>
-  <string name="morphe_comments_screen_summary">Pilih komponen mana yang akan ditampilkan di bagian komentar</string>
   <string name="morphe_hide_comments_carousel_title">Aktifkan penyaring komentar yang berputar</string>
   <string name="morphe_hide_comments_carousel_summary">"• Masukkan kata kunci atau nama lengkap (misal, Ask, Community, Hype, Listen)
 • Menyembunyikan semua item akan menyembunyikan seluruh bagian komentar"</string>
@@ -436,18 +413,11 @@ Batasan:
   <string name="morphe_hide_comments_by_members_header_title">Sembunyikan header \'Komentar dari pelanggan\'</string>
   <string name="morphe_hide_comments_section_title">Sembunyikan bagian komentar</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Sembunyikan bagian komentar di feed Beranda</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Sembunyikan Pedoman Komunitas</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Sembunyikan tombol \'Buat Short\'</string>
-  <string name="morphe_hide_comments_dislike_button_title">Sembunyikan tombol Tidak Suka</string>
-  <string name="morphe_hide_comments_emoji_button_title">Sembunyikan tombol Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sembunyikan opsi bilah penyaring</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Menyembunyikan semua opsi bilah penyaring kecuali \'Teratas\' dan \'Terbaru\'</string>
-  <string name="morphe_hide_comments_gif_button_title">Sembunyikan tombol GIF</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">Sembunyikan GIF dan gambar</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Menyembunyikan GIF dan gambar yang terlampir pada komentar dan balasan</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Sembunyikan animasi hadiah dan kartu</string>
   <string name="morphe_hide_comments_gift_button_title">Sembunyikan tombol Hadiah</string>
-  <string name="morphe_hide_comments_info_button_title">Sembunyikan tombol Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sembunyikan bilah donatur live chat</string>
   <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Sembunyikan tombol gulir ke bawah obrolan langsung</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Sembunyikan tooltip live chat</string>
@@ -462,16 +432,13 @@ Batasan:
   <string name="morphe_hide_comments_preview_comment_cards_summary">Menyembunyikan kartu geser dan indikator halaman yang ditampilkan pada tombol komentar</string>
   <string name="morphe_hide_comments_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
   <string name="morphe_hide_comments_timed_reactions_summary">Menyembunyikan fitur yang memungkinkan pengguna memberikan reaksi dengan emoji di bagian komentar dan live chat</string>
-  <string name="morphe_hide_comments_timestamp_button_title">Sembunyikan tombol Stempel Waktu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sembunyikan tombol \'Penggemar teratas\'</string>
   <string name="morphe_hide_comments_topics_title">Sembunyikan \'Topik\'</string>
   <string name="morphe_hide_comments_topics_summary">Menyembunyikan opsi bilah filter \'Topik\' dan pratinjau komentar \'Topik\' di bawah video</string>
-  <string name="morphe_hide_comments_translate_button_title">Sembunyikan tombol Terjemahkan</string>
   <string name="morphe_hide_comments_visit_the_community_section_title">Sembunyikan bagian \'Kunjungi Komunitas\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Bersihkan tautan pencarian yang disorot</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Membersihkan tautan pencarian yang disorot, sehingga hanya menyisakan teks biasa aslinya</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Menu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Pilih komponen mana yang akan ditampilkan di menu flyout</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Sembunyikan \'Setelan tambahan\' / menu Lainnya</string>
@@ -517,14 +484,12 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_hide_autoplay_button_title">Sembunyikan tombol Putar Otomatis</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Sembunyikan tombol Teks</string>
-  <string name="morphe_hide_cast_button_title">Sembunyikan tombol Transmisi</string>
   <string name="morphe_hide_collapse_button_title">Sembunyikan tombol Ciutkan</string>
   <string name="morphe_hide_fullscreen_button_title">Sembunyikan tombol Layar Penuh</string>
   <string name="morphe_hide_player_control_buttons_background_title">Sembunyikan latar belakang kontrol pemutar</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Menyembunyikan bayangan gelap di sekitar kontrol pemutar video</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opasitas latar belakang tombol kontrol</string>
   <string name="morphe_player_control_buttons_background_opacity_summary">Sesuaikan opasitas latar belakang di belakang tombol kontrol pemutar dan bilah waktu (0 tidak terlihat, 100 solid)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Sembunyikan tombol Sebelumnya &amp; Berikutnya</string>
   <string name="morphe_hide_settings_button_title">Sembunyikan tombol Setelan</string>
   <string name="morphe_hide_description_components_screen_title">Deskripsi video</string>
   <string name="morphe_hide_description_components_screen_summary">Pilih komponen mana yang akan ditampilkan dalam deskripsi video</string>
@@ -566,7 +531,6 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_custom_snackbar_color_light_summary">Warna latar belakang snackbar dalam tema terang. Teks berwarna hitam atau putih, mana saja yang lebih mudah dibaca</string>
   <string name="morphe_custom_snackbar_stroke_color_title">Warna batas</string>
   <string name="morphe_custom_snackbar_stroke_color_summary">Warna batas di sekitar snackbar. Warna transparan tidak menampilkan batas</string>
-  <string name="morphe_custom_snackbar_corner_radius_title">Radius sudut</string>
   <string name="morphe_custom_snackbar_corner_radius_summary">Radius sudut snackbar dalam dp</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Daftar putih iklan saluran</string>
@@ -581,22 +545,18 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_hide_player_popup_ads_title">Sembunyikan iklan pesan timbul pemutar</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sembunyikan kartu bersponsor pribadi</string>
   <string name="morphe_hide_shopping_links_title">Sembunyikan tautan belanja</string>
-  <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
-  <string name="morphe_flyout_button_loading">Memuat…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Saluran saat ini:</string>
   <string name="morphe_channel_whitelist_add">Tambahkan ke daftar putih</string>
-  <string name="morphe_channel_whitelist_remove">Hapus</string>
   <string name="morphe_channel_whitelist_channels_header">Saluran yang ditambahkan ke daftar putih</string>
   <string name="morphe_channel_whitelist_empty">Tidak ada saluran yang ditambahkan ke daftar putih</string>
   <string name="morphe_channel_whitelist_channel_added">Saluran ditambahkan ke daftar putih</string>
   <string name="morphe_channel_whitelist_channel_removed">Saluran dihapus dari daftar putih</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- Search dialog of comments search, channel search and playlist search. -->
-  <string name="morphe_search_dialog_search">Telusuri</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cari di dalam saluran</string>
   <string name="morphe_channel_search_summary">Menambahkan tombol pencarian kedua di halaman saluran untuk mencari hanya di saluran tersebut</string>
@@ -604,7 +564,6 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_channel_search_results">Hasil pencarian saluran</string>
   <string name="morphe_channel_search_no_results">Tidak ada yang ditemukan di saluran ini</string>
   <string name="morphe_channel_search_failed">Tidak dapat mencari di saluran ini</string>
-  <string name="morphe_channel_search_videos">Video</string>
   <string name="morphe_channel_search_posts">Postingan</string>
   <string name="morphe_channel_search_no_posts">Tidak ada postingan di saluran ini yang cocok</string>
   <string name="morphe_channel_search_sort_relevance">Relevansi</string>
@@ -665,7 +624,6 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_post_translate_language_title">Bahasa terjemahan postingan</string>
   <string name="morphe_post_translate_flyout">Terjemahkan</string>
   <string name="morphe_post_translate_flyout_original">Tampilkan yang asli</string>
-  <string name="morphe_post_translate_started">Menerjemahkan…</string>
   <string name="morphe_post_translate_failed">Tidak dapat menerjemahkan postingan</string>
   <string name="morphe_post_translate_same_language">Postingan sudah dalam bahasa terjemahan</string>
   <!-- interaction.onthego.onTheGoPatch -->
@@ -677,8 +635,6 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_on_the_go_panel_title">Mode perjalanan</string>
   <string name="morphe_on_the_go_audio_mode">Beralih ke mode audio</string>
   <string name="morphe_on_the_go_video_mode">Beralih ke mode video</string>
-  <string name="morphe_on_the_go_download">Download</string>
-  <string name="morphe_on_the_go_queue">Antrean</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Tanya ke menu flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout feed</string>
@@ -711,12 +667,12 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_ryd_feed_counts_position_entry_1">Di samping jumlah penayangan</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Tengah kanan</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Kiri atas</string>
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
+  <string name="morphe_ryd_video_details_dislikes">Tidak suka</string>
   <!-- interaction.commentsearch.commentSearchPatch -->
   <string name="morphe_comment_search_title">Cari komentar</string>
   <string name="morphe_comment_search_summary">Ketuk tombol cari di komentar untuk menampilkan hanya komentar yang dimuat yang berisi semua kata yang dicari. Gunakan tanda kutip pada kata untuk mencari frasa</string>
-  <string name="morphe_comment_search_dialog_title">Cari komentar</string>
   <string name="morphe_comment_search_hint">Kata yang dicari</string>
-  <string name="morphe_comment_search_clear">Hapus</string>
   <string name="morphe_comment_search_applied">Ubah urutan pengurutan atau buka kembali komentar untuk mencarinya</string>
   <string name="morphe_comment_search_cleared">Pencarian dihapus. Ubah urutan pengurutan atau buka kembali komentar untuk menampilkan semua komentar</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -741,10 +697,8 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_external_downloader_quick_options">Semua opsi</string>
   <string name="morphe_shorts_download_flyout_button_title">Tampilkan download di menu Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Menambahkan item download ke menu pemutar Shorts</string>
-  <string name="morphe_shorts_download_flyout_title">Download</string>
   <string name="morphe_feed_download_flyout_button_title">Paksa item menu download flyout</string>
   <string name="morphe_feed_download_flyout_button_summary">Menambahkan item download ke menu video feed yang tidak memilikinya</string>
-  <string name="morphe_download_force_4k_title">Paksa ketersediaan unduhan 4K</string>
   <string name="morphe_download_force_4k_summary">Menawarkan download 1440p dan 4K meskipun YouTube memutuskan bahwa perangkat ini tidak dapat memutarnya</string>
   <string name="morphe_download_quality_about_title">1080p tidak tersedia</string>
   <string name="morphe_download_quality_about_summary">Jika unduhan dalam aplikasi tidak menawarkan 1080p, aktifkan \'Samarkan dimensi perangkat\' di pengaturan Lain-lain</string>
@@ -793,11 +747,11 @@ Ketuk di sini untuk membuka OpenRouter.ai"</string>
   <string name="morphe_vot_voice_gender_male">Pria</string>
   <string name="morphe_vot_voice_gender_female">Wanita</string>
   <string name="morphe_vot_tts_sample">Waktunya bermetamorfosis!</string>
+  <string name="morphe_vot_no_captions">Video ini tidak memiliki teks terjemahan untuk diterjemahkan</string>
   <string name="morphe_vot_http_error_title">Terjemahan tidak tersedia</string>
   <string name="morphe_vot_http_error_message">"Layanan terjemahan mengembalikan kesalahan HTTP %s. Alamat IP Anda kemungkinan telah dibatasi aksesnya hingga 24 jam.
 
 Untuk melanjutkan menggunakan terjemahan, ganti ke penyedia terjemahan yang berbeda di setelan atau gunakan VPN"</string>
-  <string name="morphe_vot_do_not_show_again">Jangan tampilkan lagi</string>
   <string name="morphe_vot_export_api_key_warning">"Pengaturan Anda berisi kunci API OpenRouter.
 
 Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci tersebut dapat menggunakan kredit OpenRouter Anda"</string>
@@ -830,8 +784,6 @@ Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci ter
   <string name="morphe_loop_video_range_label_end">Akhir</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
   <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (kosong = video berakhir)</string>
-  <string name="morphe_loop_video_range_set">Atur</string>
-  <string name="morphe_loop_video_range_clear">Hapus</string>
   <string name="morphe_loop_video_range_toast_on">Melakukan perulangan %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Rentang waktu tidak sah</string>
   <!-- interaction.loop.loopCountPatch -->
@@ -847,10 +799,8 @@ Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci ter
   <string name="morphe_loop_count_clear_dialog_title">Hapus jumlah loop yang tersimpan?</string>
   <string name="morphe_loop_count_clear_dialog_message">Video dalam daftar putar Anda akan melupakan jumlah loop-nya, dan Loop video tidak akan aktif lagi saat daftar putar memutarnya</string>
   <string name="morphe_loop_count_clear_done">Jumlah loop yang tersimpan telah dihapus</string>
-  <string name="morphe_loop_count_flyout_name">Jumlah loop</string>
   <string name="morphe_loop_count_dialog_message">Berapa kali video diputar sebelum video berikutnya, dari %1$s hingga %2$s. Biarkan kosong untuk memutar ulang video tanpa batas.</string>
   <string name="morphe_loop_count_times">%s kali</string>
-  <string name="morphe_loop_count_no_limit">Tanpa batas</string>
   <string name="morphe_loop_count_decrease">Kurangi jumlah putaran</string>
   <string name="morphe_loop_count_increase">Tambah jumlah putaran</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
@@ -904,11 +854,9 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video berhasil disimpan di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Video ini sudah disimpan di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_error_toast">Tidak dapat menyimpan video ini di daftar tonton nanti</string>
-  <string name="morphe_save_to_watch_later_flyout_title">Simpan ke Tonton Nanti</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di flyout setelan pemutar</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Memungkinkan Anda menyimpan video yang sedang ditonton ke \'Tonton Nanti\' melalui flyout setelan video.</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Alihkan Tonton nanti ke daftar putar</string>
-  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Tonton nanti</string>
   <string name="morphe_queue_flyout_title">Tambahkan ke antrean Morphe</string>
   <string name="morphe_queue_restore_title">Simpan antrean antar sesi</string>
   <string name="morphe_queue_restore_summary">Antrean disimpan setelah memulai ulang aplikasi</string>
@@ -920,17 +868,11 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_queue_type_entry_2">Antrean Native</string>
   <string name="morphe_queue_type_entry_3">Antrean Morphe</string>
   <string name="morphe_queue_type_entry_4">Antrean Morphe sisi klien</string>
-  <string name="morphe_local_queue_sheet_title">Antrean</string>
   <string name="morphe_local_queue_open">Antrean (%s)</string>
-  <string name="morphe_local_queue_clear">Bersihkan semua</string>
   <string name="morphe_local_queue_empty">Tidak ada yang diantrekan</string>
   <string name="morphe_local_queue_empty_hint">Gunakan Putar berikutnya dalam antrean pada video apa pun</string>
   <string name="morphe_local_queue_now_playing">Sedang diputar</string>
-  <string name="morphe_local_queue_play_next">Putar berikutnya dalam antrean</string>
-  <string name="morphe_local_queue_play_last">Putar video terakhir dalam antrean</string>
   <string name="morphe_local_queue_reorder">Urutkan ulang</string>
-  <string name="morphe_local_queue_remove">Hapus</string>
-  <string name="morphe_local_queue_added">Ditambahkan ke antrean</string>
   <string name="morphe_local_queue_unavailable">Tidak dapat menambahkan video ini ke antrean</string>
   <string name="morphe_local_queue_playlist_unsupported">Daftar putar tidak dapat ditambahkan ke antrean</string>
   <string name="morphe_local_queue_full">Antrean penuh</string>
@@ -950,12 +892,10 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_queue_manager_fetch_failed_create">Gagal membuat antrean</string>
   <string name="morphe_queue_manager_fetch_failed_remove">Gagal menghapus dari antrean</string>
   <string name="morphe_queue_manager_fetch_failed_save">Gagal menyimpan antrean</string>
-  <string name="morphe_queue_manager_fetch_succeeded_add">Ditambahkan ke antrean</string>
   <string name="morphe_queue_manager_fetch_succeeded_create">Antrean dibuat</string>
   <string name="morphe_queue_manager_fetch_succeeded_remove">Dihapus dari antrean</string>
   <string name="morphe_queue_manager_fetch_succeeded_save">Antrean disimpan ke %s</string>
   <string name="morphe_queue_manager_playlist_title">Antrean Morphe</string>
-  <string name="morphe_queue_manager_add_to_queue">Tambahkan ke antrean</string>
   <string name="morphe_queue_manager_add_to_queue_and_open_queue">Tambahkan ke antrean dan buka</string>
   <string name="morphe_queue_manager_add_to_queue_and_play_video">Tambahkan ke antrean dan putar</string>
   <string name="morphe_queue_manager_add_to_queue_and_reload_video">Tambahkan dan muat ulang video</string>
@@ -975,14 +915,10 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_native_playlist_queue_saved_to">Disimpan ke %s</string>
   <string name="morphe_native_playlist_queue_clear">Hapus antrean</string>
   <string name="morphe_native_playlist_queue_cleared">Antrean dibersihkan</string>
-  <string name="morphe_native_playlist_queue_title">Antrean</string>
-  <string name="morphe_native_playlist_queue_last">Putar video terakhir dalam antrean</string>
-  <string name="morphe_native_playlist_queue_next">Putar video berikutnya dalam antrean</string>
   <string name="morphe_native_playlist_queue_unavailable">YouTube tidak dapat menampilkan antrean.</string>
   <string name="morphe_native_playlist_queue_not_ready">Antrean belum siap untuk video ini. Buka pemutar video lalu coba lagi.</string>
   <string name="morphe_native_playlist_queue_mix_choice">Tambahkan Mix ke antrean atau tonton Mix?</string>
   <string name="morphe_native_playlist_queue_watch_mix">Tonton</string>
-  <string name="morphe_native_playlist_queue_add_mix">Tambahkan ke antrean</string>
   <string name="morphe_native_playlist_queue_loading_mix">Memuat Mix…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Buka saluran dari avatar siaran langsung</string>
@@ -1042,7 +978,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swipe_ignore_when_locked_summary">Gerakan mengusap diabaikan saat pemutar dalam keadaan terkunci dengan \'Kunci layar\'</string>
   <string name="morphe_swipe_press_to_engage_title">Aktifkan tekan untuk gerakan usap</string>
   <string name="morphe_swipe_press_to_engage_summary">Memerlukan menekan dan menahan sebelum gerakan mengusap dikenali</string>
-  <string name="morphe_swipe_haptic_feedback_title">Aktifkan umpan balik getar</string>
   <string name="morphe_swipe_haptic_feedback_summary">Bergetar saat menekan dan menahan untuk memulai gestur geser</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan kembalikan kecerahan</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Menyimpan tingkat kecerahan saat masuk / keluar dari mode layar penuh</string>
@@ -1052,7 +987,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swipe_overlay_timeout_title">Batas waktu hamparan usap</string>
   <string name="morphe_swipe_overlay_timeout_summary">Jumlah milidetik hamparan terlihat</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Opasitas latar belakang hamparan usap</string>
-  <string name="morphe_swipe_overlay_background_opacity_summary">Sesuaikan level transparansi (0 transparan, 100 pekat)</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Warna kecerahan lapisan usap</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Atur warna bilah kemajuan kontrol kecerahan</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Warna volume lapisan usap</string>
@@ -1073,7 +1007,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swipe_brightness_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecerahan</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensitivitas usap kecepatan</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecepatan</string>
-  <string name="morphe_swipe_speed_step_title">Tahap kecepatan</string>
   <string name="morphe_swipe_speed_zone_height_title">Tinggi zona kecepatan</string>
   <string name="morphe_swipe_speed_zone_height_summary">Tinggi zona gerakan kecepatan sebagai persentase dari tinggi pemutar (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Kecepatan</string>
@@ -1099,11 +1032,9 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hold_gesture_press_to_swipe_toast">Gestur tahan tidak digunakan saat tekan untuk menggeser aktif</string>
   <string name="morphe_hold_gesture_dialog_title">Gestur tahan aktif</string>
   <string name="morphe_hold_gesture_dialog_turn_off">Matikan gestur tahan</string>
-  <string name="morphe_hold_gesture_haptic_feedback_title">Aktifkan umpan balik getar</string>
   <string name="morphe_hold_gesture_haptic_feedback_summary">Bergetar saat kecepatan berubah dan saat kecepatan dikunci</string>
   <string name="morphe_hold_gesture_speed_swipe_title">Geser ke samping untuk mengubah kecepatan</string>
   <string name="morphe_hold_gesture_speed_swipe_summary">Setelah mengetuk dan menahan, geser ke kiri untuk memutar lebih lambat dan ke kanan untuk memutar lebih cepat. Semakin jauh, kecepatan akan terus berubah sampai jari kembali</string>
-  <string name="morphe_hold_gesture_speed_step_title">Tahap kecepatan</string>
   <string name="morphe_hold_gesture_speed_sensitivity_title">Sensitivitas geser</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Rendah</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
@@ -1132,7 +1063,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hold_gesture_launcher_action_loop">Ulangi video</string>
   <string name="morphe_hold_gesture_launcher_action_loop_off">Hentikan pengulangan</string>
   <string name="morphe_hold_gesture_launcher_action_screenshot">Simpan frame</string>
-  <string name="morphe_hold_gesture_launcher_action_watch_later">Simpan ke Tonton Nanti</string>
   <string name="morphe_hold_gesture_launcher_action_timestamp_url">Salin tautan pada waktu sekarang</string>
   <string name="morphe_hold_gesture_screen_unlock">Ketuk untuk membuka kunci</string>
   <string name="morphe_hold_gesture_frame_saved">Frame disimpan ke %s</string>
@@ -1146,6 +1076,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_captions_advanced_summary">Setelan cookie dan transkrip</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Visibilitas teks otomatis</string>
+  <string name="morphe_auto_captions_style_entry_default">Bawaan</string>
   <string name="morphe_auto_captions_style_entry_1">Selalu tampilkan</string>
   <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
   <string name="morphe_auto_captions_style_entry_3">Tampilkan saat audio tidak dibisukan</string>
@@ -1173,7 +1104,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_fix_transcript_title">Perbaiki transkrip</string>
   <string name="morphe_fix_transcript_summary">Memperbaiki prasyarat kegagalan pemeriksaan yang dapat menghalangi pemuatan transkrip</string>
   <!-- layout.captions.copyTranscriptPatch -->
-  <string name="morphe_copy_transcript_category_title">Salin transkrip</string>
   <string name="morphe_copy_transcript_title">Salin transkrip</string>
   <string name="morphe_copy_transcript_summary">Menambahkan tombol ke panel transkrip yang menyalin transkrip dalam bahasa teks terjemahan</string>
   <string name="morphe_copy_transcript_timestamps_title">Sertakan stempel waktu</string>
@@ -1201,7 +1131,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_button_title">Sembunyikan tombol Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
-  <string name="morphe_hide_create_button_title">Sembunyikan tombol Buat</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">Sembunyikan tombol Subscription</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1209,10 +1138,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_show_search_button_title">Tampilkan tombol Telusuri</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_show_watch_later_button_title">Tampilkan tombol Tonton Nanti</string>
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-  <string name="morphe_watch_later_navigation_label">Tonton nanti</string>
-  <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
-  <string name="morphe_show_settings_button_type_title">Tindakan tombol setelan</string>
   <string name="morphe_show_settings_button_type_summary">Saat diaktifkan, ketuk membuka setelan Morphe dan tahan membuka setelan YouTube, nonaktifkan untuk menukarnya</string>
   <string name="morphe_you_button_account_switcher_title">Pintasan pengalih akun</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
@@ -1221,9 +1146,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_navigation_buttons_order_summary">Seret tombol untuk mengubah urutannya di bilah navigasi</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tukar tombol Buat dengan tombol Notifikasi</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Memindahkan tombol Notifikasi ke bilah navigasi dan tombol Buat ke toolbar. Jika perubahan tidak diterapkan, coba beralih ke mode Incognito</string>
-  <string name="morphe_hide_navigation_button_labels_title">Sembunyikan label tombol navigasi</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Sembunyikan titik konten baru</string>
-  <string name="morphe_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini sepenuhnya menyembunyikan bilah navigasi, termasuk tab 'Anda'.
 
 Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat → Tampilkan tombol Setelan"</string>
@@ -1243,9 +1166,7 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_style_entry_3">Transparan</string>
   <string name="morphe_navigation_bar_style_entry_4">Solid</string>
   <string name="morphe_navigation_bar_style_user_dialog_message">Gaya ini mungkin tidak didukung oleh perangkat atau versi YouTube Anda, dan dapat menyebabkan masalah tata letak atau crash</string>
-  <string name="morphe_navigation_bar_glass_title">Aktifkan bilah navigasi kaca</string>
   <string name="morphe_navigation_bar_glass_summary">Menampilkan bilah navigasi sebagai kapsul transparan, bulat, dan mengambang. Tidak tersedia dengan gaya bilah navigasi Buram</string>
-  <string name="morphe_navigation_bar_glass_opacity_title">Opasitas kaca</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Sesuaikan level transparansi bilah navigasi kaca (0 adalah transparan, 100 adalah solid)</string>
   <string name="morphe_navigation_bar_glass_round_title">Bilah navigasi kaca bulat</string>
   <string name="morphe_navigation_bar_glass_round_summary">Memberikan ujung bulat pada bilah navigasi kaca, bukan sudut seperti miniplayer kaca</string>
@@ -1255,14 +1176,9 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Sesuaikan jarak antara bilah navigasi kaca dan bagian bawah layar atau navigasi sistem</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukuran bilah navigasi kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Sesuaikan tinggi, lebar, dan jarak tombol bilah navigasi kaca, lengkap dengan pratinjau. Tombol yang tidak muat dalam lebar layar akan disembunyikan</string>
-  <string name="morphe_navigation_bar_glass_size_height">Tinggi</string>
-  <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
-  <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak tombol</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Tombol yang ditampilkan: %1$s dari %2$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sembunyikan tombol Chat</string>
   <string name="morphe_hide_toolbar_companion_button_title">Sembunyikan tombol Companion</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan tombol Mikrofon</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri</string>
   <string name="morphe_toolbar_buttons_order_title">Urutan tombol toolbar</string>
   <string name="morphe_toolbar_buttons_order_summary">Seret tombol untuk mengubah urutannya di toolbar</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1279,14 +1195,11 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_fullscreen_large_seekbar_title">Aktifkan bilah geser besar layar penuh</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_hide_shorts_category_title">Sembunyikan Shorts</string>
-  <string name="morphe_hide_shorts_channel_title">Sembunyikan di halaman saluran</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Sembunyikan di feed Beranda &amp; video terkait</string>
-  <string name="morphe_hide_shorts_search_title">Sembunyikan di hasil pencarian</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">Sembunyikan di feed Subscription</string>
   <string name="morphe_hide_shorts_video_description_title">Sembunyikan di deskripsi video</string>
-  <string name="morphe_hide_shorts_history_title">Sembunyikan di riwayat tontonan</string>
   <string name="morphe_hide_shorts_notifications_title">Sembunyikan di notifikasi dorong</string>
   <string name="morphe_shorts_player_screen_title">Pemutar Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Pilih komponen mana yang muncul di pemutar Shorts</string>
@@ -1299,7 +1212,6 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_hide_shorts_green_screen_button_title">Sembunyikan tombol \'Layar Hijau\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Sembunyikan tombol Hashtag</string>
   <string name="morphe_hide_shorts_info_panel_title">Sembunyikan panel info</string>
-  <string name="morphe_hide_shorts_like_button_title">Sembunyikan tombol Suka</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Sembunyikan tombol Suka yang memancar</string>
   <string name="morphe_hide_shorts_live_preview_title">Sembunyikan pratinjau siaran langsung</string>
@@ -1377,7 +1289,6 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Buka video dalam mode layar penuh</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Dinonaktifkan</string>
-  <string name="morphe_open_videos_fullscreen_entry_2">Potret</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Lanskap</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
   <string name="morphe_fullscreen_video_scale_title">Skala video layar penuh</string>
@@ -1413,7 +1324,6 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <string name="morphe_mute_video_button_title">Tampilkan tombol Bisu</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opasitas hamparan pemutar</string>
-  <string name="morphe_player_overlay_opacity_summary">Sesuaikan tingkat transparansi (0 adalah transparan, 100 pekat)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Bilah penelusuran</string>
   <string name="morphe_searchbar_type_entry_disabled">Dinonaktifkan</string>
@@ -1424,7 +1334,6 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <string name="morphe_change_form_factor_title">Tata letak perangkat</string>
   <string name="morphe_change_form_factor_entry_1">Bawaan</string>
   <string name="morphe_change_form_factor_entry_2">Ponsel</string>
-  <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Otomotif</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Perubahan meliputi:
 
@@ -1464,31 +1373,21 @@ Tata letak Otomotif
   <string name="morphe_custom_music_package_name_title">Nama paket aplikasi musik</string>
   <string name="morphe_custom_music_package_name_summary">Nama paket aplikasi musik yang terinstal</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Halaman mulai</string>
-  <string name="morphe_change_start_page_entry_default">Bawaan</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">Semua subscription</string>
   <string name="morphe_change_start_page_entry_browse">Jelajahi saluran</string>
   <string name="morphe_change_start_page_entry_courses">Kursus / Pembelajaran</string>
-  <string name="morphe_change_start_page_entry_explore">Jelajahi</string>
   <string name="morphe_change_start_page_entry_fashion">Fashion &amp; Kecantikan</string>
   <string name="morphe_change_start_page_entry_gaming">Permainan</string>
-  <string name="morphe_change_start_page_entry_history">Riwayat</string>
-  <string name="morphe_change_start_page_entry_library">Koleksi</string>
   <string name="morphe_change_start_page_entry_liked_videos">Video yang disukai</string>
   <string name="morphe_change_start_page_entry_live">Siaran langsung</string>
   <string name="morphe_change_start_page_entry_movies">Film</string>
   <string name="morphe_change_start_page_entry_music">Musik</string>
   <string name="morphe_change_start_page_entry_news">Berita</string>
   <string name="morphe_change_start_page_entry_notifications">Notifikasi</string>
-  <string name="morphe_change_start_page_entry_playlists">Daftar Putar</string>
-  <string name="morphe_change_start_page_entry_search">Telusuri</string>
   <string name="morphe_change_start_page_entry_shopping">Belanja</string>
-  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Olahraga</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Subscription</string>
   <string name="morphe_change_start_page_entry_trending">Sedang tren</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Realitas Virtual</string>
-  <string name="morphe_change_start_page_entry_watch_later">Tonton nanti</string>
   <string name="morphe_change_start_page_entry_your_clips">Klip Anda</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Nonaktifkan melanjutkan saat memulai</string>
@@ -1530,7 +1429,6 @@ Tata letak Otomotif
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan pemutar mini</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>
-  <string name="morphe_miniplayer_screen_title">Pemutar mini</string>
   <string name="morphe_miniplayer_screen_summary">Kustomisasi tampilan dan perilaku pemutar video yang diperkecil</string>
   <string name="morphe_miniplayer_not_available_title">Miniplayer tambahan</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube telah menghapus semua pemutar mini tambahan. Untuk mengembalikan lebih banyak jenis pemutar mini, terapkan tambalan pada YouTube 21.28.208 atau yang lebih lama</string>
@@ -1546,7 +1444,6 @@ Tata letak Otomotif
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
   <string name="morphe_miniplayer_type_entry_3">Minimal 2</string>
-  <string name="morphe_miniplayer_type_entry_4">Tablet</string>
   <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
   <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
   <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
@@ -1565,7 +1462,6 @@ Tata letak Otomotif
   <string name="morphe_miniplayer_width_dip_summary">Atur ukuran awal di layar, dalam piksel</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Ukuran piksel harus antara %1$s dan %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Opasitas hamparan</string>
-  <string name="morphe_miniplayer_opacity_summary">Sesuaikan tingkat transparansi (0 adalah transparan, 100 pekat)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tombol kembali menutup feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Menekan tombol kembali akan selalu menutup aplikasi bukannya menggulir feed ke atas</string>
@@ -1577,6 +1473,8 @@ Tata letak Otomotif
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sembunyikan bilah status</string>
   <string name="morphe_hide_status_bar_summary">Menyembunyikan bilah status sistem. Geser ke bawah dari tepi atas untuk menampilkannya sesaat</string>
+  <string name="morphe_hide_status_bar_tabletop_title">Sembunyikan bilah status dalam mode tabletop</string>
+  <string name="morphe_hide_status_bar_tabletop_summary">Menyembunyikan bilah status sistem saat menonton video dalam mode tabletop pada perangkat yang terlipat sebagian, dengan video di bagian atas dan kontrol pemutaran di bagian bawah</string>
   <string name="morphe_hide_status_bar_avoid_cutout_title">Jaga pemutar tetap di bawah potongan layar</string>
   <string name="morphe_hide_status_bar_avoid_cutout_summary">Memindahkan pemutar video potret ke bawah potongan layar saat bilah status tersembunyi, meninggalkan bilah kosong di bagian atas. Matikan ini agar video mengisi layar di belakang potongan</string>
   <string name="morphe_fix_status_bar_layout_title">Perbaiki status bar yang menutupi bar atas</string>
@@ -1614,7 +1512,6 @@ Tata letak Otomotif
   <string name="morphe_custom_branding_icon_entry_9">Kue asli</string>
   <string name="morphe_custom_branding_icon_entry_10">Logam asli</string>
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Logo Header</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
   <string name="morphe_header_logo_entry_2">Reguler</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
@@ -1649,7 +1546,6 @@ Tata letak Otomotif
   <string name="morphe_dearrow_about_summary">"DeArrow mengganti judul dan thumbnail clickbait dengan yang berasal dari crowdsource yang lebih akurat dan kurang sensasional. Judul ditulis dan dipilih oleh komunitas, dan thumbnail adalah bingkai yang diambil dari video
 
 Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server tidak dapat mengetahui dengan pasti video mana yang Anda lihat. Jika video tidak memiliki thumbnail DeArrow, yang asli atau tangkapan diam akan ditampilkan"</string>
-  <string name="morphe_dearrow_connection_toast_title">Tampilkan peringatan kesalahan sambungan</string>
   <string name="morphe_dearrow_connection_toast_summary">Menampilkan notifikasi saat server DeArrow tidak tersedia</string>
   <string name="morphe_dearrow_api_url_title">Titik akhir API</string>
   <string name="morphe_dearrow_api_url_summary">URL titik akhir cache thumbnail DeArrow</string>
@@ -1671,7 +1567,6 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_dearrow_guidelines_popup_already_read">Sudah dibaca</string>
   <string name="morphe_dearrow_guidelines_popup_open">Tunjukkan</string>
   <string name="morphe_dearrow_vote_title">DeArrow</string>
-  <string name="morphe_dearrow_vote_loading">Memuat…</string>
   <string name="morphe_dearrow_vote_fetch_failed">Tidak dapat memuat judul dan thumbnail video ini</string>
   <string name="morphe_dearrow_vote_titles">Judul</string>
   <string name="morphe_dearrow_vote_thumbnails">Thumbnail</string>
@@ -1685,11 +1580,8 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
   <string name="morphe_dearrow_vote_unverified">Belum terverifikasi</string>
   <string name="morphe_dearrow_vote_locked">Terkunci</string>
-  <string name="morphe_dearrow_vote_upvote">Sukai</string>
-  <string name="morphe_dearrow_vote_downvote">Tidak sukai</string>
   <string name="morphe_dearrow_vote_new_title">Judul baru</string>
   <string name="morphe_dearrow_vote_new_title_hint">Ketik judul</string>
-  <string name="morphe_dearrow_vote_submit">Kirim</string>
   <string name="morphe_dearrow_vote_new_thumbnail">Thumbnail baru</string>
   <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
   <string name="morphe_dearrow_vote_frame_step">%s d</string>
@@ -1705,18 +1597,10 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_dearrow_vote_failed_code">Tidak dapat mengirimkan suara (kode status: %s)</string>
   <string name="morphe_dearrow_vote_failed_connection">Tidak dapat mengirimkan suara. Periksa koneksi Anda dan coba lagi</string>
   <string name="morphe_dearrow_submitting_title">Mengirimkan judul dan thumbnail</string>
-  <string name="morphe_dearrow_vote_time_step_title">Langkah penyesuaian waktu</string>
   <string name="morphe_dearrow_vote_time_step_summary">Jumlah pencarian tombol penyesuaian waktu halus saat mengirimkan thumbnail (dalam milidetik)</string>
-  <string name="morphe_dearrow_vote_time_step_invalid">Nilainya harus berupa angka positif</string>
-  <string name="morphe_dearrow_private_user_id_title">ID pengguna pribadi Anda</string>
   <string name="morphe_dearrow_private_user_id_summary">ID pengguna yang sama dengan SponsorBlock. Ini harus dijaga kerahasiaannya. Seperti kata sandi dan tidak disarankan untuk dibagikan dengan siapa pun. Jika seseorang mendapatkan ini, mereka dapat menyamar sebagai Anda</string>
-  <string name="morphe_dearrow_private_user_id_invalid">ID pengguna pribadi harus memiliki panjang minimal 30 karakter</string>
-  <string name="morphe_dearrow_account_loading">Memuat…</string>
   <string name="morphe_dearrow_account_connection_failure">Detail akun sementara tidak tersedia</string>
-  <string name="morphe_dearrow_account_username">Nama pengguna Anda: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_dearrow_account_username_change">Ketuk di sini untuk mengubah nama pengguna Anda. Nama pengguna sama dengan yang ada di SponsorBlock</string>
-  <string name="morphe_dearrow_account_username_changed">Nama pengguna berhasil diubah</string>
-  <string name="morphe_dearrow_account_username_change_error">Tidak dapat mengubah nama pengguna: Status: %1$s %2$s</string>
   <string name="morphe_dearrow_account_titles">Anda telah mengirimkan &lt;b&gt;%s&lt;/b&gt; judul</string>
   <string name="morphe_dearrow_account_titles_summary">Ketuk di sini untuk melihat judul Anda</string>
   <string name="morphe_dearrow_account_thumbnails">Anda telah mengirimkan &lt;b&gt;%s&lt;/b&gt; thumbnail</string>
@@ -1770,7 +1654,6 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_video_delay_button_flyout_title">Tampilkan menu penundaan video</string>
   <string name="morphe_video_delay_dialog_input_hint">Penundaan dalam milidetik</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_video_effect_button_flyout_title">Tampilkan menu efek Video</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Ingat kualitas Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Menerapkan pilihan kualitas manual Anda ke semua Shorts mendatang</string>
@@ -1908,14 +1791,11 @@ Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame"</string>
   <string name="morphe_series_tracker_show_button_summary">Menambahkan tombol pemutar untuk mengikuti atau membuka seri dari video saat ini</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Catat kemajuan seri yang diikuti</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Catat pemutaran pada ponsel ini untuk seri dan penanda buku yang disimpan</string>
-  <string name="morphe_series_tracker_ui_cancel">Batalkan</string>
-  <string name="morphe_series_tracker_ui_save">Simpan</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Simpan penanda buku</string>
   <string name="morphe_series_tracker_ui_series_name">Nama seri</string>
   <string name="morphe_series_tracker_ui_series_options">Opsi seri</string>
   <string name="morphe_series_tracker_ui_library_options">Opsi koleksi</string>
   <string name="morphe_series_tracker_ui_refresh_episodes">Segarkan episode</string>
-  <string name="morphe_series_tracker_ui_rename">Ubah nama</string>
   <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Buka daftar putar di YouTube</string>
   <string name="morphe_series_tracker_ui_remove_from_library">Hapus dari koleksi</string>
   <string name="morphe_series_tracker_ui_playlist_link_or_id">Tautan atau ID daftar putar</string>
@@ -1966,7 +1846,6 @@ Pencatatan otomatis berhenti dalam mode penyamaran, ketika identitas akun tidak 
   <string name="morphe_series_tracker_saved_position">Video tersimpan · %s</string>
   <string name="morphe_series_tracker_follow">Ikuti seri</string>
   <string name="morphe_series_tracker_view_series">Lihat seri</string>
-  <string name="morphe_series_tracker_continue">Lanjutkan</string>
   <string name="morphe_series_tracker_start_here">Mulai dari sini</string>
   <string name="morphe_series_tracker_start_saved">Titik awal disimpan</string>
   <string name="morphe_series_tracker_watched_to_here">Ditonton sampai sini</string>
@@ -2051,8 +1930,6 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_summary">Menampilkan tombol hamparan di pemutar video. Ketuk untuk menampilkan atau menyembunyikan komentar, ketuk dan tahan untuk setelan cepat</string>
   <string name="morphe_niconico_comments_pip_title">Tampilkan dalam picture-in-picture</string>
   <string name="morphe_niconico_comments_pip_summary">Komentar diperkecil agar pas dengan jendela</string>
-  <string name="morphe_niconico_comments_appearance_title">Tampilan</string>
-  <string name="morphe_niconico_comments_portrait_category_title">Potret</string>
   <string name="morphe_niconico_comments_video_types_title">Tipe video</string>
   <string name="morphe_niconico_comments_font_size_title">Ukuran font komentar</string>
   <string name="morphe_niconico_comments_font_size_summary">Ukuran teks komentar (12-40 sp)</string>
@@ -2076,7 +1953,6 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_hide_crowded_summary">Saat area tampilan penuh, komentar baru akan disembunyikan daripada menimpa komentar lain</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimal panjang komentar</string>
   <string name="morphe_niconico_comments_max_length_summary">Menyembunyikan komentar yang jumlah karakternya melebihi batas ini. Setiap emoji dihitung sebagai satu karakter</string>
-  <string name="morphe_niconico_comments_max_length_no_limit">Tanpa batas</string>
   <string name="morphe_niconico_comments_max_refresh_rate_title">Tingkat penyegaran maksimum</string>
   <string name="morphe_niconico_comments_max_refresh_rate_summary">Tingkat penyegaran layar tertinggi yang digunakan saat komentar bergerak. Nilai yang lebih rendah menggunakan lebih sedikit baterai</string>
   <string name="morphe_niconico_comments_live_streams_title">Tampilkan pada live stream</string>
@@ -2089,13 +1965,11 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_timed_comments_summary">Pada video tanpa chat, komentar teratas yang mengandung waktu seperti 1:23 akan ditampilkan pada waktu tersebut</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Tampilkan komentar terjadwal dengan putar ulang obrolan</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Pada putar ulang siaran langsung dan Premiere, komentar terjadwal juga ditampilkan bersama obrolan</string>
-  <string name="morphe_niconico_comments_all_settings">Semua setelan</string>
   <string name="morphe_niconico_comments_reset_title">Atur ulang setelan ini?</string>
   <string name="morphe_live_chat_translate_screen_title">Terjemahan live chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Terjemahkan pesan live chat dan rekaman live chat</string>
   <string name="morphe_live_chat_translate_title">Terjemahkan live chat</string>
   <string name="morphe_live_chat_translate_summary">Menerjemahkan pesan live chat dan rekaman live chat begitu pesan tersebut muncul di layar</string>
-  <string name="morphe_live_chat_translate_language_title">Bahasa terjemahan</string>
   <string name="morphe_live_chat_translate_exclude_title">Bahasa yang dikecualikan</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kode bahasa yang dipisahkan dengan koma, contohnya: id,en. Pesan dalam bahasa tersebut tidak diterjemahkan</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
@@ -2106,7 +1980,6 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_live_chat_translate_copy_button_summary">Menambahkan tombol salin kecil pada setiap pesan chat</string>
   <string name="morphe_live_chat_translate_copied">Pesan disalin ke papan klip</string>
   <string name="morphe_live_chat_translate_style_title">Gaya terjemahan</string>
-  <string name="morphe_live_chat_translate_style_translated_only">Terjemahan saja</string>
   <string name="morphe_live_chat_translate_style_original_and_translated">Asli (diterjemahkan)</string>
   <string name="morphe_live_chat_translate_style_translated_and_original">(Diterjemahkan) asli</string>
   <string name="morphe_live_chat_translate_bold_title">Teks terjemahan tebal</string>
@@ -2117,10 +1990,8 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_live_chat_translate_color_summary">Atur warna hex untuk teks yang diterjemahkan</string>
   <string name="morphe_live_chat_translate_max_length_title">Panjang pesan maksimum</string>
   <string name="morphe_live_chat_translate_max_length_summary">Pesan yang lebih panjang ditampilkan tanpa diterjemahkan</string>
-  <string name="morphe_live_chat_translate_max_length_no_limit">Tanpa batas</string>
   <string name="morphe_ghost_play_screen_title">Mode hantu</string>
   <string name="morphe_ghost_play_screen_summary">Tonton video tanpa memengaruhi riwayat tontonan atau rekomendasi</string>
-  <string name="morphe_ghost_play_cat_general_title">Umum</string>
   <string name="morphe_ghost_play_cat_buttons_title">Tombol</string>
   <string name="morphe_ghost_play_cat_rules_title">Aturan auto-ghost</string>
   <string name="morphe_ghost_play_cat_history_title">Riwayat lokal</string>
@@ -2169,11 +2040,8 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_ghost_play_timer_set_toast">Mode hantu aktif selama %d menit</string>
   <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Timer dihapus — Mode hantu tetap AKTIF</string>
   <string name="morphe_ghost_play_timer_invalid_toast">Masukkan durasi antara 1 dan 720 menit</string>
-  <string name="morphe_ghost_play_dialog_title">Mode hantu</string>
   <string name="morphe_ghost_play_state_on">Aktif</string>
   <string name="morphe_ghost_play_state_off">Nonaktif</string>
-  <string name="morphe_ghost_play_close">Tutup</string>
-  <string name="morphe_ghost_play_open_settings">Semua setelan</string>
   <string name="morphe_ghost_play_quick_power_hint">Ketuk untuk mengaktifkan/menonaktifkan Mode hantu</string>
   <string name="morphe_ghost_play_quick_timer_title">Mode Ghost Berwaktu</string>
   <string name="morphe_ghost_play_quick_timer_sub">Ketuk untuk memilih durasi</string>
@@ -2181,9 +2049,7 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_ghost_play_quick_timer_running_sub">Secara otomatis kembali ke mode normal saat selesai</string>
   <string name="morphe_ghost_play_quick_timer_change">Ubah waktu</string>
   <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Hapus timer (tetap AKTIF)</string>
-  <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
   <string name="morphe_ghost_play_timer_custom_hint">Menit kustom (1–720)…</string>
-  <string name="morphe_ghost_play_timer_custom_set">Atur</string>
   <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost AKTIF untuk saluran ini</string>
   <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost MATI untuk saluran ini</string>
   <string name="morphe_ghost_play_quick_channel_count">%d saluran dikonfigurasi</string>
@@ -2195,23 +2061,18 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_ghost_play_history_search_hint">Filter berdasarkan judul video atau saluran…</string>
   <string name="morphe_ghost_play_history_no_match">Tidak ada video yang cocok dalam riwayat Ghost lokal</string>
   <string name="morphe_ghost_play_history_empty">Belum ada riwayat Ghost lokal</string>
-  <string name="morphe_ghost_play_history_clear_all">Hapus semua</string>
   <string name="morphe_ghost_play_history_clear_confirm_title">Hapus riwayat Ghost lokal?</string>
   <string name="morphe_ghost_play_history_clear_confirm_message">Ini akan menghapus semua entri mode Ghost yang tersimpan di perangkat dan tidak dapat dibatalkan.</string>
   <string name="morphe_ghost_play_history_cleared_toast">Riwayat Ghost lokal telah dihapus</string>
   <string name="morphe_ghost_play_history_item_removed_toast">Dihapus dari riwayat Ghost lokal</string>
-  <string name="morphe_ghost_play_channels_manager_title">Saluran auto-ghost</string>
   <string name="morphe_ghost_play_channels_tab_saved">Ditambahkan (%d)</string>
   <string name="morphe_ghost_play_channels_tab_search">Cari &amp; Tambah</string>
   <string name="morphe_ghost_play_channels_filter_hint">Filter saluran yang ditambahkan berdasarkan nama, @handle, atau topik…</string>
   <string name="morphe_ghost_play_channels_empty">Belum ada saluran yang ditambahkan. Beralih ke \"Cari &amp; Tambah\" untuk mencari saluran berdasarkan nama, @handle, atau URL.</string>
   <string name="morphe_ghost_play_channels_filter_no_match">Tidak ada saluran yang ditambahkan yang cocok dengan filter Anda</string>
   <string name="morphe_ghost_play_channels_add_current">Memutar: %s</string>
-  <string name="morphe_ghost_play_channels_add_button">Tambah</string>
   <string name="morphe_ghost_play_channels_added_badge">Ditambahkan</string>
-  <string name="morphe_ghost_play_channels_delete_button">Hapus</string>
   <string name="morphe_ghost_play_channels_search_hint">Nama saluran, @handle, atau URL…</string>
-  <string name="morphe_ghost_play_channels_search_button">Telusuri</string>
   <string name="morphe_ghost_play_channels_search_guide">Masukkan nama channel, @handle, atau URL channel YouTube lalu ketuk Cari</string>
   <string name="morphe_ghost_play_channels_searching">Mencari channel YouTube…</string>
   <string name="morphe_ghost_play_channels_search_error">Pencarian gagal. Periksa koneksi Anda dan coba lagi.</string>
@@ -2220,4 +2081,29 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_ghost_play_channels_recent_videos">Video terbaru</string>
   <string name="morphe_ghost_play_channels_loading_details">Memuat video terbaru…</string>
   <string name="morphe_ghost_play_channels_no_recent_videos">Tidak ada video terbaru yang ditemukan (ketuk untuk mencoba lagi)</string>
+  <!-- Shared YouTube strings -->
+  <string name="morphe_all_settings">Semua setelan</string>
+  <string name="morphe_clear_all">Hapus semua</string>
+  <string name="morphe_haptic_feedback_title">Aktifkan umpan balik getar</string>
+  <string name="morphe_hide_dislike_button_title">Sembunyikan tombol Tidak Suka</string>
+  <string name="morphe_hide_in_channel_page_title">Sembunyikan di halaman saluran</string>
+  <string name="morphe_hide_in_search_results_title">Sembunyikan di hasil pencarian</string>
+  <string name="morphe_hide_in_watch_history_title">Sembunyikan di riwayat tontonan</string>
+  <string name="morphe_hide_like_button_title">Sembunyikan tombol Suka</string>
+  <string name="morphe_no_limit">Tanpa batas</string>
+  <string name="morphe_opacity_summary">Sesuaikan level transparansi (0 adalah transparan, 100 adalah solid)</string>
+  <string name="morphe_portrait">Potret</string>
+  <string name="morphe_queue_add_to_queue">Tambahkan ke antrean</string>
+  <string name="morphe_queue_added">Ditambahkan ke antrean</string>
+  <string name="morphe_queue_play_last">Putar video terakhir dalam antrean</string>
+  <string name="morphe_queue_play_next">Putar video berikutnya dalam antrean</string>
+  <string name="morphe_queue_title">Antrean</string>
+  <string name="morphe_save_to_watch_later_title">Simpan ke Tonton Nanti</string>
+  <string name="morphe_search">Telusuri</string>
+  <string name="morphe_set">Atur</string>
+  <string name="morphe_shorts_title">Shorts</string>
+  <string name="morphe_speed_step_title">Tahap kecepatan</string>
+  <string name="morphe_tablet">Tablet</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+  <string name="morphe_watch_later">Tonton nanti</string>
 </resources>

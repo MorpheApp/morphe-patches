@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Aktivera SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock är ett crowdsourcing-baserat system för att hoppa över irriterande delar av YouTube-videor</string>
-  <string name="morphe_sb_appearance_category_title">Utseende</string>
   <string name="morphe_sb_voting_button_title">Visa röstningsknapp</string>
   <string name="morphe_sb_voting_button_summary">Lägger till en knapp för att uppåtrösta eller nedåtrösta segment</string>
   <string name="morphe_sb_square_layout_title">Använd fyrkantig layout</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Döljer överhoppningsknappen efter några sekunder istället för att hålla den synlig under hela segmentet</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Varaktighet för överhoppningsknappen</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Ange hur länge överhoppningsknappen är synlig</string>
-  <string name="morphe_sb_toast_on_skip_title">Visa överhoppningsmeddelande</string>
   <string name="morphe_sb_toast_on_skip_summary">Visar ett meddelande när ett segment hoppas över automatiskt</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Varaktighet för överhoppningsmeddelande</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Ange hur länge meddelandet för att ångra är synligt</string>
-  <string name="morphe_sb_duration_1s">1 sekund</string>
-  <string name="morphe_sb_duration_2s">2 sekunder</string>
-  <string name="morphe_sb_duration_3s">3 sekunder</string>
-  <string name="morphe_sb_duration_4s">4 sekunder</string>
-  <string name="morphe_sb_duration_5s">5 sekunder</string>
-  <string name="morphe_sb_duration_6s">6 sekunder</string>
-  <string name="morphe_sb_duration_7s">7 sekunder</string>
-  <string name="morphe_sb_duration_8s">8 sekunder</string>
-  <string name="morphe_sb_duration_9s">9 sekunder</string>
-  <string name="morphe_sb_duration_10s">10 sekunder</string>
   <string name="morphe_sb_video_length_without_segments_title">Visa videons längd utan segment</string>
   <string name="morphe_sb_video_length_without_segments_summary">Subtraherar alla segment från den totala videolängden som visas vid sökreglaget </string>
   <string name="morphe_sb_create_segment_category_title">Skapa nya segment</string>
   <string name="morphe_sb_create_new_segment_title">Visa knappen Skapa nytt segment</string>
   <string name="morphe_sb_create_new_segment_summary">Lägger till en knapp i videospelaren som låter dig skicka in SponsorBlock-segment</string>
-  <string name="morphe_sb_create_new_segment_step_title">Tidsjusteringssteg</string>
   <string name="morphe_sb_create_new_segment_step_summary">Steglängden för tidsjusteringsknapparna (i millisekunder)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Värdet måste vara ett positivt tal</string>
   <string name="morphe_sb_guidelines_title">Riktlinjer för att skicka in bidrag</string>
   <string name="morphe_sb_guidelines_summary">Riktlinjerna innehåller regler och tips för att skapa nya segment</string>
   <string name="morphe_sb_guidelines_popup_title">Följ riktlinjerna</string>
   <string name="morphe_sb_guidelines_popup_content">Läs riktlinjerna för SponsorBlock innan du skapar nya segment</string>
   <string name="morphe_sb_guidelines_popup_already_read">Redan läst</string>
   <string name="morphe_sb_guidelines_popup_open">Visa mig</string>
-  <string name="morphe_sb_general_title">Allmänt</string>
   <string name="morphe_sb_offline_segments_title">Spara segment av nedladdade videor</string>
   <string name="morphe_sb_offline_segments_summary">Möjliggör att hoppa över segment av nedladdade videor när man är offline</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Visar ett meddelande när SponsorBlock-servern inte är tillgänglig</string>
   <string name="morphe_sb_track_skip_count_title">Aktivera spårning av antalet överhoppningar</string>
   <string name="morphe_sb_track_skip_count_summary">Skickar antalet överhoppningar till SponsorBlock-topplistan för att spåra hur mycket tid som sparas</string>
   <string name="morphe_sb_min_segment_duration_title">Minsta segmentlängd</string>
   <string name="morphe_sb_min_segment_duration_summary">Segment som är kortare än detta värde (i sekunder) kommer inte att visas eller hoppas över</string>
   <string name="morphe_sb_min_segment_duration_invalid">Ogiltig tidslängd</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Ditt privata användar-id</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Detta bör hållas privat. Det fungerar som ett lösenord och ska inte delas med någon. Om någon får tag på det kan hen utge sig för att vara du</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Privat användar-id måste vara minst 30 tecken långt</string>
   <string name="morphe_sb_api_url_title">Ändra API-webbadress</string>
   <string name="morphe_sb_api_url_summary">Adressen SponsorBlock använder för att göra anrop till servern</string>
   <string name="morphe_sb_channel_whitelist_title">Kanalvitlista</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API-webbadress är ogiltig</string>
   <string name="morphe_sb_api_url_changed">API-webbadress ändrades</string>
   <string name="morphe_sb_settings_ie_title">Importera/exportera inställningar</string>
-  <string name="morphe_sb_settings_copy">Kopiera</string>
   <string name="morphe_sb_settings_ie_summary">Din JSON-konfiguration för SponsorBlock som kan importeras/exporteras till Morphe och andra SponsorBlock-plattformar</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Din JSON-konfiguration för SponsorBlock som kan importeras/exporteras till Morphe och andra SponsorBlock-plattformar
 
@@ -92,7 +73,6 @@ Detta inkluderar ditt privata användar-id. Se till att dela detta klokt"</strin
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Dina inställningar innehåller ett privat användar-id för SponsorBlock.
 
 Ditt användar-id fungerar som ett lösenord och det bör aldrig delas"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Visa inte igen</string>
   <string name="morphe_sb_diff_segments_title">Ändra beteende för segment</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
   <string name="morphe_sb_segments_sponsor_summary">Betald marknadsföring, betalda hänvisningar och direktannonser. Inte för egenreklam eller gratis reklam för saker/kreatörer/webbplatser/produkter som de gillar</string>
@@ -122,11 +102,9 @@ Ditt användar-id fungerar som ett lösenord och det bör aldrig delas"</string>
   <string name="morphe_sb_skip_button_highlight">Hoppa till höjdpunkten</string>
   <string name="morphe_sb_skip_button_intro_beginning">Hoppa över intro</string>
   <string name="morphe_sb_skip_button_intro_middle">Hoppa över uppehåll</string>
-  <string name="morphe_sb_skip_button_intro_end">Hoppa över uppehåll</string>
   <string name="morphe_sb_skip_button_outro">Hoppa över outro</string>
   <string name="morphe_sb_skip_button_hook">Hoppa över hook</string>
   <string name="morphe_sb_skip_button_preview_beginning">Hoppa över förhandstitt</string>
-  <string name="morphe_sb_skip_button_preview_middle">Hoppa över förhandstitt</string>
   <string name="morphe_sb_skip_button_preview_end">Hoppa över sammanfattning</string>
   <string name="morphe_sb_skip_button_filler">Hoppa över utfyllnad</string>
   <string name="morphe_sb_skip_button_nomusic">Hoppa över icke-musik</string>
@@ -137,11 +115,9 @@ Ditt användar-id fungerar som ett lösenord och det bör aldrig delas"</string>
   <string name="morphe_sb_skipped_highlight">Hoppade till höjdpunkten</string>
   <string name="morphe_sb_skipped_intro_beginning">Hoppade över intro</string>
   <string name="morphe_sb_skipped_intro_middle">Hoppade över uppehåll</string>
-  <string name="morphe_sb_skipped_intro_end">Hoppade över uppehåll</string>
   <string name="morphe_sb_skipped_outro">Hoppade över outro</string>
   <string name="morphe_sb_skipped_hook">Hoppade över hook</string>
   <string name="morphe_sb_skipped_preview_beginning">Hoppade över förhandstitt</string>
-  <string name="morphe_sb_skipped_preview_middle">Hoppade över förhandstitt</string>
   <string name="morphe_sb_skipped_preview_end">Hoppade över sammanfattning</string>
   <string name="morphe_sb_skipped_filler">Hoppade över utfyllnad</string>
   <string name="morphe_sb_skipped_nomusic">Hoppade över ett icke-musikavsnitt</string>
@@ -167,8 +143,6 @@ Det finns redan"</string>
   <string name="morphe_sb_vote_failed_timeout">Det gick inte att rösta på segment (API-tidsgräns nådd)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Det gick inte att rösta på segment (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Det gick inte att rösta på segment: %s</string>
-  <string name="morphe_sb_vote_upvote">Upprösta</string>
-  <string name="morphe_sb_vote_downvote">Nedrösta</string>
   <string name="morphe_sb_vote_category">Ändra kategori</string>
   <string name="morphe_sb_vote_no_segments">Det finns inga segment att rösta på</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ till
 (%3$s)
 
 Redo att skicka in?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Skicka in</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Starten måste infalla före slutet</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Markera först en plats på tidsreglaget</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Förhandsgranska segmentet och se till att det hoppar över smidigt</string>
@@ -205,16 +178,11 @@ Redo att skicka in?"</string>
 %s
 
 Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den andra platsen"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Skicka in höjdpunkt</string>
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistik är för tillfället inte tillgänglig (API ligger nere)</string>
-  <string name="morphe_sb_stats_loading">Läser in …</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock är inaktiverad</string>
-  <string name="morphe_sb_stats_username">Ditt användarnamn: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Tryck här för att ändra ditt användarnamn</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Det gick inte att ändra användarnamn: Status: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Användarnamnet har ändrats</string>
   <string name="morphe_sb_stats_reputation">Ditt rykte är &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Du har skapat &lt;b&gt;%s&lt;/b&gt; segment</string>
   <string name="morphe_sb_stats_submissions_summary">Tryck här för att visa dina segment</string>
