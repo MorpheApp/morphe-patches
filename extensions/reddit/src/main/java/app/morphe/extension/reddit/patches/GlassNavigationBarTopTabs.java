@@ -120,6 +120,7 @@ public final class GlassNavigationBarTopTabs {
     private static final float TABS_WEIGHT = 1000;
     private static final float HEADER_HEIGHT_DP = 8;
     private static final float CAPSULE_MARGIN_DP = 4;
+    private static final float TOP_BAR_GLASS_GAP_DP = 8;
     private static final float SELECTED_PILL_INSET_X_DP = 2;
     private static final float SELECTED_PILL_INSET_Y_DP = 4;
     private static final float TAB_CORNER_RADIUS_DP = 100;
@@ -325,7 +326,10 @@ public final class GlassNavigationBarTopTabs {
             // its full height in the top bar row.
             if (tabsModifier == null) {
                 Modifier weight = (Modifier) ComposeUtils.newWeightModifier(TABS_WEIGHT, true);
-                tabsModifier = weight.patch_drawWithContent(CapsuleDraw.INSTANCE);
+                final float gap = GlassNavigationBarPatch.TOP_BAR_BUTTON_GLASS_EXTRA_DP / 2
+                        + TOP_BAR_GLASS_GAP_DP - CAPSULE_MARGIN_DP;
+                tabsModifier = ((Modifier) weight.patch_padding(gap, 0, gap, 0))
+                        .patch_drawWithContent(CapsuleDraw.INSTANCE);
             }
             replacedModifierRef = new WeakReference<>(modifier);
 
