@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5280
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -182,7 +182,7 @@ public final class SeeThroughStatusBarPatch {
         }
 
         statusBarInsets = insets;
-        return GlassNavigationBarPatch.getFeedBlurModifier(
+        return GlassNavigationBarPatch.getFeedFrostedModifier(
                 (Modifier) modifier.patch_drawWithContent(FadeDraw.INSTANCE)
         );
     }
@@ -202,12 +202,12 @@ public final class SeeThroughStatusBarPatch {
     /**
      * Injection point.
      *
-     * @param modifier Modifier going into the app bar graphicsLayer.
+     * @param modifier Modifier of the app bar, before its graphics layer.
      */
     public static Object getAppBarLayerModifier(Modifier modifier) {
         try {
             if (isEnabled()) {
-                return GlassNavigationBarPatch.getTopBarContentModifier(modifier);
+                return GlassNavigationBarPatch.getTopBarFrostedModifier(modifier);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getAppBarLayerModifier failure", ex);

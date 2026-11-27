@@ -17,7 +17,6 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RecordingCanvas;
-import android.graphics.RectF;
 import android.graphics.RenderEffect;
 import android.graphics.RenderNode;
 import android.graphics.Shader;
@@ -52,35 +51,16 @@ final class GlassNavigationBarBlur {
 
         @Override
         public Object invoke(ContentDrawScope scope) {
-            ComposeCanvas composeCanvas = scope.patch_getCanvas();
-            Canvas canvas = composeCanvas.patch_getNativeCanvas();
-            final long size = scope.patch_getSize();
-            final int width = (int) Math.ceil(unpackFirst(size));
-            final int height = (int) Math.ceil(unpackSecond(size));
-
-            if (!canvas.isHardwareAccelerated() || width <= 0 || height <= 0) {
-                scope.patch_drawContent();
-                return null;
+            if (drawContentInto(scope, PAGE_NODE)) {
+                recordBackdrop();
             }
-
-            PAGE_NODE.setPosition(0, 0, width, height);
-            RecordingCanvas recording = PAGE_NODE.beginRecording(width, height);
-            composeCanvas.patch_setNativeCanvas(recording);
-            try {
-                scope.patch_drawContent();
-            } finally {
-                composeCanvas.patch_setNativeCanvas(canvas);
-                PAGE_NODE.endRecording();
-            }
-
-            canvas.drawRenderNode(PAGE_NODE);
-            recordBackdrop();
             return null;
         }
     }
 
     /**
-     * Records the Home feed into its own render node and saves its position in the parent canvas.
+     * Draws the Home feed and records it. The top bar is part of the page,
+     * so its glass blurs this separate recording of the feed instead.
      */
     static final class FeedDraw implements Function1<ContentDrawScope, Object> {
         static final FeedDraw INSTANCE = new FeedDraw();
@@ -91,79 +71,48 @@ final class GlassNavigationBarBlur {
         @Override
         @SuppressWarnings("deprecation")
         public Object invoke(ContentDrawScope scope) {
-            ComposeCanvas composeCanvas = scope.patch_getCanvas();
-            Canvas canvas = composeCanvas.patch_getNativeCanvas();
-            final long size = scope.patch_getSize();
-            final int width = (int) Math.ceil(unpackFirst(size));
-            final int height = (int) Math.ceil(unpackSecond(size));
-
-            if (!canvas.isHardwareAccelerated() || width <= 0 || height <= 0) {
-                scope.patch_drawContent();
-                return null;
+            if (drawContentInto(scope, FEED_NODE)) {
+                scope.patch_getCanvas().patch_getNativeCanvas().getMatrix(FEED_MATRIX);
+                feedRecorded = true;
             }
-
-            FEED_NODE.setPosition(0, 0, width, height);
-            RecordingCanvas recording = FEED_NODE.beginRecording(width, height);
-            composeCanvas.patch_setNativeCanvas(recording);
-            try {
-                scope.patch_drawContent();
-            } finally {
-                composeCanvas.patch_setNativeCanvas(canvas);
-                FEED_NODE.endRecording();
-            }
-
-            canvas.getMatrix(FEED_MATRIX);
-            feedRecorded = true;
-            canvas.drawRenderNode(FEED_NODE);
             return null;
         }
     }
 
     /**
-     * Saves the Home top bar's position in the parent canvas.
+     * Records the blurred feed behind the Home top bar, which the glass of its buttons and tabs draws.
+     * Must be drawn by the same parent as the feed, outside the graphics layer of the top bar.
      */
-    static final class HeaderDraw implements Function1<ContentDrawScope, Object> {
-        static final HeaderDraw INSTANCE = new HeaderDraw();
+    static final class TopBarDraw implements Function1<ContentDrawScope, Object> {
+        static final TopBarDraw INSTANCE = new TopBarDraw();
 
-        private HeaderDraw() {
+        private TopBarDraw() {
         }
 
         @Override
         @SuppressWarnings("deprecation")
         public Object invoke(ContentDrawScope scope) {
-            scope.patch_getCanvas().patch_getNativeCanvas().getMatrix(HEADER_MATRIX);
-            headerPositioned = true;
+            Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
+            final long size = scope.patch_getSize();
+            topBarRecorded = feedRecorded && canvas.isHardwareAccelerated();
+
+            if (topBarRecorded) {
+                canvas.getMatrix(TOP_BAR_MATRIX);
+                TOP_BAR_MATRIX.getValues(MATRIX_VALUES);
+                final float topBarX = MATRIX_VALUES[Matrix.MTRANS_X];
+                final float topBarY = MATRIX_VALUES[Matrix.MTRANS_Y];
+                FEED_MATRIX.getValues(MATRIX_VALUES);
+
+                recordNode(TOP_BAR_BLUR_NODE, FEED_NODE,
+                        Math.round(topBarX - MATRIX_VALUES[Matrix.MTRANS_X]) - BLUR_MARGIN,
+                        Math.round(topBarY - MATRIX_VALUES[Matrix.MTRANS_Y]) - BLUR_MARGIN,
+                        (int) Math.ceil(unpackFirst(size)) + 2 * BLUR_MARGIN,
+                        (int) Math.ceil(unpackSecond(size)) + 2 * BLUR_MARGIN,
+                        GlassNavigationBarPatch.getPageColor());
+            }
+
             scope.patch_drawContent();
             return null;
-        }
-    }
-
-    private static final class TopBarSlot {
-        final RenderNode node;
-        int blurLeft;
-        int blurTop;
-        int blurWidth;
-        int blurHeight;
-        @ColorInt
-        int backgroundColor;
-
-        TopBarSlot() {
-            this.node = new RenderNode("morphe_glass_top_bar_blur");
-            this.node.setRenderEffect(BLUR_EFFECT);
-        }
-
-        boolean matches(int left, int top, int width, int height) {
-            return blurLeft == left && blurTop == top
-                    && blurWidth == width && blurHeight == height;
-        }
-
-        void record(int left, int top, int width, int height, @ColorInt int color) {
-            blurLeft = left;
-            blurTop = top;
-            blurWidth = width;
-            blurHeight = height;
-            backgroundColor = color;
-            recordNode(node, FEED_NODE, left, top, width, height, color);
         }
     }
 
@@ -173,23 +122,23 @@ final class GlassNavigationBarBlur {
      * A blur alone makes the colors dull and gray.
      */
     private static final float SATURATION = 1.4f;
-    private static final int MAX_TOP_BAR_SLOTS = 8;
 
     private static final RenderNode PAGE_NODE = new RenderNode("morphe_glass_page");
     private static final RenderNode FEED_NODE = new RenderNode("morphe_glass_feed");
     private static final RenderNode BLUR_NODE = new RenderNode("morphe_glass_blur");
     private static final RenderNode BUTTON_BLUR_NODE = new RenderNode("morphe_glass_button_blur");
-    private static final RenderEffect BLUR_EFFECT;
+    private static final RenderNode TOP_BAR_BLUR_NODE = new RenderNode("morphe_glass_top_bar_blur");
 
     private static final Path CAPSULE_PATH = new Path();
     private static final Path BUTTON_PATH = new Path();
     private static final Path TOP_BAR_PATH = new Path();
+    /**
+     * Positions of the feed and the top bar in their parent.
+     */
     private static final Matrix FEED_MATRIX = new Matrix();
-    private static final Matrix HEADER_MATRIX = new Matrix();
+    private static final Matrix TOP_BAR_MATRIX = new Matrix();
     private static final Matrix SHAPE_MATRIX = new Matrix();
     private static final float[] MATRIX_VALUES = new float[9];
-    private static final RectF SHAPE_RECT = new RectF();
-    private static final TopBarSlot[] TOP_BAR_SLOTS = new TopBarSlot[MAX_TOP_BAR_SLOTS];
 
     /**
      * Extra size on each side of the blurred area, so the page next to the capsule blurs into it.
@@ -217,8 +166,7 @@ final class GlassNavigationBarBlur {
     private static int backgroundColor;
 
     private static boolean feedRecorded;
-    private static boolean headerPositioned;
-    private static int topBarSlotCount;
+    private static boolean topBarRecorded;
 
     static {
         // Same as without the render node.
@@ -231,12 +179,13 @@ final class GlassNavigationBarBlur {
 
         ColorMatrix colors = new ColorMatrix();
         colors.setSaturation(SATURATION);
-        BLUR_EFFECT = RenderEffect.createChainEffect(
+        RenderEffect effect = RenderEffect.createChainEffect(
                 RenderEffect.createBlurEffect(radius, radius, Shader.TileMode.CLAMP),
                 RenderEffect.createColorFilterEffect(new ColorMatrixColorFilter(colors))
         );
-        BLUR_NODE.setRenderEffect(BLUR_EFFECT);
-        BUTTON_BLUR_NODE.setRenderEffect(BLUR_EFFECT);
+        BLUR_NODE.setRenderEffect(effect);
+        BUTTON_BLUR_NODE.setRenderEffect(effect);
+        TOP_BAR_BLUR_NODE.setRenderEffect(effect);
     }
 
     private GlassNavigationBarBlur() {
@@ -289,53 +238,32 @@ final class GlassNavigationBarBlur {
     }
 
     /**
-     * Draws the blurred feed inside a top bar glass shape.
+     * Draws the blurred feed inside the glass of a top bar button or the tabs.
+     *
+     * @param scope Scope inside the top bar, without its own graphics layer.
      */
     @SuppressWarnings("deprecation")
     static void drawTopBarBackdrop(ContentDrawScope scope, float left, float top,
-                                   float width, float height, float radius) {
-        if (!feedRecorded || !headerPositioned || width <= 0 || height <= 0) {
-            return;
-        }
-
+                                   float width, float height, float cornerRadius) {
         Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
-        if (!canvas.isHardwareAccelerated()) {
+        if (!topBarRecorded || !canvas.isHardwareAccelerated()) {
             return;
         }
 
-        HEADER_MATRIX.getValues(MATRIX_VALUES);
-        final float headerX = MATRIX_VALUES[Matrix.MTRANS_X];
-        final float headerY = MATRIX_VALUES[Matrix.MTRANS_Y];
-        FEED_MATRIX.getValues(MATRIX_VALUES);
-        final float feedX = MATRIX_VALUES[Matrix.MTRANS_X];
-        final float feedY = MATRIX_VALUES[Matrix.MTRANS_Y];
-
+        // Position in the graphics layer of the top bar, which starts at the top bar.
         canvas.getMatrix(SHAPE_MATRIX);
-        SHAPE_RECT.set(left, top, left + width, top + height);
-        SHAPE_MATRIX.mapRect(SHAPE_RECT);
-        SHAPE_RECT.offset(headerX - feedX, headerY - feedY);
-
-        final int shapeLeft = (int) Math.floor(SHAPE_RECT.left);
-        final int shapeTop = (int) Math.floor(SHAPE_RECT.top);
-        final int blurLeft = shapeLeft - BLUR_MARGIN;
-        final int blurTop = shapeTop - BLUR_MARGIN;
-        final int blurWidth = (int) Math.ceil(SHAPE_RECT.right) - shapeLeft + 2 * BLUR_MARGIN;
-        final int blurHeight = (int) Math.ceil(SHAPE_RECT.bottom) - shapeTop + 2 * BLUR_MARGIN;
-        if (blurWidth <= 0 || blurHeight <= 0) {
-            return;
-        }
-
-        TopBarSlot slot = getSlot(blurLeft, blurTop, blurWidth, blurHeight,
-                GlassNavigationBarPatch.getPageColor());
+        SHAPE_MATRIX.getValues(MATRIX_VALUES);
+        final float x = MATRIX_VALUES[Matrix.MTRANS_X];
+        final float y = MATRIX_VALUES[Matrix.MTRANS_Y];
 
         TOP_BAR_PATH.rewind();
         TOP_BAR_PATH.addRoundRect(left, top, left + width, top + height,
-                radius, radius, Path.Direction.CW);
+                cornerRadius, cornerRadius, Path.Direction.CW);
 
         final int saveCount = canvas.save();
         canvas.clipPath(TOP_BAR_PATH);
-        canvas.translate(left + blurLeft - SHAPE_RECT.left, top + blurTop - SHAPE_RECT.top);
-        canvas.drawRenderNode(slot.node);
+        canvas.translate(-x - BLUR_MARGIN, -y - BLUR_MARGIN);
+        canvas.drawRenderNode(TOP_BAR_BLUR_NODE);
         canvas.restoreToCount(saveCount);
     }
 
@@ -370,32 +298,35 @@ final class GlassNavigationBarBlur {
         canvas.restoreToCount(saveCount);
     }
 
-    private static TopBarSlot getSlot(int left, int top, int width, int height, @ColorInt int color) {
-        for (int i = 0; i < topBarSlotCount; i++) {
-            TopBarSlot slot = TOP_BAR_SLOTS[i];
-            if (slot.matches(left, top, width, height)) {
-                if (i < topBarSlotCount - 1) {
-                    System.arraycopy(TOP_BAR_SLOTS, i + 1, TOP_BAR_SLOTS, i, topBarSlotCount - 1 - i);
-                    TOP_BAR_SLOTS[topBarSlotCount - 1] = slot;
-                }
-                if (slot.backgroundColor != color) {
-                    slot.record(left, top, width, height, color);
-                }
-                return slot;
-            }
+    /**
+     * Draws the content of a scope into a render node, and the render node into the canvas.
+     *
+     * @return If the content was recorded.
+     */
+    private static boolean drawContentInto(ContentDrawScope scope, RenderNode node) {
+        ComposeCanvas composeCanvas = scope.patch_getCanvas();
+        Canvas canvas = composeCanvas.patch_getNativeCanvas();
+        final long size = scope.patch_getSize();
+        final int width = (int) Math.ceil(unpackFirst(size));
+        final int height = (int) Math.ceil(unpackSecond(size));
+
+        if (!canvas.isHardwareAccelerated() || width <= 0 || height <= 0) {
+            scope.patch_drawContent();
+            return false;
         }
 
-        final TopBarSlot slot;
-        if (topBarSlotCount < MAX_TOP_BAR_SLOTS) {
-            slot = new TopBarSlot();
-            TOP_BAR_SLOTS[topBarSlotCount++] = slot;
-        } else {
-            slot = TOP_BAR_SLOTS[0];
-            System.arraycopy(TOP_BAR_SLOTS, 1, TOP_BAR_SLOTS, 0, MAX_TOP_BAR_SLOTS - 1);
-            TOP_BAR_SLOTS[MAX_TOP_BAR_SLOTS - 1] = slot;
+        node.setPosition(0, 0, width, height);
+        RecordingCanvas recording = node.beginRecording(width, height);
+        composeCanvas.patch_setNativeCanvas(recording);
+        try {
+            scope.patch_drawContent();
+        } finally {
+            composeCanvas.patch_setNativeCanvas(canvas);
+            node.endRecording();
         }
-        slot.record(left, top, width, height, color);
-        return slot;
+
+        canvas.drawRenderNode(node);
+        return true;
     }
 
     /**

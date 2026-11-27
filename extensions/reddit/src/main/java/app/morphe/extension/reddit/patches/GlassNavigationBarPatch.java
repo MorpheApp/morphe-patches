@@ -530,35 +530,28 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
-     * Injection point.
-     *
-     * @param modifier Modifier of the Home top bar content.
+     * @return If the glass of the Home top bar buttons and tabs blurs the feed.
      */
-    public static Object getTopBarContentModifier(Modifier modifier) {
-        try {
-            if (FROSTED_ENABLED && isSearchButtonActive()) {
-                return modifier.patch_drawWithContent(GlassNavigationBarBlur.HeaderDraw.INSTANCE);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getTopBarContentModifier failure", ex);
-        }
-
-        return modifier;
+    private static boolean isTopBarFrosted() {
+        return FROSTED_ENABLED && isSearchButtonActive();
     }
 
     /**
      * @param modifier Modifier of the Home feed.
      */
-    public static Object getFeedBlurModifier(Modifier modifier) {
-        try {
-            if (FROSTED_ENABLED && isSearchButtonActive()) {
-                return modifier.patch_drawWithContent(GlassNavigationBarBlur.FeedDraw.INSTANCE);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getFeedBlurModifier failure", ex);
-        }
+    static Object getFeedFrostedModifier(Modifier modifier) {
+        return isTopBarFrosted()
+                ? modifier.patch_drawWithContent(GlassNavigationBarBlur.FeedDraw.INSTANCE)
+                : modifier;
+    }
 
-        return modifier;
+    /**
+     * @param modifier Modifier of the Home top bar, outside its graphics layer.
+     */
+    static Object getTopBarFrostedModifier(Modifier modifier) {
+        return isTopBarFrosted()
+                ? modifier.patch_drawWithContent(GlassNavigationBarBlur.TopBarDraw.INSTANCE)
+                : modifier;
     }
 
     /**
