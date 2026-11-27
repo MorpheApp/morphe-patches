@@ -14,8 +14,6 @@ import static app.morphe.extension.reddit.utils.ComposeUtils.unpackSecond;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.utils.ComposeUtils;
@@ -36,26 +34,14 @@ import kotlin.jvm.functions.Function2;
 @SuppressWarnings("unused")
 public final class GlassNavigationBarTopTabs {
 
-    public interface FeedContext {
-        Object patch_getGlassFeedVisibilityFlow();
-    }
-
-    public interface VisibilityFlow {
-        Object patch_getGlassVisibilityValue();
-    }
-
+    /**
+     * Compose LazyListState of the list feed. Interface added during patching.
+     */
     public interface ListState {
-        boolean patch_isGlassFeedScrolled();
-    }
-
-    private static final class Feed {
-        final WeakReference<ListState> stateRef;
-        final long sequenceNumber;
-
-        Feed(ListState state, long sequenceNumber) {
-            this.stateRef = new WeakReference<>(state);
-            this.sequenceNumber = sequenceNumber;
-        }
+        /**
+         * @return If the list is scrolled away from the top.
+         */
+        boolean patch_isScrolled();
     }
 
     /**
@@ -147,13 +133,18 @@ public final class GlassNavigationBarTopTabs {
      * Default parameter bits of the font size and line height of the label text.
      */
     private static final int LABEL_TEXT_DEFAULT_BITS = (1 << 3) | (1 << 10);
-    private static final String ON_SCREEN = "ON_SCREEN";
 
     private static final boolean ENABLED = GlassNavigationBarPatch.isSearchButtonEnabled()
             && Settings.GLASS_NAVIGATION_BAR_TOP_TABS.get();
 
-    private static final Map<VisibilityFlow, Feed> FEEDS = new WeakHashMap<>();
-    private static long nextSequenceNumber;
+    /**
+     * Read when the top bar is drawn, so Compose draws it again when the feed on screen changes.
+     */
+    @Nullable
+    private static final MutableState FEED_CHANGE = isTrackingFeeds()
+            ? (MutableState) ComposeUtils.newMutableState(0)
+            : null;
+    private static int feedChangeCount;
 
     @Nullable
     private static WeakReference<BelowContent> belowContentRef;
@@ -168,9 +159,6 @@ public final class GlassNavigationBarTopTabs {
     private static Object tabsModifier;
     @Nullable
     private static Object tabShape;
-    @Nullable
-    private static volatile MutableState feedChange;
-    private static volatile boolean feedChangeInitFailed;
 
     /**
      * If the tab bar is being composed inside the top bar row.
@@ -195,17 +183,42 @@ public final class GlassNavigationBarTopTabs {
     }
 
     /**
-     * @return If the currently visible Home feed is at the top, or if none is found.
+     * @return If {@link FeedHookPatch} must track the feeds for this patch.
+     *         The top bar is see-through only with the app bar drawn by "See-through status bar".
      */
-    static boolean isVisibleFeedAtTop() {
-        // Read the state so Compose redraws the top bar when feeds are added or switched.
-        MutableState change = getFeedChange();
-        if (change != null) {
-            change.patch_getValue();
+    static boolean isTrackingFeeds() {
+        return ENABLED && SeeThroughStatusBarPatch.isSeeThroughEnabled();
+    }
+
+    /**
+     * @return If the list feed on screen is at the top, or if there is no list feed on screen.
+     */
+    static boolean isFeedOnScreenAtTop() {
+        if (FEED_CHANGE != null) {
+            FEED_CHANGE.patch_getValue();
         }
 
-        ListState state = findOnScreenListState();
-        return state == null || !state.patch_isGlassFeedScrolled();
+        return !(FeedHookPatch.findOnScreenFeedState() instanceof ListState state)
+                || !state.patch_isScrolled();
+    }
+
+    /**
+     * Called when a feed is added or the feed visibility changes.
+     */
+    static void onFeedsChanged() {
+        final MutableState change = FEED_CHANGE;
+        if (change == null || !isActive()) {
+            return;
+        }
+
+        // Feeds are added while they are composed, so the state is changed afterwards.
+        Utils.runOnMainThread(() -> {
+            try {
+                change.patch_setValue(++feedChangeCount);
+            } catch (Exception ex) {
+                Logger.printException(() -> "onFeedsChanged failure", ex);
+            }
+        });
     }
 
     /**
@@ -447,117 +460,6 @@ public final class GlassNavigationBarTopTabs {
     @Nullable
     public static Object newRoundedCornerShape(float dp) {
         return null; // Modified during patching.
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void onListFeed(@Nullable Object feedContextObj, @Nullable Object listStateObj) {
-        if (!ENABLED) {
-            return;
-        }
-
-        try {
-            if (!isActive()) {
-                return;
-            }
-            if (!(feedContextObj instanceof FeedContext feedContext)
-                    || !(listStateObj instanceof ListState listState)) {
-                return;
-            }
-            Object flowObj = feedContext.patch_getGlassFeedVisibilityFlow();
-            if (!(flowObj instanceof VisibilityFlow flow)) {
-                return;
-            }
-
-            final boolean changed;
-            synchronized (FEEDS) {
-                Feed previous = FEEDS.get(flow);
-                changed = previous == null || previous.stateRef.get() != listState;
-                FEEDS.put(flow, new Feed(listState, nextSequenceNumber++));
-            }
-            if (changed) {
-                notifyFeedChanged();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onListFeed failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void onFeedVisibilityChanged() {
-        if (!ENABLED) {
-            return;
-        }
-
-        try {
-            if (isActive()) {
-                notifyFeedChanged();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onFeedVisibilityChanged failure", ex);
-        }
-    }
-
-    @Nullable
-    private static MutableState getFeedChange() {
-        MutableState state = feedChange;
-        if (state == null && !feedChangeInitFailed) {
-            Object created = ComposeUtils.newMutableState(0);
-            if (created instanceof MutableState mutableState) {
-                feedChange = mutableState;
-                state = mutableState;
-            } else {
-                feedChangeInitFailed = true;
-            }
-        }
-        return state;
-    }
-
-    private static void notifyFeedChanged() {
-        MutableState change = getFeedChange();
-        if (change == null) {
-            return;
-        }
-        Utils.runOnMainThread(() -> {
-            try {
-                Object value = change.patch_getValue();
-                final int previous = value instanceof Integer i ? i : 0;
-                change.patch_setValue(previous + 1);
-            } catch (Exception ex) {
-                Logger.printException(() -> "notifyFeedChanged failure", ex);
-            }
-        });
-    }
-
-    @Nullable
-    private static ListState findOnScreenListState() {
-        ListState bestState = null;
-        long bestSequenceNumber = -1;
-
-        synchronized (FEEDS) {
-            for (Map.Entry<VisibilityFlow, Feed> entry : FEEDS.entrySet()) {
-                VisibilityFlow flow = entry.getKey();
-                Feed feed = entry.getValue();
-                if (flow == null || feed.sequenceNumber <= bestSequenceNumber) {
-                    continue;
-                }
-                ListState state = feed.stateRef.get();
-                if (state != null && isOnScreen(flow)) {
-                    bestState = state;
-                    bestSequenceNumber = feed.sequenceNumber;
-                }
-            }
-        }
-
-        return bestState;
-    }
-
-    private static boolean isOnScreen(VisibilityFlow flow) {
-        Object visibility = flow.patch_getGlassVisibilityValue();
-        return visibility instanceof Enum<?> visibilityEnum && ON_SCREEN.equals(visibilityEnum.name());
     }
 
     private static long packSp(float value) {

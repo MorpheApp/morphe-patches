@@ -14,6 +14,7 @@ import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -175,4 +176,24 @@ internal object GraphicsLayerFingerprint : Fingerprint(
     returnType = "L",
     definingClass = "Landroidx/compose/ui/graphics/",
     parameters = listOf("L", "F", "F", "F", "F", "F", "L", "Z", "I", "I")
+)
+
+/**
+ * mutableStateOf(value), 2026.47.0+
+ */
+internal object MutableStateOfFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/runtime/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        newInstance("Landroidx/compose/runtime/ParcelableSnapshotMutableState;")
+    )
+)
+
+internal object NewMutableStateFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/utils/ComposeUtils;",
+    name = "newMutableState",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;")
 )

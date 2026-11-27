@@ -15,10 +15,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import java.util.WeakHashMap;
-
+import app.morphe.extension.reddit.patches.FeedHookPatch.VisibilityFlow;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
@@ -39,40 +36,11 @@ public final class FeedAutoScrollPatch {
     }
 
     /**
-     * Feed context of a feed composable. Interface added during patching.
-     */
-    public interface FeedContext {
-        VisibilityFlow patch_getFeedVisibilityFlow();
-    }
-
-    /**
-     * StateFlow with the FeedVisibility of a feed. Interface added during patching.
-     */
-    public interface VisibilityFlow {
-        Object patch_getValue();
-    }
-
-    /**
      * Compose ScrollableState of a list or grid feed. Interface added during patching.
      */
     public interface ScrollableState {
         float patch_dispatchRawDelta(float delta);
     }
-
-    /**
-     * Scroll state of a feed, and when it was last shown.
-     */
-    private static final class Feed {
-        final WeakReference<ScrollableState> stateRef;
-        final long sequenceNumber;
-
-        Feed(ScrollableState state, long sequenceNumber) {
-            this.stateRef = new WeakReference<>(state);
-            this.sequenceNumber = sequenceNumber;
-        }
-    }
-
-    private static final String ON_SCREEN = "ON_SCREEN";
 
     /**
      * A longer time between frames, such as when the app was in the background,
@@ -81,12 +49,6 @@ public final class FeedAutoScrollPatch {
     private static final long MAX_FRAME_GAP_MS = 100;
 
     private static final float MILLIS_PER_SECOND = 1000f;
-
-    /**
-     * Feeds by their visibility flow, which stays the same when the app copies the feed context.
-     */
-    private static final Map<VisibilityFlow, Feed> feeds = new WeakHashMap<>();
-    private static long nextSequenceNumber;
 
     @Nullable
     private static VisibilityFlow activeFlow;
@@ -105,7 +67,7 @@ public final class FeedAutoScrollPatch {
                     return;
                 }
 
-                if (!isOnScreen(activeFlow)) {
+                if (!FeedHookPatch.isOnScreen(activeFlow)) {
                     stop();
                     return;
                 }
@@ -140,51 +102,30 @@ public final class FeedAutoScrollPatch {
         return Settings.FEED_AUTO_SCROLL.get();
     }
 
+    /**
+     * @return If {@link FeedHookPatch} must track the feeds for this patch.
+     */
+    static boolean isTrackingFeeds() {
+        return isPatchIncluded() && isEnabled();
+    }
+
     static boolean isScrolling() {
         return activeState != null;
     }
 
-    private static boolean isOnScreen(VisibilityFlow flow) {
-        final Object visibility = flow.patch_getValue();
-        return visibility instanceof Enum<?> && ON_SCREEN.equals(((Enum<?>) visibility).name());
-    }
-
-    /**
-     * @return The visibility flow of the feed shown last that is on screen, or null if none is.
-     */
-    @Nullable
-    private static VisibilityFlow findOnScreenFeed() {
-        VisibilityFlow bestFlow = null;
-        long bestSequenceNumber = -1;
-
-        for (Map.Entry<VisibilityFlow, Feed> entry : feeds.entrySet()) {
-            final VisibilityFlow flow = entry.getKey();
-            final Feed feed = entry.getValue();
-            if (flow != null && feed.sequenceNumber > bestSequenceNumber
-                    && feed.stateRef.get() != null && isOnScreen(flow)) {
-                bestFlow = flow;
-                bestSequenceNumber = feed.sequenceNumber;
-            }
-        }
-
-        return bestFlow;
-    }
-
     static boolean hasOnScreenFeed() {
-        return findOnScreenFeed() != null;
+        return FeedHookPatch.findOnScreenFeed() != null;
     }
 
     static void start(Context context) {
         stop();
 
-        final VisibilityFlow flow = findOnScreenFeed();
+        final VisibilityFlow flow = FeedHookPatch.findOnScreenFeed();
         if (flow == null) {
             Logger.printDebug(() -> "No feed on screen");
             return;
         }
-        final Feed feed = feeds.get(flow);
-        final ScrollableState state = feed == null ? null : feed.stateRef.get();
-        if (state == null) {
+        if (!(FeedHookPatch.getFeedState(flow) instanceof ScrollableState state)) {
             return;
         }
 
@@ -212,66 +153,18 @@ public final class FeedAutoScrollPatch {
         FeedAutoScrollButton.onScrollStateChanged();
     }
 
-    private static void addFeed(@Nullable FeedContext feedContext, @Nullable ScrollableState state) {
-        if (feedContext == null || state == null) {
+    /**
+     * Called when a feed is added or the feed visibility changes.
+     */
+    static void onFeedsChanged() {
+        if (!isTrackingFeeds()) {
             return;
         }
 
-        feeds.put(feedContext.patch_getFeedVisibilityFlow(), new Feed(state, nextSequenceNumber++));
+        if (activeFlow != null && !FeedHookPatch.isOnScreen(activeFlow)) {
+            stop();
+        }
         FeedAutoScrollButton.updateVisibility();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void onListFeed(@Nullable FeedContext feedContext,
-                                  @Nullable ScrollableState listState,
-                                  @Nullable Enum<?> feedType) {
-        try {
-            if (!isEnabled()) {
-                return;
-            }
-
-            // The grid feed is shown instead, and is added by onGridFeed().
-            if (TabletGridFeedPatch.isPatchIncluded() && TabletGridFeedPatch.showGridFeed(feedType)) {
-                return;
-            }
-
-            addFeed(feedContext, listState);
-        } catch (Exception ex) {
-            Logger.printException(() -> "onListFeed failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void onGridFeed(@Nullable FeedContext feedContext, @Nullable ScrollableState gridState) {
-        try {
-            if (isEnabled()) {
-                addFeed(feedContext, gridState);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onGridFeed failure", ex);
-        }
-    }
-
-    /**
-     * Injection point. Called after the visibility flow of the feed is updated.
-     */
-    public static void onFeedVisibilityChanged() {
-        try {
-            if (!isEnabled()) {
-                return;
-            }
-
-            if (activeFlow != null && !isOnScreen(activeFlow)) {
-                stop();
-            }
-            FeedAutoScrollButton.updateVisibility();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onFeedVisibilityChanged failure", ex);
-        }
     }
 
     /**

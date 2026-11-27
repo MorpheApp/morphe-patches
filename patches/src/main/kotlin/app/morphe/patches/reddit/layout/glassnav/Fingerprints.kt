@@ -542,37 +542,26 @@ internal object BottomNavButtonFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Tracks if a nested list feed is scrolled, with a shared lambda class that checks the list state.
+ */
 internal object NestedListTrackerFingerprint : Fingerprint(
     definingClass = $$"Lcom/reddit/feeds/ui/composables/NestedListTrackerKt$NestedListTracker$1$1;",
     name = "invokeSuspend",
     filters = listOf(
-        opcode(Opcode.NEW_INSTANCE),
-        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        // Case number of the shared lambda class.
+        opcode(Opcode.CONST_4),
         methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
             name = "<init>",
             parameters = listOf("Landroidx/compose/foundation/lazy/", "I"),
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(3)
         ),
+        // derivedStateOf
         methodCall(
+            opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("Lkotlin/jvm/functions/Function0;"),
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(3)
         )
     )
-)
-
-internal object MutableStateOfFingerprint : Fingerprint(
-    definingClass = "Landroidx/compose/runtime/",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    parameters = listOf("Ljava/lang/Object;"),
-    returnType = "L",
-    filters = listOf(
-        newInstance("Landroidx/compose/runtime/ParcelableSnapshotMutableState;")
-    )
-)
-
-internal object NewMutableStateFingerprint : Fingerprint(
-    definingClass = "Lapp/morphe/extension/reddit/utils/ComposeUtils;",
-    name = "newMutableState",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;")
 )

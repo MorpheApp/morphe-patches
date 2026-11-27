@@ -20,14 +20,13 @@ import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
-import app.morphe.patches.reddit.layout.autoscroll.FeedContextToStringFingerprint
-import app.morphe.patches.reddit.layout.autoscroll.FeedVisibilityEventFingerprint
 import app.morphe.patches.reddit.layout.autoscroll.ScreenAttachFingerprint
 import app.morphe.patches.reddit.layout.autoscroll.ScreenDetachFingerprint
-import app.morphe.patches.reddit.layout.tabletgrid.LatestFeedScreenFingerprint
 import app.morphe.patches.reddit.misc.compose.MODIFIER_INTERFACE
 import app.morphe.patches.reddit.misc.compose.composePatch
 import app.morphe.patches.reddit.misc.compose.modifierType
+import app.morphe.patches.reddit.misc.feed.feedHookPatch
+import app.morphe.patches.reddit.misc.feed.listFeedStateType
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
@@ -36,7 +35,6 @@ import app.morphe.patches.reddit.misc.version.is_2026_48_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -53,14 +51,8 @@ private const val TOP_TABS_EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs;"
 private const val NEUTRAL_COLORS_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$NeutralColors;"
-private const val TOP_TABS_FEED_CONTEXT_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs$FeedContext;"
-private const val TOP_TABS_VISIBILITY_FLOW_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs$VisibilityFlow;"
 private const val TOP_TABS_LIST_STATE_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs$ListState;"
-private const val MUTABLE_STATE_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/utils/ComposeUtils$MutableState;"
 
 @Suppress("unused")
 val glassNavigationBarPatch = patch(
@@ -70,7 +62,7 @@ val glassNavigationBarPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch, versionCheckPatch, composePatch)
+    dependsOn(settingsPatch, versionCheckPatch, composePatch, feedHookPatch)
 
     execute {
         if (!is_2026_24_0_or_greater) {
@@ -549,48 +541,19 @@ val glassNavigationBarPatch = patch(
                 }
             }
 
-            val flowField = FeedContextToStringFingerprint.method
-                .findFieldFromToString(", feedVisibilityFlow=")
+            // See-through top bar once the feed scrolls.
+            // The app checks if the list is scrolled with a shared lambda class and a case number.
+            NestedListTrackerFingerprint.let {
+                val scrolledCase = it.instructionMatches[0].getInstruction<NarrowLiteralInstruction>().narrowLiteral
+                val scrolledInit = it.instructionMatches[1].methodReference
 
-            FeedContextToStringFingerprint.classDef.addPatchInterface(
-                TOP_TABS_FEED_CONTEXT_INTERFACE,
-                "patch_getGlassFeedVisibilityFlow",
-                flowField
-            )
-
-            mutableClassDefBy(flowField.type).addPatchInterface(
-                TOP_TABS_VISIBILITY_FLOW_INTERFACE,
-                "patch_getGlassVisibilityValue",
-                """
-                    invoke-interface { p0 }, ${flowField.type}->getValue()Ljava/lang/Object;
-                    move-result-object v0
-                    return-object v0
-                """
-            )
-
-            val scrolledInit = NestedListTrackerFingerprint.instructionMatches[2].methodReference
-            val scrolledCase = NestedListTrackerFingerprint.instructionMatches[1]
-                .getInstruction<NarrowLiteralInstruction>().narrowLiteral
-            val scrolledArgs = if (scrolledInit.parameterTypes[0].toString() == "I") {
-                "v0, v1, p0"
-            } else {
-                "v0, p0, v1"
-            }
-
-            LatestFeedScreenFingerprint.instructionMatches[1].getMethodCalled().apply {
-                val listParameters = parameterTypes.map { it.toString() }
-                val feedContextIndex = listParameters.indexOf(FeedContextToStringFingerprint.classDef.type)
-                val lazyStateIndex = listParameters.indexOfFirst {
-                    it.startsWith("Landroidx/compose/foundation/lazy/")
-                }
-
-                mutableClassDefBy(listParameters[lazyStateIndex]).addPatchInterface(
+                mutableClassDefBy(listFeedStateType).addPatchInterface(
                     TOP_TABS_LIST_STATE_INTERFACE,
-                    "patch_isGlassFeedScrolled",
+                    "patch_isScrolled",
                     """
                         new-instance v0, ${scrolledInit.definingClass}
                         const v1, $scrolledCase
-                        invoke-direct { $scrolledArgs }, $scrolledInit
+                        invoke-direct { v0, p0, v1 }, $scrolledInit
                         invoke-interface { v0 }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
                         move-result-object v0
                         check-cast v0, Ljava/lang/Boolean;
@@ -599,51 +562,7 @@ val glassNavigationBarPatch = patch(
                         return v0
                     """
                 )
-
-                addInstructions(
-                    0,
-                    """
-                        move-object/from16 v0, p$feedContextIndex
-                        move-object/from16 v1, p$lazyStateIndex
-                        invoke-static { v0, v1 }, $TOP_TABS_EXTENSION_CLASS->onListFeed(Ljava/lang/Object;Ljava/lang/Object;)V
-                    """
-                )
             }
-
-            val mutableStateOfMethod = MutableStateOfFingerprint.method
-            NewMutableStateFingerprint.method.addFreeRegisters(1).first.addInstructions(
-                0,
-                """
-                    invoke-static { p0 }, $mutableStateOfMethod
-                    move-result-object v0
-                    return-object v0
-                """
-            )
-
-            mutableClassDefBy("Landroidx/compose/runtime/ParcelableSnapshotMutableState;").apply {
-                addPatchInterface(
-                    MUTABLE_STATE_INTERFACE,
-                    "patch_getValue",
-                    """
-                        invoke-virtual { p0 }, Landroidx/compose/runtime/ParcelableSnapshotMutableState;->getValue()Ljava/lang/Object;
-                        move-result-object v0
-                        return-object v0
-                    """
-                )
-                addPatchInterface(
-                    MUTABLE_STATE_INTERFACE,
-                    "patch_setValue",
-                    """
-                        invoke-virtual { p0, p1 }, Landroidx/compose/runtime/ParcelableSnapshotMutableState;->setValue(Ljava/lang/Object;)V
-                        return-void
-                    """
-                )
-            }
-
-            FeedVisibilityEventFingerprint.method.addInstruction(
-                0,
-                "invoke-static { }, $TOP_TABS_EXTENSION_CLASS->onFeedVisibilityChanged()V"
-            )
         }
 
         // endregion

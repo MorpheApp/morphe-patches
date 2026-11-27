@@ -95,10 +95,10 @@ public final class SeeThroughStatusBarPatch {
         @Override
         public Object invoke(ContentDrawScope scope) {
             try {
-                final boolean fillTopTabsBar = GlassNavigationBarTopTabs.isShown()
-                        && GlassNavigationBarTopTabs.isVisibleFeedAtTop();
                 // The menu button and the avatar have their own glass. With the tabs in the
-                // top bar row, the top bar is drawn with the color of the page instead.
+                // top bar row, the top bar is drawn with the color of the page until the feed scrolls.
+                final boolean fillTopTabsBar = GlassNavigationBarTopTabs.isShown()
+                        && GlassNavigationBarTopTabs.isFeedOnScreenAtTop();
                 if (fillTopTabsBar || !GlassNavigationBarPatch.isSearchButtonActive()) {
                     final int statusBarHeight = getStatusBarHeight();
                     final long size = scope.patch_getSize();
@@ -146,6 +146,13 @@ public final class SeeThroughStatusBarPatch {
 
     private static boolean isEnabled() {
         return SEE_THROUGH_ENABLED && !isSideLayout;
+    }
+
+    /**
+     * @return If this patch is included and enabled, in any layout.
+     */
+    static boolean isSeeThroughEnabled() {
+        return isPatchIncluded() && SEE_THROUGH_ENABLED;
     }
 
     private static int getStatusBarHeight() {

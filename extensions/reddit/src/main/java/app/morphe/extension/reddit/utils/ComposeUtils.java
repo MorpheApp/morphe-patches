@@ -123,7 +123,7 @@ public final class ComposeUtils {
     }
 
     /**
-     * mutableStateOf(value). Available only with 2026.47.0+
+     * @return mutableStateOf(value), as a {@link MutableState}. Available only with 2026.47.0+
      */
     @SuppressWarnings("SameReturnValue")
     @Nullable
