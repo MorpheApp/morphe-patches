@@ -21,6 +21,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -31,6 +32,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.annotation.ColorInt;
@@ -117,16 +120,54 @@ public class ThemePatch extends BaseThemePatch {
     }
 
     /**
+     * Screens the ambient mode image and its scrim with the dark theme color, see {@link #getCinematicBackgroundColor}.
+     */
+    @Nullable
+    private static ColorMatrixColorFilter cinematicThemeFilter;
+
+    /**
      * Injection point.
      * <p>
      * The view below the ambient mode image of the watch page is always black. 21.47+ shows it behind the whole
      * watch page, where older versions show the background of the theme, so it gets the selected dark theme color.
+     * The ambient mode image and its scrim fade to black at their bottom edge, so they are screened with the
+     * same color: black becomes the theme color and light colors stay almost the same, so the ambient light
+     * fades into the background instead of ending at a black edge.
      */
     @ColorInt
-    public static int getCinematicBackgroundColor(@ColorInt int color) {
-        return color == Color.BLACK && Utils.isDarkModeEnabled() && !ThemeColorPatch.isAppDefaultColor()
-                ? ThemeUtils.getThemeDarkColor()
-                : color;
+    public static int getCinematicBackgroundColor(FrameLayout container, @ColorInt int color) {
+        final boolean themed = color == Color.BLACK && Utils.isDarkModeEnabled()
+                && !ThemeColorPatch.isAppDefaultColor();
+        if (!themed && cinematicThemeFilter == null) {
+            return color;
+        }
+
+        try {
+            if (cinematicThemeFilter == null) {
+                final int theme = ThemeUtils.getThemeDarkColor();
+                final float red = Color.red(theme);
+                final float green = Color.green(theme);
+                final float blue = Color.blue(theme);
+                // Screen blend: channel * (1 - theme / 255) + theme.
+                cinematicThemeFilter = new ColorMatrixColorFilter(new float[]{
+                        1 - red / 255, 0, 0, 0, red,
+                        0, 1 - green / 255, 0, 0, green,
+                        0, 0, 1 - blue / 255, 0, blue,
+                        0, 0, 0, 1, 0
+                });
+            }
+
+            for (int i = 0, count = container.getChildCount(); i < count; i++) {
+                if (container.getChildAt(i) instanceof ImageView image
+                        && (themed || image.getColorFilter() == cinematicThemeFilter)) {
+                    image.setColorFilter(themed ? cinematicThemeFilter : null);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getCinematicBackgroundColor failure", ex);
+        }
+
+        return themed ? ThemeUtils.getThemeDarkColor() : color;
     }
 
     /**

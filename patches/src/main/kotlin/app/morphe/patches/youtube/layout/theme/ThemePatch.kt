@@ -422,16 +422,19 @@ val themePatch = baseThemePatch(
         }
 
         // The view below the ambient mode image is always black, and 21.47+ shows it behind the whole watch page.
+        // The extension also screens the ambient mode image and its scrim, which fade to black, with the same color.
         CinematicBackgroundPropertyFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[1].index
-                val register = getInstruction<FiveRegisterInstruction>(index).registerD
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val containerRegister = instruction.registerC
+                val colorRegister = instruction.registerD
 
                 addInstructions(
                     index,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS->getCinematicBackgroundColor(I)I
-                        move-result v$register
+                        invoke-static { v$containerRegister, v$colorRegister }, $EXTENSION_CLASS->getCinematicBackgroundColor(Landroid/widget/FrameLayout;I)I
+                        move-result v$colorRegister
                     """
                 )
             }
