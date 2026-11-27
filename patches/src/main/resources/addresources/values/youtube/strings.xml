@@ -1379,7 +1379,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- interaction.cast.restoreOldCastPatch -->
     <string name="morphe_restore_old_cast_behavior_title">Restore old Cast behavior</string>
-    <string name="morphe_restore_old_cast_behavior_summary">Keep the Cast session connected and play newly selected videos on the TV instead of switching to companion mode</string>
+    <string name="morphe_restore_old_cast_behavior_summary">The Cast session stays connected when selecting a different video or closing the player, so videos keep playing on the TV</string>
 
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
     <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>

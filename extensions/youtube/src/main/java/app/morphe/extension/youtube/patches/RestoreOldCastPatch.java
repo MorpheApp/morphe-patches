@@ -17,10 +17,18 @@ public final class RestoreOldCastPatch {
     /**
      * Injection point.
      *
-     * @return {@code false} when restoring the old Cast behavior so companion mode flags are disabled,
-     *         or the original flag value otherwise.
+     * @param original If the app disconnects the Cast session and plays a newly selected video on the phone.
      */
-    public static boolean useCastCompanion(boolean original) {
-        return !RESTORE_OLD_CAST_BEHAVIOR && original;
+    public static boolean disconnectCastOnVideoSelect(boolean original) {
+        return original && !RESTORE_OLD_CAST_BEHAVIOR;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param original If the app disconnects the Cast session when the player is closed or minimized.
+     */
+    public static boolean disconnectCastOnPlayerClose(boolean original) {
+        return original && !RESTORE_OLD_CAST_BEHAVIOR;
     }
 }

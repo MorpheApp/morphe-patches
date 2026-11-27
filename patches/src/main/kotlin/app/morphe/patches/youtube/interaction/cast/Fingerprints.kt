@@ -8,26 +8,25 @@
 package app.morphe.patches.youtube.interaction.cast
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 
 /**
- * Feature flags gating YouTube's "phone as a companion" Cast overhaul (21.30+):
- * - 45673420: Primary companion mode flag across MdxDirector, MdxDeviceManager,
- *   watch/reel endpoints, and playback routing.
- * - 45823676: Secondary companion flag used alongside 45673420 in 21.45+.
- * - 45780220: Remote control initiated (RCI) playback flag in MdxDirector.
- * - 45761303: Cast companion route selection/logging flag.
- * - 45676577: MDX device discovery companion flag.
+ * When a different video is selected while casting, the flag disconnects the Cast session
+ * and plays the video on the phone, unless the video is from the queue of the TV.
  */
-internal object CastCompanionFeatureFlagFingerprint : Fingerprint(
+internal object CastDisconnectOnVideoSelectFeatureFlagFingerprint : Fingerprint(
+    returnType = "V",
     filters = listOf(
-        anyInstruction(
-            literal(45673420L),
-            literal(45823676L),
-            literal(45780220L),
-            literal(45761303L),
-            literal(45676577L)
-        )
+        literal(45693138L)
+    )
+)
+
+/**
+ * When the player is closed or minimized while casting, the flag disconnects the Cast session.
+ * The flag is also read by the minimize button of the player, which then shows a close icon.
+ */
+internal object CastDisconnectOnPlayerCloseFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45798912L)
     )
 )
