@@ -1535,8 +1535,8 @@ Automotive layout
     <string name="morphe_shorts_autoplay_flyout_button_summary">Adds an item to the Shorts player menu that turns Autoplay Shorts on or off</string>
     <string name="morphe_shorts_autoplay_flyout_title_on">Autoplay Shorts · On</string>
     <string name="morphe_shorts_autoplay_flyout_title_off">Autoplay Shorts · Off</string>
-    <string name="morphe_shorts_autoplay_flyout_toast_on">Autoplay Shorts turned on</string>
-    <string name="morphe_shorts_autoplay_flyout_toast_off">Autoplay Shorts turned off</string>
+    <string name="morphe_shorts_autoplay_flyout_toast_on">Autoplay Shorts turned on, starting with the next Short</string>
+    <string name="morphe_shorts_autoplay_flyout_toast_off">Autoplay Shorts turned off, starting with the next Short</string>
     <string name="morphe_skip_live_shorts_title">Skip live Shorts</string>
     <string name="morphe_skip_live_shorts_summary">Skips live streams that appear in the Shorts feed</string>
 
