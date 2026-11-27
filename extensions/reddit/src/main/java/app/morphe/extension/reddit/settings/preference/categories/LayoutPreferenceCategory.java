@@ -10,6 +10,7 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 
@@ -68,15 +69,13 @@ import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreferenc
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
 import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
 import app.morphe.extension.reddit.settings.preference.PostSidePanelWidthPreference;
-import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public LayoutPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context, screen);
-        setTitle(str("morphe_screen_layout_title"));
+        super(context, screen, "morphe_layout_screen", "morphe_screen_layout_title", "morphe_layout_screen_summary");
     }
 
     @Override
@@ -130,37 +129,39 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
-        final boolean modernStyle = RedditSettingsStyle.isModernStyle();
+        addSection(context, "morphe_layout_home_feed_title",
+                group -> addHomeFeedPreferences(context, group));
+        addSection(context, "morphe_layout_shelves_title",
+                group -> addShelvesPreferences(context, group));
+        addSection(context, "morphe_layout_posts_title",
+                group -> addPostsPreferences(context, group));
+        addSection(context, "morphe_layout_comments_title",
+                group -> addCommentsPreferences(context, group));
+        addSection(context, "morphe_layout_media_viewer_title",
+                group -> addMediaViewerPreferences(context, group));
+        addSection(context, "morphe_layout_app_title",
+                group -> addAppPreferences(context, group));
 
-        addPage(context, modernStyle, "home_feed", group -> addHomeFeedPreferences(context, group));
-        addPage(context, modernStyle, "shelves", group -> addShelvesPreferences(context, group));
-        addPage(context, modernStyle, "posts", group -> addPostsPreferences(context, group));
-        addPage(context, modernStyle, "comments", group -> addCommentsPreferences(context, group));
-        addPage(context, modernStyle, "media_viewer", group -> addMediaViewerPreferences(context, group));
-        addPage(context, modernStyle, "app", group -> addAppPreferences(context, group));
-
-        Utils.setPreferenceTitlesToMultiLine(this);
+        Utils.setPreferenceTitlesToMultiLine(page != null ? page : this);
     }
 
-    private void addPage(Context context, boolean modernStyle, String page,
-                         Consumer<PreferenceGroup> populate) {
-        if (!modernStyle) {
+    /**
+     * Adds the settings of a section in a titled category on the page with the modern style,
+     * otherwise to the flat list of the legacy settings.
+     */
+    private void addSection(Context context, String titleKey, Consumer<PreferenceGroup> populate) {
+        if (page == null) {
             populate.accept(this);
             return;
         }
 
-        PreferenceScreen pageScreen = RedditSettingsStyle.createSubPage(
-                getPreferenceManager(),
-                context,
-                "morphe_layout_" + page + "_screen",
-                str("morphe_layout_" + page + "_title"),
-                str("morphe_layout_" + page + "_summary")
-        );
-        // Add to the category first so PreferenceManager is attached while child preferences are added.
-        addPreference(pageScreen);
-        populate.accept(pageScreen);
-        if (pageScreen.getPreferenceCount() == 0) {
-            removePreference(pageScreen);
+        PreferenceCategory category = new PreferenceCategory(context);
+        category.setTitle(str(titleKey));
+        // Add to the page first so PreferenceManager is attached while child preferences are added.
+        page.addPreference(category);
+        populate.accept(category);
+        if (category.getPreferenceCount() == 0) {
+            page.removePreference(category);
         }
     }
 

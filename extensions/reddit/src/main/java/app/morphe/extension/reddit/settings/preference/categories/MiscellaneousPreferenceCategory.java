@@ -43,8 +43,8 @@ import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreferen
 @SuppressWarnings("deprecation")
 public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCategory {
     public MiscellaneousPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context, screen);
-        setTitle(str("morphe_misc_screen_title"));
+        super(context, screen, "morphe_miscellaneous_screen",
+                "morphe_misc_screen_title", "morphe_miscellaneous_screen_summary");
     }
 
     @Override

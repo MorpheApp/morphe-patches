@@ -36,8 +36,8 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
     private SharedPreferences.OnSharedPreferenceChangeListener glassPageSummaryListener;
 
     public NavigationBarPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context, screen);
-        setTitle(str("morphe_navigation_bar_screen_title"));
+        super(context, screen, "morphe_navigation_bar_screen",
+                "morphe_navigation_bar_screen_title", "morphe_navigation_bar_screen_summary");
     }
 
     @Override

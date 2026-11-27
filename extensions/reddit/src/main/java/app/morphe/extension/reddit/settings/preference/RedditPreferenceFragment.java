@@ -142,11 +142,14 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
             // The list view and its pre-draw listener go away with the dialog.
             RedditSettingsStyle.styleList(dialog.findViewById(android.R.id.list));
 
-            // Rows of the main list that change while the page covers it, such as the summary
-            // of the page, are not redrawn until the list is told again.
+            // Rows of any open screen that change while a sub-page covers it, such as a
+            // nested page summary, are not redrawn until its adapter is notified.
             dialog.setOnDismissListener(dialogInterface -> {
                 subPage.onDismiss(dialogInterface);
-                ((BaseAdapter) getPreferenceScreen().getRootAdapter()).notifyDataSetChanged();
+                PreferenceScreen rootScreen = getPreferenceScreen();
+                if (rootScreen != null) {
+                    notifyOpenAdapters(rootScreen);
+                }
             });
 
             // Search navigates to a setting of a sub-page by opening the page.
@@ -155,6 +158,28 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment
             }
         } catch (Exception ex) {
             Logger.printException(() -> "decorateSubPageDialog failure", ex);
+        }
+    }
+
+    private static void notifyOpenAdapters(PreferenceScreen rootScreen) {
+        if (rootScreen.getRootAdapter() instanceof BaseAdapter adapter) {
+            adapter.notifyDataSetChanged();
+        }
+        notifyOpenSubPageAdapters(rootScreen);
+    }
+
+    private static void notifyOpenSubPageAdapters(PreferenceGroup group) {
+        for (int i = 0, count = group.getPreferenceCount(); i < count; i++) {
+            if (group.getPreference(i) instanceof PreferenceGroup subGroup) {
+                if (subGroup instanceof PreferenceScreen subPage) {
+                    Dialog dialog = subPage.getDialog();
+                    if (dialog != null && dialog.isShowing()
+                            && subPage.getRootAdapter() instanceof BaseAdapter adapter) {
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                notifyOpenSubPageAdapters(subGroup);
+            }
         }
     }
 

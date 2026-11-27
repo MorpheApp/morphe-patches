@@ -25,9 +25,11 @@ App data from a newer version does not work with an older versions and the app m
 To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install the older version."</string>
     <string name="morphe_app_downgrade_dialog_open_app_info">Open app info</string>
 
+    <string name="morphe_ads_screen_summary">Feed and comment ads</string>
     <string name="morphe_hide_post_ads_title">Hide feed ads</string>
     <string name="morphe_hide_comment_ads_title">Hide comment ads</string>
 
+    <string name="morphe_navigation_bar_screen_summary">Bottom bar buttons and the glass bar</string>
     <string name="morphe_disable_bottom_bar_auto_hide_title">Disable bottom bar auto-hide</string>
     <string name="morphe_disable_bottom_bar_auto_hide_summary">Keeps the bottom navigation bar visible while scrolling</string>
     <string name="morphe_glass_navigation_bar_title">Glass navigation bar</string>
@@ -77,6 +79,7 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_games_button_title">Hide Games button</string>
 
     <string name="morphe_screen_sidebar_title">Sidebar</string>
+    <string name="morphe_sidebar_screen_summary">Shelves and buttons in the sidebar</string>
     <string name="morphe_settings_in_sidebar_title">Show Morphe settings</string>
     <string name="morphe_settings_in_sidebar_summary">Shows the Morphe settings at the top of the sidebar</string>
     <string name="morphe_hide_popular_shelf_title">Hide Popular shelf</string>
@@ -89,6 +92,7 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
 
+    <string name="morphe_post_buttons_screen_summary">Buttons and counts on posts</string>
     <string name="morphe_hide_post_award_button_title">Hide Award button</string>
     <string name="morphe_hide_post_award_button_summary">Hides the Award button on posts and comments</string>
     <string name="morphe_hide_post_join_button_title">Hide Join button</string>
@@ -103,6 +107,7 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_post_vote_count_summary">Hides the score between the Upvote and Downvote buttons of posts and comments</string>
 
     <string name="morphe_screen_filters_title">Filters</string>
+    <string name="morphe_filters_screen_summary">Hide feed posts by flair or keyword</string>
     <string name="morphe_flair_filters_title">Flair filters</string>
     <string name="morphe_flair_filters_summary">Hide feed posts with a flair of a community. Matching ignores case</string>
     <string name="morphe_flair_filters_empty">No flair filters</string>
@@ -121,18 +126,13 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_filters_saved">Refresh the feed to apply the changes</string>
 
     <string name="morphe_screen_layout_title">Layout</string>
+    <string name="morphe_layout_screen_summary">Feed, posts, comments, media and app</string>
     <string name="morphe_layout_home_feed_title">Home feed</string>
-    <string name="morphe_layout_home_feed_summary">Tabs, refreshing, scrolling and the grid</string>
     <string name="morphe_layout_shelves_title">Shelves and sections</string>
-    <string name="morphe_layout_shelves_summary">Recommended content in feeds and search</string>
     <string name="morphe_layout_posts_title">Posts</string>
-    <string name="morphe_layout_posts_summary">Post screen, buttons and the side panel</string>
     <string name="morphe_layout_comments_title">Comments</string>
-    <string name="morphe_layout_comments_summary">Collapsing, flairs and AutoModerator</string>
     <string name="morphe_layout_media_viewer_title">Media viewer</string>
-    <string name="morphe_layout_media_viewer_summary">Full-screen images and videos</string>
     <string name="morphe_layout_app_title">App</string>
-    <string name="morphe_layout_app_summary">Fonts, dialogs, status bar and more</string>
     <string name="morphe_copy_text_title">Copy text</string>
     <string name="morphe_copy_text_summary">Allows selecting and copying text in posts and comments</string>
     <string name="morphe_custom_font_title">Custom font</string>
@@ -223,6 +223,7 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_tablet_grid_feed_summary_on">Feeds are shown as a grid on tablets. Phones are unchanged</string>
     <string name="morphe_tablet_grid_feed_summary_off">Feeds are shown as a list</string>
 
+    <string name="morphe_miscellaneous_screen_summary">About, language, links, sharing and debugging</string>
     <string name="morphe_about_summary">Patch version and official links</string>
     <string name="morphe_share_post_content_title">Share post content</string>
     <string name="morphe_share_post_content_summary">App shortcuts and \"Share via…\" in the share sheet send the image, video or text of a post instead of its link. Copy link still copies the link</string>
