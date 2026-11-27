@@ -104,8 +104,8 @@ val videoDelayPatch = patch(
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
 
-        // Video frames are released when the audio clock reaches their timestamp,
-        // so reporting an earlier audio position holds every frame back by the same amount.
+        // Video frames are released against the audio clock; an earlier reported position
+        // holds them back, while a later position advances video relative to audio.
         // Both audio renderers are hooked, as the player uses either depending on the audio codec.
         listOf(
             MediaCodecAudioRendererPositionFingerprint,

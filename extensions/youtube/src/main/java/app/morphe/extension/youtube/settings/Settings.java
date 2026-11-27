@@ -1629,7 +1629,7 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register(new SeekBarConfig(VOT_MAX_SPEECH_RATE,
                 10, 25, 1, "x", 10));
         SeekBarPreference.register(new SeekBarConfig(VIDEO_DELAY,
-                0, 5000, 25, "ms"));
+                -5000, 5000, 25, "ms"));
         SeekBarPreference.register(new SeekBarConfig(RIVE_SPLASH_SCREEN_DURATION,
                 1000, 3000, 200, "s", 1000));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_FONT_SIZE,
