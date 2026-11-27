@@ -25,7 +25,7 @@ import app.morphe.extension.shared.Utils;
 import kotlin.jvm.functions.Function0;
 
 /**
- * Adds a Create post button to the top bar of communities while the navigation bar's Create button is hidden.
+ * Adds a Create post button to the top bar of communities while the Create button of the navigation bar is hidden.
  */
 @SuppressWarnings("unused")
 public final class SubredditCreateButtonPatch {
@@ -41,6 +41,8 @@ public final class SubredditCreateButtonPatch {
     // Read once so the Compose slot table shape stays fixed until restart.
     private static final boolean ENABLED =
             Settings.HIDE_CREATE_BUTTON.get() && Settings.SUBREDDIT_CREATE_BUTTON.get();
+
+    private static final String SUBREDDIT_PREFIX = "r/";
 
     private static final int ICON_ADD =
             ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "icon_add");
@@ -67,36 +69,21 @@ public final class SubredditCreateButtonPatch {
      * Injection point.
      */
     public static boolean isEnabled() {
-        try {
-            return ENABLED && ICON_ADD != 0;
-        } catch (Exception ex) {
-            Logger.printException(() -> "isEnabled failure", ex);
-            return false;
-        }
+        return ENABLED;
     }
 
     /**
      * Injection point.
      */
     public static int getIcon() {
-        try {
-            return ICON_ADD;
-        } catch (Exception ex) {
-            Logger.printException(() -> "getIcon failure", ex);
-            return 0;
-        }
+        return ICON_ADD;
     }
 
     /**
      * Injection point.
      */
     public static String getLabel() {
-        try {
-            return str("morphe_subreddit_create_button_label");
-        } catch (Exception ex) {
-            Logger.printException(() -> "getLabel failure", ex);
-            return "";
-        }
+        return str("morphe_subreddit_create_button_label");
     }
 
     /**
@@ -106,12 +93,12 @@ public final class SubredditCreateButtonPatch {
         try {
             String name = getDisplayName(state);
             if (name.isEmpty()) {
-                return str("morphe_subreddit_create_button_label");
+                return getLabel();
             }
             return str("morphe_subreddit_create_button_description", name);
         } catch (Exception ex) {
             Logger.printException(() -> "getDescription failure", ex);
-            return "";
+            return getLabel();
         }
     }
 
@@ -120,7 +107,7 @@ public final class SubredditCreateButtonPatch {
      */
     public static Function0<Object> getClick(@Nullable Object state) {
         try {
-            final String name = getDisplayName(state);
+            String name = getDisplayName(state);
             if (name.isEmpty()) {
                 return NO_OP_CLICK;
             }
@@ -143,15 +130,10 @@ public final class SubredditCreateButtonPatch {
     private static void openPostComposer(String name) {
         try {
             Activity activity = Utils.getActivity();
-            if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
-                return;
-            }
             Bundle extras = new Bundle();
             extras.putString("subreddit_name", name);
             Intent intent = PostSubmitDeeplinkModule.submit(activity, extras);
-            if (intent == null) {
-                return;
-            }
+            // Open the composer in the current activity instead of the deep link activity.
             intent.setComponent(activity.getComponentName());
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             activity.startActivity(intent);
@@ -168,10 +150,9 @@ public final class SubredditCreateButtonPatch {
         if (name == null) {
             return "";
         }
-        name = name.trim();
-        if (name.startsWith("r/")) {
-            name = name.substring(2).trim();
-        }
-        return name;
+        // The display name is prefixed, such as "r/pics".
+        return name.startsWith(SUBREDDIT_PREFIX)
+                ? name.substring(SUBREDDIT_PREFIX.length())
+                : name;
     }
 }

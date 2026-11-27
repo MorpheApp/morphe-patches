@@ -8,9 +8,12 @@
 package app.morphe.patches.reddit.layout.navigation
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -48,4 +51,54 @@ internal object BottomNavScreenResourceBuilderLegacyFingerprint : Fingerprint(
         ADD_METHOD_CALL
     ),
     strings = listOf("answersFeatures")
+)
+
+/**
+ * Composable of the community top bar that draws the Search button.
+ */
+internal object SubredditToolbarFingerprint : Fingerprint(
+    isStatic = true,
+    returnType = "V",
+    filters = listOf(
+        string("subreddit_toolbar_search_button"),
+        // Modifier testTag.
+        methodCall(
+            parameters = listOf("L", "Ljava/lang/String;"),
+            returnType = "L",
+            location = MatchAfterImmediately()
+        ),
+        // Icon button: icon, label, content description, click label, expanded, click,
+        // modifier, interaction source, composer, changed flags.
+        methodCall(
+            definingClass = "this",
+            returnType = "V",
+            parameters = listOf(
+                "L",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Z",
+                "Lkotlin/jvm/functions/Function0;",
+                "L",
+                "L",
+                "L",
+                "I"
+            )
+        )
+    )
+)
+
+internal object SubredditHeaderStateToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("SubredditHeaderState(displayName="),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;",
+            definingClass = "this",
+            location = MatchAfterWithin(5)
+        )
+    )
 )
