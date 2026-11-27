@@ -15,8 +15,10 @@ import android.media.session.PlaybackState;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.AtomicFile;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -82,6 +84,10 @@ public final class PlaybackSessionPatch {
     // The router can queue a command. Give each attempt its own identity, even for the same saved video.
     record RestoreRequest(PlaybackSessionSnapshot snapshot) {}
 
+    enum StartupPlayer {
+        AVAILABLE, TRANSITIONING, OPEN
+    }
+
     private static final Application.ActivityLifecycleCallbacks LIFECYCLE = new Application.ActivityLifecycleCallbacks() {
         @Override public void onActivityCreated(Activity activity, Bundle state) {}
         @Override public void onActivityStarted(Activity activity) {}
@@ -111,6 +117,7 @@ public final class PlaybackSessionPatch {
     };
 
     private static WeakReference<Activity> owner = new WeakReference<>(null);
+    private static volatile WeakReference<View> watchPlayerView = new WeakReference<>(null);
     private static volatile WeakReference<AccountProvider> accountProvider = new WeakReference<>(null);
     private static volatile WeakReference<MediaSession> mediaSession = new WeakReference<>(null);
     private static volatile WeakReference<PlaylistReader> playlist = new WeakReference<>(null);
@@ -170,6 +177,10 @@ public final class PlaybackSessionPatch {
 
     public static void attachAccount(AccountProvider provider) {
         if (enabled()) accountProvider = new WeakReference<>(provider);
+    }
+
+    public static void observeWatchPlayer(View view) {
+        if (enabled() && watchPlayerView.get() != view) watchPlayerView = new WeakReference<>(view);
     }
 
     public static void attachMediaSession(MediaSession session) {
@@ -361,6 +372,19 @@ public final class PlaybackSessionPatch {
                 && Settings.SHORTS_PLAYER_TYPE.get() == ShortsPlayerType.SHORTS_PLAYER;
     }
 
+    static StartupPlayer startupPlayer(PlayerType type, boolean shortsOpen,
+                                       @Nullable IBinder watchWindow, @Nullable IBinder startupWindow) {
+        if (shortsOpen) return StartupPlayer.OPEN;
+        if (type.isNoneOrHidden() || type == PlayerType.INLINE_MINIMAL || watchWindow == null) {
+            return StartupPlayer.AVAILABLE;
+        }
+        if (!watchWindow.equals(startupWindow) || type == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED
+                || type == PlayerType.WATCH_WHILE_SLIDING_FULLSCREEN_DISMISSED) {
+            return StartupPlayer.TRANSITIONING;
+        }
+        return StartupPlayer.OPEN;
+    }
+
     private static void restoreIfReady(Activity activity) {
         try {
             if (!checkingStartup || activity != owner.get()) return;
@@ -378,9 +402,18 @@ public final class PlaybackSessionPatch {
                 return;
             }
             boolean routerReady = router != null || usesShortsPlayer(snapshot);
-            if (account == null || !routerReady || !focused) {
+            PlayerType type = PlayerType.getCurrent();
+            View watch = watchPlayerView.get();
+            View decor = activity.getWindow().peekDecorView();
+            // PlayerType is process-wide. The old player may retain its last type after the task is gone.
+            IBinder watchWindow = watch == null || watch.getWindowVisibility() != View.VISIBLE
+                    ? null : watch.getWindowToken();
+            StartupPlayer player = startupPlayer(type, ShortsPlayerState.isOpen(), watchWindow,
+                    decor == null ? null : decor.getWindowToken());
+            if (account == null || !routerReady || !focused || player == StartupPlayer.TRANSITIONING) {
                 String readiness = "account ready=" + (account != null)
-                        + ", command router ready=" + routerReady + ", window focused=" + focused;
+                        + ", command router ready=" + routerReady + ", window focused=" + focused
+                        + ", player=" + player;
                 if (!readiness.equals(startupWaitReason)) {
                     startupWaitReason = readiness;
                     Logger.printDebug(() -> "Waiting to restore playback session: " + readiness);
@@ -399,8 +432,7 @@ public final class PlaybackSessionPatch {
                         && Settings.DISABLE_SHORTS_RESUMING_ON_STARTUP.get()) update(null);
                 return;
             }
-            PlayerType type = PlayerType.getCurrent();
-            if ((!type.isNoneOrHidden() && type != PlayerType.INLINE_MINIMAL) || ShortsPlayerState.isOpen()) {
+            if (player == StartupPlayer.OPEN) {
                 Logger.printDebug(() -> "Playback session restore skipped because a player is already open: " + type);
                 return;
             }
@@ -472,6 +504,8 @@ public final class PlaybackSessionPatch {
         Map<String, Object> context = new HashMap<>();
         context.put(RESTORE_CONTEXT, request);
         context.put("start_watch_minimized", true);
+        // The same video can still be selected by the background playback engine after task removal.
+        context.put("ALLOW_RELOAD", true);
         router.patch_executeCommand(command.toByteArray(), context);
     }
 

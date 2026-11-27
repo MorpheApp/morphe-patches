@@ -17,6 +17,7 @@ import app.morphe.patcher.string
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.hookUserMiniplayerDismissal
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.installPlaybackSessionPlaylistReader
+import app.morphe.patches.youtube.shared.PlayerTypeFingerprint
 import app.morphe.patches.youtube.shared.VideoPlaybackIntentFingerprint
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.shared.hookPlaybackStartDescriptor
@@ -130,6 +131,10 @@ internal fun installPlaybackSessionHooks(): Boolean {
     YouTubeActivityOnCreateFingerprint.method.addInstruction(
         0,
         "invoke-static/range {p0 .. p1}, $SESSION->initialize(Landroid/app/Activity;Landroid/os/Bundle;)V"
+    )
+    PlayerTypeFingerprint.method.addInstruction(
+        0,
+        "invoke-static/range {p0 .. p0}, $SESSION->observeWatchPlayer(Landroid/view/View;)V"
     )
     hookPlaybackStartDescriptor(SESSION, "prepareWatchDescriptor", "prepareShortsDescriptor")
     hookUserMiniplayerDismissal("$SESSION->onMiniplayerDismissed()V")

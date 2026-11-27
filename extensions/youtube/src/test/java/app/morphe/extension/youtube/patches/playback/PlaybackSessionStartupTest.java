@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.playback;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 
 import org.junit.Test;
@@ -19,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -48,9 +50,29 @@ public class PlaybackSessionStartupTest {
             assertEquals(videoId, watch.getVideoId());
             assertEquals(snapshot.queue() == null ? snapshot.playlistId() : "", watch.getPlaylistId());
             assertEquals(Boolean.TRUE, context.get().get("start_watch_minimized"));
+            assertEquals(Boolean.TRUE, context.get().get("ALLOW_RELOAD"));
             assertSame(request, context.get().get("app.morphe.continue_watching"));
             assertNull(PlaybackSessionPatch.prepareWatchDescriptor(new Object(), context.get()));
         }
+    }
+
+    @Test
+    public void playerFromRemovedTaskDoesNotSuppressRestore() {
+        var currentWindow = new Binder();
+        var previousWindow = new Binder();
+
+        assertEquals(PlaybackSessionPatch.StartupPlayer.TRANSITIONING, PlaybackSessionPatch.startupPlayer(
+                PlayerType.WATCH_WHILE_MAXIMIZED, false, previousWindow, currentWindow));
+        assertEquals(PlaybackSessionPatch.StartupPlayer.AVAILABLE, PlaybackSessionPatch.startupPlayer(
+                PlayerType.WATCH_WHILE_MAXIMIZED, false, null, currentWindow));
+        assertEquals(PlaybackSessionPatch.StartupPlayer.OPEN, PlaybackSessionPatch.startupPlayer(
+                PlayerType.WATCH_WHILE_MINIMIZED, false, currentWindow, currentWindow));
+        assertEquals(PlaybackSessionPatch.StartupPlayer.TRANSITIONING, PlaybackSessionPatch.startupPlayer(
+                PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED, false, currentWindow, currentWindow));
+        assertEquals(PlaybackSessionPatch.StartupPlayer.AVAILABLE, PlaybackSessionPatch.startupPlayer(
+                PlayerType.INLINE_MINIMAL, false, currentWindow, currentWindow));
+        assertEquals(PlaybackSessionPatch.StartupPlayer.OPEN, PlaybackSessionPatch.startupPlayer(
+                PlayerType.HIDDEN, true, null, currentWindow));
     }
 
     @Test
