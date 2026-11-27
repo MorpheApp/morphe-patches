@@ -591,3 +591,12 @@ internal object BottomUiContainerReportHeightFingerprint : Fingerprint(
         methodCall(parameters = listOf("L", "I"), returnType = "V")
     )
 )
+
+/**
+ * End of the animation of a horizontal drag of the miniplayer.
+ * It is in the class of the method that [MiniplayerHorizontalDragPlaybackFingerprint] calls.
+ */
+internal object MiniplayerHorizontalDragAnimationEndFingerprint : Fingerprint(
+    definingClass = { MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2].methodReference.definingClass },
+    name = "onAnimationEnd",
+)

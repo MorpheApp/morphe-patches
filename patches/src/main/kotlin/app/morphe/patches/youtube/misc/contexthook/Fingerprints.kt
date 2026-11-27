@@ -209,3 +209,22 @@ internal object TranscriptEndpointConstructorFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("get_transcript"),
 )
+
+/**
+ * Sets the form factor of the client info from the ordinal of [ClientFormFactorEnumOrdinalFingerprint].
+ */
+internal object SetClientFormFactorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = CLIENT_INFO_CLASS,
+            type = "I"
+        ),
+        methodCall(
+            reference = { ClientFormFactorEnumOrdinalFingerprint.originalMethod }
+        )
+    )
+)

@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 
 import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
 
+import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
+
 @SuppressWarnings("deprecation")
 public abstract class ConditionalPreferenceCategory extends PreferenceCategory {
     public ConditionalPreferenceCategory(Context context, PreferenceScreen screen,

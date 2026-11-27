@@ -117,11 +117,9 @@ internal val stableCaptionBlocksPatch = patch(
         val (idField, timeField, visibleTextField, fullTextField, settingsField) = cueFields
         val cueType = idField.definingClass
         val cueConstructor = CaptionCueConstructorFingerprint.method
-        val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
-            .instructionMatches.first().fieldReference
+        val defaultSettingsField = CaptionDefaultSettingsFingerprint.instructionMatches.first().fieldReference
 
-        val visibleSettingsField = getCaptionSettingsVisibilityFingerprint(settingsField.type)
-            .instructionMatches.first().fieldReference
+        val visibleSettingsField = CaptionSettingsVisibilityFingerprint.instructionMatches.first().fieldReference
 
         // Frame spans retain source metadata in native mode. Only block layouts use
         // the default placement; ordinary captions keep the authored settings.
@@ -238,7 +236,7 @@ internal val stableCaptionBlocksPatch = patch(
         }
 
         // Window lines are replaced with the block text before the window is measured.
-        getCaptionWindowSetterFingerprint(cueType).let {
+        CaptionWindowSetterFingerprint.let {
             val windowFields = listOf(
                 "patch_getCaptionCue" to it.instructionMatches[0],
                 "patch_getVisibleCaptionLines" to it.instructionMatches[1],
@@ -359,9 +357,8 @@ internal val stableCaptionBlocksPatch = patch(
                     )
                 }
 
-                val samplerFingerprint = getCaptionSamplerFingerprint(cueType)
-                val sampler = samplerFingerprint.method
-                val windows = samplerFingerprint.instructionMatches[0].fieldReference
+                val sampler = CaptionSamplerFingerprint.method
+                val windows = CaptionSamplerFingerprint.instructionMatches[0].fieldReference
                 val events = it.instructionMatches.last().fieldReference
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,

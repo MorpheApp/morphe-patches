@@ -105,7 +105,7 @@ internal val preferredCaptionLanguagePatch = patch(
         // Source YouTube uses to translate captions of the current audio track,
         // or the default caption track of the current audio track.
         val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
-        val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(captionTrackType).method
+        val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint.method
         val translationSourceMethod = CaptionTracksManagerTranslationSourceFingerprint.let {
             val metadataField = it.instructionMatches[0].fieldReference
             val audioTrackField = it.instructionMatches[1].fieldReference
@@ -261,9 +261,8 @@ internal val preferredCaptionLanguagePatch = patch(
 
         // Native selection of a track, used to apply a change of the bilingual captions toggle.
         if (is_21_10_or_greater) {
-            val selector = CaptionSelectionFingerprint(SetSubtitleTrackFingerprint.method).method
-            val defaultReason = captionDefaultSelectionFingerprint(selector.parameterTypes[1].toString())
-                .instructionMatches.last().fieldReference
+            val selector = CaptionSelectionFingerprint.method
+            val defaultReason = CaptionDefaultSelectionFingerprint.instructionMatches.last().fieldReference
 
             SetSubtitleTrackFingerprint.classDef.addPatchInterface(
                 EXTENSION_SUBTITLE_MANAGER_INTERFACE,

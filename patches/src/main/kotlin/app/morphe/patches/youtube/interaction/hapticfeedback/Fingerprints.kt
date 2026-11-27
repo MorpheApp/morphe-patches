@@ -44,3 +44,20 @@ internal object ZoomHapticsFingerprint : Fingerprint(
     strings = listOf("Failed to haptics vibrate for video zoom")
 )
 
+/**
+ * Vibrates when tap and hold seeks. It reads the vibrator of [TapAndHoldHapticsHandlerFingerprint].
+ */
+internal object TapAndHoldSeekHapticsFingerprint : Fingerprint(
+    name = "run",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            reference = { TapAndHoldHapticsHandlerFingerprint.instructionMatches.last().fieldReference },
+        ),
+        checkCast("Landroid/os/Vibrator;"),
+        string("Failed to easy seek haptics vibrate.")
+    )
+)

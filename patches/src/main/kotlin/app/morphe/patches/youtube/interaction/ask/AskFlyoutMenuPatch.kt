@@ -515,13 +515,7 @@ private fun findRowsField(menuClass: ClassDef) = menuClass.fields.single { field
 private fun addElementsResourceLoading(protos: Protos) {
     val processorClass = ElementsFrameworkUpdatesFingerprint.classDef
     val frameworkUpdatesClass = ElementsFrameworkUpdatesReaderFingerprint.method.parameterTypes.first().toString()
-    // Takes the account of the response, which the processor does not use for Elements resources.
-    val processMethod = Fingerprint(
-        definingClass = processorClass.type,
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-        returnType = "V",
-        parameters = listOf("L", frameworkUpdatesClass)
-    ).method
+    val processMethod = ElementsFrameworkUpdatesProcessFingerprint.method
     val usedResourcesField = processorClass.fields.single { field ->
         !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == "Ljava/util/Set;"
     }

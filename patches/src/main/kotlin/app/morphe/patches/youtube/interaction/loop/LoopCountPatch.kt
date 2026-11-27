@@ -114,11 +114,8 @@ val loopCountPatch = patch(
 
         navigationIntentHook(EXTENSION_CLASS, "onNavigation")
 
-        val requestConstructor = NavigationRequestFingerprint.originalMethod
-        val requestType = requestConstructor.definingClass
-        val setRepeatMode = navigatorSetRepeatModeFingerprint(
-            requestConstructor.parameterTypes.drop(1).map { it.toString() }
-        ).originalMethod
+        val requestType = NavigationRequestFingerprint.originalClassDef.type
+        val setRepeatMode = NavigatorSetRepeatModeFingerprint.originalMethod
 
         // After the navigation hook, as the hook can replace the navigation methods.
         // Each navigator gives itself to the extension before the navigation hook of this patch runs.

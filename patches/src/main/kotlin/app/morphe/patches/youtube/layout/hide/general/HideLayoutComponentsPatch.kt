@@ -10,7 +10,6 @@
 
 package app.morphe.patches.youtube.layout.hide.general
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.Match
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -83,6 +82,7 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -115,6 +115,16 @@ private const val SANITIZE_VIDEO_SUBTITLE_FILTER =
     "Lapp/morphe/extension/youtube/patches/spans/SanitizeVideoSubtitleFilter;"
 private const val SEARCH_LINKS_FILTER =
     "Lapp/morphe/extension/youtube/patches/spans/SearchLinksFilter;"
+
+/**
+ * The method of [ChannelTabBuilderLegacyFingerprint], to find the calls to it.
+ * Some versions, such as 20.26 and 20.51, have it in more than one tabs bar. They all implement
+ * the same interface method, so the method of any of them is called the same way.
+ */
+private val channelTabBuilderLegacyMethod: Method
+    get() = ChannelTabBuilderLegacyFingerprint.matchAll().map { it.originalMethod }
+        .distinctBy { method -> method.returnType to method.parameterTypes.map { it.toString() } }
+        .single()
 
 val hideLayoutComponentsPatch = patch(
     name = "Hide layout components",
@@ -1192,7 +1202,7 @@ val hideLayoutComponentsPatch = patch(
                 val addMethod = ChannelTabAddFingerprint.method
                 val channelTabBuilderMethod =
                     if (is_21_25_or_greater) ChannelTabBuilderFingerprint.method
-                    else ChannelTabBuilderLegacyFingerprint.method
+                    else channelTabBuilderLegacyMethod
 
                 val targetIndex = addMethod.indexOfFirstInstructionReversedOrThrow(
                     methodCall(
@@ -1255,7 +1265,7 @@ val hideLayoutComponentsPatch = patch(
                     ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
             } else {
-                val channelTabBuilderMethod = ChannelTabBuilderLegacyFingerprint.method
+                val channelTabBuilderMethod = channelTabBuilderLegacyMethod
                 val targetIndex = indexOfFirstInstructionReversedOrThrow(
                     methodCall(
                         returnType = channelTabBuilderMethod.returnType,
@@ -1456,8 +1466,6 @@ val hideLayoutComponentsPatch = patch(
         // so match it again before and after changing it.
         TapAndHoldSpeedFingerprint.let {
             it.clearMatch()
-            // The class that overrides the speed, and restores it when tap and hold ends.
-            val speedControllerType = it.instructionMatches[6].fieldReference.type
 
             // Right after the "already speeding up" check.
             it.method.addInstructionsAtControlFlowLabel(
@@ -1466,12 +1474,7 @@ val hideLayoutComponentsPatch = patch(
             )
 
             // Track when tap and hold ends.
-            Fingerprint(
-                definingClass = speedControllerType,
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                returnType = "V",
-                parameters = listOf()
-            ).method.addInstruction(
+            TapAndHoldSpeedEndFingerprint.method.addInstruction(
                 0,
                 "invoke-static { }, $LAYOUT_COMPONENTS_FILTER->onTapAndHoldEnd()V"
             )
@@ -1577,9 +1580,8 @@ val hideLayoutComponentsPatch = patch(
 
             TimeBarChapterTitleVisibilityLegacyFingerprint.match()
                 .hideTimeBarEntryPoint("showTimeBarChapterTitle")
-            getTimeBarTimelineTitleVisibilityLegacyFingerprint(
-                TimeBarChapterTitleVisibilityLegacyFingerprint.classDef.type
-            ).match().hideTimeBarEntryPoint("showTimeBarInThisVideo")
+            TimeBarTimelineTitleVisibilityLegacyFingerprint.match()
+                .hideTimeBarEntryPoint("showTimeBarInThisVideo")
         }
 
         // endregion

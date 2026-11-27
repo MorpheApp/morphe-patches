@@ -537,11 +537,7 @@ val miniplayerPatch = patch(
             }
         }
 
-        Fingerprint(
-            definingClass = MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2]
-                .getMethodCalled().definingClass,
-            name = "onAnimationEnd",
-        ).method.addInstructionsWithLabels(
+        MiniplayerHorizontalDragAnimationEndFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS->pausePlaybackWithHorizontalDrag()Z

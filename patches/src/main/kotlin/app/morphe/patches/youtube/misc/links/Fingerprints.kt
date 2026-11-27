@@ -37,3 +37,15 @@ internal object DescriptionAndPostUriFingerprint : Fingerprint(
         "Activity not found to view uri",
     ),
 )
+
+/**
+ * Uses of the action of the custom tabs service, outside of the extension.
+ */
+internal object CustomTabsServiceActionFingerprint : Fingerprint(
+    filters = listOf(
+        string("android.support.customtabs.action.CustomTabsService")
+    ),
+    custom = { _, classDef ->
+        !classDef.type.startsWith("Lapp/morphe/")
+    }
+)

@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -179,5 +180,49 @@ internal object ShortsPinchToZoomFeatureFlagFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         literal(45797801L)
+    )
+)
+
+/**
+ * The method of the fullscreen controller that [AdPlayerFullscreenFingerprint] calls to exit fullscreen.
+ */
+private val exitFullscreenMethod
+    get() = AdPlayerFullscreenFingerprint.instructionMatches.last().methodReference
+
+/**
+ * Click handler that calls a method of the fullscreen controller of [AdPlayerFullscreenFingerprint]
+ * to enter fullscreen, and its method to exit fullscreen.
+ */
+internal object EnterFullscreenClickFingerprint : Fingerprint(
+    name = "onClick",
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = { exitFullscreenMethod.definingClass }
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = { exitFullscreenMethod.definingClass },
+            returnType = "V",
+            parameters = listOf(),
+            location = MatchAfterWithin(3)
+        ),
+        methodCall(
+            reference = { exitFullscreenMethod },
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
+/**
+ * Constructor of the watch layout, which casts to the fullscreen controller of [AdPlayerFullscreenFingerprint].
+ */
+internal object NextGenWatchLayoutConstructorFingerprint : Fingerprint(
+    definingClass = NEXT_GEN_WATCH_LAYOUT_CLASS,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        checkCast({ exitFullscreenMethod.definingClass })
     )
 )

@@ -672,7 +672,7 @@ val navigationBarPatch = patch(
             // The app places the miniplayer and other views above the height it keeps for the navigation bar,
             // which it sets to none only when it hides the bar itself. The extension sets the height again
             // when it hides or shows the bar, and the height is none while the bar is hidden on scroll.
-            setBottomUiHeightFingerprint(BottomUiEnumFingerprint.originalClassDef.type).let {
+            SetBottomUiHeightFingerprint.let {
                 it.method.addInstructions(
                     0,
                     """
@@ -1321,11 +1321,7 @@ val navigationBarPatch = patch(
                 val insertRegister =
                     getInstruction<TwoRegisterInstruction>(insertIndex).registerA
 
-                val protoListBuilderMethod = Fingerprint(
-                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                    returnType = insertMatch.fieldReference.type,
-                    parameters = listOf("Ljava/util/Collection;")
-                ).method
+                val protoListBuilderMethod = ProtoListFromCollectionFingerprint.method
 
                 addInstructions(
                     insertIndex,
@@ -1346,14 +1342,7 @@ val navigationBarPatch = patch(
                     // before the guide response is loaded, so the browse endpoint extension is set.
                     // Inserted at the same index as above, so the button is added before the Search
                     // and Settings buttons.
-                    val iconType = PivotBarItemProtoFactoryFingerprint.method.parameterTypes[2].toString()
-                    // Enum constant names are obfuscated, so the icon type is found by its value.
-                    val iconTypeLookupMethod = Fingerprint(
-                        definingClass = iconType,
-                        isStatic = true,
-                        returnType = iconType,
-                        parameters = listOf("I")
-                    ).originalMethod
+                    val iconTypeLookupMethod = IconTypeFromValueFingerprint.originalMethod
 
                     val pivotBarItemOptionalType = PivotBarRendererFingerprint.method.returnType
                     // Non range invoke instructions, so 4-bit registers are required.

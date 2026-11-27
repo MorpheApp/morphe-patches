@@ -58,11 +58,6 @@ internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
     )
 )
 
-internal object ShowOldPlaybackSpeedMenuExtensionFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS,
-    name = "showOldPlaybackSpeedMenu"
-)
-
 internal object ServerSideMaxSpeedFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",

@@ -276,7 +276,7 @@ val ambientModePatch = patch(
         val rendererClass = CinematicContainerRendererFingerprint.classDef
         val rendererType = rendererClass.type
 
-        val styleMatches = cinematicContainerPresentationStyleFingerprint(rendererType).instructionMatches
+        val styleMatches = CinematicContainerPresentationStyleFingerprint.instructionMatches
         val hasBitsField = styleMatches[0].fieldReference
         val styleHasBitMask = styleMatches[1].getInstruction<NarrowLiteralInstruction>().narrowLiteral
         val styleField = styleMatches[3].fieldReference

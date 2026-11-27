@@ -11,6 +11,7 @@
 package app.morphe.patches.shared.misc.debugging
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -42,15 +43,19 @@ internal object ExperimentFlagUtilFingerprint : Fingerprint(
 internal object ExperimentalBooleanFeatureFlagFingerprint : Fingerprint(
     classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "Z",
+    filters = listOf(
+        // Older versions also have a public accessor that only calls this accessor.
+        // The accessor itself looks up the flag, and is not public in some versions, such as 20.51.
+        methodCall(smali = "Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;")
+    ),
     custom = { method, _ ->
-        AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                (parametersMatch(
-                    method.parameters,
-                    listOf("L", "J", "Z")
-                ) || parametersMatch( // 21.35+
-                    method.parameters,
-                    listOf("J", "Z")
-                ))
+        parametersMatch(
+            method.parameters,
+            listOf("L", "J", "Z")
+        ) || parametersMatch( // 21.35+
+            method.parameters,
+            listOf("J", "Z")
+        )
     }
 )
 
@@ -70,54 +75,66 @@ internal object ExperimentalIndexedBooleanFeatureFlagFingerprint : Fingerprint(
 internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(
     classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "D",
+    filters = listOf(
+        // Older versions also have a public accessor that only calls this accessor.
+        // The accessor itself looks up the flag, and is not public in some versions, such as 20.51.
+        methodCall(smali = "Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;")
+    ),
     custom = { method, _ ->
-        AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                (parametersMatch(
-                    method.parameters,
-                    listOf("L", "J", "D")
-                ) || parametersMatch( // 21.35+
-                    method.parameters,
-                    listOf("J", "D")
-                ) || parametersMatch( // 21.42+
-                    method.parameters,
-                    listOf("I", "J", "D")
-                ))
+        parametersMatch(
+            method.parameters,
+            listOf("L", "J", "D")
+        ) || parametersMatch( // 21.35+
+            method.parameters,
+            listOf("J", "D")
+        ) || parametersMatch( // 21.42+
+            method.parameters,
+            listOf("I", "J", "D")
+        )
     }
 )
 
 internal object ExperimentalLongFeatureFlagFingerprint : Fingerprint(
     classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "J",
+    filters = listOf(
+        // Older versions also have a public accessor that only calls this accessor.
+        // The accessor itself looks up the flag, and is not public in some versions, such as 20.51.
+        methodCall(smali = "Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;")
+    ),
     custom = { method, _ ->
-        AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                (parametersMatch(
-                    method.parameters,
-                    listOf("L", "J", "J"),
-                ) || parametersMatch( // 21.35+
-                    method.parameters,
-                    listOf("J", "J"),
-                ) || parametersMatch( // 21.42+
-                    method.parameters,
-                    listOf("I", "J", "J"),
-                ))
+        parametersMatch(
+            method.parameters,
+            listOf("L", "J", "J"),
+        ) || parametersMatch( // 21.35+
+            method.parameters,
+            listOf("J", "J"),
+        ) || parametersMatch( // 21.42+
+            method.parameters,
+            listOf("I", "J", "J"),
+        )
     }
 )
 
 internal object ExperimentalStringFeatureFlagFingerprint : Fingerprint(
     classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "Ljava/lang/String;",
+    filters = listOf(
+        // Older versions also have a public accessor that only calls this accessor.
+        // The accessor itself looks up the flag, and is not public in some versions, such as 20.51.
+        methodCall(smali = "Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;")
+    ),
     custom = { method, _ ->
-        AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                (parametersMatch(
-                    method.parameters,
-                    listOf("L", "J", "Ljava/lang/String;")
-                ) || parametersMatch( // 21.35+
-                    method.parameters,
-                    listOf("J", "Ljava/lang/String;")
-                ) || parametersMatch( // 21.42+
-                    method.parameters,
-                    listOf("I", "J", "Ljava/lang/String;")
-                ))
+        parametersMatch(
+            method.parameters,
+            listOf("L", "J", "Ljava/lang/String;")
+        ) || parametersMatch( // 21.35+
+            method.parameters,
+            listOf("J", "Ljava/lang/String;")
+        ) || parametersMatch( // 21.42+
+            method.parameters,
+            listOf("I", "J", "Ljava/lang/String;")
+        )
     }
 )
 

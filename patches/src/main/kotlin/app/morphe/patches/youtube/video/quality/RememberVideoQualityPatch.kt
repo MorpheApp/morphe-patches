@@ -207,18 +207,14 @@ val rememberVideoQualityPatch = patch {
 
         // Use the 'Advanced' video quality setting instead of the 'Video quality preferences'
         // (Auto, Higher picture quality, Data saver), both on the device and with the SABR requests.
-        val videoQualitySettingMethod = VideoQualitySettingEnumFingerprint.let {
-            val videoQualitySettingType = it.classDef.type
+        VideoQualitySettingEnumFingerprint.let {
             val advancedMenuField = it.instructionMatches.last().fieldReference
 
             // The quality menu of regular videos shows a check mark on the quality selected,
             // which is the quality of the last quality event. When the video loads, the event is
             // the video quality setting without a quality, so the default quality is not checked.
             // With the 'Advanced' setting, the quality playing is used as the quality selected.
-            val qualityEventType = getVideoQualitySettingChangedEventFingerprint(
-                videoQualitySettingType
-            ).classDef.type
-            getQualityMenuSelectedQualityFingerprint(qualityEventType, videoQualitySettingType).let { match ->
+            QualityMenuSelectedQualityFingerprint.let { match ->
                 match.method.apply {
                     val resolutionMatch = match.instructionMatches[1]
                     val resolutionInstruction = resolutionMatch.getInstruction<TwoRegisterInstruction>()
@@ -250,7 +246,7 @@ val rememberVideoQualityPatch = patch {
                 }
             }
 
-            getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
+            VideoQualitySettingFingerprint.method.apply {
                 addInstructionsWithLabels(
                     0,
                     """
@@ -369,10 +365,7 @@ val rememberVideoQualityPatch = patch {
         // The video is the client playback nonce (CPN) of the video the qualities are chosen for,
         // which can be another video than the one of the player in front, such as the next Short
         // loaded by the Shorts player. So the resolution is set again for that video.
-        val constraintType = getVideoQualityConstraintFingerprint(
-            LastSelectedVideoQualityConstructorFingerprint.classDef.type,
-            videoQualitySettingMethod.toString()
-        ).let {
+        VideoQualityConstraintFingerprint.let {
             it.method.apply {
                 val moveResultIndex = it.instructionMatches.first().index + 1
                 val lastSelectedRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
@@ -397,8 +390,6 @@ val rememberVideoQualityPatch = patch {
                     """
                 )
             }
-
-            it.method.returnType
         }
 
         // The SABR player asks the server for the video formats of the quality range of the constraint,
@@ -406,21 +397,19 @@ val rememberVideoQualityPatch = patch {
         // The quality is chosen before the formats of the video are known, such as the initial quality
         // or the quality of the next Shorts the Shorts player loads, so a quality without a video format
         // that fits is lowered here, otherwise no video plays.
-        val rangeField = getVideoQualityConstraintEqualsFingerprint(constraintType).let {
+        val rangeField = VideoQualityConstraintEqualsFingerprint.let {
             // The copy of the constraint gets the original quality range.
             it.instructionMatches.first().getFieldAccessed().removeFlags(AccessFlags.FINAL)
             it.instructionMatches.first().fieldReference
         }
-        val rangeConstructor = getVideoQualityRangeConstructorFingerprint(rangeField.type)
         val (highestQualityField, lowestQualityField, rangeModeField, rangeFormatsField) =
-            rangeConstructor.instructionMatches.map { it.fieldReference }
-        val constraintLastField = getVideoQualityConstraintConstructorFingerprint(constraintType, rangeField.type)
-            .instructionMatches.last().let {
-                it.getFieldAccessed().removeFlags(AccessFlags.FINAL)
-                it.fieldReference
-            }
-        val fixedQualityMethod = getFixedVideoQualityConstraintFingerprint(constraintType).method
-        getSabrFormatSelectionFingerprint(constraintType).method.apply {
+            VideoQualityRangeConstructorFingerprint.instructionMatches.map { it.fieldReference }
+        val constraintLastField = VideoQualityConstraintConstructorFingerprint.instructionMatches.last().let {
+            it.getFieldAccessed().removeFlags(AccessFlags.FINAL)
+            it.fieldReference
+        }
+        val fixedQualityMethod = FixedVideoQualityConstraintFingerprint.method
+        SabrFormatSelectionFingerprint.method.apply {
             val selectableFormatsIndex = parameterTypes.indexOfFirst { it.toString() == SELECTABLE_FORMATS_TYPE }
             // Wide parameters use two registers.
             val parameterRegisters = parameterTypes.runningFold(0) { register, type ->
@@ -450,7 +439,7 @@ val rememberVideoQualityPatch = patch {
                     iget v5, v1, $rangeModeField
                     iget-object v1, v1, $rangeFormatsField
                     new-instance v6, ${rangeField.type}
-                    invoke-direct { v6, v2, v4, v5, v1 }, ${rangeConstructor.method}
+                    invoke-direct { v6, v2, v4, v5, v1 }, ${VideoQualityRangeConstructorFingerprint.method}
                     iput-object v6, v3, $rangeField
                     iget-object v1, v0, $constraintLastField
                     iput-object v1, v3, $constraintLastField
@@ -507,10 +496,7 @@ val rememberVideoQualityPatch = patch {
         VideoQualityItemOnClickFingerprint.let {
             // The menu shows the qualities it was opened with, which YouTube can change after that,
             // so the quality selected is found in the qualities of the menu.
-            val menuQualitiesField = getVideoQualityMenuQualitiesFingerprint(
-                it.classDef.type,
-                "[${VideoQualityFingerprint.classDef.type}"
-            ).instructionMatches.first().getFieldAccessed()
+            val menuQualitiesField = VideoQualityMenuQualitiesFingerprint.instructionMatches.first().getFieldAccessed()
 
             val userChangedShortsQualityMethod = ImmutableMethod(
                 it.classDef.type,
