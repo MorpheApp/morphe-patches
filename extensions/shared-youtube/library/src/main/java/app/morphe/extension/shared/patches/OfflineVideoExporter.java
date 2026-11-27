@@ -813,7 +813,7 @@ public final class OfflineVideoExporter {
                 String mimeType = webm ? "video/webm" : "video/mp4";
                 OutputFile output = OutputFile.create(folder, fileName, webm ? ".webm" : ".mp4", mimeType);
                 try {
-                    mux(extractors, formats, output.descriptor, muxerFormat, notification);
+                    mux(extractors, formats, output.descriptor, muxerFormat, notification::showProgress);
                     return new ExportResult(output.finish(), output.uri, mimeType);
                 } catch (Exception ex) {
                     output.delete();
@@ -943,12 +943,20 @@ public final class OfflineVideoExporter {
                 : name;
     }
 
+    public interface SampleListener {
+        /**
+         * Called after each written sample. Throw to stop the mux, such as when it is canceled.
+         */
+        void onSample() throws IOException;
+    }
+
     /**
      * Writes the samples of all streams in the order of their time, so the file is interleaved.
+     * The streams are copied as they are, without decoding.
      */
-    private static void mux(List<MediaExtractor> extractors, List<MediaFormat> formats,
-                            ParcelFileDescriptor descriptor, int outputFormat,
-                            ExportNotification notification) throws IOException {
+    public static void mux(List<MediaExtractor> extractors, List<MediaFormat> formats,
+                           ParcelFileDescriptor descriptor, int outputFormat,
+                           SampleListener listener) throws IOException {
         MediaMuxer muxer = new MediaMuxer(descriptor.getFileDescriptor(), outputFormat);
         try {
             final int count = extractors.size();
@@ -983,7 +991,7 @@ public final class OfflineVideoExporter {
                 info.set(0, size, nextTime, keyFrame ? MediaCodec.BUFFER_FLAG_KEY_FRAME : 0);
                 muxer.writeSampleData(tracks[next], buffer, info);
                 extractor.advance();
-                notification.showProgress();
+                listener.onSample();
             }
 
             muxer.stop();
