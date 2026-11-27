@@ -45,6 +45,69 @@ internal object BottomNavBarFingerprint : Fingerprint(
 )
 
 /**
+ * Row of buttons in the bottom navigation bar.
+ */
+internal object BottomNavRowHeightFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(
+        literal(28f),
+        literal(50f),
+        // Modifier.height
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "F"),
+            returnType = "L",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Outer height of the bottom navigation bar, 2026.46.0+
+ */
+internal object BottomNavBarHeightFingerprint : Fingerprint(
+    definingClass = BOTTOM_NAV_SCREEN_CLASS,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "F",
+    parameters = listOf("L", "I"),
+    filters = listOf(
+        literal(50f),
+        opcode(Opcode.ADD_FLOAT_2ADDR, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Outer height of the bottom navigation bar, 2026.40.0 and lower.
+ */
+internal object BottomNavBarHeightLegacyFingerprint : Fingerprint(
+    filters = listOf(
+        literal(1f),
+        // Modifier.fillMaxWidth
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "F"),
+            returnType = "L",
+            location = MatchAfterImmediately()
+        ),
+        literal(50f, location = MatchAfterWithin(3)),
+        opcode(Opcode.ADD_FLOAT_2ADDR, location = MatchAfterImmediately()),
+        // Modifier.height
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "F"),
+            returnType = "L",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            definingClass = "Lcom/reddit/widget/bottomnav/a;",
+            returnType = "V",
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
+/**
  * Content of the side rail. The buttons are spaced evenly if the rail is not tall enough.
  */
 internal object SideNavRailContentFingerprint : Fingerprint(
