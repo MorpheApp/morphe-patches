@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.BooleanSupplier;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -206,13 +207,15 @@ public final class PlaybackSessionPatch {
     }
 
     public static boolean restoreCaptionPreference(boolean original, CaptionSource source) {
+        return restoreCaptionPreference(original, source, () -> Settings.HIDE_CAPTIONS_BUTTON.get()
+                || Settings.AUTO_CAPTIONS_STYLE.get() == AutoCaptionsStyle.BOTH_DISABLED);
+    }
+
+    static boolean restoreCaptionPreference(boolean original, CaptionSource source, BooleanSupplier captionsHidden) {
         var snapshot = restoringCaptions;
         if (snapshot == null || !snapshot.videoId().equals(source.patch_sessionCaptionVideoId())) return original;
         restoringCaptions = null;
-        Boolean savedState = snapshot.captionsEnabled();
-        if (savedState != null) return savedState;
-        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
-        return style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
+        return snapshot.hadCaptionsEnabled() && !captionsHidden.getAsBoolean();
     }
 
     @Nullable

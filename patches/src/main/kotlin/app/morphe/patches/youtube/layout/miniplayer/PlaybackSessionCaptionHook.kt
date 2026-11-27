@@ -26,7 +26,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val SESSION = "Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch;"
 private const val CAPTIONS = $$"Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch$CaptionSource;"
 
-/** Restores the CC choice before the native subtitle manager selects its default track. */
+/** Gives the saved CC choice and current caption settings priority before native default track selection. */
 internal fun installPlaybackSessionCaptionHooks(): Boolean {
     val defaultTrack = DefaultCaptionTrackFingerprint.matchOrNull()?.originalMethod ?: return false
     val managerType = defaultTrack.definingClass

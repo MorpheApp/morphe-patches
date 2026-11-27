@@ -136,9 +136,22 @@ public class PlaybackSessionStartupTest {
             assertTrue(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
             assertFalse(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MAXIMIZED));
             assertPausedControls(secondLaunch);
-            assertFalse(PlaybackSessionPatch.restoreCaptionPreference(false, new TestCaptionSource("lmnopqrstuv")));
-            assertTrue(PlaybackSessionPatch.restoreCaptionPreference(false, new TestCaptionSource(recorded.videoId())));
-            assertFalse(PlaybackSessionPatch.restoreCaptionPreference(false, new TestCaptionSource(recorded.videoId())));
+            var captionSource = new TestCaptionSource(recorded.videoId());
+            assertTrue(PlaybackSessionPatch.restoreCaptionPreference(true, new TestCaptionSource("lmnopqrstuv"), () -> true));
+            assertTrue(PlaybackSessionPatch.restoreCaptionPreference(false, captionSource, () -> false));
+            assertFalse(PlaybackSessionPatch.restoreCaptionPreference(false, captionSource, () -> false));
+
+            PlaybackSessionPatch.applyRestoredWatch(descriptor, request);
+            assertFalse(PlaybackSessionPatch.restoreCaptionPreference(true, captionSource, () -> true));
+
+            for (Boolean captionsEnabled : new Boolean[]{false, null}) {
+                var snapshot = new PlaybackSessionSnapshot(recorded.account(), recorded.videoId(),
+                        recorded.positionMilliseconds(), recorded.kind(), "", false, null, captionsEnabled);
+                var restoredSnapshot = PlaybackSessionSnapshot.fromJson(snapshot.toJson());
+                assertEquals(captionsEnabled, restoredSnapshot.captionsEnabled());
+                PlaybackSessionPatch.applyRestoredWatch(descriptor, new PlaybackSessionPatch.RestoreRequest(restoredSnapshot));
+                assertFalse(PlaybackSessionPatch.restoreCaptionPreference(true, captionSource, () -> false));
+            }
 
             PlaybackSessionPatch.initializeActivity(recreated, new Bundle());
             assertFalse(pending.getBoolean(null));

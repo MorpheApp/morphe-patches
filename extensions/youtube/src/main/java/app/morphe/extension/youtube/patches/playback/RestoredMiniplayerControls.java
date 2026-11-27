@@ -8,6 +8,7 @@
 package app.morphe.extension.youtube.patches.playback;
 
 import android.graphics.drawable.Drawable;
+import android.os.LocaleList;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -18,7 +19,6 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.PlayPauseIcons;
@@ -42,6 +42,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
     private int nativeOverlayVisibility, nativeActionVisibility, nativeBadgeVisibility, nativeSubtitleVisibility;
     private float nativeActionAlpha;
     private String playDescription = "", restoredLabel = "";
+    @Nullable private LocaleList displayLocales;
 
     private RestoredMiniplayerControls(View overlay, ImageView action, View badge, TextView label,
                                       @Nullable View subtitle) {
@@ -53,7 +54,13 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
     }
 
     public static String resumeLabel() {
-        return StringRef.str("morphe_miniplayer_restored_label");
+        int morpheLabel = ResourceUtils.getStringIdentifier("morphe_miniplayer_restored_label");
+        String translation = morpheLabel == 0 ? null : ResourceUtils.getTranslation(morpheLabel);
+        if (translation != null) return translation;
+
+        int nativeLabel = ResourceUtils.getStringIdentifier("continue_watching_ready_to_resume");
+        if (nativeLabel != 0) return ResourceUtils.getString(nativeLabel);
+        return morpheLabel == 0 ? "Continue watching" : ResourceUtils.getString(morpheLabel);
     }
 
     public static void bind(View actionView) {
@@ -91,8 +98,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
             playIcon = PlayerIcons.styledDrawable(PlayPauseIcons.PLAY);
             int iconId = ResourceUtils.getDrawableIdentifier("player_play");
             if (playIcon == null && iconId != 0) playIcon = action.getContext().getDrawable(iconId);
-            playDescription = StringRef.str("accessibility_play");
-            restoredLabel = resumeLabel();
+            updateLocalizedLabels();
             nativeIcon = action.getDrawable();
             nativeDescription = action.getContentDescription();
             nativeLabel = label.getText();
@@ -112,6 +118,14 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
                 && PlaybackSessionPatch.ownsMiniplayerControls(action);
     }
 
+    private void updateLocalizedLabels() {
+        LocaleList locales = action.getResources().getConfiguration().getLocales();
+        if (locales.equals(displayLocales)) return;
+        playDescription = ResourceUtils.getStringOrThrow("accessibility_play");
+        restoredLabel = resumeLabel();
+        displayLocales = locales;
+    }
+
     @Override public boolean onPreDraw() {
         if (!canShowPausedControls()) {
             stop();
@@ -129,6 +143,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
             nativeSubtitleVisibility = subtitle.getVisibility();
             subtitle.setVisibility(View.GONE);
         }
+        updateLocalizedLabels();
         showPaused(overlay, action, playIcon, playDescription, badge, label, restoredLabel);
         return true;
     }
@@ -148,6 +163,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
         if (observer == null) return;
         if (observer.isAlive()) observer.removeOnPreDrawListener(this);
         observer = null;
+        displayLocales = null;
         if (playIcon != null && action.getDrawable() == playIcon) action.setImageDrawable(nativeIcon);
         if (playDescription.equals(action.getContentDescription())) {
             action.setContentDescription(nativeDescription);

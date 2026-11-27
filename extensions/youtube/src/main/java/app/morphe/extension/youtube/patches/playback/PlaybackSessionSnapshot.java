@@ -60,6 +60,10 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
         this(account, videoId, positionMilliseconds, kind, playlistId, usesKeptQueue, queue, null);
     }
 
+    boolean hadCaptionsEnabled() {
+        return Boolean.TRUE.equals(captionsEnabled);
+    }
+
     static PlaybackSessionSnapshot fromJson(String json) throws JSONException {
         JSONObject data = new JSONObject(json);
         if (data.getInt("version") != VERSION) {
