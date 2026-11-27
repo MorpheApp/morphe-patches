@@ -324,7 +324,9 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
         methodCall( // VideoQuality constructor.
             name = "<init>",
             opcodes = listOf(Opcode.INVOKE_DIRECT, Opcode.INVOKE_DIRECT_RANGE)
-        )
+        ),
+        // The other quality change. Few of the many classes with the literal 2 also have it.
+        methodCall(smali = "Ljava/lang/Integer;->intValue()I")
     )
 )
 

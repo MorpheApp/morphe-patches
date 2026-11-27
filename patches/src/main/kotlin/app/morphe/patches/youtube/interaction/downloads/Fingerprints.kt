@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.interaction.downloads
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -77,7 +76,7 @@ internal object PlaybackStartDescriptorIdsFingerprint : Fingerprint(
             parameters = listOf(),
             location = MatchAfterImmediately()
         ),
-        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+        string("PlaybackStartDescriptor:\n  VideoId:%s\n  PlaylistId:%s\n  Index:%d\n  VideoIds:%s")
     )
 )
 

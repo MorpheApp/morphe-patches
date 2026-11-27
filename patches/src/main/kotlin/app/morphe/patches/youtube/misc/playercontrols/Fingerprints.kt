@@ -12,7 +12,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -171,7 +170,10 @@ internal object PlayerSeekbarFeatureFlagFingerprint : Fingerprint(
  */
 internal object ElementsImageComponentFingerprint : Fingerprint(
     strings = listOf(
-        string("Failed to find a valid source for the image", StringComparisonType.STARTS_WITH)
+        string(
+            "Failed to find a valid source for the image. Please make sure image source array is not empty and " +
+                "each image source has proper remote url / client resource name / serialized image data."
+        )
     )
 )
 

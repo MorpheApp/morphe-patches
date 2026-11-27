@@ -18,6 +18,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.NativeNavigationStateFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
+import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHookPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationMethodFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.NavigationRequestFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -44,6 +45,7 @@ val loopCountPatch = patch(
         settingsPatch,
         videoInformationPatch,
         flyoutPatch,
+        navigationIntentHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

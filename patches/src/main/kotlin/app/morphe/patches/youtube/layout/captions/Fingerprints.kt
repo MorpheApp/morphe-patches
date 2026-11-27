@@ -12,7 +12,6 @@ import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -629,7 +628,7 @@ internal object PlayerOverlayStateToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
     filters = listOf(
-        string("isPipActive", StringComparisonType.CONTAINS)
+        string("watchDynamicLayoutState;isVrActive;isInlineActive;isPipActive")
     )
 )
 
@@ -705,7 +704,10 @@ internal object CueRangeManagerSeekFingerprint : Fingerprint(
     returnType = "J",
     parameters = listOf("J", "J", "Z"),
     filters = listOf(
-        string("CueRangeManager", StringComparisonType.CONTAINS)
+        anyInstruction(
+            string("CueRangeManager state error: newPosition="),
+            string("CueRangeManager state error: newPosition=%d") // 21.20+
+        )
     )
 )
 

@@ -576,7 +576,7 @@ val rememberVideoQualityPatch = patch {
                 val qualityMatch = it.instructionMatches[3]
                 val qualityRegister = qualityMatch.getInstruction<OneRegisterInstruction>().registerA
                 val qualityType = qualityMatch.getInstruction<ReferenceInstruction>().reference
-                val constructorIndex = it.instructionMatches.last().index
+                val constructorIndex = it.instructionMatches[7].index
 
                 addInstructions(
                     constructorIndex + 1,

@@ -40,6 +40,7 @@ val disablePlaylistAutoplayPatch = patch(
         sharedExtensionPatch,
         settingsPatch,
         playlistRepeatModeHookPatch,
+        navigationIntentHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

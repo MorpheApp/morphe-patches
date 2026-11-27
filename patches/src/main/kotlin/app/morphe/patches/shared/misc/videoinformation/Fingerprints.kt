@@ -2,12 +2,12 @@ package app.morphe.patches.shared.misc.videoinformation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.patch.classDefBy
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.anyInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -21,7 +21,10 @@ internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
             name = "<init>",
             parameters = listOf("J", "J", "J", "J", "J", "J", "J", "Z", "Ljava/lang/String;")
         ),
-        string("Media progress reported outside media playback: ", comparison = StringComparisonType.CONTAINS)
+        anyInstruction(
+            string("Media progress reported outside media playback: "),
+            string("Media progress reported outside media playback: %s") // 21.20+
+        )
     )
 )
 

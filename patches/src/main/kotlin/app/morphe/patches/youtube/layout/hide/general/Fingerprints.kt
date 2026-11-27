@@ -15,7 +15,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -104,7 +103,7 @@ internal object ParseElementFromBufferFingerprint : Fingerprint(
         // IGET_BOOLEAN // 20.07+
         methodCall(parameters = listOf("[B", "Z"), location = MatchAfterWithin(1)),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        string("Failed to parse Element", StringComparisonType.STARTS_WITH),
+        string("Failed to parse Element."),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("L"),

@@ -22,6 +22,7 @@ import app.morphe.patches.youtube.interaction.nativeplaylistqueue.EXTENSION_CLAS
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
+import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHookPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
@@ -59,7 +60,8 @@ val addToQueuePatch = patch(
         loadVideoHookPatch,
         videoInformationPatch,
         nativePlaylistQueuePatch,
-        feedVideoActionsHookPatch
+        feedVideoActionsHookPatch,
+        navigationIntentHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

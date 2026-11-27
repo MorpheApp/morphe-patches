@@ -506,26 +506,15 @@ internal object CinematicBackgroundPropertyFingerprint : Fingerprint(
     )
 )
 
-private val ELEMENTS_LINEAR_GRADIENT_PARAMETERS = listOf(
-    "F",
-    "Landroid/graphics/PointF;",
-    "Landroid/graphics/PointF;",
-    "[I",
-    "[F",
-    "I",
-)
-
 /**
  * Constructor of the linear gradient of an Elements component, which keeps the colors of the gradient. Matches
- * 2 classes, one for each Elements renderer of the app. The constructor of the multiplatform one has one more
- * parameter in 21.44+.
+ * 2 classes, one for each Elements renderer of the app.
  */
 internal object ElementsLinearGradientConstructorFingerprint : Fingerprint(
     name = "<init>",
-    custom = { method, classDef ->
-        method.parameterTypes.size > ELEMENTS_LINEAR_GRADIENT_PARAMETERS.size
-                && method.parameterTypes.take(ELEMENTS_LINEAR_GRADIENT_PARAMETERS.size)
-                    .map { it.toString() } == ELEMENTS_LINEAR_GRADIENT_PARAMETERS
-                && classDef.fields.any { it.type == "Landroid/graphics/LinearGradient;" }
-    }
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "[I"),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "[F"),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Landroid/graphics/PointF;")
+    )
 )
