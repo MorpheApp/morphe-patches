@@ -530,6 +530,31 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
+     * @return If the glass of the Home top bar buttons and tabs blurs the feed.
+     */
+    private static boolean isTopBarFrosted() {
+        return FROSTED_ENABLED && isSearchButtonActive();
+    }
+
+    /**
+     * @param modifier Modifier of the Home feed.
+     */
+    static Object getFeedFrostedModifier(Modifier modifier) {
+        return isTopBarFrosted()
+                ? modifier.patch_drawWithContent(GlassNavigationBarBlur.FeedDraw.INSTANCE)
+                : modifier;
+    }
+
+    /**
+     * @param modifier Modifier of the Home top bar, outside its graphics layer.
+     */
+    static Object getTopBarFrostedModifier(Modifier modifier) {
+        return isTopBarFrosted()
+                ? modifier.patch_drawWithContent(GlassNavigationBarBlur.TopBarDraw.INSTANCE)
+                : modifier;
+    }
+
+    /**
      * Injection point.
      */
     public static void onScreenAttached(Object screen, @Nullable View view) {
@@ -802,6 +827,10 @@ public final class GlassNavigationBarPatch {
         Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
 
         GlassNavigationBarEdge.drawShadow(canvas, left, top, width, height, radius);
+
+        if (FROSTED_ENABLED) {
+            GlassNavigationBarBlur.drawTopBarBackdrop(scope, left, top, width, height, radius);
+        }
 
         scope.patch_drawRoundRect(
                 getGlassColor(dark),
