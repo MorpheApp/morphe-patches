@@ -19,6 +19,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.DisableBottomBarAutoHidePatch;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
+import app.morphe.extension.reddit.patches.HighContrastNavigationButtonsPatch;
 import app.morphe.extension.reddit.patches.SubredditCreateButtonPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -45,7 +46,8 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
     public boolean getSettingsStatus() {
         return DisableBottomBarAutoHidePatch.isPatchIncluded() ||
                 GlassNavigationBarPatch.isPatchIncluded() ||
-                HideNavigationButtonsPatch.isPatchIncluded();
+                HideNavigationButtonsPatch.isPatchIncluded() ||
+                HighContrastNavigationButtonsPatch.isPatchIncluded();
     }
 
     @Override
@@ -54,6 +56,13 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_BOTTOM_BAR_AUTO_HIDE
+            ));
+        }
+
+        if (HighContrastNavigationButtonsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIGH_CONTRAST_NAVIGATION_BUTTONS
             ));
         }
 
