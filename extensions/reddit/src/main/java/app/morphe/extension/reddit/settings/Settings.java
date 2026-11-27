@@ -13,6 +13,8 @@ import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 import static app.morphe.extension.shared.settings.Setting.parentsAll;
 
+import org.json.JSONObject;
+
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModeratorComments;
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch.CollapseAllScope;
 import app.morphe.extension.reddit.patches.ColorizeCommentIndentLinesPatch.CommentLinePalette;
@@ -21,6 +23,7 @@ import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.FrostedGlassA
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassColor;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassStrength;
 import app.morphe.extension.reddit.patches.GlassNavigationBarPatch.GlassStyle;
+import app.morphe.extension.reddit.patches.PermanentNsfwPatch;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
 import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrowsingMode;
@@ -32,11 +35,14 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 
 public class Settings extends BaseSettings {
+    private static final Setting.Availability NSFW_NOT_PERMANENTLY_DISABLED = () -> !PermanentNsfwPatch.isEnabled();
+
     // Ads
     public static final BooleanSetting HIDE_COMMENT_ADS = new BooleanSetting("morphe_hide_comment_ads", TRUE, true);
     public static final BooleanSetting HIDE_POST_ADS = new BooleanSetting("morphe_hide_post_ads", TRUE, true);
@@ -150,9 +156,20 @@ public class Settings extends BaseSettings {
             new BooleanSetting("morphe_post_side_panel_remember_width", TRUE, parent(POST_SIDE_PANEL));
     public static final EnumSetting<FeedDim> POST_SIDE_PANEL_DIM =
             new EnumSetting<>("morphe_post_side_panel_dim", FeedDim.MEDIUM, parent(POST_SIDE_PANEL));
+    /**
+     * Cannot be turned off again, so it is not included with import/export.
+     */
+    public static final BooleanSetting PERMANENTLY_DISABLE_NSFW = new BooleanSetting("morphe_permanently_disable_nsfw", FALSE, true, false,
+            "morphe_permanently_disable_nsfw_user_dialog_message", NSFW_NOT_PERMANENTLY_DISABLED) {
+        @Override
+        protected Boolean readFromJSON(JSONObject json, String importExportKey) {
+            // Import reads any key that is present, including settings excluded from import/export.
+            return get();
+        }
+    };
     public static final BooleanSetting REMEMBER_COLLAPSED_COMMENTS = new BooleanSetting("morphe_remember_collapsed_comments", TRUE);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
-    public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
+    public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true, NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting SEARCH_HIDDEN_PROFILES = new BooleanSetting("morphe_search_hidden_profiles", FALSE);
     public static final BooleanSetting SEE_THROUGH_STATUS_BAR = new BooleanSetting("morphe_see_through_status_bar", FALSE, true);
     public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true, "morphe_show_flairs_in_home_feed_user_dialog_message");
@@ -173,8 +190,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting OPEN_LINKS_DIRECTLY = new BooleanSetting("morphe_open_links_directly", TRUE);
     public static final BooleanSetting OPEN_LINKS_EXTERNALLY = new BooleanSetting("morphe_open_links_externally", TRUE);
     public static final EnumSetting<PrivateBrowsingMode> PRIVATE_BROWSING_MODE = new EnumSetting<>("morphe_private_browsing_mode", PrivateBrowsingMode.DEFAULT, true);
-    public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true);
-    public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE);
+    public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true, NSFW_NOT_PERMANENTLY_DISABLED);
+    public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE, NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting SHARE_POST_CONTENT = new BooleanSetting("morphe_share_post_content", FALSE);
 

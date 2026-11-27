@@ -16,7 +16,8 @@ import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
 public class RemoveSubRedditDialogPatch {
-    private static final boolean REMOVE_NSFW_DIALOG = Settings.REMOVE_NSFW_DIALOG.get();
+    private static final boolean REMOVE_NSFW_DIALOG = Settings.REMOVE_NSFW_DIALOG.get()
+            && !PermanentNsfwPatch.isEnabled();
     private static final boolean REMOVE_NOTIFICATION_DIALOG = Settings.REMOVE_NOTIFICATION_DIALOG.get();
 
     /**

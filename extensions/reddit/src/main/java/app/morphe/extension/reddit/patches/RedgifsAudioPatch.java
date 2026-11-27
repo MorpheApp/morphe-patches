@@ -143,12 +143,16 @@ public final class RedgifsAudioPatch {
         return false;  // Modified during patching.
     }
 
+    private static boolean isAudioEnabled() {
+        return Settings.REDGIFS_AUDIO.get() && !PermanentNsfwPatch.isEnabled();
+    }
+
     /**
      * Injection point. Called when a post is created.
      */
     public static void onLinkCreated(Link link) {
         try {
-            if (!Settings.REDGIFS_AUDIO.get()) return;
+            if (!isAudioEnabled()) return;
 
             String id = getRedgifsId(link.getUrl());
             if (id == null) return;
@@ -178,7 +182,7 @@ public final class RedgifsAudioPatch {
      */
     public static void onFeedMetadataCellCreated(@Nullable String cellId, @Nullable String mediaPath) {
         try {
-            if (!Settings.REDGIFS_AUDIO.get()) return;
+            if (!isAudioEnabled()) return;
             if (cellId == null || mediaPath == null || !mediaPath.contains("redgifs.com/")) return;
 
             String id = getRedgifsId(mediaPath);
@@ -210,7 +214,7 @@ public final class RedgifsAudioPatch {
      */
     public static void onFeedVideoCreated(@Nullable String postId, @Nullable String url) {
         try {
-            if (!Settings.REDGIFS_AUDIO.get() || postId == null) return;
+            if (!isAudioEnabled() || postId == null) return;
 
             String id = postIdToRedgifsId.get(postId);
             if (id != null) {
@@ -228,7 +232,7 @@ public final class RedgifsAudioPatch {
      */
     public static String getPlaybackUrl(@Nullable String url) {
         try {
-            if (url == null || !Settings.REDGIFS_AUDIO.get()) return url;
+            if (url == null || !isAudioEnabled()) return url;
 
             String redditVideoId = getRedditVideoId(url);
             String id = redditVideoId == null ? null : redditVideoIdToRedgifsId.get(redditVideoId);
@@ -265,7 +269,7 @@ public final class RedgifsAudioPatch {
      */
     public static Uri resolvePlaceholderUri(Uri uri) {
         try {
-            if (!Settings.REDGIFS_AUDIO.get() || !PLACEHOLDER_HOST.equals(uri.getHost())) return uri;
+            if (!isAudioEnabled() || !PLACEHOLDER_HOST.equals(uri.getHost())) return uri;
 
             String path = uri.getPath();
             if (path == null || !path.startsWith(PLACEHOLDER_PATH) || !path.endsWith(".mp4")) return uri;
@@ -306,7 +310,7 @@ public final class RedgifsAudioPatch {
 
     private static String getDownloadUrl(String url) {
         try {
-            if (!Settings.REDGIFS_AUDIO.get()) return url;
+            if (!isAudioEnabled()) return url;
 
             String redditVideoId = getRedditVideoId(url);
             String id = redditVideoId == null ? null : redditVideoIdToRedgifsId.get(redditVideoId);
