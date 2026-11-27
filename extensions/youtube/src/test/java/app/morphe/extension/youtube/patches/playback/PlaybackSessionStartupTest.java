@@ -198,9 +198,24 @@ public class PlaybackSessionStartupTest {
                 assertFalse(PlaybackSessionPatch.restoreCaptionPreference(true, captionSource, () -> false));
             }
 
+            var previousVideo = (PlaybackSessionPatch.RestoredWatch) restoredWatch.get(null);
+            previousVideo.startedPlaying = true;
+            PlaybackSessionPatch.onRegularWatchCommand(new TestDescriptor(recorded.videoId()));
+            assertSame(previousVideo, restoredWatch.get(null));
+
+            // Opening another video clears the restore badge and paused override.
+            // Returning to Home still shows that video's native playback button.
+            PlaybackSessionPatch.onRegularWatchCommand(new TestDescriptor("lmnopqrstuv"));
+            assertFalse(PlaybackSessionPatch.showMiniplayerPlaybackControls(PlayerType.WATCH_WHILE_MAXIMIZED));
+            assertFalse(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
+            assertFalse(PlaybackSessionPatch.restoredWatchAwaitingPlayback());
+            assertTrue(PlaybackSessionPatch.showMiniplayerPlaybackControls(PlayerType.WATCH_WHILE_MINIMIZED));
+            assertPlayingControls(secondLaunch);
+
             PlaybackSessionPatch.initializeActivity(recreated, new Bundle());
             assertFalse(pending.getBoolean(null));
             assertFalse(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
+            assertFalse(PlaybackSessionPatch.showMiniplayerPlaybackControls(PlayerType.WATCH_WHILE_MINIMIZED));
             PlaybackSessionPatch.initializeActivity(deepLink, null);
             assertFalse(pending.getBoolean(null));
         } finally {

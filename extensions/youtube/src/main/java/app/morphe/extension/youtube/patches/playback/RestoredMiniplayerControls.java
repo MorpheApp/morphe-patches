@@ -23,7 +23,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.PlayPauseIcons;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
-/** Keeps the native modern controls visible for the restored video. */
+/** Keeps the native modern controls visible in a watch player opened by session restore. */
 public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreDrawListener,
         View.OnAttachStateChangeListener {
     private static volatile WeakReference<RestoredMiniplayerControls> current = new WeakReference<>(null);
@@ -68,7 +68,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
     }
 
     private void update() {
-        if (!canShowPausedControls()) {
+        if (!canShowPlaybackControls()) {
             stop();
             return;
         }
@@ -86,8 +86,8 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
         onPreDraw();
     }
 
-    private boolean canShowPausedControls() {
-        return PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.getCurrent())
+    private boolean canShowPlaybackControls() {
+        return PlaybackSessionPatch.showMiniplayerPlaybackControls(PlayerType.getCurrent())
                 && PlaybackSessionPatch.ownsMiniplayerControls(action);
     }
 
@@ -99,7 +99,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
     }
 
     @Override public boolean onPreDraw() {
-        if (!canShowPausedControls()) {
+        if (!canShowPlaybackControls()) {
             stop();
             return true;
         }

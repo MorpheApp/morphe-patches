@@ -1833,10 +1833,11 @@ public final class MinimalMiniplayerPatch {
     private static void updatePlayPauseIcon(boolean morph) {
         ImageView playPause = playPauseRef.get();
         if (playPause == null) return;
-        boolean restored = PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.getCurrent());
-        boolean forcePlay = restored && PlaybackSessionPatch.restoredWatchAwaitingPlayback();
+        PlayerType type = PlayerType.getCurrent();
+        boolean forcePlay = PlaybackSessionPatch.showRestoredMiniplayer(type)
+                && PlaybackSessionPatch.restoredWatchAwaitingPlayback();
         boolean showPause = playing && !forcePlay;
-        if (restored) playPause.setVisibility(View.VISIBLE);
+        if (PlaybackSessionPatch.showMiniplayerPlaybackControls(type)) playPause.setVisibility(View.VISIBLE);
         playPause.setContentDescription(StringRef.str(showPause ? "accessibility_pause" : "accessibility_play"));
 
         if (morph && !forcePlay) {

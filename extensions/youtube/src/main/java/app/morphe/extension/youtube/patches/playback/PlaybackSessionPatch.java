@@ -170,6 +170,7 @@ public final class PlaybackSessionPatch {
     @Nullable private static RestoreRequest restoring;
     @Nullable private static String dismissedVideo;
     @Nullable private static volatile RestoredWatch restoredWatch;
+    private static volatile boolean keepMiniplayerControls;
     @Nullable private static volatile PlaybackSessionSnapshot restoringCaptions;
     @Nullable private static volatile String restoredShort;
     @Nullable private static String restoredLive;
@@ -470,6 +471,10 @@ public final class PlaybackSessionPatch {
         return restoredWatch != null && type == PlayerType.WATCH_WHILE_MINIMIZED;
     }
 
+    public static boolean showMiniplayerPlaybackControls(PlayerType type) {
+        return keepMiniplayerControls && type == PlayerType.WATCH_WHILE_MINIMIZED;
+    }
+
     public static boolean restoredWatchAwaitingPlayback() {
         var watch = restoredWatch;
         return watch != null && !watch.startedPlaying;
@@ -656,15 +661,7 @@ public final class PlaybackSessionPatch {
     public static Object prepareWatchDescriptor(Object original, @Nullable Map<?, ?> context) {
         try {
             if (context == null || !(context.get(RESTORE_CONTEXT) instanceof RestoreRequest request)) {
-                if (!enabled()) return original;
-                var watch = restoredWatch;
-                if (watch != null && original instanceof Descriptor descriptor
-                        && watch.videoId.equals(descriptor.patch_sessionVideoId())) return original;
-                if (checkingStartup || restoring != null) {
-                    Logger.printDebug(() -> "Playback session restore canceled by another watch command");
-                }
-                cancelStartup();
-                dismissedVideo = null;
+                if (enabled()) onRegularWatchCommand(original);
                 return original;
             }
             if (!enabled() || request != restoring) return null;
@@ -687,6 +684,18 @@ public final class PlaybackSessionPatch {
         }
     }
 
+    static void onRegularWatchCommand(Object original) {
+        var watch = restoredWatch;
+        if (watch != null && original instanceof Descriptor descriptor
+                && watch.videoId.equals(descriptor.patch_sessionVideoId())) return;
+        if (checkingStartup || restoring != null) {
+            Logger.printDebug(() -> "Playback session restore canceled by another watch command");
+        }
+        // The new video may reuse the same overlay when the watch player minimizes again.
+        cancelStartup(true);
+        dismissedVideo = null;
+    }
+
     static Descriptor applyRestoredWatch(Descriptor descriptor, RestoreRequest request) {
         var snapshot = request.snapshot();
         if (snapshot.queue() != null
@@ -700,6 +709,7 @@ public final class PlaybackSessionPatch {
         }
         if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) restoredLive = snapshot.videoId();
         restoredWatch = new RestoredWatch(snapshot.videoId());
+        keepMiniplayerControls = true;
         restoringCaptions = snapshot;
         restoring = null;
         RestoredMiniplayerLabel.refresh();
@@ -772,6 +782,11 @@ public final class PlaybackSessionPatch {
     }
 
     private static void cancelStartup() {
+        cancelStartup(false);
+    }
+
+    private static void cancelStartup(boolean preserveMiniplayerControls) {
+        if (!preserveMiniplayerControls) keepMiniplayerControls = false;
         checkingStartup = false;
         startupWaitReason = null;
         restoring = null;
