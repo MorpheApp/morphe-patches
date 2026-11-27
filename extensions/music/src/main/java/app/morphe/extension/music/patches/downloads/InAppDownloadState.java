@@ -12,6 +12,8 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -226,7 +228,8 @@ public final class InAppDownloadState {
             MenuState current = menu;
             if (current == null || !isMenuSyncEnabled() || !isDownloadLabel(view.getText())) return;
             current.nativeLabel = new WeakReference<>(view);
-            updateNativeLabel(current);
+            // The native binder assigns the icon after it assigns the text.
+            view.post(() -> updateNativeLabel(current));
         } catch (RuntimeException ex) {
             Logger.printException(() -> "Could not bind the downloaded song label", ex);
         }
@@ -236,6 +239,11 @@ public final class InAppDownloadState {
         if (menu != current || !current.downloaded || !isMenuSyncEnabled()) return;
         TextView view = current.nativeLabel.get();
         if (view != null && isDownloadLabel(view.getText())) {
+            if (view.getParent() instanceof View row
+                    && row.findViewById(ResourceUtils.getIdIdentifier("icon")) instanceof ImageView icon) {
+                int downloadedIcon = ResourceUtils.getDrawableIdentifier("yt_fill_downloaded_vd_theme_24");
+                if (downloadedIcon != 0) icon.setImageResource(downloadedIcon);
+            }
             view.setText(downloadedLabel(view.getText()));
         }
     }
