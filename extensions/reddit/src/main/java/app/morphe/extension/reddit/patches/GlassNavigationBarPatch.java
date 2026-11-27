@@ -531,6 +531,38 @@ public final class GlassNavigationBarPatch {
 
     /**
      * Injection point.
+     *
+     * @param modifier Modifier of the Home top bar content.
+     */
+    public static Object getTopBarContentModifier(Modifier modifier) {
+        try {
+            if (FROSTED_ENABLED && isSearchButtonActive()) {
+                return modifier.patch_drawWithContent(GlassNavigationBarBlur.HeaderDraw.INSTANCE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTopBarContentModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * @param modifier Modifier of the Home feed.
+     */
+    public static Object getFeedBlurModifier(Modifier modifier) {
+        try {
+            if (FROSTED_ENABLED && isSearchButtonActive()) {
+                return modifier.patch_drawWithContent(GlassNavigationBarBlur.FeedDraw.INSTANCE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getFeedBlurModifier failure", ex);
+        }
+
+        return modifier;
+    }
+
+    /**
+     * Injection point.
      */
     public static void onScreenAttached(Object screen, @Nullable View view) {
         if (!SEARCH_BUTTON_ENABLED) {
@@ -802,6 +834,10 @@ public final class GlassNavigationBarPatch {
         Canvas canvas = scope.patch_getCanvas().patch_getNativeCanvas();
 
         GlassNavigationBarEdge.drawShadow(canvas, left, top, width, height, radius);
+
+        if (FROSTED_ENABLED) {
+            GlassNavigationBarBlur.drawTopBarBackdrop(scope, left, top, width, height, radius);
+        }
 
         scope.patch_drawRoundRect(
                 getGlassColor(dark),

@@ -182,7 +182,9 @@ public final class SeeThroughStatusBarPatch {
         }
 
         statusBarInsets = insets;
-        return modifier.patch_drawWithContent(FadeDraw.INSTANCE);
+        return GlassNavigationBarPatch.getFeedBlurModifier(
+                (Modifier) modifier.patch_drawWithContent(FadeDraw.INSTANCE)
+        );
     }
 
     /**
@@ -195,6 +197,23 @@ public final class SeeThroughStatusBarPatch {
 
         appBarColor = color;
         return color & COLOR_WITHOUT_ALPHA_MASK;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param modifier Modifier going into the app bar graphicsLayer.
+     */
+    public static Object getAppBarLayerModifier(Modifier modifier) {
+        try {
+            if (isEnabled()) {
+                return GlassNavigationBarPatch.getTopBarContentModifier(modifier);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getAppBarLayerModifier failure", ex);
+        }
+
+        return modifier;
     }
 
     /**
