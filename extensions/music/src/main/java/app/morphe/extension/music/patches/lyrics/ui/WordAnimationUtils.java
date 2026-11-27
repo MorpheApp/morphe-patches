@@ -37,6 +37,7 @@ import java.util.Map;
 import java.util.Set;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
@@ -50,7 +51,11 @@ public final class WordAnimationUtils {
     public static final int WIPE_UNLIT = 1;
     public static final int WIPE_BAND = 2;
 
-    public static final float[] GRADIENT_STOPS = new float[]{0.0f, 0.1f, 0.9f, 1.0f};
+    public static float[] GRADIENT_STOPS = new float[]{0.0f, 0.1f, 0.9f, 1.0f};
+
+    public static void onTuningChanged() {
+        GRADIENT_STOPS = LyricsTuningConfig.get().gradient().stops();
+    }
 
     public record WordTimestamp(String text, double startTime, double endTime,
                                 boolean hasTrailingSpace, boolean isBackground,
@@ -328,6 +333,7 @@ public final class WordAnimationUtils {
         private float cachedEnd = Float.NaN;
         private int cachedLit = 0;
         private int cachedUnlit = 0;
+        private long cachedRevision = -1L;
         private final int[] shaderColors = new int[4];
         @Nullable
         private LinearGradient cachedShader = null;
@@ -336,6 +342,7 @@ public final class WordAnimationUtils {
             if (cachedShader != null
                     && litColor == cachedLit
                     && unlitColor == cachedUnlit
+                    && cachedRevision == LyricsTuningConfig.revision()
                     && Math.abs(bStart - cachedStart) < 0.05f
                     && Math.abs(bEnd - cachedEnd) < 0.05f) {
                 return cachedShader;
@@ -344,6 +351,7 @@ public final class WordAnimationUtils {
             cachedEnd = bEnd;
             cachedLit = litColor;
             cachedUnlit = unlitColor;
+            cachedRevision = LyricsTuningConfig.revision();
             shaderColors[0] = litColor;
             shaderColors[1] = litColor;
             shaderColors[2] = unlitColor;
@@ -2135,7 +2143,7 @@ public final class WordAnimationUtils {
                 vc, isRtlLine, lineStart, lineWidth, localStart, localEnd,
                 activeSylIdx, activeLineIdx, curGX, isActiveSylLastOfLine,
                 activeSylProgress, gradientWidth, wipe);
-        if (!Settings.LYRICS_WORD_SMOOTH_SWEEP.get()) {
+        if (!Settings.isWordAnimSmooth()) {
             if (wipe.mode == WIPE_PAST || (!isRtlLine && wipe.clipEdge >= vc.width) || (isRtlLine && wipe.clipEdge <= 0f)) {
                 drawLayoutWithPaint(canvas, vc.subLayout, topLeftX, topLeftY, pastColor, null);
             } else if (wipe.mode == WIPE_UNLIT || (!isRtlLine && wipe.clipEdge <= 0f) || (isRtlLine && wipe.clipEdge >= vc.width)) {
@@ -2751,7 +2759,7 @@ public final class WordAnimationUtils {
                         : 0f;
             }
             float localX = curRomGX + brushShift;
-            final boolean smoothSweep = Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
+            final boolean smoothSweep = Settings.isWordAnimSmooth();
 
             for (int i = 0; i < n; i++) {
                 RomanizedWordCluster rwc = cs.get(i);

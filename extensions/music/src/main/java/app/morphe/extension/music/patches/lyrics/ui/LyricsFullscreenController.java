@@ -14,8 +14,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Outline;
+import android.graphics.PixelFormat;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.SystemClock;
@@ -28,7 +32,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
+import android.view.ViewParent;
 import android.view.WindowInsets;
+import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,10 +43,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.io.File;
+import java.util.List;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.applemusicartwork.AppleMusicArtworkPatch;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.derive.CoverStyleConfig;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -53,6 +61,9 @@ final class LyricsFullscreenController {
     private static final String EXIT_ICON = "morphe_fullscreen_exit";
     private static final int ART_CORNER_DP = 6;
 
+    private int outlineCornerRadiusDp = ART_CORNER_DP;
+    private boolean outlineCircular = false;
+
     private final ViewOutlineProvider artOutline = new ViewOutlineProvider() {
         @Override
         public void getOutline(View view, Outline outline) {
@@ -62,7 +73,11 @@ final class LyricsFullscreenController {
                 outline.setEmpty();
                 return;
             }
-            outline.setRoundRect(0, 0, w, h, Dim.dp(ART_CORNER_DP));
+            if (outlineCircular) {
+                outline.setOval(0, 0, w, h);
+            } else {
+                outline.setRoundRect(0, 0, w, h, Dim.dp(outlineCornerRadiusDp));
+            }
         }
     };
 
@@ -102,6 +117,12 @@ final class LyricsFullscreenController {
     @Nullable
     private ViewGroup.LayoutParams originalParams;
     @Nullable
+    private Drawable originalPanelBackground;
+    /** Copy of the app's entity-coloured lyrics panel background, kept across fullscreen. */
+    @Nullable
+    private Drawable entityPanelBackground;
+    private int originalDynamicBackgroundVisibility = View.GONE;
+    @Nullable
     private LinearLayout splitRoot;
     @Nullable
     private FrameLayout artPane;
@@ -117,6 +138,11 @@ final class LyricsFullscreenController {
     private View animatedArtworkView;
     @Nullable
     private ValueAnimator coverAnimator;
+    @Nullable
+    private CoverStyleDrawable coverStyleDrawable;
+    @Nullable
+    private ValueAnimator coverStyleAnimator;
+    private Runnable coverSpinPoller;
     private boolean splitActive;
     private boolean controlsInRow;
     // Where the floating buttons go back to after the landscape split, kept from the start so a
@@ -221,6 +247,7 @@ final class LyricsFullscreenController {
         if (splitActive) setSplitActive(false);
         applyControlButtonsForSplit(false);
         isFullscreen = false;
+        LyricsColors.applyFullscreenOverride(null);
         originalParent = null;
         originalParams = null;
     }
@@ -228,7 +255,8 @@ final class LyricsFullscreenController {
     void onLyricsChanged() {
         if (!isFullscreen) return;
         updateArtwork();
-        if (splitActive) {
+        applyFullscreenBackground();
+        if (splitActive && coverEnabled()) {
             refreshTrackInfo();
             File file = AppleMusicArtworkPatch.currentArtworkFile();
             if (file == null) {
@@ -246,11 +274,12 @@ final class LyricsFullscreenController {
         LyricsManager manager = LyricsManager.getInstance();
         String title = manager.getCurrentRawTitle();
         String artist = manager.getCurrentRawArtist();
-        if (!Objects.equals(title, shownTitle) || !Objects.equals(artist, shownArtist)) {
+        if (coverEnabled() && (!Objects.equals(title, shownTitle) || !Objects.equals(artist, shownArtist))) {
             refreshTrackInfo();
         }
         if (manager.getCurrentArtworkBitmap() != shownArtwork) {
             updateArtwork();
+            applyFullscreenBackground();
         }
     }
 
@@ -266,6 +295,9 @@ final class LyricsFullscreenController {
         originalParent = parent;
         originalIndex = parent.indexOfChild(panel);
         originalParams = panel.getLayoutParams();
+        originalPanelBackground = panel.getBackground();
+        entityPanelBackground = findEntityPanelBackground(parent);
+        originalDynamicBackgroundVisibility = panel.getDynamicBackgroundVisibility();
         parent.removeView(panel);
         ViewGroup content = activity.findViewById(android.R.id.content);
         content.addView(panel, new FrameLayout.LayoutParams(
@@ -274,10 +306,15 @@ final class LyricsFullscreenController {
         panel.setFocusable(true);
         panel.requestFocus();
         isFullscreen = true;
+        applyTextColorOverride();
+        panel.applyLyricColors();
+        applyCoverInfoColors();
         applyButtonLook();
         hideToolbar();
         setSystemBarsHidden(true);
+        applyFullscreenBackground();
         applyLayout();
+        panel.recenterOnCurrentLineAfterLayout();
     }
 
     private void exit() {
@@ -297,10 +334,70 @@ final class LyricsFullscreenController {
         }
         originalParent = null;
         originalParams = null;
+        panel.setBackground(originalPanelBackground);
+        panel.setDynamicBackgroundVisibility(originalDynamicBackgroundVisibility);
+        originalPanelBackground = null;
+        entityPanelBackground = null;
+        LyricsColors.applyFullscreenOverride(null);
+        panel.applyLyricColors();
+        applyCoverInfoColors();
         applyButtonLook();
         panel.restoreButtonRowAfterFullscreen();
         setSystemBarsHidden(false);
         applyLayout();
+        panel.recenterOnCurrentLineAfterLayout();
+    }
+
+    /** Copies the entity-coloured background of the app panel this view is installed into. */
+    @Nullable
+    private static Drawable findEntityPanelBackground(View view) {
+        View current = view;
+        while (current != null && current.getId() != android.R.id.content) {
+            Drawable background = current.getBackground();
+            if (background instanceof ColorDrawable color) {
+                int argb = color.getColor();
+                if (Color.alpha(argb) != 0) {
+                    return new ColorDrawable(argb);
+                }
+            } else if (background != null && background.getOpacity() != PixelFormat.TRANSPARENT
+                    && background.getConstantState() != null) {
+                return background.getConstantState().newDrawable().mutate();
+            }
+            ViewParent parent = current.getParent();
+            current = parent instanceof View viewParent ? viewParent : null;
+        }
+        return null;
+    }
+
+    void applyFullscreenBackground() {
+        if (!isFullscreen) {
+            return;
+        }
+        if (!Settings.LYRICS_DYNAMIC_BACKGROUND.get()) {
+            // Fullscreen reparents the panel to the content view, losing the app panel that
+            // carried the entity colour. Reuse the colour captured on entry, not the Morphe
+            // theme colour, which is black by default and was the reason this stayed black.
+            panel.setBackground(entityPanelBackground != null
+                    ? entityPanelBackground
+                    : LyricsBackgroundStyle.createThemeBackground());
+            panel.setDynamicBackgroundVisibility(View.GONE);
+            return;
+        }
+        Bitmap artwork = LyricsManager.getInstance().getCurrentArtworkBitmap();
+        Bitmap photo = panel.getCustomBackgroundPhoto();
+        panel.setBackground(LyricsBackgroundStyle.createBackground(artwork, photo));
+        // Cover / colour / photo replace the blurred mesh; blur keeps it visible.
+        panel.setDynamicBackgroundVisibility(
+                LyricsBackgroundStyle.savedMode() == LyricsShareCardRenderer.BackgroundMode.BLUR_MESH
+                        ? View.VISIBLE : View.GONE);
+    }
+
+    /** Landscape cover labels follow the same text colour as the lyrics. */
+    private void applyCoverInfoColors() {
+        int color = LyricsColors.lineTextColor() | 0xFF000000;
+        titleView.setTextColor(color);
+        artistView.setTextColor(Color.argb(0xD2,
+                Color.red(color), Color.green(color), Color.blue(color)));
     }
 
     private void applyButtonLook() {
@@ -310,6 +407,54 @@ final class LyricsFullscreenController {
                 : "morphe_music_lyrics_fullscreen_enter"));
     }
 
+    private boolean coverEnabled() {
+        return Settings.LYRICS_FULLSCREEN_LANDSCAPE_COVER.get();
+    }
+
+    private void applyTextColorOverride() {
+        LyricsColors.applyFullscreenOverride(LyricsTextColor.resolve(
+                Settings.LYRICS_TEXT_COLOR_SLOT.get(),
+                Settings.LYRICS_FULLSCREEN_TEXT_COLOR.get()));
+    }
+
+    void applyTextColorSetting() {
+        if (!isFullscreen) {
+            return;
+        }
+        applyTextColorOverride();
+        panel.applyLyricColors();
+        applyCoverInfoColors();
+        if (splitActive && coverEnabled()) {
+            applyCoverStyle();
+        }
+        // The fullscreen button belongs to this controller, so applyLyricColors cannot reach it.
+        applyButtonLook();
+    }
+
+    private void cycleCoverStyle() {
+        List<String> styles = CoverStyleConfig.STYLES;
+        String current = Settings.LYRICS_COVER_STYLE.get();
+        int index = styles.indexOf(current);
+        String next = styles.get((index + 1 + styles.size()) % styles.size());
+        Settings.LYRICS_COVER_STYLE.save(next);
+        applyLandscapeCoverSetting();
+    }
+
+    void applyCoverStyleSetting() {
+        if (!isFullscreen || !splitActive) {
+            return;
+        }
+        applyCoverStyle();
+    }
+
+    void applyLandscapeCoverSetting() {
+        if (!isFullscreen || !splitActive) {
+            return;
+        }
+        setSplitActive(false);
+        applyLayout();
+    }
+
     private void applyLayout() {
         boolean split = isFullscreen
                 && panel.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
@@ -317,7 +462,7 @@ final class LyricsFullscreenController {
             setSplitActive(split);
         }
         applyControlButtonsForSplit(split);
-        if (split) {
+        if (split && coverEnabled()) {
             updateArtwork();
             updateArtworkSize();
         }
@@ -477,6 +622,10 @@ final class LyricsFullscreenController {
                 float dx = event.getX() - coverDownX;
                 float dy = event.getY() - coverDownY;
                 long elapsed = SystemClock.uptimeMillis() - coverDownTime;
+                if (elapsed >= 600L && Math.abs(dx) < Dim.dp(12) && Math.abs(dy) < Dim.dp(12)) {
+                    cycleCoverStyle();
+                    return true;
+                }
                 if (Math.abs(dx) > Dim.dp(40) && Math.abs(dx) > Math.abs(dy) * 1.4f) {
                     dispatchMediaKey(v.getContext(),
                             dx < 0 ? KeyEvent.KEYCODE_MEDIA_NEXT : KeyEvent.KEYCODE_MEDIA_PREVIOUS);
@@ -516,41 +665,52 @@ final class LyricsFullscreenController {
             promptOriginalParams = prompt.getLayoutParams();
             detach(scroll);
             detach(prompt);
-            CoverPane pane = new CoverPane(panel.getContext());
-            pane.setOnTouchListener(coverTouchListener);
-            LinearLayout coverStack = new LinearLayout(panel.getContext());
-            coverStack.setOrientation(LinearLayout.VERTICAL);
-            coverStack.setGravity(Gravity.CENTER_HORIZONTAL);
-            FrameLayout coverFrame = new FrameLayout(panel.getContext());
-            coverFrame.setOutlineProvider(artOutline);
-            coverFrame.setClipToOutline(true);
             // Cover views are reused across rotations; clear any leftover parent first.
             detach(artworkView);
             detach(titleView);
             detach(artistView);
-            coverFrame.addView(artworkView, new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.WRAP_CONTENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT,
-                    Gravity.CENTER));
-            coverStack.addView(coverFrame, new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            this.coverFrame = coverFrame;
-            trackInfo = buildTrackInfo();
-            coverStack.addView(trackInfo, new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            pane.addView(coverStack, new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.WRAP_CONTENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT,
-                    Gravity.CENTER));
-            pane.addOnLayoutChangeListener((v, left, top, right, bottom,
-                                            oldLeft, oldTop, oldRight, oldBottom) -> updateArtworkSize());
-            root.addView(pane, new LinearLayout.LayoutParams(0,
-                    LinearLayout.LayoutParams.MATCH_PARENT, 0.45f));
+            final boolean withCover = coverEnabled();
+            if (withCover) {
+                FrameLayout pane = new FrameLayout(panel.getContext());
+                pane.setOnTouchListener(coverTouchListener);
+                LinearLayout coverStack = new LinearLayout(panel.getContext());
+                coverStack.setOrientation(LinearLayout.VERTICAL);
+                coverStack.setGravity(Gravity.CENTER_HORIZONTAL);
+                FrameLayout coverFrame = new FrameLayout(panel.getContext());
+                coverFrame.setOutlineProvider(artOutline);
+                coverFrame.setClipToOutline(false);
+                coverFrame.setElevation(Dim.dp(6));
+                coverFrame.addView(artworkView, new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.WRAP_CONTENT,
+                        FrameLayout.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER));
+                coverStack.addView(coverFrame, new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                this.coverFrame = coverFrame;
+                trackInfo = buildTrackInfo();
+                coverStack.addView(trackInfo, new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                pane.addView(coverStack, new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.WRAP_CONTENT,
+                        FrameLayout.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER));
+                pane.addOnLayoutChangeListener((v, left, top, right, bottom,
+                                                oldLeft, oldTop, oldRight, oldBottom) -> updateArtworkSize());
+                root.addView(pane, new LinearLayout.LayoutParams(0,
+                        LinearLayout.LayoutParams.MATCH_PARENT, 0.45f));
+                artPane = pane;
+            } else {
+                artworkView.setVisibility(View.GONE);
+                titleView.setVisibility(View.GONE);
+                artistView.setVisibility(View.GONE);
+                artPane = null;
+            }
             FrameLayout lyricsPane = new FrameLayout(panel.getContext());
-            // Keep the right edge clear of a landscape punch-hole camera.
-            lyricsPane.setPadding(0, 0, Dim.dp16, 0);
+            // Keep the edges clear of a landscape punch-hole camera. Without the cover pane the
+            // lyrics also need a left gutter so they do not sit against the screen edge.
+            lyricsPane.setPadding(withCover ? 0 : Dim.dp16, 0, Dim.dp16, 0);
             lyricsPane.setClipChildren(false);
             lyricsPane.setClipToPadding(false);
             lyricsPane.addView(scroll, new FrameLayout.LayoutParams(
@@ -564,18 +724,21 @@ final class LyricsFullscreenController {
             promptParams.rightMargin = Dim.dp32;
             lyricsPane.addView(prompt, promptParams);
             root.addView(lyricsPane, new LinearLayout.LayoutParams(0,
-                    LinearLayout.LayoutParams.MATCH_PARENT, 0.55f));
-            artworkView.setVisibility(View.VISIBLE);
+                    LinearLayout.LayoutParams.MATCH_PARENT, withCover ? 0.55f : 1f));
+            if (withCover) {
+                artworkView.setVisibility(View.VISIBLE);
+            }
             splitRoot = root;
-            artPane = pane;
             this.lyricsPane = lyricsPane;
             applyLyricsCutoutInset(panel.getRootWindowInsets());
             panel.addView(root, 1, new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-            AppleMusicArtworkPatch.addArtworkFileListener(artworkFileListener);
-            trackInfoVisible = true;
-            refreshTrackInfo();
-            bindArtworkOverlay();
+            if (withCover) {
+                AppleMusicArtworkPatch.addArtworkFileListener(artworkFileListener);
+                trackInfoVisible = true;
+                refreshTrackInfo();
+                bindArtworkOverlay();
+            }
         } else {
             // Unregister first: a queued notification must not re-enter a half-dismantled split.
             splitActive = false;
@@ -609,21 +772,26 @@ final class LyricsFullscreenController {
         splitActive = active;
     }
 
-    /** Reserves the right edge the system says is occupied by a cutout. */
+    /** Reserves the edges the system says are occupied by a cutout, and keeps text off the
+     * screen edge when there is no cover pane to separate it from the left side. */
     private void applyLyricsCutoutInset(@Nullable WindowInsets insets) {
         if (lyricsPane == null || insets == null) {
             return;
         }
+        int safeLeft = 0;
         int safeRight = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             DisplayCutout cutout = insets.getDisplayCutout();
             if (cutout != null) {
+                safeLeft = cutout.getSafeInsetLeft();
                 safeRight = cutout.getSafeInsetRight();
             }
         }
-        final int padding = Math.max(Dim.dp16, safeRight + Dim.dp8);
-        if (lyricsPane.getPaddingRight() != padding) {
-            lyricsPane.setPadding(0, 0, padding, 0);
+        // With the cover pane gone the lyrics start at the screen edge, so keep a left gutter.
+        final int leftPadding = coverEnabled() ? 0 : Math.max(Dim.dp16, safeLeft + Dim.dp8);
+        final int rightPadding = Math.max(Dim.dp16, safeRight + Dim.dp8);
+        if (lyricsPane.getPaddingLeft() != leftPadding || lyricsPane.getPaddingRight() != rightPadding) {
+            lyricsPane.setPadding(leftPadding, 0, rightPadding, 0);
         }
     }
 
@@ -661,15 +829,127 @@ final class LyricsFullscreenController {
                 trackInfo.setLayoutParams(infoParams);
             }
         }
+        if (trackInfo != null) {
+            int infoWidth = (int) (paneWidth * 0.8f);
+            ViewGroup.LayoutParams infoParams = trackInfo.getLayoutParams();
+            if (infoParams != null && infoParams.width != infoWidth) {
+                infoParams.width = infoWidth;
+                trackInfo.setLayoutParams(infoParams);
+            }
+        }
     }
 
     private void updateArtwork() {
         Bitmap artwork = LyricsManager.getInstance().getCurrentArtworkBitmap();
         shownArtwork = artwork;
-        if (artwork != null && !artwork.isRecycled()) {
-            artworkView.setImageBitmap(artwork);
-        } else {
-            artworkView.setImageDrawable(null);
+        applyCoverStyle();
+    }
+
+    private void applyCoverStyle() {
+        if (!coverEnabled()) {
+            return;
+        }
+        String style = Settings.LYRICS_COVER_STYLE.get();
+        CoverStyleConfig config = CoverStyleConfig.load(style);
+        applyCoverOutline(config);
+        CoverStyleDrawable drawable = new CoverStyleDrawable();
+        drawable.setConfig(config);
+        drawable.setBackground(LyricsPaletteCache.albumPalette().backgroundColor());
+        drawable.setArtwork(shownArtwork != null && !shownArtwork.isRecycled() ? shownArtwork : null);
+        coverStyleDrawable = drawable;
+        boolean clipToOutline = !config.style().equals("polaroid");
+        artworkView.setClipToOutline(clipToOutline);
+        artworkView.setImageDrawable(drawable);
+        stopCoverStyleAnimator();
+        if (drawable.spins() && animatedArtworkView == null) {
+            startCoverStyleAnimator(drawable.spinDurationMs());
+        }
+        applyCoverInfoStyle(config);
+    }
+
+    private void applyCoverOutline(CoverStyleConfig config) {
+        outlineCircular = config.style().equals("vinyl") || config.style().equals("cd");
+        switch (config.style()) {
+            case "film" -> outlineCornerRadiusDp = Math.max(3, config.cornerRadiusDp());
+            case "cassette" -> outlineCornerRadiusDp = Math.max(6, config.cornerRadiusDp());
+            case "polaroid" -> outlineCornerRadiusDp = Math.max(1, config.cornerRadiusDp() / 3);
+            case "poster", "framed" -> outlineCornerRadiusDp = Math.max(1, config.cornerRadiusDp() / 2);
+            case "ipod" -> outlineCornerRadiusDp = Math.max(12, config.cornerRadiusDp());
+            case "fisheye" -> outlineCornerRadiusDp = Math.max(8, config.cornerRadiusDp());
+            case "phonograph", "recordbox", "projector" -> outlineCornerRadiusDp = Math.max(4, config.cornerRadiusDp());
+            default -> outlineCornerRadiusDp = config.cornerRadiusDp();
+        }
+        if (coverFrame != null) {
+            coverFrame.setElevation(Dim.dp(config.shadowDp()));
+            coverFrame.invalidateOutline();
+        }
+        if (animatedArtworkView != null) {
+            animatedArtworkView.invalidateOutline();
+        }
+    }
+
+    private void applyCoverInfoStyle(CoverStyleConfig config) {
+        if (trackInfo != null) {
+            trackInfo.setVisibility(config.showTrackInfo() && trackInfoVisible
+                    ? View.VISIBLE : View.GONE);
+        }
+        titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.titleSizeSp());
+        artistView.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.artistSizeSp());
+    }
+
+    private void startCoverStyleAnimator(long durationMs) {
+        stopCoverStyleAnimator();
+        coverStyleAnimator = ValueAnimator.ofFloat(0f, 360f);
+        coverStyleAnimator.setDuration(durationMs);
+        coverStyleAnimator.setInterpolator(new LinearInterpolator());
+        coverStyleAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        coverStyleAnimator.addUpdateListener(animation -> {
+            if (coverStyleDrawable != null) {
+                coverStyleDrawable.setRotation((Float) animation.getAnimatedValue());
+            }
+        });
+        coverStyleAnimator.start();
+        if (!LyricsManager.getInstance().isPlaying()) {
+            coverStyleAnimator.pause();
+        }
+        scheduleCoverSpinPoller();
+    }
+
+    private void scheduleCoverSpinPoller() {
+        if (coverStyleAnimator == null || artworkView == null) {
+            return;
+        }
+        coverSpinPoller = new Runnable() {
+            @Override
+            public void run() {
+                if (coverStyleAnimator == null) {
+                    return;
+                }
+                boolean playing = LyricsManager.getInstance().isPlaying();
+                if (playing && coverStyleAnimator.isPaused()) {
+                    coverStyleAnimator.resume();
+                } else if (!playing && !coverStyleAnimator.isPaused()) {
+                    coverStyleAnimator.pause();
+                }
+                if (artworkView != null) {
+                    artworkView.postDelayed(this, 200);
+                }
+            }
+        };
+        artworkView.postDelayed(coverSpinPoller, 200);
+    }
+
+    private void stopCoverStyleAnimator() {
+        if (coverSpinPoller != null && artworkView != null) {
+            artworkView.removeCallbacks(coverSpinPoller);
+        }
+        coverSpinPoller = null;
+        if (coverStyleAnimator != null) {
+            coverStyleAnimator.cancel();
+            coverStyleAnimator = null;
+        }
+        if (coverStyleDrawable != null) {
+            coverStyleDrawable.setRotation(0f);
         }
     }
 
@@ -683,9 +963,13 @@ final class LyricsFullscreenController {
             animatedArtworkView.setOutlineProvider(artOutline);
             animatedArtworkView.setClipToOutline(true);
             animatedArtworkView.setOnTouchListener(coverTouchListener);
+            stopCoverStyleAnimator();
             updateArtworkSize();
         } else {
             startCoverAnimator();
+            if (coverStyleDrawable != null && coverStyleDrawable.spins()) {
+                startCoverStyleAnimator(coverStyleDrawable.spinDurationMs());
+            }
         }
     }
 
@@ -698,6 +982,7 @@ final class LyricsFullscreenController {
             coverAnimator.cancel();
             coverAnimator = null;
         }
+        stopCoverStyleAnimator();
         artworkView.setScaleX(1f);
         artworkView.setScaleY(1f);
     }

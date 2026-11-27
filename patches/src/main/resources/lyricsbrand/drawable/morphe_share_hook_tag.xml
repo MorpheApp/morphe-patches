@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2026 Morphe. This is copyrighted content, and not licensed under open source terms.
+    See https://github.com/MorpheApp/morphe-branding
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M8.5,6 C6.8,7.4 6,9.3 6,11.5 C6,14.3 7.2,16 9.4,16.5 C9.8,16.1 10,15.6 10,15 C10,14.2 9.5,13.7 8.8,13.5 C9.1,11.8 10.1,10.4 11.5,9.3 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M17.5,6 C15.8,7.4 15,9.3 15,11.5 C15,14.3 16.2,16 18.4,16.5 C18.8,16.1 19,15.6 19,15 C19,14.2 18.5,13.7 17.8,13.5 C18.1,11.8 19.1,10.4 20.5,9.3 Z" />
+</vector>

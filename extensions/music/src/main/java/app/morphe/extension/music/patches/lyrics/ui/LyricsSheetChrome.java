@@ -41,6 +41,8 @@ import app.morphe.extension.shared.ui.Dim;
 final class LyricsSheetChrome {
 
     static final int BACKGROUND_COLOR = 0xFF0D0D10;
+    /** Fixed ink for the always-dark sheets, independent of the custom lyrics text colour. */
+    static final int DIALOG_BUTTON_TEXT_COLOR = 0xFFFFFFFF;
 
     private LyricsSheetChrome() {
     }
@@ -62,7 +64,7 @@ final class LyricsSheetChrome {
 
         TextView titleView = new TextView(context);
         titleView.setText(title);
-        titleView.setTextColor(0xFFFFFFFF);
+        titleView.setTextColor(DIALOG_BUTTON_TEXT_COLOR);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
         titleView.setTypeface(null, Typeface.BOLD);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

@@ -25,6 +25,7 @@ import java.lang.ref.WeakReference;
 import java.text.Normalizer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
@@ -108,6 +109,7 @@ public final class LyricsPanelInstaller {
         if (settingsListenerRegistered) {
             return;
         }
+        LyricsTuningConfig.reload(Settings.LYRICS_TUNING_PARAMS.get());
         Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(
                 SETTINGS_LISTENER);
         settingsListenerRegistered = true;
@@ -190,6 +192,17 @@ public final class LyricsPanelInstaller {
                 panelView.applyCurrentButtonSetting();
             } else if (Settings.LYRICS_SHOW_FULLSCREEN_BUTTON.key.equals(key)) {
                 panelView.applyFullscreenButtonSetting();
+            } else if (Settings.LYRICS_FULLSCREEN_LANDSCAPE_COVER.key.equals(key)) {
+                panelView.applyLandscapeCoverSetting();
+            } else if (Settings.LYRICS_COVER_STYLE.key.equals(key)
+                    || Settings.LYRICS_COVER_STYLE_PARAMS.key.equals(key)) {
+                panelView.applyCoverStyleSetting();
+            } else if (Settings.LYRICS_TUNING_PARAMS.key.equals(key)) {
+                LyricsTuningConfig.reload(Settings.LYRICS_TUNING_PARAMS.get());
+                panelView.applyTuningSettings();
+            } else if (Settings.LYRICS_TEXT_COLOR_SLOT.key.equals(key)
+                    || Settings.LYRICS_FULLSCREEN_TEXT_COLOR.key.equals(key)) {
+                panelView.applyFullscreenTextColorSetting();
             } else if (Settings.LYRICS_TEXT_SIZE.key.equals(key)
                     || Settings.LYRICS_LINE_SCALE.key.equals(key)) {
                 panelView.applyTextSize();
@@ -201,7 +214,7 @@ public final class LyricsPanelInstaller {
                 panelView.applyLyricLayoutSettings();
             } else if (Settings.LYRICS_WORD_SYNC.key.equals(key)) {
                 panelView.applyWordSyncSetting();
-            } else if (Settings.LYRICS_WORD_SMOOTH_SWEEP.key.equals(key)) {
+            } else if (Settings.LYRICS_WORD_ANIMATION_MODE.key.equals(key)) {
                 panelView.applyWordAnimationSettings();
             } else if (Settings.LYRICS_SPRING_SCROLL.key.equals(key)
                     || Settings.LYRICS_RELAX_SCROLL.key.equals(key)) {

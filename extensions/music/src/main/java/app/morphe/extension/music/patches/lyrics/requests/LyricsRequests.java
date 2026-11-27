@@ -850,6 +850,63 @@ public final class LyricsRequests {
             }
         }
 
+        /** Release date, writers and sampling relations for the best recording match. */
+        @NonNull
+        public static String fetchRecordingFacts(@NonNull String artist, @NonNull String title) {
+            String clause = phrase("recording", artist + " " + title);
+            if (clause == null) {
+                return "";
+            }
+            try {
+                String url = BASE_URL + "recording?query=" + clause
+                        + "&fmt=json&limit=1&inc=artist-credits+work-rels+artist-rels";
+                JSONArray recordings = search(url).optJSONArray("recordings");
+                JSONObject recording = recordings != null && recordings.length() > 0
+                        ? recordings.optJSONObject(0) : null;
+                if (recording == null) {
+                    return "";
+                }
+                List<String> parts = new ArrayList<>();
+                String date = recording.optString("first-release-date", "").trim();
+                if (!date.isEmpty()) {
+                    parts.add("Released " + date.substring(0, Math.min(4, date.length())));
+                }
+                JSONArray relations = recording.optJSONArray("relations");
+                if (relations != null) {
+                    List<String> writerNames = new ArrayList<>();
+                    List<String> samples = new ArrayList<>();
+                    for (int i = 0; i < relations.length(); i++) {
+                        JSONObject rel = relations.optJSONObject(i);
+                        if (rel == null) continue;
+                        String type = rel.optString("type", "");
+                        JSONObject target = rel.optJSONObject("artist") != null
+                                ? rel.optJSONObject("artist") : rel.optJSONObject("work");
+                        if (target == null) continue;
+                        String name = target.optString("name", "").trim();
+                        if (name.isEmpty()) continue;
+                        if ("writer".equals(type) || "composer".equals(type)
+                                || "lyricist".equals(type)) {
+                            if (!writerNames.contains(name)) writerNames.add(name);
+                        } else if ("samples from".equals(type)
+                                || "sampling".equals(type)
+                                || "sampled from".equals(type)) {
+                            if (!samples.contains(name)) samples.add(name);
+                        }
+                    }
+                    if (!writerNames.isEmpty()) {
+                        parts.add("Written by " + String.join(", ", writerNames));
+                    }
+                    if (!samples.isEmpty()) {
+                        parts.add("Samples " + String.join(", ", samples));
+                    }
+                }
+                return String.join(" · ", parts);
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "MusicBrainz recording facts failed", ex);
+                return "";
+            }
+        }
+
         private static JSONObject search(String url) throws Exception {
             throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             HttpURLConnection connection = openConnection(url);

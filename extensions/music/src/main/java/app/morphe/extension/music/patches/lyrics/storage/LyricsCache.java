@@ -73,6 +73,8 @@ public final class LyricsCache {
     private static final String HEADER_TRACK = "#track=";
     private static final String NOT_FOUND_MARKER = "#notfound";
     private static final String RAW_SUFFIX = ".raw";
+    /** Story background facts go stale; expire them after seven days. */
+    private static final long STORY_TTL_MS = 7L * 24 * 60 * 60 * 1000;
     private static final Map<String, Lyrics> memoryCache = Collections.synchronizedMap(
             new LinkedHashMap<>(MEMORY_INITIAL_CAPACITY, 0.75f, true) {
                 @Override
@@ -445,6 +447,64 @@ public final class LyricsCache {
     public static void putSectionAI(TrackInfo track, String source,
                                     List<String> sourceLines, List<String> sections) {
         writeStringList(aiSectionFile(track, source, sourceLines), sections);
+    }
+
+    @Nullable
+    public static String getCardAi(TrackInfo track, String kind, String language,
+                                   String prompt, List<String> sourceLines) {
+        File file = cardAiFile(track, kind, language, prompt, sourceLines);
+        if (file == null || !file.isFile()) {
+            return null;
+        }
+        try (BufferedReader reader = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8)) {
+            String json = reader.readLine();
+            if (json == null || json.trim().isEmpty()) {
+                return null;
+            }
+            json = json.trim();
+            if ("story".equals(kind)) {
+                long ts = new org.json.JSONObject(json).optLong("ts", 0L);
+                if (ts > 0 && System.currentTimeMillis() - ts > STORY_TTL_MS) {
+                    return null;
+                }
+            }
+            return json;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read card AI cache", ex);
+            return null;
+        }
+    }
+
+    public static void putCardAi(TrackInfo track, String kind, String language,
+                                 String prompt, List<String> sourceLines, String json) {
+        File file = cardAiFile(track, kind, language, prompt, sourceLines);
+        if (file == null || json == null) {
+            return;
+        }
+        try (java.io.BufferedWriter writer = Files.newBufferedWriter(
+                file.toPath(), StandardCharsets.UTF_8)) {
+            writer.write(json);
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not write card AI cache", ex);
+        }
+    }
+
+    @Nullable
+    private static File cardAiFile(TrackInfo track, String kind, String language,
+                                   String prompt, List<String> sourceLines) {
+        File directory = offlineDirectory();
+        if (directory == null) {
+            return null;
+        }
+        String config = Settings.LYRICS_AI_MODEL.get() + '\n'
+                + Settings.LYRICS_AI_BASE_URL.get() + '\n'
+                + (language == null ? "" : language) + '\n'
+                + (prompt == null ? "" : prompt);
+        return new File(directory,
+                Integer.toHexString(key(track, "cardai-" + kind).hashCode())
+                        + "-" + Integer.toHexString(config.hashCode())
+                        + "-" + contentKey(sourceLines)
+                        + ".cardai.txt");
     }
 
     @Nullable
@@ -1253,6 +1313,7 @@ public final class LyricsCache {
         TRANSLATION,
         TRANSLITERATION,
         AI_SECTION,
+        CARD_AI,
         OFFSET,
         ALL
     }
@@ -1262,13 +1323,13 @@ public final class LyricsCache {
 
     public record CacheStats(BucketStats lyrics, BucketStats translation,
                              BucketStats transliteration, BucketStats aiSection,
-                             BucketStats offset) {
+                             BucketStats cardAi, BucketStats offset) {
         public BucketStats total() {
             return new BucketStats(
                     lyrics.bytes() + translation.bytes() + transliteration.bytes()
-                            + aiSection.bytes() + offset.bytes(),
+                            + aiSection.bytes() + cardAi.bytes() + offset.bytes(),
                     lyrics.items() + translation.items() + transliteration.items()
-                            + aiSection.items() + offset.items());
+                            + aiSection.items() + cardAi.items() + offset.items());
         }
 
         public BucketStats forBucket(CacheBucket bucket) {
@@ -1277,6 +1338,7 @@ public final class LyricsCache {
                 case TRANSLATION -> translation;
                 case TRANSLITERATION -> transliteration;
                 case AI_SECTION -> aiSection;
+                case CARD_AI -> cardAi;
                 case OFFSET -> offset;
                 case ALL -> total();
             };
@@ -1384,6 +1446,8 @@ public final class LyricsCache {
         int transliterationItems = 0;
         long aiSectionBytes = 0;
         int aiSectionItems = 0;
+        long cardAiBytes = 0;
+        int cardAiItems = 0;
         final Set<String> seenPrefKeys = new HashSet<>();
 
         final File directory = offlineDirectory();
@@ -1422,6 +1486,10 @@ public final class LyricsCache {
                         aiSectionBytes += len;
                         aiSectionItems++;
                     }
+                    case CARD_AI -> {
+                        cardAiBytes += len;
+                        cardAiItems++;
+                    }
                     default -> {
                     }
                 }
@@ -1432,6 +1500,7 @@ public final class LyricsCache {
                 new BucketStats(translationBytes, translationItems),
                 new BucketStats(transliterationBytes, transliterationItems),
                 new BucketStats(aiSectionBytes, aiSectionItems),
+                new BucketStats(cardAiBytes, cardAiItems),
                 // Offsets live in preferences, so they take no space of their own here.
                 new BucketStats(0, TrackOffsetStore.count()));
     }
@@ -1481,6 +1550,9 @@ public final class LyricsCache {
     }
 
     static CacheBucket classifyFile(String name) {
+        if (name.endsWith(".cardai.txt")) {
+            return CacheBucket.CARD_AI;
+        }
         if (name.endsWith(".rombed.txt")
                 || name.endsWith(".rom.txt")
                 || name.endsWith(".wrom.txt")

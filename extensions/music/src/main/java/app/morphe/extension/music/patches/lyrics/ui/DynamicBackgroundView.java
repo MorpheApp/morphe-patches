@@ -337,18 +337,13 @@ final class DynamicBackgroundView extends View {
         }
 
         boolean ownsArtwork = coverArt != null && coverArt != sessionBmp && coverArt != meshSource;
-        LyricsShareCardRenderer.CardPalette palette = LyricsShareCardRenderer.CardPalette.DEFAULT;
+        // The palette was extracted when the track changed; opening the panel must not re-sample it.
+        LyricsShareCardRenderer.CardPalette palette = LyricsPaletteCache.albumPalette();
         Bitmap blurredOut = null;
         Bitmap sampleArt = meshSource != null && !meshSource.isRecycled() ? meshSource : coverArt;
-        if (sampleArt != null && !sampleArt.isRecycled()) {
-            int sw = sampleArt.getWidth();
-            int sh = sampleArt.getHeight();
-            if (sw > 0 && sh > 0) {
-                int[] samplePixels = new int[sw * sh];
-                sampleArt.getPixels(samplePixels, 0, sw, 0, 0, sw, sh);
-                palette = LyricsShareCardRenderer.extractPaletteFromPixels(samplePixels);
-                blurredOut = renderOffscreenBlurredMesh(sampleArt);
-            }
+        if (sampleArt != null && !sampleArt.isRecycled()
+                && sampleArt.getWidth() > 0 && sampleArt.getHeight() > 0) {
+            blurredOut = renderOffscreenBlurredMesh(sampleArt);
         }
         return new ShareSnapshot(coverArt, ownsArtwork, blurredOut, palette);
     }

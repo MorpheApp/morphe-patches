@@ -173,6 +173,47 @@ public class LastFM {
         return fetched;
     }
 
+    /** Track wiki text from track.getInfo, using the bundled API key. No scrobble switch needed. */
+    @Nullable
+    public static String fetchTrackWiki(String artist, String track) {
+        if (artist == null || artist.isBlank() || track == null || track.isBlank()) return null;
+        try {
+            //noinspection CharsetObjectCanBeUsed
+            String url = BASE_URL + "?method=track.getInfo&api_key=" + URLEncoder.encode(API_KEY, "UTF-8")
+                    + "&artist=" + URLEncoder.encode(artist, "UTF-8")
+                    + "&track=" + URLEncoder.encode(track, "UTF-8")
+                    + "&autocorrect=1&format=json";
+            HttpURLConnection conn = Requester.openConnection(url);
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("User-Agent", USER_AGENT);
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(6000);
+            final int code = conn.getResponseCode();
+            if (code < 200 || code >= 300) {
+                conn.disconnect();
+                return null;
+            }
+            String response = Requester.parseStringAndDisconnect(conn);
+            JSONObject root = new JSONObject(response);
+            if (root.has("error") || !root.has("track")) return null;
+            JSONObject album = root.getJSONObject("track").optJSONObject("album");
+            if (album == null) return null;
+            JSONObject wiki = album.optJSONObject("wiki");
+            if (wiki == null) return null;
+            String full = stripTags(wiki.optString("content", "")).replaceAll("\\s+", " ").trim();
+            if (!full.isEmpty()) return full;
+            String summary = stripTags(wiki.optString("summary", "")).trim();
+            return summary.isEmpty() ? null : summary;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Last.fm: Could not fetch track wiki", ex);
+            return null;
+        }
+    }
+
+    private static String stripTags(String text) {
+        return text == null ? "" : text.replaceAll("<[^>]*>", "");
+    }
+
     @Nullable
     private static String fetchAlbumNetwork(String artist, String track) throws Exception {
         //noinspection CharsetObjectCanBeUsed

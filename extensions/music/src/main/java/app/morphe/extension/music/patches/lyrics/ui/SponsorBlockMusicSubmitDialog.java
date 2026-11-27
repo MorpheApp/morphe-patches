@@ -330,13 +330,19 @@ final class SponsorBlockMusicSubmitDialog {
         final long[] downSample = new long[1];
         view.setOnTouchListener((v, event) -> {
             if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-                downSample[0] = LyricsManager.getInstance().getVideoPositionMs();
+                final long rawVideoTime = VideoInformation.getVideoTime();
+                // A real seek to the start is authoritative. The smoothed clock can still
+                // hold the old position for a moment after the rewind, which made it
+                // impossible to set A to 00:00.000.
+                downSample[0] = rawVideoTime == 0 ? 0
+                        : LyricsManager.getInstance().getVideoPositionMs();
             }
             return false;
         });
         view.setOnLongClickListener(v -> {
-            times[index] = clampTime(downSample[0] + slots[index],
-                    VideoInformation.getVideoLength());
+            // A long press re-anchors this side: drop any offset previously applied to it.
+            slots[index] = 0;
+            times[index] = clampTime(downSample[0], VideoInformation.getVideoLength());
             if (times[0] > times[1]) {
                 swapSides(times, slots);
             }

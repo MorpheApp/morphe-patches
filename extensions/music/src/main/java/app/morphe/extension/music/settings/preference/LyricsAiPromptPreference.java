@@ -54,6 +54,9 @@ public class LyricsAiPromptPreference extends BooleanSettingPreference {
         if (key.equals("morphe_music_lyrics_use_ai_section")) {
             return Settings.LYRICS_USE_AI_SECTION;
         }
+        if (key.equals("morphe_music_lyrics_share_use_ai")) {
+            return Settings.LYRICS_SHARE_USE_AI;
+        }
         return null;
     }
 
@@ -62,6 +65,9 @@ public class LyricsAiPromptPreference extends BooleanSettingPreference {
         if (key == null) return null;
         if (key.equals("morphe_music_lyrics_use_ai_section")) {
             return Settings.LYRICS_AI_SECTION_PROMPT;
+        }
+        if (key.equals("morphe_music_lyrics_share_use_ai")) {
+            return Settings.LYRICS_AI_STORY_PROMPT;
         }
         return null;
     }
@@ -105,8 +111,21 @@ public class LyricsAiPromptPreference extends BooleanSettingPreference {
             return;
         }
 
-        Dialog dialog = LyricsProviderConfigDialog.compatibleDialog(activity, promptSetting, null,
-                () -> enableAfterValidation(switchSetting), null);
+        Dialog dialog;
+        if ("morphe_music_lyrics_share_use_ai".equals(getKey())) {
+            // Share-card AI has two prompts (story summary + keyword elements) and reuses all
+            // other OpenAI-compatible parameters from the shared settings.
+            dialog = LyricsProviderConfigDialog.compatibleDialog(activity,
+                    Settings.LYRICS_AI_STORY_PROMPT,
+                    Settings.LYRICS_AI_KEYWORD_PROMPT,
+                    "morphe_music_lyrics_ai_config_story_prompt_label",
+                    "morphe_music_lyrics_ai_config_keyword_prompt_label",
+                    () -> enableAfterValidation(switchSetting), null);
+        } else {
+            dialog = LyricsProviderConfigDialog.compatibleDialog(activity,
+                    promptSetting, null,
+                    () -> enableAfterValidation(switchSetting), null);
+        }
         dialog.setOnDismissListener(d -> {
             dialogShowing = false;
             setCheckedSilently(switchSetting.get());

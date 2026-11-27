@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.shared;
 
+import android.os.SystemClock;
+
 import androidx.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
@@ -43,6 +45,7 @@ public final class VideoInformation extends BaseVideoInformation {
     private static volatile String videoId = "";
     private static volatile long videoLength = 0;
     private static volatile long videoTime = -1;
+    private static volatile long seekToZeroAtUptimeMs = -1;
     private static volatile WeakReference<PlaybackController> playerRef = new WeakReference<>(null);
 
     /** Injection point. Called each time the player is created. */
@@ -54,6 +57,7 @@ public final class VideoInformation extends BaseVideoInformation {
     public static void initialize() {
         videoTime = -1;
         videoLength = 0;
+        seekToZeroAtUptimeMs = -1;
         Logger.printDebug(() -> "VideoInformation: initialized");
     }
 
@@ -109,6 +113,15 @@ public final class VideoInformation extends BaseVideoInformation {
     public static long getVideoTime() { return videoTime; }
 
     /**
+     * True for a short window after an explicit {@link #seekTo(0)}. Position consumers use it
+     * to tell a genuine rewind from a playback-state that reports zero before the real position.
+     */
+    public static boolean isRecentSeekToZero() {
+        final long at = seekToZeroAtUptimeMs;
+        return at >= 0 && SystemClock.uptimeMillis() - at < 2000L;
+    }
+
+    /**
      * Seeks the player to the given position in milliseconds.
      *
      * @return true if the seek was dispatched successfully
@@ -118,7 +131,9 @@ public final class VideoInformation extends BaseVideoInformation {
         try {
             final long len = getVideoLength();
             final long time = getVideoTime();
-            if (time <= 0 || len <= 0) {
+            // Zero is a valid, ready position (especially right after seeking to the start).
+            // Only the uninitialized -1 means the player has not reported a time yet.
+            if (time < 0 || len <= 0) {
                 Logger.printDebug(() -> "seekTo: video not ready");
                 return false;
             }
@@ -131,8 +146,13 @@ public final class VideoInformation extends BaseVideoInformation {
                 return false;
             }
             final boolean seeked = player.patch_seekTo(adjusted);
-            if (seeked && seekTime > 0) {
+            if (seeked) {
+                // Include seekTime == 0: the ~1s progress hook is too slow for callers that
+                // read the position right after rewinding (e.g. recording an A-B segment).
                 videoTime = seekTime;
+                if (seekTime == 0) {
+                    seekToZeroAtUptimeMs = SystemClock.uptimeMillis();
+                }
             }
             return seeked;
         } catch (Exception ex) {
