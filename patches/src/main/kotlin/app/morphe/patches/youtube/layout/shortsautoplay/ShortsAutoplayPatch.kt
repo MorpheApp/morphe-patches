@@ -38,7 +38,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/Short
 
 val shortsAutoplayPatch = patch(
     name = "Shorts autoplay",
-    description = "Adds options to automatically play the next Short.",
+    description = "Adds options to automatically play the next Short, and a Shorts player menu item to turn it on or off.",
 ) {
     dependsOn(
         sharedExtensionPatch,
