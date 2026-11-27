@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -107,7 +108,7 @@ final class GlassNavigationBarSearchButton extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MotionEvent event) {
         if (SHADOW_MARGIN > 0 && event.getActionMasked() == MotionEvent.ACTION_DOWN) {
             // Ignore touches on the shadow.
             final float radius = getWidth() / 2f;
@@ -119,11 +120,11 @@ final class GlassNavigationBarSearchButton extends View {
             }
         }
 
-        return super.onTouchEvent(event);
+        return super.dispatchTouchEvent(event);
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         try {
             final int size = getWidth() - 2 * SHADOW_MARGIN;
             final float radius = size / 2f;
