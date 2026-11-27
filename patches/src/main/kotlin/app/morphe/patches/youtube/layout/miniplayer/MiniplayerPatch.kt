@@ -57,7 +57,9 @@ import app.morphe.patches.youtube.shared.openVideoIntentPatch
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -136,6 +138,7 @@ val miniplayerPatch = patch(
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
         if (is_21_30_or_greater && installPlaybackSessionHooks()) {
+            copyResources("miniplayer", ResourceGroup("drawable", "morphe_miniplayer_restore_badge.xml"))
             preferences += SwitchPreference("morphe_miniplayer_restore_session", summary = true)
         }
         preferences += SwitchPreference("morphe_miniplayer_hide_title")

@@ -48,6 +48,7 @@ import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEn
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.CommandRouterPatch;
 import app.morphe.extension.youtube.patches.CommandRouterPatch.CommandRouter;
+import app.morphe.extension.youtube.patches.MiniplayerPatch;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
@@ -191,7 +192,12 @@ public final class PlaybackSessionPatch {
     }
 
     public static void observeWatchPlayer(View view) {
-        if (enabled() && watchPlayerView.get() != view) watchPlayerView = new WeakReference<>(view);
+        if (!enabled() || watchPlayerView.get() == view) return;
+        watchPlayerView = new WeakReference<>(view);
+        MiniplayerType type = MiniplayerPatch.getCurrentMiniplayerType();
+        if (type != MiniplayerType.MINIMAL_BAR && type != MiniplayerType.MINIMAL_BAR_2) {
+            RestoredMiniplayerLabel.bind(view);
+        }
     }
 
     public static void attachMediaSession(MediaSession session) {
@@ -407,6 +413,7 @@ public final class PlaybackSessionPatch {
                 && restoringMinimizedVideo.equals(VideoInformation.getVideoId())) {
             restoringMinimizedVideo = null;
             RestoredMiniplayerControls.refresh();
+            RestoredMiniplayerLabel.refresh();
         }
     }
 
@@ -627,6 +634,7 @@ public final class PlaybackSessionPatch {
         restoringCaptions = snapshot;
         restoreWasMinimized = false;
         restoring = null;
+        RestoredMiniplayerLabel.refresh();
         return descriptor;
     }
 
@@ -653,6 +661,7 @@ public final class PlaybackSessionPatch {
 
     private static void playerTypeChanged(PlayerType type) {
         RestoredMiniplayerControls.refresh();
+        RestoredMiniplayerLabel.refresh();
         Utils.runOnMainThreadNowOrLater(() -> {
             String videoId = restoringMinimizedVideo;
             if (videoId == null) return;
@@ -701,6 +710,7 @@ public final class PlaybackSessionPatch {
             OpenVideosFullscreenHookPatch.keepVideoMinimized(null);
         }
         RestoredMiniplayerControls.refresh();
+        RestoredMiniplayerLabel.refresh();
     }
 
     private PlaybackSessionPatch() {}

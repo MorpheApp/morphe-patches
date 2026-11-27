@@ -17,7 +17,6 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import org.junit.Test;
 
@@ -169,19 +168,15 @@ public class PlaybackSessionStartupTest {
     }
 
     private static void assertPausedControls(Context context) {
-        var overlay = new TestBadge(context);
+        var overlay = new TestOverlay(context);
         var action = new TestAction(context);
-        var badge = new TestBadge(context);
-        var label = new TestLabel(context);
         var play = new ColorDrawable();
-        RestoredMiniplayerControls.showPaused(overlay, action, play, "Phát", badge, label, "Tiếp tục xem");
+        RestoredMiniplayerControls.showPaused(overlay, action, play, "Phát");
         assertEquals(View.VISIBLE, overlay.getVisibility());
         assertEquals(View.VISIBLE, action.getVisibility());
         assertEquals(1f, action.getAlpha(), 0f);
         assertSame(play, action.getDrawable());
         assertEquals("Phát", action.getContentDescription());
-        assertEquals(View.VISIBLE, badge.getVisibility());
-        assertEquals("Tiếp tục xem", label.getText());
     }
 
     private static final class TestAction extends ImageView {
@@ -202,18 +197,11 @@ public class PlaybackSessionStartupTest {
         @Override public void setContentDescription(CharSequence value) { description = value; }
     }
 
-    private static final class TestBadge extends View {
+    private static final class TestOverlay extends View {
         private int visibility = View.GONE;
-        TestBadge(Context context) { super(context); }
+        TestOverlay(Context context) { super(context); }
         @Override public int getVisibility() { return visibility; }
         @Override public void setVisibility(int value) { visibility = value; }
-    }
-
-    private static final class TestLabel extends TextView {
-        private CharSequence text = "";
-        TestLabel(Context context) { super(context); }
-        @Override public CharSequence getText() { return text; }
-        @Override public void setText(CharSequence value, BufferType type) { text = value; }
     }
 
     private record TestCaptionSource(String videoId) implements PlaybackSessionPatch.CaptionSource {

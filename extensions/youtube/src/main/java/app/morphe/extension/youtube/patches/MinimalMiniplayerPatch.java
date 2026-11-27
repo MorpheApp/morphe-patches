@@ -66,7 +66,7 @@ import app.morphe.extension.shared.ui.glass.GlassBackdrop;
 import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
-import app.morphe.extension.youtube.patches.playback.RestoredMiniplayerControls;
+import app.morphe.extension.youtube.patches.playback.RestoredMiniplayerLabel;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -1804,12 +1804,10 @@ public final class MinimalMiniplayerPatch {
             if (subtitle.getParent() instanceof View bar && HIDE_TITLE) {
                 bar.setVisibility(restored ? View.VISIBLE : View.GONE);
             }
-            int badge = restored ? ResourceUtils.getDrawableIdentifier("youtube_premium_badge_light") : 0;
-            subtitle.setCompoundDrawablesRelativeWithIntrinsicBounds(badge, 0, 0, 0);
-            subtitle.setCompoundDrawablePadding(restored ? Dim.dp4 : 0);
+            RestoredMiniplayerLabel.setBadge(subtitle, restored);
             updatePlayPauseIcon(false);
         }
-        if (setText(subtitle, restored ? RestoredMiniplayerControls.resumeLabel() : channelName)) {
+        if (setText(subtitle, restored ? RestoredMiniplayerLabel.resumeLabel() : channelName)) {
             subtitle.setVisibility(View.VISIBLE);
         }
     }
