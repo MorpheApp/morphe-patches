@@ -51,7 +51,7 @@ final class PlaylistDiscoverySheet {
         this.done = done;
         sheet = new NativeSheet(activity, "morphe_series_tracker_follow");
         sheet.message("morphe_series_tracker_finding_playlists");
-        sheet.action("morphe_series_tracker_ui_cancel", this::dismiss, false);
+        sheet.action("morphe_cancel", this::dismiss, false);
         sheet.action("morphe_series_tracker_paste_playlist", () -> choose(""), false);
         sheet.onDismiss(
                 () -> {

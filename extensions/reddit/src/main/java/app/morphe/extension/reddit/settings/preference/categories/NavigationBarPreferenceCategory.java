@@ -37,7 +37,7 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
 
     public NavigationBarPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle(str("morphe_screen_navigation_bar_title"));
+        setTitle(str("morphe_navigation_bar_screen_title"));
     }
 
     @Override
@@ -167,6 +167,10 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
             buttons.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON
+            ));
+            buttons.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.GLASS_NAVIGATION_BAR_TOP_TABS
             ));
         }
     }

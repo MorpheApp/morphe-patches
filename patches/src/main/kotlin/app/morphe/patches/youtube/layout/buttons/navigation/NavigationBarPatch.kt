@@ -272,6 +272,7 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_navigation_bar_glass", summary = true),
             NonInteractivePreference(
                 key = "morphe_navigation_bar_glass_opacity",
+                titleKey = "morphe_glass_opacity_title",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             SwitchPreference("morphe_navigation_bar_glass_round", summary = true),
@@ -892,7 +893,7 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button", titleKey = "morphe_hide_notifications_button_title"),
-            SwitchPreference("morphe_hide_toolbar_search_button"),
+            SwitchPreference("morphe_hide_toolbar_search_button", titleKey = "morphe_hide_search_button_title"),
             SwitchPreference("morphe_show_toolbar_settings_button", titleKey = "morphe_show_settings_button_title"),
             SwitchPreference(
                 "morphe_show_toolbar_settings_button_type",

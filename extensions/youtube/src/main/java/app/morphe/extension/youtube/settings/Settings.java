@@ -670,6 +670,10 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("morphe_hide_stop_ads_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("morphe_hide_thanks_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final EnumSetting<VideoActionBarLayout> VIDEO_ACTION_BAR_LAYOUT = new EnumSetting<>("morphe_video_action_bar_layout", VersionCheckPatch.IS_21_36_OR_GREATER ? VideoActionBarLayout.DEFAULT : VideoActionBarLayout.CLASSIC, true, "morphe_video_action_bar_layout_user_dialog_message");
+    /**
+     * The template of the channel row of "Classic Two-Rows" that was found last in the template cache of the app.
+     */
+    public static final StringSetting VIDEO_ACTION_BAR_CHANNEL_BAR_TEMPLATE = new StringSetting("morphe_video_action_bar_channel_bar_template", "", false, false);
     public static final StringSetting INNERTUBE_COLD_CONFIG_DATA = new StringSetting("morphe_innertube_cold_config_data", "", false, false);
     public static final StringSetting INNERTUBE_COLD_HASH_DATA = new StringSetting("morphe_innertube_cold_hash_data", "", false, false);
 
@@ -722,7 +726,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CUSTOM_MUSIC_PACKAGE_NAME = new StringSetting("morphe_custom_music_package_name", "", true, parent(OVERRIDE_YOUTUBE_MUSIC_BUTTONS));
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting HIDE_STATUS_BAR = new BooleanSetting("morphe_hide_status_bar", FALSE, true);
-    public static final BooleanSetting HIDE_STATUS_BAR_AVOID_CUTOUT = new BooleanSetting("morphe_hide_status_bar_avoid_cutout", FALSE, true, parent(HIDE_STATUS_BAR));
+    public static final BooleanSetting HIDE_STATUS_BAR_TABLETOP = new BooleanSetting("morphe_hide_status_bar_tabletop", FALSE, true, parentNot(HIDE_STATUS_BAR));
+    public static final BooleanSetting HIDE_STATUS_BAR_AVOID_CUTOUT = new BooleanSetting("morphe_hide_status_bar_avoid_cutout", FALSE, true, parentsAny(HIDE_STATUS_BAR, HIDE_STATUS_BAR_TABLETOP));
     public static final BooleanSetting FIX_STATUS_BAR_LAYOUT = new BooleanSetting("morphe_fix_status_bar_layout", TRUE, true);
     public static final BooleanSetting WINDOW_BELOW_STATUS_BAR = new BooleanSetting("morphe_window_below_status_bar", FALSE, false, false);
     public static final BooleanSetting WINDOW_ABOVE_NAVIGATION_BAR = new BooleanSetting("morphe_window_above_navigation_bar", FALSE, false, false);
@@ -1641,16 +1646,16 @@ public class Settings extends SharedYouTubeSettings {
                 10, 100, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_LENGTH,
                 10, NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, 10, "", 1,
-                StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
+                StringRef.sf("morphe_no_limit")));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_REFRESH_RATE,
                 30, NICONICO_COMMENTS_MAX_REFRESH_RATE_NO_LIMIT, 30, "Hz", 1,
-                StringRef.sf("morphe_niconico_comments_max_length_no_limit")));
+                StringRef.sf("morphe_no_limit")));
         SeekBarPreference.register(new SeekBarConfig(REPLAY_VIDEO_SECONDS,
                 1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(REPLAY_VIDEO_SLOW_SECONDS,
                 1, 60, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_TRANSLATE_MAX_LENGTH,
                 20, LIVE_CHAT_TRANSLATE_MAX_LENGTH_NO_LIMIT, 20, "", 1,
-                StringRef.sf("morphe_live_chat_translate_max_length_no_limit")));
+                StringRef.sf("morphe_no_limit")));
     }
 }

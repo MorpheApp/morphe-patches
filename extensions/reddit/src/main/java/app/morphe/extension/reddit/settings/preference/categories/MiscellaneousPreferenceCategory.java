@@ -44,7 +44,7 @@ import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreferen
 public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCategory {
     public MiscellaneousPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle(str("morphe_screen_miscellaneous_title"));
+        setTitle(str("morphe_misc_screen_title"));
     }
 
     @Override
@@ -66,7 +66,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     public void addPreferences(Context context) {
         MorpheAboutPreference.showVancedAsPastContributor(false);
         Preference about = new MorpheAboutPreference(context);
-        about.setTitle(str("morphe_about_title"));
+        about.setTitle(str("morphe_about_screen_title"));
         about.setSummary(str("morphe_about_summary"));
         addPreference(about);
 

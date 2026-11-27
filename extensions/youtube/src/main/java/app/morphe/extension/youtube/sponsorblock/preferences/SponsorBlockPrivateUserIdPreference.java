@@ -63,11 +63,11 @@ public class SponsorBlockPrivateUserIdPreference extends ResettableEditTextPrefe
     }
 
     protected String getInvalidUserIdMessage() {
-        return str("morphe_sb_private_user_id_Do_Not_Share_invalid");
+        return str("morphe_private_user_id_invalid");
     }
 
     protected String getCopyButtonText() {
-        return str("morphe_sb_settings_copy");
+        return str("morphe_settings_copy");
     }
 
     @Override

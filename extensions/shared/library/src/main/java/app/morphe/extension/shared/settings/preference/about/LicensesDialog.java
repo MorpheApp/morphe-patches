@@ -84,7 +84,7 @@ class LicensesDialog extends AboutWebViewDialog {
                     .append("</a>");
         }
         html.append("</div></div>")
-                .append(AboutDialogStyle.pageEnd(str("morphe_settings_about_close"), null))
+                .append(AboutDialogStyle.pageEnd(str("morphe_settings_close"), null))
                 .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();

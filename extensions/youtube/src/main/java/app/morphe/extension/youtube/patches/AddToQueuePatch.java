@@ -201,7 +201,7 @@ public final class AddToQueuePatch {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
-                    str("morphe_local_queue_play_next"),
+                    str("morphe_queue_play_next"),
                     v -> flyoutButtonClickLogic(queueButtonOriginalNames.get(0), videoId),
                     index
             );
@@ -212,7 +212,7 @@ public final class AddToQueuePatch {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
-                    str("morphe_local_queue_play_last"),
+                    str("morphe_queue_play_last"),
                     v -> flyoutButtonClickLogic(queueButtonOriginalNames.get(1), videoId),
                     index
             );

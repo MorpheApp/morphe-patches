@@ -123,7 +123,7 @@ private val swipeControlsResourcePatch = patch {
                 key = "morphe_swipe_speed_sensitivity",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
-            ListPreference("morphe_swipe_speed_step"),
+            ListPreference("morphe_swipe_speed_step", titleKey = "morphe_speed_step_title"),
             SwitchPreference("morphe_swipe_ignore_when_locked", summary = true),
             SwitchPreference(
                 key = "morphe_swipe_press_to_engage",
@@ -131,12 +131,13 @@ private val swipeControlsResourcePatch = patch {
                 // Asks which one to keep when the hold gesture is on, which starts with a long press too.
                 tag = "app.morphe.extension.youtube.settings.preference.PressToSwipeSwitchPreference"
             ),
-            SwitchPreference("morphe_swipe_haptic_feedback", summary = true),
+            SwitchPreference("morphe_swipe_haptic_feedback", titleKey = "morphe_haptic_feedback_title", summary = true),
             SwitchPreference("morphe_swipe_save_and_restore_brightness", summary = true),
             SwitchPreference("morphe_swipe_lowest_value_enable_auto_brightness", summary = true),
             ListPreference("morphe_swipe_overlay_style"),
             NonInteractivePreference(
                 key = "morphe_swipe_overlay_background_opacity",
+                summaryKey = "morphe_opacity_summary",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             TextPreference("morphe_swipe_overlay_progress_brightness_color",

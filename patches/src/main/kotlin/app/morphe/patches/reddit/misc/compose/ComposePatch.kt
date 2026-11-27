@@ -7,12 +7,15 @@
 
 package app.morphe.patches.reddit.misc.compose
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addFreeRegisters
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.reddit.layout.glassnav.BottomNavBarFingerprint
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 
 private const val CONTENT_DRAW_SCOPE_INTERFACE =
@@ -66,6 +69,45 @@ internal val composePatch = patch {
                 "patch_padding",
                 """
                     invoke-static/range { p0 .. p4 }, ${PaddingFingerprint.method}
+                    move-result-object v0
+                    return-object v0
+                """
+            )
+        }
+
+        if (is_2026_45_0_or_greater) {
+            // Each RowScope and ColumnScope implementation creates the same weight element.
+            val weightInit = WeightElementFingerprint.matchAll().first().instructionMatches[1].methodReference
+
+            NewWeightModifierFingerprint.method.addFreeRegisters(1).first.addInstructions(
+                0,
+                """
+                    new-instance v0, ${weightInit.definingClass}
+                    invoke-direct { v0, p0, p1 }, $weightInit
+                    return-object v0
+                """
+            )
+
+            val graphicsLayerMethod = GraphicsLayerFingerprint.method
+            val shapeType = graphicsLayerMethod.parameterTypes[6]
+
+            // 0x7e7ff marks every parameter as default except the shape and clip.
+            mutableClassDefBy(modifierType).addPatchInterface(
+                MODIFIER_INTERFACE,
+                "patch_clip",
+                """
+                    move-object v0, p0
+                    const/4 v1, 0x0
+                    const/4 v2, 0x0
+                    const/4 v3, 0x0
+                    const/4 v4, 0x0
+                    const/4 v5, 0x0
+                    move-object v6, p1
+                    check-cast v6, $shapeType
+                    const/4 v7, 0x1
+                    const/4 v8, 0x0
+                    const v9, 0x7e7ff
+                    invoke-static/range { v0 .. v9 }, $graphicsLayerMethod
                     move-result-object v0
                     return-object v0
                 """

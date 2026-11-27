@@ -320,7 +320,7 @@ public class GmsCoreSupportPatch {
                 if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
                     showBatteryOptimizationDialog(context,
                             "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
-                            "gms_core_dialog_continue_text",
+                            "morphe_settings_continue",
                             (dialog, id) -> openGmsCoreDisableBatteryOptimizationsIntent(context));
                     return;
                 }
@@ -709,7 +709,7 @@ public class GmsCoreSupportPatch {
                     str("gms_core_dialog_title"), // Title.
                     str("gms_core_dialog_outdated_message", installedVersion, latestVersion), // Message.
                     null, // No EditText.
-                    str("gms_core_dialog_update_text"), // Update button text.
+                    str("morphe_settings_update"), // Update button text.
                     () -> open(context, getGmsCoreDownload()), // Update action.
                     null, // No Cancel button.
                     str("gms_core_dialog_ignore_text"), // Ignore button text.

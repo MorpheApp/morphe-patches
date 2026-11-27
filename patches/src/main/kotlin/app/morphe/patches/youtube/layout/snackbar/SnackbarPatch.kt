@@ -17,8 +17,8 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.shared.misc.spans.addSpanFilter
-import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
+import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
+import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -30,8 +30,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/SnackbarPatch;"
-private const val FILTER_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/spans/SnackbarFilter;"
 private const val COLOR_PICKER_PREFERENCE =
     "app.morphe.extension.shared.settings.preference.ColorPickerPreference"
 private const val COLOR_PICKER_WITH_OPACITY_PREFERENCE =
@@ -44,7 +42,7 @@ val snackbarPatch = patch(
     dependsOn(
         settingsPatch,
         versionCheckPatch,
-        inclusiveSpanPatch,
+        textComponentPatch,
         lithoColorHookPatch { is_21_30_or_greater }
     )
 
@@ -75,6 +73,7 @@ val snackbarPatch = patch(
                     ),
                     TextPreference(
                         "morphe_custom_snackbar_corner_radius",
+                        titleKey = "morphe_corner_radius_title",
                         inputType = InputType.NUMBER
                     )
                 )
@@ -152,7 +151,7 @@ val snackbarPatch = patch(
 
         lithoDrawableColorHook("$EXTENSION_CLASS_DESCRIPTOR->getLithoColor(Landroid/graphics/drawable/Drawable;I)I")
 
-        addSpanFilter(FILTER_CLASS_DESCRIPTOR)
+        hookSpannableStringResult(EXTENSION_CLASS_DESCRIPTOR, "setLithoTextColor")
 
         // endregion
     }

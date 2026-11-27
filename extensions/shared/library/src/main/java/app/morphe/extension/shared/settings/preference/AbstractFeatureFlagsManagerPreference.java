@@ -549,7 +549,7 @@ public abstract class AbstractFeatureFlagsManagerPreference<K extends Comparable
                 case INACTIVE -> createStateButton(context,
                         "morphe_debug_feature_flags_manager_action_force_on", FlagState.FORCED);
                 case BLOCKED, FORCED -> createStateButton(context,
-                        "morphe_debug_feature_flags_manager_action_remove", FlagState.AUTO);
+                        "morphe_settings_remove", FlagState.AUTO);
             };
 
             selectionButtons.addView(actionButton);
@@ -658,7 +658,7 @@ public abstract class AbstractFeatureFlagsManagerPreference<K extends Comparable
                 str("morphe_settings_save"),
                 () -> importText(editText.getText().toString()),
                 () -> {},
-                str("morphe_settings_import_copy"),
+                str("morphe_settings_copy"),
                 () -> Utils.setClipboard(editText.getText().toString()),
                 true
         );

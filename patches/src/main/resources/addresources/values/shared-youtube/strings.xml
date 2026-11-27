@@ -89,7 +89,6 @@ Verify the package name is correct and the app is installed"</string>
 
     <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
     <string name="morphe_custom_branding_name_entry_5">Custom</string>
-    <string name="morphe_custom_branding_icon_title">App icon</string>
     <string name="morphe_custom_branding_icon_entry_1">Original</string>
     <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
     <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
@@ -117,7 +116,6 @@ To change the icon everywhere, patch again and change the \'App icon\' patch opt
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
     <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
     <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies</string>
-    <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
 
     <!-- misc.spoof.spoofVideoStreamsPatch -->
     <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
@@ -145,7 +143,6 @@ Tap OK to open Android System WebView."</string>
 Video playback may fail until Android System WebView is updated to the latest version.
 
 Tap OK to open Android System WebView."</string>
-    <string name="morphe_spoof_video_streams_webview_dialog_ignore">Do not show again</string>
     <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView is not installed. Install it to fix video playback</string>
     <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -216,7 +213,6 @@ To sign in, press continue below"</string>
     <!-- misc.medianotification.mediaNotificationControlsPatch -->
     <string name="morphe_notification_media_screen_title">Notification media controls</string>
     <string name="morphe_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
-    <string name="morphe_hide_notification_media_prev_next_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
     <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
     <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
@@ -262,10 +258,8 @@ To sign in, press continue below"</string>
     <string name="morphe_video_effects_custom_restore">Restore defaults</string>
     <string name="morphe_video_effects_custom_add_title">New effect</string>
     <string name="morphe_video_effects_custom_edit_title">Edit effect</string>
-    <string name="morphe_video_effects_custom_name_hint">Name</string>
     <string name="morphe_video_effects_custom_name_empty">Enter a name for the effect</string>
     <string name="morphe_video_effects_custom_name_exists">An effect with this name already exists</string>
-    <string name="morphe_video_effects_custom_copy_code">Copy code</string>
     <string name="morphe_video_effects_custom_error_title">Effect has an error</string>
     <string name="morphe_video_effects_custom_error_message">"Videos are shown without the effect until the code is fixed. Give this error to the AI that wrote the code:
 
@@ -275,7 +269,6 @@ To sign in, press continue below"</string>
 Ask the AI for shorter code, or paste the code in parts."</string>
     <string name="morphe_video_effects_custom_copy_error">Copy error</string>
     <string name="morphe_video_effects_custom_save_anyway">Save anyway</string>
-    <string name="morphe_video_effects_custom_delete">Delete</string>
     <string name="morphe_video_effects_custom_delete_title">Delete effect?</string>
     <string name="morphe_video_effects_custom_delete_message">%s will be deleted.</string>
 
@@ -307,8 +300,6 @@ Ask the AI for shorter code, or paste the code in parts."</string>
     <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to any client except \'Android Studio\' and \'Android VR Downgraded\'</string>
 
     <!-- misc.privacy.sanitizeSharingLinksPatch -->
-    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
-    <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
     <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
     <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
@@ -403,7 +394,6 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs"
     <string name="morphe_custom_font_type_title">Font</string>
     <string name="morphe_custom_font_type_entry_default">Default</string>
     <string name="morphe_custom_font_type_entry_system">Device system font</string>
-    <string name="morphe_custom_font_type_entry_custom">Custom font file</string>
     <string name="morphe_custom_font_file_title">Custom font file</string>
     <string name="morphe_custom_font_file_summary">Pick a TTF or OTF font file</string>
     <string name="morphe_custom_font_file_invalid">The picked file is not a TTF or OTF font</string>
@@ -414,7 +404,6 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs"
     <string name="morphe_glass_menus_screen_summary">Menus as frosted glass over the blurred content behind them</string>
     <string name="morphe_glass_menus_title">Enable glass menus</string>
     <string name="morphe_glass_menus_summary">Shows menus and bottom sheets as frosted glass, with the content behind them blurred</string>
-    <string name="morphe_glass_menus_opacity_title">Glass opacity</string>
     <string name="morphe_glass_menus_opacity_summary">How much the menu covers the blurred content (0 is clear, 100 is opaque)</string>
     <string name="morphe_glass_menus_blur_title">Blur</string>
     <string name="morphe_glass_menus_blur_summary">How much the content behind the menu is blurred</string>
@@ -436,12 +425,10 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs"
     <string name="morphe_ryd_dislike_percentage_summary">Shows dislikes as a percentage of likes instead of a number</string>
     <string name="morphe_ryd_estimated_like_title">Show estimated likes</string>
     <string name="morphe_ryd_estimated_like_summary">Shows an estimated like count on videos where the creator has disabled likes</string>
-    <string name="morphe_ryd_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_ryd_toast_on_connection_error_summary">Shows a notification when the Return YouTube Dislike server is unavailable</string>
     <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restores the dislike counts YouTube hid in 2021. Counts come from data archived before the removal and are estimated for newer videos from the votes of its users, so they are approximate and update every few days
 
 The ID of the video you watch is sent to the Return YouTube Dislike API, and your likes and dislikes are sent anonymously to improve the estimates"</string>
-    <string name="morphe_ryd_screen_title" translatable="false">Return YouTube Dislike</string>
     <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>
     <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API response time, average</string>
@@ -460,9 +447,93 @@ The ID of the video you watch is sent to the Return YouTube Dislike API, and you
     <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit encountered %s times</string>
     <string name="morphe_ryd_statistics_millisecond_text">%s milliseconds</string>
 
-    <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
     <string name="morphe_navigation_bar_screen_summary">Choose which buttons appear in the bottom navigation bar</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
+
+    <!-- Shared strings -->
+    <string name="morphe_duration_1s">1 second</string>
+    <string name="morphe_duration_2s">2 seconds</string>
+    <string name="morphe_duration_3s">3 seconds</string>
+    <string name="morphe_duration_4s">4 seconds</string>
+    <string name="morphe_duration_5s">5 seconds</string>
+    <string name="morphe_duration_6s">6 seconds</string>
+    <string name="morphe_duration_7s">7 seconds</string>
+    <string name="morphe_duration_8s">8 seconds</string>
+    <string name="morphe_duration_9s">9 seconds</string>
+    <string name="morphe_duration_10s">10 seconds</string>
+    <string name="morphe_change_start_page_entry_default">Default</string>
+    <string name="morphe_change_start_page_entry_explore">Explore</string>
+    <string name="morphe_change_start_page_entry_history">History</string>
+    <string name="morphe_change_start_page_entry_library">Library</string>
+    <string name="morphe_change_start_page_entry_playlists">Playlists</string>
+    <string name="morphe_change_start_page_entry_search">Search</string>
+    <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
+    <string name="morphe_change_start_page_title">Start page</string>
+    <string name="morphe_action_buttons_screen_title">Action buttons</string>
+    <string name="morphe_comments_screen_title">Comments</string>
+    <string name="morphe_feed_screen_title">Feed</string>
+    <string name="morphe_flyout_menu_screen_title">Flyout menu</string>
+    <string name="morphe_general_title">General</string>
+    <string name="morphe_miniplayer_screen_title">Miniplayer</string>
+    <string name="morphe_player_screen_title">Player</string>
+    <string name="morphe_ryd_screen_title" translatable="false">Return YouTube Dislike</string>
+    <string name="morphe_sponsorblock_screen_title" translatable="false">SponsorBlock</string>
+    <string name="morphe_video_screen_title">Video</string>
+    <string name="morphe_appearance_title">Appearance</string>
+    <string name="morphe_cancel">Cancel</string>
+    <string name="morphe_comments_screen_summary">Choose which components appear in the comments section</string>
+    <string name="morphe_copy_code">Copy code</string>
+    <string name="morphe_corner_radius_title">Corner radius</string>
+    <string name="morphe_do_not_show_again">Do not show again</string>
+    <string name="morphe_download_force_4k_title">Force 4K download availability</string>
+    <string name="morphe_glass_opacity_title">Glass opacity</string>
+    <string name="morphe_header_logo_title">Header logo</string>
+    <string name="morphe_hide_action_bar_title">Hide action bar</string>
+    <string name="morphe_hide_cast_button_title">Hide Cast button</string>
+    <string name="morphe_hide_comments_button_title">Hide Comments button</string>
+    <string name="morphe_hide_comments_community_guidelines_title">Hide Community Guidelines</string>
+    <string name="morphe_hide_comments_emoji_button_title">Hide Emoji button</string>
+    <string name="morphe_hide_comments_gif_button_title">Hide GIF button</string>
+    <string name="morphe_hide_comments_gifs_and_images_summary">Hides GIFs and images attached to comments and replies</string>
+    <string name="morphe_hide_comments_gifs_and_images_title">Hide GIFs and images</string>
+    <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
+    <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
+    <string name="morphe_hide_horizontal_shelves_title">Hide horizontal shelves</string>
+    <string name="morphe_hide_like_dislike_button_title">Hide Like and Dislike button</string>
+    <string name="morphe_hide_like_dislike_buttons_title">Hide Like and Dislike buttons</string>
+    <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
+    <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
+    <string name="morphe_hide_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
+    <string name="morphe_hide_search_button_title">Hide Search button</string>
+    <string name="morphe_hide_translate_button_title">Hide Translate button</string>
+    <string name="morphe_hide_video_ads_title">Hide video ads</string>
+    <string name="morphe_loading">Loading…</string>
+    <string name="morphe_name">Name</string>
+    <string name="morphe_navigation_bar_glass_size_button_spacing">Button spacing</string>
+    <string name="morphe_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$s of %2$s</string>
+    <string name="morphe_navigation_bar_glass_size_height">Height</string>
+    <string name="morphe_navigation_bar_glass_size_width">Maximum width</string>
+    <string name="morphe_navigation_bar_glass_title">Enable glass navigation bar</string>
+    <string name="morphe_positive_number_invalid">Value must be a positive number</string>
+    <string name="morphe_private_user_id_invalid">Private user ID must be at least 30 characters long</string>
+    <string name="morphe_private_user_id_title">Your private user ID</string>
+    <string name="morphe_rename">Rename</string>
+    <string name="morphe_show_settings_button_title">Show Settings button</string>
+    <string name="morphe_show_settings_button_type_title">Settings button action</string>
+    <string name="morphe_show_video_effect_menu_title">Show Video effect menu</string>
+    <string name="morphe_submit">Submit</string>
+    <string name="morphe_time_adjustment_step_title">Time adjustment step</string>
+    <string name="morphe_toast_on_connection_error_title">Show connection error alerts</string>
+    <string name="morphe_toast_on_skip_title">Show skip notification</string>
+    <string name="morphe_translated_only">Translated only</string>
+    <string name="morphe_translating">Translating…</string>
+    <string name="morphe_translation_language_title">Translation language</string>
+    <string name="morphe_username_change_unknown_error">Unable to change username: Status: %1$s %2$s</string>
+    <string name="morphe_username_changed">Username successfully changed</string>
+    <string name="morphe_username_html">Your username: &lt;b>%s&lt;/b></string>
+    <string name="morphe_videos">Videos</string>
+    <string name="morphe_vote_downvote">Downvote</string>
+    <string name="morphe_vote_upvote">Upvote</string>
 </resources>

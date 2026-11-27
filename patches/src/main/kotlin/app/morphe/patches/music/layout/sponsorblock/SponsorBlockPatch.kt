@@ -69,7 +69,7 @@ val musicSponsorBlockPatch = patch(
             .fieldReference
 
         MusicTimeBarDrawFingerprint.method.apply {
-            // Inject right after super.draw() so the overlay runs every frame regardless of
+            // Inject right after 'super.draw()' so the overlay runs every frame regardless of
             // whether the scrubber thumb is visible. p1 is the Canvas.
             val freeRegister = findFreeRegister(1)
             addInstructions(
@@ -110,7 +110,7 @@ val musicSponsorBlockPatch = patch(
 
         PreferenceScreen.SPONSORBLOCK.addPreferences(
             SwitchPreference("morphe_sb_enabled", summary = true),
-            SwitchPreference("morphe_sb_toast_on_skip", summary = true),
+            SwitchPreference("morphe_sb_toast_on_skip", titleKey = "morphe_toast_on_skip_title", summary = true),
 
             PreferenceCategory(
                 key = "morphe_sb_diff_segments",
@@ -130,10 +130,11 @@ val musicSponsorBlockPatch = patch(
 
             PreferenceCategory(
                 key = "morphe_sb_general",
+                titleKey = "morphe_general_title",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_sb_offline_segments", summary = true),
-                    SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+                    SwitchPreference("morphe_sb_toast_on_connection_error", titleKey = "morphe_toast_on_connection_error_title", summary = true),
                     TextPreference("morphe_sb_api_url")
                 )
             ),

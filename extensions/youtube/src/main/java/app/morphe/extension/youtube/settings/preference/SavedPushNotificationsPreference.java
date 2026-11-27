@@ -64,7 +64,7 @@ public class SavedPushNotificationsPreference extends Preference {
                     str("morphe_settings_export_file"),
                     () -> export(notifications),
                     () -> {},
-                    str("morphe_debug_export_logs_clear"),
+                    str("morphe_settings_clear"),
                     SavedPushNotificationsPreference::clear,
                     true
             ).first.show();

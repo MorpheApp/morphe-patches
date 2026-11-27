@@ -182,7 +182,7 @@ public final class DownloadAllFromGalleryPatch {
                 List<String> urls = PostMedia.getGalleryUrls(post);
                 CustomDialog.create(
                         activity,
-                        str("morphe_download_all_dialog_title"),
+                        str("morphe_download"),
                         str("morphe_download_all_dialog_message"),
                         null,
                         str("morphe_download_all_all", urls.size()),

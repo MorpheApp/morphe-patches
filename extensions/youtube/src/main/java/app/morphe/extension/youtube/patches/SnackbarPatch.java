@@ -13,6 +13,9 @@ import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -21,12 +24,12 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
@@ -49,6 +52,11 @@ public final class SnackbarPatch {
     private static final int DARK_TEXT_COLOR = 0xFF0F0F0F;
 
     private static final int STROKE_WIDTH = Dim.dp1;
+
+    /**
+     * Litho path of a snackbar.
+     */
+    private static final String LITHO_SNACKBAR_PATH = "snackbar.eml";
 
     private static final int DARK_BACKGROUND_COLOR;
     private static final int LIGHT_BACKGROUND_COLOR;
@@ -112,13 +120,6 @@ public final class SnackbarPatch {
         return background / dark > light / background ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR;
     }
 
-    /**
-     * @return The color of the snackbar text, or null if the text keeps its color.
-     */
-    @Nullable
-    public static Integer getTextColor() {
-        return CUSTOM_THEME ? getTextColor(getBackgroundColor()) : null;
-    }
 
     /**
      * Injection point.
@@ -253,6 +254,36 @@ public final class SnackbarPatch {
             Logger.printException(() -> "getLithoColor failure", ex);
         }
         return color;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with every Litho text, once its style runs are applied as spans. A message without a color
+     * of its own has no color span, and the text component then draws it with the text color of the
+     * original snackbar, so the whole text of a Litho snackbar gets the color for the custom background.
+     */
+    public static CharSequence setLithoTextColor(ContextInterface context, CharSequence text) {
+        if (!CUSTOM_THEME || text == null || text.length() == 0) {
+            return text;
+        }
+
+        try {
+            if (!Utils.contains(context.patch_getPathBuilder(), LITHO_SNACKBAR_PATH)) {
+                return text;
+            }
+
+            SpannableString coloredText = new SpannableString(text);
+            for (ForegroundColorSpan span : coloredText.getSpans(0, coloredText.length(), ForegroundColorSpan.class)) {
+                coloredText.removeSpan(span);
+            }
+            coloredText.setSpan(new ForegroundColorSpan(getTextColor(getBackgroundColor())),
+                    0, coloredText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return coloredText;
+        } catch (Exception ex) {
+            Logger.printException(() -> "setLithoTextColor failure", ex);
+            return text;
+        }
     }
 
     private static GradientDrawable createBackground(@ColorInt int backgroundColor) {

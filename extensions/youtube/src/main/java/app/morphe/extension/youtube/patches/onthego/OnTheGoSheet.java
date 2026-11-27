@@ -423,7 +423,7 @@ final class OnTheGoSheet {
         // Download and Queue are only shown if the patches of these features are included.
         if (DownloadsPatch.canDownloadWithoutAppButton()) {
             ImageView downloadButton = createIconButton(Dim.dp48, Dim.dp12, v -> downloadVideo());
-            setIcon(downloadButton, "morphe_on_the_go_download",
+            setIcon(downloadButton, "morphe_download",
                     "yt_outline_experimental_download_vd_theme_24", "yt_outline_download_black_24");
             addCell(actions, downloadButton);
         }
@@ -435,7 +435,7 @@ final class OnTheGoSheet {
         addCell(actions, speedButton);
         if (AddToQueuePatch.isCustomQueueEnabled()) {
             ImageView queueButton = createIconButton(Dim.dp48, Dim.dp12, v -> openQueue());
-            setIcon(queueButton, "morphe_on_the_go_queue",
+            setIcon(queueButton, "morphe_queue_title",
                     "yt_outline_experimental_queue_vd_theme_24", "yt_outline_list_view_black_24");
             addCell(actions, queueButton);
         }

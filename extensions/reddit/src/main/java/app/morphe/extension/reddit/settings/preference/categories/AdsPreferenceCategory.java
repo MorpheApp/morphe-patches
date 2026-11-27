@@ -21,7 +21,7 @@ import app.morphe.extension.shared.Utils;
 public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
     public AdsPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle(str("morphe_screen_ads_title"));
+        setTitle(str("morphe_ads_screen_title"));
     }
 
     @Override

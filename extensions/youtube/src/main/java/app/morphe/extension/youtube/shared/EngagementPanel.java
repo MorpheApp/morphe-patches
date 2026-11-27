@@ -25,20 +25,46 @@ public final class EngagementPanel {
     private static final List<String> videoDescriptionPanelName = List.of("video-description-ep-identifier");
 
     /**
+     * Panel of the player in the tabletop layout of foldable devices, with the video on the upper half
+     * and the controls on the lower half.
+     */
+    private static final String TABLETOP_PANEL_ID = "tabletop-controls";
+
+    /**
+     * Called with true when the tabletop panel opens and false when it closes.
+     */
+    private static final Event<Boolean> onTabletopChange = new Event<>();
+
+    public static Event<Boolean> getOnTabletopChange() {
+        return onTabletopChange;
+    }
+
+    public static boolean isTabletopOpen() {
+        return contains(TABLETOP_PANEL_ID);
+    }
+
+    /**
      * Injection point.
      */
     public static void close(@Nullable String panelId) {
         if (Utils.isNotEmpty(panelId)) {
             if (contains(panelId)) {
+                boolean tabletopClosed = false;
                 while (!engagementPanels.isEmpty()) {
                     Panel panelToRemove = engagementPanels.pollLast();
 
                     if (panelToRemove != null) {
                         Logger.printDebug(() -> "EngagementPanel closed: " + panelToRemove.id());
+                        if (panelToRemove.id().equals(TABLETOP_PANEL_ID)) {
+                            tabletopClosed = true;
+                        }
                         if (panelToRemove.id().equals(panelId)) {
                             break;
                         }
                     }
+                }
+                if (tabletopClosed) {
+                    onTabletopChange.invoke(false);
                 }
             }
         }
@@ -54,6 +80,9 @@ public final class EngagementPanel {
             remove(panelId);
             engagementPanels.addLast(new Panel(panelId, ShortsPlayerState.isOpen()));
             Logger.printDebug(() -> "EngagementPanel open: " + panelId);
+            if (panelId.equals(TABLETOP_PANEL_ID)) {
+                onTabletopChange.invoke(true);
+            }
         }
     }
 

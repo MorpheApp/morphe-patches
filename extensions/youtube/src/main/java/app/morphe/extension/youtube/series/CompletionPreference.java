@@ -46,9 +46,9 @@ public final class CompletionPreference extends Preference {
                         sheet,
                         "morphe_series_tracker_completion_seconds",
                         CompletionPolicy.seconds(Settings.SERIES_TRACKER_COMPLETION_SECONDS.get()));
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
         sheet.action(
-                "morphe_series_tracker_ui_save",
+                "morphe_settings_save",
                 () -> {
                     Integer p = value(percent, 1, 100), s = value(seconds, 0, 300);
                     if (p == null || s == null) return;

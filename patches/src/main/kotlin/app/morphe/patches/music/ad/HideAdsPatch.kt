@@ -52,7 +52,7 @@ val hideAdsPatch = patch(
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_music_hide_get_premium_label"),
             SwitchPreference("morphe_music_hide_music_premium_promotions"),
-            SwitchPreference("morphe_music_hide_video_ads")
+            SwitchPreference("morphe_music_hide_video_ads", titleKey = "morphe_hide_video_ads_title")
         )
 
         addLithoFilter(ADS_FILTER)

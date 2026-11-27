@@ -96,6 +96,7 @@ public final class DeArrowAccountRequest {
     /**
      * @return The error to show, or null if the username was changed.
      */
+    @SuppressWarnings("CharsetObjectCanBeUsed")
     @Nullable
     public static String setUsername(String userName) {
         Utils.verifyOffMainThread();
@@ -108,13 +109,13 @@ public final class DeArrowAccountRequest {
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
-            return str("morphe_dearrow_account_username_change_error", responseCode, responseMessage);
+            return str("morphe_username_change_unknown_error", responseCode, responseMessage);
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not change DeArrow username", ex);
-            return str("morphe_dearrow_account_username_change_error", 0, ex.getMessage());
+            return str("morphe_username_change_unknown_error", 0, ex.getMessage());
         } catch (Exception ex) {
             Logger.printException(() -> "setUsername failure", ex);
-            return str("morphe_dearrow_account_username_change_error", 0, ex.getMessage());
+            return str("morphe_username_change_unknown_error", 0, ex.getMessage());
         }
     }
 

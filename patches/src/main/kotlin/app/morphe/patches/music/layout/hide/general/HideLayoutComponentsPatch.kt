@@ -62,7 +62,7 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_music_hide_explore_shelf"),
             SwitchPreference("morphe_music_hide_grid_shelves"),
             SwitchPreference("morphe_music_hide_filter_bar"),
-            SwitchPreference("morphe_music_hide_horizontal_shelves"),
+            SwitchPreference("morphe_music_hide_horizontal_shelves", titleKey = "morphe_hide_horizontal_shelves_title"),
             SwitchPreference("morphe_music_hide_list_shelves"),
             SwitchPreference("morphe_music_hide_new_button", summary = true),
             SwitchPreference("morphe_music_hide_new_from_shelf"),
@@ -96,17 +96,21 @@ val hideLayoutComponentsPatch = patch(
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_music_comments_screen",
-                titleKey = "morphe_music_comments_screen_title",
-                summaryKey = "morphe_music_comments_screen_summary",
+                titleKey = "morphe_comments_screen_title",
+                summaryKey = "morphe_comments_screen_summary",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_music_hide_comments_community_guidelines"),
+                    SwitchPreference("morphe_music_hide_comments_community_guidelines", titleKey = "morphe_hide_comments_community_guidelines_title"),
                     SwitchPreference("morphe_music_hide_comments_context"),
-                    SwitchPreference("morphe_music_hide_comments_emoji_button"),
-                    SwitchPreference("morphe_music_hide_comments_gif_button"),
-                    SwitchPreference("morphe_music_hide_comments_gifs_and_images", summary = true),
-                    SwitchPreference("morphe_music_hide_comments_info_button"),
-                    SwitchPreference("morphe_music_hide_comments_timestamp_button")
+                    SwitchPreference("morphe_music_hide_comments_emoji_button", titleKey = "morphe_hide_comments_emoji_button_title"),
+                    SwitchPreference("morphe_music_hide_comments_gif_button", titleKey = "morphe_hide_comments_gif_button_title"),
+                    SwitchPreference(
+                        "morphe_music_hide_comments_gifs_and_images",
+                        titleKey = "morphe_hide_comments_gifs_and_images_title",
+                        summaryKey = "morphe_hide_comments_gifs_and_images_summary"
+                    ),
+                    SwitchPreference("morphe_music_hide_comments_info_button", titleKey = "morphe_hide_comments_info_button_title"),
+                    SwitchPreference("morphe_music_hide_comments_timestamp_button", titleKey = "morphe_hide_comments_timestamp_button_title")
                 )
             ),
             SwitchPreference("morphe_music_hide_audio_video_toggle"),
@@ -117,7 +121,7 @@ val hideLayoutComponentsPatch = patch(
                         "morphe_music_hide_lyrics_share_button",
                         titleKey = "morphe_music_hide_share_button_title"
                     ),
-                    SwitchPreference("morphe_music_hide_lyrics_translate_button")
+                    SwitchPreference("morphe_music_hide_lyrics_translate_button", titleKey = "morphe_hide_translate_button_title")
                 )
             ),
             SwitchPreference("morphe_music_hide_repeat_button"),

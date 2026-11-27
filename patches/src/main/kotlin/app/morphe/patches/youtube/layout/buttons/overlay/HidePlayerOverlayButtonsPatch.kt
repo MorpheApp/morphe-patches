@@ -66,7 +66,7 @@ val hidePlayerOverlayButtonsPatch = patch(
                 SwitchPreference("morphe_hide_collapse_button"),
                 SwitchPreference("morphe_hide_fullscreen_button"),
                 SwitchPreference("morphe_hide_player_control_buttons_background", summary = true),
-                SwitchPreference("morphe_hide_player_previous_next_buttons"),
+                SwitchPreference("morphe_hide_player_previous_next_buttons", titleKey = "morphe_hide_previous_next_buttons_title"),
                 SwitchPreference("morphe_hide_settings_button"),
             ),
             NonInteractivePreference(

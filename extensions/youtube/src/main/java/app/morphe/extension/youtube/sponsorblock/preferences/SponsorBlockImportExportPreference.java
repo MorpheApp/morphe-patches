@@ -104,7 +104,7 @@ public class SponsorBlockImportExportPreference extends EditTextPreference {
                         }
                     },
                     () -> {},
-                    str("morphe_sb_settings_copy"),
+                    str("morphe_settings_copy"),
                     () -> {
                         try {
                             Utils.setClipboard(editText.getText());

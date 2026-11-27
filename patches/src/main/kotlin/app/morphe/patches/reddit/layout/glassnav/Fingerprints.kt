@@ -20,6 +20,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val BOTTOM_NAV_SCREEN_CLASS = "Lcom/reddit/launch/bottomnav/BottomNavScreen;"
 
@@ -330,5 +331,213 @@ internal object HomeTopBarFingerprint : Fingerprint(
             parameters = listOf("I", "I", "L", "L", "Landroidx/compose/runtime/internal/a;"),
             returnType = "V"
         )
+    )
+)
+
+/**
+ * Home feed tab row (For You, Following, Popular), 2026.45.0+
+ */
+internal object HomeTabBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "L",
+        "Lkotlin/jvm/functions/Function1;",
+        "Z",
+        "Z",
+        "Lcom/reddit/listing/model/sort/SortType;",
+        "Lkotlin/jvm/functions/Function2;",
+        "F",
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        string("home_tab_bar"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf(
+                "Ljava/util/List;",
+                "L",
+                "L",
+                "Z",
+                "Lcom/reddit/ui/compose/ds/TabsArrangement;",
+                "L",
+                "Lcom/reddit/ui/compose/ds/TabSize;",
+                "L",
+                "Lkotlin/jvm/functions/Function1;",
+                "L",
+                "Landroidx/compose/runtime/internal/a;",
+                "L",
+                "I",
+                "I"
+            ),
+            returnType = "V"
+        )
+    )
+)
+
+/**
+ * Wrapper around the home tab bar with its modifier and top padding, 2026.45.0+
+ */
+internal object HomeTabBarWrapperFingerprint : Fingerprint(
+    classFingerprint = HomeTabBarFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "L",
+        "Lkotlin/jvm/functions/Function1;",
+        "L",
+        "Z",
+        "Lcom/reddit/listing/model/sort/SortType;",
+        "Lkotlin/jvm/functions/Function2;",
+        "F",
+        "L",
+        "I"
+    )
+)
+
+/**
+ * Height of the home feed tab row header, 2026.45.0+
+ */
+internal object HomeTabBarHeightFingerprint : Fingerprint(
+    classFingerprint = HomeTabBarFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "F",
+    parameters = listOf("Z", "L")
+)
+
+/**
+ * Item of the home feed tab row, 2026.47.0+
+ */
+internal object HomeTabItemFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf("L", "F", "F", "F", "F", "I"),
+            returnType = "L"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        string("home_tab_", location = MatchAfterWithin(3)),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf(
+                "Landroidx/compose/runtime/internal/a;",
+                "Lkotlin/jvm/functions/Function0;",
+                "L",
+                "Z",
+                "Z",
+                "Lcom/reddit/ui/compose/ds/TabSize;",
+                "Lkotlin/jvm/functions/Function2;",
+                "Lkotlin/jvm/functions/Function2;",
+                "L",
+                "Ljava/lang/String;",
+                "L",
+                "L",
+                "I",
+                "I"
+            ),
+            returnType = "V"
+        )
+    )
+)
+
+/**
+ * Label of an item in the home feed tab row, 2026.47.0+
+ */
+internal object HomeTabLabelFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "Lcom/reddit/feedslegacy/switcher/homepager/model/HomePagerScreenTabUiModel;",
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            parameters = listOf(
+                "Ljava/lang/String;", "L", "J", "J", "L", "L", "L", "J", "L", "I", "J",
+                "I", "Z", "I", "I", "Lkotlin/jvm/functions/Function1;", "L", "L", "I", "I", "I"
+            ),
+            returnType = "V",
+            location = MatchAfterWithin(40)
+        )
+    )
+)
+
+/**
+ * Indicator of a tab row. Uses a RoundedCornerShape, 2026.47.0+
+ */
+internal fun tabRowIndicatorFingerprint(tabRowClass: String) = Fingerprint(
+    definingClass = tabRowClass,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "L", "L", "Z"),
+    filters = listOf(
+        literal(2.0f),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("F"),
+            returnType = "L",
+            location = MatchAfterWithin(6)
+        )
+    )
+)
+
+/**
+ * Calls the indicator of a tab row with the pager state of the tab row, 2026.48.0+
+ */
+internal fun tabRowIndicatorCallerFingerprint(pagerType: String, indicatorMethod: MethodReference) = Fingerprint(
+    filters = listOf(
+        checkCast(pagerType),
+        methodCall(reference = indicatorMethod)
+    )
+)
+
+/**
+ * Calls the indicator of a tab row with the pager state of the tab row.
+ * Before 2026.48.0 the pager state is a field of the indicator lambda.
+ */
+internal fun tabRowIndicatorCallerLegacyFingerprint(pagerType: String, indicatorMethod: MethodReference) = Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = pagerType
+        ),
+        methodCall(reference = indicatorMethod)
+    )
+)
+
+/**
+ * Uses the height of the home feed tab row header.
+ * The tab bar itself uses the height too, so its class is excluded.
+ */
+internal fun homeTabBarHeightCallerFingerprint(heightMethod: MethodReference, tabBarClass: String) = Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(reference = heightMethod),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    ),
+    custom = { _, classDef -> classDef.type != tabBarClass }
+)
+
+internal object NewRoundedCornerShapeFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs;",
+    name = "newRoundedCornerShape",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("F")
+)
+
+/**
+ * Button in the bottom navigation bar. Its parameters start with
+ * (L, Function0, String, Z selected, Modifier) in all versions, and the later ones differ.
+ */
+internal object BottomNavButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        string("bottom_nav_button")
     )
 )

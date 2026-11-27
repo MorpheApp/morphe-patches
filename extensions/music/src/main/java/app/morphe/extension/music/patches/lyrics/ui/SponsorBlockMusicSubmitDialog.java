@@ -227,9 +227,9 @@ final class SponsorBlockMusicSubmitDialog {
         buttonRow.setOrientation(LinearLayout.HORIZONTAL);
 
         Button copyButton = CustomDialog.createButton(context, dialog,
-                str("morphe_sb_settings_copy"), () -> copySpan(context, videoId, times), false, false);
+                str("morphe_settings_copy"), () -> copySpan(context, videoId, times), false, false);
         Button submitButton = CustomDialog.createButton(context, dialog,
-                str("morphe_sb_new_segment_confirm_submit"),
+                str("morphe_submit"),
                 () -> {
                     final long start = times[0];
                     final long end = times[1];

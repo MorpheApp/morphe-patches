@@ -64,10 +64,10 @@ public final class GhostChannelManagerDialog {
 
             Pair<Dialog, LinearLayout> created = CustomDialog.create(
                     context,
-                    str("morphe_ghost_play_channels_manager_title"),
+                    str("morphe_ghost_play_manage_channels_title"),
                     null,
                     null,
-                    str("morphe_ghost_play_close"),
+                    str("morphe_settings_close"),
                     () -> {},
                     null,
                     null,
@@ -205,7 +205,7 @@ public final class GhostChannelManagerDialog {
             });
 
             searchActionBtn = new TextView(context);
-            searchActionBtn.setText(str("morphe_ghost_play_channels_search_button"));
+            searchActionBtn.setText(str("morphe_search"));
             searchActionBtn.setTextColor(GhostTheme.onAccent());
             searchActionBtn.setTextSize(13f);
             searchActionBtn.setTypeface(null, Typeface.BOLD);
@@ -328,7 +328,7 @@ public final class GhostChannelManagerDialog {
             label.setEllipsize(TextUtils.TruncateAt.END);
 
             TextView addBtn = new TextView(context);
-            addBtn.setText(str("morphe_ghost_play_channels_add_button"));
+            addBtn.setText(str("morphe_settings_add"));
             addBtn.setTextColor(GhostTheme.onAccent());
             addBtn.setTextSize(12f);
             addBtn.setTypeface(null, Typeface.BOLD);
@@ -410,7 +410,7 @@ public final class GhostChannelManagerDialog {
             top.addView(chevron);
 
             TextView delBtn = new TextView(context);
-            delBtn.setText(str("morphe_ghost_play_channels_delete_button"));
+            delBtn.setText(str("morphe_settings_remove"));
             delBtn.setTextColor(GhostTheme.danger());
             delBtn.setTextSize(11.5f);
             delBtn.setTypeface(null, Typeface.BOLD);
@@ -593,7 +593,7 @@ public final class GhostChannelManagerDialog {
             TextView actionBtn = new TextView(context);
             actionBtn.setText(str(alreadyAdded
                     ? "morphe_ghost_play_channels_added_badge"
-                    : "morphe_ghost_play_channels_add_button"));
+                    : "morphe_settings_add"));
             actionBtn.setTextColor(alreadyAdded ? GhostTheme.mutedText() : GhostTheme.onAccent());
             actionBtn.setTextSize(12f);
             actionBtn.setTypeface(null, Typeface.BOLD);

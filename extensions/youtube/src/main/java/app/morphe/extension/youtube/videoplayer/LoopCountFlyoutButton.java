@@ -89,7 +89,7 @@ public class LoopCountFlyoutButton {
                     ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
                             ? "yt_outline_experimental_hashtag_vd_theme_24"
                             : "yt_outline_hashtag_black_24"),
-                    str("morphe_loop_count_flyout_name"),
+                    str("morphe_loop_count_screen_title"),
                     v -> stepper.showInputDialog(),
                     nextButtonIndex,
                     stepper.view,
@@ -279,7 +279,7 @@ public class LoopCountFlyoutButton {
             valueView.setText(formatLoopCount(loopCount));
             valueView.setContentDescription(loopCount > 0
                     ? str("morphe_loop_count_times", String.valueOf(loopCount))
-                    : str("morphe_loop_count_no_limit"));
+                    : str("morphe_no_limit"));
 
             setArrowEnabled(decreaseButton, loopCount > 0);
             setArrowEnabled(increaseButton, loopCount < MAX_LOOP_COUNT);
@@ -311,7 +311,7 @@ public class LoopCountFlyoutButton {
 
                 Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                         context,
-                        str("morphe_loop_count_flyout_name"),
+                        str("morphe_loop_count_screen_title"),
                         str("morphe_loop_count_dialog_message",
                                 String.valueOf(MIN_LOOP_COUNT), String.valueOf(MAX_LOOP_COUNT)),
                         editText,

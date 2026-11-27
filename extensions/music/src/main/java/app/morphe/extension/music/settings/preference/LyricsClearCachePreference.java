@@ -134,7 +134,7 @@ public class LyricsClearCachePreference extends Preference {
                     str("morphe_music_lyrics_clear_cache_title"),
                     null,
                     null,
-                    str("morphe_music_lyrics_cache_close_action"),
+                    str("morphe_settings_close"),
                     () -> { },
                     null,
                     str("morphe_music_lyrics_cache_clear_all_title"),
@@ -150,15 +150,15 @@ public class LyricsClearCachePreference extends Preference {
             cardsContainer.setOrientation(LinearLayout.VERTICAL);
 
             final CardViews lyricsCard = addBucketCard(context, cardsContainer,
-                    str("morphe_music_lyrics_cache_lyrics_category_title"), true);
+                    str("morphe_music_lyrics_cache_lyrics_category_title"));
             final CardViews translationCard = addBucketCard(context, cardsContainer,
-                    str("morphe_music_lyrics_cache_translation_category_title"), true);
+                    str("morphe_music_lyrics_cache_translation_category_title"));
             final CardViews transliterationCard = addBucketCard(context, cardsContainer,
-                    str("morphe_music_lyrics_cache_transliteration_category_title"), true);
+                    str("morphe_music_lyrics_cache_transliteration_category_title"));
             final CardViews aiSectionCard = addBucketCard(context, cardsContainer,
-                    str("morphe_music_lyrics_cache_ai_section_category_title"), true);
+                    str("morphe_music_lyrics_cache_ai_section_category_title"));
             final CardViews offsetCard = addBucketCard(context, cardsContainer,
-                    str("morphe_music_lyrics_cache_offset_category_title"), true);
+                    str("morphe_music_lyrics_cache_offset_category_title"));
             final CardViews totalCard = addTotalCard(context, cardsContainer,
                     str("morphe_music_lyrics_cache_total_category_title"));
 
@@ -268,7 +268,7 @@ public class LyricsClearCachePreference extends Preference {
                     title,
                     str(confirmKey, size, targetStats.items()),
                     null,
-                    str("morphe_music_lyrics_cache_clear_action"),
+                    str("morphe_settings_clear"),
                     () -> {
                         clearingInProgress[0] = true;
                         Utils.runOnBackgroundThread(() -> {
@@ -316,7 +316,7 @@ public class LyricsClearCachePreference extends Preference {
     }
 
     private static CardViews addBucketCard(Context context, LinearLayout parent,
-                                           String title, boolean withClearButton) {
+                                           String title) {
         LinearLayout card = new LinearLayout(context);
         card.setOrientation(LinearLayout.HORIZONTAL);
         card.setGravity(Gravity.CENTER_VERTICAL);
@@ -352,18 +352,16 @@ public class LyricsClearCachePreference extends Preference {
         summaryParams.topMargin = Dim.dp(2);
         textCol.addView(summaryView, summaryParams);
 
-        Button clearBtn = null;
-        if (withClearButton) {
-            clearBtn = CustomDialog.createButton(
-                    context, null, str("morphe_music_lyrics_cache_clear_action"),
-                    null, false, false);
-            clearBtn.setTextSize(13);
-            clearBtn.setTypeface(Typeface.DEFAULT_BOLD);
-            clearBtn.setPadding(Dim.dp16, Dim.dp(6), Dim.dp16, Dim.dp(6));
-            LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, Dim.dp(34));
-            card.addView(clearBtn, btnParams);
-        }
+        Button clearBtn;
+        clearBtn = CustomDialog.createButton(
+                context, null, str("morphe_settings_clear"),
+                null, false, false);
+        clearBtn.setTextSize(13);
+        clearBtn.setTypeface(Typeface.DEFAULT_BOLD);
+        clearBtn.setPadding(Dim.dp16, Dim.dp(6), Dim.dp16, Dim.dp(6));
+        LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, Dim.dp(34));
+        card.addView(clearBtn, btnParams);
 
         return new CardViews(summaryView, clearBtn);
     }

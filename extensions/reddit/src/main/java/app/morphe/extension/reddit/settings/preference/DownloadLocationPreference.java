@@ -410,7 +410,7 @@ public final class DownloadLocationPreference extends Preference {
                 location.label,
                 null,
                 null,
-                str("morphe_download_location_save"),
+                str("morphe_settings_save"),
                 () -> {
                     save(account, tree[0] != null ? tree[0]
                                     : getFolder(rootFolder[0], subfolderInput.getText().toString()),
@@ -419,10 +419,10 @@ public final class DownloadLocationPreference extends Preference {
                     onSaved.run();
                 },
                 () -> {},
-                str(account == null ? "morphe_download_location_reset" : "morphe_download_location_delete"),
+                str(account == null ? "morphe_settings_reset" : "morphe_settings_delete"),
                 () -> CustomDialog.create(
                         context,
-                        str(account == null ? "morphe_download_location_reset" : "morphe_download_location_delete"),
+                        str(account == null ? "morphe_settings_reset" : "morphe_settings_delete"),
                         str(account == null
                                 ? "morphe_download_location_reset_confirm"
                                 : "morphe_download_location_delete_confirm", location.label),

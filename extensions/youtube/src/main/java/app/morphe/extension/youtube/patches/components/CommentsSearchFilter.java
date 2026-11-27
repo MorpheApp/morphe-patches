@@ -116,10 +116,7 @@ public final class CommentsSearchFilter extends Filter {
     private static final Pattern SEARCH_TERM_PATTERN = Pattern.compile("\"([^\"]*)\"|(\\S+)");
 
     /**
-     * The comment of each thread is laid out from its outermost component to its innermost.
-     * Each component has a buffer of its own, and only the buffer of the outermost component
-     * holds the whole comment, such as its author and its text. The comment is shown or hidden
-     * as a whole by the outermost component, and its inner components are never hidden alone.
+     * The last comment searched, whose replies can be laid out after it outside the comment.
      * <p>
      * Litho lays out on more than one thread, so each thread keeps its own comment.
      */
@@ -181,10 +178,9 @@ public final class CommentsSearchFilter extends Filter {
      * Marks an id found in comments that are shown and in comments that are hidden,
      * such as an id of the layout, which tells nothing of the comment.
      */
-    private static final CommentDecision AMBIGUOUS_ID = new CommentDecision("", Collections.emptyList(), false);
+    private static final CommentDecision AMBIGUOUS_ID = new CommentDecision(Collections.emptyList(), false);
 
     private static final class CommentDecision {
-        final String path;
         final List<String> terms;
         final boolean hidden;
         /**
@@ -192,8 +188,7 @@ public final class CommentsSearchFilter extends Filter {
          */
         boolean hideReplies;
 
-        CommentDecision(String path, List<String> terms, boolean hidden) {
-            this.path = path;
+        CommentDecision(List<String> terms, boolean hidden) {
             this.terms = terms;
             this.hidden = hidden;
             this.hideReplies = hidden;
@@ -251,14 +246,23 @@ public final class CommentsSearchFilter extends Filter {
             return isRepliesHidden(path, buffer, terms, last);
         }
 
-        if (last != null && last.terms == terms
-                && path.length() > last.path.length() && Utils.startsWith(path, last.path)) {
-            // Inner component of the comment that was already searched.
-            return last.hidden;
+        // Only the outermost component of the comment, the component right inside the thread such as
+        // 'comment_thread.eml|ContainerType|', holds the whole comment, such as its author and its text,
+        // and it shows or hides the comment as a whole. The inner components are never hidden: Litho also
+        // lays them out apart from their comment, such as the like button when its count changes or the
+        // button that shows the replies, and their buffer holds only their own part of the comment.
+        // As all comments are laid out from the same components, their paths do not tell which comment
+        // an inner component is of, but the inner components of a hidden comment are never shown anyway.
+        String commentPath = path.toString();
+        final int identifierStart = commentPath.lastIndexOf('|', commentPath.length() - 2)
+                - identifier.length();
+        if (identifierStart < 0 || !commentPath.startsWith(identifier, identifierStart)
+                || (identifierStart > 0 && commentPath.charAt(identifierStart - 1) != '|')) {
+            return false;
         }
 
         if (buffer.length == 0) {
-            return false; // Nothing to search, so the comment is left for its inner components.
+            return false; // Nothing to search.
         }
 
         final int contentHash = Arrays.hashCode(buffer);
@@ -270,8 +274,7 @@ public final class CommentsSearchFilter extends Filter {
             searchedComments.put(contentHash, searched);
         }
         final boolean hidden = searched.hidden;
-        String commentPath = path.toString();
-        CommentDecision decision = new CommentDecision(commentPath, terms, hidden);
+        CommentDecision decision = new CommentDecision(terms, hidden);
         lastComment.set(decision);
         searched.decision = decision;
         if (repliesOutsideComments) {
@@ -572,7 +575,7 @@ public final class CommentsSearchFilter extends Filter {
 
         FrameLayout button = new FrameLayout(context);
         button.setTag(SEARCH_BUTTON_TAG);
-        button.setContentDescription(str("morphe_comment_search_dialog_title"));
+        button.setContentDescription(str("morphe_comment_search_title"));
         button.setClickable(true);
         button.setFocusable(true);
 
@@ -602,7 +605,7 @@ public final class CommentsSearchFilter extends Filter {
     private static void showSearchDialog(Context context, View searchButton) {
         SearchDialog.show(
                 context,
-                str("morphe_comment_search_dialog_title"),
+                str("morphe_comment_search_title"),
                 str("morphe_comment_search_hint"),
                 isSearching() ? searchText : "",
                 newText -> {
@@ -615,7 +618,7 @@ public final class CommentsSearchFilter extends Filter {
                                 : "morphe_comment_search_applied"));
                     }
                 },
-                str("morphe_comment_search_clear"),
+                str("morphe_settings_clear"),
                 () -> {
                     setSearch("");
                     updateSearchButtonIcon(searchButton);

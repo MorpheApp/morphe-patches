@@ -52,7 +52,7 @@ val videoEffectsPatch = videoEffectsPatch(
     hookVideoId = ::musicVideoIdHook,
     executeBlock = {
         PreferenceScreen.VIDEO.addPreferences(
-            SwitchPreference("morphe_music_video_effect_menu", summary = true)
+            SwitchPreference("morphe_music_video_effect_menu", titleKey = "morphe_show_video_effect_menu_title", summary = true)
         )
 
         // Add the video effect item after the Quality item, which the app adds only while a video plays.

@@ -21,7 +21,6 @@ import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.ElementItemConstructorFingerprint
-import app.morphe.patches.shared.misc.litho.filter.listSectionIsEmptyFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
@@ -35,10 +34,10 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.hookVideoIntentInterceptor
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -47,12 +46,6 @@ private const val EXTENSION_CLASS =
 
 private const val EXTENSION_ELEMENT_ITEM_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch$ElementItemInterface;"
-
-private const val EXTENSION_LIST_LAYOUT_INFO_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch$ListLayoutInfoInterface;"
-
-private const val EXTENSION_LIST_SECTION_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch$ListSectionInterface;"
 
 private const val RECYCLER_VIEW_CLASS = "Landroid/support/v7/widget/RecyclerView;"
 
@@ -117,6 +110,8 @@ val feedCardLayoutPatch = patch(
             ListPreference("morphe_feed_card_layout")
         )
 
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
         // The layout is chosen by the experiments that the server sends in the context of every element.
         hookElement("$EXTENSION_CLASS->setFeedCardLayout")
 
@@ -172,79 +167,13 @@ val feedCardLayoutPatch = patch(
         // Some lists, such as the Home feed of the accounts of a newer A/B test, add a gap between the rows
         // of a section, and the cards have their own spacing.
         if (is_21_14_or_greater) {
-            SectionLayoutDescriptorConstructorFingerprint.let { descriptor ->
-                descriptor.method.addInstructions(
-                    0,
-                    """
-                        invoke-static { p1, p2 }, $EXTENSION_CLASS->getSectionRowGap(IF)F
-                        move-result p2
-                    """
-                )
-
-                // The default layout gives the spacing of the cards only to the cards of a newer A/B test,
-                // so the gap is removed only from the lists with these cards, found by the items of the list
-                // when the layout manager of the list reads the gap.
-                val columnCountField = descriptor.instructionMatches[0].fieldReference
-                val rowGapField = descriptor.instructionMatches[1].fieldReference
-
-                ListLayoutInfoConstructorFingerprint.let { constructor ->
-                    val layoutInfoType = constructor.classDef.type
-                    val sectionsField = constructor.instructionMatches.first().fieldReference
-                    val sectionType = sectionsField.type
-
-                    constructor.classDef.apply {
-                        addPatchInterface(
-                            EXTENSION_LIST_LAYOUT_INFO_INTERFACE,
-                            "patch_getColumnCount",
-                            ListLayoutInfoValueFingerprint(layoutInfoType, columnCountField, listOf("I")).method
-                        )
-                        addPatchInterface(EXTENSION_LIST_LAYOUT_INFO_INTERFACE, "patch_getSection", sectionsField)
-                    }
-
-                    mutableClassDefBy(sectionType).apply {
-                        addPatchInterface(
-                            EXTENSION_LIST_SECTION_INTERFACE,
-                            "patch_getItemCount",
-                            listSectionIsEmptyFingerprint(sectionType).instructionMatches.first().methodReference
-                        )
-                        addPatchInterface(
-                            EXTENSION_LIST_SECTION_INTERFACE,
-                            "patch_getItem",
-                            ListSectionItemFingerprint(sectionType).method
-                        )
-                    }
-
-                    ListSectionRowLayoutFingerprint(
-                        ListLayoutInfoValueFingerprint(layoutInfoType, rowGapField, listOf("I")).method.name,
-                        ListLayoutInfoValueFingerprint(layoutInfoType, rowGapField, listOf()).method.name
-                    ).let {
-                        it.method.apply {
-                            val positionRegister = getInstruction<FiveRegisterInstruction>(
-                                it.instructionMatches[0].index
-                            ).registerD
-
-                            val getRowGap = "$EXTENSION_CLASS->getRowGap(Ljava/lang/Object;II)I"
-
-                            // The row gap of the list, then the row gap of the section of the item.
-                            listOf(2, 0).forEach { callMatch ->
-                                val layoutInfoRegister = getInstruction<FiveRegisterInstruction>(
-                                    it.instructionMatches[callMatch].index
-                                ).registerC
-                                val moveResultIndex = it.instructionMatches[callMatch + 1].index
-                                val gapRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-
-                                addInstructions(
-                                    moveResultIndex + 1,
-                                    """
-                                        invoke-static { v$layoutInfoRegister, v$positionRegister, v$gapRegister }, $getRowGap
-                                        move-result v$gapRegister
-                                    """
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+            SectionLayoutDescriptorConstructorFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS->getSectionRowGap(IF)F
+                    move-result p2
+                """
+            )
         }
 
         mutableClassDefBy(RECYCLER_VIEW_CLASS).apply {

@@ -15,8 +15,8 @@ import app.morphe.extension.shared.sponsorblock.SponsorBlockApi;
 public class SponsorSegment implements Comparable<SponsorSegment> {
 
     public enum SegmentVote {
-        UPVOTE(sf("morphe_sb_vote_upvote"), 1,false),
-        DOWNVOTE(sf("morphe_sb_vote_downvote"), 0, true),
+        UPVOTE(sf("morphe_vote_upvote"), 1,false),
+        DOWNVOTE(sf("morphe_vote_downvote"), 0, true),
         CATEGORY_CHANGE(sf("morphe_sb_vote_category"), -1, true); // ApiVoteType is not used for category change.
 
         public static final SegmentVote[] voteTypesWithoutCategoryChange = {

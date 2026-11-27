@@ -21,7 +21,7 @@ import app.morphe.extension.shared.Utils;
 public class PostButtonsPreferenceCategory extends ConditionalPreferenceCategory {
     public PostButtonsPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle(str("morphe_screen_post_buttons_title"));
+        setTitle(str("morphe_post_buttons_screen_title"));
     }
 
     @Override

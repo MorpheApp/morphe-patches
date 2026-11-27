@@ -102,7 +102,7 @@ public class NavigationButtonsOrderPreference extends Preference {
                 case NavigationBarPatch.SEARCH_PIVOT_IDENTIFIER -> str("menu_search");
                 case NavigationBarPatch.SETTINGS_PIVOT_IDENTIFIER,
                      NavigationBarPatch.SETTING_BUTTON_ENUM_NAME -> str("menu_settings");
-                case NavigationBarPatch.WATCH_LATER_PIVOT_IDENTIFIER -> str("morphe_watch_later_navigation_label");
+                case NavigationBarPatch.WATCH_LATER_PIVOT_IDENTIFIER -> str("morphe_watch_later");
                 case HistoryNavigation.PIVOT_IDENTIFIER -> str("morphe_series_tracker_ui_series");
                 default -> discoveredButtons.get(id);
             });

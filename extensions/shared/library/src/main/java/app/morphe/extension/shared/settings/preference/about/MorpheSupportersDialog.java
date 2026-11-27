@@ -69,7 +69,7 @@ class MorpheSupportersDialog extends AboutWebViewDialog {
                 + AboutDialogStyle.donateIcon()
                 + "<span>" + str("morphe_settings_about_supporters_become") + "</span></a>";
 
-        html.append(AboutDialogStyle.pageEnd(str("morphe_settings_about_close"), becomeSupporter))
+        html.append(AboutDialogStyle.pageEnd(str("morphe_settings_close"), becomeSupporter))
                 .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();

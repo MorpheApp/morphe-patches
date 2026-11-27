@@ -60,6 +60,7 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -100,6 +101,9 @@ public class ThemePatch extends BaseThemePatch {
         try {
             if (color == DARK_CHIP_AND_CARD_COLOR
                     && !ThemeColorPatch.isAppDefaultColor()
+                    // A feed without cards has this color only in places that are themed,
+                    // such as the header of the Shorts shelf.
+                    && (!FeedCardLayoutPatch.isPatchIncluded() || FeedCardLayoutPatch.feedShowsCards())
                     && isFeedItem(drawable)) {
                 // Only exact colors are themed. The lowest bit of green is not visible, and blue is not used
                 // because the feed card layout hook flips its lowest bit, which would undo the change.
@@ -109,6 +113,19 @@ public class ThemePatch extends BaseThemePatch {
             Logger.printException(() -> "getFeedCardColor failure", ex);
         }
         return color;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The view below the ambient mode image of the watch page is always black. 21.47+ shows it behind the whole
+     * watch page, where older versions show the background of the theme, so it gets the selected dark theme color.
+     */
+    @ColorInt
+    public static int getCinematicBackgroundColor(@ColorInt int color) {
+        return color == Color.BLACK && Utils.isDarkModeEnabled() && !ThemeColorPatch.isAppDefaultColor()
+                ? ThemeUtils.getThemeDarkColor()
+                : color;
     }
 
     /**

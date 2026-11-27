@@ -74,13 +74,14 @@ private val sponsorBlockResourcePatch = patch {
             SwitchPreference("morphe_sb_enabled", summary = true),
             PreferenceCategory(
                 key = "morphe_sb_appearance_category",
+                titleKey = "morphe_appearance_title",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_sb_voting_button", summary = true),
                     SwitchPreference("morphe_sb_compact_skip_button", summary = true),
                     SwitchPreference("morphe_sb_auto_hide_skip_button", summary = true),
                     ListPreference(key = "morphe_sb_auto_hide_skip_button_duration"),
-                    SwitchPreference("morphe_sb_toast_on_skip", summary = true),
+                    SwitchPreference("morphe_sb_toast_on_skip", titleKey = "morphe_toast_on_skip_title", summary = true),
                     ListPreference(key = "morphe_sb_toast_on_skip_duration"),
                     SwitchPreference("morphe_sb_video_length_without_segments", summary = true),
                     SwitchPreference("morphe_sb_square_layout", summary = true)
@@ -113,6 +114,7 @@ private val sponsorBlockResourcePatch = patch {
                     ),
                     TextPreference(
                         key = "morphe_sb_create_new_segment_step",
+                        titleKey = "morphe_time_adjustment_step_title",
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockSegmentStepPreference",
                         inputType = InputType.NUMBER
                     ),
@@ -125,10 +127,11 @@ private val sponsorBlockResourcePatch = patch {
             ),
             PreferenceCategory(
                 key = "morphe_sb_general",
+                titleKey = "morphe_general_title",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_sb_offline_segments", summary = true),
-                    SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+                    SwitchPreference("morphe_sb_toast_on_connection_error", titleKey = "morphe_toast_on_connection_error_title", summary = true),
                     SwitchPreference("morphe_sb_track_skip_count", summary = true),
                     TextPreference(
                         key = "morphe_sb_min_segment_duration",
@@ -136,6 +139,7 @@ private val sponsorBlockResourcePatch = patch {
                     ),
                     TextPreference(
                         key = "morphe_sb_private_user_id_Do_Not_Share",
+                        titleKey = "morphe_private_user_id_title",
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
                     ),
                     NonInteractivePreference(

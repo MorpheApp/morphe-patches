@@ -190,7 +190,7 @@ public class SponsorBlockSettings {
                     null, // OK button text.
                     () -> {}, // OK button action (dismiss only).
                     null, // No cancel button action.
-                    str("morphe_sb_settings_morphe_export_user_id_warning_dismiss"), // Neutral button text.
+                    str("morphe_do_not_show_again"), // Neutral button text.
                     () -> Settings.SB_HIDE_EXPORT_WARNING.save(true), // Neutral button action.
                     true // Dismiss dialog when onNeutralClick.
             );

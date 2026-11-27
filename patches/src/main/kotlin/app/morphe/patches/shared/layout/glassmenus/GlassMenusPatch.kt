@@ -57,7 +57,7 @@ internal fun glassMenusPatch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_glass_menus", summary = true),
-                    NonInteractivePreference(key = "morphe_glass_menus_opacity", tag = SEEKBAR_PREFERENCE),
+                    NonInteractivePreference(key = "morphe_glass_menus_opacity", titleKey = "morphe_glass_opacity_title", tag = SEEKBAR_PREFERENCE),
                     NonInteractivePreference(key = "morphe_glass_menus_blur", tag = SEEKBAR_PREFERENCE),
                     NonInteractivePreference(key = "morphe_glass_menus_dim", tag = SEEKBAR_PREFERENCE),
                 ),
@@ -83,7 +83,7 @@ internal fun glassMenusPatch(
             }
         }
 
-        // The sheets of Morphe, such as the playback speed and the voice over translation.
+        // The sheets of Morphe, such as the playback speed and the voice-over translation.
         SlideDialogCreateFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA

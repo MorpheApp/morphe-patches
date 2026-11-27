@@ -17,19 +17,9 @@ Second \"item\" text"</string>
 <resources>
     <!-- misc.settings.settingsPatch -->
 
-    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-    <string name="morphe_settings_screen_00_about_title">About</string>
-    <string name="morphe_settings_screen_01_ads_title">Ads</string>
     <string name="morphe_settings_screen_02_dearrow_title" translatable="false">DeArrow</string>
-    <string name="morphe_settings_screen_03_feed_title">Feed</string>
-    <string name="morphe_settings_screen_04_general_title">General</string>
-    <string name="morphe_settings_screen_05_player_title">Player</string>
-    <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
     <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
     <string name="morphe_settings_screen_08_swipe_controls_title">Swipe controls</string>
-    <string name="morphe_settings_screen_09_return_youtube_dislike_title" translatable="false">Return YouTube Dislike</string>
-    <string name="morphe_settings_screen_11_misc_title">Miscellaneous</string>
-    <string name="morphe_settings_screen_12_video_title">Video</string>
     <string name="morphe_restore_old_settings_menus_title">Restore old YouTube settings screen</string>
     <string name="morphe_native_snackbar_title">Show messages in YouTube snackbar</string>
     <string name="morphe_native_snackbar_summary">Morphe messages, such as the confirmation of a player button, are shown in the YouTube snackbar instead of a popup</string>
@@ -88,7 +78,6 @@ Changes include:
     <string name="morphe_hide_floating_microphone_button_summary">Hides floating microphone button in the lower-right corner of search suggestions screen</string>
     <string name="morphe_hide_get_premium_button_title">Hide \'Get Premium\' button</string>
     <string name="morphe_hide_history_shelf_title">Hide History shelf</string>
-    <string name="morphe_hide_horizontal_shelves_title">Hide horizontal shelves</string>
     <string name="morphe_hide_horizontal_shelves_summary">Hides horizontal shelves such as Breaking news, Community posts you may like, Continue watching, Explore more channels, Explore more topics, For You, Latest videos, Most relevant, Posts from Creator\'s Community, Shopping, and Watch it again</string>
     <string name="morphe_hide_image_shelf_title">Hide image shelf</string>
     <string name="morphe_hide_image_shelf_summary">Hides image shelves in search results</string>
@@ -244,12 +233,9 @@ Reports are public and are reviewed before a channel is added to a list. Removal
 
     <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
     <string name="morphe_hide_filter_bar_screen_summary">Choose where to hide the scrolling filter bar</string>
-    <string name="morphe_hide_filter_bar_in_channel_page_title">Hide in channel page</string>
     <string name="morphe_hide_filter_bar_in_comments_title">Hide in comments</string>
     <string name="morphe_hide_filter_bar_in_feed_title">Hide in feeds</string>
     <string name="morphe_hide_filter_bar_in_related_videos_title">Hide in related videos</string>
-    <string name="morphe_hide_filter_bar_in_search_title">Hide in search results</string>
-    <string name="morphe_hide_filter_bar_in_history_title">Hide in watch history</string>
 
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
@@ -320,15 +306,11 @@ Limitations:
     <string name="morphe_hide_stats_hidden_24h_reset_title">Reset last 24 hours counter?</string>
     <string name="morphe_hide_stats_hidden_all_reset_title">Reset all time counter?</string>
 
-    <string name="morphe_post_buttons_screen_title">Post buttons</string>
     <string name="morphe_post_buttons_screen_summary">Choose the layout of the buttons below the community posts and which buttons to hide</string>
     <string name="morphe_post_buttons_layout_title">Post buttons layout</string>
     <string name="morphe_post_buttons_layout_entry_1">Server</string>
     <string name="morphe_post_buttons_layout_entry_2">Enforced</string>
-    <string name="morphe_hide_post_like_dislike_buttons_title">Hide Like and Dislike buttons</string>
-    <string name="morphe_hide_post_dislike_button_title">Hide Dislike button</string>
     <string name="morphe_hide_post_dislike_button_summary">With the Enforced layout, the space of the button is left</string>
-    <string name="morphe_hide_post_comment_button_title">Hide Comment button</string>
     <string name="morphe_hide_post_comments_preview_title">Hide comments preview</string>
     <string name="morphe_hide_post_comments_preview_summary">Hides the preview of the comments below the posts</string>
     <string name="morphe_hide_post_share_button_summary">Download button of the post images is drawn next to the Share button, so it\'s hidden too</string>
@@ -371,19 +353,15 @@ Limitations:
     <string name="morphe_sanitize_video_subtitle_summary">Sanitizes phrases like \'#\', \'Fundraiser\', \'product(s)\', and \'Shop\' from video subtitle</string>
 
     <!-- layout.buttons.action.hideButtonsPatch -->
-    <string name="morphe_action_buttons_screen_title">Action buttons</string>
     <string name="morphe_action_buttons_screen_summary">Choose which action buttons appear in portrait and fullscreen modes</string>
     <string name="morphe_portrait_buttons">Portrait buttons</string>
     <string name="morphe_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
     <string name="morphe_disable_like_subscribe_glow_summary">Prevents the Like and Subscribe buttons from glowing when a creator mentions them</string>
-    <string name="morphe_hide_action_bar_title">Hide action bar</string>
-    <string name="morphe_hide_like_dislike_button_title">Hide Like and Dislike button</string>
     <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_share_button_title">Hide Share button</string>
     <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_stop_ads_button_title">Hide \'Stop ads\' button</string>
     <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-    <string name="morphe_hide_comments_button_title">Hide Comments button</string>
     <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_connect_button_title">Hide Connect button</string>
     <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
@@ -416,8 +394,6 @@ Limitations:
     <string name="morphe_hide_more_button_title">Hide More button</string>
 
     <string name="morphe_fullscreen_buttons">Fullscreen buttons</string>
-    <string name="morphe_hide_quick_actions_dislike_button_title">Hide Dislike button</string>
-    <string name="morphe_hide_quick_actions_like_button_title">Hide Like button</string>
     <string name="morphe_hide_quick_actions_live_chat_button_title">Hide \'Live chat\' button</string>
     <string name="morphe_hide_quick_actions_mix_button_title">Hide Mix button</string>
     <string name="morphe_hide_quick_actions_more_videos_button_title">Hide \'More videos\' button</string>
@@ -447,8 +423,6 @@ Limitations:
     <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dim duration</string>
     <string name="morphe_enhanced_ambient_mode_dim_duration_summary">How long the light stays dim after scrolling stops. With 0 only scrolling dims the light, and it comes back as soon as scrolling stops</string>
 
-    <string name="morphe_comments_screen_title">Comments</string>
-    <string name="morphe_comments_screen_summary">Choose which components appear in the comments section</string>
     <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
     <string name="morphe_hide_comments_carousel_summary">"• Enter a keyword or full name (e.g., Ask, Community, Hype, Listen)
 • Hiding all items hides the entire comments section"</string>
@@ -460,18 +434,11 @@ Limitations:
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_section_title">Hide comments section</string>
     <string name="morphe_hide_comments_section_in_home_feed_title">Hide comments section in Home feed</string>
-    <string name="morphe_hide_comments_community_guidelines_title">Hide Community Guidelines</string>
     <string name="morphe_hide_comments_create_a_short_button_title">Hide \'Create a Short\' button</string>
-    <string name="morphe_hide_comments_dislike_button_title">Hide Dislike button</string>
-    <string name="morphe_hide_comments_emoji_button_title">Hide Emoji button</string>
     <string name="morphe_hide_comments_filter_bar_options_title">Hide filter bar options</string>
     <string name="morphe_hide_comments_filter_bar_options_summary">Hides all filter bar options except \'Top\' and \'Newest\'</string>
-    <string name="morphe_hide_comments_gif_button_title">Hide GIF button</string>
-    <string name="morphe_hide_comments_gifs_and_images_title">Hide GIFs and images</string>
-    <string name="morphe_hide_comments_gifs_and_images_summary">Hides GIFs and images attached to comments and replies</string>
     <string name="morphe_hide_comments_gift_animation_and_cards_title">Hide gift animation and cards</string>
     <string name="morphe_hide_comments_gift_button_title">Hide Gift button</string>
-    <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
     <string name="morphe_hide_comments_live_chat_donators_bar_title">Hide live chat donators bar</string>
     <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Hide live chat scroll to bottom button</string>
     <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
@@ -486,17 +453,14 @@ Limitations:
     <string name="morphe_hide_comments_preview_comment_cards_summary">Hides the sliding cards and page indicator displayed on the comments button</string>
     <string name="morphe_hide_comments_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_comments_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
-    <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_hide_comments_top_fans_button_title">Hide \'Top fans\' button</string>
     <string name="morphe_hide_comments_topics_title">Hide \'Topics\'</string>
     <string name="morphe_hide_comments_topics_summary">Hides the \'Topics\' filter bar option and the \'Topic\' comment previews below the video</string>
-    <string name="morphe_hide_comments_translate_button_title">Hide Translate button</string>
     <string name="morphe_hide_comments_visit_the_community_section_title">Hide \'Visit the Community\' section</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-    <string name="morphe_hide_player_flyout_title">Flyout menu</string>
     <string name="morphe_hide_player_flyout_summary">Choose which components appear in the flyout menu</string>
     <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_additional_settings_title">Hide \'Additional settings\' / More menu</string>
@@ -543,14 +507,12 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_autoplay_button_title">Hide Autoplay button</string>
     <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
-    <string name="morphe_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_hide_collapse_button_title">Hide Collapse button</string>
     <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary">Hides the dark shading surrounding the video player controls</string>
     <string name="morphe_player_control_buttons_background_opacity_title">Control buttons background opacity</string>
     <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the background behind the player control buttons and the time bar (0 is invisible, 100 is solid)</string>
-    <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_settings_button_title">Hide Settings button</string>
 
     <string name="morphe_hide_description_components_screen_title">Video description</string>
@@ -594,7 +556,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_custom_snackbar_color_light_summary">Background color of snackbars in the light theme. The text is black or white, whichever is easier to read</string>
     <string name="morphe_custom_snackbar_stroke_color_title">Border color</string>
     <string name="morphe_custom_snackbar_stroke_color_summary">Color of the border around snackbars. A transparent color shows no border</string>
-    <string name="morphe_custom_snackbar_corner_radius_title">Corner radius</string>
     <string name="morphe_custom_snackbar_corner_radius_summary">Corner radius of snackbars in dp</string>
 
     <!-- ad.hideAdsPatch -->
@@ -610,17 +571,14 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
     <string name="morphe_hide_self_sponsor_ads_title">Hide self sponsored cards</string>
     <string name="morphe_hide_shopping_links_title">Hide shopping links</string>
-    <string name="morphe_hide_video_ads_title">Hide video ads</string>
     <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
 
     <!-- layout.flyout.flyoutPatch -->
     <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
-    <string name="morphe_flyout_button_loading">Loading…</string>
 
     <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
     <string name="morphe_channel_whitelist_current_channel">Current channel:</string>
     <string name="morphe_channel_whitelist_add">Add to whitelist</string>
-    <string name="morphe_channel_whitelist_remove">Remove</string>
     <string name="morphe_channel_whitelist_channels_header">Whitelisted channels</string>
     <string name="morphe_channel_whitelist_empty">No channels whitelisted</string>
     <string name="morphe_channel_whitelist_channel_added">Channel added to whitelist</string>
@@ -639,7 +597,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_double_tap_length_240s" translatable="false">240</string>
 
     <!-- Search dialog of comments search, channel search and playlist search. -->
-    <string name="morphe_search_dialog_search">Search</string>
 
     <!-- interaction.channelsearch.channelSearchPatch -->
     <string name="morphe_channel_search_title">Search within channel</string>
@@ -648,7 +605,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_channel_search_results">Channel search results</string>
     <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
     <string name="morphe_channel_search_failed">Could not search this channel</string>
-    <string name="morphe_channel_search_videos">Videos</string>
     <string name="morphe_channel_search_posts">Posts</string>
     <string name="morphe_channel_search_no_posts">No posts on this channel match</string>
     <string name="morphe_channel_search_sort_relevance">Relevance</string>
@@ -716,7 +672,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_post_translate_language_title">Post translation language</string>
     <string name="morphe_post_translate_flyout">Translate</string>
     <string name="morphe_post_translate_flyout_original">Show original</string>
-    <string name="morphe_post_translate_started">Translating…</string>
     <string name="morphe_post_translate_failed">Could not translate the post</string>
     <string name="morphe_post_translate_same_language">The post is already in the translation language</string>
 
@@ -729,8 +684,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_on_the_go_panel_title">On-the-go</string>
     <string name="morphe_on_the_go_audio_mode">Switch to audio mode</string>
     <string name="morphe_on_the_go_video_mode">Switch to video mode</string>
-    <string name="morphe_on_the_go_download">Download</string>
-    <string name="morphe_on_the_go_queue">Queue</string>
 
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
@@ -774,9 +727,7 @@ After a video with the Ask button is opened once, the feature works with all vid
     <!-- interaction.commentsearch.commentSearchPatch -->
     <string name="morphe_comment_search_title">Search comments</string>
     <string name="morphe_comment_search_summary">Tap the search button in the comments to show only the loaded comments that contain all the searched words. Put words in quotes to search for a phrase</string>
-    <string name="morphe_comment_search_dialog_title">Search comments</string>
     <string name="morphe_comment_search_hint">Words to search for</string>
-    <string name="morphe_comment_search_clear">Clear</string>
     <string name="morphe_comment_search_applied">Change the sort order or open the comments again to search them</string>
     <string name="morphe_comment_search_cleared">Search cleared. Change the sort order or open the comments again to show all comments</string>
 
@@ -804,10 +755,8 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_external_downloader_quick_options">All options</string>
     <string name="morphe_shorts_download_flyout_button_title">Show download in Shorts menu</string>
     <string name="morphe_shorts_download_flyout_button_summary">Adds a download item to the menu of the Shorts player</string>
-    <string name="morphe_shorts_download_flyout_title">Download</string>
     <string name="morphe_feed_download_flyout_button_title">Force flyout download menu item</string>
     <string name="morphe_feed_download_flyout_button_summary">Adds a download item to the menus of feed videos that have none</string>
-    <string name="morphe_download_force_4k_title">Force 4K download availability</string>
     <string name="morphe_download_force_4k_summary">Offers 1440p and 4K downloads even if YouTube decides this device cannot play them</string>
     <string name="morphe_download_quality_about_title">1080p not available</string>
     <string name="morphe_download_quality_about_summary">If in-app downloads do not offer 1080p, turn on \'Spoof device dimensions\' in Miscellaneous settings</string>
@@ -869,7 +818,6 @@ Tap here to open OpenRouter.ai"</string>
     <string name="morphe_vot_http_error_message">"The translation service returned HTTP error %s. Your IP address has likely been rate-limited for up to 24 hours.
 
 To continue using translations, switch to a different translation provider in settings or use a VPN"</string>
-    <string name="morphe_vot_do_not_show_again">Do not show again</string>
     <string name="morphe_vot_export_api_key_warning">"Your settings contain an OpenRouter API key.
 
 Your API key should never be shared. Anyone with access to it can use your OpenRouter credits"</string>
@@ -905,8 +853,6 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_video_range_label_end">End</string>
     <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
     <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (empty = video end)</string>
-    <string name="morphe_loop_video_range_set">Set</string>
-    <string name="morphe_loop_video_range_clear">Clear</string>
     <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
     <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
 
@@ -923,10 +869,8 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_count_clear_dialog_title">Clear saved loop counts?</string>
     <string name="morphe_loop_count_clear_dialog_message">The videos of your playlists forget their loop count, and Loop video no longer turns on when a playlist plays them</string>
     <string name="morphe_loop_count_clear_done">Saved loop counts cleared</string>
-    <string name="morphe_loop_count_flyout_name">Loop count</string>
     <string name="morphe_loop_count_dialog_message">How many times the video plays before the next video, from %1$s to %2$s. Leave empty to loop the video without a limit.</string>
     <string name="morphe_loop_count_times">%s times</string>
-    <string name="morphe_loop_count_no_limit">No limit</string>
     <string name="morphe_loop_count_decrease">Fewer times</string>
     <string name="morphe_loop_count_increase">More times</string>
 
@@ -986,11 +930,9 @@ Info: May not work on live streams"</string>
     <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
-    <string name="morphe_save_to_watch_later_flyout_title">Save to Watch later</string>
     <string name="morphe_save_to_watch_later_flyout_button_title">Show Save to Watch later button in the player settings flyout</string>
     <string name="morphe_save_to_watch_later_flyout_button_summary">Allows saving the current watching video in the \'Watch later\' from the video settings flyout</string>
     <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirect Watch later to playlist</string>
-    <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Watch later</string>
     <string name="morphe_queue_flyout_title">Add to Morphe queue</string>
     <string name="morphe_queue_restore_title">Keep queue between sessions</string>
     <string name="morphe_queue_restore_summary">Queue is kept after restarting the app</string>
@@ -1002,17 +944,11 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_type_entry_2">Native queue</string>
     <string name="morphe_queue_type_entry_3">Morphe queue</string>
     <string name="morphe_queue_type_entry_4">Morphe queue client side</string>
-    <string name="morphe_local_queue_sheet_title">Queue</string>
     <string name="morphe_local_queue_open">Queue (%s)</string>
-    <string name="morphe_local_queue_clear">Clear all</string>
     <string name="morphe_local_queue_empty">Nothing queued</string>
     <string name="morphe_local_queue_empty_hint">Use Play next in queue on any video</string>
     <string name="morphe_local_queue_now_playing">Now playing</string>
-    <string name="morphe_local_queue_play_next">Play next in queue</string>
-    <string name="morphe_local_queue_play_last">Play last in queue</string>
     <string name="morphe_local_queue_reorder">Reorder</string>
-    <string name="morphe_local_queue_remove">Remove</string>
-    <string name="morphe_local_queue_added">Added to queue</string>
     <string name="morphe_local_queue_unavailable">Could not add this video to the queue</string>
     <string name="morphe_local_queue_playlist_unsupported">Playlists cannot be added to the queue</string>
     <string name="morphe_local_queue_full">Queue is full</string>
@@ -1032,12 +968,10 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_manager_fetch_failed_create">Failed to create queue</string>
     <string name="morphe_queue_manager_fetch_failed_remove">Failed to remove from queue</string>
     <string name="morphe_queue_manager_fetch_failed_save">Failed to save queue</string>
-    <string name="morphe_queue_manager_fetch_succeeded_add">Added to queue</string>
     <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
     <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
     <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
     <string name="morphe_queue_manager_playlist_title">Morphe Queue</string>
-    <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
     <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
     <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
     <string name="morphe_queue_manager_add_to_queue_and_reload_video">Add and reload video</string>
@@ -1058,14 +992,10 @@ Info: May not work on live streams"</string>
     <string name="morphe_native_playlist_queue_saved_to">Saved to %s</string>
     <string name="morphe_native_playlist_queue_clear">Clear queue</string>
     <string name="morphe_native_playlist_queue_cleared">Queue cleared</string>
-    <string name="morphe_native_playlist_queue_title">Queue</string>
-    <string name="morphe_native_playlist_queue_last">Play last in queue</string>
-    <string name="morphe_native_playlist_queue_next">Play next in queue</string>
     <string name="morphe_native_playlist_queue_unavailable">YouTube could not display the queue.</string>
     <string name="morphe_native_playlist_queue_not_ready">The queue is not ready for this video. Open the video player and try again.</string>
     <string name="morphe_native_playlist_queue_mix_choice">Add Mix to queue or watch Mix?</string>
     <string name="morphe_native_playlist_queue_watch_mix">Watch</string>
-    <string name="morphe_native_playlist_queue_add_mix">Add to queue</string>
     <string name="morphe_native_playlist_queue_loading_mix">Loading Mix…</string>
 
     <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
@@ -1133,7 +1063,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_ignore_when_locked_summary">Swipe gestures are ignored while the player is locked with \'Lock screen\'</string>
     <string name="morphe_swipe_press_to_engage_title">Enable press to swipe gesture</string>
     <string name="morphe_swipe_press_to_engage_summary">Requires pressing and holding before a swipe gesture is recognized</string>
-    <string name="morphe_swipe_haptic_feedback_title">Enable haptic feedback</string>
     <string name="morphe_swipe_haptic_feedback_summary">Vibrates when pressing and holding starts a swipe gesture</string>
     <string name="morphe_swipe_save_and_restore_brightness_title">Save and restore brightness</string>
     <string name="morphe_swipe_save_and_restore_brightness_summary">Remembers brightness level when entering / exiting fullscreen mode</string>
@@ -1143,7 +1072,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_overlay_timeout_title">Swipe overlay timeout</string>
     <string name="morphe_swipe_overlay_timeout_summary">The amount of milliseconds the overlay is visible</string>
     <string name="morphe_swipe_overlay_background_opacity_title">Swipe overlay background opacity</string>
-    <string name="morphe_swipe_overlay_background_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_title">Swipe overlay brightness color</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_summary">Set the color of the brightness controls progress bar</string>
     <string name="morphe_swipe_overlay_progress_volume_color_title">Swipe overlay volume color</string>
@@ -1164,7 +1092,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
     <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
     <string name="morphe_swipe_speed_sensitivity_summary">Higher values require more swiping per speed step</string>
-    <string name="morphe_swipe_speed_step_title">Speed step</string>
     <string name="morphe_swipe_speed_zone_height_title">Speed zone height</string>
     <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height (5-75)</string>
     <string name="morphe_swipe_zone_label_speed">Speed</string>
@@ -1191,11 +1118,9 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hold_gesture_press_to_swipe_toast">Hold gesture is not used while press to swipe is on</string>
     <string name="morphe_hold_gesture_dialog_title">Hold gesture is on</string>
     <string name="morphe_hold_gesture_dialog_turn_off">Turn off hold gesture</string>
-    <string name="morphe_hold_gesture_haptic_feedback_title">Enable haptic feedback</string>
     <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrates when the speed changes and when the speed is locked</string>
     <string name="morphe_hold_gesture_speed_swipe_title">Drag sideways to change the speed</string>
     <string name="morphe_hold_gesture_speed_swipe_summary">After tapping and holding, drag left to play slower and right to play faster. Farther out, the speed keeps changing until the finger comes back</string>
-    <string name="morphe_hold_gesture_speed_step_title">Speed step</string>
     <string name="morphe_hold_gesture_speed_sensitivity_title">Drag sensitivity</string>
     <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Low</string>
     <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
@@ -1224,7 +1149,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hold_gesture_launcher_action_loop">Loop video</string>
     <string name="morphe_hold_gesture_launcher_action_loop_off">Stop looping</string>
     <string name="morphe_hold_gesture_launcher_action_screenshot">Save frame</string>
-    <string name="morphe_hold_gesture_launcher_action_watch_later">Save to Watch later</string>
     <string name="morphe_hold_gesture_launcher_action_timestamp_url">Copy link at current time</string>
     <string name="morphe_hold_gesture_screen_unlock">Tap to unlock</string>
     <string name="morphe_hold_gesture_frame_saved">Frame saved to %s</string>
@@ -1273,7 +1197,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
 
     <!-- layout.captions.copyTranscriptPatch -->
-    <string name="morphe_copy_transcript_category_title">Copy transcript</string>
     <string name="morphe_copy_transcript_title">Copy transcript</string>
     <string name="morphe_copy_transcript_summary">Adds a button to the transcript panel that copies the transcript in the language of the captions</string>
     <string name="morphe_copy_transcript_timestamps_title">Include timestamps</string>
@@ -1305,7 +1228,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_button_title">Hide Shorts button</string>
     <!-- 'Create' has no display name. Translate normally. -->
-    <string name="morphe_hide_create_button_title">Hide Create button</string>
     <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_subscriptions_button_title">Hide Subscriptions button</string>
     <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1313,10 +1235,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_show_search_button_title">Show Search button</string>
     <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
     <string name="morphe_show_watch_later_button_title">Show Watch later button</string>
-    <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-    <string name="morphe_watch_later_navigation_label">Watch later</string>
-    <string name="morphe_show_settings_button_title">Show Settings button</string>
-    <string name="morphe_show_settings_button_type_title">Settings button action</string>
     <string name="morphe_show_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
     <string name="morphe_you_button_account_switcher_title">Account switcher shortcut</string>
     <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
@@ -1325,9 +1243,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_navigation_buttons_order_summary">Drag the buttons to change their order in the navigation bar</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary">Moves the Notifications button to the navigation bar and the Create button to the toolbar. If changes do not take effect, try switching to Incognito mode</string>
-    <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
     <string name="morphe_hide_navigation_new_content_dot_title">Hide new content dot</string>
-    <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the \'You\' tab.
 
 To access Settings, enable the Settings button via General → Toolbar → Show Settings button"</string>
@@ -1347,9 +1263,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
     <string name="morphe_navigation_bar_style_entry_4">Opaque</string>
     <string name="morphe_navigation_bar_style_user_dialog_message">This style may not be supported by your device or YouTube version, and can cause layout issues or crashes</string>
-    <string name="morphe_navigation_bar_glass_title">Enable glass navigation bar</string>
     <string name="morphe_navigation_bar_glass_summary">Shows the navigation bar as a floating, rounded, translucent capsule. Not available with the Opaque navigation bar style</string>
-    <string name="morphe_navigation_bar_glass_opacity_title">Glass opacity</string>
     <string name="morphe_navigation_bar_glass_opacity_summary">Adjust the transparency level of the glass navigation bar (0 is transparent, 100 is opaque)</string>
     <string name="morphe_navigation_bar_glass_round_title">Round glass navigation bar</string>
     <string name="morphe_navigation_bar_glass_round_summary">Gives the glass navigation bar round ends, instead of corners like the glass miniplayer</string>
@@ -1359,15 +1273,10 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_bottom_margin_summary">Adjust the space between the glass navigation bar and the bottom of the screen or the system navigation</string>
     <string name="morphe_navigation_bar_glass_size_title">Glass navigation bar size</string>
     <string name="morphe_navigation_bar_glass_size_summary">Adjust the height, the width and the button spacing of the glass navigation bar, with a preview. Buttons that do not fit in the width of the screen are hidden</string>
-    <string name="morphe_navigation_bar_glass_size_height">Height</string>
-    <string name="morphe_navigation_bar_glass_size_width">Maximum width</string>
-    <string name="morphe_navigation_bar_glass_size_button_spacing">Button spacing</string>
-    <string name="morphe_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$s of %2$s</string>
 
     <string name="morphe_hide_toolbar_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_toolbar_companion_button_title">Hide Companion button</string>
     <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone button</string>
-    <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
     <string name="morphe_toolbar_buttons_order_title">Toolbar buttons order</string>
     <string name="morphe_toolbar_buttons_order_summary">Drag the buttons to change their order in the toolbar</string>
 
@@ -1389,14 +1298,11 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
 
     <!-- layout.hide.shorts.hideShortsComponentsPatch -->
     <string name="morphe_hide_shorts_category_title">Hide Shorts</string>
-    <string name="morphe_hide_shorts_channel_title">Hide in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_home_title">Hide in Home feed &amp; related videos</string>
-    <string name="morphe_hide_shorts_search_title">Hide in search results</string>
     <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_subscriptions_title">Hide in Subscriptions feed</string>
     <string name="morphe_hide_shorts_video_description_title">Hide in video description</string>
-    <string name="morphe_hide_shorts_history_title">Hide in watch history</string>
     <string name="morphe_hide_shorts_notifications_title">Hide in push notifications</string>
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
@@ -1409,7 +1315,6 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_hide_shorts_green_screen_button_title">Hide \'Green screen\' button</string>
     <string name="morphe_hide_shorts_hashtag_button_title">Hide Hashtag button</string>
     <string name="morphe_hide_shorts_info_panel_title">Hide info panel</string>
-    <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
     <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
     <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_live_preview_title">Hide live preview</string>
@@ -1501,7 +1406,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
     <string name="morphe_open_videos_fullscreen_title">Open videos in fullscreen mode</string>
     <string name="morphe_open_videos_fullscreen_entry_1">Disabled</string>
-    <string name="morphe_open_videos_fullscreen_entry_2">Portrait</string>
     <string name="morphe_open_videos_fullscreen_entry_3">Landscape</string>
 
     <!-- layout.player.fullscreen.stretchVideoPatch -->
@@ -1541,7 +1445,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
     <string name="morphe_player_overlay_opacity_title">Player overlay opacity</string>
-    <string name="morphe_player_overlay_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
 
     <!-- layout.searchbar.wideSearchbarPatch -->
     <string name="morphe_searchbar_type_title">Search bar</string>
@@ -1550,12 +1453,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_searchbar_type_entry_extra_wide">Extra wide</string>
 
     <!-- layout.sponsorblock.sponsorBlockPatch -->
-    <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>
     <!-- layout.formfactor.changeFormFactorPatch -->
     <string name="morphe_change_form_factor_title">Device layout</string>
     <string name="morphe_change_form_factor_entry_1">Default</string>
     <string name="morphe_change_form_factor_entry_2">Phone</string>
-    <string name="morphe_change_form_factor_entry_3">Tablet</string>
     <string name="morphe_change_form_factor_entry_4">Automotive</string>
     <string name="morphe_change_form_factor_user_dialog_message">"Changes include:
 
@@ -1599,31 +1500,21 @@ Automotive layout
     <string name="morphe_custom_music_package_name_summary">Package name of your installed music app</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
-    <string name="morphe_change_start_page_title">Start page</string>
-    <string name="morphe_change_start_page_entry_default">Default</string>
     <string name="morphe_change_start_page_entry_all_subscriptions">All subscriptions</string>
     <string name="morphe_change_start_page_entry_browse">Browse channels</string>
     <string name="morphe_change_start_page_entry_courses">Courses / Learning</string>
-    <string name="morphe_change_start_page_entry_explore">Explore</string>
     <string name="morphe_change_start_page_entry_fashion">Fashion &amp; Beauty</string>
     <string name="morphe_change_start_page_entry_gaming">Gaming</string>
-    <string name="morphe_change_start_page_entry_history">History</string>
-    <string name="morphe_change_start_page_entry_library">Library</string>
     <string name="morphe_change_start_page_entry_liked_videos">Liked videos</string>
     <string name="morphe_change_start_page_entry_live">Live</string>
     <string name="morphe_change_start_page_entry_movies">Movies</string>
     <string name="morphe_change_start_page_entry_music">Music</string>
     <string name="morphe_change_start_page_entry_news">News</string>
     <string name="morphe_change_start_page_entry_notifications">Notifications</string>
-    <string name="morphe_change_start_page_entry_playlists">Playlists</string>
-    <string name="morphe_change_start_page_entry_search">Search</string>
     <string name="morphe_change_start_page_entry_shopping">Shopping</string>
-    <string name="morphe_change_start_page_entry_shorts">Shorts</string>
     <string name="morphe_change_start_page_entry_sports">Sports</string>
-    <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
     <string name="morphe_change_start_page_entry_trending">Trending</string>
     <string name="morphe_change_start_page_entry_virtual_reality">Virtual Reality</string>
-    <string name="morphe_change_start_page_entry_watch_later">Watch later</string>
     <string name="morphe_change_start_page_entry_your_clips">Your clips</string>
 
     <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
@@ -1674,7 +1565,6 @@ Automotive layout
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
-    <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
     <string name="morphe_miniplayer_not_available_title">Additional miniplayers</string>
     <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To restore more miniplayer types, then patch YouTube 21.28.208 or older</string>
@@ -1690,7 +1580,6 @@ Automotive layout
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>
     <string name="morphe_miniplayer_type_entry_3">Minimal 2</string>
-    <string name="morphe_miniplayer_type_entry_4">Tablet</string>
     <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
     <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
     <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
@@ -1709,7 +1598,6 @@ Automotive layout
     <string name="morphe_miniplayer_width_dip_summary">Set the starting on-screen size, in pixels</string>
     <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel size must be between %1$s and %2$s</string>
     <string name="morphe_miniplayer_opacity_title">Overlay opacity</string>
-    <string name="morphe_miniplayer_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
 
     <!-- misc.fix.fixBackToExitGesturePatch -->
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
@@ -1724,6 +1612,8 @@ Automotive layout
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
+    <string name="morphe_hide_status_bar_tabletop_title">Hide status bar in tabletop mode</string>
+    <string name="morphe_hide_status_bar_tabletop_summary">Hides the system status bar while watching a video in tabletop mode of a half folded device, with the video on the upper half and the playback controls on the lower half</string>
     <string name="morphe_hide_status_bar_avoid_cutout_title">Keep player below display cutout</string>
     <string name="morphe_hide_status_bar_avoid_cutout_summary">Moves the portrait video player below the display cutout when the status bar is hidden, leaving an empty bar at the top. Turn this off to let the video fill the screen behind the cutout</string>
     <string name="morphe_fix_status_bar_layout_title">Fix status bar covering the top bars</string>
@@ -1768,7 +1658,6 @@ Automotive layout
     <string name="morphe_custom_branding_icon_entry_10">Original metal</string>
 
     <!-- layout.branding.header.changeHeaderPatch -->
-    <string name="morphe_header_logo_title">Header logo</string>
     <string name="morphe_header_logo_entry_1">Default</string>
     <string name="morphe_header_logo_entry_2">Regular</string>
     <string name="morphe_header_logo_entry_3" translatable="false">Premium</string>
@@ -1807,7 +1696,6 @@ Automotive layout
     <string name="morphe_dearrow_about_summary">"DeArrow replaces clickbait titles and thumbnails with crowdsourced ones that are more accurate and less sensational. Titles are written and voted on by the community, and thumbnails are frames taken from the video
 
 Videos are requested by a short prefix of the hashed video ID, so the server cannot tell exactly which video you are looking at. If a video has no DeArrow thumbnail, the original or a still capture is shown"</string>
-    <string name="morphe_dearrow_connection_toast_title">Show connection error alerts</string>
     <string name="morphe_dearrow_connection_toast_summary">Shows a notification when the DeArrow server is unavailable</string>
     <string name="morphe_dearrow_api_url_title">API endpoint</string>
     <string name="morphe_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
@@ -1829,7 +1717,6 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_guidelines_popup_already_read">Already read</string>
     <string name="morphe_dearrow_guidelines_popup_open">Show me</string>
     <string name="morphe_dearrow_vote_title">DeArrow</string>
-    <string name="morphe_dearrow_vote_loading">Loading…</string>
     <string name="morphe_dearrow_vote_fetch_failed">Could not load the titles and thumbnails of this video</string>
     <string name="morphe_dearrow_vote_titles">Titles</string>
     <string name="morphe_dearrow_vote_thumbnails">Thumbnails</string>
@@ -1843,11 +1730,8 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
     <string name="morphe_dearrow_vote_unverified">Unverified</string>
     <string name="morphe_dearrow_vote_locked">Locked</string>
-    <string name="morphe_dearrow_vote_upvote">Upvote</string>
-    <string name="morphe_dearrow_vote_downvote">Downvote</string>
     <string name="morphe_dearrow_vote_new_title">New title</string>
     <string name="morphe_dearrow_vote_new_title_hint">Type a title</string>
-    <string name="morphe_dearrow_vote_submit">Submit</string>
     <string name="morphe_dearrow_vote_new_thumbnail">New thumbnail</string>
     <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
     <string name="morphe_dearrow_vote_frame_step">%s s</string>
@@ -1863,18 +1747,10 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_vote_failed_code">Could not submit the vote (status code: %s)</string>
     <string name="morphe_dearrow_vote_failed_connection">Could not submit the vote. Check your connection and try again</string>
     <string name="morphe_dearrow_submitting_title">Submitting titles and thumbnails</string>
-    <string name="morphe_dearrow_vote_time_step_title">Time adjustment step</string>
     <string name="morphe_dearrow_vote_time_step_summary">Seek amount of the fine time adjustment buttons when submitting a thumbnail (in milliseconds)</string>
-    <string name="morphe_dearrow_vote_time_step_invalid">Value must be a positive number</string>
-    <string name="morphe_dearrow_private_user_id_title">Your private user ID</string>
     <string name="morphe_dearrow_private_user_id_summary">The same user ID as SponsorBlock. This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
-    <string name="morphe_dearrow_private_user_id_invalid">Private user ID must be at least 30 characters long</string>
-    <string name="morphe_dearrow_account_loading">Loading…</string>
     <string name="morphe_dearrow_account_connection_failure">Account details are temporarily not available</string>
-    <string name="morphe_dearrow_account_username">Your username: &lt;b>%s&lt;/b></string>
     <string name="morphe_dearrow_account_username_change">Tap here to change your username. The username is the same as on SponsorBlock</string>
-    <string name="morphe_dearrow_account_username_changed">Username successfully changed</string>
-    <string name="morphe_dearrow_account_username_change_error">Unable to change username: Status: %1$s %2$s</string>
     <string name="morphe_dearrow_account_titles">You\'ve submitted &lt;b>%s&lt;/b> titles</string>
     <string name="morphe_dearrow_account_titles_summary">Tap here to view your titles</string>
     <string name="morphe_dearrow_account_thumbnails">You\'ve submitted &lt;b>%s&lt;/b> thumbnails</string>
@@ -1938,7 +1814,6 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_video_delay_dialog_input_hint">Delay in milliseconds</string>
 
     <!-- video.effects.videoEffectsPatch -->
-    <string name="morphe_video_effect_button_flyout_title">Show Video effect menu</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
     <string name="morphe_remember_shorts_quality_last_selected_title">Remember Shorts quality</string>
@@ -2098,14 +1973,11 @@ Video playback with AV1 may stutter or drop frames"</string>
     <string name="morphe_series_tracker_show_button_summary">Adds a player button to follow or open the series of the current video</string>
     <string name="morphe_series_tracker_record_followed_progress_title">Record followed-series progress</string>
     <string name="morphe_series_tracker_record_followed_progress_summary">Record playback on this phone for saved series and bookmarks</string>
-    <string name="morphe_series_tracker_ui_cancel">Cancel</string>
-    <string name="morphe_series_tracker_ui_save">Save</string>
     <string name="morphe_series_tracker_ui_save_bookmark">Save bookmark</string>
     <string name="morphe_series_tracker_ui_series_name">Series name</string>
     <string name="morphe_series_tracker_ui_series_options">Series options</string>
     <string name="morphe_series_tracker_ui_library_options">Library options</string>
     <string name="morphe_series_tracker_ui_refresh_episodes">Refresh episodes</string>
-    <string name="morphe_series_tracker_ui_rename">Rename</string>
     <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Open playlist in YouTube</string>
     <string name="morphe_series_tracker_ui_remove_from_library">Remove from library</string>
     <string name="morphe_series_tracker_ui_playlist_link_or_id">Playlist link or ID</string>
@@ -2156,7 +2028,6 @@ Automatic recording stops in incognito, when account identity is unavailable, or
     <string name="morphe_series_tracker_saved_position">Saved video · %s</string>
     <string name="morphe_series_tracker_follow">Follow series</string>
     <string name="morphe_series_tracker_view_series">View series</string>
-    <string name="morphe_series_tracker_continue">Continue</string>
     <string name="morphe_series_tracker_start_here">Start here</string>
     <string name="morphe_series_tracker_start_saved">Starting point saved</string>
     <string name="morphe_series_tracker_watched_to_here">Watched up to here</string>
@@ -2242,8 +2113,6 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_summary">Shows an overlay button in the video player. Tap to show or hide the comments, tap and hold for quick settings</string>
     <string name="morphe_niconico_comments_pip_title">Show in picture-in-picture</string>
     <string name="morphe_niconico_comments_pip_summary">Comments are scaled down to fit the window</string>
-    <string name="morphe_niconico_comments_appearance_title">Appearance</string>
-    <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
     <string name="morphe_niconico_comments_video_types_title">Video types</string>
     <string name="morphe_niconico_comments_font_size_title">Comment font size</string>
     <string name="morphe_niconico_comments_font_size_summary">Text size of the comments (12-40 sp)</string>
@@ -2267,7 +2136,6 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_hide_crowded_summary">When the display area is full, new comments are hidden instead of overlapping other comments</string>
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
-    <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
     <string name="morphe_niconico_comments_max_refresh_rate_title">Max refresh rate</string>
     <string name="morphe_niconico_comments_max_refresh_rate_summary">Highest display refresh rate used while comments move. Lower values use less battery</string>
     <string name="morphe_niconico_comments_live_streams_title">Show on live streams</string>
@@ -2280,14 +2148,12 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_timed_comments_summary">On videos without a chat, top comments that contain a time such as 1:23 are shown at that time</string>
     <string name="morphe_niconico_comments_timed_comments_with_replay_title">Show timed comments with chat replay</string>
     <string name="morphe_niconico_comments_timed_comments_with_replay_summary">On replays of live streams and Premieres, timed comments are also shown with the chat</string>
-    <string name="morphe_niconico_comments_all_settings">All settings</string>
     <string name="morphe_niconico_comments_reset_title">Reset these settings?</string>
 
     <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
     <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>
     <string name="morphe_live_chat_translate_title">Translate live chat</string>
     <string name="morphe_live_chat_translate_summary">Translates live chat and live chat replay messages once they are on screen</string>
-    <string name="morphe_live_chat_translate_language_title">Translation language</string>
     <string name="morphe_live_chat_translate_exclude_title">Excluded languages</string>
     <string name="morphe_live_chat_translate_exclude_summary">Comma separated language codes such as id,en. Messages in these languages are not translated</string>
     <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
@@ -2298,7 +2164,6 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_live_chat_translate_copy_button_summary">Adds a small copy button to every chat message</string>
     <string name="morphe_live_chat_translate_copied">Message copied to clipboard</string>
     <string name="morphe_live_chat_translate_style_title">Translation style</string>
-    <string name="morphe_live_chat_translate_style_translated_only">Translated only</string>
     <string name="morphe_live_chat_translate_style_original_and_translated">Original (translated)</string>
     <string name="morphe_live_chat_translate_style_translated_and_original">(Translated) original</string>
     <string name="morphe_live_chat_translate_bold_title">Bold translated text</string>
@@ -2309,11 +2174,9 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_live_chat_translate_color_summary">Set the hex color of the translated text</string>
     <string name="morphe_live_chat_translate_max_length_title">Maximum message length</string>
     <string name="morphe_live_chat_translate_max_length_summary">Longer messages are shown untranslated</string>
-    <string name="morphe_live_chat_translate_max_length_no_limit">No limit</string>
 
     <string name="morphe_ghost_play_screen_title">Ghost mode</string>
     <string name="morphe_ghost_play_screen_summary">Watch videos without affecting watch history or recommendations</string>
-    <string name="morphe_ghost_play_cat_general_title">General</string>
     <string name="morphe_ghost_play_cat_buttons_title">Buttons</string>
     <string name="morphe_ghost_play_cat_rules_title">Auto-ghost rules</string>
     <string name="morphe_ghost_play_cat_history_title">Local history</string>
@@ -2363,11 +2226,8 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_ghost_play_timer_set_toast">Ghost mode active for %d minutes</string>
     <string name="morphe_ghost_play_timer_cancelled_keep_on_toast">Timer cleared — Ghost mode stays ON</string>
     <string name="morphe_ghost_play_timer_invalid_toast">Enter a duration between 1 and 720 minutes</string>
-    <string name="morphe_ghost_play_dialog_title">Ghost mode</string>
     <string name="morphe_ghost_play_state_on">On</string>
     <string name="morphe_ghost_play_state_off">Off</string>
-    <string name="morphe_ghost_play_close">Close</string>
-    <string name="morphe_ghost_play_open_settings">All settings</string>
     <string name="morphe_ghost_play_quick_power_hint">Tap to toggle Ghost mode</string>
     <string name="morphe_ghost_play_quick_timer_title">Timed Ghost mode</string>
     <string name="morphe_ghost_play_quick_timer_sub">Tap to choose duration</string>
@@ -2375,9 +2235,7 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_ghost_play_quick_timer_running_sub">Automatically returns to normal mode when finished</string>
     <string name="morphe_ghost_play_quick_timer_change">Change time</string>
     <string name="morphe_ghost_play_quick_timer_cancel_keep_on">Clear timer (keep ON)</string>
-    <string name="morphe_ghost_play_timer_minutes_chip">%dm</string>
     <string name="morphe_ghost_play_timer_custom_hint">Custom minutes (1–720)…</string>
-    <string name="morphe_ghost_play_timer_custom_set">Set</string>
     <string name="morphe_ghost_play_quick_channel_state_on">Auto-ghost ON for this channel</string>
     <string name="morphe_ghost_play_quick_channel_state_off">Auto-ghost OFF for this channel</string>
     <string name="morphe_ghost_play_quick_channel_count">%d channels configured</string>
@@ -2389,24 +2247,19 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_ghost_play_history_search_hint">Filter by video title or channel…</string>
     <string name="morphe_ghost_play_history_no_match">No matching videos in local Ghost history</string>
     <string name="morphe_ghost_play_history_empty">No local Ghost history yet</string>
-    <string name="morphe_ghost_play_history_clear_all">Clear all</string>
     <string name="morphe_ghost_play_history_clear_confirm_title">Clear local Ghost history?</string>
     <string name="morphe_ghost_play_history_clear_confirm_message">This removes all saved on-device Ghost mode entries and cannot be undone.</string>
     <string name="morphe_ghost_play_history_cleared_toast">Local Ghost history cleared</string>
     <string name="morphe_ghost_play_history_item_removed_toast">Removed from local Ghost history</string>
 
-    <string name="morphe_ghost_play_channels_manager_title">Auto-ghost channels</string>
     <string name="morphe_ghost_play_channels_tab_saved">Added (%d)</string>
     <string name="morphe_ghost_play_channels_tab_search">Search &amp; Add</string>
     <string name="morphe_ghost_play_channels_filter_hint">Filter added channels by name, @handle, or topic…</string>
     <string name="morphe_ghost_play_channels_empty">No channels added yet. Switch to \"Search &amp; Add\" to find channels by name, @handle, or URL.</string>
     <string name="morphe_ghost_play_channels_filter_no_match">No added channels match your filter</string>
     <string name="morphe_ghost_play_channels_add_current">Playing: %s</string>
-    <string name="morphe_ghost_play_channels_add_button">Add</string>
     <string name="morphe_ghost_play_channels_added_badge">Added</string>
-    <string name="morphe_ghost_play_channels_delete_button">Remove</string>
     <string name="morphe_ghost_play_channels_search_hint">Channel name, @handle, or URL…</string>
-    <string name="morphe_ghost_play_channels_search_button">Search</string>
     <string name="morphe_ghost_play_channels_search_guide">Enter a channel name, @handle, or YouTube channel URL and tap Search</string>
     <string name="morphe_ghost_play_channels_searching">Searching YouTube channels…</string>
     <string name="morphe_ghost_play_channels_search_error">Search failed. Check your connection and try again.</string>
@@ -2416,4 +2269,30 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_ghost_play_channels_recent_video_item" translatable="false">• %s</string>
     <string name="morphe_ghost_play_channels_loading_details">Loading recent videos…</string>
     <string name="morphe_ghost_play_channels_no_recent_videos">No recent videos found (tap to retry)</string>
+
+    <!-- Shared YouTube strings -->
+    <string name="morphe_all_settings">All settings</string>
+    <string name="morphe_clear_all">Clear all</string>
+    <string name="morphe_haptic_feedback_title">Enable haptic feedback</string>
+    <string name="morphe_hide_dislike_button_title">Hide Dislike button</string>
+    <string name="morphe_hide_in_channel_page_title">Hide in channel page</string>
+    <string name="morphe_hide_in_search_results_title">Hide in search results</string>
+    <string name="morphe_hide_in_watch_history_title">Hide in watch history</string>
+    <string name="morphe_hide_like_button_title">Hide Like button</string>
+    <string name="morphe_no_limit">No limit</string>
+    <string name="morphe_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
+    <string name="morphe_portrait">Portrait</string>
+    <string name="morphe_queue_add_to_queue">Add to queue</string>
+    <string name="morphe_queue_added">Added to queue</string>
+    <string name="morphe_queue_play_last">Play last in queue</string>
+    <string name="morphe_queue_play_next">Play next in queue</string>
+    <string name="morphe_queue_title">Queue</string>
+    <string name="morphe_save_to_watch_later_title">Save to Watch later</string>
+    <string name="morphe_search">Search</string>
+    <string name="morphe_set">Set</string>
+    <string name="morphe_shorts_title">Shorts</string>
+    <string name="morphe_speed_step_title">Speed step</string>
+    <string name="morphe_tablet">Tablet</string>
+    <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
+    <string name="morphe_watch_later">Watch later</string>
 </resources>

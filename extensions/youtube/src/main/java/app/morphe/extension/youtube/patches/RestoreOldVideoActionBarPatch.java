@@ -553,6 +553,15 @@ public class RestoreOldVideoActionBarPatch {
                 VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
                 // The response has no element of the channel bar, so its uri is taken from the template cache.
                 String channelBarUri = CHANNEL_BAR_TEMPLATE.getUri();
+                if (channelBarUri != null) {
+                    if (!channelBarUri.equals(Settings.VIDEO_ACTION_BAR_CHANNEL_BAR_TEMPLATE.get())) {
+                        Settings.VIDEO_ACTION_BAR_CHANNEL_BAR_TEMPLATE.save(channelBarUri);
+                    }
+                } else if (!Settings.VIDEO_ACTION_BAR_CHANNEL_BAR_TEMPLATE.get().isEmpty()) {
+                    // The template cache can be without the channel bar when the app starts, such as on 20.26.
+                    // The app then downloads the template of the uri that was found before.
+                    channelBarUri = Settings.VIDEO_ACTION_BAR_CHANNEL_BAR_TEMPLATE.get();
+                }
                 if (channelBarUri == null || actionBar.getActionsCount() == 0
                         || !actionBar.getActions(0).getContent().hasSubscribeButton()) {
                     newRenderer.addTertiaryContents(row);

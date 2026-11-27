@@ -25,11 +25,9 @@ App data from a newer version does not work with an older versions and the app m
 To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install the older version."</string>
     <string name="morphe_app_downgrade_dialog_open_app_info">Open app info</string>
 
-    <string name="morphe_screen_ads_title">Ads</string>
     <string name="morphe_hide_post_ads_title">Hide feed ads</string>
     <string name="morphe_hide_comment_ads_title">Hide comment ads</string>
 
-    <string name="morphe_screen_navigation_bar_title">Navigation bar</string>
     <string name="morphe_disable_bottom_bar_auto_hide_title">Disable bottom bar auto-hide</string>
     <string name="morphe_disable_bottom_bar_auto_hide_summary">Keeps the bottom navigation bar visible while scrolling</string>
     <string name="morphe_glass_navigation_bar_title">Glass navigation bar</string>
@@ -70,9 +68,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_glass_navigation_bar_search_button_summary_on">Search is a round button next to the navigation bar on phones</string>
     <string name="morphe_glass_navigation_bar_search_button_summary_off">Search is at the top of Home</string>
     <string name="morphe_glass_navigation_bar_search_button_label">Search</string>
+    <string name="morphe_glass_navigation_bar_top_tabs_title">Tabs in top bar</string>
+    <string name="morphe_glass_navigation_bar_top_tabs_summary_on">The Home feed tabs are on a glass capsule between the menu and the avatar</string>
+    <string name="morphe_glass_navigation_bar_top_tabs_summary_off">The Home feed tabs are below the top bar</string>
     <string name="morphe_hide_answers_button_title">Hide Answers button</string>
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
-    <string name="morphe_hide_create_button_title">Hide Create button</string>
     <string name="morphe_hide_discover_button_title">Hide Discover or Communities button</string>
     <string name="morphe_hide_games_button_title">Hide Games button</string>
 
@@ -89,10 +89,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
 
-    <string name="morphe_screen_post_buttons_title">Post buttons</string>
     <string name="morphe_hide_post_award_button_title">Hide Award button</string>
     <string name="morphe_hide_post_award_button_summary">Hides the Award button on posts and comments</string>
-    <string name="morphe_hide_post_comment_button_title">Hide Comment button</string>
     <string name="morphe_hide_post_join_button_title">Hide Join button</string>
     <string name="morphe_hide_post_mod_button_title">Hide Mod button</string>
     <string name="morphe_hide_post_repost_button_title">Hide Repost button</string>
@@ -108,11 +106,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_flair_filters_title">Flair filters</string>
     <string name="morphe_flair_filters_summary">Hide feed posts with a flair of a community. Matching ignores case</string>
     <string name="morphe_flair_filters_empty">No flair filters</string>
-    <string name="morphe_flair_filters_add">Add</string>
-    <string name="morphe_flair_filters_remove">Remove</string>
     <string name="morphe_flair_filters_hint">community::flair</string>
     <string name="morphe_flair_filters_invalid">Enter a community and a flair, for example gaming::Discussion</string>
-    <string name="morphe_flair_filters_saved">Refresh the feed to apply the changes</string>
     <string name="morphe_flair_filters_remember_seen_title">Remember seen flairs</string>
     <string name="morphe_flair_filters_remember_seen_summary">Remember the flairs of feed posts until the app closes, to choose flair filters from them</string>
     <string name="morphe_flair_filters_seen_title">Choose seen flairs</string>
@@ -121,11 +116,9 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_keyword_filters_title">Keyword filters</string>
     <string name="morphe_keyword_filters_summary">Hide feed posts with a title or text that matches a regular expression. Matching ignores case</string>
     <string name="morphe_keyword_filters_empty">No keyword filters</string>
-    <string name="morphe_keyword_filters_add">Add</string>
-    <string name="morphe_keyword_filters_remove">Remove</string>
     <string name="morphe_keyword_filters_hint">Regular expression</string>
     <string name="morphe_keyword_filters_invalid">Invalid regular expression: %s</string>
-    <string name="morphe_keyword_filters_saved">Refresh the feed to apply the changes</string>
+    <string name="morphe_filters_saved">Refresh the feed to apply the changes</string>
 
     <string name="morphe_screen_layout_title">Layout</string>
     <string name="morphe_layout_home_feed_title">Home feed</string>
@@ -230,11 +223,7 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_tablet_grid_feed_summary_on">Feeds are shown as a grid on tablets. Phones are unchanged</string>
     <string name="morphe_tablet_grid_feed_summary_off">Feeds are shown as a list</string>
 
-    <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
-    <string name="morphe_about_title">About</string>
     <string name="morphe_about_summary">Patch version and official links</string>
-    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
-    <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_share_post_content_title">Share post content</string>
     <string name="morphe_share_post_content_summary">App shortcuts and \"Share via…\" in the share sheet send the image, video or text of a post instead of its link. Copy link still copies the link</string>
     <string name="morphe_share_post_content_preparing">Preparing to share…</string>
@@ -277,7 +266,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_redgifs_hd_summary">Plays the HD Redgifs video. HD videos are larger and can pause to load</string>
     <string name="morphe_download_all_from_gallery_title">Download all from gallery</string>
     <string name="morphe_download_all_from_gallery_summary">When you tap Download on a gallery post in the share sheet, choose between the item you are viewing and every item in the gallery</string>
-    <string name="morphe_download_all_dialog_title">Download</string>
     <string name="morphe_download_all_dialog_message">Save only the item you are viewing, or every item in the gallery?</string>
     <string name="morphe_download_all_this_one">This one</string>
     <string name="morphe_download_all_all">All %s</string>
@@ -305,9 +293,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_download_location_pattern_help">Tap a token to insert it. A / creates a subfolder. Unknown values become \"unknown\"</string>
     <string name="morphe_download_location_example_images">Images: %s</string>
     <string name="morphe_download_location_example_videos">Videos: %s</string>
-    <string name="morphe_download_location_save">Save</string>
-    <string name="morphe_download_location_reset">Reset</string>
-    <string name="morphe_download_location_delete">Delete</string>
     <string name="morphe_download_location_reset_confirm">Reset the download location of all accounts to Reddit\'s default?</string>
     <string name="morphe_download_location_delete_confirm">Delete the download location of %s?</string>
     <string name="morphe_download_location_save_failed">Could not save to the download location. Saved to Reddit\'s default folder instead</string>
@@ -360,7 +345,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Muted (blends in with the page)</string>
     <string name="morphe_remember_collapsed_comments_title">Remember collapsed comments</string>
     <string name="morphe_remember_collapsed_comments_summary">Comments you collapse stay collapsed when you reopen the post</string>
-    <string name="morphe_app_icon_title">App icon</string>
     <string name="morphe_app_icon_choose_title">Choose app icon</string>
     <string name="morphe_app_icon_default">Default</string>
     <string name="morphe_app_icon_unknown">Unknown</string>

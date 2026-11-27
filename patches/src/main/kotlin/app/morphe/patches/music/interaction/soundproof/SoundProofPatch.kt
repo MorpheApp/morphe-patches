@@ -105,7 +105,7 @@ val soundProofPatch = patch(
                 preferences = setOf(
                     SwitchPreference("morphe_music_soundproof_show_button", summary = true),
                     SwitchPreference("morphe_music_soundproof_skip_ai_artists", summary = true),
-                    SwitchPreference("morphe_music_soundproof_toast_on_skip", summary = true),
+                    SwitchPreference("morphe_music_soundproof_toast_on_skip", titleKey = "morphe_toast_on_skip_title", summary = true),
                     PreferenceCategory(
                         key = "morphe_music_soundproof_threshold",
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,

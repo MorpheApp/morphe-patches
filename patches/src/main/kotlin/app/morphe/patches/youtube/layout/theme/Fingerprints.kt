@@ -488,3 +488,20 @@ internal object StatusBarDarkIconsFingerprint : Fingerprint(
         opcode(Opcode.CMPL_DOUBLE, MatchAfterImmediately())
     )
 )
+
+/**
+ * Sets a property of the views of the ambient mode background of the watch page, such as the color of the view
+ * below the ambient mode image.
+ */
+internal object CinematicBackgroundPropertyFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            definingClass = "Lcom/google/android/apps/youtube/app/common/ui/cinematics/CinematicImageView;",
+            name = "setImageMatrix"
+        ),
+        methodCall(smali = "Landroid/widget/FrameLayout;->setBackgroundColor(I)V"),
+        methodCall(smali = "Landroid/widget/FrameLayout;->setAlpha(F)V")
+    )
+)

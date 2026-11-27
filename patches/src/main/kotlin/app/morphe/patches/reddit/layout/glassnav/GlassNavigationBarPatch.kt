@@ -12,8 +12,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addFreeRegisters
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -26,6 +28,7 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_48_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -41,6 +44,8 @@ import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch;"
+private const val TOP_TABS_EXTENSION_CLASS =
+    "Lapp/morphe/extension/reddit/patches/GlassNavigationBarTopTabs;"
 private const val NEUTRAL_COLORS_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/GlassNavigationBarPatch$NeutralColors;"
 
@@ -280,6 +285,21 @@ val glassNavigationBarPatch = patch(
 
         // endregion
 
+        // region Bottom bar pill.
+
+        BottomNavButtonFingerprint.matchAll().forEach { match ->
+            match.method.addInstructions(
+                0,
+                """
+                    invoke-static/range { p3 .. p4 }, $EXTENSION_CLASS->getBarButtonModifier(Z$MODIFIER_INTERFACE)Ljava/lang/Object;
+                    move-result-object p4
+                    check-cast p4, $modifierType
+                """
+            )
+        }
+
+        // endregion
+
         // region Search button.
 
         // Older versions do not tell if the current screen shows the bar,
@@ -311,7 +331,16 @@ val glassNavigationBarPatch = patch(
                     val fieldMatch = it.instructionMatches[3]
                     val fieldParameters = fieldMatch.methodReference.parameterTypes.map { type -> type.toString() }
                     val fieldRegisters = fieldMatch.instruction.registersUsed
+                    val composerType = parameterTypes[parameterTypes.size - 2].toString()
+                    val composerRegister = fieldRegisters[fieldParameters.indexOf(composerType)]
                     val clickRegister = fieldRegisters[fieldParameters.indexOf("Lkotlin/jvm/functions/Function0;")]
+
+                    // Tabs in top bar.
+                    addInstruction(
+                        fieldMatch.index + 1,
+                        "invoke-static/range { v$composerRegister .. v$composerRegister }, " +
+                            "$TOP_TABS_EXTENSION_CLASS->composeTabsInRow(Ljava/lang/Object;)V"
+                    )
 
                     addInstructionsAtControlFlowLabel(
                         fieldMatch.index,
@@ -332,6 +361,19 @@ val glassNavigationBarPatch = patch(
                         menuMatch.instruction.registersUsed[1],
                         "getTopBarButtonModifier"
                     )
+
+                    // Content below the top bar, such as the tabs. No parameter before it is a long.
+                    val belowParameter = parameterTypes.indexOfFirst { type ->
+                        type.toString() == "Lkotlin/jvm/functions/Function2;"
+                    }
+
+                    addInstructions(
+                        0,
+                        """
+                            invoke-static/range { p$belowParameter .. p$belowParameter }, $TOP_TABS_EXTENSION_CLASS->getTopBarBelow(Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
+                            move-result-object p$belowParameter
+                        """
+                    )
                 }
             }
 
@@ -344,6 +386,155 @@ val glassNavigationBarPatch = patch(
                 0,
                 "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;Landroid/view/View;)V"
             )
+
+            // Tabs in top bar.
+
+            val tabRowCallMatch = HomeTabBarFingerprint.instructionMatches[1]
+            val tabRowCall = tabRowCallMatch.methodReference
+
+            HomeTabBarFingerprint.method.apply {
+                val pagerRegister = tabRowCallMatch.instruction.registersUsed[1]
+
+                addInstructionsAtControlFlowLabel(
+                    tabRowCallMatch.index,
+                    "invoke-static/range { v$pagerRegister .. v$pagerRegister }, " +
+                        "$TOP_TABS_EXTENSION_CLASS->setTabBarPager(Ljava/lang/Object;)V"
+                )
+
+                addInstructions(
+                    0,
+                    """
+                        invoke-static/range { p3 .. p3 }, $TOP_TABS_EXTENSION_CLASS->spreadTabsEvenly(Z)Z
+                        move-result p3
+                    """
+                )
+            }
+
+            HomeTabBarWrapperFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static/range { p3 .. p3 }, $TOP_TABS_EXTENSION_CLASS->getTabBarModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                    move-result-object p3
+                    check-cast p3, $modifierType
+                """
+            )
+
+            val indicatorFingerprint = tabRowIndicatorFingerprint(tabRowCall.definingClass)
+            val roundedCornerShapeMethod = indicatorFingerprint.instructionMatches[1].methodReference
+
+            NewRoundedCornerShapeFingerprint.method.addFreeRegisters(1).first.addInstructions(
+                0,
+                """
+                    invoke-static { p0 }, $roundedCornerShapeMethod
+                    move-result-object v0
+                    return-object v0
+                """
+            )
+
+            val indicatorCallerFingerprint = if (is_2026_48_0_or_greater) {
+                ::tabRowIndicatorCallerFingerprint
+            } else {
+                ::tabRowIndicatorCallerLegacyFingerprint
+            }
+
+            indicatorCallerFingerprint(
+                tabRowCall.parameterTypes[1].toString(),
+                indicatorFingerprint.method
+            ).matchAll().forEach { match ->
+                match.method.apply {
+                    val pagerRegister = match.instructionMatches[0].instruction.registersUsed[0]
+                    val indicatorMatch = match.instructionMatches[1]
+                    val modifierRegister = indicatorMatch.instruction.registersUsed[2]
+
+                    // The registers are not next to each other, so invoke-static/range cannot be used.
+                    if (maxOf(pagerRegister, modifierRegister) > 15) {
+                        throw PatchException("Register above v15: v$pagerRegister, v$modifierRegister")
+                    }
+
+                    addInstructionsAtControlFlowLabel(
+                        indicatorMatch.index,
+                        """
+                            invoke-static { v$modifierRegister, v$pagerRegister }, $TOP_TABS_EXTENSION_CLASS->getIndicatorModifier(${MODIFIER_INTERFACE}Ljava/lang/Object;)Ljava/lang/Object;
+                            move-result-object v$modifierRegister
+                            check-cast v$modifierRegister, $modifierType
+                        """
+                    )
+                }
+            }
+
+            homeTabBarHeightCallerFingerprint(
+                HomeTabBarHeightFingerprint.method,
+                HomeTabBarFingerprint.classDef.type
+            ).matchAll().forEach { match ->
+                match.method.apply {
+                    val moveResultMatch = match.instructionMatches[1]
+                    val heightRegister = moveResultMatch.instruction.registersUsed[0]
+
+                    addInstructions(
+                        moveResultMatch.index + 1,
+                        """
+                            invoke-static/range { v$heightRegister .. v$heightRegister }, $TOP_TABS_EXTENSION_CLASS->getHeaderHeight(F)F
+                            move-result v$heightRegister
+                        """
+                    )
+                }
+            }
+
+            HomeTabItemFingerprint.let {
+                it.method.apply {
+                    // Hook the last instruction first, so the earlier index stays the same.
+                    val itemMatch = it.instructionMatches[3]
+                    val modifierRegister = itemMatch.instruction.registersUsed[2]
+
+                    addInstructionsAtControlFlowLabel(
+                        itemMatch.index,
+                        """
+                            invoke-static/range { v$modifierRegister .. v$modifierRegister }, $TOP_TABS_EXTENSION_CLASS->getTabModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                            move-result-object v$modifierRegister
+                            check-cast v$modifierRegister, $modifierType
+                        """
+                    )
+
+                    val paddingMatch = it.instructionMatches[0]
+                    val topRegister = paddingMatch.instruction.registersUsed[2]
+
+                    addInstructionsAtControlFlowLabel(
+                        paddingMatch.index,
+                        """
+                            invoke-static/range { v$topRegister .. v$topRegister }, $TOP_TABS_EXTENSION_CLASS->getTabTopPadding(F)F
+                            move-result v$topRegister
+                        """
+                    )
+                }
+            }
+
+            HomeTabLabelFingerprint.let {
+                it.method.apply {
+                    val textMatch = it.instructionMatches[1]
+                    val textRegisters = textMatch.instruction.registersUsed
+                    val textParameters = textMatch.methodReference.parameterTypes.map { type -> type.toString() }
+
+                    // A long parameter uses two registers.
+                    fun parameterRegister(index: Int) = textRegisters.first() +
+                        textParameters.take(index).sumOf { type -> if (type == "J" || type == "D") 2 else 1 }
+
+                    val fontSizeRegister = parameterRegister(3)
+                    val lineHeightRegister = parameterRegister(10)
+                    val defaultMaskRegister = textRegisters.last()
+
+                    addInstructionsAtControlFlowLabel(
+                        textMatch.index,
+                        """
+                            invoke-static/range { v$fontSizeRegister .. v${fontSizeRegister + 1} }, $TOP_TABS_EXTENSION_CLASS->getLabelFontSize(J)J
+                            move-result-wide v$fontSizeRegister
+                            invoke-static/range { v$lineHeightRegister .. v${lineHeightRegister + 1} }, $TOP_TABS_EXTENSION_CLASS->getLabelLineHeight(J)J
+                            move-result-wide v$lineHeightRegister
+                            invoke-static/range { v$defaultMaskRegister .. v$defaultMaskRegister }, $TOP_TABS_EXTENSION_CLASS->getLabelDefaultMask(I)I
+                            move-result v$defaultMaskRegister
+                        """
+                    )
+                }
+            }
         }
 
         // endregion

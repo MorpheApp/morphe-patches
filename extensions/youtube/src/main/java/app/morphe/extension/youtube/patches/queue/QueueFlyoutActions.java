@@ -64,7 +64,7 @@ public final class QueueFlyoutActions {
             // Menus of Shorts in the feed have no stock queue items to replace.
             final boolean isAddShortsItems = playlistId.isEmpty() && FlyoutUtils.isShortsFeedMenu();
             MenuRenderer completed = completeMenu(menu,
-                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,
+                    str("morphe_queue_play_next"), str("morphe_queue_play_last"), playlistId,
                     isAddShortsItems);
             if (completed == menu) {
                 return original;
@@ -88,7 +88,7 @@ public final class QueueFlyoutActions {
         }
         try {
             var stock = MenuRenderer.parseFrom(original.toByteArray());
-            var bound = bindPlaylistPageMenu(stock, str("morphe_native_playlist_queue_last"));
+            var bound = bindPlaylistPageMenu(stock, str("morphe_queue_play_last"));
             if (bound == stock) {
                 return original;
             }

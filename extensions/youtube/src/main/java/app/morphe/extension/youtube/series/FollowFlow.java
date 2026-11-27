@@ -89,7 +89,7 @@ final class FollowFlow {
         consentGeneration = RecordingPrivacy.generation();
         status = sheet.message("");
         status.setVisibility(View.GONE);
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
         follow = sheet.action("morphe_series_tracker_follow", this::follow, true);
         sheet.show();
         sheet.onDismiss(
@@ -334,7 +334,7 @@ final class FollowFlow {
             });
             choices.body.addView(option);
         }
-        choices.action("morphe_series_tracker_ui_cancel", choices.dialog::dismiss, false);
+        choices.action("morphe_cancel", choices.dialog::dismiss, false);
         choices.show();
     }
 

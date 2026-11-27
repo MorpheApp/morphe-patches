@@ -59,6 +59,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -404,6 +405,22 @@ val themePatch = baseThemePatch(
     executeBlock = {
         // The feed video cards have the same color as backgrounds that are themed.
         lithoDrawableColorHook("$EXTENSION_CLASS->getFeedCardColor(Landroid/graphics/drawable/Drawable;I)I")
+
+        // The view below the ambient mode image is always black, and 21.47+ shows it behind the whole watch page.
+        CinematicBackgroundPropertyFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<FiveRegisterInstruction>(index).registerD
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->getCinematicBackgroundColor(I)I
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         // A patched theme color cannot be changed, so there is nothing to select.
         val colorPreferences = if (usePatchedThemeColor) {

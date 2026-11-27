@@ -58,7 +58,7 @@ public final class BackupPreference extends Preference {
         NativeSheet sheet = new NativeSheet(activity, "morphe_series_tracker_backup_restore");
         sheet.message(UiText.format("morphe_series_tracker_backup_preview",
                 count, data.series().size() - count));
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
         if (count > 0) {
             sheet.action("morphe_series_tracker_backup_restore", () -> {
                 sheet.dialog.dismiss();
