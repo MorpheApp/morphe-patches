@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">Síðast spilað</string>
   <string name="morphe_music_android_auto_subscriptions">Áskriftir</string>
-  <string name="morphe_music_android_auto_videos">Myndbönd</string>
   <string name="morphe_music_android_auto_other_results">Aðrar niðurstöður</string>
   <string name="morphe_music_android_auto_uploaded_songs">Hlaðin lög</string>
   <string name="morphe_music_android_auto_uploaded_albums">Hlaðnar platnur</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">Kveikja á Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">Kveiktu á Wi-Fi, reyndu síðan að hefja eða tengjast Jam aftur</string>
   <string name="morphe_music_jam_wifi_settings">Opna Wi-Fi-stillingar</string>
-  <string name="morphe_music_jam_cancel">Hætta við</string>
   <string name="morphe_music_jam_use_package">Nota pakka</string>
   <string name="morphe_music_jam_invalid_package">Sláðu inn gilt Android-pakkanafn</string>
   <string name="morphe_music_jam_package_saved">Pakki vistaður. Settu upp Jam Layer til að tengjast</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">Skanna QR</string>
   <string name="morphe_music_jam_invalid_invite">Sláðu inn átta stafa kóðann eða límdu inn boð.</string>
   <string name="morphe_music_jam_join_your_jam">Tengdu þig við Jam-ið þitt</string>
-  <string name="morphe_music_jam_copy_code">Afrita kóða</string>
   <string name="morphe_music_jam_code_clip">Jam-kóði</string>
   <string name="morphe_music_jam_show_qr">Sýna QR</string>
   <string name="morphe_music_jam_done">Lokið</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">Yfirgefa Jam</string>
   <string name="morphe_music_jam_start_jam">Hefja Jam</string>
   <string name="morphe_music_jam_setup_layer">Settu upp Jam Layer</string>
-  <string name="morphe_music_jam_manage">Stjórna</string>
   <string name="morphe_music_jam_details">Upplýsingar</string>
   <string name="morphe_music_jam_open">Opna</string>
   <string name="morphe_music_jam_loading_song_options">Hleð valkosti laga…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">Biðröðin breyttist; reyndu bendinguna aftur.</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Forsíðarlógó</string>
   <string name="morphe_header_logo_entry_1">Sjálfgefið</string>
   <string name="morphe_header_logo_entry_3">Sérsniðið</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Nota utanaðkomandi niðurhalara fyrir niðurhalsvalmynd</string>
   <string name="morphe_external_downloader_menu_summary">Niðurhalsvalkostur í valmyndum opnar utanaðkomandi niðurhalara í staðinn</string>
-  <string name="morphe_download_force_4k_title">Þvinga aðgengi að 4K niðurhali</string>
   <string name="morphe_download_force_4k_summary">Vista 1440p og 4K niðurtölu jafnvel ef YouTube Music ákveður að þessu tæki sé ekki hægt að spila þær</string>
   <string name="morphe_export_download_folder_title">Flytja niðurhals út</string>
   <string name="morphe_export_download_folder_summary">"Flytja út lög og myndbönd sem eru vistuð í forritinu í geymslu tækisins með niðurhalsvalmyndinni. Ýttu til að breyta útflutningsmöppu
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">Skiptu Shuffle hnappi fyrir Loop hnapp</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">Sýnir Loop hnapp í stað Shuffle hnapps í miðlatilkynningu og á læsingarskjá</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">Um</string>
-  <string name="morphe_settings_music_screen_01_ads_title">Auglýsingar</string>
-  <string name="morphe_settings_music_screen_02_feed_title">Straumur</string>
-  <string name="morphe_settings_music_screen_03_general_title">Almennt</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">Textar</string>
-  <string name="morphe_settings_music_screen_05_misc_title">Ýmslegt</string>
-  <string name="morphe_settings_music_screen_06_player_title">Spilari</string>
-  <string name="morphe_settings_music_screen_10_video_title">Myndband</string>
   <string name="morphe_music_app_language_title">Tungumál YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Tungumál kerfisins</string>
   <string name="morphe_music_app_language_summary_unsupported">Krefst Android 13 eða nýrri</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Fela merkið \'Fá Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Fela kynningar á Music Premium</string>
-  <string name="morphe_music_hide_video_ads_title">Fela myndbandsauglýsingar</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Fela Audio / Video rofann</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Felur niðurhalshnappinn í podcastþætti</string>
   <string name="morphe_music_hide_explore_shelf_title">Fela Explore-röðina</string>
   <string name="morphe_music_hide_filter_bar_title">Fela síubjálka</string>
   <string name="morphe_music_hide_grid_shelves_title">Fela ristaraðir</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">Fela láréttar raðir</string>
   <string name="morphe_music_hide_new_button_title">Fela Ný hnappinn</string>
   <string name="morphe_music_hide_new_button_summary">Felur Nýjan hnapp í bókasafnsfánum</string>
   <string name="morphe_music_hide_list_shelves_title">Fela listaraðir</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Textaspjald</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Fela Þýðingarhnappinn</string>
   <string name="morphe_music_hide_new_from_shelf_title">Fela \'Nýtt frá\' röðina</string>
   <string name="morphe_music_hide_playlist_shelves_title">Fela spilunarlistaraðir</string>
   <string name="morphe_music_hide_repeat_button_title">Fela endurtaka-hnappinn</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Fela \'Speed dial\'-röðina</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Fela hlutann „Þér gæti líkað“</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">Fela „Þínar niðurhalingar“-hilluna</string>
-  <string name="morphe_music_comments_screen_title">Athugasemdir</string>
-  <string name="morphe_music_comments_screen_summary">Veldu hvaða þættir koma fram í athugasemdadeildinni</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">Fela samfélagsreglur</string>
   <string name="morphe_music_hide_comments_context_title">Fela samhengis skilaboð</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">Fela Emoji hnapp</string>
-  <string name="morphe_music_hide_comments_gif_button_title">Fela GIF-hnapp</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">Fela GIF-myndir og myndir</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">Felur GIF-myndir og myndir sem fylgja athugasemdum og svörum</string>
-  <string name="morphe_music_hide_comments_info_button_title">Fela Info hnapp</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">Fela tímamerkishnappinn</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Krossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Blanda lagum saman á sléttan hátt</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 millisekúndur</string>
   <string name="morphe_crossfade_duration_500ms">500 millisekúndur</string>
   <string name="morphe_crossfade_duration_750ms">750 millisekúndur</string>
-  <string name="morphe_crossfade_duration_1000ms">1 sekúnda</string>
-  <string name="morphe_crossfade_duration_2000ms">2 sekúndur</string>
-  <string name="morphe_crossfade_duration_3000ms">3 sekúndur</string>
-  <string name="morphe_crossfade_duration_4000ms">4 sekúndur</string>
-  <string name="morphe_crossfade_duration_5000ms">5 sekúndur</string>
-  <string name="morphe_crossfade_duration_6000ms">6 sekúndur</string>
-  <string name="morphe_crossfade_duration_7000ms">7 sekúndur</string>
-  <string name="morphe_crossfade_duration_8000ms">8 sekúndur</string>
-  <string name="morphe_crossfade_duration_9000ms">9 sekúndur</string>
-  <string name="morphe_crossfade_duration_10000ms">10 sekúndur</string>
   <string name="morphe_crossfade_duration_11000ms">11 sekúndur</string>
   <string name="morphe_crossfade_duration_12000ms">12 sekúndur</string>
   <string name="morphe_music_crossfade_on_skip_title">Crossfade við handvirkt skip</string>
@@ -283,7 +247,6 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_playback_speed_summary">Hraði sem notaður er fyrir öll lög. Við 100% er hraði forritsins notaður, eins og spilunarhraði hlaðvarpsins.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Breyta tónhæð með hraðanum</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">Sýna valmynd fyrir myndbandaáhrif</string>
   <string name="morphe_music_video_effect_menu_summary">Bætir myndbandaáhrifum við valmynd spilara á meðan myndband spilar</string>
   <string name="morphe_music_video_effect_next_video">Áhrifin sýnast frá næsta myndbandi</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_playlist_tags_summary">Bætir Merki-liðnum við valmynd spilunarlista og síu-hnappi fyrir merki við hliðina á flokkunarhnappi safnsins</string>
   <string name="morphe_music_playlist_tags_manage_title">Stjórna merkjum spilunarlista</string>
   <string name="morphe_music_playlist_tags_manage_summary">Búa til, endurnefna og eyða merkjum og merkja spilunarlista sem sjást í safninu</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">Merki</string>
   <string name="morphe_music_playlist_tags_menu_item_none">Engin merki</string>
-  <string name="morphe_music_playlist_tags_filter_button">Merki</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">Merki: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">Merki (%s falin)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">Merki fyrir %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">Nýtt merki</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 spilunarlisti</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s spilunarlistar</string>
@@ -344,22 +303,14 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_playlist_tags_filter_show_only">Sýna aðeins</string>
   <string name="morphe_music_playlist_tags_filter_all">Allir spilunarlistar</string>
   <string name="morphe_music_playlist_tags_filter_visible">Sýnileg merki</string>
-  <string name="morphe_music_playlist_tags_manage">Stjórna</string>
   <string name="morphe_music_playlist_tags_none">Engin merki enn. Ýttu lengi á spilunarlista og veldu Merki til að búa til eitt</string>
-  <string name="morphe_music_playlist_tags_section_tags">Merki</string>
   <string name="morphe_music_playlist_tags_section_playlists">Spilunarlistar</string>
   <string name="morphe_music_playlist_tags_no_playlists">Opnaðu safnið einu sinni svo spilunarlistarnir þínir birtist hér</string>
   <string name="morphe_music_playlist_tags_new_tag">Nýtt merki</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Breyta merki</string>
-  <string name="morphe_music_playlist_tags_rename">Endurnefna</string>
-  <string name="morphe_music_playlist_tags_delete">Eyða</string>
   <string name="morphe_music_playlist_tags_hidden">Falið</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">Aðgerðahnappar</string>
   <string name="morphe_music_action_buttons_screen_summary">Veldu hvaða aðgerðahnappar birtast undir spilaranum</string>
-  <string name="morphe_music_hide_action_bar_title">Fela aðgerðastiku</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Fela like- og dislike-hnappa</string>
-  <string name="morphe_music_hide_comments_button_title">Fela athugasemdahnapp</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">Fela \'Endursýning lifandi spjalls\' hnappinn</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">Fela \'Byrja útvarp\' hnappinn</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">Fljótandi valmynd</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Veldu hvaða þættir birtast í valmyndum spilarans og biðraðarins</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Fela 3-þátta þáttinn</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Fela Like og Dislike hnappa</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Fela \'Smekksamhæfni\' valmyndina</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Fela \'Bæta við í \'Spila seinna\' spilalistan\' valmynd</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Fela \'Bæta í biðröð\' valmynd</string>
@@ -410,17 +359,9 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Fela \'Fjarlægja festu á hraðahnapp\' valmynd</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Fela \'Skoða lagahöfunda\' valmynd</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Forsíða</string>
-  <string name="morphe_change_start_page_entry_default">Sjálfgefið</string>
   <string name="morphe_change_start_page_entry_charts">Vinsældalistar</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Þættir síðar</string>
-  <string name="morphe_change_start_page_entry_explore">Kanna</string>
-  <string name="morphe_change_start_page_entry_history">Saga</string>
-  <string name="morphe_change_start_page_entry_library">Safn</string>
   <string name="morphe_change_start_page_entry_liked_music">Líkuð lög</string>
-  <string name="morphe_change_start_page_entry_playlists">Spilalistar</string>
-  <string name="morphe_change_start_page_entry_search">Leit</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Áskrifanir</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Þvinga lóðrétta stefnu</string>
   <string name="morphe_music_force_portrait_orientation_summary">Heldur forritinu í lóðréttri stefnu þegar tækinu er snúið</string>
@@ -449,21 +390,10 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_hide_navigation_bar_library_button_title">Fela safnhnappinn</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Fela uppfærsluhnappinn</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">Sýna Stillingar-hnappinn</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Aðgerð stillingarhnapps</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Þegar virkt, opnar stutt ýtt Morphe-stillingar en langt ýtt YouTube Music-stillingar; slökktu á til að skipta</string>
-  <string name="morphe_music_hide_navigation_bar_title">Fela leiðsögustiku</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Fela heiti leiðsögutakka</string>
-  <string name="morphe_music_navigation_bar_glass_title">Virkja glerstigaðan stýristika</string>
   <string name="morphe_music_navigation_bar_glass_summary">Sýnir eigumreglustikuna sem flotandi, lögða og gjágæga capsule</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Stærð og stíll glerleiðsögustikunnar</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">Stilltu hæð, breidd, hnappabil, gagnsæi og birtu randa glerleiðsögustikunnar með forskoðun. Hnappar sem komast ekki fyrir í breidd skjásins eru faldir</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">Hæð</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">Hámarkabreidd</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Fjarlægð milli hnappa</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Sýndir hnappar: %1$s af %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Ógegnsæni</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">Birta randa</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">Gler-slærð</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">Hversu mikið síðan á bak við glerleiðsögustikuna er slærð (Android 14 og nýrra). Ef þetta er 0 sýnist síðan skýrt, og fyrir Android 14 er síðan huldin</string>
   <string name="morphe_music_navigation_bar_glass_light_title">Ljós gler</string>
@@ -472,16 +402,12 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">Litar glerleiðsögustikuna eftir lit albúmmynd lagsins sem spilar</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Felldu vísir fyrir valinn hnapp</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Felldir runda hálglóaðinn á bak við valinn hnapp glerleiðsögustikunnar</string>
-  <string name="morphe_music_miniplayer_screen_title">Smáspilari</string>
   <string name="morphe_music_miniplayer_screen_summary">Breyttu stíl, hnappum og vistrum smáspilara</string>
   <string name="morphe_music_miniplayer_glass_title">Virkja gleráhrif</string>
   <string name="morphe_music_miniplayer_glass_summary">Sýnir flوتandi smáspilarann sem runda, hálfgagnsæa glerkort</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stíll gler-smáspilara</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Stilltu horngeislun, fjölnun albúmmyndar, birtu randa og gagnsæi gler-smáspilarans með forskoðun</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">Horngeislun</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Fjölnun albúmmyndar</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">Birta randa</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">Ógegnsæni</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hversu mikið síðan á bak við gler-smáspilarann er slærð (Android 14 og nýrra). Ef þetta er 0 sýnist síðan skýrt, og fyrir Android 14 er síðan huldin</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Litar gler-smáspilarann hvítan í stað þess að vera dökkur, fyrir ljóslæga og heiðari gler</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Litar gler-smáspilarann eftir lit albúmmynd lagsins sem spilar</string>
@@ -498,9 +424,7 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_hide_activity_button_title">Fela virknihnappinn</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">Fela hnappinn \'Spyrja tónlist\'</string>
-  <string name="morphe_music_hide_cast_button_title">Fela Cast hnapp</string>
   <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>
-  <string name="morphe_music_hide_search_button_title">Fela Leitarhnapp</string>
   <string name="morphe_music_hide_voice_search_button_title">Fela hnappinn \'Raddaleit\'</string>
   <string name="morphe_music_hide_sound_search_button_title">Fela \"Hljóðleit\"-hnappinn</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Til að tryggja að skrobbun samstillist við spilun í bakgrunni skaltu ganga �
   <string name="morphe_music_soundproof_show_button_summary">Sýnir hnapp efst í spilaranum til að sjá og greiða atkvæði samfélagsins um núverandi listamann</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">Hoppa yfir gervigreindlistamenn</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">Sleppir sjálfkrafa yfir lög þar sem listamaður nær AI-þröskulnum hér að neðan</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">Sýna tilkynningu um sleppingu</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">Sýnir tilkynningu þegar yfir lögum er sleppt sjálfkrafa</string>
   <string name="morphe_music_soundproof_threshold_title">Greiningarþröskull</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">Lágmark AI-atkvæði</string>
@@ -624,7 +547,6 @@ Gagnagrunnurinn er gefinn út undir ODC Open Database License (ODbL). Færslur f
   <string name="morphe_music_lyrics_source_all_disabled">Allir veitendur óvirkir - innbyggðar lagatextar og innfelldir lagatextar</string>
   <string name="morphe_music_lyrics_source_reset_title">Endurstilla forgangsröð?</string>
   <string name="morphe_music_lyrics_source_reset_message">Endurheimta veitur í sjálfgefna forgangsröð</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Rime orðalisti</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Rime orðalisti þarf einnig UniDict: í offline orðabókarveitunni, merktu „Kínverskir og kantónskir stafir (UniDict)“ og láttu hana klárast að sækjast fyrst. Án þess skilar listi sem les stafi engum lestri.
 
 Merktu við þá lista sem Rime orðalisti á að lesa, smelltu síðan á Vista til að sækja þá. Lista sem þú bættir við er eytt þegar þú afmerkir hann.
@@ -634,12 +556,10 @@ Hver listi er þín eigin orð-í-lestur tafla, .dict.yaml með línum eins og:
 典 din2
 Fyrsti dálkurinn er orðið, annar er lesturinn; aukadálkar og línur án tab eru hunsaðar."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Enginn Rime orðalisti er valinn fyrir tungumálið hér að ofan. Smelltu á þetta nafn til að velja einn, eða veldu tungumál sem hefur lista</string>
-  <string name="morphe_music_lyrics_rime_dict_add">Bæta við</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Bæta við Rime Orðalista</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">Skrá .dict.yaml, eða zip sem geymir hana, með línum eins og 字 ham og 典 din2. Listinn er sóttur þegar þú merkir hann og ýtir á Vista, og þú þarft sjálf/ur að athuga leyfið</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Tungumálskóði</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Tvær eða þrír stafir, eins og hak eða wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">Nafn</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">Sýnd undir útskrift, eins og Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">Vistfang orðalistans</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// vistfang .dict.yaml eða zip þess</string>
@@ -682,8 +602,6 @@ Fyrsti dálkurinn er orðið, annar er lesturinn; aukadálkar og línur án tab 
   <string name="morphe_music_lyrics_cache_total_category_title">Heildarnotkun skyndiminnis</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">Hreinsa allt skyndiminni</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d atripum)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">Tømma</string>
-  <string name="morphe_music_lyrics_cache_close_action">Loka</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">Eyða %1$s MB (%2$d lögum) af vistuðum textum geymdum á þessu tæki?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">Lögt %1$s MB (%2$d þýðingum) af vistuðum þýðingum geymdum á þessu tæki?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">Lögt %1$s MB (%2$d omskriftum) af vistuðum omskriftum geymdum á þessu tæki?</string>
@@ -766,7 +684,6 @@ Nauðsynlegar vafrakökur: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_download_started">Sæki lestrarorðabækur…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Lestrarorðabækur tilbúnar (%s færslur)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Niðurhal mistókst - slökktu á og kveiktu aftur til að reyna aftur</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Ótengd orðabók</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japanska</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">Kíneska</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — hraður málfræðigreini &amp; ruby</string>
@@ -785,8 +702,6 @@ Nauðsynlegar vafrakökur: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_custom_font_invalid">Ógilt eða óstutt letursýnisskjal (þarf .ttf eða .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">Deila texta</string>
   <string name="morphe_music_lyrics_share_button">Deila</string>
-  <string name="morphe_music_lyrics_copy">Afrita</string>
-  <string name="morphe_music_lyrics_share_cancel">Hætta við</string>
   <string name="morphe_music_lyrics_share_select_hint">Snerta 1–5 línur</string>
   <string name="morphe_music_lyrics_share_max_lines">Hægt er að velja hámark 5 línur</string>
   <string name="morphe_music_lyrics_share_failed">Gat ekki búið til hlutdeilungarkort fyrir texta</string>
@@ -903,18 +818,15 @@ Tappaðu tvífallt hér að neðan til að skrá SponsorBlock hluta"</string>
   <string name="morphe_music_lyrics_translated_by_google">Þýtt af Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Rómanserað af Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Þýtt af %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">Rómanserað af %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">Rómverjað af %s</string>
+  <string name="morphe_music_lyrics_romanized_by">Rómverjað af %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (með %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Þýtt</string>
-  <string name="morphe_music_lyrics_translation_language_title">Þýðingartungumál</string>
   <string name="morphe_music_lyrics_romanize_language_title">Rómverjun eða transliterering tungumál</string>
   <string name="morphe_music_lyrics_translation_target_language">"Markmálstungumál þýðingar:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"Markmálstungumál rómverjunar eða translitereringar:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">Þýði…</string>
   <string name="morphe_music_lyrics_translate_failed">Gat ekki þýtt textann</string>
   <string name="morphe_music_lyrics_romanize_hide">Rómanserað</string>
   <string name="morphe_romanize_language_DEFAULT">Sjálfvirkt</string>
@@ -922,7 +834,6 @@ Tappaðu tvífallt hér að neðan til að skrá SponsorBlock hluta"</string>
   <string name="morphe_music_lyrics_romanize_failed">Ekki tókst að rómansera textann</string>
   <string name="morphe_music_lyrics_romanize_language_none">Nei</string>
   <string name="morphe_music_lyrics_ruby_language_title">Markmál Ruby</string>
-  <string name="morphe_music_lyrics_translate_only">Aðeins þýtt</string>
   <string name="morphe_music_lyrics_romanize_only">Aðeins rómanserað</string>
   <string name="morphe_music_lyrics_dual_only">Tvöfaldur hamur</string>
   <string name="morphe_music_lyrics_copied">Afritað á klippiborð</string>
@@ -975,7 +886,7 @@ Textar koma frá þjónustum þriðja aðila sem hvorki tengjast, eru styrktar n
   <string name="morphe_music_lyrics_ai_config_status_invalid">Stillingar ófullkomnar eða hafnaðar af veitunni</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Sannreyni tengingu…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Tengt! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Tenging mistókst. Athugaðu stillingarnar.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">Tenging mislaðist: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Prófa tengingu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Sæki líkön…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Sækja líkön</string>
@@ -1003,4 +914,10 @@ Textar koma frá þjónustum þriðja aðila sem hvorki tengjast, eru styrktar n
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Slökkva á feitletruðum táknum</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">Endurheimta flipana Up next, Lyrics og Related</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">Stjórna</string>
+  <string name="morphe_music_opacity_title">Ógegnsæni</string>
+  <string name="morphe_music_rim_brightness_title">Birta ytra hrings</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">Merki</string>
 </resources>

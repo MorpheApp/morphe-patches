@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">เล่นล่าสุด</string>
   <string name="morphe_music_android_auto_subscriptions">การติดตาม</string>
-  <string name="morphe_music_android_auto_videos">วิดีโอ</string>
   <string name="morphe_music_android_auto_other_results">ผลลัพธ์อื่นๆ</string>
   <string name="morphe_music_android_auto_uploaded_songs">เพลงที่อัปโหลด</string>
   <string name="morphe_music_android_auto_uploaded_albums">อัลบั้มที่อัปโหลด</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">เปิด Wi-Fi ไหม?</string>
   <string name="morphe_music_jam_wifi_message">เปิด Wi-Fi แล้วลองเริ่มหรือเข้าร่วม Jam อีกครั้ง</string>
   <string name="morphe_music_jam_wifi_settings">เปิดการตั้งค่า Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">ยกเลิก</string>
   <string name="morphe_music_jam_use_package">ใช้แพ็กเกจ</string>
   <string name="morphe_music_jam_invalid_package">ป้อนชื่อแพ็กเกจ Android ที่ถูกต้อง</string>
   <string name="morphe_music_jam_package_saved">บันทึกแพ็กเกจแล้ว ตั้งค่า Jam Layer เพื่อเชื่อมต่อ</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">สแกน QR</string>
   <string name="morphe_music_jam_invalid_invite">ป้อนรหัสแปดตัวอักษรหรือวางคำเชิญ</string>
   <string name="morphe_music_jam_join_your_jam">เข้าร่วม Jam ของคุณ</string>
-  <string name="morphe_music_jam_copy_code">คัดลอกรหัส</string>
   <string name="morphe_music_jam_code_clip">รหัส Jam</string>
   <string name="morphe_music_jam_show_qr">แสดง QR</string>
   <string name="morphe_music_jam_done">เสร็จสิ้น</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">ออกจาก Jam</string>
   <string name="morphe_music_jam_start_jam">เริ่ม Jam</string>
   <string name="morphe_music_jam_setup_layer">ตั้งค่า Jam Layer</string>
-  <string name="morphe_music_jam_manage">จัดการ</string>
   <string name="morphe_music_jam_details">รายละเอียด</string>
   <string name="morphe_music_jam_open">เปิด</string>
   <string name="morphe_music_jam_loading_song_options">กำลังโหลดตัวเลือกเพลง…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">คิวมีการเปลี่ยนแปลง โปรดลองใช้ท่าทางอีกครั้ง</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">โลโก้ส่วนหัว</string>
   <string name="morphe_header_logo_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_header_logo_entry_3">กำหนดเอง</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">ใช้โปรแกรมดาวน์โหลดภายนอกสำหรับเมนู \"ดาวน์โหลด\"</string>
   <string name="morphe_external_downloader_menu_summary">ตัวเลือกดาวน์โหลดในเมนูจะเปิดโปรแกรมดาวน์โหลดภายนอกของคุณแทน</string>
-  <string name="morphe_download_force_4k_title">บังคับให้ดาวน์โหลดแบบ 4K ได้</string>
   <string name="morphe_download_force_4k_summary">บันทึกการดาวน์โหลดความละเอียด 1440p และ 4K แม้ว่า YouTube Music จะตัดสินว่าอุปกรณ์นี้ไม่สามารถเล่นได้ก็ตาม</string>
   <string name="morphe_export_download_folder_title">ส่งออกรายการดาวน์โหลด</string>
   <string name="morphe_export_download_folder_summary">"ส่งออกเพลงและวิดีโอที่บันทึกไว้ในแอปไปยังที่จัดเก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนูแบบเลื่อนออกการดาวน์โหลดในแอป แตะเพื่อเปลี่ยนการส่งออก
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">แทนที่ปุ่มสุ่มด้วยปุ่มเล่นซ้ำ</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">แสดงปุ่มเล่นซ้ำแทนปุ่มสุ่มในการแจ้งเตือนสื่อและหน้าจอล็อก</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">เกี่ยวกับ</string>
-  <string name="morphe_settings_music_screen_01_ads_title">โฆษณา</string>
-  <string name="morphe_settings_music_screen_02_feed_title">ฟีด</string>
-  <string name="morphe_settings_music_screen_03_general_title">ทั่วไป</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">เนื้อเพลง</string>
-  <string name="morphe_settings_music_screen_05_misc_title">เบ็ดเตล็ด</string>
-  <string name="morphe_settings_music_screen_06_player_title">เครื่องเล่น</string>
-  <string name="morphe_settings_music_screen_10_video_title">วิดีโอ</string>
   <string name="morphe_music_app_language_title">ภาษา YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">ภาษาระบบ</string>
   <string name="morphe_music_app_language_summary_unsupported">ต้องใช้ Android 13 หรือใหม่กว่า</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">ซ่อนป้าย \'รับ Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">ซ่อนโปรโมชั่น Music Premium</string>
-  <string name="morphe_music_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">ซ่อนแถบสลับเสียง / วิดีโอ</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">ซ่อนปุ่มดาวน์โหลดในรายการพอดแคสต์</string>
   <string name="morphe_music_hide_explore_shelf_title">ซ่อนชั้นวาง \'สำรวจ\'</string>
   <string name="morphe_music_hide_filter_bar_title">ซ่อนแถบตัวกรอง</string>
   <string name="morphe_music_hide_grid_shelves_title">ซ่อนชั้นวางกริด</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">ซ่อนชั้นวางแนวนอน</string>
   <string name="morphe_music_hide_new_button_title">ซ่อนปุ่มใหม่</string>
   <string name="morphe_music_hide_new_button_summary">ซ่อนปุ่ม New ในแท็บ Library</string>
   <string name="morphe_music_hide_list_shelves_title">ซ่อนชั้นวางรายการ</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">แผงเนื้อเพลง</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">ซ่อนปุ่มแปลภาษา</string>
   <string name="morphe_music_hide_new_from_shelf_title">ซ่อนชั้นวาง \'ใหม่จาก\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">ซ่อนชั้นวางเพลย์ลิสต์</string>
   <string name="morphe_music_hide_repeat_button_title">ซ่อนปุ่มเล่นซ้ำ</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">ซ่อนชั้นวาง \'โทรด่วน\'</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">ซ่อนส่วน \'คุณอาจจะชอบสิ่งนี้ด้วย\'</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">ซ่อนชั้นวาง \'ดาวน์โหลดของคุณ\'</string>
-  <string name="morphe_music_comments_screen_title">ความคิดเห็น</string>
-  <string name="morphe_music_comments_screen_summary">เลือกส่วนประกอบที่จะปรากฏในส่วนความคิดเห็น</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_music_hide_comments_context_title">ซ่อนข้อความบริบท</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
-  <string name="morphe_music_hide_comments_gif_button_title">ซ่อนปุ่ม GIF</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">ซ่อน GIF และรูปภาพ</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">ซ่อน GIF และรูปภาพที่แนบมากับความคิดเห็นและการตอบกลับ</string>
-  <string name="morphe_music_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">ผสมแทร็กต่างๆ เข้าด้วยกันอย่างราบรื่น</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 มิลลิวินาที</string>
   <string name="morphe_crossfade_duration_500ms">500 มิลลิวินาที</string>
   <string name="morphe_crossfade_duration_750ms">750 มิลลิวินาที</string>
-  <string name="morphe_crossfade_duration_1000ms">1 วินาที</string>
-  <string name="morphe_crossfade_duration_2000ms">2 วินาที</string>
-  <string name="morphe_crossfade_duration_3000ms">3 วินาที</string>
-  <string name="morphe_crossfade_duration_4000ms">4 วินาที</string>
-  <string name="morphe_crossfade_duration_5000ms">5 วินาที</string>
-  <string name="morphe_crossfade_duration_6000ms">6 วินาที</string>
-  <string name="morphe_crossfade_duration_7000ms">7 วินาที</string>
-  <string name="morphe_crossfade_duration_8000ms">8 วินาที</string>
-  <string name="morphe_crossfade_duration_9000ms">9 วินาที</string>
-  <string name="morphe_crossfade_duration_10000ms">10 วินาที</string>
   <string name="morphe_crossfade_duration_11000ms">11 วินาที</string>
   <string name="morphe_crossfade_duration_12000ms">12 วินาที</string>
   <string name="morphe_music_crossfade_on_skip_title">เลือนเมื่อข้ามเพลงด้วยตนเอง</string>
@@ -283,7 +247,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_summary">ความเร็วที่ใช้สำหรับทุกแทร็ก ที่ 100% จะใช้ความเร็วของแอป เช่น ความเร็วในการเล่นพอดแคสต์</string>
   <string name="morphe_music_playback_speed_change_pitch_title">เปลี่ยนระดับเสียงตามความเร็ว</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">แสดงเมนูเอฟเฟกต์วิดีโอ</string>
   <string name="morphe_music_video_effect_menu_summary">เพิ่มเอฟเฟกต์วิดีโอลงในเมนูเครื่องเล่นขณะที่วิดีโอกำลังเล่น</string>
   <string name="morphe_music_video_effect_next_video">เอฟเฟกต์จะแสดงตั้งแต่ในวิดีโอถัดไป</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_summary">เพิ่มรายการแท็กในเมนูของเพลย์ลิสต์ และปุ่มกรองแท็กข้างปุ่มจัดเรียงของคลังเพลง</string>
   <string name="morphe_music_playlist_tags_manage_title">จัดการแท็กเพลย์ลิสต์</string>
   <string name="morphe_music_playlist_tags_manage_summary">สร้าง เปลี่ยนชื่อ และลบแท็ก รวมถึงติดแท็กเพลย์ลิสต์ที่ปรากฏในคลังเพลงของคุณ</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">แท็ก</string>
   <string name="morphe_music_playlist_tags_menu_item_none">ไม่มีแท็ก</string>
-  <string name="morphe_music_playlist_tags_filter_button">แท็ก</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">แท็ก: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">แท็ก (ซ่อน %s)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">แท็กสำหรับ %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">แท็กใหม่</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 เพลย์ลิสต์</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s เพลย์ลิสต์</string>
@@ -344,22 +303,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_show_only">แสดงเฉพาะ</string>
   <string name="morphe_music_playlist_tags_filter_all">เพลย์ลิสต์ทั้งหมด</string>
   <string name="morphe_music_playlist_tags_filter_visible">แท็กที่มองเห็น</string>
-  <string name="morphe_music_playlist_tags_manage">จัดการ</string>
   <string name="morphe_music_playlist_tags_none">ยังไม่มีแท็ก กดค้างที่เพลย์ลิสต์แล้วเลือก \"แท็ก\" เพื่อสร้าง</string>
-  <string name="morphe_music_playlist_tags_section_tags">แท็ก</string>
   <string name="morphe_music_playlist_tags_section_playlists">เพลย์ลิสต์</string>
   <string name="morphe_music_playlist_tags_no_playlists">เปิดคลังเพลงหนึ่งครั้งเพื่อให้เพลย์ลิสต์ของคุณปรากฏที่นี่</string>
   <string name="morphe_music_playlist_tags_new_tag">แท็กใหม่</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">แก้ไขแท็ก</string>
-  <string name="morphe_music_playlist_tags_rename">เปลี่ยนชื่อ</string>
-  <string name="morphe_music_playlist_tags_delete">ลบ</string>
   <string name="morphe_music_playlist_tags_hidden">ซ่อนแล้ว</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">ปุ่มการกระทำ</string>
   <string name="morphe_music_action_buttons_screen_summary">เลือกปุ่มการกระทำที่จะแสดงใต้เครื่องเล่น</string>
-  <string name="morphe_music_hide_action_bar_title">ซ่อนแถบเครื่องมือ</string>
-  <string name="morphe_music_hide_like_dislike_button_title">ซ่อนปุ่มชอบและไม่ชอบ</string>
-  <string name="morphe_music_hide_comments_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">ซ่อนปุ่ม \'เล่นแชทสดซ้ำ\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Second \"item\" text"</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">ซ่อนปุ่ม \'เริ่มวิทยุ\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">เมนูแบบเลื่อนออก</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">เลือกส่วนประกอบที่จะแสดงในเมนูแบบเลื่อนออกของเครื่องเล่นและคิว</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">ซ่อนส่วนประกอบ 3 คอลัมน์</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">ซ่อนปุ่มชอบและไม่ชอบ</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">ซ่อนเมนู \'การจับคู่รสนิยม\' </string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">ซ่อนเมนู \'เพิ่มลงในเพลย์ลิสต์ \'ฟังภายหลัง\'\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">ซ่อนเมนู \'เพิ่มลงในคิว\' </string>
@@ -410,17 +359,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">ซ่อนเมนู \'เอาออกจากการโทรด่วน\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">ซ่อนเมนู \'ดูเครดิตเพลง\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">หน้าเริ่มต้น</string>
-  <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_charts">ชาร์ต</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">ตอนสำหรับภายหลัง</string>
-  <string name="morphe_change_start_page_entry_explore">สำรวจ</string>
-  <string name="morphe_change_start_page_entry_history">ประวัติ</string>
-  <string name="morphe_change_start_page_entry_library">คลัง</string>
   <string name="morphe_change_start_page_entry_liked_music">เพลงที่ชอบ</string>
-  <string name="morphe_change_start_page_entry_playlists">เพลย์ลิสต์</string>
-  <string name="morphe_change_start_page_entry_search">ค้นหา</string>
-  <string name="morphe_change_start_page_entry_subscriptions">สมัครสมาชิก</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">บังคับให้อยู่ในแนวตั้ง</string>
   <string name="morphe_music_force_portrait_orientation_summary">ทำให้แอปยังคงอยู่ในแนวตั้งเมื่อหมุนอุปกรณ์</string>
@@ -449,21 +390,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">ซ่อนปุ่มคลังเพลง</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">แสดงปุ่มการตั้งค่า</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">การดำเนินการของปุ่มการตั้งค่า</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">เมื่อเปิดใช้งาน การแตะจะเปิดการตั้งค่า Morphe และการกดค้างจะเปิดการตั้งค่า YouTube Music ให้ปิดใช้งานเพื่อสลับกัน</string>
-  <string name="morphe_music_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
-  <string name="morphe_music_navigation_bar_glass_title">เปิดใช้งานแถบนำทางแบบกระจก</string>
   <string name="morphe_music_navigation_bar_glass_summary">แสดงแถบนำทางเป็นแคปซูลโปร่งแสง ขอบมน และลอยตัว</string>
   <string name="morphe_music_navigation_bar_glass_size_title">ขนาดและสไตล์ของแถบนำทางแบบกระจก</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง ระยะห่างของปุ่ม ความโปร่งใส และความสว่างของขอบแถบนำทางแบบกระจก พร้อมตัวอย่างแสดงผล ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">ความสูง</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">ความกว้างสูงสุด</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">ระยะห่างระหว่างปุ่ม</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">ปุ่มที่แสดง: %1$s จาก %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">ความทึบ</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">ความสว่างของขอบ</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">ความเบลอของกระจก</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">ระดับความเบลอของหน้าเพจที่อยู่หลังแถบนำทางแบบกระจก (Android 14 และเวอร์ชันที่ใหม่กว่า) หากตั้งเป็น 0 หน้าเพจจะแสดงผลชัดเจน และสำหรับเวอร์ชันก่อน Android 14 หน้าเพจจะถูกปกปิด</string>
   <string name="morphe_music_navigation_bar_glass_light_title">กระจกสีอ่อน</string>
@@ -472,16 +402,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">ย้อมสีแถบนำทางแบบกระจกด้วยสีของหน้าปกอัลบั้มของเพลงที่กำลังเล่น</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">ซ่อนตัวบ่งชี้ปุ่มที่เลือก</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">ซ่อนไฮไลต์ทรงมนด้านหลังปุ่มที่ถูกเลือกของแถบนำทางแบบกระจก</string>
-  <string name="morphe_music_miniplayer_screen_title">มินิเพลเยอร์</string>
   <string name="morphe_music_miniplayer_screen_summary">เปลี่ยนสไตล์ ปุ่ม และท่าทางสัมผัสของเครื่องเล่นจิ๋ว</string>
   <string name="morphe_music_miniplayer_glass_title">เปิดใช้เอฟเฟกต์กระจก</string>
   <string name="morphe_music_miniplayer_glass_summary">แสดงเครื่องเล่นจิ๋วแบบลอยตัวเป็นแผ่นกระจกทรงมนโปร่งแสง</string>
   <string name="morphe_music_miniplayer_glass_style_title">สไตล์เครื่องเล่นจิ๋วแบบกระจก</string>
   <string name="morphe_music_miniplayer_glass_style_summary">ปรับรัศมีมุม ระยะห่างของรูปหน้าปก ความสว่างของขอบ และความโปร่งใสของเครื่องเล่นจิ๋วแบบกระจก พร้อมตัวอย่างแสดงผล</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">รัศมีมุม</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">ระยะห่างของรูปหน้าปก</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">ความสว่างของขอบ</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">ความทึบ</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">ระดับความเบลอของหน้าเพจที่อยู่หลังเครื่องเล่นจิ๋วแบบกระจก (Android 14 และเวอร์ชันที่ใหม่กว่า) หากตั้งเป็น 0 หน้าเพจจะแสดงผลชัดเจน และสำหรับเวอร์ชันก่อน Android 14 หน้าเพจจะถูกปกปิด</string>
   <string name="morphe_music_miniplayer_glass_light_summary">ย้อมสีเครื่องเล่นจิ๋วแบบกระจกเป็นสีขาวแทนสีเข้ม เพื่อให้ได้กระจกที่ดูสว่างและใสยิ่งขึ้น</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">ย้อมสีเครื่องเล่นจิ๋วแบบกระจกด้วยสีของหน้าปกอัลบั้มของเพลงที่กำลังเล่น</string>
@@ -498,9 +424,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_activity_button_title">ซ่อนปุ่มกิจกรรม</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">ซ่อนปุ่ม \'ถาม Music\'</string>
-  <string name="morphe_music_hide_cast_button_title">ซ่อนปุ่มแคสต์</string>
   <string name="morphe_music_hide_history_button_title">ซ่อนปุ่มประวัติ</string>
-  <string name="morphe_music_hide_search_button_title">ซ่อนปุ่มค้นหา</string>
   <string name="morphe_music_hide_voice_search_button_title">ซ่อนปุ่ม \'ค้นหาด้วยเสียง\'</string>
   <string name="morphe_music_hide_sound_search_button_title">ซ่อนปุ่ม \"ค้นหาด้วยเสียง\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_summary">แสดงปุ่มในแถบด้านบนของเครื่องเล่นเพื่อดูและลงคะแนนจากชุมชนสำหรับศิลปินปัจจุบัน</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">ข้ามศิลปิน AI</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">ข้ามแทร็กที่ศิลปินมีค่าเกณฑ์ AI ตรงตามที่กำหนดด้านล่างโดยอัตโนมัติ</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">แสดงการแจ้งเตือนการข้าม</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">แสดงการแจ้งเตือนเมื่อแทร็กถูกข้ามโดยอัตโนมัติ</string>
   <string name="morphe_music_soundproof_threshold_title">เกณฑ์การตรวจจับ</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">คะแนน AI ขั้นต่ำ</string>
@@ -624,7 +547,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">ปิดใช้งานผู้ให้บริการทั้งหมด — เนื้อเพลงในตัวและเนื้อเพลงฝังตัว</string>
   <string name="morphe_music_lyrics_source_reset_title">รีเซ็ตผู้ให้บริการทั้งหมดหรือไม่</string>
   <string name="morphe_music_lyrics_source_reset_message">คืนค่าผู้ให้บริการกลับไปเป็นลำดับความสำคัญเริ่มต้น</string>
-  <string name="morphe_music_lyrics_rime_dict_title">รายการคำ Rime</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist ยังต้องการ UniDict: ในผู้ให้บริการพจนานุกรมแบบออฟไลน์ ให้ติ๊ก \"ตัวอักษรจีนและกวางตุ้ง (UniDict)\" และรอให้ดาวน์โหลดเสร็จสิ้นก่อน หากไม่มีรายการนี้ รายการที่อ่านตัวอักษรจะไม่สามารถแปลเสียงได้
 
 ติ๊กเลือกรายการที่ Rime Wordlist ควรอ่าน แล้วแตะบันทึกเพื่อดาวน์โหลด รายการที่คุณเพิ่มจะถูกนำออกเมื่อคุณยกเลิกการติ๊กมัน
@@ -634,12 +556,10 @@ Second \"item\" text"</string>
 典 din2
 คอลัมน์แรกคือคำ คอลัมน์ที่สองคือการอ่านของมัน; คอลัมน์เพิ่มเติมและบรรทัดที่ไม่มีแท็บจะถูกมองข้าม"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">ไม่มีรายการคำ Rime สำหรับภาษาข้างต้นที่ทำเครื่องหมายไว้ แตะชื่อนี้เพื่อทำเครื่องหมายเลือกหนึ่งรายการ หรือเลือกภาษาที่มีรายการ</string>
-  <string name="morphe_music_lyrics_rime_dict_add">เพิ่ม</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">เพิ่มรายการคำ Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">ไฟล์ .dict.yaml หรือ zip ที่ครอบไฟล์ดังกล่าว โดยมีบรรทัดเช่น 字 ham และ 典 din2 รายการนี้จะถูกดึงเมื่อคุณติ๊กเลือกและแตะบันทึก และใบอนุญาตของรายการนี้เป็นสิทธิ์ของคุณที่จะตรวจสอบ</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">รหัสภาษา</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">สองหรือสามตัวอักษร เช่น hak หรือ wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">ชื่อ</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">แสดงใต้เสียงอ่าน เช่น Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">ที่อยู่รายการคำ</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// ที่อยู่ของ .dict.yaml หรือไฟล์ zip ของมัน</string>
@@ -682,8 +602,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_cache_total_category_title">การใช้งานแคชทั้งหมด</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">ล้างแคชทั้งหมด</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d รายการ)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">ล้าง</string>
-  <string name="morphe_music_lyrics_cache_close_action">ปิด</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">ลบแคชเนื้อเพลง %1$s MB (%2$d เพลง) ที่เก็บไว้ในอุปกรณ์นี้หรือไม่?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">ลบแคชคำแปล %1$s MB (%2$d คำแปล) ที่เก็บไว้ในอุปกรณ์นี้หรือไม่?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">ลบแคชการทับศัพท์ %1$s MB (%2$d การทับศัพท์) ที่เก็บไว้ในอุปกรณ์นี้หรือไม่?</string>
@@ -766,7 +684,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">กำลังดาวน์โหลดพจนานุกรมเสียงอ่าน…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">คำอ่านพร้อมแล้ว (%s รายการ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">การดาวน์โหลดล้มเหลว - ปิดและเปิดฟีเจอร์นี้ใหม่เพื่อลองอีกครั้ง</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">พจนานุกรมออฟไลน์</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">ญี่ปุ่น</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">ภาษาจีน</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — ตัววิเคราะห์สัณฐานวิทยา &amp; ruby ความเร็วสูง</string>
@@ -785,8 +702,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_custom_font_invalid">ไฟล์แบบอักษรไม่ถูกต้องหรือไม่รองรับ (ต้องเป็น .ttf หรือ .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">แชร์เนื้อเพลง</string>
   <string name="morphe_music_lyrics_share_button">แชร์</string>
-  <string name="morphe_music_lyrics_copy">คัดลอก</string>
-  <string name="morphe_music_lyrics_share_cancel">ยกเลิก</string>
   <string name="morphe_music_lyrics_share_select_hint">แตะ 1–5 บรรทัด</string>
   <string name="morphe_music_lyrics_share_max_lines">สูงสุด 5 บรรทัด</string>
   <string name="morphe_music_lyrics_share_failed">ไม่สามารถสร้างการ์ดแชร์เนื้อเพลงได้</string>
@@ -903,18 +818,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_google">แปลโดย Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">โรมาไนซ์โดย Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">แปลโดย %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">ถอดเป็นอักษรโรมันโดย %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">ถอดเป็นอักษรโรมันโดย %s</string>
+  <string name="morphe_music_lyrics_romanized_by">ถอดเป็นอักษรโรมันโดย %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (พร้อม %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">แปลแล้ว</string>
-  <string name="morphe_music_lyrics_translation_language_title">ภาษาแปล</string>
   <string name="morphe_music_lyrics_romanize_language_title">ภาษาการแปลงอักษรโรมันหรือถอดรหัส</string>
   <string name="morphe_music_lyrics_translation_target_language">"ภาษาเป้าหมายสำหรับการแปล:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"ภาษาเป้าหมายสำหรับการโรมันไนซ์หรือการทับศัพท์:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">กำลังแปล...</string>
   <string name="morphe_music_lyrics_translate_failed">ไม่สามารถแปลเนื้อเพลงได้</string>
   <string name="morphe_music_lyrics_romanize_hide">โรมาไนซ์แล้ว</string>
   <string name="morphe_romanize_language_DEFAULT">อัตโนมัติ</string>
@@ -922,7 +834,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_failed">ไม่สามารถโรมาไนซ์เนื้อเพลงได้</string>
   <string name="morphe_music_lyrics_romanize_language_none">ไม่มี</string>
   <string name="morphe_music_lyrics_ruby_language_title">เป้าหมาย Ruby</string>
-  <string name="morphe_music_lyrics_translate_only">เฉพาะคำแปล</string>
   <string name="morphe_music_lyrics_romanize_only">เฉพาะอักษรโรมันเท่านั้น</string>
   <string name="morphe_music_lyrics_dual_only">โหมดคู่</string>
   <string name="morphe_music_lyrics_copied">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
@@ -975,7 +886,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">การตั้งค่าไม่ครบถ้วนหรือถูกปฏิเสธโดยผู้ให้บริการ</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">กำลังตรวจสอบการเชื่อมต่อ…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: เชื่อมต่อแล้ว! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: การเชื่อมต่อล้มเหลว โปรดตรวจสอบการตั้งค่า</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">การเชื่อมต่อล้มเหลว: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">ทดสอบการเชื่อมต่อ</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">กำลังดึงข้อมูลโมเดล…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">ดึงข้อมูลโมเดล</string>
@@ -1003,4 +914,10 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ปิดใช้งานไอคอนตัวหนา</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - กู้คืนแท็บถัดไป เนื้อเพลง และที่เกี่ยวข้องของเครื่องเล่น</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">จัดการ</string>
+  <string name="morphe_music_opacity_title">ความทึบ</string>
+  <string name="morphe_music_rim_brightness_title">ความสว่างของขอบ</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">แท็ก</string>
 </resources>

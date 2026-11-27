@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Қайта қосу қажет</string>
   <string name="morphe_settings_restart_dialog_message">Осы өзгерістер күшіне енуі үшін қолданбаны қайта қосыңыз</string>
   <string name="morphe_settings_restart">Қайта қосу</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импорт</string>
-  <string name="morphe_settings_import_copy">Көшіру</string>
   <string name="morphe_settings_import_reset">Morphe баптаулары әдепкі мәнге қайта орнатылды</string>
   <string name="morphe_settings_import_success">%s баптаулары импортталды</string>
   <string name="morphe_settings_import_failure_parse">Импорт сәтсіз аяқталды: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Патчтар</string>
   <string name="morphe_settings_about_version">Нұсқасы</string>
-  <string name="morphe_settings_about_close">Жабу</string>
   <string name="morphe_settings_about_prerelease">Алдын ала шығарылым</string>
   <string name="morphe_settings_about_update_available">Жаңарту қолжетімді: %s</string>
   <string name="morphe_settings_about_update_hint">Патчтарыңызды жаңарту үшін Morphe қолданып, осы қолданбаны қайта патчтеңіз</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Лицензиялық ескертулер</string>
-  <string name="morphe_settings_about_licenses_loading">Жүктелуде…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Жөндеу</string>
   <string name="morphe_debug_screen_summary">Кеңейтілген әзірлеуші параметрлері мен диагностикалық логтарды баптау</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Дебаг логтары сәтті экспортталды</string>
   <string name="morphe_debug_export_logs_failed">Дебаг логтарын экспорттау сәтсіз аяқталды</string>
   <string name="morphe_debug_logs_search_hint">Дебаг логтарын іздеу…</string>
-  <string name="morphe_debug_export_logs_clear">Тазалау</string>
   <string name="morphe_debug_logs_disabled">Дебаг логтары өшірілген</string>
   <string name="morphe_debug_logs_none_found">Дебаг логтары табылмады</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Дебаг логтары көшірілді</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Блокталған (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Мәжбүрленген (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Өшіру</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Қосу</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Мәжбүрлеп қосу</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Блоктау</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Жою</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Функция флагтары сақталды</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Функция белгілері қайта орнатылды</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Функция белгілері алмасу буферіне көшірілді</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Сіздің MicroG v%1$s нұсқаңыз ескірген және бұл мәселелер тудыруы мүмкін.
 
 MicroG-ні соңғы v%2$s нұсқасына дейін жаңартыңыз"</string>
-  <string name="gms_core_dialog_update_text">Жаңарту</string>
   <string name="gms_core_dialog_ignore_text">Елемеу</string>
   <string name="gms_core_dialog_conflict_message">"Орнатылған MicroG нұсқасын Morphe ұсынбайды:
 
@@ -220,7 +207,6 @@ MicroG-ні соңғы v%2$s нұсқасына дейін жаңартыңыз"
 MicroG үшін батареяны оңтайландыруды өшіру батареяны пайдалануға кері әсер етпейді.
 
 «Жалғастыру» батырмасын басып, оңтайландыру өзгерістеріне рұқсат беріңіз"</string>
-  <string name="gms_core_dialog_continue_text">Жалғастыру</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG батареясын оңтайландыру диалогын көрсету</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Мұны өшіру MicroG батареясын оңтайландыру туралы хабарламасын жасырады.
 
@@ -259,9 +245,29 @@ MicroG үшін батареяны оңтайландыруды өшіру ба�
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Қателерді түзету</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Басқа өзгерістер</string>
   <string name="morphe_patches_update_notice_dialog_more">…және тағы %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Жаңарту</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Жабу</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Қателік журналы пайдаланушы құжаттарына сақталды: %s</string>
   <string name="morphe_crash_log_saved">Қателік журналы сақталды: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Туралы</string>
+  <string name="morphe_ads_screen_title">Жарнамалар</string>
+  <string name="morphe_misc_screen_title">Әртүрлі</string>
+  <string name="morphe_navigation_bar_screen_title">Навигациялық панель</string>
+  <string name="morphe_post_buttons_screen_title">Жазба түймелері</string>
+  <string name="morphe_custom_branding_icon_title">Қолданба белгішесі</string>
+  <string name="morphe_download">Жүктеу</string>
+  <string name="morphe_hide_create_button_title">«Жасау» түймесін жасыру</string>
+  <string name="morphe_hide_post_comment_button_title">Пікір түймесін жасыру</string>
+  <string name="morphe_sanitize_sharing_links_summary">Бөлісілген сілтемелерден бақылау сұраныс параметрлерін жояды</string>
+  <string name="morphe_sanitize_sharing_links_title">Бөлісілген сілтемелерді тазарту</string>
+  <string name="morphe_settings_add">Қосу</string>
+  <string name="morphe_settings_clear">Тазалау</string>
+  <string name="morphe_settings_close">Жабу</string>
+  <string name="morphe_settings_continue">Жалғастыру</string>
+  <string name="morphe_settings_copy">Көшіру</string>
+  <string name="morphe_settings_delete">Өшіру</string>
+  <string name="morphe_settings_remove">Алыпа тастау</string>
+  <string name="morphe_settings_update">Жаңарту</string>
 </resources>

@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">다시 시작 필요</string>
   <string name="morphe_settings_restart_dialog_message">이 변경 사항을 적용하려면 앱을 다시 시작하세요</string>
   <string name="morphe_settings_restart">다시 시작</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">가져오기</string>
-  <string name="morphe_settings_import_copy">복사</string>
   <string name="morphe_settings_import_reset">Morphe 설정을 기본값으로 초기화합니다</string>
   <string name="morphe_settings_import_success">설정 %s개를 가져왔습니다</string>
   <string name="morphe_settings_import_failure_parse">설정을 가져올 수 없습니다: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">패치</string>
   <string name="morphe_settings_about_version">버전</string>
-  <string name="morphe_settings_about_close">닫기</string>
   <string name="morphe_settings_about_prerelease">Pre-release</string>
   <string name="morphe_settings_about_update_available">업데이트 가능: %s</string>
   <string name="morphe_settings_about_update_hint">패치를 업데이트하려면 Morphe를 사용하여 이 앱을 다시 패치하세요</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">라이선스 고지</string>
-  <string name="morphe_settings_about_licenses_loading">불러오는 중…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버그</string>
   <string name="morphe_debug_screen_summary">고급 개발자 옵션 및 진단 로그를 설정할 수 있습니다</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">디버그 로그를 성공적으로 내보냈습니다</string>
   <string name="morphe_debug_export_logs_failed">디버그 로그를 내보낼 수 없습니다</string>
   <string name="morphe_debug_logs_search_hint">디버그 로그 검색…</string>
-  <string name="morphe_debug_export_logs_clear">지우기</string>
   <string name="morphe_debug_logs_disabled">디버그 로그가 비활성화되어 있습니다</string>
   <string name="morphe_debug_logs_none_found">디버그 로그를 찾을 수 없습니다</string>
   <string name="morphe_debug_logs_copied_to_clipboard">디버그 로그를 복사하였습니다</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">차단됨 (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">강제됨 (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">자동</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">꺼짐</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">켜짐</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">강제로 켜기</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">차단</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">제거</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">기능 플래그를 저장하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">기능 플래그를 초기화하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">기능 플래그를 클립보드에 복사하였습니다</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"MicroG %1$s 버전은 오래되어 문제가 발생할 수 있습니다
 
 MicroG를 최신 %2$s 버전으로 업데이트하세요"</string>
-  <string name="gms_core_dialog_update_text">업데이트</string>
   <string name="gms_core_dialog_ignore_text">무시</string>
   <string name="gms_core_dialog_conflict_message">"설치된 MicroG는 Morphe가 권장하지 않습니다:
 
@@ -220,7 +207,6 @@ MicroG를 최신 %2$s 버전으로 업데이트하세요"</string>
 MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배터리 사용량에 부정적인 영향을 미치지 않습니다.
 
 앱 배터리 최적화를 비활성화(제한 없음)하려면 '계속' 버튼을 탭하세요"</string>
-  <string name="gms_core_dialog_continue_text">계속</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG 배터리 최적화 대화 상자 표시하기</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"이 설정을 비활성화하면 MicroG 배터리 최적화 대화 상자가 숨겨집니다
 
@@ -255,9 +241,29 @@ MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배�
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 버그 수정</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 기타 변경 사항</string>
   <string name="morphe_patches_update_notice_dialog_more">…및 %s개 더</string>
-  <string name="morphe_patches_update_notice_dialog_update">업데이트</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">닫기</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">충돌 로그가 사용자 문서에 저장됨: %s</string>
   <string name="morphe_crash_log_saved">충돌 로그가 저장됨: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">정보</string>
+  <string name="morphe_ads_screen_title">광고</string>
+  <string name="morphe_misc_screen_title">기타</string>
+  <string name="morphe_navigation_bar_screen_title">하단바</string>
+  <string name="morphe_post_buttons_screen_title">게시물 버튼</string>
+  <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
+  <string name="morphe_download">오프라인 저장</string>
+  <string name="morphe_hide_create_button_title">만들기 버튼 숨기기</string>
+  <string name="morphe_hide_post_comment_button_title">댓글 버튼 숨기기</string>
+  <string name="morphe_sanitize_sharing_links_summary">링크를 공유할 경우에 URL에서 추적 쿼리 매개변수를 제거합니다</string>
+  <string name="morphe_sanitize_sharing_links_title">추적 쿼리를 제거한 링크 공유하기</string>
+  <string name="morphe_settings_add">추가</string>
+  <string name="morphe_settings_clear">지우기</string>
+  <string name="morphe_settings_close">닫기</string>
+  <string name="morphe_settings_continue">계속</string>
+  <string name="morphe_settings_copy">복사하기</string>
+  <string name="morphe_settings_delete">삭제</string>
+  <string name="morphe_settings_remove">제거</string>
+  <string name="morphe_settings_update">업데이트</string>
 </resources>

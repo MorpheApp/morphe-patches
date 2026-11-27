@@ -71,4 +71,11 @@ Second \"item\" text"</string>
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <!-- Shared strings -->
+  <string name="morphe_action_buttons_screen_title">ଆକ୍ସନ୍ ବଟନ୍ ଗୁଡ଼ିକ</string>
+  <string name="morphe_flyout_menu_screen_title">ଫ୍ଲାଇଆଉଟ୍ ମେନ୍ୟୁ</string>
+  <string name="morphe_player_screen_title">ପ୍ଲେୟର୍</string>
+  <string name="morphe_hide_comments_button_title">କମେଣ୍ଟ୍ ଲୁଚାନ୍ତୁ ବଟନ୍</string>
+  <string name="morphe_hide_like_dislike_button_title">Like ଏବଂ Dislike ବଟନକୁ ଲୁଚାନ୍ତୁ</string>
+  <string name="morphe_toast_on_connection_error_title">କନେକ୍ସନ ଏରର ଆଲର୍ଟ ଦେଖାନ୍ତୁ</string>
 </resources>

@@ -26,10 +26,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_03_general_title">ជាទូទៅ</string>
-  <string name="morphe_settings_music_screen_05_misc_title">ផ្សេងៗទៀត</string>
-  <string name="morphe_settings_music_screen_06_player_title">ការីចាក់</string>
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
@@ -51,13 +47,11 @@ Second \"item\" text"</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.playlisttags.playlistTagsPatch -->
-  <!-- Title of the row added to the menu of a playlist. -->
   <!-- %s is the name of the tag. -->
   <!-- %s is the number of hidden tags. -->
   <!-- %s is the name of the playlist. -->
   <!-- %s is the number of playlists that have the tag. -->
   <!-- %s is the name of the tag. -->
-  <string name="morphe_music_playlist_tags_rename">ប្ដូរឈ្មោះ</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -107,4 +101,6 @@ Second \"item\" text"</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_romanize_language_none">ឥតមាន</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <!-- Shared YouTube Music strings -->
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
 </resources>

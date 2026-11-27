@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Kailangan ng restart</string>
   <string name="morphe_settings_restart_dialog_message">I-restart ang aplikasyon upang magkabisa ang pagbabagong ito</string>
   <string name="morphe_settings_restart">I-restart</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">I-import</string>
-  <string name="morphe_settings_import_copy">Kopyahin</string>
   <string name="morphe_settings_import_reset">Ibinalik sa default ang mga pagpipilian sa Morphe</string>
   <string name="morphe_settings_import_success">Na-import ang %s na setting</string>
   <string name="morphe_settings_import_failure_parse">Nabigong ma-import: %s</string>
@@ -76,7 +74,6 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Mga patch</string>
   <string name="morphe_settings_about_version">Bersyon</string>
-  <string name="morphe_settings_about_close">Isara</string>
   <string name="morphe_settings_about_prerelease">Pre-release</string>
   <string name="morphe_settings_about_update_available">May available na update: %s</string>
   <string name="morphe_settings_about_update_hint">Para i-update ang iyong mga patch, gamitin ang Morphe para i-repatch ang app na ito</string>
@@ -108,7 +105,6 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Mga paalala sa lisensya</string>
-  <string name="morphe_settings_about_licenses_loading">Naglo-load…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
   <string name="morphe_debug_screen_summary">I-configure ang mga advanced na opsyon ng developer at diagnostic logs</string>
@@ -125,7 +121,6 @@ Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari"</string>
   <string name="morphe_debug_export_logs_success">Matagumpay na na-export ang mga log ng debug</string>
   <string name="morphe_debug_export_logs_failed">Nabigong i-export ang mga log ng debug</string>
   <string name="morphe_debug_logs_search_hint">Maghanap ng mga debug log…</string>
-  <string name="morphe_debug_export_logs_clear">Alisin</string>
   <string name="morphe_debug_logs_disabled">Nakapatay ang pagtatala sa debug</string>
   <string name="morphe_debug_logs_none_found">Walang nahanap na mga log ng debug</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Kinopya ang mga log ng debug</string>
@@ -142,15 +137,8 @@ Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Haharang (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Pilitin (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Awtomatiko</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Naka-off</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Naka-on</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Pilitin bukas</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Harangan</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Alisin</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Na-save ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Na-reset ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kinopya ang mga flag sa clipboard</string>
@@ -200,7 +188,6 @@ Nawala ang pag-uugali noong mas maaga sa paghahanap, kaya maaaring kasangkot ang
   <string name="gms_core_dialog_outdated_message">"Luma na ang iyong MicroG v%1$s at maaaring magdulot ng mga problema.
 
 Mangyaring i-update ang MicroG sa pinakabagong bersyon v%2$s"</string>
-  <string name="gms_core_dialog_update_text">I-update</string>
   <string name="gms_core_dialog_ignore_text">Huwag pansinin</string>
   <string name="gms_core_dialog_conflict_message">"Ang naka-install na MicroG ay hindi inirerekomenda ng Morphe:
 
@@ -220,7 +207,6 @@ Kinakailangan ito upang gumana ang aplikasyon"</string>
 Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng baterya para sa MicroG. 
 
 Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize"</string>
-  <string name="gms_core_dialog_continue_text">Magpatuloy</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Ipakita ang dialog ng pag-optimize ng baterya ng MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ang hindi pag-disable nito ay itatago ang prompt ng pag-optimize ng baterya ng MicroG.
 
@@ -258,9 +244,29 @@ Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Mga bug fix</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Iba pang mga pagbabago</string>
   <string name="morphe_patches_update_notice_dialog_more">…at %s pa</string>
-  <string name="morphe_patches_update_notice_dialog_update">I-update</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">I-dismiss</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Na-save ang crash log sa mga dokumento ng gumagamit: %s</string>
   <string name="morphe_crash_log_saved">Na-save ang crash log: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Tungkol</string>
+  <string name="morphe_ads_screen_title">Patalastas</string>
+  <string name="morphe_misc_screen_title">Mga sari-sari</string>
+  <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
+  <string name="morphe_post_buttons_screen_title">Mga button ng Post</string>
+  <string name="morphe_custom_branding_icon_title">Icon ng aplikasyon</string>
+  <string name="morphe_download">I-download</string>
+  <string name="morphe_hide_create_button_title">Itago ang Create button</string>
+  <string name="morphe_hide_post_comment_button_title">Itago ang Comment button</string>
+  <string name="morphe_sanitize_sharing_links_summary">Inaalis ang tracking query parameters mula sa mga nakabahaging link</string>
+  <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
+  <string name="morphe_settings_add">Idagdag</string>
+  <string name="morphe_settings_clear">Alisin</string>
+  <string name="morphe_settings_close">Isara</string>
+  <string name="morphe_settings_continue">Magpatuloy</string>
+  <string name="morphe_settings_copy">Kopyahin</string>
+  <string name="morphe_settings_delete">Burahin</string>
+  <string name="morphe_settings_remove">Alisin</string>
+  <string name="morphe_settings_update">I-update</string>
 </resources>

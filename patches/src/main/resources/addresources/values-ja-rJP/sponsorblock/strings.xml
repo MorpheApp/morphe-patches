@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock を有効化</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock は、ユーザーからの情報提供により YouTube 動画のわずらわしい部分をスキップする機能です</string>
-  <string name="morphe_sb_appearance_category_title">外観</string>
   <string name="morphe_sb_voting_button_title">投票ボタンを表示</string>
   <string name="morphe_sb_voting_button_summary">プレーヤー オーバーレイにセグメントへの評価を投票するボタンを表示します</string>
   <string name="morphe_sb_square_layout_title">ボタンとコントロールを直角化</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">スキップボタンの表示方法を、「セグメントの開始から終了まで表示」から「表示された数秒後に自動的に非表示」に変更します</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">スキップボタンの表示時間</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">スキップボタンが表示されてから自動的に非表示になるまでの時間の長さを設定します</string>
-  <string name="morphe_sb_toast_on_skip_title">スキップ通知を表示</string>
   <string name="morphe_sb_toast_on_skip_summary">セグメントが自動的にスキップされたときに通知を表示します。この通知をタップすると、通知されたスキップをキャンセルすることができます</string>
   <string name="morphe_sb_toast_on_skip_duration_title">スキップ通知の表示時間</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">セグメントが自動的にスキップされたときに表示される通知が、表示されてから自動的に非表示になるまでの時間の長さを設定します</string>
-  <string name="morphe_sb_duration_1s">1 秒</string>
-  <string name="morphe_sb_duration_2s">2 秒</string>
-  <string name="morphe_sb_duration_3s">3 秒</string>
-  <string name="morphe_sb_duration_4s">4 秒</string>
-  <string name="morphe_sb_duration_5s">5 秒</string>
-  <string name="morphe_sb_duration_6s">6 秒</string>
-  <string name="morphe_sb_duration_7s">7 秒</string>
-  <string name="morphe_sb_duration_8s">8 秒</string>
-  <string name="morphe_sb_duration_9s">9 秒</string>
-  <string name="morphe_sb_duration_10s">10 秒</string>
   <string name="morphe_sb_video_length_without_segments_title">セグメントを除いた再生時間を表示</string>
   <string name="morphe_sb_video_length_without_segments_summary">シークバーに表示する再生時間を、「動画全体の再生時間」から「すべてのセグメントを差し引いた再生時間」に変更します</string>
   <string name="morphe_sb_create_segment_category_title">新しいセグメントの作成</string>
   <string name="morphe_sb_create_new_segment_title">セグメント作成ボタンを表示</string>
   <string name="morphe_sb_create_new_segment_summary">プレーヤー オーバーレイに SponsorBlock の新しいセグメントを作成して送信するボタンを表示します</string>
-  <string name="morphe_sb_create_new_segment_step_title">セグメントの位置調整幅</string>
   <string name="morphe_sb_create_new_segment_step_summary">セグメント作成メニュー内の早送り / 巻き戻しボタンで移動する時間 (ミリ秒)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">値は正の整数でなければなりません</string>
   <string name="morphe_sb_guidelines_title">セグメント作成のガイドライン</string>
   <string name="morphe_sb_guidelines_summary">ガイドラインには、新しいセグメントを作成するためのルールやヒントが記載されています</string>
   <string name="morphe_sb_guidelines_popup_title">ガイドラインに従ってください</string>
   <string name="morphe_sb_guidelines_popup_content">新しいセグメントを作成する前に SponsorBlock のガイドラインを確認してください</string>
   <string name="morphe_sb_guidelines_popup_already_read">既読</string>
   <string name="morphe_sb_guidelines_popup_open">表示する</string>
-  <string name="morphe_sb_general_title">全般</string>
   <string name="morphe_sb_offline_segments_title">ダウンロードした動画のセグメント情報を保存</string>
   <string name="morphe_sb_offline_segments_summary">アプリ内でダウンロードした動画をオフラインで再生するときにも、セグメントをスキップできるようになります</string>
-  <string name="morphe_sb_toast_on_connection_error_title">接続エラーの通知を表示</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock サーバーが利用できない場合に通知を表示します</string>
   <string name="morphe_sb_track_skip_count_title">スキップデータの収集を有効化</string>
   <string name="morphe_sb_track_skip_count_summary">SponsorBlock リーダーボード にスキップによって節約した時間を送信します。セグメントをスキップする度にデータを送信します</string>
   <string name="morphe_sb_min_segment_duration_title">セグメントの長さのしきい値</string>
   <string name="morphe_sb_min_segment_duration_summary">この値 (秒) よりも長さが短いセグメントは、表示もスキップもされません</string>
   <string name="morphe_sb_min_segment_duration_invalid">時間 (長さ) の値が無効です</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">非公開ユーザー ID</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">この ID は公開すべきではありません。パスワードのようなものであり、誰とも共有すべきではありません。もし誰かがこの ID を手に入れた場合、あなたになりすますことができます</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">非公開ユーザー ID は最低 30 文字必要です</string>
   <string name="morphe_sb_api_url_title">API URL を変更</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock がサーバーとの通信で使用するアドレス</string>
   <string name="morphe_sb_channel_whitelist_title">チャンネル ホワイトリスト</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL が無効です</string>
   <string name="morphe_sb_api_url_changed">API URL を変更しました</string>
   <string name="morphe_sb_settings_ie_title">設定のインポート / エクスポート</string>
-  <string name="morphe_sb_settings_copy">コピー</string>
   <string name="morphe_sb_settings_ie_summary">SponsorBlock の設定を JSON 形式のテキストでインポート / エクスポートします。この JSON テキストは Morphe およびその他の SponsorBlock 対応アプリ、拡張機能で利用可能です</string>
   <string name="morphe_sb_settings_ie_summary_warning">"SponsorBlock の設定を Morphe およびその他の SponsorBlock 対応アプリ、拡張機能でインポート / エクスポート可能な JSON 形式のテキストで出力します
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"設定にはプライベートな SponsorBlock ユーザー ID が含まれています。
 
 ユーザー ID はパスワードのようなもので、決して共有しないでください。"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">今後表示しない</string>
   <string name="morphe_sb_diff_segments_title">セグメントに対する動作を変更</string>
   <string name="morphe_sb_segments_sponsor">スポンサー (広告)</string>
   <string name="morphe_sb_segments_sponsor_summary">有料の宣伝、有料の紹介、直接的な広告。自己宣伝や好意をもって行う、慈善活動、クリエーター、ウェブサイト、製品などの無償の紹介は、このカテゴリには含まれません</string>
@@ -122,11 +102,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_highlight">ハイライトまでスキップ</string>
   <string name="morphe_sb_skip_button_intro_beginning">OP をスキップ</string>
   <string name="morphe_sb_skip_button_intro_middle">幕間をスキップ</string>
-  <string name="morphe_sb_skip_button_intro_end">幕間をスキップ</string>
   <string name="morphe_sb_skip_button_outro">ED をスキップ</string>
   <string name="morphe_sb_skip_button_hook">フックをスキップ</string>
   <string name="morphe_sb_skip_button_preview_beginning">予告編をスキップ</string>
-  <string name="morphe_sb_skip_button_preview_middle">予告編をスキップ</string>
   <string name="morphe_sb_skip_button_preview_end">総集編をスキップ</string>
   <string name="morphe_sb_skip_button_filler">余談をスキップ</string>
   <string name="morphe_sb_skip_button_nomusic">楽曲以外をスキップ</string>
@@ -137,11 +115,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_highlight">ハイライトまでスキップしました</string>
   <string name="morphe_sb_skipped_intro_beginning">オープニング (OP) をスキップしました</string>
   <string name="morphe_sb_skipped_intro_middle">幕間をスキップしました</string>
-  <string name="morphe_sb_skipped_intro_end">幕間をスキップしました</string>
   <string name="morphe_sb_skipped_outro">エンディング (ED) をスキップしました</string>
   <string name="morphe_sb_skipped_hook">フックをスキップしました</string>
   <string name="morphe_sb_skipped_preview_beginning">予告編をスキップしました</string>
-  <string name="morphe_sb_skipped_preview_middle">予告編をスキップしました</string>
   <string name="morphe_sb_skipped_preview_end">総集編をスキップしました</string>
   <string name="morphe_sb_skipped_filler">余談をスキップしました</string>
   <string name="morphe_sb_skipped_nomusic">楽曲以外の区間をスキップしました</string>
@@ -167,8 +143,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_failed_timeout">セグメントへの投票に失敗しました (API タイムアウト)</string>
   <string name="morphe_sb_vote_failed_unknown_error">セグメントへの投票に失敗しました (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">セグメントへの投票に失敗しました: %s</string>
-  <string name="morphe_sb_vote_upvote">高評価</string>
-  <string name="morphe_sb_vote_downvote">低評価</string>
   <string name="morphe_sb_vote_category">カテゴリの変更</string>
   <string name="morphe_sb_vote_no_segments">投票可能なセグメントがありません</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ Second \"item\" text"</string>
 (%3$s)
 
 送信しますか？"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">送信</string>
   <string name="morphe_sb_new_segment_start_is_before_end">開始位置を終了位置よりも前にしてください</string>
   <string name="morphe_sb_new_segment_mark_locations_first">先に位置 (時間) を指定してください</string>
   <string name="morphe_sb_new_segment_preview_segment_first">セグメントのテスト機能でスムーズにスキップすることを確認してください</string>
@@ -205,16 +178,11 @@ Second \"item\" text"</string>
 %s
 
 ハイライト以外を送信する場合は、[キャンセル] をタップして 2 つ目の位置 (時間) を指定してください"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">ハイライトを送信</string>
   <string name="morphe_sb_stats_title">統計</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">統計情報は一時的に利用できません (API がダウンしています)</string>
-  <string name="morphe_sb_stats_loading">読み込み中…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock が無効です</string>
-  <string name="morphe_sb_stats_username">ユーザー名: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">ユーザー名を変更するには、ここをタップしてください</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">ユーザー名の変更に失敗しました (status: %1$s %2$s)</string>
-  <string name="morphe_sb_stats_username_changed">ユーザー名の変更に成功しました</string>
   <string name="morphe_sb_stats_reputation">あなたの評価は &lt;b&gt;%.2f&lt;/b&gt; です</string>
   <string name="morphe_sb_stats_submissions">合計で &lt;b&gt;%s&lt;/b&gt; 個のセグメントを作成しました</string>
   <string name="morphe_sb_stats_submissions_summary">作成したセグメントを表示するには、ここをタップしてください</string>

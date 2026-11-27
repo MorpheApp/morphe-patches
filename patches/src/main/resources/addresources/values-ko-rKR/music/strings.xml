@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">최근 재생</string>
   <string name="morphe_music_android_auto_subscriptions">구독</string>
-  <string name="morphe_music_android_auto_videos">동영상</string>
   <string name="morphe_music_android_auto_other_results">기타 결과</string>
   <string name="morphe_music_android_auto_uploaded_songs">업로드된 노래</string>
   <string name="morphe_music_android_auto_uploaded_albums">업로드된 앨범</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">Wi-Fi를 켜시겠습니까?</string>
   <string name="morphe_music_jam_wifi_message">Wi-Fi를 켠 다음 잼 시작 또는 참여를 다시 시도하세요</string>
   <string name="morphe_music_jam_wifi_settings">Wi-Fi 설정 열기</string>
-  <string name="morphe_music_jam_cancel">취소</string>
   <string name="morphe_music_jam_use_package">패키지 사용</string>
   <string name="morphe_music_jam_invalid_package">유효한 Android 패키지명을 입력하세요</string>
   <string name="morphe_music_jam_package_saved">패키지가 저장되었습니다. 연결하려면 잼 레이어를 설정하세요</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">QR 스캔</string>
   <string name="morphe_music_jam_invalid_invite">8자리 코드를 입력하거나 초대장을 붙여넣으세요</string>
   <string name="morphe_music_jam_join_your_jam">내 잼에 참여</string>
-  <string name="morphe_music_jam_copy_code">코드 복사</string>
   <string name="morphe_music_jam_code_clip">잼 코드</string>
   <string name="morphe_music_jam_show_qr">QR 보기</string>
   <string name="morphe_music_jam_done">완료</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">잼 나가기</string>
   <string name="morphe_music_jam_start_jam">잼 시작</string>
   <string name="morphe_music_jam_setup_layer">잼 레이어 설정</string>
-  <string name="morphe_music_jam_manage">관리</string>
   <string name="morphe_music_jam_details">세부 정보</string>
   <string name="morphe_music_jam_open">열기</string>
   <string name="morphe_music_jam_loading_song_options">노래 옵션을 불러오는 중…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">재생목록이 변경되었습니다. 제스처를 다시 시도하세요</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">헤더 로고</string>
   <string name="morphe_header_logo_entry_1">기본값</string>
   <string name="morphe_header_logo_entry_3">사용자 정의</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">다운로드 메뉴에 외부 다운로더 사용하기</string>
   <string name="morphe_external_downloader_menu_summary">메뉴에서 다운로드 옵션을 탭하면 외부 다운로더를 실행합니다</string>
-  <string name="morphe_download_force_4k_title">4K 다운로드 강제 사용 가능하게 설정</string>
   <string name="morphe_download_force_4k_summary">YouTube Music이 이 기기에서 재생할 수 없다고 판단하더라도 1440p 및 4K 다운로드를 저장합니다</string>
   <string name="morphe_export_download_folder_title">다운로드 내보내기</string>
   <string name="morphe_export_download_folder_summary">"앱 내 '오프라인 저장' 메뉴를 사용하여 앱에 저장된 곡과 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">셔플 버튼을 반복 버튼으로 교체</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">미디어 알림 및 잠금 화면에서 셔플 버튼 대신 반복 버튼을 표시합니다</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">정보</string>
-  <string name="morphe_settings_music_screen_01_ads_title">광고</string>
-  <string name="morphe_settings_music_screen_02_feed_title">피드</string>
-  <string name="morphe_settings_music_screen_03_general_title">일반</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">가사</string>
-  <string name="morphe_settings_music_screen_05_misc_title">기타</string>
-  <string name="morphe_settings_music_screen_06_player_title">플레이어</string>
-  <string name="morphe_settings_music_screen_10_video_title">동영상</string>
   <string name="morphe_music_app_language_title">YouTube Music 언어</string>
   <string name="morphe_music_app_language_summary_default">시스템 언어</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 이상 필요</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Music Premium 가입 라벨 숨기기</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Music Premium 프로모션 숨기기</string>
-  <string name="morphe_music_hide_video_ads_title">동영상 광고 숨기기</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">오디오 / 동영상 토글 숨기기</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">팟캐스트 쇼에서 오프라인 저장 버튼을 숨깁니다 </string>
   <string name="morphe_music_hide_explore_shelf_title">\'둘러보기\' 선반 숨기기</string>
   <string name="morphe_music_hide_filter_bar_title">필터 바 숨기기</string>
   <string name="morphe_music_hide_grid_shelves_title">그리드 선반 숨기기</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">좌우 슬라이드 선반 숨기기</string>
   <string name="morphe_music_hide_new_button_title">\'새로 만들기\' 버튼 숨기기</string>
   <string name="morphe_music_hide_new_button_summary">보관함에서 \'새로 만들기\' 버튼을 숨깁니다</string>
   <string name="morphe_music_hide_list_shelves_title">리스트 선반 숨기기</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">가사 패널</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">번역 버튼 숨기기</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'(아티스트)의 새로운 음악\' 선반 숨기기</string>
   <string name="morphe_music_hide_playlist_shelves_title">재생목록 선반 숨기기</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">빠른 선곡 선반 숨기기</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">\'추천 콘텐츠\' 섹션 숨기기</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">\'내 다운로드\' 선반 숨기기</string>
-  <string name="morphe_music_comments_screen_title">댓글</string>
-  <string name="morphe_music_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 선택하세요</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_music_hide_comments_context_title">컨텍스트 메시지 숨기기</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">이모지 버튼 숨기기</string>
-  <string name="morphe_music_hide_comments_gif_button_title">GIF 버튼 숨기기</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">GIF 및 이미지 숨기기</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">댓글 및 답글에 첨부된 GIF와 이미지를 숨깁니다</string>
-  <string name="morphe_music_hide_comments_info_button_title">정보 버튼 숨기기</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">타임스탬프 버튼 숨기기</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">크로스페이드</string>
   <string name="morphe_music_crossfade_screen_summary">트랙을 서로 부드럽게 이어지도록 재생할 수 있습니다</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 밀리초</string>
   <string name="morphe_crossfade_duration_500ms">500 밀리초</string>
   <string name="morphe_crossfade_duration_750ms">750 밀리초</string>
-  <string name="morphe_crossfade_duration_1000ms">1 초</string>
-  <string name="morphe_crossfade_duration_2000ms">2 초</string>
-  <string name="morphe_crossfade_duration_3000ms">3 초</string>
-  <string name="morphe_crossfade_duration_4000ms">4 초</string>
-  <string name="morphe_crossfade_duration_5000ms">5 초</string>
-  <string name="morphe_crossfade_duration_6000ms">6 초</string>
-  <string name="morphe_crossfade_duration_7000ms">7 초</string>
-  <string name="morphe_crossfade_duration_8000ms">8 초</string>
-  <string name="morphe_crossfade_duration_9000ms">9 초</string>
-  <string name="morphe_crossfade_duration_10000ms">10 초</string>
   <string name="morphe_crossfade_duration_11000ms">11 초</string>
   <string name="morphe_crossfade_duration_12000ms">12 초</string>
   <string name="morphe_music_crossfade_on_skip_title">수동 트랙 넘김 시 크로스페이드</string>
@@ -283,7 +247,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_summary">모든 트랙에 사용되는 속도입니다. 100%로 설정하면 팟캐스트 재생 속도와 같은 앱 속도가 사용됩니다</string>
   <string name="morphe_music_playback_speed_change_pitch_title">속도에 따라 피치 변경하기</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">동영상 효과 메뉴 표시하기</string>
   <string name="morphe_music_video_effect_menu_summary">동영상이 재생되는 동안 플레이어 메뉴에 동영상 효과를 추가합니다</string>
   <string name="morphe_music_video_effect_next_video">다음 동영상부터 효과가 적용됩니다</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_summary">재생목록 메뉴에 \'태그\' 항목을 추가하고, 라이브러리의 정렬 버튼 옆에 태그 필터 버튼을 추가합니다</string>
   <string name="morphe_music_playlist_tags_manage_title">재생목록 태그 관리</string>
   <string name="morphe_music_playlist_tags_manage_summary">태그를 생성, 이름 변경 및 삭제하고 라이브러리에 표시되는 재생목록에 태그를 지정하세요</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">태그</string>
   <string name="morphe_music_playlist_tags_menu_item_none">태그 없음</string>
-  <string name="morphe_music_playlist_tags_filter_button">태그</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">태그: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">태그 (%s개 숨겨짐)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">%s의 태그</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">새 태그</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">재생목록 1개</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">재생목록 %s개</string>
@@ -344,22 +303,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_show_only">다음만 표시</string>
   <string name="morphe_music_playlist_tags_filter_all">모든 재생목록</string>
   <string name="morphe_music_playlist_tags_filter_visible">표시된 태그</string>
-  <string name="morphe_music_playlist_tags_manage">관리</string>
   <string name="morphe_music_playlist_tags_none">아직 태그가 없습니다. 재생목록을 길게 누르고 \'태그\'를 선택하여 생성하세요</string>
-  <string name="morphe_music_playlist_tags_section_tags">태그</string>
   <string name="morphe_music_playlist_tags_section_playlists">재생목록</string>
   <string name="morphe_music_playlist_tags_no_playlists">라이브러리를 한 번 열면 여기에 재생목록이 표시됩니다</string>
   <string name="morphe_music_playlist_tags_new_tag">새 태그</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">태그 수정</string>
-  <string name="morphe_music_playlist_tags_rename">이름 변경</string>
-  <string name="morphe_music_playlist_tags_delete">삭제</string>
   <string name="morphe_music_playlist_tags_hidden">숨겨짐</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">작업 버튼</string>
   <string name="morphe_music_action_buttons_screen_summary">플레이어 아래에 표시할 작업 버튼을 설정하세요</string>
-  <string name="morphe_music_hide_action_bar_title">작업 버튼 바 숨기기</string>
-  <string name="morphe_music_hide_like_dislike_button_title">\'좋아요\' 및 \'싫어요\' 버튼 숨기기</string>
-  <string name="morphe_music_hide_comments_button_title">댓글 버튼 숨기기</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">\'실시간 채팅 다시보기\' 버튼 숨기기</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Second \"item\" text"</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">믹스 버튼 숨기기</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">메뉴 구성요소</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">플레이어 및 현재 재생목록 메뉴에 표시할 구성요소를 선택하세요</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">3-열 구성요소 숨기기</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">\'좋아요\' 및 \'싫어요\' 버튼 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">\'취향 일치\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">\'나중에 감상할 에피소드 재생목록에 추가\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">\'현재 재생목록에 추가\' 메뉴 숨기기</string>
@@ -410,17 +359,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">\'빠른 선곡에서 고정 해제\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">\'노래 크레딧 보기\' 메뉴 숨기기</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">앱 시작 페이지</string>
-  <string name="morphe_change_start_page_entry_default">기본값</string>
   <string name="morphe_change_start_page_entry_charts">차트</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">나중에 감상할 에피소드</string>
-  <string name="morphe_change_start_page_entry_explore">둘러보기</string>
-  <string name="morphe_change_start_page_entry_history">기록</string>
-  <string name="morphe_change_start_page_entry_library">보관함</string>
   <string name="morphe_change_start_page_entry_liked_music">좋아요 표시한 음악</string>
-  <string name="morphe_change_start_page_entry_playlists">재생목록</string>
-  <string name="morphe_change_start_page_entry_search">검색</string>
-  <string name="morphe_change_start_page_entry_subscriptions">구독</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">세로 방향 강제 활성화하기</string>
   <string name="morphe_music_force_portrait_orientation_summary">기기를 회전해도 앱이 세로 방향을 유지합니다</string>
@@ -449,21 +390,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">보관함 버튼 숨기기</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">업그레이드 버튼 숨기기</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">설정 버튼 표시하기</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">설정 버튼 작업</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">활성화하면 버튼을 탭했을 경우에 Morphe 설정이 열리고, 길게 탭했을 경우에 YouTube Music 설정이 열립니다. 비활성화하면 작업이 반대로 바뀝니다</string>
-  <string name="morphe_music_hide_navigation_bar_title">하단바 숨기기</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">하단바 버튼 라벨 숨기기</string>
-  <string name="morphe_music_navigation_bar_glass_title">글래스 하단바 활성화하기</string>
   <string name="morphe_music_navigation_bar_glass_summary">탐색 바를 플로팅 형태의 둥글고 반투명한 캡슐 모양으로 표시합니다</string>
   <string name="morphe_music_navigation_bar_glass_size_title">글래스 내비게이션 바 크기 및 스타일</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">글래스 내비게이션 바의 높이, 너비, 버튼 간격, 불투명도 및 테두리 밝기를 미리보기와 함께 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨짐</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">높이</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">최대 너비</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">버튼 간격</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$s개 중 %1$s개</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">불투명도</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">테두리 밝기</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">글래스 블러</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">글래스 내비게이션 바 뒤의 페이지가 얼마나 블러 처리되는지 설정합니다(Android 14 이상). 0으로 설정하면 페이지가 선명하게 보이며, Android 14 이전 버전에서는 페이지가 가려짐</string>
   <string name="morphe_music_navigation_bar_glass_light_title">밝은 글래스</string>
@@ -472,16 +402,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">재생 중인 곡의 앨범 아트 색상으로 글래스 내비게이션 바에 색조를 입힘</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">선택된 버튼 표시기 숨기기</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">글래스 내비게이션 바에서 선택된 버튼 뒤의 둥근 강조 표시를 숨김</string>
-  <string name="morphe_music_miniplayer_screen_title">미니 플레이어</string>
   <string name="morphe_music_miniplayer_screen_summary">미니 플레이어의 스타일, 버튼 및 제스처를 변경함</string>
   <string name="morphe_music_miniplayer_glass_title">글래스 효과 활성화</string>
   <string name="morphe_music_miniplayer_glass_summary">플로팅 미니 플레이어를 둥글고 반투명한 글래스 카드로 표시함</string>
   <string name="morphe_music_miniplayer_glass_style_title">글래스 미니 플레이어 스타일</string>
   <string name="morphe_music_miniplayer_glass_style_summary">글래스 미니 플레이어의 모서리 곡률, 아트워크 패딩, 테두리 밝기 및 불투명도를 미리보기와 함께 조정함</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">모서리 곡률</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">아트워크 패딩</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">테두리 밝기</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">불투명도</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">글래스 미니 플레이어 뒤의 페이지가 얼마나 블러 처리되는지 설정합니다(Android 14 이상). 0으로 설정하면 페이지가 선명하게 보이며, Android 14 이전 버전에서는 페이지가 가려짐</string>
   <string name="morphe_music_miniplayer_glass_light_summary">글래스 미니 플레이어를 어두운 색 대신 흰색으로 색조를 입혀 더 밝고 투명한 글래스로 만듦</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">재생 중인 곡의 앨범 아트 색상으로 글래스 미니 플레이어에 색조를 입힘</string>
@@ -498,9 +424,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_activity_button_title">활동 버튼 숨기기</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">\'Music에게 물어보기\' 버튼 숨기기</string>
-  <string name="morphe_music_hide_cast_button_title">크롬캐스트 버튼 숨기기</string>
   <string name="morphe_music_hide_history_button_title">기록 버튼 숨기기</string>
-  <string name="morphe_music_hide_search_button_title">검색 버튼 숨기기</string>
   <string name="morphe_music_hide_voice_search_button_title">\'음성 검색\' 버튼 숨기기</string>
   <string name="morphe_music_hide_sound_search_button_title">\'소리 검색\' 버튼 숨기기</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_summary">플레이어 상단 바에 버튼을 표시하여 현재 아티스트에 대한 커뮤니티 투표를 확인하고 투표할 수 있습니다</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">AI 아티스트 건너뛰기</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">아티스트가 아래의 AI 임계값에 도달한 트랙을 자동으로 건너뜁니다</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">건너뛰기 알림 메시지 표시하기</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">트랙을 자동으로 건너뛸 때 알림 메시지를 표시합니다</string>
   <string name="morphe_music_soundproof_threshold_title">감지 임계값</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">최소 AI 투표 비율</string>
@@ -624,7 +547,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">모든 제공자가 비활성화됨 - 내장된 가사 및 삽입된 가사</string>
   <string name="morphe_music_lyrics_source_reset_title">제공자 순서를 초기화하시겠습니까?</string>
   <string name="morphe_music_lyrics_source_reset_message">제공자를 기본 우선순위 순서로 복원합니다</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Rime 단어 목록</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Rime 단어 목록을 사용하려면 UniDict도 필요합니다. 먼저 오프라인 사전 제공자에서 '중국어 및 광둥어 문자 (UniDict)' 항목에 체크하고 다운로드가 완료될 때까지 기다리세요. 이 사전이 없으면 문자로 된 단어 목록을 읽어도 발음 정보를 가져올 수 없습니다
 
 Rime 단어 목록에서 읽어 올 단어 목록에 체크한 다음 '저장'을 탭하여 다운로드하세요. 직접 추가한 목록은 체크를 해제하면 삭제됩니다
@@ -634,12 +556,10 @@ Rime 단어 목록에서 읽어 올 단어 목록에 체크한 다음 '저장'�
 典 din2
 첫 번째 열에는 단어를, 두 번째 열에는 해당 단어의 발음을 입력합니다. 추가 열은 무시되며, 탭으로 구분되지 않은 줄도 무시됩니다"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">위 언어에 체크된 Rime 단어 목록이 없습니다. 이 이름을 탭하여 단어 목록 하나를 선택하거나, 단어 목록이 있는 다른 언어를 선택하세요</string>
-  <string name="morphe_music_lyrics_rime_dict_add">추가</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime 단어 목록 추가</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham 및 典 din2와 같은 형식의 항목이 포함된 하나의 .dict.yaml 파일 또는 해당 파일이 들어 있는 ZIP 파일입니다. 해당 목록에 체크한 후 \'저장\'을 탭하면 다운로드되며, 라이선스 확인은 사용자의 책임입니다</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">언어 코드</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">hak 또는 wuu와 같이 두세 글자로 된 언어 코드입니다</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">이름</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">Hakka (Meixian)와 같이 발음 아래에 표시됩니다</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">단어 목록 주소</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">dict.yaml 파일 또는 해당 파일이 포함된 ZIP 파일의 https:// 주소</string>
@@ -682,8 +602,6 @@ Rime 단어 목록에서 읽어 올 단어 목록에 체크한 다음 '저장'�
   <string name="morphe_music_lyrics_cache_total_category_title">총 캐시 사용량</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">모든 캐시 지우기</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d개 항목)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">지우기</string>
-  <string name="morphe_music_lyrics_cache_close_action">닫기</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">이 기기에 저장된 캐시 가사 %1$s MB (%2$d곡)를 삭제하시겠습니까?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">이 기기에 저장된 캐시 번역 %1$s MB (%2$d개 번역)를 삭제하시겠습니까?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">이 기기에 저장된 캐시 전사 %1$s MB (%2$d개 전사)를 삭제하시겠습니까?</string>
@@ -768,7 +686,6 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">읽기 사전을 다운로드 중…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">읽기 준비 완료 (%s 항목)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">다운로드 실패 - 다시 시도하려면 껐다가 다시 켜세요</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">오프라인 사전</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">일본어</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">중국어</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — 빠른 형태소 분석기 &amp; 루비</string>
@@ -787,8 +704,6 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_custom_font_invalid">유효하지 않거나 지원되지 않는 글꼴 파일입니다 (.ttf 또는 .otf 필요)</string>
   <string name="morphe_music_lyrics_share_preview_title">가사 공유</string>
   <string name="morphe_music_lyrics_share_button">공유</string>
-  <string name="morphe_music_lyrics_copy">복사</string>
-  <string name="morphe_music_lyrics_share_cancel">취소</string>
   <string name="morphe_music_lyrics_share_select_hint">1~5행을 탭하세요</string>
   <string name="morphe_music_lyrics_share_max_lines">최대 5행</string>
   <string name="morphe_music_lyrics_share_failed">가사 공유 카드를 생성하지 못했습니다</string>
@@ -905,18 +820,15 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_translated_by_google">Google에 의해 번역됨</string>
   <string name="morphe_music_lyrics_romanized_by_google">Google에 의해 로마자 표기됨</string>
   <string name="morphe_music_lyrics_translated_by_ai">%s에 의해 번역됨</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">%s에 의해 로마자 표기됨</string>
-  <string name="morphe_music_lyrics_romanized_by_local">%s에 의해 로마자 표기됨</string>
+  <string name="morphe_music_lyrics_romanized_by">%s에 의해 로마자 표기됨</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s 포함)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">번역됨</string>
-  <string name="morphe_music_lyrics_translation_language_title">번역 언어</string>
   <string name="morphe_music_lyrics_romanize_language_title">로마자 표기 또는 음역 언어</string>
   <string name="morphe_music_lyrics_translation_target_language">"번역 대상 언어:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"로마자 표기 또는 음역 대상 언어:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">번역하는 중…</string>
   <string name="morphe_music_lyrics_translate_failed">가사를 번역할 수 없습니다</string>
   <string name="morphe_music_lyrics_romanize_hide">로마자 표기됨</string>
   <string name="morphe_romanize_language_DEFAULT">자동</string>
@@ -924,7 +836,6 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanize_failed">가사를 로마자로 표기할 수 없습니다</string>
   <string name="morphe_music_lyrics_romanize_language_none">없음</string>
   <string name="morphe_music_lyrics_ruby_language_title">루비 대상</string>
-  <string name="morphe_music_lyrics_translate_only">번역만</string>
   <string name="morphe_music_lyrics_romanize_only">로마자 표기만</string>
   <string name="morphe_music_lyrics_dual_only">듀얼 모드</string>
   <string name="morphe_music_lyrics_copied">클립보드에 복사하였습니다</string>
@@ -977,7 +888,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">설정이 불완전하거나 제공자가 설정을 거부하였습니다</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">연결 유효성을 검사하는 중…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: 연결됨! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: 연결 실패. 설정을 확인하세요</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">연결 실패: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">연결 테스트</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">모델을 가져오는 중…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">모델 가져오기</string>
@@ -1005,4 +916,10 @@ LOGIN_INFO"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 굵은 아이콘을 비활성화합니다</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 플레이어에서 \'다음 트랙\', \'가사\' 및 \'관련 항목\' 탭을 복원합니다</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">관리</string>
+  <string name="morphe_music_opacity_title">불투명도</string>
+  <string name="morphe_music_rim_brightness_title">테두리 밝기</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">태그</string>
 </resources>

@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">需要重新啟動</string>
   <string name="morphe_settings_restart_dialog_message">重新啟動應用程式以使此變更生效</string>
   <string name="morphe_settings_restart">重新啟動</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">匯入</string>
-  <string name="morphe_settings_import_copy">複製</string>
   <string name="morphe_settings_import_reset">將 Morphe 設定重設為預設值</string>
   <string name="morphe_settings_import_success">已匯入 %s 個設定</string>
   <string name="morphe_settings_import_failure_parse">無法匯入：%s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">修補程式</string>
   <string name="morphe_settings_about_version">版本</string>
-  <string name="morphe_settings_about_close">關閉</string>
   <string name="morphe_settings_about_prerelease">預先發佈</string>
   <string name="morphe_settings_about_update_available">可用更新：%s</string>
   <string name="morphe_settings_about_update_hint">若要更新您的修補，請使用 Morphe 重新為此應用程式套用修補</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">授權聲明</string>
-  <string name="morphe_settings_about_licenses_loading">載入中……</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
   <string name="morphe_debug_screen_summary">設定進階開發人員選項和診斷記錄</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Debug 記錄已成功匯出</string>
   <string name="morphe_debug_export_logs_failed">匯出 Debug 記錄失敗</string>
   <string name="morphe_debug_logs_search_hint">搜尋偵錯記錄…</string>
-  <string name="morphe_debug_export_logs_clear">清除</string>
   <string name="morphe_debug_logs_disabled">已停用偵錯記錄</string>
   <string name="morphe_debug_logs_none_found">未找到 Debug 記錄</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug 記錄已複製</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">已封鎖 (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">已強制 (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">自動</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">關閉</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">開啟</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">強制啟用</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">封鎖</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">刪除</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">功能標籤已儲存</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">功能標籤已重設</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">功能標籤已複製到剪貼簿</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"您的 MicroG v%1$s 版本過舊，可能會導致問題。
 
 請將 MicroG 更新至最新版本 v%2$s"</string>
-  <string name="gms_core_dialog_update_text">更新</string>
   <string name="gms_core_dialog_ignore_text">忽略</string>
   <string name="gms_core_dialog_conflict_message">"已安裝的 MicroG 並非 Morphe 所推薦：
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 停用 MicroG 的電池最佳化不會對電池使用產生負面影響。
 
 點擊繼續按鈕並允許調整最佳化設定"</string>
-  <string name="gms_core_dialog_continue_text">繼續</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">顯示 MicroG 電池最佳化對話方塊</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"停用此功能將隱藏 MicroG 電池最佳化提示。
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 修正錯誤</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 其他變更</string>
   <string name="morphe_patches_update_notice_dialog_more">…以及更多 %s 個</string>
-  <string name="morphe_patches_update_notice_dialog_update">更新</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">忽略</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">當機記錄已儲存至使用者文件：%s</string>
   <string name="morphe_crash_log_saved">當機記錄已儲存：%s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">關於</string>
+  <string name="morphe_ads_screen_title">廣告</string>
+  <string name="morphe_misc_screen_title">其他</string>
+  <string name="morphe_navigation_bar_screen_title">導覽列</string>
+  <string name="morphe_post_buttons_screen_title">貼文按鈕</string>
+  <string name="morphe_custom_branding_icon_title">應用程式圖示</string>
+  <string name="morphe_download">下載</string>
+  <string name="morphe_hide_create_button_title">隱藏「建立」按鈕</string>
+  <string name="morphe_hide_post_comment_button_title">隱藏「留言」按鈕</string>
+  <string name="morphe_sanitize_sharing_links_summary">從分享連結中移除追蹤查詢參數</string>
+  <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
+  <string name="morphe_settings_add">新增</string>
+  <string name="morphe_settings_clear">清除</string>
+  <string name="morphe_settings_close">關閉</string>
+  <string name="morphe_settings_continue">繼續</string>
+  <string name="morphe_settings_copy">複製</string>
+  <string name="morphe_settings_delete">刪除</string>
+  <string name="morphe_settings_remove">移除</string>
+  <string name="morphe_settings_update">更新</string>
 </resources>

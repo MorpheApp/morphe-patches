@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">ກຳນົດເອງ</string>
-  <string name="morphe_custom_branding_icon_title">ໄອຄອນແອັບ</string>
   <string name="morphe_custom_branding_icon_entry_1">ຕົ້ນສະບັບ</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ສີດຳ</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe ສີເຂັ້ມ</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">ການແຈ້ງເຕືອນຈາກ Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">ປະຫວັດການເບິ່ງຂອງທ່ານບໍ່ຖືກບັນທຶກ&lt;br&gt;&lt;br&gt;ສິ່ງນີ້ອາດເກີດຈາກຕົວບລັອກໂຄສະນາ DNS ຫຼື ພຣັອກຊີເຄືອຂ່າຍ&lt;br&gt;&lt;br&gt;ເພື່ອແກ້ໄຂບັນຫານີ້, ໃຫ້ເພີ່ມ &lt;b&gt;s.youtube.com&lt;/b&gt; ເຂົ້າໃນລາຍຊື່ທີ່ອະນຸຍາດ ຫຼື ປິດຕົວບລັອກ DNS ແລະ ພຣັອກຊີທັງໝົດ</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">ບໍ່ໃຫ້ສະແດງອີກ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">ປອມແປງສະຕຣີມວິດີໂອ</string>
   <string name="morphe_spoof_video_streams_screen_summary">ກຳນົດຄ່າການປອມແປງຄລາຍເອັນ ເພື່ອປ້ອງກັນບັນຫາໃນການຫຼິ້ນວິດີໂອ</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 ການຫຼິ້ນວິດີໂອອາດຈະລົ້ມເຫຼວ ຈົນກວ່າ Android System WebView ຈະຖືກອັບເດດເປັນເວີຊັນຫຼ້າສຸດ.
 
 ແຕະ ຕົກລົງ ເພື່ອເປີດ Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">ບໍ່ໃຫ້ສະແດງອີກ</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView ບໍ່ໄດ້ຕິດຕັ້ງ. ຕິດຕັ້ງເພື່ອແກ້ໄຂການຫຼິ້ນວິດີໂອ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">ການຄວບຄຸມສື່ໃນການແຈ້ງເຕືອນ</string>
   <string name="morphe_notification_media_screen_summary">ປັບແຕ່ງການຄວບຄຸມການຫຼິ້ນທີ່ສະແດງໃນໜ້າຈໍລັອກ ແລະ ແຜງການແຈ້ງເຕືອນຂອງທ່ານ</string>
-  <string name="morphe_hide_notification_media_prev_next_title">ເຊື່ອງປຸ່ມ ກ່ອນໜ້ານີ້ &amp; ຖັດໄປ</string>
   <string name="morphe_hide_notification_media_prev_next_summary">ເຊື່ອງປຸ່ມ ກ່ອນໜ້ານີ້ ແລະ ຖັດໄປ ໃນການແຈ້ງເຕືອນສື່, ໜ້າຈໍລັອກ, ແລະ ການຄວບຄຸມຫູຟັງ</string>
   <string name="morphe_disable_notification_media_seekbar_title">ປິດການໃຊ້ງານ seekbar</string>
   <string name="morphe_disable_notification_media_seekbar_summary">ປ້ອງກັນການລາກ seekbar ຢູ່ໜ້າຈໍລັອກ ແລະ ແຜງການແຈ້ງເຕືອນ</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">ຟື້ນຟູຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_video_effects_custom_add_title">ເອັບເຟັກໃໝ່</string>
   <string name="morphe_video_effects_custom_edit_title">ແກ້ໄຂເອັບເຟັກ</string>
-  <string name="morphe_video_effects_custom_name_hint">ຊື່</string>
   <string name="morphe_video_effects_custom_name_empty">ປ້ອນຊື່ສຳລັບເອັບເຟັກ</string>
   <string name="morphe_video_effects_custom_name_exists">ມີເອັບເຟັກທີ່ໃຊ້ຊື່ນີ້ຢູ່ແລ້ວ</string>
-  <string name="morphe_video_effects_custom_copy_code">ຄັດລອກໂຄ້ດ</string>
   <string name="morphe_video_effects_custom_error_title">ເອັບເຟັກມີຂໍ້ຜິດພາດ</string>
   <string name="morphe_video_effects_custom_error_message">"ວິດີໂອຈະຖືກສະແດງໂດຍບໍ່ມີເອັບເຟັກ ຈົນກວ່າໂຄ້ດຈະຖືກແກ້ໄຂ. ສົ່ງຂໍ້ຜິດພາດນີ້ໃຫ້ກັບ AI ທີ່ຂຽນໂຄ້ດ:
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 ຂໍໃຫ້ AI ຂຽນລະຫັດໃຫ້ສັ້ນລົງ, ຫຼື ວາງລະຫັດເປັນສ່ວນໆ."</string>
   <string name="morphe_video_effects_custom_copy_error">ຂໍ້ຜິດພາດໃນການຄັດລອກ</string>
   <string name="morphe_video_effects_custom_save_anyway">ບັນທຶກທັງໝົດ</string>
-  <string name="morphe_video_effects_custom_delete">ລຶບ</string>
   <string name="morphe_video_effects_custom_delete_title">ລຶບເອັບເຟັກບໍ?</string>
   <string name="morphe_video_effects_custom_delete_message">%s ຈະຖືກລຶບ.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'Spoof video streams\' ເປັນຄລາຍເອນໃດໜຶ່ງ ຍົກເວັ້ນ \'Android Studio\' ແລະ \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">ລຶບຂໍ້ມູນສ່ວນຕົວຈາກລິ້ງແບ່ງປັນ</string>
-  <string name="morphe_sanitize_sharing_links_summary">ລຶບພາຣາມິເຕີການຕິດຕາມອອກຈາກລິ້ງທີ່ແບ່ງປັນ</string>
   <string name="morphe_replace_music_with_youtube_title">ປ່ຽນລິງກ໌ການແບ່ງປັນເປັນ youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">ປ່ຽນ music.youtube.com ເປັນ youtube.com ໃນລິ້ງທີ່ແບ່ງປັນ</string>
   <string name="morphe_replace_links_with_shortener_title">ປ່ຽນລິ້ງແບ່ງປັນເປັນ youtu.be</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">ຟອນ</string>
   <string name="morphe_custom_font_type_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_custom_font_type_entry_system">ຟອນລະບົບຂອງອຸປະກອນ</string>
-  <string name="morphe_custom_font_type_entry_custom">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
   <string name="morphe_custom_font_file_title">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
   <string name="morphe_custom_font_file_summary">ເລືອກໄຟລ໌ຟອນ TTF ຫຼື OTF</string>
   <string name="morphe_custom_font_file_invalid">ໄຟລ໌ທີ່ເລືອກບໍ່ແມ່ນຟອນ TTF ຫຼື OTF</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">ເມນູທີ່ມີລັກສະນະຄືກັບແກ້ວຝ້າ ທັບເທິງເນື້ອຫາທີ່ມົວຢູ່ທາງຫຼັງ</string>
   <string name="morphe_glass_menus_title">ເປີດໃຊ້ງານເມນູແບບແກ້ວ</string>
   <string name="morphe_glass_menus_summary">ສະແດງເມນູ ແລະ ແຜງດ້ານລຸ່ມເປັນແບບແກ້ວຝ້າ, ໂດຍທີ່ເນື້ອຫາທາງຫຼັງຈະຖືກເຮັດໃຫ້ເບີ</string>
-  <string name="morphe_glass_menus_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
   <string name="morphe_glass_menus_opacity_summary">ລະດັບທີ່ເມນູປົກຄຸມເນື້ອຫາທີ່ເບີ (0 ແມ່ນໃສ, 100 ແມ່ນທຶບ)</string>
   <string name="morphe_glass_menus_blur_title">ຄວາມເບີ</string>
   <string name="morphe_glass_menus_blur_summary">ລະດັບຄວາມເບີຂອງເນື້ອຫາທີ່ຢູ່ທາງຫຼັງເມນູ</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">ສະແດງການບໍ່ມັກເປັນເປີເຊັນຂອງການມັກ ແທນທີ່ຈະເປັນຕົວເລກ</string>
   <string name="morphe_ryd_estimated_like_title">ສະແດງການຄາດຄະເນການມັກ</string>
   <string name="morphe_ryd_estimated_like_summary">ສະແດງຈຳນວນການຄາດຄະເນການມັກໃນວິດີໂອ ທີ່ຜູ້ສ້າງໄດ້ປິດການມັກ</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">ສະແດງການແຈ້ງເຕືອນຂໍ້ຜິດພາດໃນການເຊື່ອມຕໍ່</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອເຊີບເວີ Return YouTube Dislike ບໍ່ສາມາດນຳໃຊ້ໄດ້</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ຈະກູ້ຄືນຈຳນວນການບໍ່ມັກທີ່ YouTube ໄດ້ເຊື່ອງໄວ້ໃນປີ 2021. ຈຳນວນເຫຼົ່ານີ້ມາຈາກຂໍ້ມູນທີ່ຖືກເກັບໄວ້ກ່ອນການລຶບອອກ ແລະ ແມ່ນການຄາດຄະເນສຳລັບວິດີໂອໃໝ່ໆ ຈາກການລົງຄະແນນສຽງຂອງຜູ້ໃຊ້, ດັ່ງນັ້ນພວກມັນຈຶ່ງເປັນຄ່າໂດຍປະມານ ແລະ ຈະອັບເດທ໌ທຸກໆ ບໍ່ກີ່ມື້
 
@@ -424,8 +412,89 @@ ID ຂອງວິດີໂອທີ່ທ່ານເບິ່ງຈະຖື�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ບໍ່ພົບຂີດຈຳກັດອັດຕາຂອງ client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ພົບຂໍ້ຈຳກັດອັດຕາການຮ້ອງຂໍຂອງຄລາຍເອນ %s ຄັ້ງ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ມິນລິວິນາທີ</string>
-  <string name="morphe_navigation_bar_screen_title">ແຖບນຳທາງ</string>
   <string name="morphe_navigation_bar_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ສະແດງໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
   <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
   <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນແຖບເຄື່ອງມື</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 ວິນາທີ</string>
+  <string name="morphe_duration_2s">2 ວິນາທີ</string>
+  <string name="morphe_duration_3s">3 ວິນາທີ</string>
+  <string name="morphe_duration_4s">4 ວິນາທີ</string>
+  <string name="morphe_duration_5s">5 ວິນາທີ</string>
+  <string name="morphe_duration_6s">6 ວິນາທີ</string>
+  <string name="morphe_duration_7s">7 ວິນາທີ</string>
+  <string name="morphe_duration_8s">8 ວິນາທີ</string>
+  <string name="morphe_duration_9s">9 ວິນາທີ</string>
+  <string name="morphe_duration_10s">10 ວິນາທີ</string>
+  <string name="morphe_change_start_page_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_change_start_page_entry_explore">ສຳຫຼວດ</string>
+  <string name="morphe_change_start_page_entry_history">ປະຫວັດ</string>
+  <string name="morphe_change_start_page_entry_library">ຫໍສະໝຸດ</string>
+  <string name="morphe_change_start_page_entry_playlists">ລາຍການຫຼິ້ນ</string>
+  <string name="morphe_change_start_page_entry_search">ຄົ້ນຫາ</string>
+  <string name="morphe_change_start_page_entry_subscriptions">ການຕິດຕາມ</string>
+  <string name="morphe_change_start_page_title">ໜ້າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_action_buttons_screen_title">ປຸ່ມການເຮັດວຽກ</string>
+  <string name="morphe_comments_screen_title">ຄວາມຄິດເຫັນ</string>
+  <string name="morphe_feed_screen_title">ຟີດ</string>
+  <string name="morphe_flyout_menu_screen_title">ເມນູ Flyout</string>
+  <string name="morphe_general_title">ທົ່ວໄປ</string>
+  <string name="morphe_miniplayer_screen_title">ເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ</string>
+  <string name="morphe_player_screen_title">ເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_video_screen_title">ວິດີໂອ</string>
+  <string name="morphe_appearance_title">ຮູບລັກສະນະ</string>
+  <string name="morphe_cancel">ຍົກເລີກ</string>
+  <string name="morphe_comments_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນພາກສ່ວນຄຳຄິດເຫັນ</string>
+  <string name="morphe_copy_code">ຄັດລອກລະຫັດ</string>
+  <string name="morphe_corner_radius_title">ລັດສະໝີມຸມ</string>
+  <string name="morphe_do_not_show_again">ບໍ່ໃຫ້ສະແດງອີກ</string>
+  <string name="morphe_download_force_4k_title">ບັງຄັບໃຫ້ມີການດາວໂຫຼດ 4K</string>
+  <string name="morphe_glass_opacity_title">ຄວາມໂປ່ງໃສຂອງແກ້ວ</string>
+  <string name="morphe_header_logo_title">ໂລໂກ້ສ່ວນຫົວ</string>
+  <string name="morphe_hide_action_bar_title">ເຊື່ອງແຖບການເຮັດວຽກ</string>
+  <string name="morphe_hide_cast_button_title">ເຊື່ອງປຸ່ມ Cast</string>
+  <string name="morphe_hide_comments_button_title">ເຊື່ອງປຸ່ມຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_community_guidelines_title">ເຊື່ອງຄຳແນະນຳຂອງຊຸມຊົນ</string>
+  <string name="morphe_hide_comments_emoji_button_title">ເຊື່ອງປຸ່ມ Emoji</string>
+  <string name="morphe_hide_comments_gif_button_title">ເຊື່ອງປຸ່ມ GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">ເຊື່ອງ GIF ແລະ ຮູບພາບທີ່ຄັດຕິດກັບຄຳຄິດເຫັນ ແລະ ການຕອບກັບ</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">ເຊື່ອງ GIF ແລະ ຮູບພາບ</string>
+  <string name="morphe_hide_comments_info_button_title">ເຊື່ອງປຸ່ມ ຂໍ້ມູນ</string>
+  <string name="morphe_hide_comments_timestamp_button_title">ເຊື່ອງປຸ່ມ ປະທັບເວລາ</string>
+  <string name="morphe_hide_horizontal_shelves_title">ເຊື່ອງຊັ້ນວາງແນວນອນ</string>
+  <string name="morphe_hide_like_dislike_button_title">ເຊື່ອງປຸ່ມ ຖືກໃຈ ແລະ ບໍ່ຖືກໃຈ</string>
+  <string name="morphe_hide_like_dislike_buttons_title">ເຊື່ອງປຸ່ມ Like ແລະ Dislike</string>
+  <string name="morphe_hide_navigation_bar_title">ເຊື່ອງແຖບນຳທາງ</string>
+  <string name="morphe_hide_navigation_button_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
+  <string name="morphe_hide_previous_next_buttons_title">ເຊື່ອງປຸ່ມ ກ່ອນໜ້ານີ້ &amp; ຖັດໄປ</string>
+  <string name="morphe_hide_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>
+  <string name="morphe_hide_translate_button_title">ເຊື່ອງປຸ່ມແປພາສາ</string>
+  <string name="morphe_hide_video_ads_title">ເຊື່ອງໂຄສະນາວິດີໂອ</string>
+  <string name="morphe_loading">ກຳລັງໂຫຼດ…</string>
+  <string name="morphe_name">ຊື່</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$s ຈາກ %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
+  <string name="morphe_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
+  <string name="morphe_navigation_bar_glass_title">ເປີດໃຊ້ແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_positive_number_invalid">ຄ່າຕ້ອງເປັນຕົວເລກບວກ</string>
+  <string name="morphe_private_user_id_invalid">ໄອດີຜູ້ໃຊ້ສ່ວນຕົວຕ້ອງມີຄວາມຍາວຢ່າງໜ້ອຍ 30 ຕົວອັກສອນ</string>
+  <string name="morphe_private_user_id_title">ໄອດີຜູ້ໃຊ້ສ່ວນຕົວຂອງທ່ານ</string>
+  <string name="morphe_rename">ປ່ຽນຊື່</string>
+  <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
+  <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມການຕັ້ງຄ່າ</string>
+  <string name="morphe_show_video_effect_menu_title">ສະແດງເມນູເອັບເຟັກວິດີໂອ</string>
+  <string name="morphe_submit">ສົ່ງ</string>
+  <string name="morphe_time_adjustment_step_title">ຂັ້ນຕອນການປັບເວລາ</string>
+  <string name="morphe_toast_on_connection_error_title">ສະແດງການແຈ້ງເຕືອນຂໍ້ຜິດພາດໃນການເຊື່ອມຕໍ່</string>
+  <string name="morphe_toast_on_skip_title">ສະແດງການແຈ້ງເຕືອນການຂ້າມ</string>
+  <string name="morphe_translated_only">ສະເພາະທີ່ແປແລ້ວ</string>
+  <string name="morphe_translating">ກຳລັງແປ…</string>
+  <string name="morphe_translation_language_title">ພາສາໃນການແປ</string>
+  <string name="morphe_username_change_unknown_error">ບໍ່ສາມາດປ່ຽນຊື່ຜູ້ໃຊ້ໄດ້: ສະຖານະ: %1$s %2$s</string>
+  <string name="morphe_username_changed">ປ່ຽນຊື່ຜູ້ໃຊ້ສຳເລັດແລ້ວ</string>
+  <string name="morphe_username_html">ຊື່ຜູ້ໃຊ້ຂອງທ່ານ: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">ວິດີໂອ</string>
+  <string name="morphe_vote_downvote">ລົງຄະແນນບໍ່ມັກ</string>
+  <string name="morphe_vote_upvote">ລົງຄະແນນມັກ</string>
 </resources>

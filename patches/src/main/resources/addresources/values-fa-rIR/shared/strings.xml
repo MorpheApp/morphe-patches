@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">راه‌اندازی مجدد لازم است</string>
   <string name="morphe_settings_restart_dialog_message">برای اعمال این تغییر، برنامه را راه‌اندازی مجدد کنید</string>
   <string name="morphe_settings_restart">راه‌اندازی مجدد</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">واردکردن</string>
-  <string name="morphe_settings_import_copy">کپی</string>
   <string name="morphe_settings_import_reset">تنظیمات Morphe به پیش‌فرض بازنشانی شد</string>
   <string name="morphe_settings_import_success">%s تنظیم وارد شد</string>
   <string name="morphe_settings_import_failure_parse">واردکردن ناموفق بود: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">پچ‌ها</string>
   <string name="morphe_settings_about_version">نسخه</string>
-  <string name="morphe_settings_about_close">بستن</string>
   <string name="morphe_settings_about_prerelease">پیش‌انتشار</string>
   <string name="morphe_settings_about_update_available">به‌روزرسانی موجود است: %s</string>
   <string name="morphe_settings_about_update_hint">برای به‌روزرسانی پچ‌های خود، از Morphe برای پچ کردن مجدد این برنامه استفاده کنید</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">۲۰۲۲ ‑ ۲۰۲۵</string>
   <string name="morphe_settings_about_links_vanced">۲۰۱۹ ‑ ۲۰۲۲</string>
   <string name="morphe_settings_about_links_licenses">اعلامیه‌های مجوز</string>
-  <string name="morphe_settings_about_licenses_loading">در حال بارگیری…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">اشکال‌زدایی</string>
   <string name="morphe_debug_screen_summary">گزینه‌های پیشرفتهٔ توسعه‌دهنده و گزارش‌های تشخیصی را پیکربندی کنید</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">گزارش‌های اشکال‌زدایی با موفقیت صادر شدند</string>
   <string name="morphe_debug_export_logs_failed">صادرکردن گزارش‌های اشکال‌زدایی ناموفق بود</string>
   <string name="morphe_debug_logs_search_hint">جست‌وجوی گزارش‌های اشکال‌زدایی…</string>
-  <string name="morphe_debug_export_logs_clear">پاک‌کردن</string>
   <string name="morphe_debug_logs_disabled">ثبت گزارش اشکال‌زدایی غیرفعال است</string>
   <string name="morphe_debug_logs_none_found">هیچ گزارش اشکال‌زدایی پیدا نشد</string>
   <string name="morphe_debug_logs_copied_to_clipboard">گزارش‌های اشکال‌زدایی کپی شدند</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">مسدود (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">اجباری (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">خودکار</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">خاموش</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">روشن</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">اجبار به روشن‌بودن</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">مسدودکردن</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">حذف</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">پرچم‌های قابلیت ذخیره شدند</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">پرچم‌های قابلیت بازنشانی شدند</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">پرچم‌های قابلیت در کلیپ‌بورد کپی شدند</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"MicroG شما، نسخهٔ %1$s، قدیمی است و ممکن است مشکل ایجاد کند.
 
 لطفاً MicroG را به جدیدترین نسخهٔ %2$s به‌روزرسانی کنید"</string>
-  <string name="gms_core_dialog_update_text">به‌روزرسانی</string>
   <string name="gms_core_dialog_ignore_text">نادیده‌گرفتن</string>
   <string name="gms_core_dialog_conflict_message">"MicroG نصب‌شده توسط Morphe توصیه نمی‌شود:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 غیرفعال‌کردن بهینه‌سازی باتری برای MicroG تأثیر منفی بر مصرف باتری نخواهد داشت.
 
 روی دکمهٔ ادامه ضربه بزنید و تغییرات بهینه‌سازی را اجازه دهید"</string>
-  <string name="gms_core_dialog_continue_text">ادامه</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">نمایش گفت‌وگوی بهینه‌سازی باتری MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"با غیرفعال‌کردن این گزینه، پیام بهینه‌سازی باتری MicroG پنهان می‌شود.
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 رفع باگ‌ها</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 سایر تغییرات</string>
   <string name="morphe_patches_update_notice_dialog_more">…و %s مورد دیگر</string>
-  <string name="morphe_patches_update_notice_dialog_update">به‌روزرسانی</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">بستن</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">گزارش خطا در اسناد کاربر ذخیره شد: %s</string>
   <string name="morphe_crash_log_saved">گزارش خطا ذخیره شد: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">درباره</string>
+  <string name="morphe_ads_screen_title">تبلیغات</string>
+  <string name="morphe_misc_screen_title">متفرقه</string>
+  <string name="morphe_navigation_bar_screen_title">نوار پیمایش</string>
+  <string name="morphe_post_buttons_screen_title">دکمه‌های پست</string>
+  <string name="morphe_custom_branding_icon_title">آیکون برنامه</string>
+  <string name="morphe_download">دانلود</string>
+  <string name="morphe_hide_create_button_title">پنهان‌کردن دکمهٔ ساخت</string>
+  <string name="morphe_hide_post_comment_button_title">دکمهٔ پنهان‌کردن دیدگاه</string>
+  <string name="morphe_sanitize_sharing_links_summary">پارامترهای پرس‌وجوی رهگیری را از پیوندهای اشتراک‌گذاری‌شده حذف می‌کند</string>
+  <string name="morphe_sanitize_sharing_links_title">پاک‌سازی پیوندهای اشتراک‌گذاری</string>
+  <string name="morphe_settings_add">افزودن</string>
+  <string name="morphe_settings_clear">پاک‌کردن</string>
+  <string name="morphe_settings_close">بستن</string>
+  <string name="morphe_settings_continue">ادامه</string>
+  <string name="morphe_settings_copy">کپی</string>
+  <string name="morphe_settings_delete">حذف</string>
+  <string name="morphe_settings_remove">حذف</string>
+  <string name="morphe_settings_update">به‌روزرسانی</string>
 </resources>

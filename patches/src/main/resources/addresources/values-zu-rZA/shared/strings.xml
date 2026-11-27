@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Kudingeka ukuqalisa kabusha</string>
   <string name="morphe_settings_restart_dialog_message">Qala futhi uhlelo lwe-app ukuze lolu shintsho lusebenze</string>
   <string name="morphe_settings_restart">Qalisa kabusha</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Ngenisa</string>
-  <string name="morphe_settings_import_copy">Kopisha</string>
   <string name="morphe_settings_import_reset">Izilungiselelo zeMorphe zibuyiselwe ekusetshenzisweni kwazo okwokuqala</string>
   <string name="morphe_settings_import_success">Kungeniswe izilungiselelo ezi- %s</string>
   <string name="morphe_settings_import_failure_parse">Ukungenisa kuhlulekile: %s</string>
@@ -76,7 +74,6 @@ Ukuze uhumushe izilimi ezintsha noma uthuthukise izihumushi ezikhona, vusela i-m
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Ama-Patches</string>
   <string name="morphe_settings_about_version">Inguqulo</string>
-  <string name="morphe_settings_about_close">Vala</string>
   <string name="morphe_settings_about_prerelease">Inguqulo yokuqala</string>
   <string name="morphe_settings_about_update_available">Ukuvuselelwa okutholakalayo: %s</string>
   <string name="morphe_settings_about_update_hint">Ukuze uvuselele ama-patches akho, sebenzisa iMorphe ukuze ufake phinda ama-patch kule app</string>
@@ -108,7 +105,6 @@ Ukuze uhumushe izilimi ezintsha noma uthuthukise izihumushi ezikhona, vusela i-m
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Izaziso zelayisense</string>
-  <string name="morphe_settings_about_licenses_loading">Kulayidwa…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ukulungisa amaphutha</string>
   <string name="morphe_debug_screen_summary">Lungisa izinketho ezithuthukile zomthuthukisi namabhuku okuhlolwa</string>
@@ -125,7 +121,6 @@ Angeke waziswa nganoma yiziphi izigameko ezingalindelekile"</string>
   <string name="morphe_debug_export_logs_success">Ama-debug logs athunyelwe ngaphandle ngempumelelo</string>
   <string name="morphe_debug_export_logs_failed">Kuhlulekile ukuthumela ama-debug logs ngaphandle</string>
   <string name="morphe_debug_logs_search_hint">Funa ema-log okuhlola…</string>
-  <string name="morphe_debug_export_logs_clear">Sula</string>
   <string name="morphe_debug_logs_disabled">Ukubhala ama-log okulungisa amaphutha kukhishwa</string>
   <string name="morphe_debug_logs_none_found">Azikho ama-debug logs</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Ama-debug logs akopishwe</string>
@@ -142,15 +137,8 @@ Angeke waziswa nganoma yiziphi izigameko ezingalindelekile"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Ivinqiwe (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Kuphezelwe (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Okuzenzayo</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Valiwe</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Vula</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Phushela phezulu</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Vala</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Susa</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ama-feature flags agcinwe</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Izimpawu zezici sezibuyiselwe emuva</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Izimpawu zezici sekukopiwe ku-clipboard</string>
@@ -200,7 +188,6 @@ Ukuziphatha kunyamalale ekuqaleni kokusesha, ngakho kungenzeka ukuthi kukhona iz
   <string name="gms_core_dialog_outdated_message">"IMicroG yakho v%1$s isidala futhi ingaba yimbangela yezinkinga.
 
 Ngicela uthuthukise iMicroG ibe ngu-version yakamuva v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Vuselela</string>
   <string name="gms_core_dialog_ignore_text">Yigunde</string>
   <string name="gms_core_dialog_conflict_message">"IMicroG efakwe ayikhuthazwa yiMorphe:
 
@@ -220,7 +207,6 @@ Lokhu kubalulekile ukuze i-app isebenze"</string>
 Ukukhisha okuhleleka kwebhethri kukaMicroG ngeke kube nomphumela omubi ekusetshenzisweni kwebhethri.
 
 Chofoza inkinobho eqhubekayo bese uvumela izinguquko zokuhleleka"</string>
-  <string name="gms_core_dialog_continue_text">Qhubeka</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Khombisa i-dialog yoku-optimize ibhethari ye-MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ukukhubaza lokhu kuzofihla isicelo sokuthuthukisa ibhathri yeMicroG.
 
@@ -259,9 +245,29 @@ Uma ufuna uhlelo olungenazo izinkinga, &lt;b&gt;susa&lt;/b&gt; lolu bese ufaka i
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ukulungiswa kwamaphutha</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Ezinye izinguquko</string>
   <string name="morphe_patches_update_notice_dialog_more">…nokunye okungaba ngu %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Vuselela</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Valela</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">I-log yokuphuka igcinwe emaqondeni omsebenzisi: %s</string>
   <string name="morphe_crash_log_saved">I-log yokuphuka igcinwe: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Mayelana neMorphe</string>
+  <string name="morphe_ads_screen_title">Izikhangiso</string>
+  <string name="morphe_misc_screen_title">Okunye</string>
+  <string name="morphe_navigation_bar_screen_title">Ibha yokuzulazula</string>
+  <string name="morphe_post_buttons_screen_title">Izinkinobho zokupostha</string>
+  <string name="morphe_custom_branding_icon_title">I-icon yohlelo</string>
+  <string name="morphe_download">Landa</string>
+  <string name="morphe_hide_create_button_title">Fihla inkinobho yoKuqala</string>
+  <string name="morphe_hide_post_comment_button_title">Fihla inkinobho yoKukhomentha</string>
+  <string name="morphe_sanitize_sharing_links_summary">Isusa izinto zokulandelela kuma-link ahlanganyelwe</string>
+  <string name="morphe_sanitize_sharing_links_title">Hlanza ama-link ahlanganyelwe</string>
+  <string name="morphe_settings_add">Engeza</string>
+  <string name="morphe_settings_clear">Sula</string>
+  <string name="morphe_settings_close">Vala</string>
+  <string name="morphe_settings_continue">Qhubeka</string>
+  <string name="morphe_settings_copy">Kopisha</string>
+  <string name="morphe_settings_delete">Susa</string>
+  <string name="morphe_settings_remove">Susa</string>
+  <string name="morphe_settings_update">Vuselela</string>
 </resources>

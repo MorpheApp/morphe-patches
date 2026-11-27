@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -121,6 +120,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
   <!-- interaction.commentsearch.commentSearchPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -167,7 +167,6 @@ Second \"item\" text"</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -259,4 +258,8 @@ Second \"item\" text"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <!-- Shared YouTube strings -->
+  <string name="morphe_hide_in_search_results_title">සෙවුම් ප්‍රතිඵලවල සඟවන්න</string>
+  <string name="morphe_hide_in_watch_history_title">නැරඹුම් ඉතිහාසයේ සඟවන්න</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
 </resources>

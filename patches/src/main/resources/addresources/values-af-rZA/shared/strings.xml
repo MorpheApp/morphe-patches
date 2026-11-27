@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Herbegin benodig</string>
   <string name="morphe_settings_restart_dialog_message">Herstart die program sodat hierdie verandering in werking kan tree</string>
   <string name="morphe_settings_restart">Herbegin</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Invoer</string>
-  <string name="morphe_settings_import_copy">Kopie</string>
   <string name="morphe_settings_import_reset">Morphe instellings is teruggesit na verstek</string>
   <string name="morphe_settings_import_success">%s instellings ingevoer</string>
   <string name="morphe_settings_import_failure_parse">Invoer misluk: %s</string>
@@ -76,7 +74,6 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Veranderinge</string>
   <string name="morphe_settings_about_version">Weergawe</string>
-  <string name="morphe_settings_about_close">Sluit</string>
   <string name="morphe_settings_about_prerelease">Voor-vrystelling</string>
   <string name="morphe_settings_about_update_available">Opdatering beskikbaar: %s</string>
   <string name="morphe_settings_about_update_hint">Om jou kollewerks op te dateer, gebruik Morphe om hierdie toepassing weer te kol</string>
@@ -108,7 +105,6 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Lisensiekennisgewings</string>
-  <string name="morphe_settings_about_licenses_loading">Laai…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ontfouting</string>
   <string name="morphe_debug_screen_summary">Konfigureer gevorderde ontwikkelaarsopsies en diagnostiese logboeke</string>
@@ -125,7 +121,6 @@ Jy sal nie van enige onverwagte gebeurtenisse in kennis gestel word nie"</string
   <string name="morphe_debug_export_logs_success">Ontfouting logboeke is suksesvol uitgevoer</string>
   <string name="morphe_debug_export_logs_failed">Ontfouting logboeke kon nie uitgevoer word nie</string>
   <string name="morphe_debug_logs_search_hint">Soek ontfoutingslogboeke…</string>
-  <string name="morphe_debug_export_logs_clear">Klar</string>
   <string name="morphe_debug_logs_disabled">Ontfouting logboeke is gedeaktiveer</string>
   <string name="morphe_debug_logs_none_found">Geen ontfouting logboeke gevind nie</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Ontfouting logboeke gekopieer</string>
@@ -142,15 +137,8 @@ Jy sal nie van enige onverwagte gebeurtenisse in kennis gestel word nie"</string
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Geblokkeer (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Geforseer (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Outo</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Af</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Aan</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Forceer aan</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokkeer</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Verwyder</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Kenmerkvlae is gered</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Kenmerkvlae is teruggesit</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kenmerkvlae gekopieer na knipbord</string>
@@ -200,7 +188,6 @@ Die gedrag het vroeër in die soektog verdwyn, so meer as een kenmerk-vlag kan b
   <string name="gms_core_dialog_outdated_message">"Jou MicroG v%1$s is verouderd en mag probleme veroorsaak.
 
 Dateer asseblief MicroG op na die nuutste weergawe v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Opdateer</string>
   <string name="gms_core_dialog_ignore_text">Ignoreer</string>
   <string name="gms_core_dialog_conflict_message">"Die geïnstalleerde MicroG word nie deur Morphe aanbeveel nie:
 
@@ -220,7 +207,6 @@ Dit is benodig vir die program om te werk"</string>
 Afskakeling van batterijoptimerings vir MicroG sal nie negatief op batterylewing raak nie.
 
 Tik die voortgaan-knoppie en laat optimaliseringsveranderinge toe"</string>
-  <string name="gms_core_dialog_continue_text">Gaan voort</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Wys MicroG se battery-optimalisasie-dialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering hiervan sal die MicroG battery optimerings prompt verberg.
 
@@ -259,9 +245,29 @@ As jy die mees probleemvrye ervaring wil hê, dan &lt;b&gt;deïnstalleer&lt;/b&g
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Foutregstellings</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Ander veranderinge</string>
   <string name="morphe_patches_update_notice_dialog_more">…en %s meer</string>
-  <string name="morphe_patches_update_notice_dialog_update">Opdateer</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Klop weg</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Crashlog gestoor na gebruikersdokumente: %s</string>
   <string name="morphe_crash_log_saved">Crashlog gestoor: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Oor</string>
+  <string name="morphe_ads_screen_title">Advertensies</string>
+  <string name="morphe_misc_screen_title">Diverse</string>
+  <string name="morphe_navigation_bar_screen_title">Navigasiebalk</string>
+  <string name="morphe_post_buttons_screen_title">Plasing-knoppies</string>
+  <string name="morphe_custom_branding_icon_title">Program ikoon</string>
+  <string name="morphe_download">Aflaai</string>
+  <string name="morphe_hide_create_button_title">Verberg Skep-knoppie</string>
+  <string name="morphe_hide_post_comment_button_title">Verberg Kommentaar-knoppie</string>
+  <string name="morphe_sanitize_sharing_links_summary">Verwyder opsporingsparameters van gedeelde skakels</string>
+  <string name="morphe_sanitize_sharing_links_title">Suiwer deel-skakels</string>
+  <string name="morphe_settings_add">Voeg toe</string>
+  <string name="morphe_settings_clear">Wis</string>
+  <string name="morphe_settings_close">Sluit</string>
+  <string name="morphe_settings_continue">Gaan voort</string>
+  <string name="morphe_settings_copy">Kopieer</string>
+  <string name="morphe_settings_delete">Vee uit</string>
+  <string name="morphe_settings_remove">Verwyder</string>
+  <string name="morphe_settings_update">Opdateer</string>
 </resources>

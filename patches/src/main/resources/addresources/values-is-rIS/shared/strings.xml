@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Endurræsing krafist</string>
   <string name="morphe_settings_restart_dialog_message">Endurræstu forritið til að breytingin taki gildi</string>
   <string name="morphe_settings_restart">Endurræsa</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Flytja inn</string>
-  <string name="morphe_settings_import_copy">Afrita</string>
   <string name="morphe_settings_import_reset">Morphe stillingar endurstillaðar að sjálfgefnu gildi</string>
   <string name="morphe_settings_import_success">Stillingar fluttar inn: %s</string>
   <string name="morphe_settings_import_failure_parse">Innflutning mistókst: %s</string>
@@ -76,7 +74,6 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Bætur</string>
   <string name="morphe_settings_about_version">Útgáfa</string>
-  <string name="morphe_settings_about_close">Loka</string>
   <string name="morphe_settings_about_prerelease">Fyrir útgáfu</string>
   <string name="morphe_settings_about_update_available">Uppfærsla tiltæk: %s</string>
   <string name="morphe_settings_about_update_hint">Til að uppfæra bætur þínar, notaðu Morphe til að bæta þetta forrit aftur</string>
@@ -108,7 +105,6 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Leyfisathugasemdir</string>
-  <string name="morphe_settings_about_licenses_loading">Hlaða…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Villuleit</string>
   <string name="morphe_debug_screen_summary">Stilltu háþróaða þróunarvalkosti og greiningarskrár</string>
@@ -125,7 +121,6 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <string name="morphe_debug_export_logs_success">Villuskrár fluttar út</string>
   <string name="morphe_debug_export_logs_failed">Útflutningur debug log mistókst</string>
   <string name="morphe_debug_logs_search_hint">Leita í villuskrám…</string>
-  <string name="morphe_debug_export_logs_clear">Hreinsa</string>
   <string name="morphe_debug_logs_disabled">Debug log er óvirkt</string>
   <string name="morphe_debug_logs_none_found">Engin debug log fundust</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug log afritað</string>
@@ -142,15 +137,8 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Lokað (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Þvingað (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Sjálfvirkt</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Slökkt</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Kveikt</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Þvinga á</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Loka</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Fjarlægja</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Eiginleikaflögg vistuð</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Eiginleikaflögg endurstillt</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Eiginleikaflögg afrituð á klippiborð</string>
@@ -200,7 +188,6 @@ Hegðunin hvarf fyrr í leitinni, svo líklega eru fleiri en eitt flögg að ver
   <string name="gms_core_dialog_outdated_message">"Útgáfan þín af MicroG, v%1$s, er úrelt og gæti valdið vandamálum.
 
 Uppfærðu MicroG í nýjustu útgáfuna v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Uppfæra</string>
   <string name="gms_core_dialog_ignore_text">Hunsa</string>
   <string name="gms_core_dialog_conflict_message">"Uppsett útgáfa af MicroG er ekki mælt með af Morphe:
 
@@ -220,7 +207,6 @@ Fylgdu leiðbeiningunum „Don't kill my app“ fyrir símann þinn og beittu þ
 Að slökkva á rafhlöðusparnaði fyrir MicroG hefur ekki neikvæð áhrif á rafhlöðunotkun.
 
 Pikkaðu á Halda áfram og leyfðu breytingar á rafhlöðusparnaði"</string>
-  <string name="gms_core_dialog_continue_text">Halda áfram</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Sýna samtal um rafhlöðusparnað MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Með því að slökkva á þessu er MicroG valmyndin um rafhlöðusparnað falin.
 
@@ -259,9 +245,29 @@ Ef þú vilt sem minnst vesen, þá skaltu &lt;b&gt;fjarlægja&lt;/b&gt; þetta 
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Lagranir á villum</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Aðrar breytingar</string>
   <string name="morphe_patches_update_notice_dialog_more">…og %s fleiri</string>
-  <string name="morphe_patches_update_notice_dialog_update">Uppfæra</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Loka</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Hrunannáll vistaður í skjöl notanda: %s</string>
   <string name="morphe_crash_log_saved">Hrunannáll vistaður: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Um</string>
+  <string name="morphe_ads_screen_title">Auglýsingar</string>
+  <string name="morphe_misc_screen_title">Ýmslegt</string>
+  <string name="morphe_navigation_bar_screen_title">Leiðsögustika</string>
+  <string name="morphe_post_buttons_screen_title">Hnappar færsluna</string>
+  <string name="morphe_custom_branding_icon_title">Tákn forrits</string>
+  <string name="morphe_download">Sækja</string>
+  <string name="morphe_hide_create_button_title">Fela Búa til hnappinn</string>
+  <string name="morphe_hide_post_comment_button_title">Fela athugasemdahnappinn</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjarlægir rekjubreytur úr deilitenglum</string>
+  <string name="morphe_sanitize_sharing_links_title">Hreinsa deilitengla</string>
+  <string name="morphe_settings_add">Bæta við</string>
+  <string name="morphe_settings_clear">Hreinsa</string>
+  <string name="morphe_settings_close">Loka</string>
+  <string name="morphe_settings_continue">Haldast</string>
+  <string name="morphe_settings_copy">Afrita</string>
+  <string name="morphe_settings_delete">Eyða</string>
+  <string name="morphe_settings_remove">Fjarlægja</string>
+  <string name="morphe_settings_update">Uppfæra</string>
 </resources>

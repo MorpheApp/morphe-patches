@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Ota SponsorBlock käyttöön</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock on joukkoistettu järjestelmä, jolla voidaan ohittaa YouTube-videoiden ärsyttäviä osia</string>
-  <string name="morphe_sb_appearance_category_title">Ulkoasu</string>
   <string name="morphe_sb_voting_button_title">Näytä äänestyspainike</string>
   <string name="morphe_sb_voting_button_summary">Lisää painike segmenttien arvioimiseksi ylös- tai alaspäin</string>
   <string name="morphe_sb_square_layout_title">Käytä nelikulmaista asettelua</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Piilottaa Ohita-painikkeen muutaman sekunnin kuluttua sen sijaan, että se pysyisi näkyvissä koko segmentin ajan</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Ohita-painikkeen kesto</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Aseta kuinka kauan ohituspainike pysyy näkyvissä</string>
-  <string name="morphe_sb_toast_on_skip_title">Näytä ohituksen ilmoitus</string>
   <string name="morphe_sb_toast_on_skip_summary">Näyttää ilmoituksen, kun segmentti ohitetaan automaattisesti</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Ohita-ponnahdusilmoituksen kesto</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Aseta kuinka kauan kumotusilmoitus pysyy näkyvissä</string>
-  <string name="morphe_sb_duration_1s">1 sekunti</string>
-  <string name="morphe_sb_duration_2s">2 sekuntia</string>
-  <string name="morphe_sb_duration_3s">3 sekuntia</string>
-  <string name="morphe_sb_duration_4s">4 sekuntia</string>
-  <string name="morphe_sb_duration_5s">5 sekuntia</string>
-  <string name="morphe_sb_duration_6s">6 sekuntia</string>
-  <string name="morphe_sb_duration_7s">7 sekuntia</string>
-  <string name="morphe_sb_duration_8s">8 sekuntia</string>
-  <string name="morphe_sb_duration_9s">9 sekuntia</string>
-  <string name="morphe_sb_duration_10s">10 sekuntia</string>
   <string name="morphe_sb_video_length_without_segments_title">Näytä videon pituus ilman osioita</string>
   <string name="morphe_sb_video_length_without_segments_summary">Vähentää kaikkien segmenttien keston kokonaisvideon pituudesta, joka näkyy palkissa</string>
   <string name="morphe_sb_create_segment_category_title">Uusien osioiden luominen</string>
   <string name="morphe_sb_create_new_segment_title">Näytä ”Luo uusi segmentti” -painike</string>
   <string name="morphe_sb_create_new_segment_summary">Lisää videon toistajaan painike, jonka avulla voit lähettää uusia SponsorBlock-segmenttejä</string>
-  <string name="morphe_sb_create_new_segment_step_title">Ajan säätämisen askel</string>
   <string name="morphe_sb_create_new_segment_step_summary">Ajan säätämisen painikkeiden etsimismäärä (millisekunneissa)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Arvon tulee olla positiivinen luku</string>
   <string name="morphe_sb_guidelines_title">Lähetyssuuntaviivat</string>
   <string name="morphe_sb_guidelines_summary">Ohjeet sisältävät sääntöjä ja vinkkejä uusien osioiden luomiseen</string>
   <string name="morphe_sb_guidelines_popup_title">Noudata ohjeita</string>
   <string name="morphe_sb_guidelines_popup_content">Lue SponsorBlock-ohjeet ennen uusien osioiden luomista</string>
   <string name="morphe_sb_guidelines_popup_already_read">Luettu jo</string>
   <string name="morphe_sb_guidelines_popup_open">Näytä minulle</string>
-  <string name="morphe_sb_general_title">Yleiset</string>
   <string name="morphe_sb_offline_segments_title">Tallenna ladattujen videoiden segmentit</string>
   <string name="morphe_sb_offline_segments_summary">Sallii ladattujen videoiden segmenttien ohittamisen offline-tilassa</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Näytä yhteyden virheilmoitukset</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Näyttää ilmoituksen, kun SponsorBlock-palvelin ei ole käytettävissä</string>
   <string name="morphe_sb_track_skip_count_title">Ota ohitusten lukumäärän seuranta käyttöön</string>
   <string name="morphe_sb_track_skip_count_summary">Lähettää ohitusmäärät SponsorBlock-tulostaulukkoon seuratakseen, kuinka paljon aikaa säästyy</string>
   <string name="morphe_sb_min_segment_duration_title">Osion vähimmäiskesto</string>
   <string name="morphe_sb_min_segment_duration_summary">Tätä arvoa (sekunteina) lyhyempiä osioita ei näytetä tai ohiteta</string>
   <string name="morphe_sb_min_segment_duration_invalid">Virheellinen kestoaika</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Yksityinen käyttäjätunnuksesi</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Tämä on pidettävä yksityisenä. Tämä on kuin salasana, eikä sitä tule jakaa kenenkään kanssa. Jos jollakulla on tämä, he voivat esiintyä sinuna</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Yksityisen käyttäjätunnuksen tulee olla vähintään 30 merkkiä pitkä</string>
   <string name="morphe_sb_api_url_title">Muuta API:n URL-osoitetta</string>
   <string name="morphe_sb_api_url_summary">Osoite, jota SponsorBlock käyttää kutsujen lähettämiseen palvelimelle</string>
   <string name="morphe_sb_channel_whitelist_title">Kanavien sallittujen listojen luettelo</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API:n URL-osoite on virheellinen</string>
   <string name="morphe_sb_api_url_changed">API:n URL-osoitetta muutettiin</string>
   <string name="morphe_sb_settings_ie_title">Tuo/Vie asetukset</string>
-  <string name="morphe_sb_settings_copy">Kopioi</string>
   <string name="morphe_sb_settings_ie_summary">SponsorBlockin JSON-konfiguraatiosi, joka voidaan tuoda/viedä Morpheiin ja muihin SponsorBlock-alustoihin</string>
   <string name="morphe_sb_settings_ie_summary_warning">"SponsorBlockin JSON-konfiguraatiosi, joka voidaan tuoda/viedä Morpheiin ja muihin SponsorBlock-alustoihin. Tämä sisältää yksityisen UserID:si. Jaa tämä harkiten"</string>
   <string name="morphe_sb_settings_import_successful">Asetusten tuonti onnistui</string>
@@ -90,7 +71,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Asetuksissasi on yksityinen SponsorBlock-käyttäjä ID.
 
 Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Älä näytä uudelleen</string>
   <string name="morphe_sb_diff_segments_title">Muuta osion käyttäytymistä</string>
   <string name="morphe_sb_segments_sponsor">Sponsori</string>
   <string name="morphe_sb_segments_sponsor_summary">Maksettu mainostus, maksetut viittaukset ja suorat mainokset. Ei itsensä mainostukselle tai ilmaisille maininnoille kampanjoista/sisällöntuottajista/nettisivuista/tuotteista, joista he pitävät</string>
@@ -120,11 +100,9 @@ Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
   <string name="morphe_sb_skip_button_highlight">Ohita kohokohtaan</string>
   <string name="morphe_sb_skip_button_intro_beginning">Ohita intro</string>
   <string name="morphe_sb_skip_button_intro_middle">Ohita tauko</string>
-  <string name="morphe_sb_skip_button_intro_end">Ohita tauko</string>
   <string name="morphe_sb_skip_button_outro">Ohita outro</string>
   <string name="morphe_sb_skip_button_hook">Ohita koukku</string>
   <string name="morphe_sb_skip_button_preview_beginning">Ohita esikatselu</string>
-  <string name="morphe_sb_skip_button_preview_middle">Ohita esikatselu</string>
   <string name="morphe_sb_skip_button_preview_end">Ohita kertaus</string>
   <string name="morphe_sb_skip_button_filler">Ohita toissijainen kohtaus</string>
   <string name="morphe_sb_skip_button_nomusic">Ohita musiikiton</string>
@@ -135,11 +113,9 @@ Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
   <string name="morphe_sb_skipped_highlight">Ohitettiin kohokohtaan</string>
   <string name="morphe_sb_skipped_intro_beginning">Intro ohitettiin</string>
   <string name="morphe_sb_skipped_intro_middle">Tauko ohitettiin</string>
-  <string name="morphe_sb_skipped_intro_end">Tauko ohitettiin</string>
   <string name="morphe_sb_skipped_outro">Outro ohitettiin</string>
   <string name="morphe_sb_skipped_hook">Koukku ohitettiin</string>
   <string name="morphe_sb_skipped_preview_beginning">Esikatselu ohitettiin</string>
-  <string name="morphe_sb_skipped_preview_middle">Esikatselu ohitettiin</string>
   <string name="morphe_sb_skipped_preview_end">Kertaus ohitettiin</string>
   <string name="morphe_sb_skipped_filler">Toissijainen kohtaus ohitettiin</string>
   <string name="morphe_sb_skipped_nomusic">Musiikiton osio ohitettiin</string>
@@ -165,8 +141,6 @@ On jo olemassa"</string>
   <string name="morphe_sb_vote_failed_timeout">Osiota ei voitu äänestää (API aikakatkaistu)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Osiota ei voitu äänestää (tila: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Osiota ei voitu äänestää: %s</string>
-  <string name="morphe_sb_vote_upvote">Kannata</string>
-  <string name="morphe_sb_vote_downvote">Vastusta</string>
   <string name="morphe_sb_vote_category">Muuta kategoriaa</string>
   <string name="morphe_sb_vote_no_segments">Äänestettäviä osioita ei ole</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -190,7 +164,6 @@ ja päättyy
 (%3$s)
 
 Oletko valmis lähettämään?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Lähetä</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Alun on oltava ennen loppua</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Merkitse ensin sijainti aikajanalle</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Esikatsele osio ja varmista, että se ohitetaan sujuvasti</string>
@@ -203,16 +176,11 @@ Oletko valmis lähettämään?"</string>
 %s
 
 Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Lähetä korostus</string>
   <string name="morphe_sb_stats_title">Tilastot</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Tilastot eivät ole tilapäisesti saatavilla (API ei ole käytettävissä)</string>
-  <string name="morphe_sb_stats_loading">Ladataan…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock ei ole käytössä</string>
-  <string name="morphe_sb_stats_username">Käyttäjänimesi: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Vaihda käyttäjänimeä napauttamalla tästä</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Käyttäjänimeä ei voitu vaihtaa: Tila: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Käyttäjänimen vaihto onnistui</string>
   <string name="morphe_sb_stats_reputation">Maineesi on &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Olet luonut &lt;b&gt;%s&lt;/b&gt; osiota</string>
   <string name="morphe_sb_stats_submissions_summary">Napauta tästä nähdäksesi osiosi</string>

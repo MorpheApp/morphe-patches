@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Uudelleenkäynnistys vaaditaan</string>
   <string name="morphe_settings_restart_dialog_message">Käynnistä sovellus uudelleen, jotta muutos tulee voimaan</string>
   <string name="morphe_settings_restart">Käynnistä uudelleen</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Tuo</string>
-  <string name="morphe_settings_import_copy">Kopioi</string>
   <string name="morphe_settings_import_reset">Morphe-asetukset nollattiin</string>
   <string name="morphe_settings_import_success">%s asetusta tuotiin</string>
   <string name="morphe_settings_import_failure_parse">Tuonti epäonnistui: %s</string>
@@ -76,7 +74,6 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Lisäosat</string>
   <string name="morphe_settings_about_version">Versio</string>
-  <string name="morphe_settings_about_close">Sulje</string>
   <string name="morphe_settings_about_prerelease">Esijulkaisu</string>
   <string name="morphe_settings_about_update_available">Päivitys saatavilla: %s</string>
   <string name="morphe_settings_about_update_hint">Päivittääksesi korjaukset, käytä Morphe-sovellusta tämän sovelluksen uudelleenpäivitykseen</string>
@@ -108,7 +105,6 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Lisenssiehdot</string>
-  <string name="morphe_settings_about_licenses_loading">Ladataan…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Virheenkorjaus</string>
   <string name="morphe_debug_screen_summary">Määritä kehittyneet kehittäjäasetukset ja diagnostiikkalokit</string>
@@ -125,7 +121,6 @@ Et saa ilmoituksia mistään odottamattomista tapahtumista"</string>
   <string name="morphe_debug_export_logs_success">Virheenkorjauslokit viety onnistuneesti</string>
   <string name="morphe_debug_export_logs_failed">Lokien vienti epäonnistui</string>
   <string name="morphe_debug_logs_search_hint">Hae virheenkorjauslokit…</string>
-  <string name="morphe_debug_export_logs_clear">Tyhjennä</string>
   <string name="morphe_debug_logs_disabled">Virheenkorjausloki ei ole käytössä</string>
   <string name="morphe_debug_logs_none_found">Lokeja ei löytynyt</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Lokit kopioitu leikepöydälle</string>
@@ -142,15 +137,8 @@ Et saa ilmoituksia mistään odottamattomista tapahtumista"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Estetty (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Pakotettu (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automaattinen</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Pois</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Päällä</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Pakota päälle</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Estä</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Poista</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ominaisuuslippujen tallennus onnistui</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ominaisuuslippujen palautus</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
@@ -200,7 +188,6 @@ Toiminta katosi aiemmin haussa, joten mukana voi olla useampi lippu tai jokin va
   <string name="gms_core_dialog_outdated_message">"MicroG-versiosi %1$s on vanhentunut ja voi aiheuttaa ongelmia.
 
 Päivitä MicroG uusimpaan versioon v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Päivitä</string>
   <string name="gms_core_dialog_ignore_text">Ohita</string>
   <string name="gms_core_dialog_conflict_message">"Asennettua MicroG-versiota ei suositella Morphen toimesta:
 
@@ -220,7 +207,6 @@ Tämä on välttämätöntä sovelluksen toiminnan kannalta"</string>
 Akun optimoinnin poistamisella ei ole kielteistä vaikutusta akun kestoon.
 
 Napauta Jatka-painiketta ja salli muutokset optimointiin"</string>
-  <string name="gms_core_dialog_continue_text">Jatka</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Näytä MicroG:n virransäästöasetusten valintaikkuna</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tämän poistaminen piilottaa MicroG:n akun optimointi -kehotteen.
 
@@ -259,9 +245,29 @@ Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; t
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Virhekorjaukset</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Muut muutokset</string>
   <string name="morphe_patches_update_notice_dialog_more">…ja %s muuta</string>
-  <string name="morphe_patches_update_notice_dialog_update">Päivitä</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Hylkää</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Kaatumisloki tallennettu käyttäjän asiakirjoihin: %s</string>
   <string name="morphe_crash_log_saved">Kaatumisloki tallennettu: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Tietoja</string>
+  <string name="morphe_ads_screen_title">Mainokset</string>
+  <string name="morphe_misc_screen_title">Sekalaiset</string>
+  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
+  <string name="morphe_post_buttons_screen_title">Julkaisun painikkeet</string>
+  <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
+  <string name="morphe_download">Lataa</string>
+  <string name="morphe_hide_create_button_title">Piilota Luo-painike</string>
+  <string name="morphe_hide_post_comment_button_title">Piilota Kommentit-painike</string>
+  <string name="morphe_sanitize_sharing_links_summary">Poistaa seurantakyselyparametrit jaetuista linkeistä</string>
+  <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
+  <string name="morphe_settings_add">Lisää</string>
+  <string name="morphe_settings_clear">Tyhjennä</string>
+  <string name="morphe_settings_close">Sulje</string>
+  <string name="morphe_settings_continue">Jatka</string>
+  <string name="morphe_settings_copy">Kopioi</string>
+  <string name="morphe_settings_delete">Poista</string>
+  <string name="morphe_settings_remove">Poista</string>
+  <string name="morphe_settings_update">Päivitä</string>
 </resources>

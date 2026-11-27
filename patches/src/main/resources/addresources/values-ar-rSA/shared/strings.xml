@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">إعادة التشغيل مطلوبة</string>
   <string name="morphe_settings_restart_dialog_message">أعد تشغيل التطبيق لكي يسري هذا التغيير</string>
   <string name="morphe_settings_restart">إعادة التشغيل</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">استيراد</string>
-  <string name="morphe_settings_import_copy">نسخ</string>
   <string name="morphe_settings_import_reset">إعادة تعيين إعدادات Morphe إلى الوضع الافتراضي</string>
   <string name="morphe_settings_import_success">تم استيراد %s إعدادات</string>
   <string name="morphe_settings_import_failure_parse">فشل الاستيراد: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">التعديلات</string>
   <string name="morphe_settings_about_version">الإصدار</string>
-  <string name="morphe_settings_about_close">إغلاق</string>
   <string name="morphe_settings_about_prerelease">إصدار ما قبل الإطلاق</string>
   <string name="morphe_settings_about_update_available">تحديث متاح: %s</string>
   <string name="morphe_settings_about_update_hint">لتحديث التعديلات الخاصة بك، استخدم Morphe لإعادة تعديل هذا التطبيق</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">إشعارات الترخيص</string>
-  <string name="morphe_settings_about_licenses_loading">جارٍ التحميل…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">تصحيح الأخطاء</string>
   <string name="morphe_debug_screen_summary">تكوين خيارات المطور المتقدمة وسجلات التشخيص</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">تم تصدير سجلات التصحيح بنجاح</string>
   <string name="morphe_debug_export_logs_failed">فشل تصدير سجلات التصحيح</string>
   <string name="morphe_debug_logs_search_hint">البحث في سجلات التصحيح...</string>
-  <string name="morphe_debug_export_logs_clear">مسح</string>
   <string name="morphe_debug_logs_disabled">تم تعطيل تسجيلات تصحيح الأخطاء</string>
   <string name="morphe_debug_logs_none_found">لم يتم العثور على سجلات تصحيح</string>
   <string name="morphe_debug_logs_copied_to_clipboard">تم نسخ سجلات التصحيح إلى الحافظة</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">محظور (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">مفروض (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">تلقائي</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">إيقاف</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">تشغيل</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">فرض التفعيل</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">حظر</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">إزالة</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">تم حفظ Feature Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">تمت إعادة تعيين Feature Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Feature Flags إلى الحافظة</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"إصدار MicroG v%1$s لديك قديم وقد يسبب مشاكل.
 
 يرجى تحديث MicroG إلى أحدث إصدار v%2$s"</string>
-  <string name="gms_core_dialog_update_text">تحديث</string>
   <string name="gms_core_dialog_ignore_text">تجاهل</string>
   <string name="gms_core_dialog_conflict_message">"MicroG الذي تم تثبيته غير موصّى به من قِبل Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 لا يؤثر تعطيل تحسينات البطارية لـ MicroG سلبًا على استخدام البطارية.
 
 انقر فوق زر المتابعة واسمح بتغييرات التحسين"</string>
-  <string name="gms_core_dialog_continue_text">متابعة</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">عرض نافذة تحسين بطارية MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة تحسين البطارية لـ MicroG.
 
@@ -261,9 +247,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 إصلاحات الأخطاء</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 تغييرات أخرى</string>
   <string name="morphe_patches_update_notice_dialog_more">… و %s أخرى</string>
-  <string name="morphe_patches_update_notice_dialog_update">تحديث</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">تجاهل</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">تم حفظ سجل التعطل في مستندات المستخدم: %s</string>
   <string name="morphe_crash_log_saved">تم حفظ سجل التعطل: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">لمحة</string>
+  <string name="morphe_ads_screen_title">الإعلانات</string>
+  <string name="morphe_misc_screen_title">خيارات متنوعة</string>
+  <string name="morphe_navigation_bar_screen_title">شريط التنقل</string>
+  <string name="morphe_post_buttons_screen_title">أزرار المنشور</string>
+  <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
+  <string name="morphe_download">تنزيل</string>
+  <string name="morphe_hide_create_button_title">إخفاء زر الإنشاء</string>
+  <string name="morphe_hide_post_comment_button_title">إخفاء زر التعليقات</string>
+  <string name="morphe_sanitize_sharing_links_summary">يزيل وسيط التتبع من الروابط المُشاركة</string>
+  <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
+  <string name="morphe_settings_add">إضافة</string>
+  <string name="morphe_settings_clear">مسح</string>
+  <string name="morphe_settings_close">إغلاق</string>
+  <string name="morphe_settings_continue">متابعة</string>
+  <string name="morphe_settings_copy">نسخ</string>
+  <string name="morphe_settings_delete">حذف</string>
+  <string name="morphe_settings_remove">إزالة</string>
+  <string name="morphe_settings_update">تحديث</string>
 </resources>

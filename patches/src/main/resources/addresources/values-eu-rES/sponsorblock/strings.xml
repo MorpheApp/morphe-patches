@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Gaitu SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock YouTube bideoen zati gogaikarriak saltatzeko sistema kolektiboa da</string>
-  <string name="morphe_sb_appearance_category_title">Itxura</string>
   <string name="morphe_sb_voting_button_title">Erakutsi bozkatzeko botoia</string>
   <string name="morphe_sb_voting_button_summary">Zatiak gora edo behera bozkatzeko botoi bat gehitzen du</string>
   <string name="morphe_sb_square_layout_title">Erabili karratuzko diseinua</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Saltatu botoia segundo batzuen ondoren ezkutatzen du, segmentu osoan ikusgai mantendu beharrean</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Saltzeko botoiaren iraupena</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Ezarri Saltatu botoiak zenbat denboran ikusgai geratzen diren</string>
-  <string name="morphe_sb_toast_on_skip_title">Erakutsi salto jakinarazpena</string>
   <string name="morphe_sb_toast_on_skip_summary">Jakinarazpen bat erakusten du segmentu bat automatikoki saltatzen denean</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Salto jakinarazpenaren iraupena</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Ezarri desegiteko jakinarazpena zenbat denboran ikusgai geratzen den</string>
-  <string name="morphe_sb_duration_1s">1 segundo</string>
-  <string name="morphe_sb_duration_2s">2 segundo</string>
-  <string name="morphe_sb_duration_3s">3 segundu</string>
-  <string name="morphe_sb_duration_4s">4 segundo</string>
-  <string name="morphe_sb_duration_5s">5 segundu</string>
-  <string name="morphe_sb_duration_6s">6 segundu</string>
-  <string name="morphe_sb_duration_7s">7 segundu</string>
-  <string name="morphe_sb_duration_8s">8 segundu</string>
-  <string name="morphe_sb_duration_9s">9 segundu</string>
-  <string name="morphe_sb_duration_10s">10 segundu</string>
   <string name="morphe_sb_video_length_without_segments_title">Erakutsi bideoaren luzera segmenturik gabe</string>
   <string name="morphe_sb_video_length_without_segments_summary">Kendu segmentu guztiak bilaketa-barran erakutsi den bideoaren guztizko iraupenetik</string>
   <string name="morphe_sb_create_segment_category_title">Segmentu berriak sortzea</string>
   <string name="morphe_sb_create_new_segment_title">Erakutsi \'Segmentu berria sortu\' botoia</string>
   <string name="morphe_sb_create_new_segment_summary">Botoi bat gehitzen dio bideo-erreproduzigailuari SponsorBlock segmentu berriak bidaltzeko</string>
-  <string name="morphe_sb_create_new_segment_step_title">Denbora egokitzapen urratsa</string>
   <string name="morphe_sb_create_new_segment_step_summary">Denbora doitzeko botoiek bilaketa-barran mugituko duten denbora (milisegundotan)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Balioa zenbaki positibo bat izan behar du</string>
   <string name="morphe_sb_guidelines_title">Bidalketa gidaak</string>
   <string name="morphe_sb_guidelines_summary">Gideek segmentu berriak sortzeko arauak eta aholkuak dituzte</string>
   <string name="morphe_sb_guidelines_popup_title">Jarraitu gidaak</string>
   <string name="morphe_sb_guidelines_popup_content">Irakurri SponsorBlock gidak segmentu berriak sortu aurretik</string>
   <string name="morphe_sb_guidelines_popup_already_read">Irkurria</string>
   <string name="morphe_sb_guidelines_popup_open">Erakutsi</string>
-  <string name="morphe_sb_general_title">Orokorra</string>
   <string name="morphe_sb_offline_segments_title">Deskargatutako bideoen segmentuak gorde</string>
   <string name="morphe_sb_offline_segments_summary">Konexiorik gabe deskargatutako bideoen segmentuak sal daitezke</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Erakutsi konexio-erroreen alertak</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Jakinarazpen bat erakutsi SponsorBlock zerbitzaria eskuragarri ez denean</string>
   <string name="morphe_sb_track_skip_count_title">Gaitu salto-kontaketaren jarraipena</string>
   <string name="morphe_sb_track_skip_count_summary">Saltoen kopurua SponsorBlock sailkapenera bidaltzen du, aurreztutako denbora jarraitzeko</string>
   <string name="morphe_sb_min_segment_duration_title">Segmentuaren gutxieneko iraupena</string>
   <string name="morphe_sb_min_segment_duration_summary">Balio honetan (segundotan) baino laburragoak diren segmentuak ez dira erakutsiko edo saltatuko</string>
   <string name="morphe_sb_min_segment_duration_invalid">Denbora-iraupena baliogabea</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Zure erabiltzaile-ID pribatua</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Pribatu mantendu behar da. Pasahitz baten antzekoa da, eta ez da inorekin partekatu behar. Norbaitek badu, zure izenean jardun dezake</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Erabiltzaile-ID pribatuak gutxienez 30 karaktereko luzera izan behar du</string>
   <string name="morphe_sb_api_url_title">Aldatu API URLa</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock-ek zerbitzariari deiak egiteko erabiltzen duen helbidea</string>
   <string name="morphe_sb_channel_whitelist_title">Zerrenda zuria</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL baliogabea da</string>
   <string name="morphe_sb_api_url_changed">API URL aldatu da</string>
   <string name="morphe_sb_settings_ie_title">Konfigurazioa inportatu / esportatu</string>
-  <string name="morphe_sb_settings_copy">Kopiatu</string>
   <string name="morphe_sb_settings_ie_summary">Zure SponsorBlock JSON konfigurazioa, Morphera eta beste SponsorBlock plataformetara inportatu / esportatu daiteke</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Zure SponsorBlock JSON konfigurazioa, Morphera eta beste SponsorBlock plataformetara inportatu / esportatu daiteke
 
@@ -92,7 +73,6 @@ Honek zure erabiltzaile-ID pribatua dakar. Ziurtatu arduraz partekatzen duzula"<
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Zure konfigurazioak SponsorBlock erabiltzaile-ID pribatu bat dauka.
 
 Zure erabiltzaile-IDa pasahitz baten antzekoa da, eta inoiz ez litzateke partekatu behar"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ez erakutsi berriz</string>
   <string name="morphe_sb_diff_segments_title">Aldatu segmentuen portaera</string>
   <string name="morphe_sb_segments_sponsor">Babeslea</string>
   <string name="morphe_sb_segments_sponsor_summary">Ordaindutako promozioa, ordaindutako erreferentziak eta zuzeneko iragarkiak. Ez da auto-promozioetarako edo kausen, sortzaileen, webguneen edo gustuko dituzten produktuen doako aipamenetarako</string>
@@ -122,11 +102,9 @@ Zure erabiltzaile-IDa pasahitz baten antzekoa da, eta inoiz ez litzateke parteka
   <string name="morphe_sb_skip_button_highlight">Saltatu nabarmendutakoera</string>
   <string name="morphe_sb_skip_button_intro_beginning">Saltatu sarrera</string>
   <string name="morphe_sb_skip_button_intro_middle">Saltatu etenak</string>
-  <string name="morphe_sb_skip_button_intro_end">Saltatu etenak</string>
   <string name="morphe_sb_skip_button_outro">Saltatu amaiera</string>
   <string name="morphe_sb_skip_button_hook">Saltatu hasiera</string>
   <string name="morphe_sb_skip_button_preview_beginning">Saltatu aurrebista</string>
-  <string name="morphe_sb_skip_button_preview_middle">Saltatu aurrebista</string>
   <string name="morphe_sb_skip_button_preview_end">Saltatu laburpena</string>
   <string name="morphe_sb_skip_button_filler">Saltatu digresioa</string>
   <string name="morphe_sb_skip_button_nomusic">Saltatu musikarik gabeko atala</string>
@@ -137,11 +115,9 @@ Zure erabiltzaile-IDa pasahitz baten antzekoa da, eta inoiz ez litzateke parteka
   <string name="morphe_sb_skipped_highlight">Nabarmenduta saltatu da</string>
   <string name="morphe_sb_skipped_intro_beginning">Sarrera saltatu da</string>
   <string name="morphe_sb_skipped_intro_middle">Etena saltatu da</string>
-  <string name="morphe_sb_skipped_intro_end">Etena saltatu da</string>
   <string name="morphe_sb_skipped_outro">Amaiera saltatu da</string>
   <string name="morphe_sb_skipped_hook">Hasiera saltatu da</string>
   <string name="morphe_sb_skipped_preview_beginning">Aurreikuspena saltoz pasatu da</string>
-  <string name="morphe_sb_skipped_preview_middle">Aurreikuspena saltoz pasatu da</string>
   <string name="morphe_sb_skipped_preview_end">Laburpena saltoz pasatu da</string>
   <string name="morphe_sb_skipped_filler">Tangentia saltoz pasatu da</string>
   <string name="morphe_sb_skipped_nomusic">Musika gabeko atala saltoz pasatu da</string>
@@ -167,8 +143,6 @@ Jada existitzen da"</string>
   <string name="morphe_sb_vote_failed_timeout">Segmentuari bozka eman ezin zaio (APIak denbora gehiegi behar izan du)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Segmentuari bozka eman ezin zaio (egoera: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Segmentuari bozka egin ezin da: %s</string>
-  <string name="morphe_sb_vote_upvote">Gora bozkatu</string>
-  <string name="morphe_sb_vote_downvote">Behera bozkatu</string>
   <string name="morphe_sb_vote_category">Kategoria alda</string>
   <string name="morphe_sb_vote_no_segments">Ez dago bozkatzeko segmenturik</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ hona
 (%3$s)
 
 Prest zaude bidaltzeko?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Bidali</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Hasierak amaieraren aurretik egon behar du</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Lehenik, markatu kokapen bat denbora-barran</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Aurreikusi segmentua, eta ziurtatu leunki saltatzen dela</string>
@@ -205,16 +178,11 @@ Prest zaude bidaltzeko?"</string>
 %s
 
 Nabarmena bidali nahi ez baduzu, sakatu Utzi eta markatu bigarren kokapena"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Nabarmena bidali</string>
   <string name="morphe_sb_stats_title">Estatistikak</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Estatistikak une batez ez daude erabilgarri (APIa ez dabil)</string>
-  <string name="morphe_sb_stats_loading">Kargatzen…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock desaktizatuta dago</string>
-  <string name="morphe_sb_stats_username">Zure erabiltzaile izena: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Sakatu hemen zure erabiltzaile izena aldatzeko</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Ezin izan da erabiltzaile-izena aldatu: egoera: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Erabiltzaile-izena ongi aldatu da</string>
   <string name="morphe_sb_stats_reputation">Zure ospea &lt;b&gt;%.2f&lt;/b&gt; da</string>
   <string name="morphe_sb_stats_submissions">&lt;b&gt;%s&lt;/b&gt; segmentu sortu dituzu</string>
   <string name="morphe_sb_stats_submissions_summary">Sakatu hemen zure segmentuak ikusteko</string>

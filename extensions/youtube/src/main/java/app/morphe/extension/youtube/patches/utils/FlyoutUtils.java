@@ -71,6 +71,7 @@ import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch;
 import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
 import app.morphe.extension.youtube.patches.PostTranslatePatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
+import app.morphe.extension.youtube.patches.ShortsAutoplayPatch;
 import app.morphe.extension.youtube.patches.VideoDelayPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.ghostplay.GhostPlayPatch;
@@ -995,6 +996,10 @@ public final class FlyoutUtils {
         if (ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()
                 && ShortsPlaybackSpeedFlyoutPatch.showFlyoutButton()) {
             nextButtonIndex = ShortsPlaybackSpeedFlyoutPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
+        }
+
+        if (ShortsAutoplayPatch.isPatchIncluded()) {
+            nextButtonIndex = ShortsAutoplayPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
         }
 
         final String flyoutVideoId = getFlyoutVideoId();

@@ -25,14 +25,17 @@ Yeni versiyanın tətbiq məlumatları daha köhnə versiyalarla işləmir və t
 &lt;br/&gt;&lt;br/&gt;
 Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&gt; və sonra daha köhnə versiyanı quraşdırmalısınız."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">Tətbiq məlumatını aç</string>
-  <string name="morphe_screen_ads_title">Reklamlar</string>
   <string name="morphe_hide_post_ads_title">Axın reklamların gizlət</string>
   <string name="morphe_hide_comment_ads_title">Şərh reklamlarını gizlət</string>
-  <string name="morphe_screen_navigation_bar_title">Fəaliyyət zolağı</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Aşağı zolağın avtomatik gizlədilməsini qapat</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Sürüşdürərkən aşağı fəaliyyət zolağını görünən saxlayır</string>
   <string name="morphe_glass_navigation_bar_title">Şüşə fəaliyyət zolağı</string>
   <string name="morphe_glass_navigation_bar_summary">Fəaliyyət zolağını lent üzərində üzən, yarımşəffaf kapsul kimi göstərir. Planşetlərdə yan rels də eyni görünüşdə olur</string>
+  <string name="morphe_glass_navigation_bar_screen_summary_on">Aktiv</string>
+  <string name="morphe_glass_navigation_bar_screen_summary_off">Qapalı</string>
+  <string name="morphe_glass_navigation_bar_category_look">Görünüş</string>
+  <string name="morphe_glass_navigation_bar_category_size">Ölçü və mövqe</string>
+  <string name="morphe_glass_navigation_bar_category_buttons">Düymәlәr</string>
   <string name="morphe_glass_navigation_bar_color_title">Şüşə rəngi</string>
   <string name="morphe_glass_navigation_bar_color_entry_auto">Avtomatik</string>
   <string name="morphe_glass_navigation_bar_color_entry_light">İşıqlı</string>
@@ -40,6 +43,10 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_glass_navigation_bar_style_title">Şüşə üslubu</string>
   <string name="morphe_glass_navigation_bar_style_entry_tinted">Rənglənmiş</string>
   <string name="morphe_glass_navigation_bar_style_entry_frosted">Buzlu şüşə</string>
+  <string name="morphe_glass_navigation_bar_strength_title">Şüşə gücü</string>
+  <string name="morphe_glass_navigation_bar_strength_entry_clear">Təmizlə</string>
+  <string name="morphe_glass_navigation_bar_strength_entry_balanced">Balanslı</string>
+  <string name="morphe_glass_navigation_bar_strength_entry_solid">Bütöv rəng</string>
   <string name="morphe_glass_navigation_bar_blur_title">Şüşə bulanıqlığı</string>
   <string name="morphe_glass_navigation_bar_blur_summary">Buzlu şüşə arxasında səhifənin nə qədər bulanıqlaşdırılacağı (Android 14 və sonrakı). 0-da və Android 14-dən əvvəlkində şüşə rəngli olur</string>
   <string name="morphe_glass_navigation_bar_opacity_title">Şüşə tutqunluğu</string>
@@ -56,9 +63,15 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_glass_navigation_bar_show_labels_title">Etiketləri göstər</string>
   <string name="morphe_glass_navigation_bar_show_labels_summary_on">Düymələr etiketlərini göstərir</string>
   <string name="morphe_glass_navigation_bar_show_labels_summary_off">Düymələr yalnız simvolları göstərir</string>
+  <string name="morphe_glass_navigation_bar_search_button_title">Axtarış düyməsi</string>
+  <string name="morphe_glass_navigation_bar_search_button_summary_on">Axtarış telefonlarda fəaliyyət zolağının yanındakı dairəvi düymədir</string>
+  <string name="morphe_glass_navigation_bar_search_button_summary_off">Axtarış Əsas Səhifənin yuxarısındadır</string>
+  <string name="morphe_glass_navigation_bar_search_button_label">Axtarış</string>
+  <string name="morphe_glass_navigation_bar_top_tabs_title">Üst zolaqdakı səhifələr</string>
+  <string name="morphe_glass_navigation_bar_top_tabs_summary_on">Ev lent səhifələri menyu və avatar arasındakı şüşə kapsulun üzərindədir</string>
+  <string name="morphe_glass_navigation_bar_top_tabs_summary_off">Ev lent səhifələri yuxarı zolağın altındadır</string>
   <string name="morphe_hide_answers_button_title">Cavablar düyməsin gizlət</string>
   <string name="morphe_hide_chat_button_title">Söhbət düyməsin gizlət</string>
-  <string name="morphe_hide_create_button_title">Yarat düyməsini gizlət</string>
   <string name="morphe_hide_discover_button_title">Kəşf et və ya İcmalar düyməsini gizlət</string>
   <string name="morphe_hide_games_button_title">Oyunlar düyməsini gizlət</string>
   <string name="morphe_screen_sidebar_title">Yan panel</string>
@@ -73,10 +86,8 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_hide_reddit_pro_shelf_title">\'Reddit Pro\' bölməsini gizlət</string>
   <string name="morphe_hide_resources_shelf_title">Mənbələr səhifəsin gizlət</string>
   <string name="morphe_hide_about_shelf_title">Haqqında səhifəsin gizlət</string>
-  <string name="morphe_screen_post_buttons_title">Post düymələri</string>
   <string name="morphe_hide_post_award_button_title">Mükafat düyməsini gizlət</string>
   <string name="morphe_hide_post_award_button_summary">Postlarda və şərhlərdə Mükafat düyməsini gizlədir</string>
-  <string name="morphe_hide_post_comment_button_title">Şərh düyməsin gizlət</string>
   <string name="morphe_hide_post_join_button_title">Qoşulun düyməsin gizlət</string>
   <string name="morphe_hide_post_mod_button_title">Mod düyməsini gizlət</string>
   <string name="morphe_hide_post_repost_button_title">Yenidən paylaş düyməsini gizlət</string>
@@ -91,11 +102,8 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_flair_filters_title">Flair filtrləri</string>
   <string name="morphe_flair_filters_summary">İcmanın etiketi olan lent postlarını gizlət. Uyğunluq böyük-kiçik hərfləri nəzərə almır</string>
   <string name="morphe_flair_filters_empty">Flair filtrləri yoxdur</string>
-  <string name="morphe_flair_filters_add">Əlavə et</string>
-  <string name="morphe_flair_filters_remove">Sil</string>
   <string name="morphe_flair_filters_hint">icma::flair</string>
   <string name="morphe_flair_filters_invalid">İcma və flair daxil edin, məsələn; gaming::Discussion</string>
-  <string name="morphe_flair_filters_saved">Dəyişiklikləri tətbiq etmək üçün axını yenilə</string>
   <string name="morphe_flair_filters_remember_seen_title">Görülən flair-ləri xatırla</string>
   <string name="morphe_flair_filters_remember_seen_summary">Lent postlarının flair-lərini onlardan flair filtri seçə bilmək üçün tətbiq bağlanana qədər xatırla</string>
   <string name="morphe_flair_filters_seen_title">Görülən flair-ləri seç</string>
@@ -104,12 +112,16 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_keyword_filters_title">Açar söz filtrləri</string>
   <string name="morphe_keyword_filters_summary">Başlığı və ya mətni müntəzəm ifadəyə uyğun gələn axın postlarını gizlət. Uyğunlaşdırma böyük-kiçik hərfləri nəzərə almır</string>
   <string name="morphe_keyword_filters_empty">Açar söz filtrləri yoxdur</string>
-  <string name="morphe_keyword_filters_add">Əlavə et</string>
-  <string name="morphe_keyword_filters_remove">Sil</string>
   <string name="morphe_keyword_filters_hint">Müntəzəm ifadə</string>
   <string name="morphe_keyword_filters_invalid">Yanlış müntəzəm ifadə: %s</string>
-  <string name="morphe_keyword_filters_saved">Dəyişiklikləri tətbiq etmək üçün axını yenilə</string>
+  <string name="morphe_filters_saved">Dəyişiklikləri tətbiq etmək üçün axını yenilə</string>
   <string name="morphe_screen_layout_title">Tərtibat</string>
+  <string name="morphe_layout_home_feed_title">Ev lenti</string>
+  <string name="morphe_layout_shelves_title">Cərgələr və bölmələr</string>
+  <string name="morphe_layout_posts_title">Postlar</string>
+  <string name="morphe_layout_comments_title">Şərhlər</string>
+  <string name="morphe_layout_media_viewer_title">Media baxıcısı</string>
+  <string name="morphe_layout_app_title">Tətbiq</string>
   <string name="morphe_copy_text_title">Mətni köçür</string>
   <string name="morphe_copy_text_summary">Postlarda və şərhlərdə mətni seçməyə və köçürməyə imkan verir</string>
   <string name="morphe_custom_font_title">Fərdi şrift</string>
@@ -199,11 +211,7 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_tablet_grid_feed_title">Planşet şəbəkə lenti</string>
   <string name="morphe_tablet_grid_feed_summary_on">Axınlar planşetlərdə şəbəkə kimi göstərilir. Telefonlar dəyişməzdir</string>
   <string name="morphe_tablet_grid_feed_summary_off">Axınlar siyahı kimi göstərilir</string>
-  <string name="morphe_screen_miscellaneous_title">Çoxvariantlı</string>
-  <string name="morphe_about_title">Haqqında</string>
   <string name="morphe_about_summary">Yamaq versiyası və xidməti bağlantılar</string>
-  <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
-  <string name="morphe_sanitize_sharing_links_summary">Paylaşılan keçidlərdən izlənmə sorğusu faktorların silir</string>
   <string name="morphe_share_post_content_title">Post məzmununu paylaş</string>
   <string name="morphe_share_post_content_summary">Paylaşım səhifəsindəki tətbiq qısayolları və \"Bununla paylaş…\" paylaşımın linki əvəzinə şəklini, videosunu və ya mətnini göndərir. Linki köçür isə hələ də linki köçürür</string>
   <string name="morphe_share_post_content_preparing">Paylaşmağa hazırlanır...</string>
@@ -246,7 +254,6 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_redgifs_hd_summary">Redgifs-in HD videosunu oynadır. HD videolar daha böyükdür və yüklənmək üçün fasilə verə bilər</string>
   <string name="morphe_download_all_from_gallery_title">Hamısını qalereyadan yüklə</string>
   <string name="morphe_download_all_from_gallery_summary">Paylaşım səhifəsində qalereya yazısında Yükləyə toxunduqda baxdığınız element ilə qalereyadakı hər element arasında seçin</string>
-  <string name="morphe_download_all_dialog_title">Yüklə</string>
   <string name="morphe_download_all_dialog_message">Yalnız baxdığınız elementi, yoxsa qalereyadakı hər bir elementi saxlayacaqsınız?</string>
   <string name="morphe_download_all_this_one">Təkcə bu</string>
   <string name="morphe_download_all_all">Bütün %s</string>
@@ -274,9 +281,6 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_download_location_pattern_help">Daxil etmək üçün tokenə toxunun. / işarəsi alt qovluq yaradır. Naməlum dəyərlər \"unknown\" olur</string>
   <string name="morphe_download_location_example_images">Şəkillər: %s</string>
   <string name="morphe_download_location_example_videos">Videolar: %s</string>
-  <string name="morphe_download_location_save">Saxla</string>
-  <string name="morphe_download_location_reset">Qaytar</string>
-  <string name="morphe_download_location_delete">Sil</string>
   <string name="morphe_download_location_reset_confirm">Bütün hesabların yükləmə yeri Reddit-in standartına sıfırlansın?</string>
   <string name="morphe_download_location_delete_confirm">%s faylının yükləmə yeri silinsin?</string>
   <string name="morphe_download_location_save_failed">Yükləmə yerində saxlamaq olmadı. Əvəzinə Reddit-in standart qovluğunda saxlanıldı</string>
@@ -306,7 +310,7 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_open_links_externally_summary">Linkləri tətbiqdaxili brauzer əvəzinə, brauzerinizdə açır</string>
   <string name="morphe_full_screen_reply_title">Tam ekran cavab</string>
   <string name="morphe_full_screen_reply_summary">Cavablar, onun mətnini seçib sitat gətirə biləsiniz deyə cavab verdiyiniz şərhi göstərən köhnə tam ekran redaktorda açılır. Şəkil qırpma orada mövcud deyil</string>
-  <string name="morphe_automoderator_comments_title">AutoModerator şərhləri</string>
+  <string name="morphe_automoderator_comments_title">AutoModerator, bot və sabitlənmiş şərhlər</string>
   <string name="morphe_automoderator_comments_entry_show">Göstər</string>
   <string name="morphe_automoderator_comments_entry_collapse">Yığcamlaşdır</string>
   <string name="morphe_automoderator_comments_entry_hide">Gizlət</string>
@@ -329,7 +333,6 @@ Köhnə versiyanı istifadə etmək üçün Reddit-i &lt;b&gt;silməlisiz&lt;/b&
   <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Solğun (səhifə ilə uyğunlaşır)</string>
   <string name="morphe_remember_collapsed_comments_title">Yığılmış şərhləri xatırla</string>
   <string name="morphe_remember_collapsed_comments_summary">Yığcamlaşdırdığınız şərhlər paylaşımı yenidən açdıqda yığcam qalır</string>
-  <string name="morphe_app_icon_title">Tətbiq simvolu</string>
   <string name="morphe_app_icon_choose_title">Tətbiq simvolun seç</string>
   <string name="morphe_app_icon_default">İlkin</string>
   <string name="morphe_app_icon_unknown">Naməlum</string>

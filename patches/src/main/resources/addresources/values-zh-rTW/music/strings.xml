@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">上次播放</string>
   <string name="morphe_music_android_auto_subscriptions">訂閱內容</string>
-  <string name="morphe_music_android_auto_videos">影片</string>
   <string name="morphe_music_android_auto_other_results">其他結果</string>
   <string name="morphe_music_android_auto_uploaded_songs">上傳的歌曲</string>
   <string name="morphe_music_android_auto_uploaded_albums">上傳的專輯</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">要開啟 Wi-Fi 嗎？</string>
   <string name="morphe_music_jam_wifi_message">開啟 Wi-Fi，然後再次嘗試發起或加入 Jam</string>
   <string name="morphe_music_jam_wifi_settings">開啟 Wi-Fi 設定</string>
-  <string name="morphe_music_jam_cancel">取消</string>
   <string name="morphe_music_jam_use_package">使用套件</string>
   <string name="morphe_music_jam_invalid_package">輸入有效的 Android 套件名稱</string>
   <string name="morphe_music_jam_package_saved">已儲存套件。設定 Jam Layer 以進行連線</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">掃描 QR Code</string>
   <string name="morphe_music_jam_invalid_invite">輸入 8 字元代碼，或貼上邀請。</string>
   <string name="morphe_music_jam_join_your_jam">加入你的 Jam</string>
-  <string name="morphe_music_jam_copy_code">複製代碼</string>
   <string name="morphe_music_jam_code_clip">Jam 代碼</string>
   <string name="morphe_music_jam_show_qr">顯示 QR Code</string>
   <string name="morphe_music_jam_done">完成</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">離開 Jam</string>
   <string name="morphe_music_jam_start_jam">開始 Jam</string>
   <string name="morphe_music_jam_setup_layer">設定 Jam Layer</string>
-  <string name="morphe_music_jam_manage">管理</string>
   <string name="morphe_music_jam_details">詳細資料</string>
   <string name="morphe_music_jam_open">開啟</string>
   <string name="morphe_music_jam_loading_song_options">正在載入歌曲選項…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">佇列已變更，請重試該手勢。</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">標題標誌</string>
   <string name="morphe_header_logo_entry_1">預設</string>
   <string name="morphe_header_logo_entry_3">自訂</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">在「下載」選單中使用外部下載器</string>
   <string name="morphe_external_downloader_menu_summary">選單的下載選項會改為開啟你的外部下載器</string>
-  <string name="morphe_download_force_4k_title">強制 4K 下載可用性</string>
   <string name="morphe_download_force_4k_summary">即使 YouTube Music 認定此裝置無法播放，仍強制儲存 1440p 和 4K 下載內容</string>
   <string name="morphe_export_download_folder_title">匯出下載內容</string>
   <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的歌曲和影片匯出到裝置儲存空間。點選即可更改匯出資料夾
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">將隨機播放替換為循環播放按鈕</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">在媒體通知和鎖定螢幕中顯示循環播放按鈕而非隨機播放按鈕</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">關於</string>
-  <string name="morphe_settings_music_screen_01_ads_title">廣告</string>
-  <string name="morphe_settings_music_screen_02_feed_title">推薦內容</string>
-  <string name="morphe_settings_music_screen_03_general_title">一般</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">歌詞</string>
-  <string name="morphe_settings_music_screen_05_misc_title">其他</string>
-  <string name="morphe_settings_music_screen_06_player_title">播放器</string>
-  <string name="morphe_settings_music_screen_10_video_title">影片</string>
   <string name="morphe_music_app_language_title">YouTube Music 語言</string>
   <string name="morphe_music_app_language_summary_default">系統語言</string>
   <string name="morphe_music_app_language_summary_unsupported">需要 Android 13 或以上版本</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隱藏「取得 Music Premium」標籤</string>
   <string name="morphe_music_hide_music_premium_promotions_title">隱藏 Music Premium 促銷內容</string>
-  <string name="morphe_music_hide_video_ads_title">隱藏影片廣告</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">隱藏音訊/影片切換按鈕</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">隱藏 Podcast 節目中的下載按鈕</string>
   <string name="morphe_music_hide_explore_shelf_title">隱藏「探索」區塊</string>
   <string name="morphe_music_hide_filter_bar_title">隱藏篩選列</string>
   <string name="morphe_music_hide_grid_shelves_title">隱藏格狀區塊</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">隱藏橫向區塊</string>
   <string name="morphe_music_hide_new_button_title">隱藏新建按鈕</string>
   <string name="morphe_music_hide_new_button_summary">隱藏「媒體庫」分頁中的「新增」按鈕</string>
   <string name="morphe_music_hide_list_shelves_title">隱藏列表區塊</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">歌詞面板</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">隱藏「翻譯」按鈕</string>
   <string name="morphe_music_hide_new_from_shelf_title">隱藏「來自」區塊</string>
   <string name="morphe_music_hide_playlist_shelves_title">隱藏歌單區塊</string>
   <string name="morphe_music_hide_repeat_button_title">隱藏重複按鈕</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">隱藏「快速撥號」區塊</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">隱藏「你可能也喜歡」區塊</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">隱藏「您的下載」區塊</string>
-  <string name="morphe_music_comments_screen_title">留言區</string>
-  <string name="morphe_music_comments_screen_summary">選擇要在留言區中顯示哪些元件</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">隱藏社群守則</string>
   <string name="morphe_music_hide_comments_context_title">隱藏內容訊息</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">隱藏表情圖示按鈕</string>
-  <string name="morphe_music_hide_comments_gif_button_title">隱藏GIF按鈕</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">隱藏GIF和圖片</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">隱藏評論回覆中附帶的GIF及圖片</string>
-  <string name="morphe_music_hide_comments_info_button_title">隱藏資訊按鈕</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">隱藏時間戳按鈕</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">淡入淡出</string>
   <string name="morphe_music_crossfade_screen_summary">將音軌平滑地混合在一起</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 毫秒</string>
   <string name="morphe_crossfade_duration_500ms">500 毫秒</string>
   <string name="morphe_crossfade_duration_750ms">750 毫秒</string>
-  <string name="morphe_crossfade_duration_1000ms">1 秒</string>
-  <string name="morphe_crossfade_duration_2000ms">2 秒</string>
-  <string name="morphe_crossfade_duration_3000ms">3 秒</string>
-  <string name="morphe_crossfade_duration_4000ms">4 秒</string>
-  <string name="morphe_crossfade_duration_5000ms">5 秒</string>
-  <string name="morphe_crossfade_duration_6000ms">6 秒</string>
-  <string name="morphe_crossfade_duration_7000ms">7 秒</string>
-  <string name="morphe_crossfade_duration_8000ms">8 秒</string>
-  <string name="morphe_crossfade_duration_9000ms">9 秒</string>
-  <string name="morphe_crossfade_duration_10000ms">10 秒</string>
   <string name="morphe_crossfade_duration_11000ms">11 秒</string>
   <string name="morphe_crossfade_duration_12000ms">12 秒</string>
   <string name="morphe_music_crossfade_on_skip_title">手動跳過時淡出</string>
@@ -283,7 +247,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_summary">用於所有曲目的速度。在 100% 時，使用應用程式的速度，例如播客播放速度。</string>
   <string name="morphe_music_playback_speed_change_pitch_title">隨速度改變音調</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">顯示視訊效果選單</string>
   <string name="morphe_music_video_effect_menu_summary">在播放視訊時，將視訊效果添加到播放器選單中</string>
   <string name="morphe_music_video_effect_next_video">效果將從下一個視訊開始顯示</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_summary">在播放清單選單中新增「標籤」項目，並在音樂庫排序按鈕旁新增「標籤」篩選按鈕</string>
   <string name="morphe_music_playlist_tags_manage_title">管理播放清單標籤</string>
   <string name="morphe_music_playlist_tags_manage_summary">建立、重新命名和刪除標籤，並為音樂庫中的播放清單新增標籤</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">標籤</string>
   <string name="morphe_music_playlist_tags_menu_item_none">無標籤</string>
-  <string name="morphe_music_playlist_tags_filter_button">標籤</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">標籤：%s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">標籤（已隱藏 %s 個）</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">%s 的標籤</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">新標籤</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 個播放清單</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s 個播放清單</string>
@@ -344,22 +303,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_show_only">僅顯示</string>
   <string name="morphe_music_playlist_tags_filter_all">所有播放清單</string>
   <string name="morphe_music_playlist_tags_filter_visible">可見標籤</string>
-  <string name="morphe_music_playlist_tags_manage">管理</string>
   <string name="morphe_music_playlist_tags_none">尚未有標籤。長按播放清單並選擇「標籤」來建立標籤</string>
-  <string name="morphe_music_playlist_tags_section_tags">標籤</string>
   <string name="morphe_music_playlist_tags_section_playlists">播放清單</string>
   <string name="morphe_music_playlist_tags_no_playlists">請先開啟一次音樂庫，以便您的播放清單顯示在此處</string>
   <string name="morphe_music_playlist_tags_new_tag">新標籤</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">編輯標籤</string>
-  <string name="morphe_music_playlist_tags_rename">重新命名</string>
-  <string name="morphe_music_playlist_tags_delete">刪除</string>
   <string name="morphe_music_playlist_tags_hidden">已隱藏</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">動作按鈕</string>
   <string name="morphe_music_action_buttons_screen_summary">選擇要在播放器下方顯示哪些動作按鈕</string>
-  <string name="morphe_music_hide_action_bar_title">隱藏動作列</string>
-  <string name="morphe_music_hide_like_dislike_button_title">隱藏喜歡和不喜歡按鈕</string>
-  <string name="morphe_music_hide_comments_button_title">隱藏留言按鈕</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">隱藏「直播聊天重播」按鈕</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Second \"item\" text"</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">隱藏「開始電台」按鈕</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">彈出式介面選單</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">選擇要在播放器和佇列彈出式選單中顯示哪些組件</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">隱藏三欄式元件</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">隱藏喜歡與不喜歡按鈕</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">隱藏「品味相符」選單</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">隱藏「新增至「稍後收聽」播放清單」選單</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">隱藏「新增至佇列」選單</string>
@@ -410,17 +359,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">隱藏「從快速撥號解除固定」選單</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">隱藏「檢視歌曲資訊」選單</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">開始頁面</string>
-  <string name="morphe_change_start_page_entry_default">預設</string>
   <string name="morphe_change_start_page_entry_charts">圖表</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">待播清單</string>
-  <string name="morphe_change_start_page_entry_explore">探索</string>
-  <string name="morphe_change_start_page_entry_history">歷史記錄</string>
-  <string name="morphe_change_start_page_entry_library">媒體庫</string>
   <string name="morphe_change_start_page_entry_liked_music">喜歡的音樂</string>
-  <string name="morphe_change_start_page_entry_playlists">播放清單</string>
-  <string name="morphe_change_start_page_entry_search">搜尋</string>
-  <string name="morphe_change_start_page_entry_subscriptions">訂閱內容</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">強制直向顯示</string>
   <string name="morphe_music_force_portrait_orientation_summary">當裝置旋轉時，讓應用程式保持直向顯示</string>
@@ -449,21 +390,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">隱藏「媒體庫」按鈕</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">隱藏「升級」按鈕</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">顯示設定按鈕</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">設定按鈕動作</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">啟用時，點擊可開啟 Morphe 設定，長按可開啟 YouTube Music 設定，停用以對調</string>
-  <string name="morphe_music_hide_navigation_bar_title">隱藏導覽列</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">隱藏導覽列按鈕標籤</string>
-  <string name="morphe_music_navigation_bar_glass_title">啟用玻璃效果導覽列</string>
   <string name="morphe_music_navigation_bar_glass_summary">將導覽列顯示為浮動、圓角且半透明的膠囊形狀</string>
   <string name="morphe_music_navigation_bar_glass_size_title">玻璃導航欄的大小與樣式</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">調整玻璃導航欄的高度、寬度、按鈕間距、不透明度和邊框亮度，並提供預覽。超出螢幕寬度的按鈕將被隱藏</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">高度</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">最大寬度</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">按鈕間距</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">顯示按鈕：%1$s / %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">不透明度</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">邊框亮度</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">玻璃模糊</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">玻璃導航欄後方頁面的模糊程度（Android 14 及更高版本）。設定為 0 時頁面清晰可見，而在 Android 14 之前頁面會被遮蓋</string>
   <string name="morphe_music_navigation_bar_glass_light_title">淺色玻璃</string>
@@ -472,16 +402,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">使用播放歌曲的專輯封面顏色為玻璃導航欄著色</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">隱藏已選按鈕指示器</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">隱藏玻璃導航欄已選按鈕後方的圓形高亮顯示</string>
-  <string name="morphe_music_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_music_miniplayer_screen_summary">更改迷你播放器的樣式、按鈕和手勢</string>
   <string name="morphe_music_miniplayer_glass_title">啟用玻璃效果</string>
   <string name="morphe_music_miniplayer_glass_summary">將浮動迷你播放器顯示為圓角、半透明的玻璃卡片</string>
   <string name="morphe_music_miniplayer_glass_style_title">玻璃迷你播放器樣式</string>
   <string name="morphe_music_miniplayer_glass_style_summary">調整玻璃迷你播放器的圓角半徑、封面內邊距、邊框亮度和不透明度，並提供預覽</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">圓角半徑</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">封面內邊距</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">邊框亮度</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">不透明度</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">玻璃迷你播放器後方頁面的模糊程度（Android 14 及更高版本）。設定為 0 時頁面清晰可見，而在 Android 14 之前頁面會被遮蓋</string>
   <string name="morphe_music_miniplayer_glass_light_summary">將玻璃迷你播放器著色為白色而非深色，使玻璃質感更輕盈、更清澈</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">使用播放歌曲的專輯封面顏色為玻璃迷你播放器著色</string>
@@ -498,9 +424,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_activity_button_title">隱藏「活動」按鈕</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">隱藏「詢問音樂」按鈕</string>
-  <string name="morphe_music_hide_cast_button_title">隱藏投放按鈕</string>
   <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>
-  <string name="morphe_music_hide_search_button_title">隱藏搜尋按鈕</string>
   <string name="morphe_music_hide_voice_search_button_title">隱藏「語音搜尋」按鈕</string>
   <string name="morphe_music_hide_sound_search_button_title">隱藏 \"歌曲搜尋\" 按鈕</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_summary">在播放器的頂端列中顯示一個按鈕，用於查看並對目前藝人進行社群投票</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">跳過 AI 藝人</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">自動跳過藝人達到下方 AI 閾值的曲目</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">顯示跳過通知</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">當曲目被自動跳過時顯示通知</string>
   <string name="morphe_music_soundproof_threshold_title">偵測閾值</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">最低 AI 票數百分比</string>
@@ -624,7 +547,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">所有提供者已停用 - 內建歌詞和嵌入式歌詞</string>
   <string name="morphe_music_lyrics_source_reset_title">重設提供者順序？</string>
   <string name="morphe_music_lyrics_source_reset_message">將提供者還原為預設優先順序</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Rime 詞表</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Rime 詞典也需要 UniDict：在離線字典提供者中，勾選「中文及粵語字元（UniDict）」並讓它先完成下載。沒有它，讀取字元的列表將無法提供發音。
 
 勾選 Rime 詞典應該讀取的列表，然後點擊「儲存」以下載它們。當你取消勾選已添加的列表時，它會被移除。
@@ -634,12 +556,10 @@ Second \"item\" text"</string>
 典 din2
 第一列是詞，第二列是其發音；忽略額外的列和沒有製表符的行。"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">以上語言尚未勾選任何 Rime 詞表。點擊此名稱以勾選一個詞表，或選擇擁有詞表的語言</string>
-  <string name="morphe_music_lyrics_rime_dict_add">新增</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">新增 Rime 詞表</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml 檔案或包含該檔案的 zip 包，行格式如 字 ham 和 典 din2。當你勾選該列表並點擊「儲存」時會取得列表，其許可證由你自行檢查</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">語言代碼</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">兩到三個字母，例如 hak 或 wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">名稱</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">顯示在發音下方，例如 Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">詞表地址</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml 或其壓縮包的 https:// 地址</string>
@@ -682,8 +602,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_cache_total_category_title">快取總使用量</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">清除所有快取</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d 個項目)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">清除</string>
-  <string name="morphe_music_lyrics_cache_close_action">關閉</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">刪除儲存在此裝置上的 %1$s MB (%2$d 首歌曲) 的快取歌詞？</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">刪除儲存在此裝置上的 %1$s MB (%2$d 份翻譯) 的快取翻譯？</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">刪除儲存在此裝置上的 %1$s MB (%2$d 份音譯) 的快取音譯？</string>
@@ -766,7 +684,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">正在下載閱讀字典……</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">讀音已準備就緒（%s 個項目）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">下載失敗 - 關閉並重新開啟此選項以重試</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">離線字典</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">日語</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">中文</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — 快速形態分析器 &amp; ruby</string>
@@ -785,8 +702,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_custom_font_invalid">無效或不支援的字體檔案（需要 .ttf 或 .otf）</string>
   <string name="morphe_music_lyrics_share_preview_title">分享歌詞</string>
   <string name="morphe_music_lyrics_share_button">分享</string>
-  <string name="morphe_music_lyrics_copy">複製</string>
-  <string name="morphe_music_lyrics_share_cancel">取消</string>
   <string name="morphe_music_lyrics_share_select_hint">點擊 1–5 行</string>
   <string name="morphe_music_lyrics_share_max_lines">最多 5 行</string>
   <string name="morphe_music_lyrics_share_failed">無法建立歌詞分享卡</string>
@@ -903,18 +818,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_google">由 Google 翻譯</string>
   <string name="morphe_music_lyrics_romanized_by_google">由 Google 轉寫</string>
   <string name="morphe_music_lyrics_translated_by_ai">由 %s 進行翻譯</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">由 %s 進行羅馬拼音翻譯</string>
-  <string name="morphe_music_lyrics_romanized_by_local">由 %s 進行羅馬拼音翻譯</string>
+  <string name="morphe_music_lyrics_romanized_by">由 %s 進行羅馬拼音翻譯</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s（使用 %2$s）</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">已翻譯</string>
-  <string name="morphe_music_lyrics_translation_language_title">翻譯語言</string>
   <string name="morphe_music_lyrics_romanize_language_title">羅馬拼音或轉寫語言</string>
   <string name="morphe_music_lyrics_translation_target_language">"翻譯目標語言：
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"羅馬化或譯音目標語言：
 %s"</string>
-  <string name="morphe_music_lyrics_translating">正在翻譯…</string>
   <string name="morphe_music_lyrics_translate_failed">無法翻譯歌詞</string>
   <string name="morphe_music_lyrics_romanize_hide">已翻譯成羅馬拼音</string>
   <string name="morphe_romanize_language_DEFAULT">自動</string>
@@ -922,7 +834,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_failed">無法將歌詞翻譯成羅馬拼音</string>
   <string name="morphe_music_lyrics_romanize_language_none">無</string>
   <string name="morphe_music_lyrics_ruby_language_title">注音目標</string>
-  <string name="morphe_music_lyrics_translate_only">僅顯示翻譯</string>
   <string name="morphe_music_lyrics_romanize_only">僅羅馬拼音</string>
   <string name="morphe_music_lyrics_dual_only">雙模式</string>
   <string name="morphe_music_lyrics_copied">已複製到剪貼簿</string>
@@ -975,7 +886,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">設置不完整或被提供者拒絕</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">正在驗證連線…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：已連接！（%2$s）</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s：連線失敗。請檢查設定。</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">連線失敗：%s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">測試連線</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在獲取模型…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">取得模型</string>
@@ -1003,4 +914,10 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 停用粗體圖示</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢復播放器「接下來播放」、「歌詞」和「相關」標籤</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">管理</string>
+  <string name="morphe_music_opacity_title">不透明度</string>
+  <string name="morphe_music_rim_brightness_title">邊緣亮度</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">標籤</string>
 </resources>

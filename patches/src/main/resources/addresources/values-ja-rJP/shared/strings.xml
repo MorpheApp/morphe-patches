@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">再起動が必要です</string>
   <string name="morphe_settings_restart_dialog_message">この変更を反映するにはアプリを再起動してください</string>
   <string name="morphe_settings_restart">再起動</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">インポート</string>
-  <string name="morphe_settings_import_copy">コピー</string>
   <string name="morphe_settings_import_reset">Morphe の設定をデフォルトにリセットしました</string>
   <string name="morphe_settings_import_success">%s 個の設定をインポートしました</string>
   <string name="morphe_settings_import_failure_parse">インポートに失敗しました: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">パッチ</string>
   <string name="morphe_settings_about_version">バージョン</string>
-  <string name="morphe_settings_about_close">閉じる</string>
   <string name="morphe_settings_about_prerelease">プレリリース版</string>
   <string name="morphe_settings_about_update_available">利用可能な更新があります: %s</string>
   <string name="morphe_settings_about_update_hint">パッチを更新するには、Morphe を使用してこのアプリに再度パッチを適用してください</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">オープンソース ライセンス</string>
-  <string name="morphe_settings_about_licenses_loading">読み込み中…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">デバッグ</string>
   <string name="morphe_debug_screen_summary">診断ログなどの高度な開発者向けオプションを設定します</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">デバッグログのエクスポートに成功しました</string>
   <string name="morphe_debug_export_logs_failed">デバッグログのエクスポートに失敗しました</string>
   <string name="morphe_debug_logs_search_hint">デバッグログを検索</string>
-  <string name="morphe_debug_export_logs_clear">消去</string>
   <string name="morphe_debug_logs_disabled">デバッグログが無効になっています</string>
   <string name="morphe_debug_logs_none_found">デバッグログが見つかりません</string>
   <string name="morphe_debug_logs_copied_to_clipboard">デバッグログをコピーしました</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">強制オフ (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">強制オン (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">自動</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">オフ</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">オン</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">強制オン</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">強制オフ</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">削除</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">機能フラグを適用しました</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">機能フラグをリセットしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">機能フラグをクリップボードにコピーしました</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"お使いの MicroG v%1$s は古くなっており、問題が発生する可能性があります。
 
 MicroG を最新バージョン v%2$s に更新してください"</string>
-  <string name="gms_core_dialog_update_text">更新</string>
   <string name="gms_core_dialog_ignore_text">無視</string>
   <string name="gms_core_dialog_conflict_message">"現在インストールされている MicroG は、Morphe が推奨しているものではありません:
 
@@ -220,7 +207,6 @@ MicroG を最新バージョン v%2$s に更新してください"</string>
 MicroG に対するバッテリー最適化を無効にしても、バッテリー消費に悪影響はありません。
 
 [続行] をタップして最適化の変更を許可してください"</string>
-  <string name="gms_core_dialog_continue_text">続行</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG の電池の最適化ダイアログを表示</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"このダイアログを無効にすると、MicroG の電池の最適化に関する通知が表示されなくなります。
 
@@ -259,9 +245,29 @@ MicroG に対するバッテリー最適化を無効にしても、バッテリ�
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 バグ修正</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 その他の変更</string>
   <string name="morphe_patches_update_notice_dialog_more">…他 %s 件</string>
-  <string name="morphe_patches_update_notice_dialog_update">アップデート</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">閉じる</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">クラッシュログを Documents フォルダに保存しました: %s</string>
   <string name="morphe_crash_log_saved">クラッシュログを保存しました: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">このフィルタについて</string>
+  <string name="morphe_ads_screen_title">広告</string>
+  <string name="morphe_misc_screen_title">その他</string>
+  <string name="morphe_navigation_bar_screen_title">ナビゲーション バー</string>
+  <string name="morphe_post_buttons_screen_title">投稿ボタン</string>
+  <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
+  <string name="morphe_download">ダウンロード</string>
+  <string name="morphe_hide_create_button_title">作成ボタンを非表示</string>
+  <string name="morphe_hide_post_comment_button_title">コメントボタンを非表示</string>
+  <string name="morphe_sanitize_sharing_links_summary">共有リンクからトラッキング用のパラメータを削除します</string>
+  <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
+  <string name="morphe_settings_add">追加</string>
+  <string name="morphe_settings_clear">解除</string>
+  <string name="morphe_settings_close">閉じる</string>
+  <string name="morphe_settings_continue">続行</string>
+  <string name="morphe_settings_copy">コピー</string>
+  <string name="morphe_settings_delete">削除</string>
+  <string name="morphe_settings_remove">削除</string>
+  <string name="morphe_settings_update">アップデート</string>
 </resources>

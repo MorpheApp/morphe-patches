@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Reinicio necesario</string>
   <string name="morphe_settings_restart_dialog_message">Reinicia a aplicación para que o cambio teña efecto</string>
   <string name="morphe_settings_restart">Reiniciar</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importar</string>
-  <string name="morphe_settings_import_copy">Copiar</string>
   <string name="morphe_settings_import_reset">As configuracións de Morphe se restablecerán os valores predeterminados</string>
   <string name="morphe_settings_import_success">Configuracións %s importadas</string>
   <string name="morphe_settings_import_failure_parse">Importación falida: %s</string>
@@ -76,7 +74,6 @@ Para traducir novas linguas ou mellorar as traducións existentes, visita morphe
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Parches</string>
   <string name="morphe_settings_about_version">Versión</string>
-  <string name="morphe_settings_about_close">Pechar</string>
   <string name="morphe_settings_about_prerelease">Pre-lanzamento</string>
   <string name="morphe_settings_about_update_available">Actualización dispoñible: %s</string>
   <string name="morphe_settings_about_update_hint">Para actualizar os teus parches, usa Morphe para volver parchear esta aplicación</string>
@@ -108,7 +105,6 @@ Para traducir novas linguas ou mellorar as traducións existentes, visita morphe
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Avisos de licenza</string>
-  <string name="morphe_settings_about_licenses_loading">Cargando…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
   <string name="morphe_debug_screen_summary">Configura as opcións avanzadas de desenvolvedor e os rexistros de diagnóstico</string>
@@ -125,7 +121,6 @@ Non se che notificará de ningún evento inesperado"</string>
   <string name="morphe_debug_export_logs_success">Rexistros de depuración exportados con éxito</string>
   <string name="morphe_debug_export_logs_failed">Fallo ao exportar os rexistros de depuración</string>
   <string name="morphe_debug_logs_search_hint">Buscar nos rexistros de depuración…</string>
-  <string name="morphe_debug_export_logs_clear">Limpar</string>
   <string name="morphe_debug_logs_disabled">O rexistro de depuración está desactivado</string>
   <string name="morphe_debug_logs_none_found">Non se atoparon rexistros de depuración</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Rexistros de depuración copiados</string>
@@ -142,15 +137,8 @@ Non se che notificará de ningún evento inesperado"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloqueado (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Forzado (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automático</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Off</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">On</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Forzar activación</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquear</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Eliminar</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funcións gardados</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funcións restablecidos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funcións copiados ao portapapeis</string>
@@ -200,7 +188,6 @@ O comportamento desapareceu anteriormente na busca, polo que poden estar implica
   <string name="gms_core_dialog_outdated_message">"A túa versión v%1$s de MicroG está obsoleta e pode causar problemas.
 
 Actualiza MicroG á última versión v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Actualizar</string>
   <string name="gms_core_dialog_ignore_text">Ignorar</string>
   <string name="gms_core_dialog_conflict_message">"O MicroG instalado non está recomendado por Morphe:
 
@@ -220,7 +207,6 @@ Isto é necesario para que a aplicación funcione"</string>
 Desativar as optimizacións de batería para MicroG non afectará negativamente ao uso da batería.
 
 Toca o botón de continuar e permite os cambios de optimización"</string>
-  <string name="gms_core_dialog_continue_text">Continuar</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Amosar o diálogo de optimización da batería de MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Desactivar isto ocultará o aviso de optimización da batería de MicroG.
 
@@ -259,9 +245,29 @@ Se queres a experiencia sen problemas, &lt;b&gt;desinstala&lt;/b&gt; esta e inst
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correccións de erros</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Outros cambios</string>
   <string name="morphe_patches_update_notice_dialog_more">…e %s máis</string>
-  <string name="morphe_patches_update_notice_dialog_update">Actualizar</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Descartar</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Rexistro do erro gardado nos documentos do usuario: %s</string>
   <string name="morphe_crash_log_saved">Rexistro do erro gardado: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Acerca de</string>
+  <string name="morphe_ads_screen_title">Anuncios</string>
+  <string name="morphe_misc_screen_title">Miscelánes</string>
+  <string name="morphe_navigation_bar_screen_title">Barra de navegación</string>
+  <string name="morphe_post_buttons_screen_title">Botóns das publicacións</string>
+  <string name="morphe_custom_branding_icon_title">Icona da aplicación</string>
+  <string name="morphe_download">Descargar</string>
+  <string name="morphe_hide_create_button_title">Ocultar botón Crear</string>
+  <string name="morphe_hide_post_comment_button_title">Ocultar o botón Comentar</string>
+  <string name="morphe_sanitize_sharing_links_summary">Elimina os parámetros de consulta de seguimento dos ligazóns compartidas</string>
+  <string name="morphe_sanitize_sharing_links_title">Limpar enlaces compartidos</string>
+  <string name="morphe_settings_add">Engadir</string>
+  <string name="morphe_settings_clear">Limpar</string>
+  <string name="morphe_settings_close">Pechar</string>
+  <string name="morphe_settings_continue">Continuar</string>
+  <string name="morphe_settings_copy">Copiar</string>
+  <string name="morphe_settings_delete">Eliminar</string>
+  <string name="morphe_settings_remove">Eliminar</string>
+  <string name="morphe_settings_update">Actualizar</string>
 </resources>

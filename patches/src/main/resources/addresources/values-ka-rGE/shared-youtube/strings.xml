@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">საკუთარი</string>
-  <string name="morphe_custom_branding_icon_title">აპლიკაციის ხატულა</string>
   <string name="morphe_custom_branding_icon_entry_1">ორიგინალი</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ის შეტყობინება</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">თქვენი ნახვის ისტორია არ ინახება.&lt;br&gt;&lt;br&gt;ეს, სავარაუდოდ, გამოწვეულია DNS რეკლამის ბლოკირებით ან ქსელური პროქსით.&lt;br&gt;&lt;br&gt;ამის გამოსასწორებლად, დაამატეთ &lt;b&gt;s.youtube.com&lt;/b&gt; თეთრ სიაში ან გამორთეთ ყველა DNS ბლოკერი და პროქსი</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">აღარ გამოჩნდეს</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">ვიდეო ნაკადების იმიტაცია</string>
   <string name="morphe_spoof_video_streams_screen_summary">გააკონფიგურირეთ კლიენტის იმიტაცია, რათა თავიდან აიცილოთ დაკვრის პრობლემები</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 ვიდეოს გაშვება შესაძლოა ვერ მოხერხდეს, სანამ Android System WebView არ განახლდება ბოლო ვერსიამდე.
 
 დააჭირეთ OK-ს Android System WebView-ის გახსნელად."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">აღარ გამოჩნდეს</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView არ არის დაინსტალირებული. დააინსტალირეთ ვიდეოს დაკვრის პრობლემის გამოსასწორებლად</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">შეტყობინებების მედია კონტროლი</string>
   <string name="morphe_notification_media_screen_summary">მოახდინეთ დაკვრის მართვის ელემენტების პერსონალიზაცია, რომლებიც ჩანს თქვენს ჩაკეტილი ეკრანისა და შეტყობინებების პანელზე</string>
-  <string name="morphe_hide_notification_media_prev_next_title">„წინა“ &amp; „შემდეგი“ ღილაკების დამალვა</string>
   <string name="morphe_hide_notification_media_prev_next_summary">მალავს „წინა“ და „შემდეგი“ ღილაკებს მედია შეტყობინებაში, ჩაკეტილ ეკრანსა და ყურსაზურის მართვის ელემენტებში</string>
   <string name="morphe_disable_notification_media_seekbar_title">სლაიდერის გამორთვა</string>
   <string name="morphe_disable_notification_media_seekbar_summary">კრძალავს სლაიდერის გადაადგილებას ჩაკეტილ ეკრანსა და შეტყობინებების პანელზე</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">ნაგულისხმევი პარამეტრების აღდგენა</string>
   <string name="morphe_video_effects_custom_add_title">ახალი ეფექტი</string>
   <string name="morphe_video_effects_custom_edit_title">ეფექტის რედაქტირება</string>
-  <string name="morphe_video_effects_custom_name_hint">სახელი</string>
   <string name="morphe_video_effects_custom_name_empty">მიუთითეთ ეფექტის სახელი</string>
   <string name="morphe_video_effects_custom_name_exists">ამ სახელის მქონე ეფექტი უკვე არსებობს</string>
-  <string name="morphe_video_effects_custom_copy_code">კოდის კოპირება</string>
   <string name="morphe_video_effects_custom_error_title">ეფექტშია შეცდომა</string>
   <string name="morphe_video_effects_custom_error_message">"ვიდეოები გამოჩნდება ეფექტის გარეშე, სანამ კოდი არ გამოსწორდება. მიაწოდეთ ეს შეცდომა AI-ს, რომელმაც დაწერა კოდი:
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 სთხოვეთ AI-ს უფრო მოკლე კოდი, ან ჩასვით კოდი ნაწილებად."</string>
   <string name="morphe_video_effects_custom_copy_error">შეცდომის კოპირება</string>
   <string name="morphe_video_effects_custom_save_anyway">მიუხედავად ამისა, შეინახეთ</string>
-  <string name="morphe_video_effects_custom_delete">წაშლა</string>
   <string name="morphe_video_effects_custom_delete_title">წაიშალოს ეფექტი?</string>
   <string name="morphe_video_effects_custom_delete_message">%s წაიშლება.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \'Spoof video streams\' ნებისმიერი კლიენტით, გარდა \'Android Studio\'-სა და \'Android VR Downgraded\'-ისა</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">გაზიარების ბმულების გასუფთავება</string>
-  <string name="morphe_sanitize_sharing_links_summary">ასუფთავებს გაზიარებულ ბმულებს თრექინგის პარამეტრებისგან</string>
   <string name="morphe_replace_music_with_youtube_title">გაუცვალეთ გაზიარების ბმულები youtube.com-ით</string>
   <string name="morphe_replace_music_with_youtube_summary">გაზიარებულ ბმულებში music.youtube.com-ს ანაცვლებს youtube.com-ით</string>
   <string name="morphe_replace_links_with_shortener_title">გაზიარების ბმულების შეცვლა youtu.be-ით</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">ფონტი</string>
   <string name="morphe_custom_font_type_entry_default">ნაგულისხმები</string>
   <string name="morphe_custom_font_type_entry_system">მოწყობილობის სისტემური ფონტი</string>
-  <string name="morphe_custom_font_type_entry_custom">ფონტის პერსონალური ფაილი</string>
   <string name="morphe_custom_font_file_title">ფონტის პერსონალური ფაილი</string>
   <string name="morphe_custom_font_file_summary">აირჩიეთ TTF ან OTF ფონტის ფაილი</string>
   <string name="morphe_custom_font_file_invalid">შერჩეული ფაილი არ არის TTF ან OTF ფონტი</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">მენიები, როგორც მქრქალი მინა ფონი მათ უკან არსებულ გაბუნდულ კონტენტზე</string>
   <string name="morphe_glass_menus_title">გლას-მენიუების ჩართვა</string>
   <string name="morphe_glass_menus_summary">აჩვენებს მენიუებსა და ქვედა პანელებს როგორც რბილ შუშას, ხოლო მათ უკან არსებული კონტენტი გაბუნდოვნებულია</string>
-  <string name="morphe_glass_menus_opacity_title">შუშის გამჭვირვალობა</string>
   <string name="morphe_glass_menus_opacity_summary">რამდენად ფარავს მენიუ გაბუნდოვნებულ კონტენტს (0 არის გამჭვირვალე, 100 არის andგამჭვირვალე)</string>
   <string name="morphe_glass_menus_blur_title">ბუნდოვანება</string>
   <string name="morphe_glass_menus_blur_summary">რამდენად არის გაბუნდოვნებული მენიუს უკან არსებული კონტენტი</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">აჩვენებს დისლაიქებს ლაიქების პროცენტად და არა რაოდენობად</string>
   <string name="morphe_ryd_estimated_like_title">აჩვენეთ სავარაუდო ლაიქები</string>
   <string name="morphe_ryd_estimated_like_summary">აჩვენებს ლაიქების სავარაუდო რაოდენობას იმ ვიდეოებზე, სადაც ავტორმა გამორთო ლაიქები</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">კავშირის შეცდომის შეტყობინებების ჩვენება</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">აჩვენებს შეტყობინებას, როდესაც Return YouTube Dislike-ის სერვერი მიუწვდომელია</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike აღადგენს იმ დისლაიქების რაოდენობას, რომელიც YouTube-მა 2021 წელს დამალა. რაოდენობები მოდის წაშლამდე დაარქივებული მონაცემებიდან, ხოლო ახალი ვიდეოებისთვის ისინი გამოთვლილია მომხმარებელთა ხმების საფუძველზე, ამიტომ ისინი მიახლოებითია და განახლდება რამდენიმე დღეში
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">კლიენტის rate limit-ები არ დაფიქსირებულა</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">კლიენტის rate limit შეგვხვდა %s-ჯერ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s მილიწამი</string>
-  <string name="morphe_navigation_bar_screen_title">ნავიგაციის პანელი</string>
   <string name="morphe_navigation_bar_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა ნავიგაციის პანელზე</string>
   <string name="morphe_toolbar_screen_title">ინსტრუმენტების პანელი</string>
   <string name="morphe_toolbar_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს ინსტრუმენტების პანელზე</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 წამი</string>
+  <string name="morphe_duration_2s">2 წამი</string>
+  <string name="morphe_duration_3s">3 წამი</string>
+  <string name="morphe_duration_4s">4 წამი</string>
+  <string name="morphe_duration_5s">5 წამი</string>
+  <string name="morphe_duration_6s">6 წამი</string>
+  <string name="morphe_duration_7s">7 წამი</string>
+  <string name="morphe_duration_8s">8 წამი</string>
+  <string name="morphe_duration_9s">9 წამი</string>
+  <string name="morphe_duration_10s">10 წამი</string>
+  <string name="morphe_change_start_page_entry_default">ნაგულისხმები</string>
+  <string name="morphe_change_start_page_entry_explore">კვლევა</string>
+  <string name="morphe_change_start_page_entry_history">ისტორია</string>
+  <string name="morphe_change_start_page_entry_library">ბიბლიოთეკა</string>
+  <string name="morphe_change_start_page_entry_playlists">ప్ლეილისტები</string>
+  <string name="morphe_change_start_page_entry_search">ძიება</string>
+  <string name="morphe_change_start_page_entry_subscriptions">გამოწერები</string>
+  <string name="morphe_change_start_page_title">საწყისი გვერდი</string>
+  <string name="morphe_action_buttons_screen_title">მოქმედების ღილაკები</string>
+  <string name="morphe_comments_screen_title">კომენტარები</string>
+  <string name="morphe_feed_screen_title">ისთი</string>
+  <string name="morphe_flyout_menu_screen_title">გასაშლელი მენიუ</string>
+  <string name="morphe_general_title">ზოგადი</string>
+  <string name="morphe_miniplayer_screen_title">მინიპლეიერი</string>
+  <string name="morphe_player_screen_title">პლეიერი</string>
+  <string name="morphe_video_screen_title">ვიდეო</string>
+  <string name="morphe_appearance_title">გარეგნობა</string>
+  <string name="morphe_cancel">გაუქმება</string>
+  <string name="morphe_comments_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს კომენტარების სექციაში</string>
+  <string name="morphe_copy_code">კოდის კოპირება</string>
+  <string name="morphe_corner_radius_title">კუთხის რადიუსი</string>
+  <string name="morphe_do_not_show_again">აღარ გამოჩნდეს</string>
+  <string name="morphe_download_force_4k_title">4K ჩამოტვირთვის ხელმისაწვდომობის 강제ირება</string>
+  <string name="morphe_glass_opacity_title">Glass-ის გამჭვირვალობა</string>
+  <string name="morphe_header_logo_title">ზედა პანელის ლოგო</string>
+  <string name="morphe_hide_action_bar_title">მოქმედებათა პანელის დამალვა</string>
+  <string name="morphe_hide_cast_button_title">Cast ღილაკის დამალვა</string>
+  <string name="morphe_hide_comments_button_title">კომენტარების ღილაკის დამალვა</string>
+  <string name="morphe_hide_comments_community_guidelines_title">დამალეთ საზოგადოების წესები</string>
+  <string name="morphe_hide_comments_emoji_button_title">ემოჯის ღილაკის დამალვა</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF ღილაკის დამალვა</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">მალავს GIF-ებსა და სურათებს, რომლებიც თან ახლავს კომენტარებსა და პასუხებს</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-ებისა და სურათების დამალვა</string>
+  <string name="morphe_hide_comments_info_button_title">ინფოს ღილაკის დამალვა</string>
+  <string name="morphe_hide_comments_timestamp_button_title">დროის აღნიშვნის ღილაკის დამალვა</string>
+  <string name="morphe_hide_horizontal_shelves_title">ჰორიზონტალური თვლების დამალვა</string>
+  <string name="morphe_hide_like_dislike_button_title">მოწონებისა და არამოწონების ღილაკების დამალვა</string>
+  <string name="morphe_hide_like_dislike_buttons_title">მოწონებისა და არამოწონების ღილაკების დამალვა</string>
+  <string name="morphe_hide_navigation_bar_title">დამალეთ ნავიგაციის პანელი</string>
+  <string name="morphe_hide_navigation_button_labels_title">ნავიგაციის ღილაკების წარწერების დამალვა</string>
+  <string name="morphe_hide_previous_next_buttons_title">„წინა“ &amp; „შემდეგი“ ღილაკების დამალვა</string>
+  <string name="morphe_hide_search_button_title">ძებნის ღილაკის დამალვა</string>
+  <string name="morphe_hide_translate_button_title">თარგმნის ღილაკის დამალვა</string>
+  <string name="morphe_hide_video_ads_title">ვიდეო რეკლამების დამალვა</string>
+  <string name="morphe_loading">იტვირთება…</string>
+  <string name="morphe_name">სახელი</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ღილაკებს შორის დაშორება</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">ჩვენებული ღილაკები: %1$s %2$s-დან</string>
+  <string name="morphe_navigation_bar_glass_size_height">სიმაღლე</string>
+  <string name="morphe_navigation_bar_glass_size_width">მაქსიმალური სიგანე</string>
+  <string name="morphe_navigation_bar_glass_title">ჩართეთ შუშის ნავიგაციის პანელი</string>
+  <string name="morphe_positive_number_invalid">მნიშვნელობა უნდა იყოს დადებითი რიცხვი</string>
+  <string name="morphe_private_user_id_invalid">კერძო მომხმარებლის ID უნდა იყოს სულ მცირე 30 სიმბოლო</string>
+  <string name="morphe_private_user_id_title">თქვენი კერძო მომხმარებლის ID</string>
+  <string name="morphe_rename">გადარქმევა</string>
+  <string name="morphe_show_settings_button_title">აჩვენეთ პარამეტრების ღილაკი</string>
+  <string name="morphe_show_settings_button_type_title">პარამეტრების ღილაკის მოქმედება</string>
+  <string name="morphe_show_video_effect_menu_title">აჩვენეთ ვიდეო ეფექტების მენიუ</string>
+  <string name="morphe_submit">გაგზავნა</string>
+  <string name="morphe_time_adjustment_step_title">დროის კორექტირების ნაბიჯი</string>
+  <string name="morphe_toast_on_connection_error_title">აჩვენეთ შეტყობინებები კავშირის შეცდომის შესახებ</string>
+  <string name="morphe_toast_on_skip_title">აჩვენეთ გამოტოვების შეტყობინება</string>
+  <string name="morphe_translated_only">მხოლოდ თარგმნილი</string>
+  <string name="morphe_translating">თარგმნა...</string>
+  <string name="morphe_translation_language_title">თარგმანის ენა</string>
+  <string name="morphe_username_change_unknown_error">მომხმარებლის სახელის შეცვლა ვერ მოხერხდა: სტატუსი: %1$s %2$s</string>
+  <string name="morphe_username_changed">მომხმარებლის სახელი წარმატებით შეიცვალა</string>
+  <string name="morphe_username_html">თქვენი მომხმარებლის სახელი: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">ვიდეოები</string>
+  <string name="morphe_vote_downvote">დაბოროტება</string>
+  <string name="morphe_vote_upvote">გაბოროტება</string>
 </resources>

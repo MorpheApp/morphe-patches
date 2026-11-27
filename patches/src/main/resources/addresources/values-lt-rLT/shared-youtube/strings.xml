@@ -81,7 +81,6 @@ Patikrinkite, ar paketo pavadinimas teisingas ir ar programa įdiegta"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasirinktinis</string>
-  <string name="morphe_custom_branding_icon_title">Programos piktograma</string>
   <string name="morphe_custom_branding_icon_entry_1">Originalas</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe juoda</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tamsi</string>
@@ -107,7 +106,6 @@ Norėdami pakeisti piktogramą visur, įdiekite pataisą iš naujo ir pakeiskite
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe pranešimas</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Jūsų žiūrėjimo istorija nesaugoma.&lt;br&gt;&lt;br&gt;Tai greičiausiai sukelta DNS reklamų blokatoriaus arba tinklo proxy.&lt;br&gt;&lt;br&gt;Norėdami tai sutvarkyti, pridėkite &lt;b&gt;s.youtube.com&lt;/b&gt; į baltąjį sąrašą arba išjunkite visus DNS blokatorius ir proxy</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Daugiau nerodyti</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Maskuoti vaizdo įrašų srautus</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigūruokite kliento maskavimą, kad išvengtumėte atkūrimo problemų</string>
@@ -134,7 +132,6 @@ Bakstelėkite „OK“, kad atidarytumėte \"Android System WebView\"."</string>
 Vaizdo įrašų atkūrimas gali neveikti, kol \"Android System WebView\" nebus atnaujinta iki naujausios versijos.
 
 Bakstelėkite „OK“, kad atidarytumėte \"Android System WebView\"."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Rodyti daugiau nerodyti</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">\"Android System WebView\" neįdiegta. Įdiegkite ją, kad sutvarkytumėte vaizdo įrašų atkūrimą</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Norėdami prisijungti, žemiau spauskite „Tęsti“"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Medijos atkūrimo valdikliai pranešimuose</string>
   <string name="morphe_notification_media_screen_summary">Tinkinkite atkūrimo valdiklius, rodomus užrakintame ekrane ir pranešimų skydelyje</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Slėpti „Ankstesnis“ &amp; „Kitas“ mygtukus</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Slėpia „Ankstesnis“ ir „Kitas“ mygtukus medijos pranešime, užrakintame ekrane ir ausinių valdikliuose</string>
   <string name="morphe_disable_notification_media_seekbar_title">Išjungti slankiklį</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Neleidžia vilkti slankiklio užrakintame ekrane ir pranešimų skydelyje</string>
@@ -244,10 +240,8 @@ Norėdami prisijungti, žemiau spauskite „Tęsti“"</string>
   <string name="morphe_video_effects_custom_restore">Atstatyti numatytąsias nustatymus</string>
   <string name="morphe_video_effects_custom_add_title">Naujas efektas</string>
   <string name="morphe_video_effects_custom_edit_title">Redaguoti efektą</string>
-  <string name="morphe_video_effects_custom_name_hint">Pavadinimas</string>
   <string name="morphe_video_effects_custom_name_empty">Įveskite efekto pavadinimą</string>
   <string name="morphe_video_effects_custom_name_exists">Efektas su tokiu pavadinimu jau egzistuoja</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopijuoti kodą</string>
   <string name="morphe_video_effects_custom_error_title">Efekte yra klaida</string>
   <string name="morphe_video_effects_custom_error_message">"Vaizgo įrašai rodomi be efekto, kol kodas nebus pataisytas. Perduokite šią klaidą DI, kuri parašė kodą:
 
@@ -257,7 +251,6 @@ Norėdami prisijungti, žemiau spauskite „Tęsti“"</string>
 Papraskaite dirbtinio intelekto pagalbą sutrumpinti kodą arba įklijuokite jį dalimis."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopijavimo klaida</string>
   <string name="morphe_video_effects_custom_save_anyway">Vis tiek išsaugoti</string>
-  <string name="morphe_video_effects_custom_delete">Ištrinti</string>
   <string name="morphe_video_effects_custom_delete_title">Ištrinti efektą?</string>
   <string name="morphe_video_effects_custom_delete_message">%s bus ištrinta.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Papraskaite dirbtinio intelekto pagalbą sutrumpinti kodą arba įklijuokite jį
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Norėdami naudoti šią funkciją, pakeiskite „Maskuoti vaizdo įrašų srautus“ į bet kurį klientą, išskyrus „Android Studio“ ir „Android VR Downgraded“</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Valyti bendrinimo nuorodas</string>
-  <string name="morphe_sanitize_sharing_links_summary">Pašalina sekimo užklausos parametrus iš bendrinamų nuorodų</string>
   <string name="morphe_replace_music_with_youtube_title">Keisti bendrinimo nuorodas į youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Bendrinamose nuorodose pakeičia music.youtube.com į youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Keisti bendrinimo nuorodas į youtu.be</string>
@@ -371,7 +362,6 @@ Jei vėliau išjungiate, rekomenduojama išvalyti programos duomenis, kad būtų
   <string name="morphe_custom_font_type_title">Šriftas</string>
   <string name="morphe_custom_font_type_entry_default">Numatytasis</string>
   <string name="morphe_custom_font_type_entry_system">Įrenginio sistemos šriftas</string>
-  <string name="morphe_custom_font_type_entry_custom">Pasirinktinis šrifto failas</string>
   <string name="morphe_custom_font_file_title">Pasirinktinis šrifto failas</string>
   <string name="morphe_custom_font_file_summary">Pasirinkite TTF arba OTF šrifto failą</string>
   <string name="morphe_custom_font_file_invalid">Pasirinktas failas nėra TTF arba OTF šriftas</string>
@@ -381,7 +371,6 @@ Jei vėliau išjungiate, rekomenduojama išvalyti programos duomenis, kad būtų
   <string name="morphe_glass_menus_screen_summary">Meniu kaip matuminis stiklas virš išblaškyto už jų esančio turinio</string>
   <string name="morphe_glass_menus_title">Įjungti stiklo meniu</string>
   <string name="morphe_glass_menus_summary">Rodo meniu ir apatines skydeles kaip matminį stiklą, o turinys už jų yra aptumptas</string>
-  <string name="morphe_glass_menus_opacity_title">Stiklo permatumas</string>
   <string name="morphe_glass_menus_opacity_summary">Kiek meniu uždengia aptumptą turinį (0 – skaidru, 100 – neperžiūru)</string>
   <string name="morphe_glass_menus_blur_title">Aptumpimas</string>
   <string name="morphe_glass_menus_blur_summary">Kiek yra aptumptas turinys už meniu</string>
@@ -402,7 +391,6 @@ Jei vėliau išjungiate, rekomenduojama išvalyti programos duomenis, kad būtų
   <string name="morphe_ryd_dislike_percentage_summary">Rodo „Nepatinka“ kiekį kaip „Patinka“ procentą, o ne skaičių</string>
   <string name="morphe_ryd_estimated_like_title">Rodyti apytikslį „Patinka“ skaičių</string>
   <string name="morphe_ryd_estimated_like_summary">Rodo apytikslį „Patinka“ skaičių vaizdo įrašuose, kuriuose kūrėjas išjungė „Patinka“</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Rodyti ryšio klaidų įspėjimus</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Rodo pranešimą, kai „Return YouTube Dislike“ serveris nepasiekiamas</string>
   <string name="morphe_ryd_attribution_summary">"„Return YouTube Dislike“ atkuria „Nepatinka“ skaičius, kuriuos „YouTube“ paslėpė 2021 m. Skaičiai gaunami iš prieš pašalinimą archyvuotų duomenų, o naujesniems vaizdo įrašams apskaičiuojami pagal jos vartotojų balsus, todėl jie yra apytiksliai ir atnaujinami kas kelias dienas
 
@@ -424,8 +412,89 @@ Jei vėliau išjungiate, rekomenduojama išvalyti programos duomenis, kad būtų
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nepasitaikė jokių kliento užklausų limitų</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Susidurta su kliento ribotimo apribojimu %s kartus</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekundžių</string>
-  <string name="morphe_navigation_bar_screen_title">Naršymo juosta</string>
   <string name="morphe_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apatinėje naršymo juostoje</string>
   <string name="morphe_toolbar_screen_title">Įrankių juosta</string>
   <string name="morphe_toolbar_screen_summary">Pasirinkite, kokie komponentai turėtų būti rodomi įrankių juostoje</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekunde</string>
+  <string name="morphe_duration_2s">2 sekundės</string>
+  <string name="morphe_duration_3s">3 sekundės</string>
+  <string name="morphe_duration_4s">4 sekundės</string>
+  <string name="morphe_duration_5s">5 sekundės</string>
+  <string name="morphe_duration_6s">6 sekundės</string>
+  <string name="morphe_duration_7s">7 sekundės</string>
+  <string name="morphe_duration_8s">8 sekundės</string>
+  <string name="morphe_duration_9s">9 sekundės</string>
+  <string name="morphe_duration_10s">10 sekundžių</string>
+  <string name="morphe_change_start_page_entry_default">Numatytasis</string>
+  <string name="morphe_change_start_page_entry_explore">Išnagrinėti</string>
+  <string name="morphe_change_start_page_entry_history">Istorija</string>
+  <string name="morphe_change_start_page_entry_library">Biblioteka</string>
+  <string name="morphe_change_start_page_entry_playlists">Grojarašiai</string>
+  <string name="morphe_change_start_page_entry_search">Ieškoti</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Prenumeratos</string>
+  <string name="morphe_change_start_page_title">Pradinis puslapis</string>
+  <string name="morphe_action_buttons_screen_title">Veiksmo mygtukai</string>
+  <string name="morphe_comments_screen_title">Komentarai</string>
+  <string name="morphe_feed_screen_title">Srautas</string>
+  <string name="morphe_flyout_menu_screen_title">Išskleidžiamas meniu</string>
+  <string name="morphe_general_title">Bendra</string>
+  <string name="morphe_miniplayer_screen_title">Miniplayeris</string>
+  <string name="morphe_player_screen_title">Grotuvas</string>
+  <string name="morphe_video_screen_title">Vaizdo įrašai</string>
+  <string name="morphe_appearance_title">Išvaizda</string>
+  <string name="morphe_cancel">Atšaukti</string>
+  <string name="morphe_comments_screen_summary">Pasirinkite, kurie komponentai turėtų būti rodomi komentarų skiltyje</string>
+  <string name="morphe_copy_code">Kopijuoti kodą</string>
+  <string name="morphe_corner_radius_title">Kampų radiusas</string>
+  <string name="morphe_do_not_show_again">Rodyti daugiau nerodyti</string>
+  <string name="morphe_download_force_4k_title">Pristygstyti 4K atsisiuntimo galimybę</string>
+  <string name="morphe_glass_opacity_title">Stiklo skaidrumas</string>
+  <string name="morphe_header_logo_title">Antraštės logotipas</string>
+  <string name="morphe_hide_action_bar_title">Slėpti veiksmų juostą</string>
+  <string name="morphe_hide_cast_button_title">Paslėpti transliacijos mygtuką</string>
+  <string name="morphe_hide_comments_button_title">Paslėpti komentarų mygtuką</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Slėpti bendruomenės gairių</string>
+  <string name="morphe_hide_comments_emoji_button_title">Paslėpti emocijų mygtuką</string>
+  <string name="morphe_hide_comments_gif_button_title">Paslėpti GIF mygtuką</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Paslepia GIF ir vaizdus, pridėtus prie komentarų ir atsakymų</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Paslėpti GIF ir vaizdus</string>
+  <string name="morphe_hide_comments_info_button_title">Paslėpti Info mygtuką</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Paslėpti laiką nurodančią mygtuką</string>
+  <string name="morphe_hide_horizontal_shelves_title">Paslėpti horizontalias lentynas</string>
+  <string name="morphe_hide_like_dislike_button_title">Paslėpti Patinka ir Nepatinka mygtuką</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Paslėpti Patinka ir Nepatinka mygtukus</string>
+  <string name="morphe_hide_navigation_bar_title">Slėpti naršymo juostą</string>
+  <string name="morphe_hide_navigation_button_labels_title">Slėpti naršymo mygtukų etiketes</string>
+  <string name="morphe_hide_previous_next_buttons_title">Paslepti mygtukus „Ankstesnis“ &amp; „Kitas“</string>
+  <string name="morphe_hide_search_button_title">Paslepti paieškos mygtuką</string>
+  <string name="morphe_hide_translate_button_title">Paslėpti vertimo mygtuką</string>
+  <string name="morphe_hide_video_ads_title">Slėpti vaizdo įrašo skelbimus</string>
+  <string name="morphe_loading">Įkeliama…</string>
+  <string name="morphe_name">Pavadinimas</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Mygtukų tarpas</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Rodymi mygtukai: %1$s iš %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Aukštis</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimalus plotis</string>
+  <string name="morphe_navigation_bar_glass_title">Įjungti stiklinę navigacijos juostą</string>
+  <string name="morphe_positive_number_invalid">Reikšmė turi būti teigiamas skaičius</string>
+  <string name="morphe_private_user_id_invalid">Privatus vartotojo ID turi būti bent 30 simbolių</string>
+  <string name="morphe_private_user_id_title">Jūsų privatus vartotojo ID</string>
+  <string name="morphe_rename">Pervardyti</string>
+  <string name="morphe_show_settings_button_title">Rodyti nustatymų mygtuką</string>
+  <string name="morphe_show_settings_button_type_title">Nustatymų mygtuko veiksmas</string>
+  <string name="morphe_show_video_effect_menu_title">Rodyti vaizdo efekto meniu</string>
+  <string name="morphe_submit">Pateikti</string>
+  <string name="morphe_time_adjustment_step_title">Laiko koregavimo žingsnis</string>
+  <string name="morphe_toast_on_connection_error_title">Rodyti ryšio klaidų pranešimus</string>
+  <string name="morphe_toast_on_skip_title">Rodyti praleidimo pranešimą</string>
+  <string name="morphe_translated_only">Tik išversti</string>
+  <string name="morphe_translating">Verčiama…</string>
+  <string name="morphe_translation_language_title">Vertimo kalba</string>
+  <string name="morphe_username_change_unknown_error">Nepavyko pakeisti vartotojo vardο: Būsena: %1$s %2$s</string>
+  <string name="morphe_username_changed">Vartotojo vardas sėkmingai pakeistas</string>
+  <string name="morphe_username_html">Jūsų vartotojo vardas: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Vaizdo įrašai</string>
+  <string name="morphe_vote_downvote">Neigiamas balsas</string>
+  <string name="morphe_vote_upvote">Balsuoti teigiamai</string>
 </resources>

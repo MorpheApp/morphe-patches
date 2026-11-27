@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">Huling pinatugtog</string>
   <string name="morphe_music_android_auto_subscriptions">Subkripsyon</string>
-  <string name="morphe_music_android_auto_videos">Mga Video</string>
   <string name="morphe_music_android_auto_other_results">Ibang resulta</string>
   <string name="morphe_music_android_auto_uploaded_songs">Mga na-upload na kanta</string>
   <string name="morphe_music_android_auto_uploaded_albums">Mga na-upload na album</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">I-on ang Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">I-on ang Wi-Fi, pagkatapos ay subukang simulan o salihan muli ang Jam</string>
   <string name="morphe_music_jam_wifi_settings">Buksan ang mga setting ng Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">Ikansela</string>
   <string name="morphe_music_jam_use_package">Gamitin ang package</string>
   <string name="morphe_music_jam_invalid_package">Maglagay ng wastong pangalan ng Android package</string>
   <string name="morphe_music_jam_package_saved">Na-save ang package. I-set up ang Jam Layer para kumonekta</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">I-scan ang QR</string>
   <string name="morphe_music_jam_invalid_invite">Ilagay ang walong karakter na code o i-paste ang isang imbitasyon</string>
   <string name="morphe_music_jam_join_your_jam">Sumali sa iyong Jam</string>
-  <string name="morphe_music_jam_copy_code">Kopyahin ang code</string>
   <string name="morphe_music_jam_code_clip">Code ng Jam</string>
   <string name="morphe_music_jam_show_qr">Ipakita ang QR</string>
   <string name="morphe_music_jam_done">Tapos</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">Umalis sa Jam</string>
   <string name="morphe_music_jam_start_jam">Magsimula ng Jam</string>
   <string name="morphe_music_jam_setup_layer">I-set up ang Jam Layer</string>
-  <string name="morphe_music_jam_manage">Pamahalaan</string>
   <string name="morphe_music_jam_details">Mga Detalye</string>
   <string name="morphe_music_jam_open">Buksan</string>
   <string name="morphe_music_jam_loading_song_options">Naglo-load ng mga opsyon sa kanta…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">Nagbago ang queue; subukang muli ang gesture</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Logo ng Header</string>
   <string name="morphe_header_logo_entry_1">Default</string>
   <string name="morphe_header_logo_entry_3">Pasadya</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Gumamit ng panlabas na downloader para sa Download menu</string>
   <string name="morphe_external_downloader_menu_summary">Ang opsyong Download ng mga menu ay magbubukas sa iyong panlabas na downloader sa halip</string>
-  <string name="morphe_download_force_4k_title">Piliting gawing available ang 4K download</string>
   <string name="morphe_download_force_4k_summary">Nagse-save ng mga 1440p at 4K na download kahit magpasya ang YouTube Music na hindi ito maaaring i-play ng device na ito</string>
   <string name="morphe_export_download_folder_title">I-export ang mga download</string>
   <string name="morphe_export_download_folder_summary">"I-export ang mga kanta at video na na-save sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export
@@ -151,34 +145,23 @@ Export folder: %s"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">Palitan ang Shuffle ng Loop button</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">Ipinapakita ang Loop button sa halip na Shuffle button sa media notification at lock screen</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">Tungkol</string>
-  <string name="morphe_settings_music_screen_01_ads_title">Patalastas</string>
-  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_03_general_title">Pangkalahatan</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">Mga Liriko</string>
-  <string name="morphe_settings_music_screen_05_misc_title">Mga sari-sari</string>
-  <string name="morphe_settings_music_screen_06_player_title">Manlalaro</string>
-  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Wika ng YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Wika ng system</string>
   <string name="morphe_music_app_language_summary_unsupported">Nangangailangan ng Android 13 o mas bago</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Itago ang \'Kumuha ng Music Premium\' na tatak</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Itago ang mga promosyon ng Music Premium</string>
-  <string name="morphe_music_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Itago ang Audio / Video toggle</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Itinatago ang Download button sa podcast show</string>
   <string name="morphe_music_hide_explore_shelf_title">Itago ang Explore shelf</string>
   <string name="morphe_music_hide_filter_bar_title">Itago ang filter bar</string>
   <string name="morphe_music_hide_grid_shelves_title">Itago ang grid shelves</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">Itago ang mga horizontal shelf</string>
   <string name="morphe_music_hide_new_button_title">Itago ang New button</string>
   <string name="morphe_music_hide_new_button_summary">Itinatago ang button na New sa tab ng Library</string>
   <string name="morphe_music_hide_list_shelves_title">Itago ang mga list shelf</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel ng liriko</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Itago ang button na Isalin</string>
   <string name="morphe_music_hide_new_from_shelf_title">Itago ang \'New from\' shelf</string>
   <string name="morphe_music_hide_playlist_shelves_title">Itago ang mga playlist shelf</string>
   <string name="morphe_music_hide_repeat_button_title">Itago ang Repeat button</string>
@@ -186,16 +169,7 @@ Export folder: %s"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Itago ang \'Speed dial\' shelf</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Itago ang seksyon na \'Baka magustuhan mo rin\'</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">Itago ang \"Your downloads\" shelf</string>
-  <string name="morphe_music_comments_screen_title">Mga Komento</string>
-  <string name="morphe_music_comments_screen_summary">Piliin kung aling mga bahagi ang lalabas sa seksyon ng mga komento</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">Itago ang mga Alituntunin ng Komunidad</string>
   <string name="morphe_music_hide_comments_context_title">Itago ang mensahe ng konteksto</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">Itago ang Emoji button</string>
-  <string name="morphe_music_hide_comments_gif_button_title">Itago ang button ng GIF</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">Itago ang mga GIF at imahe</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">Itatago ang mga GIF at imahe na nakalakip sa mga komento at reply</string>
-  <string name="morphe_music_hide_comments_info_button_title">Itago ang Info button</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Pagsamahin nang maayos ang mga track sa isa\'t isa</string>
@@ -214,16 +188,6 @@ Export folder: %s"</string>
   <string name="morphe_crossfade_duration_250ms">250 milliseconds</string>
   <string name="morphe_crossfade_duration_500ms">500 milliseconds</string>
   <string name="morphe_crossfade_duration_750ms">750 milliseconds</string>
-  <string name="morphe_crossfade_duration_1000ms">1 segundo</string>
-  <string name="morphe_crossfade_duration_2000ms">2 segundo</string>
-  <string name="morphe_crossfade_duration_3000ms">3 segundo</string>
-  <string name="morphe_crossfade_duration_4000ms">4 segundo</string>
-  <string name="morphe_crossfade_duration_5000ms">5 segundo</string>
-  <string name="morphe_crossfade_duration_6000ms">6 segundo</string>
-  <string name="morphe_crossfade_duration_7000ms">7 segundo</string>
-  <string name="morphe_crossfade_duration_8000ms">8 segundo</string>
-  <string name="morphe_crossfade_duration_9000ms">9 segundo</string>
-  <string name="morphe_crossfade_duration_10000ms">10 segundo</string>
   <string name="morphe_crossfade_duration_11000ms">11 segundo</string>
   <string name="morphe_crossfade_duration_12000ms">12 segundo</string>
   <string name="morphe_music_crossfade_on_skip_title">Crossfade sa manual na paglaktaw</string>
@@ -283,7 +247,6 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_playback_speed_summary">Bilis na ginagamit para sa lahat ng mga track. Sa 100%, ginagamit ang bilis ng app, gaya ng bilis ng pag-playback ng podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Baguhin ang pitch ayon sa bilis</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">Ipakita ang menu ng Video effect</string>
   <string name="morphe_music_video_effect_menu_summary">Nagdaragdag ng Video effect sa menu ng player habang may nagpe-play na video</string>
   <string name="morphe_music_video_effect_next_video">Ang effect ay magpapakita mula sa susunod na video</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_playlist_tags_summary">Nagdaragdag ng item na Tags sa menu ng mga playlist, at isang filter button na Tags sa tabi ng sort button ng Library</string>
   <string name="morphe_music_playlist_tags_manage_title">Pamahalaan ang mga tag ng playlist</string>
   <string name="morphe_music_playlist_tags_manage_summary">Gumawa, magpalitan ng pangalan at magbura ng mga tag, at lagyan ng tag ang mga playlist na makikita sa iyong Library</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">Mga tag</string>
   <string name="morphe_music_playlist_tags_menu_item_none">Walang mga tag</string>
-  <string name="morphe_music_playlist_tags_filter_button">Mga tag</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">Tag: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">Mga tag (%s ang nakatago)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">Mga tag para sa %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">Bagong tag</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 talatugtugin</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s playlist</string>
@@ -344,22 +303,14 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_playlist_tags_filter_show_only">Ipakita lamang</string>
   <string name="morphe_music_playlist_tags_filter_all">Lahat ng playlist</string>
   <string name="morphe_music_playlist_tags_filter_visible">Mga nakikitang tag</string>
-  <string name="morphe_music_playlist_tags_manage">Pamahalaan</string>
   <string name="morphe_music_playlist_tags_none">Wala pang mga tag. I-long press ang isang playlist at piliin ang Tags para gumawa</string>
-  <string name="morphe_music_playlist_tags_section_tags">Mga tag</string>
   <string name="morphe_music_playlist_tags_section_playlists">Talatugtugin</string>
   <string name="morphe_music_playlist_tags_no_playlists">Buksan ang Library nang isang beses para lumitaw dito ang iyong mga playlist</string>
   <string name="morphe_music_playlist_tags_new_tag">Bagong tag</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">I-edit ang tag</string>
-  <string name="morphe_music_playlist_tags_rename">Palitan</string>
-  <string name="morphe_music_playlist_tags_delete">Burahin</string>
   <string name="morphe_music_playlist_tags_hidden">Nakatago</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">Mga pindutan ng pagkilos</string>
   <string name="morphe_music_action_buttons_screen_summary">Piliin kung aling mga pindutan ng pagkilos ang lalabas sa ilalim ng player</string>
-  <string name="morphe_music_hide_action_bar_title">Itago ang action bar</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Itago ang pindutan ng Like at Dislike</string>
-  <string name="morphe_music_hide_comments_button_title">Itago ang pindutan ng Komento</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">Itago ang button na \'Live chat replay\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">Itago ang pindutan ng \'Start radio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">Lumabas na menu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Piliin kung aling mga bahagi ang lalabas sa mga menu ng player at pila</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Itago ang 3-column na component</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Itago ang Like at Dislike na mga button</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Itago ang menu ng \'Taste match\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Itago ang menu na \'Idagdag sa playlist na \'Makinig mamaya\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Itago ang menu na \'Idagdag sa pila\'</string>
@@ -410,17 +359,9 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Itago ang \'Alisin ang pin mula sa speed dial\' na menu</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Itago ang \'Tingnan ang mga credits ng kanta\' na menu</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Simulang pahina</string>
-  <string name="morphe_change_start_page_entry_default">Default</string>
   <string name="morphe_change_start_page_entry_charts">Charts</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Episodes for later</string>
-  <string name="morphe_change_start_page_entry_explore">Explore</string>
-  <string name="morphe_change_start_page_entry_history">Kasaysayan</string>
-  <string name="morphe_change_start_page_entry_library">Library</string>
   <string name="morphe_change_start_page_entry_liked_music">Nagingustuhan ang musika</string>
-  <string name="morphe_change_start_page_entry_playlists">Talatugtugin</string>
-  <string name="morphe_change_start_page_entry_search">Hanapin</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Subkripsyon</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Pilitin ang portrait na oryentasyon</string>
   <string name="morphe_music_force_portrait_orientation_summary">Pinapanatili ang app sa portrait na oryentasyon kapag iniikot ang device</string>
@@ -449,21 +390,10 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_hide_navigation_bar_library_button_title">Itago ang Library button</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Itago ang Upgrade button</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">Ipakita ang button ng Settings</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Aksyon ng button ng Mga Setting</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Kapag naka-enable, ang pag-tap ay bubukas ng mga setting ng Morphe at ang long press ay bubukas ng mga setting ng YouTube Music, i-disable para pagpalitin</string>
-  <string name="morphe_music_hide_navigation_bar_title">Itago ang navigation bar</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Itago ang mga tatak ng navigation button</string>
-  <string name="morphe_music_navigation_bar_glass_title">I-enable ang glass navigation bar</string>
   <string name="morphe_music_navigation_bar_glass_summary">Ipinapakita ang navigation bar bilang isang floating, rounded, at translucent na capsule</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Laki at istilo ng glass navigation bar</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">I-adjust ang taas, lapad, spacing ng button, opacity at liwanag ng rim ng glass navigation bar, na may preview. Ang mga button na hindi kasya sa lapad ng screen ay itatago</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">Taas</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">Maximum na lapad</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Pagitan ng mga button</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Mga button na ipinapakita: %1$s sa %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacity</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">Liwanag ng rim</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">Glass blur</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">Kung gaano kalabo ang page sa likod ng glass navigation bar (Android 14 at mas bago). Sa 0, ang page ay malinaw na nakikita, at bago ang Android 14, ang page ay natatakpan</string>
   <string name="morphe_music_navigation_bar_glass_light_title">Maliwanag na salamin</string>
@@ -472,16 +402,12 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">Binibigyan ng tint ang glass navigation bar gamit ang kulay ng album art ng kantang pino-play</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Itago ang indicator ng napiling button</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Itinatago ang rounded highlight sa likod ng napiling button ng glass navigation bar</string>
-  <string name="morphe_music_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_music_miniplayer_screen_summary">Baguhin ang istilo, mga button at mga gesture ng miniplayer</string>
   <string name="morphe_music_miniplayer_glass_title">I-enable ang glass effect</string>
   <string name="morphe_music_miniplayer_glass_summary">Ipinapakita ang floating miniplayer bilang isang rounded at translucent na glass card</string>
   <string name="morphe_music_miniplayer_glass_style_title">Istilo ng glass miniplayer</string>
   <string name="morphe_music_miniplayer_glass_style_summary">I-adjust ang corner radius, padding ng artwork, liwanag ng rim at opacity ng glass miniplayer, na may preview</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">Corner radius</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding ng artwork</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">Liwanag ng rim</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kung gaano kalabo ang page sa likod ng glass miniplayer (Android 14 at mas bago). Sa 0, ang page ay malinaw na nakikita, at bago ang Android 14, ang page ay natatakpan</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Binibigyan ng tint ang glass miniplayer ng kulay puti sa halip na madilim, para sa mas maliwanag at mas malinaw na glass</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Binibigyan ng tint ang glass miniplayer gamit ang kulay ng album art ng kantang pino-play</string>
@@ -498,9 +424,7 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_hide_activity_button_title">Itago ang button na Activity</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">Itago ang button na \'Magtanong sa Musika\'</string>
-  <string name="morphe_music_hide_cast_button_title">Itago ang Cast button</string>
   <string name="morphe_music_hide_history_button_title">Itago ang History button</string>
-  <string name="morphe_music_hide_search_button_title">Itago ang Search button</string>
   <string name="morphe_music_hide_voice_search_button_title">Itago ang button na \'Voice search\'</string>
   <string name="morphe_music_hide_sound_search_button_title">Itago ang \'Sound search\' button</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, sigura
   <string name="morphe_music_soundproof_show_button_summary">Nagpapakita ng button sa top bar ng player para makita at makapag-cast ng mga boto ng komunidad para sa kasalukuyang artist</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">Laktawan ang mga AI artist</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">Awtomatikong nilalaktawan ang mga track na ang artist ay umabot sa AI threshold sa ibaba</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">Ipakita ang notification ng paglaktaw</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">Nagpapakita ng notification kapag ang isang track ay awtomatikong nilaktawan</string>
   <string name="morphe_music_soundproof_threshold_title">Threshold ng deteksiyon</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">Minimum na AI votes</string>
@@ -624,7 +547,6 @@ Ang database ay lisensyado sa ilalim ng ODC Open Database License (ODbL). Ang mg
   <string name="morphe_music_lyrics_source_all_disabled">Lahat ng provider ay naka-disable - built-in lyrics at embedded lyrics</string>
   <string name="morphe_music_lyrics_source_reset_title">I-reset ang pagkakasunud-sunod ng provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ibalik ang mga provider sa default na pagkakasunud-sunod ng priyoridad.</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Talaan ng mga salita sa Rime</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Kailangan din ng Rime Wordlist ang UniDict: sa Offline Dictionary provider, lagyan ng tsek ang \"Chinese and Cantonese characters (UniDict)\" at hayaang matapos muna ang pag-download nito. Kung wala ito, ang listahang nagbabasa ng mga character ay walang ibibigay na pagbasa.
 
 Lagyan ng tsek ang mga listahang dapat basahin ng Rime Wordlist, pagkatapos ay i-tap ang Save para i-download ang mga ito. Ang listahang idinagdag mo ay tinatanggal kapag inalis mo ang tsek nito.
@@ -634,12 +556,10 @@ Bawat listahan ay iyong sariling talaan ng salita-at-pagbasa, isang .dict.yaml n
 典 din2
 Ang unang column ay ang salita, ang pangalawa ay ang pagbasa nito; ang mga karagdagang column at mga linyang walang tab ay hindi pinapansin."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Walang listang word sa Rime ang naka-tick para sa wika sa itaas. I-tap ang pangalang ito upang i-tick ang isa, o pumili ng wika na may listang</string>
-  <string name="morphe_music_lyrics_rime_dict_add">Idagdag</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Magdagdag ng listang word sa Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">Isang .dict.yaml file, o zip na naglalaman nito, na may mga linyang tulad ng 字 ham at 典 din2. Kinukuha ang listahan kapag pinili mo ito at i-tap ang Save, at ikaw ang dapat tumingin sa lisensya nito</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Code ng wika</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dalawa o tatlong letra, gaya ng hak o wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">Pangalan</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">Ipapakita sa ilalim ng pagbasa, gaya ng Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">Address ng listang word</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// address ng .dict.yaml o ng zip nito</string>
@@ -682,8 +602,6 @@ Ang unang column ay ang salita, ang pangalawa ay ang pagbasa nito; ang mga karag
   <string name="morphe_music_lyrics_cache_total_category_title">Kabuuan ng Paggamit ng Cache</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">Linisin ang Lahat ng Cache</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d item)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">Alisin</string>
-  <string name="morphe_music_lyrics_cache_close_action">Isara</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">Burahin ang %1$s MB (%2$d mga kanta) ng cached lyrics na naka-save sa device na ito?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">Burahin ang %1$s MB (%2$d mga pagsasalin) ng cached translations na naka-save sa device na ito?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">Burahin ang %1$s MB (%2$d mga transliteration) ng cached transliterations na naka-save sa device na ito?</string>
@@ -761,7 +679,6 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_download_started">Nagde-download ng mga dictionary para sa pagbasa…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Handa na ang mga pagbabasa (%s entry)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Nabigo ang pag-download - i-off at i-on muli ito upang subukan muli</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Hapon</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">Chinese</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — mabilis na morphological analyzer &amp; ruby</string>
@@ -780,8 +697,6 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_custom_font_invalid">Invalid o hindi suportadong font file (kailangan ng .ttf o .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">Ibahagi ang lyrics</string>
   <string name="morphe_music_lyrics_share_button">Ibahagi</string>
-  <string name="morphe_music_lyrics_copy">Kopyahin</string>
-  <string name="morphe_music_lyrics_share_cancel">Kanselahin</string>
   <string name="morphe_music_lyrics_share_select_hint">I-tap ang 1–5 na linya</string>
   <string name="morphe_music_lyrics_share_max_lines">Maximum na 5 linya</string>
   <string name="morphe_music_lyrics_share_failed">Hindi makagawa ng share card para sa lyrics</string>
@@ -898,18 +813,15 @@ I-tap ang ibaba nang dalawang beses para mag-record ng SponsorBlock segment"</st
   <string name="morphe_music_lyrics_translated_by_google">Isinalin ng Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Ni-romanize ng Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Isinalin ni %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">Isina-romanisa ni %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">Napag-romanisan ni %s</string>
+  <string name="morphe_music_lyrics_romanized_by">Ni-Romanize ni %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (kasama ang %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Isinalin</string>
-  <string name="morphe_music_lyrics_translation_language_title">Wika ng pagsasalin</string>
   <string name="morphe_music_lyrics_romanize_language_title">Wika para sa romanization o transliteration</string>
   <string name="morphe_music_lyrics_translation_target_language">"Wika ng target ng pagsasalin:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"Wika ng target ng Romanization o transliteration:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">Nagsasalin…</string>
   <string name="morphe_music_lyrics_translate_failed">Hindi ma-isalin ang lyrics</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisado</string>
   <string name="morphe_romanize_language_DEFAULT">Awtomatiko</string>
@@ -917,7 +829,6 @@ I-tap ang ibaba nang dalawang beses para mag-record ng SponsorBlock segment"</st
   <string name="morphe_music_lyrics_romanize_failed">Hindi ma-romanize ang lyrics</string>
   <string name="morphe_music_lyrics_romanize_language_none">Wala</string>
   <string name="morphe_music_lyrics_ruby_language_title">Ruby Target</string>
-  <string name="morphe_music_lyrics_translate_only">Isinalin lamang</string>
   <string name="morphe_music_lyrics_romanize_only">Romanisado lamang</string>
   <string name="morphe_music_lyrics_dual_only">Dalawahanong mode</string>
   <string name="morphe_music_lyrics_copied">Nakopya sa clipboard</string>
@@ -970,7 +881,7 @@ Ang mga lyrics ay galing sa mga third-party service na hindi konektado sa, hindi
   <string name="morphe_music_lyrics_ai_config_status_invalid">Hindi kumpleto ang settings o tinanggihan ng provider</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tinitignan ang koneksyon…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Nakakonekta! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Nabigo ang koneksyon. I-check ang mga setting.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">Bigo ang koneksyon: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">I-test ang koneksyon</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Kukuha ng mga modelo…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Kuhanin ang mga model</string>
@@ -998,4 +909,10 @@ Ang mga lyrics ay galing sa mga third-party service na hindi konektado sa, hindi
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - I-disable ang mga bold na icon</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Ibalik ang Player Up next, Lyrics, at Related tabs</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">Pamahalaan</string>
+  <string name="morphe_music_opacity_title">Opacity</string>
+  <string name="morphe_music_rim_brightness_title">Liwanag ng gilid</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">Mga Tag</string>
 </resources>

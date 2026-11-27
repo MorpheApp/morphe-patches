@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Рестартирање е потребно</string>
   <string name="morphe_settings_restart_dialog_message">Рестартирајте ја апликацијата за оваа промена да стапи на сила</string>
   <string name="morphe_settings_restart">Рестартирај</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортирај</string>
-  <string name="morphe_settings_import_copy">Копирај</string>
   <string name="morphe_settings_import_reset">Поставките на Morphe се вратени на стандардните вредности</string>
   <string name="morphe_settings_import_success">Импортирани се %s поставки</string>
   <string name="morphe_settings_import_failure_parse">Импортирањето не успеа: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Поправки</string>
   <string name="morphe_settings_about_version">Верзија</string>
-  <string name="morphe_settings_about_close">Затвори</string>
   <string name="morphe_settings_about_prerelease">Пред-издание</string>
   <string name="morphe_settings_about_update_available">Достапно ажурирање: %s</string>
   <string name="morphe_settings_about_update_hint">За да ги ажурирате вашите поправки, користете го Morphe за повторно да ја поправите оваа апликација</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Известувања за лиценца</string>
-  <string name="morphe_settings_about_licenses_loading">Вчитување…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Дебугирање</string>
   <string name="morphe_debug_screen_summary">Конфигурирајте ги напредните опции за програмери и дијагностичките дневници</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Дебаг дневниците се извезени успешно</string>
   <string name="morphe_debug_export_logs_failed">Неуспешно извезување на дебаг дневниците</string>
   <string name="morphe_debug_logs_search_hint">Пребарај дебаг записници…</string>
-  <string name="morphe_debug_export_logs_clear">Обриши</string>
   <string name="morphe_debug_logs_disabled">Дебугирањето е исклучено</string>
   <string name="morphe_debug_logs_none_found">Не се пронајдени дебаг дневници</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Дебаг дневниците се копирани</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Блокирани (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Присилени (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Автоматски</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Исклучено</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Вклучено</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Присилно вклучи</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Блокирај</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Отстрани</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ознаките за функции се зачувани</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ознаките за функции се вратени</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ознаките за функции се копирани во клипбордот</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Вашиот MicroG v%1$s е застарен и може да предизвика проблеми.
 
 Ве молиме ажурирајте го MicroG на најновата верзија v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Ажурирај</string>
   <string name="gms_core_dialog_ignore_text">Игнорирај</string>
   <string name="gms_core_dialog_conflict_message">"Инсталираниот MicroG не е препорачан од Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 Исклучувањето на оптимизациите на батеријата за MicroG нема негативно да влијае на користењето на батеријата.
 
 Допрете го копчето за продолжување и дозволете ги промените во оптимизацијата"</string>
-  <string name="gms_core_dialog_continue_text">Продолжи</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Прикажи го дијалогот за оптимизација на батеријата на MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Исклучувањето на ова ќе го скрие повикувањето за оптимизација на батеријата на MicroG.
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Поправки на грешки</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Други промени</string>
   <string name="morphe_patches_update_notice_dialog_more">…и уште %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Ажурирај</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Затвори</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Дневникот за падови е зачуван во корисничките документи: %s</string>
   <string name="morphe_crash_log_saved">Дневникот за падови е зачуван: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">За апликацијата</string>
+  <string name="morphe_ads_screen_title">Реклами</string>
+  <string name="morphe_misc_screen_title">Разно</string>
+  <string name="morphe_navigation_bar_screen_title">Лента за навигација</string>
+  <string name="morphe_post_buttons_screen_title">Копчиња за објава</string>
+  <string name="morphe_custom_branding_icon_title">Икона на апликацијата</string>
+  <string name="morphe_download">Преземи</string>
+  <string name="morphe_hide_create_button_title">Скриј копче за креирање</string>
+  <string name="morphe_hide_post_comment_button_title">Скриј копче за коментар</string>
+  <string name="morphe_sanitize_sharing_links_summary">Ги отстранува параметрите за следење од споделените линкови</string>
+  <string name="morphe_sanitize_sharing_links_title">Прочисти линкови за споделување</string>
+  <string name="morphe_settings_add">Додади</string>
+  <string name="morphe_settings_clear">Исчисти</string>
+  <string name="morphe_settings_close">Затвори</string>
+  <string name="morphe_settings_continue">Продолжи</string>
+  <string name="morphe_settings_copy">Копирај</string>
+  <string name="morphe_settings_delete">Избриши</string>
+  <string name="morphe_settings_remove">Отстрани</string>
+  <string name="morphe_settings_update">Ажурирај</string>
 </resources>

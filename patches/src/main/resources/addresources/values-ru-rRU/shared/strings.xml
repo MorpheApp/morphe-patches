@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Требуется перезапуск</string>
   <string name="morphe_settings_restart_dialog_message">Перезапустите приложение, чтобы изменения вступили в силу</string>
   <string name="morphe_settings_restart">Перезапустить</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортировать</string>
-  <string name="morphe_settings_import_copy">Копировать</string>
   <string name="morphe_settings_import_reset">Настройки Morphe восстановлены до значений по умолчанию</string>
   <string name="morphe_settings_import_success">Импортировано %s настроек</string>
   <string name="morphe_settings_import_failure_parse">Ошибка импорта: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Патчи</string>
   <string name="morphe_settings_about_version">Версия</string>
-  <string name="morphe_settings_about_close">Закрыть</string>
   <string name="morphe_settings_about_prerelease">Предрелизная версия</string>
   <string name="morphe_settings_about_update_available">Доступное обновление: %s</string>
   <string name="morphe_settings_about_update_hint">Чтобы обновить патчи, используйте Morphe для повторного патчинга этого приложения</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Лицензионные уведомления</string>
-  <string name="morphe_settings_about_licenses_loading">Загрузка…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отладка</string>
   <string name="morphe_debug_screen_summary">Настроить расширенные параметры разработчика и журналы диагностики</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Журналы отладки успешно экспортированы</string>
   <string name="morphe_debug_export_logs_failed">Не удалось экспортировать журналы отладки</string>
   <string name="morphe_debug_logs_search_hint">Поиск журналов отладки…</string>
-  <string name="morphe_debug_export_logs_clear">Очистить</string>
   <string name="morphe_debug_logs_disabled">Журналы отладки отключены</string>
   <string name="morphe_debug_logs_none_found">Журналы отладки не найдены</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Журналы отладки скопированы</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Заблокировано (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Принудительно (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Выкл</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Вкл</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Принудительно включить</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Блокировать</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Удалить</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Флажки функций сохранены</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Флажки функций сброшены</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Флажки функций скопированы в буфер обмена</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Ваша версия MicroG v%1$s устарела и может вызвать проблемы.
 
 Пожалуйста, обновите MicroG до последней версии v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Обновление</string>
   <string name="gms_core_dialog_ignore_text">Игнорировать</string>
   <string name="gms_core_dialog_conflict_message">"Установленная версия MicroG не рекомендована Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 Отключение оптимизации батареи для MicroG не повлияет на расход заряда.
 
 Нажмите кнопку «Продолжить» и разрешите изменения оптимизации"</string>
-  <string name="gms_core_dialog_continue_text">Продолжить</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Показать диалоговое окно оптимизации батареи MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Выключение этой функции скроет запрос оптимизации батареи MicroG.
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Исправления ошибок</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Другие изменения</string>
   <string name="morphe_patches_update_notice_dialog_more">…и еще %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Обновление</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Закрыть</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Журнал сбоев сохранён в документах пользователя: %s</string>
   <string name="morphe_crash_log_saved">Журнал сбоев сохранён: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">О приложении</string>
+  <string name="morphe_ads_screen_title">Реклама</string>
+  <string name="morphe_misc_screen_title">Прочие</string>
+  <string name="morphe_navigation_bar_screen_title">Панель навигации</string>
+  <string name="morphe_post_buttons_screen_title">Кнопки публикации</string>
+  <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
+  <string name="morphe_download">Скачать</string>
+  <string name="morphe_hide_create_button_title">Скрыть кнопку \"Создать\"</string>
+  <string name="morphe_hide_post_comment_button_title">Скрыть кнопку \"Комментировать\"</string>
+  <string name="morphe_sanitize_sharing_links_summary">Удаляет параметры отслеживания запросов из ссылок для обмена</string>
+  <string name="morphe_sanitize_sharing_links_title">Очищать ссылки для обмена</string>
+  <string name="morphe_settings_add">Добавить</string>
+  <string name="morphe_settings_clear">Очистить</string>
+  <string name="morphe_settings_close">Закрыть</string>
+  <string name="morphe_settings_continue">Продолжить</string>
+  <string name="morphe_settings_copy">Копировать</string>
+  <string name="morphe_settings_delete">Удалить</string>
+  <string name="morphe_settings_remove">Удалить</string>
+  <string name="morphe_settings_update">Обновить</string>
 </resources>

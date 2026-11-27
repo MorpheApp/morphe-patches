@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Je vyžadován restart</string>
   <string name="morphe_settings_restart_dialog_message">Aby se tato změna projevila, restartujte aplikaci</string>
   <string name="morphe_settings_restart">Restartovat</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importovat</string>
-  <string name="morphe_settings_import_copy">Kopírovat</string>
   <string name="morphe_settings_import_reset">Nastavení Morphe obnoveno do výchozího stavu</string>
   <string name="morphe_settings_import_success">Importováno %s nastavení</string>
   <string name="morphe_settings_import_failure_parse">Import selhal: %s</string>
@@ -76,7 +74,6 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Záplaty</string>
   <string name="morphe_settings_about_version">Verze</string>
-  <string name="morphe_settings_about_close">Zavřít</string>
   <string name="morphe_settings_about_prerelease">Předvydání</string>
   <string name="morphe_settings_about_update_available">K dispozici je aktualizace: %s</string>
   <string name="morphe_settings_about_update_hint">Chcete-li aktualizovat své patche, použijte Morphe k opětovnému patchování této aplikace</string>
@@ -108,7 +105,6 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Licenční upozornění</string>
-  <string name="morphe_settings_about_licenses_loading">Načítám…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladění</string>
   <string name="morphe_debug_screen_summary">Konfigurace pokročilých voleb pro vývojáře a diagnostických protokolů</string>
@@ -125,7 +121,6 @@ Nebudete informováni o žádné neočekávané události"</string>
   <string name="morphe_debug_export_logs_success">Protokoly ladění byly úspěšně exportovány</string>
   <string name="morphe_debug_export_logs_failed">Nepodařilo se exportovat protokoly ladění</string>
   <string name="morphe_debug_logs_search_hint">Hledat v ladicích protokolech…</string>
-  <string name="morphe_debug_export_logs_clear">Vymazat</string>
   <string name="morphe_debug_logs_disabled">Ladění je vypnuto</string>
   <string name="morphe_debug_logs_none_found">Nebyly nalezeny žádné protokoly ladění</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Protokoly ladění zkopírovány</string>
@@ -142,15 +137,8 @@ Nebudete informováni o žádné neočekávané události"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Zablokováno (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Vynuceno (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automaticky</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Vypnuto</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Zapnuto</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Vynutit zapnutí</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokovat</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Odstranit</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Příznaky funkcí uloženy</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Příznaky funkcí resetovány</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Příznaky funkcí zkopírovány do schránky</string>
@@ -200,7 +188,6 @@ Chování zmizelo dříve v průzkumu, takže může být zapojeno více než je
   <string name="gms_core_dialog_outdated_message">"Vaše verze MicroG v%1$s je zastaralá a může způsobovat problémy.
 
 Aktualizujte prosím MicroG na nejnovější verzi v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Aktualizovat</string>
   <string name="gms_core_dialog_ignore_text">Ignorovat</string>
   <string name="gms_core_dialog_conflict_message">"Instalovaná verze MicroG není doporučována aplikací Morphe:
 
@@ -220,7 +207,6 @@ To je nutné, aby aplikace fungovala"</string>
 Zakázání optimalizace baterie pro MicroG nebude mít negativní vliv na spotřebu baterie.
 
 Klepněte na tlačítko Pokračovat a povolte změny optimalizace"</string>
-  <string name="gms_core_dialog_continue_text">Pokračovat</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Zobrazit dialog pro optimalizaci baterie MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Zakázání této funkce skryje výzvu pro optimalizaci baterie MicroG.
 
@@ -259,9 +245,29 @@ Pokud chcete mít co nejméně problémů, &lt;b&gt;odinstalujte&lt;/b&gt; tuto 
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Opravy chyb</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Ostatní změny</string>
   <string name="morphe_patches_update_notice_dialog_more">…a dalších %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Aktualizovat</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Zrušit</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Záznam o pádu byl uložen do uživatelských dokumentů: %s</string>
   <string name="morphe_crash_log_saved">Záznam o pádu uložen: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">O aplikaci</string>
+  <string name="morphe_ads_screen_title">Reklamy</string>
+  <string name="morphe_misc_screen_title">Různé</string>
+  <string name="morphe_navigation_bar_screen_title">Navigační panel</string>
+  <string name="morphe_post_buttons_screen_title">Tlačítka příspěvků</string>
+  <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
+  <string name="morphe_download">Stáhnout</string>
+  <string name="morphe_hide_create_button_title">Skrýt tlačítko Vytvořit</string>
+  <string name="morphe_hide_post_comment_button_title">Skrýt tlačítko Komentovat</string>
+  <string name="morphe_sanitize_sharing_links_summary">Odstraní parametry sledování z sdílených odkazů</string>
+  <string name="morphe_sanitize_sharing_links_title">Vyčistit sdílené odkazy</string>
+  <string name="morphe_settings_add">Přidat</string>
+  <string name="morphe_settings_clear">Vymazat</string>
+  <string name="morphe_settings_close">Zavřít</string>
+  <string name="morphe_settings_continue">Pokračovat</string>
+  <string name="morphe_settings_copy">Kopírovat</string>
+  <string name="morphe_settings_delete">Smazat</string>
+  <string name="morphe_settings_remove">Odstranit</string>
+  <string name="morphe_settings_update">Aktualizovat</string>
 </resources>

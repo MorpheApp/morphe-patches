@@ -81,7 +81,6 @@ Sahkan nama pakej adalah betul dan aplikasi telah dipasang"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tersuai</string>
-  <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
   <string name="morphe_custom_branding_icon_entry_1">Asal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe hitam</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe gelap</string>
@@ -107,7 +106,6 @@ Untuk mengubah ikon di semua tempat, tampal semula dan ubah pilihan tampalan 'Ik
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notis Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sejarah tontonan anda tidak disimpan.&lt;br&gt;&lt;br&gt;Ini kemungkinan besar disebabkan oleh penyekat iklan DNS atau proksi rangkaian.&lt;br&gt;&lt;br&gt;Untuk membetulkannya, senarai putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua penyekat DNS dan proksi</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Jangan tunjukkan lagi</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Tiru penstriman video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurasikan penyamaran klien untuk mengelakkan masalah main balik</string>
@@ -134,7 +132,6 @@ Ketik OK untuk membuka Android System WebView."</string>
 Mainan video mungkin gagal sehingga Android System WebView dikemas kini ke versi terkini.
 
 Ketik OK untuk membuka Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Jangan tunjukkan lagi</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView tidak dipasang. Pasang aplikasi ini untuk membetulkan mainan video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kawalan media pemberitahuan</string>
   <string name="morphe_notification_media_screen_summary">Sesuaikan kawalan main balik yang dipaparkan pada skrin kunci dan panel pemberitahuan</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Sembunyikan butang Sebelumnya &amp; Seterusnya</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Menyembunyikan butang Sebelumnya dan Seterusnya dalam pemberitahuan media, skrin kunci, dan kawalan fon kepala</string>
   <string name="morphe_disable_notification_media_seekbar_title">Kecilkan seekbar</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Menghalang penarikan seekbar pada skrin kunci dan panel pemberitahuan</string>
@@ -244,10 +240,8 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_video_effects_custom_restore">Pulihkan tetapan lalai</string>
   <string name="morphe_video_effects_custom_add_title">Kesan baharu</string>
   <string name="morphe_video_effects_custom_edit_title">Edit kesan</string>
-  <string name="morphe_video_effects_custom_name_hint">Nama</string>
   <string name="morphe_video_effects_custom_name_empty">Masukkan nama untuk kesan tersebut</string>
   <string name="morphe_video_effects_custom_name_exists">Kesan dengan nama ini sudah ada</string>
-  <string name="morphe_video_effects_custom_copy_code">Salin kod</string>
   <string name="morphe_video_effects_custom_error_title">Kesan mempunyai ralat</string>
   <string name="morphe_video_effects_custom_error_message">"Video dipaparkan tanpa kesan sehingga kod diperbetulkan. Berikan ralat ini kepada AI yang menulis kod tersebut:
 
@@ -257,7 +251,6 @@ Untuk log masuk, tekan teruskan di bawah"</string>
 Minta AI untuk kod yang lebih pendek, atau tampal kod secara berperingkat."</string>
   <string name="morphe_video_effects_custom_copy_error"> Salin ralat</string>
   <string name="morphe_video_effects_custom_save_anyway">Simpan juga</string>
-  <string name="morphe_video_effects_custom_delete">Padam</string>
   <string name="morphe_video_effects_custom_delete_title">Padam kesan?</string>
   <string name="morphe_video_effects_custom_delete_message">%s akan dipadamkan.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Minta AI untuk kod yang lebih pendek, atau tampal kod secara berperingkat."</str
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Untuk menggunakan ciri ini, tukar \'Spoof video streams\' kepada mana-mana klien kecuali \'Android Studio\' dan \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Bersihkan pautan perkongsian</string>
-  <string name="morphe_sanitize_sharing_links_summary">Buang parameter pertanyaan penjejakan daripada pautan yang dikongsi</string>
   <string name="morphe_replace_music_with_youtube_title">Tukar pautan kongsi ke youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Menggantikan music.youtube.com kepada youtube.com dalam pautan yang dikongsi</string>
   <string name="morphe_replace_links_with_shortener_title">Tukar pautan kongsi kepada youtu.be</string>
@@ -369,7 +360,6 @@ Jika dimatikan kemudian, anda disyorkan untuk mengosongkan data aplikasi untuk m
   <string name="morphe_custom_font_type_title">Fon</string>
   <string name="morphe_custom_font_type_entry_default">Lalai</string>
   <string name="morphe_custom_font_type_entry_system">Fon sistem peranti</string>
-  <string name="morphe_custom_font_type_entry_custom">Fail fon tersuai</string>
   <string name="morphe_custom_font_file_title">Fail fon tersuai</string>
   <string name="morphe_custom_font_file_summary">Pilih fail fon TTF atau OTF</string>
   <string name="morphe_custom_font_file_invalid">Fail yang dipilih bukan fon TTF atau OTF</string>
@@ -379,7 +369,6 @@ Jika dimatikan kemudian, anda disyorkan untuk mengosongkan data aplikasi untuk m
   <string name="morphe_glass_menus_screen_summary">Menu sebagai kaca beku di atas kandungan kabur di belakangnya</string>
   <string name="morphe_glass_menus_title">Dayakan menu kaca</string>
   <string name="morphe_glass_menus_summary">Memaparkan menu dan helaian bawah sebagai kaca beku, dengan kandungan di belakangnya dikaburkan</string>
-  <string name="morphe_glass_menus_opacity_title">Kelegapan kaca</string>
   <string name="morphe_glass_menus_opacity_summary">Sejauh mana menu menutup kandungan yang dikaburkan (0 adalah jernih, 100 adalah legap)</string>
   <string name="morphe_glass_menus_blur_title">Kabur</string>
   <string name="morphe_glass_menus_blur_summary">Sejauh mana kandungan di belakang menu dikaburkan</string>
@@ -400,7 +389,6 @@ Jika dimatikan kemudian, anda disyorkan untuk mengosongkan data aplikasi untuk m
   <string name="morphe_ryd_dislike_percentage_summary">Menunjukkan tidak suka sebagai peratusan daripada suka dan bukannya nombor</string>
   <string name="morphe_ryd_estimated_like_title">Tunjukkan anggaran suka</string>
   <string name="morphe_ryd_estimated_like_summary">Menunjukkan anggaran jumlah suka pada video di mana pencipta telah menyahaktifkan suka</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Tunjukkan amaran ralat sambungan</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Menunjukkan pemberitahuan apabila pelayan Return YouTube Dislike tidak tersedia</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike mengembalikan jumlah tidak suka yang disembunyikan oleh YouTube pada 2021. Jumlah tersebut datang daripada data yang diarkibkan sebelum pembuangan dan dianggar untuk video yang lebih baharu daripada undian penggunanya, jadi ia adalah anggaran dan dikemas kini setiap beberapa hari
 
@@ -422,8 +410,89 @@ ID video yang anda tonton dihantar ke API Return YouTube Dislike, dan suka serta
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tiada had kadar klien ditemui</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Had kadar klien ditemui %s kali</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisaat</string>
-  <string name="morphe_navigation_bar_screen_title">Bar pandu arah</string>
   <string name="morphe_navigation_bar_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
   <string name="morphe_toolbar_screen_title">Bar alatan</string>
   <string name="morphe_toolbar_screen_summary">Pilih komponen yang akan muncul pada bar alatan</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 saat</string>
+  <string name="morphe_duration_2s">2 saat</string>
+  <string name="morphe_duration_3s">3 saat</string>
+  <string name="morphe_duration_4s">4 saat</string>
+  <string name="morphe_duration_5s">5 saat</string>
+  <string name="morphe_duration_6s">6 saat</string>
+  <string name="morphe_duration_7s">7 saat</string>
+  <string name="morphe_duration_8s">8 saat</string>
+  <string name="morphe_duration_9s">9 saat</string>
+  <string name="morphe_duration_10s">10 saat</string>
+  <string name="morphe_change_start_page_entry_default">Lalai</string>
+  <string name="morphe_change_start_page_entry_explore">Teroka</string>
+  <string name="morphe_change_start_page_entry_history">Sejarah</string>
+  <string name="morphe_change_start_page_entry_library">Pustaka</string>
+  <string name="morphe_change_start_page_entry_playlists">Senarai main</string>
+  <string name="morphe_change_start_page_entry_search">Carian</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Langganan</string>
+  <string name="morphe_change_start_page_title">Laman mula</string>
+  <string name="morphe_action_buttons_screen_title">Butang tindakan</string>
+  <string name="morphe_comments_screen_title">Komen</string>
+  <string name="morphe_feed_screen_title">Suapan</string>
+  <string name="morphe_flyout_menu_screen_title">Menu flyout</string>
+  <string name="morphe_general_title">Umum</string>
+  <string name="morphe_miniplayer_screen_title">Pemain mini</string>
+  <string name="morphe_player_screen_title">Pemain</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Penampilan</string>
+  <string name="morphe_cancel">Batal</string>
+  <string name="morphe_comments_screen_summary">Pilih komponen yang akan muncul dalam bahagian komen</string>
+  <string name="morphe_copy_code">Salin kod</string>
+  <string name="morphe_corner_radius_title">Jejari bucu</string>
+  <string name="morphe_do_not_show_again">Jangan tunjukkan lagi</string>
+  <string name="morphe_download_force_4k_title">Paksa ketersediaan muat turun 4K</string>
+  <string name="morphe_glass_opacity_title">Kelegapan kaca</string>
+  <string name="morphe_header_logo_title">Logo pengepala</string>
+  <string name="morphe_hide_action_bar_title">Sorokkan bar tindakan</string>
+  <string name="morphe_hide_cast_button_title">Sorokkan butang siaran</string>
+  <string name="morphe_hide_comments_button_title">Sorokkan butang Komen</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Sorokkan Garis Panduan Komuniti</string>
+  <string name="morphe_hide_comments_emoji_button_title">Sorokkan butang Emoji</string>
+  <string name="morphe_hide_comments_gif_button_title">Sorokkan butang GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Menyembunyikan GIF dan imej yang dilampirkan pada komen dan balasan</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Sorokkan GIF dan imej</string>
+  <string name="morphe_hide_comments_info_button_title">Sorokkan butang Info</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Sorokkan butang Cap Masa</string>
+  <string name="morphe_hide_horizontal_shelves_title">Sorokkan laci mengufuk</string>
+  <string name="morphe_hide_like_dislike_button_title">Sorokkan butang Suka dan Tidak Suka</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Sorokkan butang Suka dan Tidak Suka</string>
+  <string name="morphe_hide_navigation_bar_title">Sorokkan bar pandu arah</string>
+  <string name="morphe_hide_navigation_button_labels_title">Sorokkan label butang pandu arah</string>
+  <string name="morphe_hide_previous_next_buttons_title">Sorokkan butang Sebelumnya &amp; Seterusnya</string>
+  <string name="morphe_hide_search_button_title">Sorokkan butang carian</string>
+  <string name="morphe_hide_translate_button_title">Sorokkan butang Terjemah</string>
+  <string name="morphe_hide_video_ads_title">Sorokkan iklan video</string>
+  <string name="morphe_loading">Memuatkan…</string>
+  <string name="morphe_name">Nama</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak butang</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Butang dipaparkan: %1$s daripada %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Tinggi</string>
+  <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
+  <string name="morphe_navigation_bar_glass_title">Dayakan bar navigasi kaca</string>
+  <string name="morphe_positive_number_invalid">Nilai mestilah nombor positif</string>
+  <string name="morphe_private_user_id_invalid">ID pengguna peribadi mestilah sekurang-kurangnya 30 aksara panjang</string>
+  <string name="morphe_private_user_id_title">ID pengguna peribadi anda</string>
+  <string name="morphe_rename">Namakan semula</string>
+  <string name="morphe_show_settings_button_title">Tunjukkan butang Tetapan</string>
+  <string name="morphe_show_settings_button_type_title">Tindakan butang Tetapan</string>
+  <string name="morphe_show_video_effect_menu_title">Tunjukkan menu kesan Video</string>
+  <string name="morphe_submit">Hantar</string>
+  <string name="morphe_time_adjustment_step_title">Langkah pelarasan masa</string>
+  <string name="morphe_toast_on_connection_error_title">Tunjukkan amaran ralat sambungan</string>
+  <string name="morphe_toast_on_skip_title">Tunjukkan pemberitahuan langkau</string>
+  <string name="morphe_translated_only">Diterjemah sahaja</string>
+  <string name="morphe_translating">Menterjemah…</string>
+  <string name="morphe_translation_language_title">Bahasa terjemahan</string>
+  <string name="morphe_username_change_unknown_error">Tidak dapat menukar nama pengguna: Status: %1$s %2$s</string>
+  <string name="morphe_username_changed">Nama pengguna berjaya ditukar</string>
+  <string name="morphe_username_html">Nama pengguna anda: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Video</string>
+  <string name="morphe_vote_downvote">Undi turun</string>
+  <string name="morphe_vote_upvote">Undi naik</string>
 </resources>

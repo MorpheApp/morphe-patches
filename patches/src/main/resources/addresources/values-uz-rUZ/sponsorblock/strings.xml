@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock-ni yoqish</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock - bu YouTube videolaridagi noqulay qismlarni o\'tkazib yuborish uchun foydalanuvchilar tomonidan yaratilgan tizim</string>
-  <string name="morphe_sb_appearance_category_title">Ko\'rinish</string>
   <string name="morphe_sb_voting_button_title">Ovoz berish tugmasini ko\'rsatish</string>
   <string name="morphe_sb_voting_button_summary">Segmentlarga ovoz berish yoki pastga tushirish uchun tugma qo\'shadi</string>
   <string name="morphe_sb_square_layout_title">Kvadratli tartibni ishlatish</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Segment davomida tugmani ko\'rsatish o\'rniga bir necha soniyadan keyin tugma yashiriladi</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">\'O\'tkazib yuborish\' tugmasining davomiyligi</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">\'O\'tkazib yuborish\' tugmalari qancha vaqt ko\'rinishini belgilang</string>
-  <string name="morphe_sb_toast_on_skip_title">\'O\'tkazib yuborish\' bildirishnomasini ko\'rsatish</string>
   <string name="morphe_sb_toast_on_skip_summary">Segment avtomatik ravishda o\'tkazib yuborilganda bildirishnoma ko\'rsatiladi</string>
   <string name="morphe_sb_toast_on_skip_duration_title">\'O\'tkazib yuborish\' bildirishnomasining davomiyligi</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Bekor qilish bildirishnomasi qancha vaqt ko\'rinishini belgilang</string>
-  <string name="morphe_sb_duration_1s">1 soniya</string>
-  <string name="morphe_sb_duration_2s">2 soniya</string>
-  <string name="morphe_sb_duration_3s">3 soniya</string>
-  <string name="morphe_sb_duration_4s">4 soniya</string>
-  <string name="morphe_sb_duration_5s">5 soniya</string>
-  <string name="morphe_sb_duration_6s">6 soniya</string>
-  <string name="morphe_sb_duration_7s">7 soniya</string>
-  <string name="morphe_sb_duration_8s">8 soniya</string>
-  <string name="morphe_sb_duration_9s">9 soniya</string>
-  <string name="morphe_sb_duration_10s">10 soniya</string>
   <string name="morphe_sb_video_length_without_segments_title">Segmentlarsiz video uzunligini ko\'rsatish</string>
   <string name="morphe_sb_video_length_without_segments_summary">Sekundlar chizig\'ida ko\'rsatiladigan umumiy video uzunligidan barcha segmentlarni ayiradi</string>
   <string name="morphe_sb_create_segment_category_title">Yangi segmentlar yaratish</string>
   <string name="morphe_sb_create_new_segment_title">\'Yangi segment yaratish\' tugmasini ko\'rsatish</string>
   <string name="morphe_sb_create_new_segment_summary">Sizga SponsorBlock segmentlarini yuborishingiz imkonini beruvchi video pleyerga tugma qo\'shadi</string>
-  <string name="morphe_sb_create_new_segment_step_title">Segment yaratish vaqtini sozlash bosqichi</string>
   <string name="morphe_sb_create_new_segment_step_summary">Vaqtni sozlash tugmalari miqdori (millisekundlarda)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Qiymat musbat bo\'lishi kerak</string>
   <string name="morphe_sb_guidelines_title">Yuborish qoidalari</string>
   <string name="morphe_sb_guidelines_summary">Qoidalar yangi segmentlar yaratish qoidalari va maslahatlarini o\'z ichiga oladi</string>
   <string name="morphe_sb_guidelines_popup_title">Qoidalarga amal qiling</string>
   <string name="morphe_sb_guidelines_popup_content">Yangi segmentlar yaratishdan oldin SponsorBlock qoidalarini o\'qing</string>
   <string name="morphe_sb_guidelines_popup_already_read">Allaqachon o\'qilgan</string>
   <string name="morphe_sb_guidelines_popup_open">Menga ko\'rsating</string>
-  <string name="morphe_sb_general_title">Umumiy</string>
   <string name="morphe_sb_offline_segments_title">Yuklab olingan videolarning segmentlarini saqlash</string>
   <string name="morphe_sb_offline_segments_summary">Internet yo\'q holatda yuklab olingan videolarning segmentlarini tashlab o\'tish imkonini beradi</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Ulanish xatoligi haqida bildirishnomalarni ko\'rsatish</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock server mavjud bo\'lmaganda bildirishnoma ko\'rsatadi</string>
   <string name="morphe_sb_track_skip_count_title">\'O\'tkazib yuborish\' hisobini hisobga olishni yoqish</string>
   <string name="morphe_sb_track_skip_count_summary">\'O\'tkazib yuborish\' hisobini SponsorBlock reytingiga yuboradi, qancha vaqt tejash mumkinligini kuzatish uchun</string>
   <string name="morphe_sb_min_segment_duration_title">Minimal segment davomiyligi</string>
   <string name="morphe_sb_min_segment_duration_summary">Ushbu qiymatdan (soniyalarda) qisqaroq segmentlar ko\'rsatilmaydi yoki o\'tkazib yuborilmaydi</string>
   <string name="morphe_sb_min_segment_duration_invalid">Noto\'g\'ri vaqt davomiyligi</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Sizning shaxsiy foydalanuvchi identifikatoringiz</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Bunisi maxfiy saqlanishi kerak. Bu parolga o\'xshaydi va uni hech kim bilan baham ko\'rmaslik kerak. Agar kimdir buni bilsa, u siz o\'rnida ish ko\'rishi mumkin</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Shaxsiy foydalanuvchi identifikatori kamida 30 ta belgidan iborat bo\'lishi kerak</string>
   <string name="morphe_sb_api_url_title">API URL-ni o\'zgartirish</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock serverga qo\'ng\'iroq qilish uchun foydalanadigan manzil</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal oq ro\'yxati</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL-si noto\'g\'ri</string>
   <string name="morphe_sb_api_url_changed">API URL-si o\'zgartirildi</string>
   <string name="morphe_sb_settings_ie_title">Sozlamalarni import/eksport qilish</string>
-  <string name="morphe_sb_settings_copy">Nusxalash</string>
   <string name="morphe_sb_settings_ie_summary">Sizning SponsorBlock JSON konfiguratsiyangiz, uni Morphe va boshqa SponsorBlock platformalariga import/eksport qilish mumkin</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Sizning SponsorBlock JSON konfiguratsiyangiz, uni Morphe va boshqa SponsorBlock platformalariga import/eksport qilish mumkin
 
@@ -92,7 +73,6 @@ Bu sizning shaxsiy foydalanuvchi identifikatoringizni o'z ichiga oladi. Bunga eh
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Sozlamalaringizda shaxsiy SponsorBlock foydalanuvchi ID-si mavjud.
 
 Foydalanuvchi ID-si parol kabi maxfiy bo'lib, uni hech qachon boshqalar bilan baham ko'rmasligingiz kerak"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Yana ko\'rsatmaslik</string>
   <string name="morphe_sb_diff_segments_title">Segment xulqini o\'zgartirish</string>
   <string name="morphe_sb_segments_sponsor">Homiylar</string>
   <string name="morphe_sb_segments_sponsor_summary">Pullik reklama, pullik tavsiyalar va to\'g\'ridan-to\'g\'ri reklama. O\'z-o\'zini targ\'ib qilish yoki ular yaxshi ko\'radigan sabablar/ijodkorlar/vebsaytlar/mahsulotlarga bepul reklama uchun emas</string>
@@ -122,11 +102,9 @@ Foydalanuvchi ID-si parol kabi maxfiy bo'lib, uni hech qachon boshqalar bilan ba
   <string name="morphe_sb_skip_button_highlight">Muhim jihatga o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_intro_beginning">Kirishni o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_intro_middle">Tanaffusni o\'tkazib yuborish</string>
-  <string name="morphe_sb_skip_button_intro_end">Tanaffusni o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_outro">Yakunini o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_hook">Boshlanishni o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_preview_beginning">Oldindan ko\'rishni o\'tkazib yuborish</string>
-  <string name="morphe_sb_skip_button_preview_middle">Esda saqlashni o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_preview_end">Chekkani o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_filler">Musiqasiz bo\'limni o\'tkazib yuborish</string>
   <string name="morphe_sb_skip_button_nomusic">Yuborilmagan segmentni o\'tkazib yuborish</string>
@@ -137,11 +115,9 @@ Foydalanuvchi ID-si parol kabi maxfiy bo'lib, uni hech qachon boshqalar bilan ba
   <string name="morphe_sb_skipped_highlight">Muhim jihatga o\'tkazib yuborildi</string>
   <string name="morphe_sb_skipped_intro_beginning">Kirish o\'tkazib yuborildi</string>
   <string name="morphe_sb_skipped_intro_middle">Tanaffus oʻtkazib yuborildi</string>
-  <string name="morphe_sb_skipped_intro_end">O\'tkazib yuborilgan oraliq</string>
   <string name="morphe_sb_skipped_outro">O\'tkazib yuborilgan oxirgi qism</string>
   <string name="morphe_sb_skipped_hook">O\'tkazib yuborilgan kirish</string>
   <string name="morphe_sb_skipped_preview_beginning">Oldindan koʻrish oʻtkazib yuborildi</string>
-  <string name="morphe_sb_skipped_preview_middle">Oldindan ko\'rish o\'tkazib yuborildi</string>
   <string name="morphe_sb_skipped_preview_end">Pastga ovoz berish</string>
   <string name="morphe_sb_skipped_filler">Chetga chiqish o\'tkazib yuborildi</string>
   <string name="morphe_sb_skipped_nomusic">Musiqasiz qism o\'tkazib yuborildi</string>
@@ -167,8 +143,6 @@ Allaqachon mavjud"</string>
   <string name="morphe_sb_vote_failed_timeout">Segmentga ovoz berish mumkin emas (API vaqtini kutish muddati tugadi)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Segmentga ovoz berish imkoni bo\'lmadi (holat: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Segmentga ovoz berish mumkin emas: %s</string>
-  <string name="morphe_sb_vote_upvote">Ovozni ko\'tarish</string>
-  <string name="morphe_sb_vote_downvote">Ovozni pasaytirish</string>
   <string name="morphe_sb_vote_category">Toifani o\'zgartirish</string>
   <string name="morphe_sb_vote_no_segments">Ovoz berish uchun segmentlar yo\'q</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ dan
 (%3$s)
 
 Yuborishga tayyormisiz?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Yuborish</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Boshlanish oxiridan oldin bo\'lishi kerak</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Avval vaqt chizigʻida joyni belgilang</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Segmentni oldindan koʻring va uning silliq oʻtkazib yuborilishiga ishonch hosil qiling</string>
@@ -205,16 +178,11 @@ Yuborishga tayyormisiz?"</string>
 %s
 
 Agar siz muhim qismini jo'natmoqchi bo'lsangiz, Bekor tugmasini bosing va ikkinchi joyni belgilang."</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Muhim qismini yuborish</string>
   <string name="morphe_sb_stats_title">Statistika</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistikalar vaqtinchalik mavjud emas (API ishlamayapti)</string>
-  <string name="morphe_sb_stats_loading">Yuklanmoqda…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock o\'chirilgan</string>
-  <string name="morphe_sb_stats_username">Sizning foydalanuvchi nomingiz: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Foydalanuvchi nomingizni o\'zgartirish uchun shu yerga teging</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Foydalanuvchi nomini o\'zgartirib bo\'lmadi: Holat: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Foydalanuvchi nomi muvaffaqiyatli o\'zgartirildi</string>
   <string name="morphe_sb_stats_reputation">Sizning obro\'yingiz &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Siz &lt;b&gt;%s&lt;/b&gt; segment yaratdingiz</string>
   <string name="morphe_sb_stats_submissions_summary">Yaratgan segmentlaringizni ko\'rish uchun shu yerga teging</string>

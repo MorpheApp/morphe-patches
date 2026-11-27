@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">Последно възпроизвеждане</string>
   <string name="morphe_music_android_auto_subscriptions">Абонаменти</string>
-  <string name="morphe_music_android_auto_videos">Видеа</string>
   <string name="morphe_music_android_auto_other_results">Други резултати</string>
   <string name="morphe_music_android_auto_uploaded_songs">Качени песни</string>
   <string name="morphe_music_android_auto_uploaded_albums">Качени албуми</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">Да включите ли Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">Включете Wi-Fi и след това опитайте отново да започнете или да се присъединете към Jam</string>
   <string name="morphe_music_jam_wifi_settings">Отворете настройките за Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">Отказ</string>
   <string name="morphe_music_jam_use_package">Използвайте пакета</string>
   <string name="morphe_music_jam_invalid_package">Въведете валидно име на Android пакет</string>
   <string name="morphe_music_jam_package_saved">Пакетът е запазен. Настройте Jam Layer, за да се свържете</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">Сканиране на QR</string>
   <string name="morphe_music_jam_invalid_invite">Въведете кода от осем знака или поставете покана</string>
   <string name="morphe_music_jam_join_your_jam">Присъединете се към вашия Jam</string>
-  <string name="morphe_music_jam_copy_code">Копиране на кода</string>
   <string name="morphe_music_jam_code_clip">Код за Jam</string>
   <string name="morphe_music_jam_show_qr">Показване на QR</string>
   <string name="morphe_music_jam_done">Готово</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">Напускане на Jam</string>
   <string name="morphe_music_jam_start_jam">Стартиране на Jam</string>
   <string name="morphe_music_jam_setup_layer">Настройване на Jam Layer</string>
-  <string name="morphe_music_jam_manage">Управление</string>
   <string name="morphe_music_jam_details">Подробности</string>
   <string name="morphe_music_jam_open">Отваряне</string>
   <string name="morphe_music_jam_loading_song_options">Зареждане на опциите за песента…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">Опашката е променена; опитайте отново с жеста</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Лого на заглавието</string>
   <string name="morphe_header_logo_entry_1">По подразбиране</string>
   <string name="morphe_header_logo_entry_3">По избор</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Използвайте външен изтегляч за менюто Изтегляне</string>
   <string name="morphe_external_downloader_menu_summary">Опцията Изтегляне в менютата отваря вашия външен изтегляч вместо него</string>
-  <string name="morphe_download_force_4k_title">Принуди наличност на 4K изтегляне</string>
   <string name="morphe_download_force_4k_summary">Запазва изтегляния в 1440p и 4K, дори ако YouTube Music реши, че това устройство не може да ги възпроизвежда</string>
   <string name="morphe_export_download_folder_title">Експортиране на изтегляния</string>
   <string name="morphe_export_download_folder_summary">"Експортирайте запазените в приложението песни и видеоклипове в паметта на вашето устройство чрез менюто за изтегляния в приложението. Докоснете, за да промените папката за експорт
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">Замяна на бутона \"Разбъркване\" с бутон \"Повторение\"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">Показва бутона \"Повторение\" вместо бутона \"Разбъркване\" в медийното известие и на заключения екран</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">Отношение</string>
-  <string name="morphe_settings_music_screen_01_ads_title">Реклами</string>
-  <string name="morphe_settings_music_screen_02_feed_title">Емисия </string>
-  <string name="morphe_settings_music_screen_03_general_title">Основни</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">Текстове</string>
-  <string name="morphe_settings_music_screen_05_misc_title">Други</string>
-  <string name="morphe_settings_music_screen_06_player_title">Плейър</string>
-  <string name="morphe_settings_music_screen_10_video_title">Видео</string>
   <string name="morphe_music_app_language_title">Език на YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Език на системата</string>
   <string name="morphe_music_app_language_summary_unsupported">Изисква Android 13 или по-нова версия</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Скриване на  \'Получи премиум музика\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Скрий промоциите за Music Premium</string>
-  <string name="morphe_music_hide_video_ads_title">Скриване на видео рекламите</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Скрий превключвател за аудио/видео</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Скрива бутона за изтегляне в подкаст предаването</string>
   <string name="morphe_music_hide_explore_shelf_title">Скрий рафт \'Разгледай\'</string>
   <string name="morphe_music_hide_filter_bar_title">Скриване на лентата с филтри</string>
   <string name="morphe_music_hide_grid_shelves_title">Скрий рафтове с мрежа</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">Скрий хоризонтални рафтове</string>
   <string name="morphe_music_hide_new_button_title">Скриване на бутона „Ново“</string>
   <string name="morphe_music_hide_new_button_summary">Скрива бутона „Ново“ в раздела „Библиотека“</string>
   <string name="morphe_music_hide_list_shelves_title">Скрий списъчни рафтове</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панел с текстове</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Скрий бутона за превод</string>
   <string name="morphe_music_hide_new_from_shelf_title">Скрий рафт \'Нови от\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Скрий плейлист рафтове</string>
   <string name="morphe_music_hide_repeat_button_title">Скрий бутон \'Повтори\'</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Скрий рафт \'Бърз набор\'</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Скриване на секцията „Може също да харесате“</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">Скрий рафта \"Вашите изтегляния\"</string>
-  <string name="morphe_music_comments_screen_title">Коментари</string>
-  <string name="morphe_music_comments_screen_summary">Изберете кои компоненти да се показват в секцията за коментари</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">Скрий Правила на общността</string>
   <string name="morphe_music_hide_comments_context_title">Скрий съобщението за контекст</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">Скрий бутон \'Емоджи\'</string>
-  <string name="morphe_music_hide_comments_gif_button_title">Скрий бутона за GIF</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">Скриване на GIF файлове и изображения</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">Скрива GIF файловете и изображенията, прикачени към коментари и отговори.</string>
-  <string name="morphe_music_hide_comments_info_button_title">Скрий бутон \'Информация\'</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">Скрий бутон \'Времеви печат\'</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Преливане</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно преливане на песните една в друга</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 милисекунди</string>
   <string name="morphe_crossfade_duration_500ms">500 милисекунди</string>
   <string name="morphe_crossfade_duration_750ms">750 милисекунди</string>
-  <string name="morphe_crossfade_duration_1000ms">1 секунда</string>
-  <string name="morphe_crossfade_duration_2000ms">2 секунди</string>
-  <string name="morphe_crossfade_duration_3000ms">3 секунди</string>
-  <string name="morphe_crossfade_duration_4000ms">4 секунди</string>
-  <string name="morphe_crossfade_duration_5000ms">5 секунди</string>
-  <string name="morphe_crossfade_duration_6000ms">6 секунди</string>
-  <string name="morphe_crossfade_duration_7000ms">7 секунди</string>
-  <string name="morphe_crossfade_duration_8000ms">8 секунди</string>
-  <string name="morphe_crossfade_duration_9000ms">9 секунди</string>
-  <string name="morphe_crossfade_duration_10000ms">10 секунди</string>
   <string name="morphe_crossfade_duration_11000ms">11 секунди</string>
   <string name="morphe_crossfade_duration_12000ms">12 секунди</string>
   <string name="morphe_music_crossfade_on_skip_title">Преливане при ръчно прескачане</string>
@@ -283,7 +247,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_summary">Скорост, използвана за всички песни. При 100% се използва скоростта на приложението, като скоростта на възпроизвеждане на подкаст.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Промяна на височината на тона със скоростта</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">Показване на менюто за видео ефекти</string>
   <string name="morphe_music_video_effect_menu_summary">Добавя видео ефект към менюто на плейъра, докато се възпроизвежда видео</string>
   <string name="morphe_music_video_effect_next_video">Ефектът ще се покаже от следващото видео</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_summary">Добавя елемент \"Етикети\" в менюто на плейлистите и бутон за филтриране по етикети до бутона за сортиране на библиотеката</string>
   <string name="morphe_music_playlist_tags_manage_title">Управление на етикетите за плейлисти</string>
   <string name="morphe_music_playlist_tags_manage_summary">Създавайте, преименувайте и изтривайте етикети и етикетирайте плейлистите, които виждате в библиотеката си</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">Етикети</string>
   <string name="morphe_music_playlist_tags_menu_item_none">Без етикети</string>
-  <string name="morphe_music_playlist_tags_filter_button">Етикети</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">Етикет: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">Етикети (%s скрити)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">Етикети за %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">Нов етикет</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 плейлист</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s плейлиста</string>
@@ -344,22 +303,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_show_only">Показване само на</string>
   <string name="morphe_music_playlist_tags_filter_all">Всички плейлисти</string>
   <string name="morphe_music_playlist_tags_filter_visible">Видими етикети</string>
-  <string name="morphe_music_playlist_tags_manage">Управление</string>
   <string name="morphe_music_playlist_tags_none">Все още няма етикети. Задръжте плейлист и изберете \"Етикети\", за да създадете такъв</string>
-  <string name="morphe_music_playlist_tags_section_tags">Етикети</string>
   <string name="morphe_music_playlist_tags_section_playlists">Плейлисти</string>
   <string name="morphe_music_playlist_tags_no_playlists">Отворете библиотеката веднъж, за да се появят плейлистите ви тук</string>
   <string name="morphe_music_playlist_tags_new_tag">Нов етикет</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Редактиране на етикет</string>
-  <string name="morphe_music_playlist_tags_rename">Преименуване</string>
-  <string name="morphe_music_playlist_tags_delete">Изтриване</string>
   <string name="morphe_music_playlist_tags_hidden">Скрити</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">Действия</string>
   <string name="morphe_music_action_buttons_screen_summary">Изберете кои бутони за действия да се показват под плейъра.</string>
-  <string name="morphe_music_hide_action_bar_title">Скриване на лентата с действия</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Скриване на бутона Харесвам и Не харесвам</string>
-  <string name="morphe_music_hide_comments_button_title">Скриване на бутона Коментари</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">Скрий бутона \'Повторение на чата на живо\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Second \"item\" text"</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">Скрий бутона \'Стартиране на радио\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">Изскачащо меню</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Изберете кои компоненти да се показват в менютата на плейъра и опашката</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Скрий 3-колонен компонент</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Скрий бутони \"Харесва ми\" и \"Не харесва ми\"</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Скрий меню \'Съответствие във вкуса\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Скрий меню \"Добавяне към плейлиста \'Слушайте по-късно\'\"</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Скрий меню \"Добавяне към опашката\"</string>
@@ -410,17 +359,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Скрий менюто \"Премахни от бърз набор\"</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Скрий менюто \"Виж информация за песента\"</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Начална страница</string>
-  <string name="morphe_change_start_page_entry_default">По подразбиране</string>
   <string name="morphe_change_start_page_entry_charts">Графики</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Епизоди за по-късно</string>
-  <string name="morphe_change_start_page_entry_explore">Разгледай</string>
-  <string name="morphe_change_start_page_entry_history">История</string>
-  <string name="morphe_change_start_page_entry_library">Библиотека</string>
   <string name="morphe_change_start_page_entry_liked_music">Харесани песни</string>
-  <string name="morphe_change_start_page_entry_playlists">Плейлисти</string>
-  <string name="morphe_change_start_page_entry_search">Търсене</string>
-  <string name="morphe_change_start_page_entry_subscriptions">Абонаменти</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Принудителна портретна ориентация</string>
   <string name="morphe_music_force_portrait_orientation_summary">Запазва приложението в портретна ориентация при завъртане на устройството</string>
@@ -449,21 +390,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">Скриване на бутона \"Библиотека\"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Скриване на бутона \"Надграждане\"</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">Показване на бутона „Настройки“</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">Действие на бутона за настройки</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">Когато е активирано, докосването отваря настройките на Morphe, а продължителното натискане отваря настройките на YouTube Music; деактивирайте, за да ги размените</string>
-  <string name="morphe_music_hide_navigation_bar_title">Скриване на лентата за навигация</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Имена на бутоните в лентата за навигация</string>
-  <string name="morphe_music_navigation_bar_glass_title">Активирай навигационната лента със стъклен ефект.</string>
   <string name="morphe_music_navigation_bar_glass_summary">Показва лентата за навигация като плаваща, заоблена, полупрозрачна капсула</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Размер и стил на стъклената лента за навигация</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">Регулирайте височината, ширината, разстоянието между бутоните, прозрачността и яркостта на ръба на стъклената лента за навигация, с предварителен преглед. Бутоните, които не се събират в ширината на екрана, се скриват</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">Височина</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">Максимална ширина</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Разстояние между бутоните</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Показани бутони: %1$s от %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Непрозрачност</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">Яркост на ръба</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">Стъклено размиване</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">Доколко е размита страницата зад стъклената лента за навигация (Android 14 и по-нови версии). При 0 страницата се вижда ясно, а преди Android 14 страницата е покрита</string>
   <string name="morphe_music_navigation_bar_glass_light_title">Светло стъкло</string>
@@ -472,16 +402,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">Оцветява стъклената лента за навигация с цвета на обложката на албума на песента, която се възпроизвежда</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Скриване на индикатора за избрания бутон</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Скрива заобленото подчертаване зад избрания бутон на стъклената лента за навигация</string>
-  <string name="morphe_music_miniplayer_screen_title">Миниплейър</string>
   <string name="morphe_music_miniplayer_screen_summary">Промяна на стила, бутоните и жестовете на миниплейъра</string>
   <string name="morphe_music_miniplayer_glass_title">Активиране на стъклен ефект</string>
   <string name="morphe_music_miniplayer_glass_summary">Показва плаващия миниплейър като заоблена, полупрозрачна стъклена карта</string>
   <string name="morphe_music_miniplayer_glass_style_title">Стил на стъкления миниплейър</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Регулирайте радиуса на ъглите, отстъпите на обложката, яркостта на ръба и прозрачността на стъкления миниплейър, с предварителен преглед</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">Радиус на ъглите</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Отстъпи на обложката</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">Яркост на ръба</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">Непрозрачност</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Доколко е размита страницата зад стъкления миниплейър (Android 14 и по-нови версии). При 0 страницата се вижда ясно, а преди Android 14 страницата е покрита</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Оцветява стъкления миниплейър в бяло вместо в тъмно, за по-светло и по-ясно стъкло</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Оцветява стъкления миниплейър с цвета на обложката на албума на песента, която се възпроизвежда</string>
@@ -498,9 +424,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_activity_button_title">Скриване на бутона „Активност“</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">Скриване на бутона „Задай въпрос на Music“</string>
-  <string name="morphe_music_hide_cast_button_title">Скрий бутона за предаване</string>
   <string name="morphe_music_hide_history_button_title">Скрий бутона \"История\"</string>
-  <string name="morphe_music_hide_search_button_title">Скрий бутона за търсене</string>
   <string name="morphe_music_hide_voice_search_button_title">Скриване на бутона „Гласово търсене“</string>
   <string name="morphe_music_hide_sound_search_button_title">Скриване на бутона за \"Звуково търсене\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_summary">Показва бутон в горната лента на плейъра за преглед и подаване на гласове от общността за текущия изпълнител</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">Пропускай AI изпълнители</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">Автоматично прескача песни, чийто изпълнител достига AI прага по-долу</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">Показване на известие за прескачане</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">Показва известие, когато песен бъде автоматично прескочена</string>
   <string name="morphe_music_soundproof_threshold_title">Праг на откриване</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">Минимален брой AI гласове</string>
@@ -624,7 +547,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">Всички доставчици са деактивирани - вградени текстове и текстове, вградени във файла</string>
   <string name="morphe_music_lyrics_source_reset_title">Да се нулира редът на доставчиците?</string>
   <string name="morphe_music_lyrics_source_reset_message">Възстановяване на реда по подразбиране на доставчиците.</string>
-  <string name="morphe_music_lyrics_rime_dict_title">Списък с думи Rime</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"За Rime Wordlist е необходим и UniDict: в доставчика Offline Dictionary отбележете „Китайски и кантонски знаци (UniDict)“ и изчакайте изтеглянето да приключи. Без него списъкът, който чете знаци, няма да даде прочит.
 
 Отбележете списъците, които Rime Wordlist трябва да чете, след което натиснете „Запази“, за да ги изтеглите. Списък, който сте добавили, се премахва, когато го отметнете.
@@ -634,12 +556,10 @@ Second \"item\" text"</string>
 典 din2
 Първата колона е думата, втората е нейният прочит; допълнителните колони и редовете без табулация се игнорират."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Няма отметнат списък с думи за Rime за езика по-горе. Докоснете това име, за да отметнете такъв, или изберете език, който има списъкNo Rime word list is ticked for the language above. Tap this name to tick one, or pick a language that has a list</string>
-  <string name="morphe_music_lyrics_rime_dict_add">Добавяне</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Добавете списък с думи Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml файл или архив zip, съдържащ такъв, с редове като 字 ham и 典 din2. Списъкът се изтегля, когато го отметнете и натиснете „Запази“. Лицензът му е ваша отговорност</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Езиков код</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Две или три букви, например hak или wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">Име</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">Показва се под прочитането, например Хакка (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">Адрес на списъка с думи</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// адрес на .dict.yaml или неговия архив zip</string>
@@ -682,8 +602,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_cache_total_category_title">Общо използване на кеша</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">Изчистване на целия кеш</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d елемента)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">Изчистване</string>
-  <string name="morphe_music_lyrics_cache_close_action">Затваряне</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">Изтриване на %1$s MB (%2$d песни) кеширани текстове, запазени на това устройство?</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">Изтриване на %1$s MB (%2$d превода) кеширани преводи, запазени на това устройство?</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">Изтриване на %1$s MB (%2$d транслитерации) кеширани транслитерации, запазени на това устройство?</string>
@@ -766,7 +684,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Изтегляне на речници за четене…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Прочитът е готов (%s записи)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Изтеглянето бе неуспешно – изключете и включете отново, за да опитате повторно</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Офлайн речник</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Японски</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">Китайски</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — бърз морфологичен анализатор &amp; ruby</string>
@@ -785,8 +702,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_custom_font_invalid">Невалиден или неподдържан файл с шрифт (изисква се .ttf или .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">Сподели текстове</string>
   <string name="morphe_music_lyrics_share_button">Сподели</string>
-  <string name="morphe_music_lyrics_copy">Копиране</string>
-  <string name="morphe_music_lyrics_share_cancel">Отказ</string>
   <string name="morphe_music_lyrics_share_select_hint">Докоснете 1–5 реда</string>
   <string name="morphe_music_lyrics_share_max_lines">Максимум 5 реда</string>
   <string name="morphe_music_lyrics_share_failed">Не успяхме да създадем карта за споделяне на текст</string>
@@ -903,18 +818,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_google">Преведено от Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Романизирано от Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Преведено от %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">Романизирано от %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">Романизирано от %s</string>
+  <string name="morphe_music_lyrics_romanized_by">Романизирано от %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (с %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Преведено</string>
-  <string name="morphe_music_lyrics_translation_language_title">Език на превода</string>
   <string name="morphe_music_lyrics_romanize_language_title">Език за романизация или транслитерация</string>
   <string name="morphe_music_lyrics_translation_target_language">"Език за превод:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"Език за романизация или транслитерация:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">Превежда се…</string>
   <string name="morphe_music_lyrics_translate_failed">Текстът не можа да бъде преведен</string>
   <string name="morphe_music_lyrics_romanize_hide">Романизирано</string>
   <string name="morphe_romanize_language_DEFAULT">Автоматичен</string>
@@ -922,7 +834,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_failed">Текстът не можа да бъде романизиран.</string>
   <string name="morphe_music_lyrics_romanize_language_none">Без</string>
   <string name="morphe_music_lyrics_ruby_language_title">Целеви език за Ruby</string>
-  <string name="morphe_music_lyrics_translate_only">Само превод</string>
   <string name="morphe_music_lyrics_romanize_only">Само романизация</string>
   <string name="morphe_music_lyrics_dual_only">Двоен режим</string>
   <string name="morphe_music_lyrics_copied">Копирано в клипборда</string>
@@ -975,7 +886,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Настройките са непълни или отхвърлени от доставчика</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Проверка на връзката…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Свързан! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Връзката е неуспешна. Проверете настройките.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">Връзката не успя: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Тествай връзката</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Извличане на модели…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Зареди моделите</string>
@@ -1003,4 +914,10 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Деактивиране на удебелени икони</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Възстановяване на разделите Up next, Lyrics и Related</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">Управление</string>
+  <string name="morphe_music_opacity_title">Непрозрачност</string>
+  <string name="morphe_music_rim_brightness_title">Яркост на ръба</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">Тагове</string>
 </resources>
