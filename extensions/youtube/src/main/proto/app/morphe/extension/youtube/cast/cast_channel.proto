@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.cast;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.cast";
+option java_outer_classname = "CastChannel";
+
+// Message of the Cast v2 protocol, sent over TLS on port 8009 after a 4 byte big endian length.
+// Field numbers follow cast_channel.proto of Chromium. All fields use explicit presence,
+// because the receiver expects them even when they hold the default value.
+message CastMessage {
+    optional int32 protocolVersion = 1; // 0 = CASTV2_1_0.
+    optional string sourceId = 2;
+    optional string destinationId = 3;
+    optional string namespace = 4;
+    optional int32 payloadType = 5; // 0 = STRING.
+    optional string payloadUtf8 = 6;
+}

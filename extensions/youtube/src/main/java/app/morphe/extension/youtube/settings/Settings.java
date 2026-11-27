@@ -42,6 +42,8 @@ import app.morphe.extension.youtube.holdgesture.HoldGestureController.LauncherSl
 import app.morphe.extension.youtube.holdgesture.HoldGestureController.Sensitivity;
 import app.morphe.extension.youtube.holdgesture.HoldGestureController.SpeedStep;
 import app.morphe.extension.youtube.holdgesture.LauncherAction;
+import app.morphe.extension.youtube.cast.CastCodecs;
+import app.morphe.extension.youtube.cast.CastQuality;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
@@ -392,6 +394,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting FULLSCREEN_VIDEO_ALIGNMENT_BUTTON = new BooleanSetting("morphe_fullscreen_video_alignment_button", FALSE, true);
     public static final BooleanSetting COPY_VIDEO_LINK_BUTTON = new BooleanSetting("morphe_copy_video_link_button", FALSE, true);
     public static final BooleanSetting COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON = new BooleanSetting("morphe_copy_video_link_with_timestamp_button", TRUE, true, parent(COPY_VIDEO_LINK_BUTTON));
+    public static final BooleanSetting CAST_AD_FREE_CAST_MENU = new BooleanSetting("morphe_cast_ad_free_cast_menu", TRUE, true);
+    public static final EnumSetting<CastCodecs> CAST_AD_FREE_CODECS = new EnumSetting<>("morphe_cast_ad_free_codecs", CastCodecs.VP9, parent(CAST_AD_FREE_CAST_MENU));
+    public static final EnumSetting<CastQuality> CAST_AD_FREE_QUALITY = new EnumSetting<>("morphe_cast_ad_free_quality", CastQuality.P1080, parent(CAST_AD_FREE_CAST_MENU));
     public static final BooleanSetting HIDE_AUTOPLAY_BUTTON = new BooleanSetting("morphe_hide_autoplay_button", FALSE, true);
     public static final BooleanSetting HIDE_CAPTIONS_BUTTON = new BooleanSetting("morphe_hide_captions_button", FALSE);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_hide_cast_button", FALSE, true);

@@ -1420,4 +1420,29 @@
         <item>2000</item>
         <item>0</item>
     </string-array>
+    <!-- interaction.castadfree.castAdFreeButtonPatch -->
+    <string-array name="morphe_cast_ad_free_codecs_entries">
+        <item>@string/morphe_cast_ad_free_codecs_entry_h264</item>
+        <item>@string/morphe_cast_ad_free_codecs_entry_vp9</item>
+        <item>@string/morphe_cast_ad_free_codecs_entry_av1</item>
+    </string-array>
+    <string-array name="morphe_cast_ad_free_codecs_entry_values">
+        <item>H264</item>
+        <item>VP9</item>
+        <item>AV1</item>
+    </string-array>
+    <string-array name="morphe_cast_ad_free_quality_entries">
+        <item>@string/morphe_cast_ad_free_quality_entry_2160</item>
+        <item>@string/morphe_cast_ad_free_quality_entry_1440</item>
+        <item>@string/morphe_cast_ad_free_quality_entry_1080</item>
+        <item>@string/morphe_cast_ad_free_quality_entry_720</item>
+        <item>@string/morphe_cast_ad_free_quality_entry_480</item>
+    </string-array>
+    <string-array name="morphe_cast_ad_free_quality_entry_values">
+        <item>P2160</item>
+        <item>P1440</item>
+        <item>P1080</item>
+        <item>P720</item>
+        <item>P480</item>
+    </string-array>
 </resources>
