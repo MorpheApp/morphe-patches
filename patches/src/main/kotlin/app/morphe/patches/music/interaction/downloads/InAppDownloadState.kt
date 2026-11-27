@@ -21,7 +21,6 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -212,8 +211,9 @@ internal fun hookInAppDownloadState() {
         check-cast v0, $CONTROLLER
         return-object v0
     """)
-    resolver.classDef.directMethods.filter { it.name == "<init>" }.forEach { constructor ->
-        constructor.getMutableMethod().addInstruction(
+    // Reading directMethods here would cache the list before the offlineability helper is added.
+    resolver.classDef.methods.filter { it.name == "<init>" }.forEach { constructor ->
+        constructor.addInstruction(
             constructor.implementation!!.instructions.count() - 1,
             "invoke-static/range { p0 .. p0 }, $STATE;->setResolver($RESOLVER)V",
         )
