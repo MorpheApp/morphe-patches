@@ -25,6 +25,7 @@ import java.lang.ref.WeakReference;
 import java.text.Normalizer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
@@ -108,6 +109,7 @@ public final class LyricsPanelInstaller {
         if (settingsListenerRegistered) {
             return;
         }
+        LyricsTuningConfig.reload(Settings.LYRICS_TUNING_PARAMS.get());
         Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(
                 SETTINGS_LISTENER);
         settingsListenerRegistered = true;
@@ -195,6 +197,9 @@ public final class LyricsPanelInstaller {
             } else if (Settings.LYRICS_COVER_STYLE.key.equals(key)
                     || Settings.LYRICS_COVER_STYLE_PARAMS.key.equals(key)) {
                 panelView.applyCoverStyleSetting();
+            } else if (Settings.LYRICS_TUNING_PARAMS.key.equals(key)) {
+                LyricsTuningConfig.reload(Settings.LYRICS_TUNING_PARAMS.get());
+                panelView.applyTuningSettings();
             } else if (Settings.LYRICS_TEXT_COLOR_SLOT.key.equals(key)
                     || Settings.LYRICS_FULLSCREEN_TEXT_COLOR.key.equals(key)) {
                 panelView.applyFullscreenTextColorSetting();

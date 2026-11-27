@@ -42,6 +42,7 @@ import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.settings.preference.LyricsTargetLanguagePreference;
 import app.morphe.extension.shared.ui.Dim;
@@ -50,11 +51,11 @@ import app.morphe.extension.shared.ui.Dim;
 final class LyricsViewSupport {
 
     /** Lines other than the active one shrink a little, on top of dimming. */
-    static final float ACTIVE_LINE_SCALE = 1.0f;
-    static final float INACTIVE_LINE_SCALE = 0.93f;
-    static final float INACTIVE_LINE_ALPHA = 0.35f;
+    static float ACTIVE_LINE_SCALE = 1.0f;
+    static float INACTIVE_LINE_SCALE = 0.93f;
+    static float INACTIVE_LINE_ALPHA = 0.35f;
     /** Every line while the lyrics are scrolled by hand, so all of them read alike. */
-    static final float BROWSING_LINE_ALPHA = 0.60f;
+    static float BROWSING_LINE_ALPHA = 0.60f;
     /** Compose LinearOutSlowInEasing. */
     static final TimeInterpolator LINEAR_OUT_SLOW_IN =
             new PathInterpolator(0f, 0f, 0.2f, 1f);
@@ -72,6 +73,14 @@ final class LyricsViewSupport {
     private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.42f;
     private static final float SECTION_DOT_INSET_FACTOR = 0.18f;
     private static final ArgbEvaluator BUTTON_COLOR_EVALUATOR = new ArgbEvaluator();
+
+    static void onTuningChanged() {
+        LyricsTuningConfig.Scale sc = LyricsTuningConfig.get().scale();
+        ACTIVE_LINE_SCALE = sc.activeLine();
+        INACTIVE_LINE_SCALE = sc.inactiveLine();
+        INACTIVE_LINE_ALPHA = sc.inactiveAlpha();
+        BROWSING_LINE_ALPHA = sc.browseAlpha();
+    }
 
     private LyricsViewSupport() {
     }
@@ -149,13 +158,11 @@ final class LyricsViewSupport {
 
     /** {@return the alpha of an inactive line this many lines from the sung one, in spotlight mode} */
     static float spotlightAlpha(int distance) {
-        return switch (distance) {
-            case 0 -> INACTIVE_LINE_ALPHA;
-            case 1 -> 0.28f;
-            case 2 -> 0.20f;
-            case 3 -> 0.14f;
-            default -> 0.10f;
-        };
+        LyricsTuningConfig.Scale sc = LyricsTuningConfig.get().scale();
+        float[] a = sc.spotlightAlphas();
+        int idx = Math.min(distance, a.length - 1);
+        if (idx < 0) idx = 0;
+        return a[idx];
     }
 
     /** Relaxed scrolling only applies on top of spring scrolling. */
@@ -170,10 +177,17 @@ final class LyricsViewSupport {
 
     /** {@return the scale of an inactive line this many lines from the sung one, in spotlight mode} */
     static float spotlightScale(int distance) {
-        if (distance <= 1) return 0.97f;
-        if (distance <= 3) return 0.93f;
-        if (distance == 4) return 0.90f;
-        return 0.85f;
+        LyricsTuningConfig.Scale sc = LyricsTuningConfig.get().scale();
+        float[] s = sc.spotlightScales();
+        // Keep the original mapping: distance 0/1 -> first two, 2/3 -> next two, 4 -> fifth, rest -> last.
+        int idx;
+        if (distance <= 1) idx = Math.min(distance, 1);
+        else if (distance <= 3) idx = 2 + Math.min(distance - 2, 1);
+        else if (distance == 4) idx = 4;
+        else idx = s.length - 1;
+        if (idx >= s.length) idx = s.length - 1;
+        if (idx < 0) idx = 0;
+        return s[idx];
     }
 
     static void fadeTo(TextView lineView, float alpha) {

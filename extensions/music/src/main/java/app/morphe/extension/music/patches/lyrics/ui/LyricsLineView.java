@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.ui.SpringEasing.LyricsSpring;
@@ -175,6 +176,21 @@ final class LyricsLineView extends TextView {
         invalidate();
     }
 
+    /** Clears frozen karaoke clip arrays / animator sweep state so a finished line cannot keep painting its last word. */
+    public void clearWordPaintState() {
+        if (lineKaraokeStartX != null) {
+            Arrays.fill(lineKaraokeStartX, Float.NaN);
+            Arrays.fill(lineKaraokeEndX, Float.NaN);
+        }
+        if (lineMaxSungX != null) {
+            Arrays.fill(lineMaxSungX, Float.NaN);
+        }
+        if (syllableCache != null && syllableCache.animator != null) {
+            syllableCache.animator.clearSeekProgress();
+        }
+        lastDrawnClockPos = Long.MIN_VALUE;
+    }
+
     @SuppressWarnings("ConstantValue")
     @Override
     public void setText(CharSequence text, BufferType type) {
@@ -186,6 +202,7 @@ final class LyricsLineView extends TextView {
         cachedLayout = null;
         cachedText = null;
         releaseSyllableCache();
+        clearWordPaintState();
         if (fittedState != null && !Objects.equals(fittedState.text, text)) {
             fittedState.width = -1;
         }
@@ -1166,6 +1183,8 @@ final class LyricsLineView extends TextView {
             if (syllableCache != null && syllableCache.animator != null) {
                 syllableCache.animator.reset();
             }
+        } else {
+            clearWordPaintState();
         }
         postInvalidateOnAnimation();
     }
@@ -1610,6 +1629,9 @@ final class LyricsLineView extends TextView {
                 || this.unsungColor != unsungCol
                 || this.sweepEnabled != hasRealTimings;
         this.wordTimings = nextTimings;
+        if (nextTimings.isEmpty()) {
+            clearWordPaintState();
+        }
         this.positionMs = posMs;
         if (posMs == Long.MIN_VALUE || backwardSeek) {
             this.lastDrawnClockPos = Long.MIN_VALUE;
@@ -2371,7 +2393,7 @@ final class LyricsLineView extends TextView {
             Shader prevShader = tp.getShader();
             int appliedColor = -1;
             final boolean smoothSweep = Settings.isWordAnimSmooth();
-            final float featherHalf = Math.max(Dim.dp(6), getTextSize() * 0.30f);
+            final float featherHalf = Math.max(Dim.dp(LyricsTuningConfig.get().gradient().featherDp()), getTextSize() * LyricsTuningConfig.get().gradient().featherEm());
 
             canvas.save();
             if (contentReveal < 1f) {
@@ -2419,7 +2441,7 @@ final class LyricsLineView extends TextView {
                         tp.setShader(new LinearGradient(
                                 gStart, 0f, gEnd, 0f,
                                 new int[]{color, color, color & 0x00FFFFFF, color & 0x00FFFFFF},
-                                new float[]{0f, 0.1f, 0.9f, 1f},
+                                 WordAnimationUtils.GRADIENT_STOPS,
                                 Shader.TileMode.CLAMP));
                     } else {
                         tp.setShader(null);
@@ -3358,7 +3380,7 @@ final class LyricsLineView extends TextView {
         }
         TextPaint rp = romaLayout.getPaint();
         final boolean smooth = Settings.isWordAnimSmooth();
-        final float featherHalf = Math.max(Dim.dp(5), rp.getTextSize() * 0.30f);
+        final float featherHalf = Math.max(Dim.dp(5), rp.getTextSize() * LyricsTuningConfig.get().gradient().featherEm());
         for (int ln = 0; ln < rLineCount; ln++) {
             float edge = rMaxX[ln];
             if (Float.isNaN(edge)) continue;

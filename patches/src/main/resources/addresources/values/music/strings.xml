@@ -810,6 +810,9 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
      <string name="morphe_music_lyrics_cover_style_params_title">Cover Style Parameters</string>
      <string name="morphe_music_lyrics_cover_style_params_summary">All cover presets' parameters in one JSON. Tap to edit</string>
      <string name="morphe_music_lyrics_cover_style_params_label">Parameters JSON</string>
+     <string name="morphe_music_lyrics_tuning_params_title">Lyric Visual Tuning (JSON)</string>
+     <string name="morphe_music_lyrics_tuning_params_summary">JSON tuning for spring, glow, gradient stops and scale of lyric visuals. Tap to edit</string>
+     <string name="morphe_music_lyrics_tuning_params_label">Lyric visual tuning JSON</string>
     <string name="morphe_music_lyrics_share_story_loading">Building story…</string>
     <string name="morphe_music_lyrics_share_story_failed">Could not build the story</string>
     <string name="morphe_music_lyrics_story_source_lyrics">Lyrics imagery</string>

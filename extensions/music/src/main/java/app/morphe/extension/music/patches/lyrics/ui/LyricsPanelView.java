@@ -2659,7 +2659,13 @@ public final class LyricsPanelView extends FrameLayout
                     }
                     lineOriginalStarts.set(i, presentation.originalStart());
                     tv.setText(result.text());
-                    lineUnsungSpans.set(i, result.unsungSpan());
+                    // When word sync is off, do not attach an unsung span; a late pass landing
+                    // after the toggle must not re-light the last word.
+                    if (Settings.LYRICS_WORD_SYNC.get()) {
+                        lineUnsungSpans.set(i, result.unsungSpan());
+                    } else {
+                        lineUnsungSpans.set(i, null);
+                    }
                     lineWordSpans.set(i, resolvedSpans);
                     if (tv instanceof LyricsLineView lineView) {
                         lineView.setDeferSyllableBuild(
@@ -2673,9 +2679,14 @@ public final class LyricsPanelView extends FrameLayout
                         lineView.setSmallRunHoldsWords(result.smallRunHoldsWords());
                         // Always populate wordTimings and unsungColor on the view immediately
                         // after setting text so word sync and syllable readings are ready.
-                        lineView.setHighlight(resolvedSpans, lineView.positionMs,
-                                lineView.allSung, unsungColor,
-                                presentation.originalStart());
+                        if (Settings.LYRICS_WORD_SYNC.get()) {
+                            lineView.setHighlight(resolvedSpans, lineView.positionMs,
+                                    lineView.allSung, unsungColor,
+                                    presentation.originalStart());
+                        } else {
+                            lineView.setHighlight(Collections.emptyList(), Long.MIN_VALUE,
+                                    false, 0, presentation.originalStart());
+                        }
                         if (!contentInBuild && sameContent) {
                             if (near) {
                                 if (hasTransNow && freshTrans[i]) {
@@ -5411,6 +5422,11 @@ public final class LyricsPanelView extends FrameLayout
                 if (!wasActive) {
                     applyWordColors(i, 0, true);
                     applyBgWordColors(i, 0, true);
+                } else {
+                    // The line was mid-word when the jump landed. Flipping activeLine alone leaves
+                    // positionMs/allSung and the karaoke clip arrays frozen, so the last word keeps
+                    // being painted and no invalidate follows for an inactive line.
+                    clearWordHighlight(i);
                 }
                 if (tv instanceof LyricsLineView llv) {
                     llv.setActiveLine(false);
@@ -5423,7 +5439,8 @@ public final class LyricsPanelView extends FrameLayout
                 }
             }
         }
-        previousActiveSet.clear();
+        // Keep previousActiveSet so updateWordSync can normalize outgoing lines after a jump;
+        // clearing it here (as before) made the deferred clearWordHighlight path unreachable.
     }
 
     /**
@@ -6035,7 +6052,12 @@ public final class LyricsPanelView extends FrameLayout
             if (!enabled) {
                 int count = Math.min(lineWordSpans.size(), lineViews.size());
                 for (int i = 0; i < count; i++) {
-                    resetLineForWordSyncOff(i, activeIndicesSet.contains(i));
+                    final int lineIndex = i;
+                    resetLineForWordSyncOff(lineIndex, activeIndicesSet.contains(lineIndex));
+                    if (lyrics != null) {
+                        forEachBgLine(lineIndex, lyrics,
+                                bg -> resetLineForWordSyncOff(bg, activeIndicesSet.contains(lineIndex)));
+                    }
                 }
                 previousActiveSet.clear();
                 wordSyncWasEnabled = false;
@@ -6051,14 +6073,7 @@ public final class LyricsPanelView extends FrameLayout
             if (activeIndicesSet.contains(prevIdx)) {
                 continue;
             }
-            LyricsLine prevLine = (lyrics != null && prevIdx < lyrics.lines().size())
-                    ? lyrics.lines().get(prevIdx) : null;
-            if (prevLine != null && positionMs < prevLine.startTimeMs()) {
-                clearWordHighlight(prevIdx);
-            } else {
-                applyWordColors(prevIdx, 0, true);
-                applyBgWordColors(prevIdx, 0, true);
-            }
+            clearWordHighlight(prevIdx);
         }
         previousActiveSet.clear();
         previousActiveSet.addAll(activeIndicesSet);
@@ -6091,11 +6106,14 @@ public final class LyricsPanelView extends FrameLayout
                 activeLine ? LyricsColors.lineTextColor() : LyricsColors.unsungWordColor());
         ForegroundColorSpan cached = line < lineUnsungSpans.size()
                 ? lineUnsungSpans.get(line) : null;
-        if (cached != null && lineViews.get(line).getText() instanceof Spannable) {
-            ((Spannable) lineViews.get(line).getText()).removeSpan(cached);
+        if (cached != null) {
+            if (lineViews.get(line).getText() instanceof Spannable s) {
+                s.removeSpan(cached);
+            }
             lineUnsungSpans.set(line, null);
         }
         if (lineViews.get(line) instanceof LyricsLineView lineView) {
+            lineView.clearWordPaintState();
             lineView.setHighlight(Collections.emptyList(), 0, false, 0, -1);
         }
     }
@@ -6142,7 +6160,9 @@ public final class LyricsPanelView extends FrameLayout
         int origStart = index < lineOriginalStarts.size() ? lineOriginalStarts.get(index) : 0;
         TextView lineView = lineViews.get(index);
 
-        if (positionMs == Long.MIN_VALUE && lineView.getText() instanceof Spannable) {
+        // Remove the cached unsung span when the line is fully sung (or fully cleared),
+        // not only on the Long.MIN_VALUE sentinel, so a finished line drops its opaque span.
+        if ((positionMs == Long.MIN_VALUE || allSung) && lineView.getText() instanceof Spannable) {
             ForegroundColorSpan cached = index < lineUnsungSpans.size()
                     ? lineUnsungSpans.get(index) : null;
             if (cached != null) {
@@ -6827,8 +6847,28 @@ public final class LyricsPanelView extends FrameLayout
         }
     }
 
+    public void applyTuningSettings() {
+        // Clear any frozen word paint left by a mid-word rebuild, then rebuild with the new values.
+        for (int i = 0; i < lineViews.size(); i++) {
+            clearWordHighlight(i);
+        }
+        SpringEasing.onTuningChanged();
+        LyricsViewSupport.onTuningChanged();
+        WordAnimationUtils.onTuningChanged();
+        LyricsGlyphMaskCache.onTuningChanged();
+        if (scrollEngine != null) {
+            scrollEngine.reset();
+        }
+        applyLyricLayoutSettings();
+        if (fullscreenController != null) {
+            fullscreenController.applySetting();
+        }
+    }
+
     public void applyWordSyncSetting() {
         final boolean enabled = Settings.LYRICS_WORD_SYNC.get();
+        // Drop any in-flight async build pass so it cannot re-attach an unsung span after the clear.
+        buildGeneration.incrementAndGet();
         final int count = Math.min(lineViews.size(), lyrics == null ? 0 : lyrics.lines().size());
         if (!enabled && lyrics != null) {
             // The tick would spot the change and clear every line, but only on the frame it

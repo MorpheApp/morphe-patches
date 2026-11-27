@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.TintFilterCache;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WipeResult;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.shared.Logger;
 
 final class LyricsGlyphMaskCache {
@@ -35,12 +36,20 @@ final class LyricsGlyphMaskCache {
     private LyricsGlyphMaskCache() {
     }
 
-    static final float MASK_RASTER_SCALE = 1.25f;
-    static final float GLOW_RASTER_SCALE = 0.75f;
+    static float MASK_RASTER_SCALE = 1.25f;
+    static float GLOW_RASTER_SCALE = 0.75f;
     /** Masks are kept within the texture size every device can draw. */
-    static final int MAX_MASK_SIDE_PX = 2048;
+    static int MAX_MASK_SIDE_PX = 2048;
     /** Time each frame may spend rasterizing masks ahead of the words reaching them. */
-    static final long PREWARM_BUDGET_NS = 1_500_000L;
+    static long PREWARM_BUDGET_NS = 1_500_000L;
+
+    static void onTuningChanged() {
+        LyricsTuningConfig.Glow g = LyricsTuningConfig.get().glow();
+        MASK_RASTER_SCALE = g.maskRasterScale();
+        GLOW_RASTER_SCALE = g.glowRasterScale();
+        MAX_MASK_SIDE_PX = (int) g.maxMaskSidePx();
+        PREWARM_BUDGET_NS = g.prewarmBudgetNs();
+    }
     private static final PorterDuffXfermode SCREEN_MODE = new PorterDuffXfermode(PorterDuff.Mode.SCREEN);
 
     static final class ClusterMaskCache {
@@ -66,6 +75,7 @@ final class LyricsGlyphMaskCache {
         private int bandLit = Color.TRANSPARENT;
         private int bandUnlit = Color.TRANSPARENT;
         private float bandDx = Float.NaN;
+        private long bandRevision = -1L;
         @Nullable
         private LinearGradient bandBrushCached = null;
 
@@ -182,12 +192,14 @@ final class LyricsGlyphMaskCache {
 
         public LinearGradient bandBrush(int lit, int unlit, float dx) {
             LinearGradient cached = bandBrushCached;
-            if (cached != null && lit == bandLit && unlit == bandUnlit && dx == bandDx) {
+            if (cached != null && lit == bandLit && unlit == bandUnlit && dx == bandDx
+                    && bandRevision == LyricsTuningConfig.revision()) {
                 return cached;
             }
             bandLit = lit;
             bandUnlit = unlit;
             bandDx = dx;
+            bandRevision = LyricsTuningConfig.revision();
             bandColors[0] = lit;
             bandColors[1] = lit;
             bandColors[2] = unlit;

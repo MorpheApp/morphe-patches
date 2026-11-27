@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import app.morphe.extension.music.patches.lyrics.ui.LyricsGlyphMaskCache.ClusterMaskCache;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ActiveSylInfo;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.AlignedSyllable;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.CharPositionMaps;
@@ -39,6 +39,7 @@ import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.RomanStat
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.RomanizedWordCluster;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.SyllableBounds;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.VisualCluster;
+import app.morphe.extension.music.patches.lyrics.ui.LyricsGlyphMaskCache.ClusterMaskCache;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WipeResult;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WordTimestamp;
 import app.morphe.extension.music.settings.Settings;
@@ -73,15 +74,16 @@ public final class WordSweepAnimator {
     }
 
     public static float emphasisGlowOpacity(float fraction) {
+        LyricsTuningConfig.Glow g = LyricsTuningConfig.get().glow();
         if (fraction <= 0f || fraction >= 1f) return 0f;
         if (fraction < 0.15f) {
-            return 0.8f * (fraction / 0.15f);
+            return g.glowPeakOpacity() * (fraction / 0.15f);
         } else if (fraction < 0.30f) {
-            return 0.8f + 0.2f * ((fraction - 0.15f) / 0.15f);
+            return g.glowPeakOpacity() + g.glowTailOpacity() * ((fraction - 0.15f) / 0.15f);
         } else if (fraction < 0.60f) {
-            return 1f - 0.7f * ((fraction - 0.30f) / 0.30f);
+            return 1f - g.glowReleaseOpacity() * ((fraction - 0.30f) / 0.30f);
         } else {
-            return 0.3f * ((1f - fraction) / 0.40f);
+            return g.glowFinalOpacity() * ((1f - fraction) / 0.40f);
         }
     }
 
@@ -217,10 +219,10 @@ public final class WordSweepAnimator {
     public final float gradientWidth;
     public final float elevationAmount;
     public final float extraPaddingPx;
-    public final float emphasisLiftEm = 0.05f;
-    public final float emphasisRiseEm = 0.035f;
-    public final float emphasisShiftEm = 0.05f;
-    public final float emphasisScaleGain = 0.1f;
+    public float emphasisLiftEm;
+    public float emphasisRiseEm;
+    public float emphasisShiftEm;
+    public float emphasisScaleGain;
     public float lineExtraHeight;
     public final float glowBlurRadius;
     public final float shadowBlurRadius;
@@ -536,11 +538,18 @@ public final class WordSweepAnimator {
         this.alignment = alignment;
         this.fontSizePx = basePaint.getTextSize();
 
-        this.gradientWidth = fontSizePx;
-        this.extraPaddingPx = fontSizePx * 0.4f;
-        this.elevationAmount = fontSizePx * 0.05f;
-        this.glowBlurRadius = fontSizePx * 0.10f;
-        this.shadowBlurRadius = fontSizePx * 0.15f;
+        LyricsTuningConfig.Glow g = LyricsTuningConfig.get().glow();
+        LyricsTuningConfig.Scale sc = LyricsTuningConfig.get().scale();
+        LyricsTuningConfig.Gradient gr = LyricsTuningConfig.get().gradient();
+        this.gradientWidth = fontSizePx * gr.wipeWidthEm();
+        this.extraPaddingPx = fontSizePx * g.extraPaddingEm();
+        this.elevationAmount = fontSizePx * g.elevationEm();
+        this.glowBlurRadius = fontSizePx * g.blurRadiusEm();
+        this.shadowBlurRadius = fontSizePx * g.blurRadiusEm() * 1.5f;
+        this.emphasisLiftEm = g.emphasisLiftEm();
+        this.emphasisRiseEm = g.emphasisRiseEm();
+        this.emphasisShiftEm = g.emphasisShiftEm();
+        this.emphasisScaleGain = sc.emphasisScaleGain();
 
         List<int[]> ranges = WordAnimationUtils.shapingWordRanges(rawWords);
         this.shapedWords = WordAnimationUtils.mergeShapingWords(rawWords, ranges);
@@ -1417,10 +1426,10 @@ public final class WordSweepAnimator {
                     finishStartGX = lastActiveGX;
                 }
                 long elapsed = Math.max(0L, nowUptimeMs - finishStartUptimeMs);
-                float tX = Math.max(0f, Math.min(1f, elapsed / 180f));
+                float tX = Math.max(0f, Math.min(1f, elapsed / LyricsTuningConfig.get().glow().finishXMs()));
                 float easedX = LINEAR_OUT_SLOW_IN.getInterpolation(tX);
                 float gx = finishStartGX + (lineEndX - finishStartGX) * easedX;
-                float tA = Math.max(0f, Math.min(1f, elapsed / 240f));
+                float tA = Math.max(0f, Math.min(1f, elapsed / LyricsTuningConfig.get().glow().finishAlphaMs()));
                 finishAlpha = FAST_OUT_SLOW_IN.getInterpolation(tA);
                 if (tX >= 1f && tA >= 1f) {
                     lastActiveGX = lineEndX;
@@ -1450,7 +1459,7 @@ public final class WordSweepAnimator {
         }
         float dt = Math.max(0.001f, Math.min(0.1f, (nowUptimeMs - lastDrawUptimeMs) / 1000f));
 
-        float omegaCS = 14.0f;
+        float omegaCS = LyricsTuningConfig.get().glow().omegaColor();
         float errCS = curColorState - targetCS;
         if (Math.abs(errCS) > 0.0005f || Math.abs(curColorVel) > 0.005f) {
             float expCS = (float) Math.exp(-omegaCS * dt);
@@ -1462,7 +1471,7 @@ public final class WordSweepAnimator {
             curColorVel = 0f;
         }
 
-        float omegaSS = 11.5f;
+        float omegaSS = LyricsTuningConfig.get().glow().omegaSimple();
         float errSS = curSimpleState - targetSS;
         if (Math.abs(errSS) > 0.0005f || Math.abs(curSimpleVel) > 0.005f) {
             float expSS = (float) Math.exp(-omegaSS * dt);

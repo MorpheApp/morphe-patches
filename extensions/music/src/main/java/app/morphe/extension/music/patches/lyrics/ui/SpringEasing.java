@@ -10,31 +10,47 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
 
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTuningConfig;
 import java.util.HashMap;
 import java.util.Map;
 
 /** Spring curves of the lyrics scroll, and the delay each line moves with. */
 final class SpringEasing {
 
-    static final Interpolator SPRING_SCROLL_EASING =
-            new PathInterpolator(0.41f, 0f, 0.12f, 0.99f);
+    static Interpolator SPRING_SCROLL_EASING = new PathInterpolator(0.41f, 0f, 0.12f, 0.99f);
 
-    private static final float DEFAULT_ZETA = 0.78f;
+    static float DEFAULT_ZETA = 0.78f;
     /** Relaxed scrolling damps a little more, so the slower scroll overshoots less. */
-    private static final float RELAX_ZETA = 0.80f;
-    private static final float RELAX_ZETA_BOOST = 0.05f;
-    private static final float RELAX_MAX_ZETA = 0.95f;
+    static float RELAX_ZETA = 0.80f;
+    static float RELAX_ZETA_BOOST = 0.05f;
+    static float RELAX_MAX_ZETA = 0.95f;
     /** Damping between lines that follow closely, so a quick run of lines does not bounce. */
-    private static final float ZETA_TIGHT = 0.85f;
+    static float ZETA_TIGHT = 0.85f;
     /** Damping between lines with a pause of {@link #MAX_DYNAMIC_GAP_MS} or more. */
-    private static final float ZETA_WIDE = 0.73f;
-    private static final float MAX_DYNAMIC_GAP_MS = 2500f;
+    static float ZETA_WIDE = 0.73f;
+    static float MAX_DYNAMIC_GAP_MS = 2500f;
     /** How long the settle after the overshoot takes, relative to the rise. */
-    private static final float SETTLE_RATIO = 1.5f;
+    static float SETTLE_RATIO = 1.5f;
     private static final int SPRING_CACHE_SIZE = 128;
 
     /** Only used on the main thread. */
     private static final Map<Long, LyricsSpring> SPRING_CACHE = new HashMap<>();
+
+    static void onTuningChanged() {
+        LyricsTuningConfig.Spring s = LyricsTuningConfig.get().spring();
+        SPRING_SCROLL_EASING = new PathInterpolator(s.riseX1(), s.riseX2(), s.riseX3(), s.riseX4());
+        DEFAULT_ZETA = s.zetaDefault();
+        ZETA_TIGHT = s.zetaTight();
+        ZETA_WIDE = s.zetaWide();
+        RELAX_ZETA = s.relaxZeta();
+        RELAX_ZETA_BOOST = s.relaxBoost();
+        RELAX_MAX_ZETA = s.relaxMaxZeta();
+        MAX_DYNAMIC_GAP_MS = s.maxGapMs();
+        SETTLE_RATIO = s.settleRatio();
+        LyricsScrollStagger.MAX_STAGGER_STEPS = s.maxStaggerSteps();
+        LyricsScrollStagger.RELAX_UPWARD_DELAY_FACTOR = s.relaxUpwardFactor();
+        SPRING_CACHE.clear();
+    }
 
     private SpringEasing() {
     }
@@ -121,9 +137,9 @@ final class SpringEasing {
      * from, in the scroll's direction. Gap rows do not count as a line.
      */
     static final class LyricsScrollStagger {
-        static final int MAX_STAGGER_STEPS = 12;
+        static int MAX_STAGGER_STEPS = 12;
         /** Relaxed scrolling moves the lines above with half the delay when scrolling up. */
-        private static final float RELAX_UPWARD_DELAY_FACTOR = 0.5f;
+        static float RELAX_UPWARD_DELAY_FACTOR = 0.5f;
 
         private final boolean scrollingDown;
         private final int referenceIndex;
