@@ -90,21 +90,35 @@ public final class GlassMenusPatch {
      */
     static final int MIN_OPACITY_WITHOUT_BLUR = 92;
 
-    private static final int DESIGN_BOTTOM_SHEET = ResourceUtils.getIdentifier(ResourceType.ID, "design_bottom_sheet");
-    // YouTube only.
-    private static final int PLAYLIST_LIST = ResourceUtils.getIdentifier(ResourceType.ID, "list");
-    private static final int PLAYLIST_CLOSE_BAR =
-            ResourceUtils.getIdentifier(ResourceType.ID, "add_to_playlist_bottom_sheet_close_button");
-
     /**
-     * Theme colors the app gives the background of its menus.
+     * Resources of the menus, looked up when the first menu is shown and not when this patch class is loaded:
+     * the hooks of the Litho backgrounds load it at any time, also before the context of the app is set,
+     * and a lookup without the context fails until the app restarts.
      */
-    private static final int[] MENU_COLOR_ATTRIBUTES = {
-            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytRaisedBackground"),
-            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytBaseBackground"),
-            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytMenuBackground"),
-            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytAdditiveBackground"),
-    };
+    private static final class MenuResources {
+        static final int DESIGN_BOTTOM_SHEET = ResourceUtils.getIdentifier(ResourceType.ID, "design_bottom_sheet");
+        // YouTube only.
+        static final int PLAYLIST_LIST = ResourceUtils.getIdentifier(ResourceType.ID, "list");
+        static final int PLAYLIST_CLOSE_BAR =
+                ResourceUtils.getIdentifier(ResourceType.ID, "add_to_playlist_bottom_sheet_close_button");
+
+        /**
+         * Theme colors the app gives the background of its menus.
+         */
+        static final int[] MENU_COLOR_ATTRIBUTES = {
+                ResourceUtils.getIdentifier(ResourceType.ATTR, "ytRaisedBackground"),
+                ResourceUtils.getIdentifier(ResourceType.ATTR, "ytBaseBackground"),
+                ResourceUtils.getIdentifier(ResourceType.ATTR, "ytMenuBackground"),
+                ResourceUtils.getIdentifier(ResourceType.ATTR, "ytAdditiveBackground"),
+        };
+
+        /**
+         * Theme color of the panel of a menu shown over a video, such as the dropdown of the Shorts header.
+         * Unlike the other menu colors, it is translucent.
+         */
+        static final int OVERLAY_MENU_COLOR_ATTRIBUTE =
+                ResourceUtils.getIdentifier(ResourceType.ATTR, "ytOverlayBackgroundMedium");
+    }
 
     /**
      * Corner radius of a menu if its background does not give one.
@@ -193,7 +207,7 @@ public final class GlassMenusPatch {
                 window.setDimAmount(dimAmount());
             }
 
-            View sheet = dialog.findViewById(DESIGN_BOTTOM_SHEET);
+            View sheet = dialog.findViewById(MenuResources.DESIGN_BOTTOM_SHEET);
             if (sheet != null) {
                 // The panel of the sheet is a fill inside it, with a margin at the top and the sides.
                 GlassSurface.apply(sheet, CORNERS_AUTO, true);
@@ -287,11 +301,11 @@ public final class GlassMenusPatch {
         if (root == null || !isEnabled()) return;
 
         try {
-            View list = root.findViewById(PLAYLIST_LIST);
+            View list = root.findViewById(MenuResources.PLAYLIST_LIST);
             if (list != null) {
                 GlassSurface.apply(list, CORNERS_TOP);
             }
-            View closeBar = root.findViewById(PLAYLIST_CLOSE_BAR);
+            View closeBar = root.findViewById(MenuResources.PLAYLIST_CLOSE_BAR);
             if (closeBar != null) {
                 GlassSurface.apply(closeBar, CORNERS_NONE);
             }
@@ -398,7 +412,7 @@ public final class GlassMenusPatch {
      */
     private static List<Integer> menuColors(Context context) {
         List<Integer> colors = new ArrayList<>();
-        for (int attribute : MENU_COLOR_ATTRIBUTES) {
+        for (int attribute : MenuResources.MENU_COLOR_ATTRIBUTES) {
             Integer color = resolveThemeColor(context, attribute);
             if (color != null) colors.add(color);
         }
@@ -471,6 +485,12 @@ public final class GlassMenusPatch {
          * Colors of the menu, a background of one of these colors inside the menu is removed.
          */
         private final List<Integer> menuColors = new ArrayList<>();
+        /**
+         * Color of the panel of a menu shown over a video, a background of this exact color inside the menu is
+         * also removed.
+         */
+        @Nullable
+        private final Integer overlayMenuColor;
         /**
          * The background the app gave the menu, until its color is known.
          */
@@ -570,6 +590,7 @@ public final class GlassMenusPatch {
             updateOpacity();
 
             menuColors.addAll(menuColors(view.getContext()));
+            overlayMenuColor = resolveThemeColor(view.getContext(), MenuResources.OVERLAY_MENU_COLOR_ATTRIBUTE);
             sampleOriginalBackground();
 
             setBackgroundLayers();
@@ -958,7 +979,7 @@ public final class GlassMenusPatch {
             for (int menu : menuColors) {
                 if (isSimilarOpaqueColor(color, menu)) return true;
             }
-            return false;
+            return overlayMenuColor != null && color == overlayMenuColor;
         }
     }
 

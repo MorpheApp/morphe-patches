@@ -168,6 +168,10 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.GLASS_NAVIGATION_BAR_SEARCH_BUTTON
             ));
+            buttons.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.GLASS_NAVIGATION_BAR_TOP_TABS
+            ));
         }
     }
 

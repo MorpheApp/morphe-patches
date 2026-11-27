@@ -13,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.translucentNavigationBarFeatureFlagsPatch
+import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -28,12 +29,13 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideS
 
 val hideStatusBarPatch = patch(
     name = "Hide status bar",
-    description = "Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment.",
+    description = "Adds options to hide the system status bar, always or only in the tabletop mode of foldable devices. Swipe down from the top edge to show it for a moment.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
         playerTypeHookPatch,
+        engagementPanelHookPatch,
         // The flags of the translucent navigation bar must be turned off with the edge to edge
         // top bar, also if the Navigation bar patch is not included.
         translucentNavigationBarFeatureFlagsPatch,
@@ -44,6 +46,7 @@ val hideStatusBarPatch = patch(
     execute {
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_hide_status_bar", summary = true),
+            SwitchPreference("morphe_hide_status_bar_tabletop", summary = true),
             SwitchPreference("morphe_hide_status_bar_avoid_cutout", summary = true),
             SwitchPreference("morphe_fix_status_bar_layout", summary = true)
         )

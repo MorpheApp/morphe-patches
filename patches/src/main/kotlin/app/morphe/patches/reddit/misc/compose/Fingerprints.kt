@@ -140,3 +140,39 @@ internal object LimitInsetsGetTopFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * RowScope.weight / ColumnScope.weight, 2026.45.0+
+ */
+internal object WeightElementFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("F", "L", "Z"),
+    filters = listOf(
+        string("invalid weight; must be greater than zero"),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            parameters = listOf("F", "Z"),
+            returnType = "V",
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
+internal object NewWeightModifierFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/utils/ComposeUtils;",
+    name = "newWeightModifier",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("F", "Z")
+)
+
+/**
+ * Modifier.graphicsLayer, 2026.45.0+
+ */
+internal object GraphicsLayerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    definingClass = "Landroidx/compose/ui/graphics/",
+    parameters = listOf("L", "F", "F", "F", "F", "F", "L", "Z", "I", "I")
+)
