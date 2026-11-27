@@ -253,7 +253,12 @@ public final class GlassNavigationBarPatch {
     /**
      * How much larger the glass behind the menu button and the avatar is than the button.
      */
-    private static final float TOP_BAR_BUTTON_GLASS_EXTRA_DP = 8;
+    static final float TOP_BAR_BUTTON_GLASS_EXTRA_DP = 8;
+
+    /**
+     * Minimum height of a top bar button. Smaller slots are empty (such as a hidden avatar).
+     */
+    private static final float MIN_TOP_BAR_BUTTON_DP = 12;
 
     private static final boolean GLASS_ENABLED = Settings.GLASS_NAVIGATION_BAR.get();
     static final GlassStrength STRENGTH = GLASS_ENABLED
@@ -803,8 +808,14 @@ public final class GlassNavigationBarPatch {
      */
     private static void drawTopBarButtonGlass(ContentDrawScope scope) {
         final long size = scope.patch_getSize();
-        final float extra = TOP_BAR_BUTTON_GLASS_EXTRA_DP * getDensity();
-        final float height = unpackSecond(size) + extra;
+        final float density = getDensity();
+        final float elementHeight = unpackSecond(size);
+        if (elementHeight < MIN_TOP_BAR_BUTTON_DP * density) {
+            return;
+        }
+
+        final float extra = TOP_BAR_BUTTON_GLASS_EXTRA_DP * density;
+        final float height = elementHeight + extra;
         final float width = Math.max(unpackFirst(size) + extra, height);
         final float left = (unpackFirst(size) - width) / 2;
         final float top = -extra / 2;
