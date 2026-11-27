@@ -14,10 +14,45 @@ import android.os.Bundle;
 
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 public class PlaybackSessionStartupTest {
+    @Test
+    public void routerOpensSavedVideoWithMiniplayerContext() throws Exception {
+        String videoId = "abcdefghijk";
+        var playlist = new PlaybackSessionSnapshot("account", videoId, 2_505_438,
+                PlaybackSessionSnapshot.Kind.VIDEO, "RD" + videoId, false, null);
+        var localQueue = new PlaybackSessionSnapshot("account", videoId, 450,
+                PlaybackSessionSnapshot.Kind.VIDEO, "RD" + videoId, false,
+                new PlaybackSessionSnapshot.Queue(List.of(videoId, "lmnopqrstuv"), 0, null));
+        var command = new AtomicReference<byte[]>();
+        var context = new AtomicReference<Map<String, Object>>();
+        for (var snapshot : List.of(playlist, localQueue)) {
+            var request = new PlaybackSessionPatch.RestoreRequest(snapshot);
+            PlaybackSessionPatch.dispatchSavedWatch((bytes, values) -> {
+                command.set(bytes);
+                context.set(values);
+            }, request);
+
+            var watch = NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint();
+            assertEquals(videoId, watch.getVideoId());
+            assertEquals(snapshot.queue() == null ? snapshot.playlistId() : "", watch.getPlaylistId());
+            assertEquals(Boolean.TRUE, context.get().get("start_watch_minimized"));
+            assertSame(request, context.get().get("app.morphe.continue_watching"));
+            assertNull(PlaybackSessionPatch.prepareWatchDescriptor(new Object(), context.get()));
+        }
+    }
+
     @Test
     public void launcherReopensAfterTaskRemovalInTheSameProcess() throws Exception {
         var saved = PlaybackSessionPatch.class.getDeclaredField("saved");

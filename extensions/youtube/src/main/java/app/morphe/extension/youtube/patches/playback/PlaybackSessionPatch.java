@@ -35,13 +35,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Panel;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
+import app.morphe.extension.youtube.patches.CommandRouterPatch;
+import app.morphe.extension.youtube.patches.CommandRouterPatch.CommandRouter;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
@@ -60,11 +61,6 @@ public final class PlaybackSessionPatch {
     private static final long STARTUP_TIMEOUT_MS = 10_000;
     private static final long STARTUP_POLL_MS = 250;
 
-    public interface WatchStarter {
-        Activity patch_sessionActivity();
-        void patch_startSessionWatch(byte[] command, Map<?, ?> context);
-    }
-
     public interface Descriptor {
         String patch_sessionVideoId();
         void patch_startSessionPaused();
@@ -82,6 +78,9 @@ public final class PlaybackSessionPatch {
     }
 
     public record Account(String id, boolean incognito) {}
+
+    // The router can queue a command. Give each attempt its own identity, even for the same saved video.
+    record RestoreRequest(PlaybackSessionSnapshot snapshot) {}
 
     private static final Application.ActivityLifecycleCallbacks LIFECYCLE = new Application.ActivityLifecycleCallbacks() {
         @Override public void onActivityCreated(Activity activity, Bundle state) {}
@@ -113,12 +112,11 @@ public final class PlaybackSessionPatch {
 
     private static WeakReference<Activity> owner = new WeakReference<>(null);
     private static volatile WeakReference<AccountProvider> accountProvider = new WeakReference<>(null);
-    private static final Map<Activity, WeakReference<WatchStarter>> watchStarters = new WeakHashMap<>();
     private static volatile WeakReference<MediaSession> mediaSession = new WeakReference<>(null);
     private static volatile WeakReference<PlaylistReader> playlist = new WeakReference<>(null);
     @Nullable private static AtomicFile storage;
     @Nullable private static PlaybackSessionSnapshot saved;
-    @Nullable private static PlaybackSessionSnapshot restoring;
+    @Nullable private static RestoreRequest restoring;
     @Nullable private static String dismissedVideo;
     @Nullable private static volatile String restoringMinimizedVideo;
     @Nullable private static volatile String restoredShort;
@@ -128,6 +126,7 @@ public final class PlaybackSessionPatch {
     private static boolean restoreWasMinimized;
     private static long startupDeadline;
     private static long lastSaveTime;
+    @Nullable private static String startupWaitReason;
 
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
@@ -166,22 +165,6 @@ public final class PlaybackSessionPatch {
             checkingStartup = saved != null;
             Logger.printDebug(() -> checkingStartup ? "Saved playback session found on launch"
                     : "No saved playback session on launch");
-        }
-    }
-
-    public static void attachWatchStarter(WatchStarter starter) {
-        Activity activity = starter.patch_sessionActivity();
-        if (activity == null) return;
-        synchronized (watchStarters) {
-            watchStarters.put(activity, new WeakReference<>(starter));
-        }
-    }
-
-    @Nullable
-    private static WatchStarter watchStarter(Activity activity) {
-        synchronized (watchStarters) {
-            var reference = watchStarters.get(activity);
-            return reference == null ? null : reference.get();
         }
     }
 
@@ -387,15 +370,21 @@ public final class PlaybackSessionPatch {
                 return;
             }
             String account = currentAccount();
-            WatchStarter starter = watchStarter(activity);
+            CommandRouter router = CommandRouterPatch.getCommandRouter(activity);
             boolean focused = activity.hasWindowFocus();
             if (SystemClock.elapsedRealtime() >= startupDeadline) {
-                Logger.printDebug(() -> "Playback session startup timed out. Account ready=" + (account != null)
-                        + ", watch starter ready=" + (starter != null) + ", window focused=" + focused);
+                Logger.printDebug(() -> "Playback session startup timed out");
                 cancelStartup();
                 return;
             }
-            if (account == null || (starter == null && !usesShortsPlayer(snapshot)) || !focused) {
+            boolean routerReady = router != null || usesShortsPlayer(snapshot);
+            if (account == null || !routerReady || !focused) {
+                String readiness = "account ready=" + (account != null)
+                        + ", command router ready=" + routerReady + ", window focused=" + focused;
+                if (!readiness.equals(startupWaitReason)) {
+                    startupWaitReason = readiness;
+                    Logger.printDebug(() -> "Waiting to restore playback session: " + readiness);
+                }
                 Utils.runOnMainThreadDelayed(() -> restoreIfReady(activity), STARTUP_POLL_MS);
                 return;
             }
@@ -415,13 +404,14 @@ public final class PlaybackSessionPatch {
                 Logger.printDebug(() -> "Playback session restore skipped because a player is already open: " + type);
                 return;
             }
-            restoring = snapshot;
+            var request = new RestoreRequest(snapshot);
+            restoring = request;
             if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) {
                 Utils.runOnBackgroundThread(() -> {
                     Boolean live = LiveStatusRequest.fetchFresh(snapshot.videoId());
                     Utils.runOnMainThread(() -> {
-                        if (activity != owner.get() || restoring != snapshot) return;
-                        if (Boolean.TRUE.equals(live)) start(activity, starter, snapshot);
+                        if (activity != owner.get() || restoring != request) return;
+                        if (Boolean.TRUE.equals(live)) start(activity, router, request);
                         else {
                             cancelStartup();
                             if (Boolean.FALSE.equals(live)) update(null);
@@ -429,7 +419,7 @@ public final class PlaybackSessionPatch {
                     });
                 });
             } else {
-                start(activity, starter, snapshot);
+                start(activity, router, request);
             }
         } catch (Exception ex) {
             cancelStartup();
@@ -437,16 +427,21 @@ public final class PlaybackSessionPatch {
         }
     }
 
-    private static void start(Activity activity, @Nullable WatchStarter starter, PlaybackSessionSnapshot snapshot) {
+    private static void start(Activity activity, @Nullable CommandRouter router, RestoreRequest request) {
         try {
-            if (!enabled() || activity != owner.get() || !activity.hasWindowFocus()
+            if (activity != owner.get() || restoring != request) return;
+            var snapshot = request.snapshot();
+            if (!enabled() || !activity.hasWindowFocus()
                     || SystemClock.elapsedRealtime() >= startupDeadline
                     || !snapshot.account().equals(currentAccount())) {
                 cancelStartup();
                 return;
             }
             Utils.runOnMainThreadDelayed(() -> {
-                if (activity == owner.get() && restoring == snapshot) cancelStartup();
+                if (activity == owner.get() && restoring == request) {
+                    Logger.printDebug(() -> "Playback session command did not reach the player");
+                    cancelStartup();
+                }
             }, STARTUP_TIMEOUT_MS);
             Logger.printDebug(() -> "Opening saved playback session at " + snapshot.positionMilliseconds() + " ms");
             if (usesShortsPlayer(snapshot)) {
@@ -454,33 +449,37 @@ public final class PlaybackSessionPatch {
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, uri).setPackage(activity.getPackageName()));
                 return;
             }
-            if (starter == null) {
+            if (router == null) {
                 cancelStartup();
                 return;
             }
-            var watch = WatchEndpoint.newBuilder().setVideoId(snapshot.videoId());
-            if (snapshot.queue() == null) {
-                String playlistId = snapshot.usesKeptQueue() && Settings.QUEUE_RESTORE.get()
-                        ? Settings.QUEUE_PLAYLIST_ID.get() : snapshot.playlistId();
-                if (!playlistId.isEmpty()) watch.setPlaylistId(playlistId);
-            }
-            var command = NavigationEndpoint.newBuilder().setWatchEndpoint(watch).build();
-            Map<String, Object> context = new HashMap<>();
-            context.put(RESTORE_CONTEXT, snapshot);
-            context.put("start_watch_minimized", true);
-            OpenVideosFullscreenHookPatch.keepVideoMinimized(snapshot.videoId());
-            starter.patch_startSessionWatch(command.toByteArray(), context);
+            dispatchSavedWatch(router, request);
         } catch (Exception ex) {
             cancelStartup();
             Logger.printException(() -> "Could not open the saved video", ex);
         }
     }
 
+    static void dispatchSavedWatch(CommandRouter router, RestoreRequest request) {
+        var snapshot = request.snapshot();
+        var watch = WatchEndpoint.newBuilder().setVideoId(snapshot.videoId());
+        if (snapshot.queue() == null) {
+            String playlistId = snapshot.usesKeptQueue() && Settings.QUEUE_RESTORE.get()
+                    ? Settings.QUEUE_PLAYLIST_ID.get() : snapshot.playlistId();
+            if (!playlistId.isEmpty()) watch.setPlaylistId(playlistId);
+        }
+        var command = NavigationEndpoint.newBuilder().setWatchEndpoint(watch).build();
+        Map<String, Object> context = new HashMap<>();
+        context.put(RESTORE_CONTEXT, request);
+        context.put("start_watch_minimized", true);
+        router.patch_executeCommand(command.toByteArray(), context);
+    }
+
     @Nullable
     public static Object prepareWatchDescriptor(Object original, @Nullable Map<?, ?> context) {
-        if (!enabled()) return original;
         try {
-            if (context == null || !(context.get(RESTORE_CONTEXT) instanceof PlaybackSessionSnapshot snapshot)) {
+            if (context == null || !(context.get(RESTORE_CONTEXT) instanceof RestoreRequest request)) {
+                if (!enabled()) return original;
                 if (checkingStartup || restoring != null) {
                     Logger.printDebug(() -> "Playback session restore canceled by another watch command");
                 }
@@ -488,8 +487,11 @@ public final class PlaybackSessionPatch {
                 dismissedVideo = null;
                 return original;
             }
-            if (!(original instanceof Descriptor descriptor) || snapshot != restoring
+            if (!enabled() || request != restoring) return null;
+            var snapshot = request.snapshot();
+            if (!(original instanceof Descriptor descriptor) || !snapshot.account().equals(currentAccount())
                     || !snapshot.videoId().equals(descriptor.patch_sessionVideoId())) {
+                Logger.printDebug(() -> "Playback session watch descriptor no longer matches the restore request");
                 cancelStartup();
                 return null;
             }
@@ -505,6 +507,7 @@ public final class PlaybackSessionPatch {
             }
             if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) restoredLive = snapshot.videoId();
             restoringMinimizedVideo = snapshot.videoId();
+            OpenVideosFullscreenHookPatch.keepVideoMinimized(snapshot.videoId());
             restoreWasMinimized = false;
             restoring = null;
             Logger.printDebug(() -> "Prepared paused playback session in the miniplayer");
@@ -519,7 +522,8 @@ public final class PlaybackSessionPatch {
     public static void prepareShortsDescriptor(Object original, @Nullable Map<?, ?> ignoredContext) {
         if (!enabled()) return;
         try {
-            var snapshot = restoring;
+            var request = restoring;
+            var snapshot = request == null ? null : request.snapshot();
             if (snapshot != null && usesShortsPlayer(snapshot) && original instanceof Descriptor descriptor
                     && snapshot.videoId().equals(descriptor.patch_sessionVideoId())) {
                 descriptor.patch_startSessionPaused();
@@ -574,6 +578,7 @@ public final class PlaybackSessionPatch {
 
     private static void cancelStartup() {
         checkingStartup = false;
+        startupWaitReason = null;
         restoring = null;
         restoredLive = null;
         restoredShort = null;

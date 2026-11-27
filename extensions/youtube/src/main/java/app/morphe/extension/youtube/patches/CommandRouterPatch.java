@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
 
+import androidx.annotation.Nullable;
+
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -35,6 +37,13 @@ public final class CommandRouterPatch {
      * The routers hold their activity, so they are not kept strongly by the key.
      */
     private static final Map<Activity, WeakReference<CommandRouter>> routers = new WeakHashMap<>();
+
+    /** Returns the router for a specific activity. Must be called from the main thread. */
+    @Nullable
+    public static CommandRouter getCommandRouter(Activity activity) {
+        var reference = routers.get(activity);
+        return reference == null ? null : reference.get();
+    }
 
     /**
      * Runs a command in the activity that is shown, the same as a command of a server response.

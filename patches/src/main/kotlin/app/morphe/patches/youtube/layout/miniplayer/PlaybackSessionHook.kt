@@ -13,12 +13,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.string
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.hookUserMiniplayerDismissal
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.installPlaybackSessionPlaylistReader
-import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.shared.VideoPlaybackIntentFingerprint
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.shared.hookPlaybackStartDescriptor
@@ -28,7 +26,6 @@ import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.patches.youtube.video.series.MediaSessionFingerprint
 import app.morphe.patches.youtube.video.series.hookCurrentAccountProvider
 import app.morphe.patches.youtube.video.series.resolveNativeAccountContract
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -37,7 +34,6 @@ import java.util.logging.Logger
 private const val SESSION = "Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch;"
 private const val START_PAUSED_PRESENCE_BIT = 16384L
 private const val DESCRIPTOR = $$"Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch$Descriptor;"
-private const val WATCH_STARTER = $$"Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch$WatchStarter;"
 private const val ACCOUNT_PROVIDER = $$"Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch$AccountProvider;"
 private const val ACCOUNT = $$"Lapp/morphe/extension/youtube/patches/playback/PlaybackSessionPatch$Account;"
 
@@ -51,11 +47,8 @@ internal fun installPlaybackSessionHooks(): Boolean {
     val descriptorType = descriptor.originalClassDef.type
     val videoId = descriptor.instructionMatches[1].getMethodCalled()
     val watch = VideoPlaybackIntentFingerprint
-    val dispatch = watch.originalMethod
     val builder = watch.instructionMatches.first().getMethodCalled()
     if (builder.returnType != descriptorType) return unavailable("watch descriptor builder")
-    val watchActivity = watch.originalClassDef.fields.singleOrNull { it.type == "Landroid/app/Activity;" }
-        ?: return unavailable("watch handler activity")
 
     // The native startup miniplayer's descriptor mutator sets this boolean in the watch proto.
     val pause = Fingerprint(
@@ -123,34 +116,6 @@ internal fun installPlaybackSessionHooks(): Boolean {
                 return-object v0
             """
         )
-    }
-
-    val commandType = dispatch.parameterTypes.first().toString()
-    val watchType = dispatch.definingClass
-    mutableClassDefBy(watchType).apply {
-        addPatchInterface(
-            WATCH_STARTER,
-            "patch_sessionActivity",
-            """
-                iget-object v0, p0, $watchActivity
-                return-object v0
-            """
-        )
-        addPatchInterface(
-            WATCH_STARTER,
-            "patch_startSessionWatch",
-            """
-                ${parseProtoInstructions(commandType, bytes = "p1", result = "v0", registry = "v1")}
-                check-cast v0, $commandType
-                invoke-virtual {p0, v0, p2}, $dispatch
-                return-void
-            """
-        )
-        methods.filter { it.name == "<init>" }.forEach { constructor ->
-            constructor.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                constructor.addInstruction(index, "invoke-static/range {p0 .. p0}, $SESSION->attachWatchStarter($WATCH_STARTER)V")
-            }
-        }
     }
 
     hookCurrentAccountProvider(resolveNativeAccountContract(), ACCOUNT_PROVIDER, "patch_sessionAccount",
