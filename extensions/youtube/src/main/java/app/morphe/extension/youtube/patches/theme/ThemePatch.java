@@ -62,6 +62,7 @@ import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
 
 @SuppressWarnings("unused")
 public class ThemePatch extends BaseThemePatch {
@@ -126,6 +127,35 @@ public class ThemePatch extends BaseThemePatch {
         return color == Color.BLACK && Utils.isDarkModeEnabled() && !ThemeColorPatch.isAppDefaultColor()
                 ? ThemeUtils.getThemeDarkColor()
                 : color;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The colors of a linear gradient of an Elements component, which the server gives as values.
+     * <p>
+     * The end of the collapsed text of the description panel is faded with gradients that start transparent and end
+     * in one color: the dark or light background of the app, and the tint of the text box over it. The background
+     * is the one of the app and not the selected one, and the panel of the text can also show the content behind
+     * it, so the fade shows as a band. The fade is removed, and the text ends without it.
+     */
+    public static int[] getGradientColors(int[] colors) {
+        try {
+            if (colors == null || colors.length < 2 || Color.alpha(colors[0]) != 0
+                    || ThemeColorPatch.isAppDefaultColor() || !EngagementPanel.isDescription()) {
+                return colors;
+            }
+
+            final int rgb = colors[0] & 0x00FFFFFF;
+            for (int color : colors) {
+                if ((color & 0x00FFFFFF) != rgb) return colors;
+            }
+            // A new array, the app can use the array of the colors elsewhere.
+            return new int[colors.length];
+        } catch (Exception ex) {
+            Logger.printException(() -> "getGradientColors failure", ex);
+        }
+        return colors;
     }
 
     /**
