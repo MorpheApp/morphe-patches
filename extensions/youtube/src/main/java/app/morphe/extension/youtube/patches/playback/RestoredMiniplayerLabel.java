@@ -7,8 +7,13 @@
 
 package app.morphe.extension.youtube.patches.playback;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.LocaleList;
 import android.text.TextUtils;
@@ -19,26 +24,33 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
-
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.MiniplayerPatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 
-/** The floating miniplayer label uses the player overlay even when native controls are hidden. */
+/** Draws the restored session label above the visible floating player. */
 public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDrawListener,
         View.OnAttachStateChangeListener {
-    private static volatile WeakReference<RestoredMiniplayerLabel> current = new WeakReference<>(null);
+    @Nullable private static volatile RestoredMiniplayerLabel current;
 
-    private final ViewGroup player;
-    @Nullable private TextView label;
-    @Nullable private ViewTreeObserver observer;
+    private final ViewGroup decor;
+    private final ViewTreeObserver observer;
+    private final int watchPlayerId;
+    private final Rect playerBounds = new Rect();
+    private final LabelDrawable badgeLabel;
     @Nullable private LocaleList displayLocales;
     private int availableWidth;
+    private int layoutDirection = -1;
+    private boolean added;
 
-    private RestoredMiniplayerLabel(ViewGroup player) {
-        this.player = player;
+    private RestoredMiniplayerLabel(ViewGroup decor) {
+        this.decor = decor;
+        observer = decor.getViewTreeObserver();
+        watchPlayerId = ResourceUtils.getIdIdentifier("watch_player");
+        badgeLabel = new LabelDrawable(createLabel());
     }
 
     public static String resumeLabel() {
@@ -57,48 +69,27 @@ public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDraw
         label.setCompoundDrawablePadding(visible ? Dim.dp4 : 0);
     }
 
-    static void bind(View view) {
-        if (!(view instanceof ViewGroup player)) return;
-        Utils.runOnMainThreadNowOrLater(() -> {
-            var previous = current.get();
-            if (previous != null) {
-                if (previous.player == player) return;
-                previous.stop();
-                previous.player.removeOnAttachStateChangeListener(previous);
-            }
-            var presenter = new RestoredMiniplayerLabel(player);
-            current = new WeakReference<>(presenter);
-            player.addOnAttachStateChangeListener(presenter);
-            presenter.update();
-        });
-    }
-
     static void refresh() {
-        if (current.get() == null) return;
+        if (current == null && !PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.getCurrent())) return;
         Utils.runOnMainThreadNowOrLater(() -> {
-            var presenter = current.get();
-            if (presenter != null) presenter.update();
+            View decor = PlaybackSessionPatch.restoredMiniplayerDecor();
+            if (current != null && current.decor != decor) current.stop();
+            if (current != null || !(decor instanceof ViewGroup root) || !root.isAttachedToWindow()) return;
+
+            var type = MiniplayerPatch.getCurrentMiniplayerType();
+            if (type == MiniplayerPatch.MiniplayerType.MINIMAL_BAR
+                    || type == MiniplayerPatch.MiniplayerType.MINIMAL_BAR_2) return;
+
+            var presenter = new RestoredMiniplayerLabel(root);
+            current = presenter;
+            root.addOnAttachStateChangeListener(presenter);
+            presenter.observer.addOnPreDrawListener(presenter);
+            root.invalidate();
         });
-    }
-
-    private boolean canShow() {
-        return PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.getCurrent())
-                && PlaybackSessionPatch.ownsMiniplayerControls(player);
-    }
-
-    private void update() {
-        if (!canShow()) {
-            stop();
-            return;
-        }
-        if (observer != null) return;
-        observer = player.getViewTreeObserver();
-        observer.addOnPreDrawListener(this);
-        onPreDraw();
     }
 
     private TextView createLabel() {
-        var view = new TextView(player.getContext());
+        var view = new TextView(decor.getContext());
         view.setTextColor(Color.WHITE);
         view.setTextSize(10);
         view.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
@@ -115,43 +106,95 @@ public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDraw
     }
 
     @Override public boolean onPreDraw() {
-        if (!canShow()) {
+        if (PlaybackSessionPatch.restoredMiniplayerDecor() != decor) {
             stop();
             return true;
         }
-        int margin = Dim.dp6;
-        int width = player.getWidth() - 2 * margin;
-        if (width <= 0 || player.getHeight() <= 2 * margin) return true;
 
-        boolean addLabel = label == null;
-        if (addLabel) label = createLabel();
+        View player = watchPlayerId == 0 ? null : decor.findViewById(watchPlayerId);
+        if (!getPlayerBounds(player)) {
+            player = PlaybackSessionPatch.observedWatchPlayer();
+            if (!getPlayerBounds(player)) {
+                removeLabel();
+                return true;
+            }
+        }
+
+        int margin = Dim.dp6;
+        int width = playerBounds.width() - 2 * margin;
+        if (width <= 0 || playerBounds.height() <= 2 * margin) {
+            removeLabel();
+            return true;
+        }
+        TextView label = badgeLabel.label;
         LocaleList locales = player.getResources().getConfiguration().getLocales();
         int direction = player.getLayoutDirection();
-        if (width != availableWidth || direction != label.getLayoutDirection() || !locales.equals(displayLocales)) {
+        if (width != availableWidth || direction != layoutDirection || !locales.equals(displayLocales)) {
             label.setLayoutDirection(direction);
             label.setText(resumeLabel());
             label.measure(View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.AT_MOST),
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            label.layout(0, 0, label.getMeasuredWidth(), label.getMeasuredHeight());
             availableWidth = width;
+            layoutDirection = direction;
             displayLocales = locales;
+            badgeLabel.invalidateSelf();
         }
-        int left = direction == View.LAYOUT_DIRECTION_RTL ? margin + width - label.getMeasuredWidth() : margin;
-        int bottom = player.getHeight() - margin;
-        label.layout(left, bottom - label.getMeasuredHeight(), left + label.getMeasuredWidth(), bottom);
-        // Overlay views are drawn above the video and are excluded from layout and touch dispatch.
-        if (addLabel) player.getOverlay().add(label);
+        placeLabel(badgeLabel, playerBounds, label.getWidth(), label.getHeight(), margin,
+                direction == View.LAYOUT_DIRECTION_RTL);
+        if (!added) {
+            // The decor overlay stays above video surfaces and has no touch targets.
+            decor.getOverlay().add(badgeLabel);
+            added = true;
+            Logger.printDebug(() -> "Showing restored miniplayer label at " + badgeLabel.getBounds());
+        }
         return true;
     }
 
-    private void stop() {
-        if (observer == null) return;
-        if (observer.isAlive()) observer.removeOnPreDrawListener(this);
-        observer = null;
-        if (label != null) player.getOverlay().remove(label);
-        label = null;
-        displayLocales = null;
+    static void placeLabel(Drawable badge, Rect player, int width, int height, int margin, boolean rtl) {
+        int left = rtl ? player.right - margin - width : player.left + margin;
+        int bottom = player.bottom - margin;
+        badge.setBounds(left, bottom - height, left + width, bottom);
     }
 
-    @Override public void onViewAttachedToWindow(View view) { update(); }
+    private boolean getPlayerBounds(@Nullable View player) {
+        return player != null && player.getRootView() == decor && player.isShown()
+                && player.getGlobalVisibleRect(playerBounds);
+    }
+
+    private void removeLabel() {
+        if (!added) return;
+        decor.getOverlay().remove(badgeLabel);
+        added = false;
+    }
+
+    private void stop() {
+        removeLabel();
+        if (observer.isAlive()) observer.removeOnPreDrawListener(this);
+        decor.removeOnAttachStateChangeListener(this);
+        if (current == this) current = null;
+    }
+
+    @Override public void onViewAttachedToWindow(View view) { }
     @Override public void onViewDetachedFromWindow(View view) { stop(); }
+
+    private static final class LabelDrawable extends Drawable {
+        private final TextView label;
+
+        private LabelDrawable(TextView label) {
+            this.label = label;
+        }
+
+        @Override public void draw(Canvas canvas) {
+            int save = canvas.save();
+            canvas.translate(getBounds().left, getBounds().top);
+            label.draw(canvas);
+            canvas.restoreToCount(save);
+        }
+
+        @Override public void setAlpha(int alpha) { label.setAlpha(alpha / 255f); }
+        @Override public void setColorFilter(@Nullable ColorFilter colorFilter) { }
+        @SuppressWarnings("deprecation")
+        @Override public int getOpacity() { return PixelFormat.TRANSLUCENT; }
+    }
 }

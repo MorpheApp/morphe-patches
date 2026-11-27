@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Binder;
@@ -27,6 +28,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 import app.morphe.extension.youtube.shared.PlayerType;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -78,6 +80,29 @@ public class PlaybackSessionStartupTest {
                 PlayerType.INLINE_MINIMAL, false, currentWindow, currentWindow));
         assertEquals(PlaybackSessionPatch.StartupPlayer.OPEN, PlaybackSessionPatch.startupPlayer(
                 PlayerType.HIDDEN, true, null, currentWindow));
+    }
+
+    @Test
+    public void restoredLabelFollowsTheMiniplayerFrameInWindowCoordinates() {
+        var player = new Rect();
+        player.left = 341;
+        player.top = 1160;
+        player.right = 705;
+        player.bottom = 1364;
+        var position = new int[4];
+        var badge = new ColorDrawable() {
+            @Override public void setBounds(int left, int top, int right, int bottom) {
+                position[0] = left;
+                position[1] = top;
+                position[2] = right;
+                position[3] = bottom;
+            }
+        };
+
+        RestoredMiniplayerLabel.placeLabel(badge, player, 155, 32, 12, false);
+        assertArrayEquals(new int[]{353, 1320, 508, 1352}, position);
+        RestoredMiniplayerLabel.placeLabel(badge, player, 155, 32, 12, true);
+        assertArrayEquals(new int[]{538, 1320, 693, 1352}, position);
     }
 
     @Test

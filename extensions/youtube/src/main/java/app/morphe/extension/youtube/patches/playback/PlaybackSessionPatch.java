@@ -48,7 +48,6 @@ import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEn
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.CommandRouterPatch;
 import app.morphe.extension.youtube.patches.CommandRouterPatch.CommandRouter;
-import app.morphe.extension.youtube.patches.MiniplayerPatch;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
@@ -192,12 +191,7 @@ public final class PlaybackSessionPatch {
     }
 
     public static void observeWatchPlayer(View view) {
-        if (!enabled() || watchPlayerView.get() == view) return;
-        watchPlayerView = new WeakReference<>(view);
-        MiniplayerType type = MiniplayerPatch.getCurrentMiniplayerType();
-        if (type != MiniplayerType.MINIMAL_BAR && type != MiniplayerType.MINIMAL_BAR_2) {
-            RestoredMiniplayerLabel.bind(view);
-        }
+        if (enabled() && watchPlayerView.get() != view) watchPlayerView = new WeakReference<>(view);
     }
 
     public static void attachMediaSession(MediaSession session) {
@@ -419,6 +413,18 @@ public final class PlaybackSessionPatch {
 
     public static boolean showRestoredMiniplayer(PlayerType type) {
         return restoringMinimizedVideo != null && type == PlayerType.WATCH_WHILE_MINIMIZED;
+    }
+
+    @Nullable
+    static View restoredMiniplayerDecor() {
+        Activity activity = owner.get();
+        return activity == null || !showRestoredMiniplayer(PlayerType.getCurrent())
+                ? null : activity.getWindow().peekDecorView();
+    }
+
+    @Nullable
+    static View observedWatchPlayer() {
+        return watchPlayerView.get();
     }
 
     static boolean ownsMiniplayerControls(View view) {
