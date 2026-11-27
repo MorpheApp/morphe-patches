@@ -14,10 +14,12 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -144,6 +146,20 @@ public class RestoreOldVideoActionBarPatch {
     private static final FeedCardLayoutPatch.VideoTemplate CHANNEL_BAR_TEMPLATE = new FeedCardLayoutPatch.VideoTemplate(
             "compact_channel_bar.eml", "compact_channel_bar.eml-js", 391108665, 6, 5);
     private static final int CHANNEL_BAR_ENVIRONMENT_FIELD = 4;
+    /**
+     * Folder of the templates that the app ships in the APK. A file is named as the uri of
+     * its template, with an underscore instead of the bar before the hash.
+     */
+    private static final String BUNDLED_TEMPLATES_FOLDER = "mainapp_filegroup/_srs_resources_eml_bundle";
+    private static final Pattern BUNDLED_CHANNEL_BAR_PATTERN =
+            Pattern.compile("compact_channel_bar\\.eml(-[a-z]+)?_[0-9a-f]+");
+    /**
+     * The uri of the channel bar that the app ships in the APK, or null if it was not looked up yet
+     * or the app has none.
+     */
+    @Nullable
+    private static volatile String bundledChannelBarUri;
+    private static volatile boolean bundledChannelBarSearched;
     private static final String SHARE_BUTTON_ID = "id.video.share.button";
     /**
      * Key of the icon of a toggled button, after its target id.
@@ -561,6 +577,10 @@ public class RestoreOldVideoActionBarPatch {
                     // The template cache can be without the channel bar when the app starts, such as on 20.26.
                     // The app then downloads the template of the uri that was found before.
                     channelBarUri = Settings.VIDEO_ACTION_BAR_CHANNEL_BAR_TEMPLATE.get();
+                } else {
+                    // The template cache may have never had the channel bar, such as on 20.26,
+                    // so the version the app ships in the APK is used, which it can always show.
+                    channelBarUri = getBundledChannelBarUri();
                 }
                 if (channelBarUri == null || actionBar.getActionsCount() == 0
                         || !actionBar.getActions(0).getContent().hasSubscribeButton()) {
@@ -632,6 +652,31 @@ public class RestoreOldVideoActionBarPatch {
         }
 
         return null;
+    }
+
+    /**
+     * @return The uri of the channel bar that the app ships in the APK, or null if the app has none.
+     */
+    @Nullable
+    private static String getBundledChannelBarUri() throws IOException {
+        if (bundledChannelBarSearched) {
+            return bundledChannelBarUri;
+        }
+
+        String[] names = Utils.getContext().getAssets().list(BUNDLED_TEMPLATES_FOLDER);
+        if (names != null) {
+            for (String name : names) {
+                if (BUNDLED_CHANNEL_BAR_PATTERN.matcher(name).matches()) {
+                    final int hashStart = name.lastIndexOf('_');
+                    String uri = name.substring(0, hashStart) + '|' + name.substring(hashStart + 1);
+                    Logger.printDebug(() -> "Bundled channel bar template: " + uri);
+                    bundledChannelBarUri = uri;
+                    break;
+                }
+            }
+        }
+        bundledChannelBarSearched = true;
+        return bundledChannelBarUri;
     }
 
     private static Element withActionBar(Element element, ComponentType componentType,
