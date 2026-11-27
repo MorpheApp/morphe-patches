@@ -425,7 +425,8 @@ val hideLayoutComponentsPatch = patch(
                 SwitchPreference("morphe_hide_account_menu_badges"),
                 SwitchPreference("morphe_hide_account_menu_downloads"),
                 SwitchPreference("morphe_hide_account_menu_liked_videos"),
-                SwitchPreference("morphe_hide_account_menu_watch_later")
+                SwitchPreference("morphe_hide_account_menu_watch_later"),
+                SwitchPreference("morphe_hide_account_menu_privacy_tos_footer")
             ),
             SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
             SwitchPreference("morphe_hide_get_premium_button"),

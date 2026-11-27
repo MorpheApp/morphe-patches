@@ -185,6 +185,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_ACCOUNT_MENU_DOWNLOADS = new BooleanSetting("morphe_hide_account_menu_downloads", FALSE);
     public static final BooleanSetting HIDE_ACCOUNT_MENU_LIKED_VIDEOS = new BooleanSetting("morphe_hide_account_menu_liked_videos", FALSE);
     public static final BooleanSetting HIDE_ACCOUNT_MENU_WATCH_LATER = new BooleanSetting("morphe_hide_account_menu_watch_later", FALSE);
+    public static final BooleanSetting HIDE_ACCOUNT_MENU_PRIVACY_TOS_FOOTER = new BooleanSetting("morphe_hide_account_menu_privacy_tos_footer", FALSE);
     public static final BooleanSetting HIDE_ALBUM_CARDS = new BooleanSetting("morphe_hide_album_cards", FALSE, true);
     public static final BooleanSetting HIDE_ARTIST_CARDS = new BooleanSetting("morphe_hide_artist_cards", FALSE);
     public static final BooleanSetting HIDE_CHANNEL_BUTTONS = new BooleanSetting("morphe_hide_channel_buttons", FALSE);

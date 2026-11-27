@@ -310,6 +310,11 @@ public final class LayoutComponentsFilter extends Filter {
                 )
         );
 
+        final var privacyPolicyToS = new StringFilterGroup(
+                Settings.HIDE_ACCOUNT_MENU_PRIVACY_TOS_FOOTER,
+                "privacy_tos_cell.e"
+        );
+
         // The hint shown in the player during seek gestures. The identifier is versioned.
         final var seekEduOverlay = new StringFilterGroup(
                 Settings.HIDE_PLAYER_GESTURE_HINTS,
@@ -323,6 +328,7 @@ public final class LayoutComponentsFilter extends Filter {
                 liveChatReplay,
                 liveStream,
                 libraryItem,
+                privacyPolicyToS,
                 seekEduOverlay
         );
 
