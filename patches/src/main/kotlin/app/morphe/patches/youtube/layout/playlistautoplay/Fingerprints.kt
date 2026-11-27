@@ -53,16 +53,21 @@ internal object NavigationRequestFingerprint : Fingerprint(
 )
 
 /**
- * Method of the playback queue that picks the queue item for a navigation request.
+ * Method of the playback queue that picks the queue item for a navigation request ([NavigationRequestFingerprint]).
+ * It reads the intent of the request ([NavigationIntentEnumFingerprint]).
  * A playlist from the server is loaded into this queue.
  */
-internal fun queueNavigationItemFingerprint(requestType: String, enumType: String) = Fingerprint(
+internal object QueueNavigationItemFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "L",
-    parameters = listOf(requestType),
+    parameters = { listOf(NavigationRequestFingerprint.originalClassDef.type) },
     filters = listOf(
-        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = requestType, type = enumType),
-        methodCall(definingClass = enumType, name = "ordinal"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = { NavigationRequestFingerprint.originalClassDef.type },
+            type = { NavigationIntentEnumFingerprint.originalClassDef.type }
+        ),
+        methodCall(definingClass = { NavigationIntentEnumFingerprint.originalClassDef.type }, name = "ordinal"),
     )
 )
 

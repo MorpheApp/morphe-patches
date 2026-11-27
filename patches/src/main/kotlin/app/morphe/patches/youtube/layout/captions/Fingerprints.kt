@@ -23,11 +23,12 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.shared.PlayerTypeEnumFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
     isStatic = true,
@@ -308,11 +309,14 @@ internal object CaptionTracksManagerAutoTranslateTracksFingerprint : Fingerprint
     )
 )
 
-/** The track manager's default source, without subtitle preference or CC state overrides. */
-internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: String) : Fingerprint(
+/**
+ * The track manager's default source, without subtitle preference or CC state overrides.
+ * It returns the caption track that [CaptionTrackBuilderBuildFingerprint] builds.
+ */
+internal object CaptionTracksManagerDefaultSourceFingerprint : Fingerprint(
     classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = captionTrackType,
+    returnType = { CaptionTrackBuilderBuildFingerprint.originalMethod.returnType },
     parameters = listOf(),
 )
 
@@ -450,19 +454,20 @@ internal object PreferredCaptionsTrackFingerprint : Fingerprint(
 /**
  * Selects a caption track for a selection reason, and calls [SetSubtitleTrackFingerprint].
  */
-internal class CaptionSelectionFingerprint(setter: MethodReference) : Fingerprint(
+internal object CaptionSelectionFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = setter.parameterTypes.take(2).map { it.toString() },
-    filters = listOf(methodCall(reference = setter)),
+    parameters = { SetSubtitleTrackFingerprint.originalMethod.parameterTypes.take(2) },
+    filters = listOf(methodCall(reference = { SetSubtitleTrackFingerprint.originalMethod })),
 )
 
 /**
  * Enum of the caption selection reasons. Matches at the field of the default reason.
+ * The enum is the second parameter of [CaptionSelectionFingerprint].
  */
-internal fun captionDefaultSelectionFingerprint(enumType: String) = Fingerprint(
-    definingClass = enumType,
+internal object CaptionDefaultSelectionFingerprint : Fingerprint(
+    definingClass = { CaptionSelectionFingerprint.originalMethod.parameterTypes[1] },
     name = "<clinit>",
     filters = listOf(
         string("DEFAULT"),
@@ -470,7 +475,7 @@ internal fun captionDefaultSelectionFingerprint(enumType: String) = Fingerprint(
         fieldAccess(
             opcode = Opcode.SPUT_OBJECT,
             definingClass = "this",
-            type = enumType,
+            type = { CaptionSelectionFingerprint.originalMethod.parameterTypes[1] },
             location = MatchAfterImmediately()
         ),
     ),
@@ -550,12 +555,15 @@ internal class SubtitleManagerSelectedTrackFingerprint(trackType: String) : Fing
 
 /**
  * Result callback of the requests of the native caption track handler.
+ * It casts to the request that [CaptionFileParserFingerprint] reads the track of.
  */
-internal class CaptionTrackHandlerResultFingerprint(requestTrack: FieldReference) : Fingerprint(
+internal object CaptionTrackHandlerResultFingerprint : Fingerprint(
     classFingerprint = CaptionTrackHandlerErrorFingerprint,
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-    filters = listOf(checkCast(requestTrack.definingClass))
+    filters = listOf(
+        checkCast({ CaptionFileParserFingerprint.instructionMatches[1].fieldReference.definingClass })
+    )
 )
 
 /**
@@ -728,20 +736,27 @@ internal object AddCueRangesFingerprint : Fingerprint(
 )
 
 /**
- * Caption cue, a cue range with the caption windows it shows when it starts.
+ * The cue range type that [AddCueRangesFingerprint] casts to.
  */
-internal fun getCaptionCueConstructorFingerprint(cueRangeType: String) = object : Fingerprint(
-    superclass = cueRangeType,
+private val cueRangeType
+    get() = AddCueRangesFingerprint.instructionMatches[1].instruction.getReference<TypeReference>()!!.type
+
+/**
+ * Caption cue, a cue range with the caption windows it shows when it starts.
+ * The cue range is the type [AddCueRangesFingerprint] casts to.
+ */
+internal object CaptionCueRangeConstructorFingerprint : Fingerprint(
+    superclass = { cueRangeType },
     name = "<init>",
     returnType = "V",
     parameters = listOf("J", "J", "Ljava/util/List;", "L"),
     filters = listOf(
         methodCall(
-            definingClass = cueRangeType,
+            definingClass = { cueRangeType },
             name = "<init>"
         )
     )
-) {}
+)
 
 /**
  * Captions of a fully loaded caption track.
@@ -767,9 +782,10 @@ internal object CaptionWindowsConstructorFingerprint : Fingerprint(
 )
 
 /**
- * Caption chunk loader. Matches at the field of the captions it loads from.
+ * Caption chunk loader. Matches at the field of the captions it loads from,
+ * which are the class of [CaptionWindowsConstructorFingerprint].
  */
-internal fun getCaptionChunkLoaderConstructorFingerprint(captionWindowsType: String) = object : Fingerprint(
+internal object CaptionChunkLoaderConstructorFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V",
     filters = listOf(
@@ -777,22 +793,22 @@ internal fun getCaptionChunkLoaderConstructorFingerprint(captionWindowsType: Str
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
-            type = captionWindowsType
+            type = { CaptionWindowsConstructorFingerprint.instructionMatches.last().fieldReference.definingClass }
         )
     )
-) {}
+)
 
 /**
  * Loads the caption cues that start in the chunk of a video time.
  */
-internal fun getCaptionChunkLoaderFingerprint(loaderType: String) = object : Fingerprint(
-    definingClass = loaderType,
+internal object CaptionChunkLoaderFingerprint : Fingerprint(
+    classFingerprint = CaptionChunkLoaderConstructorFingerprint,
     returnType = "V",
     parameters = listOf("J"),
     filters = listOf(
         methodCall(smali = "Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V")
     )
-) {}
+)
 
 internal const val SUBTITLE_WINDOW_VIEW_CLASS =
     "Lcom/google/android/libraries/youtube/player/subtitles/ui/SubtitleWindowView;"
@@ -841,9 +857,24 @@ internal object CaptionCueConstructorFingerprint : Fingerprint(
     parameters = listOf("I", "J", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "L")
 )
 
-/** Caption window visibility is independent of its nonempty styled text. */
-internal fun getCaptionSettingsVisibilityFingerprint(settingsType: String) = object : Fingerprint(
-    definingClass = settingsType,
+/**
+ * The settings of a caption cue, the last field [CaptionCueToStringFingerprint] reads.
+ */
+private val captionSettingsType
+    get() = CaptionCueToStringFingerprint.instructionMatches[4].fieldReference.type
+
+/**
+ * The caption cue of [CaptionCueToStringFingerprint].
+ */
+private val captionCueType
+    get() = CaptionCueToStringFingerprint.originalClassDef.type
+
+/**
+ * Caption window visibility is independent of its nonempty styled text.
+ * The class is the settings of a caption cue.
+ */
+internal object CaptionSettingsVisibilityFingerprint : Fingerprint(
+    definingClass = { captionSettingsType },
     name = "toString",
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -851,44 +882,45 @@ internal fun getCaptionSettingsVisibilityFingerprint(settingsType: String) = obj
         fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z"),
         string("ap=%d, ah=%d, av=%d, vs=%b, sd=%b")
     )
-) {}
+)
 
 /**
- * Matches at the default caption window settings.
+ * Matches at the default caption window settings. The class is the settings of a caption cue.
  */
-internal fun getCaptionDefaultSettingsFingerprint(settingsType: String) = object : Fingerprint(
-    definingClass = settingsType,
+internal object CaptionDefaultSettingsFingerprint : Fingerprint(
+    definingClass = { captionSettingsType },
     name = "<clinit>",
     returnType = "V",
     filters = listOf(
-        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this", type = settingsType)
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this", type = { captionSettingsType })
     )
-) {}
+)
 
 /**
- * Returns the caption cues shown at a video time.
+ * Returns the caption cues shown at a video time. The cues are of [CaptionCueToStringFingerprint].
  */
-internal fun getCaptionSamplerFingerprint(cueType: String) = object : Fingerprint(
+internal object CaptionSamplerFingerprint : Fingerprint(
     classFingerprint = CaptionWindowsConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/util/List;",
     parameters = listOf("J"),
     filters = listOf(
         fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = "Ljava/util/List;"),
-        newInstance(cueType),
-        methodCall(definingClass = cueType, name = "<init>")
+        newInstance({ captionCueType }),
+        methodCall(definingClass = { captionCueType }, name = "<init>")
     )
-) {}
+)
 
 /**
  * Sets the cue of a subtitle window and splits its text into lines.
+ * The cue is of [CaptionCueToStringFingerprint].
  */
-internal fun getCaptionWindowSetterFingerprint(cueType: String) = object : Fingerprint(
+internal object CaptionWindowSetterFingerprint : Fingerprint(
     definingClass = SUBTITLE_WINDOW_VIEW_CLASS,
     returnType = "V",
-    parameters = listOf(cueType),
+    parameters = { listOf(captionCueType) },
     filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this", type = cueType),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this", type = { captionCueType }),
         // Visible text lines.
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -918,7 +950,7 @@ internal fun getCaptionWindowSetterFingerprint(cueType: String) = object : Finge
             location = MatchAfterWithin(2)
         )
     )
-) {}
+)
 
 /**
  * Subtitle window constructor. Matches at the row used to measure caption text.

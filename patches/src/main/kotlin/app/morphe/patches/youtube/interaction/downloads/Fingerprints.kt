@@ -439,11 +439,12 @@ internal object DownloadQualityPickerCommandFingerprint : Fingerprint(
 )
 
 /**
- * Creates the offline setting category from the setting category of the server.
+ * Creates the offline setting category of [OfflineSettingCategoryToStringFingerprint]
+ * from the setting category of the server.
  */
-internal fun offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType: String) = Fingerprint(
+internal object OfflineSettingCategoryFromProtoFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = offlineSettingCategoryType,
+    returnType = { OfflineSettingCategoryToStringFingerprint.originalClassDef.type },
     parameters = listOf("L")
 )
 

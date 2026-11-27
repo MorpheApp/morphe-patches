@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.misc.playertype
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
@@ -53,3 +54,21 @@ internal object ControlsStateToStringFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Sets the play and pause button from the controls state ([ControlsStateToStringFingerprint]).
+ * It reads the video state ([VideoStateEnumFingerprint]) of the controls state.
+ */
+internal object PlayPauseButtonControlsStateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = { listOf(ControlsStateToStringFingerprint.originalClassDef.type) },
+    filters = listOf(
+        // Obfuscated parameter field name.
+        fieldAccess(
+            definingClass = { ControlsStateToStringFingerprint.originalClassDef.type },
+            type = { VideoStateEnumFingerprint.originalClassDef.type }
+        ),
+        resourceLiteral(ResourceType.STRING, "accessibility_play"),
+        resourceLiteral(ResourceType.STRING, "accessibility_pause")
+    )
+)

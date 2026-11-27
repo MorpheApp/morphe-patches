@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.hide.shorts
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchBeforeWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -34,7 +35,7 @@ internal object ShortsNavigationBarModeFingerprint : Fingerprint(
     classFingerprint = Fingerprint(
         name = "<clinit>",
         filters = listOf(
-            string("\$ReelSequenceControllerStateKey")
+            string($$"$ReelSequenceControllerStateKey")
         )
     ),
     filters = listOf(
@@ -108,7 +109,12 @@ internal object SetPivotBarVisibilityLegacyFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Z"),
     filters = listOf(
-        checkCast("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")
+        // Other methods of the class also cast to the pivot bar. This one moves it back when it is shown.
+        methodCall(smali = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;->setTranslationY(F)V"),
+        checkCast(
+            "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            location = MatchBeforeWithin(5)
+        )
     )
 )
 
@@ -168,6 +174,26 @@ internal object SpeedmasterIndicatorChipFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             name = "setInflatedId",
             location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Every read of the navigation bar mode of [ShortsNavigationBarModeFingerprint],
+ * such as by the Shorts pager and by the page of the Short.
+ */
+internal object ShortsNavigationBarModeReadFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            reference = { ShortsNavigationBarModeFingerprint.instructionMatches.first().fieldReference }
+        ),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(Opcode.SGET_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            reference = { ShortsNavigationBarModeFingerprint.instructionMatches[3].fieldReference },
+            location = MatchAfterImmediately()
         )
     )
 )

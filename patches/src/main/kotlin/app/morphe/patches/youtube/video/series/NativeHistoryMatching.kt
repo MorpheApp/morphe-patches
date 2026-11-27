@@ -34,9 +34,8 @@ internal fun resolveNativeHistory(accountType: String): NativeHistoryContract {
     val capture = NativeStreamingBrowseRequestFingerprint.instructionMatches.last().getMethodCalled()
     val request = classDefBy(capture.returnType)
 
-    val description = NativeRequestDescriptionFingerprint(request.type)
-    val route = description.instructionMatches[1].fieldReference
-    val continuation = description.instructionMatches[3].fieldReference
+    val route = NativeRequestDescriptionFingerprint.instructionMatches[1].fieldReference
+    val continuation = NativeRequestDescriptionFingerprint.instructionMatches[3].fieldReference
 
     val clickTracking = NativeBaseRequestDescriptionFingerprint.instructionMatches[1]
         .fieldReference
@@ -54,9 +53,9 @@ internal fun resolveNativeHistory(accountType: String): NativeHistoryContract {
     return NativeHistoryContract(
         service = service,
         request = request,
-        factory = NativeRequestFactoryFingerprint(request.type).originalMethod,
+        factory = NativeRequestFactoryFingerprint.originalMethod,
         capture = capture,
-        dispatch = NativeBrowseDispatchFingerprint(request.type).originalMethod,
+        dispatch = NativeBrowseDispatchFingerprint.originalMethod,
         genericDispatches = genericDispatches,
         routeSetter = NativeRequestStringSetterFingerprint(request.type, route.name).originalMethod,
         continuationSetter = NativeRequestStringSetterFingerprint(

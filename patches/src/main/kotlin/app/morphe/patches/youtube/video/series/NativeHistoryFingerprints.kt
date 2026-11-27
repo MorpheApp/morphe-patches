@@ -42,17 +42,23 @@ internal object NativeStreamingBrowseRequestFingerprint : Fingerprint(
 )
 
 /**
+ * The browse request that [NativeStreamingBrowseRequestFingerprint] creates.
+ */
+private val nativeBrowseRequestType
+    get() = NativeStreamingBrowseRequestFingerprint.instructionMatches.last().methodReference.returnType
+
+/**
  * Creates a browse request for the current account. The context parameter can be null.
  */
-internal class NativeRequestFactoryFingerprint(requestType: String) : Fingerprint(
+internal object NativeRequestFactoryFingerprint : Fingerprint(
     classFingerprint = NativeBrowseServiceFingerprint,
     parameters = listOf("L"),
-    returnType = requestType,
+    returnType = { nativeBrowseRequestType },
     filters = listOf(
         methodCall(
             definingClass = "this",
             parameters = listOf("L", "L"),
-            returnType = requestType
+            returnType = { nativeBrowseRequestType }
         )
     )
 )
@@ -60,14 +66,14 @@ internal class NativeRequestFactoryFingerprint(requestType: String) : Fingerprin
 /**
  * Browse request dispatch that delegates to the dispatch implementation.
  */
-internal class NativeBrowseDispatchFingerprint(requestType: String) : Fingerprint(
+internal object NativeBrowseDispatchFingerprint : Fingerprint(
     classFingerprint = NativeBrowseServiceFingerprint,
-    parameters = listOf(requestType, EXECUTOR),
+    parameters = { listOf(nativeBrowseRequestType, EXECUTOR) },
     returnType = LISTENABLE_FUTURE,
     filters = listOf(
         methodCall(
             definingClass = "this",
-            parameters = listOf(requestType, EXECUTOR),
+            parameters = { listOf(nativeBrowseRequestType, EXECUTOR) },
             returnType = LISTENABLE_FUTURE
         )
     )
@@ -94,8 +100,8 @@ internal class NativeGenericDispatchWithExtraParameterFingerprint(requestBaseTyp
 /**
  * Browse request debug description. Matches the route and continuation fields.
  */
-internal class NativeRequestDescriptionFingerprint(requestType: String) : Fingerprint(
-    definingClass = requestType,
+internal object NativeRequestDescriptionFingerprint : Fingerprint(
+    definingClass = { nativeBrowseRequestType },
     parameters = listOf(),
     returnType = "Ljava/lang/String;",
     filters = listOf(

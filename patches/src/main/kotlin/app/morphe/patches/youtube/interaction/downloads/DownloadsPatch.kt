@@ -402,8 +402,7 @@ val downloadsPatch = patch(
         // Without the offline setting category, the settings are hidden until a video is saved.
         val offlineSettingCategoryClass = OfflineSettingCategoryToStringFingerprint.classDef
         val offlineSettingCategoryType = offlineSettingCategoryClass.type
-        val offlineSettingCategoryFromProto =
-            offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType).method
+        val offlineSettingCategoryFromProto = OfflineSettingCategoryFromProtoFingerprint.method
 
         val addOfflineSettingCategoryMethod = ImmutableMethod(
             offlineSettingCategoryType,

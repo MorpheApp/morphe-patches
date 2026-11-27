@@ -51,3 +51,13 @@ internal object DoubleTapChapterSkipConfigFingerprint : Fingerprint(
     ),
     custom = { method, _ -> method.parameterTypes.getOrNull(2) == "Landroid/os/Handler;" }
 )
+
+/**
+ * Returns the seek source of a double tap ([SeekTypeEnumFingerprint]).
+ */
+internal object DoubleTapInfoGetSeekSourceFingerprint : Fingerprint(
+    classFingerprint = DoubleTapInfoCtorFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = { SeekTypeEnumFingerprint.originalClassDef.type },
+    parameters = listOf("Z")
+)

@@ -1,10 +1,8 @@
 package app.morphe.patches.youtube.misc.links
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.string
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -24,14 +22,7 @@ val openLinksExternallyPatch = patch(
             SwitchPreference("morphe_external_browser", summary = true),
         )
 
-        Fingerprint(
-            filters = listOf(
-                string("android.support.customtabs.action.CustomTabsService")
-            ),
-            custom = { _, classDef ->
-                !classDef.type.startsWith("Lapp/morphe/")
-            }
-        ).matchAllMethodIndicesForEach { index ->
+        CustomTabsServiceActionFingerprint.matchAllMethodIndicesForEach { index ->
             val register = getInstruction<OneRegisterInstruction>(index).registerA
 
             addInstructions(

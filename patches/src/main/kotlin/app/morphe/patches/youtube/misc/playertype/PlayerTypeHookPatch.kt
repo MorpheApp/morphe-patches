@@ -1,16 +1,11 @@
 package app.morphe.patches.youtube.misc.playertype
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.PlayerTypeFingerprint
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
@@ -39,23 +34,7 @@ val playerTypeHookPatch = patch(
             }
         }
 
-        val controlStateType = ControlsStateToStringFingerprint.originalClassDef.type
-        val videoStateType = VideoStateEnumFingerprint.originalClassDef.type
-
-        Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(element = controlStateType),
-            filters = listOf(
-                // Obfuscated parameter field name.
-                fieldAccess(
-                    definingClass = controlStateType,
-                    type = videoStateType
-                ),
-                resourceLiteral(ResourceType.STRING, "accessibility_play"),
-                resourceLiteral(ResourceType.STRING, "accessibility_pause")
-            )
-        ).let {
+        PlayPauseButtonControlsStateFingerprint.let {
             it.method.apply {
                 val videoStateFieldName = getInstruction<ReferenceInstruction>(
                     it.instructionMatches.first().index

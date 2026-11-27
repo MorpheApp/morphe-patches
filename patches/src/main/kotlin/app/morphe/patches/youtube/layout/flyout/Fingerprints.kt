@@ -17,6 +17,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -128,3 +129,9 @@ internal object SingularGeneratedExtensionFingerprint : Fingerprint(
     )
 )
 
+internal object MainActivityOnUserLeaveHintFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onUserLeaveHint",
+    returnType = "V",
+    parameters = listOf()
+)

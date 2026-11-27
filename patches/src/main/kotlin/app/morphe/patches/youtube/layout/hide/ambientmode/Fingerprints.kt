@@ -50,19 +50,24 @@ internal object CinematicContainerRendererFingerprint : Fingerprint(
 
 /**
  * Reads the presentation style (field 3) of a CinematicContainerRenderer, if it has one.
+ * The renderer is the class of [CinematicContainerRendererFingerprint].
  */
-internal fun cinematicContainerPresentationStyleFingerprint(rendererType: String) = Fingerprint(
+internal object CinematicContainerPresentationStyleFingerprint : Fingerprint(
     returnType = "L",
-    parameters = listOf(rendererType),
+    parameters = { listOf(CinematicContainerRendererFingerprint.originalClassDef.type) },
     filters = listOf(
         // Has-bits field.
-        fieldAccess(opcode = Opcode.IGET, definingClass = rendererType, type = "I"),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = { CinematicContainerRendererFingerprint.originalClassDef.type },
+            type = "I"
+        ),
         opcode(Opcode.AND_INT_LIT8, location = MatchAfterImmediately()),
         opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
         // Presentation style field.
         fieldAccess(
             opcode = Opcode.IGET,
-            definingClass = rendererType,
+            definingClass = { CinematicContainerRendererFingerprint.originalClassDef.type },
             type = "I",
             location = MatchAfterImmediately()
         ),

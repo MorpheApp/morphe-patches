@@ -154,6 +154,8 @@ internal object ImageEnumConstructorFingerprint : Fingerprint(
 )
 
 internal object SetEnumMapFingerprint : Fingerprint(
+    // 20.26 also has the icon in a map that a constructor fills.
+    name = "<clinit>",
     filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_bell_black_24"),
         methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;", location = MatchAfterWithin(10)),

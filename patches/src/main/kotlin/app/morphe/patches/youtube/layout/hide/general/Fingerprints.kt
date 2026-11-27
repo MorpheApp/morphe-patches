@@ -28,6 +28,7 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
+import app.morphe.patches.youtube.video.speed.custom.TapAndHoldSpeedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -235,7 +236,6 @@ internal object FilterBarHeightFingerprint : Fingerprint(
     )
 )
 
-// Fingerprint is not unique
 internal object FilterBarHeightLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
@@ -246,7 +246,13 @@ internal object FilterBarHeightLegacyFingerprint : Fingerprint(
             returnType = "I",
         ),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        literal(0)
+        // Another constructor uses the height for the layout parameters of a view.
+        fieldAccess(
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        )
     )
 )
 
@@ -981,10 +987,9 @@ internal object TimeBarChapterTitleVisibilityLegacyFingerprint : Fingerprint(
  * 21.22 and lower. Legacy version of [TimeBarEntryPointVisibilityFingerprint].
  *
  * Sets the text and the visibility of 'In this video'.
- *
- * @param timeBarType Class of [TimeBarChapterTitleVisibilityLegacyFingerprint].
+ * It reads a field of the class of [TimeBarChapterTitleVisibilityLegacyFingerprint].
  */
-internal fun getTimeBarTimelineTitleVisibilityLegacyFingerprint(timeBarType: String) = Fingerprint(
+internal object TimeBarTimelineTitleVisibilityLegacyFingerprint : Fingerprint(
     name = "accept",
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
@@ -992,7 +997,7 @@ internal fun getTimeBarTimelineTitleVisibilityLegacyFingerprint(timeBarType: Str
         methodCall(smali = "Landroid/widget/TextView;->setContentDescription(Ljava/lang/CharSequence;)V"),
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
-            definingClass = timeBarType
+            definingClass = { TimeBarChapterTitleVisibilityLegacyFingerprint.originalClassDef.type }
         ),
         methodCall( // Sets the visibility of 'In this video'.
             opcode = Opcode.INVOKE_VIRTUAL,
@@ -1084,4 +1089,15 @@ internal object AddTimelineMarkersFingerprint : Fingerprint(
             type = { TimelineMarkerTypeFingerprint.originalClassDef.type }
         )
     )
+)
+
+/**
+ * Restores the speed when tap and hold ends. It is in the class that overrides the speed,
+ * which [TapAndHoldSpeedFingerprint] reads.
+ */
+internal object TapAndHoldSpeedEndFingerprint : Fingerprint(
+    definingClass = { TapAndHoldSpeedFingerprint.instructionMatches[6].fieldReference.type },
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = { "V" },
+    parameters = { listOf() }
 )
