@@ -132,6 +132,17 @@ final class LyricsProviderConfigDialog {
     static Dialog compatibleDialog(Activity context, @Nullable StringSetting prompt,
                                    @Nullable StringSetting rubyPrompt,
                                    Runnable onSaved, @Nullable Runnable onReset) {
+        return compatibleDialog(context, prompt, rubyPrompt,
+                "morphe_music_lyrics_ai_config_prompt_label",
+                "morphe_music_lyrics_ai_config_ruby_prompt_label",
+                onSaved, onReset);
+    }
+
+    /** Shared endpoint config dialog with caller-supplied prompt labels. */
+    static Dialog compatibleDialog(Activity context, @Nullable StringSetting prompt,
+                                   @Nullable StringSetting secondPrompt,
+                                   String promptLabelKey, String secondPromptLabelKey,
+                                   Runnable onSaved, @Nullable Runnable onReset) {
         LinearLayout content = createContent(context);
         // The URL row is added last so the preset it triggers can fill the boxes above.
         EditText tokenInput = addInput(content,
@@ -173,10 +184,8 @@ final class LyricsProviderConfigDialog {
             testConnection(context, url, token, model, extraHeaders, extraBody);
         });
         addReasoningRow(content);
-        final PromptField promptField = addPromptSection(content, prompt,
-                "morphe_music_lyrics_ai_config_prompt_label");
-        final PromptField rubyPromptField = addPromptSection(content, rubyPrompt,
-                "morphe_music_lyrics_ai_config_ruby_prompt_label");
+        final PromptField promptField = addPromptSection(content, prompt, promptLabelKey);
+        final PromptField rubyPromptField = addPromptSection(content, secondPrompt, secondPromptLabelKey);
 
         return createDialog(context,
                 ProcessingProviders.OPENAI_COMPATIBLE_LABEL,

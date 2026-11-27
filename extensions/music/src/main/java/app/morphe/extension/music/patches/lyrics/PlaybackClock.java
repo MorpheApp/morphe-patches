@@ -8,6 +8,8 @@ package app.morphe.extension.music.patches.lyrics;
 
 import android.media.session.PlaybackState;
 
+import app.morphe.extension.music.shared.VideoInformation;
+
 /** Estimates playback position between coarse PlaybackState/VideoInformation samples. */
 final class PlaybackClock {
 
@@ -150,8 +152,10 @@ final class PlaybackClock {
             driftSpeedFactor = 1f;
         }
         playing = nowPlaying;
-        // A new state can report zero before it reports where the video really is.
-        final boolean isStaleZero = newPosition == 0 && videoTime > SEEK_THRESHOLD_MS;
+        // A new state can report zero before it reports where the video really is, but an
+        // explicit seek to the start makes zero authoritative even while videoTime is stale.
+        final boolean isStaleZero = newPosition == 0 && videoTime > SEEK_THRESHOLD_MS
+                && !VideoInformation.isRecentSeekToZero();
         if (newPosition >= 0 && !isStaleZero) {
             final long smoothMs = smoothPosition();
             final long delta = newPosition - smoothMs;

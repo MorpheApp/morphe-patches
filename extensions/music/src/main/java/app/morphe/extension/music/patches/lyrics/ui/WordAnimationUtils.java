@@ -2135,7 +2135,7 @@ public final class WordAnimationUtils {
                 vc, isRtlLine, lineStart, lineWidth, localStart, localEnd,
                 activeSylIdx, activeLineIdx, curGX, isActiveSylLastOfLine,
                 activeSylProgress, gradientWidth, wipe);
-        if (!Settings.LYRICS_WORD_SMOOTH_SWEEP.get()) {
+        if (!Settings.isWordAnimSmooth()) {
             if (wipe.mode == WIPE_PAST || (!isRtlLine && wipe.clipEdge >= vc.width) || (isRtlLine && wipe.clipEdge <= 0f)) {
                 drawLayoutWithPaint(canvas, vc.subLayout, topLeftX, topLeftY, pastColor, null);
             } else if (wipe.mode == WIPE_UNLIT || (!isRtlLine && wipe.clipEdge <= 0f) || (isRtlLine && wipe.clipEdge >= vc.width)) {
@@ -2751,7 +2751,7 @@ public final class WordAnimationUtils {
                         : 0f;
             }
             float localX = curRomGX + brushShift;
-            final boolean smoothSweep = Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
+            final boolean smoothSweep = Settings.isWordAnimSmooth();
 
             for (int i = 0; i < n; i++) {
                 RomanizedWordCluster rwc = cs.get(i);

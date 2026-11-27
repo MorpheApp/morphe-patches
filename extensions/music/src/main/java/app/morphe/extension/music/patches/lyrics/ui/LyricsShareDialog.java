@@ -55,12 +55,22 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
 
+import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
+import app.morphe.extension.music.patches.lyrics.derive.StoryAiResult;
+import app.morphe.extension.music.patches.lyrics.derive.WeightedWord;
+import app.morphe.extension.music.patches.lyrics.derive.WordCloudBuilder;
+import app.morphe.extension.music.patches.lyrics.derive.WordCloudStopwords;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.requests.StoryFactFetcher;
+import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.BackgroundMode;
+import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.CardMode;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.CardPalette;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.CardSwatch;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsShareCardRenderer.ShareLineEntry;
@@ -85,11 +95,22 @@ final class LyricsShareDialog {
     private static final int PREVIEW_WIDTH_PX = 900;
     private static final int SLIDE_ANIMATION_MILLIS = 280;
     private static final int MAX_PICKED_IMAGE_DIM = 1280;
+    /** The card shows at most five hashtags; the full weighted list still feeds the word cloud. */
+    static final int MAX_CARD_KEYWORDS = 5;
     private static final String PICKER_FRAGMENT_TAG = "MorpheSharePhotoPickerFragment";
     private static final int SEGMENT_TRACK_COLOR = 0xFF222229;
     private static final String ICON_ROMAJI = "morphe_yt_romanize";
     private static final String ICON_TRANSLATE = "yt_outline_experimental_translate_vd_theme_24";
     private static final String ICON_BG = "morphe_share_bg_tag";
+    private static final String ICON_WEEKDAY = "morphe_share_weekday_tag";
+    private static final String ICON_DATE = "morphe_share_date_tag";
+    private static final String ICON_TIME = "morphe_share_time_tag";
+    private static final String ICON_GUESS = "morphe_share_guess_tag";
+    private static final String ICON_KEYWORD = "morphe_share_keyword_tag";
+    private static final String ICON_MOOD = "morphe_share_mood_tag";
+    private static final String ICON_STORY_TEXT = "morphe_share_story_tag";
+    private static final String ICON_HOOK = "morphe_share_hook_tag";
+    private static final String ICON_SOURCE = "morphe_share_source_tag";
     private static final String ICON_BRANDING = "morphe_lyrics_brand";
     private static final String ICON_COPY = "morphe_yt_copy_bold";
     private static final String ICON_SHARE = "yt_outline_experimental_share_vd_theme_24";
@@ -108,6 +129,8 @@ final class LyricsShareDialog {
     static void show(
             Context context,
             List<ShareLineEntry> entries,
+            @Nullable List<String> allLyricLines,
+            @Nullable List<String> translatedLyricLines,
             @Nullable TrackInfo track,
             @Nullable String rawTitle,
             @Nullable String rawArtist,
@@ -116,11 +139,11 @@ final class LyricsShareDialog {
             boolean initialTranslateOn,
             boolean swapTransRoma,
             boolean forceCenter,
+            @Nullable Bitmap initialCustomPhoto,
+            @Nullable java.util.function.Consumer<Bitmap> onCustomPhotoChanged,
             Runnable onShared,
             Runnable onFinished) {
-        final CardPalette albumPalette = snapshot.palette() != null
-                ? snapshot.palette()
-                : CardPalette.DEFAULT;
+        final CardPalette albumPalette = LyricsPaletteCache.albumPalette();
         final List<CardSwatch> solidSwatches = new ArrayList<>();
         for (CardSwatch s : LyricsShareCardRenderer.buildPaletteSwatches(albumPalette)) {
             if (s.backgroundMode() == BackgroundMode.SOLID_COLOR) {
@@ -144,12 +167,37 @@ final class LyricsShareDialog {
         final boolean hasTransOption = anyTrans;
         final boolean hasArtworkCover = snapshot.artwork() != null && !snapshot.artwork().isRecycled();
 
-        final BackgroundMode[] bgMode = {BackgroundMode.BLUR_MESH};
-        final int[] solidIndex = {0};
-        final int[] customSolidColor = {albumPalette.backgroundColor()};
-        final boolean[] usingCustomSolid = {false};
-        final Bitmap[] customPhotoBitmap = {null};
+        final BackgroundMode[] bgMode = {LyricsBackgroundStyle.savedMode()};
+        final int savedSlot = LyricsBackgroundStyle.savedColorSlot();
+        final int[] solidIndex = {savedSlot >= 0 && savedSlot < solidSwatches.size() ? savedSlot : 0};
+        final int[] customSolidColor = {LyricsBackgroundStyle.savedColor(albumPalette.backgroundColor())};
+        final Integer[] customTextColor = {readCardTextColor()};
+        final boolean[] usingCustomSolid = {savedSlot == -1};
+        final Bitmap[] customPhotoBitmap = {initialCustomPhoto};
         final boolean[] showBranding = {Settings.LYRICS_SHARE_SHOW_BRANDING.get()};
+        final boolean[] showWeekday = {Settings.LYRICS_SHARE_SHOW_WEEKDAY.get()};
+        final boolean[] showDate = {Settings.LYRICS_SHARE_SHOW_DATE.get()};
+        final boolean[] showTimeOfDay = {Settings.LYRICS_SHARE_SHOW_TIME_OF_DAY.get()};
+        final boolean[] timeClockFormat = {Settings.LYRICS_SHARE_TIME_CLOCK_FORMAT.get()};
+        final boolean[] guessMode = {Settings.LYRICS_SHARE_GUESS_MODE.get()};
+        final CardMode[] cardMode = {CardMode.LYRICS};
+        final boolean[] keywordEnabled = {false};
+        final String[] keywordLine = {null};
+        final boolean[] moodEnabled = {false};
+        final String[] moodLine = {null};
+        final int[] storyVariant = {0};
+        final boolean[] showHook = {true};
+        final boolean[] showSourceLine = {true};
+        final Runnable[] pendingMood = new Runnable[1];
+        final Runnable[] refreshOptionChips = new Runnable[1];
+        final Runnable[] requestStory = new Runnable[1];
+        final StoryAiResult[] story = {null};
+        final java.util.concurrent.atomic.AtomicInteger storySeq =
+                new java.util.concurrent.atomic.AtomicInteger(0);
+        final java.util.concurrent.atomic.AtomicReference<List<WeightedWord>> wordCloud =
+                new java.util.concurrent.atomic.AtomicReference<>(null);
+        final java.util.concurrent.atomic.AtomicReference<List<WeightedWord>> keywordWeighted =
+                new java.util.concurrent.atomic.AtomicReference<>(null);
         final boolean[] includeBg = {hasBgOption};
         final boolean[] includeRoma = {hasRomaOption && initialRomajiOn};
         final boolean[] includeTrans = {hasTransOption && initialTranslateOn};
@@ -222,6 +270,39 @@ final class LyricsShareDialog {
         LinearLayout bottomDock = new LinearLayout(context);
         bottomDock.setOrientation(LinearLayout.VERTICAL);
         bottomDock.setPadding(Dim.dp16, Dim.dp(14), Dim.dp16, Dim.dp(18));
+
+        final boolean aiEnabled = Settings.LYRICS_SHARE_USE_AI.get();
+        LinearLayout cardModeTrack = new LinearLayout(context);
+        cardModeTrack.setOrientation(LinearLayout.HORIZONTAL);
+        cardModeTrack.setGravity(Gravity.CENTER_VERTICAL);
+        cardModeTrack.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
+        GradientDrawable cardModeTrackBg = new GradientDrawable();
+        cardModeTrackBg.setShape(GradientDrawable.RECTANGLE);
+        cardModeTrackBg.setCornerRadius(Dim.dp(26));
+        cardModeTrackBg.setColor(SEGMENT_TRACK_COLOR);
+        cardModeTrack.setBackground(cardModeTrackBg);
+        LinearLayout.LayoutParams cardModeTrackParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        cardModeTrackParams.bottomMargin = Dim.dp10;
+        bottomDock.addView(cardModeTrack, cardModeTrackParams);
+
+        final TextView lyricsModeTab = createSegmentTab(context, str("morphe_music_lyrics_share_mode_lyrics"));
+        final TextView wordCloudModeTab = createSegmentTab(context, str("morphe_music_lyrics_share_mode_word_cloud"));
+        boolean enoughLyrics = allLyricLines != null && allLyricLines.size() >= 4;
+        String songTitle = track != null && !track.title().isEmpty()
+                ? track.title() : (rawTitle != null ? rawTitle : "");
+        String lowerTitle = songTitle.toLowerCase(java.util.Locale.ROOT);
+        boolean instrumental = lowerTitle.contains("instrumental")
+                || lowerTitle.contains("纯音乐") || lowerTitle.contains("伴奏")
+                || lowerTitle.contains("off vocal");
+        final TextView storyModeTab = (aiEnabled && enoughLyrics && !instrumental)
+                ? createSegmentTab(context, str("morphe_music_lyrics_share_mode_story"))
+                : null;
+        cardModeTrack.addView(lyricsModeTab, segmentTabParams());
+        cardModeTrack.addView(wordCloudModeTab, segmentTabParams());
+        if (storyModeTab != null) {
+            cardModeTrack.addView(storyModeTab, segmentTabParams());
+        }
 
         // 1. Unified segmented background-mode control (Blur | Cover | Color | Photo)
         LinearLayout modeSegmentTrack = new LinearLayout(context);
@@ -303,16 +384,38 @@ final class LyricsShareDialog {
             } else {
                 activePalette = albumPalette;
             }
+            boolean lyricsMode = cardMode[0] == CardMode.LYRICS;
+            boolean storyMode = cardMode[0] == CardMode.STORY;
+            // Only the lyrics card uses the layer toggles; the mood band replaces keywords on the
+            // story card, and neither band belongs on the word cloud.
+            String band = cardMode[0] == CardMode.WORD_CLOUD
+                    ? null
+                    : (storyMode && moodEnabled[0]
+                            ? moodLine[0]
+                            : (keywordEnabled[0] ? keywordLine[0] : null));
             return new ShareRenderOptions(
                     bgMode[0],
                     activePalette,
                     customPhotoBitmap[0],
                     showBranding[0],
-                    includeBg[0],
-                    includeRoma[0],
-                    includeTrans[0],
+                    lyricsMode && includeBg[0],
+                    lyricsMode && includeRoma[0],
+                    lyricsMode && includeTrans[0],
                     swapTransRoma,
-                    forceCenter);
+                    forceCenter,
+                    showWeekday[0],
+                    showDate[0],
+                    showTimeOfDay[0],
+                    guessMode[0],
+                    cardMode[0],
+                    band,
+                    story[0],
+                    wordCloud.get(),
+                    customTextColor[0],
+                    timeClockFormat[0],
+                    storyVariant[0],
+                    showHook[0],
+                    showSourceLine[0]);
         };
 
         final Runnable updateBackdropAndPreview = () -> {
@@ -323,6 +426,18 @@ final class LyricsShareDialog {
             int stageColor = computeStageBackdropColor(baseColor);
             root.setBackgroundColor(stageColor);
 
+            // A story card without its generated result would fall back to lyric lines and read
+            // as a failure. Keep the preview blank until the story is actually available.
+            if (cardMode[0] == CardMode.STORY && story[0] == null) {
+                Bitmap stale = currentPreview[0];
+                currentPreview[0] = null;
+                previewImage.setImageBitmap(null);
+                if (stale != null && !stale.isRecycled()) {
+                    stale.recycle();
+                }
+                return;
+            }
+
             Bitmap bmp = LyricsShareCardRenderer.renderRichCardBitmap(
                     entries, track, rawTitle, rawArtist, snapshot, opts, PREVIEW_WIDTH_PX);
             Bitmap old = currentPreview[0];
@@ -332,6 +447,13 @@ final class LyricsShareDialog {
                 old.recycle();
             }
         };
+
+        final Runnable refreshTextColor = () -> {
+            customTextColor[0] = readCardTextColor();
+            updateBackdropAndPreview.run();
+        };
+        final Runnable showTextColorPicker = () -> showTextColorDialog(context,
+                Settings.LYRICS_TEXT_COLOR_SLOT.get(), readTextColor(), refreshTextColor);
 
         // 48dp accessible swatch targets wrapping 32dp color discs
         final List<FrameLayout> swatchTargets = new ArrayList<>();
@@ -382,6 +504,8 @@ final class LyricsShareDialog {
                 usingCustomSolid[0] = false;
                 solidIndex[0] = idx;
                 bgMode[0] = BackgroundMode.SOLID_COLOR;
+                LyricsBackgroundStyle.saveColorSlot(idx);
+                applyCardBackground(bgMode[0], solidSwatches.get(idx).swatchColor());
                 updateSwatchBorders.run();
                 updateBackdropAndPreview.run();
             });
@@ -400,9 +524,16 @@ final class LyricsShareDialog {
                 customSolidColor[0] = chosenColor;
                 usingCustomSolid[0] = true;
                 bgMode[0] = BackgroundMode.SOLID_COLOR;
+                LyricsBackgroundStyle.saveColorSlot(-1);
+                applyCardBackground(bgMode[0], chosenColor);
                 updateSwatchBorders.run();
                 updateBackdropAndPreview.run();
             });
+        });
+        customColorTarget.setOnLongClickListener(v -> {
+            if (busy[0]) return true;
+            showTextColorPicker.run();
+            return true;
         });
         swatchRow.addView(customColorTarget, new LinearLayout.LayoutParams(touchPx, touchPx));
 
@@ -471,16 +602,6 @@ final class LyricsShareDialog {
         });
         optionsRow.addView(brandSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
 
-        final Runnable refreshModeTabs = () -> {
-            styleSegmentTab(blurTab, bgMode[0] == BackgroundMode.BLUR_MESH);
-            if (coverTab != null) {
-                styleSegmentTab(coverTab, bgMode[0] == BackgroundMode.ALBUM_COVER);
-            }
-            styleSegmentTab(colorTab, bgMode[0] == BackgroundMode.SOLID_COLOR);
-            styleSegmentTab(photoTab, bgMode[0] == BackgroundMode.CUSTOM_IMAGE);
-            swatchScroll.setVisibility(bgMode[0] == BackgroundMode.SOLID_COLOR ? View.VISIBLE : View.GONE);
-        };
-
         final Consumer<Boolean> setBusyState = isBusy -> {
             busy[0] = isBusy;
             shareBtn.setEnabled(!isBusy);
@@ -492,9 +613,466 @@ final class LyricsShareDialog {
             }
         };
 
+        final LinearLayout keywordSwitch = aiEnabled
+                ? createOptionChip(context, str("morphe_music_lyrics_share_layer_keyword"))
+                : null;
+        if (keywordSwitch != null) {
+            styleOptionChip(keywordSwitch, false, ICON_KEYWORD);
+            keywordSwitch.setOnClickListener(v -> {
+                if (busy[0]) return;
+                if (keywordEnabled[0]) {
+                    keywordEnabled[0] = false;
+                    refreshOptionChips[0].run();
+                    updateBackdropAndPreview.run();
+                    return;
+                }
+                if (cardMode[0] == CardMode.STORY && moodEnabled[0]) {
+                    moodEnabled[0] = false;
+                }
+                if (keywordLine[0] != null) {
+                    keywordEnabled[0] = true;
+                    refreshOptionChips[0].run();
+                    updateBackdropAndPreview.run();
+                    return;
+                }
+                if (allLyricLines == null || allLyricLines.isEmpty()) {
+                    Utils.showToastShort(str("morphe_music_lyrics_share_keyword_failed"));
+                    return;
+                }
+                loadingLabel.setText(str("morphe_music_lyrics_share_keyword_loading"));
+                loadingPill.setVisibility(View.VISIBLE);
+                setBusyState.accept(true);
+                Utils.runOnBackgroundThread(() -> {
+                    String extracted = null;
+                    String shown = null;
+                    List<WeightedWord> weighted = null;
+                    try {
+                        String title = track != null && !track.title().isEmpty()
+                                ? track.title() : (rawTitle != null ? rawTitle : "");
+                        String artist = track != null && !track.artist().isEmpty()
+                                ? track.artist() : (rawArtist != null ? rawArtist : "");
+                        String language = LyricsRequests.translationLanguage();
+                        String promptTemplate = Settings.LYRICS_AI_KEYWORD_PROMPT.get();
+                        // Keywords follow the translation target language; the word cloud stays source-language.
+                        List<String> keywordSource = translatedLyricLines != null
+                                && !translatedLyricLines.isEmpty()
+                                ? translatedLyricLines : allLyricLines;
+                        List<String> cappedLines = capKeywordInput(keywordSource);
+                        String cached = LyricsCache.getCardAi(
+                                track, "keyword", language, promptTemplate, cappedLines);
+                        if (cached != null) {
+                            weighted = WordCloudBuilder.parseWeightedKeywords(
+                                    WordCloudBuilder.normalizeCachedKeywords(cached), 12);
+                        }
+                        if (weighted == null) {
+                            String prompt = OpenAIClient.renderPrompt(
+                                    promptTemplate, "keywords", language, title, artist, cappedLines);
+                            weighted = OpenAIClient.extractWeightedKeywords(
+                                    Settings.LYRICS_AI_BASE_URL.get(),
+                                    Settings.LYRICS_AI_API_TOKEN.get(),
+                                    Settings.LYRICS_AI_MODEL.get(),
+                                    prompt, 12);
+                        }
+                        if (weighted != null && !weighted.isEmpty()) {
+                            // Cache one weighted word per line so the round trip never joins
+                            // separate keywords into a single dot-separated string.
+                            StringBuilder sb = new StringBuilder();
+                            for (int i = 0; i < weighted.size(); i++) {
+                                WeightedWord word = weighted.get(i);
+                                sb.append(i + 1).append(". ").append(word.word())
+                                        .append('|').append(word.weight()).append('\n');
+                            }
+                            extracted = sb.toString();
+                            shown = buildHashtagLine(weighted, MAX_CARD_KEYWORDS);
+                            LyricsCache.putCardAi(track, "keyword", language,
+                                    promptTemplate, cappedLines, extracted);
+                        }
+                    } catch (Throwable ex) {
+                        Logger.printException(() -> "Failed to extract share-card keywords", ex);
+                    }
+                    final String result = shown;
+                    final List<WeightedWord> resultWeighted = weighted;
+                    Utils.runOnMainThread(() -> {
+                        if (dismissed[0]) return;
+                        setBusyState.accept(false);
+                        if (result == null) {
+                            Utils.showToastShort(str("morphe_music_lyrics_share_keyword_failed"));
+                            return;
+                        }
+                        keywordLine[0] = result;
+                        keywordWeighted.set(resultWeighted);
+                        wordCloud.set(null); // re-layout if the word-cloud tab is active
+                        keywordEnabled[0] = true;
+                        moodEnabled[0] = false;
+                        refreshOptionChips[0].run();
+                        updateBackdropAndPreview.run();
+                    });
+                });
+            });
+            optionsRow.addView(keywordSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+        }
+
+        final LinearLayout moodSwitch = storyModeTab != null
+                ? createOptionChip(context, str("morphe_music_lyrics_share_layer_mood"))
+                : null;
+        final Runnable[] applyMoodAction = new Runnable[1];
+        if (moodSwitch != null) {
+            styleOptionChip(moodSwitch, false, ICON_MOOD);
+            applyMoodAction[0] = () -> {
+                if (story[0] == null) {
+                    return;
+                }
+                String line = buildMoodLine(story[0].moodTags(), MAX_CARD_KEYWORDS);
+                if (line.isEmpty()) {
+                    Utils.showToastShort(str("morphe_music_lyrics_share_story_failed"));
+                    return;
+                }
+                moodLine[0] = line;
+                moodEnabled[0] = true;
+                keywordEnabled[0] = false;
+                refreshOptionChips[0].run();
+                updateBackdropAndPreview.run();
+            };
+            moodSwitch.setOnClickListener(v -> {
+                if (busy[0]) return;
+                if (moodEnabled[0]) {
+                    moodEnabled[0] = false;
+                    refreshOptionChips[0].run();
+                    updateBackdropAndPreview.run();
+                    return;
+                }
+                if (story[0] == null) {
+                    pendingMood[0] = applyMoodAction[0];
+                    requestStory[0].run();
+                    return;
+                }
+                applyMoodAction[0].run();
+            });
+            optionsRow.addView(moodSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+        }
+
+        final LinearLayout storyTextSwitch = storyModeTab != null
+                ? createOptionChip(context, storyVariantLabel(0)) : null;
+        if (storyTextSwitch != null) {
+            styleOptionChip(storyTextSwitch, false, ICON_STORY_TEXT);
+            storyTextSwitch.setOnClickListener(v -> {
+                if (busy[0]) return;
+                storyVariant[0] = (storyVariant[0] + 1) % 3;
+                ((TextView) storyTextSwitch.getChildAt(1)).setText(
+                        storyVariantLabel(storyVariant[0]));
+                refreshOptionChips[0].run();
+                updateBackdropAndPreview.run();
+            });
+            optionsRow.addView(storyTextSwitch,
+                    iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+        }
+
+        final LinearLayout hookSwitch = storyModeTab != null
+                ? createOptionChip(context, str("morphe_music_lyrics_share_layer_hook"))
+                : null;
+        if (hookSwitch != null) {
+            styleOptionChip(hookSwitch, showHook[0], ICON_HOOK);
+            hookSwitch.setOnClickListener(v -> {
+                if (busy[0]) return;
+                showHook[0] = !showHook[0];
+                refreshOptionChips[0].run();
+                updateBackdropAndPreview.run();
+            });
+            optionsRow.addView(hookSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+        }
+
+        final LinearLayout sourceSwitch = storyModeTab != null
+                ? createOptionChip(context, str("morphe_music_lyrics_share_layer_source"))
+                : null;
+        if (sourceSwitch != null) {
+            styleOptionChip(sourceSwitch, showSourceLine[0], ICON_SOURCE);
+            sourceSwitch.setOnClickListener(v -> {
+                if (busy[0]) return;
+                showSourceLine[0] = !showSourceLine[0];
+                refreshOptionChips[0].run();
+                updateBackdropAndPreview.run();
+            });
+            optionsRow.addView(sourceSwitch,
+                    iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+        }
+
+        final LinearLayout weekdaySwitch = createOptionChip(context,
+                str("morphe_music_lyrics_share_layer_weekday"));
+        styleOptionChip(weekdaySwitch, showWeekday[0], ICON_WEEKDAY);
+        weekdaySwitch.setOnClickListener(v -> {
+            if (busy[0]) return;
+            showWeekday[0] = !showWeekday[0];
+            Settings.LYRICS_SHARE_SHOW_WEEKDAY.save(showWeekday[0]);
+            styleOptionChip(weekdaySwitch, showWeekday[0], ICON_WEEKDAY);
+            updateBackdropAndPreview.run();
+        });
+        optionsRow.addView(weekdaySwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+
+        final LinearLayout dateSwitch = createOptionChip(context,
+                str("morphe_music_lyrics_share_layer_date"));
+        styleOptionChip(dateSwitch, showDate[0], ICON_DATE);
+        dateSwitch.setOnClickListener(v -> {
+            if (busy[0]) return;
+            showDate[0] = !showDate[0];
+            Settings.LYRICS_SHARE_SHOW_DATE.save(showDate[0]);
+            styleOptionChip(dateSwitch, showDate[0], ICON_DATE);
+            updateBackdropAndPreview.run();
+        });
+        optionsRow.addView(dateSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+
+        final LinearLayout timeSwitch = createOptionChip(context,
+                str("morphe_music_lyrics_share_layer_time"));
+        styleOptionChip(timeSwitch, showTimeOfDay[0], ICON_TIME);
+        if (timeClockFormat[0]) {
+            timeSwitch.setContentDescription(str("morphe_music_lyrics_share_layer_time")
+                    + " · " + str("morphe_music_lyrics_share_time_clock"));
+        }
+        timeSwitch.setOnLongClickListener(v -> {
+            if (busy[0]) return true;
+            timeClockFormat[0] = !timeClockFormat[0];
+            Settings.LYRICS_SHARE_TIME_CLOCK_FORMAT.save(timeClockFormat[0]);
+            timeSwitch.setContentDescription(str("morphe_music_lyrics_share_layer_time")
+                    + (timeClockFormat[0] ? " · " + str("morphe_music_lyrics_share_time_clock") : ""));
+            updateBackdropAndPreview.run();
+            return true;
+        });
+        timeSwitch.setOnClickListener(v -> {
+            if (busy[0]) return;
+            showTimeOfDay[0] = !showTimeOfDay[0];
+            Settings.LYRICS_SHARE_SHOW_TIME_OF_DAY.save(showTimeOfDay[0]);
+            styleOptionChip(timeSwitch, showTimeOfDay[0], ICON_TIME);
+            updateBackdropAndPreview.run();
+        });
+        optionsRow.addView(timeSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+
+        final LinearLayout guessSwitch = createOptionChip(context,
+                str("morphe_music_lyrics_share_guess"));
+        styleOptionChip(guessSwitch, guessMode[0], ICON_GUESS);
+        guessSwitch.setOnClickListener(v -> {
+            if (busy[0]) return;
+            guessMode[0] = !guessMode[0];
+            Settings.LYRICS_SHARE_GUESS_MODE.save(guessMode[0]);
+            styleOptionChip(guessSwitch, guessMode[0], ICON_GUESS);
+            updateBackdropAndPreview.run();
+        });
+        optionsRow.addView(guessSwitch, iconOptionLayoutParams(optionsRow.getChildCount() > 0));
+
+        refreshOptionChips[0] = () -> {
+            boolean lyricsMode = cardMode[0] == CardMode.LYRICS;
+            boolean storyMode = cardMode[0] == CardMode.STORY;
+            if (bgSwitch != null) {
+                bgSwitch.setVisibility(lyricsMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(bgSwitch, includeBg[0], ICON_BG);
+            }
+            if (romaSwitch != null) {
+                romaSwitch.setVisibility(lyricsMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(romaSwitch, includeRoma[0], ICON_ROMAJI);
+            }
+            if (transSwitch != null) {
+                transSwitch.setVisibility(lyricsMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(transSwitch, includeTrans[0], ICON_TRANSLATE);
+            }
+            if (keywordSwitch != null) {
+                keywordSwitch.setVisibility(cardMode[0] == CardMode.WORD_CLOUD
+                        ? View.GONE : View.VISIBLE);
+                styleOptionChip(keywordSwitch, keywordEnabled[0], ICON_KEYWORD);
+            }
+            if (moodSwitch != null) {
+                moodSwitch.setVisibility(storyMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(moodSwitch, moodEnabled[0], ICON_MOOD);
+            }
+            if (storyTextSwitch != null) {
+                storyTextSwitch.setVisibility(storyMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(storyTextSwitch, storyMode, ICON_STORY_TEXT);
+            }
+            if (hookSwitch != null) {
+                hookSwitch.setVisibility(storyMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(hookSwitch, showHook[0], ICON_HOOK);
+            }
+            if (sourceSwitch != null) {
+                sourceSwitch.setVisibility(storyMode ? View.VISIBLE : View.GONE);
+                styleOptionChip(sourceSwitch, showSourceLine[0], ICON_SOURCE);
+            }
+        };
+
+        final java.util.concurrent.atomic.AtomicInteger wordCloudSeq =
+                new java.util.concurrent.atomic.AtomicInteger(0);
+        final Runnable[] requestWordCloud = new Runnable[1];
+        requestWordCloud[0] = () -> {
+            if (busy[0]) return;
+            if (wordCloud.get() != null) {
+                updateBackdropAndPreview.run();
+                return;
+            }
+            if (allLyricLines == null || allLyricLines.isEmpty()) {
+                updateBackdropAndPreview.run();
+                return;
+            }
+            final int seq = wordCloudSeq.incrementAndGet();
+            previewImage.setImageDrawable(null);
+            loadingLabel.setText(str("morphe_music_lyrics_share_word_cloud_loading"));
+            loadingPill.setVisibility(View.VISIBLE);
+            setBusyState.accept(true);
+            Utils.runOnBackgroundThread(() -> {
+                List<WeightedWord> weightedResult = null;
+                try {
+                    java.util.Set<String> stopwords = WordCloudStopwords.parse(
+                            Settings.LYRICS_WORD_CLOUD_STOPWORDS.get());
+                    java.util.Collection<String> banned = null;
+                    if (guessMode[0]) {
+                        String title = track != null ? track.title() : (rawTitle != null ? rawTitle : "");
+                        String artist = track != null ? track.artist() : (rawArtist != null ? rawArtist : "");
+                        java.util.Set<String> set = new java.util.HashSet<>();
+                        if (title != null && !title.isEmpty()) set.add(title.toLowerCase(java.util.Locale.ROOT));
+                        if (artist != null && !artist.isEmpty()) set.add(artist.toLowerCase(java.util.Locale.ROOT));
+                        banned = set;
+                    }
+                    weightedResult = WordCloudBuilder.build(
+                            allLyricLines, 18, stopwords, banned);
+                } catch (Throwable ex) {
+                    Logger.printException(() -> "Failed to build share-card word cloud", ex);
+                }
+                final List<WeightedWord> result = weightedResult;
+                Utils.runOnMainThread(() -> {
+                    if (dismissed[0] || seq != wordCloudSeq.get()) return;
+                    setBusyState.accept(false);
+                    wordCloud.set(result);
+                    updateBackdropAndPreview.run();
+                });
+            });
+        };
+
+        // Fetch only when a story card is requested; clear the preview so a stale card is not
+        // mistaken for the result.
+        requestStory[0] = () -> {
+            if (busy[0]) return;
+            if (story[0] != null) {
+                updateBackdropAndPreview.run();
+                return;
+            }
+            if (allLyricLines == null || allLyricLines.size() < 4) {
+                Utils.showToastShort(str("morphe_music_lyrics_share_story_failed"));
+                return;
+            }
+            final int seq = storySeq.incrementAndGet();
+            previewImage.setImageDrawable(null);
+            loadingLabel.setText(str("morphe_music_lyrics_share_story_loading"));
+            loadingPill.setVisibility(View.VISIBLE);
+            setBusyState.accept(true);
+            Utils.runOnBackgroundThread(() -> {
+                StoryAiResult result = null;
+                try {
+                    String language = LyricsRequests.translationLanguage();
+                    String promptTemplate = Settings.LYRICS_AI_STORY_PROMPT.get();
+                    List<String> cappedLines = capKeywordInput(allLyricLines);
+                    String cached = LyricsCache.getCardAi(
+                            track, "story", language, promptTemplate, cappedLines);
+                    if (cached != null) {
+                        result = StoryAiResult.fromJson(cached);
+                    }
+                    if (result == null) {
+                        String title = track != null && !track.title().isEmpty()
+                                ? track.title() : (rawTitle != null ? rawTitle : "");
+                        String artist = track != null && !track.artist().isEmpty()
+                                ? track.artist() : (rawArtist != null ? rawArtist : "");
+                        StoryFactFetcher.Facts facts =
+                                StoryFactFetcher.fetch(track == null
+                                        ? new TrackInfo(title, artist, null, 0) : track, language);
+                        String factsBlock = facts.text().isEmpty()
+                                ? "(No external references available)"
+                                : facts.text();
+                        String template = promptTemplate.replace("{facts}", factsBlock);
+                        String prompt = OpenAIClient.renderPrompt(
+                                template, "story", language, title, artist, cappedLines);
+                        result = OpenAIClient.parseStoryJson(OpenAIClient.complete(
+                                Settings.LYRICS_AI_BASE_URL.get(),
+                                Settings.LYRICS_AI_API_TOKEN.get(),
+                                Settings.LYRICS_AI_MODEL.get(),
+                                prompt), 240);
+                        if (result != null) {
+                            // No external references: the story is AI interpretation only.
+                            String label = facts.sourceLabel().isEmpty()
+                                    ? "AI" : facts.sourceLabel();
+                            result = new StoryAiResult(
+                                    facts.verified(), result.oneLineHook(),
+                                    result.background(), result.lyricStory(),
+                                    result.keyMetaphor(), result.moodTags(), label);
+                            LyricsCache.putCardAi(track, "story", language,
+                                    promptTemplate, cappedLines, result.toJson());
+                        }
+                    }
+                } catch (Throwable ex) {
+                    Logger.printException(() -> "Failed to build share-card story", ex);
+                }
+                final StoryAiResult loaded = result;
+                Utils.runOnMainThread(() -> {
+                    if (dismissed[0] || seq != storySeq.get()) return;
+                    setBusyState.accept(false);
+                    if (loaded == null) {
+                        pendingMood[0] = null;
+                        Utils.showToastShort(str("morphe_music_lyrics_share_story_failed"));
+                        updateBackdropAndPreview.run();
+                        return;
+                    }
+                    story[0] = loaded;
+                    Runnable applyPendingMood = pendingMood[0];
+                    pendingMood[0] = null;
+                    if (applyPendingMood != null) {
+                        applyPendingMood.run();
+                    } else {
+                        updateBackdropAndPreview.run();
+                    }
+                });
+            });
+        };
+
+        final Runnable refreshCardModeTabs = () -> {
+            styleSegmentTab(lyricsModeTab, cardMode[0] == CardMode.LYRICS);
+            styleSegmentTab(wordCloudModeTab, cardMode[0] == CardMode.WORD_CLOUD);
+            if (storyModeTab != null) {
+                styleSegmentTab(storyModeTab, cardMode[0] == CardMode.STORY);
+            }
+        };
+        lyricsModeTab.setOnClickListener(v -> {
+            if (busy[0]) return;
+            if (cardMode[0] == CardMode.STORY) moodEnabled[0] = false;
+            cardMode[0] = CardMode.LYRICS;
+            refreshCardModeTabs.run();
+            refreshOptionChips[0].run();
+            updateBackdropAndPreview.run();
+        });
+        wordCloudModeTab.setOnClickListener(v -> {
+            if (busy[0]) return;
+            if (cardMode[0] == CardMode.STORY) moodEnabled[0] = false;
+            cardMode[0] = CardMode.WORD_CLOUD;
+            refreshCardModeTabs.run();
+            refreshOptionChips[0].run();
+            requestWordCloud[0].run();
+        });
+        if (storyModeTab != null) {
+            storyModeTab.setOnClickListener(v -> {
+                if (busy[0]) return;
+                cardMode[0] = CardMode.STORY;
+                refreshCardModeTabs.run();
+                refreshOptionChips[0].run();
+                requestStory[0].run();
+            });
+        }
+
+        final Runnable refreshModeTabs = () -> {
+            styleSegmentTab(blurTab, bgMode[0] == BackgroundMode.BLUR_MESH);
+            if (coverTab != null) {
+                styleSegmentTab(coverTab, bgMode[0] == BackgroundMode.ALBUM_COVER);
+            }
+            styleSegmentTab(colorTab, bgMode[0] == BackgroundMode.SOLID_COLOR);
+            styleSegmentTab(photoTab, bgMode[0] == BackgroundMode.CUSTOM_IMAGE);
+            swatchScroll.setVisibility(bgMode[0] == BackgroundMode.SOLID_COLOR ? View.VISIBLE : View.GONE);
+        };
+
         blurTab.setOnClickListener(v -> {
             if (busy[0]) return;
             bgMode[0] = BackgroundMode.BLUR_MESH;
+            applyCardBackground(bgMode[0], null);
             refreshModeTabs.run();
             updateBackdropAndPreview.run();
         });
@@ -502,13 +1080,22 @@ final class LyricsShareDialog {
             coverTab.setOnClickListener(v -> {
                 if (busy[0]) return;
                 bgMode[0] = BackgroundMode.ALBUM_COVER;
+                applyCardBackground(bgMode[0], null);
                 refreshModeTabs.run();
                 updateBackdropAndPreview.run();
             });
         }
+        colorTab.setOnLongClickListener(v -> {
+            if (busy[0]) return true;
+            showTextColorPicker.run();
+            return true;
+        });
         colorTab.setOnClickListener(v -> {
             if (busy[0]) return;
             bgMode[0] = BackgroundMode.SOLID_COLOR;
+            applyCardBackground(bgMode[0], usingCustomSolid[0]
+                    ? customSolidColor[0]
+                    : solidSwatches.get(solidIndex[0]).swatchColor());
             refreshModeTabs.run();
             updateSwatchBorders.run();
             updateBackdropAndPreview.run();
@@ -540,6 +1127,10 @@ final class LyricsShareDialog {
                         Bitmap previousCustom = customPhotoBitmap[0];
                         customPhotoBitmap[0] = picked;
                         bgMode[0] = BackgroundMode.CUSTOM_IMAGE;
+                        applyCardBackground(bgMode[0], null);
+                        if (onCustomPhotoChanged != null) {
+                            onCustomPhotoChanged.accept(picked);
+                        }
                         refreshModeTabs.run();
                         updateBackdropAndPreview.run();
                         if (previousCustom != null && !previousCustom.isRecycled()) {
@@ -554,20 +1145,17 @@ final class LyricsShareDialog {
         String displayArtist = track != null && !track.artist().isEmpty()
                 ? track.artist()
                 : (rawArtist != null ? rawArtist : "");
-        String shareCaption = displayTitle.isEmpty()
-                ? ""
-                : (displayArtist.isEmpty() ? displayTitle : displayTitle + " - " + displayArtist);
-        String videoId = VideoInformation.getVideoId();
-        String shareMenuText = videoId.isEmpty() ? shareCaption
-                : (shareCaption.isEmpty() ? "" : shareCaption + '\n')
-                        + "https://music.youtube.com/watch?v=" + videoId;
+        final String videoId = VideoInformation.getVideoId();
 
         copyBtn.setOnClickListener(v -> {
             if (busy[0]) return;
             ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             if (cm != null) {
-                String plainText = buildCopyTextForSelection(
-                        entries, includeBg[0], includeRoma[0], includeTrans[0], swapTransRoma, shareCaption);
+                String plainText = buildCardCopyText(buildOptions.get(), entries,
+                        displayTitle, displayArtist,
+                        str("morphe_music_lyrics_share_source_line"),
+                        str("morphe_music_lyrics_share_source_ai_line"),
+                        str("morphe_music_lyrics_share_word_cloud_empty"));
                 cm.setPrimaryClip(ClipData.newPlainText("lyrics", plainText));
                 Utils.showToastShort(str("morphe_music_lyrics_copied"));
             }
@@ -610,6 +1198,9 @@ final class LyricsShareDialog {
             exportInFlight[0] = true;
 
             ShareRenderOptions finalOpts = buildOptions.get();
+            final boolean guess = guessMode[0];
+            final String shareMenuText = buildShareCaption(displayTitle, displayArtist, videoId,
+                    guess, str("morphe_music_lyrics_share_guess_caption"));
             Context appContext = context.getApplicationContext();
             Utils.runOnBackgroundThread(() -> {
                 try {
@@ -641,7 +1232,8 @@ final class LyricsShareDialog {
                             if (!shareMenuText.isEmpty()) {
                                 sendIntent.putExtra(Intent.EXTRA_TEXT, shareMenuText);
                             }
-                            sendIntent.setClipData(ClipData.newRawUri("lyrics_card", contentUri));
+                            sendIntent.setClipData(
+                                    ClipData.newRawUri("lyrics_card", contentUri));
                             sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
                             Intent chooser = Intent.createChooser(
@@ -671,6 +1263,8 @@ final class LyricsShareDialog {
             });
         });
 
+        refreshCardModeTabs.run();
+        refreshOptionChips[0].run();
         refreshModeTabs.run();
         updateSwatchBorders.run();
         updateBackdropAndPreview.run();
@@ -695,6 +1289,173 @@ final class LyricsShareDialog {
             }
             onFinished.run();
         }
+    }
+
+    /** Guess mode emits only the neutral prompt so the caption cannot leak the answer. */
+    static String buildShareCaption(
+            String title, String artist, String videoId, boolean guessMode, String neutralCaption) {
+        if (guessMode) {
+            return neutralCaption != null ? neutralCaption : "";
+        }
+        String caption = (title == null || title.isEmpty())
+                ? ""
+                : ((artist == null || artist.isEmpty()) ? title : title + " - " + artist);
+        if (videoId == null || videoId.isEmpty()) {
+            return caption;
+        }
+        return (caption.isEmpty() ? "" : caption + '\n')
+                + "https://music.youtube.com/watch?v=" + videoId;
+    }
+
+    /** Persists the chosen card background so fullscreen picks it up, and refreshes both. */
+    private static void applyCardBackground(BackgroundMode mode, @Nullable Integer colorArgb) {
+        LyricsBackgroundStyle.saveMode(mode);
+        if (colorArgb != null) {
+            LyricsBackgroundStyle.saveColor(colorArgb);
+        }
+        LyricsBackgroundStyle.notifyStyleChanged();
+    }
+
+    /** Builds the card's hashtag band from the first {@code limit} weighted words. */
+    /** Keeps a multi-word tag unbreakable; only the spaces between tags are wrap points. */
+    private static String unbreakable(String text) {
+        return text.trim().replaceAll("\\s+", "\u00A0");
+    }
+
+    static String buildHashtagLine(@Nullable List<WeightedWord> weighted, int limit) {
+        if (weighted == null || weighted.isEmpty() || limit <= 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < Math.min(limit, weighted.size()); i++) {
+            String word = weighted.get(i).word();
+            if (word == null || word.trim().isEmpty()) {
+                continue;
+            }
+            if (sb.length() > 0) {
+                sb.append(' ');
+            }
+            sb.append('#').append(unbreakable(word));
+        }
+        return sb.toString();
+    }
+
+    static String storyVariantLabel(int variant) {
+        if (variant == 1) {
+            return str("morphe_music_lyrics_share_layer_background");
+        }
+        if (variant == 2) {
+            return str("morphe_music_lyrics_share_layer_imagery");
+        }
+        return str("morphe_music_lyrics_share_layer_story_text");
+    }
+
+    /** Builds the story card's mood band from the first {@code limit} AI tags. */
+    static String buildMoodLine(@Nullable List<String> tags, int limit) {
+        if (tags == null || tags.isEmpty() || limit <= 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (String tag : tags) {
+            if (count >= limit) {
+                break;
+            }
+            if (tag == null || tag.trim().isEmpty()) {
+                continue;
+            }
+            if (sb.length() > 0) {
+                // The dot stays with the previous tag; the plain space after it is the wrap point.
+                sb.append("\u00A0· ");
+            }
+            sb.append(unbreakable(tag));
+            count++;
+        }
+        return sb.toString();
+    }
+
+    /** Copies the text actually visible on the card, minus the footer and guess-mode identity. */
+    static String buildCardCopyText(
+            LyricsShareCardRenderer.ShareRenderOptions opts,
+            List<ShareLineEntry> entries,
+            String title,
+            String artist,
+            String sourceTemplate,
+            String sourceAiTemplate,
+            String cloudEmpty) {
+        List<String> parts = new ArrayList<>();
+        if (!opts.guessMode()) {
+            if (title != null && !title.isEmpty()) parts.add(title);
+            if (artist != null && !artist.isEmpty()) parts.add(artist);
+        }
+        switch (opts.cardMode()) {
+            case LYRICS -> {
+                String body = buildCopyTextForSelection(entries,
+                        opts.includeBgVocals(), opts.includeRomaji(), opts.includeTranslation(),
+                        opts.swapTransRoma(), null);
+                if (!body.isEmpty()) parts.add(body);
+            }
+            case WORD_CLOUD -> {
+                List<WeightedWord> cloud = opts.wordCloud();
+                if (cloud == null || cloud.isEmpty()) {
+                    parts.add(cloudEmpty);
+                } else {
+                    List<WeightedWord> sorted = new ArrayList<>(cloud);
+                    sorted.sort(Comparator.comparingInt(WeightedWord::weight).reversed());
+                    StringBuilder words = new StringBuilder();
+                    for (int i = 0; i < sorted.size(); i++) {
+                        if (i > 0) words.append(", ");
+                        words.append(sorted.get(i).word());
+                    }
+                    parts.add(words.toString());
+                }
+            }
+            case STORY -> {
+                StoryAiResult story = opts.story();
+                if (story != null) {
+                    String hook = null;
+                    if (opts.showStoryHook() && story.oneLineHook() != null) {
+                        String raw = story.oneLineHook().trim();
+                        if (!raw.isEmpty()) {
+                            hook = raw;
+                            parts.add("“" + raw + "”");
+                        }
+                    }
+                    String paragraph = LyricsShareCardRenderer.storyParagraph(
+                            story, opts.storyVariant());
+                    if (!paragraph.isEmpty() && !paragraph.equals(hook)) {
+                        parts.add(paragraph);
+                    }
+                }
+            }
+        }
+        if (opts.keywordLine() != null && !opts.keywordLine().isEmpty()) {
+            parts.add(opts.keywordLine());
+        }
+        if (opts.story() != null && opts.showSourceLine()) {
+            String source = LyricsShareCardRenderer.buildSourceLine(
+                    sourceTemplate, sourceAiTemplate, opts.story().sourceLabel());
+            if (!source.isEmpty()) {
+                parts.add(source);
+            }
+        }
+        return String.join("\n", parts);
+    }
+
+    /** Caps the lyric input to stay within the AI endpoint's single-request character budget. */
+    private static List<String> capKeywordInput(List<String> lines) {
+        final int maxChars = 2800; // OpenAIClient.MAX_CHARS is 3000; leave headroom for the prompt.
+        List<String> out = new ArrayList<>();
+        int total = 0;
+        for (String line : lines) {
+            if (line == null) continue;
+            String t = line.trim();
+            if (t.isEmpty()) continue;
+            if (total + t.length() + 1 > maxChars) break;
+            out.add(t);
+            total += t.length() + 1;
+        }
+        return out;
     }
 
     static String buildCopyTextForSelection(
@@ -733,6 +1494,119 @@ final class LyricsShareDialog {
         return sb.toString();
     }
 
+    private static int readTextColor() {
+        return LyricsTextColor.resolve(Settings.LYRICS_TEXT_COLOR_SLOT.get(),
+                Settings.LYRICS_FULLSCREEN_TEXT_COLOR.get());
+    }
+
+    /** Cards keep their original palette for default and auto; only explicit colours override it. */
+    @Nullable
+    static Integer readCardTextColor() {
+        int slot = Settings.LYRICS_TEXT_COLOR_SLOT.get();
+        if (slot == LyricsTextColor.DEFAULT_SLOT || slot == LyricsTextColor.AUTO_SLOT) {
+            return null;
+        }
+        int color = readTextColor();
+        return color == 0xFFFFFFFF ? null : color;
+    }
+
+    /** Keeps palette content reachable on short or narrow screens. */
+    private static void addScrollableColorContent(Context context, LinearLayout main, View content) {
+        ScrollView scroll = new ScrollView(context);
+        scroll.setVerticalScrollBarEnabled(false);
+        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        scroll.addView(content, new ScrollView.LayoutParams(
+                ScrollView.LayoutParams.MATCH_PARENT, ScrollView.LayoutParams.WRAP_CONTENT));
+        int maxHeight = Math.min(Dim.dp(420),
+                context.getResources().getDisplayMetrics().heightPixels * 2 / 3);
+        main.addView(scroll, main.getChildCount() - 1,
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, maxHeight));
+    }
+
+    /** Long-press entry: 0=default white, 1=auto, 2..9=presets, -1=custom. */
+    private static void showTextColorDialog(Context context, int currentSlot, int initialColor,
+                                            Runnable onChanged) {
+        LinearLayout container = new LinearLayout(context);
+        container.setOrientation(LinearLayout.VERTICAL);
+        container.setPadding(0, Dim.dp8, 0, Dim.dp8);
+
+        ColorPickerView pickerView = new ColorPickerView(context);
+        pickerView.setOpacitySliderEnabled(false);
+        pickerView.setColor(0xFF000000 | (initialColor & 0x00FFFFFF));
+
+        Pair<Dialog, LinearLayout> colorDialog = CustomDialog.create(
+                context,
+                str("morphe_music_lyrics_share_text_color"),
+                null,
+                null,
+                str("morphe_settings_save"),
+                () -> {
+                    Settings.LYRICS_FULLSCREEN_TEXT_COLOR.save("#"
+                            + Integer.toHexString(pickerView.getColor() & 0x00FFFFFF));
+                    Settings.LYRICS_TEXT_COLOR_SLOT.save(-1);
+                    onChanged.run();
+                },
+                () -> { },
+                str("morphe_settings_reset_color"),
+                () -> {
+                    Settings.LYRICS_TEXT_COLOR_SLOT.resetToDefault();
+                    onChanged.run();
+                },
+                true);
+
+        LinearLayout presetRow = new LinearLayout(context);
+        presetRow.setOrientation(LinearLayout.HORIZONTAL);
+        presetRow.setGravity(Gravity.CENTER_VERTICAL);
+        HorizontalScrollView presetScroll = new HorizontalScrollView(context);
+        presetScroll.setHorizontalScrollBarEnabled(false);
+        presetScroll.addView(presetRow, new HorizontalScrollView.LayoutParams(
+                HorizontalScrollView.LayoutParams.WRAP_CONTENT,
+                HorizontalScrollView.LayoutParams.WRAP_CONTENT));
+        container.addView(presetScroll, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        int[] slots = new int[LyricsShareCardRenderer.TEXT_COLOR_PRESET_COLORS.length + 2];
+        slots[0] = LyricsTextColor.DEFAULT_SLOT;
+        slots[1] = LyricsTextColor.AUTO_SLOT;
+        for (int i = 2; i < slots.length; i++) {
+            slots[i] = i;
+        }
+        for (int slot : slots) {
+            int preset = slot == LyricsTextColor.DEFAULT_SLOT
+                    ? LyricsTextColor.defaultWhite()
+                    : (slot == LyricsTextColor.AUTO_SLOT
+                            ? LyricsTextColor.auto()
+                            : LyricsShareCardRenderer.textColorPreset(slot));
+            FrameLayout target = new FrameLayout(context);
+            target.setFocusable(true);
+            LyricsSheetChrome.attachInteractiveBackground(target, null, Dim.dp(24), 0x33FFFFFF);
+            View disc = new View(context);
+            GradientDrawable gd = new GradientDrawable();
+            gd.setShape(GradientDrawable.OVAL);
+            gd.setColor(preset);
+            boolean active = slot == currentSlot;
+            gd.setStroke(active ? Dim.dp(3) : Dim.dp(1), active ? 0xFFFFFFFF : 0x66FFFFFF);
+            disc.setBackground(gd);
+            target.addView(disc, new FrameLayout.LayoutParams(Dim.dp(32), Dim.dp(32), Gravity.CENTER));
+            target.setOnClickListener(v -> {
+                Settings.LYRICS_TEXT_COLOR_SLOT.save(slot);
+                onChanged.run();
+                colorDialog.first.dismiss();
+            });
+            presetRow.addView(target, new LinearLayout.LayoutParams(Dim.dp(48), Dim.dp(48)));
+        }
+
+        container.addView(pickerView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp(220)));
+
+        addScrollableColorContent(context, colorDialog.second, container);
+        try {
+            colorDialog.first.show();
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Failed to show lyrics text colour picker", ex);
+        }
+    }
+
     private static void showCustomColorDialog(
             Context context, int initialColor, Consumer<Integer> onColorSelected) {
         ColorPickerView pickerView = new ColorPickerView(context);
@@ -757,11 +1631,7 @@ final class LyricsShareDialog {
                 null,
                 null,
                 true);
-        LinearLayout main = colorDialog.second;
-        main.addView(container, main.getChildCount() - 1,
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        addScrollableColorContent(context, colorDialog.second, container);
         try {
             colorDialog.first.show();
         } catch (WindowManager.BadTokenException ex) {

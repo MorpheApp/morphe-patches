@@ -9,6 +9,8 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.graphics.Color;
 
+import java.util.Objects;
+
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -33,6 +35,16 @@ final class LyricsColors {
     private static int cachedUnsungColor;
     private static int cachedSecondaryColor;
     private static boolean colorCacheValid;
+    @androidx.annotation.Nullable
+    private static Integer fullscreenOverride;
+
+    /** Applies the selected fullscreen text colour slot; null restores the app's own colours. */
+    static void applyFullscreenOverride(@androidx.annotation.Nullable Integer color) {
+        if (!Objects.equals(color, fullscreenOverride)) {
+            fullscreenOverride = color;
+            invalidate();
+        }
+    }
 
     static int secondaryTextColor() {
         ensureColorCache();
@@ -49,11 +61,13 @@ final class LyricsColors {
 
     private static void ensureColorCache() {
         if (!colorCacheValid) {
-            final int base = computeLineColor();
+            final int base = fullscreenOverride != null ? fullscreenOverride : computeLineColor();
             cachedLineColor = base;
             cachedUnsungColor = Color.argb(Math.round(UNSUNG_ALPHA * 255f),
                     Color.red(base), Color.green(base), Color.blue(base));
-            cachedSecondaryColor = computeSecondaryColor(base);
+            cachedSecondaryColor = fullscreenOverride != null
+                    ? Color.argb(0x66, Color.red(base), Color.green(base), Color.blue(base))
+                    : computeSecondaryColor(base);
             colorCacheValid = true;
         }
     }

@@ -75,7 +75,8 @@ private const val LYRICS_PANEL_FILTER =
 
 val lyricsPatch = patch(
     name = "Third-party lyrics",
-    description = "Adds an option to show synced lyrics with experience enhancement from 20+ providers in the lyrics panel."
+    description = "Adds synced lyrics from 20+ providers with word-sync karaoke, translation, " +
+        "romanization, ruby, fullscreen, sharing and offline dictionaries."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -105,7 +106,16 @@ val lyricsPatch = patch(
                     "lyricsbrand",
                     ResourceGroup("drawable",
                         "morphe_lyrics_brand.xml",
-                        "morphe_share_bg_tag.xml")
+                        "morphe_share_bg_tag.xml",
+                        "morphe_share_date_tag.xml",
+                        "morphe_share_weekday_tag.xml",
+                        "morphe_share_guess_tag.xml",
+                        "morphe_share_keyword_tag.xml",
+                        "morphe_share_hook_tag.xml",
+                        "morphe_share_mood_tag.xml",
+                        "morphe_share_source_tag.xml",
+                        "morphe_share_story_tag.xml",
+                        "morphe_share_time_tag.xml")
                 )
                 copyResources(
                     "lyricsfullscreenbutton",
@@ -200,7 +210,7 @@ val lyricsPatch = patch(
                         dependency = "morphe_music_lyrics_enabled"
                     ),
                     SwitchPreference("morphe_music_lyrics_word_sync", summary = true),
-                    SwitchPreference("morphe_music_lyrics_word_smooth_sweep", summary = true),
+                    ListPreference("morphe_music_lyrics_word_animation_mode"),
                     SwitchPreference("morphe_music_lyrics_spring_scroll", summary = true),
                     SwitchPreference("morphe_music_lyrics_relax_scroll", summary = true),
                     SwitchPreference("morphe_music_lyrics_gap_dots", summary = true),
@@ -314,6 +324,26 @@ val lyricsPatch = patch(
                     TextPreference(
                         key = "morphe_music_lyrics_credit_line_regex",
                         inputType = InputType.TEXT_MULTI_LINE
+                    )
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_cards_and_fullscreen",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference(
+                        key = "morphe_music_lyrics_share_use_ai",
+                        summary = true,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
+                    ),
+                    SwitchPreference("morphe_music_lyrics_fullscreen_landscape_cover", summary = true),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_word_cloud_stopwords",
+                        titleKey = "morphe_music_lyrics_word_cloud_stopwords_title",
+                        summaryKey = "morphe_music_lyrics_word_cloud_stopwords_summary",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsWordCloudStopwordsPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
                     )
                 )
             ),

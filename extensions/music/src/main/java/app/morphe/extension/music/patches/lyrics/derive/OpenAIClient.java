@@ -111,6 +111,58 @@ public final class OpenAIClient {
             - Output ONLY the lines. No reasoning, no explanations.
             
             {lines}""";
+    /** Story-card summary prompt; placeholders are filled by {@link #renderPrompt}. */
+    public static final String STORY_PROMPT = """
+            You are a senior music editor and critic. Using the [METADATA], [EXTERNAL REFERENCES]
+            (possibly empty) and [FULL LYRICS] below, write a concise single-song story card for a
+             listener. Write everything in {language}. All three long fields ("lyric_story",
+             "background" and "key_metaphor") must be complete passages of at most 120 words.
+
+
+            STRICT RULES:
+            1. Separate facts from interpretation. Only put creation background, real events or
+               sampling sources into "background" when [EXTERNAL REFERENCES] explicitly state them.
+               If references are empty or say nothing usable, "background" MUST be null. Never
+               invent the artist's motives or gossip. Keep it one complete passage of at most 120
+               words; never cut it short or append an ellipsis.
+            2. "lyric_story": using the lyrics together with the references, write ONE complete,
+               self-contained narrative of what the song tells and what it feels like, in at most
+               120 words. Never cut a sentence short or append an ellipsis.
+            3. "key_metaphor": point out one or two core metaphors, double meanings or cultural
+               references in one complete passage of at most 120 words, or null when there is none.
+               Never cut it short or append an ellipsis.
+            4. "mood_tags": 2-3 precise atmosphere words.
+            5. "one_line_hook": ONE short sentence under 30 characters, suitable for a quoted line.
+            6. "has_verified_bg": true only when a reference explicitly provides verified background.
+
+            Return ONLY the following JSON, with no markdown fence and no extra text:
+            {
+              "has_verified_bg": true/false,
+              "one_line_hook": "hook text",
+              "background": "objective background and release story, or null",
+              "lyric_story": "lyric-based story and emotional core",
+              "key_metaphor": "core imagery or double meaning, or null",
+              "mood_tags": ["tag1", "tag2"]
+            }
+
+            [METADATA]
+            Song: {title} by {artist}
+            {facts}
+
+            [FULL LYRICS]
+            {lines}""";
+    /** Word-cloud keyword prompt; placeholders are filled by {@link #renderPrompt}. */
+    public static final String KEYWORD_PROMPT = """
+            You are a music analyst. Extract the key themes, imagery and emotion keywords from the lyrics below.
+            Song: {title} by {artist}
+
+            Write every keyword in {language}. Output ONLY a numbered list of keyword and weight, one per line, like:
+            1. keyword|5
+            2. another keyword|3
+
+            The weight must be an integer from 5 (most important) down to 1 (least important), assigned in descending order. Aim for 5-12 items. Prefer vivid, meaningful words over filler. No reasoning, no explanations, no sentences.
+
+            {lines}""";
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
     private static final int MAX_CHARS = 3000;
@@ -755,6 +807,114 @@ public final class OpenAIClient {
         String trimmed = text.trim();
         if (trimmed.isEmpty()) return true;
         return !trimmed.matches(".*\\p{L}.*");
+    }
+
+    /** Parses {@code "N. word"} lines into keywords capped at {@code maxItems}, without padding. */
+    @Nullable
+    public static List<String> parseKeywordList(@Nullable String response, int maxItems) {
+        if (response == null || maxItems <= 0) {
+            return null;
+        }
+        String[] raw = response.split("\n", -1);
+        List<String> out = new ArrayList<>(maxItems);
+        for (String line : raw) {
+            String t = line == null ? "" : line.trim();
+            if (t.isEmpty()) {
+                continue;
+            }
+            Matcher m = NUMBERED_LINE_PATTERN.matcher(t);
+            if (m.matches()) {
+                t = m.group(2) == null ? "" : m.group(2).trim();
+            }
+            t = t.replaceFirst("^[-*•]\\s*", "").trim();
+            if (isSkipToken(t)) {
+                continue;
+            }
+            out.add(t);
+            if (out.size() >= maxItems) {
+                break;
+            }
+        }
+        return out.isEmpty() ? null : out;
+    }
+
+    /** Parses JSON from a fenced model reply; plain prose falls back to lyric_story. */
+    @Nullable
+    public static StoryAiResult parseStoryJson(@Nullable String response, int maxChars) {
+        if (response == null || response.trim().isEmpty()) {
+            return null;
+        }
+        String text = response.trim();
+        int first = text.indexOf('{');
+        int last = text.lastIndexOf('}');
+        if (first >= 0 && last > first) {
+            String candidate = text.substring(first, last + 1);
+            try {
+                JSONObject obj = new JSONObject(candidate);
+                String hook = StoryAiResult.limitHook(obj.optString("one_line_hook", ""));
+                String background = StoryAiResult.normalizeOrNull(
+                        obj.optString("background", ""));
+                String story = StoryAiResult.limitStoryWords(obj.optString("lyric_story", ""));
+                String metaphor = StoryAiResult.normalizeOrNull(
+                        obj.optString("key_metaphor", ""));
+                List<String> moods = new ArrayList<>();
+                JSONArray tags = obj.optJSONArray("mood_tags");
+                if (tags != null) {
+                    for (int i = 0; i < tags.length() && moods.size() < 4; i++) {
+                        String tag = clip(tags.optString(i, ""), 16);
+                        if (!tag.isEmpty()) {
+                            moods.add(tag);
+                        }
+                    }
+                }
+                if (!story.isEmpty() || !hook.isEmpty() || !moods.isEmpty()) {
+                    boolean verified = obj.optBoolean("has_verified_bg", false);
+                    return new StoryAiResult(verified, hook, background,
+                            story, metaphor, moods, null);
+                }
+            } catch (JSONException ignored) {
+            }
+        }
+        // Plain-text fallback: keep the legacy prose prompt usable.
+        String plain = StoryAiResult.limitStoryWords(text);
+        if (plain.isEmpty()) {
+            return null;
+        }
+        return new StoryAiResult(false, "", null, plain, null, List.of(), null);
+    }
+
+    private static String clip(String value, int maxChars) {
+        String t = value == null ? "" : value.trim();
+        return t.length() > maxChars ? t.substring(0, maxChars).trim() : t;
+    }
+
+    @Nullable
+    private static String clipOrNull(String value, int maxChars) {
+        String t = value == null ? "" : value.trim();
+        if (t.isEmpty() || "null".equalsIgnoreCase(t) || "none".equalsIgnoreCase(t)) {
+            return null;
+        }
+        return t.length() > maxChars ? t.substring(0, maxChars).trim() : t;
+    }
+
+    /** Sends a raw user prompt to the shared endpoint and returns the assistant content, or null. */
+    @Nullable
+    public static String complete(String baseUrl, String apiToken, String model, String userPrompt) {
+        return request(baseUrl, apiToken, model, userPrompt);
+    }
+
+    @Nullable
+    public static List<String> extractKeywords(String baseUrl, String apiToken, String model,
+                                               String prompt, int maxItems) {
+        return parseKeywordList(request(baseUrl, apiToken, model, prompt), maxItems);
+    }
+
+    @Nullable
+    public static List<WeightedWord> extractWeightedKeywords(String baseUrl, String apiToken,
+                                                             String model, String prompt,
+                                                             int maxItems) {
+        return WordCloudBuilder.parseWeightedKeywords(
+                request(baseUrl, apiToken, model, prompt), maxItems);
     }
 
     @Nullable

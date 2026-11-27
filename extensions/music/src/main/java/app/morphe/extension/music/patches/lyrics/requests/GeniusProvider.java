@@ -147,6 +147,30 @@ public final class GeniusProvider implements LyricsProvider {
         return mapped != null ? mapped : trimmed;
     }
 
+    @Nullable
+    public static JSONObject storyRecord(TrackInfo track) {
+        try {
+            JSONObject hit = findBestHit(track);
+            if (hit == null) {
+                return null;
+            }
+            JSONObject record = songRecord(hit.optLong("id", 0));
+            if (record == null) {
+                return null;
+            }
+            JSONObject out = new JSONObject();
+            out.put("description", record.optString("description", "").trim());
+            out.put("verified", record.optBoolean("verified", false)
+                    || !record.optString("verified_at", "").trim().isEmpty());
+            List<String> credits = credits(record);
+            out.put("credits", credits == null ? "" : String.join(" · ", credits));
+            return out;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Genius story lookup failed", ex);
+            return null;
+        }
+    }
+
     /**
      * The first hit the shared matcher accepts. Keeping that one rather than the highest score
      * is what holds the lookup to a single page request.

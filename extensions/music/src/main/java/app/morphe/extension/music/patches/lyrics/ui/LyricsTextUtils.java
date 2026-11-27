@@ -12,8 +12,16 @@ import android.text.style.RelativeSizeSpan;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
+import app.morphe.extension.music.patches.lyrics.model.LyricsFilter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.Utils;
 
 /**
@@ -60,6 +68,52 @@ final class LyricsTextUtils {
     static String displayLineText(LyricsLine line) {
         String raw = line.text();
         return isSecondaryLine(line) ? LyricsBracketSplitter.stripAllBrackets(raw).trim() : raw;
+    }
+
+    /**
+     * The lyric lines the user actually sees: credit/junk lines removed, no BG vocals or
+     * instrumental markers, with the same display formatting the panel draws.
+     */
+    /** Source lines and their best available target-language translation, line-aligned. */
+    record VisibleLines(List<String> source, List<String> translated) {
+    }
+
+    static List<String> visibleLines(@Nullable Lyrics lyrics, @Nullable TrackInfo track) {
+        return visibleLines(lyrics, track, null).source();
+    }
+
+    static VisibleLines visibleLines(@Nullable Lyrics lyrics, @Nullable TrackInfo track,
+                                     @Nullable List<String> translations) {
+        List<String> source = new ArrayList<>();
+        List<String> target = new ArrayList<>();
+        if (lyrics == null) {
+            return new VisibleLines(source, target);
+        }
+        IdentityHashMap<LyricsLine, Integer> indexes = new IdentityHashMap<>();
+        List<LyricsLine> originalLines = lyrics.lines();
+        for (int i = 0; i < originalLines.size(); i++) {
+            indexes.put(originalLines.get(i), i);
+        }
+        Lyrics filtered = LyricsFilter.filterCreditLines(lyrics, track);
+        filtered = LyricsFilter.filterLyricsText(filtered);
+        for (LyricsLine line : filtered.lines()) {
+            if (line == null || line.isBG()) {
+                continue;
+            }
+            String text = LyricsPresentation.formatText(displayLineText(line));
+            text = stripBidiControls(text == null ? "" : text).trim();
+            if (text.isEmpty() || "♪".equals(text) || "♫".equals(text)) {
+                continue;
+            }
+            source.add(text);
+            Integer originalIndex = indexes.get(line);
+            String translated = originalIndex == null ? null
+                    : LyricsSpanBuilder.translationAt(line, originalIndex, translations);
+            translated = LyricsPresentation.formatText(
+                    stripBidiControls(translated == null ? "" : translated).trim());
+            target.add(translated == null || translated.isEmpty() ? text : translated);
+        }
+        return new VisibleLines(source, target);
     }
 
     /** Characters that take no room, which a reading laid out against the text must not count. */

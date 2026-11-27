@@ -138,9 +138,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_COPY_BUTTON = new BooleanSetting("morphe_music_lyrics_show_copy_button", TRUE, false, parent(LYRICS_ENABLED));
-    public static final BooleanSetting LYRICS_LONG_PRESS_SHARE_MODE = new BooleanSetting("morphe_music_lyrics_long_press_share_mode", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_TAP_TO_SEEK)));
+    public static final BooleanSetting LYRICS_LONG_PRESS_SHARE_MODE = new BooleanSetting("morphe_music_lyrics_long_press_share_mode", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_TAP_TO_SEEK)));
     public static final BooleanSetting LYRICS_SHOW_CURRENT_BUTTON = new BooleanSetting("morphe_music_lyrics_show_current_button", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_FULLSCREEN_BUTTON = new BooleanSetting("morphe_music_lyrics_show_fullscreen_button", TRUE, false, parent(LYRICS_ENABLED));
+    /** Show the 45% cover pane in fullscreen landscape; off gives the lyrics the full width. */
+    public static final BooleanSetting LYRICS_FULLSCREEN_LANDSCAPE_COVER = new BooleanSetting("morphe_music_lyrics_fullscreen_landscape_cover", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_SECTION = new BooleanSetting("morphe_music_lyrics_show_section", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_TRANSLATE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_translate_button", TRUE, false, parent(LYRICS_ENABLED));
     /** A comma separated priority list; a leading '-' disables a provider. */
@@ -193,6 +195,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_AI_TRANSLATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_prompt", OpenAIClient.DEFAULT_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
     public static final StringSetting LYRICS_AI_ROMANIZATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_romanization_prompt", OpenAIClient.DEFAULT_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
     public static final StringSetting LYRICS_AI_SECTION_PROMPT = new StringSetting("morphe_music_lyrics_ai_section_prompt", OpenAIClient.SECTION_PROMPT, false, parent(LYRICS_ENABLED));
+    /** Master switch for AI-powered share-card features (story summary + keyword extraction). */
+    public static final BooleanSetting LYRICS_SHARE_USE_AI = new BooleanSetting("morphe_music_lyrics_share_use_ai", FALSE, false, parent(LYRICS_ENABLED));
+    /** Prompt used by the share-card story mode to summarize the selected lyrics. */
+    public static final StringSetting LYRICS_AI_STORY_PROMPT = new StringSetting("morphe_music_lyrics_ai_story_prompt", OpenAIClient.STORY_PROMPT, false, parent(LYRICS_ENABLED));
+    /** Prompt used by the share-card word-cloud mode to extract keyword elements. */
+    public static final StringSetting LYRICS_AI_KEYWORD_PROMPT = new StringSetting("morphe_music_lyrics_ai_keyword_prompt", OpenAIClient.KEYWORD_PROMPT, false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_TRANSCRIBE_KEY = new StringSetting("morphe_music_lyrics_transcribe_key", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_QUICKLRC_ENABLED = new BooleanSetting("morphe_music_lyrics_quicklrc_enabled", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_INFO = new BooleanSetting("morphe_music_lyrics_hide_info", FALSE, false, parent(LYRICS_ENABLED));
@@ -212,8 +220,28 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_ROMANIZE = new BooleanSetting("morphe_music_lyrics_romanize", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE_ONLY = new BooleanSetting("morphe_music_lyrics_romanize_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_WORD_SYNC = new BooleanSetting("morphe_music_lyrics_word_sync", TRUE, false, parent(LYRICS_ENABLED));
-    /** Animates synced words with a soft sweep, glow, and slight lift instead of a hard fill. */
-    public static final BooleanSetting LYRICS_WORD_SMOOTH_SWEEP = new BooleanSetting("morphe_music_lyrics_word_smooth_sweep", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_WORD_SYNC)));
+    /** Word-by-word transition style. */
+    public static final String WORD_ANIM_SMOOTH = "smooth";
+    public static final String WORD_ANIM_SHARP = "sharp";
+    public static final String WORD_ANIM_CHARACTER = "character";
+    public static final String WORD_ANIM_KARAOKE = "karaoke";
+    public static final StringSetting LYRICS_WORD_ANIMATION_MODE = new StringSetting("morphe_music_lyrics_word_animation_mode", WORD_ANIM_SMOOTH, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_WORD_SYNC)));
+
+    private static String wordAnimationMode() {
+        return LYRICS_WORD_ANIMATION_MODE.get();
+    }
+
+    public static boolean isWordAnimSmooth() {
+        return WORD_ANIM_SMOOTH.equals(wordAnimationMode());
+    }
+
+    public static boolean isWordAnimCharacter() {
+        return WORD_ANIM_CHARACTER.equals(wordAnimationMode());
+    }
+
+    public static boolean isWordAnimKaraoke() {
+        return WORD_ANIM_KARAOKE.equals(wordAnimationMode());
+    }
     /** Uses spring physics and staggered FLIP cascading for scrolling lyric lines. */
     public static final BooleanSetting LYRICS_SPRING_SCROLL = new BooleanSetting("morphe_music_lyrics_spring_scroll", TRUE, false, parent(LYRICS_ENABLED));
     /** Slower scrolling animation and keeps inactive lines full size. */
@@ -267,6 +295,32 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_CUSTOM_FONT = new StringSetting("morphe_music_lyrics_custom_font", "", false, parent(LYRICS_ENABLED));
     /** Remembered state for showing or hiding footer branding inside the Share Lyrics editor. */
     public static final BooleanSetting LYRICS_SHARE_SHOW_BRANDING = new BooleanSetting("morphe_music_lyrics_share_show_branding", TRUE, false, parent(LYRICS_ENABLED));
+    /** Remembered state for appending the current English weekday to the Share Lyrics card footer. */
+    public static final BooleanSetting LYRICS_SHARE_SHOW_WEEKDAY = new BooleanSetting("morphe_music_lyrics_share_show_weekday", FALSE, false, parent(LYRICS_ENABLED));
+    /** Remembered state for appending the current English date to the Share Lyrics card footer. */
+    public static final BooleanSetting LYRICS_SHARE_SHOW_DATE = new BooleanSetting("morphe_music_lyrics_share_show_date", FALSE, false, parent(LYRICS_ENABLED));
+    /** Remembered state for guess mode on share cards. */
+    public static final BooleanSetting LYRICS_SHARE_GUESS_MODE = new BooleanSetting("morphe_music_lyrics_share_guess_mode", FALSE, false, parent(LYRICS_ENABLED));
+    /** User-editable stopword list for the local word-cloud share card (comma/space separated). */
+    public static final StringSetting LYRICS_WORD_CLOUD_STOPWORDS = new StringSetting("morphe_music_lyrics_word_cloud_stopwords", app.morphe.extension.music.patches.lyrics.derive.WordCloudStopwords.DEFAULT, false, parent(LYRICS_ENABLED));
+    /** Remembered state for showing the English time-of-day element on share cards. */
+    public static final BooleanSetting LYRICS_SHARE_SHOW_TIME_OF_DAY = new BooleanSetting("morphe_music_lyrics_share_show_time_of_day", FALSE, false, parent(LYRICS_ENABLED));
+    /** Use a clock label such as "3 a.m." instead of the 12 literary time-of-day words. */
+    public static final BooleanSetting LYRICS_SHARE_TIME_CLOCK_FORMAT = new BooleanSetting("morphe_music_lyrics_share_time_clock_format", FALSE, false, parent(LYRICS_ENABLED));
+    /** Remembered share-card background style, reused as the fullscreen lyrics background. */
+    public static final String SHARE_BG_BLUR = "blur";
+    public static final String SHARE_BG_COVER = "cover";
+    public static final String SHARE_BG_COLOR = "color";
+    public static final String SHARE_BG_PHOTO = "photo";
+    public static final StringSetting LYRICS_SHARE_BG_MODE = new StringSetting("morphe_music_lyrics_share_bg_mode", SHARE_BG_BLUR, false, parent(LYRICS_ENABLED));
+    /** Remembered ARGB of the chosen share-card solid background (custom colours included). */
+    public static final StringSetting LYRICS_SHARE_BG_COLOR = new StringSetting("morphe_music_lyrics_share_bg_color", "", false, parent(LYRICS_ENABLED));
+    /** Solid background swatch slot: -1 custom, 0 live album colour, 1..6 fixed presets. */
+    public static final IntegerSetting LYRICS_SHARE_BG_COLOR_SLOT = new IntegerSetting("morphe_music_lyrics_share_bg_color_slot", 0, false, parent(LYRICS_ENABLED));
+    /** Text colour slot: 0 default white, 1 auto (album sampled), 2..9 presets, -1 custom. */
+    public static final IntegerSetting LYRICS_TEXT_COLOR_SLOT = new IntegerSetting("morphe_music_lyrics_text_color_slot", 0, false, parent(LYRICS_ENABLED));
+    /** Custom text colour used when LYRICS_TEXT_COLOR_SLOT is -1. */
+    public static final StringSetting LYRICS_FULLSCREEN_TEXT_COLOR = new StringSetting("morphe_music_lyrics_fullscreen_text_color", "#FFFFFF", false, parent(LYRICS_ENABLED));
 
     // Lyrics metadata and line filtering live with the filter itself. Touching that class
     // is what puts the three settings into the framework's registry.
@@ -465,6 +519,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false);
     private static final BooleanSetting DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE = new BooleanSetting("morphe_music_lyrics_duet_opposite_side", TRUE, false);
     private static final StringSetting DEPRECATED_LYRICS_COPY_BUTTON_MODE = new StringSetting("morphe_music_lyrics_copy_button_mode", "copy", false);
+    private static final BooleanSetting DEPRECATED_LYRICS_WORD_SMOOTH_SWEEP = new BooleanSetting("morphe_music_lyrics_word_smooth_sweep", TRUE, false);
 
     static {
         migrateOldSettingToNew(DEPRECATED_HIDE_LIBRARY_NEW_BUTTON, HIDE_NEW_BUTTON);
@@ -480,6 +535,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateLyricsProviderRename();
         migrateLyricsAlignment();
         migrateLyricsCopyButtonMode();
+        migrateWordAnimation();
     }
 
     static {
@@ -636,6 +692,19 @@ public class Settings extends SharedYouTubeSettings {
         }
         DEPRECATED_LYRICS_FORCE_CENTER.resetToDefault();
         DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE.resetToDefault();
+    }
+
+    /** The smooth-sweep switch became the word animation mode list. */
+    private static void migrateWordAnimation() {
+        if (!LYRICS_WORD_ANIMATION_MODE.isSetToDefault()) {
+            DEPRECATED_LYRICS_WORD_SMOOTH_SWEEP.resetToDefault();
+            return;
+        }
+        if (!DEPRECATED_LYRICS_WORD_SMOOTH_SWEEP.isSetToDefault()) {
+            LYRICS_WORD_ANIMATION_MODE.save(DEPRECATED_LYRICS_WORD_SMOOTH_SWEEP.get()
+                    ? WORD_ANIM_SMOOTH : WORD_ANIM_SHARP);
+        }
+        DEPRECATED_LYRICS_WORD_SMOOTH_SWEEP.resetToDefault();
     }
 
     /**

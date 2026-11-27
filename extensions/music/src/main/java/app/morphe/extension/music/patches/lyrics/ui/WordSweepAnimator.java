@@ -1752,7 +1752,7 @@ public final class WordSweepAnimator {
         long nowUptimeMs = animClockMs;
         float safeSpeed = Math.max(0.1f, playbackSpeed);
 
-        final boolean smoothSweep = Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
+        final boolean smoothSweep = Settings.isWordAnimSmooth();
         if (smoothSweep && (isActiveLine || (prewarmMasks && romaReveal >= 0.99f && transReveal >= 0.99f))) {
             maskCacheStore.prewarmStep(clusters.size(), LyricsGlyphMaskCache.PREWARM_BUDGET_NS,
                     prewarmLayoutOf, prewarmGlowBlurOf);

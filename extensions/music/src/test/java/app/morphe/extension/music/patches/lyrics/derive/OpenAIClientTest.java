@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.derive;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -297,5 +298,67 @@ public class OpenAIClientTest {
         String result = OpenAIClient.renderPrompt(template, "task", "lang",
                 "title", "artist", List.of("hello", ""));
         assertTrue(result.contains("SKIP"));
+    }
+
+    @Test
+    public void shareCardPromptsFillSharedVariables() {
+        String story = OpenAIClient.renderPrompt(OpenAIClient.STORY_PROMPT, "story", "",
+                "My Song", "My Artist", List.of("a line", "another line"));
+        assertTrue(story.contains("My Song"));
+        assertTrue(story.contains("My Artist"));
+        assertTrue(story.contains("a line"));
+        assertTrue(story.contains("another line"));
+
+        String keywords = OpenAIClient.renderPrompt(OpenAIClient.KEYWORD_PROMPT, "keywords", "",
+                "My Song", "My Artist", List.of("a line"));
+        assertTrue(keywords.contains("My Song"));
+        assertTrue(keywords.contains("a line"));
+        assertTrue(!OpenAIClient.STORY_PROMPT.equals(OpenAIClient.KEYWORD_PROMPT));
+        assertTrue(!OpenAIClient.KEYWORD_PROMPT.equals(OpenAIClient.DEFAULT_PROMPT));
+    }
+
+    @Test
+    public void parseKeywordListExtractsNumberedItems() {
+        List<String> keywords = OpenAIClient.parseKeywordList(
+                "1. love\n2. dream\n3. night\n4. autumn\n5. SKIP\n6. city", 5);
+        assertNotNull(keywords);
+        assertEquals(5, keywords.size());
+        assertEquals("love", keywords.get(0));
+        assertEquals("city", keywords.get(4));
+
+        List<String> capped = OpenAIClient.parseKeywordList("1. a\n2. b\n3. c", 2);
+        assertNotNull(capped);
+        assertEquals(2, capped.size());
+
+        List<String> plain = OpenAIClient.parseKeywordList("love\ndream\nnight", 5);
+        assertNotNull(plain);
+        assertEquals(3, plain.size());
+        assertNull(OpenAIClient.parseKeywordList("SKIP\n\nSKIP", 5));
+    }
+
+    @Test
+    public void parseStoryJsonStrictAndFallback() {
+        String json = "```json\n{\"has_verified_bg\": true, \"one_line_hook\": \"hook\","
+                + " \"background\": \"bg\", \"lyric_story\": \"story\","
+                + " \"key_metaphor\": \"meta\", \"mood_tags\": [\"m1\", \"m2\"]}\n```";
+        StoryAiResult result = OpenAIClient.parseStoryJson(json, 200);
+        assertNotNull(result);
+        assertTrue(result.hasVerifiedBg());
+        assertEquals("hook", result.oneLineHook());
+        assertEquals("bg", result.background());
+        assertEquals("story", result.lyricStory());
+        assertEquals("meta", result.keyMetaphor());
+        assertEquals(2, result.moodTags().size());
+
+        String noBg = "{\"lyric_story\": \"plain story\", \"background\": null}";
+        StoryAiResult fallback = OpenAIClient.parseStoryJson(noBg, 200);
+        assertNotNull(fallback);
+        assertNull(fallback.background());
+        assertEquals("plain story", fallback.lyricStory());
+
+        StoryAiResult prose = OpenAIClient.parseStoryJson("just a prose story", 200);
+        assertNotNull(prose);
+        assertEquals("just a prose story", prose.lyricStory());
+        assertFalse(prose.hasVerifiedBg());
     }
 }

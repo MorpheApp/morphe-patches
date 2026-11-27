@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -125,6 +126,8 @@ public final class LyricsPanelView extends FrameLayout
     private static final float INACTIVE_LINE_ALPHA = LyricsViewSupport.INACTIVE_LINE_ALPHA;
     /** Synced lyrics keep the active line this far down the screen, as a share of its height. */
     private static final float SCROLL_ANCHOR_RATIO = 0.16f;
+    /** Lower scroll anchor for hide-played mode. */
+    private static final float HIDE_PLAYED_ANCHOR_RATIO = 0.45f;
     /** The scroll engine's lead time, in the place of the time to the next line. */
     private static final long DEFAULT_SCROLL_LOOK_AHEAD_MS = 350L;
     static final long JUMP_BUTTON_FADE_MS = 200L;
@@ -180,6 +183,27 @@ public final class LyricsPanelView extends FrameLayout
     private final Runnable updateRomanizeLabelRunnable = this::updateRomanizeLabel;
 
     private final DynamicBackgroundView dynamicBackgroundView;
+    @Nullable
+    private Bitmap customBackgroundPhoto;
+
+    int getDynamicBackgroundVisibility() {
+        return dynamicBackgroundView.getVisibility();
+    }
+
+    void setDynamicBackgroundVisibility(int visibility) {
+        dynamicBackgroundView.setVisibility(visibility);
+    }
+
+    @Nullable
+    Bitmap getCustomBackgroundPhoto() {
+        return customBackgroundPhoto;
+    }
+
+    void setCustomBackgroundPhoto(@Nullable Bitmap bitmap) {
+        customBackgroundPhoto = bitmap;
+        if (isFullscreen()) fullscreenController.applyFullscreenBackground();
+    }
+
     private final ScrollView scrollView;
     private final LinearLayout linesContainer;
     private final TextView creditView;
@@ -783,6 +807,13 @@ public final class LyricsPanelView extends FrameLayout
         jumpToCurrentView.bringToFront();
 
         fullscreenController = new LyricsFullscreenController(this);
+        LyricsBackgroundStyle.setStyleChangedListener(() -> {
+            if (isFullscreen()) {
+                fullscreenController.applyFullscreenBackground();
+                // The auto text-colour slot is white; refresh the album palette for card/background swatches.
+                fullscreenController.applyTextColorSetting();
+            }
+        });
 
         offsetRulerView = new OffsetRulerView(context);
         LayoutParams rulerParams = new LayoutParams(
@@ -855,12 +886,15 @@ public final class LyricsPanelView extends FrameLayout
 
     /** Room below the footer, so the last lines can scroll up to the anchor too. */
     private void updateLinesContainerPadding() {
-        final int top = Dim.dp16;
+        final int viewportH = scrollView.getHeight();
+        // Hide-played collapses rows above the anchor: reserve top space instead of pinning to the top.
+        final int top = Settings.LYRICS_HIDE_PLAYED.get() && viewportH > 0
+                ? Math.max(Dim.dp16, getLyricFocusAnchorPx())
+                : Dim.dp16;
         final int bottom = Dim.dp(32);
         if (linesContainer.getPaddingTop() != top || linesContainer.getPaddingBottom() != bottom) {
             linesContainer.setPadding(Dim.dp24, top, Dim.dp24, bottom);
         }
-        final int viewportH = scrollView.getHeight();
         if (viewportH > 0) {
             final int footerBottom = Math.max(Dim.dp(240), viewportH);
             if (footerContainer.getPaddingBottom() != footerBottom) {
@@ -1241,6 +1275,12 @@ public final class LyricsPanelView extends FrameLayout
                 refreshInProgress = false;
                 handler.removeCallbacks(refreshLabelResetRunnable);
                 updateRefreshLabel();
+                // The auto swatch follows the artwork of the song now playing, so extract it
+                // here instead of waiting for the share panel to be opened.
+                Utils.runOnBackgroundThread(() -> {
+                    LyricsPaletteCache.refresh();
+                    Utils.runOnMainThread(LyricsBackgroundStyle::notifyStyleChanged);
+                });
             }
             lyrics = newLyrics;
             highlightedIndex = -1;
@@ -1590,6 +1630,11 @@ public final class LyricsPanelView extends FrameLayout
         progressBar.setVisibility(VISIBLE);
     }
 
+    /** Re-enters the current line after a layout change, e.g. a fullscreen transition. */
+    void recenterOnCurrentLineAfterLayout() {
+        post(this::onPanelReopened);
+    }
+
     private void onPanelReopened() {
         exitBrowsing();
         restoreOffsetRulerIfNeeded();
@@ -1650,6 +1695,49 @@ public final class LyricsPanelView extends FrameLayout
 
     public void applyFullscreenButtonSetting() {
         fullscreenController.applySetting();
+    }
+
+    public void applyLandscapeCoverSetting() {
+        fullscreenController.applyLandscapeCoverSetting();
+    }
+
+    public void applyFullscreenTextColorSetting() {
+        fullscreenController.applyTextColorSetting();
+    }
+
+    public void applyLyricColors() {
+        LyricsColors.invalidate();
+        final int color = LyricsColors.lineTextColor();
+        creditView.setTextColor(color);
+        shareSelectionCountView.setTextColor(color);
+        LyricsViewSupport.applyFooterStyle(footerView);
+        LyricsViewSupport.applyFooterStyle(transcribePromptView);
+        retintButton(translateView);
+        retintButton(romanizeView);
+        retintButton(dualPillView);
+        retintButton(copyView);
+        retintButton(refreshView);
+        retintButton(jumpToCurrentView);
+        applyLyricLayoutSettings();
+    }
+
+    /** Default/reset keeps the app background; an explicit card background colour can be used. */
+    private static int activeButtonForeground() {
+        return LyricsBackgroundStyle.savedColorSlot() == 0
+                ? ThemeUtils.getAppBackgroundColor()
+                : LyricsBackgroundStyle.solidColor(ThemeUtils.getAppBackgroundColor());
+    }
+
+    private void retintButton(@Nullable TextView button) {
+        if (button == null || !(button.getBackground() instanceof GradientDrawable pill)) {
+            return;
+        }
+        ColorStateList pillColor = pill.getColor();
+        final int background = pillColor == null ? 0 : pillColor.getDefaultColor();
+        final int foreground = background == ACTIVE_BUTTON_BG_COLOR
+                ? activeButtonForeground() : LyricsColors.lineTextColor();
+        LyricsViewSupport.setButtonColors(button, pill, button.getCompoundDrawablesRelative(),
+                background, foreground);
     }
 
     private void showLyrics(Lyrics newLyrics) {
@@ -4592,6 +4680,12 @@ public final class LyricsPanelView extends FrameLayout
 
     @Nullable
     @Override
+    public TrackInfo getCurrentTrack() {
+        return LyricsManager.getInstance().getCurrentTrack();
+    }
+
+    @Nullable
+    @Override
     public Lyrics getPendingAlignment() {
         return pendingAlignment;
     }
@@ -4609,6 +4703,8 @@ public final class LyricsPanelView extends FrameLayout
     @Override
     public void styleButton(TextView button) {
         applyButtonStyle(button, null);
+        // Sheet buttons live on a fixed dark surface, so they never follow the custom lyric ink.
+        button.setTextColor(LyricsSheetChrome.DIALOG_BUTTON_TEXT_COLOR);
     }
 
     @Override
@@ -4740,6 +4836,21 @@ public final class LyricsPanelView extends FrameLayout
         return linesContainer.getPaddingTop() > 0 ? linesContainer.getPaddingTop() : Dim.dp(48);
     }
 
+    /** {@return the lyric scroll-target anchor}; hide-played needs a lower anchor. */
+    private int getLyricFocusAnchorPx() {
+        return resolveFocusAnchorPx(scrollView.getHeight(), Settings.LYRICS_HIDE_PLAYED.get(),
+                getScrollAnchorPx(), Dim.dp(36));
+    }
+
+    /** Pure so it can be unit-tested without Android. */
+    static int resolveFocusAnchorPx(int viewportH, boolean hidePlayed, int baseAnchorPx,
+                                    int minAnchorPx) {
+        if (!hidePlayed || viewportH <= 0) {
+            return baseAnchorPx;
+        }
+        return Math.max(minAnchorPx, Math.round(viewportH * HIDE_PLAYED_ANCHOR_RATIO));
+    }
+
     /**
      * {@return how much the gaps and background vocals up to this line are about to grow or
      * shrink, which the layout has not applied yet}
@@ -4812,6 +4923,7 @@ public final class LyricsPanelView extends FrameLayout
         }
         final int viewportH = scrollView.getHeight();
         final int anchorPx = getScrollAnchorPx();
+        final int lyricAnchorPx = getLyricFocusAnchorPx();
 
         if (targetIndex == lineRows.size()) {
             if (footerContainer.getVisibility() == View.GONE || footerContainer.getHeight() <= 0) {
@@ -4847,21 +4959,21 @@ public final class LyricsPanelView extends FrameLayout
             bottom = Math.max(bottom, rowTop + (row.getHeight() > 0 ? row.getHeight() : getPrimaryChildHeight(row)));
         }
         if (top == Integer.MAX_VALUE) {
-            return Math.max(0, targetRowTop + mainOffset - anchorPx);
+            return Math.max(0, targetRowTop + mainOffset - lyricAnchorPx);
         }
 
         // Keep simultaneous duet pairs anchored together, while ensuring sequential 3+ line
         // overlaps or long-held upper vocals never trap the newly active primary line down low.
         int targetTop = top;
-        final int comfortH = Math.max(Dim.dp(140), Math.round((viewportH - anchorPx) * 0.45f));
+        final int comfortH = Math.max(Dim.dp(140), Math.round((viewportH - lyricAnchorPx) * 0.45f));
         if (targetRowBottom - targetTop > comfortH && comfortH > 0) {
             targetTop = Math.min(targetRowTop, Math.max(targetTop, targetRowBottom - comfortH));
         }
-        final int availableH = viewportH - anchorPx - Dim.dp(80);
+        final int availableH = viewportH - lyricAnchorPx - Dim.dp(80);
         if (bottom - targetTop > availableH && availableH > 0) {
             targetTop = Math.max(targetTop, bottom - availableH);
         }
-        return Math.max(0, targetTop + mainOffset - anchorPx);
+        return Math.max(0, targetTop + mainOffset - lyricAnchorPx);
     }
 
     /** {@return the row a scroll comes from: the line that was sung before, or the fallback} */
@@ -5468,7 +5580,10 @@ public final class LyricsPanelView extends FrameLayout
                         scrollAnchorIntoView(targetIdx, gapBreakChanged || isSeek);
                     }
                 } else if (primaryActiveIndex >= 0 && primaryActiveIndex < lineRows.size()) {
-                    scrollAnchorIntoView(primaryActiveIndex, primaryChanged || activeSetChanged || isSeek);
+                    // Collapsed rows above the anchor move the target even without a line change.
+                    scrollAnchorIntoView(primaryActiveIndex,
+                            primaryChanged || activeSetChanged || isSeek
+                                    || Settings.LYRICS_HIDE_PLAYED.get());
                 }
                 return;
             }
@@ -6566,11 +6681,16 @@ public final class LyricsPanelView extends FrameLayout
             return;
         }
 
+        final TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        LyricsTextUtils.VisibleLines visible =
+                LyricsTextUtils.visibleLines(current, track, translatedLines);
+        List<String> allLyricLines = visible.source();
+        List<String> translatedLyricLines = visible.translated();
+
         shareExportInProgress = true;
         updateShareSelectionBarState();
 
         final Context panelContext = getContext();
-        final TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
         final String rawTitle = LyricsManager.getInstance().getCurrentRawTitle();
         final String rawArtist = LyricsManager.getInstance().getCurrentRawArtist();
         final boolean forceCenter = Settings.isAlignmentCenter();
@@ -6598,6 +6718,8 @@ public final class LyricsPanelView extends FrameLayout
                     LyricsShareDialog.show(
                             panelContext,
                             entries,
+                            allLyricLines,
+                            translatedLyricLines,
                             track,
                             rawTitle,
                             rawArtist,
@@ -6606,6 +6728,8 @@ public final class LyricsPanelView extends FrameLayout
                             initialTransOn,
                             swapTransRoma,
                             forceCenter,
+                            getCustomBackgroundPhoto(),
+                            LyricsPanelView.this::setCustomBackgroundPhoto,
                             this::exitShareSelectionMode,
                             () -> {
                                 shareExportInProgress = false;
@@ -6824,10 +6948,20 @@ public final class LyricsPanelView extends FrameLayout
     public void applyDynamicBackgroundSettings() {
         dynamicBackgroundView.setVisibility(Settings.LYRICS_DYNAMIC_BACKGROUND.get() ? VISIBLE : GONE);
         dynamicBackgroundView.onSettingsChanged();
+        fullscreenController.applyFullscreenBackground();
     }
 
     public void applyLineOverlaySettings() {
         applyLineOverlay(highlightedIndex);
+        updateLinesContainerPadding();
+        // Visible rows changed height: invalidate the cached target so the panel re-anchors.
+        followState.setLastScrollTarget(-1);
+        final int anchor = highlightedIndex >= 0 && highlightedIndex < lineRows.size()
+                ? highlightedIndex
+                : primaryActiveIndex;
+        if (anchor >= 0 && anchor < lineRows.size()) {
+            scrollAnchorIntoView(anchor, true);
+        }
     }
 
     /**
@@ -7109,7 +7243,7 @@ public final class LyricsPanelView extends FrameLayout
         LyricsViewSupport.fadeButtonColors(button,
                 active ? ACTIVE_BUTTON_BG_COLOR
                         : ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x1AFFFFFF),
-                active ? ThemeUtils.getAppBackgroundColor() : LyricsColors.lineTextColor());
+                active ? activeButtonForeground() : LyricsColors.lineTextColor());
     }
 
     /**

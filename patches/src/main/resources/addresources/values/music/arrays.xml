@@ -301,6 +301,18 @@
         <item>same_side</item>
         <item>center</item>
     </string-array>
+    <string-array name="morphe_music_lyrics_word_animation_mode_entries">
+        <item>@string/morphe_music_lyrics_word_anim_smooth</item>
+        <item>@string/morphe_music_lyrics_word_anim_sharp</item>
+        <item>@string/morphe_music_lyrics_word_anim_character</item>
+        <item>@string/morphe_music_lyrics_word_anim_karaoke</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_word_animation_mode_entry_values">
+        <item>smooth</item>
+        <item>sharp</item>
+        <item>character</item>
+        <item>karaoke</item>
+    </string-array>
 
     <!-- The character tables a custom Rime word list may fall back to. A build offering another
          reading adds one row beside its token in the values array; nothing else changes. -->

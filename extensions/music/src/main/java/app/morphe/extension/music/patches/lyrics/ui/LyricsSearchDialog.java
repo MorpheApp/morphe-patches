@@ -28,7 +28,6 @@ import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
 import app.morphe.extension.music.patches.lyrics.derive.SectionDetector;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
@@ -57,6 +56,8 @@ final class LyricsSearchDialog {
      */
     interface Callbacks {
         Lyrics getCurrentLyrics();
+
+        TrackInfo getCurrentTrack();
 
         Lyrics getPendingAlignment();
 
@@ -194,7 +195,7 @@ final class LyricsSearchDialog {
                 Lyrics current = callbacks.getCurrentLyrics();
                 String text = null;
                 if (current != null && !current.isEmpty() && current != Lyrics.NOT_FOUND) {
-                    StringBuilder joined = createJoined(current);
+                    StringBuilder joined = createJoined(current, callbacks.getCurrentTrack());
                     text = joined.toString();
                 }
                 if (text == null || text.trim().isEmpty()) {
@@ -322,16 +323,10 @@ final class LyricsSearchDialog {
         });
     }
 
-    private static StringBuilder createJoined(Lyrics current) {
+    private static StringBuilder createJoined(Lyrics current, TrackInfo track) {
         StringBuilder joined = new StringBuilder();
-        for (LyricsLine line : current.lines()) {
-            if (line.isBG()) {
-                continue;
-            }
-            String lineText = line.text();
-            if (lineText != null && !lineText.trim().isEmpty()) {
-                joined.append(lineText).append('\n');
-            }
+        for (String line : LyricsTextUtils.visibleLines(current, track)) {
+            joined.append(line).append('\n');
         }
         return joined;
     }

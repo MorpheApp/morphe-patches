@@ -44,8 +44,8 @@ import app.morphe.extension.shared.ui.Dim;
 
 /**
  * Displays total offline lyrics cache usage on the settings row and opens a sectioned dialog to
- * inspect and clear the Lyrics, Translation, Transliteration, AI section and temporary offset
- * caches, or all of them, without touching downloaded romanization dictionaries.
+ * inspect and clear the Lyrics, Translation, Transliteration, AI section, card AI (story/keywords)
+ * and temporary offset caches, or all of them, without touching downloaded romanization dictionaries.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class LyricsClearCachePreference extends Preference {
@@ -157,6 +157,8 @@ public class LyricsClearCachePreference extends Preference {
                     str("morphe_music_lyrics_cache_transliteration_category_title"));
             final CardViews aiSectionCard = addBucketCard(context, cardsContainer,
                     str("morphe_music_lyrics_cache_ai_section_category_title"));
+            final CardViews cardAiCard = addBucketCard(context, cardsContainer,
+                    str("morphe_music_lyrics_cache_card_ai_category_title"));
             final CardViews offsetCard = addBucketCard(context, cardsContainer,
                     str("morphe_music_lyrics_cache_offset_category_title"));
             final CardViews totalCard = addTotalCard(context, cardsContainer,
@@ -201,6 +203,10 @@ public class LyricsClearCachePreference extends Preference {
                                 onCleared));
                 bindCard(aiSectionCard, CacheBucket.AI_SECTION, s.aiSection(),
                         () -> confirmAndClear(context, CacheBucket.AI_SECTION,
+                                currentStats[0], confirmOpen, clearingInProgress,
+                                onCleared));
+                bindCard(cardAiCard, CacheBucket.CARD_AI, s.cardAi(),
+                        () -> confirmAndClear(context, CacheBucket.CARD_AI,
                                 currentStats[0], confirmOpen, clearingInProgress,
                                 onCleared));
                 bindCard(offsetCard, CacheBucket.OFFSET, s.offset(),
@@ -250,6 +256,7 @@ public class LyricsClearCachePreference extends Preference {
             case TRANSLATION -> str("morphe_music_lyrics_cache_clear_translation_title");
             case TRANSLITERATION -> str("morphe_music_lyrics_cache_clear_transliteration_title");
             case AI_SECTION -> str("morphe_music_lyrics_cache_clear_ai_section_title");
+            case CARD_AI -> str("morphe_music_lyrics_cache_clear_card_ai_title");
             case OFFSET -> str("morphe_music_lyrics_cache_clear_offset_title");
             case ALL -> str("morphe_music_lyrics_cache_clear_all_title");
         };
@@ -258,6 +265,7 @@ public class LyricsClearCachePreference extends Preference {
             case TRANSLATION -> "morphe_music_lyrics_cache_confirm_translation";
             case TRANSLITERATION -> "morphe_music_lyrics_cache_confirm_transliteration";
             case AI_SECTION -> "morphe_music_lyrics_cache_confirm_ai_section";
+            case CARD_AI -> "morphe_music_lyrics_cache_confirm_card_ai";
             case OFFSET -> "morphe_music_lyrics_cache_confirm_offset";
             case ALL -> "morphe_music_lyrics_cache_confirm_all";
         };
@@ -405,6 +413,7 @@ public class LyricsClearCachePreference extends Preference {
             case TRANSLATION -> "morphe_music_lyrics_cache_translation_summary";
             case TRANSLITERATION -> "morphe_music_lyrics_cache_transliteration_summary";
             case AI_SECTION -> "morphe_music_lyrics_cache_ai_section_summary";
+            case CARD_AI -> "morphe_music_lyrics_cache_card_ai_summary";
             case OFFSET -> "morphe_music_lyrics_cache_offset_summary";
             case ALL -> "morphe_music_lyrics_cache_total_summary";
         };
