@@ -103,6 +103,13 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
         this(account, videoId, positionMilliseconds, kind, playlistId, usesKeptQueue, queue, null);
     }
 
+    @Nullable
+    Queue queueWhilePanelUnavailable(String currentPlaylistId, boolean reopenedSavedQueue) {
+        boolean samePlaylist = currentPlaylistId.isEmpty()
+                ? reopenedSavedQueue : currentPlaylistId.equals(playlistId);
+        return samePlaylist ? queue : null;
+    }
+
     boolean hadCaptionsEnabled() {
         return Boolean.TRUE.equals(captionsEnabled);
     }

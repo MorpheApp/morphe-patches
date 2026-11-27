@@ -93,6 +93,11 @@ public class PlaybackSessionStartupTest {
                 assertEquals(List.of(current, last, next, last), descriptor.queue);
                 assertEquals(12_345, descriptor.position);
                 assertTrue(descriptor.paused);
+                var restored = request.snapshot();
+                assertEquals(queue, restored.queueWhilePanelUnavailable("", true));
+                assertEquals(queue, restored.queueWhilePanelUnavailable(playlistId, false));
+                assertNull(restored.queueWhilePanelUnavailable("", false));
+                assertNull(restored.queueWhilePanelUnavailable("PL-other", true));
             } finally {
                 PlaybackSessionPatch.onRegularWatchCommand(new TestDescriptor(next));
             }
@@ -100,13 +105,19 @@ public class PlaybackSessionStartupTest {
     }
 
     @Test
-    public void opensLivePausedWithoutApplyingTheGenericSavedPosition() {
+    public void opensLivePausedWithoutApplyingTheGenericSavedPosition() throws Exception {
         String current = "abcdefghijk";
         var saved = new PlaybackSessionSnapshot("account", current, 12_345,
                 PlaybackSessionSnapshot.Kind.LIVE, "", false, null);
         var descriptor = new TestDescriptor(current);
         try {
             var request = new PlaybackSessionPatch.RestoreRequest(saved);
+            var command = new AtomicReference<byte[]>();
+            PlaybackSessionPatch.dispatchSavedWatch((bytes, context) -> {
+                command.set(bytes);
+                assertEquals(Boolean.TRUE, context.get("start_watch_minimized"));
+            }, request);
+            assertEquals(current, NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint().getVideoId());
             assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
             assertTrue(descriptor.paused);
             assertEquals(-1, descriptor.position);

@@ -51,7 +51,6 @@ import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.patches.ask.LiveStatusRequest;
 import app.morphe.extension.youtube.patches.queue.NativePlaylistQueuePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -293,11 +292,19 @@ public final class PlaybackSessionPatch {
             stream.write(bytes);
             storage.finishWrite(stream);
             saved = snapshot;
-            Logger.printDebug(() -> "Saved playback session at " + snapshot.positionMilliseconds() + " ms");
+            Logger.printDebug(() -> "Saved " + describeSession(snapshot)
+                    + " at " + snapshot.positionMilliseconds() + " ms");
         } catch (IOException | JSONException ex) {
             if (stream != null) storage.failWrite(stream);
             Logger.printException(() -> "Could not save the playback session", ex);
         }
+    }
+
+    private static String describeSession(PlaybackSessionSnapshot snapshot) {
+        var queue = snapshot.queue();
+        return "playback session (" + snapshot.kind()
+                + (queue == null ? "" : ", remaining queue items=" + (queue.videoIds().size() - queue.selectedIndex() - 1))
+                + ")";
     }
 
     public static void videoTimeChanged(long ignoredTime) {
@@ -347,10 +354,9 @@ public final class PlaybackSessionPatch {
                     && playlistId.equals(Settings.QUEUE_PLAYLIST_ID.get());
             var queue = usesKeptQueue || kind == PlaybackSessionSnapshot.Kind.SHORT
                     ? null : captureQueue(videoId, playlistId);
-            if (queue == null && !usesKeptQueue && sameSavedVideo && !playlistId.isEmpty()
-                    && playlistId.equals(saved.playlistId())) {
-                // The panel may already be detached when the activity stops.
-                queue = saved.queue();
+            if (queue == null && !usesKeptQueue && sameSavedVideo) {
+                // The native panel may be detached or still loading after the saved queue was reopened.
+                queue = saved.queueWhilePanelUnavailable(playlistId, showRestoredSessionFor(videoId));
             }
             CaptionSource captionSource = captions.get();
             Boolean captionsEnabled = sameSavedVideo ? saved.captionsEnabled() : null;
@@ -381,6 +387,11 @@ public final class PlaybackSessionPatch {
             Logger.printException(() -> "Could not capture the active playlist", ex);
             return null;
         }
+    }
+
+    private static boolean showRestoredSessionFor(String videoId) {
+        RestoredWatch watch = restoredWatch;
+        return watch != null && watch.videoId.equals(videoId);
     }
 
     /** Called before native code tears down a miniplayer explicitly closed by the user. */
@@ -570,24 +581,8 @@ public final class PlaybackSessionPatch {
                 return;
             }
             var request = beginRestore();
-            if (request == null) return;
-            if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) {
-                Utils.runOnBackgroundThread(() -> {
-                    Boolean live = LiveStatusRequest.fetch(snapshot.videoId());
-                    Utils.runOnMainThread(() -> {
-                        if (activity != owner.get() || restoring != request) return;
-                        if (Boolean.FALSE.equals(live)) {
-                            cancelStartup();
-                            update(null);
-                        } else {
-                            // The signed-in app can still open a stream when the status request fails.
-                            start(activity, router, request);
-                        }
-                    });
-                });
-            } else {
-                start(activity, router, request);
-            }
+            // The signed-in player is authoritative for livestream availability, including archived replays.
+            if (request != null) start(activity, router, request);
         } catch (Exception ex) {
             cancelStartup();
             Logger.printException(() -> "Could not restore playback session", ex);
@@ -618,7 +613,8 @@ public final class PlaybackSessionPatch {
                     cancelStartup();
                 }
             }, STARTUP_TIMEOUT_MS);
-            Logger.printDebug(() -> "Opening saved playback session at " + snapshot.positionMilliseconds() + " ms");
+            Logger.printDebug(() -> "Opening saved " + describeSession(snapshot)
+                    + " at " + snapshot.positionMilliseconds() + " ms");
             if (usesShortsPlayer(snapshot)) {
                 var uri = Uri.parse("https://www.youtube.com/shorts/" + snapshot.videoId());
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, uri).setPackage(activity.getPackageName()));
