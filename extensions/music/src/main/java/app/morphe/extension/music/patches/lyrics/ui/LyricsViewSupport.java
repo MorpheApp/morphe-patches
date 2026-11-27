@@ -257,6 +257,50 @@ final class LyricsViewSupport {
         footer.setAlpha(FOOTER_ALPHA);
     }
 
+    /**
+     * Bottom padding below the footer text so the last lines and credits stay clear of the pinned
+     * bottom controls without letting manual or automatic scroll push all text off-screen.
+     */
+    static int computeFooterBottomPaddingPx(
+            int viewportHeightPx,
+            int footerTopPaddingPx,
+            int footerContentHeightPx,
+            int containerBottomPaddingPx,
+            int anchorPx,
+            int minToolbarClearancePx,
+            int preferredToolbarClearancePx) {
+        final int safeMin = Math.max(0, minToolbarClearancePx);
+        final int safePreferred = Math.max(safeMin, preferredToolbarClearancePx);
+        if (viewportHeightPx <= 0) {
+            return safePreferred;
+        }
+        final int proportional = Math.round(viewportHeightPx * 0.25f);
+        final int toolbarRoom = Math.max(safeMin, Math.min(safePreferred, proportional));
+        final int maxAnchorRoom = Math.max(0,
+                viewportHeightPx - Math.max(0, anchorPx)
+                        - Math.max(0, footerTopPaddingPx)
+                        - Math.max(0, footerContentHeightPx)
+                        - Math.max(0, containerBottomPaddingPx));
+        return Math.min(toolbarRoom, Math.max(safeMin, maxAnchorRoom));
+    }
+
+    /**
+     * Clamps a desired scroll offset against the scrollable range, including any pending gap or
+     * secondary-vocal height changes that have not been committed by layout yet.
+     */
+    static int clampScrollTargetY(
+            int rawTargetY,
+            int viewportHeightPx,
+            int linesHeightPx,
+            int pendingDeltaPx) {
+        if (viewportHeightPx <= 0 || linesHeightPx <= 0) {
+            return Math.max(0, rawTargetY);
+        }
+        final int projectedLinesHeight = Math.max(0, linesHeightPx + pendingDeltaPx);
+        final int maxScroll = Math.max(0, projectedLinesHeight - viewportHeightPx);
+        return Math.max(0, Math.min(maxScroll, rawTargetY));
+    }
+
     static int lineTextSizeSp(boolean isBackground, int textSize) {
         return isBackground
                 ? Math.round(textSize * BACKGROUND_TEXT_SIZE_FACTOR)
