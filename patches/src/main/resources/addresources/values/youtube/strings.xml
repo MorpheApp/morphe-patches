@@ -1807,6 +1807,9 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_external_browser_title">Open links in browser</string>
     <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
 
+    <!-- misc.links.openSharedLinksPatch -->
+    <string name="morphe_open_shared_links_no_link">No YouTube link in the shared text</string>
+
     <!-- video.buffer.playbackBufferPatch -->
     <string name="morphe_playback_buffer_size_title">Playback buffer size</string>
     <string name="morphe_playback_buffer_size_entry_default">Default</string>
