@@ -1,3 +1,13 @@
+## [2.5.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v2.5.0-dev.1...v2.5.0-dev.2) (2026-11-27)
+
+### ✨ New Features
+
+* **YouTube - Shorts autoplay:** Add Autoplay toggle to the Shorts player menu ([#5448](https://github.com/MorpheApp/morphe-patches/issues/5448)) ([2bce34c](https://github.com/MorpheApp/morphe-patches/commit/2bce34cbd16640875b14259223a08870552ad2e6))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Open post images in fullscreen:** Fix crash when a feed has a post with images ([9c098c1](https://github.com/MorpheApp/morphe-patches/commit/9c098c17efdc2cb86bf9ccf9b41cff96441529ff))
+
 ## [2.5.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0...v2.5.0-dev.1) (2026-11-27)
 
 ### ✨ New Features

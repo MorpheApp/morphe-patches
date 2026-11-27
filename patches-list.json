@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.5.0-dev.1",
+  "version": "2.5.0-dev.2",
   "patches": [
     {
       "name": "A-B loop",
@@ -17287,7 +17287,7 @@
     },
     {
       "name": "Shorts autoplay",
-      "description": "Adds options to automatically play the next Short.",
+      "description": "Adds options to automatically play the next Short, and a Shorts player menu item to turn it on or off.",
       "default": true,
       "category": null,
       "compatiblePackages": [
