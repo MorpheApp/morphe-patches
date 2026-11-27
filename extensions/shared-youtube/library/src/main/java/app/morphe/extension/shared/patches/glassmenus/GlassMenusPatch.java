@@ -35,6 +35,7 @@ import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.ListPopupWindow;
 import android.widget.PopupWindow;
 
@@ -854,7 +855,9 @@ public final class GlassMenusPatch {
         private void removeMenuBackgrounds(View parent) {
             if (!(parent instanceof ViewGroup group)) return;
 
-            final int minWidth = anyColor ? 0 : view.getWidth() / 2;
+            // The rows of a list are fills of the menu at any width, such as the rows of a choice dialog,
+            // which are only as wide as their text.
+            final int minWidth = anyColor || group instanceof AbsListView ? 0 : view.getWidth() / 2;
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 View child = group.getChildAt(i);
                 Drawable background = child.getBackground();
