@@ -1822,6 +1822,10 @@ public final class MinimalMiniplayerPatch {
         return true;
     }
 
+    public static void refreshPlaybackButton() {
+        if (ENABLED) updatePlayPauseIcon(false);
+    }
+
     /**
      * @param morph Whether the state changed while the bar was up, which is the only time
      *              animating the icon makes sense.
@@ -1830,11 +1834,12 @@ public final class MinimalMiniplayerPatch {
         ImageView playPause = playPauseRef.get();
         if (playPause == null) return;
         boolean restored = PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.getCurrent());
-        boolean showPause = playing && !restored;
+        boolean forcePlay = restored && PlaybackSessionPatch.restoredWatchAwaitingPlayback();
+        boolean showPause = playing && !forcePlay;
         if (restored) playPause.setVisibility(View.VISIBLE);
         playPause.setContentDescription(StringRef.str(showPause ? "accessibility_pause" : "accessibility_play"));
 
-        if (morph && !restored) {
+        if (morph && !forcePlay) {
             // The app ships the drawable its own player uses to morph between the two icons.
             final String name = showPause
                     ? "player_play_pause_vector_transition"

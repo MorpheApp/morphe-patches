@@ -23,7 +23,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.PlayPauseIcons;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
-/** Uses the native modern overlay while a restored video is waiting to play. */
+/** Keeps the native modern controls visible for the restored video. */
 public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreDrawListener,
         View.OnAttachStateChangeListener {
     private static volatile WeakReference<RestoredMiniplayerControls> current = new WeakReference<>(null);
@@ -36,6 +36,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
     @Nullable private CharSequence nativeDescription;
     private int nativeOverlayVisibility, nativeActionVisibility;
     private float nativeActionAlpha;
+    private boolean forcingPlay;
     private String playDescription = "";
     @Nullable private LocaleList displayLocales;
 
@@ -76,8 +77,6 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
             int iconId = ResourceUtils.getDrawableIdentifier("player_play");
             if (playIcon == null && iconId != 0) playIcon = action.getContext().getDrawable(iconId);
             updatePlayDescription();
-            nativeIcon = action.getDrawable();
-            nativeDescription = action.getContentDescription();
             nativeOverlayVisibility = overlay.getVisibility();
             nativeActionVisibility = action.getVisibility();
             nativeActionAlpha = action.getAlpha();
@@ -108,19 +107,39 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
         if (overlay.getVisibility() != View.VISIBLE) nativeOverlayVisibility = overlay.getVisibility();
         if (action.getVisibility() != View.VISIBLE) nativeActionVisibility = action.getVisibility();
         if (action.getAlpha() != 1f) nativeActionAlpha = action.getAlpha();
-        if (playIcon != null && action.getDrawable() != playIcon) nativeIcon = action.getDrawable();
-        if (!playDescription.equals(action.getContentDescription())) nativeDescription = action.getContentDescription();
-        updatePlayDescription();
-        showPaused(overlay, action, playIcon, playDescription);
+        if (PlaybackSessionPatch.restoredWatchAwaitingPlayback()) {
+            if (!forcingPlay || action.getDrawable() != playIcon) nativeIcon = action.getDrawable();
+            if (!forcingPlay || !playDescription.equals(action.getContentDescription())) {
+                nativeDescription = action.getContentDescription();
+            }
+            forcingPlay = true;
+            updatePlayDescription();
+            showControls(overlay, action, playIcon, playDescription);
+        } else {
+            restoreNativeIcon();
+            showControls(overlay, action, null, null);
+        }
         return true;
     }
 
-    static void showPaused(View overlay, ImageView action, @Nullable Drawable play, CharSequence playDescription) {
+    static void showControls(View overlay, ImageView action, @Nullable Drawable play,
+                             @Nullable CharSequence playDescription) {
         if (overlay.getVisibility() != View.VISIBLE) overlay.setVisibility(View.VISIBLE);
         if (play != null && action.getDrawable() != play) action.setImageDrawable(play);
-        if (!playDescription.equals(action.getContentDescription())) action.setContentDescription(playDescription);
+        if (playDescription != null && !playDescription.equals(action.getContentDescription())) {
+            action.setContentDescription(playDescription);
+        }
         if (action.getVisibility() != View.VISIBLE) action.setVisibility(View.VISIBLE);
         if (action.getAlpha() != 1f) action.setAlpha(1f);
+    }
+
+    private void restoreNativeIcon() {
+        if (!forcingPlay) return;
+        forcingPlay = false;
+        if (playIcon != null && action.getDrawable() == playIcon) action.setImageDrawable(nativeIcon);
+        if (playDescription.equals(action.getContentDescription())) {
+            action.setContentDescription(nativeDescription);
+        }
     }
 
     private void stop() {
@@ -128,10 +147,7 @@ public final class RestoredMiniplayerControls implements ViewTreeObserver.OnPreD
         if (observer.isAlive()) observer.removeOnPreDrawListener(this);
         observer = null;
         displayLocales = null;
-        if (playIcon != null && action.getDrawable() == playIcon) action.setImageDrawable(nativeIcon);
-        if (playDescription.equals(action.getContentDescription())) {
-            action.setContentDescription(nativeDescription);
-        }
+        restoreNativeIcon();
         if (action.getVisibility() == View.VISIBLE) action.setVisibility(nativeActionVisibility);
         if (action.getAlpha() == 1f) action.setAlpha(nativeActionAlpha);
         if (overlay.getVisibility() == View.VISIBLE) overlay.setVisibility(nativeOverlayVisibility);

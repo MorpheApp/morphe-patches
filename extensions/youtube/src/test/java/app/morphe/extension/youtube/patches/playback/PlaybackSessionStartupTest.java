@@ -111,10 +111,12 @@ public class PlaybackSessionStartupTest {
         var pending = PlaybackSessionPatch.class.getDeclaredField("checkingStartup");
         var callbacks = PlaybackSessionPatch.class.getDeclaredField("LIFECYCLE");
         var initialized = PlaybackSessionPatch.class.getDeclaredField("initialized");
+        var restoredWatch = PlaybackSessionPatch.class.getDeclaredField("restoredWatch");
         saved.setAccessible(true);
         pending.setAccessible(true);
         callbacks.setAccessible(true);
         initialized.setAccessible(true);
+        restoredWatch.setAccessible(true);
         var lifecycle = (Application.ActivityLifecycleCallbacks) callbacks.get(null);
         var previousSnapshot = saved.get(null);
         boolean wasInitialized = initialized.getBoolean(null);
@@ -160,6 +162,25 @@ public class PlaybackSessionStartupTest {
             assertTrue(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
             assertFalse(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MAXIMIZED));
             assertPausedControls(secondLaunch);
+
+            var watchState = (PlaybackSessionPatch.RestoredWatch) restoredWatch.get(null);
+            assertTrue(PlaybackSessionPatch.restoredWatchAwaitingPlayback());
+            assertEquals(0, watchState.onPlayerTypeChanged(PlayerType.WATCH_WHILE_MINIMIZED, 0));
+            long firstDeadline = watchState.onPlayerTypeChanged(PlayerType.WATCH_WHILE_MAXIMIZED, 100);
+            assertTrue(watchState.canPlayOnExpand(PlayerType.WATCH_WHILE_MAXIMIZED, firstDeadline, 2_850));
+            assertFalse(watchState.canPlayOnExpand(PlayerType.WATCH_WHILE_MAXIMIZED, firstDeadline, firstDeadline));
+            watchState.onPlayerTypeChanged(PlayerType.WATCH_WHILE_MINIMIZED, firstDeadline + 1);
+            assertTrue(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
+
+            long secondDeadline = watchState.onPlayerTypeChanged(PlayerType.WATCH_WHILE_MAXIMIZED, firstDeadline + 100);
+            watchState.onPlayRequested();
+            assertFalse(watchState.canPlayOnExpand(PlayerType.WATCH_WHILE_MAXIMIZED, secondDeadline, firstDeadline + 101));
+            watchState.startedPlaying = true;
+            watchState.onPlayerTypeChanged(PlayerType.WATCH_WHILE_MINIMIZED, firstDeadline + 200);
+            assertTrue(PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.WATCH_WHILE_MINIMIZED));
+            assertFalse(PlaybackSessionPatch.restoredWatchAwaitingPlayback());
+            assertPlayingControls(secondLaunch);
+
             var captionSource = new TestCaptionSource(recorded.videoId());
             assertTrue(PlaybackSessionPatch.restoreCaptionPreference(true, new TestCaptionSource("lmnopqrstuv"), () -> true));
             assertTrue(PlaybackSessionPatch.restoreCaptionPreference(false, captionSource, () -> false));
@@ -196,12 +217,24 @@ public class PlaybackSessionStartupTest {
         var overlay = new TestOverlay(context);
         var action = new TestAction(context);
         var play = new ColorDrawable();
-        RestoredMiniplayerControls.showPaused(overlay, action, play, "Phát");
+        RestoredMiniplayerControls.showControls(overlay, action, play, "Phát");
         assertEquals(View.VISIBLE, overlay.getVisibility());
         assertEquals(View.VISIBLE, action.getVisibility());
         assertEquals(1f, action.getAlpha(), 0f);
         assertSame(play, action.getDrawable());
         assertEquals("Phát", action.getContentDescription());
+    }
+
+    private static void assertPlayingControls(Context context) {
+        var overlay = new TestOverlay(context);
+        var action = new TestAction(context);
+        var pause = new ColorDrawable();
+        action.setImageDrawable(pause);
+        RestoredMiniplayerControls.showControls(overlay, action, null, null);
+        assertEquals(View.VISIBLE, overlay.getVisibility());
+        assertEquals(View.VISIBLE, action.getVisibility());
+        assertSame(pause, action.getDrawable());
+        assertEquals("Tạm dừng", action.getContentDescription());
     }
 
     private static final class TestAction extends ImageView {

@@ -48,6 +48,7 @@ import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEn
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.CommandRouterPatch;
 import app.morphe.extension.youtube.patches.CommandRouterPatch.CommandRouter;
+import app.morphe.extension.youtube.patches.MinimalMiniplayerPatch;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
@@ -65,6 +66,7 @@ public final class PlaybackSessionPatch {
     private static final long SAVE_INTERVAL_MS = 5_000;
     private static final long STARTUP_TIMEOUT_MS = 10_000;
     private static final long STARTUP_POLL_MS = 250;
+    private static final long EXPANDED_PLAY_TIMEOUT_MS = 5_000;
 
     public interface Descriptor {
         String patch_sessionVideoId();
@@ -91,6 +93,41 @@ public final class PlaybackSessionPatch {
 
     // The router can queue a command. Give each attempt its own identity, even for the same saved video.
     record RestoreRequest(PlaybackSessionSnapshot snapshot) {}
+
+    static final class RestoredWatch {
+        final String videoId;
+        volatile boolean startedPlaying;
+        private boolean wasMinimized;
+        private boolean playRequested;
+        private long playDeadline;
+
+        RestoredWatch(String videoId) {
+            this.videoId = videoId;
+        }
+
+        long onPlayerTypeChanged(PlayerType type, long now) {
+            if (type == PlayerType.WATCH_WHILE_MINIMIZED) {
+                wasMinimized = true;
+                playDeadline = 0;
+            } else if (wasMinimized && type.isMaximizedOrFullscreen()) {
+                wasMinimized = false;
+                if (!startedPlaying && !playRequested) {
+                    playDeadline = now + EXPANDED_PLAY_TIMEOUT_MS;
+                    return playDeadline;
+                }
+            }
+            return 0;
+        }
+
+        boolean canPlayOnExpand(PlayerType type, long deadline, long now) {
+            return playDeadline == deadline && now < deadline && type.isMaximizedOrFullscreen()
+                    && !startedPlaying && !playRequested;
+        }
+
+        void onPlayRequested() {
+            playRequested = true;
+        }
+    }
 
     enum StartupPlayer {
         AVAILABLE, TRANSITIONING, OPEN
@@ -134,13 +171,12 @@ public final class PlaybackSessionPatch {
     @Nullable private static PlaybackSessionSnapshot saved;
     @Nullable private static RestoreRequest restoring;
     @Nullable private static String dismissedVideo;
-    @Nullable private static volatile String restoringMinimizedVideo;
+    @Nullable private static volatile RestoredWatch restoredWatch;
     @Nullable private static volatile PlaybackSessionSnapshot restoringCaptions;
     @Nullable private static volatile String restoredShort;
     @Nullable private static String restoredLive;
     private static boolean initialized;
     private static boolean checkingStartup;
-    private static boolean restoreWasMinimized;
     private static boolean miniplayerTouchReleased;
     private static long startupDeadline;
     private static long lastSaveTime;
@@ -170,6 +206,7 @@ public final class PlaybackSessionPatch {
             saved = read();
             activity.getApplication().registerActivityLifecycleCallbacks(LIFECYCLE);
             PlayerType.getOnChange().addObserver(PlaybackSessionPatch::playerTypeChanged);
+            VideoInformation.onVideoIdChange.addObserver(PlaybackSessionPatch::onVideoChanged);
             initialized = true;
         }
 
@@ -397,22 +434,47 @@ public final class PlaybackSessionPatch {
     }
 
     public static void onPlayerStatus(@Nullable Enum<?> status) {
-        if (restoredShort != null && status != null && "VIDEO_PLAYING".equals(status.name())
-                && restoredShort.equals(VideoInformation.getVideoId())) {
+        if (status == null || !"VIDEO_PLAYING".equals(status.name())) return;
+        String videoId = VideoInformation.getVideoId();
+        if (restoredShort != null && restoredShort.equals(videoId)) {
             restoredShort = null;
         }
+        var watch = restoredWatch;
         PlayerType type = PlayerType.getCurrent();
-        if (restoringMinimizedVideo != null && status != null && "VIDEO_PLAYING".equals(status.name())
+        if (watch != null && !watch.startedPlaying && watch.videoId.equals(videoId)
                 && !type.isNoneOrHidden() && type != PlayerType.INLINE_MINIMAL
-                && restoringMinimizedVideo.equals(VideoInformation.getVideoId())) {
-            restoringMinimizedVideo = null;
-            RestoredMiniplayerControls.refresh();
-            RestoredMiniplayerLabel.refresh();
+                && !ShortsPlayerState.isOpen()) {
+            restoredWatchStartedPlaying(watch);
         }
     }
 
+    private static void restoredWatchStartedPlaying(RestoredWatch watch) {
+        watch.startedPlaying = true;
+        RestoredMiniplayerControls.refresh();
+        Utils.runOnMainThreadNowOrLater(() -> {
+            if (restoredWatch == watch) MinimalMiniplayerPatch.refreshPlaybackButton();
+        });
+    }
+
+    private static void onVideoChanged(String videoId) {
+        var watch = restoredWatch;
+        if (watch == null || watch.videoId.equals(videoId)) return;
+        Utils.runOnMainThreadNowOrLater(() -> {
+            PlayerType type = PlayerType.getCurrent();
+            if (restoredWatch == watch && videoId.equals(VideoInformation.getVideoId())
+                    && !type.isNoneOrHidden() && type != PlayerType.INLINE_MINIMAL && !ShortsPlayerState.isOpen()) {
+                clearRestoredWatch();
+            }
+        });
+    }
+
     public static boolean showRestoredMiniplayer(PlayerType type) {
-        return restoringMinimizedVideo != null && type == PlayerType.WATCH_WHILE_MINIMIZED;
+        return restoredWatch != null && type == PlayerType.WATCH_WHILE_MINIMIZED;
+    }
+
+    public static boolean restoredWatchAwaitingPlayback() {
+        var watch = restoredWatch;
+        return watch != null && !watch.startedPlaying;
     }
 
     @Nullable
@@ -597,6 +659,9 @@ public final class PlaybackSessionPatch {
         try {
             if (context == null || !(context.get(RESTORE_CONTEXT) instanceof RestoreRequest request)) {
                 if (!enabled()) return original;
+                var watch = restoredWatch;
+                if (watch != null && original instanceof Descriptor descriptor
+                        && watch.videoId.equals(descriptor.patch_sessionVideoId())) return original;
                 if (checkingStartup || restoring != null) {
                     Logger.printDebug(() -> "Playback session restore canceled by another watch command");
                 }
@@ -636,9 +701,8 @@ public final class PlaybackSessionPatch {
             descriptor.patch_setSessionPosition(snapshot.positionMilliseconds());
         }
         if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) restoredLive = snapshot.videoId();
-        restoringMinimizedVideo = snapshot.videoId();
+        restoredWatch = new RestoredWatch(snapshot.videoId());
         restoringCaptions = snapshot;
-        restoreWasMinimized = false;
         restoring = null;
         RestoredMiniplayerLabel.refresh();
         return descriptor;
@@ -669,39 +733,44 @@ public final class PlaybackSessionPatch {
         RestoredMiniplayerControls.refresh();
         RestoredMiniplayerLabel.refresh();
         Utils.runOnMainThreadNowOrLater(() -> {
-            String videoId = restoringMinimizedVideo;
-            if (videoId == null) return;
-            if (type == PlayerType.WATCH_WHILE_MINIMIZED) {
-                restoreWasMinimized = true;
-            } else if (restoreWasMinimized && type.isMaximizedOrFullscreen()) {
-                restoreWasMinimized = false;
-                playExpandedVideo(videoId, SystemClock.elapsedRealtime() + 2_000);
-            }
+            var watch = restoredWatch;
+            if (watch == null || type != PlayerType.getCurrent()) return;
+            long deadline = watch.onPlayerTypeChanged(type, SystemClock.elapsedRealtime());
+            if (deadline != 0) playExpandedVideo(watch, deadline);
         });
     }
 
-    private static void playExpandedVideo(String videoId, long deadline) {
+    private static void playExpandedVideo(RestoredWatch watch, long deadline) {
         try {
-            if (!enabled() || !videoId.equals(restoringMinimizedVideo)) return;
-            if (!PlayerType.getCurrent().isMaximizedOrFullscreen() || SystemClock.elapsedRealtime() >= deadline) {
-                restoringMinimizedVideo = null;
-                return;
-            }
+            if (!enabled() || restoredWatch != watch || !watch.canPlayOnExpand(
+                    PlayerType.getCurrent(), deadline, SystemClock.elapsedRealtime())) return;
             MediaSession session = mediaSession.get();
-            if (videoId.equals(VideoInformation.getVideoId()) && session != null && session.isActive()) {
+            if (watch.videoId.equals(VideoInformation.getVideoId()) && session != null && session.isActive()) {
                 var controller = session.getController();
                 PlaybackState state = controller.getPlaybackState();
                 if (state != null && state.getState() == PlaybackState.STATE_PAUSED) {
-                    restoringMinimizedVideo = null;
                     controller.getTransportControls().play();
+                    watch.onPlayRequested();
+                    return;
+                }
+                if (state != null && state.getState() == PlaybackState.STATE_PLAYING) {
+                    restoredWatchStartedPlaying(watch);
                     return;
                 }
             }
-            Utils.runOnMainThreadDelayed(() -> playExpandedVideo(videoId, deadline), STARTUP_POLL_MS);
+            Utils.runOnMainThreadDelayed(() -> playExpandedVideo(watch, deadline), STARTUP_POLL_MS);
         } catch (Exception ex) {
-            restoringMinimizedVideo = null;
             Logger.printException(() -> "Could not play the expanded session", ex);
         }
+    }
+
+    private static void clearRestoredWatch() {
+        if (restoredWatch != null) {
+            restoredWatch = null;
+            OpenVideosFullscreenHookPatch.keepVideoMinimized(null);
+        }
+        RestoredMiniplayerControls.refresh();
+        RestoredMiniplayerLabel.refresh();
     }
 
     private static void cancelStartup() {
@@ -711,12 +780,7 @@ public final class PlaybackSessionPatch {
         restoringCaptions = null;
         restoredLive = null;
         restoredShort = null;
-        if (restoringMinimizedVideo != null) {
-            restoringMinimizedVideo = null;
-            OpenVideosFullscreenHookPatch.keepVideoMinimized(null);
-        }
-        RestoredMiniplayerControls.refresh();
-        RestoredMiniplayerLabel.refresh();
+        clearRestoredWatch();
     }
 
     private PlaybackSessionPatch() {}
