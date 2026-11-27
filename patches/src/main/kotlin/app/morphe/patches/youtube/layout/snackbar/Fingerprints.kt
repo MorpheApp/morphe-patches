@@ -153,3 +153,17 @@ internal object MealbarFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Draws the text of a Litho text component.
+ */
+internal object LithoTextDrawableDrawFingerprint : Fingerprint(
+    name = "draw",
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Canvas;"),
+    filters = listOf(
+        methodCall(
+            smali = "Landroid/text/Layout;->draw(Landroid/graphics/Canvas;Landroid/graphics/Path;Landroid/graphics/Paint;I)V"
+        )
+    )
+)

@@ -13,6 +13,8 @@ import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.text.Layout;
+import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -283,6 +285,50 @@ public final class SnackbarPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setLithoTextColor failure", ex);
             return text;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called before every Litho text is drawn. Some snackbar texts are not colored when they are
+     * created, such as "Comment added" in Shorts, and keep the text color of the original snackbar,
+     * so every text drawn inside the Litho snackbar gets the color for the custom background.
+     */
+    public static void setLithoTextDrawColor(Drawable textDrawable, Layout layout, CharSequence text) {
+        if (!CUSTOM_THEME || layout == null) {
+            return;
+        }
+
+        try {
+            View snackbar = lithoSnackbarRef.get();
+            if (snackbar == null) {
+                return;
+            }
+
+            View view = getDrawableView(textDrawable);
+            while (view != null && view != snackbar) {
+                view = view.getParent() instanceof View parent ? parent : null;
+            }
+            if (view == null) {
+                return;
+            }
+
+            final int textColor = getTextColor(getBackgroundColor());
+            layout.getPaint().setColor(textColor);
+            // The layout can draw a wrapper of the text, such as when it is ellipsized,
+            // which draws the color spans of the text itself.
+            if (text instanceof Spannable spannable) {
+                for (ForegroundColorSpan span : spannable.getSpans(0, spannable.length(), ForegroundColorSpan.class)) {
+                    if (span.getForegroundColor() != textColor) {
+                        spannable.setSpan(new ForegroundColorSpan(textColor), spannable.getSpanStart(span),
+                                spannable.getSpanEnd(span), spannable.getSpanFlags(span));
+                        spannable.removeSpan(span);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setLithoTextDrawColor failure", ex);
         }
     }
 

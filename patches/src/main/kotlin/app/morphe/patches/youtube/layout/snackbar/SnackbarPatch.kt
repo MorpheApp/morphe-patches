@@ -153,6 +153,22 @@ val snackbarPatch = patch(
 
         hookSpannableStringResult(EXTENSION_CLASS_DESCRIPTOR, "setLithoTextColor")
 
+        // Texts that are not colored when they are created are colored when they are drawn.
+        LithoTextDrawableDrawFingerprint.let {
+            val fields = it.classDef.fields
+            val layoutField = fields.single { field -> field.type == "Landroid/text/Layout;" }
+            val textField = fields.single { field -> field.type == "Ljava/lang/CharSequence;" }
+
+            it.method.addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $layoutField
+                    iget-object v1, p0, $textField
+                    invoke-static { p0, v0, v1 }, $EXTENSION_CLASS_DESCRIPTOR->setLithoTextDrawColor(Landroid/graphics/drawable/Drawable;Landroid/text/Layout;Ljava/lang/CharSequence;)V
+                """
+            )
+        }
+
         // endregion
     }
 }
