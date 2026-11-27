@@ -37,3 +37,14 @@ internal object CustomPostFeedElementConstructorFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V"
 )
+
+/**
+ * The public link id method of the base class of all feed elements,
+ * which is the superclass of [CustomPostFeedElementConstructorFingerprint].
+ */
+internal object FeedElementGetLinkIdFingerprint : Fingerprint(
+    definingClass = { CustomPostFeedElementConstructorFingerprint.originalClassDef.superclass!! },
+    name = "getLinkId",
+    returnType = { "Ljava/lang/String;" },
+    parameters = { emptyList() }
+)

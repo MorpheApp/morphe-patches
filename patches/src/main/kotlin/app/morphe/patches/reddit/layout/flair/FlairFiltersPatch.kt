@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.layout.flair
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
@@ -63,12 +62,7 @@ val flairFiltersPatch = patch(
         )
 
         // The base class of all feed elements has a public link id method.
-        Fingerprint(
-            definingClass = PostFlairsElementToStringFingerprint.originalClassDef.superclass!!,
-            name = "getLinkId",
-            parameters = listOf(),
-            returnType = "Ljava/lang/String;"
-        ).classDef.interfaces.add(FEED_ELEMENT_INTERFACE)
+        FeedElementGetLinkIdFingerprint.classDef.interfaces.add(FEED_ELEMENT_INTERFACE)
 
         // Flairs of feed posts, and of the full posts that Reddit loads after a feed page is shown.
         PostFlairFeedPresentationModelConstructorFingerprint.let {

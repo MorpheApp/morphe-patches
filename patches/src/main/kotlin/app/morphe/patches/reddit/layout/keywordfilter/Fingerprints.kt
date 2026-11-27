@@ -60,6 +60,17 @@ internal object PostTitleElementToStringFingerprint : Fingerprint(
     )
 )
 
+/**
+ * The public link id method of the base class of all feed elements,
+ * which is the superclass of [PostTitleElementToStringFingerprint].
+ */
+internal object FeedElementGetLinkIdFingerprint : Fingerprint(
+    definingClass = { PostTitleElementToStringFingerprint.originalClassDef.superclass!! },
+    name = "getLinkId",
+    returnType = { "Ljava/lang/String;" },
+    parameters = { emptyList() }
+)
+
 internal object PostTitleElementConstructorFingerprint : Fingerprint(
     classFingerprint = PostTitleElementToStringFingerprint,
     name = "<init>",

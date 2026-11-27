@@ -118,8 +118,9 @@ internal object CommunityDrawerBuildListFingerprint : Fingerprint(
 
 /**
  * Presenter method that handles the click of a sidebar item.
+ * It casts the item to the row type of [CtaItemUiModelToStringFingerprint].
  */
-internal class CommunityDrawerItemClickFingerprint(ctaItemType: String) : Fingerprint(
+internal object CommunityDrawerItemClickFingerprint : Fingerprint(
     classFingerprint = CommunityDrawerBuildListFingerprint,
     returnType = "V",
     parameters = listOf("L"),
@@ -129,7 +130,7 @@ internal class CommunityDrawerItemClickFingerprint(ctaItemType: String) : Finger
             definingClass = "this",
             type = COMMUNITY_DRAWER_SCREEN_CLASS
         ),
-        checkCast(ctaItemType),
+        checkCast({ CtaItemUiModelToStringFingerprint.originalClassDef.type }),
         // Closes the sidebar.
         methodCall(
             definingClass = COMMUNITY_DRAWER_SCREEN_CLASS,

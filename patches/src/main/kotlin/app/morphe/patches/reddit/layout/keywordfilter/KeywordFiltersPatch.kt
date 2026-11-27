@@ -66,12 +66,7 @@ val keywordFiltersPatch = patch(
         }
 
         // The base class of all feed elements has a public link id method.
-        Fingerprint(
-            definingClass = PostTitleElementToStringFingerprint.originalClassDef.superclass!!,
-            name = "getLinkId",
-            parameters = listOf(),
-            returnType = "Ljava/lang/String;"
-        ).classDef.interfaces.add(FEED_ELEMENT_INTERFACE)
+        FeedElementGetLinkIdFingerprint.classDef.interfaces.add(FEED_ELEMENT_INTERFACE)
 
         /**
          * After each field is set, passes the feed element and the field value to an extension method.

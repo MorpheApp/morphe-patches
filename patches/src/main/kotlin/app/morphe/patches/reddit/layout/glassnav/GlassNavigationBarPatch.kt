@@ -389,7 +389,6 @@ val glassNavigationBarPatch = patch(
             // Tabs in top bar.
 
             val tabRowCallMatch = HomeTabBarFingerprint.instructionMatches[1]
-            val tabRowCall = tabRowCallMatch.methodReference
 
             HomeTabBarFingerprint.method.apply {
                 val pagerRegister = tabRowCallMatch.instruction.registersUsed[1]
@@ -418,8 +417,7 @@ val glassNavigationBarPatch = patch(
                 """
             )
 
-            val indicatorFingerprint = tabRowIndicatorFingerprint(tabRowCall.definingClass)
-            val roundedCornerShapeMethod = indicatorFingerprint.instructionMatches[1].methodReference
+            val roundedCornerShapeMethod = TabRowIndicatorFingerprint.instructionMatches[1].methodReference
 
             NewRoundedCornerShapeFingerprint.method.addFreeRegisters(1).first.addInstructions(
                 0,
@@ -430,10 +428,7 @@ val glassNavigationBarPatch = patch(
                 """
             )
 
-            tabRowIndicatorCallerFingerprint(
-                tabRowCall.parameterTypes[1].toString(),
-                indicatorFingerprint.method
-            ).matchAll().forEach { match ->
+            TabRowIndicatorCallerFingerprint.matchAll().forEach { match ->
                 match.method.apply {
                     val pagerRegister = match.instructionMatches[0].instruction.registersUsed[0]
                     val indicatorMatch = match.instructionMatches[1]
@@ -455,10 +450,7 @@ val glassNavigationBarPatch = patch(
                 }
             }
 
-            homeTabBarHeightCallerFingerprint(
-                HomeTabBarHeightFingerprint.method,
-                HomeTabBarFingerprint.classDef.type
-            ).matchAll().forEach { match ->
+            HomeTabBarHeightCallerFingerprint.matchAll().forEach { match ->
                 match.method.apply {
                     val moveResultMatch = match.instructionMatches[1]
                     val heightRegister = moveResultMatch.instruction.registersUsed[0]

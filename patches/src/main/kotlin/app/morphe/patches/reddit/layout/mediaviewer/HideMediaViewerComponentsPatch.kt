@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.layout.mediaviewer
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -144,10 +143,7 @@ val hideMediaViewerComponentsPatch = patch(
                 }
             }
 
-            Fingerprint(
-                definingClass = EXTENSION_CLASS,
-                name = "isHideOverlayIncluded"
-            ).method.returnEarly(true)
+            IsHideOverlayIncludedFingerprint.method.returnEarly(true)
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

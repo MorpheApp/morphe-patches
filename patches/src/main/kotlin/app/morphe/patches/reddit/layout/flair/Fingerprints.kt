@@ -63,6 +63,17 @@ internal object PostFlairsElementToStringFingerprint : Fingerprint(
     )
 )
 
+/**
+ * The public link id method of the base class of all feed elements,
+ * which is the superclass of [PostFlairsElementToStringFingerprint].
+ */
+internal object FeedElementGetLinkIdFingerprint : Fingerprint(
+    definingClass = { PostFlairsElementToStringFingerprint.originalClassDef.superclass!! },
+    name = "getLinkId",
+    returnType = { "Ljava/lang/String;" },
+    parameters = { emptyList() }
+)
+
 internal object PostFlairsSectionToStringFingerprint : Fingerprint(
     name = "toString",
     parameters = listOf(),

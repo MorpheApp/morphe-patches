@@ -7,13 +7,13 @@
 
 package app.morphe.patches.reddit.layout.trending
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
@@ -98,8 +98,8 @@ val hideTrendingShelvesPatch = patch(
 
         // region patch for hide trending contents.
 
-        fun Fingerprint.applyHideTrending() {
-            method.addInstructionsWithLabels(
+        fun MutableMethod.applyHideTrending() {
+            addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { }, $EXTENSION_CLASS->hideTrendingShelf()Z
@@ -112,11 +112,11 @@ val hideTrendingShelvesPatch = patch(
             )
         }
 
-        TrendingItemFingerprint.applyHideTrending()
-
-        if (!is_2026_11_0_or_greater) {
-            // Legacy seems to be removed in 2026.11.0+
-            TrendingItemLegacyFingerprint.applyHideTrending()
+        if (is_2026_11_0_or_greater) {
+            TrendingItemFingerprint.method.applyHideTrending()
+        } else {
+            // The typeahead suggestions have their own trending item before 2026.11.0.
+            TrendingItemFingerprint.matchAll().forEach { it.method.applyHideTrending() }
         }
 
         TypeaheadSuggestionItemFingerprint.method.addInstructionsWithLabels(
@@ -132,8 +132,8 @@ val hideTrendingShelvesPatch = patch(
         )
 
         if (is_2026_21_0_or_greater) {
-            TrendingFeedUnitSectionFingerprint.applyHideTrending()
-            TrendingFeedUnitDismissedSectionFingerprint.applyHideTrending()
+            TrendingFeedUnitSectionFingerprint.method.applyHideTrending()
+            TrendingFeedUnitDismissedSectionFingerprint.method.applyHideTrending()
         }
 
         // endregion

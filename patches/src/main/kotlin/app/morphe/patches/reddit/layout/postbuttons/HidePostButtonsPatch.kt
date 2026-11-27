@@ -259,10 +259,7 @@ private fun hideActionBarButtons() {
         }
     }
 
-    Fingerprint(
-        definingClass = EXTENSION_CLASS,
-        name = "isActionBarIncluded"
-    ).method.returnEarly(true)
+    IsActionBarIncludedFingerprint.method.returnEarly(true)
 }
 
 private fun hideCounts() {

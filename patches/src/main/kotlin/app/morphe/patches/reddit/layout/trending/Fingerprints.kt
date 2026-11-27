@@ -64,15 +64,11 @@ internal object SearchSectionHeaderFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Trending item of the search suggestions.
+ * Before 2026.11.0 the typeahead suggestions have a second method with the same test tag.
+ */
 internal object TrendingItemFingerprint : Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        string("search_trending_item")
-    )
-)
-
-internal object TrendingItemLegacyFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/typeahead/ui/zerostate/composables",
     returnType = "V",
     filters = listOf(
         string("search_trending_item")

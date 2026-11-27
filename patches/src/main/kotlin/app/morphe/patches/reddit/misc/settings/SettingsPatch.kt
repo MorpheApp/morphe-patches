@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.misc.settings
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -17,7 +16,6 @@ import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
-import app.morphe.patcher.string
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -272,28 +270,8 @@ val settingsPatch = patch(
         }
 
         PreferenceDestinationLegacyFingerprint.let {
-            // Fragment.requireActivity()
-            val getActivityMethod = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                returnType = RedditActivityFingerprint.originalClassDef.type,
-                parameters = listOf(),
-                filters = listOf(
-                    string(" not attached to an activity.")
-                )
-            ).method
-
-            val startActivityMethod = Fingerprint(
-                definingClass = getActivityMethod.definingClass,
-                returnType = "V",
-                parameters = listOf(
-                    "Landroid/content/Intent",
-                    "I",
-                    "Landroid/os/Bundle;"
-                ),
-                filters = listOf(
-                    string(" not attached to Activity"),
-                )
-            ).method
+            val getActivityMethod = FragmentRequireActivityFingerprint.method
+            val startActivityMethod = FragmentStartActivityForResultFingerprint.method
 
             it.method.cloneParameters().addInstructionsWithLabels(
                 0,
@@ -495,7 +473,7 @@ private fun MutableMethod.overrideForMorpheRow(
  */
 private fun implementSettingIconComposable() {
     val iconDataType = IconDataToStringFingerprint.originalClassDef.type
-    val iconComposable = IconComposableFingerprint(iconDataType).originalMethod
+    val iconComposable = IconComposableFingerprint.originalMethod
     val composerType = iconComposable.parameterTypes[5]
 
     mutableClassDefBy(EXTENSION_CLASS).apply {
