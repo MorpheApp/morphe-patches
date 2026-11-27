@@ -17,6 +17,7 @@ import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_MAIN_ACTIVITY_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -41,14 +42,18 @@ val customBrandingPatch = baseCustomBrandingPatch(
     // The aliases are numbered like the icons, so an alias can be reused if YouTube
     // replaces an icon.
     appLauncherIconNames = {
-        if (is_21_41_or_greater) {
-            mapOf(
-                "youtube_icon1" to "ic_launcher_icon1",
-                "youtube_icon2" to "ic_launcher_icon2",
-                "youtube_icon3" to "ic_launcher_icon3"
-            )
-        } else {
-            emptyMap()
+        val iconCount = when {
+            is_21_47_or_greater -> 7
+            is_21_41_or_greater -> 3
+            else -> 0
+        }
+        (1..iconCount).associate { "youtube_icon$it" to "ic_launcher_icon$it" }
+    },
+    iconArrayKeySuffix = {
+        when {
+            is_21_47_or_greater -> "_21_47"
+            is_21_41_or_greater -> "_21_41"
+            else -> ""
         }
     },
 

@@ -147,6 +147,8 @@ private val logger = Logger.getLogger(Patch::class.java.name)
  * @param appLauncherIconNames Launcher icons of the app that can be selected in the app settings,
  * as the icon style name and the mipmap resource name. They are not patch option values,
  * because older app versions do not have them.
+ * @param iconArrayKeySuffix Suffix of the icon preference arrays, for app versions whose
+ * arrays also list the launcher icons of the app.
  */
 internal fun baseCustomBrandingPatch(
     originalLauncherIconName: () -> String,
@@ -160,6 +162,7 @@ internal fun baseCustomBrandingPatch(
     activityAliasNameWithIntents: String,
     preferenceScreen: BasePreferenceScreen.Screen,
     appLauncherIconNames: () -> Map<String, String> = { emptyMap() },
+    iconArrayKeySuffix: () -> String = { "" },
     block: PatchDefinition.() -> Unit,
     executeBlock: () -> Unit = {}
 ): Patch = patch(
@@ -507,8 +510,7 @@ internal fun baseCustomBrandingPatch(
             ListPreference("morphe_custom_branding_name")
         }
 
-        // YouTube 21.41+ also has launcher icons of its own.
-        val arrayKeySuffix = if (appLauncherIconNames().isEmpty()) "" else "_21_41"
+        val arrayKeySuffix = iconArrayKeySuffix()
 
         if (useCustomIcon) {
             preferences += ListPreference(
