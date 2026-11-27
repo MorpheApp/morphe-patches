@@ -137,7 +137,11 @@ internal fun installPlaybackSessionHooks(): Boolean {
         "invoke-static/range {p0 .. p0}, $SESSION->observeWatchPlayer(Landroid/view/View;)V"
     )
     hookPlaybackStartDescriptor(SESSION, "prepareWatchDescriptor", "prepareShortsDescriptor")
-    hookUserMiniplayerDismissal("$SESSION->onMiniplayerDismissed()V")
+    hookUserMiniplayerDismissal(
+        "$SESSION->onMiniplayerDismissed()V",
+        "$SESSION->observeMiniplayerTouch(Landroid/view/MotionEvent;)V",
+        "$SESSION->onMiniplayerTouchDismissed()V",
+    )
     installPlaybackSessionPlaylistReader()
     videoTimeHook(SESSION, "videoTimeChanged")
     playerStatusHook(SESSION, "onPlayerStatus")

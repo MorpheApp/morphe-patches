@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.AtomicFile;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -131,6 +132,7 @@ public final class PlaybackSessionPatch {
     private static boolean initialized;
     private static boolean checkingStartup;
     private static boolean restoreWasMinimized;
+    private static boolean miniplayerTouchReleased;
     private static long startupDeadline;
     private static long lastSaveTime;
     @Nullable private static String startupWaitReason;
@@ -319,13 +321,26 @@ public final class PlaybackSessionPatch {
 
     /** Called before native code tears down a miniplayer explicitly closed by the user. */
     public static void onMiniplayerDismissed() {
-        if (!enabled()) return;
+        Activity activity = owner.get();
+        if (!enabled() || activity == null || !activity.hasWindowFocus()) return;
         try {
             dismissedVideo = VideoInformation.getVideoId();
             cancelStartup();
             update(null);
         } catch (Exception ex) {
             Logger.printException(() -> "Could not clear the playback session", ex);
+        }
+    }
+
+    // The native touch handler can take the same close branch on ACTION_CANCEL and ACTION_UP.
+    public static void observeMiniplayerTouch(MotionEvent event) {
+        miniplayerTouchReleased = event.getActionMasked() == MotionEvent.ACTION_UP;
+    }
+
+    public static void onMiniplayerTouchDismissed() {
+        if (miniplayerTouchReleased) {
+            miniplayerTouchReleased = false;
+            onMiniplayerDismissed();
         }
     }
 

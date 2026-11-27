@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
@@ -18,6 +19,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val QUEUE_CLOSE = "$EXTENSION_CLASS->onQueuePlayerClosing()V"
 
@@ -49,7 +51,11 @@ internal fun installQueuePlayerClose(
     )
 }
 
-internal fun hookUserMiniplayerDismissal(extensionMethod: String) {
+internal fun hookUserMiniplayerDismissal(
+    extensionMethod: String,
+    observeTouchMethod: String? = null,
+    touchDismissalMethod: String = extensionMethod,
+) {
     // Before 21.31 the fling has a second accepted-dismiss branch. Hook every user
     // dismissal, preserving thresholds, branch targets and the native continuation,
     // without hooking programmatic closes that use the same dismiss method.
@@ -66,14 +72,20 @@ internal fun hookUserMiniplayerDismissal(extensionMethod: String) {
     closes.forEach { fingerprint ->
         val match = fingerprint.matchSingle()
         val dismiss = match.instructionMatches.first().methodReference
+        val observesTouch = fingerprint == QueuePlayerCloseTouchFingerprint && observeTouchMethod != null
+        val dismissalHook = if (observesTouch) touchDismissalMethod else extensionMethod
         match.method.findInstructionIndicesReversedOrThrow(methodCall(reference = { dismiss })).forEach { index ->
             // The queue's Undo hook must still be immediately before native teardown.
             val previous = match.method.getInstruction(index - 1) as? ReferenceInstruction
             val insertIndex = if (previous?.reference?.toString() == QUEUE_CLOSE) index - 1 else index
             match.method.addInstructionsAtControlFlowLabel(
                 insertIndex,
-                "invoke-static {}, $extensionMethod"
+                "invoke-static {}, $dismissalHook"
             )
+        }
+        if (observesTouch) {
+            val motionEvent = if (MethodUtil.isStatic(match.originalMethod)) "p1" else "p2"
+            match.method.addInstruction(0, "invoke-static/range {$motionEvent .. $motionEvent}, $observeTouchMethod")
         }
     }
 }
