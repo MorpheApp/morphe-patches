@@ -487,25 +487,11 @@ internal fun tabRowIndicatorFingerprint(tabRowClass: String) = Fingerprint(
 )
 
 /**
- * Calls the indicator of a tab row with the pager state of the tab row, 2026.48.0+
+ * Calls the indicator of a tab row with the pager state of the tab row, 2026.47.0+
  */
 internal fun tabRowIndicatorCallerFingerprint(pagerType: String, indicatorMethod: MethodReference) = Fingerprint(
     filters = listOf(
         checkCast(pagerType),
-        methodCall(reference = indicatorMethod)
-    )
-)
-
-/**
- * Calls the indicator of a tab row with the pager state of the tab row.
- * Before 2026.48.0 the pager state is a field of the indicator lambda.
- */
-internal fun tabRowIndicatorCallerLegacyFingerprint(pagerType: String, indicatorMethod: MethodReference) = Fingerprint(
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = pagerType
-        ),
         methodCall(reference = indicatorMethod)
     )
 )
