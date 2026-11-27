@@ -28,7 +28,10 @@ import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -58,6 +61,8 @@ final class GlassNavigationBarSearchButton extends View {
 
     private static WeakReference<GlassNavigationBarSearchButton> buttonRef = new WeakReference<>(null);
     private static boolean isBottomNavAttached;
+    // Weak keys ensure a missed detach cannot keep the search button hidden forever.
+    private static final Set<Object> openSheets = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
      * If the current screen shows the navigation bar.
@@ -183,6 +188,16 @@ final class GlassNavigationBarSearchButton extends View {
         update();
     }
 
+    static void onBottomSheetAttached(Object sheet) {
+        openSheets.add(sheet);
+        update();
+    }
+
+    static void onBottomSheetDetached(Object sheet) {
+        openSheets.remove(sheet);
+        update();
+    }
+
     static void setShowBottomNav(boolean show) {
         if (showBottomNav != show) {
             showBottomNav = show;
@@ -262,7 +277,8 @@ final class GlassNavigationBarSearchButton extends View {
                 && buttonSize > 0
                 && isBottomNavAttached
                 && showBottomNav
-                && !isBarHidden;
+                && !isBarHidden
+                && openSheets.isEmpty();
         button.setVisibility(show ? VISIBLE : GONE);
         if (!show) {
             return;
