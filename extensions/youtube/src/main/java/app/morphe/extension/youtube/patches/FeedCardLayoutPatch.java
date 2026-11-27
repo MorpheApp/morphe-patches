@@ -102,6 +102,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeEndpo
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeStatusEntity;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeStatusEntityKey;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LikeTarget;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupExperiments;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupInlinePlayback;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupImage;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.LockupMetadata;
@@ -440,6 +441,12 @@ public class FeedCardLayoutPatch {
      */
     private static final ByteTrieSearch defaultLayoutSearch = new ByteTrieSearch(
             ByteTrieSearch.convertStringsToBytes(CARD_TEMPLATE, SHORTS_VIDEO_CELL_TEMPLATE));
+    /**
+     * Experiment of the blurred background at the bottom of the cards, enableBlurredBottomBackground (field 500561)
+     * set to true, in the bytes of the elements.
+     */
+    private static final ByteTrieSearch blurredBottomBackgroundSearch = new ByteTrieSearch(
+            new byte[]{(byte) 0x88, (byte) 0xB5, (byte) 0xF4, 0x01, 0x01});
     /**
      * Labels of the shelf headers, in the bytes of the converted elements.
      */
@@ -800,21 +807,33 @@ public class FeedCardLayoutPatch {
     public static byte[] setFeedCardLayout(byte[] bytes) {
         if (LAYOUT == FeedCardLayout.DEFAULT) {
             // The default layout shows the elements as YouTube sends them, and only checks if YouTube sends
-            // the cards of a newer A/B test, see feedShowsCards().
-            if (!newServerCardsShown && defaultLayoutSearch.matches(bytes)) {
+            // the cards of a newer A/B test, see feedShowsCards(). The cards only lose the blurred background
+            // at the bottom, see withoutBlurredBottomBackground().
+            if ((!newServerCardsShown && defaultLayoutSearch.matches(bytes))
+                    || blurredBottomBackgroundSearch.matches(bytes)) {
                 try {
-                    ComponentType componentType = Element.parseFrom(bytes).getType().getComponentType();
+                    Element element = Element.parseFrom(bytes);
+                    ComponentType componentType = element.getType().getComponentType();
                     String uri = componentType.getTemplateConfig().getUriTemplateConfig().getUri();
                     ElementModel model = componentType.getModel();
+                    final boolean isCard = isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel();
                     // The cards of this A/B test have no padding, unlike the cards of an older A/B test,
                     // and the grid of its Shorts shelf has no margins.
-                    final boolean newCard = isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()
-                            && !model.getLockupModel().hasPadding();
+                    final boolean newCard = isCard && !model.getLockupModel().hasPadding();
                     final boolean newShortsShelf = isTemplate(uri, SHORTS_VIDEO_CELL_TEMPLATE)
                             && model.hasShortsVideoCellModel()
                             && model.getShortsVideoCellModel().getGrid().getNoMargins();
                     if (newCard || newShortsShelf) {
                         newServerCardsShown = true;
+                    }
+
+                    LockupModel card = isCard ? withoutBlurredBottomBackground(model.getLockupModel()) : null;
+                    if (card != null) {
+                        return element.toBuilder()
+                                .setType(element.getType().toBuilder().setComponentType(componentType.toBuilder()
+                                        .setModel(model.toBuilder().setLockupModel(card))))
+                                .build()
+                                .toByteArray();
                     }
                 } catch (Exception ex) {
                     Logger.printException(() -> "setFeedCardLayout failure", ex);
@@ -2978,6 +2997,13 @@ public class FeedCardLayoutPatch {
             throws InvalidProtocolBufferException {
         ComponentType converted = null;
         LockupModel card = model.getLockupModel();
+        LockupModel withoutBlurredBackground = withoutBlurredBottomBackground(card);
+        if (withoutBlurredBackground != null) {
+            card = withoutBlurredBackground;
+            converted = componentType.toBuilder()
+                    .setModel(model.toBuilder().setLockupModel(card))
+                    .build();
+        }
         LockupViewModel lockupViewModel = card.getViewModel().getLockupViewModel();
         RendererContext rendererContext = lockupViewModel.getRendererContext();
         String label = rendererContext.getAccessibilityContext().getLabel();
@@ -3040,6 +3066,28 @@ public class FeedCardLayoutPatch {
                     .build();
         }
         return converted;
+    }
+
+    /**
+     * The cards of a newer A/B test have a blurred background at the bottom, which RenderNext draws
+     * as a fade into the card. The app is always rendered with Litho, which draws it as a panel with
+     * rounded corners that show light arcs on the card, so the background is removed.
+     *
+     * @return The card without the blurred background, or null if the card has no blurred background.
+     */
+    @Nullable
+    private static LockupModel withoutBlurredBottomBackground(LockupModel card) {
+        ElementsExperiments experiments = card.getContext().getElementsExperiments();
+        CardLayoutExperiments cardExperiments = experiments.getCardLayoutExperiments();
+        if (!cardExperiments.getEnableBlurredBottomBackground()) {
+            return null;
+        }
+        return card.toBuilder()
+                .setContext(card.getContext().toBuilder()
+                        .setElementsExperiments(experiments.toBuilder()
+                                .setCardLayoutExperiments(cardExperiments.toBuilder()
+                                        .clearEnableBlurredBottomBackground())))
+                .build();
     }
 
     /**
@@ -3209,17 +3257,21 @@ public class FeedCardLayoutPatch {
      * The experiments that the templates of the cards and of the classic layout read are sent by the server
      * for the layout of the account, and some change the layout, such as one that leaves the menu button out
      * of the cards. The converted elements would get the experiments meant for the other layout, so they have
-     * only the experiments of the style of the cards, which the cards turn on and the classic layout turns off.
+     * only the experiment of the style of the cards, which the cards turn on and the classic layout turns off.
      * Every other experiment of the cards is left out, also the ones that the server adds later.
+     * The cards get the style of the cards of a newer A/B test, as the style of an older A/B test has
+     * a background tinted at the bottom, which the cards of the server lose, see withoutBlurredBottomBackground().
      */
     private static ElementContext setCardExperiments(ElementContext context, boolean enabled) {
+        ElementsExperiments.Builder experiments = context.getElementsExperiments().toBuilder()
+                .clearCardLayoutExperiments()
+                .clearLockupExperiments()
+                .clearLockupMetadataExperiments();
+        if (enabled) {
+            experiments.setLockupExperiments(LockupExperiments.newBuilder().setEnableCardStyle(true));
+        }
         return context.toBuilder()
-                .setElementsExperiments(context.getElementsExperiments().toBuilder()
-                        .setCardLayoutExperiments(CardLayoutExperiments.newBuilder()
-                                .setEnableColorSampledBackground(enabled)
-                                .setEnableMetadataBackground(enabled))
-                        .clearLockupExperiments()
-                        .clearLockupMetadataExperiments())
+                .setElementsExperiments(experiments)
                 .build();
     }
 

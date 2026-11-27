@@ -674,17 +674,21 @@ message ElementsExperiments {
     CardLayoutExperiments cardLayoutExperiments = 5;
     // Experiments read by lockup_metadata_ue.eml.
     bytes lockupMetadataExperiments = 26;
-    // Experiments read by lockup.eml and lockup_thumbnail.eml (field 524937), which the shelf headers
+    // Experiments read by lockup.eml and lockup_thumbnail.eml, which the shelf headers
     // of the same A/B test have too.
-    bytes lockupExperiments = 42;
+    LockupExperiments lockupExperiments = 42;
 }
 
-// Experiments read by the cards and the classic layout. Besides these, lockup_metadata_ue.eml reads
-// 516593 (leaves out the menu button) and 520547, video_lockup_with_attachment.eml 475852 and 513889,
-// video_lockup_attachments.eml 445511.
+message LockupExperiments {
+    // Style of the cards of a newer A/B test.
+    bool enableCardStyle = 524937;
+}
+
+// Experiments read by the cards and the classic layout. Besides these, lockup.eml reads 491718 (background
+// in the color sampled from the thumbnail) and 489259 (background below the title and the metadata), which
+// are the style of the cards of an older A/B test, lockup_metadata_ue.eml 516593 (leaves out the menu button)
+// and 520547, video_lockup_with_attachment.eml 475852 and 513889, video_lockup_attachments.eml 445511.
 message CardLayoutExperiments {
-    // Background in the color sampled from the thumbnail.
-    bool enableColorSampledBackground = 491718;
-    // Background below the title and the metadata.
-    bool enableMetadataBackground = 489259;
+    // Blurred background at the bottom of the cards of a newer A/B test.
+    bool enableBlurredBottomBackground = 500561;
 }
