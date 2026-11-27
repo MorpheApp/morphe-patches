@@ -10,17 +10,65 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
 
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 
 @SuppressWarnings("unused")
 public class ShortsAutoplayPatch {
+
+    private static final String FLYOUT_ICON_NAME = YouTubeActivityHook.USE_BOLD_ICONS
+            ? "yt_outline_experimental_playlist_vd_theme_24"
+            : "yt_outline_list_play_arrow_black_24";
+
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * Called by {@link FlyoutUtils} for the menu of the Shorts player.
+     * Adds an item that turns Shorts autoplay on or off without opening the settings.
+     */
+    public static int addFlyoutButton(Object flyoutPanel, int nextButtonIndex) {
+        try {
+            if (!Settings.SHORTS_AUTOPLAY_FLYOUT_BUTTON.get()) {
+                return nextButtonIndex;
+            }
+
+            final boolean enabled = Settings.SHORTS_AUTOPLAY.get();
+            return FlyoutUtils.addFlyoutButton(
+                    flyoutPanel,
+                    ResourceUtils.getDrawable(FLYOUT_ICON_NAME),
+                    str(enabled
+                            ? "morphe_shorts_autoplay_flyout_title_on"
+                            : "morphe_shorts_autoplay_flyout_title_off"),
+                    v -> {
+                        FlyoutUtils.dismissFlyout();
+                        final boolean newValue = !Settings.SHORTS_AUTOPLAY.get();
+                        Settings.SHORTS_AUTOPLAY.save(newValue);
+                        Logger.printDebug(() -> "Shorts autoplay set from the menu: " + newValue);
+                        Utils.showToastShort(str(newValue
+                                ? "morphe_shorts_autoplay_flyout_toast_on"
+                                : "morphe_shorts_autoplay_flyout_toast_off"));
+                    },
+                    nextButtonIndex
+            );
+        } catch (Exception ex) {
+            Logger.printException(() -> "addFlyoutButton failure", ex);
+            return nextButtonIndex;
+        }
+    }
 
     private enum ShortsLoopBehavior {
         UNKNOWN,

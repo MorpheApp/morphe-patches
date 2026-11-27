@@ -14,6 +14,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
@@ -25,6 +26,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -43,6 +45,7 @@ val shortsAutoplayPatch = patch(
         settingsPatch,
         versionCheckPatch,
         engagementPanelHookPatch,
+        flyoutPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -50,8 +53,11 @@ val shortsAutoplayPatch = patch(
     execute {
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_shorts_autoplay", summary = true),
-            SwitchPreference("morphe_shorts_autoplay_background", summary = true)
+            SwitchPreference("morphe_shorts_autoplay_background", summary = true),
+            SwitchPreference("morphe_shorts_autoplay_flyout_button", summary = true)
         )
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         var reelEnumClass : String
 
