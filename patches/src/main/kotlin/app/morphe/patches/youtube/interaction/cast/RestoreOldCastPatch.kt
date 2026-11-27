@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5441
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -25,7 +25,9 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val restoreOldCastPatch = patch(
     name = "Restore old Cast behavior",
-    description = "Adds an option to keep the Cast session connected and play newly selected videos on the TV instead of switching to companion mode. This patch works with YouTube 21.30 and newer."
+    description = "Adds an option to keep the Cast session connected and play newly selected " +
+            "videos on the TV instead of switching to companion mode. " +
+            "This patch works with YouTube 21.30 and newer."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -36,16 +38,16 @@ val restoreOldCastPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_restore_old_cast_behavior", summary = true)
-        )
-
         if (!is_21_30_or_greater) {
             Logger.getLogger(this::class.java.name).warning(
                 "Restore old Cast behavior requires YouTube 21.30 or newer"
             )
             return@execute
         }
+
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_restore_old_cast_behavior", summary = true)
+        )
 
         CastCompanionFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
             insertLiteralOverride(index, "$EXTENSION_CLASS->useCastCompanion(Z)Z")
