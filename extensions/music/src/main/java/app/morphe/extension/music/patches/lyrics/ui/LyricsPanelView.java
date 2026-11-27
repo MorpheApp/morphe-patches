@@ -810,6 +810,7 @@ public final class LyricsPanelView extends FrameLayout
         LyricsBackgroundStyle.setStyleChangedListener(() -> {
             if (isFullscreen()) {
                 fullscreenController.applyFullscreenBackground();
+                fullscreenController.applyCoverStyleSetting();
                 // The auto text-colour slot is white; refresh the album palette for card/background swatches.
                 fullscreenController.applyTextColorSetting();
             }
@@ -1699,6 +1700,10 @@ public final class LyricsPanelView extends FrameLayout
 
     public void applyLandscapeCoverSetting() {
         fullscreenController.applyLandscapeCoverSetting();
+    }
+
+    public void applyCoverStyleSetting() {
+        fullscreenController.applyCoverStyleSetting();
     }
 
     public void applyFullscreenTextColorSetting() {

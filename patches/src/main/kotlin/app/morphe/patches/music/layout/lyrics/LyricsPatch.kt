@@ -344,6 +344,14 @@ val lyricsPatch = patch(
                         tag = "app.morphe.extension.music.settings.preference.LyricsWordCloudStopwordsPreference",
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_cover_style_params",
+                        titleKey = "morphe_music_lyrics_cover_style_params_title",
+                        summaryKey = "morphe_music_lyrics_cover_style_params_summary",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsCoverStyleParamsPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
                     )
                 )
             ),

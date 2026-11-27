@@ -163,6 +163,7 @@ public final class OpenAIClient {
             The weight must be an integer from 5 (most important) down to 1 (least important), assigned in descending order. Aim for 5-12 items. Prefer vivid, meaningful words over filler. No reasoning, no explanations, no sentences.
 
             {lines}""";
+
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
     private static final int MAX_CHARS = 3000;

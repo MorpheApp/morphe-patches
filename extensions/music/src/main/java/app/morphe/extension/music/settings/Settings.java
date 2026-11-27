@@ -20,6 +20,7 @@ import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossfadeAvailability;
 import app.morphe.extension.music.patches.CrossfadePatch.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
+import app.morphe.extension.music.patches.lyrics.derive.CoverStyleConfig;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
@@ -143,6 +144,10 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_SHOW_FULLSCREEN_BUTTON = new BooleanSetting("morphe_music_lyrics_show_fullscreen_button", TRUE, false, parent(LYRICS_ENABLED));
     /** Show the 45% cover pane in fullscreen landscape; off gives the lyrics the full width. */
     public static final BooleanSetting LYRICS_FULLSCREEN_LANDSCAPE_COVER = new BooleanSetting("morphe_music_lyrics_fullscreen_landscape_cover", TRUE, false, parent(LYRICS_ENABLED));
+    /** Fullscreen landscape cover preset; colors and dimensions are kept per style in CARD_AI cache. */
+    public static final StringSetting LYRICS_COVER_STYLE = new StringSetting("morphe_music_lyrics_cover_style", CoverStyleConfig.DEFAULT_STYLE, false, parent(LYRICS_ENABLED));
+    /** Per-style cover parameters as a JSON map; editable from the cards/fullscreen settings entry. */
+    public static final StringSetting LYRICS_COVER_STYLE_PARAMS = new StringSetting("morphe_music_lyrics_cover_style_params", CoverStyleConfig.DEFAULT_PARAMS_JSON, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_SECTION = new BooleanSetting("morphe_music_lyrics_show_section", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_TRANSLATE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_translate_button", TRUE, false, parent(LYRICS_ENABLED));
     /** A comma separated priority list; a leading '-' disables a provider. */

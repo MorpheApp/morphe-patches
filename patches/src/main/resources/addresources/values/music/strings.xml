@@ -744,6 +744,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_show_fullscreen_button_summary">While scrolling the lyrics by hand, shows a button that expands the lyrics to full screen</string>
     <string name="morphe_music_lyrics_fullscreen_landscape_cover_title">Cover in landscape fullscreen</string>
     <string name="morphe_music_lyrics_fullscreen_landscape_cover_summary">Shows the album cover beside the lyrics in landscape; turn off to let the lyrics use the full width</string>
+    <string name="morphe_music_lyrics_cover_style_toast">Cover style:</string>
     <string name="morphe_music_lyrics_fullscreen_enter">Fullscreen lyrics</string>
     <string name="morphe_music_lyrics_fullscreen_exit">Exit fullscreen</string>
     <string name="morphe_music_lyrics_allow_transliteration_title">Enable transliteration</string>
@@ -806,6 +807,9 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_word_cloud_stopwords_title">Word Cloud Stopwords</string>
     <string name="morphe_music_lyrics_word_cloud_stopwords_summary">Words ignored by the local word cloud. Tap to edit</string>
     <string name="morphe_music_lyrics_word_cloud_stopwords_label">Ignored words (comma, space or line separated)</string>
+     <string name="morphe_music_lyrics_cover_style_params_title">Cover Style Parameters</string>
+     <string name="morphe_music_lyrics_cover_style_params_summary">All cover presets' parameters in one JSON. Tap to edit</string>
+     <string name="morphe_music_lyrics_cover_style_params_label">Parameters JSON</string>
     <string name="morphe_music_lyrics_share_story_loading">Building story…</string>
     <string name="morphe_music_lyrics_share_story_failed">Could not build the story</string>
     <string name="morphe_music_lyrics_story_source_lyrics">Lyrics imagery</string>

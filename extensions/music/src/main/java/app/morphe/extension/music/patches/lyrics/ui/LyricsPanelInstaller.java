@@ -192,6 +192,9 @@ public final class LyricsPanelInstaller {
                 panelView.applyFullscreenButtonSetting();
             } else if (Settings.LYRICS_FULLSCREEN_LANDSCAPE_COVER.key.equals(key)) {
                 panelView.applyLandscapeCoverSetting();
+            } else if (Settings.LYRICS_COVER_STYLE.key.equals(key)
+                    || Settings.LYRICS_COVER_STYLE_PARAMS.key.equals(key)) {
+                panelView.applyCoverStyleSetting();
             } else if (Settings.LYRICS_TEXT_COLOR_SLOT.key.equals(key)
                     || Settings.LYRICS_FULLSCREEN_TEXT_COLOR.key.equals(key)) {
                 panelView.applyFullscreenTextColorSetting();

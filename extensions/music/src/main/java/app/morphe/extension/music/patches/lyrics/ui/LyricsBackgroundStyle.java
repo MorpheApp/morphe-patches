@@ -25,7 +25,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
 /** Maps share-card background style to the fullscreen lyrics background. */
-final class LyricsBackgroundStyle {
+public final class LyricsBackgroundStyle {
 
     /** A little deeper than the share-card scrim: full-screen lyrics sit directly on the cover. */
     static final int[] FULLSCREEN_SCRIM_COLORS = {0x96000000, 0x86000000, 0xB2000000};
@@ -40,7 +40,7 @@ final class LyricsBackgroundStyle {
         styleChangedListener = listener;
     }
 
-    static void notifyStyleChanged() {
+    public static void notifyStyleChanged() {
         if (styleChangedListener != null) {
             styleChangedListener.run();
         }
