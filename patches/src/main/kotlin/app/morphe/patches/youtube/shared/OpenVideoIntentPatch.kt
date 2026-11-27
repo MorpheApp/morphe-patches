@@ -94,9 +94,9 @@ val openVideoIntentPatch = patch(
             val index = method.indexOfFirstStringInstructionOrThrow("PLAYBACK_START_DESCRIPTOR_MUTATOR")
             val descriptor = "v$videoPlaybackIntentPlayerDescriptorClassRegister"
             val context = "v$videoPlaybackIntentFreeRegister1"
+            val descriptorType = PlaybackStartDescriptorToStringFingerprint.originalClassDef.type
 
             playbackDescriptorTransforms.asReversed().forEach { (classDescriptor, regularMethod, shortsMethod) ->
-                val descriptorType = PlaybackStartDescriptorToStringFingerprint.originalClassDef.type
                 method.addInstructionsAtControlFlowLabel(
                     index,
                     """

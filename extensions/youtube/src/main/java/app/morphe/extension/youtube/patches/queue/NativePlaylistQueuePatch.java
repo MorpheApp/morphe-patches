@@ -2887,7 +2887,7 @@ public final class NativePlaylistQueuePatch {
                         queue.repeatMode());
             }
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not capture the current playlist window", ex);
+            Logger.printException(() -> "captureSessionQueue failure", ex);
         }
         return null;
     }

@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.SystemClock;
@@ -146,9 +145,8 @@ public final class PlaybackSessionPatch {
             // Flush while the activity still owns its player and playback clock.
             if (activity == owner.get()) save(true);
         }
-        @Override public void onActivityPaused(Activity activity) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && activity == owner.get()) save(true);
-        }
+        // The patch requires YouTube 21.30+, which requires Android 10, so onActivityPrePaused is always called.
+        @Override public void onActivityPaused(Activity activity) {}
         @Override public void onActivityStopped(Activity activity) {
             if (activity == owner.get()) save(true);
         }
@@ -382,7 +380,7 @@ public final class PlaybackSessionPatch {
             }
             return selectedIndex < 0 ? null : new PlaybackSessionSnapshot.Queue(videoIds, selectedIndex, null);
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not capture the active playlist", ex);
+            Logger.printException(() -> "Could not capture the active playlist", ex);
             return null;
         }
     }
@@ -577,7 +575,7 @@ public final class PlaybackSessionPatch {
             if (request == null) return;
             if (snapshot.kind() == PlaybackSessionSnapshot.Kind.LIVE) {
                 Utils.runOnBackgroundThread(() -> {
-                    Boolean live = LiveStatusRequest.fetchFresh(snapshot.videoId());
+                    Boolean live = LiveStatusRequest.fetch(snapshot.videoId());
                     Utils.runOnMainThread(() -> {
                         if (activity != owner.get() || restoring != request) return;
                         if (Boolean.TRUE.equals(live)) start(activity, router, request);

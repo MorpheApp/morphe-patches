@@ -34,6 +34,11 @@ import app.morphe.extension.youtube.shared.PlayerType;
 /** Draws the restored session label above the visible floating player. */
 public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDrawListener,
         View.OnAttachStateChangeListener {
+    private static final int RESUME_LABEL_ID =
+            ResourceUtils.getStringIdentifier("continue_watching_ready_to_resume");
+    private static final int LABEL_TEXT_SIZE_SP = 10;
+    private static final int LABEL_BACKGROUND_COLOR = 0xE6212121;
+
     @Nullable private static volatile RestoredMiniplayerLabel current;
 
     private final ViewGroup decor;
@@ -53,14 +58,11 @@ public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDraw
         badgeLabel = new LabelDrawable(createLabel());
     }
 
+    /**
+     * The label of the native startup miniplayer of YouTube Premium, translated by YouTube.
+     */
     public static String resumeLabel() {
-        int morpheLabel = ResourceUtils.getStringIdentifier("morphe_miniplayer_restored_label");
-        String translation = morpheLabel == 0 ? null : ResourceUtils.getTranslation(morpheLabel);
-        if (translation != null) return translation;
-
-        int nativeLabel = ResourceUtils.getStringIdentifier("continue_watching_ready_to_resume");
-        if (nativeLabel != 0) return ResourceUtils.getString(nativeLabel);
-        return morpheLabel == 0 ? "Continue watching" : ResourceUtils.getString(morpheLabel);
+        return ResourceUtils.getString(RESUME_LABEL_ID);
     }
 
     public static void setBadge(TextView label, boolean visible) {
@@ -91,14 +93,14 @@ public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDraw
     private TextView createLabel() {
         var view = new TextView(decor.getContext());
         view.setTextColor(Color.WHITE);
-        view.setTextSize(10);
+        view.setTextSize(LABEL_TEXT_SIZE_SP);
         view.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         view.setSingleLine(true);
         view.setEllipsize(TextUtils.TruncateAt.END);
         view.setIncludeFontPadding(false);
         view.setPadding(Dim.dp4, Dim.dp2, Dim.dp4, Dim.dp2);
         var background = new GradientDrawable();
-        background.setColor(0xE6212121);
+        background.setColor(LABEL_BACKGROUND_COLOR);
         background.setCornerRadius(Dim.dp4);
         view.setBackground(background);
         setBadge(view, true);

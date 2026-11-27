@@ -187,6 +187,9 @@ public final class MiniplayerPatch {
     private static final int OPACITY_LEVEL =
             (SeekBarPreference.clampToRange(Settings.MINIPLAYER_OPACITY) * 255) / 100;
 
+    private static final int MODERN_OVERLAY_ACTION_BUTTON_ID =
+            ResourceUtils.getIdIdentifier("modern_miniplayer_overlay_action_button");
+
     /**
      * Everything about dragging the miniplayer around, which a docked bar does not do.
      */
@@ -710,11 +713,10 @@ public final class MiniplayerPatch {
         if (!showRestoredMiniplayerActionButton()) return;
 
         try {
-            int actionId = ResourceUtils.getIdIdentifier("modern_miniplayer_overlay_action_button");
-            View action = actionId == 0 ? null : overlay.findViewById(actionId);
+            View action = overlay.findViewById(MODERN_OVERLAY_ACTION_BUTTON_ID);
             if (action != null) RestoredMiniplayerControls.bind(action);
         } catch (Exception ex) {
-            Logger.printException(() -> "Could not bind the restored miniplayer action button", ex);
+            Logger.printException(() -> "bindRestoredMiniplayerOverlay failure", ex);
         }
     }
 

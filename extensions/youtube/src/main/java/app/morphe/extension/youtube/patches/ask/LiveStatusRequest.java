@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches.ask;
 
 import androidx.annotation.Nullable;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Collections;
@@ -104,55 +103,28 @@ public final class LiveStatusRequest {
         return null;
     }
 
+    /**
+     * Fetches the live status without using the cache, such as for a video that was live earlier.
+     * Must be called off the main thread.
+     *
+     * @return If the video is live, or null if the status could not be fetched.
+     */
     @Nullable
-    private static Boolean fetch(String videoId) {
+    public static Boolean fetch(String videoId) {
         final long startTime = System.currentTimeMillis();
-        JSONObject response = fetchResponse(videoId);
+        JSONObject response = ChannelSearchRoutes.fetch(ChannelSearchRoutes.GET_LIVE_STATUS,
+                ChannelSearchRoutes.createWebVideoBody(videoId, Locale.getDefault()));
         if (response == null || !response.has("currentVideoEndpoint")) {
+            Logger.printDebug(() -> "No live status of video: " + videoId);
             // Fetch again the next time the menu opens.
             cache.remove(videoId);
-            Logger.printDebug(() -> "No live status of video: " + videoId);
             return null;
         }
+
+        // The video is live if any count of the watch page is the count of a live stream.
         final boolean isLive = response.toString().contains("\"isLive\":true");
         Logger.printDebug(() -> "Video: " + videoId + " is live: " + isLive
                 + " took: " + (System.currentTimeMillis() - startTime) + "ms");
         return isLive;
-    }
-
-    @Nullable
-    private static JSONObject fetchResponse(String videoId) {
-        return ChannelSearchRoutes.fetch(ChannelSearchRoutes.GET_LIVE_STATUS,
-                ChannelSearchRoutes.createWebVideoBody(videoId, Locale.getDefault()));
-    }
-
-    /** Returns null when the server could not confirm the status of this video. */
-    @Nullable
-    public static Boolean fetchFresh(String videoId) {
-        JSONObject response = fetchResponse(videoId);
-        JSONObject endpoint = response == null ? null : response.optJSONObject("currentVideoEndpoint");
-        JSONObject watch = endpoint == null ? null : endpoint.optJSONObject("watchEndpoint");
-        if (watch == null || !videoId.equals(watch.optString("videoId"))) {
-            Logger.printDebug(() -> "No live status of video: " + videoId);
-            return null;
-        }
-
-        JSONObject contents = response.optJSONObject("contents");
-        JSONObject watchNext = contents == null ? null : contents.optJSONObject("twoColumnWatchNextResults");
-        JSONObject wrapper = watchNext == null ? null : watchNext.optJSONObject("results");
-        JSONObject results = wrapper == null ? null : wrapper.optJSONObject("results");
-        JSONArray sections = results == null ? null : results.optJSONArray("contents");
-        if (sections != null) {
-            for (int index = 0; index < sections.length(); index++) {
-                JSONObject section = sections.optJSONObject(index);
-                JSONObject info = section == null ? null : section.optJSONObject("videoPrimaryInfoRenderer");
-                JSONObject count = info == null ? null : info.optJSONObject("viewCount");
-                JSONObject renderer = count == null ? null : count.optJSONObject("videoViewCountRenderer");
-                if (renderer != null) {
-                    return renderer.optBoolean("isLive", false);
-                }
-            }
-        }
-        return null;
     }
 }
