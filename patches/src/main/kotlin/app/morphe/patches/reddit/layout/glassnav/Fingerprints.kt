@@ -539,3 +539,27 @@ internal object BottomNavButtonFingerprint : Fingerprint(
         string("bottom_nav_button")
     )
 )
+
+/**
+ * Tracks if a nested list feed is scrolled, with a shared lambda class that checks the list state.
+ */
+internal object NestedListTrackerFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/feeds/ui/composables/NestedListTrackerKt$NestedListTracker$1$1;",
+    name = "invokeSuspend",
+    filters = listOf(
+        // Case number of the shared lambda class.
+        opcode(Opcode.CONST_4),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            parameters = listOf("Landroidx/compose/foundation/lazy/", "I"),
+            location = MatchAfterWithin(3)
+        ),
+        // derivedStateOf
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Lkotlin/jvm/functions/Function0;"),
+            location = MatchAfterWithin(3)
+        )
+    )
+)

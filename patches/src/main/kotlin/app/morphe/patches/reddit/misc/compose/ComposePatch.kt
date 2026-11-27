@@ -16,6 +16,7 @@ import app.morphe.patches.reddit.layout.glassnav.BottomNavBarFingerprint
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_47_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 
 private const val CONTENT_DRAW_SCOPE_INTERFACE =
@@ -24,6 +25,9 @@ private const val COMPOSE_CANVAS_INTERFACE =
     $$"Lapp/morphe/extension/reddit/utils/ComposeUtils$ComposeCanvas;"
 internal const val MODIFIER_INTERFACE =
     $$"Lapp/morphe/extension/reddit/utils/ComposeUtils$Modifier;"
+private const val MUTABLE_STATE_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/utils/ComposeUtils$MutableState;"
+private const val MUTABLE_STATE_CLASS = "Landroidx/compose/runtime/ParcelableSnapshotMutableState;"
 internal const val WINDOW_INSETS_INTERFACE =
     $$"Lapp/morphe/extension/reddit/utils/ComposeUtils$WindowInsets;"
 
@@ -112,6 +116,38 @@ internal val composePatch = patch {
                     return-object v0
                 """
             )
+        }
+
+        // Used by 2026.47.0+ code only. 2026.24.0 has no matching mutableStateOf.
+        if (is_2026_47_0_or_greater) {
+            NewMutableStateFingerprint.method.addFreeRegisters(1).first.addInstructions(
+                0,
+                """
+                    invoke-static { p0 }, ${MutableStateOfFingerprint.method}
+                    move-result-object v0
+                    return-object v0
+                """
+            )
+
+            mutableClassDefBy(MUTABLE_STATE_CLASS).apply {
+                addPatchInterface(
+                    MUTABLE_STATE_INTERFACE,
+                    "patch_getValue",
+                    """
+                        invoke-virtual { p0 }, $MUTABLE_STATE_CLASS->getValue()Ljava/lang/Object;
+                        move-result-object v0
+                        return-object v0
+                    """
+                )
+                addPatchInterface(
+                    MUTABLE_STATE_INTERFACE,
+                    "patch_setValue",
+                    """
+                        invoke-virtual { p0, p1 }, $MUTABLE_STATE_CLASS->setValue(Ljava/lang/Object;)V
+                        return-void
+                    """
+                )
+            }
         }
 
         val nativeCanvasField = LottieAnimationDrawFingerprint.instructionMatches[4].fieldReference

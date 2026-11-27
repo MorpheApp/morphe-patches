@@ -83,6 +83,16 @@ public final class ComposeUtils {
         int patch_getTop();
     }
 
+    /**
+     * Compose MutableState.
+     */
+    public interface MutableState {
+        // Methods are added during patching.
+        Object patch_getValue();
+
+        void patch_setValue(Object value);
+    }
+
     private ComposeUtils() {
     }
 
@@ -109,6 +119,15 @@ public final class ComposeUtils {
     @SuppressWarnings("SameReturnValue")
     @Nullable
     public static Object newWeightModifier(float weight, boolean fill) {
+        return null; // Modified during patching.
+    }
+
+    /**
+     * @return mutableStateOf(value), as a {@link MutableState}. Available only with 2026.47.0+
+     */
+    @SuppressWarnings("SameReturnValue")
+    @Nullable
+    public static Object newMutableState(@Nullable Object value) {
         return null; // Modified during patching.
     }
 }
