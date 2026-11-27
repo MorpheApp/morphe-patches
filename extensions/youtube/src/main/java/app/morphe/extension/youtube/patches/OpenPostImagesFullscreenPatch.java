@@ -12,7 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.ByteString;
-import com.google.protobuf.MessageLite;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -283,12 +282,12 @@ public final class OpenPostImagesFullscreenPatch {
                     LightboxModel.CONTEXT_FIELD_NUMBER, CAPABILITIES_FIELD);
 
             private static final Command RESET_GESTURE_STATES = list(
-                    setState(DRAG_DISTANCE_STATE, VectorState.newBuilder().setX(0).setY(0).build()),
+                    setState(DRAG_DISTANCE_STATE, VectorState.newBuilder().setX(0).setY(0).build().toByteString()),
                     setState(TOUCH_POSITION_STATE, VectorState.newBuilder()
-                            .setX(NO_TOUCH_POSITION).setY(NO_TOUCH_POSITION).build()),
-                    setState(ZOOMING_STATE, BooleanState.newBuilder().setValue(false).build()),
-                    setState(DRAGGING_STATE, BooleanState.newBuilder().setValue(false).build()),
-                    setState(DRAG_END_STATE, BooleanState.newBuilder().setValue(false).build()));
+                            .setX(NO_TOUCH_POSITION).setY(NO_TOUCH_POSITION).build().toByteString()),
+                    setState(ZOOMING_STATE, BooleanState.newBuilder().setValue(false).build().toByteString()),
+                    setState(DRAGGING_STATE, BooleanState.newBuilder().setValue(false).build().toByteString()),
+                    setState(DRAG_END_STATE, BooleanState.newBuilder().setValue(false).build().toByteString()));
 
         /**
              * @param indexState Key of the state of the shown image, or null if the post has one image.
@@ -334,7 +333,7 @@ public final class OpenPostImagesFullscreenPatch {
              */
             static Command open(Command show, int index, @Nullable String indexState) {
                 if (indexState != null) {
-                    show = sequence(setState(indexState, IntState.newBuilder().setValue(index).build()), show);
+                    show = sequence(setState(indexState, IntState.newBuilder().setValue(index).build().toByteString()), show);
                 }
                 return list(show);
             }
@@ -392,10 +391,14 @@ public final class OpenPostImagesFullscreenPatch {
                         .addPath(field);
             }
 
-            private static Command setState(String key, MessageLite value) {
+            /**
+             * @param value Serialized state. Not a MessageLite parameter, because the app has its own
+             *              MessageLite interface without toByteString().
+             */
+            private static Command setState(String key, ByteString value) {
                 return Command.newBuilder().setSetState(SetStateCommand.newBuilder()
                         .setKey(key)
-                        .setValue(value.toByteString())).build();
+                        .setValue(value)).build();
             }
 
             private static Command list(Command... commands) {
