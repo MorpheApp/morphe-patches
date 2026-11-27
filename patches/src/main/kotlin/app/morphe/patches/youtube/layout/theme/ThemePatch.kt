@@ -388,7 +388,7 @@ val themePatch = baseThemePatch(
             settingsPatch,
             seekbarColorPatch,
             versionCheckPatch,
-            // The fade of the collapsed description is removed only in the description panel.
+            // The fade of the collapsed description is themed only in the description panel.
             engagementPanelHookPatch,
             baseThemeResourcePatch(
                 includeLightColor = true,

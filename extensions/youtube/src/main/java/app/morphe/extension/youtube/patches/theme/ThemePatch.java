@@ -135,9 +135,10 @@ public class ThemePatch extends BaseThemePatch {
      * The colors of a linear gradient of an Elements component, which the server gives as values.
      * <p>
      * The end of the collapsed text of the description panel is faded with gradients that start transparent and end
-     * in one color: the dark or light background of the app, and the tint of the text box over it. The background
-     * is the one of the app and not the selected one, and the panel of the text can also show the content behind
-     * it, so the fade shows as a band. The fade is removed, and the text ends without it.
+     * in one color: the opaque dark or light background of the app, and the translucent tint of the text box over
+     * it. The background is the one of the app and not the selected one, so the fade shows as a band. The fade
+     * into the background is given the selected background color, and the fade into the tint is kept as is,
+     * because the tint is drawn over the selected background the same way.
      */
     public static int[] getGradientColors(int[] colors) {
         try {
@@ -150,8 +151,19 @@ public class ThemePatch extends BaseThemePatch {
             for (int color : colors) {
                 if ((color & 0x00FFFFFF) != rgb) return colors;
             }
+
+            // Only the fade into the background ends opaque.
+            if (Color.alpha(colors[colors.length - 1]) != 0xFF) {
+                return colors;
+            }
+
+            final int backgroundRgb = getThemeBackgroundColor() & 0x00FFFFFF;
             // A new array, the app can use the array of the colors elsewhere.
-            return new int[colors.length];
+            final int[] themedColors = new int[colors.length];
+            for (int i = 0; i < colors.length; i++) {
+                themedColors[i] = (colors[i] & 0xFF000000) | backgroundRgb;
+            }
+            return themedColors;
         } catch (Exception ex) {
             Logger.printException(() -> "getGradientColors failure", ex);
         }
