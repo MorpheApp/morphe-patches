@@ -103,7 +103,7 @@ public class ThemePatch extends BaseThemePatch {
                     && !ThemeColorPatch.isAppDefaultColor()
                     // A feed without cards has this color only in places that are themed,
                     // such as the header of the Shorts shelf.
-                    && (!FeedCardLayoutPatch.isPatchIncluded() || FeedCardLayoutPatch.listsDrawCards())
+                    && (!FeedCardLayoutPatch.isPatchIncluded() || FeedCardLayoutPatch.feedShowsCards())
                     && isFeedItem(drawable)) {
                 // Only exact colors are themed. The lowest bit of green is not visible, and blue is not used
                 // because the feed card layout hook flips its lowest bit, which would undo the change.
