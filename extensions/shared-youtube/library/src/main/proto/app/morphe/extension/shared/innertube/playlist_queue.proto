@@ -355,6 +355,16 @@ message WatchEndpoint {
     optional string params = 5;
     optional float start_time_seconds = 7;
     optional string playlist_set_video_id = 13;
+    optional WatchEndpointMusicSupportedConfigs music_supported_configs = 136656028;
+}
+
+message WatchEndpointMusicSupportedConfigs {
+    optional WatchEndpointMusicConfig music_config = 136657325;
+}
+
+message WatchEndpointMusicConfig {
+    // MusicVideoType of YouTube Music, such as 1 for a song and 2 for a music video.
+    optional int32 music_video_type = 2;
 }
 
 // Native compact playlist commands use the same first three fields.
