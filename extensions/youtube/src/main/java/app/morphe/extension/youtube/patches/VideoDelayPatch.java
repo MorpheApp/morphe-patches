@@ -53,7 +53,7 @@ public class VideoDelayPatch {
 
         if (lastLoggedDelayMs != delayMs) {
             lastLoggedDelayMs = delayMs;
-            Logger.printInfo(() -> "Delaying video by " + delayMs + " ms");
+            Logger.printDebug(() -> "Applying video sync offset of " + delayMs + " ms");
         }
 
         return positionUs - delayMs * 1000L;
