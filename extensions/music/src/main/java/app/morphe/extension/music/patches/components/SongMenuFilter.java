@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.DownloadsPatch;
+import app.morphe.extension.music.patches.downloads.InAppDownloadState;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -78,6 +79,7 @@ public final class SongMenuFilter extends Filter {
                     && DownloadsPatch.isFlyoutMenuOverridden()
                     && Utils.indexOf(path, ".e", identifier.length()) < 0) {
                 String videoId = findLikeButtonVideoId(buffer);
+                InAppDownloadState.onMenuHeader(videoId);
                 if (!Objects.equals(videoId, menuVideoId)) {
                     Logger.printDebug(() -> "Menu opened for song: " + videoId);
                     menuVideoId = videoId;

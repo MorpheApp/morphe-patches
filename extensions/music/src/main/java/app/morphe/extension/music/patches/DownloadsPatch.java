@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.components.PlaylistPageFilter;
 import app.morphe.extension.music.patches.components.SongMenuFilter;
+import app.morphe.extension.music.patches.downloads.InAppDownloadState;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -107,6 +108,11 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                     && Utils.contains(path, "music_download_button.")) {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
+            }
+            if (!flyoutMenuUsesExternalDownloader()
+                    && (Utils.startsWith(path, "list_item.") || Utils.contains(path, "|list_item.")
+                    || Utils.contains(path, "tile_button_carousel."))) {
+                return InAppDownloadState.menuLabel(original, downloadButtonLabel);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
@@ -329,9 +335,13 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 OfflineVideoEndpoint endpoint = offlineCommand.getOfflineVideoEndpoint();
                 String videoId = endpoint.getVideoId();
                 if (endpoint.getAction() == OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD
-                        && VideoInformation.isVideoId(videoId)
-                        && useExternalDownloader(insideDialog)) {
-                    return videoDownload(videoId, true);
+                        && VideoInformation.isVideoId(videoId)) {
+                    if (useExternalDownloader(insideDialog)) {
+                        return videoDownload(videoId, true);
+                    }
+                    if (map != null && map.get(ELEMENTS_SENDER_VIEW) instanceof View) {
+                        InAppDownloadState.onDownloadRequested(videoId);
+                    }
                 }
                 return null;
             }
@@ -379,6 +389,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             return EMPTY_COMMAND;
         }
         if (isInAppDownloadMode()) {
+            InAppDownloadState.onDownloadRequested(videoId);
             return saveVideoCommand(videoId, List.of()).toByteArray();
         }
         return null;
