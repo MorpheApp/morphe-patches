@@ -31,6 +31,8 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_navigation_bar_screen_summary">Botões da barra inferior e a barra de vidro</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Desativar ocultação automática da barra inferior</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantém a barra de navegação inferior visível ao rolar</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Botões de navegação de alto contraste</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Exibe os botões não selecionados da barra de navegação em preto no modo claro e em branco no modo escuro, em vez de cinza</string>
   <string name="morphe_glass_navigation_bar_title">Barra de navegação de vidro</string>
   <string name="morphe_glass_navigation_bar_summary">Exibe a barra de navegação como uma cápsula flutuante e translúcida sobre o feed. Em tablets, a barra lateral tem a mesma aparência</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Ativado</string>
@@ -76,6 +78,10 @@ Para usar uma versão mais antiga, você deve &lt;b&gt;desinstalar&lt;/b&gt; o R
   <string name="morphe_hide_chat_button_title">Ocultar botão Chat</string>
   <string name="morphe_hide_discover_button_title">Ocultar botão Descobrir ou Comunidades</string>
   <string name="morphe_hide_games_button_title">Ocultar botão Jogos</string>
+  <string name="morphe_subreddit_create_button_title">Botão criar em comunidades</string>
+  <string name="morphe_subreddit_create_button_summary">Exibe um botão ao lado da Busca em cada comunidade que inicia uma publicação nela</string>
+  <string name="morphe_subreddit_create_button_label">Criar publicação</string>
+  <string name="morphe_subreddit_create_button_description">Criar publicação em r/%s</string>
   <string name="morphe_screen_sidebar_title">Barra lateral</string>
   <string name="morphe_sidebar_screen_summary">Prateleiras e botões na barra lateral</string>
   <string name="morphe_settings_in_sidebar_title">Mostrar configurações do Morphe</string>

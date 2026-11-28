@@ -55,6 +55,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_account_menu_badges_title">Nascondi badge</string>
   <string name="morphe_hide_account_menu_downloads_title">Nascondi Download</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Nascondi \"Video che ti piacciono\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Nascondi piè di pagina \"Informativa sulla privacy\" \"Termini di servizio\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Nascondi \"Guarda più tardi\"</string>
   <string name="morphe_hide_album_cards_title">Nascondi le schede degli album</string>
   <string name="morphe_hide_album_cards_summary">Nasconde le schede degli album sotto la descrizione dell\'artista</string>
@@ -1264,6 +1265,9 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_autoplay_mix_stop_after_summary">Nella modalità Auto, un Mix si ferma dopo questo numero di video. 0 = nessun limite</string>
   <string name="morphe_autoplay_mix_length">Mix: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: nessun limite</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Ripristina il vecchio comportamento di Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">La sessione di Cast rimane connessa quando si seleziona un video diverso o si chiude il player, quindi i video continuano a essere riprodotti sulla TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Prompt \"Continuare la visione\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Predefinita</string>
@@ -1401,6 +1405,12 @@ Layout automotive
   <string name="morphe_shorts_autoplay_summary">Passa automaticamente al prossimo Short anziché ripetere quello corrente</string>
   <string name="morphe_shorts_autoplay_background_title">Riproduzione automatica in background</string>
   <string name="morphe_shorts_autoplay_background_summary">Passa automaticamente al prossimo Short durante la riproduzione in background</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Riproduzione automatica nel menu Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Mostra una voce nel menu del player Shorts che attiva o disattiva la riproduzione automatica degli Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Riproduci automaticamente gli Shorts · Attivato</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Riproduci automaticamente gli Shorts · Disattivato</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Riproduzione automatica di Shorts attivata</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Riproduzione automatica di Shorts disattivata</string>
   <string name="morphe_skip_live_shorts_title">Salta i \"Short\" live</string>
   <string name="morphe_skip_live_shorts_summary">Salta le dirette che appaiono nel feed Short</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1425,6 +1435,8 @@ Layout automotive
   <string name="morphe_feed_card_layout_entry_1">Classico</string>
   <string name="morphe_feed_card_layout_entry_2">Carte</string>
   <string name="morphe_feed_card_layout_entry_3">Carte con pulsanti di Mi piace, commento e salva</string>
+  <string name="morphe_feed_card_layout_entry_4">Carte con bagliore dell\'avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Carte con pulsanti di Mi piace, commento e salva e bagliore dell\'avatar</string>
   <string name="morphe_feed_card_layout_comments">Commenti</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Disabilita la ripresa del lettore minimizzato</string>
@@ -1511,6 +1523,10 @@ Layout automotive
   <string name="morphe_custom_branding_icon_entry_8">Analogico originale</string>
   <string name="morphe_custom_branding_icon_entry_9">Torta originale</string>
   <string name="morphe_custom_branding_icon_entry_10">Metallo originale</string>
+  <string name="morphe_custom_branding_icon_entry_11">Pelliccia originale</string>
+  <string name="morphe_custom_branding_icon_entry_12">Acquerello originale</string>
+  <string name="morphe_custom_branding_icon_entry_13">Classico originale</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV retro originale</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Predefinito</string>
   <string name="morphe_header_logo_entry_2">Regolare</string>
@@ -1638,6 +1654,8 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Apri link nel browser</string>
   <string name="morphe_external_browser_summary">Apre i link in un browser esterno anziché nel browser in-app</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Nessun link di YouTube nel testo condiviso</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Dimensione del buffer di riproduzione</string>
   <string name="morphe_playback_buffer_size_entry_default">Predefinita</string>

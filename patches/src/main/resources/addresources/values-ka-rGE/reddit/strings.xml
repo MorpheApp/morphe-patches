@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">ქვედა პანელის ღილაკები და შუშის პანელი</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">გამორთეთ ქვედა პანელის ავტომატური დამალვა</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">ინარჩუნებს ქვედა ნავიგაციის პანელის ხილვადობას სქროლვისას</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">ნავიგაციის ღილაკების მაღალი კონტრასტულობა</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">ანაცვლებს ნავიგაციის პანელის არაშერჩეული ღილაკების ნაცრისფერ ფერს შავით ღია რეჟიმში და თეთრით მუქ რეჟიმში</string>
   <string name="morphe_glass_navigation_bar_title">მინისებრი ნავიგაციის პანელი</string>
   <string name="morphe_glass_navigation_bar_summary">ანახებს ნავიგაციის პანელს, როგორც მოტივებულ, ნახევრად გამჭვირვალე კაფსულას ფიდის თავზე. პლანშეტებზე გვერდითა პანელს იგივე ვიზუალი აქვს</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">ჩართულია</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">ჩატის ღილაკის დამალვა</string>
   <string name="morphe_hide_discover_button_title">აღმოჩენის ან საზოგადოებების ღილაკის დამალვა</string>
   <string name="morphe_hide_games_button_title">თამაშების ღილაკის დამალვა</string>
+  <string name="morphe_subreddit_create_button_title">შექმნის ღილაკი საზოგადოებებში</string>
+  <string name="morphe_subreddit_create_button_summary">აჩვენებს ღილაკს ძებნის გვერდით თითოეულ საზოგადოებაში, რომელიც იქ პოსტის შექმნას იწყებს</string>
+  <string name="morphe_subreddit_create_button_label">პოსტის შექმნა</string>
+  <string name="morphe_subreddit_create_button_description">პოსტის შექმნა r/%s-ში</string>
   <string name="morphe_screen_sidebar_title">გვერდითი პანელი</string>
   <string name="morphe_sidebar_screen_summary">გვერდითა პანელის თაროები და ღილაკები</string>
   <string name="morphe_settings_in_sidebar_title">Morphe-ს პარამეტრების ჩვენება</string>

@@ -31,6 +31,8 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_navigation_bar_screen_summary">Các nút thanh dưới cùng và thanh kính</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Tắt tự ẩn thanh dưới cùng</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Giữ thanh điều hướng dưới cùng luôn hiển thị khi cuộn</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Các nút điều hướng có độ tương phản cao</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Hiển thị các nút không được chọn của thanh điều hướng bằng màu đen ở chế độ sáng và màu trắng ở chế độ tối, thay vì màu xám</string>
   <string name="morphe_glass_navigation_bar_title">Thanh điều hướng dạng kính</string>
   <string name="morphe_glass_navigation_bar_summary">Hiển thị thanh điều hướng dưới dạng một viên nang mờ, nổi trên bảng tin. Trên máy tính bảng, thanh bên cũng có giao diện tương tự</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Bật</string>
@@ -76,6 +78,10 @@ Dữ liệu ứng dụng từ phiên bản mới hơn không hoạt động vớ
   <string name="morphe_hide_chat_button_title">Ẩn nút Trò chuyện</string>
   <string name="morphe_hide_discover_button_title">Ẩn nút Khám phá hoặc nút Cộng đồng</string>
   <string name="morphe_hide_games_button_title">Ẩn nút Trò chơi</string>
+  <string name="morphe_subreddit_create_button_title">Nút tạo trong các cộng đồng</string>
+  <string name="morphe_subreddit_create_button_summary">Hiển thị một nút cạnh mục Tìm kiếm trong mỗi cộng đồng để bắt đầu tạo bài viết tại đó</string>
+  <string name="morphe_subreddit_create_button_label">Tạo bài viết</string>
+  <string name="morphe_subreddit_create_button_description">Tạo bài viết trong r/%s</string>
   <string name="morphe_screen_sidebar_title">Thanh bên</string>
   <string name="morphe_sidebar_screen_summary">Các kệ và nút trong thanh bên</string>
   <string name="morphe_settings_in_sidebar_title">Hiển thị cài đặt Morphe</string>

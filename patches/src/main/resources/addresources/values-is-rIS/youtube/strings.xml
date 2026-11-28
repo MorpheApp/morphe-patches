@@ -55,6 +55,7 @@ Breytingar fela í sér:
   <string name="morphe_hide_account_menu_badges_title">Fela merki</string>
   <string name="morphe_hide_account_menu_downloads_title">Fela niðurhal</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Fela \"Líkað myndskeið\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Fela „Persónuverndarstefnu“ og „Notendaskilmála“ í neðri hluta</string>
   <string name="morphe_hide_account_menu_watch_later_title">Fela \"Skoða síðar\"</string>
   <string name="morphe_hide_album_cards_title">Fela albúmspjöld</string>
   <string name="morphe_hide_album_cards_summary">Felur albúmspjöld undir lýsingu listamannsins</string>
@@ -1264,6 +1265,9 @@ Stillingar → Spilun (eða Sjálfvirk spilun) → Sjálfvirk spilun næsta mynd
   <string name="morphe_autoplay_mix_stop_after_summary">Í hamnum Sjálfvirkur stöðvast blanda eftir þessa fjölda myndbanda. 0 = engin takmörkun</string>
   <string name="morphe_autoplay_mix_length">Blanda: %s myndbönd</string>
   <string name="morphe_autoplay_mix_no_limit">Blanda: engin takmörkun</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Endurheimta gamla Cast-hegðun</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast-lóðin heldur tengingunni þegar valið er annað myndband eða spilari lokað, svo halda myndböndum áfram að spila á sjónvarpinu</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">„Halda áfram að horfa?“ tilkynning</string>
   <string name="morphe_continue_watching_prompt_entry_1">Sjálfgefið</string>
@@ -1402,6 +1406,12 @@ Bílaútlit
   <string name="morphe_shorts_autoplay_summary">Spilar næsta Short sjálfkrafa í stað þess að endurtaka núverandi</string>
   <string name="morphe_shorts_autoplay_background_title">Sjálfvirk spilun í bakgrunni</string>
   <string name="morphe_shorts_autoplay_background_summary">Spilar næsta Short sjálfkrafa við spilun í bakgrunni</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Sjálfvirk spilun í Shorts-valmynd</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Sýnir valmögla í Shorts-spilunarmynd sem virkar eða afvirkar sjálfvirka spilun Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Sjálfvirk spilun Shorts · Virkt</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Sjálfvirk spilun Shorts · Afsett</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Sjálfspuni Shorts virkjað</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Sjálfspuni Shorts afvirkjað</string>
   <string name="morphe_skip_live_shorts_title">Sleppa beinum Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Sleppir beinum streymum sem birtast í Shorts-straumnum</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Bílaútlit
   <string name="morphe_feed_card_layout_entry_1">Klassískt</string>
   <string name="morphe_feed_card_layout_entry_2">Spjöld</string>
   <string name="morphe_feed_card_layout_entry_3">Spjöld með like-, athugasemda- og vistunarhnöppum</string>
+  <string name="morphe_feed_card_layout_entry_4">Spjöld með glóuðum myndrími</string>
+  <string name="morphe_feed_card_layout_entry_5">Spjöld með like-, athugasemda- og vistunarhnöppum og glóuðum myndrími</string>
   <string name="morphe_feed_card_layout_comments">Athugasemdir</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Slökkva á endurupptöku smáspilara</string>
@@ -1512,6 +1524,10 @@ Bílaútlit
   <string name="morphe_custom_branding_icon_entry_8">Upprunalegur analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Upprunaleg kaka</string>
   <string name="morphe_custom_branding_icon_entry_10">Upprunalegur málmur</string>
+  <string name="morphe_custom_branding_icon_entry_11">Upprunalegur pels</string>
+  <string name="morphe_custom_branding_icon_entry_12">Upprunaleg vaterlit</string>
+  <string name="morphe_custom_branding_icon_entry_13">Upprunaleg klassík</string>
+  <string name="morphe_custom_branding_icon_entry_14">Upprunaleg retro sjónvarp</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Sjálfgefið</string>
   <string name="morphe_header_logo_entry_2">Venjulegt</string>
@@ -1639,6 +1655,8 @@ Myndskeið eru beðin um með stuttu forskeyti af dulkóðuðu myndskeiðsauðke
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Opnaðu tengla í vafra</string>
   <string name="morphe_external_browser_summary">Opnar tengla í utanaðkomandi vafra í stað innbyggðs vafra</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Enginn YouTube tengill fannst í deildum texta</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Stærð biðminnis spilunar</string>
   <string name="morphe_playback_buffer_size_entry_default">Sjálfgefið</string>

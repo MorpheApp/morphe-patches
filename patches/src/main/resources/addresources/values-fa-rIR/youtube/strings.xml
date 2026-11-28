@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">پنهان کردن نشان‌ها</string>
   <string name="morphe_hide_account_menu_downloads_title">پنهان‌کردن دانلودها</string>
   <string name="morphe_hide_account_menu_liked_videos_title">پنهان کردن \"ویدئوهای پسندیده\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">پنهان کردن فوتر \"سیاست حریم خصوصی\" و \"شرایط خدمات\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">پنهان کردن \"مته بعداً تماشا کنید\"</string>
   <string name="morphe_hide_album_cards_title">پنهان‌کردن کارت‌های آلبوم</string>
   <string name="morphe_hide_album_cards_summary">کارت‌های آلبوم زیر توضیحات هنرمند را پنهان می‌کند</string>
@@ -1264,6 +1265,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">در حالت خودکار، یک میکس پس از این تعداد ویدیو متوقف می‌شود. ۰ = بدون محدودیت</string>
   <string name="morphe_autoplay_mix_length">Mix: %s ویدیو</string>
   <string name="morphe_autoplay_mix_no_limit">میکس: بدون محدودیت</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">بازگردانی رفتار قدیمی Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">هنگام انتخاب یک ویدیوی دیگر یا بستن پخش‌کننده، نشست Cast متصل می‌ماند تا ویدیوها به پخش خود روی تلویزیون ادامه دهند</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">اعلان \"ادامه تماشا\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">پیش‌فرض</string>
@@ -1401,6 +1405,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">به‌جای تکرار مورد فعلی، به‌صورت خودکار به Short بعدی می‌رود</string>
   <string name="morphe_shorts_autoplay_background_title">پخش خودکار در پس‌زمینه</string>
   <string name="morphe_shorts_autoplay_background_summary">هنگام پخش در پس‌زمینه، به‌صورت خودکار به Short بعدی می‌رود</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">پخش خودکار در منوی Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">آیتمی را در منوی پخش‌کننده Shorts نمایش می‌دهد که پخش خودکار Shorts را فعال یا غیرفعال می‌کند</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">پخش خودکار Shorts · روشن</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">پخش خودکار Shorts · خاموش</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">پخش خودکار Shorts فعال شد</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">پخش خودکار Shorts غیرفعال شد</string>
   <string name="morphe_skip_live_shorts_title">رد کردن Shorts زنده</string>
   <string name="morphe_skip_live_shorts_summary">پخش زنده‌هایی را که در فید Shorts ظاهر می‌شوند رد می‌کند</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1425,6 +1435,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">کلاسیک</string>
   <string name="morphe_feed_card_layout_entry_2">کارت‌ها</string>
   <string name="morphe_feed_card_layout_entry_3">کارت‌هایی با دکمه‌های لایک، کامنت و ذخیره</string>
+  <string name="morphe_feed_card_layout_entry_4">کارت‌هایی با درخشش آواتار</string>
+  <string name="morphe_feed_card_layout_entry_5">کارت‌هایی با دکمه‌های لایک، کامنت و ذخیره و درخشش آواتار</string>
   <string name="morphe_feed_card_layout_comments">دیدگاه‌ها</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">غیرفعال‌کردن ادامهٔ پخش در مینی‌پخش‌کننده</string>
@@ -1511,6 +1523,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">آنالوگ اصلی</string>
   <string name="morphe_custom_branding_icon_entry_9">کیک اصلی</string>
   <string name="morphe_custom_branding_icon_entry_10">فلز اصلی</string>
+  <string name="morphe_custom_branding_icon_entry_11">خز اصلی</string>
+  <string name="morphe_custom_branding_icon_entry_12">آبرنگ اصلی</string>
+  <string name="morphe_custom_branding_icon_entry_13">کلاسیک اصلی</string>
+  <string name="morphe_custom_branding_icon_entry_14">تلویزیون قدیمی اصلی</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">پیش‌فرض</string>
   <string name="morphe_header_logo_entry_2">معمولی</string>
@@ -1638,6 +1654,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">بازکردن پیوندها در مرورگر</string>
   <string name="morphe_external_browser_summary">پیوندها را به‌جای مرورگر درون‌برنامه‌ای، در مرورگر خارجی باز می‌کند</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">هیچ لینک YouTube در متن به اشتراک گذاشته شده یافت نشد</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">اندازه بافر پخش</string>
   <string name="morphe_playback_buffer_size_entry_default">پیش‌فرض</string>

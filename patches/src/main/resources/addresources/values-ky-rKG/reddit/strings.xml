@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Төмөнкү панелдин баскычтары жана айнек панель</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Төмөн панелдин автоматтык түрдө жашырылышын өчүрүү</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Баракчаны жылдырганда төмөнкү навигациялык панелди көрүнүштө сактайт</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Жогорку контрасттуу навигациялык баскычтар</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Навигациялык панелдин тандалбаган баскычтарын боз түстүн ордуна, жарык режимде кара, ал эми караңгы режимде ак түстө көрсөтөт</string>
   <string name="morphe_glass_navigation_bar_title">Айнек навигациялык панель</string>
   <string name="morphe_glass_navigation_bar_summary">Навигациялык панелди лентанын үстүндө калкыган, жарым-жартылай тунук капсула катары көрсөтөт. Планшеттерде каптал панели да ушундай көрүнүшкө ээ болот</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Күйүк</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Чат баскычын жашыруу</string>
   <string name="morphe_hide_discover_button_title">Ачылыштар же Коомдоштуктар баскычын жашыруу</string>
   <string name="morphe_hide_games_button_title">Оюндар баскычын жашыруу</string>
+  <string name="morphe_subreddit_create_button_title">Жамааттардагы түзүү баскычы</string>
+  <string name="morphe_subreddit_create_button_summary">Ар бир жамаатта издөө баскычынын жанында пост түзүүнү баштоочу баскычты көрсөтөт</string>
+  <string name="morphe_subreddit_create_button_label">Пост түзүү</string>
+  <string name="morphe_subreddit_create_button_description">r/%s жамаатында пост түзүү</string>
   <string name="morphe_screen_sidebar_title">Каптал панель</string>
   <string name="morphe_sidebar_screen_summary">Каптал панелдеги текчелер жана баскычтар</string>
   <string name="morphe_settings_in_sidebar_title">Morphe жөндөөлөрүн көрсөтүү</string>

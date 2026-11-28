@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Ստորին տողի կոճակները և ապակյա տողը</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Անջատել ստորին վահանակի ավտոմատ թաքցումը</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Պահպանում է ստորին նավիգացիոն վահանակի տեսանելիությունը ոլորման ժամանակ</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Բարձր հակաստիճան նավիգացիայի կոճակներ</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Ցուցադրում է նավիգացիայի վահանակի չընտրված կոճակները սև գույնով լուսավոր ռեժիմում և սպիտակ գույնով մութ ռեժիմում՝ մոխրագույնի փոխարեն</string>
   <string name="morphe_glass_navigation_bar_title">Ապակե նավիգացիոն վահանակ</string>
   <string name="morphe_glass_navigation_bar_summary">Ցուցադրում է նավիգացիոն վահանակը որպես լողացող, կիսաթափանցիկ պատյան լիգիի վրա: Պլանշետների դեպքում կողմնային վահանակն ունի նույն տեսքը</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Միացված</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Թաքցնել \"Չատ\" կոճակը</string>
   <string name="morphe_hide_discover_button_title">Թաքցնել \"Բացահայտել\" կամ \"Համայնքներ\" կոճակը</string>
   <string name="morphe_hide_games_button_title">Թաքցնել Խաղերի կոճակը</string>
+  <string name="morphe_subreddit_create_button_title">Ստեղծել կոճակը համայնքներում</string>
+  <string name="morphe_subreddit_create_button_summary">Յուրաքանչյուր համայնքում Ց้นնման կողքին ցուցադրում է կոճակ, որը թույլ է տալիս ստեղծել գրառում այդտեղ</string>
+  <string name="morphe_subreddit_create_button_label">Ստեղծել գրառում</string>
+  <string name="morphe_subreddit_create_button_description">Ստեղծել գրառում r/%s-ում</string>
   <string name="morphe_screen_sidebar_title">Կողմային մենյու</string>
   <string name="morphe_sidebar_screen_summary">Կողմնամենյուի դարակները և կոճակները</string>
   <string name="morphe_settings_in_sidebar_title">Ցուցադրել Morphe-ի կարգավորումները</string>

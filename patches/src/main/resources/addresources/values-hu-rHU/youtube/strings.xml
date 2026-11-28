@@ -55,6 +55,7 @@ A változások ezeket tartalmazzák:
   <string name="morphe_hide_account_menu_badges_title">Jelzők elrejtése</string>
   <string name="morphe_hide_account_menu_downloads_title">Letöltések elrejtése</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"Tetsző videók\" elrejtése</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Elrejtése a \"Adatvédelmi irányelvek\" és a \"Szolgáltatási feltételek\" láblécnek</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"Megnézem később\" elrejtése</string>
   <string name="morphe_hide_album_cards_title">Albumkártyák elrejtése</string>
   <string name="morphe_hide_album_cards_summary">Elrejti az albumkártyákat az előadó leírása alatt</string>
@@ -1264,6 +1265,9 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <string name="morphe_autoplay_mix_stop_after_summary">Az Automatikus módban a Mix ennyi videó után megáll. 0 = nincs korlát</string>
   <string name="morphe_autoplay_mix_length">Mix: %s videó</string>
   <string name="morphe_autoplay_mix_no_limit">Keverés: korlátlan</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Régi Cast-viselkedés visszaállítása</string>
+  <string name="morphe_restore_old_cast_behavior_summary">A Cast-menet kapcsolódva marad egy másik videó kiválasztásakor vagy a lejátszó bezárásakor, így a videók tovább futnak a TV-n</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Folytassa a megtekintést?\" felugró ablak</string>
   <string name="morphe_continue_watching_prompt_entry_1">Alapértelmezett</string>
@@ -1402,6 +1406,12 @@ Autós elrendezés
   <string name="morphe_shorts_autoplay_summary">Automatikus továbblépés a következő Shortsra ahelyett, hogy az aktuális Shortsot ismételné</string>
   <string name="morphe_shorts_autoplay_background_title">Automatikus lejátszás háttérben</string>
   <string name="morphe_shorts_autoplay_background_summary">A következő Shorts automatikus lejátszása háttérlejátszás közben</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Automatikus lejátszás a Shorts menüben</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">A Shorts lejátszó menüjében egy olyan elemet jelenít meg, amellyel be- vagy kikapcsolható a Shorts automatikus lejátszása</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts automatikus lejátszása · Be</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts automatikus lejátszása · Ki</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">A Shorts automatikus lejátszása bekapcsolva</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">A Shorts automatikus lejátszása kikapcsolva</string>
   <string name="morphe_skip_live_shorts_title">Élő Shorts átugrása</string>
   <string name="morphe_skip_live_shorts_summary">Átugorja a Shorts hírfolyamban megjelenő élő közvetítéseket</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Autós elrendezés
   <string name="morphe_feed_card_layout_entry_1">Klasszikus</string>
   <string name="morphe_feed_card_layout_entry_2">Kártyák</string>
   <string name="morphe_feed_card_layout_entry_3">Kártyák lájkolási, kommentezési és mentési gombokkal</string>
+  <string name="morphe_feed_card_layout_entry_4">Kártyák avatar fényzéssel</string>
+  <string name="morphe_feed_card_layout_entry_5">Kártyák lájkolási, kommentelési és mentési gombokkal, valamint avatar fényzéssel</string>
   <string name="morphe_feed_card_layout_comments">Megjegyzések</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">A miniplayer folytatásának letiltása</string>
@@ -1512,6 +1524,10 @@ Autós elrendezés
   <string name="morphe_custom_branding_icon_entry_8">Eredeti analóg</string>
   <string name="morphe_custom_branding_icon_entry_9">Eredeti sütemény</string>
   <string name="morphe_custom_branding_icon_entry_10">Eredeti fém</string>
+  <string name="morphe_custom_branding_icon_entry_11">Eredeti szőrmű</string>
+  <string name="morphe_custom_branding_icon_entry_12">Eredeti akvarell</string>
+  <string name="morphe_custom_branding_icon_entry_13">Eredeti klasszikus</string>
+  <string name="morphe_custom_branding_icon_entry_14">Eredeti retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Alapértelmezett</string>
   <string name="morphe_header_logo_entry_2">Normál</string>
@@ -1639,6 +1655,8 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Hivatkozások megnyitása a böngészőben</string>
   <string name="morphe_external_browser_summary">A linkeket külső böngészőben nyitja meg az alkalmazáson belüli böngésző helyett</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Nincs YouTube-link a megosztott szövegben</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Lejátszási puffer mérete</string>
   <string name="morphe_playback_buffer_size_entry_default">Alapértelmezett</string>

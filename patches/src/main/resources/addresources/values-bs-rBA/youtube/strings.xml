@@ -55,6 +55,7 @@ Promjene uključuju:
   <string name="morphe_hide_account_menu_badges_title">Sakrij značke</string>
   <string name="morphe_hide_account_menu_downloads_title">Sakrij preuzimanja</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Sakrij \"Videozapisi koji mi se sviđaju\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Sakrij podnožje \'Politika privatnosti\' \'Uslovi korištenja\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">Sakrij \"Pogledaj kasnije\"</string>
   <string name="morphe_hide_album_cards_title">Sakrij kartice albuma</string>
   <string name="morphe_hide_album_cards_summary">Skriva kartice albuma ispod opisa izvođača</string>
@@ -1264,6 +1265,9 @@ Postavke → Reprodukcija (ili Automatsko puštanje) → Automatsko puštanje sl
   <string name="morphe_autoplay_mix_stop_after_summary">U načinu Auto, Mix se zaustavlja nakon ovog broja videa. 0 = bez ograničenja</string>
   <string name="morphe_autoplay_mix_length">Mix: %s videa</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: bez ograničenja</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Vrati staro Cast ponašanje</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast sesija ostaje povezana pri odabiru drugog videa ili zatvaranju plejera, tako da se videi nastavljaju reproducirati na TV-u</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Upit \"Nastavite gledati\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">The </string>
@@ -1402,6 +1406,12 @@ Automobilski izgled
   <string name="morphe_shorts_autoplay_summary">Automatski prelazi na sljedeći Short umjesto ponavljanja trenutnog</string>
   <string name="morphe_shorts_autoplay_background_title">Automatsko puštanje u pozadini</string>
   <string name="morphe_shorts_autoplay_background_summary">Automatski prelazi na sljedeći Short tokom reprodukcije u pozadini</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Automatsko puštanje u Shorts meniju</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Prikazuje stavku u meniju Shorts plejera koja uključuje ili isključuje automatsko puštanje Shorts videa</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Automatsko puštanje Shorts videa · Uključeno</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Automatsko puštanje Shorts videa · Isključeno</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Automatsko puštanje Shorts videa je uključeno</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Automatsko puštanje Shorts videa je isključeno</string>
   <string name="morphe_skip_live_shorts_title">Preskoči live Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Preskače live streamove koji se pojavljuju u Shorts feedu</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Automobilski izgled
   <string name="morphe_feed_card_layout_entry_1">Klasično</string>
   <string name="morphe_feed_card_layout_entry_2">Kartice</string>
   <string name="morphe_feed_card_layout_entry_3">Kartice sa dugmadima za sviđa mi se, komentar i spremanje</string>
+  <string name="morphe_feed_card_layout_entry_4">Kartice sa sjajem avatara</string>
+  <string name="morphe_feed_card_layout_entry_5">Kartice sa dugmadima za sviđanje, komentar i spremanje i sjajem avatara</string>
   <string name="morphe_feed_card_layout_comments">Komentari</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Onemogući nastavak reprodukcije u miniplayeru</string>
@@ -1512,6 +1524,10 @@ Automobilski izgled
   <string name="morphe_custom_branding_icon_entry_8">Originalni analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Originalna torta</string>
   <string name="morphe_custom_branding_icon_entry_10">Originalni metal</string>
+  <string name="morphe_custom_branding_icon_entry_11">Originalno krzno</string>
+  <string name="morphe_custom_branding_icon_entry_12">Originalni akvarel</string>
+  <string name="morphe_custom_branding_icon_entry_13">Originalni klasik</string>
+  <string name="morphe_custom_branding_icon_entry_14">Originalni retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Podrazumijevano</string>
   <string name="morphe_header_logo_entry_2">Regularno</string>
@@ -1639,6 +1655,8 @@ Videozapisi se zahtijevaju putem kratkog prefiksa hashiranog ID-a videa, tako da
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Otvaraj poveznice u pretraživaču</string>
   <string name="morphe_external_browser_summary">Otvara poveznice u vanjskom pregledniku umjesto u pregledniku unutar aplikacije</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Nema YouTube linka u podijeljenom tekstu</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Veličina bafera za reprodukciju</string>
   <string name="morphe_playback_buffer_size_entry_default">Zadano</string>

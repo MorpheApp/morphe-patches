@@ -36,4 +36,13 @@ public final class CastingPatch {
     public static boolean disconnectCastOnPlayerClose(boolean original) {
         return original && !RESTORE_OLD_CAST_BEHAVIOR;
     }
+
+    /**
+     * Injection point.
+     *
+     * @param original If swiping down the player while casting dismisses it, instead of minimizing it.
+     */
+    public static boolean dismissPlayerOnSwipeWhileCasting(boolean original) {
+        return original && !RESTORE_OLD_CAST_BEHAVIOR;
+    }
 }

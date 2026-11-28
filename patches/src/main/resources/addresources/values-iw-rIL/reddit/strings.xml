@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">כפתורי הסרגל התחתון וסרגל הזכוכית</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">בטל הסתרה אוטומטית של הסרגל התחתון</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">שומר על סרגל הניווט התחתון גלוי בזמן גלילה</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">כפתורי ניווט בניגודיות גבוהה</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">מציג את הכפתורים שלא נבחרו של סרגל הניווט בשחור במצב בהיר ובלבן במצב כהה, במקום באפור</string>
   <string name="morphe_glass_navigation_bar_title">סרגל ניווט מזכוכית</string>
   <string name="morphe_glass_navigation_bar_summary">מציג את סרגל הניווט כקפסולה צפה ושקופה מעל הפיד. בטאבלטים, לסרגל הצד יש מראה דומה</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">מופעל</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">הסתרת כפתור צ\'אט</string>
   <string name="morphe_hide_discover_button_title">הסתרת כפתור גלה או קהילות</string>
   <string name="morphe_hide_games_button_title">הסתרת כפתור משחקים</string>
+  <string name="morphe_subreddit_create_button_title">לחצן יצירה בקהילות</string>
+  <string name="morphe_subreddit_create_button_summary">מציג לחצן לצד החיפוש בכל קהילה שפותח פוסט שם</string>
+  <string name="morphe_subreddit_create_button_label">צור פוסט</string>
+  <string name="morphe_subreddit_create_button_description">צור פוסט ב-r/%s</string>
   <string name="morphe_screen_sidebar_title">סרגל צד</string>
   <string name="morphe_sidebar_screen_summary">מדפים וכפתורים בסרגל הצד</string>
   <string name="morphe_settings_in_sidebar_title">הצג הגדרות Morphe</string>

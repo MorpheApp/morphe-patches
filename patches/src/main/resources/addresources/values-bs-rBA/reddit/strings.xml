@@ -31,6 +31,8 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_navigation_bar_screen_summary">Dugmad donje trake i staklena traka</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Onemogući automatsko skrivanje donje trake</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Zadržava donju navigacijsku traku vidljivom tokom skrolanja</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigacijska dugmad visokog kontrasta</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Prikazuje neizabrana dugmad navigacijske trake u crnoj boji u svijetlom načinu rada i u bijeloj boji u tamnom načinu rada, umjesto u sivoj</string>
   <string name="morphe_glass_navigation_bar_title">Staklena navigacijska traka</string>
   <string name="morphe_glass_navigation_bar_summary">Prikazuje navigacijsku traku kao plutajuću, polutransparentnu kapsulu preko feeda. Na tabletima, bočna traka ima isti izgled</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Uključeno</string>
@@ -76,6 +78,10 @@ Da biste koristili stariju verziju, morate &lt;b&gt;deinstalirati&lt;/b&gt; Redd
   <string name="morphe_hide_chat_button_title">Sakrij dugme Chat</string>
   <string name="morphe_hide_discover_button_title">Sakrij dugme Istraži ili Zajednice</string>
   <string name="morphe_hide_games_button_title">Sakrij dugme Igre</string>
+  <string name="morphe_subreddit_create_button_title">Dugme za kreiranje u zajednicama</string>
+  <string name="morphe_subreddit_create_button_summary">Prikazuje dugme pored Pretrage u svakoj zajednici koje započinje objavu u njoj</string>
+  <string name="morphe_subreddit_create_button_label">Kreiraj objavu</string>
+  <string name="morphe_subreddit_create_button_description">Kreiraj objavu u r/%s</string>
   <string name="morphe_screen_sidebar_title">Bočna traka</string>
   <string name="morphe_sidebar_screen_summary">Police i dugmad u bočnoj traci</string>
   <string name="morphe_settings_in_sidebar_title">Prikaži Morphe postavke</string>

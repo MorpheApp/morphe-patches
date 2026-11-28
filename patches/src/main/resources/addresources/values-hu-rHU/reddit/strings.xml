@@ -31,6 +31,8 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_navigation_bar_screen_summary">Alsó sáv gombok és az üveg sáv</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Alsó sáv automatikus elrejtésének kikapcsolása</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Görgetés közben is láthatóvá teszi az alsó navigációs sávot</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Kiemelt kontrasztú navigációs gombok</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">A navigációs sáv kijelöletlen gombjai a világos módban fekete, a sötét módban pedig fehér színben jelennek meg a szürke helyett</string>
   <string name="morphe_glass_navigation_bar_title">Üvegszerű navigációs sáv</string>
   <string name="morphe_glass_navigation_bar_summary">A navigációs sávot egy lebegő, félig átlátszó kapszulaként jeleníti meg a hírfolyam felett. Tabletteken az oldalsáv is hasonló megjelenést kap</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Be</string>
@@ -76,6 +78,10 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_hide_chat_button_title">Csevegés gomb elrejtése</string>
   <string name="morphe_hide_discover_button_title">Felfedezés vagy Közösségek gomb elrejtése</string>
   <string name="morphe_hide_games_button_title">Játékok gomb elrejtése</string>
+  <string name="morphe_subreddit_create_button_title">L létrehozás gomb a közösségekben</string>
+  <string name="morphe_subreddit_create_button_summary">Keresés mellett egy gombot jelenít meg minden közösségben, amellyel bejegyzést lehet létrehozni</string>
+  <string name="morphe_subreddit_create_button_label">Bejegyzés létrehozása</string>
+  <string name="morphe_subreddit_create_button_description">Bejegyzés létrehozása az r/%s közösségben</string>
   <string name="morphe_screen_sidebar_title">Oldalsáv</string>
   <string name="morphe_sidebar_screen_summary">Polcok és gombok az oldalsávban</string>
   <string name="morphe_settings_in_sidebar_title">Morphe beállítások megjelenítése</string>

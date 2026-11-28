@@ -31,6 +31,8 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_navigation_bar_screen_summary">Hnappar neðra hluta og glerstanginn</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Óvirkja sjálfvirka fellingu neðri valmyndar</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Heldur leiðsöguslánni neðst sýnilegri meðan skrunað er</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Leiðsöguhnappar með háumandstæðum</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Sýnir óvaldta hnappa leiðsöguslárar í svart í ljósmúð og hvítum í dimmum múð, í stað gráans</string>
   <string name="morphe_glass_navigation_bar_title">Glerleiðsögustika</string>
   <string name="morphe_glass_navigation_bar_summary">Sýnir leiðsögustikuna sem svifandi, gjalhúðuðu hylki yfir feed-ið. Á spjaldtölvum hefur hliðarstikuna sama útlit</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">På</string>
@@ -76,6 +78,10 @@ Til að nota eldri útgáfu þarftu að &lt;b&gt;fjarlægja&lt;/b&gt; Reddit og 
   <string name="morphe_hide_chat_button_title">Fela Spjall hnappinn</string>
   <string name="morphe_hide_discover_button_title">Fela Uppgötva eða Samfélög hnappinn</string>
   <string name="morphe_hide_games_button_title">Fela Leiki hnappinn</string>
+  <string name="morphe_subreddit_create_button_title">Búa til hnapp í samfélögum</string>
+  <string name="morphe_subreddit_create_button_summary">Sýnir hnapp við hliðina á leit í hverju samfélagi sem hefur upphaf á færslu þar</string>
+  <string name="morphe_subreddit_create_button_label">Búa til færslu</string>
+  <string name="morphe_subreddit_create_button_description">Búa til færslu í r/%s</string>
   <string name="morphe_screen_sidebar_title">Hliðarspjald</string>
   <string name="morphe_sidebar_screen_summary">Hyljur og hnappar í hliðarskjánum</string>
   <string name="morphe_settings_in_sidebar_title">Sýna Morphe stillingar</string>

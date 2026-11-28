@@ -30,6 +30,8 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_navigation_bar_screen_summary">Alt çubuk düğmeleri ve cam çubuk</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Alt çubuğun otomatik gizlenmesini devre dışı bırak</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Kaydırma sırasında alt gezinme çubuğunun görünür kalmasını sağlar</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Yüksek kontrastlı gezinme düğmeleri</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Gezinme çubuğundaki seçilmemiş düğmeleri, gri yerine açık modda siyah, karanlık modda ise beyaz olarak gösterir</string>
   <string name="morphe_glass_navigation_bar_title">Cam gezinme çubuğu</string>
   <string name="morphe_glass_navigation_bar_summary">Gezinme çubuğunu akış üzerinde yüzen, yarı saydam bir kapsül olarak gösterir. Tabletlerde yan ray da aynı görünüme sahiptir</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Açık</string>
@@ -75,6 +77,10 @@ Daha eski bir sürümü kullanmak için, Reddit'i &lt;b&gt;kaldırıp&lt;/b&gt; 
   <string name="morphe_hide_chat_button_title">Sohbet düğmesini gizle</string>
   <string name="morphe_hide_discover_button_title">Keşfet veya Topluluklar düğmesini gizle</string>
   <string name="morphe_hide_games_button_title">Oyunlar düğmesini gizle</string>
+  <string name="morphe_subreddit_create_button_title">Topluluklarda oluştur düğmesi</string>
+  <string name="morphe_subreddit_create_button_summary">Her toplulukta Arama\'nın yanında orada bir gönderi başlatan bir düğme gösterir</string>
+  <string name="morphe_subreddit_create_button_label">Gönderi oluştur</string>
+  <string name="morphe_subreddit_create_button_description">r/%s içinde gönderi oluştur</string>
   <string name="morphe_screen_sidebar_title">Kenar çubuğu</string>
   <string name="morphe_sidebar_screen_summary">Yan çubuktaki raflar ve düğmeler</string>
   <string name="morphe_settings_in_sidebar_title">Morphe ayarlarını göster</string>

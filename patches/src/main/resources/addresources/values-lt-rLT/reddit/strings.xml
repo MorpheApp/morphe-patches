@@ -31,6 +31,8 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_navigation_bar_screen_summary">Apatinės juostos mygtukai ir stiklinė juosta</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Išjungti apatinės juostos automatinį slėpimą</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Slankstant puslapiu apatinė navigacijos juosta išlieka matoma</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Didelis kontrasto navigacijos mygtukai</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Rodo nenuylaunotus navigacijos juostos mygtukus juodos spalvos šviesiame režime ir baltos spalvos tamsiame režime, vietoj pilkos</string>
   <string name="morphe_glass_navigation_bar_title">Stiklinė naršymo juosta</string>
   <string name="morphe_glass_navigation_bar_summary">Rodo naršymo juostą kaip plauviančią, pusiatransparentę kapsulę virš naujienų sagių. Planšetiniuose įrenginiuose šoninė skiltis atrodo taip pat</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Įjungta</string>
@@ -76,6 +78,10 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Red
   <string name="morphe_hide_chat_button_title">Paslėpti Pokalbių mygtuką</string>
   <string name="morphe_hide_discover_button_title">Paslėpti Discover arba Communities mygtuką</string>
   <string name="morphe_hide_games_button_title">Paslėpti Žaidimus mygtuką</string>
+  <string name="morphe_subreddit_create_button_title">Kurti mygtukas bendruomenėse</string>
+  <string name="morphe_subreddit_create_button_summary">Kiekvienoje bendruomenėje šalia paieškos rodo mygtuką, leidžiantį kurti įrašą</string>
+  <string name="morphe_subreddit_create_button_label">Kurti įrašą</string>
+  <string name="morphe_subreddit_create_button_description">Kurti įrašą r/%s</string>
   <string name="morphe_screen_sidebar_title">Šoninė juosta</string>
   <string name="morphe_sidebar_screen_summary">Šriftai ir mygtukai šoninėje juostoje</string>
   <string name="morphe_settings_in_sidebar_title">Rodyti \"Morphe\" nustatymus</string>

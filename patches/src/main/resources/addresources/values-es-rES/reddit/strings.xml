@@ -31,6 +31,8 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_navigation_bar_screen_summary">Botones de la barra inferior y la barra de cristal</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Desactivar ocultación automática de la barra inferior</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantiene la barra de navegación inferior visible al hacer scroll</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Botones de navegación de alto contraste</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Muestra los botones no seleccionados de la barra de navegación en negro en el modo claro y en blanco en el modo oscuro, en lugar de gris</string>
   <string name="morphe_glass_navigation_bar_title">Barra de navegación de cristal</string>
   <string name="morphe_glass_navigation_bar_summary">Muestra la barra de navegación como una cápsula translúcida y flotante sobre el feed. En tabletas, el riel lateral tiene el mismo aspecto</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Activado</string>
@@ -76,6 +78,10 @@ Para usar una versión anterior, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddit y l
   <string name="morphe_hide_chat_button_title">Ocultar botón Chat</string>
   <string name="morphe_hide_discover_button_title">Ocultar botón Descubrir o Comunidades</string>
   <string name="morphe_hide_games_button_title">Ocultar botón Juegos</string>
+  <string name="morphe_subreddit_create_button_title">Botón Crear en las comunidades</string>
+  <string name="morphe_subreddit_create_button_summary">Muestra un botón junto a Buscar en cada comunidad que inicia una publicación allí</string>
+  <string name="morphe_subreddit_create_button_label">Crear publicación</string>
+  <string name="morphe_subreddit_create_button_description">Crear publicación en r/%s</string>
   <string name="morphe_screen_sidebar_title">Barra lateral</string>
   <string name="morphe_sidebar_screen_summary">Estantes y botones en la barra lateral</string>
   <string name="morphe_settings_in_sidebar_title">Mostrar ajustes de Morphe</string>

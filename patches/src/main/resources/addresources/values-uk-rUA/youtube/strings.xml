@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">Приховати значки</string>
   <string name="morphe_hide_account_menu_downloads_title">Приховати \"Завантаження\"</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Приховати \"Вподобані відео\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Приховати нижній колонтитул \"Політика конфіденційності\" \"Умови використання\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Приховати \"Дивитися пізніше\"</string>
   <string name="morphe_hide_album_cards_title">Приховати картки альбому</string>
   <string name="morphe_hide_album_cards_summary">Приховує картки альбомів під описом виконавця</string>
@@ -668,7 +669,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_counts_position_entry_2">Посередині праворуч</string>
   <string name="morphe_ryd_feed_counts_position_entry_3">Зверху ліворуч</string>
   <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
-  <string name="morphe_ryd_video_details_dislikes">Неподобається</string>
+  <string name="morphe_ryd_video_details_dislikes">Дизлайки</string>
   <!-- interaction.commentsearch.commentSearchPatch -->
   <string name="morphe_comment_search_title">Пошук у коментарях</string>
   <string name="morphe_comment_search_summary">Натисніть кнопку пошуку в коментарях, щоб показувати лише завантажені коментарі, які містять усі шукані слова. Візьміть слова в лапки, щоб шукати фразу</string>
@@ -1263,6 +1264,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">У режимі \"Авто\" Мікс зупиняється після такої кількості відео. 0 = без обмежень</string>
   <string name="morphe_autoplay_mix_length">Мікс: %s відео</string>
   <string name="morphe_autoplay_mix_no_limit">Мікс: без обмежень</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Відновити стару поведінку Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Сеанс Cast залишається підключеним під час вибору іншого відео або закриття плеєра, тому відео продовжують відтворюватися на телевізорі</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Запит \"Продовжити перегляд?\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Типово</string>
@@ -1401,6 +1405,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматично переходить до наступного Short замість повторення поточного</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматичне відтворення у фоновому режимі</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматично переходить до наступного Short під час фонового відтворення</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Автовідтворення в меню Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Додає пункт у меню плеєра Shorts, який вмикає або вимикає автовідтворення Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Автовідтворення Shorts · Увімк.</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Автовідтворення Shorts · Вимк.</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Автовідтворення Shorts увімкнено</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Автовідтворення Shorts вимкнено</string>
   <string name="morphe_skip_live_shorts_title">Пропустити прямі трансляції Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Пропускає прямі трансляції, що з\'являються в стрічці Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1425,6 +1435,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">Класичний</string>
   <string name="morphe_feed_card_layout_entry_2">Картки</string>
   <string name="morphe_feed_card_layout_entry_3">Картки з кнопками лайків, коментарів та збереження</string>
+  <string name="morphe_feed_card_layout_entry_4">Картки з сяйвом аватара</string>
+  <string name="morphe_feed_card_layout_entry_5">Картки з кнопками лайків, коментарів та збереження, а також сяйвом аватара</string>
   <string name="morphe_feed_card_layout_comments">Коментарі</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Вимкнути відновлення мініплеєра</string>
@@ -1474,7 +1486,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_status_bar_title">Приховати панель стану</string>
   <string name="morphe_hide_status_bar_summary">Приховує системну панель стану. Проведіть донизу від верхнього краю, щоб показати її на мить</string>
   <string name="morphe_hide_status_bar_tabletop_title">Приховати рядок стану в настільному режимі</string>
-  <string name="morphe_hide_status_bar_tabletop_summary">Приховує системний рядок стану під час перегляду відео в настільному режимі на напівскладеному пристрої, коли відео відображається у верхній частині, а елементи керування відтворенням — у нижній</string>
+  <string name="morphe_hide_status_bar_tabletop_summary">Приховує системний рядок стану під час перегляду відео в настільному режимі на напівскладеному пристрої, коли відео показується у верхній половині, а елементи керування відтворенням - у нижній</string>
   <string name="morphe_hide_status_bar_avoid_cutout_title">Тримати плеєр нижче вирізу дисплея</string>
   <string name="morphe_hide_status_bar_avoid_cutout_summary">Переміщує портретний відеоплеєр нижче вирізу дисплея, коли рядок стану приховано, залишаючи вгорі порожню смугу. Вимкніть, щоб відео заповнювало екран за вирізом</string>
   <string name="morphe_fix_status_bar_layout_title">Виправити перекриття верхніх панелей рядком стану</string>
@@ -1511,6 +1523,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">Оригінальна - аналог</string>
   <string name="morphe_custom_branding_icon_entry_9">Оригінальна - торт</string>
   <string name="morphe_custom_branding_icon_entry_10">Оригінальна - метал</string>
+  <string name="morphe_custom_branding_icon_entry_11">Оригінальне хутро</string>
+  <string name="morphe_custom_branding_icon_entry_12">Оригінальна акварель</string>
+  <string name="morphe_custom_branding_icon_entry_13">Оригінальна класика</string>
+  <string name="morphe_custom_branding_icon_entry_14">Оригінальний ретро-телевізор</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Стандартний</string>
   <string name="morphe_header_logo_entry_2">Звичайний</string>
@@ -1613,12 +1629,12 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_device_dimensions_summary">Увімкнення цього може розблокувати вищі якості відео</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Увімкнення може спричинити затинання при відтворенні відео, споживання акумулятора й невідомі побічні ефекти</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
-  <string name="morphe_disable_haptic_feedback_title">Тактильна віддача</string>
+  <string name="morphe_disable_haptic_feedback_title">Тактильний відгук</string>
   <string name="morphe_disable_haptic_feedback_summary">Виберіть, які взаємодії викликають вібрацію пристрою</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Вимкнути вібрацію між розділами</string>
   <string name="morphe_disable_haptic_feedback_precise_seeking_title">Вимкнути вібрацію точного перемотування</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Вимкнути вібрацію скасування перемотування</string>
-  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Вимкнути вібрацію при тривалому натисканні</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Вимкнути вібрацію при натисканні й утриманні</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Вимкнути вібрацію при масштабуванні</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Якщо Ви нещодавно змінили дані для входу у свій обліковий запис, видаліть і повторно встановіть MicroG</string>
@@ -1638,6 +1654,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Відкривати посилання у браузері</string>
   <string name="morphe_external_browser_summary">Відкриває посилання у зовнішньому браузері замість вбудованого</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">У спільному тексті немає посилання на YouTube</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Розмір буфера відтворення</string>
   <string name="morphe_playback_buffer_size_entry_default">Типовий</string>
@@ -2084,7 +2102,7 @@ AVC (H.264)
   <!-- Shared YouTube strings -->
   <string name="morphe_all_settings">Усі налаштування</string>
   <string name="morphe_clear_all">Очистити все</string>
-  <string name="morphe_haptic_feedback_title">Вібрація при жестах</string>
+  <string name="morphe_haptic_feedback_title">Увімкнути тактильний відгук</string>
   <string name="morphe_hide_dislike_button_title">Приховати кнопку \"Дизлайк\"</string>
   <string name="morphe_hide_in_channel_page_title">Приховати на сторінці каналу</string>
   <string name="morphe_hide_in_search_results_title">Приховати у результатах пошуку</string>

@@ -31,6 +31,8 @@ Om een oudere versie te gebruiken, moet je Reddit &lt;b&gt;deïnstalleren&lt;/b&
   <string name="morphe_navigation_bar_screen_summary">Knoppen in de onderste balk en de glazen balk</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Schakel automatisch verbergen van onderste balk uit</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Houdt de onderste navigatiebalk zichtbaar tijdens het scrollen</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigatieknoppen met hoog contrast</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Toont de niet-geselecteerde knoppen van de navigatiebalk in het zwart in de lichte modus en in het wit in de donkere modus, in plaats van grijs</string>
   <string name="morphe_glass_navigation_bar_title">Glazen navigatiebalk</string>
   <string name="morphe_glass_navigation_bar_summary">Toont de navigatiebalk als een zwevende, doorschijnende capsule over de feed. Op tablets heeft de zijbalk hetzelfde uiterlijk</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Aan</string>
@@ -76,6 +78,10 @@ Om een oudere versie te gebruiken, moet je Reddit &lt;b&gt;deïnstalleren&lt;/b&
   <string name="morphe_hide_chat_button_title">Chatknop verbergen</string>
   <string name="morphe_hide_discover_button_title">Verberg de Discover- of Communities-knop</string>
   <string name="morphe_hide_games_button_title">Gamesknop verbergen</string>
+  <string name="morphe_subreddit_create_button_title">Maak-knop in communities</string>
+  <string name="morphe_subreddit_create_button_summary">Toont in elke community een knop naast Zoeken waarmee een bericht kan worden gestart</string>
+  <string name="morphe_subreddit_create_button_label">Bericht maken</string>
+  <string name="morphe_subreddit_create_button_description">Bericht maken in r/%s</string>
   <string name="morphe_screen_sidebar_title">Zijbalk</string>
   <string name="morphe_sidebar_screen_summary">Planken en knoppen in de zijbalk</string>
   <string name="morphe_settings_in_sidebar_title">Toon Morphe-instellingen</string>

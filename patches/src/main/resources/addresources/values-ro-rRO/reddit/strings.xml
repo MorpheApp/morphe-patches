@@ -31,6 +31,8 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_navigation_bar_screen_summary">Butoanele barei de jos și bara de sticlă</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Dezactivează ascunderea automată a barei inferioare</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Menține bara de navigare inferioară vizibilă în timpul derulării</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Butoane de navigare cu contrast ridicat</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Afișează butoanele neselectate ale barei de navigare în negru în modul luminos și în alb în modul întunecat, în loc de gri</string>
   <string name="morphe_glass_navigation_bar_title">Bară de navigare din sticlă</string>
   <string name="morphe_glass_navigation_bar_summary">Afișează bara de navigare ca o capsulă plutitoare, translucidă, peste feed. Pe tablete, bara laterală are același aspect</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Pornit</string>
@@ -76,6 +78,10 @@ Pentru a utiliza o versiune mai veche, trebuie să &lt;b&gt;dezinstalați&lt;/b&
   <string name="morphe_hide_chat_button_title">Ascunde butonul Chat</string>
   <string name="morphe_hide_discover_button_title">Ascunde butonul Descoperă sau Comunități</string>
   <string name="morphe_hide_games_button_title">Ascunde butonul Jocuri</string>
+  <string name="morphe_subreddit_create_button_title">Buton de creare în comunități</string>
+  <string name="morphe_subreddit_create_button_summary">Afișează un buton lângă Căutare în fiecare comunitate, care inițiază o postare acolo</string>
+  <string name="morphe_subreddit_create_button_label">Creează postare</string>
+  <string name="morphe_subreddit_create_button_description">Creează postare în r/%s</string>
   <string name="morphe_screen_sidebar_title">Bara laterală</string>
   <string name="morphe_sidebar_screen_summary">Rafturi și butone în bara laterală</string>
   <string name="morphe_settings_in_sidebar_title">Afișați setările Morphe</string>

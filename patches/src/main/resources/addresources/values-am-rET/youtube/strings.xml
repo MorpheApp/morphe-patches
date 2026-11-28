@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">ባጅዎችን ደብቅ</string>
   <string name="morphe_hide_account_menu_downloads_title">ውርዶችን ደብቅ</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\'የተወደዱ ቪዲዮዎችን\' ደብቅ</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">የ\'የግላዊነት ፖሊሲ\' \'የአገልግሎት ውሎች\' Footer ደብቅ</string>
   <string name="morphe_hide_account_menu_watch_later_title">\'በኋላ ይመልከቱ\'ን ደብቅ</string>
   <string name="morphe_hide_album_cards_title">የአልበም ካርዶችን ደብቅ</string>
   <string name="morphe_hide_album_cards_summary">ከአርቲስቱ መግለጫ በታች ያሉትን የአልበም ካርዶች ይደብቃል</string>
@@ -1264,6 +1265,9 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">በራስ-ሰር ሁነታ፣ አንድ ሚክስ ከዚህ የቪዲዮ ብዛት በኋላ ይቆማል። 0 = ገደብ የለም</string>
   <string name="morphe_autoplay_mix_length">ሚክስ፦ %s ቪዲዮዎች</string>
   <string name="morphe_autoplay_mix_no_limit">ድብልቅ፡ ገደብ የሌለው</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">የድሮውን የ Cast ባህሪ ወደ ነበረበት መልስ</string>
+  <string name="morphe_restore_old_cast_behavior_summary">ሌላ ቪዲዮ ሲመረጥ ወይም ፕሌየሩ ሲዘጋ የ Cast ክፍለ-ጊዜው ግንኙነቱ እንዳይቋረጥ ያደርጋል፣ ስለዚህ ቪዲዮዎች በቲቪው ላይ መጫወታቸውን ይቀጥላሉ</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"መመልከት ይቀጥሉ?\" የሚል መጠየቂያ</string>
   <string name="morphe_continue_watching_prompt_entry_1">መደበኛ</string>
@@ -1402,6 +1406,12 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_shorts_autoplay_summary">አሁኑን ከመደጋገም ይልቅ በራሱ ወደሚቀጥለው Short ይሸጋገራል</string>
   <string name="morphe_shorts_autoplay_background_title">በጀርባ በራሱ እንዲጫወት አድርግ</string>
   <string name="morphe_shorts_autoplay_background_summary">በጀርባ በሚጫወትበት ወቅት በራሱ ወደሚቀጥለው Short ይሸጋገራል</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">በ Shorts ሜኑ ውስጥ በራሱ እንዲጫወት ማድረግ</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">በ Shorts ፕሌየር ሜኑ ውስጥ የ Shorts በራሱ እንዲጫወት (Autoplay) ማብሪያ እና ማጥፊያ ያሳያል</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts በራሱ እንዲጫወት ማድረግ · በርቷል</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts በራሱ እንዲጫወት ማድረግ · ጠፍቷል</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">የ Shorts አውቶፕሌይ በርቷል</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">የ Shorts አውቶፕሌይ ጠፍቷል</string>
   <string name="morphe_skip_live_shorts_title">ቀጥታ Shortsን ዝለል</string>
   <string name="morphe_skip_live_shorts_summary">በ Shorts ፊድ ውስጥ የሚታዩ የቀጥታ ስርጭቶችን ይዘላል</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_feed_card_layout_entry_1">ክላሲክ</string>
   <string name="morphe_feed_card_layout_entry_2">ካርዶች</string>
   <string name="morphe_feed_card_layout_entry_3">ላይክ፣ አስተያየት እና ማስቀመጫ ቁልፎች ያላቸው ካርዶች</string>
+  <string name="morphe_feed_card_layout_entry_4">የአቫታር ብርሃን ያላቸው ካርዶች</string>
+  <string name="morphe_feed_card_layout_entry_5">ላይክ፣ አስተያየት እና ማስቀመጫ ቁልፎች እንዲሁም የአቫታር ብርሃን ያላቸው ካርዶች</string>
   <string name="morphe_feed_card_layout_comments">አስተያየቶች</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ሚኒ ፕሌየርን መቀጠል አግድ</string>
@@ -1512,6 +1524,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_custom_branding_icon_entry_8">ኦሪጅናል አናሎግ</string>
   <string name="morphe_custom_branding_icon_entry_9">ኦሪጅናል ኬክ</string>
   <string name="morphe_custom_branding_icon_entry_10">ኦሪጅናል ሜታል</string>
+  <string name="morphe_custom_branding_icon_entry_11">ኦሪጅናል ፉር</string>
+  <string name="morphe_custom_branding_icon_entry_12">ኦሪጅናል ዋተርኮለር</string>
+  <string name="morphe_custom_branding_icon_entry_13">ኦሪጅናል ክላሲክ</string>
+  <string name="morphe_custom_branding_icon_entry_14">ኦሪጅናል ሬትሮ ቲቪ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">መደበኛ</string>
   <string name="morphe_header_logo_entry_2">መደበኛ</string>
@@ -1639,6 +1655,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">ሊንኮችን በብሮውዘር ክፈት</string>
   <string name="morphe_external_browser_summary">ሊንኮችን በመተግበሪያው ውስጥ ባለው ብሮውዘር ፋንታ በውጫዊ ብሮውዘር ይከፍታል</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">በተጋራው ጽሑፍ ውስጥ ምንም ዓይነት የYouTube ሊንክ የለም</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">የመልሶ ማጫወቻ ቋት መጠን</string>
   <string name="morphe_playback_buffer_size_entry_default">መደበኛ</string>

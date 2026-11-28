@@ -31,6 +31,8 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_navigation_bar_screen_summary">Onderste balk-knoppies en die glasbalk</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Deaktiveer outomatiese versteek van onderste balk</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Hou die onderste navigasiebalk sigbaar terwyl jy rollees</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Hoëkontras-navigasieknoppies</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Wys die nie-geselekteerde knoppies van die navigasiebalk in swart in ligte modus en wit in donker modus, in plaas van grys</string>
   <string name="morphe_glass_navigation_bar_title">Glas-navigasiebalk</string>
   <string name="morphe_glass_navigation_bar_summary">Wys die navigasiebalk as \'n drywende, halfdeursigtige kapsule oor die feed. Op tablette het die syreël dieselfde voorkoms</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Aan</string>
@@ -76,6 +78,10 @@ Om 'n ouer weergawe te gebruik, moet jy Reddit &lt;b&gt;deïnstalleer&lt;/b&gt; 
   <string name="morphe_hide_chat_button_title">Verberg Chat-knoppie</string>
   <string name="morphe_hide_discover_button_title">Verberg Ontdek of Gemeenskappe-knoppie</string>
   <string name="morphe_hide_games_button_title">Verberg Speletjies-knoppie</string>
+  <string name="morphe_subreddit_create_button_title">Skep-knoppie in gemeenskappe</string>
+  <string name="morphe_subreddit_create_button_summary">Wys \'n knoppie langs Soek in elke gemeenskap wat \'n plasing daar begin</string>
+  <string name="morphe_subreddit_create_button_label">Skep plasing</string>
+  <string name="morphe_subreddit_create_button_description">Skep plasing in r/%s</string>
   <string name="morphe_screen_sidebar_title">Sidebalk</string>
   <string name="morphe_sidebar_screen_summary">Rakke en knoppies in die sybalk</string>
   <string name="morphe_settings_in_sidebar_title">Wys Morphe-instellings</string>

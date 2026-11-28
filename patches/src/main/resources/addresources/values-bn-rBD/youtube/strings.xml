@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">ব্যাজগুলি লুকান</string>
   <string name="morphe_hide_account_menu_downloads_title">ডাউনলোডগুলো হাইড করুন</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\'পছন্দের ভিডিও\' লুকান</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'গোপনীয়তা নীতি\' \'পরিষেবার শর্তাবলী\' ফুটার হাইড করুন</string>
   <string name="morphe_hide_account_menu_watch_later_title">\'পরে দেখুন\' লুকান</string>
   <string name="morphe_hide_album_cards_title">অ্যালবাম কার্ড লুকান</string>
   <string name="morphe_hide_album_cards_summary">শিল্পীর বিবরণের নীচে অ্যালবাম কার্ডগুলি লুকিয়ে রাখে</string>
@@ -1264,6 +1265,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_autoplay_mix_stop_after_summary">অটো মোডে, একটি মিক্স এই সংখ্যক ভিডিওর পর থেমে যায়। ০ = কোনো সীমা নেই</string>
   <string name="morphe_autoplay_mix_length">মিক্স: %s টি ভিডিও</string>
   <string name="morphe_autoplay_mix_no_limit">মিক্স: কোনো সীমা নেই</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">পুরানো Cast আচরণ পুনরুদ্ধার করুন</string>
+  <string name="morphe_restore_old_cast_behavior_summary">অন্য কোনো ভিডিও নির্বাচন করার সময় বা প্লেয়ার বন্ধ করার সময় Cast সেশন সংযুক্ত থাকে, যাতে টিভি-তে ভিডিও চলতে থাকে</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'দেখা চালিয়ে যাবেন?\' প্রম্পট</string>
   <string name="morphe_continue_watching_prompt_entry_1">ডিফল্ট</string>
@@ -1402,6 +1406,12 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_shorts_autoplay_summary">বর্তমান Short পুনরাবৃত্তি করার পরিবর্তে স্বয়ংক্রিয়ভাবে পরবর্তী Short-এ চলে যায়</string>
   <string name="morphe_shorts_autoplay_background_title">ব্যাকগ্রাউন্ডে স্বয়ংক্রিয়ভাবে প্লে করুন</string>
   <string name="morphe_shorts_autoplay_background_summary">ব্যাকগ্রাউন্ড প্লেব্যাকের সময় স্বয়ংক্রিয়ভাবে পরবর্তী Short-এ চলে যায়</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts মেনুতে অটোপ্লে</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts প্লেয়ার মেনুতে একটি আইটেম দেখায় যা অটোপ্লে Shorts চালু বা বন্ধ করে</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">অটোপ্লে Shorts · চালু</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">অটোপ্লে Shorts · বন্ধ</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts অটোপ্লে চালু করা হয়েছে</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts অটোপ্লে বন্ধ করা হয়েছে</string>
   <string name="morphe_skip_live_shorts_title">লাইভ Shorts এড়িয়ে যান</string>
   <string name="morphe_skip_live_shorts_summary">Shorts ফিডে উপস্থিত লাইভ স্ট্রিমগুলো এড়িয়ে যায়</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_feed_card_layout_entry_1">ক্লাসিক</string>
   <string name="morphe_feed_card_layout_entry_2">কার্ড</string>
   <string name="morphe_feed_card_layout_entry_3">লাইক, মন্তব্য এবং সেভ বাটন সহ কার্ড</string>
+  <string name="morphe_feed_card_layout_entry_4">অ্যাভাটার গ্লো সহ কার্ডগুলি</string>
+  <string name="morphe_feed_card_layout_entry_5">লাইক, কমেন্ট এবং সেভ বাটন এবং অ্যাভাটার গ্লো সহ কার্ডগুলি</string>
   <string name="morphe_feed_card_layout_comments">মন্তব্য</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">মিনিপ্লেয়ারে আবার শুরু করা বন্ধ করুন</string>
@@ -1512,6 +1524,10 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_custom_branding_icon_entry_8">অরিজিনাল অ্যানালগ</string>
   <string name="morphe_custom_branding_icon_entry_9">অরিজিনাল কেক</string>
   <string name="morphe_custom_branding_icon_entry_10">অরিজিনাল মেটাল</string>
+  <string name="morphe_custom_branding_icon_entry_11">অরিজিনাল ফার</string>
+  <string name="morphe_custom_branding_icon_entry_12">অরিজিনাল জলরং</string>
+  <string name="morphe_custom_branding_icon_entry_13">অরিজিনাল ক্লাসিক</string>
+  <string name="morphe_custom_branding_icon_entry_14">অরিজিনাল রেট্রো টিভি</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">ডিফল্ট</string>
   <string name="morphe_header_logo_entry_2">সাধারণ</string>
@@ -1639,6 +1655,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">লিংক ব্রাউজারে খুলুন</string>
   <string name="morphe_external_browser_summary">ইন-অ্যাপ ব্রাউজারের পরিবর্তে একটি বাহ্যিক ব্রাউজারে লিঙ্ক খোলে।</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">শেয়ার করা টেক্সটে কোনো YouTube লিঙ্ক নেই</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">প্লেব্যাক বাফারের আকার</string>
   <string name="morphe_playback_buffer_size_entry_default">ডিফল্ট</string>

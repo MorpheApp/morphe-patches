@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Дугмад у доњој траци и стаклена трака</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Онемогући аутоматско скривање доње траке</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Задржава доњу导航траку видљивом током скроловања</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Дугмићи за навигацију са високим контрастом</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Приказује неизабране дугмиће навигационе траке у црној боји у светлом режиму и у белој боји у тамном режиму, уместо у сивој</string>
   <string name="morphe_glass_navigation_bar_title">Стаклена трака за навигацију</string>
   <string name="morphe_glass_navigation_bar_summary">Приказује траку за навигацију као плутајућу, полупровидну капсулу преко фида. На таблетима, бочна трака има исти изглед</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Укључено</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Сакриј дугме „Ћаскање“</string>
   <string name="morphe_hide_discover_button_title">Сакриј дугме „Откриј“ или „Заједнице“</string>
   <string name="morphe_hide_games_button_title">Сакриј дугме „Игре“</string>
+  <string name="morphe_subreddit_create_button_title">Дугме „Направи” у заједницама</string>
+  <string name="morphe_subreddit_create_button_summary">Приказује дугме поред Претраживања у свакој заједници које започиње објаву тамо</string>
+  <string name="morphe_subreddit_create_button_label">Направи објаву</string>
+  <string name="morphe_subreddit_create_button_description">Направи објаву у r/%s</string>
   <string name="morphe_screen_sidebar_title">Бочни мени</string>
   <string name="morphe_sidebar_screen_summary">Полице и дугмад у бочној траци</string>
   <string name="morphe_settings_in_sidebar_title">Прикажи подешавања Morphe-а</string>

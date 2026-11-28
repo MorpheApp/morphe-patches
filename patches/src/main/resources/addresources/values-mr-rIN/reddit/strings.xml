@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">बॉटम बार बटणे आणि ग्लास बार</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">बॉटम बार ऑटो-हाइड अक्षम करा</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">स्क्रोलिंग करताना बॉटम नेव्हिगेशन बार दिसत राहील</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">उच्च-कॉन्ट्रास्ट नेव्हिगेशन बटणे</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">नेव्हिगेशन बारची न निवडलेली बटणे राखाडी रंगाऐवजी, लाइट मोडमध्ये काळ्या रंगात आणि डार्क मोडमध्ये पांढऱ्या रंगात दर्शवते</string>
   <string name="morphe_glass_navigation_bar_title">ग्लास नेव्हिगेशन बार</string>
   <string name="morphe_glass_navigation_bar_summary">फीडवर फ्लोटिंग, अर्धपारदर्शक कॅप्सूल म्हणून नेव्हिगेशन बार दर्शवते. टॅब्लेटवर, साईड रेलला देखील असाच लूक असतो</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">चालू</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">चॅट बटण लपवा</string>
   <string name="morphe_hide_discover_button_title">शोध किंवा समुदाय बटण लपवा</string>
   <string name="morphe_hide_games_button_title">गेम बटण लपवा</string>
+  <string name="morphe_subreddit_create_button_title">समुदायांमध्ये निर्मिती बटण</string>
+  <string name="morphe_subreddit_create_button_summary">प्रत्येक समुदायामध्ये शोधच्या शेजारी एक बटण दाखवते जे तिथे पोस्ट सुरू करते</string>
+  <string name="morphe_subreddit_create_button_label">पोस्ट तयार करा</string>
+  <string name="morphe_subreddit_create_button_description">r/%s मध्ये पोस्ट तयार करा</string>
   <string name="morphe_screen_sidebar_title">साइडबार</string>
   <string name="morphe_sidebar_screen_summary">साईडबारमधील शेल्व्ह्स आणि बटणे</string>
   <string name="morphe_settings_in_sidebar_title">Morphe सेटिंग्ज दाखवा</string>

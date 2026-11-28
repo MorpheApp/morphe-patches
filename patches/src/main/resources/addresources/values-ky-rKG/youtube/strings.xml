@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">Белгилерди жашыруу</string>
   <string name="morphe_hide_account_menu_downloads_title">Жүктүүлөрдү жашыруу</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"Жактырылган видеолорду\" жашыруу</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'Купуруттуулукту сактоо саясаты\' жана \'Кызмат көрсөтүү шарттары\' буткерлерүн жашыруу</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"Кийинчерээк көрүү\" бөлүмүн жашыруу</string>
   <string name="morphe_hide_album_cards_title">Альбом карталарын жашыруу</string>
   <string name="morphe_hide_album_cards_summary">Артисттин сүрөттөмөсүнүн астындагы альбом карталарын жашырат</string>
@@ -1260,6 +1261,9 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_autoplay_mix_stop_after_summary">Авто режиминде Микс ушул көптүктөгү видеолордон кийин токтотот. 0 = чектөө жок</string>
   <string name="morphe_autoplay_mix_length">Микс: %s видео</string>
   <string name="morphe_autoplay_mix_no_limit">Микс: чектөө жок</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Эски Cast жүрүм-турумун калыбына келтирүү</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Башка видеону тандаганда же плеерди жапканда Cast сессиясы туташып калат, ошондуктан видеолор ТВ\'де ойноло берет</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Көрүүгө улантуу?\" суроосу</string>
   <string name="morphe_continue_watching_prompt_entry_1">Ыйык</string>
@@ -1398,6 +1402,12 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_shorts_autoplay_summary">Учурдагы видеону кайталоонун ордуна автоматтык түрдө кийинки Short видеосуна өтөт</string>
   <string name="morphe_shorts_autoplay_background_title">Арткы планда автоматтык түрдө ойнотуу</string>
   <string name="morphe_shorts_autoplay_background_summary">Арткы планда ойнотуу учурунда кийинки Short-ко автоматтык түрдө өтөт</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts менюсүндөгү автоматтык түрдө ойнотуу</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts плееринин менюсунда Shorts видеолорун автоматтык түрдө ойнотууну күйгүзүү же өчүрүү элементин көрсөтөт</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts видеолорун автоматтык түрдө ойнотуу · Күйгөн</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts видеолорун автоматтык түрдө ойнотуу · Өчкөн</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts автоойнатуу күйгүзүлдү</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts автоойнатуу өчүрүлдү</string>
   <string name="morphe_skip_live_shorts_title">Түз эфирдеги Shorts видеолорун өткөрүп жиберүү</string>
   <string name="morphe_skip_live_shorts_summary">Shorts лентасында пайда болгон түз эфирлерди өткөрүп жиберет</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1422,6 +1432,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_feed_card_layout_entry_1">Классикалык</string>
   <string name="morphe_feed_card_layout_entry_2">Карталар</string>
   <string name="morphe_feed_card_layout_entry_3">Жактыруу, комментарий жана сактоо баскычтары бар карталар</string>
+  <string name="morphe_feed_card_layout_entry_4">Аватардын нуру бар карталар</string>
+  <string name="morphe_feed_card_layout_entry_5">Жактыруу, комментарий жана сактоо баскычтары, ошондой эле аватардын нуру бар карталар</string>
   <string name="morphe_feed_card_layout_comments">Комментарийлер</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Миниплеерди кайра ачууну өчүрүү</string>
@@ -1508,6 +1520,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_custom_branding_icon_entry_8">Түп нуска аналог</string>
   <string name="morphe_custom_branding_icon_entry_9">Түп нуска торт</string>
   <string name="morphe_custom_branding_icon_entry_10">Түп нуска металл</string>
+  <string name="morphe_custom_branding_icon_entry_11">Түпкү моюн</string>
+  <string name="morphe_custom_branding_icon_entry_12">Түпкү акварель</string>
+  <string name="morphe_custom_branding_icon_entry_13">Түпкү классика</string>
+  <string name="morphe_custom_branding_icon_entry_14">Түпкү ретро ТВ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Демейки</string>
   <string name="morphe_header_logo_entry_2">Кадимки</string>
@@ -1635,6 +1651,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Шилтемелерди браузерде ачуу</string>
   <string name="morphe_external_browser_summary">Шилтемелерди колдонмонун ичиндеги браузердин ордуна тышкы браузерде ачат</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Бөлүшүлгөн текстте YouTube шилтемеси жок</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Ойнотуу буферинин өлчөмү</string>
   <string name="morphe_playback_buffer_size_entry_default">Демейки</string>

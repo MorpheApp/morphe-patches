@@ -31,6 +31,8 @@ Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplik
   <string name="morphe_navigation_bar_screen_summary">Przyciski dolnego paska i szklany pasek</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Wyłącz automatyczne ukrywanie dolnego paska</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Utrzymuje widoczność dolnego paska nawigacji podczas przewijania</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Wysoki kontrast przycisków nawigacji</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Wyświetla niewybrane przyciski paska nawigacji w kolorze czarnym w trybie jasnym i białym w trybie ciemnym, zamiast szarego</string>
   <string name="morphe_glass_navigation_bar_title">Szklany pasek nawigacji</string>
   <string name="morphe_glass_navigation_bar_summary">Wyświetla pasek nawigacji jako pływającą, półprzezroczystą kapsułę nad stroną główną. Na tabletach boczny pasek ma taki sam wygląd</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Włączono</string>
@@ -76,6 +78,10 @@ Aby korzystać ze starszej wersji, musisz &lt;b&gt;odinstalować&lt;/b&gt; aplik
   <string name="morphe_hide_chat_button_title">Ukryj przycisk Czaty</string>
   <string name="morphe_hide_discover_button_title">Ukryj przycisk Społeczności</string>
   <string name="morphe_hide_games_button_title">Ukryj przycisk Gry</string>
+  <string name="morphe_subreddit_create_button_title">Przycisk tworzenia w społecznościach</string>
+  <string name="morphe_subreddit_create_button_summary">Wyświetla przycisk obok wyszukiwania w każdej społeczności, który umożliwia utworzenie tam posta</string>
+  <string name="morphe_subreddit_create_button_label">Utwórz post</string>
+  <string name="morphe_subreddit_create_button_description">Utwórz post w r/%s</string>
   <string name="morphe_screen_sidebar_title">Pasek boczny</string>
   <string name="morphe_sidebar_screen_summary">Sekcje i przyciski na pasku bocznym</string>
   <string name="morphe_settings_in_sidebar_title">Pokaż ustawienia Morphe</string>

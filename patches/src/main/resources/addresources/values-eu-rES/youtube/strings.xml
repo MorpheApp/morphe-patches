@@ -55,6 +55,7 @@ Aldaketen artean daude:
   <string name="morphe_hide_account_menu_badges_title">Ezkutatu Abadureak</string>
   <string name="morphe_hide_account_menu_downloads_title">Ezkutatu deskargak</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Ezkutatu \'Gustuko bideoak\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Ezagutziaren Politika\' eta \'Zerbitzu Baldintzak\' footerra ezagutua</string>
   <string name="morphe_hide_account_menu_watch_later_title">Ezkutatu \'Gero ikusi\'</string>
   <string name="morphe_hide_album_cards_title">Ezkutatu album-txartelak</string>
   <string name="morphe_hide_album_cards_summary">Album-txartelak ezkutatzen ditu artistaren deskribapenaren azpian</string>
@@ -1264,6 +1265,9 @@ Ezarpenak → Erreprodukzioa (edo Autoplay) → Hurrengo bideoa automatikoki err
   <string name="morphe_autoplay_mix_stop_after_summary">Auto moduan, Mix bat bideo kopuru honen ondoren gelditzen da. 0 = mugaikertzatua</string>
   <string name="morphe_autoplay_mix_length">Mix: %s bideo</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: mugarik gabe</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Lehengo Cast jokabidea berrezarri</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast saioa konektatuta geratzen da bideo beste bat hautatzean edo playera itxitean, beraz, bideoak telebisioan erreprodukitzen jarraitzen dira</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Jarraitu ikusten?\" gomendioa</string>
   <string name="morphe_continue_watching_prompt_entry_1">Lehenagoa</string>
@@ -1402,6 +1406,12 @@ Automobilen diseinua
   <string name="morphe_shorts_autoplay_summary">Hurrengo Short-era automatikoki pasatzen da, unekoa errepikatu beharrean</string>
   <string name="morphe_shorts_autoplay_background_title">Autoerreproduzitu atzeko planoan</string>
   <string name="morphe_shorts_autoplay_background_summary">Hurrengo Short-era automatikoki pasatzen da atzeko planoan erreproduzitzen den bitartean</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Autoplay Shorts menuan</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts automatikoki erreproduzitzen duten aukera aktibatzeko edo desaktibatzeko elementu bat erakusten du Shortsatzearen menuan</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts automatikoki erreproduzitu · Aktibatu</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts automatikoki erreproduzitu · Desaktibatu</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts automatikoen erreprodukzioa aktibatuta</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts automatikoen erreprodukzioa desaktibatuta</string>
   <string name="morphe_skip_live_shorts_title">Saltatu Shorts zuzenekoak</string>
   <string name="morphe_skip_live_shorts_summary">Shorts feed-ean agertzen diren zuzeneko emisioak saltatzen ditu</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Automobilen diseinua
   <string name="morphe_feed_card_layout_entry_1">Klasikoa</string>
   <string name="morphe_feed_card_layout_entry_2">Txartelak</string>
   <string name="morphe_feed_card_layout_entry_3">Atsegin, iruzkin eta gorde botoiek dituzten txartelak</string>
+  <string name="morphe_feed_card_layout_entry_4">Avatarrez distira duten txartak</string>
+  <string name="morphe_feed_card_layout_entry_5">Atsegin, komentatu eta gorde botoiak eta avatarrez distira duten txartak</string>
   <string name="morphe_feed_card_layout_comments">Komentarioak</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Desaktibatu miniplayer-a berrekitea</string>
@@ -1512,6 +1524,10 @@ Automobilen diseinua
   <string name="morphe_custom_branding_icon_entry_8">Jatorrizko analogikoa</string>
   <string name="morphe_custom_branding_icon_entry_9">Kakea jatorrizkoa</string>
   <string name="morphe_custom_branding_icon_entry_10">Metala jatorrizkoa</string>
+  <string name="morphe_custom_branding_icon_entry_11">Jatorrizko pيلua</string>
+  <string name="morphe_custom_branding_icon_entry_12">Jatorrizko akuarela</string>
+  <string name="morphe_custom_branding_icon_entry_13">Jatorrizko klasikoa</string>
+  <string name="morphe_custom_branding_icon_entry_14">Jatorrizko retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Lehenetsia</string>
   <string name="morphe_header_logo_entry_2">Ohikoa</string>
@@ -1639,6 +1655,8 @@ Bideoak bideo-ID hash-atutako prefixo labur baten bidez eskatzen dira, beraz, ze
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Ireki estekak nabigatzailean</string>
   <string name="morphe_external_browser_summary">Estekak kanpoko nabigatzailean irekitzen ditu aplikazioaren barruko nabigatzailearen ordez</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Ez dago YouTube estekarik partekatutako testuan</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Erreprodukzio-bufferraren tamaina</string>
   <string name="morphe_playback_buffer_size_entry_default">Lehenetsia</string>

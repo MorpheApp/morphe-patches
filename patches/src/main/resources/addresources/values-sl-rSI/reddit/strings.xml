@@ -31,6 +31,8 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_navigation_bar_screen_summary">Gumbi spodnje vrstice in steklena vrstica</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Onemogoči samodejno skrivanje spodnje vrstice</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Ohrani spodnjo navigacijsko vrstico vidno med pomikanjem</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigacijski gumbi z visokim kontrastom</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Neizbrani gumbi navigacijske vrstice so v svetlem načinu prikazani v črni, v temnem načinu pa v beli barvi namesto sive</string>
   <string name="morphe_glass_navigation_bar_title">Steklena navigacijska vrstica</string>
   <string name="morphe_glass_navigation_bar_summary">Prikaže navigacijsko vrstico kot plutajočo, polprozorno kapsulo nad vznapravljanjem. Na tablicah ima stranska vrstica enak izgled</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Vklopljeno</string>
@@ -76,6 +78,10 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_hide_chat_button_title">Skrij gumb Klepet</string>
   <string name="morphe_hide_discover_button_title">Skrij gumb Odkrij ali Skupnosti</string>
   <string name="morphe_hide_games_button_title">Skrij gumb Igre</string>
+  <string name="morphe_subreddit_create_button_title">Gumb za ustvarjanje v skupnostih</string>
+  <string name="morphe_subreddit_create_button_summary">V vsaki skupnosti poleg iskanja prikaže gumb, s katerim lahko tam začnete objavo</string>
+  <string name="morphe_subreddit_create_button_label">Ustvari objavo</string>
+  <string name="morphe_subreddit_create_button_description">Ustvari objavo v r/%s</string>
   <string name="morphe_screen_sidebar_title">Stranska vrstica</string>
   <string name="morphe_sidebar_screen_summary">Police in gumbi v stransemeniku</string>
   <string name="morphe_settings_in_sidebar_title">Prikaži nastavitve Morphe</string>

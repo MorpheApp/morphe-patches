@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">Թաքցնել կնարները</string>
   <string name="morphe_hide_account_menu_downloads_title">Թաքցնել ներբեռնումները</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Թաքցնել \"Հավանած տեսանյութերը\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Թաքցնել \"Գաղտնիության քաղաքականությունը\" և \"Օգտագործման պայմանները\" ստորին հատվածը</string>
   <string name="morphe_hide_account_menu_watch_later_title">Թաքցնել \"Դիտել ավելի ուշ\"</string>
   <string name="morphe_hide_album_cards_title">Թաքցնել ալբոմների քարտերը</string>
   <string name="morphe_hide_album_cards_summary">Թաքցնում է ալբոմի քարտերը արտիստի նկարագրության տակ</string>
@@ -1264,6 +1265,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">Ավտոմատ ռեժիմում Mix-ը կանգնում է այսքան տեսանյութերից հետո: 0 = առանց սահմանափակման</string>
   <string name="morphe_autoplay_mix_length">Mix. %s տեսանյութ</string>
   <string name="morphe_autoplay_mix_no_limit">Mix. առանց սահմանափակման</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Վերականգնել Cast-ի հին վարքագիծը</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast սեսիան մնում է միացած այլ տեսանյութ ընտրելիս կամ նվագարկիչը փակելիս, ուստի տեսանյութերը շարունակում են նվագարկվել հեռուստացույցում</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">«Շարունակե՞լ դիտումը» հրդեհում</string>
   <string name="morphe_continue_watching_prompt_entry_1">Լռելյայն</string>
@@ -1402,6 +1406,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Ավտոմատ կերպով անցնում է հաջորդ Short-ին՝ ընթացիկը կրկնելու փոխարեն</string>
   <string name="morphe_shorts_autoplay_background_title">Ավտոմատ միացում հետին պլանում</string>
   <string name="morphe_shorts_autoplay_background_summary">Հետին պլանում նվագարկման ժամանակ ավտոմատ կերպով անցնում է հաջորդ Short-ին</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Ավտոմատ նվագարկում Shorts մենյուում</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Ցույց է տալիս Shorts նվագարկիչի մենյուի տարր, որն միացնում կամ անջատում է Shorts-երի ավտոմատ նվագարկումը</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts-երի ավտոմատ նվագարկում · Միացված</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts-երի ավտոմատ նվագարկում · Անջատված</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts-երի ավտոմատ միացումը միացված է</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts-երի ավտոմատ միացումը անջատված է</string>
   <string name="morphe_skip_live_shorts_title">Բաց թողնել ուղիղ Shorts-երը</string>
   <string name="morphe_skip_live_shorts_summary">Բաց է թողնում ուղիղ հեռարձակումները, որոնք հայտնվում են Shorts-երի հոսքում</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">Դասական</string>
   <string name="morphe_feed_card_layout_entry_2">Քարտեր</string>
   <string name="morphe_feed_card_layout_entry_3">Քարտեր՝ հավանելու, մեկնաբանելու և պահպանելու կոճակներով</string>
+  <string name="morphe_feed_card_layout_entry_4">Քարտեր՝ ավատարի փայլով</string>
+  <string name="morphe_feed_card_layout_entry_5">Քարտեր՝ հավանման, մեկնաբանության և պահպանման կոճակներով ու ավատարի փայլով</string>
   <string name="morphe_feed_card_layout_comments">Մեկնաբանություններ</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Անջատել մինի-նվագիչի վերսկսումը</string>
@@ -1512,6 +1524,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">Բնօրինակ անալոգ</string>
   <string name="morphe_custom_branding_icon_entry_9">Բնօրինակ տորթ</string>
   <string name="morphe_custom_branding_icon_entry_10">Բնօրինակ մետաղ</string>
+  <string name="morphe_custom_branding_icon_entry_11">Օրիգինալ շտկար</string>
+  <string name="morphe_custom_branding_icon_entry_12">Օրիգինալ ակվարել</string>
+  <string name="morphe_custom_branding_icon_entry_13">Օրիգինալ դասիկ</string>
+  <string name="morphe_custom_branding_icon_entry_14">Օրիգինալ ռետրո ՀՏ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Լռելյայն</string>
   <string name="morphe_header_logo_entry_2">Սովորական</string>
@@ -1639,6 +1655,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Բացել հղումները բրաուզերում</string>
   <string name="morphe_external_browser_summary">Բացում է հղումները արտաքին բրաուզերում՝ հավելվածի ներսի բրաուզերի փոխարեն</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Կիսված տեքստում YouTube հղում չկա</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Վերարտադրման բուֆերի չափը</string>
   <string name="morphe_playback_buffer_size_entry_default">Լռելյայն</string>

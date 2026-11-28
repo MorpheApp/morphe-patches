@@ -55,6 +55,7 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_account_menu_badges_title">Ẩn Huy hiệu</string>
   <string name="morphe_hide_account_menu_downloads_title">Ẩn Tải xuống</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Ẩn \"Video đã thích\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Ẩn chân trang \'Chính sách bảo mật\' \'Điều khoản dịch vụ\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">Ẩn \"Xem sau\"</string>
   <string name="morphe_hide_album_cards_title">Ẩn thẻ đĩa nhạc</string>
   <string name="morphe_hide_album_cards_summary">Ẩn các thẻ album bên dưới phần mô tả nghệ sĩ</string>
@@ -1264,6 +1265,9 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <string name="morphe_autoplay_mix_stop_after_summary">Ở chế độ Tự động, một bản Mix sẽ dừng sau số lượng video này. 0 = không giới hạn</string>
   <string name="morphe_autoplay_mix_length">Mix: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: không giới hạn</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Khôi phục hành vi Cast cũ</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Phiên Cast vẫn duy trì kết nối khi chọn video khác hoặc đóng trình phát, nhờ đó các video tiếp tục phát trên TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Thông báo \'Tiếp tục xem\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Mặc định</string>
@@ -1402,6 +1406,12 @@ Giao diện ô tô
   <string name="morphe_shorts_autoplay_summary">Tự động lướt xuống Short tiếp theo thay vì lặp lại Short hiện tại</string>
   <string name="morphe_shorts_autoplay_background_title">Tự động phát trong nền</string>
   <string name="morphe_shorts_autoplay_background_summary">Tự động lướt tiếp Short kể cả khi phát nền</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Tự động phát trong menu Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Hiển thị một mục trong menu trình phát Shorts để bật hoặc tắt Tự động phát Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Tự động phát Shorts · Bật</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Tự động phát Shorts · Tắt</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Đã bật Tự động phát Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Đã tắt Tự động phát Shorts</string>
   <string name="morphe_skip_live_shorts_title">Bỏ qua Shorts trực tiếp</string>
   <string name="morphe_skip_live_shorts_summary">Bỏ qua các luồng phát trực tiếp xuất hiện trong nguồn cấp dữ liệu Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Giao diện ô tô
   <string name="morphe_feed_card_layout_entry_1">Cổ điển</string>
   <string name="morphe_feed_card_layout_entry_2">Thẻ bài</string>
   <string name="morphe_feed_card_layout_entry_3">Thẻ có nút thích, bình luận và lưu</string>
+  <string name="morphe_feed_card_layout_entry_4">Thẻ có hiệu ứng phát sáng quanh ảnh đại diện</string>
+  <string name="morphe_feed_card_layout_entry_5">Thẻ có các nút thích, bình luận, lưu và hiệu ứng phát sáng quanh ảnh đại diện</string>
   <string name="morphe_feed_card_layout_comments">Bình luận</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Tắt tiếp tục phát trong trình phát thu nhỏ</string>
@@ -1512,6 +1524,10 @@ Giao diện ô tô
   <string name="morphe_custom_branding_icon_entry_8">Analog nguyên bản</string>
   <string name="morphe_custom_branding_icon_entry_9">Bánh gốc</string>
   <string name="morphe_custom_branding_icon_entry_10">Kim loại gốc</string>
+  <string name="morphe_custom_branding_icon_entry_11">Lông Gốc</string>
+  <string name="morphe_custom_branding_icon_entry_12">Màu nước Gốc</string>
+  <string name="morphe_custom_branding_icon_entry_13">Cổ điển Gốc</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV retro Gốc</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Mặc định</string>
   <string name="morphe_header_logo_entry_2">Thông thường</string>
@@ -1639,6 +1655,8 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Mở liên kết trong trình duyệt</string>
   <string name="morphe_external_browser_summary">Mở liên kết trong trình duyệt bên ngoài thay vì trình duyệt trong ứng dụng</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Không có liên kết YouTube trong văn bản được chia sẻ</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Kích thước bộ đệm phát lại</string>
   <string name="morphe_playback_buffer_size_entry_default">Mặc định</string>

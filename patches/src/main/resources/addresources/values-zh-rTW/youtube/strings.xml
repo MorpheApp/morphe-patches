@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">隱藏徽章</string>
   <string name="morphe_hide_account_menu_downloads_title">隱藏下載</string>
   <string name="morphe_hide_account_menu_liked_videos_title">隱藏「Liked videos」</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">隱藏「隱私權政策」與「服務條款」頁尾</string>
   <string name="morphe_hide_account_menu_watch_later_title">隱藏「稍後觀看」</string>
   <string name="morphe_hide_album_cards_title">隱藏專輯資訊卡</string>
   <string name="morphe_hide_album_cards_summary">隱藏藝術家描述下方的專輯卡片</string>
@@ -1262,6 +1263,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">在自動模式下，混音集在播放此數量的影片後停止。0 = 無限制</string>
   <string name="morphe_autoplay_mix_length">混音集：%s 部影片</string>
   <string name="morphe_autoplay_mix_no_limit">混音集：無限制</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">還原舊版 Cast 行為</string>
+  <string name="morphe_restore_old_cast_behavior_summary">在選擇不同影片或關閉播放器時，Cast 工作階段仍保持連線，因此影片會在電視上繼續播放</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">“繼續觀看？”提示</string>
   <string name="morphe_continue_watching_prompt_entry_1">預設</string>
@@ -1400,6 +1404,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">自動進到下一個 Shorts</string>
   <string name="morphe_shorts_autoplay_background_title">背景自動播放</string>
   <string name="morphe_shorts_autoplay_background_summary">在背景播放期間自動到 Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts 選單中的自動播放</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">在 Shorts 播放器選單中顯示一個可用於開啟或關閉自動播放 Shorts 的項目</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">自動播放 Shorts · 開啟</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">自動播放 Shorts · 關閉</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">已開啟自動播放 Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">已關閉自動播放 Shorts</string>
   <string name="morphe_skip_live_shorts_title">跳過直播 Short</string>
   <string name="morphe_skip_live_shorts_summary">跳過出現在 Shorts 資訊流中的直播</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1424,6 +1434,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">經典</string>
   <string name="morphe_feed_card_layout_entry_2">卡片</string>
   <string name="morphe_feed_card_layout_entry_3">含喜歡、留言和儲存按鈕的卡片</string>
+  <string name="morphe_feed_card_layout_entry_4">帶有頭像發光效果的卡片</string>
+  <string name="morphe_feed_card_layout_entry_5">帶有按讚、評論、儲存按鈕及頭像發光效果的卡片</string>
   <string name="morphe_feed_card_layout_comments">留言區</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">停用迷你播放器恢復功能</string>
@@ -1510,6 +1522,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">原始類比</string>
   <string name="morphe_custom_branding_icon_entry_9">原始蛋糕</string>
   <string name="morphe_custom_branding_icon_entry_10">原版金屬</string>
+  <string name="morphe_custom_branding_icon_entry_11">原始皮草</string>
+  <string name="morphe_custom_branding_icon_entry_12">原始水彩</string>
+  <string name="morphe_custom_branding_icon_entry_13">原始經典</string>
+  <string name="morphe_custom_branding_icon_entry_14">原始復古電視</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">預設</string>
   <string name="morphe_header_logo_entry_2">一般</string>
@@ -1637,6 +1653,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">在瀏覽器中開啟連結</string>
   <string name="morphe_external_browser_summary">在外部瀏覽器中開啟連結，而不是應用程式內瀏覽器</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">共用文字中沒有 YouTube 連結</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">播放緩衝區大小</string>
   <string name="morphe_playback_buffer_size_entry_default">預設</string>

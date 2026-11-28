@@ -53,8 +53,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_filter_strings_title">تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">أدخل أسماء قائمة المكتبة / أنت السفلية التي تريد تصفية النتائج بناءً عليها، مفصولة بأسطر جديدة</string>
   <string name="morphe_hide_account_menu_badges_title">إخفاء الشارات</string>
-  <string name="morphe_hide_account_menu_downloads_title">إخفاء التنزيلات</string>
+  <string name="morphe_hide_account_menu_downloads_title">إخفاء التحميلات</string>
   <string name="morphe_hide_account_menu_liked_videos_title">إخفاء \'فيديوهات أعجبتك\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">إخفاء نص \'سياسة الخصوصية\' • \'بنود الخدمة\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">إخفاء \'المشاهدة لاحقًا\'</string>
   <string name="morphe_hide_album_cards_title">إخفاء بطاقات الألبوم</string>
   <string name="morphe_hide_album_cards_summary">يخفي بطاقات الألبوم أسفل وصف الفنان</string>
@@ -1268,6 +1269,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_autoplay_mix_stop_after_summary">في الوضع التلقائي، يتوقف المزيج بعد هذا العدد من الفيديوهات. 0 = لا يوجد حد</string>
   <string name="morphe_autoplay_mix_length">مزيج: %s من الفيديوهات</string>
   <string name="morphe_autoplay_mix_no_limit">مزيج: بلا حدود</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">استعادة سلوك Cast القديم</string>
+  <string name="morphe_restore_old_cast_behavior_summary">تظل جلسة Cast متصلة عند اختيار فيديو مختلف أو إغلاق المشغل، بحيث تستمر الفيديوهات في التشغيل على التلفاز</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">الرسالة المنبثقة \'متابعة المشاهدة؟\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">الوضع الافتراضي</string>
@@ -1406,6 +1410,12 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_shorts_autoplay_summary">ينتقل إلى Short التالي تلقائيًا بدلًا من تكرار Short الحالي</string>
   <string name="morphe_shorts_autoplay_background_title">التشغيل التلقائي في الخلفية</string>
   <string name="morphe_shorts_autoplay_background_summary">ينتقل إلى Short التالي تلقائيًا أثناء التشغيل في الخلفية</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">التشغيل التلقائي في قائمة Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">عرض عنصر في قائمة مشغل Shorts لتشغيل التشغيل التلقائي لفيديوهات Shorts أو إيقافه</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">التشغيل التلقائي لفيديوهات Shorts · قيد التشغيل</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">التشغيل التلقائي لفيديوهات Shorts · متوقف</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">تم تفعيل التشغيل التلقائي لفيديوهات Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">تم إيقاف التشغيل التلقائي لفيديوهات Shorts</string>
   <string name="morphe_skip_live_shorts_title">تخطي بث Shorts المباشر</string>
   <string name="morphe_skip_live_shorts_summary">يتخطى البثوث المباشرة التي تظهر في خلاصة Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1430,6 +1440,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_feed_card_layout_entry_1">كلاسيكي</string>
   <string name="morphe_feed_card_layout_entry_2">بطاقات</string>
   <string name="morphe_feed_card_layout_entry_3">تُعرض فيديوهات الخلاصة كبطاقات تحتوي على أزرار الإعجاب، التعليق والحفظ</string>
+  <string name="morphe_feed_card_layout_entry_4">بطاقات مع توهج الصورة الرمزية</string>
+  <string name="morphe_feed_card_layout_entry_5">بطاقات تحتوي على أزرار الإعجاب والتعليق والحفظ وتوهج الصورة الرمزية</string>
   <string name="morphe_feed_card_layout_comments">التعليقات</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">تعطيل استئناف مشغل الفيديو المصغر</string>
@@ -1516,6 +1528,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_custom_branding_icon_entry_8">التماثلي الأصلي</string>
   <string name="morphe_custom_branding_icon_entry_9">الأصلية كعكة</string>
   <string name="morphe_custom_branding_icon_entry_10">الأصلية معدن</string>
+  <string name="morphe_custom_branding_icon_entry_11">الفرو الأصلي</string>
+  <string name="morphe_custom_branding_icon_entry_12">الألوان المائية الأصلية</string>
+  <string name="morphe_custom_branding_icon_entry_13">الكلاسيكي الأصلي</string>
+  <string name="morphe_custom_branding_icon_entry_14">تلفاز ريترو الأصلي</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_2">القياسي</string>
@@ -1643,6 +1659,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">فتح الروابط في المتصفح</string>
   <string name="morphe_external_browser_summary">يفتح الروابط في متصفح خارجي بدلًا من المتصفح داخل التطبيق</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">لا يوجد رابط YouTube في النص المشترك</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">حجم المخزن المؤقت للتشغيل</string>
   <string name="morphe_playback_buffer_size_entry_default">الوضع الافتراضي</string>

@@ -31,6 +31,8 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_navigation_bar_screen_summary">Botons de la barra inferior i la barra de vidre</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Desactiva l\'ocultació automàtica de la barra inferior</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Manté visible la barra de navegació inferior mentre es desplaça</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Botons de navegació de contrast alt</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Mostra els botons no seleccionats de la barra de navegació en negre en mode clar i en blanc en mode fosc, en lloc de gris</string>
   <string name="morphe_glass_navigation_bar_title">Barra de navegació de vidre</string>
   <string name="morphe_glass_navigation_bar_summary">Mostra la barra de navegació com una càpsula flotant i translúcida sobre el feed. En les tauletes, el raïl lateral té la mateixa apariencia</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Activat</string>
@@ -76,6 +78,10 @@ Per utilitzar una versió més antiga, heu de &lt;b&gt;desinstal·lar&lt;/b&gt; 
   <string name="morphe_hide_chat_button_title">Ocultar el botó de Xat</string>
   <string name="morphe_hide_discover_button_title">Ocultar el botó de Descobrir o Comunitats</string>
   <string name="morphe_hide_games_button_title">Amaga el botó de Jocs</string>
+  <string name="morphe_subreddit_create_button_title">Botó de crear a les comunitats</string>
+  <string name="morphe_subreddit_create_button_summary">Mostra un botó al costat de Cerca a cada comunitat que inicia una publicació allà</string>
+  <string name="morphe_subreddit_create_button_label">Crear publicació</string>
+  <string name="morphe_subreddit_create_button_description">Crear publicació a r/%s</string>
   <string name="morphe_screen_sidebar_title">Barra lateral</string>
   <string name="morphe_sidebar_screen_summary">Prestatges i botons de la barra lateral</string>
   <string name="morphe_settings_in_sidebar_title">Mostra la configuració de Morphe</string>

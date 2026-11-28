@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">বটম বার বোতাম এবং গ্লাস বার</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">নিচের বার অটো-হাইড নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">স্ক্রোল করার সময় নিচের নেভিগেশন বারটি দৃশ্যমান রাখে</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">হাই-কন্ট্রাস্ট নেভিগেশন বোতামগুলি</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">নেভিগেশন বারের আনসিলেক্টেড বোতামগুলি ধূসরের পরিবর্তে লাইট মোডে কালো এবং ডার্ক মোডে সাদা রঙে দেখায়</string>
   <string name="morphe_glass_navigation_bar_title">গ্লাস নেভিগেশন বার</string>
   <string name="morphe_glass_navigation_bar_summary">ফিডের উপরে একটি ফ্লোটিং, ট্রান্সলুসেন্ট ক্যাপসুল হিসেবে নেভিগেশন বার দেখায়। ট্যাবলেটে, সাইড রেইলের রূপটি একই হবে</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">চালু</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">চ্যাট বোতাম লুকান</string>
   <string name="morphe_hide_discover_button_title">ডিসকভার বা কমিউনিটিস বোতাম লুকান</string>
   <string name="morphe_hide_games_button_title">গেমস বোতাম লুকান</string>
+  <string name="morphe_subreddit_create_button_title">কমিউনিটিতে তৈরি বোতাম</string>
+  <string name="morphe_subreddit_create_button_summary">প্রতিটি কমিউনিটিতে সার্চের পাশে একটি বোতাম দেখায় যা সেখানে একটি পোস্ট শুরু করে</string>
+  <string name="morphe_subreddit_create_button_label">পোস্ট তৈরি করুন</string>
+  <string name="morphe_subreddit_create_button_description">r/%s-এ পোস্ট তৈরি করুন</string>
   <string name="morphe_screen_sidebar_title">সাইডবার</string>
   <string name="morphe_sidebar_screen_summary">সাইডবারের শেল্ভ এবং বোতাম</string>
   <string name="morphe_settings_in_sidebar_title">Morphe সেটিংস দেখান</string>

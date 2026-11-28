@@ -26,6 +26,7 @@ import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_28_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -118,6 +119,15 @@ val castingPatch = patch(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->disconnectCastOnVideoSelect(Z)Z"
             )
+        }
+
+        if (is_21_30_or_greater) {
+            CastSwipeDownTargetFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->dismissPlayerOnSwipeWhileCasting(Z)Z"
+                )
+            }
         }
 
         if (is_21_28_or_greater) {

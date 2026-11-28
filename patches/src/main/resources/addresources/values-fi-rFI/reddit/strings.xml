@@ -31,6 +31,8 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_navigation_bar_screen_summary">Alapalkin painikkeet ja lasipalkki</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Poista alapalkin automaattinen piilottaminen</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Pitää alareunan navigointipalkin näkyvillä vieritettäessä</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Korkean kontrastin navigointipainikkeet</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Näyttää navigointipalkin valitsemattomat painikkeet mustina vaaleassa tilassa ja valkoisina tummassa tilassa harmaan sijasta</string>
   <string name="morphe_glass_navigation_bar_title">Lasinen navigointipalkki</string>
   <string name="morphe_glass_navigation_bar_summary">Näyttää navigointipalkin kelluvana, läpikuultavana kapselina syötteen päällä. Tableteilla sivupalkilla on sama ulkoasu</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Päällä</string>
@@ -76,6 +78,10 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_hide_chat_button_title">Piilota Chat-painike</string>
   <string name="morphe_hide_discover_button_title">Piilota Löydä tai Yhteisöt-painike</string>
   <string name="morphe_hide_games_button_title">Piilota Pelit-painike</string>
+  <string name="morphe_subreddit_create_button_title">Luo-painike yhteisöissä</string>
+  <string name="morphe_subreddit_create_button_summary">Näyttää jokaisen yhteisön hakutoiminnon viereen painikkeen, jolla voi aloittaa julkaisun kyseisessä yhteisössä</string>
+  <string name="morphe_subreddit_create_button_label">Luo julkaisu</string>
+  <string name="morphe_subreddit_create_button_description">Luo julkaisu r/%s-yhteisöön</string>
   <string name="morphe_screen_sidebar_title">Sivupalkki</string>
   <string name="morphe_sidebar_screen_summary">Sivupalkin hyllyt ja painikkeet</string>
   <string name="morphe_settings_in_sidebar_title">Näytä Morphen asetukset</string>

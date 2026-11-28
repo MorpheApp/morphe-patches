@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">Тэмдгүүдийг нуух</string>
   <string name="morphe_hide_account_menu_downloads_title">Татаж авсан файлуудыг нуух</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\'Таалагдсан видео\'-г нуух</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'Нууцлалын бодлого\' \'Үйлчилгээний нөхцөл\'-ий доод хэсгийг нуух</string>
   <string name="morphe_hide_account_menu_watch_later_title">\'Дараа үзэх\'-ийг нуух</string>
   <string name="morphe_hide_album_cards_title">Альбомын картуудыг нуух</string>
   <string name="morphe_hide_album_cards_summary">Уран бүтээлчийн тайлбарын доорх цомгийн картуудыг нуух</string>
@@ -1264,6 +1265,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">Авто горимд Mix нь энэ тооны бичлэгийн дараа зогсоно. 0 = хязгааргүй</string>
   <string name="morphe_autoplay_mix_length">Mix: %s бичлэг</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: хязгааргүй</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Cast-ын хуучин үйлдлийг сэргээх</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Өөр видео сонгох эсвэл тоглуулагчийг хаах үед Cast сешн холбогдсон хэвээр байх тул видео зурагт дээр үргэлжлэн тоглогдоно</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Үргэлжлүүлэн үзэх үү?\" гэсэн сануулга</string>
   <string name="morphe_continue_watching_prompt_entry_1">Өгөгдлийн</string>
@@ -1402,6 +1406,12 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_shorts_autoplay_summary">Одоогийн Short-ыг давтахын оронд дараагийн Short руу автоматаар шилжинэ</string>
   <string name="morphe_shorts_autoplay_background_title">Ард талд автоматаар тоглуулах</string>
   <string name="morphe_shorts_autoplay_background_summary">Ард талд тоглуулах үед дараагийн Short руу автоматаар шилжинэ</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts цэсний автоматаар тоглуулах</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts тоглуулагчийн цэсэнд Shorts-ыг автоматаар тоглуулах функцийг асаах эсвэл унтраах сонголтыг харуулна</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts автоматаар тоглуулах · Асаалттай</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts автоматаар тоглуулах · Унтраалттай</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts автотоглось идэвхжлээ</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts автотоглось идэвхгүй боллоо</string>
   <string name="morphe_skip_live_shorts_title">Live Shorts-ийг алгасах</string>
   <string name="morphe_skip_live_shorts_summary">Shorts feed-д гарч ирэх шууд дамжуулалтыг алгасах</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_feed_card_layout_entry_1">Сонгодог</string>
   <string name="morphe_feed_card_layout_entry_2">Картууд</string>
   <string name="morphe_feed_card_layout_entry_3">Таалагдах, сэтгэгдэл үлдээх болон хадгалах товчлууртэй картууд</string>
+  <string name="morphe_feed_card_layout_entry_4">Профайл зураг нь гэрэлтсэн картууд</string>
+  <string name="morphe_feed_card_layout_entry_5">Тайлал, сэтгэгдэл, хадгалах товчлуур болон профайл зураг нь гэрэлтсэн картууд</string>
   <string name="morphe_feed_card_layout_comments">Сэтгэгдэл</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Мини тоглуулагчийг үргэлжлүүлэн ажиллуулахыг идэвхгүй болгох</string>
@@ -1512,6 +1524,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_custom_branding_icon_entry_8">Эх аналог</string>
   <string name="morphe_custom_branding_icon_entry_9">Эх бялуу</string>
   <string name="morphe_custom_branding_icon_entry_10">Эх металл</string>
+  <string name="morphe_custom_branding_icon_entry_11">Эх үслэг</string>
+  <string name="morphe_custom_branding_icon_entry_12">Эх усан будаг</string>
+  <string name="morphe_custom_branding_icon_entry_13">Эх сонгодог</string>
+  <string name="morphe_custom_branding_icon_entry_14">Эх ретро зурагт</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Өгөгдсөн</string>
   <string name="morphe_header_logo_entry_2">Энгийн</string>
@@ -1639,6 +1655,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Холбоосыг хөтөч дээр нээх</string>
   <string name="morphe_external_browser_summary">Холбоосыг апп доторх хөтөчтэй бус гадны хөтөчөөр нээнэ</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Хуваалцсан текстэд YouTube холбоос байхгүй байна</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Тоглуулах буферын хэмжээ</string>
   <string name="morphe_playback_buffer_size_entry_default">Өгөгдсөн</string>

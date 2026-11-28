@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">배지 숨기기</string>
   <string name="morphe_hide_account_menu_downloads_title">\'오프라인 저장 동영상\' 숨기기</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\'좋아요 표시한 동영상\' 숨기기</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'개인정보처리방침\' \'서비스 약관\' 하단 문구 숨기기</string>
   <string name="morphe_hide_account_menu_watch_later_title">\'나중에 볼 동영상\' 숨기기</string>
   <string name="morphe_hide_album_cards_title">음악 앨범 카드 숨기기</string>
   <string name="morphe_hide_album_cards_summary">아티스트 설명 아래에서 앨범 카드를 숨깁니다</string>
@@ -1266,6 +1267,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_autoplay_mix_stop_after_summary">자동 모드에서 믹스는 지정된 수의 동영상 후에 중단됩니다. 0 = 제한 없음</string>
   <string name="morphe_autoplay_mix_length">믹스: %s개 동영상</string>
   <string name="morphe_autoplay_mix_no_limit">믹스: 제한 없음</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">이전 Cast 동작 복원</string>
+  <string name="morphe_restore_old_cast_behavior_summary">다른 동영상을 선택하거나 플레이어를 닫아도 Cast 세션이 연결된 상태로 유지되어 TV에서 동영상이 계속 재생됩니다</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'계속 시청하시겠습니까?\' 메시지</string>
   <string name="morphe_continue_watching_prompt_entry_1">기본값</string>
@@ -1403,6 +1407,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_shorts_autoplay_summary">현재 Shorts를 반복 재생하는 대신 다음 Shorts로 자동으로 넘어갑니다</string>
   <string name="morphe_shorts_autoplay_background_title">백그라운드에서 자동재생</string>
   <string name="morphe_shorts_autoplay_background_summary">백그라운드 재생 중에 다음 Shorts로 자동으로 넘어갑니다</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts 메뉴에서 자동재생</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts 플레이어 메뉴에서 Shorts 자동재생 설정 또는 해제 항목을 표시합니다</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts 자동재생 · 사용 설정됨</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts 자동재생 · 사용 중지됨</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts 자동재생 설정됨</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts 자동재생 해제됨</string>
   <string name="morphe_skip_live_shorts_title">실시간 Shorts 건너뛰기</string>
   <string name="morphe_skip_live_shorts_summary">Shorts 피드에 표시되는 라이브 스트림을 건너뜁니다</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1427,6 +1437,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_feed_card_layout_entry_1">클래식</string>
   <string name="morphe_feed_card_layout_entry_2">카드</string>
   <string name="morphe_feed_card_layout_entry_3">좋아요, 댓글 및 저장 버튼이 있는 카드</string>
+  <string name="morphe_feed_card_layout_entry_4">아바타 글로우가 있는 카드</string>
+  <string name="morphe_feed_card_layout_entry_5">좋아요, 댓글 및 저장 버튼과 아바타 글로우가 있는 카드</string>
   <string name="morphe_feed_card_layout_comments">댓글</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">미니 플레이어 다시 시작 비활성화하기</string>
@@ -1513,6 +1525,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_custom_branding_icon_entry_8">오리지널 아날로그</string>
   <string name="morphe_custom_branding_icon_entry_9">오리지널 케이크</string>
   <string name="morphe_custom_branding_icon_entry_10">오리지널 메탈</string>
+  <string name="morphe_custom_branding_icon_entry_11">오리지널 퍼</string>
+  <string name="morphe_custom_branding_icon_entry_12">오리지널 수채화</string>
+  <string name="morphe_custom_branding_icon_entry_13">오리지널 클래식</string>
+  <string name="morphe_custom_branding_icon_entry_14">오리지널 레트로 TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">기본값</string>
   <string name="morphe_header_logo_entry_2">일반</string>
@@ -1640,6 +1656,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">외부 브라우저 사용하기</string>
   <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저 대신 외부 브라우저를 사용합니다</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">공유된 텍스트에 YouTube 링크가 없습니다</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">재생 버퍼 크기</string>
   <string name="morphe_playback_buffer_size_entry_default">기본값</string>

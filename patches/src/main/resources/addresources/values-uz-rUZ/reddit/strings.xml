@@ -31,6 +31,8 @@ Eski versiyadan foydalanish uchun, Reddit ilovasini &lt;b&gt;o'chirishingiz&lt;/
   <string name="morphe_navigation_bar_screen_summary">Pastki panel tugmalari va shaffof panel</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Pastki panelni avtomatik yashirishni o\'chirish</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Sahifani aylantirish paytida pastki navigatsiya paneli ko\'rinib turadi</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Yuqori kontrastli navigatsiya tugmalari</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Navigatsiya paneli tanlanmagan tugmalarini kulrang rang o\'rniga och rejimda qora, to\'q rejimda esa oq rangda ko\'rsatadi</string>
   <string name="morphe_glass_navigation_bar_title">Shishasimon navigatsiya paneli</string>
   <string name="morphe_glass_navigation_bar_summary">Navigatsiya panelini lentalar ustida suzuvchi, yarim shaffof kapsula ko\'rinishida ko\'rsatadi. Planshetlarda yon panel ham xuddi shunday ko\'rinishga ega</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Yoq</string>
@@ -76,6 +78,10 @@ Eski versiyadan foydalanish uchun, Reddit ilovasini &lt;b&gt;o'chirishingiz&lt;/
   <string name="morphe_hide_chat_button_title">\"Chat\" tugmasini yashirish</string>
   <string name="morphe_hide_discover_button_title">\"Kashf etish\" yoki \"Hamjamiyatlar\" tugmasini yashirish</string>
   <string name="morphe_hide_games_button_title">\"O\'yinlar\" tugmasini yashirish</string>
+  <string name="morphe_subreddit_create_button_title">Hamjamiyatlarda yaratish tugmasi</string>
+  <string name="morphe_subreddit_create_button_summary">Har bir hamjamiyatda Qidiruv yonida post yaratishni boshlaydigan tugmani ko\'rsatadi</string>
+  <string name="morphe_subreddit_create_button_label">Post yaratish</string>
+  <string name="morphe_subreddit_create_button_description">r/%s da post yaratish</string>
   <string name="morphe_screen_sidebar_title">Yon menyu</string>
   <string name="morphe_sidebar_screen_summary">Yon paneldagi javonlar va tugmalar</string>
   <string name="morphe_settings_in_sidebar_title">Morphe sozlamalarini ko\'rsatish</string>

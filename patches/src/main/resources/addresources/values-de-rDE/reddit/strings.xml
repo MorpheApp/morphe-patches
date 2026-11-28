@@ -31,6 +31,8 @@ Um eine ältere Version zu verwenden, musst du Reddit &lt;b&gt;deinstallieren&lt
   <string name="morphe_navigation_bar_screen_summary">Schaltflächen der unteren Leiste und die Glassbar</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Automatisches Ausblenden der unteren Leiste deaktivieren</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Hält die untere Navigationsleiste beim Scrollen sichtbar</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Kontrastreiche Navigationsschaltflächen</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Zeigt die nicht ausgewählten Schaltflächen der Navigationsleiste im hellen Modus in Schwarz und im dunklen Modus in Weiß an, statt in Grau</string>
   <string name="morphe_glass_navigation_bar_title">Glas-Navigationsleiste</string>
   <string name="morphe_glass_navigation_bar_summary">Zeigt die Navigationsleiste als schwebende, halbtransparente Kapsel über dem Feed an. Auf Tablets hat die Seitenleiste das gleiche Aussehen</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Ein</string>
@@ -76,6 +78,10 @@ Um eine ältere Version zu verwenden, musst du Reddit &lt;b&gt;deinstallieren&lt
   <string name="morphe_hide_chat_button_title">Chat-Button ausblenden</string>
   <string name="morphe_hide_discover_button_title">Entdecken- oder Communities-Button ausblenden</string>
   <string name="morphe_hide_games_button_title">Spiele-Button ausblenden</string>
+  <string name="morphe_subreddit_create_button_title">Erstellen-Button in Communities</string>
+  <string name="morphe_subreddit_create_button_summary">Zeigt in jeder Community neben der Suche einen Button an, mit dem dort ein Post erstellt werden kann</string>
+  <string name="morphe_subreddit_create_button_label">Post erstellen</string>
+  <string name="morphe_subreddit_create_button_description">Post in r/%s erstellen</string>
   <string name="morphe_screen_sidebar_title">Seitenleiste</string>
   <string name="morphe_sidebar_screen_summary">Regale und Schaltflächen in der Seitenleiste</string>
   <string name="morphe_settings_in_sidebar_title">Morphe-Einstellungen anzeigen</string>

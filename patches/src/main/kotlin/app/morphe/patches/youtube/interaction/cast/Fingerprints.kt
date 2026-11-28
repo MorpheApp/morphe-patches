@@ -15,6 +15,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val COPY_ON_WRITE_ARRAY_LIST = "Ljava/util/concurrent/CopyOnWriteArrayList;"
@@ -228,6 +229,20 @@ internal object CastDisconnectOnVideoSelectFeatureFlagFingerprint : Fingerprint(
 internal object CastDisconnectOnPlayerCloseFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45798912L)
+    )
+)
+
+/**
+ * Picks where the player goes when swiped down.
+ * While casting, the player is dismissed into the You tab instead of minimized.
+ */
+internal object CastSwipeDownTargetFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "I",
+    parameters = listOf("I"),
+    filters = listOf(
+        literal(45783248L),
+        literal(4096L)
     )
 )
 
