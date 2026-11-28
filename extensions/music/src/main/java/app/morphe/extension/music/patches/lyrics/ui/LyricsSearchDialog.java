@@ -31,7 +31,6 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -206,7 +205,7 @@ final class LyricsSearchDialog {
         }
 
         // Lets the user detect sections when automatic detection missed them or was off when the track loaded.
-        if (Settings.LYRICS_USE_AI_SECTION.get()
+        if (SectionDetector.isEnabled()
                 && SectionDetector.needsDetection(callbacks.getCurrentLyrics())) {
             TextView sectionButton = new TextView(context);
             callbacks.styleButton(sectionButton);

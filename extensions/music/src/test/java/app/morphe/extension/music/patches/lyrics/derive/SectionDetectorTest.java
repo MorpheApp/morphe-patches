@@ -18,11 +18,40 @@ import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
+import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.settings.Settings;
 
 @SuppressWarnings("DataFlowIssue")
 public class SectionDetectorTest {
+
+    // -- isEnabled --
+
+    @Test
+    public void isEnabledOnlyWhileShowingSections() {
+        LyricsTestEnv.bootstrap();
+        final boolean prevEnabled = Settings.LYRICS_ENABLED.get();
+        final boolean prevUseAi = Settings.LYRICS_USE_AI_SECTION.get();
+        final boolean prevShowSection = Settings.LYRICS_SHOW_SECTION.get();
+        try {
+            Settings.LYRICS_ENABLED.save(true);
+            Settings.LYRICS_USE_AI_SECTION.save(true);
+            Settings.LYRICS_SHOW_SECTION.save(true);
+            assertTrue(SectionDetector.isEnabled());
+
+            Settings.LYRICS_SHOW_SECTION.save(false);
+            assertFalse(SectionDetector.isEnabled());
+
+            Settings.LYRICS_SHOW_SECTION.save(true);
+            Settings.LYRICS_ENABLED.save(false);
+            assertFalse(SectionDetector.isEnabled());
+        } finally {
+            Settings.LYRICS_ENABLED.save(prevEnabled);
+            Settings.LYRICS_USE_AI_SECTION.save(prevUseAi);
+            Settings.LYRICS_SHOW_SECTION.save(prevShowSection);
+        }
+    }
 
     // ── needsDetection ──
 
