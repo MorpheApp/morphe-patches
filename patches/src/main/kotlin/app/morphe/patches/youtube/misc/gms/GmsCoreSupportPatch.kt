@@ -19,6 +19,8 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.MORPHE_YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_SIGNATURE
+import app.morphe.patches.youtube.misc.playservice.is_21_34_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -37,6 +39,8 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
     useLegacyGnpFingerprint = { !is_21_45_or_greater },
+    // 21.34 - 21.38 have no GNP API key code.
+    patchGnpApiKeyHeaders = { !is_21_34_or_greater || is_21_39_or_greater },
     executeBlock = {
         // GmsCore allows the capabilities it can not look up, which makes every account a supervised account.
         AccountHasCapabilitiesFingerprint.method.addInstructionsWithLabels(

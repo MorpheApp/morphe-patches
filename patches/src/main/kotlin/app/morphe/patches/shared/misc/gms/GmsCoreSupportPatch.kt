@@ -61,6 +61,9 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  * @param extensionPatch The patch responsible for the extension.
  * @param useLegacyGnpFingerprint If the app builds the GNP registration target in the legacy method.
  * Resolved when the patch runs so that it can depend on the app version.
+ * @param patchGnpApiKeyHeaders If the app sends the API key headers of GNP requests.
+ * Some app versions have no API key code and only authenticate with an account or Zwieback.
+ * Resolved when the patch runs so that it can depend on the app version.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
@@ -74,6 +77,7 @@ fun gmsCoreSupportPatch(
     extensionPatch: Patch,
     gmsCoreSupportResourcePatchFactory: () -> Patch,
     useLegacyGnpFingerprint: () -> Boolean,
+    patchGnpApiKeyHeaders: () -> Boolean,
     executeBlock: () -> Unit = {},
     block: PatchDefinition.() -> Unit = {},
 ) = patch(
@@ -193,23 +197,25 @@ fun gmsCoreSupportPatch(
         // GNP requests made with an API key send the package name and the signature of the app.
         // The API key only accepts the original app, so registering for push notifications fails.
         // GNP formats the signature as upper case hex.
-        val originalSignature = spoofedPackageSignature.uppercase()
-        arrayOf(GnpRegistrationHeadersFingerprint, GnpRequestHeadersFingerprint).forEach { fingerprint ->
-            fingerprint.method.apply {
-                // The registers of the header calls are the builder, the header name, then the value.
-                val certHeaderMatch = fingerprint.instructionMatches[3]
-                val certRegister = certHeaderMatch.instruction.registersUsed[2]
-                addInstruction(
-                    certHeaderMatch.index,
-                    "const-string v$certRegister, \"$originalSignature\""
-                )
+        if (patchGnpApiKeyHeaders()) {
+            val originalSignature = spoofedPackageSignature.uppercase()
+            arrayOf(GnpRegistrationHeadersFingerprint, GnpRequestHeadersFingerprint).forEach { fingerprint ->
+                fingerprint.method.apply {
+                    // The registers of the header calls are the builder, the header name, then the value.
+                    val certHeaderMatch = fingerprint.instructionMatches[3]
+                    val certRegister = certHeaderMatch.instruction.registersUsed[2]
+                    addInstruction(
+                        certHeaderMatch.index,
+                        "const-string v$certRegister, \"$originalSignature\""
+                    )
 
-                val packageNameMatch = fingerprint.instructionMatches[1]
-                val packageNameRegister = packageNameMatch.instruction.registersUsed.first()
-                addInstruction(
-                    packageNameMatch.index + 1,
-                    "const-string v$packageNameRegister, \"$fromPackageName\""
-                )
+                    val packageNameMatch = fingerprint.instructionMatches[1]
+                    val packageNameRegister = packageNameMatch.instruction.registersUsed.first()
+                    addInstruction(
+                        packageNameMatch.index + 1,
+                        "const-string v$packageNameRegister, \"$fromPackageName\""
+                    )
+                }
             }
         }
 
