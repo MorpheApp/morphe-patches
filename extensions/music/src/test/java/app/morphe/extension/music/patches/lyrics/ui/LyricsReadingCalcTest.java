@@ -97,12 +97,59 @@ public class LyricsReadingCalcTest {
     }
 
     @Test
+    public void incompletePerWordRomajiUsesCleanWholeLineWithoutKanjiLeakOrDuplicate() {
+        LyricsLine line = new LyricsLine(0, 5000L, "ただの友達",
+                List.of(
+                        new Word(0, 1500L, "ただの", null, false),
+                        new Word(1500L, 3000L, "友", null, false),
+                        new Word(3000L, 5000L, "達", null, false)
+                ),
+                null, false, false, null);
+        List<LyricsLine> romanized = List.of(new LyricsLine(0, 5000L, "tada no tomodachi",
+                List.of(
+                        new Word(0, 1500L, "ただの", "tada notomodachi", false),
+                        new Word(1500L, 3000L, "友", "", false),
+                        new Word(3000L, 5000L, "達", "notomodachi", false)
+                ),
+                null, false, false, null));
+        List<WordTiming> origTimings = List.of(
+                new WordTiming(0, 3, 0, 1500L, null, false),
+                new WordTiming(3, 4, 1500L, 3000L, null, false),
+                new WordTiming(4, 5, 3000L, 5000L, null, false)
+        );
+        LyricsReadingCalc.Reading reading = LyricsReadingCalc.readingFor(
+                line, 0, romanized, true, origTimings);
+        assertEquals("tada no tomodachi", reading.text());
+        assertNotNull(reading.spans());
+        assertFalse(Objects.requireNonNull(reading.text()).contains("友"));
+    }
+
+    @Test
     public void perWordReadingWithoutAnyRomajiFallsBackToWholeLine() {
         LyricsLine line = new LyricsLine(0, "日本語");
         List<LyricsLine> romanized = List.of(new LyricsLine(0, "nihongo"));
         LyricsReadingCalc.Reading reading = LyricsReadingCalc.readingFor(
                 line, 0, romanized, true, null);
         assertEquals("nihongo", reading.text());
+    }
+
+    @Test
+    public void wholeLineReadingAndSpansStayAlignedWhenPinyinExpands() {
+        LyricsLine line = new LyricsLine(0, 2000L, "你好",
+                List.of(new Word(0, 1000L, "你"), new Word(1000L, 2000L, "好")),
+                null, false, false, null);
+        List<LyricsLine> romanized = List.of(new LyricsLine(0, "nǐhǎo"));
+        List<WordTiming> origTimings = List.of(
+                new WordTiming(0, 1, 0L, 1000L, null, false),
+                new WordTiming(1, 2, 1000L, 2000L, null, false)
+        );
+        LyricsReadingCalc.Reading reading = LyricsReadingCalc.wholeLineReading(
+                line, 0, romanized, origTimings);
+        assertEquals("nǐ hǎo", reading.text());
+        assertNotNull(reading.spans());
+        assertEquals(2, reading.spans().size());
+        assertEquals("nǐ", reading.text().substring(reading.spans().get(0).start(), reading.spans().get(0).end()));
+        assertEquals("hǎo", reading.text().substring(reading.spans().get(1).start(), reading.spans().get(1).end()));
     }
 
     @Test

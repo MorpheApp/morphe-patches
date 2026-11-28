@@ -502,6 +502,17 @@ public final class LocalRomanizer {
         return false;
     }
 
+    private static boolean hasKanaOrHangul(List<Word> words) {
+        for (Word word : words) {
+            final String text = word.text();
+            if (ScriptDetector.containsKana(text)
+                    || ScriptDetector.contains(text, Character.UnicodeScript.HANGUL)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /** A packed CJK reading is split apart when that makes it fit the words exactly. */
     public static String readingForWords(List<Word> words, @Nullable String reading) {
         if (reading == null || reading.trim().isEmpty() || words.isEmpty()) {
@@ -518,7 +529,8 @@ public final class LocalRomanizer {
             syllables += count;
         }
         if (tokens.length == syllables || tokens.length == carried) return reading;
-        if (!hasCjkWord(words)) return reading;
+        // Mandarin pinyin expansion applies only to Han-only lines, never Japanese or Korean.
+        if (!hasCjkWord(words) || hasKanaOrHangul(words)) return reading;
         final String expanded = expandPinyinReading(reading);
         final int[][] expandedTokens = readingTokens(expanded);
         if (expandedTokens.length == syllables || expandedTokens.length == carried) {

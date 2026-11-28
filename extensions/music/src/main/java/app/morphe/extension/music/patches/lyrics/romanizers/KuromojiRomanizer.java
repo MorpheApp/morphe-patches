@@ -204,6 +204,19 @@ public final class KuromojiRomanizer {
         return new LineCharRomaji(charRomaji, bunsetsuBreakAfterChar);
     }
 
+    /** Returns per-character bunsetsu break flags for {@code lineText}, or null if unavailable. */
+    @Nullable
+    public static boolean[] bunsetsuBreakAfterChar(String lineText, KuromojiTokenizer tokenizer) {
+        if (lineText == null || lineText.isEmpty() || tokenizer == null) {
+            return null;
+        }
+        List<Token> tokens = tokenizer.tokenize(lineText);
+        if (tokens.isEmpty()) {
+            return null;
+        }
+        return buildLineCharRomaji(lineText, tokens).bunsetsuBreakAfterChar;
+    }
+
     private static String sliceCharRomaji(
             String[] charRomaji,
             boolean[] bunsetsuBreakAfterChar,

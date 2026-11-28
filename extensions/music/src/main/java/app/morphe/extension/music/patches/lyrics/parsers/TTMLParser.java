@@ -302,9 +302,11 @@ public final class TTMLParser {
                             // Read off the sidecar before the words carry a reading, or the
                             // line loses the parts no word matched.
                             final String romaText = buildLineRomaji(pl.words(), lineSidecar);
-                            // The panel draws a reading over the words, not beside them.
+                            // Only assign per-word embedded romaji when every readable non-Latin word
+                            // receives a reading; otherwise keep words clean so whole-line `romaText`
+                            // is rendered without mixing scripts.
                             if (lineSidecar != null && !lineSidecar.isEmpty()) {
-                                alignRomajiToWords(pl.words(), lineSidecar);
+                                alignRomajiToWordsIfComplete(pl.words(), lineSidecar);
                             }
 
                             if (hasText) {
@@ -586,11 +588,11 @@ public final class TTMLParser {
                     final String end = getAttr(p, null, "end", "end");
                     final String dur = getAttr(p, null, "dur", "dur");
                     if (hasTiming(begin, end, dur)) {
-                        final String text = normalizeText(readTextContent(p));
-                        if (!text.isEmpty()) {
+                        final String raw = normalizeTextRaw(readTextContent(p));
+                        if (!raw.trim().isEmpty()) {
                             final long beginMs = parseTime(begin);
                             final long endMs = resolveEndTime(beginMs, end, dur, DEFAULT_FRAME_RATE);
-                            syllables.add(new RomajiSyllable(beginMs, endMs, text));
+                            appendRomajiSyllable(syllables, beginMs, endMs, raw);
                         }
                     } else {
                         skipElement(p);
@@ -603,14 +605,41 @@ public final class TTMLParser {
             } else if (event == XmlPullParser.TEXT) {
                 final String text = p.getText();
                 if (text != null) {
-                    final String trimmed = normalizeText(text);
-                    if (!trimmed.isEmpty()) {
-                        syllables.add(new RomajiSyllable(0, 0, trimmed));
+                    final String raw = normalizeTextRaw(text);
+                    if (!raw.trim().isEmpty()) {
+                        appendRomajiSyllable(syllables, 0, 0, raw);
+                    } else if (!raw.isEmpty() && !syllables.isEmpty()) {
+                        appendTrailingSpace(syllables);
                     }
                 }
             }
         }
         return syllables;
+    }
+
+    private static void appendRomajiSyllable(List<RomajiSyllable> syllables,
+                                             long beginMs, long endMs, String raw) {
+        if (raw.isEmpty()) {
+            return;
+        }
+        if (Character.isWhitespace(raw.charAt(0)) && !syllables.isEmpty()) {
+            appendTrailingSpace(syllables);
+        }
+        final String trimmed = raw.trim();
+        if (trimmed.isEmpty()) {
+            return;
+        }
+        final String withTrail = Character.isWhitespace(raw.charAt(raw.length() - 1))
+                ? trimmed + " " : trimmed;
+        syllables.add(new RomajiSyllable(beginMs, endMs, withTrail));
+    }
+
+    private static void appendTrailingSpace(List<RomajiSyllable> syllables) {
+        final int lastIdx = syllables.size() - 1;
+        final RomajiSyllable prev = syllables.get(lastIdx);
+        if (!prev.text().isEmpty() && !Character.isWhitespace(prev.text().charAt(prev.text().length() - 1))) {
+            syllables.set(lastIdx, new RomajiSyllable(prev.startMs(), prev.endMs(), prev.text() + " "));
+        }
     }
 
     private static void collectSidecarTranslations(XmlPullParser p,
@@ -1424,9 +1453,68 @@ public final class TTMLParser {
                 || b == Character.UnicodeBlock.KATAKANA;
     }
 
+    /**
+     * Aligns sidecar transliteration syllables to {@code words} into a scratch list and commits
+     * back only if every readable non-Latin word receives a reading, preventing partial Kanji leaks.
+     */
+    private static void alignRomajiToWordsIfComplete(List<Word> words,
+                                                     List<RomajiSyllable> sidecar) {
+        if (words.isEmpty() || sidecar.isEmpty()) {
+            return;
+        }
+        final List<Word> candidate = new ArrayList<>(words);
+        alignRomajiToWords(candidate, sidecar);
+        for (Word w : candidate) {
+            final String text = w.text() != null ? w.text().trim() : "";
+            if (text.isEmpty() || !hasReadableLetterOrDigit(text)
+                    || LyricsRomanizer.isPurelyLatinScript(text)) {
+                continue;
+            }
+            if (w.romaji() == null || w.romaji().trim().isEmpty()) {
+                return;
+            }
+        }
+        for (int i = 0; i < words.size(); i++) {
+            words.set(i, candidate.get(i));
+        }
+    }
+
+    private static boolean hasReadableLetterOrDigit(String text) {
+        for (int i = 0; i < text.length(); ) {
+            final int cp = Character.codePointAt(text, i);
+            i += Character.charCount(cp);
+            if (Character.isLetterOrDigit(cp)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasSidecarTiming(List<RomajiSyllable> sidecar) {
+        for (RomajiSyllable sub : sidecar) {
+            if (sub.endMs() > sub.startMs()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static void alignRomajiToWords(List<Word> words,
                                            List<RomajiSyllable> sidecar) {
         if (words.isEmpty() || sidecar.isEmpty()) {
+            return;
+        }
+        // Pair syllables directly by index only when the sidecar has no per-syllable timing
+        // and matches the word count 1:1; timed sidecars must satisfy interval matching.
+        if (sidecar.size() == words.size() && !hasSidecarTiming(sidecar)) {
+            for (int i = 0; i < words.size(); i++) {
+                final Word main = words.get(i);
+                final String piece = sidecar.get(i).text().trim();
+                if (!piece.isEmpty()) {
+                    words.set(i, new Word(main.startMs(), main.endMs(), main.text(),
+                            piece, main.endsWithSpace(), main.ruby()));
+                }
+            }
             return;
         }
 
@@ -1489,7 +1577,7 @@ public final class TTMLParser {
             } else if (bestIdx >= 0 && maxIou >= MIN_IOU) {
                 final RomajiSyllable sub = sidecar.get(bestIdx);
                 words.set(i, new Word(main.startMs(), main.endMs(), main.text(),
-                        sub.text(), main.endsWithSpace(), main.ruby()));
+                        sub.text().trim(), main.endsWithSpace(), main.ruby()));
                 romanSearchStart = bestIdx + 1;
             }
         }
@@ -1599,7 +1687,9 @@ public final class TTMLParser {
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
             }
             if (langLines.size() == mainIndex) {
-                String lineContent = (!text.isEmpty() && LyricsRomanizer.isPurelyLatinScript(text)) ? text : "";
+                final String rawSidecar = buildLineRomaji(words, sidecar);
+                final String bestText = !rawSidecar.isEmpty() ? rawSidecar : text;
+                String lineContent = (!bestText.isEmpty() && LyricsRomanizer.isPurelyLatinScript(bestText)) ? bestText : "";
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, lineContent));
             }
         }

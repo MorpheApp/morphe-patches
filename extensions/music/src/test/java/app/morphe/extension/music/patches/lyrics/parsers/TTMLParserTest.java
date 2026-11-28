@@ -263,4 +263,107 @@ public class TTMLParserTest {
         assertEquals("Chorus", lyrics.lines().get(1).songPart());
         assertNull(lyrics.lines().get(2).songPart());
     }
+
+    @Test
+    public void sidecarTransliterationPreservesSpacesBetweenSpans() {
+        String ttml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<tt xmlns=\"http://www.w3.org/ns/ttml\""
+                + " xmlns:itunes=\"http://music.apple.com/lyric-ttml-internal\">"
+                + "<head><iTunesMetadata><transliterations>"
+                + "<transliteration xml:lang=\"ja-Latn\">"
+                + "<text for=\"L1\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">By my side </span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">kimi</span> "
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">to waraitai</span>"
+                + "</text>"
+                + "</transliteration></transliterations></iTunesMetadata></head>"
+                + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:02.500\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">By my side </span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">\u541b\u3068</span>"
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">\u7b11\u3044\u305f\u3044</span>"
+                + "</p></div></body></tt>";
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertNotNull(lyrics.romanization());
+        assertEquals(1, lyrics.romanization().size());
+        assertEquals("By my side kimi to waraitai", lyrics.romanization().get(0).text());
+    }
+
+    @Test
+    public void partialSidecarAlignmentLeavesWordsCleanForWholeLineMode() {
+        String ttml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<tt xmlns=\"http://www.w3.org/ns/ttml\""
+                + " xmlns:itunes=\"http://music.apple.com/lyric-ttml-internal\">"
+                + "<head><iTunesMetadata><transliterations>"
+                + "<transliteration xml:lang=\"ja-Latn\">"
+                + "<text for=\"L1\">"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">kimi ga fuchidotta ai no kaotsuki</span>"
+                + "</text>"
+                + "</transliteration></transliterations></iTunesMetadata></head>"
+                + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:03.000\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">\u541b\u304c</span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">\u7e01\u53d6</span>"
+                + "<span begin=\"00:02.000\" end=\"00:03.000\">\u3063\u305f\u611b\u306e\u9854\u3064\u304d</span>"
+                + "</p></div></body></tt>";
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertNotNull(lyrics.romanization());
+        assertEquals("kimi ga fuchidotta ai no kaotsuki", lyrics.romanization().get(0).text());
+        for (app.morphe.extension.music.patches.lyrics.model.Word w : lyrics.lines().get(0).words()) {
+            assertNull(w.romaji());
+        }
+    }
+
+    @Test
+    public void sidecarTransliterationPreservesLeadingSpaceBeforeMixedTextNode() {
+        String ttml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<tt xmlns=\"http://www.w3.org/ns/ttml\""
+                + " xmlns:itunes=\"http://music.apple.com/lyric-ttml-internal\">"
+                + "<head><iTunesMetadata><transliterations>"
+                + "<transliteration xml:lang=\"ja-Latn\">"
+                + "<text for=\"L1\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">kimi</span>"
+                + " no "
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">na</span>"
+                + "</text>"
+                + "</transliteration></transliterations></iTunesMetadata></head>"
+                + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:02.500\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">\u541b</span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">\u306e</span>"
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">\u540d</span>"
+                + "</p></div></body></tt>";
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertNotNull(lyrics.romanization());
+        assertEquals("kimi no na", lyrics.romanization().get(0).text());
+    }
+
+    @Test
+    public void timedSidecarWithEqualSpanCountDoesNotForceWrongIndexPairing() {
+        String ttml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<tt xmlns=\"http://www.w3.org/ns/ttml\""
+                + " xmlns:itunes=\"http://music.apple.com/lyric-ttml-internal\">"
+                + "<head><iTunesMetadata><transliterations>"
+                + "<transliteration xml:lang=\"ja-Latn\">"
+                + "<text for=\"L1\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.250\">kimi</span> "
+                + "<span begin=\"00:01.250\" end=\"00:01.500\">wo</span> "
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">omotte</span> "
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">iru</span>"
+                + "</text>"
+                + "</transliteration></transliterations></iTunesMetadata></head>"
+                + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:02.500\">"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">\u541b\u3092</span>"
+                + "<span begin=\"00:01.500\" end=\"00:01.800\">\u60f3</span>"
+                + "<span begin=\"00:01.800\" end=\"00:02.100\">\u3063\u3066</span>"
+                + "<span begin=\"00:02.100\" end=\"00:02.500\">\u3044\u308b</span>"
+                + "</p></div></body></tt>";
+        Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
+        assertNotNull(lyrics);
+        assertNotNull(lyrics.romanization());
+        assertEquals("kimi wo omotte iru", lyrics.romanization().get(0).text());
+        for (app.morphe.extension.music.patches.lyrics.model.Word w : lyrics.lines().get(0).words()) {
+            assertNull(w.romaji());
+        }
+    }
 }

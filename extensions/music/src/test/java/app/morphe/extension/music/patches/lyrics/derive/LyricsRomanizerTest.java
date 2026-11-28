@@ -215,4 +215,67 @@ public class LyricsRomanizerTest {
         List<LyricsLine> embedded = List.of(wordlessLine(0, 1000, "愛してる"));
         assertTrue(LyricsRomanizer.isProviderRomajiDegraded(embedded, original, false, false));
     }
+
+    @Test
+    public void incompletePerWordWithoutWholeLineFallbackIsDegraded() {
+        List<Word> origWords = List.of(
+                new Word(0, 500, "君が", null, false),
+                new Word(500, 1000, "縁取", null, false),
+                new Word(1000, 1500, "った愛の顔つき", null, false)
+        );
+        List<Word> embWords = List.of(
+                new Word(0, 500, "君が", null, false),
+                new Word(500, 1000, "縁取", "kimigafuchidottaainokaotsuki", false),
+                new Word(1000, 1500, "った愛の顔つき", null, false)
+        );
+        List<LyricsLine> original = List.of(new LyricsLine(0, 1500, "君が縁取った愛の顔つき", origWords, null, false, false, null));
+        List<LyricsLine> embedded = List.of(new LyricsLine(0, 1500, "", embWords, null, false, false, null));
+        assertTrue(LyricsRomanizer.isProviderRomajiDegraded(embedded, original, true, true));
+    }
+
+    @Test
+    public void mixedHanAndLatinInEmbeddedLineIsDegraded() {
+        List<LyricsLine> original = List.of(wordlessLine(0, 1000, "恐ろしい人"));
+        List<LyricsLine> embedded = List.of(wordlessLine(0, 1000, "恐 osoroshiihito"));
+        assertTrue(LyricsRomanizer.isProviderRomajiDegraded(embedded, original, true, true));
+    }
+
+    @Test
+    public void moraSplitJapaneseEmbeddedReadingIsRejoinedAndLeavesPinyinUntouched() {
+        List<LyricsLine> orig = List.of(
+                new LyricsLine(0, 2000, "忘れない 優しい 微笑み",
+                        List.of(
+                                new Word(0, 500, "忘", null, false),
+                                new Word(500, 1000, "れない", null, true)
+                        )),
+                new LyricsLine(2000, 4000, "哀しさ隠した瞳を", List.of())
+        );
+        List<LyricsLine> moraEmb = List.of(
+                new LyricsLine(0, 2000, "wa su re na i ya sa shi i ho ho e mi",
+                        List.of(
+                                new Word(0, 500, "wa su", null, true),
+                                new Word(500, 1000, "re na i", null, true)
+                        )),
+                new LyricsLine(2000, 4000, "ka na shi sa ka ku shi ta hi to mi wo", List.of())
+        );
+        Lyrics lyrics = new Lyrics(orig, "QQ", true,
+                moraEmb, null, null, null, null, null, null);
+
+        List<LyricsLine> normalized = LyricsRomanizer.getEmbeddedRomanization(lyrics);
+        assertNotNull(normalized);
+        assertEquals(2, normalized.size());
+        assertEquals("wasurenai yasashii hohoemi", normalized.get(0).text());
+        assertTrue(normalized.get(0).words().isEmpty());
+        assertEquals("kanashisa kakushita hitomiwo", normalized.get(1).text());
+        assertFalse(LyricsRomanizer.isProviderRomajiDegraded(normalized, orig, false, false));
+
+        // Chinese pinyin (no kana anywhere in the track) must remain word-by-word untouched.
+        List<LyricsLine> zhOrig = List.of(wordlessLine(0, 2000, "夜曲為你彈奏"));
+        List<LyricsLine> zhEmb = List.of(wordlessLine(0, 2000, "ye qu wei ni tan zou"));
+        Lyrics zhLyrics = new Lyrics(zhOrig, "QQ", true,
+                zhEmb, null, null, null, null, null, null);
+        List<LyricsLine> zhOut = LyricsRomanizer.getEmbeddedRomanization(zhLyrics);
+        assertNotNull(zhOut);
+        assertEquals("ye qu wei ni tan zou", zhOut.get(0).text());
+    }
 }

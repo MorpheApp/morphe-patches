@@ -35,6 +35,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseMoraSplitter;
 import app.morphe.extension.music.patches.lyrics.utils.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -539,10 +540,29 @@ public final class QQProvider implements LyricsProvider {
         final String sourceUrl = "https://y.qq.com/n/ryqq/songDetail/" + songId;
 
         String original = decodeQqLyricPayload(data.optString("lyric", ""));
-        Matcher qrcXmlMatcher = QRC_XML.matcher(original);
-        if (qrcXmlMatcher.find()) {
-            original = decodeXmlEntities(qrcXmlMatcher.group(1));
+        String romaPayload = decodeQqLyricPayload(data.optString("roma", ""));
+        String transPayload = LyricsRequests.isSimplifiedChinese()
+                ? decodeQqLyricPayload(data.optString("trans", ""))
+                : "";
+        return parseDecodedPayloads(original, romaPayload, transPayload, sourceUrl,
+                LyricsRequests.isSimplifiedChinese());
+    }
+
+    private static String unwrapQrcXml(String payload) {
+        Matcher matcher = QRC_XML.matcher(payload);
+        return matcher.find() ? decodeXmlEntities(matcher.group(1)) : payload;
+    }
+
+    @Nullable
+    static Lyrics parseDecodedPayloads(String originalPayload,
+                                       @Nullable String romaPayload,
+                                       @Nullable String transPayload,
+                                       @Nullable String sourceUrl,
+                                       boolean includeSimplifiedChineseTrans) {
+        if (originalPayload == null || originalPayload.isEmpty()) {
+            return null;
         }
+        String original = unwrapQrcXml(originalPayload);
 
         long[] offsetHolder = new long[1];
         List<String> qrcMetadata = parseQrcMetadata(original, offsetHolder);
@@ -564,16 +584,25 @@ public final class QQProvider implements LyricsProvider {
             return null;
         }
 
-        String romaPayload = decodeQqLyricPayload(data.optString("roma", ""));
-        List<LyricsLine> romaLines = romaPayload.isEmpty() ? null : parseQrcFormat(romaPayload);
-        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, romaLines);
+        List<LyricsLine> romaLines = null;
+        if (romaPayload != null && !romaPayload.isEmpty()) {
+            String unwrappedRoma = unwrapQrcXml(romaPayload);
+            romaLines = parseQrcFormat(unwrappedRoma);
+            long[] romaOffsetHolder = new long[1];
+            parseQrcMetadata(unwrappedRoma, romaOffsetHolder);
+            long effectiveRomaOffset = romaOffsetHolder[0] != 0 ? romaOffsetHolder[0] : qrcOffsetMs;
+            if (effectiveRomaOffset != 0 && !romaLines.isEmpty()) {
+                romaLines = LyricsRequests.applyOffset(romaLines, effectiveRomaOffset);
+            }
+        }
+        List<LyricsLine> romanization = JapaneseMoraSplitter.normalizeMoraSplitLines(
+                lines, LyricsMerge.mergeRomanization(lines, romaLines), romaLines);
 
         // QQ writes this translation itself, in the Chinese the mainland uses.
         Map<String, List<LyricsLine>> translations = null;
-        if (LyricsRequests.isSimplifiedChinese()) {
-            String transPayload = decodeQqLyricPayload(data.optString("trans", ""));
-            List<LyricsLine> transLines = transPayload.isEmpty() ? null : parseQrcFormat(transPayload);
-            if (transLines == null || transLines.isEmpty()) {
+        if (includeSimplifiedChineseTrans && transPayload != null && !transPayload.isEmpty()) {
+            List<LyricsLine> transLines = parseQrcFormat(transPayload);
+            if (transLines.isEmpty()) {
                 transLines = LRCParser.parseSynced(transPayload);
             }
             transLines.removeIf(line -> "//".equals(line.text().trim()));
@@ -582,7 +611,7 @@ public final class QQProvider implements LyricsProvider {
                     translation, LyricsRequests.SIMPLIFIED_CHINESE);
         }
 
-        return new Lyrics(lines, name(), true, romanization, translations, null,
+        return new Lyrics(lines, "QQ", true, romanization, translations, null,
                 null, qrcMetadata.isEmpty() ? null : qrcMetadata, original, "qrc", sourceUrl,
                 null, null);
     }
