@@ -1,26 +1,31 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/5441
+ * https://github.com/MorpheApp/morphe-patches/pull/5484
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.youtube.patches;
 
+import app.morphe.extension.youtube.cast.CastMenuLounge;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class RestoreOldCastPatch {
+public final class CastPatch {
 
     private static final boolean RESTORE_OLD_CAST_BEHAVIOR = Settings.RESTORE_OLD_CAST_BEHAVIOR.get();
 
     /**
      * Injection point.
      *
+     * The flag is always off while casting without ads, so the app sends the newly selected video
+     * to the device instead of playing it on the phone.
+     *
      * @param original If the app disconnects the Cast session and plays a newly selected video on the phone.
      */
     public static boolean disconnectCastOnVideoSelect(boolean original) {
-        return original && !RESTORE_OLD_CAST_BEHAVIOR;
+        return original && !RESTORE_OLD_CAST_BEHAVIOR && !CastMenuLounge.isConnected();
     }
 
     /**

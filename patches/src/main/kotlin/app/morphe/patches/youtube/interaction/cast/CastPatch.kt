@@ -1,11 +1,12 @@
 /*
  * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/5441
  * https://github.com/MorpheApp/morphe-patches/pull/5484
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.interaction.castadfree
+package app.morphe.patches.youtube.interaction.cast
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -15,19 +16,22 @@ import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.auth.authHookPatch
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -38,7 +42,8 @@ private const val EXPLAINED_LIST_PREFERENCE =
 private const val EXTENSION_SERVICE = "app.morphe.extension.youtube.cast.CastAdFreeService"
 private const val LOCAL_NETWORK_PERMISSION = "android.permission.ACCESS_LOCAL_NETWORK"
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/cast/CastMenuLounge;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CastPatch;"
+private const val EXTENSION_LOUNGE_CLASS = "Lapp/morphe/extension/youtube/cast/CastMenuLounge;"
 private const val EXTENSION_SCREEN_MANAGER_INTERFACE = "Lapp/morphe/extension/youtube/cast/CastMenuLounge\$ScreenManagerInterface;"
 private const val EXTENSION_SCREEN_INTERFACE = "Lapp/morphe/extension/youtube/cast/CastMenuLounge\$ScreenInterface;"
 private const val EXTENSION_SCREEN_INFO_INTERFACE = "Lapp/morphe/extension/youtube/cast/CastMenuLounge\$ScreenInfoInterface;"
@@ -70,13 +75,13 @@ private fun loadParamsMap(fields: List<FieldReference>, register: String, label:
     """
 
 @Suppress("unused")
-val castAdFreePatch = patch(
-    name = "Cast without ads",
-    description = "Lists the Cast devices a second time in the Cast menu, as \"(no ads)\". " +
-            "Choosing one plays the video on the device without the YouTube app of the device, which shows ads. " +
-            "This patch works with YouTube 21.23 and newer."
+val castPatch = patch(
+    name = "Casting",
+    description = "Adds options to keep the Cast session connected when selecting a different video " +
+            "or closing the player, and to cast without ads. Casting without ads requires YouTube 21.23 or newer."
 ) {
     dependsOn(
+        sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
         // The streams are fetched like the streams of in-app downloads.
@@ -87,24 +92,48 @@ val castAdFreePatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        if (!is_21_23_or_greater) {
+        val castWithoutAds = is_21_23_or_greater
+
+        PreferenceScreen.PLAYER.addPreferences(
+            PreferenceScreenPreference(
+                key = "morphe_cast_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = buildSet {
+                    add(SwitchPreference("morphe_restore_old_cast_behavior", summary = true))
+                    if (castWithoutAds) {
+                        add(SwitchPreference("morphe_cast_ad_free_cast_menu", summary = true))
+                        add(ListPreference("morphe_cast_ad_free_quality", tag = EXPLAINED_LIST_PREFERENCE))
+                        add(ListPreference("morphe_cast_ad_free_codecs", tag = EXPLAINED_LIST_PREFERENCE))
+                    }
+                }
+            )
+        )
+
+        // region Server flags that disconnect the Cast session.
+
+        // The flag is also turned off while casting without ads, so a newly selected video
+        // is sent to the device, as with a real screen, instead of played on the phone.
+        CastDisconnectOnVideoSelectFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->disconnectCastOnVideoSelect(Z)Z"
+            )
+        }
+
+        if (is_21_28_or_greater) {
+            CastDisconnectOnPlayerCloseFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
+                insertLiteralOverride(index, "$EXTENSION_CLASS->disconnectCastOnPlayerClose(Z)Z")
+            }
+        }
+
+        // endregion
+
+        if (!castWithoutAds) {
             Logger.getLogger(this::class.java.name).warning(
                 "Cast without ads requires YouTube 21.23 or newer"
             )
             return@execute
         }
-
-        PreferenceScreen.PLAYER.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_cast_ad_free_screen",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_cast_ad_free_cast_menu", summary = true),
-                    ListPreference("morphe_cast_ad_free_quality", tag = EXPLAINED_LIST_PREFERENCE),
-                    ListPreference("morphe_cast_ad_free_codecs", tag = EXPLAINED_LIST_PREFERENCE),
-                )
-            )
-        )
 
         // The service that plays the videos on the Cast devices.
         // The app already declares the permissions for a media playback foreground service.
@@ -201,7 +230,7 @@ val castAdFreePatch = patch(
         ScreenManagerConstructorFingerprint.let {
             it.method.addInstruction(
                 it.instructionMatches.last().index,
-                "invoke-static { p0 }, $EXTENSION_CLASS->setScreenManager($EXTENSION_SCREEN_MANAGER_INTERFACE)V"
+                "invoke-static { p0 }, $EXTENSION_LOUNGE_CLASS->setScreenManager($EXTENSION_SCREEN_MANAGER_INTERFACE)V"
             )
         }
 
@@ -218,7 +247,7 @@ val castAdFreePatch = patch(
             """
                 move-object/from16 v0, p1
                 iget-object v0, v0, $screenInfoField
-                invoke-static { v0 }, $EXTENSION_CLASS->keepScreen($EXTENSION_SCREEN_INFO_INTERFACE)Z
+                invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->keepScreen($EXTENSION_SCREEN_INFO_INTERFACE)Z
                 move-result v0
                 if-eqz v0, :original
                 return-void
@@ -243,7 +272,7 @@ val castAdFreePatch = patch(
             it.method.addInstructions(
                 descriptionIndex,
                 """
-                    invoke-static { v$screenRegister, v$descriptionRegister }, $EXTENSION_CLASS->getRouteDescription(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$screenRegister, v$descriptionRegister }, $EXTENSION_LOUNGE_CLASS->getRouteDescription(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$descriptionRegister
                 """
             )
@@ -264,7 +293,7 @@ val castAdFreePatch = patch(
                 :no_request
                 const/4 v0, 0x0
                 :request
-                invoke-static { v0 }, $EXTENSION_CLASS->onRouteDiscoveryRequest(Landroid/os/Bundle;)V
+                invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->onRouteDiscoveryRequest(Landroid/os/Bundle;)V
             """
         )
 
@@ -347,27 +376,9 @@ val castAdFreePatch = patch(
                     move-object/from16 v0, p0
                     iget-object v0, v0, $sessionChannelField
                     move-object/from16 v1, p1
-                    invoke-static { v0, v1 }, $EXTENSION_CLASS->onSessionConnect($EXTENSION_CLOUD_CHANNEL_INTERFACE$EXTENSION_SCREEN_INFO_INTERFACE)V
+                    invoke-static { v0, v1 }, $EXTENSION_LOUNGE_CLASS->onSessionConnect($EXTENSION_CLOUD_CHANNEL_INTERFACE$EXTENSION_SCREEN_INFO_INTERFACE)V
                 """
             )
-        }
-
-        // The flag exists in 21.30 and newer (not in 21.28).
-        if (is_21_30_or_greater) {
-            // A video opened while casting to our device is sent to the device, as with a real screen,
-            // instead of played on the phone.
-            PlayOnPhoneFlagFingerprint.let {
-                val moveResult = it.instructionMatches.last()
-                val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
-
-                it.method.addInstructions(
-                    moveResult.index + 1,
-                    """
-                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->playNewVideoOnPhone(Z)Z
-                        move-result v$register
-                    """
-                )
-            }
         }
 
         if (is_21_47_or_greater) {
@@ -375,14 +386,14 @@ val castAdFreePatch = patch(
                 0,
                 """
                     move-object/from16 v0, p0
-                    invoke-static { v0 }, $EXTENSION_CLASS->isOurChannel(Ljava/lang/Object;)Z
+                    invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->isOurChannel(Ljava/lang/Object;)Z
                     move-result v1
                     if-eqz v1, :original
                     move-object/from16 v1, p1
                     if-eqz v1, :connect
                     iput-object v1, v0, $listenerField
                     :connect
-                    invoke-static { v0 }, $EXTENSION_CLASS->connect(Ljava/lang/Object;)V
+                    invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->connect(Ljava/lang/Object;)V
                     return-void
                     :original
                     nop
@@ -394,10 +405,10 @@ val castAdFreePatch = patch(
                 0,
                 """
                     move-object/from16 v0, p0
-                    invoke-static { v0 }, $EXTENSION_CLASS->isOurChannel(Ljava/lang/Object;)Z
+                    invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->isOurChannel(Ljava/lang/Object;)Z
                     move-result v1
                     if-eqz v1, :original
-                    invoke-static { v0 }, $EXTENSION_CLASS->connect(Ljava/lang/Object;)V
+                    invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->connect(Ljava/lang/Object;)V
                     return-void
                     :original
                     nop
@@ -409,7 +420,7 @@ val castAdFreePatch = patch(
             0,
             """
                 move-object/from16 v0, p0
-                invoke-static { v0 }, $EXTENSION_CLASS->state(Ljava/lang/Object;)I
+                invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->state(Ljava/lang/Object;)I
                 move-result v0
                 if-ltz v0, :original
                 return v0
@@ -425,7 +436,7 @@ val castAdFreePatch = patch(
                 move-object/from16 v1, p1
                 move-object/from16 v2, p2
                 ${loadParamsMap(paramsMapFields, "v2", "send")}
-                invoke-static { v0, v1, v2 }, $EXTENSION_CLASS->send(Ljava/lang/Object;Ljava/lang/Enum;Ljava/util/Map;)Lcom/google/common/util/concurrent/ListenableFuture;
+                invoke-static { v0, v1, v2 }, $EXTENSION_LOUNGE_CLASS->send(Ljava/lang/Object;Ljava/lang/Enum;Ljava/util/Map;)Lcom/google/common/util/concurrent/ListenableFuture;
                 move-result-object v0
                 if-eqz v0, :original
                 return-object v0
@@ -438,7 +449,7 @@ val castAdFreePatch = patch(
             0,
             """
                 move-object/from16 v0, p0
-                invoke-static { v0 }, $EXTENSION_CLASS->disconnect(Ljava/lang/Object;)Z
+                invoke-static { v0 }, $EXTENSION_LOUNGE_CLASS->disconnect(Ljava/lang/Object;)Z
                 move-result v0
                 if-eqz v0, :original
                 return-void

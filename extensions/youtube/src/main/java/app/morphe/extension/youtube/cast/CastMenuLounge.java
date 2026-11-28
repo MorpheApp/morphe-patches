@@ -380,15 +380,6 @@ public final class CastMenuLounge {
         return true;
     }
 
-    /**
-     * Injection point: the server flag that plays a video opened while casting on the phone, and ends the session.
-     *
-     * @return The flag, off while casting to our device. The app then sends the video to the device.
-     */
-    public static boolean playNewVideoOnPhone(boolean original) {
-        return original && channel == null;
-    }
-
     // endregion
 
     /**
@@ -405,7 +396,7 @@ public final class CastMenuLounge {
      * @return If the app has a session connected to a device of the Cast menu. The session stays connected when a
      *         video ends, so the app can cast the next one.
      */
-    static boolean isConnected() {
+    public static boolean isConnected() {
         return channel != null;
     }
 

@@ -349,7 +349,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_FULLSCREEN_SLIDING_GESTURE = new BooleanSetting("morphe_disable_fullscreen_sliding_down_gesture", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_DRAGGED_DOWN_GESTURE = new BooleanSetting("morphe_disable_fullscreen_dragged_down_gesture", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_ZOOM_GESTURE = new BooleanSetting("morphe_disable_fullscreen_zoom_gesture", FALSE);
-    public static final BooleanSetting RESTORE_OLD_CAST_BEHAVIOR = new BooleanSetting("morphe_restore_old_cast_behavior", FALSE, true);
     public static final BooleanSetting RESTORE_PINCH_TO_ZOOM = new BooleanSetting("morphe_restore_pinch_to_zoom", FALSE);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
     public static final EnumSetting<FullscreenMode> EXIT_FULLSCREEN = new EnumSetting<>("morphe_exit_fullscreen", FullscreenMode.DISABLED);
@@ -394,6 +393,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting FULLSCREEN_VIDEO_ALIGNMENT_BUTTON = new BooleanSetting("morphe_fullscreen_video_alignment_button", FALSE, true);
     public static final BooleanSetting COPY_VIDEO_LINK_BUTTON = new BooleanSetting("morphe_copy_video_link_button", FALSE, true);
     public static final BooleanSetting COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON = new BooleanSetting("morphe_copy_video_link_with_timestamp_button", TRUE, true, parent(COPY_VIDEO_LINK_BUTTON));
+    public static final BooleanSetting RESTORE_OLD_CAST_BEHAVIOR = new BooleanSetting("morphe_restore_old_cast_behavior", FALSE, true);
     public static final BooleanSetting CAST_AD_FREE_CAST_MENU = new BooleanSetting("morphe_cast_ad_free_cast_menu", TRUE, true);
     public static final EnumSetting<CastCodecs> CAST_AD_FREE_CODECS = new EnumSetting<>("morphe_cast_ad_free_codecs", CastCodecs.VP9, parent(CAST_AD_FREE_CAST_MENU));
     public static final EnumSetting<CastQuality> CAST_AD_FREE_QUALITY = new EnumSetting<>("morphe_cast_ad_free_quality", CastQuality.P1080, parent(CAST_AD_FREE_CAST_MENU));
