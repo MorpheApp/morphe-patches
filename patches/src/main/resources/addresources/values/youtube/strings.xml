@@ -1378,6 +1378,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_autoplay_mix_length">Mix: %s videos</string>
     <string name="morphe_autoplay_mix_no_limit">Mix: no limit</string>
 
+    <!-- interaction.cast.restoreOldCastPatch -->
+    <string name="morphe_restore_old_cast_behavior_title">Restore old Cast behavior</string>
+    <string name="morphe_restore_old_cast_behavior_summary">The Cast session stays connected when selecting a different video or closing the player, so videos keep playing on the TV</string>
+
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
     <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>
     <string name="morphe_continue_watching_prompt_entry_1">Default</string>
