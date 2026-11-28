@@ -38,6 +38,7 @@ public final class ReplaySwipeController implements GestureController {
     private final PlayerControlsVisibilityObserver controls;
     private final Rect playerBounds = new Rect();
     private final int playerOverlayId;
+    private final int filmStripId;
     private final int touchSlop;
     private final int edgePadding;
     private final int verticalPadding;
@@ -50,6 +51,7 @@ public final class ReplaySwipeController implements GestureController {
         this.host = host;
         controls = new PlayerControlsVisibilityObserver(host);
         playerOverlayId = ResourceUtils.getIdentifier(host, ResourceType.ID, "inset_controls_overlay_wrapper");
+        filmStripId = ResourceUtils.getIdentifier(host, ResourceType.ID, "film_strip");
         touchSlop = ViewConfiguration.get(host).getScaledTouchSlop();
         final float density = host.getResources().getDisplayMetrics().density;
         edgePadding = Math.round(EDGE_PADDING_DP * density);
@@ -129,6 +131,9 @@ public final class ReplaySwipeController implements GestureController {
                 || controls.arePlayerControlsVisible()) {
             return false;
         }
+        // Precise seeking hides the player controls and scrolls its film strip with horizontal drags.
+        View filmStrip = host.findViewById(filmStripId);
+        if (filmStrip != null && filmStrip.isShown()) return false;
         View player = host.findViewById(playerOverlayId);
         if (player == null || !player.getGlobalVisibleRect(playerBounds)) return false;
         final float x = event.getRawX();
