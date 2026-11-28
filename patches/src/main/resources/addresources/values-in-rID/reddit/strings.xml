@@ -31,6 +31,8 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_navigation_bar_screen_summary">Tombol bilah bawah dan bilah kaca</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Nonaktifkan penyembunyian otomatis bilah bawah</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Menjaga bilah navigasi bawah tetap terlihat saat menggulir</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Tombol navigasi kontras tinggi</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Menampilkan tombol bilah navigasi yang tidak dipilih dalam warna hitam pada mode terang dan putih pada mode gelap, alih-alih abu-abu</string>
   <string name="morphe_glass_navigation_bar_title">Bilah navigasi kaca</string>
   <string name="morphe_glass_navigation_bar_summary">Menampilkan bilah navigasi sebagai kapsul transparan yang mengapung di atas feed. Pada tablet, rel samping memiliki tampilan yang sama</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Aktif</string>
@@ -76,6 +78,10 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_hide_chat_button_title">Sembunyikan tombol Obrolan</string>
   <string name="morphe_hide_discover_button_title">Sembunyikan tombol Temukan atau Komunitas</string>
   <string name="morphe_hide_games_button_title">Sembunyikan tombol Game</string>
+  <string name="morphe_subreddit_create_button_title">Tombol buat di komunitas</string>
+  <string name="morphe_subreddit_create_button_summary">Menampilkan tombol di samping Pencarian di setiap komunitas untuk membuat postingan di sana</string>
+  <string name="morphe_subreddit_create_button_label">Buat postingan</string>
+  <string name="morphe_subreddit_create_button_description">Buat postingan di r/%s</string>
   <string name="morphe_screen_sidebar_title">Sidebar</string>
   <string name="morphe_sidebar_screen_summary">Rak dan tombol di sidebar</string>
   <string name="morphe_settings_in_sidebar_title">Tampilkan setelan Morphe</string>

@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Копчиња на долната лента и стаклена лента</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Оневозможи автоматско криење на долната лента</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Ја одржува долната导航 лента видлива додека скролате</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Навигациски копчиња со висок контраст</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Ги прикажува неселектираните копчиња на навигациската лента во црно во светлиот режим и во бело во темниот режим, наместо во сиво</string>
   <string name="morphe_glass_navigation_bar_title">Стаклена лента за навигација</string>
   <string name="morphe_glass_navigation_bar_summary">Ја прикажува лентата за навигација како лебдечка, полупроѕирна капсула над фидот. Кај таблетите, страничната лента има истиот изглед</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Вклучено</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Скриј копче „Разговор“</string>
   <string name="morphe_hide_discover_button_title">Скриј копче „Откриј“ или „Заедници“</string>
   <string name="morphe_hide_games_button_title">Скриј копче „Игри“</string>
+  <string name="morphe_subreddit_create_button_title">Копче за креирање во заедниците</string>
+  <string name="morphe_subreddit_create_button_summary">Прикажува копче до Пребарувај во секоја заедница кое започнува објава таму</string>
+  <string name="morphe_subreddit_create_button_label">Креирај објава</string>
+  <string name="morphe_subreddit_create_button_description">Креирај објава во r/%s</string>
   <string name="morphe_screen_sidebar_title">Странично мени</string>
   <string name="morphe_sidebar_screen_summary">Полици и копчиња во страничната лента</string>
   <string name="morphe_settings_in_sidebar_title">Прикажи ги поставките на Morphe</string>

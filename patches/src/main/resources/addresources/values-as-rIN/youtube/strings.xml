@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">বেজসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_account_menu_downloads_title">ডাউনলোডসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\'পছন্দ কৰা ভিডিঅ\'সমূহ\' লুকুৱাওক</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'গোপনীয়তা নীতি\' \'সেৱাৰ চৰ্ত\' ফুটাৰ লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_account_menu_watch_later_title">\'ৰৈ যোৱা ভিডিঅ\'সমূহ\' লুকুৱাওক</string>
   <string name="morphe_hide_album_cards_title">এলবাম কাৰ্ডবোৰ লুকুৱাওক</string>
   <string name="morphe_hide_album_cards_summary">শিল্পীৰ বৰ্ণনাৰ তলত থকা এলবাম কাৰ্ডবোৰ লুকুৱাই ৰাখে</string>
@@ -1264,6 +1265,9 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">অটো মোডত, ইমানবোৰ ভিডিঅ’ৰ পিছত এটা মিক্স বন্ধ হয়। ০ = কোনো সীমা নাই</string>
   <string name="morphe_autoplay_mix_length">মিক্স: %s ভিডিঅ’</string>
   <string name="morphe_autoplay_mix_no_limit">মিক্স: কোনো সীমা নাই</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">পুৰণি Cast ব্যৱহাৰ পুনৰুদ্ধাৰ কৰক</string>
+  <string name="morphe_restore_old_cast_behavior_summary">বেলেগ ভিডিঅ’ নিৰ্বাচন কৰিলে বা প্লেয়াৰটো বন্ধ কৰিলে Cast চেছনটো সংযুক্ত হৈ থাকে, যাতে টিভিৰত ভিডিঅ’বোৰ চলি থাকে</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'চাব continuité?\' প্ৰম্পট</string>
   <string name="morphe_continue_watching_prompt_entry_1">ডিফল্ট</string>
@@ -1402,6 +1406,12 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_shorts_autoplay_summary">বৰ্তমানৰটো পুনৰাবৃত্তি কৰাৰ পৰিৱৰ্তে স্বয়ংক্ৰিয়ভাৱে পৰৱৰ্তী Short-লৈ আগবাঢ়ি যায়</string>
   <string name="morphe_shorts_autoplay_background_title">বেকগ্ৰাউণ্ডত অটোপ্লে কৰক</string>
   <string name="morphe_shorts_autoplay_background_summary">বেকগ্ৰাউণ্ড প্লেবেকৰ সময়ত স্বয়ংক্ৰিয়ভাৱে পৰৱৰ্তী Short-লৈ আগবাঢ়ি যায়</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts মেনুত Autoplay</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts প্লেয়াৰ মেনুত এটা আইটেম দেখুৱায় যাৰ দ্বাৰা Autoplay Shorts অন বা অফ কৰিব পাৰি</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Autoplay Shorts · অন</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Autoplay Shorts · অফ</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts Autoplay অন কৰা হৈছে</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts Autoplay অফ কৰা হৈছে</string>
   <string name="morphe_skip_live_shorts_title">লাইভ Shorts স্কিপ কৰক</string>
   <string name="morphe_skip_live_shorts_summary">Shorts ফিডত দেখা দিয়া লাইভ ষ্ট্ৰিমসমূহ স্কিপ কৰে</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_feed_card_layout_entry_1">ক্লাছিক</string>
   <string name="morphe_feed_card_layout_entry_2">কাৰ্ড</string>
   <string name="morphe_feed_card_layout_entry_3">লাইক, কমেন্ট আৰু সেভ বুটাম থকা কাৰ্ড</string>
+  <string name="morphe_feed_card_layout_entry_4">অৱতাৰ গ্লো থকা কাৰ্ডসমূহ</string>
+  <string name="morphe_feed_card_layout_entry_5">লাইক, কমেন্ট আৰু সেভ বুটাম তথা অৱতাৰ গ্লো থকা কাৰ্ডসমূহ</string>
   <string name="morphe_feed_card_layout_comments">মন্তব্য</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Miniplayer ৰিজিউমিং নিষ্ক্ৰিয় কৰক</string>
@@ -1512,6 +1524,10 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_custom_branding_icon_entry_8">অৰিজিনেল এনালগ</string>
   <string name="morphe_custom_branding_icon_entry_9">অৰিজিনেল কেক</string>
   <string name="morphe_custom_branding_icon_entry_10">অৰিজিনেল মেটাল</string>
+  <string name="morphe_custom_branding_icon_entry_11">মূল লোম</string>
+  <string name="morphe_custom_branding_icon_entry_12">মূল জলৰঙ</string>
+  <string name="morphe_custom_branding_icon_entry_13">মূল ক্লাছিক</string>
+  <string name="morphe_custom_branding_icon_entry_14">মূল ৰেট্ৰো টিভি</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">ডিফল্ট</string>
   <string name="morphe_header_logo_entry_2">নিয়মিত</string>
@@ -1639,6 +1655,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">ব্ৰাউজাৰত লিংক খোলক</string>
   <string name="morphe_external_browser_summary">ইন-এপ ব্ৰাউজাৰৰ পৰিৱৰ্তে বাহ্যিক ব্ৰাউজাৰত লিংকসমূহ খোলা হয়</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">ভাগ কৰা পাঠটোত কোনো YouTube লিংক নাই</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">প্লেবেক বাফৰৰ আকাৰ</string>
   <string name="morphe_playback_buffer_size_entry_default">ডিফল্ট</string>

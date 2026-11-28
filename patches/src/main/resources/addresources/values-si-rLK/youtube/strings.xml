@@ -186,6 +186,7 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
   <!-- interaction.autoplay.autoplayControlPatch -->
+  <!-- interaction.cast.restoreOldCastPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
@@ -237,6 +238,7 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- misc.links.openSharedLinksPatch -->
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
   <!-- video.effects.videoEffectsPatch -->

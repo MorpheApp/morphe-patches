@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Кнопки нижньої панелі та скляна панель</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Вимкнути автоприховування нижньої панелі</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Залишає нижню панель навігації видимою під час прокручування</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Контрастні кнопки навігації</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Показує невибрані кнопки панелі навігації чорним кольором у світлому режимі та білим у темному замість сірого</string>
   <string name="morphe_glass_navigation_bar_title">Скляна панель навігації</string>
   <string name="morphe_glass_navigation_bar_summary">Показує панель навігації як плаваючу напівпрозору капсулу поверх стрічки. На планшетах бічна панель має такий самий вигляд</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Увімк.</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Приховати кнопку \"Чат\"</string>
   <string name="morphe_hide_discover_button_title">Приховати кнопку \"Відкривати\" або \"Спільноти\"</string>
   <string name="morphe_hide_games_button_title">Приховати кнопку \"Ігри\"</string>
+  <string name="morphe_subreddit_create_button_title">Кнопка \"Створити\" у спільнотах</string>
+  <string name="morphe_subreddit_create_button_summary">Показує кнопку поруч із пошуком у кожній спільноті, щоб створити там допис</string>
+  <string name="morphe_subreddit_create_button_label">Створити допис</string>
+  <string name="morphe_subreddit_create_button_description">Створити допис у r/%s</string>
   <string name="morphe_screen_sidebar_title">Бічна панель</string>
   <string name="morphe_sidebar_screen_summary">Полиці та кнопки в бічній панелі</string>
   <string name="morphe_settings_in_sidebar_title">Показувати налаштування Morphe</string>
@@ -103,7 +109,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_vote_count_title">Приховати кількість голосів</string>
   <string name="morphe_hide_post_vote_count_summary">Приховує рахунок між кнопками голосування за та проти в дописах і коментарях</string>
   <string name="morphe_screen_filters_title">Фільтри</string>
-  <string name="morphe_filters_screen_summary">Приховати дописи стрічки за тегом або ключовим словом</string>
+  <string name="morphe_filters_screen_summary">Приховує дописи стрічки за флейром або ключовим словом</string>
   <string name="morphe_flair_filters_title">Фільтри флейрів</string>
   <string name="morphe_flair_filters_summary">Приховує дописи стрічки з флейром спільноти. Регістр не враховується</string>
   <string name="morphe_flair_filters_empty">Немає фільтрів флейрів</string>
@@ -121,7 +127,7 @@ Second \"item\" text"</string>
   <string name="morphe_keyword_filters_invalid">Недійсний регулярний вираз: %s</string>
   <string name="morphe_filters_saved">Оновіть стрічку, щоб застосувати зміни</string>
   <string name="morphe_screen_layout_title">Макет</string>
-  <string name="morphe_layout_screen_summary">Стрічка, дописи, коментарі, медіа та додаток</string>
+  <string name="morphe_layout_screen_summary">Стрічка, дописи, коментарі, медіа та застосунок</string>
   <string name="morphe_layout_home_feed_title">Головна стрічка</string>
   <string name="morphe_layout_shelves_title">Полиці та розділи</string>
   <string name="morphe_layout_posts_title">Дописи</string>
@@ -217,7 +223,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_grid_feed_title">Сітка стрічки на планшеті</string>
   <string name="morphe_tablet_grid_feed_summary_on">Стрічки показуються у вигляді сітки на планшетах. На телефонах нічого не змінюється</string>
   <string name="morphe_tablet_grid_feed_summary_off">Стрічки показуються у вигляді списку</string>
-  <string name="morphe_miscellaneous_screen_summary">Про додаток, мова, посилання, поширення та налагодження</string>
+  <string name="morphe_miscellaneous_screen_summary">Про застосунок, мова, посилання, поширення та налагодження</string>
   <string name="morphe_about_summary">Версія патчів та офіційні посилання</string>
   <string name="morphe_share_post_content_title">Ділитися вмістом допису</string>
   <string name="morphe_share_post_content_summary">Ярлики застосунків і \"Поділитися через…\" у меню \"Поділитися\" надсилають зображення, відео або текст допису замість посилання на нього. Копіювання посилання, як і раніше, копіює посилання</string>

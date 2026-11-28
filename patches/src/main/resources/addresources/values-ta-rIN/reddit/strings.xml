@@ -27,6 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">கீழ் பட்டைக் பொத்தான்கள் மற்றும் கண்ணாடிப் பட்டை</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">கீழ் பட்டையைத் தானாக மறைப்பதை முடக்கு</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">ஸ்க்ரோல் செய்யும்போது கீழ் வழிசெலுத்தல் பட்டையைத் தெரியும்படி வைத்திருக்கும்</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">உயர்-மாறுபட்ட வழிசெலுத்தல் பொத்தான்கள்</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">வழிசெலுத்தல் பட்டையின் தேர்ந்தெடுக்கப்படாத பொத்தான்களை, சாம்பல் நிறத்திற்குப் பதிலாக வெளிச்சப் பயன்முறையில் கருப்பு நிறத்திலும் இருண்ட பயன்முறையில் வெள்ளை நிறத்திலும் காட்டுகிறது</string>
   <string name="morphe_glass_navigation_bar_title">கிளாஸ் நேவிகேஷன் பார்</string>
   <string name="morphe_glass_navigation_bar_summary">ஃபீடிற்கு மேலே மிதக்கும், ஒளிபுகும் கேப்சூலாக நேவிகேஷன் பாரைக் காட்டுகிறது. டேப்லெட்டுகளில், சைடு ரெயிலும் இதே தோற்றத்தைக் கொண்டிருக்கும்</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">ஆன்</string>
@@ -68,6 +70,10 @@ Second \"item\" text"</string>
   <string name="morphe_glass_navigation_bar_top_tabs_title">மேல் பட்டியில் உள்ள டேப்கள்</string>
   <string name="morphe_glass_navigation_bar_top_tabs_summary_on">ஹோம் ஃபீட் டேப்கள் மெனுவிற்கும் அவதாரிற்கும் இடையே உள்ள ஒரு கிளாஸ் கேப்சூலில் உள்ளன</string>
   <string name="morphe_glass_navigation_bar_top_tabs_summary_off">ஹோம் ஃபீட் டேப்கள் மேல் பட்டிற்கு கீழே உள்ளன</string>
+  <string name="morphe_subreddit_create_button_title">சமூகங்களில் உருவாக்கு பொத்தான்</string>
+  <string name="morphe_subreddit_create_button_summary">ஒவ்வொரு சமூகத்திலும் தேடுதலுக்கு அருகில் ஒரு பதிவைத் தொடங்கும் பொத்தானைக் காட்டுகிறது</string>
+  <string name="morphe_subreddit_create_button_label">பதிவை உருவாக்கு</string>
+  <string name="morphe_subreddit_create_button_description">r/%s இல் பதிவை உருவாக்கு</string>
   <string name="morphe_sidebar_screen_summary">பக்கப் பட்டையில் உள்ள அலமாரிகள் மற்றும் பொத்தான்கள்</string>
   <string name="morphe_settings_in_sidebar_title">Morphe அமைப்புகளைக் காட்டு</string>
   <string name="morphe_settings_in_sidebar_summary">சைட்பாரின் மேற்பகுதியில் Morphe அமைப்புகளைக் காட்டுகிறது</string>

@@ -55,6 +55,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_account_menu_badges_title">Skrij značke</string>
   <string name="morphe_hide_account_menu_downloads_title">Skrij prenose</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Skrij \"Všečkani videi\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Skrij nogo \"Politika zasebnosti\" \"Pogoji uporabe\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Skrij \"Glej pozneje\"</string>
   <string name="morphe_hide_album_cards_title">Skrij kartice albumov</string>
   <string name="morphe_hide_album_cards_summary">Skrije kartice albumov pod opisom izvajalca</string>
@@ -1264,6 +1265,9 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_autoplay_mix_stop_after_summary">V načinu Avto se Mix ustavi po toliko videovih. 0 = brez omejitve</string>
   <string name="morphe_autoplay_mix_length">Mešanica: %s videov</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: brez omejitev</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Restore stari način delovanja funkcije Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Seja Cast ostane povezana pri izbiri drugega videa ali zapiranju predvornika, zato se videi predvajajo naprej na televizorju</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Poziv \"Nadaljujte z ogledom\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Privzeto</string>
@@ -1402,6 +1406,12 @@ Razporeditev za avtomobile
   <string name="morphe_shorts_autoplay_summary">Samodejno napreduje k naslednjemu Shortu namesto, da bi ponavljal trenutnega</string>
   <string name="morphe_shorts_autoplay_background_title">Samodejno predvajanje v ozadju</string>
   <string name="morphe_shorts_autoplay_background_summary">Samodejno napreduje k naslednjemu Shortu med predvajanjem v ozadju</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Samodejno predvajanje v meniju Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">V meniju predvajalnika Shorts prikaže element, s katerim vklopite ali izklopite samodejno predvajanje Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Samodejno predvajanje Shorts · Vklopljeno</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Samodejno predvajanje Shorts · Izklopljeno</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Samodejno predvajanje Shorts je vklopljeno</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Samodejno predvajanje Shorts je izklopljeno</string>
   <string name="morphe_skip_live_shorts_title">Preskoči neposredne kratke videoposnetke</string>
   <string name="morphe_skip_live_shorts_summary">Preskoči neposredne prenose, ki se pojavijo v viru kratkih videoposnetkov</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Razporeditev za avtomobile
   <string name="morphe_feed_card_layout_entry_1">Klasična</string>
   <string name="morphe_feed_card_layout_entry_2">Kartice</string>
   <string name="morphe_feed_card_layout_entry_3">Kartice z gumbi za všeček, komentar in shranjevanje</string>
+  <string name="morphe_feed_card_layout_entry_4">Kartice s sijajem avatarja</string>
+  <string name="morphe_feed_card_layout_entry_5">Kartice s gumbi za všeč, komentar in shranjevanje ter sijajem avatarja</string>
   <string name="morphe_feed_card_layout_comments">Komentarji</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Onemogoči nadaljevanje predvajanja v mini predvajalniku</string>
@@ -1512,6 +1524,10 @@ Razporeditev za avtomobile
   <string name="morphe_custom_branding_icon_entry_8">Izvirni analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Izvirna torta</string>
   <string name="morphe_custom_branding_icon_entry_10">Izvirni kovin</string>
+  <string name="morphe_custom_branding_icon_entry_11">Izvirni kratek kratek</string>
+  <string name="morphe_custom_branding_icon_entry_12">Izvirni akvarel</string>
+  <string name="morphe_custom_branding_icon_entry_13">Izvirni klasik</string>
+  <string name="morphe_custom_branding_icon_entry_14">Izvirni retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Privzeto</string>
   <string name="morphe_header_logo_entry_2">Redno</string>
@@ -1639,6 +1655,8 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Odpiraj povezave v brskalniku</string>
   <string name="morphe_external_browser_summary">Odpre povezave v zunanjem brskalniku namesto v brskalniku v aplikaciji</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">V deljenem besedilu ni povezave do YouTube</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Velikost predvajalnega medpomnilnika</string>
   <string name="morphe_playback_buffer_size_entry_default">Privzeto</string>

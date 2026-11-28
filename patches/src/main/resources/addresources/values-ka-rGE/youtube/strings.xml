@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">ბეიჯების დამალვა</string>
   <string name="morphe_hide_account_menu_downloads_title">ჩამოტვირთვების დამალვა</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"მოწონებული ვიდეოების\" დამალვა</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">დამალეთ \"კონფიდენციალურობის პოლიტიკის\" და \"მომსახურების პირობების\" ქვედა პანელი</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"მოგვიანებით ნახვის\" დამალვა</string>
   <string name="morphe_hide_album_cards_title">ალბომის ბარათების დამალვა</string>
   <string name="morphe_hide_album_cards_summary">მალავს ალბომის ბარათებს არტისტის აღწერილობის ქვემოთ</string>
@@ -1264,6 +1265,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">ავტო რეჟიმში, მიქსი წყდება ამ რაოდენობის ვიდეოს შემდეგ. 0 = შეზღუდვა არ არის</string>
   <string name="morphe_autoplay_mix_length">მიქსი: %s ვიდეო</string>
   <string name="morphe_autoplay_mix_no_limit">მიქსი: შეზღუდვა არ არის</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Cast-ის ძველი ქცევის აღდგენა</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast სესია რჩება დაკავშირებული სხვა ვიდეოს არჩევისას ან პლეიერის დახურვისას, ამრიგად ვიდეოები განაგრძობენ დაკვრას ტელევიზორზე</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"გაგრძელება ნახვა?\" შეტყობინება</string>
   <string name="morphe_continue_watching_prompt_entry_1">ნაგულისხმები</string>
@@ -1402,6 +1406,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">ავტომატურად გადადის შემდეგ Short-ზე მიმდინარესის განმეორების ნაცვლად</string>
   <string name="morphe_shorts_autoplay_background_title">ავტომატური დაკვრა ფონურ რეჟიმში</string>
   <string name="morphe_shorts_autoplay_background_summary">ფონურ რეჟიმში დაკვრისას ავტომატურად გადადის შემდეგ Short-ზე</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">ავტომატური დაკვრა Shorts-ის მენიუში</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">აჩვენებს ელემენტს Shorts-ის პლეიერის მენიუში, რომელიც რთავს ან თიშავს Shorts-ების ავტომატურ დაკვრას</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts-ების ავტომატური დაკვრა · ჩართულია</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts-ების ავტომატური დაკვრა · გამორთულია</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts-ის ავტომატური დაკვრა ჩაირთო</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts-ის ავტომატური დაკვრა გამორთო</string>
   <string name="morphe_skip_live_shorts_title">ცოცხალი Shorts-ების გამოტოვება</string>
   <string name="morphe_skip_live_shorts_summary">გამოტოვებს პირდაპირ ეთერებს, რომლებიც ჩნდება Shorts-ის ფიდში</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">კლასიკური</string>
   <string name="morphe_feed_card_layout_entry_2">ბარათები</string>
   <string name="morphe_feed_card_layout_entry_3">ბარათები მოწონების, კომენტარის და შენახვის ღილაკებით</string>
+  <string name="morphe_feed_card_layout_entry_4">ბარათები ავატარის განათებით</string>
+  <string name="morphe_feed_card_layout_entry_5">ბარათები მოწონების, კომენტარისა და შენახვის ღილაკებითა და ავატარის განათებით</string>
   <string name="morphe_feed_card_layout_comments">კომენტარები</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">მინიპლეერის გაგრძელების გამორთვა</string>
@@ -1512,6 +1524,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">ორიგინალი ანალოგი</string>
   <string name="morphe_custom_branding_icon_entry_9">ორიგინალი ტორტი</string>
   <string name="morphe_custom_branding_icon_entry_10">ორიგინალი მეტალი</string>
+  <string name="morphe_custom_branding_icon_entry_11">ორიგინალური ბეწვი</string>
+  <string name="morphe_custom_branding_icon_entry_12">ორიგინალური აკვარელი</string>
+  <string name="morphe_custom_branding_icon_entry_13">ორიგინალური კლასიკა</string>
+  <string name="morphe_custom_branding_icon_entry_14">ორიგინალური რეტრო ტელევიზორი</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">ნაგულისხმები</string>
   <string name="morphe_header_logo_entry_2">ჩვეულებრივი</string>
@@ -1639,6 +1655,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">ბმულების გახსნა ბრაუზერში</string>
   <string name="morphe_external_browser_summary">ხსნის ბმულებს გარე ბრაუზერში და არა აპლიკაციის შიგნით არსებულ ბრაუზერში</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">გაგზავნილ ტექსტში YouTube ბმული არ არის</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">დაკვრის ბუფერის ზომა</string>
   <string name="morphe_playback_buffer_size_entry_default">ნაგულისხმები</string>

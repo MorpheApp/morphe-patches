@@ -55,6 +55,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_account_menu_badges_title">Rozetleri Gizle</string>
   <string name="morphe_hide_account_menu_downloads_title">İndirmeleri gizle</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"Beğendiğim videolar\" kısmını gizle</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'Gizlilik Politikası\' \'Hizmet Şartları\' altbilgisini gizle</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"Daha sonra izle\" kısmını gizle</string>
   <string name="morphe_hide_album_cards_title">Albüm kartlarını gizle</string>
   <string name="morphe_hide_album_cards_summary">Sanatçı açıklamasının altındaki albüm kartlarını gizler</string>
@@ -1264,6 +1265,9 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_autoplay_mix_stop_after_summary">Otomatik modunda, bir Mix bu sayıdaki videodan sonra durur. 0 = sınır yok</string>
   <string name="morphe_autoplay_mix_length">Mix: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: sınır yok</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Eski Cast davranışını geri yükle</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Farklı bir video seçildiğinde veya oynatıcı kapatıldığında Cast oturumu bağlı kalır, böylece videolar TV\'de oynatılmaya devam eder</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'İzlemeye devam edilsin mi?\' istemi</string>
   <string name="morphe_continue_watching_prompt_entry_1">Varsayılan</string>
@@ -1402,6 +1406,12 @@ Otomotiv düzeni
   <string name="morphe_shorts_autoplay_summary">Mevcut olanı tekrarlamak yerine otomatik olarak bir sonraki Short\'a geçer</string>
   <string name="morphe_shorts_autoplay_background_title">Arka planda otomatik oynatma</string>
   <string name="morphe_shorts_autoplay_background_summary">Arka planda oynatma sırasında otomatik olarak bir sonraki Short\'a geçer</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts menüsünde otomatik oynat</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts oynatıcı menüsünde, Shorts\'u otomatik oynatma özelliğini açan veya kapatan bir öğe gösterir</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts\'u otomatik oynat · Açık</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts\'u otomatik oynat · Kapalı</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts otomatik oynatma açıldı</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts otomatik oynatma kapatıldı</string>
   <string name="morphe_skip_live_shorts_title">Canlı Shorts\'ları atla</string>
   <string name="morphe_skip_live_shorts_summary">Shorts akışında görünen canlı yayınları atlar</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Otomotiv düzeni
   <string name="morphe_feed_card_layout_entry_1">Klasik</string>
   <string name="morphe_feed_card_layout_entry_2">Kartlar</string>
   <string name="morphe_feed_card_layout_entry_3">Beğenme, yorum yapma ve kaydetme düğmeleri içeren kartlar</string>
+  <string name="morphe_feed_card_layout_entry_4">Avatar parlamalı kartlar</string>
+  <string name="morphe_feed_card_layout_entry_5">Beğen, yorum yap ve kaydet butonları ile avatar parlamalı kartlar</string>
   <string name="morphe_feed_card_layout_comments">Yorumlar</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
@@ -1512,6 +1524,10 @@ Otomotiv düzeni
   <string name="morphe_custom_branding_icon_entry_8">Orijinal analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Orijinal pasta</string>
   <string name="morphe_custom_branding_icon_entry_10">Orijinal metal</string>
+  <string name="morphe_custom_branding_icon_entry_11">Orijinal kürk</string>
+  <string name="morphe_custom_branding_icon_entry_12">Orijinal sulu boya</string>
+  <string name="morphe_custom_branding_icon_entry_13">Orijinal klasik</string>
+  <string name="morphe_custom_branding_icon_entry_14">Orijinal retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Varsayılan</string>
   <string name="morphe_header_logo_entry_2">Normal</string>
@@ -1639,6 +1655,8 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Bağlantıları tarayıcıda aç</string>
   <string name="morphe_external_browser_summary">Bağlantıları uygulama içi tarayıcı yerine harici bir tarayıcıda açar</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Paylaşılan metinde YouTube bağlantısı yok</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Oynatma arabellek boyutu</string>
   <string name="morphe_playback_buffer_size_entry_default">Varsayılan</string>

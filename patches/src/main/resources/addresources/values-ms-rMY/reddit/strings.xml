@@ -31,6 +31,8 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_navigation_bar_screen_summary">Butang bar bawah dan bar kaca</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Nyahaktifkan sembunyi automatik bar bawah</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Kekalkan bar navigasi bawah kelihatan semasa menatal</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Butang navigasi kontras tinggi</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Menunjukkan butang bar navigasi yang tidak dipilih dalam warna hitam dalam mod terang dan putih dalam mod gelap, menggantikan warna kelabu</string>
   <string name="morphe_glass_navigation_bar_title">Bar pandu arah kaca</string>
   <string name="morphe_glass_navigation_bar_summary">Menunjukkan bar pandu arah sebagai kapsul lut sinar terapung di atas suapan. Pada tablet, rel sisi mempunyai rupa yang sama</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Hidup</string>
@@ -76,6 +78,10 @@ Untuk menggunakan versi yang lebih lama, anda mesti &lt;b&gt;nyahpasang&lt;/b&gt
   <string name="morphe_hide_chat_button_title">Sorokkan butang Sembang</string>
   <string name="morphe_hide_discover_button_title">Sorokkan butang \'Teroka\' atau \'Komuniti\'</string>
   <string name="morphe_hide_games_button_title">Sorokkan butang \'Permainan\'</string>
+  <string name="morphe_subreddit_create_button_title">Butang Cipta dalam komuniti</string>
+  <string name="morphe_subreddit_create_button_summary">Menunjukkan butang bersebelahan Carian dalam setiap komuniti untuk memulakan hantaran di sana</string>
+  <string name="morphe_subreddit_create_button_label">Cipta hantaran</string>
+  <string name="morphe_subreddit_create_button_description">Cipta hantaran dalam r/%s</string>
   <string name="morphe_screen_sidebar_title">Bar sisi</string>
   <string name="morphe_sidebar_screen_summary">Rak dan butang dalam bar sisi</string>
   <string name="morphe_settings_in_sidebar_title">Tunjukkan tetapan Morphe</string>

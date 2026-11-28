@@ -31,6 +31,8 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_navigation_bar_screen_summary">Apakšējās joslas pogas un stikla josla</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Atslēgt apakšjoslas automātisko slēgšanu</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Skrullēšanas laikā apakšējā navigācijas josla paliek redzama</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Augsta kontrasta navigācijas pogas</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Rāda navigācijas joslas neatvalktās pogas melnā krāsā gaišajā režīmā un baltā krāsā tumšajā režīmā, pelēkās krāsas vietā</string>
   <string name="morphe_glass_navigation_bar_title">Stikla navigācijas josla</string>
   <string name="morphe_glass_navigation_bar_summary">Rāda navigācijas joslu kā pelējošu, puscaurspīdīgu kapsulu virs plūmes. Planšetdatoros sānu joslai ir tāpat izskats</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Ieslēgts</string>
@@ -76,6 +78,10 @@ Lai izmantotu vecāku versiju, jums jāveic &lt;b&gt;atinstalēšana&lt;/b&gt; R
   <string name="morphe_hide_chat_button_title">Slēpt Tērzēšanas pogu</string>
   <string name="morphe_hide_discover_button_title">Slēpt Atklājumus vai Kopienas pogu</string>
   <string name="morphe_hide_games_button_title">Slēpt spēļu pogu</string>
+  <string name="morphe_subreddit_create_button_title">Izveidīt pogu kopienās</string>
+  <string name="morphe_subreddit_create_button_summary">Katra kopienas meklēšanas pogas blakus rāda pogu, kas ļauj izveidot ierakstu</string>
+  <string name="morphe_subreddit_create_button_label">Izveidot ierakstu</string>
+  <string name="morphe_subreddit_create_button_description">Izveidot ierakstu r/%s</string>
   <string name="morphe_screen_sidebar_title">Sānu josla</string>
   <string name="morphe_sidebar_screen_summary">Plaukti un pogas sānu joslā</string>
   <string name="morphe_settings_in_sidebar_title">Rādīt Morphe iestatījumus</string>

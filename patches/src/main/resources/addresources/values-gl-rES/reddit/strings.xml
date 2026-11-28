@@ -31,6 +31,8 @@ Para usar unha versión máis antiga, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddi
   <string name="morphe_navigation_bar_screen_summary">Botóns da barra inferior e a barra de vidro</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Desactivar a ocultación automática da barra inferior</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantén a barra de navegación inferior visible mentres se desliza a pantalla</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Botoes de navegación de alto contraste</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Mostra os botóns non seleccionados da barra de navegación en negro no modo claro e en branco no modo escuro, en lugar de gris</string>
   <string name="morphe_glass_navigation_bar_title">Barra de navegación de vidro</string>
   <string name="morphe_glass_navigation_bar_summary">Mostra a barra de navegación como unha cápsula flotante e translúcida sobre o feed. Nas tablets, o raíl lateral ten o mesmo aspecto</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Acendido</string>
@@ -76,6 +78,10 @@ Para usar unha versión máis antiga, debes &lt;b&gt;desinstalar&lt;/b&gt; Reddi
   <string name="morphe_hide_chat_button_title">Ocultar botón Chat</string>
   <string name="morphe_hide_discover_button_title">Ocultar botón Descubrir ou Comunidades</string>
   <string name="morphe_hide_games_button_title">Ocultar botón Xogos</string>
+  <string name="morphe_subreddit_create_button_title">Botón de crear en comunidades</string>
+  <string name="morphe_subreddit_create_button_summary">Mostra un botón xunto a Buscar en cada comunidade que inicia unha publicación alí</string>
+  <string name="morphe_subreddit_create_button_label">Crear publicación</string>
+  <string name="morphe_subreddit_create_button_description">Crear publicación en r/%s</string>
   <string name="morphe_screen_sidebar_title">Barra lateral</string>
   <string name="morphe_sidebar_screen_summary">Estantes e botóns na barra lateral</string>
   <string name="morphe_settings_in_sidebar_title">Mostrar axustes de Morphe</string>

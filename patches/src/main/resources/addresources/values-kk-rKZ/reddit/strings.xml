@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Төменгі панель батырмалары және шыны панель</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Төменгі панельдің автоматты түрде жасырылуын өшіру</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Скроллинг кезінде төменгі навигациялық панельді көрінетін күйде сақтайды</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Жоғары контрастты навигациялық түймелер</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Навигациялық панельдің таңдалмаған түймелерін сұр түстің орнына, жарық режимде қара, ал қараңғы режимде ақ түспен көрсетеді</string>
   <string name="morphe_glass_navigation_bar_title">Шыны navigation bar</string>
   <string name="morphe_glass_navigation_bar_summary">Навигациялық панельді лентаның үстіндегі қалқымалы, жартылай мөлдір капсула ретінде көрсетеді. Планшеттерде бүйірлік панельдің де түрі дәл сондай</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Қосулы</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Чат батырмасын жасыру</string>
   <string name="morphe_hide_discover_button_title">Зерттеу немесе Қауымдастықтар батырмасын жасыру</string>
   <string name="morphe_hide_games_button_title">Ойындар батырмасын жасыру</string>
+  <string name="morphe_subreddit_create_button_title">Қауымдастықтардағы жасау түймесі</string>
+  <string name="morphe_subreddit_create_button_summary">Әрбір қауымдастықта Іздеудің жанында жазбаны бастайтын түймені көрсетеді</string>
+  <string name="morphe_subreddit_create_button_label">Жазба жасау</string>
+  <string name="morphe_subreddit_create_button_description">r/%s қауымдастығында жазба жасау</string>
   <string name="morphe_screen_sidebar_title">Бүйір панелі</string>
   <string name="morphe_sidebar_screen_summary">Жанама панельдегі сөрелер мен батырмалар</string>
   <string name="morphe_settings_in_sidebar_title">Morphe баптауларын көрсету</string>

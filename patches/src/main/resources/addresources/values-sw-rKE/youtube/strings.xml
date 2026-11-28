@@ -55,6 +55,7 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_account_menu_badges_title">Ficha Beji</string>
   <string name="morphe_hide_account_menu_downloads_title">Ficha Pakua</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Ficha \'Video zilizopendwa\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Ficha footer ya \"Sera ya Faragha\" \"Masharti ya Huduma\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Ficha \'Tazama baadaye\'</string>
   <string name="morphe_hide_album_cards_title">Ficha kadi za albamu</string>
   <string name="morphe_hide_album_cards_summary">Huficha kadi za albamu chini ya maelezo ya msanii</string>
@@ -1264,6 +1265,9 @@ Settings → Playback (au Autoplay) → Autoplay next video"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">Katika modi ya Kiotomatiki, Mix inasimama baada ya idadi hii ya video. 0 = hakuna kikomo</string>
   <string name="morphe_autoplay_mix_length">Mix: video %s</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: hakuna kikomo</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Rejesha tabia ya zamani ya Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Kipindi cha Cast kinabaki kimeunganishwa unapochagua video tofauti au kufunga kicheza video, hivyo video zinaendelea kucheza kwenye TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Ombi la \"Endelea kutazama\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Kawaida</string>
@@ -1402,6 +1406,12 @@ Mpangilio wa Automotive
   <string name="morphe_shorts_autoplay_summary">Huwendelea kwenye Short inayofuata kiotomatiki badala ya kurudia ya sasa</string>
   <string name="morphe_shorts_autoplay_background_title">Cheza kiotomatiki nyuma</string>
   <string name="morphe_shorts_autoplay_background_summary">Huwendelea kwenye Short inayofuata kiotomatiki wakati wa uchezaji wa nyuma</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Cheza kiotoma katika menyu ya Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Inaonyesha kipengele katika menyu ya kidchezaji cha Shorts kinachowasha au kuzima Cheza Shorts kiotoma</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Cheza Shorts kiotoma · Imewashwa</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Cheza Shorts kiotoma · Imezimwa</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Cheza Shorts kiotomatiki kimewashwa</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Cheza Shorts kiotomatiki kimezimwa</string>
   <string name="morphe_skip_live_shorts_title">Ruka Shorts za moja kwa moja</string>
   <string name="morphe_skip_live_shorts_summary">Inaruka mitiririko ya moja kwa moja inayoonekana kwenye feed ya Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Mpangilio wa Automotive
   <string name="morphe_feed_card_layout_entry_1">Kawaida</string>
   <string name="morphe_feed_card_layout_entry_2">Kadi</string>
   <string name="morphe_feed_card_layout_entry_3">Kadi zenye vitufe vya kupenda, kuongeza maoni na kuhifadhi</string>
+  <string name="morphe_feed_card_layout_entry_4">Kadi zenye mng\'ao wa avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Kadi zenye vitufe vya kupenda, kufanya maoni na kuhifadhi pamoja na mng\'ao wa avatar</string>
   <string name="morphe_feed_card_layout_comments">Maoni</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Zima kurejea kwa miniplayer</string>
@@ -1512,6 +1524,10 @@ Mpangilio wa Automotive
   <string name="morphe_custom_branding_icon_entry_8">Analog ya asili</string>
   <string name="morphe_custom_branding_icon_entry_9">Keki asilia</string>
   <string name="morphe_custom_branding_icon_entry_10">Metali asilia</string>
+  <string name="morphe_custom_branding_icon_entry_11">Manyoya ya asili</string>
+  <string name="morphe_custom_branding_icon_entry_12">Rangi za maji za asili</string>
+  <string name="morphe_custom_branding_icon_entry_13">Kiolezo cha asili</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV ya zamani ya asili</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Kawaida</string>
   <string name="morphe_header_logo_entry_2">Ya kawaida</string>
@@ -1639,6 +1655,8 @@ Video huombwa kwa kutumia kiambishi kifupi cha ID ya video iliyofichwa, hivyo se
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Fungua viungo kwenye kivinjari</string>
   <string name="morphe_external_browser_summary">Hufungua viungo katika kivinjari cha nje badala ya kivinjari cha ndani ya programu</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Hakuna kiungo cha YouTube katika maandishi yaliyoshirikiwa</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Ukubwa wa bafa ya uchezaji</string>
   <string name="morphe_playback_buffer_size_entry_default">Kawaida</string>

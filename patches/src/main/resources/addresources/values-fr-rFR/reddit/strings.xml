@@ -28,9 +28,11 @@ Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; 
   <string name="morphe_ads_screen_summary">Publicités du flux et des commentaires</string>
   <string name="morphe_hide_post_ads_title">Masquer les publicités du flux</string>
   <string name="morphe_hide_comment_ads_title">Masquer les publicités dans les commentaires</string>
-  <string name="morphe_navigation_bar_screen_summary">Boutons de la barre inférieure et barre de verre</string>
+  <string name="morphe_navigation_bar_screen_summary">Boutons de la barre inférieure et la barre en verre</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Désactiver le masquage automatique de la barre inférieure</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Maintient la barre de navigation inférieure visible pendant le défilement</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Boutons de navigation à contraste élevé</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Affiche les boutons non sélectionnés de la barre de navigation en noir en mode clair et en blanc en mode sombre, au lieu de les afficher en gris</string>
   <string name="morphe_glass_navigation_bar_title">Barre de navigation en verre</string>
   <string name="morphe_glass_navigation_bar_summary">Affiche la barre de navigation sous la forme d\'une capsule flottante et translucide au-dessus du flux. Sur les tablettes, la barre latérale adopte le même aspect</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Activée</string>
@@ -76,8 +78,12 @@ Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; 
   <string name="morphe_hide_chat_button_title">Masquer le bouton \'Discuter\'</string>
   <string name="morphe_hide_discover_button_title">Masquer le bouton \'Découvrir\' ou \'Communautés\'</string>
   <string name="morphe_hide_games_button_title">Masquer le bouton \'Jeux\'</string>
+  <string name="morphe_subreddit_create_button_title">Bouton C\'réer\' dans les communautés</string>
+  <string name="morphe_subreddit_create_button_summary">Affiche un bouton à côté de \'Rechercher\' dans chaque communauté, permettant de créer un post dans celle-ci</string>
+  <string name="morphe_subreddit_create_button_label">Créer un post</string>
+  <string name="morphe_subreddit_create_button_description">Créer un post dans r/%s</string>
   <string name="morphe_screen_sidebar_title">Barre latérale</string>
-  <string name="morphe_sidebar_screen_summary">Étagères et boutons de la barre latérale</string>
+  <string name="morphe_sidebar_screen_summary">Étagères et boutons dans la barre latérale</string>
   <string name="morphe_settings_in_sidebar_title">Afficher les paramètres de Morphe</string>
   <string name="morphe_settings_in_sidebar_summary">Affiche les paramètres de Morphe en haut de la barre latérale</string>
   <string name="morphe_hide_popular_shelf_title">Masquer l\'étagère \'Populaires\'</string>
@@ -89,7 +95,7 @@ Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; 
   <string name="morphe_hide_reddit_pro_shelf_title">Masquer l\'étagère \'Reddit Pro\'</string>
   <string name="morphe_hide_resources_shelf_title">Masquer l\'étagère \'Ressources\'</string>
   <string name="morphe_hide_about_shelf_title">Masquer l\'étagère \'À propos\'</string>
-  <string name="morphe_post_buttons_screen_summary">Boutons et compteurs sur les publications</string>
+  <string name="morphe_post_buttons_screen_summary">Boutons et compteurs sur les posts</string>
   <string name="morphe_hide_post_award_button_title">Masquer le bouton \'Récompenser\'</string>
   <string name="morphe_hide_post_award_button_summary">Masque le bouton \'Récompenser\' sur les posts et les commentaires</string>
   <string name="morphe_hide_post_join_button_title">Masquer le bouton \'Rejoindre\'</string>
@@ -103,7 +109,7 @@ Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; 
   <string name="morphe_hide_post_vote_count_title">Masquer le nombre de votes</string>
   <string name="morphe_hide_post_vote_count_summary">Masque le score entre les boutons \'Upvote\' et \'Downvote\' des posts et des commentaires</string>
   <string name="morphe_screen_filters_title">Filtres</string>
-  <string name="morphe_filters_screen_summary">Masquer les publications du flux par flair ou mot-clé</string>
+  <string name="morphe_filters_screen_summary">Masquer les posts du flux selon leur flair ou mot-clé</string>
   <string name="morphe_flair_filters_title">Filtres de flair</string>
   <string name="morphe_flair_filters_summary">Masquer les posts du flux ayant le flair d\'une communauté. La correspondance ne tient pas compte de la casse</string>
   <string name="morphe_flair_filters_empty">Aucun filtre de flair</string>
@@ -121,7 +127,7 @@ Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; 
   <string name="morphe_keyword_filters_invalid">Expression régulière invalide : %s</string>
   <string name="morphe_filters_saved">Actualisez le flux pour appliquer les modifications</string>
   <string name="morphe_screen_layout_title">Mise en page</string>
-  <string name="morphe_layout_screen_summary">Flux, publications, commentaires, médias et application</string>
+  <string name="morphe_layout_screen_summary">Flux, posts, commentaires, médias et application</string>
   <string name="morphe_layout_home_feed_title">Flux d\'accueil</string>
   <string name="morphe_layout_shelves_title">Étagères et sections</string>
   <string name="morphe_layout_posts_title">Posts</string>

@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">ボトムバーのボタンとグラスバー</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">ボトムバーの自動非表示を無効化</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">スクロール中もボトムナビゲーションバーを表示したままにします</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">高コントラストのナビゲーションボタン</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">ナビゲーションバーの選択されていないボタンを、グレーではなく、ライトモードでは黒、ダークモードでは白で表示します</string>
   <string name="morphe_glass_navigation_bar_title">ガラス風ナビゲーション バー</string>
   <string name="morphe_glass_navigation_bar_summary">ナビゲーション バーをフィード上のフローティングで半透明のカプセルのように表示します。タブレットでは、サイドレールも同様の外観になります</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">オン</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">チャットボタンを非表示</string>
   <string name="morphe_hide_discover_button_title">発見ボタン/コミュニティボタンを非表示</string>
   <string name="morphe_hide_games_button_title">ゲームボタンを非表示</string>
+  <string name="morphe_subreddit_create_button_title">コミュニティ内の作成ボタン</string>
+  <string name="morphe_subreddit_create_button_summary">各コミュニティの検索の横に、投稿を開始するボタンを表示します</string>
+  <string name="morphe_subreddit_create_button_label">投稿を作成</string>
+  <string name="morphe_subreddit_create_button_description">r/%sに投稿を作成</string>
   <string name="morphe_screen_sidebar_title">サイドバー</string>
   <string name="morphe_sidebar_screen_summary">サイドバーのシェルフとボタン</string>
   <string name="morphe_settings_in_sidebar_title">Morphe の設定を表示</string>

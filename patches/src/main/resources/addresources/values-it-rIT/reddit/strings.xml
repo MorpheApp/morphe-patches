@@ -31,6 +31,8 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_navigation_bar_screen_summary">Pulsanti della barra inferiore e barra in vetro</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Disattiva l\'occultamento automatico della barra inferiore</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Mantiene visibile la barra di navigazione inferiore durante lo scorrimento</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Pulsanti di navigazione ad alto contrasto</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Mostra i pulsanti non selezionati della barra di navigazione in nero nella modalità chiara e in bianco nella modalità scura, invece che in grigio</string>
   <string name="morphe_glass_navigation_bar_title">Barra di navigazione in vetro</string>
   <string name="morphe_glass_navigation_bar_summary">Mostra la barra di navigazione come una capsula traslucida e fluttuante sopra il feed. Sui tablet, la barra laterale ha lo stesso aspetto</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Attivo</string>
@@ -76,6 +78,10 @@ Per utilizzare una versione precedente, devi &lt;b&gt;disinstallare&lt;/b&gt; Re
   <string name="morphe_hide_chat_button_title">Nascondi il pulsante Chat</string>
   <string name="morphe_hide_discover_button_title">Nascondi il pulsante Scopri o Community</string>
   <string name="morphe_hide_games_button_title">Nascondi il pulsante Giochi</string>
+  <string name="morphe_subreddit_create_button_title">Pulsante Crea nelle community</string>
+  <string name="morphe_subreddit_create_button_summary">Mostra un pulsante accanto a Cerca in ogni community che avvia un post in quella community</string>
+  <string name="morphe_subreddit_create_button_label">Crea post</string>
+  <string name="morphe_subreddit_create_button_description">Crea post in r/%s</string>
   <string name="morphe_screen_sidebar_title">Barra laterale</string>
   <string name="morphe_sidebar_screen_summary">Menù e pulsanti nella barra laterale</string>
   <string name="morphe_settings_in_sidebar_title">Mostra le impostazioni di Morphe</string>

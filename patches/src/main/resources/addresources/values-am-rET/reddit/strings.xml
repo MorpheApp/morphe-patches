@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">የታችኛው አሞሌ ቁልፎች እና የብርጭቆ አሞሌው</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">የታችኛውን ባር በራሱ እንዲደበቅ ማድረግን አቁም</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">በማሸብለል ወቅት የታችኛው የናቪጌሽን ባር እንዲታይ ያደርጋል</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">ከፍተኛ ንፅፅር ያላቸው የናቪጌሽን ቁልፎች</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">የናቪጌሽን ባሩ ያልተመረጡ ቁልፎች ከግራጫ ይልቅ በብርሃን ሁነት ውስጥ በጥቁር እና በጨለማ ሁነት ውስጥ በነጭ እንዲታዩ ያደርጋል</string>
   <string name="morphe_glass_navigation_bar_title">የብርጭቆ ናቪጌሽን ባር</string>
   <string name="morphe_glass_navigation_bar_summary">የናቪጌሽን ባሩን በፊድ ላይ እንደ ተንሳፋፊ፣ ግልጽ ካፕሱል አድርጎ ያሳያል። በታብሌቶች ላይ የጎን ሀዲዱ ተመሳሳይ ገጽታ አለው</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">በርቷል</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">የቻት ቁልፍን ደብቅ</string>
   <string name="morphe_hide_discover_button_title">የዲስከቨር ወይም የኮሙኒቲዎች ቁልፍን ደብቅ</string>
   <string name="morphe_hide_games_button_title">የጨዋታዎች ቁልፍን ደብቅ</string>
+  <string name="morphe_subreddit_create_button_title">በማህበረሰቦች ውስጥ የፈጠራ ቁልፍ</string>
+  <string name="morphe_subreddit_create_button_summary">በእያንዳንዱ ማህበረሰብ ውስጥ በፍለጋ አጠገብ እዚያው ፖስት ለመጀመር የሚያስችል ቁልፍ ያሳያል</string>
+  <string name="morphe_subreddit_create_button_label">ፖስት ፍጠር</string>
+  <string name="morphe_subreddit_create_button_description">በ r/%s ውስጥ ፖስት ፍጠር</string>
   <string name="morphe_screen_sidebar_title">ሳይድባር</string>
   <string name="morphe_sidebar_screen_summary">በጎን አሞሌው ውስጥ ያሉ መደርደሪያዎች እና ቁልፎች</string>
   <string name="morphe_settings_in_sidebar_title">የMorphe ቅንብሮችን አሳይ</string>

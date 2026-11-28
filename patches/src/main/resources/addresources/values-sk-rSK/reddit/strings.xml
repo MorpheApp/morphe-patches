@@ -31,6 +31,8 @@ Ak chcete použiť staršiu verziu, musíte Reddit &lt;b&gt;odinštalovať&lt;/b
   <string name="morphe_navigation_bar_screen_summary">Tlačidlá spodného panela a sklenený panel</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Zakázať automatické skrytie spodnej lišty</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Udržuje spodnú navigačnú lištu viditeľnú pri posúvaní</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigačné tlačidlá s vysokým kontrastom</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Zobrazuje nevyberané tlačidlá navigačnej lišty v svetlom režime čierne a v tmavom režime biele namiesto sivých</string>
   <string name="morphe_glass_navigation_bar_title">Sklenený navigačný panel</string>
   <string name="morphe_glass_navigation_bar_summary">Zobrazuje navigačný panel ako plávajúcu polopriehľadnú kapsulu nad feedom. Na tabletoch má bočná lišta rovnaký vzhľad</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Zapnuté</string>
@@ -76,6 +78,10 @@ Ak chcete použiť staršiu verziu, musíte Reddit &lt;b&gt;odinštalovať&lt;/b
   <string name="morphe_hide_chat_button_title">Skryť tlačidlo Chat</string>
   <string name="morphe_hide_discover_button_title">Skryť tlačidlo Discover alebo tlačidlo Communities</string>
   <string name="morphe_hide_games_button_title">Skryť tlačidlo Games</string>
+  <string name="morphe_subreddit_create_button_title">Tlačidlo Vytvoriť v komunitách</string>
+  <string name="morphe_subreddit_create_button_summary">V každej komunite zobrazí vedľa vyhľadávania tlačidlo na vytvorenie príspevku</string>
+  <string name="morphe_subreddit_create_button_label">Vytvoriť príspevok</string>
+  <string name="morphe_subreddit_create_button_description">Vytvoriť príspevok v r/%s</string>
   <string name="morphe_screen_sidebar_title">Postranné menu</string>
   <string name="morphe_sidebar_screen_summary">Poličky a tlačidlá v bočnom paneli</string>
   <string name="morphe_settings_in_sidebar_title">Zobraziť nastavenia Morphe</string>

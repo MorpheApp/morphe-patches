@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">バッジを非表示</string>
   <string name="morphe_hide_account_menu_downloads_title">ダウンロードを非表示にする</string>
   <string name="morphe_hide_account_menu_liked_videos_title">「高く評価した動画」を非表示</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">「プライバシー ポリシー」「利用規約」のフッターを非表示</string>
   <string name="morphe_hide_account_menu_watch_later_title">「後で見る」を非表示</string>
   <string name="morphe_hide_album_cards_title">アルバムカードを非表示</string>
   <string name="morphe_hide_album_cards_summary">アーティストの概要欄の下のアルバムカードを非表示にします</string>
@@ -1265,6 +1266,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_autoplay_mix_stop_after_summary">自動モードでは、ミックスはこの本数のビデオ後に停止します。0 = 無制限</string>
   <string name="morphe_autoplay_mix_length">ミックス: %s 本のビデオ</string>
   <string name="morphe_autoplay_mix_no_limit">ミックス: 無制限</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">以前のCast動作を復元する</string>
+  <string name="morphe_restore_old_cast_behavior_summary">別の動画を選択したりプレーヤーを閉じたりしてもCastセッションが接続されたままになるため、テレビで動画の再生が継続されます</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">「続きを視聴しますか？」ポップアップ</string>
   <string name="morphe_continue_watching_prompt_entry_1">デフォルト</string>
@@ -1403,6 +1407,12 @@ Automotive レイアウト
   <string name="morphe_shorts_autoplay_summary">ショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
   <string name="morphe_shorts_autoplay_background_title">ショートの自動再生 (バックグラウンド)</string>
   <string name="morphe_shorts_autoplay_background_summary">バックグラウンドでのショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">ショートメニューの自動再生</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">ショートプレイヤーメニューに、ショートの自動再生のオン/オフを切り替える項目を表示します</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">ショートの自動再生 · オン</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">ショートの自動再生 · オフ</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">ショートの自動再生をオンにしました</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">ショートの自動再生をオフにしました</string>
   <string name="morphe_skip_live_shorts_title">ショートライブをスキップ</string>
   <string name="morphe_skip_live_shorts_summary">ショートのフィードに表示されるライブ配信をスキップします</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1427,6 +1437,8 @@ Automotive レイアウト
   <string name="morphe_feed_card_layout_entry_1">従来のレイアウト</string>
   <string name="morphe_feed_card_layout_entry_2">カード型レイアウト</string>
   <string name="morphe_feed_card_layout_entry_3">ボタン付きのカード型レイアウト (高評価、コメント、保存)</string>
+  <string name="morphe_feed_card_layout_entry_4">アバターグロウ付きのカード</string>
+  <string name="morphe_feed_card_layout_entry_5">高評価、コメント、保存ボタンおよびアバターグロウ付きのカード</string>
   <string name="morphe_feed_card_layout_comments">コメント</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ミニプレーヤーの再開を無効化</string>
@@ -1513,6 +1525,10 @@ Automotive レイアウト
   <string name="morphe_custom_branding_icon_entry_8">オリジナル（アナログ）</string>
   <string name="morphe_custom_branding_icon_entry_9">オリジナル（ケーキ）</string>
   <string name="morphe_custom_branding_icon_entry_10">オリジナル（メタリック）</string>
+  <string name="morphe_custom_branding_icon_entry_11">オリジナルファー</string>
+  <string name="morphe_custom_branding_icon_entry_12">オリジナル水彩画</string>
+  <string name="morphe_custom_branding_icon_entry_13">オリジナルクラシック</string>
+  <string name="morphe_custom_branding_icon_entry_14">オリジナルレトロTV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">デフォルト</string>
   <string name="morphe_header_logo_entry_2">オリジナル</string>
@@ -1640,6 +1656,8 @@ Automotive レイアウト
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">リンクをブラウザで開く</string>
   <string name="morphe_external_browser_summary">アプリ内ブラウザではなく外部ブラウザでリンクを開きます</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">共有されたテキストにYouTubeリンクが含まれていません</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">再生バッファサイズ</string>
   <string name="morphe_playback_buffer_size_entry_default">デフォルト</string>

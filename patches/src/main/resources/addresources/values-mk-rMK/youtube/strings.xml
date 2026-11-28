@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">Скриј ги значките</string>
   <string name="morphe_hide_account_menu_downloads_title">Скриј ги преземањата</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Скриј ги \"Додадени во омилени видеа\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Скриј го подножјето за \"Политика за приватност\" и \"Услови на користење\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Скриј ги \"Гледај подоцна\"</string>
   <string name="morphe_hide_album_cards_title">Скриј ги албумските картички</string>
   <string name="morphe_hide_album_cards_summary">Прикриј ги картичките на албуми под описот на изведувачот</string>
@@ -1264,6 +1265,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">Во режимот Автоматски, Микс запира по овој број видеа. 0 = нема ограничување</string>
   <string name="morphe_autoplay_mix_length">Микс: %s видеа</string>
   <string name="morphe_autoplay_mix_no_limit">Микс: нема ограничување</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Враќање на старото однесување на Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Сесијата на Cast останува поврзана при избор на друго видео или затворање на плеерот, па така видеата продолжуваат да се репродуцираат на телевизорот</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Прашање \"Продолжи со гледање\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Стандардно</string>
@@ -1402,6 +1406,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматски преминува на следното Short наместо да го повторува тековното</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматско пуштање во заднина</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматски преминува на следниот Short при репродукција во заднина</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Автопуштање во менито за Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Прикажува ставка во менито на Shorts плеерот со која се вклучува или исклучува автопуштањето на Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Автопуштање Shorts · Вклучено</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Автопуштање Shorts · Исклучено</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Автоматското репродуцирање на Shorts е вклучено</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Автоматското репродуцирање на Shorts е исклучено</string>
   <string name="morphe_skip_live_shorts_title">Прескокни живи Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Ги прескокнува живите стримови што се појавуваат во фидот за Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">Класичен</string>
   <string name="morphe_feed_card_layout_entry_2">Картички</string>
   <string name="morphe_feed_card_layout_entry_3">Картички со копчиња за лајк, коментар и зачувување</string>
+  <string name="morphe_feed_card_layout_entry_4">Картички со сјај на аватарот</string>
+  <string name="morphe_feed_card_layout_entry_5">Картички со копчиња за лајк, коментар и зачувување и сјај на аватарот</string>
   <string name="morphe_feed_card_layout_comments">Коментари</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Исклучи продолжување на мини-плеер</string>
@@ -1512,6 +1524,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">Оригинална аналогна</string>
   <string name="morphe_custom_branding_icon_entry_9">Оригинална торта</string>
   <string name="morphe_custom_branding_icon_entry_10">Оригинален метал</string>
+  <string name="morphe_custom_branding_icon_entry_11">Оригинално крзненко</string>
+  <string name="morphe_custom_branding_icon_entry_12">Оригинална акварел</string>
+  <string name="morphe_custom_branding_icon_entry_13">Оригинална класика</string>
+  <string name="morphe_custom_branding_icon_entry_14">Оригинален ретро ТВ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Поставено како стандардно</string>
   <string name="morphe_header_logo_entry_2">Редовно</string>
@@ -1639,6 +1655,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Отворете ги линковите во прегледувач</string>
   <string name="morphe_external_browser_summary">Отвара линкови во надворешен пребарувач наместо во пребарувач во апликацијата</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Нема YouTube линк во споделениот текст</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Големина на баферот за репродукција</string>
   <string name="morphe_playback_buffer_size_entry_default">Стандардно</string>

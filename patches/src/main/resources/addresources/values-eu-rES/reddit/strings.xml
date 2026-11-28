@@ -31,6 +31,8 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_navigation_bar_screen_summary">Beheko barrak eta barra beiratsua</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Desaktibu bottom bar auto-hide</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Beheko nabigazio barra ikusgai mantentzen du scroll egitean</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Nabigazio botoi kontrastu altu</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Nabigazio barraren hautatu gabeko botoiak beltzak erakusten ditu modu argian eta zuriak modu ilunean, griseen ordez</string>
   <string name="morphe_glass_navigation_bar_title">Nabigazio barra beira</string>
   <string name="morphe_glass_navigation_bar_summary">Nabigazio barra feed-aren gainean kapsula flotante eta transluzente gisa erakusten du. Tabletetan, albo kanala itxura berak ditu</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Piztuta</string>
@@ -76,6 +78,10 @@ Bertsio zaharragoa erabiltzeko, Reddit &lt;b&gt;desinstalatu&lt;/b&gt; behar duz
   <string name="morphe_hide_chat_button_title">Ezkutatu Txata botoia</string>
   <string name="morphe_hide_discover_button_title">Ezkutatu Deskubritu edo Komunitateak botoia</string>
   <string name="morphe_hide_games_button_title">Ezkutatu Jokoen botoia</string>
+  <string name="morphe_subreddit_create_button_title">Komunitateetako sortu botoia</string>
+  <string name="morphe_subreddit_create_button_summary">Komunitate bakoitzean, Bilaketan ondo botoi bat erakusten du han post bat hasiteko</string>
+  <string name="morphe_subreddit_create_button_label">Sortu posta</string>
+  <string name="morphe_subreddit_create_button_description">Sortu posta r/%s-en</string>
   <string name="morphe_screen_sidebar_title">Alboko barra</string>
   <string name="morphe_sidebar_screen_summary">Kutxak eta botoiak barra lateraleko</string>
   <string name="morphe_settings_in_sidebar_title">Erakutsi Morphe ezarpenak</string>

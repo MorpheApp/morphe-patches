@@ -31,6 +31,8 @@ Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt;
   <string name="morphe_navigation_bar_screen_summary">Alumise riba nupud ja klaasriba</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Keela alumiriba automaatne peitmine</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Hoiab navigatsiooniriba kerkimise ajal nähtavana</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Kõge kontrasti navigeerimisnupud</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Kuvab navigeerimisriba valimatud nupud heledas režiimis mustana ja tumedas režiimis valgena, mitte hallina</string>
   <string name="morphe_glass_navigation_bar_title">Klaasine navigeerimisriba</string>
   <string name="morphe_glass_navigation_bar_summary">Kuvab navigeerimisriba voo kohal ujuvanil, poolläbipaistva kapslina. Tahvlitel on külgriba sama välimus</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Sees</string>
@@ -76,6 +78,10 @@ Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt;
   <string name="morphe_hide_chat_button_title">Peida vestluse nupp</string>
   <string name="morphe_hide_discover_button_title">Peida avasta või kogukondade nupp</string>
   <string name="morphe_hide_games_button_title">Peida mängude nupp</string>
+  <string name="morphe_subreddit_create_button_title">Loo nupp kogukondades</string>
+  <string name="morphe_subreddit_create_button_summary">Kuvab igas kogukonnas Otsingu kõrval nupu, millega saab seal postituse koostada</string>
+  <string name="morphe_subreddit_create_button_label">Loo postitus</string>
+  <string name="morphe_subreddit_create_button_description">Loo postitus r/%s</string>
   <string name="morphe_screen_sidebar_title">Külgriba</string>
   <string name="morphe_sidebar_screen_summary">Külgriba riiulid ja nupud</string>
   <string name="morphe_settings_in_sidebar_title">Kuva Morphe seaded</string>

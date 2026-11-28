@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">دکمه‌های نوار پایین و نوار شیشه‌ای</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">غیرفعال کردن پنهان‌سازی خودکار نوار پایین</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">هنگام پیمایش، نوار پیمایش پایین را قابل مشاهده نگه می‌دارد</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">دکمه‌های پیمایش با کنتراست بالا</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">دکمه‌های انتخاب‌نشده‌ی نوار پیمایش را در حالت روشن به رنگ سیاه و در حالت تاریک به رنگ سفید نمایش می‌دهد، به جای رنگ خاکستری</string>
   <string name="morphe_glass_navigation_bar_title">نوار پیمایش شیشه‌ای</string>
   <string name="morphe_glass_navigation_bar_summary">نوار پیمایش را به صورت یک کپسول شناور و نیمه‌شفاف روی فید نمایش می‌دهد. در تبلت‌ها، ریل کناری نیز همین ظاهر را دارد</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">روشن</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
   <string name="morphe_hide_discover_button_title">پنهان‌کردن دکمهٔ کشف یا انجمن‌ها</string>
   <string name="morphe_hide_games_button_title">پنهان‌کردن دکمهٔ بازی‌ها</string>
+  <string name="morphe_subreddit_create_button_title">دکمه ایجاد در انجمن‌ها</string>
+  <string name="morphe_subreddit_create_button_summary">در هر انجمن، دکمه‌ای در کنار جستجو نمایش می‌دهد که امکان ایجاد پست در آنجا را فراهم می‌کند</string>
+  <string name="morphe_subreddit_create_button_label">ایجاد پست</string>
+  <string name="morphe_subreddit_create_button_description">ایجاد پست در r/%s</string>
   <string name="morphe_screen_sidebar_title">نوار کناری</string>
   <string name="morphe_sidebar_screen_summary">قفسه‌ها و دکمه‌های نوار کناری</string>
   <string name="morphe_settings_in_sidebar_title">نمایش تنظیمات Morphe</string>

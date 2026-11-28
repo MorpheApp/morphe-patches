@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">הסתר תגים</string>
   <string name="morphe_hide_account_menu_downloads_title">הסתר הורדות</string>
   <string name="morphe_hide_account_menu_liked_videos_title">הסתר \"סרטונים שאהבתי\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">הסתר את הסביבון של \"מדיניות פרטיות\" ו\"תנאי שירות\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">הסתר \"צפייה מאוחר יותר\"</string>
   <string name="morphe_hide_album_cards_title">הסתר כרטיסי אלבום</string>
   <string name="morphe_hide_album_cards_summary">מסתיר את כרטיסי האלבומים מתחת לתיאור האמן</string>
@@ -1264,6 +1265,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">במצב אוטומטי, Mix נעצר לאחר מספר זה של סרטונים. 0 = ללא הגבלה</string>
   <string name="morphe_autoplay_mix_length">מיקס: %s סרטונים</string>
   <string name="morphe_autoplay_mix_no_limit">מיקס: ללא הגבלה</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">שחזור התנהגות Cast ישנה</string>
+  <string name="morphe_restore_old_cast_behavior_summary">סשן ה-Cast נשאר מחובר בעת בחירת סרטון אחר או סגירת הנגן, כך שסרטונים ממשיכים להתנגן בטלוויזיה</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">הודעת \"המשך לצפות\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">ברירת מחדל</string>
@@ -1402,6 +1406,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">מתקדם ל-Short הבא באופן אוטומטי במקום לחזור על הנוכחי</string>
   <string name="morphe_shorts_autoplay_background_title">הפעלה אוטומטית ברקע</string>
   <string name="morphe_shorts_autoplay_background_summary">מתקדם ל-Short הבא באופן אוטומטי במהלך השמעה ברקע</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">הפעלה אוטומטית בתפריט ה-Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">מציג פריט בתפריט נגן ה-Shorts המפעיל או מבטל את ההפעלה האוטומטית של Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">הפעלה אוטומטית של Shorts · פעיל</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">הפעלה אוטומטית של Shorts · כבוי</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">הפעלה אוטומטית של Shorts הופעלה</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">הפעלה אוטומטית של Shorts בוטלה</string>
   <string name="morphe_skip_live_shorts_title">דלג על Shorts חיים</string>
   <string name="morphe_skip_live_shorts_summary">מדלג על שידורים חיים המופיעים ב-Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">קלאסי</string>
   <string name="morphe_feed_card_layout_entry_2">כרטיסים</string>
   <string name="morphe_feed_card_layout_entry_3">כרטיסים עם כפתורי לייק, תגובה ושמירה</string>
+  <string name="morphe_feed_card_layout_entry_4">כרטיסים עם הילה מסביב לאווטאר</string>
+  <string name="morphe_feed_card_layout_entry_5">כרטיסים עם כפתורי לייק, תגובה ושמירה והילה מסביב לאווטאר</string>
   <string name="morphe_feed_card_layout_comments">תגובות</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">השבת המשך נגן מיני</string>
@@ -1512,6 +1524,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">אנלוג מקורי</string>
   <string name="morphe_custom_branding_icon_entry_9">עוגה מקורית</string>
   <string name="morphe_custom_branding_icon_entry_10">מתכת מקורית</string>
+  <string name="morphe_custom_branding_icon_entry_11">פרווה מקורית</string>
+  <string name="morphe_custom_branding_icon_entry_12">צבעי מים מקוריים</string>
+  <string name="morphe_custom_branding_icon_entry_13">קלאסי מקורי</string>
+  <string name="morphe_custom_branding_icon_entry_14">טלוויזיית רטרו מקורית</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">ברירת מחדל</string>
   <string name="morphe_header_logo_entry_2">רגיל</string>
@@ -1639,6 +1655,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">פתח קישורים בדפדפן</string>
   <string name="morphe_external_browser_summary">פותח קישורים בדפדפן חיצוני במקום בדפדפן המובנה</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">אין קישור ל-YouTube בטקסט ששותף</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">גודל חיץ ההשמעה</string>
   <string name="morphe_playback_buffer_size_entry_default">ברירת מחדל</string>

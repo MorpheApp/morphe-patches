@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">دوگمەکانی شریتی خوارەوە و شریتی شووشەیی</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">بێکارکردنی خۆکار-شاردنەوەی شریتی خوارەوە</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">شریتی گەڕانەوەی خوارەوە دەپارێزێت کە دیار بێت لە کاتی سکرۆڵکردن</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">دوگمەکانی گەشتکردنی کۆنتراستی بەرز</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">دوگمە هەڵنەبژێردراوەکانی شریتی گەشتکردن لە مۆدی ڕووناییدا بە ڕەنگی ڕەش و لە مۆدی تاریکدا بە سپی پیشان دەدات، لەجیاتی ڕەنگی خۆڵەمێشی</string>
   <string name="morphe_glass_navigation_bar_title">شریتی گەشتی شوشەیی</string>
   <string name="morphe_glass_navigation_bar_summary">شریتی گەشتکردن وەک کپسولێکی ڕوون و گواستراوە لەسەر فیدەکە پیشان دەدات. لە تابلێتەکاندا، شریتی لایەنەکە هەمان شێوەی هەیە</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">هەڵکراو</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">شاردنەوەی دوگمەی Chat</string>
   <string name="morphe_hide_discover_button_title">شاردنەوەی دوگمەی Discover یان Communities</string>
   <string name="morphe_hide_games_button_title">شاردنەوەی دوگمەی یارییەکان</string>
+  <string name="morphe_subreddit_create_button_title">دوگمەی دروستکردن لە کۆمەڵگەکاندا</string>
+  <string name="morphe_subreddit_create_button_summary">دوگمەیەک لە تەنیشت گەڕان لە هەر کۆمەڵگەیەکدا پیشان دەدات کە پۆستێکی لێ دەستپێدەکات</string>
+  <string name="morphe_subreddit_create_button_label">دروستکردنی پۆست</string>
+  <string name="morphe_subreddit_create_button_description">دروستکردنی پۆست لە r/%s</string>
   <string name="morphe_screen_sidebar_title">سایدبار</string>
   <string name="morphe_sidebar_screen_summary">ڕەفەکان و دوگمەکانی ناو شریتی لاوەکی</string>
   <string name="morphe_settings_in_sidebar_title">نیشاندانی ڕێکخستنەکانی Morphe</string>

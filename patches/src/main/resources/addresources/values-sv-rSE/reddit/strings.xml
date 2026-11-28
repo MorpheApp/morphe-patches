@@ -31,6 +31,8 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_navigation_bar_screen_summary">Knappar i den nedre raden och glasraden</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Inaktivera att det nedre fältet döljs automatiskt</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Håller det nedre navigeringsfältet synligt under skrollning</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigeringsknappar med hög kontrast</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Visar de omarkerade knapparna i navigeringsfältet i svart i ljust läge och vitt i mörkt läge, istället för grått</string>
   <string name="morphe_glass_navigation_bar_title">Glasnavigeringsfält</string>
   <string name="morphe_glass_navigation_bar_summary">Visar navigeringsfältet som en flytande, genomskinlig kapsel över flödet. På surfplattor har sidofältet samma utseende</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">På</string>
@@ -76,6 +78,10 @@ För att använda en äldre version måste du &lt;b&gt;avinstallera&lt;/b&gt; Re
   <string name="morphe_hide_chat_button_title">Dölj knappen Chatta</string>
   <string name="morphe_hide_discover_button_title">Dölj knappen Upptäck eller Communities</string>
   <string name="morphe_hide_games_button_title">Dölj knappen Spel</string>
+  <string name="morphe_subreddit_create_button_title">Skapa-knapp i communities</string>
+  <string name="morphe_subreddit_create_button_summary">Visar en knapp bredvid Sök i varje community som startar ett inlägg där</string>
+  <string name="morphe_subreddit_create_button_label">Skapa inlägg</string>
+  <string name="morphe_subreddit_create_button_description">Skapa inlägg i r/%s</string>
   <string name="morphe_screen_sidebar_title">Sidofält</string>
   <string name="morphe_sidebar_screen_summary">Hyllor och knappar i sidofältet</string>
   <string name="morphe_settings_in_sidebar_title">Visa Morphe-inställningar</string>

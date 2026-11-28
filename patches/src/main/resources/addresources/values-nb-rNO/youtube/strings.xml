@@ -55,6 +55,7 @@ Endringer inkluderer:
   <string name="morphe_hide_account_menu_badges_title">Skjul merker</string>
   <string name="morphe_hide_account_menu_downloads_title">Skjul nedlastinger</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Skjul \"Likte videoer\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Skjul bunntekst for \"Personvernregler\" og \"Tjenestevilkår\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Skjul \"Se senere\"</string>
   <string name="morphe_hide_album_cards_title">Skjul albumkort</string>
   <string name="morphe_hide_album_cards_summary">Skjuler albumkortene under artistbeskrivelsen</string>
@@ -1264,6 +1265,9 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_autoplay_mix_stop_after_summary">I modus Auto stopper en Mix etter dette antallet videoer. 0 = ingen grense</string>
   <string name="morphe_autoplay_mix_length">Mix: %s videoer</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: ingen grense</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Gjenopprett gammel Cast-oppførsel</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast-sesjonen forblir tilkoblet når du velger en annen video eller lukker spilleren, slik at videoer fortsetter å spilles av på TV-en</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Oppfordring om \"Fortsett å se\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Standard</string>
@@ -1402,6 +1406,12 @@ Bilvisning
   <string name="morphe_shorts_autoplay_summary">Går automatisk til neste Short i stedet for å gjenta den gjeldende</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisk avspilling i bakgrunnen</string>
   <string name="morphe_shorts_autoplay_background_summary">Går automatisk til neste Short under bakgrunnsavspilling</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Autoplay i Shorts-menyen</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Viser et element i menyen for Shorts-spilleren som slår Autoplay for Shorts på eller av</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Autoplay for Shorts · På</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Autoplay for Shorts · Av</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Autospill av Shorts er slått på</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Autospill av Shorts er slått av</string>
   <string name="morphe_skip_live_shorts_title">Hopp over live-Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Hopper over direktesendinger som vises i Shorts-strømmen</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Bilvisning
   <string name="morphe_feed_card_layout_entry_1">Klassisk</string>
   <string name="morphe_feed_card_layout_entry_2">Kort</string>
   <string name="morphe_feed_card_layout_entry_3">Kort med knapper for lik, kommentar og lagre</string>
+  <string name="morphe_feed_card_layout_entry_4">Kort med avatar-glød</string>
+  <string name="morphe_feed_card_layout_entry_5">Kort med liker-, kommentars- og lagreknapper og avatar-glød</string>
   <string name="morphe_feed_card_layout_comments">Kommentarer</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiver gjenopptak av miniplayer</string>
@@ -1512,6 +1524,10 @@ Bilvisning
   <string name="morphe_custom_branding_icon_entry_8">Original analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Original kake</string>
   <string name="morphe_custom_branding_icon_entry_10">Original metall</string>
+  <string name="morphe_custom_branding_icon_entry_11">Original pels</string>
+  <string name="morphe_custom_branding_icon_entry_12">Original akvarell</string>
+  <string name="morphe_custom_branding_icon_entry_13">Original klassiker</string>
+  <string name="morphe_custom_branding_icon_entry_14">Original retro-TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Standard</string>
   <string name="morphe_header_logo_entry_2">Normal</string>
@@ -1639,6 +1655,8 @@ Videoer blir forespurt med et kort prefiks av den hashet video-ID-en, så server
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Åpne lenker i nettleser</string>
   <string name="morphe_external_browser_summary">Åpner lenker i en ekstern nettleser i stedet for nettleseren i appen</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Ingen YouTube-lenke i den delte teksten</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Bufferstørrelse for avspilling</string>
   <string name="morphe_playback_buffer_size_entry_default">Standard</string>

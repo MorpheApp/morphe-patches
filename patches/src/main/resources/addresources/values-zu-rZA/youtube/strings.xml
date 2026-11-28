@@ -55,6 +55,7 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_account_menu_badges_title">Fihla ama-Badge</string>
   <string name="morphe_hide_account_menu_downloads_title">Fihla ama-Downloads</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Fihla \'amavidiyo athandekile\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Fihla ufoota we-\'Privacy Policy\' \'Terms of Service\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">Fihla \'bukela kamuva\'</string>
   <string name="morphe_hide_album_cards_title">Fihla amakhadi e-album</string>
   <string name="morphe_hide_album_cards_summary">Yifihla ama-album cards ngaphansi kwencazelo yomculi</string>
@@ -1264,6 +1265,9 @@ Izilungiselelo → Playback (noma Autoplay) → Autoplay next video"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">Kwemodi ye-Auto, iMix iyama emva kwalezi zividiyo. 0 = ayinasimiso</string>
   <string name="morphe_autoplay_mix_length">Mix: izividiyo u%s</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: ayinasimiso</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Buyisela indlela yakudala ye-Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Iseshini ye-Cast ihlala ixhumene lapho ukhetha i-vidiyo ehlukile noma uvala i-player, ngakho ama-vidiyo aqhubeka adlalwe ku-TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Isicelo sika \'Qhubeka ubuke\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Okujwayelekile</string>
@@ -1402,6 +1406,12 @@ Indlela yokuhlela yezimoto
   <string name="morphe_shorts_autoplay_summary">Iya ku-Short elilandelayo ngokuzenzakalelayo esikhundleni sokuphinda lelo lamanje</string>
   <string name="morphe_shorts_autoplay_background_title">Dlala ngokuzenzakalela ngemuva</string>
   <string name="morphe_shorts_autoplay_background_summary">Iya ku-Short elilandelayo ngokuzenzakalelayo ngesikhathi sokudlala ngemuva</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Dlala ngokuzenzakalelayo kumenyu ye-Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Ikhombisa into kumenyu yomdlali we-Shorts evula noma icisha ukudlala ama-Shorts ngokuzenzakalelayo</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Dlala Shorts ngokuzenzakalelayo · Kuvuliwe</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Dlala Shorts ngokuzenzakalelayo · Kuvalwe</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Ukudlala Shorts ngokuzenzakalelayo kuvuliwe</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Ukudlala Shorts ngokuzenzakalelayo kuvalwe</string>
   <string name="morphe_skip_live_shorts_title">Yishiye i-live Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Iqeda ama-live streams avala ku-feed lama-Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Indlela yokuhlela yezimoto
   <string name="morphe_feed_card_layout_entry_1">Okujwayelekile</string>
   <string name="morphe_feed_card_layout_entry_2">Amakhadi</string>
   <string name="morphe_feed_card_layout_entry_3">Amakhadi anezinkinobho ze-like, ze-comment nezokugcina</string>
+  <string name="morphe_feed_card_layout_entry_4">Amakhadi anokukhanya kwe-avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Amakhadi anezinkinobho ze-like, ze-comment nezokugcina kanye nokukhanya kwe-avatar</string>
   <string name="morphe_feed_card_layout_comments">Imibono</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Vala ukuqhubeka kweminiplayer</string>
@@ -1512,6 +1524,10 @@ Indlela yokuhlela yezimoto
   <string name="morphe_custom_branding_icon_entry_8">I-analog yokuqala</string>
   <string name="morphe_custom_branding_icon_entry_9">Ikhekhe lokuqala</string>
   <string name="morphe_custom_branding_icon_entry_10">Insimbi yokuqala</string>
+  <string name="morphe_custom_branding_icon_entry_11">Ubulungiswa befure</string>
+  <string name="morphe_custom_branding_icon_entry_12">Ubulungiswa be-watercolor</string>
+  <string name="morphe_custom_branding_icon_entry_13">Ubulungiswa be-classic</string>
+  <string name="morphe_custom_branding_icon_entry_14">Ubulungiswa be-retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Okujwayelekile</string>
   <string name="morphe_header_logo_entry_2">Okuvamile</string>
@@ -1639,6 +1655,8 @@ Amavidiyo aceleka ngesisekelo esifushane se-hashed video ID, ngakho iserba ayikw
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Vula ama-link e-browser</string>
   <string name="morphe_external_browser_summary">Ivula ama-links kubrowser yangaphandle esikhundleni se-browser yesekela yohlelo</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Alikho uxhumano lwe-YouTube embhalweni owabelwe</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Usayizi we-playback buffer</string>
   <string name="morphe_playback_buffer_size_entry_default">Okujwayelekile</string>

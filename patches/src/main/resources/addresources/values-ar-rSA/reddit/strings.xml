@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">أزرار الشريط السفلي والشريط الزجاجي</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">تعطيل إخفاء الشريط السفلي تلقائيًا</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">يُبقي شريط التنقل السفلي مرئيًا أثناء التمرير</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">أزرار تنقل عالية التباين</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">تعرض الأزرار غير المحددة في شريط التنقل باللون الأسود في الوضع الفاتح وباللون الأبيض في الوضع الداكن، بدلاً من اللون الرمادي</string>
   <string name="morphe_glass_navigation_bar_title">شريط التنقل الزجاجي</string>
   <string name="morphe_glass_navigation_bar_summary">يظهر شريط التنقل ككبسولة عائمة وشبه شفافة فوق الخلاصة. وفي الأجهزة اللوحية، يكون للسكة الجانبية المظهر نفسه</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">تشغيل</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">إخفاء زر الدردشة</string>
   <string name="morphe_hide_discover_button_title">إخفاء زر \"اكتشف\" أو \"المجتمعات\"</string>
   <string name="morphe_hide_games_button_title">إخفاء زر الألعاب</string>
+  <string name="morphe_subreddit_create_button_title">زر الإنشاء في المجتمعات</string>
+  <string name="morphe_subreddit_create_button_summary">يظهر زرًا بجانب البحث في كل مجتمع لبدء منشور هناك</string>
+  <string name="morphe_subreddit_create_button_label">إنشاء منشور</string>
+  <string name="morphe_subreddit_create_button_description">إنشاء منشور في r/%s</string>
   <string name="morphe_screen_sidebar_title">الشريط الجانبي</string>
   <string name="morphe_sidebar_screen_summary">الأرفف والأزرار في الشريط الجانبي</string>
   <string name="morphe_settings_in_sidebar_title">عرض إعدادات Morphe</string>

@@ -31,6 +31,8 @@ For å bruke en eldre versjon må du &lt;b&gt;avinstallere&lt;/b&gt; Reddit og d
   <string name="morphe_navigation_bar_screen_summary">Knapper i nederste felt og glasslinjen</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Deaktiver automatisk skjuling av bunnlinje</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Beholder den nederste navigasjonslinjen synlig under rulling</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigasjonsknapper med høy kontrast</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Viser ikke-valgte knapper i navigasjonsfeltet i svart i lys modus og hvitt i mørk modus, i stedet for grått</string>
   <string name="morphe_glass_navigation_bar_title">Glass-navigasjonsfelt</string>
   <string name="morphe_glass_navigation_bar_summary">Viser navigasjonsfeltet som en flytende, gjennomsiktig kapsel over feeden. På nettbrett har sidefeltet samme utseende</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">På</string>
@@ -76,6 +78,10 @@ For å bruke en eldre versjon må du &lt;b&gt;avinstallere&lt;/b&gt; Reddit og d
   <string name="morphe_hide_chat_button_title">Skjul Chat-knapp</string>
   <string name="morphe_hide_discover_button_title">Skjul Oppdag eller Samfunn-knapp</string>
   <string name="morphe_hide_games_button_title">Skjul Spill-knapp</string>
+  <string name="morphe_subreddit_create_button_title">Opprett-knapp i samfunn</string>
+  <string name="morphe_subreddit_create_button_summary">Viser en knapp ved siden av Søk i hvert samfunn som starter et innlegg der</string>
+  <string name="morphe_subreddit_create_button_label">Opprett innlegg</string>
+  <string name="morphe_subreddit_create_button_description">Opprett innlegg i r/%s</string>
   <string name="morphe_screen_sidebar_title">Sidebar</string>
   <string name="morphe_sidebar_screen_summary">Hyller og knapper i sidefeltet</string>
   <string name="morphe_settings_in_sidebar_title">Vis Morphe-innstillinger</string>

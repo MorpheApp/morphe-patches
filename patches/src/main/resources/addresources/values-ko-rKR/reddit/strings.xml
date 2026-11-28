@@ -27,6 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">하단 바 버튼 및 글래스 바</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">하단바 자동 숨김 비활성화하기</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">스크롤하는 동안 하단 탐색바를 계속 표시합니다</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">고대비 탐색 버튼</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">탐색 바의 선택되지 않은 버튼을 회색 대신 라이트 모드에서는 검은색으로, 다크 모드에서는 흰색으로 표시합니다</string>
   <string name="morphe_glass_navigation_bar_title">글래스 내비게이션 바</string>
   <string name="morphe_glass_navigation_bar_summary">피드 위에 떠 있는 반투명 캡슐 형태로 내비게이션 바를 표시합니다. 태블릿의 경우 사이드 레일에도 동일한 디자인이 적용됩니다</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">켜짐</string>
@@ -72,6 +74,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">채팅 버튼 숨기기</string>
   <string name="morphe_hide_discover_button_title">둘러보기 또는 커뮤니티 버튼 숨기기</string>
   <string name="morphe_hide_games_button_title">게임 버튼 숨기기</string>
+  <string name="morphe_subreddit_create_button_title">커뮤니티 내 만들기 버튼</string>
+  <string name="morphe_subreddit_create_button_summary">각 커뮤니티의 검색 버튼 옆에 게시글 작성을 시작하는 버튼을 표시합니다</string>
+  <string name="morphe_subreddit_create_button_label">게시글 만들기</string>
+  <string name="morphe_subreddit_create_button_description">r/%s에 게시글 작성</string>
   <string name="morphe_screen_sidebar_title">사이드바</string>
   <string name="morphe_sidebar_screen_summary">사이드바의 쉘프 및 버튼</string>
   <string name="morphe_settings_in_sidebar_title">Morphe 설정 표시하기</string>

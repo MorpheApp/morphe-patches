@@ -55,6 +55,7 @@ Vissa serverbaserade layouts kanske inte återgår.
   <string name="morphe_hide_account_menu_badges_title">Dölj märken</string>
   <string name="morphe_hide_account_menu_downloads_title">Dölj nedladdningar</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Dölj \"Gillade videor\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Dölj sidfot för \"Integritetspolicy\" och \"Användarvillkor\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Dölj \"Titta senare\"</string>
   <string name="morphe_hide_album_cards_title">Dölj albumkort</string>
   <string name="morphe_hide_album_cards_summary">Döljer albumkorten under artistbeskrivningen</string>
@@ -1264,6 +1265,9 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_autoplay_mix_stop_after_summary">I läget Auto stoppas en Mix efter så här många videor. 0 = ingen gräns</string>
   <string name="morphe_autoplay_mix_length">Mix: %s videor</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: ingen gräns</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Återställ gammalt Cast-beteende</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast-sessionen förblir ansluten när du väljer en annan video eller stänger spelaren, så att videor fortsätter att spelas upp på TV:n</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Uppmaningen \"Fortsätt titta\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Standard</string>
@@ -1402,6 +1406,12 @@ Billayout
   <string name="morphe_shorts_autoplay_summary">Fortsätter till nästa Shorts-video automatiskt istället för att upprepa den aktuella</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisk uppspelning i bakgrunden</string>
   <string name="morphe_shorts_autoplay_background_summary">Fortsätter till nästa Shorts-video automatiskt under uppspelning i bakgrunden</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Automatisk uppspelning i Shorts-menyn</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Visar ett objekt i Shorts-spelarens meny som aktiverar eller inaktiverar automatisk uppspelning av Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Automatisk uppspelning av Shorts · På</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Automatisk uppspelning av Shorts · Av</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Automatisk uppspelning av Shorts aktiverades</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Automatisk uppspelning av Shorts inaktiverades</string>
   <string name="morphe_skip_live_shorts_title">Hoppa över live-Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Hoppa över live-sändningar som visas i Shorts-feeden</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Billayout
   <string name="morphe_feed_card_layout_entry_1">Klassisk</string>
   <string name="morphe_feed_card_layout_entry_2">Kort</string>
   <string name="morphe_feed_card_layout_entry_3">Kort med knappar för gilla, kommentar och spara</string>
+  <string name="morphe_feed_card_layout_entry_4">Kort med glödande avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Kort med knappar för gilla, kommentera och spara samt glödande avatar</string>
   <string name="morphe_feed_card_layout_comments">Kommentarer</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Inaktivera att minispelaren fortsätter</string>
@@ -1512,6 +1524,10 @@ Billayout
   <string name="morphe_custom_branding_icon_entry_8">Original analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Original tårta</string>
   <string name="morphe_custom_branding_icon_entry_10">Original metall</string>
+  <string name="morphe_custom_branding_icon_entry_11">Original päls</string>
+  <string name="morphe_custom_branding_icon_entry_12">Original akvarell</string>
+  <string name="morphe_custom_branding_icon_entry_13">Original klassiker</string>
+  <string name="morphe_custom_branding_icon_entry_14">Original retro-TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Standard</string>
   <string name="morphe_header_logo_entry_2">Vanlig</string>
@@ -1639,6 +1655,8 @@ Videor begärs med ett kort prefix av den hashade videons ID, så servern kan in
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Öppna länkar i webbläsaren</string>
   <string name="morphe_external_browser_summary">Öppnar länkar i en extern webbläsare istället för webbläsaren i appen</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Ingen YouTube-länk i den delade texten</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Uppspelningsbuffertens storlek</string>
   <string name="morphe_playback_buffer_size_entry_default">Standard</string>

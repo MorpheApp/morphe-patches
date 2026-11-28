@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">ປຸ່ມແຖບລຸ່ມ ແລະ ແຖບແກ້ວ</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">ປິດການຊ່ອນແຖບລຸ່ມອັດຕະໂນມັດ</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">ເຮັດໃຫ້ແຖບນຳທາງດ້ານລຸ່ມສະແດງຢູ່ຕະຫຼອດໃນຂະນະທີ່ເລື່ອນໜ້າຈໍ</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">ປຸ່ມນຳທາງທີ່ມີຄວາມແຕກຕ່າງຂອງສີສູງ</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">ສະແດງປຸ່ມທີ່ບໍ່ໄດ້ຖືກເລືອກຂອງແຖບນຳທາງເປັນສີດຳໃນໂໝດສີແຈ້ງ ແລະ ສີຂາວໃນໂໝດມືດ, ແທນທີ່ຈະເປັນສີເທົາ</string>
   <string name="morphe_glass_navigation_bar_title">ແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_glass_navigation_bar_summary">ສະແດງແຖບນຳທາງເປັນແຄັບຊູນໂປ່ງໃສທີ່ລອຍຢູ່ເທິງ feed. ສຳລັບແທັບເລັດ, ແຖບດ້ານຂ້າງຈະມີຮູບລັກສະນະດຽວກັນ</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">ເປີດ</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
   <string name="morphe_hide_discover_button_title">ເຊື່ອງປຸ່ມຄົ້ນພົບ ຫຼື ຊຸມຊົນ</string>
   <string name="morphe_hide_games_button_title">ເຊື່ອງປຸ່ມເກມ</string>
+  <string name="morphe_subreddit_create_button_title">ສ້າງປຸ່ມໃນຊຸມຊົນ</string>
+  <string name="morphe_subreddit_create_button_summary">ສະແດງປຸ່ມຂ້າງໆການຄົ້ນຫາໃນແຕ່ລະຊຸມຊົນ ເພື່ອເລີ່ມຕົ້ນສ້າງໂພສໃນນັ້ນ</string>
+  <string name="morphe_subreddit_create_button_label">ສ້າງໂພສ</string>
+  <string name="morphe_subreddit_create_button_description">ສ້າງໂພສໃນ r/%s</string>
   <string name="morphe_screen_sidebar_title">ແຖບຂ້າງ</string>
   <string name="morphe_sidebar_screen_summary">ຊັ້ນວາງ ແລະ ປຸ່ມໃນແຖບດ້ານຂ້າງ</string>
   <string name="morphe_settings_in_sidebar_title">ສະແດງການຕັ້ງຄ່າ Morphe</string>

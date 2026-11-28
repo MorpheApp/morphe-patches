@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Доод хэсгийн цэсний товчлуурууд болон шилэн зурвас</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Доод хэсгийн мөрийг автоматаар нуухыг идэвхгүй болгох</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Гүйлгэх үед доод навигацийн мөрийг харагдахуйц байлгана</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Навигацийн товчлууруудын өндөр контраст</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Навигацийн хэсгийн сонгогдоогүй товчлууруудыг саарал өнгөөр биш, гэрэлтэй горимд хар, харанхуй горимд цагаан өнгөөр харуулна</string>
   <string name="morphe_glass_navigation_bar_title">Шилэн навигацийн самбар</string>
   <string name="morphe_glass_navigation_bar_summary">Навигацийн самбарыг фийдийн дээр х ভাসгасан, хагас тунгалаг капсул хэлбэрээр харуулна. Таблет дээр хажуугийн цэс нь ижилхэн харагдана</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Асаалттай</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">\"Чат\" товчийг нуух</string>
   <string name="morphe_hide_discover_button_title">\"Нээх\" эсвэл \"Хамт олон\" товчийг нуух</string>
   <string name="morphe_hide_games_button_title">Тоглоомын товчийг нуух</string>
+  <string name="morphe_subreddit_create_button_title">Хамтအлгyд үүсгэх товчлуур</string>
+  <string name="morphe_subreddit_create_button_summary">Хамтyлгy бүрт Хайлтын хажууд пост үүсгэх товчлуур харуулна</string>
+  <string name="morphe_subreddit_create_button_label">Пост үүсгэх</string>
+  <string name="morphe_subreddit_create_button_description">r/%s-д пост үүсгэх</string>
   <string name="morphe_screen_sidebar_title">Хажуугийн цэс</string>
   <string name="morphe_sidebar_screen_summary">Хажуугийн цэсний талбайн хэсгүүд болон товчлуурууд</string>
   <string name="morphe_settings_in_sidebar_title">Morphe тохиргоог харуулах</string>

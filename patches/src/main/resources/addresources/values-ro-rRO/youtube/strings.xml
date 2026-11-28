@@ -55,6 +55,7 @@ Modificările includ:
   <string name="morphe_hide_account_menu_badges_title">Ascunde insignenele</string>
   <string name="morphe_hide_account_menu_downloads_title">Ascunde Descărcările</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Ascunde \"Videoclipuri apreciate\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Ascunde subsolul \"Politica de confidențialitate\" \"Termenii de utilizare\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Ascunde \"Urmărește mai târziu\"</string>
   <string name="morphe_hide_album_cards_title">Ascundeți cardurile de album</string>
   <string name="morphe_hide_album_cards_summary">Ascunde cardurile de albume de sub descrierea artistului</string>
@@ -1264,6 +1265,9 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_autoplay_mix_stop_after_summary">În modul Auto, un Mix se oprește după acest număr de videoclipuri. 0 = fără limită</string>
   <string name="morphe_autoplay_mix_length">Mix: %s videoclipuri</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: fără limită</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Restaurare comportament Cast vechi</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Sesiunea Cast rămâne conectată atunci când selectezi un alt videoclip sau închizi playerul, astfel încât videoclipurile continuă să ruleze pe TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Solicitare \"Continuați vizionarea\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Implicit</string>
@@ -1402,6 +1406,12 @@ Aspect pentru automotive
   <string name="morphe_shorts_autoplay_summary">Avansază la următorul Shorts automat în loc să repete pe cel curent</string>
   <string name="morphe_shorts_autoplay_background_title">Redare automată în fundal</string>
   <string name="morphe_shorts_autoplay_background_summary">Avansază la următorul Shorts automat în timpul redării în fundal</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Redare automată în meniul Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Afișează un element în meniul playerului Shorts care activează sau dezactivează redarea automată Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Redare automată Shorts · Activat</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Redare automată Shorts · Dezactivat</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Redarea automată a Shorts a fost activată</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Redarea automată a Shorts a fost dezactivată</string>
   <string name="morphe_skip_live_shorts_title">Sari peste Shorts live</string>
   <string name="morphe_skip_live_shorts_summary">Ocolește fluxurile live care apar în feed-ul Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Aspect pentru automotive
   <string name="morphe_feed_card_layout_entry_1">Clasic</string>
   <string name="morphe_feed_card_layout_entry_2">Cartonașe</string>
   <string name="morphe_feed_card_layout_entry_3">Cartonașe cu butoanele de like, comentariu și salvare</string>
+  <string name="morphe_feed_card_layout_entry_4">Carduri cu strălucire a avatarului</string>
+  <string name="morphe_feed_card_layout_entry_5">Carduri cu butoane de like, comentariu și salvare și strălucire a avatarului</string>
   <string name="morphe_feed_card_layout_comments">Comentarii</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Dezactivează reluarea miniplayer-ului</string>
@@ -1512,6 +1524,10 @@ Aspect pentru automotive
   <string name="morphe_custom_branding_icon_entry_8">Analog original</string>
   <string name="morphe_custom_branding_icon_entry_9">Prăjitură originală</string>
   <string name="morphe_custom_branding_icon_entry_10">Metal original</string>
+  <string name="morphe_custom_branding_icon_entry_11">Blană originală</string>
+  <string name="morphe_custom_branding_icon_entry_12">Acuarelă originală</string>
+  <string name="morphe_custom_branding_icon_entry_13">Clasic original</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV retro original</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Implicit</string>
   <string name="morphe_header_logo_entry_2">Normal</string>
@@ -1639,6 +1655,8 @@ Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, 
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Deschide link-uri în browser</string>
   <string name="morphe_external_browser_summary">Deschide linkurile într-un browser extern în loc de browserul din aplicație</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Nu există niciun link YouTube în textul partajat</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Dimensiunea bufferului de redare</string>
   <string name="morphe_playback_buffer_size_entry_default">Implicit</string>

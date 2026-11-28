@@ -55,6 +55,7 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_account_menu_badges_title">Bejlarni yashirish</string>
   <string name="morphe_hide_account_menu_downloads_title">Yuklab olishlarni yashirish</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"Yoqtirilgan videolar\"ni yashirish</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Pastki qismdagi \"Maxfiylik siyosati\" va \"Xizmat ko\'rsatish shartlari\"ni yashirish</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"Keyinroq ko\'rish\"ni yashirish</string>
   <string name="morphe_hide_album_cards_title">Albom kartalarini yashirish</string>
   <string name="morphe_hide_album_cards_summary">Ijodkor tavsifi ostidagi albom kartalarini yashiradi</string>
@@ -1262,6 +1263,9 @@ Sozlamalar → Oynatish (yoki Avtoijro) → Keyingi videoni avtomatik ravishda i
   <string name="morphe_autoplay_mix_stop_after_summary">Avto rejimida Miks shuncha videodan keyin to\'xtaydi. 0 = cheklovsiz</string>
   <string name="morphe_autoplay_mix_length">Miks: %s ta video</string>
   <string name="morphe_autoplay_mix_no_limit">Miks: cheklovsiz</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Eski Cast xulqini tiklash</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Boshqa video tanlanganda yoki pleyerni yopganda Cast seansining aloqasi uzilmaydi, shuning uchun videolar televizorda ijro etilishda davom etadi</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Tomosha qilishda davom etish?\" so\'rovi</string>
   <string name="morphe_continue_watching_prompt_entry_1">Standart</string>
@@ -1400,6 +1404,12 @@ Avtomobil maketi
   <string name="morphe_shorts_autoplay_summary">Hozirgi Short takrorlanish o\'rniga keyingi Shortga avtomatik ravishda o\'tiladi</string>
   <string name="morphe_shorts_autoplay_background_title">Fonda avtomatik ijro etish</string>
   <string name="morphe_shorts_autoplay_background_summary">Fonda ijro etish vaqtida keyingi Shortga avtomatik ravishda o\'tiladi</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts menyusida avtomatik ijro</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts pleeri menyusida Shorts avtomatik ijrosini yoqadigan yoki o\'chiradigan elementni ko\'rsatadi</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts avtomatik ijrosi · Yoqilgan</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts avtomatik ijrosi · O\'chirilgan</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts avtomatik ijrosi yoqildi</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts avtomatik ijrosi o\"chirildi</string>
   <string name="morphe_skip_live_shorts_title">Jonli Shorts videolarni o\'tkazib yuborish</string>
   <string name="morphe_skip_live_shorts_summary">Shorts lentasida paydo bo\'ladigan jonli efirlarni o\'tkazib yuboradi</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1424,6 +1434,8 @@ Avtomobil maketi
   <string name="morphe_feed_card_layout_entry_1">Klassik</string>
   <string name="morphe_feed_card_layout_entry_2">Kartochkalar</string>
   <string name="morphe_feed_card_layout_entry_3">Layklar, izohlar va saqlash tugmalari bo\'lgan kartochkalar</string>
+  <string name="morphe_feed_card_layout_entry_4">Avatar nuri bo\'lgan kartochkalar</string>
+  <string name="morphe_feed_card_layout_entry_5">Layk, izoh va saqlash tugmalari hamda avatar nuri bo\'lgan kartochkalar</string>
   <string name="morphe_feed_card_layout_comments">Izohlar</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini-pleerni qayta boshlashni oʻchirish</string>
@@ -1510,6 +1522,10 @@ Avtomobil maketi
   <string name="morphe_custom_branding_icon_entry_8">Original analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Original tort</string>
   <string name="morphe_custom_branding_icon_entry_10">Original metall</string>
+  <string name="morphe_custom_branding_icon_entry_11">Asl mo\"yna</string>
+  <string name="morphe_custom_branding_icon_entry_12">Asl akvarel</string>
+  <string name="morphe_custom_branding_icon_entry_13">Asl klassika</string>
+  <string name="morphe_custom_branding_icon_entry_14">Asl retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Standart</string>
   <string name="morphe_header_logo_entry_2">Oddiy</string>
@@ -1637,6 +1653,8 @@ Videolar xeshlangan video ID'sining qisqa prefiksi orqali so'raladi, shuning uch
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Brauzerda ochish</string>
   <string name="morphe_external_browser_summary">Ilova ichidagi brauzer o\'rniga tashqi brauzerda havolalarni ochadi</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Ulashilgan matnda YouTube havolasi yo\"q</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Ijro buferi hajmi</string>
   <string name="morphe_playback_buffer_size_entry_default">Standart</string>

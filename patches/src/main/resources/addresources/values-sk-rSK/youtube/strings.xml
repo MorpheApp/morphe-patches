@@ -55,6 +55,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_account_menu_badges_title">Skryť odznaky</string>
   <string name="morphe_hide_account_menu_downloads_title">Skryť sťahovania</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Skryť \"Obľúbené videá\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Skryť pätičku \"Zásady ochrany súkromia\" a \"Podmienky používania\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Skryť \"Pozrieť neskôr\"</string>
   <string name="morphe_hide_album_cards_title">Skryť karty albumov</string>
   <string name="morphe_hide_album_cards_summary">Skryje karty albumov pod popisom interpreta</string>
@@ -1262,6 +1263,9 @@ Nastavenia → Prehrávanie (alebo Automatické prehrávanie) → Automaticky pr
   <string name="morphe_autoplay_mix_stop_after_summary">V režime Automaticky sa Mix zastaví po tomto počte videí. 0 = bez limitu</string>
   <string name="morphe_autoplay_mix_length">Mix: %s videí</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: bez limitu</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Obnoviť staré správanie Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Pri výbere iného videa alebo zatvorení prehrávača zostáva relia Cast pripojená, takže videá sa na TV prehrávajú ďalej</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Výzva \"Pokračovať v sledovaní\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Predvolený</string>
@@ -1400,6 +1404,12 @@ Rozloženie pre automobil
   <string name="morphe_shorts_autoplay_summary">Automaticky prechádza na ďalší Shorts namiesto opakovania aktuálneho</string>
   <string name="morphe_shorts_autoplay_background_title">Automatické prehrávanie na pozadí</string>
   <string name="morphe_shorts_autoplay_background_summary">Automaticky prechádza na ďalší Shorts počas prehrávania na pozadí</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Automatické prehrávanie v menu Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Zobrazí položku v menu prehrávača Shorts, ktorá zapne alebo vypne automatické prehrávanie Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Automaticky prehrávať Shorts · Zapnuté</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Automaticky prehrávať Shorts · Vypnuté</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Automatické prehrávanie Shorts zapnuté</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Automatické prehrávanie Shorts vypnuté</string>
   <string name="morphe_skip_live_shorts_title">Preskočiť live Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Preskakuje živé streamy, ktoré sa zobrazujú vo feede Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1424,6 +1434,8 @@ Rozloženie pre automobil
   <string name="morphe_feed_card_layout_entry_1">Klasické</string>
   <string name="morphe_feed_card_layout_entry_2">Karty</string>
   <string name="morphe_feed_card_layout_entry_3">Karty s tlačidlami lajk, komentár a uloženie</string>
+  <string name="morphe_feed_card_layout_entry_4">Karty s žiarivým avatarom</string>
+  <string name="morphe_feed_card_layout_entry_5">Karty s tlačidlami páči sa to, komentovať a uložiť a žiarivým avatarom</string>
   <string name="morphe_feed_card_layout_comments">Komentáre</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Zakázať obnovovanie mini-prehrávača</string>
@@ -1510,6 +1522,10 @@ Rozloženie pre automobil
   <string name="morphe_custom_branding_icon_entry_8">Pôvodný analóg</string>
   <string name="morphe_custom_branding_icon_entry_9">Pôvodná torta</string>
   <string name="morphe_custom_branding_icon_entry_10">Pôvodný kov</string>
+  <string name="morphe_custom_branding_icon_entry_11">Pôvodný kožuš</string>
+  <string name="morphe_custom_branding_icon_entry_12">Pôvodný akvarel</string>
+  <string name="morphe_custom_branding_icon_entry_13">Pôvodná klasika</string>
+  <string name="morphe_custom_branding_icon_entry_14">Pôvodná retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Predvolené</string>
   <string name="morphe_header_logo_entry_2">Klasické</string>
@@ -1637,6 +1653,8 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Otvárať odkazy v prehliadači</string>
   <string name="morphe_external_browser_summary">Otvára odkazy v externom prehliadači namiesto prehliadača v aplikácii</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">V zdieľanom texte nie je odkaz na YouTube</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Veľkosť vyrovnávacej pamäte prehrávania</string>
   <string name="morphe_playback_buffer_size_entry_default">Predvolený</string>

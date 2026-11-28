@@ -55,6 +55,7 @@ Guherînên ku tê de hene:
   <string name="morphe_hide_account_menu_badges_title">Nîşanên xirab veşêre</string>
   <string name="morphe_hide_account_menu_downloads_title">Daxistinên veşêre</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\'Vîdyoyên hatine hezkirin\' veşêre</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Footer\'\'Polîtîkaya Parastina Privacy\'\' \'\'Şert û Rêzikên Xizmetguzariyey\'\' veşêre</string>
   <string name="morphe_hide_account_menu_watch_later_title">\'Paşê temaşe bike\' veşêre</string>
   <string name="morphe_hide_album_cards_title">Kartên album hidin</string>
   <string name="morphe_hide_album_cards_summary">Kartên albûmê di bin danasîna hunermend de veşêre</string>
@@ -1264,6 +1265,9 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">Di moda Otomatîk de, Mix piştî vê qas vîdyoyan dinqewire. 0 = bê sînor</string>
   <string name="morphe_autoplay_mix_length">Mix: %s vîdyo</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: bê sînor</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Rêvegera tevgera kevn a Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Dema vîdyoyeke din tê hilbijartin an lîstera tê girtin, rûniştina Cast spîr girêdayî dimîne, da ku vîdyo li ser TVyê berdewam bikin lîkirinê</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">pirsê \'Bidomîne temaşe kirin\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Bixweber</string>
@@ -1402,6 +1406,12 @@ Layouta otomotîvê
   <string name="morphe_shorts_autoplay_summary">Dema Shorts xelas dibe bi xweber yê din dilîze, li şûna dubarekirina ya niha</string>
   <string name="morphe_shorts_autoplay_background_title">Bi xweber di paşberê de bazide</string>
   <string name="morphe_shorts_autoplay_background_summary">Dema di paşberê de dilîze, bi xweber yê din dilîze</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Lîstkirina otomatîk di menyuya Shorts de</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Di menyuya lîstkira Shorts de yekî nîşan dide ku lîstkirina otomatîk a Shorts ve dike an digire</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Lîstkirina otomatîk a Shorts · Vekirî</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Lîstkirina otomatîk a Shorts · Girtî</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Autoplay Shorts hat vekirin</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Autoplay Shorts hat girtin</string>
   <string name="morphe_skip_live_shorts_title">Shortsên zindî derbas bike</string>
   <string name="morphe_skip_live_shorts_summary">Weşanên zindî yên ku di feeda Shorts de xuya dibin derbas dike</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Layouta otomotîvê
   <string name="morphe_feed_card_layout_entry_1">Klasîk</string>
   <string name="morphe_feed_card_layout_entry_2">Kart</string>
   <string name="morphe_feed_card_layout_entry_3">Kartên bi bişkojên like, şîrove û tomarkirinê</string>
+  <string name="morphe_feed_card_layout_entry_4">Kartên bi ronahiya avatarê</string>
+  <string name="morphe_feed_card_layout_entry_5">Kartên bi bişkojên like, şîrove û tomarkirinê û ronahiya avatarê</string>
   <string name="morphe_feed_card_layout_comments">Şîrove</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Vekirina mînîlîstikê asteng bike</string>
@@ -1512,6 +1524,10 @@ Layouta otomotîvê
   <string name="morphe_custom_branding_icon_entry_8">Analogê orjînal</string>
   <string name="morphe_custom_branding_icon_entry_9">Keka orîjînal</string>
   <string name="morphe_custom_branding_icon_entry_10">Metalê orjînal</string>
+  <string name="morphe_custom_branding_icon_entry_11">Kila orjînal</string>
+  <string name="morphe_custom_branding_icon_entry_12">Rengdaniyêya orjînal</string>
+  <string name="morphe_custom_branding_icon_entry_13">Klasîka orjînal</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV ya retro ya orjînal</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Bixwe</string>
   <string name="morphe_header_logo_entry_2">Asayî</string>
@@ -1639,6 +1655,8 @@ Vîdyo bi pêşgirekî kurt a ID-ya vîdyoya hashed tê xwestin, ji ber vê yek�
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Girêdanan di gerokê de veke</string>
   <string name="morphe_external_browser_summary">Girêdanan di gerokeke derveyî de vedike, ne di gerokê nav-sepanê de</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Di nivîsên parvekirî de tu lênkê YouTube nayê dîtin</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Mezinahiya bufferê ya playbackê</string>
   <string name="morphe_playback_buffer_size_entry_default">Bixweber</string>

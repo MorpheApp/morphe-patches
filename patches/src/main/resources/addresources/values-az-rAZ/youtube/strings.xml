@@ -55,6 +55,7 @@ Dəyişikliklərə aşağıdakılar daxildir:
   <string name="morphe_hide_account_menu_badges_title">Nişanları Gizlət</string>
   <string name="morphe_hide_account_menu_downloads_title">Yükləmələri Gizlət</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"Bəyənilmiş videoları\" Gizlət</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\"Məxfilik Siyasəti\' \'Xidmət Şərtləri\' alt yazısını gizlət</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"Sonra izləni\" Gizlət</string>
   <string name="morphe_hide_album_cards_title">Albom kartlarını gizlət</string>
   <string name="morphe_hide_album_cards_summary">Albom kartlarını sənətkar təsviri altında gizlədir</string>
@@ -1264,6 +1265,7 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_autoplay_mix_stop_after_summary">Avtomatik rejimdə Miks bu sayda videodan sonra dayanır. 0 = limit yoxdur</string>
   <string name="morphe_autoplay_mix_length">Miks: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Miks: limit yoxdur</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusu</string>
   <string name="morphe_continue_watching_prompt_entry_1">İlkin</string>
@@ -1402,6 +1404,12 @@ Avtomobil tərtibatı
   <string name="morphe_shorts_autoplay_summary">Hazırkın təkrarlamaq əvəzinə, avtomatik olaraq növbəti Shorts-a keçir</string>
   <string name="morphe_shorts_autoplay_background_title">Fonda avtomatik oynatma</string>
   <string name="morphe_shorts_autoplay_background_summary">Fonda səsləndirmə ərzində avtomatik olaraq növbəti Shorts-a keçir</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts menyusunda avtomatik oynat</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts oynadıcı menyusunda Shorts avtomatik oynatmasını açan və ya bağlayan elementi göstərir</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts avtomatik oynadılması · Açıq</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts avtomatik oynadılması · Bağlı</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts avtomatik oynadılması açıldı</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts avtomatik oynadılması bağlandı</string>
   <string name="morphe_skip_live_shorts_title">Canlı Shorts-ları Ötür</string>
   <string name="morphe_skip_live_shorts_summary">Shorts lentində görünən canlı yayımları ötürür</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1434,8 @@ Avtomobil tərtibatı
   <string name="morphe_feed_card_layout_entry_1">Klassik</string>
   <string name="morphe_feed_card_layout_entry_2">Kartlar</string>
   <string name="morphe_feed_card_layout_entry_3">Bəyənmə, şərh və saxla düymələri olan kartlar</string>
+  <string name="morphe_feed_card_layout_entry_4">Avatar parıltılı kartlar</string>
+  <string name="morphe_feed_card_layout_entry_5">Bəyənmə, şərh, saxla düymələri və avatar parıltısı olan kartlar</string>
   <string name="morphe_feed_card_layout_comments">Şərhlər</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Kiçik oynadıcı davam etdirilməsini qapat</string>
@@ -1512,6 +1522,10 @@ Avtomobil tərtibatı
   <string name="morphe_custom_branding_icon_entry_8">Orijinal analoq</string>
   <string name="morphe_custom_branding_icon_entry_9">Orijinal tort</string>
   <string name="morphe_custom_branding_icon_entry_10">Orijinal metal</string>
+  <string name="morphe_custom_branding_icon_entry_11">Əsil xəz</string>
+  <string name="morphe_custom_branding_icon_entry_12">Orijinal akvarel</string>
+  <string name="morphe_custom_branding_icon_entry_13">Orijinal klassik</string>
+  <string name="morphe_custom_branding_icon_entry_14">Orijinal retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">İlkin</string>
   <string name="morphe_header_logo_entry_2">Müntəzəm</string>
@@ -1639,6 +1653,7 @@ Avtomobil tərtibatı
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Bağlantıları brauzerdə aç</string>
   <string name="morphe_external_browser_summary">Linkləri tətbiqdaxili brauzer əvəzinə, xarici brauzerdə açır</string>
+  <!-- misc.links.openSharedLinksPatch -->
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Oynatma buferinin həcmi</string>
   <string name="morphe_playback_buffer_size_entry_default">İlkin</string>

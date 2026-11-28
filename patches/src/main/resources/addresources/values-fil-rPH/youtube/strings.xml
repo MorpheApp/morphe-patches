@@ -55,6 +55,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_account_menu_badges_title">Itago ang mga Badge</string>
   <string name="morphe_hide_account_menu_downloads_title">Itago ang mga Download</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Itago ang \'Mga nagustuhang video\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Itago ang footer ng \'Patakaran sa Privacy\' \'Mga tuntunin ng Serbisyo\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">Itago ang \'Panoorin mamaya\'</string>
   <string name="morphe_hide_album_cards_title">Itago ang mga album card</string>
   <string name="morphe_hide_album_cards_summary">Itinatago ang mga album card sa ilalim ng paglalarawan ng artist</string>
@@ -1264,6 +1265,9 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_autoplay_mix_stop_after_summary">Sa mode na Auto, hihinto ang Mix pagkatapos ng ganitong dami ng mga video. 0 = walang limitasyon</string>
   <string name="morphe_autoplay_mix_length">Mix: %s na mga video</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: walang limitasyon</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Ibalik ang lumang gawi ng Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Mananatiling nakakonekta ang Cast session kapag pumipili ng ibang video o isinasara ang player, kaya patuloy na magpe-play ang mga video sa TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">prompt na \'Itutuloy ang panonood\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Awtomatiko</string>
@@ -1402,6 +1406,12 @@ Automotive layout
   <string name="morphe_shorts_autoplay_summary">Awtomatikong umuusad sa susunod na Short sa halip na ulitin ang kasalukuyang isa</string>
   <string name="morphe_shorts_autoplay_background_title">Autoplay sa background</string>
   <string name="morphe_shorts_autoplay_background_summary">Awtomatikong umuusad sa susunod na Short habang nagpe-playback sa background</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Autoplay sa menu ng Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Nagpapakita ng item sa menu ng player ng Shorts na nag-o-on o nag-o-off ng Autoplay Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Autoplay Shorts · Naka-on</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Autoplay Shorts · Naka-off</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Naka-on ang Autoplay Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Naka-off ang Autoplay Shorts</string>
   <string name="morphe_skip_live_shorts_title">Laktawan ang live na Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Lilaktawan ang mga live stream na lumalabas sa Shorts feed</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Automotive layout
   <string name="morphe_feed_card_layout_entry_1">Klasiko</string>
   <string name="morphe_feed_card_layout_entry_2">Mga Card</string>
   <string name="morphe_feed_card_layout_entry_3">Mga card may like, komento, at save button</string>
+  <string name="morphe_feed_card_layout_entry_4">Mga card na may avatar glow</string>
+  <string name="morphe_feed_card_layout_entry_5">Mga card na may mga button para sa like, comment at save at may avatar glow</string>
   <string name="morphe_feed_card_layout_comments">Mga Komento</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
@@ -1512,6 +1524,10 @@ Automotive layout
   <string name="morphe_custom_branding_icon_entry_8">Orihinal na analog</string>
   <string name="morphe_custom_branding_icon_entry_9">Orihinal na cake</string>
   <string name="morphe_custom_branding_icon_entry_10">Orihinal na metal</string>
+  <string name="morphe_custom_branding_icon_entry_11">Orihinal na fur</string>
+  <string name="morphe_custom_branding_icon_entry_12">Orihinal na watercolor</string>
+  <string name="morphe_custom_branding_icon_entry_13">Orihinal na classic</string>
+  <string name="morphe_custom_branding_icon_entry_14">Orihinal na retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Default</string>
   <string name="morphe_header_logo_entry_2">Regular</string>
@@ -1639,6 +1655,8 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Buksan ang mga link sa browser</string>
   <string name="morphe_external_browser_summary">Binubuksan ang mga link sa isang external browser sa halip na sa in-app browser</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Walang YouTube link sa ibinahaging text</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Laki ng buffer ng playback</string>
   <string name="morphe_playback_buffer_size_entry_default">Default</string>

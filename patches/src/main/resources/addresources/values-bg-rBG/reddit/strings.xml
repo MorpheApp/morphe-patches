@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">Бутони в долната лента и стъклената лента</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Деактивиране на автоматичното скриване на долната лента</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Поддържа долната навигационна лента видима при скролване</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Навигационни бутони с висок контраст</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Показва неселектираните бутони на навигационната лента в черно при светъл режим и в бяло при тъмен режим, вместо в сиво</string>
   <string name="morphe_glass_navigation_bar_title">Стъклена навигационна лента</string>
   <string name="morphe_glass_navigation_bar_summary">Показва навигационната лента като плаваща, полупрозрачна капсула над фийда. При таблетите страничната лента има същия вид</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Вкл</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Скриване на бутона \"Чат\"</string>
   <string name="morphe_hide_discover_button_title">Скриване на бутоните Общности или Открий</string>
   <string name="morphe_hide_games_button_title">Скриване на бутона \"Игри\"</string>
+  <string name="morphe_subreddit_create_button_title">Бутон за създаване в общностите</string>
+  <string name="morphe_subreddit_create_button_summary">Показва бутон до Търсене във всяка общност, който започва публикация там</string>
+  <string name="morphe_subreddit_create_button_label">Създай публикация</string>
+  <string name="morphe_subreddit_create_button_description">Създай публикация в r/%s</string>
   <string name="morphe_screen_sidebar_title">Странична лента</string>
   <string name="morphe_sidebar_screen_summary">Рафтове и бутони в страничната лента</string>
   <string name="morphe_settings_in_sidebar_title">Покажи настройките на Morphe</string>

@@ -31,6 +31,8 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_navigation_bar_screen_summary">Knapper i bundlinjen og glaslinjen</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Deaktiver automatisk skjuling af nederste bjælke</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Holder den nederste navigationsbjælke synlig under scrolling</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Navigationsknapper med høj kontrast</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Viser de ikke-valgte knapper i navigationslinjen i sort i lys tilstand og hvid i mørk tilstand i stedet for grå</string>
   <string name="morphe_glass_navigation_bar_title">Glass-navigationslinje</string>
   <string name="morphe_glass_navigation_bar_summary">Viser navigationslinjen som en svævende, gennemsigtig kapsel over feedet. På tablets har sidemenuen det samme udseende</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Til</string>
@@ -76,6 +78,10 @@ For at bruge en ældre version skal du &lt;b&gt;afinstallere&lt;/b&gt; Reddit og
   <string name="morphe_hide_chat_button_title">Skjul Chat-knappen</string>
   <string name="morphe_hide_discover_button_title">Skjul Opdag eller Fællesskaber-knappen</string>
   <string name="morphe_hide_games_button_title">Skjul Spil-knappen</string>
+  <string name="morphe_subreddit_create_button_title">Opret-knap i fællesskaber</string>
+  <string name="morphe_subreddit_create_button_summary">Viser en knap ved siden af Søg i hvert fællesskab, der starter et opslag der</string>
+  <string name="morphe_subreddit_create_button_label">Opret opslag</string>
+  <string name="morphe_subreddit_create_button_description">Opret opslag i r/%s</string>
   <string name="morphe_screen_sidebar_title">Sidebar</string>
   <string name="morphe_sidebar_screen_summary">Hylder og knapper i sidepanelet</string>
   <string name="morphe_settings_in_sidebar_title">Vis Morphe-indstillinger</string>

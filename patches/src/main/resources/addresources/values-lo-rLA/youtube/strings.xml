@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">ເຊື່ອງແທັກ</string>
   <string name="morphe_hide_account_menu_downloads_title">ເຊື່ອງລາຍການດາວໂຫຼດ</string>
   <string name="morphe_hide_account_menu_liked_videos_title">ເຊື່ອງ \'ວິດີໂອທີ່ມັກ\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">ເຊື່ອງສ່ວນທ້າຍ \'ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ\' \'ເງື່ອນໄຂການບໍລິການ\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">ເຊື່ອງ \'ເບິ່ງພາຍຫຼັງ\'</string>
   <string name="morphe_hide_album_cards_title">ເຊື່ອງບັດອັນບັ້ມ</string>
   <string name="morphe_hide_album_cards_summary">ເຊື່ອງບັດອັນບັ້ມ ພາຍໃຕ້ຄໍາອະທິບາຍຂອງສິລະປິນ</string>
@@ -1264,6 +1265,9 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mix_stop_after_summary">ໃນໂໝດອັດຕະໂນມັດ, Mix ຈະຢຸດຫຼັງຈາກວິດີໂອຈຳນວນນີ້. 0 = ບໍ່ມີຂີດຈຳກັດ</string>
   <string name="morphe_autoplay_mix_length">Mix: %s ວິດີໂອ</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: ບໍ່ມີຂີດຈຳກັດ</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">ຟື້ນຟູພຶດຕິກຳການ Cast ແບບເກົ່າ</string>
+  <string name="morphe_restore_old_cast_behavior_summary">ເຊດຊັນການ Cast ຈະຍັງຄົງເຊື່ອມຕໍ່ຢູ່ ເມື່ອເລືອກວິດີໂອອື່ນ ຫຼື ປິດເຄື່ອງຫຼິ້ນ, ດັ່ງນັ້ນວິດີໂອຈຶ່ງຫຼິ້ນຕໍ່ໄປໃນທີວີ</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">ຄຳແນະນຳ \'ເບິ່ງຕໍ່ ຫຼື ບໍ່?\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
@@ -1402,6 +1406,12 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">ເລື່ອນໄປຫາ Short ຖັດໄປໂດຍອັດຕະໂນມັດ ແທນທີ່ຈະຫຼິ້ນອັນປັດຈຸບັນຊ້ຳ</string>
   <string name="morphe_shorts_autoplay_background_title">ຫຼິ້ນອັດຕະໂນມັດໃນພື້ນຫຼັງ</string>
   <string name="morphe_shorts_autoplay_background_summary">ເລື່ອນໄປຫາ Short ຖັດໄປໂດຍອັດຕະໂນມັດ ໃນລະຫວ່າງການຫຼິ້ນໃນພື້ນຫຼັງ</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">ຫຼິ້ນອັດຕະໂນມັດໃນເມນູ Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">ສະແດງລາຍການໃນເມນູເຄື່ອງຫຼິ້ນ Shorts ທີ່ໃຊ້ເພື່ອເປີດ ຫຼື ປິດການຫຼິ້ນ Shorts ອັດຕະໂນມັດ</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">ຫຼິ້ນ Shorts ອັດຕະໂນມັດ · ເປີດ</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">ຫຼິ້ນ Shorts ອັດຕະໂນມັດ · ປິດ</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">ເປີດການຫຼິ້ນ Shorts ອັດຕະໂນມັດແລ້ວ</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">ປິດການຫຼິ້ນ Shorts ອັດຕະໂນມັດແລ້ວ</string>
   <string name="morphe_skip_live_shorts_title">ຂ້າມ Shorts ສົດ</string>
   <string name="morphe_skip_live_shorts_summary">ຂ້າມການຖ່າຍທອດສົດທີ່ປາກົດໃນຟີດ Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_1">ແບບຄລາສສິກ</string>
   <string name="morphe_feed_card_layout_entry_2">ບັດ</string>
   <string name="morphe_feed_card_layout_entry_3">ບັດທີ່ມີປຸ່ມຖືກໃຈ, ຄອມເມັ້ນ ແລະ ບັນທຶກ</string>
+  <string name="morphe_feed_card_layout_entry_4">ບັດທີ່ມີແສງເຮືອງ redorຮູບໂປຣໄຟລ໌</string>
+  <string name="morphe_feed_card_layout_entry_5">ບັດທີ່ມີປຸ່ມຖືກໃຈ, ຄອມເມັ້ນ ແລະ ບັນທຶກ ພ້ອມກັບແສງເຮືອງ redorຮູບໂປຣໄຟລ໌</string>
   <string name="morphe_feed_card_layout_comments">ຄຳຄິດເຫັນ</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ປິດການຫຼິ້ນຕໍ່ຂອງ miniplayer</string>
@@ -1512,6 +1524,10 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_8">ອະນາລັອກດັ້ງເດີມ</string>
   <string name="morphe_custom_branding_icon_entry_9">ເຄັກດັ້ງເດີມ</string>
   <string name="morphe_custom_branding_icon_entry_10">ໂລຫະດັ້ງເດີມ</string>
+  <string name="morphe_custom_branding_icon_entry_11">ຂົນສັດດັ້ງເດີມ</string>
+  <string name="morphe_custom_branding_icon_entry_12">ສີນ້ຳດັ້ງເດີມ</string>
+  <string name="morphe_custom_branding_icon_entry_13">ຄລາສສິກດັ້ງເດີມ</string>
+  <string name="morphe_custom_branding_icon_entry_14">ທີວີເຣທໂຣດັ້ງເດີມ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_header_logo_entry_2">ປົກກະຕິ</string>
@@ -1639,6 +1655,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">ເປີດລິ້ງໃນບຣາວເຊີ</string>
   <string name="morphe_external_browser_summary">ເປີດລິ້ງໃນບຣາວເຊີພາຍນອກ ແທນທີ່ບຣາວເຊີພາຍໃນແອັບ</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">ບໍ່ມີລິ້ງ YouTube ໃນຂໍ້ຄວາມທີ່ແຊຣ໌</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">ຂະໜາດບັບເຟີການຫຼິ້ນ</string>
   <string name="morphe_playback_buffer_size_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>

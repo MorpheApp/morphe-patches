@@ -31,6 +31,8 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_navigation_bar_screen_summary">Vitufe vya baa ya chini na baa ya kioo</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">Zima kuficha kidhibiti cha chini kiotomatiki</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Huweka kidhibiti cha usafirishaji cha chini kionekane wakati wa kusogeza</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Vitufe vya urambazaji vya utofauti mkubwa wa rangi</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Huonyesha vitufe visivyochaguliwa vya baa ya urambazaji kwa rangi nyeusi katika hali ya mwanga na nyeupe katika hali ya giza, badala ya kijivu</string>
   <string name="morphe_glass_navigation_bar_title">Upau wa urambazaji wa kioo</string>
   <string name="morphe_glass_navigation_bar_summary">Inaonyesha upau wa urambazaji kama kapsuli inayoelea na inayopitisha mwanga juu ya feed. Kwenye tablet, reli ya pembeni ina mwonekano huu huu</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Washa</string>
@@ -76,6 +78,10 @@ Ili kutumia toleo la zamani, lazima &lt;b&gt;uondoe&lt;/b&gt; Reddit na kisha us
   <string name="morphe_hide_chat_button_title">Ficha kitufe cha Soga</string>
   <string name="morphe_hide_discover_button_title">Ficha kitufe cha Gundua au Jamii</string>
   <string name="morphe_hide_games_button_title">Ficha kitufe cha Michezo</string>
+  <string name="morphe_subreddit_create_button_title">Kitufe cha kuunda katika jamii</string>
+  <string name="morphe_subreddit_create_button_summary">Huonyesha kitufe kando ya Utafutaji katika kila jamii ambacho huanzisha chapisho hapo</string>
+  <string name="morphe_subreddit_create_button_label">Unda chapisho</string>
+  <string name="morphe_subreddit_create_button_description">Unda chapisho katika r/%s</string>
   <string name="morphe_screen_sidebar_title">Upande wa pembeni</string>
   <string name="morphe_sidebar_screen_summary">Rafu na vitufe kwenye upande wa pembeni</string>
   <string name="morphe_settings_in_sidebar_title">Onyesha mipangilio ya Morphe</string>

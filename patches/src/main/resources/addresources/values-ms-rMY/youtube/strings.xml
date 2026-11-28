@@ -55,6 +55,7 @@ Perubahan termasuk:
   <string name="morphe_hide_account_menu_badges_title">Sembunyikan Lencana</string>
   <string name="morphe_hide_account_menu_downloads_title">Sembunyikan Muat Turun</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Sembunyikan \'Video yang disukai\'</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Sembunyikan footer \'Dasar Privasi\' \'Syarat Perkhidmatan\'</string>
   <string name="morphe_hide_account_menu_watch_later_title">Sembunyikan \'Tonton kemudian\'</string>
   <string name="morphe_hide_album_cards_title">Sorokkan kad album</string>
   <string name="morphe_hide_album_cards_summary">Sorokkan kad album di bawah perihalan artis</string>
@@ -1264,6 +1265,9 @@ Tetapan → Main balik (atau Main automatik) → Main automatik video seterusnya
   <string name="morphe_autoplay_mix_stop_after_summary">Dalam mod Auto, Mix akan berhenti selepas jumlah video ini. 0 = tiada had</string>
   <string name="morphe_autoplay_mix_length">Mix: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: tiada had</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Pulihkan kelakuan Cast lama</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Sesi Cast kekal disambungkan apabila memilih video lain atau menutup pemain, jadi video terus dimainkan pada TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Gesaan \'Teruskan menonton\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Lalai</string>
@@ -1402,6 +1406,12 @@ Tata letak automotif
   <string name="morphe_shorts_autoplay_summary">Berpindah ke Short seterusnya secara automatik dan bukannya mengulang Short semasa</string>
   <string name="morphe_shorts_autoplay_background_title">Autoplay di latar belakang</string>
   <string name="morphe_shorts_autoplay_background_summary">Beralih ke Short seterusnya secara automatik semasa main balik latar belakang</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Main putar automatik dalam menu Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Menunjukkan item dalam menu pemain Shorts yang menghidupkan atau mematikan Main putar automatik Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Main putar automatik Shorts · Hidup</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Main putar automatik Shorts · Mati</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Autoplay Shorts dihidupkan</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Autoplay Shorts dimatikan</string>
   <string name="morphe_skip_live_shorts_title">Langkau Shorts langsung</string>
   <string name="morphe_skip_live_shorts_summary">Melangkau penstriman langsung yang muncul dalam suapan Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Tata letak automotif
   <string name="morphe_feed_card_layout_entry_1">Klasik</string>
   <string name="morphe_feed_card_layout_entry_2">Kad</string>
   <string name="morphe_feed_card_layout_entry_3">Kad dengan butang suka, komen dan simpan</string>
+  <string name="morphe_feed_card_layout_entry_4">Kad dengan seri avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Kad dengan butang suka, komen dan simpan serta seri avatar</string>
   <string name="morphe_feed_card_layout_comments">Komen</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nyahaktifkan sambung semula pemain mini</string>
@@ -1512,6 +1524,10 @@ Tata letak automotif
   <string name="morphe_custom_branding_icon_entry_8">Analog asal</string>
   <string name="morphe_custom_branding_icon_entry_9">Kek asal</string>
   <string name="morphe_custom_branding_icon_entry_10">Logam asal</string>
+  <string name="morphe_custom_branding_icon_entry_11">Bulu asli</string>
+  <string name="morphe_custom_branding_icon_entry_12">Cat air asli</string>
+  <string name="morphe_custom_branding_icon_entry_13">Klasik asli</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV retro asli</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Lalai</string>
   <string name="morphe_header_logo_entry_2">Biasa</string>
@@ -1639,6 +1655,8 @@ Video diminta melalui awalan pendek ID video yang dihash, jadi pelayan tidak dap
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Buka pautan dalam pelayar web</string>
   <string name="morphe_external_browser_summary">Membuka pautan dalam pelayar luaran dan bukannya pelayar dalam aplikasi</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Tiada pautan YouTube dalam teks yang dikongsi</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Saiz penimbal main balik</string>
   <string name="morphe_playback_buffer_size_entry_default">Lalai</string>

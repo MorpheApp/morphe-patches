@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">তলৰ বাৰৰ বুটামসমূহ আৰু গ্লাছ বাৰটো</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">তলৰ বাৰটো অটো-হাইড কৰা বন্ধ কৰক</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">স্ক্ৰলিং কৰাৰ সময়ত তলৰ নেভিগেচন বাৰটো দৃশ্যমান কৰি ৰাখে</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">উচ্চ-কন্ট্রাষ্ট নেভিগেচন বুটাম সমূহ</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">নেভিগেচন বাৰৰ নিৰ্বাচিত নোহোৱা বুটামসমূহ ধূসৰৰ পৰিৱৰ্তে লাইট মোডত ক\'লা আৰু ডাৰ্ক মোডত বগা ৰঙত দেখুৱায়</string>
   <string name="morphe_glass_navigation_bar_title">গ্লাছ নেভিগেচন বাৰ</string>
   <string name="morphe_glass_navigation_bar_summary">ফিডৰ ওপৰত নেভিগেচন বাৰটোক এটা ফ্লোটিং, অৰ্ধ-স্বচ্ছ কেপচুল হিচাপে দেখুৱায়। টেবলেটত, চাইড ৰেলটোৰো একেই ৰূপ থাকে</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">অন</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">Chat বুটামটো লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_discover_button_title">Discover বা Communities বুটামটো লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_games_button_title">Games বুটামটো লুকুৱাওক</string>
+  <string name="morphe_subreddit_create_button_title">কমিউনিটিবোৰত সৃষ্টি কৰক বুটাম</string>
+  <string name="morphe_subreddit_create_button_summary">প্ৰতিটো কমিউনিটিৰ চাৰ্চৰ কাষত এটা বুটাম দেখুৱাব যিয়ে তাত এটা পোষ্ট আৰম্ভ কৰে</string>
+  <string name="morphe_subreddit_create_button_label">পোষ্ট সৃষ্টি কৰক</string>
+  <string name="morphe_subreddit_create_button_description">r/%s ত পোষ্ট সৃষ্টি কৰক</string>
   <string name="morphe_screen_sidebar_title">চাইডবাৰ</string>
   <string name="morphe_sidebar_screen_summary">চাইডবাৰৰ শ্বেল্ফ আৰু বুটামসমূহ</string>
   <string name="morphe_settings_in_sidebar_title">Morphe ছেটিংছ দেখুওৱক</string>

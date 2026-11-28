@@ -55,6 +55,7 @@ Els canvis inclouen:
   <string name="morphe_hide_account_menu_badges_title">Amaga els distintius</string>
   <string name="morphe_hide_account_menu_downloads_title">Oculta les descàrregues</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Amaga \"Vídeos que m\'agraden\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Ocultar el peu de pàgina de \"Política de privacitat\" i \"Condicions de servei\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Amaga \"Veure més tard\"</string>
   <string name="morphe_hide_album_cards_title">Ocultar targetes d\'àlbums</string>
   <string name="morphe_hide_album_cards_summary">Amaga les targetes d\'àlbums sota la descripció de l\'artista</string>
@@ -1264,6 +1265,9 @@ Configuració → Reproducció (o Reproducció automàtica) → Reproducció aut
   <string name="morphe_autoplay_mix_stop_after_summary">En el mode Auto, un Mix s\'atura després d\'aquest nombre de vídeos. 0 = sense límit</string>
   <string name="morphe_autoplay_mix_length">Mix: %s vídeos</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: sense límit</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Restaura el comportament antic de Cast</string>
+  <string name="morphe_restore_old_cast_behavior_summary">La sessió de Cast es manté connectada en seleccionar un vídeo diferent o en tancar el reproductor, de manera que els vídeos continuen reproduint-se a la TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Avís de \"Vols continuar mirant\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Per defecte</string>
@@ -1402,6 +1406,12 @@ Disseny d'automoció
   <string name="morphe_shorts_autoplay_summary">Avança al següent Short automàticament en lloc de repetir l\'actual</string>
   <string name="morphe_shorts_autoplay_background_title">Reproducció automàtica en segon pla</string>
   <string name="morphe_shorts_autoplay_background_summary">Avança al següent Short automàticament durant la reproducció en segon pla</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Reproducció automàtica al menú de Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Mostra un element al menú del reproductor de Shorts que activa o desactiva la Reproducció automàtica de Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Reproducció automàtica de Shorts · Activada</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Reproducció automàtica de Shorts · Desactivada</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">S\'ha activat la reproducció automàtica de Shorts</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">S\'ha desactivat la reproducció automàtica de Shorts</string>
   <string name="morphe_skip_live_shorts_title">Salta els Shorts en viu</string>
   <string name="morphe_skip_live_shorts_summary">Omet les transmissions en directe que apareixen al feed de Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Disseny d'automoció
   <string name="morphe_feed_card_layout_entry_1">Clàssic</string>
   <string name="morphe_feed_card_layout_entry_2">Targetes</string>
   <string name="morphe_feed_card_layout_entry_3">Targetes amb botons de \"M\'agrada\", comentari i desar</string>
+  <string name="morphe_feed_card_layout_entry_4">Targetes amb resplandor de l\'avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Targetes amb botons de m\'agrada, comentari i desar, i resplandor de l\'avatar</string>
   <string name="morphe_feed_card_layout_comments">Comentaris</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Desactivar la represa del miniplayer</string>
@@ -1512,6 +1524,10 @@ Disseny d'automoció
   <string name="morphe_custom_branding_icon_entry_8">Analògic original</string>
   <string name="morphe_custom_branding_icon_entry_9">Pastís original</string>
   <string name="morphe_custom_branding_icon_entry_10">Metal original</string>
+  <string name="morphe_custom_branding_icon_entry_11">Pell original</string>
+  <string name="morphe_custom_branding_icon_entry_12">Aqüarel·la original</string>
+  <string name="morphe_custom_branding_icon_entry_13">Clàssic original</string>
+  <string name="morphe_custom_branding_icon_entry_14">TV retro original</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Per defecte</string>
   <string name="morphe_header_logo_entry_2">Regular</string>
@@ -1639,6 +1655,8 @@ Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Obrir els enllaços al navegador</string>
   <string name="morphe_external_browser_summary">Obre els enllaços en un navegador extern en lloc del navegador de l\'aplicació</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">No hi ha cap enllaç de YouTube al text compartit</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Mida del buffer de reproducció</string>
   <string name="morphe_playback_buffer_size_entry_default">Per defecte</string>

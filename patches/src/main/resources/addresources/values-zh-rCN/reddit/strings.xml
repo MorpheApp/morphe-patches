@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">底部栏按钮和玻璃栏</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">禁用底部栏自动隐藏</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">在滚动时保持底部导航栏可见</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">高对比度导航按钮</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">在浅色模式下将导航栏的未选中按钮显示为黑色，在深色模式下显示为白色，而不是灰色</string>
   <string name="morphe_glass_navigation_bar_title">玻璃导航栏</string>
   <string name="morphe_glass_navigation_bar_summary">将导航栏显示为浮动在 feed 之上的半透明胶囊。在平板电脑上，侧边栏具有相同的外观</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">开启</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">隐藏“聊天”按钮</string>
   <string name="morphe_hide_discover_button_title">隐藏“发现”或“社区”按钮</string>
   <string name="morphe_hide_games_button_title">隐藏“游戏”按钮</string>
+  <string name="morphe_subreddit_create_button_title">社区中的创建按钮</string>
+  <string name="morphe_subreddit_create_button_summary">在每个社区的搜索按钮旁边显示一个按钮，用于在该社区发起帖子</string>
+  <string name="morphe_subreddit_create_button_label">创建帖子</string>
+  <string name="morphe_subreddit_create_button_description">在 r/%s 中创建帖子</string>
   <string name="morphe_screen_sidebar_title">侧边栏</string>
   <string name="morphe_sidebar_screen_summary">侧边栏中的货架和按钮</string>
   <string name="morphe_settings_in_sidebar_title">显示 Morphe 设置</string>

@@ -55,6 +55,7 @@ Izmaiņas ietver:
   <string name="morphe_hide_account_menu_badges_title">Slēpt plaques</string>
   <string name="morphe_hide_account_menu_downloads_title">Slēpt lejupielādes</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Slēpt \"Patīktie video\"</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">Slēpt footeru \"Privātuma politika\" \"Lietošanas noteikumi\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Slēpt \"Skatīt vēlāk\"</string>
   <string name="morphe_hide_album_cards_title">Slēpt albumu kartes</string>
   <string name="morphe_hide_album_cards_summary">Paslēpj albumu kartes zem mākslinieka apraksta</string>
@@ -1264,6 +1265,9 @@ Iestatījumi → Atskaņošana (vai Automātiska atskaņošana) → Automātiski
   <string name="morphe_autoplay_mix_stop_after_summary">Režīmā Auto Miksa apstājas pēc šī daudzuma video. 0 = nav ierobežojuma</string>
   <string name="morphe_autoplay_mix_length">Miksa: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Miksa: nav ierobežojuma</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Atjaunot vecāko Cast darbību</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Cast sesija paliek savienota, izvēloties citu video vai aizverot atskaņotāju, tādējādi video turpina skaitīties televizorā</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Azis \"Turpināt skatīties\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Noklusējums</string>
@@ -1402,6 +1406,12 @@ Automašīnas izkārtojums
   <string name="morphe_shorts_autoplay_summary">Automātiski pāriet uz nākamo Short vietā atkārtot pašreizējo</string>
   <string name="morphe_shorts_autoplay_background_title">Automātiskā atskaņošana fonā</string>
   <string name="morphe_shorts_autoplay_background_summary">Atskaņošanas laikā fonā automātiski pāriet uz nākamo Short</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Automātiska atskaņošana Shorts izvēlnē</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Rāda Shorts sasaules izvēlnē vienumu, kas ieslēdz vai izslēdz Shorts automātisko atskaņošanu</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts automātiskā atskaņošana · Ieslēgts</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts automātiskā atskaņošana · Izslēgts</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts automātiskā atskaņošana iespējota</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts automātiskā atskaņošana izslēgta</string>
   <string name="morphe_skip_live_shorts_title">Izlaist tiešraidē esošos Shorts</string>
   <string name="morphe_skip_live_shorts_summary">Izlaiž tiešraides Shorts, kas parādās Shorts plūsmā</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ Automašīnas izkārtojums
   <string name="morphe_feed_card_layout_entry_1">Klasisks</string>
   <string name="morphe_feed_card_layout_entry_2">Kartes</string>
   <string name="morphe_feed_card_layout_entry_3">Kartes ar pogām Patikt, Komentēt un Saglabāt</string>
+  <string name="morphe_feed_card_layout_entry_4">Kartes ar avatāra mirdzēšanu</string>
+  <string name="morphe_feed_card_layout_entry_5">Kartes ar patīšanas, komentēšanas un saglabāšanas pogām un avatāra mirdzēšanu</string>
   <string name="morphe_feed_card_layout_comments">Komentāri</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Atslēgt miniatūrā atskaņotāja atjaunošanu</string>
@@ -1512,6 +1524,10 @@ Automašīnas izkārtojums
   <string name="morphe_custom_branding_icon_entry_8">Oriģinālais analogs</string>
   <string name="morphe_custom_branding_icon_entry_9">Oriģināls kūkas tēls</string>
   <string name="morphe_custom_branding_icon_entry_10">Oriģināls metāls</string>
+  <string name="morphe_custom_branding_icon_entry_11">Oriģināls kažļots</string>
+  <string name="morphe_custom_branding_icon_entry_12">Oriģināla akvarele</string>
+  <string name="morphe_custom_branding_icon_entry_13">Oriģināls klasisks</string>
+  <string name="morphe_custom_branding_icon_entry_14">Oriģināls retro TV</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Pēc noklusējuma</string>
   <string name="morphe_header_logo_entry_2">Parastais</string>
@@ -1639,6 +1655,8 @@ Video tiek pieprasīti, izmantojot īsu hašēta video ID prefiksu, tādēļ ser
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Atvērt saites pārlūkprogrammā</string>
   <string name="morphe_external_browser_summary">Atver saites ārējā pārlūkprogrammā nevis lietotnes pārlūkprogrammā</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Kopīgotajā tekstā nav YouTube saites</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Atgriešanas bufera izmērs</string>
   <string name="morphe_playback_buffer_size_entry_default">Pēc noklusējuma</string>

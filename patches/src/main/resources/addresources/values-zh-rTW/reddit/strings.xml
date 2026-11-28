@@ -31,6 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_screen_summary">底部工具列按鈕與玻璃條</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">停用底部工具列自動隱藏</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">在滾動時保持底部導覽列可見</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">高對比度導航按鈕</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">將導航欄中未選中的按鈕在淺色模式下顯示為黑色，在深色模式下顯示為白色，而非灰色</string>
   <string name="morphe_glass_navigation_bar_title">玻璃導覽列</string>
   <string name="morphe_glass_navigation_bar_summary">將導覽列顯示為浮動且半透明的膠囊狀，覆蓋在 feed 之上。在平板電腦上，側邊欄也具有相同的外觀</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">開啟</string>
@@ -76,6 +78,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chat_button_title">隱藏聊天按鈕</string>
   <string name="morphe_hide_discover_button_title">隱藏「探索」或社群按鈕</string>
   <string name="morphe_hide_games_button_title">隱藏遊戲按鈕</string>
+  <string name="morphe_subreddit_create_button_title">社群中的建立按鈕</string>
+  <string name="morphe_subreddit_create_button_summary">在每個社群的搜尋旁邊顯示一個按鈕，用於在該社群發佈貼文</string>
+  <string name="morphe_subreddit_create_button_label">建立貼文</string>
+  <string name="morphe_subreddit_create_button_description">在 r/%s 建立貼文</string>
   <string name="morphe_screen_sidebar_title">側邊欄</string>
   <string name="morphe_sidebar_screen_summary">側邊欄中的層架與按鈕</string>
   <string name="morphe_settings_in_sidebar_title">顯示 Morphe 設定</string>

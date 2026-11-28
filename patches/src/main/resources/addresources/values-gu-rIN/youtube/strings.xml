@@ -182,6 +182,7 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
   <!-- interaction.autoplay.autoplayControlPatch -->
+  <!-- interaction.cast.restoreOldCastPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_entry_1">ડિફૉલ્ટ</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
@@ -234,6 +235,7 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- misc.links.openSharedLinksPatch -->
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
   <!-- video.effects.videoEffectsPatch -->

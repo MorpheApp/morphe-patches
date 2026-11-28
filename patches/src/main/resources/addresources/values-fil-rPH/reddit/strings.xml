@@ -31,6 +31,8 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_navigation_bar_screen_summary">Mga button sa bottom bar at ang glass bar</string>
   <string name="morphe_disable_bottom_bar_auto_hide_title">I-disable ang auto-hide ng bottom bar</string>
   <string name="morphe_disable_bottom_bar_auto_hide_summary">Panatilihing nakikita ang bottom navigation bar habang nag-i-scroll</string>
+  <string name="morphe_high_contrast_navigation_buttons_title">Mga button ng navigation na high-contrast</string>
+  <string name="morphe_high_contrast_navigation_buttons_summary">Ipinapakita ang mga hindi napiling button ng navigation bar sa kulay itim sa light mode at puti sa dark mode, sa halip na kulay abo</string>
   <string name="morphe_glass_navigation_bar_title">Glass navigation bar</string>
   <string name="morphe_glass_navigation_bar_summary">Ipinapakita ang navigation bar bilang isang floating, translucent capsule sa ibabaw ng feed. Sa mga tablet, ang side rail ay may katulad na hitsura</string>
   <string name="morphe_glass_navigation_bar_screen_summary_on">Naka-on</string>
@@ -76,6 +78,10 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_hide_chat_button_title">Itago ang Chat button</string>
   <string name="morphe_hide_discover_button_title">Itago ang Discover o Communities button</string>
   <string name="morphe_hide_games_button_title">Itago ang Games button</string>
+  <string name="morphe_subreddit_create_button_title">Create button sa mga community</string>
+  <string name="morphe_subreddit_create_button_summary">Nagpapakita ng button sa tabi ng Search sa bawat community na nagsisimula ng post doon</string>
+  <string name="morphe_subreddit_create_button_label">Gumawa ng post</string>
+  <string name="morphe_subreddit_create_button_description">Gumawa ng post sa r/%s</string>
   <string name="morphe_screen_sidebar_title">Sidebar</string>
   <string name="morphe_sidebar_screen_summary">Mga shelf at button sa sidebar</string>
   <string name="morphe_settings_in_sidebar_title">Ipakita ang mga setting ng Morphe</string>

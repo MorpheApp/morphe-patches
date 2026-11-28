@@ -55,6 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_badges_title">Белгілерді жасыру</string>
   <string name="morphe_hide_account_menu_downloads_title">Жүктемелерді жасыру</string>
   <string name="morphe_hide_account_menu_liked_videos_title">\"Лайк басқан видеоларды\" жасыру</string>
+  <string name="morphe_hide_account_menu_privacy_tos_footer_title">\'Құпиялылық саясаты\' және \'Қолдану шарттары\' төбелгісін жасыру</string>
   <string name="morphe_hide_account_menu_watch_later_title">\"Кейінірек көру\" бөлімін жасыру</string>
   <string name="morphe_hide_album_cards_title">Альбом карталарын жасыру</string>
   <string name="morphe_hide_album_cards_summary">Орындаушы сипаттамасының астындағы альбом карточкаларын жасырады</string>
@@ -1264,6 +1265,9 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_autoplay_mix_stop_after_summary">Авто режимінде Микс осы көп видеодан кейін тоқтайды. 0 = шектеу жоқ</string>
   <string name="morphe_autoplay_mix_length">Микс: %s видео</string>
   <string name="morphe_autoplay_mix_no_limit">Микс: шектеу жоқ</string>
+  <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Cast-тің ескі мінез-құлқын қалпына келтіру</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Басқа бейнені таңдағанда немесе плеерді жапқанда Cast сессиясы қосылып қалады, сондықтан бейнелер теледидарда ойнатыла береді</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Көруді жалғастыру?\" сұранысы</string>
   <string name="morphe_continue_watching_prompt_entry_1">Әдепкі</string>
@@ -1402,6 +1406,12 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_shorts_autoplay_summary">Ағымдағыны қайталаудың орнына келесі Short-қа автоматты түрде ауысады</string>
   <string name="morphe_shorts_autoplay_background_title">Фонда автоматты түрде ойнату</string>
   <string name="morphe_shorts_autoplay_background_summary">Фондық ойнату кезінде келесі Short-қа автоматты түрде ауысады</string>
+  <string name="morphe_shorts_autoplay_flyout_button_title">Shorts мәзіріндегі автоматты түрде ойнату</string>
+  <string name="morphe_shorts_autoplay_flyout_button_summary">Shorts плеері мәзірінде Shorts видеоларын автоматты түрде ойнатуды қосатын немесе өшіретін элементті көрсетеді</string>
+  <string name="morphe_shorts_autoplay_flyout_title_on">Shorts видеоларын автоматты түрде ойнату · Қосулы</string>
+  <string name="morphe_shorts_autoplay_flyout_title_off">Shorts видеоларын автоматты түрде ойнату · Өшірулі</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_on">Shorts автоойнату қосылды</string>
+  <string name="morphe_shorts_autoplay_flyout_toast_off">Shorts автоойнату өшірілді</string>
   <string name="morphe_skip_live_shorts_title">Тікелей Shorts бейнелерін өткізіп жіберу</string>
   <string name="morphe_skip_live_shorts_summary">Shorts лентасында пайда болатын тікелей эфирлерді өткізіп жібереді</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
@@ -1426,6 +1436,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_feed_card_layout_entry_1">Классикалық</string>
   <string name="morphe_feed_card_layout_entry_2">Карточкалар</string>
   <string name="morphe_feed_card_layout_entry_3">Лайк, пікір және сақтау батырмалары бар карточкалар</string>
+  <string name="morphe_feed_card_layout_entry_4">Аватар жарқырауы бар карталар</string>
+  <string name="morphe_feed_card_layout_entry_5">Лайк, пікір және сақтау батырмалары мен аватар жарқырауы бар карталар</string>
   <string name="morphe_feed_card_layout_comments">Пікірлер</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Миниплеердің қайта басталуын өшіру</string>
@@ -1512,6 +1524,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_custom_branding_icon_entry_8">Түпнұсқа аналог</string>
   <string name="morphe_custom_branding_icon_entry_9">Түпнұсқа торт</string>
   <string name="morphe_custom_branding_icon_entry_10">Түпнұсқа металл</string>
+  <string name="morphe_custom_branding_icon_entry_11">Түпнұсқа мохер</string>
+  <string name="morphe_custom_branding_icon_entry_12">Түпнұсқа акварель</string>
+  <string name="morphe_custom_branding_icon_entry_13">Түпнұсқа классика</string>
+  <string name="morphe_custom_branding_icon_entry_14">Түпнұсқа ретро ТВ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_1">Әдепкі</string>
   <string name="morphe_header_logo_entry_2">Кәдімгі</string>
@@ -1639,6 +1655,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Сілтемелерді браузерде ашу</string>
   <string name="morphe_external_browser_summary">Сілтемелерді қолданба ішіндегі браузердің орнына сыртқы браузерде ашады</string>
+  <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Бөлісілген мәтінде YouTube сілтемесі жоқ</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Ойнату буферінің өлшемі</string>
   <string name="morphe_playback_buffer_size_entry_default">Әдепкі</string>
