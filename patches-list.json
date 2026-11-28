@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.5.0-dev.2",
+  "version": "2.5.0-dev.3",
   "patches": [
     {
       "name": "A-B loop",
@@ -10241,7 +10241,7 @@
     },
     {
       "name": "Hide navigation buttons",
-      "description": "Adds options to hide buttons in the navigation bar.",
+      "description": "Adds options to hide buttons in the navigation bar, and to show a Create post button in communities when the Create button is hidden.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -11008,6 +11008,77 @@
     {
       "name": "High quality avatars",
       "description": "Adds an option to show user avatars in full resolution instead of the low resolution version.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4500",
+          "signatures": [
+            "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.48.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.47.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.40.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": "2026.37.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.24.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "2026.10.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "High-contrast navigation buttons",
+      "description": "Adds an option to show the unselected buttons of the navigation bar in black or white instead of grey.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -13054,6 +13125,85 @@
       "name": "Open post images in fullscreen",
       "description": "Adds an option to open the images of posts in fullscreen with one tap, instead of the posts feed.",
       "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.47.483",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.46.524",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.45.90",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.30.216",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.26.46",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Open shared links",
+      "description": "Adds YouTube to the share menu of other apps, to open YouTube links in shared text.",
+      "default": false,
       "category": null,
       "compatiblePackages": [
         {
@@ -15932,6 +16082,85 @@
       "options": []
     },
     {
+      "name": "Restore old Cast behavior",
+      "description": "Adds an option to keep the Cast session connected when selecting a different video or closing the player, so videos keep playing on the TV.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.47.483",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.46.524",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.45.90",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.30.216",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.26.46",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Restore original titles",
       "description": "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
       "default": true,
@@ -17216,7 +17445,7 @@
     },
     {
       "name": "Share post content",
-      "description": "Adds an option to share the image, video or text of a post instead of its link when using app shortcuts or \"Share via…\" in the share sheet.",
+      "description": "Adds an option to share the image, video or text of a post instead of its link when using app shortcuts or \"Share via...\" in the share sheet.",
       "default": true,
       "category": null,
       "compatiblePackages": [

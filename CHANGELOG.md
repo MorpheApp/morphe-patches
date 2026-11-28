@@ -1,3 +1,35 @@
+## [2.5.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v2.5.0-dev.2...v2.5.0-dev.3) (2026-11-28)
+
+### ✨ New Features
+
+* **Reddit:** Add `Create button in communities` patch ([#5457](https://github.com/MorpheApp/morphe-patches/issues/5457)) ([5bc3e66](https://github.com/MorpheApp/morphe-patches/commit/5bc3e660193285431076475192e84d3ba79fadf1))
+* **Reddit:** Add `High-contrast navigation buttons` patch ([#5460](https://github.com/MorpheApp/morphe-patches/issues/5460)) ([fd975d4](https://github.com/MorpheApp/morphe-patches/commit/fd975d47564fa3f4cffdcb6305942b6518201b10))
+* **YouTube - Custom branding:** Add the launcher icons of YouTube 21.47 ([3bcdb53](https://github.com/MorpheApp/morphe-patches/commit/3bcdb53385da01b1d4241051109d37509a8db26a))
+* **YouTube - Download post images:** Download images in the quality they were uploaded in ([f481b3e](https://github.com/MorpheApp/morphe-patches/commit/f481b3e9b6a14f577a5171e672805e8ef04789f4)), closes [#5421](https://github.com/MorpheApp/morphe-patches/issues/5421)
+* **YouTube - Hide layout components:** Add "Hide 'Privacy Policy' 'Terms of Service' footer" setting ([d0fc54d](https://github.com/MorpheApp/morphe-patches/commit/d0fc54d45fb8d834dc7e68fe4b900b586d279e47))
+* **YouTube - Video delay:** Support negative video delay ([#5475](https://github.com/MorpheApp/morphe-patches/issues/5475)) ([b17c1cd](https://github.com/MorpheApp/morphe-patches/commit/b17c1cdb41609c4c2e575f226b36080549af3f2b))
+* **YouTube:** Add `Open shared links` patch ([#5482](https://github.com/MorpheApp/morphe-patches/issues/5482)) ([aee9973](https://github.com/MorpheApp/morphe-patches/commit/aee99738513df4ea7ed1e090e4756e6842933371))
+* **YouTube:** Add `Restore old Cast behavior` patch ([#5441](https://github.com/MorpheApp/morphe-patches/issues/5441)) ([cb4edf2](https://github.com/MorpheApp/morphe-patches/commit/cb4edf2f99272f9678fd8aec32431cd63ca0b2f6))
+
+### 🐛 Bug Fixes
+
+* **Custom branding:** Show icon gradients on the HyperOS 4 launcher ([ba41ada](https://github.com/MorpheApp/morphe-patches/commit/ba41adab4e0af4660dc937ecf97f21a5c1b18c6f))
+* **Reddit - Glass navigation bar:** Gap between the top bar buttons and the tab capsule ([#5459](https://github.com/MorpheApp/morphe-patches/issues/5459)) ([0b6f5f4](https://github.com/MorpheApp/morphe-patches/commit/0b6f5f4c2a45e480d81b323d839affe86169b180))
+* **Reddit - Glass navigation bar:** Keep the selected pill and buttons centred in the glass at any height ([#5461](https://github.com/MorpheApp/morphe-patches/issues/5461)) ([9a5b7aa](https://github.com/MorpheApp/morphe-patches/commit/9a5b7aa21c3200e52c27fd5b14102ccbc317e441))
+* **YouTube - Ambient mode:** Enhanced Ambient mode shows no light around the player with a theme color ([#5496](https://github.com/MorpheApp/morphe-patches/issues/5496)) ([f2c047e](https://github.com/MorpheApp/morphe-patches/commit/f2c047ef7c327bf4f82ad34b276a768d9ceea68b))
+* **YouTube - Feed card layout:** "Default" gives the cards of the server the style of the converted cards, without their rounded bottom corners, instead of only removing the blurred avatar background ([2048bd7](https://github.com/MorpheApp/morphe-patches/commit/2048bd754441ba681a95a8031ff9f2f98a94e401))
+* **YouTube - Feed card layout:** Give every card the style of the converted cards, so the cards show no light arcs, and add the card layouts with the avatar glow ([51d3bdd](https://github.com/MorpheApp/morphe-patches/commit/51d3bddc2071f2e00cf2218f9685fc2b185a5851))
+* **YouTube - Feed card layout:** Remove the blurred avatar background at the bottom of the cards, which shows light arcs at its corners, and the tinted background of the converted cards ([aa6b6cb](https://github.com/MorpheApp/morphe-patches/commit/aa6b6cbd131bede923515d8f5ec147b5e5cabae6))
+* **YouTube - Playback speed:** App crashes when tapping the playback speed overlay button with the old speed menu ([3387325](https://github.com/MorpheApp/morphe-patches/commit/3387325cbbb96dc40ed1925d8be1967b904f03da))
+* **YouTube - Restore old video action bar:** "Classic Two-Rows" still shows one row on 20.26 while the template cache has never had the channel bar ([50519a9](https://github.com/MorpheApp/morphe-patches/commit/50519a9fe4566fa441a50a6a426c6d93ccf5e356))
+* **YouTube - Snackbar:** The text of a custom snackbar stays dark when it is not colored when created, such as "Comment added" in Shorts on 21.47 ([420a335](https://github.com/MorpheApp/morphe-patches/commit/420a3355a22a85f820812d8c9e1001ef867169ae))
+* **YouTube - Theme:** Fade at the end of the collapsed description uses the theme background color instead of being removed ([2c31fe4](https://github.com/MorpheApp/morphe-patches/commit/2c31fe4c8bbfafa7c283c1b3cdedb69e264a7594))
+* **YouTube - Theme:** The ambient mode light below the player ends at a hard black edge with a dark theme color on 21.47 ([c5a3fac](https://github.com/MorpheApp/morphe-patches/commit/c5a3fac6235ba83a8c3c79c016c083e78c341432))
+* **YouTube - Theme:** The status bar and the navigation bar of the Shorts player stay black or light instead of the dark theme color, such as with the glass navigation bar ([49ee46c](https://github.com/MorpheApp/morphe-patches/commit/49ee46c052702cba9cddedb73c92c94ff2a22868))
+* **YouTube / YouTube Music - Glass menus:** Rows of choice dialogs that are narrower than half of the dialog keep an opaque background, such as "Double-tap to seek" ([70976c9](https://github.com/MorpheApp/morphe-patches/commit/70976c9f62aadd0f5bcab3cdb37239eb97e9dbed))
+* **YouTube Music - Downloads:** Downloaded songs show as videos with a black player background ([59b8688](https://github.com/MorpheApp/morphe-patches/commit/59b868887c5730dd5d7d53ed4ebfceee0b15b79c))
+* **YouTube Music - Third-party lyrics:** Prevent lyrics panel from scrolling past the footer ([#5476](https://github.com/MorpheApp/morphe-patches/issues/5476)) ([c3d3fd7](https://github.com/MorpheApp/morphe-patches/commit/c3d3fd72c0b7da8060dcdab598d907c4bee64871))
+
 ## [2.5.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v2.5.0-dev.1...v2.5.0-dev.2) (2026-11-27)
 
 ### ✨ New Features
