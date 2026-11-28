@@ -194,6 +194,7 @@ public final class AmbientLightController {
     private static final AtomicInteger captureFailures = new AtomicInteger();
     private static long lastPageScan;
     private static volatile int pageColor;
+    private static volatile int appPageColor;
     /** Set once the first light frame is showing, so the page is never see-through over nothing. */
     private static volatile boolean pageCleared;
     private static int retries;
@@ -421,7 +422,7 @@ public final class AmbientLightController {
         if (!seeThrough || FeedCardLayoutPatch.cardBackgrounds.containsKey(drawable)) return color;
 
         try {
-            final int replacement = AmbientLightMath.seeThroughColor(color, pageColor);
+            final int replacement = AmbientLightMath.seeThroughColor(color, pageColor, appPageColor);
             if (replacement == color) return color;
             Rect bounds = drawable.getBounds();
             View host = hostOf(drawable);
@@ -508,12 +509,13 @@ public final class AmbientLightController {
                 buttonMaxWidth = (int) (BUTTON_MAX_WIDTH_SCREEN_RATIO * Math.min(
                         resources.getDisplayMetrics().widthPixels, resources.getDisplayMetrics().heightPixels));
                 buttonMaxHeight = (int) (BUTTON_MAX_HEIGHT_DP * resources.getDisplayMetrics().density);
+                appPageColor = Utils.isDarkModeEnabled()
+                        ? AmbientLightMath.APP_DARK_PAGE_COLOR
+                        : AmbientLightMath.APP_LIGHT_PAGE_COLOR;
                 // A theme color of the Theme patch is the background of the whole page.
                 pageColor = ThemeColorPatch.isPatchIncluded() && !ThemeColorPatch.isAppDefaultColor()
                         ? ThemeUtils.getAppBackgroundColor()
-                        : Utils.isDarkModeEnabled()
-                        ? AmbientLightMath.APP_DARK_PAGE_COLOR
-                        : AmbientLightMath.APP_LIGHT_PAGE_COLOR;
+                        : appPageColor;
             }
             seeThrough = watching;
 
@@ -706,7 +708,7 @@ public final class AmbientLightController {
         ViewGroup player = playerRef.get();
         if (page instanceof ViewGroup pageViewGroup && video != null && player != null) {
             View branch = childContaining(pageViewGroup, video);
-            SeeThroughPage.apply(page, branch == null ? player : branch, pageColor);
+            SeeThroughPage.apply(page, branch == null ? player : branch, pageColor, appPageColor);
         }
     }
 

@@ -716,9 +716,11 @@ final class AmbientLightMath {
      * The app draws much of the page with its own colors, which a theme replaces only after
      * they were given here. The page can also have the color of a theme, and then a color of
      * the same hue, lighter or darker, is the page or a surface on it.
+     *
+     * @param appPageColor The page color of the app itself in the theme it shows, which a
+     *                     theme color can replace with a color of any brightness.
      */
-    static int seeThroughColor(int color, int pageColor) {
-        final int appPageColor = luma(pageColor) < 128 ? APP_DARK_PAGE_COLOR : APP_LIGHT_PAGE_COLOR;
+    static int seeThroughColor(int color, int pageColor, int appPageColor) {
         final int onAppPage = seeThroughColorOn(color, appPageColor);
         return onAppPage != color || pageColor == appPageColor ? onAppPage : seeThroughColorOn(color, pageColor);
     }
