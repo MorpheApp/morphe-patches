@@ -145,7 +145,7 @@ public final class SeeThroughStatusBarPatch {
     }
 
     private static boolean isEnabled() {
-        return SEE_THROUGH_ENABLED && !isSideLayout;
+        return SEE_THROUGH_ENABLED && !isSideLayout && !ImmersiveModePatch.isEnabled();
     }
 
     /**

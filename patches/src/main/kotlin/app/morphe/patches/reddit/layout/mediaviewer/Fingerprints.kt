@@ -20,6 +20,16 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
+ * Media viewer (full bleed player) activity.
+ */
+internal object MediaViewerOnResumeFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/fullbleedplayer/common/FbpActivity;",
+    name = "onResume",
+    returnType = "V",
+    parameters = emptyList()
+)
+
+/**
  * Composable of the media viewer (full bleed player) caption, user info and action bar.
  */
 internal object MediaViewerChromeFingerprint : Fingerprint(
@@ -44,6 +54,31 @@ internal object FullBleedChromeStateToStringFingerprint : Fingerprint(
             definingClass = "this",
             type = "Z",
             location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * Screen level composable of the media viewer, which reads the chrome state of the current post.
+ */
+internal object ActiveMediaViewerChromeFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        methodCall(
+            returnType = { FullBleedChromeStateToStringFingerprint.originalClassDef.type },
+            opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(
+            { FullBleedChromeStateToStringFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IGET_BOOLEAN,
+            location = MatchAfterWithin(42)
+        ),
+        methodCall(
+            definingClass = "Lcom/reddit/fullbleedplayer/FbpVideoControls;",
+            name = "isSeekbarDocked",
+            location = MatchAfterWithin(49)
         )
     )
 )
@@ -310,4 +345,9 @@ internal object RecommendedVideosRequestFingerprint : Fingerprint(
 internal object IsHideOverlayIncludedFingerprint : Fingerprint(
     definingClass = "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;",
     name = "isHideOverlayIncluded"
+)
+
+internal object IsHideStatusBarIncludedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;",
+    name = "isHideStatusBarIncluded"
 )

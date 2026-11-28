@@ -208,6 +208,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_show_flairs_in_home_feed_title">Show flairs in home feed</string>
     <string name="morphe_show_flairs_in_home_feed_summary">Shows post flair badges in the home feed</string>
     <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Some feed items may not show a flair</string>
+    <string name="morphe_immersive_mode_title">Immersive mode</string>
+    <string name="morphe_immersive_mode_summary">Hides the system status bar throughout Reddit. Swipe down from the top to reveal it temporarily</string>
     <string name="morphe_see_through_status_bar_title">See-through status bar</string>
     <string name="morphe_see_through_status_bar_summary">Home feed scrolls up under the status bar and fades into it. Phone layout only</string>
     <string name="morphe_view_count_title">View count on posts</string>
@@ -311,6 +313,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_download_location_account_anonymous">Anonymous (logged out or incognito)</string>
     <string name="morphe_hide_media_viewer_overlay_title">Hide media viewer overlay</string>
     <string name="morphe_hide_media_viewer_overlay_summary">Hides the title, buttons and video controls when opening an image or video. Tap the media to show them</string>
+    <string name="morphe_hide_media_viewer_status_bar_title">Hide media viewer status bar</string>
+    <string name="morphe_hide_media_viewer_status_bar_summary">Fades the system status bar in and out with the title, buttons and video controls</string>
     <string name="morphe_hide_join_conversation_button_title">Hide See the conversation button</string>
     <string name="morphe_hide_join_conversation_button_summary">Hides the \"See the conversation\" button at the bottom of the media viewer</string>
     <string name="morphe_media_viewer_black_background_title">Media viewer black background</string>

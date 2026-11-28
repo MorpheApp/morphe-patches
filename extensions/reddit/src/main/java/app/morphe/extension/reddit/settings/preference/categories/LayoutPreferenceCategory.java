@@ -48,6 +48,7 @@ import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.HideVideosForYouShelfPatch;
 import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.HomeFeedTabsPatch;
+import app.morphe.extension.reddit.patches.ImmersiveModePatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.KeepMediaViewerInSubredditPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
@@ -112,6 +113,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
                 SearchHiddenProfilesPatch.isPatchIncluded() ||
                 HighQualityAvatarsPatch.isPatchIncluded() ||
+                ImmersiveModePatch.isPatchIncluded() ||
                 SeeThroughStatusBarPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
@@ -462,6 +464,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                         Settings.HIDE_MEDIA_VIEWER_OVERLAY
                 ));
             }
+
+            if (HideMediaViewerComponentsPatch.isHideStatusBarIncluded()) {
+                group.addPreference(new BooleanSettingPreference(
+                        context,
+                        Settings.HIDE_MEDIA_VIEWER_STATUS_BAR
+                ));
+            }
         }
 
         if (MediaViewerBlackBackgroundPatch.isPatchIncluded()) {
@@ -504,6 +513,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
         if (ForceSystemFontPatch.isPatchIncluded()) {
             group.addPreference(new ForceSystemFontPreference(context));
+        }
+
+        if (ImmersiveModePatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.IMMERSIVE_MODE
+            ));
         }
 
         if (SeeThroughStatusBarPatch.isPatchIncluded()) {
