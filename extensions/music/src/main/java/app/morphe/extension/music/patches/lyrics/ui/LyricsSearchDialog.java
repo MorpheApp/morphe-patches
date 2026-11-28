@@ -206,7 +206,7 @@ final class LyricsSearchDialog {
         }
 
         // Lets the user detect sections when automatic detection missed them or was off when the track loaded.
-        if (Settings.LYRICS_USE_AI_SECTION.get()
+        if (SectionDetector.isEnabled()
                 && SectionDetector.needsDetection(callbacks.getCurrentLyrics())) {
             TextView sectionButton = new TextView(context);
             callbacks.styleButton(sectionButton);

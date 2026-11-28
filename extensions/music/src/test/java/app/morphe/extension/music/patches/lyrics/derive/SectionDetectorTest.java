@@ -18,11 +18,41 @@ import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
+import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.settings.Settings;
 
 @SuppressWarnings("DataFlowIssue")
 public class SectionDetectorTest {
+
+    // ── isEnabled ──
+
+    @Test
+    public void isEnabledFalseWhenShowingSectionsIsOff() {
+        LyricsTestEnv.bootstrap();
+        try {
+            Settings.LYRICS_USE_AI_SECTION.save(true);
+            Settings.LYRICS_SHOW_SECTION.save(false);
+            assertFalse(SectionDetector.isEnabled());
+        } finally {
+            Settings.LYRICS_USE_AI_SECTION.resetToDefault();
+            Settings.LYRICS_SHOW_SECTION.resetToDefault();
+        }
+    }
+
+    @Test
+    public void isEnabledTrueWhenShowingSectionsIsOn() {
+        LyricsTestEnv.bootstrap();
+        try {
+            Settings.LYRICS_USE_AI_SECTION.save(true);
+            Settings.LYRICS_SHOW_SECTION.save(true);
+            assertTrue(SectionDetector.isEnabled());
+        } finally {
+            Settings.LYRICS_USE_AI_SECTION.resetToDefault();
+            Settings.LYRICS_SHOW_SECTION.resetToDefault();
+        }
+    }
 
     // ── needsDetection ──
 

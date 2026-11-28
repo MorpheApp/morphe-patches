@@ -2347,7 +2347,7 @@ public final class LyricsManager {
     private Lyrics restoreCachedSections(@Nullable Lyrics lyrics) {
         final TrackInfo track = currentTrack;
         if (lyrics == null || lyrics.isEmpty() || track == null
-                || !Settings.LYRICS_USE_AI_SECTION.get()
+                || !SectionDetector.isEnabled()
                 || !SectionDetector.needsDetection(lyrics)) {
             return lyrics;
         }
@@ -2456,7 +2456,7 @@ public final class LyricsManager {
      * callback checks the lyrics and the track it was asked about are still the current ones.
      */
     private void detectSections(@Nullable Lyrics lyrics) {
-        if (!Settings.LYRICS_USE_AI_SECTION.get()) {
+        if (!SectionDetector.isEnabled()) {
             return;
         }
         if (!SectionDetector.needsDetection(lyrics)) {
@@ -2490,7 +2490,7 @@ public final class LyricsManager {
     }
 
     public void requestSectionDetection() {
-        if (!Settings.LYRICS_USE_AI_SECTION.get()) {
+        if (!SectionDetector.isEnabled()) {
             return;
         }
         final Lyrics target = currentLyrics;

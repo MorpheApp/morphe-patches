@@ -39,6 +39,14 @@ public final class SectionDetector {
     private SectionDetector() {
     }
 
+    /**
+     * Whether sections are detected with AI. The setting keeps its value when the setting it
+     * depends on, such as showing sections, is turned off, so its availability is checked too.
+     */
+    public static boolean isEnabled() {
+        return Settings.LYRICS_USE_AI_SECTION.get() && Settings.LYRICS_USE_AI_SECTION.isAvailable();
+    }
+
     public static boolean needsDetection(@Nullable Lyrics lyrics) {
         if (lyrics == null || lyrics.isEmpty() || lyrics == Lyrics.NOT_FOUND) {
             return false;
