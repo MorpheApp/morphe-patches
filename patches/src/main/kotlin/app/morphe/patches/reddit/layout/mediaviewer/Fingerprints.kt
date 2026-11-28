@@ -19,6 +19,9 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+/**
+ * Media viewer (full bleed player) activity.
+ */
 internal object MediaViewerOnResumeFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/fullbleedplayer/common/FbpActivity;",
     name = "onResume",
@@ -56,7 +59,7 @@ internal object FullBleedChromeStateToStringFingerprint : Fingerprint(
 )
 
 /**
- * The viewer's screen-level composable reads the selected post's chrome state.
+ * Screen level composable of the media viewer, which reads the chrome state of the current post.
  */
 internal object ActiveMediaViewerChromeFingerprint : Fingerprint(
     name = "invoke",
@@ -342,4 +345,9 @@ internal object RecommendedVideosRequestFingerprint : Fingerprint(
 internal object IsHideOverlayIncludedFingerprint : Fingerprint(
     definingClass = "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;",
     name = "isHideOverlayIncluded"
+)
+
+internal object IsHideStatusBarIncludedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;",
+    name = "isHideStatusBarIncluded"
 )

@@ -7,6 +7,7 @@
 
 package app.morphe.patches.reddit.layout.mediaviewer
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -19,6 +20,7 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_32_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -36,8 +38,9 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val hideMediaViewerComponentsPatch = patch(
     name = "Hide media viewer components",
-    description = "Adds options to hide the \"See the conversation\" button and the title, buttons and video controls " +
-            "of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer."
+    description = "Adds options to hide the \"See the conversation\" button, the title, buttons and video controls " +
+            "of the media viewer, and the status bar with them. Hiding the title, buttons and video controls " +
+            "requires Reddit 2026.38.0 or newer, and hiding the status bar requires Reddit 2026.40.0 or newer."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
@@ -144,6 +147,29 @@ val hideMediaViewerComponentsPatch = patch(
             }
 
             IsHideOverlayIncludedFingerprint.method.returnEarly(true)
+
+            if (!is_2026_40_0_or_greater) {
+                Logger.getLogger(this::class.java.name).warning(
+                    "Hiding the media viewer status bar requires Reddit 2026.40.0+"
+                )
+            } else {
+                MediaViewerOnResumeFingerprint.method.addInstruction(
+                    0,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onMediaViewerResumed(Landroid/app/Activity;)V"
+                )
+
+                // Show and hide the status bar with the overlay of the current post.
+                ActiveMediaViewerChromeFingerprint.let {
+                    val visibleMatch = it.instructionMatches[2]
+                    val register = visibleMatch.getInstruction<OneRegisterInstruction>().registerA
+                    it.method.addInstruction(
+                        visibleMatch.index + 1,
+                        "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->onOverlayVisibilityChanged(Z)V"
+                    )
+                }
+
+                IsHideStatusBarIncludedFingerprint.method.returnEarly(true)
+            }
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

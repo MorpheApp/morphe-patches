@@ -133,7 +133,6 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_INTERACTIVE_POSTS = new BooleanSetting("morphe_hide_interactive_posts", FALSE, true);
     public static final BooleanSetting HIDE_JOIN_CONVERSATION_BUTTON = new BooleanSetting("morphe_hide_join_conversation_button", FALSE);
     public static final BooleanSetting HIDE_MEDIA_VIEWER_OVERLAY = new BooleanSetting("morphe_hide_media_viewer_overlay", FALSE);
-    public static final BooleanSetting HIDE_MEDIA_VIEWER_STATUS_BAR = new BooleanSetting("morphe_hide_media_viewer_status_bar", FALSE);
     public static final BooleanSetting HIDE_PEOPLE_ALSO_SEARCH_FOR_SECTION = new BooleanSetting("morphe_hide_people_also_search_for_section", FALSE, true);
     public static final BooleanSetting HIDE_POPULAR_TAB = new BooleanSetting("morphe_hide_popular_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
     public static final BooleanSetting HIDE_RELATED_POSTS_SECTION = new BooleanSetting("morphe_hide_related_posts_section", FALSE, true);
@@ -142,6 +141,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIGH_QUALITY_AVATARS = new BooleanSetting("morphe_high_quality_avatars", TRUE);
     public static final BooleanSetting HOME_FEED_TABS = new BooleanSetting("morphe_home_feed_tabs", FALSE, true, parentNot(DISABLE_MODERN_HOME));
     public static final BooleanSetting IMMERSIVE_MODE = new BooleanSetting("morphe_immersive_mode", FALSE, true);
+    public static final BooleanSetting HIDE_MEDIA_VIEWER_STATUS_BAR = new BooleanSetting("morphe_hide_media_viewer_status_bar", FALSE, parentNot(IMMERSIVE_MODE));
     public static final BooleanSetting KEEP_FEED_POSITION = new BooleanSetting("morphe_keep_feed_position", TRUE);
     public static final BooleanSetting KEEP_MEDIA_VIEWER_IN_SUBREDDIT = new BooleanSetting("morphe_keep_media_viewer_in_subreddit", FALSE);
     public static final BooleanSetting MEDIA_VIEWER_BLACK_BACKGROUND = new BooleanSetting("morphe_media_viewer_black_background", FALSE);
@@ -158,7 +158,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
     public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
     public static final BooleanSetting SEARCH_HIDDEN_PROFILES = new BooleanSetting("morphe_search_hidden_profiles", FALSE);
-    public static final BooleanSetting SEE_THROUGH_STATUS_BAR = new BooleanSetting("morphe_see_through_status_bar", FALSE, true);
+    public static final BooleanSetting SEE_THROUGH_STATUS_BAR = new BooleanSetting("morphe_see_through_status_bar", FALSE, true, parentNot(IMMERSIVE_MODE));
     public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true, "morphe_show_flairs_in_home_feed_user_dialog_message");
     public static final BooleanSetting SWAP_POST_VOTE_COMMENT_BUTTONS = new BooleanSetting("morphe_swap_post_vote_comment_buttons", FALSE, true);
     public static final BooleanSetting SWIPE_UP_FOR_COMMENTS = new BooleanSetting("morphe_swipe_up_for_comments", FALSE, true);
