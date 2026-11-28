@@ -24,7 +24,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Binder;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.junit.Test;
 
@@ -197,6 +199,29 @@ public class PlaybackSessionStartupTest {
                 PlayerType.INLINE_MINIMAL, false, currentWindow, currentWindow));
         assertEquals(PlaybackSessionPatch.StartupPlayer.OPEN, PlaybackSessionPatch.startupPlayer(
                 PlayerType.HIDDEN, true, null, currentWindow));
+    }
+
+    @Test
+    public void detachedRestoreLabelHasLayoutParametersBeforeUpdatingText() {
+        var text = new AtomicReference<CharSequence>();
+        var label = new TextView(activity(Intent.ACTION_MAIN)) {
+            private ViewGroup.LayoutParams params;
+
+            @Override public ViewGroup.LayoutParams getLayoutParams() { return params; }
+            @Override public void setLayoutParams(ViewGroup.LayoutParams value) { params = value; }
+
+            @Override public void setText(CharSequence value, TextView.BufferType type) {
+                assertTrue(params != null);
+                text.set(value);
+            }
+        };
+
+        RestoredMiniplayerLabel.measureLabel(label, "Continue watching", View.LAYOUT_DIRECTION_LTR, 160);
+        assertEquals("Continue watching", text.get());
+        var params = label.getLayoutParams();
+        RestoredMiniplayerLabel.measureLabel(label, "Tiếp tục xem", View.LAYOUT_DIRECTION_LTR, 120);
+        assertEquals("Tiếp tục xem", text.get());
+        assertSame(params, label.getLayoutParams());
     }
 
     @Test

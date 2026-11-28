@@ -132,11 +132,7 @@ public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDraw
         LocaleList locales = player.getResources().getConfiguration().getLocales();
         int direction = player.getLayoutDirection();
         if (width != availableWidth || direction != layoutDirection || !locales.equals(displayLocales)) {
-            label.setLayoutDirection(direction);
-            label.setText(resumeLabel());
-            label.measure(View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.AT_MOST),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-            label.layout(0, 0, label.getMeasuredWidth(), label.getMeasuredHeight());
+            measureLabel(label, resumeLabel(), direction, width);
             availableWidth = width;
             layoutDirection = direction;
             displayLocales = locales;
@@ -151,6 +147,20 @@ public final class RestoredMiniplayerLabel implements ViewTreeObserver.OnPreDraw
             Logger.printDebug(() -> "Showing restored miniplayer label at " + badgeLabel.getBounds());
         }
         return true;
+    }
+
+    static void measureLabel(TextView label, CharSequence text, int direction, int width) {
+        // The drawable draws this unattached TextView. Android needs layout parameters
+        // when text changes after the first layout, even without a parent.
+        if (label.getLayoutParams() == null) {
+            label.setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
+        label.setLayoutDirection(direction);
+        label.setText(text, TextView.BufferType.NORMAL);
+        label.measure(View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.AT_MOST),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        label.layout(0, 0, label.getMeasuredWidth(), label.getMeasuredHeight());
     }
 
     static void placeLabel(Drawable badge, Rect player, int width, int height, int margin, boolean rtl) {
