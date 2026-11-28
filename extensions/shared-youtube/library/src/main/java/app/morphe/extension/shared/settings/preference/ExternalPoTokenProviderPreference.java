@@ -41,7 +41,12 @@ public class ExternalPoTokenProviderPreference extends BooleanSettingPreference 
         public void onActivityPaused(@NonNull Activity a) {}
         public void onActivityStopped(@NonNull Activity a) {}
         public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
-        public void onActivityDestroyed(@NonNull Activity a) {}
+        public void onActivityDestroyed(@NonNull Activity a) {
+            // onPrepareForRemoval() is not called when the settings Activity is destroyed.
+            if (a == getContext()) {
+                a.getApplication().unregisterActivityLifecycleCallbacks(this);
+            }
+        }
     };
 
     @Override
