@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -34,6 +35,8 @@ public final class LyricsTranslator {
     /** A provider answered with the source text, so the lyrics are already in the requested language. */
     private static final ProviderTranslation UNCHANGED =
             new ProviderTranslation(List.of(), false, false, null);
+
+    private static final Pattern LETTER = Pattern.compile("\\p{L}");
 
     private LyricsTranslator() {
     }
@@ -137,6 +140,8 @@ public final class LyricsTranslator {
 
         executor.execute(() -> {
             try {
+                // A later provider may still have a translation, so keep asking.
+                boolean unchanged = false;
                 for (String provider : providers) {
                     try {
                         ProviderTranslation result = ProcessingProviders.EMBEDDED.equals(provider)
@@ -145,9 +150,8 @@ public final class LyricsTranslator {
                                 : translateWithProvider(
                                 provider, track, source, language, lines);
                         if (result == UNCHANGED) {
-                            Utils.runOnMainThread(
-                                    () -> callback.onTranslated(null, false, false, null, true));
-                            return;
+                            unchanged = true;
+                            continue;
                         }
                         if (result != null) {
                             Utils.runOnMainThread(() -> callback.onTranslated(
@@ -159,8 +163,9 @@ public final class LyricsTranslator {
                         Logger.printInfo(() -> "translation provider failed: " + provider, ex);
                     }
                 }
-                Utils.runOnMainThread(
-                        () -> callback.onTranslated(null, false, false, null, false));
+                final boolean alreadyInLanguage = unchanged;
+                Utils.runOnMainThread(() -> callback.onTranslated(
+                        null, false, false, null, alreadyInLanguage));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "translate failure", ex);
                 Utils.runOnMainThread(
@@ -207,11 +212,16 @@ public final class LyricsTranslator {
                 : ProcessingProviders.mapLines(provider, OpenAIClient.renderPrompt(
                 Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
                 language, track.title(), track.artist(), lines), lines);
+        if (ai != null && ai.skipsEveryLine()) {
+            return UNCHANGED;
+        }
         if (ai == null || ai.lines() == null || ai.lines().isEmpty()) {
             return null;
         }
         if (!hasTranslation(ai.lines(), lines)) {
-            return isSameAsSource(ai.lines(), lines) ? UNCHANGED : null;
+            // DeepL sends back text that is already in the target language. An AI model is told
+            // to answer SKIP instead, so the source text coming back from it is a failed answer.
+            return deepl && isSameAsSource(ai.lines(), lines) ? UNCHANGED : null;
         }
 
         List<String> translated = sanitizeTranslation(ai.lines());
@@ -228,21 +238,28 @@ public final class LyricsTranslator {
     }
 
     /**
-     * Whether a provider answered with every line unchanged, which means the lyrics are already
-     * written in the requested language. An empty line in place of text is an incomplete answer.
+     * Whether a provider answered every line that has letters with its source text, which means
+     * the lyrics are already written in the requested language. A line without letters, such as
+     * "♪", can come back in any form. An empty line in place of text is an incomplete answer.
      */
     private static boolean isSameAsSource(@Nullable List<String> translated,
                                           List<String> source) {
-        if (translated == null || translated.isEmpty() || translated.size() != source.size()) {
+        if (translated == null || translated.size() != source.size()) {
             return false;
         }
+        boolean anyText = false;
         for (int i = 0; i < translated.size(); i++) {
-            final String text = translated.get(i);
-            if (!(text == null ? "" : text.trim()).equals(source.get(i).trim())) {
+            String original = source.get(i).trim();
+            if (!LETTER.matcher(original).find()) {
+                continue;
+            }
+            anyText = true;
+            String text = translated.get(i);
+            if (text == null || !text.trim().equals(original)) {
                 return false;
             }
         }
-        return true;
+        return anyText;
     }
 
     /** A translation is usable if at least one line differs from the source. */

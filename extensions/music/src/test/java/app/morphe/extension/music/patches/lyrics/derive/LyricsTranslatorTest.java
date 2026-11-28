@@ -126,6 +126,17 @@ public class LyricsTranslatorTest {
     }
 
     @Test
+    public void isSameAsSourceIgnoresLinesWithoutLetters() throws Exception {
+        List<String> source = List.of("Hello darkness", "♪", "...");
+        assertTrue(callIsSameAsSource(List.of("Hello darkness", "", "…"), source));
+    }
+
+    @Test
+    public void isSameAsSourceFalseWhenNoLineHasLetters() throws Exception {
+        assertFalse(callIsSameAsSource(List.of("♪", ""), List.of("♪", "")));
+    }
+
+    @Test
     public void embeddedTranslationNullWhenNoTranslations() throws Exception {
         List<LyricsLine> lines = List.of(new LyricsLine(0, "hello"));
         Lyrics lyrics = new Lyrics(lines, "provider", true, null, null, null, null, null, null, null);

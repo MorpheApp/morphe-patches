@@ -680,6 +680,29 @@ public final class OpenAIClient {
         return t.isEmpty() || SKIP_TOKEN_PATTERN.matcher(t).matches();
     }
 
+    /**
+     * Whether a response is one SKIP for each source line and nothing else. The prompt asks for
+     * SKIP on a line that needs no work, so this answer means the task has nothing to do.
+     */
+    static boolean skipsEveryLine(@Nullable String response, List<String> sourceLines) {
+        if (response == null || sourceLines.isEmpty()) {
+            return false;
+        }
+        int skips = 0;
+        for (String raw : response.split("\n")) {
+            String line = raw.trim();
+            if (line.isEmpty()) {
+                continue;
+            }
+            line = line.replaceFirst("^\\d+[.)\\]:\\-]\\s*", "").trim();
+            if (line.isEmpty() || !isSkipToken(line)) {
+                return false;
+            }
+            skips++;
+        }
+        return skips == sourceLines.size();
+    }
+
     @Nullable
     private static List<String> parseNumberedLines(String text, int expectedCount) {
         if (text == null || expectedCount <= 0) return null;
