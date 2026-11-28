@@ -1420,7 +1420,7 @@
         <item>2000</item>
         <item>0</item>
     </string-array>
-    <!-- interaction.cast.castPatch -->
+    <!-- interaction.cast.castingPatch -->
     <string-array name="morphe_cast_ad_free_codecs_entries">
         <item>@string/morphe_cast_ad_free_codecs_entry_h264</item>
         <item>@string/morphe_cast_ad_free_codecs_entry_vp9</item>
@@ -1432,11 +1432,11 @@
         <item>AV1</item>
     </string-array>
     <string-array name="morphe_cast_ad_free_quality_entries">
-        <item>@string/morphe_cast_ad_free_quality_entry_2160</item>
-        <item>@string/morphe_cast_ad_free_quality_entry_1440</item>
-        <item>@string/morphe_cast_ad_free_quality_entry_1080</item>
-        <item>@string/morphe_cast_ad_free_quality_entry_720</item>
-        <item>@string/morphe_cast_ad_free_quality_entry_480</item>
+        <item>2160p (4K)</item>
+        <item>1440p</item>
+        <item>1080p</item>
+        <item>720p</item>
+        <item>480p</item>
     </string-array>
     <string-array name="morphe_cast_ad_free_quality_entry_values">
         <item>P2160</item>

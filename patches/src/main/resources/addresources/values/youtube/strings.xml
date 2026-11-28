@@ -624,7 +624,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_playlist_search_no_results">Nothing found in this playlist</string>
     <string name="morphe_playlist_search_failed">Could not search this playlist</string>
 
-    <!-- interaction.cast.castPatch -->
+    <!-- interaction.cast.castingPatch -->
     <string name="morphe_cast_screen_title">Casting</string>
     <string name="morphe_cast_screen_summary">Keep the Cast session connected and cast without ads</string>
     <string name="morphe_restore_old_cast_behavior_title">Restore old Cast behavior</string>
@@ -638,11 +638,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_cast_ad_free_codecs_entry_av1">H.264, VP9 and AV1</string>
     <string name="morphe_cast_ad_free_quality_title">Video quality</string>
     <string name="morphe_cast_ad_free_quality_summary">Highest quality sent to the Cast device. It plays lower qualities when the network is slow</string>
-    <string name="morphe_cast_ad_free_quality_entry_2160">2160p (4K)</string>
-    <string name="morphe_cast_ad_free_quality_entry_1440">1440p</string>
-    <string name="morphe_cast_ad_free_quality_entry_1080">1080p</string>
-    <string name="morphe_cast_ad_free_quality_entry_720">720p</string>
-    <string name="morphe_cast_ad_free_quality_entry_480">480p</string>
     <string name="morphe_cast_ad_free_preparing">Preparing video for %s</string>
     <string name="morphe_cast_ad_free_casting">Casting to %s</string>
     <string name="morphe_cast_ad_free_play">Play</string>

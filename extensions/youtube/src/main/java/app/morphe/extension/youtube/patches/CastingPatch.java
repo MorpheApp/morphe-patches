@@ -12,7 +12,7 @@ import app.morphe.extension.youtube.cast.CastMenuLounge;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class CastPatch {
+public final class CastingPatch {
 
     private static final boolean RESTORE_OLD_CAST_BEHAVIOR = Settings.RESTORE_OLD_CAST_BEHAVIOR.get();
 

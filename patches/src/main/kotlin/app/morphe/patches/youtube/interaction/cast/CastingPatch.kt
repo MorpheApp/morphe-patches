@@ -42,7 +42,7 @@ private const val EXPLAINED_LIST_PREFERENCE =
 private const val EXTENSION_SERVICE = "app.morphe.extension.youtube.cast.CastAdFreeService"
 private const val LOCAL_NETWORK_PERMISSION = "android.permission.ACCESS_LOCAL_NETWORK"
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CastPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CastingPatch;"
 private const val EXTENSION_LOUNGE_CLASS = "Lapp/morphe/extension/youtube/cast/CastMenuLounge;"
 private const val EXTENSION_SCREEN_MANAGER_INTERFACE = "Lapp/morphe/extension/youtube/cast/CastMenuLounge\$ScreenManagerInterface;"
 private const val EXTENSION_SCREEN_INTERFACE = "Lapp/morphe/extension/youtube/cast/CastMenuLounge\$ScreenInterface;"
@@ -75,7 +75,7 @@ private fun loadParamsMap(fields: List<FieldReference>, register: String, label:
     """
 
 @Suppress("unused")
-val castPatch = patch(
+val castingPatch = patch(
     name = "Casting",
     description = "Adds options to keep the Cast session connected when selecting a different video " +
             "or closing the player, and to cast without ads. Casting without ads requires YouTube 21.23 or newer."
