@@ -59,7 +59,9 @@ public class OpenSharedLinksActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         try {
-            Uri uri = findYouTubeUri(getIntent().getStringExtra(Intent.EXTRA_TEXT));
+            // Shared text can be styled text instead of a String.
+            CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_TEXT);
+            Uri uri = findYouTubeUri(text == null ? null : text.toString());
             if (uri == null) {
                 Logger.printDebug(() -> "No YouTube link in shared text");
                 Utils.showToastShort(str("morphe_open_shared_links_no_link"));

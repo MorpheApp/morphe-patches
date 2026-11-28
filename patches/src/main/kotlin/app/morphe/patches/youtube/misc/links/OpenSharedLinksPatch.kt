@@ -9,8 +9,8 @@ package app.morphe.patches.youtube.misc.links
 
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
+import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 private const val SHARE_ACTIVITY_CLASS_NAME =
@@ -26,7 +26,7 @@ val openSharedLinksPatch = patch(
     dependsOn(
         sharedExtensionPatch,
         // Adds the strings of the extension.
-        settingsPatch,
+        addResourcesPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
