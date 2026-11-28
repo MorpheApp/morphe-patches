@@ -26,32 +26,30 @@ import app.morphe.extension.music.settings.Settings;
 @SuppressWarnings("DataFlowIssue")
 public class SectionDetectorTest {
 
-    // ── isEnabled ──
+    // -- isEnabled --
 
     @Test
-    public void isEnabledFalseWhenShowingSectionsIsOff() {
-        assertFalse(isEnabledWith(true, false));
-    }
-
-    @Test
-    public void isEnabledTrueWhenShowingSectionsIsOn() {
-        assertTrue(isEnabledWith(true, true));
-    }
-
-    private static boolean isEnabledWith(boolean useAi, boolean showSection) {
+    public void isEnabledOnlyWhileShowingSections() {
         LyricsTestEnv.bootstrap();
-        final boolean lyricsEnabled = Settings.LYRICS_ENABLED.get();
-        final boolean previousUseAi = Settings.LYRICS_USE_AI_SECTION.get();
-        final boolean previousShowSection = Settings.LYRICS_SHOW_SECTION.get();
+        final boolean prevEnabled = Settings.LYRICS_ENABLED.get();
+        final boolean prevUseAi = Settings.LYRICS_USE_AI_SECTION.get();
+        final boolean prevShowSection = Settings.LYRICS_SHOW_SECTION.get();
         try {
             Settings.LYRICS_ENABLED.save(true);
-            Settings.LYRICS_USE_AI_SECTION.save(useAi);
-            Settings.LYRICS_SHOW_SECTION.save(showSection);
-            return SectionDetector.isEnabled();
+            Settings.LYRICS_USE_AI_SECTION.save(true);
+            Settings.LYRICS_SHOW_SECTION.save(true);
+            assertTrue(SectionDetector.isEnabled());
+
+            Settings.LYRICS_SHOW_SECTION.save(false);
+            assertFalse(SectionDetector.isEnabled());
+
+            Settings.LYRICS_SHOW_SECTION.save(true);
+            Settings.LYRICS_ENABLED.save(false);
+            assertFalse(SectionDetector.isEnabled());
         } finally {
-            Settings.LYRICS_ENABLED.save(lyricsEnabled);
-            Settings.LYRICS_USE_AI_SECTION.save(previousUseAi);
-            Settings.LYRICS_SHOW_SECTION.save(previousShowSection);
+            Settings.LYRICS_ENABLED.save(prevEnabled);
+            Settings.LYRICS_USE_AI_SECTION.save(prevUseAi);
+            Settings.LYRICS_SHOW_SECTION.save(prevShowSection);
         }
     }
 
