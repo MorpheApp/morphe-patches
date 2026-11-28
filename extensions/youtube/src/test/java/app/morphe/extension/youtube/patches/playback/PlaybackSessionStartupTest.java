@@ -124,6 +124,34 @@ public class PlaybackSessionStartupTest {
     }
 
     @Test
+    public void restoresUserQueueOrderEvenWithAnOldMixId() throws Exception {
+        String current = "abcdefghijk";
+        String next = "lmnopqrstuv";
+        String earlier = "wxyz1234567";
+        var queue = new PlaybackSessionSnapshot.Queue(List.of(earlier, current, next, current), 1, 2);
+        var saved = new PlaybackSessionSnapshot("account", current, 12_345,
+                PlaybackSessionSnapshot.Kind.VIDEO, "RD" + earlier, false, queue);
+        var request = new PlaybackSessionPatch.RestoreRequest(PlaybackSessionSnapshot.fromJson(saved.toJson()));
+        var command = new AtomicReference<byte[]>();
+        PlaybackSessionPatch.dispatchSavedWatch((bytes, context) -> command.set(bytes), request);
+
+        var watch = NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint();
+        assertEquals(current, watch.getVideoId());
+        assertFalse(watch.hasPlaylistId());
+        assertEquals(Integer.valueOf(2), request.snapshot().queueForRestore().nativeRepeatMode());
+
+        var descriptor = new TestDescriptor(current);
+        try {
+            assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
+            assertEquals(List.of(current, next, current), descriptor.queue);
+            assertEquals(12_345, descriptor.position);
+            assertTrue(descriptor.paused);
+        } finally {
+            PlaybackSessionPatch.onRegularWatchCommand(new TestDescriptor(next));
+        }
+    }
+
+    @Test
     public void opensLivePausedWithoutApplyingTheGenericSavedPosition() throws Exception {
         String current = "abcdefghijk";
         var saved = new PlaybackSessionSnapshot("account", current, 12_345,

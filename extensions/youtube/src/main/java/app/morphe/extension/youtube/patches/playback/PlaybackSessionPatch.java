@@ -378,7 +378,8 @@ public final class PlaybackSessionPatch {
     @Nullable
     private static CapturedQueue captureQueue(String videoId, String playlistId) {
         var nativeQueue = NativePlaylistQueuePatch.captureSessionQueue(videoId);
-        if (nativeQueue != null) return new CapturedQueue(playlistId, nativeQueue);
+        // The current video may still report the source playlist after the user made a local queue.
+        if (nativeQueue != null) return new CapturedQueue("", nativeQueue);
         PlaylistReader reader = playlist.get();
         if (reader == null || !videoId.equals(reader.patch_sessionPlaylistVideoId())
                 || !(reader.patch_sessionPlaylistPanel() instanceof MessageLite message)) return null;

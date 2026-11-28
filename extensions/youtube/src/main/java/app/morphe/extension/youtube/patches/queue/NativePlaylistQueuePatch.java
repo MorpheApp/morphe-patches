@@ -2893,7 +2893,8 @@ public final class NativePlaylistQueuePatch {
     }
 
     public static boolean prepareSessionQueue(PlaybackSessionSnapshot.Queue saved, long positionMilliseconds) {
-        if (saved.nativeRepeatMode() == null || !AddToQueuePatch.isNativeQueueEnabled() || !canStartQueue()) {
+        if (saved.nativeRepeatMode() == null || !isPatchIncluded()
+                || !AddToQueuePatch.isNativeQueueEnabled() || !canStartQueue()) {
             return false;
         }
         var candidate = PlaylistQueue.fromSavedVideoIds(saved.videoIds(), saved.selectedIndex(), saved.nativeRepeatMode());
