@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.cast
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.literal
+import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
  * When a different video is selected while casting, the flag disconnects the Cast session
@@ -28,5 +29,19 @@ internal object CastDisconnectOnVideoSelectFeatureFlagFingerprint : Fingerprint(
 internal object CastDisconnectOnPlayerCloseFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45798912L)
+    )
+)
+
+/**
+ * Picks where the player goes when swiped down.
+ * While casting, the player is dismissed into the You tab instead of minimized.
+ */
+internal object CastSwipeDownTargetFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "I",
+    parameters = listOf("I"),
+    filters = listOf(
+        literal(45783248L),
+        literal(4096L)
     )
 )
