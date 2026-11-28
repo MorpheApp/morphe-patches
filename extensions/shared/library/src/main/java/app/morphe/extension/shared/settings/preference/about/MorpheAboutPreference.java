@@ -168,6 +168,7 @@ public class MorpheAboutPreference extends Preference {
                         .append(getString("morphe_settings_about_update_hint"))
                         .append("</div></div><a href=\"").append(MANAGER_LINK_PLACEHOLDER_URL)
                         .append("\" class=\"update-button\">")
+                        .append(AboutDialogStyle.downloadIcon())
                         .append(getString("morphe_settings_update"))
                         .append("</a></div>");
             }

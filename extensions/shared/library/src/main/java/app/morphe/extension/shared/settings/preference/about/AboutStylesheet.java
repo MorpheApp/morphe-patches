@@ -370,18 +370,29 @@ final class AboutStylesheet {
                 opacity: 0.7;
                 margin-top: 2px;
             }
+            /* A tonal pill, as Morphe draws the action a card leads with. */
             .update-button {
                 flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                box-sizing: border-box;
+                min-width: 80px;
                 height: 40px;
-                line-height: 40px;
-                padding: 0 18px;
+                padding: 0 16px;
                 border-radius: 999px;
-                background: {accent};
-                color: {on-accent};
+                background: {accent}40;
+                color: {fg};
                 font-size: 14px;
-                font-weight: 600;
+                font-weight: 500;
                 text-decoration: none;
                 white-space: nowrap;
+            }
+            .update-button svg {
+                width: 20px;
+                height: 20px;
+                fill: currentColor;
             }
             .badge {
                 flex-shrink: 0;
