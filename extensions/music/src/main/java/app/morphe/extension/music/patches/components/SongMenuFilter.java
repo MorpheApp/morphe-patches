@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.DownloadsPatch;
+import app.morphe.extension.music.patches.downloads.InAppDownloadState;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -38,7 +39,7 @@ public final class SongMenuFilter extends Filter {
     @Nullable
     private static volatile String menuVideoId;
 
-    private final ByteArrayFilterGroup likeButton = new ByteArrayFilterGroup(
+    private static final ByteArrayFilterGroup LIKE_BUTTON = new ByteArrayFilterGroup(
             null,
             "like_toggle_button."
     );
@@ -62,6 +63,16 @@ public final class SongMenuFilter extends Filter {
         return menuVideoId;
     }
 
+    /**
+     * Reads if the song of a menu is downloaded, from the command that opens the menu.
+     */
+    public static void readMenuDownloadState(byte[] menuCommand) {
+        String videoId = findLikeButtonVideoId(menuCommand);
+        if (videoId != null) {
+            InAppDownloadState.onMenuHeader(videoId);
+        }
+    }
+
     @Override
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
@@ -78,6 +89,7 @@ public final class SongMenuFilter extends Filter {
                     && DownloadsPatch.isFlyoutMenuOverridden()
                     && Utils.indexOf(path, ".e", identifier.length()) < 0) {
                 String videoId = findLikeButtonVideoId(buffer);
+                InAppDownloadState.onMenuHeader(videoId);
                 if (!Objects.equals(videoId, menuVideoId)) {
                     Logger.printDebug(() -> "Menu opened for song: " + videoId);
                     menuVideoId = videoId;
@@ -94,8 +106,8 @@ public final class SongMenuFilter extends Filter {
      * @return The video ID of the like button, or null if the header has no like button.
      */
     @Nullable
-    private String findLikeButtonVideoId(byte[] buffer) {
-        FilterGroupResult result = likeButton.check(buffer);
+    private static String findLikeButtonVideoId(byte[] buffer) {
+        FilterGroupResult result = LIKE_BUTTON.check(buffer);
         if (!result.isFiltered()) return null;
 
         // The video ID is the first string field after the button name

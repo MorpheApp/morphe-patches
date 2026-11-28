@@ -56,10 +56,13 @@ public final class ExportMenuItem {
             }
 
             MenuRenderer renderer = MenuRenderer.parseFrom(message.toByteArray());
+            String playlistId = getOfflinePlaylistId(renderer);
+            String videoId = playlistId == null ? getVideoId(renderer) : null;
+            InAppDownloadState.onMenuHeader(videoId);
+
             MenuNavigationItemRenderer.Builder exportItem = createItem(str("morphe_export_download_flyout_title"));
             final int exportCount;
 
-            String playlistId = getOfflinePlaylistId(renderer);
             if (playlistId != null) {
                 exportCount = OfflineVideoExporter.getExportablePlaylistVideoIds(playlistId).size();
                 if (exportCount == 0) {
@@ -67,7 +70,6 @@ public final class ExportMenuItem {
                 }
                 exportItem.setMorpheExportPlaylistId(playlistId);
             } else {
-                String videoId = getVideoId(renderer);
                 if (videoId == null || !OfflineVideoExporter.isExportable(videoId)) {
                     return NO_ITEMS;
                 }
@@ -115,7 +117,7 @@ public final class ExportMenuItem {
     @Nullable
     private static String getOfflinePlaylistId(MenuRenderer menu) {
         for (MenuItem item : menu.getItemsList()) {
-            MenuCommand command = item.getMenuNavigationItemRenderer().getNavigationEndpoint();
+            MenuCommand command = menuCommand(item);
             if (command.hasOfflinePlaylistEndpoint()) {
                 String playlistId = command.getOfflinePlaylistEndpoint().getPlaylistId();
                 return playlistId.isEmpty() ? null : playlistId;
@@ -135,7 +137,7 @@ public final class ExportMenuItem {
     private static String getVideoId(MenuRenderer menu) {
         String queueVideoId = null;
         for (MenuItem item : menu.getItemsList()) {
-            MenuCommand command = item.getMenuNavigationItemRenderer().getNavigationEndpoint();
+            MenuCommand command = menuCommand(item);
             if (command.hasOfflineVideoEndpoint()) {
                 String videoId = command.getOfflineVideoEndpoint().getVideoId();
                 return videoId.isEmpty() ? null : videoId;
@@ -148,6 +150,12 @@ public final class ExportMenuItem {
             }
         }
         return queueVideoId;
+    }
+
+    private static MenuCommand menuCommand(MenuItem item) {
+        return item.hasMenuNavigationItemRenderer()
+                ? item.getMenuNavigationItemRenderer().getNavigationEndpoint()
+                : item.getMenuServiceItemRenderer().getServiceEndpoint();
     }
 
     /**

@@ -38,6 +38,7 @@ import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -72,13 +73,13 @@ private const val PLAYLIST_PAGE_FILTER =
     "Lapp/morphe/extension/music/patches/components/PlaylistPageFilter;"
 private const val EXPORT_MENU_ITEM =
     "Lapp/morphe/extension/music/patches/downloads/ExportMenuItem;"
-private const val GET_GENERATED_REGISTRY =
+internal const val GET_GENERATED_REGISTRY =
     "Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;"
 
 /**
  * @return The default instance field of a proto message, which the message is parsed with.
  */
-private fun protoDefaultInstance(messageType: String) =
+internal fun protoDefaultInstance(messageType: String) =
     protoDefaultInstanceFingerprint(messageType).instructionMatches.first().fieldReference
 
 private val downloadsResourcePatch = patch {
@@ -91,6 +92,7 @@ private val downloadsResourcePatch = patch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    SwitchPreference("morphe_music_sync_in_app_downloads", summary = true),
                     SwitchPreference("morphe_download_force_4k", summary = true),
                     exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_menu", summary = true),
@@ -117,6 +119,7 @@ val downloadsPatch = patch(
         settingsPatch,
         textComponentPatch,
         lithoFilterPatch,
+        lithoRelayoutPatch,
         spoofVideoStreamsPatch,
         musicVideoInformationPatch,
         fixProtoLibraryPatch,
@@ -125,7 +128,7 @@ val downloadsPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        // Captures the localized download button label from Litho text creation.
+        // Captures the localized download button label, and marks the Download labels of menus.
         hookSpannableStringResult(EXTENSION_CLASS)
 
         // Finds the song of a menu, for the menu Download of accounts offered Premium.
@@ -476,5 +479,8 @@ val downloadsPatch = patch(
         }
 
         // endregion
+
+        // The resolver of the offline video endpoint has all its methods added by now.
+        hookInAppDownloadState()
     }
 }

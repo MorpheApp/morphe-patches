@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.music.patches.album.AlbumRequests;
 import app.morphe.extension.music.patches.components.PlaylistPageFilter;
 import app.morphe.extension.music.patches.components.SongMenuFilter;
+import app.morphe.extension.music.patches.downloads.InAppDownloadState;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -225,6 +226,13 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
+            // Items of song menus.
+            if (InAppDownloadState.isMenuSyncEnabled()
+                    && (Utils.startsWith(path, "list_item.")
+                    || Utils.contains(path, "|list_item.")
+                    || Utils.contains(path, "tile_button_carousel."))) {
+                return InAppDownloadState.onLithoMenuTextLoaded(original, downloadButtonLabel);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
@@ -360,9 +368,16 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
 
             // The app resolves each command of a list on its own. Only the upsell of the list
             // is replaced, so the other commands still run, such as the one that closes the menu.
-            final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()
-                    && !MENU_COMMAND.check(commandBytes).isFiltered()
+            final boolean hasUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered();
+            final boolean syncMenu = InAppDownloadState.isMenuSyncEnabled();
+            final boolean opensMenu = (hasUpsell || syncMenu) && MENU_COMMAND.check(commandBytes).isFiltered();
+            final boolean premiumUpsell = hasUpsell && !opensMenu
                     && !offlineCommand.hasCommandExecutorContainer();
+
+            // Reads if the song of the menu is downloaded before the labels of the menu are created.
+            if (syncMenu && opensMenu) {
+                SongMenuFilter.readMenuDownloadState(commandBytes);
+            }
 
             // Menu Download of accounts offered Premium.
             if (insideDialog && premiumUpsell) {
@@ -446,9 +461,14 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 OfflineVideoEndpoint endpoint = offlineCommand.getOfflineVideoEndpoint();
                 String videoId = endpoint.getVideoId();
                 if (endpoint.getAction() == OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD
-                        && VideoInformation.isVideoId(videoId)
-                        && useExternalDownloader(insideDialog)) {
-                    return videoDownload(videoId, true);
+                        && VideoInformation.isVideoId(videoId)) {
+                    if (useExternalDownloader(insideDialog)) {
+                        return videoDownload(videoId, true);
+                    }
+                    // Commands the app resolves itself have no sender view.
+                    if (map != null && map.get(ELEMENTS_SENDER_VIEW) instanceof View) {
+                        InAppDownloadState.onDownloadTapped(videoId);
+                    }
                 }
                 return null;
             }
@@ -496,6 +516,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             return EMPTY_COMMAND;
         }
         if (isInAppDownloadMode()) {
+            InAppDownloadState.onDownloadTapped(videoId);
             return saveVideoCommand(videoId, List.of()).toByteArray();
         }
         return null;
