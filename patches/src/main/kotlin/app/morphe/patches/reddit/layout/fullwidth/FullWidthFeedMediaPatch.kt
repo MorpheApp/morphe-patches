@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.layout.fullwidth
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -15,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
@@ -34,6 +34,12 @@ import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/FullWidthFeedMediaPatch;"
+
+private const val EXTENSION_POST_CONTENT_PROPS_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/FullWidthFeedMediaPatch$PostContentProps;"
+
+private const val EXTENSION_VIDEO_CONTENT_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/FullWidthFeedMediaPatch$VideoContent;"
 
 @Suppress("unused")
 val fullWidthFeedMediaPatch = patch(
@@ -140,10 +146,7 @@ val fullWidthFeedMediaPatch = patch(
                                     "$EXTENSION_CLASS->applyMediaShape(Ljava/lang/Object;)Ljava/lang/Object;"
                         )
                     }
-                    Fingerprint(
-                        definingClass = EXTENSION_CLASS,
-                        name = "applyOriginalMediaShape"
-                    ).method.addInstructions(
+                    ApplyOriginalMediaShapeFingerprint.method.addInstructions(
                         0,
                         """
                             check-cast p0, ${shapeMethod.parameterTypes.first()}
@@ -188,31 +191,14 @@ val fullWidthFeedMediaPatch = patch(
         // Post details. Older versions keep the padding there.
         if (is_2026_38_0_or_greater) {
             // Videos are padded by the post content around them.
-            val propsType = PostContentPropsToStringFingerprint.classDef.type
-            val contentField = PostContentPropsToStringFingerprint.instructionMatches.last().fieldReference
-            val videoContentType = GifAndVideoContentToStringFingerprint.classDef.type
-
-            Fingerprint(
-                definingClass = EXTENSION_CLASS,
-                name = "getPostContent"
-            ).method.addInstructions(
-                0,
-                """
-                    check-cast p0, $propsType
-                    iget-object v0, p0, $contentField
-                    return-object v0
-                """
-            )
-            Fingerprint(
-                definingClass = EXTENSION_CLASS,
-                name = "isVideoContent"
-            ).method.addInstructions(
-                0,
-                """
-                    instance-of v0, p0, $videoContentType
-                    return v0
-                """
-            )
+            PostContentPropsToStringFingerprint.let {
+                it.classDef.addPatchInterface(
+                    EXTENSION_POST_CONTENT_PROPS_INTERFACE,
+                    "patch_getPostContent",
+                    it.instructionMatches.last().fieldReference
+                )
+            }
+            GifAndVideoContentToStringFingerprint.classDef.interfaces.add(EXTENSION_VIDEO_CONTENT_INTERFACE)
 
             val postContentLambdaConstructorFingerprint = if (is_2026_46_0_or_greater) {
                 PostContentLambdaConstructorFingerprint
@@ -264,10 +250,7 @@ val fullWidthFeedMediaPatch = patch(
                                 "$EXTENSION_CLASS->applyEmbedMediaShape(" +
                                 "Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
                     )
-                    Fingerprint(
-                        definingClass = EXTENSION_CLASS,
-                        name = "applyOriginalEmbedMediaShape"
-                    ).method.addInstructions(
+                    ApplyOriginalEmbedMediaShapeFingerprint.method.addInstructions(
                         0,
                         """
                             check-cast p0, ${shapeMethod.parameterTypes[0]}

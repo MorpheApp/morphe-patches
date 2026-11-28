@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">ብጁ</string>
-  <string name="morphe_custom_branding_icon_title">የመተግበሪያ ምልክት</string>
   <string name="morphe_custom_branding_icon_entry_1">ኦሪጅናል</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ጥቁር</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe ጥቁር ሰማያዊ</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">የMorphe ማሳሰቢያ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">የተመለከቱት ታሪክ እየተቀመጠ አይደለም።&lt;br&gt;&lt;br&gt;ይህ በአብዛኛው በDNS ማስታወቂያ ማገጃ ወይም በኔትወርክ ፕሮክሲ ምክንያት የሚከሰት ነው።&lt;br&gt;&lt;br&gt;ይህንን ለማስተካከል &lt;b&gt;s.youtube.com&lt;/b&gt;ን በነጭ ዝርዝር ውስጥ ያስገቡ ወይም ሁሉንም የDNS ማገጃዎች እና ፕሮክሲዎች ያጥፉ</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">እንደገና አታሳይ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">የቪዲዮ ስትሪሞችን አስመስል</string>
   <string name="morphe_spoof_video_streams_screen_summary">የማጫወት ችግሮችን ለመከላከል የደንበኛ ማስመሰል ያዋቅሩ</string>
@@ -134,7 +132,6 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
 Android System WebView ወደ አዲሱ ስሪት እስኪዘመን ድረስ የቪዲዮ ተጫዋቹ ላይ ስህተት ሊያጋጥም ይችላል።
 
 Android System WebView ለመክፈት OKን ይንኩ።"</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">እንደገና አታሳየው</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView አልተጫነም። የቪዲዮ ተጫዋቹን ለማስተካከል ይጫኑት</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">የማሳወቂያ ሚዲያ መቆጣጠሪያዎች</string>
   <string name="morphe_notification_media_screen_summary">በመቆለፊያ ስክሪንዎ እና በማሳወቂያ ፓነልዎ ላይ የሚታዩትን የመልሶ ማጫወት መቆጣጠሪያዎች ያብጁ</string>
-  <string name="morphe_hide_notification_media_prev_next_title">የቀደመውን እና የሚቀጥለውን ቁልፎች ደብቅ</string>
   <string name="morphe_hide_notification_media_prev_next_summary">በሚዲያ ማሳወቂያ፣ በመቆለፊያ ስክሪን እና በጆሮ ማዳመጫ መቆጣጠሪያዎች ውስጥ የቀደመውን እና የሚቀጥለውን ቁልፎች ይደብቃል</string>
   <string name="morphe_disable_notification_media_seekbar_title">Seekbarን አግድ</string>
   <string name="morphe_disable_notification_media_seekbar_summary">በመቆለፊያ ስክሪን እና በማሳወቂያ ፓነል ላይ seekbarን እንዳይሳብ ይከላከላል</string>
@@ -244,10 +240,8 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_video_effects_custom_restore">መደበኛውን መልስ</string>
   <string name="morphe_video_effects_custom_add_title">አዲስ ተፅዕኖ</string>
   <string name="morphe_video_effects_custom_edit_title">ተፅዕኖውን አርም</string>
-  <string name="morphe_video_effects_custom_name_hint">ስም</string>
   <string name="morphe_video_effects_custom_name_empty">ለተፅዕኖው ስም ያስገቡ</string>
   <string name="morphe_video_effects_custom_name_exists">በዚህ ስም የተሰየመ ተፅዕኖ ቀድሞውኑ አለ</string>
-  <string name="morphe_video_effects_custom_copy_code">ኮዱን ኮፒ አድርግ</string>
   <string name="morphe_video_effects_custom_error_title">ተፅዕኖው ስህተት አለበት</string>
   <string name="morphe_video_effects_custom_error_message">"ኮዱ እስኪስተካከል ድረስ ቪዲዮዎች ያለ ተፅዕኖው ይታያሉ። ይህንን ስህተት ኮዱን ለጻፈው AI ይስጡት፦
 
@@ -257,7 +251,6 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
 AIውን አጭር ኮድ እንዲሰጥዎ ይጠይቁት ወይም ኮዱን በክፍሎች ፔስት ያድርጉ።"</string>
   <string name="morphe_video_effects_custom_copy_error">የቅጂ ስህተት</string>
   <string name="morphe_video_effects_custom_save_anyway">ያም ሆኖ ያስቀምጡ</string>
-  <string name="morphe_video_effects_custom_delete">ሰርዝ</string>
   <string name="morphe_video_effects_custom_delete_title">ተፅዕኖውን ይሰርዙ?</string>
   <string name="morphe_video_effects_custom_delete_message">%s ይሰረዛል።</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ AIውን አጭር ኮድ እንዲሰጥዎ ይጠይቁት ወይም ኮዱን
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">ይህንን ባህሪ ለመጠቀም፣ \'Spoof video streams\'ን ከ \'Android Studio\' እና \'Android VR Downgraded\' በስተቀር ወደማንኛውም ደንበኛ ይቀይሩ</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">የማጋሪያ ሊንኮችን አጥራ</string>
-  <string name="morphe_sanitize_sharing_links_summary">ከሚጋሩ ሊንኮች ላይ የክትትል ጥያቄ ፓራሜትሮችን ያስወግዳል</string>
   <string name="morphe_replace_music_with_youtube_title">የማጋሪያ ሊንኮችን ወደ youtube.com ይቀይሩ</string>
   <string name="morphe_replace_music_with_youtube_summary">በተጋሩ ሊንኮች ውስጥ music.youtube.comን በ youtube.com ይተካል</string>
   <string name="morphe_replace_links_with_shortener_title">የማጋሪያ ሊንኮችን ወደ youtu.be ቀይር</string>
@@ -371,7 +362,6 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_custom_font_type_title">ፎንት</string>
   <string name="morphe_custom_font_type_entry_default">መደበኛ</string>
   <string name="morphe_custom_font_type_entry_system">የመሳሪያው ሲስተም ፎንት</string>
-  <string name="morphe_custom_font_type_entry_custom">ብጁ የፎንት ፋይል</string>
   <string name="morphe_custom_font_file_title">ብጁ የፎንት ፋይል</string>
   <string name="morphe_custom_font_file_summary">የTTF ወይም OTF ፎንት ፋይል ይምረጡ</string>
   <string name="morphe_custom_font_file_invalid">የተመረጠው ፋይል TTF ወይም OTF የፎንት ዓይነት አይደለም</string>
@@ -381,7 +371,6 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_glass_menus_screen_summary">ከበስተጀርባቸው ባለው የደበዘዘ ይዘት ላይ እንደ ጫጫታ መስታወት ያሉ ሜኑዎች</string>
   <string name="morphe_glass_menus_title">የመስታወት ሜኑዎችን አብራ</string>
   <string name="morphe_glass_menus_summary">ሜኑዎችን እና የግርጌ ሌብሶችን እንደ በረዶ መስታወት ያሳያል፣ ከጀርባቸው ያለው ይዘት ደግሞ ይደብዘዛል</string>
-  <string name="morphe_glass_menus_opacity_title">የብርጭቆ ግልጽነት</string>
   <string name="morphe_glass_menus_opacity_summary">ሜኑው ብዥ የሆነውን ይዘት ምን ያህል እንደሚሸፍነው (0 ግልጽ ነው፣ 100 ደግሞ ሙሉ በሙሉ ይሸፍናል)</string>
   <string name="morphe_glass_menus_blur_title">ብዥታ</string>
   <string name="morphe_glass_menus_blur_summary">ከሜኑው በስተጀርባ ያለው ይዘት ምን ያህል ብዥ እንደሚሆን</string>
@@ -402,7 +391,6 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_ryd_dislike_percentage_summary">አለመውደዶችን ከቁጥር ይልቅ ከላይኮች አንጻር በፐርሰንት ያሳያል</string>
   <string name="morphe_ryd_estimated_like_title">የተገመተ የላይክ ብዛትን አሳይ</string>
   <string name="morphe_ryd_estimated_like_summary">ፈጣሪው ላይኮችን ባጠፋባቸው ቪዲዮዎች ላይ የተገመተ የላይክ ብዛት ያሳያል</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">የግንኙነት ስህተት ማስጠንቀቂያዎችን አሳይ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">የ Return YouTube Dislike ሰርቨር በማይገኝበት ጊዜ ማሳወቂያ ያሳያል</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ዩቲዩብ በ 2021 የደበቃቸውን የአለመውደዶች ብዛት ይመልሳል። ብዛቶቹ ከመወገዳቸው በፊት ከተቀመጠው መረጃ የተገኙ ሲሆን ለአዳዲስ ቪዲዮዎች ደግሞ ከተጠቃሚዎች ድምፅ የተሰሉ ግምቶች ናቸው፤ ስለዚህ ግምታዊ ናቸው እና በየጥቂት ቀናት ይዘመናሉ
 
@@ -424,8 +412,89 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ምንም የክሊየንት ፍጥነት ገደቦች አልተገኙም</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">የደንበኛው የፍጥነት ገደብ %s ጊዜያት ተጋጥሟል</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ሚሊሰከንድ</string>
-  <string name="morphe_navigation_bar_screen_title">የማሰገጫ አሞሌ</string>
   <string name="morphe_navigation_bar_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
   <string name="morphe_toolbar_screen_title">የመሳሪያ አሞሌ</string>
   <string name="morphe_toolbar_screen_summary">በመሳሪያ ባሩ ላይ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 ሰከንድ</string>
+  <string name="morphe_duration_2s">2 ሰከንዶች</string>
+  <string name="morphe_duration_3s">3 ሰከንዶች</string>
+  <string name="morphe_duration_4s">4 ሰከንዶች</string>
+  <string name="morphe_duration_5s">5 ሰከንዶች</string>
+  <string name="morphe_duration_6s">6 ሰከንዶች</string>
+  <string name="morphe_duration_7s">7 ሰከንዶች</string>
+  <string name="morphe_duration_8s">8 ሰከንዶች</string>
+  <string name="morphe_duration_9s">9 ሰከንዶች</string>
+  <string name="morphe_duration_10s">10 ሰከንዶች</string>
+  <string name="morphe_change_start_page_entry_default">ነባሪ</string>
+  <string name="morphe_change_start_page_entry_explore">ያስሱ</string>
+  <string name="morphe_change_start_page_entry_history">ታሪክ</string>
+  <string name="morphe_change_start_page_entry_library">ላይብረሪ</string>
+  <string name="morphe_change_start_page_entry_playlists">የመጫወቻ ዝርዝሮች</string>
+  <string name="morphe_change_start_page_entry_search">ፈልግ</string>
+  <string name="morphe_change_start_page_entry_subscriptions">የደንበኝነት ምዝገባዎች</string>
+  <string name="morphe_change_start_page_title">የመጀመሪያ ገጽ</string>
+  <string name="morphe_action_buttons_screen_title">የድርጊት ቁልፎች</string>
+  <string name="morphe_comments_screen_title">አስተያየቶች</string>
+  <string name="morphe_feed_screen_title">ፊድ</string>
+  <string name="morphe_flyout_menu_screen_title">የጎን ሜኑ</string>
+  <string name="morphe_general_title">ጠቅላላ</string>
+  <string name="morphe_miniplayer_screen_title">ትንሽ ማጫወቻ</string>
+  <string name="morphe_player_screen_title">ማጫወቻ</string>
+  <string name="morphe_video_screen_title">ቪዲዮ</string>
+  <string name="morphe_appearance_title">ገጽታ</string>
+  <string name="morphe_cancel">ሰርዝ</string>
+  <string name="morphe_comments_screen_summary">በ bình comments ክፍል ውስጥ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
+  <string name="morphe_copy_code">ኮድን ቅዳ</string>
+  <string name="morphe_corner_radius_title">የጥግ ራዲየስ</string>
+  <string name="morphe_do_not_show_again">እንደገና አታሳይ</string>
+  <string name="morphe_download_force_4k_title">የ 4K ዳውንሎድ አቅርቦትን አስገድድ</string>
+  <string name="morphe_glass_opacity_title">የብርጭቆ ግልጽነት</string>
+  <string name="morphe_header_logo_title">የራስጌ አርማ</string>
+  <string name="morphe_hide_action_bar_title">የድርጊት አሞሌውን ደብቅ</string>
+  <string name="morphe_hide_cast_button_title">የCast ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_button_title">የአስተያየቶች ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_community_guidelines_title">የማህበረሰብ መመሪያዎችን ደብቅ</string>
+  <string name="morphe_hide_comments_emoji_button_title">የEmoji ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_gif_button_title">የGIF ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">ከአስተያየቶች እና ምላሾች ጋር የተያያዙ GIF-ዎችን እና ምስሎችን ይደብቃል</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-ዎችን እና ምስሎችን ደብቅ</string>
+  <string name="morphe_hide_comments_info_button_title">የመረጃ ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_timestamp_button_title">የጊዜ ማህተም ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_horizontal_shelves_title">አግድም መደርደሪያዎችን ደብቅ</string>
+  <string name="morphe_hide_like_dislike_button_title">የወደድኩት እና ያልወደድኩት ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_like_dislike_buttons_title">የወደድኩት እና ያልወደድኩት ቁልፎችን ደብቅ</string>
+  <string name="morphe_hide_navigation_bar_title">የናቪጌሽን ባርን ደብቅ</string>
+  <string name="morphe_hide_navigation_button_labels_title">የናቪጌሽን ቁልፍ ሌብሎችን ደብቅ</string>
+  <string name="morphe_hide_previous_next_buttons_title">የቀደመውን እና የሚቀጥለውን ቁልፎች ደብቅ</string>
+  <string name="morphe_hide_search_button_title">የፍለጋ ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_translate_button_title">የትርጉም ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_video_ads_title">የቪዲዮ ማስታወቂያዎችን ደብቅ</string>
+  <string name="morphe_loading">በመጫን ላይ…</string>
+  <string name="morphe_name">ስም</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">የቁልፎች ክፍተት</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">የታዩ ቁልፎች፡ %1$s ከ %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">ከፍታ</string>
+  <string name="morphe_navigation_bar_glass_size_width">ከፍተኛው ስፋት</string>
+  <string name="morphe_navigation_bar_glass_title">የመስታወት ናቪጌሽን ባርን አግብር</string>
+  <string name="morphe_positive_number_invalid">እሴቱ አዎንታዊ ቁጥር መሆን አለበት</string>
+  <string name="morphe_private_user_id_invalid">የግል ተጠቃሚ መታወቂያ ቢያንስ 30 ቁምፊዎች ሊኖሩት ይገባል</string>
+  <string name="morphe_private_user_id_title">የእርስዎ የግል ተጠቃሚ መታወቂያ</string>
+  <string name="morphe_rename">ስም ቀይር</string>
+  <string name="morphe_show_settings_button_title">የቅንብሮች ቁልፍን አሳይ</string>
+  <string name="morphe_show_settings_button_type_title">የቅንብሮች ቁልፍ ተግባር</string>
+  <string name="morphe_show_video_effect_menu_title">የቪዲዮ ውጤት ዝርዝርን አሳይ</string>
+  <string name="morphe_submit">አስረክብ</string>
+  <string name="morphe_time_adjustment_step_title">የጊዜ ማስተካከያ ደረጃ</string>
+  <string name="morphe_toast_on_connection_error_title">የግንኙነት ስህተት ማስጠንቀቂያዎችን አሳይ</string>
+  <string name="morphe_toast_on_skip_title">የዝላይ ማሳወቂያን አሳይ</string>
+  <string name="morphe_translated_only">የተተረጎሙ ብቻ</string>
+  <string name="morphe_translating">በመተርጎም ላይ…</string>
+  <string name="morphe_translation_language_title">የትርጉም ቋንቋ</string>
+  <string name="morphe_username_change_unknown_error">የተጠቃሚ ስምን መቀየር አልተቻለም፡ ሁኔታ፡ %1$s %2$s</string>
+  <string name="morphe_username_changed">የተጠቃሚ ስም በስኬት ተቀይሯል</string>
+  <string name="morphe_username_html">የተጠቃሚ ስምዎ፦ &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">ቪዲዮዎች</string>
+  <string name="morphe_vote_downvote">ወደ ታች ቋጥሮ</string>
+  <string name="morphe_vote_upvote">ወደ ላይ ቋጥሮ</string>
 </resources>

@@ -161,11 +161,11 @@ public class LoopVideoButton {
                     str("morphe_loop_video_range_dialog_title"),
                     null,
                     null,
-                    str("morphe_loop_video_range_set"),
+                    str("morphe_set"),
                     () -> applyRange(startField.getText().toString(),
                             endField.getText().toString(), videoLength),
                     () -> { /* dismiss only */ },
-                    str("morphe_loop_video_range_clear"),
+                    str("morphe_settings_clear"),
                     () -> {
                         LoopVideoPatch.clearRange();
                         Settings.LOOP_VIDEO.save(false);

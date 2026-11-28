@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock सक्षम करा</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock ही YouTube व्हिडिओमधील त्रासदायक भाग वगळण्यासाठी एक क्राउडसोर्स्ड सिस्टम आहे</string>
-  <string name="morphe_sb_appearance_category_title">दिसणे</string>
   <string name="morphe_sb_voting_button_title">व्होटिंग बटण दाखवा</string>
   <string name="morphe_sb_voting_button_summary">सेगमेंट्सना अपव्होट किंवा डाऊनव्होट करण्यासाठी एक बटण जोडते</string>
   <string name="morphe_sb_square_layout_title">चौकोनी लेआउट वापरा</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">संपूर्ण सेगमेंटसाठी दृश्यमान ठेवण्याऐवजी काही सेकंदांनंतर स्किप बटण लपवते</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">स्किप बटण कालावधी</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">स्किप बटण किती वेळ दृश्यमान राहावे ते सेट करा</string>
-  <string name="morphe_sb_toast_on_skip_title">स्किप नोटिफिकेशन दाखवा</string>
   <string name="morphe_sb_toast_on_skip_summary">जेव्हा एखादा सेगमेंट आपोआप स्किप केला जातो तेव्हा नोटिफिकेशन दाखवते</string>
   <string name="morphe_sb_toast_on_skip_duration_title">स्किप नोटिफिकेशन कालावधी</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">अनडू नोटिफिकेशन किती वेळ दृश्यमान राहावे ते सेट करा</string>
-  <string name="morphe_sb_duration_1s">१ सेकंद</string>
-  <string name="morphe_sb_duration_2s">२ सेकंद</string>
-  <string name="morphe_sb_duration_3s">३ सेकंद</string>
-  <string name="morphe_sb_duration_4s">४ सेकंद</string>
-  <string name="morphe_sb_duration_5s">५ सेकंद</string>
-  <string name="morphe_sb_duration_6s">६ सेकंद</string>
-  <string name="morphe_sb_duration_7s">७ सेकंद</string>
-  <string name="morphe_sb_duration_8s">८ सेकंद</string>
-  <string name="morphe_sb_duration_9s">९ सेकंद</string>
-  <string name="morphe_sb_duration_10s">१० सेकंद</string>
   <string name="morphe_sb_video_length_without_segments_title">सेगमेंट्सशिवाय व्हिडिओची लांबी दाखवा</string>
   <string name="morphe_sb_video_length_without_segments_summary">सीकबारवर दिसणाऱ्या एकूण व्हिडिओ कालावधीमधून सर्व सेगमेंट्स वजा करते</string>
   <string name="morphe_sb_create_segment_category_title">नवीन सेगमेंट्स तयार करणे</string>
   <string name="morphe_sb_create_new_segment_title">\'नवीन विभाग तयार करा\' बटण दाखवा</string>
   <string name="morphe_sb_create_new_segment_summary">व्हिडिओ प्लेयरमध्ये एक बटण जोडते जे तुम्हाला नवीन SponsorBlock विभाग सबमिट करण्याची परवानगी देते</string>
-  <string name="morphe_sb_create_new_segment_step_title">वेळ समायोजन पायरी</string>
   <string name="morphe_sb_create_new_segment_step_summary">वेळ समायोजन बटणांची शोध रक्कम (मिलिसेकंदात)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">मूल्य एक सकारात्मक संख्या असावे</string>
   <string name="morphe_sb_guidelines_title">सबमिशन मार्गदर्शक तत्त्वे</string>
   <string name="morphe_sb_guidelines_summary">मार्गदर्शक तत्त्वांमध्ये नवीन विभाग तयार करण्यासाठी नियम आणि टिप्स आहेत</string>
   <string name="morphe_sb_guidelines_popup_title">मार्गदर्शक तत्त्वांचे पालन करा</string>
   <string name="morphe_sb_guidelines_popup_content">नवीन सेगमेंट्स तयार करण्यापूर्वी SponsorBlock मार्गदर्शक तत्त्वे वाचा</string>
   <string name="morphe_sb_guidelines_popup_already_read">आधीच वाचले आहे</string>
   <string name="morphe_sb_guidelines_popup_open">मला दाखवा</string>
-  <string name="morphe_sb_general_title">सामान्य</string>
   <string name="morphe_sb_offline_segments_title">डाउनलोड केलेल्या व्हिडिओंचे सेगमेंट्स सेव्ह करा</string>
   <string name="morphe_sb_offline_segments_summary">ऑफलाइन असताना डाउनलोड केलेल्या व्हिडिओंचे काही भाग वगळण्याची परवानगी देते</string>
-  <string name="morphe_sb_toast_on_connection_error_title">कनेक्शन एरर अलर्ट्स दाखवा</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock सर्व्हर उपलब्ध नसल्यास सूचना दाखवते</string>
   <string name="morphe_sb_track_skip_count_title">स्किप काउंट ट्रॅकिंग सक्षम करा</string>
   <string name="morphe_sb_track_skip_count_summary">किती वेळ वाचला गेला याचे ट्रॅक करण्यासाठी SponsorBlock लीडरबोर्डवर स्किप काउंट्स पाठवते</string>
   <string name="morphe_sb_min_segment_duration_title">किमान सेगमेंट कालावधी</string>
   <string name="morphe_sb_min_segment_duration_summary">या मूल्यापेक्षा (सेकंदात) कमी कालावधीचे सेगमेंट दाखवले जाणार नाहीत किंवा वगळले जातील</string>
   <string name="morphe_sb_min_segment_duration_invalid">अवैध वेळ कालावधी</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">तुमचा खाजगी वापरकर्ता आयडी</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">हे खाजगी ठेवले पाहिजे. हे पासवर्डसारखे आहे आणि कोणाशीही शेअर करू नये. जर कोणाकडे हे असेल, तर ते तुमची ओळख चोरू शकतात</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">खाजगी वापरकर्ता आयडी किमान ३० वर्णांचा असावा</string>
   <string name="morphe_sb_api_url_title">API URL बदला</string>
   <string name="morphe_sb_api_url_summary">सर्व्हरला कॉल करण्यासाठी SponsorBlock वापरतो तो पत्ता</string>
   <string name="morphe_sb_channel_whitelist_title">चॅनेल व्हाईटलिस्ट</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL अवैध आहे</string>
   <string name="morphe_sb_api_url_changed">API URL बदलले</string>
   <string name="morphe_sb_settings_ie_title">Import / Export सेटिंग्ज</string>
-  <string name="morphe_sb_settings_copy">कॉपी करा</string>
   <string name="morphe_sb_settings_ie_summary">तुमचे SponsorBlock JSON कॉन्फिगरेशन जे Morphe आणि इतर SponsorBlock प्लॅटफॉर्मवर आयात / निर्यात केले जाऊ शकते</string>
   <string name="morphe_sb_settings_ie_summary_warning">"तुमचे SponsorBlock JSON कॉन्फिगरेशन जे Morphe आणि इतर SponsorBlock प्लॅटफॉर्मवर आयात / निर्यात केले जाऊ शकते
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"तुमच्या सेटिंग्जमध्ये खाजगी SponsorBlock युजर आयडी आहे.
 
 तुमचा युजर आयडी पासवर्डसारखा आहे आणि तो कधीही शेअर करू नये"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">पुन्हा दाखवू नका</string>
   <string name="morphe_sb_diff_segments_title">सेगमेंटचे वर्तन बदला</string>
   <string name="morphe_sb_segments_sponsor">प्रायोजक</string>
   <string name="morphe_sb_segments_sponsor_summary">पेड प्रमोशन, पेड रेफरल्स आणि थेट जाहिराती. स्वतःच्या प्रचारासाठी किंवा त्यांना आवडणाऱ्या कारणांच्या / क्रिएटर्सच्या / वेबसाईटच्या / उत्पादनांच्या मोफत जाहिरातींसाठी नाही</string>
@@ -122,11 +102,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_highlight">हायलाइटवर जा</string>
   <string name="morphe_sb_skip_button_intro_beginning">इंट्रो वगळा</string>
   <string name="morphe_sb_skip_button_intro_middle">मध्यांतर वगळा</string>
-  <string name="morphe_sb_skip_button_intro_end">मध्यांतर वगळा</string>
   <string name="morphe_sb_skip_button_outro">आउट्रो वगळा</string>
   <string name="morphe_sb_skip_button_hook">हुक वगळा</string>
   <string name="morphe_sb_skip_button_preview_beginning">पूर्वावलोकन वगळा</string>
-  <string name="morphe_sb_skip_button_preview_middle">पूर्वावलोकन वगळा</string>
   <string name="morphe_sb_skip_button_preview_end">सारांश वगळा</string>
   <string name="morphe_sb_skip_button_filler">असंबंधित भाग वगळा</string>
   <string name="morphe_sb_skip_button_nomusic">संगीत नसलेले वगळा</string>
@@ -137,11 +115,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_highlight">हायलाईटवर स्किप केले</string>
   <string name="morphe_sb_skipped_intro_beginning">प्रस्तावना वगळली</string>
   <string name="morphe_sb_skipped_intro_middle">मधला ब्रेक वगळला</string>
-  <string name="morphe_sb_skipped_intro_end">मधला ब्रेक वगळला</string>
   <string name="morphe_sb_skipped_outro">शेवटचा भाग वगळला</string>
   <string name="morphe_sb_skipped_hook">हुक वगळला</string>
   <string name="morphe_sb_skipped_preview_beginning">पूर्वावलोकन वगळले</string>
-  <string name="morphe_sb_skipped_preview_middle">पूर्वावलोकन वगळले</string>
   <string name="morphe_sb_skipped_preview_end">पुनरावलोकन वगळले</string>
   <string name="morphe_sb_skipped_filler">असंबंधित भाग वगळला</string>
   <string name="morphe_sb_skipped_nomusic">संगीत नसलेला विभाग वगळला</string>
@@ -167,8 +143,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_failed_timeout">सेगमेंटसाठी मतदान करण्यात अक्षम (API वेळ संपला)</string>
   <string name="morphe_sb_vote_failed_unknown_error">सेगमेंटसाठी मतदान करण्यात अक्षम (स्थिती: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">सेगमेंटसाठी मतदान करण्यात अक्षम: %s</string>
-  <string name="morphe_sb_vote_upvote">अपवोट</string>
-  <string name="morphe_sb_vote_downvote">डाऊनवोट</string>
   <string name="morphe_sb_vote_category">श्रेणी बदला</string>
   <string name="morphe_sb_vote_no_segments">मतदान करण्यासाठी कोणतेही सेगमेंट नाहीत</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -193,7 +167,6 @@ Second \"item\" text"</string>
 (%3$s)
 
 सबमिट करण्यासाठी तयार आहात का?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">सबमिट करा</string>
   <string name="morphe_sb_new_segment_start_is_before_end">सुरुवात ही शेवटापूर्वी असावी</string>
   <string name="morphe_sb_new_segment_mark_locations_first">प्रथम टाइम बारवर एखादे स्थान मार्क करा</string>
   <string name="morphe_sb_new_segment_preview_segment_first">सेगमेंटचे प्रिव्ह्यू पहा आणि ते व्यवस्थितपणे स्किप होत असल्याची खात्री करा</string>
@@ -206,16 +179,11 @@ Second \"item\" text"</string>
 %s
 
 जर तुम्ही हायलाइट सबमिट करत नसाल, तर कॅन्सलवर टॅप करा आणि दुसरे स्थान मार्क करा"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">हायलाइट सबमिट करा</string>
   <string name="morphe_sb_stats_title">सांख्यिकी</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">सांख्यिकी तात्पुरते उपलब्ध नाहीत (API बंद आहे)</string>
-  <string name="morphe_sb_stats_loading">लोड होत आहे…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock अक्षम आहे</string>
-  <string name="morphe_sb_stats_username">तुमचे वापरकर्ता नाव: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">तुमचे वापरकर्ता नाव बदलण्यासाठी येथे टॅप करा</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">युजरनेम बदलण्यात अक्षम: स्थिती: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">वापरकर्ता नाव यशस्वीपणे बदलले</string>
   <string name="morphe_sb_stats_reputation">तुमची प्रतिष्ठा &lt;b&gt;%.2f&lt;/b&gt; आहे</string>
   <string name="morphe_sb_stats_submissions">तुम्ही &lt;b&gt;%s&lt;/b&gt; विभाग तयार केले आहेत</string>
   <string name="morphe_sb_stats_submissions_summary">तुमचे सेगमेंट्स पाहण्यासाठी येथे टॅप करा</string>

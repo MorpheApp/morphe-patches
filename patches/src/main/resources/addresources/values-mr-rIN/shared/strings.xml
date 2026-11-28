@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">पुनरारंभ आवश्यक</string>
   <string name="morphe_settings_restart_dialog_message">हा बदल लागू करण्यासाठी अॅप रीस्टार्ट करा</string>
   <string name="morphe_settings_restart">पुनरारंभ करा</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">आयात करा</string>
-  <string name="morphe_settings_import_copy">कॉपी करा</string>
   <string name="morphe_settings_import_reset">Morphe सेटिंग्ज डीफॉल्टवर रीसेट करा</string>
   <string name="morphe_settings_import_success">%s सेटिंग्ज इंपोर्ट केल्या</string>
   <string name="morphe_settings_import_failure_parse">आयात अयशस्वी: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">पॅचेस</string>
   <string name="morphe_settings_about_version">वर्जन</string>
-  <string name="morphe_settings_about_close">बंद करा</string>
   <string name="morphe_settings_about_prerelease">प्री-रिलीज</string>
   <string name="morphe_settings_about_update_available">अपडेट उपलब्ध आहे: %s</string>
   <string name="morphe_settings_about_update_hint">तुमचे पॅचेस अपडेट करण्यासाठी, या ॲपला पुन्हा पॅच करण्यासाठी Morphe वापरा</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">परवाना सूचना</string>
-  <string name="morphe_settings_about_licenses_loading">लोड होत आहे…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">डीबगिंग</string>
   <string name="morphe_debug_screen_summary">प्रगत विकासक पर्याय आणि निदान लॉग कॉन्फिगर करा</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">डीबग लॉग यशस्वीरित्या एक्सपोर्ट केले</string>
   <string name="morphe_debug_export_logs_failed">डीबग लॉग एक्सपोर्ट करण्यात अयशस्वी</string>
   <string name="morphe_debug_logs_search_hint">डीबग लॉग शोधा…</string>
-  <string name="morphe_debug_export_logs_clear">क्लियर करा</string>
   <string name="morphe_debug_logs_disabled">डीबग लॉगिंग अक्षम केले आहे</string>
   <string name="morphe_debug_logs_none_found">डीबग लॉग आढळले नाहीत</string>
   <string name="morphe_debug_logs_copied_to_clipboard">डीबग लॉग कॉपी केले</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">ब्लॉक केले (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">फोर्स केले (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">स्वयंचलित</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">बंद</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">चालू</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">फोर्स ऑन करा</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">ब्लॉक करा</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">काढून टाका</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">फीचर फ्लॅग सेव्ह केले</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">फीचर फ्लॅग रीसेट केले</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">फीचर फ्लॅग क्लिपबोर्डवर कॉपी केले</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"तुमचे MicroG v%1$s जुने झाले आहे आणि त्यामुळे समस्या येऊ शकतात.
 
 कृपया MicroG नवीनतम आवृत्ती v%2$s वर अपडेट करा"</string>
-  <string name="gms_core_dialog_update_text">अपडेट करा</string>
   <string name="gms_core_dialog_ignore_text">दुर्लक्ष करा</string>
   <string name="gms_core_dialog_conflict_message">"इन्स्टॉल केलेले MicroG हे Morphe द्वारे शिफारसित नाही:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 MicroG साठी बॅटरी ऑप्टिमायझेशन बंद केल्याने बॅटरीच्या वापरावर नकारात्मक परिणाम होणार नाही.
 
 कंटिन्यू बटणावर टॅप करा आणि ऑप्टिमायझेशन बदलांना परवानगी द्या"</string>
-  <string name="gms_core_dialog_continue_text">सुरू ठेवा</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG बॅटरी ऑप्टिमायझेशन डायलॉग दाखवा</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"हे अक्षम केल्यास MicroG बॅटरी ऑप्टिमायझेशन प्रॉम्प्ट लपविला जाईल.
 
@@ -259,9 +245,29 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन बं�
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 बग फिक्सेस</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 इतर बदल</string>
   <string name="morphe_patches_update_notice_dialog_more">…आणि आणखी %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">अपडेट करा</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">नजरअंदाज करा</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">क्रॅश लॉग वापरकर्त्याच्या डॉक्युमेंट्समध्ये जतन केले: %s</string>
   <string name="morphe_crash_log_saved">क्रॅश लॉग जतन केला: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">बद्दल</string>
+  <string name="morphe_ads_screen_title">जाहिराती</string>
+  <string name="morphe_misc_screen_title">किरकोळ</string>
+  <string name="morphe_navigation_bar_screen_title">नेव्हिगेशन बार</string>
+  <string name="morphe_post_buttons_screen_title">पोस्ट बटणे</string>
+  <string name="morphe_custom_branding_icon_title">अ‍ॅप आयकॉन</string>
+  <string name="morphe_download">डाउनलोड</string>
+  <string name="morphe_hide_create_button_title">\'क्रिएट\' बटण लपवा</string>
+  <string name="morphe_hide_post_comment_button_title">\'कमेंट\' बटण लपवा</string>
+  <string name="morphe_sanitize_sharing_links_summary">शेअर केलेल्या लिंक्समधून ट्रॅकिंग क्वेरी पॅरामीटर्स काढून टाकते</string>
+  <string name="morphe_sanitize_sharing_links_title">शेअरिंग लिंक्स सॅनिटाइझ करा</string>
+  <string name="morphe_settings_add">जोडा</string>
+  <string name="morphe_settings_clear">साफ करा</string>
+  <string name="morphe_settings_close">बंद करा</string>
+  <string name="morphe_settings_continue">पुढे जा</string>
+  <string name="morphe_settings_copy">कॉपी करा</string>
+  <string name="morphe_settings_delete">हटवा</string>
+  <string name="morphe_settings_remove">रिमूव्ह</string>
+  <string name="morphe_settings_update">अपडेट करा</string>
 </resources>

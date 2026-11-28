@@ -106,7 +106,7 @@ public final class VideoEffectEditor {
             EditText nameText = CustomDialog.createEditText(context);
             nameText.setSingleLine(true);
             nameText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-            nameText.setHint(str("morphe_video_effects_custom_name_hint"));
+            nameText.setHint(str("morphe_name"));
             nameText.setText(name);
 
             EditText codeText = new EditText(context);
@@ -129,7 +129,7 @@ public final class VideoEffectEditor {
                     () -> saveEffect(context, originalName, nameText.getText().toString(),
                             codeText.getText().toString(), false, onClosed),
                     onClosed,
-                    str("morphe_video_effects_custom_copy_code"),
+                    str("morphe_copy_code"),
                     () -> Utils.setClipboard(codeText.getText().toString()),
                     false
             );

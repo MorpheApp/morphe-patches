@@ -39,6 +39,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
+import app.morphe.patches.youtube.video.information.SeekFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
@@ -73,13 +74,14 @@ private val sponsorBlockResourcePatch = patch {
             SwitchPreference("morphe_sb_enabled", summary = true),
             PreferenceCategory(
                 key = "morphe_sb_appearance_category",
+                titleKey = "morphe_appearance_title",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_sb_voting_button", summary = true),
                     SwitchPreference("morphe_sb_compact_skip_button", summary = true),
                     SwitchPreference("morphe_sb_auto_hide_skip_button", summary = true),
                     ListPreference(key = "morphe_sb_auto_hide_skip_button_duration"),
-                    SwitchPreference("morphe_sb_toast_on_skip", summary = true),
+                    SwitchPreference("morphe_sb_toast_on_skip", titleKey = "morphe_toast_on_skip_title", summary = true),
                     ListPreference(key = "morphe_sb_toast_on_skip_duration"),
                     SwitchPreference("morphe_sb_video_length_without_segments", summary = true),
                     SwitchPreference("morphe_sb_square_layout", summary = true)
@@ -112,6 +114,7 @@ private val sponsorBlockResourcePatch = patch {
                     ),
                     TextPreference(
                         key = "morphe_sb_create_new_segment_step",
+                        titleKey = "morphe_time_adjustment_step_title",
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockSegmentStepPreference",
                         inputType = InputType.NUMBER
                     ),
@@ -124,10 +127,11 @@ private val sponsorBlockResourcePatch = patch {
             ),
             PreferenceCategory(
                 key = "morphe_sb_general",
+                titleKey = "morphe_general_title",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_sb_offline_segments", summary = true),
-                    SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+                    SwitchPreference("morphe_sb_toast_on_connection_error", titleKey = "morphe_toast_on_connection_error_title", summary = true),
                     SwitchPreference("morphe_sb_track_skip_count", summary = true),
                     TextPreference(
                         key = "morphe_sb_min_segment_duration",
@@ -135,6 +139,7 @@ private val sponsorBlockResourcePatch = patch {
                     ),
                     TextPreference(
                         key = "morphe_sb_private_user_id_Do_Not_Share",
+                        titleKey = "morphe_private_user_id_title",
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
                     ),
                     NonInteractivePreference(
@@ -211,6 +216,8 @@ private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/CreateSegmentButton;"
 private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/VotingButton;"
+private const val EXTENSION_SPONSORBLOCK_UTILS_CLASS =
+    "Lapp/morphe/extension/youtube/sponsorblock/SponsorBlockUtils;"
 private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/SponsorBlockViewController;"
 
@@ -235,6 +242,13 @@ val sponsorBlockPatch = patch(
         videoTimeHook(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS,
             "setVideoTime"
+        )
+
+        // A seek to the start of a video lands on its first frame, which some formats have after the start,
+        // so the start of a new segment is found by the seeks to the start.
+        SeekFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p1 .. p2 }, $EXTENSION_SPONSORBLOCK_UTILS_CLASS->onVideoSeek(J)V"
         )
 
         hookBackgroundPlayVideoId(

@@ -24,6 +24,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
@@ -31,6 +32,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -41,6 +43,9 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
+
+private const val VIDEO_DETAILS_EXTENSION_CLASS =
+    "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikeVideoDetailsPatch;"
 
 val returnYouTubeDislikePatch = patch(
     name = "Return YouTube Dislike",
@@ -57,6 +62,7 @@ val returnYouTubeDislikePatch = patch(
         restoreOldVideoActionBarPatch,
         // Finds the feed video cards for the like counts on their thumbnails.
         feedVideoCardsHookPatch,
+        elementProtoParserHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -69,7 +75,7 @@ val returnYouTubeDislikePatch = patch(
             SwitchPreference("morphe_ryd_feed_like_ratio"),
             ListPreference("morphe_ryd_feed_counts_position"),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
-            SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
+            SwitchPreference("morphe_ryd_toast_on_connection_error", titleKey = "morphe_toast_on_connection_error_title", summary = true),
             screenInfoPreferenceCategory(
                 key = "morphe_ryd_about",
                 preferences = setOf(
@@ -132,5 +138,8 @@ val returnYouTubeDislikePatch = patch(
         hookLithoSpannableString(EXTENSION_CLASS)
 
         hookLikeDislikeButtons(EXTENSION_CLASS)
+
+        // Adds a dislikes row to the 'Video details' section of the description.
+        hookElement("$VIDEO_DETAILS_EXTENSION_CLASS->addDislikesRow")
     }
 }

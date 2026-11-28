@@ -52,6 +52,7 @@ import app.morphe.extension.youtube.patches.LoadVideoPatch;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionSnapshot;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
@@ -542,7 +543,7 @@ public final class NativePlaylistQueuePatch {
                 return;
             }
             if (playlistAddition != null || playlistOperation != null || pendingMixAddition != null) {
-                Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                Utils.showSnackbarShort(str("morphe_loading"));
                 return;
             }
             final boolean mix = playlistId.startsWith(MIX_PLAYLIST_ID_PREFIX);
@@ -674,7 +675,7 @@ public final class NativePlaylistQueuePatch {
                     playlistNavigation = new PlaylistNavigation(navigation.navigator(), navigation.request(),
                             navigation.playing(), candidateSource.origin(), navigation.playback());
                 }
-                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_added"));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "completePlaylistAddition failure", ex);
@@ -1486,7 +1487,7 @@ public final class NativePlaylistQueuePatch {
             // Keep the old snapshot until publish attaches the changed rows to the
             // native backend; preassigning queue would conceal the item-list change.
             if (publish(controller, queue.playNextAndSelect(videoId), false)) {
-                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_added"));
                 completeMetadata();
             }
 
@@ -1957,7 +1958,7 @@ public final class NativePlaylistQueuePatch {
                 return true;
             }
             if (playlistAddition != null) {
-                Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                Utils.showSnackbarShort(str("morphe_loading"));
                 return true;
             }
             syncNativeSelection(VideoInformation.getVideoId());
@@ -2277,7 +2278,7 @@ public final class NativePlaylistQueuePatch {
                     return null;
                 }
                 if (playlistAddition != null) {
-                    Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                    Utils.showSnackbarShort(str("morphe_loading"));
                     return null;
                 }
                 if (queue.source() != null) {
@@ -2874,6 +2875,34 @@ public final class NativePlaylistQueuePatch {
     }
 
     @Nullable
+    public static PlaybackSessionSnapshot.Queue captureSessionQueue(String videoId) {
+        if (!isPatchIncluded()) return null;
+        try {
+            PlaylistController controller = controllerRef.get();
+            if (controller == null || !videoId.equals(controller.patch_getVideoId())) return null;
+            if (queue != null && controller.patch_getModel() == publishedModel
+                    && videoId.equals(queue.currentEntry().videoId())) {
+                return new PlaybackSessionSnapshot.Queue(
+                        queue.entries().stream().map(PlaylistQueue.Entry::videoId).toList(), queue.selectedIndex(),
+                        queue.repeatMode());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "captureSessionQueue failure", ex);
+        }
+        return null;
+    }
+
+    public static boolean prepareSessionQueue(PlaybackSessionSnapshot.Queue saved, long positionMilliseconds) {
+        if (saved.nativeRepeatMode() == null || !isPatchIncluded()
+                || !AddToQueuePatch.isNativeQueueEnabled() || !canStartQueue()) {
+            return false;
+        }
+        var candidate = PlaylistQueue.fromSavedVideoIds(saved.videoIds(), saved.selectedIndex(), saved.nativeRepeatMode());
+        expectQueueStart(new QueueStart(candidate, VideoInformation.getVideoId(), positionMilliseconds));
+        return true;
+    }
+
+    @Nullable
     private static PlaylistController playingPlaylistController() {
         PlaylistController controller = controllerRef.get();
         PlayerType type = PlayerType.getCurrent();
@@ -2986,7 +3015,7 @@ public final class NativePlaylistQueuePatch {
                     if (videoId.equals(VideoInformation.getVideoId())) {
                         // The initial queue already contains this playing occurrence.
                         FlyoutUtils.dismissFlyout();
-                        Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                        Utils.showSnackbarShort(str("morphe_queue_added"));
                     } else {
                         addToQueue(videoId, playLast, channelName);
                     }
@@ -3028,7 +3057,7 @@ public final class NativePlaylistQueuePatch {
                     ? candidate : playLast ? candidate.playLast(videoId) : candidate.playNext(videoId);
             if (publish(controller, updated, true)) {
                 FlyoutUtils.dismissFlyout();
-                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_added"));
                 completeMetadata();
             }
         } catch (Exception ex) {
@@ -3046,7 +3075,7 @@ public final class NativePlaylistQueuePatch {
         }
     }
 
-    private static void startQueue(QueueStart start) {
+    private static void expectQueueStart(QueueStart start) {
         cancelPlaylistAddition();
         cancelPlaylistRequest();
         clearPendingQueueStart();
@@ -3064,9 +3093,12 @@ public final class NativePlaylistQueuePatch {
         // Fresh starts and Undo both open from the feed, whose preview can otherwise
         // replace the requested video's playback before the queue attaches.
         pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
+    }
 
+    private static void startQueue(QueueStart start) {
+        expectQueueStart(start);
         try {
-            LoadVideoPatch.openVideoIntent(start.watchUrl(), false);
+            LoadVideoPatch.openUrl(start.watchUrl(), false);
         } catch (RuntimeException ex) {
             if (pendingQueueStart == start) {
                 clearPendingQueueStart();
@@ -3132,7 +3164,7 @@ public final class NativePlaylistQueuePatch {
                 refreshRepeatHeaders();
                 refreshPlayerControls(controller.patch_getNavigator());
             } else {
-                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_added"));
             }
             completeMetadata();
         }
@@ -3253,7 +3285,7 @@ public final class NativePlaylistQueuePatch {
                     return false;
                 }
                 if (playlistAddition != null) {
-                    Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                    Utils.showSnackbarShort(str("morphe_loading"));
                     return true;
                 }
                 pendingMixAddition = choice;
@@ -3297,7 +3329,7 @@ public final class NativePlaylistQueuePatch {
             intercepted = true;
             controller.patch_showQueueFeedback(QueueMixActions.dialog(command, choice.token(),
                     str("morphe_native_playlist_queue_mix_choice"), str("morphe_native_playlist_queue_watch_mix"),
-                    str("morphe_native_playlist_queue_add_mix")).toByteArray());
+                    str("morphe_queue_add_to_queue")).toByteArray());
             return true;
         } catch (Exception ex) {
             pendingMixChoice = null;
@@ -3361,7 +3393,7 @@ public final class NativePlaylistQueuePatch {
             PlaylistQueue updated = queue.addPlaylist(PlaylistQueue.fromMetadata(videos), true)
                     .withRepeatMode(playback.patch_getRepeatMode());
             if (publish(controller, updated, true)) {
-                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_added"));
                 completeMetadata();
             }
         } catch (Exception ex) {
@@ -3655,7 +3687,7 @@ public final class NativePlaylistQueuePatch {
 
     private static byte[] renderer(PlaylistQueue source) {
         var panel = PlaylistQueueRenderer.Panel.newBuilder()
-                .setTitle(str("morphe_native_playlist_queue_title"))
+                .setTitle(str("morphe_queue_title"))
                 .setSelectedIndex(source.selectedIndex()).setPlaylistId("").setVideoCount(source.totalCount())
                 .setLocalSelectedIndex(source.selectedIndex())
                 .setMenu(playlistMenu(source));

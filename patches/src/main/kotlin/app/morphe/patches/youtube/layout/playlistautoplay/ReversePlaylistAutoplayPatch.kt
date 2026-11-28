@@ -44,7 +44,7 @@ internal val reversePlaylistAutoplayHookPatch = patch {
         // A playlist is loaded into the playback queue, which picks the next video for AUTOPLAY and
         // the previous video for PREVIOUS, and repeats the playlist in both directions.
         // Swapping the request only here keeps the rest of the AUTOPLAY handling.
-        queueNavigationItemFingerprint(requestType, enumType).let {
+        QueueNavigationItemFingerprint.let {
             val enumField = it.instructionMatches.first().fieldReference
 
             it.method.addInstructionsWithLabels(

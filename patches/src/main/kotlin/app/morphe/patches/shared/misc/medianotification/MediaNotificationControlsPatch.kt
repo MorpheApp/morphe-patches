@@ -42,7 +42,7 @@ internal fun mediaNotificationControlsPatch(
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_disable_notification_media_seekbar", summary = true),
-                    SwitchPreference("morphe_hide_notification_media_prev_next", summary = true),
+                    SwitchPreference("morphe_hide_notification_media_prev_next", titleKey = "morphe_hide_previous_next_buttons_title", summary = true),
                 ) + additionalPreferences
             )
         )

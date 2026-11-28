@@ -66,13 +66,12 @@ internal val captionTrackCapturePatch = patch(
         val selectedTrackField = SubtitleManagerSelectedTrackFingerprint(trackType)
             .instructionMatches.last().fieldReference
 
-        val handlerResult = CaptionTrackHandlerResultFingerprint(requestTrack)
 
         // Make the extension callback a native request callback.
         mutableClassDefBy(EXTENSION_UPLOADED_CALLBACK_CLASS).apply {
             addPatchInterface(
                 callbackType,
-                handlerResult.method.name,
+                CaptionTrackHandlerResultFingerprint.method.name,
                 """
                     invoke-virtual { p0, p2 }, $EXTENSION_UPLOADED_CALLBACK_CLASS->onResult(Ljava/lang/Object;)V
                     return-void
@@ -120,10 +119,7 @@ internal val captionTrackCapturePatch = patch(
             addPatchInterface(
                 EXTENSION_HANDLER_INTERFACE,
                 "patch_updateCaption",
-                """
-                    invoke-virtual/range { p0 .. p3 }, ${CaptionTrackHandlerTimeFingerprint.method}
-                    return-void
-                """
+                CaptionTrackHandlerTimeFingerprint.method
             )
         }
 
@@ -135,11 +131,11 @@ internal val captionTrackCapturePatch = patch(
             """
         )
 
-        handlerResult.method.apply {
+        CaptionTrackHandlerResultFingerprint.method.apply {
             // The original code reuses the parameter registers. Call a copy of it,
             // so the request and the installed result are available afterward.
             val applyResult = cloneMutable(name = "patch_applyCaptionResult")
-            handlerResult.classDef.methods.add(applyResult)
+            CaptionTrackHandlerResultFingerprint.classDef.methods.add(applyResult)
 
             removeInstructions(0, implementation!!.instructions.count())
             addInstructions(

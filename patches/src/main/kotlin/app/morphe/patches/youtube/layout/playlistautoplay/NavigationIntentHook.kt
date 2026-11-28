@@ -11,10 +11,32 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
+
+/**
+ * The methods that start navigation to another video, as last hooked by [navigationIntentHook], or null before
+ * the first hook. Several patches hook them, and finding them checks the methods of every class, so they are
+ * found once. A hook can replace a method with a clone, which then takes its place here.
+ */
+private var navigationMethods: MutableList<MutableMethod>? = null
+
+/**
+ * Forgets the methods [navigationIntentHook] found before and after patching. Patches that call it must depend on
+ * this patch, so the methods of another app or of an earlier run are never hooked.
+ */
+internal val navigationIntentHookPatch = patch {
+    execute {
+        navigationMethods = null
+    }
+
+    finalize {
+        navigationMethods = null
+    }
+}
 
 /**
  * Hooks the method that starts navigation to another video.
@@ -34,7 +56,7 @@ internal fun navigationIntentHook(
     val wrapperType = wrapperClassDef.type
     val enumField = wrapperClassDef.fields.first { it.type == enumType }
 
-    fun hook(original: MutableMethod) {
+    fun hook(original: MutableMethod): MutableMethod {
         var method = original
         if (method.implementation!!.registerCount <= method.numberOfParameterRegisters) {
             method = method.cloneParameters()
@@ -53,9 +75,13 @@ internal fun navigationIntentHook(
                 nop
             """
         )
+        return method
     }
 
-    navigationMethodFingerprint(wrapperType).matchAll().forEach { hook(it.method) }
+    val methods = navigationMethods
+        ?: navigationMethodFingerprint(wrapperType).matchAll().mapTo(ArrayList()) { it.method }
+    methods.replaceAll(::hook)
+    navigationMethods = methods
 
     if (includePlayerButtons) {
         hook(

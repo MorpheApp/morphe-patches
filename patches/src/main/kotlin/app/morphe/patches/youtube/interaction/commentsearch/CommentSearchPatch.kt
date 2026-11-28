@@ -95,10 +95,7 @@ val commentSearchPatch = patch(
             addPatchInterface(
                 SECTION_LIST_ACCESS_INTERFACE,
                 "patch_getListView",
-                """
-                    iget-object v0, p0, $listViewField
-                    return-object v0
-                """
+                listViewField
             )
             addPatchInterface(
                 SECTION_LIST_ACCESS_INTERFACE,

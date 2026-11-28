@@ -58,7 +58,7 @@ val videoEffectsPatch = videoEffectsPatch(
     hookVideoId = ::hookVideoId,
     executeBlock = {
         addPlayerFlyoutMenuPreferences(
-            SwitchPreference("morphe_video_effect_button_flyout")
+            SwitchPreference("morphe_video_effect_button_flyout", titleKey = "morphe_show_video_effect_menu_title")
         )
     }
 )

@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Washa SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock ni mfumo wa jamii kwa ajili ya kuruka sehemu zinazokera za video za YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Mwonekano</string>
   <string name="morphe_sb_voting_button_title">Onyesha kitufe cha kupiga kura</string>
   <string name="morphe_sb_voting_button_summary">Huongeza kitufe cha kupigia kura juu au chini sehemu za video</string>
   <string name="morphe_sb_square_layout_title">Tumia mpangilio wa mraba</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Huficha kitufe cha Ruka baada ya sekunde chache badala ya kukibakiza kikionekana kwa sehemu nzima</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Muda wa kitufe cha Ruka</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Weka muda ambao vitufe vya Ruka vitaendelea kuonekana</string>
-  <string name="morphe_sb_toast_on_skip_title">Onyesha taarifa ya kuruka</string>
   <string name="morphe_sb_toast_on_skip_summary">Huonyesha taarifa wakati sehemu inaporukwa kiotomatiki</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Muda wa taarifa ya kuruka</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Weka muda ambao taarifa ya kubatilisha itaendelea kuonekana</string>
-  <string name="morphe_sb_duration_1s">sekunde 1</string>
-  <string name="morphe_sb_duration_2s">sekunde 2</string>
-  <string name="morphe_sb_duration_3s">sekunde 3</string>
-  <string name="morphe_sb_duration_4s">sekunde 4</string>
-  <string name="morphe_sb_duration_5s">sekunde 5</string>
-  <string name="morphe_sb_duration_6s">sekunde 6</string>
-  <string name="morphe_sb_duration_7s">sekunde 7</string>
-  <string name="morphe_sb_duration_8s">sekunde 8</string>
-  <string name="morphe_sb_duration_9s">sekunde 9</string>
-  <string name="morphe_sb_duration_10s">sekunde 10</string>
   <string name="morphe_sb_video_length_without_segments_title">Onyesha urefu wa video bila sehemu</string>
   <string name="morphe_sb_video_length_without_segments_summary">Hupunguza sehemu zote katika muda wa jumla wa video unaoonekana kwenye seekbar</string>
   <string name="morphe_sb_create_segment_category_title">Kutengeneza sehemu mpya</string>
   <string name="morphe_sb_create_new_segment_title">Onyesha kitufe cha \'Tengeneza sehemu mpya\'</string>
   <string name="morphe_sb_create_new_segment_summary">Huongeza kitufe kwenye kicheza video kinachokuruhusu kutuma sehemu mpya za SponsorBlock</string>
-  <string name="morphe_sb_create_new_segment_step_title">Hatua ya marekebisho ya muda</string>
   <string name="morphe_sb_create_new_segment_step_summary">Kiasi cha utafutaji cha vitufe vya marekebisho ya muda (kwa milisekunde)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Thamani lazima iwe namba chanya</string>
   <string name="morphe_sb_guidelines_title">Mwongozo wa utumaji</string>
   <string name="morphe_sb_guidelines_summary">Mwongozo una sheria na vidokezo vya kutengeneza sehemu mpya</string>
   <string name="morphe_sb_guidelines_popup_title">Fuata mwongozo</string>
   <string name="morphe_sb_guidelines_popup_content">Soma miongozo ya SponsorBlock kabla ya kutengeneza sehemu mpya</string>
   <string name="morphe_sb_guidelines_popup_already_read">Tayari nimesoma</string>
   <string name="morphe_sb_guidelines_popup_open">Nionyeshe</string>
-  <string name="morphe_sb_general_title">Jumla</string>
   <string name="morphe_sb_offline_segments_title">Hifadhi vipande vya video zilizopakuliwa</string>
   <string name="morphe_sb_offline_segments_summary">Inaruhusu kuruka sehemu za video zilizopakuliwa ukiwa nje ya mtandao</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Onyesha tahadhari za hitilafu ya muunganisho</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Huonyesha taarifa wakati seva ya SponsorBlock inapopatikana</string>
   <string name="morphe_sb_track_skip_count_title">Wezesha ufuatiliaji wa idadi ya urukaji</string>
   <string name="morphe_sb_track_skip_count_summary">Hutuma idadi ya urukaji kwenye ubao wa viongozi wa SponsorBlock ili kufuatilia muda kiasi gani umeokolewa</string>
   <string name="morphe_sb_min_segment_duration_title">Muda wa chini wa kipande</string>
   <string name="morphe_sb_min_segment_duration_summary">Vipande vifupi kuliko thamani hii (kwa sekunde) havitaonyeshwa au kurukwa</string>
   <string name="morphe_sb_min_segment_duration_invalid">Muda usio sahihi</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">ID yako binafsi ya mtumiaji</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Hii inapaswa kuwekwa siri. Hii ni kama nywila na haipaswi kushirikishwa na mtu yeyote. Ikiwa mtu anayo hii, anaweza kujifanya kuwa wewe</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ID binafsi ya mtumiaji lazima iwe na urefu wa angalau herufi 30</string>
   <string name="morphe_sb_api_url_title">Badilisha URL ya API</string>
   <string name="morphe_sb_api_url_summary">Anuani ambayo SponsorBlock hutumia kufanya mawasiliano na seva</string>
   <string name="morphe_sb_channel_whitelist_title">Orodha nyeupe ya chaneli</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL ya API si sahihi</string>
   <string name="morphe_sb_api_url_changed">URL ya API imebadilika</string>
   <string name="morphe_sb_settings_ie_title">Mipangilio ya Kuagiza / Kusafirisha</string>
-  <string name="morphe_sb_settings_copy">Nakili</string>
   <string name="morphe_sb_settings_ie_summary">Usanidi wako wa JSON wa SponsorBlock ambao unaweza kuagizwa / kusafirishwa kwenda Morphe na majukwaa mengine ya SponsorBlock</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Usanidi wako wa JSON wa SponsorBlock ambao unaweza kuagizwa / kusafirishwa kwenda Morphe na majukwaa mengine ya SponsorBlock
 
@@ -92,7 +73,6 @@ Hii inajumuisha ID yako binafsi ya mtumiaji. Hakikisha unashiriki hii kwa busara
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Mipangilio yako ina ID ya siri ya mtumiaji wa SponsorBlock.
 
 ID yako ya mtumiaji ni kama nywila, na haipaswi kushirikiwa kamwe"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Usionyeshe tena</string>
   <string name="morphe_sb_diff_segments_title">Badilisha tabia ya sehemu</string>
   <string name="morphe_sb_segments_sponsor">Mdhamini</string>
   <string name="morphe_sb_segments_sponsor_summary">Matangazo ya kulipwa, rufaa za kulipwa na matangazo ya moja kwa moja. Si kwa ajili ya kujitangaza au kutangaza bure mambo/wabunifu/tovuti/bidhaa wanazopenda</string>
@@ -122,11 +102,9 @@ ID yako ya mtumiaji ni kama nywila, na haipaswi kushirikiwa kamwe"</string>
   <string name="morphe_sb_skip_button_highlight">Ruka hadi sehemu muhimu</string>
   <string name="morphe_sb_skip_button_intro_beginning">Ruka utangulizi</string>
   <string name="morphe_sb_skip_button_intro_middle">Ruka mapumziko</string>
-  <string name="morphe_sb_skip_button_intro_end">Ruka mapumziko</string>
   <string name="morphe_sb_skip_button_outro">Ruka hitimisho</string>
   <string name="morphe_sb_skip_button_hook">Ruka sehemu ya kuvutia</string>
   <string name="morphe_sb_skip_button_preview_beginning">Ruka maoni ya awali</string>
-  <string name="morphe_sb_skip_button_preview_middle">Ruka maoni ya awali</string>
   <string name="morphe_sb_skip_button_preview_end">Ruka muhtasari</string>
   <string name="morphe_sb_skip_button_filler">Ruka mada isiyo husika</string>
   <string name="morphe_sb_skip_button_nomusic">Ruka zisizo na muziki</string>
@@ -137,11 +115,9 @@ ID yako ya mtumiaji ni kama nywila, na haipaswi kushirikiwa kamwe"</string>
   <string name="morphe_sb_skipped_highlight">Imerukwa hadi sehemu muhimu</string>
   <string name="morphe_sb_skipped_intro_beginning">Utangulizi umerukwa</string>
   <string name="morphe_sb_skipped_intro_middle">Mapumziko yamerukwa</string>
-  <string name="morphe_sb_skipped_intro_end">Mapumziko yamerukwa</string>
   <string name="morphe_sb_skipped_outro">Kimalizio kimerukwa</string>
   <string name="morphe_sb_skipped_hook">Kivutio kimerukwa</string>
   <string name="morphe_sb_skipped_preview_beginning">Onyesho limerukwa</string>
-  <string name="morphe_sb_skipped_preview_middle">Onyesho limerukwa</string>
   <string name="morphe_sb_skipped_preview_end">Muhtasari umerukwa</string>
   <string name="morphe_sb_skipped_filler">Mada isiyohusika imerukwa</string>
   <string name="morphe_sb_skipped_nomusic">Sehemu isiyo ya muziki imerukwa</string>
@@ -167,8 +143,6 @@ Tayari ipo"</string>
   <string name="morphe_sb_vote_failed_timeout">Huwezi kupiga kura kwa sehemu (API imeisha muda)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Hakuwezekana kupiga kura kwa kipande (hali: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Huwezi kupiga kura kwa sehemu: %s</string>
-  <string name="morphe_sb_vote_upvote">Piga kura juu</string>
-  <string name="morphe_sb_vote_downvote">Piga kura chini</string>
   <string name="morphe_sb_vote_category">Badilisha kategoria</string>
   <string name="morphe_sb_vote_no_segments">Hakuna sehemu za kupigia kura</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ mpaka
 (%3$s)
 
 Uko tayari kutuma?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Tuma</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Mwanzo lazima uwe kabla ya mwisho</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Kwanza weka alama ya eneo kwenye baa ya muda</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Angalia sehemu hiyo, na uhakikishe inaruka bila matatizo</string>
@@ -205,16 +178,11 @@ Uko tayari kutuma?"</string>
 %s
 
 Kama huwasilishi sehemu muhimu, gusa Ghairi na uashirie eneo la pili"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Wasilisha sehemu muhimu</string>
   <string name="morphe_sb_stats_title">Takwimu</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Takwimu hazipatikani kwa muda (API imezimika)</string>
-  <string name="morphe_sb_stats_loading">Inapakia…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock imezimwa</string>
-  <string name="morphe_sb_stats_username">Jina lako la mtumiaji: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Gusa hapa ili kubadilisha jina lako la mtumiaji</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Hakuwezekana kubadilisha jina la mtumiaji: Hali: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Jina la mtumiaji limebadilishwa kikamilifu</string>
   <string name="morphe_sb_stats_reputation">Sifa yako ni &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Umetengeneza sehemu &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions_summary">Gusa hapa ili kuona sehemu zako</string>

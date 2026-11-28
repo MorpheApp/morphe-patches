@@ -627,6 +627,7 @@ public class BaseInAppDownloadsPatch {
             // The video details of other clients lack the music video type, and YouTube Music
             // then shows a black player background instead of the colors of the album artwork.
             // The video details of the app's own response are kept, including the fields the proto does not declare.
+            // YouTube Music declines with only the video id, and fills in the rest of the video details itself.
             VideoDetails details = original.getVideoDetails();
             final int replacementLength = builder.getVideoDetails().getLengthSeconds();
             if (details.getLengthSeconds() <= 0 && replacementLength > 0) {

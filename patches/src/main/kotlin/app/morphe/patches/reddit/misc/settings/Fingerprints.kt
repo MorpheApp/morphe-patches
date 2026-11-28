@@ -169,13 +169,19 @@ internal object IconDataToStringFingerprint : Fingerprint(
 /**
  * Icon composable of the Reddit icon set.
  * (icon, content description, modifier, tint, ?, composer, changed, defaults)
+ * The icon is the class of [IconDataToStringFingerprint].
  *
  * 2026.30.0+
  */
-internal class IconComposableFingerprint(iconDataType: String) : Fingerprint(
+internal object IconComposableFingerprint : Fingerprint(
     isStatic = true,
     returnType = "V",
-    parameters = listOf(iconDataType, "Ljava/lang/String;", "L", "J", "Z", "L", "I", "I")
+    parameters = {
+        listOf(
+            IconDataToStringFingerprint.originalClassDef.type,
+            "Ljava/lang/String;", "L", "J", "Z", "L", "I", "I"
+        )
+    }
 )
 
 // 2026.25.0 - 2026.29.0
@@ -353,4 +359,32 @@ internal object IsPrivacyPolicyReplacedFingerprint : Fingerprint(
     name = "isPrivacyPolicyReplaced",
     returnType = "Z",
     parameters = listOf()
+)
+
+/**
+ * Fragment.requireActivity(), which returns the activity of [RedditActivityFingerprint].
+ */
+internal object FragmentRequireActivityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = { RedditActivityFingerprint.originalClassDef.type },
+    parameters = listOf(),
+    filters = listOf(
+        string(" not attached to an activity.")
+    )
+)
+
+/**
+ * Fragment.startActivityForResult(), in the class of [FragmentRequireActivityFingerprint].
+ */
+internal object FragmentStartActivityForResultFingerprint : Fingerprint(
+    definingClass = { FragmentRequireActivityFingerprint.originalMethod.definingClass },
+    returnType = "V",
+    parameters = listOf(
+        "Landroid/content/Intent",
+        "I",
+        "Landroid/os/Bundle;"
+    ),
+    filters = listOf(
+        string(" not attached to Activity"),
+    )
 )

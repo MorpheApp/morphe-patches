@@ -45,10 +45,10 @@ public class MusicGlassMiniplayerPreference extends SeekBarsPreviewPreference {
     };
 
     private static final String[] TITLES = {
-            "morphe_music_miniplayer_glass_corner_radius_title",
+            "morphe_corner_radius_title",
             "morphe_music_miniplayer_glass_artwork_padding_title",
-            "morphe_music_miniplayer_glass_rim_title",
-            "morphe_music_miniplayer_glass_opacity_title"
+            "morphe_music_rim_brightness_title",
+            "morphe_music_opacity_title"
     };
 
     private static final int INDEX_CORNER_RADIUS = 0;

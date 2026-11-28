@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -118,6 +117,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
   <!-- interaction.commentsearch.commentSearchPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -165,7 +165,6 @@ Second \"item\" text"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <!-- layout.hide.infocards.hideInfocardsPatch -->
@@ -184,6 +183,7 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
   <!-- interaction.autoplay.autoplayControlPatch -->
+  <!-- interaction.cast.restoreOldCastPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
@@ -235,6 +235,7 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- misc.links.openSharedLinksPatch -->
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
   <!-- video.effects.videoEffectsPatch -->
@@ -256,4 +257,7 @@ Second \"item\" text"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <!-- Shared YouTube strings -->
+  <string name="morphe_hide_in_watch_history_title">ୱାଚ୍ ହିଷ୍ଟୋରୀରେ ଲୁଚାନ୍ତୁ</string>
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
 </resources>

@@ -54,8 +54,17 @@ internal fun resolveNativeAccountContract(): NativeAccountContract {
     return NativeAccountContract(contract, idGetter.signature(), incognitoGetter.signature())
 }
 
-internal fun wirePrivacy(): NativeAccountContract {
-    val account = resolveNativeAccountContract()
+internal fun wirePrivacy(): NativeAccountContract = resolveNativeAccountContract().also { account ->
+    hookCurrentAccountProvider(account, SOURCE, "patch_seriesTrackerIdentity", IDENTITY, "$PRIVACY->attach")
+}
+
+internal fun hookCurrentAccountProvider(
+    account: NativeAccountContract,
+    source: String,
+    getter: String,
+    identity: String,
+    attach: String,
+) {
     val contract = account.type
     // There are two current-account providers. Either one can be the active provider.
     val providers = CurrentAccountProviderFingerprint.matchAll()
@@ -66,8 +75,8 @@ internal fun wirePrivacy(): NativeAccountContract {
         val current = currentMatch.originalMethod
         val mutable = currentMatch.classDef
         mutable.addPatchInterface(
-            SOURCE,
-            "patch_seriesTrackerIdentity",
+            source,
+            getter,
             """
                 invoke-virtual {p0}, $current
                 move-result-object v0
@@ -76,8 +85,8 @@ internal fun wirePrivacy(): NativeAccountContract {
                 move-result-object v1
                 invoke-interface {v0}, $contract->${account.incognito}
                 move-result v2
-                new-instance v3, $IDENTITY
-                invoke-direct {v3, v1, v2}, $IDENTITY-><init>(Ljava/lang/String;Z)V
+                new-instance v3, $identity
+                invoke-direct {v3, v1, v2}, $identity-><init>(Ljava/lang/String;Z)V
                 return-object v3
                 :unknown
                 const/4 v0, 0x0
@@ -88,8 +97,7 @@ internal fun wirePrivacy(): NativeAccountContract {
         // does not establish which provider is active. attach() never calls back into the provider.
         currentMatch.method.addInstructions(
             0,
-            "invoke-static/range {p0 .. p0}, $PRIVACY->attach($SOURCE)V",
+            "invoke-static/range {p0 .. p0}, $attach($source)V",
         )
     }
-    return account
 }

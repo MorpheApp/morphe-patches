@@ -15,6 +15,19 @@ import app.morphe.extension.reddit.settings.Settings;
 public final class FullWidthFeedMediaPatch {
 
     /**
+     * Implemented by the content props of the post details during patching.
+     */
+    public interface PostContentProps {
+        Object patch_getPostContent();
+    }
+
+    /**
+     * Implemented by GIF and video post content during patching.
+     */
+    public interface VideoContent {
+    }
+
+    /**
      * @return If this patch was included during patching.
      */
     @SuppressWarnings("SameReturnValue")
@@ -84,29 +97,13 @@ public final class FullWidthFeedMediaPatch {
     }
 
     /**
-     * @return The content of post details content props.
-     */
-    @SuppressWarnings("SameReturnValue")
-    public static Object getPostContent(Object props) {
-        return null;  // Modified during patching.
-    }
-
-    /**
-     * @return If post content is a GIF or video.
-     */
-    @SuppressWarnings("SameReturnValue")
-    public static boolean isVideoContent(Object content) {
-        return false;  // Modified during patching.
-    }
-
-    /**
      * Injection point.
      * <p>
      * The post details pad videos at the sides, with the rest of the post content.
      */
     public static boolean isPostContentInset(boolean original, Object props) {
         if (!original || !Settings.FULL_WIDTH_FEED_MEDIA.get()) return original;
-        return !isVideoContent(getPostContent(props));
+        return !(((PostContentProps) props).patch_getPostContent() instanceof VideoContent);
     }
 
     /**

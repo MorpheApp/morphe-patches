@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">مُخصّص</string>
-  <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
   <string name="morphe_custom_branding_icon_entry_1">الأصلية</string>
   <string name="morphe_custom_branding_icon_entry_2">أسود Morphe</string>
   <string name="morphe_custom_branding_icon_entry_3">داكن Morphe</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">لا تعرض مرة أخرى</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
   <string name="morphe_spoof_video_streams_screen_summary">ضبط خاصية تمويه هوية العميل لمنع مشاكل التشغيل</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 قد تفشل عملية تشغيل الفيديو حتى يتم تحديث Android System WebView إلى أحدث إصدار.
 
 انقر على موافق لفتح Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">لا تعرض مرة أخرى</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView غير مثبت. يرجى تثبيته لإصلاح تشغيل الفيديو</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">عناصر التحكم في وسائط الإشعارات</string>
   <string name="morphe_notification_media_screen_summary">تخصيص عناصر التحكم في التشغيل المعروضة على شاشة القفل ولوحة الإشعارات</string>
-  <string name="morphe_hide_notification_media_prev_next_title">إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_notification_media_prev_next_summary">يخفي أزرار \'السابق\' و \'التالي\' في إشعار الوسائط، شاشة القفل، وعناصر تحكم سماعة الرأس</string>
   <string name="morphe_disable_notification_media_seekbar_title">تعطيل شريط التمرير</string>
   <string name="morphe_disable_notification_media_seekbar_summary">يمنع سحب شريط التقدم على شاشة القفل ولوحة الإشعارات</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">استعادة الإعدادات الافتراضية</string>
   <string name="morphe_video_effects_custom_add_title">تأثير جديد</string>
   <string name="morphe_video_effects_custom_edit_title">تعديل التأثير</string>
-  <string name="morphe_video_effects_custom_name_hint">الاسم</string>
   <string name="morphe_video_effects_custom_name_empty">أدخل اسمًا للتأثير</string>
   <string name="morphe_video_effects_custom_name_exists">يوجد تأثير بهذا الاسم بالفعل</string>
-  <string name="morphe_video_effects_custom_copy_code">نسخ الرمز</string>
   <string name="morphe_video_effects_custom_error_title">يوجد خطأ في التأثير</string>
   <string name="morphe_video_effects_custom_error_message">"تظهر الفيديوهات بدون التأثير حتى يتم إصلاح الكود. قدم هذا الخطأ للذكاء الاصطناعي الذي كتب الكود:
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 اطلب من الذكاء الاصطناعي رمزًا أقصر، أو قم بلصق الرمز على أجزاء."</string>
   <string name="morphe_video_effects_custom_copy_error">خطأ في النسخ</string>
   <string name="morphe_video_effects_custom_save_anyway">حفظ على أي حال</string>
-  <string name="morphe_video_effects_custom_delete">حذف</string>
   <string name="morphe_video_effects_custom_delete_title">حذف التأثير؟</string>
   <string name="morphe_video_effects_custom_delete_message">سيتم حذف %s.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams\' إلى أي عميل باستثناء \'Android Studio\' و \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">تنظيف روابط المشاركة</string>
-  <string name="morphe_sanitize_sharing_links_summary">يزيل وسيط التتبع من الروابط المُشاركة</string>
   <string name="morphe_replace_music_with_youtube_title">تغيير روابط المشاركة إلى youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">يستبدل music.youtube.com بـ youtube.com في الروابط المُشاركة</string>
   <string name="morphe_replace_links_with_shortener_title">تغيير روابط المشاركة إلى youtu.be</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">الخط</string>
   <string name="morphe_custom_font_type_entry_default">الافتراضي</string>
   <string name="morphe_custom_font_type_entry_system">خط نظام الجهاز</string>
-  <string name="morphe_custom_font_type_entry_custom">ملف خط مخصص</string>
   <string name="morphe_custom_font_file_title">ملف خط مخصص</string>
   <string name="morphe_custom_font_file_summary">اختر ملف خط TTF أو OTF</string>
   <string name="morphe_custom_font_file_invalid">الملف المحدد ليس خط بصيغة TTF أو OTF</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">تظهر القوائم كزجاج متجمد فوق المحتوى المضبّب خلفها</string>
   <string name="morphe_glass_menus_title">تمكين القوائم الزجاجية</string>
   <string name="morphe_glass_menus_summary">عرض القوائم والصفحات السفلية كزجاج متجمد، مع تمويه المحتوى الموجود خلفها</string>
-  <string name="morphe_glass_menus_opacity_title">شفافية الزجاج</string>
   <string name="morphe_glass_menus_opacity_summary">مدى تغطية القائمة للمحتوى المضبّب (0 شفاف، 100 معتم)</string>
   <string name="morphe_glass_menus_blur_title">الضبابيّة</string>
   <string name="morphe_glass_menus_blur_summary">مدى ضبابيّة المحتوى الموجود خلف القائمة</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">يعرض إحصائية لم يعجبني كنسبة مئوية من الإعجابات بدلًا من رقم</string>
   <string name="morphe_ryd_estimated_like_title">عرض الإعجابات المقدرة</string>
   <string name="morphe_ryd_estimated_like_summary">يعرض عددًا تقديريًا للإعجابات في الفيديوهات التي قام المنشئ بتعطيل الإعجابات فيها</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">عرض تنبيهات خطأ الاتصال</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">يعرض إشعارًا عند تعذر توفر خادم Return YouTube Dislike</string>
   <string name="morphe_ryd_attribution_summary">"يعيد Return YouTube Dislike عرض عدد مرات عدم الإعجاب التي أخفاها YouTube في عام 2021. تأتي الأعداد من بيانات مؤرشفة قبل الإزالة وتُقدَّر للفيديوهات الأحدث من خلال أصوات مستخدميه، لذا فهي تقريبية وتُحدَّث كل بضعة أيام
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">لم يتم مواجهة أي حدود لمعدل العميل</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">تم تجاوز حد معدل العميل %s مرة</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s جزء الثانية</string>
-  <string name="morphe_navigation_bar_screen_title">شريط التنقل</string>
   <string name="morphe_navigation_bar_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 ثانية</string>
+  <string name="morphe_duration_2s">2 ثانية</string>
+  <string name="morphe_duration_3s">3 ثوانٍ</string>
+  <string name="morphe_duration_4s">4 ثوانٍ</string>
+  <string name="morphe_duration_5s">5 ثوانٍ</string>
+  <string name="morphe_duration_6s">6 ثوانٍ</string>
+  <string name="morphe_duration_7s">7 ثوانٍ</string>
+  <string name="morphe_duration_8s">8 ثوانٍ</string>
+  <string name="morphe_duration_9s">9 ثوانٍ</string>
+  <string name="morphe_duration_10s">10 ثوانٍ</string>
+  <string name="morphe_change_start_page_entry_default">الافتراضية</string>
+  <string name="morphe_change_start_page_entry_explore">استكشف</string>
+  <string name="morphe_change_start_page_entry_history">السجلّ</string>
+  <string name="morphe_change_start_page_entry_library">المكتبة</string>
+  <string name="morphe_change_start_page_entry_playlists">قوائم التشغيل</string>
+  <string name="morphe_change_start_page_entry_search">البحث</string>
+  <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
+  <string name="morphe_change_start_page_title">صفحة البدء</string>
+  <string name="morphe_action_buttons_screen_title">أزرار الإجراء</string>
+  <string name="morphe_comments_screen_title">التعليقات</string>
+  <string name="morphe_feed_screen_title">الخلاصة</string>
+  <string name="morphe_flyout_menu_screen_title">القائمة المنبثقة</string>
+  <string name="morphe_general_title">عام</string>
+  <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
+  <string name="morphe_player_screen_title">المشغل</string>
+  <string name="morphe_video_screen_title">الفيديو</string>
+  <string name="morphe_appearance_title">المظهر</string>
+  <string name="morphe_cancel">إلغاء</string>
+  <string name="morphe_comments_screen_summary">اختر المكونات التي تظهر في قسم التعليقات</string>
+  <string name="morphe_copy_code">نسخ الرمز</string>
+  <string name="morphe_corner_radius_title">تقوس زاوية الأركان</string>
+  <string name="morphe_do_not_show_again">لا تعرض مرة أخرى</string>
+  <string name="morphe_download_force_4k_title">فرض توفُّر تنزيل 4K</string>
+  <string name="morphe_glass_opacity_title">شفافية الزجاج</string>
+  <string name="morphe_header_logo_title">علامة الشعار</string>
+  <string name="morphe_hide_action_bar_title">إخفاء شريط الإجراءات</string>
+  <string name="morphe_hide_cast_button_title">إخفاء زر البث</string>
+  <string name="morphe_hide_comments_button_title">إخفاء زر التعليقات</string>
+  <string name="morphe_hide_comments_community_guidelines_title">إخفاء إرشادات المجتمع</string>
+  <string name="morphe_hide_comments_emoji_button_title">إخفاء زر الإيموجي</string>
+  <string name="morphe_hide_comments_gif_button_title">إخفاء زر GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">يخفي الصور والمتحركة GIF المرفقة بالتعليقات والردود</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">إخفاء GIFs والصور</string>
+  <string name="morphe_hide_comments_info_button_title">إخفاء زر المعلومات</string>
+  <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
+  <string name="morphe_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
+  <string name="morphe_hide_like_dislike_button_title">إخفاء زري أعجبني ولم يعجبني</string>
+  <string name="morphe_hide_like_dislike_buttons_title">إخفاء أزرار أعجبني ولم يعجبني</string>
+  <string name="morphe_hide_navigation_bar_title">إخفاء شريط التنقل</string>
+  <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
+  <string name="morphe_hide_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
+  <string name="morphe_hide_search_button_title">إخفاء زر البحث</string>
+  <string name="morphe_hide_translate_button_title">إخفاء زر الترجمة</string>
+  <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
+  <string name="morphe_loading">جارٍ التحميل…</string>
+  <string name="morphe_name">الاسم</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$s من %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
+  <string name="morphe_navigation_bar_glass_size_width">أقصى عرض</string>
+  <string name="morphe_navigation_bar_glass_title">تمكين شريط التنقل الزجاجي</string>
+  <string name="morphe_positive_number_invalid">يجب أن تكون القيمة رقمًا موجبًا</string>
+  <string name="morphe_private_user_id_invalid">يجب أن يكون معرف المستخدم الخاص 30 حرفًا على الأقل</string>
+  <string name="morphe_private_user_id_title">معرف المستخدم User ID الفريد الخاص بك</string>
+  <string name="morphe_rename">إعادة تسمية</string>
+  <string name="morphe_show_settings_button_title">عرض زر الإعدادات</string>
+  <string name="morphe_show_settings_button_type_title">إجراء زر الإعدادات</string>
+  <string name="morphe_show_video_effect_menu_title">عرض قائمة تأثيرات الفيديو</string>
+  <string name="morphe_submit">إرسال</string>
+  <string name="morphe_time_adjustment_step_title">مقدار تعديل الوقت</string>
+  <string name="morphe_toast_on_connection_error_title">عرض تنبيهات خطأ الاتصال</string>
+  <string name="morphe_toast_on_skip_title">عرض إشعار التخطي</string>
+  <string name="morphe_translated_only">مترجم فقط</string>
+  <string name="morphe_translating">جارٍ الترجمة...</string>
+  <string name="morphe_translation_language_title">لغة الترجمة</string>
+  <string name="morphe_username_change_unknown_error">غير قادر على تغيير اسم المستخدم: الحالة: %1$s %2$s</string>
+  <string name="morphe_username_changed">تم تغيير اسم المستخدم بنجاح</string>
+  <string name="morphe_username_html">اسم المستخدم الخاص بك: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">الفيديوهات</string>
+  <string name="morphe_vote_downvote">اعتراض</string>
+  <string name="morphe_vote_upvote">تأييد</string>
 </resources>

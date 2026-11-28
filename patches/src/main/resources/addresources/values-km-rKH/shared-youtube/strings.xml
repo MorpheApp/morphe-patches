@@ -69,4 +69,10 @@ Second \"item\" text"</string>
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <!-- Shared strings -->
+  <string name="morphe_general_title">ជាទូទៅ</string>
+  <string name="morphe_player_screen_title">ការីចាក់</string>
+  <string name="morphe_hide_like_dislike_button_title">លាក់ប៊ូតុង Like និង Dislike</string>
+  <string name="morphe_hide_video_ads_title">លាក់វីដេអូពាណិជ្ជកម្មតាមវីដេអូ</string>
+  <string name="morphe_rename">ប្ដូរឈ្មោះ</string>
 </resources>

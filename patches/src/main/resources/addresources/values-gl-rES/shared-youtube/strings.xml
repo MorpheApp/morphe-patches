@@ -81,7 +81,6 @@ Verifica que o nome do paquete sexa correcto e que a aplicación estea instalada
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
-  <string name="morphe_custom_branding_icon_title">Icona da aplicación</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe negro</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe escuro</string>
@@ -107,7 +106,6 @@ Para cambiar a icona en todas as partes, aplica o parche de novo e cambia a opci
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso de Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">O teu historial de visualización non se está a gardar.&lt;br&gt;&lt;br&gt;Isto probablemente se debe a un bloqueador de anuncios DNS ou a un proxy de rede.&lt;br&gt;&lt;br&gt;Para solucionalo, engade &lt;b&gt;s.youtube.com&lt;/b&gt; á lista branca ou desactiva todos os bloqueadores DNS e proxies</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Non amosar de novo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Simular fluxos de vídeo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Configura a imitación do cliente para evitar problemas de reprodución</string>
@@ -134,7 +132,6 @@ Toca en OK para abrir Android System WebView."</string>
 A reprodución de vídeo pode fallar ata que Android System WebView se actualice á última versión.
 
 Toca en OK para abrir Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Non volver mostrar</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView non está instalado. Instalao para solucionar a reprodución de vídeo</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Para iniciar sesión, preme continuar a continuación"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Controls de multimedia de notificacións</string>
   <string name="morphe_notification_media_screen_summary">Personaliza os controls de reprodución que se amosan na pantalla de bloqueo e no panel de notificacións</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botóns Anterior &amp; Seguinte</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Oculta os botóns Anterior e Seguinte na notificación de multimedia, na pantalla de bloqueo e nos controls dos auriculares</string>
   <string name="morphe_disable_notification_media_seekbar_title">Desactivar barra de busca</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Impede arrastar a barra de busca na pantalla de bloqueo e no panel de notificacións</string>
@@ -244,10 +240,8 @@ Para iniciar sesión, preme continuar a continuación"</string>
   <string name="morphe_video_effects_custom_restore">Restaurar valores predefinidos</string>
   <string name="morphe_video_effects_custom_add_title">Novo efecto</string>
   <string name="morphe_video_effects_custom_edit_title">Editar efecto</string>
-  <string name="morphe_video_effects_custom_name_hint">Nome</string>
   <string name="morphe_video_effects_custom_name_empty">Introduce un nome para o efecto</string>
   <string name="morphe_video_effects_custom_name_exists">Xa existe un efecto con este nome</string>
-  <string name="morphe_video_effects_custom_copy_code">Copiar código</string>
   <string name="morphe_video_effects_custom_error_title">O efecto ten un erro</string>
   <string name="morphe_video_effects_custom_error_message">"Os vídeos móstranse sen o efecto ata que se corrixa o código. Dá este erro á IA que escribiu o código:
 
@@ -257,7 +251,6 @@ Para iniciar sesión, preme continuar a continuación"</string>
 Pídalle á IA un código máis curto ou pegue o código por partes."</string>
   <string name="morphe_video_effects_custom_copy_error">Erro ao copiar</string>
   <string name="morphe_video_effects_custom_save_anyway">Gardar de todos modos</string>
-  <string name="morphe_video_effects_custom_delete">Eliminar</string>
   <string name="morphe_video_effects_custom_delete_title">Eliminar efecto?</string>
   <string name="morphe_video_effects_custom_delete_message">%s será eliminado.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Pídalle á IA un código máis curto ou pegue o código por partes."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Para usar esta función, cambia \'Simular fluxos de vídeo\' por calquera cliente que non sexa \'Android Studio\' ou \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Limpar enlaces compartidos</string>
-  <string name="morphe_sanitize_sharing_links_summary">Elimina os parámetros de consulta de seguimento dos ligazóns compartidas</string>
   <string name="morphe_replace_music_with_youtube_title">Cambiar os enlaces de compartir a youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Substitúe music.youtube.com por youtube.com nos enlaces compartidos</string>
   <string name="morphe_replace_links_with_shortener_title">Cambiar os ligazóns de compartir a youtu.be</string>
@@ -371,7 +362,6 @@ Se se desactiva posteriormente, recoméndase borrar os datos da aplicación para
   <string name="morphe_custom_font_type_title">Fonte</string>
   <string name="morphe_custom_font_type_entry_default">Predefinido</string>
   <string name="morphe_custom_font_type_entry_system">Fonte do sistema do dispositivo</string>
-  <string name="morphe_custom_font_type_entry_custom">Fichero de fonte personalizada</string>
   <string name="morphe_custom_font_file_title">Fichero de fonte personalizada</string>
   <string name="morphe_custom_font_file_summary">Escolle un ficheiro de fonte TTF ou OTF</string>
   <string name="morphe_custom_font_file_invalid">O ficheiro seleccionado non é unha fonte TTF ou OTF</string>
@@ -381,7 +371,6 @@ Se se desactiva posteriormente, recoméndase borrar os datos da aplicación para
   <string name="morphe_glass_menus_screen_summary">Menús como vidro fosco sobre o contido borroso que hai detrás</string>
   <string name="morphe_glass_menus_title">Activar menus de vidro</string>
   <string name="morphe_glass_menus_summary">Mostra os menus e as follas inferiores como vidro esmerilado, co contido detrás deles desenfocado</string>
-  <string name="morphe_glass_menus_opacity_title">Opacidade do vidro</string>
   <string name="morphe_glass_menus_opacity_summary">Quanto cobre o menú o contido desenfocado (0 é transparente, 100 é opaco)</string>
   <string name="morphe_glass_menus_blur_title">Desenfoque</string>
   <string name="morphe_glass_menus_blur_summary">Quanto se desenfoca o contido detrás do menú</string>
@@ -402,7 +391,6 @@ Se se desactiva posteriormente, recoméndase borrar os datos da aplicación para
   <string name="morphe_ryd_dislike_percentage_summary">Amosa os dislikes como unha porcentaxe de likes en lugar dun número</string>
   <string name="morphe_ryd_estimated_like_title">Amosar likes estimados</string>
   <string name="morphe_ryd_estimated_like_summary">Amosa unha estimación do número de likes en vídeos onde o creador desactivou os likes</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Amosar alertas de erro de conexión</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra unha notificación cando o servidor de Return YouTube Dislike non está dispoñible</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura as contaxes de \"non gosta\" que YouTube ocultou en 2021. As contaxes provén de datos arquivados antes da eliminación e, para os vídeos máis recentes, estímanse a partir dos votos dos seus usuarios, polo que son aproximadas e actualízanse cada poucos días
 
@@ -424,8 +412,89 @@ O ID do vídeo que ves envíase á API de Return YouTube Dislike, e os teus \"g�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Non se atoparon límites de frecuencia do cliente</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Atopouse o límite de solicitudes do cliente %s veces</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisegundos</string>
-  <string name="morphe_navigation_bar_screen_title">Barra de navegación</string>
   <string name="morphe_navigation_bar_screen_summary">Elixe que botóns aparecen na barra de navegación inferior</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Escolle que compoñentes aparecen na barra de ferramentas</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 segundo</string>
+  <string name="morphe_duration_2s">2 segundos</string>
+  <string name="morphe_duration_3s">3 segundos</string>
+  <string name="morphe_duration_4s">4 segundos</string>
+  <string name="morphe_duration_5s">5 segundos</string>
+  <string name="morphe_duration_6s">6 segundos</string>
+  <string name="morphe_duration_7s">7 segundos</string>
+  <string name="morphe_duration_8s">8 segundos</string>
+  <string name="morphe_duration_9s">9 segundos</string>
+  <string name="morphe_duration_10s">10 segundos</string>
+  <string name="morphe_change_start_page_entry_default">Predefinido</string>
+  <string name="morphe_change_start_page_entry_explore">Explorar</string>
+  <string name="morphe_change_start_page_entry_history">Historial</string>
+  <string name="morphe_change_start_page_entry_library">Biblioteca</string>
+  <string name="morphe_change_start_page_entry_playlists">Listas de reprodución</string>
+  <string name="morphe_change_start_page_entry_search">Busca</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Subscripcións</string>
+  <string name="morphe_change_start_page_title">Páxina de inicio</string>
+  <string name="morphe_action_buttons_screen_title">Botóns de acción</string>
+  <string name="morphe_comments_screen_title">Comentarios</string>
+  <string name="morphe_feed_screen_title">Fuente</string>
+  <string name="morphe_flyout_menu_screen_title">Menú desplegable</string>
+  <string name="morphe_general_title">Xeneral</string>
+  <string name="morphe_miniplayer_screen_title">Reprodutor minimizado</string>
+  <string name="morphe_player_screen_title">Reprodutor</string>
+  <string name="morphe_video_screen_title">Vídeo</string>
+  <string name="morphe_appearance_title">Apariencia</string>
+  <string name="morphe_cancel">Cancelar</string>
+  <string name="morphe_comments_screen_summary">Escolle que compoñentes aparecen na sección de comentarios</string>
+  <string name="morphe_copy_code">Copiar código</string>
+  <string name="morphe_corner_radius_title">Raio da esquina</string>
+  <string name="morphe_do_not_show_again">Non amosar outra vez</string>
+  <string name="morphe_download_force_4k_title">Forzar dispoñibilidade de descarga 4K</string>
+  <string name="morphe_glass_opacity_title">Opacidade do vidro</string>
+  <string name="morphe_header_logo_title">Logotipo da cabeceira</string>
+  <string name="morphe_hide_action_bar_title">Ocultar barra de acción</string>
+  <string name="morphe_hide_cast_button_title">Ocultar botón de emisión</string>
+  <string name="morphe_hide_comments_button_title">Ocultar botón Comentarios</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Ocultar Directrices da comunidade</string>
+  <string name="morphe_hide_comments_emoji_button_title">Ocultar botón Emoji</string>
+  <string name="morphe_hide_comments_gif_button_title">Ocultar botón GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Oculta os GIFs e as imaxes anexadas aos comentarios e respostas</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ocultar GIFs e imaxes</string>
+  <string name="morphe_hide_comments_info_button_title">Ocultar botón Info</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Ocultar botón de marca temporal</string>
+  <string name="morphe_hide_horizontal_shelves_title">Ocultar baldas horizontais</string>
+  <string name="morphe_hide_like_dislike_button_title">Ocultar botón de Gústame e Non me gusta</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Ocultar botóns de Gústame e Non me gusta</string>
+  <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
+  <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas dos botóns de navegación</string>
+  <string name="morphe_hide_previous_next_buttons_title">Ocultar botóns Anterior &amp; Seguinte</string>
+  <string name="morphe_hide_search_button_title">Ocultar botón de busca</string>
+  <string name="morphe_hide_translate_button_title">Ocultar botón Traducir</string>
+  <string name="morphe_hide_video_ads_title">Ocultar anuncios de vídeo</string>
+  <string name="morphe_loading">Cargando…</string>
+  <string name="morphe_name">Nome</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Espaciado de botóns</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botóns amosados: %1$s de %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Altura</string>
+  <string name="morphe_navigation_bar_glass_size_width">Anchura máxima</string>
+  <string name="morphe_navigation_bar_glass_title">Activar barra de navegación de vidro</string>
+  <string name="morphe_positive_number_invalid">O valor debe ser un número positivo</string>
+  <string name="morphe_private_user_id_invalid">O ID de usuario privado debe ter polo menos 30 caracteres</string>
+  <string name="morphe_private_user_id_title">O seu ID de usuario privado</string>
+  <string name="morphe_rename">Renomear</string>
+  <string name="morphe_show_settings_button_title">Amosar botón de Axustes</string>
+  <string name="morphe_show_settings_button_type_title">Acción do botón de Axustes</string>
+  <string name="morphe_show_video_effect_menu_title">Amosar menú de efectos de vídeo</string>
+  <string name="morphe_submit">Enviar</string>
+  <string name="morphe_time_adjustment_step_title">Paso de axuste de tempo</string>
+  <string name="morphe_toast_on_connection_error_title">Amosar alertas de erro de conexión</string>
+  <string name="morphe_toast_on_skip_title">Amosar notificación de salto</string>
+  <string name="morphe_translated_only">Só traducido</string>
+  <string name="morphe_translating">Traducindo…</string>
+  <string name="morphe_translation_language_title">Lingua de tradución</string>
+  <string name="morphe_username_change_unknown_error">Imposible cambiar o nome de usuario: Estado: %1$s %2$s</string>
+  <string name="morphe_username_changed">Nome de usuario cambiado con éxito</string>
+  <string name="morphe_username_html">O seu nome de usuario: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Vídeos</string>
+  <string name="morphe_vote_downvote">Voto negativo</string>
+  <string name="morphe_vote_upvote">Voto positivo</string>
 </resources>

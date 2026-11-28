@@ -34,6 +34,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.hookVideoIntentInterceptor
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -109,6 +110,8 @@ val feedCardLayoutPatch = patch(
             ListPreference("morphe_feed_card_layout")
         )
 
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
         // The layout is chosen by the experiments that the server sends in the context of every element.
         hookElement("$EXTENSION_CLASS->setFeedCardLayout")
 
@@ -155,10 +158,7 @@ val feedCardLayoutPatch = patch(
                     addPatchInterface(
                         EXTENSION_ELEMENT_ITEM_INTERFACE,
                         "patch_getElementBytes",
-                        """
-                            iget-object v0, p0, $elementBytesField
-                            return-object v0
-                        """
+                        elementBytesField
                     )
                 }
             }

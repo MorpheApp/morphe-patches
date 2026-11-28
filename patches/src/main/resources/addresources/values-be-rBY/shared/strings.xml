@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Патрабуецца перазагрузка</string>
   <string name="morphe_settings_restart_dialog_message">Перазапусціце праграму, каб гэтыя змены ўступілі ў сілу</string>
   <string name="morphe_settings_restart">Перазагрузіць</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Імпартаваць</string>
-  <string name="morphe_settings_import_copy">Капіяваць</string>
   <string name="morphe_settings_import_reset">Налады Morphe скінуты да стандартных</string>
   <string name="morphe_settings_import_success">Імпартавана %s налад</string>
   <string name="morphe_settings_import_failure_parse">Імпарт не ўдаўся: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Патчы</string>
   <string name="morphe_settings_about_version">Версія</string>
-  <string name="morphe_settings_about_close">Закрыць</string>
   <string name="morphe_settings_about_prerelease">Прэрэліз</string>
   <string name="morphe_settings_about_update_available">Даступна абнаўленне: %s</string>
   <string name="morphe_settings_about_update_hint">Каб абнавіць патчы, выкарыстайце Morphe для паўторнага патчавання гэтай праграмы</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Заўвагі аб ліцэнзіі</string>
-  <string name="morphe_settings_about_licenses_loading">Загрузка…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Адладка</string>
   <string name="morphe_debug_screen_summary">Наладзьце пашыраныя параметры распрацоўшчыка і логі дыягностыкі</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Логі адладкі паспяхова экспартаваны</string>
   <string name="morphe_debug_export_logs_failed">Не ўдалося экспартаваць логі адладкі</string>
   <string name="morphe_debug_logs_search_hint">Пошук у логах адладкі…</string>
-  <string name="morphe_debug_export_logs_clear">Ачысціць</string>
   <string name="morphe_debug_logs_disabled">Логі адладкі адключаны</string>
   <string name="morphe_debug_logs_none_found">Логі адладкі не знойдзены</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Логі адладкі скапіяваны</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Заблакавана (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Прымусова (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Аўта</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Выкл.</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Укл.</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Прымусова ўключыць</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Заблакаваць</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Выдаліць</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Сцяги функцый захаваны</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Сцягі функцый скінуты</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Сцягі функцый скопіяваны ў буфер абмену</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Ваша версія MicroG v%1$s састарэла і можа выклікаць праблемы.
 
 Калі ласка, абнавіце MicroG да апошняй версіі v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Абнавіць</string>
   <string name="gms_core_dialog_ignore_text">Ігнараваць</string>
   <string name="gms_core_dialog_conflict_message">"Усталяваны MicroG не рэкамендуецца Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 Адключэнне аптымізацыі батарэі для MicroG не паўплывае негатыўна на выкарыстанне зараду.
 
 Націсніце кнопку працягу і дазвольце змены аптымізацыі"</string>
-  <string name="gms_core_dialog_continue_text">Працягнуць</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Паказаць дыялогавае акно аптымізацыі батарэі MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Адключэнне гэтай функцыі схавае запыт на аптымізацыю батарэі MicroG.
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Выпраўленне памылак</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Іншыя змены</string>
   <string name="morphe_patches_update_notice_dialog_more">…і яшчэ %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Абнавіць</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Адхіліць</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Журнал збою захаваны ў дакументы карыстальніка: %s</string>
   <string name="morphe_crash_log_saved">Журнал збою захаваны: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Пра Morphe</string>
+  <string name="morphe_ads_screen_title">Рэклама</string>
+  <string name="morphe_misc_screen_title">Разнастайнае</string>
+  <string name="morphe_navigation_bar_screen_title">Панэль навігацыі</string>
+  <string name="morphe_post_buttons_screen_title">Кнопкі пастоў</string>
+  <string name="morphe_custom_branding_icon_title">Іконка праграмы</string>
+  <string name="morphe_download">Спампаваць</string>
+  <string name="morphe_hide_create_button_title">Схаваць кнопку \"Стварыць\"</string>
+  <string name="morphe_hide_post_comment_button_title">Схаваць кнопку \"Каментар\"</string>
+  <string name="morphe_sanitize_sharing_links_summary">Выдаляе параметры адсочвання са спасылак, якімі дзеляцца</string>
+  <string name="morphe_sanitize_sharing_links_title">Ачысціць спасылкі для абагульвання</string>
+  <string name="morphe_settings_add">Дадаць</string>
+  <string name="morphe_settings_clear">Ачысціць</string>
+  <string name="morphe_settings_close">Закрыць</string>
+  <string name="morphe_settings_continue">Працягнуць</string>
+  <string name="morphe_settings_copy">Капіяваць</string>
+  <string name="morphe_settings_delete">Выдаліць</string>
+  <string name="morphe_settings_remove">Выдаліць</string>
+  <string name="morphe_settings_update">Абнавіць</string>
 </resources>

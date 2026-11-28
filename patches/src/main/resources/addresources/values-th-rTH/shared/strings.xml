@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">ต้องรีสตาร์ท</string>
   <string name="morphe_settings_restart_dialog_message">รีสตาร์ทแอปเพื่อให้การเปลี่ยนแปลงนี้มีผล</string>
   <string name="morphe_settings_restart">เริ่มต้นใหม่</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">นำเข้า</string>
-  <string name="morphe_settings_import_copy">คัดลอก</string>
   <string name="morphe_settings_import_reset">การตั้งค่า Morphe ถูกตั้งค่าเป็นค่าเริ่มต้น</string>
   <string name="morphe_settings_import_success">นำเข้าการตั้งค่า %s</string>
   <string name="morphe_settings_import_failure_parse">การนำเข้าล้มเหลว: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">แพตช์</string>
   <string name="morphe_settings_about_version">เวอร์ชัน</string>
-  <string name="morphe_settings_about_close">ปิด</string>
   <string name="morphe_settings_about_prerelease">รุ่นก่อนปล่อยตัวจริง</string>
   <string name="morphe_settings_about_update_available">มีอัปเดตพร้อมใช้งาน: %s</string>
   <string name="morphe_settings_about_update_hint">หากต้องการอัปเดตแพตช์ของคุณ ให้ใช้ Morphe เพื่อลงแพตช์แอปนี้อีกครั้ง</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">ข้อความแจ้งลิขสิทธิ์</string>
-  <string name="morphe_settings_about_licenses_loading">กำลังโหลด</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ดีบัก</string>
   <string name="morphe_debug_screen_summary">กำหนดค่าตัวเลือกขั้นสูงสำหรับนักพัฒนาและบันทึกการวินิจฉัย</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">ส่งออกบันทึกการแก้ไขข้อบกพร่องเรียบร้อยแล้ว</string>
   <string name="morphe_debug_export_logs_failed">ส่งออกบันทึกการแก้ไขข้อบกพร่องไม่สำเร็จ</string>
   <string name="morphe_debug_logs_search_hint">ค้นหาบันทึกการแก้ไขข้อบกพร่อง…</string>
-  <string name="morphe_debug_export_logs_clear">ล้าง</string>
   <string name="morphe_debug_logs_disabled">ปิดใช้งานการบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_logs_none_found">ไม่พบบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_logs_copied_to_clipboard">คัดลอกบันทึกการแก้ไขข้อบกพร่องแล้ว</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">ถูกบล็อก (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">ถูกบังคับ (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">อัตโนมัติ</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">ปิด</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">เปิด</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">บังคับเปิด</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">บล็อก</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">นำออก</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กคุณสมบัติแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กคุณสมบัติแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กคุณสมบัติไปยังคลิปบอร์ดแล้ว</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"MicroG v%1$s ของคุณล้าสมัยและอาจทำให้เกิดปัญหาได้
 
 โปรดอัปเดต MicroG เป็นเวอร์ชันล่าสุด v%2$s"</string>
-  <string name="gms_core_dialog_update_text">อัปเดต</string>
   <string name="gms_core_dialog_ignore_text">ไม่สนใจ</string>
   <string name="gms_core_dialog_conflict_message">"MicroG ที่ติดตั้งไว้ไม่ได้รับคำแนะนำจาก Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 การปิดใช้งานการปรับแบตเตอรี่สำหรับ MicroG จะไม่ส่งผลกระทบเชิงลบต่อการใช้งานแบตเตอรี่
 
 แตะปุ่มดำเนินการต่อ และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
-  <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">แสดงกล่องโต้ตอบการปรับปรุงประสิทธิภาพแบตเตอรี่ MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"การปิดใช้งานนี้จะซ่อนข้อความแจ้งการเพิ่มประสิทธิภาพแบตเตอรี่ MicroG
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 แก้ไขบั๊ก</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 การเปลี่ยนแปลงอื่นๆ</string>
   <string name="morphe_patches_update_notice_dialog_more">…และอีก %s รายการ</string>
-  <string name="morphe_patches_update_notice_dialog_update">อัปเดต</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">ปิด</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">บันทึกการขัดข้องถูกบันทึกไปยังเอกสารผู้ใช้แล้ว: %s</string>
   <string name="morphe_crash_log_saved">บันทึกการขัดข้องถูกบันทึกแล้ว: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">เกี่ยวกับ</string>
+  <string name="morphe_ads_screen_title">โฆษณา</string>
+  <string name="morphe_misc_screen_title">เบ็ดเตล็ด</string>
+  <string name="morphe_navigation_bar_screen_title">แถบนำทาง</string>
+  <string name="morphe_post_buttons_screen_title">ปุ่มโพสต์</string>
+  <string name="morphe_custom_branding_icon_title">ไอคอนแอป</string>
+  <string name="morphe_download">ดาวน์โหลด</string>
+  <string name="morphe_hide_create_button_title">ซ่อนปุ่มสร้าง</string>
+  <string name="morphe_hide_post_comment_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
+  <string name="morphe_sanitize_sharing_links_summary">ลบพารามิเตอร์การติดตามออกจากลิงก์ที่แชร์</string>
+  <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
+  <string name="morphe_settings_add">เพิ่ม</string>
+  <string name="morphe_settings_clear">ล้าง</string>
+  <string name="morphe_settings_close">ปิด</string>
+  <string name="morphe_settings_continue">ดำเนินการต่อ</string>
+  <string name="morphe_settings_copy">คัดลอก</string>
+  <string name="morphe_settings_delete">ลบ</string>
+  <string name="morphe_settings_remove">นำออก</string>
+  <string name="morphe_settings_update">อัปเดต</string>
 </resources>

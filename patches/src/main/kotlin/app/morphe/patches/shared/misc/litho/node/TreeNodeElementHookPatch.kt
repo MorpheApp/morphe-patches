@@ -81,10 +81,7 @@ internal fun createTreeNodeElementHookPatch(
                 addPatchInterface(
                     EXTENSION_LITHO_CONTAINER_INTERFACE,
                     "patch_getContainer",
-                    """
-                        iget-object v0, p0, $reference
-                        return-object v0
-                    """
+                    reference
                 )
             }
         }

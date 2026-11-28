@@ -234,3 +234,14 @@ internal object LithoButtonCommandFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Processes the framework updates of a response ([ElementsFrameworkUpdatesReaderFingerprint]).
+ * Takes the account of the response, which the processor does not use for Elements resources.
+ */
+internal object ElementsFrameworkUpdatesProcessFingerprint : Fingerprint(
+    classFingerprint = ElementsFrameworkUpdatesFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = { listOf("L", ElementsFrameworkUpdatesReaderFingerprint.originalMethod.parameterTypes.first()) }
+)

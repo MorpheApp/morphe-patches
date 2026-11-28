@@ -248,9 +248,9 @@ public final class GhostPlayToolbarButton {
             icon.setImageResource(iconId);
         }
 
+        pill.setPadding(Dim.dp(6), Dim.dp(4), Dim.dp(6), Dim.dp(4));
+        pill.setBackground(null);
         if (active) {
-            pill.setPadding(Dim.dp(6), Dim.dp(4), Dim.dp(6), Dim.dp(4));
-            pill.setBackground(null);
             icon.setColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
             if (rem > 0) {
                 timerLabel.setVisibility(View.VISIBLE);
@@ -261,14 +261,12 @@ public final class GhostPlayToolbarButton {
             }
             pill.setContentDescription(str("morphe_ghost_play_session_on_toast"));
         } else {
-            pill.setPadding(Dim.dp(6), Dim.dp(4), Dim.dp(6), Dim.dp(4));
-            pill.setBackground(null);
             icon.setColorFilter(
                     GhostTheme.adjustAlpha(ThemeUtils.getAppForegroundColor(), 0.72f),
                     PorterDuff.Mode.SRC_IN
             );
             timerLabel.setVisibility(View.GONE);
-            pill.setContentDescription(str("morphe_ghost_play_dialog_title"));
+            pill.setContentDescription(str("morphe_ghost_play_screen_title"));
         }
 
         if (animate && GhostTheme.areAnimationsEnabled(pill.getContext())) {

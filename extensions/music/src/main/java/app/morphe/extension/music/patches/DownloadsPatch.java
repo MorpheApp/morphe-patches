@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.album.AlbumRequests;
 import app.morphe.extension.music.patches.components.PlaylistPageFilter;
 import app.morphe.extension.music.patches.components.SongMenuFilter;
 import app.morphe.extension.music.settings.Settings;
@@ -32,10 +33,15 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
 import app.morphe.extension.shared.innertube.Offline.OfflineFormatType;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlayerResponse;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
 import app.morphe.extension.shared.innertube.Offline.OfflineVideoAction;
 import app.morphe.extension.shared.innertube.Offline.OfflineVideoEndpoint;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ThumbnailEntry;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ThumbnailList;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.VideoDetails;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
@@ -64,6 +70,117 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
     private static final int UPSELL_PARAMETERS_PLAYLIST = 5;
     private static final int UPSELL_PLAYLIST_ITEM = 10;
     private static final int UPSELL_PLAYLIST_ID = 3;
+
+    /**
+     * How long a download waits for the queue entry of its song.
+     */
+    private static final long SONG_DETAILS_TIMEOUT_MILLISECONDS = 5 * 1000;
+
+    /**
+     * Separator of the parts of the byline of a queue entry, such as the artist and the duration.
+     */
+    private static final String BYLINE_SEPARATOR = " • ";
+
+    /**
+     * Injection point.
+     * <p>
+     * Called off the main thread with the player response the app saves a song with.
+     * The streams of another client are saved if the server declines to save the song,
+     * with the video details of the song from its queue entry.
+     *
+     * @see BaseInAppDownloadsPatch#replaceDeclinedOfflinePlayerResponse(Object, boolean)
+     */
+    @Nullable
+    public static byte[] replaceDeclinedOfflinePlayerResponse(@Nullable Object playerResponse,
+                                                               boolean saveStoryboards) {
+        byte[] response = BaseInAppDownloadsPatch.replaceDeclinedOfflinePlayerResponse(
+                playerResponse, saveStoryboards);
+        return response == null ? null : withSongDetails(response);
+    }
+
+    /**
+     * The declined response has only the video id in its video details, and the video details of
+     * other clients are of the video: their thumbnails are of the video, their author is the
+     * channel, and they lack the music video type. The app then shows a saved song as a video until
+     * its queue loads, and with a black player background. The video details are filled in from
+     * the queue entry of the song, as YouTube Music saves them for a song.
+     *
+     * @return The player response with the video details of the song, or the player response as it is
+     *         if the queue entry of the song is not available.
+     */
+    private static byte[] withSongDetails(byte[] response) {
+        try {
+            OfflinePlayerResponse playerResponse = OfflinePlayerResponse.parseFrom(response);
+            VideoDetails details = playerResponse.getVideoDetails();
+            String videoId = details.getVideoId();
+            if (videoId.isEmpty()) {
+                return response;
+            }
+
+            byte[] entry = AlbumRequests.getSongs(List.of(videoId), SONG_DETAILS_TIMEOUT_MILLISECONDS)
+                    .get(videoId);
+            if (entry == null) {
+                Logger.printDebug(() -> "No queue entry for the video details of: " + videoId);
+                return response;
+            }
+
+            PlaylistQueueRenderer.Video song = PlaylistQueueRenderer.Video.parseFrom(entry);
+            VideoDetails.Builder builder = details.toBuilder();
+
+            String title = textOf(song.getTitle(), null);
+            if (!title.isEmpty()) {
+                builder.setTitle(title);
+            }
+
+            String artist = textOf(song.getShortBylineText(), BYLINE_SEPARATOR);
+            if (!artist.isEmpty()) {
+                builder.setOwnerChannelName(artist);
+            }
+
+            if (song.getThumbnails().getImagesCount() > 0) {
+                ThumbnailList.Builder thumbnails = ThumbnailList.newBuilder();
+                for (PlaylistQueueRenderer.Thumbnail image : song.getThumbnails().getImagesList()) {
+                    thumbnails.addThumbnails(ThumbnailEntry.newBuilder()
+                            .setUrl(image.getUrl())
+                            .setWidth(image.getWidth())
+                            .setHeight(image.getHeight()));
+                }
+                builder.setThumbnail(thumbnails);
+            }
+
+            final int musicVideoType = song.getNavigationEndpoint().getWatchEndpoint()
+                    .getMusicSupportedConfigs().getMusicConfig().getMusicVideoType();
+            if (musicVideoType != 0) {
+                builder.setMusicVideoType(musicVideoType);
+            }
+
+            Logger.printDebug(() -> "Saving the video details of the queue entry of: " + videoId
+                    + " title: " + title + " artist: " + artist + " music video type: " + musicVideoType);
+            return playerResponse.toBuilder().setVideoDetails(builder).build().toByteArray();
+        } catch (Exception ex) {
+            Logger.printException(() -> "withSongDetails failure", ex);
+            return response;
+        }
+    }
+
+    /**
+     * @param stopAt Text of the run to stop at, or null for all runs.
+     * @return The text of the runs before the run with the stop text.
+     */
+    private static String textOf(PlaylistQueueRenderer.Text text, @Nullable String stopAt) {
+        if (text.getRunsCount() == 0) {
+            return text.getSimpleText();
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for (PlaylistQueueRenderer.TextRun run : text.getRunsList()) {
+            if (run.getText().equals(stopAt)) {
+                break;
+            }
+            builder.append(run.getText());
+        }
+        return builder.toString();
+    }
 
     /**
      * Liked music, user and editorial playlists, mixes, album playlists and album pages,

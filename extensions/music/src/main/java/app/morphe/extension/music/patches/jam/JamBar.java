@@ -115,11 +115,11 @@ public final class JamBar extends LinearLayout {
         subtitle.setText(JamPanel.status(view));
         action.setText(
                 "Host".equals(role)
-                        ? str("morphe_music_jam_manage")
+                        ? str("morphe_music_manage")
                         : "Participant".equals(role)
                         ? str("morphe_music_jam_details")
                         : "Joining".equals(role)
-                        ? str("morphe_music_jam_cancel")
+                        ? str("morphe_cancel")
                         : str("morphe_music_jam_open")
         );
         boolean busy = JamPanel.waiting(view);

@@ -81,7 +81,6 @@ Kiểm tra xem tên gói có chính xác không và ứng dụng đã được c
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tùy chỉnh</string>
-  <string name="morphe_custom_branding_icon_title">Biểu tượng ứng dụng</string>
   <string name="morphe_custom_branding_icon_entry_1">Gốc</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe đen</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tối</string>
@@ -107,7 +106,6 @@ Cài đặt này sẽ không thay đổi biểu tượng ở bất kỳ vị tr�
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Để khắc phục, hãy thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Không hiện lại</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng phát video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Cấu hình giả mạo client nhằm tránh lỗi khi phát</string>
@@ -134,7 +132,6 @@ Nhấn OK để mở Android System WebView."</string>
 Việc phát video có thể bị lỗi cho đến khi Android System WebView được cập nhật lên phiên bản mới nhất.
 
 Nhấn OK để mở Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Không hiện lại nữa</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView chưa được cài đặt. Hãy cài đặt ứng dụng để khắc phục lỗi phát video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Nhấn OK để mở Android System WebView."</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Điều khiển phương tiện thông báo</string>
   <string name="morphe_notification_media_screen_summary">Tùy chỉnh giao diện điều khiển phát nhạc/video hiển thị trên màn hình khóa và bảng thông báo</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Ẩn các nút Trước &amp; Tiếp theo</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ẩn các nút Trước và Tiếp theo trong thông báo phương tiện, màn hình khóa và điều khiển tai nghe</string>
   <string name="morphe_disable_notification_media_seekbar_title">Tắt thanh trượt</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Ngăn không cho kéo thanh tiến trình trên màn hình khóa và bảng thông báo</string>
@@ -244,10 +240,8 @@ Nhấn OK để mở Android System WebView."</string>
   <string name="morphe_video_effects_custom_restore">Khôi phục mặc định</string>
   <string name="morphe_video_effects_custom_add_title">Hiệu ứng mới</string>
   <string name="morphe_video_effects_custom_edit_title">Chỉnh sửa hiệu ứng</string>
-  <string name="morphe_video_effects_custom_name_hint">Tên</string>
   <string name="morphe_video_effects_custom_name_empty">Nhập tên cho hiệu ứng</string>
   <string name="morphe_video_effects_custom_name_exists">Đã tồn tại một hiệu ứng có tên này</string>
-  <string name="morphe_video_effects_custom_copy_code">Sao chép mã</string>
   <string name="morphe_video_effects_custom_error_title">Hiệu ứng có lỗi</string>
   <string name="morphe_video_effects_custom_error_message">"Video sẽ được hiển thị mà không có hiệu ứng cho đến khi mã được sửa. Hãy gửi lỗi này cho AI đã viết mã:
 
@@ -257,7 +251,6 @@ Nhấn OK để mở Android System WebView."</string>
 Hãy yêu cầu AI cung cấp mã ngắn hơn hoặc dán mã theo từng phần."</string>
   <string name="morphe_video_effects_custom_copy_error">Chép lỗi</string>
   <string name="morphe_video_effects_custom_save_anyway">Vẫn lưu</string>
-  <string name="morphe_video_effects_custom_delete">Xoá</string>
   <string name="morphe_video_effects_custom_delete_title">Xóa hiệu ứng?</string>
   <string name="morphe_video_effects_custom_delete_message">%s sẽ bị xóa.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Hãy yêu cầu AI cung cấp mã ngắn hơn hoặc dán mã theo từng phần
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Để dùng tính năng này, hãy đổi \'Giả mạo luồng phát video\' thành bất kỳ client nào ngoại trừ \'Android Studio\' và \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
-  <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết được chia sẻ</string>
   <string name="morphe_replace_music_with_youtube_title">Đổi liên kết chia sẻ thành youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Thay music.youtube.com bằng youtube.com khi chia sẻ liên kết</string>
   <string name="morphe_replace_links_with_shortener_title">Đổi liên kết chia sẻ thành youtu.be</string>
@@ -371,7 +362,6 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_custom_font_type_title">Phông chữ</string>
   <string name="morphe_custom_font_type_entry_default">Mặc định</string>
   <string name="morphe_custom_font_type_entry_system">Phông chữ hệ thống của thiết bị</string>
-  <string name="morphe_custom_font_type_entry_custom">Tệp phông chữ tùy chỉnh</string>
   <string name="morphe_custom_font_file_title">Tệp phông chữ tùy chỉnh</string>
   <string name="morphe_custom_font_file_summary">Chọn tệp phông chữ TTF hoặc OTF</string>
   <string name="morphe_custom_font_file_invalid">Tệp đã chọn không phải là phông chữ TTF hoặc OTF</string>
@@ -381,7 +371,6 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_glass_menus_screen_summary">Menu hiển thị như kính mờ trên nội dung được làm mờ phía sau</string>
   <string name="morphe_glass_menus_title">Bật menu kính</string>
   <string name="morphe_glass_menus_summary">Hiển thị menu và bảng dưới dạng kính mờ, với nội dung phía sau được làm mờ</string>
-  <string name="morphe_glass_menus_opacity_title">Độ mờ của kính</string>
   <string name="morphe_glass_menus_opacity_summary">Mức độ menu che phủ nội dung bị làm mờ (0 là trong suốt, 100 là đục)</string>
   <string name="morphe_glass_menus_blur_title">Làm mờ</string>
   <string name="morphe_glass_menus_blur_summary">Mức độ làm mờ nội dung phía sau menu</string>
@@ -402,7 +391,6 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_ryd_dislike_percentage_summary">Hiển thị số lượt không thích dưới dạng phần trăm thay vì một con số</string>
   <string name="morphe_ryd_estimated_like_title">Hiện số lượt thích ước tính</string>
   <string name="morphe_ryd_estimated_like_summary">Hiển thị số lượt thích ước tính trên các video mà nhà sáng tạo đã ẩn lượt thích</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Hiển thị thông báo khi máy chủ Return YouTube Dislike không khả dụng</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike khôi phục số lượt không thích mà YouTube đã ẩn vào năm 2021. Số liệu đến từ dữ liệu được lưu trữ trước khi gỡ bỏ và được ước tính cho các video mới hơn dựa trên phiếu bầu của người dùng, vì vậy chúng chỉ là gần đúng và được cập nhật sau mỗi vài ngày
 
@@ -424,8 +412,89 @@ ID của video bạn xem được gửi đến API Return YouTube Dislike, và l
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Chưa gặp giới hạn ứng dụng</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Đã gặp giới hạn ứng dụng %s lần</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s mili giây</string>
-  <string name="morphe_navigation_bar_screen_title">Thanh điều hướng</string>
   <string name="morphe_navigation_bar_screen_summary">Chọn các nút sẽ hiển thị trên thanh điều hướng dưới cùng</string>
   <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
   <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ hiển thị trên thanh công cụ</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 giây</string>
+  <string name="morphe_duration_2s">2 giây</string>
+  <string name="morphe_duration_3s">3 giây</string>
+  <string name="morphe_duration_4s">4 giây</string>
+  <string name="morphe_duration_5s">5 giây</string>
+  <string name="morphe_duration_6s">6 giây</string>
+  <string name="morphe_duration_7s">7 giây</string>
+  <string name="morphe_duration_8s">8 giây</string>
+  <string name="morphe_duration_9s">9 giây</string>
+  <string name="morphe_duration_10s">10 giây</string>
+  <string name="morphe_change_start_page_entry_default">Mặc định</string>
+  <string name="morphe_change_start_page_entry_explore">Khám phá</string>
+  <string name="morphe_change_start_page_entry_history">Lịch sử</string>
+  <string name="morphe_change_start_page_entry_library">Thư viện</string>
+  <string name="morphe_change_start_page_entry_playlists">Danh sách phát</string>
+  <string name="morphe_change_start_page_entry_search">Tìm kiếm</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Kênh đăng ký</string>
+  <string name="morphe_change_start_page_title">Trang bắt đầu</string>
+  <string name="morphe_action_buttons_screen_title">Nút thao tác</string>
+  <string name="morphe_comments_screen_title">Bình luận</string>
+  <string name="morphe_feed_screen_title">Trang video</string>
+  <string name="morphe_flyout_menu_screen_title">Menu tuỳ chọn</string>
+  <string name="morphe_general_title">Chung</string>
+  <string name="morphe_miniplayer_screen_title">Trình phát thu nhỏ</string>
+  <string name="morphe_player_screen_title">Trình phát</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Giao diện</string>
+  <string name="morphe_cancel">Hủy</string>
+  <string name="morphe_comments_screen_summary">Chọn những thành phần sẽ hiển thị trong phần bình luận</string>
+  <string name="morphe_copy_code">Sao chép mã</string>
+  <string name="morphe_corner_radius_title">Bán kính góc</string>
+  <string name="morphe_do_not_show_again">Không hiện lại nữa</string>
+  <string name="morphe_download_force_4k_title">Bắt buộc khả dụng tải xuống 4K</string>
+  <string name="morphe_glass_opacity_title">Độ mờ của kính</string>
+  <string name="morphe_header_logo_title">Logo đầu trang</string>
+  <string name="morphe_hide_action_bar_title">Ẩn thanh thao tác</string>
+  <string name="morphe_hide_cast_button_title">Ẩn nút Truyền</string>
+  <string name="morphe_hide_comments_button_title">Ẩn nút Bình luận</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Ẩn Nguyên tắc cộng đồng</string>
+  <string name="morphe_hide_comments_emoji_button_title">Ẩn nút Emoji</string>
+  <string name="morphe_hide_comments_gif_button_title">Ẩn nút GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Ẩn GIF và hình ảnh đính kèm trong bình luận và phản hồi</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Ẩn GIF và hình ảnh</string>
+  <string name="morphe_hide_comments_info_button_title">Ẩn nút Thông tin</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Ẩn nút Dấu thời gian</string>
+  <string name="morphe_hide_horizontal_shelves_title">Ẩn kệ cá nhân hoá</string>
+  <string name="morphe_hide_like_dislike_button_title">Ẩn nút Thích và Không thích</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Ẩn nút Thích và Không thích</string>
+  <string name="morphe_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
+  <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
+  <string name="morphe_hide_previous_next_buttons_title">Ẩn nút Trước &amp; Tiếp theo</string>
+  <string name="morphe_hide_search_button_title">Ẩn nút Tìm kiếm</string>
+  <string name="morphe_hide_translate_button_title">Ẩn nút Dịch</string>
+  <string name="morphe_hide_video_ads_title">Ẩn video quảng cáo</string>
+  <string name="morphe_loading">Đang tải…</string>
+  <string name="morphe_name">Tên</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Khoảng cách nút</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Các nút hiển thị: %1$s trên %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Chiều cao</string>
+  <string name="morphe_navigation_bar_glass_size_width">Chiều rộng tối đa</string>
+  <string name="morphe_navigation_bar_glass_title">Bật thanh điều hướng dạng kính</string>
+  <string name="morphe_positive_number_invalid">Giá trị phải là một số dương</string>
+  <string name="morphe_private_user_id_invalid">Mã riêng tư phải dài ít nhất 30 ký tự</string>
+  <string name="morphe_private_user_id_title">Mã người dùng riêng tư</string>
+  <string name="morphe_rename">Đổi tên</string>
+  <string name="morphe_show_settings_button_title">Hiện nút Cài đặt</string>
+  <string name="morphe_show_settings_button_type_title">Thao tác nút cài đặt</string>
+  <string name="morphe_show_video_effect_menu_title">Hiện menu hiệu ứng video</string>
+  <string name="morphe_submit">Gửi</string>
+  <string name="morphe_time_adjustment_step_title">Mức tua thời gian</string>
+  <string name="morphe_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
+  <string name="morphe_toast_on_skip_title">Hiện thông báo bỏ qua</string>
+  <string name="morphe_translated_only">Chỉ bản dịch</string>
+  <string name="morphe_translating">Đang dịch…</string>
+  <string name="morphe_translation_language_title">Ngôn ngữ dịch</string>
+  <string name="morphe_username_change_unknown_error">Không thay đổi được tên người dùng: Trạng thái: %1$s %2$s</string>
+  <string name="morphe_username_changed">Tên người dùng đã được thay đổi thành công</string>
+  <string name="morphe_username_html">Tên người dùng của bạn: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Video</string>
+  <string name="morphe_vote_downvote">Phản đối</string>
+  <string name="morphe_vote_upvote">Ủng hộ</string>
 </resources>

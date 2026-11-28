@@ -33,6 +33,7 @@ import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.patches.music.interaction.jam.resolveProto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_41_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
@@ -66,6 +67,8 @@ private const val FOLDER_RELOAD =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$FolderReload;"
 private const val PHONE_BROWSE_ITEM =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$PhoneBrowseItem;"
+private const val MEDIA_ITEM_EXTRAS =
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$MediaItemExtras;"
 private const val MUSIC_BROWSER_SERVICE_CLASS =
     "Lcom/google/android/apps/youtube/music/mediabrowser/MusicBrowserService;"
 
@@ -112,6 +115,21 @@ val androidAutoPatch = patch(
                 """
                     invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getAssistantBrowseUiMode(I)I
                     move-result v$register
+                """
+            )
+        }
+
+        if (is_9_41_or_greater) {
+            // A missing MediaStore ID produces an invalid album art URI that stops Downloads from loading.
+            // Return null so YTM uses its default artwork.
+            DeviceFileArtworkUriFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    if-nez p0, :resume
+                    const/4 v0, 0x0
+                    return-object v0
+                    :resume
+                    nop
                 """
             )
         }
@@ -364,12 +382,7 @@ private fun addPaginatedLibraryGridDecoder(
     return clonedDecoderMethod
 }
 
-// Read returned Library data
-
-/**
- * Exposes YTM's Library readers and the response bytes needed to parse Home and collections.
- * The pagination getter uses YTM's parser copied by [addPaginatedLibraryGridDecoder].
- */
+/** Home and collections read the browse response. Library pagination uses YTM's grid parser. */
 private fun addPhoneBrowseResponseInterface() {
     val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
     val decodePaginatedLibraryGridMethod = LibraryPaginationDecoderFingerprint.originalMethod
@@ -385,16 +398,7 @@ private fun addPhoneBrowseResponseInterface() {
         .filter { it.definingClass == phoneBrowseResponseClass.type }
         .distinct()
     val responseProto = responseFields.single { implementsType(it.type, "Lcom/google/protobuf/MessageLite;") }
-    phoneBrowseResponseClass.addPatchInterface(
-        PHONE_BROWSE_RESPONSE,
-        "patch_responseBytes",
-        """
-            iget-object p0, p0, $responseProto
-            invoke-virtual { p0 }, ${responseProto.type}->toByteArray()[B
-            move-result-object p0
-            return-object p0
-        """
-    )
+    phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getResponse", responseProto)
     phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getTabs", getTabsMethod)
 
     phoneBrowseResponseClass.addPatchInterface(
@@ -621,6 +625,7 @@ private fun addArtworkUriGetter(
 // region Android Auto requests
 
 private fun patchBrowseRequests() {
+    addMediaItemExtrasInterface()
     addBrowseRequestInterface()
 
     val handler = BrowseRequestHandlerFingerprint.method
@@ -635,6 +640,23 @@ private fun patchBrowseRequests() {
             return-void
             :resume
             nop
+        """
+    )
+}
+
+/** Lets the extension read YTM's promotion flag, which is in the extras of a media item's description. */
+private fun addMediaItemExtrasInterface() {
+    val itemClass = mutableClassDefBy($$"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;")
+    val descriptionType = "Landroid/support/v4/media/MediaDescriptionCompat;"
+    val descriptionField = itemClass.instanceFields.single { it.type == descriptionType }
+    val extrasField = classDefBy(descriptionType).instanceFields.single { it.type == "Landroid/os/Bundle;" }
+    itemClass.addPatchInterface(
+        MEDIA_ITEM_EXTRAS,
+        "patch_getExtras",
+        """
+            iget-object p0, p0, $descriptionField
+            iget-object p0, p0, $extrasField
+            return-object p0
         """
     )
 }
@@ -789,11 +811,7 @@ private fun addFolderReload(
     baseServiceClass.addPatchInterface(
         FOLDER_RELOAD,
         "patch_reloadFolder",
-        """
-            check-cast p2, $connectionType
-            invoke-virtual { p0, p1, p2, p3 }, $reloadMethod
-            return-void
-        """
+        reloadMethod
     )
     val rememberSubscriptionMethod = "$EXTENSION_CLASS->rememberSubscription(" +
             FOLDER_RELOAD +

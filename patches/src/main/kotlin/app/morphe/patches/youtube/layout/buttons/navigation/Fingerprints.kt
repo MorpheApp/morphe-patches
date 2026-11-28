@@ -151,11 +151,11 @@ internal object BottomUiEnumFingerprint : Fingerprint(
 )
 
 /**
- * Sets the height of one of the views at the bottom of the screen.
+ * Sets the height of one of the views at the bottom of the screen ([BottomUiEnumFingerprint]).
  */
-internal fun setBottomUiHeightFingerprint(bottomUiEnumType: String) = Fingerprint(
+internal object SetBottomUiHeightFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf(bottomUiEnumType, "I"),
+    parameters = { listOf(BottomUiEnumFingerprint.originalClassDef.type, "I") },
     filters = listOf(
         methodCall(smali = "Ljava/util/EnumMap;->put(Ljava/lang/Enum;Ljava/lang/Object;)Ljava/lang/Object;")
     )
@@ -795,4 +795,25 @@ internal object ParseWithRegistryFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Lcom/google/protobuf/MessageLite;",
     parameters = listOf("Lcom/google/protobuf/MessageLite;", "[B", "Lcom/google/protobuf/ExtensionRegistryLite;")
+)
+
+/**
+ * Builds a proto list from a collection.
+ * It returns the type of the list that [PivotBarRendererListFingerprint] sets.
+ */
+internal object ProtoListFromCollectionFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = { PivotBarRendererListFingerprint.instructionMatches[2].fieldReference.type },
+    parameters = listOf("Ljava/util/Collection;")
+)
+
+/**
+ * Enum constant names are obfuscated, so the icon type is found by its value.
+ * The icon type is the third parameter of [PivotBarItemProtoFactoryFingerprint].
+ */
+internal object IconTypeFromValueFingerprint : Fingerprint(
+    definingClass = { PivotBarItemProtoFactoryFingerprint.originalMethod.parameterTypes[2] },
+    isStatic = true,
+    returnType = { PivotBarItemProtoFactoryFingerprint.originalMethod.parameterTypes[2] },
+    parameters = { listOf("I") }
 )

@@ -128,6 +128,8 @@ public final class ShortsFilter extends Filter {
     private final StringFilterGroup reelCarousel;
     private final ByteArrayFilterGroupList reelCarouselBuffer = new ByteArrayFilterGroupList();
     private final ByteArrayFilterGroup searchResultsBuffer;
+    private final StringFilterGroup horizontalShelfIdentifier;
+    private final ByteArrayFilterGroup regularVideoThumbnailBuffer;
     private final StringFilterGroup shelfHeaderIdentifier;
     private final StringFilterGroup shelfHeaderPath;
     private final StringFilterGroup shortsActionBar;
@@ -171,12 +173,24 @@ public final class ShortsFilter extends Filter {
                 "shelf_header.e"
         );
 
-        addIdentifierCallbacks(shortsIdentifiers, channelProfile, shelfHeaderIdentifier);
+        // Shelves of the modern home feed layout, such as Breaking news, whose videos can be Shorts.
+        horizontalShelfIdentifier = new StringFilterGroup(
+                null,
+                "horizontal_shelf.e"
+        );
+
+        addIdentifierCallbacks(shortsIdentifiers, channelProfile, shelfHeaderIdentifier, horizontalShelfIdentifier);
 
         searchResultsBuffer = new ByteArrayFilterGroup(
                 null,
                 // Search page of the endpoints of the Shorts, as a length-prefixed proto string.
                 new byte[]{0x32, 0x06, 's', 'e', 'a', 'r', 'c', 'h'}
+        );
+
+        // Thumbnail of the regular videos, which the Shorts do not have.
+        regularVideoThumbnailBuffer = new ByteArrayFilterGroup(
+                null,
+                "/mqdefault.jpg"
         );
 
         //
@@ -613,6 +627,18 @@ public final class ShortsFilter extends Filter {
                 }
             } else if (matchedGroup == channelProfile) {
                 return !NavigationBar.isSearchBarActive();
+            } else if (matchedGroup == horizontalShelfIdentifier) {
+                // The Shorts of the shelf are hidden one by one as videos of the modern home feed layout,
+                // and the header of the shelf stays. A shelf with only Shorts is hidden as a whole,
+                // which is checked once with the buffer of the whole shelf.
+                if (contentIndex != 0
+                        || Utils.indexOf(path, ".e", identifier.length()) >= 0
+                        // Same check as the videos of the modern home feed layout.
+                        || !contextInterface.isHomeFeedOrRelatedVideo()
+                        || !shortsCompactFeedVideoBuffer.matches(buffer)
+                        || regularVideoThumbnailBuffer.check(buffer).isFiltered()) {
+                    return false;
+                }
             }
 
             // Nested components of the element have their own buffer.

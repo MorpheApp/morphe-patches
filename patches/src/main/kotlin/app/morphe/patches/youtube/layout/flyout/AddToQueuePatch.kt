@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.layout.flyout
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -23,6 +22,7 @@ import app.morphe.patches.youtube.interaction.nativeplaylistqueue.EXTENSION_CLAS
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
+import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHookPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
@@ -32,7 +32,6 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.patches.youtube.video.information.playerStatusOverrideHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -61,7 +60,8 @@ val addToQueuePatch = patch(
         loadVideoHookPatch,
         videoInformationPatch,
         nativePlaylistQueuePatch,
-        feedVideoActionsHookPatch
+        feedVideoActionsHookPatch,
+        navigationIntentHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -179,12 +179,7 @@ val addToQueuePatch = patch(
         playerStatusOverrideHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelEndOfVideo")
 
         // The sheet must be gone before the player enters Picture-in-Picture, or the PiP window is zoomed.
-        Fingerprint(
-            definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
-            name = "onUserLeaveHint",
-            returnType = "V",
-            parameters = listOf()
-        ).method.apply {
+        MainActivityOnUserLeaveHintFingerprint.method.apply {
             addInstruction(0, "invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V")
             if (is_21_15_or_greater) {
                 // The native queue cancels its pending playlist page loads when leaving the app,

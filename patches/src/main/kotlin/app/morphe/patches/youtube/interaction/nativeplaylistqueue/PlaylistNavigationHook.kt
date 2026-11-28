@@ -43,10 +43,7 @@ internal fun installPlaylistNavigation(
         controls.addPatchInterface(
             NAVIGATOR_OWNER_INTERFACE,
             "patch_getNavigator",
-            """
-                iget-object v0, p0, $navigatorField
-                return-object v0
-            """
+            navigatorField
         )
     }
 

@@ -15,6 +15,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.layout.playlistautoplay.NavigationRequestFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -88,18 +89,21 @@ internal object BottomSheetMenuCloseFingerprint : Fingerprint(
 )
 
 /**
- * Method of the navigator interface that sets the repeat mode.
- * The navigator interface is the only one with an abstract method that plays a video with the
- * same parameters as the navigation request has after its intent.
- *
- * @param videoParameters Parameters of the navigation request constructor after the intent.
+ * Abstract method of the navigator interface that plays a video. The navigator interface is the only
+ * one with an abstract method that has the same parameters as the constructor of the navigation request
+ * ([NavigationRequestFingerprint]) has after its intent.
  */
-internal fun navigatorSetRepeatModeFingerprint(videoParameters: List<String>) = Fingerprint(
-    classFingerprint = Fingerprint(
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.ABSTRACT),
-        returnType = "V",
-        parameters = videoParameters
-    ),
+internal object NavigatorPlayVideoFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.ABSTRACT),
+    returnType = "V",
+    parameters = { NavigationRequestFingerprint.originalMethod.parameterTypes.drop(1) }
+)
+
+/**
+ * Method of the navigator interface that sets the repeat mode.
+ */
+internal object NavigatorSetRepeatModeFingerprint : Fingerprint(
+    classFingerprint = NavigatorPlayVideoFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.ABSTRACT),
     returnType = "V",
     parameters = listOf("I")

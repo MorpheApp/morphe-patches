@@ -260,7 +260,7 @@ public final class SearchResultsSheet {
      */
     public void open(String url) {
         dialog.dismiss();
-        Utils.runOnMainThreadDelayed(() -> LoadVideoPatch.openVideoIntent(url, false),
+        Utils.runOnMainThreadDelayed(() -> LoadVideoPatch.openUrl(url, false),
                 DIALOG_ANIMATION_DURATION_MILLISECONDS);
     }
 

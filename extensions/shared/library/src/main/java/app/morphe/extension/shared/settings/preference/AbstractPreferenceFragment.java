@@ -63,6 +63,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
@@ -363,6 +364,23 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     /**
+     * Clicks a preference as if its row was tapped. A nested PreferenceScreen opens its screen.
+     *
+     * @param preference The preference to click.
+     * @param rootScreen The main screen of the fragment that holds the preference.
+     */
+    @SuppressWarnings("all")
+    public static void performClick(Preference preference, PreferenceScreen rootScreen) {
+        try {
+            Method m = Preference.class.getDeclaredMethod("performClick", PreferenceScreen.class);
+            m.setAccessible(true);
+            m.invoke(preference, rootScreen);
+        } catch (Exception e) {
+            Logger.printException(() -> "Failed to invoke performClick()", e);
+        }
+    }
+
+    /**
      * Marks that a changed setting requires an app restart.
      * The restart dialog is shown when the settings are closed.
      */
@@ -451,7 +469,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     // Cancel button action (dismiss only).
                     () -> {},
                     // Neutral button (Copy) text.
-                    str("morphe_settings_import_copy"),
+                    str("morphe_settings_copy"),
                     // Neutral button (Copy) action. Show the user the settings in JSON format.
                     () -> Utils.setClipboard(currentImportExportEditText.getText().toString()),
                     // Dismiss dialog when onNeutralClick.
@@ -857,10 +875,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     str("morphe_debug_export_logs_title"),
                     null,
                     null,
-                    str("morphe_settings_import_copy"),
+                    str("morphe_settings_copy"),
                     () -> exportToClipboard(logAdapter.getFilteredLogsString()),
                     () -> {},
-                    str("morphe_debug_export_logs_clear"),
+                    str("morphe_settings_clear"),
                     () -> {
                         Logger.clearLogBufferData();
                         logAdapter.clearLogs();

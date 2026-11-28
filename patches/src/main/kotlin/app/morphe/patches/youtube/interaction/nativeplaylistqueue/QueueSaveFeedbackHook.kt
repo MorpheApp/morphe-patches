@@ -33,19 +33,13 @@ internal fun installQueueSaveFeedback(endpointType: String) {
     callback.addPatchInterface(
         SAVE_CALLBACK_INTERFACE,
         "patch_getQueueSaveSelection",
-        """
-            iget-object v0, p0, $selection
-            return-object v0
-        """
+        selection
     )
 
     callback.addPatchInterface(
         SAVE_CALLBACK_INTERFACE,
         "patch_setQueueSaveSelection",
-        """
-            iput-object p1, p0, $selection
-            return-void
-        """
+        selection
     )
 
     callback.addPatchInterface(

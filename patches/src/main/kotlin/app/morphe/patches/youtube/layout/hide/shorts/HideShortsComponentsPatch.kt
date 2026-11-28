@@ -10,15 +10,11 @@
 
 package app.morphe.patches.youtube.layout.hide.shorts
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.patch
@@ -85,7 +81,7 @@ private val hideShortsComponentsResourcePatch = patch {
                 // Like fountain may no longer be used by YT anymore.
                 //SwitchPreference("morphe_hide_shorts_like_fountain"),
                 SwitchPreference("morphe_disable_shorts_double_tap_to_like"),
-                SwitchPreference("morphe_hide_shorts_like_button"),
+                SwitchPreference("morphe_hide_shorts_like_button", titleKey = "morphe_hide_like_button_title"),
                 SwitchPreference("morphe_hide_shorts_comments_button", titleKey = "morphe_hide_comments_button_title"),
                 SwitchPreference("morphe_hide_shorts_save_button", titleKey = "morphe_hide_save_button_title"),
                 SwitchPreference("morphe_hide_shorts_share_button", titleKey = "morphe_hide_share_button_title"),
@@ -131,13 +127,13 @@ private val hideShortsComponentsResourcePatch = patch {
             PreferenceCategory(
                 titleKey = "morphe_hide_shorts_category_title",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_shorts_channel"),
+                    SwitchPreference("morphe_hide_shorts_channel", titleKey = "morphe_hide_in_channel_page_title"),
                     SwitchPreference("morphe_hide_shorts_home"),
                     SwitchPreference("morphe_hide_shorts_notifications"),
-                    SwitchPreference("morphe_hide_shorts_search"),
+                    SwitchPreference("morphe_hide_shorts_search", titleKey = "morphe_hide_in_search_results_title"),
                     SwitchPreference("morphe_hide_shorts_subscriptions"),
                     SwitchPreference("morphe_hide_shorts_video_description"),
-                    SwitchPreference("morphe_hide_shorts_history")
+                    SwitchPreference("morphe_hide_shorts_history", titleKey = "morphe_hide_in_watch_history_title")
                 )
             ),
 
@@ -218,22 +214,8 @@ val hideShortsComponentsPatch = patch(
         // navigation bar. When "Hide preview comment" hides the comment bar, nothing is shown
         // in place of the navigation bar. The navigation bar is kept for these Shorts.
         ShortsNavigationBarModeFingerprint.let {
-            val navigationBarField = it.instructionMatches.first().fieldReference
-            val navigationBarModeField = it.instructionMatches[3].fieldReference
-
             // Every read of the mode, such as by the Shorts pager and by the page of the Short.
-            Fingerprint(
-                filters = listOf(
-                    fieldAccess(opcode = Opcode.IGET_OBJECT, reference = navigationBarField),
-                    opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
-                    opcode(Opcode.SGET_OBJECT, location = MatchAfterImmediately()),
-                    fieldAccess(
-                        opcode = Opcode.IGET,
-                        reference = navigationBarModeField,
-                        location = MatchAfterImmediately()
-                    )
-                )
-            ).matchAll().forEach { match ->
+            ShortsNavigationBarModeReadFingerprint.matchAll().forEach { match ->
                 match.method.apply {
                     val modeIndex = match.instructionMatches.last().index
                     val modeRegister = getInstruction<TwoRegisterInstruction>(modeIndex).registerA

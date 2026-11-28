@@ -8,7 +8,6 @@
 package app.morphe.patches.shared.misc.proto
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -66,7 +65,7 @@ internal object RenderNextEnablementCheckFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Z",
     filters = listOf(
-        string("RenderNextEnablementCheck", StringComparisonType.CONTAINS)
+        string("Failed to read Element proto passed in to RenderNextEnablementCheck: ")
     )
 )
 

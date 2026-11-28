@@ -306,3 +306,8 @@ internal object RecommendedVideosRequestFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
     filters = recommendedPostsRequestFilters("Lcom/reddit/type/VideoFeedEndpoint;")
 )
+
+internal object IsHideOverlayIncludedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/HideMediaViewerComponentsPatch;",
+    name = "isHideOverlayIncluded"
+)

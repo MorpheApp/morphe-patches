@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.video.series
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -19,6 +18,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.youtube.layout.buttons.navigation.PivotBarRendererFingerprint
 import app.morphe.patches.youtube.layout.buttons.navigation.PivotBarRendererListFingerprint
+import app.morphe.patches.youtube.layout.buttons.navigation.ProtoListFromCollectionFingerprint
 import app.morphe.patches.youtube.layout.buttons.navigation.implementPivotBarItemBuilder
 import app.morphe.patches.youtube.misc.backgesture.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -66,11 +66,7 @@ internal fun wireHistory() {
         it.method.apply {
             val insertMatch = it.instructionMatches[2]
             val register = getInstruction<TwoRegisterInstruction>(insertMatch.index).registerA
-            val protoListBuilderMethod = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                returnType = insertMatch.instruction.getReference<FieldReference>()!!.type,
-                parameters = listOf("Ljava/util/Collection;")
-            ).method
+            val protoListBuilderMethod = ProtoListFromCollectionFingerprint.method
 
             addInstructions(
                 insertMatch.index,
@@ -163,11 +159,7 @@ internal fun wireHistory() {
         it.classDef.addPatchInterface(
             $$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaylistMenu$ToolbarSource;",
             "patch_seriesTrackerMenu",
-            """
-                invoke-virtual { p0 }, ${it.method}
-                move-result-object v0
-                return-object v0
-            """
+            it.method
         )
     }
 }

@@ -66,7 +66,7 @@ public class PlaylistPatch {
     private static final String fetchFailedRemove = str("morphe_queue_manager_fetch_failed_remove");
     private static final String fetchFailedSave = str("morphe_queue_manager_fetch_failed_save");
 
-    private static final String fetchSucceededAdd = str("morphe_queue_manager_fetch_succeeded_add");
+    private static final String fetchSucceededAdd = str("morphe_queue_added");
     private static final String fetchSucceededCreate = str("morphe_queue_manager_fetch_succeeded_create");
     private static final String fetchSucceededRemove = str("morphe_queue_manager_fetch_succeeded_remove");
     private static final String fetchSucceededSave = str("morphe_queue_manager_fetch_succeeded_save");
@@ -414,7 +414,7 @@ public class PlaylistPatch {
                             currentPlaylistId;
                 }
 
-                LoadVideoPatch.openVideoIntent(url, reload);
+                LoadVideoPatch.openUrl(url, reload);
             } catch (Exception ex) {
                 Logger.printException(() -> "openQueue failure", ex);
             }
@@ -431,7 +431,7 @@ public class PlaylistPatch {
 
     public enum QueueManager {
         ADD_TO_QUEUE(
-                "morphe_queue_manager_add_to_queue",
+                "morphe_queue_add_to_queue",
                 "yt_outline_list_add_black_24",
                 "yt_outline_experimental_playlist_add_vd_theme_24",
                 context -> {

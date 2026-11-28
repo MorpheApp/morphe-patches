@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Yêu cầu khởi động lại</string>
   <string name="morphe_settings_restart_dialog_message">Khởi động lại ứng dụng để thay đổi này có hiệu lực</string>
   <string name="morphe_settings_restart">Khởi động lại</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Nhập</string>
-  <string name="morphe_settings_import_copy">Sao chép</string>
   <string name="morphe_settings_import_reset">Đặt lại cài đặt Morphe về mặc định</string>
   <string name="morphe_settings_import_success">Đã nhập %s cài đặt</string>
   <string name="morphe_settings_import_failure_parse">Không thể nhập: %s</string>
@@ -76,7 +74,6 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Bản vá</string>
   <string name="morphe_settings_about_version">Phiên bản</string>
-  <string name="morphe_settings_about_close">Đóng</string>
   <string name="morphe_settings_about_prerelease">Bản phát hành trước</string>
   <string name="morphe_settings_about_update_available">Đã có bản cập nhật: %s</string>
   <string name="morphe_settings_about_update_hint">Để cập nhật các bản vá, hãy sử dụng Morphe để vá lại ứng dụng này</string>
@@ -108,7 +105,6 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Thông tin giấy phép</string>
-  <string name="morphe_settings_about_licenses_loading">Đang tải…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
   <string name="morphe_debug_screen_summary">Cấu hình các tùy chọn nhà phát triển nâng cao và nhật ký chẩn đoán</string>
@@ -125,7 +121,6 @@ Bạn sẽ không được thông báo khi xảy ra lỗi bất ngờ"</string>
   <string name="morphe_debug_export_logs_success">Đã xuất nhật ký gỡ lỗi thành công</string>
   <string name="morphe_debug_export_logs_failed">Không thể xuất nhật ký gỡ lỗi</string>
   <string name="morphe_debug_logs_search_hint">Tìm kiếm nhật ký gỡ lỗi…</string>
-  <string name="morphe_debug_export_logs_clear">Dọn dẹp</string>
   <string name="morphe_debug_logs_disabled">Tính năng ghi nhật ký gỡ lỗi đang tắt</string>
   <string name="morphe_debug_logs_none_found">Không tìm thấy nhật ký gỡ lỗi</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Đã sao chép nhật ký gỡ lỗi</string>
@@ -142,15 +137,8 @@ Bạn sẽ không được thông báo khi xảy ra lỗi bất ngờ"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Đã chặn (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Ép buộc (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Tự động</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Tắt</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Bật</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Ép bật</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Chặn</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Xóa</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ tính năng vào bảng nhớ tạm</string>
@@ -200,7 +188,6 @@ Hành vi đã biến mất trước đó trong quá trình tìm kiếm, vì vậ
   <string name="gms_core_dialog_outdated_message">"Phiên bản MicroG v%1$s của bạn đã cũ và có thể gây ra sự cố.
 
 Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Cập nhật</string>
   <string name="gms_core_dialog_ignore_text">Bỏ qua</string>
   <string name="gms_core_dialog_conflict_message">"Phiên bản MicroG đã cài đặt không được Morphe khuyến nghị:
 
@@ -220,7 +207,6 @@ Hãy làm theo hướng dẫn \"Don't kill my app\" dành cho điện thoại c�
 Đừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.
 
 Bấm tiếp tục để tắt tối ưu hóa"</string>
-  <string name="gms_core_dialog_continue_text">Tiếp tục</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Hiện hộp thoại tối ưu hóa pin MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
 
@@ -259,9 +245,29 @@ Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Sửa lỗi</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Các thay đổi khác</string>
   <string name="morphe_patches_update_notice_dialog_more">…và %s mục khác</string>
-  <string name="morphe_patches_update_notice_dialog_update">Cập nhật</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Kệ</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Đã lưu nhật ký sự cố vào tài liệu người dùng: %s</string>
   <string name="morphe_crash_log_saved">Đã lưu nhật ký sự cố: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Giới thiệu</string>
+  <string name="morphe_ads_screen_title">Quảng cáo</string>
+  <string name="morphe_misc_screen_title">Khác</string>
+  <string name="morphe_navigation_bar_screen_title">Thanh điều hướng</string>
+  <string name="morphe_post_buttons_screen_title">Các nút bài viết</string>
+  <string name="morphe_custom_branding_icon_title">Biểu tượng ứng dụng</string>
+  <string name="morphe_download">Tải về</string>
+  <string name="morphe_hide_create_button_title">Ẩn nút Tạo</string>
+  <string name="morphe_hide_post_comment_button_title">Ẩn nút Bình luận</string>
+  <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết được chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
+  <string name="morphe_settings_add">Thêm</string>
+  <string name="morphe_settings_clear">Xóa</string>
+  <string name="morphe_settings_close">Đóng</string>
+  <string name="morphe_settings_continue">Tiếp</string>
+  <string name="morphe_settings_copy">Sao chép</string>
+  <string name="morphe_settings_delete">Xoá</string>
+  <string name="morphe_settings_remove">Xóa</string>
+  <string name="morphe_settings_update">Cập nhật</string>
 </resources>

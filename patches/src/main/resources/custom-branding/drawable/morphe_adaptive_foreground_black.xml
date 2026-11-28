@@ -25,17 +25,17 @@
         <path android:pathData="M127,108c-34,0 -44,25 -44,40v54c30,-33 75,27 80,33 28,32 44,87 93,89 48,-2 67,-56 93,-89 0,0 45,-74 80,-80 0,-28 -11,-47 -44,-47 -34,0 -58,50 -75,72 -17,22 -25,46 -54,46 -29,0 -38,-25 -54,-46 -17,-22 -41,-72 -75,-72z">
             <aapt:attr name="android:fillColor">
                 <gradient
-                    android:endX="429"
-                    android:endY="216"
-                    android:startX="83"
-                    android:startY="216"
+                    android:endX="429.0"
+                    android:endY="216.0"
+                    android:startX="83.0"
+                    android:startY="216.0"
                     android:type="linear">
                     <item
                         android:color="#1E5AA8"
-                        android:offset="0" />
+                        android:offset="0.0" />
                     <item
                         android:color="#00AFAE"
-                        android:offset="1" />
+                        android:offset="1.0" />
                 </gradient>
             </aapt:attr>
         </path>

@@ -37,7 +37,7 @@ private val returnYouTubeDislikeResourcePatch = patch {
             SwitchPreference("morphe_ryd_enabled"),
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
-            SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
+            SwitchPreference("morphe_ryd_toast_on_connection_error", titleKey = "morphe_toast_on_connection_error_title", summary = true),
             screenInfoPreferenceCategory(
                 key = "morphe_ryd_about",
                 preferences = setOf(

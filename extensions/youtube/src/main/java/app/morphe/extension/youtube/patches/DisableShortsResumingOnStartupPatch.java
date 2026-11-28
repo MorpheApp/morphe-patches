@@ -1,5 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -9,6 +10,7 @@ public class DisableShortsResumingOnStartupPatch {
      * Injection point.
      */
     public static boolean disableShortsResumingOnStartup(boolean original) {
-        return original && !Settings.DISABLE_SHORTS_RESUMING_ON_STARTUP.get();
+        return original && !Settings.DISABLE_SHORTS_RESUMING_ON_STARTUP.get()
+                && !PlaybackSessionPatch.suppressNativeResume();
     }
 }

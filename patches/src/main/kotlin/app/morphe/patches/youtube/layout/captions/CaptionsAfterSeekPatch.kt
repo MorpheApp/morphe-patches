@@ -12,12 +12,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.cloneMutable
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionsAfterSeekPatch;"
@@ -38,12 +36,10 @@ internal val captionsAfterSeekPatch = patch(
     execute {
         val captionTimesField = CaptionWindowsConstructorFingerprint.instructionMatches.last()
             .fieldReference
-        val loaderConstructorFingerprint =
-            getCaptionChunkLoaderConstructorFingerprint(captionTimesField.definingClass)
-        val captionWindowsField = loaderConstructorFingerprint.instructionMatches.last()
+        val captionWindowsField = CaptionChunkLoaderConstructorFingerprint.instructionMatches.last()
             .fieldReference
 
-        getCaptionChunkLoaderFingerprint(loaderConstructorFingerprint.originalClassDef.type).let {
+        CaptionChunkLoaderFingerprint.let {
             val loadChunkMethod = it.method.cloneMutable(name = "patch_loadCaptionChunk")
             it.classDef.methods.add(loadChunkMethod)
 
@@ -67,8 +63,7 @@ internal val captionsAfterSeekPatch = patch(
         AddCueRangesFingerprint.let {
             it.method.apply {
                 val castInstruction = it.instructionMatches[1].getInstruction<OneRegisterInstruction>()
-                val cueRangeType = castInstruction.getReference<TypeReference>()!!.type
-                val captionCueType = getCaptionCueConstructorFingerprint(cueRangeType).originalClassDef.type
+                val captionCueType = CaptionCueRangeConstructorFingerprint.originalClassDef.type
 
                 val flagResultIndex = it.instructionMatches.last().index
                 val flagRegister = getInstruction<OneRegisterInstruction>(flagResultIndex).registerA

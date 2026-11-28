@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -105,7 +104,6 @@ Second \"item\" text"</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_download">ដោនឡូដ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
@@ -114,6 +112,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <!-- Title of the dislike count row, added below the 'Likes' row of the 'Video details' section of the video description. -->
   <!-- interaction.commentsearch.commentSearchPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -161,7 +160,6 @@ Second \"item\" text"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
-  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <!-- layout.hide.infocards.hideInfocardsPatch -->
@@ -180,6 +178,7 @@ Second \"item\" text"</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
   <!-- interaction.autoplay.autoplayControlPatch -->
+  <!-- interaction.cast.restoreOldCastPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_entry_2">បានផ្ដាច់</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
@@ -232,6 +231,7 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- misc.links.openSharedLinksPatch -->
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
   <!-- video.effects.videoEffectsPatch -->
@@ -253,6 +253,7 @@ Second \"item\" text"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
-  <string name="morphe_ghost_play_cat_general_title">ជាទូទៅ</string>
   <string name="morphe_ghost_play_channels_added_badge">បានបន្ថែម</string>
+  <!-- Shared YouTube strings -->
+  <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
 </resources>

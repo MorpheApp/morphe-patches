@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Potrebno ponovno pokretanje</string>
   <string name="morphe_settings_restart_dialog_message">Ponovo pokreni aplikaciju kako bi ova promjena stupila na snagu</string>
   <string name="morphe_settings_restart">Ponovo pokreni</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Uvezi</string>
-  <string name="morphe_settings_import_copy">Kopiraj</string>
   <string name="morphe_settings_import_reset">Morphe postavke su vraćene na zadane</string>
   <string name="morphe_settings_import_success">Uvezeno %s postavki</string>
   <string name="morphe_settings_import_failure_parse">Uvoz nije uspio: %s</string>
@@ -76,7 +74,6 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posjetite morph
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Zakrpe</string>
   <string name="morphe_settings_about_version">Verzija</string>
-  <string name="morphe_settings_about_close">Zatvori</string>
   <string name="morphe_settings_about_prerelease">Predizdanje</string>
   <string name="morphe_settings_about_update_available">Dostupno ažuriranje: %s</string>
   <string name="morphe_settings_about_update_hint">Da biste ažurirali svoje zakrpe, koristite Morphe za ponovno zakrpljivanje ove aplikacije</string>
@@ -107,7 +104,6 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posjetite morph
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Obavijesti o licenci</string>
-  <string name="morphe_settings_about_licenses_loading">Učitavanje…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje grešaka</string>
   <string name="morphe_debug_screen_summary">Konfigurišite napredne opcije za programere i dijagnostičke dnevnike</string>
@@ -124,7 +120,6 @@ Nećete biti obaviješteni o neočekivanim događajima"</string>
   <string name="morphe_debug_export_logs_success">Debug dnevnici uspješno izvezeni</string>
   <string name="morphe_debug_export_logs_failed">Neuspješan izvoz debug dnevnika</string>
   <string name="morphe_debug_logs_search_hint">Pretraži debug zapise…</string>
-  <string name="morphe_debug_export_logs_clear">Obriši</string>
   <string name="morphe_debug_logs_disabled">Debug zapisivanje je onemogućeno</string>
   <string name="morphe_debug_logs_none_found">Nisu pronađeni debug dnevnici</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug dnevnici kopirani</string>
@@ -141,15 +136,8 @@ Nećete biti obaviješteni o neočekivanim događajima"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokirano (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Prisilno (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Isključeno</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Uključeno</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Prisilno uključi</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokiraj</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Ukloni</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice funkcionalnosti spremljene</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice funkcionalnosti su resetovane</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice funkcionalnosti su kopirane u međuspremnik</string>
@@ -199,7 +187,6 @@ Ponašanje je nestalo ranije u pretrazi, tako da može biti uključeno više zas
   <string name="gms_core_dialog_outdated_message">"Vaša verzija MicroG-a v%1$s je zastarjela i može uzrokovati probleme.
 
 Molimo ažurirajte MicroG na najnoviju verziju v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Ažuriraj</string>
   <string name="gms_core_dialog_ignore_text">Ignoriši</string>
   <string name="gms_core_dialog_conflict_message">"Instalirani MicroG nije preporučen od strane Morphe-a:
 
@@ -219,7 +206,6 @@ Ovo je neophodno da bi aplikacija radila"</string>
 Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potrošnju baterije.
 
 Dodirnite dugme za nastavak i dopustite izmjene optimizacije"</string>
-  <string name="gms_core_dialog_continue_text">Nastavi</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Prikaži dijalog za optimizaciju baterije za MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Onemogućavanjem ovoga sakrit će se MicroG zahtjev za optimizaciju baterije.
 
@@ -258,9 +244,29 @@ Ako želite iskustvo bez najviše problema, tada &lt;b&gt;deinstalirajte&lt;/b&g
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ispravke grešaka</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Ostale promjene</string>
   <string name="morphe_patches_update_notice_dialog_more">…i još %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Ažuriraj</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Zatvori</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Zapis o padu aplikacije je sačuvan u korisničkim dokumentima: %s</string>
   <string name="morphe_crash_log_saved">Zapis o padu aplikacije je sačuvan: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">O Morphe</string>
+  <string name="morphe_ads_screen_title">Reklame</string>
+  <string name="morphe_misc_screen_title">Razno</string>
+  <string name="morphe_navigation_bar_screen_title">Navigaciona traka</string>
+  <string name="morphe_post_buttons_screen_title">Dugmad za objave</string>
+  <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
+  <string name="morphe_download">Preuzmi</string>
+  <string name="morphe_hide_create_button_title">Sakrij dugme Kreiraj</string>
+  <string name="morphe_hide_post_comment_button_title">Sakrij dugme Komentari</string>
+  <string name="morphe_sanitize_sharing_links_summary">Uklanja parametre upita za praćenje iz dijeljenih poveznica</string>
+  <string name="morphe_sanitize_sharing_links_title">Očisti poveznice za dijeljenje</string>
+  <string name="morphe_settings_add">Dodaj</string>
+  <string name="morphe_settings_clear">Očisti</string>
+  <string name="morphe_settings_close">Zatvori</string>
+  <string name="morphe_settings_continue">Nastavi</string>
+  <string name="morphe_settings_copy">Kopiraj</string>
+  <string name="morphe_settings_delete">Obriši</string>
+  <string name="morphe_settings_remove">Ukloni</string>
+  <string name="morphe_settings_update">Ažuriraj</string>
 </resources>

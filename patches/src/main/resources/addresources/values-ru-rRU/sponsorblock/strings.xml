@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Включить SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock – это краудсорсинговая система для пропуска раздражающих фрагментов видео YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Внешний вид</string>
   <string name="morphe_sb_voting_button_title">Показать кнопку голосования за сегмент</string>
   <string name="morphe_sb_voting_button_summary">Добавляет кнопку для голосования за или против сегментов</string>
   <string name="morphe_sb_square_layout_title">Использовать квадратный макет</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Скрывает кнопку «Пропустить» через несколько секунд, вместо того чтобы отображать ее на протяжении всего сегмента</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Длительность показа кнопки пропуска</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Установите, как долго кнопка пропуска остается видимой</string>
-  <string name="morphe_sb_toast_on_skip_title">Показывать уведомление о пропуске</string>
   <string name="morphe_sb_toast_on_skip_summary">Отображает уведомление, когда сегмент пропускается автоматически</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Длительность всплывающего уведомления при пропуске</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Установите, как долго остается видимым уведомление об отмене</string>
-  <string name="morphe_sb_duration_1s">1 секунда</string>
-  <string name="morphe_sb_duration_2s">2 секунды</string>
-  <string name="morphe_sb_duration_3s">3 секунды</string>
-  <string name="morphe_sb_duration_4s">4 секунды</string>
-  <string name="morphe_sb_duration_5s">5 секунд</string>
-  <string name="morphe_sb_duration_6s">6 секунд</string>
-  <string name="morphe_sb_duration_7s">7 секунд</string>
-  <string name="morphe_sb_duration_8s">8 секунд</string>
-  <string name="morphe_sb_duration_9s">9 секунд</string>
-  <string name="morphe_sb_duration_10s">10 секунд</string>
   <string name="morphe_sb_video_length_without_segments_title">Показать длительность видео без сегментов</string>
   <string name="morphe_sb_video_length_without_segments_summary">Вычитает все сегменты из общей продолжительности видео, отображаемой на индикаторе выполнения</string>
   <string name="morphe_sb_create_segment_category_title">Создание новых сегментов</string>
   <string name="morphe_sb_create_new_segment_title">Показать кнопку «Создать новый сегмент»</string>
   <string name="morphe_sb_create_new_segment_summary">Добавляет кнопку к видеоплееру, позволяющую отправлять новые сегменты SponsorBlock</string>
-  <string name="morphe_sb_create_new_segment_step_title">Шаг изменения времени</string>
   <string name="morphe_sb_create_new_segment_step_summary">Значение шага изменения времени (в миллисекундах)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Значение должно быть положительным числом</string>
   <string name="morphe_sb_guidelines_title">Рекомендации по отправке</string>
   <string name="morphe_sb_guidelines_summary">Инструкция содержит правила и советы по созданию новых сегментов</string>
   <string name="morphe_sb_guidelines_popup_title">Следуйте инструкциям</string>
   <string name="morphe_sb_guidelines_popup_content">Перед созданием новых сегментов прочтите инструкции SponsorBlock</string>
   <string name="morphe_sb_guidelines_popup_already_read">Уже прочитано</string>
   <string name="morphe_sb_guidelines_popup_open">Показать</string>
-  <string name="morphe_sb_general_title">Общие настройки</string>
   <string name="morphe_sb_offline_segments_title">Сохранять сегменты загруженных видео</string>
   <string name="morphe_sb_offline_segments_summary">Позволяет пропускать сегменты загруженных видео в автономном режиме</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Показывать оповещения об ошибках подключения</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Показывает уведомление, когда сервер SponsorBlock недоступен</string>
   <string name="morphe_sb_track_skip_count_title">Включить подсчет количества пропусков</string>
   <string name="morphe_sb_track_skip_count_summary">Отправляет количество пропусков в таблицу лидеров SponsorBlock для отслеживания сэкономленного времени</string>
   <string name="morphe_sb_min_segment_duration_title">Минимальная продолжительность сегмента</string>
   <string name="morphe_sb_min_segment_duration_summary">Сегменты короче данного значения (в секундах) не будут показаны или пропущены</string>
   <string name="morphe_sb_min_segment_duration_invalid">Недопустимая длительность</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Ваш личный идентификатор пользователя</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Уникальный идентификатор пользователя должен быть конфиденциальным. Он как пароль - не должен никому передаваться. Имеющий доступ к нему может выдать себя за Вас</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Личный идентификатор пользователя должен содержать не менее 30 символов</string>
   <string name="morphe_sb_api_url_title">Изменить URL-адрес API</string>
   <string name="morphe_sb_api_url_summary">Адрес, используемый SponsorBlock для вызовов на сервер</string>
   <string name="morphe_sb_channel_whitelist_title">Белый список каналов</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL-адрес API недействителен</string>
   <string name="morphe_sb_api_url_changed">URL-адрес API изменен</string>
   <string name="morphe_sb_settings_ie_title">Резервное копирование настроек</string>
-  <string name="morphe_sb_settings_copy">Копировать</string>
   <string name="morphe_sb_settings_ie_summary">Ваша JSON конфигурация SponsorBlock, которая может быть импортирована или экспортирована в Morphe и другие платформы SponsorBlock</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Ваша конфигурация JSON SponsorBlock, которую можно импортировать/экспортировать в Morphe и другие платформы SponsorBlock.
 
@@ -92,7 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"В ваших настройках указан личный ID пользователя SponsorBlock.
 
 Ваш ID пользователя, это как пароль, и никому его нельзя раскрывать"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Не показывать снова</string>
   <string name="morphe_sb_diff_segments_title">Изменить поведение сегмента</string>
   <string name="morphe_sb_segments_sponsor">Спонсорская реклама</string>
   <string name="morphe_sb_segments_sponsor_summary">Платное продвижение, платные реферальные ссылки и прямая реклама. Не для саморекламы или бесплатных рекомендаций тем/авторам/сайтам/продуктам, которые им нравятся</string>
@@ -122,11 +102,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_highlight">Перейти к основному моменту</string>
   <string name="morphe_sb_skip_button_intro_beginning">Пропустить вступление</string>
   <string name="morphe_sb_skip_button_intro_middle">Пропустить паузу</string>
-  <string name="morphe_sb_skip_button_intro_end">Пропустить паузу</string>
   <string name="morphe_sb_skip_button_outro">Пропустить концовку</string>
   <string name="morphe_sb_skip_button_hook">Пропустить вступление</string>
   <string name="morphe_sb_skip_button_preview_beginning">Пропустить предпросмотр</string>
-  <string name="morphe_sb_skip_button_preview_middle">Пропустить предпросмотр</string>
   <string name="morphe_sb_skip_button_preview_end">Пропустить пересказ</string>
   <string name="morphe_sb_skip_button_filler">Пропустить отвлеченные темы</string>
   <string name="morphe_sb_skip_button_nomusic">Пропустить сегмент без музыки</string>
@@ -137,11 +115,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_highlight">Пропущено к основному моменту</string>
   <string name="morphe_sb_skipped_intro_beginning">Вступление пропущено</string>
   <string name="morphe_sb_skipped_intro_middle">Пауза пропущена</string>
-  <string name="morphe_sb_skipped_intro_end">Пауза пропущена</string>
   <string name="morphe_sb_skipped_outro">Концовка пропущена</string>
   <string name="morphe_sb_skipped_hook">Вступление пропущено</string>
   <string name="morphe_sb_skipped_preview_beginning">Предпросмотр пропущен</string>
-  <string name="morphe_sb_skipped_preview_middle">Предпросмотр пропущен</string>
   <string name="morphe_sb_skipped_preview_end">Пересказ пропущен</string>
   <string name="morphe_sb_skipped_filler">Отвлеченные темы пропущены</string>
   <string name="morphe_sb_skipped_nomusic">Сегмент без музыки пропущен</string>
@@ -167,8 +143,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_failed_timeout">Невозможно проголосовать за сегмент (время API истекло)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Невозможно проголосовать за сегмент (статус: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Невозможно проголосовать за сегмент: %s</string>
-  <string name="morphe_sb_vote_upvote">Голос \"за\"</string>
-  <string name="morphe_sb_vote_downvote">Голос \"против\"</string>
   <string name="morphe_sb_vote_category">Изменить категорию</string>
   <string name="morphe_sb_vote_no_segments">Нет сегментов для голосования</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ Second \"item\" text"</string>
 (%3$s)
 
 Готов к отправке?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Отправить</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Начало должно быть перед окончанием</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Сначала отметьте местоположение на временной шкале</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Просмотрите сегмент и убедитесь, что пропуск происходит плавно</string>
@@ -205,16 +178,11 @@ Second \"item\" text"</string>
 %s
 
 Если вы не отправляете выделенный момент, нажмите «Отмена» и отметьте второе местоположение"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Отправить выделенный момент</string>
   <string name="morphe_sb_stats_title">Статистика</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Статистика временно недоступна (API отключен)</string>
-  <string name="morphe_sb_stats_loading">Загрузка…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock отключен</string>
-  <string name="morphe_sb_stats_username">Ваше имя пользователя: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Нажмите для изменения Вашего имени пользователя</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Невозможно изменить имя пользователя: Статус: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Имя пользователя успешно изменено</string>
   <string name="morphe_sb_stats_reputation">Ваша репутация - &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Вы создали &lt;b&gt;%s&lt;/b&gt; сегментов</string>
   <string name="morphe_sb_stats_submissions_summary">Нажмите здесь для просмотра Ваших сегментов</string>

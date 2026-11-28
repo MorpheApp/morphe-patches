@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Захиалгаар</string>
-  <string name="morphe_custom_branding_icon_title">Аппликейшны дүрс</string>
   <string name="morphe_custom_branding_icon_entry_1">Эх хувилбар</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe хар</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe бараан</string>
@@ -108,7 +107,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ийн мэдэгдэл</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Таны үзсэн түүх хадгалагдахгүй байна.&lt;br&gt;&lt;br&gt;Энэ нь ихэвчлэн DNS зар шугалуулагч эсвэл сүлжээний прокси-оос болсон байж болно.&lt;br&gt;&lt;br&gt;Үүнийг засахын тулд &lt;b&gt;s.youtube.com&lt;/b&gt; хаягийг зөвшөөрөгдсөн жагсаалтад нэмэх эсвэл бүх DNS шугалуулагч болон прокси-г унтраана уу</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Дахин бүү харуул</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Видео урсгалыг дуурайх</string>
   <string name="morphe_spoof_video_streams_screen_summary">Тоглуулах үеийн алдаанаас сэргийлэхийн тулд клиентийн хуурамч дүрслэлийг тохируулах</string>
@@ -135,7 +133,6 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
 Android System WebView-ийг хамгийн сүүлийн хувилбар руу шинэчлэх хүртэл видео тоглуулалт амжилтгүй болж магадгүй.
 
 Android System WebView-ийг нээхийн тулд OK дээр дарна уу."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Дахин бүү харуулах</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView суулгаагүй байна. Видеог тоглуулахын тулд суулгаарай</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -205,7 +202,6 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Мэдэгдлийн медиа удирдлага</string>
   <string name="morphe_notification_media_screen_summary">Түгээн дэлгэц болон мэдэгдлийн хэсэгт харагдах тоглуулах удирдлагуудыг тохируулна уу</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Өмнөх &amp; Дараагийн товчлууруудыг нуух</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Медиа мэдэгдэл, түгээн дэлгэц болон чихэвчний удирдлага дээрх Өмнөх болон Дараагийн товчлууруудыг нууна</string>
   <string name="morphe_disable_notification_media_seekbar_title">Хайлтын зурвасыг идэвхгүй болгох</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Түгээн дэлгэц болон мэдэгдлийн хэсэг дээрх хайлтын зурвасыг чирж өөрчлөхийг хязгаарлана</string>
@@ -245,10 +241,8 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_video_effects_custom_restore">Үндсэн тохиргоог сэргээх</string>
   <string name="morphe_video_effects_custom_add_title">Шинэ эффект</string>
   <string name="morphe_video_effects_custom_edit_title">Эффектийг засах</string>
-  <string name="morphe_video_effects_custom_name_hint">Нэр</string>
   <string name="morphe_video_effects_custom_name_empty">Эффектийн нэр оруулна уу</string>
   <string name="morphe_video_effects_custom_name_exists">Энэхүү нэртэй эффект аль хэдийн байна</string>
-  <string name="morphe_video_effects_custom_copy_code">Кодыг хуулах</string>
   <string name="morphe_video_effects_custom_error_title">Эффект алдаатай байна</string>
   <string name="morphe_video_effects_custom_error_message">"Кодыг засах хүртлээ видеонуудыг эффектгүйгээр харуулах болно. Энэхүү алдааг кодыг бичсэн AI-д илгээнэ үү:
 
@@ -258,7 +252,6 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
 AI-аас илүү богино код хүсэх эсвэл кодыг хэсэг хэсгээр нь буулгана уу."</string>
   <string name="morphe_video_effects_custom_copy_error">Хуулах үед алдаа гарлаа</string>
   <string name="morphe_video_effects_custom_save_anyway">Ямартай ч хамаагүй хадгалах</string>
-  <string name="morphe_video_effects_custom_delete">Устгах</string>
   <string name="morphe_video_effects_custom_delete_title">Эффектийг устгах уу?</string>
   <string name="morphe_video_effects_custom_delete_message">%s устгагдана.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -286,8 +279,6 @@ AI-аас илүү богино код хүсэх эсвэл кодыг хэсэ
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Энэ функцийг ашиглахын тулд \'Spoof video streams\'-ийг \'Android Studio\' болон \'Android VR Downgraded\'-ээс бусад клиент рүү өөрчилнө үү</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Хуваалцах холбоосыг цэвэрлэх</string>
-  <string name="morphe_sanitize_sharing_links_summary">Хуваалцсан холбоосуудаас хяналтын хайлтын параметрэг устгана</string>
   <string name="morphe_replace_music_with_youtube_title">Хуваалцах холбоосыг youtube.com болгон өөрчлөх</string>
   <string name="morphe_replace_music_with_youtube_summary">Хуваалцсан холбоосууд дахь music.youtube.com-ыг youtube.com-оор сольно</string>
   <string name="morphe_replace_links_with_shortener_title">Хуваалцах холбоосуудыг youtu.be болгож өөрчлөх</string>
@@ -372,7 +363,6 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_custom_font_type_title">Фонт</string>
   <string name="morphe_custom_font_type_entry_default">Үндсэн</string>
   <string name="morphe_custom_font_type_entry_system">Төхөөрөмжийн системийн фонт</string>
-  <string name="morphe_custom_font_type_entry_custom">Өөрийн фонт файл</string>
   <string name="morphe_custom_font_file_title">Өөрийн фонт файл</string>
   <string name="morphe_custom_font_file_summary">TTF эсвэл OTF фонт файл сонгоно уу</string>
   <string name="morphe_custom_font_file_invalid">Сонгосон файл нь TTF эсвэл OTF фонт биш байна</string>
@@ -382,7 +372,6 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_glass_menus_screen_summary">Цэснүүдийг ард нь бүдгэрсэн агуулга дээрх бүрсийгээр харуулах</string>
   <string name="morphe_glass_menus_title">Шилэн цэснүүдийг идэвхжүүлэх</string>
   <string name="morphe_glass_menus_summary">Цэс болон доод хуудсыг бүрсийгээр бүдгэрүүлсэн шилэн харагдуулна</string>
-  <string name="morphe_glass_menus_opacity_title">Шилэн тунгалаг байдал</string>
   <string name="morphe_glass_menus_opacity_summary">Цэс нь бүдгэрүүлсэн агуулгыг хэр зэрэг бүрхэх (0 нь тунгалаг, 100 нь тунгалаг бус)</string>
   <string name="morphe_glass_menus_blur_title">Бүдгэрүүлэлт</string>
   <string name="morphe_glass_menus_blur_summary">Цэсний ард байгаа агуулгыг хэр зэрэг бүдгэрүүлэх</string>
@@ -403,7 +392,6 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_ryd_dislike_percentage_summary">Үгүйсгэлийг тоогоор бус, таалагдсан тооны хувиар харуулна</string>
   <string name="morphe_ryd_estimated_like_title">Таалагдсан тооны тооцооллыг харуулах</string>
   <string name="morphe_ryd_estimated_like_summary">Зохиогч таалагдсан тоог идэвхгүй болгосон видеонуудад таалагдсан тооны тооцооллыг харуулна</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Холболтын алдааны мэдэгдлийг харуулах</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike серверийн холболтгүй үед мэдэгдэл харуулна</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike нь YouTube-ийн 2021 онд нуусан dislike-ийн тоог сэргээдэг. Тооцоолол нь устгахаас өмнөх архивлагдсан өгөгдлөөс хамаарах бөгөөд шинэ видеонуудын хувьд хэрэглэгчдийн саналаас тооцоолдог тул ойролцоо байх бөгөөд хэдэн өдрөөр шинэчлэгдэнэ
 
@@ -425,8 +413,89 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиентийн хүсэлтийн хязгаарлалтад тулгаагүй</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиентийн хүсэлтийн хязгаарлалт %s удаа гарсан</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
-  <string name="morphe_navigation_bar_screen_title">Навигацийн мөр</string>
   <string name="morphe_navigation_bar_screen_summary">Доод навигацийн мөрөнд аль товчнууд харагдахыг сонгоно уу</string>
   <string name="morphe_toolbar_screen_title">Баруулбаар</string>
   <string name="morphe_toolbar_screen_summary">Баруулбаар дээр аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 секунд</string>
+  <string name="morphe_duration_2s">2 секунд</string>
+  <string name="morphe_duration_3s">3 секунд</string>
+  <string name="morphe_duration_4s">4 секунд</string>
+  <string name="morphe_duration_5s">5 секунд</string>
+  <string name="morphe_duration_6s">6 секунд</string>
+  <string name="morphe_duration_7s">7 секунд</string>
+  <string name="morphe_duration_8s">8 секунд</string>
+  <string name="morphe_duration_9s">9 секунд</string>
+  <string name="morphe_duration_10s">10 секунд</string>
+  <string name="morphe_change_start_page_entry_default">Үндсэн</string>
+  <string name="morphe_change_start_page_entry_explore">Судлах</string>
+  <string name="morphe_change_start_page_entry_history">Түүх</string>
+  <string name="morphe_change_start_page_entry_library">Сан</string>
+  <string name="morphe_change_start_page_entry_playlists">Жагсаалтууд</string>
+  <string name="morphe_change_start_page_entry_search">Хайлт</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Бүртгэлүүд</string>
+  <string name="morphe_change_start_page_title">Эхлэл хуудас</string>
+  <string name="morphe_action_buttons_screen_title">Үйлдэл хийх товчнууд</string>
+  <string name="morphe_comments_screen_title">Сэтгэгдэл</string>
+  <string name="morphe_feed_screen_title">Мэдээ</string>
+  <string name="morphe_flyout_menu_screen_title">Гүйдэг цэс</string>
+  <string name="morphe_general_title">Ерөнхий</string>
+  <string name="morphe_miniplayer_screen_title">Мини тоглуулагч</string>
+  <string name="morphe_player_screen_title">Тоглуулагч</string>
+  <string name="morphe_video_screen_title">Видео</string>
+  <string name="morphe_appearance_title">Гадаад төрх</string>
+  <string name="morphe_cancel">Цуцлах</string>
+  <string name="morphe_comments_screen_summary">Сэтгэгдлийн хэсэгт аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
+  <string name="morphe_copy_code">Кодыг хуулах</string>
+  <string name="morphe_corner_radius_title">Булангийн радиус</string>
+  <string name="morphe_do_not_show_again">Дахин бүү харуулаарай</string>
+  <string name="morphe_download_force_4k_title">4K татаж авах боломжийг албадан идэвхжүүлэх</string>
+  <string name="morphe_glass_opacity_title">Шилэн тунгалаг байдал</string>
+  <string name="morphe_header_logo_title">Толгой хэсгийн лого</string>
+  <string name="morphe_hide_action_bar_title">Үйлдэл хийх мөрийг нуух</string>
+  <string name="morphe_hide_cast_button_title">Cast товчийг нуух</string>
+  <string name="morphe_hide_comments_button_title">Сэтгэгдлийн товчийг нуух</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Олон нийтийн удирдамжийг нуух</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji товчийг нуух</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF товчийг нуух</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Сэтгэгдэл болон хариултад хавсаргасан GIF болон зургуудыг нууна</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF болон зургуудыг нуух</string>
+  <string name="morphe_hide_comments_info_button_title">Мэдээлэл товчийг нуух</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Цаг хугацааны товчийг нуух</string>
+  <string name="morphe_hide_horizontal_shelves_title">Хэвтээ талбайнуудыг нуух</string>
+  <string name="morphe_hide_like_dislike_button_title">\"Таалагдсан\" болон \"Таалагдаагүй\" товчийг нуух</string>
+  <string name="morphe_hide_like_dislike_buttons_title">\"Таалагдсан\" болон \"Таалагдаагүй\" товчнуудыг нуух</string>
+  <string name="morphe_hide_navigation_bar_title">Навигацийн панелийг нуух</string>
+  <string name="morphe_hide_navigation_button_labels_title">Навигацийн товчлуурын шошгуудыг нуух</string>
+  <string name="morphe_hide_previous_next_buttons_title">\"Өмнөх\" &amp; \"Дараах\" товчнуудыг нуух</string>
+  <string name="morphe_hide_search_button_title">\"Хайх\" товчийг нуух</string>
+  <string name="morphe_hide_translate_button_title">\"Орчуулах\" товчийг нуух</string>
+  <string name="morphe_hide_video_ads_title">Видео сурталчилгаануудыг нуух</string>
+  <string name="morphe_loading">Ачаалж байна…</string>
+  <string name="morphe_name">Нэр</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Тумцны зай</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Харагдаж буй товчлуур: %1$s-аас %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
+  <string name="morphe_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
+  <string name="morphe_navigation_bar_glass_title">Шилэн навигацийн цувралыг идэвхжүүлэх</string>
+  <string name="morphe_positive_number_invalid">Утга нь эерэг тоо байх ёстой</string>
+  <string name="morphe_private_user_id_invalid">Хувийн хэрэглэгчийн ID нь хамгийн багадаа 30 тэмдэгт урт байх ёстой</string>
+  <string name="morphe_private_user_id_title">Таны хувийн хэрэглэгчийн ID</string>
+  <string name="morphe_rename">Нэрийг өөрчлөх</string>
+  <string name="morphe_show_settings_button_title">Тохиргооны товчлуурыг харуулах</string>
+  <string name="morphe_show_settings_button_type_title">Тохиргооны товчлуурын үйлдэл</string>
+  <string name="morphe_show_video_effect_menu_title">Видео эффект цэсийг харуулах</string>
+  <string name="morphe_submit">Илгээх</string>
+  <string name="morphe_time_adjustment_step_title">Цаг хугацааны тохируулгын алхам</string>
+  <string name="morphe_toast_on_connection_error_title">Холболтын алдааны мэдэгдлийг харуулах</string>
+  <string name="morphe_toast_on_skip_title">Алгасах мэдэгдлийг харуулах</string>
+  <string name="morphe_translated_only">Зөвхөн орчуулсан</string>
+  <string name="morphe_translating">Орчуулж байна…</string>
+  <string name="morphe_translation_language_title">Орчуулгын хэл</string>
+  <string name="morphe_username_change_unknown_error">Хэрэглэгчийн нэрийг өөрчлөх боломжгүй: Төлөв: %1$s %2$s</string>
+  <string name="morphe_username_changed">Хэрэглэгчийн нэрийг амжилттай өөрчиллээ</string>
+  <string name="morphe_username_html">Таны хэрэглэгчийн нэр: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Видеонууд</string>
+  <string name="morphe_vote_downvote">Сөрөг савот</string>
+  <string name="morphe_vote_upvote">Эерэг савот</string>
 </resources>

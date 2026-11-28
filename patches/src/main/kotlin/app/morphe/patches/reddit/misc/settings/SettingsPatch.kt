@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.misc.settings
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -17,7 +16,6 @@ import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
-import app.morphe.patcher.string
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -47,6 +45,7 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.announcements.patchesUpdateNoticePatch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.settings.settingsSearchResources
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -111,7 +110,8 @@ val settingsPatch = patch(
                         "morphe_settings_custom_checkmark.xml",
                         "morphe_settings_custom_checkmark_bold.xml",
                         "morphe_settings_icon_reddit.xml"
-                    )
+                    ),
+                    *settingsSearchResources
                 )
             }
         }
@@ -270,28 +270,8 @@ val settingsPatch = patch(
         }
 
         PreferenceDestinationLegacyFingerprint.let {
-            // Fragment.requireActivity()
-            val getActivityMethod = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                returnType = RedditActivityFingerprint.originalClassDef.type,
-                parameters = listOf(),
-                filters = listOf(
-                    string(" not attached to an activity.")
-                )
-            ).method
-
-            val startActivityMethod = Fingerprint(
-                definingClass = getActivityMethod.definingClass,
-                returnType = "V",
-                parameters = listOf(
-                    "Landroid/content/Intent",
-                    "I",
-                    "Landroid/os/Bundle;"
-                ),
-                filters = listOf(
-                    string(" not attached to Activity"),
-                )
-            ).method
+            val getActivityMethod = FragmentRequireActivityFingerprint.method
+            val startActivityMethod = FragmentStartActivityForResultFingerprint.method
 
             it.method.cloneParameters().addInstructionsWithLabels(
                 0,
@@ -382,10 +362,7 @@ private fun addComposeSettingRow() {
         addPatchInterface(
             EXTENSION_SETTING_ROW_INTERFACE,
             "patch_getKey",
-            """
-                iget-object v0, p0, $keyField
-                return-object v0
-            """
+            keyField
         )
 
         // A shallow copy keeps the section, the order and the content of the original row.
@@ -496,7 +473,7 @@ private fun MutableMethod.overrideForMorpheRow(
  */
 private fun implementSettingIconComposable() {
     val iconDataType = IconDataToStringFingerprint.originalClassDef.type
-    val iconComposable = IconComposableFingerprint(iconDataType).originalMethod
+    val iconComposable = IconComposableFingerprint.originalMethod
     val composerType = iconComposable.parameterTypes[5]
 
     mutableClassDefBy(EXTENSION_CLASS).apply {

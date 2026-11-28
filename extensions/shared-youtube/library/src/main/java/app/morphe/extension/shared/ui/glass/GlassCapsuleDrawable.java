@@ -65,7 +65,8 @@ public final class GlassCapsuleDrawable extends Drawable {
 
         /**
          * @return If the bar is over a player that is always dark, whatever the app theme,
-         *         such as the Shorts player. The bar is then kept black around the capsule.
+         *         such as the Shorts player. The bar then keeps the color the app gives it there,
+         *         or black, around the capsule.
          */
         default boolean isOverDarkPlayer() {
             return false;
@@ -157,6 +158,13 @@ public final class GlassCapsuleDrawable extends Drawable {
      */
     @Nullable
     private Drawable appBackground;
+
+    /**
+     * The plain color the app gave the bar over a dark player, such as the theme color of the navigation bar
+     * of the Shorts player, drawn around the capsule there, or 0 if the app gave none yet.
+     */
+    @ColorInt
+    private int darkPlayerBarColor;
 
     /**
      * If drawing the background of the app failed, so it is no longer drawn.
@@ -417,6 +425,13 @@ public final class GlassCapsuleDrawable extends Drawable {
             appBackground.setCallback(null);
         }
 
+        // Only a color given while the bar is over the dark player, so a color of the bar
+        // elsewhere, such as white with the light theme, is never drawn over the player.
+        if (background instanceof ColorDrawable colorBackground && host.isOverDarkPlayer()
+                && Color.alpha(colorBackground.getColor()) == 255) {
+            darkPlayerBarColor = colorBackground.getColor();
+        }
+
         // A plain color or an opaque background is the solid bar of the app, such as in
         // the Shorts player, and is left out so the capsule stays translucent.
         appBackground = background == null || appBackgroundFailed
@@ -494,9 +509,10 @@ public final class GlassCapsuleDrawable extends Drawable {
 
             // The dark player can end above the navigation bar, so the background of the window
             // would show around the capsule, which is white with the light theme.
-            // The player is always dark, so the bar is kept black around the capsule.
+            // The bar keeps the color the app gives it over the player, such as a dark theme color,
+            // or black, as the player is always dark.
             if (style == STYLE_DARK_PLAYER && !host.isOverVideo()) {
-                canvas.drawColor(Color.BLACK);
+                canvas.drawColor(darkPlayerBarColor != 0 ? darkPlayerBarColor : Color.BLACK);
             }
 
             // Soft shadow below the capsule.

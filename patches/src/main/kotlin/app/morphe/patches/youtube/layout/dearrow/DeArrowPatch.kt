@@ -128,11 +128,11 @@ val deArrowPatch = patch(
             ),
             PreferenceCategory(
                 key = "morphe_dearrow_general_category",
-                titleKey = "morphe_settings_screen_04_general_title",
+                titleKey = "morphe_general_title",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     TextPreference("morphe_dearrow_api_url"),
-                    SwitchPreference("morphe_dearrow_connection_toast", summary = true)
+                    SwitchPreference("morphe_dearrow_connection_toast", titleKey = "morphe_toast_on_connection_error_title", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -147,13 +147,14 @@ val deArrowPatch = patch(
                     ),
                     TextPreference(
                         key = "morphe_dearrow_vote_time_step",
+                        titleKey = "morphe_time_adjustment_step_title",
                         tag = "app.morphe.extension.youtube.settings.preference.DeArrowTimeStepPreference",
                         inputType = InputType.NUMBER
                     ),
                     // Same setting as SponsorBlock, since DeArrow uses the same user id.
                     TextPreference(
                         key = "morphe_sb_private_user_id_Do_Not_Share",
-                        titleKey = "morphe_dearrow_private_user_id_title",
+                        titleKey = "morphe_private_user_id_title",
                         summaryKey = "morphe_dearrow_private_user_id_summary",
                         tag = "app.morphe.extension.youtube.settings.preference.DeArrowPrivateUserIdPreference"
                     )
@@ -195,7 +196,7 @@ val deArrowPatch = patch(
             """
         )
 
-        // The views that load the thumbnails are remembered, so a thumbnail that is loaded again
+        // The views that load the thumbnails are remembered, so a thumbnail that is loaded again,
         // mounts again only the Litho views that show the thumbnail, instead of all the shown Litho views.
         val imageModelField = GlideRequestBuilderLoadGenericFingerprint.instructionMatches.first().fieldReference
         val viewTargetType = GlideViewTargetGetRequestFingerprint.classDef.type

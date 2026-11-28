@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Qayta ishga tushirish talab qilinadi</string>
   <string name="morphe_settings_restart_dialog_message">Ushbu o\'zgarish kuchga kirishi uchun ilovani qayta ishga tushiring</string>
   <string name="morphe_settings_restart">Qayta ishga tushirish</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Import</string>
-  <string name="morphe_settings_import_copy">Nusxa ko\'chirish</string>
   <string name="morphe_settings_import_reset">Morphe sozlamalari standart holatga qaytarildi</string>
   <string name="morphe_settings_import_success">%s ta sozlama import qilindi</string>
   <string name="morphe_settings_import_failure_parse">Import xatosi: %s</string>
@@ -76,7 +74,6 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Patchlar</string>
   <string name="morphe_settings_about_version">Versiya</string>
-  <string name="morphe_settings_about_close">Yopish</string>
   <string name="morphe_settings_about_prerelease">Pre-reliz</string>
   <string name="morphe_settings_about_update_available">Yangilanish mavjud: %s</string>
   <string name="morphe_settings_about_update_hint">Patchlaringizni yangilash uchun Morphe yordamida ushbu ilovani qayta patchlang</string>
@@ -108,7 +105,6 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Litsenziya bildirishnomalari</string>
-  <string name="morphe_settings_about_licenses_loading">Yuklanmoqda…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Kodni tekshirish</string>
   <string name="morphe_debug_screen_summary">Kengaytirilgan ishlab chiquvchi variantlarini va diagnostika loglarini sozlang</string>
@@ -125,7 +121,6 @@ Sizga hech qanday kutilmagan voqealar haqida xabar berilmaydi"</string>
   <string name="morphe_debug_export_logs_success">Debug loglari muvaffaqiyatli eksport qilindi</string>
   <string name="morphe_debug_export_logs_failed">Debug loglarini eksport qilishda xato yuz berdi</string>
   <string name="morphe_debug_logs_search_hint">Debug jurnallarini qidir…</string>
-  <string name="morphe_debug_export_logs_clear">Tozalash</string>
   <string name="morphe_debug_logs_disabled">Debug loglari o\'chirilgan</string>
   <string name="morphe_debug_logs_none_found">Debug loglari topilmadi</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug loglari nusxalandi</string>
@@ -142,15 +137,8 @@ Sizga hech qanday kutilmagan voqealar haqida xabar berilmaydi"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloklangan (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Majburiy (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Avto</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">O\'chiq</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Yoniq</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Majburiy yoqish</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Bloklash</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">O\'chirish</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funksiya bayroqlari saqlandi</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funksiya bayroqlari taqimlandi</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funksiya bayroqlari nusxalab olindi</string>
@@ -200,7 +188,6 @@ Xatti-harakat qidiruvda avvalroq yo'qolgan edi, shuning uchun bir nechta bayroq 
   <string name="gms_core_dialog_outdated_message">"MicroG v%1$s versiyasi eskirgan va muammolarga olib kelishi mumkin.
 
 Iltimos, MicroG-ni so'nggi v%2$s versiyasiga yangilang"</string>
-  <string name="gms_core_dialog_update_text">Yangilash</string>
   <string name="gms_core_dialog_ignore_text">E\'tiborsiz qoldirish</string>
   <string name="gms_core_dialog_conflict_message">"O'rnatilgan MicroG Morphe tomonidan tavsiya etilmaydi:
 
@@ -220,7 +207,6 @@ Bu ilovaning ishlashi uchun zarur"</string>
 MicroG uchun batareya optimallashtiruvini o\"chirish batareya sarfiga salbiy ta\"sir ko\"rsatmaydi.
 
 Davom etish tugmasini bosing va optimallashtirish o\"zgarishlariga ruxsat bering"</string>
-  <string name="gms_core_dialog_continue_text">Davom etish</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG batareya optimallashtiruvi dialogini ko\'rsatish</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Buni o'chirish MicroG batareya optimallashtiruvi haqidagi bildirishnomani yashiradi.
 
@@ -259,9 +245,29 @@ Agar siz eng muammosiz tajribani xohlasangiz, unda buni &lt;b&gt;o'chirib tashla
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Xatoliklar tuzatildi</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Boshqa o\'zgarishlar</string>
   <string name="morphe_patches_update_notice_dialog_more">…yana %s ta</string>
-  <string name="morphe_patches_update_notice_dialog_update">Yangilash</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Yopish</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Xatolik logi foydalanuvchi hujjatlariga saqlandi: %s</string>
   <string name="morphe_crash_log_saved">Xatolik logi saqlandi: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Biz haqimizda</string>
+  <string name="morphe_ads_screen_title">Reklama</string>
+  <string name="morphe_misc_screen_title">Qo‘shimcha</string>
+  <string name="morphe_navigation_bar_screen_title">Navigatsiya paneli</string>
+  <string name="morphe_post_buttons_screen_title">Post tugmalari</string>
+  <string name="morphe_custom_branding_icon_title">Ilova belgisi</string>
+  <string name="morphe_download">Yuklab olish</string>
+  <string name="morphe_hide_create_button_title">Yaratish tugmasini yashirish</string>
+  <string name="morphe_hide_post_comment_button_title">Izoh tugmasini yashirish</string>
+  <string name="morphe_sanitize_sharing_links_summary">Ulashilgan havolalardan kuzatuv so\'rov parametrlarini olib tashlaydi</string>
+  <string name="morphe_sanitize_sharing_links_title">Ulashish havolalarini tozalash</string>
+  <string name="morphe_settings_add">Qo\'shish</string>
+  <string name="morphe_settings_clear">Tozalash</string>
+  <string name="morphe_settings_close">Yopish</string>
+  <string name="morphe_settings_continue">Davom etish</string>
+  <string name="morphe_settings_copy">Nusxa olish</string>
+  <string name="morphe_settings_delete">O\'chirish</string>
+  <string name="morphe_settings_remove">Olib tashlash</string>
+  <string name="morphe_settings_update">Yangilash</string>
 </resources>

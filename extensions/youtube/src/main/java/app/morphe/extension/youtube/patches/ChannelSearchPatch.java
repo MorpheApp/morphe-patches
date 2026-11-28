@@ -154,7 +154,7 @@ public final class ChannelSearchPatch {
      * What the results list, which the user picks above them.
      */
     private enum ResultMode {
-        VIDEOS("morphe_channel_search_videos"),
+        VIDEOS("morphe_videos"),
         POSTS("morphe_channel_search_posts");
 
         /**

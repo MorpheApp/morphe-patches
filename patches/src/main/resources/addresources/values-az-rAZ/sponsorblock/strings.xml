@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock-u aktivləşdir</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock YouTube videolarının cansıxıcı hissələrini ötürmək üçün icma mənbəli sistemdir</string>
-  <string name="morphe_sb_appearance_category_title">Görünüş</string>
   <string name="morphe_sb_voting_button_title">Səsvermə düyməsini göstər</string>
   <string name="morphe_sb_voting_button_summary">Bölümlərə müsbət və ya mənfi səs vermək üçün düymə əlavə edir</string>
   <string name="morphe_sb_square_layout_title">Kvadrat düzümü istifadə et</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Bütün bölüm boyunca onu görünən saxlamaq əvəzinə, bir neçə saniyə sonra Ötürmə düyməsini gizlədir</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Ötür düyməsi müddəti</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Ötürmə düyməsinin nə qədər görünən qalacağını təyin et</string>
-  <string name="morphe_sb_toast_on_skip_title">Ötürmə bildirişini göstər</string>
   <string name="morphe_sb_toast_on_skip_summary">Bölüm avtomatik olaraq ötürüldükdə bildiriş göstərir</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Ötürülmə bildirişi müddəti</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Geri qaytarma bildirişinin nə qədər görünən qalacağını təyin et</string>
-  <string name="morphe_sb_duration_1s">1 saniyə</string>
-  <string name="morphe_sb_duration_2s">2 saniyə</string>
-  <string name="morphe_sb_duration_3s">3 saniyə</string>
-  <string name="morphe_sb_duration_4s">4 saniyə</string>
-  <string name="morphe_sb_duration_5s">5 saniyə</string>
-  <string name="morphe_sb_duration_6s">6 saniyə</string>
-  <string name="morphe_sb_duration_7s">7 saniyə</string>
-  <string name="morphe_sb_duration_8s">8 saniyə</string>
-  <string name="morphe_sb_duration_9s">9 saniyə</string>
-  <string name="morphe_sb_duration_10s">10 saniyə</string>
   <string name="morphe_sb_video_length_without_segments_title">Bölümlər olmadan video uzunluğun göstər</string>
   <string name="morphe_sb_video_length_without_segments_summary">Çəkmə cizgisində görünən ümumi video müddətindən bütün bölümləri çıxır</string>
   <string name="morphe_sb_create_segment_category_title">Yeni bölümlərin yaradılması</string>
   <string name="morphe_sb_create_new_segment_title">\'Yeni bölüm yarat\' düyməsini göstər</string>
   <string name="morphe_sb_create_new_segment_summary">Video oynadıcıya yeni SponsorBlock bölümləri təqdim etməyə imkan verən düymə əlavə edir</string>
-  <string name="morphe_sb_create_new_segment_step_title">Vaxt tənzimləmə aralığı</string>
   <string name="morphe_sb_create_new_segment_step_summary">Vaxt tənzimləmə düymələrinin çəkmə dərəcəsi (millisaniyə ilə)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Dəyər müsbət rəqəm olmalıdır</string>
   <string name="morphe_sb_guidelines_title">Təqdimetmə qaydaları</string>
   <string name="morphe_sb_guidelines_summary">Təlimatlar yeni bölümlərin yaradılması üçün qaydalar və məsləhətlər ehtiva edir</string>
   <string name="morphe_sb_guidelines_popup_title">Təlimatları izləyin</string>
   <string name="morphe_sb_guidelines_popup_content">Yeni bölümlər yaratmazdan əvvəl SponsorBlock təlimatlarını oxuyun</string>
   <string name="morphe_sb_guidelines_popup_already_read">Artıq oxudum</string>
   <string name="morphe_sb_guidelines_popup_open">Mənə göstər</string>
-  <string name="morphe_sb_general_title">Ümumi</string>
   <string name="morphe_sb_offline_segments_title">Yüklənmiş videoların bölümlərini saxla</string>
   <string name="morphe_sb_offline_segments_summary">Oflayn olarkən yüklənmiş videoların bölümlərini ötürməyə imkan verir</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Bağlantı xətası xəbərdarlıqlarını göstər</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock serveri əlçatmaz olduqda bildiriş göstərir</string>
   <string name="morphe_sb_track_skip_count_title">Ötürmə sayının izlənilməsini aktivləşdir</string>
   <string name="morphe_sb_track_skip_count_summary">Nə qədər vaxta qənaət edildiyini izləmək üçün ötürmə saylarını SponsorBlock liderlik cədvəlinə göndərir</string>
   <string name="morphe_sb_min_segment_duration_title">Ən az bölüm müddəti</string>
   <string name="morphe_sb_min_segment_duration_summary">Bölümlər bu dəyərdən (saniyə olaraq) daha qısadırsa göstərilməyəcək və ya ötürülməyəcək</string>
   <string name="morphe_sb_min_segment_duration_invalid">Etibarsız vaxt müddəti</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Şəxsi istifadəçi ID-niz</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Bu gizli saxlanılmalıdır. Bu, parol kimidir və heç kimlə paylaşılmamalıdır. Kimsə bunu bilsə, onlar sizi təqlid edə bilər</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Şəxsi istifadəçi ID-si ən azı 30 simvol uzunluğunda olmalıdır</string>
   <string name="morphe_sb_api_url_title">API URL-ni Dəyişdir</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock-un serverlə əlaqə qurmaq üçün istifadə etdiyi ünvan</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal ağ siyahısı</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">API URL etibarsızdır</string>
   <string name="morphe_sb_api_url_changed">API URL dəyişdirildi</string>
   <string name="morphe_sb_settings_ie_title">İdxal/İxrac etmə tənzimləmələri</string>
-  <string name="morphe_sb_settings_copy">Köçür</string>
   <string name="morphe_sb_settings_ie_summary">Morphe və digər SponsorBlock platformalarına idxal/ixrac edilə bilən SponsorBlock JSON qurmanız</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Morphe və digər SponsorBlock platformalarına idxal/ixrac edilə bilən SponsorBlock JSON qurmanız
 
@@ -92,7 +73,6 @@ Bu şəxsi istifadəçi kimliyinizi saxlayır. Bunu düşünülmüş şəkildə 
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Tənzimləmələriniz şəxsi SponsorBlock istifadəçi kimliyini ehtiva edir.
 
 İstifadəçi ID-niz parol kimidir və bu heç vaxt paylaşılmamalıdır"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Təkrar göstərmə</string>
   <string name="morphe_sb_diff_segments_title">Bölüm davranışını dəyişdir</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
   <string name="morphe_sb_segments_sponsor_summary">Ödənişli tanıtım, ödənişli yönləndirmələr və birbaşa reklamlar. Öz reklamı və ya bəyəndikləri səbəblərə / yaradıcılara / veb saytlara / məhsullara ödənişsiz çağırışlar etmək üçün deyil</string>
@@ -122,11 +102,9 @@ Bu şəxsi istifadəçi kimliyinizi saxlayır. Bunu düşünülmüş şəkildə 
   <string name="morphe_sb_skip_button_highlight">Vurğulanana keç</string>
   <string name="morphe_sb_skip_button_intro_beginning">Girişi ötür</string>
   <string name="morphe_sb_skip_button_intro_middle">Fasiləni ötür</string>
-  <string name="morphe_sb_skip_button_intro_end">Fasiləni ötür</string>
   <string name="morphe_sb_skip_button_outro">Bitişi ötür</string>
   <string name="morphe_sb_skip_button_hook">Girişi ötür</string>
   <string name="morphe_sb_skip_button_preview_beginning">Önizləməni ötür</string>
-  <string name="morphe_sb_skip_button_preview_middle">Önizləməni ötür</string>
   <string name="morphe_sb_skip_button_preview_end">Anonsu ötür</string>
   <string name="morphe_sb_skip_button_filler">Əlaqəsiz olanı ötür</string>
   <string name="morphe_sb_skip_button_nomusic">Musiqisiz hissəni ötür</string>
@@ -137,11 +115,9 @@ Bu şəxsi istifadəçi kimliyinizi saxlayır. Bunu düşünülmüş şəkildə 
   <string name="morphe_sb_skipped_highlight">Vurğulanan hissəyə keçildi</string>
   <string name="morphe_sb_skipped_intro_beginning">Giriş ötürüldü</string>
   <string name="morphe_sb_skipped_intro_middle">Fasilə ötürüldü</string>
-  <string name="morphe_sb_skipped_intro_end">Fasilə ötürüldü</string>
   <string name="morphe_sb_skipped_outro">Bitiş ötürüldü</string>
   <string name="morphe_sb_skipped_hook">Giriş ötürüldü</string>
   <string name="morphe_sb_skipped_preview_beginning">Önizləmə ötürüldü</string>
-  <string name="morphe_sb_skipped_preview_middle">Önizləmə ötürüldü</string>
   <string name="morphe_sb_skipped_preview_end">Anons ötürüldü</string>
   <string name="morphe_sb_skipped_filler">Əlaqəsiz ötürüldü</string>
   <string name="morphe_sb_skipped_nomusic">Musiqi olmayan bölmə ötürüldü</string>
@@ -167,8 +143,6 @@ Artıq var"</string>
   <string name="morphe_sb_vote_failed_timeout">Bölümə səs vermək olmur (API zaman aşımı)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Bölümə səs vermək olmur (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Bölümə səs vermək olmur: %s</string>
-  <string name="morphe_sb_vote_upvote">Müsbət səs</string>
-  <string name="morphe_sb_vote_downvote">Mənfi səs</string>
   <string name="morphe_sb_vote_category">Kateqoriyanı dəyişdir</string>
   <string name="morphe_sb_vote_no_segments">Səsvermə üçün bölüm yoxdur</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ ilə
  (%3$s)
 
 Təqdim etməyə hazırdır?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Təqdim et</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Başlanğıc sondan əvvəl olmalıdır</string>
   <string name="morphe_sb_new_segment_mark_locations_first">İlk öncə vaxt cizgisi üzərində bir mövqe işarələ</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Bölümü öncə izlə, düzgün ötürüldüyünə əmin ol</string>
@@ -205,16 +178,11 @@ Təqdim etməyə hazırdır?"</string>
 %s
 
 Əgər vurğulama göndərmirsinizsə, Ləğv et-ə toxunun və ikinci mövqeyi işarələyin"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Vurğulananı təqdim et</string>
   <string name="morphe_sb_stats_title">Göstəricilər</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistika müvəqqəti mövcud deyil (API işləmir)</string>
-  <string name="morphe_sb_stats_loading">Yüklənilir…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock qapalıdır</string>
-  <string name="morphe_sb_stats_username">İstifadəçi adınız: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">İstifadəçi adınızı dəyişdirmək üçün bura toxun</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">İstifadəçi adını dəyişdirmək olmur: Status: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">İstifadəçi adı uğurla dəyişdirildi</string>
   <string name="morphe_sb_stats_reputation">Nüfuzunuz: &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">&lt;b&gt;%s&lt;/b&gt; bölüm yaratdınız</string>
   <string name="morphe_sb_stats_submissions_summary">Bölümlərinizə baxmaq üçün bura toxunun</string>

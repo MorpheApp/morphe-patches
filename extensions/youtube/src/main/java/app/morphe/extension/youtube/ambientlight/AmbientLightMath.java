@@ -79,9 +79,12 @@ final class AmbientLightMath {
         }
     }
 
-    /** Neutral colors within this luma of the page color are the page background. */
+    /** The page colors of the app itself, which a theme color replaces. */
+    static final int APP_DARK_PAGE_COLOR = 0xFF0F0F0F;
+    static final int APP_LIGHT_PAGE_COLOR = 0xFFFFFFFF;
+    /** Colors of the hue of the page within this luma of the page color are the page background. */
     private static final int PAGE_LUMA_TOLERANCE = 6;
-    /** Neutral colors this far from the page color are not a raised surface. */
+    /** Colors of the hue of the page this far from the page color are not a raised surface. */
     private static final int MAX_RAISED_LUMA_DIFFERENCE = 56;
     private static final int MAX_RAISED_ALPHA = 96;
     /** White text stays readable if the light is at most this bright. */
@@ -701,26 +704,40 @@ final class AmbientLightMath {
                 + (color & 0xFF) * 114) / 1000;
     }
 
-    private static boolean isOpaqueNeutral(int color) {
-        if ((color >>> 24) < MIN_OPAQUE_ALPHA) return false;
-        final int red = (color >> 16) & 0xFF;
-        final int green = (color >> 8) & 0xFF;
-        final int blue = color & 0xFF;
-        return Math.max(red, Math.max(green, blue)) - Math.min(red, Math.min(green, blue))
-                <= MAX_NEUTRAL_CHROMA;
+    private static int chroma(int red, int green, int blue) {
+        return Math.max(red, Math.max(green, blue)) - Math.min(red, Math.min(green, blue));
     }
 
     /**
      * What a background color becomes on the see-through watch page. The page color turns
      * transparent, a slightly raised surface such as a card turns into a translucent veil,
      * and everything else keeps its color.
+     * <p>
+     * The app draws much of the page with its own colors, which a theme replaces only after
+     * they were given here. The page can also have the color of a theme, and then a color of
+     * the same hue, lighter or darker, is the page or a surface on it.
+     *
+     * @param appPageColor The page color of the app itself in the theme it shows, which a
+     *                     theme color can replace with a color of any brightness.
      */
-    static int seeThroughColor(int color, int pageColor) {
-        if (!isOpaqueNeutral(color)) return color;
+    static int seeThroughColor(int color, int pageColor, int appPageColor) {
+        final int onAppPage = seeThroughColorOn(color, appPageColor);
+        return onAppPage != color || pageColor == appPageColor ? onAppPage : seeThroughColorOn(color, pageColor);
+    }
 
+    private static int seeThroughColorOn(int color, int pageColor) {
+        if ((color >>> 24) < MIN_OPAQUE_ALPHA) return color;
+
+        final int red = (color >> 16) & 0xFF;
+        final int green = (color >> 8) & 0xFF;
+        final int blue = color & 0xFF;
         final int difference = luma(color) - luma(pageColor);
         final boolean darkPage = luma(pageColor) < 128;
-        // Pure black on a dark gray page and pure white on an off-white page are page too.
+        // Pure black on a dark page and pure white on a light page are page too.
+        if (chroma(red, green, blue) <= MAX_NEUTRAL_CHROMA && darkPage == (difference < 0)) return 0;
+        if (chroma(red - ((pageColor >> 16) & 0xFF), green - ((pageColor >> 8) & 0xFF),
+                blue - (pageColor & 0xFF)) > MAX_NEUTRAL_CHROMA) return color;
+
         if (Math.abs(difference) <= PAGE_LUMA_TOLERANCE || darkPage == (difference < 0)) return 0;
         if (Math.abs(difference) > MAX_RAISED_LUMA_DIFFERENCE) return color;
 

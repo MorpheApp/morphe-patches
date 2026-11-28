@@ -81,7 +81,6 @@ Verifiqueu que el nom del paquet sigui correcte i que l'aplicació estigui insta
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalitzat</string>
-  <string name="morphe_custom_branding_icon_title">Icona de l\'aplicació</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe negre</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe fosc</string>
@@ -107,7 +106,6 @@ Per canviar la icona a tot arreu, aplica el patch novament i canvia l'opció de 
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avís de Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">L\'historial de visionat no s\'està desant.&lt;br&gt;&lt;br&gt; Això és causat molt probablement per un bloquejador d\'anuncis DNS o un proxy de xarxa.&lt;br&gt;&lt;br&gt; Per solucionar-ho, afegiu &lt;b&gt;s.youtube.com&lt;/b&gt; a la llista blanca o desactiveu tots els bloquejadors DNS i proxies</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">No torni a mostrar</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Simular fluxos de vídeo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Configura la simulació del client per evitar problemes de reproducció</string>
@@ -134,7 +132,6 @@ Toqueu OK per obrir Android System WebView."</string>
 És possible que la reproducció de vídeo falli fins que Android System WebView s'actualitzi a la versió més recent.
 
 Toqueu OK per obrir Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">No tornis a mostrar</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView no està instal·lat. Instal·la\'l per solucionar la reproducció de vídeo</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Controls de mitjans de la notificació</string>
   <string name="morphe_notification_media_screen_summary">Personalitza els controls de reproducció que apareixen a la pantalla de bloqueig i al panell de notificacions</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Ocultar els botons Anterior &amp; Següent</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Oculta els botons Anterior i Següent a la notificació de mitjans, a la pantalla de bloqueig i als controls dels auriculars</string>
   <string name="morphe_disable_notification_media_seekbar_title">Desactivar la barra de cerca</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Impedeix d\'arrossegar la barra de cerca a la pantalla de bloqueig i al panell de notificacions</string>
@@ -244,10 +240,8 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_video_effects_custom_restore">Restaurar valors per defecte</string>
   <string name="morphe_video_effects_custom_add_title">Efecte nou</string>
   <string name="morphe_video_effects_custom_edit_title">Edita l\'efecte</string>
-  <string name="morphe_video_effects_custom_name_hint">Nom</string>
   <string name="morphe_video_effects_custom_name_empty">Introdueix un nom per a l\'efecte</string>
   <string name="morphe_video_effects_custom_name_exists">Ja existeix un efecte amb aquest nom</string>
-  <string name="morphe_video_effects_custom_copy_code">Copia el codi</string>
   <string name="morphe_video_effects_custom_error_title">L\'efecte té un error</string>
   <string name="morphe_video_effects_custom_error_message">"Els vídeos es mostren sense l'efecte fins que el codi es corregeixi. Passa aquest error a la IA que ha escrit el codi:
 
@@ -257,7 +251,6 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
 Demana a la IA un codi més curt o pega el codi per parts."</string>
   <string name="morphe_video_effects_custom_copy_error">Error de còpia</string>
   <string name="morphe_video_effects_custom_save_anyway">Desa de totes maneres</string>
-  <string name="morphe_video_effects_custom_delete">Eliminar</string>
   <string name="morphe_video_effects_custom_delete_title">Esborrar l\'efecte?</string>
   <string name="morphe_video_effects_custom_delete_message">%s s\'eliminarà.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Demana a la IA un codi més curt o pega el codi per parts."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Per utilitzar aquesta funció, canvieu \'Simular fluxos de vídeo\' a qualsevol client excepte \'Android Studio\' i \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Netejar els enllaços per compartir</string>
-  <string name="morphe_sanitize_sharing_links_summary">Elimina els paràmetres de consulta de seguiment dels enllaços compartits</string>
   <string name="morphe_replace_music_with_youtube_title">Canviar els enllaços per compartir a youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Substitueix music.youtube.com per youtube.com als enllaços compartits</string>
   <string name="morphe_replace_links_with_shortener_title">Canvia els enllaços de compartir a youtu.be</string>
@@ -371,7 +362,6 @@ Si més tard es desactiva, es recomana esborrar les dades de l'app per evitar er
   <string name="morphe_custom_font_type_title">Font</string>
   <string name="morphe_custom_font_type_entry_default">Per defecte</string>
   <string name="morphe_custom_font_type_entry_system">Font del sistema del dispositiu</string>
-  <string name="morphe_custom_font_type_entry_custom">Arxiu de font personalitzada</string>
   <string name="morphe_custom_font_file_title">Arxiu de font personalitzada</string>
   <string name="morphe_custom_font_file_summary">Selecciona un arxiu de font TTF o OTF</string>
   <string name="morphe_custom_font_file_invalid">L\'arxiu seleccionat no és una font TTF o OTF</string>
@@ -381,7 +371,6 @@ Si més tard es desactiva, es recomana esborrar les dades de l'app per evitar er
   <string name="morphe_glass_menus_screen_summary">Menus com a vidre esmerilat sobre el contingut desfoscat que hi ha darrere</string>
   <string name="morphe_glass_menus_title">Habilitar menus de vidre</string>
   <string name="morphe_glass_menus_summary">Mostra els menus i els fulls inferiors com a vidre esmerilat, amb el contingut posterior desenfocat</string>
-  <string name="morphe_glass_menus_opacity_title">Opacitat del vidre</string>
   <string name="morphe_glass_menus_opacity_summary">Quant cobreix el menú el contingut desenfocat (0 és transparent, 100 és opac)</string>
   <string name="morphe_glass_menus_blur_title">Desenfocament</string>
   <string name="morphe_glass_menus_blur_summary">Quant de desenfocat està el contingut darrere del menú</string>
@@ -402,7 +391,6 @@ Si més tard es desactiva, es recomana esborrar les dades de l'app per evitar er
   <string name="morphe_ryd_dislike_percentage_summary">Mostra els \"no m\'agrada\" com a un percentatge dels \"m\'agrada\" en lloc d\'un número</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar els \"m\'agrada\" estimats</string>
   <string name="morphe_ryd_estimated_like_summary">Mostra un recompte estimat de \"m\'agrada\" en els vídeos on el creador ha desactivat els \"m\'agrada\"</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertes d\'error de connexió</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra una notificació quan el servidor de Return YouTube Dislike no està disponible</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura els recomptes de \"no m'agrada\" que YouTube va ocultar el 2021. Els recomptes provenen de dades arxivades abans de l'eliminació i s'estimen per als vídeos més recents a partir dels vots dels seus usuaris, per la qual cosa són aproximats i s'actualitzen cada pocs dies
 
@@ -424,8 +412,89 @@ L'ID del vídeo que veus s'envia a l'API de Return YouTube Dislike, i els teus \
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">No s\'han trobat límits de velocitat del client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">S\'ha trobat el límit de freqüència del client %s vegades</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s mil·lisegons</string>
-  <string name="morphe_navigation_bar_screen_title">Barra de navegació</string>
   <string name="morphe_navigation_bar_screen_summary">Tria quins botons apareixen a la barra de navegació inferior</string>
   <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
   <string name="morphe_toolbar_screen_summary">Tria quins components apareixen a la barra d\'eines</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 segon</string>
+  <string name="morphe_duration_2s">2 segons</string>
+  <string name="morphe_duration_3s">3 segons</string>
+  <string name="morphe_duration_4s">4 segons</string>
+  <string name="morphe_duration_5s">5 segons</string>
+  <string name="morphe_duration_6s">6 segons</string>
+  <string name="morphe_duration_7s">7 segons</string>
+  <string name="morphe_duration_8s">8 segons</string>
+  <string name="morphe_duration_9s">9 segons</string>
+  <string name="morphe_duration_10s">10 segons</string>
+  <string name="morphe_change_start_page_entry_default">Per defecte</string>
+  <string name="morphe_change_start_page_entry_explore">Explorar</string>
+  <string name="morphe_change_start_page_entry_history">Historial</string>
+  <string name="morphe_change_start_page_entry_library">Biblioteca</string>
+  <string name="morphe_change_start_page_entry_playlists">Llistes de reproducció</string>
+  <string name="morphe_change_start_page_entry_search">Cercar</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Subscripcions</string>
+  <string name="morphe_change_start_page_title">Pàgina d\'inici</string>
+  <string name="morphe_action_buttons_screen_title">Botons d\'acció</string>
+  <string name="morphe_comments_screen_title">Comentaris</string>
+  <string name="morphe_feed_screen_title">Canal</string>
+  <string name="morphe_flyout_menu_screen_title">Menú desplegable</string>
+  <string name="morphe_general_title">General</string>
+  <string name="morphe_miniplayer_screen_title">Reproductor minimitzat</string>
+  <string name="morphe_player_screen_title">Reproductor</string>
+  <string name="morphe_video_screen_title">Vídeo</string>
+  <string name="morphe_appearance_title">Aparença</string>
+  <string name="morphe_cancel">Cancel·lar</string>
+  <string name="morphe_comments_screen_summary">Tria quins components apareixen a la secció de comentaris</string>
+  <string name="morphe_copy_code">Copia el codi</string>
+  <string name="morphe_corner_radius_title">Radi de la cantonada</string>
+  <string name="morphe_do_not_show_again">No tornis a mostrar</string>
+  <string name="morphe_download_force_4k_title">Forçar la disponibilitat de la descàrrega en 4K</string>
+  <string name="morphe_glass_opacity_title">Opacitat del vidre</string>
+  <string name="morphe_header_logo_title">Logo de la capçalera</string>
+  <string name="morphe_hide_action_bar_title">Oculta la barra d\'accions</string>
+  <string name="morphe_hide_cast_button_title">Oculta el botó de Cast</string>
+  <string name="morphe_hide_comments_button_title">Oculta el botó de comentaris</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Oculta les normes de la comunitat</string>
+  <string name="morphe_hide_comments_emoji_button_title">Oculta el botó d\'Emoji</string>
+  <string name="morphe_hide_comments_gif_button_title">Amaga el botó de GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Amaga els GIF i les imatges adjuntes als comentaris i les respostes</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Amaga els GIF i les imatges</string>
+  <string name="morphe_hide_comments_info_button_title">Amaga el botó d\'Informació</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Amaga el botó de la marca temporal</string>
+  <string name="morphe_hide_horizontal_shelves_title">Amaga els estantes horitzontals</string>
+  <string name="morphe_hide_like_dislike_button_title">Amaga el botó de M\'agrada i No m\'agrada</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Amaga els botons de M\'agrada i No m\'agrada</string>
+  <string name="morphe_hide_navigation_bar_title">Amaga la barra de navegació</string>
+  <string name="morphe_hide_navigation_button_labels_title">Amaga les etiquetes dels botons de navegació</string>
+  <string name="morphe_hide_previous_next_buttons_title">Amaga els botons Anterior &amp; Següent</string>
+  <string name="morphe_hide_search_button_title">Amaga el botó de Cerca</string>
+  <string name="morphe_hide_translate_button_title">Ocultar el botó de Traduir</string>
+  <string name="morphe_hide_video_ads_title">Amaga els anuncis de vídeo</string>
+  <string name="morphe_loading">Carregant…</string>
+  <string name="morphe_name">Nom</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Espaiat dels botons</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Botons mostrats: %1$s de %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
+  <string name="morphe_navigation_bar_glass_size_width">Ampleza màxima</string>
+  <string name="morphe_navigation_bar_glass_title">Habilita la barra de navegació de vidre</string>
+  <string name="morphe_positive_number_invalid">El valor ha de ser un número positiu</string>
+  <string name="morphe_private_user_id_invalid">L\'ID d\'usuari privat ha de tenir almenys 30 caràcters</string>
+  <string name="morphe_private_user_id_title">El teu ID d\'usuari privat</string>
+  <string name="morphe_rename">Canvia el nom</string>
+  <string name="morphe_show_settings_button_title">Mostra el botó de Configuració</string>
+  <string name="morphe_show_settings_button_type_title">Acció del botó de Configuració</string>
+  <string name="morphe_show_video_effect_menu_title">Mostra el menú d\'efectes de vídeo</string>
+  <string name="morphe_submit">Enviar</string>
+  <string name="morphe_time_adjustment_step_title">Pas de l\'ajust de temps</string>
+  <string name="morphe_toast_on_connection_error_title">Mostra alertes d\'error de connexió</string>
+  <string name="morphe_toast_on_skip_title">Mostrar notificació de saltar</string>
+  <string name="morphe_translated_only">Només traduït</string>
+  <string name="morphe_translating">Traduint…</string>
+  <string name="morphe_translation_language_title">Idioma de traducció</string>
+  <string name="morphe_username_change_unknown_error">No s\'ha pogut canviar el nom d\'usuari: Estat: %1$s %2$s</string>
+  <string name="morphe_username_changed">El nom d\'usuari s\'ha canviat correctament</string>
+  <string name="morphe_username_html">El teu nom d\'usuari: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Vídeos</string>
+  <string name="morphe_vote_downvote">Vot negatiu</string>
+  <string name="morphe_vote_upvote">Vot positiu</string>
 </resources>

@@ -50,6 +50,53 @@ internal object ActionBarCommentButtonFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Reads the comment button test tags of [ActionBarCommentButtonFingerprint],
+ * then draws the comment button with them.
+ */
+private fun drawCommentButtonFilters() = listOf(
+    fieldAccess(
+        reference = { ActionBarCommentButtonFingerprint.instructionMatches[1].fieldReference },
+        opcode = Opcode.SGET_OBJECT
+    ),
+    methodCall(
+        definingClass = "this",
+        returnType = "V",
+        location = MatchAfterWithin(10)
+    )
+)
+
+/**
+ * Draws a comment button of the action bar.
+ * There is one draw method for the default action bar and one for the refresh variant.
+ */
+internal object DrawCommentButtonFingerprint : Fingerprint(
+    classFingerprint = ActionBarCommentButtonFingerprint,
+    filters = drawCommentButtonFilters()
+)
+
+/**
+ * Draws the comment button of the default action bar, which is followed by a group of the next button.
+ */
+internal object ActionBarCommentButtonGroupFingerprint : Fingerprint(
+    classFingerprint = ActionBarCommentButtonFingerprint,
+    filters = drawCommentButtonFilters() + listOf(
+        // startReplaceGroup(key)
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "V",
+            location = MatchAfterWithin(2)
+        ),
+        // endReplaceGroup()
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("Z"),
+            returnType = "V"
+        )
+    )
+)
+
 internal object ActionBarActionToStringFingerprint : Fingerprint(
     name = "toString",
     filters = listOf(

@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Memerlukan mulai ulang</string>
   <string name="morphe_settings_restart_dialog_message">Mulai ulang aplikasi agar perubahan ini dapat diterapkan</string>
   <string name="morphe_settings_restart">Mulai ulang</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Impor</string>
-  <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Setelan Morphe diatur ke bawaan</string>
   <string name="morphe_settings_import_success">%s setelan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
@@ -76,7 +74,6 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Penambalan</string>
   <string name="morphe_settings_about_version">Versi</string>
-  <string name="morphe_settings_about_close">Tutup</string>
   <string name="morphe_settings_about_prerelease">Pra-rilis</string>
   <string name="morphe_settings_about_update_available">Tersedia pembaruan: %s</string>
   <string name="morphe_settings_about_update_hint">Untuk memperbarui patch Anda, gunakan Morphe untuk melakukan patch ulang pada aplikasi ini</string>
@@ -108,7 +105,6 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Pemberitahuan lisensi</string>
-  <string name="morphe_settings_about_licenses_loading">Memuat…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Konfigurasikan pilihan pengembang lanjutan dan catatan diagnostik</string>
@@ -125,7 +121,6 @@ Anda tidak akan diberi tahu tentang kejadian yang tidak terduga"</string>
   <string name="morphe_debug_export_logs_success">Pencatatan debug berhasil diekspor</string>
   <string name="morphe_debug_export_logs_failed">Gagal mengekspor pencatatan debug</string>
   <string name="morphe_debug_logs_search_hint">Cari pencatatan debug…</string>
-  <string name="morphe_debug_export_logs_clear">Bersihkan</string>
   <string name="morphe_debug_logs_disabled">Pencatatan debug dinonaktifkan</string>
   <string name="morphe_debug_logs_none_found">Tidak ditemukan pencatatan debug</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Pencatatan debug disalin</string>
@@ -142,15 +137,8 @@ Anda tidak akan diberi tahu tentang kejadian yang tidak terduga"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Diblokir (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Dipaksa (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Otomatis</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Nonaktif</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Aktif</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Paksa aktif</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokir</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Hapus</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flag disimpan</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flag diatur ulang</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flag disalin ke papan klip</string>
@@ -200,7 +188,6 @@ Perilaku tersebut menghilang lebih awal pada saat pencarian, sehingga kemungkina
   <string name="gms_core_dialog_outdated_message">"MicroG v%1$s Anda sudah usang dan dapat menyebabkan masalah.
 
 Harap perbarui MicroG ke versi terbaru v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Perbarui</string>
   <string name="gms_core_dialog_ignore_text">Abaikan</string>
   <string name="gms_core_dialog_conflict_message">"MicroG yang terpasang tidak direkomendasikan oleh Morphe:
 
@@ -220,7 +207,6 @@ Ini diperlukan agar aplikasi berfungsi"</string>
 Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan baterai.
 
 Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan"</string>
-  <string name="gms_core_dialog_continue_text">Lanjutkan</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Tampilkan dialog optimalisasi baterai MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan prompt optimasi baterai MicroG.
 
@@ -259,9 +245,29 @@ Jika Anda ingin pengalaman tanpa kendala, silakan &lt;b&gt;copot&lt;/b&gt; ini d
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Perbaikan bug</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Perubahan lainnya</string>
   <string name="morphe_patches_update_notice_dialog_more">…dan %s lainnya</string>
-  <string name="morphe_patches_update_notice_dialog_update">Perbarui</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Abaikan</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Log kerusakan disimpan ke dokumen pengguna: %s</string>
   <string name="morphe_crash_log_saved">Log kerusakan disimpan: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Tentang</string>
+  <string name="morphe_ads_screen_title">Iklan</string>
+  <string name="morphe_misc_screen_title">Lain-lain</string>
+  <string name="morphe_navigation_bar_screen_title">Bilah navigasi</string>
+  <string name="morphe_post_buttons_screen_title">Tombol postingan</string>
+  <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
+  <string name="morphe_download">Unduh</string>
+  <string name="morphe_hide_create_button_title">Sembunyikan tombol Buat</string>
+  <string name="morphe_hide_post_comment_button_title">Sembunyikan tombol Komentar</string>
+  <string name="morphe_sanitize_sharing_links_summary">Menghapus parameter kueri pelacakan dari tautan yang dibagikan</string>
+  <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
+  <string name="morphe_settings_add">Tambah</string>
+  <string name="morphe_settings_clear">Hapus</string>
+  <string name="morphe_settings_close">Tutup</string>
+  <string name="morphe_settings_continue">Lanjutkan</string>
+  <string name="morphe_settings_copy">Salin</string>
+  <string name="morphe_settings_delete">Hapus</string>
+  <string name="morphe_settings_remove">Hapus</string>
+  <string name="morphe_settings_update">Perbarui</string>
 </resources>

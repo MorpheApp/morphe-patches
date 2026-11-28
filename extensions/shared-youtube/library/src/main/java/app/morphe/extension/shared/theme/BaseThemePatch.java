@@ -32,6 +32,14 @@ public abstract class BaseThemePatch {
     }
 
     /**
+     * @return The background color selected for the theme the app shows.
+     */
+    @ColorInt
+    protected static int getThemeBackgroundColor() {
+        return ThemeColorPatch.themeColor(ThemeColorPatch.isDarkTheme());
+    }
+
+    /**
      * Helper method to process color values for Litho components.
      *
      * @param originalValue The original color value.

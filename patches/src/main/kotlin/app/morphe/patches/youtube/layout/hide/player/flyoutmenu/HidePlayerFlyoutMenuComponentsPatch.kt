@@ -47,6 +47,7 @@ internal val playerFlyoutPreferences = patch {
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_player_flyout",
+                titleKey = "morphe_flyout_menu_screen_title",
                 preferences = playerFlyoutMenuGroup
             )
         )

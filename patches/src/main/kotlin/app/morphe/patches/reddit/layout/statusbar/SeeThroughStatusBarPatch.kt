@@ -80,6 +80,23 @@ val seeThroughStatusBarPatch = patch(
                 val appBarIndex = it.instructionMatches[10].index
                 val appBarRegister = getInstruction<OneRegisterInstruction>(appBarIndex).registerA
 
+                // Receiver modifier going into the app bar graphicsLayer, outside the layer's own node.
+                val appBarLayerIndex = it.instructionMatches[9].index
+                val appBarLayerRegister = it.instructionMatches[9].instruction.registersUsed[0]
+
+                // Background of the app bar and the status bar.
+                val colorIndex = it.instructionMatches[8].index
+                val colorRegister = it.instructionMatches[8].instruction.registersUsed[1]
+
+                // Feed.
+                val feedIndex = it.instructionMatches[6].index
+                val (modifierRegister, insetsRegister) = it.instructionMatches[6].instruction.registersUsed
+                val feedRegister = getInstruction<OneRegisterInstruction>(feedIndex + 1).registerA
+
+                // Phone or tablet layout.
+                val sideLayoutIndex = it.instructionMatches[1].index
+                val sideLayoutRegister = getInstruction<OneRegisterInstruction>(sideLayoutIndex).registerA
+
                 addInstructions(
                     appBarIndex + 1,
                     """
@@ -89,9 +106,14 @@ val seeThroughStatusBarPatch = patch(
                     """
                 )
 
-                // Background of the app bar and the status bar.
-                val colorIndex = it.instructionMatches[8].index
-                val colorRegister = it.instructionMatches[8].instruction.registersUsed[1]
+                addInstructionsAtControlFlowLabel(
+                    appBarLayerIndex,
+                    """
+                        invoke-static/range { v$appBarLayerRegister .. v$appBarLayerRegister }, $EXTENSION_CLASS->getAppBarLayerModifier($MODIFIER_INTERFACE)Ljava/lang/Object;
+                        move-result-object v$appBarLayerRegister
+                        check-cast v$appBarLayerRegister, $modifierType
+                    """
+                )
 
                 addInstructionsAtControlFlowLabel(
                     colorIndex,
@@ -100,11 +122,6 @@ val seeThroughStatusBarPatch = patch(
                         move-result-wide v$colorRegister
                     """
                 )
-
-                // Feed.
-                val feedIndex = it.instructionMatches[6].index
-                val (modifierRegister, insetsRegister) = it.instructionMatches[6].instruction.registersUsed
-                val feedRegister = getInstruction<OneRegisterInstruction>(feedIndex + 1).registerA
 
                 addInstruction(
                     feedIndex + 2,
@@ -115,10 +132,6 @@ val seeThroughStatusBarPatch = patch(
                     "invoke-static { v$modifierRegister, v$insetsRegister }, $EXTENSION_CLASS->" +
                         "getFeedModifier($MODIFIER_INTERFACE$WINDOW_INSETS_INTERFACE)Ljava/lang/Object;"
                 )
-
-                // Phone or tablet layout.
-                val sideLayoutIndex = it.instructionMatches[1].index
-                val sideLayoutRegister = getInstruction<OneRegisterInstruction>(sideLayoutIndex).registerA
 
                 addInstruction(
                     sideLayoutIndex + 1,

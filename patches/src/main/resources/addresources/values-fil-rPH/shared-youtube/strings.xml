@@ -81,7 +81,6 @@ I-verify na tama ang pangalan ng pakete at naka-install ang app"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasadya</string>
-  <string name="morphe_custom_branding_icon_title">Icon ng aplikasyon</string>
   <string name="morphe_custom_branding_icon_entry_1">Orihinal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe na itim</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe na maitim</string>
@@ -107,7 +106,6 @@ Para mabago ang icon sa lahat ng dako, mag-patch muli at baguhin ang opsyon sa p
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Huwag nang ipakita muli</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Gayahin ang mga video stream</string>
   <string name="morphe_spoof_video_streams_screen_summary">I-configure ang client spoofing upang maiwasan ang mga isyu sa pag-playback</string>
@@ -134,7 +132,6 @@ I-tap ang OK para buksan ang Android System WebView."</string>
 Maaaring magkaroon ng error sa pag-play ng video hanggang sa ma-update ang Android System WebView sa pinakabagong bersyon.
 
 I-tap ang OK para buksan ang Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Huwag nang ipakita muli</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Hindi naka-install ang Android System WebView. I-install ito para maayos ang pag-play ng video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Para mag-sign in, pindutin ang continue sa ibaba"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mga kontrol ng media sa notification</string>
   <string name="morphe_notification_media_screen_summary">I-customize ang mga kontrol sa pag-playback na ipinapakita sa iyong lock screen at notification panel.</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Itago ang mga pindutan ng Previous at Next</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Itinatago ang mga pindutan ng Previous at Next sa media notification, lock screen, at mga kontrol ng headphone.</string>
   <string name="morphe_disable_notification_media_seekbar_title">I-disable ang seekbar</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Pinipigilan ang pag-drag sa seekbar sa lock screen at notification panel.</string>
@@ -244,10 +240,8 @@ Para mag-sign in, pindutin ang continue sa ibaba"</string>
   <string name="morphe_video_effects_custom_restore">Ibalik ang mga default</string>
   <string name="morphe_video_effects_custom_add_title">Bagong effect</string>
   <string name="morphe_video_effects_custom_edit_title">I-edit ang effect</string>
-  <string name="morphe_video_effects_custom_name_hint">Pangalan</string>
   <string name="morphe_video_effects_custom_name_empty">Maglagay ng pangalan para sa effect</string>
   <string name="morphe_video_effects_custom_name_exists">Mayroon na isang effect na may ganitong pangalan</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopyahin ang code</string>
   <string name="morphe_video_effects_custom_error_title">May error ang effect</string>
   <string name="morphe_video_effects_custom_error_message">"Ipinapakita ang mga video nang walang effect hanggang sa maayos ang code. Ibigay ang error na ito sa AI na sumulat ng code:
 
@@ -257,7 +251,6 @@ Para mag-sign in, pindutin ang continue sa ibaba"</string>
 Humingi sa AI ng mas maikling code, o i-paste ang code nang pira-piraso."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopyahin ang error</string>
   <string name="morphe_video_effects_custom_save_anyway">I-save pa rin</string>
-  <string name="morphe_video_effects_custom_delete">Burahin</string>
   <string name="morphe_video_effects_custom_delete_title">Burahin ang effect?</string>
   <string name="morphe_video_effects_custom_delete_message">Buburahin ang %s.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Humingi sa AI ng mas maikling code, o i-paste ang code nang pira-piraso."</strin
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Upang gamitin ang tampok na ito, baguhin ang \'Spoof video streams\' sa anumang kliyente maliban sa \'Android Studio\' at \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
-  <string name="morphe_sanitize_sharing_links_summary">Inaalis ang mga parameter ng query sa pagsubaybay mula sa mga ibinahaging link</string>
   <string name="morphe_replace_music_with_youtube_title">Baguhin ang mga nakabahaging link sa youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Pinapalitan ang music.youtube.com sa youtube.com sa mga ibinahaging link</string>
   <string name="morphe_replace_links_with_shortener_title">Baguhin ang mga nakabahaging link sa youtu.be</string>
@@ -371,7 +362,6 @@ Kung i-o-off ito sa huli, inirerekomenda ang paglinis ng data ng app upang maiwa
   <string name="morphe_custom_font_type_title">Tipo ng letra</string>
   <string name="morphe_custom_font_type_entry_default">Awtomatiko</string>
   <string name="morphe_custom_font_type_entry_system">System font ng device</string>
-  <string name="morphe_custom_font_type_entry_custom">Custom na font file</string>
   <string name="morphe_custom_font_file_title">Custom na font file</string>
   <string name="morphe_custom_font_file_summary">Pumili ng TTF o OTF na font file</string>
   <string name="morphe_custom_font_file_invalid">Ang napiling file ay hindi isang TTF o OTF na font</string>
@@ -381,7 +371,6 @@ Kung i-o-off ito sa huli, inirerekomenda ang paglinis ng data ng app upang maiwa
   <string name="morphe_glass_menus_screen_summary">Mga menu na parang frosted glass sa ibabaw ng malabong content sa likod ng mga ito</string>
   <string name="morphe_glass_menus_title">I-enable ang mga glass menu</string>
   <string name="morphe_glass_menus_summary">Ipinapakita ang mga menu at bottom sheet bilang frosted glass, kung saan malabo ang nilalaman sa likuran nito</string>
-  <string name="morphe_glass_menus_opacity_title">Opacity ng glass</string>
   <string name="morphe_glass_menus_opacity_summary">Kung gaano tinatakpan ng menu ang malabong nilalaman (0 ay malinaw, 100 ay opaque)</string>
   <string name="morphe_glass_menus_blur_title">Blur</string>
   <string name="morphe_glass_menus_blur_summary">Kung gaano kalabo ang nilalaman sa likod ng menu</string>
@@ -402,7 +391,6 @@ Kung i-o-off ito sa huli, inirerekomenda ang paglinis ng data ng app upang maiwa
   <string name="morphe_ryd_dislike_percentage_summary">Ipinapakita ang mga dislike bilang isang porsyento ng mga like sa halip na isang numero</string>
   <string name="morphe_ryd_estimated_like_title">Ipakita ang tinantyang bilang ng mga like</string>
   <string name="morphe_ryd_estimated_like_summary">Ipinapakita ang tinantyang bilang ng mga like sa mga video kung saan hindi pinagana ng tagalikha ang mga like</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Ipakita ang mga alerto ng error sa koneksyon</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Ipinapakita ang isang notification kapag ang Return YouTube Dislike server ay hindi magagamit</string>
   <string name="morphe_ryd_attribution_summary">"Ang Return YouTube Dislike ay nagpapanumbalik ng mga bilang ng dislike na itinago ng YouTube noong 2021. Ang mga bilang ay nagmumula sa data na naka-archive bago ang pag-alis at tinatantya para sa mga mas bagong video mula sa mga boto ng mga gumagamit nito, kaya ang mga ito ay tinatayang at ina-update tuwing ilang araw
 
@@ -424,8 +412,89 @@ Ang ID ng video na iyong pinapanood ay ipinapadala sa Return YouTube Dislike API
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Walang nakaharap na mga limitasyon ng rate ng client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kinakaharap ang client rate limit na %s beses</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s miliseconds</string>
-  <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
   <string name="morphe_navigation_bar_screen_summary">Pumili kung aling mga button ang lilitaw sa bottom navigation bar</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 segundo</string>
+  <string name="morphe_duration_2s">2 segundo</string>
+  <string name="morphe_duration_3s">3 segundo</string>
+  <string name="morphe_duration_4s">4 segundo</string>
+  <string name="morphe_duration_5s">5 segundo</string>
+  <string name="morphe_duration_6s">6 segundo</string>
+  <string name="morphe_duration_7s">7 segundo</string>
+  <string name="morphe_duration_8s">8 segundo</string>
+  <string name="morphe_duration_9s">9 segundo</string>
+  <string name="morphe_duration_10s">10 segundo</string>
+  <string name="morphe_change_start_page_entry_default">Default</string>
+  <string name="morphe_change_start_page_entry_explore">Mag-explore</string>
+  <string name="morphe_change_start_page_entry_history">Kasaysayan</string>
+  <string name="morphe_change_start_page_entry_library">Library</string>
+  <string name="morphe_change_start_page_entry_playlists">Mga playlist</string>
+  <string name="morphe_change_start_page_entry_search">Hanapin</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Subkripsyon</string>
+  <string name="morphe_change_start_page_title">Pahina sa pagsisimula</string>
+  <string name="morphe_action_buttons_screen_title">Mga action button</string>
+  <string name="morphe_comments_screen_title">Mga Komento</string>
+  <string name="morphe_feed_screen_title">Feed</string>
+  <string name="morphe_flyout_menu_screen_title">Flyout menu</string>
+  <string name="morphe_general_title">Pangkalahatan</string>
+  <string name="morphe_miniplayer_screen_title">Miniplayer</string>
+  <string name="morphe_player_screen_title">Manlalaro</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Hitsura</string>
+  <string name="morphe_cancel">Kanselahin</string>
+  <string name="morphe_comments_screen_summary">Pumili kung aling mga component ang lalabas sa comments section</string>
+  <string name="morphe_copy_code">Kopyahin ang code</string>
+  <string name="morphe_corner_radius_title">Radius ng kanto</string>
+  <string name="morphe_do_not_show_again">Huwag nang ipakita muli</string>
+  <string name="morphe_download_force_4k_title">I-force ang availability ng 4K download</string>
+  <string name="morphe_glass_opacity_title">Opacity ng glass</string>
+  <string name="morphe_header_logo_title">Logo ng Header</string>
+  <string name="morphe_hide_action_bar_title">Itago ang action bar</string>
+  <string name="morphe_hide_cast_button_title">Itago ang Cast button</string>
+  <string name="morphe_hide_comments_button_title">Itago ang button ng Comments</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Itago ang mga alituntunin ng komunidad</string>
+  <string name="morphe_hide_comments_emoji_button_title">Itago ang Emoji button</string>
+  <string name="morphe_hide_comments_gif_button_title">Itago ang GIF button</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Itatago ang mga GIF at imaheng nakalakip sa mga comment at reply</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Itago ang mga GIF at imahe</string>
+  <string name="morphe_hide_comments_info_button_title">Itago ang Info button</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
+  <string name="morphe_hide_horizontal_shelves_title">Itago ang mga horizontal shelf</string>
+  <string name="morphe_hide_like_dislike_button_title">Itago ang Like at Dislike button</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Itago ang mga Like at Dislike button</string>
+  <string name="morphe_hide_navigation_bar_title">Itago ang navigation bar</string>
+  <string name="morphe_hide_navigation_button_labels_title">Itago ang mga label ng navigation button</string>
+  <string name="morphe_hide_previous_next_buttons_title">Itago ang mga button na Nakaraan &amp; Susunod</string>
+  <string name="morphe_hide_search_button_title">Itago ang Search button</string>
+  <string name="morphe_hide_translate_button_title">Itago ang button na Translate</string>
+  <string name="morphe_hide_video_ads_title">Itago ang mga patalastas sa video</string>
+  <string name="morphe_loading">Naglo-load…</string>
+  <string name="morphe_name">Pangalan</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Espasyo ng button</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Mga button na ipinapakita: %1$s ng %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Taas</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximum na lapad</string>
+  <string name="morphe_navigation_bar_glass_title">I-enable ang glass navigation bar</string>
+  <string name="morphe_positive_number_invalid">Dapat positibong numero ang halaga</string>
+  <string name="morphe_private_user_id_invalid">Dapat may hindi bababa sa 30 character ang pribadong ID ng user</string>
+  <string name="morphe_private_user_id_title">Ang iyong private user ID</string>
+  <string name="morphe_rename">Palitan ang pangalan</string>
+  <string name="morphe_show_settings_button_title">Ipakita ang button na Settings</string>
+  <string name="morphe_show_settings_button_type_title">Aksyon ng button ng Mga Setting</string>
+  <string name="morphe_show_video_effect_menu_title">Ipakita ang menu ng Video effect</string>
+  <string name="morphe_submit">Isumite</string>
+  <string name="morphe_time_adjustment_step_title">Hakbang sa pagsasaayos ng oras</string>
+  <string name="morphe_toast_on_connection_error_title">Ipakita ang mga alerto ng error sa koneksyon</string>
+  <string name="morphe_toast_on_skip_title">Ipakita ang notification sa paglaktaw</string>
+  <string name="morphe_translated_only">Isinalin lamang</string>
+  <string name="morphe_translating">Isinasalin…</string>
+  <string name="morphe_translation_language_title">Wika ng pagsasalin</string>
+  <string name="morphe_username_change_unknown_error">Hindi maaaring baguhin ang username: Status: %1$s %2$s</string>
+  <string name="morphe_username_changed">Matagumpay na nabago ang username</string>
+  <string name="morphe_username_html">Ang iyong username: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Mga Video</string>
+  <string name="morphe_vote_downvote">Ibaba ang boto</string>
+  <string name="morphe_vote_upvote">Itaas ang boto</string>
 </resources>

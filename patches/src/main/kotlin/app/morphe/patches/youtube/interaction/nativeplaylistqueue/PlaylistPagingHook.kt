@@ -30,10 +30,7 @@ internal fun installPlaylistPaging() {
     controller.addPatchInterface(
         PAGING_OWNER,
         "patch_getPlaylistList",
-        """
-            iget-object v0, p0, $list
-            return-object v0
-        """
+        list
     )
 
     val frame = classDefBy(listType).fields.single { it.type == PLAYLIST_LOADING_FRAME }

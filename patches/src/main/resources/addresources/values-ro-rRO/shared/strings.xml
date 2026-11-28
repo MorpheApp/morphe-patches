@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Repornire necesară</string>
   <string name="morphe_settings_restart_dialog_message">Reporniți aplicația pentru ca această modificare să aibă efect</string>
   <string name="morphe_settings_restart">Repornire</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importare</string>
-  <string name="morphe_settings_import_copy">Copiere</string>
   <string name="morphe_settings_import_reset">Setările Morphe au fost resetate la valorile implicite</string>
   <string name="morphe_settings_import_success">Au fost importate %s setări</string>
   <string name="morphe_settings_import_failure_parse">Importare eșuată: %s</string>
@@ -76,7 +74,6 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Patch-uri</string>
   <string name="morphe_settings_about_version">Versiune</string>
-  <string name="morphe_settings_about_close">Închide</string>
   <string name="morphe_settings_about_prerelease">Pre-lansare</string>
   <string name="morphe_settings_about_update_available">Există actualizări disponibile: %s</string>
   <string name="morphe_settings_about_update_hint">Pentru a actualiza patch-urile, folosește Morphe pentru a repatch-ui această aplicație</string>
@@ -93,6 +90,7 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <!-- Spoken name of the button in the header that opens the menu of periods -->
   <string name="morphe_settings_about_contributors_period_menu">Interval de timp</string>
   <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s utilizatori</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Susținători</string>
   <string name="morphe_settings_about_supporters_summary">Susținători pe Open Collective</string>
@@ -107,7 +105,6 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Notificări de licență</string>
-  <string name="morphe_settings_about_licenses_loading">Se încarcă</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depanare</string>
   <string name="morphe_debug_screen_summary">Configurați opțiuni avansate pentru dezvoltatori și jurnale de diagnostic</string>
@@ -124,7 +121,6 @@ Nu veți fi notificat de niciun eveniment neașteptat"</string>
   <string name="morphe_debug_export_logs_success">Jurnalele de depanare au fost exportate cu succes</string>
   <string name="morphe_debug_export_logs_failed">Eșec la exportarea jurnalelor de depanare</string>
   <string name="morphe_debug_logs_search_hint">Caută în jurnalele de depanare…</string>
-  <string name="morphe_debug_export_logs_clear">Golește</string>
   <string name="morphe_debug_logs_disabled">Înregistrarea în jurnal de depanare este dezactivată</string>
   <string name="morphe_debug_logs_none_found">Nu s-au găsit jurnale de depanare</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Jurnalele de depanare au fost copiate</string>
@@ -141,15 +137,8 @@ Nu veți fi notificat de niciun eveniment neașteptat"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blocat (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Forțat (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automat</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Oprit</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Pornit</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Forțează activ</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blochează</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Elimină</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flagurile au fost salvate</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flagurile au fost resetate</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flagurile au fost copiate în clipboard</string>
@@ -199,7 +188,6 @@ Comportamentul a dispărut mai devreme în căutare, deci poate fi implicat mai 
   <string name="gms_core_dialog_outdated_message">"Versiunea ta de MicroG v%1$s este învechită și poate cauza probleme.
 
 Vă rugăm să actualizați MicroG la cea mai recentă versiune v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Actualizează</string>
   <string name="gms_core_dialog_ignore_text">Ignoră</string>
   <string name="gms_core_dialog_conflict_message">"Versiunea de MicroG instalată nu este recomandată de Morphe:
 
@@ -219,7 +207,6 @@ Acest lucru este necesar pentru ca aplicația să funcționeze"</string>
 Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizarea bateriei.
 
 Apăsați butonul continuare și permiteți modificările de optimizare"</string>
-  <string name="gms_core_dialog_continue_text">Continuă</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Afișează dialogul de optimizare a bateriei MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
 
@@ -258,9 +245,29 @@ Dacă doriți o experiență cât mai bună, atunci &lt;b&gt;dezinstalați&lt;/b
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Corectări de bug-uri</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Alte modificări</string>
   <string name="morphe_patches_update_notice_dialog_more">…și încă %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Actualizează</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Anulare</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Jurnal de erori salvat în documentele utilizatorului: %s</string>
   <string name="morphe_crash_log_saved">Jurnal de erori salvat: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Despre</string>
+  <string name="morphe_ads_screen_title">Reclame</string>
+  <string name="morphe_misc_screen_title">Diverse</string>
+  <string name="morphe_navigation_bar_screen_title">Bară de navigare</string>
+  <string name="morphe_post_buttons_screen_title">Butoane postări</string>
+  <string name="morphe_custom_branding_icon_title">Pictograma aplicației</string>
+  <string name="morphe_download">Descărcare</string>
+  <string name="morphe_hide_create_button_title">Ascunde butonul Creare</string>
+  <string name="morphe_hide_post_comment_button_title">Butonul Ascunde comentariul</string>
+  <string name="morphe_sanitize_sharing_links_summary">Elimină parametrii de interogare de urmărire din linkurile partajate</string>
+  <string name="morphe_sanitize_sharing_links_title">Igienizează linkurile de partajare</string>
+  <string name="morphe_settings_add">Adaugă</string>
+  <string name="morphe_settings_clear">Golește</string>
+  <string name="morphe_settings_close">Închide</string>
+  <string name="morphe_settings_continue">Continuă</string>
+  <string name="morphe_settings_copy">Copiere</string>
+  <string name="morphe_settings_delete">Șterge</string>
+  <string name="morphe_settings_remove">Elimină</string>
+  <string name="morphe_settings_update">Actualizează</string>
 </resources>

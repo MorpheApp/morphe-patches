@@ -207,4 +207,27 @@ public class LyricsViewSupportTest {
         assertTrue(LyricsPanelView.hasMatchingSongParts(base, samePart));
         assertFalse(LyricsPanelView.hasMatchingSongParts(base, changedPart));
     }
+
+    @Test
+    public void footerBottomPaddingDoesNotExceedViewportClearance() {
+        int portrait = LyricsViewSupport.computeFooterBottomPaddingPx(
+                1800, 72, 220, 96, 288, 288, 384);
+        assertEquals(384, portrait);
+
+        int compact = LyricsViewSupport.computeFooterBottomPaddingPx(
+                720, 72, 220, 96, 115, 288, 384);
+        assertEquals(288, compact);
+
+        int unmeasured = LyricsViewSupport.computeFooterBottomPaddingPx(
+                0, 72, 0, 96, 0, 288, 384);
+        assertEquals(384, unmeasured);
+    }
+
+    @Test
+    public void clampScrollTargetYAccountsForPendingLayoutDeltas() {
+        assertEquals(1200, LyricsViewSupport.clampScrollTargetY(1500, 1800, 3000, 0));
+        assertEquals(1350, LyricsViewSupport.clampScrollTargetY(1350, 1800, 3000, 200));
+        assertEquals(1100, LyricsViewSupport.clampScrollTargetY(1350, 1800, 3000, -100));
+        assertEquals(420, LyricsViewSupport.clampScrollTargetY(420, 0, 3000, 0));
+    }
 }

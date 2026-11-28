@@ -43,12 +43,14 @@ import app.morphe.extension.shared.requests.Route;
 
 /**
  * Fetches what the album queue changes need, in the protobuf format of the app itself.
- *
- * <p>The songs are fetched as the queue entries the app shows for them, with a single request for
+ * <p>
+ * The songs are fetched as the queue entries the app shows for them, with a single request for
  * every song of an album. An album page fetches its album queue as soon as it opens, so its tracks
  * are played as songs from the very first tap.
+ * <p>
+ * Downloads use the queue entries as well, for the details of the songs they save.
  */
-final class AlbumRequests {
+public final class AlbumRequests {
 
     private static final String YT_API_URL = "https://youtubei.googleapis.com/youtubei/v1/";
     private static final String YT_MUSIC_API_URL = "https://music.youtube.com/youtubei/v1/";
@@ -240,7 +242,7 @@ final class AlbumRequests {
      *
      * @return The queue entry of each song that is available, by video id.
      */
-    static Map<String, byte[]> getSongs(Collection<String> videoIds, long timeoutMilliseconds) {
+    public static Map<String, byte[]> getSongs(Collection<String> videoIds, long timeoutMilliseconds) {
         Set<Future<?>> pending = new LinkedHashSet<>();
         List<String> missing = new ArrayList<>();
         synchronized (inFlight) {

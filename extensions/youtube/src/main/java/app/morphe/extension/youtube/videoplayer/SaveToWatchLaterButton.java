@@ -48,7 +48,7 @@ public class SaveToWatchLaterButton {
                     : "yt_outline_clock_black_24"
     );
 
-    private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
+    private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_title");
 
     static {
         if (Settings.SAVE_TO_WATCH_LATER_OVERLAY_BUTTON.get()) {

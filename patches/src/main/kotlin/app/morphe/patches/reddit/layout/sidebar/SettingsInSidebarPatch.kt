@@ -79,7 +79,7 @@ val settingsInSidebarPatch = patch(
             }
         }
 
-        CommunityDrawerItemClickFingerprint(ctaItemType).let {
+        CommunityDrawerItemClickFingerprint.let {
             val screenField = it.instructionMatches[0].fieldReference
             val closeSidebarMethod = it.instructionMatches[2].methodReference
 

@@ -10,7 +10,11 @@ package app.morphe.extension.reddit.settings.preference.categories;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+
+import java.util.function.Consumer;
 
 import app.morphe.extension.reddit.patches.AlwaysShowHidePatch;
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch;
@@ -71,8 +75,7 @@ import app.morphe.extension.shared.settings.preference.CustomDialogListPreferenc
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public LayoutPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context, screen);
-        setTitle(str("morphe_screen_layout_title"));
+        super(context, screen, "morphe_layout_screen", "morphe_screen_layout_title", "morphe_layout_screen_summary");
     }
 
     @Override
@@ -126,238 +129,335 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
-        if (CopyTextPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.COPY_TEXT
-            ));
+        addSection(context, "morphe_layout_home_feed_title",
+                group -> addHomeFeedPreferences(context, group));
+        addSection(context, "morphe_layout_shelves_title",
+                group -> addShelvesPreferences(context, group));
+        addSection(context, "morphe_layout_posts_title",
+                group -> addPostsPreferences(context, group));
+        addSection(context, "morphe_layout_comments_title",
+                group -> addCommentsPreferences(context, group));
+        addSection(context, "morphe_layout_media_viewer_title",
+                group -> addMediaViewerPreferences(context, group));
+        addSection(context, "morphe_layout_app_title",
+                group -> addAppPreferences(context, group));
+
+        Utils.setPreferenceTitlesToMultiLine(page != null ? page : this);
+    }
+
+    /**
+     * Adds the settings of a section in a titled category on the page with the modern style,
+     * otherwise to the flat list of the legacy settings.
+     */
+    private void addSection(Context context, String titleKey, Consumer<PreferenceGroup> populate) {
+        if (page == null) {
+            populate.accept(this);
+            return;
         }
 
-        if (CustomFontPatch.isPatchIncluded()) {
-            addPreference(new CustomFontTogglePreference(context));
-            addPreference(new CustomFontFilePreference(
-                    context,
-                    Settings.CUSTOM_FONT_FILE_PATH
-            ));
+        PreferenceCategory category = new PreferenceCategory(context);
+        category.setTitle(str(titleKey));
+        // Add to the page first so PreferenceManager is attached while child preferences are added.
+        page.addPreference(category);
+        populate.accept(category);
+        if (category.getPreferenceCount() == 0) {
+            page.removePreference(category);
         }
+    }
 
+    private void addHomeFeedPreferences(Context context, PreferenceGroup group) {
         if (DisableModernHomePatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_MODERN_HOME
             ));
         }
 
         if (HomeFeedTabsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HOME_FEED_TABS
             ));
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_HOME_FEED_SWIPE
             ));
         }
 
-        if (DisablePostDetailSwipePatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.DISABLE_POST_DETAIL_SWIPE
-            ));
-        }
-
-        if (DisableRefreshOnBackPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.DISABLE_REFRESH_ON_BACK
-            ));
-        }
-
-        if (DisableScreenshotPopupPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.DISABLE_SCREENSHOT_POPUP
-            ));
-        }
-
-        if (ForceSystemFontPatch.isPatchIncluded()) {
-            addPreference(new ForceSystemFontPreference(context));
-        }
-
-        if (HideAnswersPreviewPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_ANSWERS_PREVIEW
-            ));
-        }
-
-        if (HideAskButtonPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_ASK_BUTTON
-            ));
-        }
-
-        if (HideCommunitiesShelfPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_COMMUNITIES_SHELF
-            ));
-        }
-
-        if (HideCommunityHighlightsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_COMMUNITY_HIGHLIGHTS
-            ));
-        }
-
-        if (HideCommunityMenuBadgePatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_COMMUNITY_MENU_BADGE
-            ));
-        }
-
         if (HideHomeTabsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_FOR_YOU_TAB
             ));
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_FOLLOWING_TAB
             ));
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_POPULAR_TAB
             ));
         }
 
-        if (HideInteractivePostsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_INTERACTIVE_POSTS
-            ));
-        }
-
-        if (HidePeopleAlsoSearchForSectionPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_PEOPLE_ALSO_SEARCH_FOR_SECTION
-            ));
-        }
-
-        if (HideRelatedPostsSectionPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_RELATED_POSTS_SECTION
-            ));
-        }
-
-        if (HideTrendingShelvesPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_TRENDING_SHELVES
-            ));
-        }
-
-        if (HideVideosForYouShelfPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_VIDEOS_FOR_YOU_SHELF
-            ));
-        }
-
-        if (AlwaysShowHidePatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.ALWAYS_SHOW_HIDE
-            ));
-        }
-
-        if (HighQualityAvatarsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIGH_QUALITY_AVATARS
-            ));
-        }
-
-        if (RemoveSubRedditDialogPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.REMOVE_NSFW_DIALOG
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.REMOVE_NOTIFICATION_DIALOG
-            ));
-        }
-
-        if (SearchHiddenProfilesPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.SEARCH_HIDDEN_PROFILES
-            ));
-        }
-
-        if (SeeThroughStatusBarPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.SEE_THROUGH_STATUS_BAR
-            ));
-        }
-
-        if (ShowViewCountPatch.isPatchIncluded()) {
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.VIEW_COUNT
-            ));
-        }
-
-        if (FullWidthFeedMediaPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.FULL_WIDTH_FEED_MEDIA
-            ));
-        }
-
-        if (MediaViewerFadePatch.isPatchIncluded()) {
-            addPreference(new NumberSettingPreference(
-                    context,
-                    Settings.MEDIA_VIEWER_FADE
-            ));
-        }
-
         if (KeepFeedPositionPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.KEEP_FEED_POSITION
             ));
         }
 
         if (DisableHomeFeedAutoRefreshPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_HOME_FEED_AUTO_REFRESH
             ));
         }
 
+        if (DisableRefreshOnBackPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_REFRESH_ON_BACK
+            ));
+        }
+
+        if (TabletGridFeedPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.TABLET_GRID_FEED
+            ));
+            addIndentedPreference(group, new CustomDialogListPreference(
+                    context,
+                    Settings.TABLET_GRID_COLUMNS
+            ));
+        }
+
+        if (FeedAutoScrollPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL
+            ));
+            addIndentedPreference(group, new CustomDialogListPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL_SPEED
+            ));
+        }
+
+        if (FullWidthFeedMediaPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FULL_WIDTH_FEED_MEDIA
+            ));
+        }
+
         if (FeedMediaMaxHeightPatch.isPatchIncluded()) {
-            addPreference(new NumberSettingPreference(
+            group.addPreference(new NumberSettingPreference(
                     context,
                     Settings.FEED_MEDIA_MAX_HEIGHT
             ));
         }
 
+        if (AlwaysShowHidePatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.ALWAYS_SHOW_HIDE
+            ));
+        }
+
+        if (HideInteractivePostsPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_INTERACTIVE_POSTS
+            ));
+        }
+
+        if (ShowViewCountPatch.isPatchIncluded()) {
+            group.addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.VIEW_COUNT
+            ));
+        }
+
+        if (ShowFlairsInHomeFeedPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHOW_FLAIRS_IN_HOME_FEED
+            ));
+        }
+    }
+
+    private void addShelvesPreferences(Context context, PreferenceGroup group) {
+        if (HideCommunitiesShelfPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMUNITIES_SHELF
+            ));
+        }
+
+        if (HideTrendingShelvesPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_TRENDING_SHELVES
+            ));
+        }
+
+        if (HideVideosForYouShelfPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_VIDEOS_FOR_YOU_SHELF
+            ));
+        }
+
+        if (HideCommunityHighlightsPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMUNITY_HIGHLIGHTS
+            ));
+        }
+
+        if (HideRelatedPostsSectionPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_RELATED_POSTS_SECTION
+            ));
+        }
+
+        if (HidePeopleAlsoSearchForSectionPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_PEOPLE_ALSO_SEARCH_FOR_SECTION
+            ));
+        }
+
+        if (HideAnswersPreviewPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ANSWERS_PREVIEW
+            ));
+        }
+
+        if (HideAskButtonPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ASK_BUTTON
+            ));
+        }
+    }
+
+    private void addPostsPreferences(Context context, PreferenceGroup group) {
+        if (DisablePostDetailSwipePatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DISABLE_POST_DETAIL_SWIPE
+            ));
+        }
+
+        if (FlipPostActionBarPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FLIP_POST_ACTION_BAR
+            ));
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+            ));
+        }
+
+        if (SwipeUpForCommentsPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SWIPE_UP_FOR_COMMENTS
+            ));
+        }
+
+        if (FullScreenReplyPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FULL_SCREEN_REPLY
+            ));
+        }
+
+        if (PostSidePanelPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL
+            ));
+            addIndentedPreference(group, new PostSidePanelWidthPreference(context));
+            addIndentedPreference(group, new BooleanSettingPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_REMEMBER_WIDTH
+            ));
+            addIndentedPreference(group, new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_DIM
+            ));
+        }
+    }
+
+    private void addCommentsPreferences(Context context, PreferenceGroup group) {
+        if (AutoModeratorCommentsPatch.isPatchIncluded()) {
+            group.addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.AUTOMODERATOR_COMMENTS
+            ));
+        }
+
+        if (HideCommentFlairsAndBadgesPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMENT_USER_FLAIRS
+            ));
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_COMMENT_COMMUNITY_BADGES
+            ));
+        }
+
+        if (CollapseAllCommentsPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COLLAPSE_ALL_COMMENTS
+            ));
+            addIndentedPreference(group, new CustomDialogListPreference(
+                    context,
+                    Settings.COLLAPSE_ALL_COMMENTS_SCOPE
+            ));
+        }
+
+        if (ColorizeCommentIndentLinesPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COLORIZE_COMMENT_INDENT_LINES
+            ));
+            addIndentedPreference(group, new CustomDialogListPreference(
+                    context,
+                    Settings.COLORIZE_COMMENT_INDENT_LINES_PALETTE
+            ));
+        }
+
+        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REMEMBER_COLLAPSED_COMMENTS
+            ));
+        }
+    }
+
+    private void addMediaViewerPreferences(Context context, PreferenceGroup group) {
+        if (MediaViewerFadePatch.isPatchIncluded()) {
+            group.addPreference(new NumberSettingPreference(
+                    context,
+                    Settings.MEDIA_VIEWER_FADE
+            ));
+        }
+
         if (HideMediaViewerComponentsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_JOIN_CONVERSATION_BUTTON
             ));
 
             if (HideMediaViewerComponentsPatch.isHideOverlayIncluded()) {
-                addPreference(new BooleanSettingPreference(
+                group.addPreference(new BooleanSettingPreference(
                         context,
                         Settings.HIDE_MEDIA_VIEWER_OVERLAY
                 ));
@@ -365,142 +465,90 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         }
 
         if (MediaViewerBlackBackgroundPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.MEDIA_VIEWER_BLACK_BACKGROUND
             ));
         }
 
-        if (SwipeUpForCommentsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.SWIPE_UP_FOR_COMMENTS
-            ));
-        }
-
         if (KeepMediaViewerInSubredditPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
                     Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT
             ));
         }
 
         if (VideoPlaybackSpeedPatch.isPatchIncluded()) {
-            addPreference(new CustomDialogListPreference(
+            group.addPreference(new CustomDialogListPreference(
                     context,
                     Settings.VIDEO_PLAYBACK_SPEED_CONTROLS
             ));
         }
+    }
 
-        if (FlipPostActionBarPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+    private void addAppPreferences(Context context, PreferenceGroup group) {
+        if (CopyTextPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.FLIP_POST_ACTION_BAR
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+                    Settings.COPY_TEXT
             ));
         }
 
-        if (FullScreenReplyPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+        if (CustomFontPatch.isPatchIncluded()) {
+            group.addPreference(new CustomFontTogglePreference(context));
+            group.addPreference(new CustomFontFilePreference(
                     context,
-                    Settings.FULL_SCREEN_REPLY
+                    Settings.CUSTOM_FONT_FILE_PATH
             ));
         }
 
-        if (AutoModeratorCommentsPatch.isPatchIncluded()) {
-            addPreference(new CustomDialogListPreference(
+        if (ForceSystemFontPatch.isPatchIncluded()) {
+            group.addPreference(new ForceSystemFontPreference(context));
+        }
+
+        if (SeeThroughStatusBarPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.AUTOMODERATOR_COMMENTS
+                    Settings.SEE_THROUGH_STATUS_BAR
             ));
         }
 
-        if (HideCommentFlairsAndBadgesPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+        if (HighQualityAvatarsPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_COMMENT_USER_FLAIRS
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_COMMENT_COMMUNITY_BADGES
+                    Settings.HIGH_QUALITY_AVATARS
             ));
         }
 
-        if (CollapseAllCommentsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+        if (DisableScreenshotPopupPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.COLLAPSE_ALL_COMMENTS
-            ));
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.COLLAPSE_ALL_COMMENTS_SCOPE
+                    Settings.DISABLE_SCREENSHOT_POPUP
             ));
         }
 
-        if (ColorizeCommentIndentLinesPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+        if (RemoveSubRedditDialogPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.COLORIZE_COMMENT_INDENT_LINES
+                    Settings.REMOVE_NSFW_DIALOG
             ));
-            addPreference(new CustomDialogListPreference(
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.COLORIZE_COMMENT_INDENT_LINES_PALETTE
-            ));
-        }
-
-        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.REMEMBER_COLLAPSED_COMMENTS
+                    Settings.REMOVE_NOTIFICATION_DIALOG
             ));
         }
 
-        if (TabletGridFeedPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+        if (SearchHiddenProfilesPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.TABLET_GRID_FEED
-            ));
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.TABLET_GRID_COLUMNS
+                    Settings.SEARCH_HIDDEN_PROFILES
             ));
         }
 
-        if (FeedAutoScrollPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
+        if (HideCommunityMenuBadgePatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.FEED_AUTO_SCROLL
-            ));
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.FEED_AUTO_SCROLL_SPEED
-            ));
-        }
-
-        if (PostSidePanelPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.POST_SIDE_PANEL
-            ));
-            addPreference(new PostSidePanelWidthPreference(context));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.POST_SIDE_PANEL_REMEMBER_WIDTH
-            ));
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.POST_SIDE_PANEL_DIM
-            ));
-        }
-
-        Utils.setPreferenceTitlesToMultiLine(this);
-
-        if (ShowFlairsInHomeFeedPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.SHOW_FLAIRS_IN_HOME_FEED
+                    Settings.HIDE_COMMUNITY_MENU_BADGE
             ));
         }
     }

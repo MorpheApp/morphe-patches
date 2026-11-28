@@ -345,10 +345,7 @@ private fun addSummarizeItemToMenu() {
         addPatchInterface(
             MENU_ROW_ACCESS_INTERFACE,
             "patch_getMenuItem",
-            """
-                iget-object v0, p0, $rowMenuItemField
-                return-object v0
-            """
+            rowMenuItemField
         )
     }
 
@@ -361,10 +358,7 @@ private fun addSummarizeItemToMenu() {
             addPatchInterface(
                 MENU_ACCESS_INTERFACE,
                 "patch_getRows",
-                """
-                    iget-object v0, p0, ${menu.rowsField}
-                    return-object v0
-                """
+                menu.rowsField
             )
             addPatchInterface(
                 MENU_ACCESS_INTERFACE,
@@ -521,13 +515,7 @@ private fun findRowsField(menuClass: ClassDef) = menuClass.fields.single { field
 private fun addElementsResourceLoading(protos: Protos) {
     val processorClass = ElementsFrameworkUpdatesFingerprint.classDef
     val frameworkUpdatesClass = ElementsFrameworkUpdatesReaderFingerprint.method.parameterTypes.first().toString()
-    // Takes the account of the response, which the processor does not use for Elements resources.
-    val processMethod = Fingerprint(
-        definingClass = processorClass.type,
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-        returnType = "V",
-        parameters = listOf("L", frameworkUpdatesClass)
-    ).method
+    val processMethod = ElementsFrameworkUpdatesProcessFingerprint.method
     val usedResourcesField = processorClass.fields.single { field ->
         !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == "Ljava/util/Set;"
     }
@@ -556,10 +544,7 @@ private fun addElementsResourceLoading(protos: Protos) {
         addPatchInterface(
             ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE,
             "patch_getUsedResources",
-            """
-                iget-object v0, p0, $usedResourcesField
-                return-object v0
-            """
+            usedResourcesField
         )
     }
 }

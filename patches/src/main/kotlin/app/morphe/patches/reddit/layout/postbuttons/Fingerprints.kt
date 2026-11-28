@@ -370,3 +370,8 @@ internal object PostDetailJoinButtonLegacyFingerprint : Fingerprint(
         )
     )
 )
+
+internal object IsActionBarIncludedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/HidePostButtonsPatch;",
+    name = "isActionBarIncluded"
+)

@@ -39,11 +39,7 @@ internal fun installPlaylistPagingNavigation(
     owner.addPatchInterface(
         NAVIGATOR,
         "patch_resumePlaylistNavigation",
-        """
-            check-cast p1, $requestType
-            invoke-virtual {p0, p1}, $navigate
-            return-void
-        """
+        navigate
     )
     var dispatch = owner.methods.single { it.name == navigate.name && it.parameterTypes == navigate.parameterTypes }
     // Shared autoplay/loop hooks can also prepend guards. Replaying the original
@@ -79,10 +75,7 @@ internal fun installPlaylistPagingSequence(
     mutableClassDefBy(wrapperType).addPatchInterface(
         NATIVE_PLAYBACK_INTERFACE,
         "patch_getQueueSequence",
-        """
-            iget-object v0, p0, $navigator
-            return-object v0
-        """
+        navigator
     )
     val descriptor = NativeQueueDescriptorFingerprint.method
     val commit = playlistQueueCommitFingerprint(queueType, requestType, descriptorType).method

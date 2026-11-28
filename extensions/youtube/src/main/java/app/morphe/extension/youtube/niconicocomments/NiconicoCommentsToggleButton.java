@@ -224,7 +224,7 @@ public final class NiconicoCommentsToggleButton {
             PipDismissHelper.dismissOnPip(dialog);
 
             Button settingsButton = CustomDialog.createButton(context, dialog,
-                    str("morphe_niconico_comments_all_settings"),
+                    str("morphe_all_settings"),
                     () -> {
                         // A second tap while the sheet slides away would open the settings twice.
                         if (quickSettingsRef.get() == dialog) {

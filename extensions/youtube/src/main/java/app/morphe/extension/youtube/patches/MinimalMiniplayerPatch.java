@@ -55,6 +55,7 @@ import java.util.List;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.VideoFormat;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
@@ -64,6 +65,8 @@ import app.morphe.extension.shared.ui.ViewAnimations;
 import app.morphe.extension.shared.ui.glass.GlassBackdrop;
 import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
+import app.morphe.extension.youtube.patches.playback.RestoredMiniplayerLabel;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -224,6 +227,7 @@ public final class MinimalMiniplayerPatch {
     private static boolean listenersInstalled;
     private static boolean ticking;
     private static boolean playing;
+    private static boolean restoreBadgeShown;
     private static boolean morphing;
     private static float contentAlpha = 1f;
 
@@ -368,6 +372,7 @@ public final class MinimalMiniplayerPatch {
             }
             
             subtitleRef = new WeakReference<>(subtitle);
+            restoreBadgeShown = false;
 
             ImageView playPause = Utils.getChildViewByResourceName(controlsLayout, "floaty_play_pause_button");
             playPauseRef = new WeakReference<>(playPause);
@@ -1793,7 +1798,16 @@ public final class MinimalMiniplayerPatch {
         }
 
         TextView subtitle = subtitleRef.get();
-        if (setText(subtitle, channelName)) {
+        boolean restored = PlaybackSessionPatch.showRestoredMiniplayer(PlayerType.getCurrent());
+        if (subtitle != null && restored != restoreBadgeShown) {
+            restoreBadgeShown = restored;
+            if (subtitle.getParent() instanceof View bar && HIDE_TITLE) {
+                bar.setVisibility(restored ? View.VISIBLE : View.GONE);
+            }
+            RestoredMiniplayerLabel.setBadge(subtitle, restored);
+            updatePlayPauseIcon(false);
+        }
+        if (setText(subtitle, restored ? RestoredMiniplayerLabel.resumeLabel() : channelName)) {
             subtitle.setVisibility(View.VISIBLE);
         }
     }
@@ -1808,6 +1822,10 @@ public final class MinimalMiniplayerPatch {
         return true;
     }
 
+    public static void refreshPlaybackButton() {
+        if (ENABLED) updatePlayPauseIcon(false);
+    }
+
     /**
      * @param morph Whether the state changed while the bar was up, which is the only time
      *              animating the icon makes sense.
@@ -1815,17 +1833,23 @@ public final class MinimalMiniplayerPatch {
     private static void updatePlayPauseIcon(boolean morph) {
         ImageView playPause = playPauseRef.get();
         if (playPause == null) return;
+        PlayerType type = PlayerType.getCurrent();
+        boolean forcePlay = PlaybackSessionPatch.showRestoredMiniplayer(type)
+                && PlaybackSessionPatch.restoredWatchAwaitingPlayback();
+        boolean showPause = playing && !forcePlay;
+        if (PlaybackSessionPatch.showMiniplayerPlaybackControls(type)) playPause.setVisibility(View.VISIBLE);
+        playPause.setContentDescription(StringRef.str(showPause ? "accessibility_pause" : "accessibility_play"));
 
-        if (morph) {
+        if (morph && !forcePlay) {
             // The app ships the drawable its own player uses to morph between the two icons.
-            final String name = playing
+            final String name = showPause
                     ? "player_play_pause_vector_transition"
                     : "player_pause_play_vector_transition";
 
             Drawable drawable = getDrawable(playPause, name + "_delhi", name);
             if (drawable instanceof AnimatedVectorDrawable iconMorph) {
                 // A player icon style swaps its own icons instead, and starts that on its first draw.
-                if (playing) {
+                if (showPause) {
                     PlayPauseIcons.setPlayToPause(playPause, iconMorph);
                 } else {
                     PlayPauseIcons.setPauseToPlay(playPause, iconMorph);
@@ -1838,7 +1862,7 @@ public final class MinimalMiniplayerPatch {
             }
         }
 
-        if (playing) {
+        if (showPause) {
             setIcon(playPause, PlayPauseIcons.PAUSE,
                     "yt_fill_experimental_pause_vd_theme_24", "yt_fill_pause_vd_theme_24");
         } else {

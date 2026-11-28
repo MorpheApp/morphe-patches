@@ -227,21 +227,22 @@ internal val restoreOldVideoActionBarPatch = patch(
             }
         }
 
-        val configInfoClass = BuildInnerTubeProtoRequestBodyFingerprint.match(
-            buildInnerTubeFingerprint.originalClassDef
-        ).let {
-            val match = it.instructionMatches.first()
-            val index = match.index
-            val instruction = match.instruction
-            val register = instruction.registersUsed[0]
+        // Each request class sets the config info of its request body, such as both request classes of 20.51.
+        val configInfoClass = buildInnerTubeFingerprint.matchAll().map { uriMatch ->
+            BuildInnerTubeProtoRequestBodyFingerprint.match(uriMatch.originalClassDef).let {
+                val match = it.instructionMatches.first()
+                val index = match.index
+                val instruction = match.instruction
+                val register = instruction.registersUsed[0]
 
-            it.method.addInstructions(
-                index,
-                "invoke-static { v$register }, $EXTENSION_CLASS->fixVideoActionBar($EXTENSION_CONFIG_INFO_INTERFACE)V"
-            )
+                it.method.addInstructions(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->fixVideoActionBar($EXTENSION_CONFIG_INFO_INTERFACE)V"
+                )
 
-            instruction.getReference<FieldReference>()!!.type
-        }
+                instruction.getReference<FieldReference>()!!.type
+            }
+        }.distinct().single()
 
         getConfigInfoFingerprint(configInfoClass).let {
             it.classDef.apply {

@@ -157,7 +157,7 @@ public abstract class WebsiteSignInPreference extends Preference implements Pref
                 // OK button text.
                 str(signedIn
                         ? "morphe_spoof_video_streams_sign_in_android_vr_dialog_reset"
-                        : "gms_core_dialog_continue_text"),
+                        : "morphe_settings_continue"),
                 // OK button action.
                 signedIn
                         ? () -> {
@@ -280,7 +280,7 @@ public abstract class WebsiteSignInPreference extends Preference implements Pref
                         Logger.printInfo(() -> "Could not read intent link", ex);
                     }
                 }
-                // Help, privacy and other links of the sign in page.
+                // Help, privacy and other links of the sign-in page.
                 try {
                     context.startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 } catch (Exception ex) {

@@ -18,7 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">Dayakan SponsorBlock</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock ialah sistem sumber ramai untuk melangkau bahagian yang menjengkelkan dalam video YouTube</string>
-  <string name="morphe_sb_appearance_category_title">Penampilan</string>
   <string name="morphe_sb_voting_button_title">Tunjukkan butang pengundian</string>
   <string name="morphe_sb_voting_button_summary">Menambah butang untuk mengundi naik atau mengundi turun segmen</string>
   <string name="morphe_sb_square_layout_title">Gunakan susun atur segi empat</string>
@@ -29,47 +28,30 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Menyembunyikan butang Langkau selepas beberapa saat berbanding memastikannya kelihatan untuk keseluruhan segmen</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Tempoh butang Langkau</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Tetapkan berapa lama butang Langkau kekal kelihatan</string>
-  <string name="morphe_sb_toast_on_skip_title">Tunjukkan pemberitahuan langkau</string>
   <string name="morphe_sb_toast_on_skip_summary">Menunjukkan pemberitahuan apabila segmen dilangkau secara automatik</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Tempoh pemberitahuan langkau</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Tetapkan berapa lama pemberitahuan buat asal kekal kelihatan</string>
-  <string name="morphe_sb_duration_1s">1 saat</string>
-  <string name="morphe_sb_duration_2s">2 saat</string>
-  <string name="morphe_sb_duration_3s">3 saat</string>
-  <string name="morphe_sb_duration_4s">4 saat</string>
-  <string name="morphe_sb_duration_5s">5 saat</string>
-  <string name="morphe_sb_duration_6s">6 saat</string>
-  <string name="morphe_sb_duration_7s">7 saat</string>
-  <string name="morphe_sb_duration_8s">8 saat</string>
-  <string name="morphe_sb_duration_9s">9 saat</string>
-  <string name="morphe_sb_duration_10s">10 saat</string>
   <string name="morphe_sb_video_length_without_segments_title">Tunjukkan panjang video tanpa segmen</string>
   <string name="morphe_sb_video_length_without_segments_summary">Menolak semua segmen daripada jumlah durasi video yang dipaparkan pada seekbar</string>
   <string name="morphe_sb_create_segment_category_title">Mencipta segmen baharu</string>
   <string name="morphe_sb_create_new_segment_title">Tunjukkan butang \'Cipta segmen baharu\'</string>
   <string name="morphe_sb_create_new_segment_summary">Menambah butang pada pemain video yang membolehkan anda menghantar segmen SponsorBlock baharu</string>
-  <string name="morphe_sb_create_new_segment_step_title">Langkah pelarasan masa</string>
   <string name="morphe_sb_create_new_segment_step_summary">Jumlah carian butang pelarasan masa (dalam milisaat)</string>
-  <string name="morphe_sb_create_new_segment_step_invalid">Nilai mestilah nombor positif</string>
   <string name="morphe_sb_guidelines_title">Garis panduan penghantaran</string>
   <string name="morphe_sb_guidelines_summary">Garis panduan mengandungi peraturan dan petua untuk mencipta segmen baharu</string>
   <string name="morphe_sb_guidelines_popup_title">Ikut garis panduan</string>
   <string name="morphe_sb_guidelines_popup_content">Baca garis panduan SponsorBlock sebelum mencipta segmen baharu</string>
   <string name="morphe_sb_guidelines_popup_already_read">Sudah baca</string>
   <string name="morphe_sb_guidelines_popup_open">Tunjukkan kepada saya</string>
-  <string name="morphe_sb_general_title">Umum</string>
   <string name="morphe_sb_offline_segments_title">Simpan segmen video yang dimuat turun</string>
   <string name="morphe_sb_offline_segments_summary">Membenarkan melangkau segmen video yang dimuat turun semasa luar talian</string>
-  <string name="morphe_sb_toast_on_connection_error_title">Tunjukkan amaran ralat sambungan</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Menunjukkan pemberitahuan apabila pelayan SponsorBlock tidak tersedia</string>
   <string name="morphe_sb_track_skip_count_title">Dayakan penjejakan jumlah langkau</string>
   <string name="morphe_sb_track_skip_count_summary">Menghantar jumlah langkau ke papan pendahulu SponsorBlock untuk menjejak berapa banyak masa yang dijimatkan</string>
   <string name="morphe_sb_min_segment_duration_title">Tempoh segmen minimum</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmen yang lebih pendek daripada nilai ini (dalam saat) tidak akan dipaparkan atau dilangkau</string>
   <string name="morphe_sb_min_segment_duration_invalid">Tempoh masa tidak sah</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">ID pengguna peribadi anda</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Ini hendaklah dirahsiakan. Ini adalah seperti kata laluan dan tidak boleh dikongsi dengan sesiapa pun. Jika seseorang memilikinya, mereka boleh menyamar sebagai anda</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ID pengguna peribadi mestilah sekurang-kurangnya 30 aksara panjang</string>
   <string name="morphe_sb_api_url_title">Tukar URL API</string>
   <string name="morphe_sb_api_url_summary">Alamat yang digunakan oleh SponsorBlock untuk membuat panggilan ke pelayan</string>
   <string name="morphe_sb_channel_whitelist_title">Senarai putih saluran</string>
@@ -81,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_invalid">URL API tidak sah</string>
   <string name="morphe_sb_api_url_changed">URL API telah berubah</string>
   <string name="morphe_sb_settings_ie_title">Tetapan Import / Eksport</string>
-  <string name="morphe_sb_settings_copy">Salin</string>
   <string name="morphe_sb_settings_ie_summary">Konfigurasi JSON SponsorBlock anda yang boleh diimport / dieksport ke Morphe dan platform SponsorBlock lain</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Konfigurasi JSON SponsorBlock anda yang boleh diimport / dieksport ke Morphe dan platform SponsorBlock lain
 
@@ -92,7 +73,6 @@ Ini termasuk ID pengguna peribadi anda. Pastikan anda berkongsi ini dengan bijak
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Tetapan anda mengandungi ID pengguna SponsorBlock peribadi.
 
 ID pengguna anda adalah seperti kata laluan, dan ia tidak seharusnya dikongsi"</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Jangan tunjukkan lagi</string>
   <string name="morphe_sb_diff_segments_title">Tukar tingkah laku segmen</string>
   <string name="morphe_sb_segments_sponsor">Penaja</string>
   <string name="morphe_sb_segments_sponsor_summary">Promosi berbayar, rujukan berbayar dan iklan langsung. Bukan untuk promosi diri atau hebahan percuma kepada punca / pencipta / laman web / produk yang mereka sukai</string>
@@ -122,11 +102,9 @@ ID pengguna anda adalah seperti kata laluan, dan ia tidak seharusnya dikongsi"</
   <string name="morphe_sb_skip_button_highlight">Langkau ke sorotan</string>
   <string name="morphe_sb_skip_button_intro_beginning">Langkau pengenalan</string>
   <string name="morphe_sb_skip_button_intro_middle">Langkau selingan</string>
-  <string name="morphe_sb_skip_button_intro_end">Langkau selingan</string>
   <string name="morphe_sb_skip_button_outro">Langkau penutup</string>
   <string name="morphe_sb_skip_button_hook">Langkau hook</string>
   <string name="morphe_sb_skip_button_preview_beginning">Langkau pratonton</string>
-  <string name="morphe_sb_skip_button_preview_middle">Langkau pratonton</string>
   <string name="morphe_sb_skip_button_preview_end">Langkau ringkasan</string>
   <string name="morphe_sb_skip_button_filler">Langkau tangen</string>
   <string name="morphe_sb_skip_button_nomusic">Langkau bukan muzik</string>
@@ -137,11 +115,9 @@ ID pengguna anda adalah seperti kata laluan, dan ia tidak seharusnya dikongsi"</
   <string name="morphe_sb_skipped_highlight">Dilangkau ke sorotan</string>
   <string name="morphe_sb_skipped_intro_beginning">Pengenalan dilangkau</string>
   <string name="morphe_sb_skipped_intro_middle">Rehat dilangkau</string>
-  <string name="morphe_sb_skipped_intro_end">Melangkau selingan</string>
   <string name="morphe_sb_skipped_outro">Melangkau outro</string>
   <string name="morphe_sb_skipped_hook">Melangkau hook</string>
   <string name="morphe_sb_skipped_preview_beginning">Melangkau pratonton</string>
-  <string name="morphe_sb_skipped_preview_middle">Melangkau pratonton</string>
   <string name="morphe_sb_skipped_preview_end">Melangkau ringkasan</string>
   <string name="morphe_sb_skipped_filler">Melangkau tangen</string>
   <string name="morphe_sb_skipped_nomusic">Melangkau bahagian bukan muzik</string>
@@ -167,8 +143,6 @@ Sudah wujud"</string>
   <string name="morphe_sb_vote_failed_timeout">Tidak dapat mengundi segmen (API tamat masa)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Tidak dapat mengundi segmen (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Tidak dapat mengundi segmen: %s</string>
-  <string name="morphe_sb_vote_upvote">Undi atas</string>
-  <string name="morphe_sb_vote_downvote">Undi bawah</string>
   <string name="morphe_sb_vote_category">Tukar kategori</string>
   <string name="morphe_sb_vote_no_segments">Tiada segmen untuk diundi</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -192,7 +166,6 @@ ke
 (%3$s)
 
 Sedia untuk dihantar?"</string>
-  <string name="morphe_sb_new_segment_confirm_submit">Hantar</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Permulaan mestilah sebelum pengakhiran</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Tandakan lokasi pada bar masa terlebih dahulu</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Pratonton segmen, dan pastikan ia melompat dengan lancar</string>
@@ -205,16 +178,11 @@ Sedia untuk dihantar?"</string>
 %s
 
 Jika anda tidak menghantar sorotan, ketik Batal dan tandakan lokasi kedua"</string>
-  <string name="morphe_sb_new_segment_highlight_submit">Hantar sorotan</string>
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistik tidak tersedia buat sementara waktu (API tergendala)</string>
-  <string name="morphe_sb_stats_loading">Memuatkan…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock dinyahaktifkan</string>
-  <string name="morphe_sb_stats_username">Nama pengguna anda: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Ketik di sini untuk menukar nama pengguna anda</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Tidak dapat menukar nama pengguna: Status: %1$s %2$s</string>
-  <string name="morphe_sb_stats_username_changed">Nama pengguna berjaya ditukar</string>
   <string name="morphe_sb_stats_reputation">Reputasi anda ialah &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Anda telah mencipta &lt;b&gt;%s&lt;/b&gt; segmen</string>
   <string name="morphe_sb_stats_submissions_summary">Ketik di sini untuk melihat segmen anda</string>

@@ -7,8 +7,10 @@
 
 package app.morphe.extension.music.patches.sonos;
 
+import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.MediaMetadata;
+import android.media.session.MediaSession;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -107,13 +109,20 @@ public final class SonosCastPatch {
     /**
      * Injection point.
      */
-    public static void onSetMetadata(@Nullable MediaMetadata metadata) {
+    public static boolean deferAudioFocusChange(AudioManager.OnAudioFocusChangeListener listener, int focusChange) {
+        return SonosCastManager.deferAudioFocusChange(listener, focusChange);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onSetMetadata(MediaSession session, @Nullable MediaMetadata metadata) {
         if (!Settings.SONOS_CAST.get()) {
             return;
         }
 
         try {
-            SonosCastManager.onMetadata(metadata);
+            SonosCastManager.onMetadata(session, metadata);
         } catch (Exception ex) {
             Logger.printException(() -> "onSetMetadata failure", ex);
         }

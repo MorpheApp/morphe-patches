@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Berrabiarazia beharrezkoa da</string>
   <string name="morphe_settings_restart_dialog_message">Aldaketa hau indarrean jartzeko, berrabiarazi aplikazioa</string>
   <string name="morphe_settings_restart">Berrabiarazi</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importatu</string>
-  <string name="morphe_settings_import_copy">Kopiatu</string>
   <string name="morphe_settings_import_reset">Morphe konfigurazioa lehenetsira berrezarri da</string>
   <string name="morphe_settings_import_success">%s konfigurazioak inportatu dira</string>
   <string name="morphe_settings_import_failure_parse">Inportazioak huts egin du: %s</string>
@@ -76,7 +74,6 @@ Hizkuntza berriak itzultzeko edo dauden itzulpenak hobetzeko, bisitatu morphe.so
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Patchak</string>
   <string name="morphe_settings_about_version">Bertsioa</string>
-  <string name="morphe_settings_about_close">Itxi</string>
   <string name="morphe_settings_about_prerelease">Aurrebertsioa</string>
   <string name="morphe_settings_about_update_available">Eguneratzea eskuragarri: %s</string>
   <string name="morphe_settings_about_update_hint">Patchak eguneratzeko, erabili Morphe aplikazio hau berriz patchatzeko</string>
@@ -108,7 +105,6 @@ Hizkuntza berriak itzultzeko edo dauden itzulpenak hobetzeko, bisitatu morphe.so
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Lizentzia-oharrak</string>
-  <string name="morphe_settings_about_licenses_loading">Kargatzen…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Arazketa</string>
   <string name="morphe_debug_screen_summary">Konfiguratu aukera aurreratu garatzaileak eta diagnostiko logak</string>
@@ -125,7 +121,6 @@ Ez zaizu ustekabeko gertaerarik jakinaraziko"</string>
   <string name="morphe_debug_export_logs_success">Debug logak ondo esportatu dira</string>
   <string name="morphe_debug_export_logs_failed">Debug logak esportatzeak huts egin du</string>
   <string name="morphe_debug_logs_search_hint">Bilatu debug logetan…</string>
-  <string name="morphe_debug_export_logs_clear">Garbitu</string>
   <string name="morphe_debug_logs_disabled">Debug logak desaktibatuta daude</string>
   <string name="morphe_debug_logs_none_found">Ez da debug logik aurkitu</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug logak kopiatu dira</string>
@@ -142,15 +137,8 @@ Ez zaizu ustekabeko gertaerarik jakinaraziko"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokatuta (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Behartuta (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Automatikoa</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Desaktibatuta</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Aktibatuta</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Behartu aktibatzea</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blokeatu</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Kendu</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ezaugarri-banderak gorde dira</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ezaugarri-banderak berrezarri dira</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ezaugarri-banderak arbelera kopiatu dira</string>
@@ -200,7 +188,6 @@ Jokabidea bilaketan goizago desagertu zen, beraz, bandera bat baino gehiago egon
   <string name="gms_core_dialog_outdated_message">"Zure MicroG v%1$s bertsioa zaharkituta dago eta arazoak sor ditzake.
 
 Mesedez, eguneratu MicroG azken bertsiora: v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Eguneratu</string>
   <string name="gms_core_dialog_ignore_text">Baztertu</string>
   <string name="gms_core_dialog_conflict_message">"Instalatuta dagoen MicroG bertsioa ez da Morphe-k gomendatzen:
 
@@ -220,7 +207,6 @@ Horrek aplikazioa funtzionatzeko behar du"</string>
 MicroG-ren bateria optimizazioak desaktibatzeak ez du eragina negatiboa izango bateriaren erabileraan.
 
 Sakatu jarraitu botoia eta onartu optimizazio aldaketak"</string>
-  <string name="gms_core_dialog_continue_text">Jarraitu</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Erakutsi MicroG bateria optimizazio elkarrizketa</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Hau desgaitzeak MicroG-ren bateria optimizazio oharra ezkutatuko du.
 
@@ -259,9 +245,29 @@ Esperientzia arazorik gabeena nahi baduzu, &lt;b&gt;desinstalatu&lt;/b&gt; hau e
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Doiketak</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Beste aldaketak</string>
   <string name="morphe_patches_update_notice_dialog_more">…eta %s gehiago</string>
-  <string name="morphe_patches_update_notice_dialog_update">Eguneratu</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Utzi</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Errore-erregistroa erabiltzailearen dokumentuetan gorde da: %s</string>
   <string name="morphe_crash_log_saved">Errore-erregistroa gorde da: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Honi buruz</string>
+  <string name="morphe_ads_screen_title">Iragarkiak</string>
+  <string name="morphe_misc_screen_title">Bestelakoak</string>
+  <string name="morphe_navigation_bar_screen_title">Nabigazio-barra</string>
+  <string name="morphe_post_buttons_screen_title">Argitalpen botoiak</string>
+  <string name="morphe_custom_branding_icon_title">Aplikazioaren ikonoa</string>
+  <string name="morphe_download">Deskargatu</string>
+  <string name="morphe_hide_create_button_title">Ezkutatu Sortu botoia</string>
+  <string name="morphe_hide_post_comment_button_title">Ezkutatu Iruzkinak botoia</string>
+  <string name="morphe_sanitize_sharing_links_summary">Partekatutako estekatik jarraipen-parametroak kentzen ditu</string>
+  <string name="morphe_sanitize_sharing_links_title">Garbitu partekatzeko estekak</string>
+  <string name="morphe_settings_add">Gehitu</string>
+  <string name="morphe_settings_clear">Garbitu</string>
+  <string name="morphe_settings_close">Itxi</string>
+  <string name="morphe_settings_continue">Jarraitu</string>
+  <string name="morphe_settings_copy">Kopiatu</string>
+  <string name="morphe_settings_delete">Ezabatu</string>
+  <string name="morphe_settings_remove">Kendu</string>
+  <string name="morphe_settings_update">Eguneratu</string>
 </resources>

@@ -592,7 +592,7 @@ public final class LyricsOrderedListPreference extends Preference {
         final boolean[] accepted = {false};
 
         final Pair<Dialog, LinearLayout> pair = CustomDialog.create(context,
-                str("morphe_music_lyrics_local_romanization_download_confirm_title"),
+                str("morphe_music_lyrics_romanization_provider_local"),
                 null,
                 null,
                 str("morphe_settings_save"),

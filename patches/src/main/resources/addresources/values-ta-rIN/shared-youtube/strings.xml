@@ -59,7 +59,6 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
 Android System WebView சமீபத்திய பதிப்பிற்குப் புதுப்பிக்கப்படும் வரை வீடியோ பிளேபேக் தோல்வியடையக்கூடும்.
 
 Android System WebView-ஐத் திறக்க OK-வைத் தட்டவும்."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">மீண்டும் காட்ட வேண்டாம்</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView நிறுவப்படவில்லை. வீடியோ பிளேபேக்கைச் சரிசெய்ய அதை நிறுவவும்</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -124,10 +123,8 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <string name="morphe_video_effects_custom_restore">இயல்புகளை மீட்டமைக்கவும்</string>
   <string name="morphe_video_effects_custom_add_title">புதிய விளைவு</string>
   <string name="morphe_video_effects_custom_edit_title">விளைவைத் திருத்தவும்</string>
-  <string name="morphe_video_effects_custom_name_hint">பெயர்</string>
   <string name="morphe_video_effects_custom_name_empty">விளைவுக்கான பெயரை உள்ளிடவும்</string>
   <string name="morphe_video_effects_custom_name_exists">இந்தப் பெயரில் ஒரு விளைவு ஏற்கனவே உள்ளது</string>
-  <string name="morphe_video_effects_custom_copy_code">குறியீட்டை நகலெடு</string>
   <string name="morphe_video_effects_custom_error_title">விளைவில் பிழை உள்ளது</string>
   <string name="morphe_video_effects_custom_error_message">"குறியீடு சரிசெய்யப்படும் வரை வீடியோக்கள் விளைவு இல்லாமல் காட்டப்படும். குறியீட்டை எழுதிய AI-க்கு இந்தப் பிழையை வழங்கவும்:
 
@@ -137,7 +134,6 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
 AI-யிடம் குறுகிய குறியீட்டைக் கேட்கவும் அல்லது குறியீட்டைப் பகுதிகளாக ஒட்டவும்."</string>
   <string name="morphe_video_effects_custom_copy_error">நகல் எடுத்ததில் பிழை</string>
   <string name="morphe_video_effects_custom_save_anyway">எப்படியும் சேமி</string>
-  <string name="morphe_video_effects_custom_delete">நீக்கு</string>
   <string name="morphe_video_effects_custom_delete_title">விளைவை நீக்கவா?</string>
   <string name="morphe_video_effects_custom_delete_message">%s நீக்கப்படும்.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -183,7 +179,6 @@ AI-யிடம் குறுகிய குறியீட்டைக் �
   <string name="morphe_glass_menus_screen_summary">மங்கலான உள்ளடக்கத்திற்கு மேல் உறைந்த கண்ணாடி போன்ற மெனுக்கள்</string>
   <string name="morphe_glass_menus_title">கிளாஸ் மெனுக்களை இயக்கவும்</string>
   <string name="morphe_glass_menus_summary">மெனுக்கள் மற்றும் பாட்டம் ஷீட்களை உறைந்த கண்ணாடி போல் காட்டும், அவற்றிற்குப் பின்னால் உள்ள உள்ளடக்கம் மங்கலாக இருக்கும்</string>
-  <string name="morphe_glass_menus_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
   <string name="morphe_glass_menus_opacity_summary">மங்கலான உள்ளடக்கத்தை மெனு எவ்வளவு தூரம் மறைக்கிறது (0 என்பது தெளிவானது, 100 என்பது ஒளிபுகாதது)</string>
   <string name="morphe_glass_menus_blur_title">பிளர்</string>
   <string name="morphe_glass_menus_blur_summary">மெனுவிற்குப் பின்னால் உள்ள உள்ளடக்கம் எவ்வளவு தூரம் மங்கலாக உள்ளது</string>
@@ -196,8 +191,89 @@ AI-யிடம் குறுகிய குறியீட்டைக் �
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் செய்யப்பட்டன</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் காலாவதி ஆகின</string>
-  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
   <string name="morphe_navigation_bar_screen_summary">கீழ் வழிசெலுத்தல் பட்டையில் எந்த பொத்தான்கள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
   <string name="morphe_toolbar_screen_title">டூல்பார்</string>
   <string name="morphe_toolbar_screen_summary">டூல்பாரில் எந்தக் கூறுகள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 வினாடி</string>
+  <string name="morphe_duration_2s">2 வினாடிகள்</string>
+  <string name="morphe_duration_3s">3 வினாடிகள்</string>
+  <string name="morphe_duration_4s">4 வினாடிகள்</string>
+  <string name="morphe_duration_5s">5 வினாடிகள்</string>
+  <string name="morphe_duration_6s">6 வினாடிகள்</string>
+  <string name="morphe_duration_7s">7 வினாடிகள்</string>
+  <string name="morphe_duration_8s">8 வினாடிகள்</string>
+  <string name="morphe_duration_9s">9 வினாடிகள்</string>
+  <string name="morphe_duration_10s">10 வினாடிகள்</string>
+  <string name="morphe_change_start_page_entry_default">இயல்பானது</string>
+  <string name="morphe_change_start_page_entry_explore">ஆராயுங்கள்</string>
+  <string name="morphe_change_start_page_entry_history">வரலாறு</string>
+  <string name="morphe_change_start_page_entry_library">நூலகம்</string>
+  <string name="morphe_change_start_page_entry_playlists">பிளேலிஸ்ட்கள்</string>
+  <string name="morphe_change_start_page_entry_search">தேடல்</string>
+  <string name="morphe_change_start_page_entry_subscriptions">சந்தாக்கள்</string>
+  <string name="morphe_change_start_page_title">தொடக்கப் பக்கம்</string>
+  <string name="morphe_action_buttons_screen_title">செயல் பொத்தான்கள்</string>
+  <string name="morphe_comments_screen_title">கருத்துகள்</string>
+  <string name="morphe_feed_screen_title">ஃபீடு</string>
+  <string name="morphe_flyout_menu_screen_title">பிளைஅவுட் மெனு</string>
+  <string name="morphe_general_title">பொதுவானவை</string>
+  <string name="morphe_miniplayer_screen_title">மினிப்ளேயர்</string>
+  <string name="morphe_player_screen_title">பிளேயர்</string>
+  <string name="morphe_video_screen_title">வீடியோ</string>
+  <string name="morphe_appearance_title">தோற்றம்</string>
+  <string name="morphe_cancel">ரத்துசெய்</string>
+  <string name="morphe_comments_screen_summary">கருத்துக்கள் பகுதியில் எந்தக் கூறுகள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_copy_code">குறியீட்டை நகலெடு</string>
+  <string name="morphe_corner_radius_title">மூலை ஆரம்</string>
+  <string name="morphe_do_not_show_again">மீண்டும் காட்ட வேண்டாம்</string>
+  <string name="morphe_download_force_4k_title">4K பதிவிறக்கக் கிடைக்கும் தன்மையை வலுப்படுத்து</string>
+  <string name="morphe_glass_opacity_title">கண்ணாடி ஒளிபுகும் தன்மை</string>
+  <string name="morphe_header_logo_title">தலைப்பு லோகோ</string>
+  <string name="morphe_hide_action_bar_title">செயல் பாரை மறைக்கவும்</string>
+  <string name="morphe_hide_cast_button_title">காஸ்ட் பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_button_title">கருத்துகள் பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_community_guidelines_title">சமூக வழிகாட்டுதல்களை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_emoji_button_title">எமோஜி பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIFகள் மற்றும் படங்களை மறைக்கிறது</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_info_button_title">தகவல் பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_timestamp_button_title">நேரமுத்திரை பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_horizontal_shelves_title">கிடைமட்ட அலமாரிகளை மறைக்கவும்</string>
+  <string name="morphe_hide_like_dislike_button_title">பிடித்த மற்றும் பிடிக்காத பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_like_dislike_buttons_title">பிடிக்கும் மற்றும் பிடிக்கவில்லை பொத்தான்களை மறைக்கவும்</string>
+  <string name="morphe_hide_navigation_bar_title">வழிசெலுத்தல் பாரை மறைக்கவும்</string>
+  <string name="morphe_hide_navigation_button_labels_title">வழிசெலுத்தல் பொத்தான் லேபிள்களை மறைக்கவும்</string>
+  <string name="morphe_hide_previous_next_buttons_title">முந்தைய &amp; அடுத்த பொத்தான்களை மறைக்கவும்</string>
+  <string name="morphe_hide_search_button_title">தேடல் பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_translate_button_title">மொழிபெயர்ப்பு பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_video_ads_title">வீடியோ விளம்பரங்களை மறைக்கவும்</string>
+  <string name="morphe_loading">ஏற்றப்படுகிறது…</string>
+  <string name="morphe_name">பெயர்</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">பொத்தான் இடைவெளி</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$s இல் %1$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">உயரம்</string>
+  <string name="morphe_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
+  <string name="morphe_navigation_bar_glass_title">கிளாஸ் நேவிகேஷன் பாரை இயக்கு</string>
+  <string name="morphe_positive_number_invalid">மதிப்பு நேர்மறையான எண்ணாக இருக்க வேண்டும்</string>
+  <string name="morphe_private_user_id_invalid">தனியார் பயனர் ஐடி குறைந்தபட்சம் 30 எழுத்துக்களாக இருக்க வேண்டும்</string>
+  <string name="morphe_private_user_id_title">உங்கள் தனியார் பயனர் ஐடி</string>
+  <string name="morphe_rename">மறுபெயரிடு</string>
+  <string name="morphe_show_settings_button_title">Settings பொத்தானைக் காட்டு</string>
+  <string name="morphe_show_settings_button_type_title">Settings பொத்தான் செயல்பாடு</string>
+  <string name="morphe_show_video_effect_menu_title">வீடியோ விளைவு மெனுவைக் காட்டு</string>
+  <string name="morphe_submit">சமர்ப்பி</string>
+  <string name="morphe_time_adjustment_step_title">நேர சரிசெய்தல் படி</string>
+  <string name="morphe_toast_on_connection_error_title">இணைப்புப் பிழை எச்சரிக்கைகளைக் காட்டு</string>
+  <string name="morphe_toast_on_skip_title">தவிப்பு அறிவிப்பைக் காட்டு</string>
+  <string name="morphe_translated_only">மொழிபெயர்க்கப்பட்டது மட்டும்</string>
+  <string name="morphe_translating">மொழிபெயர்க்கப்படுகிறது…</string>
+  <string name="morphe_translation_language_title">மொழிபெயர்ப்பு மொழி</string>
+  <string name="morphe_username_change_unknown_error">பயனர் பெயரை மாற்ற முடியவில்லை: நிலை: %1$s %2$s</string>
+  <string name="morphe_username_changed">பயனர் பெயர் வெற்றிகரமாக மாற்றப்பட்டது</string>
+  <string name="morphe_username_html">உங்கள் பயனர் பெயர்: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">வீடியோக்கள்</string>
+  <string name="morphe_vote_downvote">எதிர்மறை வாக்கு</string>
+  <string name="morphe_vote_upvote">நேர்மறை வாக்கு</string>
 </resources>

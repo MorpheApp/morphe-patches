@@ -51,6 +51,7 @@ val liveChatTranslatePatch = patch(
                     SwitchPreference("morphe_live_chat_translate", summary = true),
                     ListPreference(
                         "morphe_live_chat_translate_language",
+                        titleKey = "morphe_translation_language_title",
                         entriesKey = "morphe_post_translate_language_entries",
                         entryValuesKey = "morphe_post_translate_language_entry_values",
                     ),

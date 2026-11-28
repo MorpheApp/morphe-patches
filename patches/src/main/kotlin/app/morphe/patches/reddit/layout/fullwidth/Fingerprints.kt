@@ -382,3 +382,13 @@ internal object PostDetailEmbedVideoFingerprint : Fingerprint(
         )
     )
 )
+
+internal object ApplyOriginalMediaShapeFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/FullWidthFeedMediaPatch;",
+    name = "applyOriginalMediaShape"
+)
+
+internal object ApplyOriginalEmbedMediaShapeFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/reddit/patches/FullWidthFeedMediaPatch;",
+    name = "applyOriginalEmbedMediaShape"
+)

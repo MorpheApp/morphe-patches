@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Kuanzisha upya kunahitajika</string>
   <string name="morphe_settings_restart_dialog_message">Anzisha upya programu ili mabadiliko haya yaweze kufanya kazi</string>
   <string name="morphe_settings_restart">Anzisha upya</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Ingiza</string>
-  <string name="morphe_settings_import_copy">Nakili</string>
   <string name="morphe_settings_import_reset">Mipangilio ya Morphe imewekwa upya hadi ya awali</string>
   <string name="morphe_settings_import_success">Mipangilio ya %s imeingizwa</string>
   <string name="morphe_settings_import_failure_parse">Uingizaji umeshindwa: %s</string>
@@ -76,7 +74,6 @@ Ili kutafsiri lugha mpya au kuboresha tafsiri zilizopo, tembelea morphe.software
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Patch</string>
   <string name="morphe_settings_about_version">Toleo</string>
-  <string name="morphe_settings_about_close">Funga</string>
   <string name="morphe_settings_about_prerelease">Toleo la awali</string>
   <string name="morphe_settings_about_update_available">Sasisho linapatikana: %s</string>
   <string name="morphe_settings_about_update_hint">Ili kusasisha patch zako, tumia Morphe kupatch programu hii tena</string>
@@ -108,7 +105,6 @@ Ili kutafsiri lugha mpya au kuboresha tafsiri zilizopo, tembelea morphe.software
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Ilani za leseni</string>
-  <string name="morphe_settings_about_licenses_loading">Inapakia…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Kutambua hitilafu</string>
   <string name="morphe_debug_screen_summary">Sanidi chaguzi za juu za msanidi programu na logi za utambuzi</string>
@@ -125,7 +121,6 @@ Hautataarifiwa kuhusu matukio yoyote yasiyotarajiwa"</string>
   <string name="morphe_debug_export_logs_success">Kumbukumbu za debug zimehamishwa kikamilifu</string>
   <string name="morphe_debug_export_logs_failed">Imeshindwa kuhamisha kumbukumbu za debug</string>
   <string name="morphe_debug_logs_search_hint">Tafuta kumbukumbu za debug…</string>
-  <string name="morphe_debug_export_logs_clear">Futa</string>
   <string name="morphe_debug_logs_disabled">Kurekodi hitilafu kumezimwa</string>
   <string name="morphe_debug_logs_none_found">Hakuna kumbukumbu za debug zilizopatikana</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Kumbukumbu za debug zimenakiliwa</string>
@@ -142,15 +137,8 @@ Hautataarifiwa kuhusu matukio yoyote yasiyotarajiwa"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Imezuiliwa (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Imelazimishwa (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Kiotomatiki</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Zima</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Washa</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Washa kwa nguvu</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Zuia</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Ondoa</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Alama za vipengele zimehifadhiwa</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Alama za vipengele zimerejeshwa</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bendera za vipengele zimenakiliwa kwenye ubao wa kunakili</string>
@@ -200,7 +188,6 @@ Tabia hiyo ilitoweka mapema katika utafutaji, hivyo inawezekana bendera zaidi ya
   <string name="gms_core_dialog_outdated_message">"MicroG v%1$s yako imepitwa na wakati na inaweza kusababisha matatizo.
 
 Tafadhali sasisha MicroG hadi toleo jipya zaidi v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Sasisha</string>
   <string name="gms_core_dialog_ignore_text">Puuza</string>
   <string name="gms_core_dialog_conflict_message">"MicroG iliyosakinishwa haipendekezwi na Morphe:
 
@@ -220,7 +207,6 @@ Hii inahitajika ili programu ifanye kazi"</string>
 Kuzima uboreshaji wa betri kwa MicroG hakutaathiri matumizi ya betri vibaya.
 
 Gusa kitufe cha kuendelea na uruhusu mabadiliko ya uboreshaji"</string>
-  <string name="gms_core_dialog_continue_text">Endelea</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Onyesha dialog ya uboreshaji wa betri ya MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Kuzima hili kutaficha ombi la uboreshaji wa betri la MicroG.
 
@@ -259,9 +245,29 @@ Ikiwa unataka uzoefu usio na matatizo zaidi, basi &lt;b&gt;ondoa&lt;/b&gt; hii n
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Marekebisho ya hitilafu</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Mabadiliko mengine</string>
   <string name="morphe_patches_update_notice_dialog_more">…na zingine %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Sasisha</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Futa</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Kumbukumbu ya hitilafu imehifadhiwa kwenye nyaraka za mtumiaji: %s</string>
   <string name="morphe_crash_log_saved">Kumbukumbu ya hitilafu imehifadhiwa: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Kuhusu Morphe</string>
+  <string name="morphe_ads_screen_title">Matangazo</string>
+  <string name="morphe_misc_screen_title">Mambo mbalimbali</string>
+  <string name="morphe_navigation_bar_screen_title">Upau wa urambazaji</string>
+  <string name="morphe_post_buttons_screen_title">Vitufe vya chapisho</string>
+  <string name="morphe_custom_branding_icon_title">Aikoni ya programu</string>
+  <string name="morphe_download">Pakua</string>
+  <string name="morphe_hide_create_button_title">Ficha kitufe cha Unda</string>
+  <string name="morphe_hide_post_comment_button_title">Ficha kitufe cha Maoni</string>
+  <string name="morphe_sanitize_sharing_links_summary">Huondoa vigezo vya utafutaji vya ufuatiliaji kutoka kwenye viungo vilivyoshirikiwa</string>
+  <string name="morphe_sanitize_sharing_links_title">Safisha viungo vya kushiriki</string>
+  <string name="morphe_settings_add">Ongeza</string>
+  <string name="morphe_settings_clear">Futa</string>
+  <string name="morphe_settings_close">Funga</string>
+  <string name="morphe_settings_continue">Endelea</string>
+  <string name="morphe_settings_copy">Nakili</string>
+  <string name="morphe_settings_delete">Futa</string>
+  <string name="morphe_settings_remove">Ondoa</string>
+  <string name="morphe_settings_update">Sasisha</string>
 </resources>

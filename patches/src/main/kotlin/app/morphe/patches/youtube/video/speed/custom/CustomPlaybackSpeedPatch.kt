@@ -12,11 +12,10 @@ package app.morphe.patches.youtube.video.speed.custom
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -62,6 +61,9 @@ internal const val EXTENSION_CLASS =
 
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
+
+private const val EXTENSION_OLD_PLAYBACK_SPEED_MENU_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/playback/speed/CustomPlaybackSpeedPatch$OldPlaybackSpeedMenu;"
 
 private val customPlaybackSpeedResourcePatch = patch {
     execute {
@@ -166,44 +168,17 @@ internal val customPlaybackSpeedPatch = patch(
             }
         }
 
-        // Add a static INSTANCE field to the class.
-        // This is later used to call "showOldPlaybackSpeedMenu" on the instance.
-
-        val initializePlaybackSpeedType = InitializePlaybackSpeedValuesFingerprint.originalClassDef.type
-        val instanceField = ImmutableField(
-            initializePlaybackSpeedType,
-            "INSTANCE",
-            initializePlaybackSpeedType,
-            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
-            null,
-            null,
-            null,
-        ).toMutable()
-
+        // The extension shows the old playback speed menu with the speed menu last initialized.
         InitializePlaybackSpeedValuesFingerprint.let {
-            it.classDef.staticFields.add(instanceField)
-            // Set the INSTANCE field to the instance of the class.
+            it.classDef.addPatchInterface(
+                EXTENSION_OLD_PLAYBACK_SPEED_MENU_INTERFACE,
+                "patch_showOldPlaybackSpeedMenu",
+                ShowOldPlaybackSpeedMenuFingerprint.method
+            )
             it.method.addInstruction(
                 0,
-                "sput-object p0, $instanceField"
-            )
-        }
-
-        // Get the "showOldPlaybackSpeedMenu" method.
-        // This is later called on the field INSTANCE.
-        val showOldPlaybackSpeedMenuMethod = ShowOldPlaybackSpeedMenuFingerprint.method
-
-        // Insert the call to the "showOldPlaybackSpeedMenu" method on the field INSTANCE.
-        ShowOldPlaybackSpeedMenuExtensionFingerprint.method.apply {
-            addInstructionsWithLabels(
-                instructions.lastIndex,
-                """
-                    sget-object v0, $instanceField
-                    if-nez v0, :not_null
-                    return-void
-                    :not_null
-                    invoke-virtual { v0 }, $showOldPlaybackSpeedMenuMethod
-                """
+                "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
+                        "setOldPlaybackSpeedMenu($EXTENSION_OLD_PLAYBACK_SPEED_MENU_INTERFACE)V"
             )
         }
 
@@ -264,7 +239,7 @@ internal val customPlaybackSpeedPatch = patch(
                     }
                     val helperMethod = ImmutableMethod(
                         type,
-                        "patch_showOldPlaybackSpeedMenu",
+                        "patch_showOldPlaybackSpeedBottomSheet",
                         listOf(),
                         "V",
                         AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,

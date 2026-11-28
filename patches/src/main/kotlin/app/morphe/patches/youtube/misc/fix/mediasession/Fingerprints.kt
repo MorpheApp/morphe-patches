@@ -8,10 +8,10 @@
 package app.morphe.patches.youtube.misc.fix.mediasession
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import app.morphe.patcher.anyInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal const val MEDIA_SESSION_OWNER_FEATURE_FLAG = 45857115L
@@ -59,8 +59,10 @@ internal object BackgroundPlaybackStopFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
-        // 21.04+ starts with "%s: ".
-        string("About to stop background service while in a pending state.", StringComparisonType.ENDS_WITH)
+        anyInstruction(
+            string("About to stop background service while in a pending state."),
+            string("%s: About to stop background service while in a pending state.") // 21.04+
+        )
     )
 )
 

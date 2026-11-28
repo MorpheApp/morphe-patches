@@ -114,10 +114,7 @@ internal fun installPlaylistRowPlayback(
     video.addPatchInterface(
         $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;",
         "patch_getVideoId",
-        """
-            iget-object v0, p0, $videoIdField
-            return-object v0
-        """
+        videoIdField
     )
 
     val ownedField = ImmutableField(
@@ -176,10 +173,7 @@ internal fun installPlaylistRowPlayback(
     listener.addPatchInterface(
         ROW_CLICK_INTERFACE,
         "patch_getQueueEndpoint",
-        """
-            iget-object v0, p0, $boundEndpoint
-            return-object v0
-        """
+        boundEndpoint
     )
 
     listOf(

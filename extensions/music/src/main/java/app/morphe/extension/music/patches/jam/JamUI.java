@@ -161,7 +161,7 @@ public final class JamUI {
                 str("morphe_music_jam_companion_package_title"),
                 str("morphe_music_jam_package_message"),
                 input,
-                str("morphe_music_jam_cancel")
+                str("morphe_cancel")
         );
         Dialog dialog = ui.first;
         addDialogButton(ui, str("morphe_music_jam_use_package"), false, () -> {
@@ -568,7 +568,7 @@ public final class JamUI {
                 title,
                 null,
                 null,
-                str("morphe_music_jam_cancel")
+                str("morphe_cancel")
         );
         for (int i = 0; i < labels.length; i++) {
             final int index = i;
@@ -668,7 +668,7 @@ public final class JamUI {
                 str("morphe_music_jam_join_with_code"),
                 null,
                 content,
-                str("morphe_music_jam_cancel")
+                str("morphe_cancel")
         );
         Dialog dialog = ui.first;
         addDialogButton(ui, str("morphe_music_jam_scan_qr"), true, () -> {
@@ -748,7 +748,7 @@ public final class JamUI {
                 );
                 addDialogButton(
                         ui,
-                        str("morphe_music_jam_copy_code"),
+                        str("morphe_copy_code"),
                         true,
                         () ->
                                 (

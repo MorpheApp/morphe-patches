@@ -81,7 +81,6 @@ Paket adının doğru olduğundan ve uygulamanın yüklü olduğundan emin olun"
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Özel</string>
-  <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>
   <string name="morphe_custom_branding_icon_entry_1">Orijinal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe siyah</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe koyu</string>
@@ -106,7 +105,6 @@ Simgeyi her yerde değiştirmek için uygulamayı tekrar yamalayın ve 'Uygulama
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirimi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Bir daha gösterme</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video akışlarını taklit et</string>
   <string name="morphe_spoof_video_streams_screen_summary">Oynatma sorunlarını önlemek için istemci video akışlarını taklit et</string>
@@ -133,7 +131,6 @@ Android System WebView'u açmak için TAMAM'a dokunun."</string>
 Android System WebView en son sürüme güncellenene kadar video oynatma başarısız olabilir.
 
 Android System WebView'u açmak için TAMAM'a dokunun."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Bir daha gösterme</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView yüklü değil. Video oynatmayı düzeltmek için yükleyin</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -203,7 +200,6 @@ Oturum açmak için aşağıdan devam'a basın"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
   <string name="morphe_notification_media_screen_summary">Kilit ekranınızda ve bildirim panelinizde görünen oynatma kontrollerini özelleştirin</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Önceki ve Sonraki butonlarını gizle</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerindeki Önceki ve Sonraki butonlarını gizler</string>
   <string name="morphe_disable_notification_media_seekbar_title">Sardırma çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Bildirim paneli ve kilit ekranındaki sardırma çubuğunu sürüklemeyi engeller</string>
@@ -243,10 +239,8 @@ Oturum açmak için aşağıdan devam'a basın"</string>
   <string name="morphe_video_effects_custom_restore">Varsayılanları geri yükle</string>
   <string name="morphe_video_effects_custom_add_title">Yeni efekt</string>
   <string name="morphe_video_effects_custom_edit_title">Efekti düzenle</string>
-  <string name="morphe_video_effects_custom_name_hint">Ad</string>
   <string name="morphe_video_effects_custom_name_empty">Efekt için bir ad girin</string>
   <string name="morphe_video_effects_custom_name_exists">Bu isme sahip bir efekt zaten mevcut</string>
-  <string name="morphe_video_effects_custom_copy_code">Kodu kopyala</string>
   <string name="morphe_video_effects_custom_error_title">Efektte bir hata var</string>
   <string name="morphe_video_effects_custom_error_message">"Kod düzeltilene kadar videolar efekt olmadan gösterilir. Bu hatayı kodu yazan yapay zekaya iletin:
 
@@ -256,7 +250,6 @@ Oturum açmak için aşağıdan devam'a basın"</string>
 Yapay zekadan daha kısa bir kod isteyin veya kodu parçalar halinde yapıştırın."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopyalama hatası</string>
   <string name="morphe_video_effects_custom_save_anyway">Yine de kaydet</string>
-  <string name="morphe_video_effects_custom_delete">Sil</string>
   <string name="morphe_video_effects_custom_delete_title">Efekt silinsin mi?</string>
   <string name="morphe_video_effects_custom_delete_message">%s silinecek.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -284,8 +277,6 @@ Yapay zekadan daha kısa bir kod isteyin veya kodu parçalar halinde yapıştır
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için, \'Video akışlarını taklit et\' ayarını \'Android Studio\' ve \'Android VR Downgraded\' dışındaki herhangi bir istemciye değiştirin.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Paylaşım bağlantılarını temizle</string>
-  <string name="morphe_sanitize_sharing_links_summary">Paylaşılan bağlantılardan izleme sorgu parametrelerini kaldırır</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşım bağlantılarını youtube.com olarak değiştir</string>
   <string name="morphe_replace_music_with_youtube_summary">Paylaşılan bağlantılarda music.youtube.com adresini youtube.com ile değiştirir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşım bağlantılarını youtu.be olarak değiştir</string>
@@ -370,7 +361,6 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_custom_font_type_title">Yazı tipi</string>
   <string name="morphe_custom_font_type_entry_default">Varsayılan</string>
   <string name="morphe_custom_font_type_entry_system">Cihaz sistem yazı tipi</string>
-  <string name="morphe_custom_font_type_entry_custom">Özel yazı tipi dosyası</string>
   <string name="morphe_custom_font_file_title">Özel yazı tipi dosyası</string>
   <string name="morphe_custom_font_file_summary">Bir TTF veya OTF yazı tipi dosyası seçin</string>
   <string name="morphe_custom_font_file_invalid">Seçilen dosya bir TTF veya OTF yazı tipi değil.</string>
@@ -380,7 +370,6 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_glass_menus_screen_summary">Arkalarındaki bulanık içeriğin üzerinde buzlu cam şeklinde menüler</string>
   <string name="morphe_glass_menus_title">Cam menüleri etkinleştir</string>
   <string name="morphe_glass_menus_summary">Menüleri ve alt sayfaları, arkalarındaki içerik bulanıklaştırılmış şekilde buzlu cam olarak gösterir</string>
-  <string name="morphe_glass_menus_opacity_title">Cam opaklığı</string>
   <string name="morphe_glass_menus_opacity_summary">Menünün bulanık içeriği ne kadar kapladığı (0 şeffaf, 100 opaktır)</string>
   <string name="morphe_glass_menus_blur_title">Bulanıklık</string>
   <string name="morphe_glass_menus_blur_summary">Menünün arkasındaki içeriğin ne kadar bulanıklaştırılacağı</string>
@@ -401,7 +390,6 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_ryd_dislike_percentage_summary">Beğenmemeleri sayı yerine beğenilere kıyasla yüzde olarak gösterir</string>
   <string name="morphe_ryd_estimated_like_title">Tahmini beğenileri göster</string>
   <string name="morphe_ryd_estimated_like_summary">İçerik üreticisinin beğenmeleri kapattığı videolarda tahmini bir beğeni sayısı gösterir</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike sunucusu kullanılamadığında bir bildirim gösterir</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike, YouTube'nin 2021 yılında gizlediği beğenilmeme sayılarını geri getirir. Sayılar, kaldırılmasından önce arşivlenen verilerden gelir ve yeni videolar için kullanıcılarının oylarından tahmin edilir, bu nedenle yaklaşık sayılardır ve her birkaç gün güncellenir
 
@@ -423,8 +411,89 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hiçbir istemci hız sınırıyla karşılaşılmadı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">İstemci hız sınırı %s kez aşıldı</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisaniye</string>
-  <string name="morphe_navigation_bar_screen_title">Gezinme çubuğu</string>
   <string name="morphe_navigation_bar_screen_summary">Alt gezinti çubuğunda hangi düğmelerin görüneceğini seçin</string>
   <string name="morphe_toolbar_screen_title">Araç çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 saniye</string>
+  <string name="morphe_duration_2s">2 saniye</string>
+  <string name="morphe_duration_3s">3 saniye</string>
+  <string name="morphe_duration_4s">4 saniye</string>
+  <string name="morphe_duration_5s">5 saniye</string>
+  <string name="morphe_duration_6s">6 saniye</string>
+  <string name="morphe_duration_7s">7 saniye</string>
+  <string name="morphe_duration_8s">8 saniye</string>
+  <string name="morphe_duration_9s">9 saniye</string>
+  <string name="morphe_duration_10s">10 saniye</string>
+  <string name="morphe_change_start_page_entry_default">Varsayılan</string>
+  <string name="morphe_change_start_page_entry_explore">Keşfet</string>
+  <string name="morphe_change_start_page_entry_history">Geçmiş</string>
+  <string name="morphe_change_start_page_entry_library">Kitaplık</string>
+  <string name="morphe_change_start_page_entry_playlists">Oynatma listeleri</string>
+  <string name="morphe_change_start_page_entry_search">Arama</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Abonelikler</string>
+  <string name="morphe_change_start_page_title">Başlangıç sayfası</string>
+  <string name="morphe_action_buttons_screen_title">Eylem düğmeleri</string>
+  <string name="morphe_comments_screen_title">Yorumlar</string>
+  <string name="morphe_feed_screen_title">Akış</string>
+  <string name="morphe_flyout_menu_screen_title">Açılır menü</string>
+  <string name="morphe_general_title">Genel</string>
+  <string name="morphe_miniplayer_screen_title">Mini oynatıcı</string>
+  <string name="morphe_player_screen_title">Oynatıcı</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Görünüm</string>
+  <string name="morphe_cancel">İptal</string>
+  <string name="morphe_comments_screen_summary">Yorumlar bölümünde hangi bileşenlerin görüneceğini seçin</string>
+  <string name="morphe_copy_code">Kodu kopyala</string>
+  <string name="morphe_corner_radius_title">Köşe yarıçapı</string>
+  <string name="morphe_do_not_show_again">Bir daha gösterme</string>
+  <string name="morphe_download_force_4k_title">4K indirme kullanılabilirliğini zorla</string>
+  <string name="morphe_glass_opacity_title">Cam opaklığı</string>
+  <string name="morphe_header_logo_title">Başlık logosu</string>
+  <string name="morphe_hide_action_bar_title">Eylem çubuğunu gizle</string>
+  <string name="morphe_hide_cast_button_title">Yayınla düğmesini gizle</string>
+  <string name="morphe_hide_comments_button_title">Yorumlar düğmesini gizle</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Topluluk kurallarını gizle</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji düğmesini gizle</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF düğmesini gizle</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Yorumlara ve yanıtlara ekli GIF ve görselleri gizler</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF ve görselleri gizle</string>
+  <string name="morphe_hide_comments_info_button_title">Bilgi düğmesini gizle</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Zaman damgası düğmesini gizle</string>
+  <string name="morphe_hide_horizontal_shelves_title">Yatay rafları gizle</string>
+  <string name="morphe_hide_like_dislike_button_title">Beğenme ve Beğenmeme düğmelerini gizle</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Beğenme ve Beğenmeme düğmelerini gizle</string>
+  <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
+  <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmesi etiketlerini gizle</string>
+  <string name="morphe_hide_previous_next_buttons_title">Önceki &amp; Sonraki düğmelerini gizle</string>
+  <string name="morphe_hide_search_button_title">Arama düğmesini gizle</string>
+  <string name="morphe_hide_translate_button_title">Çeviri düğmesini gizle</string>
+  <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
+  <string name="morphe_loading">Yükleniyor…</string>
+  <string name="morphe_name">Ad</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme aralığı</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s düğmeden %1$s tanesi</string>
+  <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
+  <string name="morphe_navigation_bar_glass_title">Cam gezinme çubuğunu etkinleştir</string>
+  <string name="morphe_positive_number_invalid">Değer pozitif bir sayı olmalıdır</string>
+  <string name="morphe_private_user_id_invalid">Özel kullanıcı kimliği en az 30 karakter olmalıdır</string>
+  <string name="morphe_private_user_id_title">Özel kullanıcı kimliğiniz</string>
+  <string name="morphe_rename">Yeniden adlandır</string>
+  <string name="morphe_show_settings_button_title">Ayarlar düğmesini göster</string>
+  <string name="morphe_show_settings_button_type_title">Ayarlar düğmesi işlevi</string>
+  <string name="morphe_show_video_effect_menu_title">Video efekti menüsünü göster</string>
+  <string name="morphe_submit">Gönder</string>
+  <string name="morphe_time_adjustment_step_title">Zaman ayarlama adımı</string>
+  <string name="morphe_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
+  <string name="morphe_toast_on_skip_title">Atlama bildirimini göster</string>
+  <string name="morphe_translated_only">Sadece çevrilmiş</string>
+  <string name="morphe_translating">Çevriliyor…</string>
+  <string name="morphe_translation_language_title">Çeviri dili</string>
+  <string name="morphe_username_change_unknown_error">Kullanıcı adı değiştirilemiyor: Durum: %1$s %2$s</string>
+  <string name="morphe_username_changed">Kullanıcı adı başarıyla değiştirildi</string>
+  <string name="morphe_username_html">Kullanıcı adınız: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Videolar</string>
+  <string name="morphe_vote_downvote">Olumsuz oy</string>
+  <string name="morphe_vote_upvote">Olumlu oy</string>
 </resources>

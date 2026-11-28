@@ -217,7 +217,7 @@ public final class PlaylistTagsDialogs {
                         if (changed) onChanged.run();
                     },
                     () -> {},
-                    str("morphe_music_playlist_tags_manage"),
+                    str("morphe_music_manage"),
                     () -> showManagerDialog(context));
             dialog.first.show();
         } catch (Exception ex) {
@@ -255,7 +255,7 @@ public final class PlaylistTagsDialogs {
             };
 
             // Tags.
-            content.addView(createSectionHeader(context, str("morphe_music_playlist_tags_section_tags")));
+            content.addView(createSectionHeader(context, str("morphe_music_tags")));
             List<String> tags = PlaylistTagsStore.getTags();
             for (String tag : tags) {
                 String summary = PlaylistTagsStore.isTagHidden(tag)
@@ -312,7 +312,7 @@ public final class PlaylistTagsDialogs {
     private static void showNewTagDialog(Context context, Consumer<String> onCreated) {
         EditText editText = CustomDialog.createEditText(context);
         editText.setSingleLine(true);
-        editText.setHint(str("morphe_music_playlist_tags_new_tag_hint"));
+        editText.setHint(str("morphe_music_playlist_tags_new_tag"));
 
         Pair<Dialog, LinearLayout> dialog = CustomDialog.create(context,
                 str("morphe_music_playlist_tags_new_tag"), null, editText, null,
@@ -336,7 +336,7 @@ public final class PlaylistTagsDialogs {
 
         Pair<Dialog, LinearLayout> dialog = CustomDialog.create(context,
                 str("morphe_music_playlist_tags_edit_tag_title"), null, editText,
-                str("morphe_music_playlist_tags_rename"),
+                str("morphe_rename"),
                 () -> {
                     String name = PlaylistTagsStore.normalizeTagName(editText.getText().toString());
                     if (!PlaylistTagsStore.renameTag(tag, name)) {
@@ -347,7 +347,7 @@ public final class PlaylistTagsDialogs {
                     onDone.run();
                 },
                 () -> {},
-                str("morphe_music_playlist_tags_delete"),
+                str("morphe_settings_delete"),
                 () -> {
                     PlaylistTagsStore.deleteTag(tag);
                     PlaylistTagsPatch.reloadLibrary();

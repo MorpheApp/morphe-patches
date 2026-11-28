@@ -6,6 +6,7 @@ option java_package = "app.morphe.extension.shared.innertube.queue";
 option java_outer_classname = "PlaylistQueueRenderer";
 option optimize_for = LITE_RUNTIME;
 
+import "app/morphe/extension/shared/innertube/guide_response.proto";
 import "app/morphe/extension/shared/innertube/icon.proto";
 
 // Subset of YouTube 21.20.405's native playlist renderer and actions.
@@ -195,6 +196,7 @@ message Thumbnail {
 message NavigationEndpoint {
     optional bytes click_tracking_params = 2;
     optional WatchEndpoint watch_endpoint = 48687757;
+    optional app.morphe.extension.shared.innertube.BrowseEndpoint browse_endpoint = 48687626;
     optional WatchPlaylistEndpoint watch_playlist_endpoint = 52666186;
     optional AlternateWatchEndpoint alternate_watch_endpoint = 57703777;
     optional HideEnclosingAction hide_enclosing_action = 77297742;
@@ -232,6 +234,24 @@ message WatchPlaylistEndpoint {
     optional string playlist_id = 1;
     optional int32 index = 2;
     optional string params = 4;
+    optional PlaylistPlaybackOptions playback_options = 7;
+    optional PlaylistSupportedConfig supported_config = 96593618;
+}
+
+message PlaylistPlaybackOptions {
+    optional int32 playback_order = 2;
+}
+
+message PlaylistSupportedConfig {
+    optional MusicPlaylistConfig music_config = 96593634;
+}
+
+message MusicPlaylistConfig {
+    optional PlaylistCollectionOptions collection_options = 2;
+}
+
+message PlaylistCollectionOptions {
+    optional int32 collection_type = 2;
 }
 
 // Native confirmation renderer consumed by YouTube's shared dialog presenter.
@@ -333,7 +353,18 @@ message WatchEndpoint {
     optional string playlist_id = 2;
     optional uint32 index = 3;
     optional string params = 5;
+    optional float start_time_seconds = 7;
     optional string playlist_set_video_id = 13;
+    optional WatchEndpointMusicSupportedConfigs music_supported_configs = 136656028;
+}
+
+message WatchEndpointMusicSupportedConfigs {
+    optional WatchEndpointMusicConfig music_config = 136657325;
+}
+
+message WatchEndpointMusicConfig {
+    // MusicVideoType of YouTube Music, such as 1 for a song and 2 for a music video.
+    optional int32 music_video_type = 2;
 }
 
 // Native compact playlist commands use the same first three fields.

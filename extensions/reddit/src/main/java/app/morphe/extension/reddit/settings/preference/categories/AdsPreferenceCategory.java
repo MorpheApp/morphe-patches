@@ -7,8 +7,6 @@
 
 package app.morphe.extension.reddit.settings.preference.categories;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
@@ -20,8 +18,7 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("deprecation")
 public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
     public AdsPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context, screen);
-        setTitle(str("morphe_screen_ads_title"));
+        super(context, screen, "morphe_ads_screen", "morphe_ads_screen_title", "morphe_ads_screen_summary");
     }
 
     @Override

@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -63,7 +64,7 @@ public final class FlairFiltersPreference extends Preference {
                 str("morphe_flair_filters_title"),
                 rules.isEmpty() ? str("morphe_flair_filters_empty") : null,
                 null,
-                str("morphe_flair_filters_add"),
+                str("morphe_settings_add"),
                 () -> showRuleDialog(rules, NEW_RULE, ""),
                 () -> {},
                 null,
@@ -73,23 +74,7 @@ public final class FlairFiltersPreference extends Preference {
         Dialog dialog = dialogPair.first;
 
         if (!rules.isEmpty()) {
-            ListView listView = new ListView(context);
-            listView.setAdapter(new ArrayAdapter<>(context, 0, rules) {
-                @Override
-                public View getView(int position, @Nullable View convertView, ViewGroup parent) {
-                    TextView row = convertView instanceof TextView textView ? textView : new TextView(context);
-                    row.setText(rules.get(position));
-                    row.setTextSize(16);
-                    row.setTextColor(ThemeUtils.getAppForegroundColor());
-                    row.setPadding(Dim.dp8, Dim.dp12, Dim.dp8, Dim.dp12);
-                    return row;
-                }
-            });
-            listView.setDivider(null);
-            listView.setOnItemClickListener((parent, view, position, id) -> {
-                dialog.dismiss();
-                showRuleDialog(rules, position, rules.get(position));
-            });
+            ListView listView = createListView(context, rules, dialog);
 
             LinearLayout mainLayout = dialogPair.second;
             mainLayout.addView(listView, mainLayout.getChildCount() - 1,
@@ -97,6 +82,29 @@ public final class FlairFiltersPreference extends Preference {
         }
 
         dialog.show();
+    }
+
+    @NonNull
+    private ListView createListView(Context context, List<String> rules, Dialog dialog) {
+        ListView listView = new ListView(context);
+        listView.setAdapter(new ArrayAdapter<>(context, 0, rules) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView row = convertView instanceof TextView textView ? textView : new TextView(context);
+                row.setText(rules.get(position));
+                row.setTextSize(16);
+                row.setTextColor(ThemeUtils.getAppForegroundColor());
+                row.setPadding(Dim.dp8, Dim.dp12, Dim.dp8, Dim.dp12);
+                return row;
+            }
+        });
+        listView.setDivider(null);
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            dialog.dismiss();
+            showRuleDialog(rules, position, rules.get(position));
+        });
+        return listView;
     }
 
     /**
@@ -140,7 +148,7 @@ public final class FlairFiltersPreference extends Preference {
                     showRulesDialog();
                 },
                 this::showRulesDialog,
-                index == NEW_RULE ? null : str("morphe_flair_filters_remove"),
+                index == NEW_RULE ? null : str("morphe_settings_remove"),
                 () -> {
                     rules.remove(index);
                     saveRules(rules);
@@ -155,6 +163,6 @@ public final class FlairFiltersPreference extends Preference {
      */
     static void saveRules(List<String> rules) {
         Settings.FLAIR_FILTERS.save(String.join("\n", rules));
-        Utils.showToastShort(str("morphe_flair_filters_saved"));
+        Utils.showToastShort(str("morphe_filters_saved"));
     }
 }

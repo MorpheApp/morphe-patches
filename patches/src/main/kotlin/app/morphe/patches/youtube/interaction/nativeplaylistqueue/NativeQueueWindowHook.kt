@@ -44,12 +44,7 @@ internal fun installNativeQueueWindow(
     owner.addPatchInterface(
         DIRECT_NAVIGATOR_INTERFACE,
         "patch_canNavigateNativeQueue",
-        """
-            check-cast p1, $requestType
-            invoke-direct {p0, p1}, $capability
-            move-result v0
-            return v0
-        """
+        capability
     )
 
     // This native check retains backend restrictions (including co-watch), but

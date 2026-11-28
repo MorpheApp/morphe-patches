@@ -17,7 +17,6 @@ Second \"item\" text"</string>
 <resources>
     <string name="morphe_sb_enabled_title">Enable SponsorBlock</string>
     <string name="morphe_sb_enabled_summary">SponsorBlock is a crowdsourced system for skipping annoying parts of YouTube videos</string>
-    <string name="morphe_sb_appearance_category_title">Appearance</string>
     <string name="morphe_sb_voting_button_title">Show voting button</string>
     <string name="morphe_sb_voting_button_summary">Adds a button to upvote or downvote segments</string>
     <string name="morphe_sb_square_layout_title">Use square layout</string>
@@ -28,47 +27,30 @@ Second \"item\" text"</string>
     <string name="morphe_sb_auto_hide_skip_button_summary">Hides the Skip button after a few seconds instead of keeping it visible for the entire segment</string>
     <string name="morphe_sb_auto_hide_skip_button_duration_title">Skip button duration</string>
     <string name="morphe_sb_auto_hide_skip_button_duration_summary">Set how long the Skip buttons remains visible</string>
-    <string name="morphe_sb_toast_on_skip_title">Show skip notification</string>
     <string name="morphe_sb_toast_on_skip_summary">Shows a notification when a segment is automatically skipped</string>
     <string name="morphe_sb_toast_on_skip_duration_title">Skip notification duration</string>
     <string name="morphe_sb_toast_on_skip_duration_summary">Set how long the undo notification remains visible</string>
-    <string name="morphe_sb_duration_1s">1 second</string>
-    <string name="morphe_sb_duration_2s">2 seconds</string>
-    <string name="morphe_sb_duration_3s">3 seconds</string>
-    <string name="morphe_sb_duration_4s">4 seconds</string>
-    <string name="morphe_sb_duration_5s">5 seconds</string>
-    <string name="morphe_sb_duration_6s">6 seconds</string>
-    <string name="morphe_sb_duration_7s">7 seconds</string>
-    <string name="morphe_sb_duration_8s">8 seconds</string>
-    <string name="morphe_sb_duration_9s">9 seconds</string>
-    <string name="morphe_sb_duration_10s">10 seconds</string>
     <string name="morphe_sb_video_length_without_segments_title">Show video length without segments</string>
     <string name="morphe_sb_video_length_without_segments_summary">Subtracts all segments in total video duration shown on the seekbar</string>
     <string name="morphe_sb_create_segment_category_title">Creating new segments</string>
     <string name="morphe_sb_create_new_segment_title">Show \'Create new segment\' button</string>
     <string name="morphe_sb_create_new_segment_summary">Adds a button to the video player allowing you to submit new SponsorBlock segments</string>
-    <string name="morphe_sb_create_new_segment_step_title">Time adjustment step</string>
     <string name="morphe_sb_create_new_segment_step_summary">Seek amount of the time adjustment buttons (in milliseconds)</string>
-    <string name="morphe_sb_create_new_segment_step_invalid">Value must be a positive number</string>
     <string name="morphe_sb_guidelines_title">Submission guidelines</string>
     <string name="morphe_sb_guidelines_summary">Guidelines contain rules and tips for creating new segments</string>
     <string name="morphe_sb_guidelines_popup_title">Follow the guidelines</string>
     <string name="morphe_sb_guidelines_popup_content">Read the SponsorBlock guidelines before creating new segments</string>
     <string name="morphe_sb_guidelines_popup_already_read">Already read</string>
     <string name="morphe_sb_guidelines_popup_open">Show me</string>
-    <string name="morphe_sb_general_title">General</string>
     <string name="morphe_sb_offline_segments_title">Save segments of downloaded videos</string>
     <string name="morphe_sb_offline_segments_summary">Allows skipping segments of downloaded videos while offline</string>
-    <string name="morphe_sb_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_sb_toast_on_connection_error_summary">Shows a notification when the SponsorBlock server is unavailable</string>
     <string name="morphe_sb_track_skip_count_title">Enable skip count tracking</string>
     <string name="morphe_sb_track_skip_count_summary">Sends skip counts to the SponsorBlock leaderboard to track how much time is saved</string>
     <string name="morphe_sb_min_segment_duration_title">Minimum segment duration</string>
     <string name="morphe_sb_min_segment_duration_summary">Segments shorter than this value (in seconds) will not be shown or skipped</string>
     <string name="morphe_sb_min_segment_duration_invalid">Invalid time duration</string>
-    <string name="morphe_sb_private_user_id_Do_Not_Share_title">Your private user ID</string>
     <string name="morphe_sb_private_user_id_Do_Not_Share_summary">This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
-    <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Private user ID must be at least 30 characters long</string>
     <string name="morphe_sb_api_url_title">Change API URL</string>
     <string name="morphe_sb_api_url_summary">The address SponsorBlock uses to make calls to the server</string>
     <string name="morphe_sb_channel_whitelist_title">Channel whitelist</string>
@@ -80,7 +62,6 @@ Second \"item\" text"</string>
     <string name="morphe_sb_api_url_invalid">API URL is invalid</string>
     <string name="morphe_sb_api_url_changed">API URL changed</string>
     <string name="morphe_sb_settings_ie_title">Import / Export settings</string>
-    <string name="morphe_sb_settings_copy">Copy</string>
     <string name="morphe_sb_settings_ie_summary">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms</string>
     <string name="morphe_sb_settings_ie_summary_warning">"Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms
 
@@ -91,7 +72,6 @@ This includes your private user ID. Be sure to share this wisely"</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning">"Your settings contain a private SponsorBlock user ID.
 
 Your user ID is like a password, and it should never be shared"</string>
-    <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Do not show again</string>
     <string name="morphe_sb_diff_segments_title">Change segment behavior</string>
     <string name="morphe_sb_segments_sponsor">Sponsor</string>
     <string name="morphe_sb_segments_sponsor_summary">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes / creators / websites / products they like</string>
@@ -121,11 +101,9 @@ Your user ID is like a password, and it should never be shared"</string>
     <string name="morphe_sb_skip_button_highlight">Skip to highlight</string>
     <string name="morphe_sb_skip_button_intro_beginning">Skip intro</string>
     <string name="morphe_sb_skip_button_intro_middle">Skip intermission</string>
-    <string name="morphe_sb_skip_button_intro_end">Skip intermission</string>
     <string name="morphe_sb_skip_button_outro">Skip outro</string>
     <string name="morphe_sb_skip_button_hook">Skip hook</string>
     <string name="morphe_sb_skip_button_preview_beginning">Skip preview</string>
-    <string name="morphe_sb_skip_button_preview_middle">Skip preview</string>
     <string name="morphe_sb_skip_button_preview_end">Skip recap</string>
     <string name="morphe_sb_skip_button_filler">Skip tangent</string>
     <string name="morphe_sb_skip_button_nomusic">Skip non-music</string>
@@ -136,11 +114,9 @@ Your user ID is like a password, and it should never be shared"</string>
     <string name="morphe_sb_skipped_highlight">Skipped to highlight</string>
     <string name="morphe_sb_skipped_intro_beginning">Skipped intro</string>
     <string name="morphe_sb_skipped_intro_middle">Skipped intermission</string>
-    <string name="morphe_sb_skipped_intro_end">Skipped intermission</string>
     <string name="morphe_sb_skipped_outro">Skipped outro</string>
     <string name="morphe_sb_skipped_hook">Skipped hook</string>
     <string name="morphe_sb_skipped_preview_beginning">Skipped preview</string>
-    <string name="morphe_sb_skipped_preview_middle">Skipped preview</string>
     <string name="morphe_sb_skipped_preview_end">Skipped recap</string>
     <string name="morphe_sb_skipped_filler">Skipped tangent</string>
     <string name="morphe_sb_skipped_nomusic">Skipped a non-music section</string>
@@ -166,8 +142,6 @@ Already exists"</string>
     <string name="morphe_sb_vote_failed_timeout">Unable to vote for segment (API timed out)</string>
     <string name="morphe_sb_vote_failed_unknown_error">Unable to vote for segment (status: %1$s %2$s)</string>
     <string name="morphe_sb_vote_failed_forbidden">Unable to vote for segment: %s</string>
-    <string name="morphe_sb_vote_upvote">Upvote</string>
-    <string name="morphe_sb_vote_downvote">Downvote</string>
     <string name="morphe_sb_vote_category">Change category</string>
     <string name="morphe_sb_vote_no_segments">There are no segments to vote for</string>
     <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -191,7 +165,6 @@ to
 (%3$s)
 
 Ready to submit?"</string>
-    <string name="morphe_sb_new_segment_confirm_submit">Submit</string>
     <string name="morphe_sb_new_segment_start_is_before_end">Start must be before the end</string>
     <string name="morphe_sb_new_segment_mark_locations_first">First mark a location on the time bar</string>
     <string name="morphe_sb_new_segment_preview_segment_first">Preview the segment, and ensure it skips smoothly</string>
@@ -204,16 +177,11 @@ Ready to submit?"</string>
 %s
 
 If you\'re not submitting a highlight, tap Cancel and mark the second location"</string>
-    <string name="morphe_sb_new_segment_highlight_submit">Submit highlight</string>
     <string name="morphe_sb_stats_title">Stats</string>
     <!-- Shown in the settings preferences, and translations can be any text length. -->
     <string name="morphe_sb_stats_connection_failure">Stats are temporarily not available (API is down)</string>
-    <string name="morphe_sb_stats_loading">Loading…</string>
     <string name="morphe_sb_stats_sb_disabled">SponsorBlock is disabled</string>
-    <string name="morphe_sb_stats_username">Your username: &lt;b>%s&lt;/b></string>
     <string name="morphe_sb_stats_username_change">Tap here to change your username</string>
-    <string name="morphe_sb_stats_username_change_unknown_error">Unable to change username: Status: %1$s %2$s</string>
-    <string name="morphe_sb_stats_username_changed">Username successfully changed</string>
     <string name="morphe_sb_stats_reputation">Your reputation is &lt;b>%.2f&lt;/b></string>
     <string name="morphe_sb_stats_submissions">You\'ve created &lt;b>%s&lt;/b> segments</string>
     <string name="morphe_sb_stats_submissions_summary">Tap here to view your segments</string>

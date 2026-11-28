@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.interaction.downloads
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -77,7 +76,7 @@ internal object PlaybackStartDescriptorIdsFingerprint : Fingerprint(
             parameters = listOf(),
             location = MatchAfterImmediately()
         ),
-        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+        string("PlaybackStartDescriptor:\n  VideoId:%s\n  PlaylistId:%s\n  Index:%d\n  VideoIds:%s")
     )
 )
 
@@ -439,11 +438,12 @@ internal object DownloadQualityPickerCommandFingerprint : Fingerprint(
 )
 
 /**
- * Creates the offline setting category from the setting category of the server.
+ * Creates the offline setting category of [OfflineSettingCategoryToStringFingerprint]
+ * from the setting category of the server.
  */
-internal fun offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType: String) = Fingerprint(
+internal object OfflineSettingCategoryFromProtoFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = offlineSettingCategoryType,
+    returnType = { OfflineSettingCategoryToStringFingerprint.originalClassDef.type },
     parameters = listOf("L")
 )
 

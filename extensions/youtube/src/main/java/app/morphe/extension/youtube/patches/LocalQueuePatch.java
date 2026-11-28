@@ -10,7 +10,6 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
-import android.view.View;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
@@ -164,7 +163,7 @@ public final class LocalQueuePatch {
                 fetchMetadataIfNeeded(item);
             }
 
-            Utils.showSnackbarShort(str("morphe_local_queue_added"));
+            Utils.showSnackbarShort(str("morphe_queue_added"));
             notifyChanged();
         } catch (Exception ex) {
             Logger.printException(() -> "add failure", ex);
@@ -291,7 +290,7 @@ public final class LocalQueuePatch {
                 return false;
             }
 
-            if (!canStartPlayback() && !canDeliverInProcess()) {
+            if (!canStartPlayback()) {
                 return false;
             }
 
@@ -322,45 +321,23 @@ public final class LocalQueuePatch {
         return started;
     }
 
+    /**
+     * The video is started by the running activity. In the background, it starts once the app is shown again.
+     */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean canStartPlayback() {
         Activity activity = Utils.getActivity();
-        // Android blocks starting an activity from the background, so a video can only be started
-        // while the app is on screen.
-        return activity != null && !activity.isFinishing() && !activity.isDestroyed()
-                && activity.getWindow().getDecorView().getWindowVisibility() == View.VISIBLE
-                && LoadVideoPatch.isPlayerInterfaceAvailable();
-    }
-
-    /**
-     * Android blocks starting an activity from the background, but the running activity can still be handed the intent.
-     */
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    private static boolean canDeliverInProcess() {
-        Activity activity = Utils.getActivity();
-        return activity != null && !activity.isFinishing() && !activity.isDestroyed()
-                && LoadVideoPatch.isPlayerInterfaceAvailable();
+        return activity != null && !activity.isFinishing() && !activity.isDestroyed();
     }
 
     private static boolean startPlayback(String videoId) {
-        try {
-            if (!canStartPlayback()) {
-                if (!canDeliverInProcess()) {
-                    Logger.printDebug(() -> "Cannot start queued video, no active player interface");
-                    return false;
-                }
-
-                Logger.printDebug(() -> "Starting queued video in the background: " + videoId);
-                return LoadVideoPatch.deliverVideoIntentInProcess(videoId);
-            }
-
-            Logger.printDebug(() -> "Starting queued video: " + videoId);
-            LoadVideoPatch.openVideoIntentWithInternalContext(videoId);
-            return true;
-        } catch (Exception ex) {
-            Logger.printException(() -> "startPlayback failure", ex);
+        if (!canStartPlayback()) {
+            Logger.printDebug(() -> "Cannot start queued video, no running activity");
             return false;
         }
+
+        Logger.printDebug(() -> "Starting queued video: " + videoId);
+        return LoadVideoPatch.openUrl("https://www.youtube.com/watch?v=" + videoId, false);
     }
 
     private static int indexOf(String videoId) {

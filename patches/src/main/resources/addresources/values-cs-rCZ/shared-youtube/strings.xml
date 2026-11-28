@@ -81,7 +81,6 @@ Ověřte, zda je název balíčku správný a zda je aplikace nainstalována"</s
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Vlastní</string>
-  <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
   <string name="morphe_custom_branding_icon_entry_1">Původní</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe černá</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tmavý</string>
@@ -107,7 +106,6 @@ Pokud chcete ikonu změnit všude, aplikujte záplatu znovu a změňte volbu zá
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornění Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Příčinou je s největší pravděpodobností DNS blokátor reklam nebo síťový proxy server.&lt;br&gt;&lt;br&gt;Chcete-li to opravit, přidejte &lt;b&gt;s.youtube.com&lt;/b&gt; do bílého seznamu nebo vypněte všechny DNS blokátory a proxy servery</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Znovu nezobrazovat</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falšovat video streamy</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurace maskování klienta pro prevenci problémů s přehráváním</string>
@@ -134,7 +132,6 @@ Klepněte na OK pro otevření Android System WebView."</string>
 Přehrávání videí nemusí fungovat, dokud nebude Android System WebView aktualizován na nejnovější verzi.
 
 Klepněte na OK pro otevření Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Nezobrazovat znovu</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView není nainstalován. Pro opravu přehrávání videí jej nainstalujte</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ovládací prvky médií v oznámení</string>
   <string name="morphe_notification_media_screen_summary">Přizpůsobte ovládací prvky přehrávání zobrazené na zamykací obrazovce a v panelu oznámení</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Skrýt tlačítka Předchozí &amp; Další</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skrývá tlačítka Předchozí a Další v oznámení o médiích, na zamykací obrazovce a v ovládacích prvcích sluchátek.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Zakázat posuvník</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Zabrání přetahování posuvníku na zamykací obrazovce a v panelu oznámení</string>
@@ -244,10 +240,8 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_video_effects_custom_restore">Obnovit výchozí nastavení</string>
   <string name="morphe_video_effects_custom_add_title">Nový efekt</string>
   <string name="morphe_video_effects_custom_edit_title">Upravit efekt</string>
-  <string name="morphe_video_effects_custom_name_hint">Název</string>
   <string name="morphe_video_effects_custom_name_empty">Zadejte název efektu</string>
   <string name="morphe_video_effects_custom_name_exists">Efekt s tímto názvem již existuje</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopírovat kód</string>
   <string name="morphe_video_effects_custom_error_title">Efekt obsahuje chybu</string>
   <string name="morphe_video_effects_custom_error_message">"Videa jsou zobrazována bez efektu, dokud nebude kód opraven. Tuto chybu předați AI, která kód napsala:
 
@@ -257,7 +251,6 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
 Požádejte AI o kratší kód, nebo kód vkládejte po částech."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopírovat chybu</string>
   <string name="morphe_video_effects_custom_save_anyway">Uložit i tak</string>
-  <string name="morphe_video_effects_custom_delete">Smazat</string>
   <string name="morphe_video_effects_custom_delete_title">Smazat efekt?</string>
   <string name="morphe_video_effects_custom_delete_message">%s bude smazáno.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Požádejte AI o kratší kód, nebo kód vkládejte po částech."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Chcete-li použít tuto funkci, změňte \'Falšovat video streamy\' na libovolného klienta kromě \'Android Studio\' a \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Vyčistit sdílené odkazy</string>
-  <string name="morphe_sanitize_sharing_links_summary">Odstraňuje sledovací parametry dotazů ze sdílených odkazů</string>
   <string name="morphe_replace_music_with_youtube_title">Změnit odkazy pro sdílení na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Nahrazuje music.youtube.com za youtube.com v sdílených odkazech.</string>
   <string name="morphe_replace_links_with_shortener_title">Změnit odkazy pro sdílení na youtu.be</string>
@@ -371,7 +362,6 @@ Pokud bude později vypnuto, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_custom_font_type_title">Písmo</string>
   <string name="morphe_custom_font_type_entry_default">Výchozí</string>
   <string name="morphe_custom_font_type_entry_system">Systémové písmo zařízení</string>
-  <string name="morphe_custom_font_type_entry_custom">Soubor vlastního písma</string>
   <string name="morphe_custom_font_file_title">Soubor vlastního písma</string>
   <string name="morphe_custom_font_file_summary">Vyberte soubor písma TTF nebo OTF</string>
   <string name="morphe_custom_font_file_invalid">Vybraný soubor není písmo TTF nebo OTF</string>
@@ -381,7 +371,6 @@ Pokud bude později vypnuto, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_glass_menus_screen_summary">Menu jako mléčné sklo nad rozostřeným obsahem za nimi</string>
   <string name="morphe_glass_menus_title">Zapnout skleněná menu</string>
   <string name="morphe_glass_menus_summary">Zobrazuje menu a spodní panely jako mléčné sklo, přičemž obsah za nimi je rozmazaný</string>
-  <string name="morphe_glass_menus_opacity_title">Neprůhlednost skla</string>
   <string name="morphe_glass_menus_opacity_summary">Jak moc menu překrývá rozmazaný obsah (0 je čiré, 100 je neprůhledné)</string>
   <string name="morphe_glass_menus_blur_title">Rozmazání</string>
   <string name="morphe_glass_menus_blur_summary">Jak moc je obsah za menu rozmazaný</string>
@@ -402,7 +391,6 @@ Pokud bude později vypnuto, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_ryd_dislike_percentage_summary">Zobrazuje nelíbí se jako procento lajků místo čísla</string>
   <string name="morphe_ryd_estimated_like_title">Zobrazit odhadované počty lajků</string>
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet lajků u videí, kde tvůrce zakázal lajky</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Zobrazovat upozornění na chyby připojení</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazí se upozornění, pokud server Return YouTube Dislike není dostupný</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike obnovuje počty disliků, které YouTube skryl v roce 2021.
 
@@ -426,8 +414,89 @@ ID videa, které sledujete, je odesláno do API Return YouTube Dislike a vaše l
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nebyla detekována žádná omezení rychlosti klienta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Setkali jste se s omezením rychlosti klienta %s krát</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekund</string>
-  <string name="morphe_navigation_bar_screen_title">Navigační panel</string>
   <string name="morphe_navigation_bar_screen_summary">Vyberte, která tlačítka se zobrazí v dolní navigační liště.</string>
   <string name="morphe_toolbar_screen_title">Nástrojová lišta</string>
   <string name="morphe_toolbar_screen_summary">Vyberte, které prvky se zobrazí v nástrojové liště</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekunda</string>
+  <string name="morphe_duration_2s">2 sekundy</string>
+  <string name="morphe_duration_3s">3 sekundy</string>
+  <string name="morphe_duration_4s">4 sekundy</string>
+  <string name="morphe_duration_5s">5 sekund</string>
+  <string name="morphe_duration_6s">6 sekund</string>
+  <string name="morphe_duration_7s">7 sekund</string>
+  <string name="morphe_duration_8s">8 sekund</string>
+  <string name="morphe_duration_9s">9 sekund</string>
+  <string name="morphe_duration_10s">10 sekund</string>
+  <string name="morphe_change_start_page_entry_default">Výchozí</string>
+  <string name="morphe_change_start_page_entry_explore">Prozkoumat</string>
+  <string name="morphe_change_start_page_entry_history">Historie</string>
+  <string name="morphe_change_start_page_entry_library">Knihovna</string>
+  <string name="morphe_change_start_page_entry_playlists">Playlisty</string>
+  <string name="morphe_change_start_page_entry_search">Hledat</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Odběry</string>
+  <string name="morphe_change_start_page_title">Počáteční stránka</string>
+  <string name="morphe_action_buttons_screen_title">Akční tlačítka</string>
+  <string name="morphe_comments_screen_title">Komentáře</string>
+  <string name="morphe_feed_screen_title">Domovská stránka</string>
+  <string name="morphe_flyout_menu_screen_title">Rozbalovací nabídka</string>
+  <string name="morphe_general_title">Obecné</string>
+  <string name="morphe_miniplayer_screen_title">Mini přehrávač</string>
+  <string name="morphe_player_screen_title">Přehrávač</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Vzhled</string>
+  <string name="morphe_cancel">Zrušit</string>
+  <string name="morphe_comments_screen_summary">Vyberte, které prvky se mají zobrazovat v sekci komentářů</string>
+  <string name="morphe_copy_code">Kopírovat kód</string>
+  <string name="morphe_corner_radius_title">Zaoblení rohů</string>
+  <string name="morphe_do_not_show_again">Nezobrazovat znovu</string>
+  <string name="morphe_download_force_4k_title">Vynutit dostupnost stahování ve 4K</string>
+  <string name="morphe_glass_opacity_title">Neprůhlednost skla</string>
+  <string name="morphe_header_logo_title">Logo záhlaví</string>
+  <string name="morphe_hide_action_bar_title">Skrýt akční lištu</string>
+  <string name="morphe_hide_cast_button_title">Skrýt tlačítko odesílání</string>
+  <string name="morphe_hide_comments_button_title">Skrýt tlačítko Komentáře</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Skrýt pokyny pro komunitu</string>
+  <string name="morphe_hide_comments_emoji_button_title">Skrýt tlačítko Emoji</string>
+  <string name="morphe_hide_comments_gif_button_title">Skrýt tlačítko GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Skryje GIFy a obrázky přiložené ke komentářům a odpovědím</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Skrýt GIFy a obrázky</string>
+  <string name="morphe_hide_comments_info_button_title">Skrýt tlačítko Info</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Skrýt tlačítko časového razítka</string>
+  <string name="morphe_hide_horizontal_shelves_title">Skrýt horizontální sekce</string>
+  <string name="morphe_hide_like_dislike_button_title">Skrýt tlačítko Líbí se a Nelíbí se</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Skrýt tlačítka Líbí se a Nelíbí se</string>
+  <string name="morphe_hide_navigation_bar_title">Skrýt navigační lištu</string>
+  <string name="morphe_hide_navigation_button_labels_title">Skrýt štítky navigačních tlačítek</string>
+  <string name="morphe_hide_previous_next_buttons_title">Skrýt tlačítka Předchozí a Další</string>
+  <string name="morphe_hide_search_button_title">Skrýt tlačítko Vyhledávání</string>
+  <string name="morphe_hide_translate_button_title">Skrýt tlačítko Přeložit</string>
+  <string name="morphe_hide_video_ads_title">Skrýt reklamy ve videu</string>
+  <string name="morphe_loading">Načítám…</string>
+  <string name="morphe_name">Jméno</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Mezery mezi tlačítky</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Zobrazená tlačítka: %1$s z %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Výška</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maximální šířka</string>
+  <string name="morphe_navigation_bar_glass_title">Povolit skleněný navigační panel</string>
+  <string name="morphe_positive_number_invalid">Hodnota musí být kladné číslo</string>
+  <string name="morphe_private_user_id_invalid">Soukromé uživatelské ID musí být alespoň 30 znaků dlouhé</string>
+  <string name="morphe_private_user_id_title">Vaše soukromé uživatelské ID</string>
+  <string name="morphe_rename">Přejmenovat</string>
+  <string name="morphe_show_settings_button_title">Zobrazit tlačítko Nastavení</string>
+  <string name="morphe_show_settings_button_type_title">Nastavení tlačítka akcí</string>
+  <string name="morphe_show_video_effect_menu_title">Zobrazit nabídku video efektů</string>
+  <string name="morphe_submit">Odeslat</string>
+  <string name="morphe_time_adjustment_step_title">Krok úpravy času</string>
+  <string name="morphe_toast_on_connection_error_title">Zobrazovat upozornění o chybě připojení</string>
+  <string name="morphe_toast_on_skip_title">Zobrazit oznámení o přeskočení</string>
+  <string name="morphe_translated_only">Pouze přeločené</string>
+  <string name="morphe_translating">Překládání…</string>
+  <string name="morphe_translation_language_title">Jazyk překladu</string>
+  <string name="morphe_username_change_unknown_error">Nelze změnit uživatelské jméno: Stav: %1$s %2$s</string>
+  <string name="morphe_username_changed">Uživatelské jméno bylo úspěšně změněno</string>
+  <string name="morphe_username_html">Vaše uživatelské jméno: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Videa</string>
+  <string name="morphe_vote_downvote">Hlas dolů</string>
+  <string name="morphe_vote_upvote">Hlas nahoru</string>
 </resources>

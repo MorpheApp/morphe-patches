@@ -279,11 +279,7 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
     manager.addPatchInterface(
         ACCESS,
         "patch_jamRemoveItem",
-        """
-            check-cast p1, ${queue.item.type}
-            ${invokeKind(queue.remove)} {p0, p1}, $remove
-            return-void
-        """
+        remove
     )
     manager.addPatchInterface(
         ACCESS,

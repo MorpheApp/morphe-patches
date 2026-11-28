@@ -19,7 +19,6 @@ Second \"item\" text"</string>
   <!-- misc.androidauto.androidAutoPatch -->
   <string name="morphe_music_android_auto_last_played">آخر ما تم تشغيله</string>
   <string name="morphe_music_android_auto_subscriptions">الاشتراكات</string>
-  <string name="morphe_music_android_auto_videos">مقاطع الفيديو</string>
   <string name="morphe_music_android_auto_other_results">نتائج أخرى</string>
   <string name="morphe_music_android_auto_uploaded_songs">الأغاني المرفوعة</string>
   <string name="morphe_music_android_auto_uploaded_albums">الألبومات المرفوعة</string>
@@ -40,7 +39,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">هل تريد تشغيل Wi-Fi؟</string>
   <string name="morphe_music_jam_wifi_message">شغّل Wi-Fi، ثم حاول بدء جلسة Jam أو الانضمام إليها مرة أخرى</string>
   <string name="morphe_music_jam_wifi_settings">فتح إعدادات Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">إلغاء</string>
   <string name="morphe_music_jam_use_package">استخدام الحُزْمَة</string>
   <string name="morphe_music_jam_invalid_package">أدخل اسم حُزْمَة Android صالحًا</string>
   <string name="morphe_music_jam_package_saved">تم حفظ الحُزْمَة. أكمِل إعداد Jam Layer للاتصال</string>
@@ -54,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_scan_qr">مسح رمز QR</string>
   <string name="morphe_music_jam_invalid_invite">أدخل الرمز المكوّن من ثماني أحرف أو الصق رابط دعوة</string>
   <string name="morphe_music_jam_join_your_jam">انضم إلى جلسة Jam الخاصة بك</string>
-  <string name="morphe_music_jam_copy_code">نسخ الرمز</string>
   <string name="morphe_music_jam_code_clip">رمز Jam</string>
   <string name="morphe_music_jam_show_qr">عرض رمز QR</string>
   <string name="morphe_music_jam_done">تم</string>
@@ -94,7 +91,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_leave_jam">مغادرة Jam</string>
   <string name="morphe_music_jam_start_jam">بدء Jam</string>
   <string name="morphe_music_jam_setup_layer">إعداد Jam Layer</string>
-  <string name="morphe_music_jam_manage">إدارة</string>
   <string name="morphe_music_jam_details">التفاصيل</string>
   <string name="morphe_music_jam_open">فتح</string>
   <string name="morphe_music_jam_loading_song_options">جارٍ تحميل خيارات الأغنية…</string>
@@ -114,7 +110,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_queue_changed_gesture">تغيّرت قائمة الانتظار؛ حاول الإيماءة مرة أخرى</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">علامة الشعار</string>
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_3">مخصص</string>
   <!-- misc.album.albumMusicVideoPatch -->
@@ -130,7 +125,6 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">استخدام أداة التنزيل الخارجية لقائمة التنزيل</string>
   <string name="morphe_external_downloader_menu_summary">خيار التنزيل في القوائم يفتح أداة التنزيل الخارجية الخاصة بك بدلًا من ذلك</string>
-  <string name="morphe_download_force_4k_title">فرض توفُّر تنزيل 4K</string>
   <string name="morphe_download_force_4k_summary">يحفظ تنزيلات 1440p و4K حتى لو قرر YouTube Music أن هذا الجهاز لا يمكنه تشغيلها</string>
   <string name="morphe_export_download_folder_title">تصدير التنزيلات</string>
   <string name="morphe_export_download_folder_summary">"تصدير الأغاني والفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك باستخدام القائمة المنبثقة للتنزيلات داخل التطبيق. انقر لتغيير مجلد التصدير
@@ -151,34 +145,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_title">استبدال زر التشغيل العشوائي بزر التكرار</string>
   <string name="morphe_music_replace_shuffle_with_loop_button_summary">يظهر زر التكرار بدلاً من زر التشغيل العشوائي في إشعارات الوسائط وشاشة القفل</string>
   <!-- misc.settings.settingsPatch -->
-  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_00_about_title">لمحة</string>
-  <string name="morphe_settings_music_screen_01_ads_title">الإعلانات</string>
-  <string name="morphe_settings_music_screen_02_feed_title">الخلاصة</string>
-  <string name="morphe_settings_music_screen_03_general_title">عام</string>
   <string name="morphe_settings_music_screen_04_lyrics_title">كلمات الأغاني</string>
-  <string name="morphe_settings_music_screen_05_misc_title">متنوع</string>
-  <string name="morphe_settings_music_screen_06_player_title">المشغل</string>
-  <string name="morphe_settings_music_screen_10_video_title">الفيديو</string>
   <string name="morphe_music_app_language_title">لغة YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">لغة النظام</string>
   <string name="morphe_music_app_language_summary_unsupported">يتطلب Android 13 أو أحدث</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">إخفاء عروض Premium للموسيقى</string>
-  <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">إخفاء زر تبديل الصوت/الفيديو</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">يخفي زر التنزيل في عرض البودكاست</string>
   <string name="morphe_music_hide_explore_shelf_title">إخفاء رف الاستكشاف</string>
   <string name="morphe_music_hide_filter_bar_title">إخفاء شريط التصفية</string>
   <string name="morphe_music_hide_grid_shelves_title">إخفاء رفوف الشبكة</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
   <string name="morphe_music_hide_new_button_title">إخفاء زر \"جديد\"</string>
   <string name="morphe_music_hide_new_button_summary">يخفي زر \"جديد\" في علامة تبويب المكتبة</string>
   <string name="morphe_music_hide_list_shelves_title">إخفاء رفوف القائمة</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">لوحة كلمات الأغنية</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_music_hide_new_from_shelf_title">إخفاء رف \'جديد من\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">إخفاء رفوف قوائم التشغيل</string>
   <string name="morphe_music_hide_repeat_button_title">إخفاء زر التكرار</string>
@@ -186,16 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">إخفاء رف \'الاتصال السريع\'</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">إخفاء قسم \"قد يعجبك أيضاً\"</string>
   <string name="morphe_music_hide_your_downloads_shelf_title">إخفاء رف \'تنزيلاتك\'</string>
-  <string name="morphe_music_comments_screen_title">التعليقات</string>
-  <string name="morphe_music_comments_screen_summary">اختر المكونات التي تظهر في قسم التعليقات</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">إخفاء إرشادات المجتمع</string>
   <string name="morphe_music_hide_comments_context_title">إخفاء رسالة سياق</string>
-  <string name="morphe_music_hide_comments_emoji_button_title">إخفاء زر الإيموجي</string>
-  <string name="morphe_music_hide_comments_gif_button_title">إخفاء زر GIF</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_title">إخفاء GIFs والصور</string>
-  <string name="morphe_music_hide_comments_gifs_and_images_summary">يخفي صور GIF والصور المرفقة بالتعليقات والردود</string>
-  <string name="morphe_music_hide_comments_info_button_title">إخفاء زر المعلومات</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">تلاشي</string>
   <string name="morphe_music_crossfade_screen_summary">امزج المسارات مع بعضها بسلاسة</string>
@@ -214,16 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_250ms">250 جزء من الثانية</string>
   <string name="morphe_crossfade_duration_500ms">500 جزء من الثانية</string>
   <string name="morphe_crossfade_duration_750ms">750 جزء من الثانية</string>
-  <string name="morphe_crossfade_duration_1000ms">ثانية واحدة</string>
-  <string name="morphe_crossfade_duration_2000ms">ثانيتان</string>
-  <string name="morphe_crossfade_duration_3000ms">3 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_4000ms">4 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_5000ms">5 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_6000ms">6 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_7000ms">7 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_8000ms">8 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_9000ms">9 ثوانٍ</string>
-  <string name="morphe_crossfade_duration_10000ms">10 ثوانٍ</string>
   <string name="morphe_crossfade_duration_11000ms">11 ثوانٍ</string>
   <string name="morphe_crossfade_duration_12000ms">12 ثوانٍ</string>
   <string name="morphe_music_crossfade_on_skip_title">التلاشي عند التخطي يدويًا</string>
@@ -283,7 +247,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_summary">السرعة المستخدمة لجميع المسارات. عند 100%، تُستخدم سرعة التطبيق، مثل سرعة تشغيل البودكاست</string>
   <string name="morphe_music_playback_speed_change_pitch_title">تغيير درجة الصوت مع السرعة</string>
   <!-- video.effects.videoEffectsPatch -->
-  <string name="morphe_music_video_effect_menu_title">عرض قائمة تأثيرات الفيديو</string>
   <string name="morphe_music_video_effect_menu_summary">يضيف تأثير الفيديو إلى قائمة المشغل أثناء تشغيل الفيديو</string>
   <string name="morphe_music_video_effect_next_video">يظهر التأثير بدءاً من الفيديو التالي</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
@@ -324,17 +287,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_summary">يضيف خِيار «الوسوم» إلى قائمة قوائم التشغيل، وزرًا لتصفية المكتبة حسب الوسوم بجوار زر الترتيب</string>
   <string name="morphe_music_playlist_tags_manage_title">إدارة وسوم قوائم التشغيل</string>
   <string name="morphe_music_playlist_tags_manage_summary">أنشئ الوسوم وأعد تسميتها واحذفها، وأضف الوسوم إلى قوائم التشغيل الموجودة في مكتبتك</string>
-  <!-- Title of the row added to the menu of a playlist. -->
-  <string name="morphe_music_playlist_tags_menu_item">الوسوم</string>
   <string name="morphe_music_playlist_tags_menu_item_none">لا توجد وسوم</string>
-  <string name="morphe_music_playlist_tags_filter_button">الوسوم</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_filter_button_only">الوسم: %s</string>
   <!-- %s is the number of hidden tags. -->
   <string name="morphe_music_playlist_tags_filter_button_hidden">الوسوم (مخفي منها %s)</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">وسوم %s</string>
-  <string name="morphe_music_playlist_tags_new_tag_hint">وسم جديد</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">قائمة تشغيل واحدة</string>
   <!-- %s is the number of playlists that have the tag. -->
   <string name="morphe_music_playlist_tags_playlist_count">%s قائمة تشغيل</string>
@@ -344,22 +303,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_show_only">إظهار</string>
   <string name="morphe_music_playlist_tags_filter_all">جميع قوائم التشغيل</string>
   <string name="morphe_music_playlist_tags_filter_visible">الوسوم الظاهرة</string>
-  <string name="morphe_music_playlist_tags_manage">إدارة</string>
   <string name="morphe_music_playlist_tags_none">لا توجد وسوم حتى الآن. اضغط مطولًا على إحدى قوائم التشغيل واختر «الوسوم» لإنشاء وسم جديد</string>
-  <string name="morphe_music_playlist_tags_section_tags">الوسوم</string>
   <string name="morphe_music_playlist_tags_section_playlists">قوائم التشغيل</string>
   <string name="morphe_music_playlist_tags_no_playlists">افتح المكتبة مرة واحدة حتى تظهر قوائم التشغيل هنا</string>
   <string name="morphe_music_playlist_tags_new_tag">تعديل الوسم</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">تعديل الوسم</string>
-  <string name="morphe_music_playlist_tags_rename">إعادة تسمية</string>
-  <string name="morphe_music_playlist_tags_delete">حذف</string>
   <string name="morphe_music_playlist_tags_hidden">مخفي</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">أزرار الإجراء</string>
   <string name="morphe_music_action_buttons_screen_summary">اختر الأزرار التي تظهر أسفل المشغل</string>
-  <string name="morphe_music_hide_action_bar_title">إخفاء شريط الإجراءات</string>
-  <string name="morphe_music_hide_like_dislike_button_title">إخفاء زر إعجاب وعدم إعجاب</string>
-  <string name="morphe_music_hide_comments_button_title">إخفاء زر التعليقات</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">إخفاء زر \'إعادة عرض المحادثة المباشرة\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -373,10 +324,8 @@ Second \"item\" text"</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">إخفاء زر \'ابدأ الراديو\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">القائمة المنبثقة</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">اختر المكونات التي تظهر في القوائم المنبثقة للمشغل والطابور</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">إخفاء عنصر مكون بثلاثة أعمدة</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">إخفاء زري أعجبني ولم يعجبني</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">إخفاء قائمة \"توافق الأذواق\"</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">إخفاء قائمة \'إضافة إلى قائمة التشغيل \'الاستماع لاحقًا\' </string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">إخفاء قائمة \'إضافة إلى الطابور\' </string>
@@ -410,17 +359,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">إخفاء قائمة \"إزالة من قائمة الاتصال السريع\"</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">إخفاء قائمة \"عرض حقوق الأغنية\"</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">صفحة البدء</string>
-  <string name="morphe_change_start_page_entry_default">الافتراضية</string>
   <string name="morphe_change_start_page_entry_charts">الرسوم البيانية</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">حلقات للمشاهدة لاحقًا</string>
-  <string name="morphe_change_start_page_entry_explore">استكشف</string>
-  <string name="morphe_change_start_page_entry_history">السجلّ</string>
-  <string name="morphe_change_start_page_entry_library">المكتبة</string>
   <string name="morphe_change_start_page_entry_liked_music">موسيقى أعجبتني</string>
-  <string name="morphe_change_start_page_entry_playlists">قوائم التشغيل</string>
-  <string name="morphe_change_start_page_entry_search">البحث</string>
-  <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">فرض الاتجاه العمودي</string>
   <string name="morphe_music_force_portrait_orientation_summary">يحافظ على التطبيق في الاتجاه العمودي عند تدوير الجهاز</string>
@@ -449,21 +390,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_library_button_title">إخفاء زر المكتبة</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">إخفاء زر الترقية</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_title">عرض زر الإعدادات</string>
-  <string name="morphe_music_show_navigation_bar_settings_button_type_title">إجراء زر الإعدادات</string>
   <string name="morphe_music_show_navigation_bar_settings_button_type_summary">عند التمكين، يفتح النقر إعدادات Morphe، ويفتح الضغط المطوّل إعدادات YouTube Music، قم بتعطيله للتبديل بينهما</string>
-  <string name="morphe_music_hide_navigation_bar_title">إخفاء شريط التنقل</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
-  <string name="morphe_music_navigation_bar_glass_title">تمكين شريط التنقل الزجاجي</string>
   <string name="morphe_music_navigation_bar_glass_summary">يعرض شريط التنقل ككبسولة عائمة ومستديرة وشبه شفافة</string>
   <string name="morphe_music_navigation_bar_glass_size_title">حجم ونمط شريط التنقل الزجاجي</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">ضبط الارتفاع، والعرض، وتباعد الأزرار، والشفافية وسطوع الحافة لشريط التنقل الزجاجي، مع معاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
-  <string name="morphe_music_navigation_bar_glass_size_height">الارتفاع</string>
-  <string name="morphe_music_navigation_bar_glass_size_width">أقصى عرض</string>
-  <string name="morphe_music_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$s من %2$s</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">الشفافية</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">سطوع الحافة</string>
   <string name="morphe_music_navigation_bar_glass_blur_title">تغبيش الزجاج</string>
   <string name="morphe_music_navigation_bar_glass_blur_summary">مدى تغبيش الصفحة خلف شريط التنقل الزجاجي (Android 14 والإصدارات الأحدث). عند القيمة 0 تظهر الصفحة بوضوح، وقبل Android 14 تكون الصفحة مغطاة</string>
   <string name="morphe_music_navigation_bar_glass_light_title">زجاج فاتح</string>
@@ -472,16 +402,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_album_tint_summary">يلون شريط التنقل الزجاجي بلون غلاف الألبوم للأغنية التي يتم تشغيلها</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">إخفاء مؤشر الزر المحدد</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">يخفي التمييز المستدير خلف الزر المحدد في شريط التنقل الزجاجي</string>
-  <string name="morphe_music_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_music_miniplayer_screen_summary">تغيير النمط، والأزرار، وإيماءات المشغل المصغر</string>
   <string name="morphe_music_miniplayer_glass_title">تمكين تأثير الزجاج</string>
   <string name="morphe_music_miniplayer_glass_summary">يظهر المشغل المصغر العائم كبطاقة زجاجية شفافة ومستديرة الحواف</string>
   <string name="morphe_music_miniplayer_glass_style_title">نمط المشغل المصغر الزجاجي</string>
   <string name="morphe_music_miniplayer_glass_style_summary">ضبط نصف قطر الزاوية، وهوامش غلاف العمل الفني، وسطوع الحافة، وشفافية المشغل المصغر الزجاجي، مع معاينة</string>
-  <string name="morphe_music_miniplayer_glass_corner_radius_title">تقوس زاوية الأركان</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">هوامش غلاف العمل الفني</string>
-  <string name="morphe_music_miniplayer_glass_rim_title">سطوع الحافة</string>
-  <string name="morphe_music_miniplayer_glass_opacity_title">الشفافية</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">مدى تغبيش الصفحة خلف المشغل المصغر الزجاجي (Android 14 والإصدارات الأحدث). عند القيمة 0 تظهر الصفحة بوضوح، وقبل Android 14 تكون الصفحة مغطاة</string>
   <string name="morphe_music_miniplayer_glass_light_summary">يلون المشغل المصغر الزجاجي باللون الأبيض بدلاً من الداكن، للحصول على زجاج أكثر إشراقاً ووضوحاً</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">يلون المشغل المصغر الزجاجي بلون غلاف الألبوم للأغنية التي يتم تشغيلها</string>
@@ -498,9 +424,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_activity_button_title">إخفاء زر النشاط</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_ask_music_button_title">إخفاء زر \'اسأل Music\'</string>
-  <string name="morphe_music_hide_cast_button_title">إخفاء زر البث</string>
   <string name="morphe_music_hide_history_button_title">إخفاء زر السجل</string>
-  <string name="morphe_music_hide_search_button_title">إخفاء زر البحث</string>
   <string name="morphe_music_hide_voice_search_button_title">إخفاء زر \'البحث الصوتي\'</string>
   <string name="morphe_music_hide_sound_search_button_title">إخفاء زر \"البحث عن طريق الصوت\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
@@ -570,7 +494,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_summary">يظهر زرًا في الشريط العلوي للمشغل لرؤية وإرسال تصويتات المجتمع للفنان الحالي</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">تخطي فناني الذكاء الاصطناعي</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">يتخطى تلقائيًا المقاطع التي يصل الفنان فيها إلى حد الذكاء الاصطناعي أدناه</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">عرض إشعار التخطي</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">يعرض إشعارًا عند تخطي مقطع صوتي تلقائيًا</string>
   <string name="morphe_music_soundproof_threshold_title">حد الكشف</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">الحد الأدنى لأصوات الذكاء الاصطناعي</string>
@@ -624,7 +547,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_all_disabled">جميع مزودي الخدمة معطّلون - كلمات الأغاني المدمجة وكلمات الأغاني المضمنة</string>
   <string name="morphe_music_lyrics_source_reset_title">إعادة تعيين ترتيب المزوّدين؟</string>
   <string name="morphe_music_lyrics_source_reset_message">استعادة الطلب الافتراضي للمزوّدين.</string>
-  <string name="morphe_music_lyrics_rime_dict_title">قائمة كلمات Rime</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"تتطلب قائمة كلمات Rime أيضًا UniDict: في مزوّد القاموس غير المتصل، حدّد \"الأحرف الصينية والكانتونية (UniDict)\" واتركه ينتهي من التنزيل أولاً. بدونه، لن تنتج القائمة التي تقرأ الأحرف أي قراءة.
 
 حدّد القوائم التي يجب أن تقرأها قائمة كلمات Rime، ثم اضغط حفظ لتنزيلها. تُزال القائمة التي أضفتها عند إلغاء تحديدها.
@@ -634,12 +556,10 @@ Second \"item\" text"</string>
 典 din2
 العمود الأول هو الكلمة، والثاني قراءتها؛ تُتجاهل الأعمدة الإضافية والأسطر التي لا تحتوي على علامة تبويب."</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">لم يتم تحديد أي قائمة كلمات Rime للغة المذكورة أعلاه. انقر على هذا الاسم لتحديد واحد، أو اختر لغة تحتوي على قائمة</string>
-  <string name="morphe_music_lyrics_rime_dict_add">إضافة</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">إضافة قائمة كلمات Rime</string>
   <string name="morphe_music_lyrics_rime_dict_add_hint">ملف .dict.yaml، أو ملف zip يحتوي على واحد، مع أسطر مثل 字 ham و 典 din2. يتم جلب القائمة عند تحديدها والنقر على حفظ، وترخيصها متاح لك لمراجعته</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">رمز اللغة</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">اثنان أو ثلاثة أحرف، كما في hak أو wuu</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label">الاسم</string>
   <string name="morphe_music_lyrics_rime_dict_field_label_hint">يظهر تحت القراءة، كما في Hakka (Meixian)</string>
   <string name="morphe_music_lyrics_rime_dict_field_url">عنوان قائمة الكلمات</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">عنوان https:// لملف .dict.yaml أو ملفه المضغوط</string>
@@ -682,8 +602,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_cache_total_category_title">إجمالي استخدام ذاكرة التخزين المؤقت</string>
   <string name="morphe_music_lyrics_cache_clear_all_title">مسح كل ذاكرة التخزين المؤقت</string>
   <string name="morphe_music_lyrics_cache_total_summary">%1$s ميغابايت (%2$d عنصر)</string>
-  <string name="morphe_music_lyrics_cache_clear_action">مسح</string>
-  <string name="morphe_music_lyrics_cache_close_action">إغلاق</string>
   <string name="morphe_music_lyrics_cache_confirm_lyrics">هل تريد حذف %1$s ميغابايت (%2$d أغنية) من كلمات الأغاني المخزّنة على هذا الجهاز؟</string>
   <string name="morphe_music_lyrics_cache_confirm_translation">هل تريد حذف %1$s ميغابايت (%2$d ترجمة) من الترجمات المخزّنة على هذا الجهاز؟</string>
   <string name="morphe_music_lyrics_cache_confirm_transliteration">هل تريد حذف %1$s ميغابايت (%2$d نقل حرفي) من النصوص المنقولة حرفياً والمخزّنة على هذا الجهاز؟</string>
@@ -766,7 +684,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">جارٍ تحميل قواميس القراءة…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">النُطْقات جاهزة (%s إدخالًا)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">فشل التنزيل - قم بإيقاف هذا الأمر وتشغيله مرة أخرى للمحاولة مجددًا</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">قاموس غير متصل</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">اليابانية</string>
   <string name="morphe_music_lyrics_local_romanization_dict_zh_parent">الصينية</string>
   <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — محلل صرفي سريع &amp; ruby</string>
@@ -785,8 +702,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_custom_font_invalid">ملف الخط غير صالح أو غير مدعوم (مطلوب .ttf أو .otf)</string>
   <string name="morphe_music_lyrics_share_preview_title">مشاركة كلمات الأغاني</string>
   <string name="morphe_music_lyrics_share_button">مشاركة</string>
-  <string name="morphe_music_lyrics_copy">نسخ</string>
-  <string name="morphe_music_lyrics_share_cancel">إلغاء</string>
   <string name="morphe_music_lyrics_share_select_hint">اضغط على 1-5 أسطر</string>
   <string name="morphe_music_lyrics_share_max_lines">الحد الأقصى 5 أسطر</string>
   <string name="morphe_music_lyrics_share_failed">تعذر إنشاء بطاقة مشاركة كلمات الأغاني</string>
@@ -903,18 +818,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_google">تمت الترجمة بواسطة Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">تمت الرومنة بواسطة Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">تمت الترجمة بواسطة %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">تمت الرومنة بواسطة %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">تمت الرومنة بواسطة %s</string>
+  <string name="morphe_music_lyrics_romanized_by">تمت الرومنة بواسطة %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (مع %2$s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">مترجَم</string>
-  <string name="morphe_music_lyrics_translation_language_title">لغة الترجمة</string>
   <string name="morphe_music_lyrics_romanize_language_title">لغة الرومنة أو النقل الحرفي</string>
   <string name="morphe_music_lyrics_translation_target_language">"لغة هدف الترجمة:
 %s"</string>
   <string name="morphe_music_lyrics_romanization_target_language">"لغة هدف الرومنة أو النقل الحرفي:
 %s"</string>
-  <string name="morphe_music_lyrics_translating">جارٍ الترجمة...</string>
   <string name="morphe_music_lyrics_translate_failed">تعذر ترجمة كلمات الأغنية</string>
   <string name="morphe_music_lyrics_romanize_hide">مُروَّن</string>
   <string name="morphe_romanize_language_DEFAULT">تلقائي</string>
@@ -922,7 +834,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_failed">تعذّرت رومنة كلمات الأغنية</string>
   <string name="morphe_music_lyrics_romanize_language_none">بدون</string>
   <string name="morphe_music_lyrics_ruby_language_title">هدف الروبي</string>
-  <string name="morphe_music_lyrics_translate_only">المترجَم فقط</string>
   <string name="morphe_music_lyrics_romanize_only">الرومنة فقط</string>
   <string name="morphe_music_lyrics_dual_only">النمط المزدوج</string>
   <string name="morphe_music_lyrics_copied">تم النسخ إلى الحافظة</string>
@@ -975,7 +886,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">الإعدادات غير مكتملة أو تم رفضها من قبل المزود</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">جارٍ التحقق من الاتصال…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: متصل! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: فشل الاتصال. تحقق من الإعدادات.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed_reason">فشل الاتصال: %s</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">اختبار الاتصال</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">جاري جلب النماذج...</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">جلب النماذج</string>
@@ -1003,4 +914,10 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - تعطيل الأيقونات العريضة</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - استعادة علامات تبويب المشغل: التالي وكلمات الأغاني والمرتبطة</string>
+  <!-- Shared YouTube Music strings -->
+  <string name="morphe_music_manage">إدارة</string>
+  <string name="morphe_music_opacity_title">الشفافية</string>
+  <string name="morphe_music_rim_brightness_title">سطوع الحواف</string>
+  <!-- Title of the row added to playlist menus, the filter button, and the Tags header. -->
+  <string name="morphe_music_tags">الوسوم</string>
 </resources>

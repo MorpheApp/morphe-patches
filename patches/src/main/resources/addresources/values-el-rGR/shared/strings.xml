@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Απαιτείται επανεκκίνηση</string>
   <string name="morphe_settings_restart_dialog_message">Επανεκκινήστε την εφαρμογή για να εφαρμοστεί αυτή η αλλαγή</string>
   <string name="morphe_settings_restart">Επανεκκίνηση</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Εισαγωγή</string>
-  <string name="morphe_settings_import_copy">Αντιγραφή</string>
   <string name="morphe_settings_import_reset">Επαναφέρθηκαν οι προεπιλεγμένες ρυθμίσεις του Morphe</string>
   <string name="morphe_settings_import_success">Έγινε εισαγωγή %s ρυθμίσεων</string>
   <string name="morphe_settings_import_failure_parse">Η εισαγωγή απέτυχε: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Τροποποιήσεις</string>
   <string name="morphe_settings_about_version">Έκδοση</string>
-  <string name="morphe_settings_about_close">Κλείσιμο</string>
   <string name="morphe_settings_about_prerelease">Προ-έκδοση</string>
   <string name="morphe_settings_about_update_available">Διαθέσιμη ενημέρωση: %s</string>
   <string name="morphe_settings_about_update_hint">Για να ενημερώσετε τα patches σας, χρησιμοποιήστε το Morphe για να εφαρμόσετε ξανά τα patches σε αυτήν την εφαρμογή</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Ειδοποιήσεις αδειών</string>
-  <string name="morphe_settings_about_licenses_loading">Φόρτωση…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Εντοπισμός σφαλμάτων</string>
   <string name="morphe_debug_screen_summary">Ρύθμιση προχωρημένων επιλογών προγραμματιστή και αρχείων καταγραφής διαγνωστικών στοιχείων</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εξήχθησαν επιτυχώς</string>
   <string name="morphe_debug_export_logs_failed">Αποτυχία εξαγωγής αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_logs_search_hint">Αναζήτηση στα αρχεία καταγραφής εντοπισμού σφαλμάτων</string>
-  <string name="morphe_debug_export_logs_clear">Εκκαθάριση</string>
   <string name="morphe_debug_logs_disabled">Η καταγραφή εντοπισμού σφαλμάτων είναι απενεργοποιημένη</string>
   <string name="morphe_debug_logs_none_found">Δε βρέθηκαν αρχεία καταγραφής εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων αντιγράφηκαν</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Αποκλεισμένο (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Εξαναγκασμένο (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Αυτόματη</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Ανενεργό</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Ενεργό</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Αναγκαστική ενεργοποίηση</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Αποκλεισμός</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Αφαίρεση</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Οι σημαίες λειτουργίας αποθηκεύτηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Οι σημαίες λειτουργίας επαναφέρθηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Οι σημαίες λειτουργίας αντιγράφηκαν στο πρόχειρο</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Η έκδοση v%1$s του MicroG είναι παλιά και ενδέχεται να προκαλέσει προβλήματα.
 
 Παρακαλούμε ενημερώστε το MicroG στην τελευταία έκδοση v%2$s"</string>
-  <string name="gms_core_dialog_update_text">Ενημέρωση</string>
   <string name="gms_core_dialog_ignore_text">Αγνόηση</string>
   <string name="gms_core_dialog_conflict_message">"Το εγκατεστημένο MicroG δεν συνιστάται από το Morphe:
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 Η απενεργοποίηση των βελτιστοποιήσεων μπαταρίας για το MicroG δε θα επηρεάσει αρνητικά την κατανάλωση ενέργειας.
 
 Πατήστε το κουμπί \"Συνέχεια\" και επιτρέψτε τις αλλαγές βελτιστοποίησης"</string>
-  <string name="gms_core_dialog_continue_text">Συνέχεια</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Εμφάνιση διαλόγου βελτιστοποίησης μπαταρίας του MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Απενεργοποιώντας αυτό, θα αποκρυφτεί η προτροπή βελτιστοποίησης μπαταρίας MicroG.
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Διορθώσεις σφαλμάτων</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Άλλες αλλαγές</string>
   <string name="morphe_patches_update_notice_dialog_more">…και %s περισσότερα</string>
-  <string name="morphe_patches_update_notice_dialog_update">Ενημέρωση</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Παράλειψη</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Το αρχείο καταγραφής σφαλμάτων αποθηκεύτηκε στα έγγραφα του χρήστη: %s</string>
   <string name="morphe_crash_log_saved">Το αρχείο καταγραφής σφαλμάτων αποθηκεύτηκε: %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Πληροφορίες</string>
+  <string name="morphe_ads_screen_title">Διαφημίσεις</string>
+  <string name="morphe_misc_screen_title">Διάφορα</string>
+  <string name="morphe_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_post_buttons_screen_title">Κουμπιά αναρτήσεων</string>
+  <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>
+  <string name="morphe_download">Λήψη</string>
+  <string name="morphe_hide_create_button_title">Απόκρυψη κουμπιού \"Δημιουργία\"</string>
+  <string name="morphe_hide_post_comment_button_title">Απόκρυψη κουμπιού σχολίου</string>
+  <string name="morphe_sanitize_sharing_links_summary">Αφαιρεί τις παραμέτρους παρακολούθησης από τους συνδέσμους κοινοποίησης</string>
+  <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κατά την κοινοποίηση</string>
+  <string name="morphe_settings_add">Προσθήκη</string>
+  <string name="morphe_settings_clear">Καθαρισμός</string>
+  <string name="morphe_settings_close">Κλείσιμο</string>
+  <string name="morphe_settings_continue">Συνέχεια</string>
+  <string name="morphe_settings_copy">Αντιγραφή</string>
+  <string name="morphe_settings_delete">Διαγραφή</string>
+  <string name="morphe_settings_remove">Αφαίρεση</string>
+  <string name="morphe_settings_update">Ενημέρωση</string>
 </resources>

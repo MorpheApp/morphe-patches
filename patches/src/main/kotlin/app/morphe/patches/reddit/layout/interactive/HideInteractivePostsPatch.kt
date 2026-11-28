@@ -7,7 +7,6 @@
 
 package app.morphe.patches.reddit.layout.interactive
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
@@ -68,12 +67,7 @@ val hideInteractivePostsPatch = patch(
         if (is_2026_24_0_or_greater) {
             CustomPostFeedElementConstructorFingerprint.let {
                 // The base class of all feed elements has a public link id method.
-                Fingerprint(
-                    definingClass = it.originalClassDef.superclass!!,
-                    name = "getLinkId",
-                    parameters = listOf(),
-                    returnType = "Ljava/lang/String;"
-                ).classDef.interfaces.add(FEED_ELEMENT_INTERFACE)
+                FeedElementGetLinkIdFingerprint.classDef.interfaces.add(FEED_ELEMENT_INTERFACE)
 
                 it.method.apply {
                     findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { returnIndex ->

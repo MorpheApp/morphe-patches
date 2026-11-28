@@ -40,6 +40,7 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -62,6 +63,13 @@ import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
 public class CustomPlaybackSpeedPatch {
+
+    /**
+     * Implemented by the old playback speed menu during patching.
+     */
+    public interface OldPlaybackSpeedMenu {
+        void patch_showOldPlaybackSpeedMenu();
+    }
 
     /**
      * How much +/- speed adjustment buttons change the current speed.
@@ -132,6 +140,11 @@ public class CustomPlaybackSpeedPatch {
      * The last time the playback menu was forcefully called.
      */
     private static volatile long lastTimePlaybackMenuInvoked;
+
+    /**
+     * The old playback speed menu that was last initialized.
+     */
+    private static volatile WeakReference<OldPlaybackSpeedMenu> oldPlaybackSpeedMenuRef = new WeakReference<>(null);
 
     static {
         final float holdSpeed = Settings.SPEED_TAP_AND_HOLD.get();
@@ -351,9 +364,19 @@ public class CustomPlaybackSpeedPatch {
         return true;
     }
 
+    /**
+     * Injection point. Called each time the old playback speed menu initializes its speeds.
+     */
+    public static void setOldPlaybackSpeedMenu(OldPlaybackSpeedMenu menu) {
+        oldPlaybackSpeedMenuRef = new WeakReference<>(menu);
+    }
+
     public static void showOldPlaybackSpeedMenu() {
-        // Rest of the implementation added by patch.
         Logger.printDebug(() -> "showOldPlaybackSpeedMenu");
+        OldPlaybackSpeedMenu menu = oldPlaybackSpeedMenuRef.get();
+        if (menu != null) {
+            menu.patch_showOldPlaybackSpeedMenu();
+        }
     }
 
     /**

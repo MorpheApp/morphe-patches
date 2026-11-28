@@ -81,7 +81,6 @@ Bi cih bike ku navê pakêtê rast e û serlêdan sazkirî ye"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
-  <string name="morphe_custom_branding_icon_title">Îkonê</string>
   <string name="morphe_custom_branding_icon_entry_1">Orjînal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe reş</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tarî</string>
@@ -107,7 +106,6 @@ Ji bo guhertina îkonê li her derê, dîsa patch bikin û vebijarka patch-a 'Ap
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Dîroka lêdirîna we nayê paranormalkirin.&lt;br&gt;&lt;br&gt;Ev yek bi gelemperî ji ber blokerê DNS-ê yê reklamên yan proxyyên torê ye.&lt;br&gt;&lt;br&gt;Ji bo rastkirina vê, &lt;b&gt;s.youtube.com&lt;/b&gt; bike whitelists yan jî hemû blokerên DNS û proxyyan bigire</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Dîsa nîşan nede</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Sextekirina streamên vîdyoyê</string>
   <string name="morphe_spoof_video_streams_screen_summary">Sextekirina klyentê mîheng bike da ku pirsgirêkên lîstinê nebin</string>
@@ -134,7 +132,6 @@ Ji bo vekirina Android System WebView li OK bitikîne."</string>
 Heta Android System WebView neyê nûkirin, dibe ku lîstkirina vîdyoyê bi ser nekeve.
 
 Ji bo vekirina Android System WebView li OK bitikîne."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Dîsa nîşan nede</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nehati sazkirin. Ji bo çareserkirina lîstkirina vîdyoyê wê sazkirin</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Ji bo têketinê, li jêr li ser berdewam bikin"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kontrolên medyaya agahdariyê</string>
   <string name="morphe_notification_media_screen_summary">Kontrolên lîstanê yên ku li ser ekrana girtî û panela agahdariyê xuya dibin rast bikin</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Bişkoanê Berê &amp; Paşve veşêre</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Bişkokên \"Berê\" û \"Piştê\" di agahdariya medyayê, şaşana qiflişandî û kontrolên headphone\'an veşerîne</string>
   <string name="morphe_disable_notification_media_seekbar_title">Seekbar bêkar bike</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Rê li kişandina seekbarê li ser şaşana qiflişandî û panela agahdariyê digire</string>
@@ -244,10 +240,8 @@ Ji bo têketinê, li jêr li ser berdewam bikin"</string>
   <string name="morphe_video_effects_custom_restore">Vegerîne default</string>
   <string name="morphe_video_effects_custom_add_title">Efektê nû</string>
   <string name="morphe_video_effects_custom_edit_title">Efektê edît bike</string>
-  <string name="morphe_video_effects_custom_name_hint">Nav</string>
   <string name="morphe_video_effects_custom_name_empty">Navê efektê binivîse</string>
   <string name="morphe_video_effects_custom_name_exists">Efekteke bi vî navî jixwe heye</string>
-  <string name="morphe_video_effects_custom_copy_code">Koda kopî bike</string>
   <string name="morphe_video_effects_custom_error_title">Efekt xeletiyekê hildane</string>
   <string name="morphe_video_effects_custom_error_message">"Heta ku kod bê rastkirin, vîdyoyên bêyî efektê tên nîşandan. Vê xeletiyê bide AIyê ku kod nivîsandiye:
 
@@ -257,7 +251,6 @@ Ji bo têketinê, li jêr li ser berdewam bikin"</string>
 Ji AI'yê kodeke kurttir bixwaze, an kod bi parçan paste bike."</string>
   <string name="morphe_video_effects_custom_copy_error">Xeletiyê kopî bike</string>
   <string name="morphe_video_effects_custom_save_anyway">Her weha save bike</string>
-  <string name="morphe_video_effects_custom_delete">Jêbirin</string>
   <string name="morphe_video_effects_custom_delete_title">Efektê jêbire?</string>
   <string name="morphe_video_effects_custom_delete_message">%s dê were jêbirin.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Ji AI'yê kodeke kurttir bixwaze, an kod bi parçan paste bike."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Ji bo bikaranîna vê taybetmendiyê, \'Sextekirina streamên vîdyoyê\' ji bo her klyentekî ji bilî \'Android Studio\' û \'Android VR Downgraded\' biguherîne</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
-  <string name="morphe_sanitize_sharing_links_summary">Parametreyên şopandinê ji lînkên parvekirî tên jêbirin</string>
   <string name="morphe_replace_music_with_youtube_title">Lînkên parvekirinê biguherîne youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Di lînkên parvekirî de music.youtube.com bi youtube.com biguherîne</string>
   <string name="morphe_replace_links_with_shortener_title">Lînkên parvekirinê biguherîne youtu.be</string>
@@ -371,7 +362,6 @@ Heke piştre were guhertin, ji bo rêkxistina UI pêşniyar tê kirin ku daneyê
   <string name="morphe_custom_font_type_title">Font</string>
   <string name="morphe_custom_font_type_entry_default">Bixweber</string>
   <string name="morphe_custom_font_type_entry_system">Fontê sîstema amûrê</string>
-  <string name="morphe_custom_font_type_entry_custom">Dosyaya fonta taybet</string>
   <string name="morphe_custom_font_file_title">Dosyaya fonta taybet</string>
   <string name="morphe_custom_font_file_summary">Dosyaye fonteke TTF an OTF hilbijêre</string>
   <string name="morphe_custom_font_file_invalid">Dosyaya hatî hilbijartin fonteke TTF an OTF nîne</string>
@@ -381,7 +371,6 @@ Heke piştre were guhertin, ji bo rêkxistina UI pêşniyar tê kirin ku daneyê
   <string name="morphe_glass_menus_screen_summary">Menuyên wekî camê şişeyî li ser naveroka blurkirî ya li pişt wan</string>
   <string name="morphe_glass_menus_title">Menuyên şeffaf çalak bike</string>
   <string name="morphe_glass_menus_summary">Menuyan û rûpelên binî wek şûşeya xav nîşan dide, ku naveroka li pişt wan blur dibe</string>
-  <string name="morphe_glass_menus_opacity_title">Şeffafiya şûşeyê</string>
   <string name="morphe_glass_menus_opacity_summary">Çiqas menu naveroka blur kirî weşandine (0 şeffaf e, 100 tîr e)</string>
   <string name="morphe_glass_menus_blur_title">Blur</string>
   <string name="morphe_glass_menus_blur_summary">Çiqas naveroka li pişt menu blur dibe</string>
@@ -402,7 +391,6 @@ Heke piştre were guhertin, ji bo rêkxistina UI pêşniyar tê kirin ku daneyê
   <string name="morphe_ryd_dislike_percentage_summary">Nehezkirin wekî ji sedî ya hezkirinan nîşan dide li şûna hejmarê</string>
   <string name="morphe_ryd_estimated_like_title">Hezkirinên texmînî nîşan bide</string>
   <string name="morphe_ryd_estimated_like_summary">Hejmara hezkirinên texmînî nîşan dide li ser vîdyoyên ku afirîner hezkirin neçalak kiriye</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Hişyariyên çewtiya girêdanê nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Dema ku servera Return YouTube Dislike nayê gihîştin hişyarî nîşan dide</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike hejmarên dislike ên ku YouTube di sala 2021'an de veşartibû dîsa zindî dike. Hejmar ji daneyên ku beriya rakirinê hatine arşîvkirin tên û ji bo vîdyoyên nû li gorî vote'yên bikaranhatîyên wê tên xประมาณkirin, lewma ew Approximate in û her çend rojan own dîtin
 
@@ -424,8 +412,89 @@ ID'ya vîdyoya ku hûn temaşe dikin ji bo Return YouTube Dislike API tê şandi
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tu sînorkirina klyentê nehat dîtin</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Sînorê rêya klîyentî %s caran hat dîtin</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s mîlîsekond</string>
-  <string name="morphe_navigation_bar_screen_title">Barê navîgasyonê</string>
   <string name="morphe_navigation_bar_screen_summary">Hilbijêre kîjan bişkojan di barê navîgasyonê yê jêrîn de xuya bibin</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Hilbijêre kîjan pêkhate di toolbarê de xuya bibin</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekund</string>
+  <string name="morphe_duration_2s">2 sekund</string>
+  <string name="morphe_duration_3s">3 sekund</string>
+  <string name="morphe_duration_4s">4 sekund</string>
+  <string name="morphe_duration_5s">5 sekund</string>
+  <string name="morphe_duration_6s">6 sekund</string>
+  <string name="morphe_duration_7s">7 sekund</string>
+  <string name="morphe_duration_8s">8 sekund</string>
+  <string name="morphe_duration_9s">9 sekund</string>
+  <string name="morphe_duration_10s">10 sekund</string>
+  <string name="morphe_change_start_page_entry_default">Bixweber</string>
+  <string name="morphe_change_start_page_entry_explore">Keşfkirin</string>
+  <string name="morphe_change_start_page_entry_history">Dîrok</string>
+  <string name="morphe_change_start_page_entry_library">Pustxane</string>
+  <string name="morphe_change_start_page_entry_playlists">Lîste</string>
+  <string name="morphe_change_start_page_entry_search">Lêgerîn</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Aboneman</string>
+  <string name="morphe_change_start_page_title">Rûpela destpêkê</string>
+  <string name="morphe_action_buttons_screen_title">Bişkojên çalakiyê</string>
+  <string name="morphe_comments_screen_title">Şîrove</string>
+  <string name="morphe_feed_screen_title">Fîd</string>
+  <string name="morphe_flyout_menu_screen_title">Menuya flyout</string>
+  <string name="morphe_general_title">Giştî</string>
+  <string name="morphe_miniplayer_screen_title">Minilîstik</string>
+  <string name="morphe_player_screen_title">Yarîker</string>
+  <string name="morphe_video_screen_title">Vîdyo</string>
+  <string name="morphe_appearance_title">Xuyanî</string>
+  <string name="morphe_cancel">Betalkirin</string>
+  <string name="morphe_comments_screen_summary">Hilbijêre kîjan pêkhate di beşa şîroveyan de xuya bibin</string>
+  <string name="morphe_copy_code">Koda kopî bike</string>
+  <string name="morphe_corner_radius_title">Tîrêja qunyasê</string>
+  <string name="morphe_do_not_show_again">Dîsa nîşan nede</string>
+  <string name="morphe_download_force_4k_title">Berhevkirina berdestbûna daxistina 4K</string>
+  <string name="morphe_glass_opacity_title">Şeffafiya şûşê</string>
+  <string name="morphe_header_logo_title">Logoya jorîn</string>
+  <string name="morphe_hide_action_bar_title">Barê çalakiyan veşêre</string>
+  <string name="morphe_hide_cast_button_title">Bişkoja Cast veşêre</string>
+  <string name="morphe_hide_comments_button_title">Bişkoja Comments veşêre</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Rêgezên Civakê veşêre</string>
+  <string name="morphe_hide_comments_emoji_button_title">Bişkoja Emoji veşêre</string>
+  <string name="morphe_hide_comments_gif_button_title">Bişkoja GIF veşêre</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">GIF û wêneyên girêdayî şiroveyan û bersivan veşêre</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF û wêneyan veşêre</string>
+  <string name="morphe_hide_comments_info_button_title">Bişkoja Info veşêre</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Bişkoja Timestamp veşêre</string>
+  <string name="morphe_hide_horizontal_shelves_title">Rafên horizontal veşêre</string>
+  <string name="morphe_hide_like_dislike_button_title">Bişkojên Like û Dislike veşêre</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Bişkojên Like û Dislike veşêre</string>
+  <string name="morphe_hide_navigation_bar_title">Barê navîgasyonê veşêre</string>
+  <string name="morphe_hide_navigation_button_labels_title">Etîketên bişkojên navîgasyonê veşêre</string>
+  <string name="morphe_hide_previous_next_buttons_title">Bişkojên Previous û Next veşêre</string>
+  <string name="morphe_hide_search_button_title">Bişkoja Search veşêre</string>
+  <string name="morphe_hide_translate_button_title">Bişkoja Translate veşêre</string>
+  <string name="morphe_hide_video_ads_title">Reklamên vîdyoyê veşêre</string>
+  <string name="morphe_loading">Barkirin…</string>
+  <string name="morphe_name">Nav</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Sipasiya bişkojan</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Bişkojan hatin nîşandan: %1$s ji %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Bilindî</string>
+  <string name="morphe_navigation_bar_glass_size_width">Berita herî mezin</string>
+  <string name="morphe_navigation_bar_glass_title">Şirîta navîgasyonê ya şûşe çalak bike</string>
+  <string name="morphe_positive_number_invalid">Nirx divê hejmareke erênî be</string>
+  <string name="morphe_private_user_id_invalid">ID-ya bikarhêner a taybet divê bi kêmanî 30 tîp be</string>
+  <string name="morphe_private_user_id_title">ID-ya bikarhêner a taybet a te</string>
+  <string name="morphe_rename">Nav biguherîne</string>
+  <string name="morphe_show_settings_button_title">Bişkoja Settings nîşan bide</string>
+  <string name="morphe_show_settings_button_type_title">Çalakiya bişkoja Mîhengan</string>
+  <string name="morphe_show_video_effect_menu_title">Menuyê bandora vîdyoyê nîşan bide</string>
+  <string name="morphe_submit">Şandin</string>
+  <string name="morphe_time_adjustment_step_title">Gava rastekirina demê</string>
+  <string name="morphe_toast_on_connection_error_title">Hişyariyên çewtiya girêdanê nîşan bide</string>
+  <string name="morphe_toast_on_skip_title">Agahdariya derbasandinê nîşan bide</string>
+  <string name="morphe_translated_only">Tenê yên wergerandî</string>
+  <string name="morphe_translating">Wergerandine…</string>
+  <string name="morphe_translation_language_title">Zimanê wergerê</string>
+  <string name="morphe_username_change_unknown_error">Nikarî navê bikarhêner biguherîne: Statû: %1$s %2$s</string>
+  <string name="morphe_username_changed">Navê bikarhêner bi serkeftî hate guhertin</string>
+  <string name="morphe_username_html">Navê bikarhênerê we: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Vîdyoyan</string>
+  <string name="morphe_vote_downvote">Neyînî deng bide</string>
+  <string name="morphe_vote_upvote">Erênî deng bide</string>
 </resources>

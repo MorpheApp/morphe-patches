@@ -174,7 +174,7 @@ public class AppIconPatch {
         RedditIcon currentComponent = detectCurrentIcon(context);
 
         Preference preference = new Preference(context);
-        preference.setTitle(str("morphe_app_icon_title"));
+        preference.setTitle(str("morphe_custom_branding_icon_title"));
         preference.setSummary(currentComponent == null
                 ? str("morphe_app_icon_unknown")
                 : currentComponent.label);

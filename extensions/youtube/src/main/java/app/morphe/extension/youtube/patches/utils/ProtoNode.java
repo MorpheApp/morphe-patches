@@ -483,10 +483,17 @@ public final class ProtoNode {
         return encode(output -> output.writeString(fieldNumber, text));
     }
 
-    public static byte[] concat(byte[] first, byte[] second) {
-        byte[] result = new byte[first.length + second.length];
-        System.arraycopy(first, 0, result, 0, first.length);
-        System.arraycopy(second, 0, result, first.length, second.length);
+    public static byte[] concat(byte[]... parts) {
+        int length = 0;
+        for (byte[] part : parts) {
+            length += part.length;
+        }
+        byte[] result = new byte[length];
+        int position = 0;
+        for (byte[] part : parts) {
+            System.arraycopy(part, 0, result, position, part.length);
+            position += part.length;
+        }
         return result;
     }
 

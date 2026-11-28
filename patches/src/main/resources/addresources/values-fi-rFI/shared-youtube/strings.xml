@@ -81,7 +81,6 @@ Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Mukautettu</string>
-  <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe musta</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tumma</string>
@@ -107,7 +106,6 @@ Vaihtaaksesi kuvakkeen kaikkialla, paikkaa uudelleen ja muuta 'Sovelluskuvake'-p
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Älä näytä uudelleen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
   <string name="morphe_spoof_video_streams_screen_summary">Asiakasohjelman videovirtojen naamiointi toisto-ongelmien estämiseksi</string>
@@ -134,7 +132,6 @@ Napauta OK avataksesi Android System WebView."</string>
 Videon toisto ei välttämättä onnistu, ennen kuin Android System WebView on päivitetty uusimpaan versioon.
 
 Napauta OK avataksesi Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Älä näytä uudelleen</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView ei ole asennettu. Asenna se korjataksesi videon toiston</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Kirjautuaksesi paina alla olevaa Jatka-painiketta"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ilmoituksen mediasäätimet</string>
   <string name="morphe_notification_media_screen_summary">Mukauta lukitusnäytössä ja ilmoituspaneelissa näkyviä toistosäätimiä.</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Piilota Edellinen- ja seuraava-painikkeet</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Piilottaa Edellinen- ja seuraava-painikkeet mediailmoituksessa, lukitusnäytössä ja kuulokkeiden säätimissä.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Poista kelauspalkki käytöstä</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Estää kelauspalkin vetämisen lukitusnäytössä ja ilmoituspaneelissa.</string>
@@ -244,10 +240,8 @@ Kirjautuaksesi paina alla olevaa Jatka-painiketta"</string>
   <string name="morphe_video_effects_custom_restore">Palauta oletukset</string>
   <string name="morphe_video_effects_custom_add_title">Uusi efekti</string>
   <string name="morphe_video_effects_custom_edit_title">Muokkaa efektiä</string>
-  <string name="morphe_video_effects_custom_name_hint">Nimi</string>
   <string name="morphe_video_effects_custom_name_empty">Anna efektille nimi</string>
   <string name="morphe_video_effects_custom_name_exists">Tämän niminen efekti on jo olemassa</string>
-  <string name="morphe_video_effects_custom_copy_code">Kopioi koodi</string>
   <string name="morphe_video_effects_custom_error_title">Efektissä on virhe</string>
   <string name="morphe_video_effects_custom_error_message">"Videot näytetään ilman efektiä, kunnes koodi on korjattu. Anna tämä virhe tekoälylle, joka kirjoitti koodin:
 
@@ -257,7 +251,6 @@ Kirjautuaksesi paina alla olevaa Jatka-painiketta"</string>
 Pyydä tekoälyä lyhyemmästä koodista tai liitä koodi osissa."</string>
   <string name="morphe_video_effects_custom_copy_error">Kopiointivirhe</string>
   <string name="morphe_video_effects_custom_save_anyway">Tallenna silti</string>
-  <string name="morphe_video_effects_custom_delete">Poista</string>
   <string name="morphe_video_effects_custom_delete_title">Poistetaanko efekti?</string>
   <string name="morphe_video_effects_custom_delete_message">%s poistetaan.</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Pyydä tekoälyä lyhyemmästä koodista tai liitä koodi osissa."</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, vaihda \"Naamioi videovirrat\" mihin tahansa asiakasohjelmaan paitsi \"Android Studio\" ja \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
-  <string name="morphe_sanitize_sharing_links_summary">Poistaa seuranta-kyselyparametrit jaetuista linkeistä</string>
   <string name="morphe_replace_music_with_youtube_title">Muuta jakolinkit youtube.com-sivustoksi</string>
   <string name="morphe_replace_music_with_youtube_summary">Korvaa music.youtube.com osoitteella youtube.com jaetuissa linkeissä</string>
   <string name="morphe_replace_links_with_shortener_title">Muuta jakolinkit youtu.be-sivustoksi</string>
@@ -371,7 +362,6 @@ Jos myöhemmin poistetaan käytöstä, on suositeltavaa tyhjentää sovelluksen 
   <string name="morphe_custom_font_type_title">Fontti</string>
   <string name="morphe_custom_font_type_entry_default">Oletus</string>
   <string name="morphe_custom_font_type_entry_system">Laitteen järjestelmäfontti</string>
-  <string name="morphe_custom_font_type_entry_custom">Mukautettu fonttitiedosto</string>
   <string name="morphe_custom_font_file_title">Mukautettu fonttitiedosto</string>
   <string name="morphe_custom_font_file_summary">Valitse TTF- tai OTF-fonttitiedosto</string>
   <string name="morphe_custom_font_file_invalid">Valittu tiedosto ei ole TTF- eikä OTF-fontti</string>
@@ -381,7 +371,6 @@ Jos myöhemmin poistetaan käytöstä, on suositeltavaa tyhjentää sovelluksen 
   <string name="morphe_glass_menus_screen_summary">Valikot himmeänä lasina niiden takana olevan sumennetun sisällön päällä</string>
   <string name="morphe_glass_menus_title">Ota käyttöön lasivalikot</string>
   <string name="morphe_glass_menus_summary">Näyttää valikot ja alareunan paneelit huurinaalisina, jolloin niiden takana oleva sisältö on sumennettu</string>
-  <string name="morphe_glass_menus_opacity_title">Lasin läpinäkymättömyys</string>
   <string name="morphe_glass_menus_opacity_summary">Kuinka paljon valikko peittää sumennetun sisällön (0 on kirkas, 100 on peittävä)</string>
   <string name="morphe_glass_menus_blur_title">Sumennus</string>
   <string name="morphe_glass_menus_blur_summary">Kuinka paljon valikon takana oleva sisältö on sumennettu</string>
@@ -402,7 +391,6 @@ Jos myöhemmin poistetaan käytöstä, on suositeltavaa tyhjentää sovelluksen 
   <string name="morphe_ryd_dislike_percentage_summary">Näyttää ei-tykkäykset tykkäysten prosenttiosuutena numeron sijaan</string>
   <string name="morphe_ryd_estimated_like_title">Näytä arvioidut tykkäykset</string>
   <string name="morphe_ryd_estimated_like_summary">Näyttää arvioidun tykkäysmäärän videoissa, joissa luoja on poistanut tykkäykset käytöstä</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Näytä yhteysvirheilmoitukset</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Näyttää ilmoituksen, kun Return YouTube Dislike -palvelin ei ole käytettävissä</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike palauttaa dislike-laskurit, jotka YouTube piilotti vuonna 2021. Laskurit perustuvat ennen poistoa arkistoituihin tietoihin, ja uudempien videoiden osalta ne arvioidaan käyttäjien äänistä, joten ne ovat likimääräisiä ja päivittyvät muutaman päivän välein
 
@@ -424,8 +412,89 @@ Katsomasi videon tunnus lähetetään Return YouTube Dislike -rajapintaan, ja ty
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Asiakkaan nopeusrajoituksia ei havaittu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Asiakkaan nopeusrajoitus kohtattu %s kertaa</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekuntia</string>
-  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
   <string name="morphe_navigation_bar_screen_summary">Valitse, mitkä painikkeet näkyvät alanavigointipalkissa</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 sekunti</string>
+  <string name="morphe_duration_2s">2 sekuntia</string>
+  <string name="morphe_duration_3s">3 sekuntia</string>
+  <string name="morphe_duration_4s">4 sekuntia</string>
+  <string name="morphe_duration_5s">5 sekuntia</string>
+  <string name="morphe_duration_6s">6 sekuntia</string>
+  <string name="morphe_duration_7s">7 sekuntia</string>
+  <string name="morphe_duration_8s">8 sekuntia</string>
+  <string name="morphe_duration_9s">9 sekuntia</string>
+  <string name="morphe_duration_10s">10 sekuntia</string>
+  <string name="morphe_change_start_page_entry_default">Oletus</string>
+  <string name="morphe_change_start_page_entry_explore">Tutustu</string>
+  <string name="morphe_change_start_page_entry_history">Historia</string>
+  <string name="morphe_change_start_page_entry_library">Kirjasto</string>
+  <string name="morphe_change_start_page_entry_playlists">Soittolistat</string>
+  <string name="morphe_change_start_page_entry_search">Haku</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Tilaukset</string>
+  <string name="morphe_change_start_page_title">Aloitussivu</string>
+  <string name="morphe_action_buttons_screen_title">Toimintopainikkeet</string>
+  <string name="morphe_comments_screen_title">Kommentit</string>
+  <string name="morphe_feed_screen_title">Syöte</string>
+  <string name="morphe_flyout_menu_screen_title">Ponnahdusvalikko</string>
+  <string name="morphe_general_title">Yleiset</string>
+  <string name="morphe_miniplayer_screen_title">Minisoitin</string>
+  <string name="morphe_player_screen_title">Soitin</string>
+  <string name="morphe_video_screen_title">Video</string>
+  <string name="morphe_appearance_title">Ulkoasu</string>
+  <string name="morphe_cancel">Peruuta</string>
+  <string name="morphe_comments_screen_summary">Valitse, mitkä komponentit näkyvät kommenttiosiossa</string>
+  <string name="morphe_copy_code">Kopioi koodi</string>
+  <string name="morphe_corner_radius_title">Kulman pyöristys</string>
+  <string name="morphe_do_not_show_again">Älä näytä uudelleen</string>
+  <string name="morphe_download_force_4k_title">Pakota 4K-latauksen saatavuus</string>
+  <string name="morphe_glass_opacity_title">Lasin läpinäkymättömyys</string>
+  <string name="morphe_header_logo_title">Ylätunnisteen logo</string>
+  <string name="morphe_hide_action_bar_title">Piilota toimintopalkki</string>
+  <string name="morphe_hide_cast_button_title">Piilota Cast-painike</string>
+  <string name="morphe_hide_comments_button_title">Piilota Kommentit-painike</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Piilota yhteisön säännöt</string>
+  <string name="morphe_hide_comments_emoji_button_title">Piilota Emoji-painike</string>
+  <string name="morphe_hide_comments_gif_button_title">Piilota GIF-painike</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Piilottaa kommentteihin ja vastauksiin liitetyt GIF-kuvat ja kuvat</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Piilota GIF-kuvat ja kuvat</string>
+  <string name="morphe_hide_comments_info_button_title">Piilota Info-painike</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Piilota aikaleima-painike</string>
+  <string name="morphe_hide_horizontal_shelves_title">Piilota vaakasuuntaiset hyllyt</string>
+  <string name="morphe_hide_like_dislike_button_title">Piilota Tykkää ja En tykkää -painike</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Piilota Tykkää ja En tykkää -painikkeet</string>
+  <string name="morphe_hide_navigation_bar_title">Piilota navigointipalkki</string>
+  <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
+  <string name="morphe_hide_previous_next_buttons_title">Piilota Edellinen ja Seuraava -painikkeet</string>
+  <string name="morphe_hide_search_button_title">Piilota hakupainike</string>
+  <string name="morphe_hide_translate_button_title">Piilota Käännä-painike</string>
+  <string name="morphe_hide_video_ads_title">Piilota videomainokset</string>
+  <string name="morphe_loading">Ladataan…</string>
+  <string name="morphe_name">Nimi</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Painikkeiden välistys</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Näytettävät painikkeet: %1$s / %2$s</string>
+  <string name="morphe_navigation_bar_glass_size_height">Korkeus</string>
+  <string name="morphe_navigation_bar_glass_size_width">Maksimileveys</string>
+  <string name="morphe_navigation_bar_glass_title">Ota käyttöön lasinen navigointipalkki</string>
+  <string name="morphe_positive_number_invalid">Arvon tulee olla positiivinen luku</string>
+  <string name="morphe_private_user_id_invalid">Yksityisen UserID:n tulee olla vähintään 30 merkkiä pitkä</string>
+  <string name="morphe_private_user_id_title">Yksityinen UserID:si</string>
+  <string name="morphe_rename">Nimeä uudelleen</string>
+  <string name="morphe_show_settings_button_title">Näytä Asetukset-painike</string>
+  <string name="morphe_show_settings_button_type_title">Asetusten painikkeen toiminto</string>
+  <string name="morphe_show_video_effect_menu_title">Näytä videotehostevalikko</string>
+  <string name="morphe_submit">Lähetä</string>
+  <string name="morphe_time_adjustment_step_title">Ajan säätöaskel</string>
+  <string name="morphe_toast_on_connection_error_title">Näytä yhteysvirheilmoitukset</string>
+  <string name="morphe_toast_on_skip_title">Näytä ohitusilmoitus</string>
+  <string name="morphe_translated_only">Vain käännetyt</string>
+  <string name="morphe_translating">Käännetään…</string>
+  <string name="morphe_translation_language_title">Käännöskieli</string>
+  <string name="morphe_username_change_unknown_error">Käyttäjänimeä ei voitu vaihtaa: Tila: %1$s %2$s</string>
+  <string name="morphe_username_changed">Käyttäjänimen vaihto onnistui</string>
+  <string name="morphe_username_html">Käyttäjänimesi: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Videot</string>
+  <string name="morphe_vote_downvote">Vastusta</string>
+  <string name="morphe_vote_upvote">Kannata</string>
 </resources>

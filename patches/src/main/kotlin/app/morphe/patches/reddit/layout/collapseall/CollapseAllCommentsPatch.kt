@@ -7,13 +7,9 @@
 
 package app.morphe.patches.reddit.layout.collapseall
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -23,7 +19,6 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -81,47 +76,15 @@ val collapseAllCommentsPatch = patch(
  */
 private fun addCollapseAllButton() {
     val buttonClass = ActionBarCommentButtonFingerprint.classDef
-    val commentTestTagsField = ActionBarCommentButtonFingerprint.instructionMatches[1].getFieldAccessed()
-
-    // Reads the comment button test tags, then draws the comment button with them.
-    // There is one draw method for the default action bar and one for the refresh variant.
-    val drawCommentButtonFilters = listOf(
-        fieldAccess(opcode = Opcode.SGET_OBJECT, reference = commentTestTagsField),
-        methodCall(
-            definingClass = "this",
-            returnType = "V",
-            location = MatchAfterWithin(10)
-        )
-    )
 
     // The comment button of the default action bar is followed by a group of the next button.
-    val composerMatch = Fingerprint(
-        classFingerprint = ActionBarCommentButtonFingerprint,
-        filters = drawCommentButtonFilters + listOf(
-            // startReplaceGroup(key)
-            methodCall(
-                opcode = Opcode.INVOKE_VIRTUAL,
-                parameters = listOf("I"),
-                returnType = "V",
-                location = MatchAfterWithin(2)
-            ),
-            // endReplaceGroup()
-            methodCall(
-                opcode = Opcode.INVOKE_VIRTUAL,
-                parameters = listOf("Z"),
-                returnType = "V"
-            )
-        )
-    ).match()
-    val startGroup = composerMatch.instructionMatches[2].getMethodCalled()
-    val endGroup = composerMatch.instructionMatches[3].getMethodCalled()
+    val composerMatches = ActionBarCommentButtonGroupFingerprint.instructionMatches
+    val startGroup = composerMatches[2].getMethodCalled()
+    val endGroup = composerMatches[3].getMethodCalled()
 
     val drawButtonMethods = mutableMapOf<MethodReference, MethodReference>()
 
-    Fingerprint(
-        classFingerprint = ActionBarCommentButtonFingerprint,
-        filters = drawCommentButtonFilters
-    ).matchAll().forEach { match ->
+    DrawCommentButtonFingerprint.matchAll().forEach { match ->
         val drawCall = match.instructionMatches[1]
         val drawButton = drawCall.getMethodCalled()
         val drawButtonMethod = drawButtonMethods.getOrPut(drawButton) {

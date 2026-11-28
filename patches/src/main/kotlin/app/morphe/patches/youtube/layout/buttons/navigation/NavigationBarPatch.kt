@@ -272,6 +272,7 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_navigation_bar_glass", summary = true),
             NonInteractivePreference(
                 key = "morphe_navigation_bar_glass_opacity",
+                titleKey = "morphe_glass_opacity_title",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             SwitchPreference("morphe_navigation_bar_glass_round", summary = true),
@@ -397,10 +398,7 @@ val navigationBarPatch = patch(
                 addPatchInterface(
                     PIVOT_BAR_ACCESS_INTERFACE,
                     "patch_getSystemButtonsRoom",
-                    """
-                        iget v0, p0, $roomField
-                        return v0
-                    """
+                    roomField
                 )
 
                 // The glass style keeps some room below the buttons, so the capsule floats above
@@ -674,7 +672,7 @@ val navigationBarPatch = patch(
             // The app places the miniplayer and other views above the height it keeps for the navigation bar,
             // which it sets to none only when it hides the bar itself. The extension sets the height again
             // when it hides or shows the bar, and the height is none while the bar is hidden on scroll.
-            setBottomUiHeightFingerprint(BottomUiEnumFingerprint.originalClassDef.type).let {
+            SetBottomUiHeightFingerprint.let {
                 it.method.addInstructions(
                     0,
                     """
@@ -895,7 +893,7 @@ val navigationBarPatch = patch(
             SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button", titleKey = "morphe_hide_notifications_button_title"),
-            SwitchPreference("morphe_hide_toolbar_search_button"),
+            SwitchPreference("morphe_hide_toolbar_search_button", titleKey = "morphe_hide_search_button_title"),
             SwitchPreference("morphe_show_toolbar_settings_button", titleKey = "morphe_show_settings_button_title"),
             SwitchPreference(
                 "morphe_show_toolbar_settings_button_type",
@@ -1323,11 +1321,7 @@ val navigationBarPatch = patch(
                 val insertRegister =
                     getInstruction<TwoRegisterInstruction>(insertIndex).registerA
 
-                val protoListBuilderMethod = Fingerprint(
-                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                    returnType = insertMatch.fieldReference.type,
-                    parameters = listOf("Ljava/util/Collection;")
-                ).method
+                val protoListBuilderMethod = ProtoListFromCollectionFingerprint.method
 
                 addInstructions(
                     insertIndex,
@@ -1348,14 +1342,7 @@ val navigationBarPatch = patch(
                     // before the guide response is loaded, so the browse endpoint extension is set.
                     // Inserted at the same index as above, so the button is added before the Search
                     // and Settings buttons.
-                    val iconType = PivotBarItemProtoFactoryFingerprint.method.parameterTypes[2].toString()
-                    // Enum constant names are obfuscated, so the icon type is found by its value.
-                    val iconTypeLookupMethod = Fingerprint(
-                        definingClass = iconType,
-                        isStatic = true,
-                        returnType = iconType,
-                        parameters = listOf("I")
-                    ).originalMethod
+                    val iconTypeLookupMethod = IconTypeFromValueFingerprint.originalMethod
 
                     val pivotBarItemOptionalType = PivotBarRendererFingerprint.method.returnType
                     // Non range invoke instructions, so 4-bit registers are required.

@@ -846,7 +846,7 @@ final class LibraryDialog {
                     }
                     try {
                         SeriesPlayback.activate(s, id, ordinal);
-                        ResumeLauncher.launch(activity, new LaunchRequest(id, s.id(), position));
+                        ResumeLauncher.launch(new LaunchRequest(id, s.id(), position));
                     } catch (RuntimeException failure) {
                         Logger.printException(() -> "Could not open episode", failure);
                         SeriesPlayback.clear();
@@ -884,7 +884,7 @@ final class LibraryDialog {
                 Arrays.asList(
                         "morphe_series_tracker_episode_order",
                         "morphe_series_tracker_ui_refresh_episodes",
-                        "morphe_series_tracker_ui_rename",
+                        "morphe_rename",
                         "morphe_series_tracker_ui_open_playlist_in_youtube",
                         "morphe_series_tracker_ui_remove_from_library"),
                 Arrays.asList(
@@ -931,7 +931,7 @@ final class LibraryDialog {
             options.addView(option, new RadioGroup.LayoutParams(-1, -2));
         }
         sheet.body.addView(options);
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
         children.add(sheet.dialog);
         sheet.onDismiss(() -> children.remove(sheet.dialog));
         sheet.show();
@@ -940,8 +940,8 @@ final class LibraryDialog {
     private void rename(Series s) {
         NativeSheet sheet = new NativeSheet(activity, "morphe_series_tracker_ui_series_name");
         EditText name = nameField(sheet.body, s.name());
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
-        sheet.action("morphe_series_tracker_ui_save",
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_settings_save",
                 () -> service.rename(
                         s.id(),
                         name.getText().toString(),
@@ -985,7 +985,7 @@ final class LibraryDialog {
         if (!alive()) return;
         NativeSheet sheet = new NativeSheet(activity, "morphe_series_tracker_clear_progress_title");
         sheet.message("morphe_series_tracker_clear_progress_message");
-        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_cancel", sheet.dialog::dismiss, false);
         sheet.action("morphe_series_tracker_ui_clear_history",
                 () -> {
                     sheet.dialog.dismiss();
@@ -1051,7 +1051,7 @@ final class LibraryDialog {
     private Button continueButton(Runnable work) {
         Button button = new Button(activity);
         int ink = HistoryUi.surface();
-        button.setText(UiText.get("morphe_series_tracker_continue"));
+        button.setText(UiText.get("morphe_settings_continue"));
         button.setTextSize(14);
         button.setTextColor(ink);
         button.setAllCaps(false);

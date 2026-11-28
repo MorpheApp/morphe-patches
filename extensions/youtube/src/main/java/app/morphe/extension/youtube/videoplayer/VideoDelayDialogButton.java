@@ -228,10 +228,11 @@ public class VideoDelayDialogButton {
 
             EditText inputField = new EditText(context);
             inputField.setHint(str("morphe_video_delay_dialog_input_hint"));
-            inputField.setInputType(InputType.TYPE_CLASS_NUMBER);
+            inputField.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
             inputField.setImeOptions(EditorInfo.IME_ACTION_DONE);
             inputField.setFilters(new InputFilter[]{
-                    new InputFilter.LengthFilter(String.valueOf(config.max()).length())
+                    new InputFilter.LengthFilter(Math.max(String.valueOf(config.min()).length(),
+                        String.valueOf(config.max()).length()))
             });
             inputField.setTextColor(foregroundColor);
             inputField.setHintTextColor(Color.GRAY);

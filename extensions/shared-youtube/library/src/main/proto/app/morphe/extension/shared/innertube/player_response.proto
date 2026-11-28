@@ -24,6 +24,8 @@ message VideoDetails {
   optional string channelId = 19;
   optional ThumbnailList thumbnail = 25;
   optional string ownerChannelName = 33;
+  // MusicVideoType of YouTube Music, such as 1 for a song and 2 for a music video.
+  optional int32 musicVideoType = 40;
 }
 
 message ThumbnailList {

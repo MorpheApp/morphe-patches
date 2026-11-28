@@ -98,13 +98,13 @@ public final class GhostHistoryDialog {
 
             Pair<Dialog, LinearLayout> result = CustomDialog.create(
                     context,
-                    str("morphe_ghost_play_dialog_title"),
+                    str("morphe_ghost_play_screen_title"),
                     null,
                     null,
-                    str("morphe_ghost_play_close"),
+                    str("morphe_settings_close"),
                     () -> {},
                     null,
-                    str("morphe_ghost_play_open_settings"),
+                    str("morphe_all_settings"),
                     () -> YouTubeActivityHook.openSettings(context, GHOST_SETTINGS_SCREEN_KEY),
                     true
             );
@@ -394,7 +394,7 @@ public final class GhostHistoryDialog {
                 int[] presets = TIMER_PRESET_MINUTES;
                 for (int i = 0; i < presets.length; i++) {
                     int mins = presets[i];
-                    TextView chip = buildChip(str("morphe_ghost_play_timer_minutes_chip", mins), false);
+                    TextView chip = buildChip(str("morphe_ghost_play_toolbar_timed_badge", mins), false);
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                             0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
                     if (i < presets.length - 1) lp.rightMargin = Dim.dp6;
@@ -423,7 +423,7 @@ public final class GhostHistoryDialog {
                 customInput.setLayoutParams(ciLp);
 
                 TextView setBtn = new TextView(context);
-                setBtn.setText(str("morphe_ghost_play_timer_custom_set"));
+                setBtn.setText(str("morphe_set"));
                 setBtn.setTextColor(GhostTheme.onAccent());
                 setBtn.setTextSize(12f);
                 setBtn.setTypeface(null, Typeface.BOLD);
@@ -604,10 +604,10 @@ public final class GhostHistoryDialog {
                             ? str("morphe_ghost_play_history_subtitle_size", allEntries.size(), sizeText)
                             : str("morphe_ghost_play_history_empty"),
                     null,
-                    str("morphe_ghost_play_close"),
+                    str("morphe_settings_close"),
                     () -> {},
                     null,
-                    hasEntries ? str("morphe_ghost_play_history_clear_all") : null,
+                    hasEntries ? str("morphe_clear_all") : null,
                     hasEntries ? () -> showClearHistoryConfirm(context, onDismiss) : null,
                     true
             );
@@ -703,7 +703,7 @@ public final class GhostHistoryDialog {
                 str("morphe_ghost_play_history_clear_confirm_title"),
                 str("morphe_ghost_play_history_clear_confirm_message"),
                 null,
-                str("morphe_ghost_play_history_clear_all"),
+                str("morphe_clear_all"),
                 () -> {
                     GhostHistoryStore.clear();
                     Utils.showSnackbarShort(str("morphe_ghost_play_history_cleared_toast"));
@@ -797,7 +797,7 @@ public final class GhostHistoryDialog {
                 meta.append(entry.channelName());
             }
             if (entry.positionMs() > 0L) {
-                if (meta.length() > 0) meta.append(" · ");
+                if (Utils.isNotEmpty(meta)) meta.append(" · ");
                 meta.append(formatDuration(entry.positionMs()));
                 if (entry.durationMs() > 0L) {
                     meta.append(" / ").append(formatDuration(entry.durationMs()));

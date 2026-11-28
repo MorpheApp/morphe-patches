@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Անհատական</string>
-  <string name="morphe_custom_branding_icon_title">Հավելվածի պատկերակ</string>
   <string name="morphe_custom_branding_icon_entry_1">Բնօրինակ</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe սև</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe մուգ</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-ի ծանուցում</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ձեր դիտումների պատմությունը չի պահպանվում:&lt;br&gt;&lt;br&gt;Սա ամենայն հավանականությամբ պայմանավորված է DNS գովազդի արգելափակիչով կամ ցանցային պրոքսիով:&lt;br&gt;&lt;br&gt;Սա ուղղելու համար սպիտակ ցուցակում ավելացրեք &lt;b&gt;s.youtube.com&lt;/b&gt;-ը կամ անջատեք բոլոր DNS արգելափակիչները և պրոքսիները</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Այլևս չցուցադրել</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Կեղծել տեսանյութերի հոսքերը</string>
   <string name="morphe_spoof_video_streams_screen_summary">Կարգավորեք հաճախորդի կեղծումը՝ վերարտադրման խնդիրները կանխելու համար</string>
@@ -134,7 +132,6 @@ Second \"item\" text"</string>
 Տեսանյութի հետևումը կարող է ձախողվել, մինչև Android System WebView-ը թարմացվի մինչև վերջին տարբերակը:
 
 Սեղմեք OK՝ Android System WebView-ը բացելու համար:"</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Այլևս չցուցադրել</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView-ը տեղադրված չէ: Տեղադրեք այն՝ տեսանյութի հետևումը շտկելու համար</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ծանուցումների մեդիայի կառավարման միջոցները</string>
   <string name="morphe_notification_media_screen_summary">Անհատականացրեք կողպված էկրանին և ծանուցումների վահանակին ցուցադրվող վերարտադրման կառավարման միջոցները</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Թաքցնել «Նախորդ» &amp; «Հաջորդ» կոճակները</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Թաքցնում է «Նախորդ» և «Հաջորդ» կոճակները մեդիայի ծանուցումներում, կողպված էկրանին և ականջակալների կառավարման միջոցներում</string>
   <string name="morphe_disable_notification_media_seekbar_title">Անջատել առաջընթացի սահիչը</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Արգելում է առաջընթացի սահիչի քաշումը կողպված էկրանին և ծանուցումների վահանակին</string>
@@ -244,10 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_effects_custom_restore">Վերականգնել լռելյայն արժեքները</string>
   <string name="morphe_video_effects_custom_add_title">Նոր էֆեկտ</string>
   <string name="morphe_video_effects_custom_edit_title">Խմբագրել էֆեկտը</string>
-  <string name="morphe_video_effects_custom_name_hint">Անուն</string>
   <string name="morphe_video_effects_custom_name_empty">Մուտքագրեք անվանում էֆեկտի համար</string>
   <string name="morphe_video_effects_custom_name_exists">Այս անվամբ էֆեկտը արդեն գոյություն ունի</string>
-  <string name="morphe_video_effects_custom_copy_code">Պատճենել կոդը</string>
   <string name="morphe_video_effects_custom_error_title">Էֆեկտի սխալ</string>
   <string name="morphe_video_effects_custom_error_message">"Տեսանյութերը ցուցադրվում են առանց էֆեկտի, մինչև կոդը ուղղվի: Տրամադրեք այս սխալը AI-ին, որը գրել է կոդը.
 
@@ -257,7 +251,6 @@ Second \"item\" text"</string>
 Խնդրեք AI-ին տրամադրել ավելի կարճ կոդ կամ տեղադրեք կոդը մասៗ:"</string>
   <string name="morphe_video_effects_custom_copy_error">Պատճենման սխալ</string>
   <string name="morphe_video_effects_custom_save_anyway">Այնուամենայնիվ, պահպանել</string>
-  <string name="morphe_video_effects_custom_delete">Ջնջել</string>
   <string name="morphe_video_effects_custom_delete_title">Ջնջե՞լ էֆեկտը։</string>
   <string name="morphe_video_effects_custom_delete_message">%s-ը կջնջվի:</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Այս գործառույթն օգտագործելու համար փոխեք \'Spoof video streams\'-ը ցանկացած հաճախորդի, բացի \'Android Studio\'-ից և \'Android VR Downgraded\'-ից</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Մաքրել կիսման հղումները</string>
-  <string name="morphe_sanitize_sharing_links_summary">Հեռացնում է հետևման հարցումների պարամետրերը կիսված հղումներից</string>
   <string name="morphe_replace_music_with_youtube_title">Փոխել կիսման հղումները youtube.com-ի</string>
   <string name="morphe_replace_music_with_youtube_summary">Կիսվող հղումներում music.youtube.com-ը փոխարինում է youtube.com-ով</string>
   <string name="morphe_replace_links_with_shortener_title">Փոխել կիսման հղումները youtu.be-ի</string>
@@ -371,7 +362,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_type_title">Տառատեսակ</string>
   <string name="morphe_custom_font_type_entry_default">Լռելյայն</string>
   <string name="morphe_custom_font_type_entry_system">Սարքի համակարգային տառատեսակ</string>
-  <string name="morphe_custom_font_type_entry_custom">Տառատեսակի հատուկ ֆայլ</string>
   <string name="morphe_custom_font_file_title">Տառատեսակի հատուկ ֆայլ</string>
   <string name="morphe_custom_font_file_summary">Ընտրեք TTF կամ OTF տառատեսակի ֆայլ</string>
   <string name="morphe_custom_font_file_invalid">Ընտրված ֆայլը TTF կամ OTF տառատեսակ չէ</string>
@@ -381,7 +371,6 @@ Second \"item\" text"</string>
   <string name="morphe_glass_menus_screen_summary">Մենյուներ՝ որպես մատային ապակի՝ իրենց հետևում գտնվող լղոզված բովանդակության վրա</string>
   <string name="morphe_glass_menus_title">Միացնել ապակյա մենյուները</string>
   <string name="morphe_glass_menus_summary">Ցուցադրում է մենյուները և ներքևի թերթերը որպես մատտset ապակի, որոնց հետևի բովանդակությունը լղոզված է</string>
-  <string name="morphe_glass_menus_opacity_title">Ապակու թափանցիկությունը</string>
   <string name="morphe_glass_menus_opacity_summary">Որքանով է մենյուն ծածկում լղոզված բովանդակությունը (0-ն թափանցիկ է, 100-ը՝ անթափանց)</string>
   <string name="morphe_glass_menus_blur_title">Մշուշում</string>
   <string name="morphe_glass_menus_blur_summary">Որքանով է լղոզված մենյուի հետևի բովանդակությունը</string>
@@ -402,7 +391,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_dislike_percentage_summary">Ցուցադրում է անհավանմանները որպես հավանմանների տոկոս, այլ ոչ թե թվով</string>
   <string name="morphe_ryd_estimated_like_title">Ցուցադրել հավանումների մոտավոր քանակը</string>
   <string name="morphe_ryd_estimated_like_summary">Ցուցադրում է հավանումների մոտավոր քանակը այն տեսանյութերի համար, որտեղ ստեղծողը անջատել է հավանումները</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Ցուցադրել կապի սխալների մասին ծանուցումներ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Ցուցադրում է ծանուցում, երբ Return YouTube Dislike սերվերը հասանելի չէ</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike-ը վերականգնում է YouTube-ի կողմից 2021-ին թաքցված բացասական ձայների քանակը: Քանակները վերցված են հեռացումից առաջ արխիվացված տվյալներից, իսկ ավելի նոր տեսանյութերի համար դրանք գնահատվում են օգտատերերի ձայների հիման վրա, ուստի դրանք մոտավոր են և թարմացվում են մի քանի օրը մեկ
 
@@ -424,8 +412,89 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Client-ի հարցումների սահմանափակումներ չեն հանդիպել</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Հանդիպել է կլիենտի հարցումների սահմանափակում %s անգամ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s միլիվայրկյան</string>
-  <string name="morphe_navigation_bar_screen_title">Նավիգացիայի շերտ</string>
   <string name="morphe_navigation_bar_screen_summary">Ընտրեք, թե որ կոճակները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
   <string name="morphe_toolbar_screen_title">Գործիքների վահանակ</string>
   <string name="morphe_toolbar_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն գործիքների վահանակում</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 վայրկյան</string>
+  <string name="morphe_duration_2s">2 վայրկյան</string>
+  <string name="morphe_duration_3s">3 վայրկյան</string>
+  <string name="morphe_duration_4s">4 վայրկյան</string>
+  <string name="morphe_duration_5s">5 վայրկյան</string>
+  <string name="morphe_duration_6s">6 վայրկյան</string>
+  <string name="morphe_duration_7s">7 վայրկյան</string>
+  <string name="morphe_duration_8s">8 վայրկյան</string>
+  <string name="morphe_duration_9s">9 վայրկյան</string>
+  <string name="morphe_duration_10s">10 վայրկյան</string>
+  <string name="morphe_change_start_page_entry_default">Լռելյայն</string>
+  <string name="morphe_change_start_page_entry_explore">Բացահայտել</string>
+  <string name="morphe_change_start_page_entry_history">Պատմություն</string>
+  <string name="morphe_change_start_page_entry_library">Գրադարան</string>
+  <string name="morphe_change_start_page_entry_playlists">Պլեյլիստեր</string>
+  <string name="morphe_change_start_page_entry_search">Որոնում</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Բաժանորդագրություններ</string>
+  <string name="morphe_change_start_page_title">Մեկնարկային էջ</string>
+  <string name="morphe_action_buttons_screen_title">Գործողությունների կոճակներ</string>
+  <string name="morphe_comments_screen_title">Մեկնաբանություններ</string>
+  <string name="morphe_feed_screen_title">Լրահոս</string>
+  <string name="morphe_flyout_menu_screen_title">Ցուցակիչ մենյու</string>
+  <string name="morphe_general_title">Ընդհանուր</string>
+  <string name="morphe_miniplayer_screen_title">Մինի-նվագիչ</string>
+  <string name="morphe_player_screen_title">Նվագարկիչ</string>
+  <string name="morphe_video_screen_title">Տեսանյութ</string>
+  <string name="morphe_appearance_title">Արտաքին տեսք</string>
+  <string name="morphe_cancel">Չեղարկել</string>
+  <string name="morphe_comments_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն մեկնաբանությունների բաժնում</string>
+  <string name="morphe_copy_code">Պատճենել կոդը</string>
+  <string name="morphe_corner_radius_title">Անկյունի շառավիղ</string>
+  <string name="morphe_do_not_show_again">Այլևս չցուցադրել</string>
+  <string name="morphe_download_force_4k_title">Հարկադիր 4K ներբեռնման հասանելիություն</string>
+  <string name="morphe_glass_opacity_title">Ապակու թափանցիկություն</string>
+  <string name="morphe_header_logo_title">Վերնագրի լոգո</string>
+  <string name="morphe_hide_action_bar_title">Թաքցնել գործողությունների շերտը</string>
+  <string name="morphe_hide_cast_button_title">Թաքցնել Cast կոճակը</string>
+  <string name="morphe_hide_comments_button_title">Թաքցնել Մեկնաբանությունների կոճակը</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Թաքցնել Համայնքային կանոնները</string>
+  <string name="morphe_hide_comments_emoji_button_title">Թաքցնել Emoji կոճակը</string>
+  <string name="morphe_hide_comments_gif_button_title">Թաքցնել GIF կոճակը</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Թաքցնում է մեկնաբանություններին և պատասխաններին կցված GIF-երը և պատկերները</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Թաքցնել GIF-երը և պատկերները</string>
+  <string name="morphe_hide_comments_info_button_title">Թաքցնել Տեղեկությունների կոճակը</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Թաքցնել ժամանակային նշման կոճակը</string>
+  <string name="morphe_hide_horizontal_shelves_title">Թաքցնել հորիզոնական դարակները</string>
+  <string name="morphe_hide_like_dislike_button_title">Թաքցնել «Հավանել» և «Չհավանել» կոճակը</string>
+  <string name="morphe_hide_like_dislike_buttons_title">Թաքցնել «Հավանել» և «Չհավանել» կոճակները</string>
+  <string name="morphe_hide_navigation_bar_title">Թաքցնել նավիգացիայի շերտը</string>
+  <string name="morphe_hide_navigation_button_labels_title">Թաքցնել նավիգացիայի կոճակների պիտակները</string>
+  <string name="morphe_hide_previous_next_buttons_title">Թաքցնել «Նախորդ» &amp; «Հաջորդ» կոճակները</string>
+  <string name="morphe_hide_search_button_title">Թաքցնել որոնման կոճակը</string>
+  <string name="morphe_hide_translate_button_title">Թաքցնել թարգմանության կոճակը</string>
+  <string name="morphe_hide_video_ads_title">Թաքցնել տեսանյութերի գովազդները</string>
+  <string name="morphe_loading">Բեռնվում է…</string>
+  <string name="morphe_name">Անուն</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորությունը</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Ցուցադրվող կոճակները՝ %1$s %2$s-ից</string>
+  <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
+  <string name="morphe_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
+  <string name="morphe_navigation_bar_glass_title">Միացնել ապակյա նավիգացիոն վահանակը</string>
+  <string name="morphe_positive_number_invalid">Արժեքը պետք է լինի դրական թիվ</string>
+  <string name="morphe_private_user_id_invalid">Մասնավոր օգտատիրոջ ID-ն պետք է լինի առնվազն 30 նիշ</string>
+  <string name="morphe_private_user_id_title">Ձեր մասնավոր օգտատիրոջ ID-ն</string>
+  <string name="morphe_rename">Վերանվանել</string>
+  <string name="morphe_show_settings_button_title">Ցուցադրել Կարգավորումների կոճակը</string>
+  <string name="morphe_show_settings_button_type_title">Կարգավորումների կոճակի գործողությունը</string>
+  <string name="morphe_show_video_effect_menu_title">Ցուցադրել տեսանյութի էֆեկտների մենյուն</string>
+  <string name="morphe_submit">Ուղարկել</string>
+  <string name="morphe_time_adjustment_step_title">Ժամանակի կարգավորման քայլը</string>
+  <string name="morphe_toast_on_connection_error_title">Ցուցադրել կապի սխալների ծանուցումները</string>
+  <string name="morphe_toast_on_skip_title">Ցուցադրել բաց թողնելու ծանուցումը</string>
+  <string name="morphe_translated_only">Միայն թարգմանվածները</string>
+  <string name="morphe_translating">Թարգմանվում է…</string>
+  <string name="morphe_translation_language_title">Թարգմանության լեզուն</string>
+  <string name="morphe_username_change_unknown_error">Չհաջողվեց փոխել օգտանունը. Կարգավիճակ՝ %1$s %2$s</string>
+  <string name="morphe_username_changed">Օգտանունը հաջողությամբ փոխվեց</string>
+  <string name="morphe_username_html">Ձեր օգտանունը՝ &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">Տեսանյութեր</string>
+  <string name="morphe_vote_downvote">Բացասական ձայն</string>
+  <string name="morphe_vote_upvote">Դրական ձայն</string>
 </resources>

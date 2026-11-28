@@ -112,6 +112,7 @@ val captionsPatch = patch(
                     ),
                     PreferenceCategory(
                         key = "morphe_copy_transcript_category",
+                        titleKey = "morphe_copy_transcript_title",
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                         preferences = copyTranscript
                     ),

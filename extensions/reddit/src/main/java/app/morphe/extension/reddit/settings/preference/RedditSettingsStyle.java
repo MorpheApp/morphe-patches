@@ -7,7 +7,10 @@
 
 package app.morphe.extension.reddit.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.database.DataSetObserver;
@@ -21,18 +24,25 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.preference.TwoStatePreference;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toolbar;
 import android.widget.WrapperListAdapter;
 
 import androidx.annotation.NonNull;
@@ -40,6 +50,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
 
@@ -68,6 +79,26 @@ public final class RedditSettingsStyle {
      * Views that were already styled, so recycled views are not changed twice.
      */
     private static final Set<View> styledViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Toolbar height if the theme has none.
+     */
+    private static final int DEFAULT_ACTION_BAR_SIZE_DP = 56;
+
+    /**
+     * Preference extras key of a child setting that is indented under its parent.
+     */
+    private static final String EXTRA_INDENTED = "morphe_indented";
+
+    public static void setIndented(Preference preference) {
+        preference.getExtras().putBoolean(EXTRA_INDENTED, true);
+    }
+
+    private static boolean isIndented(Object item) {
+        if (!(item instanceof Preference preference)) return false;
+        Bundle extras = preference.peekExtras();
+        return extras != null && extras.getBoolean(EXTRA_INDENTED);
+    }
 
     private static final Typeface DEFAULT_BODY_TYPEFACE = Typeface.DEFAULT;
     private static final Typeface DEFAULT_BOLD_TYPEFACE = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD);
@@ -491,6 +522,27 @@ public final class RedditSettingsStyle {
         return currentPalette.background;
     }
 
+    /**
+     * @return A sub-page that opens in its own dialog, see RedditPreferenceFragment for its toolbar.
+     */
+    public static PreferenceScreen createSubPage(PreferenceManager preferenceManager,
+                                                   Context context,
+                                                   String key,
+                                                   String title,
+                                                   @Nullable String summary) {
+        // Sub-page dialog inherits its theme from the PreferenceScreen context rather than the main DialogFragment.
+        Context screenContext = new ContextThemeWrapper(context, Utils.isDarkModeEnabled()
+                ? android.R.style.Theme_DeviceDefault_NoActionBar
+                : android.R.style.Theme_DeviceDefault_Light_NoActionBar);
+        PreferenceScreen screen = preferenceManager.createPreferenceScreen(screenContext);
+        screen.setKey(key);
+        screen.setTitle(title);
+        if (summary != null) {
+            screen.setSummary(summary);
+        }
+        return screen;
+    }
+
     private static int backgroundColor() {
         return getBackgroundColor();
     }
@@ -575,7 +627,7 @@ public final class RedditSettingsStyle {
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = adapter.getView(position, convertView, parent);
             try {
-                styleRow(view, adapter.getItem(position), position);
+                styleRow(view, adapter.getItem(position), isFirstVisibleRow(adapter, position));
             } catch (Exception ex) {
                 Logger.printException(() -> "styleRow failure", ex);
             }
@@ -643,19 +695,37 @@ public final class RedditSettingsStyle {
 
     // region Rows.
 
-    private static void styleRow(View view, Object item, int position) {
+    /**
+     * @return If only untitled categories, which show nothing, are above the row.
+     */
+    private static boolean isFirstVisibleRow(ListAdapter adapter, int position) {
+        for (int i = 0; i < position; i++) {
+            if (!(adapter.getItem(i) instanceof PreferenceCategory category)
+                    || category.getTitle() != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void styleRow(View view, Object item, boolean isFirst) {
         TextView title = view.findViewById(android.R.id.title);
         if (title == null) return;
 
         if (item instanceof PreferenceCategory) {
-            styleSectionHeader(view, title, position == 0);
+            styleSectionHeader(view, title, isFirst);
             return;
         }
+
+        // Views are recycled between indented and normal rows, so start padding runs on every bind.
+        final int startPadding = isIndented(item)
+                ? Dim.dp40
+                : Dim.dp16;
+        view.setPaddingRelative(startPadding, 0, Dim.dp16, 0);
 
         // Text is set again for every bind, the style only once per view.
         if (styledViews.add(view)) {
             view.setMinimumHeight(Dim.dp48);
-            view.setPaddingRelative(Dim.dp16, 0, Dim.dp16, 0);
 
             title.setTypeface(bodyTypeface);
             title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
@@ -699,13 +769,13 @@ public final class RedditSettingsStyle {
             title.setPaddingRelative(0, topPadding, 0, Dim.dp8);
         }
 
-        if (!styledViews.add(view)) return;
-
         title.setAllCaps(true);
         title.setTypeface(boldTypeface);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         title.setLetterSpacing(0);
         title.setTextColor(headerColor());
+
+        if (!styledViews.add(view)) return;
 
         view.setMinimumHeight(0);
         if (view != title) {
@@ -1005,5 +1075,92 @@ public final class RedditSettingsStyle {
         title.setTypeface(boldTypeface);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         title.setTextColor(getTitleColor());
+    }
+
+    /**
+     * @return The toolbar height of the theme of the context.
+     */
+    public static int getActionBarSize(Context context) {
+        TypedValue tv = new TypedValue();
+        if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+            return TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+        }
+        return Dim.dp(DEFAULT_ACTION_BAR_SIZE_DP);
+    }
+
+    /**
+     * @return The background color of the settings dialog and its sub-pages.
+     */
+    public static int getSettingsBackgroundColor() {
+        return isModernStyle()
+                ? getBackgroundColor()
+                : ThemeUtils.getAppBackgroundColor();
+    }
+
+    /**
+     * Makes a settings dialog window fill the screen, with system bars colored like the settings.
+     */
+    public static void styleWindow(Window window) {
+        final int appBackgroundColor = getSettingsBackgroundColor();
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setStatusBarColor(appBackgroundColor);
+        window.setNavigationBarColor(appBackgroundColor);
+        // Dark system bar icons only on a light background.
+        window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
+                ? 0
+                : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+    }
+
+    /**
+     * Sets the shadow below a settings toolbar.
+     */
+    public static void applyToolbarElevation(View view) {
+        final boolean modernStyle = isModernStyle();
+        final boolean isDark = Utils.isDarkModeEnabled();
+        view.setElevation(modernStyle ? (isDark ? Dim.dp1 : Dim.dp6) : Dim.dp2);
+        if (modernStyle && !isDark) {
+            view.setTranslationZ(Dim.dp2);
+        }
+    }
+
+    /**
+     * @return A settings toolbar with a title and a back button.
+     */
+    public static Toolbar createToolbar(Context context, CharSequence title, Runnable onBack) {
+        final boolean modernStyle = isModernStyle();
+        // Icons use the text color of the rows, the title is white or black like the app titles.
+        final int appForegroundColor = modernStyle
+                ? getTextColor()
+                : ThemeUtils.getAppForegroundColor();
+        final int titleColor = modernStyle
+                ? getTitleColor()
+                : appForegroundColor;
+        final int appBackgroundColor = getSettingsBackgroundColor();
+
+        Toolbar toolbar = new Toolbar(context);
+        toolbar.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, getActionBarSize(context)));
+        toolbar.setBackgroundColor(appBackgroundColor);
+        toolbar.setTitle(title);
+        toolbar.setTitleTextColor(titleColor);
+
+        toolbar.post(() -> {
+            TextView titleTextView = Utils.getChildView(toolbar, false,
+                    view -> view instanceof TextView);
+            if (titleTextView != null) {
+                if (modernStyle) {
+                    styleToolbarTitle(titleTextView);
+                } else {
+                    titleTextView.setTextSize(18);
+                }
+            }
+        });
+
+        Drawable backIcon = Objects.requireNonNull(ResourceUtils.getDrawable("icon_arrow_back")).mutate();
+        backIcon.setTint(appForegroundColor);
+        toolbar.setNavigationIcon(backIcon);
+        toolbar.setNavigationContentDescription(str("morphe_settings_navigate_up"));
+        toolbar.setNavigationOnClickListener(v -> onBack.run());
+        return toolbar;
     }
 }

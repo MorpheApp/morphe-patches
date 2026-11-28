@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.layout.hide.updatescreen
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object AppBlockingCheckResultToStringFingerprint : Fingerprint(
     name = "toString",
@@ -17,4 +18,10 @@ internal object AppBlockingCheckResultToStringFingerprint : Fingerprint(
     filters = listOf(
         string("AppBlockingCheckResult{intent=")
     )
+)
+
+internal object AppBlockingCheckResultConstructorFingerprint : Fingerprint(
+    classFingerprint = AppBlockingCheckResultToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Landroid/content/Intent;", "Z")
 )

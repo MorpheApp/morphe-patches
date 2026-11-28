@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">Պահանջվում է վերագործարկում</string>
   <string name="morphe_settings_restart_dialog_message">Վերագործարկեք հավելվածը, որպեսզի այս փոփոխությունն ուժի մեջ մտնի</string>
   <string name="morphe_settings_restart">Վերագործարկել</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Ներմուծել</string>
-  <string name="morphe_settings_import_copy">Պատճենել</string>
   <string name="morphe_settings_import_reset">Morphe-ի կարգավորումները վերակայվեցին լռելյայն արժեքներին</string>
   <string name="morphe_settings_import_success">Ներմուծվել է %s կարգավորում</string>
   <string name="morphe_settings_import_failure_parse">Ներմուծումը ձախողվեց՝ %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">Պատչեր</string>
   <string name="morphe_settings_about_version">Տարբերակ</string>
-  <string name="morphe_settings_about_close">Փակել</string>
   <string name="morphe_settings_about_prerelease">Նախնական թողարկում</string>
   <string name="morphe_settings_about_update_available">Թարմացում հասանելի է. %s</string>
   <string name="morphe_settings_about_update_hint">Պատչերը թարմացնելու համար օգտագործեք Morphe-ը՝ այս հավելվածը նորից պատչելու համար</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Լիցենզիոն ծանուցումներ</string>
-  <string name="morphe_settings_about_licenses_loading">Բեռնվում է…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Վրիպազերծում</string>
   <string name="morphe_debug_screen_summary">Կարգավորեք մշակողի առաջադեմ տարբերակները և ախտորոշման մատյանները</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">Debug-ի լոգերը հաջողությամբ արտահանվեցին</string>
   <string name="morphe_debug_export_logs_failed">Debug-ի լոգերի արտահանումը ձախողվեց</string>
   <string name="morphe_debug_logs_search_hint">Փնտրել debug լոգերում…</string>
-  <string name="morphe_debug_export_logs_clear">Մաքրել</string>
   <string name="morphe_debug_logs_disabled">Debug-ի գրանցումն անջատված է</string>
   <string name="morphe_debug_logs_none_found">Debug-ի լոգեր չեն գտնվել</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug-ի լոգերը պատճենվեցին</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Արգելված (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">Պարտադիր (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">Ավտոմատ</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">Անջատված</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">Միացված</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Միացնել հարկադիր</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Արգելել</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">Հեռացնել</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ֆունկցիոնալության դրոշակները պահպանվեցին</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ֆունկցիոնալության դրոշակները վերակայվեցին</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ֆունկցիոնալության դրոշակները պատճենվեցին հիշողության մեջ</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"Ձեր MicroG v%1$s-ն հնացած է և կարող է խնդիրներ առաջացնել:
 
 Խնդրում ենք թարմացնել MicroG-ն մինչև վերջին v%2$s տարբերակը"</string>
-  <string name="gms_core_dialog_update_text">Թարմացնել</string>
   <string name="gms_core_dialog_ignore_text">Անտեսել</string>
   <string name="gms_core_dialog_conflict_message">"Տեղադրված MicroG-ն չի խորհուրդ տրվում Morphe-ի կողմից.
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 MicroG-ի համար մարտկոցի օպտիմիզացիայի անջատումը բացասաբար չի անդրադառնա մարտկոցի օգտագործման վրա:
 
 Սեղմեք շարունակել կոճակը և թույլ տվեք օպտիմիզացիայի փոփոխությունները"</string>
-  <string name="gms_core_dialog_continue_text">Շարունակել</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Ցույց տալ MicroG-ի մարտկոցի օպտիմիզացման երկխոսությունը</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Սա անջատելը կթաքցնի MicroG-ի մարտկոցի օպտիմիզացման հուշումը
 
@@ -259,9 +245,29 @@ MicroG-ի համար մարտկոցի օպտիմիզացիայի անջատու�
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 Սխալների ուղղումներ</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 Այլ փոփոխություններ</string>
   <string name="morphe_patches_update_notice_dialog_more">…և ևս %s</string>
-  <string name="morphe_patches_update_notice_dialog_update">Թարմացնել</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Փակել</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Խափանման մատյանը պահպանվել է օգտատիրոջ փաստաթղթերում՝ %s</string>
   <string name="morphe_crash_log_saved">Խափանման մատյանը պահպանված է՝ %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">Morphe-ի մասին</string>
+  <string name="morphe_ads_screen_title">Գովազդներ</string>
+  <string name="morphe_misc_screen_title">Տարբեր</string>
+  <string name="morphe_navigation_bar_screen_title">Նավիգացիայի շերտ</string>
+  <string name="morphe_post_buttons_screen_title">Հրապարակման կոճակներ</string>
+  <string name="morphe_custom_branding_icon_title">Հավելվածի պատկերակ</string>
+  <string name="morphe_download">Ներբեռնել</string>
+  <string name="morphe_hide_create_button_title">Թաքցնել «Ստեղծել» կոճակը</string>
+  <string name="morphe_hide_post_comment_button_title">Թաքցնել «Մեկնաբանել» կոճակը</string>
+  <string name="morphe_sanitize_sharing_links_summary">Հեռացնում է հետքերի հարցման պարամետրերը կիսվող հղումներից</string>
+  <string name="morphe_sanitize_sharing_links_title">Մաքրել կիսվող հղումները</string>
+  <string name="morphe_settings_add">Ավելացնել</string>
+  <string name="morphe_settings_clear">Մաքրել</string>
+  <string name="morphe_settings_close">Փակել</string>
+  <string name="morphe_settings_continue">Շարունակել</string>
+  <string name="morphe_settings_copy">Պատճենել</string>
+  <string name="morphe_settings_delete">Ջնջել</string>
+  <string name="morphe_settings_remove">Հեռացնել</string>
+  <string name="morphe_settings_update">Թարմացնել</string>
 </resources>

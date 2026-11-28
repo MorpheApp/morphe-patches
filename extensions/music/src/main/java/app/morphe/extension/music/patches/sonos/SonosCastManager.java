@@ -9,18 +9,20 @@ package app.morphe.extension.music.patches.sonos;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.MediaMetadata;
+import android.media.VolumeProvider;
+import android.media.session.MediaController;
+import android.media.session.MediaSession;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.PowerManager;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
@@ -50,6 +52,11 @@ final class SonosCastManager {
     private static final int STOPPED_POLLS_BEFORE_RESTART = 2;
     private static final int MAX_VOLUME = 100;
     private static final int UNKNOWN_VOLUME = -1;
+    /**
+     * The system moves the session volume by one step for each volume key press.
+     */
+    private static final int VOLUME_STEPS = 20;
+    private static final int PERCENT_PER_VOLUME_STEP = MAX_VOLUME / VOLUME_STEPS;
     private static final int COVER_JPEG_QUALITY = 90;
     private static final String LOCK_TAG = "Morphe:SonosCast";
     /**
@@ -57,12 +64,6 @@ final class SonosCastManager {
      * if polling stops without a disconnect.
      */
     private static final long WAKE_LOCK_TIMEOUT_MILLIS = TimeUnit.MINUTES.toMillis(1);
-
-    // Hidden AudioManager constants.
-    private static final String VOLUME_CHANGED_ACTION = "android.media.VOLUME_CHANGED_ACTION";
-    private static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
-    private static final String EXTRA_VOLUME_STREAM_VALUE = "android.media.EXTRA_VOLUME_STREAM_VALUE";
-    private static final String EXTRA_PREV_VOLUME_STREAM_VALUE = "android.media.EXTRA_PREV_VOLUME_STREAM_VALUE";
 
     private static final ScheduledExecutorService pollExecutor = Executors.newSingleThreadScheduledExecutor();
 
@@ -73,17 +74,53 @@ final class SonosCastManager {
     @Nullable
     private static ScheduledFuture<?> pollTask;
     private static int stoppedPolls;
+    /**
+     * If the speaker played the stream since connecting. Until then it can still report the URI it
+     * played before, which is not another app taking over.
+     */
+    private static boolean streamSeen;
 
     /**
      * Last speaker volume in percent that was set or read.
      */
     private static volatile int speakerVolume = UNKNOWN_VOLUME;
-    /**
-     * The phone volume set from the speaker volume, so that the volume change it causes is not sent back.
-     */
-    private static volatile int expectedPhoneVolume = UNKNOWN_VOLUME;
     @Nullable
     private static volatile IntConsumer volumeListener;
+
+    private static final VolumeProvider volumeProvider = new VolumeProvider(
+            VolumeProvider.VOLUME_CONTROL_ABSOLUTE, VOLUME_STEPS, 0) {
+        @Override
+        public void onSetVolumeTo(int steps) {
+            if (speakerVolume != UNKNOWN_VOLUME) {
+                onSessionVolume(steps * PERCENT_PER_VOLUME_STEP);
+            }
+        }
+
+        @Override
+        public void onAdjustVolume(int direction) {
+            final int volume = speakerVolume;
+            // Releasing a volume key adjusts by 0.
+            if (direction != 0 && volume != UNKNOWN_VOLUME) {
+                onSessionVolume((toVolumeSteps(volume) + direction) * PERCENT_PER_VOLUME_STEP);
+            }
+        }
+    };
+    @Nullable
+    private static volatile MediaSession mediaSession;
+    private static final Object sessionLock = new Object();
+    @GuardedBy("sessionLock")
+    @Nullable
+    private static MediaSession remoteSession;
+    @GuardedBy("sessionLock")
+    @Nullable
+    private static AudioAttributes localAudioAttributes;
+    /**
+     * The last audio focus change while connected, delivered to the app after disconnecting.
+     * Only used on the main thread.
+     */
+    @Nullable
+    private static AudioManager.OnAudioFocusChangeListener deferredFocusListener;
+    private static int deferredFocusChange;
 
     @Nullable
     private static volatile MediaMetadata metadata;
@@ -107,8 +144,6 @@ final class SonosCastManager {
      */
     private static final Map<AudioTrack, Float> playerVolumes = new WeakHashMap<>();
 
-    @Nullable
-    private static BroadcastReceiver volumeReceiver;
     @Nullable
     private static WifiManager.WifiLock highPerfWifiLock;
     @Nullable
@@ -143,7 +178,12 @@ final class SonosCastManager {
     }
 
     static void connect(SonosDevice device) {
-        disconnect();
+        final SonosDevice previousDevice = activeDevice;
+        if (previousDevice != null) {
+            // Switch speakers without giving the playback back to the phone in between.
+            SonosSoapClient.stop(previousDevice);
+            stopStreaming(previousDevice);
+        }
 
         final String url;
         try {
@@ -151,6 +191,7 @@ final class SonosCastManager {
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not start the stream server", ex);
             Utils.showToastLong(str("morphe_music_sonos_cast_connection_failed", device.name));
+            restorePhone();
             return;
         }
 
@@ -159,24 +200,48 @@ final class SonosCastManager {
         activeDevice = device;
         speakerVolume = UNKNOWN_VOLUME;
         sentTrack = null;
+        stoppedPolls = 0;
+        streamSeen = false;
 
         applyPlayerVolumes(true);
-        final Context context = Utils.getContext();
-        acquireLocks(context);
-        registerVolumeReceiver(context);
+        acquireLocks(Utils.getContext());
+        syncSessionPlayback();
 
         sendTrackIfChanged(true);
-        stoppedPolls = 0;
+        // Read the volume now, as the volume keys do nothing until it is known.
+        pollExecutor.execute(() -> {
+            try {
+                pollVolume(device);
+            } catch (Exception ex) {
+                Logger.printException(() -> "pollVolume failure", ex);
+            }
+        });
         pollTask = pollExecutor.scheduleWithFixedDelay(SonosCastManager::poll,
                 POLL_INTERVAL_MILLIS, POLL_INTERVAL_MILLIS, TimeUnit.MILLISECONDS);
     }
 
     static void disconnect() {
         final SonosDevice device = activeDevice;
-        if (device == null) {
-            return;
+        if (device != null) {
+            SonosSoapClient.stop(device);
+            stopStreaming(device);
+            restorePhone();
         }
+    }
 
+    /**
+     * Disconnects without stopping the speaker, which now plays for another app.
+     */
+    private static void onSpeakerTakenOver(SonosDevice device) {
+        stopStreaming(device);
+        final MediaSession session = mediaSession;
+        if (session != null) {
+            session.getController().getTransportControls().pause();
+        }
+        restorePhone();
+    }
+
+    private static void stopStreaming(SonosDevice device) {
         Logger.printInfo(() -> "Disconnecting from " + device);
         activeDevice = null;
         serverUrl = null;
@@ -184,19 +249,99 @@ final class SonosCastManager {
             pollTask.cancel(false);
             pollTask = null;
         }
-
-        SonosSoapClient.stop(device);
         LocalStreamServer.stop();
-        unregisterVolumeReceiver();
         releaseLocks();
+    }
+
+    /**
+     * Gives the playback back to the phone. A deferred audio focus loss pauses the app before
+     * the phone is unmuted.
+     */
+    private static void restorePhone() {
+        deliverDeferredFocusChange();
+        syncSessionPlayback();
         applyPlayerVolumes(false);
+    }
+
+    private static void deliverDeferredFocusChange() {
+        final AudioManager.OnAudioFocusChangeListener listener = deferredFocusListener;
+        if (listener != null) {
+            deferredFocusListener = null;
+            listener.onAudioFocusChange(deferredFocusChange);
+        }
+    }
+
+    /**
+     * Like with Cast, other apps playing on the phone do not pause the speaker.
+     *
+     * @return If the change is deferred and the app must not handle it now.
+     */
+    static boolean deferAudioFocusChange(AudioManager.OnAudioFocusChangeListener listener, int focusChange) {
+        if (!isConnected()) {
+            return false;
+        }
+        deferredFocusListener = listener;
+        deferredFocusChange = focusChange;
+        return true;
     }
 
     static void setSpeakerVolume(int volume) {
         final SonosDevice device = activeDevice;
         if (device != null) {
-            speakerVolume = volume;
+            updateSpeakerVolume(volume);
             SonosSoapClient.setVolume(device, volume);
+        }
+    }
+
+    private static void updateSpeakerVolume(int volume) {
+        speakerVolume = volume;
+        volumeProvider.setCurrentVolume(toVolumeSteps(volume));
+    }
+
+    private static int toVolumeSteps(int volume) {
+        return Math.round(volume / (float) PERCENT_PER_VOLUME_STEP);
+    }
+
+    private static void onSessionVolume(int volume) {
+        final int clampedVolume = Math.max(0, Math.min(MAX_VOLUME, volume));
+        setSpeakerVolume(clampedVolume);
+        Utils.runOnMainThread(() -> notifyVolumeListener(clampedVolume));
+    }
+
+    private static void notifyVolumeListener(int volume) {
+        final IntConsumer listener = volumeListener;
+        if (listener != null) {
+            listener.accept(volume);
+        }
+    }
+
+    /**
+     * Makes the media session remote while connected, so the volume keys and the system volume
+     * panel change the speaker volume instead of the phone volume.
+     */
+    private static void syncSessionPlayback() {
+        synchronized (sessionLock) {
+            final MediaSession session = isConnected() ? mediaSession : null;
+            if (session == remoteSession) {
+                return;
+            }
+
+            if (remoteSession != null && localAudioAttributes != null) {
+                remoteSession.setPlaybackToLocal(localAudioAttributes);
+            }
+            remoteSession = null;
+            localAudioAttributes = null;
+            if (session == null) {
+                return;
+            }
+
+            final MediaController.PlaybackInfo info = session.getController().getPlaybackInfo();
+            if (info == null || info.getPlaybackType() != MediaController.PlaybackInfo.PLAYBACK_TYPE_LOCAL) {
+                return;
+            }
+            localAudioAttributes = info.getAudioAttributes();
+            session.setPlaybackToRemote(volumeProvider);
+            remoteSession = session;
         }
     }
 
@@ -245,15 +390,29 @@ final class SonosCastManager {
         }
     }
 
-    static void onMetadata(@Nullable MediaMetadata newMetadata) {
+    static void onMetadata(MediaSession session, @Nullable MediaMetadata newMetadata) {
+        if (session != mediaSession) {
+            mediaSession = session;
+            syncSessionPlayback();
+        }
+
         // YouTube Music also sets metadata without an artist in the middle of a track.
         if (newMetadata == null || getArtist(newMetadata) == null) {
             return;
         }
 
         metadata = newMetadata;
-        if (isConnected()) {
-            sendTrackIfChanged(false);
+        final SonosDevice device = activeDevice;
+        if (device != null) {
+            pollExecutor.execute(() -> {
+                try {
+                    if (device == activeDevice && !disconnectIfTakenOver(device)) {
+                        sendTrackIfChanged(false);
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Track update failure", ex);
+                }
+            });
         }
     }
 
@@ -321,6 +480,44 @@ final class SonosCastManager {
         return LocalStreamServer.getCoverUrl(serverUrl, ++coverVersion);
     }
 
+    /**
+     * Reads the volume that was changed in a speaker app or with the speaker buttons.
+     */
+    private static void pollVolume(SonosDevice device) {
+        final int previousVolume = speakerVolume;
+        final Integer volume = SonosSoapClient.getVolume(device);
+        final boolean volumeSetDuringRead = previousVolume != speakerVolume;
+        if (volume != null && volume != previousVolume && !volumeSetDuringRead && device == activeDevice) {
+            updateSpeakerVolume(volume);
+            Utils.runOnMainThread(() -> notifyVolumeListener(volume));
+        }
+    }
+
+    /**
+     * Blocks until the speaker answers.
+     *
+     * @return If another app plays on the speaker, which then disconnects on the main thread.
+     */
+    private static boolean disconnectIfTakenOver(SonosDevice device) {
+        final String url = serverUrl;
+        final String sourceUri = SonosSoapClient.getSourceUri(device);
+        if (url != null && LocalStreamServer.getStreamUrl(url).equals(sourceUri)) {
+            streamSeen = true;
+            return false;
+        }
+        if (!streamSeen || sourceUri == null || sourceUri.isEmpty()) {
+            return false;
+        }
+
+        Logger.printInfo(() -> "Another app plays on " + device);
+        Utils.runOnMainThread(() -> {
+            if (device == activeDevice) {
+                onSpeakerTakenOver(device);
+            }
+        });
+        return true;
+    }
+
     private static void poll() {
         try {
             final SonosDevice device = activeDevice;
@@ -328,15 +525,12 @@ final class SonosCastManager {
                 return;
             }
             renewWakeLock();
-
-            final Integer volume = SonosSoapClient.getVolume(device);
-            if (volume != null && volume != speakerVolume) {
-                // Changed in a speaker app or with the speaker buttons.
-                speakerVolume = volume;
-                Utils.runOnMainThread(() -> onSpeakerVolumeChanged(volume));
+            pollVolume(device);
+            if (disconnectIfTakenOver(device)) {
+                return;
             }
 
-            // The speaker stops playing when the connection drops, or when another app plays on it.
+            // The speaker stops playing when the connection drops.
             final String state = SonosSoapClient.getTransportState(device);
             final boolean isStopped = "STOPPED".equals(state) || "NO_MEDIA_PRESENT".equals(state);
             if (isStopped && !LocalStreamServer.hasClients()) {
@@ -350,70 +544,6 @@ final class SonosCastManager {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "poll failure", ex);
-        }
-    }
-
-    private static void onSpeakerVolumeChanged(int volume) {
-        if (!isConnected()) {
-            return;
-        }
-
-        final AudioManager audioManager = Utils.getContext().getSystemService(AudioManager.class);
-        final int maxPhoneVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        final int phoneVolume = Math.round(volume * maxPhoneVolume / (float) MAX_VOLUME);
-        if (phoneVolume != audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)) {
-            expectedPhoneVolume = phoneVolume;
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, phoneVolume, 0);
-        }
-
-        final IntConsumer listener = volumeListener;
-        if (listener != null) {
-            listener.accept(volume);
-        }
-    }
-
-    /**
-     * Sends the volume buttons of the phone to the speaker.
-     */
-    private static void registerVolumeReceiver(Context context) {
-        final AudioManager audioManager = context.getSystemService(AudioManager.class);
-        final int maxPhoneVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-
-        volumeReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context receiverContext, Intent intent) {
-                try {
-                    if (intent.getIntExtra(EXTRA_VOLUME_STREAM_TYPE, -1) != AudioManager.STREAM_MUSIC) {
-                        return;
-                    }
-                    final int phoneVolume = intent.getIntExtra(EXTRA_VOLUME_STREAM_VALUE, -1);
-                    if (phoneVolume < 0 || phoneVolume == intent.getIntExtra(EXTRA_PREV_VOLUME_STREAM_VALUE, -1)) {
-                        return;
-                    }
-                    if (phoneVolume == expectedPhoneVolume) {
-                        expectedPhoneVolume = UNKNOWN_VOLUME;
-                        return;
-                    }
-
-                    final int volume = Math.round(phoneVolume * MAX_VOLUME / (float) maxPhoneVolume);
-                    setSpeakerVolume(volume);
-                    final IntConsumer listener = volumeListener;
-                    if (listener != null) {
-                        listener.accept(volume);
-                    }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "onReceive failure", ex);
-                }
-            }
-        };
-        // A protected system broadcast, so no export flag is needed.
-        context.registerReceiver(volumeReceiver, new IntentFilter(VOLUME_CHANGED_ACTION));
-    }
-
-    private static void unregisterVolumeReceiver() {
-        if (volumeReceiver != null) {
-            Utils.getContext().unregisterReceiver(volumeReceiver);
-            volumeReceiver = null;
         }
     }
 

@@ -31,7 +31,6 @@ import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_SUBTITLE;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_TAP;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_TITLE;
-import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SECTION_LIST;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SECTION_LIST_CONTENTS;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_IMAGE;
@@ -39,8 +38,6 @@ import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_SUBTITLE;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_TAP;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_TITLE;
-import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TAB;
-import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TAB_CONTENTS;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TEXT_CONTENT;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.THUMBNAIL;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.THUMBNAIL_CONTENTS;
@@ -63,15 +60,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.PageContents;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer;
+
 /** Reads titles, artwork, and playback actions from phone search responses. */
 @SuppressWarnings("unused")
 final class AndroidAutoSearchResponseParser {
-    private static final int SEARCH_CONTENTS = 4;
-    private static final int TABBED_SEARCH = 60_498_879;
-    private static final int SEARCH_TABS = 1;
-    private static final int TAB_ID = 11;
-    private static final int TAB_COMMAND = 1;
-    private static final int MESSAGE = 58_508_690;
+    private static final String CATALOG_TAB_ID = "music_search_catalog";
+    private static final String UPLOADS_TAB_ID = "music_search_upload";
 
     private static final int COMPACT_RESULT_CARD = 1_297;
     private static final int COMPACT_RESULT_CONTENT = 1;
@@ -81,9 +77,6 @@ final class AndroidAutoSearchResponseParser {
     private static final int TOP_RESULT_COMPONENTS = 9;
     private static final int TOP_RESULT_CARD = 1;
     private static final int TOP_RESULT_RELATED_ROW = 2;
-
-    private static final int SEARCH = 48_687_709;
-    private static final int SEARCH_PARAMS = 2;
 
     private static final int BROWSE_SUPPORTED_CONFIG = 6;
     private static final int BROWSE_MUSIC_CONFIG = 172_183_029;
@@ -103,7 +96,7 @@ final class AndroidAutoSearchResponseParser {
         ALBUMS("library_albums_shelf_title"),
         ARTISTS("library_artists_shelf_title"),
         PLAYLISTS("library_playlists_shelf_title"),
-        VIDEOS("morphe_music_android_auto_videos"),
+        VIDEOS("morphe_videos"),
         PODCASTS("offline_podcasts_shelf_title"),
         EPISODES("library_episodes_shelf_title"),
         UPLOADED_SONGS("morphe_music_android_auto_uploaded_songs"),
@@ -117,39 +110,43 @@ final class AndroidAutoSearchResponseParser {
 
     record SearchResult(String title, String subtitle, String artworkUrl, byte[] playCommandBytes,
                         boolean preservePlaybackCommand, ResultCategory category) {}
-    static List<SearchResult> parseSearchResults(byte[] response, boolean uploaded) {
-        ProtoMessage root = new ProtoMessage(response);
-        ProtoMessage pageContents = root.messageField(SEARCH_CONTENTS);
-        if (!pageContents.messageField(MESSAGE).isEmpty()) return Collections.emptyList();
-        ProtoMessage sectionList = pageContents.messageField(SECTION_LIST);
-        if (sectionList.isEmpty()) {
-            String requestedTabId = uploaded ? "music_search_upload" : "music_search_catalog";
+
+    static List<SearchResult> parseSearchResults(PageContents contents, boolean uploaded) {
+        if (hasNoContents(contents)) {
+            String requestedTabId = uploaded ? UPLOADS_TAB_ID : CATALOG_TAB_ID;
             boolean hasCatalogTab = false;
-            boolean hasUploadTab = false;
-            for (ProtoMessage tabWrapper : pageContents.messageField(TABBED_SEARCH).repeatedMessageField(SEARCH_TABS)) {
-                ProtoMessage tab = tabWrapper.messageField(TAB);
-                hasCatalogTab |= tab.stringField(TAB_ID).equals("music_search_catalog");
-                hasUploadTab |= tab.stringField(TAB_ID).equals("music_search_upload");
-                if (!tab.stringField(TAB_ID).isEmpty() && !tab.stringField(TAB_ID).equals(requestedTabId)) continue;
-                ProtoMessage tabContents = tab.messageField(TAB_CONTENTS);
-                if (!tabContents.messageField(MESSAGE).isEmpty()) return Collections.emptyList();
-                sectionList = tabContents.messageField(SECTION_LIST);
-                if (!sectionList.isEmpty()) break;
+            boolean hasUploadsTab = false;
+            TabRenderer resultsTab = null;
+            for (var wrapper : contents.getTabbedSearchResultsRenderer().getTabsList()) {
+                var tab = wrapper.getTabRenderer();
+                String id = tab.getTabIdentifier();
+                hasCatalogTab |= CATALOG_TAB_ID.equals(id);
+                hasUploadsTab |= UPLOADS_TAB_ID.equals(id);
+                if (!id.isEmpty() && !requestedTabId.equals(id)) continue;
+                if (hasNoContents(tab.getContent())) continue;
+                // Without tab IDs, prefer the selected tab.
+                if (resultsTab == null || (tab.getSelected() && !resultsTab.getSelected())) {
+                    resultsTab = tab;
+                }
             }
             // Accounts without uploads omit that tab from an otherwise valid search response.
-            if (uploaded && hasCatalogTab && !hasUploadTab) return Collections.emptyList();
+            if (uploaded && hasCatalogTab && !hasUploadsTab) return Collections.emptyList();
+            if (resultsTab == null) throw new IllegalArgumentException("Unrecognized search contents");
+            contents = resultsTab.getContent();
         }
-        if (sectionList.isEmpty()) throw new IllegalArgumentException("Unrecognized search contents");
-        return readSections(sectionList);
+        // YTM shows a message instead of sections if nothing was found.
+        if (contents.hasMessageRenderer()) return Collections.emptyList();
+        return readSections(new ProtoMessage(contents.getSectionListRenderer().toByteArray()));
     }
 
-    static String uploadedSearchParams(byte[] response) {
-        ProtoMessage tabbedSearch = new ProtoMessage(response).messagePath(SEARCH_CONTENTS, TABBED_SEARCH);
-        for (ProtoMessage tabWrapper : tabbedSearch.repeatedMessageField(SEARCH_TABS)) {
-            ProtoMessage tab = tabWrapper.messageField(TAB);
-            if (tab.stringField(TAB_ID).equals("music_search_upload")) {
-                return tab.messagePath(TAB_COMMAND, SEARCH).stringField(SEARCH_PARAMS);
-            }
+    private static boolean hasNoContents(PageContents contents) {
+        return !contents.hasSectionListRenderer() && !contents.hasMessageRenderer();
+    }
+
+    static String uploadedSearchParams(PageContents contents) {
+        for (var wrapper : contents.getTabbedSearchResultsRenderer().getTabsList()) {
+            var tab = wrapper.getTabRenderer();
+            if (UPLOADS_TAB_ID.equals(tab.getTabIdentifier())) return tab.getEndpoint().getSearchEndpoint().getParams();
         }
         return "";
     }

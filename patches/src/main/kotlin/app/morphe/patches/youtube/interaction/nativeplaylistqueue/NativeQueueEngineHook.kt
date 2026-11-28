@@ -114,10 +114,7 @@ internal fun installNativeQueueEngine(
     mutableClassDefBy(wrapperType).addPatchInterface(
         NATIVE_PLAYBACK_INTERFACE,
         "patch_isLocalQueue",
-        """
-            iget-boolean v0, p0, $localFlag
-            return v0
-        """
+        localFlag
     )
 
     // Copy the response envelope. Other native consumers retain the untouched server model.

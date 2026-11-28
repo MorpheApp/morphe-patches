@@ -7,14 +7,18 @@
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -127,20 +131,31 @@ public final class OpenAIClient {
     private OpenAIClient() {
     }
 
+    /** Validates with the stored extra headers and body. */
     public static boolean validateConfig(String baseUrl, String apiToken, String model) {
+        return validationError(baseUrl, apiToken, model,
+                Settings.LYRICS_AI_EXTRA_HEADERS.get(), Settings.LYRICS_AI_EXTRA_BODY.get()) == null;
+    }
+
+    /**
+     * @param extraHeaders The headers to send, which may not be saved yet.
+     * @param extraBody    The body keys to send, which may not be saved yet.
+     * @return Null when the endpoint answers, otherwise why it did not. An endpoint that explains
+     *         its refusal is quoted, so a retired model or a rejected key says so.
+     */
+    @Nullable
+    public static String validationError(String baseUrl, String apiToken, String model,
+                                         String extraHeaders, String extraBody) {
         if (baseUrl == null || baseUrl.trim().isEmpty()
                 || model == null || model.trim().isEmpty()) {
-            return false;
+            return str("morphe_music_lyrics_ai_config_status_invalid");
         }
         HttpURLConnection conn = null;
         try {
-            JSONObject body = new JSONObject();
-            body.put("model", model);
-            body.put("messages", new JSONArray().put(
-                    new JSONObject().put("role", "user").put("content", "hi")));
-            body.put("max_tokens", 1);
-            // Validate with the same body the feature will send, so what works here works there.
-            applyExtraBody(body);
+            // The body the feature sends, so a parameter the model refuses fails here and not
+            // at playback. A token limit is left out for the same reason: reasoning models
+            // refuse max_tokens, and the feature never sends it.
+            JSONObject body = chatBody(model, "hi", extraBody);
 
             conn = (HttpURLConnection) new URL(chatUrl(baseUrl)).openConnection();
             conn.setRequestMethod("POST");
@@ -151,7 +166,7 @@ public final class OpenAIClient {
                 conn.setRequestProperty("Authorization", "Bearer " + apiToken);
             }
             // Applied last, so user headers override defaults.
-            applyExtraHeaders(conn);
+            applyExtraHeaders(conn, extraHeaders);
             conn.setDoOutput(true);
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
@@ -160,10 +175,17 @@ public final class OpenAIClient {
                 stream.write(payload);
             }
 
-            return conn.getResponseCode() == 200;
+            final int code = conn.getResponseCode();
+            if (code == 200) {
+                return null;
+            }
+            final String error = readErrorBody(conn);
+            Logger.printDebug(() -> "AI endpoint validation failed with " + code + ": " + error);
+            return errorMessage(code, error);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not validate the AI endpoint", ex);
-            return false;
+            final String message = ex.getMessage();
+            return message == null ? ex.getClass().getSimpleName() : message;
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -223,7 +245,7 @@ public final class OpenAIClient {
                 if (apiToken != null && !apiToken.isEmpty()) {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
-                applyExtraHeaders(conn);
+                applyExtraHeaders(conn, Settings.LYRICS_AI_EXTRA_HEADERS.get());
                 if (conn.getResponseCode() != 200) {
                     return null;
                 }
@@ -409,8 +431,7 @@ public final class OpenAIClient {
      * Adds the headers the endpoint asks for. An empty value removes a header we would otherwise
      * send, so an endpoint that wants its own key instead of a bearer token can drop ours.
      */
-    private static void applyExtraHeaders(HttpURLConnection conn) {
-        final String extra = Settings.LYRICS_AI_EXTRA_HEADERS.get();
+    private static void applyExtraHeaders(HttpURLConnection conn, String extra) {
         final String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
@@ -428,7 +449,7 @@ public final class OpenAIClient {
             }
         } catch (JSONException e) {
             // A header list that will not parse is ignored; it must not take the feature down.
-            Logger.printDebug(() -> "The stored extra request headers are not valid JSON");
+            Logger.printDebug(() -> "The extra request headers are not valid JSON");
         }
     }
 
@@ -436,8 +457,7 @@ public final class OpenAIClient {
      * Two keys stay ours: the model, which has a setting the endpoint was validated against, and the
      * messages, whose length decides where the answer is cut into lines.
      */
-    private static void applyExtraBody(JSONObject body) {
-        final String extra = Settings.LYRICS_AI_EXTRA_BODY.get();
+    private static void applyExtraBody(JSONObject body, String extra) {
         final String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
@@ -452,29 +472,36 @@ public final class OpenAIClient {
             }
         } catch (JSONException e) {
             // An invalid stored body is ignored; it must not take the feature down.
-            Logger.printDebug(() -> "The stored extra request body is not valid JSON");
+            Logger.printDebug(() -> "The extra request body is not valid JSON");
         }
+    }
+
+    /** The chat request body, shared by the feature and the connection test. */
+    private static JSONObject chatBody(String model, String userPrompt, String extraBody)
+            throws JSONException {
+        JSONObject body = new JSONObject();
+        body.put("model", model);
+        final String effort = reasoningEffort();
+        if (!effort.isEmpty()) {
+            body.put("reasoning_effort", effort);
+        }
+
+        JSONArray messages = new JSONArray();
+        messages.put(new JSONObject()
+                .put("role", "user")
+                .put("content", userPrompt));
+        body.put("messages", messages);
+
+        // Applied last, so user body wins even where it disagrees with the effort.
+        applyExtraBody(body, extraBody);
+        return body;
     }
 
     @Nullable
     static String request(String baseUrl, String apiToken, String model,
                           String userPrompt) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("model", model);
-            final String effort = reasoningEffort();
-            if (!effort.isEmpty()) {
-                body.put("reasoning_effort", effort);
-            }
-
-            JSONArray messages = new JSONArray();
-            messages.put(new JSONObject()
-                    .put("role", "user")
-                    .put("content", userPrompt));
-            body.put("messages", messages);
-
-            // Applied last, so user body wins even where it disagrees with the effort.
-            applyExtraBody(body);
+            JSONObject body = chatBody(model, userPrompt, Settings.LYRICS_AI_EXTRA_BODY.get());
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
 
@@ -488,7 +515,7 @@ public final class OpenAIClient {
                 if (apiToken != null && !apiToken.isEmpty()) {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
-                applyExtraHeaders(conn);
+                applyExtraHeaders(conn, Settings.LYRICS_AI_EXTRA_HEADERS.get());
                 conn.setDoOutput(true);
 
                 try (OutputStream os = conn.getOutputStream()) {
@@ -511,10 +538,61 @@ public final class OpenAIClient {
         }
     }
 
+    /**
+     * The message of an error body, or the status code when the body has none. OpenAI-style
+     * endpoints answer {"error": {"message": ...}}, Gemini wraps that in an array, and some
+     * services put a plain message at the top level.
+     */
+    private static String errorMessage(int code, String body) {
+        final String fallback = "HTTP " + code;
+        if (body.trim().isEmpty()) {
+            return fallback;
+        }
+        String message = "";
+        try {
+            Object root = new JSONTokener(body).nextValue();
+            if (root instanceof JSONArray array && array.length() > 0) {
+                root = array.opt(0);
+            }
+            if (root instanceof JSONObject object) {
+                final Object error = object.opt("error");
+                if (error instanceof JSONObject detail) {
+                    message = detail.optString("message", "");
+                } else if (error instanceof String text) {
+                    message = text;
+                } else {
+                    message = object.optString("message", "");
+                }
+            }
+        } catch (JSONException ex) {
+            Logger.printDebug(() -> "The error body is not JSON", ex);
+        }
+        message = message.trim();
+        return message.isEmpty() ? fallback : message;
+    }
+
+    /** The error body of a failed request, or empty when there is none. */
+    private static String readErrorBody(HttpURLConnection conn) {
+        final InputStream stream = conn.getErrorStream();
+        if (stream == null) {
+            return "";
+        }
+        try {
+            return readStream(stream);
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not read the error body", ex);
+            return "";
+        }
+    }
+
     static String readResponse(HttpURLConnection conn) throws IOException {
+        return readStream(conn.getInputStream());
+    }
+
+    private static String readStream(InputStream stream) throws IOException {
         StringBuilder sb = new StringBuilder(512);
         try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+                new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             String line;
             while ((line = br.readLine()) != null) {
                 sb.append(line);

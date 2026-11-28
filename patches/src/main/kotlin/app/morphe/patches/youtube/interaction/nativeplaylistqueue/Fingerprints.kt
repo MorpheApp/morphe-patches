@@ -121,8 +121,11 @@ internal object NativeQueueDescriptorFingerprint : Fingerprint(
             returnType = "V",
             location = MatchAfterWithin(1)
         ),
-        // 21.16 concatenates this diagnostic; 21.20+ formats it in one string.
-        string("getNavigationDescriptor for ", StringComparisonType.STARTS_WITH)
+        anyInstruction(
+            // 21.16 concatenates this diagnostic; 21.20+ formats it in one string.
+            string("getNavigationDescriptor for "),
+            string("getNavigationDescriptor for %sreturned NULL")
+        )
     )
 )
 

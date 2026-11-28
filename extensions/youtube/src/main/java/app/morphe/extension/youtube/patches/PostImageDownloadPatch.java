@@ -174,6 +174,13 @@ public final class PostImageDownloadPatch {
 
     private static final Pattern IMAGE_URL_PATTERN = Pattern.compile(
             "(?:https?:)?//(?:yt\\d\\.ggpht\\.com|[a-z0-9]+\\.googleusercontent\\.com)/[^\\s\"'<>]+");
+    /**
+     * YouTube image host. It serves the images compressed again, while the same path on the lh3
+     * host serves the image as it was uploaded.
+     */
+    private static final Pattern YOUTUBE_IMAGE_HOST_PATTERN =
+            Pattern.compile("^https://yt\\d\\.(ggpht|googleusercontent)\\.com/");
+    private static final String UPLOADED_IMAGE_HOST = "https://lh3.$1.com/";
     /** Size of an image url, such as =s1080 or =w640-h480. */
     private static final Pattern IMAGE_SIZE_PATTERN = Pattern.compile("(?:^|-)[swh](\\d{1,5})(?=-|$)");
     /** Thumbnail of a video, which an embedded video shows. */
@@ -216,9 +223,12 @@ public final class PostImageDownloadPatch {
     private static PostCard pressedCard;
 
     /**
-     * @param shownSize Size of the shown image, from the options of its url.
+     * @param uploadedUrl Url of the image as it was uploaded, or the original url if the image is
+     *                    not on a YouTube image host.
+     * @param originalUrl Url of the image in its original size.
+     * @param shownSize   Size of the shown image, from the options of its url.
      */
-    private record PostImage(String originalUrl, String shownUrl, int shownSize) {
+    private record PostImage(String uploadedUrl, String originalUrl, String shownUrl, int shownSize) {
     }
 
     private enum UrlKind {
@@ -545,7 +555,10 @@ public final class PostImageDownloadPatch {
                 // The largest shown size of each image.
                 PostImage previous = images.get(base);
                 if (previous == null || size > previous.shownSize()) {
-                    images.put(base, new PostImage(base + ORIGINAL_SIZE_OPTIONS, url, size));
+                    String originalUrl = base + ORIGINAL_SIZE_OPTIONS;
+                    String uploadedUrl = YOUTUBE_IMAGE_HOST_PATTERN.matcher(originalUrl)
+                            .replaceFirst(UPLOADED_IMAGE_HOST);
+                    images.put(base, new PostImage(uploadedUrl, originalUrl, url, size));
                 }
             }
         }
@@ -1166,7 +1179,10 @@ public final class PostImageDownloadPatch {
             for (int i = 0; i < images.size(); i++) {
                 PostImage image = images.get(i);
                 try {
-                    byte[] data = fetch(image.originalUrl());
+                    byte[] data = fetch(image.uploadedUrl());
+                    if (data == null && !image.uploadedUrl().equals(image.originalUrl())) {
+                        data = fetch(image.originalUrl());
+                    }
                     if (data == null) {
                         data = fetch(image.shownUrl());
                     }

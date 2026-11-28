@@ -39,6 +39,8 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
+import app.morphe.extension.youtube.patches.playback.RestoredMiniplayerControls;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"unused", "SpellCheckingInspection"})
@@ -184,6 +186,9 @@ public final class MiniplayerPatch {
 
     private static final int OPACITY_LEVEL =
             (SeekBarPreference.clampToRange(Settings.MINIPLAYER_OPACITY) * 255) / 100;
+
+    private static final int MODERN_OVERLAY_ACTION_BUTTON_ID =
+            ResourceUtils.getIdIdentifier("modern_miniplayer_overlay_action_button");
 
     /**
      * Everything about dragging the miniplayer around, which a docked bar does not do.
@@ -332,6 +337,9 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static boolean disableResumingStartupMiniPlayer() {
+        if (PlaybackSessionPatch.isPatchIncluded() && Settings.MINIPLAYER_RESTORE_SESSION.get()) {
+            return PlaybackSessionPatch.suppressNativeResume();
+        }
         return Settings.MINIPLAYER_DISABLE_RESUMING.get();
     }
 
@@ -691,10 +699,30 @@ public final class MiniplayerPatch {
      */
     public static void hideMiniplayerActionButton(View view) {
         MinimalMiniplayerPatch.setModernOverlayButton(view);
+        if (showRestoredMiniplayerActionButton()) {
+            RestoredMiniplayerControls.bind(view);
+        }
 
         if (CURRENT_TYPE == MODERN_4) {
             Utils.hideViewByRemovingFromParentUnderCondition(HIDE_OVERLAY_BUTTONS_ENABLED, view);
         }
+    }
+
+    /** Injection point for the freshly inflated floating miniplayer overlay. */
+    public static void bindRestoredMiniplayerOverlay(View overlay) {
+        if (!showRestoredMiniplayerActionButton()) return;
+
+        try {
+            View action = overlay.findViewById(MODERN_OVERLAY_ACTION_BUTTON_ID);
+            if (action != null) RestoredMiniplayerControls.bind(action);
+        } catch (Exception ex) {
+            Logger.printException(() -> "bindRestoredMiniplayerOverlay failure", ex);
+        }
+    }
+
+    private static boolean showRestoredMiniplayerActionButton() {
+        return !MINIMAL_BAR_SELECTED && !(CURRENT_TYPE == MODERN_4 && HIDE_OVERLAY_BUTTONS_ENABLED)
+                && PlaybackSessionPatch.isPatchIncluded() && Settings.MINIPLAYER_RESTORE_SESSION.get();
     }
 
     /**

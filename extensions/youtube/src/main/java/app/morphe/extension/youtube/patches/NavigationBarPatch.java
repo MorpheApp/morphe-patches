@@ -1711,7 +1711,7 @@ public final class NavigationBarPatch {
             }
 
             if (SHOW_WATCH_LATER_BUTTON) {
-                String label = str("morphe_watch_later_navigation_label");
+                String label = str("morphe_watch_later");
                 byte[] watchLaterRenderer = renderer.toBuilder()
                         .setPivotIdentifier(WATCH_LATER_PIVOT_IDENTIFIER)
                         .setNavigationEndpoint(NavigationEndpoint.newBuilder()
@@ -1789,7 +1789,7 @@ public final class NavigationBarPatch {
                                         .setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId(WATCH_LATER_BROWSE_ID))
                                         .build().toByteString())
                                 .setAccessibility(Title.newBuilder()
-                                        .setRuns(Runs.newBuilder().setText(str("morphe_watch_later_navigation_label"))))
+                                        .setRuns(Runs.newBuilder().setText(str("morphe_watch_later"))))
                                 // The Cairo icon has no drawable in some app versions.
                                 .setIcon(Icon.newBuilder().setYtIconType(YTIconType.WATCH_LATER)
                                         .build().toByteString())

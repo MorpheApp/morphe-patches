@@ -163,7 +163,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         final String title = str(ruby
                 ? "morphe_music_lyrics_ruby_language_title"
                 : translation
-                  ? "morphe_music_lyrics_translation_language_title"
+                  ? "morphe_translation_language_title"
                   : "morphe_music_lyrics_romanize_language_title");
         final boolean offersRuby = !translation && !ruby;
         final String selected = setting.get();

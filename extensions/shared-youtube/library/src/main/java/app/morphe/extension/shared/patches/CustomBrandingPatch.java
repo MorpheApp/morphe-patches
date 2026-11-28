@@ -64,7 +64,12 @@ public class CustomBrandingPatch {
          */
         YOUTUBE_ICON1, // Analog
         YOUTUBE_ICON2, // Cake
-        YOUTUBE_ICON3; // Metal
+        YOUTUBE_ICON3, // Metal
+        // YouTube 21.47 and newer.
+        YOUTUBE_ICON4, // Fur
+        YOUTUBE_ICON5, // Watercolor
+        YOUTUBE_ICON6, // Classic
+        YOUTUBE_ICON7; // Retro TV
 
         private String packageAndNameIndexToClassAlias(String packageName, int appIndex) {
             if (appIndex <= 0) {
@@ -87,7 +92,8 @@ public class CustomBrandingPatch {
         @Nullable
         String notificationIconResourceName() {
             return switch (this) {
-                case ORIGINAL, YOUTUBE_ICON1, YOUTUBE_ICON2, YOUTUBE_ICON3 -> null;
+                case ORIGINAL, YOUTUBE_ICON1, YOUTUBE_ICON2, YOUTUBE_ICON3,
+                     YOUTUBE_ICON4, YOUTUBE_ICON5, YOUTUBE_ICON6, YOUTUBE_ICON7 -> null;
                 case CUSTOM -> "morphe_notification_icon_custom";
                 // LIGHT, DARK, BLACK, PLAY – each has its own bundled XML.
                 default ->"morphe_notification_icon_" + name().toLowerCase(Locale.US);
@@ -121,6 +127,10 @@ public class CustomBrandingPatch {
                 case YOUTUBE_ICON1 -> "ic_launcher_icon1";
                 case YOUTUBE_ICON2 -> "ic_launcher_icon2";
                 case YOUTUBE_ICON3 -> "ic_launcher_icon3";
+                case YOUTUBE_ICON4 -> "ic_launcher_icon4";
+                case YOUTUBE_ICON5 -> "ic_launcher_icon5";
+                case YOUTUBE_ICON6 -> "ic_launcher_icon6";
+                case YOUTUBE_ICON7 -> "ic_launcher_icon7";
                 default -> null;
             };
         }

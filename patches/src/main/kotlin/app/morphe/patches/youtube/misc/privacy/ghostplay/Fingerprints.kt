@@ -10,11 +10,11 @@ package app.morphe.patches.youtube.misc.privacy.ghostplay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import app.morphe.patcher.anyInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -24,7 +24,10 @@ import com.android.tools.smali.dexlib2.Opcode
 internal object VideoStats2SendPingFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        string("Final ping for playback", comparison = StringComparisonType.CONTAINS)
+        anyInstruction(
+            string("Final ping for playback "),
+            string("Final ping for playback %s has already been sent - Ignoring request") // 21.20+
+        )
     )
 )
 

@@ -81,7 +81,6 @@ Second \"item\" text"</string>
   <string name="morphe_offline_video_quality_1440p">Quad HD（1440p）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
-  <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
   <string name="morphe_custom_branding_icon_entry_1">オリジナル</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe（ブラック）</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe（ダーク）</string>
@@ -107,7 +106,6 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">動画ストリームを偽装</string>
   <string name="morphe_spoof_video_streams_screen_summary">動画の再生が止まる問題を回避するために、偽装するクライアントを設定します</string>
@@ -134,7 +132,6 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
 Android System WebView を最新バージョンに更新するまで、ビデオ再生に失敗する可能性があります。
 
 [OK] をタップして Android System WebView を開きます。"</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">今後表示しない</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView がインストールされていません。ビデオ再生を修正するにはインストールしてください</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -204,7 +201,6 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">メディア通知コントロール</string>
   <string name="morphe_notification_media_screen_summary">通知パネルとロック画面に表示されるプレーヤーのコントロールをカスタマイズします</string>
-  <string name="morphe_hide_notification_media_prev_next_title">前の動画ボタンと次の動画ボタンを非表示</string>
   <string name="morphe_hide_notification_media_prev_next_summary">通知パネルとロック画面に表示されるプレーヤーの前の動画ボタンと次の動画ボタンを非表示にします。ヘッドホンからの操作によって前の動画 / 次の動画へ移動する機能も無効にします</string>
   <string name="morphe_disable_notification_media_seekbar_title">シークバーでのシーク操作を無効化</string>
   <string name="morphe_disable_notification_media_seekbar_summary">通知パネルとロック画面に表示されるプレーヤーのシークバーでのシーク操作を無効にします</string>
@@ -244,10 +240,8 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_video_effects_custom_restore">デフォルトに復元</string>
   <string name="morphe_video_effects_custom_add_title">新しいエフェクト</string>
   <string name="morphe_video_effects_custom_edit_title">エフェクトを編集</string>
-  <string name="morphe_video_effects_custom_name_hint">言語名</string>
   <string name="morphe_video_effects_custom_name_empty">エフェクトの名前を入力してください</string>
   <string name="morphe_video_effects_custom_name_exists">この名前のエフェクトは既に存在します</string>
-  <string name="morphe_video_effects_custom_copy_code">コードをコピー</string>
   <string name="morphe_video_effects_custom_error_title">エフェクトにエラーがあります</string>
   <string name="morphe_video_effects_custom_error_message">"コードが修正されるまで、ビデオはエフェクトなしで表示されます。このエラーを、コードを作成したAIに伝えてください:
 
@@ -257,7 +251,6 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
 AIに短いコードをリクエストするか、コードを分割して貼り付けてください。"</string>
   <string name="morphe_video_effects_custom_copy_error">エラーをコピー</string>
   <string name="morphe_video_effects_custom_save_anyway">とにかく保存</string>
-  <string name="morphe_video_effects_custom_delete">削除</string>
   <string name="morphe_video_effects_custom_delete_title">エフェクトを削除しますか？</string>
   <string name="morphe_video_effects_custom_delete_message">%sは削除されます。</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -285,8 +278,6 @@ AIに短いコードをリクエストするか、コードを分割して貼り
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android Studio」および「Android VR Downgraded」を除く任意のクライアントに設定してください</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
-  <string name="morphe_sanitize_sharing_links_summary">共有リンクから追跡パラメータを削除します</string>
   <string name="morphe_replace_music_with_youtube_title">共有リンクを youtube.com に変更</string>
   <string name="morphe_replace_music_with_youtube_summary">共有リンクの music.youtube.com を youtube.com に置き換えます</string>
   <string name="morphe_replace_links_with_shortener_title">共有リンクを youtu.be に変更</string>
@@ -371,7 +362,6 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_custom_font_type_title">フォント</string>
   <string name="morphe_custom_font_type_entry_default">デフォルト</string>
   <string name="morphe_custom_font_type_entry_system">端末のシステム フォント</string>
-  <string name="morphe_custom_font_type_entry_custom">カスタム フォント ファイル</string>
   <string name="morphe_custom_font_file_title">カスタム フォント ファイル</string>
   <string name="morphe_custom_font_file_summary">TTF または OTF フォント ファイルを選択してください</string>
   <string name="morphe_custom_font_file_invalid">選択されたファイルは TTF または OTF フォントではありません</string>
@@ -381,7 +371,6 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_glass_menus_screen_summary">背後のぼかしたコンテンツの上に、フロストガラスのようなメニューを表示します</string>
   <string name="morphe_glass_menus_title">グラスメニューを有効にする</string>
   <string name="morphe_glass_menus_summary">メニューとボトムシートを、背後のコンテンツがぼかされたすりガラスのように表示します</string>
-  <string name="morphe_glass_menus_opacity_title">グラスの透明度</string>
   <string name="morphe_glass_menus_opacity_summary">メニューがぼかされたコンテンツをどの程度覆うか（0は透明、100は不透明）</string>
   <string name="morphe_glass_menus_blur_title">ぼかし</string>
   <string name="morphe_glass_menus_blur_summary">メニュー背後のコンテンツをどの程度ぼかすか</string>
@@ -402,7 +391,6 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_dislike_percentage_summary">投票数ではなくパーセントで低評価を表示します</string>
   <string name="morphe_ryd_estimated_like_title">高評価の推定値を表示</string>
   <string name="morphe_ryd_estimated_like_summary">動画投稿者が高評価数を非公開に設定している動画で、高評価の推定値を表示します</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">接続エラーの通知を表示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike サーバーが利用できない場合に通知を表示します</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike は、2021年にYouTubeが非表示にした低評価の数を復元します。カウントは削除前にアーカイブされたデータから取得され、新しい動画についてはユーザーの投票から推定されるため、おおよその値であり、数日ごとに更新されます
 
@@ -424,8 +412,89 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限は発生していません</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %s 回発生しました</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ミリ秒</string>
-  <string name="morphe_navigation_bar_screen_title">ナビゲーション バー</string>
   <string name="morphe_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
+  <!-- Shared strings -->
+  <string name="morphe_duration_1s">1 秒</string>
+  <string name="morphe_duration_2s">2 秒</string>
+  <string name="morphe_duration_3s">3 秒</string>
+  <string name="morphe_duration_4s">4 秒</string>
+  <string name="morphe_duration_5s">5 秒</string>
+  <string name="morphe_duration_6s">6 秒</string>
+  <string name="morphe_duration_7s">7 秒</string>
+  <string name="morphe_duration_8s">8 秒</string>
+  <string name="morphe_duration_9s">9 秒</string>
+  <string name="morphe_duration_10s">10 秒</string>
+  <string name="morphe_change_start_page_entry_default">デフォルト</string>
+  <string name="morphe_change_start_page_entry_explore">探索</string>
+  <string name="morphe_change_start_page_entry_history">履歴</string>
+  <string name="morphe_change_start_page_entry_library">ライブラリ</string>
+  <string name="morphe_change_start_page_entry_playlists">再生リスト</string>
+  <string name="morphe_change_start_page_entry_search">検索</string>
+  <string name="morphe_change_start_page_entry_subscriptions">登録チャンネル</string>
+  <string name="morphe_change_start_page_title">スタート画面</string>
+  <string name="morphe_action_buttons_screen_title">アクション ボタン</string>
+  <string name="morphe_comments_screen_title">コメント</string>
+  <string name="morphe_feed_screen_title">フィード</string>
+  <string name="morphe_flyout_menu_screen_title">フライアウト メニュー</string>
+  <string name="morphe_general_title">その他</string>
+  <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
+  <string name="morphe_player_screen_title">プレーヤー</string>
+  <string name="morphe_video_screen_title">動画</string>
+  <string name="morphe_appearance_title">外観</string>
+  <string name="morphe_cancel">キャンセル</string>
+  <string name="morphe_comments_screen_summary">コメント セクションに表示するコンポーネントを設定します</string>
+  <string name="morphe_copy_code">コードをコピー</string>
+  <string name="morphe_corner_radius_title">角丸</string>
+  <string name="morphe_do_not_show_again">今後表示しない</string>
+  <string name="morphe_download_force_4k_title">4Kダウンロードの強制有効化</string>
+  <string name="morphe_glass_opacity_title">グラスの不透明度</string>
+  <string name="morphe_header_logo_title">ヘッダーロゴ</string>
+  <string name="morphe_hide_action_bar_title">アクションバーを非表示</string>
+  <string name="morphe_hide_cast_button_title">キャストボタンを非表示</string>
+  <string name="morphe_hide_comments_button_title">コメントボタンを非表示</string>
+  <string name="morphe_hide_comments_community_guidelines_title">コミュニティ ガイドラインを非表示</string>
+  <string name="morphe_hide_comments_emoji_button_title">絵文字ボタンを非表示</string>
+  <string name="morphe_hide_comments_gif_button_title">GIFボタンを非表示</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">コメントや返信に添付されたGIFと画像を非表示にします</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIFと画像を非表示</string>
+  <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
+  <string name="morphe_hide_comments_timestamp_button_title">タイムスタンプ ボタンを非表示</string>
+  <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
+  <string name="morphe_hide_like_dislike_button_title">高評価ボタンと低評価ボタンを非表示</string>
+  <string name="morphe_hide_like_dislike_buttons_title">高評価ボタンと低評価ボタンを非表示</string>
+  <string name="morphe_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
+  <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
+  <string name="morphe_hide_previous_next_buttons_title">前の動画ボタンと次の動画ボタンを非表示</string>
+  <string name="morphe_hide_search_button_title">検索ボタンを非表示</string>
+  <string name="morphe_hide_translate_button_title">翻訳 / 原文ボタンを非表示</string>
+  <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
+  <string name="morphe_loading">読み込み中…</string>
+  <string name="morphe_name">言語名</string>
+  <string name="morphe_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">表示ボタン数: %2$s 個中 %1$s 個</string>
+  <string name="morphe_navigation_bar_glass_size_height">高さ</string>
+  <string name="morphe_navigation_bar_glass_size_width">最大幅</string>
+  <string name="morphe_navigation_bar_glass_title">ガラス風ナビゲーション バーを有効にする</string>
+  <string name="morphe_positive_number_invalid">値は正の数である必要があります</string>
+  <string name="morphe_private_user_id_invalid">非公開ユーザー ID は最低 30 文字必要です</string>
+  <string name="morphe_private_user_id_title">非公開ユーザー ID</string>
+  <string name="morphe_rename">名前を変更</string>
+  <string name="morphe_show_settings_button_title">設定ボタンを表示</string>
+  <string name="morphe_show_settings_button_type_title">設定ボタンの動作</string>
+  <string name="morphe_show_video_effect_menu_title">ビデオエフェクトメニューを表示</string>
+  <string name="morphe_submit">送信</string>
+  <string name="morphe_time_adjustment_step_title">セグメントの位置調整幅</string>
+  <string name="morphe_toast_on_connection_error_title">接続エラーの通知を表示</string>
+  <string name="morphe_toast_on_skip_title">スキップ通知を表示</string>
+  <string name="morphe_translated_only">翻訳済みのみ</string>
+  <string name="morphe_translating">翻訳中…</string>
+  <string name="morphe_translation_language_title">翻訳言語</string>
+  <string name="morphe_username_change_unknown_error">ユーザー名の変更に失敗しました (status: %1$s %2$s)</string>
+  <string name="morphe_username_changed">ユーザー名の変更に成功しました</string>
+  <string name="morphe_username_html">ユーザー名: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_videos">動画</string>
+  <string name="morphe_vote_downvote">低評価</string>
+  <string name="morphe_vote_upvote">高評価</string>
 </resources>

@@ -52,18 +52,6 @@ internal object MiniAppOpenYtContentCommandEndpointFingerprint : Fingerprint(
     }
 )
 
-internal object OpenNewVideoIntentParcelableFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "L",
-    parameters = listOf("Landroid/content/Intent;"),
-    strings = listOf(
-        "android.intent.extra.inventory_identifier",
-        "http",
-        "vnd.youtube",
-        "No video id in the Uri: "
-    )
-)
-
 internal object AppWatchDescriptorToStringFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
@@ -71,14 +59,17 @@ internal object AppWatchDescriptorToStringFingerprint : Fingerprint(
     strings = listOf("AppWatchDescriptor{watchDescriptor=")
 )
 
-internal class BackButtonFinishActivityOnNewVideoIntentFingerprint(appWatchDescriptorType: String) : Fingerprint(
+/**
+ * The parameter is the app watch descriptor of [AppWatchDescriptorToStringFingerprint].
+ */
+internal object BackButtonFinishActivityOnNewVideoIntentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(appWatchDescriptorType),
+    parameters = { listOf(AppWatchDescriptorToStringFingerprint.originalClassDef.type) },
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = appWatchDescriptorType
+            definingClass = { AppWatchDescriptorToStringFingerprint.originalClassDef.type }
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

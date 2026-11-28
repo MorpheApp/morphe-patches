@@ -49,10 +49,7 @@ val hideHomeTabsPatch = patch(
             addPatchInterface(
                 EXTENSION_HOME_TAB_INTERFACE,
                 "patch_getTabId",
-                """
-                    iget-object v0, p0, $idField
-                    return-object v0
-                """
+                idField
             )
         }
 

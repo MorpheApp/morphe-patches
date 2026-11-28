@@ -25,9 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart_title">እንደገና ማስጀመር ያስፈልጋል</string>
   <string name="morphe_settings_restart_dialog_message">ይህ ለውጥ ተፈጻሚ እንዲሆን መተግበሪያውን እንደገና ያስጀምሩ</string>
   <string name="morphe_settings_restart">እንደገና አስጀምር</string>
-  <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">አስገባ</string>
-  <string name="morphe_settings_import_copy">ቅዳ</string>
   <string name="morphe_settings_import_reset">የMorphe ቅንብሮች ወደ መጀመሪያው ተመልሰዋል</string>
   <string name="morphe_settings_import_success">%s ቅንብሮች ወደ ውስጥ ገብተዋል</string>
   <string name="morphe_settings_import_failure_parse">ማስገባት አልተሳካም: %s</string>
@@ -76,7 +74,6 @@ Second \"item\" text"</string>
   <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
   <string name="morphe_settings_about_component">ፓቾች</string>
   <string name="morphe_settings_about_version">ትዕይንት</string>
-  <string name="morphe_settings_about_close">ዝጋ</string>
   <string name="morphe_settings_about_prerelease">ቅድመ-ልቀት</string>
   <string name="morphe_settings_about_update_available">ማዘመኛ ይገኛል: %s</string>
   <string name="morphe_settings_about_update_hint">ፓቾችዎን ለማዘመን፣ ይህንን መተግበሪያ እንደገና ለመፓች Morpheን ይጠቀሙ</string>
@@ -108,7 +105,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">የላይሰንስ ማሳሰቢያዎች</string>
-  <string name="morphe_settings_about_licenses_loading">በመጫን ላይ…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ዲባጊንግ</string>
   <string name="morphe_debug_screen_summary">የላቁ የልማት አማራጮችን እና የምርመራ መዝገቦችን ያዋቅሩ</string>
@@ -125,7 +121,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_success">የዲባግ ሎጎች በተሳካ ሁኔታ ወደ ውጭ ተላኩ</string>
   <string name="morphe_debug_export_logs_failed">የዲባግ ሎጎችን ወደ ውጭ ለመላክ አልተቻለም</string>
   <string name="morphe_debug_logs_search_hint">የዲባግ መዝገቦችን ይፈልጉ…</string>
-  <string name="morphe_debug_export_logs_clear">አጽዳ</string>
   <string name="morphe_debug_logs_disabled">የዲባግ ሎጊንግ ተዘግቷል</string>
   <string name="morphe_debug_logs_none_found">ምንም የዲባግ ሎጎዎች አልተገኙም</string>
   <string name="morphe_debug_logs_copied_to_clipboard">የዲባግ ሎጎች ተገለበጡ</string>
@@ -142,15 +137,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_filter_blocked">ተዘግተዋል (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_forced">በግድ የበሩ (%s)</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_auto">ራስ-ሰር</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">ጠፍቷል</string>
-  <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">በርቷል</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">በግድ አብራ</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">አግድ</string>
-  <string name="morphe_debug_feature_flags_manager_action_remove">አስወግድ</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">የባህሪ ምልክቶች ተቀምጠዋል</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">የባህሪ ምልክቶች ዳግም ተጀምረዋል</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">የባህሪ ምልክቶች ወደ ክሊፕቦርድ ተቀድበዋል</string>
@@ -200,7 +188,6 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_outdated_message">"የእርስዎ MicroG v%1$s ጊዜው ያለፈበት ነው እና ችግሮችን ሊያስከትል ይችላል።
 
 እባክዎ MicroGን ወደ አዲሱ ስሪት v%2$s ያዘምኑ"</string>
-  <string name="gms_core_dialog_update_text">አዘምን</string>
   <string name="gms_core_dialog_ignore_text">ችላ በል</string>
   <string name="gms_core_dialog_conflict_message">"የተጫነው MicroG በ Morphe አይመከርም፦
 
@@ -220,7 +207,6 @@ Second \"item\" text"</string>
 ለ MicroG የባትሪ ማመቻቻዎችን ማጥፋት በባትሪ አጠቃቀም ላይ አሉታዊ ተጽዕኖ አይኖረውም።
 
 የቀጠለውን ቁልፍ ተጫኑ እና የማመቻቻ ለውጦችን ይፍቀዱ"</string>
-  <string name="gms_core_dialog_continue_text">ቀጥል</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">የMicroG የባትሪ ማመቻቻ ውይይት ሳጥንን አሳይ</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ይህንን ማጥፋት የMicroG የባትሪ ማመቻቻ ጥያቄን ይደብቀዋል።
 
@@ -259,9 +245,29 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_fixes">🐛 የባግ ጥገናዎች</string>
   <string name="morphe_patches_update_notice_dialog_other">🚀 ሌሎች ለውጦች</string>
   <string name="morphe_patches_update_notice_dialog_more">…እና %s ተጨማሪ</string>
-  <string name="morphe_patches_update_notice_dialog_update">አዘምን</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">ዝጋ</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">የብልሽት መዝገብ በተጠቃሚ ሰነዶች ውስጥ ተቀምጧል፡ %s</string>
   <string name="morphe_crash_log_saved">የብልሽት መዝገብ ተቀምጧል፡ %s</string>
+  <!-- Shared strings -->
+  <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_about_screen_title">ስለ Morphe</string>
+  <string name="morphe_ads_screen_title">ማስታወቂያዎች</string>
+  <string name="morphe_misc_screen_title">ልዩ ልዩ</string>
+  <string name="morphe_navigation_bar_screen_title">የማሰማሚያ ባር</string>
+  <string name="morphe_post_buttons_screen_title">የፖስት ቁልፎች</string>
+  <string name="morphe_custom_branding_icon_title">የመተግበሪያ ምልክት</string>
+  <string name="morphe_download">አውርድ</string>
+  <string name="morphe_hide_create_button_title">የፍጠራ ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_post_comment_button_title">የአስተያየት ቁልፍን ደብቅ</string>
+  <string name="morphe_sanitize_sharing_links_summary">ከተጋሩ ሊንኮች ላይ የክትትል መጠይቅ መለኪያዎችን ያስወግዳል</string>
+  <string name="morphe_sanitize_sharing_links_title">የማጋሪያ ሊንኮችን አፅዳ</string>
+  <string name="morphe_settings_add">ጨምር</string>
+  <string name="morphe_settings_clear">አጽዳ</string>
+  <string name="morphe_settings_close">ዝጋ</string>
+  <string name="morphe_settings_continue">ቀጥል</string>
+  <string name="morphe_settings_copy">ቅዳ</string>
+  <string name="morphe_settings_delete">ሰርዝ</string>
+  <string name="morphe_settings_remove">አስወግድ</string>
+  <string name="morphe_settings_update">አዘምን</string>
 </resources>

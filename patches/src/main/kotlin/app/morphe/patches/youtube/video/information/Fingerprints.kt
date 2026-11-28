@@ -15,7 +15,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -292,7 +291,7 @@ internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
         methodCall(smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;"),
         // First method call after Locale is the video ID.
         methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
-        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+        string("PlaybackStartDescriptor:\n  VideoId:%s\n  PlaylistId:%s\n  Index:%d\n  VideoIds:%s")
     )
 )
 

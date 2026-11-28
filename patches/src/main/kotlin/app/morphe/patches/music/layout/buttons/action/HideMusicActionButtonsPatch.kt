@@ -44,10 +44,11 @@ val hideMusicActionButtonsPatch = patch(
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_music_action_buttons_screen",
+                titleKey = "morphe_action_buttons_screen_title",
                 preferences = setOf(
-                    SwitchPreference("morphe_music_hide_action_bar"),
-                    SwitchPreference("morphe_music_hide_like_dislike_button"),
-                    SwitchPreference("morphe_music_hide_comments_button"),
+                    SwitchPreference("morphe_music_hide_action_bar", titleKey = "morphe_hide_action_bar_title"),
+                    SwitchPreference("morphe_music_hide_like_dislike_button", titleKey = "morphe_hide_like_dislike_button_title"),
+                    SwitchPreference("morphe_music_hide_comments_button", titleKey = "morphe_hide_comments_button_title"),
                     SwitchPreference("morphe_music_hide_live_chat_replay_button"),
                     SwitchPreference("morphe_music_hide_lyrics_button"),
                     SwitchPreference("morphe_music_hide_share_button"),

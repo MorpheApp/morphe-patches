@@ -1,6 +1,5 @@
 package app.morphe.patches.youtube.interaction.doubletap
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -11,7 +10,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -34,15 +32,8 @@ val disableDoubleTapActionsPatch = patch(
             SwitchPreference("morphe_disable_chapter_skip_double_tap", summary = true),
         )
 
-        val doubleTapInfoGetSeekSourceFingerprint = Fingerprint(
-            classFingerprint = DoubleTapInfoCtorFingerprint,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = SeekTypeEnumFingerprint.originalClassDef.type,
-            parameters = listOf("Z")
-        )
-
         // Force isChapterSeek flag to false.
-        doubleTapInfoGetSeekSourceFingerprint.method.addInstructions(
+        DoubleTapInfoGetSeekSourceFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z

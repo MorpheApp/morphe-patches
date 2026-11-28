@@ -140,7 +140,7 @@ public final class LocalQueueSheet {
         header.setPadding(Dim.dp20, Dim.dp8, Dim.dp12, Dim.dp4);
 
         TextView title = new TextView(context);
-        title.setText(str("morphe_local_queue_sheet_title"));
+        title.setText(str("morphe_queue_title"));
         title.setTextColor(foregroundColor);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
         title.setTypeface(title.getTypeface(), Typeface.BOLD);
@@ -157,7 +157,7 @@ public final class LocalQueueSheet {
         header.addView(new View(context), new LinearLayout.LayoutParams(0, 1, 1));
 
         clearButton = new TextView(context);
-        clearButton.setText(str("morphe_local_queue_clear"));
+        clearButton.setText(str("morphe_clear_all"));
         clearButton.setTextColor(foregroundColor);
         clearButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         clearButton.setTypeface(clearButton.getTypeface(), Typeface.BOLD);
@@ -319,7 +319,7 @@ public final class LocalQueueSheet {
         reveal.setBackgroundColor(REVEAL_COLOR);
         reveal.setVisibility(View.INVISIBLE);
         TrashIconView trash = new TrashIconView(context);
-        trash.setContentDescription(str("morphe_local_queue_remove"));
+        trash.setContentDescription(str("morphe_settings_remove"));
         FrameLayout.LayoutParams trashParams = new FrameLayout.LayoutParams(Dim.dp24, Dim.dp24,
                 Gravity.CENTER_VERTICAL | Gravity.END);
         trashParams.setMarginEnd(Dim.dp28);

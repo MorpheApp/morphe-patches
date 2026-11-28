@@ -69,7 +69,7 @@ public final class SearchDialog {
                     title,
                     null,
                     editText,
-                    str("morphe_search_dialog_search"),
+                    str("morphe_search"),
                     () -> onSearch.accept(editText.getText().toString()),
                     () -> {},
                     clearButtonText,

@@ -9,6 +9,8 @@ package app.morphe.extension.reddit.utils;
 
 import android.graphics.Canvas;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.shared.Utils;
 import kotlin.jvm.functions.Function1;
 
@@ -60,6 +62,11 @@ public final class ComposeUtils {
          * Available only with 2026.43.0+
          */
         Object patch_windowInsetsPadding(WindowInsets insets);
+
+        /**
+         * graphicsLayer(shape = shape, clip = true). Available only with 2026.45.0+
+         */
+        Object patch_clip(Object shape);
     }
 
     /**
@@ -74,6 +81,16 @@ public final class ComposeUtils {
          * @return Top inset in pixels.
          */
         int patch_getTop();
+    }
+
+    /**
+     * Compose MutableState.
+     */
+    public interface MutableState {
+        // Methods are added during patching.
+        Object patch_getValue();
+
+        void patch_setValue(Object value);
     }
 
     private ComposeUtils() {
@@ -94,5 +111,23 @@ public final class ComposeUtils {
 
     public static float unpackSecond(long packed) {
         return Float.intBitsToFloat((int) packed);
+    }
+
+    /**
+     * Weight modifier of a row or column child. Available only with 2026.45.0+
+     */
+    @SuppressWarnings("SameReturnValue")
+    @Nullable
+    public static Object newWeightModifier(float weight, boolean fill) {
+        return null; // Modified during patching.
+    }
+
+    /**
+     * @return mutableStateOf(value), as a {@link MutableState}. Available only with 2026.47.0+
+     */
+    @SuppressWarnings("SameReturnValue")
+    @Nullable
+    public static Object newMutableState(@Nullable Object value) {
+        return null; // Modified during patching.
     }
 }

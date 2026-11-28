@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -78,6 +79,26 @@ internal object CommentsAdStateToStringFingerprint : Fingerprint(
     filters = listOf(
         string("CommentsAdState(conversationAdViewState="),
         string(", adsLoadCompleted="),
+    )
+)
+
+/**
+ * Constructor of the comments ad state ([CommentsAdStateToStringFingerprint]),
+ * which sets 'adsLoadCompleted'.
+ *
+ * 2026.04+
+ */
+internal object CommentsAdStateConstructorFingerprint : Fingerprint(
+    definingClass = { CommentsAdStateToStringFingerprint.originalClassDef.type },
+    name = "<init>",
+    returnType = { "V" },
+    filters = listOf(
+        fieldAccess(
+            reference = {
+                CommentsAdStateToStringFingerprint.originalMethod.findFieldFromToString(", adsLoadCompleted=")
+            },
+            opcode = Opcode.IPUT_BOOLEAN
+        )
     )
 )
 

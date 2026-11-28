@@ -117,11 +117,9 @@ internal val stableCaptionBlocksPatch = patch(
         val (idField, timeField, visibleTextField, fullTextField, settingsField) = cueFields
         val cueType = idField.definingClass
         val cueConstructor = CaptionCueConstructorFingerprint.method
-        val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
-            .instructionMatches.first().fieldReference
+        val defaultSettingsField = CaptionDefaultSettingsFingerprint.instructionMatches.first().fieldReference
 
-        val visibleSettingsField = getCaptionSettingsVisibilityFingerprint(settingsField.type)
-            .instructionMatches.first().fieldReference
+        val visibleSettingsField = CaptionSettingsVisibilityFingerprint.instructionMatches.first().fieldReference
 
         // Frame spans retain source metadata in native mode. Only block layouts use
         // the default placement; ordinary captions keep the authored settings.
@@ -129,10 +127,7 @@ internal val stableCaptionBlocksPatch = patch(
             addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getCaptionId",
-                """
-                    iget v0, p0, $idField
-                    return v0
-                """
+                idField
             )
 
             addPatchInterface(
@@ -148,19 +143,13 @@ internal val stableCaptionBlocksPatch = patch(
             addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionVisible",
-                """
-                    iget-object v0, p0, $visibleTextField
-                    return-object v0
-                """
+                visibleTextField
             )
 
             addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionFull",
-                """
-                    iget-object v0, p0, $fullTextField
-                    return-object v0
-                """
+                fullTextField
             )
 
             addPatchInterface(
@@ -219,20 +208,13 @@ internal val stableCaptionBlocksPatch = patch(
             addPatchInterface(
                 EXTENSION_ROW_INTERFACE,
                 "patch_getCaptionLayout",
-                """
-                    invoke-virtual { p0 }, ${CaptionRowLayoutFingerprint.method}
-                    move-result-object v0
-                    return-object v0
-                """
+                CaptionRowLayoutFingerprint.method
             )
 
             addPatchInterface(
                 EXTENSION_ROW_INTERFACE,
                 "patch_setCaptionText",
-                """
-                    invoke-virtual { p0, p1 }, ${CaptionRowSetTextFingerprint.method}
-                    return-void
-                """
+                CaptionRowSetTextFingerprint.method
             )
         }
 
@@ -254,7 +236,7 @@ internal val stableCaptionBlocksPatch = patch(
         }
 
         // Window lines are replaced with the block text before the window is measured.
-        getCaptionWindowSetterFingerprint(cueType).let {
+        CaptionWindowSetterFingerprint.let {
             val windowFields = listOf(
                 "patch_getCaptionCue" to it.instructionMatches[0],
                 "patch_getVisibleCaptionLines" to it.instructionMatches[1],
@@ -339,37 +321,29 @@ internal val stableCaptionBlocksPatch = patch(
         // Each parsed track keeps the block state of its source captions.
         CaptionWindowsConstructorFingerprint.let {
             val timelineType = it.classDef.type
-            val stateField = "$timelineType->patch_blockState:$EXTENSION_STATE_CLASS"
+            val stateField = ImmutableField(
+                timelineType,
+                "patch_blockState",
+                EXTENSION_STATE_CLASS,
+                AccessFlags.PRIVATE.value,
+                null,
+                null,
+                null
+            )
 
             mutableClassDefBy(timelineType).apply {
-                instanceFields.add(
-                    ImmutableField(
-                        type,
-                        "patch_blockState",
-                        EXTENSION_STATE_CLASS,
-                        AccessFlags.PRIVATE.value,
-                        null,
-                        null,
-                        null
-                    ).toMutable()
-                )
+                instanceFields.add(stateField.toMutable())
 
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_getBlockState",
-                    """
-                        iget-object v0, p0, $stateField
-                        return-object v0
-                    """
+                    stateField
                 )
 
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_setBlockState",
-                    """
-                        iput-object p1, p0, $stateField
-                        return-void
-                    """
+                    stateField
                 )
 
                 it.method.apply {
@@ -383,17 +357,13 @@ internal val stableCaptionBlocksPatch = patch(
                     )
                 }
 
-                val samplerFingerprint = getCaptionSamplerFingerprint(cueType)
-                val sampler = samplerFingerprint.method
-                val windows = samplerFingerprint.instructionMatches[0].fieldReference
+                val sampler = CaptionSamplerFingerprint.method
+                val windows = CaptionSamplerFingerprint.instructionMatches[0].fieldReference
                 val events = it.instructionMatches.last().fieldReference
                 addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_getCaptionEventTimes",
-                    """
-                        iget-object v0, p0, $events
-                        return-object v0
-                    """
+                    events
                 )
 
                 // New timeline with the windows of both timelines, and the block state of this timeline.

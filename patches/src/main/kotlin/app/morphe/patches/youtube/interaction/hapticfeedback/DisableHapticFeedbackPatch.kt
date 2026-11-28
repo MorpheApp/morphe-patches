@@ -1,15 +1,12 @@
 package app.morphe.patches.youtube.interaction.hapticfeedback
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.string
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -17,8 +14,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.fiveRegisters
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
@@ -64,23 +59,7 @@ val disableHapticFeedbackPatch = patch(
             )
         }
 
-        val vibratorField = TapAndHoldHapticsHandlerFingerprint.instructionMatches.last()
-            .fieldReference
-
-        Fingerprint(
-            name = "run",
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    reference = vibratorField,
-                ),
-                checkCast("Landroid/os/Vibrator;"),
-                string("Failed to easy seek haptics vibrate.")
-            )
-        ).let {
+        TapAndHoldSeekHapticsFingerprint.let {
             // clearMatch() is used because it can be the same method as [TapAndHoldSpeedFingerprint].
             it.clearMatch()
             it.method.apply {

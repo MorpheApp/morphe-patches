@@ -7,13 +7,11 @@
 
 package app.morphe.patches.youtube.layout.hide.updatescreen
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.playservice.is_20_27_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import com.android.tools.smali.dexlib2.AccessFlags
 
 val hideUpdateScreenPatch = patch(
     description = "Hides the YouTube undismissable 'Update your app' dialog if " +
@@ -26,11 +24,7 @@ val hideUpdateScreenPatch = patch(
     execute {
         // Only disable update screen for 20.21 and lower. This can be later adjusted if desired.
         if (!is_20_27_or_greater) {
-            Fingerprint(
-                classFingerprint = AppBlockingCheckResultToStringFingerprint,
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-                parameters = listOf("Landroid/content/Intent;", "Z")
-            ).method.addInstructions(
+            AppBlockingCheckResultConstructorFingerprint.method.addInstructions(
                 1,
                 "const/4 p1, 0x0"
             )

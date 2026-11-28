@@ -84,7 +84,7 @@ public class VoiceOverTranslationPatch {
                 null,
                 () -> {},
                 null,
-                str("morphe_vot_do_not_show_again"),
+                str("morphe_do_not_show_again"),
                 () -> Settings.VOT_HIDE_EXPORT_WARNING.save(true),
                 true
         );
@@ -519,6 +519,9 @@ public class VoiceOverTranslationPatch {
                         if (segments.isEmpty()) segments = fetched;
                         TTSPrefetcher.updateVideo(videoId, segments);
                         Logger.printDebug(() -> "Loaded: " + fetched.size() + " segments for :" + videoId);
+                        if (fetched.isEmpty() && sessionEnabled) {
+                            Utils.showSnackbarLong(str("morphe_vot_no_captions"));
+                        }
                         notifyStateChanged();
                     }
                 });
@@ -1023,7 +1026,7 @@ public class VoiceOverTranslationPatch {
                     null,
                     () -> { },
                     null,
-                    str("morphe_vot_do_not_show_again"),
+                    str("morphe_do_not_show_again"),
                     () -> Settings.VOT_SHOW_HTTP_ERROR_DIALOG.save(false),
                     true
             );
