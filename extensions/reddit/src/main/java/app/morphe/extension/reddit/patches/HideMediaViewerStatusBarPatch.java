@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/5516
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.reddit.patches;
 
 import android.app.Activity;
@@ -29,7 +36,7 @@ public final class HideMediaViewerStatusBarPatch {
     }
 
     public static void onViewerResumed(Activity activity) {
-        if (!Settings.HIDE_MEDIA_VIEWER_STATUS_BAR.get() || viewer.get() == activity
+        if (!Settings.HIDE_MEDIA_VIEWER_STATUS_BAR.get() || ImmersiveModePatch.isEnabled() || viewer.get() == activity
                 || Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             return;
         }
@@ -68,7 +75,7 @@ public final class HideMediaViewerStatusBarPatch {
     }
 
     public static void onOverlayVisibilityChanged(boolean visible) {
-        if (!Settings.HIDE_MEDIA_VIEWER_STATUS_BAR.get()) {
+        if (!Settings.HIDE_MEDIA_VIEWER_STATUS_BAR.get() || ImmersiveModePatch.isEnabled()) {
             return;
         }
 

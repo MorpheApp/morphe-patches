@@ -55,6 +55,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.reddit.patches.CustomFontPatch;
+import app.morphe.extension.reddit.patches.ImmersiveModePatch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -1109,6 +1110,7 @@ public final class RedditSettingsStyle {
         window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
                 ? 0
                 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+        ImmersiveModePatch.hideStatusBar(window);
     }
 
     /**
