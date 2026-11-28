@@ -9,7 +9,9 @@ package app.morphe.patches.youtube.interaction.castadfree
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -30,6 +32,9 @@ internal object ScreenManagerFingerprint : Fingerprint(
 internal object ScreenManagerConstructorFingerprint : Fingerprint(
     classFingerprint = ScreenManagerFingerprint,
     name = "<init>",
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID, location = MatchAfterLast())
+    )
 )
 
 /**
@@ -45,6 +50,83 @@ internal object ScreenManagerAddScreenFingerprint : Fingerprint(
             name = "contains"
         )
     )
+)
+
+/**
+ * Removes a paired screen.
+ */
+internal object ScreenManagerRemoveScreenFingerprint : Fingerprint(
+    classFingerprint = ScreenManagerFingerprint,
+    returnType = "V",
+    parameters = { ScreenManagerAddScreenFingerprint.originalMethod.parameterTypes },
+    filters = listOf(
+        methodCall(
+            definingClass = COPY_ON_WRITE_ARRAY_LIST,
+            name = "remove"
+        ),
+        methodCall(
+            definingClass = COPY_ON_WRITE_ARRAY_LIST,
+            name = "remove",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Constructor of a paired screen: screen(screenInfo, isOnline).
+ */
+internal object ScreenConstructorFingerprint : Fingerprint(
+    definingClass = { ScreenManagerAddScreenFingerprint.originalMethod.parameterTypes.first() },
+    name = "<init>",
+    parameters = listOf("L", "Z"),
+)
+
+/**
+ * Synthetic constructor of the screen information, with a mask of the parameters that get their default:
+ * screenInfo(pairingInfo, name, screenId, loungeDeviceId, list, id, id, loungeToken, defaultsMask).
+ */
+internal object ScreenInfoConstructorFingerprint : Fingerprint(
+    definingClass = { ScreenConstructorFingerprint.originalMethod.parameterTypes.first() },
+    name = "<init>",
+    parameters = listOf("L", "Ljava/lang/String;", "L", "L", "Ljava/util/List;", "L", "L", "L", "I"),
+)
+
+/**
+ * Builds the routes of the media route provider of the screens, which the Cast menu lists.
+ */
+internal object MediaRouteProviderRoutesFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = { ScreenManagerFingerprint.originalClassDef.type },
+            type = COPY_ON_WRITE_ARRAY_LIST
+        ),
+        // The screen of the route: the next element of the iterator over the screens, cast to its class.
+        methodCall(
+            definingClass = "Ljava/util/Iterator;",
+            name = "next"
+        ),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(5)),
+        string("YouTube"),
+        // The route builder, and its description setter.
+        opcode(Opcode.NEW_INSTANCE, location = MatchAfterWithin(5)),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "V",
+            parameters = listOf("Ljava/lang/String;")
+        )
+    )
+)
+
+/**
+ * onDiscoveryRequestChanged(request) of the media route provider of the screens.
+ */
+internal object MediaRouteProviderDiscoveryRequestFingerprint : Fingerprint(
+    classFingerprint = MediaRouteProviderRoutesFingerprint,
+    returnType = "V",
+    parameters = { listOf(MediaRouteDiscoveryRequestConstructorFingerprint.originalClassDef.type) },
 )
 
 /**
@@ -76,6 +158,32 @@ internal object CloudChannelDisconnectFingerprint : Fingerprint(
 )
 
 /**
+ * connect(listener, reason) of the cloud channel, which sets the listener and connects. YouTube 21.47 and newer.
+ */
+internal object CloudChannelConnectFingerprint : Fingerprint(
+    classFingerprint = CloudChannelTerminateFingerprint,
+    returnType = "V",
+    parameters = { listOf(CloudSessionMessageHandlerFingerprint.originalClassDef.interfaces.single(), "I") },
+)
+
+/**
+ * setListener(listener) of the cloud channel, which sets the listener and calls connect().
+ * Before YouTube 21.47.
+ */
+internal object CloudChannelSetListenerFingerprint : Fingerprint(
+    classFingerprint = CloudChannelTerminateFingerprint,
+    returnType = "V",
+    parameters = { listOf(CloudSessionMessageHandlerFingerprint.originalClassDef.interfaces.single()) },
+    filters = listOf(
+        methodCall(
+            definingClass = "this",
+            returnType = "V",
+            parameters = listOf()
+        )
+    )
+)
+
+/**
  * Handles the lounge messages of a cloud session. Its class is the listener of the cloud channel.
  */
 internal object CloudSessionMessageHandlerFingerprint : Fingerprint(
@@ -94,7 +202,12 @@ internal object CloudSessionConnectFingerprint : Fingerprint(
     parameters = listOf("L", "L", "Lj\$/util/Optional;"),
     filters = listOf(
         string("setStatesParams"),
-        string("remotePlayabilityStatusParams")
+        string("remotePlayabilityStatusParams"),
+        // The session sets the connect parameters of the channel before it connects.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = { CloudChannelTerminateFingerprint.originalClassDef.type }
+        )
     )
 )
 

@@ -7,21 +7,13 @@
 
 package app.morphe.patches.youtube.interaction.castadfree
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
-import app.morphe.patcher.string
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -36,11 +28,8 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import java.util.logging.Logger
 
@@ -138,24 +127,14 @@ val castAdFreePatch = patch(
             }
         }
 
-        // Lists the Cast devices in the app's own Cast menu, and connects their sessions to a fake lounge
+        // The Cast devices are listed in the app's own Cast menu, and their sessions connect to a fake lounge
         // that plays with the Cast without ads service.
 
         // region Screens of the Cast menu.
 
-        val screenType = ScreenManagerAddScreenFingerprint.method.parameterTypes.first().toString()
-        val screenInfoType = Fingerprint(
-            definingClass = screenType,
-            name = "<init>",
-            parameters = listOf("L", "Z"),
-        ).method.parameterTypes.first().toString()
-
-        // screenInfo(pairingInfo, name, screenId, loungeDeviceId, list, id, id, loungeToken, defaultsMask)
-        val screenInfoConstructor = Fingerprint(
-            definingClass = screenInfoType,
-            name = "<init>",
-            parameters = listOf("L", "Ljava/lang/String;", "L", "L", "Ljava/util/List;", "L", "L", "L", "I"),
-        ).method
+        val screenType = ScreenConstructorFingerprint.method.definingClass
+        val screenInfoType = ScreenConstructorFingerprint.method.parameterTypes.first().toString()
+        val screenInfoConstructor = ScreenInfoConstructorFingerprint.method
         val (pairingInfoType, screenIdType, loungeDeviceIdType) = screenInfoConstructor.parameterTypes
             .let { types -> Triple(types[0].toString(), types[2].toString(), types[3].toString()) }
 
@@ -166,17 +145,14 @@ val castAdFreePatch = patch(
             field.type == loungeDeviceIdType
         }
 
-        mutableClassDefBy(screenType).addPatchInterface(
+        ScreenConstructorFingerprint.classDef.addPatchInterface(
             EXTENSION_SCREEN_INTERFACE,
             "patch_getScreenInfo",
-            """
-                iget-object v0, p0, $screenInfoField
-                return-object v0
-            """
+            screenInfoField
         )
 
         // The id classes return their value as the string.
-        mutableClassDefBy(screenInfoType).addPatchInterface(
+        ScreenInfoConstructorFingerprint.classDef.addPatchInterface(
             EXTENSION_SCREEN_INFO_INTERFACE,
             "patch_getLoungeDeviceId",
             """
@@ -222,39 +198,19 @@ val castAdFreePatch = patch(
             """
         )
 
-        ScreenManagerConstructorFingerprint.method.apply {
-            addInstruction(
-                implementation!!.instructions.size - 1,
+        ScreenManagerConstructorFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.last().index,
                 "invoke-static { p0 }, $EXTENSION_CLASS->setScreenManager($EXTENSION_SCREEN_MANAGER_INTERFACE)V"
             )
         }
 
-        // removeScreen(screen)
-        val removeScreenMethod = Fingerprint(
-            definingClass = ScreenManagerFingerprint.classDef.type,
-            returnType = "V",
-            parameters = listOf(screenType),
-            filters = listOf(
-                methodCall(
-                    definingClass = COPY_ON_WRITE_ARRAY_LIST,
-                    name = "remove"
-                ),
-                methodCall(
-                    definingClass = COPY_ON_WRITE_ARRAY_LIST,
-                    name = "remove",
-                    location = MatchAfterWithin(5)
-                )
-            )
-        ).method
+        val removeScreenMethod = ScreenManagerRemoveScreenFingerprint.method
 
         ScreenManagerFingerprint.classDef.addPatchInterface(
             EXTENSION_SCREEN_MANAGER_INTERFACE,
             "patch_removeScreen",
-            """
-                check-cast p1, $screenType
-                invoke-virtual { p0, p1 }, $removeScreenMethod
-                return-void
-            """
+            removeScreenMethod
         )
 
         removeScreenMethod.addInstructionsWithLabels(
@@ -271,38 +227,10 @@ val castAdFreePatch = patch(
             """
         )
 
-        // The Cast devices are found while the app finds its own devices: while its Cast menu is open.
         // The media route provider of the screens builds its routes from the screens of the screen manager.
-        val routesFingerprint = Fingerprint(
-            returnType = "L",
-            parameters = listOf(),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    definingClass = ScreenManagerFingerprint.classDef.type,
-                    type = COPY_ON_WRITE_ARRAY_LIST
-                ),
-                // The screen of the route: the next element of the iterator over the screens, cast to its class.
-                methodCall(
-                    definingClass = "Ljava/util/Iterator;",
-                    name = "next"
-                ),
-                opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(5)),
-                string("YouTube"),
-                // The route builder, and its description setter.
-                opcode(Opcode.NEW_INSTANCE, location = MatchAfterWithin(5)),
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    returnType = "V",
-                    parameters = listOf("Ljava/lang/String;")
-                )
-            )
-        )
-        val routeProviderType = routesFingerprint.classDef.type
-
         // The routes of paired screens have "YouTube" as their description, which the Cast menu shows as
         // "Playing YouTube". Our screens get no description, like the other Cast devices.
-        routesFingerprint.let {
+        MediaRouteProviderRoutesFingerprint.let {
             val matches = it.instructionMatches
             val screenRegister = matches[2].getInstruction<OneRegisterInstruction>().registerA
             val descriptionIndex = matches.last().index
@@ -321,17 +249,12 @@ val castAdFreePatch = patch(
             )
         }
 
-        val discoveryRequestType = MediaRouteDiscoveryRequestConstructorFingerprint.classDef.type
         val discoveryRequestBundleField = MediaRouteDiscoveryRequestConstructorFingerprint.classDef.fields.single { field ->
             field.type == "Landroid/os/Bundle;"
         }
 
-        // onDiscoveryRequestChanged(request)
-        Fingerprint(
-            definingClass = routeProviderType,
-            returnType = "V",
-            parameters = listOf(discoveryRequestType),
-        ).method.addInstructionsWithLabels(
+        // The Cast devices are found while the app finds its own devices: while its Cast menu is open.
+        MediaRouteProviderDiscoveryRequestFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p1
@@ -372,17 +295,7 @@ val castAdFreePatch = patch(
             }
         }
 
-        // The session sets the connect parameters of the channel before it connects.
-        val connectParamsField = CloudSessionConnectFingerprint.method.let { method ->
-            method.getInstruction<ReferenceInstruction>(
-                method.indexOfFirstInstructionOrThrow(
-                    fieldAccess(
-                        opcode = Opcode.IPUT_OBJECT,
-                        definingClass = channelType
-                    )
-                )
-            ).reference as FieldReference
-        }
+        val connectParamsField = CloudSessionConnectFingerprint.instructionMatches.last().fieldReference
         val connectParamsParamsField = classDefBy(connectParamsField.type).fields.single { field ->
             field.type == paramsType
         }
@@ -444,28 +357,21 @@ val castAdFreePatch = patch(
             // A video opened while casting to our device is sent to the device, as with a real screen,
             // instead of played on the phone.
             PlayOnPhoneFlagFingerprint.let {
-                it.method.apply {
-                    val moveResult = it.instructionMatches.last()
-                    val register = getInstruction<OneRegisterInstruction>(moveResult.index).registerA
+                val moveResult = it.instructionMatches.last()
+                val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
 
-                    addInstructions(
-                        moveResult.index + 1,
-                        """
-                            invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->playNewVideoOnPhone(Z)Z
-                            move-result v$register
-                        """
-                    )
-                }
+                it.method.addInstructions(
+                    moveResult.index + 1,
+                    """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->playNewVideoOnPhone(Z)Z
+                        move-result v$register
+                    """
+                )
             }
         }
 
         if (is_21_47_or_greater) {
-            // connect(listener, reason) sets the listener and connects.
-            Fingerprint(
-                definingClass = channelType,
-                returnType = "V",
-                parameters = listOf(listenerType, "I"),
-            ).method.addInstructionsWithLabels(
+            CloudChannelConnectFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
                     move-object/from16 v0, p0
@@ -483,19 +389,8 @@ val castAdFreePatch = patch(
                 """
             )
         } else {
-            // setListener(listener) sets the listener and calls connect().
-            Fingerprint(
-                definingClass = channelType,
-                returnType = "V",
-                parameters = listOf(listenerType),
-                filters = listOf(
-                    methodCall(
-                        definingClass = "this",
-                        returnType = "V",
-                        parameters = listOf()
-                    )
-                )
-            ).instructionMatches.first().getMethodCalled().addInstructionsWithLabels(
+            // The hook is in connect(), which setListener(listener) calls.
+            CloudChannelSetListenerFingerprint.instructionMatches.first().getMethodCalled().addInstructionsWithLabels(
                 0,
                 """
                     move-object/from16 v0, p0
