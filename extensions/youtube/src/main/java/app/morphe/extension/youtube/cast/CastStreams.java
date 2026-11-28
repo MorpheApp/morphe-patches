@@ -306,16 +306,6 @@ final class CastStreams {
         return "";
     }
 
-    @Nullable
-    Stream get(int itag) {
-        for (Stream stream : streams) {
-            if (stream.itag == itag) {
-                return stream;
-            }
-        }
-        return null;
-    }
-
     /**
      * Highest H.264 video in MP4 up to the height, for receivers that only play a single file.
      */

@@ -51,6 +51,9 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 public final class CastAdFreeService extends Service {
 
+    private record Video(String id, double startSeconds) {
+    }
+
     private static final String ACTION_START = "app.morphe.youtube.cast.START";
     private static final String ACTION_PLAY = "app.morphe.youtube.cast.PLAY";
     private static final String ACTION_PAUSE = "app.morphe.youtube.cast.PAUSE";
@@ -65,7 +68,11 @@ public final class CastAdFreeService extends Service {
     private static final String MP4_CONTENT_TYPE = "video/mp4";
 
     private static final String NOTIFICATION_CHANNEL = "morphe_cast_ad_free";
-    private static final String NOTIFICATION_ICON = "morphe_yt_cast_ad_free";
+    /**
+     * Notification icon of the Cast library of the app.
+     */
+    private static final int NOTIFICATION_ICON = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.DRAWABLE, "cast_ic_notification_small_icon");
     private static final int NOTIFICATION_ID = NOTIFICATION_CHANNEL.hashCode();
     private static final int PROGRESS_MAX = 100;
     private static final String CAST_FOLDER = "morphe_cast";
@@ -126,9 +133,6 @@ public final class CastAdFreeService extends Service {
     @Nullable
     private InetAddress castHost;
     private int castPort;
-
-    private record Video(String id, double startSeconds) {
-    }
     @Nullable
     private CastStreamServer server;
     @Nullable
@@ -573,9 +577,8 @@ public final class CastAdFreeService extends Service {
 
     private Notification.Builder createBuilder() {
         createChannel();
-        final int icon = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, NOTIFICATION_ICON);
         return new Notification.Builder(this, NOTIFICATION_CHANNEL)
-                .setSmallIcon(icon != 0 ? icon : android.R.drawable.ic_media_play)
+                .setSmallIcon(NOTIFICATION_ICON)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true);
     }

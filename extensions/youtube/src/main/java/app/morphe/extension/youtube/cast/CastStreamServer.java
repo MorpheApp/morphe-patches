@@ -259,6 +259,7 @@ final class CastStreamServer implements Closeable {
             final long end = last.isEmpty() ? length - 1 : Math.min(Long.parseLong(last), length - 1);
             return start <= end ? new long[]{start, end} : null;
         } catch (NumberFormatException ex) {
+            Logger.printInfo(() -> "Invalid range: " + header, ex);
             return null;
         }
     }
@@ -467,7 +468,8 @@ final class CastStreamServer implements Closeable {
         connection.setRequestProperty("User-Agent", userAgent);
         connection.setRequestProperty("Range", "bytes=" + start + "-" + end);
         final int code = connection.getResponseCode();
-        if (code != HttpURLConnection.HTTP_PARTIAL && code != HttpURLConnection.HTTP_OK) {
+        // A whole stream instead of the range only has the right bytes for a range at the start.
+        if (code != HttpURLConnection.HTTP_PARTIAL && (code != HttpURLConnection.HTTP_OK || start != 0)) {
             connection.disconnect();
             throw new IOException("Stream request failed with HTTP " + code);
         }

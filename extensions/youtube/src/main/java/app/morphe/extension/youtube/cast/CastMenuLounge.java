@@ -180,7 +180,7 @@ public final class CastMenuLounge {
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     @Nullable
-    private static ScreenManagerInterface screenManager;
+    private static volatile ScreenManagerInterface screenManager;
     @Nullable
     private static CastDeviceFinder finder;
     /**
@@ -252,14 +252,15 @@ public final class CastMenuLounge {
      * @return No description for our screens, which the menu would show as "Playing YouTube".
      */
     public static String getRouteDescription(Object screen, String original) {
+        if (screenManager == null) {
+            return original;
+        }
         try {
             // Checked by id, as the app builds the route of a screen while the screen is added.
             if (screen instanceof ScreenInterface screenWithInfo
-                    && screenWithInfo.patch_getScreenInfo() instanceof ScreenInfoInterface screenInfo) {
-                String deviceId = screenInfo.patch_getLoungeDeviceId();
-                if (deviceId != null && deviceId.startsWith(DEVICE_ID_PREFIX)) {
-                    return "";
-                }
+                    && screenWithInfo.patch_getScreenInfo() instanceof ScreenInfoInterface screenInfo
+                    && isOurDeviceId(screenInfo.patch_getLoungeDeviceId())) {
+                return "";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getRouteDescription failure", ex);
@@ -291,7 +292,7 @@ public final class CastMenuLounge {
         }
         try {
             String deviceId = screenInfo.patch_getLoungeDeviceId();
-            if (deviceId == null || !deviceId.startsWith(DEVICE_ID_PREFIX)) {
+            if (!isOurDeviceId(deviceId)) {
                 return;
             }
             Logger.printDebug(() -> "Session connecting to our screen: " + deviceId);
@@ -577,6 +578,10 @@ public final class CastMenuLounge {
     /**
      * @return If the device of the session was just picked in the Cast menu, and the session was not restored.
      */
+    private static boolean isOurDeviceId(@Nullable String loungeDeviceId) {
+        return loungeDeviceId != null && loungeDeviceId.startsWith(DEVICE_ID_PREFIX);
+    }
+
     private static boolean isPickedInCastMenu() {
         return scanRequested || System.currentTimeMillis() - castMenuClosedMillis < CAST_MENU_PICK_MILLISECONDS;
     }
@@ -637,19 +642,15 @@ public final class CastMenuLounge {
         return stateParams(time, state).put("videoId", videoId).put("listId", "");
     }
 
-    private static JSONObject stateParams(double time, int state) {
-        try {
-            return new JSONObject()
-                    .put("currentTime", format(time))
-                    .put("duration", format(durationSeconds))
-                    .put("loadedTime", format(time))
-                    .put("seekableStartTime", "0")
-                    .put("seekableEndTime", format(durationSeconds))
-                    .put("state", String.valueOf(state))
-                    .put("cpn", cpn);
-        } catch (JSONException ex) {
-            throw new IllegalStateException(ex);
-        }
+    private static JSONObject stateParams(double time, int state) throws JSONException {
+        return new JSONObject()
+                .put("currentTime", format(time))
+                .put("duration", format(durationSeconds))
+                .put("loadedTime", format(time))
+                .put("seekableStartTime", "0")
+                .put("seekableEndTime", format(durationSeconds))
+                .put("state", String.valueOf(state))
+                .put("cpn", cpn);
     }
 
     private static void sendToApp(String method, JSONObject data) {
@@ -675,9 +676,13 @@ public final class CastMenuLounge {
     }
 
     private static double parseDouble(@Nullable String value) {
+        if (value == null || value.isEmpty()) {
+            return 0;
+        }
         try {
-            return value == null ? 0 : Double.parseDouble(value);
+            return Double.parseDouble(value);
         } catch (NumberFormatException ex) {
+            Logger.printInfo(() -> "Not a number: " + value, ex);
             return 0;
         }
     }

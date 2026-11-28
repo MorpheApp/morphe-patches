@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketTimeoutException;
+import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -144,9 +145,7 @@ final class CastConnection implements Closeable {
             socket.connect(new InetSocketAddress(host, port), CONNECT_TIMEOUT_MILLISECONDS);
             socket.setSoTimeout(READ_TIMEOUT_MILLISECONDS);
             socket.startHandshake();
-        } catch (IOException ex) {
-            throw ex;
-        } catch (Exception ex) {
+        } catch (GeneralSecurityException ex) {
             throw new IOException(ex);
         }
         input = new DataInputStream(socket.getInputStream());

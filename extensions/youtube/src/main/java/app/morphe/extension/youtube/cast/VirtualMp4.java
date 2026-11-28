@@ -334,6 +334,17 @@ final class VirtualMp4 implements CastStreamServer.Source {
      * A box of a container type is searched recursively.
      */
     private static int boxOffset(byte[] data, int start, int end, String type) throws IOException {
+        final int offset = findBox(data, start, end, type);
+        if (offset < 0) {
+            throw new IOException("No " + type + " box");
+        }
+        return offset;
+    }
+
+    /**
+     * @return Offset of the box, or -1 if it is not in the range.
+     */
+    private static int findBox(byte[] data, int start, int end, String type) {
         ByteBuffer buffer = ByteBuffer.wrap(data);
         int offset = start;
         while (offset + 8 <= end) {
@@ -346,15 +357,14 @@ final class VirtualMp4 implements CastStreamServer.Source {
                 return offset;
             }
             if (found.equals("mvex") || found.equals("trak")) {
-                try {
-                    return boxOffset(data, offset + 8, offset + size, type);
-                } catch (IOException ex) {
-                    // Not in this container.
+                final int child = findBox(data, offset + 8, offset + size, type);
+                if (child >= 0) {
+                    return child;
                 }
             }
             offset += size;
         }
-        throw new IOException("No " + type + " box");
+        return -1;
     }
 
     private static String type(byte[] data, int offset) {

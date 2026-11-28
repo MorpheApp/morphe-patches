@@ -20,23 +20,52 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import java.util.logging.Logger
 
 private const val EXPLAINED_LIST_PREFERENCE =
     "app.morphe.extension.youtube.settings.preference.ExplainedListPreference"
 private const val EXTENSION_SERVICE = "app.morphe.extension.youtube.cast.CastAdFreeService"
 private const val LOCAL_NETWORK_PERMISSION = "android.permission.ACCESS_LOCAL_NETWORK"
 
-/**
- * The service that plays the videos on the Cast devices.
- */
-private val castAdFreeServicePatch = patch {
-    dependsOn(versionCheckPatch)
+@Suppress("unused")
+val castAdFreePatch = patch(
+    name = "Cast without ads",
+    description = "Lists the Cast devices a second time in the Cast menu, as \"(no ads)\". " +
+            "Choosing one plays the video on the device without the YouTube app of the device, which shows ads. " +
+            "This patch works with YouTube 21.23 and newer.",
+    default = false,
+) {
+    dependsOn(
+        settingsPatch,
+        versionCheckPatch,
+        // The streams are fetched like the streams of in-app downloads.
+        authHookPatch,
+        fixProtoLibraryPatch,
+    )
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         if (!is_21_23_or_greater) {
+            Logger.getLogger(this::class.java.name).warning(
+                "Cast without ads requires YouTube 21.23 or newer"
+            )
             return@execute
         }
 
+        PreferenceScreen.PLAYER.addPreferences(
+            PreferenceScreenPreference(
+                key = "morphe_cast_ad_free_screen",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_cast_ad_free_cast_menu", summary = true),
+                    ListPreference("morphe_cast_ad_free_quality", tag = EXPLAINED_LIST_PREFERENCE),
+                    ListPreference("morphe_cast_ad_free_codecs", tag = EXPLAINED_LIST_PREFERENCE),
+                ),
+            )
+        )
+
+        // The service that plays the videos on the Cast devices.
         // The app already declares the permissions for a media playback foreground service.
         resourceXml("AndroidManifest.xml").use { manifest ->
             // Android 17 lets apps find and connect to devices of the local network only with this permission.
@@ -56,43 +85,7 @@ private val castAdFreeServicePatch = patch {
                 setAttribute("android:foregroundServiceType", "mediaPlayback")
             }
         }
-    }
-}
 
-@Suppress("unused")
-val castAdFreePatch = patch(
-    name = "Cast without ads",
-    description = "Lists the Cast devices a second time in the Cast menu, as \"(no ads)\". " +
-            "Choosing one plays the video on the device without the YouTube app of the device, which shows ads. " +
-            "Requires YouTube 21.23 or newer.",
-    default = false,
-) {
-    dependsOn(
-        settingsPatch,
-        castAdFreeServicePatch,
-        castMenuLoungePatch,
-        // The streams are fetched like the streams of in-app downloads.
-        authHookPatch,
-        fixProtoLibraryPatch,
-    )
-
-    compatibleWith(COMPATIBILITY_YOUTUBE)
-
-    execute {
-        if (!is_21_23_or_greater) {
-            return@execute
-        }
-
-        PreferenceScreen.PLAYER.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_cast_ad_free_screen",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_cast_ad_free_cast_menu", summary = true),
-                    ListPreference("morphe_cast_ad_free_quality", tag = EXPLAINED_LIST_PREFERENCE),
-                    ListPreference("morphe_cast_ad_free_codecs", tag = EXPLAINED_LIST_PREFERENCE),
-                ),
-            )
-        )
+        hookCastMenuLounge()
     }
 }
