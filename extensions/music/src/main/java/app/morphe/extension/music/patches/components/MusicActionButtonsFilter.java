@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.LyricsButtonPatch;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
+import app.morphe.extension.music.patches.lyrics.ui.PlayerLiveLyricsView;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -189,6 +191,8 @@ public final class MusicActionButtonsFilter extends Filter {
             }
             if (Settings.HIDE_ACTION_BAR.get()) {
                 treeNodeResultList.clear();
+                LyricsButtonPatch.setLyricsActionBarIndex(-1);
+                PlayerLiveLyricsView.refreshLaunchAvailability();
                 return;
             }
             for (int i = treeNodeResultList.size() - 1; i >= 0; i--) {
@@ -203,6 +207,17 @@ public final class MusicActionButtonsFilter extends Filter {
                 if (i == 0 && button == ActionButton.LIKE_DISLIKE) continue;
                 treeNodeResultList.remove(i);
             }
+            int updatedLyricsIndex = -1;
+            for (int i = 0; i < treeNodeResultList.size(); i++) {
+                byte[] buttonProto = extractButtonProto(treeNodeResultList.get(i));
+                if (buttonProto != null && classify(buttonProto) == ActionButton.LYRICS
+                        && !Settings.HIDE_LYRICS_BUTTON.get()) {
+                    updatedLyricsIndex = i;
+                    break;
+                }
+            }
+            LyricsButtonPatch.setLyricsActionBarIndex(updatedLyricsIndex);
+            PlayerLiveLyricsView.refreshLaunchAvailability();
         } catch (Exception ex) {
             Logger.printException(() -> "onLazilyConvertedElementLoaded failure", ex);
         }

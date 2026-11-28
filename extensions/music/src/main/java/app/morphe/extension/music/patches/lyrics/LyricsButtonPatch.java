@@ -50,7 +50,24 @@ public final class LyricsButtonPatch {
     private static final String LYRICS_PANEL_BACKGROUND_COLOR_ENTITY_KEY =
             "EjtZVE1fV0FUQ0hfUEFHRV9FTkdBR0VNRU5UX1BBTkVMX0JBQ0tHUk9VTkRfQ09MT1JfRU5USVRZX0tFWSD9AygB";
 
+    private static volatile int lyricsActionBarIndex = -1;
+    @Nullable
+    private static volatile String lyricsButtonTitle;
+
     private LyricsButtonPatch() {
+    }
+
+    public static int getLyricsActionBarIndex() {
+        return lyricsActionBarIndex;
+    }
+
+    public static void setLyricsActionBarIndex(int index) {
+        lyricsActionBarIndex = index;
+    }
+
+    @Nullable
+    public static String getLyricsButtonTitle() {
+        return lyricsButtonTitle;
     }
 
     /**
@@ -74,19 +91,25 @@ public final class LyricsButtonPatch {
             var model = component.getModel();
             VideoActionBarModel actionBar = model.getVideoActionBarModel();
 
+            int foundIndex = -1;
+            String foundTitle = null;
             for (int i = 0, count = actionBar.getButtonsCount(); i < count; i++) {
                 VideoActionBarButton button = actionBar.getButtons(i);
                 var holder = button.getButtonViewModel();
                 ActionBarButtonViewModel viewModel = holder.getButtonViewModel();
-                if (viewModel.getState() != ActionBarButtonState.BUTTON_STATE_DISABLED
-                        || !viewModel.getIconName().contains(MusicActionButtonsFilter.LYRICS_ICON)) {
+                if (!viewModel.getIconName().contains(MusicActionButtonsFilter.LYRICS_ICON)) {
                     continue;
+                }
+                foundTitle = viewModel.getTitle();
+                if (viewModel.getState() != ActionBarButtonState.BUTTON_STATE_DISABLED) {
+                    foundIndex = i;
+                    break;
                 }
 
                 Logger.printDebug(() -> "Enabling Lyrics button");
                 ActionBarButtonViewModel enabledViewModel = viewModel.toBuilder()
                         .setState(ActionBarButtonState.BUTTON_STATE_ACTIVE)
-                        .setOnTap(showLyricsPanelCommand(viewModel.getTitle()))
+                        .setOnTap(showLyricsPanelCommand(foundTitle))
                         .clearOnDisabledTap()
                         .build();
                 VideoActionBarButton enabledButton = button.toBuilder().setButtonViewModel(
@@ -100,10 +123,16 @@ public final class LyricsButtonPatch {
                         .removeButtons(i)
                         .addButtons(lyricsIndex, enabledButton);
 
+                lyricsButtonTitle = foundTitle;
+                lyricsActionBarIndex = lyricsIndex;
                 return element.toBuilder().setType(type.toBuilder().setComponentType(
                         component.toBuilder().setModel(model.toBuilder().setVideoActionBarModel(newActionBar)))
                 ).build().toByteArray();
             }
+            if (foundTitle != null && !foundTitle.isEmpty()) {
+                lyricsButtonTitle = foundTitle;
+            }
+            lyricsActionBarIndex = foundIndex;
         } catch (Exception ex) {
             Logger.printException(() -> "enableLyricsButton failure", ex);
         }

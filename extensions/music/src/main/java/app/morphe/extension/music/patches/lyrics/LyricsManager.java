@@ -528,6 +528,7 @@ public final class LyricsManager {
         if (track.equals(existingTrack)) {
             if (pendingTrack != null && pendingTrack.track().equals(track)) {
                 cancelPendingTrack();
+                notifyTrackTransition(false);
             }
             if (videoId.equals(currentVideoId)) {
                 currentRawTitle = rawTitle;
@@ -539,6 +540,8 @@ public final class LyricsManager {
                 }
                 if (staleLyricsDropped && unconfirmedVideoId == null) {
                     deferTrackRebinding(videoId, rawTitle, rawArtist, mediaUri);
+                } else {
+                    notifyTrackTransition(false);
                 }
                 return;
             }
@@ -668,6 +671,7 @@ public final class LyricsManager {
         }
         pendingCommitGeneration++;
         pendingTrack = new PendingTrack(track, rawTitle, rawArtist, mediaUri, videoId);
+        notifyTrackTransition(true);
         final int generation = pendingCommitGeneration;
         Utils.runOnMainThreadDelayed(() -> {
             if (generation != pendingCommitGeneration || pendingTrack == null) {
@@ -704,6 +708,7 @@ public final class LyricsManager {
 
     void onPauseVideoAt(long now) {
         clock.onPause(now, trackDurationMs());
+        notifyPlaybackStateChanged();
     }
 
     /** Injection point; main thread. Immediately resumes word-sync when MedialibPlayer plays. */
@@ -715,6 +720,7 @@ public final class LyricsManager {
 
     void onPlayVideoAt(long now) {
         clock.onPlay(now, trackDurationMs());
+        notifyPlaybackStateChanged();
     }
 
     /** Injection point; main thread. */
@@ -735,6 +741,28 @@ public final class LyricsManager {
 
     void applyPlaybackState(int state, long newPosition, float speed, long videoTime, long now) {
         clock.applyPlaybackState(state, newPosition, speed, videoTime, now, trackDurationMs());
+        notifyPlaybackStateChanged();
+    }
+
+    private void notifyPlaybackStateChanged() {
+        final boolean playing = clock.isPlaying();
+        for (Listener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onPlaybackStateChanged(playing);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Playback state listener failure", ex);
+            }
+        }
+    }
+
+    private void notifyTrackTransition(boolean transitioning) {
+        for (Listener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onTrackTransition(transitioning);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Track transition listener failure", ex);
+            }
+        }
     }
 
     public void onDisplayedTrackChanged(@Nullable String title, @Nullable String artist, @Nullable Uri mediaUri) {
@@ -2589,6 +2617,14 @@ public final class LyricsManager {
         void onLyricsChanged(State state, @Nullable Lyrics lyrics);
 
         default void onSectionDetectionStateChanged() {
+        }
+
+        /** Called when playback state or seek timeline updates. */
+        default void onPlaybackStateChanged(boolean playing) {
+        }
+
+        /** Called when a track change is pending before metadata lookup starts or cancels. */
+        default void onTrackTransition(boolean transitioning) {
         }
 
         /** Called when the temporary offset changes outside the panel's own drag. */

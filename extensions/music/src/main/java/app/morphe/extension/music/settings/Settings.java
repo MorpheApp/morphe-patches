@@ -247,6 +247,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_SB_MATCHING = new BooleanSetting("morphe_music_lyrics_sb_matching", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_MEDIASESSION = new BooleanSetting("morphe_music_lyrics_mediasession", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_MINIPLAYER = new BooleanSetting("morphe_music_lyrics_miniplayer", FALSE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_PLAYER_LIVE = new BooleanSetting("morphe_music_lyrics_player_live", FALSE, false, parent(LYRICS_ENABLED));
+    public static final String LIVE_MODE_ORIGINAL = "original";
+    public static final String LIVE_MODE_TRANSLATED = "translated";
+    public static final String LIVE_MODE_ROMANIZED = "romanized";
+    public static final StringSetting LYRICS_PLAYER_LIVE_MODE = new StringSetting("morphe_music_lyrics_player_live_mode", LIVE_MODE_ORIGINAL, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_PLAYER_LIVE)));
     public static final BooleanSetting LYRICS_FORCE_CAPITALIZE = new BooleanSetting("morphe_music_lyrics_force_capitalize", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_STRIP_TRAILING_PUNCTUATION = new BooleanSetting("morphe_music_lyrics_strip_trailing_punctuation", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HAN_FORM = new BooleanSetting("morphe_music_lyrics_han_form", FALSE, false, parent(LYRICS_ENABLED));
