@@ -120,6 +120,8 @@ public final class OpenAIClient {
     /** "/v1", "/v1beta/openai", "/compatible-mode/v1" and the like. */
     private static final Pattern VERSION_SEGMENT =
             Pattern.compile("(?:/[^/]+)*/v\\d+(?:[a-z]+)?(?:/[^/]+)*");
+    /** A leading "1." or "1)" a model may put before a line it does not number fully. */
+    private static final Pattern LINE_NUMBER_PREFIX = Pattern.compile("^\\d+[.)\\]:\\-]\\s*");
     private static final Pattern NUMBERED_LINE_PATTERN =
             Pattern.compile("^(?:Line\\s+)?(\\d{1,4})[.)\\]:\\-]\\s*(.*)$", Pattern.CASE_INSENSITIVE);
     private static final Pattern SKIP_TOKEN_PATTERN = Pattern.compile(
@@ -680,6 +682,29 @@ public final class OpenAIClient {
         return t.isEmpty() || SKIP_TOKEN_PATTERN.matcher(t).matches();
     }
 
+    /**
+     * Whether a response is one SKIP for each source line and nothing else. The prompt asks for
+     * SKIP on a line that needs no work, so this answer means the task has nothing to do.
+     */
+    static boolean skipsEveryLine(@Nullable String response, List<String> sourceLines) {
+        if (response == null || sourceLines.isEmpty()) {
+            return false;
+        }
+        int skips = 0;
+        for (String raw : response.split("\n")) {
+            String line = raw.trim();
+            if (line.isEmpty()) {
+                continue;
+            }
+            line = LINE_NUMBER_PREFIX.matcher(line).replaceFirst("").trim();
+            if (line.isEmpty() || !isSkipToken(line)) {
+                return false;
+            }
+            skips++;
+        }
+        return skips == sourceLines.size();
+    }
+
     @Nullable
     private static List<String> parseNumberedLines(String text, int expectedCount) {
         if (text == null || expectedCount <= 0) return null;
@@ -731,7 +756,7 @@ public final class OpenAIClient {
         for (int i = 0; i < end && list.size() < expectedCount; i++) {
             String line = raw[i].trim();
             if (line.isEmpty()) continue;
-            line = line.replaceFirst("^\\d+[.)\\]:\\-]\\s*", "").trim();
+            line = LINE_NUMBER_PREFIX.matcher(line).replaceFirst("").trim();
             if (isSkipToken(line)) {
                 line = "";
             } else {
@@ -750,7 +775,7 @@ public final class OpenAIClient {
         return list;
     }
 
-    private static boolean isNoteOrEmptyLine(String text) {
+    static boolean isNoteOrEmptyLine(@Nullable String text) {
         if (text == null) return true;
         String trimmed = text.trim();
         if (trimmed.isEmpty()) return true;

@@ -175,8 +175,15 @@ public final class ProcessingProviders {
             return null;
         }
         final String model = Settings.LYRICS_AI_MODEL.get();
-        final List<String> mapped = OpenAIClient.mapLines(Settings.LYRICS_AI_BASE_URL.get(),
-                Settings.LYRICS_AI_API_TOKEN.get(), model, prompt, lines);
+        if (!OpenAIClient.fitsOneRequest(lines)) {
+            return null;
+        }
+        final String response = OpenAIClient.request(Settings.LYRICS_AI_BASE_URL.get(),
+                Settings.LYRICS_AI_API_TOKEN.get(), model, prompt);
+        if (OpenAIClient.skipsEveryLine(response, lines)) {
+            return new Result(null, model, true);
+        }
+        final List<String> mapped = OpenAIClient.mapResponse(response, lines);
         return mapped == null ? null : new Result(mapped, model);
     }
 
@@ -194,6 +201,13 @@ public final class ProcessingProviders {
         }
     }
 
-    public record Result(List<String> lines, String model) {
+    /**
+     * @param skipsEveryLine The model answered SKIP for every line, so the task has nothing to do
+     *                       for these lyrics. {@code lines} is then null.
+     */
+    public record Result(@Nullable List<String> lines, String model, boolean skipsEveryLine) {
+        public Result(List<String> lines, String model) {
+            this(lines, model, false);
+        }
     }
 }

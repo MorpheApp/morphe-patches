@@ -31,6 +31,13 @@ public final class LyricsTranslator {
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    /**
+     * A provider found nothing to translate, so the lyrics are already in the requested language.
+     * Compared by identity.
+     */
+    private static final ProviderTranslation UNCHANGED =
+            new ProviderTranslation(List.of(), false, false, null);
+
     private LyricsTranslator() {
     }
 
@@ -133,6 +140,8 @@ public final class LyricsTranslator {
 
         executor.execute(() -> {
             try {
+                // A later provider may still have a translation, so keep asking.
+                boolean unchanged = false;
                 for (String provider : providers) {
                     try {
                         ProviderTranslation result = ProcessingProviders.EMBEDDED.equals(provider)
@@ -140,6 +149,10 @@ public final class LyricsTranslator {
                                    : new ProviderTranslation(embedded, false, false, null))
                                 : translateWithProvider(
                                 provider, track, source, language, lines);
+                        if (result == UNCHANGED) {
+                            unchanged = true;
+                            continue;
+                        }
                         if (result != null) {
                             Utils.runOnMainThread(() -> callback.onTranslated(
                                     result.lines(), result.fromGoogle(), result.fromAI(),
@@ -150,8 +163,9 @@ public final class LyricsTranslator {
                         Logger.printInfo(() -> "translation provider failed: " + provider, ex);
                     }
                 }
-                Utils.runOnMainThread(
-                        () -> callback.onTranslated(null, false, false, null, false));
+                final boolean alreadyInLanguage = unchanged;
+                Utils.runOnMainThread(() -> callback.onTranslated(
+                        null, false, false, null, alreadyInLanguage));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "translate failure", ex);
                 Utils.runOnMainThread(
@@ -170,12 +184,20 @@ public final class LyricsTranslator {
             if (hasTranslation(translated, lines)) {
                 return new ProviderTranslation(sanitizeTranslation(translated), true, false, null);
             }
+            if (isSameAsSource(translated, lines)) {
+                return UNCHANGED;
+            }
 
             translated = translateOnline(lines, language);
             if (hasTranslation(translated, lines)) {
                 translated = sanitizeTranslation(translated);
                 LyricsCache.putTranslation(track, source, language, lines, translated);
                 return new ProviderTranslation(translated, true, false, null);
+            }
+            if (isSameAsSource(translated, lines)) {
+                // Cached as the source text, so the next play does not ask again.
+                LyricsCache.putTranslation(track, source, language, lines, lines);
+                return UNCHANGED;
             }
             return null;
         }
@@ -192,14 +214,26 @@ public final class LyricsTranslator {
             return new ProviderTranslation(sanitizeTranslation(aiCached), false, true,
                     deepl ? "DeepL" : Settings.LYRICS_AI_MODEL.get());
         }
+        if (isSameAsSource(aiCached, lines)) {
+            return UNCHANGED;
+        }
 
         ProcessingProviders.Result ai = deepl
                 ? deepLTranslate(lines, language)
                 : ProcessingProviders.mapLines(provider, OpenAIClient.renderPrompt(
                 Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
                 language, track.title(), track.artist(), lines), lines);
-        if (ai == null || ai.lines() == null || ai.lines().isEmpty()
-                || !hasTranslation(ai.lines(), lines)) {
+        if (ai == null) {
+            return null;
+        }
+        // DeepL sends back text that is already in the target language. An AI model is told
+        // to answer SKIP instead, so the source text coming back from it is a failed answer.
+        if (ai.skipsEveryLine() || deepl && isSameAsSource(ai.lines(), lines)) {
+            // Cached as the source text, so the next play does not ask again.
+            LyricsCache.putTranslationAI(track, source, language, lines, lines, provider);
+            return UNCHANGED;
+        }
+        if (!hasTranslation(ai.lines(), lines)) {
             return null;
         }
 
@@ -214,6 +248,32 @@ public final class LyricsTranslator {
             clean.add(line == null ? "" : line);
         }
         return clean;
+    }
+
+    /**
+     * Whether a provider answered every line that has letters with its source text, which means
+     * the lyrics are already written in the requested language. A line without letters, such as
+     * a music note, can come back in any form. An empty line in place of text is an incomplete
+     * answer.
+     */
+    private static boolean isSameAsSource(@Nullable List<String> translated,
+                                          List<String> source) {
+        if (translated == null || translated.size() != source.size()) {
+            return false;
+        }
+        boolean anyText = false;
+        for (int i = 0; i < translated.size(); i++) {
+            String original = source.get(i);
+            if (OpenAIClient.isNoteOrEmptyLine(original)) {
+                continue;
+            }
+            anyText = true;
+            String text = translated.get(i);
+            if (text == null || !text.trim().equals(original.trim())) {
+                return false;
+            }
+        }
+        return anyText;
     }
 
     /** A translation is usable if at least one line differs from the source. */
@@ -261,7 +321,10 @@ public final class LyricsTranslator {
     }
 
     public interface Callback {
-        /** @param skipped No provider was asked anything, so a caller reports nothing to do. */
+        /**
+         * @param skipped The lyrics are already in the requested language, so a caller reports
+         *                nothing to do instead of a failure.
+         */
         void onTranslated(@Nullable List<String> translatedLines,
                           boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
                           boolean skipped);

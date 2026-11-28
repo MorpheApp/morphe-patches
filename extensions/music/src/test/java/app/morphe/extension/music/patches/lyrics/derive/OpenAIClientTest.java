@@ -254,6 +254,30 @@ public class OpenAIClientTest {
     }
 
     @Test
+    public void skipsEveryLineTrueWhenEachLineIsSkip() {
+        List<String> source = List.of("hello", "world");
+        assertTrue(OpenAIClient.skipsEveryLine("1. SKIP\n2. SKIP\n", source));
+        assertTrue(OpenAIClient.skipsEveryLine("SKIP\n\nSKIP", source));
+    }
+
+    @Test
+    public void skipsEveryLineFalseWhenALineIsAnswered() {
+        assertFalse(OpenAIClient.skipsEveryLine("1. SKIP\n2. mundo", List.of("hello", "world")));
+    }
+
+    @Test
+    public void skipsEveryLineFalseWhenLinesAreMissing() {
+        assertFalse(OpenAIClient.skipsEveryLine("1. SKIP", List.of("hello", "world")));
+        assertFalse(OpenAIClient.skipsEveryLine("1.\n2.", List.of("hello", "world")));
+    }
+
+    @Test
+    public void skipsEveryLineFalseWithoutAnswer() {
+        assertFalse(OpenAIClient.skipsEveryLine(null, List.of("hello")));
+        assertFalse(OpenAIClient.skipsEveryLine("", List.of("hello")));
+    }
+
+    @Test
     public void mapResponseUnnumberedLines() {
         String response = "translated one\ntranslated two";
         List<String> source = List.of("one", "two");
