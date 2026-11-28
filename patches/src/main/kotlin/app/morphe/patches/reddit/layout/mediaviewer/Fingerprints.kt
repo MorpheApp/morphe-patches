@@ -19,6 +19,13 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal object MediaViewerOnResumeFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/fullbleedplayer/common/FbpActivity;",
+    name = "onResume",
+    returnType = "V",
+    parameters = emptyList()
+)
+
 /**
  * Composable of the media viewer (full bleed player) caption, user info and action bar.
  */
@@ -44,6 +51,31 @@ internal object FullBleedChromeStateToStringFingerprint : Fingerprint(
             definingClass = "this",
             type = "Z",
             location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * The viewer's screen-level composable reads the selected post's chrome state.
+ */
+internal object ActiveMediaViewerChromeFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        methodCall(
+            returnType = { FullBleedChromeStateToStringFingerprint.originalClassDef.type },
+            opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(
+            { FullBleedChromeStateToStringFingerprint.instructionMatches.last().fieldReference },
+            opcode = Opcode.IGET_BOOLEAN,
+            location = MatchAfterWithin(42)
+        ),
+        methodCall(
+            definingClass = "Lcom/reddit/fullbleedplayer/FbpVideoControls;",
+            name = "isSeekbarDocked",
+            location = MatchAfterWithin(49)
         )
     )
 )

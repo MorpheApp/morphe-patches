@@ -42,6 +42,7 @@ import app.morphe.extension.reddit.patches.HideCommunityMenuBadgePatch;
 import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
 import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
+import app.morphe.extension.reddit.patches.HideMediaViewerStatusBarPatch;
 import app.morphe.extension.reddit.patches.HidePeopleAlsoSearchForSectionPatch;
 import app.morphe.extension.reddit.patches.HideRelatedPostsSectionPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
@@ -106,6 +107,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 DisableHomeFeedAutoRefreshPatch.isPatchIncluded() ||
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
+                HideMediaViewerStatusBarPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
                 SwipeUpForCommentsPatch.isPatchIncluded() ||
                 KeepMediaViewerInSubredditPatch.isPatchIncluded() ||
@@ -462,6 +464,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                         Settings.HIDE_MEDIA_VIEWER_OVERLAY
                 ));
             }
+        }
+
+        if (HideMediaViewerStatusBarPatch.isPatchIncluded()) {
+            group.addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_MEDIA_VIEWER_STATUS_BAR
+            ));
         }
 
         if (MediaViewerBlackBackgroundPatch.isPatchIncluded()) {
