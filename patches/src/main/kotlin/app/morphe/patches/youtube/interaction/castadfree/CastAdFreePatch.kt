@@ -32,8 +32,7 @@ val castAdFreePatch = patch(
     name = "Cast without ads",
     description = "Lists the Cast devices a second time in the Cast menu, as \"(no ads)\". " +
             "Choosing one plays the video on the device without the YouTube app of the device, which shows ads. " +
-            "This patch works with YouTube 21.23 and newer.",
-    default = false,
+            "This patch works with YouTube 21.23 and newer."
 ) {
     dependsOn(
         settingsPatch,
