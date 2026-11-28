@@ -39,12 +39,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
@@ -65,6 +65,7 @@ import app.morphe.extension.music.patches.lyrics.ui.WordSweepAnimator.EmphasisSa
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -75,8 +76,9 @@ import app.morphe.extension.shared.ui.Dim;
 public final class PlayerLiveLyricsView extends View
         implements LyricsManager.Listener, Choreographer.FrameCallback {
 
-    private static final CopyOnWriteArrayList<WeakReference<PlayerLiveLyricsView>> ACTIVE_VIEWS =
-            new CopyOnWriteArrayList<>();
+    /** Attached views. Only accessed on the main thread. */
+    private static final Set<PlayerLiveLyricsView> ACTIVE_VIEWS =
+            Collections.newSetFromMap(new WeakHashMap<>());
 
     private static final Interpolator ELEV_EASE = new PathInterpolator(0.4f, 0f, 0.2f, 1f);
     private static final Interpolator REVEAL_EASE = new PathInterpolator(0.22f, 1.0f, 0.36f, 1.0f);
@@ -309,9 +311,9 @@ public final class PlayerLiveLyricsView extends View
 
         fadePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         fetchingText = str("morphe_music_lyrics_player_live_fetching");
-        gapIntroOptions = loadGapLabelOptions("morphe_music_lyrics_player_live_gap_intro_entries");
-        gapInterludeOptions = loadGapLabelOptions("morphe_music_lyrics_player_live_gap_interlude_entries");
-        gapOutroOptions = loadGapLabelOptions("morphe_music_lyrics_player_live_gap_outro_entries");
+        gapIntroOptions = ResourceUtils.getStringArray("morphe_music_lyrics_player_live_gap_intro_entries");
+        gapInterludeOptions = ResourceUtils.getStringArray("morphe_music_lyrics_player_live_gap_interlude_entries");
+        gapOutroOptions = ResourceUtils.getStringArray("morphe_music_lyrics_player_live_gap_outro_entries");
         buildNotePaths();
 
         setContentDescription(str("morphe_music_lyrics_player_live_title"));
@@ -325,18 +327,8 @@ public final class PlayerLiveLyricsView extends View
         applyTypography();
     }
 
-    private static String[] loadGapLabelOptions(String arrayName) {
-        try {
-            return ResourceUtils.getStringArray(arrayName);
-        } catch (Exception ex) {
-            return new String[0];
-        }
-    }
-
     private void onShowLoadingTimeout() {
-        if ((currentState == LyricsManager.State.LOADING || pendingTrackTransition)
-                && Settings.LYRICS_ENABLED.get()
-                && Settings.LYRICS_PLAYER_LIVE.get()) {
+        if ((currentState == LyricsManager.State.LOADING || pendingTrackTransition) && isLiveLyricsEnabled()) {
             loadingShown = true;
             loadingEnteredUptimeMs = SystemClock.uptimeMillis();
             lineTransitionStartMs = loadingEnteredUptimeMs;
@@ -352,6 +344,11 @@ public final class PlayerLiveLyricsView extends View
         PlayerLiveLyricsArtwork.buildDoubleNotePathInto(gapDoubleNotePath, gapNoteSizePx);
     }
 
+    /** @return Whether the live lyrics strip is turned on. */
+    public static boolean isLiveLyricsEnabled() {
+        return Settings.LYRICS_ENABLED.get() && Settings.LYRICS_PLAYER_LIVE.get();
+    }
+
     /** Notifies attached views after any relevant lyrics setting changes. */
     public static void onSettingsChanged() {
         onSettingsChanged(false);
@@ -362,47 +359,27 @@ public final class PlayerLiveLyricsView extends View
      * romanization to re-run when provider, language, or dictionary preferences changed.
      */
     public static void onSettingsChanged(boolean forceDerived) {
-        UtilsRefreshHelper.postOrRun(() -> {
-            for (WeakReference<PlayerLiveLyricsView> ref : ACTIVE_VIEWS) {
-                PlayerLiveLyricsView view = ref.get();
-                if (view == null) {
-                    ACTIVE_VIEWS.remove(ref);
-                } else {
-                    view.applyTypography();
-                    view.invalidateLineCache();
-                    view.rebuildGapIntervals(view.currentLyrics);
-                    view.launchFailedForTrack = false;
-                    view.updateLaunchAvailability();
-                    view.requestLayout();
-                    view.requestDerivedLyricsIfNeeded(forceDerived);
-                    view.syncVisibilityAndLoop();
-                }
+        Utils.runOnMainThreadNowOrLater(() -> {
+            for (PlayerLiveLyricsView view : ACTIVE_VIEWS) {
+                view.applyTypography();
+                view.invalidateLineCache();
+                view.rebuildGapIntervals(view.currentLyrics);
+                view.launchFailedForTrack = false;
+                view.updateLaunchAvailability();
+                view.requestLayout();
+                view.requestDerivedLyricsIfNeeded(forceDerived);
+                view.syncVisibilityAndLoop();
             }
         });
     }
 
     /** Re-evaluates whether tapping the live lyrics strip can open the lyrics panel. */
     public static void refreshLaunchAvailability() {
-        UtilsRefreshHelper.postOrRun(() -> {
-            for (WeakReference<PlayerLiveLyricsView> ref : ACTIVE_VIEWS) {
-                PlayerLiveLyricsView view = ref.get();
-                if (view == null) {
-                    ACTIVE_VIEWS.remove(ref);
-                } else {
-                    view.updateLaunchAvailability();
-                }
+        Utils.runOnMainThreadNowOrLater(() -> {
+            for (PlayerLiveLyricsView view : ACTIVE_VIEWS) {
+                view.updateLaunchAvailability();
             }
         });
-    }
-
-    @Nullable
-    private static WeakReference<PlayerLiveLyricsView> findRefFor(@Nullable PlayerLiveLyricsView target) {
-        for (WeakReference<PlayerLiveLyricsView> ref : ACTIVE_VIEWS) {
-            if (ref.get() == target) {
-                return ref;
-            }
-        }
-        return null;
     }
 
     private void applyTypography() {
@@ -439,6 +416,9 @@ public final class PlayerLiveLyricsView extends View
     }
 
     private void updateLaunchAvailability() {
+        if (!isLiveLyricsEnabled()) {
+            return;
+        }
         final boolean available = !launchFailedForTrack && LyricsPanelInstaller.canOpenLyricsTab();
         if (launchAvailable != available || isClickable() != available) {
             launchAvailable = available;
@@ -454,9 +434,7 @@ public final class PlayerLiveLyricsView extends View
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         try {
-            if (findRefFor(this) == null) {
-                ACTIVE_VIEWS.add(new WeakReference<>(this));
-            }
+            ACTIVE_VIEWS.add(this);
             applyTypography();
             updateLaunchAvailability();
             LyricsManager.getInstance().addListener(this);
@@ -469,7 +447,7 @@ public final class PlayerLiveLyricsView extends View
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        if (hasWindowFocus) {
+        if (hasWindowFocus && isLiveLyricsEnabled()) {
             launchFailedForTrack = false;
             updateForegroundTint();
             updateLaunchAvailability();
@@ -493,10 +471,7 @@ public final class PlayerLiveLyricsView extends View
         } catch (Exception ex) {
             Logger.printException(() -> "PlayerLiveLyricsView detach failure", ex);
         }
-        WeakReference<PlayerLiveLyricsView> self = findRefFor(this);
-        if (self != null) {
-            ACTIVE_VIEWS.remove(self);
-        }
+        ACTIVE_VIEWS.remove(this);
         super.onDetachedFromWindow();
     }
 
@@ -531,9 +506,7 @@ public final class PlayerLiveLyricsView extends View
         }
         mainHandler.removeCallbacks(showLoadingRunnable);
         final long now = SystemClock.uptimeMillis();
-        if (transitioning
-                && Settings.LYRICS_ENABLED.get()
-                && Settings.LYRICS_PLAYER_LIVE.get()) {
+        if (transitioning && isLiveLyricsEnabled()) {
             if (getVisibility() == View.VISIBLE) {
                 captureOutgoingSnapshot(now, activeViewportWidth());
                 loadingShown = true;
@@ -553,6 +526,15 @@ public final class PlayerLiveLyricsView extends View
 
     @Override
     public void onLyricsChanged(LyricsManager.State state, @Nullable Lyrics lyrics) {
+        if (!isLiveLyricsEnabled()) {
+            // Nothing to show. The settings listener rebuilds everything if the setting is turned on.
+            pendingTrackTransition = false;
+            loadingShown = false;
+            mainHandler.removeCallbacks(showLoadingRunnable);
+            currentState = state;
+            currentLyrics = lyrics;
+            return;
+        }
         final boolean wasShowingLoading = isShowingLoading();
         pendingTrackTransition = false;
         mainHandler.removeCallbacks(showLoadingRunnable);
@@ -581,9 +563,7 @@ public final class PlayerLiveLyricsView extends View
             clearDerivedLyrics();
         }
 
-        if (state == LyricsManager.State.LOADING
-                && Settings.LYRICS_ENABLED.get()
-                && Settings.LYRICS_PLAYER_LIVE.get()) {
+        if (state == LyricsManager.State.LOADING) {
             if (stayLoading) {
                 loadingShown = true;
             } else if (getVisibility() == View.VISIBLE) {
@@ -623,7 +603,7 @@ public final class PlayerLiveLyricsView extends View
 
     @Override
     public void onTemporaryOffsetChanged(int offsetMs) {
-        resetClockAndSweepGuards();
+        resetLineSweepGuard();
         invalidate();
     }
 
@@ -655,10 +635,6 @@ public final class PlayerLiveLyricsView extends View
         lastLineSweepX = 0f;
     }
 
-    private void resetClockAndSweepGuards() {
-        resetLineSweepGuard();
-    }
-
     private long getLiveClockPositionMs() {
         return LyricsManager.getInstance().getPositionMs();
     }
@@ -680,7 +656,7 @@ public final class PlayerLiveLyricsView extends View
         pendingInitialScroll = false;
         scrollX = 0f;
         lastFrameKind = KIND_NONE;
-        resetClockAndSweepGuards();
+        resetLineSweepGuard();
         releaseMaskCache();
     }
 
@@ -781,15 +757,13 @@ public final class PlayerLiveLyricsView extends View
     }
 
     private boolean isShowingLoading() {
-        return Settings.LYRICS_ENABLED.get()
-                && Settings.LYRICS_PLAYER_LIVE.get()
+        return isLiveLyricsEnabled()
                 && (currentState == LyricsManager.State.LOADING || pendingTrackTransition)
                 && loadingShown;
     }
 
     private boolean hasSyncedLyrics() {
-        return Settings.LYRICS_ENABLED.get()
-                && Settings.LYRICS_PLAYER_LIVE.get()
+        return isLiveLyricsEnabled()
                 && !pendingTrackTransition
                 && currentState == LyricsManager.State.LOADED
                 && currentLyrics != null
@@ -849,7 +823,7 @@ public final class PlayerLiveLyricsView extends View
 
     private void syncVisibilityAndLoop() {
         final boolean show = shouldShow();
-        final boolean settingsActive = Settings.LYRICS_ENABLED.get() && Settings.LYRICS_PLAYER_LIVE.get();
+        final boolean settingsActive = isLiveLyricsEnabled();
         final long now = SystemClock.uptimeMillis();
 
         if (show) {
@@ -1983,17 +1957,5 @@ public final class PlayerLiveLyricsView extends View
         chevronPath.lineTo(rightEdge, cy);
         chevronPath.lineTo(leftEdge, cy + halfH);
         canvas.drawPath(chevronPath, chevronPaint);
-    }
-
-    private static final class UtilsRefreshHelper {
-        private static final Handler MAIN_HANDLER = new Handler(Looper.getMainLooper());
-
-        static void postOrRun(Runnable task) {
-            if (Looper.myLooper() == Looper.getMainLooper()) {
-                task.run();
-            } else {
-                MAIN_HANDLER.post(task);
-            }
-        }
     }
 }

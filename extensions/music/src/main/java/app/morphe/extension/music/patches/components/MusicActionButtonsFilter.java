@@ -191,8 +191,10 @@ public final class MusicActionButtonsFilter extends Filter {
             }
             if (Settings.HIDE_ACTION_BAR.get()) {
                 treeNodeResultList.clear();
-                LyricsButtonPatch.setLyricsActionBarIndex(-1);
-                PlayerLiveLyricsView.refreshLaunchAvailability();
+                if (PlayerLiveLyricsView.isLiveLyricsEnabled()) {
+                    LyricsButtonPatch.setLyricsActionBarIndex(-1);
+                    PlayerLiveLyricsView.refreshLaunchAvailability();
+                }
                 return;
             }
             for (int i = treeNodeResultList.size() - 1; i >= 0; i--) {
@@ -207,20 +209,26 @@ public final class MusicActionButtonsFilter extends Filter {
                 if (i == 0 && button == ActionButton.LIKE_DISLIKE) continue;
                 treeNodeResultList.remove(i);
             }
-            int updatedLyricsIndex = -1;
-            for (int i = 0; i < treeNodeResultList.size(); i++) {
-                byte[] buttonProto = extractButtonProto(treeNodeResultList.get(i));
-                if (buttonProto != null && classify(buttonProto) == ActionButton.LYRICS
-                        && !Settings.HIDE_LYRICS_BUTTON.get()) {
-                    updatedLyricsIndex = i;
-                    break;
-                }
+            if (PlayerLiveLyricsView.isLiveLyricsEnabled()) {
+                LyricsButtonPatch.setLyricsActionBarIndex(indexOfLyricsButton(treeNodeResultList));
+                PlayerLiveLyricsView.refreshLaunchAvailability();
             }
-            LyricsButtonPatch.setLyricsActionBarIndex(updatedLyricsIndex);
-            PlayerLiveLyricsView.refreshLaunchAvailability();
         } catch (Exception ex) {
             Logger.printException(() -> "onLazilyConvertedElementLoaded failure", ex);
         }
+    }
+
+    /**
+     * @return Index of the remaining Lyrics button in the action bar, or -1 if there is none.
+     */
+    private static int indexOfLyricsButton(List<Object> treeNodeResultList) {
+        for (int i = 0, count = treeNodeResultList.size(); i < count; i++) {
+            byte[] buttonProto = extractButtonProto(treeNodeResultList.get(i));
+            if (buttonProto != null && classify(buttonProto) == ActionButton.LYRICS) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Nullable

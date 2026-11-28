@@ -915,9 +915,17 @@ public final class LyricsPanelInstaller {
         }
     }
 
-    private static boolean isActionBarPopulated(Activity activity) {
+    @Nullable
+    private static ViewGroup findActionBar(Activity activity) {
         final int actionBarId = ResourceUtils.getIdentifier(ResourceType.ID, "video_action_bar");
-        if (actionBarId == 0 || !(activity.findViewById(actionBarId) instanceof ViewGroup actionBar)) {
+        return actionBarId != 0 && activity.findViewById(actionBarId) instanceof ViewGroup actionBar
+                ? actionBar
+                : null;
+    }
+
+    private static boolean isActionBarPopulated(Activity activity) {
+        ViewGroup actionBar = findActionBar(activity);
+        if (actionBar == null) {
             return false;
         }
         ViewGroup itemsHost = findActionBarItemsHost(actionBar);
@@ -953,8 +961,8 @@ public final class LyricsPanelInstaller {
 
     @Nullable
     private static View findActionBarLyricsButton(Activity activity) {
-        final int actionBarId = ResourceUtils.getIdentifier(ResourceType.ID, "video_action_bar");
-        if (actionBarId == 0 || !(activity.findViewById(actionBarId) instanceof ViewGroup actionBar)) {
+        ViewGroup actionBar = findActionBar(activity);
+        if (actionBar == null) {
             return null;
         }
         String title = LyricsButtonPatch.getLyricsButtonTitle();
@@ -987,13 +995,10 @@ public final class LyricsPanelInstaller {
             if (view instanceof TextView textView && isSameTitle(title, textView.getText())) {
                 return view;
             }
-            try {
-                var nodeInfo = view.createAccessibilityNodeInfo();
-                if (nodeInfo != null && (isSameTitle(title, nodeInfo.getContentDescription())
-                        || isSameTitle(title, nodeInfo.getText()))) {
-                    return view;
-                }
-            } catch (Throwable ignored) {
+            var nodeInfo = view.createAccessibilityNodeInfo();
+            if (nodeInfo != null && (isSameTitle(title, nodeInfo.getContentDescription())
+                    || isSameTitle(title, nodeInfo.getText()))) {
+                return view;
             }
         }
         if (view instanceof ViewGroup group) {

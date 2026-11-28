@@ -116,16 +116,16 @@ public class TTMLParserTest {
         String ttml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                 + "<tt xmlns=\"http://www.w3.org/ns/ttml\">"
                 + "<head></head><body><div><p begin=\"00:01.000\" end=\"00:02.000\">"
-                + "<span begin=\"00:01.000\" end=\"00:01.200\">\u0e40\u0e14\u0e35\u0e48\u0e22\u0e27</span>"
-                + "<span begin=\"00:01.200\" end=\"00:01.400\">\u0e19\u0e35\u0e49</span>"
-                + "<span begin=\"00:01.400\" end=\"00:01.600\">\u0e44\u0e21\u0e48</span>"
-                + "<span begin=\"00:01.600\" end=\"00:01.800\">\u0e15\u0e2d\u0e1a</span>"
-                + "<span begin=\"00:01.800\" end=\"00:02.000\">\u0e19\u0e30</span>"
+                + "<span begin=\"00:01.000\" end=\"00:01.200\">เดี่ยว</span>"
+                + "<span begin=\"00:01.200\" end=\"00:01.400\">นี้</span>"
+                + "<span begin=\"00:01.400\" end=\"00:01.600\">ไม่</span>"
+                + "<span begin=\"00:01.600\" end=\"00:01.800\">ตอบ</span>"
+                + "<span begin=\"00:01.800\" end=\"00:02.000\">นะ</span>"
                 + "</p></div></body></tt>";
         Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
         assertNotNull(lyrics);
         assertEquals(1, lyrics.lines().size());
-        assertEquals("\u0e40\u0e14\u0e35\u0e48\u0e22\u0e27\u0e19\u0e35\u0e49\u0e44\u0e21\u0e48\u0e15\u0e2d\u0e1a\u0e19\u0e30",
+        assertEquals("เดี่ยวนี้ไม่ตอบนะ",
                 lyrics.lines().get(0).text());
         for (var word : lyrics.lines().get(0).words()) {
             assertFalse("No Thai word should be marked endsWithSpace", word.endsWithSpace());
@@ -138,16 +138,16 @@ public class TTMLParserTest {
         String ttml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                 + "<tt xmlns=\"http://www.w3.org/ns/ttml\">"
                 + "<head></head><body><div><p begin=\"00:01.000\" end=\"00:02.000\">"
-                + "<span begin=\"00:01.000\" end=\"00:01.200\">\u0e17\u0e31\u0e01</span>"
-                + "<span begin=\"00:01.200\" end=\"00:01.400\">\u0e44\u0e1b</span>"
-                + "<span begin=\"00:01.400\" end=\"00:01.600\">\u0e41\u0e25\u0e49\u0e27</span> "
-                + "<span begin=\"00:01.600\" end=\"00:01.800\">\u0e44\u0e21\u0e48</span>"
-                + "<span begin=\"00:01.800\" end=\"00:02.000\">\u0e15\u0e2d\u0e1a</span>"
+                + "<span begin=\"00:01.000\" end=\"00:01.200\">ทัก</span>"
+                + "<span begin=\"00:01.200\" end=\"00:01.400\">ไป</span>"
+                + "<span begin=\"00:01.400\" end=\"00:01.600\">แล้ว</span> "
+                + "<span begin=\"00:01.600\" end=\"00:01.800\">ไม่</span>"
+                + "<span begin=\"00:01.800\" end=\"00:02.000\">ตอบ</span>"
                 + "</p></div></body></tt>";
         Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
         assertNotNull(lyrics);
         assertEquals(1, lyrics.lines().size());
-        assertEquals("\u0e17\u0e31\u0e01\u0e44\u0e1b\u0e41\u0e25\u0e49\u0e27 \u0e44\u0e21\u0e48\u0e15\u0e2d\u0e1a",
+        assertEquals("ทักไปแล้ว ไม่ตอบ",
                 lyrics.lines().get(0).text());
         var words = lyrics.lines().get(0).words();
         assertEquals(5, words.size());
@@ -279,8 +279,8 @@ public class TTMLParserTest {
                 + "</transliteration></transliterations></iTunesMetadata></head>"
                 + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:02.500\">"
                 + "<span begin=\"00:01.000\" end=\"00:01.500\">By my side </span>"
-                + "<span begin=\"00:01.500\" end=\"00:02.000\">\u541b\u3068</span>"
-                + "<span begin=\"00:02.000\" end=\"00:02.500\">\u7b11\u3044\u305f\u3044</span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">君と</span>"
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">笑いたい</span>"
                 + "</p></div></body></tt>";
         Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
         assertNotNull(lyrics);
@@ -301,9 +301,9 @@ public class TTMLParserTest {
                 + "</text>"
                 + "</transliteration></transliterations></iTunesMetadata></head>"
                 + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:03.000\">"
-                + "<span begin=\"00:01.000\" end=\"00:01.500\">\u541b\u304c</span>"
-                + "<span begin=\"00:01.500\" end=\"00:02.000\">\u7e01\u53d6</span>"
-                + "<span begin=\"00:02.000\" end=\"00:03.000\">\u3063\u305f\u611b\u306e\u9854\u3064\u304d</span>"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">君が</span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">縁取</span>"
+                + "<span begin=\"00:02.000\" end=\"00:03.000\">った愛の顔つき</span>"
                 + "</p></div></body></tt>";
         Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
         assertNotNull(lyrics);
@@ -328,9 +328,9 @@ public class TTMLParserTest {
                 + "</text>"
                 + "</transliteration></transliterations></iTunesMetadata></head>"
                 + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:02.500\">"
-                + "<span begin=\"00:01.000\" end=\"00:01.500\">\u541b</span>"
-                + "<span begin=\"00:01.500\" end=\"00:02.000\">\u306e</span>"
-                + "<span begin=\"00:02.000\" end=\"00:02.500\">\u540d</span>"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">君</span>"
+                + "<span begin=\"00:01.500\" end=\"00:02.000\">の</span>"
+                + "<span begin=\"00:02.000\" end=\"00:02.500\">名</span>"
                 + "</p></div></body></tt>";
         Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
         assertNotNull(lyrics);
@@ -353,10 +353,10 @@ public class TTMLParserTest {
                 + "</text>"
                 + "</transliteration></transliterations></iTunesMetadata></head>"
                 + "<body><div><p itunes:key=\"L1\" begin=\"00:01.000\" end=\"00:02.500\">"
-                + "<span begin=\"00:01.000\" end=\"00:01.500\">\u541b\u3092</span>"
-                + "<span begin=\"00:01.500\" end=\"00:01.800\">\u60f3</span>"
-                + "<span begin=\"00:01.800\" end=\"00:02.100\">\u3063\u3066</span>"
-                + "<span begin=\"00:02.100\" end=\"00:02.500\">\u3044\u308b</span>"
+                + "<span begin=\"00:01.000\" end=\"00:01.500\">君を</span>"
+                + "<span begin=\"00:01.500\" end=\"00:01.800\">想</span>"
+                + "<span begin=\"00:01.800\" end=\"00:02.100\">って</span>"
+                + "<span begin=\"00:02.100\" end=\"00:02.500\">いる</span>"
                 + "</p></div></body></tt>";
         Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, "TestProvider", null);
         assertNotNull(lyrics);
