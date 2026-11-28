@@ -23,6 +23,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -366,6 +367,22 @@ internal object MiniplayerModernActionButtonFingerprint : Fingerprint(
     )
 )
 
+internal object MiniplayerModernOverlayInflationFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "modern_miniplayer_controls_overlay"),
+        methodCall(
+            definingClass = "Landroid/view/LayoutInflater;",
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+            location = MatchAfterWithin(6)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
+    )
+)
+
 internal object MiniplayerMinimumSizeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
@@ -599,4 +616,47 @@ internal object BottomUiContainerReportHeightFingerprint : Fingerprint(
 internal object MiniplayerHorizontalDragAnimationEndFingerprint : Fingerprint(
     definingClass = { MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2].methodReference.definingClass },
     name = "onAnimationEnd",
+)
+
+/** Presence bit of the start paused field of the playback start descriptor proto. */
+private const val START_PAUSED_PRESENCE_BIT = 0x4000L
+
+/** Presence bit of the start position field of the playback start descriptor proto. */
+private const val START_POSITION_PRESENCE_BIT = 0x200L
+
+/** Starts the video paused. Used by the native startup miniplayer of YouTube Premium. */
+internal object PlaybackStartDescriptorStartPausedFingerprint : Fingerprint(
+    classFingerprint = PlaybackStartDescriptorToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        literal(START_PAUSED_PRESENCE_BIT),
+        fieldAccess(opcode = Opcode.IPUT_BOOLEAN, type = "Z")
+    )
+)
+
+/** Sets the start position in milliseconds. */
+internal object PlaybackStartDescriptorStartPositionFingerprint : Fingerprint(
+    classFingerprint = PlaybackStartDescriptorToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("J"),
+    filters = listOf(
+        literal(START_POSITION_PRESENCE_BIT),
+        fieldAccess(opcode = Opcode.IPUT_WIDE, type = "J")
+    )
+)
+
+/** Builds a playback start descriptor from a command, a local proto or a list of video IDs. */
+internal object PlaybackStartDescriptorBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        string("Only one of localProto, command, videoIdList can be set"),
+        // Video ID list.
+        fieldAccess(definingClass = "this", opcode = Opcode.IGET_OBJECT, type = "Ljava/util/List;"),
+        methodCall(definingClass = "Ljava/util/List;", name = "get")
+    )
 )

@@ -52,6 +52,7 @@ import app.morphe.extension.youtube.patches.LoadVideoPatch;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionSnapshot;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
@@ -2874,6 +2875,34 @@ public final class NativePlaylistQueuePatch {
     }
 
     @Nullable
+    public static PlaybackSessionSnapshot.Queue captureSessionQueue(String videoId) {
+        if (!isPatchIncluded()) return null;
+        try {
+            PlaylistController controller = controllerRef.get();
+            if (controller == null || !videoId.equals(controller.patch_getVideoId())) return null;
+            if (queue != null && controller.patch_getModel() == publishedModel
+                    && videoId.equals(queue.currentEntry().videoId())) {
+                return new PlaybackSessionSnapshot.Queue(
+                        queue.entries().stream().map(PlaylistQueue.Entry::videoId).toList(), queue.selectedIndex(),
+                        queue.repeatMode());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "captureSessionQueue failure", ex);
+        }
+        return null;
+    }
+
+    public static boolean prepareSessionQueue(PlaybackSessionSnapshot.Queue saved, long positionMilliseconds) {
+        if (saved.nativeRepeatMode() == null || !isPatchIncluded()
+                || !AddToQueuePatch.isNativeQueueEnabled() || !canStartQueue()) {
+            return false;
+        }
+        var candidate = PlaylistQueue.fromSavedVideoIds(saved.videoIds(), saved.selectedIndex(), saved.nativeRepeatMode());
+        expectQueueStart(new QueueStart(candidate, VideoInformation.getVideoId(), positionMilliseconds));
+        return true;
+    }
+
+    @Nullable
     private static PlaylistController playingPlaylistController() {
         PlaylistController controller = controllerRef.get();
         PlayerType type = PlayerType.getCurrent();
@@ -3046,7 +3075,7 @@ public final class NativePlaylistQueuePatch {
         }
     }
 
-    private static void startQueue(QueueStart start) {
+    private static void expectQueueStart(QueueStart start) {
         cancelPlaylistAddition();
         cancelPlaylistRequest();
         clearPendingQueueStart();
@@ -3064,7 +3093,10 @@ public final class NativePlaylistQueuePatch {
         // Fresh starts and Undo both open from the feed, whose preview can otherwise
         // replace the requested video's playback before the queue attaches.
         pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
+    }
 
+    private static void startQueue(QueueStart start) {
+        expectQueueStart(start);
         try {
             LoadVideoPatch.openUrl(start.watchUrl(), false);
         } catch (RuntimeException ex) {

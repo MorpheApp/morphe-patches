@@ -19,6 +19,7 @@ import java.util.Objects;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.playback.PlaybackSessionPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
@@ -141,6 +142,7 @@ public class ShortsAutoplayPatch {
             boolean autoplay = inBackgroundPiP
                     ? Settings.SHORTS_AUTOPLAY_BACKGROUND.get()
                     : Settings.SHORTS_AUTOPLAY.get();
+            autoplay = autoplay && !PlaybackSessionPatch.isShortAwaitingPlay();
 
             // Like the app's own auto advance, a Short with a panel open, such as the comments,
             // is repeated. Otherwise, the Short behind the panel keeps the layout of the open panel,

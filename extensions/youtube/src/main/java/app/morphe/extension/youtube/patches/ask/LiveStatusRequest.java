@@ -103,8 +103,14 @@ public final class LiveStatusRequest {
         return null;
     }
 
+    /**
+     * Fetches the live status without using the cache, such as for a video that was live earlier.
+     * Must be called off the main thread.
+     *
+     * @return If the video is live, or null if the status could not be fetched.
+     */
     @Nullable
-    private static Boolean fetch(String videoId) {
+    public static Boolean fetch(String videoId) {
         final long startTime = System.currentTimeMillis();
         JSONObject response = ChannelSearchRoutes.fetch(ChannelSearchRoutes.GET_LIVE_STATUS,
                 ChannelSearchRoutes.createWebVideoBody(videoId, Locale.getDefault()));

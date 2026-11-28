@@ -1576,6 +1576,8 @@ Automotive layout
     <string name="morphe_feed_card_layout_comments">Comments</string>
 
     <!-- layout.miniplayer.miniplayerPatch -->
+    <string name="morphe_miniplayer_restore_session_title">Continue watching on startup</string>
+    <string name="morphe_miniplayer_restore_session_summary">Saves your playback and queue on this device and opens it paused when YouTube starts</string>
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
