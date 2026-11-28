@@ -61,6 +61,8 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.theme.ThemeColorPatch;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.youtube.patches.AmbientModePatch;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -149,8 +151,6 @@ public final class AmbientLightController {
     /** A background this small is a button, and keeps its color. Of the width of a panel, too. */
     private static final float BUTTON_MAX_WIDTH_SCREEN_RATIO = 0.45f;
     private static final float BUTTON_MAX_HEIGHT_DP = 64f;
-    private static final int DARK_PAGE_COLOR = 0xFF0F0F0F;
-    private static final int LIGHT_PAGE_COLOR = 0xFFFFFFFF;
     private static final int MAX_PLAYER_ANCESTORS = 8;
 
     private static final int[] WATCH_PAGE_IDS = {
@@ -194,6 +194,7 @@ public final class AmbientLightController {
     private static final AtomicInteger captureFailures = new AtomicInteger();
     private static long lastPageScan;
     private static volatile int pageColor;
+    private static volatile int appPageColor;
     /** Set once the first light frame is showing, so the page is never see-through over nothing. */
     private static volatile boolean pageCleared;
     private static int retries;
@@ -421,7 +422,7 @@ public final class AmbientLightController {
         if (!seeThrough || FeedCardLayoutPatch.cardBackgrounds.containsKey(drawable)) return color;
 
         try {
-            final int replacement = AmbientLightMath.seeThroughColor(color, pageColor);
+            final int replacement = AmbientLightMath.seeThroughColor(color, pageColor, appPageColor);
             if (replacement == color) return color;
             Rect bounds = drawable.getBounds();
             View host = hostOf(drawable);
@@ -508,7 +509,13 @@ public final class AmbientLightController {
                 buttonMaxWidth = (int) (BUTTON_MAX_WIDTH_SCREEN_RATIO * Math.min(
                         resources.getDisplayMetrics().widthPixels, resources.getDisplayMetrics().heightPixels));
                 buttonMaxHeight = (int) (BUTTON_MAX_HEIGHT_DP * resources.getDisplayMetrics().density);
-                pageColor = Utils.isDarkModeEnabled() ? DARK_PAGE_COLOR : LIGHT_PAGE_COLOR;
+                appPageColor = Utils.isDarkModeEnabled()
+                        ? AmbientLightMath.APP_DARK_PAGE_COLOR
+                        : AmbientLightMath.APP_LIGHT_PAGE_COLOR;
+                // A theme color of the Theme patch is the background of the whole page.
+                pageColor = ThemeColorPatch.isPatchIncluded() && !ThemeColorPatch.isAppDefaultColor()
+                        ? ThemeUtils.getAppBackgroundColor()
+                        : appPageColor;
             }
             seeThrough = watching;
 
@@ -701,7 +708,7 @@ public final class AmbientLightController {
         ViewGroup player = playerRef.get();
         if (page instanceof ViewGroup pageViewGroup && video != null && player != null) {
             View branch = childContaining(pageViewGroup, video);
-            SeeThroughPage.apply(page, branch == null ? player : branch, pageColor);
+            SeeThroughPage.apply(page, branch == null ? player : branch, pageColor, appPageColor);
         }
     }
 

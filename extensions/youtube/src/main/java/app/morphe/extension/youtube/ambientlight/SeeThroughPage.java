@@ -121,6 +121,8 @@ final class SeeThroughPage {
     private static List<View> listItemsBefore = new ArrayList<>();
     /** The color the page was last cleared for. */
     private static int pageColor;
+    /** The page color of the app itself, see {@link AmbientLightMath#seeThroughColor}. */
+    private static int appPageColor;
     private static WeakReference<View> pageContentRef = new WeakReference<>(null);
     @Nullable
     private static Drawable pageContentBackground;
@@ -165,7 +167,7 @@ final class SeeThroughPage {
     /**
      * Clears the page around {@code player}. Run again when the page has changed.
      */
-    static void apply(View page, View player, int pageColor) {
+    static void apply(View page, View player, int pageColor, int appPageColor) {
         if (hostRef.get() != page) {
             restore();
             hostRef = new WeakReference<>(page);
@@ -176,6 +178,7 @@ final class SeeThroughPage {
         panelBackgrounds.keySet().removeIf(view -> !view.isAttachedToWindow());
         panelRowLights.keySet().removeIf(view -> !view.isAttachedToWindow());
         SeeThroughPage.pageColor = pageColor;
+        SeeThroughPage.appPageColor = appPageColor;
         playerRef = new WeakReference<>(player);
         ViewGroup panelWrapper = panelWrapperRef.get();
         if (PANEL_WRAPPER_ID != 0 && (panelWrapper == null || !panelWrapper.isAttachedToWindow())) {
@@ -517,7 +520,7 @@ final class SeeThroughPage {
      */
     private static boolean hasPageColor(GradientDrawable gradient) {
         if (gradient.getColor() != null) {
-            return AmbientLightMath.seeThroughColor(gradient.getColor().getDefaultColor(), pageColor) == 0;
+            return AmbientLightMath.seeThroughColor(gradient.getColor().getDefaultColor(), pageColor, appPageColor) == 0;
         }
         int[] colors = gradient.getColors();
         if (colors == null) return false;
@@ -525,7 +528,7 @@ final class SeeThroughPage {
         boolean found = false;
         for (int color : colors) {
             if (Color.alpha(color) == 0) continue;
-            if (AmbientLightMath.seeThroughColor(color | 0xFF000000, pageColor) != 0) return false;
+            if (AmbientLightMath.seeThroughColor(color | 0xFF000000, pageColor, appPageColor) != 0) return false;
             found = true;
         }
         return found;
@@ -577,7 +580,7 @@ final class SeeThroughPage {
      * @return If a background of this color hides what is under it, and is see-through on the page.
      */
     private static boolean isOpaquePageColor(int color) {
-        return Color.alpha(color) != 0 && AmbientLightMath.seeThroughColor(color, pageColor) == 0;
+        return Color.alpha(color) != 0 && AmbientLightMath.seeThroughColor(color, pageColor, appPageColor) == 0;
     }
 
     private static void restorePanels() {
@@ -926,7 +929,7 @@ final class SeeThroughPage {
             if (id != 0 && view.getId() == id) return true;
         }
         return view.getWidth() >= minWidth && background instanceof ColorDrawable
-                && AmbientLightMath.seeThroughColor(((ColorDrawable) background).getColor(), pageColor) == 0;
+                && AmbientLightMath.seeThroughColor(((ColorDrawable) background).getColor(), pageColor, appPageColor) == 0;
     }
 
     private static void clear(@Nullable View view) {

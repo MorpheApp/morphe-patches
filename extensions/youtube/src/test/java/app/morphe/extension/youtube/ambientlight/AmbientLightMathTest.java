@@ -224,14 +224,14 @@ public class AmbientLightMathTest {
 
     @Test
     public void pageColorsBecomeTransparent() {
-        assertEquals(0, AmbientLightMath.seeThroughColor(DARK_PAGE, DARK_PAGE));
-        assertEquals(0, AmbientLightMath.seeThroughColor(0xFF000000, DARK_PAGE));
-        assertEquals(0, AmbientLightMath.seeThroughColor(LIGHT_PAGE, LIGHT_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(DARK_PAGE, DARK_PAGE, DARK_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(0xFF000000, DARK_PAGE, DARK_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(LIGHT_PAGE, LIGHT_PAGE, LIGHT_PAGE));
     }
 
     @Test
     public void raisedSurfacesBecomeATranslucentVeil() {
-        int veil = AmbientLightMath.seeThroughColor(0xFF272727, DARK_PAGE);
+        int veil = AmbientLightMath.seeThroughColor(0xFF272727, DARK_PAGE, DARK_PAGE);
         assertEquals(0xFFFFFF, veil & 0xFFFFFF);
         assertTrue(veil >>> 24 > 0 && veil >>> 24 < 0xFF);
     }
@@ -418,9 +418,35 @@ public class AmbientLightMathTest {
     }
 
     @Test
+    public void colorsOfAThemePageBecomeTransparent() {
+        final int darkBlue = 0xFF001029;
+        final int lightBlue = 0xFFD1E0FF;
+        // The theme color, and the page colors of the app that the theme replaces later.
+        assertEquals(0, AmbientLightMath.seeThroughColor(darkBlue, darkBlue, DARK_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(DARK_PAGE, darkBlue, DARK_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(0xFF000000, darkBlue, DARK_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(lightBlue, lightBlue, LIGHT_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(LIGHT_PAGE, lightBlue, LIGHT_PAGE));
+        // A lighter blue is a raised surface of the theme.
+        int veil = AmbientLightMath.seeThroughColor(0xFF081838, darkBlue, DARK_PAGE);
+        assertEquals(0xFFFFFF, veil & 0xFFFFFF);
+        assertTrue(veil >>> 24 > 0 && veil >>> 24 < 0xFF);
+        assertEquals(RED, AmbientLightMath.seeThroughColor(RED, darkBlue, DARK_PAGE));
+        assertEquals(0xFF290000, AmbientLightMath.seeThroughColor(0xFF290000, darkBlue, DARK_PAGE));
+        // A bright color of the dark theme still has the dark page colors of the app under it.
+        final int brightBlue = 0xFFA0C0FF;
+        assertEquals(0, AmbientLightMath.seeThroughColor(brightBlue, brightBlue, DARK_PAGE));
+        assertEquals(0, AmbientLightMath.seeThroughColor(DARK_PAGE, brightBlue, DARK_PAGE));
+        // A black theme judges the colors of the app as the page of the app does.
+        assertEquals(0, AmbientLightMath.seeThroughColor(DARK_PAGE, 0xFF000000, DARK_PAGE));
+        assertEquals(AmbientLightMath.seeThroughColor(0xFF272727, DARK_PAGE, DARK_PAGE),
+                AmbientLightMath.seeThroughColor(0xFF272727, 0xFF000000, DARK_PAGE));
+    }
+
+    @Test
     public void otherColorsAreKept() {
-        assertEquals(RED, AmbientLightMath.seeThroughColor(RED, DARK_PAGE));
-        assertEquals(LIGHT_PAGE, AmbientLightMath.seeThroughColor(LIGHT_PAGE, DARK_PAGE));
-        assertEquals(0x80000000, AmbientLightMath.seeThroughColor(0x80000000, DARK_PAGE));
+        assertEquals(RED, AmbientLightMath.seeThroughColor(RED, DARK_PAGE, DARK_PAGE));
+        assertEquals(LIGHT_PAGE, AmbientLightMath.seeThroughColor(LIGHT_PAGE, DARK_PAGE, DARK_PAGE));
+        assertEquals(0x80000000, AmbientLightMath.seeThroughColor(0x80000000, DARK_PAGE, DARK_PAGE));
     }
 }
