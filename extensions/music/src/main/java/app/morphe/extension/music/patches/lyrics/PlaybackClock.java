@@ -155,33 +155,48 @@ final class PlaybackClock {
         if (newPosition >= 0 && !isStaleZero) {
             final long smoothMs = smoothPosition();
             final long delta = newPosition - smoothMs;
-            final boolean isGenuineTransitionSeek = !nowPlaying
-                    ? (delta > PLAYBACK_STATE_SEEK_THRESHOLD_MS
-                       || delta < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
-                    : Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS;
-            if (lastSampledPlaybackPosMs < 0
-                    || (!transitioned && Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS)
-                    || (transitioned && isGenuineTransitionSeek)) {
-                smoothPositionMs = newPosition;
-            } else if (transitioned) {
-                // A pause/resume sample is coarse; taking it would make the highlight jump.
-                if (!nowPlaying && videoTime >= 0 && Math.abs(videoTime - smoothMs)
-                        <= PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS) {
-                    // Consume it so the next tick does not re-trigger isPausedSeek.
-                    lastVideoTimeSample = videoTime;
+            // Skip position/drift adjustments on lagging or repeated samples, while still
+            // allowing playbackSpeed updates below to take effect.
+            final boolean isRepeatedStaleSample = !transitioned
+                    && nowPlaying
+                    && lastSampledPlaybackPosMs >= 0
+                    && newPosition == lastSampledPlaybackPosMs
+                    && newPosition < smoothMs;
+            final boolean videoTimeAheadOfMediaSession = !transitioned
+                    && nowPlaying
+                    && videoTime >= 0
+                    && videoTime > newPosition + 300L
+                    && delta >= -3000L
+                    && Math.abs(videoTime - smoothMs) <= PLAYBACK_STATE_SEEK_THRESHOLD_MS;
+            if (!isRepeatedStaleSample && !videoTimeAheadOfMediaSession) {
+                final boolean isGenuineTransitionSeek = !nowPlaying
+                        ? (delta > PLAYBACK_STATE_SEEK_THRESHOLD_MS
+                           || delta < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
+                        : Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS;
+                if (lastSampledPlaybackPosMs < 0
+                        || (!transitioned && Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS)
+                        || (transitioned && isGenuineTransitionSeek)) {
+                    smoothPositionMs = newPosition;
+                } else if (transitioned) {
+                    // A pause/resume sample is coarse; taking it would make the highlight jump.
+                    if (!nowPlaying && videoTime >= 0 && Math.abs(videoTime - smoothMs)
+                            <= PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS) {
+                        // Consume it so the next tick does not re-trigger isPausedSeek.
+                        lastVideoTimeSample = videoTime;
+                    }
+                } else if (!nowPlaying && Math.abs(delta) > PAUSED_RESYNC_THRESHOLD_MS) {
+                    smoothPositionMs = newPosition;
+                } else if (nowPlaying && newPosition != lastSampledPlaybackPosMs) {
+                    // While playing, a coarse sample may only pull the estimate forward.
+                    if (videoTime < 0 || delta > PLAYBACK_STATE_CORRECTION_MS) {
+                        smoothPositionMs = correctSmoothEstimate(smoothMs, newPosition);
+                    } else {
+                        driftSpeedFactor = calculateDriftSpeedFactor(delta);
+                    }
                 }
-            } else if (!nowPlaying && Math.abs(delta) > PAUSED_RESYNC_THRESHOLD_MS) {
-                smoothPositionMs = newPosition;
-            } else if (nowPlaying && newPosition != lastSampledPlaybackPosMs) {
-                // While playing, a coarse sample may only pull the estimate forward.
-                if (videoTime < 0 || delta > PLAYBACK_STATE_CORRECTION_MS) {
-                    smoothPositionMs = correctSmoothEstimate(smoothMs, newPosition);
-                } else {
-                    driftSpeedFactor = calculateDriftSpeedFactor(delta);
-                }
+                lastSampledPlaybackPosMs = newPosition;
+                lastPlaybackSampleUptimeMs = now;
             }
-            lastSampledPlaybackPosMs = newPosition;
-            lastPlaybackSampleUptimeMs = now;
         }
 
         // A paused state reports zero speed; keeping it would freeze later extrapolation.
@@ -194,12 +209,16 @@ final class PlaybackClock {
         advanceSmoothPosition(now, durationMs);
 
         if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
+            final boolean videoTimeDecreased = lastVideoTimeSample >= 0 && videoTime < lastVideoTimeSample;
             lastVideoTimeSample = videoTime;
 
             final long drift = videoTime - smoothPosition();
             final boolean isInitial = lastPlaybackSampleUptimeMs == 0 || smoothPositionMs == 0;
+            // Only snap backward immediately when videoTime itself moved backward or drift is huge;
+            // slight smooth-clock overrun while videoTime keeps advancing eases via driftSpeedFactor.
             final boolean isBackwardSeek = playing && smoothPositionMs > 0
-                    && drift < -BACKWARD_SEEK_THRESHOLD_MS;
+                    && ((videoTimeDecreased && drift < -BACKWARD_SEEK_THRESHOLD_MS)
+                        || drift < -SEEK_THRESHOLD_MS);
             final boolean isForwardSeek = drift > SEEK_THRESHOLD_MS;
             final boolean isStaleDrift = playing && Math.abs(drift) > SEEK_THRESHOLD_MS
                     && now - lastPlaybackSampleUptimeMs > PLAYBACK_STALE_MS;
