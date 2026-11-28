@@ -46,7 +46,7 @@ public class PlaybackSessionStartupTest {
         var playlist = new PlaybackSessionSnapshot("account", videoId, 2_505_438,
                 PlaybackSessionSnapshot.Kind.VIDEO, "RD" + videoId, false, null);
         var localQueue = new PlaybackSessionSnapshot("account", videoId, 450,
-                PlaybackSessionSnapshot.Kind.VIDEO, "RD" + videoId, false,
+                PlaybackSessionSnapshot.Kind.VIDEO, "", false,
                 new PlaybackSessionSnapshot.Queue(List.of(videoId, "lmnopqrstuv"), 0, null));
         var command = new AtomicReference<byte[]>();
         var context = new AtomicReference<Map<String, Object>>();
@@ -65,7 +65,7 @@ public class PlaybackSessionStartupTest {
 
             var watch = NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint();
             assertEquals(videoId, watch.getVideoId());
-            assertEquals(snapshot == localQueue ? "" : snapshot.playlistId(), watch.getPlaylistId());
+            assertEquals(snapshot.playlistId(), watch.getPlaylistId());
             if (snapshot == personalPlaylist) {
                 assertTrue(watch.hasIndex());
                 assertEquals(42, watch.getIndex());
@@ -80,7 +80,7 @@ public class PlaybackSessionStartupTest {
     }
 
     @Test
-    public void restoresNamedPlaylistAndPreservesCapturedMixOrder() throws Exception {
+    public void restoresOriginalPlaylistAndMixWithMultipleCapturedItems() throws Exception {
         String current = "abcdefghijk";
         String next = "lmnopqrstuv";
         String last = "wxyz1234567";
@@ -102,12 +102,14 @@ public class PlaybackSessionStartupTest {
             var descriptor = new TestDescriptor(current);
             try {
                 assertSame(descriptor, PlaybackSessionPatch.applyRestoredWatch(descriptor, request));
-                if (playlistId.startsWith("RD")) {
-                    assertEquals(List.of(current, last, next, last), descriptor.queue);
-                } else {
-                    assertNull(descriptor.queue);
-                    assertEquals(Integer.valueOf(42), request.snapshot().queue().playlistIndex());
-                }
+                var command = new AtomicReference<byte[]>();
+                PlaybackSessionPatch.dispatchSavedWatch((bytes, context) -> command.set(bytes), request);
+                var watch = NavigationEndpoint.parseFrom(command.get()).getWatchEndpoint();
+                assertEquals(current, watch.getVideoId());
+                assertEquals(playlistId, watch.getPlaylistId());
+                assertTrue(watch.hasIndex());
+                assertEquals(42, watch.getIndex());
+                assertNull(descriptor.queue);
                 assertEquals(12_345, descriptor.position);
                 assertTrue(descriptor.paused);
                 var restored = request.snapshot();

@@ -119,10 +119,9 @@ public record PlaybackSessionSnapshot(String account, String videoId, long posit
 
     @Nullable
     Queue queueForRestore() {
-        // Opening a named playlist lets YouTube load the full list and keep its playlist panel.
-        if (queue == null || queue.nativeRepeatMode() != null || playlistId.isEmpty()) return queue;
-        // Preserve generated Mix order when we actually captured upcoming items.
-        return playlistId.startsWith("RD") && queue.selectedIndex() + 1 < queue.videoIds().size() ? queue : null;
+        // A saved playlist or Mix ID keeps the native panel and its continuation available.
+        // A Morphe-managed local queue still uses its saved order even if a source ID is present.
+        return queue != null && (playlistId.isEmpty() || queue.nativeRepeatMode() != null) ? queue : null;
     }
 
     boolean hadCaptionsEnabled() {
