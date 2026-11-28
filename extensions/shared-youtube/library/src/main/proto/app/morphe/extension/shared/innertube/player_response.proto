@@ -11,8 +11,25 @@ message PlayerResponse {
   optional ResponseContext responseContext = 1;
   optional PlayabilityStatus playabilityStatus = 2;
   optional StreamingData streamingData = 4;
+  optional Captions captions = 10;
   optional VideoDetails videoDetails = 11;
   optional PlayerConfig playerConfig = 15;
+}
+
+// Field numbers of the player response message of the app.
+message Captions {
+  optional CaptionTrackList playerCaptionsTracklistRenderer = 51621377;
+}
+
+message CaptionTrackList {
+  repeated CaptionTrack captionTracks = 1;
+}
+
+message CaptionTrack {
+  optional string baseUrl = 1;
+  // Such as ".en", or "a.en" for captions made by speech recognition.
+  optional string vssId = 3;
+  optional string languageCode = 4;
 }
 
 // Field numbers read off a real player response, since asking for "videoDetails"
@@ -62,6 +79,12 @@ message StreamingData {
   optional string serverAbrStreamingUrl = 15;
 }
 
+// Field numbers read off a real player response.
+message ByteRange {
+  optional int64 start = 3;
+  optional int64 end = 4;
+}
+
 message Format {
   optional int32 itag = 1;
   optional int32 bitrate = 6;
@@ -71,8 +94,26 @@ message Format {
   optional int64 audioSampleRate = 45;
   optional int64 contentLength = 12;
   optional string mimeType = 5;
+  optional int32 width = 7;
+  optional int32 height = 8;
+  // Byte ranges of the initialization segment and of the index (sidx or Cues) of DASH streams.
+  optional ByteRange initRange = 9;
+  optional ByteRange indexRange = 10;
+  optional int32 fps = 25;
+  optional string qualityLabel = 26;
   optional string url = 2;
   optional string signatureCipher = 48;
+  // Language of the audio of videos with more than one audio track.
+  optional AudioTrack audioTrack = 28;
+}
+
+// Field numbers of the Format message of the app.
+message AudioTrack {
+  optional string displayName = 4;
+  // Such as "en.4". The original audio ends with ".4".
+  optional string id = 5;
+  optional bool audioIsDefault = 6;
+  optional bool isAutoDubbed = 7;
 }
 
 message PlayerConfig {

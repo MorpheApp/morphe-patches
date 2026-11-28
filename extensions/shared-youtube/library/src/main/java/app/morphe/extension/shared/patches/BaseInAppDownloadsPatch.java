@@ -79,7 +79,7 @@ public class BaseInAppDownloadsPatch {
      * Clients that answer with stream urls, which the app can save.
      * The visionOS streams need no JavaScript challenge, whose unsolved streams the server sends slowly.
      */
-    protected static final List<ClientType> DOWNLOAD_CLIENTS = List.of(
+    public static final List<ClientType> DOWNLOAD_CLIENTS = List.of(
             ClientType.VISIONOS_1_03,
             ClientType.VISIONOS_1_02,
             ClientType.ANDROID_VR_DASH,
@@ -432,7 +432,7 @@ public class BaseInAppDownloadsPatch {
     /**
      * @return If the codec is a 10-bit HDR codec, which more devices cannot decode.
      */
-    private static boolean isHdrCodec(String codec) {
+    public static boolean isHdrCodec(String codec) {
         return codec.startsWith("vp9.2") || codec.startsWith("vp09.02")
                 || (codec.startsWith("av01") && codec.contains(".10"));
     }
