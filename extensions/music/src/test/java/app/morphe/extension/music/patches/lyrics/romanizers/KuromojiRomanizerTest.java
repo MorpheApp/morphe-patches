@@ -352,4 +352,25 @@ public class KuromojiRomanizerTest {
         assertNotNull(groups);
         assertArrayEquals(new int[]{0, 1, 2, 2, 3, 4, 4}, groups);
     }
+
+    @Test
+    public void normalizeMoraSplitLinesPreservesProviderReadingWithBunsetsuSpacing() {
+        List<LyricsLine> orig = List.of(
+                new LyricsLine(0, 2000, "黒い感情も君へ繋ぐ", List.of()),
+                new LyricsLine(2000, 4000, "越えていく Dream を", List.of()),
+                new LyricsLine(4000, 6000, "(君の運命)", List.of())
+        );
+        // Provider sends mora-split romaji (QQ style) preserving "e" particle & custom word readings.
+        List<LyricsLine> moraEmb = List.of(
+                new LyricsLine(0, 2000, "ku ro i ka n jo u mo ki mi he tsu na gu", List.of()),
+                new LyricsLine(2000, 4000, "ko e te i ku Dream wo", List.of()),
+                new LyricsLine(4000, 6000, "(ki mi no u n me i)", List.of())
+        );
+
+        List<LyricsLine> normalized = JapaneseMoraSplitter.normalizeMoraSplitLines(orig, moraEmb, tokenizer);
+        assertNotNull(normalized);
+        assertEquals("kuroi kanjou mo kimi he tsunagu", normalized.get(0).text());
+        assertEquals("koeteiku Dream wo", normalized.get(1).text());
+        assertEquals("(kimi no unmei)", normalized.get(2).text());
+    }
 }

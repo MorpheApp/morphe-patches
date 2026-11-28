@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.LyricsButtonPatch;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
+import app.morphe.extension.music.patches.lyrics.ui.PlayerLiveLyricsView;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -189,6 +191,10 @@ public final class MusicActionButtonsFilter extends Filter {
             }
             if (Settings.HIDE_ACTION_BAR.get()) {
                 treeNodeResultList.clear();
+                if (PlayerLiveLyricsView.isLiveLyricsEnabled()) {
+                    LyricsButtonPatch.setLyricsActionBarIndex(-1);
+                    PlayerLiveLyricsView.refreshLaunchAvailability();
+                }
                 return;
             }
             for (int i = treeNodeResultList.size() - 1; i >= 0; i--) {
@@ -203,9 +209,26 @@ public final class MusicActionButtonsFilter extends Filter {
                 if (i == 0 && button == ActionButton.LIKE_DISLIKE) continue;
                 treeNodeResultList.remove(i);
             }
+            if (PlayerLiveLyricsView.isLiveLyricsEnabled()) {
+                LyricsButtonPatch.setLyricsActionBarIndex(indexOfLyricsButton(treeNodeResultList));
+                PlayerLiveLyricsView.refreshLaunchAvailability();
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onLazilyConvertedElementLoaded failure", ex);
         }
+    }
+
+    /**
+     * @return Index of the remaining Lyrics button in the action bar, or -1 if there is none.
+     */
+    private static int indexOfLyricsButton(List<Object> treeNodeResultList) {
+        for (int i = 0, count = treeNodeResultList.size(); i < count; i++) {
+            byte[] buttonProto = extractButtonProto(treeNodeResultList.get(i));
+            if (buttonProto != null && classify(buttonProto) == ActionButton.LYRICS) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Nullable

@@ -56,8 +56,10 @@ final class LyricsReadingCalc {
         }
         if (perWordRomaji) {
             List<Word> words = readingWords(line, index, romanizedLines);
-            // A word shown as written stands in for a reading only where the line is really read per word.
-            if (!words.isEmpty() && anyReading(words)) {
+            final String wholeLine = lineRomanizationAt(line, index, romanizedLines);
+            // Only join per-word readings when every non-Latin token is covered cleanly without
+            // leaking source script or distorting the line's whole reading.
+            if (!words.isEmpty() && anyReading(words) && !shouldPreferWholeLine(words, wholeLine)) {
                 StringBuilder text = new StringBuilder();
                 List<WordTiming> spans = new ArrayList<>(words.size());
                 String original = LyricsTextUtils.displayLineText(line);
@@ -782,8 +784,49 @@ final class LyricsReadingCalc {
         if (whole == null || timings == null || timings.isEmpty()) {
             return new Reading(whole, null);
         }
-        List<WordTiming> spans = spreadOverWords(whole, LyricsTextUtils.displayLineText(line), timings);
-        return new Reading(whole, spans != null && !spans.isEmpty() ? closeReadingGaps(spans, line) : null);
+        List<Word> words = wordsAt(LyricsTextUtils.displayLineText(line), timings);
+        if (words.isEmpty()) {
+            return new Reading(whole, null);
+        }
+        // Keep the returned text identical to the string whose offsets `spreadOverWords` measured.
+        String effective = LocalRomanizer.readingForWords(words, whole);
+        List<WordTiming> spans = spreadOverWords(words, effective, isEntirelyAveraged(timings));
+        return new Reading(effective, spans != null && !spans.isEmpty() ? closeReadingGaps(spans, line) : null);
+    }
+
+    private static boolean shouldPreferWholeLine(List<Word> words, @Nullable String wholeLine) {
+        if (wholeLine == null) {
+            return false;
+        }
+        final String trimmedWhole = wholeLine.trim();
+        if (trimmedWhole.isEmpty() || !LyricsRomanizer.isPurelyLatinScript(trimmedWhole)) {
+            return false;
+        }
+        StringBuilder romajiLetters = new StringBuilder();
+        for (Word word : words) {
+            final String own = word.text() != null ? word.text().trim() : "";
+            final String roma = word.romaji() != null ? word.romaji().trim() : "";
+            if (roma.isEmpty()) {
+                if (!own.isEmpty() && !LyricsRomanizer.isPurelyLatinScript(own)) {
+                    return true;
+                }
+                appendNormalizedLetters(romajiLetters, own);
+            } else {
+                appendNormalizedLetters(romajiLetters, roma);
+            }
+        }
+        StringBuilder wholeLetters = new StringBuilder();
+        appendNormalizedLetters(wholeLetters, trimmedWhole);
+        return !wholeLetters.isEmpty() && !romajiLetters.toString().equals(wholeLetters.toString());
+    }
+
+    private static void appendNormalizedLetters(StringBuilder out, String source) {
+        for (int i = 0; i < source.length(); i++) {
+            final char c = source.charAt(i);
+            if (Character.isLetterOrDigit(c)) {
+                out.append(Character.toLowerCase(c));
+            }
+        }
     }
 
     static boolean anyReading(List<Word> words) {
@@ -950,13 +993,16 @@ final class LyricsReadingCalc {
         if (words.isEmpty()) {
             return null;
         }
-        // A packed CJK reading is split into syllables when that makes it fit the words.
         String effective = LocalRomanizer.readingForWords(words, whole);
+        return spreadOverWords(words, effective, isEntirelyAveraged(lineTimings));
+    }
+
+    @Nullable
+    private static List<WordTiming> spreadOverWords(List<Word> words, String effective, boolean averaged) {
         int[][] tokens = LocalRomanizer.readingTokens(effective);
         if (tokens.length == 0) {
             return null;
         }
-        boolean averaged = isEntirelyAveraged(lineTimings);
         int[][] spread = LocalRomanizer.spreadReading(words, effective);
         if (spread == null) {
             return spreadTokensProportionally(words, tokens, averaged);

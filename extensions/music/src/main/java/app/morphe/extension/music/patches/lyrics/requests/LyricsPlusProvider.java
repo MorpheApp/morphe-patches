@@ -368,7 +368,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics parseLyricsJson(JSONObject root) {
+    Lyrics parseLyricsJson(@Nullable JSONObject root) {
         if (root == null) {
             return null;
         }
@@ -402,6 +402,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
         List<LyricsLine> romanization = new ArrayList<>();
         Map<String, List<LyricsLine>> translations = new HashMap<>();
         boolean hasAnyWordSync = false;
+        boolean hasAnyRomanization = false;
 
         for (int i = 0; i < lyricsArray.length(); i++) {
             JSONObject item = lyricsArray.optJSONObject(i);
@@ -437,18 +438,24 @@ public final class LyricsPlusProvider implements LyricsProvider {
             JSONArray transSyls = transliteration != null ? transliteration.optJSONArray("syllabus") : null;
             String transliterationText = transliteration != null && transliteration.has("text") ? transliteration.optString("text") : null;
 
+            int addedLines = 0;
             if (syllabus != null && syllabus.length() > 0) {
+                final boolean sameCountTrans = transSyls != null && transSyls.length() == syllabus.length();
                 List<WordCandidate> mainSyls = new ArrayList<>();
                 List<WordCandidate> bgSyls = new ArrayList<>();
                 for (int s = 0; s < syllabus.length(); s++) {
                     JSONObject syl = syllabus.optJSONObject(s);
                     if (syl == null) continue;
                     String roma = null;
-                    if (transSyls != null && s < transSyls.length()) {
+                    if (sameCountTrans) {
                         JSONObject tSyl = transSyls.optJSONObject(s);
                         if (tSyl != null) {
                             roma = tSyl.has("text") ? tSyl.optString("text") : null;
-                            if (roma != null && roma.trim().isEmpty()) roma = null;
+                            if (roma != null && roma.trim().isEmpty()) {
+                                roma = null;
+                            } else if (roma != null) {
+                                hasAnyRomanization = true;
+                            }
                         }
                     }
                     boolean isBg = syl.optBoolean("isBackground", false);
@@ -464,14 +471,20 @@ public final class LyricsPlusProvider implements LyricsProvider {
                         mainSyls, lineTime, lineEndTime, lineDuration, rawLineText, agentId, isDuet, false, songPart);
                 if (mainLine != null) {
                     lines.add(mainLine);
+                    addedLines++;
                     if (!mainLine.words().isEmpty()) hasAnyWordSync = true;
+                    String romaLine = transliterationText != null ? transliterationText.trim() : "";
+                    if (!romaLine.isEmpty()) hasAnyRomanization = true;
+                    romanization.add(new LyricsLine(LyricsLine.NO_TIME, romaLine));
                 }
 
                 LyricsLine bgLine = buildLineFromCandidates(
                         bgSyls, lineTime, lineEndTime, lineDuration, null, agentId, isDuet, true, songPart);
                 if (bgLine != null) {
                     lines.add(bgLine);
+                    addedLines++;
                     if (!bgLine.words().isEmpty()) hasAnyWordSync = true;
+                    romanization.add(new LyricsLine(LyricsLine.NO_TIME, ""));
                 }
             } else {
                 // Line synced only, with no word timing.
@@ -483,16 +496,34 @@ public final class LyricsPlusProvider implements LyricsProvider {
                 }
                 if (!text.isEmpty()) {
                     lines.add(new LyricsLine(lineTime, lineEndTime, text, List.of(), agentId, isDuet, isBg, songPart));
+                    addedLines++;
+                    String romaLine = transliterationText != null ? transliterationText.trim() : "";
+                    if (!romaLine.isEmpty()) hasAnyRomanization = true;
+                    romanization.add(new LyricsLine(LyricsLine.NO_TIME, romaLine));
                 }
             }
 
-            // The transliteration and translation of the line, if any.
-            if (transliterationText != null && !transliterationText.trim().isEmpty()) {
-                romanization.add(new LyricsLine(LyricsLine.NO_TIME, transliterationText.trim()));
-            }
-            if (transText != null && !transText.trim().isEmpty()) {
-                translations.computeIfAbsent("default", k -> new ArrayList<>())
-                        .add(new LyricsLine(LyricsLine.NO_TIME, transText.trim()));
+            if (addedLines > 0) {
+                String normalizedTrans = transText != null ? transText.trim() : "";
+                List<LyricsLine> defaultTrans = translations.get("default");
+                if (!normalizedTrans.isEmpty()) {
+                    if (defaultTrans == null) {
+                        defaultTrans = new ArrayList<>();
+                        // Pad earlier emitted lines so translation indices always match `lines`.
+                        for (int k = 0; k < lines.size() - addedLines; k++) {
+                            defaultTrans.add(new LyricsLine(LyricsLine.NO_TIME, ""));
+                        }
+                        translations.put("default", defaultTrans);
+                    }
+                    defaultTrans.add(new LyricsLine(LyricsLine.NO_TIME, normalizedTrans));
+                    for (int extra = 1; extra < addedLines; extra++) {
+                        defaultTrans.add(new LyricsLine(LyricsLine.NO_TIME, ""));
+                    }
+                } else if (defaultTrans != null) {
+                    for (int extra = 0; extra < addedLines; extra++) {
+                        defaultTrans.add(new LyricsLine(LyricsLine.NO_TIME, ""));
+                    }
+                }
             }
         }
 
@@ -504,7 +535,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
         final String providerName = upstreamSource != null
                 ? name() + " (via " + upstreamSource + ")" : name();
         return new Lyrics(lines, providerName, isSynced,
-                romanization.isEmpty() ? null : romanization,
+                hasAnyRomanization ? romanization : null,
                 translations.isEmpty() ? null : translations,
                 null,
                 songwriters,

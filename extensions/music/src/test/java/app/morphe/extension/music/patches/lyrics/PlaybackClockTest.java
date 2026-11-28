@@ -112,4 +112,78 @@ public class PlaybackClockTest {
                 10_100L);
         assertEquals(10_100L, clock.expectedPositionAt(10_000L, 5_000L, 10_100L));
     }
+
+    @Test
+    public void laggingMediaSessionWhileVideoTimeIsAheadDoesNotSnapBack() {
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 26_000L, 1f, 26_000L, 1_000L,
+                NO_DURATION);
+        final long syncedPos = clock.expectedPositionAt(27_219L, 2_219L, NO_DURATION);
+        assertTrue(syncedPos >= 27_200L);
+
+        // Simulate MediaSession lagging >1.2s behind smooth/videoTime while videoTime stays synced.
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 25_600L, 1f, 27_219L, 2_250L,
+                NO_DURATION);
+        final long afterLag = clock.expectedPositionAt(27_219L, 2_260L, NO_DURATION);
+        assertTrue("Expected monotonic position >= " + syncedPos + ", got " + afterLag,
+                afterLag >= syncedPos);
+    }
+
+    @Test
+    public void repeatedStaleMediaSessionWhilePlayingDoesNotStallOrSnapBack() {
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 10_000L, 1f, 10_000L, 1_000L,
+                NO_DURATION);
+        final long ahead = clock.expectedPositionAt(11_000L, 2_000L, NO_DURATION);
+        assertEquals(11_000L, ahead);
+
+        // Same stale position re-emitted while clock already moved ahead.
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 10_000L, 1f, -1L, 2_050L,
+                NO_DURATION);
+        final long continued = clock.expectedPositionAt(-1L, 2_250L, NO_DURATION);
+        assertTrue("Expected smooth advance >= 11,200ms, got " + continued,
+                continued >= 11_200L);
+    }
+
+    @Test
+    public void monotonicVideoTimeSlightOverrunDoesNotSnapBackWhileTrueBackwardSeekDoes() {
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 26_000L, 1f, 26_000L, 1_000L,
+                NO_DURATION);
+        clock.expectedPositionAt(27_000L, 2_000L, NO_DURATION);
+
+        // Extrapolates to ~27,600ms while next monotonic videoTime advances only slightly to 27,050ms.
+        final long smoothed = clock.expectedPositionAt(27_050L, 2_600L, NO_DURATION);
+        assertTrue("Expected slight overrun not to snap back to 27,050ms, got " + smoothed,
+                smoothed >= 27_500L);
+
+        // True backward videoTime jump (> 500ms) must still snap immediately.
+        final long seeked = clock.expectedPositionAt(26_400L, 2_700L, NO_DURATION);
+        assertEquals(26_400L, seeked);
+    }
+
+    @Test
+    public void speedUpdateAppliesEvenWhenMediaSessionPositionLagsVideoTime() {
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 20_000L, 1f, 20_000L, 1_000L,
+                NO_DURATION);
+        final long syncedPos = clock.expectedPositionAt(21_000L, 2_000L, NO_DURATION);
+        assertEquals(21_000L, syncedPos);
+
+        // User switches playback speed to 1.5x while MediaSession position still lags videoTime.
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 20_200L, 1.5f, 21_000L, 2_000L,
+                NO_DURATION);
+        assertEquals(1.5f, clock.getPlaybackSpeed(), 0.001f);
+
+        final long advanced = clock.expectedPositionAt(-1L, 2_400L, NO_DURATION);
+        assertTrue("Expected ~21,600ms at 1.5x speed without lagging snap, got " + advanced,
+                advanced >= 21_550L);
+    }
+
+    @Test
+    public void backwardSeekDetectedAfterSingleVideoTimeSample() {
+        clock.applyPlaybackState(PlaybackState.STATE_PLAYING, 10_000L, 1f, 10_000L, 1_000L,
+                NO_DURATION);
+        clock.expectedPositionAt(10_000L, 1_000L, NO_DURATION);
+
+        // Extrapolate 700ms ahead on the first tick, then seek backward 800ms (> 500ms threshold).
+        final long seeked = clock.expectedPositionAt(9_900L, 1_700L, NO_DURATION);
+        assertEquals(9_900L, seeked);
+    }
 }

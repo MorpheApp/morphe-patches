@@ -31,6 +31,8 @@ import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
 import app.morphe.patches.music.misc.mediasession.addSetMetadataWithSessionHook
 import app.morphe.patches.music.misc.mediasession.addSetPlaybackStateHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
+import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -85,6 +87,7 @@ val lyricsPatch = patch(
         elementProtoParserHookPatch,
         mediaSessionHookPatch,
         musicVideoInformationPatch,
+        versionCheckPatch,
         // The copy, romanize, and jump-to-current buttons need their icons whether
         // the patches that own these resources are applied.
         patch {
@@ -265,6 +268,8 @@ val lyricsPatch = patch(
                         dependency = "morphe_music_lyrics_enabled"
                     ),
                     SwitchPreference("morphe_music_lyrics_sb_matching", summary = true),
+                    SwitchPreference("morphe_music_lyrics_player_live", summary = true),
+                    ListPreference("morphe_music_lyrics_player_live_mode"),
                     SwitchPreference("morphe_music_lyrics_miniplayer", summary = true),
                     SwitchPreference("morphe_music_lyrics_mediasession", summary = true),
                     NonInteractivePreference(
@@ -543,6 +548,30 @@ val lyricsPatch = patch(
             0,
             "invoke-static {}, $EXTENSION_CLASS->onPlayVideo()V",
         )
+
+        val playerLayouts = mutableListOf("res/layout/watch_while_layout.xml")
+        if (is_9_39_or_greater) {
+            // Inflated instead of the layout above when a server flag defers the player.
+            playerLayouts += "res/layout/watch_while_layout_player.xml"
+        }
+
+        playerLayouts.forEach { playerLayout ->
+            resourceXml(playerLayout).use { layout ->
+                // On < 9.39 layouts current_song_view is horizontal around title_and_artist_container.
+                val targetContainer = layout.elementByAttributeOrNull(
+                    "android:id",
+                    "@id/title_and_artist_container"
+                ) ?: layout.elementByAttribute("android:id", "@id/current_song_view")
+                targetContainer.appendChild(
+                    "app.morphe.extension.music.patches.lyrics.ui.PlayerLiveLyricsView"
+                ) {
+                    setAttribute("android:id", "@+id/morphe_music_player_live_lyrics")
+                    setAttribute("android:layout_width", "match_parent")
+                    setAttribute("android:layout_height", "wrap_content")
+                    setAttribute("android:visibility", "gone")
+                }
+            }
+        }
     }
 
     finalize {

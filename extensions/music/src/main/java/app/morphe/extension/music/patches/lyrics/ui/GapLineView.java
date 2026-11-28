@@ -52,20 +52,20 @@ final class GapLineView extends View {
     /** The dots show up this long after the line before the break ends. */
     static final long LYRICS_GAP_START_LAG_MS = 310L;
     private static final long GAP_SHOW_DELAY_MS = 260L;
-    private static final int GAP_ENTER_DURATION_MS = 320;
+    static final int GAP_ENTER_DURATION_MS = 320;
     private static final int GAP_FADE_MS = 220;
     private static final long GAP_HIDE_FADE_DELAY_MS = 480L;
-    private static final int GAP_ENDED_MS = 780;
+    static final int GAP_ENDED_MS = 780;
     private static final long GAP_CLOSE_MS = 820L;
     /** How long before the next line the dots start to close. */
     static final long GAP_EXIT_DURATION_MS = GAP_ENDED_MS;
 
-    private static final TimeInterpolator GAP_EASE = LyricsViewSupport.EASE;
-    private static final TimeInterpolator GAP_ENTER_EASE = new android.view.animation.PathInterpolator(0.22f, 1.0f, 0.36f, 1.0f);
+    static final TimeInterpolator GAP_EASE = LyricsViewSupport.EASE;
+    static final TimeInterpolator GAP_ENTER_EASE = new android.view.animation.PathInterpolator(0.22f, 1.0f, 0.36f, 1.0f);
     private static final float INTERVAL_DOT_RADIUS_DP = 5.0f;
     private static final float INTERVAL_DOT_GAP_DP = 8.5f;
-    private static final int INTERVAL_SECONDARY_ALPHA = 0x52;
-    private static final int INTERVAL_PRIMARY_ALPHA = 0xFF;
+    static final int INTERVAL_SECONDARY_ALPHA = 0x52;
+    static final int INTERVAL_PRIMARY_ALPHA = 0xFF;
     static final float TARGET_HEIGHT_DP = 44f;
     static final float EXTRA_SECTION_CLEARANCE_DP = 10f;
 

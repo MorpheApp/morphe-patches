@@ -25,6 +25,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.romanizers.HangulRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.IcuRomanizer;
+import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseMoraSplitter;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
@@ -66,6 +67,7 @@ public final class LyricsRomanizer {
         // Kana and hangul are phonetic scripts, so a reading written in them is still a
         // romanization. Other non-Latin readings are transliterations and wait for the gate.
         embedded = normalizeReadingScripts(embedded);
+        embedded = JapaneseMoraSplitter.normalizeMoraSplitLines(lyrics.lines(), embedded);
         if (LyricsMerge.hasText(embedded)) {
             return embedded;
         }
@@ -386,7 +388,8 @@ public final class LyricsRomanizer {
                                                        boolean perWord, boolean allowTransliteration) {
         List<LyricsLine> embedded = getEmbeddedRomanization(lyrics);
         if (!LyricsMerge.hasText(embedded)
-                || isProviderRomajiDegraded(embedded, lyrics.lines(), perWord,
+                || isProviderRomajiDegraded(embedded, lyrics.lines(),
+                perWord || LyricsMerge.anyWordHasRomaji(embedded),
                 allowTransliteration)) {
             return null;
         }
@@ -1075,9 +1078,12 @@ public final class LyricsRomanizer {
 
                 // A pure kana or hangul reading was romanized above. Either script left in
                 // the line means the provider sent mixed or unreadable text rather than a
-                // reading.
+                // reading, as does Han characters left alongside Latin romaji.
                 if (ScriptDetector.containsKana(text)
-                        || ScriptDetector.contains(text, Character.UnicodeScript.HANGUL)) {
+                        || ScriptDetector.contains(text, Character.UnicodeScript.HANGUL)
+                        || (ScriptDetector.contains(text, Character.UnicodeScript.HAN)
+                                && ScriptDetector.contains(text, Character.UnicodeScript.LATIN)
+                                && origText != null && !ScriptDetector.contains(origText, Character.UnicodeScript.LATIN))) {
                     return true;
                 }
 
@@ -1155,15 +1161,36 @@ public final class LyricsRomanizer {
             int allSingleWordTokens = 0;
             int japaneseWordLatinTokens = 0;
             int pinyinWordTokens = 0;
-            for (LyricsLine l : originalLines) {
-                if (!l.hasWords()) continue;
-                String origLineText = l.text();
-                final boolean japaneseSource = ScriptDetector.containsKana(origLineText);
+            final int checkCount = Math.max(
+                    embedded != null ? embedded.size() : 0,
+                    originalLines.size());
+            for (int li = 0; li < checkCount; li++) {
+                LyricsLine origLine = li < originalLines.size() ? originalLines.get(li) : null;
+                LyricsLine embLine = (embedded != null && li < embedded.size()) ? embedded.get(li) : null;
+                List<Word> wordsToCheck = (embLine != null && !embLine.words().isEmpty())
+                        ? embLine.words()
+                        : (origLine != null ? origLine.words() : Collections.emptyList());
+                if (wordsToCheck.isEmpty()) continue;
+
+                String embText = embLine != null && embLine.text() != null ? embLine.text().trim() : "";
+                String origLineText = origLine != null && origLine.text() != null ? origLine.text().trim() : "";
+                final boolean hasValidWholeLine = !embText.isEmpty()
+                        && !embText.equalsIgnoreCase(origLineText)
+                        && isPurelyLatinScript(embText);
+                final String lineSourceText = !origLineText.isEmpty() ? origLineText : embText;
+                final boolean japaneseSource = ScriptDetector.containsKana(lineSourceText);
                 int singleWordTokens = 0;
-                for (Word w : l.words()) {
+                boolean hasAnyWordRomaji = false;
+                boolean hasMissingNonLatinWord = false;
+                for (Word w : wordsToCheck) {
+                    String origWord = w.text();
                     String r = w.romaji();
                     if (r != null && !r.trim().isEmpty()) {
-                        String origWord = w.text();
+                        hasAnyWordRomaji = true;
+                        if (ScriptDetector.containsKana(r)
+                                || ScriptDetector.contains(r, Character.UnicodeScript.HANGUL)) {
+                            return true;
+                        }
                         for (int ci = 0; ci < r.length(); ci++) {
                             char c = r.charAt(ci);
                             if (c == '~' || c == '～') {
@@ -1201,7 +1228,12 @@ public final class LyricsRomanizer {
                                 }
                             }
                         }
+                    } else if (origWord != null && hasLetterOrDigit(origWord) && !isPurelyLatinScript(origWord)) {
+                        hasMissingNonLatinWord = true;
                     }
+                }
+                if (!hasValidWholeLine && hasAnyWordRomaji && hasMissingNonLatinWord) {
+                    return true;
                 }
                 if (singleWordTokens >= 3 && japaneseSource) {
                     return true;
@@ -1262,13 +1294,21 @@ public final class LyricsRomanizer {
             List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
                     fullRoma, origWords.size(), guidesForWords(origWords, fullRoma),
                     LocalRomanizer.hasCjkWord(origWords)));
+            boolean allNonLatinCovered = true;
             List<Word> rWords = new ArrayList<>(origWords.size());
             for (int w = 0; w < origWords.size(); w++) {
                 Word ow = origWords.get(w);
                 String chunk = (w < alignedChunks.size()) ? alignedChunks.get(w) : "";
+                String owText = ow.text() != null ? ow.text().trim() : "";
+                if (!owText.isEmpty() && hasLetterOrDigit(owText) && !isPurelyLatinScript(owText)
+                        && chunk.trim().isEmpty()) {
+                    allNonLatinCovered = false;
+                    break;
+                }
                 rWords.add(new Word(ow.startMs(), ow.endMs(), ow.text(), chunk, ow.endsWithSpace(), ow.ruby()));
             }
-            out.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), fullRoma, rWords,
+            out.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), fullRoma,
+                    allNonLatinCovered ? rWords : Collections.emptyList(),
                     orig.agentId(), orig.isDuet(), orig.isBG(), orig.songPart()));
         }
         return out;

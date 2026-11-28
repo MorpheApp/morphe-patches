@@ -201,6 +201,16 @@ public class LocalRomanizerTest {
     }
 
     @Test
+    public void readingForWordsDoesNotExpandJapaneseKanjiKanaLinesAsPinyin() {
+        List<Word> japanese = List.of(
+                new Word(0, 500, "悲"),
+                new Word(500, 1000, "し"),
+                new Word(1000, 1500, "く")
+        );
+        assertEquals("kanashiku", LocalRomanizer.readingForWords(japanese, "kanashiku"));
+    }
+
+    @Test
     public void allocateReadingSplitsPackedCjkWhenOnePerSlot() {
         String[] out = LocalRomanizer.allocateReading("nǐhǎo", 2, List.of("nǐ", "hǎo"), true);
         assertArrayEquals(new String[]{"nǐ ", "hǎo"}, out);

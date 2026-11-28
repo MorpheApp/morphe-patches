@@ -11,7 +11,12 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 
 /**
  * Splits Hepburn/Kunrei Japanese romaji words into moraic units and aligns compound readings
@@ -404,10 +409,20 @@ public final class JapaneseMoraSplitter {
             String[] ownWords,
             boolean[] isLatinWord,
             @Nullable List<String> guides) {
+        return alignJapaneseLineToSlots(wholeRoman, ownWords, isLatinWord, guides, false);
+    }
+
+    @Nullable
+    static AlignedChunk[] alignJapaneseLineToSlots(
+            String wholeRoman,
+            String[] ownWords,
+            boolean[] isLatinWord,
+            @Nullable List<String> guides,
+            boolean allowHanOnly) {
         if (wholeRoman == null || ownWords == null || ownWords.length == 0) {
             return null;
         }
-        if (!hasJapaneseScript(ownWords)) {
+        if (!(allowHanOnly ? hasJapaneseOrHanScript(ownWords) : hasJapaneseScript(ownWords))) {
             return null;
         }
         int[][] rawTokens = LocalRomanizer.readingTokens(wholeRoman);
@@ -807,6 +822,681 @@ public final class JapaneseMoraSplitter {
             return false;
         }
         return hasKana || (hasHan && (KuromojiDictStore.isReady() || JapaneseDictionaryStore.isReady()));
+    }
+
+    private static boolean hasJapaneseOrHanScript(String[] words) {
+        boolean hasKana = false;
+        boolean hasHan = false;
+        boolean hasHangul = false;
+        for (String w : words) {
+            if (w == null) continue;
+            for (int i = 0; i < w.length(); i++) {
+                char c = w.charAt(i);
+                if (ScriptDetector.isKana(c)) hasKana = true;
+                else if (ScriptDetector.isHan(c)) hasHan = true;
+                else if (ScriptDetector.isHangul(c)) hasHangul = true;
+            }
+        }
+        if (hasHangul && !hasKana) {
+            return false;
+        }
+        return hasKana || hasHan;
+    }
+
+    /**
+     * Rejoins provider romanizations shipped split syllable-by-syllable with spaces
+     * (such as QQ Music QRC {@code "ka ze no ko e hi ka ri no tsu bu"}) into natural
+     * Japanese words aligned against the original lyrics while preserving provider readings.
+     */
+    @Nullable
+    public static List<LyricsLine> normalizeMoraSplitLines(
+            @Nullable List<LyricsLine> originalLines,
+            @Nullable List<LyricsLine> embedded) {
+        return normalizeMoraSplitLines(
+                originalLines, embedded, null, KuromojiDictStore.tokenizer());
+    }
+
+    @Nullable
+    public static List<LyricsLine> normalizeMoraSplitLines(
+            @Nullable List<LyricsLine> originalLines,
+            @Nullable List<LyricsLine> embedded,
+            @Nullable List<LyricsLine> timingReferenceLines) {
+        return normalizeMoraSplitLines(
+                originalLines, embedded, timingReferenceLines, KuromojiDictStore.tokenizer());
+    }
+
+    @Nullable
+    public static List<LyricsLine> normalizeMoraSplitLines(
+            @Nullable List<LyricsLine> originalLines,
+            @Nullable List<LyricsLine> embedded,
+            @Nullable KuromojiTokenizer tokenizer) {
+        return normalizeMoraSplitLines(originalLines, embedded, null, tokenizer);
+    }
+
+    @Nullable
+    public static List<LyricsLine> normalizeMoraSplitLines(
+            @Nullable List<LyricsLine> originalLines,
+            @Nullable List<LyricsLine> embedded,
+            @Nullable List<LyricsLine> timingReferenceLines,
+            @Nullable KuromojiTokenizer tokenizer) {
+        if (originalLines == null || embedded == null
+                || originalLines.isEmpty() || embedded.size() != originalLines.size()) {
+            return embedded;
+        }
+        if (!isMoraSplitJapanese(originalLines, embedded)) {
+            return embedded;
+        }
+
+        List<LyricsLine> sortedRefs = null;
+        if (tokenizer == null && timingReferenceLines != null && !timingReferenceLines.isEmpty()) {
+            sortedRefs = new ArrayList<>(timingReferenceLines);
+            sortedRefs.sort(Comparator.comparingLong(LyricsLine::startTimeMs));
+        }
+
+        int refCursor = 0;
+        List<LyricsLine> out = null;
+        for (int i = 0; i < embedded.size(); i++) {
+            LyricsLine orig = originalLines.get(i);
+            LyricsLine emb = embedded.get(i);
+            LyricsLine timedRef = null;
+            if (sortedRefs != null && orig.hasWords()) {
+                int matchedIdx = findMatchingTimingReference(emb, sortedRefs, refCursor);
+                if (matchedIdx >= 0) {
+                    timedRef = sortedRefs.get(matchedIdx);
+                    refCursor = matchedIdx + 1;
+                }
+            }
+            LyricsLine normalized = normalizeMoraSplitLine(orig, emb, timedRef, tokenizer);
+            if (normalized != emb) {
+                if (out == null) {
+                    out = new ArrayList<>(embedded);
+                }
+                out.set(i, normalized);
+            }
+        }
+        return out != null ? out : embedded;
+    }
+
+    static boolean isMoraSplitJapanese(
+            List<LyricsLine> originalLines,
+            List<LyricsLine> embedded) {
+        boolean trackHasKana = false;
+        for (LyricsLine line : originalLines) {
+            if (line.text() != null && ScriptDetector.containsKana(line.text())) {
+                trackHasKana = true;
+                break;
+            }
+        }
+        if (!trackHasKana) {
+            return false;
+        }
+
+        int totalLatinTokens = 0;
+        int singleMoraTokens = 0;
+        int moraSplitLines = 0;
+        for (int i = 0; i < embedded.size(); i++) {
+            String origText = originalLines.get(i).text();
+            String embText = embedded.get(i).text();
+            if (origText == null || embText == null) {
+                continue;
+            }
+            if (!hasHanOrKana(origText) || ScriptDetector.contains(origText, Character.UnicodeScript.HANGUL)) {
+                continue;
+            }
+            MoraLineStats stats = measureMoraTokens(embText);
+            if (stats.latinTokens > 0) {
+                totalLatinTokens += stats.latinTokens;
+                singleMoraTokens += stats.singleMoraTokens;
+                if (stats.isMoraSplit()) {
+                    moraSplitLines++;
+                }
+            }
+        }
+        return moraSplitLines > 0
+                && singleMoraTokens >= 4
+                && singleMoraTokens * 10 >= totalLatinTokens * 6;
+    }
+
+    private record MoraLineStats(int latinTokens, int singleMoraTokens) {
+        boolean isMoraSplit() {
+            return singleMoraTokens >= 4 && singleMoraTokens * 10 >= latinTokens * 7;
+        }
+    }
+
+    private static MoraLineStats measureMoraTokens(String text) {
+        int latinTokens = 0;
+        int singleMora = 0;
+        String[] rawTokens = text.trim().split("\\s+");
+        for (String raw : rawTokens) {
+            String core = trimOuterPunctuation(raw);
+            if (core.isEmpty() || !hasLatinLetter(core) || hasHanOrKana(core)) {
+                continue;
+            }
+            latinTokens++;
+            if (core.length() <= 4 && splitMorasRaw(core).size() <= 1) {
+                singleMora++;
+            }
+        }
+        return new MoraLineStats(latinTokens, singleMora);
+    }
+
+    private static LyricsLine normalizeMoraSplitLine(
+            LyricsLine origLine,
+            LyricsLine embLine,
+            @Nullable LyricsLine timedRomaLine,
+            @Nullable KuromojiTokenizer tokenizer) {
+        String origRaw = origLine.text();
+        String romaRaw = embLine.text();
+        if (origRaw == null || romaRaw == null) {
+            return embLine;
+        }
+        String origTrim = origRaw.trim();
+        String romaTrim = romaRaw.trim();
+        if (origTrim.isEmpty() || romaTrim.isEmpty()
+                || !hasHanOrKana(origTrim)
+                || ScriptDetector.contains(origTrim, Character.UnicodeScript.HANGUL)
+                || !measureMoraTokens(romaTrim).isMoraSplit()) {
+            return embLine;
+        }
+
+        String wrapOpen = "";
+        String wrapClose = "";
+        if (isParenthesized(origTrim) && isParenthesized(romaTrim)) {
+            wrapOpen = origTrim.substring(0, 1);
+            wrapClose = origTrim.substring(origTrim.length() - 1);
+            origTrim = origTrim.substring(1, origTrim.length() - 1).trim();
+            romaTrim = romaTrim.substring(1, romaTrim.length() - 1).trim();
+            if (origTrim.isEmpty() || romaTrim.isEmpty()) {
+                return embLine;
+            }
+        }
+
+        AtomicSlots slots = extractAtomicSlots(origTrim);
+        if (slots.count == 0) {
+            return embLine;
+        }
+
+        List<String> guides = buildSlotGuides(origTrim, slots, tokenizer);
+        if (tokenizer == null && timedRomaLine != null) {
+            applyTimedQrcGuides(origTrim, origLine, slots, timedRomaLine, guides);
+        }
+        AlignedChunk[] aligned = alignJapaneseLineToSlots(
+                romaTrim, slots.texts, slots.isLatin, guides, true);
+        if (aligned == null || aligned.length != slots.count) {
+            return embLine;
+        }
+
+        boolean[] bunsetsuBreaks = tokenizer != null
+                ? KuromojiRomanizer.bunsetsuBreakAfterChar(origTrim, tokenizer)
+                : null;
+
+        String rebuilt = rebuildWordSpacedReading(slots, aligned, bunsetsuBreaks);
+        if (rebuilt.isEmpty() || !lettersMatch(rebuilt, romaTrim)) {
+            return embLine;
+        }
+
+        String finalText = wrapOpen + rebuilt + wrapClose;
+        if (finalText.equals(romaRaw) && embLine.words().isEmpty()) {
+            return embLine;
+        }
+        // Drop per-mora words so downstream animators split syllables cleanly along real word bounds.
+        return new LyricsLine(
+                origLine.startTimeMs(), origLine.endTimeMs(), finalText,
+                Collections.emptyList(), origLine.agentId(), origLine.isDuet(),
+                origLine.isBG(), origLine.songPart());
+    }
+
+    private static final class AtomicSlots {
+        final int count;
+        final int[] starts;
+        final int[] ends;
+        final String[] texts;
+        final boolean[] isLatin;
+        final boolean[] spaceAfter;
+
+        AtomicSlots(int count, int[] starts, int[] ends, String[] texts,
+                    boolean[] isLatin, boolean[] spaceAfter) {
+            this.count = count;
+            this.starts = starts;
+            this.ends = ends;
+            this.texts = texts;
+            this.isLatin = isLatin;
+            this.spaceAfter = spaceAfter;
+        }
+    }
+
+    private static AtomicSlots extractAtomicSlots(String text) {
+        final int len = text.length();
+        List<Integer> starts = new ArrayList<>(len);
+        List<Integer> ends = new ArrayList<>(len);
+        List<String> texts = new ArrayList<>(len);
+        List<Boolean> isLatin = new ArrayList<>(len);
+        List<Boolean> spaceAfter = new ArrayList<>(len);
+
+        int i = 0;
+        while (i < len) {
+            char c = text.charAt(i);
+            if (Character.isWhitespace(c)) {
+                if (!spaceAfter.isEmpty()) {
+                    spaceAfter.set(spaceAfter.size() - 1, true);
+                }
+                i++;
+                continue;
+            }
+            if (isLatinWordChar(c)) {
+                int start = i;
+                i++;
+                while (i < len) {
+                    char nc = text.charAt(i);
+                    if (isLatinWordChar(nc)) {
+                        i++;
+                    } else if ((nc == '\'' || nc == '-') && i + 1 < len && isLatinWordChar(text.charAt(i + 1))) {
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                starts.add(start);
+                ends.add(i);
+                texts.add(text.substring(start, i));
+                isLatin.add(true);
+                spaceAfter.add(false);
+                continue;
+            }
+            if (ScriptDetector.isHan(c)) {
+                starts.add(i);
+                ends.add(i + 1);
+                texts.add(text.substring(i, i + 1));
+                isLatin.add(false);
+                spaceAfter.add(false);
+                i++;
+                continue;
+            }
+            if (ScriptDetector.isKana(c)) {
+                int start = i;
+                i++;
+                while (i < len && isSmallCombiningKana(text.charAt(i))) {
+                    i++;
+                }
+                starts.add(start);
+                ends.add(i);
+                texts.add(text.substring(start, i));
+                isLatin.add(false);
+                spaceAfter.add(false);
+                continue;
+            }
+            // Standalone non-word punctuation preserves separation rather than becoming a DP slot.
+            i++;
+        }
+
+        final int n = texts.size();
+        int[] sArr = new int[n];
+        int[] eArr = new int[n];
+        String[] tArr = new String[n];
+        boolean[] lArr = new boolean[n];
+        boolean[] spArr = new boolean[n];
+        for (int k = 0; k < n; k++) {
+            sArr[k] = starts.get(k);
+            eArr[k] = ends.get(k);
+            tArr[k] = texts.get(k);
+            lArr[k] = isLatin.get(k);
+            spArr[k] = spaceAfter.get(k);
+        }
+        return new AtomicSlots(n, sArr, eArr, tArr, lArr, spArr);
+    }
+
+    private static List<String> buildSlotGuides(
+            String origText,
+            AtomicSlots slots,
+            @Nullable KuromojiTokenizer tokenizer) {
+        String[] contextual = tokenizer != null
+                ? KuromojiRomanizer.syllableReadingsForSlots(origText, slots.starts, slots.ends, tokenizer)
+                : LocalRomanizer.syllableReadingsInContext(origText, slots.starts, slots.ends);
+        List<String> guides = new ArrayList<>(slots.count);
+        for (int i = 0; i < slots.count; i++) {
+            if (slots.isLatin[i]) {
+                guides.add(slots.texts[i]);
+                continue;
+            }
+            String g = (contextual != null && i < contextual.length && contextual[i] != null)
+                    ? contextual[i].trim() : "";
+            if (g.isEmpty() && slotIsKanaOrPunct(slots.texts[i])) {
+                g = KanaRomanizer.romanize(slots.texts[i]);
+            }
+            guides.add(g);
+        }
+        return guides;
+    }
+
+    private static int findMatchingTimingReference(
+            LyricsLine emb,
+            List<LyricsLine> sortedRefs,
+            int startIdx) {
+        String embText = emb.text() != null ? emb.text().trim() : "";
+        if (embText.isEmpty()) {
+            return -1;
+        }
+        int bestIdx = -1;
+        long bestDiff = Long.MAX_VALUE;
+        for (int k = startIdx; k < sortedRefs.size(); k++) {
+            LyricsLine cand = sortedRefs.get(k);
+            if (!cand.hasWords()) {
+                continue;
+            }
+            String candText = cand.text() != null ? cand.text().trim() : "";
+            if (!embText.equals(candText)) {
+                continue;
+            }
+            long diff = Math.abs(cand.startTimeMs() - emb.startTimeMs());
+            if (diff < bestDiff) {
+                bestDiff = diff;
+                bestIdx = k;
+                if (diff == 0L) {
+                    break;
+                }
+            }
+        }
+        return bestIdx;
+    }
+
+    /**
+     * Enriches unguided Kanji slots using word-to-mora QRC timestamps when the offline Japanese
+     * morphological dictionary is not downloaded.
+     */
+    private static void applyTimedQrcGuides(
+            String origTrim,
+            LyricsLine origLine,
+            AtomicSlots slots,
+            LyricsLine timedRomaLine,
+            List<String> guides) {
+        if (!origLine.hasWords() || !timedRomaLine.hasWords()) {
+            return;
+        }
+        boolean hasUnguidedHan = false;
+        for (int i = 0; i < slots.count; i++) {
+            if (!slots.isLatin[i] && guides.get(i).isEmpty()) {
+                hasUnguidedHan = true;
+                break;
+            }
+        }
+        if (!hasUnguidedHan) {
+            return;
+        }
+
+        List<Word> origWords = origLine.words();
+        List<Word> romaWords = timedRomaLine.words();
+        final int owCount = origWords.size();
+        int[] owCharStart = new int[owCount];
+        int[] owCharEnd = new int[owCount];
+        long[] owRelStart = new long[owCount];
+        long[] owRelEnd = new long[owCount];
+
+        final long origLineStart = origLine.startTimeMs();
+        final long romaLineStart = timedRomaLine.startTimeMs();
+        int charCursor = 0;
+        for (int k = 0; k < owCount; k++) {
+            Word ow = origWords.get(k);
+            owRelStart[k] = ow.startMs() - origLineStart;
+            owRelEnd[k] = Math.max(owRelStart[k] + 1L, ow.endMs() - origLineStart);
+            owCharStart[k] = -1;
+            owCharEnd[k] = -1;
+
+            String wText = ow.text() != null ? ow.text().trim() : "";
+            if (wText.isEmpty()) {
+                continue;
+            }
+            int found = origTrim.indexOf(wText, charCursor);
+            if (found < 0 && wText.length() > 1) {
+                String stripped = stripOuterParens(wText);
+                if (!stripped.isEmpty()) {
+                    wText = stripped;
+                    found = origTrim.indexOf(wText, charCursor);
+                }
+            }
+            if (found >= 0) {
+                owCharStart[k] = found;
+                owCharEnd[k] = found + wText.length();
+                charCursor = owCharEnd[k];
+            }
+        }
+
+        StringBuilder[] wordRoma = new StringBuilder[owCount];
+        for (Word rw : romaWords) {
+            String rwText = stripWhitespace(rw.text());
+            if (rwText.isEmpty()) {
+                continue;
+            }
+            long rwEnd = Math.max(rw.startMs(), rw.endMs());
+            long rwMid = (rw.startMs() + rwEnd) / 2L - romaLineStart;
+            int targetOw = -1;
+            long bestDist = Long.MAX_VALUE;
+            for (int k = 0; k < owCount; k++) {
+                if (owCharStart[k] < 0) {
+                    continue;
+                }
+                long dist;
+                if (rwMid >= owRelStart[k] && rwMid < owRelEnd[k]) {
+                    dist = 0L;
+                } else if (rwMid < owRelStart[k]) {
+                    dist = owRelStart[k] - rwMid;
+                } else {
+                    dist = rwMid - owRelEnd[k];
+                }
+                if (dist < bestDist) {
+                    bestDist = dist;
+                    targetOw = k;
+                    if (dist == 0L) {
+                        break;
+                    }
+                }
+            }
+            if (targetOw >= 0 && bestDist <= 150L) {
+                if (wordRoma[targetOw] == null) {
+                    wordRoma[targetOw] = new StringBuilder();
+                }
+                wordRoma[targetOw].append(rwText);
+            }
+        }
+
+        for (int k = 0; k < owCount; k++) {
+            if (owCharStart[k] < 0 || wordRoma[k] == null || wordRoma[k].length() == 0) {
+                continue;
+            }
+            int wStart = owCharStart[k];
+            int wEnd = owCharEnd[k];
+            int firstSlot = -1;
+            int lastSlot = -1;
+            int unguidedSlot = -1;
+            int unguidedCount = 0;
+            for (int s = 0; s < slots.count; s++) {
+                if (slots.ends[s] <= wStart || slots.starts[s] >= wEnd) {
+                    continue;
+                }
+                if (firstSlot < 0) {
+                    firstSlot = s;
+                }
+                lastSlot = s;
+                if (!slots.isLatin[s] && guides.get(s).isEmpty()) {
+                    unguidedSlot = s;
+                    unguidedCount++;
+                }
+            }
+            if (unguidedCount != 1) {
+                continue;
+            }
+
+            String timedSlice = wordRoma[k].toString().toLowerCase(Locale.ROOT);
+            int prefixLen = 0;
+            for (int s = firstSlot; s < unguidedSlot; s++) {
+                String known = normalizeLetters(guides.get(s));
+                if (!known.isEmpty() && timedSlice.startsWith(known, prefixLen)) {
+                    prefixLen += known.length();
+                }
+            }
+            int suffixLen = timedSlice.length();
+            for (int s = lastSlot; s > unguidedSlot; s--) {
+                String known = normalizeLetters(guides.get(s));
+                if (!known.isEmpty() && suffixLen - known.length() > prefixLen
+                        && timedSlice.regionMatches(suffixLen - known.length(), known, 0, known.length())) {
+                    suffixLen -= known.length();
+                }
+            }
+            if (suffixLen > prefixLen) {
+                guides.set(unguidedSlot, timedSlice.substring(prefixLen, suffixLen));
+            }
+        }
+    }
+
+    private static String stripOuterParens(String text) {
+        int start = 0;
+        int end = text.length();
+        while (start < end) {
+            char c = text.charAt(start);
+            if (c == '(' || c == '（') {
+                start++;
+            } else {
+                break;
+            }
+        }
+        while (end > start) {
+            char c = text.charAt(end - 1);
+            if (c == ')' || c == '）') {
+                end--;
+            } else {
+                break;
+            }
+        }
+        return text.substring(start, end).trim();
+    }
+
+    private static String rebuildWordSpacedReading(
+            AtomicSlots slots,
+            AlignedChunk[] aligned,
+            @Nullable boolean[] bunsetsuBreaks) {
+        StringBuilder sb = new StringBuilder();
+        int prevSlot = -1;
+        for (int i = 0; i < slots.count; i++) {
+            final String piece = slots.isLatin[i]
+                    ? slots.texts[i]
+                    : stripWhitespace(aligned[i] != null ? aligned[i].text() : null);
+            if (piece.isEmpty()) {
+                continue;
+            }
+            if (prevSlot >= 0 && shouldBreakBetweenSlots(slots, prevSlot, i, bunsetsuBreaks)) {
+                sb.append(' ');
+            }
+            sb.append(piece);
+            prevSlot = i;
+        }
+        return sb.toString().trim();
+    }
+
+    private static boolean shouldBreakBetweenSlots(
+            AtomicSlots slots,
+            int prevSlot,
+            int currSlot,
+            @Nullable boolean[] bunsetsuBreaks) {
+        if (slots.spaceAfter[prevSlot] || slots.isLatin[prevSlot] || slots.isLatin[currSlot]) {
+            return true;
+        }
+        if (bunsetsuBreaks != null) {
+            int from = Math.max(0, slots.ends[prevSlot] - 1);
+            int to = Math.min(bunsetsuBreaks.length - 1, slots.starts[currSlot] - 1);
+            for (int c = from; c <= to; c++) {
+                if (bunsetsuBreaks[c]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        // Fallback without morphological analyzer: split when Hiragana flows into Kanji or Katakana,
+        // keeping kanji + okurigana stems and consecutive kana words joined.
+        String prevText = slots.texts[prevSlot];
+        String currText = slots.texts[currSlot];
+        if (prevText.isEmpty() || currText.isEmpty()) {
+            return false;
+        }
+        char prevLast = prevText.charAt(prevText.length() - 1);
+        char currFirst = currText.charAt(0);
+        boolean prevHiragana = Character.UnicodeScript.of(prevLast) == Character.UnicodeScript.HIRAGANA;
+        boolean currKanjiOrKatakana = ScriptDetector.isHan(currFirst)
+                || Character.UnicodeScript.of(currFirst) == Character.UnicodeScript.KATAKANA;
+        return prevHiragana && currKanjiOrKatakana;
+    }
+
+    private static boolean lettersMatch(String a, String b) {
+        return normalizedLetterKey(a).equals(normalizedLetterKey(b));
+    }
+
+    private static String normalizedLetterKey(String s) {
+        StringBuilder sb = new StringBuilder(s.length());
+        for (int i = 0; i < s.length(); ) {
+            int cp = s.codePointAt(i);
+            if (Character.isLetterOrDigit(cp)) {
+                sb.appendCodePoint(Character.toLowerCase(cp));
+            }
+            i += Character.charCount(cp);
+        }
+        return sb.toString();
+    }
+
+    private static String stripWhitespace(@Nullable String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder(s.length());
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!Character.isWhitespace(c)) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    private static String trimOuterPunctuation(String s) {
+        int start = 0;
+        int end = s.length();
+        while (start < end && !Character.isLetterOrDigit(s.charAt(start))) {
+            start++;
+        }
+        while (end > start && !Character.isLetterOrDigit(s.charAt(end - 1))) {
+            end--;
+        }
+        return s.substring(start, end);
+    }
+
+    private static boolean isParenthesized(String s) {
+        if (s.length() < 2) {
+            return false;
+        }
+        char first = s.charAt(0);
+        char last = s.charAt(s.length() - 1);
+        return (first == '(' && last == ')') || (first == '（' && last == '）');
+    }
+
+    private static boolean isLatinWordChar(char c) {
+        return Character.isLetterOrDigit(c) && Character.UnicodeScript.of(c) == Character.UnicodeScript.LATIN
+                || (c >= '0' && c <= '9');
+    }
+
+    private static boolean hasLatinLetter(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isLetter(c) && Character.UnicodeScript.of(c) == Character.UnicodeScript.LATIN) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasHanOrKana(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (ScriptDetector.isHanOrKana(s.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean hasLettersOrKanaOrHan(String s) {

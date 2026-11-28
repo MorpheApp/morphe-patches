@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.text.Normalizer;
 
+import app.morphe.extension.music.patches.lyrics.LyricsButtonPatch;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
@@ -102,6 +103,7 @@ public final class LyricsPanelInstaller {
         if (panelView != null) {
             panelView.applyCustomFont();
         }
+        PlayerLiveLyricsView.onSettingsChanged();
     }
 
     public static void registerSettingsListener() {
@@ -126,6 +128,22 @@ public final class LyricsPanelInstaller {
                     DeviceLyricsTab.removeTabs();
                 }
                 MiniplayerLyrics.onSettingsChanged();
+                PlayerLiveLyricsView.onSettingsChanged(false);
+                return;
+            }
+            if (affectsPlayerLiveLyricsDerived(key)) {
+                PlayerLiveLyricsView.onSettingsChanged(true);
+            } else if (affectsPlayerLiveLyricsDisplay(key)) {
+                PlayerLiveLyricsView.onSettingsChanged(false);
+            }
+            if (Settings.LYRICS_CUSTOM_FONT.key.equals(key)) {
+                Context appContext = Utils.getContext();
+                if (appContext != null) {
+                    Utils.runOnBackgroundThread(() -> {
+                        LyricsFontManager.reload(appContext);
+                        Utils.runOnMainThread(LyricsPanelInstaller::onCustomFontLoaded);
+                    });
+                }
                 return;
             }
             if (Settings.LYRICS_SOURCE.key.equals(key)
@@ -147,6 +165,7 @@ public final class LyricsPanelInstaller {
                 // Also shown in the miniplayer and the media session.
                 MiniplayerLyrics.onSettingsChanged();
                 LockScreenLyrics.onSettingsChanged();
+                PlayerLiveLyricsView.onSettingsChanged(Settings.LYRICS_HAN_FORM.key.equals(key));
             } else if (Settings.LYRICS_MINIPLAYER.key.equals(key)
                     || Settings.LYRICS_MEDIASESSION.key.equals(key)
                     || Settings.LYRICS_MINI_TRACK_FORMAT.key.equals(key)
@@ -180,12 +199,6 @@ public final class LyricsPanelInstaller {
                     || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_REFRESH_BUTTON.key.equals(key)) {
                 panelView.applyToolbarButtonSettings();
-            } else if (Settings.LYRICS_CUSTOM_FONT.key.equals(key)) {
-                Context appContext = panelView.getContext().getApplicationContext();
-                Utils.runOnBackgroundThread(() -> {
-                    LyricsFontManager.reload(appContext);
-                    Utils.runOnMainThread(LyricsPanelInstaller::onCustomFontLoaded);
-                });
             } else if (Settings.LYRICS_SHOW_CURRENT_BUTTON.key.equals(key)) {
                 panelView.applyCurrentButtonSetting();
             } else if (Settings.LYRICS_SHOW_FULLSCREEN_BUTTON.key.equals(key)) {
@@ -225,6 +238,36 @@ public final class LyricsPanelInstaller {
         } catch (Throwable ex) {
             Logger.printException(() -> "Could not apply lyrics setting change", ex);
         }
+    }
+
+    private static boolean affectsPlayerLiveLyricsDisplay(String key) {
+        return Settings.LYRICS_PLAYER_LIVE.key.equals(key)
+                || Settings.LYRICS_WORD_SYNC.key.equals(key)
+                || Settings.LYRICS_WORD_SMOOTH_SWEEP.key.equals(key)
+                || Settings.LYRICS_GAP_DOTS.key.equals(key)
+                || Settings.LYRICS_OFFSET_MS.key.equals(key)
+                || Settings.LYRICS_SB_MATCHING.key.equals(key);
+    }
+
+    private static boolean affectsPlayerLiveLyricsDerived(String key) {
+        return Settings.LYRICS_PLAYER_LIVE_MODE.key.equals(key)
+                || Settings.LYRICS_TRANSLATION_PROVIDERS.key.equals(key)
+                || Settings.LYRICS_TRANSLATION_LANGUAGE.key.equals(key)
+                || Settings.LYRICS_ROMANIZATION_PROVIDERS.key.equals(key)
+                || Settings.LYRICS_ROMANIZE_LANGUAGE.key.equals(key)
+                || Settings.LYRICS_ALLOW_TRANSLITERATION.key.equals(key)
+                || Settings.LYRICS_LOCAL_DICTIONARIES.key.equals(key)
+                || Settings.LYRICS_JAPANESE_DICT_ENGINE.key.equals(key)
+                || Settings.LYRICS_RIME_CUSTOM_DICTS.key.equals(key)
+                || Settings.LYRICS_RIME_BUILTIN_SELECTED.key.equals(key)
+                || Settings.LYRICS_DEEPL_API_KEY.key.equals(key)
+                || Settings.LYRICS_AI_BASE_URL.key.equals(key)
+                || Settings.LYRICS_AI_API_TOKEN.key.equals(key)
+                || Settings.LYRICS_AI_MODEL.key.equals(key)
+                || Settings.LYRICS_AI_TRANSLATION_PROMPT.key.equals(key)
+                || Settings.LYRICS_AI_ROMANIZATION_PROMPT.key.equals(key)
+                || Settings.LYRICS_AI_EXTRA_BODY.key.equals(key)
+                || Settings.LYRICS_AI_EXTRA_HEADERS.key.equals(key);
     }
 
     private static void uninstallLyricsPanel() {
@@ -829,9 +872,14 @@ public final class LyricsPanelInstaller {
         Utils.runOnMainThreadDelayed(() -> {
             boolean scheduledNext = false;
             try {
-                if (!findAndEnableLyricsTab() && step + 1 < ENABLE_TAB_DELAYS_MS.length) {
+                final boolean found = findAndEnableLyricsTab();
+                if (found) {
+                    PlayerLiveLyricsView.refreshLaunchAvailability();
+                } else if (step + 1 < ENABLE_TAB_DELAYS_MS.length) {
                     scheduleEnableLyricsTab(step + 1);
                     scheduledNext = true;
+                } else {
+                    PlayerLiveLyricsView.refreshLaunchAvailability();
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "enableLyricsTab pass failure", ex);
@@ -844,22 +892,182 @@ public final class LyricsPanelInstaller {
     }
 
     /**
+     * Returns whether tapping the player live lyrics strip currently has an actionable target
+     * (either a player Lyrics tab or a visible action-bar Lyrics button).
+     */
+    public static boolean canOpenLyricsTab() {
+        try {
+            Activity activity = Utils.getActivity();
+            if (activity == null) {
+                return false;
+            }
+            if (findAndEnableLyricsTabView(activity) != null
+                    || findActionBarLyricsButton(activity) != null) {
+                return true;
+            }
+            if (!Settings.HIDE_ACTION_BAR.get() && !Settings.HIDE_LYRICS_BUTTON.get()) {
+                return !isActionBarPopulated(activity);
+            }
+            return false;
+        } catch (Exception ex) {
+            Logger.printException(() -> "canOpenLyricsTab failure", ex);
+            return false;
+        }
+    }
+
+    @Nullable
+    private static ViewGroup findActionBar(Activity activity) {
+        final int actionBarId = ResourceUtils.getIdentifier(ResourceType.ID, "video_action_bar");
+        return actionBarId != 0 && activity.findViewById(actionBarId) instanceof ViewGroup actionBar
+                ? actionBar
+                : null;
+    }
+
+    private static boolean isActionBarPopulated(Activity activity) {
+        ViewGroup actionBar = findActionBar(activity);
+        if (actionBar == null) {
+            return false;
+        }
+        ViewGroup itemsHost = findActionBarItemsHost(actionBar);
+        return itemsHost != null && itemsHost.getChildCount() > 0;
+    }
+
+    /**
+     * Opens the lyrics view by selecting the player Lyrics tab when present, or clicking the
+     * Lyrics button in {@code @id/video_action_bar} on the engagement-panel layout.
+     */
+    public static boolean openLyricsTab() {
+        try {
+            Activity activity = Utils.getActivity();
+            if (activity == null) {
+                return false;
+            }
+            View tabView = findAndEnableLyricsTabView(activity);
+            if (tabView != null) {
+                tabView.performClick();
+                return true;
+            }
+            View actionBarButton = findActionBarLyricsButton(activity);
+            if (actionBarButton != null) {
+                actionBarButton.performClick();
+                return true;
+            }
+            return false;
+        } catch (Exception ex) {
+            Logger.printException(() -> "openLyricsTab failure", ex);
+            return false;
+        }
+    }
+
+    @Nullable
+    private static View findActionBarLyricsButton(Activity activity) {
+        ViewGroup actionBar = findActionBar(activity);
+        if (actionBar == null) {
+            return null;
+        }
+        String title = LyricsButtonPatch.getLyricsButtonTitle();
+        if (title == null || title.isEmpty()) {
+            title = lyricsTitle(activity);
+        }
+        if (title != null && !title.isEmpty()) {
+            View byTitle = findClickableWithTitle(actionBar, title);
+            if (byTitle != null) {
+                return byTitle;
+            }
+        }
+        final int index = LyricsButtonPatch.getLyricsActionBarIndex();
+        if (index < 0) {
+            return null;
+        }
+        ViewGroup itemsHost = findActionBarItemsHost(actionBar);
+        if (itemsHost == null || index >= itemsHost.getChildCount()) {
+            return null;
+        }
+        return findFirstClickable(itemsHost.getChildAt(index));
+    }
+
+    @Nullable
+    private static View findClickableWithTitle(View view, String title) {
+        if (view.isClickable() && view.getVisibility() == View.VISIBLE) {
+            if (isSameTitle(title, view.getContentDescription())) {
+                return view;
+            }
+            if (view instanceof TextView textView && isSameTitle(title, textView.getText())) {
+                return view;
+            }
+            var nodeInfo = view.createAccessibilityNodeInfo();
+            if (nodeInfo != null && (isSameTitle(title, nodeInfo.getContentDescription())
+                    || isSameTitle(title, nodeInfo.getText()))) {
+                return view;
+            }
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View match = findClickableWithTitle(group.getChildAt(i), title);
+                if (match != null) {
+                    return match;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private static ViewGroup findActionBarItemsHost(View view) {
+        if (view instanceof ViewGroup group) {
+            // Skip container wrappers until reaching the RecyclerView-like host holding the cells.
+            if (group.getChildCount() >= 2 && findFirstClickable(group.getChildAt(0)) != null
+                    && findFirstClickable(group.getChildAt(1)) != null) {
+                return group;
+            }
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                ViewGroup found = findActionBarItemsHost(group.getChildAt(i));
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private static View findFirstClickable(View view) {
+        if (view.isClickable() && view.getVisibility() == View.VISIBLE) {
+            return view;
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View found = findFirstClickable(group.getChildAt(i));
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * @return Whether the Lyrics tab was found.
      */
     private static boolean findAndEnableLyricsTab() {
-        Activity activity = Utils.getActivity();
+        return findAndEnableLyricsTabView(Utils.getActivity()) != null;
+    }
+
+    @Nullable
+    private static View findAndEnableLyricsTabView(@Nullable Activity activity) {
         if (activity == null) {
-            return false;
+            return null;
         }
         if (!(activity.findViewById(ResourceUtils.getIdentifier(ResourceType.ID, TABBED_VIEW_ID))
                 instanceof ViewGroup tabbedView) || tabbedView.getChildCount() == 0) {
-            return false;
+            return null;
         }
         String title = lyricsTitle(activity);
-        return title != null && enableTabWithTitle(tabbedView.getChildAt(0), title);
+        return title != null ? enableTabWithTitle(tabbedView.getChildAt(0), title) : null;
     }
 
-    private static boolean enableTabWithTitle(View view, String title) {
+    @Nullable
+    private static View enableTabWithTitle(View view, String title) {
         if (isSameTitle(title, view.getContentDescription())) {
             if (!view.isEnabled()) {
                 Logger.printDebug(() -> "Enabling Lyrics tab");
@@ -867,15 +1075,16 @@ public final class LyricsPanelInstaller {
                 view.setClickable(true);
                 view.setAlpha(1.0f);
             }
-            return true;
+            return view;
         }
         if (view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                if (enableTabWithTitle(group.getChildAt(i), title)) {
-                    return true;
+                View match = enableTabWithTitle(group.getChildAt(i), title);
+                if (match != null) {
+                    return match;
                 }
             }
         }
-        return false;
+        return null;
     }
 }
