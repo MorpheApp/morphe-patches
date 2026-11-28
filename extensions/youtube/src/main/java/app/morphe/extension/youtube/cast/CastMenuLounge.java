@@ -576,12 +576,15 @@ public final class CastMenuLounge {
     }
 
     /**
-     * @return If the device of the session was just picked in the Cast menu, and the session was not restored.
+     * @return If the lounge device id is of a screen this patch added.
      */
     private static boolean isOurDeviceId(@Nullable String loungeDeviceId) {
         return loungeDeviceId != null && loungeDeviceId.startsWith(DEVICE_ID_PREFIX);
     }
 
+    /**
+     * @return If the device of the session was just picked in the Cast menu, and the session was not restored.
+     */
     private static boolean isPickedInCastMenu() {
         return scanRequested || System.currentTimeMillis() - castMenuClosedMillis < CAST_MENU_PICK_MILLISECONDS;
     }
