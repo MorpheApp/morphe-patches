@@ -27,7 +27,7 @@ private const val EXTENSION_CLASS =
 val sharePostContentPatch = patch(
     name = "Share post content",
     description = "Adds an option to share the image, video or text of a post instead of its link " +
-        "when using app shortcuts or \"Share via…\" in the share sheet."
+        "when using app shortcuts or \"Share via...\" in the share sheet."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
