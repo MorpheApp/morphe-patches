@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -32,11 +31,12 @@ public final class LyricsTranslator {
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    /** A provider answered with the source text, so the lyrics are already in the requested language. */
+    /**
+     * A provider found nothing to translate, so the lyrics are already in the requested language.
+     * Compared by identity.
+     */
     private static final ProviderTranslation UNCHANGED =
             new ProviderTranslation(List.of(), false, false, null);
-
-    private static final Pattern LETTER = Pattern.compile("\\p{L}");
 
     private LyricsTranslator() {
     }
@@ -184,6 +184,9 @@ public final class LyricsTranslator {
             if (hasTranslation(translated, lines)) {
                 return new ProviderTranslation(sanitizeTranslation(translated), true, false, null);
             }
+            if (isSameAsSource(translated, lines)) {
+                return UNCHANGED;
+            }
 
             translated = translateOnline(lines, language);
             if (hasTranslation(translated, lines)) {
@@ -191,7 +194,12 @@ public final class LyricsTranslator {
                 LyricsCache.putTranslation(track, source, language, lines, translated);
                 return new ProviderTranslation(translated, true, false, null);
             }
-            return isSameAsSource(translated, lines) ? UNCHANGED : null;
+            if (isSameAsSource(translated, lines)) {
+                // Cached as the source text, so the next play does not ask again.
+                LyricsCache.putTranslation(track, source, language, lines, lines);
+                return UNCHANGED;
+            }
+            return null;
         }
 
         final boolean deepl = ProcessingProviders.DEEPL.equals(provider);
@@ -206,22 +214,27 @@ public final class LyricsTranslator {
             return new ProviderTranslation(sanitizeTranslation(aiCached), false, true,
                     deepl ? "DeepL" : Settings.LYRICS_AI_MODEL.get());
         }
+        if (isSameAsSource(aiCached, lines)) {
+            return UNCHANGED;
+        }
 
         ProcessingProviders.Result ai = deepl
                 ? deepLTranslate(lines, language)
                 : ProcessingProviders.mapLines(provider, OpenAIClient.renderPrompt(
                 Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
                 language, track.title(), track.artist(), lines), lines);
-        if (ai != null && ai.skipsEveryLine()) {
-            return UNCHANGED;
-        }
-        if (ai == null || ai.lines() == null || ai.lines().isEmpty()) {
+        if (ai == null) {
             return null;
         }
+        // DeepL sends back text that is already in the target language. An AI model is told
+        // to answer SKIP instead, so the source text coming back from it is a failed answer.
+        if (ai.skipsEveryLine() || deepl && isSameAsSource(ai.lines(), lines)) {
+            // Cached as the source text, so the next play does not ask again.
+            LyricsCache.putTranslationAI(track, source, language, lines, lines, provider);
+            return UNCHANGED;
+        }
         if (!hasTranslation(ai.lines(), lines)) {
-            // DeepL sends back text that is already in the target language. An AI model is told
-            // to answer SKIP instead, so the source text coming back from it is a failed answer.
-            return deepl && isSameAsSource(ai.lines(), lines) ? UNCHANGED : null;
+            return null;
         }
 
         List<String> translated = sanitizeTranslation(ai.lines());
@@ -240,7 +253,8 @@ public final class LyricsTranslator {
     /**
      * Whether a provider answered every line that has letters with its source text, which means
      * the lyrics are already written in the requested language. A line without letters, such as
-     * "♪", can come back in any form. An empty line in place of text is an incomplete answer.
+     * a music note, can come back in any form. An empty line in place of text is an incomplete
+     * answer.
      */
     private static boolean isSameAsSource(@Nullable List<String> translated,
                                           List<String> source) {
@@ -249,13 +263,13 @@ public final class LyricsTranslator {
         }
         boolean anyText = false;
         for (int i = 0; i < translated.size(); i++) {
-            String original = source.get(i).trim();
-            if (!LETTER.matcher(original).find()) {
+            String original = source.get(i);
+            if (OpenAIClient.isNoteOrEmptyLine(original)) {
                 continue;
             }
             anyText = true;
             String text = translated.get(i);
-            if (text == null || !text.trim().equals(original)) {
+            if (text == null || !text.trim().equals(original.trim())) {
                 return false;
             }
         }

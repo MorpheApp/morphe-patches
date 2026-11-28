@@ -120,6 +120,8 @@ public final class OpenAIClient {
     /** "/v1", "/v1beta/openai", "/compatible-mode/v1" and the like. */
     private static final Pattern VERSION_SEGMENT =
             Pattern.compile("(?:/[^/]+)*/v\\d+(?:[a-z]+)?(?:/[^/]+)*");
+    /** A leading "1." or "1)" a model may put before a line it does not number fully. */
+    private static final Pattern LINE_NUMBER_PREFIX = Pattern.compile("^\\d+[.)\\]:\\-]\\s*");
     private static final Pattern NUMBERED_LINE_PATTERN =
             Pattern.compile("^(?:Line\\s+)?(\\d{1,4})[.)\\]:\\-]\\s*(.*)$", Pattern.CASE_INSENSITIVE);
     private static final Pattern SKIP_TOKEN_PATTERN = Pattern.compile(
@@ -694,7 +696,7 @@ public final class OpenAIClient {
             if (line.isEmpty()) {
                 continue;
             }
-            line = line.replaceFirst("^\\d+[.)\\]:\\-]\\s*", "").trim();
+            line = LINE_NUMBER_PREFIX.matcher(line).replaceFirst("").trim();
             if (line.isEmpty() || !isSkipToken(line)) {
                 return false;
             }
@@ -754,7 +756,7 @@ public final class OpenAIClient {
         for (int i = 0; i < end && list.size() < expectedCount; i++) {
             String line = raw[i].trim();
             if (line.isEmpty()) continue;
-            line = line.replaceFirst("^\\d+[.)\\]:\\-]\\s*", "").trim();
+            line = LINE_NUMBER_PREFIX.matcher(line).replaceFirst("").trim();
             if (isSkipToken(line)) {
                 line = "";
             } else {
@@ -773,7 +775,7 @@ public final class OpenAIClient {
         return list;
     }
 
-    private static boolean isNoteOrEmptyLine(String text) {
+    static boolean isNoteOrEmptyLine(@Nullable String text) {
         if (text == null) return true;
         String trimmed = text.trim();
         if (trimmed.isEmpty()) return true;
