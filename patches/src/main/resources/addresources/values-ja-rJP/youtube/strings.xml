@@ -193,8 +193,8 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_hide_join_button_title">「メンバーになる」ボタンを非表示</string>
   <string name="morphe_hide_links_preview_title">リンクのプレビューを非表示</string>
   <string name="morphe_hide_links_preview_summary">チャンネルの説明文の末尾の「…さらに表示」ボタンの下に表示される、リンクの一覧を呼び出すボタンを非表示にします</string>
-  <string name="morphe_hide_members_only_chip_title">「メンバー限定」チップを非表示</string>
-  <string name="morphe_hide_members_only_chip_summary">チャンネルフィルタバーの「メンバー限定」チップを非表示にし、「公開」チップを選択します</string>
+  <string name="morphe_hide_members_only_chip_title">「メンバー限定」ボタンを非表示</string>
+  <string name="morphe_hide_members_only_chip_summary">チャンネル ページのフィルタバーに表示される「メンバー限定」ボタンを非表示にし、「公開」ボタンをデフォルトで選択します</string>
   <string name="morphe_hide_members_shelf_title">メンバー欄を非表示</string>
   <string name="morphe_hide_members_shelf_summary">横一列のチャンネル メンバーのリストを非表示にします</string>
   <string name="morphe_hide_posts_shelf_title">「投稿」欄を非表示</string>
@@ -1441,6 +1441,8 @@ Automotive レイアウト
   <string name="morphe_feed_card_layout_entry_5">高評価、コメント、保存ボタンおよびアバターグロウ付きのカード</string>
   <string name="morphe_feed_card_layout_comments">コメント</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">起動時に続きを視聴する</string>
+  <string name="morphe_miniplayer_restore_session_summary">このデバイスで再生状態とキューを保存し、YouTubeの起動時に一時停止状態で開きます</string>
   <string name="morphe_miniplayer_disable_resuming_title">ミニプレーヤーの再開を無効化</string>
   <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>

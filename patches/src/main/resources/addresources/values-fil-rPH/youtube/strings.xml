@@ -1440,6 +1440,8 @@ Automotive layout
   <string name="morphe_feed_card_layout_entry_5">Mga card na may mga button para sa like, comment at save at may avatar glow</string>
   <string name="morphe_feed_card_layout_comments">Mga Komento</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">Ipagpatuloy ang panonood sa startup</string>
+  <string name="morphe_miniplayer_restore_session_summary">I-save ang iyong playback at queue sa device na ito at bubuksan itong naka-pause kapag nagsimula ang YouTube</string>
   <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>
   <string name="morphe_miniplayer_screen_summary">I-customize ang hitsura at pag-uugali ng minimize video player</string>

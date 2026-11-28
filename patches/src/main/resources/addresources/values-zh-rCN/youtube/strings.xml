@@ -1440,6 +1440,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_5">带有点赞、评论、保存按钮及头像光晕的卡片</string>
   <string name="morphe_feed_card_layout_comments">评论</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">启动时继续观看</string>
+  <string name="morphe_miniplayer_restore_session_summary">在当前设备上保存您的播放进度和队列，并在 YouTube 启动时以暂停状态打开</string>
   <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
   <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>
   <string name="morphe_miniplayer_screen_summary">自定义最小化视频播放器的外观和行为</string>

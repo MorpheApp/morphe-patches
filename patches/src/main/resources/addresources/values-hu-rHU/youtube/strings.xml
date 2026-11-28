@@ -1440,6 +1440,8 @@ Autós elrendezés
   <string name="morphe_feed_card_layout_entry_5">Kártyák lájkolási, kommentelési és mentési gombokkal, valamint avatar fényzéssel</string>
   <string name="morphe_feed_card_layout_comments">Megjegyzések</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">Folytatás a lejátszással az indításkor</string>
+  <string name="morphe_miniplayer_restore_session_summary">Menti a lejátszást és a sorát ezen a készüléken, majd szünetelt állapotban nyitja meg őket, amikor a YouTube indul</string>
   <string name="morphe_miniplayer_disable_resuming_title">A miniplayer folytatásának letiltása</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Letiltja a „Folytatás” minilejátszót, a YouTube Premium funkciót, amely az alkalmazás indításakor jelenik meg.</string>
   <string name="morphe_miniplayer_screen_summary">A minimalizált videólejátszó megjelenésének és viselkedésének testreszabása</string>

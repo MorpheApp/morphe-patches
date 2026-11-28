@@ -1266,6 +1266,8 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_autoplay_mix_length">Miks: %s video</string>
   <string name="morphe_autoplay_mix_no_limit">Miks: limit yoxdur</string>
   <!-- interaction.cast.restoreOldCastPatch -->
+  <string name="morphe_restore_old_cast_behavior_title">Köhnə Yayım davranışını bərpa et</string>
+  <string name="morphe_restore_old_cast_behavior_summary">Başqa video seçdikdə və ya oynadıcını bağladıqda Yayım sessiyası qoşulu qalır, buna görə də videolar televizorda oynadılmağa davam edir</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusu</string>
   <string name="morphe_continue_watching_prompt_entry_1">İlkin</string>
@@ -1654,6 +1656,7 @@ Avtomobil tərtibatı
   <string name="morphe_external_browser_title">Bağlantıları brauzerdə aç</string>
   <string name="morphe_external_browser_summary">Linkləri tətbiqdaxili brauzer əvəzinə, xarici brauzerdə açır</string>
   <!-- misc.links.openSharedLinksPatch -->
+  <string name="morphe_open_shared_links_no_link">Paylaşılan mətndə YouTube linki yoxdur</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Oynatma buferinin həcmi</string>
   <string name="morphe_playback_buffer_size_entry_default">İlkin</string>

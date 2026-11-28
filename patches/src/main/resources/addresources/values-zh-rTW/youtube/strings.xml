@@ -1438,6 +1438,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_5">帶有按讚、評論、儲存按鈕及頭像發光效果的卡片</string>
   <string name="morphe_feed_card_layout_comments">留言區</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">啟動時繼續觀看</string>
+  <string name="morphe_miniplayer_restore_session_summary">將您的播放進度與播放隊列儲存在此裝置上，並在 YouTube 啟動時以暫停狀態開啟</string>
   <string name="morphe_miniplayer_disable_resuming_title">停用迷你播放器恢復功能</string>
   <string name="morphe_miniplayer_disable_resuming_summary">停用「繼續觀看」迷你播放器，這是 YouTube Premium 的功能，會在應用程式啟動時顯示</string>
   <string name="morphe_miniplayer_screen_summary">自訂迷你影片播放器的外觀和行為</string>

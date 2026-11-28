@@ -1267,8 +1267,8 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <string name="morphe_autoplay_mix_length">Mix : %s vidéos</string>
   <string name="morphe_autoplay_mix_no_limit">Mix : aucune limite</string>
   <!-- interaction.cast.restoreOldCastPatch -->
-  <string name="morphe_restore_old_cast_behavior_title">Rétablir l\'ancien comportement de Cast</string>
-  <string name="morphe_restore_old_cast_behavior_summary">La session Cast reste connectée lors de la sélection d\'une autre vidéo ou de la fermeture du lecteur, ainsi les vidéos continuent d\'être diffusées sur la TV</string>
+  <string name="morphe_restore_old_cast_behavior_title">Rétablir l\'ancien comportement \'Caster\'</string>
+  <string name="morphe_restore_old_cast_behavior_summary">La session \'Caster\' reste connectée lorsque vous sélectionnez une autre vidéo ou fermez le lecteur, afin que les vidéos continuent d\'être lues sur la TV</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Invite \'Continuer à regarder ?\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Par défaut</string>
@@ -1437,10 +1437,12 @@ Mise en page pour automobile
   <string name="morphe_feed_card_layout_entry_1">Classique</string>
   <string name="morphe_feed_card_layout_entry_2">Cartes</string>
   <string name="morphe_feed_card_layout_entry_3">Cartes avec des boutons j\'aime, commentaire et enregistrer</string>
-  <string name="morphe_feed_card_layout_entry_4">Cartes avec éclat de l\'avatar</string>
-  <string name="morphe_feed_card_layout_entry_5">Cartes avec des boutons j\'aime, commentaire et enregistrer et éclat de l\'avatar</string>
+  <string name="morphe_feed_card_layout_entry_4">Cartes avec lueur autour de l\'avatar</string>
+  <string name="morphe_feed_card_layout_entry_5">Cartes avec boutons j\'aime, commentaire et enregistrer, et une lueur autour de l\'avatar</string>
   <string name="morphe_feed_card_layout_comments">Commentaires</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">Continuer à regarder au démarrage</string>
+  <string name="morphe_miniplayer_restore_session_summary">Enregistre votre lecture et votre file d\'attente sur cet appareil et les ouvre en pause lors du démarrage de YouTube</string>
   <string name="morphe_miniplayer_disable_resuming_title">Désactiver la reprise du mini-lecteur</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Désactive le mini-lecteur \'Continuer à regarder\', une fonctionnalité de YouTube Premium qui s\'affiche au démarrage de l\'application</string>
   <string name="morphe_miniplayer_screen_summary">Personnalisez l\'apparence et le comportement du mini-lecteur vidéo</string>

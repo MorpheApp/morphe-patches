@@ -1441,6 +1441,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_feed_card_layout_entry_5">좋아요, 댓글 및 저장 버튼과 아바타 글로우가 있는 카드</string>
   <string name="morphe_feed_card_layout_comments">댓글</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">앱 시작 시 이어서 시청하기</string>
+  <string name="morphe_miniplayer_restore_session_summary">이 기기에서 재생 상태와 대기열을 저장하며, YouTube가 시작될 때 일시중지된 상태로 엽니다</string>
   <string name="morphe_miniplayer_disable_resuming_title">미니 플레이어 다시 시작 비활성화하기</string>
   <string name="morphe_miniplayer_disable_resuming_summary">앱 시작 시 \'이어서 시청하기\' 미니플레이어가 나타나지 않도록 합니다. 이 기능은 YouTube Premium 기능입니다</string>
   <string name="morphe_miniplayer_screen_summary">최소화된 동영상 플레이어의 레이아웃 및 동작을 설정할 수 있습니다</string>

@@ -1439,6 +1439,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_card_layout_entry_5">Картки з кнопками лайків, коментарів та збереження, а також сяйвом аватара</string>
   <string name="morphe_feed_card_layout_comments">Коментарі</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">Продовжити перегляд під час запуску</string>
+  <string name="morphe_miniplayer_restore_session_summary">Зберігає стан відтворення та чергу на цьому пристрої та відкриває їх із паузою під час запуску YouTube</string>
   <string name="morphe_miniplayer_disable_resuming_title">Вимкнути відновлення мініплеєра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Вимикає мініплеєр \"Продовжити перегляд\", функцію YouTube Premium, що з\'являється при запуску застосунку</string>
   <string name="morphe_miniplayer_screen_summary">Налаштування вигляду та поведінки мінімізованого відеоплеєра</string>

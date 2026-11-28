@@ -1440,6 +1440,8 @@ Automobil-Layout
   <string name="morphe_feed_card_layout_entry_5">Karten mit Like-, Kommentar- und Speicher-Buttons und Avatar-Leuchten</string>
   <string name="morphe_feed_card_layout_comments">Kommentare</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_restore_session_title">Beim Start weiter schauen</string>
+  <string name="morphe_miniplayer_restore_session_summary">Speichert die Wiedergabe und die Warteschlange auf diesem Gerät und öffnet sie pausiert, wenn YouTube startet</string>
   <string name="morphe_miniplayer_disable_resuming_title">Fortsetzen des Miniplayers deaktivieren</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiviert den Miniplayer „Weiter ansehen“, ein YouTube Premium-Feature, das beim Starten der App angezeigt wird.</string>
   <string name="morphe_miniplayer_screen_summary">Passe das Erscheinungsbild und das Verhalten des minimierten Videoplayers an</string>
